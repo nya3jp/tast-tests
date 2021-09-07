@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <canvas id='canvas' width=10 height=10></canvas>
+  <video id='video' autoplay></video>
+<script src="third_party/blackframe.js"></script>
+<script>
+
+const GREEN = [0, 1, 0, 1];
+
+function draw(canvasId) {
+  return new Promise(function(resolve, reject) {
+    requestAnimationFrame(function() {
+      var context = canvasId.getContext('webgl', {alpha : true});
+      context.clearColor(GREEN[0], GREEN[1], GREEN[2], GREEN[3]);
+      context.clear(context.COLOR_BUFFER_BIT);
+      resolve();
+    });
+  });
+}
+
+const WIDTH = 128;
+const HEIGHT = 128;
+
+async function captureCanvasAndInspect() {
+  const canvas = document.getElementById('canvas');
+  canvas.width = WIDTH;
+  canvas.height = HEIGHT;
+  await draw(canvas);
+
+  var stream = canvas.captureStream(10);
+  if (stream.getVideoTracks().length !== 1) {
+      throw new DOMException('Wrong getVideoTracks() length',
+         'InvalidStateError');
+  }
+
+  const video = document.getElementById('video');
+  video.srcObject = stream;
+  await video.play();
+
+  const mediaStreamSettings = stream.getVideoTracks()[0].getSettings();
+  video.width = mediaStreamSettings.width;
+  video.height = mediaStreamSettings.height;
+
+  if (isNaN(video.width) || isNaN(video.height) || video.width === 0 ||
+      video.height === 0) {
+    throw new DOMException(`Bad stream dimensions ` +
+                            `${video.width}x${video.height}`);
+  }
+  if (video.width !== WIDTH || video.height !== HEIGHT) {
+    throw new DOMException(`Unexpected capture resolution, got: `+
+      `${video.width}x${video.height}, expected ` + `${WIDTH}x${HEIGHT}`);
+  }
+
+  // Draw the <video> contents in an offscreen canvas to validate the pixels.
+  const width = Math.max(video.width / 8, 128);
+  const height = Math.max(video.height / 8, 128);
+  const context = new OffscreenCanvas(width, height).getContext('2d');
+  context.drawImage(video, 0, 0, width, height);
+  const imageData = context.getImageData(0, 0, width, height);
+  if (isBlackFrame(imageData.data, imageData.data.length)) {
+    throw new DOMException('Captured data is considered all black');
+  }
+}
+
+</script>
+</body>
+</html>
