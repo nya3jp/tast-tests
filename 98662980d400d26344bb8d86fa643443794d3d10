@@ -123,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e39faf_fcd7a705",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2021-09-07T18:53:05Z",
+      "side": 1,
+      "message": "I just noticed this. Thank you for pointing it out.",
+      "parentUuid": "eeab900a_afa6ea0f",
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdf8ad86_7573fec2",
@@ -327,6 +345,24 @@
       "side": 1,
       "message": "I\u0027m still seeing a couple uses of ui.cuj_username so it can\u0027t be removed without modifying those:\nhttps://source.chromium.org/search?q\u003dui.cuj_username\n\nI don\u0027t think they should need to be removed from the internal repo though, since they are valid secret variables.",
       "parentUuid": "3fc20cea_a62d7b39",
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f5d9532_32ba70ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2021-09-07T18:53:05Z",
+      "side": 1,
+      "message": "Actually those cases (https://source.chromium.org/search?q\u003dui.cuj_username) are the ones included in moblab perf_cuj suite. We should change them to use cuj_username/password to be consistent between perf_cuj tests.\n\nSince we are in the context already, I will use this CL to change these parameters if you don\u0027t mind.",
+      "parentUuid": "568c50fe_0868ef1c",
       "revId": "98662980d400d26344bb8d86fa643443794d3d10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
