@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f34a33f1_ca7a1375",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-07T22:23:53Z",
+      "side": 1,
+      "message": "The non-capture groups don\u0027t seem to change anything in the results of FindStringSubmatch. The first element is the full part that matched regardless.\n\nhttps://play.golang.org/p/tMK9lZzH6Yx",
+      "range": {
+        "startLine": 30,
+        "startChar": 27,
+        "endLine": 30,
+        "endChar": 30
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "784e0f64_6791b0dc",
         "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
         "patchSetId": 9
