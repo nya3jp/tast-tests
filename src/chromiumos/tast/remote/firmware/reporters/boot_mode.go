@@ -20,12 +20,20 @@ func (r *Reporter) CurrentBootMode(ctx context.Context) (fwCommon.BootMode, erro
 	}
 	mainfwType := csMap[CrossystemParamMainfwType]
 	devswBoot := csMap[CrossystemParamDevswBoot]
+
 	switch mainfwType {
 	case "normal":
 		if devswBoot == "0" {
 			return fwCommon.BootModeNormal, nil
 		}
 	case "developer":
+		bootedDevice, err := r.BootedDevice(ctx)
+		if err != nil {
+			return fwCommon.BootModeUnspecified, errors.Wrapf(err, "determining if boot device is removable")
+		}
+		if bootedDevice == BootedDeviceDeveloperRemovableSig || bootedDevice == BootedDeviceDeveloperRemovableHash {
+			return fwCommon.BootModeUSBDev, nil
+		}
 		if devswBoot == "1" {
 			return fwCommon.BootModeDev, nil
 		}
