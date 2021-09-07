@@ -6,7 +6,11 @@ package health
 
 import (
 	"context"
+	"fmt"
 
+	"github.com/google/go-cmp/cmp"
+
+	"chromiumos/tast/local/bundles/cros/health/pci"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
@@ -30,14 +34,33 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &res); err != nil {
 		s.Fatal("Failed to get bus telemetry info: ", err)
 	}
+	var pciDevs []pci.Device
 	for _, d := range res.Devices {
 		if d.BusInfo.PciBusInfo != nil {
-			// TODO(chungsheng): Add validation
+			pd := d.BusInfo.PciBusInfo
+			pciDevs = append(pciDevs, pci.Device{
+				VendorID: fmt.Sprintf("%04x", pd.VendorID),
+				DeviceID: fmt.Sprintf("%04x", pd.DeviceID),
+				Vendor:   d.VendorName,
+				Device:   d.ProductName,
+				Class:    fmt.Sprintf("%02x%02x", pd.ClassID, pd.SubClassID),
+				ProgIf:   fmt.Sprintf("%02x", pd.ProgIfID),
+				Driver:   pd.Driver,
+			})
 		} else if d.BusInfo.UsbBusInfo != nil {
 			// TODO(chungsheng): Add validation
 		} else {
 			s.Fatal("Unknown types of bus devices")
 		}
+	}
+
+	e, err := pci.ExpectedDevices(ctx)
+	if err != nil {
+		s.Fatal("Failed to get expected pci devices: ", err)
+	}
+	pci.Sorted(pciDevs)
+	if d := cmp.Diff(e, pciDevs); d != "" {
+		s.Fatal("Pci devices validation failed (-expected + got): ", d)
 	}
 }
 
