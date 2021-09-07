@@ -16,6 +16,29 @@
       "message": "PTAL!",
       "revId": "982b849bce7c2fd7485f16464bc7f3d9d9354e87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "781a793a_3ed0aec5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-07T09:32:43Z",
+      "side": 1,
+      "message": "just err, PollBreak only makes sense inside of Polling.",
+      "range": {
+        "startLine": 1047,
+        "startChar": 9,
+        "endLine": 1047,
+        "endChar": 31
+      },
+      "revId": "982b849bce7c2fd7485f16464bc7f3d9d9354e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
