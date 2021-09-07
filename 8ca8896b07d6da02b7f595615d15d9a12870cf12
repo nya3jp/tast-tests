@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10088256_7ada746c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-07T23:07:42Z",
+      "side": 1,
+      "message": "LGTM from Tast perspective, but should resolve the comment thread first about restoring /usr/local/vms/etc/arcvm_dev.conf",
+      "revId": "8ca8896b07d6da02b7f595615d15d9a12870cf12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
