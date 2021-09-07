@@ -564,39 +564,36 @@ func testPIPExpandViaShelfIcon(ctx context.Context, cr *chrome.Chrome, tconn *ch
 
 // testPIPAutoPIPNewAndroidWindow verifies that creating a new Android window that occludes an auto-PIP window will trigger PIP.
 func testPIPAutoPIPNewAndroidWindow(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, a *arc.ARC, pipAct *arc.Activity, dev *ui.Device, dispMode *display.DisplayMode) error {
-	maximizedActivity, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
-	if err != nil {
-		return errors.Wrap(err, "could not create maximized activity")
-	}
-	defer maximizedActivity.Close()
-
-	if err := maximizedActivity.Start(ctx, tconn); err != nil {
-		return errors.Wrap(err, "could not start maximized activity")
-	}
-	defer maximizedActivity.Stop(ctx, tconn)
-
-	// Make sure the window will have an initial maximized state.
-	if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WMEventMaximize); err != nil {
-		return errors.Wrap(err, "failed to set window state of maximized activity to maximized")
-	}
-
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateMaximized); err != nil {
-		return errors.Wrap(err, "did not maximize")
-	}
-
-	if err := maximizedActivity.Stop(ctx, tconn); err != nil {
-		return errors.Wrap(err, "could not stop maximized activity while setting initial window state")
-	}
-
 	// Start the main activity that should enter PIP.
 	if err := pipAct.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start MainActivity")
 	}
 	defer pipAct.Stop(ctx, tconn)
 
+	if err := ash.WaitForVisible(ctx, tconn, pipAct.PackageName()); err != nil {
+		return errors.Wrap(err, "could not wait for PIP to be visible")
+	}
+	if err := dev.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "could not wait for event thread to be idle")
+	}
+	if err := waitForPIPToBeGone(ctx, tconn); err != nil {
+		return errors.Wrap(err, "could not wait for PIP to be gone")
+	}
+
+	maxAct, err := arc.NewActivity(a, wm.Pkg24, wm.NonResizableUnspecifiedActivity)
+	if err != nil {
+		return errors.Wrap(err, "could not create maximized activity")
+	}
+	defer maxAct.Close()
+
 	// Start maximized activity again, this time with the guaranteed correct window state.
-	if err := maximizedActivity.Start(ctx, tconn); err != nil {
+	if err := maxAct.Start(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start maximized Activity")
+	}
+	defer maxAct.Stop(ctx, tconn)
+
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateMaximized); err != nil {
+		return errors.Wrap(err, "did not maximize")
 	}
 
 	// Wait for MainActivity to enter PIP.
@@ -745,6 +742,17 @@ func waitForPIPWindow(ctx context.Context, tconn *chrome.TestConn) error {
 		_, err := getPIPWindow(ctx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "the PIP window hasn't been created yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+}
+
+// waitForPIPToBeGone keeps looking for a PIP window until it disappears on the Chrome side.
+func waitForPIPToBeGone(ctx context.Context, tconn *chrome.TestConn) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		pip, err := getPIPWindow(ctx, tconn)
+		if err == nil && pip != nil {
+			return errors.Wrap(err, "the PIP window exists")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
