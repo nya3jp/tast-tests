@@ -28,7 +28,14 @@ func init() {
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		Pre:          pre.VKEnabledTablet,
-		HardwareDeps: hwdep.D(pre.InputsStableModels),
+		Params: []testing.Param{{
+			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+			ExtraAttr:         []string{"group:input-tools-upstream"},
+		}, {
+			Name:              "informational",
+			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
@@ -41,11 +48,6 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
