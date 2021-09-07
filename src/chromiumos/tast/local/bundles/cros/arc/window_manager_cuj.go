@@ -36,20 +36,14 @@ type wmCUJTestParams struct {
 	fn   wmCUJTestFunc
 }
 
-// For the moment VM and container are sharing the same list of stable and unstable tests.
-// But we should split them if VM is more (or less) stable than container.
-// Only stable tests should be placed here. The ones that are ready for CQ.
-var stableCUJTests = []wmCUJTestParams{
+// Tests that can be shared on all versions should be placed here.
+var cujTests = []wmCUJTestParams{
 	{"Default Launch Clamshell N", wmDefaultLaunchClamshell24},
 	{"Default Launch Clamshell Pre-N", wmDefaultLaunchClamshell23},
 	{"Maximize / Restore Clamshell N", wmMaximizeRestoreClamshell24},
 	{"Maximize / Restore Clamshell Pre-N", wmMaximizeRestoreClamshell23},
 	{"Lights out / Lights in N", wmLightsOutIn},
 	{"Lights out ignored", wmLightsOutIgnored},
-}
-
-// New and unstable tests should be placed here. These tests should be fixed, and moved them to "stable" ASAP.
-var unstableCUJTests = []wmCUJTestParams{
 	{"Follow Root Activity N / Pre-N", wmFollowRoot},
 	{"Freeform Resize", wmFreeformResize},
 	{"Snapping to half screen", wmSnapping},
@@ -58,8 +52,8 @@ var unstableCUJTests = []wmCUJTestParams{
 	{"Picture in Picture", wmPIP},
 }
 
-// New and unstable tests that are only for P should be placed here. Will be gone once all P devices are gone.
-var unstableCUJTestsP = []wmCUJTestParams{
+// Tests that are only for P should be placed here. Will be gone once all P devices are gone.
+var cujTestsP = []wmCUJTestParams{
 	{"Springboard N / Pre-N", wmSpringboardP},
 	// Density is handled differently in R, where bounds are calculated in a more complicated way based on display size, etc, so the operation frequently changes and is not very testable.
 	{"Display resolution", wmDisplayResolutionP},
@@ -67,32 +61,20 @@ var unstableCUJTestsP = []wmCUJTestParams{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     WindowManagerCUJ,
-		Desc:     "Verifies that Window Manager Critical User Journey behaves as described in go/arc-wm-p",
-		Contacts: []string{"takise@chromium.org", "arc-framework+tast@google.com"},
-		// TODO(http://b/149790068): Test is disabled until it can be fixed
-		// Attr:         []string{"group:mainline", "informational"},
+		Func:         WindowManagerCUJ,
+		Desc:         "Verifies that Window Manager Critical User Journey behaves as described in go/arc-wm-p",
+		Contacts:     []string{"takise@chromium.org", "arc-framework+tast@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Data:         []string{"ArcPipSimpleTastTest.apk"},
-		Timeout:      8 * time.Minute,
+		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			Val:               stableCUJTests,
-			ExtraAttr:         []string{"group:mainline", "informational"},
-			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
-			Name:              "unstable",
-			Val:               append(unstableCUJTests, unstableCUJTestsP...),
+			Val:               append(cujTests, cujTestsP...),
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
-			ExtraAttr:         []string{"group:mainline", "informational"},
-			Val:               stableCUJTests,
-			ExtraSoftwareDeps: []string{"android_vm"},
-		}, {
-			Name:              "vm_unstable",
-			ExtraAttr:         []string{"group:mainline", "informational"},
-			Val:               unstableCUJTests,
+			Val:               cujTests,
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
