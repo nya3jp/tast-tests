@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f3fd45d_9c65a244",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-09-07T03:11:40Z",
+      "side": 1,
+      "message": "This CL should be merged along with CL:3095024. So please add `Cq-Depend: chromium:3095024` in the commit messages.",
+      "revId": "56e9249482e9c83064dc827a6ebb5e31b6bc0f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
