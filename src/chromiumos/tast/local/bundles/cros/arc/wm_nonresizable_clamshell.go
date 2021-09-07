@@ -210,15 +210,13 @@ func wmNC07(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return err
 	}
 
-	// Get window info after the immersive button is clicked.
-	windowInfoUIImmersive, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
 	if err != nil {
 		return err
 	}
 	if err := ash.WaitWindowFinishAnimating(ctx, tconn, windowInfoBefore.ID); err != nil {
 		return err
 	}
-	if err := wm.CheckMaximizeToFullscreenToggle(ctx, tconn, windowInfoBefore.TargetBounds, *windowInfoUIImmersive); err != nil {
+	if err := wm.CheckMaximizeToFullscreenToggle(ctx, tconn, windowInfoBefore.TargetBounds, wm.Pkg24); err != nil {
 		return err
 	}
 
@@ -696,11 +694,10 @@ func checkMaxActivityToFullscreen(ctx context.Context, tconn *chrome.TestConn, a
 		return err
 	}
 
-	windowInfoFullscreen, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
 	if err != nil {
 		return err
 	}
-	if err := wm.CheckMaximizeToFullscreenToggle(ctx, tconn, windowInfoBefore.TargetBounds, *windowInfoFullscreen); err != nil {
+	if err := wm.CheckMaximizeToFullscreenToggle(ctx, tconn, windowInfoBefore.TargetBounds, wm.Pkg24); err != nil {
 		return err
 	}
 

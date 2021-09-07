@@ -182,8 +182,9 @@ func CheckPillarbox(ctx context.Context, tconn *chrome.TestConn, act *arc.Activi
 }
 
 // CheckMaximizeToFullscreenToggle checks window's bounds transisionning from max to fullscreen.
-func CheckMaximizeToFullscreenToggle(ctx context.Context, tconn *chrome.TestConn, maxWindowCoords coords.Rect, fullscreenWindow ash.Window) error {
+func CheckMaximizeToFullscreenToggle(ctx context.Context, tconn *chrome.TestConn, maxWindowCoords coords.Rect, pkgName string) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
+		fullscreenWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
 		if maxWindowCoords.Left != fullscreenWindow.TargetBounds.Left ||
 			maxWindowCoords.Top != fullscreenWindow.TargetBounds.Top ||
 			maxWindowCoords.Width != fullscreenWindow.TargetBounds.Width ||
