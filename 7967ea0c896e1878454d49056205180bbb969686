@@ -16,6 +16,23 @@
       "message": "alexanderhartl@, I forgot to update the test case. Please review again.\n",
       "revId": "7967ea0c896e1878454d49056205180bbb969686",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46b6aaf8_d64ec598",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-09-07T17:55:11Z",
+      "side": 1,
+      "message": "`",
+      "revId": "7967ea0c896e1878454d49056205180bbb969686",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
