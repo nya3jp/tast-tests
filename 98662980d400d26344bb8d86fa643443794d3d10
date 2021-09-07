@@ -53,6 +53,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d71c0ab6_6c86c9a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-09-07T16:19:59Z",
+      "side": 1,
+      "message": "cc yichenz@\n\nYichen, do you know whether \"cuj_username/password\" is being used? I wish we could keep only one set of the vars for all external partners.",
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdf8ad86_7573fec2",
@@ -90,6 +107,30 @@
       "side": 1,
       "message": "I would like to check if you are using cuj_username/password in your lab. They don\u0027t follow the var naming convention. If they are not used, we should remove them. \n\nIn stead, ui.cuj_username/password are currently being used in some environments including moblab. If they don\u0027t need the account pool, they can keep this configuration.",
       "parentUuid": "bdf8ad86_7573fec2",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "98662980d400d26344bb8d86fa643443794d3d10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e80e6e_3d976086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-09-07T16:19:59Z",
+      "side": 1,
+      "message": "FWICT, cuj_username/password is added to allow external partners to use MeetCUJ (crbug.com/1181121). I don\u0027t know there are external partners that depend on ui.cuj_username/password. IMHO, we should consolidate and keep only one set of the vars.",
+      "parentUuid": "922e42e1_b908e819",
       "range": {
         "startLine": 120,
         "startChar": 1,
