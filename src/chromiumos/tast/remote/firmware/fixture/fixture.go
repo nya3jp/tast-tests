@@ -23,10 +23,12 @@ import (
 
 // Fixture names for the tests to use.
 const (
-	NormalMode = "bootModeNormal"
-	DevMode    = "bootModeDev"
-	DevModeGBB = "bootModeDevGBB"
-	RecMode    = "bootModeRec"
+	NormalMode    = "bootModeNormal"
+	DevMode       = "bootModeDev"
+	DevModeGBB    = "bootModeDevGBB"
+	USBDevMode    = "bootModeUSBDev"
+	USBDevModeGBB = "bootModeUSBDevGBB"
+	RecMode       = "bootModeRec"
 )
 
 func init() {
@@ -63,6 +65,32 @@ func init() {
 		Impl:            newFixture(common.BootModeDev, true),
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync"},
 		SetUpTimeout:    10 * time.Second,
+		ResetTimeout:    10 * time.Second,
+		PreTestTimeout:  5 * time.Minute,
+		TearDownTimeout: 5 * time.Minute,
+		ServiceDeps:     []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+		Data:            []string{firmware.ConfigFile},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name:            USBDevMode,
+		Desc:            "Reboot into usb-dev mode before test",
+		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
+		Impl:            newFixture(common.BootModeUSBDev, false),
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync"},
+		SetUpTimeout:    60 * time.Second,
+		ResetTimeout:    10 * time.Second,
+		PreTestTimeout:  5 * time.Minute,
+		TearDownTimeout: 5 * time.Minute,
+		ServiceDeps:     []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+		Data:            []string{firmware.ConfigFile},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name:            USBDevModeGBB,
+		Desc:            "Reboot into usb-dev mode using GBB flags before test",
+		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
+		Impl:            newFixture(common.BootModeUSBDev, true),
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync"},
+		SetUpTimeout:    60 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
@@ -127,7 +155,11 @@ func (i *impl) noECSync(s *testing.FixtState) (bool, error) {
 func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	flags := pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()}
 	if i.value.ForcesDevMode {
-		common.GBBAddFlag(&flags, pb.GBBFlag_FORCE_DEV_SWITCH_ON, pb.GBBFlag_DEV_SCREEN_SHORT_DELAY)
+		if i.value.BootMode == common.BootModeUSBDev {
+			common.GBBAddFlag(&flags, pb.GBBFlag_FORCE_DEV_SWITCH_ON, pb.GBBFlag_DEV_SCREEN_SHORT_DELAY, pb.GBBFlag_FORCE_DEV_BOOT_USB)
+		} else {
+			common.GBBAddFlag(&flags, pb.GBBFlag_FORCE_DEV_SWITCH_ON, pb.GBBFlag_DEV_SCREEN_SHORT_DELAY)
+		}
 	}
 	noECSync, err := i.noECSync(s)
 	if err != nil {

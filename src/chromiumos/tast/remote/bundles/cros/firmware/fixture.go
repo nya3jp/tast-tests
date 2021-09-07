@@ -34,6 +34,16 @@ func init() {
 			Val:     common.BootModeDev,
 			Fixture: fixture.DevModeGBB,
 		}, {
+			Name:      "dev_usb",
+			Val:       common.BootModeUSBDev,
+			Fixture:   fixture.USBDevMode,
+			ExtraAttr: []string{"firmware_usb"},
+		}, {
+			Name:      "dev_usb_gbb",
+			Val:       common.BootModeUSBDev,
+			Fixture:   fixture.USBDevModeGBB,
+			ExtraAttr: []string{"firmware_usb"},
+		}, {
 			Name:      "rec",
 			Val:       common.BootModeRecovery,
 			Fixture:   fixture.RecMode,
