@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
+	"chromiumos/tast/testing"
 )
 
 // CleanupCallback is a callback that should be deferred to clean up test resources.
@@ -58,6 +59,18 @@ func SetupPerfTest(ctx context.Context, tconn *chrome.TestConn, name string) (re
 	cleanup = CombineCleanup(ctx, cleanup, func(ctx context.Context) error {
 		return quicksettings.ToggleSetting(ctx, tconn, quicksettings.SettingPodDoNotDisturb, false)
 	}, "failed to re-enable notifications")
+
+	// Disable automation feature is it is enabled for perf test.
+	var isEnabled bool
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.isAutomationEnabled)()", &isEnabled); err != nil {
+		return nil, errors.Wrap(err, "failed to get automation status")
+	}
+	if isEnabled {
+		testing.ContextLog(ctx, "Automation feature might be enabled unintentionally. Disabling automation")
+		if err := tconn.ResetAutomation(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to reset the automation feature")
+		}
+	}
 
 	return cleanup, nil
 }
