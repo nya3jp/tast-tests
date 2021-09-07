@@ -22,6 +22,30 @@
       },
       "revId": "1c7baf3ed96f9585f271b212a17fd10c0fb98680",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "434d6095_bb9ac18a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/xattrs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-09-07T04:17:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d12afb98_e4fb67aa",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 95,
+        "endChar": 9
+      },
+      "revId": "1c7baf3ed96f9585f271b212a17fd10c0fb98680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
