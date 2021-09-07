@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8adba23_3e690bb1",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-07T10:26:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5044d710_272f2020",
+      "range": {
+        "startLine": 1240,
+        "startChar": 2,
+        "endLine": 1240,
+        "endChar": 8
+      },
+      "revId": "eda0f5c1c2ad0519c63a51561c3e799c5e100f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56dfe4b8_bda9285a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-07T09:18:43Z",
       "side": 1,
       "message": "could you avoid using \":\" because it is used to connect error message with \"cause\" (here it is err)\u0027s message.\nMaybe\n\nfailed to toggle option %s with selector %s or something?\n\nDitto for below.",
+      "range": {
+        "startLine": 1242,
+        "startChar": 55,
+        "endLine": 1242,
+        "endChar": 56
+      },
+      "revId": "eda0f5c1c2ad0519c63a51561c3e799c5e100f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deaecc9a_b90d972f",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-07T10:26:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56dfe4b8_bda9285a",
       "range": {
         "startLine": 1242,
         "startChar": 55,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71b5a1e9_007a5b6c",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1355,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-07T10:26:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d472c9b_5d68baba",
+      "range": {
+        "startLine": 1355,
+        "startChar": 3,
+        "endLine": 1355,
+        "endChar": 24
+      },
+      "revId": "eda0f5c1c2ad0519c63a51561c3e799c5e100f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37b611c6_792956e8",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83de9b3a_e996f33e",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1399,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-07T10:26:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37b611c6_792956e8",
+      "revId": "eda0f5c1c2ad0519c63a51561c3e799c5e100f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1edc95da_18c11875",
@@ -100,6 +190,24 @@
       "writtenOn": "2021-09-07T09:18:43Z",
       "side": 1,
       "message": "nit: could you put this closer to enableMultiStreamRecording?",
+      "revId": "eda0f5c1c2ad0519c63a51561c3e799c5e100f7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb4878d4_4fbaadae",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-07T10:26:17Z",
+      "side": 1,
+      "message": "Done. Also renamed them to different names to make it clearer.",
+      "parentUuid": "1edc95da_18c11875",
       "revId": "eda0f5c1c2ad0519c63a51561c3e799c5e100f7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
