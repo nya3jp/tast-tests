@@ -62,11 +62,11 @@ func SetupPerfTest(ctx context.Context, tconn *chrome.TestConn, name string) (re
 
 	// Disable automation feature is it is enabled for perf test.
 	var isEnabled bool
-	if err:= tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.isAutomationEnabled)()", &isEnabled); err != nil {
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.isAutomationEnabled)()", &isEnabled); err != nil {
 		return nil, errors.Wrap(err, "failed to get automation status")
 	}
 	if isEnabled {
-		testing.ContextLog(ctx, "Automation feature might be enabled unintentionally. Disabling automation.")
+		testing.ContextLog(ctx, "Automation feature might be enabled unintentionally. Disabling automation")
 		if err := tconn.ResetAutomation(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to reset the automation feature")
 		}
