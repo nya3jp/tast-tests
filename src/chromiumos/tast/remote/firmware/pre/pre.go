@@ -51,6 +51,11 @@ func DevModeGBB() testing.Precondition {
 	return devModeGBB
 }
 
+// UsbDevMode boots to Developer mode from USB via keypress worklow and GBB flags.
+func UsbDevMode() testing.Precondition {
+	return usbDevMode
+}
+
 // RecMode boots to Recover Mode. Tests which use RecMode() need to use the Attr `firmware_usb` also.
 func RecMode() testing.Precondition {
 	return recMode
@@ -99,6 +104,7 @@ var (
 		},
 		timeout: 60 * time.Minute,
 	}
+	usbDevMode = newPrecondition(common.BootModeUsbDev, false)
 )
 
 // Prepare ensures that the DUT is booted into the specified mode.
