@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "417647eb_183c816b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/lock_to_single_user_mount_until_reboot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-07T13:36:24Z",
+      "side": 1,
+      "message": "nit: all?",
+      "range": {
+        "startLine": 112,
+        "startChar": 68,
+        "endLine": 112,
+        "endChar": 72
+      },
+      "revId": "34d694c0b8b8d76e076eb07a031773f5097b65ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
