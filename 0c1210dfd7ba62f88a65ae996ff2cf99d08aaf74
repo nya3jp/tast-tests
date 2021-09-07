@@ -34,6 +34,24 @@
       "parentUuid": "83422eae_482ff593",
       "revId": "0c1210dfd7ba62f88a65ae996ff2cf99d08aaf74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5152c6c5_0360b2bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-09-07T17:44:23Z",
+      "side": 1,
+      "message": "I\u0027ve added them because of your comment:\n\u003eJust wondering if it\u0027s been useful to have captures from both router and pcap devices.\n\nI assumed you wanted me to add capture on router. (Two pcaps I\u0027ve added originally were for 2.4G and 5G bands.)\n\nThere might be some benefit to see whether packets actually arrived on the target interface. Seeing them on the radio does not guarantee proper reception on another device.\n\nI will definitely revisit the subject in netperf CL - I probably need to cut out TCP traffic to not overburden disk space with redundant data.",
+      "parentUuid": "3678b76e_9fd7b52b",
+      "revId": "0c1210dfd7ba62f88a65ae996ff2cf99d08aaf74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
