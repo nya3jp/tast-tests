@@ -9,10 +9,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/shirou/gopsutil/process"
-
+	ups "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/respawn"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -31,45 +29,48 @@ func init() {
 }
 
 func SessionManagerRespawn(ctx context.Context, s *testing.State) {
-	const sessionManagerPath = "/sbin/session_manager"
-	getPID := func() (int, error) {
-		all, err := process.Pids()
-		if err != nil {
-			return -1, err
-		}
-
-		for _, pid := range all {
-			if proc, err := process.NewProcess(pid); err != nil {
-				// Assume that the process exited.
-				continue
-			} else if exe, err := proc.Exe(); err == nil && exe == sessionManagerPath {
-				return int(pid), nil
-			}
-		}
-		return -1, errors.Errorf("%v process not found", sessionManagerPath)
-	}
-
 	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
 		s.Fatal("Failed to ensure ui job is running: ", err)
 	}
-	pid := respawn.TestRespawn(ctx, s, "session_manager", getPID)
+	_, _, pid, err := upstart.JobStatus(ctx, "ui")
+	if err != nil {
+		s.Fatal("Failed to get ui job status: ", err)
+	}
 
 	respawnStopped := false
 	const (
 		maxRespawns    = 30 // very high upper bound; see ui-respawn script for actual logic
-		respawnTimeout = 5 * time.Second
+		respawnTimeout = 30 * time.Second
 	)
 	s.Log("Repeatedly killing session_manager to check that ui-respawn stops restarting it eventually")
-	for i := 0; i < maxRespawns; i++ {
+	for i := 0; i < maxRespawns && !respawnStopped; i++ {
 		s.Logf("Killing %d and watching for respawn", pid)
 		if err := syscall.Kill(pid, syscall.SIGKILL); err != nil {
 			s.Fatalf("Failed to kill %d: %v", pid, err)
 		}
-		var err error
-		if pid, err = respawn.WaitForProc(ctx, getPID, respawnTimeout, pid); err != nil {
-			s.Log("session_manager (correctly) not respawned")
-			respawnStopped = true
-			break
+		err = testing.Poll(ctx, func(ctx context.Context) error {
+			g, st, p, err := upstart.JobStatus(ctx, "ui")
+			if err != nil {
+				return testing.PollBreak(err)
+			}
+			if p == pid {
+				return errors.Errorf("waiting for %d to terminate", pid)
+			}
+			if g == ups.StartGoal && st == ups.RunningState {
+				// session_manager was respawned, record new pid.
+				pid = p
+				return nil
+			}
+			if g == ups.StopGoal && st == ups.WaitingState {
+				s.Log("session_manager (correctly) not respawned")
+				respawnStopped = true
+				return nil
+			}
+			// Some other transient state, wait for things to settle.
+			return errors.Errorf("status %v/%v", g, st)
+		}, &testing.PollOptions{Timeout: respawnTimeout})
+		if err != nil {
+			s.Fatal("Failed to wait for ui job to change state: ", err)
 		}
 	}
 	if !respawnStopped {
