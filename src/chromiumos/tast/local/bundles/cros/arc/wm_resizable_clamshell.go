@@ -572,15 +572,16 @@ func wmRC13(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Wrap(err, "failed to drag the mouse")
 	}
 
-	wInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-	if err != nil {
-		return errors.Wrap(err, "unable to get arc app window info after freeform resizing")
-	}
-
-	if wInfo.TargetBounds == owInfo.TargetBounds {
-		return errors.Errorf("invalid window bounds after freeform resizing: got %q; want different than %q", wInfo.TargetBounds, owInfo.TargetBounds)
-	}
-	return nil
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		wInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
+		if err != nil {
+			return errors.Wrap(err, "unable to get arc app window info after freeform resizing")
+		}
+		if wInfo.TargetBounds == owInfo.TargetBounds {
+			return errors.Errorf("invalid window bounds after freeform resizing: got %q; want different than %q", wInfo.TargetBounds, owInfo.TargetBounds)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // wmRC14 covers resizable/clamshell: snap to half screen
