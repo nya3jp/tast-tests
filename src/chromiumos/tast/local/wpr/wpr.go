@@ -149,7 +149,7 @@ func New(ctx context.Context, mode Mode, archive string) (*WPR, error) {
 	httpAddr := fmt.Sprintf("127.0.0.1:%d", httpPort)
 	httpsAddr := fmt.Sprintf("127.0.0.1:%d", httpsPort)
 	args := chromeRuntimeArgs(httpAddr, httpsAddr)
-	opts := []chrome.Option{chrome.ExtraArgs(args...)}
+	opts := []chrome.Option{chrome.ExtraArgs(args...), chrome.LacrosExtraArgs(args...)}
 
 	wpr := &WPR{
 		HTTPPort:      httpPort,
