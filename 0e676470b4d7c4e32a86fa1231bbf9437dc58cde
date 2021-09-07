@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cde7555c_2c7652d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-07T07:27:52Z",
+      "side": 1,
+      "message": "Looking the current implementation (not document) of the ui.LeftClick, I\u0027m wondering if this could be simplified like\nui.WithTimeout(10*time.Second).LeftClick(saveButton)\nHowever, I think such improvement could be done in a different patch. So I am OK with the current patchset.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "0e676470b4d7c4e32a86fa1231bbf9437dc58cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
