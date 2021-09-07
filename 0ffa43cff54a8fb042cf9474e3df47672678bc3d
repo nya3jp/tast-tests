@@ -50,6 +50,24 @@
       "message": "Is this function used anywhere? I can\u0027t find references to it in this CL or in code search.",
       "revId": "0ffa43cff54a8fb042cf9474e3df47672678bc3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a42c843_778620c0",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-07T16:27:22Z",
+      "side": 1,
+      "message": "Ah, we don\u0027t need it now and I should remove it. Thanks for reminding. Done",
+      "parentUuid": "811ae2bb_007656fc",
+      "revId": "0ffa43cff54a8fb042cf9474e3df47672678bc3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
