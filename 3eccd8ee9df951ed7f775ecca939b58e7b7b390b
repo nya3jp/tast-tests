@@ -35,6 +35,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bb0e38b_7c626dda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-07T15:29:54Z",
+      "side": 1,
+      "message": "Will do. Thanks for the review!",
+      "parentUuid": "041873e6_d4be1da6",
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0944070c_059c9098",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-07T15:29:54Z",
+      "side": 1,
+      "message": "Hi Pavol! Can you review my CL please?",
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f9e3405_d5c13bd9",
@@ -48,6 +83,54 @@
       "writtenOn": "2021-09-07T12:33:16Z",
       "side": 1,
       "message": "nit: formating is a bit off. Either keep one space after the colon or try to have the values at the same \"height\" as in the \"empty_arguments\" test case.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 20
+      },
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29ad3232_5349496f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-07T15:29:54Z",
+      "side": 1,
+      "message": "Right, it looks off. But strangely, gofmt kept complaining and forcing me to format it like this in the presubmit check when I tried to fix it like you suggested.",
+      "parentUuid": "8f9e3405_d5c13bd9",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 20
+      },
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfb14353_c8474287",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-07T15:29:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f9e3405_d5c13bd9",
       "range": {
         "startLine": 69,
         "startChar": 0,
@@ -81,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44ee0762_05b7025c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-07T15:29:54Z",
+      "side": 1,
+      "message": "Done. I changed it everywhere and removed the logs about DBus calls as they should happen quickly. Thanks for the suggestions!",
+      "parentUuid": "f1e86178_4fd00b80",
+      "range": {
+        "startLine": 189,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 95
+      },
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdbf382a_db3342aa",
@@ -94,6 +201,24 @@
       "writtenOn": "2021-09-07T12:33:16Z",
       "side": 1,
       "message": "nit: missing .",
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15753592_b4053ac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-07T15:29:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdbf382a_db3342aa",
       "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0f5ba2f_89672dd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-07T15:29:54Z",
+      "side": 1,
+      "message": "Done. Thanks!",
+      "parentUuid": "1dc7592b_afa2687e",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 2
+      },
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b326c90_46094789",
@@ -134,6 +283,24 @@
       "writtenOn": "2021-09-07T12:33:16Z",
       "side": 1,
       "message": "nit: missing .",
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b917f45_e4cb519e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-07T15:29:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b326c90_46094789",
       "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +322,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "900b8f71_c4f97406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-07T15:29:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1baa3f45_17c5e356",
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51816f56_a48baacc",
@@ -168,6 +353,30 @@
       "writtenOn": "2021-09-07T12:33:16Z",
       "side": 1,
       "message": "nit: as above, maybe dlr.",
+      "range": {
+        "startLine": 255,
+        "startChar": 5,
+        "endLine": 255,
+        "endChar": 6
+      },
+      "revId": "3eccd8ee9df951ed7f775ecca939b58e7b7b390b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "845f6328_5622eba5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-07T15:29:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51816f56_a48baacc",
       "range": {
         "startLine": 255,
         "startChar": 5,
