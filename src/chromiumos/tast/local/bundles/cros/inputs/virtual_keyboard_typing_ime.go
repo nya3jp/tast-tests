@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 var typingTestIMEs = []ime.InputMethod{
@@ -49,7 +48,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational", "group:input-tools-upstream", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Pre:          pre.VKEnabledTabletReset,
-		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      time.Duration(len(typingTestIMEs)) * time.Duration(len(typingTestMessages)) * time.Minute,
 	})
 }

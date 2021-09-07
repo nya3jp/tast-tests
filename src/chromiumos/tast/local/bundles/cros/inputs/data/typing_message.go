@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"chromiumos/tast/local/chrome/ime"
-	"chromiumos/tast/local/input"
 )
 
 type typingMessage map[ime.InputMethod]InputData
@@ -22,78 +21,85 @@ func (message typingMessage) GetInputData(im ime.InputMethod) (InputData, bool) 
 }
 
 // TypingMessageHello defines hello messages of input methods.
-// TODO(b/192403778): Add location-based keySeq data for inputs test.
 // TODO(b/192521170): Add data to cover that non US Eng tests would
 // actually fail if run on the US keyboard
 var TypingMessageHello = typingMessage{
 	ime.EnglishUS: {
 		CharacterKeySeq: strings.Split("hello", ""),
-		LocationKeySeq: []input.EventCode{input.KEY_H,
-			input.KEY_E, input.KEY_L, input.KEY_L, input.KEY_O},
-		ExpectedText: "hello",
+		LocationKeySeq:  strings.Split("hello", ""),
+		ExpectedText:    "hello",
 	},
 	ime.JapaneseWithUSKeyboard: {
 		CharacterKeySeq: strings.Split("konnnitiha", ""),
-		LocationKeySeq: []input.EventCode{input.KEY_K,
-			input.KEY_O, input.KEY_N, input.KEY_N, input.KEY_N, input.KEY_I,
-			input.KEY_T, input.KEY_I, input.KEY_H, input.KEY_A},
-		ExpectedText: "こんにちは",
+		LocationKeySeq:  strings.Split("konnnitiha", ""),
+		ExpectedText:    "こんにちは",
 	},
 	ime.ChinesePinyin: {
-		CharacterKeySeq: strings.Split("nihao", ""),
-		LocationKeySeq: []input.EventCode{input.KEY_N,
-			input.KEY_I, input.KEY_H, input.KEY_A, input.KEY_O},
+		CharacterKeySeq:      strings.Split("nihao", ""),
+		LocationKeySeq:       strings.Split("n i h a o space", " "),
 		SubmitFromSuggestion: true,
 		ExpectedText:         "你好",
 	},
 	ime.EnglishUSWithInternationalKeyboard: {
 		CharacterKeySeq: strings.Split("hello", ""),
+		LocationKeySeq:  strings.Split("hello", ""),
 		ExpectedText:    "hello",
 	},
 	ime.EnglishUK: {
 		CharacterKeySeq: strings.Split("hello", ""),
+		LocationKeySeq:  strings.Split("hello", ""),
 		ExpectedText:    "hello",
 	},
 	ime.SpanishSpain: {
-		CharacterKeySeq: strings.Split("hello", ""),
-		ExpectedText:    "hello",
+		CharacterKeySeq: strings.Split("hola", ""),
+		LocationKeySeq:  strings.Split("hola", ""),
+		ExpectedText:    "hola",
 	},
 	ime.Swedish: {
 		CharacterKeySeq: strings.Split("kött", ""),
+		LocationKeySeq:  strings.Split("k;tt", ""),
 		ExpectedText:    "kött",
 	},
 	ime.EnglishCanada: {
 		CharacterKeySeq: strings.Split("hello", ""),
+		LocationKeySeq:  strings.Split("hello", ""),
 		ExpectedText:    "hello",
 	},
 	ime.AlphanumericWithJapaneseKeyboard: {
 		CharacterKeySeq: strings.Split("hello", ""),
+		LocationKeySeq:  strings.Split("hello", ""),
 		ExpectedText:    "hello",
 	},
 	ime.Japanese: {
 		CharacterKeySeq: strings.Split("konnnitiha", ""),
+		LocationKeySeq:  strings.Split("konnnitiha", ""),
 		ExpectedText:    "こんにちは",
 	},
 	ime.FrenchFrance: {
 		CharacterKeySeq: strings.Split("bonjour", ""),
+		LocationKeySeq:  strings.Split("bonjour", ""),
 		ExpectedText:    "bonjour",
 	},
 	ime.Cantonese: {
-		CharacterKeySeq:      strings.Split("mou", ""),
+		CharacterKeySeq:      strings.Split("neihou", ""),
+		LocationKeySeq:       strings.Split("n e i h o u space", " "),
 		SubmitFromSuggestion: true,
-		ExpectedText:         "冇",
+		ExpectedText:         "你好",
 	},
 	ime.ChineseCangjie: {
 		CharacterKeySeq:      strings.Split("竹手戈", ""),
+		LocationKeySeq:       strings.Split("h q i space", " "),
 		SubmitFromSuggestion: true,
 		ExpectedText:         "我",
 	},
 	ime.Korean: {
 		CharacterKeySeq: []string{"ㅎ", "ᅡ", "ㄴ"},
+		LocationKeySeq:  strings.Split("gks", ""),
 		ExpectedText:    "한",
 	},
 	ime.Arabic: {
 		CharacterKeySeq: strings.Split("سلام", ""),
+		LocationKeySeq:  strings.Split("sghl", ""),
 		ExpectedText:    "سلام",
 	},
 }
