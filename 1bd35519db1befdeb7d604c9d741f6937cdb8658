@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16a79ace_ed4d1593",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2021-09-07T04:46:40Z",
+      "side": 1,
+      "message": "Hi Patrick, are you comfortable reviewing this CL for owners approval? We\u0027re uprevving the kernel on Octopus and we needed to update a kernel version.",
+      "revId": "1bd35519db1befdeb7d604c9d741f6937cdb8658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
