@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "723e5328_97a5cfc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/launch_from_shelf_context_menu.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-07T06:13:49Z",
+      "side": 1,
+      "message": "Yeah I\u0027m not sure why I did this haha, must\u0027ve been something else I was trying, I\u0027ve changed it to exit early. Thanks for picking this up!",
+      "parentUuid": "8815e2eb_5aa06f01",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 8
+      },
+      "revId": "d31e5da1d09a276c426177241e81982c69067a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3554028d_ef852880",
@@ -89,6 +113,30 @@
       "writtenOn": "2021-09-07T06:07:55Z",
       "side": 1,
       "message": "style: nil\nhttps://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices",
+      "range": {
+        "startLine": 903,
+        "startChar": 2,
+        "endLine": 903,
+        "endChar": 19
+      },
+      "revId": "d31e5da1d09a276c426177241e81982c69067a01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "267c725a_91bc8c9e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-07T06:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3554028d_ef852880",
       "range": {
         "startLine": 903,
         "startChar": 2,
