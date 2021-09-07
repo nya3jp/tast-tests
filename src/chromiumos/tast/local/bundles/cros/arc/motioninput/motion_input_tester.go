@@ -264,6 +264,51 @@ func SinglePointerMatcher(a Action, s Source, p coords.Point, pressure float64) 
 	}
 }
 
+// MultiPointersMatcher returns a motionEventMatcher that matches a motionEvent
+// with multiple pointers that has the axisX, axisY and axisPressure.
+func MultiPointersMatcher(a Action, s Source, ps []coords.Point, pressure float64) Matcher {
+	return func(event *MotionEvent) error {
+		if err := ActionSourceMatcher(a, s)(event); err != nil {
+			return err
+		}
+		if pointerCount := len(event.PointerAxes); pointerCount != len(ps) {
+			return errors.Errorf("pointer count does not match: got %d; want: %d", pointerCount, len(ps))
+		}
+		axisMatcher := func(idx int, axis Axis, expected, epsilon float64) error {
+			v := event.PointerAxes[idx][axis]
+			if math.Abs(v-expected) > epsilon {
+				return errors.Errorf("value of axis %s did not match: got %.5f; want %.5f; epsilon %.5f", axis, v, expected, epsilon)
+			}
+			return nil
+		}
+		const (
+			// coordinateAxisEpsilon is the epsilon value to be used when comparing axis values that
+			// represent absolute display coordinates. Scaling and conversions from Chrome to Android's
+			// display spaces means absolute coordinates can be off by up to two pixels.
+			coordinateAxisEpsilon = 2e0
+
+			// defaultAxisEpsilon is the epsilon value to be used when comparing axis values that do
+			// not need to be scaled or converted, like pressure (which is in the range [0,1]). We
+			// expect these values to be more precise.
+			defaultAxisEpsilon = 1e-5
+		)
+
+		var err error
+		for idx, p := range ps {
+			if e := axisMatcher(idx, AxisX, float64(p.X), coordinateAxisEpsilon); e != nil {
+				err = errors.Wrap(err, e.Error())
+			}
+			if e := axisMatcher(idx, AxisY, float64(p.Y), coordinateAxisEpsilon); e != nil {
+				err = errors.Wrap(err, e.Error())
+			}
+			if e := axisMatcher(idx, AxisPressure, pressure, defaultAxisEpsilon); e != nil {
+				err = errors.Wrap(err, e.Error())
+			}
+		}
+		return err
+	}
+}
+
 // WaitForTestAppFocused polls the test app until its window reaches the wanted focused state.
 func (t *Tester) WaitForTestAppFocused(ctx context.Context, wantFocused bool) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
@@ -281,11 +326,14 @@ func (t *Tester) WaitForTestAppFocused(ctx context.Context, wantFocused bool) er
 // MatcherOr produces a Matcher that matches any of the provided matchers.
 func MatcherOr(matchers ...Matcher) Matcher {
 	return func(event *MotionEvent) error {
+		var err error
 		for i := 0; i < len(matchers); i++ {
-			if err := matchers[i](event); err == nil {
+			e := matchers[i](event)
+			if err == nil {
 				return nil
 			}
+			err = errors.Wrap(err, e.Error())
 		}
-		return errors.New("did not match any of the expected matchers")
+		return errors.Wrap(err, "did not match any of the expected matchers")
 	}
 }

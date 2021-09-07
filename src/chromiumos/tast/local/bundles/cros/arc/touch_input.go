@@ -68,6 +68,7 @@ func TouchInput(ctx context.Context, s *testing.State) {
 	} {
 		s.Run(ctx, params.Name+": Verify Touch", func(ctx context.Context, s *testing.State) {
 			motioninput.RunTestWithWMParams(ctx, s, tconn, d, a, &params, verifyTouchscreen)
+			motioninput.RunTestWithWMParams(ctx, s, tconn, d, a, &params, verifyMultiTouch)
 		})
 	}
 }
@@ -75,6 +76,10 @@ func TouchInput(ctx context.Context, s *testing.State) {
 // singleTouchMatcher returns a motioninput.Matcher that matches events from a Touchscreen device.
 func singleTouchMatcher(a motioninput.Action, p coords.Point) motioninput.Matcher {
 	return motioninput.SinglePointerMatcher(a, motioninput.SourceTouchscreen, p, 1)
+}
+
+func multiTouchMatcher(a motioninput.Action, ps []coords.Point) motioninput.Matcher {
+	return motioninput.MultiPointersMatcher(a, motioninput.SourceTouchscreen, ps, 1)
 }
 
 // verifyTouchscreen tests the behavior of events injected from a uinput touchscreen device. It
@@ -142,5 +147,75 @@ func verifyTouchscreen(ctx context.Context, s *testing.State, tconn *chrome.Test
 	}
 	if err := tester.ExpectEventsAndClear(ctx, singleTouchMatcher(motioninput.ActionUp, expected)); err != nil {
 		s.Fatal("Failed to expect events and clear: ", err)
+	}
+}
+
+func verifyMultiTouch(ctx context.Context, s *testing.State, tconn *chrome.TestConn, t *motioninput.WMTestState, tester *motioninput.Tester) {
+	s.Log("Verifying multi touch on touchscreen")
+
+	tew, err := input.Touchscreen(ctx)
+	if err != nil {
+		s.Fatal("Failed to create touchscreen: ", err)
+	}
+	defer tew.Close()
+
+	mtw, err := tew.NewMultiTouchWriter(3)
+	if err != nil {
+		s.Fatal("Failed to create MultiTouchWriter: ", err)
+	}
+	defer mtw.Close()
+
+	tcc := tew.NewTouchCoordConverter(t.DisplayInfo.Bounds.Size())
+
+	pointDP := t.CenterOfWindow()
+	offsets := []coords.Point{coords.NewPoint(0, 0), coords.NewPoint(20, 20), coords.NewPoint(40, 40)}
+
+	s.Log("Verifying touch down at ", t.ExpectedPoint(pointDP))
+	for i, offset := range offsets {
+		x, y := tcc.ConvertLocation(pointDP.Add(offset))
+		if err := mtw.TouchState(i).SetPos(x, y); err != nil {
+			s.Fatalf("Cannot set the pos for finger %d: %s", i, err)
+		}
+	}
+	mtw.Send()
+
+	if err := tester.ExpectEventsAndClear(ctx,
+		singleTouchMatcher(motioninput.ActionDown, t.ExpectedPoint(pointDP)),
+		multiTouchMatcher("ACTION_POINTER_DOWN(1)", []coords.Point{t.ExpectedPoint(pointDP), t.ExpectedPoint(pointDP.Add(offsets[1]))}),
+		multiTouchMatcher("ACTION_POINTER_DOWN(2)", []coords.Point{t.ExpectedPoint(pointDP), t.ExpectedPoint(pointDP.Add(offsets[1])), t.ExpectedPoint(pointDP.Add(offsets[2]))}),
+	); err != nil {
+		s.Fatalf("Failed to match the touch downs: %s", err)
+	}
+
+	const (
+		numTouchIterations = 5
+		deltaDP            = 5
+	)
+	for i := 0; i < numTouchIterations; i++ {
+		pointDP = pointDP.Add(coords.NewPoint(deltaDP, deltaDP))
+		s.Log("Verifying touch move at ", t.ExpectedPoint(pointDP))
+
+		for i, offset := range offsets {
+			x, y := tcc.ConvertLocation(pointDP.Add(offset))
+			if err := mtw.TouchState(i).SetPos(x, y); err != nil {
+				s.Fatalf("Cannot set the pos for finger %d: %s", i, err)
+			}
+		}
+		mtw.Send()
+
+		expected := []coords.Point{t.ExpectedPoint(pointDP), t.ExpectedPoint(pointDP.Add(offsets[1])), t.ExpectedPoint(pointDP.Add(offsets[2]))}
+		if err := tester.ExpectEventsAndClear(ctx, multiTouchMatcher(motioninput.ActionMove, expected)); err != nil {
+			s.Fatal("Failed to match the touch moves: ", err)
+		}
+	}
+
+	mtw.End()
+
+	upActionMatcher := motioninput.MatcherOr(
+		motioninput.ActionSourceMatcher(motioninput.ActionUp, motioninput.SourceTouchscreen),
+		motioninput.ActionSourceMatcher("ACTION_POINTER_UP(1)", motioninput.SourceTouchscreen),
+		motioninput.ActionSourceMatcher("ACTION_POINTER_UP(2)", motioninput.SourceTouchscreen))
+	if err := tester.ExpectEventsAndClear(ctx, upActionMatcher, upActionMatcher, upActionMatcher); err != nil {
+		s.Fatal("Failed to match the touch up: ", err)
 	}
 }
