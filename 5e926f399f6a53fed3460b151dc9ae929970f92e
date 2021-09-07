@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17990a8a_8b4531bb",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1834,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-07T03:06:40Z",
+      "side": 1,
+      "message": "Instead of toggling the property always, how about do so iff it is not?\nAssuming the external environment is often causing a test flakiness and better to be avoided.",
+      "revId": "5e926f399f6a53fed3460b151dc9ae929970f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a37db9b_7dd386be",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1850,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-07T03:06:40Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "5e926f399f6a53fed3460b151dc9ae929970f92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
