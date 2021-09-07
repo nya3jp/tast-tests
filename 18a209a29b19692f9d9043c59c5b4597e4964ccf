@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d3318cf_64d947c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-09-07T01:05:55Z",
+      "side": 1,
+      "message": "Reminded by your comment in the other CL, I want to parameterize this test as well. ptal?",
+      "revId": "18a209a29b19692f9d9043c59c5b4597e4964ccf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
