@@ -79,15 +79,15 @@ func FwupdPluginStartup(ctx context.Context, s *testing.State) {
 		"dell_dock",
 		"dfu",
 		"emmc",
-		"nvme",
+		// "nvme", // Not enough permissions.
 		"parade_lspcon",
 		"pixart_rf",
 		"powerd",
 		"realtek_mst",
 		"synaptics_cxaudio",
-		"synaptics_mst",
+		// "synaptics_mst", // Disabled in some platforms due to b/187350478.
 		"test",
-		"thunderbolt",
+		// "thunderbolt", // Disabled on some platforms.
 		"vli",
 		"wacom_raw",
 		"wacom_usb",
