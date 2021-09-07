@@ -60,16 +60,11 @@ func SetupPerfTest(ctx context.Context, tconn *chrome.TestConn, name string) (re
 		return quicksettings.ToggleSetting(ctx, tconn, quicksettings.SettingPodDoNotDisturb, false)
 	}, "failed to re-enable notifications")
 
-	// Disable automation feature is it is enabled for perf test.
-	var isEnabled bool
-	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.isAutomationEnabled)()", &isEnabled); err != nil {
-		return nil, errors.Wrap(err, "failed to get automation status")
-	}
-	if isEnabled {
-		testing.ContextLog(ctx, "Automation feature might be enabled unintentionally. Disabling automation")
-		if err := tconn.ResetAutomation(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed to reset the automation feature")
-		}
+	// Disable automation feature for performance test.
+	// ResetAutomation should already called previously, but automation is implicitly enabled by
+	// quicksettings.ToggleSetting, so we ensure it is disabled by calling ResetAutomation again.
+	if err := tconn.ResetAutomation(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to reset the automation feature")
 	}
 
 	return cleanup, nil
