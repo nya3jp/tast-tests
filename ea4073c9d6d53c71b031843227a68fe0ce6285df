@@ -16,6 +16,23 @@
       "message": "PTAL!",
       "revId": "ea4073c9d6d53c71b031843227a68fe0ce6285df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89df7d75_ea1f90b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-07T05:02:19Z",
+      "side": 1,
+      "message": "do you need to check whether the state is maximized?\n\nAlso, maximizedActivity is stopped immediately, so looks redundant operation.\nCould you add comment what it is trying to do?",
+      "revId": "ea4073c9d6d53c71b031843227a68fe0ce6285df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
