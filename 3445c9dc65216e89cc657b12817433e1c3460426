@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19284758_c5ef44e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtio_cras_snd.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-09-07T03:56:05Z",
+      "side": 1,
+      "message": "Maybe not in this CL, but I\u0027m curious could we make this a generate test (e.g. tast.VirtualDevice) for both ac97 and virtiosnd (tast.VirtualDevice.crasSnd, tast.VirtualDevice.ac97)?\n\nThen we can see if crasSnd is better then ac97 in the current threshold.",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 18
+      },
+      "revId": "3445c9dc65216e89cc657b12817433e1c3460426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39d37ca0_07ee2bdd",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtio_cras_snd.go",
         "patchSetId": 15
