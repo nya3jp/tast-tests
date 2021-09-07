@@ -23,7 +23,7 @@ func init() {
 		Func:         Xattrs,
 		Desc:         "Test that the container image has extended attributes set",
 		Contacts:     []string{"sidereal@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
