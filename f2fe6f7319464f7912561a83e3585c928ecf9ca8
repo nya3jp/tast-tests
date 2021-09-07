@@ -16,6 +16,24 @@
       "message": "remove PollBreak",
       "revId": "f2fe6f7319464f7912561a83e3585c928ecf9ca8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f8657d1_a36ba6ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-07T03:59:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fb6023a_09c620fc",
+      "revId": "f2fe6f7319464f7912561a83e3585c928ecf9ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
