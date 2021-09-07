@@ -575,15 +575,6 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, cr *chrome.Chrome, tcon
 	}
 	defer maximizedActivity.Stop(ctx, tconn)
 
-	// Make sure the window will have an initial maximized state.
-	if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WMEventMaximize); err != nil {
-		return errors.Wrap(err, "failed to set window state of maximized activity to maximized")
-	}
-
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, wm.Pkg24, ash.WindowStateMaximized); err != nil {
-		return errors.Wrap(err, "did not maximize")
-	}
-
 	if err := maximizedActivity.Stop(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not stop maximized activity while setting initial window state")
 	}
@@ -593,6 +584,13 @@ func testPIPAutoPIPNewAndroidWindow(ctx context.Context, cr *chrome.Chrome, tcon
 		return errors.Wrap(err, "could not start MainActivity")
 	}
 	defer pipAct.Stop(ctx, tconn)
+
+	if err := ash.WaitForVisible(ctx, tconn, pipAct.PackageName()); err != nil {
+		return errors.Wrap(err, "could not wait for PIP to be visible")
+	}
+	if err := dev.WaitForIdle(ctx, 10*time.Second); err != nil {
+		return errors.Wrap(err, "could not wait for event thread to be idle")
+	}
 
 	// Start maximized activity again, this time with the guaranteed correct window state.
 	if err := maximizedActivity.Start(ctx, tconn); err != nil {
