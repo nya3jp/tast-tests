@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
-	"chromiumos/tast/testing"
 )
 
 // CleanupCallback is a callback that should be deferred to clean up test resources.
