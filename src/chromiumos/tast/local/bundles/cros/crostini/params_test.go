@@ -69,6 +69,7 @@ var testFiles = []string{
 	"vmc_extra_disk.go",
 	"vmc_start.go",
 	"webserver.go",
+	"xattrs.go",
 }
 
 func TestParams(t *testing.T) {
