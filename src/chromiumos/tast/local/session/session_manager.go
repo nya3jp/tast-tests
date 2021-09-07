@@ -16,7 +16,7 @@ import (
 	"chromiumos/policy/enterprise_management"
 	lm "chromiumos/system_api/login_manager_proto"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/chromeproc"
+	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -116,10 +116,10 @@ func (m *SessionManager) EnableChromeTesting(ctx context.Context, forceRelaunch 
 func (m *SessionManager) EnableChromeTestingAndWait(ctx context.Context, forceRelaunch bool,
 	extraArguments, extraEnvironmentVariables []string) (filepath string, err error) {
 	// Wait for a browser to start since session_manager can take a while to start it.
-	var oldPID int
+	var old *process.Process
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		oldPID, err = chromeproc.GetRootPID()
+		old, err = ashproc.Root()
 		return err
 	}, nil); err != nil {
 		return "", errors.Wrap(err, "failed to find the browser process")
@@ -130,21 +130,30 @@ func (m *SessionManager) EnableChromeTestingAndWait(ctx context.Context, forceRe
 		return "", enableErr
 	}
 
-	// Wait for a new browser to appear.
+	// Wait for the current Chrome to shut down first.
+	pollOpts := testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: 10 * time.Second}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		newPID, err := chromeproc.GetRootPID()
+		r, err := old.IsRunning()
 		if err != nil {
-			return err
+			return errors.Wrap(err, "failed to check chrome is running")
 		}
-		if newPID == oldPID {
-			return errors.New("Original browser still running")
+		if r {
+			return errors.New("chrome is still running")
 		}
 		return nil
-	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: 10 * time.Second}); err != nil {
+	}, &pollOpts); err != nil {
 		return "", err
 	}
 
-	return filepath, enableErr
+	// Wait for a new browser to appear.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		_, err := ashproc.Root()
+		return err
+	}, &pollOpts); err != nil {
+		return "", errors.Wrap(err, "chrome is not restarted")
+	}
+
+	return filepath, nil
 }
 
 // HandleSupervisedUserCreationStarting calls
