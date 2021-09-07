@@ -16,6 +16,29 @@
       "message": "PTAL.",
       "revId": "99e9024df53b219e1599f9eada5cb887eb00a162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45540e94_d27a8917",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/perftest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-07T05:43:12Z",
+      "side": 1,
+      "message": "I think you can forcibly disable automation here,\nbecause it is expected to be enabled anyways because of quicksettings.ToggleSetting().\nInstead of the check, could you add comment why it is necessary to be done here?\n\nAlso, could you file a bug to check isAutomationEnabled in uiauto library,\nto avoid accidental enabling?",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "99e9024df53b219e1599f9eada5cb887eb00a162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
