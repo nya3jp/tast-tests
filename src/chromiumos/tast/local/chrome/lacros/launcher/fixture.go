@@ -17,16 +17,28 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// LacrosDeployedBinary contains the Fixture Var necessary to run lacros.
-// This should be used by any lacros fixtures defined outside this file.
-const LacrosDeployedBinary = "lacrosDeployedBinary"
+const (
+	// LacrosDeployedBinary contains the Fixture Var necessary to run lacros.
+	// This should be used by any lacros fixtures defined outside this file.
+	LacrosDeployedBinary = "lacrosDeployedBinary"
+)
 
 // NewFixture creates a new fixture that can launch Lacros chrome with the given setup mode and
 // Chrome options.
 func NewFixture(mode SetupMode, fOpt chrome.OptionsCallback) testing.FixtureImpl {
-	return &fixtureImpl{
-		mode: mode,
-		fOpt: fOpt,
+	return NewComposedFixture(mode, func(v *FixtValueImpl, pv interface{}) interface{} {
+		return v
+	}, fOpt)
+}
+
+// NewFixture creates a new fixture that can launch Lacros chrome with the given setup mode and
+// Chrome options.
+func NewComposedFixture(mode SetupMode, makeValue func(v *FixtValueImpl, pv interface{}) interface{},
+	fOpt chrome.OptionsCallback) testing.FixtureImpl {
+	return &fixtImpl{
+		mode:      mode,
+		fOpt:      fOpt,
+		makeValue: makeValue,
 	}
 }
 
@@ -87,7 +99,7 @@ func init() {
 		Name:     "lacrosPolicyLoggedIn",
 		Desc:     "Lacros Chrome from a pre-built image with fake DMS to server policy",
 		Contacts: []string{"wtlee@chromium.org", "lacros-team@google.com"},
-		Impl: &fixtureImpl{
+		Impl: &fixtImpl{
 			mode: External,
 			fOpt: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 				return nil, nil
@@ -208,13 +220,13 @@ const (
 	lacrosRootPath = lacrosTestPath + "/lacros_binary"
 )
 
-// The FixtData object is made available to users of this fixture via:
+// The FixtValueImpl object is made available to users of this fixture via:
 //
 //	func DoSomething(ctx context.Context, s *testing.State) {
-//		d := s.FixtValue().(lacros.FixtData)
+//		d := s.FixtValueImpl().(lacros.FixtValueImpl)
 //		...
 //	}
-type FixtData struct {
+type FixtValueImpl struct {
 	Chrome      *chrome.Chrome   // The CrOS-chrome instance.
 	TestAPIConn *chrome.TestConn // The CrOS-chrome connection.
 	Mode        SetupMode        // Mode used to get the lacros binary.
@@ -222,16 +234,21 @@ type FixtData struct {
 	FakeDMS     *fakedms.FakeDMS // Fake DMS to serve policy.
 }
 
-// fixtureImpl is a fixture that allows Lacros chrome to be launched.
-type fixtureImpl struct {
-	mode       SetupMode              // How (pre exist/to be downloaded/) the container image is obtained.
-	lacrosPath string                 // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
-	cr         *chrome.Chrome         // Connection to CrOS-chrome.
-	tconn      *chrome.TestConn       // Test-connection for CrOS-chrome.
-	prepared   bool                   // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
-	fOpt       chrome.OptionsCallback // Function to generate Chrome Options
-	policy     bool                   // Whether to use fake DMS to serve policy
-	fdms       *fakedms.FakeDMS       // The instance of the fake DMS
+type FixtValue interface {
+	Chrome() *chrome.Chrome
+}
+
+// fixtImpl is a fixture that allows Lacros chrome to be launched.
+type fixtImpl struct {
+	mode       SetupMode                                          // How (pre exist/to be downloaded/) the container image is obtained.
+	lacrosPath string                                             // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
+	cr         *chrome.Chrome                                     // Connection to CrOS-chrome.
+	tconn      *chrome.TestConn                                   // Test-connection for CrOS-chrome.
+	prepared   bool                                               // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
+	fOpt       chrome.OptionsCallback                             // Function to generate Chrome Options
+	policy     bool                                               // Whether to use fake DMS to serve policy
+	fdms       *fakedms.FakeDMS                                   // The instance of the fake DMS
+	makeValue  func(v *FixtValueImpl, pv interface{}) interface{} // Closure to create FixtValue to return from SetUp. Used for composable fixtures.
 }
 
 // SetupMode describes how lacros-chrome should be set-up during the test. See the SetupMode constants for more explanation.
@@ -249,7 +266,7 @@ const (
 
 // SetUp is called by tast before each test is run. We use this method to initialize
 // the fixture data, or return early if the fixture is already active.
-func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	ctx, st := timing.Start(ctx, "SetUp")
 	defer st.End()
 
@@ -314,6 +331,7 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 	}
 
 	// If there's a parent fixture and the fixture supplies extra options, use them.
+	// TODO: Remove this?
 	if extraOpts, ok := s.ParentValue().([]chrome.Option); ok {
 		opts = append(opts, extraOpts...)
 	}
@@ -357,17 +375,17 @@ func (f *fixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface
 		s.Fatal("Unrecognized mode: ", f.mode)
 	}
 
-	ret := f.buildFixtData(ctx, s)
+	val := f.buildFixtData(ctx, s)
 	chrome.Lock()
 	f.prepared = true
 	shouldClose = false
-	return ret
+	return f.makeValue(&val, s.ParentValue())
 }
 
 // TearDown is called after all tests involving this fixture have been run,
 // (or failed to be run if the fixture itself fails). Unlocks Chrome's and
 // the container's constructors.
-func (f *fixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) {
+func (f *fixtImpl) TearDown(ctx context.Context, s *testing.FixtState) {
 	ctx, st := timing.Start(ctx, "TearDown")
 	defer st.End()
 
@@ -375,7 +393,7 @@ func (f *fixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) {
 	f.cleanUp(ctx, s)
 }
 
-func (f *fixtureImpl) Reset(ctx context.Context) error {
+func (f *fixtImpl) Reset(ctx context.Context) error {
 	if err := f.cr.Responded(ctx); err != nil {
 		return errors.Wrap(err, "existing Chrome connection is unusable")
 	}
@@ -385,13 +403,13 @@ func (f *fixtureImpl) Reset(ctx context.Context) error {
 	return nil
 }
 
-func (f *fixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *fixtImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {}
 
-func (f *fixtureImpl) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *fixtImpl) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 
 // cleanUp de-initializes the fixture by closing/cleaning-up the relevant
 // fields and resetting the struct's fields.
-func (f *fixtureImpl) cleanUp(ctx context.Context, s *testing.FixtState) {
+func (f *fixtImpl) cleanUp(ctx context.Context, s *testing.FixtState) {
 	// Nothing special needs to be done to close the test API connection.
 	f.tconn = nil
 
@@ -406,9 +424,9 @@ func (f *fixtureImpl) cleanUp(ctx context.Context, s *testing.FixtState) {
 
 // buildFixtData is a helper method that resets the machine state in
 // advance of building the fixture data for the actual tests.
-func (f *fixtureImpl) buildFixtData(ctx context.Context, s *testing.FixtState) FixtData {
+func (f *fixtImpl) buildFixtData(ctx context.Context, s *testing.FixtState) FixtValueImpl {
 	if err := f.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return FixtData{f.cr, f.tconn, f.mode, f.lacrosPath, f.fdms}
+	return FixtValueImpl{f.cr, f.tconn, f.mode, f.lacrosPath, f.fdms}
 }
