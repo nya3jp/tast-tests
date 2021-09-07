@@ -16,6 +16,23 @@
       "message": "PTAL!",
       "revId": "1c774887814f7e7d6e314958f802c69b09c118f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a0ca2f_3e57e453",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-07T14:41:50Z",
+      "side": 1,
+      "message": "it is not recommended to skip tests with runtime condition in general.\nCan they be parameterized tests, instead?",
+      "revId": "1c774887814f7e7d6e314958f802c69b09c118f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
