@@ -119,6 +119,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cbcb333_09d71035",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-07T09:02:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0298de80_21d8a281",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80bd6b6a_92686332",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-07T09:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0298de80_21d8a281",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "952ba399_bad5146c",
@@ -203,6 +251,78 @@
       "side": 1,
       "message": "There is no list for the abbreviation using \"Pre\" on most of the go community (I only found it in some Tast files). However, consider it is under the Tast and under the \"per\" package, I think using toolKitPre would be better.",
       "parentUuid": "b398ec1d_2efe4ee8",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 15
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "007fa20d_6f87d585",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-07T09:02:49Z",
+      "side": 1,
+      "message": "As our offline discussion, if we have some verb in var name then it is much clear what this precondition means.",
+      "parentUuid": "291bd4d1_43423d8a",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 15
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8abce50_e566ff5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-07T09:02:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "291bd4d1_43423d8a",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 15
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36697c34_18720aa9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-07T09:02:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "291bd4d1_43423d8a",
       "range": {
         "startLine": 29,
         "startChar": 5,
@@ -344,6 +464,30 @@
       "side": 1,
       "message": "Could be, but as we are going to uninstall the toolkit at the \"Close\" call, which is called at the end of the last test which requires this test, I think the DUT state is restored and should not affect other tests.",
       "parentUuid": "2c877092_4796835c",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 69
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7429c25_4c617ad6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-07T09:02:49Z",
+      "side": 1,
+      "message": "if we are going to uninstall and reboot DUT at Close, then everything should be fine.",
+      "parentUuid": "c3fa08aa_6924dc39",
       "range": {
         "startLine": 73,
         "startChar": 1,
