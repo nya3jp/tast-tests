@@ -12,10 +12,11 @@ This file defines constants used by both local and remote firmware tests.
 // It is intended to be used with the constants defined below.
 type BootMode string
 
-// DUTs have three possible boot modes: Normal, Dev, and Recovery.
+// DUTs have four possible boot modes: Normal, Dev, USBDev, and Recovery.
 const (
 	BootModeNormal      BootMode = "normal"
 	BootModeDev         BootMode = "dev"
+	BootModeUSBDev      BootMode = "usbdev"
 	BootModeRecovery    BootMode = "rec"
 	BootModeUnspecified BootMode = "unspecified"
 )
