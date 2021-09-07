@@ -16,6 +16,7 @@ type BootMode string
 const (
 	BootModeNormal      BootMode = "normal"
 	BootModeDev         BootMode = "dev"
+	BootModeUsbDev      BootMode = "usbdev"
 	BootModeRecovery    BootMode = "rec"
 	BootModeUnspecified BootMode = "unspecified"
 )
