@@ -528,6 +528,17 @@ func testPIPExpandViaShelfIcon(ctx context.Context, cr *chrome.Chrome, tconn *ch
 		return errors.Wrap(err, "failed to get tablet mode")
 	}
 
+	// Check if there are no other activities except the PIP activity. There being other activities can lead to unexpected shelf beahvior.
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get windows")
+	}
+	for _, window := range ws {
+		if window.ARCPackageName != pipAct.PackageName() {
+			return errors.Errorf("unrelated window (%s) exists, which can lead to unexpected shelf beahvior", window.Name)
+		}
+	}
+
 	initialWindowState := arc.WindowStateNormal
 	initialWMEvent := ash.WMEventNormal
 	if isTabletModeEnabled {
