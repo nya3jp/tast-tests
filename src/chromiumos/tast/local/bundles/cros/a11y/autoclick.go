@@ -10,10 +10,10 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/a11y"
-	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"

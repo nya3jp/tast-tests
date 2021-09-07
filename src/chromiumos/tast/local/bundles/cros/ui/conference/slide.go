@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/uiauto"
