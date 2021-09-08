@@ -7,7 +7,6 @@ package quicksettings
 
 import (
 	"context"
-	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -17,8 +16,13 @@ import (
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/checked"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -27,11 +31,10 @@ import (
 const uiTimeout = 10 * time.Second
 
 // findStatusArea finds the status area UI node.
-func findStatusArea(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
-	params := ui.FindParams{
-		ClassName: "UnifiedSystemTray",
-	}
-	return ui.FindWithTimeout(ctx, tconn, params, uiTimeout)
+func findStatusArea(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Finder, error) {
+	ui := uiauto.New(tconn)
+	statusArea := nodewith.ClassName("UnifiedSystemTray")
+	return statusArea, ui.WithTimeout(uiTimeout).WaitUntilExists(statusArea)(ctx)
 }
 
 // Rect returns a coords.Rect struct for the Quick Settings area, which contains
@@ -40,17 +43,16 @@ func findStatusArea(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, erro
 // "UnifiedSystemTrayView" view itself, this finds a not that has
 // UnifiedSystemTrayView as a child.
 func Rect(ctx context.Context, tconn *chrome.TestConn) (coords.Rect, error) {
-	bubbleFrameViews, err := ui.FindAll(ctx, tconn, ui.FindParams{
-		ClassName: "BubbleFrameView",
-	})
+	ui := uiauto.New(tconn)
+	bubbleFrameView := nodewith.ClassName("BubbleFrameView")
+	results, err := ui.NodesInfo(ctx, bubbleFrameView)
 	if err != nil {
 		return coords.Rect{}, errors.Wrap(err, "failed to find quick settings")
 	}
-	defer bubbleFrameViews.Release(ctx)
 
-	for _, bubbleFrameView := range bubbleFrameViews {
-		if exists, err := bubbleFrameView.DescendantExists(ctx, quickSettingsParams); err == nil && exists {
-			return bubbleFrameView.Location, nil
+	for i := range results {
+		if err := ui.Exists(quickSettingsFinder.Ancestor(bubbleFrameView.Nth(i)))(ctx); err == nil {
+			return results[i].Location, nil
 		}
 	}
 	return coords.Rect{}, errors.Wrap(err, "failed to find quick settings")
@@ -63,9 +65,8 @@ func ClickStatusArea(ctx context.Context, tconn *chrome.TestConn) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to find status area widget")
 	}
-	defer statusArea.Release(ctx)
-
-	if err := statusArea.LeftClick(ctx); err != nil {
+	ui := uiauto.New(tconn)
+	if err := ui.LeftClick(statusArea)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click the status area")
 	}
 	return nil
@@ -73,7 +74,7 @@ func ClickStatusArea(ctx context.Context, tconn *chrome.TestConn) error {
 
 // Shown checks if Quick Settings exists in the UI.
 func Shown(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
-	return ui.Exists(ctx, tconn, quickSettingsParams)
+	return uiauto.New(tconn).IsNodeFound(ctx, quickSettingsFinder)
 }
 
 // Show will click the status area to show Quick Settings and wait for it to appear.
@@ -91,7 +92,8 @@ func Show(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to click the status area")
 	}
 
-	if err := ui.WaitUntilExists(ctx, tconn, quickSettingsParams, uiTimeout); err != nil {
+	ui := uiauto.New(tconn)
+	if err := ui.WithTimeout(uiTimeout).WaitUntilExists(quickSettingsFinder)(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for quick settings to appear")
 	}
 	return nil
@@ -110,7 +112,8 @@ func Hide(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to click the status area")
 	}
 
-	if err := ui.WaitUntilGone(ctx, tconn, quickSettingsParams, uiTimeout); err != nil {
+	ui := uiauto.New(tconn)
+	if err := ui.WithTimeout(uiTimeout).WaitUntilGone(quickSettingsFinder)(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for quick settings to be hidden")
 	}
 	return nil
@@ -127,51 +130,25 @@ func ShowWithRetry(ctx context.Context, tconn *chrome.TestConn, timeout time.Dur
 	if err != nil {
 		return errors.Wrap(err, "failed to find the status area widget")
 	}
-	defer statusArea.Release(ctx)
 
-	f := func(ctx context.Context) (bool, error) {
-		return ui.Exists(ctx, tconn, quickSettingsParams)
-	}
-	if err := statusArea.LeftClickUntil(ctx, f, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
+	ui := uiauto.New(tconn)
+	if err := ui.WithPollOpts(testing.PollOptions{Timeout: timeout, Interval: time.Second}).LeftClickUntil(statusArea, ui.Exists(quickSettingsFinder))(ctx); err != nil {
 		return errors.Wrap(err, "quick settings not shown")
 	}
 	return nil
 }
 
-// PodIconParams generates ui.FindParams for the specified quick setting pod.
-func PodIconParams(setting SettingPod) (ui.FindParams, error) {
+// PodIconButton generates nodewith.Finder for the specified quick setting pod.
+func PodIconButton(setting SettingPod) *nodewith.Finder {
 	// The network pod cannot be easily found by its Name attribute in both logged-in and lock screen states.
 	// Instead, find it by its unique ClassName.
 	if setting == SettingPodNetwork {
-		return ui.FindParams{ClassName: "NetworkFeaturePodButton"}, nil
+		return nodewith.ClassName("NetworkFeaturePodButton")
 	}
 
 	// The pod icon names change based on their state, but a substring containing the setting name stays
 	// the same regardless of state, so we can match that in the name attribute.
-	r, err := regexp.Compile(string(setting))
-	if err != nil {
-		return ui.FindParams{}, errors.Wrapf(err, "failed to compile regexp for %v pod icon name attribute", setting)
-	}
-	podParams := ui.FindParams{
-		ClassName:  "FeaturePodIconButton",
-		Attributes: map[string]interface{}{"name": r},
-	}
-
-	return podParams, nil
-}
-
-// findPodButton finds the UI node corresponding to the specified quick setting pod icon button.
-func findPodButton(ctx context.Context, tconn *chrome.TestConn, setting SettingPod) (*ui.Node, error) {
-	podParams, err := PodIconParams(setting)
-	if err != nil {
-		return nil, err
-	}
-
-	pod, err := ui.FindWithTimeout(ctx, tconn, podParams, uiTimeout)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find the pod icon button")
-	}
-	return pod, nil
+	return nodewith.ClassName("FeaturePodIconButton").NameContaining(string(setting))
 }
 
 // ensureVisible ensures that Quick Settings is shown. If it's not visible, this function will
@@ -207,16 +184,16 @@ func SettingEnabled(ctx context.Context, tconn *chrome.TestConn, setting Setting
 	}
 	defer cleanup(ctx)
 
-	pod, err := findPodButton(ctx, tconn, setting)
+	pod := PodIconButton(setting)
+	ui := uiauto.New(tconn)
+	info, err := ui.Info(ctx, pod)
 	if err != nil {
-		return false, errors.Wrap(err, "failed to find the pod icon button")
+		return false, errors.Wrap(err, "failed to get the pod icon button info")
 	}
-	defer pod.Release(ctx)
-
-	switch status := pod.Checked; status {
-	case ui.CheckedStateTrue:
+	switch status := info.Checked; status {
+	case checked.True:
 		return true, nil
-	case ui.CheckedStateFalse:
+	case checked.False:
 		return false, nil
 	default:
 		return false, errors.New("invalid checked state for pod icon button; quick setting may not be toggleable")
@@ -238,13 +215,9 @@ func ToggleSetting(ctx context.Context, tconn *chrome.TestConn, setting SettingP
 		return nil
 	}
 
-	pod, err := findPodButton(ctx, tconn, setting)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the pod icon button")
-	}
-	defer pod.Release(ctx)
-
-	if err := pod.LeftClick(ctx); err != nil {
+	pod := PodIconButton(setting)
+	ui := uiauto.New(tconn)
+	if err := ui.LeftClick(pod)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click the pod icon button")
 	}
 	return nil
@@ -258,13 +231,13 @@ func PodRestricted(ctx context.Context, tconn *chrome.TestConn, setting SettingP
 	}
 	defer cleanup(ctx)
 
-	pod, err := findPodButton(ctx, tconn, setting)
+	pod := PodIconButton(setting)
+	ui := uiauto.New(tconn)
+	info, err := ui.Info(ctx, pod)
 	if err != nil {
-		return false, errors.Wrapf(err, "failed to find the %v pod icon node", setting)
+		return false, errors.Wrap(err, "failed to get the pod icon button info")
 	}
-	defer pod.Release(ctx)
-
-	return pod.Restriction == ui.RestrictionDisabled, nil
+	return info.Restriction == restriction.Disabled, nil
 }
 
 // OpenSettingsApp will launch the Settings app by clicking on the Settings icon and wait
@@ -276,24 +249,15 @@ func OpenSettingsApp(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	defer cleanup(ctx)
 
-	params := ui.FindParams{
-		Name:      "Settings",
-		ClassName: "TopShortcutButton",
-	}
-
-	settingsBtn, err := ui.FindWithTimeout(ctx, tconn, params, uiTimeout)
-	if err != nil {
+	ui := uiauto.New(tconn)
+	if err := ui.WithTimeout(uiTimeout).WaitUntilExists(SettingsButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find settings top shortcut button")
 	}
 
 	// Try clicking the Settings button until it goes away, indicating the click was received.
 	// todo(crbug/1099502): determine when this is clickable, and just click it once.
-	condition := func(ctx context.Context) (bool, error) {
-		exists, err := ui.Exists(ctx, tconn, params)
-		return !exists, err
-	}
 	opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: 500 * time.Millisecond}
-	if err := settingsBtn.LeftClickUntil(ctx, condition, &opts); err != nil {
+	if err := ui.WithPollOpts(opts).LeftClickUntil(SettingsButton, ui.Gone(SettingsButton))(ctx); err != nil {
 		return errors.Wrap(err, "settings button still present after clicking")
 	}
 
@@ -312,14 +276,9 @@ func LockScreen(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	defer cleanup(ctx)
 
-	lockBtn, err := ui.FindWithTimeout(ctx, tconn, LockBtnParams, uiTimeout)
-	if err != nil {
-		return errors.Wrap(err, "failed to find lock button")
-	}
-	defer lockBtn.Release(ctx)
-
-	if err := lockBtn.LeftClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click lock button")
+	ui := uiauto.New(tconn)
+	if err := ui.WithTimeout(uiTimeout).LeftClick(LockButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to find and click lock button")
 	}
 
 	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, uiTimeout); err != nil {
@@ -339,12 +298,13 @@ func NotificationsHidden(ctx context.Context, tconn *chrome.TestConn) (bool, err
 	defer cleanup(ctx)
 
 	// Wait for the 'Notifications are hidden' label at the top of Quick Settings.
-	if err := ui.WaitUntilExists(ctx, tconn, ui.FindParams{ClassName: "NotificationHiddenView"}, uiTimeout); err != nil {
+	ui := uiauto.New(tconn)
+	if err := ui.WithTimeout(uiTimeout).WaitUntilExists(nodewith.ClassName("NotificationHiddenView"))(ctx); err != nil {
 		return false, errors.Wrap(err, "failed to find notifications hidden view")
 	}
 
 	// Also check that no notifications are shown in the UI.
-	exists, err := ui.Exists(ctx, tconn, ui.FindParams{Name: "Notification Center", ClassName: "Widget"})
+	exists, err := ui.IsNodeFound(ctx, nodewith.Name("Notification Center").ClassName("Widget"))
 	if err != nil {
 		return false, errors.Wrap(err, "failed checking if notification node exists")
 	}
@@ -352,7 +312,7 @@ func NotificationsHidden(ctx context.Context, tconn *chrome.TestConn) (bool, err
 }
 
 // findSlider finds the UI node for the specified slider. Callers should defer releasing the returned node.
-func findSlider(ctx context.Context, tconn *chrome.TestConn, slider SliderType) (*ui.Node, error) {
+func findSlider(ctx context.Context, tconn *chrome.TestConn, slider SliderType) (*nodewith.Finder, error) {
 	// The mic gain slider is on the audio settings page of Quick Settings, so we need to navigate there first.
 	if slider == SliderTypeMicGain {
 		if err := OpenAudioSettings(ctx, tconn); err != nil {
@@ -360,11 +320,11 @@ func findSlider(ctx context.Context, tconn *chrome.TestConn, slider SliderType) 
 		}
 	}
 
-	s, err := ui.FindWithTimeout(ctx, tconn, SliderParamMap[slider], uiTimeout)
-	if err != nil {
+	ui := uiauto.New(tconn)
+	if err := ui.WithTimeout(uiTimeout).WaitUntilExists(SliderParamMap[slider])(ctx); err != nil {
 		return nil, errors.Wrapf(err, "failed finding the %v slider", slider)
 	}
-	return s, nil
+	return SliderParamMap[slider], nil
 }
 
 // OpenAudioSettings opens Quick Settings' audio settings page. It does nothing if the page is already open.
@@ -375,12 +335,13 @@ func OpenAudioSettings(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	defer cleanup(ctx)
 
-	expandMenu := ui.FindParams{Role: ui.RoleTypeButton, Name: "Expand menu"}
-	audioParams := ui.FindParams{Role: ui.RoleTypeButton, Name: "Audio settings"}
-	audioDetailedView := ui.FindParams{ClassName: "AudioDetailedView"}
+	expandMenuBtn := nodewith.Role(role.Button).Name("Expand menu")
+	audioSettingsBtn := nodewith.Role(role.Button).Name("Audio settings")
+	audioDetailedView := nodewith.ClassName("AudioDetailedView")
 
 	// If audio settings view is open, just return.
-	exist, err := ui.Exists(ctx, tconn, audioDetailedView)
+	ui := uiauto.New(tconn)
+	exist, err := ui.IsNodeFound(ctx, audioDetailedView)
 	if err != nil {
 		return errors.Wrap(err, "failed to check audio detailed view")
 	}
@@ -389,41 +350,23 @@ func OpenAudioSettings(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	// If quick settings menu is collapsed, expand it.
-	exist, err = ui.Exists(ctx, tconn, expandMenu)
+	exist, err = ui.IsNodeFound(ctx, expandMenuBtn)
 	if err != nil {
 		return errors.Wrap(err, "failed to check expand menu button")
 	}
 	if exist {
-		expandMenuBtn, err := ui.FindWithTimeout(ctx, tconn, expandMenu, uiTimeout)
-		if err != nil {
+		if err := ui.WithTimeout(uiTimeout).WaitUntilExists(expandMenuBtn)(ctx); err != nil {
 			return err
 		}
-		defer expandMenuBtn.Release(ctx)
 
-		if err := expandMenuBtn.LeftClickUntil(ctx, func(ctx context.Context) (bool, error) {
-			if err := ui.WaitUntilExists(ctx, tconn, audioParams, 1*time.Second); err != nil {
-				return false, nil
-			}
-			return true, nil
-		}, &testing.PollOptions{Timeout: uiTimeout}); err != nil {
+		if err := ui.WithTimeout(uiTimeout).LeftClickUntil(expandMenuBtn, ui.WithTimeout(1*time.Second).WaitUntilExists(audioSettingsBtn))(ctx); err != nil {
 			return errors.Wrap(err, "failed to click expand menu button and wait for audio settings button")
 		}
 	}
 
-	audioBtn, err := ui.FindWithTimeout(ctx, tconn, audioParams, uiTimeout)
-	if err != nil {
-		return errors.Wrap(err, "failed to find audio settings button")
-	}
-	defer audioBtn.Release(ctx)
-
 	// It worth noting that LeftClickUntil will check the condition before doing the first
 	// left click. This actually gives time for the UI to be stable before clicking.
-	if err := audioBtn.LeftClickUntil(ctx, func(ctx context.Context) (bool, error) {
-		if err := ui.WaitUntilExists(ctx, tconn, audioDetailedView, 1*time.Second); err != nil {
-			return false, nil
-		}
-		return true, nil
-	}, &testing.PollOptions{Timeout: uiTimeout}); err != nil {
+	if err := ui.WithTimeout(uiTimeout).LeftClickUntil(audioSettingsBtn, ui.Exists(audioDetailedView))(ctx); err != nil {
 		return errors.Wrap(err, "failed to click audio settings button to show audio detailed view")
 	}
 
@@ -443,9 +386,13 @@ func SliderValue(ctx context.Context, tconn *chrome.TestConn, slider SliderType)
 	if err != nil {
 		return 0, err
 	}
-	defer s.Release(ctx)
 
-	percent := strings.Replace(s.Value, "%", "", 1)
+	ui := uiauto.New(tconn)
+	info, err := ui.Info(ctx, s)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get the slider info")
+	}
+	percent := strings.Replace(info.Value, "%", "", 1)
 	level, err := strconv.Atoi(percent)
 	if err != nil {
 		return 0, errors.Wrapf(err, "failed to convert %v to int", percent)
@@ -460,10 +407,14 @@ func focusSlider(ctx context.Context, tconn *chrome.TestConn, kb *input.Keyboard
 	if err != nil {
 		return err
 	}
-	defer s.Release(ctx)
 
+	ui := uiauto.New(tconn)
+	info, err := ui.Info(ctx, s)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the slider info")
+	}
 	// Return if already focused.
-	if s.State[ui.StateTypeFocused] == true {
+	if info.State[state.Focused] {
 		return nil
 	}
 
@@ -472,7 +423,7 @@ func focusSlider(ctx context.Context, tconn *chrome.TestConn, kb *input.Keyboard
 		return errors.Wrap(err, "failed to press tab key")
 	}
 
-	if err := s.FocusAndWait(ctx, uiTimeout); err != nil {
+	if err := ui.WithTimeout(uiTimeout).FocusAndWait(s)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to focus the %v slider", slider)
 	}
 	return nil
@@ -558,40 +509,30 @@ func DecreaseSlider(ctx context.Context, tconn *chrome.TestConn, kb *input.Keybo
 	return SliderValue(ctx, tconn, slider)
 }
 
-// micToggleButton navigates to the audio settings page and returns the UI node for the mic toggle (mute/unmute) button. Callers should defer releasing the returned node.
-func micToggleButton(ctx context.Context, tconn *chrome.TestConn) (*ui.Node, error) {
-	if err := OpenAudioSettings(ctx, tconn); err != nil {
-		return nil, err
-	}
-	btn, err := ui.FindWithTimeout(ctx, tconn, MicToggleParams, uiTimeout)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find the mic toggle button")
-	}
-	return btn, nil
-}
-
 // MicEnabled checks if the microphone is enabled (unmuted).
 func MicEnabled(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
-	btn, err := micToggleButton(ctx, tconn)
-	if err != nil {
+	if err := OpenAudioSettings(ctx, tconn); err != nil {
 		return false, err
 	}
-	defer btn.Release(ctx)
-	return btn.Checked == ui.CheckedStateTrue, nil
+	ui := uiauto.New(tconn)
+	info, err := ui.Info(ctx, MicToggle)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get the pod icon button info")
+	}
+	return info.Checked == checked.True, nil
 }
 
 // ToggleMic toggles the microphone's enabled state by clicking the microphone icon adjacent to the slider.
 // If the microphone is already in the desired state, this will do nothing.
 func ToggleMic(ctx context.Context, tconn *chrome.TestConn, enable bool) error {
+	if err := OpenAudioSettings(ctx, tconn); err != nil {
+		return err
+	}
 	if current, err := MicEnabled(ctx, tconn); err != nil {
 		return err
 	} else if current != enable {
-		btn, err := micToggleButton(ctx, tconn)
-		if err != nil {
-			return err
-		}
-		defer btn.Release(ctx)
-		if err := btn.LeftClick(ctx); err != nil {
+		ui := uiauto.New(tconn)
+		if err := ui.LeftClick(MicToggle)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click mic toggle button")
 		}
 	}
@@ -604,8 +545,9 @@ func SelectAudioOption(ctx context.Context, tconn *chrome.TestConn, kb *input.Ke
 		return err
 	}
 
-	option, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{Role: ui.RoleTypeCheckBox, Name: device}, uiTimeout)
-	if err != nil {
+	ui := uiauto.New(tconn)
+	option := nodewith.Role(role.CheckBox).Name(device)
+	if err := ui.WithTimeout(uiTimeout).WaitUntilExists(option)(ctx); err != nil {
 		return errors.Wrapf(err, "failed finding node for %v audio option", device)
 	}
 
@@ -615,10 +557,10 @@ func SelectAudioOption(ctx context.Context, tconn *chrome.TestConn, kb *input.Ke
 	if err := kb.Accel(ctx, "Tab"); err != nil {
 		return errors.Wrap(err, "failed to press tab key")
 	}
-	if err := option.FocusAndWait(ctx, uiTimeout); err != nil {
+	if err := ui.WithTimeout(uiTimeout).FocusAndWait(option)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to focus the %v audio option", device)
 	}
-	if err := option.LeftClick(ctx); err != nil {
+	if err := ui.LeftClick(option)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to click %v audio option", device)
 	}
 
@@ -644,27 +586,24 @@ func RestrictedSettingsPods(ctx context.Context) ([]SettingPod, error) {
 
 // CommonElements returns a map that contains ui.FindParams for Quick Settings UI elements that are present in all sign-in states (signed in, signed out, screen locked).
 // The keys of the map are descriptive names for the UI elements.
-func CommonElements(ctx context.Context, tconn *chrome.TestConn, hasBattery, isLockedScreen bool) (map[string]ui.FindParams, error) {
+func CommonElements(ctx context.Context, tconn *chrome.TestConn, hasBattery, isLockedScreen bool) (map[string]*nodewith.Finder, error) {
 	// Associate the params with a descriptive name for better error reporting.
-	getNodes := map[string]ui.FindParams{
-		"Shutdown button":   ShutdownBtnParams,
-		"Collapse button":   CollapseBtnParams,
-		"Volume slider":     VolumeSliderParams,
-		"Brightness slider": BrightnessSliderParams,
-		"Date/time display": DateViewParams,
+	getNodes := map[string]*nodewith.Finder{
+		"Shutdown button":   ShutdownButton,
+		"Collapse button":   CollapseButton,
+		"Volume slider":     VolumeSlider,
+		"Brightness slider": BrightnessSlider,
+		"Date/time display": DateView,
 	}
 
 	if hasBattery {
-		getNodes["Battery display"] = BatteryViewParams
+		getNodes["Battery display"] = BatteryView
 	}
 
 	if isLockedScreen {
 		// Check that the expected accessibility UI element is shown in Quick Settings.
-		accessibilityParams, err := PodIconParams(SettingPodAccessibility)
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to get params for accessibility pod icon")
-		}
-		getNodes["Accessibility pod"] = accessibilityParams
+		accessibility := PodIconButton(SettingPodAccessibility)
+		getNodes["Accessibility pod"] = accessibility
 	} else {
 		// Get the restricted settings pods.
 		featuredPods, err := RestrictedSettingsPods(ctx)
@@ -678,11 +617,8 @@ func CommonElements(ctx context.Context, tconn *chrome.TestConn, hasBattery, isL
 
 		// Loop through all the SettingsPod and generate the ui.FindParams for the specified quick settings pod.
 		for _, settingPod := range featuredPods {
-			podParams, err := PodIconParams(settingPod)
-			if err != nil {
-				return nil, errors.Wrapf(err, "failed to get params for %v pod icon", podParams)
-			}
-			getNodes[string(settingPod)+" pod"] = podParams
+			podFinder := PodIconButton(settingPod)
+			getNodes[string(settingPod)+" pod"] = podFinder
 		}
 	}
 	return getNodes, nil
