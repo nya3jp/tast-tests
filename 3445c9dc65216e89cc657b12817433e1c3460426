@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f06f107e_92cc1fa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtio_cras_snd.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-08T06:01:59Z",
+      "side": 1,
+      "message": "So I have added the ac97 test, but test execution is stuck for some reason. Debugging~",
+      "parentUuid": "876af35e_64e489d9",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 18
+      },
+      "revId": "3445c9dc65216e89cc657b12817433e1c3460426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39d37ca0_07ee2bdd",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtio_cras_snd.go",
         "patchSetId": 15
