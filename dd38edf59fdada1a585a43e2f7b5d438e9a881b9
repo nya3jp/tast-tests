@@ -18,6 +18,92 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47517c4d_2f4ebfb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "In general LGTM, but please resolve all comments.",
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caf2a2e8_c6ad335c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "nit: com",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecab7426_4edfcd31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "nit: drop it",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95b86f88_0e442b56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "you use these constants just once, maybe it makes sense just to inline them?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53c52a5a_ed60ed9d",
@@ -43,6 +129,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a2a2bf1_8b21fd68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "nit: please verify that slice is not empty",
+      "range": {
+        "startLine": 66,
+        "startChar": 22,
+        "endLine": 66,
+        "endChar": 36
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3df1eb77_499fa9b4",
         "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
         "patchSetId": 9
@@ -59,6 +168,121 @@
         "startChar": 17,
         "endLine": 67,
         "endChar": 21
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2ad887_a1c1868c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "nit: it makes sense to log fpEncStatus[0] value to help investigate issues",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 29
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f570b97_7372879b",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "same: maybe makes sense to just inline them if they used only once?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39566492_534de851",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "nit: last boot?",
+      "range": {
+        "startLine": 24,
+        "startChar": 23,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e44d0e7_def73546",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "nit: this is a bit redundant because you already have Time as a return value.",
+      "range": {
+        "startLine": 24,
+        "startChar": 33,
+        "endLine": 24,
+        "endChar": 42
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19adce8b_5257807e",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "nit: remove Get prefixes\nhttps://golang.org/doc/effective_go#Getters",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 8
       },
       "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -135,6 +359,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bafd33a9_12b1f42b",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "nit: timestamp seconds?",
+      "range": {
+        "startLine": 59,
+        "startChar": 53,
+        "endLine": 59,
+        "endChar": 62
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a33e3276_c7dcbe06",
         "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
         "patchSetId": 9
@@ -151,6 +398,92 @@
         "startChar": 39,
         "endLine": 61,
         "endChar": 50
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ae91ad_7d417cbe",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "nit: same: timestamp nanoseconds?",
+      "range": {
+        "startLine": 63,
+        "startChar": 53,
+        "endLine": 63,
+        "endChar": 62
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae3b86a3_7a4ceb3e",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "nit: maybe makes sense to move this blank line before line 65? Also add blank line before line 57",
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f6c9c8_504533c7",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "nit: check if slice is not empty",
+      "range": {
+        "startLine": 89,
+        "startChar": 46,
+        "endLine": 89,
+        "endChar": 47
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c731620f_dc3ce027",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T07:24:24Z",
+      "side": 1,
+      "message": "nit (optional): do you need this intermediate variable? You can just simply return lines[i:], nil",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 13
       },
       "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
