@@ -39,6 +39,30 @@
       },
       "revId": "9435b7d0429d5d54ba25c1af2f7fd7638e6bc4da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d9c6e36_53fc36eb",
+        "filename": "src/chromiumos/tast/local/session/session_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-08T02:11:16Z",
+      "side": 1,
+      "message": "Good point. Ok, done.",
+      "parentUuid": "89986ac9_9c601ee1",
+      "range": {
+        "startLine": 138,
+        "startChar": 10,
+        "endLine": 138,
+        "endChar": 27
+      },
+      "revId": "9435b7d0429d5d54ba25c1af2f7fd7638e6bc4da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
