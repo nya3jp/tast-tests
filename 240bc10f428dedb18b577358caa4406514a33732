@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0902270f_448174cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-08T07:49:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7c8b750_d8ad930b",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "240bc10f428dedb18b577358caa4406514a33732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86fe9e6d_8a495269",
@@ -85,6 +109,30 @@
       "writtenOn": "2021-09-08T05:38:53Z",
       "side": 1,
       "message": "And here",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "240bc10f428dedb18b577358caa4406514a33732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e2d1b71_9a3a6f70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-08T07:49:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86fe9e6d_8a495269",
       "range": {
         "startLine": 34,
         "startChar": 1,
