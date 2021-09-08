@@ -123,6 +123,48 @@
       },
       "revId": "5ad20895bb967dbcd6b83e30dad58e28106c6129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49445215_4859508d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-09-08T01:17:16Z",
+      "side": 1,
+      "message": "Do you have a specific method to do so in mind? Although, I don\u0027t think that is necessary - we actually create the path above and we know it is a well formed one that doesn\u0027t need escaping.",
+      "parentUuid": "3cbcdc2c_b3c19c5c",
+      "range": {
+        "startLine": 118,
+        "startChar": 96,
+        "endLine": 118,
+        "endChar": 109
+      },
+      "revId": "5ad20895bb967dbcd6b83e30dad58e28106c6129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b515d8b6_5d73d8d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-09-08T01:17:16Z",
+      "side": 1,
+      "message": "Changed to echo the command status at the end and verify against it. I am not sure if I can directly get exit code from cmd runner response.",
+      "parentUuid": "aee1b710_631e3a1e",
+      "revId": "5ad20895bb967dbcd6b83e30dad58e28106c6129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
