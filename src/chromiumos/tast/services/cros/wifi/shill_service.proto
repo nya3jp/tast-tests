@@ -152,6 +152,12 @@ service ShillService {
   // SetGlobalFTProperty set the WiFi.GlobalFTEnabled manager property value.
   rpc SetGlobalFTProperty(SetGlobalFTPropertyRequest) returns (google.protobuf.Empty) {}
 
+  // GetScanAllowRoamProperty returns the WiFi.ScanAllowRoam manager property value.
+  rpc GetScanAllowRoamProperty(google.protobuf.Empty) returns (GetScanAllowRoamPropertyResponse) {}
+
+  // SetScanAllowRoamProperty set the WiFi.ScanAllowRoam manager property value.
+  rpc SetScanAllowRoamProperty(SetScanAllowRoamPropertyRequest) returns (google.protobuf.Empty) {}
+
   // DisconnectReason is a streaming gRPC, who waits for the wpa_supplicant's
   // DisconnectReason property change, and returns the code to the client.
   // To notify the caller that it is ready, it sends an empty response after
@@ -487,6 +493,14 @@ message GetGlobalFTPropertyResponse {
 
 message SetGlobalFTPropertyRequest {
   bool enabled = 1;
+}
+
+message GetScanAllowRoamPropertyResponse {
+  bool allow = 1;
+}
+
+message SetScanAllowRoamPropertyRequest {
+  bool allow = 1;
 }
 
 message InitDUTRequest {
