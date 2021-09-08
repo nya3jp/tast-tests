@@ -51,6 +51,24 @@
       "message": "Maybe .Ancestor(something) is needed here, for keeping the original code behavior?",
       "revId": "6e2970a2e2a5a7c717299458ab8afa69f444f12e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c9c7d81_df90816b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-08T03:22:01Z",
+      "side": 1,
+      "message": "It seems that \"WindowFinder\" becomes ancestor of this node.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/filesapp/uiwrapper.go#58",
+      "parentUuid": "714e71e9_05b4e7b2",
+      "revId": "6e2970a2e2a5a7c717299458ab8afa69f444f12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
