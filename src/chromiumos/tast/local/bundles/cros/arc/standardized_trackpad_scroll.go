@@ -16,22 +16,22 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         StandardizedMouseScroll,
-		Desc:         "Functional test that installs an app and tests that a standard mouse scroll up, an down works",
+		Func:         StandardizedTrackpadScroll,
+		Desc:         "Functional test that installs an app and tests standard trackpad scroll up and scroll down functionality. Tests are only performed in clamshell mode as tablets don't support the trackpad",
 		Contacts:     []string{"davidwelling@google.com", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{
 			{
-				Val:               standardizedtestutil.GetClamshellTests(runStandardizedMouseScrollTest),
+				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTrackpadScrollTest),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "arcBooted",
 				ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 			},
 			{
 				Name:              "vm",
-				Val:               standardizedtestutil.GetClamshellTests(runStandardizedMouseScrollTest),
+				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTrackpadScrollTest),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "arcBooted",
 				ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
@@ -40,7 +40,7 @@ func init() {
 	})
 }
 
-func StandardizedMouseScroll(ctx context.Context, s *testing.State) {
+func StandardizedTrackpadScroll(ctx context.Context, s *testing.State) {
 	const (
 		apkName      = "ArcStandardizedInputTest.apk"
 		appName      = "org.chromium.arc.testapp.arcstandardizedinputtest"
@@ -51,18 +51,24 @@ func StandardizedMouseScroll(ctx context.Context, s *testing.State) {
 	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
-func runStandardizedMouseScrollTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
+func runStandardizedTrackpadScrollTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
+	trackpad, err := input.Trackpad(ctx)
+	if err != nil {
+		s.Fatal("Failed to initialize the trackpad: ", err)
+	}
+	defer trackpad.Close()
+
 	// Perform the down test first as the up test depends on it to be complete.
 	txtScrollDownTestStateID := testParameters.AppPkgName + ":id/txtScrollDownTestState"
 	txtScrollDownSuccessSelector := testParameters.Device.Object(ui.ID(txtScrollDownTestStateID), ui.Text("COMPLETE"))
-	runMouseScroll(ctx, s, testParameters, txtScrollDownSuccessSelector, standardizedtestutil.DownScroll)
+	performTrackpadScrollTest(ctx, s, testParameters, txtScrollDownSuccessSelector, trackpad, standardizedtestutil.DownScroll)
 
 	txtScrollUpTestStateID := testParameters.AppPkgName + ":id/txtScrollUpTestState"
 	txtScrollUpSuccessSelector := testParameters.Device.Object(ui.ID(txtScrollUpTestStateID), ui.Text("COMPLETE"))
-	runMouseScroll(ctx, s, testParameters, txtScrollUpSuccessSelector, standardizedtestutil.UpScroll)
+	performTrackpadScrollTest(ctx, s, testParameters, txtScrollUpSuccessSelector, trackpad, standardizedtestutil.UpScroll)
 }
 
-func runMouseScroll(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams, txtSuccessSelector *ui.Object, scrollDirection standardizedtestutil.ScrollDirection) {
+func performTrackpadScrollTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams, txtSuccessSelector *ui.Object, trackpad *input.TrackpadEventWriter, scrollDirection standardizedtestutil.ScrollDirection) {
 	const (
 		maxNumScrollIterations = 15
 	)
@@ -70,31 +76,20 @@ func runMouseScroll(ctx context.Context, s *testing.State, testParameters standa
 	txtScrollableContentID := testParameters.AppPkgName + ":id/txtScrollableContent"
 	txtScrollableContentSelector := testParameters.Device.Object(ui.ID(txtScrollableContentID))
 
-	// Setup the mouse.
-	mouse, err := input.Mouse(ctx)
-	if err != nil {
-		s.Fatal("Unable to setup the mouse, info: ", err)
-	}
-	defer mouse.Close()
-
 	if err := txtScrollableContentSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("Failed to find the scrollable content: ", err)
 	}
 
 	if err := txtSuccessSelector.WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("Failed to make sure the success label does not exist: ", err)
-	}
-
-	if err := standardizedtestutil.MouseMoveOntoObject(ctx, testParameters, txtScrollableContentSelector, mouse); err != nil {
-		s.Fatal("Failed to move onto the scrollable content: ", err)
+		s.Fatal("Failed to find the success label: ", err)
 	}
 
 	// Scroll multiple times, if the threshold is reached early, the test passes.
 	testPassed := false
 	for i := 0; i < maxNumScrollIterations; i++ {
 		// Perform the scroll.
-		if err := standardizedtestutil.MouseScroll(ctx, testParameters, scrollDirection, mouse); err != nil {
-			s.Fatal("Failed to perform the scroll: ", err)
+		if err := standardizedtestutil.TrackpadScroll(ctx, trackpad, testParameters, txtScrollableContentSelector, scrollDirection); err != nil {
+			s.Fatal("Failed to perform a scroll: ", err)
 		}
 
 		// Check to see if the test is done.
