@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e46738fc_2f5e89cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T08:23:43Z",
+      "side": 1,
+      "message": "PTAL my comment about this fixture in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3085093",
+      "revId": "3b9aae7c0a52748280be6826c59db923ca09c564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b28a9e91_6892251d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T08:23:43Z",
+      "side": 1,
+      "message": "nit: can you please put your name at the end of the list because you won\u0027t be able to maintain this fixture long term?",
+      "revId": "3b9aae7c0a52748280be6826c59db923ca09c564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
