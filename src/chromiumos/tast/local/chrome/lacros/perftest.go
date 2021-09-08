@@ -59,6 +59,14 @@ func SetupPerfTest(ctx context.Context, tconn *chrome.TestConn, name string) (re
 		return quicksettings.ToggleSetting(ctx, tconn, quicksettings.SettingPodDoNotDisturb, false)
 	}, "failed to re-enable notifications")
 
+	// Disable automation feature for performance test.
+	// ResetAutomation should be already called previously, but automation is implicitly enabled by
+	// quicksettings.ToggleSetting, so we ensure it is disabled by calling ResetAutomation again.
+	// TODO(b/199815100): Call private API to block accessibility features here.
+	if err := tconn.ResetAutomation(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to reset the automation feature")
+	}
+
 	return cleanup, nil
 }
 
