@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96202eb3_b92bd6a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:40:05Z",
+      "side": 1,
+      "message": "huge nit: split paragraph in two... over 80 colums.",
+      "range": {
+        "startLine": 12,
+        "startChar": 72,
+        "endLine": 12,
+        "endChar": 83
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a3480b_9500c695",
+        "filename": "src/chromiumos/tast/local/chrome/internal/driver/conn.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:40:05Z",
+      "side": 1,
+      "message": "huge nit: will fail -\u003e fails\n\nhttps://golang.org/doc/effective_go#commentary",
+      "range": {
+        "startLine": 227,
+        "startChar": 57,
+        "endLine": 227,
+        "endChar": 66
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e891072_341aa006",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:40:05Z",
+      "side": 1,
+      "message": "nit: I didn\u0027t get the meaning of this sentence... did you mean \"To bypass\" instead of \"The bypass\" ?",
+      "range": {
+        "startLine": 25,
+        "startChar": 29,
+        "endLine": 25,
+        "endChar": 62
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc465cc0_f6e0710d",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:40:05Z",
+      "side": 1,
+      "message": "nit: while you are here, could you change \"will wait\" -\u003e \"waits\" ?\n\nhttps://golang.org/doc/effective_go#commentary",
+      "range": {
+        "startLine": 106,
+        "startChar": 32,
+        "endLine": 106,
+        "endChar": 41
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ff06dee_e8e76064",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:40:05Z",
+      "side": 1,
+      "message": "huge nit: here and below: oobe -\u003e OOBE",
+      "range": {
+        "startLine": 125,
+        "startChar": 28,
+        "endLine": 125,
+        "endChar": 32
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "066225b8_b74ee1e1",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:40:05Z",
+      "side": 1,
+      "message": "huge nit: will perform -\u003e performs\n\nhttps://golang.org/doc/effective_go#commentary",
+      "range": {
+        "startLine": 172,
+        "startChar": 25,
+        "endLine": 172,
+        "endChar": 37
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f7685f_8f8d1fc4",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:40:05Z",
+      "side": 1,
+      "message": "nit: ditto above... \n\nalso: \"enterprise enroll\" is something that exist? or is a typo?",
+      "range": {
+        "startLine": 196,
+        "startChar": 25,
+        "endLine": 196,
+        "endChar": 47
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a84ee17_2d47fd71",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:40:05Z",
+      "side": 1,
+      "message": "nit: all non-trivial functions should have a docstring",
+      "range": {
+        "startLine": 238,
+        "startChar": 5,
+        "endLine": 238,
+        "endChar": 31
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36d36aeb_0f4682b5",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:40:05Z",
+      "side": 1,
+      "message": "huge nit: end sentence with period (.)\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 243,
+        "startChar": 61,
+        "endLine": 243,
+        "endChar": 62
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3845ee0_ece0180e",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:40:05Z",
+      "side": 1,
+      "message": "ditto: add docstring",
+      "range": {
+        "startLine": 311,
+        "startChar": 5,
+        "endLine": 311,
+        "endChar": 32
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc949a5_941d6a44",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:40:05Z",
+      "side": 1,
+      "message": "nit: returned errors should not be capitalized",
+      "range": {
+        "startLine": 352,
+        "startChar": 46,
+        "endLine": 352,
+        "endChar": 47
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398711ea_e54e7ae0",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:40:05Z",
+      "side": 1,
+      "message": "nit: here and below\n\nno need to use break in switch statements",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 7
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
