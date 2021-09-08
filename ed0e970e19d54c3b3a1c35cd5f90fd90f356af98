@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd810aed_660b176d",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca_ui_remote_portrait_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-08T05:21:33Z",
+      "side": 1,
+      "message": "Agree that we should start to use fixture given that there are more than one tests in CCARemote. But since it might be a bigger change, I prefer doing it in a follow-up CL. We\u0027ll track the task as part of the b/177800595. WDYT?",
+      "parentUuid": "ed0ff36c_5b752216",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "ed0e970e19d54c3b3a1c35cd5f90fd90f356af98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "97c97749_d63151bf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/human_face_scene.jpg",
         "patchSetId": 2
@@ -54,6 +78,24 @@
       "writtenOn": "2021-09-07T09:25:38Z",
       "side": 1,
       "message": "Could you use external data?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#internal-vs_external",
+      "revId": "ed0e970e19d54c3b3a1c35cd5f90fd90f356af98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e7a206d_932af87a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/human_face_scene.jpg",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-08T05:21:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97c97749_d63151bf",
       "revId": "ed0e970e19d54c3b3a1c35cd5f90fd90f356af98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
