@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "118dec2d_61c9e430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_perform_web_request_enrolled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-08T08:24:43Z",
+      "side": 1,
+      "message": "nit: I think it might be OK to rely on google.com page and we can remove logOnly",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "42d9f33d05cad457fc41dc7cc6c1631df8a2a8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
