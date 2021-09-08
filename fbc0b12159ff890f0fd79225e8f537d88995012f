@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1e9533d_fe79333c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302660
+      },
+      "writtenOn": "2021-09-08T05:16:23Z",
+      "side": 1,
+      "message": "Updated as we discussed on GVC yesterday.",
+      "revId": "fbc0b12159ff890f0fd79225e8f537d88995012f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
