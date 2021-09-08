@@ -6,7 +6,12 @@ package health
 
 import (
 	"context"
+	"fmt"
 
+	"github.com/google/go-cmp/cmp"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/health/pci"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
@@ -41,6 +46,35 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 			s.Fatal("Unknown types of bus devices: ", d)
 		}
 	}
+
+	if err := validatePciDevices(ctx, pciDevs); err != nil {
+		s.Fatal("Pci validation failed: ", err)
+	}
+}
+
+func validatePciDevices(ctx context.Context, devs []busDevice) error {
+	var got []pci.Device
+	for _, d := range devs {
+		pd := d.BusInfo.PCIBusInfo
+		got = append(got, pci.Device{
+			VendorID: fmt.Sprintf("%04x", pd.VendorID),
+			DeviceID: fmt.Sprintf("%04x", pd.DeviceID),
+			Vendor:   d.VendorName,
+			Device:   d.ProductName,
+			Class:    fmt.Sprintf("%02x%02x", pd.ClassID, pd.SubClassID),
+			ProgIf:   fmt.Sprintf("%02x", pd.ProgIfID),
+			Driver:   pd.Driver,
+		})
+	}
+	pci.Sort(got)
+	exp, err := pci.ExpectedDevices(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get expected devices")
+	}
+	if d := cmp.Diff(exp, got); d != "" {
+		return errors.Errorf("(-expected + got): %s", d)
+	}
+	return nil
 }
 
 // busResult represents the BusResult in cros-healthd mojo interface.
