@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e180435_1d3e0453",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtio_cras_snd.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-09-08T06:21:45Z",
+      "side": 1,
+      "message": "I think maybe the reason is that in ac97.rs\n\n```\n    fn create_cras_audio_device(params: Ac97Parameters, mem: GuestMemory) -\u003e Result\u003cSelf\u003e {\n        let mut server \u003d Box::new(\n            CrasClient::with_type(CrasSocketType::Unified)\n                .map_err(pci_device::Error::CreateCrasClientFailed)?,\n        );\n```\nit\u0027s directly created with `Unified` socket but in this current setup (without vm_concierge mapping) there is no `cras_unified` socket under `/run/cras`.\n\nWe could add a cras socket type options for ac97 as well.",
+      "parentUuid": "f06f107e_92cc1fa0",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 18
+      },
+      "revId": "3445c9dc65216e89cc657b12817433e1c3460426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39d37ca0_07ee2bdd",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtio_cras_snd.go",
         "patchSetId": 15
