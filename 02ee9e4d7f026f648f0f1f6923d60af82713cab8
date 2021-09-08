@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10cee3c8_480322f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-09-08T23:34:35Z",
+      "side": 1,
+      "message": "ACK, I will pull in an AP lead.  Unfortunately, there doesn\u0027t seem to be much discoverable content on the original intent of the testcase (e.g. no bug associated with crrev.com/c/397299), so we likely just need to come at it fresh.",
+      "parentUuid": "4eb9396c_b2e75acc",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f3907cd_4acca9a3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
         "patchSetId": 2
