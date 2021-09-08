@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b097e98_809e3fbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-09-08T17:27:09Z",
+      "side": 1,
+      "message": "hmm, did you ever resolve these?\nhttps://b.corp.google.com/issues/186458965\nhttps://b.corp.google.com/issues/186800736 (I guess this one is the test-specific issue)\n\nIf not, then I think you\u0027re reintroducing flake that we spent a lot of time on before -- that we might roam sometime during AP setup and scan, so the roam attempt will do nothing. Or I could be wrong, if I\u0027m not remembering details right, or if BSS TM was different enough from other roam cases.\n\nIf the problem is just the timeout, can\u0027t we increase it?",
+      "revId": "5b9e1e18d46fce974f57f1c70b12bea6d95a9ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3ddd663_ddcc3687",
