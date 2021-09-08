@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90a33666_14474be2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2021-09-08T21:00:48Z",
+      "side": 1,
+      "message": "nit: more descriptive name?",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "a109fedce574557545e859d8c5eb947b60e18b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3f630e0_aae931af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2021-09-08T21:00:48Z",
+      "side": 1,
+      "message": "Is this new contact for test?",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 34
+      },
+      "revId": "a109fedce574557545e859d8c5eb947b60e18b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30b50c20_6c5b7b83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2021-09-08T21:00:48Z",
+      "side": 1,
+      "message": "nit: \tdefer cr.Close(ctx)",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "a109fedce574557545e859d8c5eb947b60e18b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10dab5fe_1b1a0153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2021-09-08T21:00:48Z",
+      "side": 1,
+      "message": "nit: new line above",
+      "revId": "a109fedce574557545e859d8c5eb947b60e18b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43f8e421_c22ca2a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2021-09-08T21:00:48Z",
+      "side": 1,
+      "message": "Test like this is unreadable for reader not familiar with the UI. I do not know where the \"change the wallpaper\", \"Back to Wallpaper\" comes from. \n\nIs there a better way to find a node? Or add more comments which button it is in the UI.",
+      "revId": "a109fedce574557545e859d8c5eb947b60e18b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4248ddb4_0fd73e62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2021-09-08T21:00:48Z",
+      "side": 1,
+      "message": "Do we need to wait while loading?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 70
+      },
+      "revId": "a109fedce574557545e859d8c5eb947b60e18b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
