@@ -4,12 +4,13 @@
  * found in the LICENSE file.
  */
 
-package org.chromium.arc.testapp.arcstandardizedmousetest;
+package org.chromium.arc.testapp.arcstandardizedinputtest;
 
 import android.app.Activity;
 import android.os.Bundle;
 
 public class MainActivity extends Activity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
