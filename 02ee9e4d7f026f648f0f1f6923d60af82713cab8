@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4eb9396c_b2e75acc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-08T23:04:17Z",
+      "side": 1,
+      "message": "No one involved here can answer that question.  This test is for https://testtracker.googleplex.com/testplans/testcase/detail/1773685?id\u003d382\u0026revision\u003d848 to replace the flaky autotest.",
+      "parentUuid": "3cae6e3b_70036bbf",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f3907cd_4acca9a3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
         "patchSetId": 2
