@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c44936b9_691a01ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-08T22:08:19Z",
+      "side": 1,
+      "message": "can we specify only \u0027on prod profiles\u0027 or a prerequisite to have 2 prod profiles",
+      "revId": "a0870a5dbb87890e99d1b12c3d7dac45d5662d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44d4b179_0790a3ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-08T22:08:19Z",
+      "side": 1,
+      "message": "checking if more than one profile in enabled state",
+      "revId": "a0870a5dbb87890e99d1b12c3d7dac45d5662d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad5a3202_35b47a5a",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-08T22:08:19Z",
+      "side": 1,
+      "message": "Might have to set euicc certs with UseTestCerts(or GsmaTestCertPath) method call if euiccNum is \u00271\u0027, though test is only for prod profiles switching euicc_helper will be common.",
+      "revId": "a0870a5dbb87890e99d1b12c3d7dac45d5662d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
