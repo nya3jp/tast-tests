@@ -69,6 +69,24 @@
       "parentUuid": "714e71e9_05b4e7b2",
       "revId": "6e2970a2e2a5a7c717299458ab8afa69f444f12e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cddf4424_eeb7c642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-08T04:11:49Z",
+      "side": 1,
+      "message": "That looks correct. Will you add it here?",
+      "parentUuid": "6c9c7d81_df90816b",
+      "revId": "6e2970a2e2a5a7c717299458ab8afa69f444f12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
