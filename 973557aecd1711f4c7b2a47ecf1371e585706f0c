@@ -86,6 +86,30 @@
       },
       "revId": "973557aecd1711f4c7b2a47ecf1371e585706f0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d359011_03dbb0b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_inhibit_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-08T18:30:19Z",
+      "side": 1,
+      "message": "Discussed this with Eric, and Eric is okay with the CL as long as \"RestartModemManager\" is deferred at the beginning. We can use ReInitDUT() here once it is ready and stable.",
+      "parentUuid": "976be147_8a1cc922",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 62
+      },
+      "revId": "973557aecd1711f4c7b2a47ecf1371e585706f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
