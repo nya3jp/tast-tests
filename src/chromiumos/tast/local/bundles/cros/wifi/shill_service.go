@@ -135,6 +135,9 @@ func (s *ShillService) reinitTestState(ctx context.Context, m *shill.Manager) er
 	if err := wpacli.NewRunner(&cmd.LocalCmdRunner{}).ClearBSSIDIgnore(ctx); err != nil {
 		return errors.Wrap(err, "failed to clear wpa_supplicant BSSID_IGNORE")
 	}
+	if err := m.SetProperty(ctx, shillconst.ManagerPropertyScanAllowRoam, true); err != nil {
+		return errors.Wrap(err, "failed to set WiFi.ScanAllowRoam property")
+	}
 	return nil
 }
 
@@ -339,6 +342,8 @@ func (s *ShillService) waitForBSSID(ctx context.Context, iface *wpasupplicant.In
 
 // DiscoverBSSID discovers the specified BSSID by running a scan.
 // This is the implementation of wifi.ShillService/DiscoverBSSID gRPC.
+// Note that WiFi.ScanAllowRoam is disabled so that we ensure that
+// the device doesn't roam while attempting to discover a BSSID.
 func (s *ShillService) DiscoverBSSID(ctx context.Context, request *wifi.DiscoverBSSIDRequest) (*wifi.DiscoverBSSIDResponse, error) {
 	ctx, cancel := reserveForReturn(ctx)
 	defer cancel()
@@ -375,6 +380,24 @@ func (s *ShillService) DiscoverBSSID(ctx context.Context, request *wifi.Discover
 	m, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create shill manager")
+	}
+	props, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the shill manager properties")
+	}
+	allow, err := props.GetBool(shillconst.ManagerPropertyScanAllowRoam)
+	if err != nil {
+		return nil, err
+	}
+	if allow {
+		if err := m.SetProperty(ctx, shillconst.ManagerPropertyScanAllowRoam, false); err != nil {
+			return nil, errors.Wrap(err, "failed to set WiFi.ScanAllowRoam property")
+		}
+		defer func(ctx context.Context) {
+			if err := m.SetProperty(ctx, shillconst.ManagerPropertyScanAllowRoam, true); err != nil {
+				testing.ContextLog(ctx, "Failed to restore WiFi.ScanAllowRoam property")
+			}
+		}(ctx)
 	}
 	// Trigger request scan every 200ms if the expected BSS is not found.
 	// It might be spammy, but shill handles it for us.
@@ -2273,6 +2296,42 @@ func (s *ShillService) SetGlobalFTProperty(ctx context.Context, req *wifi.SetGlo
 	}
 	if err := m.SetProperty(ctx, shillconst.ManagerPropertyGlobalFTEnabled, req.Enabled); err != nil {
 		return nil, errors.Wrapf(err, "failed to set the shill manager property %s with value %v", shillconst.ManagerPropertyGlobalFTEnabled, req.Enabled)
+	}
+	return &empty.Empty{}, nil
+}
+
+// GetScanAllowRoamProperty returns the WiFi.ScanAllowRoam manager property value.
+func (s *ShillService) GetScanAllowRoamProperty(ctx context.Context, _ *empty.Empty) (*wifi.GetScanAllowRoamPropertyResponse, error) {
+	ctx, cancel := reserveForReturn(ctx)
+	defer cancel()
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a shill manager")
+	}
+
+	props, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the shill manager properties")
+	}
+	allow, err := props.GetBool(shillconst.ManagerPropertyScanAllowRoam)
+	if err != nil {
+		return nil, err
+	}
+	return &wifi.GetScanAllowRoamPropertyResponse{Allow: allow}, nil
+}
+
+// SetScanAllowRoamProperty set the WiFi.ScanAllowRoam manager property value.
+func (s *ShillService) SetScanAllowRoamProperty(ctx context.Context, req *wifi.SetScanAllowRoamPropertyRequest) (*empty.Empty, error) {
+	ctx, cancel := reserveForReturn(ctx)
+	defer cancel()
+
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a shill manager")
+	}
+	if err := m.SetProperty(ctx, shillconst.ManagerPropertyScanAllowRoam, req.Allow); err != nil {
+		return nil, errors.Wrapf(err, "failed to set the shill manager property %s with value %v", shillconst.ManagerPropertyScanAllowRoam, req.Allow)
 	}
 	return &empty.Empty{}, nil
 }
