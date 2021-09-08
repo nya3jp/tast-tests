@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e0bf22f_bd656848",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T05:10:01Z",
+      "side": 1,
+      "message": "nit: remove?",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "682467e3c515ed0f9001cf1cc78b11eea380593a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5b006c0a_8411e445",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-09-07T05:27:20Z",
       "side": 1,
       "message": "PTAL!",
+      "revId": "682467e3c515ed0f9001cf1cc78b11eea380593a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f27041ee_886f9b0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T05:10:01Z",
+      "side": 1,
+      "message": "+2 % nit",
       "revId": "682467e3c515ed0f9001cf1cc78b11eea380593a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
