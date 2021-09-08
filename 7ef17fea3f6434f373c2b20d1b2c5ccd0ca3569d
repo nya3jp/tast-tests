@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31421b84_4bece8dd",
+        "filename": "android/ArcMediaScanTimeTest/res/layout/main_activity.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-08T10:24:41Z",
+      "side": 1,
+      "message": "You can remove unused TextViews. Also, it would be better to rename the used one (file_content) appropriately.",
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff109197_d51e21d9",
         "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
         "patchSetId": 2
@@ -174,6 +191,24 @@
       "writtenOn": "2021-09-08T09:13:52Z",
       "side": 1,
       "message": "This function is super cool. Good work!\nOne nit: I think there should be only one MyFiles volume id (otherwise it\u0027s a bug). How about making this function return (string, err)?\n  re :\u003d [...]\n  out, err :\u003d [...]\n  if err !\u003d nil {\n    return \"\", err\n  }\n  lines :\u003d [...]\n  for _, line :\u003d [...] {\n    if [...]; volumeIdLine !\u003d nil {\n      splitVolumeIdLine :\u003d [...]\n      return splitVolumeIdLine[0], nil\n    }\n  }\n  return \"\", errors.New(\"Failed to get MyFiles volume id\")",
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46fbdba9_b7950847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-08T10:24:41Z",
+      "side": 1,
+      "message": "Sorry, for the error in the last line, errors.New(\"MyFiles volume not found\") or something like that would be better.\nThen the caller of the function can wrap the error in a meaningful way:\n  if myFilesVolumeId, err :\u003d getMyFilesVolumeId(ctx, a)\n  if err !\u003d nil {\n    s.Fatal(\"Failed to get MyFiles volume id: \", err)\n  }",
+      "parentUuid": "0c703ea1_67d53380",
       "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
