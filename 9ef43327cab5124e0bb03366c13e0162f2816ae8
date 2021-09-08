@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d750d987_8795d7ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-08T08:08:52Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "9ef43327cab5124e0bb03366c13e0162f2816ae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96532988_e284b3ad",
@@ -14,6 +31,24 @@
       "writtenOn": "2021-09-08T07:39:21Z",
       "side": 1,
       "message": "I am thinking whether to add EnsureGoneFor for the case when lock screen is not expected.",
+      "revId": "9ef43327cab5124e0bb03366c13e0162f2816ae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bef938b_03211d26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_screen_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-08T08:08:52Z",
+      "side": 1,
+      "message": "I think that would make sense, then we can also get rid of the testing.Sleep above.",
+      "parentUuid": "96532988_e284b3ad",
       "revId": "9ef43327cab5124e0bb03366c13e0162f2816ae8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
