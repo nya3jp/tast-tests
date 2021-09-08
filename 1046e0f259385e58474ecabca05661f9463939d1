@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "461fd62b_b968f066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-09-08T16:52:43Z",
+      "side": 1,
+      "message": "Per my investigation on the bug: I think the issue behind this will affect lots of tests that do UI interactions, so it probably doesn\u0027t make sense to disable this one.",
+      "revId": "1046e0f259385e58474ecabca05661f9463939d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
