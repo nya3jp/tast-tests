@@ -65,9 +65,9 @@ func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrom
 	}
 	defer crastestclient.Unmute(ctx)
 
-	testing.ContextLog(ctx, "Measuring performance")
+	s.Log("Starting playback")
 	if err = measurePerformance(ctx, cs, cr, s.DataFileSystem(), videoName, decoderType, s.OutDir()); err != nil {
-		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
+		s.Fatal("Playback test failed: ", err)
 	}
 }
 
@@ -115,7 +115,7 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 
 	isPlatform, decoderName, err := devtools.GetVideoDecoder(ctx, observer, url)
 	if err != nil {
-		return errors.Wrap(err, "failed to parse Media DevTools: ")
+		return errors.Wrap(err, "failed to parse Media DevTools")
 	}
 	if decoderType == Hardware && !isPlatform {
 		return errors.New("hardware decoding accelerator was expected but wasn't used")
