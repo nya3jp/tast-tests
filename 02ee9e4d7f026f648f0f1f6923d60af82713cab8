@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dde4bcd9_33c4bc9e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-08T22:30:08Z",
+      "side": 1,
+      "message": "Kevin Shelton suggests that this test doesn\u0027t actually have anything to do with firmware, and should probably live in  src/chromiumos/tast/remote/bundles/cros/hardware instead.",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3907cd_4acca9a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-08T22:30:08Z",
+      "side": 1,
+      "message": "This should go into group:stress instead. That will include this test in suite:stress, whereas the old test was in suite:faft_stress. @Kevin to check me on this, but I don\u0027t think there is any automated or recommened runs of suite:stress.",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 65
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc072d0_0327494a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-08T22:30:08Z",
+      "side": 1,
+      "message": "You should use Data: pre.Data, ServiceDeps: pre.ServiceDeps, etc.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067b7045_3c10ee08",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-08T22:30:08Z",
+      "side": 1,
+      "message": "Add Timeout: 250 * time.Minute or something \u003e 240 minutes + the time required for one chromeos install.",
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c542ae8_ad30d648",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-08T22:30:08Z",
+      "side": 1,
+      "message": "This should probably be a var that can be passed to the test, see src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go for an example.",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "065c29eb_3cb3212a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-08T22:30:08Z",
+      "side": 1,
+      "message": "Run(ssh.DumpLogOnError) will do the same thing and you can remove the s.Log of the output below.",
+      "range": {
+        "startLine": 52,
+        "startChar": 87,
+        "endLine": 52,
+        "endChar": 94
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b64e46b4_ed4509f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-08T22:30:08Z",
+      "side": 1,
+      "message": "This is going to be a lot of logging.",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3209c742_d076faf1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-08T22:30:08Z",
+      "side": 1,
+      "message": "Command was removed, use CommandContext",
+      "range": {
+        "startLine": 60,
+        "startChar": 29,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
