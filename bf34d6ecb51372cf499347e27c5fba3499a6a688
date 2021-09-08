@@ -69,6 +69,23 @@
       "parentUuid": "96781668_97374086",
       "revId": "bf34d6ecb51372cf499347e27c5fba3499a6a688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "890c6cf5_e7baa4a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-09-08T10:05:13Z",
+      "side": 1,
+      "message": "All tests passed except the elm test runner [1] pending forever.\nThe betty tast failure is b/197923113.\n\nLet me chump this CL so it can make its way into the next PFQ run.\n\n[1]: https://ci.chromium.org/ui/p/chromeos/builders/test_runner/test_runner/b8836681665399424513/overview",
+      "revId": "bf34d6ecb51372cf499347e27c5fba3499a6a688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
