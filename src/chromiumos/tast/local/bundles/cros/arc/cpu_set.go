@@ -11,17 +11,25 @@ import (
 	"regexp"
 	"runtime"
 	"strings"
+	"time"
 
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/cpuset"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
+
+type cpuSetConfig struct {
+	// Extra Chrome command line options
+	chromeExtraArgs []string
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -38,13 +46,20 @@ func init() {
 			"chrome",
 			"no_qemu",
 		},
-		Attr:    []string{"group:mainline", "informational"},
-		Fixture: "arcBooted",
+		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               cpuSetConfig{},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: cpuSetConfig{
+				// Make sure the DUT uses per-VM core scheduling rather than per-vCPU one. This will prevent the test
+				// from failing even when ArcEnablePerVmCoreScheduling's in components/arc/arc_features.cc is changed.
+				// When ArcEnablePerVmCoreScheduling's default is changed, the flag below should eventually be changed
+				// too.
+				chromeExtraArgs: []string{"--enable-features=ArcEnablePerVmCoreScheduling"},
+			},
 		}},
 	})
 }
@@ -174,53 +189,35 @@ func readCPUSetInfo(ctx context.Context, t string) (string, []byte, error) {
 	return path, out, err
 }
 
-// isCoreSchedulingAvailable returns true if CPU has MDS or L1TF vulnerabilities. Core scheduling does not
-// run on CPUs that are not vulnerable. This is a Go port of chromeos::system::IsCoreSchedulingAvailable
-// function in src/chromeos/system/core_scheduling.cc.
-func isCoreSchedulingAvailable() bool {
-	// The original C++ function calls some prctl(2) syscalls here to see if the kernel is compiled
-	// with core scheduling enabled. This port doesn't do that because ARCVM's host kernel always has
-	// the support (except for rammus-arc-r which we special-case in CPUSet()).
-	// TODO(yusukes): Remove the comment on rammus-arc-r once its host kernel is updated.
-
-	filenames := []string{"l1tf", "mds"}
-	for _, filename := range filenames {
-		path := fmt.Sprintf("/sys/devices/system/cpu/vulnerabilities/%s", filename)
-		body, err := ioutil.ReadFile(path)
-		if err != nil {
-			// Old kernels don't support the sysfs interface.
-			continue
-		}
-		if strings.Trim(string(body), " \n") != "Not affected" {
-			// Core scheduling available
-			return true
-		}
-	}
-	// Core scheduling not available
-	return false
-}
-
-// numberOfProcessorsForCoreScheduling returns number of physical cores. This is a Go port of
-// chromeos::system::NumberOfProcessorsForCoreScheduling function in src/chromeos/system/core_scheduling.cc.
-func numberOfProcessorsForCoreScheduling() (int, error) {
-	lists := map[string]struct{}{}
-	for i := 0; i < runtime.NumCPU(); i++ {
-		path := fmt.Sprintf("/sys/devices/system/cpu/cpu%d/topology/thread_siblings_list", i)
-		body, err := ioutil.ReadFile(path)
-		if err != nil {
-			return 0, err
-		}
-		lists[string(body)] = struct{}{}
-	}
-	physicalCores := len(lists)
-	if physicalCores == 0 {
-		return 1, nil
-	}
-	return physicalCores, nil
-}
-
 func CPUSet(ctx context.Context, s *testing.State) {
 	s.Log("Running testCPUSet")
+
+	cfg := s.Param().(cpuSetConfig)
+
+	// Shorten the total context to make room for cleanup jobs.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(cfg.chromeExtraArgs...))
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer func() {
+		if err := cr.Close(cleanupCtx); err != nil {
+			s.Fatal("Failed to close Chrome: ", err)
+		}
+	}()
+
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer func() {
+		if a != nil {
+			a.Close(ctx)
+		}
+	}()
 
 	// Verify that /dev/cpuset is properly set up.
 	types := []string{"foreground", "background", "system-background", "top-app", "restricted"}
@@ -234,10 +231,9 @@ func CPUSet(ctx context.Context, s *testing.State) {
 	if isVMEnabled {
 		// Don't run the test on rammus-arc-r. Although ARCVM doesn't officially support host kernel
 		// 4.4, rammus-arc-r which exists for development purposes is the exception. Unfortunately,
-		// 4.4 kernel doesn't support core scheduling, and the isCoreSchedulingAvailable() call below
-		// always fails on rammus-arc-r. For now, we want to skip the test on rammus-arc-r. Once its
-		// host kernel is updated to a recent version in M96, the test will start passing on
-		// rammus-arc-r.
+		// 4.4 kernel doesn't support core scheduling, and its crosvm is started with an unusual number
+		// of vCPUs. For now, we want to skip the test on rammus-arc-r. Once its host kernel is updated
+		// to a recent version in M96, the test will start passing on rammus-arc-r.
 		// TODO(yusukes): Remove this workaround once rammus-arc-r's host kernel is updated.
 		if ver, _, err := sysutil.KernelVersionAndArch(); err != nil {
 			s.Fatal("Failed to get kernel version: ", err)
@@ -245,13 +241,6 @@ func CPUSet(ctx context.Context, s *testing.State) {
 			return
 		}
 
-		if isCoreSchedulingAvailable() {
-			// When core scheduling is used, ARCVM cannot use all the CPU cores.
-			numExpectedGuestCpus, err = numberOfProcessorsForCoreScheduling()
-			if err != nil {
-				s.Fatal("Failed to determine num processors for core scheduling: ", err)
-			}
-		}
 		// ARCVM always has one additional vCPU for supporting RT processes.
 		numExpectedGuestCpus++
 	}
