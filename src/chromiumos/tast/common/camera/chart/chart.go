@@ -123,14 +123,6 @@ func connectChart(ctx context.Context, d *dut.DUT, hostname string) (*ssh.Conn, 
 // corresponding chart tablet and returns a new |Chart| instance.
 func New(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string) (_ *Chart, retErr error) {
 	var conn *ssh.Conn
-	var dir, pid string
-	defer func() {
-		if retErr != nil {
-			if err := cleanup(ctx, conn, dir, pid, outDir); err != nil {
-				testing.ContextLog(ctx, "Failed to cleanup: ", err)
-			}
-		}
-	}()
 
 	// Connect to chart tablet.
 	if len(altHostname) > 0 {
@@ -146,6 +138,20 @@ func New(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string)
 		}
 		conn = c
 	}
+
+	return SetUp(ctx, conn, chartPath, outDir)
+}
+
+// SetUp sets up the chart with the given ssh connection and returns a new |Chart| instance.
+func SetUp(ctx context.Context, conn *ssh.Conn, chartPath, outDir string) (_ *Chart, retErr error) {
+	var dir, pid string
+	defer func() {
+		if retErr != nil {
+			if err := cleanup(ctx, conn, dir, pid, outDir); err != nil {
+				testing.ContextLog(ctx, "Failed to cleanup: ", err)
+			}
+		}
+	}()
 
 	// Create temp directory for saving chart files.
 	out, err := conn.CommandContext(ctx, "mktemp", "-d", "/tmp/chart_XXXXXX").Output()
