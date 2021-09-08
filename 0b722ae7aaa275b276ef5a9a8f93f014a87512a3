@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3f2d49e_e02cfc9e",
+        "filename": "src/chromiumos/tast/common/firmware/const.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-09-08T17:21:04Z",
+      "side": 1,
+      "message": "nit/style: Per http://go/go-code-review-comments#Initialisms, please keep initialisms in a consistent case (\"USB\" or \"usb\", but not \"Usb\"). In this case, please name the boot mode \"BootModeUSBDev\".",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75f8b9fb_94478c9c",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-09-08T17:21:04Z",
+      "side": 1,
+      "message": "Please add a new test case in the firmware.BootMode test to exercise this new code.",
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a9471e_fb0943df",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-09-08T17:21:04Z",
+      "side": 1,
+      "message": "Is this supposed to be \"!\u003d\"? The way the code is currently written, it seems that this block is activated if we\u0027re trying to boot to usb-dev-mode, but that this block prevents doing so.",
+      "range": {
+        "startLine": 98,
+        "startChar": 19,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b467384_590c838c",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-09-08T17:21:04Z",
+      "side": 1,
+      "message": "I think these `else if` clauses are going to interfere with each other. For example, the way it\u0027s currently written, we would never hit L98, because the same condition would be met by L91. Not to mention hitting the conditions at L105 and L113.\n\nHere\u0027s one way you could address this:\n\n    // If booting into anything but dev mode, ensure that we\u0027re not forcing dev mode.\n    // (No change from ToT)\n    if toMode !\u003d fwCommon.BootModeDev {\n        ...\n    } else if toMode \u003d\u003d fwCommon.BootModeDev \u0026\u0026 msOptsContain(opts, AllowGBBForce) {\n        ...\n    }\n    \n    // If booting into anything into dev-usb mode, ensure that we\u0027re not forcing dev-usb mode.\n    // (New code here)\n    if toMode !\u003d fwCommon.BootModeUsbDev {\n        ...\n    } else if toMode \u003d\u003d fwCommon.BootModeUsbDev \u0026\u0026 msOptsContain(opts, AllowGBBForce) {\n        ...\n    }",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 11
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cd4cbb5_0c1a57c9",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-09-08T17:21:04Z",
+      "side": 1,
+      "message": "nit/style: as elsewhere, please use \"USB\" instead of \"Usb\"",
+      "range": {
+        "startLine": 518,
+        "startChar": 34,
+        "endLine": 518,
+        "endChar": 37
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c54537_908d8e0a",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-09-08T17:21:04Z",
+      "side": 1,
+      "message": "nit/style: Per http://go/go-code-review-comments#Initialisms, please keep initialisms in a consistent case (\"usb\" or \"USB\", but not \"Usb\"). In this case, please name the precondition \"USBDevMode\".",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 15
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5b9b70d_793fe033",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-09-08T17:21:04Z",
+      "side": 1,
+      "message": "Since we\u0027re only using bootedDevice in the `case \"developer\"` block, move this into that block. That will save some time in non-devmode test cases.\n\n    case \"developer\":\n        bootedDevice, err :\u003d r.BootedDevice(ctx)\n        if err !\u003d nil {\n            return fwCommon.BootModeUnspecified, errors.Wrapf(err, \"determining if boot device is removable\n        }\n        if bootedDevice \u003d\u003d ...",
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
