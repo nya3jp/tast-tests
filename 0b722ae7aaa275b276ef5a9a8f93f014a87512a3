@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f520614a_d3a61efc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-08T21:11:50Z",
+      "side": 1,
+      "message": "+1 to all Greg\u0027s comments also.",
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5071eeb2_b03e80c6",
+        "filename": "src/chromiumos/tast/common/firmware/const.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-08T21:11:50Z",
+      "side": 1,
+      "message": "This isn\u0027t three any more. As Monty Python would say\n\nOur *three* boot modes are normal, dev, and recovery...and an almost fanatical devotion to usb boot.  Our *four*...no... *Amongst* our boot modes...",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3f2d49e_e02cfc9e",
@@ -128,6 +168,29 @@
         "startChar": 5,
         "endLine": 55,
         "endChar": 15
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7212163e_6dd7d026",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-08T21:11:50Z",
+      "side": 1,
+      "message": "Seems like we should have a usbDevModeGBB also that sets the force gbb to true.\n\nAlso, since this uses USB, increase the timeout like rec mode does.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 11
       },
       "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
