@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "845e1d60_8b2de7c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-09-08T17:56:30Z",
+      "side": 1,
+      "message": "I realized there\u0027s still technically a race here if there\u0027s any scan between configuring the AP and the TM request - via bgscan or if shill scans any other way. I can turn off bgscan and maybe set WiFi.ScanAllowRoam to false at the beginning of the test? Both of those things should probably be done at the beginning of all other roaming tests as well (RoamDbus and RoamFT).",
+      "parentUuid": "10bd4e9d_bbc7a5e1",
+      "revId": "5b9e1e18d46fce974f57f1c70b12bea6d95a9ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3ddd663_ddcc3687",
