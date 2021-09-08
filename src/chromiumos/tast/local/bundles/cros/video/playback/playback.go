@@ -67,7 +67,7 @@ func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrom
 
 	testing.ContextLog(ctx, "Measuring performance")
 	if err = measurePerformance(ctx, cs, cr, s.DataFileSystem(), videoName, decoderType, s.OutDir()); err != nil {
-		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
+		s.Fatal("Failed to carry out test logic: ", err)
 	}
 }
 
