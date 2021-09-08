@@ -386,6 +386,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	}
 	opts = append(opts, chrome.ExtraArgs("--vmodule=crostini*=1"))
 
+	opts = append(opts, chrome.EnableFeatures("KernelnextVMs"))
+
 	// To help identify sources of flake, we report disk usage before the test.
 	if err := reportDiskUsage(ctx); err != nil {
 		s.Log("Failed to gather disk usage: ", err)
