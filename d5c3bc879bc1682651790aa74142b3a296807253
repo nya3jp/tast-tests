@@ -50,6 +50,24 @@
       "message": "Will video subtest use different Fixture? If not, shall we move Fixture out of the Params?",
       "revId": "d5c3bc879bc1682651790aa74142b3a296807253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf571a72_624dd3ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/capture_from_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-08T16:23:23Z",
+      "side": 1,
+      "message": "Both should have the same Fixture -- moved out of the test case.",
+      "parentUuid": "b605af27_68136238",
+      "revId": "d5c3bc879bc1682651790aa74142b3a296807253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
