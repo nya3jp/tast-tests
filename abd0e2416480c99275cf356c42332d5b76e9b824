@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90dc4900_b5155ab1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2021-09-08T12:35:15Z",
+      "side": 1,
+      "message": "alexanderhartl@, can you review for OWNERS? fdegros@ as already given CR+2 for cros-disks expertise.",
+      "revId": "abd0e2416480c99275cf356c42332d5b76e9b824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
