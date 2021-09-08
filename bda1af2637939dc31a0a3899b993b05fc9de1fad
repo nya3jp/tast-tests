@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a76d0838_3707c991",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-08T19:09:10Z",
+      "side": 1,
+      "message": "There is Resize lock test with few local methods in src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go. Can any of those be reused here?.",
+      "revId": "bda1af2637939dc31a0a3899b993b05fc9de1fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ead4071_24284913",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-08T19:09:10Z",
+      "side": 1,
+      "message": "closeSplash is return not handled. Also if IIUC the splash screen will appear only few times and will not show up after.",
+      "range": {
+        "startLine": 439,
+        "startChar": 4,
+        "endLine": 439,
+        "endChar": 15
+      },
+      "revId": "bda1af2637939dc31a0a3899b993b05fc9de1fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b63e76b_27b4e1e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-08T19:09:10Z",
+      "side": 1,
+      "message": "Is there a better way to detect if the button is disabled without sleep?",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 79
+      },
+      "revId": "bda1af2637939dc31a0a3899b993b05fc9de1fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5df1aa8_d7610ac5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-08T19:09:10Z",
+      "side": 1,
+      "message": "This method appears to have not been used yet?.",
+      "range": {
+        "startLine": 589,
+        "startChar": 5,
+        "endLine": 589,
+        "endChar": 23
+      },
+      "revId": "bda1af2637939dc31a0a3899b993b05fc9de1fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7698e2b_47bfbcd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-08T19:09:10Z",
+      "side": 1,
+      "message": "Keep the receiver names short (go/go-style/decisions#receiver-names)",
+      "range": {
+        "startLine": 624,
+        "startChar": 66,
+        "endLine": 624,
+        "endChar": 75
+      },
+      "revId": "bda1af2637939dc31a0a3899b993b05fc9de1fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
