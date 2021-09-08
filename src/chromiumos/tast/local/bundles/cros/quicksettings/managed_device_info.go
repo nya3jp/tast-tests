@@ -11,8 +11,8 @@ import (
 
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -72,17 +72,22 @@ func ManagedDeviceInfo(ctx context.Context, s *testing.State) {
 	defer quicksettings.Hide(ctx, tconn)
 
 	// Check if management information is shown.
-	managedBtn, err := ui.FindWithTimeout(ctx, tconn, quicksettings.ManagedInfoViewParams, uiTimeout)
-	if err != nil {
+	ui := uiauto.New(tconn)
+	managedBtn := quicksettings.ManagedInfoView
+	if err := ui.WithTimeout(uiTimeout).WaitUntilExists(managedBtn)(ctx); err != nil {
 		s.Fatal("Failed to find managed info button: ", err)
 	}
 
 	// Check if the information contains the managed domain name or indication that the device is "enterprise managed" (depending on test account configuration).
-	if !strings.Contains(managedBtn.Name, "managedchrome.com") && !strings.Contains(managedBtn.Name, "enterprise managed") {
-		s.Fatalf("Managed info string: %q, expected containing management domain name or enterprise managed indication", managedBtn.Name)
+	info, err := ui.Info(ctx, managedBtn)
+	if err != nil {
+		s.Fatal("Failed to get management information button info: ", err)
+	}
+	if !strings.Contains(info.Name, "managedchrome.com") && !strings.Contains(info.Name, "enterprise managed") {
+		s.Fatalf("Managed info string: %q, expected containing management domain name or enterprise managed indication", info.Name)
 	}
 
-	if err := managedBtn.LeftClick(ctx); err != nil {
+	if err := ui.LeftClick(managedBtn)(ctx); err != nil {
 		s.Fatal("Failed to click management information button: ", err)
 	}
 
