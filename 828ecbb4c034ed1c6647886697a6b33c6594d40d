@@ -135,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93a8056c_2d89bbdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-09-08T04:22:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec9afe90_058b1531",
+      "range": {
+        "startLine": 36,
+        "startChar": 10,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "828ecbb4c034ed1c6647886697a6b33c6594d40d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2dc1fe5_0af80ee3",
