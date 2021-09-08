@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed6c88a_7c1a73ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-09-08T01:48:36Z",
+      "side": 1,
+      "message": "From the bug: \"PFQ contains boards we currently don\u0027t ship ARCVM which might not have CQ coverage, but they run the same critical tests.\"\n\nWhat\u0027s the right fix so this test can be promoted to critical?",
+      "revId": "bf34d6ecb51372cf499347e27c5fba3499a6a688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
