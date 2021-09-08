@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7643005_763d1444",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-09-08T06:44:27Z",
+      "side": 1,
+      "message": "nice!",
+      "revId": "8b941b7a5026d606ad0ec04acbc3e4d3a54288b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afb91ff1_732974af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user_pod.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-09-08T06:44:27Z",
+      "side": 1,
+      "message": "do you need this function? could you just call createUser three times instead? Maybe with optional bool keep_state",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 4
+      },
+      "revId": "8b941b7a5026d606ad0ec04acbc3e4d3a54288b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c39ad33a_64a6717c",
@@ -31,6 +71,24 @@
       "writtenOn": "2021-09-07T21:51:57Z",
       "side": 1,
       "message": "should we also include a UI check to verify user3\u0027s pod is gone?",
+      "revId": "8b941b7a5026d606ad0ec04acbc3e4d3a54288b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8553627_9558cb2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user_pod.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-09-08T06:44:27Z",
+      "side": 1,
+      "message": "+1. Ideally we could also check \"KnownUsers\" list in the local state too. And after that restart Chrome again with  chrome.NoLogin(), chrome.KeepState() and check the pods again.",
+      "parentUuid": "c39ad33a_64a6717c",
       "revId": "8b941b7a5026d606ad0ec04acbc3e4d3a54288b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
