@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf90bd1_e96772cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-09-08T05:38:53Z",
+      "side": 1,
+      "message": "Can we use full name here?",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "240bc10f428dedb18b577358caa4406514a33732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86fe9e6d_8a495269",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-09-08T05:38:53Z",
+      "side": 1,
+      "message": "And here",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "240bc10f428dedb18b577358caa4406514a33732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
