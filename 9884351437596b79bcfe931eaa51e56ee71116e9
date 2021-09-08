@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05f1f824_ead6f7d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:17:00Z",
+      "side": 1,
+      "message": "mention that you are also adding a unit test",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "9884351437596b79bcfe931eaa51e56ee71116e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e970a335_38910da7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:17:00Z",
+      "side": 1,
+      "message": "nit: all non-trivial functions should have a docstring\n\nin particular, it is not clear what it returns... it is a key/value of what?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "9884351437596b79bcfe931eaa51e56ee71116e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9dcfe68_108ad137",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:17:00Z",
+      "side": 1,
+      "message": "add comment with reference output. e.g:\n\n// lspci output looks like:\n// xxx:yyy....",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "9884351437596b79bcfe931eaa51e56ee71116e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c14deaf5_d5d1044f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:17:00Z",
+      "side": 1,
+      "message": "related to previous one, add context... not clear what use case it is covering",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 46
+      },
+      "revId": "9884351437596b79bcfe931eaa51e56ee71116e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbbfe7d2_01c25dcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:17:00Z",
+      "side": 1,
+      "message": "nit:  ...returns a list of PCI Device objects sorted by Vendor ID + Device ID.\n\nwho consumes the output? only the unit test?\nCalls my attention that it returns a list of devices... instead of a dictionary of devices perhaps (?)... and the key is the vendor ID + Device ID (?).\nEverything depends on who consumes the output...",
+      "range": {
+        "startLine": 56,
+        "startChar": 36,
+        "endLine": 56,
+        "endChar": 48
+      },
+      "revId": "9884351437596b79bcfe931eaa51e56ee71116e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c8ecd88_eb3098ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:17:00Z",
+      "side": 1,
+      "message": "nit: it seems it is not returning anything (?)",
+      "range": {
+        "startLine": 99,
+        "startChar": 34,
+        "endLine": 99,
+        "endChar": 48
+      },
+      "revId": "9884351437596b79bcfe931eaa51e56ee71116e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c19775_a91e5263",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:17:00Z",
+      "side": 1,
+      "message": "was sorted only added for the test? can you use a dictionary instead... so that you don\u0027t have to add this function",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 11
+      },
+      "revId": "9884351437596b79bcfe931eaa51e56ee71116e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
