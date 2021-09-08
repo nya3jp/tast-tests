@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/remote/bundles/cros/camera/chart"
+	"chromiumos/tast/common/camera/chart"
 	"chromiumos/tast/testing"
 )
 
@@ -27,21 +27,7 @@ func newDataChartPre(name, path string) *chartPre {
 	return &chartPre{name: name, path: path}
 }
 
-var documentScene = newDataChartPre("document_scene", "document_scene.jpg")
-
-var humanFaceScene = newDataChartPre("human_face_scene", "human_face_scene.jpg")
-
 var dataChartScene = newDataChartPre("cts_portrait_scene", "third_party/cts_portrait_scene.jpg")
-
-// DocumentScene returns test precondition for displaying a document image on chart tablet.
-func DocumentScene() *chartPre {
-	return documentScene
-}
-
-// HumanFaceScene returns test precondition for displaying an image with human face on chart tablet.
-func HumanFaceScene() *chartPre {
-	return humanFaceScene
-}
 
 // DataChartScene returns test precondition for displaying default test scene on chart tablet.
 func DataChartScene() *chartPre {

@@ -39,8 +39,8 @@ const (
 // We use File VCD with a video which has a document in the scene to simulate
 // the real usage when scanning document.
 // However, since document detection on preview only happens on CrOS VCD, we
-// cannot use File VCD to test it. Therefore, we will leave that part to a
-// remote test and test it via CameraBox.
+// cannot use File VCD to test it. Therefore, we will leave that part to another
+// test which is executed on a CameraBox.
 func CCAUIDocumentScanning(ctx context.Context, s *testing.State) {
 	runSubTest := s.FixtValue().(cca.FixtureData).RunSubTest
 	s.FixtValue().(cca.FixtureData).SetDebugParams(cca.DebugParams{SaveCameraFolderWhenFail: true})
