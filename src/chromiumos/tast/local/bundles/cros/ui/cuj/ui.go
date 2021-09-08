@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/action"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -253,4 +254,32 @@ func DismissMobilePrompt(ctx context.Context, tconn *chrome.TestConn) error {
 		}
 	}
 	return nil
+}
+
+// ExpandMenu returns a function that clicks the button and waits for the menu to expand to the given height.
+// This function is useful when the target menu will expand to its full size with animation. On Low end DUTs
+// the expansion animation might stuck for some time. The node might have returned a stable location if
+// checking with a fixed interval before the animiation completes. This function ensures animation completes
+// by checking the menu height.
+func ExpandMenu(tconn *chrome.TestConn, button, menu *nodewith.Finder, height int) action.Action {
+	ui := uiauto.New(tconn)
+	startTime := time.Now()
+	return func(ctx context.Context) error {
+		if err := ui.LeftClick(button)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click button")
+		}
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			menuInfo, err := ui.Info(ctx, menu)
+			if err != nil {
+				return errors.Wrap(err, "failed to get menu info")
+			}
+			if menuInfo.Location.Height < height {
+				return errors.Errorf("got menu height %d, want %d", menuInfo.Location.Height, height)
+			}
+			// Examine this log regularly to see how fast the menu is expanded and determine if
+			// we still need to keep this ExpandMenu() function.
+			testing.ContextLog(ctx, "Menu expanded to full height in ", time.Now().Sub(startTime))
+			return nil
+		}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: time.Second})
+	}
 }
