@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eeebdd9_2c69748a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:41:13Z",
+      "side": 1,
+      "message": "adding missing nit",
+      "revId": "d4ec96cccb3867438c6534c3037f8f8ec5e41aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ba94e1b_9ebbb1a5",
@@ -36,6 +53,29 @@
         "startChar": 39,
         "endLine": 41,
         "endChar": 42
+      },
+      "revId": "d4ec96cccb3867438c6534c3037f8f8ec5e41aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "351e9679_af5e65bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-08T22:41:13Z",
+      "side": 1,
+      "message": "nit: add docstring to all these types. e.g:\n\n// pciBusInfo represents ....",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 15
       },
       "revId": "d4ec96cccb3867438c6534c3037f8f8ec5e41aa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
