@@ -22,6 +22,30 @@
       },
       "revId": "b9741289b7ae994a36f294f87ab2a05e3bccb28a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cabe94a_1674b62f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-08T06:04:21Z",
+      "side": 1,
+      "message": "They are usb_device_in and usb_device_out.\nBut I will split them into another function and we can use other naming.",
+      "parentUuid": "26bc3997_8f5265af",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 6
+      },
+      "revId": "b9741289b7ae994a36f294f87ab2a05e3bccb28a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
