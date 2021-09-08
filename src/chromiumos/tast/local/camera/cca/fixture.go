@@ -12,11 +12,13 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/common/camera/chart"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -193,6 +195,9 @@ type FixtureData struct {
 	// RubSubTest runs the given function as a sub test, handling the app
 	// start/stop it.
 	RunSubTest func(context.Context, SubTestFunc, SubTestParams) error
+	// PrepareChart prepares chart by loading the given scene. It only works for
+	// CameraBox.
+	PrepareChart func(ctx context.Context, addr, keyFile, contentPath string) error
 	// SetDebugParams sets the debug parameters for current test.
 	SetDebugParams func(params DebugParams)
 }
@@ -203,6 +208,7 @@ type fixture struct {
 	tb     *testutil.TestBridge
 	app    *App
 	outDir string
+	chart  *chart.Chart
 
 	scriptPaths      []string
 	fakeCamera       bool
@@ -301,6 +307,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		StartApp:       f.startApp,
 		StopApp:        f.stopApp,
 		RunSubTest:     f.runSubTest,
+		PrepareChart:   f.prepareChart,
 		SetDebugParams: f.setDebugParams}
 }
 
@@ -349,6 +356,13 @@ func (f *fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	defer func() {
 		f.debugParams = DebugParams{}
 	}()
+
+	if f.chart != nil {
+		if err := f.chart.Close(ctx, f.outDir); err != nil {
+			s.Error("Failed to close chart: ", err)
+		}
+		f.chart = nil
+	}
 
 	if f.launchCCA {
 		if err := f.stopApp(ctx, s.HasError()); err != nil {
@@ -442,6 +456,26 @@ func (f *fixture) runSubTest(ctx context.Context, subTestFunc SubTestFunc, param
 	}(cleanupCtx)
 
 	return subTestFunc(ctx, app)
+}
+
+func (f *fixture) prepareChart(ctx context.Context, addr, keyFile, contentPath string) (retErr error) {
+	var sopt ssh.Options
+	ssh.ParseTarget(addr, &sopt)
+	sopt.KeyFile = keyFile
+	sopt.ConnectTimeout = 10 * time.Second
+	conn, err := ssh.New(ctx, &sopt)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to chart tablet")
+	}
+	// No need to close ssh connection since chart will handle it when cleaning
+	// up.
+
+	c, err := chart.SetUp(ctx, conn, contentPath, f.outDir)
+	if err != nil {
+		return errors.Wrap(err, "failed to prepare chart tablet")
+	}
+	f.chart = c
+	return nil
 }
 
 func (f *fixture) testBridge() *testutil.TestBridge {

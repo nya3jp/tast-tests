@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/camera/chart"
 	"chromiumos/tast/common/media/caps"
-	"chromiumos/tast/remote/bundles/cros/camera/chart"
 	"chromiumos/tast/rpc"
 	pb "chromiumos/tast/services/cros/camerabox"
 	"chromiumos/tast/ssh/linuxssh"

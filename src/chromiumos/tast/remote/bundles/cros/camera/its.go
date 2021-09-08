@@ -13,11 +13,11 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/camera/chart"
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/bundles/cros/camera/chart"
 	"chromiumos/tast/remote/bundles/cros/camera/pre"
 	pb "chromiumos/tast/services/cros/camerabox"
 	"chromiumos/tast/testing"
