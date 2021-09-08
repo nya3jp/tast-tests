@@ -16,6 +16,24 @@
       "message": "Sorry, do you mind taking another look Hsin-chen? I changed it to just restore the property instead of setting it to true at the end.",
       "revId": "b23062f929ce8d3426b1ca61fd3e364c3904fb77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "199cb60a_7a2aa3ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-09-08T17:32:15Z",
+      "side": 1,
+      "message": "Still LGTM",
+      "parentUuid": "0ea96ddb_773346da",
+      "revId": "b23062f929ce8d3426b1ca61fd3e364c3904fb77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
