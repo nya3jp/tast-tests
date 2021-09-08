@@ -34,18 +34,18 @@ const MyFilesPath = "/home/chronos/user/MyFiles"
 // filesTitlePrefix is the prefix of the Ash window title.
 const filesTitlePrefix = "Files - "
 
-// Context menu items for a file.
+// Context menu items for a file, values are the a11y name.
 const (
 	Open         = "Open"
 	OpenWith     = "Open with…"
-	Cut          = "Cut"
-	Copy         = "Copy"
-	Paste        = "Paste"
-	GetInfo      = "Get info"
-	Rename       = "Rename"
-	Delete       = "Delete"
+	Cut          = "Cut Ctrl+X"
+	Copy         = "Copy Ctrl+C"
+	Paste        = "Paste Ctrl+V"
+	GetInfo      = "Get info Space" // Space is the key shortcut.
+	Rename       = "Rename Ctrl+Enter"
+	Delete       = "Delete Alt+Backspace"
 	ZipSelection = "Zip select"
-	NewFolder    = "New folder"
+	NewFolder    = "New folder Ctrl+E"
 	Share        = "Share"
 )
 

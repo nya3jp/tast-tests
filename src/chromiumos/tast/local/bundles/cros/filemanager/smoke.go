@@ -63,7 +63,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 		files.WaitForFile(textFile),
 		// Open the more menu and check for the new folder button.
 		files.ClickMoreMenuItem(),
-		files.WaitUntilExists(nodewith.Name("New folder").Role(role.MenuItem)),
+		files.WaitUntilExists(nodewith.Name(filesapp.NewFolder).Role(role.MenuItem)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to smoke test the Files App: ", err)
 	}
