@@ -43,14 +43,16 @@ func findAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonT
 func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, tryLimit int, op operation) error {
 	const (
 		defaultUITimeout = 20 * time.Second
+		shortUITimeout   = 10 * time.Second
 
-		accountSetupText = "Complete account setup"
-		permissionsText  = "needs access to"
-		cantDownloadText = "Can.t download.*"
-		cantInstallText  = "Can.t install.*"
-		versionText      = "Your device isn.t compatible with this version."
-		compatibleText   = "Your device is not compatible with this item."
-		openMyAppsText   = "Please open my apps.*"
+		accountSetupText   = "Complete account setup"
+		permissionsText    = "needs access to"
+		cantDownloadText   = "Can.t download.*"
+		cantInstallText    = "Can.t install.*"
+		versionText        = "Your device isn.t compatible with this version."
+		compatibleText     = "Your device is not compatible with this item."
+		openMyAppsText     = "Please open my apps.*"
+		termsOfServiceText = "Terms of Service"
 
 		acceptButtonText   = "accept"
 		continueButtonText = "continue"
@@ -108,6 +110,9 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 			// When Play Store hits the rate limit it sometimes show "Your device is not compatible with this item." error.
 			// This error is incorrect and should be ignored like the "Can't download <app name>" error.
 			{compatibleText, okButtonText},
+			// Somehow, playstore shows a ToS dialog upon opening even after playsore
+			// optin finishes. Click "accept" button to accept and dismiss.
+			{termsOfServiceText, acceptButtonText},
 		} {
 			if err := findAndDismissDialog(ctx, d, val.dialogText, val.buttonText, defaultUITimeout); err != nil {
 				return testing.PollBreak(err)
@@ -149,7 +154,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Complete account setup if necessary.
-		if err := d.Object(ui.Text(accountSetupText)).Exists(ctx); err == nil {
+		if err := d.Object(ui.Text(accountSetupText)).WaitForExists(ctx, shortUITimeout); err == nil {
 			testing.ContextLog(ctx, "Completing account setup")
 			continueButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+continueButtonText))
 			if err := continueButton.WaitForExists(ctx, defaultUITimeout); err != nil {
