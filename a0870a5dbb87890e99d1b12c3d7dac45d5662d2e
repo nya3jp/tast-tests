@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e0db520_6b4b39e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-08T22:39:07Z",
+      "side": 1,
+      "message": "The test will work on prod esims or test esims. There is no prerequisite of 2 profiles either. It iterates through all profiles on the eSIM (atleast 1 preinstalled profile from R\u0026S is guaranteed)",
+      "parentUuid": "c44936b9_691a01ac",
+      "revId": "a0870a5dbb87890e99d1b12c3d7dac45d5662d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44d4b179_0790a3ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
         "patchSetId": 4
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbe35e5b_66437f6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-08T22:39:07Z",
+      "side": 1,
+      "message": "Only one profile can be in an enabled state at a time.",
+      "parentUuid": "44d4b179_0790a3ea",
+      "revId": "a0870a5dbb87890e99d1b12c3d7dac45d5662d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad5a3202_35b47a5a",
         "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
         "patchSetId": 4
@@ -48,6 +84,24 @@
       "writtenOn": "2021-09-08T22:08:19Z",
       "side": 1,
       "message": "Might have to set euicc certs with UseTestCerts(or GsmaTestCertPath) method call if euiccNum is \u00271\u0027, though test is only for prod profiles switching euicc_helper will be common.",
+      "revId": "a0870a5dbb87890e99d1b12c3d7dac45d5662d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f37933_c99b1df7",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-08T22:39:07Z",
+      "side": 1,
+      "message": "The problem is euiccNum\u003d1 no longer means a test eSIM. On L850, both test and prod eSIM can be on slot 0.\n\nI am trying to detect this within hermes.",
+      "parentUuid": "ad5a3202_35b47a5a",
       "revId": "a0870a5dbb87890e99d1b12c3d7dac45d5662d2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
