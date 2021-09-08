@@ -33,6 +33,24 @@
       "message": "So, now I think what you need is\n\ncmdRunnger.Run(ctx, \"[\", \"-d\", userShadowDir, \"]\")\n\nno shell is needed, since \"[\" is a command.\nAlso you do not need to parse the stdout.\nEscape is also unnecessary here, since Run() should handle it.",
       "revId": "2e2bbfb0592709124200fd19196a1c0952114645",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8c6b8e9_514522ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-09-08T22:40:52Z",
+      "side": 1,
+      "message": "But how do I get the return code then? The thing will just return empty output and no error regardless of whether the directory exists or not, so I need to either echo something on true or echo the `$?` after doing so.",
+      "parentUuid": "0cca9903_7d7f7c03",
+      "revId": "2e2bbfb0592709124200fd19196a1c0952114645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
