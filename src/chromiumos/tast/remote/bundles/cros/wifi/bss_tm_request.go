@@ -139,10 +139,6 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 				Method:         wifi.ExpectShillPropertyRequest_CHECK_ONLY,
 			}}
 		}
-		props := getProps(roamBSSID)
-		waitCtx, cancel := context.WithTimeout(ctx, bssTMRoamTimeout)
-		defer cancel()
-		waitForProps, err := tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
 		if err != nil {
 			s.Fatal("Failed to create Shill property watcher: ", err)
 		}
@@ -184,6 +180,11 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 				s.Fatal("Unable to discover roam BSSID: ", err)
 			}
 		}
+
+		props := getProps(roamBSSID)
+		waitCtx, cancel := context.WithTimeout(ctx, bssTMRoamTimeout)
+		defer cancel()
+		waitForProps, err := tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
 
 		sendReqAndWaitConnected := func(from, to string, fromAP, toAP *wificell.APIface, req hostapd.BSSTMReqParams, expectConnectFail bool) {
 			// Send BSS Transition Management Request to client.
