@@ -65,9 +65,9 @@ func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrom
 	}
 	defer crastestclient.Unmute(ctx)
 
-	testing.ContextLog(ctx, "Measuring performance")
+	testing.ContextLog(ctx, "Starting playback")
 	if err = measurePerformance(ctx, cs, cr, s.DataFileSystem(), videoName, decoderType, s.OutDir()); err != nil {
-		s.Fatal("Failed to collect CPU usage and dropped frames: ", err)
+		s.Fatal("Playback test failed: ", err)
 	}
 }
 
