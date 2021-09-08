@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "840880ce_ce7aecea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-08T01:43:01Z",
+      "side": 1,
+      "message": "Done. I capped the number of attempts at 20 instead of infinitely looping, which is equivalent to a polling timeout, for this test and familylink.DeniedSitesBlocked.",
+      "parentUuid": "db7d4355_adbf0b73",
+      "range": {
+        "startLine": 38,
+        "startChar": 22,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "ceba180a93ea45da3127a6577c558c18f7b1388d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a50bf41c_5bebd6c7",
