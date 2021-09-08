@@ -68,6 +68,24 @@
       "parentUuid": "811ae2bb_007656fc",
       "revId": "0ffa43cff54a8fb042cf9474e3df47672678bc3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75feeeae_065cb3ff",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-09-08T17:17:04Z",
+      "side": 1,
+      "message": "👍",
+      "parentUuid": "6a42c843_778620c0",
+      "revId": "0ffa43cff54a8fb042cf9474e3df47672678bc3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
