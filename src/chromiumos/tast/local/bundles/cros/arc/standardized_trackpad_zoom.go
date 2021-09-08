@@ -16,41 +16,29 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         StandardizedTouchscreenZoom,
-		Desc:         "Functional test that installs an app and tests that a standard touchscreen zoom in, and zoom out gestures work",
+		Func:         StandardizedTrackpadZoom,
+		Desc:         "Functional test that installs an app and tests standard trackpad zoom in and zoom out functionality. Tests are only performed in clamshell mode as tablets don't support the trackpad",
 		Contacts:     []string{"davidwelling@google.com", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{
 			{
-				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenZoomTest),
+				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTrackpadZoomTest),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "arcBooted",
 				ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
-			}, {
-				Name:              "tablet_mode",
-				Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchscreenZoomTest),
-				ExtraSoftwareDeps: []string{"android_p"},
-				Fixture:           "arcBootedInTabletMode",
-				ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 			}, {
 				Name:              "vm",
-				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenZoomTest),
+				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTrackpadZoomTest),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "arcBooted",
 				ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
-			}, {
-				Name:              "vm_tablet_mode",
-				Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchscreenZoomTest),
-				ExtraSoftwareDeps: []string{"android_vm"},
-				Fixture:           "arcBootedInTabletMode",
-				ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 			}},
 	})
 }
 
-func StandardizedTouchscreenZoom(ctx context.Context, s *testing.State) {
+func StandardizedTrackpadZoom(ctx context.Context, s *testing.State) {
 	const (
 		apkName      = "ArcStandardizedInputTest.apk"
 		appName      = "org.chromium.arc.testapp.arcstandardizedinputtest"
@@ -61,7 +49,7 @@ func StandardizedTouchscreenZoom(ctx context.Context, s *testing.State) {
 	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
-func runStandardizedTouchscreenZoomTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
+func runStandardizedTrackpadZoomTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
 	txtZoomID := testParameters.AppPkgName + ":id/txtZoom"
 	txtZoomSelector := testParameters.Device.Object(ui.ID(txtZoomID))
 
@@ -71,48 +59,48 @@ func runStandardizedTouchscreenZoomTest(ctx context.Context, s *testing.State, t
 	txtZoomOutStateID := testParameters.AppPkgName + ":id/txtZoomOutState"
 	zoomOutSuccessLabelSelector := testParameters.Device.Object(ui.ID(txtZoomOutStateID), ui.Text("ZOOM OUT: COMPLETE"))
 
-	touchScreen, err := input.Touchscreen(ctx)
+	trackpad, err := input.Trackpad(ctx)
 	if err != nil {
-		s.Fatal("Unable to initialize the touchscreen, info: ", err)
+		s.Fatal("Failed to initialize the trackpad: ", err)
 	}
-	defer touchScreen.Close()
+	defer trackpad.Close()
 
 	if err := txtZoomSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("Unable to find the element to zoom in on, info: ", err)
+		s.Fatal("Failed to find the element to zoom in on: ", err)
 	}
 
 	// No labels should be in their complete state before the tests begin.
 	if err := zoomInSuccessLabelSelector.WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The zoom in success label should not yet exist, info: ", err)
+		s.Fatal("Failed to verify the zoom in success label does not yet exist: ", err)
 	}
 
 	if err := zoomOutSuccessLabelSelector.WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The zoom out success label should not yet exist, info: ", err)
+		s.Fatal("Failed to verify the zoom out success label does not yet exist: ", err)
 	}
 
 	// After the zoom in, only the zoom in label should be in the success state.
-	if err := standardizedtestutil.TouchscreenZoom(ctx, touchScreen, testParameters, txtZoomSelector, standardizedtestutil.ZoomIn); err != nil {
-		s.Fatal("Unable to perform the zoom, info: ", err)
+	if err := standardizedtestutil.TrackpadZoom(ctx, trackpad, testParameters, txtZoomSelector, standardizedtestutil.ZoomIn); err != nil {
+		s.Fatal("Failed to perform the zoom: ", err)
 	}
 
 	if err := zoomInSuccessLabelSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The zoom in success label should exist, info: ", err)
+		s.Fatal("Failed to verify the zoom in success label exists: ", err)
 	}
 
 	if err := zoomOutSuccessLabelSelector.WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The zoom out success label should not yet exist, info: ", err)
+		s.Fatal("Failed to verify the zoom out success label does not yet exist: ", err)
 	}
 
 	// After the zoom out, all zoom labels should be in the success state.
-	if err := standardizedtestutil.TouchscreenZoom(ctx, touchScreen, testParameters, txtZoomSelector, standardizedtestutil.ZoomOut); err != nil {
-		s.Fatal("Unable to perform the zoom, info: ", err)
+	if err := standardizedtestutil.TrackpadZoom(ctx, trackpad, testParameters, txtZoomSelector, standardizedtestutil.ZoomOut); err != nil {
+		s.Fatal("Failed to perform the zoom: ", err)
 	}
 
 	if err := zoomInSuccessLabelSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The zoom in success label should exist, info: ", err)
+		s.Fatal("Failed to verify the zoom in success label exists: ", err)
 	}
 
 	if err := zoomOutSuccessLabelSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The zoom out success label should exist, info: ", err)
+		s.Fatal("Failed to verify the zoom out success label exists: ", err)
 	}
 }
