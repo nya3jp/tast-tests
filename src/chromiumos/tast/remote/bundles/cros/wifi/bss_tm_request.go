@@ -8,6 +8,8 @@ import (
 	"context"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
@@ -59,6 +61,31 @@ func init() {
 
 func BSSTMRequest(ctx context.Context, s *testing.State) {
 	tf := s.FixtValue().(*wificell.TestFixture)
+
+	allowRoamResp, err := tf.WifiClient().GetScanAllowRoamProperty(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Failed to get the ScanAllowRoam property: ", err)
+	}
+	if allowRoamResp.Allow {
+		if _, err := tf.WifiClient().SetScanAllowRoamProperty(ctx, &wifi.SetScanAllowRoamPropertyRequest{Allow: false}); err != nil {
+			s.Error("Failed to set ScanAllowRoam property to false: ", err)
+		}
+		defer func(ctx context.Context) {
+			if _, err := tf.WifiClient().SetScanAllowRoamProperty(ctx, &wifi.SetScanAllowRoamPropertyRequest{Allow: allowRoamResp.Allow}); err != nil {
+				s.Errorf("Failed to set ScanAllowRoam property back to %v: %v", allowRoamResp.Allow, err)
+			}
+		}(ctx)
+	}
+
+	ctx, restoreBg, err := tf.WifiClient().TurnOffBgscan(ctx)
+	if err != nil {
+		s.Fatal("Failed to turn off the background scan: ", err)
+	}
+	defer func() {
+		if err := restoreBg(); err != nil {
+			s.Error("Failed to restore the background scan config: ", err)
+		}
+	}()
 
 	runTest := func(ctx context.Context, s *testing.State, waitForScan bool) {
 		// Generate BSSIDs for the two APs.

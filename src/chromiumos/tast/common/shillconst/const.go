@@ -92,6 +92,7 @@ const (
 	ManagerPropertyServices               = "Services"
 	ManagerPropertyServiceCompleteList    = "ServiceCompleteList"
 	ManagerPropertyGlobalFTEnabled        = "WiFi.GlobalFTEnabled"
+	ManagerPropertyScanAllowRoam          = "WiFi.ScanAllowRoam"
 )
 
 // Service property names defined in dbus-constants.h .
