@@ -38,9 +38,9 @@ const (
 	// FacingBack is the constant string from JavaScript VideoFacingModeEnum.
 	FacingBack Facing = "environment"
 	// FacingFront is the constant string from JavaScript VideoFacingModeEnum.
-	FacingFront = "user"
+	FacingFront Facing = "user"
 	// FacingExternal is the constant string indicating external camera facing.
-	FacingExternal = "external"
+	FacingExternal Facing = "external"
 )
 
 // DeviceID is video device id from JavaScript navigator.mediaDevices.enumerateDevices.
