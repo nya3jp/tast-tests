@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package quicksettings
 
 import (
 	"context"
@@ -18,21 +18,22 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: UbertrayOpenSettings,
+		Func: OpenSettings,
 		Desc: "Checks that settings can be opened from Quick Settings",
 		Contacts: []string{
+			"cros-system-ui-eng@google.com",
 			"chromeos-sw-engprod@google.com",
 			"amehfooz@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
-// UbertrayOpenSettings tests that we can open the settings app from Quick Settings.
-func UbertrayOpenSettings(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+// OpenSettings tests that we can open the settings app from Quick Settings.
+func OpenSettings(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
