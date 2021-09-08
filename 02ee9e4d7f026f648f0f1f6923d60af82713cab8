@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3cae6e3b_70036bbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-09-08T22:55:03Z",
+      "side": 1,
+      "message": "Yes, that seems like a better fit.  Coreboot\u0027s driver for the storage that typically gets exercised here won\u0027t be resident in memory when this test executes, correct?  We should consider what the SUT is here.  If we are trying to find Linux kernel bugs (suspect so, since IIUC this test looks at the kernel log, where the kernel is the version in the system image), the kernel bundle or hardware bundle may be optimal fits.  If we are trying to find systemically bad storage, AVL testing is likely the best place to look at incorporating this test.  If we are trying to exercise the coreboot driver for external memory cards, I think FAFT could be a good fit.\n\nWhat is the intended SUT for this test? (and then we can drill down further from there)",
+      "parentUuid": "dde4bcd9_33c4bc9e",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f3907cd_4acca9a3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-08T22:30:08Z",
       "side": 1,
       "message": "This should go into group:stress instead. That will include this test in suite:stress, whereas the old test was in suite:faft_stress. @Kevin to check me on this, but I don\u0027t think there is any automated or recommened runs of suite:stress.",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 65
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7434601a_454cb6f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-09-08T22:55:03Z",
+      "side": 1,
+      "message": "Yes, that sounds correct. SPERA team is tasked with enabling MTBF testing.  Depending on what the SUT is here, we may want to reach out to the SPERA team.",
+      "parentUuid": "5f3907cd_4acca9a3",
       "range": {
         "startLine": 26,
         "startChar": 26,
