@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80ddd7e5_116abc59",
+        "filename": "src/chromiumos/tast/local/chrome/internal/driver/conn.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-08T21:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e94924f_ed114f17",
+      "revId": "26e5bfb32a9916c4e3dbc25066deb17ad952bcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a5f27e6_14effcd8",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-08T11:44:29Z",
       "side": 1,
       "message": "nit: Use a constant for clarity.",
+      "range": {
+        "startLine": 217,
+        "startChar": 58,
+        "endLine": 217,
+        "endChar": 60
+      },
+      "revId": "26e5bfb32a9916c4e3dbc25066deb17ad952bcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a4b334c_2e8c7ced",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-08T21:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a5f27e6_14effcd8",
       "range": {
         "startLine": 217,
         "startChar": 58,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a8596ba_66a8aa3e",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-08T21:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67177d18_b6fceafa",
+      "revId": "26e5bfb32a9916c4e3dbc25066deb17ad952bcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68ec6de0_1f409d31",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-09-08T11:44:29Z",
       "side": 1,
       "message": "Use a testing.Poll for the retry to take timeouts into account. I\u0027d also avoid a recursive call in a function this long.\n\nMaybe also split the function into multiple parts to structure the code a bit?",
+      "revId": "26e5bfb32a9916c4e3dbc25066deb17ad952bcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "619e3c7c_93b55e1a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-08T21:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68ec6de0_1f409d31",
       "revId": "26e5bfb32a9916c4e3dbc25066deb17ad952bcea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dbb6821_0cb1c28b",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-08T21:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb043a2f_0f937b91",
+      "revId": "26e5bfb32a9916c4e3dbc25066deb17ad952bcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49a83a00_f9ebc9b9",
@@ -105,6 +201,30 @@
       "writtenOn": "2021-09-08T11:44:29Z",
       "side": 1,
       "message": "nit: an",
+      "range": {
+        "startLine": 83,
+        "startChar": 53,
+        "endLine": 83,
+        "endChar": 54
+      },
+      "revId": "26e5bfb32a9916c4e3dbc25066deb17ad952bcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae8c49b_53ff5e34",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-08T21:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49a83a00_f9ebc9b9",
       "range": {
         "startLine": 83,
         "startChar": 53,
@@ -138,6 +258,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b26bf75_135f6bdc",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-08T21:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0d0ac4e_18733961",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 21
+      },
+      "revId": "26e5bfb32a9916c4e3dbc25066deb17ad952bcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6137cbf4_041ef2a0",
@@ -161,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9f569a0_04720016",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-08T21:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6137cbf4_041ef2a0",
+      "range": {
+        "startLine": 146,
+        "startChar": 3,
+        "endLine": 146,
+        "endChar": 31
+      },
+      "revId": "26e5bfb32a9916c4e3dbc25066deb17ad952bcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3331568_da62ae98",
@@ -174,6 +342,30 @@
       "writtenOn": "2021-09-08T11:44:29Z",
       "side": 1,
       "message": "nit: GAIAEnterpriseEnroll to be consistent with the Login options",
+      "range": {
+        "startLine": 228,
+        "startChar": 5,
+        "endLine": 228,
+        "endChar": 21
+      },
+      "revId": "26e5bfb32a9916c4e3dbc25066deb17ad952bcea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29b461a5_dd46c9df",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-08T21:16:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3331568_da62ae98",
       "range": {
         "startLine": 228,
         "startChar": 5,
