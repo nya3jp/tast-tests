@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bd33633_a9326d98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-08T04:27:32Z",
+      "side": 1,
+      "message": "With out argument \"-n\", lspci shows the string name instead of hex id.",
+      "parentUuid": "589071cc_ed2d37e2",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "df7ae26157a1087fe84a883e4feff25d08a32440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b93bbb4_49d7d898",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-08T04:22:15Z",
       "side": 1,
       "message": "Please remove the trailing space from this line to line 50.",
+      "range": {
+        "startLine": 17,
+        "startChar": 23,
+        "endLine": 17,
+        "endChar": 66
+      },
+      "revId": "df7ae26157a1087fe84a883e4feff25d08a32440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "889b340f_a6bd5c9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-08T04:27:32Z",
+      "side": 1,
+      "message": "This is the raw data from the command output to test the parser. I\u0027d like to keep it since the parser should be able to handle the trailing space.",
+      "parentUuid": "3b93bbb4_49d7d898",
       "range": {
         "startLine": 17,
         "startChar": 23,
