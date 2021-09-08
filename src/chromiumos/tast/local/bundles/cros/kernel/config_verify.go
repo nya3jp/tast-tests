@@ -331,12 +331,17 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 	}
 
 	if ver.IsOrLater(4, 19) {
-		builtin = append(builtin, "HAVE_EBPF_JIT", "BPF_JIT_ALWAYS_ON", "STACKPROTECTOR")
+		builtin = append(builtin, "HAVE_EBPF_JIT", "BPF_JIT_ALWAYS_ON", "STACKPROTECTOR", "STACKPROTECTOR_STRONG")
 	} else {
 		// Security; adds stack buffer overflow protections.
 		builtin = append(builtin, "CC_STACKPROTECTOR")
 		// bpf(2) syscall can be used to generate code patterns in kernel memory.
 		missing = append(missing, "BPF_SYSCALL")
+	}
+
+	if arch == "aarch64" && ver.IsOrLater(5, 0) {
+		// Security: uses a different stack canary for each task.
+		builtin = append(builtin, "STACKPROTECTOR_PER_TASK")
 	}
 
 	if arch == "aarch64" && ver.IsOrLater(5, 9) && ver.IsOrLess(5, 10) {
