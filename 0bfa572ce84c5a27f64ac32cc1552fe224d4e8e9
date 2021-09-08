@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719a1176_6c109073",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-09-08T00:48:12Z",
+      "side": 1,
+      "message": "Please mark this as verified if you can confirm it passes on the most recent Voxel build.",
+      "revId": "0bfa572ce84c5a27f64ac32cc1552fe224d4e8e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
