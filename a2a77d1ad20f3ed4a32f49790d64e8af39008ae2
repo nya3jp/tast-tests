@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "417c8ce6_f530eabc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-09-08T17:10:31Z",
+      "side": 1,
+      "message": "+2 with tiniest nit.",
+      "revId": "a2a77d1ad20f3ed4a32f49790d64e8af39008ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c780f7d1_b3526e17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/config_verify.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-09-08T17:10:31Z",
+      "side": 1,
+      "message": "Tiniest of nits: end with period.",
+      "range": {
+        "startLine": 343,
+        "startChar": 54,
+        "endLine": 343,
+        "endChar": 58
+      },
+      "revId": "a2a77d1ad20f3ed4a32f49790d64e8af39008ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
