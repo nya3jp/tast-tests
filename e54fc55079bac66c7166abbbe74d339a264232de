@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ff7039b_c35d059b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-08T21:13:53Z",
+      "side": 1,
+      "message": "I see. I think the way you did it in the more recent PS is a bit more consistent with how this sort of thing is done elsewhere, though.",
+      "parentUuid": "7e775c1d_5094389b",
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75cc6cee_a6726f0a",
@@ -214,6 +232,30 @@
       "side": 1,
       "message": "We can\u0027t do much about it right now. The issue is likely in the eSIM OS. Test profiles aren\u0027t visible to the user, so this is likely a P4 that requires significant debug effort from our side.",
       "parentUuid": "69ca4c14_83b76e53",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "revId": "e54fc55079bac66c7166abbbe74d339a264232de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b68b1965_c1d8aec7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-08T21:13:53Z",
+      "side": 1,
+      "message": "OK. Thanks for adding the bug.",
+      "parentUuid": "9b2545a3_77e39aff",
       "range": {
         "startLine": 82,
         "startChar": 0,
