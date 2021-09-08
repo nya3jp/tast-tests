@@ -16,6 +16,23 @@
       "message": "Just a cleaning up the legacy method.\nPTAL as a test author?",
       "revId": "a6c496a94ef915c31cc034612d9573d247142d36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79406a37_c2f831eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-09-08T09:21:31Z",
+      "side": 1,
+      "message": "LGTM, thanks for fixing the missing return as well!",
+      "revId": "a6c496a94ef915c31cc034612d9573d247142d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
