@@ -177,6 +177,29 @@
       },
       "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfbae6c1_bf03fef6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-08T22:40:32Z",
+      "side": 1,
+      "message": "The old test runs dmesg -cT, so that you don\u0027t have to keep processing the same messages over and over.",
+      "range": {
+        "startLine": 60,
+        "startChar": 38,
+        "endLine": 60,
+        "endChar": 43
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
