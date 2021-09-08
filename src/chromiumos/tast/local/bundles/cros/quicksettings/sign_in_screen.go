@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -103,8 +103,8 @@ func SignInScreen(ctx context.Context, s *testing.State) {
 	}
 
 	// Loop through all the Quick Settings nodes and verify if they exist.
-	for node, params := range checkNodes {
-		shown, err := ui.Exists(ctx, tconn, params)
+	for node, finder := range checkNodes {
+		shown, err := uiauto.New(tconn).IsNodeFound(ctx, finder)
 		if err != nil {
 			s.Fatalf("Failed to check existence of %v: %v", node, err)
 		}

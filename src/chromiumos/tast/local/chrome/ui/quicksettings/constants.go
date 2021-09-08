@@ -7,109 +7,68 @@ package quicksettings
 import (
 	"regexp"
 
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 )
 
-// quickSettingsParams are the parameters to find the Quick Settings area in the UI.
-var quickSettingsParams ui.FindParams = ui.FindParams{
-	ClassName: "UnifiedSystemTrayView",
-}
+// quickSettingsFinder is the finder to find the Quick Settings area in the UI.
+var quickSettingsFinder = nodewith.ClassName("UnifiedSystemTrayView")
 
-// CollapseBtnParams are the UI params for the collapse button, which collapses and expands Quick Settings.
-var CollapseBtnParams ui.FindParams = ui.FindParams{
-	Role:      ui.RoleTypeButton,
-	ClassName: "CollapseButton",
-}
+// CollapseButton is the finder for the collapse button, which collapses and expands Quick Settings.
+var CollapseButton = nodewith.Role(role.Button).ClassName("CollapseButton")
 
-// LockBtnParams are the UI params for Quick Settings' lock button.
-var LockBtnParams ui.FindParams = ui.FindParams{
-	Name:      "Lock",
-	ClassName: "TopShortcutButton",
-}
+// LockButton is the finder for Quick Settings' lock button.
+var LockButton = nodewith.Name("Lock").ClassName("TopShortcutButton")
 
-// SettingsBtnParams are the UI params for the Quick Settings' setting button.
-var SettingsBtnParams ui.FindParams = ui.FindParams{
-	Name:      "Settings",
-	ClassName: "TopShortcutButton",
-}
+// SettingsButton is the finder for the Quick Settings' setting button.
+var SettingsButton = nodewith.Name("Settings").ClassName("TopShortcutButton")
 
-// ShutdownBtnParams are the UI params for the shutdown button in Quick Settings.
-var ShutdownBtnParams ui.FindParams = ui.FindParams{
-	Name:      "Shut down",
-	ClassName: "TopShortcutButton",
-}
+// ShutdownButton is the finder for the shutdown button in Quick Settings.
+var ShutdownButton = nodewith.Name("Shut down").ClassName("TopShortcutButton")
 
-// SignoutBtnParams are the UI params for the 'Sign out' Quick Settings button.
-var SignoutBtnParams ui.FindParams = ui.FindParams{
-	Role:      ui.RoleTypeButton,
-	Name:      "Sign out",
-	ClassName: "SignOutButton",
-}
+// SignoutButton is the finder for the 'Sign out' Quick Settings button.
+var SignoutButton = nodewith.Role(role.Button).Name("Sign out").ClassName("SignOutButton")
 
 // SliderType represents the Quick Settings slider elements.
 type SliderType string
 
 // List of descriptive slider names. These don't correspond to any UI node attributes,
-// but will be used as keys to map descriptive names to the UI params defined below.
+// but will be used as keys to map descriptive names to the finders defined below.
 const (
 	SliderTypeVolume     SliderType = "Volume"
 	SliderTypeBrightness SliderType = "Brightness"
 	SliderTypeMicGain    SliderType = "Mic gain"
 )
 
-// SliderParamMap maps slider names (SliderType) to the params to find the sliders in the UI.
-var SliderParamMap = map[SliderType]ui.FindParams{
-	SliderTypeVolume:     VolumeSliderParams,
-	SliderTypeBrightness: BrightnessSliderParams,
-	SliderTypeMicGain:    MicGainSliderParams,
+// SliderParamMap maps slider names (SliderType) to the  to find the sliders in the UI.
+var SliderParamMap = map[SliderType]*nodewith.Finder{
+	SliderTypeVolume:     VolumeSlider,
+	SliderTypeBrightness: BrightnessSlider,
+	SliderTypeMicGain:    MicGainSlider,
 }
 
-// BrightnessSliderParams are the UI params for the Quick Settings brightness slider.
-var BrightnessSliderParams ui.FindParams = ui.FindParams{
-	Name:      "Brightness",
-	ClassName: "Slider",
-	Role:      ui.RoleTypeSlider,
-}
+// BrightnessSlider is the finder for the Quick Settings brightness slider.
+var BrightnessSlider = nodewith.Name("Brightness").ClassName("Slider").Role(role.Slider)
 
-// VolumeSliderParams are the UI params for the Quick Settings volume slider.
-var VolumeSliderParams ui.FindParams = ui.FindParams{
-	Name:      "Volume",
-	ClassName: "Slider",
-	Role:      ui.RoleTypeSlider,
-}
+// VolumeSlider is the finder for the Quick Settings volume slider.
+var VolumeSlider = nodewith.Name("Volume").ClassName("Slider").Role(role.Slider)
 
-// MicGainSliderParams are the UI params for the Quick Settings mic gain slider.
-// The params are identical to the volume slider, but it's located on a different
+// MicGainSlider is the finder for the Quick Settings mic gain slider.
+// The Finder is identical to the volume slider, but it's located on a different
 // page of Quick Settings.
-var MicGainSliderParams ui.FindParams = ui.FindParams{
-	Name:      "Volume",
-	ClassName: "Slider",
-	Role:      ui.RoleTypeSlider,
-}
+var MicGainSlider = nodewith.Name("Volume").ClassName("Slider").Role(role.Slider)
 
-// MicToggleParams are the UI params for the button that toggles the microphone's mute status.
-var MicToggleParams ui.FindParams = ui.FindParams{
-	Role:       ui.RoleTypeToggleButton,
-	Attributes: map[string]interface{}{"name": regexp.MustCompile("Toggle Mic")},
-}
+// MicToggle is the finder for the button that toggles the microphone's mute status.
+var MicToggle = nodewith.Role(role.ToggleButton).Attribute("name", regexp.MustCompile("Toggle Mic"))
 
-// ManagedInfoViewParams are the UI params for the Quick Settings management information display.
-var ManagedInfoViewParams ui.FindParams = ui.FindParams{
-	Role:      ui.RoleTypeButton,
-	ClassName: "EnterpriseManagedView",
-}
+// ManagedInfoView is the finder for the Quick Settings management information display.
+var ManagedInfoView = nodewith.Role(role.Button).ClassName("EnterpriseManagedView")
 
-// BatteryViewParams are the UI params for the Quick Settings date/time display.
-var BatteryViewParams ui.FindParams = ui.FindParams{
-	Role:      ui.RoleTypeLabelText,
-	ClassName: "BatteryView",
-}
+// BatteryView is the finder for the Quick Settings date/time display.
+var BatteryView = nodewith.Role(role.LabelText).ClassName("BatteryView")
 
-// DateViewParams are the UI params for the Quick Settings date/time display.
-var DateViewParams ui.FindParams = ui.FindParams{
-	Role:      ui.RoleTypeButton,
-	ClassName: "DateView",
-}
+// DateView is the finder for the Quick Settings date/time display.
+var DateView = nodewith.Role(role.Button).ClassName("DateView")
 
 // SettingPod represents the name of a setting pod in Quick Settings.
 // These names are contained in the Name attribute of the automation node

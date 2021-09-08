@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -141,8 +142,8 @@ func LockScreen(ctx context.Context, s *testing.State) {
 	}
 
 	// Loop through all the Quick Settings nodes of locked screen and verify if they exist.
-	for node, params := range checkNodes {
-		shown, err := ui.Exists(ctx, tconn, params)
+	for node, finder := range checkNodes {
+		shown, err := uiauto.New(tconn).IsNodeFound(ctx, finder)
 		if err != nil {
 			s.Fatalf("Failed to check existence of %v: %v", node, err)
 		}
