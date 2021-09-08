@@ -23,7 +23,7 @@ func init() {
 		Func:         CommandCd,
 		Desc:         "Test command cd in Terminal window",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
