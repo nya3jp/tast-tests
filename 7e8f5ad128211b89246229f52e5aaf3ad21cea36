@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "895d9367_0ae146a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-08T18:14:14Z",
+      "side": 1,
+      "message": "LGTM from tast side. Please get approval from team before submitting.",
+      "revId": "7e8f5ad128211b89246229f52e5aaf3ad21cea36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
