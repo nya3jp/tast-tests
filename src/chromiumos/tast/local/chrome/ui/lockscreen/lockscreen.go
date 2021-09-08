@@ -13,8 +13,9 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/uig"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -64,62 +65,45 @@ func WaitState(ctx context.Context, tconn *chrome.TestConn, check func(st State)
 	return st, err
 }
 
-// PasswordFieldParams generates FindParams for the password field.
+// PasswordFieldFinder generates Finder for the password field.
 // The password field node can be uniquely identified by its name attribute, which includes the username,
-// such as "Password for username@gmail.com". The FindParams will find the node whose name matches the regex
+// such as "Password for username@gmail.com". The Finder will find the node whose name matches the regex
 // /Password for <username>/, so the domain can be omitted, or the username argument can be an empty
 // string to find the first password field in the hierarchy.
-func PasswordFieldParams(ctx context.Context, tconn *chrome.TestConn, username string) (ui.FindParams, error) {
-	var params ui.FindParams
+func PasswordFieldFinder(ctx context.Context, tconn *chrome.TestConn, username string) (*nodewith.Finder, error) {
 	r, err := regexp.Compile(fmt.Sprintf("Password for %v", username))
 	if err != nil {
-		return params, errors.Wrap(err, "failed to compile regexp for name attribute")
+		return nil, errors.Wrap(err, "failed to compile regexp for name attribute")
 	}
-	attributes := map[string]interface{}{
-		"name": r,
-	}
-	params = ui.FindParams{
-		Role:       ui.RoleTypeTextField,
-		Attributes: attributes,
-	}
-	return params, nil
+	return nodewith.Role(role.TextField).Attribute("name", r), nil
 }
 
 // WaitForPasswordField waits for the password text field for a given user pod to appear in the UI.
 func WaitForPasswordField(ctx context.Context, tconn *chrome.TestConn, username string, timeout time.Duration) error {
-	params, err := PasswordFieldParams(ctx, tconn, username)
+	finder, err := PasswordFieldFinder(ctx, tconn, username)
 	if err != nil {
 		return err
 	}
-	return ui.WaitUntilExists(ctx, tconn, params, timeout)
+	return uiauto.New(tconn).WithTimeout(timeout).WaitUntilExists(finder)(ctx)
 }
 
-// EnterPassword enters and submits the given password. Refer to PasswordFieldParams for username options.
+// EnterPassword enters and submits the given password. Refer to PasswordFieldFinder for username options.
 // It doesn't make any assumptions about the password being correct, so callers should verify the login/lock state afterwards.
 func EnterPassword(ctx context.Context, tconn *chrome.TestConn, username, password string, kb *input.KeyboardEventWriter) error {
-	params, err := PasswordFieldParams(ctx, tconn, username)
+	field, err := PasswordFieldFinder(ctx, tconn, username)
 	if err != nil {
 		return err
 	}
-	field, err := ui.FindWithTimeout(ctx, tconn, params, uiTimeout)
-	if err != nil {
+	ui := uiauto.New(tconn)
+	if err := ui.WithTimeout(uiTimeout).WaitUntilExists(field)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find password box")
 	}
-	defer field.Release(ctx)
-	if err := field.LeftClick(ctx); err != nil {
+	if err := ui.LeftClick(field)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click password box")
 	}
 	// Wait for the field to be focused before entering the password.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := field.Update(ctx); err != nil {
-			return errors.Wrap(err, "failed to update password field node")
-		}
-		if !field.State[ui.StateTypeFocused] {
-			return errors.New("password field not focused yet")
-		}
-		return nil
-	}, nil); err != nil {
-		return err
+	if err := ui.WaitUntilExists(field.Focused())(ctx); err != nil {
+		return errors.Wrap(err, "password field not focused yet")
 	}
 
 	if err := kb.Type(ctx, password+"\n"); err != nil {
@@ -143,10 +127,10 @@ func Lock(ctx context.Context, tconn *chrome.TestConn) error {
 
 // EnterPIN enters the specified PIN.
 func EnterPIN(ctx context.Context, tconn *chrome.TestConn, PIN string) error {
+	ui := uiauto.New(tconn)
 	for i, d := range PIN {
-		if err := uig.Do(ctx, tconn,
-			uig.FindWithTimeout(ui.FindParams{Role: ui.RoleTypeButton, Name: string(d)}, uiTimeout).LeftClick(),
-		); err != nil {
+		button := nodewith.Role(role.Button).Name(string(d))
+		if err := ui.WithTimeout(uiTimeout).LeftClick(button)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to press %q button (Digit %v of PIN)", d, i)
 		}
 	}
@@ -155,5 +139,7 @@ func EnterPIN(ctx context.Context, tconn *chrome.TestConn, PIN string) error {
 
 // SubmitPIN submits the entered PIN.
 func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
-	return uig.Do(ctx, tconn, uig.FindWithTimeout(ui.FindParams{Name: "Submit", Role: ui.RoleTypeButton}, uiTimeout).LeftClick())
+	ui := uiauto.New(tconn)
+	submitButton := nodewith.Name("Submit").Role(role.Button)
+	return ui.WithTimeout(uiTimeout).LeftClick(submitButton)(ctx)
 }
