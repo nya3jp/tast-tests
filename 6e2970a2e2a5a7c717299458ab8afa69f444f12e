@@ -87,6 +87,24 @@
       "parentUuid": "6c9c7d81_df90816b",
       "revId": "6e2970a2e2a5a7c717299458ab8afa69f444f12e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e85ba2_93e8ab7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/freeze_fuse_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-08T07:53:59Z",
+      "side": 1,
+      "message": "My words may be not enough. It seems that filesApp.WaitUntilExists is a little different from ui.WaitUntilExists, and when the former is called \"WindowFinder\" is set as an ancestor by default.",
+      "parentUuid": "cddf4424_eeb7c642",
+      "revId": "6e2970a2e2a5a7c717299458ab8afa69f444f12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
