@@ -28,6 +28,8 @@ func init() {
 		Contacts: []string{"khmel@google.com",
 			"alanding@google.com",
 			"arc-performance@google.com"},
+		// NOTE: This test should never be promoted to critical. It has build dependency and it will
+		//       always fail in PFQ since we don't have ureadahead caches generated at PFQ time.
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
