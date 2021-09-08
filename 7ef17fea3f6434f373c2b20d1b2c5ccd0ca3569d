@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1975e765_bc695739",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-08T09:13:52Z",
+      "side": 1,
+      "message": "A few nit comments.",
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f23410bf_09f23342",
+        "filename": "android/ArcMediaScanTimeTest/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-08T09:13:52Z",
+      "side": 1,
+      "message": "You can remove these lines.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 64
+      },
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff109197_d51e21d9",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-08T09:13:52Z",
+      "side": 1,
+      "message": "This is optional, but in order to make the test robust, you can check intent.getData() inside this method.\n\nintent.getData() should return some URI like file:///storage/emulated/0 for sdcard, and file:///storage/0000000000000000000000000000CAFEF00D2019 for MyFiles.\n\nYou can send the expected URI from the .go file in a similar way like arc.DownloadManager sends |sourceURLKey| [1]. You can probably use \"-d\" option to specify data_uri instead of \"--es\" for extra_string_value [2]. Inside the test app, you can get it by getIntent().getData() (or getIntent().getStringExtra(key) if you use \"--es\" [3]).\n\nYou can hold the expected uri as a class member, and see if intent.getData() matches it:\n  // Inside the class definition\n  private Uri mTargetBroadcastUri\n\n  // inside onCreate()\n  mTargetBroadcastUri \u003d getIntent().getData()\n\n  // inside mMediaScanListener.onReceive()\n  if (intent.getData() !\u003d mTargetBroadcastUri) {\n      return;\n  }\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/download_manager.go;l\u003d253;rcl\u003d0705bfb8521a8ed956ad65281ae35a2fe9af5918\n[2] https://developer.android.com/studio/command-line/adb#IntentSpec\n[3] http://cs/chromeos_public/src/platform/tast-tests/android/ArcDownloadManagerTest/src/org/chromium/arc/testapp/downloadmanager/MainActivity.java;l\u003d47;rcl\u003daea07491ff9538f3cb44cd75986187089c31e508",
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18dca6b2_c5f114ce",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-08T09:13:52Z",
+      "side": 1,
+      "message": "You can also check\n\n  intent.getAction() \u003d\u003d Intent.ACTION_MEDIA_SCANNER_STARTED\n  \nto make things more robust and the intention clearer.",
+      "range": {
+        "startLine": 36,
+        "startChar": 18,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6172729a_7652d5b8",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-08T09:13:52Z",
+      "side": 1,
+      "message": "Same as start. You can check\n  intent.getAction() \u003d\u003d Intent.ACTION_MEDIA_SCANNER_FINISHED",
+      "range": {
+        "startLine": 38,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a07244c_cee27ce6",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-08T09:13:52Z",
+      "side": 1,
+      "message": "nit: This one does not need to be a member variable.\n  long finishedTime \u003d SystemClock.uptimeMillis()",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42502f34_a26047d2",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-08T09:13:52Z",
+      "side": 1,
+      "message": "You can remove this line.",
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e24fbd_cdc61c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-08T09:13:52Z",
+      "side": 1,
+      "message": "This variable can conflict with another variable in other tests in chromiumos/tast/local/bundles/cros/arc: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#scoping-and-shared-code\nMaybe we should avoid defining it here and rely on the one defined inside MediaScanTime() (L134), or use a less general name.",
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c703ea1_67d53380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-08T09:13:52Z",
+      "side": 1,
+      "message": "This function is super cool. Good work!\nOne nit: I think there should be only one MyFiles volume id (otherwise it\u0027s a bug). How about making this function return (string, err)?\n  re :\u003d [...]\n  out, err :\u003d [...]\n  if err !\u003d nil {\n    return \"\", err\n  }\n  lines :\u003d [...]\n  for _, line :\u003d [...] {\n    if [...]; volumeIdLine !\u003d nil {\n      splitVolumeIdLine :\u003d [...]\n      return splitVolumeIdLine[0], nil\n    }\n  }\n  return \"\", errors.New(\"Failed to get MyFiles volume id\")",
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c8d182_802fe8ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-08T09:13:52Z",
+      "side": 1,
+      "message": "nit: This is not a path, but []byte: https://pkg.go.dev/io/ioutil#ReadFile",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
