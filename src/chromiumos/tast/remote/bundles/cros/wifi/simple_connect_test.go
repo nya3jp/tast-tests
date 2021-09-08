@@ -441,10 +441,12 @@ func simpleConnectNonASCIISSID() simpleConnectParams {
 
 func simpleConnect8021xWEP() simpleConnectParams {
 	return simpleConnectParams{
-		Name:                 "8021xwep",
-		Doc:                  simpleConnectDocPref("a protected network supporting for dynamic WEP encryption."),
-		ExtraHardwareDepsDoc: []string{"Skip on Marvell because of 8021xwep test failure post security fixes b/187853331, no plans to fix."},
-		ExtraHardwareDeps:    "hwdep.D(hwdep.WifiNotMarvell())",
+		Name: "8021xwep",
+		Doc:  simpleConnectDocPref("a protected network supporting for dynamic WEP encryption."),
+		ExtraHardwareDepsDoc: []string{"Skip on Marvell because of 8021xwep test failure post security fixes b/187853331, no plans to fix.",
+			"Skip on trogdor and strongbad board because of 8021xwep test regression post Qualcomm FW746 b/194644867,",
+			"Qualcomm looks at the security fixes in the FW. Revisit after FW fix and verification."},
+		ExtraHardwareDeps: `hwdep.D(hwdep.WifiNotMarvell(), hwdep.SkipOnPlatform("trogdor", "strongbad", "trogdor-kernelnext"))`,
 		Val: []simpleConnectParamsVal{{
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: `dynamicwep.NewConfigFactory(
