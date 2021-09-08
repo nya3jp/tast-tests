@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47269757_7a406758",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-09-08T21:26:00Z",
+      "side": 1,
+      "message": "Sorry, Oleh and Hsin-chen, made a couple not-so-minor tweaks. Please take another look when you get a chance.",
+      "revId": "1f52e45a92994592514efc40489d2e31d2be30d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
