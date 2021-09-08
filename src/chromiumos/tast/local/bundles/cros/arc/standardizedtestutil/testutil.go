@@ -32,14 +32,14 @@ const (
 	ShortUITimeout         = 30 * time.Second
 )
 
-// MouseButton abstracts the underlying mouse button implementation into a
+// PointerButton abstracts the underlying pointer button implementation into a
 // standard type that can be used by callers.
-type MouseButton int
+type PointerButton int
 
-// Mouse buttons that can be used by tests.
+// Pointer buttons that can be used by tests.
 const (
-	LeftMouseButton MouseButton = iota
-	RightMouseButton
+	LeftPointerButton PointerButton = iota
+	RightPointerButton
 )
 
 // TestFuncParams contains parameters that can be used by the tests.
@@ -63,13 +63,13 @@ type TestCase struct {
 	WindowStateType ash.WindowStateType
 }
 
-// TouchscreenZoomType represents the touchscreen zoom type to perform.
-type TouchscreenZoomType int
+// ZoomType represents the available zoom types.
+type ZoomType int
 
-// Holds all of the zoom types that can be performed on the touchscreen.
+// Holds all of the zoom types that can be performed.
 const (
-	TouchscreenZoomIn TouchscreenZoomType = iota
-	TouchscreenZoomOut
+	ZoomIn ZoomType = iota
+	ZoomOut
 )
 
 // TouchscreenTapType represents the touch screen tap type to perform.
@@ -301,7 +301,7 @@ func TouchscreenScroll(ctx context.Context, touchScreen *input.TouchscreenEventW
 // TouchscreenZoom performs a zoom on the touchscreen. Zoom in distance
 // varies per device but the function aims to zoom by 2x (i.e. a scale factor of 2.0
 // when zooming in, or .5 when zooming out).
-func TouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters TestFuncParams, selector *ui.Object, zoomType TouchscreenZoomType) error {
+func TouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters TestFuncParams, selector *ui.Object, zoomType ZoomType) error {
 	const (
 		zoomDistancePerFinger = 600
 		zoomDuration          = 500 * time.Millisecond
@@ -322,13 +322,13 @@ func TouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWri
 
 	// Perform the appropriate zoom.
 	switch zoomType {
-	case TouchscreenZoomIn:
+	case ZoomIn:
 		if err := mtw.ZoomIn(ctx, *x, *y, zoomDistancePerFinger, zoomDuration); err != nil {
 			return errors.Wrap(err, "unable to zoom in")
 		}
 
 		break
-	case TouchscreenZoomOut:
+	case ZoomOut:
 		if err := mtw.ZoomOut(ctx, *x, *y, zoomDistancePerFinger, zoomDuration); err != nil {
 			return errors.Wrap(err, "unable to zoom in")
 		}
@@ -445,25 +445,25 @@ func ClickInputAndGuaranteeFocus(ctx context.Context, selector *ui.Object) error
 }
 
 // MouseClickObject implements a standard way to click the mouse button on an object.
-func MouseClickObject(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, mew *input.MouseEventWriter, mouseButton MouseButton) error {
-	if err := validateMouseCanBeUsed(ctx, testParameters); err != nil {
+func MouseClickObject(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, mew *input.MouseEventWriter, mouseButton PointerButton) error {
+	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
 		return errors.Wrap(err, "mouse cannot be used")
 	}
 
 	// Move the mouse into position
-	if err := centerMouseOnObject(ctx, testParameters, mew, selector); err != nil {
+	if err := centerPointerOnObject(ctx, testParameters, selector); err != nil {
 		return errors.Wrap(err, "failed to move the mouse into position")
 	}
 
 	// Perform the correct click
 	switch mouseButton {
-	case LeftMouseButton:
+	case LeftPointerButton:
 		if err := mew.Click(); err != nil {
 			return errors.Wrap(err, "unable to perform left mouse click")
 		}
 
 		break
-	case RightMouseButton:
+	case RightPointerButton:
 		if err := mew.RightClick(); err != nil {
 			return errors.Wrap(err, "unable to perform right mouse click")
 		}
@@ -478,11 +478,11 @@ func MouseClickObject(ctx context.Context, testParameters TestFuncParams, select
 
 // MouseMoveOntoObject moves the mouse onto the center of an object.
 func MouseMoveOntoObject(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, mew *input.MouseEventWriter) error {
-	if err := validateMouseCanBeUsed(ctx, testParameters); err != nil {
+	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
 		return errors.Wrap(err, "mouse cannot be used")
 	}
 
-	if err := centerMouseOnObject(ctx, testParameters, mew, selector); err != nil {
+	if err := centerPointerOnObject(ctx, testParameters, selector); err != nil {
 		return errors.Wrap(err, "failed to move the mouse into position")
 	}
 
@@ -494,7 +494,7 @@ func MouseMoveOntoObject(ctx context.Context, testParameters TestFuncParams, sel
 // multiple iterations should be run, with a check for the desired output
 // between each call.
 func MouseScroll(ctx context.Context, testParameters TestFuncParams, scrollDirection ScrollDirection, mew *input.MouseEventWriter) error {
-	if err := validateMouseCanBeUsed(ctx, testParameters); err != nil {
+	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
 		return errors.Wrap(err, "mouse cannot be used")
 	}
 
@@ -516,8 +516,170 @@ func MouseScroll(ctx context.Context, testParameters TestFuncParams, scrollDirec
 	return nil
 }
 
-// validateMouseCanBeUsed makes sure the mouse can be used in tests.
-func validateMouseCanBeUsed(ctx context.Context, testParameters TestFuncParams) error {
+// Trackpad related constants. These values were derived experimentally and
+// should work on both physical, and virtual trackpads.
+const (
+	TrackpadMajorSize            = 240
+	TrackpadMinorSize            = 180
+	TrackpadClickPressure        = 25
+	TrackpadGesturePressure      = 10
+	TrackpadVerticalScrollAmount = 900
+	TrackpadScrollDuration       = 200 * time.Millisecond
+	TrackpadFingerSeparation     = 350
+)
+
+// TrackpadClickObject implements a click on the trackpad.
+func TrackpadClickObject(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, tew *input.TrackpadEventWriter, pointerButton PointerButton) error {
+	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
+		return errors.Wrap(err, "trackpad cannot be used")
+	}
+
+	if err := centerPointerOnObject(ctx, testParameters, selector); err != nil {
+		return errors.Wrap(err, "failed to move the trackpad into position")
+	}
+
+	stw, err := tew.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "unable to setup the writer")
+	}
+
+	// Setup the trackpad to simulate a finger click on the next event.
+	if err := stw.SetSize(ctx, TrackpadMajorSize, TrackpadMinorSize); err != nil {
+		return errors.Wrap(err, "unable to set size")
+	}
+
+	if err := stw.SetPressure(TrackpadClickPressure); err != nil {
+		return errors.Wrap(err, "unable to set pressure")
+	}
+
+	// Setup the action intent
+	switch pointerButton {
+	case LeftPointerButton:
+		// A left click only requires a single touch.
+		stw.SetIsBtnToolFinger(true)
+		break
+	case RightPointerButton:
+		// A left click only requires a double tap.
+		stw.SetIsBtnToolDoubleTap(true)
+		break
+	default:
+		return errors.Errorf("invalid button provided: %v", pointerButton)
+	}
+
+	// Perform the 'tap' at the center of the touchpad. The pointer has already been positioned
+	// so the move event is just signaling where on the trackpad the event takes place.
+	centerX := tew.Width() / 2
+	centerY := tew.Height() / 2
+	if err := stw.Move(centerX, centerY); err != nil {
+		return errors.Wrap(err, "unable to initiate click position")
+	}
+
+	if err := stw.End(); err != nil {
+		return errors.Wrap(err, "unable to end click")
+	}
+
+	return nil
+
+}
+
+// TrackpadScroll performs a two-finger scroll gesture on the trackpad.
+func TrackpadScroll(ctx context.Context, trackpad *input.TrackpadEventWriter, testParameters TestFuncParams, selector *ui.Object, scrollDirection ScrollDirection) error {
+	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
+		return errors.Wrap(err, "pointer cannot cannot be used")
+	}
+
+	if err := centerPointerOnObject(ctx, testParameters, selector); err != nil {
+		return errors.Wrap(err, "failed to move the trackpad into position")
+	}
+
+	mtw, err := getTrackpadWriterSetupForTwoFingerGestures(ctx, trackpad)
+	if err != nil {
+		return errors.Wrap(err, "Unable to initialize multi-touch writer")
+	}
+	defer mtw.Close()
+
+	// Calculate where to scroll to based on the provided direction.
+	x := trackpad.Width() / 2
+	y := trackpad.Height() / 2
+
+	scrollToX := x
+	scrollToY := y
+	switch scrollDirection {
+	case DownScroll:
+		scrollToY = y + TrackpadVerticalScrollAmount
+		break
+	case UpScroll:
+		scrollToY = y - TrackpadVerticalScrollAmount
+		break
+	default:
+		return errors.Errorf("invalid scroll direction: %v", scrollDirection)
+	}
+
+	// Move both fingers accordingly.
+	if err := mtw.DoubleSwipe(ctx, x, y, scrollToX, scrollToY, input.TouchCoord(TrackpadFingerSeparation), TrackpadScrollDuration); err != nil {
+		return errors.Wrap(err, "unable to perform the scroll")
+	}
+
+	if err := mtw.End(); err != nil {
+		return errors.Wrap(err, "unable to end the scroll")
+	}
+
+	return nil
+}
+
+// TrackpadZoom performs a two-finger zoom gesture on the trackpad.
+func TrackpadZoom(ctx context.Context, trackpad *input.TrackpadEventWriter, testParameters TestFuncParams, selector *ui.Object, zoomType ZoomType) error {
+	const (
+		zoomDistancePerFinger = 450
+		zoomDuration          = 200 * time.Millisecond
+	)
+
+	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
+		return errors.Wrap(err, "pointer cannot cannot be used")
+	}
+
+	if err := centerPointerOnObject(ctx, testParameters, selector); err != nil {
+		return errors.Wrap(err, "failed to move the trackpad into position")
+	}
+
+	mtw, err := getTrackpadWriterSetupForTwoFingerGestures(ctx, trackpad)
+	if err != nil {
+		return errors.Wrap(err, "Unable to initialize multi-touch writer")
+	}
+	defer mtw.Close()
+
+	// The zoom can start at the middle of the trackpad.
+	x := trackpad.Width() / 2
+	y := trackpad.Height() / 2
+
+	// Perform the appropriate zoom.
+	switch zoomType {
+	case ZoomIn:
+		if err := mtw.ZoomIn(ctx, x, y, zoomDistancePerFinger, zoomDuration); err != nil {
+			return errors.Wrap(err, "unable to zoom in")
+		}
+
+		break
+	case ZoomOut:
+		if err := mtw.ZoomOut(ctx, x, y, zoomDistancePerFinger, zoomDuration); err != nil {
+			return errors.Wrap(err, "unable to zoom in")
+		}
+
+		break
+	default:
+		return errors.Errorf("invalid zoom type provided: %v", zoomType)
+	}
+
+	// End the gesture.
+	if err := mtw.End(); err != nil {
+		return errors.Wrap(err, "unable to end the zoom in")
+	}
+
+	return nil
+}
+
+// validatePointerCanBeUsed makes sure the pointer device can be used in tests.
+func validatePointerCanBeUsed(ctx context.Context, testParameters TestFuncParams) error {
 	// The device cannot be in tablet mode.
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, testParameters.TestConn)
 	if err != nil {
@@ -525,14 +687,14 @@ func validateMouseCanBeUsed(ctx context.Context, testParameters TestFuncParams) 
 	}
 
 	if tabletModeEnabled {
-		return errors.New("Device is in tablet mode, cannot click with a mouse")
+		return errors.New("device is in tablet mode, cannot use a pointer")
 	}
 
 	return nil
 }
 
-// centerMouseOnObject is responsible for moving the mouse onto the center of the object.
-func centerMouseOnObject(ctx context.Context, testParameters TestFuncParams, mew *input.MouseEventWriter, selector *ui.Object) error {
+// centerPointerOnObject is responsible for moving the mouse onto the center of the object.
+func centerPointerOnObject(ctx context.Context, testParameters TestFuncParams, selector *ui.Object) error {
 	// Get the center of the element to make sure the element is actually clicked.
 	uiElementBounds, err := selector.GetBounds(ctx)
 	if err != nil {
@@ -558,6 +720,28 @@ func centerMouseOnObject(ctx context.Context, testParameters TestFuncParams, mew
 	}
 
 	return nil
+}
+
+// getTrackpadWriterSetupForTwoFingerGestures returns a touch event writer that can be used for implementing trackpad related gestures.
+func getTrackpadWriterSetupForTwoFingerGestures(ctx context.Context, trackpad *input.TrackpadEventWriter) (*input.TouchEventWriter, error) {
+	mtw, err := trackpad.NewMultiTouchWriter(2)
+	if err != nil {
+		return nil, errors.Wrap(err, "Unable to initialize multi-touch writer")
+	}
+	defer mtw.Close()
+
+	// Setup the trackpad to simulate two fingers resting on the trackpad.
+	if err := mtw.SetSize(ctx, TrackpadMajorSize, TrackpadMinorSize); err != nil {
+		return nil, errors.Wrap(err, "unable to set size")
+	}
+
+	if err := mtw.SetPressure(TrackpadGesturePressure); err != nil {
+		return nil, errors.Wrap(err, "unable to set pressure")
+	}
+
+	mtw.SetIsBtnToolDoubleTap(true)
+
+	return mtw, nil
 }
 
 // TabletOnlyModels is a list of tablet only models to be skipped from clamshell mode runs.

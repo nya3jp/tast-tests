@@ -39,9 +39,9 @@ func init() {
 
 func StandardizedMouseRightClick(ctx context.Context, s *testing.State) {
 	const (
-		apkName      = "ArcStandardizedMouseTest.apk"
-		appName      = "org.chromium.arc.testapp.arcstandardizedmousetest"
-		activityName = ".MainActivity"
+		apkName      = "ArcStandardizedInputTest.apk"
+		appName      = "org.chromium.arc.testapp.arcstandardizedinputtest"
+		activityName = ".PointerRightClickTestActivity"
 	)
 
 	testCases := s.Param().([]standardizedtestutil.TestCase)
@@ -63,19 +63,19 @@ func runStandardizedMouseRightClickTest(ctx context.Context, s *testing.State, t
 		s.Fatal("Unable to find the button to click, info: ", err)
 	}
 
-	if err := testParameters.Device.Object(ui.Text("MOUSE RIGHT CLICK (1)")).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
+	if err := testParameters.Device.Object(ui.Text("POINTER RIGHT CLICK (1)")).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("The success label should not yet exist, info: ", err)
 	}
 
-	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnRightClickSelector, mouse, standardizedtestutil.RightMouseButton); err != nil {
+	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnRightClickSelector, mouse, standardizedtestutil.RightPointerButton); err != nil {
 		s.Fatal("Unable to click the button, info: ", err)
 	}
 
-	if err := testParameters.Device.Object(ui.Text("MOUSE RIGHT CLICK (1)")).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
+	if err := testParameters.Device.Object(ui.Text("POINTER RIGHT CLICK (1)")).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("The success label should exist, info: ", err)
 	}
 
-	if err := testParameters.Device.Object(ui.Text("MOUSE RIGHT CLICK (2)")).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
+	if err := testParameters.Device.Object(ui.Text("POINTER RIGHT CLICK (2)")).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("A single mouse click triggered two click events, info: ", err)
 	}
 }

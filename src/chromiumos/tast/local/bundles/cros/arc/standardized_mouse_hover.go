@@ -74,7 +74,7 @@ func runStandardizedMouseHoverTest(ctx context.Context, s *testing.State, testPa
 	}
 
 	// Click to start the test.
-	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnStartHoverTestSelector, mouse, standardizedtestutil.LeftMouseButton); err != nil {
+	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnStartHoverTestSelector, mouse, standardizedtestutil.LeftPointerButton); err != nil {
 		s.Fatal("Failed to click the button to start the test: ", err)
 	}
 
