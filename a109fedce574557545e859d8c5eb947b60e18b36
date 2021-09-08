@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e863889d_9af8344b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-08T23:12:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90a33666_14474be2",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 15
+      },
+      "revId": "a109fedce574557545e859d8c5eb947b60e18b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3f630e0_aae931af",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-08T21:00:48Z",
       "side": 1,
       "message": "Is this new contact for test?",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 34
+      },
+      "revId": "a109fedce574557545e859d8c5eb947b60e18b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fde57f6_5d1f991e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-08T23:12:11Z",
+      "side": 1,
+      "message": "It was from the old test file. I updated to using our team email.",
+      "parentUuid": "c3f630e0_aae931af",
       "range": {
         "startLine": 24,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bba4224_b5fb5606",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-08T23:12:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30b50c20_6c5b7b83",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 2
+      },
+      "revId": "a109fedce574557545e859d8c5eb947b60e18b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10dab5fe_1b1a0153",
@@ -83,6 +155,24 @@
       "writtenOn": "2021-09-08T21:00:48Z",
       "side": 1,
       "message": "nit: new line above",
+      "revId": "a109fedce574557545e859d8c5eb947b60e18b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d591d9f_642983f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-08T23:12:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10dab5fe_1b1a0153",
       "revId": "a109fedce574557545e859d8c5eb947b60e18b36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "780f7c78_b39da1b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-08T23:12:11Z",
+      "side": 1,
+      "message": "Add classname to make it more clear. Also added comments.",
+      "parentUuid": "43f8e421_c22ca2a0",
+      "revId": "a109fedce574557545e859d8c5eb947b60e18b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4248ddb4_0fd73e62",
@@ -117,6 +225,30 @@
       "writtenOn": "2021-09-08T21:00:48Z",
       "side": 1,
       "message": "Do we need to wait while loading?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 70
+      },
+      "revId": "a109fedce574557545e859d8c5eb947b60e18b36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "019473fc_5eed1952",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-08T23:12:11Z",
+      "side": 1,
+      "message": "Done. Also added comments.",
+      "parentUuid": "4248ddb4_0fd73e62",
       "range": {
         "startLine": 49,
         "startChar": 0,
