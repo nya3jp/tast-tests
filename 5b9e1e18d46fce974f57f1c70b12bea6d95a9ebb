@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10bd4e9d_bbc7a5e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-09-08T17:34:04Z",
+      "side": 1,
+      "message": "I actually have CLs up for the test-specific one (tast change is here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3146224). I suppose I should stack this on top of that one.",
+      "parentUuid": "7b097e98_809e3fbf",
+      "revId": "5b9e1e18d46fce974f57f1c70b12bea6d95a9ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3ddd663_ddcc3687",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-09-08T04:25:24Z",
       "side": 1,
       "message": "Consider either moving it closer with the callers below, or moving it to around line #85 beside other settings.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 3
+      },
+      "revId": "5b9e1e18d46fce974f57f1c70b12bea6d95a9ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f7203ff_2a55b58f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-09-08T17:34:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3ddd663_ddcc3687",
       "range": {
         "startLine": 120,
         "startChar": 0,
