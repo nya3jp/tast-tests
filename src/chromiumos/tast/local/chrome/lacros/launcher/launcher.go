@@ -7,7 +7,6 @@ package launcher
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -25,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
@@ -36,59 +36,67 @@ const LacrosUserDataDir = "/home/chronos/user/lacros/"
 // LacrosChrome contains all state associated with a lacros-chrome instance
 // that has been launched. Must call Close() to release resources.
 type LacrosChrome struct {
-	Devsess       *cdputil.Session  // Debugging session for lacros-chrome
-	userDataDir   string            // User data directory
-	cmd           *testexec.Cmd     // The command context used to start lacros-chrome.
-	logAggregator *jslog.Aggregator // collects JS console output
-	testExtConn   *chrome.Conn      // connection to test extension exposing APIs
-	lacrosPath    string            // Root directory for lacros-chrome.
+	lacrosPath  string // Root directory for lacros-chrome.
+	userDataDir string // User data directory
+
+	cmd  *testexec.Cmd // The command context used to start lacros-chrome.
+	agg  *jslog.Aggregator
+	sess *driver.Session // Debug session connected lacros-chrome.
 }
 
 // ConnectToLacrosChrome connects to a running lacros instance (e.g launched by the UI) and returns a LacrosChrome object that can be used to interact with it.
-func ConnectToLacrosChrome(ctx context.Context, lacrosPath, userDataDir string) (*LacrosChrome, error) {
-	l := &LacrosChrome{lacrosPath: lacrosPath, userDataDir: userDataDir}
+func ConnectToLacrosChrome(ctx context.Context, lacrosPath, userDataDir string) (l *LacrosChrome, retErr error) {
 	debuggingPortPath := filepath.Join(userDataDir, "DevToolsActivePort")
-	var err error
-	if l.Devsess, err = cdputil.NewSession(ctx, debuggingPortPath, cdputil.WaitPort); err != nil {
-		l.Close(ctx)
+	execPath := filepath.Join(lacrosPath, "chrome")
+
+	agg := jslog.NewAggregator()
+	defer func() {
+		if retErr != nil {
+			agg.Close()
+		}
+	}()
+
+	sess, err := driver.NewSession(ctx, execPath, debuggingPortPath, cdputil.WaitPort, agg)
+	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
 	}
-	l.logAggregator = jslog.NewAggregator()
-	return l, nil
+	return &LacrosChrome{
+		lacrosPath:  lacrosPath,
+		userDataDir: userDataDir,
+		agg:         agg,
+		sess:        sess,
+	}, nil
 }
 
 // StartTracing starts trace events collection for the selected categories. Android
 // categories must be prefixed with "disabled-by-default-android ", e.g. for the
 // gfx category, use "disabled-by-default-android gfx", including the space.
+// This must not be called after Close().
 func (l *LacrosChrome) StartTracing(ctx context.Context, categories []string, opts ...cdputil.TraceOption) error {
-	return l.Devsess.StartTracing(ctx, categories, opts...)
+	return l.sess.StartTracing(ctx, categories, opts...)
 }
 
 // StopTracing stops trace collection and returns the collected trace events.
+// This must not be called after Close().
 func (l *LacrosChrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
-	return l.Devsess.StopTracing(ctx)
+	return l.sess.StopTracing(ctx)
 }
 
 // Close kills a launched instance of lacros-chrome.
 func (l *LacrosChrome) Close(ctx context.Context) error {
-	if l.Devsess != nil {
-		l.Devsess.Close(ctx)
-		l.Devsess = nil
+	if err := l.sess.Close(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to close connection to lacros-chrome: ", err)
 	}
+	l.sess = nil
+	l.agg.Close()
+	l.agg = nil
+
 	if l.cmd != nil {
-		if err := l.cmd.Cmd.Process.Kill(); err != nil {
+		if err := l.cmd.Kill(); err != nil {
 			testing.ContextLog(ctx, "Failed to kill lacros-chrome: ", err)
 		}
-		l.cmd.Cmd.Wait()
+		l.cmd.Wait()
 		l.cmd = nil
-	}
-	if l.logAggregator != nil {
-		l.logAggregator.Close()
-		l.logAggregator = nil
-	}
-	if l.testExtConn != nil {
-		l.testExtConn.Close()
-		l.testExtConn = nil
 	}
 
 	if err := killLacrosChrome(ctx, l.lacrosPath); err != nil {
@@ -177,16 +185,15 @@ func LaunchLacrosChrome(ctx context.Context, f FixtValue) (*LacrosChrome, error)
 		return nil, errors.Wrap(err, "failed to chown user data dir")
 	}
 
-	l := &LacrosChrome{lacrosPath: f.LacrosPath(), userDataDir: userDataDir}
 	extList := strings.Join(f.Chrome().DeprecatedExtDirs(), ",")
 	args := []string{
 		"--ozone-platform=wayland",                   // Use wayland to connect to exo wayland server.
 		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
-		"--user-data-dir=" + l.userDataDir,           // Specify a --user-data-dir, which holds on-disk state for Chrome.
+		"--user-data-dir=" + userDataDir,             // Specify a --user-data-dir, which holds on-disk state for Chrome.
 		"--lang=en-US",                               // Language
 		"--breakpad-dump-location=" + f.LacrosPath(), // Specify location for breakpad dump files.
 		"--window-size=800,600",
-		"--log-file=" + l.LogFile(),                  // Specify log file location for debugging.
+		"--log-file=" + logFile(userDataDir),         // Specify log file location for debugging.
 		"--enable-logging",                           // This flag is necessary to ensure the log file is written.
 		"--enable-gpu-rasterization",                 // Enable GPU rasterization. This is necessary to enable OOP rasterization.
 		"--enable-oop-rasterization",                 // Enable OOP rasterization.
@@ -198,10 +205,10 @@ func LaunchLacrosChrome(ctx context.Context, f FixtValue) (*LacrosChrome, error)
 	args = append(args, extensionArgs(chrome.TestExtensionID, extList)...)
 	args = append(args, f.Chrome().LacrosExtraArgs()...)
 
-	l.cmd = testexec.CommandContext(ctx, "sudo", append([]string{"-E", "-u", "chronos",
+	cmd := testexec.CommandContext(ctx, "sudo", append([]string{"-E", "-u", "chronos",
 		"/usr/local/bin/python3", "/usr/local/bin/mojo_connection_lacros_launcher.py",
 		"-s", mojoSocketPath, filepath.Join(f.LacrosPath(), "chrome")}, args...)...)
-	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
+	cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
 
 	if out, ok := testing.ContextOutDir(ctx); !ok {
 		testing.ContextLog(ctx, "OutDir not found: ", err)
@@ -211,34 +218,47 @@ func LaunchLacrosChrome(ctx context.Context, f FixtValue) (*LacrosChrome, error)
 		defer logFile.Close()
 		// Redirect both Stdout/Stderr to the same file.
 		// Log lines may be mixed, but it should be ok, because it is for investigation.
-		l.cmd.Stdout = logFile
-		l.cmd.Stderr = logFile
+		cmd.Stdout = logFile
+		cmd.Stderr = logFile
 	}
 
 	testing.ContextLog(ctx, "Starting chrome: ", strings.Join(args, " "))
-	if err := l.cmd.Cmd.Start(); err != nil {
+	if err := cmd.Start(); err != nil {
 		return nil, errors.Wrap(err, "failed to launch lacros-chrome")
 	}
+	defer func() {
+		if cmd == nil {
+			return
+		}
+		if err := cmd.Kill(); err != nil {
+			testing.ContextLog(ctx, "Failed to kill lacros-chrome: ", err)
+		}
+		cmd.Wait()
+	}()
 
 	// Wait for a window that matches what a lacros window looks like.
 	if err := WaitForLacrosWindow(ctx, f.TestAPIConn(), "about:blank"); err != nil {
 		return nil, err
 	}
 
-	debuggingPortPath := filepath.Join(l.userDataDir, "DevToolsActivePort")
-	if l.Devsess, err = cdputil.NewSession(ctx, debuggingPortPath, cdputil.WaitPort); err != nil {
-		l.Close(ctx)
+	l, err := ConnectToLacrosChrome(ctx, f.LacrosPath(), userDataDir)
+	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
 	}
-
-	l.logAggregator = jslog.NewAggregator()
-
+	// Move cmd ownership to l, thus after this line terminating cmd wond't run.
+	l.cmd = cmd
+	cmd = nil
 	return l, nil
+}
+
+// logFile returns the path to the log file for Lacros.
+func logFile(userDataDir string) string {
+	return filepath.Join(userDataDir, "logfile")
 }
 
 // LogFile returns a path to a file containing Lacros's log.
 func (l *LacrosChrome) LogFile() string {
-	return filepath.Join(l.userDataDir, "logfile")
+	return logFile(l.userDataDir)
 }
 
 // WaitForLacrosWindow waits for a Lacrow window with the specified title to be visibe.
@@ -253,79 +273,30 @@ func WaitForLacrosWindow(ctx context.Context, tconn *chrome.TestConn, title stri
 
 // NewConnForTarget iterates through all available targets and returns a connection to the
 // first one that is matched by tm.
+// This must not be called after Close().
 func (l *LacrosChrome) NewConnForTarget(ctx context.Context, tm chrome.TargetMatcher) (*chrome.Conn, error) {
-	t, err := l.Devsess.WaitForTarget(ctx, tm)
-	if err != nil {
-		return nil, err
-	}
-
-	return l.newConnInternal(ctx, t.TargetID, t.URL)
+	return l.sess.NewConnForTarget(ctx, tm)
 }
 
 // FindTargets returns the info about Targets, which satisfies the given cond condition.
+// This must not be called after Close().
 func (l *LacrosChrome) FindTargets(ctx context.Context, tm chrome.TargetMatcher) ([]*chrome.Target, error) {
-	return l.Devsess.FindTargets(ctx, tm)
+	return l.sess.FindTargets(ctx, tm)
 }
 
 // NewConn creates a new Chrome renderer and returns a connection to it.
 // If url is empty, an empty page (about:blank) is opened. Otherwise, the page
 // from the specified URL is opened. You can assume that the page loading has
 // been finished when this function returns.
+// This must not be called after Close().
 func (l *LacrosChrome) NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*chrome.Conn, error) {
-	if url == "" {
-		testing.ContextLog(ctx, "Creating new blank page")
-	} else {
-		testing.ContextLog(ctx, "Creating new page with URL ", url)
-	}
-	targetID, err := l.Devsess.CreateTarget(ctx, url, opts...)
-	if err != nil {
-		return nil, err
-	}
-
-	return l.newConnInternal(ctx, targetID, url)
-}
-
-func (l *LacrosChrome) newConnInternal(ctx context.Context, id target.ID, url string) (*chrome.Conn, error) {
-	conn, err := chrome.DeprecatedNewConn(ctx, l.Devsess, id, l.logAggregator, url, func(err error) error { return err })
-	if err != nil {
-		return nil, err
-	}
-
-	if url != "" && url != chrome.BlankURL {
-		if err := conn.WaitForExpr(ctx, fmt.Sprintf("location.href !== %q", chrome.BlankURL)); err != nil {
-			return nil, errors.Wrap(err, "failed to wait for navigation")
-		}
-	}
-	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for loading")
-	}
-	return conn, nil
+	return l.sess.NewConn(ctx, url, opts...)
 }
 
 // TestAPIConn returns a new chrome.TestConn instance for the lacros browser.
+// This must not be called after Close().
 func (l *LacrosChrome) TestAPIConn(ctx context.Context) (*chrome.TestConn, error) {
-	if l.testExtConn != nil {
-		return &chrome.TestConn{Conn: l.testExtConn}, nil
-	}
-
-	bgURL := chrome.ExtensionBackgroundPageURL(chrome.TestExtensionID)
-	testing.ContextLog(ctx, "Waiting for test API extension at ", bgURL)
-	var err error
-	if l.testExtConn, err = l.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL)); err != nil {
-		return nil, err
-	}
-
-	// Ensure that we don't attempt to use the extension before its APIs are available: https://crbug.com/789313
-	if err := l.testExtConn.WaitForExpr(ctx, `document.readyState === "complete"`); err != nil {
-		return nil, errors.Wrap(err, "test API extension is unavailable")
-	}
-
-	if err := l.testExtConn.Eval(ctx, "chrome.autotestPrivate.initializeEvents()", nil); err != nil {
-		return nil, errors.Wrap(err, "failed to initialize test API events")
-	}
-
-	testing.ContextLog(ctx, "Test API extension is ready")
-	return &chrome.TestConn{Conn: l.testExtConn}, nil
+	return l.sess.TestAPIConn(ctx)
 }
 
 // CloseAboutBlank finds all targets that are about:blank, closes them, then waits until they are gone.
@@ -337,17 +308,17 @@ func (l *LacrosChrome) CloseAboutBlank(ctx context.Context, tconn *chrome.TestCo
 		return err
 	}
 
-	targets, err := l.Devsess.FindTargets(ctx, chrome.MatchTargetURL(chrome.BlankURL))
+	targets, err := l.sess.FindTargets(ctx, driver.MatchTargetURL(chrome.BlankURL))
 	if err != nil {
 		return errors.Wrap(err, "failed to query for about:blank pages")
 	}
-	allPages, err := l.Devsess.FindTargets(ctx, func(t *target.Info) bool { return t.Type == "page" })
+	allPages, err := l.sess.FindTargets(ctx, func(t *target.Info) bool { return t.Type == "page" })
 	if err != nil {
 		return errors.Wrap(err, "failed to query for all pages")
 	}
 
 	for _, info := range targets {
-		if err := l.Devsess.CloseTarget(ctx, info.TargetID); err != nil {
+		if err := l.sess.CloseTarget(ctx, info.TargetID); err != nil {
 			return err
 		}
 	}
@@ -356,7 +327,7 @@ func (l *LacrosChrome) CloseAboutBlank(ctx context.Context, tconn *chrome.TestCo
 		// communicate with it, so skip checking the targets. Since closing all lacros targets will close all
 		// lacros windows, the window check below is necessary and sufficient.
 		if len(targets) != len(allPages) {
-			targets, err := l.Devsess.FindTargets(ctx, chrome.MatchTargetURL(chrome.BlankURL))
+			targets, err := l.sess.FindTargets(ctx, driver.MatchTargetURL(chrome.BlankURL))
 			if err != nil {
 				return testing.PollBreak(err)
 			}

@@ -116,7 +116,11 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
 	}
-	defer l.Close(ctx)
+	defer func() {
+		if l != nil {
+			l.Close(ctx)
+		}
+	}()
 
 	s.Log("Opening a new tab")
 	conn, err := l.NewConn(ctx, "about:blank")
@@ -133,6 +137,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	if err := l.Close(ctx); err != nil {
 		s.Fatal("Failed to close lacros-chrome: ", err)
 	}
+	l = nil
 
 	if err := ash.WaitForAppClosed(ctx, tconn, apps.Lacros.ID); err != nil {
 		s.Fatalf("%s did not close successfully: %s", apps.Lacros.Name, err)
