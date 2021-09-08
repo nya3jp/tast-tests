@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fb23d386_035bc219",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-08T01:52:34Z",
+      "side": 1,
+      "message": "Yes. Added that word to to commit message.",
+      "parentUuid": "5ae877f2_8057dca8",
+      "range": {
+        "startLine": 9,
+        "startChar": 60,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "283ef1d15678878b7c9b416d037ef1f53273ce4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "028cc157_802080e7",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
         "patchSetId": 18
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-24T19:17:44Z",
       "side": 1,
       "message": "I wish there were a way to encode this in the name since it\u0027s confusing like you mention, but I can\u0027t think of a better way, so I guess we\u0027ll have to rely on the documentation comments.",
+      "range": {
+        "startLine": 110,
+        "startChar": 23,
+        "endLine": 110,
+        "endChar": 49
+      },
+      "revId": "283ef1d15678878b7c9b416d037ef1f53273ce4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17d5fdee_c213a019",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-08T01:52:34Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "028cc157_802080e7",
       "range": {
         "startLine": 110,
         "startChar": 23,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8b3d797_e107cfc9",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-08T01:52:34Z",
+      "side": 1,
+      "message": "Oops. Yes. Thanks.",
+      "parentUuid": "765e82cb_d74a0633",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 11
+      },
+      "revId": "283ef1d15678878b7c9b416d037ef1f53273ce4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "685b972a_5912fc0c",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ecc94d8_ae121ef5",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-08T01:52:34Z",
+      "side": 1,
+      "message": "This is simply my own creation, an amalgamation of the simple variable r and active.\n\nI could make it a bit more obvious that it is a regex. Please reopen, if you think we should do better.",
+      "parentUuid": "685b972a_5912fc0c",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 8
+      },
+      "revId": "283ef1d15678878b7c9b416d037ef1f53273ce4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88ac4742_286323e9",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-08-24T19:17:44Z",
       "side": 1,
       "message": "Should this be \"some\" since we wouldn\u0027t know which flags caused the comparison to fail (not necessarily all)?",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "283ef1d15678878b7c9b416d037ef1f53273ce4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abcb4494_9a130882",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect_test.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-08T01:52:34Z",
+      "side": 1,
+      "message": "I think my tired brain was shooting for \"All flags weren\u0027t reported as set.\", but your recommendation is good too.",
+      "parentUuid": "88ac4742_286323e9",
       "range": {
         "startLine": 51,
         "startChar": 11,
