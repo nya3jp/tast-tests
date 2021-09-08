@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4638b55_6c3c1d52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-09-08T04:25:24Z",
+      "side": 1,
+      "message": "LGTM % one nit",
+      "revId": "5b9e1e18d46fce974f57f1c70b12bea6d95a9ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3ddd663_ddcc3687",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bss_tm_request.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1387481
+      },
+      "writtenOn": "2021-09-08T04:25:24Z",
+      "side": 1,
+      "message": "Consider either moving it closer with the callers below, or moving it to around line #85 beside other settings.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 3
+      },
+      "revId": "5b9e1e18d46fce974f57f1c70b12bea6d95a9ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
