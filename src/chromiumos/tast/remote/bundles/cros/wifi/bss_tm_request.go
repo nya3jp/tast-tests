@@ -139,14 +139,6 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 				Method:         wifi.ExpectShillPropertyRequest_CHECK_ONLY,
 			}}
 		}
-		props := getProps(roamBSSID)
-		waitCtx, cancel := context.WithTimeout(ctx, bssTMRoamTimeout)
-		defer cancel()
-		waitForProps, err := tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
-		if err != nil {
-			s.Fatal("Failed to create Shill property watcher: ", err)
-		}
-
 		// Set up a second AP with the same SSID.
 		s.Log("Configuring AP 1")
 		ap1, err := tf.ConfigureAP(ctx, apOpts1, nil)
@@ -183,6 +175,14 @@ func BSSTMRequest(ctx context.Context, s *testing.State) {
 			if err := tf.WifiClient().DiscoverBSSID(ctx, roamBSSID, clientIface, []byte(testSSID)); err != nil {
 				s.Fatal("Unable to discover roam BSSID: ", err)
 			}
+		}
+
+		props := getProps(roamBSSID)
+		waitCtx, cancel := context.WithTimeout(ctx, bssTMRoamTimeout)
+		defer cancel()
+		waitForProps, err := tf.WifiClient().ExpectShillProperty(waitCtx, servicePath, props, monitorProps)
+		if err != nil {
+			s.Fatal("Failed to create Shill property watcher: ", err)
 		}
 
 		sendReqAndWaitConnected := func(from, to string, fromAP, toAP *wificell.APIface, req hostapd.BSSTMReqParams, expectConnectFail bool) {
