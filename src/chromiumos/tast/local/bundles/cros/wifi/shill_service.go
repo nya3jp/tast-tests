@@ -135,6 +135,9 @@ func (s *ShillService) reinitTestState(ctx context.Context, m *shill.Manager) er
 	if err := wpacli.NewRunner(&cmd.LocalCmdRunner{}).ClearBSSIDIgnore(ctx); err != nil {
 		return errors.Wrap(err, "failed to clear wpa_supplicant BSSID_IGNORE")
 	}
+	if err := m.SetProperty(ctx, shillconst.ManagerPropertyScanAllowRoam, true); err != nil {
+		return errors.Wrap(err, "failed to set WiFi.ScanAllowRoam property")
+	}
 	return nil
 }
 
@@ -376,6 +379,14 @@ func (s *ShillService) DiscoverBSSID(ctx context.Context, request *wifi.Discover
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create shill manager")
 	}
+	if err := m.SetProperty(ctx, shillconst.ManagerPropertyScanAllowRoam, false); err != nil {
+		return nil, errors.Wrap(err, "failed to set WiFi.ScanAllowRoam property")
+	}
+	defer func() {
+		if err := m.SetProperty(ctx, shillconst.ManagerPropertyScanAllowRoam, true); err != nil {
+			testing.ContextLog(ctx, "Failed to restore WiFi.ScanAllowRoam property")
+		}
+	}()
 	// Trigger request scan every 200ms if the expected BSS is not found.
 	// It might be spammy, but shill handles it for us.
 	for {
