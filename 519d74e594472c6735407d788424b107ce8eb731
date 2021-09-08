@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff3fd17c_98aff19f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-08T11:27:00Z",
+      "side": 1,
+      "message": "nit: WDYT about calling these captureSizeMiBs and maxFileSizeMiBs so it\u0027s obvious when reading \"captureSizeMiBs:   5\" what unit they\u0027re in?",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 13
+      },
+      "revId": "519d74e594472c6735407d788424b107ce8eb731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac7b496d_a007662a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-08T11:27:00Z",
+      "side": 1,
+      "message": "WDYT about extracting this into a method called sendNetworkBytesToLocalhost(..) or something ?",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 0
+      },
+      "revId": "519d74e594472c6735407d788424b107ce8eb731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a92911_e47a391a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-08T11:27:00Z",
+      "side": 1,
+      "message": "Should we check that this is the expected number of bytes as a safety check?",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 2
+      },
+      "revId": "519d74e594472c6735407d788424b107ce8eb731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42a2d353_80fa312e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-08T11:27:00Z",
+      "side": 1,
+      "message": "I think we can use ioutil.Discard :\nhttps://stackoverflow.com/questions/24707083/how-to-discard-any-incoming-data-in-a-connection-in-go",
+      "range": {
+        "startLine": 244,
+        "startChar": 19,
+        "endLine": 244,
+        "endChar": 22
+      },
+      "revId": "519d74e594472c6735407d788424b107ce8eb731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e46934a_e167d2c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-08T11:27:00Z",
+      "side": 1,
+      "message": "nit: Let\u0027s also rename this to sizeMiBs.",
+      "range": {
+        "startLine": 251,
+        "startChar": 25,
+        "endLine": 251,
+        "endChar": 29
+      },
+      "revId": "519d74e594472c6735407d788424b107ce8eb731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f464d95f_b6b6ed4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-08T11:27:00Z",
+      "side": 1,
+      "message": "Optional: Would it make sense to do this once (before the for loop), and store it in a variable called e.g. chunk1KiB ?",
+      "range": {
+        "startLine": 262,
+        "startChar": 26,
+        "endLine": 262,
+        "endChar": 45
+      },
+      "revId": "519d74e594472c6735407d788424b107ce8eb731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
