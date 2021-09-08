@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bad9f7a6_202b2fc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-09-08T17:41:35Z",
+      "side": 1,
+      "message": "BTW. Is there a good way to know that it won\u0027t break the CQ? Does the CQ test the latest version of the tast test?",
+      "revId": "29156b93532a3f6468dd3a3e250f31c31c78b4c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
