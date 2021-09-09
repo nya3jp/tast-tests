@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "764b9a5c_1e8c3760",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-09T15:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf47ae7d_965a9ac6",
+      "revId": "f4ff079c19bcbbf39a80e873056401222a1868d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93dac4ee_f3aef207",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-09T11:43:26Z",
       "side": 1,
       "message": "nit: defined\n\nAnd use a real path with /\n\nSame everywhere in the file.",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "f4ff079c19bcbbf39a80e873056401222a1868d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08cfb45f_3796b00c",
+        "filename": "src/chromiumos/tast/common/fixture/policyutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-09T15:00:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93dac4ee_f3aef207",
       "range": {
         "startLine": 12,
         "startChar": 12,
