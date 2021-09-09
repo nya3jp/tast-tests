@@ -6,7 +6,6 @@ package videocuj
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -253,22 +252,22 @@ func (y *YtWeb) PauseAndPlayVideo(ctx context.Context) error {
 
 // waitForYoutubeReadyState does wait youtube video ready state then return.
 func waitForYoutubeReadyState(ctx context.Context, conn *chrome.Conn) error {
-	// VideoPlayer represents the main <video> node in youtube page.
-	const VideoPlayer = "#movie_player > div.html5-video-container > video"
-	queryCode := fmt.Sprintf("new Promise((resolve, reject) => { let video = document.querySelector(%q); resolve(video.readyState === 4 && video.buffered.length > 0); });", VideoPlayer)
-
 	startTime := time.Now()
 	// Wait for element to appear.
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		var pageState bool
-		if err := conn.EvalPromiseDeprecated(ctx, queryCode, &pageState); err != nil {
+		// Querying the main <video> node in youtube page.
+		var state bool
+		if err := conn.Call(ctx, &state, `() => {
+			let video = document.querySelector("#movie_player > div.html5-video-container > video");
+			return video.readyState === 4 && video.buffered.length > 0;
+		}`); err != nil {
 			return err
 		}
-		if pageState {
-			testing.ContextLogf(ctx, "Elapsed time when waiting for youtube ready state: %.3f s", time.Since(startTime).Seconds())
-			return nil
+		if !state {
+			return errors.New("failed to wait for youtube on ready state")
 		}
-		return errors.New("failed to wait for youtube on ready state")
+		testing.ContextLogf(ctx, "Elapsed time when waiting for youtube ready state: %.3f s", time.Since(startTime).Seconds())
+		return nil
 	}, &testing.PollOptions{Interval: time.Second, Timeout: time.Minute})
 }
 
