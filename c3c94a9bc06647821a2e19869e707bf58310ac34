@@ -16,6 +16,29 @@
       "message": "I have cherry-picked this commit onto the most up-to-date repo, implementing the new path for servo, and replacing d.Command with the new d.Conn().CommandContext. ",
       "revId": "c3c94a9bc06647821a2e19869e707bf58310ac34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e51b605c_c3b1af02",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-09T16:44:39Z",
+      "side": 1,
+      "message": "I added some more required vars to the precondition, since you wrote this. Can you switch these to Data: pre.Data, etc. For ServiceDeps use:\n\nServiceDeps: append([]string{\"tast.cros.ui.ScreenLockService\", \"tast.cros.ui.PowerMenuService\", \"tast.cros.graphics.ScreenshotService\"}, pre.ServiceDeps)\n\nThen you will get the ones the precondition needs plus the ones you need for your test. Once we are migrated to fixtures instead of preconditions, all this nonsense goes away.",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 201
+      },
+      "revId": "c3c94a9bc06647821a2e19869e707bf58310ac34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
