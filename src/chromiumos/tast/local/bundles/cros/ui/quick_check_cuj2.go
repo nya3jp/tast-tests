@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/quickcheckcuj"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -85,6 +86,13 @@ func QuickCheckCUJ2(ctx context.Context, s *testing.State) {
 		}
 	}
 	s.Log("Running test with tablet mode: ", tabletMode)
+	if tabletMode {
+		cleanup, err := display.RotateToLandscape(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to rotate display to landscape: ", err)
+		}
+		defer cleanup(cleanupCtx)
+	}
 
 	param := s.Param().(quickCheckParam)
 	scenario := param.scenario

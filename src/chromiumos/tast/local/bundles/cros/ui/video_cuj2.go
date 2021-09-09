@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -104,9 +105,13 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 		}
 	}
 	s.Log("Running test with tablet mode: ", tabletMode)
-
 	var uiHandler cuj.UIActionHandler
 	if tabletMode {
+		cleanup, err := display.RotateToLandscape(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to rotate display to landscape: ", err)
+		}
+		defer cleanup(cleanupCtx)
 		if uiHandler, err = cuj.NewTabletActionHandler(ctx, tconn); err != nil {
 			s.Fatal("Failed to create tablet action handler: ", err)
 		}

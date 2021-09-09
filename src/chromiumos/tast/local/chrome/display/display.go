@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/testing"
 )
 
 // Insets holds onscreen insets.
@@ -261,4 +262,43 @@ func PhysicalDisplayConnected(ctx context.Context, tconn *chrome.TestConn) (bool
 		return true, nil
 	}
 	return !IsFakeDisplayID(infos[0].ID), nil
+}
+
+var intToRotationAngle = map[int]RotationAngle{
+	0:   Rotate0,
+	90:  Rotate90,
+	180: Rotate180,
+	270: Rotate270,
+	-1:  RotateAny,
+}
+
+// RotateToLandscape rotates the primary display orientation to landscape, and returns
+// a function that restores the original orientation setting.
+func RotateToLandscape(ctx context.Context, tconn *chrome.TestConn) (func(context.Context) error, error) {
+	pdInfo, err := GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+
+	if pdInfo.Bounds.Height > pdInfo.Bounds.Width {
+		restoreRotation := RotateAny
+		if val, ok := intToRotationAngle[pdInfo.Rotation]; ok {
+			restoreRotation = val
+		} else {
+			testing.ContextLogf(ctx, "Display rotation %d is not supported; restore to RotateAny", pdInfo.Rotation)
+		}
+		targetRotation := Rotate0
+		if pdInfo.Rotation == 0 || pdInfo.Rotation == 180 {
+			targetRotation = Rotate90
+		}
+		if err := SetDisplayRotationSync(ctx, tconn, pdInfo.ID, targetRotation); err != nil {
+			return nil, err
+		}
+		return func(ctx context.Context) error {
+			return SetDisplayRotationSync(ctx, tconn, pdInfo.ID, restoreRotation)
+		}, nil
+	}
+	return func(context.Context) error {
+		return nil
+	}, nil
 }

@@ -507,9 +507,19 @@ func rotate(ctx context.Context, tconn *chrome.TestConn) error {
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to get internal display info: ", err)
 	}
-	testing.ContextLog(ctx, "Rotating the display")
+	pdInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	testing.ContextLog(ctx, "Current rotation angle: ", pdInfo.Rotation)
 
-	for _, rotation := range []display.RotationAngle{display.Rotate90, display.Rotate180, display.Rotate270, display.Rotate0} {
+	// The order of rotation angles will rotate clockwise.
+	testing.ContextLog(ctx, "Rotating the display")
+	rotationAngles := []display.RotationAngle{display.Rotate90, display.Rotate180, display.Rotate270, display.Rotate0}
+	if pdInfo.Rotation == 90 {
+		rotationAngles = []display.RotationAngle{display.Rotate180, display.Rotate270, display.Rotate0, display.Rotate90}
+	}
+	for _, rotation := range rotationAngles {
 		if err = display.SetDisplayRotationSync(ctx, tconn, screen.ID, rotation); err != nil {
 			return errors.Wrap(err, "failed rotating display")
 		}
