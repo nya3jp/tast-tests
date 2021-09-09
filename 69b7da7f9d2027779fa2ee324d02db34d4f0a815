@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf19d2d1_8ccba7fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-09T09:53:49Z",
+      "side": 1,
+      "message": "Tested by performing the \"factory_uninstall --yes\" command while the factory toolkit is stopped (by removing the \"/usr/local/factory/enabled\" and reboot), the uninstall script runs successfully and correctly removed toolkit and restored symbolic links altered while installing the toolkit.\nHowever, I got a wried error of running the command to remove the factory files:\n\n[INFO] factory_uninstall.py process_utils.py:254 2021-09-06 00:16:37.880 Running command: \"rm -rf /usr/local/factory\"\nrm: cannot remove \u0027/usr/local/factory\u0027: Directory not empty\n\nIt happens rarely, however, this error has something to do with the rm binary on the DUT, but not related to the uninstaller and this Tast test.",
+      "parentUuid": "a2910d17_49717ab9",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 77
+      },
+      "revId": "69b7da7f9d2027779fa2ee324d02db34d4f0a815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10739576_39e5e948",
         "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-09T03:15:35Z",
       "side": 1,
       "message": "Not sure if we have some helps in Tast util to list dir on DUT? Given we already have linuxssh.ReadFile()",
+      "range": {
+        "startLine": 71,
+        "startChar": 31,
+        "endLine": 71,
+        "endChar": 83
+      },
+      "revId": "69b7da7f9d2027779fa2ee324d02db34d4f0a815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e0879d5_817a7cda",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-09T09:53:49Z",
+      "side": 1,
+      "message": "Do not found a suitable API for checking DUT file existence as the existing API such as linuxssh.ReadFile() will copy content back to remote device, which comes with an unwanted overhead, so we decided to leave it as is.",
+      "parentUuid": "10739576_39e5e948",
       "range": {
         "startLine": 71,
         "startChar": 31,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5c4b1a5_e4ec4a6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/kiosk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-09T09:53:49Z",
+      "side": 1,
+      "message": "Update with a clearer message.",
+      "parentUuid": "6dd5bdcf_74d5ff90",
+      "range": {
+        "startLine": 42,
+        "startChar": 11,
+        "endLine": 42,
+        "endChar": 41
+      },
+      "revId": "69b7da7f9d2027779fa2ee324d02db34d4f0a815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00287d19_b9f933c5",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-09T03:15:35Z",
       "side": 1,
       "message": "From my understanding, I guess Tast team will prefer to use testing.Poll than for loop. You can check the detail with them",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "69b7da7f9d2027779fa2ee324d02db34d4f0a815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41aca958_083a733d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/kiosk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-09T09:53:49Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "00287d19_b9f933c5",
       "range": {
         "startLine": 47,
         "startChar": 0,
