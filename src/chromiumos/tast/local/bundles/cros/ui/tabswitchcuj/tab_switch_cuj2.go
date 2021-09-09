@@ -20,7 +20,10 @@ import (
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
 )
@@ -165,7 +168,7 @@ func (tab *chromeTab) searchElementWithPatternAndClick(ctx context.Context, patt
 	return nil
 }
 
-func (tab *chromeTab) clickAnchor(ctx context.Context, timeout time.Duration) error {
+func (tab *chromeTab) clickAnchor(ctx context.Context, timeout time.Duration, tconn *chrome.TestConn) error {
 	p := tab.currentPattern
 	pn := p + 1
 	if pn == len(tab.pageInfo.contentPatterns) {
@@ -178,9 +181,35 @@ func (tab *chromeTab) clickAnchor(ctx context.Context, timeout time.Duration) er
 	pattern := tab.pageInfo.contentPatterns[pn]
 	testing.ContextLogf(ctx, "Click link and navigate from %q to %q", tab.pageInfo.contentPatterns[p], pattern)
 	if err := tab.searchElementWithPatternAndClick(ctx, pattern); err != nil {
+		// Check whether the failure to search and click pattern was due to issues on the content site.
+		if contentSiteErr := contentSiteUnavailable(ctx, tconn); contentSiteErr != nil {
+			return contentSiteErr
+		}
 		return errors.Wrapf(err, "failed to click anchor on page %s", tab.url)
 	}
 	tab.currentPattern = pn
+	return nil
+}
+
+func contentSiteUnavailable(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+
+	errorMessages := []string{
+		"503 Service Temporarily Unavailable",
+		"504 Gateway Time-out",
+		"HTTP ERROR 404",
+		"Our CDN was unable to reach our servers",
+		"Apologies, but something went wrong on our end.",
+		"This site can’t provide a secure connection",
+		"This site can’t be reached",
+	}
+
+	for _, m := range errorMessages {
+		node := nodewith.Name(m).Role(role.StaticText)
+		if err := ui.Exists(node)(ctx); err == nil {
+			return errors.Errorf("content site error - %s", m)
+		}
+	}
 	return nil
 }
 
@@ -515,7 +544,7 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 			// Click on 1 link per 2 tabs, or click on 1 link for every tab under Record mode to ensure all links are
 			// accessible under any other levels.
 			if tabIdx%2 == 0 || caseLevel == Record {
-				if err := tab.clickAnchor(ctx, plTimeout); err != nil {
+				if err := tab.clickAnchor(ctx, plTimeout, tconn); err != nil {
 					return errors.Wrap(err, "failed to click anchor")
 				}
 				if caseLevel == Record {
