@@ -16,6 +16,23 @@
       "message": "PTAL.",
       "revId": "16465d8675df56a40a9950e8500c86ea5f0ec256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5a337ea_c12f3925",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-09T08:20:13Z",
+      "side": 1,
+      "message": "Oops, I was confused video_cuj.go and video_cuj2.go.\nJudy, PTAL as original code reviewer?\n\nXiyuan, sorry for spamming.",
+      "revId": "16465d8675df56a40a9950e8500c86ea5f0ec256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
