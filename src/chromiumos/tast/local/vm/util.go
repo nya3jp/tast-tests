@@ -105,16 +105,7 @@ func getMilestone() (int, error) {
 // EnableCrostini sets the preference for Crostini being enabled as this is required for
 // some of the Chrome integration tests to function properly.
 func EnableCrostini(ctx context.Context, tconn *chrome.TestConn) error {
-	if err := tconn.EvalPromiseDeprecated(ctx,
-		`new Promise((resolve, reject) => {
-		   chrome.autotestPrivate.setCrostiniEnabled(true, () => {
-		     if (chrome.runtime.lastError === undefined) {
-		       resolve();
-		     } else {
-		       reject(chrome.runtime.lastError.message);
-		     }
-		   });
-		 })`, nil); err != nil {
+	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setCrostiniEnabled)`, true); err != nil {
 		return errors.Wrap(err, "running autotestPrivate.setCrostiniEnabled failed")
 	}
 	return nil
