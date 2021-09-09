@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44047933_7b22ecb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96202eb3_b92bd6a5",
+      "range": {
+        "startLine": 12,
+        "startChar": 72,
+        "endLine": 12,
+        "endChar": 83
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60a3480b_9500c695",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-08T22:40:05Z",
       "side": 1,
       "message": "huge nit: will fail -\u003e fails\n\nhttps://golang.org/doc/effective_go#commentary",
+      "range": {
+        "startLine": 227,
+        "startChar": 57,
+        "endLine": 227,
+        "endChar": 66
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8093cb60_fbb8cc67",
+        "filename": "src/chromiumos/tast/local/chrome/internal/driver/conn.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a3480b_9500c695",
       "range": {
         "startLine": 227,
         "startChar": 57,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3ead1ae_f34f3c4a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Yep, typo.",
+      "parentUuid": "8e891072_341aa006",
+      "range": {
+        "startLine": 25,
+        "startChar": 29,
+        "endLine": 25,
+        "endChar": 62
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2976b7d2_71c77ee8",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-09T17:56:47Z",
       "side": 1,
       "message": "nit: remove max, timeout at the end should be enough",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b67edb_05ba4bc9",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Please let me know if it is okay to leave \u0027gaia\u0027 small caps.",
+      "parentUuid": "2976b7d2_71c77ee8",
       "range": {
         "startLine": 31,
         "startChar": 6,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e3069d3_59f47140",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc465cc0_f6e0710d",
+      "range": {
+        "startLine": 106,
+        "startChar": 32,
+        "endLine": 106,
+        "endChar": 41
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ff06dee_e8e76064",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-09-08T22:40:05Z",
       "side": 1,
       "message": "huge nit: here and below: oobe -\u003e OOBE",
+      "range": {
+        "startLine": 125,
+        "startChar": 28,
+        "endLine": 125,
+        "endChar": 32
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62306e05_9a8ab411",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ff06dee_e8e76064",
       "range": {
         "startLine": 125,
         "startChar": 28,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1052182d_b8f3bc41",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "066225b8_b74ee1e1",
+      "range": {
+        "startLine": 172,
+        "startChar": 25,
+        "endLine": 172,
+        "endChar": 37
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31f7685f_8f8d1fc4",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-09-08T22:40:05Z",
       "side": 1,
       "message": "nit: ditto above... \n\nalso: \"enterprise enroll\" is something that exist? or is a typo?",
+      "range": {
+        "startLine": 196,
+        "startChar": 25,
+        "endLine": 196,
+        "endChar": 47
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "854099c3_cf3eb728",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "I guess I was following the code itself, which names the enrollment action chrome.EnterpriseEnroll(chrome.Creds{User: username, Pass: password}). But that name is not consistent, and it is kind of a mouthful.",
+      "parentUuid": "31f7685f_8f8d1fc4",
       "range": {
         "startLine": 196,
         "startChar": 25,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c7fee65_a54b4c86",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "733f3572_8289c2a6",
+      "range": {
+        "startLine": 212,
+        "startChar": 9,
+        "endLine": 212,
+        "endChar": 12
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a84ee17_2d47fd71",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-09-08T22:40:05Z",
       "side": 1,
       "message": "nit: all non-trivial functions should have a docstring",
+      "range": {
+        "startLine": 238,
+        "startChar": 5,
+        "endLine": 238,
+        "endChar": 31
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11bb0f16_5e8b170f",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a84ee17_2d47fd71",
       "range": {
         "startLine": 238,
         "startChar": 5,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f200e76_008b17f0",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36d36aeb_0f4682b5",
+      "range": {
+        "startLine": 243,
+        "startChar": 61,
+        "endLine": 243,
+        "endChar": 62
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3845ee0_ece0180e",
@@ -267,6 +531,30 @@
       "writtenOn": "2021-09-08T22:40:05Z",
       "side": 1,
       "message": "ditto: add docstring",
+      "range": {
+        "startLine": 311,
+        "startChar": 5,
+        "endLine": 311,
+        "endChar": 32
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee60def_22060a15",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3845ee0_ece0180e",
       "range": {
         "startLine": 311,
         "startChar": 5,
@@ -300,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c62bfbc0_5401f11a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acc949a5_941d6a44",
+      "range": {
+        "startLine": 352,
+        "startChar": 46,
+        "endLine": 352,
+        "endChar": 47
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cd74bb8_e9753003",
@@ -313,6 +625,30 @@
       "writtenOn": "2021-09-09T17:56:47Z",
       "side": 1,
       "message": "nit: remove",
+      "range": {
+        "startLine": 359,
+        "startChar": 21,
+        "endLine": 359,
+        "endChar": 24
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7a1e9d5_10ce6ecd",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cd74bb8_e9753003",
       "range": {
         "startLine": 359,
         "startChar": 21,
@@ -346,6 +682,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ada168e_42810302",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40fb40d9_65d21b7a",
+      "range": {
+        "startLine": 360,
+        "startChar": 13,
+        "endLine": 360,
+        "endChar": 24
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "398711ea_e54e7ae0",
@@ -369,6 +729,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e2712d2_13a415e7",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "398711ea_e54e7ae0",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 7
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2ccd04e_dce5fd48",
@@ -382,6 +766,24 @@
       "writtenOn": "2021-09-09T17:56:47Z",
       "side": 1,
       "message": "nit: a",
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "219149fc_f03875e6",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-09T18:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2ccd04e_dce5fd48",
       "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
