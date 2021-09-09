@@ -161,6 +161,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d4f87f7_7a1ca3c6",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca_ui_remote_portrait_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-09T12:59:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ceefcd28_c26c7390",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "ed0e970e19d54c3b3a1c35cd5f90fd90f356af98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97c97749_d63151bf",
