@@ -18,12 +18,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const (
-	pkgMaximized  = "org.chromium.arc.testapp.windowmanager24.inmaximizedlist"
-	pkgPhoneSize  = "org.chromium.arc.testapp.windowmanager24.inphonesizelist"
-	pkgTabletSize = "org.chromium.arc.testapp.windowmanager24.intabletsizelist"
-)
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowDefaultBoundsAllowlist,
@@ -73,12 +67,12 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 
 	// Then we verify the launch logic for whitelisted apps is correct.
 	apkPath := map[string]string{
-		pkgMaximized:  "ArcWMTestApp_24_InMaximizedList.apk",
-		pkgPhoneSize:  "ArcWMTestApp_24_InPhoneSizeList.apk",
-		pkgTabletSize: "ArcWMTestApp_24_InTabletSizeList.apk",
+		wm.Pkg24InMaximizedList:  wm.APKNameArcWMTestApp24Maximized,
+		wm.Pkg24InPhoneSizeList:  wm.APKNameArcWMTestApp24PhoneSize,
+		wm.Pkg24InTabletSizeList: wm.APKNameArcWMTestApp24TabletSize,
 	}
 	verifyFuncMap := map[string]func(*arc.Activity, *ash.Window) error{
-		pkgPhoneSize: func(act *arc.Activity, window *ash.Window) error {
+		wm.Pkg24InPhoneSizeList: func(act *arc.Activity, window *ash.Window) error {
 			if err := wm.CheckRestoreResizable(ctx, tconn, act, d); err != nil {
 				return err
 			}
@@ -96,7 +90,7 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 			}
 			return nil
 		},
-		pkgTabletSize: func(act *arc.Activity, window *ash.Window) error {
+		wm.Pkg24InTabletSizeList: func(act *arc.Activity, window *ash.Window) error {
 			if window.State == ash.WindowStateMaximized {
 				// We might be running on a small device that can't hold a freeform window of tablet size.
 				// However we don't have concrete display value to verify it, so we won't check display size.
@@ -122,12 +116,12 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 			}
 			return nil
 		},
-		pkgMaximized: func(act *arc.Activity, window *ash.Window) error {
+		wm.Pkg24InMaximizedList: func(act *arc.Activity, window *ash.Window) error {
 			return wm.CheckMaximizeResizable(ctx, tconn, act, d)
 		},
 	}
 
-	for _, pkgName := range []string{pkgPhoneSize, pkgTabletSize, pkgMaximized} {
+	for _, pkgName := range []string{wm.Pkg24InPhoneSizeList, wm.Pkg24InTabletSizeList, wm.Pkg24InMaximizedList} {
 		verifyFunc := verifyFuncMap[pkgName]
 		if err := func() error {
 			if err := a.Install(ctx, arc.APKPath(apkPath[pkgName])); err != nil {
