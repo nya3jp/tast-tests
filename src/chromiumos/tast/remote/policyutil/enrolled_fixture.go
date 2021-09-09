@@ -13,6 +13,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -25,7 +26,7 @@ import (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:            "enrolled",
+		Name:            fixture.Enrolled,
 		Desc:            "Fixture providing enrollment",
 		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl:            &enrolledFixt{},
