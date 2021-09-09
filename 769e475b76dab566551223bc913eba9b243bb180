@@ -196,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a71543c2_80d71fa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-09T20:20:16Z",
+      "side": 1,
+      "message": "If we know what error specifically comes up as a result of not waiting for long enough here, maybe we should poll on the Connect as well below. I could see this particular error still sticking around if we have e.g. a slower/lower-cost QC-based modem, if that\u0027s the problem.\n\nIn any event, I think the comment might be a bit misleading anyway -- if we were just waiting for properties to be updated then I would have expected this to already be taken care of like Steven said.",
+      "parentUuid": "bbabcd13_bf5d128c",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1b95da1_5c0466cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
         "patchSetId": 10
