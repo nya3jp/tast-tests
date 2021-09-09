@@ -350,6 +350,30 @@
       },
       "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d609382_67fa52ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-09T04:12:47Z",
+      "side": 1,
+      "message": "I have modified the code w.r.t authpolicy settings.\nVerified on latest CPFE.R96-14206.0.0 \nverified on Dell WD19TB",
+      "parentUuid": "eef4992c_c9d4131a",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "8b1ac64fd3b440cc0b56b89086aab85488e09992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
