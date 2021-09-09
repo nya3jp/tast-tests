@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7d527c7_4b24fec4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-09T19:57:46Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "81857ce3e9faa47881b6d940531841a632c3308c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36608991_80e98c13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-09T19:57:46Z",
+      "side": 1,
+      "message": "huge nit: PCI",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "81857ce3e9faa47881b6d940531841a632c3308c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e3dc0c2_ac777dd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-09T19:57:46Z",
+      "side": 1,
+      "message": "nit: add docstring",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 4
+      },
+      "revId": "81857ce3e9faa47881b6d940531841a632c3308c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b5d24a_1ac76a61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-09T19:57:46Z",
+      "side": 1,
+      "message": "nit: validatePciDevices -\u003e validatePCIDevices\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "81857ce3e9faa47881b6d940531841a632c3308c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c84e71a3_0971835e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-09T19:57:46Z",
+      "side": 1,
+      "message": "nit: add a reason. e.g:\n\n  \"unexpected PCI device data, -expected, +got: %s\"..",
+      "range": {
+        "startLine": 75,
+        "startChar": 24,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "81857ce3e9faa47881b6d940531841a632c3308c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
