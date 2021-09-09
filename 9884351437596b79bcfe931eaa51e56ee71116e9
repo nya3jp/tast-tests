@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be7a1dc8_f89d0cc9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-09T06:24:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05f1f824_ead6f7d2",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "9884351437596b79bcfe931eaa51e56ee71116e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e970a335_38910da7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-08T22:17:00Z",
       "side": 1,
       "message": "nit: all non-trivial functions should have a docstring\n\nin particular, it is not clear what it returns... it is a key/value of what?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "9884351437596b79bcfe931eaa51e56ee71116e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6dac57f_81219539",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-09T06:24:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e970a335_38910da7",
       "range": {
         "startLine": 35,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f78aace4_20ca2a5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-09T06:24:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9dcfe68_108ad137",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "9884351437596b79bcfe931eaa51e56ee71116e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c14deaf5_d5d1044f",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-08T22:17:00Z",
       "side": 1,
       "message": "related to previous one, add context... not clear what use case it is covering",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 46
+      },
+      "revId": "9884351437596b79bcfe931eaa51e56ee71116e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0198a328_1592219d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-09T06:24:30Z",
+      "side": 1,
+      "message": "I tried to add some comments.",
+      "parentUuid": "c14deaf5_d5d1044f",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ecb485_9dca752e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-09T06:24:30Z",
+      "side": 1,
+      "message": "The tast test also needs this for sorting the result from our service.",
+      "parentUuid": "cbbfe7d2_01c25dcd",
+      "range": {
+        "startLine": 56,
+        "startChar": 36,
+        "endLine": 56,
+        "endChar": 48
+      },
+      "revId": "9884351437596b79bcfe931eaa51e56ee71116e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c8ecd88_eb3098ec",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11f6b2b3_07e1df60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-09T06:24:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c8ecd88_eb3098ec",
+      "range": {
+        "startLine": 99,
+        "startChar": 34,
+        "endLine": 99,
+        "endChar": 48
+      },
+      "revId": "9884351437596b79bcfe931eaa51e56ee71116e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48c19775_a91e5263",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-09-08T22:17:00Z",
       "side": 1,
       "message": "was sorted only added for the test? can you use a dictionary instead... so that you don\u0027t have to add this function",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 11
+      },
+      "revId": "9884351437596b79bcfe931eaa51e56ee71116e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2882628d_2079ef32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-09T06:24:30Z",
+      "side": 1,
+      "message": "|sort| is added for the ProbeBusInfo test.\nThe reason for using slice rather than map:\n1) Use slice is more clear when using |cmp.Diff|.\n2) We use |*string| to represent the optional string fields. It doesn\u0027t work well when using the whole struct as key of map.\n3) There could be multiple devcie with same VID/DID. They are assumed to be the same, but we still want to check them. So the map could be a map of VID+DID \u003d\u003e slice of devices. This might be more complicated than a simple sorting.",
+      "parentUuid": "48c19775_a91e5263",
       "range": {
         "startLine": 100,
         "startChar": 5,
