@@ -16,6 +16,29 @@
       "message": "Hi Ben,\n\nPTAL for this fix.  The failures in those 4 boards seem unrelated.\n\nCheers.",
       "revId": "b45328546a1687dfb3b35b15a4110a0a4abee1e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d13a1646_13ccd184",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-09T03:41:41Z",
+      "side": 1,
+      "message": "The test case fails with these new strings, because in the accessibility tree, it item is:\nnode id\u003d1714 role\u003dmenuItem state\u003d{\"focusable\":true} parentID\u003d1432 childIds\u003d[1749,1748] name\u003dNew folder className\u003dcustom-appearance\nIt does not include the shortcuts.\n\nThe same for the rest new strings.",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "b45328546a1687dfb3b35b15a4110a0a4abee1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
