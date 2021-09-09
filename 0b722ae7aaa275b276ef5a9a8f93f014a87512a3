@@ -83,6 +83,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "876a532c_06f810f8",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T02:19:03Z",
+      "side": 1,
+      "message": "Completely forgot about this, will do on the final round of review, thanks.",
+      "parentUuid": "75f8b9fb_94478c9c",
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4a9471e_fb0943df",
         "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
         "patchSetId": 2
@@ -117,6 +135,30 @@
       "writtenOn": "2021-09-08T17:21:04Z",
       "side": 1,
       "message": "I think these `else if` clauses are going to interfere with each other. For example, the way it\u0027s currently written, we would never hit L98, because the same condition would be met by L91. Not to mention hitting the conditions at L105 and L113.\n\nHere\u0027s one way you could address this:\n\n    // If booting into anything but dev mode, ensure that we\u0027re not forcing dev mode.\n    // (No change from ToT)\n    if toMode !\u003d fwCommon.BootModeDev {\n        ...\n    } else if toMode \u003d\u003d fwCommon.BootModeDev \u0026\u0026 msOptsContain(opts, AllowGBBForce) {\n        ...\n    }\n    \n    // If booting into anything into dev-usb mode, ensure that we\u0027re not forcing dev-usb mode.\n    // (New code here)\n    if toMode !\u003d fwCommon.BootModeUsbDev {\n        ...\n    } else if toMode \u003d\u003d fwCommon.BootModeUsbDev \u0026\u0026 msOptsContain(opts, AllowGBBForce) {\n        ...\n    }",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 11
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1263ede_acc3425f",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T02:19:03Z",
+      "side": 1,
+      "message": "Before I\u0027ll take on that, I should ask - aren\u0027t we repeating ourselves there, as this code tries to add set/clear state of flags defined in pre.go? Shouldn\u0027t that be handled outside of function and carried within ModeSwitchOptions as a struct?",
+      "parentUuid": "6b467384_590c838c",
       "range": {
         "startLine": 98,
         "startChar": 4,
