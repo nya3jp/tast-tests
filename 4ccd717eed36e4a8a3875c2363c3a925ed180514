@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2340ac6a_c41f5a77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af607f35_2f42e25b",
+      "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cebc170_de623f27",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "As mentioned above:\n\nOn octopus/bluebird, doing the testing phase, I have noticed that values tend to be negative if we dont abs() them so I decided to be better safe than sorry in both cases.",
       "parentUuid": "0cebc170_de623f27",
+      "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e298c5e2_1a3c718f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12e7abb9_88c2c31f",
       "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80434c0d_25654ddb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e77f755_ded31abf",
+      "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52169f9d_84898c3a",
@@ -129,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf24107b_3bbaa043",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52169f9d_84898c3a",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 35
+      },
+      "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "968d4088_019d66db",
@@ -142,6 +220,30 @@
       "writtenOn": "2021-08-17T19:46:42Z",
       "side": 1,
       "message": "Please change to servo.BatteryTemperatureCelsius",
+      "range": {
+        "startLine": 134,
+        "startChar": 51,
+        "endLine": 134,
+        "endChar": 64
+      },
+      "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44828bfb_52bb709d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "968d4088_019d66db",
       "range": {
         "startLine": 134,
         "startChar": 51,
