@@ -65,6 +65,9 @@ type TestConfig struct {
 	CheckFileType bool
 	// Name of the test file to be used in the test.
 	FileName string
+	// If set to true, retain the test file created early in "DirPath".
+	// Currently used by DriveFS to avoid creating and deleting files.
+	KeepFile bool
 }
 
 // TestOpenWithAndroidApp opens a test file in the specified directory, e.g. Google Drive,
@@ -79,13 +82,21 @@ func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, c
 		s.Fatal("Failed to install ArcFileReaderTest app: ", err)
 	}
 
-	if config.CreateTestFile {
+	var filemissing bool
+	testFileLocation := filepath.Join(config.DirPath, config.FileName)
+	_, err := os.Stat(testFileLocation)
+	if err != nil {
+		filemissing = true
+		s.Logf("File to accesss test file %s: %s", testFileLocation, err)
+	}
+	if config.CreateTestFile && filemissing {
 		testing.ContextLog(ctx, "Setting up a test file")
-		testFileLocation := filepath.Join(config.DirPath, config.FileName)
 		if err := ioutil.WriteFile(testFileLocation, []byte(ExpectedFileContent), 0666); err != nil {
 			s.Fatalf("Failed to create test file %s: %s", testFileLocation, err)
 		}
-		defer os.Remove(testFileLocation)
+		if !config.KeepFile {
+			defer os.Remove(testFileLocation)
+		}
 	}
 
 	if err := a.WaitIntentHelper(ctx); err != nil {
