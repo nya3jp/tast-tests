@@ -56,6 +56,30 @@
       },
       "revId": "fcee6223df610464061cbb4268eb8b0a36296562",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f582c0d7_a5ff3283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-09T16:13:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d79648d2_331d8eb9",
+      "range": {
+        "startLine": 70,
+        "startChar": 18,
+        "endLine": 70,
+        "endChar": 30
+      },
+      "revId": "fcee6223df610464061cbb4268eb8b0a36296562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
