@@ -16,6 +16,253 @@
       "message": "PTAL",
       "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baad7981_a2d4b424",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-09T09:00:40Z",
+      "side": 1,
+      "message": "Thanks for the CL! Some initial comments.",
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1866ebbf_d341b27d",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-09T09:00:40Z",
+      "side": 1,
+      "message": "variable name should start with lowercase.",
+      "range": {
+        "startLine": 43,
+        "startChar": 21,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d092ca03_64caaca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-09T09:00:40Z",
+      "side": 1,
+      "message": "Can we have a more specific name so it is easier to understand what suffix this refers to, maybe volumeUriSuffix?",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f7b6a1_dcaadc0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-09T09:00:40Z",
+      "side": 1,
+      "message": "Add a comment above this to specify the format of the MyFiles line. That will save the reader time to understand this regex :)",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 90
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccc5ae1c_d028d6a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-09T09:00:40Z",
+      "side": 1,
+      "message": "I think this will triggers inotifies that might interfere with the measurement. Please see the discussion in the chat group.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 35
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "698d51f2_5379b61c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-09T09:00:40Z",
+      "side": 1,
+      "message": "Please use const. By using const, you will be able to name this number so the reader can understand what this value means more easily.\n\nAlso, add a comment above the const to explain why you pick 100.",
+      "range": {
+        "startLine": 135,
+        "startChar": 17,
+        "endLine": 135,
+        "endChar": 20
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d6017f9_9410aea0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-09T09:00:40Z",
+      "side": 1,
+      "message": "we usually define variables right above the first time they are used, so the reader can easily get the context of why this variable is needed.",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 43
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a58c7ca8_c20bde41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-09T09:00:40Z",
+      "side": 1,
+      "message": "A more specific name will be preferable. A name that will answer the question: \"What Uri is this?\"\nFor example, volumeUriPrefix ?",
+      "range": {
+        "startLine": 173,
+        "startChar": 2,
+        "endLine": 173,
+        "endChar": 11
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a5def5_73c02156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-09T09:00:40Z",
+      "side": 1,
+      "message": "It is usually not considered as a best practice to pick a synonym just to avoid name conflict - that might even cause confusion (what is the different between opt and param?).\n\nI think \"param :\u003d s.Param().(arcMediaScanTimeParams)\" is acceptable here. The reasoning is similar to how you have err, act, and other short name variables: the context is already clear since parameter usually only refer to the test parameters. This is a bit different from uriPrefix case above, when there can be many kind of URI prefix (volume URI? file URI? content URI?) so a more specific name will be better.",
+      "range": {
+        "startLine": 176,
+        "startChar": 14,
+        "endLine": 176,
+        "endChar": 17
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26ba5e2f_a4fb44a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-09T09:00:40Z",
+      "side": 1,
+      "message": "In tests, we usually name a variable as \"expected\u003cValue\u003e\" when this variable is used as an answer (i.e., we will get some output from the tested functionalities and compare the result with this \"expected\u003cValue\u003e\" variable). Since this is just a value that you are sending to the app, this shouldn\u0027t be named as \"expectedUri\". Maybe another name like volumeUri will be better.",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 12
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce99c154_e6622948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-09T09:00:40Z",
+      "side": 1,
+      "message": "Before this remount happens, MediaScanner probably have perform a full scan on the volume. Will the app accidentaly catch the scan result of that full scan and report an unexpected number?",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 53
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
