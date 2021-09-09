@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce002ccd_0ca007bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-09T23:29:00Z",
+      "side": 1,
+      "message": "yes, I checked it already. The methods are private, can\u0027t accessed by outside tests.",
+      "parentUuid": "a76d0838_3707c991",
+      "revId": "bda1af2637939dc31a0a3899b993b05fc9de1fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ead4071_24284913",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-08T19:09:10Z",
       "side": 1,
       "message": "closeSplash is return not handled. Also if IIUC the splash screen will appear only few times and will not show up after.",
+      "range": {
+        "startLine": 439,
+        "startChar": 4,
+        "endLine": 439,
+        "endChar": 15
+      },
+      "revId": "bda1af2637939dc31a0a3899b993b05fc9de1fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a7fa5a9_9e99b7b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-09T23:29:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6ead4071_24284913",
       "range": {
         "startLine": 439,
         "startChar": 4,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f2dc3e2_13598368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-09T23:29:00Z",
+      "side": 1,
+      "message": "I think testing.Sleep(ctx, time.Second) is needed to avoid flaky failures",
+      "parentUuid": "2b63e76b_27b4e1e8",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 79
+      },
+      "revId": "bda1af2637939dc31a0a3899b993b05fc9de1fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5df1aa8_d7610ac5",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06d6eaf4_e22abd2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-09T23:29:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d5df1aa8_d7610ac5",
+      "range": {
+        "startLine": 589,
+        "startChar": 5,
+        "endLine": 589,
+        "endChar": 23
+      },
+      "revId": "bda1af2637939dc31a0a3899b993b05fc9de1fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7698e2b_47bfbcd3",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-09-08T19:09:10Z",
       "side": 1,
       "message": "Keep the receiver names short (go/go-style/decisions#receiver-names)",
+      "range": {
+        "startLine": 624,
+        "startChar": 66,
+        "endLine": 624,
+        "endChar": 75
+      },
+      "revId": "bda1af2637939dc31a0a3899b993b05fc9de1fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24a37a56_342eaacc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-09T23:29:00Z",
+      "side": 1,
+      "message": "Added className for readability. className is not a receiver, it is a function parameter of type string as mentioned in go/go-style/decisions#variable-names.",
+      "parentUuid": "d7698e2b_47bfbcd3",
       "range": {
         "startLine": 624,
         "startChar": 66,
