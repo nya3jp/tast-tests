@@ -113,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6522b04c_6a8c8c73",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-09T03:55:08Z",
+      "side": 1,
+      "message": "Right, I was thinking of replacing the Polling with\nif err :\u003d ui.WaitUntilExists(field.Focused()); err !\u003d nil {...}",
+      "parentUuid": "982ac178_81b008b1",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "03b5f798a502e64d5e7a8c0498c28189a052e941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8916fb2_3a1863a6",
         "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
         "patchSetId": 1
