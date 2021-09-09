@@ -129,8 +129,20 @@ func openFilesApp(ctx context.Context, cr *chrome.Chrome) (*filesapp.FilesApp, e
 func openWithReaderApp(ctx context.Context, files *filesapp.FilesApp, config TestConfig) error {
 	testing.ContextLog(ctx, "Opening the test file with ArcFileReaderTest")
 
+	if err := files.OpenPath(config.DirTitle, config.DirName, config.SubDirectories...)(ctx); err != nil {
+		return errors.Wrapf(err, "failed to open the Dir %s", config.DirName)
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := files.WaitForFile(config.FileName)(ctx); err != nil {
+			return errors.New("file not found")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 120 * time.Second}); err != nil {
+		return errors.Wrapf(err, "failed to wait for file %s", config.FileName)
+	}
+
 	return uiauto.Combine("open the test file with ArcFileReaderTest",
-		files.OpenPath(config.DirTitle, config.DirName, config.SubDirectories...),
 		// Note: due to the banner loading, this may still be flaky.
 		// If that is the case, we may want to increase the interval and timeout for this next call.
 		files.SelectFile(config.FileName),
