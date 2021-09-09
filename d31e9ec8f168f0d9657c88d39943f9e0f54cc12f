@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "37dea67f_78ae5f1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "Could you clarify the main focus of this patch is ui/quicksettings and other tests are updated because of its API changes? e.g.\n\nUpdate ui/quicksettings to use uiauto libraries as far as possible.\nUpdate cros/quicksettings tests according to API changes in\nui/quicksettings.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 85
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "66a0294b_4414846f",
@@ -14,6 +37,437 @@
       "writtenOn": "2021-09-09T09:23:33Z",
       "side": 1,
       "message": "Tentative",
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c81bb5e_f99dc3e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "Initial pass...",
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20f76885_eafaabfa",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "nit: finders",
+      "range": {
+        "startLine": 36,
+        "startChar": 60,
+        "endLine": 36,
+        "endChar": 66
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a10c83d7_7d7bb8ce",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "nit: is\nsame for others.",
+      "range": {
+        "startLine": 50,
+        "startChar": 20,
+        "endLine": 50,
+        "endChar": 23
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03daa09_caec9976",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "We can replace it with Exists, and error check. (Exists returns error if the node doesn\u0027t exist)",
+      "range": {
+        "startLine": 55,
+        "startChar": 23,
+        "endLine": 55,
+        "endChar": 34
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e52e01b9_0395c0e0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "Can we replace it with just ui.Exists(quickSettingsFinder) ?",
+      "range": {
+        "startLine": 140,
+        "startChar": 116,
+        "endLine": 140,
+        "endChar": 117
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95268689_b61e850d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "Shall we return nil here?",
+      "range": {
+        "startLine": 158,
+        "startChar": 9,
+        "endLine": 158,
+        "endChar": 27
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84951d14_5a0b84dd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "nit: I\u0027d directly return this without defining podButton, because it\u0027s obvious that what we returns is the podButton from the function name.",
+      "range": {
+        "startLine": 160,
+        "startChar": 14,
+        "endLine": 160,
+        "endChar": 22
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c387955_6176e771",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "I think we can remove this function entirely. See the comments below.",
+      "range": {
+        "startLine": 166,
+        "startChar": 5,
+        "endLine": 166,
+        "endChar": 18
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae13245a_88a3b634",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "We can use PodIconButton. ui.Info waits until the node is found.",
+      "range": {
+        "startLine": 212,
+        "startChar": 13,
+        "endLine": 212,
+        "endChar": 26
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f26d6b6e_67d90759",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "same here. ui.LeftClick waits.",
+      "range": {
+        "startLine": 247,
+        "startChar": 13,
+        "endLine": 247,
+        "endChar": 26
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a460764_3891de96",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 267,
+        "startChar": 13,
+        "endLine": 267,
+        "endChar": 26
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4d0f0e2_41aad0c8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "We can combine them into \nui.WithTimeout(ui.Timeout).LeftClick(LockBtn)",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 0
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9acfcb32_5d361d1c",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "This will not be needed because LeftClickUntil will do the job.",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 2
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7162a6c_c71eaad2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "WithTimeout(uiTimeout)",
+      "range": {
+        "startLine": 423,
+        "startChar": 14,
+        "endLine": 423,
+        "endChar": 67
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc3bd50_7b795888",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "I think we can just return the result of ui.Exist(audioDetailedView) here.\nBeause we have poll outside this function (LeftClickUntil), we don\u0027t need to do extra waiting here.",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 12
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69cfae0f_9bfe8c27",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "nit: can we remove \u003d\u003d true ?",
+      "range": {
+        "startLine": 476,
+        "startChar": 29,
+        "endLine": 476,
+        "endChar": 37
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fd91f41_f9711e2a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "Again, I think we can remove this function entirely. See the comments below.",
+      "range": {
+        "startLine": 572,
+        "startChar": 5,
+        "endLine": 572,
+        "endChar": 20
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "558e8829_628b2fd1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "Can we directly use MicToggle here? ui.Info does pollng internally.",
+      "range": {
+        "startLine": 590,
+        "startChar": 27,
+        "endLine": 590,
+        "endChar": 30
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4e24389_3b13fb93",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:19:10Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 608,
+        "startChar": 25,
+        "endLine": 608,
+        "endChar": 28
+      },
       "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
