@@ -16,6 +16,23 @@
       "message": "LGTM, thanks for the style fixes as well!",
       "revId": "1eb782afdd730ba43608fb9fb7a913737a744afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae9dcc6_ee4cc811",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-09T08:30:22Z",
+      "side": 1,
+      "message": "Thank you for quick review. +tast-owners@ for tast review.",
+      "revId": "1eb782afdd730ba43608fb9fb7a913737a744afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
