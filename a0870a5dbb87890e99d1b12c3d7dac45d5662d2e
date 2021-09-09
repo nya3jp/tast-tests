@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24b2cf8c_83fc0635",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-09T15:44:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6e0db520_6b4b39e0",
+      "revId": "a0870a5dbb87890e99d1b12c3d7dac45d5662d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44d4b179_0790a3ea",
@@ -71,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d61d90_853a949f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-09T15:44:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bbe35e5b_66437f6d",
+      "revId": "a0870a5dbb87890e99d1b12c3d7dac45d5662d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad5a3202_35b47a5a",
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "The problem is euiccNum\u003d1 no longer means a test eSIM. On L850, both test and prod eSIM can be on slot 0.\n\nI am trying to detect this within hermes.",
       "parentUuid": "ad5a3202_35b47a5a",
+      "revId": "a0870a5dbb87890e99d1b12c3d7dac45d5662d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f570d5d1_e1bba0bd",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-09T15:44:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "12f37933_c99b1df7",
       "revId": "a0870a5dbb87890e99d1b12c3d7dac45d5662d2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
