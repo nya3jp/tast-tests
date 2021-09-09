@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/pci"
+	"chromiumos/tast/local/bundles/cros/health/usb"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
@@ -50,6 +51,9 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 	if err := validatePciDevices(ctx, pciDevs); err != nil {
 		s.Fatal("Pci validation failed: ", err)
 	}
+	if err := validateUsbDevices(ctx, usbDevs); err != nil {
+		s.Fatal("Usb validation failed: ", err)
+	}
 }
 
 func validatePciDevices(ctx context.Context, devs []busDevice) error {
@@ -68,6 +72,40 @@ func validatePciDevices(ctx context.Context, devs []busDevice) error {
 	}
 	pci.Sort(got)
 	exp, err := pci.ExpectedDevices(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get expected devices")
+	}
+	if d := cmp.Diff(exp, got); d != "" {
+		return errors.Errorf("(-expected + got): %s", d)
+	}
+	return nil
+}
+
+func validateUsbDevices(ctx context.Context, devs []busDevice) error {
+	var got []usb.Device
+	for _, d := range devs {
+		udIn := d.BusInfo.USBBusInfo
+		udOut := usb.Device{
+			VendorID:   fmt.Sprintf("%04x", udIn.VendorID),
+			ProdID:     fmt.Sprintf("%04x", udIn.ProductID),
+			DeviceName: d.VendorName + " " + d.ProductName,
+			Class:      fmt.Sprintf("%02x", udIn.ClassID),
+			SubClass:   fmt.Sprintf("%02x", udIn.SubClassID),
+			Protocol:   fmt.Sprintf("%02x", udIn.ProtocolID),
+		}
+		for _, ifc := range udIn.Interfaces {
+			udOut.Interfaces = append(udOut.Interfaces, usb.Interface{
+				InterfaceNumber: fmt.Sprintf("%x", ifc.InterfaceNumber),
+				Class:           fmt.Sprintf("%02x", ifc.ClassID),
+				SubClass:        fmt.Sprintf("%02x", ifc.SubClassID),
+				Protocol:        fmt.Sprintf("%02x", ifc.ProtocolID),
+				Driver:          ifc.Driver,
+			})
+		}
+		got = append(got, udOut)
+	}
+	usb.Sort(got)
+	exp, err := usb.ExpectedDevices(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expected devices")
 	}
