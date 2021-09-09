@@ -36,13 +36,12 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 			Timeout:           5 * time.Minute,
 		}, {
-			Name: "vm",
+			Name: "forever",
 			Val: bootConfig{
-				numTrials: 1,
+				numTrials: 1000000,
 			},
-			ExtraAttr:         []string{"group:mainline"},
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Timeout:           5 * time.Minute,
+			ExtraSoftwareDeps: []string{"android_p"},
+			Timeout:           365 * 24 * time.Hour,
 		}, {
 			Name: "stress",
 			Val: bootConfig{
@@ -52,20 +51,13 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 			Timeout:           25 * time.Minute,
 		}, {
-			Name: "vm_stress",
+			Name: "vm",
 			Val: bootConfig{
-				numTrials: 10,
+				numTrials: 1,
 			},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Timeout:           25 * time.Minute,
-		}, {
-			Name: "forever",
-			Val: bootConfig{
-				numTrials: 1000000,
-			},
-			ExtraSoftwareDeps: []string{"android_p"},
-			Timeout:           365 * 24 * time.Hour,
+			Timeout:           5 * time.Minute,
 		}, {
 			Name: "vm_forever",
 			Val: bootConfig{
@@ -73,6 +65,14 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Timeout:           365 * 24 * time.Hour,
+		}, {
+			Name: "vm_stress",
+			Val: bootConfig{
+				numTrials: 10,
+			},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Timeout:           25 * time.Minute,
 		}},
 	})
 }
