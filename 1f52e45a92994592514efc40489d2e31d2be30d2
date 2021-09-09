@@ -33,6 +33,24 @@
       "message": "Please add comments: Note that WiFi.ScanAllowRoam is disabled during scan.\n\nOne question: As roaming tests are responsible to disable WiFi.ScanAllowRoam by themselves, shall we disable it as well during DiscoverBSSID?\nWhile I have no strong opinion but I slightly lean to leaving the status as is before the function is called.",
       "revId": "1f52e45a92994592514efc40489d2e31d2be30d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d43f71f_97710cef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-09-09T16:23:51Z",
+      "side": 1,
+      "message": "DiscoverBSSID should still set the property to false regardless. Even in non-roaming tests where we bring up multiple APs, we\u0027d like to ensure that there is no roaming when we use DiscoverBSSID.\n\n\u003e Please add comments: Note that WiFi.ScanAllowRoam is disabled during scan.\n\nDone.",
+      "parentUuid": "a1da4188_4dd134a6",
+      "revId": "1f52e45a92994592514efc40489d2e31d2be30d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
