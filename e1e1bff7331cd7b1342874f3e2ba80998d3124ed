@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab88e107_1fbd1d8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_corrupted_keys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-09T12:21:19Z",
+      "side": 1,
+      "message": "clarification: do you plan to add more soon?",
+      "revId": "e1e1bff7331cd7b1342874f3e2ba80998d3124ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0291d625_1c345e22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_corrupted_keys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-09T12:21:19Z",
+      "side": 1,
+      "message": "similar clarification. Do you plan to add more variation soon?\nIf not, this is just redundant.",
+      "revId": "e1e1bff7331cd7b1342874f3e2ba80998d3124ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d1d437_d85b3960",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_corrupted_keys.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-09T12:21:19Z",
+      "side": 1,
+      "message": "Pls use go\u0027s library, instead.",
+      "revId": "e1e1bff7331cd7b1342874f3e2ba80998d3124ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
