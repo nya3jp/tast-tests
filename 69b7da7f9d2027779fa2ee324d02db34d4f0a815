@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2910d17_49717ab9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-09T03:15:35Z",
+      "side": 1,
+      "message": "I remembered the unstall script is designed to handle when factory toolkit is started. However, we don\u0027t have active use case, it might be broken currently, please ensure you well tested and ensure all factory stuff could be still cleaned up when we boot to toolkit.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 77
+      },
+      "revId": "69b7da7f9d2027779fa2ee324d02db34d4f0a815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10739576_39e5e948",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-09T03:15:35Z",
+      "side": 1,
+      "message": "Not sure if we have some helps in Tast util to list dir on DUT? Given we already have linuxssh.ReadFile()",
+      "range": {
+        "startLine": 71,
+        "startChar": 31,
+        "endLine": 71,
+        "endChar": 83
+      },
+      "revId": "69b7da7f9d2027779fa2ee324d02db34d4f0a815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dd5bdcf_74d5ff90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/kiosk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-09T03:15:35Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t get what \"not in\" means here.",
+      "range": {
+        "startLine": 42,
+        "startChar": 11,
+        "endLine": 42,
+        "endChar": 41
+      },
+      "revId": "69b7da7f9d2027779fa2ee324d02db34d4f0a815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00287d19_b9f933c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/kiosk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-09T03:15:35Z",
+      "side": 1,
+      "message": "From my understanding, I guess Tast team will prefer to use testing.Poll than for loop. You can check the detail with them",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "69b7da7f9d2027779fa2ee324d02db34d4f0a815",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
