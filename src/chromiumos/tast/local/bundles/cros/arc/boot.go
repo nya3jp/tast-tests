@@ -16,6 +16,8 @@ import (
 type bootConfig struct {
 	// Run boot this many times
 	numTrials int
+	// Use O_DIRECT in disk access for ARCVM
+	oDirect bool
 }
 
 func init() {
@@ -66,6 +68,15 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Timeout:           365 * 24 * time.Hour,
 		}, {
+			Name: "vm_o_direct",
+			Val: bootConfig{
+				numTrials: 1,
+				oDirect:   true,
+			},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Timeout:           5 * time.Minute,
+		}, {
 			Name: "vm_stress",
 			Val: bootConfig{
 				numTrials: 10,
@@ -88,6 +99,13 @@ func Boot(ctx context.Context, s *testing.State) {
 }
 
 func runBoot(ctx context.Context, s *testing.State) {
+	if s.Param().(bootConfig).oDirect {
+		if err := arc.WriteArcvmDevConf(ctx, "O_DIRECT=true"); err != nil {
+			s.Fatal("Failed to set arcvm_dev.conf: ", err)
+		}
+		defer arc.RestoreArcvmDevConf(ctx)
+	}
+
 	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
