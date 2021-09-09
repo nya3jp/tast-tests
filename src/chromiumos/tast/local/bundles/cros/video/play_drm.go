@@ -71,6 +71,20 @@ func init() {
 			ExtraData:         append(play.DRMDataFiles(), "tulip_480p_vp9_cencv3_ctr.mp4", "tulip_audio_aac_cencv3_ctr.mp4", "tulip_480p_vp9_cencv3_ctr.mpd"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeCTRV3VP9, "proprietary_codecs"},
 			Fixture:           "chromeVideoWithDistinctiveIdentifier",
+		}, {
+			Name:              "cencv3_av1_cbc",
+			Val:               "tulip_480p_av1_cencv3_cbc.mpd",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         append(play.DRMDataFiles(), "tulip_480p_av1_cencv3_cbc.webm", "tulip_audio_aac_cencv3_cbc.mp4", "tulip_480p_av1_cencv3_cbc.mpd"),
+			ExtraSoftwareDeps: []string{caps.HWDecodeCBCV3AV1, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithDistinctiveIdentifier",
+		}, {
+			Name:              "cencv3_av1_ctr",
+			Val:               "tulip_480p_av1_cencv3_ctr.mpd",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         append(play.DRMDataFiles(), "tulip_480p_av1_cencv3_ctr.webm", "tulip_audio_aac_cencv3_ctr.mp4", "tulip_480p_av1_cencv3_ctr.mpd"),
+			ExtraSoftwareDeps: []string{caps.HWDecodeCTRV3AV1, "proprietary_codecs"},
+			Fixture:           "chromeVideoWithDistinctiveIdentifier",
 		}},
 	})
 }
