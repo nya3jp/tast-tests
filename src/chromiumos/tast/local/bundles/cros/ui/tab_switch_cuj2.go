@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
@@ -93,6 +94,10 @@ func TabSwitchCUJ2(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
 	var tabletMode bool
 	if mode, ok := s.Var("ui.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
@@ -100,7 +105,7 @@ func TabSwitchCUJ2(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatalf("Failed to enable tablet mode to %v: %v", tabletMode, err)
 		}
-		defer cleanup(ctx)
+		defer cleanup(cleanupCtx)
 	} else {
 		// Use default screen mode of the DUT.
 		tabletMode, err = ash.TabletModeEnabled(ctx, tconn)
@@ -109,9 +114,16 @@ func TabSwitchCUJ2(ctx context.Context, s *testing.State) {
 		}
 	}
 	s.Log("Running test with tablet mode: ", tabletMode)
+	if tabletMode {
+		cleanup, err := display.RotateToLandscape(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to rotate display to landscape: ", err)
+		}
+		defer cleanup(cleanupCtx)
+	}
 
 	// Shorten context a bit to allow for cleanup if Run fails.
-	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	ctx, cancel = ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
 	tabswitchcuj.Run2(ctx, s, cr, p.level, tabletMode)
 }

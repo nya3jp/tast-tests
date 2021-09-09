@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj/bluetooth"
 	et "chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -104,7 +105,7 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(cuj.FixtureData).ARC
 
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	if _, ok := s.Var("ui.cuj_mute"); ok {
@@ -194,6 +195,13 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 	s.Log("Running test with tablet mode: ", tabletMode)
+	if tabletMode {
+		cleanup, err := display.RotateToLandscape(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to rotate display to landscape: ", err)
+		}
+		defer cleanup(cleanupCtx)
+	}
 
 	ccaScriptPaths := []string{s.DataPath("cca_ui.js")}
 	testRunParams := et.NewRunParams(tier, ccaScriptPaths, s.OutDir(), app, account, tabletMode)

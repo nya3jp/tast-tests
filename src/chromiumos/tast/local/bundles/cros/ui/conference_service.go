@@ -198,13 +198,16 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		}
 
 		var tabletMode bool
+		cleanupCtx := ctx
+		ctx, cancelTablet := ctxutil.Shorten(ctx, 5*time.Second)
+		defer cancelTablet()
 		if mode, ok := s.s.Var("ui.cuj_mode"); ok {
 			tabletMode = mode == "tablet"
 			cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 			if err != nil {
 				return errors.Wrapf(err, "failed to enable tablet mode to %v", tabletMode)
 			}
-			defer cleanup(ctx)
+			defer cleanup(cleanupCtx)
 		} else {
 			// Use default screen mode of the DUT.
 			tabletMode, err = ash.TabletModeEnabled(ctx, tconn)
@@ -215,6 +218,11 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		testing.ContextLog(ctx, "Running test with tablet mode: ", tabletMode)
 		var uiHandler cuj.UIActionHandler
 		if tabletMode {
+			cleanup, err := display.RotateToLandscape(ctx, tconn)
+			if err != nil {
+				return errors.Wrap(err, "failed to rotate display to landscape")
+			}
+			defer cleanup(cleanupCtx)
 			if uiHandler, err = cuj.NewTabletActionHandler(ctx, tconn); err != nil {
 				return errors.Wrap(err, "failed to create tablet action handler")
 			}
@@ -401,13 +409,16 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 		return nil, errors.Wrap(err, "failed to connect to test API")
 	}
 	var tabletMode bool
+	cleanupCtx := ctx
+	ctx, cancelTablet := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancelTablet()
 	if mode, ok := s.s.Var("ui.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
 		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to enable tablet mode to %v", tabletMode)
 		}
-		defer cleanup(ctx)
+		defer cleanup(cleanupCtx)
 	} else {
 		// Use default screen mode of the DUT.
 		tabletMode, err = ash.TabletModeEnabled(ctx, tconn)
@@ -418,6 +429,11 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 
 	var uiHandler cuj.UIActionHandler
 	if tabletMode {
+		cleanup, err := display.RotateToLandscape(ctx, tconn)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to rotate display to landscape")
+		}
+		defer cleanup(cleanupCtx)
 		if uiHandler, err = cuj.NewTabletActionHandler(ctx, tconn); err != nil {
 			return nil, errors.Wrap(err, "failed to create tablet action handler")
 		}

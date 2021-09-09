@@ -60,7 +60,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(cuj.FixtureData).ARC
 
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
 	if chameleonAddr, ok := s.Var("ui.chameleon_addr"); ok {
@@ -134,6 +134,13 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 	s.Log("Running test with tablet mode: ", tabletMode)
+	if tabletMode {
+		cleanup, err := display.RotateToLandscape(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to rotate display to landscape: ", err)
+		}
+		defer cleanup(cleanupCtx)
+	}
 
 	// The external display is not able to be controlled by touch event,
 	// so we'll test extended display with keyboard/mouse even on tablet mode.
