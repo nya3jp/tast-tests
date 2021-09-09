@@ -34,6 +34,24 @@
       "parentUuid": "461fd62b_b968f066",
       "revId": "1046e0f259385e58474ecabca05661f9463939d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95f6cc50_8cd0bcc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-09T02:16:10Z",
+      "side": 1,
+      "message": "Understood. Abandoned.",
+      "parentUuid": "6dd90377_ca103e39",
+      "revId": "1046e0f259385e58474ecabca05661f9463939d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
