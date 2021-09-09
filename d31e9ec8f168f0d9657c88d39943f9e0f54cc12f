@@ -60,6 +60,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca852330_f8d537d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T23:21:20Z",
+      "side": 1,
+      "message": "Could you CC Jonathan and an author of ui/quicksettings.go ?",
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "20f76885_eafaabfa",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
         "patchSetId": 1
