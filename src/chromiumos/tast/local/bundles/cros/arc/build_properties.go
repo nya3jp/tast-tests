@@ -171,11 +171,11 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	device = match[1]
 
 	expectedFirstAPILevel := getProperty(propertySDKVersion)
-	if device == "rammus" && strings.HasSuffix(board, "-arc-r") {
+	if device == "hatch" && strings.HasSuffix(board, "-arc-r") {
 		// TODO(b/159985784): Remove the hack once we bring up a board truly
 		// setting first_api_level=30.
 		//
-		// Correct value for rammus-arc-r is the same for rammus (28, obtained
+		// Correct value for hatch-arc-r is the same for hatch (28, obtained
 		// from the map), but it is currently put under a special experiment
 		// to test behaviors of devices of first API level 30. See b/159114376.
 		expectedFirstAPILevel = "30"
