@@ -33,6 +33,23 @@
       "message": "Thank you for quick review. +tast-owners@ for tast review.",
       "revId": "1eb782afdd730ba43608fb9fb7a913737a744afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "655cc26b_a90dc67e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-09T08:40:45Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "1eb782afdd730ba43608fb9fb7a913737a744afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
