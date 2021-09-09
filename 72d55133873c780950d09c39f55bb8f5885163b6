@@ -18,6 +18,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24174389_757f50c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-09T21:27:36Z",
+      "side": 1,
+      "message": "LGTM % nits in crrev.com/c/3135110 (since this code is being moved to arc.go in that CL)",
+      "revId": "72d55133873c780950d09c39f55bb8f5885163b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "effaa29b_11d710dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-09T21:27:36Z",
+      "side": 1,
+      "message": "just double checking, but this part is being moved to arc.go in the next CL in the chain right? there are a few remaining nits on that CL, so I guess we can address those there, instead of here?",
+      "revId": "72d55133873c780950d09c39f55bb8f5885163b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64b4b97b_75a6dd1a",
