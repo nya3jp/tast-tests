@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf781bee_150c09db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-09T20:53:01Z",
+      "side": 1,
+      "message": "I only have a few nit comments.",
+      "revId": "d5d239330ba35980761078832bd5a054f89f8ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02164de4_2b92f5bd",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-09T20:53:01Z",
+      "side": 1,
+      "message": "nit: I think it will better to reduce levels of scope.\n```\nif !isVMEnabled {\n   return nil\n}\n...\n```",
+      "revId": "d5d239330ba35980761078832bd5a054f89f8ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b7e4c7f_0e26cde8",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-09T20:53:01Z",
+      "side": 1,
+      "message": "nit: I think it will be better to check for os.IsNotExist(err) here so that the log can be more meaningful.",
+      "revId": "d5d239330ba35980761078832bd5a054f89f8ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4223ff59_ad4e8581",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-09T20:53:01Z",
+      "side": 1,
+      "message": "nit: Similar comment as above.",
+      "revId": "d5d239330ba35980761078832bd5a054f89f8ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898dcb3c_00a3cef3",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-09T20:53:01Z",
+      "side": 1,
+      "message": "nit: I think it will be better to check for os.IsNotExist(err) here so that the log can be more meaningful.",
+      "revId": "d5d239330ba35980761078832bd5a054f89f8ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
