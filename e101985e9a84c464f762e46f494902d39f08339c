@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33445c33_8a6674ff",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T07:00:42Z",
+      "side": 1,
+      "message": "nit: add a comment on where the format is coming from.",
+      "revId": "e101985e9a84c464f762e46f494902d39f08339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b848f3e7_f83f3917",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T07:00:42Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "e101985e9a84c464f762e46f494902d39f08339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98639ca0_57be09ce",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T07:00:42Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "revId": "e101985e9a84c464f762e46f494902d39f08339c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
