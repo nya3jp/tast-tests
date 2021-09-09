@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b542206_1f851cc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-09T15:26:44Z",
+      "side": 1,
+      "message": "Sorry for new comments, I didn\u0027t notice these things the first time.",
+      "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "172d1ff2_f5df5904",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-09T15:26:44Z",
+      "side": 1,
+      "message": "Please replace these with Vars: pre.Vars, etc. I know those didn\u0027t exist when you first wrote this, but now the precondition requires more vars, and using the global var will keep this test in sync with that.",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaf59709_902b5887",
@@ -71,6 +111,29 @@
       "writtenOn": "2021-09-09T07:07:15Z",
       "side": 1,
       "message": "Same as above.",
+      "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3c5565c_faf51f88",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-09T15:26:44Z",
+      "side": 1,
+      "message": "I would delete the wait unreachable, and just poll the GetECSystemPowerState, since that is actually what you care about.",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 4
+      },
       "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
