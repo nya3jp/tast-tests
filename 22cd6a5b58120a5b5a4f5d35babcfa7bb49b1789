@@ -50,6 +50,23 @@
       "message": "LGTM from a Tast perspective. Just to clarify, are these tests only run in partner environments? I assume so since no groups are specified for these tests and I don\u0027t see any internal lab results. Just wondering, since `cuj_username` will never be specified in an internal run.\n\nI\u0027m also not super familiar with these tests and the context here, so I\u0027d recommend you have a teammate or someone else who is familiar with these tests review this change as well.",
       "revId": "22cd6a5b58120a5b5a4f5d35babcfa7bb49b1789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9afd463d_fb95ed12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-09-09T17:10:10Z",
+      "side": 1,
+      "message": "lgtm % Alex",
+      "revId": "22cd6a5b58120a5b5a4f5d35babcfa7bb49b1789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
