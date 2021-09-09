@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab575468_c6423563",
+        "filename": "android/ArcMediaScanTimeTest/AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-09T06:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f23410bf_09f23342",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 64
+      },
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31421b84_4bece8dd",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-09-08T10:24:41Z",
       "side": 1,
       "message": "You can remove unused TextViews. Also, it would be better to rename the used one (file_content) appropriately.",
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "920cfa10_073157ff",
+        "filename": "android/ArcMediaScanTimeTest/res/layout/main_activity.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-09T06:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31421b84_4bece8dd",
       "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbf34626_0c97dd84",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-09T06:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff109197_d51e21d9",
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18dca6b2_c5f114ce",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-09-08T09:13:52Z",
       "side": 1,
       "message": "You can also check\n\n  intent.getAction() \u003d\u003d Intent.ACTION_MEDIA_SCANNER_STARTED\n  \nto make things more robust and the intention clearer.",
+      "range": {
+        "startLine": 36,
+        "startChar": 18,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd8de64_a0a668c7",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-09T06:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18dca6b2_c5f114ce",
       "range": {
         "startLine": 36,
         "startChar": 18,
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39db2047_6b6d96de",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-09T06:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6172729a_7652d5b8",
+      "range": {
+        "startLine": 38,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a07244c_cee27ce6",
@@ -134,6 +242,30 @@
       "writtenOn": "2021-09-08T09:13:52Z",
       "side": 1,
       "message": "nit: This one does not need to be a member variable.\n  long finishedTime \u003d SystemClock.uptimeMillis()",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "336b3ce4_5b93aa0d",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-09T06:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a07244c_cee27ce6",
       "range": {
         "startLine": 39,
         "startChar": 16,
@@ -161,6 +293,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9217f58c_4b6006fa",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-09T06:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42502f34_a26047d2",
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50e24fbd_cdc61c56",
@@ -174,6 +324,24 @@
       "writtenOn": "2021-09-08T09:13:52Z",
       "side": 1,
       "message": "This variable can conflict with another variable in other tests in chromiumos/tast/local/bundles/cros/arc: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#scoping-and-shared-code\nMaybe we should avoid defining it here and rely on the one defined inside MediaScanTime() (L134), or use a less general name.",
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e991fd6e_7c8af999",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-09T06:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e24fbd_cdc61c56",
       "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -213,6 +381,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1387795b_cb834e94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-09T06:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46fbdba9_b7950847",
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54c53ccf_8e56aa47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-09T06:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46fbdba9_b7950847",
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07c8d182_802fe8ae",
@@ -226,6 +430,30 @@
       "writtenOn": "2021-09-08T09:13:52Z",
       "side": 1,
       "message": "nit: This is not a path, but []byte: https://pkg.go.dev/io/ioutil#ReadFile",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "7ef17fea3f6434f373c2b20d1b2c5ccd0ca3569d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c09c3bd2_915861ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-09T06:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07c8d182_802fe8ae",
       "range": {
         "startLine": 82,
         "startChar": 1,
