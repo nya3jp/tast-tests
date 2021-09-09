@@ -16,6 +16,23 @@
       "message": "ptal?",
       "revId": "9b7076e6511980971faf58e058d1e75f3ea2f691",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "021c64c0_b7ccd5e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-09T07:36:48Z",
+      "side": 1,
+      "message": "The fix looks make sense. Due to https://crbug.com/1247099, I would suggest to add more coverage in different input methods in further cls.",
+      "revId": "9b7076e6511980971faf58e058d1e75f3ea2f691",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
