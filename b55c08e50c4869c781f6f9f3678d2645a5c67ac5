@@ -16,6 +16,46 @@
       "message": "Updated the test to make it more robust. PTAL again.",
       "revId": "b55c08e50c4869c781f6f9f3678d2645a5c67ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b116d17_393a31a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2021-09-09T05:38:00Z",
+      "side": 1,
+      "message": "Thanks for the change!",
+      "revId": "b55c08e50c4869c781f6f9f3678d2645a5c67ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be3498a_88e22fda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2021-09-09T05:38:00Z",
+      "side": 1,
+      "message": "What is wallpaperView and where is it in the UI, why needs to wait?",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 36
+      },
+      "revId": "b55c08e50c4869c781f6f9f3678d2645a5c67ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
