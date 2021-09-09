@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf9e85ee_b9f799e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_inhibit_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-09T20:14:59Z",
+      "side": 1,
+      "message": "Did go fmt add this extra line?",
+      "revId": "34cc0ad6fcd165b3abd7df3256f3ab13a011f538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
