@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "092fb6ba_a5e6ed99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-09-09T08:47:37Z",
+      "side": 1,
+      "message": "I think the uiauto.Combine logic below already waited for / did the polling. It was designed in this bug (b/163101239).\n\nI\u0027ve taken a look at the current flakiness. Looks like with randomized file names. There are way too many files in that folder, more than the available space in the folder screen to display them. Maybe we should be thinking about using a static file (not removing it after test) for this test?",
+      "revId": "015dd6fbb48449b49f6c96ccdbda94a494578d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
