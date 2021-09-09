@@ -124,11 +124,11 @@ func LaunchManagedGuestSession(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	if err := conn.EvalPromiseDeprecated(ctx,
-		`new Promise((resolve, reject) => {
+	if err := conn.Eval(ctx, `new Promise((resolve, reject) => {
 		chrome.login.launchManagedGuestSession(() => {
 			if (chrome.runtime.lastError) {
 				reject(new Error(chrome.runtime.lastError.message));
+				return;
 			}
 			resolve();
 		});
