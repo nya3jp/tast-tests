@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2976b7d2_71c77ee8",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T17:56:47Z",
+      "side": 1,
+      "message": "nit: remove max, timeout at the end should be enough",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc465cc0_f6e0710d",
         "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
         "patchSetId": 10
@@ -157,6 +180,29 @@
         "startChar": 25,
         "endLine": 196,
         "endChar": 47
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "733f3572_8289c2a6",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T17:56:47Z",
+      "side": 1,
+      "message": "nit: wrap this error with more details.",
+      "range": {
+        "startLine": 212,
+        "startChar": 9,
+        "endLine": 212,
+        "endChar": 12
       },
       "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -256,6 +302,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1cd74bb8_e9753003",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T17:56:47Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 359,
+        "startChar": 21,
+        "endLine": 359,
+        "endChar": 24
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40fb40d9_65d21b7a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T17:56:47Z",
+      "side": 1,
+      "message": "also set Interval to something like 1 ms.",
+      "range": {
+        "startLine": 360,
+        "startChar": 13,
+        "endLine": 360,
+        "endChar": 24
+      },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "398711ea_e54e7ae0",
         "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
         "patchSetId": 10
@@ -273,6 +365,23 @@
         "endLine": 36,
         "endChar": 7
       },
+      "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ccd04e_dce5fd48",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T17:56:47Z",
+      "side": 1,
+      "message": "nit: a",
       "revId": "3413c1c5df776a3fcee9e3cc6c06b8c1c1727204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
