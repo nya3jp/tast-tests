@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17bd75c0_29c66276",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-09T17:35:27Z",
+      "side": 1,
+      "message": "I know it is not your fault, but we moving from precondition to fixture, so can you please modify firmware/fixture/fixture.go as well to keep them in sync. \n\nAnd the associated tests also.",
+      "revId": "725f3a4f8705a40d9a13ef2d7af64b54ec2a0052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84890fa8_f88803ee",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-09T17:35:27Z",
+      "side": 1,
+      "message": "It is actually downloading the chromeos image from cloud storage onto the usb that takes so long. And I\u0027ve seen it take 48 minutes, which is why I set the deadline to 60m above.",
+      "range": {
+        "startLine": 117,
+        "startChar": 32,
+        "endLine": 117,
+        "endChar": 67
+      },
+      "revId": "725f3a4f8705a40d9a13ef2d7af64b54ec2a0052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
