@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e11deb2_a79654f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-09-09T02:02:32Z",
+      "side": 1,
+      "message": "In order to not slow progress, let\u0027s decouple:\nb/194907834 1:1 port\nb/199341643 follow-up on what the intended SUT is\n\nSo, let\u0027s leave it in firmware_experimental for now (experimental in nature, so it should not slow critical path efforts).",
+      "parentUuid": "aabe42d3_ec2acde8",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f3907cd_4acca9a3",
