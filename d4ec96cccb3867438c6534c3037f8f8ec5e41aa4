@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc4ae31_8ab89ff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-09T06:24:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ba94e1b_9ebbb1a5",
+      "range": {
+        "startLine": 41,
+        "startChar": 39,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "d4ec96cccb3867438c6534c3037f8f8ec5e41aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "351e9679_af5e65bb",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b399ec8_4bb602b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-09T06:24:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "351e9679_af5e65bb",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "d4ec96cccb3867438c6534c3037f8f8ec5e41aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac3ec893_a7be8cb3",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-09-08T21:59:13Z",
       "side": 1,
       "message": "nit:\nPciBusInfo -\u003e PCIBusInfo\nUsbBusInfo -\u003e USBBusInfo\n\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "d4ec96cccb3867438c6534c3037f8f8ec5e41aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "110cba65_142025c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-09-09T06:24:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac3ec893_a7be8cb3",
       "range": {
         "startLine": 73,
         "startChar": 1,
