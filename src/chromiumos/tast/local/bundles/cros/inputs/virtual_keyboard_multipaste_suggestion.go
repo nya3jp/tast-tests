@@ -40,9 +40,7 @@ func init() {
 
 func VirtualKeyboardMultipasteSuggestion(ctx context.Context, s *testing.State) {
 	const (
-		text1        = "Hello world"
-		text2        = "12345"
-		expectedText = "Hello world12345"
+		text = "Hello world"
 	)
 
 	cr := s.PreValue().(pre.PreData).Chrome
@@ -66,14 +64,12 @@ func VirtualKeyboardMultipasteSuggestion(ctx context.Context, s *testing.State) 
 	}
 	defer touchCtx.Close()
 
-	ash.SetClipboard(ctx, tconn, text1)
-	ash.SetClipboard(ctx, tconn, text2)
+	ash.SetClipboard(ctx, tconn, text)
 
 	if err := uiauto.Combine("paste text through multipaste suggestion bar",
 		its.ClickFieldUntilVKShown(inputField),
-		vkbCtx.TapMultipasteSuggestion(text1),
-		vkbCtx.TapMultipasteSuggestion(text2),
-		util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), expectedText),
+		vkbCtx.TapMultipasteSuggestion(text),
+		util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), text),
 	)(ctx); err != nil {
 		s.Fatal("Fail to paste text through multipaste suggestion: ", err)
 	}
