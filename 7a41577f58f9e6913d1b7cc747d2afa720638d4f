@@ -65,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed8fcf81_8c6392ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95a2d19e_fe0d9117",
+      "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42f44628_a1dd9508",
@@ -78,6 +96,24 @@
       "writtenOn": "2021-08-09T16:57:20Z",
       "side": 1,
       "message": "nit: define only in the block it is used.",
+      "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "387d0d1d_3b2ab23a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42f44628_a1dd9508",
       "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e366e1f_cece6edf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "811c55aa_17f0c6b4",
+      "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93c84172_9078afc7",
@@ -112,6 +166,24 @@
       "writtenOn": "2021-08-09T16:57:20Z",
       "side": 1,
       "message": "nit: define everywhere it is used.",
+      "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7a8166f_1e31119d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93c84172_9078afc7",
       "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -133,6 +205,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a8eaf5_7a741661",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "787f6e96_6b19d64d",
+      "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "667edf66_400c20ee",
@@ -150,6 +240,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f9458e4_0b259e48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "667edf66_400c20ee",
+      "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c02225fc_b0a7581a",
@@ -163,6 +271,30 @@
       "writtenOn": "2021-08-17T19:30:00Z",
       "side": 1,
       "message": "This probably needs a testing.Poll also, as it can take a few seconds before the shutdown is done.",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 4
+      },
+      "revId": "7a41577f58f9e6913d1b7cc747d2afa720638d4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beca9e76_f5c503d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c02225fc_b0a7581a",
       "range": {
         "startLine": 80,
         "startChar": 3,
