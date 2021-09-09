@@ -243,6 +243,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cde15e0e_b3cd8fc4",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1326157
+      },
+      "writtenOn": "2021-09-09T18:42:35Z",
+      "side": 1,
+      "message": "Sometimes it\u0027s redundant, but not always. For example:\n\n1. Consider a test which does not use a Precondition/Fixture, but which still uses the ModeSwitcher. In that case, we cannot make any assumptions about the GBB flags.\n2. Consider a test which uses a Precondition to start in one boot mode, but then uses the ModeSwitcher to switch to a different boot mode (possibly via GBB flags). In that case, the flags may be in a different state than defined in pre.go.\n\nIn these cases, ClearAndSetGBBFlags will be a noop (see [1]). It will take time to re-determine the DUT\u0027s GBB flags state, so perhaps this could be optimized.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/firmware/bios/image.go;rcl\u003d6e6d458ea870a33c923a28c9bcdfbd66624d391f;l\u003d120",
+      "parentUuid": "e1263ede_acc3425f",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 11
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8cd4cbb5_0c1a57c9",
         "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
         "patchSetId": 2
