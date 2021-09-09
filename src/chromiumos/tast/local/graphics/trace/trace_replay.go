@@ -43,11 +43,12 @@ type IGuestOS interface {
 }
 
 const (
-	outDirName          = "guest"
-	glxInfoFile         = "glxinfo.txt"
-	replayAppName       = "trace_replay"
-	replayAppPathAtHost = "/usr/local/graphics"
-	fileServerPort      = 8085
+	outDirName           = "guest"
+	glxInfoFile          = "glxinfo.txt"
+	replayAppName        = "trace_replay"
+	replayAppPathAtHost  = "/usr/local/graphics"
+	fileServerPort       = 8085
+	defaultMaxBufferSize = 32 << 20 // 32 MB
 )
 
 type guestLogEntry struct {
@@ -235,17 +236,22 @@ func (pt *passThruWriter) Write(p []byte) (int, error) {
 // serveDownloadRequest tries to download a file and transmit it via the http response.
 func (s *fileServer) serveDownloadRequest(ctx context.Context, wr http.ResponseWriter, filePath string) error {
 	// The requested path is specified relative to the repository root URL to restrict access to arbitrary files via this request.
-	s.log(ctx, "Validate requested file path: %s", filePath)
+	s.log(ctx, "serveDownloadRequest() for [%s]", filePath)
+	if filePath == "" {
+		wr.WriteHeader(http.StatusBadRequest)
+		return errors.New("serveDownloadRequest: no filePath argument is provided")
+	}
+
 	if !validateRequestedFilePath(filePath) {
 		wr.WriteHeader(http.StatusUnauthorized)
-		return errors.Errorf("unable to validate the requested path %v", filePath)
+		return errors.Errorf("serveDownloadRequest: invalid requested path %v", filePath)
 	}
 
 	s.log(ctx, "Parse repository URL %s", s.repository.RootURL)
 	requestURL, err := url.Parse(s.repository.RootURL)
 	if err != nil {
 		wr.WriteHeader(http.StatusBadRequest)
-		return errors.Wrap(err, "unable to parse the repository URL")
+		return errors.Wrap(err, "serveDownloadRequest: unable to parse the repository URL")
 	}
 
 	requestURL.Path = path.Join(requestURL.Path, filePath)
@@ -253,7 +259,7 @@ func (s *fileServer) serveDownloadRequest(ctx context.Context, wr http.ResponseW
 	r, err := s.cloudStorage.Open(ctx, requestURL.String())
 	if err != nil {
 		wr.WriteHeader(http.StatusNotFound)
-		return errors.Wrap(err, "unable to download")
+		return errors.Wrap(err, "serveDownloadRequest: Failed cloudStorage.Open()")
 	}
 	defer r.Close()
 
@@ -281,8 +287,54 @@ func (s *fileServer) serveDownloadRequest(ctx context.Context, wr http.ResponseW
 	s.log(ctx, "Writer stats: %s", formatStats(ptWriter.err, ptWriter.bytes, ptWriter.usecs))
 
 	if err != nil {
-		return errors.Wrap(err, "io.Copy() failed")
+		return errors.Wrap(err, "serveDownloadRequest: Failed io.Copy()")
 	}
+	return nil
+}
+
+// serveUploadRequest serves an upload request from the guest and stores the received files into the folder with test result artifacts
+func (s *fileServer) serveUploadRequest(ctx context.Context, wr http.ResponseWriter, req *http.Request) error {
+	s.log(ctx, "serveUploadRequest()")
+	if err := req.ParseMultipartForm(defaultMaxBufferSize); err != nil {
+		wr.WriteHeader(http.StatusBadRequest)
+		return errors.Wrap(err, "serveUploadRequest: Failed to parse request as a multipart-form")
+	}
+
+	if req.MultipartForm == nil || len(req.MultipartForm.File) == 0 {
+		wr.WriteHeader(http.StatusBadRequest)
+		return errors.New("serveUploadRequest: Empty multipart request")
+	}
+
+	wr.WriteHeader(http.StatusOK)
+	fileHeaders := req.MultipartForm.File["file"]
+	if len(fileHeaders) == 0 {
+		return errors.New("serveUploadRequest: No file entries in the multipart request")
+	}
+	for _, fileHeader := range fileHeaders {
+		outFileName := filepath.Join(s.outDir, fileHeader.Filename)
+		s.log(ctx, "Receiving %s...", fileHeader.Filename)
+		if err := os.MkdirAll(filepath.Dir(outFileName), 0755); err != nil {
+			return errors.Wrapf(err, "serveUploadRequest: Failed os.MkdirAll %v", filepath.Dir(outFileName))
+		}
+		body, err := fileHeader.Open()
+		defer body.Close()
+		if err != nil {
+			return errors.Wrap(err, "serveUploadRequest: Failed fileHeader.Open()")
+		}
+
+		file, err := os.Create(outFileName)
+		defer file.Close()
+		if err != nil {
+			return errors.Wrap(err, "serveUploadRequest: Failed os.Create()")
+		}
+
+		copied, err := io.Copy(file, body)
+		if err != nil {
+			return errors.Wrap(err, "serveUploadRequest: io.Copy() failed")
+		}
+		s.log(ctx, "Saved %d bytes to %s", copied, outFileName)
+	}
+
 	return nil
 }
 
@@ -301,15 +353,15 @@ func (s *fileServer) ServeHTTP(wr http.ResponseWriter, req *http.Request) {
 	requestType := query.Get("type")
 	switch requestType {
 	case "download":
-		filePath := query.Get("filePath")
-		if filePath == "" {
-			s.log(ctx, "Error: filePath was not provided by download request to proxyServer")
-			wr.WriteHeader(http.StatusBadRequest)
-			return
+		if err := s.serveDownloadRequest(ctx, wr, query.Get("filePath")); err != nil {
+			s.log(ctx, "Error: serveDownloadRequest failed: ", err.Error())
 		}
-		if err := s.serveDownloadRequest(ctx, wr, filePath); err != nil {
-			s.log(ctx, "serveDownloadRequest failed: ", err.Error())
+		return
+	case "upload":
+		if err := s.serveUploadRequest(ctx, wr, req); err != nil {
+			s.log(ctx, "Error: serveUploadRequest failed: ", err.Error())
 		}
+		return
 	case "getBinary":
 		binaryFileName := path.Join(replayAppPathAtHost, replayAppName)
 		if _, err := os.Stat(binaryFileName); os.IsNotExist(err) {
