@@ -137,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24c46535_b31ca0d5",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T04:44:06Z",
+      "side": 1,
+      "message": "It looks good. If we are unsure about changing the logic, I think we can keep it as is for this CL, and update it in another CL, in which we can add the original author of the error message to review. WDYT?",
+      "parentUuid": "6522b04c_6a8c8c73",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "03b5f798a502e64d5e7a8c0498c28189a052e941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8916fb2_3a1863a6",
         "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
         "patchSetId": 1
