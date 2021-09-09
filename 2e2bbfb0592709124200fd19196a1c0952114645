@@ -51,6 +51,24 @@
       "parentUuid": "0cca9903_7d7f7c03",
       "revId": "2e2bbfb0592709124200fd19196a1c0952114645",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b6e73ca_1daa4bc8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-09T14:23:35Z",
+      "side": 1,
+      "message": "testexec.ExitCode should help you.",
+      "parentUuid": "c8c6b8e9_514522ae",
+      "revId": "2e2bbfb0592709124200fd19196a1c0952114645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
