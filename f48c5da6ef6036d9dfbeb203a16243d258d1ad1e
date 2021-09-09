@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c3caeeb_35273c90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/cpufreq_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-09-09T21:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82dfb0a4_f28f4b82",
+      "range": {
+        "startLine": 60,
+        "startChar": 47,
+        "endLine": 60,
+        "endChar": 55
+      },
+      "revId": "f48c5da6ef6036d9dfbeb203a16243d258d1ad1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89956ce0_378bb4f3",
@@ -60,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08497beb_6af88326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/cpufreq_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-09-09T21:07:02Z",
+      "side": 1,
+      "message": "\u003e File a bug for this if you think it\u0027s actually going to get taken care of, or just leave this out... it\u0027ll probably get forgotten otherwise\n\nSure. I was on the fence about this.\n\n\u003e (Didn\u0027t we have remotely-controlled power modules in the lab for power tests at some point? What happened to those?)\n\nI think some DUTs may have them. I recall dbasehore complaining that he couldn\u0027t get traction on having them installed uniformly, so it was hard to target tests to anything like that. It might be a little easier today, if they still exist.\n\nI\u0027m curious if there are other ways though. Especially with modern USB-C Servo, it feels like it might be possible to do this via servo, but then, I\u0027m not sure that\u0027s very reliable these days.\n\nI guess it could also work if we taught powerd to fake power states. (Does this feature exist?)",
+      "parentUuid": "89956ce0_378bb4f3",
+      "revId": "f48c5da6ef6036d9dfbeb203a16243d258d1ad1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2871dfed_a13c2b0e",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/cpufreq_conf.go",
         "patchSetId": 3
@@ -71,6 +113,30 @@
       "writtenOn": "2021-09-09T20:13:35Z",
       "side": 1,
       "message": "nit: \"got %q, want %q\"",
+      "range": {
+        "startLine": 93,
+        "startChar": 61,
+        "endLine": 93,
+        "endChar": 69
+      },
+      "revId": "f48c5da6ef6036d9dfbeb203a16243d258d1ad1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "676b0a6a_2dedf6a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/cpufreq_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-09-09T21:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2871dfed_a13c2b0e",
       "range": {
         "startLine": 93,
         "startChar": 61,
