@@ -22,6 +22,30 @@
       },
       "revId": "ea59f8675e52442caa60e636901477c3302a55c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f4eb4ed_360d87df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-09T01:42:36Z",
+      "side": 1,
+      "message": "Not much difference. Just because retry will print logs for each attempt. So I can continue to follow up to see if this happens indeed, since I could not repro it locally.\n\nSecondly, for short code. retry looks easier for repeated actions.",
+      "parentUuid": "7337016c_e0b814bd",
+      "range": {
+        "startLine": 256,
+        "startChar": 15,
+        "endLine": 256,
+        "endChar": 23
+      },
+      "revId": "ea59f8675e52442caa60e636901477c3302a55c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
