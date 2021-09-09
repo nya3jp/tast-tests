@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77c2697c_0cbe2232",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-09T16:10:17Z",
+      "side": 1,
+      "message": "Hi Jun, this CL chain implement the new requirement for GoogleMeet and Zoom CUJ to create both GDocs and GSlides, but present GSlides for plus tier and GDocs for premium tier tests.\n\nThank you in advance for you time to review the changes.",
+      "revId": "24d17011ef58236e63c872e8bad54d70673bbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
