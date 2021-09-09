@@ -39,6 +39,30 @@
       },
       "revId": "b45328546a1687dfb3b35b15a4110a0a4abee1e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f82ae4b_9c876cc3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-09T03:42:52Z",
+      "side": 1,
+      "message": "Sorry, said too soon. I was on an older build.",
+      "parentUuid": "d13a1646_13ccd184",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "b45328546a1687dfb3b35b15a4110a0a4abee1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
