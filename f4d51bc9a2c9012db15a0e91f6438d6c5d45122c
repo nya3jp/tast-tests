@@ -33,6 +33,24 @@
       "message": "There is a real error here:\n\n```\nsrc/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go:19:2: cannot find package \"chromiumos/tast/remote/servo\" in any of:\ntast-remote-tests-cros-0.0.2-r7564: \t/usr/lib/go/src/chromiumos/tast/remote/servo (from $GOROOT)\ntast-remote-tests-cros-0.0.2-r7564: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7564/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/servo (from $GOPATH)\ntast-remote-tests-cros-0.0.2-r7564: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7564/work/tast-remote-tests-cros-0.0.2/tast-base/src/chromiumos/tast/remote/servo\ntast-remote-tests-cros-0.0.2-r7564: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7564/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/firmware/data/fw-testing-configs/src/chromiumos/tast/remote/servo\ntast-remote-tests-cros-0.0.2-r7564: \t/usr/lib/gopath/src/chromiumos/tast/remote/servo\n```\n\nI think that needs to be tast/common/servo instead.",
       "revId": "f4d51bc9a2c9012db15a0e91f6438d6c5d45122c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b21a1a9_7b406d09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-09T14:16:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cdf452b_a361b48a",
+      "revId": "f4d51bc9a2c9012db15a0e91f6438d6c5d45122c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
