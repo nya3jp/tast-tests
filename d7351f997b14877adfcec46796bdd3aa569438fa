@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "829138da_dc9bc6c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-09T15:54:44Z",
+      "side": 1,
+      "message": "Please use the globals from pre. I.e Data: pre.Data",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "d7351f997b14877adfcec46796bdd3aa569438fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f0221d_9c5767bd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-09T15:54:44Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be necessary. The servo should do this itself if needed.  Was this just copied from the old test or did you put it in to resolve a specific problem?",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 4
+      },
+      "revId": "d7351f997b14877adfcec46796bdd3aa569438fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff3c593a_4c36c833",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-09T15:54:44Z",
+      "side": 1,
+      "message": "CommandContext",
+      "range": {
+        "startLine": 110,
+        "startChar": 40,
+        "endLine": 110,
+        "endChar": 47
+      },
+      "revId": "d7351f997b14877adfcec46796bdd3aa569438fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
