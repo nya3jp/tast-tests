@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head><title>WebCodecs Encode test</title></head>
+<body>
+  <video id="localMedia"></video>
+  <script src="webcodecs_common.js"></script>
+  <script type="text/javascript">
+    'use strict';
+
+    let bitstream_saver = new BitstreamSaver();
+
+    async function EncodeAndSave(codec, acceleration, width, height, bitrate,
+                                 framerate, frames) {
+      let encoder = await CreateEncoder(codec, acceleration, width, height,
+                                        bitrate, framerate, bitstream_saver);
+      if (!encoder) {
+        TEST.failExit();
+        return;
+      }
+
+      let source = new RawSource(width, height, framerate, frames);
+      if (!source) {
+        TEST.failExit();
+        return;
+      }
+      for (let i = 0; i < frames.length; i++) {
+        let frame = await source.getNextFrame();
+        if (!frame) {
+          break;
+        }
+        encoder.encode(frame, { keyFrame: false });
+        frame.close();
+      }
+
+      await encoder.flush();
+      await encoder.close();
+
+      TEST.expect(
+        TEST.num_encoded_frames == frames.length,
+        'Encode frames mismatch: ' + TEST.num_encoded_frames);
+      TEST.expect(
+        TEST.encoder_error == 0,
+        'Encoding errors occurred during the test');
+      TEST.exit();
+    }
+  </script>
+</body>
+</html>
