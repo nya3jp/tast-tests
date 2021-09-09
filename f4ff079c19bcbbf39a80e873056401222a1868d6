@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c00d4f46_4c32b4bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_event_logging_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T15:03:32Z",
+      "side": 0,
+      "message": "nit: move cleanup to a separate CL",
+      "revId": "f4ff079c19bcbbf39a80e873056401222a1868d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

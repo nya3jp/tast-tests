@@ -22,6 +22,47 @@
       },
       "revId": "3f45b9c209ed951c69a8b0481ece47dd5854d2f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d16255a_25d607d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_refresh_rate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T15:03:32Z",
+      "side": 1,
+      "message": "Remove nolint until it actually works.",
+      "parentUuid": "551709eb_82d7a7d9",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 8
+      },
+      "revId": "3f45b9c209ed951c69a8b0481ece47dd5854d2f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad899552_7629976e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T15:03:32Z",
+      "side": 1,
+      "message": "nit: move cleanup to a separate CL to have this CL as obvious as possible",
+      "revId": "3f45b9c209ed951c69a8b0481ece47dd5854d2f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
