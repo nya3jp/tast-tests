@@ -33,6 +33,23 @@
       "message": "Xiyuan, PTAL",
       "revId": "7e8f5ad128211b89246229f52e5aaf3ad21cea36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd3c54fb_40aefd9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-09-09T18:55:20Z",
+      "side": 1,
+      "message": "lgtm \n\nNote that I am not tast owner.",
+      "revId": "7e8f5ad128211b89246229f52e5aaf3ad21cea36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
