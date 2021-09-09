@@ -17,7 +17,6 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/rpc"
 	crash_service "chromiumos/tast/services/cros/crash"
@@ -32,14 +31,14 @@ func init() {
 		Contacts:    []string{"mutexlox@chromium.org", "cros-telemetry@google.com"},
 		Attr:        []string{"group:mainline", "informational"},
 		Timeout:     10 * time.Minute,
-		Data:        []string{firmware.ConfigFile},
+		Data:        pre.Data,
 		Pre:         pre.NormalMode(),
-		ServiceDeps: []string{"tast.cros.crash.FixtureService", "tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+		ServiceDeps: append(pre.ServiceDeps, "tast.cros.crash.FixtureService"),
 		// no_qemu because the servo is not available in VMs, and tast does
 		// not (yet) support skipping tests if required vars are not provided.
 		// TODO(crbug.com/967901): Remove no_qemu dep once servo var is sufficient.
-		SoftwareDeps: []string{"device_crash", "ec_crash", "pstore", "reboot", "no_qemu", "crossystem", "flashrom"},
-		Vars:         []string{"servo"},
+		SoftwareDeps: append(pre.SoftwareDeps, []string{"device_crash", "ec_crash", "pstore", "reboot", "no_qemu"}...),
+		Vars:         pre.Vars,
 	})
 }
 
