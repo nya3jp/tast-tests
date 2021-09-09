@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "664495b6_dcd27bde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-09-09T03:59:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7528344b_8e4b7fb0",
+      "revId": "6f4539d1b69135cf251595651564f2d7b0877df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06840cb0_463b1948",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-09-07T14:50:41Z",
       "side": 1,
       "message": "unlike usual programming language, go prefers shorter name by using surrounding context.\n\nHow about just \"maxAct\" as you touch this?",
+      "range": {
+        "startLine": 580,
+        "startChar": 1,
+        "endLine": 580,
+        "endChar": 18
+      },
+      "revId": "6f4539d1b69135cf251595651564f2d7b0877df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e38f638_326571e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-09-09T03:59:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06840cb0_463b1948",
       "range": {
         "startLine": 580,
         "startChar": 1,
