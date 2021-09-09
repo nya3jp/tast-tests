@@ -16,6 +16,46 @@
       "message": "ihf@ PTAL again\n\ntast-owners@ PTAL",
       "revId": "6a661e5df8dfca891b1ab0e673b5655d0e3616a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5749fcf4_d354e948",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-09T16:19:05Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "6a661e5df8dfca891b1ab0e673b5655d0e3616a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "709b3490_9b5d2a84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-09T16:19:05Z",
+      "side": 1,
+      "message": "nit: use s.Log instead of testing.ContextLog. testing.ContextLog should only be used when the testing.State is not available.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 45
+      },
+      "revId": "6a661e5df8dfca891b1ab0e673b5655d0e3616a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
