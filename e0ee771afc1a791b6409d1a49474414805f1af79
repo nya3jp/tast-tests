@@ -33,6 +33,23 @@
       "message": "Toshiki-san Can you take a look?",
       "revId": "e0ee771afc1a791b6409d1a49474414805f1af79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "063edb2d_a9a5cc35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-09-09T05:41:51Z",
+      "side": 1,
+      "message": "LGTM from Framework team perspective.",
+      "revId": "e0ee771afc1a791b6409d1a49474414805f1af79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
