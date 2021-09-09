@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aabe42d3_ec2acde8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:50:51Z",
+      "side": 1,
+      "message": "Keeping the discussion open as I don\u0027t have any internal competence and decision power on that, but I\u0027ll act accordingly to what you eventually decide. Same goes for the other comment below.",
+      "parentUuid": "10cee3c8_480322f2",
+      "range": {
+        "startLine": 23,
+        "startChar": 16,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f3907cd_4acca9a3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
         "patchSetId": 2
@@ -166,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b48fb01_e0049d98",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:50:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dc072d0_0327494a",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "067b7045_3c10ee08",
@@ -183,6 +231,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1385c134_df0a0bef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:50:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "067b7045_3c10ee08",
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c542ae8_ad30d648",
@@ -196,6 +262,30 @@
       "writtenOn": "2021-09-08T22:30:08Z",
       "side": 1,
       "message": "This should probably be a var that can be passed to the test, see src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go for an example.",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c1666a3_bf24e388",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:50:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c542ae8_ad30d648",
       "range": {
         "startLine": 38,
         "startChar": 2,
@@ -229,6 +319,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "310a28b0_c8b5570b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:50:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "065c29eb_3cb3212a",
+      "range": {
+        "startLine": 52,
+        "startChar": 87,
+        "endLine": 52,
+        "endChar": 94
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b64e46b4_ed4509f8",
@@ -242,6 +356,30 @@
       "writtenOn": "2021-09-08T22:30:08Z",
       "side": 1,
       "message": "This is going to be a lot of logging.",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 25
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cc72455_33058772",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:50:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b64e46b4_ed4509f8",
       "range": {
         "startLine": 58,
         "startChar": 2,
@@ -288,6 +426,54 @@
       "writtenOn": "2021-09-08T22:40:32Z",
       "side": 1,
       "message": "The old test runs dmesg -cT, so that you don\u0027t have to keep processing the same messages over and over.",
+      "range": {
+        "startLine": 60,
+        "startChar": 38,
+        "endLine": 60,
+        "endChar": 43
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c4cea95_44e4edf1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:50:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3209c742_d076faf1",
+      "range": {
+        "startLine": 60,
+        "startChar": 29,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "02ee9e4d7f026f648f0f1f6923d60af82713cab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36999ca2_753898d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:50:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfbae6c1_bf03fef6",
       "range": {
         "startLine": 60,
         "startChar": 38,
