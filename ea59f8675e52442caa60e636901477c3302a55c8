@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7337016c_e0b814bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-09T01:37:26Z",
+      "side": 1,
+      "message": "is there a reason to use retry instead of polling here?",
+      "range": {
+        "startLine": 256,
+        "startChar": 15,
+        "endLine": 256,
+        "endChar": 23
+      },
+      "revId": "ea59f8675e52442caa60e636901477c3302a55c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
