@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f0ef5f_a43fdf55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-09T08:29:30Z",
+      "side": 1,
+      "message": "PTAL. (The original author of this function looks no longer working in chromeos repository.)",
+      "revId": "8bcbab335f41d2d57f44a62efcdc447bdb7cfede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
