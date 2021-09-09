@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/pci"
+	"chromiumos/tast/local/bundles/cros/health/usb"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 )
@@ -50,6 +51,9 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 	if err := validatePCIDevices(ctx, pciDevs); err != nil {
 		s.Fatal("PCI validation failed: ", err)
 	}
+	if err := validateUSBDevices(ctx, usbDevs); err != nil {
+		s.Fatal("Usb validation failed: ", err)
+	}
 }
 
 // validatePCIDevices validates the PCI devices with the expected PCI
@@ -76,6 +80,43 @@ func validatePCIDevices(ctx context.Context, devs []busDevice) error {
 	}
 	if d := cmp.Diff(exp, got); d != "" {
 		return errors.Errorf("unexpected PCI device data, (-expected + got): %s", d)
+	}
+	return nil
+}
+
+// validateUSBDevices validates the USB devices with the expected USB
+// devices extracted by the "usb-devices" and the "lsusb" commands.
+func validateUSBDevices(ctx context.Context, devs []busDevice) error {
+	var got []usb.Device
+	for _, d := range devs {
+		udIn := d.BusInfo.USBBusInfo
+		// TODO:(b/199683963): Validation of busDevice.DeviceClass is skipped.
+		udOut := usb.Device{
+			VendorID:   fmt.Sprintf("%04x", udIn.VendorID),
+			ProdID:     fmt.Sprintf("%04x", udIn.ProductID),
+			DeviceName: d.VendorName + " " + d.ProductName,
+			Class:      fmt.Sprintf("%02x", udIn.ClassID),
+			SubClass:   fmt.Sprintf("%02x", udIn.SubClassID),
+			Protocol:   fmt.Sprintf("%02x", udIn.ProtocolID),
+		}
+		for _, ifc := range udIn.Interfaces {
+			udOut.Interfaces = append(udOut.Interfaces, usb.Interface{
+				InterfaceNumber: fmt.Sprintf("%x", ifc.InterfaceNumber),
+				Class:           fmt.Sprintf("%02x", ifc.ClassID),
+				SubClass:        fmt.Sprintf("%02x", ifc.SubClassID),
+				Protocol:        fmt.Sprintf("%02x", ifc.ProtocolID),
+				Driver:          ifc.Driver,
+			})
+		}
+		got = append(got, udOut)
+	}
+	usb.Sort(got)
+	exp, err := usb.ExpectedDevices(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get expected devices")
+	}
+	if d := cmp.Diff(exp, got); d != "" {
+		return errors.Errorf("unexpected USB device data, (-expected + got): %s", d)
 	}
 	return nil
 }
