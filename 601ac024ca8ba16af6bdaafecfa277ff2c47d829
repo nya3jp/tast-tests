@@ -16,6 +16,23 @@
       "message": "oh yeah, good catch. thanks!",
       "revId": "601ac024ca8ba16af6bdaafecfa277ff2c47d829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae37b11b_a98eb25c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-09T17:24:28Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "601ac024ca8ba16af6bdaafecfa277ff2c47d829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
