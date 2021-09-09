@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bd3d9e7_f6f318fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_adc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-09T17:40:28Z",
+      "side": 1,
+      "message": "Switch these to the pre vars.",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "26c93d33d42c0b4a6f16ca0a6471ac3a8c80d366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ef6dad_96cd679f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_adc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-09T17:40:28Z",
+      "side": 1,
+      "message": "These can be lower cased, they are not exported.",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 11
+      },
+      "revId": "26c93d33d42c0b4a6f16ca0a6471ac3a8c80d366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
