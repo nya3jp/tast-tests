@@ -16,6 +16,24 @@
       "message": "Please mark this as verified if you can confirm it passes on the most recent Voxel build.",
       "revId": "67bd8a5cc87ea315b7fc81dcba58ec87071b90ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa740db_7587c842",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-09T04:38:45Z",
+      "side": 1,
+      "message": "Verified on latest voxel CPFE.R96-14206.0.0",
+      "parentUuid": "a4dc3c9c_031d4e8d",
+      "revId": "67bd8a5cc87ea315b7fc81dcba58ec87071b90ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
