@@ -33,6 +33,24 @@
       "message": "Now you\u0027re missing the cswitch package since the dependency package has been changed again:\n```\ntast-remote-tests-cros-0.0.2-r7569: warning: ignoring symlink /var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7569/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/bundles/cros/arc/data/fw-testing-configs\ntast-remote-tests-cros-0.0.2-r7569: warning: ignoring symlink /var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7569/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/bundles/cros/crash/data/fw-testing-configs\ntast-remote-tests-cros-0.0.2-r7569: warning: ignoring symlink /var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7569/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/bundles/cros/firmware/data/fw-testing-configs\ntast-remote-tests-cros-0.0.2-r7569: warning: ignoring symlink /var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7569/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/firmware/fixture/data/fw-testing-configs\ntast-remote-tests-cros-0.0.2-r7569: src/chromiumos/tast/local/bundles/cros/typec/charging_through_usb4.go:16:2: cannot find package \"chromiumos/tast/local/cswitch\" in any of:\ntast-remote-tests-cros-0.0.2-r7569: \t/usr/lib/go/src/chromiumos/tast/local/cswitch (from $GOROOT)\ntast-remote-tests-cros-0.0.2-r7569: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7569/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/local/cswitch (from $GOPATH)\ntast-remote-tests-cros-0.0.2-r7569: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7569/work/tast-remote-tests-cros-0.0.2/tast-base/src/chromiumos/tast/local/cswitch\ntast-remote-tests-cros-0.0.2-r7569: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7569/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/firmware/data/fw-testing-configs/src/chromiumos/tast/local/cswitch\ntast-remote-tests-cros-0.0.2-r7569: \t/usr/lib/gopath/src/chromiumos/tast/local/cswitch\ntast-remote-tests-cros-0.0.2-r7569:  * ERROR: chromeos-base/tast-remote-tests-cros-0.0.2-r7569::chromiumos failed (compile phase):\ntast-remote-tests-cros-0.0.2-r7569:  *   (no error message)\ntast-remote-tests-cros-0.0.2-r7569:  * \n```",
       "revId": "0bfa572ce84c5a27f64ac32cc1552fe224d4e8e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eedfa323_59a6ba84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-09T04:27:54Z",
+      "side": 1,
+      "message": "Dependence package we did not change anything.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2951467\nVerified on latest CPFE.R96-14206.0.0",
+      "parentUuid": "ea17e7a8_dbc1fdf2",
+      "revId": "0bfa572ce84c5a27f64ac32cc1552fe224d4e8e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
