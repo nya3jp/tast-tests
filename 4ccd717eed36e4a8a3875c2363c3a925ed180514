@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12e7abb9_88c2c31f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:19:06Z",
+      "side": 1,
+      "message": "As mentioned above:\n\nOn octopus/bluebird, doing the testing phase, I have noticed that values tend to be negative if we dont abs() them so I decided to be better safe than sorry in both cases.",
+      "parentUuid": "0cebc170_de623f27",
+      "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb71f699_6a466ef9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
         "patchSetId": 6
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "This comment is in the python code:\n\n# The signs of the current values from servo and kernel are not\n# consistent across different devices. So we pick the absolute values.\n# TODO(victoryang@chromium.org): Investigate the sign issue.\n\nIt would be great to omit these abs calls, and then see if the comment is actually true.",
       "parentUuid": "eb71f699_6a466ef9",
+      "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e77f755_ded31abf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T01:19:06Z",
+      "side": 1,
+      "message": "On octopus/bluebird, doing the testing phase, I have noticed that values tend to be negative if we dont abs() them so I decided to be better safe than sorry in both cases.",
+      "parentUuid": "660f1446_413fcd38",
       "revId": "4ccd717eed36e4a8a3875c2363c3a925ed180514",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
