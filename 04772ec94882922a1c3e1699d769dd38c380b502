@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7cc354d_f365f3e6",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca_ui_remote_portrait_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-09T04:00:56Z",
+      "side": 1,
+      "message": "We\u0027ll do it in another CL.\nBut I might extract this logic to a utility function in cca.go instead of in fixture.go since it might be a per-test level logic.\nAnyways, let\u0027s discuss this part in the follow-up CL for fixture refactor.",
+      "parentUuid": "b59bbedb_d7e40092",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "04772ec94882922a1c3e1699d769dd38c380b502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "923746ec_d4f68835",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-09T03:50:47Z",
       "side": 1,
       "message": "an",
+      "range": {
+        "startLine": 41,
+        "startChar": 59,
+        "endLine": 41,
+        "endChar": 61
+      },
+      "revId": "04772ec94882922a1c3e1699d769dd38c380b502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28d2f5d_98a4a34c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-09T04:00:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "923746ec_d4f68835",
       "range": {
         "startLine": 41,
         "startChar": 59,
