@@ -6,37 +6,54 @@
 <script src="third_party/blackframe.js"></script>
 <script>
 
-const GREEN = [0, 1, 0, 1];
+async function nextFrame(t) {
+  return new Promise(resolve => {
+    // We could use here requestAnimationFrame(resolve) but since the workload
+    // is relatively light, we'll get such frames quite fast (~60Hz).
+    setTimeout(resolve, t)
+  })
+}
 
-function draw(canvasId) {
-  return new Promise(function(resolve, reject) {
-    requestAnimationFrame(function() {
-      var context = canvasId.getContext('webgl', {alpha : true});
-      context.clearColor(GREEN[0], GREEN[1], GREEN[2], GREEN[3]);
-      context.clear(context.COLOR_BUFFER_BIT);
-      resolve();
-    });
-  });
+const GREEN = [0, 1, 0, 1];
+const BLUE = [0, 0, 1, 1];
+
+async function draw(canvasId, framerate) {
+  var context = canvasId.getContext('webgl', {alpha : true});
+  context.clearColor(GREEN[0], GREEN[1], GREEN[2], GREEN[3]);
+  context.clear(context.COLOR_BUFFER_BIT);
+  await nextFrame(1000 / framerate);
+  context.clearColor(BLUE[0], BLUE[1], BLUE[2], BLUE[3]);
+  context.clear(context.COLOR_BUFFER_BIT);
+  await nextFrame(1000 / framerate);
+
+  draw(canvasId, framerate);
 }
 
 const WIDTH = 128;
 const HEIGHT = 128;
 
-async function captureCanvasAndInspect() {
+async function captureCanvasAndInspect(validate) {
   const canvas = document.getElementById('canvas');
   canvas.width = WIDTH;
   canvas.height = HEIGHT;
-  await draw(canvas);
+  const FRAMERATE = 24;
+  await draw(canvas, FRAMERATE);
 
-  var stream = canvas.captureStream(10);
+  // Note that no parameters to captureStream() will force a new capture every
+  // time |canvas| is modified.
+  var stream = canvas.captureStream();
   if (stream.getVideoTracks().length !== 1) {
-      throw new DOMException('Wrong getVideoTracks() length',
-         'InvalidStateError');
+    throw new DOMException('Wrong getVideoTracks() length',
+        'InvalidStateError');
   }
 
   const video = document.getElementById('video');
   video.srcObject = stream;
   await video.play();
+
+  if (!validate) {
+    return;
+  }
 
   const mediaStreamSettings = stream.getVideoTracks()[0].getSettings();
   video.width = mediaStreamSettings.width;
