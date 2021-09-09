@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -31,7 +32,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromePolicyLoggedIn",
+		Fixture:      fixture.ChromePolicyLoggedIn,
 		Data:         []string{"download_restrictions_index.html", "download_restrictions.zip"},
 	})
 }

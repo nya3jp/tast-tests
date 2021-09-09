@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -36,7 +37,7 @@ func init() {
 			"group:paper-io",
 			"paper-io_printing",
 		},
-		Fixture: "chromePolicyLoggedIn",
+		Fixture: fixture.ChromePolicyLoggedIn,
 		Params: []testing.Param{
 			{
 				Name: "print_from_chrome_menu",
@@ -127,12 +128,12 @@ func testPrintingFromThreeDotMenu(ctx context.Context, tconn *chrome.TestConn) (
 		Role:      ui.RoleTypePopUpButton,
 		ClassName: "BrowserAppMenuButton",
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		return false, errors.Wrap(err, "failed to click on dropdown menu: ")
+		return false, errors.Wrap(err, "failed to click on dropdown menu")
 	}
 
 	printingPossible, err := checkPrintMenuItemIsRestricted(ctx, tconn)
 	if err != nil {
-		return false, errors.Wrap(err, "failed to check print menu item restriction: ")
+		return false, errors.Wrap(err, "failed to check print menu item restriction")
 	}
 
 	return printingPossible, nil
@@ -143,13 +144,13 @@ func testPrintingWithHotkey(ctx context.Context, tconn *chrome.TestConn) (bool, 
 	// Define keyboard to type keyboard shortcut.
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		return false, errors.Wrap(err, "failed to get the keyboard: ")
+		return false, errors.Wrap(err, "failed to get the keyboard")
 	}
 	defer kb.Close()
 
 	// Type the shortcut.
 	if err := kb.Accel(ctx, "Ctrl+P"); err != nil {
-		return false, errors.Wrap(err, "failed to type printing hotkey: ")
+		return false, errors.Wrap(err, "failed to type printing hotkey")
 	}
 
 	// Check if printing dialog has appeared.
@@ -160,7 +161,7 @@ func testPrintingWithHotkey(ctx context.Context, tconn *chrome.TestConn) (bool, 
 		printWindowExists, err = ui.Exists(ctx, tconn, findParams)
 		// If the dialog does not exist by now, we assume that it will never be displayed.
 		if err != nil {
-			return false, errors.Wrap(err, "failed to check for printing windows existance: ")
+			return false, errors.Wrap(err, "failed to check for printing windows existance")
 		}
 	}
 
@@ -174,18 +175,18 @@ func testPrintingFromContextMenu(ctx context.Context, tconn *chrome.TestConn) (b
 		Role: ui.RoleTypeWebView,
 	}, 10*time.Second)
 	if err != nil {
-		return false, errors.Wrap(err, "failed to find web view: ")
+		return false, errors.Wrap(err, "failed to find web view")
 	}
 	defer webViewNode.Release(ctx)
 
 	// Invoke context menu of the web page.
 	if err := webViewNode.RightClick(ctx); err != nil {
-		return false, errors.Wrap(err, "failed to right click web view: ")
+		return false, errors.Wrap(err, "failed to right click web view")
 	}
 
 	printingPossible, err := checkPrintMenuItemIsRestricted(ctx, tconn)
 	if err != nil {
-		return false, errors.Wrap(err, "failed to check print menu item restriction: ")
+		return false, errors.Wrap(err, "failed to check print menu item restriction")
 	}
 
 	return printingPossible, nil
@@ -198,7 +199,7 @@ func checkPrintMenuItemIsRestricted(ctx context.Context, tconn *chrome.TestConn)
 		Name: "Print… Ctrl+P",
 	}, 5*time.Second)
 	if err != nil {
-		return false, errors.Wrap(err, "failed to find print menu item: ")
+		return false, errors.Wrap(err, "failed to find print menu item")
 	}
 	defer menuItemNode.Release(ctx)
 

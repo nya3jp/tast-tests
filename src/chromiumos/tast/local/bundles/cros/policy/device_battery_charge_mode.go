@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
@@ -34,7 +35,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Vars:         []string{"servo"},
-		Fixture:      "chromeEnrolledLoggedIn",
+		Fixture:      fixture.ChromeEnrolledLoggedIn,
 	})
 }
 

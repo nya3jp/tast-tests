@@ -8,6 +8,7 @@ import (
 	"context"
 	"strings"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -33,7 +34,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
-		Fixture:      "chromePolicyLoggedIn",
+		Fixture:      fixture.ChromePolicyLoggedIn,
 		Params: []testing.Param{
 			{
 				// TODO(crbug.com/1101928): remove once URLBlacklist is no longer supported.

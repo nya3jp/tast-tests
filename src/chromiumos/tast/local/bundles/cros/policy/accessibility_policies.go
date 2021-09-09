@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -33,7 +34,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		// autoclick case needs to be disabled.
 		Attr:    []string{},
-		Fixture: "chromePolicyLoggedIn",
+		Fixture: fixture.ChromePolicyLoggedIn,
 		Params: []testing.Param{
 			// TODO(crbug.com/1186655): Find a way to close/avoid the dialog about disabling autoclick.
 			{
