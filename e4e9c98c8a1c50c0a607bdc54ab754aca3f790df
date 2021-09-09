@@ -16,6 +16,52 @@
       "message": "Hi Kyle, PTAL. Thank you!",
       "revId": "e4e9c98c8a1c50c0a607bdc54ab754aca3f790df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "289cac73_e845c35c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-09T21:42:29Z",
+      "side": 1,
+      "message": "You can omit most of the WaitUntilExists calls (see comment below), and then inline any non-repeated finders in the ui calls",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 72
+      },
+      "revId": "e4e9c98c8a1c50c0a607bdc54ab754aca3f790df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5e04867_40973bf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-09T21:42:29Z",
+      "side": 1,
+      "message": "You can omit WaitUntilExists before mouse clicks. LeftClick/RightClick by default poll for existence and stable node location before clicking. WaitUntilExists is mainly for checking the existence of nodes that you don\u0027t plan on interacting with directly.",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 36
+      },
+      "revId": "e4e9c98c8a1c50c0a607bdc54ab754aca3f790df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
