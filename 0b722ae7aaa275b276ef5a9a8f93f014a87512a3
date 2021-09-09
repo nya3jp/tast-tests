@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5539a09_1fe4ee9e",
+        "filename": "src/chromiumos/tast/common/firmware/const.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T02:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5071eeb2_b03e80c6",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3f2d49e_e02cfc9e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-08T17:21:04Z",
       "side": 1,
       "message": "nit/style: Per http://go/go-code-review-comments#Initialisms, please keep initialisms in a consistent case (\"USB\" or \"usb\", but not \"Usb\"). In this case, please name the boot mode \"BootModeUSBDev\".",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29eb0a01_d338f75b",
+        "filename": "src/chromiumos/tast/common/firmware/const.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T02:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3f2d49e_e02cfc9e",
       "range": {
         "startLine": 19,
         "startChar": 1,
@@ -169,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af0993af_027a8363",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T02:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4a9471e_fb0943df",
+      "range": {
+        "startLine": 98,
+        "startChar": 19,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cd4cbb5_0c1a57c9",
@@ -182,6 +254,30 @@
       "writtenOn": "2021-09-08T17:21:04Z",
       "side": 1,
       "message": "nit/style: as elsewhere, please use \"USB\" instead of \"Usb\"",
+      "range": {
+        "startLine": 518,
+        "startChar": 34,
+        "endLine": 518,
+        "endChar": 37
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c01c979_d7df2bbf",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T02:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cd4cbb5_0c1a57c9",
       "range": {
         "startLine": 518,
         "startChar": 34,
@@ -215,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b790098e_39447d90",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T02:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6c54537_908d8e0a",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 15
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7212163e_6dd7d026",
@@ -238,6 +358,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5f22dc2_bb1e9b74",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T02:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7212163e_6dd7d026",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 11
+      },
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5b9b70d_793fe033",
@@ -251,6 +395,24 @@
       "writtenOn": "2021-09-08T17:21:04Z",
       "side": 1,
       "message": "Since we\u0027re only using bootedDevice in the `case \"developer\"` block, move this into that block. That will save some time in non-devmode test cases.\n\n    case \"developer\":\n        bootedDevice, err :\u003d r.BootedDevice(ctx)\n        if err !\u003d nil {\n            return fwCommon.BootModeUnspecified, errors.Wrapf(err, \"determining if boot device is removable\n        }\n        if bootedDevice \u003d\u003d ...",
+      "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb9a10a4_01e126db",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-09T02:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5b9b70d_793fe033",
       "revId": "0b722ae7aaa275b276ef5a9a8f93f014a87512a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
