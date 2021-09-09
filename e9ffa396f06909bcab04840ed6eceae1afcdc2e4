@@ -121,6 +121,30 @@
       },
       "revId": "e9ffa396f06909bcab04840ed6eceae1afcdc2e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd6782ce_14779a45",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-09-09T02:17:39Z",
+      "side": 1,
+      "message": "Updated code such that we are renaming to a backup file and renaming back.",
+      "parentUuid": "14eeb9c5_f2c915a3",
+      "range": {
+        "startLine": 231,
+        "startChar": 45,
+        "endLine": 231,
+        "endChar": 54
+      },
+      "revId": "e9ffa396f06909bcab04840ed6eceae1afcdc2e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
