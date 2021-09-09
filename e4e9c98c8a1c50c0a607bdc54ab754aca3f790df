@@ -110,6 +110,30 @@
       },
       "revId": "e4e9c98c8a1c50c0a607bdc54ab754aca3f790df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f34c17b4_afc81025",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-09T23:01:18Z",
+      "side": 1,
+      "message": "*more explicit in the sense that it\u0027s clear the test needs more time due to a network dependency.\n\nThe implicitness of LeftClick/RightClick waiting for a node to exist was one of the design goals of uiauto (vs the old UI automation package), to help improve the stability of node finding, and reduce the verbosity of UI automation code",
+      "parentUuid": "e2502e60_57d2ae0f",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 36
+      },
+      "revId": "e4e9c98c8a1c50c0a607bdc54ab754aca3f790df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
