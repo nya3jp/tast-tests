@@ -724,10 +724,10 @@ func wmRC22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return err
 	}
 
-	if err := a.Install(ctx, arc.APKPath(wm.APKNameArcWMTestApp24Secondary)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(wm.APKNameArcWMTestApp24Maximized)); err != nil {
 		return errors.Wrap(err, "failed to install extra APK")
 	}
-	rightAct, err := arc.NewActivity(a, wm.Pkg24Secondary, wm.ResizableUnspecifiedActivity)
+	rightAct, err := arc.NewActivity(a, wm.Pkg24InMaximizedList, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
@@ -752,7 +752,7 @@ func wmRC22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		rightWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
+		rightWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24InMaximizedList)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get arc app window info for right activity"))
 		}
@@ -775,7 +775,7 @@ func wmRC22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Wrap(err, "failed to get arc app window info for left activity")
 	}
 
-	rightWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
+	rightWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24InMaximizedList)
 	if err != nil {
 		return errors.Wrap(err, "failed to get arc app window info for right activity")
 	}

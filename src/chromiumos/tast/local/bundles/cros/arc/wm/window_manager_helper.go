@@ -30,8 +30,12 @@ const (
 	Pkg23 = "org.chromium.arc.testapp.windowmanager23"
 	// Pkg24 Apk compiled against target SDK 24 (N)
 	Pkg24 = "org.chromium.arc.testapp.windowmanager24"
-	// Pkg24Secondary is used for the tests that need to run two ARC activities at the same time.
-	Pkg24Secondary = "org.chromium.arc.testapp.windowmanager24.inmaximizedlist"
+	// Pkg24InPhoneSizeList is an app whose package name is allowlisted so it will be launched in phone size by default.
+	Pkg24InPhoneSizeList = "org.chromium.arc.testapp.windowmanager24.inphonesizelist"
+	// Pkg24InTabletSizeList is an app whose package name is allowlisted so it will be launched in tablet size by default.
+	Pkg24InTabletSizeList = "org.chromium.arc.testapp.windowmanager24.intabletsizelist"
+	// Pkg24InMaximizedList is an app whose package name is allowlisted so it will be launched in maximized by default.
+	Pkg24InMaximizedList = "org.chromium.arc.testapp.windowmanager24.inmaximizedlist"
 
 	// APKNameArcWMTestApp23 APK name for ArcWMTestApp_23.apk
 	APKNameArcWMTestApp23 = "ArcWMTestApp_23.apk"
@@ -42,8 +46,12 @@ const (
 	// APKNameArcPipSimpleTastTest APK name for ArcPipSimpleTastTest.apk
 	APKNameArcPipSimpleTastTest = "ArcPipSimpleTastTest.apk"
 
-	// APKNameArcWMTestApp24Secondary APK name for ArcWMTestApp_24_InMaximizedList.apk.
-	APKNameArcWMTestApp24Secondary = "ArcWMTestApp_24_InMaximizedList.apk"
+	// APKNameArcWMTestApp24PhoneSize APK name for ArcWMTestApp_24_InPhoneSizeList.apk.
+	APKNameArcWMTestApp24PhoneSize = "ArcWMTestApp_24_InPhoneSizeList.apk"
+	// APKNameArcWMTestApp24TabletSize APK name for ArcWMTestApp_24_InTabletSizeList.apk.
+	APKNameArcWMTestApp24TabletSize = "ArcWMTestApp_24_InTabletSizeList.apk"
+	// APKNameArcWMTestApp24Maximized APK name for ArcWMTestApp_24_InMaximizedList.apk.
+	APKNameArcWMTestApp24Maximized = "ArcWMTestApp_24_InMaximizedList.apk"
 
 	// ResizableLandscapeActivity used by the subtests.
 	ResizableLandscapeActivity = "org.chromium.arc.testapp.windowmanager.ResizeableLandscapeActivity"
@@ -656,7 +664,7 @@ func GetARCFontScale(ctx context.Context, a *arc.ARC) (float64, error) {
 // CheckVerticalTabletSplit helps to assert window bounds in vertical split mode.
 func CheckVerticalTabletSplit(ctx context.Context, tconn *chrome.TestConn) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24Secondary)
+		overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24InMaximizedList)
 		if err != nil {
 			return errors.Wrap(err, "failed to get arc app window info for over activity")
 		}
@@ -700,7 +708,7 @@ func CheckHorizontalTabletSplit(ctx context.Context, tconn *chrome.TestConn) err
 		if err != nil {
 			return errors.Wrap(err, "failed to get arc app window info for under activity")
 		}
-		overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24Secondary)
+		overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24InMaximizedList)
 		if err != nil {
 			return errors.Wrap(err, "failed to get arc app window info for over activity")
 		}

@@ -234,10 +234,10 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	if err := wm.WaitUntilActivityIsReady(ctx, tconn, underActivity, d); err != nil {
 		return errors.Wrap(err, "failed to wait until under activity is ready")
 	}
-	if err := a.Install(ctx, arc.APKPath(wm.APKNameArcWMTestApp24Secondary)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(wm.APKNameArcWMTestApp24Maximized)); err != nil {
 		return errors.Wrap(err, "failed to install extra APK")
 	}
-	overActivity, err := arc.NewActivity(a, wm.Pkg24Secondary, wm.ResizableUnspecifiedActivity)
+	overActivity, err := arc.NewActivity(a, wm.Pkg24InMaximizedList, wm.ResizableUnspecifiedActivity)
 	if err != nil {
 		return err
 	}
@@ -261,18 +261,18 @@ func wmRT22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 		return errors.Wrap(err, "failed to wait until over activity is ready")
 	}
 
-	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
+	overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24InMaximizedList)
 	if err != nil {
 		return errors.Wrap(err, "failed to get arc app window info for over activity")
 	}
 
-	if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24Secondary, ash.WMEventSnapLeft); err != nil {
-		return errors.Wrapf(err, "failed to left snap %s", wm.Pkg24Secondary)
+	if _, err := ash.SetARCAppWindowState(ctx, tconn, wm.Pkg24InMaximizedList, ash.WMEventSnapLeft); err != nil {
+		return errors.Wrapf(err, "failed to left snap %s", wm.Pkg24InMaximizedList)
 	}
 
 	//  Make sure the over activity is snapped to the left.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24Secondary)
+		overActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24InMaximizedList)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get arc app window info for over activity"))
 		}
