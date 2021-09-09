@@ -345,6 +345,7 @@ func (c *Chrome) Close(ctx context.Context) error {
 func shouldCloseOnReset(t *Target) bool {
 	// Chrome OS Virtual Keyboard is permanently cached in Chrome Session to speed up loading.
 	if t.Type == "other" && (t.Title == "Chrome OS Virtual Keyboard" ||
+		strings.HasPrefix(t.URL, "chrome-extension://fgoepimhcoialccpbmpnnblemnepkkao") || // Don't close ChromeOS xkb extension.
 		strings.HasPrefix(t.URL, "chrome-extension://jkghodnilhceideoidjikpgommlajknk") || // Don't close input methods extension.
 		strings.HasPrefix(t.URL, "chrome-extension://mndnfokpggljbaajbnioimlmbfngpief")) { // Don't close ChromeVox extension.
 		return false
