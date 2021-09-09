@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab03c1e_e1dc632e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-09T04:44:45Z",
+      "side": 1,
+      "message": "Verified on latest CPFE.R96-14206.0.0 ",
+      "revId": "119439661fb129bd5314dcab7357fce8d6a9da12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
