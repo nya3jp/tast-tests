@@ -56,6 +56,30 @@
       },
       "revId": "b55c08e50c4869c781f6f9f3678d2645a5c67ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e765fa2_ce6e94b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-09T17:23:04Z",
+      "side": 1,
+      "message": "This is to make sure the wallpaper is visible on the screen. Sometimes we right click too early and the option to set the wallpaper is not visible. I added it so that the test is less flaky.",
+      "parentUuid": "2be3498a_88e22fda",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 36
+      },
+      "revId": "b55c08e50c4869c781f6f9f3678d2645a5c67ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
