@@ -245,7 +245,9 @@ func (its *InputsTestServer) Clear(inputField InputField) uiauto.Action {
 // WaitForFieldToBeActive returns an action waiting for certain input field to be the active element.
 func (its *InputsTestServer) WaitForFieldToBeActive(inputField InputField) uiauto.Action {
 	return func(ctx context.Context) error {
-		return its.pc.WaitForExpr(ctx, fmt.Sprintf(`!!document.activeElement && document.querySelector("*[aria-label='%s']")===document.activeElement`, inputField))
+		return its.pc.WaitForExprFailOnErrWithTimeout(ctx,
+			fmt.Sprintf(`!!document.activeElement && document.querySelector("*[aria-label='%s']")===document.activeElement`,
+				inputField), 3*time.Second)
 	}
 }
 
