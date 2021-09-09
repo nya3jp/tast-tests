@@ -16,6 +16,23 @@
       "message": "LGTM from tast side. Please get approval from team before submitting.",
       "revId": "7e8f5ad128211b89246229f52e5aaf3ad21cea36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1702b97d_9dbf4f4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2021-09-09T10:04:18Z",
+      "side": 1,
+      "message": "Xiyuan, PTAL",
+      "revId": "7e8f5ad128211b89246229f52e5aaf3ad21cea36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
