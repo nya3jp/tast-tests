@@ -102,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17a3df89_58c47b3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/cpufreq_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-09T21:19:14Z",
+      "side": 1,
+      "message": "I think servo might have this kind of functionality? But I\u0027m not sure off the top of my head.",
+      "parentUuid": "08497beb_6af88326",
+      "revId": "f48c5da6ef6036d9dfbeb203a16243d258d1ad1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2871dfed_a13c2b0e",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/cpufreq_conf.go",
         "patchSetId": 3
