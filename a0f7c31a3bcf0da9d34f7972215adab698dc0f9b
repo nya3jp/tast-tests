@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16393a29_8e8f900c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_watchdog.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-09T17:43:10Z",
+      "side": 1,
+      "message": "Please use pre vars.",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "a0f7c31a3bcf0da9d34f7972215adab698dc0f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ece261e_e2e57247",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_watchdog.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-09T17:43:10Z",
+      "side": 1,
+      "message": "These can be lower case, not exported.",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 15
+      },
+      "revId": "a0f7c31a3bcf0da9d34f7972215adab698dc0f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24aabb42_95f373a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_watchdog.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-09T17:43:10Z",
+      "side": 1,
+      "message": "We should also check the boot id here, to make sure the device really rebooted.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "a0f7c31a3bcf0da9d34f7972215adab698dc0f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
