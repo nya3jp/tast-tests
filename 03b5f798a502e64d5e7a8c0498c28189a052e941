@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "656d917d_5bcc011f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-09T02:11:05Z",
+      "side": 1,
+      "message": "can this use a nil literal so that variable declaration in line 75 is not needed?",
+      "revId": "03b5f798a502e64d5e7a8c0498c28189a052e941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcaaffc0_6f2272a6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-09T02:11:05Z",
+      "side": 1,
+      "message": "Remove these lines.\n(I guess node reload was needed before but no longer, because it is at ui.Info when the actual node data is read from the tree in the new code.)",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 6
+      },
+      "revId": "03b5f798a502e64d5e7a8c0498c28189a052e941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9d1a3ae_84cefe34",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-09T02:11:05Z",
+      "side": 1,
+      "message": "I thought Focused() of the Finder could be used, but now I think it makes sense to keep this way if we want detailed error message.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "03b5f798a502e64d5e7a8c0498c28189a052e941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8916fb2_3a1863a6",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-09T02:11:05Z",
+      "side": 1,
+      "message": "I think this can be simplified to\nui.WithTimeout(uiTimeout).LeftClick(submitButton)(ctx)\nbecause ui.LeftClick is made to wait until the target appears and gets stabilized, like discussed in another email. WDYT?\n\nSame for several other occurences in this patchset.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 34
+      },
+      "revId": "03b5f798a502e64d5e7a8c0498c28189a052e941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
