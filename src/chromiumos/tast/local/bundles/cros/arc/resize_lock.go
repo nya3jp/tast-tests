@@ -157,6 +157,7 @@ type resizeLockTestCase struct {
 
 // The order of the test cases matters since some persistent chrome-side properties are tested.
 // - "Splash" must come first as any launch of the apps affect the test case.
+// - CUJ must come next as it tests the behavior of resize confirmation dialog, and once tested the dialog isn't shown in other tests.
 var testCases = []resizeLockTestCase{
 	{
 		name: "Splash",
@@ -265,14 +266,36 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
+	ctxDefer := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+	for _, app := range []struct {
+		apkName       string
+		pkgName       string
+		fromPlayStore bool
+	}{
+		{wm.APKNameArcWMTestApp23, wm.Pkg23, false},
+		{wm.APKNameArcWMTestApp24, wm.Pkg24, true},
+		{wm.APKNameArcWMTestApp24Maximized, wm.Pkg24InMaximizedList, true},
+		{resizeLockApkName, resizeLockTestPkgName, true},
+		{resizeLock2ApkName, resizeLock2PkgName, true},
+		{resizeLock3ApkName, resizeLock3PkgName, true},
+	} {
+		if app.fromPlayStore {
+			if err := a.Install(ctx, arc.APKPath(app.apkName), adb.InstallOptionFromPlayStore); err != nil {
+				s.Fatal("Failed to install app from PlayStore: ", err)
+			}
+		} else {
+			if err := a.Install(ctx, arc.APKPath(app.apkName)); err != nil {
+				s.Fatal("Failed to install app from outside of PlayStore: ", err)
+			}
+		}
+		defer a.Uninstall(ctxDefer, app.pkgName)
+	}
+
 	// Place a maximized activity below to ensure that the display has a white background.
 	// This is necessary because currently checking the visibility of the translucent window border relies on taking a screenshot.
 	// The WM23 app is used here as the WM24 app is used for testing O4C (Optimized for Chromebook).
-	if alreadyInstalled, err := reinstallAPK(ctx, a, wm.Pkg23, wm.APKNameArcWMTestApp23, true /* fromPlayStore */); err != nil {
-		s.Fatal("Failed to reinstall the WM23 app: ", err)
-	} else if !alreadyInstalled {
-		defer a.Uninstall(ctx, wm.Pkg23)
-	}
 	activity, err := arc.NewActivity(a, wm.Pkg23, wm.NonResizableLandscapeActivity)
 	if err != nil {
 		s.Fatal("Failed to create the WM23 unresizable landscape activity: ", err)
@@ -299,32 +322,26 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 
 // testO4CApp verifies that an O4C app is not resize locked even if it's newly-installed.
 func testO4CApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
-	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, wm.Pkg24, wm.APKNameArcWMTestApp24, wm.ResizableUnspecifiedActivity, true /* fromPlayStore */, false /* checkRestoreMaximize */)
+	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, wm.Pkg24, wm.APKNameArcWMTestApp24, wm.ResizableUnspecifiedActivity, false /* checkRestoreMaximize */)
 }
 
 // testUnresizableMaximizedApp verifies that an unresizable, maximized app is not resize locked even if it's newly-installed.
 func testUnresizableMaximizedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
-	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, resizeLockTestPkgName, resizeLockApkName, resizeLockUnresizableUnspecifiedActivityName, true /* fromPlayStore */, false /* checkRestoreMaximize */)
+	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, resizeLockTestPkgName, resizeLockApkName, resizeLockUnresizableUnspecifiedActivityName, false /* checkRestoreMaximize */)
 }
 
 // testResizableMaximizedApp verifies that a resizable, maximized app is not resize locked even if it's newly-installed.
 func testResizableMaximizedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
-	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, resizeLockTestPkgName, resizeLockApkName, resizeLockResizableUnspecifiedMaximizedActivityName, true /* fromPlayStore */, true /* checkRestoreMaximize */)
+	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, resizeLockTestPkgName, resizeLockApkName, resizeLockResizableUnspecifiedMaximizedActivityName, true /* checkRestoreMaximize */)
 }
 
 // testAppFromOutsideOfPlayStore verifies that an resize-lock-eligible app installed from outside of PlayStore is not resize locked even if it's newly-installed.
 func testAppFromOutsideOfPlayStore(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
-	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, resizeLockTestPkgName, resizeLockApkName, resizeLockMainActivityName, false /* fromPlayStore */, false /* checkRestoreMaximize */)
+	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, wm.Pkg24InMaximizedList, wm.APKNameArcWMTestApp24Maximized, wm.ResizableUnspecifiedActivity, false /* checkRestoreMaximize */)
 }
 
 // testNonResizeLocked verifies that the given app is not resize locked.
-func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter, packageName, apkName, activityName string, fromPlayStore, checkRestoreMaximize bool) error {
-	if alreadyInstalled, err := reinstallAPK(ctx, a, packageName, apkName, fromPlayStore); err != nil {
-		return errors.Wrap(err, "failed to reinstall APK")
-	} else if !alreadyInstalled {
-		defer a.Uninstall(ctx, packageName)
-	}
-
+func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter, packageName, apkName, activityName string, checkRestoreMaximize bool) error {
 	activity, err := arc.NewActivity(a, packageName, activityName)
 	if err != nil {
 		return errors.Wrapf(err, "failed to create %s", activityName)
@@ -353,7 +370,7 @@ func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 			return errors.Wrapf(err, "failed to verify resize lock state of %s", activityName)
 		}
 		// Make the app resizable to enable maximization.
-		if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, tabletResizeLockMode, resizableResizeLockMode, dialogActionConfirm, inputMethodClick, keyboard); err != nil {
+		if err := toggleResizeLockMode(ctx, tconn, a, d, cr, activity, tabletResizeLockMode, resizableResizeLockMode, dialogActionNoDialog, inputMethodClick, keyboard); err != nil {
 			return errors.Wrapf(err, "failed to change the resize lock mode of %s from tablet to resizable", apkName)
 		}
 		// Maximize the app and verify the app is not resize-locked.
@@ -372,12 +389,6 @@ func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 
 // testFullyLockedApp verifies that the given app is fully locked.
 func testFullyLockedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
-	if alreadyInstalled, err := reinstallAPK(ctx, a, resizeLockTestPkgName, resizeLockApkName, true /* fromPlayStore */); err != nil {
-		return errors.Wrap(err, "failed to reinstall APK")
-	} else if !alreadyInstalled {
-		defer a.Uninstall(ctx, resizeLockTestPkgName)
-	}
-
 	activity, err := arc.NewActivity(a, resizeLockTestPkgName, resizeLockUnresizablePortraitActivityName)
 	if err != nil {
 		return errors.Wrapf(err, "failed to create %s", resizeLockUnresizablePortraitActivityName)
@@ -440,15 +451,6 @@ func testSplash(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 		{resizeLock2ApkName, resizeLock2PkgName, resizeLockMainActivityName, inputMethodKeyEvent},
 		{resizeLock3ApkName, resizeLock3PkgName, resizeLockMainActivityName, inputMethodClick},
 	} {
-		ctxDefer := ctx
-		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-		defer cancel()
-		if alreadyInstalled, err := reinstallAPK(ctx, a, test.pkgName, test.apkName, true /* fromPlayStore */); err != nil {
-			return errors.Wrap(err, "failed to reinstall APK")
-		} else if !alreadyInstalled {
-			defer a.Uninstall(ctxDefer, test.pkgName)
-		}
-
 		activity, err := arc.NewActivity(a, test.pkgName, test.activityName)
 		if err != nil {
 			return errors.Wrapf(err, "failed to create %s", test.activityName)
@@ -511,13 +513,7 @@ func testResizeLockedAppCUJ(ctx context.Context, tconn *chrome.TestConn, a *arc.
 
 // testResizeLockedAppCUJInternal goes though the critical user journey of the given resize-locked app via the given input method.
 func testResizeLockedAppCUJInternal(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, packageName, apkName, activityName string, method inputMethodType, keyboard *input.KeyboardEventWriter) error {
-	if alreadyInstalled, err := reinstallAPK(ctx, a, resizeLockTestPkgName, resizeLockApkName, true /* fromPlayStore */); err != nil {
-		return errors.Wrap(err, "failed to reinstall APK")
-	} else if !alreadyInstalled {
-		defer a.Uninstall(ctx, resizeLockTestPkgName)
-	}
-
-	activity, err := arc.NewActivity(a, resizeLockTestPkgName, resizeLockMainActivityName)
+	activity, err := arc.NewActivity(a, packageName, resizeLockMainActivityName)
 	if err != nil {
 		return errors.Wrapf(err, "failed to create %s", resizeLockMainActivityName)
 	}
@@ -577,6 +573,7 @@ func testResizeLockedAppCUJInternal(ctx context.Context, tconn *chrome.TestConn,
 	}{
 		{resizableResizeLockMode, phoneResizeLockMode},
 		{phoneResizeLockMode, resizableResizeLockMode},
+		{resizableResizeLockMode, phoneResizeLockMode},
 	} {
 		// Toggle the resizability state via the Chrome OS setting toggle.
 		if err := toggleAppManagementSettingToggle(ctx, tconn, a, d, cr, activity, resizeLockAppName, test.currentMode, test.nextMode, method, keyboard); err != nil {
@@ -797,33 +794,6 @@ func checkResizability(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, 
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
-}
-
-// reinstallAPK uninstalls and installs an APK. It returns a boolean that represents whether it's already installed or not.
-func reinstallAPK(ctx context.Context, a *arc.ARC, packageName, apkName string, fromPlayStore bool) (bool, error) {
-	alreadyInstalled, err := a.PackageInstalled(ctx, packageName)
-	if err != nil {
-		return false, errors.Wrap(err, "failed to query installed state")
-	}
-
-	if alreadyInstalled {
-		testing.ContextLog(ctx, "uninstalling: ", packageName)
-		if a.Uninstall(ctx, packageName); err != nil {
-			return alreadyInstalled, errors.Wrap(err, "failed to uninstall app")
-		}
-	}
-
-	if fromPlayStore {
-		if err := a.Install(ctx, arc.APKPath(apkName), adb.InstallOptionFromPlayStore); err != nil {
-			return alreadyInstalled, errors.Wrap(err, "failed to install app from PlayStore")
-		}
-	} else {
-		if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
-			return alreadyInstalled, errors.Wrap(err, "failed to install app from outside of PlayStore")
-		}
-	}
-
-	return alreadyInstalled, nil
 }
 
 // showCompatModeMenu shows the compat-mode menu via the given method.
