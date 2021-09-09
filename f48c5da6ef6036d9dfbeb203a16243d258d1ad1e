@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e886af66_05d638b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/cpufreq_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2021-09-09T21:54:46Z",
+      "side": 1,
+      "message": "There is a way to force EC to discharge. \n\nI don\u0027t know if there is promise that there is a type C servo / remotely-controlled power module on every device...",
+      "parentUuid": "17a3df89_58c47b3e",
+      "revId": "f48c5da6ef6036d9dfbeb203a16243d258d1ad1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2871dfed_a13c2b0e",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/cpufreq_conf.go",
         "patchSetId": 3
