@@ -30,8 +30,9 @@ const (
 	// DebuggingPortPath is a file where Chrome writes debugging port.
 	DebuggingPortPath = "/home/chronos/DevToolsActivePort"
 
+	// HACK HACK HACK
 	// writeBufferSize is a larger default buffer size (1 MB) for websocket connection.
-	writeBufferSize = 1048576
+	writeBufferSize = 1048576 * 100
 )
 
 // Session maintains the connection to talk to the browser in Chrome DevTools Protocol

@@ -16,10 +16,26 @@ import (
 	"chromiumos/tast/testing"
 )
 
+func GetVideoEncoder(ctx context.Context, observer media.PlayerPropertiesChangedClient, url string) (isPlatform bool, name string, err error) {
+	return getVideoCodecs(ctx, observer, url, false)
+}
+
 // GetVideoDecoder waits for observer to produce a Player properties
 // and parses it to figure out the video decoder name and if this is accelerated.
 func GetVideoDecoder(ctx context.Context, observer media.PlayerPropertiesChangedClient, url string) (isPlatform bool, name string, err error) {
+	return getVideoCodecs(ctx, observer, url, true)
+}
+
+func getVideoCodecs(ctx context.Context, observer media.PlayerPropertiesChangedClient, url string, isDecoder bool) (isPlatform bool, name string, err error) {
 	var hasPlatform, hasName bool
+
+	platformProperty := "kIsPlatformVideoDecoder"
+	nameProperty := "kVideoDecoderName"
+	if !isDecoder {
+		platformProperty = "kIsPlatformVideoEncoder"
+		nameProperty = "kVideoEncoderName"
+	}
+
 	// We may not get all the properties on the first call to recv(), so poll for
 	// a few seconds until we get them to account for that. This is due to how
 	// Chrome DevTools sends out media player property updates.
@@ -34,11 +50,11 @@ func GetVideoDecoder(ctx context.Context, observer media.PlayerPropertiesChanged
 				return errors.New("failed to find the expected URL in Media DevTools")
 			}
 
-			if s.Name == "kIsPlatformVideoDecoder" {
+			if s.Name == platformProperty {
 				hasPlatform = true
 				isPlatform = s.Value == "true"
 				testing.ContextLogf(ctx, "%s: %s", s.Name, s.Value)
-			} else if s.Name == "kVideoDecoderName" {
+			} else if s.Name == nameProperty {
 				hasName = true
 				name = s.Value
 				testing.ContextLogf(ctx, "%s: %s", s.Name, s.Value)
@@ -55,13 +71,13 @@ func GetVideoDecoder(ctx context.Context, observer media.PlayerPropertiesChanged
 			for _, s := range reply.Properties {
 				log = fmt.Sprintf("%s, %s: %s", log, s.Name, s.Value)
 			}
-			return errors.Errorf("failed to find kIsPlatformVideoDecoder and kVideoDecoderName in media DevTools Properties. Observed: %s", log)
+			return errors.Errorf("failed to find %s and %s in media DevTools Properties. Observed: %s", platformProperty, nameProperty, log)
 		}
 		if !hasName {
-			return errors.New("failed to find kVideoDecoderName in media DevTools Properties")
+			return errors.Errorf("failed to find %s in media DevTools Properties", nameProperty)
 		}
 		if !hasPlatform {
-			return errors.New("failed to find kIsPlatformVideoDecoder in media DevTools Properties")
+			return errors.Errorf("failed to find %s in media DevTools Properties", platformProperty)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second})
