@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5578a589_a5fcc82a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T03:29:41Z",
+      "side": 1,
+      "message": "nit: I\u0027d directly return the value without defining this variable.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 7
+      },
+      "revId": "03b5f798a502e64d5e7a8c0498c28189a052e941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcaaffc0_6f2272a6",
         "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
         "patchSetId": 1
@@ -54,6 +77,30 @@
       "writtenOn": "2021-09-09T02:11:05Z",
       "side": 1,
       "message": "I thought Focused() of the Finder could be used, but now I think it makes sense to keep this way if we want detailed error message.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "03b5f798a502e64d5e7a8c0498c28189a052e941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982ac178_81b008b1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-09T03:29:41Z",
+      "side": 1,
+      "message": "yamaguchi@ I\u0027m not sure what this mean. Can we remove poll if we don\u0027t stick to keeping the erorr message? If that\u0027s the case I\u0027m leaning to removing Poll. Could you suggest alternative?",
+      "parentUuid": "d9d1a3ae_84cefe34",
       "range": {
         "startLine": 116,
         "startChar": 0,
