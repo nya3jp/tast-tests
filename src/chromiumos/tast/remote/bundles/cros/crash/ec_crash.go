@@ -39,7 +39,7 @@ func init() {
 		// not (yet) support skipping tests if required vars are not provided.
 		// TODO(crbug.com/967901): Remove no_qemu dep once servo var is sufficient.
 		SoftwareDeps: []string{"device_crash", "ec_crash", "pstore", "reboot", "no_qemu", "crossystem", "flashrom"},
-		Vars:         []string{"servo"},
+		Vars:         []string{"dutHostname", "firmware.no_ec_sync", "hydraHostname", "servo", "powerunitHostname", "powerunitOutlet"},
 	})
 }
 
