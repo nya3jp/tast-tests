@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b23ec34_d4ce2472",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-09T00:31:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0b77b5d_2d7e053e",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a0586dd_5da910ab",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d0a6b6_feda5e30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-09T00:31:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d09fc1a1_59f8354f",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db299885_aff9ab68",
@@ -72,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fcf0157_95a27339",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-09T00:31:09Z",
+      "side": 1,
+      "message": "Yes to the reason graceful exit only in case of \u0027network timeout\u0027 error, which can happen with over the air cellular networks and sometimes cellular denies connect for test devices as they do regular register/connect/disconnects. \n\nOTA timeout errors are bound to happen due to signal not reachable in sync with modem scan.",
+      "parentUuid": "db299885_aff9ab68",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6984c784_35fdaa23",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
         "patchSetId": 10
@@ -83,6 +137,24 @@
       "writtenOn": "2021-08-30T17:45:18Z",
       "side": 1,
       "message": "Sleep\ns/loaded/load/\ns/try connect/try to connect./",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1756e9f_3b4827f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-09T00:31:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6984c784_35fdaa23",
       "revId": "769e475b76dab566551223bc913eba9b243bb180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +178,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbabcd13_bf5d128c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-09T00:31:09Z",
+      "side": 1,
+      "message": "EnsureRegistered return once it finds register state, need to wait atleast 2 sec to attempt connect, I see service denied QMI error if not waited.\n\nQMI protocol error (14): \u0027CallFailed\u0027  , this is like network registration denied(though state changed just now) error.\n\nConnect already waits for 60 seconds, but fails if 2 second sleep not given.",
+      "parentUuid": "57fca49d_bdc8f5c9",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1b95da1_5c0466cf",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
         "patchSetId": 10
@@ -117,6 +207,24 @@
       "writtenOn": "2021-08-30T17:45:18Z",
       "side": 1,
       "message": "Same comment here, we definitely should not exit here without an error.",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62526882_a9ac07fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-09T00:31:09Z",
+      "side": 1,
+      "message": "For now will fail test for network timeouts with log message to see how frequent this can happen.",
+      "parentUuid": "d1b95da1_5c0466cf",
       "revId": "769e475b76dab566551223bc913eba9b243bb180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b75d01a0_c8a0c3fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-09T00:31:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a1a01ee_37fada95",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0785324b_6a6c8541",
@@ -151,6 +277,24 @@
       "writtenOn": "2021-09-01T15:12:27Z",
       "side": 1,
       "message": "We\u0027re guaranteed to fall into this case here, as lastGoodApn is defined as \"\" in the line just above.\n\nIs there any reason we need this function at all? Or are we planning to initialize lastGoodApn with something else in a future revision of the CL?",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3351982b_be5beed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-09T00:31:09Z",
+      "side": 1,
+      "message": "as not using this removing unused function, plan to try with last good known apn but that requires reading service/shill which might not be required to test simple connect/disconnect",
+      "parentUuid": "0785324b_6a6c8541",
       "revId": "769e475b76dab566551223bc913eba9b243bb180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -172,6 +316,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb4bd441_bc370ae4",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-09T00:31:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f320f5f_c4e8c74e",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05ee7ce0_6c7f68ec",
@@ -189,6 +351,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81208710_ab8f45c6",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-09T00:31:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05ee7ce0_6c7f68ec",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3fdc6fa_8ed40a54",
@@ -202,6 +382,24 @@
       "writtenOn": "2021-08-30T17:45:18Z",
       "side": 1,
       "message": "IIRC, this pattern can be simplified using an else (the declared varables are valid for the entire if/else statement):\nif isPowered, err :\u003d modem.IsPowered(ctx); err !\u003d nil {\n  return ...\n} else if !isPowered {\n  return ..\n}\nSame below.",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae67974_38b779d4",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-09T00:31:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3fdc6fa_8ed40a54",
       "revId": "769e475b76dab566551223bc913eba9b243bb180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
