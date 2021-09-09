@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaf59709_902b5887",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T07:07:15Z",
+      "side": 1,
+      "message": "minor nit: maybe rename this to name? It should be clear that it\u0027s not altering the actual flow.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa1eaa6e_2023f410",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T07:07:15Z",
+      "side": 1,
+      "message": "How is this different than the first case? Does the previous case affect it? Add a comment.",
+      "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c5aa6f1_1345a4f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T07:07:15Z",
+      "side": 1,
+      "message": "WaitConnect already retries. Use the context to enforce the timeout.\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/dut/dut.go;l\u003d160?q\u003dWaitConnect",
+      "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5de0cb27_ab6c0825",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-09T07:07:15Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
