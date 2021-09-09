@@ -15,8 +15,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CaptureFromElement,
-		Desc: "Verifies that WebRTC captureStream() (canvas, video) works",
+		Func: CaptureFromElementPerf,
+		Desc: "Collects performance values for WebRTC captureStream() (canvas, video)",
 		Contacts: []string{
 			"mcasas@chromium.org", // Test author.
 			"chromeos-gfx-video@google.com",
@@ -33,10 +33,9 @@ func init() {
 	})
 }
 
-// CaptureFromElement verifies that the homonymous API works as expected.
-func CaptureFromElement(ctx context.Context, s *testing.State) {
-	// This test doesn't want to measure performance.
-	const measurementDuration = 0 * time.Second
+// CaptureFromElementPerf collects perf metrics for the homonymous API.
+func CaptureFromElementPerf(ctx context.Context, s *testing.State) {
+	const measurementDuration = 25 * time.Second
 	if err := capturefromelement.RunCaptureStream(ctx, s, s.FixtValue().(*chrome.Chrome), measurementDuration); err != nil {
 		s.Fatal("RunCaptureStream failed: ", err)
 	}
