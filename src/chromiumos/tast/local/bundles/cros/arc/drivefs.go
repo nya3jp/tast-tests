@@ -6,8 +6,6 @@ package arc
 
 import (
 	"context"
-	"fmt"
-	"math/rand"
 	"net/url"
 	"path"
 	"strings"
@@ -82,18 +80,13 @@ func Drivefs(ctx context.Context, s *testing.State) {
 	drivefsRoot := path.Join(mountPath, "root")
 
 	config := storage.TestConfig{DirPath: drivefsRoot, DirName: "Google Drive", DirTitle: "Files - My Drive",
-		CreateTestFile: true, CheckFileType: true, FileName: randFileName()}
+		CreateTestFile: false, CheckFileType: true, FileName: "storage_drivefs.txt"}
 	expectations := []storage.Expectation{
 		{LabelID: storage.ActionID, Value: storage.ExpectedAction},
 		{LabelID: storage.URIID, Value: constructDriveFSURI(vmEnabled, drivefsRoot, config.FileName)},
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
 	storage.TestOpenWithAndroidApp(ctx, s, a, cr, d, config, expectations)
-}
-
-// randFileName generates a randomized test file name to avoid race condition among concurrently running tests.
-func randFileName() string {
-	return fmt.Sprintf("storage_%d.txt", rand.Intn(1000000000))
 }
 
 // constructDriveFSURI constructs a Drive FS URI.
