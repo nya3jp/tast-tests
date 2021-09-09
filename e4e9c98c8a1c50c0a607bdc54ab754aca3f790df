@@ -86,6 +86,30 @@
       },
       "revId": "e4e9c98c8a1c50c0a607bdc54ab754aca3f790df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2502e60_57d2ae0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-09T22:57:55Z",
+      "side": 1,
+      "message": "I\u0027d suggest extending the uiauto.Context\u0027s timeout instead (the default is 15 seconds for each operation):\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d64?q\u003dWithTimeout\n\nI think it\u0027s more explicit that way. You could extend it globally, or if you\u0027ve identified any nodes that load more slowly than others, you can modify it directly before the click like `ui.WithTimeout(...).RightClick(...)`.",
+      "parentUuid": "b59871db_04a02fec",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 36
+      },
+      "revId": "e4e9c98c8a1c50c0a607bdc54ab754aca3f790df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
