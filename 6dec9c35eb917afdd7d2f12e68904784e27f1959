@@ -16,6 +16,30 @@
       "message": "Updated as per review comments and removed graceful exits to see frequency of network timeout error failures.",
       "revId": "6dec9c35eb917afdd7d2f12e68904784e27f1959",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d8cc5d4_cb0dbb66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-10T02:34:29Z",
+      "side": 1,
+      "message": "\u003e \"reigstration\" is a possible misspelling of \"registration\".\n\nPlease fix.",
+      "parentUuid": "b1921033_8629c6f6",
+      "range": {
+        "startLine": 96,
+        "startChar": 10,
+        "endLine": 96,
+        "endChar": 22
+      },
+      "revId": "6dec9c35eb917afdd7d2f12e68904784e27f1959",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6f2786b_bfe7c84c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-10T02:34:29Z",
+      "side": 1,
+      "message": "Removed exit.",
+      "parentUuid": "7fcf0157_95a27339",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6984c784_35fdaa23",
@@ -212,6 +230,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b528085_5aab0c2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-10T02:34:29Z",
+      "side": 1,
+      "message": "Added poll on connect status and connect call. Removed sleep.\n\nQMI error can be handled with poll retries, but sometimes I see other error where fails to connect : https://paste.googleplex.com/5619414687809536",
+      "parentUuid": "a71543c2_80d71fa4",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1b95da1_5c0466cf",
@@ -243,6 +279,24 @@
       "side": 1,
       "message": "For now will fail test for network timeouts with log message to see how frequent this can happen.",
       "parentUuid": "d1b95da1_5c0466cf",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49594e17_b134d04c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-10T02:34:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "62526882_a9ac07fb",
       "revId": "769e475b76dab566551223bc913eba9b243bb180",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
