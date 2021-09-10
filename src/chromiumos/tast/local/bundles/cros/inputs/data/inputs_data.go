@@ -9,7 +9,6 @@ import (
 	"fmt"
 
 	"chromiumos/tast/local/chrome/ime"
-	"chromiumos/tast/local/input"
 )
 
 // InputData represents test data for input methods.
@@ -17,7 +16,7 @@ type InputData struct {
 	// Character-based key sequences to tap on virtual keyboards.
 	CharacterKeySeq []string
 	// Location-based key sequences to tap on physical keyboards.
-	LocationKeySeq []input.EventCode
+	LocationKeySeq []string
 	// Expected outcome text after input.
 	ExpectedText string
 	// Filename of .svg file containing handwriting strokes.
