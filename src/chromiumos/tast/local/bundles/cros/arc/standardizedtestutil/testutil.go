@@ -112,7 +112,7 @@ func GetClamshellTests(fn TestFunc) []TestCase {
 
 // GetClamshellHardwareDeps returns the hardware dependencies all clamshell tests share.
 func GetClamshellHardwareDeps() hwdep.Deps {
-	return hwdep.D(hwdep.InternalDisplay(), hwdep.SkipOnModel(TabletOnlyModels...))
+	return hwdep.D(hwdep.SkipOnModel(TabletOnlyModels...))
 }
 
 // GetTabletTests returns the test cases required for tablet devices.
@@ -125,7 +125,7 @@ func GetTabletTests(fn TestFunc) []TestCase {
 
 // GetTabletHardwareDeps returns the hardware dependencies all tablet tests share.
 func GetTabletHardwareDeps() hwdep.Deps {
-	return hwdep.D(hwdep.InternalDisplay(), hwdep.SkipOnModel(ClamshellOnlyModels...))
+	return hwdep.D(hwdep.SkipOnModel(ClamshellOnlyModels...))
 }
 
 // RunTestCases runs the provided test cases and handles cleanup between tests.
@@ -302,8 +302,8 @@ func TouchscreenScroll(ctx context.Context, touchScreen *input.TouchscreenEventW
 // when zooming in, or .5 when zooming out).
 func TouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters TestFuncParams, selector *ui.Object, zoomType TouchscreenZoomType) error {
 	const (
-		zoomDistancePerFinger = 600
-		zoomDuration          = 500 * time.Millisecond
+		zoomDistancePerFinger = 900
+		zoomDuration          = 250 * time.Millisecond
 	)
 
 	// Zoom is implemented as a two finger pinch so it requires two touches.
