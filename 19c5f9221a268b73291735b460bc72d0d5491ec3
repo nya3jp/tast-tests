@@ -16,6 +16,52 @@
       "message": "Thanks!",
       "revId": "19c5f9221a268b73291735b460bc72d0d5491ec3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25f23a63_8535ad6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-09-10T08:22:44Z",
+      "side": 1,
+      "message": "with alsa conformance test.",
+      "range": {
+        "startLine": 34,
+        "startChar": 56,
+        "endLine": 34,
+        "endChar": 57
+      },
+      "revId": "19c5f9221a268b73291735b460bc72d0d5491ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a7ce843_d686f78f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-09-10T08:22:44Z",
+      "side": 1,
+      "message": "Could we name this AudioAlsaConformance directly since there might be more different Audio tests in the future?\n\n(then full name will be vm.AudioAlsaConformance.*)",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "19c5f9221a268b73291735b460bc72d0d5491ec3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
