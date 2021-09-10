@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75710c61_d849294d",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2021-09-10T17:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c033d56_50c458b1",
+      "range": {
+        "startLine": 297,
+        "startChar": 13,
+        "endLine": 297,
+        "endChar": 42
+      },
+      "revId": "597a5b44841184550c34b069cec59dc44ddbfa71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f196cea_8a2e844c",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-10T02:03:50Z",
       "side": 1,
       "message": "Lets keep errors short:\nserveUploadRequest: Empty multipart request.",
+      "range": {
+        "startLine": 305,
+        "startChar": 21,
+        "endLine": 305,
+        "endChar": 51
+      },
+      "revId": "597a5b44841184550c34b069cec59dc44ddbfa71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5847d65c_47b13295",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2021-09-10T17:33:45Z",
+      "side": 1,
+      "message": "Lets keep errors short:\nserveUploadRequest: Empty multipart request.\n\nWill update serveDownloadRequest as well",
+      "parentUuid": "1f196cea_8a2e844c",
       "range": {
         "startLine": 305,
         "startChar": 21,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d56168f0_9b3aa173",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2021-09-10T17:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b2fdebf_056841e9",
+      "range": {
+        "startLine": 317,
+        "startChar": 29,
+        "endLine": 317,
+        "endChar": 57
+      },
+      "revId": "597a5b44841184550c34b069cec59dc44ddbfa71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3a9b9dc_d7ae0e0e",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-09-10T02:03:50Z",
       "side": 1,
       "message": "serveUploadRequest: Failed fileHeader.Open()",
+      "range": {
+        "startLine": 322,
+        "startChar": 29,
+        "endLine": 322,
+        "endChar": 52
+      },
+      "revId": "597a5b44841184550c34b069cec59dc44ddbfa71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b74e8326_d33a5c11",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2021-09-10T17:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3a9b9dc_d7ae0e0e",
       "range": {
         "startLine": 322,
         "startChar": 29,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc42493_7d985f54",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2021-09-10T17:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7e2723c_bc870fbf",
+      "range": {
+        "startLine": 328,
+        "startChar": 28,
+        "endLine": 328,
+        "endChar": 76
+      },
+      "revId": "597a5b44841184550c34b069cec59dc44ddbfa71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d4f3f87_bcf5c576",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-09-10T02:03:50Z",
       "side": 1,
       "message": "serveUploadRequest: Failed io.Copy(%s)",
+      "range": {
+        "startLine": 333,
+        "startChar": 28,
+        "endLine": 333,
+        "endChar": 74
+      },
+      "revId": "597a5b44841184550c34b069cec59dc44ddbfa71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdf77372_50a784a3",
+        "filename": "src/chromiumos/tast/local/graphics/trace/trace_replay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1202380
+      },
+      "writtenOn": "2021-09-10T17:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d4f3f87_bcf5c576",
       "range": {
         "startLine": 333,
         "startChar": 28,
