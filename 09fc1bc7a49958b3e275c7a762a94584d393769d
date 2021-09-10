@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8697a552_45f99bec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-10T22:52:09Z",
+      "side": 1,
+      "message": "Done, removed.",
+      "parentUuid": "5dca5951_5e6d98a0",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 4
+      },
+      "revId": "09fc1bc7a49958b3e275c7a762a94584d393769d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a5bb86c_45519933",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-09-10T01:34:39Z",
       "side": 1,
       "message": "clar: Where does 20 come from? \n\nAssuming syncing is a time-based thing, if you are running a fast machine, 20 may be too few, and if you are running on a slow machine, it may be too much. Something like testing.Poll is designed for this.\n\nSee:\n- https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts\n- https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/testing#Poll",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 48
+      },
+      "revId": "09fc1bc7a49958b3e275c7a762a94584d393769d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4320fc4_7a5ceaf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-10T22:52:09Z",
+      "side": 1,
+      "message": "Done. Switched this test and familylink.DeniedSitesBlocked to testing.Poll(). I didn\u0027t know about polling, thanks for sharing the docs.",
+      "parentUuid": "0a5bb86c_45519933",
       "range": {
         "startLine": 53,
         "startChar": 1,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a0148c_771008d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-10T22:52:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60e5d9f4_2aeffc22",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 3
+      },
+      "revId": "09fc1bc7a49958b3e275c7a762a94584d393769d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9e5e6d5_a6b3d80d",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-09-10T01:34:39Z",
       "side": 1,
       "message": "This seems to not be called if you succeed. Is it better to put this in a defer below your CheckWallpaper? \n\nI realise that defer is normally left until the function exists; for this reason, it may be better to extract the loop body into its own function. This would occur naturally if you use testing.Poll as suggested above.",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 3
+      },
+      "revId": "09fc1bc7a49958b3e275c7a762a94584d393769d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "986736b6_730c9c94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-10T22:52:09Z",
+      "side": 1,
+      "message": "Done. I put CloseWallpaper() in a defer below OpenWallpaper().",
+      "parentUuid": "b9e5e6d5_a6b3d80d",
       "range": {
         "startLine": 67,
         "startChar": 2,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d27ca2_c450cc9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/default_child_wallpaper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-10T22:52:09Z",
+      "side": 1,
+      "message": "Done. The issue is that the test can abort after changing the wallpaper to something different. On the next test iteration, it will sync the new wallpaper, and the loop to check for the old wallpaper would fail. To fix this, I separated syncing and changing the wallpaper into two separate tests. I created a new test called wallpaper.Child.",
+      "parentUuid": "dbeff57e_bf98b61b",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 103
+      },
+      "revId": "09fc1bc7a49958b3e275c7a762a94584d393769d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91033077_2a94782f",
@@ -163,6 +283,30 @@
       "writtenOn": "2021-09-10T01:34:39Z",
       "side": 1,
       "message": "nit: see above... something better suited to a testing.Poll? (i.e. time-limited rather than iteration-limited retries)",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 43
+      },
+      "revId": "09fc1bc7a49958b3e275c7a762a94584d393769d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1d4b4cc_d55f9d60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/denied_sites_blocked.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-10T22:52:09Z",
+      "side": 1,
+      "message": "Done, converted to testing.Poll().",
+      "parentUuid": "91033077_2a94782f",
       "range": {
         "startLine": 55,
         "startChar": 1,
