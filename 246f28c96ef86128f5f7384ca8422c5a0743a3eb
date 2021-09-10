@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f159710d_9143abe6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-10T15:26:53Z",
+      "side": 1,
+      "message": "PTAL.\n\nFYI: mnissler@.",
+      "revId": "246f28c96ef86128f5f7384ca8422c5a0743a3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6546f9dd_f313c6b8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/ashproc/proc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-10T15:26:53Z",
+      "side": 1,
+      "message": "note: not clear yet if we want this for lacros chrome, too.\nSo, let me start from here.",
+      "revId": "246f28c96ef86128f5f7384ca8422c5a0743a3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
