@@ -19,11 +19,5 @@
             android:supportsPictureInPicture="true"
             android:launchMode="singleTask">
         </activity>
-	<activity
-	    android:name=".VideoActivityWithRedSquare"
-	    android:exported="true"
-	    android:supportsPictureInPicture="true"
-	    android:launchMode="singleTask">
-	</activity>
     </application>
 </manifest>
