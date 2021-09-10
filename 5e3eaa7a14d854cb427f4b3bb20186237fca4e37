@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "942e9c65_80195df4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-10T15:13:16Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we just remove this code if the servo support code is going to take care of this anyway?\n\nAt any rate I think it\u0027s better to remove it rather than leave it commented out as we can always revert this CL later to get the code back if we really want it.",
+      "revId": "5e3eaa7a14d854cb427f4b3bb20186237fca4e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
