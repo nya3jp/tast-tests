@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b3cb2f0_9f62e9db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtio_cras_snd.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-10T06:33:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e180435_1d3e0453",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 18
+      },
+      "revId": "3445c9dc65216e89cc657b12817433e1c3460426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39d37ca0_07ee2bdd",
