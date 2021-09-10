@@ -111,9 +111,9 @@ func MeasureProcessUsage(ctx context.Context, duration time.Duration,
 	return MeasureUsage(ctx, duration)
 }
 
-// SetUpBenchmark performs setup needed for running benchmarks. It disables CPU frequency scaling
-// and thermal throttling. A deferred call to the returned cleanUp function should be scheduled by
-// the caller if err is non-nil.
+// SetUpBenchmark performs setup needed for running benchmarks. It disables CPU
+// frequency scaling and thermal throttling. A deferred call to the returned
+// cleanUp function should be scheduled by the caller if err is non-nil.
 func SetUpBenchmark(ctx context.Context) (cleanUp func(ctx context.Context), err error) {
 	const cleanupTime = 10 * time.Second // time reserved for cleanup on error.
 

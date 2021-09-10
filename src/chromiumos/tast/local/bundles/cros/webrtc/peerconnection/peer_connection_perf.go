@@ -132,37 +132,6 @@ type rxMeas struct {
 	FramesDecoded   float64 `json:"framesDecoded"`
 }
 
-// measureCPU measures CPU usage for a period of time after a short period for stabilization and writes CPU usage to perf.Values.
-func measureCPU(ctx context.Context, p *perf.Values) error {
-	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", cpuStabilization)
-	if err := testing.Sleep(ctx, cpuStabilization); err != nil {
-		return err
-	}
-	testing.ContextLog(ctx, "Measuring CPU and Power usage for ", cpuMeasuring)
-	measurements, err := cpu.MeasureUsage(ctx, cpuMeasuring)
-	if err != nil {
-		return err
-	}
-	cpuUsage := measurements["cpu"]
-	testing.ContextLogf(ctx, "CPU usage: %f%%", cpuUsage)
-	p.Set(perf.Metric{
-		Name:      "cpu_usage",
-		Unit:      "percent",
-		Direction: perf.SmallerIsBetter,
-	}, cpuUsage)
-
-	if power, ok := measurements["power"]; ok {
-		testing.ContextLogf(ctx, "Avg pkg power usage: %fW", power)
-		p.Set(perf.Metric{
-			Name:      "pkg_power_usage",
-			Unit:      "W",
-			Direction: perf.SmallerIsBetter,
-		}, power)
-	}
-
-	return nil
-}
-
 // waitForPeerConnectionStabilized waits up to maxStreamWarmUp for the
 // transmitted resolution to reach streamWidth x streamHeight, or returns error.
 func waitForPeerConnectionStabilized(ctx context.Context, conn *chrome.Conn) error {
@@ -358,7 +327,7 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 	}()
 	go func() {
 		defer wg.Done()
-		cpuErr = measureCPU(ctx, p)
+		cpuErr = graphics.MeasureCPUUsageAndPower(ctx, cpuStabilization, cpuMeasuring, p)
 	}()
 	wg.Wait()
 	if gpuErr != nil {

@@ -45,29 +45,6 @@ func reportMetric(name, unit string, value float64, direction perf.Direction, p 
 	}, value)
 }
 
-// measureCPU measures CPU usage for a period of time t after a short period for stabilization s and writes CPU usage to perf.Values.
-func measureCPU(ctx context.Context, s, t time.Duration, p *perf.Values) error {
-	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", s)
-	if err := testing.Sleep(ctx, s); err != nil {
-		return err
-	}
-	testing.ContextLog(ctx, "Measuring CPU and Power usage for ", t)
-	measurements, err := cpu.MeasureUsage(ctx, t)
-	if err != nil {
-		return err
-	}
-	cpuUsage := measurements["cpu"]
-	testing.ContextLogf(ctx, "CPU usage: %f%%", cpuUsage)
-	reportMetric("cpu_usage", "percent", cpuUsage, perf.SmallerIsBetter, p)
-
-	if power, ok := measurements["power"]; ok {
-		testing.ContextLogf(ctx, "Avg pkg power usage: %fW", power)
-		reportMetric("pkg_power_usage", "W", power, perf.SmallerIsBetter, p)
-	}
-
-	return nil
-}
-
 // MeasurePerf measures the frame processing time and CPU usage while recording and report the results.
 func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir, codec string, hwAccelEnabled bool) error {
 
@@ -126,7 +103,7 @@ func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSys
 	}()
 	go func() {
 		defer wg.Done()
-		cpuErr = measureCPU(ctx, stabilizationDuration, measurementDuration, p)
+		cpuErr = graphics.MeasureCPUUsageAndPower(ctx, stabilizationDuration, measurementDuration, p)
 	}()
 	wg.Wait()
 	if gpuErr != nil {

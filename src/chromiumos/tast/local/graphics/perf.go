@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
 
@@ -331,6 +332,59 @@ func UpdatePerfMetricFromHistogram(ctx context.Context, tconn *chrome.TestConn, 
 			average += bucketMidpoint * float64(bucket.Count) / numHistogramSamples
 		}
 		testing.ContextLog(ctx, histogramName, ": histogram:", histogramDiff.String(), "; average: ", average)
+	}
+	return nil
+}
+
+// MeasureCPUUsageAndPower measures CPU usage and power consumption (if
+// supported) for measurement time into p. If the optional stabilization
+// duration is specified, the test will sleep for such amount of time before
+// measuring.
+//
+// Optionally, clients of this method might like to call cpu.SetUpBenchmark()
+// and cpu.WaitUntilIdle() before starting the actual test logic, to set up and
+// wait for the CPU usage to stabilize to a low level. Example:
+//
+//  import "chromiumos/tast/local/media/cpu"
+//
+//  cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+//  if err != nil {
+//    return errors.Wrap(err, "failed to set up CPU benchmark")
+//  }
+//  defer cleanUpBenchmark(ctx)
+//
+//  if err := cpu.WaitUntilIdle(ctx); err != nil {
+//    return errors.Wrap(err, "failed waiting for CPU to become idle")
+//  }
+func MeasureCPUUsageAndPower(ctx context.Context, stabilization, measurement time.Duration, p *perf.Values) error {
+	if stabilization != 0 {
+		testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", stabilization)
+		if err := testing.Sleep(ctx, stabilization); err != nil {
+			return err
+		}
+	}
+
+	testing.ContextLog(ctx, "Measuring CPU usage and Power for ", measurement)
+	measurements, err := cpu.MeasureUsage(ctx, measurement)
+	if err != nil {
+		return errors.Wrap(err, "failed to measure CPU usage and power consumption")
+	}
+
+	cpuUsage := measurements["cpu"]
+	testing.ContextLogf(ctx, "CPU usage: %f%%", cpuUsage)
+	p.Set(perf.Metric{
+		Name:      "cpu_usage",
+		Unit:      "percent",
+		Direction: perf.SmallerIsBetter,
+	}, cpuUsage)
+
+	if power, ok := measurements["power"]; ok {
+		testing.ContextLogf(ctx, "Avg pkg power usage: %fW", power)
+		p.Set(perf.Metric{
+			Name:      "pkg_power_usage",
+			Unit:      "W",
+			Direction: perf.SmallerIsBetter,
+		}, power)
 	}
 	return nil
 }
