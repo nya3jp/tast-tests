@@ -56,12 +56,12 @@ func init() {
 			Name:              "small_lacros",
 			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeLacros},
 			ExtraSoftwareDeps: []string{"android_p", "lacros"},
-			Fixture:           "lacrosStartedByDataWithArcBooted",
+			Fixture:           "lacrosWithArcBooted",
 		}, {
 			Name:              "big_lacros",
 			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: true, chromeType: lacros.ChromeTypeLacros},
 			ExtraSoftwareDeps: []string{"android_p", "lacros"},
-			Fixture:           "lacrosStartedByDataWithArcBooted",
+			Fixture:           "lacrosWithArcBooted",
 		}, {
 			Name:              "small_vm",
 			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
@@ -76,12 +76,12 @@ func init() {
 			Name:              "small_lacros_vm",
 			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeLacros},
 			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
-			Fixture:           "lacrosStartedByDataWithArcBooted",
+			Fixture:           "lacrosWithArcBooted",
 		}, {
 			Name:              "big_lacros_vm",
 			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: true, chromeType: lacros.ChromeTypeLacros},
 			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
-			Fixture:           "lacrosStartedByDataWithArcBooted",
+			Fixture:           "lacrosWithArcBooted",
 		}},
 	})
 }
