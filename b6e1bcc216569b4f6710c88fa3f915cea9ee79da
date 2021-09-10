@@ -429,6 +429,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27d6bfaa_10333090",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T07:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50fddfeb_beb76471",
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65f7b6a1_dcaadc0b",
@@ -512,6 +530,24 @@
       "writtenOn": "2021-09-10T00:17:30Z",
       "side": 1,
       "message": "Files copied here are not removed and might affect other tests. For example, if you execute \"tast run \u003cDUT\u003e arc.MediaScanTime.*\", the second test will run with the files created by the first test.\n\nHow about removing targetDir before leaving the test?\n  // Inside MediaScanTime:\n  targetDir, err :\u003d [...]\n  if err !\u003d nil {\n    [...]\n  }\n  defer func() {\n    if err :\u003d os.RemoveAll(targetDir); err !\u003d nil {\n      [...]\n    }\n  }()\n  \n  // Inside copyFileToTargetPath:\n  capybara, err :\u003d [...]\n  if err !\u003d nil {\n    [...]\n  }\n  if err :\u003d os.MkdirAll(targetDir, 0755); err !\u003d nil {\n    [...]\n  }\n\nIf we do this, targetDir should be one level deeper than the current path, e.g., .../data/media/0/Pictures/capybaras, .../MyFiles/capybaras\n\n(It would be desirable to clean up the whole volume (not only targetDir) just after the test begins to make sure there is no stale file inside it. However, we can probably discuss it after the inotify problem is resolved.)",
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bdd6d72_0fb65618",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T07:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45bb8882_009fd25e",
       "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -648,6 +684,30 @@
       "side": 1,
       "message": "Yes. I think it\u0027s reasonable to have a function to do that part. One thing to note is, when you implement it, you shouldn\u0027t defer act.Close() inside it. This is because act.Close() will be called when the function returns (before the measurement takes place).\nI did a similar thing in: https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/arc/download_manager.go;l\u003d219;drc\u003d0705bfb8521a8ed956ad65281ae35a2fe9af5918\n(This example calls act.Stop() but you don\u0027t need to call it as I mentioned before.)",
       "parentUuid": "2e5f877a_2e5632d2",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 43
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1286c706_d005ea73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T07:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eda71c75_5a109d0e",
       "range": {
         "startLine": 166,
         "startChar": 1,
@@ -837,6 +897,30 @@
       "side": 1,
       "message": "I see. Thanks for the explanation! From the go code perspective, the Java apk should be treated as a black box. The contract between the go code and the apk is more or less just: You are giving it an input (this URI) and expect it to give the media scanning time. Whether the apk uses the URI for comparison or to use it for other purpose is not the concern of the go code.\n\nIn this case, you name the variable as \"expected\" because there is a comparison in the Java code. But from the go code perspective, it just sends an input a volume URI to the java code. It\u0027s up to the java code what it wants to use the volume URI for (whether it is for comparison, or for other things) - which we will call as the implementation detail of the Java code. In that sense, we should prefer a naming or any other comments in the go code that does not depend on the Java code\u0027s implementation details. This maybe kind of similar to the concept of loose coupling (https://en.wikipedia.org/wiki/Loose_coupling) - or maybe you have seen another concept that is more similar to this explanation. This two components (go test code and apk) should not know about each other details except for the \"contract\" between them.\n\nAs an example for why this is a better design decision: imagine that you change this apk later and you figured out that the URI can be used for other things inside the apk outside just for comparison. If you named the variable as expectedURI, you will need to change the go code name as well. And if the one who adds this Java code behavior is someone else (not you/me/youkichihosoi@), they might not even know that the go code name needs to be updated - and the variable name in the go code became obsolete. Meanwhile, if you named the variable in the go code as volumeURI (or something similar), the one who makes the change later won\u0027t need to worry about renaming it except if they need to change the contract between the go code and the Java code (in that case, you will need to change both go and java code anyway). In the worse case, if later your apk is used by several tests, and the java code needs to be updated, the effect is more significant.\n\nAlso, when other people read the go code, they won\u0027t know why you name it as \"expected\" until they read the details in the Java code - which is undesirable.\n\nThe follow up question is: when should we go for a very specific variable name, and when we shouldn\u0027t go to more detail? The rule of thumb is, you should name your variable as specific as possible to cover all the details that should be visible by the code around that variable. Around the go statement here, it knows quite a lot about the go statements around - but it should only know about the contract with the Java code, not the implementation details inside the apk.",
       "parentUuid": "8013255d_4d6e9c6c",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 12
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2a0c811_f268da84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T07:52:11Z",
+      "side": 1,
+      "message": "I understood that variables should be named more specific dependent on what they means or what role they have in the file (or function?)",
+      "parentUuid": "6cf36609_df53aaf6",
       "range": {
         "startLine": 190,
         "startChar": 1,

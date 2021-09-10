@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b087faa5_6214dc23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T07:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20bdd5a2_3da82978",
+      "revId": "1e4d205a33ce8da53462efa3694284e9a58ef197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0be03ae8_c541d3d6",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-10T06:56:33Z",
       "side": 1,
       "message": "Can we use io.Copy? That will be more idiomatic and the code will be cleaner.",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 2
+      },
+      "revId": "1e4d205a33ce8da53462efa3694284e9a58ef197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbdc6a42_93639252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T07:52:11Z",
+      "side": 1,
+      "message": "Is io.Copy used like the code in this link (https://qiita.com/cotrpepe/items/93e4a072c249a933e795#%E3%82%B3%E3%83%BC%E3%83%89)?\nUsing it, it looks that the code will be longer than now for me.",
+      "parentUuid": "0be03ae8_c541d3d6",
       "range": {
         "startLine": 134,
         "startChar": 1,
