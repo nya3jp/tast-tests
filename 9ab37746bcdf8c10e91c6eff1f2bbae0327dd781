@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a35e1000_81d31260",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-10T07:10:09Z",
+      "side": 1,
+      "message": "LGTM for the logic of factory test. Defter the review to Tast team.",
+      "revId": "9ab37746bcdf8c10e91c6eff1f2bbae0327dd781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
