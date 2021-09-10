@@ -113,6 +113,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08e7d3a7_fa4673ce",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-10T07:00:35Z",
+      "side": 1,
+      "message": "That\u0027s fair. The users don\u0027t need to call Close in the embedded dut.DUT anyways, so it can be used to Close this object.",
+      "parentUuid": "af43f220_bb03c909",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 64
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba63265e_05204590",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
         "patchSetId": 22
@@ -242,6 +266,30 @@
       "side": 1,
       "message": "My suggestion is to optimize for correctness.\n\nWe know which DUT method may disrupt RPC connections (e.g. Reboot) as of today. However, we may add more methods to DUT in the future, some of which can disrupt RPC connections. For example, we may add ForceReboot method which forcibly reboot the DUT with a different way than Reboot. In such cases, RPCDUT will silently get a broken new method that fails to take care of RPC reconnections.\n\nThis issue arises because we\u0027re using the denylist approach. That is, we assume \nthat all DUT methods don\u0027t disrupt RPC connections by default, with exceptions of a few methods. This is vulnerable to future enhancements of DUT. Instead, with the allowlist approach to implement proxy methods one by one, we get opportunity to review new DUT methods before being added to RPCDUT to see if they are disruptive or not.\n\nIt\u0027s true that we have to write boring proxy methods for simple DUT methods like HostName. But I believe it can be justified by better protection to bugs.",
       "parentUuid": "8b152665_b811525a",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 70
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "044bc59e_c1c46be1",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-10T07:00:35Z",
+      "side": 1,
+      "message": "Alright, fair, given enough proxies we can still achieve interchangeability. I\u0027ll encapsulate dut.Dut.",
+      "parentUuid": "cd4fdf4e_4ca2ccf5",
       "range": {
         "startLine": 105,
         "startChar": 0,
