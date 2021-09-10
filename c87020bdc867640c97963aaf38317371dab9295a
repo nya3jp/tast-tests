@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5127b8_558e01c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/ec_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-09-10T00:41:04Z",
+      "side": 1,
+      "message": "Per the comments in src/platform/tast-tests/src/chromiumos/tast/remote/firmware/helper.go, should we just be using pre.Vars (and pre.SoftwareDeps and so on?)",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 129
+      },
+      "revId": "c87020bdc867640c97963aaf38317371dab9295a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
