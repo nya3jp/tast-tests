@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66542f02_0cdf20f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-10T04:36:33Z",
+      "side": 1,
+      "message": "I do not think the space is required.",
+      "range": {
+        "startLine": 85,
+        "startChar": 51,
+        "endLine": 85,
+        "endChar": 56
+      },
+      "revId": "77109b40f2cc83bf31b0f0a3bbcdb9973f6cfd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc8df8ec_dc351f0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-10T04:36:33Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 91,
+        "startChar": 45,
+        "endLine": 91,
+        "endChar": 50
+      },
+      "revId": "77109b40f2cc83bf31b0f0a3bbcdb9973f6cfd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
