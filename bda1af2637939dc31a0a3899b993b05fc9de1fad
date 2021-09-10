@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "862911c8_4faec876",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-10T23:48:02Z",
+      "side": 1,
+      "message": "Suggest to modify and expose whatever needed and use common methods for code reuse.",
+      "parentUuid": "ce002ccd_0ca007bd",
+      "revId": "bda1af2637939dc31a0a3899b993b05fc9de1fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ead4071_24284913",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 2
