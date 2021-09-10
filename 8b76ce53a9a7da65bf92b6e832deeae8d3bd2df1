@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e77830_48d63f02",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-10T01:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88120447_bedea36c",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e168e4a_b87cdcc0",
@@ -110,6 +134,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b60895c2_13c9ce20",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-10T01:01:08Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "ba63265e_05204590",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 50
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd6bceff_4ce9fd8c",
@@ -146,6 +194,30 @@
       "writtenOn": "2021-08-30T06:46:22Z",
       "side": 1,
       "message": "Given that we have many unimplemented methods, you may want to take allowlist approach instead of denylist approach; that is to explicitly implement proxy methods for DUT methods you want to support, rather than embedding *dut.DUT to expose all methods by default. WDYT?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 70
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b152665_b811525a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-10T01:01:08Z",
+      "side": 1,
+      "message": "Hmm. The goal is to provide the full dut.DUT compatible interface, so that this can be used in all the same places that dut.DUT can. I\u0027d rather others rely on the below interface, so that this can be fully interchangeable with dut.DUT, but I didn\u0027t want to complicate this first implementation.\n\nUltimately, maintaining an rpc connection seems like it should be done by the real dut.DUT, since the rpc server is a core feature of tast, but that is a longer term goal.\n\nThe \"not implemented\" functions are here as place holders that will reminder users to implement them, as they are needed. Doing an allow list style implementation means that I am then bringing functions that are not exactly RPC specific into this source file, like HostName, KeyDir, KeyFile, \n\nWould you prefer me to just implement the \"not implemented\" functions? If not, what are we optimizing for?\n\n---\n\ntype DUT interface {\n\tfunc Close(ctx context.Context) error\n\tfunc CompanionDeviceHostname(suffix string) (string, error)\n\tfunc Conn() *ssh.Conn\n\tfunc Connect(ctx context.Context) error\n\tfunc Connected(ctx context.Context) bool\n\tfunc DefaultCameraboxChart(ctx context.Context) (*ssh.Conn, error)\n\tfunc DefaultWifiPcapHost(ctx context.Context) (*ssh.Conn, error)\n\tfunc DefaultWifiRouterHost(ctx context.Context) (*ssh.Conn, error)\n\tfunc Disconnect(ctx context.Context) error\n\tfunc GetFile(ctx context.Context, src, dst string) error\n\tfunc HostName() string\n\tfunc KeyDir() string\n\tfunc KeyFile() string\n\tfunc NewSecondaryDevice(target string) (*DUT, error)\n\tfunc Reboot(ctx context.Context) error\n\tfunc WaitConnect(ctx context.Context) error\n\tfunc WaitUnreachable(ctx context.Context) error\n\tfunc WifiPeerHost(ctx context.Context, index int) (*ssh.Conn, error)\n}",
+      "parentUuid": "197e1b02_fec6abe2",
       "range": {
         "startLine": 105,
         "startChar": 0,
