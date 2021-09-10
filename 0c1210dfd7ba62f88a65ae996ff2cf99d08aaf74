@@ -88,6 +88,24 @@
       "parentUuid": "7af62e54_53595302",
       "revId": "0c1210dfd7ba62f88a65ae996ff2cf99d08aaf74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75ae07ba_c2fd273e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-09-10T14:14:48Z",
+      "side": 1,
+      "message": "Sure that\u0027s fine with me as well. lgtm, thanks",
+      "parentUuid": "df32a680_ee42a76f",
+      "revId": "0c1210dfd7ba62f88a65ae996ff2cf99d08aaf74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
