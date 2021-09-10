@@ -6,6 +6,7 @@ package wallpaper
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/local/chrome"
@@ -13,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/wallpaper"
 	"chromiumos/tast/testing"
 )
 
@@ -30,6 +32,13 @@ func init() {
 }
 
 func SetOnlineWallpaper(ctx context.Context, s *testing.State) {
+	const (
+		firstCollection  = "Solid colors"
+		firstImage       = "Light Blue"
+		secondCollection = "Colors"
+		secondImage      = "Bubbly"
+	)
+
 	cr, err := chrome.New(ctx, chrome.EnableFeatures("WallpaperWebUI"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
@@ -42,34 +51,34 @@ func SetOnlineWallpaper(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	// The test has a dependency of network speed, so we give uiauto.Context ample time to wait for nodes to load.
+	// The test has a dependency of network speed, so we give uiauto.Context ample
+	// time to wait for nodes to load.
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
-	setWallpaperMenu := nodewith.Name("Set wallpaper").Role(role.MenuItem)
-	if err := uiauto.Combine("change the wallpaper",
-		// Wait for the wallpaper to be visible on the screen.
-		ui.RightClick(nodewith.ClassName("WallpaperView")),
-		// This button takes a bit before it is clickable.
-		// Keep clicking it until the click is received and the menu closes.
-		ui.WithInterval(500*time.Millisecond).LeftClickUntil(setWallpaperMenu, ui.Gone(setWallpaperMenu)),
 
-		// Click on the collection.
-		ui.LeftClick(nodewith.NameContaining("Solid colors").Role(role.Button)),
-		// Set the online wallpaper image.
-		ui.LeftClick(nodewith.Name("Deep Purple").Role(role.ListBoxOption)),
-		// Ensure that "Deep Purple" text is displayed.
-		// The UI displays the name of the currently set wallpaper.
-		ui.WaitUntilExists(nodewith.Name("Currently set Deep Purple").Role(role.Heading)),
+	if err := wallpaper.OpenWallpaperPicker(ui)(ctx); err != nil {
+		s.Fatal("Failed to open wallpaper picker: ", err)
+	}
+	if err := wallpaper.SelectCollection(ui, firstCollection)(ctx); err != nil {
+		s.Fatalf("Failed to select collection %q: %v", firstCollection, err)
+	}
+	if err := wallpaper.SelectImage(ui, firstImage)(ctx); err != nil {
+		s.Fatalf("Failed to select image %q: %v", firstImage, err)
+	}
+	if err := ui.WaitUntilExists(nodewith.Name(fmt.Sprintf("Currently set %v", firstImage)).Role(role.Heading))(ctx); err != nil {
+		s.Fatalf("Failed to validate selected wallpaper %q: %v", firstImage, err)
+	}
 
-		// Navigate back to collection view by clicking on the back arrow in breadcrumb.
-		ui.LeftClick(nodewith.Name("Back to Wallpaper").ClassName("icon-arrow-back").Role(role.Button)),
-		// Click on another collection.
-		ui.LeftClick(nodewith.NameContaining("Colors").Role(role.Button)),
-		// Set another online wallpaper image.
-		ui.LeftClick(nodewith.Name("Bubbly").Role(role.ListBoxOption)),
-		// Ensure that "Bubbly" text is displayed.
-		// The UI displays the name of the currently set wallpaper.
-		ui.WaitUntilExists(nodewith.Name("Currently set Bubbly").Role(role.Heading)),
-	)(ctx); err != nil {
-		s.Fatal("Failed to change the wallpaper: ", err)
+	// Navigate back to collection view by clicking on the back arrow in breadcrumb.
+	if err := ui.LeftClick(nodewith.Name("Back to Wallpaper").HasClass("icon-arrow-back").Role(role.Button))(ctx); err != nil {
+		s.Fatal("Failed to navigate back to collection view: ", err)
+	}
+	if err := wallpaper.SelectCollection(ui, secondCollection)(ctx); err != nil {
+		s.Fatalf("Failed to select collection %q: %v", secondCollection, err)
+	}
+	if err := wallpaper.SelectImage(ui, secondImage)(ctx); err != nil {
+		s.Fatalf("Failed to select image %q: %v", secondImage, err)
+	}
+	if err := ui.WaitUntilExists(nodewith.Name(fmt.Sprintf("Currently set %v", secondImage)).Role(role.Heading))(ctx); err != nil {
+		s.Fatalf("Failed to validate selected wallpaper %q: %v", secondImage, err)
 	}
 }
