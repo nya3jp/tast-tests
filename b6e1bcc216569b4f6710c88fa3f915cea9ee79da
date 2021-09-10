@@ -825,6 +825,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6cf36609_df53aaf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-10T06:56:33Z",
+      "side": 1,
+      "message": "I see. Thanks for the explanation! From the go code perspective, the Java apk should be treated as a black box. The contract between the go code and the apk is more or less just: You are giving it an input (this URI) and expect it to give the media scanning time. Whether the apk uses the URI for comparison or to use it for other purpose is not the concern of the go code.\n\nIn this case, you name the variable as \"expected\" because there is a comparison in the Java code. But from the go code perspective, it just sends an input a volume URI to the java code. It\u0027s up to the java code what it wants to use the volume URI for (whether it is for comparison, or for other things) - which we will call as the implementation detail of the Java code. In that sense, we should prefer a naming or any other comments in the go code that does not depend on the Java code\u0027s implementation details. This maybe kind of similar to the concept of loose coupling (https://en.wikipedia.org/wiki/Loose_coupling) - or maybe you have seen another concept that is more similar to this explanation. This two components (go test code and apk) should not know about each other details except for the \"contract\" between them.\n\nAs an example for why this is a better design decision: imagine that you change this apk later and you figured out that the URI can be used for other things inside the apk outside just for comparison. If you named the variable as expectedURI, you will need to change the go code name as well. And if the one who adds this Java code behavior is someone else (not you/me/youkichihosoi@), they might not even know that the go code name needs to be updated - and the variable name in the go code became obsolete. Meanwhile, if you named the variable in the go code as volumeURI (or something similar), the one who makes the change later won\u0027t need to worry about renaming it except if they need to change the contract between the go code and the Java code (in that case, you will need to change both go and java code anyway). In the worse case, if later your apk is used by several tests, and the java code needs to be updated, the effect is more significant.\n\nAlso, when other people read the go code, they won\u0027t know why you name it as \"expected\" until they read the details in the Java code - which is undesirable.\n\nThe follow up question is: when should we go for a very specific variable name, and when we shouldn\u0027t go to more detail? The rule of thumb is, you should name your variable as specific as possible to cover all the details that should be visible by the code around that variable. Around the go statement here, it knows quite a lot about the go statements around - but it should only know about the contract with the Java code, not the implementation details inside the apk.",
+      "parentUuid": "8013255d_4d6e9c6c",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 12
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce99c154_e6622948",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
         "patchSetId": 6

@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20bdd5a2_3da82978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-10T06:56:33Z",
+      "side": 1,
+      "message": "I think numberOfCopies can be put here. It will make it easier for us to spot that const if we want to quickly test this test with more or less number of files in the future.",
+      "revId": "1e4d205a33ce8da53462efa3694284e9a58ef197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0be03ae8_c541d3d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-10T06:56:33Z",
+      "side": 1,
+      "message": "Can we use io.Copy? That will be more idiomatic and the code will be cleaner.",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 2
+      },
+      "revId": "1e4d205a33ce8da53462efa3694284e9a58ef197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
