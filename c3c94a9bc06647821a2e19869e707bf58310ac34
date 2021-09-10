@@ -39,6 +39,30 @@
       },
       "revId": "c3c94a9bc06647821a2e19869e707bf58310ac34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "379b129d_b6c3be9c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-10T07:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e51b605c_c3b1af02",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 201
+      },
+      "revId": "c3c94a9bc06647821a2e19869e707bf58310ac34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
