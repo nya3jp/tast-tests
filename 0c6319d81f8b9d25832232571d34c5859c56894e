@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe399c71_3a13f983",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-10T06:02:20Z",
+      "side": 1,
+      "message": "Thanks! LGTM with one favor.\n",
+      "revId": "0c6319d81f8b9d25832232571d34c5859c56894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63dc465b_adffbf64",
+        "filename": "src/chromiumos/tast/common/fixture/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-10T06:02:20Z",
+      "side": 1,
+      "message": "It\u0027s nice if you could add a bit more description here, e.g.\n\n- We can define fixture name constants in this package to make it easier to search a fixture implementation from its usage by cross references.\n- Names of arbitrary fixtures can be defined in this package.\n- Why do we define these constants in common/, instead of local/ and remote/? That\u0027s because local tests/fixtures can depend on remote fixtures but local packages are prohibited to import remote packages.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 68
+      },
+      "revId": "0c6319d81f8b9d25832232571d34c5859c56894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
