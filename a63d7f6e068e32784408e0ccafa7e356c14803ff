@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a34854d2_bc38f528",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/capture_from_element.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-10T18:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4320e850_70b300be",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "a63d7f6e068e32784408e0ccafa7e356c14803ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb7955f5_b138c919",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-10T00:49:23Z",
       "side": 1,
       "message": "We need to pin clocks and core to make this meaningful. Mind adding a TODO?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 34
+      },
+      "revId": "a63d7f6e068e32784408e0ccafa7e356c14803ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18e66b6a_f38a1e4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/capturefromelement/capture_from_element.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-10T18:06:41Z",
+      "side": 1,
+      "message": "This function is replicated in a few places so I made another CL\nin the chain to factor those out and put it e.g. in graphics/perf.go.\n\nI left a large function comment saying that callers of that method\nneed to call cpu.SetUpBenchmark() (e.g. see [1]). If you don\u0027t mind,\nwe can have a follow up review in that CL?\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/media/cpu/cpu.go;l\u003d149-155?q\u003dcpu.go%20SetUpBenchmark\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch",
+      "parentUuid": "eb7955f5_b138c919",
       "range": {
         "startLine": 97,
         "startChar": 0,
