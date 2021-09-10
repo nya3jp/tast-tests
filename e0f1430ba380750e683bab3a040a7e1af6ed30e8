@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8b8433f_23aff18f",
+        "filename": "android/ArcStandardizedMouseTest/src/org/chromium/arc/testapp/arcstandardizedmousetest/HoverTestActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-09-10T12:45:58Z",
+      "side": 1,
+      "message": "nit: `if (!mIsTestStarted) {`",
+      "range": {
+        "startLine": 37,
+        "startChar": 20,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "e0f1430ba380750e683bab3a040a7e1af6ed30e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0c5df3_554b0d2f",
+        "filename": "android/ArcStandardizedMouseTest/src/org/chromium/arc/testapp/arcstandardizedmousetest/ScrollTestActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-09-10T12:45:58Z",
+      "side": 1,
+      "message": "nit: mCurrentTestState?",
+      "range": {
+        "startLine": 27,
+        "startChar": 30,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "e0f1430ba380750e683bab3a040a7e1af6ed30e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
