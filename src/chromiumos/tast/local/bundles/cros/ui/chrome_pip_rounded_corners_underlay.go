@@ -13,7 +13,8 @@ import (
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -42,7 +43,15 @@ func init() {
 		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 		Data:         []string{"bear-320x240.h264.mp4", "pip_video.html"},
-		Fixture:      "chromeGraphics",
+		Params: []testing.Param{{
+			Fixture: "chromeGraphics",
+			Val:     lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "chromeGraphicsLacros",
+			Val:               lacros.ChromeTypeLacros,
+		}},
 	})
 }
 
@@ -52,7 +61,12 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	chromeType := s.Param().(lacros.ChromeType)
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), chromeType)
+	if err != nil {
+		s.Fatal("Failed to initialize test: ", err)
+	}
+	defer lacros.CloseLacrosChrome(cleanupCtx, l)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -64,11 +78,25 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer srv.Close()
 
-	conn, err := cr.NewConn(ctx, srv.URL+"/pip_video.html")
+	conn, err := cs.NewConn(ctx, srv.URL+"/pip_video.html")
 	if err != nil {
 		s.Fatal("Failed to load pip_video.html: ", err)
 	}
 	defer conn.Close()
+
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get windows: ", err)
+	}
+
+	// Verify that there is one and only one window.
+	if wsCount := len(ws); wsCount != 1 {
+		s.Fatal("Expected 1 window; found ", wsCount)
+	}
+
+	if err := ash.SetWindowStateAndWait(ctx, tconn, ws[0].ID, ash.WindowStateMaximized); err != nil {
+		s.Fatal("Failed to maximize window: ", err)
+	}
 
 	if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
 		s.Fatal("Failed to wait for pip_video.html to achieve quiescence: ", err)
@@ -76,7 +104,16 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 
 	ac := uiauto.New(tconn)
 	pipButton := nodewith.Name("PIP").Role(role.Button)
-	pipWindow := nodewith.Name("Picture in picture").ClassName("PictureInPictureWindow")
+
+	var pipClassName string
+	switch chromeType {
+	case lacros.ChromeTypeChromeOS:
+		pipClassName = "PictureInPictureWindow"
+	case lacros.ChromeTypeLacros:
+		pipClassName = "Widget"
+	}
+	pipWindow := nodewith.Name("Picture in picture").ClassName(pipClassName).Onscreen().First()
+
 	if err := action.Combine(
 		"click PIP button and wait for PIP window",
 		ac.LeftClick(pipButton),
