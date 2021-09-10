@@ -52,6 +52,24 @@
       "parentUuid": "4051ff59_e0f8143f",
       "revId": "926070e8f943eab25a6938a215d5c6ea346aff7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61224768_8b5d9554",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-10T07:34:13Z",
+      "side": 1,
+      "message": "PreTest does not correctly work for remote fixtures yet. Once it does you can use a fixture like this, but not right now AFAIK.",
+      "parentUuid": "cbb087e4_40e94d3c",
+      "revId": "926070e8f943eab25a6938a215d5c6ea346aff7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
