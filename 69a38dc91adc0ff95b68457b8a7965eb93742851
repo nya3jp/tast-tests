@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67bad964_4799d5c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-10T05:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3c7de6e_444423c4",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0000d72b_91eb5127",
@@ -417,6 +441,30 @@
       "side": 1,
       "message": "That sounds reasonable, I will do the uninstallation in Close. The Close function is only called once during the whole test with this Precondition.",
       "parentUuid": "21854209_1a26ac33",
+      "range": {
+        "startLine": 43,
+        "startChar": 21,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "69a38dc91adc0ff95b68457b8a7965eb93742851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5b9acf_86c007cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/pre/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-10T05:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dce1201_472eac74",
       "range": {
         "startLine": 43,
         "startChar": 21,
