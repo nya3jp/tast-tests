@@ -34,6 +34,24 @@
       "parentUuid": "be1dce8c_3d5c9158",
       "revId": "926070e8f943eab25a6938a215d5c6ea346aff7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb087e4_40e94d3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-10T00:33:14Z",
+      "side": 1,
+      "message": "Inserted the clearEnrollment command in PreTest and TearDown. This way the tests always starts from a clean slate, and test suite cleans after itself.",
+      "parentUuid": "4051ff59_e0f8143f",
+      "revId": "926070e8f943eab25a6938a215d5c6ea346aff7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
