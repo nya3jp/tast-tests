@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60a52bdf_2c2b11f3",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-10T03:34:04Z",
+      "side": 1,
+      "message": "The suggestion was not to remove, but to move. Thanks for reordering!",
+      "parentUuid": "f1f330ae_04543640",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 41
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efb2ab9a_0ee68bbd",
@@ -389,6 +413,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50fddfeb_beb76471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-10T03:34:04Z",
+      "side": 1,
+      "message": "In my opinion it\u0027s better because it reduces the number of places that rely on the implementation details of the path of Android\u0027s data directory.\nBy using arc.AndroidDataDir(), even if we change the path in the future (for example, not to use the cryptohome-system path, or to rename \"android-data\" to another string), we do not need to change this code; we can just change arc.AndroidDataDir().\nTo be fair, such a path change is not likely to happen, and we can think of a situation where the use of arc.AndroidDataDir() becomes some burden.\nHaving that said, I still think it\u0027s a good practice to use a dedicated function when there is one. Here we want to get the path of Android\u0027s data directroy, and arc.AndroidDataDir() does it.",
+      "parentUuid": "61380a74_4c5af502",
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65f7b6a1_dcaadc0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
         "patchSetId": 6
@@ -582,6 +624,30 @@
       "side": 1,
       "message": "Do you mean we should create another helper function to do \n\nif err :\u003d a.Install(ctx, arc.APKPath(apk)); err !\u003d nil {\n   s.Fatal(\"Failed installing app: \", err)\n}\n[...]\nif err :\u003d act.StartWithArgs(ctx, tconn, []string{\"-S\", \"-W\", \"-n\"}, []string{\"-d\", expectedURI}); err !\u003d nil {\n    s.Fatal(\"Failed to start the activity: \", err)\n}\n\n?",
       "parentUuid": "a002c7bf_7a77cb91",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 43
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda71c75_5a109d0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-10T03:34:04Z",
+      "side": 1,
+      "message": "Yes. I think it\u0027s reasonable to have a function to do that part. One thing to note is, when you implement it, you shouldn\u0027t defer act.Close() inside it. This is because act.Close() will be called when the function returns (before the measurement takes place).\nI did a similar thing in: https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/arc/download_manager.go;l\u003d219;drc\u003d0705bfb8521a8ed956ad65281ae35a2fe9af5918\n(This example calls act.Stop() but you don\u0027t need to call it as I mentioned before.)",
+      "parentUuid": "2e5f877a_2e5632d2",
       "range": {
         "startLine": 166,
         "startChar": 1,
