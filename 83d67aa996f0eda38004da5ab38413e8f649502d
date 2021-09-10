@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be808646_b792d1b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-10T16:08:52Z",
+      "side": 1,
+      "message": "Use runtime variable to implement this feature. Please help review. Thanks!",
+      "revId": "83d67aa996f0eda38004da5ab38413e8f649502d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
