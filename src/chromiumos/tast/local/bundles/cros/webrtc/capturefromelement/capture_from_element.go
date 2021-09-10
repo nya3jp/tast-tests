@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/graphics"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
 
@@ -69,7 +68,7 @@ func RunCaptureStream(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 	}()
 	go func() {
 		defer wg.Done()
-		cpuErr = measureCPUAndPowerUsage(ctx, measurementDuration, p)
+		cpuErr = graphics.MeasureCPUUsageAndPower(ctx, 0, measurementDuration, p)
 	}()
 	wg.Wait()
 	if gpuErr != nil {
@@ -83,33 +82,6 @@ func RunCaptureStream(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 	}
 
 	p.Save(s.OutDir())
-	return nil
-}
-
-// measureCPUAndPowerUsage obtains CPU usage and power consumption if supported.
-func measureCPUAndPowerUsage(ctx context.Context, measurementDuration time.Duration, p *perf.Values) error {
-	testing.ContextLog(ctx, "Measuring CPU usage for ", measurementDuration)
-	measurements, err := cpu.MeasureUsage(ctx, measurementDuration)
-	if err != nil {
-		return errors.Wrap(err, "failed to measure CPU usage and power consumption")
-	}
-
-	cpuUsage := measurements["cpu"]
-	testing.ContextLogf(ctx, "CPU usage: %f%%", cpuUsage)
-	p.Set(perf.Metric{
-		Name:      "cpu_usage",
-		Unit:      "percent",
-		Direction: perf.SmallerIsBetter,
-	}, cpuUsage)
-
-	if power, ok := measurements["power"]; ok {
-		testing.ContextLogf(ctx, "Avg pkg power usage: %fW", power)
-		p.Set(perf.Metric{
-			Name:      "pkg_power_usage",
-			Unit:      "W",
-			Direction: perf.SmallerIsBetter,
-		}, power)
-	}
 	return nil
 }
 
