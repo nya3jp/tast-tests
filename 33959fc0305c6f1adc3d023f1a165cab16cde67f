@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48e2a82a_d0976910",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-10T08:51:49Z",
+      "side": 1,
+      "message": "This won\u0027t work. androidDataDir already contains \"android-data\" (it\u0027s /home/root/\u003chash\u003e/android-data). This should be rewritten to:\n  filepath.Join(androidDataDir, \"data\", \"media\", \"0\", \"Pictures\", \"capybaras\")",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21a3084_1cb2a4c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-10T08:51:49Z",
+      "side": 1,
+      "message": "You can make the failure log a little bit more informative:\n  s.Fatalf(\"Failed to create the target dir %s: %v\", targetDir, err)",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b5ec3d_2ea6eb70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-10T08:51:49Z",
+      "side": 1,
+      "message": "The function name does not provide a good insight on what this function does (what is \"MediaScanTime\"?). Could you give a little more descriptive name?",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c1aca17_cd2c9996",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-10T08:51:49Z",
+      "side": 1,
+      "message": "Here, you should call act.Close before leaving: https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/arc/activity.go;l\u003d119;drc\u003da83b4acabae9f5199360d99847e1b97288e7685e",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
