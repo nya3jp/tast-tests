@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff1b1f4_cd427f20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-10T15:52:26Z",
+      "side": 1,
+      "message": "Miguel, can you take a brief look this CL mainly about TODOs in encode.go?\n\nI sent raw YUVs to connection. It is the easiest way for me.\nHowever, it hits the restriction of a buffer size (1MB) in websocket connection.\nI hack it temporarily in this WIP CL. \nI will ask tast owners the best way for it after you give me initial comments.\n\nThanks in advance.\n",
+      "revId": "3b7302ae669fd847d3abeceb48c5b15ed240d7e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
