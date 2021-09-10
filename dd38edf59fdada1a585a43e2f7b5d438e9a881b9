@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e480646c_df890ddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caf2a2e8_c6ad335c",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecab7426_4edfcd31",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6872e9c_747ca27c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecab7426_4edfcd31",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95b86f88_0e442b56",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-09-08T07:24:24Z",
       "side": 1,
       "message": "you use these constants just once, maybe it makes sense just to inline them?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48880ab5_03ed2d21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95b86f88_0e442b56",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -150,6 +222,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41d8cb11_6f8480ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a2a2bf1_8b21fd68",
+      "range": {
+        "startLine": 66,
+        "startChar": 22,
+        "endLine": 66,
+        "endChar": 36
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e71c3d_3a379260",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53c52a5a_ed60ed9d",
+      "range": {
+        "startLine": 66,
+        "startChar": 33,
+        "endLine": 66,
+        "endChar": 36
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3df1eb77_499fa9b4",
@@ -196,6 +316,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "382f8cac_1f396b5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3df1eb77_499fa9b4",
+      "range": {
+        "startLine": 67,
+        "startChar": 17,
+        "endLine": 67,
+        "endChar": 21
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f479eb6_e344683b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/biod/bio_crypto_init_success.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c2ad887_a1c1868c",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 29
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f570b97_7372879b",
@@ -209,6 +377,30 @@
       "writtenOn": "2021-09-08T07:24:24Z",
       "side": 1,
       "message": "same: maybe makes sense to just inline them if they used only once?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a60c09f_7b0c627a",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3f570b97_7372879b",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -265,6 +457,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "404f7a2a_9a51b1c6",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e44d0e7_def73546",
+      "range": {
+        "startLine": 24,
+        "startChar": 33,
+        "endLine": 24,
+        "endChar": 42
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f295cd63_b08e6962",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39566492_534de851",
+      "range": {
+        "startLine": 24,
+        "startChar": 23,
+        "endLine": 24,
+        "endChar": 27
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19adce8b_5257807e",
@@ -278,6 +518,30 @@
       "writtenOn": "2021-09-08T07:24:24Z",
       "side": 1,
       "message": "nit: remove Get prefixes\nhttps://golang.org/doc/effective_go#Getters",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0951fd44_736599f6",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19adce8b_5257807e",
       "range": {
         "startLine": 25,
         "startChar": 5,
@@ -311,6 +575,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f42c996_905bb246",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f34a33f1_ca7a1375",
+      "range": {
+        "startLine": 30,
+        "startChar": 27,
+        "endLine": 30,
+        "endChar": 30
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "784e0f64_6791b0dc",
@@ -324,6 +612,30 @@
       "writtenOn": "2021-09-07T22:10:29Z",
       "side": 1,
       "message": "You should check your number of matches before using this index. Something like:\n\nif len(tout) !\u003d 2 {\n\treturn time.Time{}, errors.Wrap(err, \"failed to find btime\")\n}",
+      "range": {
+        "startLine": 32,
+        "startChar": 34,
+        "endLine": 32,
+        "endChar": 41
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b906f0_52b10fc5",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "784e0f64_6791b0dc",
       "range": {
         "startLine": 32,
         "startChar": 34,
@@ -357,6 +669,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7d6b625_f6f0a139",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe181c53_9cb33166",
+      "range": {
+        "startLine": 54,
+        "startChar": 21,
+        "endLine": 54,
+        "endChar": 22
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bafd33a9_12b1f42b",
@@ -370,6 +706,30 @@
       "writtenOn": "2021-09-08T07:24:24Z",
       "side": 1,
       "message": "nit: timestamp seconds?",
+      "range": {
+        "startLine": 59,
+        "startChar": 53,
+        "endLine": 59,
+        "endChar": 62
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45298f38_b421e0d0",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bafd33a9_12b1f42b",
       "range": {
         "startLine": 59,
         "startChar": 53,
@@ -403,6 +763,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afba5869_b23a9e61",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a33e3276_c7dcbe06",
+      "range": {
+        "startLine": 61,
+        "startChar": 39,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1ae91ad_7d417cbe",
@@ -416,6 +800,30 @@
       "writtenOn": "2021-09-08T07:24:24Z",
       "side": 1,
       "message": "nit: same: timestamp nanoseconds?",
+      "range": {
+        "startLine": 63,
+        "startChar": 53,
+        "endLine": 63,
+        "endChar": 62
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f51000a_c05eb311",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1ae91ad_7d417cbe",
       "range": {
         "startLine": 63,
         "startChar": 53,
@@ -443,6 +851,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a76211e_bf51dd44",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae3b86a3_7a4ceb3e",
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7f6c9c8_504533c7",
@@ -466,6 +892,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db2290c8_5646cfd0",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7f6c9c8_504533c7",
+      "range": {
+        "startLine": 89,
+        "startChar": 46,
+        "endLine": 89,
+        "endChar": 47
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c731620f_dc3ce027",
@@ -479,6 +929,30 @@
       "writtenOn": "2021-09-08T07:24:24Z",
       "side": 1,
       "message": "nit (optional): do you need this intermediate variable? You can just simply return lines[i:], nil",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 13
+      },
+      "revId": "dd38edf59fdada1a585a43e2f7b5d438e9a881b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b60ea0e_9f413851",
+        "filename": "src/chromiumos/tast/local/syslog/read_logs_since_boot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-09-10T17:25:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c731620f_dc3ce027",
       "range": {
         "startLine": 94,
         "startChar": 3,
