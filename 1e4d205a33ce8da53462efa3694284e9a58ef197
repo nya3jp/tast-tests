@@ -81,6 +81,30 @@
       },
       "revId": "1e4d205a33ce8da53462efa3694284e9a58ef197",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa76bd7_65d82e46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-10T08:27:11Z",
+      "side": 1,
+      "message": "It\u0027s true that the downside is the code will be longer. But the meaning will be clearer. For example someone who knows go might be able to understand this: https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go;l\u003d156;drc\u003dec19d5c2366dd3773e2c9a9512c9460a2fd58c44 as copying two files faster than if it is implemented as read -\u003e write just because go provides the io.Copy as part of its standard (widely known) library. This is what people call \"idiomatic\" (you can search \"idiomatic programming\").\n\nThe other benefit is, usually standard libraries are implemented as efficient as it makes sense so we automatically will get benefits from that. This point might be unclear in your case here since your implementation performs only 1 read while the golang\u0027s implementation will do read\u0026write for every iteration (https://cs.opensource.google/go/go/+/go1.17:src/io/io.go;l\u003d381) - but on the other hand, the golang implementation does not read all the file content in the memory but read and write one chunk at a time - which might save some memory. But I don\u0027t think this matters in this test.\n\nHowever, from the readability standpoint of view, adding a bit more code to write an idiomatic code should be preferred. Of course there are exceptions: if the cost of writing the idiomatic version is way too much if it is compared to the alternative - but in this case, the cost is just adding 3-4 lines which is quite small (you can check https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go;l\u003d156;drc\u003dec19d5c2366dd3773e2c9a9512c9460a2fd58c44 as an example).",
+      "parentUuid": "fbdc6a42_93639252",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 2
+      },
+      "revId": "1e4d205a33ce8da53462efa3694284e9a58ef197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

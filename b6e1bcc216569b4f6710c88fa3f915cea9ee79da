@@ -931,6 +931,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3d7fa2c_ac909199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-10T08:27:11Z",
+      "side": 1,
+      "message": "I think that is more or less correct. As long as being specific doesn\u0027t mean crossing the details boundary of two units (e.g., in this case java and golang.",
+      "parentUuid": "e2a0c811_f268da84",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 12
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce99c154_e6622948",
