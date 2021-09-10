@@ -13,6 +13,7 @@ import (
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/procutil"
 )
 
 const (
@@ -29,24 +30,7 @@ func processes(execPath string, filter func(p *process.Process) bool) ([]*proces
 	if !filepath.IsAbs(execPath) {
 		return nil, errors.Errorf("execPath %q must be abs path", execPath)
 	}
-
-	ps, err := process.Processes()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to obtain processes")
-	}
-
-	var ret []*process.Process
-	for _, p := range ps {
-		// The exec path should match.
-		if exe, err := p.Exe(); err != nil || exe != execPath {
-			continue
-		}
-
-		if filter(p) {
-			ret = append(ret, p)
-		}
-	}
-	return ret, nil
+	return procutil.FindAll(procutil.ByExe(execPath), filter)
 }
 
 // Processes returns all Chrome processes.
