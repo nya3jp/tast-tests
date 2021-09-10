@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4320e850_70b300be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/capture_from_element.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-10T00:49:23Z",
+      "side": 1,
+      "message": "Maybe leave a comment that we don\u0027t want to measure performance?",
+      "range": {
+        "startLine": 38,
+        "startChar": 29,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "a63d7f6e068e32784408e0ccafa7e356c14803ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb7955f5_b138c919",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/capturefromelement/capture_from_element.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-10T00:49:23Z",
+      "side": 1,
+      "message": "We need to pin clocks and core to make this meaningful. Mind adding a TODO?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 34
+      },
+      "revId": "a63d7f6e068e32784408e0ccafa7e356c14803ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
