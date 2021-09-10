@@ -16,6 +16,24 @@
       "message": "I don\u0027t think this is the right way to implement your tests.\n\nA fixture sets up state for multiple tests, you need enrollment cleared for each test. The current implementation will break once a second test is added.\n\nSince PreTest/PostTest don\u0027t work for remote fixtures yet, I\u0027d move this part into the test itself. Unfortunately this requires the test to be a remote test.",
       "revId": "926070e8f943eab25a6938a215d5c6ea346aff7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4051ff59_e0f8143f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-10T00:24:13Z",
+      "side": 1,
+      "message": "Wait, what if I were to also clear the TPM in the fixture\u0027s reset function? Wouldn\u0027t this reset the DUT\u0027s enrollment state regardless of test pass/fail?\n\nBased on the Tast:Introducing Fixtures slide deck, the Reset function gets called after every individual test execution.",
+      "parentUuid": "be1dce8c_3d5c9158",
+      "revId": "926070e8f943eab25a6938a215d5c6ea346aff7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

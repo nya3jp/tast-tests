@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a43c5925_f6f29d6c",
+        "filename": "src/chromiumos/tast/remote/policyutil/cleared_enrollment_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-10T00:24:13Z",
+      "side": 1,
+      "message": "Need to find a way to get a hold of the DUT.",
+      "range": {
+        "startLine": 60,
+        "startChar": 29,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "57e8e53f60a55d2e6ce96a7402bf145d835dfa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
