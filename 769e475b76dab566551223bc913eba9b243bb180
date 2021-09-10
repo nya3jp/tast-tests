@@ -248,6 +248,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "569ef030_a793fe60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-10T15:27:39Z",
+      "side": 1,
+      "message": "Are you talking about the error\n\n [modem0] couldn\u0027t load extended signal information: No way to load extended signal information\n\nI don\u0027t know if that one is relevant. Otherwise, if we\u0027re getting that connect failure, then we\u0027re getting a connect failure -- not sure what would change if we did this instead of just sleeping.\n\nI guess this state change is a bit worrying:\n\n 2021-09-10T02:18:52.762416Z INFO ModemManager[2262]: \u003cinfo\u003e  [modem0] 3GPP registration state changed (home -\u003e unknown)\n 2021-09-10T02:18:52.762636Z INFO ModemManager[2262]: \u003cinfo\u003e  [modem0] state changed (registered -\u003e enabled)\n\nsince we can\u0027t retry connect from that state. Can we turn up the log verbosity and maybe see why that is? (We can also avoid continuing the poll if we\u0027re in the Enabled state rather than Registered by returning the error wrapped in a testing.PollBreak.)",
+      "parentUuid": "1b528085_5aab0c2b",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1b95da1_5c0466cf",
