@@ -30,9 +30,8 @@ import (
 )
 
 type arcPIPEnergyAndPowerTestParams struct {
-	activityName string
-	bigPIP       bool
-	chromeType   lacros.ChromeType
+	bigPIP     bool
+	chromeType lacros.ChromeType
 }
 
 func init() {
@@ -45,82 +44,42 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "small",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBooted",
 		}, {
 			Name:              "big",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true, chromeType: lacros.ChromeTypeChromeOS},
-			ExtraSoftwareDeps: []string{"android_p"},
-			Fixture:           "arcBooted",
-		}, {
-			Name:              "small_blend",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
-			ExtraSoftwareDeps: []string{"android_p"},
-			Fixture:           "arcBooted",
-		}, {
-			Name:              "big_blend",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true, chromeType: lacros.ChromeTypeChromeOS},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: true, chromeType: lacros.ChromeTypeChromeOS},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBooted",
 		}, {
 			Name:              "small_lacros",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false, chromeType: lacros.ChromeTypeLacros},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeLacros},
 			ExtraSoftwareDeps: []string{"android_p", "lacros"},
 			Fixture:           "lacrosStartedByDataWithArcBooted",
 		}, {
 			Name:              "big_lacros",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true, chromeType: lacros.ChromeTypeLacros},
-			ExtraSoftwareDeps: []string{"android_p", "lacros"},
-			Fixture:           "lacrosStartedByDataWithArcBooted",
-		}, {
-			Name:              "small_blend_lacros",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false, chromeType: lacros.ChromeTypeLacros},
-			ExtraSoftwareDeps: []string{"android_p", "lacros"},
-			Fixture:           "lacrosStartedByDataWithArcBooted",
-		}, {
-			Name:              "big_blend_lacros",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true, chromeType: lacros.ChromeTypeLacros},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: true, chromeType: lacros.ChromeTypeLacros},
 			ExtraSoftwareDeps: []string{"android_p", "lacros"},
 			Fixture:           "lacrosStartedByDataWithArcBooted",
 		}, {
 			Name:              "small_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBooted",
 		}, {
 			Name:              "big_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true, chromeType: lacros.ChromeTypeChromeOS},
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Fixture:           "arcBooted",
-		}, {
-			Name:              "small_blend_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Fixture:           "arcBooted",
-		}, {
-			Name:              "big_blend_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true, chromeType: lacros.ChromeTypeChromeOS},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: true, chromeType: lacros.ChromeTypeChromeOS},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBooted",
 		}, {
 			Name:              "small_lacros_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: false, chromeType: lacros.ChromeTypeLacros},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeLacros},
 			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 			Fixture:           "lacrosStartedByDataWithArcBooted",
 		}, {
 			Name:              "big_lacros_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivity", bigPIP: true, chromeType: lacros.ChromeTypeLacros},
-			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
-			Fixture:           "lacrosStartedByDataWithArcBooted",
-		}, {
-			Name:              "small_blend_lacros_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: false, chromeType: lacros.ChromeTypeLacros},
-			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
-			Fixture:           "lacrosStartedByDataWithArcBooted",
-		}, {
-			Name:              "big_blend_lacros_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{activityName: ".VideoActivityWithRedSquare", bigPIP: true, chromeType: lacros.ChromeTypeLacros},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: true, chromeType: lacros.ChromeTypeLacros},
 			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 			Fixture:           "lacrosStartedByDataWithArcBooted",
 		}},
@@ -195,7 +154,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for CPU to cool down: ", err)
 	}
 
-	act, err := arc.NewActivity(a, "org.chromium.arc.testapp.pictureinpicturevideo", params.activityName)
+	act, err := arc.NewActivity(a, "org.chromium.arc.testapp.pictureinpicturevideo", ".VideoActivity")
 	if err != nil {
 		s.Fatal("Failed to create activity: ", err)
 	}

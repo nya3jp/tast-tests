@@ -31,8 +31,7 @@ import (
 )
 
 type chromePIPEnergyAndPowerTestParams struct {
-	bigPIP       bool
-	layerOverPIP bool
+	bigPIP bool
 }
 
 func init() {
@@ -47,16 +46,10 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name: "small",
-			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: false, layerOverPIP: false},
+			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: false},
 		}, {
 			Name: "big",
-			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: true, layerOverPIP: false},
-		}, {
-			Name: "small_blend",
-			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: false, layerOverPIP: true},
-		}, {
-			Name: "big_blend",
-			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: true, layerOverPIP: true},
+			Val:  chromePIPEnergyAndPowerTestParams{bigPIP: true},
 		}},
 	})
 }
@@ -184,26 +177,9 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if params.layerOverPIP {
-		chromeIcon := nodewith.Name("Google Chrome").ClassName("ash/ShelfAppButton")
-		defer func() {
-			if err := mouse.Release(tconn, mouse.LeftButton)(cleanupCtx); err != nil {
-				s.Log("Failed to release the mouse button: ", err)
-			}
-		}()
-		if err := action.Combine(
-			"drag chrome icon over PIP window",
-			ac.MouseMoveTo(chromeIcon, time.Second),
-			mouse.Press(tconn, mouse.LeftButton),
-			mouse.Move(tconn, pipWindowBounds.CenterPoint(), time.Second),
-		)(ctx); err != nil {
-			s.Fatal("Failed to drag the chrome icon onto the PIP window: ", err)
-		}
-	} else {
-		// Ensure that the PIP window will show no controls or resize shadows.
-		if err := mouse.Move(tconn, workAreaTopLeft.Add(coords.NewPoint(20, 20)), time.Second)(ctx); err != nil {
-			s.Fatal("Failed to move mouse: ", err)
-		}
+	// Ensure that the PIP window will show no controls or resize shadows.
+	if err := mouse.Move(tconn, workAreaTopLeft.Add(coords.NewPoint(20, 20)), time.Second)(ctx); err != nil {
+		s.Fatal("Failed to move mouse: ", err)
 	}
 
 	extraConn, err := cr.NewConn(ctx, "chrome://settings")
