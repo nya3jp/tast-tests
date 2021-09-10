@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -61,22 +62,11 @@ func callMultiProtoMethod(ctx context.Context, obj dbus.BusObject, method string
 
 // GetSessionManagerPID returns the PID of the session_manager.
 func GetSessionManagerPID() (int, error) {
-	const exePath = "/sbin/session_manager"
-
-	all, err := process.Pids()
+	p, err := procutil.Find(procutil.ByExe("/sbin/session_manager"))
 	if err != nil {
-		return -1, err
+		return -1, errors.Wrap(err, "session_manager process not found")
 	}
-
-	for _, pid := range all {
-		if proc, err := process.NewProcess(pid); err != nil {
-			// Assume that the process exited.
-			continue
-		} else if exe, err := proc.Exe(); err == nil && exe == exePath {
-			return int(pid), nil
-		}
-	}
-	return -1, errors.New("session_manager process not found")
+	return int(p.Pid), nil
 }
 
 // SessionManager is used to interact with the session_manager process over
