@@ -735,6 +735,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8013255d_4d6e9c6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:28:28Z",
+      "side": 1,
+      "message": "sorry not good --\u003e not bad",
+      "parentUuid": "d33ea6bc_bfd3242d",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 12
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce99c154_e6622948",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
         "patchSetId": 6
