@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd57cef_7d79153f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-10T07:40:43Z",
+      "side": 1,
+      "message": "LGTM % final nits\n\nWaiting on review from Ricardo as well.",
+      "revId": "3717ce19fe068ea92315ac8e67ac5a406905b9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea591bea_350c1d9f",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-10T07:40:43Z",
+      "side": 1,
+      "message": "nit: move this function last so the calls are easier to read\n\nperformGAIAEnrollment -\u003e performGAIAEnrollmentSignIn -\u003e submitGAIAEnrollmentSignIn",
+      "revId": "3717ce19fe068ea92315ac8e67ac5a406905b9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c2612c_39640d2e",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-10T07:40:43Z",
+      "side": 1,
+      "message": "nit: times",
+      "range": {
+        "startLine": 316,
+        "startChar": 13,
+        "endLine": 316,
+        "endChar": 17
+      },
+      "revId": "3717ce19fe068ea92315ac8e67ac5a406905b9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7ef4461_3675cc14",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-10T07:40:43Z",
+      "side": 1,
+      "message": "nit: with a timeout",
+      "range": {
+        "startLine": 316,
+        "startChar": 19,
+        "endLine": 316,
+        "endChar": 40
+      },
+      "revId": "3717ce19fe068ea92315ac8e67ac5a406905b9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca36b1b9_910c1510",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-10T07:40:43Z",
+      "side": 1,
+      "message": "minor nit: Maybe \"Nothing to do\" ?",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "3717ce19fe068ea92315ac8e67ac5a406905b9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
