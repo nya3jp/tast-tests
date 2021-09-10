@@ -70,6 +70,24 @@
       "parentUuid": "5152c6c5_0360b2bc",
       "revId": "0c1210dfd7ba62f88a65ae996ff2cf99d08aaf74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df32a680_ee42a76f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-09-10T11:07:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure if that won\u0027t influence tests themselves (especially netperf), but OK.\nWe can meet in the middle - two pcaps for router plus one on DUT - I would still prefer to see what DUT actually received (even on L3 layer).",
+      "parentUuid": "7af62e54_53595302",
+      "revId": "0c1210dfd7ba62f88a65ae996ff2cf99d08aaf74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
