@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "382671c2_3b641d9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-10T02:06:32Z",
+      "side": 1,
+      "message": "I think it looks good but we should test the CQ builds when we get some.",
+      "revId": "af664bb7c057a558e797f8a82afe5a0d7005cbf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
