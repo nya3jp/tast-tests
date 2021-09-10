@@ -39,6 +39,30 @@
       },
       "revId": "077e398588dd06ffd7fd233b905fdd28aede1206",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "788c38f8_97b58a43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-09-10T02:14:03Z",
+      "side": 1,
+      "message": "That\u0027s good feedback. Although referring to the button by class or some id would be more robust, it is still relying on certain structure of the page. It maybe more helpful for this to be maintained by App Foundation team to track its health as well as update it whenever the page structure/display changes.\n\nThere is a pending feature request in tast as well that can help tie the test to a specific android release http://b/199181119 which can come in handy for synchronizing across two products.",
+      "parentUuid": "c035f957_eab47d5a",
+      "range": {
+        "startLine": 118,
+        "startChar": 41,
+        "endLine": 118,
+        "endChar": 57
+      },
+      "revId": "077e398588dd06ffd7fd233b905fdd28aede1206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
