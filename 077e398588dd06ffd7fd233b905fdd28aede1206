@@ -16,6 +16,29 @@
       "message": "Sorry folks, I\u0027m going to have to change this button again (due to changing UI requirements). ",
       "revId": "077e398588dd06ffd7fd233b905fdd28aede1206",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c035f957_eab47d5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1186534
+      },
+      "writtenOn": "2021-09-10T00:55:30Z",
+      "side": 1,
+      "message": "This test is extremely brittle as any change to the UI strings (which live in a different repository to the test) are going to cause this test to break.\n\nPlease investigate if there is a more robust way to refer to these buttons other than matching English-only UI strings.",
+      "range": {
+        "startLine": 118,
+        "startChar": 41,
+        "endLine": 118,
+        "endChar": 57
+      },
+      "revId": "077e398588dd06ffd7fd233b905fdd28aede1206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
