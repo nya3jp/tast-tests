@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a67f152f_4049768e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-09-10T17:06:37Z",
+      "side": 1,
+      "message": "Is the test expected to eventually be fixture-compliant? If so, could you add a TODO bug above where the capture is started and stopped manually?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "63bd61355d031e230b89c5be9756fb889c6e5d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a514eb3d_2787f437",
@@ -14,6 +37,29 @@
       "writtenOn": "2021-09-10T11:07:37Z",
       "side": 1,
       "message": "Oh, I see I haven\u0027t published my response.\nAdding suggersted owner as well .",
+      "revId": "63bd61355d031e230b89c5be9756fb889c6e5d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54998f23_f226f7f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-09-10T17:06:37Z",
+      "side": 1,
+      "message": "Does it make sense to abstract this into a helper function since it is used twice?",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 349,
+        "endChar": 0
+      },
       "revId": "63bd61355d031e230b89c5be9756fb889c6e5d36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
