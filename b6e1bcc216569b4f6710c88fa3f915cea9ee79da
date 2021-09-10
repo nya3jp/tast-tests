@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d7deb335_58e59ff9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65e8b8de_853dbdf0",
+      "range": {
+        "startLine": 25,
+        "startChar": 40,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c5976079_df69034a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -83,6 +107,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1f330ae_04543640",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "I think andriod.content.IntentFilter is used to send Intent.ACTION_MEDIA_SCANNER_STARTED.",
+      "parentUuid": "fbc8669e_0a20adb2",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 41
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99d4d9ad_c139e6fa",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbc8669e_0a20adb2",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 41
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "efb2ab9a_0ee68bbd",
         "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
         "patchSetId": 6
@@ -94,6 +166,24 @@
       "writtenOn": "2021-09-10T00:17:30Z",
       "side": 1,
       "message": "Log is not used and can be removed.",
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69f6e022_65c1ab4d",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efb2ab9a_0ee68bbd",
       "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +201,24 @@
       "writtenOn": "2021-09-10T00:17:30Z",
       "side": 1,
       "message": "LOG_TAG is not used and thus can be removed.\nBtw, just for your information, when defining a log tag for a test app, it seems better not to use MainActivity.class.getSimpleName() because it\u0027s just \"MainActivity\" and not so informational.\nMaybe\n  TAG \u003d \"ArcMediaScanTimeTest\"\n\nor something like that would be better.",
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0365724d_b316cb21",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a058bc78_5c6c2fde",
       "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4063c8e_38706325",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1866ebbf_d341b27d",
+      "range": {
+        "startLine": 43,
+        "startChar": 21,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fcd8683_eb355b29",
@@ -155,6 +287,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1aa36b6_cc7e9a1a",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fcd8683_eb355b29",
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d092ca03_64caaca2",
@@ -168,6 +318,30 @@
       "writtenOn": "2021-09-09T09:00:40Z",
       "side": 1,
       "message": "Can we have a more specific name so it is easier to understand what suffix this refers to, maybe volumeUriSuffix?",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b9ab298_86db146e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d092ca03_64caaca2",
       "range": {
         "startLine": 54,
         "startChar": 4,
@@ -197,6 +371,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61380a74_4c5af502",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "is arc.AndroidDataDir() better than cryptohome.SystemPath()? If so, why?",
+      "parentUuid": "5c83769b_21309707",
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65f7b6a1_dcaadc0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
         "patchSetId": 6
@@ -208,6 +400,30 @@
       "writtenOn": "2021-09-09T09:00:40Z",
       "side": 1,
       "message": "Add a comment above this to specify the format of the MyFiles line. That will save the reader time to understand this regex :)",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 90
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c71fa28c_b38bb8c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65f7b6a1_dcaadc0b",
       "range": {
         "startLine": 105,
         "startChar": 1,
@@ -281,6 +497,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "078a7459_3818527d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "698d51f2_5379b61c",
+      "range": {
+        "startLine": 135,
+        "startChar": 17,
+        "endLine": 135,
+        "endChar": 20
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d6017f9_9410aea0",
@@ -330,6 +570,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e5f877a_2e5632d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Do you mean we should create another helper function to do \n\nif err :\u003d a.Install(ctx, arc.APKPath(apk)); err !\u003d nil {\n   s.Fatal(\"Failed installing app: \", err)\n}\n[...]\nif err :\u003d act.StartWithArgs(ctx, tconn, []string{\"-S\", \"-W\", \"-n\"}, []string{\"-d\", expectedURI}); err !\u003d nil {\n    s.Fatal(\"Failed to start the activity: \", err)\n}\n\n?",
+      "parentUuid": "a002c7bf_7a77cb91",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 43
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a58c7ca8_c20bde41",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
         "patchSetId": 6
@@ -341,6 +605,30 @@
       "writtenOn": "2021-09-09T09:00:40Z",
       "side": 1,
       "message": "A more specific name will be preferable. A name that will answer the question: \"What Uri is this?\"\nFor example, volumeUriPrefix ?",
+      "range": {
+        "startLine": 173,
+        "startChar": 2,
+        "endLine": 173,
+        "endChar": 11
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca78e266_f13ba69a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a58c7ca8_c20bde41",
       "range": {
         "startLine": 173,
         "startChar": 2,
@@ -374,6 +662,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "542ca64c_5cbce772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48a5def5_73c02156",
+      "range": {
+        "startLine": 176,
+        "startChar": 14,
+        "endLine": 176,
+        "endChar": 17
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26ba5e2f_a4fb44a1",
@@ -387,6 +699,30 @@
       "writtenOn": "2021-09-09T09:00:40Z",
       "side": 1,
       "message": "In tests, we usually name a variable as \"expected\u003cValue\u003e\" when this variable is used as an answer (i.e., we will get some output from the tested functionalities and compare the result with this \"expected\u003cValue\u003e\" variable). Since this is just a value that you are sending to the app, this shouldn\u0027t be named as \"expectedUri\". Maybe another name like volumeUri will be better.",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 12
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d33ea6bc_bfd3242d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "In my understanding, this expectedURI is sent to the app in order to compare with the actual volume URI got by Intent.getData() in MainActivity.java. This is not the output of something, but fixed value. (file:///storage/emulated/0 or file:///storage/0000000000000000000000000000CAFEF00D2019) Therefore, I think it is not good to name this \"expectedURI\".",
+      "parentUuid": "26ba5e2f_a4fb44a1",
       "range": {
         "startLine": 190,
         "startChar": 1,

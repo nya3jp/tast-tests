@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5180b99b_5d3e3ca7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06d20a79_aa1ded0a",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "d2c673915e25718be234746e881a20235d115089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c152a26_3e799884",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db01128a_96091723",
+        "filename": "android/ArcMediaScanTimeTest/AndroidManifest.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c152a26_3e799884",
+      "range": {
+        "startLine": 2,
+        "startChar": 15,
+        "endLine": 2,
+        "endChar": 19
+      },
+      "revId": "d2c673915e25718be234746e881a20235d115089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd6a3d54_0f5c4ccd",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-09T09:00:40Z",
       "side": 1,
       "message": "Add a blank line.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 3
+      },
+      "revId": "d2c673915e25718be234746e881a20235d115089",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25318640_88f59d21",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-10T02:21:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd6a3d54_0f5c4ccd",
       "range": {
         "startLine": 18,
         "startChar": 0,
