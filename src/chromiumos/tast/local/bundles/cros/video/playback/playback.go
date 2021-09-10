@@ -115,7 +115,7 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 
 	isPlatform, decoderName, err := devtools.GetVideoDecoder(ctx, observer, url)
 	if err != nil {
-		return errors.Wrap(err, "failed to parse Media DevTools: ")
+		return errors.Wrap(err, "failed to parse Media DevTools")
 	}
 	if decoderType == Hardware && !isPlatform {
 		return errors.New("hardware decoding accelerator was expected but wasn't used")
@@ -158,7 +158,7 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 	}()
 	go func() {
 		defer wg.Done()
-		cpuErr = measureCPUUsage(ctx, p)
+		cpuErr = graphics.MeasureCPUUsageAndPower(ctx, stabilizationDuration, measurementDuration, p)
 	}()
 	wg.Wait()
 	if gpuErr != nil {
@@ -187,37 +187,6 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 	}
 
 	p.Save(outDir)
-	return nil
-}
-
-// measureCPUUsage obtains CPU usage and power consumption if supported.
-func measureCPUUsage(ctx context.Context, p *perf.Values) error {
-	testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", stabilizationDuration)
-	if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
-		return err
-	}
-	testing.ContextLog(ctx, "Measuring CPU usage for ", measurementDuration)
-	measurements, err := cpu.MeasureUsage(ctx, measurementDuration)
-	if err != nil {
-		return errors.Wrap(err, "failed to measure CPU usage and power consumption")
-	}
-
-	cpuUsage := measurements["cpu"]
-	testing.ContextLogf(ctx, "CPU usage: %f%%", cpuUsage)
-	p.Set(perf.Metric{
-		Name:      "cpu_usage",
-		Unit:      "percent",
-		Direction: perf.SmallerIsBetter,
-	}, cpuUsage)
-
-	if power, ok := measurements["power"]; ok {
-		testing.ContextLogf(ctx, "Avg pkg power usage: %fW", power)
-		p.Set(perf.Metric{
-			Name:      "pkg_power_usage",
-			Unit:      "W",
-			Direction: perf.SmallerIsBetter,
-		}, power)
-	}
 	return nil
 }
 
