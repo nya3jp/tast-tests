@@ -7,15 +7,16 @@ package capturemode
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/testing"
 )
 
 // ErrCaptureModeNotFound is returned by TakeAreaScreenshot if capture mode was not
@@ -29,9 +30,8 @@ func enterCaptureMode(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to show system tray")
 	}
 
-	params := ui.FindParams{Name: "Screen capture", ClassName: "FeaturePodIconButton"}
-
-	if err := ui.StableFindAndClick(ctx, tconn, params, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	ui := uiauto.New(tconn)
+	if err := ui.WithTimeout(10 * time.Second).LeftClick(nodewith.Name("Screen capture").ClassName("FeaturePodIconButton"))(ctx); err != nil {
 		return errors.Wrap(err, "failed to find and click capture mode button")
 	}
 
@@ -46,20 +46,21 @@ func TakeAreaScreenshot(ctx context.Context, tconn *chrome.TestConn) error {
 
 	// We need to click outside of previous selected area, otherwise we might
 	// resize selected area to an empty rectangle and won't see a capture button.
-	if err := mouse.Click(ctx, tconn, coords.Point{X: 200, Y: 200}, mouse.LeftButton); err != nil {
-		return errors.Wrap(err, "failed to click outside of previously selected area")
+	if err := uiauto.Combine("click and drag",
+		mouse.Click(tconn, coords.Point{X: 200, Y: 200}, mouse.LeftButton),
+		mouse.Drag(tconn, coords.Point{X: 0, Y: 0}, coords.Point{X: 100, Y: 100}, 0*time.Second),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click outside of previously selected area and drag mouse")
 	}
 
-	if err := mouse.Drag(ctx, tconn, coords.Point{X: 0, Y: 0}, coords.Point{X: 100, Y: 100}, 0*time.Second); err != nil {
-		return errors.Wrap(err, "failed to drag mouse")
-	}
-
-	params := ui.FindParams{Name: "Capture"}
-	if err := ui.StableFindAndClick(ctx, tconn, params, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	ui := uiauto.New(tconn)
+	captureMode := nodewith.Name("Capture").First()
+	if err := ui.WithTimeout(10 * time.Second).LeftClick(captureMode)(ctx); err != nil {
 		// Return ErrCaptureModeNotFound if capture mode UI does not exist, so caller can handle this case separately.
-		if exists, errExist := ui.Exists(ctx, tconn, params); errExist == nil && !exists {
+		if strings.Contains(err.Error(), nodewith.ErrNotFound) {
 			return ErrCaptureModeNotFound
 		}
+
 		return errors.Wrap(err, "failed to find and click capture button")
 	}
 
