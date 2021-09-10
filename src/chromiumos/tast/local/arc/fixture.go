@@ -136,13 +136,13 @@ func init() {
 		TearDownTimeout: resetTimeout,
 	})
 
-	// lacrosStartedByDataWithArcBooted is a fixture that combines the functionality of arcBooted and lacrosStartedByData.
+	// lacrosWithArcBooted is a fixture that combines the functionality of arcBooted and lacros.
 	testing.AddFixture(&testing.Fixture{
-		Name:            "lacrosStartedByDataWithArcBooted",
+		Name:            "lacrosWithArcBooted",
 		Desc:            "Lacros Chrome from a pre-built image with ARC booted",
 		Contacts:        []string{"amusbach@chromium.org", "xiyuan@chromium.org"},
 		Impl:            NewArcBootedWithParentChromeFixture(),
-		Parent:          "lacrosStartedByDataWithArcEnabled",
+		Parent:          "lacrosWithArcEnabled",
 		SetUpTimeout:    BootTimeout + ui.StartTimeout,
 		PostTestTimeout: postTestTimeout,
 	})

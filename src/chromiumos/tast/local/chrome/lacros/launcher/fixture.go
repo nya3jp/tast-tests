@@ -118,10 +118,10 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
-	// lacrosStartedByDataWithArcEnabled is the same as lacrosStartedByData but with ARC enabled.
-	// See also lacrosStartedByDataWithArcBooted in src/chromiumos/tast/local/arc/fixture.go.
+	// lacrosWithArcEnabled is the same as lacros but with ARC enabled.
+	// See also lacrosWithArcBooted in src/chromiumos/tast/local/arc/fixture.go.
 	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosStartedByDataWithArcEnabled",
+		Name:     "lacrosWithArcEnabled",
 		Desc:     "Lacros Chrome from a pre-built image with ARC enabled",
 		Contacts: []string{"amusbach@chromium.org", "xiyuan@chromium.org"},
 		Impl: NewFixture(External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
