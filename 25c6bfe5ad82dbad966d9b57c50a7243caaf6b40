@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37bc00a4_dbab9961",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-09-10T00:37:29Z",
+      "side": 1,
+      "message": "you can add paulhsia@google.com and chromeos-audio-bugs@google.com as well.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "25c6bfe5ad82dbad966d9b57c50a7243caaf6b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
