@@ -89,11 +89,14 @@ func Basic(ctx context.Context, s *testing.State) {
 	if err := svo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
 		s.Fatal("Failed to switch CCD watchdog off: ", err)
 	}
-	defer func() {
-		if err := svo.WatchdogAdd(ctxForCleanUp, servo.WatchdogCCD); err != nil {
-			s.Error("Unable to switch CCD watchdog on: ", err)
-		}
-	}()
+	/*
+		 * TODO(b/189595601): On some platforms, servo can't reconnect to CCD after we switch back to srcdts. So, don't enable the watchdog as part of the cleanup for the test. This allows all the servod commands to be completed.
+		defer func() {
+			if err := svo.WatchdogAdd(ctxForCleanUp, servo.WatchdogCCD); err != nil {
+				s.Error("Unable to switch CCD watchdog on: ", err)
+			}
+		}()
+	*/
 
 	// Wait for servo control to take effect.
 	if err := testing.Sleep(ctx, 1*time.Second); err != nil {
