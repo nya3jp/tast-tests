@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f08ebb2e_8f274ca2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-09-11T08:16:33Z",
+      "side": 1,
+      "message": "Added comments in the functions below.\nPlease check.",
+      "parentUuid": "1c3bf33a_e97f5999",
+      "revId": "44a13e63164438a2de48570eb3109cef7d9ad841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6456aec0_1792008a",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
         "patchSetId": 1
@@ -48,6 +66,42 @@
       "writtenOn": "2021-09-10T03:49:23Z",
       "side": 1,
       "message": "I think we lose the trace file after the test since the |traceOutputPath| is now created using ioutil.TempFile().\n\nAlso we can return the os.File* instead of string so we can remove it if it\u0027s not needed or move the file to s.OutDir() if we want to keep the trace.",
+      "revId": "44a13e63164438a2de48570eb3109cef7d9ad841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56485467_46e89d31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-09-11T08:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6456aec0_1792008a",
+      "revId": "44a13e63164438a2de48570eb3109cef7d9ad841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ab2ce5c_5bffdf4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-09-11T08:16:33Z",
+      "side": 1,
+      "message": "In my trial, the temp file stays under the temporary directory: /usr/local/tmp/tast/run_tmp/, and it\u0027s indeed the caller\u0027s responsibility to remove it.\n\nDone with returning os.File* instead.",
+      "parentUuid": "6456aec0_1792008a",
       "revId": "44a13e63164438a2de48570eb3109cef7d9ad841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -65,6 +119,24 @@
       "writtenOn": "2021-09-10T03:49:23Z",
       "side": 1,
       "message": "You need to clean up the trace temp file (or should we provide an option to users to let them decide whether they want to keep the collected trace).",
+      "revId": "44a13e63164438a2de48570eb3109cef7d9ad841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e092f14b_52a1e0ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-09-11T08:16:33Z",
+      "side": 1,
+      "message": "Removed the files in the examples.",
+      "parentUuid": "10dec284_4c25ce9b",
       "revId": "44a13e63164438a2de48570eb3109cef7d9ad841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
