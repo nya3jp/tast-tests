@@ -16,6 +16,75 @@
       "message": "LGTM for the logic of factory test. Defter the review to Tast team.",
       "revId": "9ab37746bcdf8c10e91c6eff1f2bbae0327dd781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d011157_a69d28a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-09-12T22:57:13Z",
+      "side": 1,
+      "message": "nit: booted",
+      "range": {
+        "startLine": 25,
+        "startChar": 57,
+        "endLine": 25,
+        "endChar": 61
+      },
+      "revId": "9ab37746bcdf8c10e91c6eff1f2bbae0327dd781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce663e09_32731951",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-09-12T22:57:13Z",
+      "side": 1,
+      "message": "nit: mode",
+      "range": {
+        "startLine": 27,
+        "startChar": 75,
+        "endLine": 27,
+        "endChar": 79
+      },
+      "revId": "9ab37746bcdf8c10e91c6eff1f2bbae0327dd781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1da10e_5011284e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-09-12T22:57:13Z",
+      "side": 1,
+      "message": "optional nit: break comment into 2 lines",
+      "range": {
+        "startLine": 27,
+        "startChar": 81,
+        "endLine": 27,
+        "endChar": 85
+      },
+      "revId": "9ab37746bcdf8c10e91c6eff1f2bbae0327dd781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
