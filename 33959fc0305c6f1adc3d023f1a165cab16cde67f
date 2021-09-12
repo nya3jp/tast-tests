@@ -3,6 +3,188 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cc81c69_319e8b53",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-12T23:36:27Z",
+      "side": 1,
+      "message": "This description does not seem to be correct.",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fd1e23d_1b43a950",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-12T23:36:27Z",
+      "side": 1,
+      "message": "Indent width should be 8 for line wraps: https://source.android.com/setup/contribute/code-style#use-spaces-for-indentation\nbut in this case you can just put it in the previous line:\n  private BroadcastReceiver mMediaScanListenrer \u003d new BroadCastReceiver() {",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc5c766_21cbdfb4",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-12T23:36:27Z",
+      "side": 1,
+      "message": "Indent width should be 4 for blocks: https://source.android.com/setup/contribute/code-style#use-spaces-for-indentation\nPlease apply this rule to the entire block (L34-48).",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41dc5de0_f1ef8fe6",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-12T23:36:27Z",
+      "side": 1,
+      "message": "We prefer to avoid unnecessary nesting by using early returns:\n  if (mFirstScanFinished) {\n    return;\n  }",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c137e24_e3afe11d",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-12T23:36:27Z",
+      "side": 1,
+      "message": "This is optional, but I\u0027d avoid calling intent.getAction() (possibly) twice here:\n  String action \u003d intent.getAction();\n  [...]\n\nAlso, we should use String.equals() for comparison here (sorry for my previous suggestions):\n  Intent.ACTION_MEDIA_SCANNER_STARTED.equals(action)\n  Intent.ACTION_MEDIA_SCANNER_FINISHED.equals(action)",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c985f969_42df3583",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-12T23:36:27Z",
+      "side": 1,
+      "message": "One whitespace should be put between \u0027)\u0027 and \u0027{\u0027.",
+      "range": {
+        "startLine": 40,
+        "startChar": 94,
+        "endLine": 40,
+        "endChar": 96
+      },
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7d8ee3b_40c79c7f",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-12T23:36:27Z",
+      "side": 1,
+      "message": "One whitespace should be put between \u0027)\u0027 and \u0027{\u0027.",
+      "range": {
+        "startLine": 42,
+        "startChar": 83,
+        "endLine": 42,
+        "endChar": 85
+      },
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff6897c0_3ad91098",
+        "filename": "android/ArcMediaScanTimeTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-12T23:36:27Z",
+      "side": 1,
+      "message": "With the current design, if the listener receives Intent.ACTION_MEDIA_SCANNER_FINISHED when mStartTime \u003d 0, it reports SystemClock.uptimeMillis() as the elapsed time. It will be a large value and can be a noise in the test results.\nWhile we should avoid such a case by designing the test carefully, we can still guarantee that mStartTime is non-zero when we report the elapsed time:\n  if (mStartTime \u003d\u003d 0) {\n    if (Intent.ACTION_MEDIA_SCANNER_STARTED.equals(action)) {\n      mStartTime \u003d [...]\n    }\n  } else if (Intent.ACTION_MEDIA_SCANNER_FINISHED.equals(action)) {\n    long finishedTime \u003d [...]\n    [...]\n  }",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "263a7dff_6f74ec9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-12T23:36:27Z",
+      "side": 1,
+      "message": "You can use capybaraFileName here.",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4cd8388_b65da8b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-12T23:36:27Z",
+      "side": 1,
+      "message": "You should use errors.Wrap or errors.Wrapf so that err is properly reused: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction\nAlso, this error message does not seem to describe what actually happens. It fails to get the path of Android\u0027s data dir, not the sdcard one (although the former implies the latter):\n  return \"\", errors.Wrap(err, \"failed to get android-data path for user \"+cr.NormalizedUser())\n\nIf you prefer not to call cr.NormalizedUser twice in case of failure, you can put\n  user :\u003d cr.NormalizedUser()\n\nat the beginning of the function.\nAnother idea is to define the type of getTargetDir as\n  func(ctx context.Context, user string) (string, error)\n\nand call it by\n  getTargetDir(ctx, cr.NormalizedUser())\n\nHowever, the latter might not be a good idea if we will add removable media case, since its path does not depend on user.",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48e2a82a_d0976910",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
         "patchSetId": 8
@@ -20,6 +202,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a4f5769_993bbf6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-12T23:36:27Z",
+      "side": 1,
+      "message": "Same as getSdcardTargetDir:\n  return \"\", errors.Wrap(err, \"failed to get cryptohome user path for user \"+cr.NormalizedUser())",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34519f40_ee32a7c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-12T23:36:27Z",
+      "side": 1,
+      "message": "The function name gives an impression that it just remounts a directory, but actually it does more. Could you give it a more descriptive name?",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c21a3084_1cb2a4c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
         "patchSetId": 8
@@ -31,6 +247,24 @@
       "writtenOn": "2021-09-10T08:51:49Z",
       "side": 1,
       "message": "You can make the failure log a little bit more informative:\n  s.Fatalf(\"Failed to create the target dir %s: %v\", targetDir, err)",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e1a2609_7d5252a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-12T23:36:27Z",
+      "side": 1,
+      "message": "Sorry, we should probably use s.Fatal for consistency within the file:\n  s.Fatal(\"Failed to create the target dir \"+targetDir+\": \", err)",
+      "parentUuid": "c21a3084_1cb2a4c3",
       "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -65,6 +299,23 @@
       "writtenOn": "2021-09-10T08:51:49Z",
       "side": 1,
       "message": "Here, you should call act.Close before leaving: https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/arc/activity.go;l\u003d119;drc\u003da83b4acabae9f5199360d99847e1b97288e7685e",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "592f7f6c_3949378c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-12T23:36:27Z",
+      "side": 1,
+      "message": "volumeURIPrefix is used only once. You can remove it and rewrite this line to:\n  volumeURI :\u003d \"file:///storage/\" + param.volumeURISuffix",
       "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
