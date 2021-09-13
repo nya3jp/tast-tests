@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1952400_54427112",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-13T22:35:44Z",
+      "side": 1,
+      "message": "Still LGTM. Please add tast-owners@ for official +2 approval. Thanks!",
+      "revId": "accaf34bc528b3515cb5934e82a582fa151c3d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c644d46_5321a82e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/enable_chromevox_shortcut.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-13T22:35:44Z",
+      "side": 1,
+      "message": "Nit: I think this should be \"if err :\u003d\"",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "accaf34bc528b3515cb5934e82a582fa151c3d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
