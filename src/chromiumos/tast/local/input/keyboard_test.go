@@ -210,6 +210,40 @@ func TestEventWriterAccel(t *testing.T) {
 	}
 }
 
+func TestEventWriterTypeSequence(t *testing.T) {
+	b := testBuffer{}
+	now := time.Unix(5, 0)
+	kw := KeyboardEventWriter{rw: &RawEventWriter{&b, func() time.Time { return now }}, fast: true}
+
+	var sequence = []string{"S", "e", "q", "space"}
+	if err := kw.TypeSequence(context.Background(), sequence); err != nil {
+		t.Fatalf("TypeSequence(%q) returned error: %v", sequence, err)
+	}
+
+	written, err := readAllEvents(bytes.NewReader(b.buf.Bytes()))
+	if err != nil {
+		t.Error("Failed to read events: ", err)
+	}
+
+	tv := syscall.NsecToTimeval(now.UnixNano())
+	syn := eventString(tv, uint16(EV_SYN), uint16(SYN_REPORT), 0)
+	expected := []string{
+		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTSHIFT), 1), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_S), 1), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_S), 0), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_LEFTSHIFT), 0), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_E), 1), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_E), 0), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_Q), 1), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_Q), 0), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_SPACE), 1), syn,
+		eventString(tv, uint16(EV_KEY), uint16(KEY_SPACE), 0), syn,
+	}
+	if !reflect.DeepEqual(written, expected) {
+		t.Errorf("Wrote %v; want %v", written, expected)
+	}
+}
+
 func TestEventWriterAccelPressesAndReleases(t *testing.T) {
 	b := testBuffer{}
 	now := time.Unix(5, 0)
