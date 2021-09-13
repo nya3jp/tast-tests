@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9875018d_c83c7544",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-13T17:40:53Z",
+      "side": 1,
+      "message": "Same comment from this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3157886/comments/cdf4ddf2_5e7cd6a6",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "1cdefc59086e48631da1ad106db910db1dcc1857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "47a795ef_0fa3ba86",
