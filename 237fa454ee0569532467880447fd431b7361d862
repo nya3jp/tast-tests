@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9532af3f_7d6f0ca6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-13T19:57:42Z",
+      "side": 1,
+      "message": "Thanks Jun. Please review the updated patch. We will have some updates to the other CLs so please DON\u0027T review the other CLs yet. I\u0027ll let you know once the refactor is done.",
+      "revId": "237fa454ee0569532467880447fd431b7361d862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

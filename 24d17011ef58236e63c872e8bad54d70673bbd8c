@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "980f1e9b_e98db15e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/google_docs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-13T19:57:42Z",
+      "side": 1,
+      "message": "These are currently only used by conference tests. But moved to googleapps package so they can be used by other tests if needed.",
+      "parentUuid": "543e649e_6f2307d8",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 18
+      },
+      "revId": "24d17011ef58236e63c872e8bad54d70673bbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b99828e9_14d0c5dd",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-10T03:08:35Z",
       "side": 1,
       "message": "Please refer to my comment in other file. To simplify the impl returning action directly.",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "24d17011ef58236e63c872e8bad54d70673bbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53b2f7d1_cbc4e981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/google_docs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-13T19:57:42Z",
+      "side": 1,
+      "message": "return action directly. But for most of the returned action, added NamedAction() so log can be printed right before starting the action.",
+      "parentUuid": "b99828e9_14d0c5dd",
       "range": {
         "startLine": 54,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24be519e_e19c5f18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/google_docs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-13T19:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "742ce28e_6913ddee",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 12
+      },
+      "revId": "24d17011ef58236e63c872e8bad54d70673bbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9249640_73862ee4",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-09-10T03:08:35Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 14
+      },
+      "revId": "24d17011ef58236e63c872e8bad54d70673bbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede34f25_558a7014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/google_docs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-13T19:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9249640_73862ee4",
       "range": {
         "startLine": 87,
         "startChar": 5,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23210251_fcace7f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/google_docs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-13T19:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "335cab4f_47bc51e8",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 25
+      },
+      "revId": "24d17011ef58236e63c872e8bad54d70673bbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d788f1f2_4ba7ccc0",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-09-10T03:08:35Z",
       "side": 1,
       "message": "super nit:\n\nslideWebArea :\u003d nodewith.NameContaining(\"Google Slides\").Role(role.RootWebArea)\n\t\tdocumentSavedState :\u003d nodewith.NameContaining(\"Document status: Saved to Drive\").Role(role.Button)\n\t\trenameTextbox :\u003d nodewith.Name(\"Rename\").ClassName(\"docs-title-input\").Ancestor(slideWebArea).Editable().Focusable()\n\nreturn ui.Retry(3, uiauto.Combine(\"rename slide\",\n\t\t\tui.WaitUntilExists(slideWebArea),\n\t\t\tui.LeftClickUntil(renameTextbox, ui.WithTimeout(5*time.Second).WaitUntilExists(renameTextbox.State(\"focused\", true))),\n\t\t\tkb.AccelAction(\"Ctrl+A\"),\n\t\t\tkb.TypeAction(title),\n\t\t\twaitForFieldTextToBe(tconn, renameTextbox, title),\n\t\t\tkb.AccelAction(\"Enter\"),\n\t\t\tui.WaitUntilExists(documentSavedState),\n\t\t)",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 0
+      },
+      "revId": "24d17011ef58236e63c872e8bad54d70673bbd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24403f0c_b1d813ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/google_slides.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-13T19:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d788f1f2_4ba7ccc0",
       "range": {
         "startLine": 127,
         "startChar": 1,
