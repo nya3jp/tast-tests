@@ -97,6 +97,7 @@ var prePackages = []string{
 	"chromiumos/tast/local/bundles/crosint/pita/pre",
 	"chromiumos/tast/local/bundles/pita/pita/pre",
 	"chromiumos/tast/local/chrome",
+	"chromiumos/tast/local/chrome/crossdevice",
 	"chromiumos/tast/local/chrome/nearbyshare",
 	"chromiumos/tast/local/chrome/familylink",
 	"chromiumos/tast/local/chrome/mtp",
