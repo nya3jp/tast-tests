@@ -282,6 +282,9 @@ func (s *Settings) ClickChange() uiauto.Action {
 
 // GetDiskSize returns the disk size on the Settings app.
 func (s *Settings) GetDiskSize(ctx context.Context) (string, error) {
+	if err := s.tconn.ResetAutomation(ctx); err != nil {
+		return "", errors.Wrap(err, "failed to call ResetAutomation")
+	}
 	nodeInfo, err := s.ui.Info(ctx, nodewith.NameRegex(regexp.MustCompile(`[0-9]+.[0-9]+ GB$`)).Role(role.StaticText))
 	if err != nil {
 		return "", errors.Wrap(err, "failed to find disk size information on the Settings app")
@@ -354,18 +357,22 @@ func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.Keybo
 		direction = "left"
 	}
 
+	size, err := GetDiskSize(ctx, tconn, slider)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get disk size")
+	}
+
 	for {
-		size, err := GetDiskSize(ctx, tconn, slider)
-		if err != nil {
-			return 0, errors.Wrap(err, "failed to get disk size")
-		}
 		// Check whether it has reached the target.
 		if (increase && size >= targetDiskSize) || (!increase && size <= targetDiskSize) {
 			return size, nil
 		}
 
 		// Move slider.
-		if err := kb.Accel(ctx, direction); err != nil {
+		// TODO(crbug/1236914): remove the second move once the bug is resolved.
+		if err := uiauto.Combine("move the slider",
+			kb.AccelAction(direction),
+			kb.AccelAction(direction))(ctx); err != nil {
 			return 0, errors.Wrapf(err, "failed to move slider to %s", direction)
 		}
 
@@ -377,6 +384,7 @@ func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.Keybo
 		if size == newSize {
 			return size, nil
 		}
+		size = newSize
 	}
 }
 
