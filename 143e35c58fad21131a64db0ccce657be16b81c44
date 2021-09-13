@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71331a5_469020b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-13T13:33:28Z",
+      "side": 1,
+      "message": "Looks pretty good, though the audio team should have a look before I approve it.",
+      "revId": "143e35c58fad21131a64db0ccce657be16b81c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e8c31f4_b2b09e1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_volume_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-13T13:33:28Z",
+      "side": 1,
+      "message": "Looks like we have a few constants that can be factored out?",
+      "range": {
+        "startLine": 68,
+        "startChar": 60,
+        "endLine": 68,
+        "endChar": 65
+      },
+      "revId": "143e35c58fad21131a64db0ccce657be16b81c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "361ea948_2e3e48ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_volume_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-13T13:33:28Z",
+      "side": 1,
+      "message": "Might be cleaner to combine these into one log line",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 58
+      },
+      "revId": "143e35c58fad21131a64db0ccce657be16b81c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cfa260b_962b92d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_volume_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-13T13:33:28Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be\n\n Failed to press \"Mute\"\n\nor something? We haven\u0027t checked if we\u0027re actually muted yet, and we\u0027re just checking for errors pressing the button.",
+      "range": {
+        "startLine": 147,
+        "startChar": 11,
+        "endLine": 147,
+        "endChar": 57
+      },
+      "revId": "143e35c58fad21131a64db0ccce657be16b81c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1945703f_624320a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/playback_volume_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-13T13:33:28Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 154,
+        "startChar": 11,
+        "endLine": 154,
+        "endChar": 57
+      },
+      "revId": "143e35c58fad21131a64db0ccce657be16b81c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
