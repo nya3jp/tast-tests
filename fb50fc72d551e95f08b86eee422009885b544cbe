@@ -33,6 +33,24 @@
       "message": "nit: update comment. Same above.",
       "revId": "fb50fc72d551e95f08b86eee422009885b544cbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5350b0d6_c8744d86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-13T17:09:03Z",
+      "side": 1,
+      "message": "Ah yes. Done.",
+      "parentUuid": "4bff3614_49ab0990",
+      "revId": "fb50fc72d551e95f08b86eee422009885b544cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
