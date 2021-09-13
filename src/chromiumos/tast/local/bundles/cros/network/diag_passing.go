@@ -28,8 +28,7 @@ func init() {
 		Func: DiagPassing,
 		Desc: "Tests that the network diagnostic routines can pass in a normal environment",
 		Contacts: []string{
-			"tbegin@chromium.org",            // test author
-			"khegde@chromium.org",            // network diagnostics author
+			"khegde@chromium.org",            // test maintainer
 			"stevenjb@chromium.org",          // network-health tech lead
 			"cros-network-health@google.com", // network-health team
 		},

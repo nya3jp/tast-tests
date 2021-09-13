@@ -36,7 +36,7 @@ func init() {
 		Func: DiagFailDNSResolverPresent,
 		Desc: "Tests that the DNS resolver present network diagnostic test fails as expected with malformed DNS names",
 		Contacts: []string{
-			"tbegin@chromium.org",            // test author
+			"khegde@chromium.org",            // test maintainer
 			"khegde@chromium.org",            // network diagnostics author
 			"stevenjb@chromium.org",          // network-health tech lead
 			"cros-network-health@google.com", // network-health team

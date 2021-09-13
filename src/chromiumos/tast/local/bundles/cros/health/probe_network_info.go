@@ -35,9 +35,10 @@ func init() {
 		Func: ProbeNetworkInfo,
 		Desc: "Check that we can probe cros_healthd for network info",
 		Contacts: []string{
-			"tbegin@google.com",
 			"pmoy@google.com",
 			"khegde@google.com",
+			"cros-network-health@google.com", // network-health team
+			"cros-tdm-tpe-eng@google.com",    // team mailing list
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},

@@ -27,9 +27,10 @@ func init() {
 		Func: DiagnosticsCancel,
 		Desc: "Tests that the supported cros_healthd diagnostic routines can be canceled",
 		Contacts: []string{
-			"pmoy@chromium.org",   // cros_healthd tool author
-			"tbegin@chromium.org", // test author
-			"cros-tdm@google.com", // team mailing list
+			"pmoy@chromium.org",           // cros_healthd tool author
+			"kerker@google.com",           // test maintainer
+			"cros-tdm@google.com",         // team mailing list
+			"cros-tdm-tpe-eng@google.com", // team mailing list
 		},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Attr:         []string{"group:mainline"},

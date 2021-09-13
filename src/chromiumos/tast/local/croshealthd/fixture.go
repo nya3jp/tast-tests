@@ -18,9 +18,14 @@ const crosHealthdJobName = "cros_healthd"
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:            "crosHealthdRunning",
-		Desc:            "The croshealthd daemon is available and running",
-		Contacts:        []string{"tbegin@google.com", "pmoy@google.com"},
+		Name: "crosHealthdRunning",
+		Desc: "The croshealthd daemon is available and running",
+		Contacts: []string{
+			"kerker@google.com", // Fixture maintainer
+			"pmoy@google.com",
+			"cros-tdm@google.com",         // team mailing list
+			"cros-tdm-tpe-eng@google.com", // team mailing list
+		},
 		SetUpTimeout:    30 * time.Second,
 		ResetTimeout:    5 * time.Second,
 		PreTestTimeout:  5 * time.Second,
