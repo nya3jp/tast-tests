@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c6e099_607bfa24",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-09-13T05:08:16Z",
+      "side": 1,
+      "message": "Can you add a commend explaining why? Something like TODO(crbug/blah): Remove this once keypresses aren\u0027t dropped ?",
+      "revId": "123439998ece36a5c3fd942b42dbe7e081c56c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
