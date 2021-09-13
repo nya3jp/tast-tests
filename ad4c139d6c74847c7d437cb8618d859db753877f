@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e8b14b0_5cc3ca62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-13T20:34:20Z",
+      "side": 1,
+      "message": "Hi Aki, can you PTAL?\nAlso who do you usually have review your TAST tests?",
+      "revId": "ad4c139d6c74847c7d437cb8618d859db753877f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
