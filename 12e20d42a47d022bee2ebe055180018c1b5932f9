@@ -39,6 +39,30 @@
       },
       "revId": "12e20d42a47d022bee2ebe055180018c1b5932f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46533cd4_543dc84d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-09-13T07:48:25Z",
+      "side": 1,
+      "message": "Thanks! Done.",
+      "parentUuid": "5e26580a_ab7bfe2b",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 13
+      },
+      "revId": "12e20d42a47d022bee2ebe055180018c1b5932f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
