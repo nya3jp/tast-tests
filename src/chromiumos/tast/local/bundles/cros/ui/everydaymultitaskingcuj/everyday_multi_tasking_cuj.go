@@ -268,6 +268,15 @@ func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Tes
 
 			timeout := time.Minute
 			if err := webutil.WaitForQuiescence(ctx, conn, timeout); err != nil {
+				// It has been seen that content sites such as CNN (https://edition.cnn.com/) sometimes can take
+				// minutes to reach quiescence on DUTs. When this occurred, it can be seen from screenshots that
+				// the UI has actually loaded but background tasks prevented the site to reach quiescence. Therefore,
+				// logic is added here to check whether the site has loaded. If the site has loaded, i.e., the site
+				// readyState is not "loading", no error will be returned here.
+				if err := conn.WaitForExpr(ctx, `document.readyState === "interactive" || document.readyState === "complete"`); err == nil {
+					testing.ContextLogf(ctx, "%s could not reach quiescence, but document state has passed loading", url)
+					continue
+				}
 				return errors.Wrapf(err, "failed to wait for page to finish loading within %v [%s]", timeout, url)
 			}
 
