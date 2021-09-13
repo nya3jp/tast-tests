@@ -16,6 +16,24 @@
       "message": "Can you add a commend explaining why? Something like TODO(crbug/blah): Remove this once keypresses aren\u0027t dropped ?",
       "revId": "123439998ece36a5c3fd942b42dbe7e081c56c4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5d0abc_fdcd8e94",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-13T05:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45c6e099_607bfa24",
+      "revId": "123439998ece36a5c3fd942b42dbe7e081c56c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
