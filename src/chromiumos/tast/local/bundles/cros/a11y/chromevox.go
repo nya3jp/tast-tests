@@ -25,14 +25,14 @@ const (
 	jumpToStatusTray = "Alt+Shift+S"
 )
 
-type spokenFeedbackTestVoiceData struct {
+type chromeVoxTestVoiceData struct {
 	VoiceData  a11y.VoiceData
 	EngineData a11y.TTSEngineData
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SpokenFeedback,
+		Func: Chromevox,
 		Desc: "A spoken feedback test that executes ChromeVox commands and keyboard shortcuts, and verifies that correct speech is given by the Google and eSpeak TTS engines",
 		Contacts: []string{
 			"akihiroota@chromium.org",      // Test author
@@ -43,7 +43,7 @@ func init() {
 		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{{
 			Name: "google_tts",
-			Val: spokenFeedbackTestVoiceData{
+			Val: chromeVoxTestVoiceData{
 				VoiceData: a11y.VoiceData{
 					ExtID:  a11y.GoogleTTSExtensionID,
 					Locale: "en-US",
@@ -55,7 +55,7 @@ func init() {
 			},
 		}, {
 			Name: "espeak",
-			Val: spokenFeedbackTestVoiceData{
+			Val: chromeVoxTestVoiceData{
 				VoiceData: a11y.VoiceData{
 					// eSpeak does not come with an English voice built-in, so we need to
 					// use another language. We use Greek here since the voice is built-in
@@ -72,7 +72,7 @@ func init() {
 	})
 }
 
-func SpokenFeedback(ctx context.Context, s *testing.State) {
+func Chromevox(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -106,7 +106,7 @@ func SpokenFeedback(ctx context.Context, s *testing.State) {
 	}
 	defer cvconn.Close()
 
-	td := s.Param().(spokenFeedbackTestVoiceData)
+	td := s.Param().(chromeVoxTestVoiceData)
 	vd := td.VoiceData
 	ed := td.EngineData
 	if err := cvconn.SetVoice(ctx, vd); err != nil {
