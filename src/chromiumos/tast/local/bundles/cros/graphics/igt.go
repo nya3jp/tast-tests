@@ -31,7 +31,7 @@ type resultSummary struct {
 	skipped int // number of skipped subtests
 }
 
-var subtestResultRegex = regexp.MustCompile("^Subtest .*: ([A-Z]+)")
+var subtestResultRegex = regexp.MustCompile("^Subtest (.*): ([A-Z]+)")
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -356,22 +356,24 @@ func init() {
 	})
 }
 
-func summarizeLog(f *os.File) resultSummary {
-	var r resultSummary
+func summarizeLog(f *os.File) (r resultSummary, errors []string) {
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
 		if m := subtestResultRegex.FindStringSubmatch(scanner.Text()); m != nil {
-			switch m[1] {
+			subtestName := m[1]
+			result := m[2]
+			switch result {
 			case "SKIP":
 				r.skipped++
 			case "FAIL":
 				r.failed++
+				errors = append(errors, subtestName)
 			case "SUCCESS":
 				r.passed++
 			}
 		}
 	}
-	return r
+	return
 }
 
 func IGT(ctx context.Context, s *testing.State) {
@@ -414,7 +416,7 @@ func IGT(ctx context.Context, s *testing.State) {
 
 	// Reset the file to the beginning so the log can be read out again.
 	f.Seek(0, 0)
-	results := summarizeLog(f)
+	results, errors := summarizeLog(f)
 	summary := fmt.Sprintf("Ran %d subtests with %d failures and %d skipped",
 		results.passed+results.failed, results.failed, results.skipped)
 
@@ -429,10 +431,21 @@ func IGT(ctx context.Context, s *testing.State) {
 		s.Log("____________________________________________________")
 		s.Logf("ALL %d subtests were SKIPPED: %s", results.skipped, err.Error())
 		s.Log("----------------------------------------------------")
-	} else if err != nil {
-		s.Errorf("Error running %s: %v", exePath, err)
-		s.Error(summary)
-	} else {
+	} else if len(errors) > 0 {
+		s.Logf("Error running %s: %v", exePath, err)
 		s.Log(summary)
+		s.Log("Failed subtests: ", errors)
+		lastSubtest := ""
+		errorsSeparator := " "
+		if len(errors) > 1 {
+			lastSubtest = errors[len(errors)-1]
+		}
+		if len(errors) > 2 {
+			errorsSeparator = " ... "
+		}
+		s.Errorf("%q: %s%s%s", testOpt.exe, errors[0], errorsSeparator, lastSubtest)
+	} else {
+		s.Errorf("Error running %s: %v", testOpt.exe, err)
+		s.Error(summary)
 	}
 }
