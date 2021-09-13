@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a6cded_1822b44a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-13T17:41:34Z",
+      "side": 1,
+      "message": "Same comment from this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3157886/comments/cdf4ddf2_5e7cd6a6",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "f3aee9a145ec4347cfd48a60615a738e0b996ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "505225c2_0e8dfca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_file_system.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-13T17:41:34Z",
+      "side": 1,
+      "message": "nit: the AuthServerAllowlist policy is not necessary to access the file share.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 59
+      },
+      "revId": "f3aee9a145ec4347cfd48a60615a738e0b996ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
