@@ -33,6 +33,23 @@
       "message": "+2 for Tast Review, please still obtain Test Owner approval before submitting (e.g. someone on your team)",
       "revId": "3a9355ed2ea70a992237457cdf92770e4039aff9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1641d6e8_c95a7fa0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-13T16:47:04Z",
+      "side": 1,
+      "message": "Hi David or Xiqi, PTAL.",
+      "revId": "3a9355ed2ea70a992237457cdf92770e4039aff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
