@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
+	"chromiumos/tast/local/chrome/multidevice"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
@@ -42,7 +43,7 @@ func init() {
 		Name: "nearbyShareAndroidSetup",
 		Desc: "Set up Android device for Nearby Share with default settings (Data usage offline, All Contacts)",
 		Impl: NewNearbyShareAndroid(nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts),
-		Data: []string{nearbysnippet.ZipName, nearbysnippet.AccountUtilZip},
+		Data: []string{nearbysnippet.ZipName, multidevice.AccountUtilZip},
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
