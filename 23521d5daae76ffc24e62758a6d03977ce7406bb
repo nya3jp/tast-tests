@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef8938d5_b859b1a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-13T21:45:56Z",
+      "side": 1,
+      "message": "Thanks Katie, LGTM!",
+      "revId": "23521d5daae76ffc24e62758a6d03977ce7406bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4478625f_746a88f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_characters.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-13T21:45:56Z",
+      "side": 1,
+      "message": "Nit/style: is there a way we can format this string on multiple lines so that the page structure is clear?",
+      "revId": "23521d5daae76ffc24e62758a6d03977ce7406bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e86aaf_4af57b0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_characters.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-13T21:45:56Z",
+      "side": 1,
+      "message": "Nit: I\u0027d call this nextObject, since that\u0027s the formal name of the command \n\nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/resources/chromeos/accessibility/chromevox/background/keymaps/key_map.js;l\u003d230",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 11
+      },
+      "revId": "23521d5daae76ffc24e62758a6d03977ce7406bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
