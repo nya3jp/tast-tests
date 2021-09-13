@@ -16,6 +16,24 @@
       "message": "the test fails with:\n2021-09-13T10:47:11.557431Z kerberos.AccessWebsite  [ FAIL ] Website title was not KerberosTest but \n\nas login dialog shows up after adding ticket and accessing the website.",
       "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b601d555_33526de0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-13T10:48:37Z",
+      "side": 1,
+      "message": "when cancelling the dialog access is granted to the website. It is weird.",
+      "parentUuid": "0fa6d3f8_db3c9d82",
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
