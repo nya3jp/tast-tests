@@ -48,6 +48,7 @@ const (
 	TelemCategorySystem            TelemCategory = "system"
 	TelemCategorySystem2           TelemCategory = "system2"
 	TelemCategoryTimezone          TelemCategory = "timezone"
+	TelemCategoryBus               TelemCategory = "bus"
 )
 
 // NotApplicable is the value printed for optional fields when they aren't
