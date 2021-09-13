@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b02a8a5f_f4596528",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-13T23:42:21Z",
+      "side": 1,
+      "message": "nit: interface?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "41a5ce2aef659f4c6d6f2a17c45cffaee1a46669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e5153fc_ccca9fdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-13T23:42:21Z",
+      "side": 1,
+      "message": "nit: Interfaces?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "41a5ce2aef659f4c6d6f2a17c45cffaee1a46669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e298c75_50770e1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-13T23:42:21Z",
+      "side": 1,
+      "message": "nit: XXXInterface?",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "41a5ce2aef659f4c6d6f2a17c45cffaee1a46669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "272e615c_fba87ea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-13T23:42:21Z",
+      "side": 1,
+      "message": "nit: device?",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 12
+      },
+      "revId": "41a5ce2aef659f4c6d6f2a17c45cffaee1a46669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
