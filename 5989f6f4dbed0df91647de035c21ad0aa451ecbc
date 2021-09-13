@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7cdd221_261c6337",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-13T18:15:41Z",
+      "side": 1,
+      "message": "Good start, I have some comments on how to finish it.",
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84081737_7104079b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-13T18:15:41Z",
+      "side": 1,
+      "message": "This is incorrect. See src/chromiumos/tast/remote/bundles/cros/firmware/boot_mode.go for an example of how to make parameterized tests. You need to move HardwareDeps to ExtraHardwareDeps.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 4
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3745faa_3e954543",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-13T18:15:41Z",
+      "side": 1,
+      "message": "This is a bit difficult to follow. I would move most of this to a function, i.e.\n\n// Test with lid open\ndoTest(ctx, s, true)\n\n// Test witl lid closed\ndoTest(ctx, s, false)\n\nor something like that.\n\nOr use a style like\n\nfor _, tc :\u003d range []struct {\n\tlidOpen     bool\n}{\n\t{servo.Yes}, \n\t{servo.No},\n} {\n\th.Servo.SetStringAndCheck(ctx, servo.LidOpen, tc.lidOpen)\n\t// test code, etc\n}",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 54
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "109336c3_e1851bd5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-13T18:15:41Z",
+      "side": 1,
+      "message": "This should be servo.No, like servo.On and servo.Off.",
+      "range": {
+        "startLine": 65,
+        "startChar": 60,
+        "endLine": 65,
+        "endChar": 63
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02fb6d93_6a9f41b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-13T18:15:41Z",
+      "side": 1,
+      "message": "h.SetDUTPower() is like this, but it also handles DUTs in the lab which don\u0027t have servo_v4s. See deep_sleep.go where I used it there.",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 3
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd788be3_afd29211",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-13T18:15:41Z",
+      "side": 1,
+      "message": "I think this should be if lid is open or if h.Servo.PreferDebugHeader() returns true.",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b2184c_e30995ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-13T18:15:41Z",
+      "side": 1,
+      "message": "Hibernation turns out to be complicated, so I created h.Servo.ECHibernate() to handle those extra complications.",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 4
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "017746f8_729e36ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-13T18:15:41Z",
+      "side": 1,
+      "message": "Seems like this is also what we want to do it the lid is closed and we are using CCD.",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 3
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "997be2b6_e75deb46",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-13T18:15:41Z",
+      "side": 1,
+      "message": "For lid closed, I think we want to verify that the power state is still G3.",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 13
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
