@@ -26,7 +26,7 @@ func init() {
 		Name: "shillReset",
 		Desc: "A fixture that ensures shill is in a default state when the test starts and will reset any shill modifications after the test",
 		Contacts: []string{
-			"tbegin@chromium.org",            // fixture author
+			"khegde@chromium.org",            // fixture maintainer
 			"stevenjb@chromium.org",          // network-health tech lead
 			"cros-network-health@google.com", // network-health team
 		},

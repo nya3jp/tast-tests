@@ -37,7 +37,7 @@ func init() {
 		Name: "ensureNoUI",
 		Desc: "Ensure the ui service is not running",
 		Contacts: []string{
-			"tbegin@chromium.org", // fixture author
+			"khegde@chromium.org", // fixture maintainer
 			"cros-network-health@google.com",
 		},
 		Impl:            &ensureUIFixture{running: false},

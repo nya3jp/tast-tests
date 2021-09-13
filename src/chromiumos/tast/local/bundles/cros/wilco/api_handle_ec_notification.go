@@ -20,7 +20,8 @@ func init() {
 		Func: APIHandleECNotification,
 		Desc: "Tests that the Wilco DTC VM receives EC events using the DPSL",
 		Contacts: []string{
-			"tbegin@chromium.org",       // Test author and Wilco DTC VM author.
+			"lamzin@chromium.org",
+			"campello@chromium.org",
 			"chromeos-wilco@google.com", // Possesses some more domain-specific knowledge.
 		},
 		Attr:         []string{"group:mainline"},

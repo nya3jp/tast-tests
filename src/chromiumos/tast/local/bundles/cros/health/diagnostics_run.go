@@ -29,9 +29,10 @@ func init() {
 		Func: DiagnosticsRun,
 		Desc: "Tests that the cros_healthd diagnostic routines can be run without errors",
 		Contacts: []string{
-			"pmoy@chromium.org",   // cros_healthd tool author
-			"tbegin@chromium.org", // test author
-			"cros-tdm@google.com", // team mailing list
+			"pmoy@chromium.org",           // cros_healthd tool author
+			"kerker@google.com",           // test maintainer
+			"cros-tdm@google.com",         // team mailing list
+			"cros-tdm-tpe-eng@google.com", // team mailing list
 		},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Attr:         []string{"group:mainline"},
