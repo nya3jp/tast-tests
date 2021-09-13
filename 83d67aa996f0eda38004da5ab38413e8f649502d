@@ -209,6 +209,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0052a496_2e109366",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-09-13T19:00:38Z",
+      "side": 1,
+      "message": "I think passing in the context is a good solution here, yeah!",
+      "parentUuid": "a8d26c48_7dd20c92",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 510,
+        "endChar": 23
+      },
+      "revId": "83d67aa996f0eda38004da5ab38413e8f649502d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9eb10b7_233e3ccf",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 2
@@ -268,6 +292,30 @@
       "side": 1,
       "message": "I think this is to consider a possibility that the test-in-prog file is created by other programs but not the tast test itself. For example, can we put a test-in-prog file by a script so crashes created when the file is there have the test name reported?",
       "parentUuid": "8acf3b7e_d1faded2",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 2
+      },
+      "revId": "83d67aa996f0eda38004da5ab38413e8f649502d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54dfebee_04d1d776",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-09-13T19:00:38Z",
+      "side": 1,
+      "message": "Ah, right -- great point. Could you please add a comment to explain why we\u0027re doing it this way, so that a future refactor doesn\u0027t incorrectly remove it?",
+      "parentUuid": "dc9eaf5f_5581bcb0",
       "range": {
         "startLine": 530,
         "startChar": 0,
