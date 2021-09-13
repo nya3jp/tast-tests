@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f0c0019_dd9e10e5",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1522102
+      },
+      "writtenOn": "2021-09-13T17:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07cef2cb_f124fda5",
+      "range": {
+        "startLine": 116,
+        "startChar": 15,
+        "endLine": 116,
+        "endChar": 18
+      },
+      "revId": "83d67aa996f0eda38004da5ab38413e8f649502d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09fc22e3_73377128",
@@ -54,6 +78,54 @@
       "writtenOn": "2021-09-10T19:52:49Z",
       "side": 1,
       "message": "nit: \"if the test-in-prog file will be created\"",
+      "range": {
+        "startLine": 117,
+        "startChar": 59,
+        "endLine": 117,
+        "endChar": 75
+      },
+      "revId": "83d67aa996f0eda38004da5ab38413e8f649502d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d905bb9_d0bb576b",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1522102
+      },
+      "writtenOn": "2021-09-13T17:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09fc22e3_73377128",
+      "range": {
+        "startLine": 117,
+        "startChar": 59,
+        "endLine": 117,
+        "endChar": 75
+      },
+      "revId": "83d67aa996f0eda38004da5ab38413e8f649502d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa555949_0114c4b2",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1522102
+      },
+      "writtenOn": "2021-09-13T17:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09fc22e3_73377128",
       "range": {
         "startLine": 117,
         "startChar": 59,
@@ -89,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83b3c319_346d1923",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1522102
+      },
+      "writtenOn": "2021-09-13T17:57:37Z",
+      "side": 1,
+      "message": "Function MarkTestInProgress can not access context, is there a way to print log without a context?",
+      "parentUuid": "aa1607fe_f3b3073a",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 510,
+        "endChar": 23
+      },
+      "revId": "83d67aa996f0eda38004da5ab38413e8f649502d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9eb10b7_233e3ccf",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 2
@@ -100,6 +196,30 @@
       "writtenOn": "2021-09-10T19:52:49Z",
       "side": 1,
       "message": "I don\u0027t believe this check is necessary; the code on line 534 should still succeed if the file doesn\u0027t exist.",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 2
+      },
+      "revId": "83d67aa996f0eda38004da5ab38413e8f649502d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8acf3b7e_d1faded2",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1522102
+      },
+      "writtenOn": "2021-09-13T17:57:37Z",
+      "side": 1,
+      "message": "if the file test-in-prog exists already, we try not to remove the file.",
+      "parentUuid": "e9eb10b7_233e3ccf",
       "range": {
         "startLine": 530,
         "startChar": 0,
