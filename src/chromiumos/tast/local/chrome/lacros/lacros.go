@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -35,6 +36,7 @@ var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 // If the ChromeType is ChromeTypeChromeOS it will return a nil LacrosChrome instance.
 func Setup(ctx context.Context, f interface{}, crt ChromeType) (*chrome.Chrome, *launcher.LacrosChrome, ash.ConnSource, error) {
 	cr, err := GetChrome(ctx, f)
+	testing.ContextLogf(ctx, "Entered lacros.Setup with fixture (%v, %T) and chrome is: %v", f, f, cr)
 	if err != nil {
 		return nil, nil, nil, err
 	}
@@ -59,10 +61,14 @@ func GetChrome(ctx context.Context, f interface{}) (*chrome.Chrome, error) {
 	switch f.(type) {
 	case *chrome.Chrome:
 		return f.(*chrome.Chrome), nil
+	case *launcher.FixtData:
+		return f.(*launcher.FixtData).Chrome, nil
 	case launcher.FixtData:
 		return f.(launcher.FixtData).Chrome, nil
+	case *fixtures.FixtData:
+		return f.(*fixtures.FixtData).Chrome, nil
 	default:
-		return nil, errors.Errorf("unrecognized FixtValue type: %v", f)
+		return nil, errors.Errorf("unrecognized FixtValue type: %v and type %T", f, f)
 	}
 }
 

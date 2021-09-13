@@ -85,6 +85,16 @@ type FixtData struct {
 	Chrome *chrome.Chrome
 }
 
+// GetChrome returns Chrome.
+func (f FixtData) GetChrome() *chrome.Chrome {
+	return f.Chrome
+}
+
+// GetFakeDMS returns FakeDMS.
+func (f FixtData) GetFakeDMS() *fakedms.FakeDMS {
+	return f.FakeDMS
+}
+
 // Credentials used for authenticating the test user.
 const (
 	Username = "tast-user@managedchrome.com"
