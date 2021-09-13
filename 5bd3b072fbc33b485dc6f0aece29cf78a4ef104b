@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aa7a1d3_ec63800a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-13T19:34:08Z",
+      "side": 1,
+      "message": "Are we sure enabling biod in NewFirmwareTest makes sense?\n\nI think we only disable it right here, in the same function. This also only should happen if the device is zork. Is there some other place that might be disabling biod?",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 3
+      },
+      "revId": "5bd3b072fbc33b485dc6f0aece29cf78a4ef104b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
