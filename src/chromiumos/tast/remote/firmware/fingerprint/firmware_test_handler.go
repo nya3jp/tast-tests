@@ -104,10 +104,22 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 	cleanupTime := timeForCleanup
 
 	if needsReboot {
+		// MakeRootfsWritable may reboot device, so close current connection for now
+		cl.Close(ctx)
+
 		// Rootfs must be writable in order to disable the upstart job
 		if err := sysutil.MakeRootfsWritable(ctx, d, hint); err != nil {
 			return nil, errors.Wrap(err, "failed to make rootfs writable")
 		}
+
+		// MakeRootfsWritable may reboot device, so we need to reconnect
+		// TODO(b/187795767): Persistent gRPC connection across reboot
+		cl, err = rpc.Dial(ctx, d, hint, "cros")
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+		}
+		upstartService = platform.NewUpstartServiceClient(cl.Conn)
+		dutfsClient = dutfs.NewClient(cl.Conn)
 
 		// disable biod upstart job so that it doesn't interfere with the test when
 		// we reboot.
