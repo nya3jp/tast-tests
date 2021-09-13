@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b39ae2bd_dd010d57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-09-13T15:23:16Z",
+      "side": 1,
+      "message": "Hi Team, I\u0027d like to propose this CL to fix the test fail on new keeby platform projects for tast.critical-android.  Thanks!",
+      "revId": "035603da1d3ecf2b096c0d86fc08f88acb08c665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
