@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdf4ddf2_5e7cd6a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-13T16:16:45Z",
+      "side": 1,
+      "message": "I recommend filling a bug with type \"task\", and linking it here. The scope can be \"Add tast tests for Kerberos related functionality, and add libraries to make the test writing more simple\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "f91db1c14ebca270172d40606b8fc81ff81ccda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d0d3245e_a8f2f216",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-09-13T14:37:21Z",
       "side": 1,
       "message": "Ticket is added but SMB share cannot be mounted. \n\n2021-09-13T14:34:11.030515Z kerberos.AccountAccessFileSystem  [ FAIL ] Failed to click add SMB share: failed to Click add SMB file share on step 6: context deadline exceeded; last error follows: node still exists",
+      "revId": "f91db1c14ebca270172d40606b8fc81ff81ccda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39294dd6_2f02f77b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-13T16:16:45Z",
+      "side": 1,
+      "message": "Thanks for implementing multiple tests for Kerberos!",
       "revId": "f91db1c14ebca270172d40606b8fc81ff81ccda1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
