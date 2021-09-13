@@ -86,4 +86,5 @@ const (
 	SettingPodNightLight    SettingPod = "Night Light"
 	SettingPodNearbyShare   SettingPod = "Nearby Share"
 	SettingPodKeyboard      SettingPod = "keyboard"
+	SettingPodScreenCapture SettingPod = "Screen capture"
 )
