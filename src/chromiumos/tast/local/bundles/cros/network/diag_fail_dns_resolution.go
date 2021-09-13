@@ -20,8 +20,7 @@ func init() {
 		Func: DiagFailDNSResolution,
 		Desc: "Tests that the DNS resolution network diagnostic test fails when the DNS cannot resolve requests",
 		Contacts: []string{
-			"tbegin@chromium.org",            // test author
-			"khegde@chromium.org",            // network diagnostics author
+			"khegde@chromium.org",            // test maintainer
 			"stevenjb@chromium.org",          // network-health tech lead
 			"cros-network-health@google.com", // network-health team
 		},

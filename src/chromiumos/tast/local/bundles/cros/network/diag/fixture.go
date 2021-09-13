@@ -20,7 +20,6 @@ func init() {
 		Name: "networkDiagnostics",
 		Desc: "A network diagnostics mojo API is ready and available to use",
 		Contacts: []string{
-			"tbegin@chromium.org",            // test author
 			"khegde@chromium.org",            // network diagnostics author
 			"stevenjb@chromium.org",          // network-health tech lead
 			"cros-network-health@google.com", // network-health team
@@ -35,7 +34,6 @@ func init() {
 		Name: "networkDiagnosticsShillReset",
 		Desc: "A network diagnostics mojo API is ready and available to use. This fixture also sets shill in a default state and resets any modifications",
 		Contacts: []string{
-			"tbegin@chromium.org",            // test author
 			"khegde@chromium.org",            // network diagnostics author
 			"stevenjb@chromium.org",          // network-health tech lead
 			"cros-network-health@google.com", // network-health team
