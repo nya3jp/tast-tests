@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5442a4fa_4278c872",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-09-13T18:01:17Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "243d3006_f30fd8f6",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "df3ac5b17cb7bf76e087b942f3b68a0264f9517a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2663e425_d47be248",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-09-13T17:12:58Z",
       "side": 1,
       "message": "Either this line or the next line is redundant.",
+      "revId": "df3ac5b17cb7bf76e087b942f3b68a0264f9517a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0fad639_09a2bdd7",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-09-13T18:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2663e425_d47be248",
       "revId": "df3ac5b17cb7bf76e087b942f3b68a0264f9517a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
