@@ -52,6 +52,23 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 
 	upstartService := platform.NewUpstartServiceClient(cl.Conn)
 
+	// If biod upstart job is disabled, enable it! In most cases biod
+	// service will be enabled, but sometimes previous test may fail to
+	// re-enable biod service (eg. due to broken connection) or test was
+	// interrupted by user. Note that after enabling, service will be
+	// stopped which is not a problem because we will try stop it later.
+	resp, err := upstartService.IsJobEnabled(ctx, &platform.IsJobEnabledRequest{JobName: biodUpstartJobName})
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check if biod service is enabled")
+	}
+
+	if !resp.Enabled {
+		_, err := upstartService.EnableJob(ctx, &platform.EnableJobRequest{JobName: biodUpstartJobName})
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to enable biod service")
+		}
+	}
+
 	daemonState, err := stopDaemons(ctx, upstartService, []string{
 		biodUpstartJobName,
 		// TODO(b/183123775): Remove when bug is fixed.
@@ -278,7 +295,7 @@ func stopDaemons(ctx context.Context, upstartService platform.UpstartServiceClie
 	for _, name := range daemons {
 		status, err := upstartService.JobStatus(ctx, &platform.JobStatusRequest{JobName: name})
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to get status for"+name)
+			return nil, errors.Wrap(err, "failed to get status for "+name)
 		}
 
 		daemonWasRunning := upstart.State(status.GetState()) == upstart.RunningState
