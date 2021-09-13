@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "800d4faf_fe8f07b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-09-13T07:44:37Z",
+      "side": 1,
+      "message": "Looks good.\nNeed to resolve the issue with how to get the trace_processor_shell binary onto DUT.",
+      "revId": "12e20d42a47d022bee2ebe055180018c1b5932f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e26580a_ab7bfe2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-09-13T07:44:37Z",
+      "side": 1,
+      "message": "nit: On success\n(and same for the comment for StartTraceDataWithConfig).",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 13
+      },
+      "revId": "12e20d42a47d022bee2ebe055180018c1b5932f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

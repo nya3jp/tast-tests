@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5839c0b3_8dde39ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-09-13T07:44:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f08ebb2e_8f274ca2",
+      "revId": "44a13e63164438a2de48570eb3109cef7d9ad841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6456aec0_1792008a",
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "Removed the files in the examples.",
       "parentUuid": "10dec284_4c25ce9b",
+      "revId": "44a13e63164438a2de48570eb3109cef7d9ad841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30f238c9_90009152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-09-13T07:44:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e092f14b_52a1e0ed",
       "revId": "44a13e63164438a2de48570eb3109cef7d9ad841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
