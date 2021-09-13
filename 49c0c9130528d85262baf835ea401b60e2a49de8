@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47f5ef18_75a81957",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-13T16:07:13Z",
+      "side": 1,
+      "message": "Thanks for implementing these key use cases in Tast!",
+      "revId": "49c0c9130528d85262baf835ea401b60e2a49de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa6c40f8_34625c75",
+        "filename": "src/chromiumos/tast/local/kerberos/configuration.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-13T16:07:13Z",
+      "side": 1,
+      "message": "nit: change to ServerAllowlist (with lower case \"l\"). This way, it will match the policy name: AuthServerAllowlist.\nRemember to upload other CLs that use it.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 16
+      },
+      "revId": "49c0c9130528d85262baf835ea401b60e2a49de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
