@@ -34,6 +34,184 @@
       "parentUuid": "0fa6d3f8_db3c9d82",
       "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4799af07_ba9a225a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-13T13:27:34Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d420ba0f_1aa69e05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-13T13:27:34Z",
+      "side": 1,
+      "message": "Let\u0027s use DumpUITreeWithScreenshotOnError so we can see what\u0027s on the screen when an error occurs.",
+      "range": {
+        "startLine": 56,
+        "startChar": 15,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "539e0495_44bd1c72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-13T13:27:34Z",
+      "side": 1,
+      "message": "Maybe better: The website doesn\u0027t have a valid certificate so we need to confirm that we want to open it anyway.",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 67
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3217c92c_d496ccc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-13T13:27:34Z",
+      "side": 1,
+      "message": "sign",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "743001f0_0421b34a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-13T13:27:34Z",
+      "side": 1,
+      "message": "Is the 15 seconds standard timeout too short?",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 32
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "060ef344_66906d81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-13T13:27:34Z",
+      "side": 1,
+      "message": "Add a Kerberos ticket.",
+      "range": {
+        "startLine": 119,
+        "startChar": 5,
+        "endLine": 119,
+        "endChar": 42
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f1af7f2_ae218d9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-13T13:27:34Z",
+      "side": 1,
+      "message": "s.Log",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 20
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f91d698_3e6f8d78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-13T13:27:34Z",
+      "side": 1,
+      "message": "As above, is the 15 seconds standard timeout too short?",
+      "range": {
+        "startLine": 135,
+        "startChar": 15,
+        "endLine": 135,
+        "endChar": 44
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
