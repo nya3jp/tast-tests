@@ -103,6 +103,7 @@ var prePackages = []string{
 	"chromiumos/tast/local/policyutil/fixtures",
 	"chromiumos/tast/local/policyutil/pre",
 	"chromiumos/tast/local/wpr",
+	"chromiumos/tast/local/chrome/multidevice",
 }
 
 // Lock prevents from New or Chrome.Close from being called until Unlock is called.
