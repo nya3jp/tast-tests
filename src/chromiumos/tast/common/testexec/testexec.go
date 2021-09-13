@@ -34,6 +34,7 @@ import (
 	"bytes"
 	"context"
 	"os/exec"
+	"strings"
 	"sync"
 	"sync/atomic"
 	"syscall"
@@ -182,6 +183,10 @@ func (c *Cmd) SeparatedOutput(opts ...RunOption) (stdout, stderr []byte, err err
 	}
 
 	err = c.Wait(opts...)
+	if err != nil {
+		err = errors.Wrapf(err, "command %q returned non-zero error code", strings.Join(c.Args, " "))
+	}
+
 	return outbuf.Bytes(), errbuf.Bytes(), err
 }
 
