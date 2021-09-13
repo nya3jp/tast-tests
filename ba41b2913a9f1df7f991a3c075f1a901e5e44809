@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5618d4e7_337f6a41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-13T09:08:16Z",
+      "side": 1,
+      "message": "Can we use io/ioutil TempFile unless it is needed to be opened by the Files app?\nhttps://pkg.go.dev/io/ioutil#TempFile",
+      "revId": "ba41b2913a9f1df7f991a3c075f1a901e5e44809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
