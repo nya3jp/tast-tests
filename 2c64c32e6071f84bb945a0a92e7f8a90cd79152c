@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82cf56a5_ccaf8d92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2021-09-13T02:07:17Z",
+      "side": 1,
+      "message": "lgtm with comments. All comments are minor or style related. Thank you!",
+      "revId": "2c64c32e6071f84bb945a0a92e7f8a90cd79152c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "839be9a6_6dfef7ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2021-09-13T02:07:17Z",
+      "side": 1,
+      "message": "We want to check that light blue image is set here, i.e. expect \"Currently set Light Blue\".",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "2c64c32e6071f84bb945a0a92e7f8a90cd79152c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "485f1ea7_3963d92d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/switch_online_wallpapers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2021-09-13T02:07:17Z",
+      "side": 1,
+      "message": "How about \"Test quickly switching online wallpapers\" to distinguish this test from the another one?",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 39
+      },
+      "revId": "2c64c32e6071f84bb945a0a92e7f8a90cd79152c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36bd4608_8370820f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/switch_online_wallpapers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2021-09-13T02:07:17Z",
+      "side": 1,
+      "message": "optional: I don\u0027t know how \"Google Yellow\" differs from \"Yellow\". But it might be safer to avoid setting similar color as we allow some diffs when we do pixel counting.",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "2c64c32e6071f84bb945a0a92e7f8a90cd79152c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d37cdc36_14deee75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/switch_online_wallpapers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2021-09-13T02:07:17Z",
+      "side": 1,
+      "message": "Can you add a comment about why we minimize the window here?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "2c64c32e6071f84bb945a0a92e7f8a90cd79152c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a7dfa08_2f55b2e3",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2021-09-13T02:07:17Z",
+      "side": 1,
+      "message": "minor: Use HasClass. ClassName is deprecated: https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/uiauto/nodewith#Finder.ClassName.",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 53
+      },
+      "revId": "2c64c32e6071f84bb945a0a92e7f8a90cd79152c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
