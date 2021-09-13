@@ -78,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50cddac8_9d27ff56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-13T14:02:02Z",
+      "side": 1,
+      "message": "DumpUITreeOnError dumps screenshot as well. Initially I used DumpUITreeWithScreenshotOnError but it requires prefix name to be passed as well. I tried just DumpUiTreeOnError and it also saves the screenshot.",
+      "parentUuid": "d420ba0f_1aa69e05",
+      "range": {
+        "startLine": 56,
+        "startChar": 15,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "539e0495_44bd1c72",
         "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
         "patchSetId": 12
@@ -89,6 +113,30 @@
       "writtenOn": "2021-09-13T13:27:34Z",
       "side": 1,
       "message": "Maybe better: The website doesn\u0027t have a valid certificate so we need to confirm that we want to open it anyway.",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 67
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eab6cdf_d392feb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-13T14:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "539e0495_44bd1c72",
       "range": {
         "startLine": 77,
         "startChar": 4,
@@ -122,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "577a387c_7f12cbe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-13T14:02:02Z",
+      "side": 1,
+      "message": "this section was removed.",
+      "parentUuid": "3217c92c_d496ccc0",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "743001f0_0421b34a",
@@ -135,6 +207,30 @@
       "writtenOn": "2021-09-13T13:27:34Z",
       "side": 1,
       "message": "Is the 15 seconds standard timeout too short?",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 32
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3d9bfae_ace83015",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-13T14:02:02Z",
+      "side": 1,
+      "message": "this section was removed.",
+      "parentUuid": "743001f0_0421b34a",
       "range": {
         "startLine": 100,
         "startChar": 5,
@@ -168,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e150486_af261ef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-13T14:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "060ef344_66906d81",
+      "range": {
+        "startLine": 119,
+        "startChar": 5,
+        "endLine": 119,
+        "endChar": 42
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f1af7f2_ae218d9c",
@@ -191,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f824e3fe_984b9e66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-13T14:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f1af7f2_ae218d9c",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 20
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f91d698_3e6f8d78",
@@ -204,6 +348,30 @@
       "writtenOn": "2021-09-13T13:27:34Z",
       "side": 1,
       "message": "As above, is the 15 seconds standard timeout too short?",
+      "range": {
+        "startLine": 135,
+        "startChar": 15,
+        "endLine": 135,
+        "endChar": 44
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44f8db4_575e6280",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-13T14:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f91d698_3e6f8d78",
       "range": {
         "startLine": 135,
         "startChar": 15,
