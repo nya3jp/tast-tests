@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f499fedf_01d8a3ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-13T01:24:14Z",
+      "side": 1,
+      "message": "Typo fixed, thank you.",
+      "revId": "9ab37746bcdf8c10e91c6eff1f2bbae0327dd781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d011157_a69d28a6",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-09-12T22:57:13Z",
       "side": 1,
       "message": "nit: booted",
+      "range": {
+        "startLine": 25,
+        "startChar": 57,
+        "endLine": 25,
+        "endChar": 61
+      },
+      "revId": "9ab37746bcdf8c10e91c6eff1f2bbae0327dd781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a7fe86_1cc66f76",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-13T01:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d011157_a69d28a6",
       "range": {
         "startLine": 25,
         "startChar": 57,
@@ -77,6 +118,54 @@
       "writtenOn": "2021-09-12T22:57:13Z",
       "side": 1,
       "message": "optional nit: break comment into 2 lines",
+      "range": {
+        "startLine": 27,
+        "startChar": 81,
+        "endLine": 27,
+        "endChar": 85
+      },
+      "revId": "9ab37746bcdf8c10e91c6eff1f2bbae0327dd781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ae1509_b428dca5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-13T01:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce663e09_32731951",
+      "range": {
+        "startLine": 27,
+        "startChar": 75,
+        "endLine": 27,
+        "endChar": 79
+      },
+      "revId": "9ab37746bcdf8c10e91c6eff1f2bbae0327dd781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68bbbd05_b096c407",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-13T01:24:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db1da10e_5011284e",
       "range": {
         "startLine": 27,
         "startChar": 81,
