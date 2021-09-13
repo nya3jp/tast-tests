@@ -75,8 +75,8 @@ type videoSrc struct {
 
 var basicVideoSrc = []videoSrc{
 	{
-		"https://www.youtube.com/watch?v=suWsd372pQE",
-		`"Go Beyond" 4K Ultra HD Time Lapse`,
+		"https://www.youtube.com/watch?v=zWAfyYKCr3o",
+		"Thailand 4K - Scenic Relaxation Film With Calming Music",
 		"1080p",
 	},
 	{
