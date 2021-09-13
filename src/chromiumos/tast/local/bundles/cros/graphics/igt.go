@@ -12,6 +12,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -31,7 +32,7 @@ type resultSummary struct {
 	skipped int // number of skipped subtests
 }
 
-var subtestResultRegex = regexp.MustCompile("^Subtest .*: ([A-Z]+)")
+var subtestResultRegex = regexp.MustCompile("^Subtest (.*): ([A-Z]+)")
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -356,22 +357,24 @@ func init() {
 	})
 }
 
-func summarizeLog(f *os.File) resultSummary {
-	var r resultSummary
+func summarizeLog(f *os.File) (r resultSummary, failedSubtests []string) {
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
 		if m := subtestResultRegex.FindStringSubmatch(scanner.Text()); m != nil {
-			switch m[1] {
+			subtestName := m[1]
+			result := m[2]
+			switch result {
 			case "SKIP":
 				r.skipped++
 			case "FAIL":
 				r.failed++
+				failedSubtests = append(failedSubtests, subtestName)
 			case "SUCCESS":
 				r.passed++
 			}
 		}
 	}
-	return r
+	return r, failedSubtests
 }
 
 func IGT(ctx context.Context, s *testing.State) {
@@ -414,7 +417,7 @@ func IGT(ctx context.Context, s *testing.State) {
 
 	// Reset the file to the beginning so the log can be read out again.
 	f.Seek(0, 0)
-	results := summarizeLog(f)
+	results, failedSubtests := summarizeLog(f)
 	summary := fmt.Sprintf("Ran %d subtests with %d failures and %d skipped",
 		results.passed+results.failed, results.failed, results.skipped)
 
@@ -429,9 +432,17 @@ func IGT(ctx context.Context, s *testing.State) {
 		s.Log("____________________________________________________")
 		s.Logf("ALL %d subtests were SKIPPED: %s", results.skipped, err.Error())
 		s.Log("----------------------------------------------------")
-	} else if err != nil {
-		s.Errorf("Error running %s: %v", exePath, err)
-		s.Error(summary)
+	} else if len(failedSubtests) > 0 {
+		s.Logf("Error running %s: %v", exePath, err)
+		s.Log(summary)
+		s.Log("Failed subtests: ", failedSubtests)
+		failedSubtestsMessage := ""
+		if len(failedSubtests) <= 3 {
+			failedSubtestsMessage = strings.Join(failedSubtests, " ")
+		} else {
+			failedSubtestsMessage = failedSubtests[0] + " ... " + failedSubtests[len(failedSubtests)-1]
+		}
+		s.Errorf("%q Pass:%d Fail:%d (failing %s)", testOpt.exe, results.passed, results.failed, failedSubtestsMessage)
 	} else {
 		s.Log(summary)
 	}
