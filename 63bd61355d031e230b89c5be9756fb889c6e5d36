@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6189a0b9_d63b60dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-09-13T18:29:30Z",
+      "side": 1,
+      "message": "I don\u0027t think we could ever include that into the standard test fixture, the logical test setup is too much different (extra virtual interfaces and bridges).",
+      "parentUuid": "a67f152f_4049768e",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "63bd61355d031e230b89c5be9756fb889c6e5d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a514eb3d_2787f437",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-10T17:06:37Z",
       "side": 1,
       "message": "Does it make sense to abstract this into a helper function since it is used twice?",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 349,
+        "endChar": 0
+      },
+      "revId": "63bd61355d031e230b89c5be9756fb889c6e5d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff84b08_8ae1f677",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-09-13T18:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54998f23_f226f7f5",
       "range": {
         "startLine": 337,
         "startChar": 1,
