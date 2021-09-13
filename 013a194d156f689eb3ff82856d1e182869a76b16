@@ -16,6 +16,75 @@
       "message": "audio owner +1. needs tast owner approval.",
       "revId": "013a194d156f689eb3ff82856d1e182869a76b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1e691f1_2a7306c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-13T07:58:58Z",
+      "side": 1,
+      "message": "How big can this log end up (ditto for line 129)? If these logs can be quite large, it might be worth piping them out to a file in the OutputDir instead of dumping them into the log here.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "013a194d156f689eb3ff82856d1e182869a76b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b29d7b72_a5e4d838",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-13T07:58:58Z",
+      "side": 1,
+      "message": "This err refers to the reading of the kernel log file, not cmd.Output. Is this expected? Might want to disambiguate the error variables names",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 7
+      },
+      "revId": "013a194d156f689eb3ff82856d1e182869a76b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e73f71f_8516fd6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-13T07:58:58Z",
+      "side": 1,
+      "message": "nit: Maybe s.Log before this then do if condition and s.Fatal(\"Test failed.\")",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 19
+      },
+      "revId": "013a194d156f689eb3ff82856d1e182869a76b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
