@@ -185,6 +185,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8d26c48_7dd20c92",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-13T18:53:22Z",
+      "side": 1,
+      "message": "This is actually the question to Shuhei. Or should we pass in the context so we can print log with testing.ContextLog() functions.",
+      "parentUuid": "83b3c319_346d1923",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 510,
+        "endChar": 23
+      },
+      "revId": "83d67aa996f0eda38004da5ab38413e8f649502d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9eb10b7_233e3ccf",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 2
@@ -220,6 +244,30 @@
       "side": 1,
       "message": "if the file test-in-prog exists already, we try not to remove the file.",
       "parentUuid": "e9eb10b7_233e3ccf",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 2
+      },
+      "revId": "83d67aa996f0eda38004da5ab38413e8f649502d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc9eaf5f_5581bcb0",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-13T18:53:22Z",
+      "side": 1,
+      "message": "I think this is to consider a possibility that the test-in-prog file is created by other programs but not the tast test itself. For example, can we put a test-in-prog file by a script so crashes created when the file is there have the test name reported?",
+      "parentUuid": "8acf3b7e_d1faded2",
       "range": {
         "startLine": 530,
         "startChar": 0,
