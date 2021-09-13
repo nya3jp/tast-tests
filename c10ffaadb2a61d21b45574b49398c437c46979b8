@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeebc638_90816ed1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-13T21:31:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa19a5e9_f8a495bb",
+      "revId": "c10ffaadb2a61d21b45574b49398c437c46979b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b40d060e_a23d71aa",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad790efe_bce82402",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-13T21:31:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b40d060e_a23d71aa",
+      "revId": "c10ffaadb2a61d21b45574b49398c437c46979b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d54e443_6cb2679b",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-09-13T21:29:22Z",
       "side": 1,
       "message": "Please add the command used to run these tests e.g.\n\ntast -verbose run \u003cTest device IP\u003e a11y.Autoclick",
+      "revId": "c10ffaadb2a61d21b45574b49398c437c46979b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56b6f23c_a10ce15c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-13T21:31:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54e443_6cb2679b",
       "revId": "c10ffaadb2a61d21b45574b49398c437c46979b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
