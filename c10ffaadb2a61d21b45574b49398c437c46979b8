@@ -1,6 +1,57 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa19a5e9_f8a495bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-13T21:29:22Z",
+      "side": 1,
+      "message": "(Nit) please add \"tast-tests:\" before your commit message [1]\n\n[1] https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md (in the commit messages section)",
+      "revId": "c10ffaadb2a61d21b45574b49398c437c46979b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b40d060e_a23d71aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-13T21:29:22Z",
+      "side": 1,
+      "message": "If you need a bug, we can use the a11y tast test umbrella bug:\n\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1159107\u0026sort\u003dpri",
+      "revId": "c10ffaadb2a61d21b45574b49398c437c46979b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d54e443_6cb2679b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-13T21:29:22Z",
+      "side": 1,
+      "message": "Please add the command used to run these tests e.g.\n\ntast -verbose run \u003cTest device IP\u003e a11y.Autoclick",
+      "revId": "c10ffaadb2a61d21b45574b49398c437c46979b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "43291e42_87969237",
@@ -48,6 +99,23 @@
       "writtenOn": "2021-09-13T20:57:37Z",
       "side": 1,
       "message": "Thanks Aki. +Tast-owners, can you PTAL?",
+      "revId": "c10ffaadb2a61d21b45574b49398c437c46979b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b62893f_a91b7679",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-13T21:29:22Z",
+      "side": 1,
+      "message": "Sorry, forgot to mention a few things about the commit message",
       "revId": "c10ffaadb2a61d21b45574b49398c437c46979b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
