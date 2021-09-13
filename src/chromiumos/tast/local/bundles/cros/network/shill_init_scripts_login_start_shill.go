@@ -18,7 +18,7 @@ func init() {
 		Func:     ShillInitScriptsLoginStartShill,
 		Desc:     "Test that shill init scripts perform as expected",
 		Contacts: []string{"hugobenichi@google.com", "cros-networking@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 
