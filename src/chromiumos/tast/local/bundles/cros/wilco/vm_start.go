@@ -21,7 +21,7 @@ func init() {
 		Func: VMStart,
 		Desc: "Starts a new instance of the Wilco DTC VM and tests that the DTC binaries are running",
 		Contacts: []string{
-			"tbegin@chromium.org",
+			"lamzin@chromium.org",
 			"cros-containers-dev@google.com",
 			"chromeos-wilco@google.com",
 		},

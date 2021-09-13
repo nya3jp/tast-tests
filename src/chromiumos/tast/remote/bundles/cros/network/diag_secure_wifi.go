@@ -58,8 +58,7 @@ func init() {
 		Func: DiagSecureWifi,
 		Desc: "Tests that the network diagnostic routine for secure WiFi connection gives correct results with different WiFi security protocols",
 		Contacts: []string{
-			"tbegin@chromium.org",            // test author
-			"khegde@chromium.org",            // network diagnostics author
+			"khegde@chromium.org",            // test maintainer
 			"cros-network-health@google.com", // network-health team
 		},
 		ServiceDeps:  []string{wificell.TFServiceName, "tast.cros.network.NetDiagService"},
