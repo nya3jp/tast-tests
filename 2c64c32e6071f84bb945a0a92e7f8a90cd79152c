@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9483aac4_651d64ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-13T17:59:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "839be9a6_6dfef7ab",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "2c64c32e6071f84bb945a0a92e7f8a90cd79152c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "485f1ea7_3963d92d",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-09-13T02:07:17Z",
       "side": 1,
       "message": "How about \"Test quickly switching online wallpapers\" to distinguish this test from the another one?",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 28,
+        "endChar": 39
+      },
+      "revId": "2c64c32e6071f84bb945a0a92e7f8a90cd79152c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6cf1aec_43c14268",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/switch_online_wallpapers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-13T17:59:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "485f1ea7_3963d92d",
       "range": {
         "startLine": 28,
         "startChar": 9,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "658539e0_3e31e4ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/switch_online_wallpapers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-13T17:59:18Z",
+      "side": 1,
+      "message": "This was done on purpose so that we can validate `validateBackground` method. The color is similar but the method should be able to correctly compare the correct image.",
+      "parentUuid": "36bd4608_8370820f",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "2c64c32e6071f84bb945a0a92e7f8a90cd79152c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d37cdc36_14deee75",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce16ffa9_fdc98b65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/switch_online_wallpapers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-13T17:59:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d37cdc36_14deee75",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "2c64c32e6071f84bb945a0a92e7f8a90cd79152c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a7dfa08_2f55b2e3",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-09-13T02:07:17Z",
       "side": 1,
       "message": "minor: Use HasClass. ClassName is deprecated: https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/uiauto/nodewith#Finder.ClassName.",
+      "range": {
+        "startLine": 20,
+        "startChar": 27,
+        "endLine": 20,
+        "endChar": 53
+      },
+      "revId": "2c64c32e6071f84bb945a0a92e7f8a90cd79152c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc344ec4_cfa7b810",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-13T17:59:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a7dfa08_2f55b2e3",
       "range": {
         "startLine": 20,
         "startChar": 27,
