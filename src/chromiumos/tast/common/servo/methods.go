@@ -29,6 +29,7 @@ const (
 	ImageUSBKeyDirection  StringControl = "image_usbkey_direction"
 	ImageUSBKeyPwr        StringControl = "image_usbkey_pwr"
 	ImageUSBKeyDev        StringControl = "image_usbkey_dev"
+	LidOpen               StringControl = "lid_open"
 	PowerState            StringControl = "power_state"
 	Type                  StringControl = "servo_type"
 	UARTCmd               StringControl = "servo_v4_uart_cmd"
@@ -353,6 +354,11 @@ func (s *Servo) GetBool(ctx context.Context, control BoolControl) (bool, error) 
 // GetChargerAttached returns the boolean value to indicate whether charger is attached.
 func (s *Servo) GetChargerAttached(ctx context.Context) (bool, error) {
 	return s.GetBool(ctx, ChargerAttached)
+}
+
+// LidOpenState checks whether DUT's lid is open or closed, and returns yes/no.
+func (s *Servo) LidOpenState(ctx context.Context) (string, error) {
+	return s.GetString(ctx, LidOpen)
 }
 
 // parseUint extracts a hex number from `value` at `*index+1` that is exactly `bits` in length.
