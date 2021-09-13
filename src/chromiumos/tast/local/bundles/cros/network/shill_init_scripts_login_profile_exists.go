@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ShillInitScriptsLoginProfileExists,
 		Desc:         "Test that shill init scripts perform as expected",
-		Contacts:     []string{"arowa@google.com", "cros-networking@google.com"},
+		Contacts:     []string{"hugobenichi@google.com", "cros-networking@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		// This test performs 2 logins.
