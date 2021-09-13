@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     ShillInitScriptsLoginStartShill,
 		Desc:     "Test that shill init scripts perform as expected",
-		Contacts: []string{"arowa@google.com", "cros-networking@google.com"},
+		Contacts: []string{"hugobenichi@google.com", "cros-networking@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 	})
 }
