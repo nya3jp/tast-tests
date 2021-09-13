@@ -39,6 +39,30 @@
       },
       "revId": "accaf34bc528b3515cb5934e82a582fa151c3d69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6461549f_416e8860",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/enable_chromevox_shortcut.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2021-09-13T22:39:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c644d46_5321a82e",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "accaf34bc528b3515cb5934e82a582fa151c3d69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
