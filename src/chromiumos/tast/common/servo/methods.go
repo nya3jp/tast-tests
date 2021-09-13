@@ -21,21 +21,22 @@ type StringControl string
 
 // These are the Servo controls which can be get/set with a string value.
 const (
-	ActiveChgPort             StringControl = "active_chg_port"
-	ActiveDUTController       StringControl = "active_dut_controller"
-	DownloadImageToUSBDev     StringControl = "download_image_to_usb_dev"
-	DUTVoltageMV              StringControl = "dut_voltage_mv"
-	FWWPState                 StringControl = "fw_wp_state"
-	ImageUSBKeyDirection      StringControl = "image_usbkey_direction"
-	ImageUSBKeyPwr            StringControl = "image_usbkey_pwr"
-	ImageUSBKeyDev            StringControl = "image_usbkey_dev"
-	PowerState                StringControl = "power_state"
-	Type                      StringControl = "servo_type"
-	UARTCmd                   StringControl = "servo_v4_uart_cmd"
-	UARTCmdV4p1               StringControl = "servo_v4p1_uart_cmd"
-	Watchdog                  StringControl = "watchdog"
-	WatchdogAdd               StringControl = "watchdog_add"
-	WatchdogRemove            StringControl = "watchdog_remove"
+	ActiveChgPort         StringControl = "active_chg_port"
+	ActiveDUTController   StringControl = "active_dut_controller"
+	DownloadImageToUSBDev StringControl = "download_image_to_usb_dev"
+	DUTVoltageMV          StringControl = "dut_voltage_mv"
+	FWWPState             StringControl = "fw_wp_state"
+	ImageUSBKeyDirection  StringControl = "image_usbkey_direction"
+	ImageUSBKeyPwr        StringControl = "image_usbkey_pwr"
+	ImageUSBKeyDev        StringControl = "image_usbkey_dev"
+	LidOpen               StringControl = "lid_open"
+	PowerState            StringControl = "power_state"
+	Type                  StringControl = "servo_type"
+	UARTCmd               StringControl = "servo_v4_uart_cmd"
+	UARTCmdV4p1           StringControl = "servo_v4p1_uart_cmd"
+	Watchdog              StringControl = "watchdog"
+	WatchdogAdd           StringControl = "watchdog_add"
+	WatchdogRemove        StringControl = "watchdog_remove"
 
 	// DUTConnectionType was previously known as V4Type ("servo_v4_type")
 	DUTConnectionType StringControl = "root.dut_connection_type"
@@ -137,6 +138,15 @@ type FWWPStateValue string
 const (
 	FWWPStateOff FWWPStateValue = "force_off"
 	FWWPStateOn  FWWPStateValue = "force_on"
+)
+
+// A LidOpenValue is a string accepted by the LidOpen control.
+type LidOpenValue string
+
+// These are the string values that can be passed to the LidOpen control.
+const (
+	LidOpenYes LidOpenValue = "yes"
+	LidOpenNo  LidOpenValue = "no"
 )
 
 // A PowerStateValue is a string accepted by the PowerState control.
@@ -356,6 +366,11 @@ func (s *Servo) GetBool(ctx context.Context, control BoolControl) (bool, error) 
 // GetChargerAttached returns the boolean value to indicate whether charger is attached.
 func (s *Servo) GetChargerAttached(ctx context.Context) (bool, error) {
 	return s.GetBool(ctx, ChargerAttached)
+}
+
+// LidOpenState checks whether DUT's lid is open or closed, and returns yes/no.
+func (s *Servo) LidOpenState(ctx context.Context) (string, error) {
+	return s.GetString(ctx, LidOpen)
 }
 
 // parseUint extracts a hex number from `value` at `*index+1` that is exactly `bits` in length.
