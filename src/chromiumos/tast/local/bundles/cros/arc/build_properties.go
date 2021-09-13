@@ -304,6 +304,7 @@ var expectedFirstAPILevelMap = map[string]int{
 	"hatch":     arc.SDKP,
 	"jacuzzi":   arc.SDKP,
 	"kalista":   arc.SDKP,
+	"keeby":     arc.SDKP,
 	"kukui":     arc.SDKP,
 	"nocturne":  arc.SDKP,
 	"octopus":   arc.SDKP,
