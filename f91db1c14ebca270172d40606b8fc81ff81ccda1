@@ -24,6 +24,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b50e79b0_d5bc3876",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-13T17:41:53Z",
+      "side": 1,
+      "message": "I suggest using the prefixes: AutomaticTicket vs ManualTicket to differentiate these use cases here.\nIn practice, a Kerberos account is used in both cases, but here it\u0027s added automatically.",
+      "range": {
+        "startLine": 13,
+        "startChar": 28,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "f91db1c14ebca270172d40606b8fc81ff81ccda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d0d3245e_a8f2f216",
