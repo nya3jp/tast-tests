@@ -63,6 +63,30 @@
       },
       "revId": "077e398588dd06ffd7fd233b905fdd28aede1206",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e850c120_4c63671f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1186534
+      },
+      "writtenOn": "2021-09-13T02:35:55Z",
+      "side": 1,
+      "message": "Taking a step back, we need to come up with a better strategy for testing these components. The maintenance costs of these tests (every UI change \u003d 3x the amount of CLs) are already putting a significant tax on teams. Instead of reducing costs overall, we have essentially converted manual testing work from test teams into updating test work for eng teams. I don\u0027t want either of our teams (or any team) to have to own changing this test every time a string changes. :)\n\nThis is something that is going to add up over time. I\u0027d like for us to combine our efforts to really push on the ops teams to take on these problems systematically. On the eng side, we should ideally have our frameworks provide robust solutions for the types of tests we need to write.",
+      "parentUuid": "788c38f8_97b58a43",
+      "range": {
+        "startLine": 118,
+        "startChar": 41,
+        "endLine": 118,
+        "endChar": 57
+      },
+      "revId": "077e398588dd06ffd7fd233b905fdd28aede1206",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
