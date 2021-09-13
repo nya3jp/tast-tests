@@ -29,7 +29,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"chromeos-a11y-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Fixture: "chromeLoggedIn",
