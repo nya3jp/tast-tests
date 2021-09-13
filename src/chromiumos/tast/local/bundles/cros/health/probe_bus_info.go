@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/health/usb"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -23,37 +24,55 @@ func init() {
 		Desc: "Check that we can probe cros_healthd for bus info",
 		Contacts: []string{
 			"cros-tdm-tpe-eng@google.com",
+			"pathan.jilani@intel.com",
+			"intel-chrome-system-automation-team@intel.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
+		Params: []testing.Param{{
+			Val: false,
+		}, {
+			Name:              "thunderbolt",
+			Val:               true,
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya")),
+		}},
 	})
 }
 
 func ProbeBusInfo(ctx context.Context, s *testing.State) {
-	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBus}
+	params := croshealthd.TelemParams{Category: "bus"}
 	var res busResult
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &res); err != nil {
 		s.Fatal("Failed to get bus telemetry info: ", err)
 	}
 	var pciDevs []busDevice
 	var usbDevs []busDevice
+	var tbtDevs []busDevice
 	for _, d := range res.Devices {
 		if d.BusInfo.PCIBusInfo != nil {
 			pciDevs = append(pciDevs, d)
 		} else if d.BusInfo.USBBusInfo != nil {
 			usbDevs = append(usbDevs, d)
+		} else if d.BusInfo.ThunderboltBusInfo != nil {
+			tbtDevs = append(tbtDevs, d)
 		} else {
 			s.Fatal("Unknown types of bus devices: ", d)
 		}
 	}
-
+	if s.Param().(bool) {
+		if err := validateThundeboltDevices(tbtDevs); err != nil {
+			s.Fatal("Thunderbolt validation failed: ", err)
+		}
+		return
+	}
 	if err := validatePCIDevices(ctx, pciDevs); err != nil {
 		s.Fatal("PCI validation failed: ", err)
 	}
 	if err := validateUSBDevices(ctx, usbDevs); err != nil {
 		s.Fatal("USB validation failed: ", err)
 	}
+
 }
 
 // validatePCIDevices validates the PCI devices with the expected PCI
@@ -121,6 +140,52 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 	return nil
 }
 
+func validateThundeboltDevices(devs []busDevice) error {
+	for _, devices := range devs {
+		if (devices.BusInfo.ThunderboltBusInfo.SecurityLevel) == "" {
+			return errors.New("failed to enable SecurityLevel")
+		}
+
+		for _, interfaces := range devices.BusInfo.ThunderboltBusInfo.ThunderboltInterfaces {
+			if !interfaces.Authorized {
+				return errors.New("failed to authorize the Thunderbolt device")
+			}
+			if interfaces.DeviceFwVersion == "" {
+				return errors.New("failed to get DeviceFwVersion")
+			}
+			if interfaces.DeviceName == "" {
+				return errors.New("failed to get DeviceName")
+			}
+			if interfaces.DeviceType == "" {
+				return errors.New("failed to get DeviceType")
+			}
+			if interfaces.DeviceUUID == "" {
+				return errors.New("failed to get DeviceUUID")
+			}
+			if interfaces.RxSpeedGbs == "" {
+				return errors.New("failed to get RxSpeedGbs")
+			}
+			if interfaces.TxSpeedGbs == "" {
+				return errors.New("failed to get TxSpeedGbs")
+			}
+			if interfaces.VendorName == "" {
+				return errors.New("failed to get VendorName")
+			}
+		}
+
+		if (devices.DeviceClass) == "" {
+			return errors.New("failed to get Thunderbolt DeviceClass")
+		}
+		if (devices.ProductName) == "" {
+			return errors.New("failed to get Thunderbolt ProductName")
+		}
+		if (devices.VendorName) == "" {
+			return errors.New("failed to get Thunderbolt VendorName")
+		}
+	}
+	return nil
+}
+
 // busResult represents the BusResult in cros-healthd mojo interface.
 type busResult struct {
 	Devices []busDevice `json:"devices"`
@@ -136,8 +201,9 @@ type busDevice struct {
 
 // busInfo represents the BusInfo in cros-healthd mojo interface.
 type busInfo struct {
-	PCIBusInfo *pciBusInfo `json:"pci_bus_info"`
-	USBBusInfo *usbBusInfo `json:"usb_bus_info"`
+	PCIBusInfo         *pciBusInfo         `json:"pci_bus_info"`
+	USBBusInfo         *usbBusInfo         `json:"usb_bus_info"`
+	ThunderboltBusInfo *thunderboltBusInfo `json:"thunderbolt_bus_info"`
 }
 
 // pciBusInfo represents the PciBusInfo in cros-healthd mojo interface.
@@ -168,4 +234,23 @@ type usbInterfaceInfo struct {
 	SubClassID      uint8   `json:"subclass_id"`
 	ProtocolID      uint8   `json:"protocol_id"`
 	Driver          *string `json:"driver"`
+}
+
+// thunderboltInterfaceInfo represents the ThunderboltInterfaces in cros-healthd mojo
+// interface.
+type thunderboltInterfaceInfo struct {
+	Authorized      bool   `json:"authorized"`
+	DeviceFwVersion string `json:"device_fw_version"`
+	DeviceName      string `json:"device_name"`
+	DeviceType      string `json:"device_type"`
+	DeviceUUID      string `json:"device_uuid"`
+	RxSpeedGbs      string `json:"rx_speed_gbs"`
+	TxSpeedGbs      string `json:"tx_speed_gbs"`
+	VendorName      string `json:"vendor_name"`
+}
+
+// thunderboltBusInfo represents the ThunderboltBusInfo in cros-healthd mojo interface.
+type thunderboltBusInfo struct {
+	SecurityLevel         string                     `json:"security_level"`
+	ThunderboltInterfaces []thunderboltInterfaceInfo `json:"thunderbolt_interfaces"`
 }
