@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dbbfb130_78861573",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-09-13T20:49:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6189a0b9_d63b60dc",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "63bd61355d031e230b89c5be9756fb889c6e5d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a514eb3d_2787f437",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "54998f23_f226f7f5",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 349,
+        "endChar": 0
+      },
+      "revId": "63bd61355d031e230b89c5be9756fb889c6e5d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9316e008_6902b5c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-09-13T20:49:39Z",
+      "side": 1,
+      "message": "Was this actually implemented in PS5? It\u0027s showing as the same for me",
+      "parentUuid": "eff84b08_8ae1f677",
       "range": {
         "startLine": 337,
         "startChar": 1,
