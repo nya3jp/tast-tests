@@ -257,6 +257,30 @@ func (kw *KeyboardEventWriter) TypeKey(ctx context.Context, ec EventCode) error 
 	return firstErr
 }
 
+// TypeSequence injects key events suitable given a string slice seq, where seq
+// is a combination of rune keys and accelerators.
+// For each string s, it uses Type() to inject a key event if the len(s) = 1,
+// and uses Accel() to inject a key event if the len(s) > 1.
+// E.g., when calling TypeSequence({"S","e","q","space"}), it calls
+// Type("S"), Type("e"), Type("q") and Accel("space") respectively.
+func (kw *KeyboardEventWriter) TypeSequence(ctx context.Context, seq []string) error {
+	for _, s := range seq {
+		switch len(s) {
+		case 0:
+			return errors.New("no key event for empty string")
+		case 1:
+			if err := kw.Type(ctx, s); err != nil {
+				return errors.Errorf("failed to type %q", s)
+			}
+		default:
+			if err := kw.Accel(ctx, s); err != nil {
+				return errors.Errorf("failed to type %q", s)
+			}
+		}
+	}
+	return nil
+}
+
 // Below are the action versions of keyboard methods.
 // They enable easy chaining of typing with the ui library.
 
@@ -292,5 +316,12 @@ func (kw *KeyboardEventWriter) AccelPressAction(s string) action.Action {
 func (kw *KeyboardEventWriter) AccelReleaseAction(s string) action.Action {
 	return func(ctx context.Context) error {
 		return kw.AccelRelease(ctx, s)
+	}
+}
+
+// TypeSequenceAction returns an action wrapper for TypeSequence().
+func (kw *KeyboardEventWriter) TypeSequenceAction(seq []string) action.Action {
+	return func(ctx context.Context) error {
+		return kw.TypeSequence(ctx, seq)
 	}
 }
