@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ea9e45_eec82564",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-13T21:37:18Z",
+      "side": 1,
+      "message": "Please add the \"tast-tests:\" prefix to this commit message, which is the convention I was instructed to use",
+      "revId": "daa344f30b3feb899da639f84d22d7774e63ea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2403d08_cf38ee93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-13T21:37:18Z",
+      "side": 1,
+      "message": "If you need a bug, we can use the a11y tast tests umbrella bug:\n\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1159107\u0026sort\u003dpri",
+      "revId": "daa344f30b3feb899da639f84d22d7774e63ea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16916650_c69dd683",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-13T21:37:18Z",
+      "side": 1,
+      "message": "LGTM with comments addressed",
+      "revId": "daa344f30b3feb899da639f84d22d7774e63ea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0965837_fb30bf9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/enable_chromevox_shortcut.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-13T21:37:18Z",
+      "side": 1,
+      "message": "Nit/optional: usually if there is only one return value, we can combine the assignment and the if statement like below:\n\nif err :\u003d a11y.PressKeysAndConsume(); err !\u003d nil {\n  s.Fatal(...)\n}\n\nIt\u0027s optional, but I\u0027ve had reviewers ask me to make this change before, so thought I\u0027d point it out.",
+      "revId": "daa344f30b3feb899da639f84d22d7774e63ea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
