@@ -94,6 +94,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/webrtc"
 	_ "chromiumos/tast/local/bundles/cros/wifi"
 	_ "chromiumos/tast/local/bundles/cros/wilco"
+	_ "chromiumos/tast/local/bundles/cros/wm"
 	_ "chromiumos/tast/local/bundles/cros/wmp"
 
 	// imports kioskLoggedIn fixture. It is not referenced by tests as it
