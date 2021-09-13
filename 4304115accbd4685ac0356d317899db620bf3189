@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b805e8cc_b3b9e494",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-13T14:51:42Z",
+      "side": 1,
+      "message": "This is an alternative of\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3157887\n\nalso fails with accessing web site",
+      "revId": "4304115accbd4685ac0356d317899db620bf3189",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
