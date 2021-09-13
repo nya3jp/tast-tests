@@ -15,11 +15,20 @@ import (
 // Int64 is an alias of int64
 type Int64 int64
 
+// Int32 is an alias of int32
+type Int32 int32
+
 // Uint64 is an alias of uint64
 type Uint64 uint64
 
 // Uint32 is an alias of uint32
 type Uint32 uint32
+
+// String is an alias of string
+type String string
+
+// Bool is an alias of bool
+type Bool bool
 
 func parseInt64(b []byte) (int64, error) {
 	var s string
