@@ -16,6 +16,24 @@
       "message": "Can we use io/ioutil TempFile unless it is needed to be opened by the Files app?\nhttps://pkg.go.dev/io/ioutil#TempFile",
       "revId": "ba41b2913a9f1df7f991a3c075f1a901e5e44809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dcd3de4_dcee5519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-13T09:54:22Z",
+      "side": 1,
+      "message": "we are not creating a tempfile here. We are generating an audio file in L53 in this rawFilePath.",
+      "parentUuid": "5618d4e7_337f6a41",
+      "revId": "ba41b2913a9f1df7f991a3c075f1a901e5e44809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
