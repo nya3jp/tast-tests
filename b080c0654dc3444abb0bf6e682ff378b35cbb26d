@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cee6ac5_e69d03e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-09-13T05:43:35Z",
+      "side": 1,
+      "message": "Generally looks good with some comments, but given most of the logic added overlaps with ResizeLock.go, I wonder whether we are going to maintain them independently or we are eventually going to unify them somehow.",
+      "revId": "b080c0654dc3444abb0bf6e682ff378b35cbb26d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dcd48c4_8df7cc82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-09-13T05:43:35Z",
+      "side": 1,
+      "message": "I\u0027ve heard we should use parameterized testing to run different tests based on android versions:\n\nhttps://docs.google.com/document/d/1Q1uychRxdrUL8kCJ8Bm2UvMBGngoxo14ke_la3mdT_4/edit#heading\u003dh.xgjl2srtytjt",
+      "range": {
+        "startLine": 403,
+        "startChar": 1,
+        "endLine": 403,
+        "endChar": 17
+      },
+      "revId": "b080c0654dc3444abb0bf6e682ff378b35cbb26d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
