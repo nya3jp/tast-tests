@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26a13a19_215899c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-09-13T20:16:32Z",
+      "side": 1,
+      "message": "\u003e \"Chane\" is a possible misspelling of \"Change\" or \"Chain\".\n\nPlease fix.",
+      "parentUuid": "81c1233b_df4eb8b5",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "cb0d3cee8632ba1511efcfc76427f26d2bc423f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26fccb84_55fada9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-09-13T20:16:32Z",
+      "side": 1,
+      "message": "\u003e \"Chane\" is a possible misspelling of \"Change\" or \"Chain\".\n\nPlease fix.",
+      "parentUuid": "81c1233b_df4eb8b5",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "cb0d3cee8632ba1511efcfc76427f26d2bc423f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
