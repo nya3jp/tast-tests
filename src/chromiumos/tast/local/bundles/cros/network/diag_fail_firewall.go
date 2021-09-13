@@ -25,8 +25,7 @@ func init() {
 		Func: DiagFailFirewall,
 		Desc: "Tests that the http/s firewall network diagnostic test fails when traffic is not allowed on certain ports",
 		Contacts: []string{
-			"tbegin@chromium.org",            // test author
-			"khegde@chromium.org",            // network diagnostics author
+			"khegde@chromium.org",            // test maintainer
 			"cros-network-health@google.com", // network-health team
 		},
 		SoftwareDeps: []string{"chrome"},

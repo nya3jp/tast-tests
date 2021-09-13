@@ -19,7 +19,7 @@ func init() {
 		Func: ConnectivityDiagnosticsApp,
 		Desc: "Tests launching the connectivity diagnostics UI",
 		Contacts: []string{
-			"tbegin@chromium.org",            // test author
+			"khegde@chromium.org",            // test maintainer
 			"stevenjb@chromium.org",          // network-health tech lead
 			"cros-network-health@google.com", // network-health team
 		},

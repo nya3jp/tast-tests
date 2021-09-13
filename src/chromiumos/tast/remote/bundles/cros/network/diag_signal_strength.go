@@ -24,8 +24,7 @@ func init() {
 		Func: DiagSignalStrength,
 		Desc: "Tests that the WiFi signal strength network diagnostic routine reports the correct verdict if the signal strength is both attenuated and unattenuated",
 		Contacts: []string{
-			"tbegin@chromium.org",            // test author
-			"khegde@chromium.org",            // network diagnostics author
+			"khegde@chromium.org",            // test maintainer
 			"cros-network-health@google.com", // network-health team
 		},
 		ServiceDeps:  []string{wificell.TFServiceName, "tast.cros.network.NetDiagService"},
