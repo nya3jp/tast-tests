@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb701eb_99e7a31a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-09-14T06:08:31Z",
+      "side": 1,
+      "message": "since it probably doesn\u0027t make sense for the same piece of code to be reviewed in two places, I\u0027ve moved it here.",
+      "parentUuid": "7a1784c6_dfeb94b3",
+      "revId": "72d55133873c780950d09c39f55bb8f5885163b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64b4b97b_75a6dd1a",
@@ -83,6 +101,30 @@
       "writtenOn": "2021-09-08T00:18:12Z",
       "side": 1,
       "message": "maybe I can rename to a backup file and restore afterwards, to be good enough.",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 77
+      },
+      "revId": "72d55133873c780950d09c39f55bb8f5885163b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3bb5b3d_a7564e32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-09-14T06:08:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64b4b97b_75a6dd1a",
       "range": {
         "startLine": 524,
         "startChar": 0,
