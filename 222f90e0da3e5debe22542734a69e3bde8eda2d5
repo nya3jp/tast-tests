@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b524c942_e6427f2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-14T12:21:32Z",
+      "side": 1,
+      "message": "\"30SEC_*.raw\"\nand this could be inlined in the next line as it is not used in other place anymore.\n\nhttps://pkg.go.dev/io/ioutil#TempFile",
+      "revId": "222f90e0da3e5debe22542734a69e3bde8eda2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68553a5a_48cb13dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
         "patchSetId": 3
@@ -14,6 +31,23 @@
       "writtenOn": "2021-09-14T11:56:09Z",
       "side": 1,
       "message": "This file is opened in R/W mode. It should be closed before overwriting by the othre writer.",
+      "revId": "222f90e0da3e5debe22542734a69e3bde8eda2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "852bb1ac_326c57b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-14T12:21:32Z",
+      "side": 1,
+      "message": "Related to Cheng-Yi\u0027s comment below; if this wav file is only played once by the command and not used in other ways, I guess it can also be built in the temporary directory like the .raw file.",
       "revId": "222f90e0da3e5debe22542734a69e3bde8eda2d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
