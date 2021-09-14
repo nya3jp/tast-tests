@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ceadf34_bc0eeabf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-14T04:35:42Z",
+      "side": 1,
+      "message": "How about just including the output of the python script(kernel log excluded) in stdout? I think that\u0027s the best compromise.",
+      "parentUuid": "c196e382_ccb0c035",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "013a194d156f689eb3ff82856d1e182869a76b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b29d7b72_a5e4d838",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
         "patchSetId": 21
