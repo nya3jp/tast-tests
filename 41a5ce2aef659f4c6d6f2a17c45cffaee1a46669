@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5cb5e96_d81a0973",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-14T14:37:52Z",
+      "side": 1,
+      "message": "nit: space after colon, also Bus is not an acronym",
+      "revId": "41a5ce2aef659f4c6d6f2a17c45cffaee1a46669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b02a8a5f_f4596528",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 2
