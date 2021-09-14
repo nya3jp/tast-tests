@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca602b52_743f051e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/enable_chromevox_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2021-09-14T16:35:14Z",
+      "side": 1,
+      "message": "No worries! It was surprising (error below). Maybe this should be relaxed a bit to consider mixed cased words:\n2021-09-14T15:04:46.106300Z Failed to run tests: failed to build and push: failed to prepare primary DUT my_crbook: failed to get data file list: failed to list local tests: failed to list tests: Process exited with status 5: error(s) in registered tests: /home/dtseng/trunk/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/a11y/enable_chromevox_shortcut.go:21: word \"ChromeVox\" at \"EnableChromeVoxShortcut\"[6] should probably be \"Chromevox\" (acronyms also allowed at beginning and end)",
+      "parentUuid": "ea41865e_6f5d5f58",
+      "range": {
+        "startLine": 32,
+        "startChar": 11,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "63d36ec4f4a214cfd7bde6d611c1dd3766faff0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fd1bd5d_0372a91a",
