@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc4365bb_d3f5e00a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-14T12:30:42Z",
+      "side": 1,
+      "message": "I\u0027d introduce more functions to the service for starting/stopping Chrome. We don\u0027t need to do everyting in EnrollUsingChrome.",
+      "revId": "93eafe1234d42c9389a30f20bf5c7fed34cc3b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6cea19d_26ae8bbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-14T12:30:42Z",
+      "side": 1,
+      "message": "The name of the function is EnrollUsingChrome, not performing enrollment is very unintuitive.",
+      "revId": "93eafe1234d42c9389a30f20bf5c7fed34cc3b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
