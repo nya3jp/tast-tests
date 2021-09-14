@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2429b46a_137f3a11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-14T14:15:40Z",
+      "side": 1,
+      "message": "LGTM with nit",
+      "revId": "479f75c7a750c2afba0875a3d5367b4ec3c4e019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dc0ecec_07351a96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_access_file_system.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-14T14:15:40Z",
+      "side": 1,
+      "message": "nit: this line is too long.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 139
+      },
+      "revId": "479f75c7a750c2afba0875a3d5367b4ec3c4e019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
