@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e46b9bd0_eb9e90d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-14T14:38:01Z",
+      "side": 1,
+      "message": "The test still fails in the unallowed_by_policy case, but works in all others. Can you check the logic there as I\u0027m not sure it\u0027s doing the right thing.",
+      "revId": "f4668b644ffb98128ca30ba834b755ec71bc6b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
