@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cb04e4b_06009ccb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-14T01:20:21Z",
+      "side": 1,
+      "message": "\u003e \"parallely\" is a possible misspelling of \"parallelly\".\n\nPlease fix.",
+      "parentUuid": "40c1f4a2_59965798",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "2a83ec872cb0d91fd3badedb18ca6d3b838202a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3df12e84_4533c964",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-14T01:20:21Z",
+      "side": 1,
+      "message": "\u003e \"parallely\" is a possible misspelling of \"parallelly\".\n\nPlease fix.",
+      "parentUuid": "40c1f4a2_59965798",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "2a83ec872cb0d91fd3badedb18ca6d3b838202a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
