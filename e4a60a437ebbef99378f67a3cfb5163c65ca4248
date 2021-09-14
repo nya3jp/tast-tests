@@ -16,6 +16,29 @@
       "message": "@Andrea-Elena Hello, Elena. Could you please test if the changes I made to DoSystemProxyAuthentication(L.26: ui_util.go) work, with network.SystemProxyForArc that you wrote? I\u0027m having some problems with it and the ssh connection is broken in the middle of the test. It would be great if you could check it for me. Thank you.",
       "revId": "e4a60a437ebbef99378f67a3cfb5163c65ca4248",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bd71c4a_0d112546",
+        "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:30:38Z",
+      "side": 1,
+      "message": "This is not needed as LeftClick does wait.",
+      "range": {
+        "startLine": 69,
+        "startChar": 37,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "e4a60a437ebbef99378f67a3cfb5163c65ca4248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
