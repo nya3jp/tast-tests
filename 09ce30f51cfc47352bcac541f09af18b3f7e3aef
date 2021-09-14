@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d54f79ba_21194850",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-14T10:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eb2df0c_64dd298f",
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "305b5722_3ad08553",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85a3534d_57f42fd3",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-14T10:05:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "305b5722_3ad08553",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1e1cc27_1a63085d",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-09-14T05:42:38Z",
       "side": 1,
       "message": "So it is expected that all users of Find are trying to find exactly one process.\n\nDid you consider returning an error if there are two or more matching processes?",
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d165840d_eab6e70b",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-14T10:05:23Z",
+      "side": 1,
+      "message": "Yes, I was thinking it, then I introduced Find(any)() as a first step, because of the compatibility of the existing code.\n\nThough, with more taking a look at existing code, I find actually \"finding exact one process\" is common intention but not written so, and so I changed my mind.\n\nInstead, at the latest PS, I introduced FindUnique(), which returns an error if there\u0027s no process or multiple processes.\n\nAny thoughts?",
+      "parentUuid": "b1e1cc27_1a63085d",
       "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +166,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a82d4c0b_8ef339a0",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-14T10:05:23Z",
+      "side": 1,
+      "message": "Yes, I thought the case, too, but I still think we want to guarantee one matcher at least, otherwise\n1) FindUnique would return an error always (because I expect more than one process is running)\n2) FindAll would be equivalent with process.Processes().\n\nSo, it sounds likely programming errors.\nIndeed FindUnique(matchers[0], matchers[1]...) looks a bit syntax-ish noise, but we still see it in other places, such as command execution etc, and common pattern in Go.\nRather, I\u0027d like to capture it at earlier stage, e.g. build time, or in worst case (i.e. above array case) on accessing matchers[0] to nil array.\n\nWDYT?",
+      "parentUuid": "cabd877d_4cb89ae3",
+      "range": {
+        "startLine": 33,
+        "startChar": 10,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6bae0e3_3477c442",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-14T10:05:23Z",
+      "side": 1,
+      "message": "Ack. +1 for FindAny, but anyways I replace this with FindUnique.\nI\u0027ll keep it in my mind and will use the name if we need actually FindAny function in the future.",
+      "parentUuid": "be037a0a_8273ba3b",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 9
+      },
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1549fca_7337e7b0",
         "filename": "src/chromiumos/tast/local/procutil/find.go",
         "patchSetId": 2
@@ -117,6 +225,30 @@
       "writtenOn": "2021-09-14T05:42:38Z",
       "side": 1,
       "message": "It\u0027s not obvious to me if it\u0027s right to return ErrNotFound when no process matches. Did you consider returning success in this case?",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45355087_6e133518",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-14T10:05:23Z",
+      "side": 1,
+      "message": "Yes, and handling \"no-processes\" as an error looks common pattern in the existing code.\nI do not have strong opinion about it, as long as it is explicitly documented.\n\nThough, in some callers need to have the same pattern like:\ntesting.Poll(... {\n  ps, err :\u003d procutil.FindAll(...)\n  if err !\u003d nil {\n    return err\n  }\n  if len(ps) \u003d\u003d 0 {\n    return errors.New(\"processes X are not yet running\")\n  }\n  return nil\n} ...)\n\nor something.\n\nWDYT?",
+      "parentUuid": "f1549fca_7337e7b0",
       "range": {
         "startLine": 69,
         "startChar": 2,
