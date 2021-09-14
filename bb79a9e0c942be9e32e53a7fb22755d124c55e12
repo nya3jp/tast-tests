@@ -22,6 +22,30 @@
       },
       "revId": "bb79a9e0c942be9e32e53a7fb22755d124c55e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95bff910_999517b8",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1522123
+      },
+      "writtenOn": "2021-09-14T21:13:42Z",
+      "side": 1,
+      "message": "changed var name from testInProgFile to markTestInProgress.",
+      "parentUuid": "695e89f4_a4da8aae",
+      "range": {
+        "startLine": 506,
+        "startChar": 1,
+        "endLine": 506,
+        "endChar": 15
+      },
+      "revId": "bb79a9e0c942be9e32e53a7fb22755d124c55e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
