@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591731bd_d07841fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-14T07:58:48Z",
+      "side": 1,
+      "message": "As I mentioned offline, we should probably specify \"group:crosbolt\" here: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md",
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "246a71e7_6176eece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-14T07:58:48Z",
+      "side": 1,
+      "message": "As I mentioned offline, we should use testing.Poll inside this function.\nThis is because the MyFiles volume might not be mounted yet when this function is called. In such a case, the MyFiles volume will not be listed in the output of sm list-volumes.\n\nAn alternative is to wait for the MyFiles volume to be mounted before calling this function. This option seems better because we should actually wait for emulated;0 to be mounted before doing measurement, too. We can pass a function to wait for the target volume to be mounted as a parameter.",
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f60e9ef_add24b28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-14T07:58:48Z",
+      "side": 1,
+      "message": "Now we don\u0027t need to unmount the volume before populating it. So, maybe there is no point in doing the following two things in one function: 1) populate the volume with files and 2) remount the volume in one function.\n\nHow about splitting this function into four separate functions:\nA) A function to set up the target directory\nB) A function to wait for MediaStore database to be populated with test files (needed only for MyFiles)\nC) A function to clear MediaStore database (should this be called only for MyFiles, or should we call it for sdcard too?)\nD) A function to trigger a full volume scan\n\nOf course you can put some of these functions into a larger function. For example, functions (A), (B), and (C) do some preparation for the measurement, so it might not be meaningless to put them into one function. It\u0027s your call, so please restructure the entire test as you like.\n\nPlease note that we should probably add some code comment for function (B) because it is not at all trivial why such a step is needed. Maybe it\u0027s better to add some explanation on why (C) is needed, too.",
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c6b1892_8423780b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-14T07:58:48Z",
+      "side": 1,
+      "message": "1. This won\u0027t work for sdcard, right?\n2. You should use medaScanTimeMyFilesUUID for 0000....CAFEF00D2019.\n3. As mentioned in another comment, we should probably extract this part as a separate function to make the code more understandable.",
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cad092c4_6e82f66e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-14T07:58:48Z",
+      "side": 1,
+      "message": "Including both numberOfScannedFiles and numberOfCopies to the error message will make it more informative.",
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "389318e9_fad56ffa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-14T07:58:48Z",
+      "side": 1,
+      "message": "Isn\u0027t it better to launch the test app in a later stage, e.g. after MediaStore database is cleared?",
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
