@@ -17,8 +17,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
@@ -246,14 +247,17 @@ func dragFromCrostini(ctx context.Context, pre crostini.PreData, files *filesapp
 		return errors.Wrap(err, "set drag app right-snapped")
 	}
 
+	ui := uiauto.New(tconn)
 	dragPoint := dragAppletWindow.BoundsInRoot.CenterPoint()
 	dropPoint := coords.Point{X: dragAppletWindow.BoundsInRoot.Left - 100, Y: 400}
-	if err = mouse.Drag(ctx, tconn, dragPoint, dropPoint, time.Second); err != nil {
-		return errors.Wrap(err, "drag and drop")
+	dragDrop := func(ctx context.Context) error {
+		if err = mouse.Drag(tconn, dragPoint, dropPoint, time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "drag and drop")
+		}
+		return nil
 	}
-
-	// Validate file is copied to FilesApp MyFiles.
-	if err = files.WaitForFile(path)(ctx); err != nil {
+	// Clicking too quick will lead to empty drop event. Use RetryUntil on drag and drop events.
+	if err = ui.RetryUntil(dragDrop, files.WithTimeout(time.Second*5).WaitForFile(path))(ctx); err != nil {
 		return errors.Wrap(err, "find the test file in Files app")
 	}
 
