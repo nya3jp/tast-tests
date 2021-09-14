@@ -137,6 +137,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d42746d1_c071d63f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-14T09:22:03Z",
+      "side": 1,
+      "message": "Looks good. Thanks Woody!",
+      "parentUuid": "0ceadf34_bc0eeabf",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "013a194d156f689eb3ff82856d1e182869a76b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b29d7b72_a5e4d838",
