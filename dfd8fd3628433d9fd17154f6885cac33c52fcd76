@@ -22,6 +22,75 @@
       },
       "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84304a29_b5e3733c",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-14T13:30:26Z",
+      "side": 1,
+      "message": "For my understanding: Why would it have url_schema otherwise?",
+      "range": {
+        "startLine": 510,
+        "startChar": 11,
+        "endLine": 510,
+        "endChar": 21
+      },
+      "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c17e0431_6f7cee55",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-14T13:30:26Z",
+      "side": 1,
+      "message": "nit: Maybe we could mention that this is a subset of the full schema, only defining the parts that tast tests currently use.",
+      "range": {
+        "startLine": 511,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 108
+      },
+      "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7394e14_99bdd245",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-14T13:30:26Z",
+      "side": 1,
+      "message": "I am a bit confused about us needing this and how this refers to the stuff defined in parse_override_onc, so here are my noob questions:\n\n1. Could we have just one \"override\" function and use it for both user and device ONC?\n2. If not, mentioning NetworkConfiguration here refers to NetworkConfiguration defined in parse_override_onc(), which happens to work because those are generated into the same file, right?",
+      "range": {
+        "startLine": 546,
+        "startChar": 4,
+        "endLine": 546,
+        "endChar": 29
+      },
+      "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
