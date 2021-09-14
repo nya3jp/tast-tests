@@ -39,6 +39,30 @@
       },
       "revId": "725f3a4f8705a40d9a13ef2d7af64b54ec2a0052",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "760daad2_342a8745",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-14T06:35:25Z",
+      "side": 1,
+      "message": "Is it?! All the times I was doing the USB dev boot I\u0027ve been told to manually download the image from goldeneye and put it on USB stick, wasn\u0027t even aware that\u0027s already done in Tast.\n\nAnd if it is, doesn\u0027t that actually happen before the testcase so it won\u0027t count to timeouts?",
+      "parentUuid": "84890fa8_f88803ee",
+      "range": {
+        "startLine": 117,
+        "startChar": 32,
+        "endLine": 117,
+        "endChar": 67
+      },
+      "revId": "725f3a4f8705a40d9a13ef2d7af64b54ec2a0052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
