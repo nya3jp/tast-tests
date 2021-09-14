@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78da60dd_3b71580d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-14T00:04:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b02a8a5f_f4596528",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "41a5ce2aef659f4c6d6f2a17c45cffaee1a46669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e5153fc_ccca9fdc",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-13T23:42:21Z",
       "side": 1,
       "message": "nit: Interfaces?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "41a5ce2aef659f4c6d6f2a17c45cffaee1a46669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "666b1dea_7d7998c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-14T00:04:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e5153fc_ccca9fdc",
       "range": {
         "startLine": 26,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a28b048_413a71ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-14T00:04:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e298c75_50770e1c",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 26
+      },
+      "revId": "41a5ce2aef659f4c6d6f2a17c45cffaee1a46669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "272e615c_fba87ea1",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-13T23:42:21Z",
       "side": 1,
       "message": "nit: device?",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 12
+      },
+      "revId": "41a5ce2aef659f4c6d6f2a17c45cffaee1a46669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e65b87be_a3ad2d09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-14T00:04:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "272e615c_fba87ea1",
       "range": {
         "startLine": 60,
         "startChar": 5,
