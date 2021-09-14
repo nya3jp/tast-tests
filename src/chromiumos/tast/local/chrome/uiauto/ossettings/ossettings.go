@@ -147,6 +147,17 @@ func LaunchAtAppMgmtPage(ctx context.Context, tconn *chrome.TestConn, cr *chrome
 	return LaunchAtPageURL(ctx, tconn, cr, fmt.Sprintf("app-management/detail?id=%s", appID), condition)
 }
 
+// NavigateToPageURL navigates the Settings app at to a particular page.
+func (s *OSSettings) NavigateToPageURL(ctx context.Context, cr *chrome.Chrome, pageShortURL string, condition func(context.Context) error) error {
+	settingsConn, err := s.ChromeConn(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to OS settings target")
+	}
+	defer settingsConn.Close()
+
+	return webutil.NavigateToURLInApp(settingsConn, urlPrefix+pageShortURL, condition, 20*time.Second)(ctx)
+}
+
 // LaunchHelpApp returns a function that launches Help app by clicking "Get help with Chrome OS".
 func (s *OSSettings) LaunchHelpApp() uiauto.Action {
 	return s.ui.LeftClick(nodewith.Name("Get help with Chrome OS").Role(role.Link).Ancestor(WindowFinder))
