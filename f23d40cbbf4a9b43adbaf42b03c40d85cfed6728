@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6287153_90712b70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-14T14:17:01Z",
+      "side": 1,
+      "message": "This line is too long.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 107
+      },
+      "revId": "f23d40cbbf4a9b43adbaf42b03c40d85cfed6728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
