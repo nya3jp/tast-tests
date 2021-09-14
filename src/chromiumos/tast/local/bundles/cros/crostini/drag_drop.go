@@ -248,12 +248,19 @@ func dragFromCrostini(ctx context.Context, pre crostini.PreData, files *filesapp
 
 	dragPoint := dragAppletWindow.BoundsInRoot.CenterPoint()
 	dropPoint := coords.Point{X: dragAppletWindow.BoundsInRoot.Left - 100, Y: 400}
-	if err = mouse.Drag(ctx, tconn, dragPoint, dropPoint, time.Second); err != nil {
-		return errors.Wrap(err, "drag and drop")
-	}
+	// Clicking too quick will lead to empty drop event. Add retries on drag and drop events.
+	retry := 3
+	for i := 0; i < retry; i++ {
+		if err = mouse.Drag(ctx, tconn, dragPoint, dropPoint, time.Second); err != nil {
+			return errors.Wrap(err, "drag and drop")
+		}
 
-	// Validate file is copied to FilesApp MyFiles.
-	if err = files.WaitForFile(path)(ctx); err != nil {
+		// Validate file is copied to FilesApp MyFiles.
+		if err = files.WaitForFile(path)(ctx); err == nil {
+			break
+		}
+	}
+	if err != nil {
 		return errors.Wrap(err, "find the test file in Files app")
 	}
 
