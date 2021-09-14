@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be4b4bd4_c3983fcd",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-14T23:03:11Z",
+      "side": 1,
+      "message": "nit: \"try to stop\"",
+      "range": {
+        "startLine": 59,
+        "startChar": 51,
+        "endLine": 59,
+        "endChar": 59
+      },
+      "revId": "5bd3b072fbc33b485dc6f0aece29cf78a4ef104b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7512c269_2759e5a4",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-14T23:03:11Z",
+      "side": 1,
+      "message": "nit: \"immediately following this with a call to stopDaemons\"",
+      "range": {
+        "startLine": 59,
+        "startChar": 63,
+        "endLine": 59,
+        "endChar": 68
+      },
+      "revId": "5bd3b072fbc33b485dc6f0aece29cf78a4ef104b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9aa7a1d3_ec63800a",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
         "patchSetId": 1
@@ -38,6 +84,30 @@
       "side": 1,
       "message": "When we are calling NewFirmwareTest and biod is disabled (biod.conf is missing) then stopDeamons() function will fail because it can\u0027t get information about biod.\n\nI think NewFirmwareTest is the only function which disables biod. This was intended to fix situation in which biod service remains disabled because error occurred in NewFirmwareTest (after biod was disabled, eg. incorrect write protect flags) or user interrupted test (Close() method not called).\n\nFor the first case I created https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3159538. It implements enabling biod service and FP updater when NewFirmwareTest is returning error. It doesn\u0027t help with situation in which user terminates test manually.",
       "parentUuid": "9aa7a1d3_ec63800a",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 3
+      },
+      "revId": "5bd3b072fbc33b485dc6f0aece29cf78a4ef104b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "255cfeed_1a824727",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-14T23:03:11Z",
+      "side": 1,
+      "message": "I think it\u0027s ok to add this based on Patryk\u0027s explanation. Agree that it\u0027s a little weird that on Zork we enable it and then disable it. On the other hand, it\u0027s nice to be able to ensure that some other random test in the system didn\u0027t do something to biod\u0027s conf file (or more likely that we add a test in the future that does).",
+      "parentUuid": "2eed52a6_3bd8e300",
       "range": {
         "startLine": 114,
         "startChar": 2,
