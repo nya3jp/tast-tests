@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d6262a1_8b179601",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-14T12:56:45Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "72eb8f91e4eb7e0c7cf2889cffa00b02edaa56be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b5a9797_e9e1d11b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/doc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-14T12:56:45Z",
+      "side": 1,
+      "message": "nit: to kerberos related features.",
+      "range": {
+        "startLine": 5,
+        "startChar": 35,
+        "endLine": 5,
+        "endChar": 62
+      },
+      "revId": "72eb8f91e4eb7e0c7cf2889cffa00b02edaa56be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
