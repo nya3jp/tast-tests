@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca5098fa_39c033ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-14T12:09:19Z",
+      "side": 1,
+      "message": "Yes. I think we should use \"int\", \"string\" and \"bool\" instead.",
+      "parentUuid": "4ffa1af2_78d9ba1d",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 31
+      },
+      "revId": "687a1412bf0ab5bfd2671cc5628388d8e2e6b72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c6f6972_fd7aa4fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 4
@@ -230,6 +254,29 @@
         "startLine": 85,
         "startChar": 13,
         "endLine": 85,
+        "endChar": 16
+      },
+      "revId": "687a1412bf0ab5bfd2671cc5628388d8e2e6b72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20d2032_1cf51ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-14T12:09:19Z",
+      "side": 1,
+      "message": "Bus",
+      "range": {
+        "startLine": 115,
+        "startChar": 13,
+        "endLine": 115,
         "endChar": 16
       },
       "revId": "687a1412bf0ab5bfd2671cc5628388d8e2e6b72f",

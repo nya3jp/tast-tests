@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55cdb3c5_a684566c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-14T12:09:19Z",
+      "side": 1,
+      "message": "avoid TBT here. check is a little bit ambiguous, could we use \"has\" / \"exist\" etc.",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 9
+      },
+      "revId": "4bc87ff9704ed00ef8ff2e2dcf49c1645d611c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ef3562_24a2aadc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-14T12:09:19Z",
+      "side": 1,
+      "message": "it seems this is always \u003e\u003d 0, maybe change the error msg to say we expect at least one bus device.",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "4bc87ff9704ed00ef8ff2e2dcf49c1645d611c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c46387c6_b42e5b9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-14T12:09:19Z",
+      "side": 1,
+      "message": "No extra space in the beginning and the end.",
+      "range": {
+        "startLine": 140,
+        "startChar": 20,
+        "endLine": 140,
+        "endChar": 57
+      },
+      "revId": "4bc87ff9704ed00ef8ff2e2dcf49c1645d611c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
