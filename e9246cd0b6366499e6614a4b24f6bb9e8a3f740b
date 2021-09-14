@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "863f71e0_f9fbeae3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-14T16:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a75160cc_bfe001d2",
+      "range": {
+        "startLine": 72,
+        "startChar": 44,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "e9246cd0b6366499e6614a4b24f6bb9e8a3f740b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89c88ca2_27157783",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-14T14:37:23Z",
       "side": 1,
       "message": "space after this colon/you can use s.Log here instead, right?",
+      "range": {
+        "startLine": 84,
+        "startChar": 46,
+        "endLine": 84,
+        "endChar": 47
+      },
+      "revId": "e9246cd0b6366499e6614a4b24f6bb9e8a3f740b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a980b7f6_c9d21b30",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-14T16:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89c88ca2_27157783",
       "range": {
         "startLine": 84,
         "startChar": 46,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdf8bedd_326c93e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-14T16:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd82b24f_170e39e5",
+      "range": {
+        "startLine": 119,
+        "startChar": 45,
+        "endLine": 119,
+        "endChar": 50
+      },
+      "revId": "e9246cd0b6366499e6614a4b24f6bb9e8a3f740b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13ac8593_180f8b0d",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-09-14T14:37:23Z",
       "side": 1,
       "message": "this is a constant, any reason not to just use 1000000 here?",
+      "range": {
+        "startLine": 255,
+        "startChar": 25,
+        "endLine": 255,
+        "endChar": 40
+      },
+      "revId": "e9246cd0b6366499e6614a4b24f6bb9e8a3f740b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94ddd24_25fb7948",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-14T16:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13ac8593_180f8b0d",
       "range": {
         "startLine": 255,
         "startChar": 25,
