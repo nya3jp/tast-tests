@@ -39,7 +39,7 @@ type FirmwareTest struct {
 // NewFirmwareTest creates and initializes a new fingerprint firmware test.
 // enableHWWP indicates whether the test should enable hardware write protect.
 // enableSWWP indicates whether the test should enable software write protect.
-func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *testing.RPCHint, outDir string, enableHWWP, enableSWWP bool) (*FirmwareTest, error) {
+func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *testing.RPCHint, outDir string, enableHWWP, enableSWWP bool) (firmwareTest *FirmwareTest, initError error) {
 	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to servo")
@@ -104,16 +104,34 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 		upstartService = platform.NewUpstartServiceClient(cl.Conn)
 		dutfsClient = dutfs.NewClient(cl.Conn)
 
-		// disable biod upstart job so that it doesn't interfere with the test when
+		// Disable biod upstart job so that it doesn't interfere with the test when
 		// we reboot.
 		if _, err := upstartService.DisableJob(ctx, &platform.DisableJobRequest{JobName: biodUpstartJobName}); err != nil {
 			return nil, errors.Wrap(err, "failed to disable biod upstart job")
 		}
+		// Enable biod service when this function is going to return an error
+		defer func() {
+			if initError != nil {
+				testing.ContextLog(ctx, "NewFirmwareTest failed, let's re-enable biod upstrat job")
+				if _, err := upstartService.EnableJob(ctx, &platform.EnableJobRequest{JobName: biodUpstartJobName}); err != nil {
+					testing.ContextLog(ctx, "Failed to re-enable biod upstrat job")
+				}
+			}
+		}()
 
-		// disable FP updater so that it doesn't interfere with the test when we reboot.
+		// Disable FP updater so that it doesn't interfere with the test when we reboot.
 		if err := disableFPUpdater(ctx, dutfsClient); err != nil {
 			return nil, errors.Wrap(err, "failed to disable updater")
 		}
+		// Enable FP updater when this function is going to return an error
+		defer func() {
+			if initError != nil {
+				testing.ContextLog(ctx, "NewFirmwareTest failed, let's re-enable FP updater")
+				if err := enableFPUpdater(ctx, dutfsClient); err != nil {
+					testing.ContextLog(ctx, "Failed to re-enable FP updater")
+				}
+			}
+		}()
 
 		// Account for the additional time that rebooting adds.
 		cleanupTime += 3 * time.Minute
