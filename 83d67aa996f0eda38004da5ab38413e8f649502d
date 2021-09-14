@@ -233,6 +233,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f69e5f35_18f1b992",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:54:59Z",
+      "side": 1,
+      "message": "We cannot emit logs without context.Context. So it sounds fine to pass it along here.",
+      "parentUuid": "0052a496_2e109366",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 510,
+        "endChar": 23
+      },
+      "revId": "83d67aa996f0eda38004da5ab38413e8f649502d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9eb10b7_233e3ccf",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 2

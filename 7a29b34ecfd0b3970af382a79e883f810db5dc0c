@@ -16,6 +16,75 @@
       "message": "Hi Miriam, thank you for you review. I added a few clarifications to Qing\u0027s response.",
       "revId": "7a29b34ecfd0b3970af382a79e883f810db5dc0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "786fa37f_fbe1e56b",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:54:59Z",
+      "side": 1,
+      "message": "nit: This runtime variable name sounds like a file path. How about something like \"crash.markTestInProgress\"?",
+      "range": {
+        "startLine": 117,
+        "startChar": 9,
+        "endLine": 117,
+        "endChar": 23
+      },
+      "revId": "7a29b34ecfd0b3970af382a79e883f810db5dc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa435234_8aee6200",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:54:59Z",
+      "side": 1,
+      "message": "\"crash.prefix\" sounds like a prefix to crash dump files. Maybe something like \"crash.testInProgressPrefix\"?",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 15
+      },
+      "revId": "7a29b34ecfd0b3970af382a79e883f810db5dc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb1f45a0_8cf17416",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:54:59Z",
+      "side": 1,
+      "message": "nit: We can treat this function as a getter since it doesn\u0027t make any side effects. So how about naming it like shouldMarkTestInProgress, and calling it like\n\n if !shouldMarkTestInProgress() {\n   return nil\n }",
+      "range": {
+        "startLine": 505,
+        "startChar": 5,
+        "endLine": 505,
+        "endChar": 27
+      },
+      "revId": "7a29b34ecfd0b3970af382a79e883f810db5dc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
