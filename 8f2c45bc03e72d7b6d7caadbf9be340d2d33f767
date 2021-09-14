@@ -33,6 +33,41 @@
       "message": "LGTM\nHowever, shouldn\u0027t we move to fixtures instead of pre because it\u0027s deprecated?\nit could be in a different CL, because it\u0027s unrelated",
       "revId": "8f2c45bc03e72d7b6d7caadbf9be340d2d33f767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8384bf4_b79789f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-09-14T15:47:28Z",
+      "side": 1,
+      "message": "I wasn\u0027t aware pre was deprecated, but I agree that that should be a separate CL. The test is broken as-is and we want to submit this to fix that.",
+      "parentUuid": "cb45f869_ed2f6465",
+      "revId": "8f2c45bc03e72d7b6d7caadbf9be340d2d33f767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72af5c0_eaea5caf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-09-14T15:47:28Z",
+      "side": 1,
+      "message": "Thanks, Ian and Mohamed!",
+      "revId": "8f2c45bc03e72d7b6d7caadbf9be340d2d33f767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
