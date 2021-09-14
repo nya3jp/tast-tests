@@ -21,6 +21,7 @@ type Action = func(context.Context) error
 // and if the action fails, tells you the name of the failing action.
 func Named(name string, fn Action) Action {
 	return func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Start action %s", name)
 		if err := fn(ctx); err != nil {
 			return errors.Wrapf(err, "failed action %s", name)
 		}
