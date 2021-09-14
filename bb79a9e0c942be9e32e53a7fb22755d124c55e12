@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "695e89f4_a4da8aae",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-09-14T16:19:24Z",
+      "side": 1,
+      "message": "nit: Please update this variable name to something like \"markTestInProgress\" to match the new name for markTestInProgressVar.",
+      "range": {
+        "startLine": 506,
+        "startChar": 1,
+        "endLine": 506,
+        "endChar": 15
+      },
+      "revId": "bb79a9e0c942be9e32e53a7fb22755d124c55e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
