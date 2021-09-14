@@ -2051,7 +2051,34 @@ func (p *NotificationsBlockedForUrls) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 type OpenNetworkConfiguration struct {
 	Stat Status
-	Val  string
+	Val  *OpenNetworkConfigurationValue
+}
+
+type EAP struct {
+	Outer        string `json:"Outer"`
+	Inner        string `json:"Inner,omitempty"`
+	Identity     string `json:"Identity,omitempty"`
+	Password     string `json:"Password,omitempty"`
+	UseSystemCAs bool   `json:"UseSystemCAs"`
+}
+
+type WiFi struct {
+	AutoConnect bool   `json:"AutoConnect"`
+	EAP         *EAP   `json:"EAP,omitempty"`
+	Security    string `json:"Security"`
+	SSID        string `json:"SSID"`
+	Passphrase  string `json:"Passphrase,omitempty"`
+}
+
+type NetworkConfiguration struct {
+	GUID string `json:"GUID"`
+	Name string `json:"Name"`
+	Type string `json:"Type"`
+	WiFi *WiFi  `json:"WiFi,omitempty"`
+}
+
+type OpenNetworkConfigurationValue struct {
+	NetworkConfigurations []*NetworkConfiguration `json:"NetworkConfigurations,omitempty"`
 }
 
 func (p *OpenNetworkConfiguration) Name() string          { return "OpenNetworkConfiguration" }
@@ -2060,14 +2087,14 @@ func (p *OpenNetworkConfiguration) Scope() Scope          { return ScopeUser }
 func (p *OpenNetworkConfiguration) Status() Status        { return p.Stat }
 func (p *OpenNetworkConfiguration) UntypedV() interface{} { return p.Val }
 func (p *OpenNetworkConfiguration) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v string
+	var v *OpenNetworkConfigurationValue
 	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as string", m)
+		return nil, errors.Wrapf(err, "could not read %s as *OpenNetworkConfigurationValue", m)
 	}
 	return v, nil
 }
 func (p *OpenNetworkConfiguration) Equal(iface interface{}) bool {
-	v, ok := iface.(string)
+	v, ok := iface.(*OpenNetworkConfigurationValue)
 	if !ok {
 		return ok
 	}
@@ -2081,7 +2108,12 @@ func (p *OpenNetworkConfiguration) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 type DeviceOpenNetworkConfiguration struct {
 	Stat Status
-	Val  string
+	Val  *DeviceOpenNetworkConfigurationValue
+}
+
+type DeviceOpenNetworkConfigurationValue struct {
+	Type                  *string                 `json:"Type,omitempty"`
+	NetworkConfigurations []*NetworkConfiguration `json:"NetworkConfigurations,omitempty"`
 }
 
 func (p *DeviceOpenNetworkConfiguration) Name() string { return "DeviceOpenNetworkConfiguration" }
@@ -2092,14 +2124,14 @@ func (p *DeviceOpenNetworkConfiguration) Scope() Scope          { return ScopeDe
 func (p *DeviceOpenNetworkConfiguration) Status() Status        { return p.Stat }
 func (p *DeviceOpenNetworkConfiguration) UntypedV() interface{} { return p.Val }
 func (p *DeviceOpenNetworkConfiguration) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v string
+	var v *DeviceOpenNetworkConfigurationValue
 	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as string", m)
+		return nil, errors.Wrapf(err, "could not read %s as *DeviceOpenNetworkConfigurationValue", m)
 	}
 	return v, nil
 }
 func (p *DeviceOpenNetworkConfiguration) Equal(iface interface{}) bool {
-	v, ok := iface.(string)
+	v, ok := iface.(*DeviceOpenNetworkConfigurationValue)
 	if !ok {
 		return ok
 	}
