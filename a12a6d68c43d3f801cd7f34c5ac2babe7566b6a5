@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33421245_87dd6e84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-14T18:39:10Z",
+      "side": 1,
+      "message": "Abstracted mouse click tests into the new standardized input application and renamed the references to \u0027pointer\u0027 so they can be used by additional input devices later (trackpad).",
+      "revId": "a12a6d68c43d3f801cd7f34c5ac2babe7566b6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
