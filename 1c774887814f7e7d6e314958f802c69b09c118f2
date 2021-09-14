@@ -33,6 +33,24 @@
       "message": "it is not recommended to skip tests with runtime condition in general.\nCan they be parameterized tests, instead?",
       "revId": "1c774887814f7e7d6e314958f802c69b09c118f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "068e5801_6546a592",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-09-14T04:50:02Z",
+      "side": 1,
+      "message": "Sounds good, but we changed our mind and move the tests related to touch events to other feature-specific tests.\n\nSo this CL just simplifies the logic around here, which should be less controversial.",
+      "parentUuid": "f2a0ca2f_3e57e453",
+      "revId": "1c774887814f7e7d6e314958f802c69b09c118f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
