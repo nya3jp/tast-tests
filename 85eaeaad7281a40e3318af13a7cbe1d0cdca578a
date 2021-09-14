@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef8b353_c57ee70d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-09-14T15:24:35Z",
+      "side": 1,
+      "message": "LGTM with comment addressed, to prevent cross timezone churn.",
+      "revId": "85eaeaad7281a40e3318af13a7cbe1d0cdca578a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00892305_4d1b73d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-09-14T15:24:35Z",
+      "side": 1,
+      "message": "If we are only using the testing.State to report failures, this function should just return an error and the callers can call s.Fatal with that error.",
+      "range": {
+        "startLine": 103,
+        "startChar": 44,
+        "endLine": 103,
+        "endChar": 60
+      },
+      "revId": "85eaeaad7281a40e3318af13a7cbe1d0cdca578a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
