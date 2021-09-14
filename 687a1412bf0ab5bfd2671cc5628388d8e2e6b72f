@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52326fe1_c5f82583",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-14T05:12:57Z",
+      "side": 1,
+      "message": "add a space after \":\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "687a1412bf0ab5bfd2671cc5628388d8e2e6b72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7deed621_4dfc0f04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-14T05:12:57Z",
+      "side": 1,
+      "message": "Do we need these alias type? \n\nI think Int64/Uint64/Uint32 was designed for some type which is not supported in json package natively.",
+      "range": {
+        "startLine": 18,
+        "startChar": 16,
+        "endLine": 18,
+        "endChar": 31
+      },
+      "revId": "687a1412bf0ab5bfd2671cc5628388d8e2e6b72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c6f6972_fd7aa4fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-14T05:12:57Z",
+      "side": 1,
+      "message": "Use Bus instead of BUS. Be consistent with other code.",
+      "range": {
+        "startLine": 72,
+        "startChar": 8,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "687a1412bf0ab5bfd2671cc5628388d8e2e6b72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03a08514_0da7317d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-14T05:12:57Z",
+      "side": 1,
+      "message": "Add cros-tdm-tpe-eng@google.com",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 25
+      },
+      "revId": "687a1412bf0ab5bfd2671cc5628388d8e2e6b72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d72448d0_526daf91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-14T05:12:57Z",
+      "side": 1,
+      "message": "Use Thunderbolt instead of TBT? we prefer not to have abbreviation in general.",
+      "range": {
+        "startLine": 85,
+        "startChar": 13,
+        "endLine": 85,
+        "endChar": 16
+      },
+      "revId": "687a1412bf0ab5bfd2671cc5628388d8e2e6b72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
