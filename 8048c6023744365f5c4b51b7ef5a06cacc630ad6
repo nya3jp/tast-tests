@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3aed36d_597422a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-14T13:45:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d96314f5_eb826b0f",
+      "range": {
+        "startLine": 12,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "8048c6023744365f5c4b51b7ef5a06cacc630ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab3dee0f_6f271fb2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-13T17:40:53Z",
       "side": 1,
       "message": "The AuthServerAllowlist policy is required here, otherwise the ticket won\u0027t be used to authenticate to the website.",
+      "range": {
+        "startLine": 68,
+        "startChar": 11,
+        "endLine": 68,
+        "endChar": 68
+      },
+      "revId": "8048c6023744365f5c4b51b7ef5a06cacc630ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8df13ff_1520749f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/account_access_website.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-14T13:45:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab3dee0f_6f271fb2",
       "range": {
         "startLine": 68,
         "startChar": 11,
