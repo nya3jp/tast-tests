@@ -32,14 +32,14 @@ const (
 	ShortUITimeout         = 30 * time.Second
 )
 
-// MouseButton abstracts the underlying mouse button implementation into a
+// PointerButton abstracts the underlying pointer button implementation into a
 // standard type that can be used by callers.
-type MouseButton int
+type PointerButton int
 
-// Mouse buttons that can be used by tests.
+// Pointer buttons that can be used by tests.
 const (
-	LeftMouseButton MouseButton = iota
-	RightMouseButton
+	LeftPointerButton PointerButton = iota
+	RightPointerButton
 )
 
 // TestFuncParams contains parameters that can be used by the tests.
@@ -445,25 +445,25 @@ func ClickInputAndGuaranteeFocus(ctx context.Context, selector *ui.Object) error
 }
 
 // MouseClickObject implements a standard way to click the mouse button on an object.
-func MouseClickObject(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, mew *input.MouseEventWriter, mouseButton MouseButton) error {
-	if err := validateMouseCanBeUsed(ctx, testParameters); err != nil {
+func MouseClickObject(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, mew *input.MouseEventWriter, mouseButton PointerButton) error {
+	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
 		return errors.Wrap(err, "mouse cannot be used")
 	}
 
 	// Move the mouse into position
-	if err := centerMouseOnObject(ctx, testParameters, mew, selector); err != nil {
+	if err := centerPointerOnObject(ctx, testParameters, mew, selector); err != nil {
 		return errors.Wrap(err, "failed to move the mouse into position")
 	}
 
 	// Perform the correct click
 	switch mouseButton {
-	case LeftMouseButton:
+	case LeftPointerButton:
 		if err := mew.Click(); err != nil {
 			return errors.Wrap(err, "unable to perform left mouse click")
 		}
 
 		break
-	case RightMouseButton:
+	case RightPointerButton:
 		if err := mew.RightClick(); err != nil {
 			return errors.Wrap(err, "unable to perform right mouse click")
 		}
@@ -478,11 +478,11 @@ func MouseClickObject(ctx context.Context, testParameters TestFuncParams, select
 
 // MouseMoveOntoObject moves the mouse onto the center of an object.
 func MouseMoveOntoObject(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, mew *input.MouseEventWriter) error {
-	if err := validateMouseCanBeUsed(ctx, testParameters); err != nil {
+	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
 		return errors.Wrap(err, "mouse cannot be used")
 	}
 
-	if err := centerMouseOnObject(ctx, testParameters, mew, selector); err != nil {
+	if err := centerPointerOnObject(ctx, testParameters, mew, selector); err != nil {
 		return errors.Wrap(err, "failed to move the mouse into position")
 	}
 
@@ -494,7 +494,7 @@ func MouseMoveOntoObject(ctx context.Context, testParameters TestFuncParams, sel
 // multiple iterations should be run, with a check for the desired output
 // between each call.
 func MouseScroll(ctx context.Context, testParameters TestFuncParams, scrollDirection ScrollDirection, mew *input.MouseEventWriter) error {
-	if err := validateMouseCanBeUsed(ctx, testParameters); err != nil {
+	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
 		return errors.Wrap(err, "mouse cannot be used")
 	}
 
@@ -516,8 +516,8 @@ func MouseScroll(ctx context.Context, testParameters TestFuncParams, scrollDirec
 	return nil
 }
 
-// validateMouseCanBeUsed makes sure the mouse can be used in tests.
-func validateMouseCanBeUsed(ctx context.Context, testParameters TestFuncParams) error {
+// validatePointerCanBeUsed makes sure the pointer can be used in tests.
+func validatePointerCanBeUsed(ctx context.Context, testParameters TestFuncParams) error {
 	// The device cannot be in tablet mode.
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, testParameters.TestConn)
 	if err != nil {
@@ -531,8 +531,8 @@ func validateMouseCanBeUsed(ctx context.Context, testParameters TestFuncParams) 
 	return nil
 }
 
-// centerMouseOnObject is responsible for moving the mouse onto the center of the object.
-func centerMouseOnObject(ctx context.Context, testParameters TestFuncParams, mew *input.MouseEventWriter, selector *ui.Object) error {
+// centerPointerOnObject is responsible for moving the pointer onto the center of the object.
+func centerPointerOnObject(ctx context.Context, testParameters TestFuncParams, mew *input.MouseEventWriter, selector *ui.Object) error {
 	// Get the center of the element to make sure the element is actually clicked.
 	uiElementBounds, err := selector.GetBounds(ctx)
 	if err != nil {
