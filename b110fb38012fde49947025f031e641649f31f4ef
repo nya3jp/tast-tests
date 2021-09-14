@@ -138,6 +138,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e842f7_7ae2f8b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-14T22:26:56Z",
+      "side": 1,
+      "message": "Took in this comment, which rendered the following ones obsolete.\n\nEssentially the next patch merges local/webrtc/chrome.go into\ncamera/getusermedia/get_user_media.go.",
+      "parentUuid": "5a011ad5_e64c0d3a",
+      "revId": "b110fb38012fde49947025f031e641649f31f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba6b7bee_f9140666",
