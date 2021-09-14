@@ -4,7 +4,7 @@
      found in the LICENSE file.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.chromium.arc.testapp.arcstandardizedtouchscreentest">
+    package="org.chromium.arc.testapp.arcstandardizedinputtest">
 
   <uses-sdk
       android:minSdkVersion="28"
@@ -20,8 +20,7 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".ThreeFingerSwipeTestActivity" android:exported="true"></activity>
-    <activity android:name=".ScrollTestActivity" android:exported="true"></activity>
+    <activity android:name=".ZoomTestActivity" android:exported="true"></activity>
   </application>
 
 </manifest>
