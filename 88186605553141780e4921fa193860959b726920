@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e8cd720_05068bc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-09-14T20:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "874735dc_7b03eb00",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "88186605553141780e4921fa193860959b726920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77bcdb3b_543e0ab9",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-14T20:12:53Z",
       "side": 1,
       "message": "Nit: i think we only want to save this file if it doesn\u0027t contain the SECCOMP_POLICY_PATH\u003d/dev/null line?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 47
+      },
+      "revId": "88186605553141780e4921fa193860959b726920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8bd8322_f335d202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-09-14T20:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77bcdb3b_543e0ab9",
       "range": {
         "startLine": 113,
         "startChar": 0,
