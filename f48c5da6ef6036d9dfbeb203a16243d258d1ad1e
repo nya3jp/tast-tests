@@ -208,6 +208,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d0035a5_06731ef8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/cpufreq_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2021-09-14T22:04:32Z",
+      "side": 1,
+      "message": "\u003e Also, I don\u0027t really have the time right now.\n\nTotally fine with the current CL as is.",
+      "parentUuid": "341a9ff5_b81c42d8",
+      "revId": "f48c5da6ef6036d9dfbeb203a16243d258d1ad1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2871dfed_a13c2b0e",
