@@ -69,6 +69,24 @@
       "parentUuid": "c8c6b8e9_514522ae",
       "revId": "2e2bbfb0592709124200fd19196a1c0952114645",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ebdcf24_b748ce2a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-09-14T02:18:52Z",
+      "side": 1,
+      "message": "cmdRunner.Run issues a command over SSH and then does some processing with the returned error codes. The code I have works (I copied from another instance near by), but I have some troubles with the testexec.ExitCode. Do we need to be particular here?",
+      "parentUuid": "0b6e73ca_1daa4bc8",
+      "revId": "2e2bbfb0592709124200fd19196a1c0952114645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
