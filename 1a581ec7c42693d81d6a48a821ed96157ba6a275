@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63c4e7a_010d428f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_memory_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-14T19:52:54Z",
+      "side": 1,
+      "message": "I don\u0027t want to disable this test in CQ. Could we only mark informational for new Param?\n\n  ExtraAttr: []string{\"informational\"},\n  \nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests for detail",
+      "range": {
+        "startLine": 41,
+        "startChar": 43,
+        "endLine": 41,
+        "endChar": 58
+      },
+      "revId": "1a581ec7c42693d81d6a48a821ed96157ba6a275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
