@@ -67,7 +67,7 @@ func runStandardizedMouseRightClickTest(ctx context.Context, s *testing.State, t
 		s.Fatal("The success label should not yet exist, info: ", err)
 	}
 
-	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnRightClickSelector, mouse, standardizedtestutil.RightMouseButton); err != nil {
+	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnRightClickSelector, mouse, standardizedtestutil.RightPointerButton); err != nil {
 		s.Fatal("Unable to click the button, info: ", err)
 	}
 
