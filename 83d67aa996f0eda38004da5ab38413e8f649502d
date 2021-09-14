@@ -257,6 +257,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d48b61a6_2c5870ab",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1522102
+      },
+      "writtenOn": "2021-09-14T15:47:44Z",
+      "side": 1,
+      "message": "Thanks for the advice. \nPassed context to func MarkTestInProgress and MarkTestDone and log a message when tast user pass a wrong value to crash.markTestInProgress.",
+      "parentUuid": "f69e5f35_18f1b992",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 510,
+        "endChar": 23
+      },
+      "revId": "83d67aa996f0eda38004da5ab38413e8f649502d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9eb10b7_233e3ccf",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 2
@@ -340,6 +364,30 @@
       "side": 1,
       "message": "Ah, right -- great point. Could you please add a comment to explain why we\u0027re doing it this way, so that a future refactor doesn\u0027t incorrectly remove it?",
       "parentUuid": "dc9eaf5f_5581bcb0",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 2
+      },
+      "revId": "83d67aa996f0eda38004da5ab38413e8f649502d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c3857e2_64ae7b7e",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1522102
+      },
+      "writtenOn": "2021-09-14T15:47:44Z",
+      "side": 1,
+      "message": "one line comments was added to explain this case.",
+      "parentUuid": "54dfebee_04d1d776",
       "range": {
         "startLine": 530,
         "startChar": 0,

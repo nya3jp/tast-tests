@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4477f780_816f331c",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1522102
+      },
+      "writtenOn": "2021-09-14T15:47:44Z",
+      "side": 1,
+      "message": "Done. also changed the local var from testInProgFileVar to markTestInProgressVar.\nyes,this name is more clear to the TAST user.",
+      "parentUuid": "786fa37f_fbe1e56b",
+      "range": {
+        "startLine": 117,
+        "startChar": 9,
+        "endLine": 117,
+        "endChar": 23
+      },
+      "revId": "7a29b34ecfd0b3970af382a79e883f810db5dc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa435234_8aee6200",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 3
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4bb7460e_aea8e0bd",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1522102
+      },
+      "writtenOn": "2021-09-14T15:47:44Z",
+      "side": 1,
+      "message": "Done. I also change the local var from crashPrefixVarto testInprogressPrefixVar.",
+      "parentUuid": "fa435234_8aee6200",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 15
+      },
+      "revId": "7a29b34ecfd0b3970af382a79e883f810db5dc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bb1f45a0_8cf17416",
         "filename": "src/chromiumos/tast/local/crash/crash.go",
         "patchSetId": 3
@@ -77,6 +125,30 @@
       "writtenOn": "2021-09-14T05:54:59Z",
       "side": 1,
       "message": "nit: We can treat this function as a getter since it doesn\u0027t make any side effects. So how about naming it like shouldMarkTestInProgress, and calling it like\n\n if !shouldMarkTestInProgress() {\n   return nil\n }",
+      "range": {
+        "startLine": 505,
+        "startChar": 5,
+        "endLine": 505,
+        "endChar": 27
+      },
+      "revId": "7a29b34ecfd0b3970af382a79e883f810db5dc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6af21aa_04a12197",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1522102
+      },
+      "writtenOn": "2021-09-14T15:47:44Z",
+      "side": 1,
+      "message": "Done. yes, The new function name is better.",
+      "parentUuid": "bb1f45a0_8cf17416",
       "range": {
         "startLine": 505,
         "startChar": 5,
