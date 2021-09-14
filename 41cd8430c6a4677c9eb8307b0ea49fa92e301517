@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ecf771a_8390e6d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-14T18:39:55Z",
+      "side": 1,
+      "message": "Refactor \u0027mouse\u0027 names into \u0027pointer\u0027 so they can be used by upcoming trackpad tests.",
+      "revId": "41cd8430c6a4677c9eb8307b0ea49fa92e301517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
