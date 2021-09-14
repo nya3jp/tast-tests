@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b052557_4efed9ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-09-14T07:20:48Z",
+      "side": 1,
+      "message": "Actually this is kinda fine given the implied layout is US-Qwerty, even at user-facing level.",
+      "parentUuid": "f2e9a17d_9ff75291",
+      "revId": "6971e637a5f8e65b02d74039b0ee9a0964bdd445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a3126f8_1f75dd56",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-14T07:18:00Z",
       "side": 1,
       "message": "nit: Add a comment similar to the following. These are actually kinda location-based with US-Qwerty assumption. But works as \"characters\" because of an impl detail (using US-Qwerty as base then remapped at higher layer). It\u0027s a coincidence.\n\nhttps://crrev.com/c/3122973/6/src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go#89",
+      "revId": "6971e637a5f8e65b02d74039b0ee9a0964bdd445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "724a8877_937cd731",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-09-14T07:20:48Z",
+      "side": 1,
+      "message": "Actually this is kinda fine given the implied layout is US-Qwerty, even at user-facing level.",
+      "parentUuid": "2a3126f8_1f75dd56",
       "revId": "6971e637a5f8e65b02d74039b0ee9a0964bdd445",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "436891d1_fc18ce27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-09-14T07:20:48Z",
+      "side": 1,
+      "message": "Actually this is kinda fine given the implied layout is US-Qwerty. Comment about the fact that it\u0027s in romaji mode though (kana mode is available and it\u0027s different).",
+      "parentUuid": "163e2536_3702559b",
+      "revId": "6971e637a5f8e65b02d74039b0ee9a0964bdd445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab250359_170fe25f",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
         "patchSetId": 3
@@ -65,6 +119,24 @@
       "writtenOn": "2021-09-14T07:18:00Z",
       "side": 1,
       "message": "nit: Add a comment similar to the following. These are actually kinda location-based with US-Qwerty assumption. But works as \"characters\" because of an impl detail (using US-Qwerty as base then remapped at higher layer). It\u0027s a coincidence.\n\nhttps://crrev.com/c/3122973/6/src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go#89",
+      "revId": "6971e637a5f8e65b02d74039b0ee9a0964bdd445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82df0aa9_1131d7b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-09-14T07:20:48Z",
+      "side": 1,
+      "message": "Actually this is kinda fine given the implied layout is US-Qwerty, even at user-facing level.",
+      "parentUuid": "ab250359_170fe25f",
       "revId": "6971e637a5f8e65b02d74039b0ee9a0964bdd445",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
