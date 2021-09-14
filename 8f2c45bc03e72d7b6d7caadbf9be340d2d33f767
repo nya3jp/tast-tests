@@ -16,6 +16,23 @@
       "message": "Ian\u0027s out today, so adding Gabriel.",
       "revId": "8f2c45bc03e72d7b6d7caadbf9be340d2d33f767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb45f869_ed2f6465",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-14T10:58:30Z",
+      "side": 1,
+      "message": "LGTM\nHowever, shouldn\u0027t we move to fixtures instead of pre because it\u0027s deprecated?\nit could be in a different CL, because it\u0027s unrelated",
+      "revId": "8f2c45bc03e72d7b6d7caadbf9be340d2d33f767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
