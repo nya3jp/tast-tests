@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b7ac6b_c69fb013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-14T21:01:05Z",
+      "side": 1,
+      "message": "FYI these are platforms, so use SkipOnPlatform.",
+      "range": {
+        "startLine": 37,
+        "startChar": 31,
+        "endLine": 37,
+        "endChar": 38
+      },
+      "revId": "d926e492ca9a8364680c1eee4a3dd7e407dc24bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ac80e4c_46c4af06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-14T21:01:05Z",
+      "side": 1,
+      "message": "I think you mean SkipOnPlatform as you list Platforms and not Models.",
+      "range": {
+        "startLine": 95,
+        "startChar": 36,
+        "endLine": 95,
+        "endChar": 47
+      },
+      "revId": "d926e492ca9a8364680c1eee4a3dd7e407dc24bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6cd54eb_18c06be3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-14T21:01:05Z",
+      "side": 1,
+      "message": "Try to be generous",
+      "range": {
+        "startLine": 95,
+        "startChar": 48,
+        "endLine": 95,
+        "endChar": 61
+      },
+      "revId": "d926e492ca9a8364680c1eee4a3dd7e407dc24bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce48f7e1_92b5ace4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-14T21:01:05Z",
+      "side": 1,
+      "message": "rename all \"wip\" into \"unstable\"",
+      "range": {
+        "startLine": 97,
+        "startChar": 32,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "d926e492ca9a8364680c1eee4a3dd7e407dc24bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
