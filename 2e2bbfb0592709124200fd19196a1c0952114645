@@ -105,6 +105,24 @@
       "parentUuid": "0ebdcf24_b748ce2a",
       "revId": "2e2bbfb0592709124200fd19196a1c0952114645",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ea74a3_342b41fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-09-14T21:23:56Z",
+      "side": 1,
+      "message": "Ah, you are right, I confused myself. PTAL",
+      "parentUuid": "f48dc935_641fdb0d",
+      "revId": "2e2bbfb0592709124200fd19196a1c0952114645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
