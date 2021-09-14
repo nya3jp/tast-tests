@@ -190,6 +190,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "341a9ff5_b81c42d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/cpufreq_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2021-09-14T22:03:15Z",
+      "side": 1,
+      "message": "\u003e It looks like only 2 tests actually use that, \n\nNo. It is used in power_test base class. (Only the two tests you found don\u0027t extend from this base class) \n\nAll power tests can pass force_discharge argument and use this util. Example is power_Idle.default which is very stable in the lab.\n\nhttps://chromium.googlesource.com/chromiumos/third_party/autotest/+/HEAD/client/cros/power/power_test.py#67",
+      "parentUuid": "efd8d660_42ff9e10",
+      "revId": "f48c5da6ef6036d9dfbeb203a16243d258d1ad1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2871dfed_a13c2b0e",
