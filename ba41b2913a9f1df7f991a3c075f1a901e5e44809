@@ -52,6 +52,24 @@
       "parentUuid": "4dcd3de4_dcee5519",
       "revId": "ba41b2913a9f1df7f991a3c075f1a901e5e44809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c10ba346_b19be925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-14T10:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6369267_f257b717",
+      "revId": "ba41b2913a9f1df7f991a3c075f1a901e5e44809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
