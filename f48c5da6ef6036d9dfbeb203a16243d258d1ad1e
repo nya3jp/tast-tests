@@ -172,6 +172,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efd8d660_42ff9e10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/cpufreq_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-09-14T21:53:02Z",
+      "side": 1,
+      "message": "Thanks! It looks like only 2 tests actually use that, and those 2 are very much not reliable in the lab: http://shortn/_6PBT84sFE6\n\nOn first glance, those problems don\u0027t look like a force_discharge_utils problem, but it makes it impossible to evaluate the real flake.\n\nI think I\u0027ll just go with the current situation for now, because reliable 90% coverage is better than unreliable 100% coverage IMO. Also, I don\u0027t really have the time right now.",
+      "parentUuid": "7d7e556a_f67c81ee",
+      "revId": "f48c5da6ef6036d9dfbeb203a16243d258d1ad1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2871dfed_a13c2b0e",
