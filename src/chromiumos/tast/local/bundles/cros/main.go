@@ -67,6 +67,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/ocr"
 	_ "chromiumos/tast/local/bundles/cros/oobe"
 	_ "chromiumos/tast/local/bundles/cros/peripherals"
+	_ "chromiumos/tast/local/bundles/cros/phonehub"
 	_ "chromiumos/tast/local/bundles/cros/platform"
 	_ "chromiumos/tast/local/bundles/cros/policy"
 	_ "chromiumos/tast/local/bundles/cros/power"
