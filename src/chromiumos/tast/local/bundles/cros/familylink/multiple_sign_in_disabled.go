@@ -26,7 +26,7 @@ func init() {
 		Contacts: []string{
 			"tobyhuang@chromium.org", "cros-families-eng+test@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		VarDeps:      []string{"unicorn.childFirstName", "unicorn.childLastName"},
