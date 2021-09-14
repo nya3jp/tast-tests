@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87267211_5ec167ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-14T23:15:23Z",
+      "side": 1,
+      "message": "Looks great, just two nits.",
+      "revId": "58cd24eb4124988fa1db75e9d11eb2d0700a23d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f83203a_5e05c7a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-14T23:15:23Z",
+      "side": 1,
+      "message": "fails or failedSubtests?",
+      "range": {
+        "startLine": 370,
+        "startChar": 4,
+        "endLine": 370,
+        "endChar": 10
+      },
+      "revId": "58cd24eb4124988fa1db75e9d11eb2d0700a23d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f79065_434608ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-14T23:15:23Z",
+      "side": 1,
+      "message": "failedSubtests",
+      "range": {
+        "startLine": 419,
+        "startChar": 10,
+        "endLine": 419,
+        "endChar": 16
+      },
+      "revId": "58cd24eb4124988fa1db75e9d11eb2d0700a23d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "673e44dd_19d8ca0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-14T23:15:23Z",
+      "side": 1,
+      "message": "Still give the full summary detail as in \n\ns.Errorf(\"%q: %d pass/%d fail/%d skip (failing %s%s%s)\", testOpt.exe, results.passed+results.failed, results.failed, results.skipped, errors[0], errorsSeparator, lastSubtest)",
+      "range": {
+        "startLine": 446,
+        "startChar": 2,
+        "endLine": 446,
+        "endChar": 78
+      },
+      "revId": "58cd24eb4124988fa1db75e9d11eb2d0700a23d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
