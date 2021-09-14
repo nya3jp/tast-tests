@@ -73,6 +73,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7097daf2_834b654f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-14T17:55:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70c8990d_6e1c89c9",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "2a83ec872cb0d91fd3badedb18ca6d3b838202a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b3cbf07_793aaf0f",
@@ -86,6 +110,30 @@
       "writtenOn": "2021-09-14T11:12:16Z",
       "side": 1,
       "message": "Where are we going to create storage_drivefs.txt? Outside of this test?\n\nLooks like we have 3 scenarios:\n1. Do not create test file at all\n2. Create and remove a new test file for each test run\n3. (This case) Create a test file and reuse it every time",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "revId": "2a83ec872cb0d91fd3badedb18ca6d3b838202a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0386258a_0cba9f84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-14T17:55:48Z",
+      "side": 1,
+      "message": "The file creation is outside of the test. I mean I left a file with name \"storage_drivefs.txt\" in drive for test to consume.",
+      "parentUuid": "6b3cbf07_793aaf0f",
       "range": {
         "startLine": 83,
         "startChar": 2,
