@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/common/pkcs11/netcertstore"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
 	"chromiumos/tast/ctxutil"
@@ -1233,4 +1234,50 @@ func newRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtyp
 	default:
 		return nil, errors.Errorf("unexpected routerType, got %v", rtype)
 	}
+}
+
+// WaitWifiGUIDConnected waits until WiFi is connected to service with specific GUID.
+func (tf *TestFixture) WaitWifiGUIDConnected(ctx context.Context, guid string) error {
+	// Wait for service with matching GUID is selected
+	if guid != "" {
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			serInfo, err := tf.WifiClient().QueryService(ctx)
+			if err != nil {
+				return errors.Wrap(err, "Failed to get the WiFi service information from DUT")
+			}
+			if guid == serInfo.Guid {
+				return nil
+			} else {
+				return errors.New("GUID does not match, current service is: " + serInfo.Guid)
+			}
+		}, &testing.PollOptions{
+			Timeout:  30 * time.Second,
+			Interval: time.Second,
+		}); err != nil {
+			return errors.Wrap(err, "No matching GUID service selected")
+		}
+	}
+
+	// Wait for service to be connected
+	resp, err := tf.wifiClient.SelectedService(ctx, &empty.Empty{})
+	if err != nil {
+		return errors.Wrap(err, "failed to get selected service")
+	}
+
+	waitCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
+	defer cancel()
+	props := []*ShillProperty{{
+		Property:       shillconst.ServicePropertyIsConnected,
+		ExpectedValues: []interface{}{true},
+		Method:         wifi.ExpectShillPropertyRequest_CHECK_WAIT,
+	}}
+	wait, err := tf.wifiClient.ExpectShillProperty(waitCtx, resp.ServicePath, props, nil)
+	if err != nil {
+		return errors.Wrap(err, "Failed to watch service state: ")
+	}
+	if _, err := wait(); err != nil {
+		return errors.Wrap(err, "Failed to wait for service connected: ")
+	}
+
+	return nil
 }

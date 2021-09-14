@@ -71,6 +71,7 @@ type ConfigFactory struct {
 	outerProtocol  string
 	innerProtocol  string
 	wpaeapOps      []wpaeap.Option
+	phase2Users    []string
 }
 
 // NewConfigFactory builds a ConfigFactory with the given Option.
@@ -97,6 +98,9 @@ func NewConfigFactory(serverCACert string, serverCred certificate.Credential, cl
 
 	serverEAPUsers := fmt.Sprintf("* %s\n", fac.outerProtocol) +
 		fmt.Sprintf(`"%s" %s "%s" [2]`, fac.identity, fac.innerProtocol, fac.serverPassword)
+	for _, user := range fac.phase2Users {
+		serverEAPUsers += fmt.Sprintf("\n%s", user)
+	}
 	fac.wpaeapOps = append(fac.wpaeapOps, wpaeap.ServerEAPUsers(serverEAPUsers),
 		wpaeap.Identity(fac.identity), wpaeap.ClientCACert(fac.clientCACert),
 	)

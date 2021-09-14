@@ -7,6 +7,7 @@ package tunneled1x
 import (
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/common/wifi/security/wpaeap"
+	"fmt"
 )
 
 // Option is the function signature used to specify options of Config.
@@ -55,5 +56,13 @@ func FileSuffix(suffix string) Option {
 func Mode(mode wpa.ModeEnum) Option {
 	return func(c *ConfigFactory) {
 		c.wpaeapOps = append(c.wpaeapOps, wpaeap.Mode(mode))
+	}
+}
+
+// Phase2User returns an Option which adds addtional phase 2 user in Config.
+func Phase2User(user string, passwd string, protocol string) Option {
+	return func(c *ConfigFactory) {
+		line := fmt.Sprintf(`"%s" %s "%s" [2]`, user, protocol, passwd)
+		c.phase2Users = append(c.phase2Users, line)
 	}
 }
