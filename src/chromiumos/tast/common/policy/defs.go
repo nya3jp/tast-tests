@@ -2051,7 +2051,7 @@ func (p *NotificationsBlockedForUrls) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 type OpenNetworkConfiguration struct {
 	Stat Status
-	Val  string
+	Val  *ONC
 }
 
 func (p *OpenNetworkConfiguration) Name() string          { return "OpenNetworkConfiguration" }
@@ -2060,14 +2060,14 @@ func (p *OpenNetworkConfiguration) Scope() Scope          { return ScopeUser }
 func (p *OpenNetworkConfiguration) Status() Status        { return p.Stat }
 func (p *OpenNetworkConfiguration) UntypedV() interface{} { return p.Val }
 func (p *OpenNetworkConfiguration) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v string
+	var v *ONC
 	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as string", m)
+		return nil, errors.Wrapf(err, "could not read %s as *ONC", m)
 	}
 	return v, nil
 }
 func (p *OpenNetworkConfiguration) Equal(iface interface{}) bool {
-	v, ok := iface.(string)
+	v, ok := iface.(*ONC)
 	if !ok {
 		return ok
 	}
@@ -2081,7 +2081,7 @@ func (p *OpenNetworkConfiguration) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 type DeviceOpenNetworkConfiguration struct {
 	Stat Status
-	Val  string
+	Val  *ONC
 }
 
 func (p *DeviceOpenNetworkConfiguration) Name() string { return "DeviceOpenNetworkConfiguration" }
@@ -2092,14 +2092,14 @@ func (p *DeviceOpenNetworkConfiguration) Scope() Scope          { return ScopeDe
 func (p *DeviceOpenNetworkConfiguration) Status() Status        { return p.Stat }
 func (p *DeviceOpenNetworkConfiguration) UntypedV() interface{} { return p.Val }
 func (p *DeviceOpenNetworkConfiguration) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v string
+	var v *ONC
 	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as string", m)
+		return nil, errors.Wrapf(err, "could not read %s as *ONC", m)
 	}
 	return v, nil
 }
 func (p *DeviceOpenNetworkConfiguration) Equal(iface interface{}) bool {
-	v, ok := iface.(string)
+	v, ok := iface.(*ONC)
 	if !ok {
 		return ok
 	}
@@ -20034,4 +20034,37 @@ type RefConfig struct {
 	AccessCodeTtl       int    `json:"access_code_ttl"`
 	ClockDriftTolerance int    `json:"clock_drift_tolerance"`
 	SharedSecret        string `json:"shared_secret"`
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Open Network Configuration(ONC) schema.
+// Used in OpenNetworkConfiguration and DeviceOpenNetworkConfiguration.
+// This is a subset of the full schema. Only the parts that tast tests use are defined here.
+// See https://chromium.googlesource.com/chromium/src/+/HEAD/components/onc/docs/onc_spec.md for full schema.
+///////////////////////////////////////////////////////////////////////////////
+type ONCEap struct {
+	Outer        string `json:"Outer"`
+	Inner        string `json:"Inner,omitempty"`
+	Identity     string `json:"Identity,omitempty"`
+	Password     string `json:"Password,omitempty"`
+	UseSystemCAs bool   `json:"UseSystemCAs"`
+}
+
+type ONCWifi struct {
+	AutoConnect bool    `json:"AutoConnect"`
+	EAP         *ONCEap `json:"EAP,omitempty"`
+	Security    string  `json:"Security"`
+	SSID        string  `json:"SSID"`
+	Passphrase  string  `json:"Passphrase,omitempty"`
+}
+
+type ONCNetworkConfiguration struct {
+	GUID string   `json:"GUID"`
+	Name string   `json:"Name"`
+	Type string   `json:"Type"`
+	WiFi *ONCWifi `json:"WiFi,omitempty"`
+}
+
+type ONC struct {
+	NetworkConfigurations []*ONCNetworkConfiguration `json:"NetworkConfigurations,omitempty"`
 }
