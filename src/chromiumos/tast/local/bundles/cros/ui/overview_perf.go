@@ -82,8 +82,14 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	defer server.Close()
 	url := server.URL + "/animation.html"
 
+	conn, err := cs.NewConn(ctx, "about:blank")
+	if err != nil {
+		s.Fatal("Failed to open about:blank: ", err)
+	}
+	defer conn.Close()
+
 	runner := perfutil.NewRunner(cr)
-	currentWindows := 0
+	currentWindows := 1
 	// Run the overview mode enter/exit flow for various situations.
 	// - change the number of browser windows, 2 or 8
 	// - the window system status; clamshell mode with maximized windows,
@@ -236,17 +242,13 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 		// For tablet split view scenarios, snap
 		// a window and then exit overview.
 		if test.splitView {
-			ws, err := ash.GetAllWindows(ctx, tconn)
+			blank, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.Title == "Chrome - about:blank" })
 			if err != nil {
-				s.Fatal("Failed to get windows: ", err)
+				s.Fatal("Failed to get about:blank window: ", err)
 			}
 
-			if len(ws) == 0 {
-				s.Fatal("Found no windows")
-			}
-
-			if err := ash.SetWindowStateAndWait(ctx, tconn, ws[0].ID, ash.WindowStateLeftSnapped); err != nil {
-				s.Fatal("Failed to snap window: ", err)
+			if err := ash.SetWindowStateAndWait(ctx, tconn, blank.ID, ash.WindowStateLeftSnapped); err != nil {
+				s.Fatal("Failed to snap about:blank window: ", err)
 			}
 
 			if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
