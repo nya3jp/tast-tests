@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eb2df0c_64dd298f",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:42:38Z",
+      "side": 1,
+      "message": "Nice to mention that Matcher represents a condition to be matched against a process.",
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "305b5722_3ad08553",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:42:38Z",
+      "side": 1,
+      "message": "s/conditions/matchers/g",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e1cc27_1a63085d",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:42:38Z",
+      "side": 1,
+      "message": "So it is expected that all users of Find are trying to find exactly one process.\n\nDid you consider returning an error if there are two or more matching processes?",
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be037a0a_8273ba3b",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:42:38Z",
+      "side": 1,
+      "message": "I would name this \"FindAny\" to clarify that it can return arbitrary matching process.",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 9
+      },
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cabd877d_4cb89ae3",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:42:38Z",
+      "side": 1,
+      "message": "I think you intentionally required at least one matcher in the signature, but do we really need the requirement?\n\nI\u0027m slight afraid that this signature is a bit cumbersome when passing a varible number of matchers, e.g.\n\n matchers :\u003d []procutil.Matcher{...}\n if something {\n   matcher \u003d append(matchers, ...)\n }\n proc, err :\u003d procutil.Find(matchers[0], matchers[1:]...) // ouch",
+      "range": {
+        "startLine": 33,
+        "startChar": 10,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1549fca_7337e7b0",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:42:38Z",
+      "side": 1,
+      "message": "It\u0027s not obvious to me if it\u0027s right to return ErrNotFound when no process matches. Did you consider returning success in this case?",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
