@@ -52,28 +52,27 @@ const (
 // `hydraHostname` is optional, the other params are required.
 func NewLabRPM(ctx context.Context, pxy *servo.Proxy, dutHostname, powerunitHostname, powerunitOutlet, hydraHostname string) (*RPM, error) {
 	rpmHost := LocalRPMHost
+	port := DefaultRPMPort
 	if _, err := net.ResolveIPAddr("ip", rpmHost); err != nil {
 		testing.ContextLogf(ctx, "Could not resolve %q: %s", rpmHost, err)
 		rpmHost = RemoteRPMHost
+		// When running outside of the lab, the rpm server is not accessible, so proxy through the servo host.
+		if pxy != nil {
+			fwd, err := pxy.NewForwarder(ctx, fmt.Sprintf("%s:%d", rpmHost, DefaultRPMPort))
+			if err != nil {
+				return nil, errors.Wrap(err, "forwarding rpm port")
+			}
+			var portstr string
+			rpmHost, portstr, err = net.SplitHostPort(fwd.ListenAddr().String())
+			if err != nil {
+				return nil, errors.Wrap(err, "splitting host port")
+			}
+			port, err = strconv.Atoi(portstr)
+			if err != nil {
+				return nil, errors.Wrap(err, "parsing forwarded servo port")
+			}
+		}
 	}
-	port := DefaultRPMPort
-	// When running outside of the lab, the rpm server is not accessible, so proxy through the servo host.
-	if pxy != nil {
-		fwd, err := pxy.NewForwarder(ctx, fmt.Sprintf("%s:%d", rpmHost, DefaultRPMPort))
-		if err != nil {
-			return nil, errors.Wrap(err, "forwarding rpm port")
-		}
-		var portstr string
-		rpmHost, portstr, err = net.SplitHostPort(fwd.ListenAddr().String())
-		if err != nil {
-			return nil, errors.Wrap(err, "splitting host port")
-		}
-		port, err = strconv.Atoi(portstr)
-		if err != nil {
-			return nil, errors.Wrap(err, "parsing forwarded servo port")
-		}
-	}
-
 	r := &RPM{
 		xmlrpc:            xmlrpc.New(rpmHost, port),
 		dutHostname:       dutHostname,
