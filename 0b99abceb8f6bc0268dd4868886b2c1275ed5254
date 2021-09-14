@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c550bf4_896b4899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/switch_online_wallpapers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:28:08Z",
+      "side": 1,
+      "message": "It\u0027s nice to fit comments in 80-column.\ngo/go-style/decisions#comment-line-length\n\nSame for others.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 148
+      },
+      "revId": "0b99abceb8f6bc0268dd4868886b2c1275ed5254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "304dbf0d_153b9a2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/switch_online_wallpapers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:28:08Z",
+      "side": 1,
+      "message": "Could you include image name to the error message so that these errors are distinguishable? Same for others.\nMaybe better idea is iterate image names.\nfor image :\u003d range []string {...} {\n  ...SelectImage(.. image)...\n    s.Fatalf(\"Failed to select image %q: %v\", image, err)\n}",
+      "range": {
+        "startLine": 69,
+        "startChar": 28,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "0b99abceb8f6bc0268dd4868886b2c1275ed5254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cd1fe5d_121bb5ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/switch_online_wallpapers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:28:08Z",
+      "side": 1,
+      "message": "Can we remove combine because only one action is used?",
+      "range": {
+        "startLine": 85,
+        "startChar": 18,
+        "endLine": 85,
+        "endChar": 25
+      },
+      "revId": "0b99abceb8f6bc0268dd4868886b2c1275ed5254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0231446d_06ccacb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/switch_online_wallpapers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:28:08Z",
+      "side": 1,
+      "message": "nit: maybe just yellow ? I think Clr stands for color, but it\u0027s easy to see yellow is a color.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "0b99abceb8f6bc0268dd4868886b2c1275ed5254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "328f7c19_30b98d92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/switch_online_wallpapers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:28:08Z",
+      "side": 1,
+      "message": "nit: const expectedPercent \u003d 90",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 16
+      },
+      "revId": "0b99abceb8f6bc0268dd4868886b2c1275ed5254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27178c82_bee7c9b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/switch_online_wallpapers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:28:08Z",
+      "side": 1,
+      "message": "nit: is clr common abbreviation in this package? Otherwise I\u0027d recommend using color.",
+      "range": {
+        "startLine": 99,
+        "startChar": 64,
+        "endLine": 99,
+        "endChar": 67
+      },
+      "revId": "0b99abceb8f6bc0268dd4868886b2c1275ed5254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5cbf85e_5fbe608a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/switch_online_wallpapers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:28:08Z",
+      "side": 1,
+      "message": "correctPixels",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 11
+      },
+      "revId": "0b99abceb8f6bc0268dd4868886b2c1275ed5254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4051af8_f899b8dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/switch_online_wallpapers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:28:08Z",
+      "side": 1,
+      "message": "rect.Dx() * rect.Dy()",
+      "range": {
+        "startLine": 108,
+        "startChar": 17,
+        "endLine": 108,
+        "endChar": 70
+      },
+      "revId": "0b99abceb8f6bc0268dd4868886b2c1275ed5254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33086901_407591cc",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:28:08Z",
+      "side": 1,
+      "message": "It seems we can use Combine here and merge these operations into one action.\nCombine (\n  ui.RightClick...\n  ui.LeftClickUntil...\n)\nHow about making this function return this action, instead of actually running it? I think this conforms with uiauto\u0027s design idea, of deferring the actual execution of actions as much as possible.\nSame for other functions.",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "0b99abceb8f6bc0268dd4868886b2c1275ed5254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1880b8f_b97838a9",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:28:08Z",
+      "side": 1,
+      "message": "It\u0027s not needed because RightClick waits elelemtns to exist.",
+      "range": {
+        "startLine": 22,
+        "startChar": 14,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "0b99abceb8f6bc0268dd4868886b2c1275ed5254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92d28854_f657b7e4",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:28:08Z",
+      "side": 1,
+      "message": "Could you avoid extra formatting as Effective Go suggests using plain english for doc comments?\nhttps://golang.org/doc/effective_go.html#commentary",
+      "range": {
+        "startLine": 35,
+        "startChar": 58,
+        "endLine": 35,
+        "endChar": 70
+      },
+      "revId": "0b99abceb8f6bc0268dd4868886b2c1275ed5254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d05eed2_af0324cd",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:28:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 45,
+        "startChar": 49,
+        "endLine": 45,
+        "endChar": 54
+      },
+      "revId": "0b99abceb8f6bc0268dd4868886b2c1275ed5254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
