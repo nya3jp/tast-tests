@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e7ef5de_d0635e4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-14T15:18:00Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "c25cb8dc43018df42946c4aff484e87e6cbd65d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c10ba4a8_89cd56ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/device_params.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-14T15:18:00Z",
+      "side": 1,
+      "message": "GenRequestApp would seem more nice here.",
+      "range": {
+        "startLine": 32,
+        "startChar": 23,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "c25cb8dc43018df42946c4aff484e87e6cbd65d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec94cb8_6e6da9c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/types_request.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-14T15:18:00Z",
+      "side": 1,
+      "message": "I think AppID would be more inline with the other parameter names being in CamelCase.\nAt the first glance I read it like A.P.P.I.D.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "c25cb8dc43018df42946c4aff484e87e6cbd65d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "223bb29f_5d8461c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/types_response.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-14T15:18:00Z",
+      "side": 1,
+      "message": "as with RequestApp I think AppID would be better.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 6
+      },
+      "revId": "c25cb8dc43018df42946c4aff484e87e6cbd65d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fc1675a_9dd062b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/types_response.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-14T15:18:00Z",
+      "side": 1,
+      "message": "Something is missing here or this should be deleted.",
+      "range": {
+        "startLine": 64,
+        "startChar": 44,
+        "endLine": 64,
+        "endChar": 50
+      },
+      "revId": "c25cb8dc43018df42946c4aff484e87e6cbd65d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04c19cc6_6072ab35",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/stable.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-14T15:18:00Z",
+      "side": 1,
+      "message": "The description is incomplete.",
+      "range": {
+        "startLine": 20,
+        "startChar": 9,
+        "endLine": 20,
+        "endChar": 36
+      },
+      "revId": "c25cb8dc43018df42946c4aff484e87e6cbd65d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
