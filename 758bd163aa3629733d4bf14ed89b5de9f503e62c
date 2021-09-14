@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d443414_5afd1d78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-14T23:48:20Z",
+      "side": 1,
+      "message": "Most of our perf tests seem to have \"Perf\" in their test names:\nhttps://source.chromium.org/search?q\u003dchromiumos%2Ftast%2Fcommon%2Fperf%20testing%5C.AddTest%20file:tast%2Flocal%2Fbundles%2Fcros%2Farc\nMaybe we should follow the convention? (e.g. arc.MediaScanPerf)",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d5bb267_a6d78b2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-14T23:48:20Z",
+      "side": 1,
+      "message": "Now crrev.com/c/3143248 is merged. You can use arc.MyFilesUUID after rebasing.",
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "591731bd_d07841fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
         "patchSetId": 9
@@ -31,6 +71,24 @@
       "writtenOn": "2021-09-14T07:58:48Z",
       "side": 1,
       "message": "As I mentioned offline, we should use testing.Poll inside this function.\nThis is because the MyFiles volume might not be mounted yet when this function is called. In such a case, the MyFiles volume will not be listed in the output of sm list-volumes.\n\nAn alternative is to wait for the MyFiles volume to be mounted before calling this function. This option seems better because we should actually wait for emulated;0 to be mounted before doing measurement, too. We can pass a function to wait for the target volume to be mounted as a parameter.",
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43357b7d_fa4644f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-14T23:48:20Z",
+      "side": 1,
+      "message": "Now crrev.com/c/3143248 is merged. How abount defining two functions arc.MyFilesVolumeID and arc.SdcardVolumeID in src/chromiumos/tast/local/arc/volume.go after rebasing?\n  // In volume.go\n\n  // MyFilesVolumeID returns the volume ID of the MyFiles volume. It waits for\n  // the volume to be mounted if it is not mounted yet.\n  func MyFilesVolumeID(ctx context.Context, a *arc.ARC) (string, error) {\n    [...]\n  }\n\n  // SdcardVolumeID returns the volume ID of the sdcard volume\n  // (/storage/emulated/0). Although the volume ID itself is a constant, the\n  // function waits for the volume to be mounted if it is not mounted yet,\n  // so that the ID is guaranteed to be valid and usable inside ARC.\n  func SdcardVolumeID(ctx context.Context, a *arc.ARC) (string, error) {\n    [...]\n  }",
+      "parentUuid": "246a71e7_6176eece",
       "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
