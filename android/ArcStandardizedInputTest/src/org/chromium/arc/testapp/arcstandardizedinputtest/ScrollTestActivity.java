@@ -4,7 +4,7 @@
  * found in the LICENSE file.
  */
 
-package org.chromium.arc.testapp.arcstandardizedtouchscreentest;
+package org.chromium.arc.testapp.arcstandardizedinputtest;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -24,7 +24,7 @@ public class ScrollTestActivity extends Activity {
     static final int SCROLL_UP_THRESHOLD_AMOUNT = 20;
 
     // The current state of the test
-    private ScrollBeingTested mcurrentTestState = ScrollBeingTested.DOWN;
+    private ScrollBeingTested mCurrentTestState = ScrollBeingTested.DOWN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class ScrollTestActivity extends Activity {
                     mTxtDebugState.setText(String.format("scrollY: %d", scrollY));
 
                     // Determine the state of the test and update accordingly.
-                    switch (mcurrentTestState) {
+                    switch (mCurrentTestState) {
                         case DOWN:
                             if (scrollY > SCROLL_DOWN_THRESHOLD_AMOUNT) {
                                 // Update the UI to show that the down test is finished and start
@@ -53,7 +53,7 @@ public class ScrollTestActivity extends Activity {
                                 TextView txtScrollDownTestState =
                                         findViewById(R.id.txtScrollDownTestState);
                                 txtScrollDownTestState.setText("COMPLETE");
-                                mcurrentTestState = ScrollBeingTested.UP;
+                                mCurrentTestState = ScrollBeingTested.UP;
                             }
                             break;
                         case UP:
@@ -62,7 +62,7 @@ public class ScrollTestActivity extends Activity {
                                 TextView txtScrollUpTestState =
                                         findViewById(R.id.txtScrollUpTestState);
                                 txtScrollUpTestState.setText("COMPLETE");
-                                mcurrentTestState = ScrollBeingTested.NONE;
+                                mCurrentTestState = ScrollBeingTested.NONE;
                             }
                             break;
                     }
