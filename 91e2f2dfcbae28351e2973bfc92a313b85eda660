@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23fbed2e_74792fb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_loopback_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-14T06:36:38Z",
+      "side": 1,
+      "message": "I will create a shared func for the above `newgrp cras` code.",
+      "revId": "91e2f2dfcbae28351e2973bfc92a313b85eda660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
