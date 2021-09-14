@@ -173,6 +173,24 @@
       "parentUuid": "898dcb3c_00a3cef3",
       "revId": "d5d239330ba35980761078832bd5a054f89f8ce0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f36e0524_250c7a18",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-09-14T07:33:54Z",
+      "side": 1,
+      "message": "I\u0027ve updated at https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3144972/5 can you take a look?",
+      "parentUuid": "f1f353b0_8625cfe4",
+      "revId": "d5d239330ba35980761078832bd5a054f89f8ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
