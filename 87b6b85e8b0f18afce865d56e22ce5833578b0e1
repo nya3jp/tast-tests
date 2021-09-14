@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29405ee_abb233c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-14T00:16:14Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "87b6b85e8b0f18afce865d56e22ce5833578b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2050281b_afc3b176",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-14T00:16:14Z",
+      "side": 1,
+      "message": "huge nit: remove this word since seems redundant. the \"may fail\" kind of implies \"occasionally\".",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 15
+      },
+      "revId": "87b6b85e8b0f18afce865d56e22ce5833578b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aef2936c_e8b2bf13",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-14T00:16:14Z",
+      "side": 1,
+      "message": "huge nit: whenever possible, make it shorter (easier to read). e.g:\n\n  // performGAIAEnrollmentSignIn performs GAIA enrollment using the given credentials.\n  // Uses maxGAIAEnterpriseEnrollmentRetries as the retry count.",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 36
+      },
+      "revId": "87b6b85e8b0f18afce865d56e22ce5833578b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a996a26e_567becfe",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-14T00:16:14Z",
+      "side": 1,
+      "message": "huge nit: remove word. Implied by context.",
+      "range": {
+        "startLine": 130,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 27
+      },
+      "revId": "87b6b85e8b0f18afce865d56e22ce5833578b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
