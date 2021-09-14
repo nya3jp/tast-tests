@@ -41,7 +41,7 @@ func init() {
 			},
 			{
 				Name: "recent_reboot",
-				ExtraHardwareDeps: hwdep.D(hwdep.SmartAmpBootTimeCalibration()),	
+				ExtraHardwareDeps: hwdep.D(hwdep.SmartAmpBootTimeCalibration()),
 				Val: soundcardinit.TestParameters{
 					Func: recentReboot,
 				},
@@ -52,7 +52,8 @@ func init() {
 
 // TODO(b/171217019): parse sound_card_init yaml to get ampCount.
 const ampCount = 2
-const timeout = 2 * time.Second
+const initctlTimeout = 2 * time.Second
+const soundCardInitTimeout = 5 * time.Second
 
 // SoundCardInit Verifies sound_card_init boot time calibration logic.
 func SoundCardInit(ctx context.Context, s *testing.State) {
@@ -86,7 +87,7 @@ func exitSuccess(ctx context.Context, s *testing.State, soundCardID string) {
 	runTimeFile := fmt.Sprintf(soundcardinit.RunTimeFile, soundCardID)
 	startTime := time.Now()
 	// Run sound_card_init.
-	runCtx, cancel := context.WithTimeout(ctx, timeout)
+	runCtx, cancel := context.WithTimeout(ctx, initctlTimeout)
 	defer cancel()
 	if err := testexec.CommandContext(
 		runCtx, "/sbin/initctl",
@@ -106,7 +107,7 @@ func exitSuccess(ctx context.Context, s *testing.State, soundCardID string) {
 			return nil
 		}
 		return errors.New(runTimeFile + " is not updated")
-	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+	}, &testing.PollOptions{Timeout: soundCardInitTimeout}); err != nil {
 		s.Fatal("Failed to wait for sound_card_init completion: ", err)
 	}
 }
@@ -114,7 +115,7 @@ func exitSuccess(ctx context.Context, s *testing.State, soundCardID string) {
 // bootTimeCalibration verifies sound_card_init boot time calibration works correctly.
 func bootTimeCalibration(ctx context.Context, s *testing.State, soundCardID string) {
 	// Run sound_card_init.
-	runCtx, cancel := context.WithTimeout(ctx, timeout)
+	runCtx, cancel := context.WithTimeout(ctx, initctlTimeout)
 	defer cancel()
 	if err := testexec.CommandContext(
 		runCtx, "/sbin/initctl",
@@ -126,7 +127,7 @@ func bootTimeCalibration(ctx context.Context, s *testing.State, soundCardID stri
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return soundcardinit.VerifyUseVPD(ctx, soundCardID, ampCount)
-	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+	}, &testing.PollOptions{Timeout: soundCardInitTimeout}); err != nil {
 		s.Fatal("Failed to verify calib files using VPD value: ", err)
 	}
 }
@@ -142,10 +143,8 @@ func recentReboot(ctx context.Context, s *testing.State, soundCardID string) {
 		s.Fatalf("Failed to create %s: %v", soundcardinit.StopTimeFile, err)
 	}
 
-	f := fmt.Sprintf(soundcardinit.RunTimeFile, soundCardID)
-	startTime := time.Now()
 	// Run sound_card_init.
-	runCtx, cancel := context.WithTimeout(ctx, timeout)
+	runCtx, cancel := context.WithTimeout(ctx, initctlTimeout)
 	defer cancel()
 	if err := testexec.CommandContext(
 		runCtx, "/sbin/initctl",
@@ -154,22 +153,10 @@ func recentReboot(ctx context.Context, s *testing.State, soundCardID string) {
 	).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to run sound_card_init: ", err)
 	}
+	//Wait for sound_card_init completion.
+	testing.Sleep(ctx, soundCardInitTimeout)
 
-	// Poll for sound_card_init run time file being updated, which means sound_card_init completes running.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := os.Stat(f)
-		if err != nil {
-			return errors.Wrapf(err, "failed to stat %s:", f)
-		}
-		if info.ModTime().After(startTime) {
-			return nil
-		}
-		return errors.New(f + " is not updated")
-	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		s.Fatal("Failed to wait for sound_card_init completion: ", err)
-	}
-
-	// Verify calib files still not exist after sound_card_init completion.
+	// Verify calib files still do not exist after sound_card_init completion.
 	if err := soundcardinit.VerifyCalibNotExist(ctx, soundCardID, ampCount); err != nil {
 		s.Fatal("Boot time calibration should be skipped after the recent reboot: ", err)
 	}
