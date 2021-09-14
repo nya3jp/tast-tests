@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "803a4e45_f2ef8cad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-14T18:58:40Z",
+      "side": 1,
+      "message": "Those errors would not show up in Testmon. \nThe current design is server serves request from binaries. And testmon shows up any errors the binaries returned. \nIn this case, trace_replay checks the http status code (StatusBadRequest or StatusOK). But more precise logging message always helps!",
+      "parentUuid": "190a23cd_a48c8637",
+      "revId": "597a5b44841184550c34b069cec59dc44ddbfa71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c033d56_50c458b1",
