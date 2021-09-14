@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd8d8dc_8b1b2781",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-14T08:55:44Z",
+      "side": 1,
+      "message": "ShillInitScriptsLoginProfileExists",
+      "range": {
+        "startLine": 7,
+        "startChar": 19,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "10c4f77457c373fc0dd53d28f6f4e17d880cc4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bddea20_d7b63a7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-14T08:55:44Z",
+      "side": 1,
+      "message": "a nit",
+      "revId": "10c4f77457c373fc0dd53d28f6f4e17d880cc4ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
