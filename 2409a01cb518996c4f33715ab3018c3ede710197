@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32c97c53_2101c3d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:17:45Z",
+      "side": 1,
+      "message": "Hi, sorry I was offline yesterday. I have just one comment...\n",
+      "revId": "2409a01cb518996c4f33715ab3018c3ede710197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf2e22a_8a116302",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:17:45Z",
+      "side": 1,
+      "message": "Do we need this method? It will allow users to call DUT methods directly, which can break invariants of RPCDUT. I recommend dropping it.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 1
+      },
+      "revId": "2409a01cb518996c4f33715ab3018c3ede710197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

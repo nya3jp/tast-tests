@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4905adb_b15aa3cc",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e168e4a_b87cdcc0",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af43f220_bb03c909",
@@ -125,6 +149,54 @@
       "side": 1,
       "message": "That\u0027s fair. The users don\u0027t need to call Close in the embedded dut.DUT anyways, so it can be used to Close this object.",
       "parentUuid": "af43f220_bb03c909",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 64
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c21ce3a_bb05b3a2",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08e7d3a7_fa4673ce",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 64
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b45ae1_4d2da25d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:17:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "08e7d3a7_fa4673ce",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -195,6 +267,30 @@
       "writtenOn": "2021-08-30T06:46:22Z",
       "side": 1,
       "message": "Let us document that\n- It can return nil after Reboot fails\n- Returned Client can be invalidated by Reboot, in which case we have to recreate RPC stubs",
+      "range": {
+        "startLine": 71,
+        "startChar": 21,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "8b76ce53a9a7da65bf92b6e832deeae8d3bd2df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b43d0f6_d5be7cc4",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-14T05:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd6bceff_4ce9fd8c",
       "range": {
         "startLine": 71,
         "startChar": 21,
