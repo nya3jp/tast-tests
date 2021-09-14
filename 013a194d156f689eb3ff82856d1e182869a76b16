@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdfc044b_939c05d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-14T01:26:14Z",
+      "side": 1,
+      "message": "About 400 lines? It does not seem that bad, and it is easier to read in my opinion.",
+      "parentUuid": "c1e691f1_2a7306c8",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "013a194d156f689eb3ff82856d1e182869a76b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b29d7b72_a5e4d838",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
         "patchSetId": 21
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-13T07:58:58Z",
       "side": 1,
       "message": "This err refers to the reading of the kernel log file, not cmd.Output. Is this expected? Might want to disambiguate the error variables names",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 7
+      },
+      "revId": "013a194d156f689eb3ff82856d1e182869a76b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c652fce_36a2e2bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-14T01:26:14Z",
+      "side": 1,
+      "message": "You are right. Thanks!",
+      "parentUuid": "b29d7b72_a5e4d838",
       "range": {
         "startLine": 131,
         "startChar": 4,
@@ -77,6 +125,30 @@
       "writtenOn": "2021-09-13T07:58:58Z",
       "side": 1,
       "message": "nit: Maybe s.Log before this then do if condition and s.Fatal(\"Test failed.\")",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 19
+      },
+      "revId": "013a194d156f689eb3ff82856d1e182869a76b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe986d3_b54416a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-14T01:26:14Z",
+      "side": 1,
+      "message": "I would prefer having the number of passes/failures in the short description in stainless upon failure.",
+      "parentUuid": "1e73f71f_8516fd6f",
       "range": {
         "startLine": 145,
         "startChar": 1,
