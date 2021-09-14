@@ -507,6 +507,52 @@ type DeviceLocalAccountInfo struct {
 """
   return attr_type, attr_structs
 
+# Override url_schema in OpenNetworkConfiguration and DeviceOpenNetworkConfiguration.
+# This is a subset of the full schema. Only the parts that tast tests use are defined here.
+# See https://chromium.googlesource.com/chromium/src/+/HEAD/components/onc/docs/onc_spec.md for full schema.
+def parse_override_onc(p, refs):
+  value_name = p.name + 'Value'
+  attr_type = '*' + value_name
+  attr_structs = """
+type EAP struct {
+\tOuter\tstring\t`json:"Outer"`
+\tInner\tstring\t`json:"Inner,omitempty"`
+\tIdentity\tstring\t`json:"Identity,omitempty"`
+\tPassword\tstring\t`json:"Password,omitempty"`
+\tUseSystemCAs\tbool\t`json:"UseSystemCAs"`
+}
+
+type WiFi struct {
+\tAutoConnect\tbool\t`json:"AutoConnect"`
+\tEAP\t*EAP\t`json:"EAP,omitempty"`
+\tSecurity\tstring\t`json:"Security"`
+\tSSID\tstring\t`json:"SSID"`
+\tPassphrase\tstring\t`json:"Passphrase,omitempty"`
+}
+
+type NetworkConfiguration struct {
+\tGUID\tstring\t`json:"GUID"`
+\tName\tstring\t`json:"Name"`
+\tType\tstring\t`json:"Type"`
+\tWiFi\t*WiFi\t`json:"WiFi,omitempty"`
+}
+
+type OpenNetworkConfigurationValue struct {
+\tNetworkConfigurations\t[]*NetworkConfiguration\t`json:"NetworkConfigurations,omitempty"`
+}
+"""
+  return attr_type, attr_structs
+
+def parse_override_device_onc(p, refs):
+  value_name = p.name + 'Value'
+  attr_type = '*' + value_name
+  attr_structs = """
+type DeviceOpenNetworkConfigurationValue struct {
+\tNetworkConfigurations\t[]*NetworkConfiguration\t`json:"NetworkConfigurations,omitempty"`
+}
+"""
+  return attr_type, attr_structs
+
 def ref_parse_override_managed_bookmarks(schema, refs):
   name = 'Ref' + schema['items']['id']
   refs[schema['items']['id']] = Reference(name, '*'+name, '')
@@ -525,7 +571,9 @@ type RefBookmarkType struct {
 PARSE_OVERRIDES = {
     'ExtensionSettings': parse_override_extension_settings,
     'ArcPolicy': parse_override_arc_policy,
-    'DeviceLocalAccounts': parse_override_device_local_accounts
+    'DeviceLocalAccounts': parse_override_device_local_accounts,
+    'OpenNetworkConfiguration': parse_override_onc,
+    'DeviceOpenNetworkConfiguration': parse_override_device_onc
 }
 
 # Functions to use for reference objects when the default way won't work.
