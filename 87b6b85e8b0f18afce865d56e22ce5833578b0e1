@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5def7e6_a37fd657",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-14T17:10:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2050281b_afc3b176",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 15
+      },
+      "revId": "87b6b85e8b0f18afce865d56e22ce5833578b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aef2936c_e8b2bf13",
@@ -77,6 +101,30 @@
       "writtenOn": "2021-09-14T00:16:14Z",
       "side": 1,
       "message": "huge nit: remove word. Implied by context.",
+      "range": {
+        "startLine": 130,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 27
+      },
+      "revId": "87b6b85e8b0f18afce865d56e22ce5833578b0e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b81697_fec308fc",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-14T17:10:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a996a26e_567becfe",
       "range": {
         "startLine": 130,
         "startChar": 3,
