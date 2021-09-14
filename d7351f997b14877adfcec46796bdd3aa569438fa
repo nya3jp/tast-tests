@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9511d35_704f0749",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-14T06:35:13Z",
+      "side": 1,
+      "message": "It\u0027s diretly dervied from Python code in FAFT. For me it also looks somewhat suspicious, but I was sure it has to be like that since it wasn\u0027t present in every FAFT testcase.\n\nIf you have better way to handle this correctly, please tell me and I\u0027ll apply that in every CL which requires it.",
+      "parentUuid": "69f0221d_9c5767bd",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 4
+      },
+      "revId": "d7351f997b14877adfcec46796bdd3aa569438fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff3c593a_4c36c833",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
         "patchSetId": 10
