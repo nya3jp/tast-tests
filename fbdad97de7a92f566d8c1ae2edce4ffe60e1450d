@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "998cd13d_1afd2b8b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-14T16:00:30Z",
+      "side": 1,
+      "message": "CQ Failed:\n\n```\ntast-remote-tests-cros-0.0.2-r7626: # chromiumos/tast/remote/bundles/cros/firmware\ntast-remote-tests-cros-0.0.2-r7626: src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go:65:5: Fatalf call has error-wrapping directive %w\ntast-remote-tests-cros-0.0.2-r7626: src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go:71:4: Fatalf call has error-wrapping directive %w\ntast-remote-tests-cros-0.0.2-r7626: src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go:77:5: Fatalf call has error-wrapping directive %w\ntast-remote-tests-cros-0.0.2-r7626: src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go:90:5: Fatalf call has error-wrapping directive %w\n```",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 64
+      },
+      "revId": "fbdad97de7a92f566d8c1ae2edce4ffe60e1450d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
