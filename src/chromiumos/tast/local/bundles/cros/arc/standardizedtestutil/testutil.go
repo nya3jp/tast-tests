@@ -626,6 +626,57 @@ func TrackpadScroll(ctx context.Context, trackpad *input.TrackpadEventWriter, te
 	return nil
 }
 
+// TrackpadZoom performs a two-finger zoom gesture on the trackpad.
+func TrackpadZoom(ctx context.Context, trackpad *input.TrackpadEventWriter, testParameters TestFuncParams, selector *ui.Object, zoomType ZoomType) error {
+	const (
+		zoomDistancePerFinger = 450
+		zoomDuration          = 200 * time.Millisecond
+	)
+
+	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
+		return errors.Wrap(err, "pointer cannot cannot be used")
+	}
+
+	if err := centerPointerOnObject(ctx, testParameters, selector); err != nil {
+		return errors.Wrap(err, "failed to move the trackpad into position")
+	}
+
+	mtw, err := getTrackpadWriterSetupForTwoFingerGestures(ctx, trackpad)
+	if err != nil {
+		return errors.Wrap(err, "Unable to initialize multi-touch writer")
+	}
+	defer mtw.Close()
+
+	// The zoom can start at the middle of the trackpad.
+	x := trackpad.Width() / 2
+	y := trackpad.Height() / 2
+
+	// Perform the appropriate zoom.
+	switch zoomType {
+	case ZoomIn:
+		if err := mtw.ZoomIn(ctx, x, y, zoomDistancePerFinger, zoomDuration); err != nil {
+			return errors.Wrap(err, "unable to zoom in")
+		}
+
+		break
+	case ZoomOut:
+		if err := mtw.ZoomOut(ctx, x, y, zoomDistancePerFinger, zoomDuration); err != nil {
+			return errors.Wrap(err, "unable to zoom out")
+		}
+
+		break
+	default:
+		return errors.Errorf("invalid zoom type provided: %v", zoomType)
+	}
+
+	// End the gesture.
+	if err := mtw.End(); err != nil {
+		return errors.Wrap(err, "unable to end the zoom")
+	}
+
+	return nil
+}
+
 // validatePointerCanBeUsed makes sure the pointer can be used in tests.
 func validatePointerCanBeUsed(ctx context.Context, testParameters TestFuncParams) error {
 	// The device cannot be in tablet mode.
