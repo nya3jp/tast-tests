@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d06a6a7c_8451cfd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-09-14T00:35:45Z",
+      "side": 1,
+      "message": "Sorry, not sure how Tast Owners got on the bug to review. Misclick on the UI. Apologies",
+      "revId": "96d54657ac4687850e5effb2598321d69a36721e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
