@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b75eac_5d41abc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-14T00:36:31Z",
+      "side": 1,
+      "message": "nit: not totally correct.\n\nusb-devices returns a list of USB devices. And Device represents just one device.\n\nWhat about:\n\n// Device represents a USB device.",
+      "range": {
+        "startLine": 20,
+        "startChar": 32,
+        "endLine": 20,
+        "endChar": 43
+      },
+      "revId": "d6f404d49fb389413ad318a93436d87216e56728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e04ed0a_0dbd409c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-14T00:36:31Z",
+      "side": 1,
+      "message": "ditto: probable needs a better description",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "d6f404d49fb389413ad318a93436d87216e56728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e06359e_f035395c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-14T00:36:31Z",
+      "side": 1,
+      "message": "nit: list of USB devices?",
+      "range": {
+        "startLine": 45,
+        "startChar": 29,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "d6f404d49fb389413ad318a93436d87216e56728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac53fe2_487b6452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-14T00:36:31Z",
+      "side": 1,
+      "message": "ditto from my previous review. Add what are you parsing. e.g:\n\n  // Output of usb-devices looks like:\n  // T:  Bus\u003d01 Lev\u003d00 Prnt\u003d00 Port\u003d00 Cnt\u003d00 Dev#\u003d  1 Spd\u003d480 MxCh\u003d16\n  // D:  Ver\u003d 2.00 Cls\u003d09(hub  ) Sub\u003d00 Prot\u003d01 MxPS\u003d64 #Cfgs\u003d  1\n  // ...\n  // where an empty line represents end of device.",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 46
+      },
+      "revId": "d6f404d49fb389413ad318a93436d87216e56728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9749bfaf_0d646ea5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-14T00:36:31Z",
+      "side": 1,
+      "message": "nit: remove prefix \u0027get\u0027\n\nhttps://golang.org/doc/effective_go#Getters",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 8
+      },
+      "revId": "d6f404d49fb389413ad318a93436d87216e56728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b084147_af51192f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-14T00:36:31Z",
+      "side": 1,
+      "message": "nit: append example. e.g:\n\n  // The name is.... E.g:\n  // Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 49
+      },
+      "revId": "d6f404d49fb389413ad318a93436d87216e56728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ab7394f_88267956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-14T00:36:31Z",
+      "side": 1,
+      "message": "nit (ditto above). event though the provided link explains the format, it helps with the readability to include an example of the output format.",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 119
+      },
+      "revId": "d6f404d49fb389413ad318a93436d87216e56728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef98c694_0d91b1a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-14T00:36:31Z",
+      "side": 1,
+      "message": "nit: explain what \"l\" is supposed to be.",
+      "range": {
+        "startLine": 97,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 10
+      },
+      "revId": "d6f404d49fb389413ad318a93436d87216e56728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e913d91d_02eacdbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-14T00:36:31Z",
+      "side": 1,
+      "message": "nit: add a default\n\nif default should do nothing that add a comment saying so:\n\n  default:\n     // It is safe to ignore other cases.",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 4
+      },
+      "revId": "d6f404d49fb389413ad318a93436d87216e56728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
