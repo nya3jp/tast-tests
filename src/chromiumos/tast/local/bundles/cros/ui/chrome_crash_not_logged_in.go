@@ -54,7 +54,6 @@ func init() {
 				handler: chromecrash.Crashpad,
 				consent: crash.RealConsent,
 			},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"crashpad", "metrics_consent"},
 			// This test performs 2 logins.
 			Timeout: 2*chrome.LoginTimeout + time.Minute,
@@ -91,7 +90,6 @@ func init() {
 				handler: chromecrash.Crashpad,
 				consent: crash.RealConsent,
 			},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"crashpad", "metrics_consent"},
 			// This test performs 2 logins.
 			Timeout: 2*chrome.LoginTimeout + time.Minute,
