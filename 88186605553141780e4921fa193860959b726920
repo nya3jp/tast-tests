@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75d814bd_4e83a665",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-09-14T20:12:53Z",
+      "side": 1,
+      "message": "Thanks Allen! Just a few more small details",
+      "revId": "88186605553141780e4921fa193860959b726920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "874735dc_7b03eb00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-09-14T20:12:53Z",
+      "side": 1,
+      "message": "Please also defer crash.TearDownCrashTest(ctx), like what https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crash/crash/crash.go;l\u003d585?q\u003dcrash.TearDownCrashTest\u0026ss\u003dchromiumos does",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "88186605553141780e4921fa193860959b726920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77bcdb3b_543e0ab9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-09-14T20:12:53Z",
+      "side": 1,
+      "message": "Nit: i think we only want to save this file if it doesn\u0027t contain the SECCOMP_POLICY_PATH\u003d/dev/null line?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 47
+      },
+      "revId": "88186605553141780e4921fa193860959b726920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
