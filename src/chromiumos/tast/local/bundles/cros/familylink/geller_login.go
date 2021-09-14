@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/testing"
 )
@@ -18,9 +19,9 @@ func init() {
 		Func:         GellerLogin,
 		Desc:         "Checks if Geller login is working",
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-oac@google.com", "tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      time.Minute,
+		Timeout:      chrome.GAIALoginTimeout + time.Minute,
 		Fixture:      "familyLinkGellerLogin",
 	})
 }

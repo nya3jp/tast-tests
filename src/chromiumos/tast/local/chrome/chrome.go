@@ -46,11 +46,6 @@ const (
 	// 40*3=120 seconds for the safety.
 	GAIALoginTimeout = LoginTimeout + 40*time.Second
 
-	// GAIALoginChildTimeout is the maximum amount of time that Chrome is expected
-	// to take to perform actual gaia login for a child account. Use double the
-	// regular GAIALoginTimeout because we check credentials for two users (child and parent).
-	GAIALoginChildTimeout = 2 * GAIALoginTimeout
-
 	// ManagedUserLoginTimeout is the maximum amount of time that Chrome is expected to take to perform login for a managed user.
 	// Tests that call New with the default fake login mode and a managed user should declare a timeout that's at least this long.
 	// TODO(crbug.com/1199705): Find a better value or go back to LoginTimeout.
