@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b649a0dd_995b5e1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-14T18:34:14Z",
+      "side": 1,
+      "message": "nit: newline before this line",
+      "revId": "01c72f3de56d5faec1ceff5b976805e160559513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb74fe41_caac5fb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-14T18:34:14Z",
+      "side": 1,
+      "message": "nit: this empty line can be removed",
+      "revId": "01c72f3de56d5faec1ceff5b976805e160559513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a451a282_af05a7bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-14T18:34:14Z",
+      "side": 1,
+      "message": "nit: this empty line can be removed",
+      "revId": "01c72f3de56d5faec1ceff5b976805e160559513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
