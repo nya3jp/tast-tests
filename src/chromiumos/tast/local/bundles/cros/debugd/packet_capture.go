@@ -108,19 +108,34 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 			}
 
 			// Remove the created output file aftert the test ends.
-			defer func(ctx context.Context) {
+			defer func() {
 				if err := os.Remove(of.Name()); err != nil {
 					s.Error("Failed to remove the output file : ", err)
 				}
-			}(ctx)
+			}()
 
 			readPipe, writePipe, err := os.Pipe()
 			if err != nil {
 				s.Fatal("Failed to create status pipe: ", err)
 			}
+			defer func() {
+				writePipe.Close()
+				readPipe.Close()
+			}()
 
+			isCapturing := true
 			testing.ContextLog(ctx, "Making packet capture D-Bus call")
 			handle, err := dbg.PacketCaptureStart(ctx, of, writePipe, param.options)
+			defer func() {
+				if !isCapturing {
+					return
+				}
+
+				// Stop packet capture.
+				if err := dbg.PacketCaptureStop(ctx, handle); err != nil {
+					s.Error("PacketCaptureStop DBus call failed: ", err)
+				}
+			}()
 
 			if err == nil && !param.expectSuccess {
 				// If there is no error returned when failure is expected, check the
@@ -129,8 +144,28 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 				// during execution, it doesn't return error but it writes on status
 				// pipe. Status output will be non-empty in case of a failure.
 				writePipe.Close()
+
+				needClose := true
+				defer func() {
+					needClose = false
+				}()
+
+				go func(ctx context.Context) {
+					if err := testing.Sleep(ctx, 15*time.Second); err != nil {
+						// Context was cancelled
+						return
+					}
+
+					if needClose {
+						readPipe.Close()
+					}
+				}(ctx)
+
+				testing.ContextLog(ctx, "Reading error from packet capture")
 				var buf bytes.Buffer
-				io.Copy(&buf, readPipe)
+				if _, err := io.Copy(&buf, readPipe); err != nil {
+					s.Fatal("Failed to read error: ", err)
+				}
 				if buf.String() == "" {
 					s.Error("PacketCaptureStart succeeded when it's expected to fail")
 				}
@@ -163,6 +198,8 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 			// Stop packet capture.
 			if err := dbg.PacketCaptureStop(ctx, handle); err != nil {
 				s.Error("PacketCaptureStop DBus call failed: ", err)
+			} else {
+				isCapturing = false
 			}
 
 			// Notification must be gone after the packet capture is stopped.
