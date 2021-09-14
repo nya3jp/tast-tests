@@ -63,13 +63,13 @@ type TestCase struct {
 	WindowStateType ash.WindowStateType
 }
 
-// TouchscreenZoomType represents the touchscreen zoom type to perform.
-type TouchscreenZoomType int
+// ZoomType represents the zoom type to perform.
+type ZoomType int
 
-// Holds all of the zoom types that can be performed on the touchscreen.
+// Holds all of the zoom types that can be performed.
 const (
-	TouchscreenZoomIn TouchscreenZoomType = iota
-	TouchscreenZoomOut
+	ZoomIn ZoomType = iota
+	ZoomOut
 )
 
 // TouchscreenTapType represents the touch screen tap type to perform.
@@ -301,7 +301,7 @@ func TouchscreenScroll(ctx context.Context, touchScreen *input.TouchscreenEventW
 // TouchscreenZoom performs a zoom on the touchscreen. Zoom in distance
 // varies per device but the function aims to zoom by 2x (i.e. a scale factor of 2.0
 // when zooming in, or .5 when zooming out).
-func TouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters TestFuncParams, selector *ui.Object, zoomType TouchscreenZoomType) error {
+func TouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters TestFuncParams, selector *ui.Object, zoomType ZoomType) error {
 	const (
 		zoomDistancePerFinger = 900
 		zoomDuration          = 250 * time.Millisecond
@@ -322,13 +322,13 @@ func TouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWri
 
 	// Perform the appropriate zoom.
 	switch zoomType {
-	case TouchscreenZoomIn:
+	case ZoomIn:
 		if err := mtw.ZoomIn(ctx, *x, *y, zoomDistancePerFinger, zoomDuration); err != nil {
 			return errors.Wrap(err, "unable to zoom in")
 		}
 
 		break
-	case TouchscreenZoomOut:
+	case ZoomOut:
 		if err := mtw.ZoomOut(ctx, *x, *y, zoomDistancePerFinger, zoomDuration); err != nil {
 			return errors.Wrap(err, "unable to zoom in")
 		}

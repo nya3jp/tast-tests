@@ -4,7 +4,7 @@
  * found in the LICENSE file.
  */
 
-package org.chromium.arc.testapp.arcstandardizedtouchscreentest;
+package org.chromium.arc.testapp.arcstandardizedinputtest;
 
 public interface OnZoomListener {
     void zoom(float scaleFactor);

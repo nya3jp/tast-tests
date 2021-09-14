@@ -52,8 +52,8 @@ func init() {
 
 func StandardizedTouchscreenZoom(ctx context.Context, s *testing.State) {
 	const (
-		apkName      = "ArcStandardizedTouchscreenTest.apk"
-		appName      = "org.chromium.arc.testapp.arcstandardizedtouchscreentest"
+		apkName      = "ArcStandardizedInputTest.apk"
+		appName      = "org.chromium.arc.testapp.arcstandardizedinputtest"
 		activityName = ".ZoomTestActivity"
 	)
 
@@ -91,7 +91,7 @@ func runStandardizedTouchscreenZoomTest(ctx context.Context, s *testing.State, t
 	}
 
 	// After the zoom in, only the zoom in label should be in the success state.
-	if err := standardizedtestutil.TouchscreenZoom(ctx, touchScreen, testParameters, txtZoomSelector, standardizedtestutil.TouchscreenZoomIn); err != nil {
+	if err := standardizedtestutil.TouchscreenZoom(ctx, touchScreen, testParameters, txtZoomSelector, standardizedtestutil.ZoomIn); err != nil {
 		s.Fatal("Unable to perform the zoom, info: ", err)
 	}
 
@@ -104,7 +104,7 @@ func runStandardizedTouchscreenZoomTest(ctx context.Context, s *testing.State, t
 	}
 
 	// After the zoom out, all zoom labels should be in the success state.
-	if err := standardizedtestutil.TouchscreenZoom(ctx, touchScreen, testParameters, txtZoomSelector, standardizedtestutil.TouchscreenZoomOut); err != nil {
+	if err := standardizedtestutil.TouchscreenZoom(ctx, touchScreen, testParameters, txtZoomSelector, standardizedtestutil.ZoomOut); err != nil {
 		s.Fatal("Unable to perform the zoom, info: ", err)
 	}
 
