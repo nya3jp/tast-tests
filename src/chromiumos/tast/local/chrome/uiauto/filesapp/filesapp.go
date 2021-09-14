@@ -147,6 +147,11 @@ func (f *FilesApp) WaitForFile(fileName string) uiauto.Action {
 	return f.WaitUntilExists(file(fileName))
 }
 
+// WaitForFileTimeout returns a function that waits for a file to exist with timeout.
+func (f *FilesApp) WaitForFileTimeout(fileName string, timeout time.Duration) uiauto.Action {
+	return f.WithTimeout(timeout).WaitUntilExists(file(fileName))
+}
+
 // WaitUntilFileGone returns a function that waits for a file to no longer exist.
 func (f *FilesApp) WaitUntilFileGone(fileName string) uiauto.Action {
 	return f.WaitUntilGone(file(fileName))
