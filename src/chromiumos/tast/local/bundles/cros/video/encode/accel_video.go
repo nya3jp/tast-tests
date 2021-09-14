@@ -179,6 +179,7 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 	}
 	testArgs := []string{logging.ChromeVmoduleFlag(),
 		fmt.Sprintf("--codec=%s", codec),
+		"--reverse",
 		yuvPath,
 		yuvJSONPath,
 	}
@@ -278,6 +279,7 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 	testArgs := []string{
 		fmt.Sprintf("--codec=%s", codec),
 		fmt.Sprintf("--output_folder=%s", s.OutDir()),
+		"--reverse",
 		yuvPath,
 		yuvJSONPath,
 	}
