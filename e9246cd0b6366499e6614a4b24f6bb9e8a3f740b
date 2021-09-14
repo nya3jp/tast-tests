@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8807284_963df1ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-14T14:37:23Z",
+      "side": 1,
+      "message": "Wondering if, instead of using Params, this should be a table-driven test. I feel like this might be a better way to factor things, and we\u0027re not using any of the other Params features (such as inclusion of different external files, etc.)",
+      "revId": "e9246cd0b6366499e6614a4b24f6bb9e8a3f740b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a75160cc_bfe001d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-14T14:37:23Z",
+      "side": 1,
+      "message": "You can just use %v here, or convert this line to s.Log instead",
+      "range": {
+        "startLine": 72,
+        "startChar": 44,
+        "endLine": 72,
+        "endChar": 46
+      },
+      "revId": "e9246cd0b6366499e6614a4b24f6bb9e8a3f740b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89c88ca2_27157783",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-14T14:37:23Z",
+      "side": 1,
+      "message": "space after this colon/you can use s.Log here instead, right?",
+      "range": {
+        "startLine": 84,
+        "startChar": 46,
+        "endLine": 84,
+        "endChar": 47
+      },
+      "revId": "e9246cd0b6366499e6614a4b24f6bb9e8a3f740b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd82b24f_170e39e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-14T14:37:23Z",
+      "side": 1,
+      "message": "I think we can just say\n\n Warning: failed to enable bootchart: ...",
+      "range": {
+        "startLine": 119,
+        "startChar": 45,
+        "endLine": 119,
+        "endChar": 50
+      },
+      "revId": "e9246cd0b6366499e6614a4b24f6bb9e8a3f740b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13ac8593_180f8b0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-14T14:37:23Z",
+      "side": 1,
+      "message": "this is a constant, any reason not to just use 1000000 here?",
+      "range": {
+        "startLine": 255,
+        "startChar": 25,
+        "endLine": 255,
+        "endChar": 40
+      },
+      "revId": "e9246cd0b6366499e6614a4b24f6bb9e8a3f740b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
