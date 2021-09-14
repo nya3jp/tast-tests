@@ -38,7 +38,6 @@ func init() {
 				handler:  chromecrash.Crashpad,
 				fileType: chromecrash.MetaFile,
 			},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"crashpad"},
 		}},
 	})
