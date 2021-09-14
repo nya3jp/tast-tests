@@ -160,9 +160,15 @@ func FunctionalAfterCSA(ctx context.Context, s *testing.State) {
 			if err := ap.DeauthenticateClient(ctx, clientHWAddr); err != nil {
 				s.Fatal("Failed to disconnect WiFi: ", err)
 			}
+			testing.Sleep(ctx, 10*time.Second)
 			// Wait for DUT to disconnect.
 			if err := tf.WifiClient().AssureDisconnect(ctx, resp.ServicePath, 20*time.Second); err != nil {
-				s.Fatalf("DUT: failed to disconnect in %s: %v", 20*time.Second, err)
+				s.Logf("DUT: failed to disconnect after deauthenticating the client on the AP in %s: %v", 20*time.Second, err)
+				// The DUT would auto-connect sometimes and casue this function to fail.
+				// Force a disconnection to make sure that the DUT is disconnected before the next iteration.
+				if err := tf.DisconnectWifi(ctx); err != nil {
+					s.Fatal("Failed to disconnect WiFi: ", err)
+				}
 			}
 		}
 		disconnected = true
