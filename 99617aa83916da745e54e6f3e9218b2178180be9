@@ -16,6 +16,23 @@
       "message": "PTAL again!",
       "revId": "99617aa83916da745e54e6f3e9218b2178180be9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b5d1692_9987e34e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-14T09:13:28Z",
+      "side": 1,
+      "message": "I\u0027m wondering if wmRC02/wmRC03 can be merged in the future.",
+      "revId": "99617aa83916da745e54e6f3e9218b2178180be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
