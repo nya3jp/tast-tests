@@ -22,6 +22,30 @@
       },
       "revId": "ed5fd2248a276398125ae16500c754320ad798f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aac5e44_06897436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-14T00:35:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23984bab_3f38220b",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "ed5fd2248a276398125ae16500c754320ad798f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
