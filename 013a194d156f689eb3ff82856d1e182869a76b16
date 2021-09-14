@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fae78d41_f21144fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-14T01:46:26Z",
+      "side": 1,
+      "message": "One of the core tast principles [1] is test results should be easy to intepret, specifically stating: \"A separate log file should be written with full verbose output\". The output from s.Log/Fatal/Error is written to stdout which is captured by the CQ/CI and thus bloating that with ~400 lines might make it easier to read for yourself but bloat the overall stdout for everyone else.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/design_principles.md#Test-results-should-be-easy-to-interpret",
+      "parentUuid": "fdfc044b_939c05d5",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "013a194d156f689eb3ff82856d1e182869a76b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b29d7b72_a5e4d838",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
         "patchSetId": 21
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "I would prefer having the number of passes/failures in the short description in stainless upon failure.",
       "parentUuid": "1e73f71f_8516fd6f",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 19
+      },
+      "revId": "013a194d156f689eb3ff82856d1e182869a76b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c4becbe_9d8e206c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-14T01:46:26Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "5fe986d3_b54416a0",
       "range": {
         "startLine": 145,
         "startChar": 1,
