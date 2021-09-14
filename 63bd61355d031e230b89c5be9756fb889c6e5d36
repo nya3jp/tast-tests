@@ -158,6 +158,30 @@
       },
       "revId": "63bd61355d031e230b89c5be9756fb889c6e5d36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9f204df_7ba663d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-09-14T07:58:11Z",
+      "side": 1,
+      "message": "Oh, I see that this part has treacherously slipped out of the commit ;)\nFixed now.",
+      "parentUuid": "9316e008_6902b5c2",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 349,
+        "endChar": 0
+      },
+      "revId": "63bd61355d031e230b89c5be9756fb889c6e5d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
