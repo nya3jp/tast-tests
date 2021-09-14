@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23984bab_3f38220b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-14T00:14:13Z",
+      "side": 1,
+      "message": "nit: since interface is a reserved keyword, you may want to change to some other meaningful name like usbBusInterface?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "ed5fd2248a276398125ae16500c754320ad798f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
