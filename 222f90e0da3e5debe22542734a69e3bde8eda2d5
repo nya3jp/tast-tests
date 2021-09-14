@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68553a5a_48cb13dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-14T11:56:09Z",
+      "side": 1,
+      "message": "This file is opened in R/W mode. It should be closed before overwriting by the othre writer.",
+      "revId": "222f90e0da3e5debe22542734a69e3bde8eda2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa83c568_d2a26bbc",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
         "patchSetId": 3
