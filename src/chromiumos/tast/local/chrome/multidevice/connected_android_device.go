@@ -8,10 +8,12 @@ package multidevice
 import (
 	"context"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/mobly"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
@@ -83,6 +85,46 @@ func (c *ConnectedAndroidDevice) Connect(ctx context.Context, timeout time.Durat
 		return errors.Wrap(err, "failed waiting for onBeToHostEnableStatus event to know that multidevice setup is complete on Android")
 	}
 
+	return nil
+}
+
+// ToggleDoNotDisturb toggles the Do Not Disturb setting on the Android device.
+func (c *ConnectedAndroidDevice) ToggleDoNotDisturb(ctx context.Context, enable bool) error {
+	status := "off"
+	if enable {
+		status = "on"
+	}
+	if err := c.device.ShellCommand(ctx, "cmd", "notification", "set_dnd", status).Run(); err != nil {
+		return errors.Wrapf(err, "failed to set Do Not Disturb to %v", status)
+	}
+	return nil
+}
+
+// DoNotDisturbEnabled returns true if Do Not Disturb is enabled, and false if it is disabled.
+func (c *ConnectedAndroidDevice) DoNotDisturbEnabled(ctx context.Context) (bool, error) {
+	res, err := c.device.ShellCommand(ctx, "sh", "-c", "settings list global | grep zen_mode=").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get Do Not Disturb status")
+	}
+	if strings.Contains(string(res), "0") {
+		return false, nil
+	}
+	// Any status that's not 0 corresponds to DND being enabled.
+	return true, nil
+}
+
+// WaitForDoNotDisturb waits for Do Not Disturb to be enabled/disabled.
+func (c *ConnectedAndroidDevice) WaitForDoNotDisturb(ctx context.Context, enabled bool, timeout time.Duration) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if curr, err := c.DoNotDisturbEnabled(ctx); err != nil {
+			return err
+		} else if curr != enabled {
+			return errors.New("current Do Not Disturb status does not match the desired status")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout}); err != nil {
+		return errors.Wrap(err, "failed waiting for desired Do Not Disturb status")
+	}
 	return nil
 }
 
