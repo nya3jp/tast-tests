@@ -10,5 +10,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".PointerLeftClickTestActivity">
+
+  <!-- Left Click Test -->
+  <Button
+      android:id="@+id/btnLeftClick"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Left"/>
+
 </LinearLayout>

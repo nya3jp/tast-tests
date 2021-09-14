@@ -20,6 +20,8 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".PointerLeftClickTestActivity" android:exported="true"></activity>
+    <activity android:name=".PointerRightClickTestActivity" android:exported="true"></activity>
     <activity android:name=".ZoomTestActivity" android:exported="true"></activity>
     <activity android:name=".ScrollTestActivity" android:exported="true"></activity>
   </application>
