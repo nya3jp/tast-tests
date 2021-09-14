@@ -12,8 +12,10 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -34,21 +36,16 @@ func DoSystemProxyAuthentication(ctx context.Context, tconn *chrome.TestConn, us
 	if _, err := ash.WaitForNotification(ctx, tconn, uiTimeout, ash.WaitTitle(notificationTitle)); err != nil {
 		return errors.Wrapf(err, "failed waiting %v for system-proxy notification", uiTimeout)
 	}
-
-	pollOpts := testing.PollOptions{Interval: 2 * time.Second, Timeout: uiTimeout}
-	if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-		Name: notificationTitle,
-		Role: ui.RoleTypeStaticText,
-	}, &pollOpts); err != nil {
+	ui := uiauto.New(tconn)
+	if err := ui.WithPollOpts(testing.PollOptions{Interval: 2 * time.Second, Timeout: uiTimeout}).LeftClick(nodewith.Name(notificationTitle).Role(role.StaticText))(ctx); err != nil {
 		return errors.Wrap(err, "failed finding notification and clicking it")
 	}
 
 	// Introduce Credentials in the system-proxy dialog.
-	dialog, err := ui.StableFind(ctx, tconn, ui.FindParams{ClassName: "RequestSystemProxyCredentialsView"}, &pollOpts)
-	if err != nil {
+	dialog := nodewith.ClassName("RequestSystemProxyCredentialsView")
+	if err := ui.WithPollOpts(testing.PollOptions{Interval: 2 * time.Second, Timeout: uiTimeout}).WaitUntilExists(dialog)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find system-proxy dialog")
 	}
-	defer dialog.Release(ctx)
 
 	// Set up keyboard.
 	kb, err := input.Keyboard(ctx)
@@ -68,13 +65,12 @@ func DoSystemProxyAuthentication(ctx context.Context, tconn *chrome.TestConn, us
 		return errors.Wrap(err, "failed to type password")
 	}
 
-	okButton, err := dialog.DescendantWithTimeout(ctx, ui.FindParams{Role: ui.RoleTypeButton, Name: "Sign in"}, uiTimeout)
-	if err != nil {
+	okButton := nodewith.Role(role.Button).Name("Sign in").Ancestor(dialog)
+	if err := ui.WithTimeout(uiTimeout).WaitUntilExists(okButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find field")
 	}
-	defer okButton.Release(ctx)
 
-	if err := okButton.LeftClick(ctx); err != nil {
+	if err := ui.LeftClick(okButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click the sign in button")
 	}
 	return nil
