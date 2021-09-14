@@ -598,6 +598,22 @@ func (tw *TouchEventWriter) DoubleSwipe(ctx context.Context, x0, y0, x1, y1, d T
 	return tw.Swipe(ctx, x0, y0, x1, y1, d, 2, t)
 }
 
+// SetSize sets the major/minor appropriately for all touches.
+func (tw *TouchEventWriter) SetSize(ctx context.Context, major, minor int32) error {
+	if major < 0 || minor < 0 {
+		return errors.New("major and minor must be positive")
+	} else if major < minor {
+		return errors.New("major must be greater than or equal to minor")
+	}
+
+	for idx := range tw.touches {
+		tw.touches[idx].touchMajor = major
+		tw.touches[idx].touchMinor = minor
+	}
+
+	return nil
+}
+
 // SetIsBtnToolFinger Sets the state of the BTN_TOOL_FINGER flag.
 func (tw *TouchEventWriter) SetIsBtnToolFinger(isEnabled bool) {
 	tw.isBtnToolFingerEnabled = isEnabled

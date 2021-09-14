@@ -519,9 +519,13 @@ func MouseScroll(ctx context.Context, testParameters TestFuncParams, scrollDirec
 // Trackpad related constants. These values were derived experimentally and
 // should work on both physical, and virtual trackpads.
 const (
-	TrackpadMajorSize     = 240
-	TrackpadMinorSize     = 180
-	TrackpadClickPressure = 25
+	TrackpadMajorSize            = 240
+	TrackpadMinorSize            = 180
+	TrackpadClickPressure        = 25
+	TrackpadGesturePressure      = 10
+	TrackpadVerticalScrollAmount = 900
+	TrackpadScrollDuration       = 200 * time.Millisecond
+	TrackpadFingerSeparation     = 350
 )
 
 // TrackpadClickObject implements a click on the trackpad.
@@ -577,6 +581,51 @@ func TrackpadClickObject(ctx context.Context, testParameters TestFuncParams, sel
 	return nil
 }
 
+// TrackpadScroll performs a two-finger scroll gesture on the trackpad.
+func TrackpadScroll(ctx context.Context, trackpad *input.TrackpadEventWriter, testParameters TestFuncParams, selector *ui.Object, scrollDirection ScrollDirection) error {
+	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
+		return errors.Wrap(err, "pointer cannot cannot be used")
+	}
+
+	if err := centerPointerOnObject(ctx, testParameters, selector); err != nil {
+		return errors.Wrap(err, "failed to move the trackpad into position")
+	}
+
+	mtw, err := getTrackpadWriterSetupForTwoFingerGestures(ctx, trackpad)
+	if err != nil {
+		return errors.Wrap(err, "Unable to initialize multi-touch writer")
+	}
+	defer mtw.Close()
+
+	// Calculate where to scroll to based on the provided direction.
+	x := trackpad.Width() / 2
+	y := trackpad.Height() / 2
+
+	scrollToX := x
+	scrollToY := y
+	switch scrollDirection {
+	case DownScroll:
+		scrollToY = y + TrackpadVerticalScrollAmount
+		break
+	case UpScroll:
+		scrollToY = y - TrackpadVerticalScrollAmount
+		break
+	default:
+		return errors.Errorf("invalid scroll direction: %v", scrollDirection)
+	}
+
+	// Move both fingers accordingly.
+	if err := mtw.DoubleSwipe(ctx, x, y, scrollToX, scrollToY, input.TouchCoord(TrackpadFingerSeparation), TrackpadScrollDuration); err != nil {
+		return errors.Wrap(err, "unable to perform the scroll")
+	}
+
+	if err := mtw.End(); err != nil {
+		return errors.Wrap(err, "unable to end the scroll")
+	}
+
+	return nil
+}
+
 // validatePointerCanBeUsed makes sure the pointer can be used in tests.
 func validatePointerCanBeUsed(ctx context.Context, testParameters TestFuncParams) error {
 	// The device cannot be in tablet mode.
@@ -619,6 +668,28 @@ func centerPointerOnObject(ctx context.Context, testParameters TestFuncParams, s
 	}
 
 	return nil
+}
+
+// getTrackpadWriterSetupForTwoFingerGestures returns a touch event writer that can be used for implementing trackpad related gestures.
+func getTrackpadWriterSetupForTwoFingerGestures(ctx context.Context, trackpad *input.TrackpadEventWriter) (*input.TouchEventWriter, error) {
+	mtw, err := trackpad.NewMultiTouchWriter(2)
+	if err != nil {
+		return nil, errors.Wrap(err, "Unable to initialize multi-touch writer")
+	}
+	defer mtw.Close()
+
+	// Setup the trackpad to simulate two fingers resting on the trackpad.
+	if err := mtw.SetSize(ctx, TrackpadMajorSize, TrackpadMinorSize); err != nil {
+		return nil, errors.Wrap(err, "unable to set size")
+	}
+
+	if err := mtw.SetPressure(TrackpadGesturePressure); err != nil {
+		return nil, errors.Wrap(err, "unable to set pressure")
+	}
+
+	mtw.SetIsBtnToolDoubleTap(true)
+
+	return mtw, nil
 }
 
 // TabletOnlyModels is a list of tablet only models to be skipped from clamshell mode runs.
