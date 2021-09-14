@@ -16,6 +16,24 @@
       "message": "This is great - did you check that the test fails on Chrome OS versions without your fix CL? That\u0027s the CL that returns CE_CRYPTO_OTHER error instead of FATAL.",
       "revId": "1ca495f6c9d621805e51727b2f4aeaebc89a15ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c448d1_49a6b189",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-09-14T09:30:02Z",
+      "side": 1,
+      "message": "Yeah, the test will failed without crrev.com/c/3145031",
+      "parentUuid": "306fcfc9_be8ccc2b",
+      "revId": "1ca495f6c9d621805e51727b2f4aeaebc89a15ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
