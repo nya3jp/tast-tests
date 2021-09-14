@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4074f42d_86040e2d",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-14T12:26:36Z",
+      "side": 1,
+      "message": "nit: maybe add an \"in\"?",
+      "range": {
+        "startLine": 510,
+        "startChar": 21,
+        "endLine": 510,
+        "endChar": 22
+      },
+      "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
