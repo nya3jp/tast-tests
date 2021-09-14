@@ -16,6 +16,29 @@
       "message": "LGTM % nits",
       "revId": "0fcf0703d4214bd713bcbc045e644e8ef29566e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73d27774_b7d98443",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_file_system.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-14T14:18:19Z",
+      "side": 1,
+      "message": "This line is too long.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 137
+      },
+      "revId": "0fcf0703d4214bd713bcbc045e644e8ef29566e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
