@@ -127,16 +127,7 @@ func LaunchAtPageURL(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chr
 	if err != nil {
 		return nil, err
 	}
-
-	settingsConn, err := s.ChromeConn(ctx, cr)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to OS settings target")
-	}
-
-	if err := webutil.NavigateToURLInApp(settingsConn, urlPrefix+pageShortURL, condition, 20*time.Second)(ctx); err != nil {
-		return nil, err
-	}
-	return s, nil
+	return s, s.NavigateToPageURL(ctx, cr, pageShortURL, condition)
 }
 
 // LaunchAtAppMgmtPage launches the Settings app at a particular app management page under app
@@ -145,6 +136,17 @@ func LaunchAtPageURL(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chr
 // It calls LaunchAtPageURL.
 func LaunchAtAppMgmtPage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, appID string, condition func(context.Context) error) (*OSSettings, error) {
 	return LaunchAtPageURL(ctx, tconn, cr, fmt.Sprintf("app-management/detail?id=%s", appID), condition)
+}
+
+// NavigateToPageURL navigates the Settings app to a particular page.
+func (s *OSSettings) NavigateToPageURL(ctx context.Context, cr *chrome.Chrome, pageShortURL string, condition func(context.Context) error) error {
+	settingsConn, err := s.ChromeConn(ctx, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to OS settings target")
+	}
+	defer settingsConn.Close()
+
+	return webutil.NavigateToURLInApp(settingsConn, urlPrefix+pageShortURL, condition, 20*time.Second)(ctx)
 }
 
 // LaunchHelpApp returns a function that launches Help app by clicking "Get help with Chrome OS".
