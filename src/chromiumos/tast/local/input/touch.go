@@ -290,10 +290,12 @@ func (tcc *TouchCoordConverter) ConvertLocation(l coords.Point) (x, y TouchCoord
 
 // TouchEventWriter supports injecting touch events into a touchscreen device.
 type TouchEventWriter struct {
-	tsw            *TouchscreenEventWriter
-	touches        []TouchState
-	touchStartTime time.Time
-	ended          bool
+	tsw                       *TouchscreenEventWriter
+	touches                   []TouchState
+	touchStartTime            time.Time
+	ended                     bool
+	isBtnToolFingerEnabled    bool
+	isBtnToolDoubleTapEnabled bool
 }
 
 // SingleTouchEventWriter supports injecting a single touch into a touchscreen device.
@@ -384,12 +386,22 @@ func (tw *TouchEventWriter) Send() error {
 	}
 
 	// Then send the rest of the event codes.
-	for _, e := range []kernelEventEntry{
+	globalKernelEvents := []kernelEventEntry{
 		{EV_KEY, BTN_TOUCH, 1},
 		{EV_ABS, ABS_X, int32(tw.touches[0].x)},
 		{EV_ABS, ABS_Y, int32(tw.touches[0].y)},
 		{EV_ABS, ABS_PRESSURE, tw.touches[0].absPressure},
-	} {
+	}
+
+	if tw.isBtnToolFingerEnabled {
+		globalKernelEvents = append(globalKernelEvents, kernelEventEntry{et: EV_KEY, ec: BTN_TOOL_FINGER, val: int32(1)})
+	}
+
+	if tw.isBtnToolDoubleTapEnabled {
+		globalKernelEvents = append(globalKernelEvents, kernelEventEntry{et: EV_KEY, ec: BTN_TOOL_DOUBLETAP, val: int32(1)})
+	}
+
+	for _, e := range globalKernelEvents {
 		if err := tw.tsw.rw.Event(e.et, e.ec, e.val); err != nil {
 			return err
 		}
@@ -414,16 +426,29 @@ func (tw *TouchEventWriter) End() error {
 		}
 	}
 
-	for _, e := range []kernelEventEntry{
+	globalEventsToEnd := []kernelEventEntry{
 		{EV_ABS, ABS_PRESSURE, 0},
 		{EV_KEY, BTN_TOUCH, 0},
-	} {
+	}
+
+	if tw.isBtnToolFingerEnabled {
+		globalEventsToEnd = append(globalEventsToEnd, kernelEventEntry{et: EV_KEY, ec: BTN_TOOL_FINGER, val: 0})
+	}
+
+	if tw.isBtnToolDoubleTapEnabled {
+		globalEventsToEnd = append(globalEventsToEnd, kernelEventEntry{et: EV_KEY, ec: BTN_TOOL_DOUBLETAP, val: 0})
+	}
+
+	for _, e := range globalEventsToEnd {
 		if err := tw.tsw.rw.Event(e.et, e.ec, e.val); err != nil {
 			return err
 		}
 	}
 
 	tw.ended = true
+	tw.isBtnToolFingerEnabled = false
+	tw.isBtnToolDoubleTapEnabled = false
+
 	return tw.tsw.rw.Sync()
 }
 
@@ -571,6 +596,29 @@ func (tw *TouchEventWriter) ZoomOut(ctx context.Context, centerX, centerY, d Tou
 // DoubleSwipe() does not call End(), allowing the user to concatenate multiple swipes together.
 func (tw *TouchEventWriter) DoubleSwipe(ctx context.Context, x0, y0, x1, y1, d TouchCoord, t time.Duration) error {
 	return tw.Swipe(ctx, x0, y0, x1, y1, d, 2, t)
+}
+
+// SetIsBtnToolFinger Sets the state of the BTN_TOOL_FINGER flag.
+func (tw *TouchEventWriter) SetIsBtnToolFinger(isEnabled bool) {
+	tw.isBtnToolFingerEnabled = isEnabled
+}
+
+// SetIsBtnToolDoubleTap Sets the state of the BTN_TOOL_DOUBLETAP flag.
+func (tw *TouchEventWriter) SetIsBtnToolDoubleTap(isEnabled bool) {
+	tw.isBtnToolDoubleTapEnabled = isEnabled
+}
+
+// SetPressure sets the pressure of each touch.
+func (tw *TouchEventWriter) SetPressure(pressure int32) error {
+	if pressure < 0 {
+		return errors.New("pressure must be greater than 0")
+	}
+
+	for idx := range tw.touches {
+		tw.touches[idx].absPressure = pressure
+	}
+
+	return nil
 }
 
 // Move injects a touch event at x and y touchscreen coordinates. This is applied

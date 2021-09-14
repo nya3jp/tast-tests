@@ -516,6 +516,67 @@ func MouseScroll(ctx context.Context, testParameters TestFuncParams, scrollDirec
 	return nil
 }
 
+// Trackpad related constants. These values were derived experimentally and
+// should work on both physical, and virtual trackpads.
+const (
+	TrackpadMajorSize     = 240
+	TrackpadMinorSize     = 180
+	TrackpadClickPressure = 25
+)
+
+// TrackpadClickObject implements a click on the trackpad.
+func TrackpadClickObject(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, tew *input.TrackpadEventWriter, pointerButton PointerButton) error {
+	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
+		return errors.Wrap(err, "trackpad cannot be used")
+	}
+
+	if err := centerPointerOnObject(ctx, testParameters, selector); err != nil {
+		return errors.Wrap(err, "failed to move the trackpad into position")
+	}
+
+	stw, err := tew.NewSingleTouchWriter()
+	if err != nil {
+		return errors.Wrap(err, "unable to setup the writer")
+	}
+
+	// Setup the trackpad to simulate a finger click on the next event.
+	if err := stw.SetSize(ctx, TrackpadMajorSize, TrackpadMinorSize); err != nil {
+		return errors.Wrap(err, "unable to set size")
+	}
+
+	if err := stw.SetPressure(TrackpadClickPressure); err != nil {
+		return errors.Wrap(err, "unable to set pressure")
+	}
+
+	// Setup the action intent
+	switch pointerButton {
+	case LeftPointerButton:
+		// A left click only requires a single touch.
+		stw.SetIsBtnToolFinger(true)
+		break
+	case RightPointerButton:
+		// A left click only requires a double tap.
+		stw.SetIsBtnToolDoubleTap(true)
+		break
+	default:
+		return errors.Errorf("invalid button provided: %v", pointerButton)
+	}
+
+	// Perform the 'tap' at the center of the touchpad. The pointer has already been positioned
+	// so the move event is just signaling where on the trackpad the event takes place.
+	centerX := tew.Width() / 2
+	centerY := tew.Height() / 2
+	if err := stw.Move(centerX, centerY); err != nil {
+		return errors.Wrap(err, "unable to initiate click position")
+	}
+
+	if err := stw.End(); err != nil {
+		return errors.Wrap(err, "unable to end click")
+	}
+
+	return nil
+}
+
 // validatePointerCanBeUsed makes sure the pointer can be used in tests.
 func validatePointerCanBeUsed(ctx context.Context, testParameters TestFuncParams) error {
 	// The device cannot be in tablet mode.
