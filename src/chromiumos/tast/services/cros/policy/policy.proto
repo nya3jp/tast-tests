@@ -47,6 +47,7 @@ message EnrollUsingChromeRequest {
   string extra_args = 4;
   string fakedms_dir = 5;
   bool skip_login = 6;
+  bool keep_enrollment = 7;
 }
 
 message CreateFakeDMSDirRequest {
