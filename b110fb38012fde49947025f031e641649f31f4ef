@@ -86,6 +86,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54b609d2_92a8e732",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-14T03:00:09Z",
+      "side": 1,
+      "message": "Yes, they make sense to me as well.\nCould you address these comments and land this CL after getting CR+2 from Tast owners?\nAnd thanks for the fix :)",
+      "parentUuid": "4b84675e_ee73952b",
+      "revId": "b110fb38012fde49947025f031e641649f31f4ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a011ad5_e64c0d3a",
