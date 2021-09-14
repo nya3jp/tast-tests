@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffee8b47_1d12ae16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-09-14T19:54:36Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "179c1c15_cff7e47c",
+      "revId": "3e7ba18f6744253f46fa490e1bad914eda1ad157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05a1bedf_7c0f6b9c",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-09-14T19:05:53Z",
       "side": 1,
       "message": "Could you please also add cros-telemetry@google.com?",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "3e7ba18f6744253f46fa490e1bad914eda1ad157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ccfc73_dec3be5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-09-14T19:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05a1bedf_7c0f6b9c",
       "range": {
         "startLine": 27,
         "startChar": 2,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fb2d0f7_6c7d1f5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-09-14T19:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e275246_cbe23dd4",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 53
+      },
+      "revId": "3e7ba18f6744253f46fa490e1bad914eda1ad157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b63bce3_a1c9c1cb",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-09-14T19:05:53Z",
       "side": 1,
       "message": "nit: if minijail0 has longer names for these options, can you please use those instead, so it\u0027s more obvious to a casual reader what they\u0027re doing?",
+      "range": {
+        "startLine": 73,
+        "startChar": 58,
+        "endLine": 73,
+        "endChar": 59
+      },
+      "revId": "3e7ba18f6744253f46fa490e1bad914eda1ad157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5292d547_2845f684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-09-14T19:54:36Z",
+      "side": 1,
+      "message": "None of those parameters have long forms, but I added comments to explain each.",
+      "parentUuid": "6b63bce3_a1c9c1cb",
       "range": {
         "startLine": 73,
         "startChar": 58,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2345594_746c3a1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-09-14T19:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d184adb_e565c690",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 0
+      },
+      "revId": "3e7ba18f6744253f46fa490e1bad914eda1ad157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04c1df62_cd59fcb4",
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8053163_8b9389c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-09-14T19:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04c1df62_cd59fcb4",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "3e7ba18f6744253f46fa490e1bad914eda1ad157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1015079b_24363dcc",
@@ -163,6 +301,30 @@
       "writtenOn": "2021-09-14T19:05:53Z",
       "side": 1,
       "message": "Please use crash.RemoveAllFiles instead to implement this logic :)",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 3
+      },
+      "revId": "3e7ba18f6744253f46fa490e1bad914eda1ad157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd2f3edd_b8462799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-09-14T19:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1015079b_24363dcc",
       "range": {
         "startLine": 102,
         "startChar": 0,
