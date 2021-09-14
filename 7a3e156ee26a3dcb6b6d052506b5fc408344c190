@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "395b8701_332cbeff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-14T07:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "172d1ff2_f5df5904",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaf59709_902b5887",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-09T07:07:15Z",
       "side": 1,
       "message": "minor nit: maybe rename this to name? It should be clear that it\u0027s not altering the actual flow.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1817b284_f1ff8933",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-14T07:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaf59709_902b5887",
       "range": {
         "startLine": 36,
         "startChar": 2,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f076c2_6820fc49",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-14T07:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa1eaa6e_2023f410",
+      "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c5aa6f1_1345a4f5",
@@ -94,6 +160,24 @@
       "writtenOn": "2021-09-09T07:07:15Z",
       "side": 1,
       "message": "WaitConnect already retries. Use the context to enforce the timeout.\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/dut/dut.go;l\u003d160?q\u003dWaitConnect",
+      "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82ca0f4_a610cf67",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-14T07:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c5aa6f1_1345a4f5",
       "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +199,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddbee83b_7414271f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-14T07:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5de0cb27_ab6c0825",
+      "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3c5565c_faf51f88",
@@ -128,6 +230,30 @@
       "writtenOn": "2021-09-09T15:26:44Z",
       "side": 1,
       "message": "I would delete the wait unreachable, and just poll the GetECSystemPowerState, since that is actually what you care about.",
+      "range": {
+        "startLine": 78,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 4
+      },
+      "revId": "7a3e156ee26a3dcb6b6d052506b5fc408344c190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67830ba1_fd313b92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_reboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-14T07:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3c5565c_faf51f88",
       "range": {
         "startLine": 78,
         "startChar": 3,
