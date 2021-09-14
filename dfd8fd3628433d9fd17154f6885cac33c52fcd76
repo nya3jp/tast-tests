@@ -72,6 +72,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ddb8f79_f41bb907",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-14T16:27:15Z",
+      "side": 1,
+      "message": "What is the empty line used for?",
+      "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7394e14_99bdd245",
         "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
         "patchSetId": 2
