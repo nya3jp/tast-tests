@@ -226,6 +226,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ee345a_16c94317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/cpufreq_conf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-09-14T22:44:53Z",
+      "side": 1,
+      "message": "Ah, good point. But do other tests actually _rely_ on that though? The base class doesn\u0027t assert on any particular value for _force_discharge_success. So it\u0027s up to each test to decide how to respond. I didn\u0027t read far enough into every test to see if they care whether the operation succeeded or not.\n\n\u003e Totally fine with the current CL as is.\n\nAck. Thanks for looking.",
+      "parentUuid": "8d0035a5_06731ef8",
+      "revId": "f48c5da6ef6036d9dfbeb203a16243d258d1ad1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2871dfed_a13c2b0e",
