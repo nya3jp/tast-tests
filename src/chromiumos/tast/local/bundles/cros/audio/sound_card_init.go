@@ -158,8 +158,6 @@ func recentReboot(ctx context.Context, s *testing.State, soundCardID string) {
 		s.Fatalf("Failed to create %s: %v", soundcardinit.StopTimeFile, err)
 	}
 
-	f := fmt.Sprintf(soundcardinit.RunTimeFile, soundCardID)
-	startTime := time.Now()
 	// Run sound_card_init.
 	runCtx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
@@ -170,20 +168,8 @@ func recentReboot(ctx context.Context, s *testing.State, soundCardID string) {
 	).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to run sound_card_init: ", err)
 	}
-
-	// Poll for sound_card_init run time file being updated, which means sound_card_init completes running.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := os.Stat(f)
-		if err != nil {
-			return errors.Wrapf(err, "failed to stat %s:", f)
-		}
-		if info.ModTime().After(startTime) {
-			return nil
-		}
-		return errors.New(f + " is not updated")
-	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		s.Fatal("Failed to wait for sound_card_init completion: ", err)
-	}
+	//Wait for sound_card_init completion.
+	testing.Sleep(ctx, timeout)
 
 	// Verify calib files still not exist after sound_card_init completion.
 	if err := soundcardinit.VerifyCalibNotExist(ctx, soundCardID, ampCount); err != nil {
