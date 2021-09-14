@@ -56,8 +56,8 @@ func init() {
 
 func StandardizedTouchscreenScroll(ctx context.Context, s *testing.State) {
 	const (
-		apkName      = "ArcStandardizedTouchscreenTest.apk"
-		appName      = "org.chromium.arc.testapp.arcstandardizedtouchscreentest"
+		apkName      = "ArcStandardizedInputTest.apk"
+		appName      = "org.chromium.arc.testapp.arcstandardizedinputtest"
 		activityName = ".ScrollTestActivity"
 	)
 
