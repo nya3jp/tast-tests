@@ -56,7 +56,7 @@ func init() {
 				handler: chromecrash.Crashpad,
 				consent: crash.RealConsent,
 			},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{"crashpad", "metrics_consent"},
 		}, {
 			Name: "browser_crashpad_mock_consent",
@@ -105,7 +105,7 @@ func init() {
 				handler: chromecrash.Crashpad,
 				consent: crash.RealConsent,
 			},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{"crashpad", "metrics_consent"},
 		}, {
 			Name: "gpu_process_crashpad_mock_consent",
