@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "255e1da5_44219949",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-14T14:08:58Z",
+      "side": 1,
+      "message": "LGTM with nit",
+      "revId": "72eb8f91e4eb7e0c7cf2889cffa00b02edaa56be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b5a9797_e9e1d11b",
@@ -36,6 +53,29 @@
         "startChar": 35,
         "endLine": 5,
         "endChar": 62
+      },
+      "revId": "72eb8f91e4eb7e0c7cf2889cffa00b02edaa56be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5eb6079_b2365056",
+        "filename": "src/chromiumos/tast/local/kerberos/configuration.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-14T14:08:58Z",
+      "side": 1,
+      "message": "nit: update case in this comment as well.",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 19
       },
       "revId": "72eb8f91e4eb7e0c7cf2889cffa00b02edaa56be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
