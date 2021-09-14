@@ -517,6 +517,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9feada98_2c096bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-14T06:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccc5ae1c_d028d6a7",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 35
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45bb8882_009fd25e",
@@ -594,6 +618,30 @@
         "startChar": 17,
         "endLine": 135,
         "endChar": 20
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85785ae6_d356811a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-14T06:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aa76bd7_65d82e46",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 2
       },
       "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -968,6 +1016,30 @@
       "writtenOn": "2021-09-09T09:00:40Z",
       "side": 1,
       "message": "Before this remount happens, MediaScanner probably have perform a full scan on the volume. Will the app accidentaly catch the scan result of that full scan and report an unexpected number?",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 53
+      },
+      "revId": "b6e1bcc216569b4f6710c88fa3f915cea9ee79da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b400f9ed_5823a840",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-14T06:06:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce99c154_e6622948",
       "range": {
         "startLine": 202,
         "startChar": 1,
