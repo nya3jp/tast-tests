@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e982a1f_b131ce4d",
+        "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:58:24Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it\u0027s good. These options happen to be the same now, but in the future we may want to update only one of them.",
+      "parentUuid": "d7213cb4_6e97baa1",
+      "range": {
+        "startLine": 40,
+        "startChar": 27,
+        "endLine": 40,
+        "endChar": 93
+      },
+      "revId": "e4a60a437ebbef99378f67a3cfb5163c65ca4248",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1bd71c4a_0d112546",
         "filename": "src/chromiumos/tast/local/network/systemproxy/ui_util.go",
         "patchSetId": 1
