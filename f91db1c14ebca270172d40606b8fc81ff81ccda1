@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24df66e6_459498b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-14T12:38:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdf4ddf2_5e7cd6a6",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "f91db1c14ebca270172d40606b8fc81ff81ccda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b50e79b0_d5bc3876",
@@ -37,6 +61,54 @@
       "writtenOn": "2021-09-13T17:41:53Z",
       "side": 1,
       "message": "I suggest using the prefixes: AutomaticTicket vs ManualTicket to differentiate these use cases here.\nIn practice, a Kerberos account is used in both cases, but here it\u0027s added automatically.",
+      "range": {
+        "startLine": 13,
+        "startChar": 28,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "f91db1c14ebca270172d40606b8fc81ff81ccda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfe66b7c_997c2570",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-14T12:38:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b50e79b0_d5bc3876",
+      "range": {
+        "startLine": 13,
+        "startChar": 28,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "f91db1c14ebca270172d40606b8fc81ff81ccda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be7358fa_133a4073",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-14T12:38:04Z",
+      "side": 1,
+      "message": "Done. Will change that for all the tests.",
+      "parentUuid": "b50e79b0_d5bc3876",
       "range": {
         "startLine": 13,
         "startChar": 28,
