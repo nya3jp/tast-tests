@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eeffbd5_448ff6f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_characters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-14T16:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4daa0178_a79974dc",
+      "range": {
+        "startLine": 45,
+        "startChar": 29,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "1dbbcd7558b7b039e96b5ac4fc1853250142fd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5451407c_fe9a1e70",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-13T23:54:33Z",
       "side": 1,
       "message": "defer func(ctx context.Context){...}(cleanupCtx)",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "1dbbcd7558b7b039e96b5ac4fc1853250142fd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32aea7fc_23dacda2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_characters.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-14T16:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5451407c_fe9a1e70",
       "range": {
         "startLine": 64,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1c36cfd_722fa16e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_whitespace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-14T16:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d69df8f9_c2fd6139",
+      "range": {
+        "startLine": 45,
+        "startChar": 29,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "1dbbcd7558b7b039e96b5ac4fc1853250142fd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76dadb9a_630a3578",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-09-13T23:54:33Z",
       "side": 1,
       "message": "defer func(ctx context.Context){...}(cleanupCtx)",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 4
+      },
+      "revId": "1dbbcd7558b7b039e96b5ac4fc1853250142fd12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1fde220_09d02915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_whitespace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-14T16:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76dadb9a_630a3578",
       "range": {
         "startLine": 56,
         "startChar": 1,
