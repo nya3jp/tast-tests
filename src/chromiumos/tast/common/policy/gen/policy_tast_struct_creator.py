@@ -86,6 +86,42 @@ REFERENCE_HEADER = """
 ///////////////////////////////////////////////////////////////////////////////
 """
 
+# Common part for Open Network Configuration.
+ONC_SCHEMA = """
+///////////////////////////////////////////////////////////////////////////////
+// Open Network Configuration(ONC) schema.
+// Used in OpenNetworkConfiguration and DeviceOpenNetworkConfiguration.
+// This is a subset of the full schema. Only the parts that tast tests use are defined here.
+// See https://chromium.googlesource.com/chromium/src/+/HEAD/components/onc/docs/onc_spec.md for full schema.
+///////////////////////////////////////////////////////////////////////////////
+type ONCEap struct {
+\tOuter\tstring\t`json:"Outer"`
+\tInner\tstring\t`json:"Inner,omitempty"`
+\tIdentity\tstring\t`json:"Identity,omitempty"`
+\tPassword\tstring\t`json:"Password,omitempty"`
+\tUseSystemCAs\tbool\t`json:"UseSystemCAs"`
+}
+
+type ONCWifi struct {
+\tAutoConnect\tbool\t`json:"AutoConnect"`
+\tEAP\t*ONCEap\t`json:"EAP,omitempty"`
+\tSecurity\tstring\t`json:"Security"`
+\tSSID\tstring\t`json:"SSID"`
+\tPassphrase\tstring\t`json:"Passphrase,omitempty"`
+}
+
+type ONCNetworkConfiguration struct {
+\tGUID\tstring\t`json:"GUID"`
+\tName\tstring\t`json:"Name"`
+\tType\tstring\t`json:"Type"`
+\tWiFi\t*ONCWifi\t`json:"WiFi,omitempty"`
+}
+
+type ONC struct {
+\tNetworkConfigurations\t[]*ONCNetworkConfiguration\t`json:"NetworkConfigurations,omitempty"`
+}
+"""
+
 # Default values for the contents of function code in POLICY_TEMPLATE.
 # Can be overwritten for policies with different behavior.
 UNMARSHAL_DEFAULT = """\tvar v {self.type}
@@ -507,6 +543,14 @@ type DeviceLocalAccountInfo struct {
 """
   return attr_type, attr_structs
 
+# Override url_schema in OpenNetworkConfiguration and DeviceOpenNetworkConfiguration.
+# See https://chromium.googlesource.com/chromium/src/+/HEAD/components/onc/docs/onc_spec.md for full schema.
+def parse_override_onc(p, refs):
+  value_name = 'ONC'
+  attr_type = '*' + value_name
+  attr_structs = ''
+  return attr_type, attr_structs
+
 def ref_parse_override_managed_bookmarks(schema, refs):
   name = 'Ref' + schema['items']['id']
   refs[schema['items']['id']] = Reference(name, '*'+name, '')
@@ -525,7 +569,9 @@ type RefBookmarkType struct {
 PARSE_OVERRIDES = {
     'ExtensionSettings': parse_override_extension_settings,
     'ArcPolicy': parse_override_arc_policy,
-    'DeviceLocalAccounts': parse_override_device_local_accounts
+    'DeviceLocalAccounts': parse_override_device_local_accounts,
+    'OpenNetworkConfiguration': parse_override_onc,
+    'DeviceOpenNetworkConfiguration': parse_override_onc
 }
 
 # Functions to use for reference objects when the default way won't work.
@@ -600,6 +646,9 @@ def write_code(output_path, policies_by_id, schema_ids):
       ref = schema_ids[name]
       if ref.in_use:
         fh.write(ref.code)
+
+    # Append code for Open Network Configuration
+    fh.write(ONC_SCHEMA)
 
 def main():
   parser = argparse.ArgumentParser()
