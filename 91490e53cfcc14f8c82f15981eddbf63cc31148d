@@ -16,6 +16,23 @@
       "message": "CQ will not work until lab is up. It should be safe to chump this change though (check with sheriffs first)",
       "revId": "91490e53cfcc14f8c82f15981eddbf63cc31148d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b92c72_9cfaf3db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gles_min_requirements.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-09-14T00:22:22Z",
+      "side": 1,
+      "message": "We should exclude this test on betty by adding \"no_qemu\" as a SoftwareDep here.",
+      "revId": "91490e53cfcc14f8c82f15981eddbf63cc31148d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
