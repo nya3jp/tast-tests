@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c196e382_ccb0c035",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-14T02:09:21Z",
+      "side": 1,
+      "message": "It also said \"the default log level should include messages that describe what\u0027s happening at any given time (e.g. no radio silence while the test is running on a remote host: see issue 715865), but no non-fatal warnings and errors\".\n\nThis test launches a python test script inside the vm. The script can run for a few minutes. I was actually thinking about redirecting the log to stdout, instead of printing the whole file at the end, to avoid radio silence. You either have radio silence in stdout, or a long log. Let me know which one is preferred, and I will make the change.",
+      "parentUuid": "fae78d41_f21144fd",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "013a194d156f689eb3ff82856d1e182869a76b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b29d7b72_a5e4d838",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
         "patchSetId": 21
