@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc3f8674_c47bb9a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/enable_chromevox_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2021-09-14T14:35:03Z",
+      "side": 1,
+      "message": "This won\u0027t work because the file is named enable_chromevox_shortcut.go. I could rename the file to enable_chrome_vox_shortcut.go but that\u0027s more misleading (\"Chrome Vox\"). We also have fielnames containing chromevox in Chrome OS/Chrome and zero instances of chrome_vox.",
+      "parentUuid": "8972be08_77ee5700",
+      "range": {
+        "startLine": 32,
+        "startChar": 11,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "63d36ec4f4a214cfd7bde6d611c1dd3766faff0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fd1bd5d_0372a91a",
         "filename": "src/chromiumos/tast/local/bundles/cros/a11y/enable_chromevox_shortcut.go",
         "patchSetId": 3
@@ -37,6 +61,24 @@
       "writtenOn": "2021-09-14T05:32:03Z",
       "side": 1,
       "message": "Refer to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task\n\nwe may reserve some time for Unmute() before the defer statement:\nctxCleanup :\u003d ctx\nctx, cancel, :\u003d ctxutil.Shorten(ctx, time.Second)\ndefer crastestclient.Unmute(ctxCleanup)",
+      "revId": "63d36ec4f4a214cfd7bde6d611c1dd3766faff0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d9d2371_26d07eb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/enable_chromevox_shortcut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2021-09-14T14:35:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fd1bd5d_0372a91a",
       "revId": "63d36ec4f4a214cfd7bde6d611c1dd3766faff0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
