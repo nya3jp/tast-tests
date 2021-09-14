@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf46fe84_21557467",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-14T18:47:34Z",
+      "side": 1,
+      "message": "Implementation of pinch zoom on the trackpad using the refactored apps.",
+      "revId": "d49f6a7fe4c54eb11a29d9fac8c8aad776547abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
