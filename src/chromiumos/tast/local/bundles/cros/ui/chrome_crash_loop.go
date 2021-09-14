@@ -63,7 +63,6 @@ func init() {
 				consent: crash.MockConsent,
 			},
 			ExtraSoftwareDeps: []string{"crashpad"},
-			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
