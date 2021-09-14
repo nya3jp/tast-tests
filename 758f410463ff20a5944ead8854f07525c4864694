@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "358259a8_e577482f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-14T07:54:40Z",
+      "side": 1,
+      "message": "Could you consider using uiauto/mouse ? ui/mouse has been deprecated.\nWith uiauto, you can use richer API for retry like RetryUntil. \nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/60feb61cae6b/src/chromiumos/tast/local/chrome/uiauto/automation.go#628",
+      "range": {
+        "startLine": 254,
+        "startChar": 11,
+        "endLine": 254,
+        "endChar": 16
+      },
+      "revId": "758f410463ff20a5944ead8854f07525c4864694",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
