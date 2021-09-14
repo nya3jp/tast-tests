@@ -20,9 +20,41 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/vm"
-	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
+
+// chromeArgsWithFileCameraInput returns Chrome extra args as string slice
+// for video test with a Y4M/MJPEG fileName streamed as live camera input.
+// If verbose is true, it appends extra args for verbose logging.
+// NOTE(crbug.com/955079): performance test should unset verbose.
+func chromeArgsWithFileCameraInput(fileName string, verbose bool) []string {
+	args := []string{
+		// See https://webrtc.org/testing/
+		// Feed a test pattern to getUserMedia() instead of live camera input.
+		"--use-fake-device-for-media-stream",
+		// Avoid the need to grant camera/microphone permissions.
+		"--use-fake-ui-for-media-stream",
+		// Disable the autoplay policy not to be affected by actions from outside of tests.
+		// cf. https://developers.google.com/web/updates/2017/09/autoplay-policy-changes
+		"--autoplay-policy=no-user-gesture-required",
+		// Feed a Y4M test file to getUserMedia() instead of live camera input.
+		"--use-file-for-fake-video-capture=" + fileName,
+	}
+	if verbose {
+		args = append(args, logging.ChromeVmoduleFlag())
+	}
+	return args
+}
+
+// DataFiles returns a list of required files that tests that use this package
+// should include in their Data fields.
+func DataFiles() []string {
+	return []string{
+		"third_party/blackframe.js",
+		"third_party/munge_sdp.js",
+		"third_party/ssim.js",
+	}
+}
 
 // RunDecodeAccelUsedJPEG tests that the HW JPEG decoder is used in a GetUserMedia().
 // The test fails if bucketValue on histogramName does not count up.
@@ -42,7 +74,7 @@ func RunDecodeAccelUsedJPEG(ctx context.Context, s *testing.State, getUserMediaF
 // stream streamFile. Then it verifies that bucketValue on histogramName counts
 // up in the end of the test.
 func openPageAndCheckBucket(ctx context.Context, fileSystem http.FileSystem, getUserMediaFilename, streamFile, histogramName string, bucketValue int64) error {
-	chromeArgs := webrtc.ChromeArgsWithFileCameraInput(streamFile, true)
+	chromeArgs := chromeArgsWithFileCameraInput(streamFile, true)
 	cr, err := chrome.New(ctx, chrome.ExtraArgs(chromeArgs...))
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to Chrome")

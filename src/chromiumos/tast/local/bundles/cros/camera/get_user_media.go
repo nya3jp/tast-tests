@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/media/vm"
-	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -27,7 +26,7 @@ func init() {
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
+		Data:         append(getusermedia.DataFiles(), "getusermedia.html"),
 		Params: []testing.Param{
 			{
 				Name:              "real",

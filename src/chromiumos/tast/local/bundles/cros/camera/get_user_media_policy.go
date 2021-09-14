@@ -12,12 +12,12 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
-	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
@@ -28,7 +28,7 @@ func init() {
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "group:camera-libcamera", "informational"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome"},
-		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
+		Data:         append(getusermedia.DataFiles(), "getusermedia.html"),
 		Params: []testing.Param{
 			{
 				Name:    "ash",
