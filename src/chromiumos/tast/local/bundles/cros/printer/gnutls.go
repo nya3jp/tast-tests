@@ -109,6 +109,7 @@ func startServer(ctx context.Context, s *testing.State) (address string) {
 
 func GnuTLS(ctx context.Context, s *testing.State) {
 	const lpadminCmdLine = "/usr/sbin/lpadmin"
+	const lpadminUser = "lpadmin"
 
 	// Start IPPS server.
 	serverCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
@@ -116,7 +117,7 @@ func GnuTLS(ctx context.Context, s *testing.State) {
 	serverAddress := startServer(serverCtx, s)
 
 	// Connect to the IPPS server with lpadmin.
-	cmdLpadmin := testexec.CommandContext(ctx, lpadminCmdLine,
+	cmdLpadmin := testexec.CommandContext(ctx, "sudo", "-u", lpadminUser, lpadminCmdLine,
 		"-E", "-m", "everywhere", "-p", "printer", "-v",
 		fmt.Sprintf("ipps://%s/ipp/print/ipp-everywhere-pdf", serverAddress))
 	outBytes, err := cmdLpadmin.CombinedOutput()
