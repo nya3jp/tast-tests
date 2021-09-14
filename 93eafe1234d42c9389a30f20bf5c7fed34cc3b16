@@ -33,6 +33,24 @@
       "message": "The name of the function is EnrollUsingChrome, not performing enrollment is very unintuitive.",
       "revId": "93eafe1234d42c9389a30f20bf5c7fed34cc3b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e356be60_4e0c2cbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-14T16:44:19Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with Enterprise enrollment flow. Instead of this approach, do you have recommendation? How about having two shims EnrollUsingChrome() and KeepEnrollmentChrome() which actually calls enrollChromeImpl(), which is the current EnrollUsingChrome().",
+      "parentUuid": "d6cea19d_26ae8bbb",
+      "revId": "93eafe1234d42c9389a30f20bf5c7fed34cc3b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
