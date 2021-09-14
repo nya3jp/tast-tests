@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/media/pre"
-	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
 
@@ -26,7 +25,7 @@ func init() {
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "camera_720p"},
-		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
+		Data:         append(getusermedia.DataFiles(), "getusermedia.html"),
 		Params: []testing.Param{
 			{
 				Pre: pre.ChromeCameraPerf(),
