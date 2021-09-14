@@ -69,7 +69,7 @@ func runStandardizedMouseLeftClickTest(ctx context.Context, s *testing.State, te
 		s.Fatal("The success label should not yet exist, info: ", err)
 	}
 
-	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnLeftClickSelector, mouse, standardizedtestutil.LeftMouseButton); err != nil {
+	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnLeftClickSelector, mouse, standardizedtestutil.LeftPointerButton); err != nil {
 		s.Fatal("Unable to click the button, info: ", err)
 	}
 
