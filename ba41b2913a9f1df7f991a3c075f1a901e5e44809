@@ -34,6 +34,24 @@
       "parentUuid": "5618d4e7_337f6a41",
       "revId": "ba41b2913a9f1df7f991a3c075f1a901e5e44809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6369267_f257b717",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-14T00:20:46Z",
+      "side": 1,
+      "message": "I\u0027m sorry I did not explain clearly. I mean creating the raw audio file in the temporary directory location and also ensuring the file name uniqueness, so that it does not collide with any existing files on DUT or affect expectations of any other tests.\nHere is a similar example:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/gtest/gtest.go;l\u003d215",
+      "parentUuid": "4dcd3de4_dcee5519",
+      "revId": "ba41b2913a9f1df7f991a3c075f1a901e5e44809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
