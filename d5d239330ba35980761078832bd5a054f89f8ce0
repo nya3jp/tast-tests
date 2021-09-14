@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9be4f84e_16c97661",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-09-14T06:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02164de4_2b92f5bd",
+      "revId": "d5d239330ba35980761078832bd5a054f89f8ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b7e4c7f_0e26cde8",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-09-09T20:53:01Z",
       "side": 1,
       "message": "nit: I think it will be better to check for os.IsNotExist(err) here so that the log can be more meaningful.",
+      "revId": "d5d239330ba35980761078832bd5a054f89f8ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b74bbf2_e890712e",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-09-14T06:08:21Z",
+      "side": 1,
+      "message": "I\u0027ve added a check.",
+      "parentUuid": "5b7e4c7f_0e26cde8",
       "revId": "d5d239330ba35980761078832bd5a054f89f8ce0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e283f17b_b64b5d32",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-09-14T06:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4223ff59_ad4e8581",
+      "revId": "d5d239330ba35980761078832bd5a054f89f8ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "898dcb3c_00a3cef3",
@@ -99,6 +153,24 @@
       "writtenOn": "2021-09-09T20:53:01Z",
       "side": 1,
       "message": "nit: I think it will be better to check for os.IsNotExist(err) here so that the log can be more meaningful.",
+      "revId": "d5d239330ba35980761078832bd5a054f89f8ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1f353b0_8625cfe4",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-09-14T06:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898dcb3c_00a3cef3",
       "revId": "d5d239330ba35980761078832bd5a054f89f8ce0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
