@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // igtTest is used to describe the config used to run each test.
@@ -32,6 +33,11 @@ type resultSummary struct {
 }
 
 var subtestResultRegex = regexp.MustCompile("^Subtest .*: ([A-Z]+)")
+
+var supportedIntel = []string{"volteer", "dedede", "eve"}
+var supportedAmd = []string{"zork", "grunt"}
+var supportedQcom = []string{"strongbad", "trogdor"}
+var supportedMtk = []string{"kukui", "jacuzzi"}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -86,6 +92,14 @@ func init() {
 				exe: "kms_atomic_transition",
 			},
 			Timeout: 5 * time.Minute,
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(supportedQcom...)),
+		}, {
+			Name: "kms_atomic_transition_wip",
+			Val: igtTest{
+				exe: "kms_atomic_transition",
+			},
+			Timeout: 5 * time.Minute,
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(supportedQcom...)),
 		}, {
 			Name: "kms_big_fb",
 			Val: igtTest{
@@ -104,12 +118,28 @@ func init() {
 				exe: "kms_color",
 			},
 			Timeout: 5 * time.Minute,
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(supportedMtk...)),
+		}, {
+			Name: "kms_color_wip",
+			Val: igtTest{
+				exe: "kms_color",
+			},
+			Timeout: 5 * time.Minute,
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(supportedMtk...)),
 		}, {
 			Name: "kms_concurrent",
 			Val: igtTest{
 				exe: "kms_concurrent",
 			},
 			Timeout: 5 * time.Minute,
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(supportedMtk...)),
+		}, {
+			Name: "kms_concurrent_wip",
+			Val: igtTest{
+				exe: "kms_concurrent",
+			},
+			Timeout: 5 * time.Minute,
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(supportedMtk...)),
 		}, {
 			Name: "kms_content_protection",
 			Val: igtTest{
@@ -128,12 +158,28 @@ func init() {
 				exe: "kms_cursor_crc",
 			},
 			Timeout: 15 * time.Minute,
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(supportedAmd...)),
+		}, {
+			Name: "kms_cursor_crc_wip",
+			Val: igtTest{
+				exe: "kms_cursor_crc",
+			},
+			Timeout: 15 * time.Minute,
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(supportedAmd...)),
 		}, {
 			Name: "kms_cursor_legacy",
 			Val: igtTest{
 				exe: "kms_cursor_legacy",
 			},
 			Timeout: 20 * time.Minute,
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(append(supportedAmd, supportedQcom...)...)),
+		}, {
+			Name: "kms_cursor_legacy_wip",
+			Val: igtTest{
+				exe: "kms_cursor_legacy",
+			},
+			Timeout: 20 * time.Minute,
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(append(supportedAmd, supportedQcom...)...)),
 		}, {
 			Name: "kms_dp_aux_dev",
 			Val: igtTest{
