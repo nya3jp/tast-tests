@@ -70,5 +70,5 @@ func FpUpdaterSucceeded(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find firmware file on rootfs")
 	}
 
-	s.Fatal("Updater result unknown")
+	s.Fatalf("Updater result unknown: latest=%q prev=%q", latest, prev)
 }
