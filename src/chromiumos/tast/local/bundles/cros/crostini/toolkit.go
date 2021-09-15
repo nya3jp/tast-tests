@@ -312,6 +312,7 @@ func init() {
 				},
 			}, {
 				Name:              "tkinter_buster_stable",
+				ExtraAttr:         []string{"informational"}, /* b/200056776 */
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false), "toolkit_tkinter_demo.py"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
