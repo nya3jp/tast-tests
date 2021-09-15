@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f4b7233_3cb031c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-15T05:05:08Z",
+      "side": 1,
+      "message": "+1. That will also open up the possibility to add more measurements (e.g., CPU).",
+      "parentUuid": "1d443414_5afd1d78",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d5bb267_a6d78b2e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
         "patchSetId": 9
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "591731bd_d07841fd",
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32403e5c_221ba69a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-15T05:05:08Z",
+      "side": 1,
+      "message": "I think this is not done yet?",
+      "parentUuid": "da35f12c_4daf7f64",
       "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
