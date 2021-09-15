@@ -413,6 +413,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58f0a943_f52504f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-09-15T18:47:37Z",
+      "side": 1,
+      "message": "Looks like you\u0027ve pasted your Comment from L171 here too. Please share why the `dd` command is not working, and what your invocation looks like.",
+      "parentUuid": "e3960335_241dfd72",
+      "range": {
+        "startLine": 176,
+        "startChar": 37,
+        "endLine": 176,
+        "endChar": 48
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "022a7483_39e0f11a",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
         "patchSetId": 9
@@ -577,6 +601,30 @@
       "side": 1,
       "message": "I didn\u0027t understand the logic of this outer for loop. Why is it needed? I\u0027d suggest just setting the arguments as:\nAns: With below logic we are trying to compare and removing duplicate mounted devices in pre and post plugin.\n\nThen you can assume the first argument is always the list before the plug, and the second argument is the list of dirs after the plug.\nAns: We are not sure first plugged device will first in the list so, in order to avoid conflict we are comparing and removing the devices so that we always get the latest plugged device.",
       "parentUuid": "1ac881dc_12f9ab98",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 25
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac34c7cc_83c1a59e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-09-15T18:47:37Z",
+      "side": 1,
+      "message": "\u003e Ans: We are not sure first plugged device will first in the list so, in order to avoid conflict we are comparing and removing the devices so that we always get the latest plugged device.\n\nI\u0027m sorry but I didn\u0027t understand. What is conflict, or rather, can you explain why my solution doesn\u0027t solve that, with an example.\n\nAlso, Why does the order of the plugged devices matter? All we really care about is that there are new devices after the hotplug.\n\nIf you have logic that depends on the ordering of the devices, this is sounds like brittle logic to me.",
+      "parentUuid": "ac2fb4d4_6d1f76e2",
       "range": {
         "startLine": 234,
         "startChar": 0,

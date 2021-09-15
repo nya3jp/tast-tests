@@ -16,6 +16,29 @@
       "message": "Verified on latest CPFE.R96-14206.0.0 ",
       "revId": "119439661fb129bd5314dcab7357fce8d6a9da12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a49fad_cda76141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-09-15T18:47:37Z",
+      "side": 1,
+      "message": "Please use more descriptive argument names. \"slice\" doesn\u0027t tell us anything about what these lists are supposed to represent.",
+      "range": {
+        "startLine": 236,
+        "startChar": 21,
+        "endLine": 236,
+        "endChar": 35
+      },
+      "revId": "119439661fb129bd5314dcab7357fce8d6a9da12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
