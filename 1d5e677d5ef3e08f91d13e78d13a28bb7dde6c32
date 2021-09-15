@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8d88641_1e746c20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-15T19:42:23Z",
+      "side": 1,
+      "message": "(strange... I no longer have +2...)",
+      "revId": "1d5e677d5ef3e08f91d13e78d13a28bb7dde6c32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
