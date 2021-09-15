@@ -51,14 +51,23 @@ func ChromevoxTtsProcessingCharacters(ctx context.Context, s *testing.State) {
 	defer crastestclient.Unmute(cleanupCtx)
 
 	c, err := a11y.NewTabWithHTML(ctx, cr, `<p>.</p>
-		<p>x.</p
+		<p>x.</p>
 		<p>=========</p>
 		<p>&bull; &bull;&bull;</p>
 		<p>&bull;&bull;&bull;</p>
 		<p>C++</p><p>C+++</p>
 		<p>&pound; and %23 symbol</p>
 		<p>&pound;&pound;&pound;</p>
-		<p>C--</p>`)
+		<p>C--</p>
+		<p>x, y.</p>
+		<p>"That's all, folks!"</p>
+		<p>"$1,234.56 (plus tax) for 78&percnt; of your %232 pencils?", they mused</p>
+		<p>x, y.</p>
+		<p>"That's all, folks!"</p>
+		<p>"$1,234.56 (plus tax) for 78&percnt; of your %232 pencils?", they mused</p>
+		<p>x, y.</p>
+		<p>"That's all, folks!"</p>
+		<p>"$1,234.56 (plus tax) for 78&percnt; of your %232 pencils?", they mused</p>`)
 	if err != nil {
 		s.Fatal("Failed to open a new tab with HTML: ", err)
 	}
@@ -143,8 +152,74 @@ func ChromevoxTtsProcessingCharacters(ctx context.Context, s *testing.State) {
 			[]string{nextObject},
 			[]a11y.SpeechExpectation{a11y.NewStringExpectation("C--")},
 		},
+		{
+			[]string{nextObject},
+			[]a11y.SpeechExpectation{a11y.NewStringExpectation("x, y.")},
+		},
+		{
+			[]string{nextObject},
+			[]a11y.SpeechExpectation{a11y.NewStringExpectation("quote That's all, folks! quote")},
+		},
+		{
+			[]string{nextObject},
+			[]a11y.SpeechExpectation{a11y.NewStringExpectation("quote dollar 1,234.56 (plus tax) for 78 percent of your pound 2 pencils? quote , they mused")},
+		},
 	}
 
+	for _, step := range testSteps {
+		if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, step.KeyCommands, step.Expectations); err != nil {
+			s.Error("Error when pressing keys and expecting speech: ", err)
+		}
+	}
+
+	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{"Search+A", "P"}, []a11y.SpeechExpectation{a11y.NewStringExpectation("All punctuation")}); err != nil {
+		s.Error("Error when cycling punctuation with Search+A, P: ", err)
+	}
+
+	testSteps = []struct {
+		KeyCommands  []string
+		Expectations []a11y.SpeechExpectation
+	}{
+		{
+			[]string{nextObject},
+			[]a11y.SpeechExpectation{a11y.NewStringExpectation("x comma y dot")},
+		},
+		{
+			[]string{nextObject},
+			[]a11y.SpeechExpectation{a11y.NewStringExpectation("quote That apostrophe' s all comma folks exclamation! quote")},
+		},
+		{
+			[]string{nextObject},
+			[]a11y.SpeechExpectation{a11y.NewStringExpectation("quote dollar 1 comma 234 dot 56 open paren plus tax close paren for 78 percent of your pound 2 pencils question mark? quote comma they mused")},
+		},
+	}
+	for _, step := range testSteps {
+		if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, step.KeyCommands, step.Expectations); err != nil {
+			s.Error("Error when pressing keys and expecting speech: ", err)
+		}
+	}
+
+	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{"Search+A", "P"}, []a11y.SpeechExpectation{a11y.NewStringExpectation("No punctuation")}); err != nil {
+		s.Error("Error when cycling punctuation with Search+A, P: ", err)
+	}
+
+	testSteps = []struct {
+		KeyCommands  []string
+		Expectations []a11y.SpeechExpectation
+	}{
+		{
+			[]string{nextObject},
+			[]a11y.SpeechExpectation{a11y.NewStringExpectation("x, y.")},
+		},
+		{
+			[]string{nextObject},
+			[]a11y.SpeechExpectation{a11y.NewStringExpectation("That's all, folks!")},
+		},
+		{
+			[]string{nextObject},
+			[]a11y.SpeechExpectation{a11y.NewStringExpectation("1,234.56 plus tax for 78% of your 2 pencils? , they mused")},
+		},
+	}
 	for _, step := range testSteps {
 		if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, step.KeyCommands, step.Expectations); err != nil {
 			s.Error("Error when pressing keys and expecting speech: ", err)
