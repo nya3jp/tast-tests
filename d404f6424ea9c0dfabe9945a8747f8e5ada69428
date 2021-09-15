@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bfab55f_774792f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-15T20:09:35Z",
+      "side": 1,
+      "message": "+1 (for some reason I no longer have +2 permissions... trying to figure out why)",
+      "revId": "d404f6424ea9c0dfabe9945a8747f8e5ada69428",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
