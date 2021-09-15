@@ -118,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a287cbe_6c73cacf",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-15T02:46:57Z",
+      "side": 1,
+      "message": "SGTM, thanks!",
+      "parentUuid": "d165840d_eab6e70b",
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be037a0a_8273ba3b",
@@ -214,6 +232,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e65d741_e366cb4d",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-15T02:46:57Z",
+      "side": 1,
+      "message": "I agree that it\u0027s likely a programming error if no matcher is passed to FindUnique, but I\u0027m skeptical about FindAll.\n\nFor example we may want to create a general utility class to measure CPU usage of certain processes on the system. We can pass Chrome matcher to measure Chrome CPU usage, or empty matcher to measure all processes on the system.\n\nAs for the example of exec.Command, it\u0027s reasonable because it\u0027s 100% wrong to specify no executable. But it\u0027s different from FindAll which has a valid semantics for empty matcher (\u003d equal to process.Processes()).",
+      "parentUuid": "a82d4c0b_8ef339a0",
+      "range": {
+        "startLine": 33,
+        "startChar": 10,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc997f32_54f8d6a2",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-15T02:46:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6bae0e3_3477c442",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 9
+      },
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1549fca_7337e7b0",
         "filename": "src/chromiumos/tast/local/procutil/find.go",
         "patchSetId": 2
@@ -249,6 +315,30 @@
       "side": 1,
       "message": "Yes, and handling \"no-processes\" as an error looks common pattern in the existing code.\nI do not have strong opinion about it, as long as it is explicitly documented.\n\nThough, in some callers need to have the same pattern like:\ntesting.Poll(... {\n  ps, err :\u003d procutil.FindAll(...)\n  if err !\u003d nil {\n    return err\n  }\n  if len(ps) \u003d\u003d 0 {\n    return errors.New(\"processes X are not yet running\")\n  }\n  return nil\n} ...)\n\nor something.\n\nWDYT?",
       "parentUuid": "f1549fca_7337e7b0",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "09ce30f51cfc47352bcac541f09af18b3f7e3aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ebd25b_38dcd0cc",
+        "filename": "src/chromiumos/tast/local/procutil/find.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-15T02:46:57Z",
+      "side": 1,
+      "message": "I slightly prefer to return no error when FindAll matches no process, but I don\u0027t have strong opinion.\n\nBut if we do so, please define and export \"process not found\" error so that callers can distinguish the case from other runtime errors.",
+      "parentUuid": "45355087_6e133518",
       "range": {
         "startLine": 69,
         "startChar": 2,
