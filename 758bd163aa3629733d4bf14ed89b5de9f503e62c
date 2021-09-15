@@ -242,6 +242,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28c2d03f_fc7238d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-15T23:51:19Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we defer capybaraSrc.Close?",
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fad52460_76b1ded7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-15T23:51:19Z",
+      "side": 1,
+      "message": "This dst.Close is not executed until the function returns. You should close each file within the loop body:\n  for i :\u003d 0; i \u003c numberOfCopies; i++ {\n    [...]\n    if _, err :\u003d io.Copy(dst, capybaraSrc); err !\u003d nil {\n      dst.Close()\n      s.Fatal([...])\n    }\n    dst.Close()\n  }",
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "389318e9_fad56ffa",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
         "patchSetId": 9
