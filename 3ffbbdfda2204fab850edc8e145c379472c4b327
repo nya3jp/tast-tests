@@ -16,6 +16,24 @@
       "message": "Hi Yichen, I only see the result from Cras.MissedCallbackFrequencyOutput but not Cras.MissedCallbackFrequencyInput. Does the meet here only have output stream? ",
       "revId": "3ffbbdfda2204fab850edc8e145c379472c4b327",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee284ee_4a5e383e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-15T08:47:13Z",
+      "side": 1,
+      "message": "Currently the audio is muted[1], probably that\u0027s why there is no cras input.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/bond/bond.go;l\u003d228",
+      "parentUuid": "7c52bc6d_03411d85",
+      "revId": "3ffbbdfda2204fab850edc8e145c379472c4b327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
