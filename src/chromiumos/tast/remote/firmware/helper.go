@@ -470,25 +470,21 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 		return errors.Wrapf(err, "mkdir failed at %q", mountPath)
 	}
 	var lsb map[string]string
-	if err = func() error {
+	// Failures here are a bad USB image, so don't fail, just write the new image.
+	func() {
 		if err = h.ServoProxy.RunCommand(ctx, true, "mount", "-o", "ro", mountSrc, mountPath); err != nil {
-			testing.ContextLogf(ctx, "mount of %q failed at %q", mountSrc, mountPath)
-			// Mount failure here probably means that there is no partition table, so writing to USB will fix it.
-			return nil
+			testing.ContextLogf(ctx, "Mount of %q failed at %q", mountSrc, mountPath)
 		}
 		defer h.ServoProxy.RunCommand(ctx, true, "umount", mountPath)
 		output, err := h.ServoProxy.OutputCommand(ctx, true, "cat", fmt.Sprintf("%s/etc/lsb-release", mountPath))
 		if err != nil {
-			return errors.Wrap(err, "failed to read lsb-release")
+			testing.ContextLog(ctx, "Failed to read lsb-release")
 		}
 		lsb, err = lsbrelease.Parse(bytes.NewReader(output))
 		if err != nil {
-			return errors.Wrap(err, "failed to parse lsb-release")
+			testing.ContextLog(ctx, "Failed to parse lsb-release")
 		}
-		return nil
-	}(); err != nil {
-		return err
-	}
+	}()
 	releaseBuilderPath := lsb[lsbrelease.BuilderPath]
 	dutBuilderPath, err := h.Reporter.BuilderPath(ctx)
 	if err != nil {
