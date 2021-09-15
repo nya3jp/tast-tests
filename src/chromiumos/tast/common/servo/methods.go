@@ -640,7 +640,7 @@ func (s *Servo) SetPowerState(ctx context.Context, value PowerStateValue) error 
 	default:
 		// Do nothing
 	}
-	return s.SetStringTimeout(ctx, PowerState, string(value), 20*time.Second)
+	return s.SetStringTimeout(ctx, PowerState, string(value), 30*time.Second)
 }
 
 // SetFWWPState sets the FWWPState control.
