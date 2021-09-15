@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d6de162_c28ab35a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-09-15T00:37:00Z",
+      "side": 1,
+      "message": "This is also not the right solution. This doesn\u0027t distinguish between the autoconnect case and the case where the DUT is actually not functional and fails to disconnect as a result (that\u0027s what the AssureDisconnect is there for after all, right?).\n\nI don\u0027t have a solution off the top of my head, but I\u0027m happy to help you brainstorm if you need it.",
+      "revId": "7bbc4ad5bd47ac233b05ace35190f42c63056795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
