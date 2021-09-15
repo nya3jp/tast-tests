@@ -9,15 +9,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"os/user"
 	"path/filepath"
-	"strconv"
-	"strings"
-	"syscall"
 	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/vm/audioutils"
 	"chromiumos/tast/local/bundles/cros/vm/dlc"
 	"chromiumos/tast/testing"
 )
@@ -81,10 +78,7 @@ func AudioAlsaConformance(ctx context.Context, s *testing.State) {
 	captureLogPath := filepath.Join(s.OutDir(), "capture.txt")
 	captureResultPath := filepath.Join(s.OutDir(), "capture.json")
 
-	params := []string{
-		"root=/dev/root",
-		"rootfstype=virtiofs",
-		"rw",
+	kernelArgs := []string{
 		fmt.Sprintf("init=%s", s.DataPath(runAlsaConformanceTest)),
 		"--",
 		playbackLogPath,
@@ -93,36 +87,12 @@ func AudioAlsaConformance(ctx context.Context, s *testing.State) {
 		captureResultPath,
 	}
 
-	args := []string{"run"}
-	args = append(args, config.deviceArgs...)
-	args = append(args,
-		"-p", strings.Join(params, " "),
-		"--serial", fmt.Sprintf("type=file,num=1,console=true,path=%s", kernelLogPath),
-		"--shared-dir", "/:/dev/root:type=fs:cache=always",
-		data.Kernel)
+	cmd, err := audioutils.CrosvmCmd(ctx, data.Kernel, kernelLogPath, kernelArgs, config.deviceArgs)
+	if err != nil {
+		s.Fatal("Failed to get crosvm cmd: ", err)
+	}
 
 	s.Log("Running Alsa conformance test")
-	cmd := testexec.CommandContext(ctx, "crosvm", args...)
-
-	// Same effect as calling `newgrp cras` before `crosvm` in shell
-	// This is needed to access /run/cras/.cras_socket (legacy socket)
-	crasGrp, err := user.LookupGroup("cras")
-	if err != nil {
-		s.Fatal("Failed to find group id for cras: ", err)
-	}
-	crasGrpID, err := strconv.ParseUint(crasGrp.Gid, 10, 32)
-	if err != nil {
-		s.Fatal("Failed to convert cras grp id to integer: ", err)
-	}
-	cmd.SysProcAttr = &syscall.SysProcAttr{
-		Credential: &syscall.Credential{
-			Uid:         0,
-			Gid:         0,
-			Groups:      []uint32{uint32(crasGrpID)},
-			NoSetGroups: false,
-		},
-	}
-
 	if err = cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to run crosvm: ", err)
 	}
