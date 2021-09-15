@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d63cd4b7_3082c944",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-15T07:50:54Z",
+      "side": 1,
+      "message": "The def.go is generated from chromium/src/components/policy/resources/policy_templates.json using this python script. It is listed as URL schema and policy_templates.json only describe the payload as string(https://source.chromium.org/chromium/chromium/src/+/main:components/policy/resources/policy_templates.json;l\u003d9401?q\u003dpolicy_templates.json).\n\nAs cited in the header of this python script(https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py;l\u003d13), for hard to parse, or URL schema, we should override them here in order to use the json.Marshal method to generate the correct content for ONC.",
+      "parentUuid": "84304a29_b5e3733c",
+      "range": {
+        "startLine": 510,
+        "startChar": 11,
+        "endLine": 510,
+        "endChar": 21
+      },
+      "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8461747b_718ab5de",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-15T07:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4074f42d_86040e2d",
+      "range": {
+        "startLine": 510,
+        "startChar": 21,
+        "endLine": 510,
+        "endChar": 22
+      },
+      "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c17e0431_6f7cee55",
@@ -60,6 +108,54 @@
       "writtenOn": "2021-09-14T13:30:26Z",
       "side": 1,
       "message": "nit: Maybe we could mention that this is a subset of the full schema, only defining the parts that tast tests currently use.",
+      "range": {
+        "startLine": 511,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 108
+      },
+      "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c675ec84_11924ef3",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-15T07:50:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c17e0431_6f7cee55",
+      "range": {
+        "startLine": 511,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 108
+      },
+      "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0b3ea02_b836d4bc",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-15T07:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c17e0431_6f7cee55",
       "range": {
         "startLine": 511,
         "startChar": 0,
@@ -87,6 +183,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d582967_351c8e87",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-15T07:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ddb8f79_f41bb907",
+      "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7394e14_99bdd245",
@@ -100,6 +214,30 @@
       "writtenOn": "2021-09-14T13:30:26Z",
       "side": 1,
       "message": "I am a bit confused about us needing this and how this refers to the stuff defined in parse_override_onc, so here are my noob questions:\n\n1. Could we have just one \"override\" function and use it for both user and device ONC?\n2. If not, mentioning NetworkConfiguration here refers to NetworkConfiguration defined in parse_override_onc(), which happens to work because those are generated into the same file, right?",
+      "range": {
+        "startLine": 546,
+        "startChar": 4,
+        "endLine": 546,
+        "endChar": 29
+      },
+      "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed89ffa_7db4e48b",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-15T07:50:54Z",
+      "side": 1,
+      "message": "There are common Go struct which is generated from json templates with $ref used by different policy. For example, `RefTime` (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/policy/defs.go;l\u003d20012?q\u003ddefs.go)\n\nHowever, we cannot use the similar approach as the OpenNetworkConfiguration in policy_templates.json has schema type string rather than $ref. We can add a common section in the bottom for ONC and points both OpenNetworkConfiguration and DeviceOpenNetworkConfiguration to it.",
+      "parentUuid": "d7394e14_99bdd245",
       "range": {
         "startLine": 546,
         "startChar": 4,
