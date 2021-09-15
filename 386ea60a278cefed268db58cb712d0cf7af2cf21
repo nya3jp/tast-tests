@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f22199a_25128412",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-15T02:47:13Z",
+      "side": 1,
+      "message": "adding oka@ to CC who knows better about Preconditions internal impl.",
+      "revId": "386ea60a278cefed268db58cb712d0cf7af2cf21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5037fb16_d11ddee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/multi_page_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-15T02:47:13Z",
+      "side": 1,
+      "message": "Does this PreValue() always return nil because the Pre field (\u003dprecondition) is not set in the test metadata?",
+      "revId": "386ea60a278cefed268db58cb712d0cf7af2cf21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3993a6b1_f928afd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/multi_page_scan.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-15T02:47:13Z",
+      "side": 1,
+      "message": "nit: use :\u003d for minimizing the scope and also for consisteny with other ones. Same for other occurances.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 10
+      },
+      "revId": "386ea60a278cefed268db58cb712d0cf7af2cf21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
