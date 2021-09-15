@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "729088a3_69521037",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-loopback-latency.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-15T01:46:19Z",
+      "side": 1,
+      "message": "The -l (loop) option only works with -c (the cras path), and I don\u0027t want touch that C program with static variables all over the place..",
+      "revId": "d228c6cb9c250f7f035aa71329a77c254cc2c126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
