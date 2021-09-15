@@ -165,6 +165,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17c68274_e5b9920f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-15T03:00:15Z",
+      "side": 1,
+      "message": "FileSystemWatcher (inotify) is not attached to sdcard. So this part to wait for MediaStore database won\u0027t work and should not be executed for sdcard.\nYou can mention b:189416284 in a code comment to explain why it should be skipped.",
+      "parentUuid": "2d8a2cea_107a993f",
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cad092c4_6e82f66e",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
         "patchSetId": 9
