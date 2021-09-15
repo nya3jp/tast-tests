@@ -39,6 +39,30 @@
       },
       "revId": "a4b518183004b91dc497572620c3214bc765045e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fae3c94_3e2fd6b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-09-15T06:20:09Z",
+      "side": 1,
+      "message": "Add offline discussion detail:\nThe boot time calibration is enabled per model. The same image is deployed to those models but changes behavior at runtime, so implement it as a hardware dependency.",
+      "parentUuid": "302c75f0_84c67539",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "a4b518183004b91dc497572620c3214bc765045e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
