@@ -91,6 +91,46 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6fb1cafd_3ff01cde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-15T08:53:49Z",
+      "side": 1,
+      "message": "Thanks for making this better!",
+      "revId": "f4668b644ffb98128ca30ba834b755ec71bc6b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef0c053_f38a9912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-15T08:53:49Z",
+      "side": 1,
+      "message": "I think the intention of this is to impose a deadline on the blocking io.Copy call further down by closing the readPipe while the io.Copy is still in progress after 15 seconds.\n\nCould this be done in a simpler + easier to understand way by using set(Read)Deadline on the readPipe?\n\ni.e.\n \nreadPipe.setReadDeadline(time.Now().Add(15 * time.Second));\nif _, err :\u003d io.Copy(\u0026buf, readPipe); err !\u003d nil {\n\ts.Fatal(\"Failed to read error: \", err)\n}\n\nIIUC this will also make the io.Copy operation fail with a timeout error after 15 seconds.\n-\u003e https://pkg.go.dev/net#Conn.SetDeadline",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 63
+      },
+      "revId": "f4668b644ffb98128ca30ba834b755ec71bc6b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "16114815_19a67f24",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
         "patchSetId": 1
