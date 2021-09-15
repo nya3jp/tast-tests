@@ -103,6 +103,10 @@ func ChromevoxTTSProcessingWhitespace(ctx context.Context, s *testing.State) {
 			[]string{"Enter"},
 			[]a11y.SpeechExpectation{a11y.NewStringExpectation("new line")},
 		},
+		{
+			[]string{"Backspace", "Backspace"},
+			[]a11y.SpeechExpectation{a11y.NewOptionsExpectation(", deleted", "en-US", .4, 1.0)},
+		},
 	}
 
 	for _, step := range testSteps {
