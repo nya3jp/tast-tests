@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8603ea82_095289a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-15T11:28:03Z",
+      "side": 1,
+      "message": "nit: use HasClass as ClassName is being deprecated",
+      "range": {
+        "startLine": 209,
+        "startChar": 45,
+        "endLine": 209,
+        "endChar": 54
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b59649e1_9a309c75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-15T11:28:03Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 231,
+        "startChar": 45,
+        "endLine": 231,
+        "endChar": 54
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba5e07e2_7121547e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-15T11:28:03Z",
+      "side": 1,
+      "message": "nit: use Eval",
+      "range": {
+        "startLine": 343,
+        "startChar": 20,
+        "endLine": 343,
+        "endChar": 41
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b96c9903_817b7c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-15T11:28:03Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 346,
+        "startChar": 20,
+        "endLine": 346,
+        "endChar": 41
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
