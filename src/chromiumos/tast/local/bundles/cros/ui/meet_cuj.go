@@ -384,6 +384,16 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			jankCriteria))
 	}
 
+	configs = append(configs, cuj.NewCustomMetricConfig(
+		"Cras.FetchDelayMilliSeconds", "millisecond", perf.SmallerIsBetter,
+		[]int64{1, 20}))
+	configs = append(configs, cuj.NewCustomMetricConfig(
+		"Cras.MissedCallbackFrequencyInput", "millisecond", perf.SmallerIsBetter,
+		[]int64{1, 20}))
+	configs = append(configs, cuj.NewCustomMetricConfig(
+		"Cras.MissedCallbackFrequencyOutput", "millisecond", perf.SmallerIsBetter,
+		[]int64{1, 20}))
+
 	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)

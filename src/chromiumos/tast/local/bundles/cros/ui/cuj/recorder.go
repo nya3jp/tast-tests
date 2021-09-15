@@ -363,6 +363,7 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 
 	var crasUnderruns float64
 	for name, record := range r.records {
+		testing.ContextLog(ctx, "QQ: ", name)
 		if record.totalCount == 0 {
 			continue
 		}
@@ -391,6 +392,14 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 			Direction: perf.SmallerIsBetter,
 		}, record.jankCounts[1]/float64(record.totalCount)*100)
 	}
+
+	// Derive Cras.UnderrunsPerDevicePerMinute. Ideally, the audio playing time and number of CRAS audio device
+	// should be captured. For now use the recorder running duration and assume there is only one device.
+	pv.Set(perf.Metric{
+		Name:      "Media.Cras.UnderrunsPerDevicePerMinute",
+		Unit:      "count",
+		Direction: perf.SmallerIsBetter,
+	}, crasUnderruns/r.duration.Minutes())
 
 	// Derive Cras.UnderrunsPerDevicePerMinute. Ideally, the audio playing time and number of CRAS audio device
 	// should be captured. For now use the recorder running duration and assume there is only one device.
