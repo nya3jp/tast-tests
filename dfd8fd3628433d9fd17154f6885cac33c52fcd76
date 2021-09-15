@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c83fb2_51a58cac",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-15T10:41:58Z",
+      "side": 1,
+      "message": "Oohhhh got it, so it\u0027s not that the schema of the policy value is \"this is an URL\" but the description of the policy value is put somewhere else, reachable through an URL, but the thing the URL points to doesn\u0027t have to be any kind of formal schema.\n\nThat\u0027s weird :-) I didn\u0027t know we had this. Thanks for explaining!",
+      "parentUuid": "6d7ab457_1f10478c",
+      "range": {
+        "startLine": 510,
+        "startChar": 11,
+        "endLine": 510,
+        "endChar": 21
+      },
+      "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c17e0431_6f7cee55",
