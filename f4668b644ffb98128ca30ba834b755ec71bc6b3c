@@ -131,6 +131,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "550e85f8_48d92425",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-15T09:08:55Z",
+      "side": 1,
+      "message": "Good job finding this 😊. I expected go to have a way to time out io operations, but went looking for context aware solutions which were much more involved.",
+      "parentUuid": "8ef0c053_f38a9912",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 63
+      },
+      "revId": "f4668b644ffb98128ca30ba834b755ec71bc6b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "16114815_19a67f24",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
         "patchSetId": 1
