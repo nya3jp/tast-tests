@@ -39,6 +39,30 @@
       },
       "revId": "0fcf0703d4214bd713bcbc045e644e8ef29566e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f5c66a2_d0c482f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_file_system.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-15T13:30:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73d27774_b7d98443",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 137
+      },
+      "revId": "0fcf0703d4214bd713bcbc045e644e8ef29566e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
