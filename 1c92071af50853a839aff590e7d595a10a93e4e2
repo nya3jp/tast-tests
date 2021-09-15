@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a965a486_fa86e45b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-15T15:54:03Z",
+      "side": 1,
+      "message": "\u003e If \"disableFpUpdater\" fails we will return from NewFirmwareTest before the second deferred function is registered.\n\nOh right, I see.",
+      "parentUuid": "4d95e7a8_2571ea0a",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "1c92071af50853a839aff590e7d595a10a93e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e107872_8038e672",
