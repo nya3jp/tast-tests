@@ -247,3 +247,13 @@ func (i *Image) GetLayout() []byte {
 	sort.Strings(data)
 	return []byte(strings.Join(data, "\n") + "\n")
 }
+
+/*
+To see if the AP has serial port:
+
+cd /var/tmp
+flashrom -p host -r -i COREBOOT:coreboot.bin
+cbfstool coreboot.bin extract -r COREBOOT -n config -f coreboot.config
+grep CONFIG_CONSOLE_SERIAL coreboot.config
+
+*/
