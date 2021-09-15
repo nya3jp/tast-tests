@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ace1573_b9963a56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-15T18:12:49Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be the other way around? I would expect the platforms marked \"supported\" to be the stable tests, not the unstable ones...",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 64
+      },
+      "revId": "5e0d7d1ef53ca229a98d602a966de8235fecb1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
