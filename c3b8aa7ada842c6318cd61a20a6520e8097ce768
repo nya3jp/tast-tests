@@ -16,6 +16,24 @@
       "message": "I feel that the behavior to be tested (pressing volume key causing volume to change) is unrelated to playback. So for simplicity I would suggest removing the playback part.",
       "revId": "c3b8aa7ada842c6318cd61a20a6520e8097ce768",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0b27dda_73958590",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-15T03:59:01Z",
+      "side": 1,
+      "message": "During manual testing also we verify that volume change is reflecting during audio playback. Hence it is part of these steps.",
+      "parentUuid": "1f65ca2e_94614961",
+      "revId": "c3b8aa7ada842c6318cd61a20a6520e8097ce768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
