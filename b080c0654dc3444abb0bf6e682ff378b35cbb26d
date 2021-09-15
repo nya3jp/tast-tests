@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c84568ed_281b0532",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-15T20:50:16Z",
+      "side": 1,
+      "message": "I have created a resize lock helper file which will have common consts and functions that can be shared among the tests.",
+      "parentUuid": "2cee6ac5_e69d03e6",
+      "revId": "b080c0654dc3444abb0bf6e682ff378b35cbb26d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dcd48c4_8df7cc82",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-13T05:43:35Z",
       "side": 1,
       "message": "I\u0027ve heard we should use parameterized testing to run different tests based on android versions:\n\nhttps://docs.google.com/document/d/1Q1uychRxdrUL8kCJ8Bm2UvMBGngoxo14ke_la3mdT_4/edit#heading\u003dh.xgjl2srtytjt",
+      "range": {
+        "startLine": 403,
+        "startChar": 1,
+        "endLine": 403,
+        "endChar": 17
+      },
+      "revId": "b080c0654dc3444abb0bf6e682ff378b35cbb26d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6619b751_73d5121c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-15T20:50:16Z",
+      "side": 1,
+      "message": "Let me give a context, ClamshellResizeWindow func (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3141971/3/src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go#75) clamshell: Resize test case is common for all 100 app tests under tast.arcappcompat. The idea of using arc.VM is to avoid making changes in the code for all around 100 app tests under tast.arcappcompat and instead making changes in the code in a single \"testutil.go\" file only. Also for this CL, https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3097477/6..11/src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go#b60, I got a suggestion from the reviewer to use arc.VM check to avoid making changes in all 100 app tests.",
+      "parentUuid": "9dcd48c4_8df7cc82",
       "range": {
         "startLine": 403,
         "startChar": 1,
