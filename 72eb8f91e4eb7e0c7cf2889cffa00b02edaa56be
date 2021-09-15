@@ -106,6 +106,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6094371_361d627a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_access_website.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T07:29:59Z",
+      "side": 1,
+      "message": "I am not sure about line length as the guide says there is no fixed length. \n80 chars applies to comments though.\n\nhttps://g3doc.corp.google.com/go/g3doc/style/guide.md?cl\u003dhead#line-length",
+      "parentUuid": "f6b0abbc_f98e3a46",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 110
+      },
+      "revId": "72eb8f91e4eb7e0c7cf2889cffa00b02edaa56be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b9b3f7f_f7616a9a",
         "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_access_website.go",
         "patchSetId": 14
