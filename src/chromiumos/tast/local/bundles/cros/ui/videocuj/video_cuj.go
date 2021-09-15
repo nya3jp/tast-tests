@@ -64,16 +64,16 @@ type VideoApp interface {
 	Close(ctx context.Context)
 }
 
-// videoSrc struct defines video src for testing.
-type videoSrc struct {
-	url   string
-	title string
+// VideoSrc struct defines video src for testing.
+type VideoSrc struct {
+	Url   string
+	Title string
 	// quality is the string that test will look for in youtube
 	// "Settings / Quality" menu to change video playback quality.
-	quality string
+	Quality string
 }
 
-var basicVideoSrc = []videoSrc{
+var basicVideoSrc = []VideoSrc{
 	{
 		"https://www.youtube.com/watch?v=suWsd372pQE",
 		`"Go Beyond" 4K Ultra HD Time Lapse`,
@@ -91,7 +91,7 @@ var basicVideoSrc = []videoSrc{
 	},
 }
 
-var plusVideoSrc = []videoSrc{
+var plusVideoSrc = []VideoSrc{
 	{
 		"https://www.youtube.com/watch?v=b3wcQqINmE4",
 		"8K Videos | Collection of World's nature  UltraHD (120 FPS)",
