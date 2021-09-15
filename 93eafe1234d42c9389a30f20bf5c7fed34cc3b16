@@ -51,6 +51,24 @@
       "parentUuid": "d6cea19d_26ae8bbb",
       "revId": "93eafe1234d42c9389a30f20bf5c7fed34cc3b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d16c188_204737d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-15T07:54:08Z",
+      "side": 1,
+      "message": "We can add more functions to this service to just start/stop Chrome with KeepEnrollment . No other tests currently need them, that\u0027s why they don\u0027t yet exist.\n\nAlternatively a separate service could be used for the wifi test. The policy service would perform enrollment and the new service will handle the test specific logic.\n\nThe option you are proposing is still unintuitive. If you pass KeepEnrollment to chrome, it will *not* perform enrollment. Having this in a EnrollUsingChrome function is confusing. I\u0027d avoid having this function do everything (it might already be doing too much) and split it up.",
+      "parentUuid": "e356be60_4e0c2cbd",
+      "revId": "93eafe1234d42c9389a30f20bf5c7fed34cc3b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
