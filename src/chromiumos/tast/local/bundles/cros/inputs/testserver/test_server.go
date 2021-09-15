@@ -271,6 +271,17 @@ func (its *InputsTestServer) ClickField(inputField InputField) uiauto.Action {
 	)
 }
 
+// RightClickFieldAndWaitForActive returns an action right clicking the input field.
+func (its *InputsTestServer) RightClickFieldAndWaitForActive(inputField InputField) uiauto.Action {
+	fieldFinder := inputField.Finder()
+	return uiauto.Retry(3, uiauto.Combine(
+		"right click input field and wait for it to be active",
+		its.ui.MakeVisible(fieldFinder),
+		its.ui.RightClick(fieldFinder),
+		its.WaitForFieldToBeActive(inputField),
+	))
+}
+
 // ClickFieldUntilVKShown returns an action clicking the input field and waits for the virtual keyboard to show up.
 func (its *InputsTestServer) ClickFieldUntilVKShown(inputField InputField) uiauto.Action {
 	fieldFinder := inputField.Finder()
