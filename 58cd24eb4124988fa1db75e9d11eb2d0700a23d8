@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2a0f15d_1f139efc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-15T02:33:54Z",
+      "side": 1,
+      "message": "Looks good overall, I defer to other reviewers.\n",
+      "revId": "58cd24eb4124988fa1db75e9d11eb2d0700a23d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f83203a_5e05c7a6",
@@ -36,6 +53,53 @@
         "startChar": 4,
         "endLine": 370,
         "endChar": 10
+      },
+      "revId": "58cd24eb4124988fa1db75e9d11eb2d0700a23d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ca5062_244b6aec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-15T02:33:54Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "8f83203a_5e05c7a6",
+      "range": {
+        "startLine": 370,
+        "startChar": 4,
+        "endLine": 370,
+        "endChar": 10
+      },
+      "revId": "58cd24eb4124988fa1db75e9d11eb2d0700a23d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "666b344e_7dd38378",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-15T02:33:54Z",
+      "side": 1,
+      "message": "style: Let us avoid naked returns except for very short functions.\nhttps://github.com/golang/go/wiki/CodeReviewComments#naked-returns",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 7
       },
       "revId": "58cd24eb4124988fa1db75e9d11eb2d0700a23d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
