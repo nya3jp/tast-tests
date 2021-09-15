@@ -16,6 +16,47 @@
       "message": "The test still fails in the unallowed_by_policy case, but works in all others. Can you check the logic there as I\u0027m not sure it\u0027s doing the right thing.",
       "revId": "f4668b644ffb98128ca30ba834b755ec71bc6b3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "989c9bf2_0286477e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-15T07:26:02Z",
+      "side": 1,
+      "message": "The logic seems good to me if I\u0027m understanding it correctly. All test cases were failing because of unallowed_by_policy case was failing and it was blocking the other test-cases. Your clean-up will solve this. Thanks for making the test better!",
+      "parentUuid": "e46b9bd0_eb9e90d4",
+      "revId": "f4668b644ffb98128ca30ba834b755ec71bc6b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16114815_19a67f24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-15T07:26:02Z",
+      "side": 1,
+      "message": "I am asking just to make sure I understand correctly, the code here waits for the context to be cancelled or function to end to close the readPipe right? And this will stop the code from waiting for reading the error until the test time-outs and fails for all?",
+      "range": {
+        "startLine": 148,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 5
+      },
+      "revId": "f4668b644ffb98128ca30ba834b755ec71bc6b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
