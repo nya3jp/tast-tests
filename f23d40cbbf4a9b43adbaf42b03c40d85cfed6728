@@ -1,6 +1,86 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1936b190_dc4d73fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-15T08:36:16Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "f23d40cbbf4a9b43adbaf42b03c40d85cfed6728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16732e3e_b90b324c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-15T08:36:16Z",
+      "side": 1,
+      "message": "the KerberosAccounts policy",
+      "range": {
+        "startLine": 28,
+        "startChar": 78,
+        "endLine": 28,
+        "endChar": 108
+      },
+      "revId": "f23d40cbbf4a9b43adbaf42b03c40d85cfed6728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c95685_4ff7561e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-15T08:36:16Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "f23d40cbbf4a9b43adbaf42b03c40d85cfed6728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88af146c_5a78c063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-15T08:36:16Z",
+      "side": 1,
+      "message": "nit: KerberosAccounts policy",
+      "range": {
+        "startLine": 95,
+        "startChar": 26,
+        "endLine": 95,
+        "endChar": 42
+      },
+      "revId": "f23d40cbbf4a9b43adbaf42b03c40d85cfed6728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6287153_90712b70",
@@ -19,6 +99,46 @@
         "startChar": 0,
         "endLine": 97,
         "endChar": 107
+      },
+      "revId": "f23d40cbbf4a9b43adbaf42b03c40d85cfed6728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4488cb7_63d4190b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-15T08:36:16Z",
+      "side": 1,
+      "message": "The",
+      "revId": "f23d40cbbf4a9b43adbaf42b03c40d85cfed6728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "809a24b8_a6103665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-15T08:36:16Z",
+      "side": 1,
+      "message": "You could instead poll for the title to be the expected title for a few seconds.\n\nAlso I wonder if we\u0027d need to do that in the other website test too.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 2
       },
       "revId": "f23d40cbbf4a9b43adbaf42b03c40d85cfed6728",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
