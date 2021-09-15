@@ -62,7 +62,7 @@ func PhysicalKeyboardEmoji(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("verify quick emoji input",
 		// Right click input to trigger context menu and select Emoji.
-		ui.RightClick(inputField.Finder()),
+		its.RightClickFieldAndWaitForActive(inputField),
 		ui.LeftClick(emojiMenuFinder),
 		// Select item from emoji picker.
 		ui.LeftClick(emojiCharFinder),
