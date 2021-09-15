@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82faa308_2c8bc95e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T10:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16732e3e_b90b324c",
+      "range": {
+        "startLine": 28,
+        "startChar": 78,
+        "endLine": 28,
+        "endChar": 108
+      },
+      "revId": "f23d40cbbf4a9b43adbaf42b03c40d85cfed6728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03c95685_4ff7561e",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "105c4e5f_46736bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T10:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03c95685_4ff7561e",
+      "revId": "f23d40cbbf4a9b43adbaf42b03c40d85cfed6728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88af146c_5a78c063",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-09-15T08:36:16Z",
       "side": 1,
       "message": "nit: KerberosAccounts policy",
+      "range": {
+        "startLine": 95,
+        "startChar": 26,
+        "endLine": 95,
+        "endChar": 42
+      },
+      "revId": "f23d40cbbf4a9b43adbaf42b03c40d85cfed6728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7946c5e9_b0b749da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T10:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88af146c_5a78c063",
       "range": {
         "startLine": 95,
         "startChar": 26,
@@ -121,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df4c8217_e62aece7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T10:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4488cb7_63d4190b",
+      "revId": "f23d40cbbf4a9b43adbaf42b03c40d85cfed6728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "809a24b8_a6103665",
@@ -134,6 +218,30 @@
       "writtenOn": "2021-09-15T08:36:16Z",
       "side": 1,
       "message": "You could instead poll for the title to be the expected title for a few seconds.\n\nAlso I wonder if we\u0027d need to do that in the other website test too.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 2
+      },
+      "revId": "f23d40cbbf4a9b43adbaf42b03c40d85cfed6728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95797aaf_940748ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T10:21:04Z",
+      "side": 1,
+      "message": "Done. I will put that to others too.",
+      "parentUuid": "809a24b8_a6103665",
       "range": {
         "startLine": 124,
         "startChar": 0,
