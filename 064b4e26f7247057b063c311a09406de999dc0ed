@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a2bec3b_a512c33c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-09-15T10:22:08Z",
+      "side": 1,
+      "message": "nit: can we simply put |tst.testFunc| here?",
+      "range": {
+        "startLine": 41,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 4
+      },
+      "revId": "064b4e26f7247057b063c311a09406de999dc0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
