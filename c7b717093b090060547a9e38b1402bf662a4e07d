@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7273c2c_233b971a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-15T00:15:12Z",
+      "side": 1,
+      "message": "Hi Jun, looks like NamedAction doesn\u0027t print log as it supposed to. This CL tries to fix this, so we can use this to print logs when start an action.",
+      "revId": "c7b717093b090060547a9e38b1402bf662a4e07d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
