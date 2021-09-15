@@ -16,6 +16,69 @@
       "message": "Implementation of pinch zoom on the trackpad using the refactored apps.",
       "revId": "d49f6a7fe4c54eb11a29d9fac8c8aad776547abf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e062ce3_9d8d784a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-15T14:17:19Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "d49f6a7fe4c54eb11a29d9fac8c8aad776547abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70eb504_9d58860b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-15T14:17:19Z",
+      "side": 1,
+      "message": "out?",
+      "range": {
+        "startLine": 664,
+        "startChar": 43,
+        "endLine": 664,
+        "endChar": 45
+      },
+      "revId": "d49f6a7fe4c54eb11a29d9fac8c8aad776547abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be707116_4ea5c196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-15T14:17:19Z",
+      "side": 1,
+      "message": "Is it specific for zoom in only?\nmaybe remove `in`?",
+      "range": {
+        "startLine": 674,
+        "startChar": 45,
+        "endLine": 674,
+        "endChar": 52
+      },
+      "revId": "d49f6a7fe4c54eb11a29d9fac8c8aad776547abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
