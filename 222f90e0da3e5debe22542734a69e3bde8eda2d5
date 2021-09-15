@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28b5c3d_4ed0568c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-15T09:02:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b524c942_e6427f2b",
+      "revId": "222f90e0da3e5debe22542734a69e3bde8eda2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68553a5a_48cb13dd",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-14T11:56:09Z",
       "side": 1,
       "message": "This file is opened in R/W mode. It should be closed before overwriting by the othre writer.",
+      "revId": "222f90e0da3e5debe22542734a69e3bde8eda2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a1ca54b_b4d24ac2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-15T09:02:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68553a5a_48cb13dd",
       "revId": "222f90e0da3e5debe22542734a69e3bde8eda2d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad2e91dc_89ee51e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-15T09:02:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "852bb1ac_326c57b7",
+      "revId": "222f90e0da3e5debe22542734a69e3bde8eda2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa83c568_d2a26bbc",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-09-14T11:08:02Z",
       "side": 1,
       "message": "It is a bit unclear to me the purpose of this test.\nIf play and rec command the same as aplay and arecord ?\n\nIf you are using aplay/arecord, what do you need from UI besides selecting active audio devices?",
+      "revId": "222f90e0da3e5debe22542734a69e3bde8eda2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fb07eb7_97003325",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-15T09:02:32Z",
+      "side": 1,
+      "message": "arecord command will be able to record using 4 channels which we will not be able to directly play using Internal speaker. That’s why we are using the play and rec commands, which will play and record in 2 channels simultaneously.\n\nWe are playing the recorded audio using UI through default audio player.",
+      "parentUuid": "fa83c568_d2a26bbc",
       "revId": "222f90e0da3e5debe22542734a69e3bde8eda2d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
