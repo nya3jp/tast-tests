@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/input/voice"
 	"chromiumos/tast/testing"
 )
@@ -294,6 +295,31 @@ func (its *InputsTestServer) ValidateInputOnField(inputField InputField, inputFu
 	)
 }
 
+func (its *InputsTestServer) validatePKTypingInField(inputField InputField, inputData data.InputData) uiauto.Action {
+	return func(ctx context.Context) error {
+		// This is either an actual PK device, or a PK simulator for injecting
+		// key codes.
+		keyboard, err := input.Keyboard(ctx)
+		if err != nil {
+			return err
+		}
+		defer keyboard.Close()
+
+		return uiauto.Combine("validate pk input function on field "+string(inputField),
+			its.Clear(inputField),
+			its.ClickFieldAndWaitForActive(inputField),
+			keyboard.TypeSequenceAction(inputData.LocationKeySeq),
+			func(ctx context.Context) error {
+				if inputData.SubmitFromSuggestion {
+					return keyboard.Accel(ctx, "space")
+				}
+				return nil
+			},
+			its.ValidateResult(inputField, inputData.ExpectedText),
+		)(ctx)
+	}
+}
+
 func (its *InputsTestServer) validateVKTypingInField(inputField InputField, inputData data.InputData) uiauto.Action {
 	vkbCtx := vkb.NewContext(its.cr, its.tconn)
 	return uiauto.Combine("validate vk input function on field "+string(inputField),
@@ -379,6 +405,8 @@ func (its *InputsTestServer) ValidateInputFieldForMode(inputField InputField, in
 		return its.validateVoiceInField(inputField, inputData, dataPath)
 	case util.InputWithHandWriting:
 		return its.validateHandwritingInField(inputField, inputData, dataPath)
+	case util.InputWithPK:
+		return its.validatePKTypingInField(inputField, inputData)
 	}
 
 	return func(ctx context.Context) error {
