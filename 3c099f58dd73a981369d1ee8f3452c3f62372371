@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06fc123b_dbe337e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-09-15T20:27:15Z",
+      "side": 1,
+      "message": "FYI, this test is failing on herobrine.\n\n```\n2021-09-15T20:23:24.867664Z Started test platform.PerfETM\n2021-09-15T20:23:25.231169Z [20:23:25.534] Error at perf_etm.go:69: Couldn\u0027t find AUX buffer in perf report\n2021-09-15T20:23:25.231233Z [20:23:25.534] Stack trace:\nCouldn\u0027t find AUX buffer in perf report\n        at chromiumos/tast/local/bundles/cros/platform.verifyETMData (perf_etm.go:69)\n        at chromiumos/tast/local/bundles/cros/platform.perfETMPerThread (perf_etm.go:122)\n        at chromiumos/tast/local/bundles/cros/platform.PerfETM (perf_etm.go:191)\n        at chromiumos/tast/internal/planner.runTestWithRoot.func3.1 (run.go:821)\n        at chromiumos/tast/internal/planner.safeCall.func2 (safe.go:92)\n        at runtime.goexit (asm_arm.s:857)\n2021-09-15T20:23:25.266461Z [20:23:25.550] External command failed: exit status 255\n2021-09-15T20:23:25.266523Z [20:23:25.551] Command: perf inject --itrace\u003di1000il -i /usr/local/tmp/tast_out.20210915-132317.582805601/platform.PerfETM/per-thread-perf.data -o /usr/local/tmp/tast_\nout.20210915-132317.582805601/platform.PerfETM/per-thread-perf-inject.data\n2021-09-15T20:23:25.266628Z [20:23:25.552] Uncaptured output:\n0x178 [0x2a8]: failed to process type: 70 [Operation not permitted]\n```",
+      "revId": "3c099f58dd73a981369d1ee8f3452c3f62372371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
