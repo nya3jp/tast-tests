@@ -25,7 +25,7 @@ func init() {
 		Desc:         "Captures performance data about getUserMedia video capture",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome", "camera_720p"},
+		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome"},
 		Data:         append(webrtc.DataFiles(), "getusermedia.html"),
 		Params: []testing.Param{
 			{
