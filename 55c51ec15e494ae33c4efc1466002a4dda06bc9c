@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b16264b_4472293b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-15T15:16:42Z",
+      "side": 1,
+      "message": "# removing myself from attention list. This is about landed, so I think nothing I should do now. Please feel free to add me back when necessary.",
+      "revId": "55c51ec15e494ae33c4efc1466002a4dda06bc9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
