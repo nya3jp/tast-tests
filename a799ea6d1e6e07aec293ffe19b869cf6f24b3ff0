@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47cf27f8_1588c66f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-15T05:19:08Z",
+      "side": 1,
+      "message": "wrap the err with contentSiteErr?",
+      "range": {
+        "startLine": 186,
+        "startChar": 10,
+        "endLine": 186,
+        "endChar": 24
+      },
+      "revId": "a799ea6d1e6e07aec293ffe19b869cf6f24b3ff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
