@@ -54,6 +54,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded606d6_067c453c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-15T07:59:23Z",
+      "side": 1,
+      "message": "Yes, sounds good.",
+      "parentUuid": "51a2287a_bdfe3310",
+      "revId": "f4668b644ffb98128ca30ba834b755ec71bc6b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "934d4acb_6c4367a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-15T07:59:23Z",
+      "side": 1,
+      "message": "LGTM, thanks for the clean up!",
+      "revId": "f4668b644ffb98128ca30ba834b755ec71bc6b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "16114815_19a67f24",
@@ -91,6 +126,30 @@
       "side": 1,
       "message": "It waits for 15 seconds before closing the pipe, not until the context expires.",
       "parentUuid": "16114815_19a67f24",
+      "range": {
+        "startLine": 148,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 5
+      },
+      "revId": "f4668b644ffb98128ca30ba834b755ec71bc6b3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebcf33fc_3e7dae78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-15T07:59:23Z",
+      "side": 1,
+      "message": "Right. Sorry, don\u0027t know why I thought there\u0027s a loop there for a second. Thanks for explaining, now I understand the logic well!",
+      "parentUuid": "b2f6009a_1961d80f",
       "range": {
         "startLine": 148,
         "startChar": 4,
