@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8381e149_8ce8c801",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-09-15T07:31:42Z",
+      "side": 1,
+      "message": "Done! This link is not working for me (Uber proxy)",
+      "parentUuid": "d2323c81_e987e377",
+      "range": {
+        "startLine": 112,
+        "startChar": 66,
+        "endLine": 112,
+        "endChar": 71
+      },
+      "revId": "1c92071af50853a839aff590e7d595a10a93e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7e1a8c5_208ef526",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-14T23:20:16Z",
       "side": 1,
       "message": "In the case where \"upstart.DisableJob\" succeeds, but \"disableFpUpdater\" fails, this will get called too, right? (In addition to the deferred func below.)\n\nIf that\u0027s the case, maybe it\u0027s clearer to combine the two to make it more obvious that this is the behavior?",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "1c92071af50853a839aff590e7d595a10a93e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d95e7a8_2571ea0a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-09-15T07:31:42Z",
+      "side": 1,
+      "message": "In this case, only deferred function which contains \"upstart.EnableJob\" (the first one) will be called. If \"disableFpUpdater\" fails we will return from NewFirmwareTest before the second deferred function is registered.\n\nIn addition deferred functions are called in reversed order (LIFO)",
+      "parentUuid": "c7e1a8c5_208ef526",
       "range": {
         "startLine": 113,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b713ca7_31983a0a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-09-15T07:31:42Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "1e107872_8038e672",
+      "range": {
+        "startLine": 115,
+        "startChar": 74,
+        "endLine": 115,
+        "endChar": 81
+      },
+      "revId": "1c92071af50853a839aff590e7d595a10a93e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1745b5f1_36ac1d47",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b67a57fe_040b43ce",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-09-15T07:31:42Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "1745b5f1_36ac1d47",
+      "range": {
+        "startLine": 117,
+        "startChar": 55,
+        "endLine": 117,
+        "endChar": 62
+      },
+      "revId": "1c92071af50853a839aff590e7d595a10a93e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99b459c7_4e421254",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-09-14T23:20:16Z",
       "side": 1,
       "message": "nit: add period if it\u0027s a complete sentence: http://shortn/_chUQBWlHNG",
+      "range": {
+        "startLine": 126,
+        "startChar": 64,
+        "endLine": 126,
+        "endChar": 69
+      },
+      "revId": "1c92071af50853a839aff590e7d595a10a93e4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be9df8c4_1eed7e48",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-09-15T07:31:42Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "99b459c7_4e421254",
       "range": {
         "startLine": 126,
         "startChar": 64,
