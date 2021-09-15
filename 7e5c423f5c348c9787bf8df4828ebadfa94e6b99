@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d39407c_5585eb05",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-15T14:26:05Z",
+      "side": 1,
+      "message": "nit: remove the space between \u0027on\u0027 and \u0027:\u0027 here and elsewhere in this file to keep the styling consistent.",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d614b418_06259073",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-15T14:26:05Z",
+      "side": 1,
+      "message": "The call to \u0027NewChromeLogin\u0027 mentions requiring a call to \u0027CloseChrome\u0027 in order to clean up resources. Is there a reason to not call it during this test?",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52903d29_8e85095d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-15T14:26:05Z",
+      "side": 1,
+      "message": "nit: Sleep is discouraged unless completely necessary [1]. Is there a state you can poll on instead?\n\n[1] - https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#sleep",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff184620_88ab4ecf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-15T14:26:05Z",
+      "side": 1,
+      "message": "nit: can the number of iterations (10) be stored as a named constant?",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66113b9d_10855b4c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-15T14:26:05Z",
+      "side": 1,
+      "message": "nit: pkgOpSetPre is being used for two purposes: storing the cmdOutput, and the result of a regex match. A new variable here might make it easier to follow.",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d859155a_63c816c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-15T14:26:05Z",
+      "side": 1,
+      "message": "nit: ditto from above, pkgOpSetPost is being used for two purposes.",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
