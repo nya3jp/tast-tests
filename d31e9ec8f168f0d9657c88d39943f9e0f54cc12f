@@ -144,6 +144,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2a67398_65d2aa24",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c03daa09_caec9976",
+      "range": {
+        "startLine": 55,
+        "startChar": 23,
+        "endLine": 55,
+        "endChar": 34
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e52e01b9_0395c0e0",
@@ -157,6 +181,30 @@
       "writtenOn": "2021-09-09T23:19:10Z",
       "side": 1,
       "message": "Can we replace it with just ui.Exists(quickSettingsFinder) ?",
+      "range": {
+        "startLine": 140,
+        "startChar": 116,
+        "endLine": 140,
+        "endChar": 117
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e733f343_6ad75bcd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e52e01b9_0395c0e0",
       "range": {
         "startLine": 140,
         "startChar": 116,
@@ -190,6 +238,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37d9e062_cd3001b1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95268689_b61e850d",
+      "range": {
+        "startLine": 158,
+        "startChar": 9,
+        "endLine": 158,
+        "endChar": 27
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84951d14_5a0b84dd",
@@ -203,6 +275,30 @@
       "writtenOn": "2021-09-09T23:19:10Z",
       "side": 1,
       "message": "nit: I\u0027d directly return this without defining podButton, because it\u0027s obvious that what we returns is the podButton from the function name.",
+      "range": {
+        "startLine": 160,
+        "startChar": 14,
+        "endLine": 160,
+        "endChar": 22
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ef7be16_74879f9d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84951d14_5a0b84dd",
       "range": {
         "startLine": 160,
         "startChar": 14,
@@ -236,6 +332,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad8efd9_e5cfa688",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c387955_6176e771",
+      "range": {
+        "startLine": 166,
+        "startChar": 5,
+        "endLine": 166,
+        "endChar": 18
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae13245a_88a3b634",
@@ -249,6 +369,30 @@
       "writtenOn": "2021-09-09T23:19:10Z",
       "side": 1,
       "message": "We can use PodIconButton. ui.Info waits until the node is found.",
+      "range": {
+        "startLine": 212,
+        "startChar": 13,
+        "endLine": 212,
+        "endChar": 26
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9795e4e5_6373b62a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae13245a_88a3b634",
       "range": {
         "startLine": 212,
         "startChar": 13,
@@ -282,6 +426,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "825ece76_c56c5156",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f26d6b6e_67d90759",
+      "range": {
+        "startLine": 247,
+        "startChar": 13,
+        "endLine": 247,
+        "endChar": 26
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a460764_3891de96",
@@ -295,6 +463,30 @@
       "writtenOn": "2021-09-09T23:19:10Z",
       "side": 1,
       "message": "same here.",
+      "range": {
+        "startLine": 267,
+        "startChar": 13,
+        "endLine": 267,
+        "endChar": 26
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc9cd2d_1fd9bb60",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a460764_3891de96",
       "range": {
         "startLine": 267,
         "startChar": 13,
@@ -328,6 +520,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a91c227_9ded5427",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1de2056f_fbb14ad4",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 90
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4d0f0e2_41aad0c8",
@@ -341,6 +557,30 @@
       "writtenOn": "2021-09-09T23:19:10Z",
       "side": 1,
       "message": "We can combine them into \nui.WithTimeout(ui.Timeout).LeftClick(LockBtn)",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 0
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56ddb033_1932f3d8",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4d0f0e2_41aad0c8",
       "range": {
         "startLine": 321,
         "startChar": 0,
@@ -374,6 +614,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c302a69_aafaed84",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9acfcb32_5d361d1c",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 2
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7162a6c_c71eaad2",
@@ -387,6 +651,30 @@
       "writtenOn": "2021-09-09T23:19:10Z",
       "side": 1,
       "message": "WithTimeout(uiTimeout)",
+      "range": {
+        "startLine": 423,
+        "startChar": 14,
+        "endLine": 423,
+        "endChar": 67
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a85a335_836c0a27",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7162a6c_c71eaad2",
       "range": {
         "startLine": 423,
         "startChar": 14,
@@ -444,6 +732,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17d71d80_66b28be0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b7c3c4a_c09531aa",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 12
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69cfae0f_9bfe8c27",
@@ -457,6 +769,30 @@
       "writtenOn": "2021-09-09T23:19:10Z",
       "side": 1,
       "message": "nit: can we remove \u003d\u003d true ?",
+      "range": {
+        "startLine": 476,
+        "startChar": 29,
+        "endLine": 476,
+        "endChar": 37
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ba20f7a_172df823",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69cfae0f_9bfe8c27",
       "range": {
         "startLine": 476,
         "startChar": 29,
@@ -490,6 +826,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c611e6e7_b754fe55",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fd91f41_f9711e2a",
+      "range": {
+        "startLine": 572,
+        "startChar": 5,
+        "endLine": 572,
+        "endChar": 20
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "558e8829_628b2fd1",
@@ -513,6 +873,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "264af99d_7d147011",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "558e8829_628b2fd1",
+      "range": {
+        "startLine": 590,
+        "startChar": 27,
+        "endLine": 590,
+        "endChar": 30
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4e24389_3b13fb93",
@@ -526,6 +910,30 @@
       "writtenOn": "2021-09-09T23:19:10Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 608,
+        "startChar": 25,
+        "endLine": 608,
+        "endChar": 28
+      },
+      "revId": "d31e9ec8f168f0d9657c88d39943f9e0f54cc12f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80b3f2da_b8ed1aef",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4e24389_3b13fb93",
       "range": {
         "startLine": 608,
         "startChar": 25,
