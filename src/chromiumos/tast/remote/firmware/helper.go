@@ -516,8 +516,7 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	// so we need to manually untar the file and write it over the usb device.
 
 	// TODO if needed, recovery images are at .../recovery_image.tar.xz.
-	// TODO, change to Config.BuildArtifactsURL if that becomes accessible.
-	testImageURL := "gs://chromeos-image-archive/" + dutBuilderPath + "/chromiumos_test_image.tar.xz"
+	testImageURL := "chromiumos_test_image.tar.xz"
 	reader, err := cloudStorage.Open(ctx, testImageURL)
 	if err != nil {
 		return errors.Wrapf(err, "failed to download test image %s", dutBuilderPath)
