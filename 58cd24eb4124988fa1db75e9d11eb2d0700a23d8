@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a725fb9f_e808c5a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2021-09-15T17:07:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11ca5062_244b6aec",
+      "range": {
+        "startLine": 370,
+        "startChar": 4,
+        "endLine": 370,
+        "endChar": 10
+      },
+      "revId": "58cd24eb4124988fa1db75e9d11eb2d0700a23d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "666b344e_7dd38378",
@@ -95,6 +119,30 @@
       "writtenOn": "2021-09-15T02:33:54Z",
       "side": 1,
       "message": "style: Let us avoid naked returns except for very short functions.\nhttps://github.com/golang/go/wiki/CodeReviewComments#naked-returns",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 7
+      },
+      "revId": "58cd24eb4124988fa1db75e9d11eb2d0700a23d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66183fc9_0e7a2450",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2021-09-15T17:07:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "666b344e_7dd38378",
       "range": {
         "startLine": 376,
         "startChar": 0,
@@ -128,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96cf79c1_e2d26159",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2021-09-15T17:07:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73f79065_434608ff",
+      "range": {
+        "startLine": 419,
+        "startChar": 10,
+        "endLine": 419,
+        "endChar": 16
+      },
+      "revId": "58cd24eb4124988fa1db75e9d11eb2d0700a23d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "628767a1_c9b89f03",
@@ -151,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf6724f_a5f360ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2021-09-15T17:07:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "628767a1_c9b89f03",
+      "range": {
+        "startLine": 444,
+        "startChar": 3,
+        "endLine": 444,
+        "endChar": 28
+      },
+      "revId": "58cd24eb4124988fa1db75e9d11eb2d0700a23d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "673e44dd_19d8ca0b",
@@ -164,6 +260,30 @@
       "writtenOn": "2021-09-14T23:15:23Z",
       "side": 1,
       "message": "Still give the full summary detail as in \n\ns.Errorf(\"%q: %d pass/%d fail/%d skip (failing %s%s%s)\", testOpt.exe, results.passed+results.failed, results.failed, results.skipped, errors[0], errorsSeparator, lastSubtest)",
+      "range": {
+        "startLine": 446,
+        "startChar": 2,
+        "endLine": 446,
+        "endChar": 78
+      },
+      "revId": "58cd24eb4124988fa1db75e9d11eb2d0700a23d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d69bf0a6_947afa14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2021-09-15T17:07:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "673e44dd_19d8ca0b",
       "range": {
         "startLine": 446,
         "startChar": 2,
