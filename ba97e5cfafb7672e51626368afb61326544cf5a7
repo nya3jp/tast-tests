@@ -16,6 +16,144 @@
       "message": "ptal?",
       "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef86b5d3_8c481c38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-15T09:11:32Z",
+      "side": 1,
+      "message": "Does it only work on PK?",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5547aafa_026e09b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-15T09:11:32Z",
+      "side": 1,
+      "message": "nit: jiwan",
+      "range": {
+        "startLine": 24,
+        "startChar": 26,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8e8ab1_352667ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-15T09:11:32Z",
+      "side": 1,
+      "message": "SoftwareDeps: []string{\"chrome\", \"google_virtual_keyboard\"},\n\ngoogle_virtual_keyboard represents that virtual_keyboard is installed. It can imply where has E14s installed. Otherwise, it might run on ChromiumOS without E14s.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80c4fcb0_aebcf981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-15T09:11:32Z",
+      "side": 1,
+      "message": "Sequential steps very likely introduce flakiness. Is it possible to add some validations in between? I will run the test locally and see if any further suggestion.",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ac48db_38a67712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-15T09:11:32Z",
+      "side": 1,
+      "message": "A silly question here, how about other boards that do not support grammar check? Is that setting hidden/disabled or a different workflow? It would be nice to have coverage there too, but can be done separately.",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df2cbe35_ab3004d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-15T09:11:32Z",
+      "side": 1,
+      "message": "If betty VM does not support this feature, it can be very fragile. Because most CQ primarily run on betty.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
