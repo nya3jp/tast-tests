@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4928497a_86f83b6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-15T18:26:59Z",
+      "side": 1,
+      "message": "Maybe just name them \"unstable*PLATFORM*\" for the time being, then?",
+      "parentUuid": "6bb1eed4_7a691b7c",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 64
+      },
+      "revId": "5e0d7d1ef53ca229a98d602a966de8235fecb1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c51d3a94_d18914ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
         "patchSetId": 3
