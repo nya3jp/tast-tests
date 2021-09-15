@@ -575,6 +575,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e311d7_ef5b2c8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-15T02:22:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a6b7a34_8634a70c",
+      "revId": "33959fc0305c6f1adc3d023f1a165cab16cde67f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17b5ec3d_2ea6eb70",

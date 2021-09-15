@@ -58,6 +58,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da35f12c_4daf7f64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-15T02:22:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "591731bd_d07841fd",
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "246a71e7_6176eece",
@@ -123,6 +141,24 @@
       "writtenOn": "2021-09-14T07:58:48Z",
       "side": 1,
       "message": "1. This won\u0027t work for sdcard, right?\n2. You should use medaScanTimeMyFilesUUID for 0000....CAFEF00D2019.\n3. As mentioned in another comment, we should probably extract this part as a separate function to make the code more understandable.",
+      "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d8a2cea_107a993f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-15T02:22:57Z",
+      "side": 1,
+      "message": "I think you mentioned inotify is not triggered in sdcard by bug, so should we make this function work for sdcard? Or we don\u0027t have to think of sdcard and let this function work for only MyFiles?",
+      "parentUuid": "5c6b1892_8423780b",
       "revId": "758bd163aa3629733d4bf14ed89b5de9f503e62c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
