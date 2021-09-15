@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "511e8d65_f1a2d07d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/doc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T08:52:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b5a9797_e9e1d11b",
+      "range": {
+        "startLine": 5,
+        "startChar": 35,
+        "endLine": 5,
+        "endChar": 62
+      },
+      "revId": "72eb8f91e4eb7e0c7cf2889cffa00b02edaa56be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac5bb75c_343c3204",
@@ -164,6 +188,30 @@
       "writtenOn": "2021-09-14T14:08:58Z",
       "side": 1,
       "message": "nit: update case in this comment as well.",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "72eb8f91e4eb7e0c7cf2889cffa00b02edaa56be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f7c12c9_41f19070",
+        "filename": "src/chromiumos/tast/local/kerberos/configuration.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T08:52:27Z",
+      "side": 1,
+      "message": "Well spotted. I missed it, interesting why lint didn\u0027t pick it up.",
+      "parentUuid": "b5eb6079_b2365056",
       "range": {
         "startLine": 35,
         "startChar": 4,

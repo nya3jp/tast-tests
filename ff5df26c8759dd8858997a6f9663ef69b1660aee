@@ -124,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cbefa72_5fbbf6c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/access_website.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T08:52:27Z",
+      "side": 1,
+      "message": "Eventually, changed as suggestion to DumpUITreeWithScreenshotOnError.\nReason - DumpUITreeOnError saces screenshot but not at the point of failure but at the end of the test. Will change that for other tests too.",
+      "parentUuid": "ef562c1f_5ed56838",
+      "range": {
+        "startLine": 56,
+        "startChar": 15,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "ff5df26c8759dd8858997a6f9663ef69b1660aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "539e0495_44bd1c72",
