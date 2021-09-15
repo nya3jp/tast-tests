@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d7ab457_1f10478c",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-15T08:22:53Z",
+      "side": 1,
+      "message": "It is mentioned here: https://source.chromium.org/chromium/chromium/src/+/main:components/policy/resources/policy_templates.json;l\u003d9401?q\u003dpolicy_templates.json\n\nAnd the explanation for url_schema is here: https://source.chromium.org/chromium/chromium/src/+/main:components/policy/resources/policy_templates.json;l\u003d225?q\u003dpolicy_templates.json\n\nSo in short, ONC is too complicated to be listed in the template so it just says it is a string type(which is actually a JSON string). If we parse the OpenNetworkConfiguration as it is, then its Val will be a string type. So we elaborate the JSON string content of ONC with over-written schema in the python script. Same as some other partial described policy, like ExtensionSettings(https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py;l\u003d443).",
+      "parentUuid": "ad51c911_3e77638a",
+      "range": {
+        "startLine": 510,
+        "startChar": 11,
+        "endLine": 510,
+        "endChar": 21
+      },
+      "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c17e0431_6f7cee55",
         "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
         "patchSetId": 2
