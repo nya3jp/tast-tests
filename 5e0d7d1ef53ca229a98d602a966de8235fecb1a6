@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "958ce43f_f67263a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2021-09-15T18:37:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c602ef9a_1215dff6",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "5e0d7d1ef53ca229a98d602a966de8235fecb1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ace1573_b9963a56",
@@ -112,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51577df1_af52e1e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2021-09-15T18:37:29Z",
+      "side": 1,
+      "message": "Done - went with \u0027neutral\u0027 word, suggested by Ilja.",
+      "parentUuid": "6bb1eed4_7a691b7c",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 64
+      },
+      "revId": "5e0d7d1ef53ca229a98d602a966de8235fecb1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c51d3a94_d18914ab",
@@ -125,6 +173,30 @@
       "writtenOn": "2021-09-15T18:23:18Z",
       "side": 1,
       "message": "How about\nhwdep.D(hwdep.SkipOnPlatform(supportedAmd), hwdep.SkipOnPlatform(supportedQcom)),",
+      "range": {
+        "startLine": 174,
+        "startChar": 22,
+        "endLine": 174,
+        "endChar": 95
+      },
+      "revId": "5e0d7d1ef53ca229a98d602a966de8235fecb1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e464d6b9_459ff659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2021-09-15T18:37:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c51d3a94_d18914ab",
       "range": {
         "startLine": 174,
         "startChar": 22,
