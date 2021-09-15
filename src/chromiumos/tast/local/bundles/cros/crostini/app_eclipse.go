@@ -8,7 +8,6 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -94,8 +93,7 @@ func AppEclipse(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Find eclipse window.
-	name := fmt.Sprintf("%s - /home/%s/%s/%s - Eclipse IDE ", workspace, strings.Split(cr.NormalizedUser(), "@")[0], workspace, testFile)
-	eclipseWindow := nodewith.Name(name).Role(role.Window).First()
+	eclipseWindow := nodewith.NameContaining("Eclipse").Role(role.Window).First()
 	if err := uiauto.Combine("start Eclipse",
 		terminalApp.RunCommand(keyboard, fmt.Sprintf("eclipse -data %s --launcher.openFile %s/%s --noSplash", workspace, workspace, testFile)),
 		uiauto.New(tconn).WaitUntilExists(eclipseWindow),
