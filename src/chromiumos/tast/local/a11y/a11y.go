@@ -10,6 +10,7 @@ import (
 	"context"
 	"fmt"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -344,9 +345,27 @@ func ensureTTSEngineLoaded(ctx context.Context, tconn *chrome.TestConn, engineDa
 	return nil
 }
 
+// SpeakOptions represents a chrome.tts.SpeakOptions. See:
+// https://developer.chrome.com/docs/extensions/reference/ttsEngine/#type-SpeakOptions
+type SpeakOptions struct {
+	Lang  string  `json:"lang"`
+	Pitch float32 `json:"pitch"`
+	Rate  float32 `json:"rate"`
+}
+
+// UtteranceData defines the data included in a Text to Speech utterance.
+type UtteranceData struct {
+	Utterance string       `json:"utterance"`
+	Options   SpeakOptions `json:"options"`
+}
+
+func (ud UtteranceData) String() string {
+	return fmt.Sprintf("'%s' (lang: %s, rate: %.2f, pitch: %.2f)", ud.Utterance, ud.Options.Lang, ud.Options.Pitch, ud.Options.Rate)
+}
+
 // SpeechExpectation defines an interface for a speech expectation.
 type SpeechExpectation interface {
-	matches(utterance string) error
+	matches(utteranceData UtteranceData) error
 }
 
 // RegexExpectation represents data for a speech expectation, where |expectation|
@@ -361,21 +380,57 @@ type StringExpectation struct {
 	expectation string
 }
 
-func (re RegexExpectation) matches(utterance string) error {
-	matched, err := regexp.MatchString(re.expectation, utterance)
+// OptionsExpectation represents data for a speech expectation, where |expectation|
+// is a string and expectedOptions is a SpeakOptions object with pitch, rate and lang.
+type OptionsExpectation struct {
+	expectation     string
+	expectedOptions SpeakOptions
+}
+
+func (re RegexExpectation) matches(utteranceData UtteranceData) error {
+	matched, err := regexp.MatchString(re.expectation, utteranceData.Utterance)
 	if !matched || err != nil {
-		return errors.Errorf("expected pattern: %s does not match utterance: %s", re.expectation, utterance)
+		return errors.Errorf("expected pattern: %s does not match utterance: %s", re.expectation, utteranceData.Utterance)
 	}
 
 	return nil
 }
 
-func (se StringExpectation) matches(utterance string) error {
-	if se.expectation != utterance {
-		return errors.Errorf("expected utterance: %s does not match utterance: %s", se.expectation, utterance)
+func (se StringExpectation) matches(utteranceData UtteranceData) error {
+	if se.expectation != utteranceData.Utterance {
+		return errors.Errorf("expected utterance: %s does not match utterance: %s", se.expectation, utteranceData.Utterance)
 	}
 
 	return nil
+}
+
+func (oe OptionsExpectation) matches(utteranceData UtteranceData) error {
+	var errs []string
+	if oe.expectation != utteranceData.Utterance {
+		errs = append(errs, fmt.Sprintf("expected utterance: %s does not match utterance: %s", oe.expectation, utteranceData.Utterance))
+	}
+
+	if oe.expectedOptions.Lang != utteranceData.Options.Lang {
+		errs = append(errs, fmt.Sprintf("expected lang: %s does not match lang: %s", oe.expectedOptions.Lang, utteranceData.Options.Lang))
+	}
+
+	if oe.expectedOptions.Pitch != utteranceData.Options.Pitch {
+		errs = append(errs, fmt.Sprintf("expected pitch: %.2f does not match pitch: %.2f", oe.expectedOptions.Pitch, utteranceData.Options.Pitch))
+	}
+
+	if oe.expectedOptions.Rate != utteranceData.Options.Rate {
+		errs = append(errs, fmt.Sprintf("expected rate: %.2f does not match rate: %.2f", oe.expectedOptions.Rate, utteranceData.Options.Rate))
+	}
+
+	if len(errs) > 0 {
+		return errors.New(strings.Join(errs, "; "))
+	}
+
+	return nil
+}
+
+func (oe OptionsExpectation) String() string {
+	return fmt.Sprintf("'%s' (lang: %s, rate: %.2f, pitch: %.2f)", oe.expectation, oe.expectedOptions.Lang, oe.expectedOptions.Pitch, oe.expectedOptions.Rate)
 }
 
 // NewRegexExpectation is a convenience method for creating a RegexExpectation
@@ -390,6 +445,12 @@ func NewStringExpectation(expectation string) StringExpectation {
 	return StringExpectation{expectation}
 }
 
+// NewOptionsExpectation is a convenience method for creating an OptionsExpectation
+// object.
+func NewOptionsExpectation(utterance, lang string, pitch, rate float32) OptionsExpectation {
+	return OptionsExpectation{utterance, SpeakOptions{lang, pitch, rate}}
+}
+
 // Consume ensures that the expectations were spoken by the TTS engine. It also
 // consumes all utterances accumulated in TTS extension's background page.
 // For each expectation we:
@@ -398,17 +459,17 @@ func NewStringExpectation(expectation string) StringExpectation {
 // matched or discarded.
 // 2. Check if the utterance matches the expectation.
 func (sm *SpeechMonitor) Consume(ctx context.Context, expectations []SpeechExpectation) error {
-	var actual []string
+	var actual []UtteranceData
 	for _, exp := range expectations {
 		// Use a poll to allow time for each utterance to be spoken.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			var utterance string
-			if err := sm.conn.Eval(ctx, "testUtterances.shift()", &utterance); err != nil {
+			var utteranceData UtteranceData
+			if err := sm.conn.Eval(ctx, "testUtterances.shift()", &utteranceData); err != nil {
 				return errors.Wrap(err, "couldn't assign utterance to value of testUtterances.shift() (testUtterances is likely empty)")
 			}
 
-			actual = append(actual, utterance)
-			if err := exp.matches(utterance); err != nil {
+			actual = append(actual, utteranceData)
+			if err := exp.matches(utteranceData); err != nil {
 				return errors.Wrap(err, "expected utterance/pattern hasn't been matched yet")
 			}
 
@@ -458,7 +519,7 @@ func startAccumulatingUtterances(ctx context.Context, conn *chrome.Conn, engineD
 		return conn.Eval(ctx, `
 			if (!window.testUtterances) {
 		    window.testUtterances = [];
-		    chrome.ttsEngine.onSpeakWithAudioStream.addListener(utterance => testUtterances.push(utterance));
+		    chrome.ttsEngine.onSpeakWithAudioStream.addListener((utterance, options) => window.testUtterances.push({utterance: utterance, options: options}));
 		  }
 	`, nil)
 	}
@@ -466,7 +527,7 @@ func startAccumulatingUtterances(ctx context.Context, conn *chrome.Conn, engineD
 	return conn.Eval(ctx, `
 	if (!window.testUtterances) {
     window.testUtterances = [];
-    chrome.ttsEngine.onSpeak.addListener(utterance => testUtterances.push(utterance));
+    chrome.ttsEngine.onSpeak.addListener((utterance, options) => window.testUtterances.push({utterance: utterance, options: options}));
   }
 `, nil)
 }
