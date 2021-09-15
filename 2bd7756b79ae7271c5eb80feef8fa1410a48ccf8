@@ -50,6 +50,24 @@
       "message": "It looks like this test hasn\u0027t passed the last 20 runs according to the tast board: https://cros-health-prod.googleplex.com/test/familylink.UnicornLogin\n\nAm I missing something?",
       "revId": "2bd7756b79ae7271c5eb80feef8fa1410a48ccf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6344c2d_df86471e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-15T17:02:30Z",
+      "side": 1,
+      "message": "We\u0027re promoting this test because it serves as the foundation for all the other familylink.* tests. This test covers Unicorn login, and all the other tests log in as Unicorn using this fixture [1] before proceeding.\n\n[1] https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/familylink/fixture.go;l\u003d38?q\u003dfamilyLinkUnicornLogin%20f:tast",
+      "parentUuid": "1b0d9368_68abdd3c",
+      "revId": "2bd7756b79ae7271c5eb80feef8fa1410a48ccf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
