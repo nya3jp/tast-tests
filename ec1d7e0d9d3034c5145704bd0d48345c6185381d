@@ -33,6 +33,69 @@
       "message": "LGTM",
       "revId": "ec1d7e0d9d3034c5145704bd0d48345c6185381d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "523e6f6e_fa2b16d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-09-15T17:27:35Z",
+      "side": 1,
+      "message": "Since this is informational my comments are probably not blockers, but we should see how often the fatal failures I commented on are happening and consider not failing the test in those cases.",
+      "revId": "ec1d7e0d9d3034c5145704bd0d48345c6185381d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c39258bd_c178dcc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-09-15T17:27:35Z",
+      "side": 1,
+      "message": "I\u0027m always hesitant to have tests fail in these cases, rather than somehow signal an infra error -- it makes them flaky.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 42
+      },
+      "revId": "ec1d7e0d9d3034c5145704bd0d48345c6185381d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a688169_be79672f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-09-15T17:27:35Z",
+      "side": 1,
+      "message": "Same. It would be great if Tast could distinguish between \"we didn\u0027t manage to test the thing\" vs \"we tested the thing and the test failed\".",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "ec1d7e0d9d3034c5145704bd0d48345c6185381d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
