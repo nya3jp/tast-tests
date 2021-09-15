@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a2f86b2_7129ee27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-15T07:13:35Z",
+      "side": 1,
+      "message": "Add Cq-Depend to bus CL.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "9036206bd490f9ff0cd50e8d308af5bac5fae129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "87c0e865_dc724daf",
@@ -14,6 +37,29 @@
       "writtenOn": "2021-09-15T07:09:12Z",
       "side": 1,
       "message": "+chungsheng@ who may have some idea for bus Tast test.",
+      "revId": "9036206bd490f9ff0cd50e8d308af5bac5fae129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59046429_ee204647",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-15T07:13:35Z",
+      "side": 1,
+      "message": "I think it is good to separate this out from this CL, and put it with wifi test CL.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 66
+      },
       "revId": "9036206bd490f9ff0cd50e8d308af5bac5fae129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
