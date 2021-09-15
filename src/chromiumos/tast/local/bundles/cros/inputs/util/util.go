@@ -33,6 +33,7 @@ const (
 	InputWithVK          InputModality = "Virtual Keyboard"
 	InputWithVoice       InputModality = "Voice"
 	InputWithHandWriting InputModality = "Handwriting"
+	InputWithPK          InputModality = "Physical Keyboard"
 )
 
 // PKCandidatesFinder is the finder for candidates in the IME candidates window.
