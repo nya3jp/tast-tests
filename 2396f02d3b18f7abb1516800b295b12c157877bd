@@ -16,6 +16,23 @@
       "message": "LGTM, but need Tast owner approval. If you aren\u0027t getting a response from the Tast owner that was added, you can try removing them and re-adding \"tast-owners@google.com\" to get a new reviewer.",
       "revId": "2396f02d3b18f7abb1516800b295b12c157877bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7994994_11fbfd37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-15T17:50:44Z",
+      "side": 1,
+      "message": "LGTM from Tast Side.",
+      "revId": "2396f02d3b18f7abb1516800b295b12c157877bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
