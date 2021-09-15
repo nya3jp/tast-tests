@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd7b18ac_7304b1dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-15T18:23:18Z",
+      "side": 1,
+      "message": "Looks great, just wondering how to make the set operations simpler to read.",
+      "revId": "5e0d7d1ef53ca229a98d602a966de8235fecb1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c602ef9a_1215dff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-15T18:23:18Z",
+      "side": 1,
+      "message": "How about \"gpuAmd\", \"gpuQcom\" etc.",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "5e0d7d1ef53ca229a98d602a966de8235fecb1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ace1573_b9963a56",
@@ -43,6 +83,29 @@
         "startChar": 0,
         "endLine": 101,
         "endChar": 64
+      },
+      "revId": "5e0d7d1ef53ca229a98d602a966de8235fecb1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c51d3a94_d18914ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-15T18:23:18Z",
+      "side": 1,
+      "message": "How about\nhwdep.D(hwdep.SkipOnPlatform(supportedAmd), hwdep.SkipOnPlatform(supportedQcom)),",
+      "range": {
+        "startLine": 174,
+        "startChar": 22,
+        "endLine": 174,
+        "endChar": 95
       },
       "revId": "5e0d7d1ef53ca229a98d602a966de8235fecb1a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
