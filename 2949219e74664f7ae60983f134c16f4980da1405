@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ab13117_5343ec67",
+        "filename": "src/chromiumos/tast/local/chrome/ui/capturemode/capture_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-15T03:02:19Z",
+      "side": 1,
+      "message": "Thank you for confirming!",
+      "parentUuid": "a5291755_17907978",
+      "range": {
+        "startLine": 57,
+        "startChar": 41,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "2949219e74664f7ae60983f134c16f4980da1405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb7e31f7_3aa937ee",
