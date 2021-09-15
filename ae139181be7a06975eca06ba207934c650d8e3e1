@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd431527_c3069fa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-09-15T11:13:14Z",
+      "side": 1,
+      "message": "If the test result looks fine after this landed, I will remove the definition of camera_720p in another CL.",
+      "revId": "ae139181be7a06975eca06ba207934c650d8e3e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
