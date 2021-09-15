@@ -28,7 +28,7 @@ func init() {
 		Desc:         "Runs Chrome capture_unittests to exercise Chrome's video capture stack",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-postsubmit", "group:camera-libcamera"},
-		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera, "camera_720p"},
+		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"bear.mjpeg"},
 	})
 }

@@ -33,7 +33,7 @@ func init() {
 				Name:              "real",
 				Pre:               pre.ChromeVideo(),
 				ExtraAttr:         []string{"informational"},
-				ExtraSoftwareDeps: []string{caps.BuiltinCamera, "camera_720p"},
+				ExtraSoftwareDeps: []string{caps.BuiltinCamera},
 				Val:               lacros.ChromeTypeChromeOS,
 			},
 			{
@@ -53,7 +53,7 @@ func init() {
 				Name:              "lacros",
 				Fixture:           "chromeVideoLacros",
 				ExtraAttr:         []string{"informational"},
-				ExtraSoftwareDeps: []string{caps.BuiltinOrVividCamera, "camera_720p", "lacros"},
+				ExtraSoftwareDeps: []string{caps.BuiltinOrVividCamera, "lacros"},
 				Timeout:           7 * time.Minute, // A lenient limit for launching Lacros Chrome.
 				Val:               lacros.ChromeTypeLacros,
 			},
