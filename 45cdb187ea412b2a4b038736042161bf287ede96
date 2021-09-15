@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f03d1127_c0170a25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-15T00:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97ddaf69_ab81e384",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "45cdb187ea412b2a4b038736042161bf287ede96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "42b83784_d9bcd7c8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47309a26_c3c78a08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-15T00:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94177b79_9af5cf40",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "45cdb187ea412b2a4b038736042161bf287ede96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c4d48b1_9b6f8847",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-09-14T19:50:00Z",
       "side": 1,
       "message": "we don\u0027t need extra space before \":\"",
+      "range": {
+        "startLine": 133,
+        "startChar": 53,
+        "endLine": 133,
+        "endChar": 54
+      },
+      "revId": "45cdb187ea412b2a4b038736042161bf287ede96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7975cf_a0b77138",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-15T00:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c4d48b1_9b6f8847",
       "range": {
         "startLine": 133,
         "startChar": 53,
