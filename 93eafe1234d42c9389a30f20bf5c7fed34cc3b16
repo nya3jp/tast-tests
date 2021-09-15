@@ -69,6 +69,24 @@
       "parentUuid": "e356be60_4e0c2cbd",
       "revId": "93eafe1234d42c9389a30f20bf5c7fed34cc3b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "770daa95_e1e838b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-15T08:00:55Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. I will create a new function in policy_service.go to start/stop Chrome (which could also accept options like KeepEnrollment and DeferLogin) and avoid reusing EnrollUsingChrome which cause confusion.\n\nBTW, I was trying to create a composite fixture with wificellFixt and enrolled. Looks like both of them are remote fixtures and current Tast framework does not allow nesting two remote fixtures.",
+      "parentUuid": "4d16c188_204737d9",
+      "revId": "93eafe1234d42c9389a30f20bf5c7fed34cc3b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
