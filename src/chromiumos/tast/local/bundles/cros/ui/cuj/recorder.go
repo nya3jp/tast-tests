@@ -32,7 +32,7 @@ const (
 
 const metricPrefix = "TPS."
 
-const checkInterval = time.Second
+const checkInterval = 5 * time.Second
 
 // MetricConfig is the configuration for the recorder.
 type MetricConfig struct {
