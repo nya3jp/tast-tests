@@ -1,6 +1,224 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be4bd66d_0d033d07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "Thanks! The idea looks good to me.",
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db89af14_63c9dd15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "I think this would fit better in the \"Desc:\" field above.",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 153
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac13262_6034fa5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "You might want something like [1] here:\n\n  \t// Ensure display on to record ui performance correctly.\n\tif err :\u003d power.TurnOnDisplay(ctx); err !\u003d nil {\n\t\ts.Fatal(\"Failed to turn on display: \", err)\n\t}\n\n[1] https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/ffc60378ac585ea2fb491b31a835fb8cab1031b0:src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go;l\u003d89-92;drc\u003d04f0942cb0ea8c441ff27df691caf3f5970ec18e",
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fed61c0_bae189c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "nit: Move this to ln. 72, closer to where it\u0027s used.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "737de7a4_7d6b7127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "nit: Move to ln. 53 for the same reason.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa41ee2e_54cd251c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "I know of a bug where an audio problem caused the video to play in slow motion and muting the audio made it go back to normal speed.\n\nSo, would it be possible to decrease the volume instead of fully muting? That way it\u0027s more realistic.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64138057_56239d6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "Is there a reason to make these a hard pass/fail instead of a performance metric like in the VideoCUJ test [1]?\n\n[1] https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/ffc60378ac585ea2fb491b31a835fb8cab1031b0:src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go;l\u003d479-506;drc\u003d04f0942cb0ea8c441ff27df691caf3f5970ec18e",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002bef76_c1dc1324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "I think these interactions are fine but only make sense to have them if you measure some performance metric while they run, similar to the existing VideoCUJ test [1].\n\n[1] https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/ffc60378ac585ea2fb491b31a835fb8cab1031b0:src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go;l\u003d174-185;drc\u003d04f0942cb0ea8c441ff27df691caf3f5970ec18e",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0a76297_637e2e78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "I\u0027m not too familiar with audio: what is the fundamental difference between this check and the one on ln. 112?",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43edd4e9_026075d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "Q",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8603ea82_095289a2",
@@ -72,6 +290,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0773b2d1_d2c3b000",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "Consider using the more standard videoElement.getVideoPlaybackQuality() API like in https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/ffc60378ac585ea2fb491b31a835fb8cab1031b0:src/chromiumos/tast/local/bundles/cros/video/playback/playback.go;l\u003d195-201;drc\u003d6b954fbb858df207eec7e59cba7dc742276e5252.",
+      "range": {
+        "startLine": 343,
+        "startChar": 94,
+        "endLine": 343,
+        "endChar": 117
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b96c9903_817b7c55",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
         "patchSetId": 1
@@ -88,6 +329,121 @@
         "startChar": 20,
         "endLine": 346,
         "endChar": 41
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc326559_7574aabb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "Same, getVideoPlaybackQuality().",
+      "range": {
+        "startLine": 346,
+        "startChar": 94,
+        "endLine": 346,
+        "endChar": 117
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f6d7e1_e1dc45d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "\u003d %d",
+      "range": {
+        "startLine": 349,
+        "startChar": 44,
+        "endLine": 349,
+        "endChar": 47
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca2e58cd_2bd9f3f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "\u003d %d",
+      "range": {
+        "startLine": 350,
+        "startChar": 44,
+        "endLine": 350,
+        "endChar": 47
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c1506c3_16c12a88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "%f%% of frames were dropped",
+      "range": {
+        "startLine": 359,
+        "startChar": 60,
+        "endLine": 359,
+        "endChar": 74
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3a37e8_50108a09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-15T22:30:36Z",
+      "side": 1,
+      "message": "%f%%",
+      "range": {
+        "startLine": 359,
+        "startChar": 122,
+        "endLine": 359,
+        "endChar": 124
       },
       "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
