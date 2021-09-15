@@ -176,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d641d02_38f7465d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/account_access_file_system.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T07:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23c06e84_234b09eb",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "f91db1c14ebca270172d40606b8fc81ff81ccda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b46afd3_1fcdd5fb",
@@ -189,6 +213,30 @@
       "writtenOn": "2021-09-14T12:48:09Z",
       "side": 1,
       "message": "Let\u0027s use the standard timeout for now.",
+      "range": {
+        "startLine": 99,
+        "startChar": 14,
+        "endLine": 99,
+        "endChar": 43
+      },
+      "revId": "f91db1c14ebca270172d40606b8fc81ff81ccda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f69f69f4_db3c3992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/account_access_file_system.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T07:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b46afd3_1fcdd5fb",
       "range": {
         "startLine": 99,
         "startChar": 14,
@@ -222,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "060c1782_27984dbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/account_access_file_system.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T07:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86d1965d_5cf54bab",
+      "range": {
+        "startLine": 100,
+        "startChar": 11,
+        "endLine": 100,
+        "endChar": 39
+      },
+      "revId": "f91db1c14ebca270172d40606b8fc81ff81ccda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9737575_8c6b1a1c",
@@ -239,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e766772_738e3c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/account_access_file_system.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T07:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9737575_8c6b1a1c",
+      "revId": "f91db1c14ebca270172d40606b8fc81ff81ccda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b69ae3a_11894f70",
@@ -252,6 +342,30 @@
       "writtenOn": "2021-09-14T12:48:09Z",
       "side": 1,
       "message": "nit: s.Log",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 19
+      },
+      "revId": "f91db1c14ebca270172d40606b8fc81ff81ccda1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b404800_04b4f298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/account_access_file_system.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T07:37:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b69ae3a_11894f70",
       "range": {
         "startLine": 124,
         "startChar": 1,
