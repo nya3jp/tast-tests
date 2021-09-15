@@ -70,6 +70,24 @@
       "parentUuid": "cbb087e4_40e94d3c",
       "revId": "926070e8f943eab25a6938a215d5c6ea346aff7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf5b087b_c3a0ed95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-15T14:00:36Z",
+      "side": 1,
+      "message": "We now have docs for fixtures 😊\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Fixtures\n\nUntil b/187957164 is resolved, it\u0027s not possible to do what you are trying here.",
+      "parentUuid": "61224768_8b5d9554",
+      "revId": "926070e8f943eab25a6938a215d5c6ea346aff7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
