@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "389ec458_d20c6531",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-15T11:03:54Z",
+      "side": 1,
+      "message": "Removed static testing.Sleep(). Changed to:\n- close OS Settings manually\n- wait for OS Settings to be gone\n- navigate to the page\n- keep getting document.title until not empty",
+      "revId": "6c637c62bc16b671934caf7116d4249bd769be30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
