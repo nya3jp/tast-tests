@@ -99,6 +99,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1ded49f_39dbbfa6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-09-15T09:48:13Z",
+      "side": 1,
+      "message": "Oh, somehow the commit message update is not reflected in gerrit. Do you wanna try editing this directly on gerrit?",
+      "parentUuid": "7097daf2_834b654f",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "2a83ec872cb0d91fd3badedb18ca6d3b838202a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b3cbf07_793aaf0f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
         "patchSetId": 2
@@ -134,6 +158,30 @@
       "side": 1,
       "message": "The file creation is outside of the test. I mean I left a file with name \"storage_drivefs.txt\" in drive for test to consume.",
       "parentUuid": "6b3cbf07_793aaf0f",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "revId": "2a83ec872cb0d91fd3badedb18ca6d3b838202a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d4272cc_66dd86d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-09-15T09:48:13Z",
+      "side": 1,
+      "message": "It will be better if the test creates storage_drivefs.txt. Otherwise, it\u0027ll be difficult to track what happened if the file is accidentally deleted.\n\nI have 2 ideas:\n1. In drivefs.go, create storage_drivefs.txt if the file does not exist already. No need to remove it after test. Also add a comment of why we are doing so.\nor\n2. (More elegant, but complicated) In storage.go, CreateTestFile will take in 3 possible enums: NotCreateFile, CreateAndCleanUpFile, CreateAndKeepFile etc Each tast test will pass in different enum, depending on its scenario.",
+      "parentUuid": "0386258a_0cba9f84",
       "range": {
         "startLine": 83,
         "startChar": 2,
