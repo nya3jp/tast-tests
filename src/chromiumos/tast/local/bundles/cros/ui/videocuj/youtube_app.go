@@ -35,13 +35,13 @@ type YtApp struct {
 	kb      *input.KeyboardEventWriter
 	a       *arc.ARC
 	d       *androidui.Device
-	video   videoSrc
+	video   VideoSrc
 	act     *arc.Activity
 	premium bool // Indicate if the account is premium.
 }
 
 // NewYtApp creates an instance of YtApp.
-func NewYtApp(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, a *arc.ARC, d *androidui.Device, video videoSrc) *YtApp {
+func NewYtApp(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, a *arc.ARC, d *androidui.Device, video VideoSrc) *YtApp {
 	return &YtApp{
 		tconn:   tconn,
 		kb:      kb,
@@ -115,7 +115,7 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 		}
 
 		if err := uiauto.Combine("type video url",
-			y.kb.TypeAction(y.video.url),
+			y.kb.TypeAction(y.video.URL),
 			y.kb.AccelAction("enter"),
 		)(ctx); err != nil {
 			return err
@@ -126,7 +126,7 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 			return errors.Wrap(err, "failed to find the results from video URL")
 		}
 
-		firstVideo := y.d.Object(androidui.DescriptionContains(y.video.title))
+		firstVideo := y.d.Object(androidui.DescriptionContains(y.video.Title))
 		startTime := time.Now()
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 
@@ -209,7 +209,7 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 		return errors.Wrap(err, "failed to play video")
 	}
 
-	if err := switchQuality(y.video.quality); err != nil {
+	if err := switchQuality(y.video.Quality); err != nil {
 		return errors.Wrap(err, "failed to switch Quality")
 	}
 
