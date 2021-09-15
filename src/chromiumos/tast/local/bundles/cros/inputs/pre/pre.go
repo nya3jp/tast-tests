@@ -38,6 +38,13 @@ var StableModels = []string{
 	"betty",
 }
 
+// GrammarEnabledModels is a list boards where Grammar Check is enabled.
+var GrammarEnabledModels = []string{
+	"octopus",
+	"nocturne",
+	"hatch",
+}
+
 // InputsStableModels is a shortlist of models aiming to run critical inputs tests.
 // More information refers to http://b/161415599.
 var InputsStableModels = hwdep.Model(StableModels...)
@@ -118,6 +125,10 @@ var NonVKClamshellInGuest = inputsPreCondition("non_vk_clamshell_guest_pre", cla
 // It forces device to be clamshell mode and vk disabled.
 // It restarts Chrome session and logs in as new user for each test.
 var NonVKClamshellReset = inputsPreCondition("non_vk_clamshell_reset_pre", clamshellMode, false, true)
+
+// NonVKClamshellWithGrammarCheck creates a precondition for testing physical keyboard, and with OnDeviceGrammarCheck flag enabled.
+// It forces device to be clamshell mode and vk disabled.
+var NonVKClamshellWithGrammarCheck = inputsPreCondition("non_vk_clamshell_with_grammar_check_pre", clamshellMode, false, false, chrome.ExtraArgs("--enable-features=OnDeviceGrammarCheck"))
 
 // The PreData object is made available to users of this precondition via:
 //
