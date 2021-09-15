@@ -64,16 +64,16 @@ type VideoApp interface {
 	Close(ctx context.Context)
 }
 
-// videoSrc struct defines video src for testing.
-type videoSrc struct {
-	url   string
-	title string
-	// quality is the string that test will look for in youtube
+// VideoSrc struct defines video src for testing.
+type VideoSrc struct {
+	URL   string
+	Title string
+	// Quality is the string that test will look for in youtube
 	// "Settings / Quality" menu to change video playback quality.
-	quality string
+	Quality string
 }
 
-var basicVideoSrc = []videoSrc{
+var basicVideoSrc = []VideoSrc{
 	{
 		cuj.YoutubeGoogleTVVideoURL,
 		"Chris Paul | Watch With Me | Google TV",
@@ -91,7 +91,7 @@ var basicVideoSrc = []videoSrc{
 	},
 }
 
-var plusVideoSrc = []videoSrc{
+var plusVideoSrc = []VideoSrc{
 	{
 		cuj.YoutubeStadiaGDCVideoURL,
 		"Stadia GDC 2019 Gaming Announcement",
