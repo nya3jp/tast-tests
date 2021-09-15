@@ -93,16 +93,19 @@ func AudioAlsaConformance(ctx context.Context, s *testing.State) {
 		captureResultPath,
 	}
 
-	args := []string{"run"}
+	args := []string{"crosvm", "run"}
 	args = append(args, config.deviceArgs...)
 	args = append(args,
-		"-p", strings.Join(params, " "),
+		"-p", "\""+strings.Join(params, " ")+"\"",
 		"--serial", fmt.Sprintf("type=file,num=1,console=true,path=%s", kernelLogPath),
 		"--shared-dir", "/:/dev/root:type=fs:cache=always",
 		data.Kernel)
 
 	s.Log("Running Alsa conformance test")
-	cmd := testexec.CommandContext(ctx, "crosvm", args...)
+	cmdStr := fmt.Sprintf(`echo $$ > /sys/fs/cgroup/cpu/vms/termina/tasks &&
+prlimit --pid $$ --rtprio=unlimited &&
+%s`, strings.Join(args, " "))
+	cmd := testexec.CommandContext(ctx, "sh", []string{"-c", cmdStr}...)
 
 	// Same effect as calling `newgrp cras` before `crosvm` in shell
 	// This is needed to access /run/cras/.cras_socket (legacy socket)
