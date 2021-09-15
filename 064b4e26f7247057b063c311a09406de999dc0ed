@@ -22,6 +22,30 @@
       },
       "revId": "064b4e26f7247057b063c311a09406de999dc0ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24a0905d_c371b2f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_take_picture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-15T10:29:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a2bec3b_a512c33c",
+      "range": {
+        "startLine": 41,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 4
+      },
+      "revId": "064b4e26f7247057b063c311a09406de999dc0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

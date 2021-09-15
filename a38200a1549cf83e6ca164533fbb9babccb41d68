@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1607fad_e93d1b72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-15T10:29:22Z",
+      "side": 1,
+      "message": "Hi Shuhei-san,\nWould you mind taking another look? Thanks!",
+      "revId": "a38200a1549cf83e6ca164533fbb9babccb41d68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
