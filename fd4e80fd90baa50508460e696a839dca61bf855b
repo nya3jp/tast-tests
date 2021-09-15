@@ -54,6 +54,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4bcc40b6_c08b1c86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-15T10:55:34Z",
+      "side": 1,
+      "message": "nit: I think the usual word is \"Configuring\" (also below) :-)",
+      "range": {
+        "startLine": 218,
+        "startChar": 10,
+        "endLine": 218,
+        "endChar": 23
+      },
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e16f1add_454026d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-15T10:55:34Z",
+      "side": 1,
+      "message": "Could we reduce nesting by extracting e.h. the block within s.Run() {} into a sub function?",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 51
+      },
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e214aac_b2a080ba",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
         "patchSetId": 2
@@ -88,6 +134,29 @@
       "writtenOn": "2021-09-14T14:41:31Z",
       "side": 1,
       "message": "Maybe add a separate helper just to stop chrome and not FakeDMS.",
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019c37c4_e3a3c519",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-15T10:55:34Z",
+      "side": 1,
+      "message": "Hmmm why would we even stop chrome?\n\nI think the test could continue just signing in ? (assuming that before this line chrome is on the sign-in screen)",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 73
+      },
       "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -176,6 +245,24 @@
       "writtenOn": "2021-09-14T14:41:31Z",
       "side": 1,
       "message": "Name is misleading since guid can be empty. Also add more commends, since it\u0027s not clear what this function actually does.",
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9306e8c8_d32d9abf",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-15T10:55:34Z",
+      "side": 1,
+      "message": "What does it mean if guid is empty here?",
+      "parentUuid": "ea60601a_3c719687",
       "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
