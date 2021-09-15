@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75f8ae11_a3914efa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/typing_message.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-15T01:38:46Z",
+      "side": 1,
+      "message": "Done. Thanks for pointing this out!",
+      "parentUuid": "436891d1_fc18ce27",
+      "revId": "6971e637a5f8e65b02d74039b0ee9a0964bdd445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab250359_170fe25f",
