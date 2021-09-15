@@ -16,6 +16,190 @@
       "message": "Thanks Alvin, Ricardo can you PTAL?",
       "revId": "aeb73b4da7235ce22ede38fef28fd2b6669d0ab1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2578c75f_28dc058b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_characters.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-15T20:07:33Z",
+      "side": 1,
+      "message": "nit: only one file should describe what the the package does. Since it is documented in another file you can remove it...\n\nin fact, it seems that all files that are in the bundles/cros/a11y/ has it... (which it shouldn\u0027t)",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "aeb73b4da7235ce22ede38fef28fd2b6669d0ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2625a83a_3db5a966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_characters.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-15T20:07:33Z",
+      "side": 1,
+      "message": "nit: assuming that \"Tts\" means Text To Speach, then it should be called: ChromevoxTTSProcessing...\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\n\nalso, what is the correct name for Chromevox? is it ChromeVox or Chromevox?\nI noticed that both are being used in different tests... if ChromeVox is the correct one, then I suggest using that one.",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "aeb73b4da7235ce22ede38fef28fd2b6669d0ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a2f903d_1931c388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_characters.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-15T20:07:33Z",
+      "side": 1,
+      "message": "nit: const nextObject \u003d \"Search+Right\"",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 11
+      },
+      "revId": "aeb73b4da7235ce22ede38fef28fd2b6669d0ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73af28f5_6736efa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_characters.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-15T20:07:33Z",
+      "side": 1,
+      "message": "nit: if they are not public, they should start with lower case. e.g:\n\n   KeyCommands -\u003e keyCommands",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 3
+      },
+      "revId": "aeb73b4da7235ce22ede38fef28fd2b6669d0ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d855f2f3_245ff5fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_characters.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-15T20:07:33Z",
+      "side": 1,
+      "message": "ditto: Expectations -\u003e expectations",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 3
+      },
+      "revId": "aeb73b4da7235ce22ede38fef28fd2b6669d0ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deea1d2a_badc12bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_characters.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-15T20:07:33Z",
+      "side": 1,
+      "message": "if all entries have the same KeyCommands (in this case: \"Search+Right\"), I guess it can be removed from the struct, and hardcode it in PressKeyAndConsumeExpectations(...\"Search+Right\"...)",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 24
+      },
+      "revId": "aeb73b4da7235ce22ede38fef28fd2b6669d0ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a842250_c92edab5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_whitespace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-15T20:07:33Z",
+      "side": 1,
+      "message": "ditto: only one file should describe what the the package does. Since it is documented in another file you can remove it.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "aeb73b4da7235ce22ede38fef28fd2b6669d0ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc4a337f_4b2d5efd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_whitespace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-15T20:07:33Z",
+      "side": 1,
+      "message": "ditto above: TTS",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 20
+      },
+      "revId": "aeb73b4da7235ce22ede38fef28fd2b6669d0ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
