@@ -46,6 +46,7 @@ func init() {
 				Timeout:           7 * time.Minute,
 			}, {
 				Name:              "buster_stable",
+				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -61,6 +62,7 @@ func init() {
 				Timeout:           7 * time.Minute,
 			}, {
 				Name:              "bullseye_stable",
+				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("bullseye", false), crostini.GetContainerRootfsArtifact("bullseye", false)},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
