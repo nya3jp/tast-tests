@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13663994_e2b6f503",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-15T00:25:18Z",
+      "side": 1,
+      "message": "nit: you can combine these lines.\nif err :\u003d ...; err !\u003d nil {",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 16
+      },
+      "revId": "ecac3c84cc8df152f48a0ac4ef0ab434796b794f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
