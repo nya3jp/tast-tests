@@ -31,7 +31,7 @@ func init() {
 			"tbarzic@chromium.org",
 			"cros-system-ui-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "install2Apps",
 		Params: []testing.Param{{
@@ -40,6 +40,7 @@ func init() {
 		}, {
 			Name:              "tablet_mode",
 			Val:               true,
+			ExtraAttr:         []string{"informational"},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		},
 		},
