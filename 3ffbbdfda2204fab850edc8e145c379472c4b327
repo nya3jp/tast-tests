@@ -52,6 +52,24 @@
       "parentUuid": "8ee284ee_4a5e383e",
       "revId": "3ffbbdfda2204fab850edc8e145c379472c4b327",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a643f0d_8118a165",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-15T09:31:19Z",
+      "side": 1,
+      "message": "Oh you are right. I test it on my DUT and seems like the mic is muted. We use the default mic settings when joining the meeting (I guess the default is muted), we can just simply turn the mic on.",
+      "parentUuid": "d98e49f5_deb609f4",
+      "revId": "3ffbbdfda2204fab850edc8e145c379472c4b327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
