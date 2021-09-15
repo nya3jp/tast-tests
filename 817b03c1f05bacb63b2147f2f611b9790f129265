@@ -16,6 +16,23 @@
       "message": "Sending this out to get approval from the new test owners. Please let me know if you don\u0027t feel comfortable owning any test that your name is on, or want to suggest a better candidate. \n\nI\u0027ll plan to submit this CL early next week.",
       "revId": "817b03c1f05bacb63b2147f2f611b9790f129265",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f7fa719_0b6ddebb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-15T15:28:33Z",
+      "side": 1,
+      "message": "LGTM, but let\u0027s wait other people to approve as well ",
+      "revId": "817b03c1f05bacb63b2147f2f611b9790f129265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
