@@ -34,6 +34,24 @@
       "parentUuid": "1f65ca2e_94614961",
       "revId": "c3b8aa7ada842c6318cd61a20a6520e8097ce768",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72c15dcb_edcb18ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-15T18:29:43Z",
+      "side": 1,
+      "message": "The test generates an audio file with volume 0, though. Are you editing the test when you run it locally to change that?\n\nIf so, maybe we should have two tests -- one that just tests the volume key changing the volume and which will be slated to be added to the CQ, and then another one which is not marked group:mainline and is only run locally, which generates an audio file that has nonzero volume and changes the volume to make sure it can be verified by a test operator. Then no local changes would have to be made to any tests to support both use cases.",
+      "parentUuid": "f0b27dda_73958590",
+      "revId": "c3b8aa7ada842c6318cd61a20a6520e8097ce768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
