@@ -19,21 +19,23 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Max98390,
-		Desc:         "Verifies sound_card_init max98390 boot time calibration at the first boot time",
+		Func:         SoundCardInit,
+		Desc:         "Verifies sound_card_init boot time calibration logic",
+		HardwareDeps: hwdep.D(hwdep.SmartAmp()),
 		Contacts:     []string{"judyhsiao@chromium.org", "cychiang@chromium.org"},
-		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Model("nightfury")),
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      1 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name: "first_boot",
+				Name: "boot_time_calibration",
+				ExtraHardwareDeps: hwdep.D(hwdep.SmartAmpBootTimeCalibration()),
 				Val: soundcardinit.TestParameters{
-					Func: firstBoot,
+					Func: bootTimeCalibration,
 				},
 			},
 			{
 				Name: "recent_reboot",
+				ExtraHardwareDeps: hwdep.D(hwdep.SmartAmpBootTimeCalibration()),
 				Val: soundcardinit.TestParameters{
 					Func: recentReboot,
 				},
@@ -46,8 +48,8 @@ func init() {
 const ampCount = 2
 const timeout = 2 * time.Second
 
-// Max98390 Verifies sound_card_init  Max98390  boot time calibration logic.
-func Max98390(ctx context.Context, s *testing.State) {
+// SoundCardInit Verifies sound_card_init boot time calibration logic.
+func SoundCardInit(ctx context.Context, s *testing.State) {
 	soundCardID, err := soundcardinit.GetSoundCardID(ctx)
 	if err != nil {
 		s.Fatal("Failed to get sound card name: ", err)
@@ -72,8 +74,9 @@ func Max98390(ctx context.Context, s *testing.State) {
 	testFunc(ctx, s, soundCardID)
 }
 
-// firstBoot Verifies sound_card_init works correctly at the first boot time.
-func firstBoot(ctx context.Context, s *testing.State, soundCardID string) {
+
+// bootTimeCalibration verifies sound_card_init boot time calibration works correctly.
+func bootTimeCalibration(ctx context.Context, s *testing.State, soundCardID string) {
 	// Run sound_card_init.
 	runCtx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
@@ -92,7 +95,7 @@ func firstBoot(ctx context.Context, s *testing.State, soundCardID string) {
 	}
 }
 
-// recentReboot Verifies sound_card_init max98390 skips boot time calibration after the recent reboot.
+// recentReboot Verifies sound_card_init skips boot time calibration after the recent reboot.
 func recentReboot(ctx context.Context, s *testing.State, soundCardID string) {
 	// Create previous sound_car_init run time as yesterday.
 	if err := soundcardinit.CreateRunTimeFile(ctx, soundCardID, time.Now().AddDate(0, 0, -1).Unix()); err != nil {
