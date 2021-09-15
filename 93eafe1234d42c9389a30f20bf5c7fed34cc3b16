@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d053f65_13290aa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-15T08:28:26Z",
+      "side": 1,
+      "message": "Moving myself to CC as there are much more competent reviewers around golang, tast and fixtures in the list :-) ",
+      "revId": "93eafe1234d42c9389a30f20bf5c7fed34cc3b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6cea19d_26ae8bbb",
