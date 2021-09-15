@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -26,7 +25,7 @@ type YtWeb struct {
 	cr      *chrome.Chrome
 	tconn   *chrome.TestConn
 	kb      *input.KeyboardEventWriter
-	video   videoSrc
+	video   VideoSrc
 	ui      *uiauto.Context
 	ytConn  *chrome.Conn
 	ytWinID int
@@ -36,7 +35,7 @@ type YtWeb struct {
 }
 
 // NewYtWeb creates an instance of YtWeb.
-func NewYtWeb(cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, video videoSrc,
+func NewYtWeb(cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, video VideoSrc,
 	extendedDisplay bool, ui *uiauto.Context, uiHdl cuj.UIActionHandler) *YtWeb {
 	return &YtWeb{
 		cr:    cr,
@@ -54,7 +53,7 @@ func NewYtWeb(cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEvent
 func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	testing.ContextLog(ctx, "Open Youtube web")
 
-	y.ytConn, err = y.cr.NewConn(ctx, y.video.url, cdputil.WithNewWindow())
+	y.ytConn, err = y.cr.NewConn(ctx, y.video.URL)
 	if err != nil {
 		return errors.Wrap(err, "failed to open youtube")
 	}
@@ -103,7 +102,7 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	}
 
 	skipAdButton := nodewith.NameStartingWith("Skip Ad").Role(role.Button)
-	if err := y.ui.IfSuccessThen(y.ui.WaitUntilExists(skipAdButton), y.uiHdl.Click(skipAdButton))(ctx); err != nil {
+	if err := y.ui.IfSuccessThen(y.ui.WithTimeout(10*time.Second).WaitUntilExists(skipAdButton), y.uiHdl.Click(skipAdButton))(ctx); err != nil {
 		return errors.Wrap(err, "failed to click 'Skip Ad' button")
 	}
 
@@ -122,13 +121,13 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		// Dut to the different response time of different DUTs, we need to combine these actions in Poll() to
 		// make quality switch works reliably.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if err := y.uiHdl.Click(videoPlayer)(ctx); err != nil {
-				return errors.Wrap(err, "failed to click YouTube Video Player to bring up settings panel")
+			// If an ad is playing, skip it before proceeding.
+			if err := y.ui.IfSuccessThen(y.ui.WithTimeout(10*time.Second).WaitUntilExists(skipAdButton), y.uiHdl.Click(skipAdButton))(ctx); err != nil {
+				return errors.Wrap(err, "failed to click 'Skip Ad' button")
 			}
 
-			// If an ad is playing, skip it before proceeding.
-			if err := y.ui.IfSuccessThen(y.ui.WaitUntilExists(skipAdButton), y.uiHdl.Click(skipAdButton))(ctx); err != nil {
-				return errors.Wrap(err, "failed to click 'Skip Ad' button")
+			if err := y.uiHdl.Click(videoPlayer)(ctx); err != nil {
+				return errors.Wrap(err, "failed to click YouTube Video Player to bring up settings panel")
 			}
 
 			if err := y.uiHdl.ClickUntil(settings, y.ui.WithTimeout(10*time.Second).WaitUntilExists(quality))(ctx); err != nil {
@@ -174,8 +173,8 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	prompts := []string{"Allow", "Never", "NO THANKS"}
 	clearNotificationPrompts(ctx, y.ui, y.uiHdl, prompts...)
 
-	if err := switchQuality(y.video.quality); err != nil {
-		return errors.Wrapf(err, "failed to switch resolution to %s", y.video.quality)
+	if err := switchQuality(y.video.Quality); err != nil {
+		return errors.Wrapf(err, "failed to switch resolution to %s", y.video.Quality)
 	}
 
 	y.ytWinID, err = getWindowID(ctx, y.tconn)
@@ -211,6 +210,65 @@ func (y *YtWeb) EnterFullscreen(ctx context.Context) error {
 
 	if err := waitForYoutubeReadyState(ctx, y.ytConn); err != nil {
 		return errors.Wrap(err, "failed to wait for Youtube ready state")
+	}
+	return nil
+}
+
+// MaximizeWindow maximizes the youtube video.
+func (y *YtWeb) MaximizeWindow(ctx context.Context) error {
+	testing.ContextLog(ctx, "Maximize Youtube video window")
+
+	if ytWin, err := ash.GetWindow(ctx, y.tconn, y.ytWinID); err != nil {
+		return errors.Wrap(err, "failed to get youtube window")
+	} else if ytWin.State == ash.WindowStateMaximized {
+		return nil
+	}
+
+	maximizeButton := nodewith.Name("Maximize").HasClass("FrameCaptionButton").Role(role.Button)
+	if err := y.uiHdl.Click(maximizeButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to maximize the window")
+	}
+	if err := ash.WaitForCondition(ctx, y.tconn, func(w *ash.Window) bool {
+		return w.ID == y.ytWinID && w.State == ash.WindowStateMaximized && !w.IsAnimating
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for window to become maximized")
+	}
+	return nil
+}
+
+// MinimizeWindow minimizes the youtube video.
+func (y *YtWeb) MinimizeWindow(ctx context.Context) error {
+	testing.ContextLog(ctx, "Minimize Youtube video window")
+
+	if ytWin, err := ash.GetWindow(ctx, y.tconn, y.ytWinID); err != nil {
+		return errors.Wrap(err, "failed to get youtube window")
+	} else if ytWin.State == ash.WindowStateMinimized {
+		return nil
+	}
+
+	minimizeButton := nodewith.Name("Minimize").HasClass("FrameCaptionButton").Role(role.Button)
+	if err := y.uiHdl.Click(minimizeButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to minimize the window")
+	}
+	if err := ash.WaitForCondition(ctx, y.tconn, func(w *ash.Window) bool {
+		return w.ID == y.ytWinID && w.State == ash.WindowStateMinimized && !w.IsAnimating
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for window to become minimized")
+	}
+	return nil
+}
+
+// RestoreWindow restores the youtube video to normal state.
+func (y *YtWeb) RestoreWindow(ctx context.Context) error {
+	testing.ContextLog(ctx, "Restore Youtube video window")
+
+	if _, err := ash.SetWindowState(ctx, y.tconn, y.ytWinID, ash.WMEventNormal, true /* waitForStateChange */); err != nil {
+		return errors.Wrap(err, "failed to set the window state to normal")
+	}
+	if err := ash.WaitForCondition(ctx, y.tconn, func(w *ash.Window) bool {
+		return w.ID == y.ytWinID && w.State == ash.WindowStateNormal && !w.IsAnimating
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for window to become normal")
 	}
 	return nil
 }
@@ -292,4 +350,32 @@ func clearNotificationPrompts(ctx context.Context, ui *uiauto.Context, uiHdl cuj
 			testing.ContextLogf(ctx, "Failed to clear prompt %q", name)
 		}
 	}
+}
+
+// PerformFrameDropsTest checks for dropped frames percent and checks if it is below the threshold.
+func (y *YtWeb) PerformFrameDropsTest(ctx context.Context) error {
+	// If we see more than 10% video frame drops it will be visible to the user and will impact the viewing experience.
+	frameDropThreshold := 10.0
+	var decodedFrameCount, droppedFrameCount int
+	videoElement := "document.querySelector('#movie_player video')"
+
+	if err := y.ytConn.Eval(ctx, videoElement+".getVideoPlaybackQuality().totalVideoFrames", &decodedFrameCount); err != nil {
+		return errors.Wrap(err, "failed to get decoded framecount")
+	}
+	if err := y.ytConn.Eval(ctx, videoElement+".getVideoPlaybackQuality().droppedVideoFrames", &droppedFrameCount); err != nil {
+		return errors.Wrap(err, "failed to get dropped framecount")
+	}
+	testing.ContextLogf(ctx, "decodedFrameCount= %d", decodedFrameCount)
+	testing.ContextLogf(ctx, "droppedFrameCount= %d", droppedFrameCount)
+	droppedFramePercent := 100.0
+	if decodedFrameCount != 0 {
+		droppedFramePercent = 100.0 * float64(droppedFrameCount/decodedFrameCount)
+
+	} else {
+		testing.ContextLogf(ctx, "Decoded frames=%d, dropped frames=%d, percent=%f%%", decodedFrameCount, droppedFrameCount, droppedFramePercent)
+	}
+	if droppedFramePercent > frameDropThreshold {
+		return errors.Errorf("failed to play without frame drops; Frame drops %f%% observed in video which is more than threshold %f%%", droppedFramePercent, frameDropThreshold)
+	}
+	return nil
 }
