@@ -16,6 +16,23 @@
       "message": "Thanks, Allen!",
       "revId": "ec1d7e0d9d3034c5145704bd0d48345c6185381d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bbcbef7_645eb299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-15T08:25:41Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "ec1d7e0d9d3034c5145704bd0d48345c6185381d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
