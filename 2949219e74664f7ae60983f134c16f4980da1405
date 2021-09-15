@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07c1037c_93a86aff",
+        "filename": "src/chromiumos/tast/local/chrome/ui/capturemode/capture_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T02:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9378e58e_7262b0ed",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "2949219e74664f7ae60983f134c16f4980da1405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94c64a56_52161a75",
@@ -66,6 +90,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e71208c_6ab6c0c3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/capturemode/capture_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T02:55:55Z",
+      "side": 1,
+      "message": "Do you mean we need to add extra attributes to the node except First()?",
+      "parentUuid": "94c64a56_52161a75",
+      "revId": "2949219e74664f7ae60983f134c16f4980da1405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5291755_17907978",
+        "filename": "src/chromiumos/tast/local/chrome/ui/capturemode/capture_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T02:55:55Z",
+      "side": 1,
+      "message": "if we removw this, an error occured and it says that several nodes was found and use first() to avoid this.",
+      "parentUuid": "effb63a6_150ee971",
+      "range": {
+        "startLine": 57,
+        "startChar": 41,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "2949219e74664f7ae60983f134c16f4980da1405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb7e31f7_3aa937ee",
         "filename": "src/chromiumos/tast/local/chrome/ui/capturemode/capture_mode.go",
         "patchSetId": 1
@@ -77,6 +143,30 @@
       "writtenOn": "2021-09-10T08:33:14Z",
       "side": 1,
       "message": "Instead of calling IsNodeFound, we can use \nif strings.Contains(err.Error(), nodewith.ErrNotFound) {\n  return ErrCaptureModeNotFound\n}\n\nexample: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/1ae39e8affa7/src/chromiumos/tast/local/chrome/uiauto/automation.go#379",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 3
+      },
+      "revId": "2949219e74664f7ae60983f134c16f4980da1405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f93fe33_76b9bd14",
+        "filename": "src/chromiumos/tast/local/chrome/ui/capturemode/capture_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-15T02:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb7e31f7_3aa937ee",
       "range": {
         "startLine": 60,
         "startChar": 0,
