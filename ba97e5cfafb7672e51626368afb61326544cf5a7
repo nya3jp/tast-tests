@@ -254,6 +254,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d9975c3_6857ef28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-09-16T04:55:04Z",
+      "side": 1,
+      "message": "Now using mouse click to accept suggestion, so it will wait for the popup to appear.",
+      "parentUuid": "fe178429_feab87fa",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18ac48db_38a67712",
