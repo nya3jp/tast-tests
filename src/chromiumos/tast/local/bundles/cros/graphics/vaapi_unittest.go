@@ -57,7 +57,7 @@ func init() {
 				gtestFilter: fmt.Sprintf("-%s:%s", webpGFilter, jpegGFilter),
 			},
 		}},
-		Fixture: "gpuWatchDog",
+		Fixture: "graphicsNoChrome",
 	})
 }
 
