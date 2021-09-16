@@ -244,7 +244,7 @@ func (f *FilesApp) SelectMultipleFiles(kb *input.KeyboardEventWriter, fileList .
 // CreateFolder returns a function that creates a new folder named dirName in the current directory.
 func (f *FilesApp) CreateFolder(kb *input.KeyboardEventWriter, dirName string) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("CreateFolder(%s)", dirName),
-		f.FocusAndWait(nodewith.Role(role.ListBox)),
+		f.EnsureFocused(nodewith.Role(role.ListBox)),
 		kb.AccelAction("Ctrl+E"), // Press Ctrl+E to create a new folder.
 		// Wait for rename text field.
 		f.WaitUntilExists(nodewith.Role(role.TextField).Editable().Focusable().Focused()),
@@ -305,6 +305,18 @@ func (f *FilesApp) Search(kb *input.KeyboardEventWriter, searchTerms string) uia
 	)
 }
 
+// ClearSearch clicks the clear button to clear the search results and leave search mode.
+func (f *FilesApp) ClearSearch() uiauto.Action {
+	clear := nodewith.Role(role.Button).ClassName("clear").Name("Clear")
+	return uiauto.Combine("clear search box",
+		f.ui.IfSuccessThen(
+			f.WithTimeout(5*time.Second).WaitUntilExists(clear),
+			f.LeftClick(clear),
+		),
+		f.EnsureFocused(nodewith.Role(role.ListBox)),
+	)
+}
+
 // ToggleAvailableOfflineForFile selects the specified file and toggles the Available Offline switch.
 func (f *FilesApp) ToggleAvailableOfflineForFile(fileName string) uiauto.Action {
 	toggleOfflineErrorOkButton := nodewith.Name("OK").Role(role.Button)
@@ -345,6 +357,26 @@ func (f *FilesApp) DragAndDropFile(fileName string, dropPoint coords.Point, kb *
 
 		return mouse.Drag(f.tconn, srcPoint.CenterPoint(), dropPoint, time.Second)(ctx)
 	}
+}
+
+// PinToShelf pins specified file to tote.
+func (f *FilesApp) PinToShelf(fileName string) uiauto.Action {
+	pinToShelfOptionNode := nodewith.Name("Pin to shelf").HasClass("custom-appearance").Role(role.MenuItem).Ancestor(WindowFinder)
+	return uiauto.Combine(fmt.Sprintf("pin file %q to Tote", fileName),
+		f.EnsureFocused(nodewith.Role(role.ListBox)),
+		f.ui.RightClickUntil(file(fileName), f.ui.Exists(pinToShelfOptionNode)),
+		f.ui.LeftClickUntil(pinToShelfOptionNode, f.ui.Gone(pinToShelfOptionNode)),
+	)
+}
+
+// UnpinFromShelf unpins specified file from tote.
+func (f *FilesApp) UnpinFromShelf(fileName string) uiauto.Action {
+	unpinToShelfOptionNode := nodewith.Name("Unpin from shelf").HasClass("custom-appearance").Role(role.MenuItem).Ancestor(WindowFinder)
+	return uiauto.Combine(fmt.Sprintf("pin file %q to Tote", fileName),
+		f.EnsureFocused(nodewith.Role(role.ListBox)),
+		f.ui.RightClickUntil(file(fileName), f.ui.Exists(unpinToShelfOptionNode)),
+		f.ui.LeftClickUntil(unpinToShelfOptionNode, f.ui.Gone(unpinToShelfOptionNode)),
+	)
 }
 
 // PerformActionAndRetryMaximizedOnFail attempts an action and if it fails, maximizes the Files app and tries again.
