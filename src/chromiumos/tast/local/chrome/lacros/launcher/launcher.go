@@ -154,8 +154,8 @@ func extensionArgs(extID, extList string) []string {
 }
 
 // LaunchLacrosChrome launches a fresh instance of lacros-chrome.
-func LaunchLacrosChrome(ctx context.Context, f FixtData) (*LacrosChrome, error) {
-	if err := killLacrosChrome(ctx, f.LacrosPath); err != nil {
+func LaunchLacrosChrome(ctx context.Context, f FixtValue) (*LacrosChrome, error) {
+	if err := killLacrosChrome(ctx, f.LacrosPath()); err != nil {
 		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}
 
@@ -164,7 +164,7 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData) (*LacrosChrome, error) 
 	// path, which is cleared by pre.go. We need to use a new temporary
 	// directory for each invocation so that successive calls to
 	// LaunchLacrosChrome don't interfere with each other.
-	userDataDir, err := ioutil.TempDir(f.LacrosPath, "")
+	userDataDir, err := ioutil.TempDir(f.LacrosPath(), "")
 	if err != nil {
 		// Fall back to create it under /tmp in case rootfs-lacros is used.
 		if userDataDir, err = ioutil.TempDir("/tmp", "lacros"); err != nil {
@@ -177,14 +177,14 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData) (*LacrosChrome, error) 
 		return nil, errors.Wrap(err, "failed to chown user data dir")
 	}
 
-	l := &LacrosChrome{lacrosPath: f.LacrosPath, userDataDir: userDataDir}
-	extList := strings.Join(f.Chrome.DeprecatedExtDirs(), ",")
+	l := &LacrosChrome{lacrosPath: f.LacrosPath(), userDataDir: userDataDir}
+	extList := strings.Join(f.Chrome().DeprecatedExtDirs(), ",")
 	args := []string{
-		"--ozone-platform=wayland",                 // Use wayland to connect to exo wayland server.
-		"--no-first-run",                           // Prevent showing up offer pages, e.g. google.com/chromebooks.
-		"--user-data-dir=" + l.userDataDir,         // Specify a --user-data-dir, which holds on-disk state for Chrome.
-		"--lang=en-US",                             // Language
-		"--breakpad-dump-location=" + f.LacrosPath, // Specify location for breakpad dump files.
+		"--ozone-platform=wayland",                   // Use wayland to connect to exo wayland server.
+		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
+		"--user-data-dir=" + l.userDataDir,           // Specify a --user-data-dir, which holds on-disk state for Chrome.
+		"--lang=en-US",                               // Language
+		"--breakpad-dump-location=" + f.LacrosPath(), // Specify location for breakpad dump files.
 		"--window-size=800,600",
 		"--log-file=" + l.LogFile(),                  // Specify log file location for debugging.
 		"--enable-logging",                           // This flag is necessary to ensure the log file is written.
@@ -196,11 +196,11 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData) (*LacrosChrome, error) 
 		chrome.BlankURL,                              // Specify first tab to load.
 	}
 	args = append(args, extensionArgs(chrome.TestExtensionID, extList)...)
-	args = append(args, f.Chrome.LacrosExtraArgs()...)
+	args = append(args, f.Chrome().LacrosExtraArgs()...)
 
 	l.cmd = testexec.CommandContext(ctx, "sudo", append([]string{"-E", "-u", "chronos",
 		"/usr/local/bin/python3", "/usr/local/bin/mojo_connection_lacros_launcher.py",
-		"-s", mojoSocketPath, filepath.Join(f.LacrosPath, "chrome")}, args...)...)
+		"-s", mojoSocketPath, filepath.Join(f.LacrosPath(), "chrome")}, args...)...)
 	l.cmd.Cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
 
 	if out, ok := testing.ContextOutDir(ctx); !ok {
@@ -221,7 +221,7 @@ func LaunchLacrosChrome(ctx context.Context, f FixtData) (*LacrosChrome, error) 
 	}
 
 	// Wait for a window that matches what a lacros window looks like.
-	if err := WaitForLacrosWindow(ctx, f.TestAPIConn, "about:blank"); err != nil {
+	if err := WaitForLacrosWindow(ctx, f.TestAPIConn(), "about:blank"); err != nil {
 		return nil, err
 	}
 
