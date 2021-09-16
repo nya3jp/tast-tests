@@ -298,6 +298,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbbc7129_368a4f34",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/device_params.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-16T10:40:46Z",
+      "side": 1,
+      "message": "Maybe \n\n```\nfunc (r *Request) ApplyDeviceParams(d *DeviceParams) {}\n\nor\n\nfunc New(d *DeviceParams) *Request {}\n```\n\nwill work for you?",
+      "parentUuid": "e078c2c2_c3671c9a",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 72
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3629477_c90cc48a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/doc.go",
         "patchSetId": 7
