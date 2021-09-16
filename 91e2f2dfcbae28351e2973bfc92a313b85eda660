@@ -16,6 +16,24 @@
       "message": "I will create a shared func for the above `newgrp cras` code.",
       "revId": "91e2f2dfcbae28351e2973bfc92a313b85eda660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a22f27c_8eaa037f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_loopback_latency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-16T01:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23fbed2e_74792fb5",
+      "revId": "91e2f2dfcbae28351e2973bfc92a313b85eda660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
