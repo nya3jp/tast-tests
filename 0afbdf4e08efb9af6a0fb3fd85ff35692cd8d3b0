@@ -104,6 +104,24 @@
       "parentUuid": "ae7255f3_253305f7",
       "revId": "0afbdf4e08efb9af6a0fb3fd85ff35692cd8d3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c9c8ffb_d9294993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-09-16T05:19:15Z",
+      "side": 1,
+      "message": "I think you meant file is kept?\n\"Already tested with DriveFS: KeepFile \u003d true and File is removed.\"",
+      "parentUuid": "2d6c2891_24edb0e4",
+      "revId": "0afbdf4e08efb9af6a0fb3fd85ff35692cd8d3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

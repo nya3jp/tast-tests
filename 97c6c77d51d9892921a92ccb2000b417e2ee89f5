@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d079ea02_10bcdd99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-09-16T05:19:15Z",
+      "side": 1,
+      "message": "Almost LGTM. Thanks.",
+      "revId": "97c6c77d51d9892921a92ccb2000b417e2ee89f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5581e5f_b2a276ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-09-16T05:19:15Z",
+      "side": 1,
+      "message": "Remove this line?\nvar fileNotExist bool",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 22
+      },
+      "revId": "97c6c77d51d9892921a92ccb2000b417e2ee89f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
