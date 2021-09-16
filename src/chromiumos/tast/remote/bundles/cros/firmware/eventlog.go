@@ -6,6 +6,7 @@ package firmware
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"time"
 
@@ -22,11 +23,11 @@ import (
 
 // eventLogParams contains all the data needed to run a single test iteration.
 type eventLogParams struct {
-	resetType            firmware.ResetType
-	bootToMode           fwCommon.BootMode
-	suspendResume        bool
-	disableSuspendToIdle bool
-	hardwareWatchdog     bool
+	resetType        firmware.ResetType
+	bootToMode       fwCommon.BootMode
+	suspendResume    bool
+	suspendToIdle    string
+	hardwareWatchdog bool
 	// All of the regexes in one of the sets must be present. Ex.
 	// [][]string{[]string{`Case 1A`, `Case 1B`}, []string{`Case 2A`, `Case 2[BC]`}}
 	// Any of these events would pass:
@@ -46,7 +47,7 @@ func init() {
 			"gredelston@google.com", // Test author
 			"cros-fw-engprod@google.com",
 		},
-		Attr: []string{"group:firmware", "firmware_experimental"},
+		Attr: []string{"group:firmware", "firmware_unstable"},
 		HardwareDeps: hwdep.D(
 			// Eventlog is broken/wontfix on veyron devices.
 			// See http://b/35585376#comment14 for more info.
@@ -143,28 +144,56 @@ func init() {
 				},
 				Timeout: 6 * time.Minute,
 			},
-			// Test eventlog upon suspend/resume
+			// Test eventlog upon suspend/resume w/ default value of suspend_to_idle.
+			// treeya: ACPI Enter | S3, EC Event | Power Button, ACPI Wake | S3, Wake Source | Power Button | 0
+			// kindred: S0ix Enter, S0ix Exit, Wake Source | Power Button | 0, EC Event | Power Button
+			// leona: S0ix Enter, S0ix Exit, Wake Source | Power Button | 0, EC Event | Power Button
+			// eldrid: S0ix Enter, S0ix Exit, Wake Source | Power Button | 0, EC Event | Power Button
+			// hayato: Sleep, Wake
 			{
 				Name: "suspend_resume",
 				Pre:  pre.NormalMode(),
 				Val: eventLogParams{
 					suspendResume: true,
 					requiredEventSets: [][]string{
-						[]string{`^Wake`, `Sleep`},
+						[]string{`Sleep`, `^Wake`},
 						[]string{`ACPI Enter \| S3`, `ACPI Wake \| S3`},
 						[]string{`S0ix Enter`, `S0ix Exit`},
 					},
 					prohibitedEvents: `System |Developer Mode|Recovery Mode`,
 				},
 			},
-			// Test eventlog upon suspend/resume w/ disable_suspend_to_idle
+			// Test eventlog upon suspend/resume w/ suspend_to_idle.
+			// On supported machines, this should go to S0ix or stay in S0.
+			// x86 duts: S0ix Enter, S0ix Exit, Wake Source | Power Button | 0, EC Event | Power Button
+			// hayato: FAIL Sleep, System boot
+			// treeya: FAIL Nothing logged
+			{
+				Name: "suspend_resume_idle",
+				Pre:  pre.NormalMode(),
+				Val: eventLogParams{
+					suspendResume: true,
+					suspendToIdle: "1",
+					requiredEventSets: [][]string{
+						[]string{`Sleep`, `^Wake`},
+						[]string{`S0ix Enter`, `S0ix Exit`},
+					},
+					prohibitedEvents: `System |Developer Mode|Recovery Mode`,
+				},
+			},
+			// Test eventlog upon suspend/resume w/o suspend_to_idle
+			// This should power down all the way to S3.
+			// eldrid: FAIL ACPI Enter | S3, EC Event | Power Button, ACPI Wake | S3, Wake Source | Power Button | 0 -> Gets stuck and doesn't boot.
+			// hayato: Sleep, Wake
+			// x86 duts: ACPI Enter | S3, EC Event | Power Button, ACPI Wake | S3, Wake Source | Power Button | 0
 			{
 				Name: "suspend_resume_noidle",
 				Pre:  pre.NormalMode(),
 				Val: eventLogParams{
-					suspendResume:        true,
-					disableSuspendToIdle: true,
+					suspendResume: true,
+					suspendToIdle: "0",
 					requiredEventSets: [][]string{
+						[]string{`Sleep`, `^Wake`},
 						[]string{`ACPI Enter \| S3`, `ACPI Wake \| S3`},
 					},
 					prohibitedEvents: `System |Developer Mode|Recovery Mode`,
@@ -207,9 +236,14 @@ func Eventlog(ctx context.Context, s *testing.State) {
 	r := h.Reporter
 	param := s.Param().(eventLogParams)
 
-	cutoffTime, err := r.Now(ctx)
+	var cutoffEvent reporters.Event
+	oldEvents, err := r.EventlogList(ctx)
 	if err != nil {
-		s.Fatal("Reporting time at start of test: ", err)
+		s.Fatal("Finding last event: ", err)
+	}
+	if len(oldEvents) > 0 {
+		cutoffEvent = oldEvents[len(oldEvents)-1]
+		s.Log("Found previous event: ", cutoffEvent)
 	}
 	if param.resetType != "" {
 		if err := ms.ModeAwareReboot(ctx, param.resetType); err != nil {
@@ -229,31 +263,46 @@ func Eventlog(ctx context.Context, s *testing.State) {
 		if err := h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
 			s.Error("Failed to remove watchdog for ccd: ", err)
 		}
-		if param.disableSuspendToIdle {
-			if err = h.DUT.Conn().CommandContext(ctx, "sh", "-c",
+		if param.suspendToIdle != "" {
+			if err = h.DUT.Conn().CommandContext(ctx, "sh", "-c", fmt.Sprintf(
 				"mkdir -p /tmp/power_manager && "+
-					"echo 0 > /tmp/power_manager/suspend_to_idle && "+
+					"echo %q > /tmp/power_manager/suspend_to_idle && "+
 					"mount --bind /tmp/power_manager /var/lib/power_manager && "+
-					"restart powerd",
+					"restart powerd", param.suspendToIdle),
 			).Run(ssh.DumpLogOnError); err != nil {
-				s.Fatal("Failed to disable suspend to idle: ", err)
+				s.Fatal("Failed to set suspend to idle: ", err)
 			}
 			defer func(ctx context.Context) {
 				if err := h.DUT.Conn().CommandContext(ctx, "sh", "-c",
 					"umount /var/lib/power_manager && restart powerd",
 				).Run(ssh.DumpLogOnError); err != nil {
-					s.Fatal("Failed to restore suspend to idle: ", err)
+					s.Log("Failed to restore powerd settings: ", err)
 				}
 			}(ctx)
-		}
-		s.Log("Suspending DUT")
-		if err = h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend", "-wakeup_timeout=10").Run(ssh.DumpLogOnError); err != nil && !errors.Is(err, context.DeadlineExceeded) {
-			s.Fatal("Failed to suspend: ", err)
+			// Suspend will fail right after restarting powerd
+			testing.Sleep(ctx, 2*time.Second)
 		}
 		h.CloseRPCConnection(ctx)
 
+		s.Log("Suspending DUT")
+		shortCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
+		defer cancel()
+		if err = h.DUT.Conn().CommandContext(shortCtx, "powerd_dbus_suspend").Run(ssh.DumpLogOnError); err != nil &&
+			!errors.Is(err, context.DeadlineExceeded) && !errors.Is(err, &ssh.ExitMissingError{}) {
+			s.Fatal("Failed to suspend: ", err)
+		}
+
+		// Let the DUT stay in suspend a little while
+		testing.Sleep(ctx, 10*time.Second)
+
+		s.Log("Pressing Power key to wake DUT")
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+			s.Fatal("Failed to press power key")
+		}
 		s.Log("Reconnecting to DUT")
-		if err := h.WaitConnect(ctx); err != nil {
+		shortCtx, cancel = context.WithTimeout(ctx, 60*time.Second)
+		defer cancel()
+		if err := h.WaitConnect(shortCtx); err != nil {
 			s.Fatal("Failed to reconnect to DUT: ", err)
 		}
 		s.Log("Reconnected to DUT")
@@ -278,14 +327,19 @@ func Eventlog(ctx context.Context, s *testing.State) {
 		s.Log("DUT became unreachable (as expected)")
 
 		s.Log("Reconnecting to DUT")
-		if err := h.WaitConnect(ctx); err != nil {
+		shortCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
+		defer cancel()
+		if err := h.WaitConnect(shortCtx); err != nil {
 			s.Fatal("Failed to reconnect to DUT: ", err)
 		}
 		s.Log("Reconnected to DUT")
 	}
-	events, err := r.EventlogListSince(ctx, cutoffTime)
+	events, err := r.EventlogListAfter(ctx, cutoffEvent)
 	if err != nil {
 		s.Fatal("Gathering events: ", err)
+	}
+	for _, event := range events {
+		s.Log("Found event: ", event)
 	}
 
 	// Complicated rules here.
@@ -307,7 +361,7 @@ func Eventlog(ctx context.Context, s *testing.State) {
 		}
 	}
 	if !requiredEventsFound {
-		s.Errorf("Required event missing: %+v", events)
+		s.Error("Required event missing")
 	}
 	if param.prohibitedEvents != "" {
 		reProhibitedEvents := regexp.MustCompile(param.prohibitedEvents)
@@ -315,8 +369,10 @@ func Eventlog(ctx context.Context, s *testing.State) {
 		if param.allowedEvents != "" {
 			allowedRe = regexp.MustCompile(param.allowedEvents)
 		}
-		if eventMessagesContainReMatch(ctx, events, reProhibitedEvents, allowedRe) {
-			s.Errorf("Incorrect event logged: %+v", events)
+		for _, event := range events {
+			if reProhibitedEvents.MatchString(event.Message) && (allowedRe == nil || !allowedRe.MatchString(event.Message)) {
+				s.Errorf("Incorrect event logged: %+v", event)
+			}
 		}
 	}
 }
