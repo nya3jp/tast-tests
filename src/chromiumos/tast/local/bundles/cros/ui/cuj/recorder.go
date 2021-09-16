@@ -53,6 +53,10 @@ type MetricConfig struct {
 	// The group of the metrics. Metrics in the same group will be aggregated
 	// nto one, except for groupOther.
 	group metricGroup
+
+	// TestConn to pull the histogram. If nil, the histogram is fetched using
+	// the TestConn in recorder.
+	tconn *chrome.TestConn
 }
 
 // NewSmoothnessMetricConfig creates a new MetricConfig instance for collecting
@@ -63,6 +67,14 @@ func NewSmoothnessMetricConfig(histogramName string) MetricConfig {
 	return MetricConfig{histogramName: histogramName, unit: "percent", direction: perf.BiggerIsBetter, jankCriteria: []int64{50, 20}, group: groupSmoothness}
 }
 
+// NewSmoothnessMetricConfigWithTestConn works like NewSmoothnessMetricConfig
+// but allows to specify a TestConn to pull histogram data.
+func NewSmoothnessMetricConfigWithTestConn(histogramName string, tconn *chrome.TestConn) MetricConfig {
+	conf := NewSmoothnessMetricConfig(histogramName)
+	conf.tconn = tconn
+	return conf
+}
+
 // NewLatencyMetricConfig creates a new MetricConfig instance for collecting
 // input latency data for the given histogram name. The whole data of all input
 // latency metrics will be aggregated into the "InputLatency" entry at the end.
@@ -70,11 +82,27 @@ func NewLatencyMetricConfig(histogramName string) MetricConfig {
 	return MetricConfig{histogramName: histogramName, unit: "ms", direction: perf.SmallerIsBetter, jankCriteria: []int64{100, 250}, group: groupLatency}
 }
 
+// NewLatencyMetricConfigWithTestConn works like NewLatencyMetricConfig but
+// allows to specify a TestConn to pull histogram data.
+func NewLatencyMetricConfigWithTestConn(histogramName string, tconn *chrome.TestConn) MetricConfig {
+	conf := NewLatencyMetricConfig(histogramName)
+	conf.tconn = tconn
+	return conf
+}
+
 // NewCustomMetricConfig creates a new MetricConfig for the given histogram
 // name, unit, direction, and jankCriteria. The data are reported as-is but
 // not aggregated with other histograms.
 func NewCustomMetricConfig(histogramName, unit string, direction perf.Direction, jankCriteria []int64) MetricConfig {
 	return MetricConfig{histogramName: histogramName, unit: unit, direction: direction, jankCriteria: jankCriteria, group: groupOther}
+}
+
+// NewCustomMetricConfigWithTestConn works like NewCustomMetricConfig but
+// allows to specify a TestConn to pull histogram data.
+func NewCustomMetricConfigWithTestConn(histogramName, unit string, direction perf.Direction, jankCriteria []int64, tconn *chrome.TestConn) MetricConfig {
+	conf := NewCustomMetricConfig(histogramName, unit, direction, jankCriteria)
+	conf.tconn = tconn
+	return conf
 }
 
 type record struct {
@@ -95,7 +123,10 @@ type Recorder struct {
 	cr    *chrome.Chrome
 	tconn *chrome.TestConn
 
-	names   []string
+	// Metrics names keyed by relevant chrome.TestConn pointer.
+	names map[*chrome.TestConn][]string
+
+	// Metric records keyed by metric name.
 	records map[string]*record
 
 	traceDir string
@@ -175,7 +206,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, configs ...MetricConfig
 	r := &Recorder{
 		cr:                 cr,
 		tconn:              tconn,
-		names:              make([]string, 0, len(configs)),
+		names:              make(map[*chrome.TestConn][]string),
 		records:            make(map[string]*record, len(configs)+2),
 		timeline:           timeline,
 		gpuDataSource:      gpuDS,
@@ -187,7 +218,13 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, configs ...MetricConfig
 		if config.histogramName == string(groupLatency) || config.histogramName == string(groupSmoothness) {
 			return nil, errors.Errorf("invalid histogram name: %s", config.histogramName)
 		}
-		r.names = append(r.names, config.histogramName)
+
+		bTconn := tconn
+		if config.tconn != nil {
+			bTconn = config.tconn
+		}
+
+		r.names[bTconn] = append(r.names[bTconn], config.histogramName)
 		r.records[config.histogramName] = &record{config: config}
 	}
 	r.records[string(groupLatency)] = &record{config: MetricConfig{
@@ -284,12 +321,32 @@ func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) (
 		}()
 	}
 
+	// Starts metrics record per browser test connection.
+	mr := make(map[*chrome.TestConn]*metrics.Recorder)
+	for tconn, names := range r.names {
+		var err error
+		mr[tconn], err = metrics.StartRecorder(ctx, tconn, names...)
+		if err != nil {
+			return errors.Wrap(err, "failed to start metrics recorder")
+		}
+	}
+
+	// Run test scenario.
 	tm := time.Now()
-	hists, err := metrics.Run(ctx, r.tconn, f, r.names...)
-	if err != nil {
+	if err := f(ctx); err != nil {
 		return err
 	}
 	r.duration += time.Now().Sub(tm)
+
+	// Collects metrics per browser test connection.
+	var hists []*metrics.Histogram
+	for tconn, r := range mr {
+		h, err := r.Histogram(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to collect metrics")
+		}
+		hists = append(hists, h...)
+	}
 
 	for _, hist := range hists {
 		if hist.TotalCount() == 0 {

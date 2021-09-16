@@ -87,7 +87,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	testParam := s.Param().(windowarrangementcuj.TestParam)
 	tabletMode := testParam.Tablet
 
-	cr, cs, tconn, chromeCleanUp, closeAboutBlank, err := windowarrangementcuj.SetupChrome(ctx, s)
+	cr, cs, tconn, chromeCleanUp, closeAboutBlank, bTconn, err := windowarrangementcuj.SetupChrome(ctx, s)
 	if err != nil {
 		s.Fatal("Failed to setup chrome: ", err)
 	}
@@ -136,17 +136,17 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			cuj.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.ClamshellMode"),
 			cuj.NewLatencyMetricConfig("Ash.InteractiveWindowResize.TimeToPresent"),
 			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.SingleWindow"),
-			cuj.NewCustomMetricConfig(
+			cuj.NewCustomMetricConfigWithTestConn(
 				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-				"percent", perf.SmallerIsBetter, []int64{50, 80}),
+				"percent", perf.SmallerIsBetter, []int64{50, 80}, bTconn),
 		}
 	} else {
 		configs = []cuj.MetricConfig{
 			cuj.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.TabletMode"),
 			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.MultiWindow"),
-			cuj.NewCustomMetricConfig(
+			cuj.NewCustomMetricConfigWithTestConn(
 				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-				"percent", perf.SmallerIsBetter, []int64{50, 80}),
+				"percent", perf.SmallerIsBetter, []int64{50, 80}, bTconn),
 		}
 	}
 
