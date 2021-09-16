@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f105065f_1f428709",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163674
+      },
+      "writtenOn": "2021-09-16T23:38:54Z",
+      "side": 1,
+      "message": "+tast-owners PTAL 😊",
+      "revId": "9ab71c1e22ada9f9e51a9f3688bb5475e704ea69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
