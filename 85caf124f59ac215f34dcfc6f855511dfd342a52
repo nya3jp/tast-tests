@@ -57,6 +57,30 @@
       },
       "revId": "85caf124f59ac215f34dcfc6f855511dfd342a52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e093e1_fee2561c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_cd.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2021-09-16T03:02:07Z",
+      "side": 1,
+      "message": "That\u0027s right. Done.",
+      "parentUuid": "c865612a_9941362e",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "85caf124f59ac215f34dcfc6f855511dfd342a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
