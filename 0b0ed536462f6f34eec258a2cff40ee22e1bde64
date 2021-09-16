@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e7327c3_6d7cb146",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-09-16T19:45:22Z",
+      "side": 1,
+      "message": "probably worth calling out that we\u0027re doing this because the metrics are now split across ash-chrome and lacros-chrome",
+      "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70ae61ab_435a810c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-09-16T19:45:22Z",
+      "side": 1,
+      "message": "don\u0027t want to block you, but I\u0027ll take another look at this code and may have some more questions/comments",
+      "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2772fdb_86605236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-09-16T19:45:22Z",
+      "side": 1,
+      "message": "/to specify/specifying, here and below",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4275282_3f2c90d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-09-16T19:45:22Z",
+      "side": 1,
+      "message": "Not worth adding TestConn to NewLatencyMetricConfig()?",
+      "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1856b80_1925b807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-09-16T19:45:22Z",
+      "side": 1,
+      "message": "Are there no line char limits in Go?",
+      "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f41980d4_bc8cb455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-09-16T19:45:22Z",
+      "side": 1,
+      "message": "What\u0027s the string here? What do these metrics strings look like?",
+      "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f20ed136_dcb3223a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-09-16T19:45:22Z",
+      "side": 1,
+      "message": "bTconn \u003d browser test connection, right?",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 11
+      },
+      "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
