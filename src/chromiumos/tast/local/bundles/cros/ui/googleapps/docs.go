@@ -56,7 +56,7 @@ func RenameDoc(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title stri
 			kb.TypeAction(title),
 			waitForFieldTextToBe(tconn, renameTextbox, title),
 			kb.AccelAction("Enter"),
-			ui.WaitUntilExists(documentSavedState),
+			ui.WithTimeout(30*time.Second).WaitUntilExists(documentSavedState),
 		)),
 	)
 }
@@ -71,7 +71,7 @@ func EditDoc(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, paragraph st
 		uiauto.Combine("edit document",
 			ui.WaitUntilExists(content),
 			kb.TypeAction(paragraph),
-			ui.WaitUntilExists(documentSavedState),
+			ui.WithTimeout(30*time.Second).WaitUntilExists(documentSavedState),
 		),
 	)
 }
