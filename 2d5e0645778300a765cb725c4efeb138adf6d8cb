@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bdf732a8_28f301c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/params.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Unfortunately that\u0027s the point of the stable test, making sure that everything is working as expected. Reading them from an endpoint would mean we don\u0027t test everything.",
+      "parentUuid": "476b87e2_d2e4c343",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c11626f6_af7b069e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/chromeos_constants.go",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-15T15:23:59Z",
       "side": 1,
       "message": "Do you want them to be available outside of the package?",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09b2f8db_de513e80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/chromeos_constants.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Yes, tests might need to construct requests on their own.",
+      "parentUuid": "c11626f6_af7b069e",
       "range": {
         "startLine": 9,
         "startChar": 1,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27197d1a_f41e3dfc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/device_params.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "I\u0027d like to keep everything together here. It makes sense if this becomes a common package, but now it\u0027s just usable by omaha tests.",
+      "parentUuid": "a8a19f39_da8000f3",
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33a49984_51880565",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-09-15T15:23:59Z",
       "side": 1,
       "message": "What is SP?",
+      "range": {
+        "startLine": 26,
+        "startChar": 46,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "110c2814_3f6142c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/device_params.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33a49984_51880565",
       "range": {
         "startLine": 26,
         "startChar": 46,
@@ -112,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5ac3581_745a51ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/device_params.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Not sure I understand what you mean by depend. Requests don\u0027t have to have these fields filled in like this.",
+      "parentUuid": "10381fb9_611fa58a",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 72
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3629477_c90cc48a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/doc.go",
         "patchSetId": 7
@@ -123,6 +237,30 @@
       "writtenOn": "2021-09-15T15:23:59Z",
       "side": 1,
       "message": "Maybe rename package to smth like omaha_api / omaha_rest ?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bd5e8ef_47741224",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/doc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "If we ever move this out of the omaha package we should rename it. But I think this makes more sense right now. WDYT?",
+      "parentUuid": "e3629477_c90cc48a",
       "range": {
         "startLine": 6,
         "startChar": 8,
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06e87752_bd90273d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/request.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bcaad12_340b1546",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb854b4c_2320c505",
@@ -169,6 +331,30 @@
       "writtenOn": "2021-09-15T15:23:59Z",
       "side": 1,
       "message": "nit: swap them to be sync with type declaration",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56445a47_3f02adc0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/request.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb854b4c_2320c505",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -225,6 +411,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29fcd690_7b7e59ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/request.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0e542ab_7ff999d5",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e591edc2_1f6fae6f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/request.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94554eb6_0712c5f6",
+      "range": {
+        "startLine": 40,
+        "startChar": 45,
+        "endLine": 40,
+        "endChar": 55
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3628279f_708b1b95",
@@ -238,6 +472,30 @@
       "writtenOn": "2021-09-15T15:23:59Z",
       "side": 1,
       "message": "Why don\u0027t return error here?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 67
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e877723_63366653",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/request.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "It\u0027s just failed to add extra debug information, it\u0027s not critical.",
+      "parentUuid": "3628279f_708b1b95",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -265,6 +523,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "506a2e07_b8aa5d31",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/types_request.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a231442f_6989db47",
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfa67729_a6bce086",
@@ -282,6 +558,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e000f4_e5c1a5ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/types_request.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfa67729_a6bce086",
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23d53a3b_f19250b1",
@@ -295,6 +589,30 @@
       "writtenOn": "2021-09-15T15:23:59Z",
       "side": 1,
       "message": "is it actually a bool value? can you add comment?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 48
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa368660_c229641f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/types_request.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "It\u0027s not, it needs to be a number. Added a comment.",
+      "parentUuid": "23d53a3b_f19250b1",
       "range": {
         "startLine": 73,
         "startChar": 0,
@@ -328,6 +646,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1eed40e_6d6512e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/types_response.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "I\u0027d like to avoid documenting the API here, I added a link to the docs below.",
+      "parentUuid": "b26ed5d9_a6f2b53b",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88a58b85_0ef69c4b",
@@ -341,6 +683,30 @@
       "writtenOn": "2021-09-15T15:23:59Z",
       "side": 1,
       "message": "nit: won\u0027t it be too long error message?",
+      "range": {
+        "startLine": 81,
+        "startChar": 69,
+        "endLine": 81,
+        "endChar": 103
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8644ebcc_2ba07958",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/types_response.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Good point",
+      "parentUuid": "88a58b85_0ef69c4b",
       "range": {
         "startLine": 81,
         "startChar": 69,
@@ -374,6 +740,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc89594_8ae1e220",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "2. I\u0027d like to keep everything together here. It might make more sense if this becomes a common package, but now it\u0027s just usable by omaha tests.\n\n1. Done 2. Done",
+      "parentUuid": "4a00de80_093244f0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a80ec64_d4ee3f3d",
@@ -387,6 +777,30 @@
       "writtenOn": "2021-09-15T15:23:59Z",
       "side": 1,
       "message": "Why do you check next version as well?",
+      "range": {
+        "startLine": 20,
+        "startChar": 22,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0c29bc_aea7cf65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/stable.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Changed the description and added a comment below.",
+      "parentUuid": "3a80ec64_d4ee3f3d",
       "range": {
         "startLine": 20,
         "startChar": 22,
@@ -414,6 +828,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62116692_58eaa49e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/stable.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Added a comment.",
+      "parentUuid": "5344b662_19e37bf4",
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c22ab56c_8be1393a",
@@ -431,6 +863,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7af340ee_791ad2bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/stable.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c22ab56c_8be1393a",
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61f8f81f_352b73fa",
@@ -444,6 +894,30 @@
       "writtenOn": "2021-09-15T15:23:59Z",
       "side": 1,
       "message": "nit: Maybe rephrase message a bit: \"Unexpected App status:\"\n\nsame below",
+      "range": {
+        "startLine": 58,
+        "startChar": 12,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "899aa49d_c3593c6b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/stable.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T08:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61f8f81f_352b73fa",
       "range": {
         "startLine": 58,
         "startChar": 12,
