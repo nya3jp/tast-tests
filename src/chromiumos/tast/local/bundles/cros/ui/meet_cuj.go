@@ -245,12 +245,18 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	var cs ash.ConnSource
 	var cr *chrome.Chrome
+	var bTconn *chrome.TestConn
 
 	if meet.useLacros {
 		cr = s.FixtValue().(launcher.FixtValue).Chrome()
 	} else {
 		cr = s.FixtValue().(cuj.FixtureData).Chrome
 		cs = cr
+
+		var err error
+		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get TestAPIConn: ", err)
+		}
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -268,6 +274,10 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer l.Close(ctx)
 		cs = l
+
+		if bTconn, err = l.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get lacros TestAPIConn: ", err)
+		}
 	}
 
 	creds := s.RequiredVar("ui.MeetCUJ.bond_credentials")
@@ -362,26 +372,26 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
+	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfigWithTestConn(
 		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-		"percent", perf.SmallerIsBetter, []int64{5, 10})}
+		"percent", perf.SmallerIsBetter, []int64{5, 10}, bTconn)}
 	for _, suffix := range []string{"Capturer", "Encoder", "EncoderQueue", "RateLimiter"} {
-		configs = append(configs, cuj.NewCustomMetricConfig(
+		configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
 			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter,
-			[]int64{50, 80}))
+			[]int64{50, 80}, bTconn))
 	}
 	// Jank criteria for input event latencies. The 1st number is the
 	// threshold to be marked as jank and the 2nd one is to be marked
 	// very jank.
 	jankCriteria := []int64{80000, 400000}
 	if meet.docs {
-		configs = append(configs, cuj.NewCustomMetricConfig(
+		configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
 			"Event.Latency.EndToEnd.KeyPress", "microsecond", perf.SmallerIsBetter,
-			jankCriteria))
+			jankCriteria, bTconn))
 	} else if meet.jamboard {
-		configs = append(configs, cuj.NewCustomMetricConfig(
+		configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
 			"Event.Latency.EndToEnd.Mouse", "microsecond", perf.SmallerIsBetter,
-			jankCriteria))
+			jankCriteria, bTconn))
 	}
 
 	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
