@@ -16,6 +16,23 @@
       "message": "+1 (... I lost +2 permissions.... trying to figure out why...) otherwise +2",
       "revId": "40349acd4ae0d849bf50c1a46dcf10fab440246b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75f70658_0211f138",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-16T03:01:36Z",
+      "side": 1,
+      "message": "Thanks Aki, Ricardo and Alvin!",
+      "revId": "40349acd4ae0d849bf50c1a46dcf10fab440246b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
