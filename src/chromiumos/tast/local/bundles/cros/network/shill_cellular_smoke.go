@@ -34,7 +34,7 @@ func init() {
 		},
 		Attr:    []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
 		Fixture: "cellular",
-		Timeout: 10 * time.Minute,
+		Timeout: 1 * time.Minute,
 	})
 }
 
