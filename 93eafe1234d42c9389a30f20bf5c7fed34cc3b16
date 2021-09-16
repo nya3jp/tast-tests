@@ -104,6 +104,24 @@
       "parentUuid": "4d16c188_204737d9",
       "revId": "93eafe1234d42c9389a30f20bf5c7fed34cc3b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63ebc8a_f3f3eb28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-16T01:02:44Z",
+      "side": 1,
+      "message": "Nesting fixture shall be allowed as it is one of the motivation upgrading from Precondition to Fixture.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Fixtures\nhttps://docs.google.com/presentation/d/19EXMabCiSwCMfZ5xpmuRSway_wDvjSOCEFyc1M1_tDU/edit?resourcekey\u003d0-es9kZKHRK5bTHfUSGJNEtQ#slide\u003did.g7864377d4a_0_48",
+      "parentUuid": "770daa95_e1e838b7",
+      "revId": "93eafe1234d42c9389a30f20bf5c7fed34cc3b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
