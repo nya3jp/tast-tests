@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3adc31f_f70d2718",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-16T15:32:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "172d304c_e8678c35",
+      "range": {
+        "startLine": 381,
+        "startChar": 1,
+        "endLine": 381,
+        "endChar": 20
+      },
+      "revId": "c6d2178263ea5154fe110ff1c903997cba3c745c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5cb9c37_87851cad",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5811d3fe_e9c2b712",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-16T15:32:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5cb9c37_87851cad",
+      "revId": "c6d2178263ea5154fe110ff1c903997cba3c745c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25e91fc1_45f4a7e8",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-09-15T22:39:24Z",
       "side": 1,
       "message": "Super nit: a -\u003e an",
+      "range": {
+        "startLine": 434,
+        "startChar": 62,
+        "endLine": 434,
+        "endChar": 63
+      },
+      "revId": "c6d2178263ea5154fe110ff1c903997cba3c745c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "458c2593_d7737955",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-16T15:32:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25e91fc1_45f4a7e8",
       "range": {
         "startLine": 434,
         "startChar": 62,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e25566_9dcb1bb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_characters.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-16T15:32:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b829392_d750cdde",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 14
+      },
+      "revId": "c6d2178263ea5154fe110ff1c903997cba3c745c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df60599b_be06b609",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-09-15T22:39:24Z",
       "side": 1,
       "message": "Nit: can you assign this to a variable, e.g. cyclePunctuationMode, and use it here and elsewhere?",
+      "range": {
+        "startLine": 182,
+        "startChar": 13,
+        "endLine": 182,
+        "endChar": 26
+      },
+      "revId": "c6d2178263ea5154fe110ff1c903997cba3c745c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb49e44e_af536b9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_characters.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-16T15:32:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df60599b_be06b609",
       "range": {
         "startLine": 182,
         "startChar": 13,
