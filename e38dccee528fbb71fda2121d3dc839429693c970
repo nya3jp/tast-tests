@@ -400,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3533ea47_a985bfa3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-16T04:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec7cdff2_752de7fd",
+      "range": {
+        "startLine": 142,
+        "startChar": 58,
+        "endLine": 142,
+        "endChar": 63
+      },
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2778132_37e2f479",
@@ -460,6 +484,24 @@
       "writtenOn": "2021-09-16T03:52:38Z",
       "side": 1,
       "message": "Can we directly use `ui.WithTimeout(1 * time.Second).WaitUntilExists(audioSettingsBtn)` as the second param and remove func wrapper?",
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dab6dbc_c2f3ecff",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-16T04:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec2afa3f_093599e6",
       "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
