@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c465015_f5529fb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-16T03:32:27Z",
+      "side": 1,
+      "message": "Not only the extension but also any E14s components. For example, does this work for third party input methods? It might run on ChromiumOS without google input method installed.",
+      "parentUuid": "8ac5d95b_b075eba1",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80c4fcb0_aebcf981",
@@ -196,6 +220,30 @@
       "side": 1,
       "message": "I am not sure, is there any tools to validate the cursor position?",
       "parentUuid": "80c4fcb0_aebcf981",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe178429_feab87fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-16T03:32:27Z",
+      "side": 1,
+      "message": "Is there a way to check the suggested correction, menu or something? I do not have these boards and skylab is not available currently, so I can not run the test locally.",
+      "parentUuid": "cdcd4c71_aed100bb",
       "range": {
         "startLine": 62,
         "startChar": 2,
@@ -253,6 +301,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "510fec50_32619565",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-16T03:32:27Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "3f0cc67a_7fe7b73e",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df2cbe35_ab3004d6",
@@ -290,6 +362,30 @@
       "side": 1,
       "message": "I am currently working on enable grammar check on all 4GB board, so betty will be enabled soon. Let\u0027s not add this to CQ until that time.",
       "parentUuid": "df2cbe35_ab3004d6",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91c7fdf4_b950ff97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-16T03:32:27Z",
+      "side": 1,
+      "message": "ack.",
+      "parentUuid": "1fc0f6c7_a47877c1",
       "range": {
         "startLine": 42,
         "startChar": 4,
