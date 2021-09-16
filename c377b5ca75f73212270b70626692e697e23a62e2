@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0948f79_dcf6c895",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-09-16T14:08:37Z",
+      "side": 1,
+      "message": "creating?",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "c377b5ca75f73212270b70626692e697e23a62e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e49b2379_c23c5944",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-09-16T14:08:37Z",
+      "side": 1,
+      "message": "I just found a small edge case below.",
+      "revId": "c377b5ca75f73212270b70626692e697e23a62e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89a26de9_22088289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-09-16T14:08:37Z",
+      "side": 1,
+      "message": "There is an edge case here:\nIf the file was somehow left behind on the device due to previous test failure.\nIf the tast test has \"CreateTestFile \u003d True, KeepFile \u003d False\"\nThe whole if block is not executed and the file will never be deleted.\n\nMove fileNotExist 1 level down will solve it?\nif fileNotExist {\n  testing.ContextLog(ctx, \"Setting up a test file\")\n  if err :\u003d ioutil.WriteFile(testFileLocation, []byte(ExpectedFileContent), 0666); err !\u003d nil {\n    s.Fatalf(\"Failed to create test file %s: %s\", testFileLocation, err)\n  }\n}",
+      "revId": "c377b5ca75f73212270b70626692e697e23a62e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
