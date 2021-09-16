@@ -342,7 +342,7 @@ func Seek(ctx context.Context, s *testing.State) {
 	}
 	defer lacros.CloseLacrosChrome(ctx, l)
 
-	if err := play.TestSeek(ctx, http.FileServer(s.DataFileSystem()), cs, testOpt.filename, testOpt.numSeeks); err != nil {
+	if err := play.TestSeek(ctx, http.FileServer(s.DataFileSystem()), cs, testOpt.filename, s.OutDir(), testOpt.numSeeks); err != nil {
 		s.Fatal("TestSeek failed: ", err)
 	}
 }

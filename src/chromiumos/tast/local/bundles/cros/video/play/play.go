@@ -10,6 +10,7 @@ import (
 	"image"
 	"image/color"
 	"image/png"
+	"math"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -220,26 +221,46 @@ func playDRMVideo(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *
 	return devtools.CheckHWDRMPipeline(ctx, observer, url)
 }
 
-// seekVideoRepeatedly seeks video numSeeks times.
-func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks int) error {
-	ctx, st := timing.Start(ctx, "seek_video_repeatly")
+// seekVideoRepeatedly seeks video numSeeks times, saving some performance
+// metrics (elapsed time, number of completed seeks) in outDir.
+func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, outDir string, numSeeks int) error {
+	ctx, st := timing.Start(ctx, "seek_video_repeatedly")
 	defer st.End()
-	prevFinishedSeeks := 0
+	p := perf.NewValues()
+	startTime := time.Now()
+
+	prevSeekCount := 0
+	seekCount := 0
 	for i := 0; i < numSeeks; i++ {
-		finishedSeeks := 0
-		if err := conn.Call(ctx, &finishedSeeks, "randomSeek"); err != nil {
+		if err := conn.Call(ctx, &seekCount, "randomSeek"); err != nil {
 			// If the test times out, Call() might be interrupted and return
-			// zero finishedSeeks, in that case used the last known good amount.
-			if finishedSeeks == 0 {
-				finishedSeeks = prevFinishedSeeks
+			// zero seekCount, in that case used the last known good amount.
+			if seekCount == 0 {
+				seekCount = prevSeekCount
 			}
-			return errors.Wrapf(err, "error while seeking, completed %d/%d seeks", finishedSeeks, numSeeks)
+			return errors.Wrapf(err, "error while seeking, completed %d/%d seeks", seekCount, numSeeks)
 		}
-		if finishedSeeks == numSeeks {
+		if seekCount == numSeeks {
 			break
 		}
-		prevFinishedSeeks = finishedSeeks
+		prevSeekCount = seekCount
 	}
+
+	elapsed := time.Since(startTime).Seconds()
+	completedSeeks := math.Min(float64(seekCount+1), float64(numSeeks))
+	p.Set(perf.Metric{
+		Name:      "average_seek_time",
+		Unit:      "s",
+		Direction: perf.SmallerIsBetter,
+	}, elapsed/completedSeeks)
+	p.Set(perf.Metric{
+		Name:      "completed_seeks",
+		Unit:      "percent",
+		Direction: perf.BiggerIsBetter,
+	}, float64(100.0*completedSeeks/float64(numSeeks)))
+
+	testing.ContextLog(ctx, p)
+	p.Save(outDir)
 
 	return nil
 }
@@ -249,7 +270,7 @@ func seekVideoRepeatedly(ctx context.Context, conn *chrome.Conn, numSeeks int) e
 // seeking did not succeed for some reason.
 // videoFile is the file name which is played and seeked there.
 // baseURL is the base URL which serves video playback testing webpage.
-func playSeekVideo(ctx context.Context, cs ash.ConnSource, videoFile, baseURL string, numSeeks int) error {
+func playSeekVideo(ctx context.Context, cs ash.ConnSource, videoFile, baseURL, outDir string, numSeeks int) error {
 	ctx, st := timing.Start(ctx, "play_seek_video")
 	defer st.End()
 
@@ -264,7 +285,7 @@ func playSeekVideo(ctx context.Context, cs ash.ConnSource, videoFile, baseURL st
 	if err := conn.Call(ctx, nil, "playRepeatedly", videoFile); err != nil {
 		return err
 	}
-	if err := seekVideoRepeatedly(ctx, conn, numSeeks); err != nil {
+	if err := seekVideoRepeatedly(ctx, conn, outDir, numSeeks); err != nil {
 		return err
 	}
 	return nil
@@ -443,7 +464,7 @@ func TestPlay(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chro
 
 // TestSeek checks that the video file named filename can be seeked around.
 // It will play the video and seek randomly into it numSeeks times.
-func TestSeek(ctx context.Context, httpHandler http.Handler, cs ash.ConnSource, filename string, numSeeks int) error {
+func TestSeek(ctx context.Context, httpHandler http.Handler, cs ash.ConnSource, filename, outDir string, numSeeks int) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		return err
@@ -453,7 +474,7 @@ func TestSeek(ctx context.Context, httpHandler http.Handler, cs ash.ConnSource, 
 	server := httptest.NewServer(httpHandler)
 	defer server.Close()
 
-	if err := playSeekVideo(ctx, cs, filename, server.URL, numSeeks); err != nil {
+	if err := playSeekVideo(ctx, cs, filename, server.URL, outDir, numSeeks); err != nil {
 		return errors.Wrapf(err, "failed to play %v (%v): %v", filename, server.URL, err)
 	}
 	return nil
