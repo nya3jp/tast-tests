@@ -94,6 +94,27 @@ func saveImageAsPng(filename string, img image.Image) error {
 	return png.Encode(w, img)
 }
 
+// GetPrepareFakeAppsOptions calls PrepareFakeApps() and returns options to be
+// used by chrome.New() for logging in with the newly created fake apps. The
+// caller is also responsible for cleaning up the extDirBase which gets created.
+func GetPrepareFakeAppsOptions(numFakeApps int) ([]chrome.Option, string, error) {
+	extDirBase, err := ioutil.TempDir("", "")
+	if err != nil {
+		return nil, extDirBase, errors.Wrap(err, "failed to create tempdir")
+	}
+
+	dirs, err := PrepareFakeApps(extDirBase, numFakeApps, nil)
+	if err != nil {
+		return nil, extDirBase, errors.Wrap(err, "failed to prepare fake apps")
+	}
+
+	opts := make([]chrome.Option, 0, numFakeApps)
+	for _, dir := range dirs {
+		opts = append(opts, chrome.UnpackedExtension(dir))
+	}
+	return opts, extDirBase, nil
+}
+
 // PrepareFakeApps creates directories for num fake apps (hosted apps) under
 // the directory of baseDir and returns their path names. The intermediate
 // data may remain even when an error is returned. It is the caller's
