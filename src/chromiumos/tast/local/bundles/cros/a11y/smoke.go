@@ -38,11 +38,13 @@ func init() {
 			Name:              "lacros",
 			Fixture:           "lacrosUI",
 			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"informational"},
 			Val:               lacros.ChromeTypeLacros,
 		}, {
 			Name:              "lacros_rootfs",
 			Fixture:           "lacrosRootfs",
 			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"informational"},
 			Val:               lacros.ChromeTypeLacros,
 		}},
 	})
