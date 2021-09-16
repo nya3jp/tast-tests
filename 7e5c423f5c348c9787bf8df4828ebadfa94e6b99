@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f57f175_41180015",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-16T06:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8abb4c86_f26f30f5",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d39407c_5585eb05",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "712ac0fd_8ab28e38",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-16T06:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d39407c_5585eb05",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d614b418_06259073",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-09-15T14:26:05Z",
       "side": 1,
       "message": "The call to \u0027NewChromeLogin\u0027 mentions requiring a call to \u0027CloseChrome\u0027 in order to clean up resources. Is there a reason to not call it during this test?",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b31682_3ab2e23b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-16T06:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d614b418_06259073",
       "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aacedf1c_a2e83134",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-16T06:54:14Z",
+      "side": 1,
+      "message": "We are doing any state check, an expected sleep time of 5 seconds is required to perform lid close after login.",
+      "parentUuid": "52903d29_8e85095d",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff184620_88ab4ecf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
         "patchSetId": 1
@@ -99,6 +171,24 @@
       "writtenOn": "2021-09-15T14:26:05Z",
       "side": 1,
       "message": "nit: can the number of iterations (10) be stored as a named constant?",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d676f63f_25675ca6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-16T06:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff184620_88ab4ecf",
       "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -116,6 +206,30 @@
       "writtenOn": "2021-09-16T02:39:49Z",
       "side": 1,
       "message": "Don\u0027t need to cast it twice.",
+      "range": {
+        "startLine": 90,
+        "startChar": 52,
+        "endLine": 90,
+        "endChar": 58
+      },
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9809598_a8855594",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-16T06:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5073bf2_c279e9b5",
       "range": {
         "startLine": 90,
         "startChar": 52,
@@ -166,6 +280,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f641be_c2c09f7a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-16T06:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c5f2789_675a4b99",
+      "range": {
+        "startLine": 91,
+        "startChar": 16,
+        "endLine": 91,
+        "endChar": 27
+      },
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a170a66_a3ca301a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-16T06:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66113b9d_10855b4c",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc26cbad_1d1e0c24",
@@ -179,6 +335,24 @@
       "writtenOn": "2021-09-16T02:39:49Z",
       "side": 1,
       "message": "printing out slpOpSetPre and slpOpSetPost would be useful to me.",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c48d1084_cc13cd98",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-16T06:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc26cbad_1d1e0c24",
       "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -213,6 +387,48 @@
       "writtenOn": "2021-09-16T02:39:49Z",
       "side": 1,
       "message": "ditto. matchSetPost should be checked before accessing it.",
+      "range": {
+        "startLine": 114,
+        "startChar": 17,
+        "endLine": 114,
+        "endChar": 29
+      },
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0884819b_1fa616bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-16T06:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d859155a_63c816c6",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b25558_bd99c832",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-16T06:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "012abb50_648ac486",
       "range": {
         "startLine": 114,
         "startChar": 17,
