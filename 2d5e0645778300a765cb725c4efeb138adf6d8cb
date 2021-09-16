@@ -322,6 +322,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "384120ea_40b171ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/device_params.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T11:00:21Z",
+      "side": 1,
+      "message": "I\u0027m not sure that\u0027s better. DeviceParams don\u0027t apply to the entire request, just 1 RequestApp. A \"func (r *Request) AddRequestApp(d *DeviceParams)\" would work, but that would be a bit unintuitive for a request.\n\nAs mentioned above I could add a function to generate a RequestApp from DeviceParams, but that would not be much better than the existing solution.\n\nIMO we would also need to change GenSP to be consistent.",
+      "parentUuid": "cbbc7129_368a4f34",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 72
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3629477_c90cc48a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/doc.go",
         "patchSetId": 7
@@ -688,6 +712,30 @@
       "side": 1,
       "message": "Did you have chance to upload changes?",
       "parentUuid": "ab0f11ac_4c711132",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 67
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b78b446_dda23b2b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/request.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T11:00:21Z",
+      "side": 1,
+      "message": "Missed 2 of the log statements 😊",
+      "parentUuid": "5ad1bc6e_52517df9",
       "range": {
         "startLine": 49,
         "startChar": 0,
