@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b35acd07_8ff68b4b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-16T08:05:05Z",
+      "side": 1,
+      "message": "Can we remove the original file now?",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 12
+      },
+      "revId": "8771047434abf7450f9c24e4162071345064790e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
