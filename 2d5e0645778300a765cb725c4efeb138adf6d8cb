@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b000519e_c7bc87db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/params.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-16T09:40:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bdf732a8_28f301c5",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c11626f6_af7b069e",
@@ -226,6 +250,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7394d7e3_bf8feae0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/device_params.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-16T09:40:14Z",
+      "side": 1,
+      "message": "I mean that DeviceParams should not know about XML requests. Instead XML request should be created from DeviceParams.",
+      "parentUuid": "c5ac3581_745a51ea",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 72
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3629477_c90cc48a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/doc.go",
         "patchSetId": 7
@@ -261,6 +309,30 @@
       "side": 1,
       "message": "If we ever move this out of the omaha package we should rename it. But I think this makes more sense right now. WDYT?",
       "parentUuid": "e3629477_c90cc48a",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7eccd90_6777df56",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/doc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-16T09:40:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8bd5e8ef_47741224",
       "range": {
         "startLine": 6,
         "startChar": 8,
@@ -496,6 +568,30 @@
       "side": 1,
       "message": "It\u0027s just failed to add extra debug information, it\u0027s not critical.",
       "parentUuid": "3628279f_708b1b95",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 67
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b392461_346d5784",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/request.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-16T09:40:14Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s not critical, but if something will change such errors will be ignored and it might be hard to debug the problem.",
+      "parentUuid": "1e877723_63366653",
       "range": {
         "startLine": 49,
         "startChar": 0,
