@@ -25,8 +25,9 @@ const postTestTimeout = resetTimeout + 20*time.Second
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name: "arcBooted",
-		Desc: "ARC is booted",
+		Name:     "arcBooted",
+		Desc:     "ARC is booted",
+		Contacts: []string{"arc-eng@google.com"},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ARCEnabled()}, nil
 		}),
@@ -38,8 +39,9 @@ func init() {
 
 	// arcBootedWithDisableSyncFlags is a fixture similar to arcBooted. The only difference from arcBooted is that UI Automator is not enabled.
 	testing.AddFixture(&testing.Fixture{
-		Name: "arcBootedWithoutUIAutomator",
-		Desc: "ARC is booted without UI Automator",
+		Name:     "arcBootedWithoutUIAutomator",
+		Desc:     "ARC is booted without UI Automator",
+		Contacts: []string{"arc-eng@google.com"},
 		Impl: NewArcBootedWithoutUIAutomatorFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ARCEnabled()}, nil
 		}),
@@ -51,8 +53,9 @@ func init() {
 
 	// arcBootedWithDisableSyncFlags is a fixture similar to arcBooted. The only difference from arcBooted is that ARC content sync is disabled to avoid noise during power/performance measurements.
 	testing.AddFixture(&testing.Fixture{
-		Name: "arcBootedWithDisableSyncFlags",
-		Desc: "ARC is booted with disabling sync flags",
+		Name:     "arcBootedWithDisableSyncFlags",
+		Desc:     "ARC is booted with disabling sync flags",
+		Contacts: []string{"arc-eng@google.com"},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
@@ -88,8 +91,9 @@ func init() {
 
 	// arcBootedInTabletMode is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched in tablet mode in this fixture.
 	testing.AddFixture(&testing.Fixture{
-		Name: "arcBootedInTabletMode",
-		Desc: "ARC is booted in tablet mode",
+		Name:     "arcBootedInTabletMode",
+		Desc:     "ARC is booted in tablet mode",
+		Contacts: []string{"arc-eng@google.com"},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
@@ -104,8 +108,9 @@ func init() {
 
 	// arcBootedInClamshellMode is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched in clamshell mode in this fixture.
 	testing.AddFixture(&testing.Fixture{
-		Name: "arcBootedInClamshellMode",
-		Desc: "ARC is booted in clamshell mode",
+		Name:     "arcBootedInClamshellMode",
+		Desc:     "ARC is booted in clamshell mode",
+		Contacts: []string{"arc-eng@google.com"},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ARCEnabled(),
@@ -120,8 +125,9 @@ func init() {
 
 	// arcBootedWithVideoLogging is a fixture similar to arcBooted, but with additional Chrome video logging enabled.
 	testing.AddFixture(&testing.Fixture{
-		Name: "arcBootedWithVideoLogging",
-		Desc: "ARC is booted with additional Chrome video logging",
+		Name:     "arcBootedWithVideoLogging",
+		Desc:     "ARC is booted with additional Chrome video logging",
+		Contacts: []string{"arc-eng@google.com"},
 		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs(
 				"--vmodule=" + strings.Join([]string{
@@ -217,11 +223,11 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 	success := false
 
 	var cr *chrome.Chrome
-	var lacrosFixt launcher.FixtData
+	var lacrosFixt launcher.FixtValue
 
 	if f.useParentChrome {
-		lacrosFixt = s.ParentValue().(launcher.FixtData)
-		cr = lacrosFixt.Chrome
+		lacrosFixt = s.ParentValue().(launcher.FixtValue)
+		cr = lacrosFixt.Chrome()
 	} else {
 		opts, err := f.fOpt(ctx, s)
 		if err != nil {
