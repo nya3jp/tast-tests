@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/perappdensity"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
