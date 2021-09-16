@@ -85,6 +85,8 @@ var (
 	PhotoPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\.jpg$`)
 	// VideoPattern is the filename format of videos recorded by CCA.
 	VideoPattern = regexp.MustCompile(`^VID_\d{8}_\d{6}[^.]*\.(mkv|mp4)$`)
+	// GifPattern is the filename format of gif recorded by CCA.
+	GifPattern = regexp.MustCompile(`^VID_\d{8}_\d{6}[^.]*\.gif$`)
 	// PortraitPattern is the filename format of portrait-mode photos taken by CCA.
 	PortraitPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}_COVER.jpg$`)
 	// PortraitRefPattern is the filename format of the reference photo captured in portrait-mode.
@@ -244,6 +246,10 @@ var (
 	// DocumentCornerOverlay is the overlay that CCA used to draw document corners on.
 	DocumentCornerOverlay = UIComponent{"document corner overlay", []string{
 		"#preview-document-corner-overlay"}}
+
+	// GifRecordingOption is the radio button to toggle gif recording option.
+	GifRecordingOption = UIComponent{"gif recording button", []string{
+		"input[type=radio][data-recordtype=gif]"}}
 )
 
 // ResolutionType is different capture resolution type.
@@ -921,6 +927,67 @@ func (a *App) RecordVideo(ctx context.Context, timerState TimerState, duration t
 	return info, err
 }
 
+// RecordGif records a gif with maximal duration and save to default location.
+func (a *App) RecordGif(ctx context.Context) (os.FileInfo, error) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second*10)
+	defer cancel()
+
+	// TODO(b:191950622): Remove logic of enabling gif recording from expert mode after it's formally launched.
+	if _, err := a.ToggleExpertMode(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to enable expert mode")
+	}
+	defer a.ToggleExpertMode(cleanupCtx)
+
+	// toggleGifRecording enables/disables gif recording.
+	toggleGifRecording := func(ctx context.Context) error {
+		if err := MainMenu.Open(ctx, a); err != nil {
+			return err
+		}
+		defer MainMenu.Close(ctx, a)
+
+		if err := ExpertMenu.Open(ctx, a); err != nil {
+			return err
+		}
+		defer ExpertMenu.Close(ctx, a)
+
+		if _, err := a.ToggleEnableGifRecording(ctx); err != nil {
+			return err
+		}
+		return nil
+	}
+	if err := toggleGifRecording(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to enable gif recording")
+	}
+	defer toggleGifRecording(cleanupCtx)
+	if err := a.Click(ctx, GifRecordingOption); err != nil {
+		return nil, errors.Wrap(err, "failed to select gif type recording")
+	}
+
+	// Start recording and wait for taking end.
+	startTime := time.Now()
+	if err := a.ClickShutter(ctx); err != nil {
+		return nil, err
+	}
+	if err := a.WaitForState(ctx, "recording-gif", true); err != nil {
+		return nil, errors.Wrap(err, "gif recording is not started")
+	}
+	if err := a.WaitForState(ctx, "taking", false); err != nil {
+		return nil, errors.Wrap(err, "gif recording is not ended")
+	}
+
+	// Check saved file.
+	dir, err := a.SavedDir(ctx)
+	if err != nil {
+		return nil, err
+	}
+	info, err := a.WaitForFileSaved(ctx, dir, GifPattern, startTime)
+	if err != nil {
+		return nil, errors.Wrap(err, "cannot find result gif")
+	}
+	return info, nil
+}
+
 // savedDir returns the path to the folder where captured files might be saved.
 func savedDir(ctx context.Context, cr *chrome.Chrome) (string, error) {
 	path, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
@@ -1365,6 +1432,11 @@ func (a *App) ToggleCustomVideoParameters(ctx context.Context) (bool, error) {
 // ToggleEnableDocumentMode toggles enable document mode on all cameras and returns whether it's enabled after toggling.
 func (a *App) ToggleEnableDocumentMode(ctx context.Context) (bool, error) {
 	return a.toggleOption(ctx, "enable-document-mode-on-all-cameras", "#expert-enable-document-mode-on-all-cameras")
+}
+
+// ToggleEnableGifRecording toggles enable gif recording option and returns whether it's enabled after toggling.
+func (a *App) ToggleEnableGifRecording(ctx context.Context) (bool, error) {
+	return a.toggleOption(ctx, "enable-gif-recording", "#expert-enable-gif-recording")
 }
 
 // ClickShutter clicks the shutter button.

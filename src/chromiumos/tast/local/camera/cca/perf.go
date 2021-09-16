@@ -107,6 +107,10 @@ func measureUIBehaviors(ctx context.Context, cr *chrome.Chrome, app *App, perfVa
 			return errors.Wrap(err, "failed to measure performance for taking picture")
 		}
 
+		if err := measureGifRecordingPerformance(ctx, app); err != nil {
+			return errors.Wrap(err, "failed to measure performance for taking picture")
+		}
+
 		return nil
 	})
 }
@@ -285,6 +289,22 @@ func measureTakingPicturePerformance(ctx context.Context, app *App) error {
 	}
 
 	if _, err := app.TakeSinglePhoto(ctx, TimerOff); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// measureGifRecordingPerformance records a gif and measure the performance of UI operations.
+func measureGifRecordingPerformance(ctx context.Context, app *App) error {
+	if err := app.WaitForVideoActive(ctx); err != nil {
+		return err
+	}
+	testing.ContextLog(ctx, "Switching to video mode")
+	if err := app.SwitchMode(ctx, Video); err != nil {
+		return err
+	}
+	if _, err := app.RecordGif(ctx); err != nil {
 		return err
 	}
 
