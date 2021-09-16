@@ -68,6 +68,24 @@
       "parentUuid": "1b0d9368_68abdd3c",
       "revId": "2bd7756b79ae7271c5eb80feef8fa1410a48ccf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ffd84f5_4bee9637",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-09-16T15:11:51Z",
+      "side": 1,
+      "message": "Ok well the test still can\u0027t be promoted unless it has passed the last 20 runs. So you can either wait for the familylink.UnicornLogin to pass consistently, or only promote the other three in this CL.",
+      "parentUuid": "c6344c2d_df86471e",
+      "revId": "2bd7756b79ae7271c5eb80feef8fa1410a48ccf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
