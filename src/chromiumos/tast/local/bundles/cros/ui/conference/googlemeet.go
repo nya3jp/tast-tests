@@ -379,30 +379,28 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 	}
 	moreOptions := nodewith.Name("More options").First()
 	menu := nodewith.Name("Call options").Role(role.Menu)
-	changeLayoutButton := nodewith.Name("Change layout").Role(role.MenuItem)
+	changeLayoutItem := nodewith.Name("Change layout").Role(role.MenuItem)
 	changeLayoutPanel := nodewith.Name("Change layout").Role(role.Dialog)
 	closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(changeLayoutPanel)
-	for _, mode := range []string{"Tiled", "Spotlight"} {
-		modeNode := nodewith.Name(mode).Role(role.RadioButton)
-		changeLayout := func(ctx context.Context) error {
-			testing.ContextLog(ctx, "Change layout to ", mode)
-			return uiauto.Combine("change layout to "+mode,
-				cuj.ExpandMenu(conf.tconn, moreOptions, menu, 433),
-				ui.LeftClick(changeLayoutButton),
-				ui.LeftClick(modeNode),
-			)(ctx)
-		}
 
-		if err := uiauto.Combine("change layout",
-			ui.Retry(3, changeLayout),
-			ui.LeftClick(closeButton), // Close the layout panel.
-			ui.Sleep(10*time.Second),  // After applying new layout, give it 10 seconds for viewing before applying next one.
-		)(ctx); err != nil {
-			return err
-		}
+	changeLayout := func(mode string) action.Action {
+		modeNode := nodewith.Name(mode).Role(role.RadioButton)
+		changeLayoutAction := uiauto.Combine("change layout to "+mode,
+			uiauto.NamedAction("click call options", cuj.ExpandMenu(conf.tconn, moreOptions, menu, 433)),
+			uiauto.NamedAction("click change layout item", ui.LeftClick(changeLayoutItem)),
+			uiauto.NamedAction("wait for change layout panel", ui.WaitUntilExists(changeLayoutPanel)),
+			uiauto.NamedAction("click layout "+mode, ui.LeftClick(modeNode)),
+			uiauto.NamedAction("close layout panel", ui.LeftClick(closeButton)),
+		)
+		return uiauto.NamedAction("change layout to "+mode, ui.Retry(3, changeLayoutAction))
 	}
 
-	return nil
+	return uiauto.Combine("change layout",
+		changeLayout("Tiled"),
+		ui.Sleep(10*time.Second), // After applying new layout, give it 10 seconds for viewing before applying next one.
+		changeLayout("Spotlight"),
+		ui.Sleep(10*time.Second), // After applying new layout, give it 10 seconds for viewing before applying next one.
+	)(ctx)
 }
 
 // BackgroundChange will sequentially change the background to blur, sky picture and turn off background effects.
