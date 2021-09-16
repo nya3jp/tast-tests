@@ -244,18 +244,11 @@ func (f *FilesApp) SelectMultipleFiles(kb *input.KeyboardEventWriter, fileList .
 func (f *FilesApp) CreateFolder(kb *input.KeyboardEventWriter, dirName string) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("CreateFolder(%s)", dirName),
 		f.FocusAndWait(nodewith.Role(role.ListBox)),
-		func(ctx context.Context) error {
-			// Press Ctrl+E to create a new folder.
-			return kb.Accel(ctx, "Ctrl+E")
-		},
+		kb.AccelAction("Ctrl+E"), // Press Ctrl+E to create a new folder.
 		// Wait for rename text field.
 		f.WaitUntilExists(nodewith.Role(role.TextField).Editable().Focusable().Focused()),
-		func(ctx context.Context) error {
-			return kb.Type(ctx, dirName)
-		},
-		func(ctx context.Context) error {
-			return kb.Accel(ctx, "Enter")
-		},
+		kb.TypeAction(dirName),
+		kb.AccelAction("Enter"),
 		f.WaitForFile(dirName),
 	)
 }
@@ -279,10 +272,8 @@ func (f *FilesApp) OpenPath(expectedTitle, dirName string, path ...string) uiaut
 func (f *FilesApp) DeleteFileOrFolder(kb *input.KeyboardEventWriter, fileName string) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("DeleteFileOrFolder(%s)", fileName),
 		f.SelectFile(fileName),
-		func(ctx context.Context) error {
-			return kb.Accel(ctx, "Alt+Backspace")
-		},
-		f.LeftClick(nodewith.Name(Delete).ClassName("cr-dialog-ok").Role(role.Button)),
+		kb.AccelAction("Alt+Backspace"),
+		f.LeftClick(nodewith.Name("Delete").ClassName("cr-dialog-ok").Role(role.Button)),
 		f.WaitUntilFileGone(fileName),
 	)
 }
@@ -292,20 +283,10 @@ func (f *FilesApp) DeleteFileOrFolder(kb *input.KeyboardEventWriter, fileName st
 func (f *FilesApp) RenameFile(kb *input.KeyboardEventWriter, oldName, newName string) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("RenameFile(%s, %s)", oldName, newName),
 		f.SelectFile(oldName),
-		func(ctx context.Context) error {
-			// Use Ctrl+Enter enter file rename mode.
-			return kb.Accel(ctx, "Ctrl+Enter")
-		},
-		func(ctx context.Context) error {
-			// Select the entire file name including extension.
-			return kb.Accel(ctx, "Ctrl+A")
-		},
-		func(ctx context.Context) error {
-			return kb.Type(ctx, newName)
-		},
-		func(ctx context.Context) error {
-			return kb.Accel(ctx, "Enter")
-		},
+		kb.AccelAction("Ctrl+Enter"), // Use Ctrl+Enter enter file rename mode.
+		kb.AccelAction("Ctrl+A"),     // Select the entire file name including extension.
+		kb.TypeAction(newName),
+		kb.AccelAction("Enter"),
 		f.WaitForFile(newName),
 	)
 }
@@ -316,12 +297,8 @@ func (f *FilesApp) Search(kb *input.KeyboardEventWriter, searchTerms string) uia
 	return uiauto.Combine(fmt.Sprintf("Search(%s)", searchTerms),
 		f.LeftClick(nodewith.Name("Search").Role(role.Button)),
 		f.WaitUntilExists(nodewith.Name("Search").Role(role.SearchBox)),
-		func(ctx context.Context) error {
-			return kb.Type(ctx, searchTerms)
-		},
-		func(ctx context.Context) error {
-			return kb.Accel(ctx, "Enter")
-		},
+		kb.TypeAction(searchTerms),
+		kb.AccelAction("Enter"),
 		// TODO(b/178020071): Check if waiting for the listbox to stabilize is still required.
 		// It may be possible to ignore this do to always waiting for stability within queries of the new library.
 	)
