@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d608c14_b546646c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db89af14_63c9dd15",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 153
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eac13262_6034fa5f",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f3d8983_1ef9f1c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eac13262_6034fa5f",
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fed61c0_bae189c2",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-09-15T22:30:36Z",
       "side": 1,
       "message": "nit: Move this to ln. 72, closer to where it\u0027s used.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e16777a1_b06b5767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fed61c0_bae189c2",
       "range": {
         "startLine": 40,
         "startChar": 1,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d51772_aafc0447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "737de7a4_7d6b7127",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa41ee2e_54cd251c",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-09-15T22:30:36Z",
       "side": 1,
       "message": "I know of a bug where an audio problem caused the video to play in slow motion and muting the audio made it go back to normal speed.\n\nSo, would it be possible to decrease the volume instead of fully muting? That way it\u0027s more realistic.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c350658_095b6340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa41ee2e_54cd251c",
       "range": {
         "startLine": 48,
         "startChar": 0,
@@ -152,6 +266,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2819685_6ff6cb81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "When these tests are run by the partners/ODMs, they focus on the pass/fail status and seldom check the perf metrics. \n\nIf we observe any frame drops and update them in the perf, the test still passes and we would have missed to notice the issue. Hence we are failing the test when we observe frame drops more than a threshold.",
+      "parentUuid": "64138057_56239d6d",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "002bef76_c1dc1324",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
         "patchSetId": 1
@@ -163,6 +301,30 @@
       "writtenOn": "2021-09-15T22:30:36Z",
       "side": 1,
       "message": "I think these interactions are fine but only make sense to have them if you measure some performance metric while they run, similar to the existing VideoCUJ test [1].\n\n[1] https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/ffc60378ac585ea2fb491b31a835fb8cab1031b0:src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go;l\u003d174-185;drc\u003d04f0942cb0ea8c441ff27df691caf3f5970ec18e",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9080da30_46536a3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "002bef76_c1dc1324",
       "range": {
         "startLine": 84,
         "startChar": 0,
@@ -198,6 +360,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be6b4bcb_cc1a56c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "In L108 we get the device name and device type of the active output node and in L112 we check if device type is matching with INTERNAL_SPEAKER.\n\nIn L119 we parse the audio thread logs and in L124 check if device name is present in those logs.",
+      "parentUuid": "c0a76297_637e2e78",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43edd4e9_026075d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
         "patchSetId": 1
@@ -209,6 +395,30 @@
       "writtenOn": "2021-09-15T22:30:36Z",
       "side": 1,
       "message": "Q",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f0ab63d_70aa93fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43edd4e9_026075d0",
       "range": {
         "startLine": 71,
         "startChar": 4,
@@ -242,6 +452,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc078bd7_757f871a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8603ea82_095289a2",
+      "range": {
+        "startLine": 209,
+        "startChar": 45,
+        "endLine": 209,
+        "endChar": 54
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b59649e1_9a309c75",
@@ -255,6 +489,30 @@
       "writtenOn": "2021-09-15T11:28:03Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 231,
+        "startChar": 45,
+        "endLine": 231,
+        "endChar": 54
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c12f0a0b_8bccd361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b59649e1_9a309c75",
       "range": {
         "startLine": 231,
         "startChar": 45,
@@ -311,6 +569,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02c11d39_5b4e1a0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba5e07e2_7121547e",
+      "range": {
+        "startLine": 343,
+        "startChar": 20,
+        "endLine": 343,
+        "endChar": 41
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "026622d9_eee067a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0773b2d1_d2c3b000",
+      "range": {
+        "startLine": 343,
+        "startChar": 94,
+        "endLine": 343,
+        "endChar": 117
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b96c9903_817b7c55",
@@ -357,6 +663,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71872da6_4acb527f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc326559_7574aabb",
+      "range": {
+        "startLine": 346,
+        "startChar": 94,
+        "endLine": 346,
+        "endChar": 117
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d408ec89_eff0ca26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b96c9903_817b7c55",
+      "range": {
+        "startLine": 346,
+        "startChar": 20,
+        "endLine": 346,
+        "endChar": 41
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13f6d7e1_e1dc45d3",
@@ -380,6 +734,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56ddfa46_d073163c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13f6d7e1_e1dc45d3",
+      "range": {
+        "startLine": 349,
+        "startChar": 44,
+        "endLine": 349,
+        "endChar": 47
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca2e58cd_2bd9f3f7",
@@ -393,6 +771,30 @@
       "writtenOn": "2021-09-15T22:30:36Z",
       "side": 1,
       "message": "\u003d %d",
+      "range": {
+        "startLine": 350,
+        "startChar": 44,
+        "endLine": 350,
+        "endChar": 47
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a65bc72a_870b8053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca2e58cd_2bd9f3f7",
       "range": {
         "startLine": 350,
         "startChar": 44,
@@ -439,6 +841,54 @@
       "writtenOn": "2021-09-15T22:30:36Z",
       "side": 1,
       "message": "%f%%",
+      "range": {
+        "startLine": 359,
+        "startChar": 122,
+        "endLine": 359,
+        "endChar": 124
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f52e5a1_adc28f5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c1506c3_16c12a88",
+      "range": {
+        "startLine": 359,
+        "startChar": 60,
+        "endLine": 359,
+        "endChar": 74
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce7db241_7c0a93e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-16T10:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3a37e8_50108a09",
       "range": {
         "startLine": 359,
         "startChar": 122,
