@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96513afe_853e87f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-09-16T16:38:26Z",
+      "side": 1,
+      "message": "Test failures are related to the chrome uprev. Going to chump",
+      "revId": "28e50f5bf903ca64707dc0e35c7c7a34a0cceea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
