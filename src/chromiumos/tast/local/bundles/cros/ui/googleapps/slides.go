@@ -72,7 +72,7 @@ func NewSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title, cont
 			ui.DoubleClick(textNode),
 			ui.Sleep(time.Second),
 			kb.TypeAction(content),
-			ui.WaitUntilExists(documentSavedState),
+			ui.WithTimeout(30*time.Second).WaitUntilExists(documentSavedState),
 		),
 	)
 }
@@ -91,7 +91,7 @@ func RenameSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title st
 			kb.TypeAction(title),
 			waitForFieldTextToBe(tconn, renameTextbox, title),
 			kb.AccelAction("Enter"),
-			ui.WaitUntilExists(documentSavedState),
+			ui.WithTimeout(30*time.Second).WaitUntilExists(documentSavedState),
 		)),
 	)
 }
@@ -143,7 +143,7 @@ func EditSlideTitle(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title
 			ui.DoubleClick(subtitleNode),
 			ui.Sleep(time.Second),
 			kb.TypeAction(subtitle),
-			ui.WaitUntilExists(documentSavedState),
+			ui.WithTimeout(30*time.Second).WaitUntilExists(documentSavedState),
 		),
 	)
 }
@@ -165,7 +165,7 @@ func EditSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, text, expe
 			kb.TypeAction(expectedText),
 			kb.AccelAction("Esc"),
 			kb.AccelAction("Esc"),
-			ui.WaitUntilExists(documentSavedState),
+			ui.WithTimeout(30*time.Second).WaitUntilExists(documentSavedState),
 		),
 	)
 }
