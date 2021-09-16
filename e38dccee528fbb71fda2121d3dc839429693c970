@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a717771_cf1915cb",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-16T03:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14f8b7bf_11c6347d",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a118c8e3_32e20bbb",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-16T01:07:12Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 11
+      },
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96c4c0e6_d3f6cd9d",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-16T03:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a118c8e3_32e20bbb",
       "range": {
         "startLine": 21,
         "startChar": 4,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc36cb79_d3f7aae0",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-16T03:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00cf26aa_06db8402",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 15
+      },
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89f71631_59069094",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-09-16T01:07:12Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7a1cd30_a5a43d96",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-16T03:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89f71631_59069094",
       "range": {
         "startLine": 27,
         "startChar": 4,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "130e0064_3b0158a1",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-16T03:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4149b096_b8dcb398",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9227ae2c_e3102eb2",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-09-16T01:07:58Z",
       "side": 1,
       "message": "*The finder is",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 12
+      },
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b80d29_5d0efeee",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-16T03:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9227ae2c_e3102eb2",
       "range": {
         "startLine": 57,
         "startChar": 3,
@@ -175,6 +319,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db7ce7e8_904cb102",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-16T03:34:28Z",
+      "side": 1,
+      "message": "Yes, that\u0027s right.\nI\u0027m planning to remove the ui dependency in ui/quicksettings with this patch first, then migrate with another patch.",
+      "parentUuid": "f7527bbb_ba7daef3",
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "927396a4_11b08b4e",
         "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
         "patchSetId": 3
@@ -186,6 +348,30 @@
       "writtenOn": "2021-09-16T01:07:58Z",
       "side": 1,
       "message": "nit: could this be condensed to just `return uiauto.New(tconn).IsNodeFound(...)`?",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 48
+      },
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b7c4b62_62681acd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-16T03:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "927396a4_11b08b4e",
       "range": {
         "startLine": 78,
         "startChar": 1,
@@ -209,6 +395,30 @@
       "writtenOn": "2021-09-16T01:07:58Z",
       "side": 1,
       "message": "with uiauto, you don\u0027t need to use a regex for partial name matching anymore. you can instead use nodewith.NameContaining\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;l\u003d526-534\n\nthen, this function can just return a *nodewith.Finder (which will make call sites a lot cleaner too!)",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 76
+      },
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "974b741f_506028ce",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-16T03:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2778132_37e2f479",
       "range": {
         "startLine": 153,
         "startChar": 1,
