@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aebce890_080683d3",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-16T18:13:03Z",
+      "side": 1,
+      "message": "Wouldn\u0027t this fail if the lsb wasn\u0027t found on the image?",
+      "revId": "e107c3db67bd7ef63c16262cdc8bec9c52f96018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
