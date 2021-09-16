@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "760ac918_3d9efe93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-16T12:13:30Z",
+      "side": 1,
+      "message": "This part is temporarily removed from patch set 3. My thought is to break the problem into smaller ones, and focus on the ChromeEC devices first. Once I have manually tested on the Wilco device, I\u0027ll add the relevant codes back to address the case for Wilco devices.",
+      "parentUuid": "84081737_7104079b",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 4
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3745faa_3e954543",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-13T18:15:41Z",
       "side": 1,
       "message": "This is a bit difficult to follow. I would move most of this to a function, i.e.\n\n// Test with lid open\ndoTest(ctx, s, true)\n\n// Test witl lid closed\ndoTest(ctx, s, false)\n\nor something like that.\n\nOr use a style like\n\nfor _, tc :\u003d range []struct {\n\tlidOpen     bool\n}{\n\t{servo.Yes}, \n\t{servo.No},\n} {\n\th.Servo.SetStringAndCheck(ctx, servo.LidOpen, tc.lidOpen)\n\t// test code, etc\n}",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 54
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b2e212_574b854f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-16T12:13:30Z",
+      "side": 1,
+      "message": "I\u0027ve edited the style, and moved connect-power/disconnect-power and their respective verifications into a function.",
+      "parentUuid": "d3745faa_3e954543",
       "range": {
         "startLine": 58,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "397dd1ed_1b08d5e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-16T12:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "109336c3_e1851bd5",
+      "range": {
+        "startLine": 65,
+        "startChar": 60,
+        "endLine": 65,
+        "endChar": 63
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02fb6d93_6a9f41b3",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-09-13T18:15:41Z",
       "side": 1,
       "message": "h.SetDUTPower() is like this, but it also handles DUTs in the lab which don\u0027t have servo_v4s. See deep_sleep.go where I used it there.",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 3
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d40a55_6a3f8524",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-16T12:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02fb6d93_6a9f41b3",
       "range": {
         "startLine": 77,
         "startChar": 2,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee464a2b_1f0e8581",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-16T12:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd788be3_afd29211",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3b2184c_e30995ed",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-09-13T18:15:41Z",
       "side": 1,
       "message": "Hibernation turns out to be complicated, so I created h.Servo.ECHibernate() to handle those extra complications.",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 4
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "561bfc4c_07c0ae7a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-16T12:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3b2184c_e30995ed",
       "range": {
         "startLine": 104,
         "startChar": 3,
@@ -181,6 +325,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08f25253_f8d65ff0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-16T12:13:30Z",
+      "side": 1,
+      "message": "Please correct me if I\u0027ve misunderstood. But, I\u0027m currently implementing the statement to use long power key press instead of EC hibernation, when lid is closed, and h.Servo.PreferDebugHeader() returns false. For now, this is also under the assumption that a ChromeEC device is present.",
+      "parentUuid": "017746f8_729e36ba",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 3
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "997be2b6_e75deb46",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
         "patchSetId": 1
@@ -192,6 +360,30 @@
       "writtenOn": "2021-09-13T18:15:41Z",
       "side": 1,
       "message": "For lid closed, I think we want to verify that the power state is still G3.",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 13
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "500f2f6b_56677496",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-16T12:13:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "997be2b6_e75deb46",
       "range": {
         "startLine": 139,
         "startChar": 2,
