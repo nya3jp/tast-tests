@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8af3c758_0d962cb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-09-16T05:20:53Z",
+      "side": 1,
+      "message": "Let\u0027s pick a better name :)",
+      "range": {
+        "startLine": 71,
+        "startChar": 92,
+        "endLine": 71,
+        "endChar": 121
+      },
+      "revId": "5d8b0005c64152dcdde1ac5cb300a9e8237cdc3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "696bee2f_0eea9ad4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-09-16T05:20:53Z",
+      "side": 1,
+      "message": "Do we need to check screenRecorder is valid before calling this? How about calling  s.Fatal if screenrecorder creation failed?",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 43
+      },
+      "revId": "5d8b0005c64152dcdde1ac5cb300a9e8237cdc3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
