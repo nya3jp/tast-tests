@@ -48,7 +48,7 @@ func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Expanded Application list view: ", err)
 	}
 
-	if err := launcher.CreateFolder(ctx, tconn)(ctx); err != nil {
+	if err := launcher.CreateFolder(ctx, tconn); err != nil {
 		s.Fatal("Failed to create folder app: ", err)
 	}
 

@@ -182,14 +182,50 @@ func RenameFolder(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, from, t
 	)
 }
 
-// CreateFolder is a helper function to create a folder by dragging the first icon on top of the second icon.
-func CreateFolder(ctx context.Context, tconn *chrome.TestConn) uiauto.Action {
-	// Create a folder in launcher by dragging the first icon on top of the second icon.
+// CreateFolder is a helper function to create a folder by dragging the first non-folder item on top of the second non-folder item.
+func CreateFolder(ctx context.Context, tconn *chrome.TestConn) error {
+	firstItem := -1
+	secondItem := -1
+
+	// Get the index of the first non-folder item.
+	for {
+		firstItem++
+		item := nodewith.ClassName(ExpandedItemsClass).Nth(firstItem)
+
+		isFolder, err := IsFolderItem(ctx, tconn, item)
+		if err != nil {
+			return errors.Wrap(err, "failed to check if item is a folder")
+		}
+		if !isFolder {
+			break
+		}
+	}
+
+	// Get the index of the second non-folder item.
+	secondItem = firstItem
+	for {
+		secondItem++
+		item := nodewith.ClassName(ExpandedItemsClass).Nth(secondItem)
+
+		isFolder, err := IsFolderItem(ctx, tconn, item)
+		if err != nil {
+			return errors.Wrap(err, "failed to check if item is a folder")
+		}
+		if !isFolder {
+			break
+		}
+	}
+
+	if err := DragIconToIcon(tconn, secondItem, firstItem)(ctx); err != nil {
+		return errors.Wrap(err, "failed to drag icon over another icon")
+	}
+
 	ui := uiauto.New(tconn)
-	return uiauto.Combine("createFolder",
-		DragIconToIcon(tconn, 1, 0),
-		ui.WaitUntilExists(UnnamedFolderFinder),
-	)
+	if err := ui.WaitUntilExists(UnnamedFolderFinder)(ctx); err != nil {
+		return errors.Wrap(err, "failed to find the unnamed folder")
+	}
+
+	return nil
 }
 
 // DragIconToIcon drags from one icon to another icon.
