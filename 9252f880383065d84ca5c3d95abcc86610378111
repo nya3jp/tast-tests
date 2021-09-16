@@ -34,6 +34,24 @@
       "parentUuid": "b5962616_c1a84cdc",
       "revId": "9252f880383065d84ca5c3d95abcc86610378111",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b74e48a4_f7e60fd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2021-09-16T05:53:30Z",
+      "side": 1,
+      "message": "I\u0027m not a test owner, you need someone from tast-owners@google.com to +2",
+      "parentUuid": "e87d1e9d_b982f386",
+      "revId": "9252f880383065d84ca5c3d95abcc86610378111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
