@@ -6,6 +6,7 @@ package reporters
 
 import (
 	"context"
+	"strconv"
 	"strings"
 	"time"
 
@@ -16,6 +17,7 @@ import (
 type Event struct {
 	Timestamp time.Time
 	Message   string
+	Index     int
 }
 
 // EventlogList returns the result of `mosys eventlog list`.
@@ -31,28 +33,41 @@ func (r *Reporter) EventlogList(ctx context.Context) ([]Event, error) {
 	}
 	const timeFmt = "2006-01-02 15:04:05"
 	var events []Event
+	// Expecting output similar to this one:
+	//  140 | 2021-09-20 15:11:55 | EC Event | Key Pressed
+	//  141 | 2021-09-20 15:13:30 | System boot | 45
+	//  142 | 2021-09-20 15:13:30 | System Reset
 	for _, line := range output {
 		split := strings.SplitN(line, " | ", 3)
 		if len(split) < 3 {
 			return []Event{}, errors.Errorf("eventlog entry had fewer than 3 ' | ' delimiters: %q", line)
 		}
-		timestamp, err := time.Parse(timeFmt, split[1])
-		if err != nil {
-			return []Event{}, err
+		var timestamp time.Time
+		// If the timestamp is missing, it is printed at 2000-00-00 00:00:00, but that is not a valid date and can't be parsed.
+		if split[1] != "2000-00-00 00:00:00" {
+			timestamp, err = time.Parse(timeFmt, split[1])
+			if err != nil {
+				return []Event{}, err
+			}
 		}
 		if timestamp.After(now) {
 			return []Event{}, errors.Errorf("event occurred later than current DUT time: now=%s; event=%s", now, line)
 		}
+		index, err := strconv.ParseInt(split[0], 10, 0)
+		if err != nil {
+			return []Event{}, errors.Errorf("failed to parse index %q", split[0])
+		}
 		events = append(events, Event{
 			Timestamp: timestamp,
 			Message:   split[2],
+			Index:     int(index),
 		})
 	}
 	return events, nil
 }
 
-// EventlogListSince returns a list of events that occurred at or after a specified time.
-func (r *Reporter) EventlogListSince(ctx context.Context, cutoffTime time.Time) ([]Event, error) {
+// EventlogListAfter returns a list of events that occurred after a given index.
+func (r *Reporter) EventlogListAfter(ctx context.Context, previousEvent Event) ([]Event, error) {
 	events, err := r.EventlogList(ctx)
 	if err != nil {
 		return []Event{}, errors.Wrap(err, "reporting events")
@@ -60,7 +75,7 @@ func (r *Reporter) EventlogListSince(ctx context.Context, cutoffTime time.Time) 
 	// EventlogList reports events from oldest to newest.
 	// Iterate through the events in reverse order to return only the newest ones.
 	for i := len(events) - 1; i > 0; i-- {
-		if events[i].Timestamp.Before(cutoffTime) {
+		if events[i].Timestamp.Before(previousEvent.Timestamp) || (events[i].Timestamp.Equal(previousEvent.Timestamp) && events[i].Index <= previousEvent.Index) {
 			return events[i+1:], nil
 		}
 	}
