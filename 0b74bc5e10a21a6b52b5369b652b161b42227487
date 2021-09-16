@@ -16,6 +16,46 @@
       "message": "@Pin-chin Lin, @Cheng-Yi Chiang,\nI\u0027d like to check this patch with audio.UIInput.mute, however I found that the test fails without my changing codes.\nCould you please test if the changes I made to func:micToggleButton and func:MicEnabled work? Thank you.",
       "revId": "0b74bc5e10a21a6b52b5369b652b161b42227487",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa0e790_1a8ba598",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T03:54:23Z",
+      "side": 1,
+      "message": "LGTM, thanks again!",
+      "revId": "0b74bc5e10a21a6b52b5369b652b161b42227487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7cdff2_752de7fd",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T03:54:23Z",
+      "side": 1,
+      "message": "you don\u0027t need to return an error here anymore",
+      "range": {
+        "startLine": 142,
+        "startChar": 58,
+        "endLine": 142,
+        "endChar": 63
+      },
+      "revId": "0b74bc5e10a21a6b52b5369b652b161b42227487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
