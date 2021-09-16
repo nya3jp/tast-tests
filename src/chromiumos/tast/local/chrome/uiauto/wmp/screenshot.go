@@ -18,6 +18,26 @@ import (
 	"chromiumos/tast/testing"
 )
 
+var (
+	// Screenshot is the button of Screenshot of screenshot window.
+	screenshot = nodewith.Name("Screenshot").HasClass("CaptureModeToggleButton").Role(role.ToggleButton)
+
+	// ScreenRecord is the button of Screen Record of screenshot window.
+	screenRecord = nodewith.Name("Screen record").HasClass("CaptureModeToggleButton").Role(role.ToggleButton)
+
+	// FullScreenshot is the button of taking Full Screen Screenshot of screenshot window.
+	fullScreenshot = nodewith.Name("Take full screen screenshot").HasClass("CaptureModeToggleButton").Role(role.ToggleButton)
+
+	// PartialScreenshot is the button of taking Partial Screen Screenshot of screenshot window.
+	partialScreenshot = nodewith.Name("Take partial screenshot").HasClass("CaptureModeToggleButton").Role(role.ToggleButton)
+
+	// WindowScreenshot is the button of taking Window Screen Screenshot of screenshot window.
+	windowScreenshot = nodewith.Name("Take window screenshot").HasClass("CaptureModeToggleButton").Role(role.ToggleButton)
+
+	// CloseScreenShot is the button of leaving screenshot window.
+	closeScreenShot = nodewith.Name("Close").HasClass("CaptureModeButton").Role(role.Button)
+)
+
 type screenshotType int
 
 const (
@@ -51,14 +71,14 @@ func CaptureScreenshot(tconn *chrome.TestConn, sst screenshotType) action.Action
 
 		switch sst {
 		case FullScreen:
-			if err := takeFullScreenshot(tconn)(ctx); err != nil {
+			if err := takeFullScreenshot(ui)(ctx); err != nil {
 				return err
 			}
 		default:
 			return errors.New("unknown screenshot type")
 		}
 
-		if err := screenshotTaken(tconn)(ctx); err != nil {
+		if err := screenshotTaken(ui)(ctx); err != nil {
 			return errors.Wrap(err, "failed to check the screenshot taken")
 		}
 
@@ -66,17 +86,21 @@ func CaptureScreenshot(tconn *chrome.TestConn, sst screenshotType) action.Action
 	}
 }
 
+// QuitScreenshot quits from screenshot mode.
+func QuitScreenshot(ui *uiauto.Context) action.Action {
+	return ui.IfSuccessThen(ui.WaitUntilExists(closeScreenShot), ui.LeftClick(closeScreenShot))
+}
+
 func ensureInScreenCaptureMode(ctx context.Context, tconn *chrome.TestConn) error {
 	ui := uiauto.New(tconn)
 	// To make sure "Screen capture" is launched correctly, verify the existence of these buttons.
 	for _, btn := range []*nodewith.Finder{
-		nodewith.Role(role.ToggleButton).Name("Screenshot"),
-		nodewith.Role(role.ToggleButton).Name("Screen record"),
-		nodewith.Role(role.ToggleButton).Name("Take full screen screenshot"),
-		nodewith.Role(role.ToggleButton).Name("Take partial screenshot"),
-		nodewith.Role(role.ToggleButton).Name("Take window screenshot"),
-		nodewith.Role(role.ToggleButton).Name("Settings"),
-		nodewith.Role(role.Button).Name("Close"),
+		screenshot,
+		screenRecord,
+		fullScreenshot,
+		partialScreenshot,
+		windowScreenshot,
+		closeScreenShot,
 	} {
 		if err := ui.WaitUntilExists(btn)(ctx); err != nil {
 			return err
@@ -87,9 +111,7 @@ func ensureInScreenCaptureMode(ctx context.Context, tconn *chrome.TestConn) erro
 }
 
 // takeFullScreenshot takes full screenshot by "Screen capture" in the quick settings.
-func takeFullScreenshot(tconn *chrome.TestConn) action.Action {
-	ui := uiauto.New(tconn)
-
+func takeFullScreenshot(ui *uiauto.Context) action.Action {
 	return uiauto.Combine("take full screenshot",
 		ui.LeftClick(nodewith.Role(role.ToggleButton).Name("Screenshot")),
 		ui.LeftClick(nodewith.Role(role.ToggleButton).Name("Take full screen screenshot")),
@@ -99,7 +121,6 @@ func takeFullScreenshot(tconn *chrome.TestConn) action.Action {
 }
 
 // screenshotTaken checks the screenshot taken by the popup text "Screenshot taken".
-func screenshotTaken(tconn *chrome.TestConn) action.Action {
-	ui := uiauto.New(tconn)
+func screenshotTaken(ui *uiauto.Context) action.Action {
 	return ui.WaitUntilExists(nodewith.Role(role.StaticText).Name("Screenshot taken"))
 }
