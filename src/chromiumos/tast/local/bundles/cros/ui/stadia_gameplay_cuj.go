@@ -70,12 +70,18 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 
 	var cs ash.ConnSource
 	var cr *chrome.Chrome
+	var bTconn *chrome.TestConn
 
 	if useLacros {
 		cr = s.FixtValue().(launcher.FixtData).Chrome
 	} else {
 		cr = s.FixtValue().(cuj.FixtureData).Chrome
 		cs = cr
+
+		var err error
+		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get TestAPIConn: ", err)
+		}
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -93,6 +99,10 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer l.Close(ctx)
 		cs = l
+
+		if bTconn, err = l.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get lacros TestAPIConn: ", err)
+		}
 	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
@@ -121,9 +131,9 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		screenRecorder.Start(ctx, tconn)
 	}
 
-	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfig(
+	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfigWithTestConn(
 		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-		"percent", perf.SmallerIsBetter, []int64{50, 80})}
+		"percent", perf.SmallerIsBetter, []int64{50, 80}, bTconn)}
 
 	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
 	if err != nil {

@@ -95,10 +95,16 @@ func waitUntilAllTabsLoaded(ctx context.Context, tconn *chrome.TestConn, timeout
 func Run(ctx context.Context, s *testing.State) {
 	var cr *chrome.Chrome
 	var cs ash.ConnSource
+	var bTconn *chrome.TestConn
 
 	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeChromeOS {
 		cr = s.PreValue().(*chrome.Chrome)
 		cs = cr
+
+		var err error
+		if bTconn, err = cr.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get TestAPIConn: ", err)
+		}
 	} else {
 		var l *launcher.LacrosChrome
 		var err error
@@ -107,6 +113,10 @@ func Run(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to initialize test: ", err)
 		}
 		defer lacros.CloseLacrosChrome(ctx, l)
+
+		if bTconn, err = l.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get lacros TestAPIConn: ", err)
+		}
 	}
 
 	// Shorten context a bit to allow for cleanup.
@@ -137,8 +147,9 @@ func Run(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, cr, cuj.NewCustomMetricConfig(
-		"MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter, []int64{800, 1600}))
+	recorder, err := cuj.NewRecorder(ctx, cr, cuj.NewCustomMetricConfigWithTestConn(
+		"MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter,
+		[]int64{800, 1600}, bTconn))
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
