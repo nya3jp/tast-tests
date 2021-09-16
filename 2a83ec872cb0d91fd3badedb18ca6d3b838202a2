@@ -190,6 +190,30 @@
       },
       "revId": "2a83ec872cb0d91fd3badedb18ca6d3b838202a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73dab0d6_0c677475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/drivefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-16T01:08:05Z",
+      "side": 1,
+      "message": "Implemented slightly modified version of Option 2. Please check.",
+      "parentUuid": "5d4272cc_66dd86d8",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "revId": "2a83ec872cb0d91fd3badedb18ca6d3b838202a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
