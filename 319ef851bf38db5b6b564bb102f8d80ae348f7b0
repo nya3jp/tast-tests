@@ -1,0 +1,285 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfa5f483_c6593a6b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T21:45:47Z",
+      "side": 1,
+      "message": "local variables are considered unexported. Thus lower-case.\nAnd ditto to other local variables in the function.\n\nhttps://g3doc.corp.google.com/go/g3doc/style/guide.md?cl\u003dhead#mixed-caps",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06bdfacd_0123c3a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T21:45:47Z",
+      "side": 1,
+      "message": "Leave some time for the cleanup function to restore lid_open state.\n\nExample.\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/my_files.go;l\u003d85;rcl\u003d2886f262c0388bed371036cc43e80869fb96ba72",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a0a155_c57ebdfa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T21:45:47Z",
+      "side": 1,
+      "message": "Super optional, \ntestexec.DumpLogOnError can be added to have more logs if something fails.",
+      "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "582d5602_413f05e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T21:45:47Z",
+      "side": 1,
+      "message": "if matchSetPre \u003d\u003d nil",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f306a11_44de53d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T21:45:47Z",
+      "side": 1,
+      "message": "pkgOpSetOutput",
+      "range": {
+        "startLine": 94,
+        "startChar": 52,
+        "endLine": 94,
+        "endChar": 55
+      },
+      "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a35513f8_8dfcf432",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T21:45:47Z",
+      "side": 1,
+      "message": "Failed to wait DUT to become unreachable:",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 34
+      },
+      "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53989d40_7fb338ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T21:45:47Z",
+      "side": 1,
+      "message": "super nit. How about adding respective \"Closing lid\" log messages?",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 22
+      },
+      "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b650a3_0aa70a44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T21:45:47Z",
+      "side": 1,
+      "message": "Output the value of slpOpsetPost for future debugging.",
+      "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec562aab_f24551ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T21:45:47Z",
+      "side": 1,
+      "message": "no need to double cast pkgOpSetPostOutput, it is already a string.",
+      "range": {
+        "startLine": 118,
+        "startChar": 59,
+        "endLine": 118,
+        "endChar": 60
+      },
+      "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "834f4fc9_97358c51",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T21:45:47Z",
+      "side": 1,
+      "message": "matchSetPost \u003d\u003d nil",
+      "range": {
+        "startLine": 119,
+        "startChar": 5,
+        "endLine": 119,
+        "endChar": 27
+      },
+      "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13889c27_5da7b0ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T21:45:47Z",
+      "side": 1,
+      "message": "pkgOpSetOutput",
+      "range": {
+        "startLine": 120,
+        "startChar": 53,
+        "endLine": 120,
+        "endChar": 56
+      },
+      "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed2982f1_d48a6827",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T21:45:47Z",
+      "side": 1,
+      "message": "Output both pkgOpsetPre and pkgOpSetPost for future debugging.",
+      "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae7abf4f_811b9666",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T21:45:47Z",
+      "side": 1,
+      "message": "Out of curiosity, should we check pkgOpSetPre as well?",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 17
+      },
+      "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
