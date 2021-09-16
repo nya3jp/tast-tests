@@ -133,7 +133,7 @@ func runningPackages(ctx context.Context, a *arc.ARC) (map[string]struct{}, erro
 type FixtureData struct {
 	Chrome     *chrome.Chrome
 	ARC        *arc.ARC
-	LacrosFixt launcher.FixtData
+	LacrosFixt launcher.FixtValue
 }
 
 type loggedInToCUJUserFixture struct {
@@ -151,11 +151,11 @@ type loggedInToCUJUserFixture struct {
 
 func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	var cr *chrome.Chrome
-	var lacrosFixt launcher.FixtData
+	var lacrosFixt launcher.FixtValue
 
 	if s.ParentValue() != nil {
-		lacrosFixt = s.ParentValue().(launcher.FixtData)
-		cr = lacrosFixt.Chrome
+		lacrosFixt = s.ParentValue().(launcher.FixtValue)
+		cr = lacrosFixt.Chrome()
 		f.useParentChrome = true
 	} else {
 		func() {

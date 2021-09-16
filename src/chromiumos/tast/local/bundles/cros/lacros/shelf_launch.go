@@ -47,8 +47,8 @@ func init() {
 }
 
 func ShelfLaunch(ctx context.Context, s *testing.State) {
-	f := s.FixtValue().(launcher.FixtData)
-	tconn, err := f.Chrome.TestAPIConn(ctx)
+	f := s.FixtValue().(launcher.FixtValue)
+	tconn, err := f.Chrome().TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
@@ -112,7 +112,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Connecting to the lacros-chrome browser")
-	l, err := launcher.ConnectToLacrosChrome(ctx, f.LacrosPath, launcher.LacrosUserDataDir)
+	l, err := launcher.ConnectToLacrosChrome(ctx, f.LacrosPath(), launcher.LacrosUserDataDir)
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
 	}
