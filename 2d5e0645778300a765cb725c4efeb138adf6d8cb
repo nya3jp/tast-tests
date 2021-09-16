@@ -274,6 +274,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e078c2c2_c3671c9a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/device_params.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T09:56:01Z",
+      "side": 1,
+      "message": "I\u0027m still not sure I understand the problem. This is function that does the xml generation from DeviceParams. I could move it to be a global function, but it would still do the same thing.\n\nIt\u0027s not possible to generate the entire request from device params as that will be test specific.",
+      "parentUuid": "7394d7e3_bf8feae0",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 72
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3629477_c90cc48a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/doc.go",
         "patchSetId": 7
@@ -592,6 +616,30 @@
       "side": 1,
       "message": "Yeah, it\u0027s not critical, but if something will change such errors will be ignored and it might be hard to debug the problem.",
       "parentUuid": "1e877723_63366653",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 67
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab0f11ac_4c711132",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/request.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T09:56:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b392461_346d5784",
       "range": {
         "startLine": 49,
         "startChar": 0,
