@@ -9,6 +9,7 @@ package tabswitchcuj
 
 import (
 	"context"
+	"fmt"
 	"math/rand"
 	"strings"
 	"time"
@@ -114,52 +115,29 @@ func (tab *chromeTab) searchElementWithPatternAndClick(ctx context.Context, patt
 	}
 	testing.ContextLogf(ctx, "Current URL: %q", tab.url)
 
-	// Find the desired link and trigger navigation by clicking the link.
-	// The link might have parameters or tokens. Find the element by matching with pattern (CSS selector, not
-	// regular expression).
-	//
-	// TODO(crbug.com/1193417): remove setTimeout() after the bug is fixed.
-	// Click on a link will trigger navigation immediately. If the page is navigated before the CDP returns,
-	// the JSObject won't be able to release, and an error will be returned. Therefore timeout is used to
-	// allow CDP return and object release before clicking the link.
-	//
-	// Use 3000 milliseconds timeout value before clicking anchor (bug: https://issuetracker.google.com/185467835).
-	script := `(pattern) => {
-			const name = "a[href*='" + pattern + "']";
-			const els = document.querySelectorAll(name);
-			if (els.length === 0) return false;
-			setTimeout(() => { els[0].click(); }, 3000);
-			return true;
-		}`
+	script := fmt.Sprintf(`() => {
+		if (window.location.href !== '%s') {
+			return true
+		}
+		const pattern = '%s';
+		const name = "a[href*='" + pattern + "']";
+		const els = document.querySelectorAll(name);
+		if (els.length > 0) els[0].click();
+		return false;
+	}`, tab.url, pattern)
 
-	// In Case of the page is still loading and the element is not shown, here use polling to call the script
+	timeout := 90 * time.Second
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var done bool
-		if err := tab.conn.Call(ctx, &done, script, pattern); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to search and click on an element"))
+		done := false
+		if err := tab.conn.Call(ctx, &done, script); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to execute JavaScript query to click HTML link to navigate"))
 		}
 		if !done {
-			return errors.New("element not found")
+			return errors.New("has not clicked HTML link and navigate")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: time.Minute, Interval: 5 * time.Second}); err != nil {
-		return errors.Wrapf(err, "failed to find and click HTML element with pattern [%s] within %v", pattern, time.Minute)
-	}
-
-	// Navigation does not happen instantly. Use poll to detect whether it has been navigated to new URL.
-	pollOpts := testing.PollOptions{Timeout: 30 * time.Second, Interval: 500 * time.Millisecond}
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var urlAfter string
-		if err := tab.conn.Eval(ctx, "window.location.href", &urlAfter); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to get URL"))
-		}
-		if urlAfter == tab.url {
-			return errors.New("page has not navigated")
-		}
-		tab.url = urlAfter
-		return nil
-	}, &pollOpts); err != nil {
-		return errors.Wrapf(err, "failed to wait for web page been navigated within %v", pollOpts.Timeout)
+	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
+		return errors.Wrapf(err, "failed to click HTML element and navigate within %v", timeout)
 	}
 
 	testing.ContextLogf(ctx, "HTML element clicked [%s], page navigates to: %q", pattern, tab.url)
