@@ -41,6 +41,7 @@ const (
 	TelemCategoryBootPerformance   TelemCategory = "boot_performance"
 	TelemCategoryCPU               TelemCategory = "cpu"
 	TelemCategoryFan               TelemCategory = "fan"
+	TelemCategoryGraphics          TelemCategory = "graphics"
 	TelemCategoryMemory            TelemCategory = "memory"
 	TelemCategoryNetwork           TelemCategory = "network"
 	TelemCategoryStatefulPartition TelemCategory = "stateful_partition"
