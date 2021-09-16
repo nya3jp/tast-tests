@@ -22,6 +22,29 @@
       },
       "revId": "471d598005ac120d68e404929ab0314cf19dd18a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16dc7156_7f89df2f",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-16T22:57:30Z",
+      "side": 1,
+      "message": "I\u0027m not sure why this can keep the same signature.\nIn ui/mouse the signature is\nfunc Drag(ctx context.Context, tconn *chrome.TestConn, start, end coords.Point, duration time.Duration) error\n, but in uiauto/mouse, it\u0027s\nfunc Drag(tconn *chrome.TestConn, start, end coords.Point, duration time.Duration) func(ctx context.Context) error\n\nCould you confirm this file compiles?",
+      "range": {
+        "startLine": 511,
+        "startChar": 14,
+        "endLine": 511,
+        "endChar": 18
+      },
+      "revId": "471d598005ac120d68e404929ab0314cf19dd18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
