@@ -131,6 +131,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48bd4268_22537185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-16T20:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85f3ddb9_23f7a0dc",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "a910c271c93ed4b6141df520749a00440f63f9d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ba3db5d_bab93d38",
