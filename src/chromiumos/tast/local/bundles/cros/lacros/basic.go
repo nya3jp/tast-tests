@@ -63,10 +63,10 @@ func Basic(ctx context.Context, s *testing.State) {
 
 		// Also check the dearchived files.
 		run(filepath.Join(s.OutDir(), "lacros-ls.txt"),
-			"ls", "-l", s.FixtValue().(launcher.FixtData).LacrosPath)
+			"ls", "-l", s.FixtValue().(launcher.FixtValue).LacrosPath())
 	}()
 
-	l, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData))
+	l, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtValue))
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}

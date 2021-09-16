@@ -43,7 +43,7 @@ func Setup(ctx context.Context, f interface{}, crt ChromeType) (*chrome.Chrome, 
 	case ChromeTypeChromeOS:
 		return cr, nil, cr, nil
 	case ChromeTypeLacros:
-		f := f.(launcher.FixtData)
+		f := f.(launcher.FixtValue)
 		l, err := launcher.LaunchLacrosChrome(ctx, f)
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
@@ -59,8 +59,8 @@ func GetChrome(ctx context.Context, f interface{}) (*chrome.Chrome, error) {
 	switch f.(type) {
 	case *chrome.Chrome:
 		return f.(*chrome.Chrome), nil
-	case launcher.FixtData:
-		return f.(launcher.FixtData).Chrome, nil
+	case launcher.FixtValue:
+		return f.(launcher.FixtValue).Chrome(), nil
 	default:
 		return nil, errors.Errorf("unrecognized FixtValue type: %v", f)
 	}
@@ -95,7 +95,7 @@ func FindFirstNonBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash
 }
 
 // ShelfLaunch launches lacros-chrome via shelf.
-func ShelfLaunch(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData) (*launcher.LacrosChrome, error) {
+func ShelfLaunch(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtValue) (*launcher.LacrosChrome, error) {
 	const newTabTitle = "New Tab"
 
 	// Ensure shelf is visible in case of tablet mode.
@@ -113,7 +113,7 @@ func ShelfLaunch(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtDat
 		return nil, errors.Wrap(err, "failed to wait for lacros")
 	}
 
-	l, err := launcher.ConnectToLacrosChrome(ctx, f.LacrosPath, launcher.LacrosUserDataDir)
+	l, err := launcher.ConnectToLacrosChrome(ctx, f.LacrosPath(), launcher.LacrosUserDataDir)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to lacros")
 	}
