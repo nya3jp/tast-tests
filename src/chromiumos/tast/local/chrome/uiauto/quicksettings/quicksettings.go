@@ -693,3 +693,26 @@ func CommonElements(ctx context.Context, tconn *chrome.TestConn, hasBattery, isL
 	}
 	return getNodes, nil
 }
+
+// SignOut signouts by clicking signout button in Uber tray.
+func SignOut(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+
+	if err := Show(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to open Uber tray")
+	}
+
+	buttonFound, err := ui.IsNodeFound(ctx, SignoutButton)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the sign out button")
+	}
+	if !buttonFound {
+		return errors.New("signout button was not found")
+	}
+
+	// We ignore errors here because when we click on "Sign out" button
+	// Chrome shuts down and the connection is closed. So we will always get an
+	// error.
+	ui.LeftClick(SignoutButton)(ctx)
+	return nil
+}
