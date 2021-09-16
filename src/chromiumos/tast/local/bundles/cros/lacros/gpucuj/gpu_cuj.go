@@ -164,13 +164,13 @@ type testInvocation struct {
 
 // runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and lacros chrome.
 // tconn is a test connection to the current browser being used (either ChromeOS or lacros chrome).
-func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, tracer traceable, invoc *testInvocation) error {
-	w, err := lacros.FindFirstNonBlankWindow(ctx, f.TestAPIConn)
+func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtValue, tracer traceable, invoc *testInvocation) error {
+	w, err := lacros.FindFirstNonBlankWindow(ctx, f.TestAPIConn())
 	if err != nil {
 		return err
 	}
 
-	info, err := display.GetPrimaryInfo(ctx, f.TestAPIConn)
+	info, err := display.GetPrimaryInfo(ctx, f.TestAPIConn())
 	if err != nil {
 		return err
 	}
@@ -180,14 +180,14 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, t
 	}
 	if invoc.scenario == TestTypeResize {
 		// Restore window.
-		if err := ash.SetWindowStateAndWait(ctx, f.TestAPIConn, w.ID, ash.WindowStateNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, f.TestAPIConn(), w.ID, ash.WindowStateNormal); err != nil {
 			return errors.Wrap(err, "failed to restore non-blank window")
 		}
 
 		// Create a landscape rectangle. Avoid snapping by insetting by insetSlopDP.
 		ms := math.Min(float64(info.WorkArea.Width), float64(info.WorkArea.Height))
 		sb := coords.NewRect(info.WorkArea.Left, info.WorkArea.Top, int(ms), int(ms*0.6)).WithInset(insetSlopDP, insetSlopDP)
-		if err := setWindowBounds(ctx, f.TestAPIConn, w.ID, sb); err != nil {
+		if err := setWindowBounds(ctx, f.TestAPIConn(), w.ID, sb); err != nil {
 			return errors.Wrap(err, "failed to set window initial bounds")
 		}
 
@@ -196,23 +196,23 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, t
 			// TODO(crbug.com/1067535): Subtract -1 to ensure drag-resize occurs for now.
 			start := coords.NewPoint(sb.Left+sb.Width-1, sb.Top+sb.Height-1)
 			end := coords.NewPoint(sb.Left+sb.Height, sb.Top+sb.Width)
-			if err := mouse.Drag(ctx, f.TestAPIConn, start, end, testDuration); err != nil {
+			if err := mouse.Drag(ctx, f.TestAPIConn(), start, end, testDuration); err != nil {
 				return errors.Wrap(err, "failed to drag resize")
 			}
 			return nil
 		}
 	} else if invoc.scenario == TestTypeMoveOcclusion || invoc.scenario == TestTypeMoveOcclusionWithCrosWindow {
-		wb, err := lacros.FindFirstBlankWindow(ctx, f.TestAPIConn)
+		wb, err := lacros.FindFirstBlankWindow(ctx, f.TestAPIConn())
 		if err != nil {
 			return err
 		}
 
 		// Restore windows.
-		if err := ash.SetWindowStateAndWait(ctx, f.TestAPIConn, w.ID, ash.WindowStateNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, f.TestAPIConn(), w.ID, ash.WindowStateNormal); err != nil {
 			return errors.Wrap(err, "failed to restore non-blank window")
 		}
 
-		if err := ash.SetWindowStateAndWait(ctx, f.TestAPIConn, wb.ID, ash.WindowStateNormal); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, f.TestAPIConn(), wb.ID, ash.WindowStateNormal); err != nil {
 			return errors.Wrap(err, "failed to restore blank window")
 		}
 
@@ -223,7 +223,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, t
 			sbl = coords.NewRect(info.WorkArea.Left, info.WorkArea.Top, info.WorkArea.Width, info.WorkArea.Height/2)
 		}
 		sbl = sbl.WithInset(insetSlopDP, insetSlopDP)
-		if err := setWindowBounds(ctx, f.TestAPIConn, w.ID, sbl); err != nil {
+		if err := setWindowBounds(ctx, f.TestAPIConn(), w.ID, sbl); err != nil {
 			return errors.Wrap(err, "failed to set non-blank window initial bounds")
 		}
 
@@ -232,21 +232,21 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, t
 		if isp {
 			sbr = sbl.WithOffset(0, sbl.Height)
 		}
-		if err := setWindowBounds(ctx, f.TestAPIConn, wb.ID, sbr); err != nil {
+		if err := setWindowBounds(ctx, f.TestAPIConn(), wb.ID, sbr); err != nil {
 			return errors.Wrap(err, "failed to set blank window initial bounds")
 		}
 		perfFn = func(ctx context.Context) error {
 			// Drag from not occluding to completely occluding.
 			start := coords.NewPoint(sbr.Left+dragMoveOffsetDP, sbr.Top+dragMoveOffsetDP)
 			end := coords.NewPoint(sbl.Left+dragMoveOffsetDP, sbl.Top+dragMoveOffsetDP)
-			if err := mouse.Drag(ctx, f.TestAPIConn, start, end, testDuration); err != nil {
+			if err := mouse.Drag(ctx, f.TestAPIConn(), start, end, testDuration); err != nil {
 				return errors.Wrap(err, "failed to drag move")
 			}
 			return nil
 		}
 	} else {
 		// Maximize window.
-		if err := ash.SetWindowStateAndWait(ctx, f.TestAPIConn, w.ID, ash.WindowStateMaximized); err != nil {
+		if err := ash.SetWindowStateAndWait(ctx, f.TestAPIConn(), w.ID, ash.WindowStateMaximized); err != nil {
 			return errors.Wrap(err, "failed to maximize window")
 		}
 	}
@@ -256,7 +256,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, t
 	if invoc.scenario == TestTypeThreeDot {
 		clickFn := func(n *ui.Node) error { return n.LeftClick(ctx) }
 		if invoc.crt == lacros.ChromeTypeLacros {
-			clickFn = func(n *ui.Node) error { return leftClickLacros(ctx, f.TestAPIConn, w.ID, n) }
+			clickFn = func(n *ui.Node) error { return leftClickLacros(ctx, f.TestAPIConn(), w.ID, n) }
 		}
 		if err := toggleThreeDotMenu(ctx, tconn, clickFn); err != nil {
 			return errors.Wrap(err, "failed to open three dot menu")
@@ -276,7 +276,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, t
 	return runHistogram(ctx, tconn, tracer, invoc, perfFn)
 }
 
-func runLacrosTest(ctx context.Context, f launcher.FixtData, invoc *testInvocation) error {
+func runLacrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocation) error {
 	_, ltconn, l, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, invoc.page.url)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup cros-chrome test page")
@@ -293,7 +293,7 @@ func runLacrosTest(ctx context.Context, f launcher.FixtData, invoc *testInvocati
 		defer connBlank.CloseTarget(ctx)
 
 	} else if invoc.scenario == TestTypeMoveOcclusionWithCrosWindow {
-		connBlank, err := f.Chrome.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
+		connBlank, err := f.Chrome().NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open new tab")
 		}
@@ -304,7 +304,7 @@ func runLacrosTest(ctx context.Context, f launcher.FixtData, invoc *testInvocati
 	return runTest(ctx, ltconn, f, l, invoc)
 }
 
-func runCrosTest(ctx context.Context, f launcher.FixtData, invoc *testInvocation) error {
+func runCrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocation) error {
 	_, cleanup, err := lacros.SetupCrosTestWithPage(ctx, f, invoc.page.url)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup cros-chrome test page")
@@ -313,7 +313,7 @@ func runCrosTest(ctx context.Context, f launcher.FixtData, invoc *testInvocation
 
 	// Setup extra window for multi-window tests.
 	if invoc.scenario == TestTypeMoveOcclusion || invoc.scenario == TestTypeMoveOcclusionWithCrosWindow {
-		connBlank, err := f.Chrome.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
+		connBlank, err := f.Chrome().NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open new tab")
 		}
@@ -321,13 +321,13 @@ func runCrosTest(ctx context.Context, f launcher.FixtData, invoc *testInvocation
 		defer connBlank.CloseTarget(ctx)
 	}
 
-	return runTest(ctx, f.TestAPIConn, f, f.Chrome, invoc)
+	return runTest(ctx, f.TestAPIConn(), f, f.Chrome(), invoc)
 }
 
 // RunGpuCUJ runs a GpuCUJ test according to the given parameters.
-func RunGpuCUJ(ctx context.Context, f launcher.FixtData, params TestParams, serverURL, traceDir string) (
+func RunGpuCUJ(ctx context.Context, f launcher.FixtValue, params TestParams, serverURL, traceDir string) (
 	retPV *perf.Values, retCleanup lacros.CleanupCallback, retErr error) {
-	cleanup, err := lacros.SetupPerfTest(ctx, f.TestAPIConn, "lacros.GpuCUJ")
+	cleanup, err := lacros.SetupPerfTest(ctx, f.TestAPIConn(), "lacros.GpuCUJ")
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to setup GpuCUJ test")
 	}
@@ -338,7 +338,7 @@ func RunGpuCUJ(ctx context.Context, f launcher.FixtData, params TestParams, serv
 	}()
 
 	if params.Rot90 {
-		infos, err := display.GetInfo(ctx, f.TestAPIConn)
+		infos, err := display.GetInfo(ctx, f.TestAPIConn())
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to get display info")
 		}
@@ -348,12 +348,12 @@ func RunGpuCUJ(ctx context.Context, f launcher.FixtData, params TestParams, serv
 		}
 
 		rot := 90
-		if err := display.SetDisplayProperties(ctx, f.TestAPIConn, infos[0].ID, display.DisplayProperties{Rotation: &rot}); err != nil {
+		if err := display.SetDisplayProperties(ctx, f.TestAPIConn(), infos[0].ID, display.DisplayProperties{Rotation: &rot}); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to rotate display")
 		}
 		// Restore the initial rotation.
 		cleanup = lacros.CombineCleanup(ctx, cleanup, func(ctx context.Context) error {
-			return display.SetDisplayProperties(ctx, f.TestAPIConn, infos[0].ID, display.DisplayProperties{Rotation: &infos[0].Rotation})
+			return display.SetDisplayProperties(ctx, f.TestAPIConn(), infos[0].ID, display.DisplayProperties{Rotation: &infos[0].Rotation})
 		}, "failed to restore the initial display rotation")
 	}
 
