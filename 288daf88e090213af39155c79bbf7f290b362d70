@@ -34,6 +34,40 @@
       "parentUuid": "945ef3b3_a9b75ea0",
       "revId": "288daf88e090213af39155c79bbf7f290b362d70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1c8fb01_e3804084",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T12:21:57Z",
+      "side": 1,
+      "message": "Still LGTM",
+      "revId": "288daf88e090213af39155c79bbf7f290b362d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50baed6a_29607a17",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T12:21:57Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "288daf88e090213af39155c79bbf7f290b362d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
