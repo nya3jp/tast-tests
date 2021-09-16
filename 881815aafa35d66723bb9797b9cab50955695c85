@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2c2e613_35ac686c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-16T01:04:08Z",
+      "side": 1,
+      "message": "removed this line and function due to below review comment.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3161109/comment/f452865d_3e5d799f/",
+      "parentUuid": "ddb3ca6f_bca3846b",
+      "range": {
+        "startLine": 47,
+        "startChar": 43,
+        "endLine": 47,
+        "endChar": 47
+      },
+      "revId": "881815aafa35d66723bb9797b9cab50955695c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f452865d_3e5d799f",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
         "patchSetId": 2
