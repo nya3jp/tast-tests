@@ -28,49 +28,49 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "basic_two",
-				Timeout: time.Minute * 10,
+				Timeout: time.Minute * 15,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.TwoRoomSize,
 				},
 			}, {
 				Name:    "basic_small",
-				Timeout: time.Minute * 10,
+				Timeout: time.Minute * 15,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.SmallRoomSize,
 				},
 			}, {
 				Name:    "basic_large",
-				Timeout: time.Minute * 10,
+				Timeout: time.Minute * 20,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.LargeRoomSize,
 				},
 			}, {
 				Name:    "basic_class",
-				Timeout: time.Minute * 15,
+				Timeout: time.Minute * 20,
 				Val: conference.TestParameters{
 					Tier: "basic",
 					Size: conference.ClassRoomSize,
 				},
 			}, {
 				Name:    "plus_large",
-				Timeout: time.Minute * 12,
+				Timeout: time.Minute * 20,
 				Val: conference.TestParameters{
 					Tier: "plus",
 					Size: conference.LargeRoomSize,
 				},
 			}, {
 				Name:    "plus_class",
-				Timeout: time.Minute * 15,
+				Timeout: time.Minute * 20,
 				Val: conference.TestParameters{
 					Tier: "plus",
 					Size: conference.ClassRoomSize,
 				},
 			}, {
 				Name:    "premium_large",
-				Timeout: time.Minute * 12,
+				Timeout: time.Minute * 20,
 				Val: conference.TestParameters{
 					Tier: "premium",
 					Size: conference.LargeRoomSize,
@@ -101,6 +101,6 @@ func ZoomConfCUJ(ctx context.Context, s *testing.State) {
 		RoomSize:        int64(param.Size),
 		ExtendedDisplay: false,
 	}); err != nil {
-		s.Fatal("Failed to run Meet Scenario: ", err)
+		s.Fatal("Failed to run Zoom Scenario: ", err)
 	}
 }
