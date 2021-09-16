@@ -16,6 +16,23 @@
       "message": "Thanks Aki! +Tast OWNERS, PTAL?",
       "revId": "9086e54630731221644b61d4f77fe40f9e6aee16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f156a999_6a3b2aba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-16T15:33:15Z",
+      "side": 1,
+      "message": "@Aki, looks like you didn\u0027t hit the +1 button although saying \"Giving you a +1\", could you try again? Thanks!",
+      "revId": "9086e54630731221644b61d4f77fe40f9e6aee16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
