@@ -16,6 +16,23 @@
       "message": "Thanks a lot for the review, Billy! ",
       "revId": "bbbffb90d4d521841ebc550a8bb9ff64c9fb1d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9affb36d_0d851de2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-09-16T12:19:21Z",
+      "side": 1,
+      "message": "FYI I re-ran the wifi tests after updating the certs and they all passed.",
+      "revId": "bbbffb90d4d521841ebc550a8bb9ff64c9fb1d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
