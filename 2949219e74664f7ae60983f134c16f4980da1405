@@ -156,6 +156,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4d77582_88f768da",
+        "filename": "src/chromiumos/tast/local/chrome/ui/capturemode/capture_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-16T03:59:40Z",
+      "side": 1,
+      "message": "Yes, but it depends on the type of the UI.\nIf those multiple matched nodesa are the exactly same nodes under the common parent (like list items), First() would be appropriate.\nIf those multiple matches are a parent and a child, for example:\n------(example from Tast codelam #3)\n  node id\u003d341 role\u003dgenericContainer state\u003d{} parentID\u003d301 childIds\u003d[342]\n    node id\u003d342 role\u003dstaticText state\u003d{} parentID\u003d341 childIds\u003d[343] name\u003dSolid colors\n      node id\u003d343 role\u003dinlineTextBox state\u003d{} parentID\u003d342 childIds\u003d[] name\u003dSolid colors\n------\nselecting a one by Role() would be more common.\n\u003e nodewith.Name(\"Solid colors\").Role(role.StaticText)",
+      "parentUuid": "4e71208c_6ab6c0c3",
+      "revId": "2949219e74664f7ae60983f134c16f4980da1405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb7e31f7_3aa937ee",
         "filename": "src/chromiumos/tast/local/chrome/ui/capturemode/capture_mode.go",
         "patchSetId": 1
