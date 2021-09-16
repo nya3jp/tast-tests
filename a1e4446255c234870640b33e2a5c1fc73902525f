@@ -16,6 +16,57 @@
       "message": "Please review.",
       "revId": "a1e4446255c234870640b33e2a5c1fc73902525f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b1d61f8_078c989b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-16T03:35:49Z",
+      "side": 1,
+      "message": "LGTM with a few nits.\n",
+      "revId": "a1e4446255c234870640b33e2a5c1fc73902525f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dac8a19_ad5bfeb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-16T03:35:49Z",
+      "side": 1,
+      "message": "nit: I recommend using errors.Wrapf for non-trivial formatting.\n\n errors.Wrapf(err, \"failed to get %s data\", hist.Name)",
+      "revId": "a1e4446255c234870640b33e2a5c1fc73902525f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7411e197_3eb528c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-16T03:35:49Z",
+      "side": 1,
+      "message": "Same here:\n\n testing.ContextLogf(ctx, \"%s \u003d %s\", valueName, value)",
+      "revId": "a1e4446255c234870640b33e2a5c1fc73902525f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
