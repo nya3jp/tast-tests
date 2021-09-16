@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec856c7c_d927c581",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163674
+      },
+      "writtenOn": "2021-09-16T23:25:59Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "7095c92ee4dbe9d235da4c5f24fef1c3c0e8ac66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dbd20df_4f37793b",
@@ -31,6 +48,42 @@
       "writtenOn": "2021-09-16T18:42:03Z",
       "side": 1,
       "message": "Can you try combining the two options commands into a single constant?\n\nconst [] string {\"Search+Right\", \"O\"}?\n\nThat way we can avoid doing \n\n[]string{chromevox.OpenOptionsOne, chromevox.OpenOptionsTwo}",
+      "revId": "7095c92ee4dbe9d235da4c5f24fef1c3c0e8ac66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "704593c8_29b64dce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox/chromevox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1163674
+      },
+      "writtenOn": "2021-09-16T23:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dbd20df_4f37793b",
+      "revId": "7095c92ee4dbe9d235da4c5f24fef1c3c0e8ac66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c981934c_c7f011c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox/chromevox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1163674
+      },
+      "writtenOn": "2021-09-16T23:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dbd20df_4f37793b",
       "revId": "7095c92ee4dbe9d235da4c5f24fef1c3c0e8ac66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +111,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8f9ce7a_4c4e028e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox/chromevox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1163674
+      },
+      "writtenOn": "2021-09-16T23:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34bc93d4_ccd2a899",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "7095c92ee4dbe9d235da4c5f24fef1c3c0e8ac66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61d2a13e_c579986d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox/chromevox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1163674
+      },
+      "writtenOn": "2021-09-16T23:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34bc93d4_ccd2a899",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "7095c92ee4dbe9d235da4c5f24fef1c3c0e8ac66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d044b43_e0395ffb",
@@ -71,6 +172,60 @@
       "writtenOn": "2021-09-16T18:42:03Z",
       "side": 1,
       "message": "Nit: Can you format the string on multiple lines? Here\u0027s an example of where it\u0027s done:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_characters.go;l\u003d52",
+      "revId": "7095c92ee4dbe9d235da4c5f24fef1c3c0e8ac66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e143b1_ee13ab8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_number_reading_style.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1163674
+      },
+      "writtenOn": "2021-09-16T23:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d044b43_e0395ffb",
+      "revId": "7095c92ee4dbe9d235da4c5f24fef1c3c0e8ac66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac4579ab_f236cc44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_number_reading_style.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1163674
+      },
+      "writtenOn": "2021-09-16T23:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d044b43_e0395ffb",
+      "revId": "7095c92ee4dbe9d235da4c5f24fef1c3c0e8ac66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "609fc1ca_ee69e531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_number_reading_style.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1163674
+      },
+      "writtenOn": "2021-09-16T23:25:59Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "0d044b43_e0395ffb",
       "revId": "7095c92ee4dbe9d235da4c5f24fef1c3c0e8ac66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
