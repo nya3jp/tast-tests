@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e076e1e1_9198fb9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-16T18:42:03Z",
+      "side": 1,
+      "message": "LGTM with comments addressed. Please add tast-owners@ when you\u0027re ready for an official +2 approval.",
+      "revId": "7095c92ee4dbe9d235da4c5f24fef1c3c0e8ac66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dbd20df_4f37793b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox/chromevox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-16T18:42:03Z",
+      "side": 1,
+      "message": "Can you try combining the two options commands into a single constant?\n\nconst [] string {\"Search+Right\", \"O\"}?\n\nThat way we can avoid doing \n\n[]string{chromevox.OpenOptionsOne, chromevox.OpenOptionsTwo}",
+      "revId": "7095c92ee4dbe9d235da4c5f24fef1c3c0e8ac66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34bc93d4_ccd2a899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox/chromevox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-16T18:42:03Z",
+      "side": 1,
+      "message": "Nit: I think we can just call this \"VoiceData\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "7095c92ee4dbe9d235da4c5f24fef1c3c0e8ac66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d044b43_e0395ffb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_number_reading_style.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-16T18:42:03Z",
+      "side": 1,
+      "message": "Nit: Can you format the string on multiple lines? Here\u0027s an example of where it\u0027s done:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_processing_characters.go;l\u003d52",
+      "revId": "7095c92ee4dbe9d235da4c5f24fef1c3c0e8ac66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
