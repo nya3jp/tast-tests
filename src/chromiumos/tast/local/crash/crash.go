@@ -312,7 +312,12 @@ func WaitForCrashFiles(ctx context.Context, dirs, regexes []string, opts ...Wait
 						if strings.HasSuffix(f, ".meta") {
 							var contents []byte
 							if contents, err = ioutil.ReadFile(f); err != nil {
-								return testing.PollBreak(errors.Wrap(err, "failed to read .meta file"))
+								// There's a known issue with cryptohome 'flickering'
+								// occasionally. (b/189707927) If one process writes a file, a
+								// different process trying to read it the instant the file
+								// shows up may not be able to. So don't testing.PollBreak here,
+								// just retry and see if we can read on the next go-round.
+								return errors.Wrap(err, "failed to read .meta file")
 							}
 							if !strings.Contains(string(contents), "done=1") {
 								// Not there yet.
