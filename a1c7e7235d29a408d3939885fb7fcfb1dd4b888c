@@ -22,6 +22,30 @@
       },
       "revId": "a1c7e7235d29a408d3939885fb7fcfb1dd4b888c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ed0301_5a4c1057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vaapi_unittest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-16T20:58:44Z",
+      "side": 1,
+      "message": "Awesome, thanks!",
+      "parentUuid": "6dc9cbd8_1bc886fe",
+      "range": {
+        "startLine": 61,
+        "startChar": 12,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "a1c7e7235d29a408d3939885fb7fcfb1dd4b888c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
