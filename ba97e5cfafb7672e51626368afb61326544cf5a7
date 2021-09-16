@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5db2ac43_20d01350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-09-16T01:35:12Z",
+      "side": 1,
+      "message": "This is purely a PK feature, although if you type with VK it should still work.",
+      "parentUuid": "ef86b5d3_8c481c38",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5547aafa_026e09b1",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f83adff0_e3f35a84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-09-16T01:35:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5547aafa_026e09b1",
+      "range": {
+        "startLine": 24,
+        "startChar": 26,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad8e8ab1_352667ff",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-09-15T09:11:32Z",
       "side": 1,
       "message": "SoftwareDeps: []string{\"chrome\", \"google_virtual_keyboard\"},\n\ngoogle_virtual_keyboard represents that virtual_keyboard is installed. It can imply where has E14s installed. Otherwise, it might run on ChromiumOS without E14s.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ac5d95b_b075eba1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-09-16T01:35:12Z",
+      "side": 1,
+      "message": "IIUC by e14s you mean the extension, right? I don\u0027t think this feature relies on extension code, it should work without it.",
+      "parentUuid": "ad8e8ab1_352667ff",
       "range": {
         "startLine": 27,
         "startChar": 2,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cdcd4c71_aed100bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-09-16T01:35:12Z",
+      "side": 1,
+      "message": "I am not sure, is there any tools to validate the cursor position?",
+      "parentUuid": "80c4fcb0_aebcf981",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18ac48db_38a67712",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
         "patchSetId": 1
@@ -123,6 +219,30 @@
       "writtenOn": "2021-09-15T09:11:32Z",
       "side": 1,
       "message": "A silly question here, how about other boards that do not support grammar check? Is that setting hidden/disabled or a different workflow? It would be nice to have coverage there too, but can be done separately.",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f0cc67a_7fe7b73e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-09-16T01:35:12Z",
+      "side": 1,
+      "message": "What do you mean by settings? For other boards, they will use the online version of grammar check just as before. The UI will be different but that code is not owned by us.",
+      "parentUuid": "18ac48db_38a67712",
       "range": {
         "startLine": 41,
         "startChar": 3,
@@ -146,6 +266,30 @@
       "writtenOn": "2021-09-15T09:11:32Z",
       "side": 1,
       "message": "If betty VM does not support this feature, it can be very fragile. Because most CQ primarily run on betty.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "ba97e5cfafb7672e51626368afb61326544cf5a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc0f6c7_a47877c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/pre/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-09-16T01:35:12Z",
+      "side": 1,
+      "message": "I am currently working on enable grammar check on all 4GB board, so betty will be enabled soon. Let\u0027s not add this to CQ until that time.",
+      "parentUuid": "df2cbe35_ab3004d6",
       "range": {
         "startLine": 42,
         "startChar": 4,
