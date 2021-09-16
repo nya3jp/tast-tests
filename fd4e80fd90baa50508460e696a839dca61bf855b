@@ -258,6 +258,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5e8c492_fc3238a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-16T07:07:13Z",
+      "side": 1,
+      "message": "I don\u0027t like this pattern, it looks like the test is incomplete and you need to search around to find out what is happening.\n\nOn the other hand, I can understand why it\u0027s done this way and if it\u0027s consistent withing all wifi tests it should be fine. I do suggest looking into more abstractions for cleanup in wifi tests to make this cleaner.",
+      "parentUuid": "69c55c80_737b430f",
+      "range": {
+        "startLine": 308,
+        "startChar": 10,
+        "endLine": 308,
+        "endChar": 23
+      },
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea60601a_3c719687",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 2
