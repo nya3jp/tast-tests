@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a262a157_4080fb17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T17:28:43Z",
+      "side": 1,
+      "message": "Fantastic, just a few little optimizations and let\u0027s submit it.",
+      "revId": "7149fbfc1044532d19e7e791bc81552f268eba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4af3e99_9f845b3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T17:28:43Z",
+      "side": 1,
+      "message": "This seems unneeded, you just checked that it is what you set it to, just compare to that instead.",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 3
+      },
+      "revId": "7149fbfc1044532d19e7e791bc81552f268eba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "607eb6d5_3f3ec717",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T17:28:43Z",
+      "side": 1,
+      "message": "I would remove this from tc, and just use a local var here.",
+      "range": {
+        "startLine": 171,
+        "startChar": 3,
+        "endLine": 171,
+        "endChar": 32
+      },
+      "revId": "7149fbfc1044532d19e7e791bc81552f268eba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f192fa_3ab38e59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T17:28:43Z",
+      "side": 1,
+      "message": "You can remove this because servo.ECHibernate() already checks this.",
+      "range": {
+        "startLine": 173,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 33
+      },
+      "revId": "7149fbfc1044532d19e7e791bc81552f268eba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20b92728_922e4449",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T17:28:43Z",
+      "side": 1,
+      "message": "I would just use tc.lidOpen here.",
+      "range": {
+        "startLine": 222,
+        "startChar": 22,
+        "endLine": 222,
+        "endChar": 37
+      },
+      "revId": "7149fbfc1044532d19e7e791bc81552f268eba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

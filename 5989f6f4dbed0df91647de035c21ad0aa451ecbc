@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9b4f6fa_442e6639",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T17:28:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "760ac918_3d9efe93",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 4
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3745faa_3e954543",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I\u0027ve edited the style, and moved connect-power/disconnect-power and their respective verifications into a function.",
       "parentUuid": "d3745faa_3e954543",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 54
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e63e50d_004b87a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T17:28:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35b2e212_574b854f",
       "range": {
         "startLine": 58,
         "startChar": 1,
@@ -337,6 +385,30 @@
       "side": 1,
       "message": "Please correct me if I\u0027ve misunderstood. But, I\u0027m currently implementing the statement to use long power key press instead of EC hibernation, when lid is closed, and h.Servo.PreferDebugHeader() returns false. For now, this is also under the assumption that a ChromeEC device is present.",
       "parentUuid": "017746f8_729e36ba",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 3
+      },
+      "revId": "5989f6f4dbed0df91647de035c21ad0aa451ecbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc68e6c8_1386a81b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T17:28:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "08f25253_f8d65ff0",
       "range": {
         "startLine": 127,
         "startChar": 2,
