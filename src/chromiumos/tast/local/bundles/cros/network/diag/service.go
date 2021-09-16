@@ -12,7 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/conndiag"
+	"chromiumos/tast/local/chrome/uiauto/conndiag"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
 )
