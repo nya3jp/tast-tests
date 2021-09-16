@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bd8c348_5d618dd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T22:28:26Z",
+      "side": 1,
+      "message": "Left a few comments and q\u0027s, mostly looks good from a Tast perspective. I\u0027m not familiar with this area though, so please request a review from a domain expert as well. Thanks!",
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf80471e_2bfe9983",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T22:28:26Z",
+      "side": 1,
+      "message": "nit: I think \"powerOff\" would be more in line with Go naming conventions",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 9
+      },
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d44eea3_752b53e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T22:28:26Z",
+      "side": 1,
+      "message": "nit: subtest names generally use lower_snake_case, so this would be better as power_button",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc4c5f87_d542defc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T22:28:26Z",
+      "side": 1,
+      "message": "how about poweroff_command? it wasn\u0027t clear to me what \"poweroff\" was at first glance since I don\u0027t come across that command often",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6036e170_5c07c9b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T22:28:26Z",
+      "side": 1,
+      "message": "nit: end comments in periods",
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79eef4fa_5338c452",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T22:28:26Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34abb27f_78c6a391",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T22:28:26Z",
+      "side": 1,
+      "message": "nit: pwrOnDUT",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 9
+      },
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ee265bc_28ca5dff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T22:28:26Z",
+      "side": 1,
+      "message": "can probably do without this comment (it\u0027s not adding much information)",
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e31f2d_36fee7a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T22:28:26Z",
+      "side": 1,
+      "message": "do we need this in the poweroff case too?",
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "876d7e7f_f3550a6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T22:28:26Z",
+      "side": 1,
+      "message": "This is shared between both cases, I think you can move it out of the if blocks.",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f2f706_c4ea89fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T22:28:26Z",
+      "side": 1,
+      "message": "might be nice to have an example of the output to better understand how it\u0027s being processed here",
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
