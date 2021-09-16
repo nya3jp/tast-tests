@@ -6,6 +6,7 @@ package launcher
 
 import (
 	"context"
+	"os"
 	"time"
 
 	"chromiumos/tast/local/chrome"
@@ -24,14 +25,26 @@ func init() {
 			"mmourgos@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedInWith100FakeApps",
-		Timeout:      3 * time.Minute,
+		Timeout:      4 * time.Minute,
 	})
 }
 
 // CreateAndFillFolder tests that a folder can be filled to the maximum allowed size.
 func CreateAndFillFolder(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	// Create 50 fake apps and get the the options to add to the new chrome session.
+	opts, extDirBase, err := ash.GetPrepareFakeAppsOptions(50)
+	if err != nil {
+		s.Fatal("Failed to create 50 fake apps")
+	}
+	defer os.RemoveAll(extDirBase)
+
+	// Creating fake apps and logging into a new session in this test ensures that enough apps will be available to folder.
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+	defer cr.Close(ctx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -48,7 +61,7 @@ func CreateAndFillFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Expanded Application list view: ", err)
 	}
 
-	if err := launcher.CreateFolder(ctx, tconn)(ctx); err != nil {
+	if err := launcher.CreateFolder(ctx, tconn); err != nil {
 		s.Fatal("Failed to create folder app: ", err)
 	}
 
