@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c46212_931e03ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-16T08:14:35Z",
+      "side": 1,
+      "message": "We usually don\u0027t need to say very much about \"what\" is done, but more about why/how.\nIn this case, the commit history tells which files were updated.\n\nHow about something like:\n\"The mouse package in the UI test support library has a newer version in uiauto/. Update all tests using it to use the newer version.\"\n\nAdditionally, we may also remove the ui/mouse with this change, if all the references are removed by this change.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 479
+      },
+      "revId": "471d598005ac120d68e404929ab0314cf19dd18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
