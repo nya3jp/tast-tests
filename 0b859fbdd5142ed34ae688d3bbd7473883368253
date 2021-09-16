@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3400c921_e109e76d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2021-09-16T21:57:07Z",
+      "side": 1,
+      "message": "lgtm % a nit, though i\u0027m not a tast expert. thanks!",
+      "revId": "0b859fbdd5142ed34ae688d3bbd7473883368253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f87cca82_cbf89c02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2021-09-16T21:57:07Z",
+      "side": 1,
+      "message": "nit: `numberOfRecords :\u003d 0` would be more consistent with the above",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 24
+      },
+      "revId": "0b859fbdd5142ed34ae688d3bbd7473883368253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
