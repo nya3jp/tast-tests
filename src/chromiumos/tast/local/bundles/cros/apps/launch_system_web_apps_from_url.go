@@ -63,6 +63,17 @@ func LaunchSystemWebAppsFromURL(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "LaunchSystemWebAppsFromURL.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
+	}
+
 	for _, app := range systemWebApps {
 		chromeURL := app.PublisherID
 
