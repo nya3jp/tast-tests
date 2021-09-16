@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8e4959e_bf5ef02e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-16T20:01:57Z",
+      "side": 1,
+      "message": "If you want this to link back to the CL in question, you should replace this with\n\n CL:2906136",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "a9ae5289bf991410f1eb49cb94858e32c5100b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e872fa55_4d767c3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-16T20:01:57Z",
+      "side": 1,
+      "message": "where do we actually do this? If WaitForProperty returns an error (e.g. on some sort of timeout, etc.) then we\u0027re going to fatal here, though since cellular_sim_roaming is in the attributes list that\u0027s probably what we want?",
+      "range": {
+        "startLine": 56,
+        "startChar": 38,
+        "endLine": 56,
+        "endChar": 53
+      },
+      "revId": "a9ae5289bf991410f1eb49cb94858e32c5100b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
