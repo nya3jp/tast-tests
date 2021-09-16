@@ -75,12 +75,13 @@ func verifyLastBranchSamples(s *testing.State, report, tracedCommand string) {
 	branchStackSizeRegexp := regexp.MustCompile(`branch stack: nr:(\d+)`)
 	threadRegexp := regexp.MustCompile(`thread: (\S+):\d+`)
 	records := strings.Split(report, "\n\n")
+	var numberOfRecords = 0
 	for _, record := range records {
 		sampleMatch := sampleRecordRegexp.FindString(record)
 		if sampleMatch == "" {
 			continue
 		}
-		s.Log("Found Last Branch sample")
+		numberOfRecords++
 		bsSizeMatch := branchStackSizeRegexp.FindStringSubmatch(record)
 		if bsSizeMatch == nil {
 			continue
@@ -90,15 +91,18 @@ func verifyLastBranchSamples(s *testing.State, report, tracedCommand string) {
 		if size, err = strconv.Atoi(bsSizeMatch[1]); err != nil || size == 0 {
 			continue
 		}
-		s.Log("with non-zero size")
 		threadMatch := threadRegexp.FindStringSubmatch(record)
-		if threadMatch == nil || threadMatch[1] != tracedCommand {
-			continue
+
+		if threadMatch != nil && (tracedCommand == "" || tracedCommand == threadMatch[1]) {
+			// We are ok with any last branch record if no tracedCommand is passed.
+			s.Logf("Found a sample with %q, stack size %v", threadMatch[1], size)
+			return
 		}
-		s.Logf("Found a sample with %q, stack size %v", tracedCommand, size)
-		return
+		// Record is either invalid or belongs to a different command.
+		// Continue the search.
 	}
 	s.Error("Couldn't find a valid Last Branch sample")
+	s.Error("Total number of samples: ", numberOfRecords)
 }
 
 // perfETMPerThread records ETM trace in per-thread mode and verifies the raw dump.
@@ -107,7 +111,9 @@ func perfETMPerThread(ctx context.Context, s *testing.State) {
 	perfData := filepath.Join(s.OutDir(), "per-thread-perf.data")
 
 	// Test ETM profile collection.
-	cmd := testexec.CommandContext(ctx, "perf", "record", "-e", "cs_etm/@tmc_etr0/", "-m", ",1M", "-o", perfData, "--per-thread", tracedCommand)
+	// -m ,1M reduces ETM data down to 1MB regardless of workload and execution time.
+	// -N doesn't clutter HOME directory with unnecessary debug data.
+	cmd := testexec.CommandContext(ctx, "perf", "record", "-e", "cs_etm/@tmc_etr0/", "-N", "-m", ",1M", "-o", perfData, "--per-thread", tracedCommand)
 	err := cmd.Run(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatalf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
@@ -119,11 +125,14 @@ func perfETMPerThread(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Errorf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
 	}
+	s.Log("-------------------------------------")
+	s.Log("Verifying ETM data in per-thread mode")
 	verifyETMData(s, string(out))
 
 	// Test ETM trace decoding and sample synthesis.
 	perfInjectData := filepath.Join(s.OutDir(), "per-thread-perf-inject.data")
-	cmd = testexec.CommandContext(ctx, "perf", "inject", "--itrace=i1000il", "-i", perfData, "-o", perfInjectData)
+	// --strip reduces the output size.
+	cmd = testexec.CommandContext(ctx, "perf", "inject", "--itrace=i1000il", "-i", perfData, "-o", perfInjectData, "--strip")
 	err = cmd.Run(testexec.DumpLogOnError)
 	if err != nil {
 		s.Errorf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
@@ -135,6 +144,7 @@ func perfETMPerThread(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Errorf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
 	}
+	s.Log("Verifying Last Branch samples in per-thread mode")
 	verifyLastBranchSamples(s, string(out), tracedCommand)
 }
 
@@ -144,7 +154,7 @@ func perfETMSystemWide(ctx context.Context, s *testing.State) {
 	perfData := filepath.Join(s.OutDir(), "system-wide-perf.data")
 
 	// Test ETM profile collection.
-	cmd := testexec.CommandContext(ctx, "perf", "record", "-e", "cs_etm/@tmc_etr0/uk", "-m", ",1M", "-o", perfData, "-a", tracedCommand)
+	cmd := testexec.CommandContext(ctx, "perf", "record", "-e", "cs_etm/@tmc_etr0/uk", "-m", ",1M", "-N", "-o", perfData, "-a", tracedCommand)
 	err := cmd.Run(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatalf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
@@ -156,12 +166,13 @@ func perfETMSystemWide(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Errorf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
 	}
+	s.Log("--------------------------------------")
+	s.Log("Verifying ETM data in system-wide mode")
 	verifyETMData(s, string(out))
 
 	// Test ETM trace decoding and sample synthesis.
 	perfInjectData := filepath.Join(s.OutDir(), "system-wide-perf-inject.data")
-	// TODO(b/163172096): Change to period 1000 to improve the quality of the profile when perf inject hang is fixed.
-	cmd = testexec.CommandContext(ctx, "perf", "inject", "--itrace=i100000il", "-i", perfData, "-o", perfInjectData)
+	cmd = testexec.CommandContext(ctx, "perf", "inject", "--itrace=i1000il", "--strip", "-i", perfData, "-o", perfInjectData)
 	err = cmd.Run(testexec.DumpLogOnError)
 	if err != nil {
 		s.Errorf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
@@ -173,11 +184,14 @@ func perfETMSystemWide(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Errorf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
 	}
-	// TODO(b/168574788, b/163171598): Enable Last branch sample
-	// verification when all bugs in system-wide mode are resolved.
-	if false {
-		verifyLastBranchSamples(s, string(out), tracedCommand)
-	}
+	s.Log("Verifying Last Branch samples in system-wide mode")
+	// We can't reliably capture the workload command in system-wide mode
+	// because ETM buffer holds only a small sample of ETM trace data where
+	// background processes can dominate.
+	// ETM tracing with strobing makes sample distribution more uniform and
+	// should resolve the issue.
+	// TODO(b/200183162): Add Strobing mode testing with command verification.
+	verifyLastBranchSamples(s, string(out), "")
 }
 
 // PerfETM verifies that cs_etm PMU event is supported and we can collect ETM data and
