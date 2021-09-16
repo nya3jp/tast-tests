@@ -180,6 +180,20 @@ func maxHistogramValue(h *metrics.Histogram) (float64, error) {
 	return float64(max), nil
 }
 
+func reportEnsureWorkVisibleHistogram(ctx context.Context, pv *perfutil.Values, hist *metrics.Histogram, unit, valueName string) error {
+	value, err := maxHistogramValue(hist)
+	if err != nil {
+		return errors.Wrap(err, "failed to get "+hist.Name+"data")
+	}
+	testing.ContextLog(ctx, valueName, " = ", value)
+	pv.Append(perf.Metric{
+		Name:      valueName,
+		Unit:      unit,
+		Direction: perf.SmallerIsBetter,
+	}, value)
+	return nil
+}
+
 // logout is a proxy to chrome.autotestPrivate.logout
 func logout(ctx context.Context, cr *chrome.Chrome, s *testing.State) error {
 	s.Log("Sign out: started")
@@ -340,10 +354,11 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 					"Ash.LoginAnimation.Duration" + suffix,
 				}
 				const (
-					ensureWorkVisibleHistogram = "GPU.EnsureWorkVisibleDuration"
+					ensureWorkVisibleHistogram       = "GPU.EnsureWorkVisibleDuration"
+					ensureWorkVisibleLowResHistogram = "GPU.EnsureWorkVisibleDurationLowRes"
 				)
 
-				allHistograms := []string{ensureWorkVisibleHistogram}
+				allHistograms := []string{ensureWorkVisibleHistogram, ensureWorkVisibleLowResHistogram}
 				allHistograms = append(allHistograms, heuristicsHistograms...)
 
 				r.RunMultiple(ctx, s,
@@ -406,18 +421,13 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 						for _, hist := range hists {
 							if heuristicsHistogramsMap[hist.Name] {
 								storeHeuristicsHistograms(ctx, pv, []*metrics.Histogram{hist})
-							} else if hist.Name == ensureWorkVisibleHistogram {
-								value, err := maxHistogramValue(hist)
-								if err != nil {
-									return errors.Wrap(err, "failed to get GPU.EnsureWorkVisibleDuration data")
+							} else if hist.Name == ensureWorkVisibleHistogram || hist.Name == ensureWorkVisibleLowResHistogram {
+								valueName := fmt.Sprintf("%s%s.%s.%dwindows", hist.Name, suffix, arcMode, currentWindows)
+								if hist.Name == ensureWorkVisibleHistogram {
+									reportEnsureWorkVisibleHistogram(ctx, pv, hist, "microsecond", valueName)
+								} else {
+									reportEnsureWorkVisibleHistogram(ctx, pv, hist, "millisecond", valueName)
 								}
-								name := fmt.Sprintf("%s%s.%s.%dwindows", hist.Name, suffix, arcMode, currentWindows)
-								testing.ContextLog(ctx, name, " = ", value)
-								pv.Append(perf.Metric{
-									Name:      name,
-									Unit:      "microsecond",
-									Direction: perf.SmallerIsBetter,
-								}, value)
 							} else {
 								return errors.Errorf("unknown histogram %q", hist.Name)
 							}
