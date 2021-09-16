@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58804205_81340d4e",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-16T09:20:01Z",
+      "side": 1,
+      "message": "Not related to this CL, but I think we can remove this.",
+      "range": {
+        "startLine": 87,
+        "startChar": 60,
+        "endLine": 87,
+        "endChar": 63
+      },
+      "revId": "29b282cb3461e3da7166739aa3c9c20fb8d35730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c716464_3f180605",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-16T09:20:01Z",
+      "side": 1,
+      "message": "Can we have a EnableGifRecording() method instead, and make it pass even if we call EnableGifRecording() when the expert mode option is already on?\n\nI did similar thing for Document Mode option and Multi-stream option in this CL: (Though haven\u0027t merged yet)\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3143401\n\nPlease take a look, thanks!",
+      "range": {
+        "startLine": 936,
+        "startChar": 1,
+        "endLine": 962,
+        "endChar": 37
+      },
+      "revId": "29b282cb3461e3da7166739aa3c9c20fb8d35730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c59b6e3_667bd2f1",
+        "filename": "src/chromiumos/tast/local/camera/cca/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-16T09:20:01Z",
+      "side": 1,
+      "message": "GIF recording",
+      "range": {
+        "startLine": 111,
+        "startChar": 62,
+        "endLine": 111,
+        "endChar": 76
+      },
+      "revId": "29b282cb3461e3da7166739aa3c9c20fb8d35730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
