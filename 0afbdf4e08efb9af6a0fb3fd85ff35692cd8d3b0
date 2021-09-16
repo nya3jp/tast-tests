@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a24d3628_7827686a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-16T05:14:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a6bce50_3b9c2b3c",
+      "revId": "0afbdf4e08efb9af6a0fb3fd85ff35692cd8d3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca545c4b_5617b6a7",
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Sorry. Typo.\nDriveFS: KeepFile \u003d true. Is the file removed at the end of the test?\nMyFiles: KeepFile \u003d false. Is the file removed at the end of the test?",
       "parentUuid": "ca545c4b_5617b6a7",
+      "revId": "0afbdf4e08efb9af6a0fb3fd85ff35692cd8d3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d6c2891_24edb0e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-16T05:14:26Z",
+      "side": 1,
+      "message": "Already tested with DriveFS: KeepFile \u003d true and File is removed.\nMyFiles doesn\u0027t pass KeepFile (Default - false) and the file is removed at the end of the test.",
+      "parentUuid": "ae7255f3_253305f7",
       "revId": "0afbdf4e08efb9af6a0fb3fd85ff35692cd8d3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
