@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/binsetup"
 	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -89,6 +90,12 @@ var vaImageTestFiles = map[string][]string{
 // VAAPIUnittest runs a set of HW accelerated decode tests, defined in
 // vaapi_unittest.
 func VAAPIUnittest(ctx context.Context, s *testing.State) {
+
+	if err := upstart.StopJob(ctx, "ui"); err != nil {
+		s.Error("Failed to stop ui: ", err)
+	}
+	defer upstart.EnsureJobRunning(ctx, "ui")
+
 	// The VA-API decode test operates on all files in a single directory.
 	// testing.State doesn't guarantee that all data files will be stored in the same
 	// directory, so copy them to a temp dir.
