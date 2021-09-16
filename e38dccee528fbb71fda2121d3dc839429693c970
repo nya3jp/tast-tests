@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bab31852_dae11ecf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T01:07:58Z",
+      "side": 1,
+      "message": "Thank you for migrating this to uiauto!",
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14f8b7bf_11c6347d",
@@ -111,6 +128,92 @@
         "startChar": 4,
         "endLine": 30,
         "endChar": 14
+      },
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9227ae2c_e3102eb2",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T01:07:58Z",
+      "side": 1,
+      "message": "*The finder is",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 12
+      },
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7527bbb_ba7daef3",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T01:07:58Z",
+      "side": 1,
+      "message": "Should quicksettings.go and constants.go be moved to the uiauto directory?\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/\n\nIt seems other migrated packages have been moved there instead of ui.",
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "927396a4_11b08b4e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T01:07:58Z",
+      "side": 1,
+      "message": "nit: could this be condensed to just `return uiauto.New(tconn).IsNodeFound(...)`?",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 48
+      },
+      "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2778132_37e2f479",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T01:07:58Z",
+      "side": 1,
+      "message": "with uiauto, you don\u0027t need to use a regex for partial name matching anymore. you can instead use nodewith.NameContaining\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go;l\u003d526-534\n\nthen, this function can just return a *nodewith.Finder (which will make call sites a lot cleaner too!)",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 76
       },
       "revId": "e38dccee528fbb71fda2121d3dc839429693c970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"

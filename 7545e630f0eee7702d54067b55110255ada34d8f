@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0611434c_0046ed36",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-16T01:07:58Z",
+      "side": 0,
+      "message": "Looks like this functionality has been removed by your change. It should be preserved in MicEnabled/ToggleMic to ensure compatibility",
+      "range": {
+        "startLine": 563,
+        "startChar": 1,
+        "endLine": 565,
+        "endChar": 2
+      },
+      "revId": "7545e630f0eee7702d54067b55110255ada34d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
