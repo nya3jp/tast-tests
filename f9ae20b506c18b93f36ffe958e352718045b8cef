@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d19df610_1f433750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-16T08:24:33Z",
+      "side": 1,
+      "message": "I think it would be nicer if \"what is expected and examined by this test\" is noted somewhere, either the test function godoc, commit message, or the issue tracker.\nIIUC this test makes a recording by loopback-like mechanism, then play it, and examine that the right output device is still chosen, as it may be affected by previous steps. Is this correct?\nThe current description is \"Play local audio file and record it simultaneously\" and I am not sure how this is related to this verification of the first-running device.\n\n(I am not a specialist of the audio component, so this comment may be incorrect. So feel free to ignore my comment here in such case.)",
+      "revId": "f9ae20b506c18b93f36ffe958e352718045b8cef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
