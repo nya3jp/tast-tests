@@ -39,6 +39,30 @@
       },
       "revId": "0b859fbdd5142ed34ae688d3bbd7473883368253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8581829_3139688e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-09-16T22:13:00Z",
+      "side": 1,
+      "message": "Agreed. Fixed in the following patchset.\nThanks for catching it :)",
+      "parentUuid": "f87cca82_cbf89c02",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 24
+      },
+      "revId": "0b859fbdd5142ed34ae688d3bbd7473883368253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
