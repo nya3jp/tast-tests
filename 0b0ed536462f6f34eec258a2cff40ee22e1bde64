@@ -20,6 +20,42 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9507cfb4_a2df35a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-09-16T20:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e7327c3_6d7cb146",
+      "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1916ddaa_24c9219b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-09-16T20:12:43Z",
+      "side": 1,
+      "message": "Done. Added\n\n\u003e Needed so that CUJ tests could pull metrics from both ash-chrome and lacros-chrome.",
+      "parentUuid": "6e7327c3_6d7cb146",
+      "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "70ae61ab_435a810c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d37e562c_b7190439",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-09-16T20:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2772fdb_86605236",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4275282_3f2c90d9",
@@ -77,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddb30f0e_bdae370c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-09-16T20:12:43Z",
+      "side": 1,
+      "message": "Go does not support optional arg, or default value. So if we add a `tconn` arg to existing NewXXXMetrticsConfig API, we need to update all call sites. And if a test does not have lacros variation, adding a \"nil\" is actually hurting readability, IMHO.",
+      "parentUuid": "c4275282_3f2c90d9",
+      "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1856b80_1925b807",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
         "patchSetId": 1
@@ -88,6 +166,24 @@
       "writtenOn": "2021-09-16T19:45:22Z",
       "side": 1,
       "message": "Are there no line char limits in Go?",
+      "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b0b663_e7909207",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-09-16T20:12:43Z",
+      "side": 1,
+      "message": "I don\u0027t recall seeing a guide linet of char limit. `gofmt` and `tast lint` does not complain. But I wrapped at `direction` arg into 2 lines close to 80 chars.",
+      "parentUuid": "f1856b80_1925b807",
       "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +207,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "891a1ec4_62f65909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-09-16T20:12:43Z",
+      "side": 1,
+      "message": "As comment says, they are \"merics names\", aka histogram names.\ne.g. \n  \"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video\"\n  \nWe need the name to pull histograms samples out of chrome. Change here is to group names with browser test connections",
+      "parentUuid": "f41980d4_bc8cb455",
+      "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f20ed136_dcb3223a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
         "patchSetId": 1
@@ -122,6 +236,30 @@
       "writtenOn": "2021-09-16T19:45:22Z",
       "side": 1,
       "message": "bTconn \u003d browser test connection, right?",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 11
+      },
+      "revId": "0b0ed536462f6f34eec258a2cff40ee22e1bde64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50595ff2_5b9878cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-09-16T20:12:43Z",
+      "side": 1,
+      "message": "Yep. Would \"btconn\" look better? I an open to suggestions.",
+      "parentUuid": "f20ed136_dcb3223a",
       "range": {
         "startLine": 103,
         "startChar": 5,
