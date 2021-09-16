@@ -45,6 +45,54 @@
       },
       "revId": "5d8b0005c64152dcdde1ac5cb300a9e8237cdc3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32c462fd_cb46f0dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-16T05:28:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8af3c758_0d962cb3",
+      "range": {
+        "startLine": 71,
+        "startChar": 92,
+        "endLine": 71,
+        "endChar": 121
+      },
+      "revId": "5d8b0005c64152dcdde1ac5cb300a9e8237cdc3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b4e8cd1_b63120e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-16T05:28:30Z",
+      "side": 1,
+      "message": "No need, the func itself checks it.",
+      "parentUuid": "696bee2f_0eea9ad4",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 43
+      },
+      "revId": "5d8b0005c64152dcdde1ac5cb300a9e8237cdc3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
