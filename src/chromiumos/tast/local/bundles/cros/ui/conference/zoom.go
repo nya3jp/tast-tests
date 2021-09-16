@@ -122,6 +122,13 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 	// for different tiers testing would ask for different size
 	checkParticipantsNum := func(ctx context.Context) error {
 		participant := nodewith.NameContaining("open the participants list pane").Role(role.Button)
+		noParticipant := nodewith.NameContaining("[0] particpants").Role(role.Button)
+		if err := uiauto.Combine("wait participants",
+			ui.WaitUntilExists(participant),
+			ui.WithTimeout(30*time.Second).WaitUntilGone(noParticipant),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait participants")
+		}
 		participantInfo, err := ui.Info(ctx, participant)
 		if err != nil {
 			return errors.Wrap(err, "failed to get participant info")
@@ -135,6 +142,35 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 		}
 		if int(num) != conf.roomSize {
 			return errors.Wrapf(err, "meeting participant number is %d but %d is expected", num, conf.roomSize)
+		}
+		return nil
+	}
+	joinAudio := func(ctx context.Context) error {
+		audioButton := nodewith.NameRegex(regexp.MustCompile("(mute|unmute) my microphone")).Role(role.Button)
+		// Not every room will automatically join audio.
+		// If there is no automatic join audio, do join audio action.
+		if err := ui.WaitUntilExists(audioButton)(ctx); err == nil {
+			testing.ContextLog(ctx, "It has automatically joined audio")
+			return nil
+		}
+		joinAudioButton := nodewith.Name("Join Audio by Computer").Role(role.Button)
+		testing.ContextLog(ctx, "Join Audio by Computer")
+		return ui.WithTimeout(30*time.Second).LeftClickUntil(joinAudioButton, ui.WithTimeout(time.Second).WaitUntilGone(joinAudioButton))(ctx)
+	}
+
+	// It seems zoom has different UI versions. One of the zoom version will open a new tab.
+	// Need to close the initial zoom web page to avoid problems when switching tabs.
+	closeLaunchMeetingTab := func(ctx context.Context) error {
+		zoomTab := nodewith.Name("Launch Meeting - Zoom").Role(role.Tab)
+		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(zoomTab)
+		if conf.tabletMode {
+			// If in tablet mode, it should toggle tab strip to show tab list.
+			if err := ui.LeftClick(nodewith.NameContaining("toggle tab strip").Role(role.Button).First())(ctx); err != nil {
+				return err
+			}
+		}
+		if err := ui.LeftClick(closeButton)(ctx); err == nil {
+			testing.ContextLog(ctx, `Close "Launch Meeting - Zoom" tab`)
 		}
 		return nil
 	}
@@ -161,28 +197,13 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 	joinButton := nodewith.Name("Join").Role(role.Button)
 	webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
 	joinFromYourBrowser := nodewith.Name("Join from Your Browser").Role(role.StaticText)
-	joinAudioButton := nodewith.Name("Join Audio by Computer").Role(role.Button)
-
-	// It seems zoom has different UI versions. One of the zoom version will open a new tab.
-	// Need to close the initial zoom web page to avoid problems when switching tabs.
-	closeLaunchMeetingTab := func(ctx context.Context) error {
-		zoomTab := nodewith.Name("Launch Meeting - Zoom").Role(role.Tab)
-		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(zoomTab)
-		if conf.tabletMode {
-			// If in tablet mode, it should toggle tab strip to show tab list.
-			if err := ui.LeftClick(nodewith.NameContaining("toggle tab strip").Role(role.Button).First())(ctx); err != nil {
-				return err
-			}
-		}
-		if err := ui.LeftClick(closeButton)(ctx); err == nil {
-			testing.ContextLog(ctx, `Close "Launch Meeting - Zoom" tab`)
-		}
-		return nil
-	}
-
+	acceptCookiesButton := nodewith.Name("ACCEPT COOKIES").Role(role.Button)
 	testing.ContextLog(ctx, "Join conference")
 	return uiauto.Combine("join conference",
 		openZoomAndSignIn,
+		ui.WaitUntilExists(joinFromYourBrowser),
+		ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(acceptCookiesButton),
+			ui.LeftClickUntil(acceptCookiesButton, ui.WithTimeout(time.Second).WaitUntilGone(acceptCookiesButton))),
 		ui.LeftClick(joinFromYourBrowser),
 		ui.WithTimeout(time.Minute).WaitUntilExists(joinButton),
 		ui.WaitForLocation(joinButton),
@@ -190,9 +211,11 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 		ui.LeftClickUntil(joinButton, ui.WithTimeout(time.Second).WaitUntilGone(joinButton)),
 		// Use 1 minute timeout value because it may take longer to wait for page loading,
 		// especially for some low end DUTs.
-		ui.WithTimeout(time.Minute).WaitUntilExists(joinAudioButton),
-		checkParticipantsNum,
-		ui.WithTimeout(30*time.Second).LeftClickUntil(joinAudioButton, ui.WithTimeout(time.Second).WaitUntilGone(joinAudioButton)),
+		ui.WithTimeout(time.Minute).WaitUntilExists(webArea),
+		// Sometimes participants number caught at the beginning is wrong, it will be correct after a while.
+		// Add retry to get the correct participants number.
+		ui.WithInterval(time.Second).Retry(10, checkParticipantsNum),
+		joinAudio,
 		// Launch Meeting page is useless so close it.
 		closeLaunchMeetingTab,
 		startVideo,
