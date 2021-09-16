@@ -676,6 +676,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ad1bc6e_52517df9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/request.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-16T10:42:47Z",
+      "side": 1,
+      "message": "Did you have chance to upload changes?",
+      "parentUuid": "ab0f11ac_4c711132",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 67
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a231442f_6989db47",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/types_request.go",
         "patchSetId": 7
