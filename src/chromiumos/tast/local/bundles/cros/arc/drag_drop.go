@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -245,7 +245,7 @@ func DragDrop(ctx context.Context, s *testing.State) {
 		defer targetAct.Stop(cleanupCtx, tconn)
 	}
 
-	if err := mouse.Drag(ctx, tconn, sourceBounds.CenterPoint(), targetBounds.CenterPoint(), time.Second); err != nil {
+	if err := mouse.Drag(tconn, sourceBounds.CenterPoint(), targetBounds.CenterPoint(), time.Second)(ctx); err != nil {
 		s.Fatal("Failed to send drag events: ", err)
 	}
 

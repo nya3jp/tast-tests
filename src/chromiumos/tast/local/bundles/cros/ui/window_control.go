@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -119,15 +119,15 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		coords.NewPoint(center.X, bounds.Top),
 	}
 	r.RunMultiple(ctx, s, "drag-maximized-window", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		if err := mouse.Move(ctx, tconn, points[0], 0); err != nil {
+		if err := mouse.Move(tconn, points[0], 0)(ctx); err != nil {
 			return errors.Wrap(err, "failed to move to the start position")
 		}
-		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+		if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
 			return errors.Wrap(err, "failed to release the button")
 		}
-		defer mouse.Release(ctx, tconn, mouse.LeftButton)
+		defer mouse.Release(tconn, mouse.LeftButton)
 		for _, point := range points[1:] {
-			if err := mouse.Move(ctx, tconn, point, 200*time.Millisecond); err != nil {
+			if err := mouse.Move(tconn, point, 200*time.Millisecond)(ctx); err != nil {
 				return errors.Wrap(err, "failed to move the mouse")
 			}
 		}
@@ -136,7 +136,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		if err := testing.Sleep(ctx, time.Second); err != nil {
 			return errors.Wrap(err, "failed to wait")
 		}
-		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+		if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
 			return errors.Wrap(err, "failed to release the button")
 		}
 		if err := ash.WaitWindowFinishAnimating(ctx, tconn, w.ID); err != nil {
@@ -240,15 +240,15 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		}
 		bounds := w.BoundsInRoot
 		tr := bounds.TopRight()
-		if err := mouse.Move(ctx, tconn, tr, 0); err != nil {
+		if err := mouse.Move(tconn, tr, 0)(ctx); err != nil {
 			return errors.Wrap(err, "failed to move the mouse to the initial location")
 		}
-		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+		if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
 			return errors.Wrap(err, "failed to press the left button")
 		}
-		defer mouse.Release(ctx, tconn, mouse.LeftButton)
+		defer mouse.Release(tconn, mouse.LeftButton)
 		for i, point := range []coords.Point{bounds.CenterPoint(), tr} {
-			if err := mouse.Move(ctx, tconn, point, 500*time.Millisecond); err != nil {
+			if err := mouse.Move(tconn, point, 500*time.Millisecond)(ctx); err != nil {
 				return errors.Wrapf(err, "failed to move the mouse to %v at step %d", point, i)
 			}
 		}

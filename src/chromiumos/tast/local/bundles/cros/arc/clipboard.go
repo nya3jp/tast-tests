@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/testing"
 )
 
@@ -185,7 +185,7 @@ func Clipboard(ctx context.Context, s *testing.State) {
 
 	// Click the center of the activity from Chrome to generate the first mouse event, because
 	// Wayland's set_selection should be associated with a valid serial number from an actual event.
-	if err := mouse.Click(ctx, tconn, info.BoundsInRoot.CenterPoint(), mouse.LeftButton); err != nil {
+	if err := mouse.Click(tconn, info.BoundsInRoot.CenterPoint(), mouse.LeftButton)(ctx); err != nil {
 		s.Fatal("Failed to click the center of the app: ", err)
 	}
 

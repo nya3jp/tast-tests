@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
@@ -110,7 +110,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 			if len(ws) > 1 {
 				// For multiple windows; hover on the boundary, wait for the resize-handle
 				// to appear, and move onto the resize handle.
-				if err := mouse.Move(ctx, tconn, start, 0); err != nil {
+				if err := mouse.Move(tconn, start, 0)(ctx); err != nil {
 					return errors.Wrap(err, "failed to move the mouse")
 				}
 				// Waiting for the resize-handle to appear. TODO(mukai): find the right
@@ -120,36 +120,36 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 				}
 				// 20 DIP would be good enough to move the drag handle.
 				start.Y += 20
-				if err := mouse.Move(ctx, tconn, start, 0); err != nil {
+				if err := mouse.Move(tconn, start, 0)(ctx); err != nil {
 					return errors.Wrap(err, "failed to move the mouse")
 				}
 			} else {
-				if err := mouse.Move(ctx, tconn, start, 0); err != nil {
+				if err := mouse.Move(tconn, start, 0)(ctx); err != nil {
 					return errors.Wrap(err, "failed to move the mouse")
 				}
 			}
 			left := coords.NewPoint(start.X-bounds.Width/4, start.Y)
 			right := coords.NewPoint(start.X+bounds.Width/4, start.Y)
 
-			if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+			if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
 				return errors.Wrap(err, "failed to press the button")
 			}
 			released := false
 			defer func() {
 				if !released {
-					mouse.Release(ctx, tconn, mouse.LeftButton)
+					mouse.Release(tconn, mouse.LeftButton)
 				}
 			}()
-			if err := mouse.Move(ctx, tconn, left, time.Second/2); err != nil {
+			if err := mouse.Move(tconn, left, time.Second/2)(ctx); err != nil {
 				return errors.Wrap(err, "faeild to drag to the left")
 			}
-			if err := mouse.Move(ctx, tconn, right, time.Second); err != nil {
+			if err := mouse.Move(tconn, right, time.Second)(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag to the right")
 			}
-			if err := mouse.Move(ctx, tconn, start, time.Second/2); err != nil {
+			if err := mouse.Move(tconn, start, time.Second/2)(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag back to the start position")
 			}
-			if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+			if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
 				return errors.Wrap(err, "failed to release the left button")
 			}
 			released = true

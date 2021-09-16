@@ -17,8 +17,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
@@ -248,7 +248,7 @@ func dragFromCrostini(ctx context.Context, pre crostini.PreData, files *filesapp
 
 	dragPoint := dragAppletWindow.BoundsInRoot.CenterPoint()
 	dropPoint := coords.Point{X: dragAppletWindow.BoundsInRoot.Left - 100, Y: 400}
-	if err = mouse.Drag(ctx, tconn, dragPoint, dropPoint, time.Second); err != nil {
+	if err = mouse.Drag(tconn, dragPoint, dropPoint, time.Second)(ctx); err != nil {
 		return errors.Wrap(err, "drag and drop")
 	}
 

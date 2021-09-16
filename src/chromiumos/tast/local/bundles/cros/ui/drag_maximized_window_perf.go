@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
@@ -107,17 +107,17 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 
 	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Move the mouse to caption and press down.
-		if err := mouse.Move(ctx, tconn, points[0], 10*time.Millisecond); err != nil {
+		if err := mouse.Move(tconn, points[0], 10*time.Millisecond)(ctx); err != nil {
 			return errors.Wrap(err, "failed to move to caption")
 		}
-		if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+		if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
 			return errors.Wrap(err, "failed to press the button")
 		}
 
 		// Drag the window around.
 		const dragTime = 500 * time.Millisecond
 		for _, point := range points {
-			if err := mouse.Move(ctx, tconn, point, dragTime); err != nil {
+			if err := mouse.Move(tconn, point, dragTime)(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag")
 			}
 		}
@@ -129,7 +129,7 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 		}
 
 		// Release the window. It is near the top of the screen so it should snap to maximize.
-		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+		if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
 			return errors.Wrap(err, "failed to release the button")
 		}
 
