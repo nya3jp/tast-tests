@@ -32,7 +32,7 @@ type PreData struct {
 	// It cannot be closed by tests.
 	UIDevice *ui.Device
 	// LacrosFixt is lacros fixture data when tests use lacros related fixtures.
-	LacrosFixt launcher.FixtData
+	LacrosFixt launcher.FixtValueImpl
 }
 
 // Booted returns a precondition that ARC Container has already booted when a test is run.

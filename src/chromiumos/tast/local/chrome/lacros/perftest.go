@@ -76,7 +76,7 @@ func waitForStableEnvironment(ctx context.Context) error {
 }
 
 // SetupCrosTestWithPage opens a cros-chrome page after waiting for a stable environment (CPU temperature, etc).
-func SetupCrosTestWithPage(ctx context.Context, f launcher.FixtData, url string) (*chrome.Conn, CleanupCallback, error) {
+func SetupCrosTestWithPage(ctx context.Context, f launcher.FixtValueImpl, url string) (*chrome.Conn, CleanupCallback, error) {
 	if err := waitForStableEnvironment(ctx); err != nil {
 		return nil, nil, err
 	}
@@ -93,7 +93,7 @@ func SetupCrosTestWithPage(ctx context.Context, f launcher.FixtData, url string)
 }
 
 // SetupLacrosTestWithPage opens a lacros-chrome page after waiting for a stable environment (CPU temperature, etc).
-func SetupLacrosTestWithPage(ctx context.Context, f launcher.FixtData, url string) (
+func SetupLacrosTestWithPage(ctx context.Context, f launcher.FixtValueImpl, url string) (
 	retConn *chrome.Conn, retTConn *chrome.TestConn, retL *launcher.LacrosChrome, retCleanup CleanupCallback, retErr error) {
 	// Launch lacros-chrome with about:blank loaded first - we don't want to include startup cost.
 	l, err := launcher.LaunchLacrosChrome(ctx, f)

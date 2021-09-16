@@ -154,7 +154,7 @@ func extensionArgs(extID, extList string) []string {
 }
 
 // LaunchLacrosChrome launches a fresh instance of lacros-chrome.
-func LaunchLacrosChrome(ctx context.Context, f FixtData) (*LacrosChrome, error) {
+func LaunchLacrosChrome(ctx context.Context, f FixtValueImpl) (*LacrosChrome, error) {
 	if err := killLacrosChrome(ctx, f.LacrosPath); err != nil {
 		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}

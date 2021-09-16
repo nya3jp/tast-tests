@@ -72,7 +72,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	var cr *chrome.Chrome
 
 	if useLacros {
-		cr = s.FixtValue().(launcher.FixtData).Chrome
+		cr = s.FixtValue().(launcher.FixtValueImpl).Chrome
 	} else {
 		cr = s.FixtValue().(cuj.FixtureData).Chrome
 		cs = cr
@@ -85,7 +85,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 
 	if useLacros {
 		// Launch lacros via shelf.
-		f := s.FixtValue().(launcher.FixtData)
+		f := s.FixtValue().(launcher.FixtValueImpl)
 
 		l, err := lacros.ShelfLaunch(ctx, tconn, f)
 		if err != nil {

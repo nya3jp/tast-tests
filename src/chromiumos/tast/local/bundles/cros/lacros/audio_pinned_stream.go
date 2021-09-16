@@ -43,7 +43,7 @@ func AudioPinnedStream(ctx context.Context, s *testing.State) {
 	}
 	defer unload(ctx)
 
-	lc, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData))
+	lc, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtValueImpl))
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}
