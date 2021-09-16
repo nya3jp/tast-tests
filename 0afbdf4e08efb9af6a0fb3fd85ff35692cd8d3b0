@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de454fe_bc628993",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-09-16T03:40:49Z",
+      "side": 1,
+      "message": "Adding KeepFile flag SGTM. Thanks.",
+      "revId": "0afbdf4e08efb9af6a0fb3fd85ff35692cd8d3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6bce50_3b9c2b3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-09-16T03:40:49Z",
+      "side": 1,
+      "message": "Please use os.ErrNotExist and remove the s.Logf: e.g.\n_, err :\u003d os.Stat(testFileLocation)\nfileNotExist \u003d errors.Is(err, os.ErrNotExist)",
+      "revId": "0afbdf4e08efb9af6a0fb3fd85ff35692cd8d3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca545c4b_5617b6a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/storage/storage.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-09-16T03:40:49Z",
+      "side": 1,
+      "message": "SGTM. Please test this locally for both cases. e.g.\nDriveFS: KeepFile \u003d false. Is the file removed at the end of the test?\nMyFiles: KeepFile \u003d true. Is the file removed at the end of the test?",
+      "revId": "0afbdf4e08efb9af6a0fb3fd85ff35692cd8d3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
