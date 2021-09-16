@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37d05b72_88b88cc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T02:39:49Z",
+      "side": 1,
+      "message": "Left some comments in additional to David\u0027s.",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8abb4c86_f26f30f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T02:39:49Z",
+      "side": 1,
+      "message": "nit. It is better to reduce the indention by swap the if statement.\n\nif dut.Connetced(ctx) {\n   s.Log(\"...\")\n   return\n}\n\n// Handling !dut.Connected(ctx)",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d39407c_5585eb05",
@@ -71,6 +105,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5073bf2_c279e9b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T02:39:49Z",
+      "side": 1,
+      "message": "Don\u0027t need to cast it twice.",
+      "range": {
+        "startLine": 90,
+        "startChar": 52,
+        "endLine": 90,
+        "endChar": 58
+      },
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66113b9d_10855b4c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
         "patchSetId": 1
@@ -88,6 +145,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c5f2789_675a4b99",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T02:39:49Z",
+      "side": 1,
+      "message": "check matchSetPre before accessing it.",
+      "range": {
+        "startLine": 91,
+        "startChar": 16,
+        "endLine": 91,
+        "endChar": 27
+      },
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc26cbad_1d1e0c24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T02:39:49Z",
+      "side": 1,
+      "message": "printing out slpOpSetPre and slpOpSetPost would be useful to me.",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d859155a_63c816c6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
         "patchSetId": 1
@@ -99,6 +196,29 @@
       "writtenOn": "2021-09-15T14:26:05Z",
       "side": 1,
       "message": "nit: ditto from above, pkgOpSetPost is being used for two purposes.",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "012abb50_648ac486",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-16T02:39:49Z",
+      "side": 1,
+      "message": "ditto. matchSetPost should be checked before accessing it.",
+      "range": {
+        "startLine": 114,
+        "startChar": 17,
+        "endLine": 114,
+        "endChar": 29
+      },
       "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
