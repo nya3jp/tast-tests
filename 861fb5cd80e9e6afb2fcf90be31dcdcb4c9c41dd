@@ -22,6 +22,30 @@
       },
       "revId": "861fb5cd80e9e6afb2fcf90be31dcdcb4c9c41dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be47269f_d66f43d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-16T00:22:47Z",
+      "side": 1,
+      "message": "The reason why I did not implement it was that after click, the input field should be focused, implying the click event has been received. If the context menu does not show up, it should be an actual issue.\n\nThe current retry is mostly dealing with the racing issue between page rendering completion and click event receiver. \n\nI would prefer to remain current impl. WDYT",
+      "parentUuid": "30f3abfc_a01d7794",
+      "range": {
+        "startLine": 275,
+        "startChar": 29,
+        "endLine": 275,
+        "endChar": 60
+      },
+      "revId": "861fb5cd80e9e6afb2fcf90be31dcdcb4c9c41dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
