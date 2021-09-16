@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72258b09_1f047572",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-16T19:41:24Z",
+      "side": 1,
+      "message": "this line is the actual fix but others are just for code optimization.",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 83
+      },
+      "revId": "4c5a5b090d1bd9a76c9a34e5c1587d688ac8950e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
