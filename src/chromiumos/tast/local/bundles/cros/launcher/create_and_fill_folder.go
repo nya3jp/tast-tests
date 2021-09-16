@@ -11,6 +11,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -52,13 +54,26 @@ func CreateAndFillFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create folder app: ", err)
 	}
 
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get keyboard: ", err)
+	}
+	defer kb.Close()
+
+	// Rename the newly created folder so that it is only used for this test and
+	// gets ignored for any following folder launcher tests.
+	if err := launcher.RenameFolder(tconn, kb, "Unnamed", "Filled")(ctx); err != nil {
+		s.Fatal("Failed to rename folder to NewName: ", err)
+	}
+	var FilledFolder = nodewith.Name("Folder Filled").ClassName(launcher.ExpandedItemsClass)
+
 	// The folder already has 2 items. Add 46 more items to get to the maximum folder size of 48 apps.
-	if err := launcher.AddItemsToFolder(ctx, tconn, launcher.UnnamedFolderFinder, 46); err != nil {
+	if err := launcher.AddItemsToFolder(ctx, tconn, FilledFolder, 46); err != nil {
 		s.Fatal("Failed to add items to folder: ", err)
 	}
 
 	// Check that the number of apps in the folder is 48.
-	size, err := launcher.GetFolderSize(ctx, tconn, launcher.UnnamedFolderFinder)
+	size, err := launcher.GetFolderSize(ctx, tconn, FilledFolder)
 	if err != nil {
 		s.Fatal("Failed to get the folder size: ", err)
 	}
@@ -67,13 +82,13 @@ func CreateAndFillFolder(ctx context.Context, s *testing.State) {
 	}
 
 	// Attempt to add one more item to the folder.
-	if err := launcher.AddItemsToFolder(ctx, tconn, launcher.UnnamedFolderFinder, 1); err != nil {
+	if err := launcher.AddItemsToFolder(ctx, tconn, FilledFolder, 1); err != nil {
 		s.Fatal("Failed to add items to folder: ", err)
 	}
 
 	// Because the folder was already filled to the maximum size, the number of apps in the folder should still be 48.
 	// Check that the folder size remains at the max of 48.
-	size, err = launcher.GetFolderSize(ctx, tconn, launcher.UnnamedFolderFinder)
+	size, err = launcher.GetFolderSize(ctx, tconn, FilledFolder)
 	if err != nil {
 		s.Fatal("Failed to get the folder size: ", err)
 	}
