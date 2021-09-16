@@ -33,6 +33,24 @@
       "message": "LGTM.\n\nWill there be a follow up CL to remove this from documentation and the actual list of SoftwareDeps?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/cmd/local_test_runner/main.go;l\u003d80?q\u003dcamera_720p\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/docs/code_review_comments.md;l\u003d208?q\u003dcamera_720p\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/docs/writing_tests.md;l\u003d517?q\u003dcamera_720p\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/docs/test_dependencies.md;l\u003d43?q\u003dcamera_720p",
       "revId": "ae139181be7a06975eca06ba207934c650d8e3e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "332edf09_aed36cbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-09-16T05:10:03Z",
+      "side": 1,
+      "message": "Yes, there will a follow up CL for that.",
+      "parentUuid": "b497b693_d5bef68b",
+      "revId": "ae139181be7a06975eca06ba207934c650d8e3e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
