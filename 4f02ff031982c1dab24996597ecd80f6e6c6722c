@@ -16,6 +16,24 @@
       "message": "This is the list of boards we *don\u0027t* run (critical) tests against\n\nNew boards should automatically be included in testing, provided they can run crostini and have enough disk space",
       "revId": "4f02ff031982c1dab24996597ecd80f6e6c6722c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d82b3b42_5afd10f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-09-16T19:21:05Z",
+      "side": 1,
+      "message": "Yeah I see that. When boards fall into this list do they have any sort of plan to get out?",
+      "parentUuid": "91d1bdde_539efadd",
+      "revId": "4f02ff031982c1dab24996597ecd80f6e6c6722c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
