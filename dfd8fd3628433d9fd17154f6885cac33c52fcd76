@@ -342,6 +342,30 @@
       },
       "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19a926ab_544ad420",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-16T08:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e681ae73_86aeeccc",
+      "range": {
+        "startLine": 546,
+        "startChar": 4,
+        "endLine": 546,
+        "endChar": 29
+      },
+      "revId": "dfd8fd3628433d9fd17154f6885cac33c52fcd76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

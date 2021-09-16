@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a80887b6_8738573a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-16T08:46:35Z",
+      "side": 1,
+      "message": "Move the common part of ONC definitions to the bottom of defs.go as comments suggested. @Pavol, @Victor, PTAL. Thank you!",
+      "revId": "412c47f15741a06eec58d2594690846486464c91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
