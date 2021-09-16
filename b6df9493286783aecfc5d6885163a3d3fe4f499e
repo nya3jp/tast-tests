@@ -16,6 +16,40 @@
       "message": "PTAL.",
       "revId": "b6df9493286783aecfc5d6885163a3d3fe4f499e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d027c2f1_be73e18d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-16T15:02:11Z",
+      "side": 1,
+      "message": "LGTM. I don\u0027t have +2 for tast.",
+      "revId": "b6df9493286783aecfc5d6885163a3d3fe4f499e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7039936_97b1d430",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-16T15:02:11Z",
+      "side": 1,
+      "message": "Nit: Should this be a separate change?",
+      "revId": "b6df9493286783aecfc5d6885163a3d3fe4f499e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
