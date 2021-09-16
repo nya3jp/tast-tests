@@ -127,6 +127,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d67a7176_a8742d6e",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-09-16T12:17:17Z",
+      "side": 1,
+      "message": "Makes sense! Thanks for raising this issue!",
+      "parentUuid": "b36e57fc_2dde864d",
+      "range": {
+        "startLine": 507,
+        "startChar": 5,
+        "endLine": 507,
+        "endChar": 42
+      },
+      "revId": "413b2f8bd444c005568213d02bc925dc52017924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df60671d_881c75cb",
@@ -150,6 +174,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99163b52_5334e900",
+        "filename": "src/chromiumos/tast/common/crypto/certificate/cert_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-09-16T12:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df60671d_881c75cb",
+      "range": {
+        "startLine": 192,
+        "startChar": 3,
+        "endLine": 192,
+        "endChar": 67
+      },
+      "revId": "413b2f8bd444c005568213d02bc925dc52017924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cba93db5_bb1f12d7",
@@ -163,6 +211,30 @@
       "writtenOn": "2021-09-07T07:02:33Z",
       "side": 1,
       "message": "Are we expected to test matching against multiple domain suffixes (\u003e1)?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "413b2f8bd444c005568213d02bc925dc52017924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc23a92_4551fa5e",
+        "filename": "src/chromiumos/tast/common/wifi/security/wpaeap/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1316063
+      },
+      "writtenOn": "2021-09-16T12:17:17Z",
+      "side": 1,
+      "message": "I was using `len()` here to test against empty strings. Now that we changed `domainSuffixMatch` to be a list, it will check against empty lists.",
+      "parentUuid": "cba93db5_bb1f12d7",
       "range": {
         "startLine": 82,
         "startChar": 1,
