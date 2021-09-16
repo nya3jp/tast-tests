@@ -242,11 +242,11 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 	success := false
 
 	var cr *chrome.Chrome
-	var lacrosFixt launcher.FixtData
+	var lacrosFixt launcher.FixtValue
 
 	if f.useParentChrome {
-		lacrosFixt = s.ParentValue().(launcher.FixtData)
-		cr = lacrosFixt.Chrome
+		lacrosFixt = s.ParentValue().(launcher.FixtValue)
+		cr = lacrosFixt.Chrome()
 	} else {
 		opts, err := f.fOpt(ctx, s)
 		if err != nil {
