@@ -164,7 +164,7 @@ type testInvocation struct {
 
 // runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and lacros chrome.
 // tconn is a test connection to the current browser being used (either ChromeOS or lacros chrome).
-func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, tracer traceable, invoc *testInvocation) error {
+func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtValueImpl, tracer traceable, invoc *testInvocation) error {
 	w, err := lacros.FindFirstNonBlankWindow(ctx, f.TestAPIConn)
 	if err != nil {
 		return err
@@ -276,7 +276,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, t
 	return runHistogram(ctx, tconn, tracer, invoc, perfFn)
 }
 
-func runLacrosTest(ctx context.Context, f launcher.FixtData, invoc *testInvocation) error {
+func runLacrosTest(ctx context.Context, f launcher.FixtValueImpl, invoc *testInvocation) error {
 	_, ltconn, l, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, invoc.page.url)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup cros-chrome test page")
@@ -304,7 +304,7 @@ func runLacrosTest(ctx context.Context, f launcher.FixtData, invoc *testInvocati
 	return runTest(ctx, ltconn, f, l, invoc)
 }
 
-func runCrosTest(ctx context.Context, f launcher.FixtData, invoc *testInvocation) error {
+func runCrosTest(ctx context.Context, f launcher.FixtValueImpl, invoc *testInvocation) error {
 	_, cleanup, err := lacros.SetupCrosTestWithPage(ctx, f, invoc.page.url)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup cros-chrome test page")
@@ -325,7 +325,7 @@ func runCrosTest(ctx context.Context, f launcher.FixtData, invoc *testInvocation
 }
 
 // RunGpuCUJ runs a GpuCUJ test according to the given parameters.
-func RunGpuCUJ(ctx context.Context, f launcher.FixtData, params TestParams, serverURL, traceDir string) (
+func RunGpuCUJ(ctx context.Context, f launcher.FixtValueImpl, params TestParams, serverURL, traceDir string) (
 	retPV *perf.Values, retCleanup lacros.CleanupCallback, retErr error) {
 	cleanup, err := lacros.SetupPerfTest(ctx, f.TestAPIConn, "lacros.GpuCUJ")
 	if err != nil {

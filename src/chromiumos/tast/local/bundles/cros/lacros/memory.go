@@ -133,7 +133,7 @@ func measureBothChrome(ctx context.Context, s *testing.State) (int, int) {
 	// processes, but most will go away after 60 seconds.
 	testing.Sleep(ctx, 60*time.Second)
 
-	pmf, pss, err := measureProcesses(ctx, s.FixtValue().(launcher.FixtData).LacrosPath)
+	pmf, pss, err := measureProcesses(ctx, s.FixtValue().(launcher.FixtValueImpl).LacrosPath)
 	if err != nil {
 		s.Fatal("Failed to measure memory of lacros-chrome: ", err)
 	}
@@ -162,7 +162,7 @@ func Memory(ctx context.Context, s *testing.State) {
 
 		// We currently rely on the assumption that the launcher
 		// creates a windows that is 800x600 in size.
-		l, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData))
+		l, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtValueImpl))
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}
@@ -189,13 +189,13 @@ func Memory(ctx context.Context, s *testing.State) {
 
 		var conns []*chrome.Conn
 		if params.mode == openTabMode {
-			conns, err = openTabsChromeOS(ctx, s.FixtValue().(launcher.FixtData).Chrome, params.numTabs)
+			conns, err = openTabsChromeOS(ctx, s.FixtValue().(launcher.FixtValueImpl).Chrome, params.numTabs)
 			if err != nil {
 				s.Fatal("Failed to open ash-chrome tabs: ", err)
 			}
 		} else {
 			// Open a new tab to url.
-			conn, err := s.FixtValue().(launcher.FixtData).Chrome.NewConn(ctx, url)
+			conn, err := s.FixtValue().(launcher.FixtValueImpl).Chrome.NewConn(ctx, url)
 			if err != nil {
 				s.Fatal("Failed to open ash-chrome tab: ", err)
 			}
@@ -206,7 +206,7 @@ func Memory(ctx context.Context, s *testing.State) {
 		}
 
 		// Set the window to 800x600 in size.
-		if err := s.FixtValue().(launcher.FixtData).TestAPIConn.Call(ctx, nil, `async () => {
+		if err := s.FixtValue().(launcher.FixtValueImpl).TestAPIConn.Call(ctx, nil, `async () => {
 			const win = await tast.promisify(chrome.windows.getLastFocused)();
 			await tast.promisify(chrome.windows.update)(win.id, {width: 800, height:600, state:"normal"});
 		}`); err != nil {

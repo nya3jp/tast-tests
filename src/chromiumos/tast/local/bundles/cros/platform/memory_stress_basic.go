@@ -191,7 +191,7 @@ func stressTestCase(ctx context.Context, localRand *rand.Rand, mbPerTab, switchC
 
 func lacrosMain(ctx context.Context, s *testing.State, localRand *rand.Rand, mbPerTab int, baseURL string, perfValues *perf.Values) error {
 	// TODO(b/191105438): Tune Lacros variation when Lacros tab discarder is mature.
-	lacros, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData))
+	lacros, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtValueImpl))
 	if err != nil {
 		return errors.Wrap(err, "failed to launch lacros-chrome")
 	}

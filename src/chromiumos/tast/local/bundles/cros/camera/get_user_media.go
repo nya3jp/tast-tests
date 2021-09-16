@@ -79,7 +79,7 @@ func GetUserMedia(ctx context.Context, s *testing.State) {
 	var cr getusermedia.ChromeInterface
 	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
 		var err error
-		cr, err = launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtData))
+		cr, err = launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtValueImpl))
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}
