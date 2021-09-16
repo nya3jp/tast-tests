@@ -285,7 +285,11 @@ func (s *Settings) GetDiskSize(ctx context.Context) (string, error) {
 	if err := s.tconn.ResetAutomation(ctx); err != nil {
 		return "", errors.Wrap(err, "failed to call ResetAutomation")
 	}
-	nodeInfo, err := s.ui.Info(ctx, nodewith.NameRegex(regexp.MustCompile(`[0-9]+.[0-9]+ GB$`)).Role(role.StaticText))
+	size := nodewith.NameRegex(regexp.MustCompile(`[0-9]+.[0-9]+ GB$`)).Role(role.StaticText)
+	if err := s.ui.WithInterval(500 * time.Millisecond).WaitForLocation(size)(ctx); err != nil {
+		return "", errors.Wrap(err, "failed to wait for location for the disk size")
+	}
+	nodeInfo, err := s.ui.Info(ctx, size)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to find disk size information on the Settings app")
 	}
