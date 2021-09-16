@@ -6,6 +6,8 @@ package launcher
 
 import (
 	"context"
+	"io/ioutil"
+	"os"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -24,13 +26,36 @@ func init() {
 			"mmourgos@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedInWith100FakeApps",
 	})
 }
 
 // RemoveAppsFromFolder tests that items can be removed from a folder.
 func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	extDirBase, err := ioutil.TempDir("", "")
+	if err != nil {
+		s.Fatal("Failed to create a tempdir: ", err)
+	}
+
+	// Create 10 fake apps to be used for folder actions.
+	numFakeApps := 10
+	dirs, err := ash.PrepareFakeApps(extDirBase, numFakeApps, nil)
+	if err != nil {
+		s.Fatal("Failed to prepare fake apps: ", err)
+	}
+	defer os.RemoveAll(extDirBase)
+
+	opts := make([]chrome.Option, 0, numFakeApps)
+	for _, dir := range dirs {
+		opts = append(opts, chrome.UnpackedExtension(dir))
+	}
+
+	// Creating fake apps and logging into a new session in this test ensures that enough apps will be available to folder.
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+	defer cr.Close(ctx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -48,7 +73,7 @@ func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Expanded Application list view: ", err)
 	}
 
-	if err := launcher.CreateFolder(ctx, tconn)(ctx); err != nil {
+	if err := launcher.CreateFolder(ctx, tconn); err != nil {
 		s.Fatal("Failed to create folder app: ", err)
 	}
 
