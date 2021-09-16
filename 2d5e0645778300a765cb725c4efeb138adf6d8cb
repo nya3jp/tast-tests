@@ -346,6 +346,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d05ce767_2fe186d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/device_params.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-16T11:11:56Z",
+      "side": 1,
+      "message": "It feels that DeviceParams is more fundamental structure and easily can be moved to a separate package. I think reversing that dependency will help with a package architecture.\n\nWon\u0027t you always use DeviceParams in the request? If not, maybe have few New* methods like New() and NewWithDeviceParams()?",
+      "parentUuid": "384120ea_40b171ac",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 72
+      },
+      "revId": "2d5e0645778300a765cb725c4efeb138adf6d8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3629477_c90cc48a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/doc.go",
         "patchSetId": 7
