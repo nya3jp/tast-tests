@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/conndiag"
+	"chromiumos/tast/local/chrome/uiauto/conndiag"
 	"chromiumos/tast/testing"
 )
 
