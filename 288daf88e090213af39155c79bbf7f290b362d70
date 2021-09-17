@@ -68,6 +68,24 @@
       "message": "nit: end with a .",
       "revId": "288daf88e090213af39155c79bbf7f290b362d70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d38412ab_2771ce14",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-17T01:17:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50baed6a_29607a17",
+      "revId": "288daf88e090213af39155c79bbf7f290b362d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
