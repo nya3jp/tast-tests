@@ -399,7 +399,7 @@ func (conf *ZoomConference) Presenting(ctx context.Context, application googleAp
 	}
 	// shareScreen shares screen by "Chrome Tab" and selects the tab which is going to present.
 	shareScreen := func(ctx context.Context) error {
-		shareScreenButton := nodewith.Name("Share Screen").Role(role.Button)
+		shareScreenButton := nodewith.Name("Share Screen").Role(role.StaticText)
 		presenMode := nodewith.Name("Chrome Tab").Role(role.Tab).ClassName("Tab")
 		presentTab := nodewith.ClassName("AXVirtualView").Role(role.Cell).Name(appTabName)
 		shareButton := nodewith.Name("Share").Role(role.Button)
