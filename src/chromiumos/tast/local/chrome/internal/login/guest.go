@@ -40,7 +40,7 @@ func logInAsGuest(ctx context.Context, cfg *config.Config, sess *driver.Session)
 		return err
 	}
 
-	if err := oobeConn.Exec(ctx, "Oobe.guestLoginForTesting()"); err != nil {
+	if err := oobeConn.Eval(ctx, "Oobe.guestLoginForTesting()", nil); err != nil {
 		return err
 	}
 
