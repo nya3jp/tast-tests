@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c87f7d9_d302ec10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-17T15:57:55Z",
+      "side": 1,
+      "message": "Thanks Alvin! PTAL?",
+      "revId": "de027e1ac11e352259a77a197f09eac87255214f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
