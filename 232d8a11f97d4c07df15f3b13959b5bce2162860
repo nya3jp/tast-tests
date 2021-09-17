@@ -81,6 +81,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3d5aff_d825840a",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T09:40:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3701dead_3a591fff",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 3
+      },
+      "revId": "232d8a11f97d4c07df15f3b13959b5bce2162860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8dfbe0c2_42826783",
@@ -111,6 +135,30 @@
       "writtenOn": "2021-09-17T08:41:35Z",
       "side": 1,
       "message": "Sorry for the unclear comment. What I meant was: numberOfScannedFiles is essentially the size of the array that you get from calling re.FindAllIndex on \"out\" instead of on \"line\". Hence, you don\u0027t need the for loop.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "232d8a11f97d4c07df15f3b13959b5bce2162860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b6d4124_9389f1a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T09:40:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2417c84e_07974004",
       "range": {
         "startLine": 138,
         "startChar": 0,
