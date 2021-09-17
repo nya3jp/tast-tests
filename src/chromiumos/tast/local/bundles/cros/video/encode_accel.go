@@ -58,11 +58,15 @@ func init() {
 			Name:              "h264_720p_l1t2",
 			Val:               encode.MakeTestOptionsWithSVCLayers(tulip720P, videotype.H264BaselineProf, "L1T2"),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "vaapi"},
+			// TODO(b/199487660): Run on AMD platforms once their driver supports H.264 temporal layer encoding.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("grunt", "zork")),
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
 			Name:              "h264_720p_l1t3",
 			Val:               encode.MakeTestOptionsWithSVCLayers(tulip720P, videotype.H264BaselineProf, "L1T3"),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "vaapi"},
+			// TODO(b/199487660): Run on AMD platforms once their driver supports H.264 temporal layer encoding.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("grunt", "zork")),
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
 			Name:              "h264_1080p",
