@@ -114,6 +114,7 @@ func writeTestExtension(dir, key, extraBgJs string) (id string, err error) {
     "autotestPrivate",
     "bluetoothPrivate",
     "browsingData",
+    "chromeosInfoPrivate",
     "clipboardRead",
     "clipboardWrite",
     "feedbackPrivate",
