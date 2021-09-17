@@ -92,7 +92,7 @@ func (m *ManualAlignRequest) GetFacing() Facing {
 	return Facing_FACING_UNSET
 }
 
-type CheckAlignRequest struct {
+type CheckRegressionRequest struct {
 	// Absolute path for saving data used on DUT.
 	DataPath string `protobuf:"bytes,1,opt,name=data_path,json=dataPath,proto3" json:"data_path,omitempty"`
 	// DUT's target camera facing to be aligned.
@@ -102,46 +102,46 @@ type CheckAlignRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *CheckAlignRequest) Reset()         { *m = CheckAlignRequest{} }
-func (m *CheckAlignRequest) String() string { return proto.CompactTextString(m) }
-func (*CheckAlignRequest) ProtoMessage()    {}
-func (*CheckAlignRequest) Descriptor() ([]byte, []int) {
+func (m *CheckRegressionRequest) Reset()         { *m = CheckRegressionRequest{} }
+func (m *CheckRegressionRequest) String() string { return proto.CompactTextString(m) }
+func (*CheckRegressionRequest) ProtoMessage()    {}
+func (*CheckRegressionRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_75246d9c3b103f32, []int{1}
 }
 
-func (m *CheckAlignRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CheckAlignRequest.Unmarshal(m, b)
+func (m *CheckRegressionRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CheckRegressionRequest.Unmarshal(m, b)
 }
-func (m *CheckAlignRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CheckAlignRequest.Marshal(b, m, deterministic)
+func (m *CheckRegressionRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CheckRegressionRequest.Marshal(b, m, deterministic)
 }
-func (m *CheckAlignRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CheckAlignRequest.Merge(m, src)
+func (m *CheckRegressionRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CheckRegressionRequest.Merge(m, src)
 }
-func (m *CheckAlignRequest) XXX_Size() int {
-	return xxx_messageInfo_CheckAlignRequest.Size(m)
+func (m *CheckRegressionRequest) XXX_Size() int {
+	return xxx_messageInfo_CheckRegressionRequest.Size(m)
 }
-func (m *CheckAlignRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_CheckAlignRequest.DiscardUnknown(m)
+func (m *CheckRegressionRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CheckRegressionRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CheckAlignRequest proto.InternalMessageInfo
+var xxx_messageInfo_CheckRegressionRequest proto.InternalMessageInfo
 
-func (m *CheckAlignRequest) GetDataPath() string {
+func (m *CheckRegressionRequest) GetDataPath() string {
 	if m != nil {
 		return m.DataPath
 	}
 	return ""
 }
 
-func (m *CheckAlignRequest) GetFacing() Facing {
+func (m *CheckRegressionRequest) GetFacing() Facing {
 	if m != nil {
 		return m.Facing
 	}
 	return Facing_FACING_UNSET
 }
 
-type CheckAlignResponse struct {
+type CheckRegressionResponse struct {
 	// Check result.
 	Result TestResult `protobuf:"varint,1,opt,name=result,proto3,enum=tast.cros.camerabox.TestResult" json:"result,omitempty"`
 	// Error message from running check.
@@ -151,39 +151,39 @@ type CheckAlignResponse struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *CheckAlignResponse) Reset()         { *m = CheckAlignResponse{} }
-func (m *CheckAlignResponse) String() string { return proto.CompactTextString(m) }
-func (*CheckAlignResponse) ProtoMessage()    {}
-func (*CheckAlignResponse) Descriptor() ([]byte, []int) {
+func (m *CheckRegressionResponse) Reset()         { *m = CheckRegressionResponse{} }
+func (m *CheckRegressionResponse) String() string { return proto.CompactTextString(m) }
+func (*CheckRegressionResponse) ProtoMessage()    {}
+func (*CheckRegressionResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_75246d9c3b103f32, []int{2}
 }
 
-func (m *CheckAlignResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CheckAlignResponse.Unmarshal(m, b)
+func (m *CheckRegressionResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CheckRegressionResponse.Unmarshal(m, b)
 }
-func (m *CheckAlignResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CheckAlignResponse.Marshal(b, m, deterministic)
+func (m *CheckRegressionResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CheckRegressionResponse.Marshal(b, m, deterministic)
 }
-func (m *CheckAlignResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CheckAlignResponse.Merge(m, src)
+func (m *CheckRegressionResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CheckRegressionResponse.Merge(m, src)
 }
-func (m *CheckAlignResponse) XXX_Size() int {
-	return xxx_messageInfo_CheckAlignResponse.Size(m)
+func (m *CheckRegressionResponse) XXX_Size() int {
+	return xxx_messageInfo_CheckRegressionResponse.Size(m)
 }
-func (m *CheckAlignResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_CheckAlignResponse.DiscardUnknown(m)
+func (m *CheckRegressionResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CheckRegressionResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CheckAlignResponse proto.InternalMessageInfo
+var xxx_messageInfo_CheckRegressionResponse proto.InternalMessageInfo
 
-func (m *CheckAlignResponse) GetResult() TestResult {
+func (m *CheckRegressionResponse) GetResult() TestResult {
 	if m != nil {
 		return m.Result
 	}
 	return TestResult_TEST_RESULT_UNSET
 }
 
-func (m *CheckAlignResponse) GetError() string {
+func (m *CheckRegressionResponse) GetError() string {
 	if m != nil {
 		return m.Error
 	}
@@ -192,37 +192,37 @@ func (m *CheckAlignResponse) GetError() string {
 
 func init() {
 	proto.RegisterType((*ManualAlignRequest)(nil), "tast.cros.camerabox.ManualAlignRequest")
-	proto.RegisterType((*CheckAlignRequest)(nil), "tast.cros.camerabox.CheckAlignRequest")
-	proto.RegisterType((*CheckAlignResponse)(nil), "tast.cros.camerabox.CheckAlignResponse")
+	proto.RegisterType((*CheckRegressionRequest)(nil), "tast.cros.camerabox.CheckRegressionRequest")
+	proto.RegisterType((*CheckRegressionResponse)(nil), "tast.cros.camerabox.CheckRegressionResponse")
 }
 
 func init() { proto.RegisterFile("alignment_service.proto", fileDescriptor_75246d9c3b103f32) }
 
 var fileDescriptor_75246d9c3b103f32 = []byte{
-	// 355 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0xcd, 0x4e, 0xeb, 0x30,
-	0x10, 0x85, 0x9b, 0xde, 0x7b, 0xab, 0xd6, 0x17, 0x55, 0x60, 0x10, 0x44, 0xe9, 0x82, 0x2a, 0x0b,
-	0x5a, 0x36, 0x8e, 0xd4, 0x2e, 0x58, 0x17, 0x04, 0x3b, 0xa4, 0x2a, 0xb0, 0x62, 0x53, 0xb9, 0xee,
-	0x34, 0x89, 0x88, 0xed, 0x60, 0x3b, 0xfc, 0xbc, 0x0c, 0x6f, 0xc3, 0x7b, 0xa1, 0xc4, 0x09, 0xad,
-	0xd4, 0x48, 0x74, 0x39, 0x39, 0x67, 0xe6, 0x4c, 0xe6, 0x33, 0x3a, 0xa3, 0x69, 0x12, 0x09, 0x0e,
-	0xc2, 0x2c, 0x34, 0xa8, 0xd7, 0x84, 0x01, 0xc9, 0x94, 0x34, 0x12, 0x1f, 0x1b, 0xaa, 0x0d, 0x61,
-	0x4a, 0x6a, 0xc2, 0x28, 0x07, 0x45, 0x97, 0xf2, 0xdd, 0x3b, 0x60, 0x92, 0x73, 0x29, 0xac, 0xc5,
-	0x1b, 0x44, 0x52, 0x46, 0x29, 0x04, 0x65, 0xb5, 0xcc, 0xd7, 0x01, 0xf0, 0xcc, 0x7c, 0x58, 0xd1,
-	0xff, 0x74, 0x10, 0xbe, 0xa7, 0x22, 0xa7, 0xe9, 0xac, 0x48, 0x08, 0xe1, 0x25, 0x07, 0x6d, 0xf0,
-	0x00, 0xf5, 0x56, 0xd4, 0xd0, 0x45, 0x46, 0x4d, 0xec, 0x3a, 0x43, 0x67, 0xdc, 0x0b, 0xbb, 0xc5,
-	0x87, 0x39, 0x35, 0x31, 0xf6, 0x50, 0x37, 0xd7, 0xa0, 0x04, 0xe5, 0xe0, 0xb6, 0xad, 0x56, 0xd7,
-	0x85, 0x96, 0x51, 0xad, 0xdf, 0xa4, 0x5a, 0xb9, 0x7f, 0xac, 0x56, 0xd7, 0x78, 0x8a, 0x3a, 0x6b,
-	0xca, 0x12, 0x11, 0xb9, 0x7f, 0x87, 0xce, 0xb8, 0x3f, 0x19, 0x90, 0x86, 0xe5, 0xc9, 0x5d, 0x69,
-	0x09, 0x2b, 0xab, 0x0f, 0xe8, 0xe8, 0x26, 0x06, 0xf6, 0xbc, 0xff, 0x7a, 0x9b, 0x98, 0xf6, 0xfe,
-	0x31, 0x0c, 0xe1, 0xed, 0x18, 0x9d, 0x49, 0xa1, 0x01, 0x5f, 0xa1, 0x8e, 0x02, 0x9d, 0xa7, 0xa6,
-	0x0c, 0xe9, 0x4f, 0xce, 0x1b, 0x47, 0x3d, 0x82, 0x36, 0x61, 0x69, 0x0b, 0x2b, 0x3b, 0x3e, 0x41,
-	0xff, 0x40, 0x29, 0xa9, 0xaa, 0xfb, 0xd8, 0x62, 0xf2, 0xe5, 0xa0, 0xc3, 0x59, 0x0d, 0xf2, 0xc1,
-	0x72, 0xc4, 0x73, 0xf4, 0x7f, 0x0b, 0x00, 0x1e, 0x35, 0x46, 0xec, 0x22, 0xf2, 0x4e, 0x89, 0xe5,
-	0x4a, 0x6a, 0xae, 0xe4, 0xb6, 0xe0, 0xea, 0xb7, 0xf0, 0x02, 0xa1, 0xcd, 0xbf, 0xe0, 0x8b, 0xc6,
-	0x81, 0x3b, 0x37, 0xf5, 0x46, 0xbf, 0xfa, 0xec, 0x51, 0xfc, 0xd6, 0xf5, 0xe5, 0xd3, 0x88, 0xc5,
-	0x4a, 0xf2, 0x24, 0xe7, 0x52, 0x07, 0x45, 0x5b, 0x50, 0xbd, 0x4a, 0x1d, 0x14, 0xfd, 0xc1, 0x4f,
-	0xff, 0xb2, 0x53, 0x6e, 0x37, 0xfd, 0x0e, 0x00, 0x00, 0xff, 0xff, 0x09, 0x1f, 0x46, 0x69, 0xc1,
-	0x02, 0x00, 0x00,
+	// 359 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x52, 0x4f, 0x4f, 0xc2, 0x30,
+	0x1c, 0x65, 0xa8, 0x04, 0xaa, 0x41, 0x53, 0x0d, 0x2c, 0xe3, 0x20, 0xd9, 0x05, 0x8c, 0xa6, 0x4b,
+	0xe0, 0xe0, 0x19, 0x8d, 0xde, 0x4c, 0xc8, 0xf4, 0xe4, 0x85, 0x94, 0xf1, 0x63, 0x9b, 0xae, 0xed,
+	0x6c, 0x3b, 0xff, 0x7c, 0x19, 0x3f, 0x95, 0x1f, 0xc8, 0x6c, 0xdd, 0xd4, 0xc8, 0x0e, 0x1c, 0x5f,
+	0xdf, 0xeb, 0x7b, 0xbf, 0xfe, 0x5e, 0x51, 0x9f, 0x26, 0x71, 0xc8, 0x19, 0x70, 0xbd, 0x50, 0x20,
+	0x5f, 0xe3, 0x00, 0x48, 0x2a, 0x85, 0x16, 0xf8, 0x58, 0x53, 0xa5, 0x49, 0x20, 0x85, 0x22, 0x01,
+	0x65, 0x20, 0xe9, 0x52, 0xbc, 0x3b, 0x07, 0x81, 0x60, 0x4c, 0x70, 0x23, 0x71, 0x06, 0xa1, 0x10,
+	0x61, 0x02, 0x5e, 0x81, 0x96, 0xd9, 0xda, 0x03, 0x96, 0xea, 0x0f, 0x43, 0xba, 0x9f, 0x16, 0xc2,
+	0x77, 0x94, 0x67, 0x34, 0x99, 0xe5, 0x09, 0x3e, 0xbc, 0x64, 0xa0, 0x34, 0x1e, 0xa0, 0xce, 0x8a,
+	0x6a, 0xba, 0x48, 0xa9, 0x8e, 0x6c, 0x6b, 0x68, 0x8d, 0x3b, 0x7e, 0x3b, 0x3f, 0x98, 0x53, 0x1d,
+	0x61, 0x07, 0xb5, 0x33, 0x05, 0x92, 0x53, 0x06, 0x76, 0xd3, 0x70, 0x15, 0xce, 0xb9, 0x94, 0x2a,
+	0xf5, 0x26, 0xe4, 0xca, 0xde, 0x31, 0x5c, 0x85, 0xf1, 0x14, 0xb5, 0xd6, 0x34, 0x88, 0x79, 0x68,
+	0xef, 0x0e, 0xad, 0x71, 0x77, 0x32, 0x20, 0x35, 0xc3, 0x93, 0xdb, 0x42, 0xe2, 0x97, 0x52, 0xf7,
+	0x09, 0xf5, 0xae, 0x23, 0x08, 0x9e, 0x7d, 0x08, 0x25, 0x28, 0x15, 0x8b, 0xed, 0x66, 0xfc, 0xcd,
+	0x6a, 0x6e, 0x9f, 0x15, 0xa1, 0xfe, 0x46, 0x96, 0x4a, 0x05, 0x57, 0x80, 0x2f, 0x51, 0x4b, 0x82,
+	0xca, 0x12, 0x5d, 0x24, 0x75, 0x27, 0xa7, 0xb5, 0x7e, 0x0f, 0xa0, 0xb4, 0x5f, 0xc8, 0xfc, 0x52,
+	0x8e, 0x4f, 0xd0, 0x1e, 0x48, 0x29, 0x64, 0xb9, 0x29, 0x03, 0x26, 0x5f, 0x16, 0x3a, 0x9a, 0x55,
+	0x95, 0xde, 0x9b, 0x46, 0xf1, 0x1c, 0xed, 0xff, 0xa9, 0x02, 0x8f, 0x6a, 0x23, 0x36, 0xcb, 0x72,
+	0x7a, 0xc4, 0x34, 0x4c, 0xaa, 0x86, 0xc9, 0x4d, 0xde, 0xb0, 0xdb, 0xc0, 0x1c, 0x1d, 0xfe, 0x7b,
+	0x10, 0x3e, 0xaf, 0x75, 0xad, 0x5f, 0xb1, 0x73, 0xb1, 0x9d, 0xd8, 0xec, 0xc8, 0x6d, 0x5c, 0x9d,
+	0x3d, 0x8e, 0x82, 0x48, 0x0a, 0x16, 0x67, 0x4c, 0x28, 0x2f, 0xbf, 0xeb, 0x95, 0xdf, 0x55, 0x79,
+	0xb9, 0x89, 0xf7, 0x63, 0xb2, 0x6c, 0x15, 0xc3, 0x4e, 0xbf, 0x03, 0x00, 0x00, 0xff, 0xff, 0x42,
+	0xdd, 0x4a, 0x6e, 0xda, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -239,8 +239,9 @@ const _ = grpc.SupportPackageIsVersion4
 type AlignmentServiceClient interface {
 	// ManualAlign opens preview page on DUT and wait until preview is aligned.
 	ManualAlign(ctx context.Context, in *ManualAlignRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// CheckAlign opens preview page on DUT and check alignment from the preview.
-	CheckAlign(ctx context.Context, in *CheckAlignRequest, opts ...grpc.CallOption) (*CheckAlignResponse, error)
+	// CheckRegression opens preview page on DUT and check preview is aligned as
+	// regression test.
+	CheckRegression(ctx context.Context, in *CheckRegressionRequest, opts ...grpc.CallOption) (*CheckRegressionResponse, error)
 }
 
 type alignmentServiceClient struct {
@@ -260,9 +261,9 @@ func (c *alignmentServiceClient) ManualAlign(ctx context.Context, in *ManualAlig
 	return out, nil
 }
 
-func (c *alignmentServiceClient) CheckAlign(ctx context.Context, in *CheckAlignRequest, opts ...grpc.CallOption) (*CheckAlignResponse, error) {
-	out := new(CheckAlignResponse)
-	err := c.cc.Invoke(ctx, "/tast.cros.camerabox.AlignmentService/CheckAlign", in, out, opts...)
+func (c *alignmentServiceClient) CheckRegression(ctx context.Context, in *CheckRegressionRequest, opts ...grpc.CallOption) (*CheckRegressionResponse, error) {
+	out := new(CheckRegressionResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.camerabox.AlignmentService/CheckRegression", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -273,8 +274,9 @@ func (c *alignmentServiceClient) CheckAlign(ctx context.Context, in *CheckAlignR
 type AlignmentServiceServer interface {
 	// ManualAlign opens preview page on DUT and wait until preview is aligned.
 	ManualAlign(context.Context, *ManualAlignRequest) (*empty.Empty, error)
-	// CheckAlign opens preview page on DUT and check alignment from the preview.
-	CheckAlign(context.Context, *CheckAlignRequest) (*CheckAlignResponse, error)
+	// CheckRegression opens preview page on DUT and check preview is aligned as
+	// regression test.
+	CheckRegression(context.Context, *CheckRegressionRequest) (*CheckRegressionResponse, error)
 }
 
 // UnimplementedAlignmentServiceServer can be embedded to have forward compatible implementations.
@@ -284,8 +286,8 @@ type UnimplementedAlignmentServiceServer struct {
 func (*UnimplementedAlignmentServiceServer) ManualAlign(ctx context.Context, req *ManualAlignRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ManualAlign not implemented")
 }
-func (*UnimplementedAlignmentServiceServer) CheckAlign(ctx context.Context, req *CheckAlignRequest) (*CheckAlignResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CheckAlign not implemented")
+func (*UnimplementedAlignmentServiceServer) CheckRegression(ctx context.Context, req *CheckRegressionRequest) (*CheckRegressionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CheckRegression not implemented")
 }
 
 func RegisterAlignmentServiceServer(s *grpc.Server, srv AlignmentServiceServer) {
@@ -310,20 +312,20 @@ func _AlignmentService_ManualAlign_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AlignmentService_CheckAlign_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CheckAlignRequest)
+func _AlignmentService_CheckRegression_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CheckRegressionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AlignmentServiceServer).CheckAlign(ctx, in)
+		return srv.(AlignmentServiceServer).CheckRegression(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/tast.cros.camerabox.AlignmentService/CheckAlign",
+		FullMethod: "/tast.cros.camerabox.AlignmentService/CheckRegression",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AlignmentServiceServer).CheckAlign(ctx, req.(*CheckAlignRequest))
+		return srv.(AlignmentServiceServer).CheckRegression(ctx, req.(*CheckRegressionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -337,8 +339,8 @@ var _AlignmentService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _AlignmentService_ManualAlign_Handler,
 		},
 		{
-			MethodName: "CheckAlign",
-			Handler:    _AlignmentService_CheckAlign_Handler,
+			MethodName: "CheckRegression",
+			Handler:    _AlignmentService_CheckRegression_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

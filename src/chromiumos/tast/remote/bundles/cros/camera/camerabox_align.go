@@ -121,12 +121,12 @@ func CameraboxAlign(ctx context.Context, s *testing.State) {
 	} else {
 		// For regression mode, the DUT must wait for chart ready first.
 		acl := pb.NewAlignmentServiceClient(cl.Conn)
-		response, err := acl.CheckAlign(ctx, &pb.CheckAlignRequest{
+		response, err := acl.CheckRegression(ctx, &pb.CheckRegressionRequest{
 			DataPath: dataPath,
 			Facing:   facing,
 		})
 		if err != nil {
-			s.Fatal("Remote call CheckAlign() failed: ", err)
+			s.Fatal("Remote call CheckRegression() failed: ", err)
 		}
 		if response.Result != pb.TestResult_TEST_RESULT_PASSED {
 			s.Error("Align check failed: ", response.Error)

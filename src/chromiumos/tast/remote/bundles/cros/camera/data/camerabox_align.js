@@ -18,6 +18,17 @@ let AspectRatio = {
   AR16X9: 16 / 9,
 };
 
+/**
+ * @param {!AspectRatio} aspectRatio
+ * @return {string}
+ */
+function getAspectRatioName(aspectRatio) {
+  if (aspectRatio === AspectRatio.AR4X3) {
+    return '4x3';
+  }
+  return '16x9';
+}
+
 class Preview {
   constructor() {
     /**
@@ -105,9 +116,14 @@ class AlignTimeoutError extends Error {
    */
   constructor(facing, aspectRatio, timeout) {
     super(`Can't align ${
-        facing == Facing.BACK ? 'back' : 'front'} facing camera with ${
-        aspectRatio} aspectRatio within ${timeout} ms`);
+        facing === Facing.BACK ? 'back' : 'front'} facing camera with ${
+        getAspectRatioName(aspectRatio)} aspectRatio within ${timeout} ms`);
     this.name = this.constructor.name;
+
+    /**
+     * @const {!AspectRatio}
+     */
+    this.aspectRatio = aspectRatio;
   }
 }
 
@@ -124,24 +140,6 @@ window.Tast = class Tast {
       window.Tast.preview_instance_ = new Preview();
     }
     return window.Tast.preview_instance_;
-  }
-
-  /**
-   * Saves frame to download folder.
-   * @param {!Facing} facing
-   * @param {!AspectRatio} aspectRatio
-   */
-  static async savePreviewFrame_(facing, aspectRatio) {
-    const frame = await Tast.getPreviewFrame_(facing, aspectRatio);
-    const blob = await frame.convertToBlob({type: 'image/png'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'frame.png';
-    document.body.appendChild(a);
-    a.click();
-    // Delay for waiting frame saved.
-    await sleep(1000);
   }
 
   /**
@@ -244,14 +242,13 @@ window.Tast = class Tast {
    */
   static async waitForPassAlignN_(
       facing, aspectRatio, passMs, timeoutMs = Infinity) {
-    const aspectRatioName = aspectRatio === AspectRatio.AR4X3 ? '4x3' : '16x9';
+    const aspectRatioName = getAspectRatioName(aspectRatio);
     let startCheckTime = Date.now();
     let startPassTime = null;
     while (true) {
       await sleep(200);
       const currentTime = Date.now();
       if (currentTime - startCheckTime > timeoutMs) {
-        await Tast.savePreviewFrame_(facing, aspectRatio);
         throw new AlignTimeoutError(facing, aspectRatio, timeoutMs);
       }
       if (!await Tast.checkAlign_(facing, aspectRatio)) {
@@ -283,16 +280,6 @@ window.Tast = class Tast {
       await Tast.waitForPassAlignN_(facing, AspectRatio.AR4X3, 5000);
       await Tast.waitForPassAlignN_(facing, AspectRatio.AR16X9, 5000);
 
-      if (!await Tast.checkAlign_(facing, AspectRatio.AR4X3)) {
-        Tast.feedbackAlign_(false, 'Check 4x3 align failed');
-        continue;
-      }
-
-      if (!await Tast.checkAlign_(facing, AspectRatio.AR16X9)) {
-        Tast.feedbackAlign_(false, 'Check 16x9 align failed');
-        continue;
-      }
-
       Tast.feedbackAlign_(
           true, `Click settled button once the fixture is settled`);
       const btn = document.querySelector('#settled');
@@ -302,28 +289,63 @@ window.Tast = class Tast {
       });
       btn.hidden = true;
 
-      if (!await Tast.checkAlign_(facing, AspectRatio.AR4X3)) {
-        Tast.feedbackAlign_(false, 'Check 4x3 align failed');
-        continue;
-      }
-
-      if (!await Tast.checkAlign_(facing, AspectRatio.AR16X9)) {
-        Tast.feedbackAlign_(false, 'Check 16x9 align failed');
-        continue;
+      try {
+        // Check the regression test criteria can also pass after finishing
+        // manual alignment.
+        await Tast.checkRegression_(facing);
+      } catch (e) {
+        if (e instanceof AlignTimeoutError) {
+          const aspectRatioName = getAspectRatioName(e.aspectRatio);
+          Tast.feedbackAlign_(false, `Check ${aspectRatioName} align failed`);
+          continue;
+        }
+        throw e;
       }
       break;
     }
-
-    Tast.feedbackAlign_(true, 'All passed');
   }
 
   /**
    * @param {!Facing} facing
    * @return {!Promise}
    */
-  static async checkAlign(facing) {
+  static async checkRegression_(facing) {
     await Tast.waitForPassAlignN_(facing, AspectRatio.AR4X3, 5000, 15000);
     await Tast.waitForPassAlignN_(facing, AspectRatio.AR16X9, 5000, 15000);
+    Tast.feedbackAlign_(true, 'All passed');
+  }
+
+  /**
+   * Saves frame to download folder.
+   * @param {!Facing} facing
+   * @param {!AspectRatio} aspectRatio
+   */
+  static async savePreviewFrame_(facing, aspectRatio) {
+    const frame = await Tast.getPreviewFrame_(facing, aspectRatio);
+    const blob = await frame.convertToBlob({type: 'image/png'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'frame.png';
+    document.body.appendChild(a);
+    a.click();
+    // Delay for waiting frame saved.
+    await sleep(1000);
+  }
+
+  /**
+   * @param {!Facing} facing
+   * @return {!Promise}
+   */
+  static async checkRegression(facing) {
+    try {
+      await Tast.checkRegression_(facing);
+    } catch (e) {
+      if (e instanceof AlignTimeoutError) {
+        await Tast.savePreviewFrame_(facing, e.aspectRatio);
+      }
+      throw e;
+    }
     Tast.feedbackAlign_(true, 'All passed');
   }
 };
