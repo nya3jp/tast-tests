@@ -209,7 +209,7 @@ func (s *ScanApp) MultiPageScan(PageNumber int) uiauto.Action {
 
 		// Wait until the 'Scan next page' button is displayed to verify the scan
 		// completed successfully.
-		s.WithTimeout(120*time.Second).WaitUntilExists(nodewith.Name("Scan page "+fmt.Sprintf("%d", PageNumber+1)).Role(role.Button)),
+		s.WaitUntilExists(nodewith.Name("Scan page "+fmt.Sprintf("%d", PageNumber+1)).Role(role.Button)),
 	)
 }
 
@@ -217,4 +217,24 @@ func (s *ScanApp) MultiPageScan(PageNumber int) uiauto.Action {
 // scan session.
 func (s *ScanApp) ClickSave() uiauto.Action {
 	return s.LeftClick(nodewith.Name("End & save").Role(role.Button))
+}
+
+// RemovePage returns a function that moves the mouse over the scan preview
+// section and removes the current page in view.
+func (s *ScanApp) RemovePage() uiauto.Action {
+	return uiauto.Combine("remove page from multi-page scan",
+		s.ui.MouseMoveTo(nodewith.NameContaining("Scanning completed"), 0),
+		s.LeftClick(nodewith.Name("Remove").Role(role.Button)),
+		s.LeftClick(nodewith.Name("Remove").Role(role.Button)),
+	)
+}
+
+// RescanPage returns a function that moves the mouse over the scan preview
+// section and rescans the current page in view.
+func (s *ScanApp) RescanPage() uiauto.Action {
+	return uiauto.Combine("rescan page in multi-page scan",
+		s.ui.MouseMoveTo(nodewith.NameContaining("Scanning completed"), 0),
+		s.LeftClick(nodewith.Name("Rescan").Role(role.Button)),
+		s.LeftClick(nodewith.Name("Rescan").Role(role.Button)),
+	)
 }

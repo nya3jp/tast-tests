@@ -40,14 +40,39 @@ func init() {
 		SoftwareDeps: []string{"chrome", "virtual_usb_printer"},
 		Data: []string{
 			scanning.SourceImage,
-			multiPagePdfGoldenFile,
+			singlePagePdfGoldenFile,
+			twoPagePdfGoldenFile,
 		},
 	})
 }
 
 const (
-	multiPagePdfGoldenFile = "multi_page_flatbed_normal_case.pdf"
+	singlePagePdfGoldenFile = "multi_page_flatbed_single_page.pdf"
+	twoPagePdfGoldenFile    = "multi_page_flatbed_two_page.pdf"
 )
+
+var multiPageScanTests = []struct {
+	name       string
+	removePage bool
+	rescanPage bool
+	goldenFile string
+}{{
+	name:       "multi_page_base",
+	removePage: false,
+	rescanPage: false,
+	goldenFile: twoPagePdfGoldenFile,
+}, {
+	name:       "multi_page_remove_page",
+	removePage: true,
+	rescanPage: false,
+	goldenFile: singlePagePdfGoldenFile,
+}, {
+	name:       "multi_page_rescan_page",
+	removePage: false,
+	rescanPage: true,
+	goldenFile: twoPagePdfGoldenFile,
+},
+}
 
 func MultiPageScan(ctx context.Context, s *testing.State) {
 	// Use cleanupCtx for any deferred cleanups in case of timeouts or
@@ -116,19 +141,7 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to expand More settings: ", err)
 	}
 
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_multi_page_scan")
-	defer func() {
-		if err := scanning.RemoveScans(scanning.DefaultScanPattern); err != nil {
-			s.Error("Failed to remove scans: ", err)
-		}
-	}()
-
-	// Make sure printer connected notifications don't cover the Scan button.
-	if err := ash.CloseNotifications(ctx, tconn); err != nil {
-		s.Fatal("Failed to close notifications: ", err)
-	}
-
-	if err := uiauto.Combine("scan",
+	if err := uiauto.Combine("set scan settings",
 		app.SetScanSettings(scanapp.ScanSettings{
 			Scanner:    scanning.ScannerName,
 			Source:     scanapp.SourceFlatbed,
@@ -138,22 +151,60 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 			Resolution: scanapp.Resolution300DPI,
 		}),
 		app.ClickMultiPageScanCheckbox(),
-		app.MultiPageScan( /*PageNumber=*/ 1),
-		app.MultiPageScan( /*PageNumber=*/ 2),
-		app.ClickSave(),
-		app.ClickDone(),
 	)(ctx); err != nil {
-		s.Fatal("Failed to perform scan: ", err)
+		s.Fatal("Failed to set scan settings: ", err)
 	}
 
-	scan, err := scanning.GetScan(scanning.DefaultScanPattern)
-	if err != nil {
-		s.Fatal("Failed to find scan: ", err)
-	}
+	for _, test := range multiPageScanTests {
+		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_multi_page_scan")
+			defer func() {
+				if err := scanning.RemoveScans(scanning.DefaultScanPattern); err != nil {
+					s.Error("Failed to remove scans: ", err)
+				}
+			}()
 
-	diffPath := filepath.Join(s.OutDir(), "multi_page_scan_diff.txt")
-	if err := document.CompareFiles(ctx, scan, s.DataPath(multiPagePdfGoldenFile), diffPath); err != nil {
-		s.Error("Scan differs from golden file: ", err)
+			// Make sure printer connected notifications don't cover the Scan button.
+			if err := ash.CloseNotifications(ctx, tconn); err != nil {
+				s.Fatal("Failed to close notifications: ", err)
+			}
+
+			if err := uiauto.Combine("multi-page scan",
+				app.MultiPageScan( /*PageNumber=*/ 1),
+				app.MultiPageScan( /*PageNumber=*/ 2),
+			)(ctx); err != nil {
+				s.Fatal("Failed to perform multi-page scan: ", err)
+			}
+
+			if test.removePage {
+				if err := app.RemovePage()(ctx); err != nil {
+					s.Fatal("Failed to remove page from scan: ", err)
+				}
+			}
+
+			if test.rescanPage {
+				if err := app.RescanPage()(ctx); err != nil {
+					s.Fatal("Failed to rescan page in scan: ", err)
+				}
+			}
+
+			if err := uiauto.Combine("save scan",
+				app.ClickSave(),
+				app.ClickDone(),
+			)(ctx); err != nil {
+				s.Fatal("Failed to save scan scan: ", err)
+			}
+
+			scan, err := scanning.GetScan(scanning.DefaultScanPattern)
+			if err != nil {
+				s.Fatal("Failed to find scan: ", err)
+			}
+
+			diffPath := filepath.Join(s.OutDir(), "multi_page_scan_diff.txt")
+			if err := document.CompareFiles(ctx, scan, s.DataPath(test.goldenFile), diffPath); err != nil {
+				s.Error("Scan differs from golden file: ", err)
+			}
+		})
 	}
 
 	// Intentionally stop the printer early to trigger shutdown in
