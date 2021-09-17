@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PolicyLogin,
 		Desc:         "Checks if Unicorn login with policy setup is working",
-		Contacts:     []string{"xiqiruan@chromium.org", "cros-families-eng+test@google.com"},
+		Contacts:     []string{"xiqiruan@chromium.org", "cros-families-eng+test@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
