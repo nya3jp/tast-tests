@@ -24,7 +24,7 @@ func init() {
 		Func: IncognitoModeDisabled,
 		Desc: "Tests that incognito mode is disabled for Unicorn users",
 		Contacts: []string{
-			"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+			"tobyhuang@chromium.org", "cros-families-eng+test@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      time.Minute,

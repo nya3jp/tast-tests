@@ -22,7 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DeniedSitesBlocked,
 		Desc:         "Checks that parent-blocked sites are blocked for Unicorn users",
-		Contacts:     []string{"danan@chromium.org", "cros-families-eng+test@google.com"},
+		Contacts:     []string{"danan@chromium.org", "cros-families-eng+test@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,

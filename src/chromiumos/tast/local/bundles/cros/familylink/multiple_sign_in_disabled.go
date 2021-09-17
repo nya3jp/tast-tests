@@ -24,7 +24,7 @@ func init() {
 		Func: MultipleSignInDisabled,
 		Desc: "Verifies that multiple sign-in is disabled for Unicorn users. Geller users should behave similarly",
 		Contacts: []string{
-			"tobyhuang@chromium.org", "cros-families-eng+test@google.com",
+			"tobyhuang@chromium.org", "cros-families-eng+test@google.com", "chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
