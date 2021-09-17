@@ -33,6 +33,24 @@
       "message": "CQ+2 is checked by the owner. Pathan, are you saying you don\u0027t have permission to check CQ+2 (We then have to check with Infra team)",
       "revId": "87d1370be7d33212b239995ccdc01a26b23112ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9127846a_4411b220",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-17T06:44:46Z",
+      "side": 1,
+      "message": "Yes, I dont have CQ+2 permission.",
+      "parentUuid": "7845b942_72173ee6",
+      "revId": "87d1370be7d33212b239995ccdc01a26b23112ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
