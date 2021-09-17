@@ -8,7 +8,9 @@ package a11y
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
@@ -83,7 +85,10 @@ func Chromevox(ctx context.Context, s *testing.State) {
 	if err := crastestclient.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute: ", err)
 	}
-	defer crastestclient.Unmute(ctx)
+	ctxCleanup := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	defer cancel()
+	defer crastestclient.Unmute(ctxCleanup)
 
 	c, err := a11y.NewTabWithHTML(ctx, cr, "<p>Start</p><p>This is a ChromeVox test</p><p>End</p>")
 	if err != nil {

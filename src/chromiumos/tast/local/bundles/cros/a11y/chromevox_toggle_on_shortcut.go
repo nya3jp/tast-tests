@@ -19,8 +19,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: EnableChromevoxShortcut,
-		Desc: "A test that verifies Ctrl+Alt+Z enables Chromevox",
+		Func: ChromevoxToggleOnShortcut,
+		Desc: "A test that verifies Ctrl+Alt+Z toggles on Chromevox",
 		Contacts: []string{
 			"dtseng@chromium.org",          // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list
@@ -31,7 +31,7 @@ func init() {
 	})
 }
 
-func EnableChromevoxShortcut(ctx context.Context, s *testing.State) {
+func ChromevoxToggleOnShortcut(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 
@@ -61,6 +61,6 @@ func EnableChromevoxShortcut(ctx context.Context, s *testing.State) {
 
 	// Use the speech monitor to ensure that the spoken announcement was given.
 	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, ctrlAltZ, expectedSpeech); err != nil {
-		s.Fatal("Failed to verify Chromevox enabled: ", err)
+		s.Fatal("Failed to verify Chromevox toggled on: ", err)
 	}
 }
