@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d953247_7689b30b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_file_system.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-17T13:20:40Z",
+      "side": 1,
+      "message": "Setting an empty krb5conf on the KerberosAccount policy has a non-intuitive effect. It forces the Kerberos feature on Chrome OS to use the default configuration from the krb5 library.\n\nIf you don\u0027t set this field, which is optional, the Chrome OS will use its own default configuration. These 2 configurations are different.\n\nThe second one has the following line:\n  `forwardable \u003d true`\nwhich seems to be required to authenticate with the files system used by this test. The service needs to be able to forward the ticket to another service.\n\nRemoving this line should solve the issue. I recommend doing the same in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3157887. This way, we make sure we\u0027re using the default config from Chrome OS.",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "32d8eabf94e60fdebf122245464d7292cc9e584f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
