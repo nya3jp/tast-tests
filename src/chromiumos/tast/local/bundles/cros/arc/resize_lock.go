@@ -199,6 +199,7 @@ func init() {
 	})
 }
 
+// ResizeLock func checks that ARC++ Resize Lock works as expected.
 func ResizeLock(ctx context.Context, s *testing.State) {
 	// Ensure to enable the finch flag.
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--enable-features=ArcResizeLock"))
@@ -1150,7 +1151,7 @@ func toggleAppManagementSettingToggleViaClick(ctx context.Context, tconn *chrome
 
 // openAppManagementSetting opens the app management page if the given app.
 func openAppManagementSetting(ctx context.Context, tconn *chrome.TestConn, appName string) error {
-	resizeLockShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appName, ClassName: shelfIconClassName}, 10*time.Second)
+	resizeLockShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appName, ClassName: wm.ShelfIconClassName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrapf(err, "failed to find the shelf icon of %s", appName)
 	}
@@ -1160,7 +1161,7 @@ func openAppManagementSetting(ctx context.Context, tconn *chrome.TestConn, appNa
 		return errors.Wrapf(err, "failed to click on the shelf icon of %s", appName)
 	}
 
-	appInfoMenuItem, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appInfoMenuItemViewName, ClassName: menuItemViewClassName}, 10*time.Second)
+	appInfoMenuItem, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appInfoMenuItemViewName, ClassName: wm.MenuItemViewClassName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the menu item for the app-management page")
 	}
@@ -1171,7 +1172,7 @@ func openAppManagementSetting(ctx context.Context, tconn *chrome.TestConn, appNa
 
 // closeAppManagementSetting closes any open app management page.
 func closeAppManagementSetting(ctx context.Context, tconn *chrome.TestConn) error {
-	settingShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: settingsAppName, ClassName: shelfIconClassName}, 10*time.Second)
+	settingShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: settingsAppName, ClassName: wm.ShelfIconClassName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the shelf icon of the settings app")
 	}
@@ -1181,7 +1182,7 @@ func closeAppManagementSetting(ctx context.Context, tconn *chrome.TestConn) erro
 		return errors.Wrap(err, "failed to click on the shelf icon of the settings app")
 	}
 
-	closeMenuItem, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: closeMenuItemViewName, ClassName: menuItemViewClassName}, 10*time.Second)
+	closeMenuItem, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: closeMenuItemViewName, ClassName: wm.MenuItemViewClassName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the menu item for closing the settings app")
 	}
