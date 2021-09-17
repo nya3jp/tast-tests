@@ -22,6 +22,54 @@
       },
       "revId": "40590026b3467ded1d8fbf583d08b1b75a8edd70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23cdacdb_f13b492e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-09-17T00:18:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e19d0e7a_eb996174",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 123
+      },
+      "revId": "40590026b3467ded1d8fbf583d08b1b75a8edd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "327dd834_82e9091f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-09-17T00:18:17Z",
+      "side": 1,
+      "message": "Thank you Abhishek for pointing out! Fix it now.",
+      "parentUuid": "e19d0e7a_eb996174",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 524,
+        "endChar": 123
+      },
+      "revId": "40590026b3467ded1d8fbf583d08b1b75a8edd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
