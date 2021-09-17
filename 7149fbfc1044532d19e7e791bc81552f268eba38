@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f49ea1c_283c2a7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-17T07:08:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4af3e99_9f845b3c",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 3
+      },
+      "revId": "7149fbfc1044532d19e7e791bc81552f268eba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "607eb6d5_3f3ec717",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-16T17:28:43Z",
       "side": 1,
       "message": "I would remove this from tc, and just use a local var here.",
+      "range": {
+        "startLine": 171,
+        "startChar": 3,
+        "endLine": 171,
+        "endChar": 32
+      },
+      "revId": "7149fbfc1044532d19e7e791bc81552f268eba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ebdaa4b_dcce6a97",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-17T07:08:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "607eb6d5_3f3ec717",
       "range": {
         "startLine": 171,
         "startChar": 3,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7081a6c8_51e7bc24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-17T07:08:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72f192fa_3ab38e59",
+      "range": {
+        "startLine": 173,
+        "startChar": 3,
+        "endLine": 187,
+        "endChar": 33
+      },
+      "revId": "7149fbfc1044532d19e7e791bc81552f268eba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20b92728_922e4449",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-09-16T17:28:43Z",
       "side": 1,
       "message": "I would just use tc.lidOpen here.",
+      "range": {
+        "startLine": 222,
+        "startChar": 22,
+        "endLine": 222,
+        "endChar": 37
+      },
+      "revId": "7149fbfc1044532d19e7e791bc81552f268eba38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a748f16b_eeacb569",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-17T07:08:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20b92728_922e4449",
       "range": {
         "startLine": 222,
         "startChar": 22,

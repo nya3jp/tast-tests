@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4ccd1a2_0755cdf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-09-17T07:08:01Z",
+      "side": 1,
+      "message": "Thanks for the review. I\u0027ve made new modifications to address all previous comments. ",
+      "revId": "17bfac5a65314b95b0534350cd96b2375e956dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
