@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58df2481_efbc1fbe",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/wpr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-17T14:02:52Z",
+      "side": 1,
+      "message": "this depends on the parent fixture, so should we put this in the package defining the fixture?",
+      "range": {
+        "startLine": 21,
+        "startChar": 31,
+        "endLine": 21,
+        "endChar": 46
+      },
+      "revId": "90204a88640c3cb422c8b608f7f63667d1459999",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
