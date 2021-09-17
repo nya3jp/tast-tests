@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcf8ef2c_95704749",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-17T18:17:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f4b6d39_8d65f765",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "fac73bfd99f17ac669686e68dbf242282d383a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e34e537b_e1af888f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-17T09:24:17Z",
       "side": 1,
       "message": "Previously it was:\n\"Also added a check to create the file only if it\u0027s missing\"\n\nDid the new commit message get reverted somehow? Can you add this back?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "fac73bfd99f17ac669686e68dbf242282d383a8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90c09316_95cfdc7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-17T18:17:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e34e537b_e1af888f",
       "range": {
         "startLine": 11,
         "startChar": 0,
