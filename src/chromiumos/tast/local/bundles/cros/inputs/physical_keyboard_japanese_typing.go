@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -29,8 +28,8 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.NonVKClamshell,
-		HardwareDeps: hwdep.D(pre.InputsStableModels),
-		Timeout:      5 * time.Minute,
+		//HardwareDeps: hwdep.D(pre.InputsStableModels),
+		Timeout: 5 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "us",
@@ -70,6 +69,22 @@ func validateInputFieldFromNthCandidate(its *testserver.InputsTestServer, tconn 
 	})
 }
 
+// Sydney so should never be the same as GMT.
+var timezone = "Pacific/Auckland"
+
+func getCurrentTime() string {
+	loc, _ := time.LoadLocation(timezone)
+	now := time.Now().In(loc).Format("15:04")
+	return now
+}
+
+// setTimezone ensures that we are not in the GMT timezone which ensures that the IME is taking the time zone offset into account.
+func setTimezone(ctx context.Context, tconn *chrome.TestConn) {
+	//	tconn.Eval(ctx, fmt.Sprintf("chrome.chromeosInfoPrivate.set('timezone','%s')", timezone), false)
+	//tconn.Eval(ctx, "chrome.chromeosInfoPrivate.get( ['timezone', 'supportedTimezones'], function(values) { console.error(values) });", false)
+	tconn.Eval(ctx, "console.error('TIMEZONE')", nil)
+}
+
 func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 
@@ -82,6 +97,9 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
+	// Set the timezone for a test.
+	setTimezone(ctx, tconn)
 
 	// Add IME for testing.
 	imeCode := ime.ChromeIMEPrefix + s.Param().(ime.InputMethod).ID
@@ -126,110 +144,125 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 	subtests := []struct {
 		Name   string
 		Action uiauto.Action
-	}{
-		// Type and check that the text field has the correct Hiragana.
+	}{ /*
+			// Type and check that the text field has the correct Hiragana.
+			{
+				Name:   "TypeRomajiShowsHiragana",
+				Action: its.ValidateInputOnField(inputField, kb.TypeAction("nihongo"), "にほんご"),
+			},
+			// Type and press Tab/Shift+Tab to select different candidates.
+			// The text field should show the selected candidate.
+			{
+				Name: "TabCyclesThroughCandidates",
+				Action: uiauto.Combine("cycle through candidates with tab",
+					clearAndFocus,
+					kb.TypeAction("nihongo"),
+					uiauto.Repeat(3, kb.AccelAction("Tab")),
+					validateInputFieldFromNthCandidate(its, tconn, inputField, 2),
+					kb.AccelAction("Shift+Tab"),
+					validateInputFieldFromNthCandidate(its, tconn, inputField, 1),
+				),
+			},
+			// Type and press arrow keys to select different candidates.
+			// The text field should show the selected candidate.
+			{
+				Name: "ArrowKeysCycleThroughCandidates",
+				Action: uiauto.Combine("cycle through candidates with arrow keys",
+					clearAndFocus,
+					kb.TypeAction("nihongo"),
+					uiauto.Repeat(3, kb.AccelAction("Down")),
+					validateInputFieldFromNthCandidate(its, tconn, inputField, 2),
+					kb.AccelAction("Up"),
+					validateInputFieldFromNthCandidate(its, tconn, inputField, 1),
+				),
+			},
+			// Type and press Tab/Arrow keys to go through multiple pages of candidates.
+			// The text field should show the selected candidate.
+			{
+				Name: "TabAndArrowKeysCyclesThroughPages",
+				Action: uiauto.Combine("cycle through pages with tab and arrow keys",
+					clearAndFocus,
+					kb.TypeAction("nihongo"),
+					// The Japanese IME shows a max of 9 candidates per page.
+					uiauto.Repeat(10, kb.AccelAction("Tab")),
+					uiauto.Repeat(5, kb.AccelAction("Down")),
+					validateInputFieldFromNthCandidate(its, tconn, inputField, 5),
+				),
+			},
+			// Type and press a number key to select the candidate with that number.
+			// The text field should show the selected candidate.
+			{
+				Name: "NumberKeySelectsCandidate",
+				Action: uiauto.Combine("bring up candidates and select with number key",
+					clearAndFocus,
+					kb.TypeAction("nihongo"),
+					kb.AccelAction("Tab"),
+					uiauto.Repeat(5, kb.AccelAction("Tab")),
+					kb.TypeAction("3"),
+					validateInputFieldFromNthCandidate(its, tconn, inputField, 2),
+				),
+			},
+			// Type and press space, which should select the first conversion candidate and hide the candidates window.
+			{
+				Name: "SpaceSelectsTopConversionCandidate",
+				Action: uiauto.Combine("bring up the conversion candidates window",
+					clearAndFocus,
+					kb.TypeAction("nihongo"),
+					// Pop up the conversion candidates window to find the top conversion candidate.
+					kb.AccelAction("Space"),
+					kb.AccelAction("Space"),
+					getNthCandidateTextAndThen(tconn, 0, func(text string) uiauto.Action {
+						return uiauto.Combine("retype and press space to select default candidate",
+							clearAndFocus,
+							kb.TypeAction("nihongo"),
+							kb.AccelAction("Space"),
+							ui.WaitUntilGone(util.PKCandidatesFinder),
+							util.WaitForFieldTextToBe(tconn, inputField.Finder(), text),
+						)
+					}),
+				),
+			},
+			// Type and press space multiple times to go through different conversion candidates.
+			// The text field should show the selected candidate.
+			{
+				Name: "SpaceCyclesThroughConversionCandidates",
+				Action: uiauto.Combine("type some text",
+					clearAndFocus,
+					kb.TypeAction("nihongo"),
+					uiauto.Repeat(5, kb.AccelAction("Space")),
+					validateInputFieldFromNthCandidate(its, tconn, inputField, 4),
+				),
+			},
+			// Type and Tab several times to select a candidate.
+			// Press Enter, which should submit the selected candidate and hide the candidates window.
+			{
+				Name: "EnterSubmitsCandidate",
+				Action: uiauto.Combine("type some text",
+					clearAndFocus,
+					kb.TypeAction("nihongo"),
+					uiauto.Repeat(3, kb.AccelAction("Tab")),
+					getNthCandidateTextAndThen(tconn, 2, func(text string) uiauto.Action {
+						return uiauto.Combine("press enter and verify text",
+							kb.AccelAction("Enter"),
+							ui.WaitUntilGone(util.PKCandidatesFinder),
+							util.WaitForFieldTextToBe(tconn, inputField.Finder(), text),
+						)
+					}),
+				),
+			},
+		*/
 		{
-			Name:   "TypeRomajiShowsHiragana",
-			Action: its.ValidateInputOnField(inputField, kb.TypeAction("nihongo"), "にほんご"),
-		},
-		// Type and press Tab/Shift+Tab to select different candidates.
-		// The text field should show the selected candidate.
-		{
-			Name: "TabCyclesThroughCandidates",
-			Action: uiauto.Combine("cycle through candidates with tab",
+			Name: "Correct time returned",
+			Action: uiauto.Combine("get the current time from ime",
 				clearAndFocus,
-				kb.TypeAction("nihongo"),
-				uiauto.Repeat(3, kb.AccelAction("Tab")),
-				validateInputFieldFromNthCandidate(its, tconn, inputField, 2),
-				kb.AccelAction("Shift+Tab"),
-				validateInputFieldFromNthCandidate(its, tconn, inputField, 1),
-			),
-		},
-		// Type and press arrow keys to select different candidates.
-		// The text field should show the selected candidate.
-		{
-			Name: "ArrowKeysCycleThroughCandidates",
-			Action: uiauto.Combine("cycle through candidates with arrow keys",
-				clearAndFocus,
-				kb.TypeAction("nihongo"),
-				uiauto.Repeat(3, kb.AccelAction("Down")),
-				validateInputFieldFromNthCandidate(its, tconn, inputField, 2),
-				kb.AccelAction("Up"),
-				validateInputFieldFromNthCandidate(its, tconn, inputField, 1),
-			),
-		},
-		// Type and press Tab/Arrow keys to go through multiple pages of candidates.
-		// The text field should show the selected candidate.
-		{
-			Name: "TabAndArrowKeysCyclesThroughPages",
-			Action: uiauto.Combine("cycle through pages with tab and arrow keys",
-				clearAndFocus,
-				kb.TypeAction("nihongo"),
-				// The Japanese IME shows a max of 9 candidates per page.
-				uiauto.Repeat(10, kb.AccelAction("Tab")),
-				uiauto.Repeat(5, kb.AccelAction("Down")),
-				validateInputFieldFromNthCandidate(its, tconn, inputField, 5),
-			),
-		},
-		// Type and press a number key to select the candidate with that number.
-		// The text field should show the selected candidate.
-		{
-			Name: "NumberKeySelectsCandidate",
-			Action: uiauto.Combine("bring up candidates and select with number key",
-				clearAndFocus,
-				kb.TypeAction("nihongo"),
-				kb.AccelAction("Tab"),
-				uiauto.Repeat(5, kb.AccelAction("Tab")),
-				kb.TypeAction("3"),
-				validateInputFieldFromNthCandidate(its, tconn, inputField, 2),
-			),
-		},
-		// Type and press space, which should select the first conversion candidate and hide the candidates window.
-		{
-			Name: "SpaceSelectsTopConversionCandidate",
-			Action: uiauto.Combine("bring up the conversion candidates window",
-				clearAndFocus,
-				kb.TypeAction("nihongo"),
-				// Pop up the conversion candidates window to find the top conversion candidate.
+				kb.TypeAction("ima"), // "now" in Japanese
 				kb.AccelAction("Space"),
 				kb.AccelAction("Space"),
-				getNthCandidateTextAndThen(tconn, 0, func(text string) uiauto.Action {
-					return uiauto.Combine("retype and press space to select default candidate",
-						clearAndFocus,
-						kb.TypeAction("nihongo"),
-						kb.AccelAction("Space"),
-						ui.WaitUntilGone(util.PKCandidatesFinder),
-						util.WaitForFieldTextToBe(tconn, inputField.Finder(), text),
-					)
-				}),
-			),
-		},
-		// Type and press space multiple times to go through different conversion candidates.
-		// The text field should show the selected candidate.
-		{
-			Name: "SpaceCyclesThroughConversionCandidates",
-			Action: uiauto.Combine("type some text",
-				clearAndFocus,
-				kb.TypeAction("nihongo"),
-				uiauto.Repeat(5, kb.AccelAction("Space")),
-				validateInputFieldFromNthCandidate(its, tconn, inputField, 4),
-			),
-		},
-		// Type and Tab several times to select a candidate.
-		// Press Enter, which should submit the selected candidate and hide the candidates window.
-		{
-			Name: "EnterSubmitsCandidate",
-			Action: uiauto.Combine("type some text",
-				clearAndFocus,
-				kb.TypeAction("nihongo"),
-				uiauto.Repeat(3, kb.AccelAction("Tab")),
-				getNthCandidateTextAndThen(tconn, 2, func(text string) uiauto.Action {
-					return uiauto.Combine("press enter and verify text",
-						kb.AccelAction("Enter"),
-						ui.WaitUntilGone(util.PKCandidatesFinder),
-						util.WaitForFieldTextToBe(tconn, inputField.Finder(), text),
-					)
-				}),
+				kb.AccelAction("Down"), // Current time always seems to be slot #4
+				kb.AccelAction("Down"),
+				kb.AccelAction("Enter"),
+				ui.WaitUntilGone(util.PKCandidatesFinder),
+				util.WaitForFieldTextToBe(tconn, inputField.Finder(), getCurrentTime()),
 			),
 		},
 	}
