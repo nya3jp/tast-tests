@@ -52,7 +52,7 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 		s.Fatal("Cannot start WPR")
 	}
 
-	return FixtValueImpl{
+	return &FixtValueImpl{
 		fOpt: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return f.wpr.ChromeOptions, nil
 		},
