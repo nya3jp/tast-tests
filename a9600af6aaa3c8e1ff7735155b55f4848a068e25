@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fe743511_2278346d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-17T22:19:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eda553c9_efe1ec0c",
+      "revId": "a9600af6aaa3c8e1ff7735155b55f4848a068e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "507d6a66_59b52ea2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca9eed66_5df3a5d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-17T22:19:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "705f398d_7d3cab91",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 17
+      },
+      "revId": "a9600af6aaa3c8e1ff7735155b55f4848a068e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "447e758b_e7e985e7",
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e755a828_52e17862",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-17T22:19:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "447e758b_e7e985e7",
+      "revId": "a9600af6aaa3c8e1ff7735155b55f4848a068e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8c7e06d_0d264121",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-09-17T16:49:08Z",
       "side": 1,
       "message": "nit: I\u0027d specify \"back gesture\" in here and below, since its the name of the feature, might be easier for the next reader.\n\ni.e. right to -\u003e right, to trigger the back gesture and",
+      "range": {
+        "startLine": 136,
+        "startChar": 32,
+        "endLine": 136,
+        "endChar": 40
+      },
+      "revId": "a9600af6aaa3c8e1ff7735155b55f4848a068e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec8e30a2_8d974eab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-17T22:19:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8c7e06d_0d264121",
       "range": {
         "startLine": 136,
         "startChar": 32,
