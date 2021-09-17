@@ -20,6 +20,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22376373_0da41405",
+        "filename": "android/ArcMediaScanPerfTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-17T07:50:37Z",
+      "side": 1,
+      "message": "remove blank line. We don\u0027t usually have a blank line here.",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aff7544_dcb5b1ff",
+        "filename": "android/ArcMediaScanPerfTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-17T07:50:37Z",
+      "side": 1,
+      "message": "remove blank line. We don\u0027t usually have a blank line here.",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d7ef6e1_1794e275",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
         "patchSetId": 13
@@ -156,6 +190,29 @@
       "writtenOn": "2021-09-17T06:31:38Z",
       "side": 1,
       "message": "Please explain what this command does.",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "630de86f_cba321d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-17T07:50:37Z",
+      "side": 1,
+      "message": "Since there will be no overlapping matches between two lines, can we just use https://pkg.go.dev/regexp#Regexp.FindAllIndex ?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 3
+      },
       "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
