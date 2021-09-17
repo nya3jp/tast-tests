@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3dbebce_27194f57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-17T15:32:38Z",
+      "side": 1,
+      "message": "Waiting for the fix of policy.KerberosAccountsValue data structure -\u003e optional fields should not be sent with null values.",
+      "revId": "32d8eabf94e60fdebf122245464d7292cc9e584f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d953247_7689b30b",
@@ -86,6 +103,30 @@
       "side": 1,
       "message": "\u003e\u003e What do you mean by that?\n\nYou can see the default Chrome OS config here:\nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/kerberos/kerberos_credentials_manager.cc;l\u003d53\n\nIt\u0027s used in case the \"krb5conf\" field is not set in the policy dictionary.\n\nI think Alex is right: the policy library you\u0027re using in this tast sending this field every time, even with a null value, which is considered invalid on the client side.\n\nIf you don\u0027t want to be blocked by this customisation Alex mentioned, you can also set the default configuration via policy. That\u0027s how it should look like:\n\n[libdefaults]\n  default_tgs_enctypes \u003d aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96\n  default_tkt_enctypes \u003d aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96\n  permitted_enctypes \u003d aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96\n  forwardable \u003d true",
       "parentUuid": "9a57c213_e893a9ec",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "32d8eabf94e60fdebf122245464d7292cc9e584f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e81bfa0_4de92ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_file_system.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-17T15:32:38Z",
+      "side": 1,
+      "message": "\u003e\u003e It seems we need a custom policy parser for this policy then. I can take a look at that as I\u0027ve already done that once for another policy.\n\nI see that the json mapping in defs.go does not have omitempty. I checked by modifying just the data structure (adding omitempty) and not sending krb5conf and the test passes.\n\nAlex, if you want to modify parser and run it I have no problem with that.",
+      "parentUuid": "f49dbc2f_3b2f8390",
       "range": {
         "startLine": 51,
         "startChar": 2,
