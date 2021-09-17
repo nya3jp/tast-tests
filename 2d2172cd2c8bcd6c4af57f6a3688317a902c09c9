@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d7772f3_757ac387",
+        "filename": "android/ArcMediaScanPerfTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22376373_0da41405",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7aff7544_dcb5b1ff",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-09-17T07:50:37Z",
       "side": 1,
       "message": "remove blank line. We don\u0027t usually have a blank line here.",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "047d642f_49d604a6",
+        "filename": "android/ArcMediaScanPerfTest/src/org/chromium/arc/testapp/mediascantime/MainActivity.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aff7544_dcb5b1ff",
       "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec8c596b_5f67a827",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d7ef6e1_1794e275",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f9a5cc9_305d0e90",
@@ -88,6 +148,24 @@
       "writtenOn": "2021-09-17T06:31:38Z",
       "side": 1,
       "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md\n\u003e When you add this attribute, you also need to add one of crosbolt_perbuild, crosbolt_nightly or crosbolt_weekly.\nMy impression is that crosbolt_weekly is okay for us for now.",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82044eb0_7cdcaf5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f9a5cc9_305d0e90",
       "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3c91d9c_6c1b0f03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b025fb0_00c2ed66",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a0b292b_11216f22",
@@ -122,6 +218,24 @@
       "writtenOn": "2021-09-17T06:31:38Z",
       "side": 1,
       "message": "Our way of setting up the target directory (i.e., create a lot of copies of an image file) is probably not so ordinary. It would be better to add some comment on it. You can do it in a comment explaining the function as a whole, or inside the function body, e.g.:\n  // Open the source file to be copied to the target directory.\n  [Code to open capybaraSrc]\n\n  if err :\u003d os.MkdirAll(...); err !\u003d nil {\n     [...]\n  }\n\n  // Create a lot of copies of capybaraSrc in the target directory.\n  [Code to set up the target directory]",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e2048a_2b65e70d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a0b292b_11216f22",
       "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +257,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38f5524d_fe73fc15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "423c99b2_4879e1b6",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90d1f34d_17abfd2e",
@@ -156,6 +288,24 @@
       "writtenOn": "2021-09-17T06:31:38Z",
       "side": 1,
       "message": "It\u0027s not clear what this regex is for. Please add some explaination on it as a code comment.",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f960070_2ecc83a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90d1f34d_17abfd2e",
       "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -177,6 +327,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11eb1f68_df4a0ac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed2e220d_c2451791",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "382e38bf_0cdb30a4",
@@ -190,6 +358,24 @@
       "writtenOn": "2021-09-17T06:31:38Z",
       "side": 1,
       "message": "Please explain what this command does.",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6f01233_d297ebaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "382e38bf_0cdb30a4",
       "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -217,6 +403,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37358254_f9af4e16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "630de86f_cba321d0",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 3
+      },
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15fec94f_a27a8fd9",
@@ -230,6 +440,24 @@
       "writtenOn": "2021-09-17T06:31:38Z",
       "side": 1,
       "message": "Maybe it\u0027s a little bit more informative to include numberOfCopies too?\n  \"%d / %d files are scanned\", tmpNumberOfScannedFiles, numberOfCopies",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b73feef_49e80b28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15fec94f_a27a8fd9",
       "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -251,6 +479,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "346d8d70_3132dbb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "042bf3cb_41b90d0f",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "889128bb_c4051b5f",
@@ -264,6 +510,24 @@
       "writtenOn": "2021-09-17T06:31:38Z",
       "side": 1,
       "message": "I think we should break testing.Poll here instead of continuing it:\n  return testing.PollBreak(errors.Errorf(\"...\", ...))\n\nhttps://source.chromium.org/chromium/chromiumos/platform/tast/+/HEAD:src/chromiumos/tast/testing/util.go;l\u003d26;drc\u003de2fe706ffdd02eb70704b8a3b0a72215ef08c147",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29423b05_3ffd97cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "889128bb_c4051b5f",
       "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -285,6 +549,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25add296_63aea767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "817bb92f_ab5e7712",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c03fbbc2_c4099127",
@@ -298,6 +580,24 @@
       "writtenOn": "2021-09-17T07:00:42Z",
       "side": 1,
       "message": "I\u0027d put a blank line here because the two chunks of code before and after this line do different two things.\nAlso, I\u0027d declare elapsedTime here (assuming that we return 0.0 in case of errors):\n    [...]\n  }\n\n  testing.ContextLog(ctx, ...)\n  var elapsedTime float64\n  if err :\u003d testing.Poll(ctx, ...",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e1e2356_8f3a7741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c03fbbc2_c4099127",
       "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -319,6 +619,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce8ba061_fd5a1896",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2845d872_9ca97bca",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78c38562_888d228a",
@@ -332,6 +650,30 @@
       "writtenOn": "2021-09-17T06:31:38Z",
       "side": 1,
       "message": "Maybe it\u0027s helpful to add some code comments to explain this sequence of unmount \u003e start the test app \u003e mount, because it\u0027s not at all obvious why they are required.",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 2
+      },
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c67bd8b_0ed5bc46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-17T08:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78c38562_888d228a",
       "range": {
         "startLine": 258,
         "startChar": 0,
