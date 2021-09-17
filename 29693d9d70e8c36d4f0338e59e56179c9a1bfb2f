@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3025b6db_cdce4b2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-17T09:41:19Z",
+      "side": 1,
+      "message": "LGTM with comments.",
+      "revId": "29693d9d70e8c36d4f0338e59e56179c9a1bfb2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c14dc7dc_b2a9b57f",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-17T09:41:19Z",
+      "side": 1,
+      "message": "nit: I think you can make this private, too?",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 18
+      },
+      "revId": "29693d9d70e8c36d4f0338e59e56179c9a1bfb2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
