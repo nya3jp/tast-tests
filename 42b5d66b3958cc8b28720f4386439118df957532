@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c5834a_fb408d23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-17T15:41:49Z",
+      "side": 1,
+      "message": "Waiting for the fix of policy.KerberosAccountsValue data structure -\u003e optional fields should not be sent with null values.",
+      "revId": "42b5d66b3958cc8b28720f4386439118df957532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
