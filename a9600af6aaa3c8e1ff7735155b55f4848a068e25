@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda553c9_efe1ec0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-17T16:49:08Z",
+      "side": 1,
+      "message": "nit: finish description",
+      "revId": "a9600af6aaa3c8e1ff7735155b55f4848a068e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "507d6a66_59b52ea2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-17T16:49:08Z",
+      "side": 1,
+      "message": "LGTM w/ nits, thanks!",
+      "revId": "a9600af6aaa3c8e1ff7735155b55f4848a068e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705f398d_7d3cab91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-17T16:49:08Z",
+      "side": 1,
+      "message": "huge nit: failed -\u003e Failed",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 17
+      },
+      "revId": "a9600af6aaa3c8e1ff7735155b55f4848a068e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447e758b_e7e985e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-17T16:49:08Z",
+      "side": 1,
+      "message": "nit: opens home screen.",
+      "revId": "a9600af6aaa3c8e1ff7735155b55f4848a068e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8c7e06d_0d264121",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-17T16:49:08Z",
+      "side": 1,
+      "message": "nit: I\u0027d specify \"back gesture\" in here and below, since its the name of the feature, might be easier for the next reader.\n\ni.e. right to -\u003e right, to trigger the back gesture and",
+      "range": {
+        "startLine": 136,
+        "startChar": 32,
+        "endLine": 136,
+        "endChar": 40
+      },
+      "revId": "a9600af6aaa3c8e1ff7735155b55f4848a068e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
