@@ -67,6 +67,23 @@
       "message": "apparently my previous fix (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3014895)\nwas wrong. Sending another one (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3024028) ",
       "revId": "fab014671e46da3a9b9663485212f13130eb4f42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2440080f_1e7c41c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-17T22:23:23Z",
+      "side": 1,
+      "message": "looks ready for promotion now ",
+      "revId": "fab014671e46da3a9b9663485212f13130eb4f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
