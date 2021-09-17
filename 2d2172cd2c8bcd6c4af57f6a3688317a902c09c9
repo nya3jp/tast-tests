@@ -213,6 +213,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "817bb92f_ab5e7712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T07:00:42Z",
+      "side": 1,
+      "message": "I\u0027d return constant 0.0 in case of errors, because returning elapsedTime here might give an impression that its actual value has some meaning:\n  return 0.0, errors.Wrapf(...)\n\nSame goes for L190.",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03fbbc2_c4099127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T07:00:42Z",
+      "side": 1,
+      "message": "I\u0027d put a blank line here because the two chunks of code before and after this line do different two things.\nAlso, I\u0027d declare elapsedTime here (assuming that we return 0.0 in case of errors):\n    [...]\n  }\n\n  testing.ContextLog(ctx, ...)\n  var elapsedTime float64\n  if err :\u003d testing.Poll(ctx, ...",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2845d872_9ca97bca",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
         "patchSetId": 13
