@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a07b9b_4d6a58f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-09-17T23:43:49Z",
+      "side": 1,
+      "message": "Thanks! LGTM % final comments. Also, I\u0027m not a tast owner.",
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1d1957_0d6a9e2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-09-17T23:43:49Z",
+      "side": 1,
+      "message": "significant video frame drops",
+      "range": {
+        "startLine": 29,
+        "startChar": 83,
+        "endLine": 29,
+        "endChar": 98
+      },
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdfa133e_15f6491e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-09-17T23:43:49Z",
+      "side": 1,
+      "message": "being routed",
+      "range": {
+        "startLine": 29,
+        "startChar": 119,
+        "endLine": 29,
+        "endChar": 126
+      },
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d52c527_ec66bc91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-09-17T23:43:49Z",
+      "side": 1,
+      "message": "and",
+      "range": {
+        "startLine": 29,
+        "startChar": 36,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11047843_103450e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-09-17T23:43:49Z",
+      "side": 1,
+      "message": "nit: Same comments as above.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 153
+      },
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4636b365_41beb1e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-09-17T23:43:49Z",
+      "side": 1,
+      "message": "nit: Move to ln. 145, closer to where it\u0027s used.",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e2779df_1065a840",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-09-17T23:43:49Z",
+      "side": 1,
+      "message": "Add a comment explaining why you chose this threshold (e.g., is it a requirement that we give to partners/ODMs)?",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 27
+      },
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

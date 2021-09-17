@@ -290,6 +290,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a82e9a5_1ce2f34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-09-17T23:43:49Z",
+      "side": 1,
+      "message": "Ack. Another question. How long does the video play before PerformFrameDropsTest() measures the frame drops? It would be nice to make sure that it\u0027s always roughly the same length of time to avoid flakiness.",
+      "parentUuid": "a2819685_6ff6cb81",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "002bef76_c1dc1324",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
         "patchSetId": 1
@@ -372,6 +396,30 @@
       "side": 1,
       "message": "In L108 we get the device name and device type of the active output node and in L112 we check if device type is matching with INTERNAL_SPEAKER.\n\nIn L119 we parse the audio thread logs and in L124 check if device name is present in those logs.",
       "parentUuid": "c0a76297_637e2e78",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "dc5f7e951caac77c30a15f21dae7425b58cb07c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20104e2d_6be6f03d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-09-17T23:43:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be6b4bcb_cc1a56c1",
       "range": {
         "startLine": 124,
         "startChar": 4,
