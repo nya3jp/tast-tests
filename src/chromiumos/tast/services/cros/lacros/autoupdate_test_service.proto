@@ -1,0 +1,84 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.lacros;
+
+option go_package = "chromiumos/tast/services/cros/lacros";
+
+
+// BrowserType is to specify the types of supported browsers.
+enum BrowserType {
+  UNKNOWN = 0;
+  ASH = 1;
+  LACROS_ROOTFS = 2;
+  LACROS_STATEFUL = 3;
+}
+
+// BrowserContext is a shared info to configure or check the browser under test.
+message BrowserContext {
+  // The type of supported browsers.
+  BrowserType browser = 1;
+  // Chrome options used to launch browser.
+  repeated string opts = 2;
+  // The path in which the browser executable is mounted for use in runtime.
+  string executable_path = 3;
+  // The user data directory.
+  string profile_path = 4;
+  // The path in which the browser image file is provisioned. This will be used
+  // to check if Lacros under test is installed fine before tests.
+  string install_path = 5;
+}
+
+// TestResult is detailed test status data for a verification action in a DUT.
+message TestResult {
+  enum Status {
+    NO_STATUS = 0;
+    PASSED = 1;
+    FAILED = 2;
+  }
+  Status status = 1;
+  string status_details = 2;
+}
+
+// VerifyLacrosVersionRequest contains the Lacros browser info that is used
+// to verify whether the expected Lacros is selected in the given context of
+// provisioned browsers and Ash configs.
+message VerifyLacrosVersionRequest {
+  BrowserContext ash_context = 1;
+  repeated BrowserContext provisioned_lacros_context = 2;
+
+  // The following fields describe the Lacros to be selected.
+  BrowserType expected_browser = 3; // e.g. LACROS_STATEFUL
+  string expected_version = 4;  // e.g. "9999.0.0.1"
+  string expected_component = 5;  // e.g. "lacros-dogfood-dev" for the dev channel
+}
+
+// VerifyLacrosVersionResponse contains a test result of version comparison for
+// a single action of simulated autoupdate.
+message VerifyLacrosVersionResponse {
+  TestResult result = 1;
+}
+
+message GetBrowserVersionRequest {
+  BrowserType browser = 1;
+}
+
+message GetBrowserVersionResponse {
+  repeated string versions = 1;
+}
+
+// AutoupdateTestService verifies Lacros autoupdate scenarios for remote tests.
+// Each API should be able to be run in no particular order.
+service AutoupdateTestService {
+  // VerifyLacrosVersion sets a DUT with given contexts and checks if the
+  // expected version of Lacros is loaded successfully without crash.
+  rpc VerifyLacrosVersion(VerifyLacrosVersionRequest) returns (VerifyLacrosVersionResponse) {}
+
+  // GetBrowserVersion returns version info of the given browser type.
+  // If multiple Lacros browsers are provisioned in the stateful partition,
+  // all the versions will be returned.
+  rpc GetBrowserVersion(GetBrowserVersionRequest) returns (GetBrowserVersionResponse) {}
+}
