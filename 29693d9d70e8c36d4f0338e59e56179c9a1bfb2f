@@ -39,6 +39,30 @@
       },
       "revId": "29693d9d70e8c36d4f0338e59e56179c9a1bfb2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa98b8ad_23a3f800",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-09-17T10:12:48Z",
+      "side": 1,
+      "message": "Discussed offline, I didn\u0027t realise you could embed interfaces in structs, so it\u0027s possible to make it private.",
+      "parentUuid": "c14dc7dc_b2a9b57f",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 18
+      },
+      "revId": "29693d9d70e8c36d4f0338e59e56179c9a1bfb2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
