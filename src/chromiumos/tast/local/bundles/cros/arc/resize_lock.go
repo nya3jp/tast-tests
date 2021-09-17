@@ -199,6 +199,7 @@ func init() {
 	})
 }
 
+// ResizeLock func checks that ARC++ Resize Lock works as expected.
 func ResizeLock(ctx context.Context, s *testing.State) {
 	// Ensure to enable the finch flag.
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs("--enable-features=ArcResizeLock"))
