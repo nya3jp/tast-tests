@@ -51,7 +51,7 @@ func GetUserMediaPolicy(ctx context.Context, s *testing.State) {
 	var fdms *fakedms.FakeDMS
 	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
 		cr = s.FixtValue().(launcher.FixtValue).Chrome()
-		fdms = s.FixtValue().(launcher.FixtValue).FakeDMS()
+		fdms = s.FixtValue().(fakedms.Value).FakeDMSValue()
 	} else {
 		cr = s.FixtValue().(*fixtures.FixtData).Chrome
 		fdms = s.FixtValue().(*fixtures.FixtData).FakeDMS
