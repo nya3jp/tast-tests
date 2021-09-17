@@ -721,6 +721,16 @@ func (f *Finder) Invisible() *Finder {
 	return f.State(state.Invisible, true)
 }
 
+// Visible creates a Finder with Invisible set to false.
+func Visible() *Finder {
+	return State(state.Invisible, false)
+}
+
+// Visible creates a copy of the input Finder with Invisible set to false.
+func (f *Finder) Visible() *Finder {
+	return f.State(state.Invisible, false)
+}
+
 // Linked creates a Finder with Linked set to true.
 func Linked() *Finder {
 	return State(state.Linked, true)
