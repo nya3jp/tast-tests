@@ -297,6 +297,10 @@ func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 
 // ClamshellFullscreenApp Test launches the app in full screen window and verifies launch successfully without crash or ANR on ARC-P devices
 func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
+	if err != nil {
+		s.Error("Failed to get window info: ", err)
+	}
 	t, ok := arc.Type()
 	if !ok {
 		s.Fatal("Unable to determine arc type")
@@ -316,9 +320,75 @@ func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome
 				s.Fatal("Failed to restart app: ", err)
 			}
 		}
-
-		DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 	}
+	if t == arc.VM {
+		// If app is launched in maximized state or
+		// If app doesn't have resize lock feature in normal window mode then set the window to full screen.
+		button, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: centerButtonClassName}, 10*time.Second)
+		if info.State == ash.WindowStateMaximized || err != nil {
+			s.Log("app is in maximized mode or it can be an O4C app. Setting the window to fullscreen")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
+				s.Error("Failed to set the window to fullscreen: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateFullscreen); err != nil {
+				s.Error("The window is not in fullscreen: ", err)
+			}
+			return
+		}
+
+		// If app has resize lock feature and it is in phone or tablet size.
+		button, err = chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: centerButtonClassName}, 10*time.Second)
+		if err == nil {
+			defaultState := button.Name
+			s.Logf("Default state of app is in: %+v", defaultState)
+			if button.Name == phoneButtonName || button.Name == tabletButtonName {
+				// CloseSplash to handle got it button.
+				if err := closeSplash(ctx, tconn); err != nil {
+					s.Log("CloseSplash doesn't exist: ", err)
+				}
+				defer button.Release(ctx)
+
+				// Check if the compat-mode button of a fully-locked app is disabled
+				if err := button.LeftClick(ctx); err != nil {
+					s.Fatal(err, "failed to click on the compat-mode button: ", err)
+				}
+				// Need some sleep here as we verify that nothing changes.
+				if err := testing.Sleep(ctx, time.Second); err != nil {
+					s.Fatal("Failed to sleep after clicking on the compat-mode button: ", err)
+				}
+				// Check if compat-mode button is disabled or enabled.
+				if err := checkVisibility(ctx, tconn, bubbleDialogClassName, false); err == nil {
+					// If compat-mode button is disabled.
+					s.Log("The app is non-resizable. Skipping test")
+					return
+				}
+			}
+			// If compat-mode button is enabled.
+			if err := selectResizeLockMode(ctx, tconn, appPkgName); err != nil {
+				s.Fatal("Failed to click on the compat-mode dialog: ", err)
+			}
+			if handleConfirmDialog(ctx, tconn); err != nil {
+				s.Log("confirmDialog doesn't exist: ", err)
+			}
+			s.Log("Setting the window to fullscreen")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventFullscreen); err != nil {
+				s.Error("Failed to set the window to fullscreen: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateFullscreen); err != nil {
+				s.Error("The window is not in fullscreen: ", err)
+			}
+			s.Log("Reseting window to normal size")
+			if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventNormal); err != nil {
+				s.Error("Failed to reset window to normal size: ", err)
+			}
+			if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
+				s.Error("The window is not normalized: ", err)
+			}
+			// Restore the window to the default window state of an app.
+			selectDefaultWindowState(ctx, s, tconn, appPkgName, defaultState)
+		}
+	}
+	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
 // MinimizeRestoreApp Test "minimize and relaunch the app" and verifies app relaunch successfully without crash or ANR.
@@ -604,6 +674,59 @@ func selectResizeLockMode(ctx context.Context, tconn *chrome.TestConn, appPkgNam
 	resizeLockModeButton, err := compatModeMenuDialog.DescendantWithTimeout(ctx, chromeui.FindParams{Name: resizableButtonName}, 10*time.Second)
 	if err != nil {
 		return errors.Wrapf(err, "failed to find the %s button on the compat mode menu", resizableButtonName)
+	}
+	defer resizeLockModeButton.Release(ctx)
+
+	return resizeLockModeButton.LeftClick(ctx)
+}
+
+// selectDefaultWindowState clicks on the default window type which can be phone or tablet button and clicks on the confirm button.
+func selectDefaultWindowState(ctx context.Context, s *testing.State, tconn *chrome.TestConn, appPkgName, defaultState string) error {
+	button, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: centerButtonClassName}, 10*time.Second)
+	if err == nil {
+		// If app is in resizable mode.
+		if button.Name == resizableButtonName {
+			s.Log("App is in: ", button.Name)
+			// CloseSplash to handle got it button.
+			if err := closeSplash(ctx, tconn); err != nil {
+				s.Log("CloseSplash doesn't exist: ", err)
+			}
+			defer button.Release(ctx)
+
+			// Check if the compat-mode button of a fully-locked app is disabled
+			if err := button.LeftClick(ctx); err != nil {
+				s.Fatal(err, "failed to click on the compat-mode button: ", err)
+			}
+			// Need some sleep here as we verify that nothing changes.
+			if err := testing.Sleep(ctx, time.Second); err != nil {
+				s.Fatal("Failed to sleep after clicking on the compat-mode button: ", err)
+			}
+			// Check if compat-mode button is disabled or enabled.
+			if err := checkVisibility(ctx, tconn, bubbleDialogClassName, false); err == nil {
+				// If compat-mode button is disabled.
+				s.Log("The app is non-resizable. Skipping test")
+				return nil
+			}
+		}
+	}
+	compatModeMenuDialog, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: bubbleDialogClassName}, 10*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find the compat-mode menu dialog of %s", appPkgName)
+	}
+	defer compatModeMenuDialog.Release(ctx)
+	// To get back to the default window state of an app.
+	defaultWindow := resizableButtonName
+	if defaultState == "Phone" {
+		s.Logf("Get back to default window state of an app: %+v", defaultState)
+		defaultWindow = phoneButtonName
+	}
+	if defaultState == "Tablet" {
+		s.Logf("Get back to default window state of an app: %+v", defaultState)
+		defaultWindow = tabletButtonName
+	}
+	resizeLockModeButton, err := compatModeMenuDialog.DescendantWithTimeout(ctx, chromeui.FindParams{Name: defaultWindow}, 10*time.Second)
+	if err != nil {
+		return errors.Wrapf(err, "failed to find the %s button on the compat mode menu", defaultWindow)
 	}
 	defer resizeLockModeButton.Release(ctx)
 
