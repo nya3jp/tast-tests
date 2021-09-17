@@ -45,21 +45,27 @@ type InputEval struct {
 	ExpectedText string
 }
 
+// WaitForFieldTextToBeOneOf returns an action checking whether the input field value equals given text of one of some possible extra values.
+// The text is case sensitive.
+func WaitForFieldTextToBeOneOf(tconn *chrome.TestConn, finder *nodewith.Finder, expectedText string, extras []string) uiauto.Action {
+	return waitForFieldTextFunc(tconn, finder, expectedText, false, extras)
+}
+
 // WaitForFieldTextToBe returns an action checking whether the input field value equals given text.
 // The text is case sensitive.
 func WaitForFieldTextToBe(tconn *chrome.TestConn, finder *nodewith.Finder, expectedText string) uiauto.Action {
-	return waitForFieldTextFunc(tconn, finder, expectedText, false)
+	return waitForFieldTextFunc(tconn, finder, expectedText, false, []string{})
 }
 
 // WaitForFieldTextToBeIgnoringCase returns an action checking whether the input field value equals given text.
 // The text is case insensitive.
 func WaitForFieldTextToBeIgnoringCase(tconn *chrome.TestConn, finder *nodewith.Finder, expectedText string) uiauto.Action {
-	return waitForFieldTextFunc(tconn, finder, expectedText, true)
+	return waitForFieldTextFunc(tconn, finder, expectedText, true, []string{})
 }
 
 // waitForFieldTextFunc returns an action checking whether the input field value equals given text.
 // The text can either be case sensitive or not.
-func waitForFieldTextFunc(tconn *chrome.TestConn, finder *nodewith.Finder, expectedText string, ignoreCase bool) uiauto.Action {
+func waitForFieldTextFunc(tconn *chrome.TestConn, finder *nodewith.Finder, expectedText string, ignoreCase bool, extraOptions []string) uiauto.Action {
 	ui := uiauto.New(tconn).WithInterval(time.Second)
 	return uiauto.Combine("validate field text",
 		// Sleep 200ms before validating text field.
@@ -69,10 +75,17 @@ func waitForFieldTextFunc(tconn *chrome.TestConn, finder *nodewith.Finder, expec
 			nodeInfo, err := ui.Info(ctx, finder)
 			if err != nil {
 				return err
-			} else if !ignoreCase && nodeInfo.Value != expectedText {
+			} else if !ignoreCase && len(extraoptions) == 0 && nodeInfo.Value != expectedText {
 				return errors.Errorf("failed to validate input value: got: %s; want: %s", nodeInfo.Value, expectedText)
-			} else if ignoreCase && strings.ToLower(nodeInfo.Value) != strings.ToLower(expectedText) {
+			} else if ignoreCase && len(extraoptions) == 0 && strings.ToLower(nodeInfo.Value) != strings.ToLower(expectedText) {
 				return errors.Errorf("failed to validate input value ignoring case: got: %s; want: %s", nodeInfo.Value, expectedText)
+			} else if len(extraOptions) > 0 {
+				for _, s := range extraOptions {
+					if nodeInfo.Value == s {
+						return nil
+					}
+					return errors.Errorf("failed to validate input with extra possible values got: %s", nodeInfo.Value)
+				}
 			}
 			return nil
 		}))
