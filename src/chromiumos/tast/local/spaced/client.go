@@ -26,7 +26,7 @@ type Client struct {
 	obj  dbus.BusObject
 }
 
-// NewClient connects to cryptohomed via D-Bus and returns a Client object.
+// NewClient connects to spaced via D-Bus and returns a Client object.
 func NewClient(ctx context.Context) (*Client, error) {
 	conn, obj, err := dbusutil.Connect(ctx, dbusName, dbusPath)
 	if err != nil {
@@ -40,8 +40,8 @@ func (c *Client) call(ctx context.Context, method string, args ...interface{}) *
 	return c.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
 }
 
-// GetFreeDiskSpace fetches the free space available for a given path.
-func (c *Client) GetFreeDiskSpace(ctx context.Context, path string) (uint64, error) {
+// FreeDiskSpace fetches the free space available for a given path.
+func (c *Client) FreeDiskSpace(ctx context.Context, path string) (uint64, error) {
 	var result uint64
 	if err := c.call(ctx, "GetFreeDiskSpace", path).Store(&result); err != nil {
 		return 0, errors.Wrap(err, "failed to call method GetFreeDiskSpace")
@@ -49,11 +49,20 @@ func (c *Client) GetFreeDiskSpace(ctx context.Context, path string) (uint64, err
 	return result, nil
 }
 
-// GetTotalDiskSpace fetches the total disk space for a given path.
-func (c *Client) GetTotalDiskSpace(ctx context.Context, path string) (uint64, error) {
+// TotalDiskSpace fetches the total disk space for a given path.
+func (c *Client) TotalDiskSpace(ctx context.Context, path string) (uint64, error) {
 	var result uint64
 	if err := c.call(ctx, "GetTotalDiskSpace", path).Store(&result); err != nil {
 		return 0, errors.Wrap(err, "failed to call method GetTotalDiskSpace")
+	}
+	return result, nil
+}
+
+// RootDeviceSize fetches the root storage device size for the device.
+func (c *Client) RootDeviceSize(ctx context.Context) (uint64, error) {
+	var result uint64
+	if err := c.call(ctx, "GetRootDeviceSize").Store(&result); err != nil {
+		return 0, errors.Wrap(err, "failed to call method GetRootDeviceSize")
 	}
 	return result, nil
 }

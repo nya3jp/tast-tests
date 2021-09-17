@@ -22,8 +22,8 @@ func init() {
 
 func Spaced(ctx context.Context, s *testing.State) {
 	const (
-		statefulMount   = "/mnt/stateful_partition/"
-		maxStatefulSize = 1024 * 1024 * 1024 * 1024
+		statefulMount = "/mnt/stateful_partition/"
+		maxDiskSize   = 1024 * 1024 * 1024 * 1024
 	)
 
 	spaced, err := spaced.NewClient(ctx)
@@ -32,22 +32,31 @@ func Spaced(ctx context.Context, s *testing.State) {
 	}
 
 	// Check D-Bus queries.
-	freeDiskSpace, err := spaced.GetFreeDiskSpace(ctx, statefulMount)
+	rootDeviceSize, err := spaced.RootDeviceSize(ctx)
+	if err != nil {
+		s.Fatal("Failed to query root device size: ", err)
+	}
+
+	if rootDeviceSize == 0 || rootDeviceSize > maxDiskSize {
+		s.Fatalf("Invalid root device size: got %d, want: 0 < size < %d", rootDeviceSize, maxDiskSize)
+	}
+
+	freeDiskSpace, err := spaced.FreeDiskSpace(ctx, statefulMount)
 	if err != nil {
 		s.Fatal("Failed to query free disk space: ", err)
 	}
 
-	if freeDiskSpace == 0 || freeDiskSpace > maxStatefulSize {
-		s.Fatal("Invalid free disk space: ", freeDiskSpace)
+	if freeDiskSpace == 0 || freeDiskSpace > maxDiskSize {
+		s.Fatalf("Invalid free disk space;  got %d, want: 0 < size < %d", freeDiskSpace, maxDiskSize)
 	}
 
-	totalDiskSpace, err := spaced.GetTotalDiskSpace(ctx, statefulMount)
+	totalDiskSpace, err := spaced.TotalDiskSpace(ctx, statefulMount)
 	if err != nil {
 		s.Fatal("Failed to query total disk space: ", err)
 	}
 
-	if totalDiskSpace == 0 || totalDiskSpace > maxStatefulSize {
-		s.Fatal("Invalid total disk space: ", totalDiskSpace)
+	if totalDiskSpace == 0 || totalDiskSpace > maxDiskSize {
+		s.Fatalf("Invalid total disk space got %d, want: 0 < size < %d", totalDiskSpace, maxDiskSize)
 	}
 
 	if freeDiskSpace >= totalDiskSpace {
