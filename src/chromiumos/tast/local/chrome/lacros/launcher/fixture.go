@@ -24,9 +24,19 @@ const LacrosDeployedBinary = "lacrosDeployedBinary"
 // NewFixture creates a new fixture that can launch Lacros chrome with the given setup mode and
 // Chrome options.
 func NewFixture(mode SetupMode, fOpt chrome.OptionsCallback) testing.FixtureImpl {
+	return NewComposedFixture(mode, func(v FixtValue, pv interface{}) interface{} {
+		return v
+	}, fOpt)
+}
+
+// NewComposedFixture is similar to NewFixture but allows tests to customise the FixtValue
+// used. This lets tests compose fixtures via struct embedding.
+func NewComposedFixture(mode SetupMode, makeValue func(v FixtValue, pv interface{}) interface{},
+	fOpt chrome.OptionsCallback) testing.FixtureImpl {
 	return &fixtImpl{
-		mode: mode,
-		fOpt: fOpt,
+		mode:      mode,
+		fOpt:      fOpt,
+		makeValue: makeValue,
 	}
 }
 
@@ -261,14 +271,15 @@ func (f *fixtValueImpl) FakeDMS() *fakedms.FakeDMS {
 
 // fixtImpl is a fixture that allows Lacros chrome to be launched.
 type fixtImpl struct {
-	mode       SetupMode              // How (pre exist/to be downloaded/) the container image is obtained.
-	lacrosPath string                 // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
-	cr         *chrome.Chrome         // Connection to CrOS-chrome.
-	tconn      *chrome.TestConn       // Test-connection for CrOS-chrome.
-	prepared   bool                   // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
-	fOpt       chrome.OptionsCallback // Function to generate Chrome Options
-	policy     bool                   // Whether to use fake DMS to serve policy
-	fdms       *fakedms.FakeDMS       // The instance of the fake DMS
+	mode       SetupMode                                     // How (pre exist/to be downloaded/) the container image is obtained.
+	lacrosPath string                                        // Root directory for lacros-chrome, it's dynamically controlled by the lacros.skipInstallation Var.
+	cr         *chrome.Chrome                                // Connection to CrOS-chrome.
+	tconn      *chrome.TestConn                              // Test-connection for CrOS-chrome.
+	prepared   bool                                          // Set to true if Prepare() succeeds, so that future calls can avoid unnecessary work.
+	fOpt       chrome.OptionsCallback                        // Function to generate Chrome Options
+	policy     bool                                          // Whether to use fake DMS to serve policy
+	fdms       *fakedms.FakeDMS                              // The instance of the fake DMS
+	makeValue  func(v FixtValue, pv interface{}) interface{} // Closure to create FixtValue to return from SetUp. Used for composable fixtures.
 }
 
 // SetupMode describes how lacros-chrome should be set-up during the test. See the SetupMode constants for more explanation.
@@ -398,7 +409,7 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	chrome.Lock()
 	f.prepared = true
 	shouldClose = false
-	return val
+	return f.makeValue(val, s.ParentValue())
 }
 
 // TearDown is called after all tests involving this fixture have been run,
