@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "4c6aaa2d90ddb0d30e9a745112ed8a8e58227c82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "243740cf_d5a9c2f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-17T19:33:08Z",
+      "side": 1,
+      "message": "Looks great, but now I had one more thought.",
+      "revId": "4c6aaa2d90ddb0d30e9a745112ed8a8e58227c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "009a6ef3_f5f6ad4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-17T19:33:08Z",
+      "side": 1,
+      "message": "Thinking about it this is still not quite right as we will get over 100.\nSo I think we need min(finishedSeeks+1,numSeeks) here as well just like above. Sorry.\n\nHow about a helper variable like attemptedSeeks \u003d min(finishedSeeks+1,numSeeks)?",
+      "range": {
+        "startLine": 259,
+        "startChar": 19,
+        "endLine": 259,
+        "endChar": 34
+      },
+      "revId": "4c6aaa2d90ddb0d30e9a745112ed8a8e58227c82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
