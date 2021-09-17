@@ -56,6 +56,17 @@ type FakeDMS struct {
 	policyPath string        // where policies are written for server to read
 }
 
+// Value is an interface for use with composable fixtures. It allows
+// retrieval of the underlying FakeDMS object.
+type Value interface {
+	FakeDMSValue() *FakeDMS
+}
+
+// FakeDMSValue retrieves the underlying FakeDMS object.
+func (fdms *FakeDMS) FakeDMSValue() *FakeDMS {
+	return fdms
+}
+
 // New creates and starts a fake Domain Management Server to serve policies.
 // outDir is used to write logs and policies, and should either be in a
 // temporary location (and deleted by caller) or in the test's results directory.
