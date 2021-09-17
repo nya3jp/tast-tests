@@ -140,6 +140,24 @@
       "parentUuid": "b63ebc8a_f3f3eb28",
       "revId": "93eafe1234d42c9389a30f20bf5c7fed34cc3b16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "149cf156_e5013fdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-17T06:12:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a4b8bbc3_90b6ea8c",
+      "revId": "93eafe1234d42c9389a30f20bf5c7fed34cc3b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
