@@ -91,7 +91,7 @@ func AppVscode(ctx context.Context, s *testing.State) {
 		}()
 
 		// Cursor blinking breaks screenshots.
-		cont.WriteFile(ctx, ".config/Code/User/settings.json", `{"editor.cursorBlinking": "solid"}`)
+		cont.WriteFile(ctx, ".config/Code/User/settings.json", `{"editor.cursorBlinking": "solid"}, {"workbench.startupEditor": "None"}`)
 
 		d, err := screenshot.NewDifferFromChrome(ctx, s, cr, screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: 666, WindowHeightDP: 714}})
 		if err != nil {
