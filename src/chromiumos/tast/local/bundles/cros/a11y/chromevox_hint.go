@@ -10,6 +10,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
@@ -50,7 +51,10 @@ func ChromevoxHint(ctx context.Context, s *testing.State) {
 	if err := crastestclient.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute: ", err)
 	}
-	defer crastestclient.Unmute(ctx)
+	ctxCleanup := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	defer cancel()
+	defer crastestclient.Unmute(ctxCleanup)
 
 	oobeConn, err := cr.WaitForOOBEConnection(ctx)
 	if err != nil {
