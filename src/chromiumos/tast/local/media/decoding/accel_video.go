@@ -57,9 +57,7 @@ func generateCmdArgs(outDir, filename string, decoderType DecoderType) []string 
 		filename + ".json",
 		"--output_folder=" + outDir,
 	}
-	if decoderType == VD {
-		args = append(args, "--use_vd")
-	} else if decoderType == VDVDA {
+	if decoderType == VDVDA {
 		args = append(args, "--use_vd_vda")
 	} else if decoderType == VDA {
 		args = append(args, "--use-legacy")
@@ -235,7 +233,7 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, decoder
 	}
 
 	if err := parseUncappedPerfMetrics(uncappedJSON, p); err != nil {
-		return errors.Wrap(err, "failed to parse uncapped performance metrics: ")
+		return errors.Wrap(err, "failed to parse uncapped performance metrics")
 	}
 	if err := parseCappedPerfMetrics(cappedJSON, p); err != nil {
 		return errors.Wrap(err, "failed to parse capped performance metrics")
