@@ -139,6 +139,24 @@
       "parentUuid": "fa83c568_d2a26bbc",
       "revId": "222f90e0da3e5debe22542734a69e3bde8eda2d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a9cf9d_9e5f210c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/play_and_record_audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-09-17T17:31:37Z",
+      "side": 1,
+      "message": "You can set the number of channels you want on arecord, too. But play and rec is also okay with me.",
+      "parentUuid": "1fb07eb7_97003325",
+      "revId": "222f90e0da3e5debe22542734a69e3bde8eda2d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
