@@ -19,6 +19,9 @@ import (
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
+
+	// Include the speedometer specific lacros WPR fixture.
+	_ "chromiumos/tast/local/bundles/cros/lacros/fixtures"
 )
 
 func init() {
@@ -29,7 +32,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      60 * time.Minute,
-		Fixture:      "lacros",
+		Fixture:      "speedometerWPRLacros",
 	})
 }
 
