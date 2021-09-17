@@ -16,6 +16,63 @@
       "message": "Thanks Alvin! PTAL?",
       "revId": "de027e1ac11e352259a77a197f09eac87255214f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8964c1d3_d6ea138f",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-17T19:14:07Z",
+      "side": 1,
+      "message": "Is it possible for more than one of these conditions to occur? If so, I think only the last error will be returned here (it\u0027s overwritten in each if block)",
+      "revId": "de027e1ac11e352259a77a197f09eac87255214f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26ba673e_e38dbe1a",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-17T19:14:07Z",
+      "side": 1,
+      "message": "I don\u0027t think wrapping a new error like this is doing what you want.\n\"The errors.Wrap function returns a new error that adds context to the original error by recording a stack trace at the point Wrap is called, together with the supplied message\"\nhttps://pkg.go.dev/github.com/pkg/errors#hdr-Adding_context_to_an_error\n\nIIUC, you want to record information about each mismatching value and return them combined in a single error. I think the way to go in that case is to create a string for each of these conditions, concatenate them, and return them in a single error if hasError \u003d\u003d true. Something like:\n```\nerrors :\u003d var errors []string\nhasError :\u003d false\nif oe.expectedOptions.Lang !\u003d utteranceData.Options.Lang {\n  errors \u003d append(errors, fmt.Sprintf(\"expected lang: %s does not match lang: %s\", oe.expectedOptions.Lang, utteranceData.Options.Lang))\n  hasError \u003d true\n}\n...\nif hasError {\n  return errors.New(strings.Join(errors, \"; \" //separator))\n}\n```\n\n(If I\u0027m wrong and you don\u0027t want to combine the errors, you can just return as soon as there\u0027s a mismatch)",
+      "range": {
+        "startLine": 406,
+        "startChar": 8,
+        "endLine": 406,
+        "endChar": 33
+      },
+      "revId": "de027e1ac11e352259a77a197f09eac87255214f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "760bc59f_9bab8d34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_pitch_and_rate.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-17T19:14:07Z",
+      "side": 1,
+      "message": "do you need a comment above this since it\u0027s exported? not sure if lint complains about it or not",
+      "revId": "de027e1ac11e352259a77a197f09eac87255214f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
