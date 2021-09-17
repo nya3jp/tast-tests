@@ -16,6 +16,239 @@
       "message": "PTAL",
       "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d7ef6e1_1794e275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T06:31:38Z",
+      "side": 1,
+      "message": "I\u0027m not so confident, but ordinary usage of the verb \u0027populate\u0027 in this context seems to be \"populate the target directory with (many) files\".\n(Or maybe you can plainly say \u0027create\u0027 instead of \u0027populate\u0027 here.)",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9a5cc9_305d0e90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T06:31:38Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md\n\u003e When you add this attribute, you also need to add one of crosbolt_perbuild, crosbolt_nightly or crosbolt_weekly.\nMy impression is that crosbolt_weekly is okay for us for now.",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b025fb0_00c2ed66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T06:31:38Z",
+      "side": 1,
+      "message": "You don\u0027t need to call Close when Open failed:\n  capybaraSrc, err :\u003d os.Open(...)\n  if err !\u003d nil {\n    [...]\n  }\n  defer capybaraSrc.Close()",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a0b292b_11216f22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T06:31:38Z",
+      "side": 1,
+      "message": "Our way of setting up the target directory (i.e., create a lot of copies of an image file) is probably not so ordinary. It would be better to add some comment on it. You can do it in a comment explaining the function as a whole, or inside the function body, e.g.:\n  // Open the source file to be copied to the target directory.\n  [Code to open capybaraSrc]\n\n  if err :\u003d os.MkdirAll(...); err !\u003d nil {\n     [...]\n  }\n\n  // Create a lot of copies of capybaraSrc in the target directory.\n  [Code to set up the target directory]",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "423c99b2_4879e1b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T06:31:38Z",
+      "side": 1,
+      "message": "This function is hard to understand. Please add code comments and blank lines so that it\u0027s more understandable.",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d1f34d_17abfd2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T06:31:38Z",
+      "side": 1,
+      "message": "It\u0027s not clear what this regex is for. Please add some explaination on it as a code comment.",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed2e220d_c2451791",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T06:31:38Z",
+      "side": 1,
+      "message": "I\u0027d name this prevNumberOfScannedFiles and rename tmpNumberOfScannedFiles as numberOfScannedFiles. This is probably a matter of taste, but for me this one looks less important as it\u0027s introduced just for comparison.\nAlso, maybe it\u0027s better to initialize this variable by -1. From my experience, when the body of testing.Poll is executed for the first time, the number of scanned files is usually 0.",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382e38bf_0cdb30a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T06:31:38Z",
+      "side": 1,
+      "message": "Please explain what this command does.",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15fec94f_a27a8fd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T06:31:38Z",
+      "side": 1,
+      "message": "Maybe it\u0027s a little bit more informative to include numberOfCopies too?\n  \"%d / %d files are scanned\", tmpNumberOfScannedFiles, numberOfCopies",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "042bf3cb_41b90d0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T06:31:38Z",
+      "side": 1,
+      "message": "This condition will never be satisfied. The above if-condition\n  tmpNumberOfScannedFiles \u003c numberOfCopies\n\nbecomes false only when the following condition holds for the first time:\n  tmpNumberOfScannedFiles \u003d\u003d numberOfCopies\n\nIn such a case, it should be always\n  tmpNumberOfScannedFiles !\u003d numberOfScannedFiles\n\n\nYou should reorder or rewrite this sequence. For example:\n\n  if tmpNumberOfScannedFiles \u003e\u003d numberOfCopies {\n    return nil\n  }\n\n  // Some comment.\n  if tmpNumberOfScannedFiles \u003d\u003d numberOfScannedFiles {\n    return testing.PollBreak(erros.Errorf(\"MediaScan stops scanning ...\", ...))\n  }\n  numberOfScannedFiles \u003d tmpNumberOfScannedFiles\n\n  return errors.Errorf(\"Not enough image file copies: ...\", ...)",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "889128bb_c4051b5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T06:31:38Z",
+      "side": 1,
+      "message": "I think we should break testing.Poll here instead of continuing it:\n  return testing.PollBreak(errors.Errorf(\"...\", ...))\n\nhttps://source.chromium.org/chromium/chromiumos/platform/tast/+/HEAD:src/chromiumos/tast/testing/util.go;l\u003d26;drc\u003de2fe706ffdd02eb70704b8a3b0a72215ef08c147",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2845d872_9ca97bca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T06:31:38Z",
+      "side": 1,
+      "message": "You can define volumeURI just before it is used (L258 in the latest patch set).",
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c38562_888d228a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T06:31:38Z",
+      "side": 1,
+      "message": "Maybe it\u0027s helpful to add some code comments to explain this sequence of unmount \u003e start the test app \u003e mount, because it\u0027s not at all obvious why they are required.",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 2
+      },
+      "revId": "2d2172cd2c8bcd6c4af57f6a3688317a902c09c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
