@@ -507,6 +507,19 @@ type DeviceLocalAccountInfo struct {
 """
   return attr_type, attr_structs
 
+def parse_override_kerberos_accounts(p, refs):
+  value_name = p.name + 'Value'
+  attr_type = '[]' + value_name
+  attr_structs = """
+type KerberosAccountsValue struct {
+\tKrb5conf\tstring\t`json:"krb5conf,omitempty"`
+\tPassword\tstring\t`json:"password"`
+\tPrincipal\tstring\t`json:"principal"`
+\tRememberPassword\tstring\t`json:"remember_password"`
+}
+"""
+  return attr_type, attr_structs
+
 def ref_parse_override_managed_bookmarks(schema, refs):
   name = 'Ref' + schema['items']['id']
   refs[schema['items']['id']] = Reference(name, '*'+name, '')
@@ -525,7 +538,8 @@ type RefBookmarkType struct {
 PARSE_OVERRIDES = {
     'ExtensionSettings': parse_override_extension_settings,
     'ArcPolicy': parse_override_arc_policy,
-    'DeviceLocalAccounts': parse_override_device_local_accounts
+    'DeviceLocalAccounts': parse_override_device_local_accounts,
+    'KerberosAccounts': parse_override_kerberos_accounts
 }
 
 # Functions to use for reference objects when the default way won't work.
