@@ -16,6 +16,23 @@
       "message": "@Meng-Huan Yu,\n\nCL passed on dry run. Can you please give Commit-Queue+2?",
       "revId": "87d1370be7d33212b239995ccdc01a26b23112ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7845b942_72173ee6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2021-09-17T06:41:35Z",
+      "side": 1,
+      "message": "CQ+2 is checked by the owner. Pathan, are you saying you don\u0027t have permission to check CQ+2 (We then have to check with Infra team)",
+      "revId": "87d1370be7d33212b239995ccdc01a26b23112ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
