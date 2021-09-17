@@ -28,7 +28,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LockScreenIdle,
 		Desc:         "Locks the screen and starts Ambient mode",
-		Contacts:     []string{"cowmoo@chromium.org", "wutao@chromium.org"},
+		Contacts:     []string{"cowmoo@chromium.org", "wutao@chromium.org", "assistive-eng@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"ambient.username", "ambient.password"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},

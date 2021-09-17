@@ -24,6 +24,7 @@ func init() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 			"meilinw@chromium.org",
+			"assistive-eng@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},

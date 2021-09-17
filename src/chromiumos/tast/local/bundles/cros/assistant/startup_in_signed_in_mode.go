@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StartupInSignedInMode,
 		Desc:         "Starts Google Assistant service in signed-in mode and checks the running status",
-		Contacts:     []string{"jeroendh@google.com", "xiaohuic@chromium.org"},
+		Contacts:     []string{"jeroendh@google.com", "xiaohuic@chromium.org", "assistive-eng@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		VarDeps:      []string{"assistant.username", "assistant.password"},
