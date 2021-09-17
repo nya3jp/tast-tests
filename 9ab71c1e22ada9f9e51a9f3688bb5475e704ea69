@@ -16,6 +16,29 @@
       "message": "+tast-owners PTAL 😊",
       "revId": "9ab71c1e22ada9f9e51a9f3688bb5475e704ea69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf3cbc6_26636535",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_number_reading_style.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-17T08:56:36Z",
+      "side": 1,
+      "message": "Please use fixtures instead.\nSee example here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go;l\u003d31",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "9ab71c1e22ada9f9e51a9f3688bb5475e704ea69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
