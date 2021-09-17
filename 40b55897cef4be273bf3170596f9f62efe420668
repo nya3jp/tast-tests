@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94029c76_c235a05e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-09-17T23:12:47Z",
+      "side": 1,
+      "message": "Please review the fixes in this patch. Thanks!",
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

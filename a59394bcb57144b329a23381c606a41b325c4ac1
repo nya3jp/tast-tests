@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ed4a707_b8ef0795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-09-17T23:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6017558a_f082487b",
+      "range": {
+        "startLine": 28,
+        "startChar": 53,
+        "endLine": 28,
+        "endChar": 66
+      },
+      "revId": "a59394bcb57144b329a23381c606a41b325c4ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc1b337c_51cbb687",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-06-01T21:25:25Z",
       "side": 1,
       "message": "nit: use the migrated buganizer version",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "a59394bcb57144b329a23381c606a41b325c4ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ad918a_2921ed48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-09-17T23:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc1b337c_51cbb687",
       "range": {
         "startLine": 56,
         "startChar": 9,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aaadc16_9cbd1b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_show_password.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-09-17T23:12:47Z",
+      "side": 1,
+      "message": "Moved these LOC to UnLock function in tast/local/chrome/ui/lockscreen",
+      "parentUuid": "c55b0fd5_871022be",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "a59394bcb57144b329a23381c606a41b325c4ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d54ff4f4_9b8e5583",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84489752_c7f39c00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_switch_to_password.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-09-17T23:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d54ff4f4_9b8e5583",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 90
+      },
+      "revId": "a59394bcb57144b329a23381c606a41b325c4ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31b7106f_e839a0e9",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-06-01T21:25:25Z",
       "side": 1,
       "message": "Same here. Use quotes around button names",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 148
+      },
+      "revId": "a59394bcb57144b329a23381c606a41b325c4ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a1a660e_37c430a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/lock_screen_switch_to_password.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-09-17T23:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31b7106f_e839a0e9",
       "range": {
         "startLine": 29,
         "startChar": 0,
