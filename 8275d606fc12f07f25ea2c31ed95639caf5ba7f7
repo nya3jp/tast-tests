@@ -16,6 +16,29 @@
       "message": "Seems fine to me. Audio team should have the final say on it.",
       "revId": "8275d606fc12f07f25ea2c31ed95639caf5ba7f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad554e2c_4ce89215",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/volume_control.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-09-17T17:50:24Z",
+      "side": 1,
+      "message": "It seems that the volume in params is not necessary. The volume fixes at 100 when the with_audio is set and the volume doesn\u0027t matter when the volumeOnly is set. Maybe we can remove it?",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 10
+      },
+      "revId": "8275d606fc12f07f25ea2c31ed95639caf5ba7f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
