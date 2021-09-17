@@ -46,6 +46,30 @@
       },
       "revId": "32d8eabf94e60fdebf122245464d7292cc9e584f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a57c213_e893a9ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_file_system.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-17T13:43:09Z",
+      "side": 1,
+      "message": "It seems we need a custom policy parser for this policy then. I can take a look at that as I\u0027ve already done that once for another policy.",
+      "parentUuid": "85910594_b85ac54c",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "32d8eabf94e60fdebf122245464d7292cc9e584f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
