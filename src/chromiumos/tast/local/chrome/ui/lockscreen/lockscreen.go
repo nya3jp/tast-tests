@@ -21,6 +21,8 @@ import (
 
 const uiTimeout = 10 * time.Second
 
+var defaultPollOpts = testing.PollOptions{Interval: time.Second, Timeout: uiTimeout}
+
 // State contains the state returned by chrome.autotestPrivate.loginStatus,
 // corresponding to 'LoginStatusDict' as defined in autotest_private.idl.
 type State struct {
@@ -96,6 +98,7 @@ func WaitForPasswordField(ctx context.Context, tconn *chrome.TestConn, username 
 
 // EnterPassword enters and submits the given password. Refer to PasswordFieldParams for username options.
 // It doesn't make any assumptions about the password being correct, so callers should verify the login/lock state afterwards.
+// TODO (b/189597597): Split EnterPassword into 2 parts.
 func EnterPassword(ctx context.Context, tconn *chrome.TestConn, username, password string, kb *input.KeyboardEventWriter) error {
 	params, err := PasswordFieldParams(ctx, tconn, username)
 	if err != nil {
@@ -155,5 +158,67 @@ func EnterPIN(ctx context.Context, tconn *chrome.TestConn, PIN string) error {
 
 // SubmitPIN submits the entered PIN.
 func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
-	return uig.Do(ctx, tconn, uig.FindWithTimeout(ui.FindParams{Name: "Submit", Role: ui.RoleTypeButton}, uiTimeout).LeftClick())
+	node, err := ui.FindWithTimeout(ctx, tconn, SubmitBtnParams, uiTimeout)
+	if err != nil {
+		return err
+	}
+	defer node.Release(ctx)
+
+	return node.StableLeftClick(ctx, &defaultPollOpts)
+}
+
+// ShowPassword clicks the "Show password" button.
+func ShowPassword(ctx context.Context, tconn *chrome.TestConn) error {
+	node, err := ui.FindWithTimeout(ctx, tconn, ShowPasswordBtnParams, uiTimeout)
+	if err != nil {
+		return err
+	}
+	defer node.Release(ctx)
+
+	return node.StableLeftClick(ctx, &defaultPollOpts)
+}
+
+// HidePassword clicks the "Hide password" button.
+func HidePassword(ctx context.Context, tconn *chrome.TestConn) error {
+	node, err := ui.FindWithTimeout(ctx, tconn, HidePasswordBtnParams, uiTimeout)
+	if err != nil {
+		return err
+	}
+	defer node.Release(ctx)
+
+	return node.StableLeftClick(ctx, &defaultPollOpts)
+}
+
+// SwitchToPassword clicks the "Switch to password" button which appears only when PIN autosubmit is enabled.
+func SwitchToPassword(ctx context.Context, tconn *chrome.TestConn) error {
+	node, err := ui.FindWithTimeout(ctx, tconn, SwitchToPwdBtnParams, uiTimeout)
+	if err != nil {
+		return err
+	}
+	defer node.Release(ctx)
+
+	return node.StableLeftClick(ctx, &defaultPollOpts)
+}
+
+// UserPassword searches the password field for a given user pod and returns the password node.
+func UserPassword(ctx context.Context, tconn *chrome.TestConn, username string) (*ui.Node, error) {
+	params, err := PasswordFieldParams(ctx, tconn, username)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find the password node")
+	}
+
+	return ui.Find(ctx, tconn, params)
+}
+
+// UnLock unlocks the screen.
+func UnLock(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := SubmitPIN(ctx, tconn); err != nil {
+		errors.Wrap(err, "failed to click the \"Submit button\"")
+	}
+
+	if st, err := WaitState(ctx, tconn, func(st State) bool { return st.LoggedIn }, 3*uiTimeout); err != nil {
+		errors.Wrapf(err, "failed waiting to log in: %v, last state: %+v", err, st)
+	}
+
+	return nil
 }
