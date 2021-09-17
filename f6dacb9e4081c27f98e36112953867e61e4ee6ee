@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a2868cd_bfd7f03a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/alignment_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-17T09:07:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bd7fc14_8b92a40b",
+      "range": {
+        "startLine": 84,
+        "startChar": 46,
+        "endLine": 84,
+        "endChar": 50
+      },
+      "revId": "f6dacb9e4081c27f98e36112953867e61e4ee6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ee6cc74_6ae6708c",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ff1bd1_e746e31f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/alignment_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-17T09:07:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ee6cc74_6ae6708c",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "f6dacb9e4081c27f98e36112953867e61e4ee6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53df1281_43a905b4",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-09-17T03:48:10Z",
       "side": 1,
       "message": "style: We prefer singlequotes to doublequotes.\nhttps://google.github.io/styleguide/jsguide.html#features-strings-use-single-quotes",
+      "range": {
+        "startLine": 136,
+        "startChar": 49,
+        "endLine": 136,
+        "endChar": 64
+      },
+      "revId": "f6dacb9e4081c27f98e36112953867e61e4ee6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06046ea_d27a688d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-17T09:07:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53df1281_43a905b4",
       "range": {
         "startLine": 136,
         "startChar": 49,
