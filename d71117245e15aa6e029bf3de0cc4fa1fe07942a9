@@ -35,6 +35,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5d06dec_b52afc2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-17T00:26:30Z",
+      "side": 1,
+      "message": "Thank you! Minor adjustments.",
+      "revId": "d71117245e15aa6e029bf3de0cc4fa1fe07942a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4ef5f32_f863c46b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-17T00:26:30Z",
+      "side": 1,
+      "message": "average_seek_time\n\nto make this comparable between 25 and 1000 seeks and if we ever want to change this.",
+      "range": {
+        "startLine": 250,
+        "startChar": 15,
+        "endLine": 250,
+        "endChar": 26
+      },
+      "revId": "d71117245e15aa6e029bf3de0cc4fa1fe07942a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "769507e6_1ac7247e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-17T00:26:30Z",
+      "side": 1,
+      "message": "seconds",
+      "range": {
+        "startLine": 251,
+        "startChar": 14,
+        "endLine": 251,
+        "endChar": 16
+      },
+      "revId": "d71117245e15aa6e029bf3de0cc4fa1fe07942a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9de616c5_179cc51e",
@@ -53,6 +116,52 @@
         "startChar": 4,
         "endLine": 253,
         "endChar": 11
+      },
+      "revId": "d71117245e15aa6e029bf3de0cc4fa1fe07942a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e46d509_c38fbc51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-17T00:26:30Z",
+      "side": 1,
+      "message": "elapsed/min(finishedSeeks+1, numSeeks)\n\naverage time",
+      "range": {
+        "startLine": 253,
+        "startChar": 4,
+        "endLine": 253,
+        "endChar": 11
+      },
+      "revId": "d71117245e15aa6e029bf3de0cc4fa1fe07942a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8205058a_21adfd7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-17T00:26:30Z",
+      "side": 1,
+      "message": "Why not (finishedSeeks+1)/numSeeks?",
+      "range": {
+        "startLine": 258,
+        "startChar": 18,
+        "endLine": 258,
+        "endChar": 44
       },
       "revId": "d71117245e15aa6e029bf3de0cc4fa1fe07942a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
