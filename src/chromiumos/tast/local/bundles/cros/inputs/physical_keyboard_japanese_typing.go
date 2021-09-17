@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -70,6 +71,27 @@ func validateInputFieldFromNthCandidate(its *testserver.InputsTestServer, tconn 
 	})
 }
 
+// Auckland so should never be the same as GMT.
+var timezone = "Pacific/Auckland"
+
+func getCurrentTime() []string {
+	loc, _ := time.LoadLocation(timezone)
+	now := time.Now().In(loc)
+
+	return []string{
+		now.Format(("15:04")),
+		now.Add(time.Minute * 1).Format(("15:04")),
+		now.Add(time.Minute * -1).Format(("15:04")),
+	}
+}
+
+// setTimezone ensures that we are not in the GMT timezone which ensures that the IME is taking the time zone offset into account.
+func setTimezone(ctx context.Context, tconn *chrome.TestConn) error {
+	tconn.Eval(ctx, fmt.Sprintf("chrome.chromeosInfoPrivate.set('timezone','%s')", timezone), nil)
+	// Sleep to ensure that the timezone has been changed before the IME is started
+	return testing.Sleep(ctx, 5000*time.Millisecond)
+}
+
 func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 
@@ -82,6 +104,11 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
+	// Set the timezone for a test.
+	if err := setTimezone(ctx, tconn); err != nil {
+		s.Fatal("Failed to set time zone")
+	}
 
 	// Add IME for testing.
 	imeCode := ime.ChromeIMEPrefix + s.Param().(ime.InputMethod).ID
@@ -230,6 +257,20 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 						util.WaitForFieldTextToBe(tconn, inputField.Finder(), text),
 					)
 				}),
+			),
+		},
+		{
+			Name: "Correct time returned",
+			Action: uiauto.Combine("get the current time from ime",
+				clearAndFocus,
+				kb.TypeAction("ima"), // "now" in Japanese
+				kb.AccelAction("Space"),
+				kb.AccelAction("Space"),
+				kb.AccelAction("Down"), // Current time always seems to be slot #4
+				kb.AccelAction("Down"),
+				kb.AccelAction("Enter"),
+				ui.WaitUntilGone(util.PKCandidatesFinder),
+				util.WaitForFieldTextToBeOneOf(tconn, inputField.Finder(), "not this string", getCurrentTime()),
 			),
 		},
 	}
