@@ -16,6 +16,24 @@
       "message": "If the UI tree shows the new size how is it possible for the test (which seems to get the eize from the UI tree) to still have the old size?",
       "revId": "4cb045d0a9b577b0ca5f4830dd6f75a0b47fbc49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e387d730_9d0eb023",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-17T01:16:19Z",
+      "side": 1,
+      "message": "There is a tinny time difference. The code looking for the size happens immediately after dismissing the resizing dialog. The ui tree was dumped in the end of test.",
+      "parentUuid": "4bcac825_02996258",
+      "revId": "4cb045d0a9b577b0ca5f4830dd6f75a0b47fbc49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
