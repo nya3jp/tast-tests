@@ -6,8 +6,10 @@ package camera
 
 import (
 	"context"
+	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
+	"path/filepath"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -17,6 +19,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/crd"
+	"chromiumos/tast/local/cryptohome"
 	pb "chromiumos/tast/services/cros/camerabox"
 	"chromiumos/tast/testing"
 )
@@ -76,6 +79,28 @@ func (a *AlignmentService) ManualAlign(ctx context.Context, req *pb.ManualAlignR
 	return &empty.Empty{}, nil
 }
 
+// copyPreviewFrame copies the last preview frame image from download folder for debugging.
+func (a *AlignmentService) copyPreviewFrame(ctx context.Context, cr *chrome.Chrome) error {
+	userPath, err := cryptohome.UserPath(ctx, cr.User())
+	if err != nil {
+		return errors.Wrap(err, "failed to get the cryptohome user path")
+	}
+	const frameFileName = "frame.png"
+	framePath := filepath.Join(userPath, "MyFiles", "Downloads", frameFileName)
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("failed to get remote context dir")
+	}
+	content, err := ioutil.ReadFile(framePath)
+	if err != nil {
+		return errors.Wrap(err, "failed read frame image")
+	}
+	if err := ioutil.WriteFile(filepath.Join(outDir, frameFileName), content, 0644); err != nil {
+		return errors.Wrap(err, "failed write frame image to out dir")
+	}
+	return nil
+}
+
 func (a *AlignmentService) CheckAlign(ctx context.Context, req *pb.CheckAlignRequest) (*pb.CheckAlignResponse, error) {
 	srv := httptest.NewServer(http.FileServer(http.Dir(req.DataPath)))
 	defer srv.Close()
@@ -84,7 +109,7 @@ func (a *AlignmentService) CheckAlign(ctx context.Context, req *pb.CheckAlignReq
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx, chrome.ARCDisabled(), chrome.KeepState(),
+	cr, err := chrome.New(ctx, chrome.ARCDisabled(),
 		// Avoid the need to grant camera/microphone permissions.
 		chrome.ExtraArgs("--use-fake-ui-for-media-stream"))
 	if err != nil {
@@ -100,6 +125,9 @@ func (a *AlignmentService) CheckAlign(ctx context.Context, req *pb.CheckAlignReq
 	defer conn.CloseTarget(cleanupCtx)
 
 	if err := conn.Call(ctx, nil, "Tast.checkAlign", req.Facing); err != nil {
+		if err := a.copyPreviewFrame(cleanupCtx, cr); err != nil {
+			testing.ContextLog(ctx, "Failed to copy last preview frame: ", err)
+		}
 		return &pb.CheckAlignResponse{
 			Result: pb.TestResult_TEST_RESULT_FAILED,
 			Error:  err.Error(),
