@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bcac825_02996258",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-09-17T01:02:35Z",
+      "side": 1,
+      "message": "If the UI tree shows the new size how is it possible for the test (which seems to get the eize from the UI tree) to still have the old size?",
+      "revId": "4cb045d0a9b577b0ca5f4830dd6f75a0b47fbc49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
