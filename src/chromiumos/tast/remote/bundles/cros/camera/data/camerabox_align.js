@@ -127,6 +127,24 @@ window.Tast = class Tast {
   }
 
   /**
+   * Saves frame to download folder.
+   * @param {!Facing} facing
+   * @param {!AspectRatio} aspectRatio
+   */
+  static async savePreviewFrame_(facing, aspectRatio) {
+    const frame = await Tast.getPreviewFrame_(facing, aspectRatio);
+    const blob = await frame.convertToBlob({type: 'image/png'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'frame.png';
+    document.body.appendChild(a);
+    a.click();
+    // Delay for waiting frame saved.
+    await sleep(1000);
+  }
+
+  /**
    * @param {!Facing} facing
    * @param {!AspectRatio} aspectRatio
    * @return {!Promise<!OffscreenCanvas>}
@@ -233,6 +251,7 @@ window.Tast = class Tast {
       await sleep(200);
       const currentTime = Date.now();
       if (currentTime - startCheckTime > timeoutMs) {
+        await Tast.savePreviewFrame_(facing, aspectRatio);
         throw new AlignTimeoutError(facing, aspectRatio, timeoutMs);
       }
       if (!await Tast.checkAlign_(facing, aspectRatio)) {
