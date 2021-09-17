@@ -128,9 +128,12 @@ func CpufreqConf(ctx context.Context, s *testing.State) {
 	for gov, settings := range governorSettings {
 		for _, setting := range settings {
 			settingKey := "CPUFREQ_" + strings.ToUpper(setting)
-			keyTests[settingKey] = func(expectedSetting string) error {
-				return testGovernorSetting(gov, setting, expectedSetting)
+			genTest := func(gov, setting string) func(string) error {
+				return func(expectedSetting string) error {
+					return testGovernorSetting(gov, setting, expectedSetting)
+				}
 			}
+			keyTests[settingKey] = genTest(gov, setting)
 		}
 	}
 
