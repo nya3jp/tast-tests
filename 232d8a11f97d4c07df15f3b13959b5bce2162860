@@ -3,6 +3,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c37e7fd_7d3a32b7",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T09:10:29Z",
+      "side": 1,
+      "message": "Calling this function does not necessarily involve a volume state change. Maybe just waitForARCVolumeState or something is more appropriate as its name?",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "232d8a11f97d4c07df15f3b13959b5bce2162860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e4131a3_1fb7d5e6",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T09:10:29Z",
+      "side": 1,
+      "message": "optional: How about letthing this function return ([]byte, error) so that it can be used by MyFilesVolumeID too?\n  // waitForARCVolumeState waits for a volume of the given ID, state, and UUID\n  // appears inside ARC. Volume\u0027s ID, state, UUID should be expressed in regex.\n  // It looks up the output of \"adb sm list-volumes\", and returns the first line\n  // that matches the specified regex.\n  func waitForARCVolumeState(ctx context.Context, a *ARC, id, state, uuid string) ([]byte, error) {\n    // Regular expression that matches the output line for the specified volume.\n    // Each output line of \"adb sm list-volumes\" is of the form:\n    // \u003cvolume id\u003e\u003cspace(s)\u003e\u003cvolume state\u003e\u003cspace(s)\u003e\u003cvolume UUID\u003e.\n    // Examples:\n    //   emulated;0 mounted null\n    //   1821167369 ejecting 00000000000000000000000000000000DEADBEEF\n    //   stub:18446744073709551614 unmounted 0000000000000000000000000000CAFEF00D2019\n    re :\u003d regexp.MustCompile(`^` + id + `\\s+` + state + `\\s+` + uuid + `$`)\n    var firstMatch []byte\n    if err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n      out, err :\u003d a.Command(ctx, \"sm\", \"list-volumes\").Output(testexec.DumpLogOnError)\n      if err !\u003d nil {\n        return testing.PollBreak(errors.Wrap(err, \"sm command failed\"))\n      }\n      lines :\u003d bytes.Split(out, []byte(\"\\n\"))\n      for _, line :\u003d range lines {\n        if match :\u003d re.Find(bytes.TrimSpace(line)); match !\u003d nil {\n          firstMatch \u003d match\n          return nil\n        }\n      }\n      return errors.Errorf(\"no matching volume found for ID %q, state %q, UUID %q\", id, state, uuid)\n    }, \u0026testing.PollOptions{Timeout: 30 * time.Second}); err !\u003d nil {\n      return nil, err\n    }\n    return firstMatch, nil\n  }\n\n(You can probably use re.Find(out) instead of Split + for loop as suggested by Risan.)\n\nWith the above function, you can define existing functions by:\n  func waitForARCVolumeMount(ctx context.Context, a *ARC, id, uuid string) error {\n    _, err :\u003d waitForARCVolumeState(ctx, a, id, \"mounted\", uuid)\n    return err\n  }\n\n  func waitForARCVolumeUnmount(ctx context.Context, a *ARC, id, uuid string) error {\n    _, err :\u003d waitForARCVolumeState(ctx, a, id, \"unmounted\", uuid)\n    return err\n  }\n\n  func SdcardVolumeID(ctx context.Context, a *ARC) (string, error) {\n    match, err :\u003d waitForARCVolumeState(ctx, a, sdcardVolumeIDRegex, \"mounted\", \"null\")\n    if err !\u003d nil {\n      return \"\", err\n    }\n    return strings.Split(string(match), \" \")[0], nil\n  }\n\n  func MyFilesVolumeID(ctx context.Context, a *ARC) (string, error) {\n    match, err :\u003d waitForARCVolumeState(ctx, a, stubVolumeIDRegex, \"mounted\", MyFilesUUID)\n    if err !\u003d nil {\n      return \"\", err\n    }\n    return strings.Split(string(match), \" \")[0], nil\n  }\n\nHere, sdcardVolumeIDRegex and stubVolumeIDRegex are:\n  const (\n    [...]\n    // stubVolumeIDRegex is regex for volume IDs of StubVolumes (MyFiles,\n    // removable media) in ARC.\n    stubVolumeIDRegex \u003d `(stub:)?[0-9]+`\n\n    // sdcardVolumeIDRegex is regex for the volume ID of the sdcard volume in ARC.\n    sdcardVolumeIDRegex \u003d `emulated(;0)?`\n  )\n\n(The sdcard volume ID is \u0027emulated\u0027 (without \u0027;0\u0027) in android_p.)",
+      "revId": "232d8a11f97d4c07df15f3b13959b5bce2162860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc17bc1b_8c9048d0",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T09:10:29Z",
+      "side": 1,
+      "message": "This is my mistake, but while you\u0027re here, could you change this line to:\n  WaitForARCMyFilesVolumeMount(ctx, a)\n\n?",
+      "revId": "232d8a11f97d4c07df15f3b13959b5bce2162860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3701dead_3a591fff",
         "filename": "src/chromiumos/tast/local/arc/volume.go",
         "patchSetId": 15
@@ -20,6 +77,23 @@
         "endLine": 166,
         "endChar": 3
       },
+      "revId": "232d8a11f97d4c07df15f3b13959b5bce2162860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dfbe0c2_42826783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T09:10:29Z",
+      "side": 1,
+      "message": "super-nit: I\u0027d put a blank line here because what MkdirAll does is semantically closer to L107~ than L98~.",
       "revId": "232d8a11f97d4c07df15f3b13959b5bce2162860",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
