@@ -16,6 +16,236 @@
       "message": "Test of two-finger trackpad scroll using the refactored scroll app",
       "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e208e6e_ee955009",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_trackpad_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-17T00:02:49Z",
+      "side": 1,
+      "message": "nit: add docstring",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 4
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d5de72c_db7cb15f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_trackpad_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-17T00:02:49Z",
+      "side": 1,
+      "message": "ditto: add docstring",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 4
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "defa44cb_01bc6642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_trackpad_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-17T00:02:49Z",
+      "side": 1,
+      "message": "huge nit:\n\nif there is only one const, you can do:\n\n  const maxNumScrol... \u003d 15",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "024ea434_8dd067ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-17T00:02:49Z",
+      "side": 1,
+      "message": "nit: break is not needed in golang",
+      "range": {
+        "startLine": 609,
+        "startChar": 2,
+        "endLine": 609,
+        "endChar": 7
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b22b3019_259bcad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-17T00:02:49Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 612,
+        "startChar": 2,
+        "endLine": 612,
+        "endChar": 7
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ee162d6_ee818140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-17T00:02:49Z",
+      "side": 1,
+      "message": "nit: remove \"get\" from getters\n\nhttps://golang.org/doc/effective_go#Getters",
+      "range": {
+        "startLine": 674,
+        "startChar": 5,
+        "endLine": 674,
+        "endChar": 8
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a1b927_d712819e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-17T00:02:49Z",
+      "side": 1,
+      "message": "nit: returned errors should not be capitalized",
+      "range": {
+        "startLine": 677,
+        "startChar": 32,
+        "endLine": 677,
+        "endChar": 33
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a19d07a3_4a1225c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-17T00:02:49Z",
+      "side": 1,
+      "message": "IIUC you are returning a writter, but it is being closed in L679.\n\none possibility is to return a cleanup function",
+      "range": {
+        "startLine": 692,
+        "startChar": 8,
+        "endLine": 692,
+        "endChar": 11
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00210402_f6bc9b28",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-17T00:02:49Z",
+      "side": 1,
+      "message": "nit:  \"... must be positive; got: major\u003d%d, minor\u003d%d\"",
+      "range": {
+        "startLine": 604,
+        "startChar": 37,
+        "endLine": 604,
+        "endChar": 53
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d73b579_1ba6c8b3",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-17T00:02:49Z",
+      "side": 1,
+      "message": "nit, ditto:\n\n   \" equal to minor; got major\u003d%d, minor\u003d%d\"",
+      "range": {
+        "startLine": 606,
+        "startChar": 49,
+        "endLine": 606,
+        "endChar": 67
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
