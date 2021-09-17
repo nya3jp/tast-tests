@@ -19,7 +19,10 @@ import (
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -392,6 +395,8 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start receiving on Android: ", err)
 	}
 
+	nativeui := uiauto.New(tconn)
+	var shareCancelled bool
 	// Defer cancelling receiving if something goes wrong.
 	var shareCompleted bool
 	defer func() {
@@ -406,6 +411,15 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 			if err := androidDevice.AwaitSharingStopped(ctx, testTimeout); err != nil {
 				s.Error("Failed waiting for the Android device to signal that sharing has finished: ", err)
 			}
+			if !shareCancelled {
+				cancel := nodewith.Name("Cancel").Role(role.Button)
+				if err := uiauto.Combine("find and click cancel button",
+					nativeui.WithTimeout(5*time.Second).WaitUntilExists(cancel),
+					nativeui.LeftClick(cancel),
+				)(ctx); err != nil {
+					s.Error("Failed to click the 'Cancel' button: ", err)
+				}
+			}
 		}
 	}()
 
@@ -414,6 +428,7 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 		if err := sender.Cancel(ctx); err != nil {
 			s.Fatal("Cancel failed: ", err)
 		}
+		shareCancelled = true
 		shareButton := d.Object(ui.ClassName(buttonClassName), ui.TextMatches("(?i)"+"SHARE"), ui.Enabled(true))
 		if err := shareButton.WaitForExists(ctx, 10*time.Second); err != nil {
 			s.Fatal("SHARE button doesn't exist: ", err)
@@ -434,6 +449,7 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 		if err := sender.CancelSelect(ctx); err != nil {
 			s.Fatal("Cancel failed: ", err)
 		}
+		shareCancelled = true
 		shareButton := d.Object(ui.ClassName(buttonClassName), ui.TextMatches("(?i)"+"SHARE"), ui.Enabled(true))
 		if err := shareButton.WaitForExists(ctx, 10*time.Second); err != nil {
 			s.Fatal("SHARE button doesn't exist: ", err)
