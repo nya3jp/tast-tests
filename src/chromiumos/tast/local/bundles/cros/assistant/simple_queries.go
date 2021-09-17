@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SimpleQueries,
 		Desc:         "Tests Assistant basic functionality with simple queries",
-		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
+		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org", "assisitve-eng@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Pre:          assistant.VerboseLoggingEnabled(),

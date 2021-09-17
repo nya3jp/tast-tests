@@ -24,7 +24,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BluetoothQueries,
 		Desc:         "Tests toggling Bluetooth using Assistant queries",
-		Contacts:     []string{"chromeos-sw-engprod@google.com", "meilinw@chromium.org"},
+		Contacts:     []string{"chromeos-sw-engprod@google.com", "assisitve-eng@google.com", "meilinw@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          assistant.VerboseLoggingEnabled(),

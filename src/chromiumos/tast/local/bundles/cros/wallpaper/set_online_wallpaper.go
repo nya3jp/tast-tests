@@ -22,7 +22,8 @@ func init() {
 		Desc: "Test setting online wallpapers in the new wallpaper app",
 		Contacts: []string{
 			"jasontt@google.com",
-			"croissant-eng@google.com",
+			"chromeos-sw-engprod@google.com",
+			"assistive-eng@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

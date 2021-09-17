@@ -22,7 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OpenAndroidApp,
 		Desc:         "Tests Assistant open Android app feature",
-		Contacts:     []string{"updowndota@chromium.org", "xiaohuic@chromium.org"},
+		Contacts:     []string{"updowndota@chromium.org", "xiaohuic@chromium.org", "assisitve-eng@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		VarDeps:      []string{"assistant.username", "assistant.password"},
