@@ -50,6 +50,23 @@
       "message": "Thanks Aki, Kyle and Alvin!",
       "revId": "225ed879cc56396f7865bc0a96ba033aff4fa504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef0d1283_3e98630d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-17T22:45:12Z",
+      "side": 1,
+      "message": "Alvin, do you have tast-review +1 abilities?",
+      "revId": "225ed879cc56396f7865bc0a96ba033aff4fa504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
