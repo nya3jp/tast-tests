@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a6bc5f_6cea1040",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-17T14:13:40Z",
+      "side": 1,
+      "message": "In expected use cases (Close should be called only once), sess/agg are always non-nil. cmd may be nil actually (if this connects to Lacros launched from ash-chrome).\nSo, this is actually consistent, iMHO.\n\nLet me know if you still would like to see if-nil check here, but let me work on it in a follow-up CL.",
+      "parentUuid": "062fe3dc_020592d9",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 14
+      },
+      "revId": "e86957cb45f24417f6557fb0011f8004a273d562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb00786a_5bcdc9dc",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce5263b8_b4d4ff0e",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-17T14:13:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb00786a_5bcdc9dc",
+      "range": {
+        "startLine": 196,
+        "startChar": 27,
+        "endLine": 196,
+        "endChar": 31
+      },
+      "revId": "e86957cb45f24417f6557fb0011f8004a273d562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72bc38d7_8213ee6f",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-09-16T10:03:13Z",
       "side": 1,
       "message": "IMO better comment is /why/ this is happening i.e. because of the defered cleanup.",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 28
+      },
+      "revId": "e86957cb45f24417f6557fb0011f8004a273d562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fc8d80_e52a5d58",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-17T14:13:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72bc38d7_8213ee6f",
       "range": {
         "startLine": 248,
         "startChar": 0,
