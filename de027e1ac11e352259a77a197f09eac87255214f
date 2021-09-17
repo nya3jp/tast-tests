@@ -157,6 +157,24 @@
       "parentUuid": "760bc59f_9bab8d34",
       "revId": "de027e1ac11e352259a77a197f09eac87255214f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91331af8_c3582119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_pitch_and_rate.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-17T21:44:17Z",
+      "side": 1,
+      "message": "ah okay, I took a look and a lot of other tests don\u0027t have a comment as well so I don\u0027t think it\u0027s necessary",
+      "parentUuid": "2bc0be22_e8859d2e",
+      "revId": "de027e1ac11e352259a77a197f09eac87255214f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
