@@ -22,6 +22,30 @@
       },
       "revId": "32d8eabf94e60fdebf122245464d7292cc9e584f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85910594_b85ac54c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_file_system.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-17T13:35:36Z",
+      "side": 1,
+      "message": "hmmm, interesting. I know I put there for a reason.\nI checked it and I know the reason. If I remove krb5conf and set policy then I see it on https://chrome/policy as:\n-----------------\nValue \u003d \n{\n   \"krb5conf\": null,\n   \"password\": ....\n   ....\n}\n\nError \u003d \n\"Schema validation error at \"item[0].krb5conf\": The value type doesn\u0027t match the schema type.\n-----------------\n\nany ideas?\n\n\n\u003e\u003e The second one has the following line:\n\u003e\u003e  `forwardable \u003d true`\n\nWhat do you mean by that?",
+      "parentUuid": "3d953247_7689b30b",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "32d8eabf94e60fdebf122245464d7292cc9e584f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
