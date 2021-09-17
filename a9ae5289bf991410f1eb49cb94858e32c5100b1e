@@ -48,6 +48,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f21051b6_05c5c330",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-17T14:44:18Z",
+      "side": 1,
+      "message": "lgtm % nits",
+      "revId": "a9ae5289bf991410f1eb49cb94858e32c5100b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e872fa55_4d767c3e",
@@ -85,6 +102,30 @@
       "side": 1,
       "message": "Yes, the intent is to fail if RoamingState!\u003droaming.\n\nWas it the comment that confused you? Should it be \n// Ensure that we have a roaming sim, else report failure.",
       "parentUuid": "e872fa55_4d767c3e",
+      "range": {
+        "startLine": 56,
+        "startChar": 38,
+        "endLine": 56,
+        "endChar": 53
+      },
+      "revId": "a9ae5289bf991410f1eb49cb94858e32c5100b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b043efb_2348f60e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_roaming.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-17T14:44:18Z",
+      "side": 1,
+      "message": "Yeah, that sounds better (maybe even make a note that we\u0027re reporting failure because the test attributes should ensure we\u0027re looking for something that\u0027s really here, rather than doing a TestNA)",
+      "parentUuid": "31a63cb9_8263dfaa",
       "range": {
         "startLine": 56,
         "startChar": 38,
