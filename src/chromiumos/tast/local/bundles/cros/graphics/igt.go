@@ -101,18 +101,6 @@ func init() {
 			Timeout:           5 * time.Minute,
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuQcom...)),
 		}, {
-			Name: "kms_big_fb",
-			Val: igtTest{
-				exe: "kms_big_fb",
-			},
-			Timeout: 5 * time.Minute,
-		}, {
-			Name: "kms_busy",
-			Val: igtTest{
-				exe: "kms_busy",
-			},
-			Timeout: 15 * time.Minute,
-		}, {
 			Name: "kms_color",
 			Val: igtTest{
 				exe: "kms_color",
@@ -144,12 +132,6 @@ func init() {
 			Name: "kms_content_protection",
 			Val: igtTest{
 				exe: "kms_content_protection",
-			},
-			Timeout: 5 * time.Minute,
-		}, {
-			Name: "kms_crtc_background_color",
-			Val: igtTest{
-				exe: "kms_crtc_background_color",
 			},
 			Timeout: 5 * time.Minute,
 		}, {
@@ -193,12 +175,6 @@ func init() {
 			},
 			Timeout: 5 * time.Minute,
 		}, {
-			Name: "kms_draw_crc",
-			Val: igtTest{
-				exe: "kms_draw_crc",
-			},
-			Timeout: 5 * time.Minute,
-		}, {
 			Name: "kms_flip",
 			Val: igtTest{
 				exe: "kms_flip",
@@ -219,12 +195,6 @@ func init() {
 			},
 			Timeout: 5 * time.Minute,
 		}, {
-			Name: "kms_frontbuffer_tracking",
-			Val: igtTest{
-				exe: "kms_frontbuffer_tracking",
-			},
-			Timeout: 25 * time.Minute,
-		}, {
 			Name: "kms_getfb",
 			Val: igtTest{
 				exe: "kms_getfb",
@@ -240,12 +210,6 @@ func init() {
 			Name: "kms_hdr",
 			Val: igtTest{
 				exe: "kms_hdr",
-			},
-			Timeout: 5 * time.Minute,
-		}, {
-			Name: "kms_invalid_dotclock",
-			Val: igtTest{
-				exe: "kms_invalid_dotclock",
 			},
 			Timeout: 5 * time.Minute,
 		}, {
@@ -384,18 +348,6 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuMtk...)),
-		}, {
-			Name: "kms_psr",
-			Val: igtTest{
-				exe: "kms_psr",
-			},
-			Timeout: 5 * time.Minute,
-		}, {
-			Name: "kms_psr2_su",
-			Val: igtTest{
-				exe: "kms_psr2_su",
-			},
-			Timeout: 5 * time.Minute,
 		}, {
 			Name: "kms_rmfb",
 			Val: igtTest{
