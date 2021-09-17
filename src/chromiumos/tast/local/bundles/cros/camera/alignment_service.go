@@ -97,7 +97,7 @@ func (a *AlignmentService) copyPreviewFrame(ctx context.Context, cr *chrome.Chro
 	return nil
 }
 
-func (a *AlignmentService) CheckAlign(ctx context.Context, req *pb.CheckAlignRequest) (*pb.CheckAlignResponse, error) {
+func (a *AlignmentService) CheckRegression(ctx context.Context, req *pb.CheckRegressionRequest) (*pb.CheckRegressionResponse, error) {
 	srv := httptest.NewServer(http.FileServer(http.Dir(req.DataPath)))
 	defer srv.Close()
 
@@ -120,15 +120,15 @@ func (a *AlignmentService) CheckAlign(ctx context.Context, req *pb.CheckAlignReq
 	defer conn.Close()
 	defer conn.CloseTarget(cleanupCtx)
 
-	if err := conn.Call(ctx, nil, "Tast.checkAlign", req.Facing); err != nil {
+	if err := conn.Call(ctx, nil, "Tast.checkRegression", req.Facing); err != nil {
 		if err := a.copyPreviewFrame(cleanupCtx, cr); err != nil {
 			testing.ContextLog(ctx, "Failed to copy last preview frame: ", err)
 		}
-		return &pb.CheckAlignResponse{
+		return &pb.CheckRegressionResponse{
 			Result: pb.TestResult_TEST_RESULT_FAILED,
 			Error:  err.Error(),
 		}, nil
 	}
 
-	return &pb.CheckAlignResponse{Result: pb.TestResult_TEST_RESULT_PASSED}, nil
+	return &pb.CheckRegressionResponse{Result: pb.TestResult_TEST_RESULT_PASSED}, nil
 }
