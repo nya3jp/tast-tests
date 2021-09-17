@@ -148,6 +148,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac2a97bb_0670fb3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-09-17T00:11:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b6726c6_863e1a91",
+      "revId": "5570a53646e64a43b4f5378d7672b57ba82eae86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dad5e346_8ccdc93f",
