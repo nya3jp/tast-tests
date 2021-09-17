@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b19206_716fed1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-09-17T09:57:55Z",
+      "side": 1,
+      "message": "Done by add initctlTimeout and soundCardInitTimeout.",
+      "parentUuid": "66ff0de3_ac392c88",
+      "range": {
+        "startLine": 55,
+        "startChar": 6,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "d819639f5fafd7842082b1d19fea6b1b1c821b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcd5d8f5_34719707",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b805087c_2041aec8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-09-17T09:57:55Z",
+      "side": 1,
+      "message": "This test verifies that the boot time calibration is skipped. So there is no other condition to poll.\n\nDone by extend the timeout to 5s. sound_card_init should completes within 2s.",
+      "parentUuid": "bcd5d8f5_34719707",
+      "revId": "d819639f5fafd7842082b1d19fea6b1b1c821b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b5a6d2c_2a49c89e",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-09-17T08:33:55Z",
       "side": 1,
       "message": "nit: still do not",
+      "range": {
+        "startLine": 158,
+        "startChar": 23,
+        "endLine": 158,
+        "endChar": 32
+      },
+      "revId": "d819639f5fafd7842082b1d19fea6b1b1c821b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a40fec5_68576f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-09-17T09:57:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b5a6d2c_2a49c89e",
       "range": {
         "startLine": 158,
         "startChar": 23,
