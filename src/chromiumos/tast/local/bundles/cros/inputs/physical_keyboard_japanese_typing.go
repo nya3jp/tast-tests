@@ -6,9 +6,11 @@ package inputs
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
@@ -18,7 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
+	//"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -29,8 +31,8 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.NonVKClamshell,
-		HardwareDeps: hwdep.D(pre.InputsStableModels),
-		Timeout:      5 * time.Minute,
+		//Hardwarep.D(pre.InputsStableModels),
+		Timeout: 5 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "us",
@@ -51,6 +53,39 @@ func validateInputFieldFromNthCandidate(its *testserver.InputsTestServer, tconn 
 	})
 }
 
+// Perth so should never be the same as GMT (and they don't have DST).
+var timezone = "Pacific/Perth"
+
+func getCurrentTime() []string {
+	loc, err := time.LoadLocation(timezone)
+	if err != nil {
+		panic(fmt.Sprintf("Failed to load timezone: %v", err))
+	}
+	now := time.Now().In(loc)
+
+	return []string{
+		now.Format(("15:04")),
+		now.Add(time.Minute * 1).Format(("15:04")),
+		now.Add(time.Minute * -1).Format(("15:04")),
+	}
+}
+
+// setTimezone ensures that we are not in the GMT timezone which ensures that the IME is taking the time zone offset into account.
+func setTimezone(ctx context.Context, tconn *chrome.TestConn) error {
+	tconn.Eval(ctx, fmt.Sprintf("chrome.chromeosInfoPrivate.set('timezone','%s')", timezone), nil)
+	var deviceTimezone string
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := tconn.Eval(ctx, "tast.promisify(chrome.chromeosInfoPrivate.get)(['timezone']).then(c=>c.timezone)", &device_timezone); err != nil {
+			return errors.Errorf("failed to get timezone: %s", err)
+		}
+		if deviceTimezone != timezone {
+			return errors.Errorf("timezone not changed to %s", timezone)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second})
+	return err
+}
+
 func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 
@@ -63,6 +98,11 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
+	// Set the timezone for a test.
+	if err := setTimezone(ctx, tconn); err != nil {
+		s.Fatal("Failed to set time zone: ", err)
+	}
 
 	// Add IME for testing.
 	imeCode := ime.ChromeIMEPrefix + s.Param().(ime.InputMethod).ID
@@ -206,6 +246,29 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 						util.WaitForFieldTextToBe(tconn, inputField.Finder(), text),
 					)
 				}),
+			),
+		},
+		{
+			Name: "Correct time returned",
+			Action: uiauto.Combine("get the current time from ime",
+				its.ClearThenClickFieldAndWaitForActive(inputField),
+				kb.TypeAction("ima"), // "now" in Japanese
+				kb.AccelAction("Space"),
+				kb.AccelAction("Space"),
+				kb.AccelAction("Down"), // Current time always seems to be slot #4
+				kb.AccelAction("Down"),
+				kb.AccelAction("Enter"),
+				ui.WaitUntilGone(util.PKCandidatesFinder),
+				util.WaitForFieldTextToSatisfy(tconn, inputField.Finder(), "not this string",
+					func(t string) bool {
+						time := getCurrentTime()
+						for i := 0; i < len(time); i++ {
+							if time[i] == t {
+								return true
+							}
+						}
+						return false
+					}),
 			),
 		},
 	}
