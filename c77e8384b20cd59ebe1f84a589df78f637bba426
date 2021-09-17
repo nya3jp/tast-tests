@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db98ba54_cf1f58b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T14:05:33Z",
+      "side": 1,
+      "message": "Thank you for your continuing effort and patience! The test code almost looks good, and I think you\u0027re very close. Let\u0027s improve it a little bit more after a long weekend.",
+      "revId": "c77e8384b20cd59ebe1f84a589df78f637bba426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdd34a92_4aaeefc2",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T14:05:33Z",
+      "side": 1,
+      "message": "This part does not seem to be accurate. Although you don\u0027t need to follow it, there is one possible alternative in my previous comment.",
+      "range": {
+        "startLine": 45,
+        "startChar": 60,
+        "endLine": 45,
+        "endChar": 67
+      },
+      "revId": "c77e8384b20cd59ebe1f84a589df78f637bba426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d8e6b70_e65e6970",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T14:05:33Z",
+      "side": 1,
+      "message": "You can use re.Find(out):\n    if matchedLine :\u003d re.Find(out); matchedLine !\u003d nil {\n      volumeID \u003d strings.Split(string(matchedLine), \" \")[0]\n      return nil\n    }\n\nhttps://pkg.go.dev/regexp#Regexp.Find",
+      "revId": "c77e8384b20cd59ebe1f84a589df78f637bba426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e208abf_81dd8239",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T14:05:33Z",
+      "side": 1,
+      "message": "nit: strings.Split is not necessary for functions other than MyFilesVolumeID and SdcardVolumeID. Although there might be no one who cares it, maybe it\u0027s a slightly better practice to just return matchedLine from this function, and perform Split only in MyFilesVolumeID and SdcardVolumeID.",
+      "revId": "c77e8384b20cd59ebe1f84a589df78f637bba426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985e9c9c_fb6f6692",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T14:05:33Z",
+      "side": 1,
+      "message": "This error message does not seem to be accurate. My previous comment contains a possible alternative.",
+      "revId": "c77e8384b20cd59ebe1f84a589df78f637bba426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b467235a_9315b027",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-17T14:05:33Z",
+      "side": 1,
+      "message": "If you return volumeID from waitFor... and you don\u0027t wrap the error message, you can just use the return values of waitFor...:\n  return waitForARCVolumeStatusAndGetVolumeID(ctx, a, stubVolumeIDRegex, \"mounted\", MyFilesUUID)\n\nSame goes for SdcardVolumeID.",
+      "revId": "c77e8384b20cd59ebe1f84a589df78f637bba426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
