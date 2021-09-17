@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff23168d_b797d6a5",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-17T21:27:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8964c1d3_d6ea138f",
+      "revId": "de027e1ac11e352259a77a197f09eac87255214f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26ba673e_e38dbe1a",
@@ -58,6 +76,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5a00a12_cc326510",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-17T21:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26ba673e_e38dbe1a",
+      "range": {
+        "startLine": 406,
+        "startChar": 8,
+        "endLine": 406,
+        "endChar": 33
+      },
+      "revId": "de027e1ac11e352259a77a197f09eac87255214f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34439f9e_85794719",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-17T21:27:51Z",
+      "side": 1,
+      "message": "Done, also added some string formatting which is helpful when I get the timeout error,\nreturn errors.Errorf(\"expected: %q, but got: %q\", expectations, actual)",
+      "parentUuid": "26ba673e_e38dbe1a",
+      "range": {
+        "startLine": 406,
+        "startChar": 8,
+        "endLine": 406,
+        "endChar": 33
+      },
+      "revId": "de027e1ac11e352259a77a197f09eac87255214f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "760bc59f_9bab8d34",
@@ -71,6 +137,24 @@
       "writtenOn": "2021-09-17T19:14:07Z",
       "side": 1,
       "message": "do you need a comment above this since it\u0027s exported? not sure if lint complains about it or not",
+      "revId": "de027e1ac11e352259a77a197f09eac87255214f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bc0be22_e8859d2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_tts_pitch_and_rate.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-17T21:27:51Z",
+      "side": 1,
+      "message": "I don\u0027t think lint complains. The other tests in this directory don\u0027t have comments here. Maybe we can add comments to all in a follow-up?",
+      "parentUuid": "760bc59f_9bab8d34",
       "revId": "de027e1ac11e352259a77a197f09eac87255214f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
