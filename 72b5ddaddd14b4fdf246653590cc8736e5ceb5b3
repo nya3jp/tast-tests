@@ -52,6 +52,24 @@
       "parentUuid": "1f990d5c_5a1bc689",
       "revId": "72b5ddaddd14b4fdf246653590cc8736e5ceb5b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cac1fc85_dfc0a6cb",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-09-17T06:27:23Z",
+      "side": 1,
+      "message": "I realised that it can\u0027t be private since tests need to pass in a closure that references it... Made the members private though.",
+      "parentUuid": "4077ac66_296d54ff",
+      "revId": "72b5ddaddd14b4fdf246653590cc8736e5ceb5b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
