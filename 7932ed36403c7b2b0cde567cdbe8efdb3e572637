@@ -46,6 +46,30 @@
       },
       "revId": "7932ed36403c7b2b0cde567cdbe8efdb3e572637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "475fc968_15ad47db",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/conndiag/conndiag.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-17T03:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "870d12fa_62ef0eb1",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "7932ed36403c7b2b0cde567cdbe8efdb3e572637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
