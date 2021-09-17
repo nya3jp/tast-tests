@@ -10,6 +10,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
@@ -27,19 +28,31 @@ func init() {
 			"akihiroota@chromium.org",      // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
+		Params: []testing.Param{{
+			Name: "accept_dialog",
+			Val:  true,
+		}, {
+			Name: "dismiss_dialog",
+			Val:  false,
+		}},
 	})
 }
 
 func ChromevoxHint(ctx context.Context, s *testing.State) {
+	// Shorten deadline to leave time for cleanup
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	// This feature is disabled in dev mode, so pass in the flag to explicitly enable it.
 	cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")), chrome.ExtraArgs("--enable-oobe-chromevox-hint-timer-for-dev-mode"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
@@ -50,7 +63,7 @@ func ChromevoxHint(ctx context.Context, s *testing.State) {
 	if err := crastestclient.Mute(ctx); err != nil {
 		s.Fatal("Failed to mute: ", err)
 	}
-	defer crastestclient.Unmute(ctx)
+	defer crastestclient.Unmute(cleanupCtx)
 
 	oobeConn, err := cr.WaitForOOBEConnection(ctx)
 	if err != nil {
@@ -75,27 +88,49 @@ func ChromevoxHint(ctx context.Context, s *testing.State) {
 	}
 	defer sm.Close()
 
+	chromeVoxText := nodewith.NameStartingWith("Do you want to activate ChromeVox").Role(role.StaticText).Onscreen()
+	noButton := nodewith.Name("No, continue without ChromeVox").Role(role.Button).Onscreen()
+	yesButton := nodewith.Name("Yes, activate ChromeVox").Role(role.Button).Onscreen()
+	var speechExpectations []a11y.SpeechExpectation
+	var actions uiauto.Action
+	ui := uiauto.New(tconn)
+	acceptDialog := s.Param().(bool)
+
+	if acceptDialog {
+		// If the dialog is accepted, we should get two speech utterances. The first
+		// is the same as below. The second is the ChromeVox welcome message, that
+		// indicates that ChromeVox is on.
+		speechExpectations = []a11y.SpeechExpectation{a11y.NewRegexExpectation("Do you want to activate ChromeVox, the built-in screen reader for Chrome OS*"), a11y.NewRegexExpectation("ChromeVox spoken feedback is ready")}
+		actions = uiauto.Combine("wait for and interact with the ChromeVox hint dialog",
+			ui.WithTimeout(30*time.Second).WaitUntilExists(chromeVoxText),
+			ui.LeftClickUntil(yesButton, ui.Gone(chromeVoxText)),
+		)
+	} else {
+		// If the dialog is dismissed, we should only get one speech utterance that
+		// asks the user if they want to activate ChromeVox.
+		speechExpectations = []a11y.SpeechExpectation{a11y.NewRegexExpectation("Do you want to activate ChromeVox, the built-in screen reader for Chrome OS*")}
+		actions = uiauto.Combine("wait for and interact with the ChromeVox hint dialog",
+			ui.WithTimeout(30*time.Second).WaitUntilExists(chromeVoxText),
+			ui.LeftClickUntil(noButton, ui.Gone(chromeVoxText)),
+		)
+	}
+
+	// Execute actions.
 	// Wait for the ChromeVox hint dialog to be shown on-screen.
 	// Detect this by waiting for the presence of the dialog's static text,
 	// since the dialog itself has no name.
 	// This should only take 20s from when idle first begins, but allow 30s to
 	// avoid any potential race conditions.
-	// Once the dialog text appears, click the dialog's "No" button and wait for
-	// the dialog to disappear. This is detected by waiting for the static text to
-	// disappear.
-	chromeVoxText := nodewith.NameStartingWith("Do you want to activate ChromeVox").Role(role.StaticText).Onscreen()
-	noButton := nodewith.Name("No, continue without ChromeVox").Role(role.Button).Onscreen()
-	ui := uiauto.New(tconn)
-	if err := uiauto.Combine("wait for and interact with the ChromeVox hint dialog",
-		ui.WithTimeout(30*time.Second).WaitUntilExists(chromeVoxText),
-		ui.LeftClickUntil(noButton, ui.Gone(chromeVoxText)),
-	)(ctx); err != nil {
+	// Once the dialog text appears, click either the 'Yes' or 'No' button and
+	// wait for the dialog to disappear. This is detected by waiting for the
+	// static text to disappear.
+	if err := actions(ctx); err != nil {
 		s.Fatal("Failed to show and interact with the ChromeVox hint dialog: ", err)
 	}
 
-	// Use the speech monitor to ensure that the spoken announcement was given.
-	err = sm.Consume(ctx, []a11y.SpeechExpectation{a11y.NewRegexExpectation("Do you want to activate ChromeVox, the built-in screen reader for Chrome OS*")})
+	// Lastly, ensure that the correct speech is given by the TTS engine.
+	err = sm.Consume(ctx, speechExpectations)
 	if err != nil {
-		s.Fatal("Failed to verify the ChromeVox hint announcement: ", err)
+		s.Fatal("Failed to verify the speech utterances for the ChromeVox hint: ", err)
 	}
 }
