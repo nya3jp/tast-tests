@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "71c0df287d062e37530f9a4f191a5c11f520bbdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df4cf11_ba2f1fb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-09-17T23:53:58Z",
+      "side": 1,
+      "message": "Please add tast review?",
+      "revId": "71c0df287d062e37530f9a4f191a5c11f520bbdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
