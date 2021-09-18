@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1cbf6e1_7de3ab95",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-18T11:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf80471e_2bfe9983",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 9
+      },
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d44eea3_752b53e2",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-16T22:28:26Z",
       "side": 1,
       "message": "nit: subtest names generally use lower_snake_case, so this would be better as power_button",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fced1c6_be865613",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-18T11:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d44eea3_752b53e2",
       "range": {
         "startLine": 42,
         "startChar": 10,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c41fae_74f5d077",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-18T11:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc4c5f87_d542defc",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6036e170_5c07c9b6",
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cf8036a_ac8e7200",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-18T11:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6036e170_5c07c9b6",
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79eef4fa_5338c452",
@@ -117,6 +207,24 @@
       "writtenOn": "2021-09-16T22:28:26Z",
       "side": 1,
       "message": "ditto",
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c16b7a_f20e7a3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-18T11:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79eef4fa_5338c452",
       "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +252,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1690921f_a05834ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-18T11:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34abb27f_78c6a391",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 9
+      },
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ee265bc_28ca5dff",
@@ -161,6 +293,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54d29384_186a17dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-18T11:19:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ee265bc_28ca5dff",
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24e31f2d_36fee7a0",
@@ -174,6 +324,24 @@
       "writtenOn": "2021-09-16T22:28:26Z",
       "side": 1,
       "message": "do we need this in the poweroff case too?",
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efa62947_de500eec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-18T11:19:22Z",
+      "side": 1,
+      "message": "No, it is not required in \"poweroff\" as per test steps.",
+      "parentUuid": "24e31f2d_36fee7a0",
       "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -203,6 +371,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3f82efd_fe64ad3f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-18T11:19:22Z",
+      "side": 1,
+      "message": "In L132 \"halt\" command is executed after \"poweroff\" command, so it is required to validate validateCbmemPrevSleepState at both places.",
+      "parentUuid": "876d7e7f_f3550a6a",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93f2f706_c4ea89fd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
         "patchSetId": 2
@@ -214,6 +406,24 @@
       "writtenOn": "2021-09-16T22:28:26Z",
       "side": 1,
       "message": "might be nice to have an example of the output to better understand how it\u0027s being processed here",
+      "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deb37f1c_8f6c942e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-18T11:19:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "93f2f706_c4ea89fd",
       "revId": "fa46202662ea04e8dd04992968aa1be8516084fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
