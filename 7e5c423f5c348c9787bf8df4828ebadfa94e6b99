@@ -160,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f659d6b6_858b435a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-18T11:30:50Z",
+      "side": 1,
+      "message": "Please ignore the above comment:\nWe are not doing any state check, an expected sleep time of 5 seconds is required to perform lid close after login.",
+      "parentUuid": "aacedf1c_a2e83134",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff184620_88ab4ecf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
         "patchSetId": 1
