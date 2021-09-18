@@ -22,6 +22,30 @@
       },
       "revId": "4f75cf2a9f7510907916d6553f8efec81f946afd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e5e972f_0507772a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/alignment_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-18T08:27:26Z",
+      "side": 0,
+      "message": "Yes, the test will save frame to download folder. I remove |KeepState()| for ensuring the download folder is clean very time running it. So that it won\u0027t save the latest frame to unexpected file names like \"frame (1).jpg\".",
+      "parentUuid": "62a729b3_94b46312",
+      "range": {
+        "startLine": 87,
+        "startChar": 50,
+        "endLine": 87,
+        "endChar": 68
+      },
+      "revId": "4f75cf2a9f7510907916d6553f8efec81f946afd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
