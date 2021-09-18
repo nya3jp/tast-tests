@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee477d9d_a7fbe870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 0,
+      "message": "interface replaced by Presenting().",
+      "range": {
+        "startLine": 452,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 81
+      },
+      "revId": "994cbc44cd00e1f75355768871bfcc85f1a4b99e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65bde84b_31c28ad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 0,
+      "message": "ditto",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 94
+      },
+      "revId": "994cbc44cd00e1f75355768871bfcc85f1a4b99e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47de5bab_8e952b46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 0,
+      "message": "removed and replaced by uiHandler\u0027s SwitchToAppWindowByName()",
+      "range": {
+        "startLine": 607,
+        "startChar": 0,
+        "endLine": 607,
+        "endChar": 83
+      },
+      "revId": "994cbc44cd00e1f75355768871bfcc85f1a4b99e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dce7fe9_77748c03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 0,
+      "message": "This interface has been removed and all logic are in a single interface Presenting().",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 80
+      },
+      "revId": "994cbc44cd00e1f75355768871bfcc85f1a4b99e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4c7160_9ff3e7a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 0,
+      "message": "ditto",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 385,
+        "endChar": 69
+      },
+      "revId": "994cbc44cd00e1f75355768871bfcc85f1a4b99e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62813491_a9f76e08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 0,
+      "message": "removed and use uiActionHandler to do tab switch.",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 77
+      },
+      "revId": "994cbc44cd00e1f75355768871bfcc85f1a4b99e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

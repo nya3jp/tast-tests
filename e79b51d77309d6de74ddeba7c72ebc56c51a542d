@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26d008c2_e331016f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 1,
+      "message": "Based on the new requirement, present Google Docs for premium.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 28
+      },
+      "revId": "e79b51d77309d6de74ddeba7c72ebc56c51a542d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd003cd1_a47f141b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 1,
+      "message": "create uiHandler to reuse some ui operations like SwitchToChromeTabByName().",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 35
+      },
+      "revId": "e79b51d77309d6de74ddeba7c72ebc56c51a542d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "743618f3_176c14be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 34
+      },
+      "revId": "e79b51d77309d6de74ddeba7c72ebc56c51a542d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

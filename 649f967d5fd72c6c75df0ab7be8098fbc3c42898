@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03bbdcc4_22070912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/conference.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 1,
+      "message": "use the single interface to replace the three removed ones.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "649f967d5fd72c6c75df0ab7be8098fbc3c42898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c6e3a0c_14e71fea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 1,
+      "message": "uiHandler added to use common uiHandler functions like SwitchToAppWindowByName().",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 31
+      },
+      "revId": "649f967d5fd72c6c75df0ab7be8098fbc3c42898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d8995d_39eed847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 1,
+      "message": "call the zoom and google meet common function presentApps() with the google meet specific shareScreen and stopPresenting functions.",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 535,
+        "endChar": 88
+      },
+      "revId": "649f967d5fd72c6c75df0ab7be8098fbc3c42898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e30c61c6_99de0cf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 1,
+      "message": "single interface for presenting.",
+      "range": {
+        "startLine": 377,
+        "startChar": 28,
+        "endLine": 377,
+        "endChar": 38
+      },
+      "revId": "649f967d5fd72c6c75df0ab7be8098fbc3c42898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45d9e906_f818cbca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 1,
+      "message": "call the Zoom And Google Meet common presentApps() function, with different shareScreen and stopPresenting functions.",
+      "range": {
+        "startLine": 417,
+        "startChar": 11,
+        "endLine": 417,
+        "endChar": 22
+      },
+      "revId": "649f967d5fd72c6c75df0ab7be8098fbc3c42898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5215bfa9_11b31942",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:49:26Z",
+      "side": 1,
+      "message": "uiHandler added to use common functions such as SwitchToChromeTabByName().",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 24
+      },
+      "revId": "649f967d5fd72c6c75df0ab7be8098fbc3c42898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
