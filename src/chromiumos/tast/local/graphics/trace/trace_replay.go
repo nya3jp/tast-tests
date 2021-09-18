@@ -51,6 +51,10 @@ const (
 	defaultMaxBufferSize = 32 << 20 // 32 MB
 )
 
+var unwantedBoardSuffixes = []string{
+	"-borealis",
+}
+
 type guestLogEntry struct {
 	entryName   string
 	logFileName string
@@ -106,6 +110,14 @@ func getSystemInfo(sysInfo *comm.SystemInfo) error {
 	}
 
 	sysInfo.Board = lsbReleaseData[lsbrelease.Board]
+	// trim unwanted suffixes in board name
+	for _, suffix := range unwantedBoardSuffixes {
+		if strings.HasSuffix(sysInfo.Board, suffix) {
+			trimmedBoardName := sysInfo.Board[:len(sysInfo.Board)-len(suffix)]
+			sysInfo.Board = trimmedBoardName
+		}
+	}
+
 	sysInfo.ChromeOSVersion = lsbReleaseData[lsbrelease.Version]
 	return nil
 }
