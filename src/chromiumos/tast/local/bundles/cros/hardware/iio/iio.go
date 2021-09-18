@@ -24,8 +24,12 @@ type Device struct {
 	Path string
 }
 
-// ErrNoDeviceFound is returned by parser function when no device matches.
-var ErrNoDeviceFound = errors.New("no Device found")
+// errNoDeviceFound is returned by parser function when no device matches.
+var errNoDeviceFound = errors.New("no Device found")
+
+// errUnknownDeviceFound is returned by parser for unsupported devices, like
+// lid angle or acpi-als light sensor.
+var errUnknownDeviceFound = errors.New("unknown Device found")
 
 // SensorName is the kind of sensor which is reported by the EC and exposed by
 // the kernel in /sys/bus/iio/devices/iio:device*/name. The name is in the form
@@ -185,7 +189,7 @@ func GetSensors(ctx context.Context) ([]*Sensor, error) {
 	for _, file := range files {
 		sensor, err := parseSensor(file.Name())
 		if err != nil {
-			if !errors.Is(err, ErrNoDeviceFound) {
+			if !errors.Is(err, errNoDeviceFound) && !errors.Is(err, errUnknownDeviceFound) {
 				testing.ContextLogf(ctx, "Parsing sensor %s FAILED: %+v", file.Name(), err)
 			}
 			continue
@@ -208,7 +212,7 @@ func parseSensor(devName string) (*Sensor, error) {
 
 	if _, err := fmt.Sscanf(devName, "iio:device%d", &sensor.IioID); err != nil {
 		// Could be a trigger, skip.
-		return nil, ErrNoDeviceFound
+		return nil, errNoDeviceFound
 	}
 
 	sensor.Path = devName
@@ -220,7 +224,7 @@ func parseSensor(devName string) (*Sensor, error) {
 
 	name = SensorName(rawName)
 	if _, ok := sensorNames[name]; !ok {
-		return nil, errors.Errorf("unknown sensor type %q", name)
+		return nil, errUnknownDeviceFound
 	}
 
 	loc, err := sensor.ReadAttr("location")
@@ -333,7 +337,7 @@ func GetTriggers() ([]*Trigger, error) {
 // Trigger if supported..
 func parseTrigger(devName string) (*Trigger, error) {
 	if !iioTriggerRegexp.MatchString(devName) {
-		return nil, ErrNoDeviceFound
+		return nil, errNoDeviceFound
 	}
 
 	rawName, err := (&Device{devName}).ReadAttr("name")
