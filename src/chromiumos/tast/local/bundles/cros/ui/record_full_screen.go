@@ -25,6 +25,7 @@ func init() {
 		Contacts: []string{
 			"yichenz@chromium.org",
 			"chromeos-wmp@google.com",
+			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
