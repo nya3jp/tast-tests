@@ -92,6 +92,8 @@ const (
 	Base SensorLocation = "base"
 	// Lid means that the sensor is located in the lid of the DUT.
 	Lid SensorLocation = "lid"
+	// Camera means that the sensor is located near the camera.
+	Camera SensorLocation = "camera"
 	// None means that the sensor location is not known or not applicable.
 	None SensorLocation = "none"
 )
@@ -127,8 +129,9 @@ var sensorNames = map[SensorName]struct{}{
 }
 
 var sensorLocations = map[SensorLocation]struct{}{
-	Base: {},
-	Lid:  {},
+	Base:   {},
+	Lid:    {},
+	Camera: {},
 }
 
 // readingNames is a map from the type of sensor to the sensor specific part of the
@@ -232,7 +235,7 @@ func parseSensor(devName string) (*Sensor, error) {
 		location = SensorLocation(loc)
 
 		if _, ok := sensorLocations[location]; !ok {
-			return nil, errors.Errorf("unknown sensor loc %q", loc)
+			return nil, errors.Errorf("unknown sensor location %q", loc)
 		}
 	} else {
 		location = None
