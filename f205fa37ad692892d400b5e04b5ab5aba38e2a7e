@@ -39,6 +39,30 @@
       },
       "revId": "f205fa37ad692892d400b5e04b5ab5aba38e2a7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44f437ca_bcfc8b9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/google_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-18T00:51:20Z",
+      "side": 1,
+      "message": "Hi Jun, the new requirement is to create both Slides and Docs, but present Slides in plus tier and present Docs in premium tier. \"Presenting\" means share the application screen to the conference and edit it.",
+      "parentUuid": "1fc76f18_fa0a84b2",
+      "range": {
+        "startLine": 64,
+        "startChar": 6,
+        "endLine": 64,
+        "endChar": 16
+      },
+      "revId": "f205fa37ad692892d400b5e04b5ab5aba38e2a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
