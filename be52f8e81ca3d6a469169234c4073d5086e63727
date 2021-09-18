@@ -33,6 +33,23 @@
       "message": "LGTM!",
       "revId": "be52f8e81ca3d6a469169234c4073d5086e63727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba6b899e_34271ad2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-18T00:14:52Z",
+      "side": 1,
+      "message": "+tast-owners for official +2. Thanks!",
+      "revId": "be52f8e81ca3d6a469169234c4073d5086e63727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
