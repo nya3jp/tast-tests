@@ -27,6 +27,10 @@ type Device struct {
 // ErrNoDeviceFound is returned by parser function when no device matches.
 var ErrNoDeviceFound = errors.New("no Device found")
 
+// ErrUnknownDeviceFound is returned by parser for unsupported devices, like
+// lid angle or acpi-als light sensor.
+var ErrUnknownDeviceFound = errors.New("unknown Device found")
+
 // SensorName is the kind of sensor which is reported by the EC and exposed by
 // the kernel in /sys/bus/iio/devices/iio:device*/name. The name is in the form
 // cros-ec-*.
@@ -185,7 +189,7 @@ func GetSensors(ctx context.Context) ([]*Sensor, error) {
 	for _, file := range files {
 		sensor, err := parseSensor(file.Name())
 		if err != nil {
-			if !errors.Is(err, ErrNoDeviceFound) {
+			if !errors.Is(err, ErrNoDeviceFound) && !errors.Is(err, ErrUnknownDeviceFound) {
 				testing.ContextLogf(ctx, "Parsing sensor %s FAILED: %+v", file.Name(), err)
 			}
 			continue
@@ -220,7 +224,7 @@ func parseSensor(devName string) (*Sensor, error) {
 
 	name = SensorName(rawName)
 	if _, ok := sensorNames[name]; !ok {
-		return nil, errors.Errorf("unknown sensor type %q", name)
+		return nil, ErrUnknownDeviceFound
 	}
 
 	loc, err := sensor.ReadAttr("location")
