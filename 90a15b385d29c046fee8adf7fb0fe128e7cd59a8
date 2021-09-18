@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b458173_f86d13e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1376195
+      },
+      "writtenOn": "2021-09-18T14:18:26Z",
+      "side": 1,
+      "message": "I think we are missing a tast owner approval here\n+ Tast owner, could you please help Renuga to review this?",
+      "revId": "90a15b385d29c046fee8adf7fb0fe128e7cd59a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
