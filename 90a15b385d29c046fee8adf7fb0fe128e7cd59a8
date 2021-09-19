@@ -16,6 +16,23 @@
       "message": "I think we are missing a tast owner approval here\n+ Tast owner, could you please help Renuga to review this?",
       "revId": "90a15b385d29c046fee8adf7fb0fe128e7cd59a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80fe83a7_193cec17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-19T07:59:48Z",
+      "side": 1,
+      "message": "cherieccy@ I am a Tast-Owner. Recently Tast-Review bit was introduced which is causing this issue. Have notified the tast member who introduced this. ",
+      "revId": "90a15b385d29c046fee8adf7fb0fe128e7cd59a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
