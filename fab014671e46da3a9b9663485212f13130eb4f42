@@ -84,6 +84,23 @@
       "message": "looks ready for promotion now ",
       "revId": "fab014671e46da3a9b9663485212f13130eb4f42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15fd7042_d5c04343",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-09-19T13:47:07Z",
+      "side": 1,
+      "message": "+Tast Owners",
+      "revId": "fab014671e46da3a9b9663485212f13130eb4f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
