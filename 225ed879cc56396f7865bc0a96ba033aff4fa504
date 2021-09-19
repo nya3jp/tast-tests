@@ -67,6 +67,24 @@
       "message": "Alvin, do you have tast-review +1 abilities?",
       "revId": "225ed879cc56396f7865bc0a96ba033aff4fa504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3790b4a_4e24c683",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-19T23:20:15Z",
+      "side": 1,
+      "message": "no, there is a bug for that newly added label. It should be disabled soon.",
+      "parentUuid": "ef0d1283_3e98630d",
+      "revId": "225ed879cc56396f7865bc0a96ba033aff4fa504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
