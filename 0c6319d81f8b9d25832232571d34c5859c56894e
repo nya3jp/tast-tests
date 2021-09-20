@@ -39,6 +39,30 @@
       },
       "revId": "0c6319d81f8b9d25832232571d34c5859c56894e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a80130_a377f698",
+        "filename": "src/chromiumos/tast/common/fixture/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-20T16:07:43Z",
+      "side": 1,
+      "message": "Done.\n\nBy the way - is there any doc about introducing Fixtures\u0027 names as constants?\nI am asking because I was thinking about proposing changing that across Tast and once having all fixtures defined in common/fixture introducing \ntype FixtureName string \nand put that into fixture data type definition as proprietary type. And those sound like requiring at least a proposal :)",
+      "parentUuid": "63dc465b_adffbf64",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 68
+      },
+      "revId": "0c6319d81f8b9d25832232571d34c5859c56894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
