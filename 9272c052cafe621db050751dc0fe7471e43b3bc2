@@ -16,6 +16,23 @@
       "message": "This now needs a \"Tast-Review\" even though it has a +2 from Alexander.",
       "revId": "9272c052cafe621db050751dc0fe7471e43b3bc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ccc61e5_d0f66620",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-20T08:11:32Z",
+      "side": 1,
+      "message": "Tast Review has been removed again as it is not working properly.\nYou should be able to submit the CL now.",
+      "revId": "9272c052cafe621db050751dc0fe7471e43b3bc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
