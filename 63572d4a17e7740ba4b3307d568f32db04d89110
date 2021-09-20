@@ -199,6 +199,30 @@
       },
       "revId": "63572d4a17e7740ba4b3307d568f32db04d89110",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "443fe347_fd3bc391",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-20T13:57:30Z",
+      "side": 1,
+      "message": "Doesn\u0027t omitempty drop an empty slice as well?",
+      "parentUuid": "1d1b7481_b3a9c812",
+      "range": {
+        "startLine": 559,
+        "startChar": 38,
+        "endLine": 559,
+        "endChar": 47
+      },
+      "revId": "63572d4a17e7740ba4b3307d568f32db04d89110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
