@@ -69,12 +69,18 @@ func Signout(ctx context.Context, s *testing.State) {
 	}
 
 	ui := uiauto.New(tconn)
+	signOutButton := nodewith.Name("Sign out").Role(role.Button)
+	buttonFound, err := ui.IsNodeFound(ctx, signOutButton)
+	if !buttonFound {
+		s.Fatal("Signout button was not found: ", err)
+	}
+
 	// We ignore errors here because when we click on "Sign out" button Chrome
 	// shuts down and the connection is closed. So we always get an error.
-	ui.LeftClick(nodewith.Name("Sign out").Role(role.Button))(ctx)
+	ui.LeftClick(signOutButton)(ctx)
 
 	// Wait for Chrome restart
-	opts := testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}
+	opts := testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second}
 	err = testing.Poll(ctx, func(ctx context.Context) error {
 		newpid, err := chromeproc.GetRootPID()
 		if err != nil {
@@ -108,6 +114,8 @@ func Signout(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Getting signing test API connection failed: ", err)
 	}
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	st, err := lockscreen.GetState(ctx, tconn)
 	if err != nil {
