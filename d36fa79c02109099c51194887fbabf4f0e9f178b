@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afa25cea_10b95d2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-09-20T23:24:11Z",
+      "side": 1,
+      "message": "I think users can\u0027t split syllables themselves, because \"space\" will select the top candidate. Space is already tested as one of the test cases here.",
+      "parentUuid": "94d2c140_24974edc",
+      "revId": "d36fa79c02109099c51194887fbabf4f0e9f178b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8d873cb_8220de92",
