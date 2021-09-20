@@ -64,6 +64,7 @@ func readPidFromFile(f *os.File) (int, error) {
 
 // Seccomp verifies that a crash report caused by a seccomp violation will contain the policy path.
 func Seccomp(ctx context.Context, s *testing.State) {
+	const executable = "/usr/libexec/tast/helpers/local/cros/crash.Seccomp.brk"
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("Failed to set up crash test: ", err)
 	}
@@ -89,7 +90,7 @@ func Seccomp(ctx context.Context, s *testing.State) {
 		"-S", "/dev/null",
 		// Everything after this is the sandboxed command.
 		"--",
-		"/bin/true")
+		executable)
 	if err := cmd.Run(); err == nil {
 		s.Fatal("Expected crash, but command exited normally")
 	}
@@ -100,7 +101,7 @@ func Seccomp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read pid: ", err)
 	}
 
-	pattern := fmt.Sprintf("coreutils.*.%d.*", pid)
+	pattern := fmt.Sprintf("crash_Seccomp_brk.*.%d.*", pid)
 	files, err := crash.WaitForCrashFiles(ctx, []string{crash.SystemCrashDir},
 		[]string{pattern})
 	if err != nil {
@@ -116,7 +117,20 @@ func Seccomp(ctx context.Context, s *testing.State) {
 				s.Error("Failed to find expected string: ", err)
 				crash.MoveFilesToOut(ctx, s.OutDir(), match)
 			}
-			break
+		} else if strings.HasSuffix(match, ".meta") {
+			contents, err := ioutil.ReadFile(match)
+			if err != nil {
+				s.Errorf("Couldn't read meta file %s contents: %v", match, err)
+				continue
+			}
+			if !strings.Contains(string(contents), "upload_var_seccomp_blocked_syscall_nr=") {
+				s.Error("Failed to find expected seccomp_blocked_syscall_nr")
+				crash.MoveFilesToOut(ctx, s.OutDir(), match)
+			}
+			if !strings.Contains(string(contents), "upload_var_seccomp_proc_pid_syscall=") {
+				s.Error("Failed to find expected seccomp_proc_pid_syscall")
+				crash.MoveFilesToOut(ctx, s.OutDir(), match)
+			}
 		}
 	}
 	if !found {
