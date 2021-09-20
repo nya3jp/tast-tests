@@ -4,6 +4,12 @@
 
 import("//common-mk/pkg_config.gni")
 
+executable("crash.Seccomp.brk") {
+  sources = [
+    "crash.Seccomp.brk.c"
+  ]
+}
+
 executable("graphics.GBM.gbmtest") {
   pkg_deps = [
     "gbm",
@@ -154,6 +160,7 @@ executable("security.PtraceThread.thread-prctl") {
 
 group("all") {
   deps = [
+    ":crash.Seccomp.brk",
     ":graphics.GBM.gbmtest",
     ":hardware.VerifyRemoteSleep.timersignal",
     ":kernel.PerfCallgraph.graph",
