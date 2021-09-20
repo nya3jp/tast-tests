@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "713a8f65_29669e52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2021-09-20T05:50:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ebd8282b_f15bbba1",
+      "range": {
+        "startLine": 270,
+        "startChar": 17,
+        "endLine": 270,
+        "endChar": 36
+      },
+      "revId": "973557aecd1711f4c7b2a47ecf1371e585706f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "202b4d04_b4b64a30",
@@ -149,6 +173,48 @@
         "endLine": 73,
         "endChar": 62
       },
+      "revId": "973557aecd1711f4c7b2a47ecf1371e585706f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd3b6cc5_a5fa82d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_inhibit_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2021-09-20T05:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54a82727_e5e148e4",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 62
+      },
+      "revId": "973557aecd1711f4c7b2a47ecf1371e585706f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f38e2e7_5747b061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_inhibit_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2021-09-20T05:50:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ce60f9b_54699b57",
       "revId": "973557aecd1711f4c7b2a47ecf1371e585706f0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
