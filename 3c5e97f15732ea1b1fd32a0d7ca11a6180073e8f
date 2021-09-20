@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ca3816_21b26a75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_loopback_latency.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-09-20T00:34:04Z",
+      "side": 1,
+      "message": "if a function only has an error return value, prefer to put it inside the if statement:\n\nif err :\u003d craw.WaitForDeviceUntil(...); err !\u003d nil {\n}",
+      "revId": "3c5e97f15732ea1b1fd32a0d7ca11a6180073e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
