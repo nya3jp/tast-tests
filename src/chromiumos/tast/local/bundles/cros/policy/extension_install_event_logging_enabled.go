@@ -38,7 +38,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: ExtensionInstallEventLoggingEnabled,
-		Desc: "Behavior of ExtensionInstallEventLoggingEnabled policy, checking if all events from the installation of an extension are logged.",
+		Desc: "Behavior of ExtensionInstallEventLoggingEnabled policy, checking if all events from the installation of an extension are logged",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
@@ -77,11 +77,11 @@ func ExtensionInstallEventLoggingEnabled(ctx context.Context, s *testing.State) 
 		downloadURL = "https://chrome.google.com/webstore/detail/platformkeys-test-extensi/" + extensionID
 	)
 
-	extension_page, err := cr.NewConn(ctx, downloadURL)
+	extensionPage, err := cr.NewConn(ctx, downloadURL)
 	if err != nil {
 		s.Fatal("Failed to connect to the extension page: ", err)
 	}
-	defer extension_page.Close()
+	defer extensionPage.Close()
 
 	ui := uiauto.New(tconn)
 	// If the extension is installed, the Installed button will be present which is not clickable.
@@ -115,13 +115,13 @@ func statusCodeToEvent(code string) eventType {
 }
 
 // readLoggedEvents reads logged events from /var/log/chrome/chrome file.
-func readLoggedEvents(extensionId string) ([]eventType, error) {
+func readLoggedEvents(extensionID string) ([]eventType, error) {
 	logContent, err := ioutil.ReadFile(syslog.ChromeLogFile)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to read "+syslog.ChromeLogFile)
 	}
 
-	r := regexp.MustCompile(fmt.Sprintf(`Add extension install event: %s, (.*)`, extensionId))
+	r := regexp.MustCompile(fmt.Sprintf(`Add extension install event: %s, (.*)`, extensionID))
 	matches := r.FindAllStringSubmatch(string(logContent), -1)
 	if matches == nil {
 		return nil, nil
@@ -135,14 +135,14 @@ func readLoggedEvents(extensionId string) ([]eventType, error) {
 }
 
 // waitForLoggedEvents waits for desired sequence to appear in chrome log.
-func waitForLoggedEvents(ctx context.Context, cr *chrome.Chrome, extensionId string) error {
+func waitForLoggedEvents(ctx context.Context, cr *chrome.Chrome, extensionID string) error {
 	var expectedEvents = []eventType{sessionStateChange, policyRequest, success}
 
 	ctx, st := timing.Start(ctx, "wait_logged_events")
 	defer st.End()
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		loggedEvents, err := readLoggedEvents(extensionId)
+		loggedEvents, err := readLoggedEvents(extensionID)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to read chrome log"))
 		}
