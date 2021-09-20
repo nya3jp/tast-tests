@@ -87,6 +87,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee358ac_68918e11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-20T09:28:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f1d1957_0d6a9e2b",
+      "range": {
+        "startLine": 29,
+        "startChar": 83,
+        "endLine": 29,
+        "endChar": 98
+      },
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54f4fc1e_472d8035",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-20T09:28:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d52c527_ec66bc91",
+      "range": {
+        "startLine": 29,
+        "startChar": 36,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35dc8234_69b02b8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-20T09:28:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdfa133e_15f6491e",
+      "range": {
+        "startLine": 29,
+        "startChar": 119,
+        "endLine": 29,
+        "endChar": 126
+      },
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85881f9f_803905b5",
@@ -106,6 +178,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec46d09b_bc4b1bbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-20T09:28:55Z",
+      "side": 1,
+      "message": "No",
+      "parentUuid": "85881f9f_803905b5",
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11047843_103450e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
         "patchSetId": 6
@@ -117,6 +207,30 @@
       "writtenOn": "2021-09-17T23:43:49Z",
       "side": 1,
       "message": "nit: Same comments as above.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 153
+      },
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc39a6dd_fa5ace7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-20T09:28:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11047843_103450e9",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bd6979f_a184b595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-20T09:28:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4636b365_41beb1e1",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e2779df_1065a840",
@@ -163,6 +301,30 @@
       "writtenOn": "2021-09-17T23:43:49Z",
       "side": 1,
       "message": "Add a comment explaining why you chose this threshold (e.g., is it a requirement that we give to partners/ODMs)?",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 27
+      },
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aabc4697_b7cfa18a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-20T09:28:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e2779df_1065a840",
       "range": {
         "startLine": 339,
         "startChar": 1,
