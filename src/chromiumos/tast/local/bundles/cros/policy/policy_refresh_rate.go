@@ -7,6 +7,7 @@ package policy
 import (
 	"context"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
@@ -24,12 +25,12 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
-		Fixture:      "chromePolicyLoggedIn",
+		Fixture:      fixture.ChromePolicyLoggedIn,
 	})
 }
 
 // PolicyRefreshRate tests the PolicyRefreshRate policy.
-func PolicyRefreshRate(ctx context.Context, s *testing.State) {
+func PolicyRefreshRate(ctx context.Context, s *testing.State) { // NOLINT "Policy" is as part of the policy name that is tested.
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 

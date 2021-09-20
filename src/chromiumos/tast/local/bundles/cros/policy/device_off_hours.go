@@ -7,6 +7,7 @@ package policy
 import (
 	"context"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
@@ -25,7 +26,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "fakeDMSEnrolled",
+		Fixture:      fixture.FakeDMSEnrolled,
 	})
 }
 func DeviceOffHours(ctx context.Context, s *testing.State) {
