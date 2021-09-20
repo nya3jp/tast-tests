@@ -16,6 +16,24 @@
       "message": "Hi Judy, can you approve this CL one more time? For some reason I could not do CQ+2 in the latest try.",
       "revId": "cd070f1e0193353226139f48fba3fb36da9657b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d1f9460_2d7ef63e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-20T00:27:18Z",
+      "side": 1,
+      "message": "I guess it is because the new tag \"Tast-review\". It seems there is something wrong with it and it is being disabled. Please wait a bit.",
+      "parentUuid": "92214a6a_6d13138e",
+      "revId": "cd070f1e0193353226139f48fba3fb36da9657b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
