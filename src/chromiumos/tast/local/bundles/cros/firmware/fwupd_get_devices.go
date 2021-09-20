@@ -10,7 +10,6 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -31,10 +30,6 @@ func init() {
 // FwupdGetDevices runs the fwupdmgr utility and verifies that it
 // detects devices in the system.
 func FwupdGetDevices(ctx context.Context, s *testing.State) {
-	if err := upstart.EnsureJobRunning(ctx, "fwupd"); err != nil {
-		s.Error("Failed to ensure fwupd is running: ", err)
-	}
-
 	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "get-devices", "--show-all")
 
 	output, err := cmd.Output(testexec.DumpLogOnError)

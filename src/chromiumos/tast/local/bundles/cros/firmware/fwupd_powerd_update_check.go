@@ -13,8 +13,8 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/firmware/fwupd"
 	"chromiumos/tast/local/power/setup"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -23,9 +23,6 @@ import (
 const (
 	// This is a string that appears when the computer is discharging.
 	dischargeString = `uint32 [0-9]\s+uint32 2`
-
-	// This is the webcam GUID needed to run the fake update command.
-	webcamGUID = "b585990a-003e-5270-89d5-3705a17f9a43"
 )
 
 func init() {
@@ -55,8 +52,9 @@ func init() {
 func FwupdPowerdUpdateCheck(ctx context.Context, s *testing.State) {
 	discharge := s.Param().(bool)
 
-	if err := upstart.RestartJob(ctx, "fwupd"); err != nil {
-		s.Fatal("Failed to restart fwupd: ", err)
+	uri, err := fwupd.ReleaseURI(ctx)
+	if err != nil {
+		s.Fatal("Failed to get release URI: ", err)
 	}
 
 	if discharge {
@@ -85,7 +83,7 @@ func FwupdPowerdUpdateCheck(ctx context.Context, s *testing.State) {
 	}
 
 	// This command runs an update on a fake device to see how fwupd behaves.
-	upd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "update", "-v", webcamGUID)
+	upd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", uri)
 	output, err := upd.Output(testexec.DumpLogOnError)
 	if err == nil && discharge {
 		s.Errorf("%s succeeded erroneously: %v", shutil.EscapeSlice(upd.Args), err)
