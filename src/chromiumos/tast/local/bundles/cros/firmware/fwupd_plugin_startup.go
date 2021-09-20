@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -54,10 +53,6 @@ func parsePluginStates(output []byte) (map[string][]string, error) {
 // FwupdPluginStartup runs fwupdmgr get-plugins, retrieves the output, and
 // checks that the expected plugins are enabled
 func FwupdPluginStartup(ctx context.Context, s *testing.State) {
-	if err := upstart.RestartJob(ctx, "fwupd"); err != nil {
-		s.Fatal("Failed to restart fwupd: ", err)
-	}
-
 	cmd := testexec.CommandContext(ctx, "fwupdmgr", "get-plugins", "--json")
 	output, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {

@@ -12,7 +12,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/local/bundles/cros/firmware/fwupd"
 	"chromiumos/tast/testing"
 )
 
@@ -48,9 +48,9 @@ func streamOutput(rc io.ReadCloser) <-chan string {
 // FwupdInhibitSuspend runs the fwupdtool utility and makes sure
 // that the system can suspend before and after, but not during an update.
 func FwupdInhibitSuspend(ctx context.Context, s *testing.State) {
-	// restart upstart to reset fake device version
-	if err := upstart.RestartJob(ctx, "fwupd"); err != nil {
-		s.Fatal("fwupd unable to be (re)started: ", err)
+	uri, err := fwupd.ReleaseURI(ctx)
+	if err != nil {
+		s.Fatal("Failed to get release URI: ", err)
 	}
 
 	// make sure file does not exist before update
@@ -59,8 +59,7 @@ func FwupdInhibitSuspend(ctx context.Context, s *testing.State) {
 	}
 
 	// run the update
-	// b585990a-003e-5270-89d5-3705a17f9a43 is the GUID for a fake device
-	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "update", "-v", "b585990a-003e-5270-89d5-3705a17f9a43")
+	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", uri)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		s.Fatalf("%q failed: %v", cmd.Args, err)

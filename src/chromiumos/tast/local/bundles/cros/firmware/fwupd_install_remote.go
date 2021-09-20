@@ -8,7 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/local/bundles/cros/firmware/fwupd"
 	"chromiumos/tast/testing"
 )
 
@@ -28,11 +28,12 @@ func init() {
 // FwupdInstallRemote runs the fwupdtool utility and verifies that it
 // can update a device in the system using a remote repository.
 func FwupdInstallRemote(ctx context.Context, s *testing.State) {
-	if err := upstart.RestartJob(ctx, "fwupd"); err != nil {
-		s.Error("Failed to restart fwupd: ", err)
+	uri, err := fwupd.ReleaseURI(ctx)
+	if err != nil {
+		s.Fatal("Failed to get release URI: ", err)
 	}
-	// b585990a-003e-5270-89d5-3705a17f9a43 is the GUID for a fake device.
-	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "update", "-v", "b585990a-003e-5270-89d5-3705a17f9a43", "--ignore-power")
+
+	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", uri)
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatalf("%q failed: %v", cmd.Args, err)
 	}
