@@ -16,6 +16,29 @@
       "message": "Implementation of trackpad left click test.",
       "revId": "074ae346d5403f505a2e7579ed59b64ea3fa60da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34bf0613_168d414d",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-20T17:22:27Z",
+      "side": 1,
+      "message": "do you need to allow data structure to be changed once it is initialized?\n\nI may not see it (the reason) here, but why not to pass all necessary data into NewSingleTouchWriter()?",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 622,
+        "endChar": 1
+      },
+      "revId": "074ae346d5403f505a2e7579ed59b64ea3fa60da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
