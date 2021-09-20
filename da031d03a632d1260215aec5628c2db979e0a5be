@@ -80,6 +80,30 @@
       },
       "revId": "da031d03a632d1260215aec5628c2db979e0a5be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8383b1c5_43e3e543",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-20T17:43:15Z",
+      "side": 1,
+      "message": "I see, that makes sense. In that case it makes sense to have a check before clicking it. One more thing to note is that ui.IsNodeFound doesn\u0027t do any waiting, so it may be more stable to use ui.WaitUntilExists",
+      "parentUuid": "52e72753_00685ec6",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "da031d03a632d1260215aec5628c2db979e0a5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
