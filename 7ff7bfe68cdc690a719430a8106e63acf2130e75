@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebeaec89_d14f7ea7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-20T15:50:49Z",
+      "side": 1,
+      "message": "You can actually make this an optional var. servo.NewProxy will connect to localhost port 9999 if you leave it blank. That makes it easier to run tests locally.\n\nAlso see the tast servo codelab for other ways to initialize the servo: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/remote/firmware/codelab/README.md",
+      "range": {
+        "startLine": 56,
+        "startChar": 35,
+        "endLine": 56,
+        "endChar": 46
+      },
+      "revId": "7ff7bfe68cdc690a719430a8106e63acf2130e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bd8e155_bb75bcb1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-20T15:50:49Z",
+      "side": 1,
+      "message": "Use this instead:\n\npxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress)",
+      "range": {
+        "startLine": 78,
+        "startChar": 40,
+        "endLine": 78,
+        "endChar": 49
+      },
+      "revId": "7ff7bfe68cdc690a719430a8106e63acf2130e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5f4e8f_fef7c9ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-20T15:50:49Z",
+      "side": 1,
+      "message": "This will wait forever unless you set a deadline on the ctx.",
+      "range": {
+        "startLine": 81,
+        "startChar": 16,
+        "endLine": 81,
+        "endChar": 27
+      },
+      "revId": "7ff7bfe68cdc690a719430a8106e63acf2130e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3299558_570aca5c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-20T15:50:49Z",
+      "side": 1,
+      "message": "Likewise.",
+      "range": {
+        "startLine": 83,
+        "startChar": 25,
+        "endLine": 83,
+        "endChar": 34
+      },
+      "revId": "7ff7bfe68cdc690a719430a8106e63acf2130e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1bfa995_14eb8ee5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-20T15:50:49Z",
+      "side": 1,
+      "message": "Some duts have longer times that you need to hold the power key to power off, and this is already in the fw-testing-configs. See HoldPwrButtonPowerOff in src/chromiumos/tast/remote/firmware/config.go. But once you go down that path, you probably want to switch to the servo Helper.",
+      "range": {
+        "startLine": 97,
+        "startChar": 53,
+        "endLine": 97,
+        "endChar": 63
+      },
+      "revId": "7ff7bfe68cdc690a719430a8106e63acf2130e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b9130bc_ed4188d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-20T15:50:49Z",
+      "side": 1,
+      "message": "This waits forever, set a deadline on the context.",
+      "range": {
+        "startLine": 100,
+        "startChar": 16,
+        "endLine": 100,
+        "endChar": 31
+      },
+      "revId": "7ff7bfe68cdc690a719430a8106e63acf2130e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dde6ca58_6ed2c12b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-20T15:50:49Z",
+      "side": 1,
+      "message": "You will need to handle deadline exceeded errors here.",
+      "range": {
+        "startLine": 118,
+        "startChar": 12,
+        "endLine": 118,
+        "endChar": 37
+      },
+      "revId": "7ff7bfe68cdc690a719430a8106e63acf2130e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b3fbd1_0a4bc2e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-20T15:50:49Z",
+      "side": 1,
+      "message": "This requires a chrome ec, i.e. not wilco. Add HardwareDeps: hwdeps.ChromeEC() to your test struct.",
+      "range": {
+        "startLine": 169,
+        "startChar": 31,
+        "endLine": 169,
+        "endChar": 52
+      },
+      "revId": "7ff7bfe68cdc690a719430a8106e63acf2130e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
