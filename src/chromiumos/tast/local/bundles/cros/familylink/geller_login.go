@@ -9,7 +9,6 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/testing"
 )
@@ -21,7 +20,7 @@ func init() {
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-oac@google.com", "tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      chrome.GAIALoginTimeout + time.Minute,
+		Timeout:      time.Minute,
 		Fixture:      "familyLinkGellerLogin",
 	})
 }
