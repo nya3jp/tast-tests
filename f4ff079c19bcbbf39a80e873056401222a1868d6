@@ -16,6 +16,24 @@
       "message": "nit: move cleanup to a separate CL",
       "revId": "f4ff079c19bcbbf39a80e873056401222a1868d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94ca8738_d901ea6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_event_logging_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-20T16:35:05Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "c00d4f46_4c32b4bc",
+      "revId": "f4ff079c19bcbbf39a80e873056401222a1868d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

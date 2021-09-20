@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ecb4d85_f638f6b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-20T16:35:05Z",
+      "side": 1,
+      "message": "patch was upload with --no-verify caused by 3 files:\nextension_install_event_logging_enabled.go\nprinting_enabled.go\npolicy_refresh_rate.go (lint: function starts with \u0027Policy\u0027 prefix and // NOLINT does not work)\n\nThe first two files will be fixed in upcoming CL.",
+      "revId": "286d9663b911291802415cb07f217992f7c36ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
