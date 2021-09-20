@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6ee5d32_f8306bf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2021-09-20T18:00:48Z",
+      "side": 1,
+      "message": "Hi Eric, any ideas about the Tast-Review label? Thanks!\n\nCL chromium-review.googlesource.com/3169316 must be approved before triggering CQ CL is missing the approving vote on Tast-Review label. If you think this is not correct, then your Gerrit project may be misconfigured: check `refs/meta/config`:`project.cfg` or contact maintainers of your project\u0027s infrastructure",
+      "revId": "3d1b55c253f40851329e34c4c6fb0e97bc974538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
