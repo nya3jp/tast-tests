@@ -39,6 +39,30 @@
       },
       "revId": "f9054683488a371586427938ac97030a835306f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a07a8e3_38118f76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-20T07:48:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f721f33c_71959e9f",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "f9054683488a371586427938ac97030a835306f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
