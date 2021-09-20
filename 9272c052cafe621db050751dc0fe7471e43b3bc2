@@ -33,6 +33,24 @@
       "message": "Tast Review has been removed again as it is not working properly.\nYou should be able to submit the CL now.",
       "revId": "9272c052cafe621db050751dc0fe7471e43b3bc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88dddd49_1aa8596a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-09-20T13:50:28Z",
+      "side": 1,
+      "message": "I still see the Tast-Review label and the CL was kicked out of the CQ with the following message:\n```\nCL chromium-review.googlesource.com/3160132 must be approved before triggering CQ\nCL is missing the approving vote on Tast-Review label.\nIf you think this is not correct, then your Gerrit project may be misconfigured: check `refs/meta/config`:`project.cfg` or contact maintainers of your project\u0027s infrastructure\n```",
+      "parentUuid": "6ccc61e5_d0f66620",
+      "revId": "9272c052cafe621db050751dc0fe7471e43b3bc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
