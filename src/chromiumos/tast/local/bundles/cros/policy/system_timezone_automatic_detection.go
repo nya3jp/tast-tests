@@ -7,6 +7,7 @@ package policy
 import (
 	"context"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
@@ -29,7 +30,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeEnrolledLoggedIn",
+		Fixture:      fixture.ChromeEnrolledLoggedIn,
 	})
 }
 

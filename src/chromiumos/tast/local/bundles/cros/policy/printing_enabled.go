@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -36,7 +37,7 @@ func init() {
 			"group:paper-io",
 			"paper-io_printing",
 		},
-		Fixture: "chromePolicyLoggedIn",
+		Fixture: fixture.ChromePolicyLoggedIn,
 		Params: []testing.Param{
 			{
 				Name: "print_from_chrome_menu",

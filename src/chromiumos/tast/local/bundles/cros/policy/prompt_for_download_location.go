@@ -13,6 +13,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -37,7 +38,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromePolicyLoggedIn",
+		Fixture:      fixture.ChromePolicyLoggedIn,
 		Data:         []string{"prompt_for_download_location.html", "prompt_for_download_location.zip"},
 	})
 }

@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -46,7 +47,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"policy.ExtensionInstallEventLoggingEnabled.username", "policy.ExtensionInstallEventLoggingEnabled.password"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "enrolled",
+		Fixture:      fixture.Enrolled,
 		Timeout:      chrome.GAIALoginTimeout + 3*time.Minute,
 	})
 }

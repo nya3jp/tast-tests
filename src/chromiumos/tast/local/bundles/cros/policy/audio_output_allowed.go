@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -31,7 +32,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.Speaker()),
 		Attr:         []string{"group:mainline"},
-		Fixture:      "chromePolicyLoggedIn",
+		Fixture:      fixture.ChromePolicyLoggedIn,
 	})
 }
 
