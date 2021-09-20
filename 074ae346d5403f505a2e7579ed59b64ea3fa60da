@@ -39,6 +39,30 @@
       },
       "revId": "074ae346d5403f505a2e7579ed59b64ea3fa60da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7220ca49_22dea029",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-20T19:15:59Z",
+      "side": 1,
+      "message": "These variations are applicable to both single, and multi touch writers. Additionally, I was following the pattern set by the \u0027SetSize\u0027 method which allows different configurations to be set between calls of \u0027End\u0027. My thought was that touch.go allows low level settings to be configured, so callers can configure as needed, and then the standardizedtestutil/testutil.go file would implement the abstractions for use cases (i.e. \u0027Scroll\u0027 means setting the Double Tap field, setting a noticeable pressure and size, and moving fingers in parallel as seen here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3160427). Additionally, setting the variables at initialization, rather than through a Set (which is cleared on End) means new writers would need to be managed for different motion configurations, rather than allowing one writer to send different motions.",
+      "parentUuid": "34bf0613_168d414d",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 622,
+        "endChar": 1
+      },
+      "revId": "074ae346d5403f505a2e7579ed59b64ea3fa60da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
