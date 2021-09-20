@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "702f9168_baefc27a",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19957,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-20T13:50:53Z",
+      "side": 1,
+      "message": "This change is still included in the new patchset. You probably need to use a chain of CLs, instead of using the Cq-Depend label.",
+      "parentUuid": "bda7e1d1_877703dd",
+      "revId": "63572d4a17e7740ba4b3307d568f32db04d89110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "931f7213_2f30239c",
