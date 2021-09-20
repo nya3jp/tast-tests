@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e627e5e3_3772c2bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_trackpad_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-20T18:46:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e208e6e_ee955009",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 4
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d5de72c_db7cb15f",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-17T00:02:49Z",
       "side": 1,
       "message": "ditto: add docstring",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 4
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f464cf79_af63acb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_trackpad_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-20T18:46:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d5de72c_db7cb15f",
       "range": {
         "startLine": 71,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1d11692_6e5f98ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_trackpad_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-20T18:46:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "defa44cb_01bc6642",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 2
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "024ea434_8dd067ae",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-09-17T00:02:49Z",
       "side": 1,
       "message": "nit: break is not needed in golang",
+      "range": {
+        "startLine": 609,
+        "startChar": 2,
+        "endLine": 609,
+        "endChar": 7
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb04339d_65f3af0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-20T18:46:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "024ea434_8dd067ae",
       "range": {
         "startLine": 609,
         "startChar": 2,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4e4ebea_968effec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-20T18:46:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b22b3019_259bcad6",
+      "range": {
+        "startLine": 612,
+        "startChar": 2,
+        "endLine": 612,
+        "endChar": 7
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ee162d6_ee818140",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-09-17T00:02:49Z",
       "side": 1,
       "message": "nit: remove \"get\" from getters\n\nhttps://golang.org/doc/effective_go#Getters",
+      "range": {
+        "startLine": 674,
+        "startChar": 5,
+        "endLine": 674,
+        "endChar": 8
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85c2f611_f35a76e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-20T18:46:42Z",
+      "side": 1,
+      "message": "I\u0027ve updated the method to be a bit simpler as mentioned in your other comment which means \u0027initialize\u0027 becomes a better prefix for this function.",
+      "parentUuid": "1ee162d6_ee818140",
       "range": {
         "startLine": 674,
         "startChar": 5,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f76b4e_4cdc1984",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-20T18:46:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78a1b927_d712819e",
+      "range": {
+        "startLine": 677,
+        "startChar": 32,
+        "endLine": 677,
+        "endChar": 33
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a19d07a3_4a1225c3",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-09-17T00:02:49Z",
       "side": 1,
       "message": "IIUC you are returning a writter, but it is being closed in L679.\n\none possibility is to return a cleanup function",
+      "range": {
+        "startLine": 692,
+        "startChar": 8,
+        "endLine": 692,
+        "endChar": 11
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a30f9464_6e53170d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-20T18:46:42Z",
+      "side": 1,
+      "message": "I made this function a little more complex then it needed to be in an attempt to abstract away the TouchEventWriter. I\u0027ve updated it to require callers to pass in a TouchEventWriter (which they can close) and then have this method just set it up for two finger trackpad touches.",
+      "parentUuid": "a19d07a3_4a1225c3",
       "range": {
         "startLine": 692,
         "startChar": 8,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa8b5f1_6e606661",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-20T18:46:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00210402_f6bc9b28",
+      "range": {
+        "startLine": 604,
+        "startChar": 37,
+        "endLine": 604,
+        "endChar": 53
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d73b579_1ba6c8b3",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-09-17T00:02:49Z",
       "side": 1,
       "message": "nit, ditto:\n\n   \" equal to minor; got major\u003d%d, minor\u003d%d\"",
+      "range": {
+        "startLine": 606,
+        "startChar": 49,
+        "endLine": 606,
+        "endChar": 67
+      },
+      "revId": "f83256a868c978f5a337f85c8d685ded5b610e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd6bb012_526847e2",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-20T18:46:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d73b579_1ba6c8b3",
       "range": {
         "startLine": 606,
         "startChar": 49,
