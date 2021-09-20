@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23ddff9d_35b07b07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-20T22:53:52Z",
+      "side": 1,
+      "message": "nits",
+      "revId": "dee3b3a4e54664fb2df74215a5c9ea48955f41e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d695cb8_de337db1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-20T22:53:52Z",
+      "side": 1,
+      "message": "nit: might not be clear why it is an invalid size... append \"got: %d, want: %d\" e. g:\n\n\n  ...\"Invalid root device size; got %d, want: 0 \u003c size \u003c %d\", rootDeviceSize, maxSize",
+      "range": {
+        "startLine": 41,
+        "startChar": 40,
+        "endLine": 41,
+        "endChar": 54
+      },
+      "revId": "dee3b3a4e54664fb2df74215a5c9ea48955f41e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fb170b2_6cc63777",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-20T22:53:52Z",
+      "side": 1,
+      "message": "nit, ditto above",
+      "range": {
+        "startLine": 50,
+        "startChar": 20,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "dee3b3a4e54664fb2df74215a5c9ea48955f41e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097e6bae_6ca36151",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-20T22:53:52Z",
+      "side": 1,
+      "message": "nit, ditto above",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "dee3b3a4e54664fb2df74215a5c9ea48955f41e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e409ec8_a28ead1c",
+        "filename": "src/chromiumos/tast/local/spaced/client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-20T22:53:52Z",
+      "side": 1,
+      "message": "nit: don\u0027t use prefix \"get\" for getters.\n\n\nhttps://golang.org/doc/effective_go#Getters",
+      "range": {
+        "startLine": 62,
+        "startChar": 17,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "dee3b3a4e54664fb2df74215a5c9ea48955f41e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
