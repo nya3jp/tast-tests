@@ -16,6 +16,46 @@
       "message": "Kyle, PTAL",
       "revId": "da031d03a632d1260215aec5628c2db979e0a5be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce09317f_49a47aa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-20T17:02:52Z",
+      "side": 1,
+      "message": "LGTM with one small suggestion for waiting for the sign out button",
+      "revId": "da031d03a632d1260215aec5628c2db979e0a5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "678769ba_d6be8072",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-20T17:02:52Z",
+      "side": 1,
+      "message": "LeftClick should already wait for the node to exist before clicking it, so I don\u0027t think you should need ui.IsNodeFound above. The default timeout is 15 seconds, though, so you could consider extending that here instead:\n```\nui.WithTimeout(30 * time.Second).LeftClick(signOutButton)(ctx)\n```",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "da031d03a632d1260215aec5628c2db979e0a5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
