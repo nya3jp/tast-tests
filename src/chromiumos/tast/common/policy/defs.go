@@ -11763,7 +11763,11 @@ func (p *KerberosAddAccountsAllowed) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 type KerberosAccounts struct {
 	Stat Status
-	Val  []*KerberosAccountsValue
+	Val  []KerberosAccountsValueIf
+}
+
+type KerberosAccountsValueIf interface {
+	SetPassword(string)
 }
 
 type KerberosAccountsValue struct {
@@ -11772,6 +11776,16 @@ type KerberosAccountsValue struct {
 	Principal        string   `json:"principal"`
 	RememberPassword bool     `json:"remember_password"`
 }
+
+func (v *KerberosAccountsValue) SetPassword(password string) { v.Password = password }
+
+type KerberosAccountsValueOmitKrb5conf struct {
+	Password         string `json:"password"`
+	Principal        string `json:"principal"`
+	RememberPassword bool   `json:"remember_password"`
+}
+
+func (v *KerberosAccountsValueOmitKrb5conf) SetPassword(password string) { v.Password = password }
 
 func (p *KerberosAccounts) Name() string          { return "KerberosAccounts" }
 func (p *KerberosAccounts) Field() string         { return "" }
@@ -11786,14 +11800,14 @@ func (p *KerberosAccounts) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	return v, nil
 }
 func (p *KerberosAccounts) Equal(iface interface{}) bool {
-	v, ok := iface.([]*KerberosAccountsValue)
+	v, ok := iface.([]KerberosAccountsValueIf)
 	if !ok {
 		return ok
 	}
-	var sensitive []*KerberosAccountsValue
+	var sensitive []KerberosAccountsValueIf
 	for i := range p.Val {
 		cpy := p.Val[i]
-		cpy.Password = "********"
+		cpy.SetPassword("********")
 		sensitive = append(sensitive, cpy)
 	}
 	return cmp.Equal(sensitive, v)
@@ -18226,7 +18240,6 @@ func (p *DevicePciPeripheralDataAccessEnabled) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 // 826. ContextAwareAccessSignalsAllowlist
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
 type ContextAwareAccessSignalsAllowlist struct {
 	Stat Status
@@ -19348,7 +19361,6 @@ func (p *JavaScriptJitBlockedForSites) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 // 870. HttpsOnlyMode
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
 type HttpsOnlyMode struct {
 	Stat Status
@@ -19948,6 +19960,35 @@ func (p *DeviceRestrictedManagedGuestSessionEnabled) UnmarshalAs(m json.RawMessa
 	return v, nil
 }
 func (p *DeviceRestrictedManagedGuestSessionEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 896. PrintPdfAsImageDefault
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type PrintPdfAsImageDefault struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *PrintPdfAsImageDefault) Name() string          { return "PrintPdfAsImageDefault" }
+func (p *PrintPdfAsImageDefault) Field() string         { return "" }
+func (p *PrintPdfAsImageDefault) Scope() Scope          { return ScopeUser }
+func (p *PrintPdfAsImageDefault) Status() Status        { return p.Stat }
+func (p *PrintPdfAsImageDefault) UntypedV() interface{} { return p.Val }
+func (p *PrintPdfAsImageDefault) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *PrintPdfAsImageDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
 		return ok

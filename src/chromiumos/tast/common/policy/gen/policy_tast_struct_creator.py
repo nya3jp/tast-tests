@@ -551,6 +551,35 @@ def parse_override_onc(p, refs):
   attr_structs = ''
   return attr_type, attr_structs
 
+#Override Krb5conf to enable omitting the parameter as omitting it is treated
+# differently from passing an empty array.
+def parse_override_kerberos_accounts(p, refs):
+  value_name = 'KerberosAccountsValueIf'
+  attr_type = '[]' + value_name
+  attr_structs = """
+type KerberosAccountsValueIf interface {
+\tSetPassword(string)
+}
+
+type KerberosAccountsValue struct {
+\tKrb5conf\t[]string\t`json:"krb5conf"`
+\tPassword\tstring\t`json:"password"`
+\tPrincipal\tstring\t`json:"principal"`
+\tRememberPassword\tbool\t`json:"remember_password"`
+}
+
+func (v *KerberosAccountsValue) SetPassword(password string) { v.Password = password }
+
+type KerberosAccountsValueOmitKrb5conf struct {
+\tPassword\tstring\t`json:"password"`
+\tPrincipal\tstring\t`json:"principal"`
+\tRememberPassword\tbool\t`json:"remember_password"`
+}
+
+func (v *KerberosAccountsValueOmitKrb5conf) SetPassword(password string) { v.Password = password }
+"""
+  return attr_type, attr_structs
+
 def ref_parse_override_managed_bookmarks(schema, refs):
   name = 'Ref' + schema['items']['id']
   refs[schema['items']['id']] = Reference(name, '*'+name, '')
@@ -571,7 +600,8 @@ PARSE_OVERRIDES = {
     'ArcPolicy': parse_override_arc_policy,
     'DeviceLocalAccounts': parse_override_device_local_accounts,
     'OpenNetworkConfiguration': parse_override_onc,
-    'DeviceOpenNetworkConfiguration': parse_override_onc
+    'DeviceOpenNetworkConfiguration': parse_override_onc,
+    'KerberosAccounts': parse_override_kerberos_accounts
 }
 
 # Functions to use for reference objects when the default way won't work.
@@ -601,14 +631,14 @@ EQ_OVERRIDES = {
 \t}
 \tsensitive := "********"
 \treturn cmp.Equal(sensitive, v)""",
-    'KerberosAccounts': """\tv, ok := iface.([]*KerberosAccountsValue)
+    'KerberosAccounts': """\tv, ok := iface.([]KerberosAccountsValueIf)
 \tif !ok {
 \t\treturn ok
 \t}
-\tvar sensitive []*KerberosAccountsValue
+\tvar sensitive []KerberosAccountsValueIf
 \tfor i := range p.Val {
 \t\tcpy := p.Val[i]
-\t\tcpy.Password = "********"
+\t\tcpy.SetPassword("********")
 \t\tsensitive = append(sensitive, cpy)
 \t}
 \treturn cmp.Equal(sensitive, v)"""
@@ -629,7 +659,12 @@ UNMARSHAL_OVERRIDES = {
 \tif err := json.Unmarshal([]byte(v), &value); err != nil {
 \t\treturn nil, errors.Wrapf(err, "could not read %s as ArcPolicyValue", m)
 \t}
-\treturn value, nil"""
+\treturn value, nil""",
+    'KerberosAccounts': """\tvar v []*KerberosAccountsValue
+\tif err := json.Unmarshal(m, &v); err != nil {
+\treturn nil, errors.Wrapf(err, "could not read %s as []*KerberosAccountsValue", m)
+\t}
+\treturn v, nil"""
 }
 
 def write_code(output_path, policies_by_id, schema_ids):
