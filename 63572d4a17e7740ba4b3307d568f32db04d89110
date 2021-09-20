@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda7e1d1_877703dd",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19957,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-20T12:42:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eb9dc9e_911d54bd",
+      "revId": "63572d4a17e7740ba4b3307d568f32db04d89110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "931f7213_2f30239c",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6924eac_30988ce5",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-20T12:42:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "931f7213_2f30239c",
+      "revId": "63572d4a17e7740ba4b3307d568f32db04d89110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99f67e06_21e6632c",
@@ -65,6 +101,30 @@
       "writtenOn": "2021-09-20T10:29:31Z",
       "side": 1,
       "message": "This will only allow us to test the case with the string missing, is it possible to also support an empty array?",
+      "range": {
+        "startLine": 559,
+        "startChar": 38,
+        "endLine": 559,
+        "endChar": 47
+      },
+      "revId": "63572d4a17e7740ba4b3307d568f32db04d89110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71eee7df_4be4a27f",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-20T12:42:01Z",
+      "side": 1,
+      "message": "Empty arrays are already supported unless I\u0027m missing something.\nI tried it out and the policy gets properly served to the device with an empty array.",
+      "parentUuid": "99f67e06_21e6632c",
       "range": {
         "startLine": 559,
         "startChar": 38,
