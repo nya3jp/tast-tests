@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4a36548_161d11df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1371705
+      },
+      "writtenOn": "2021-09-20T00:07:29Z",
+      "side": 1,
+      "message": "LGTM once CQ passes successfully.",
+      "revId": "487341e788e0ef74936e213232d5ddad8afe21db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc116151_9d22b90e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1371705
+      },
+      "writtenOn": "2021-09-20T00:07:29Z",
+      "side": 1,
+      "message": "super-nit: extraOptions",
+      "revId": "487341e788e0ef74936e213232d5ddad8afe21db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
