@@ -16,6 +16,368 @@
       "message": "I am missing a Tast-Review +2. I am wondering if it\u0027s a new requirement, and if there is a list of ldap\u0027s with those permissions.",
       "revId": "059c564df0ae00046e640fa96978da0e0540660a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ada103e_9e4e4f3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "I thought that Eric is a Tast Owner.",
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5160c928_5388e2b5",
+        "filename": "src/chromiumos/tast/common/hermesconst/const.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "How about adding a link to the introductory page of hermes:\nhttps://chromium.googlesource.com/chromiumos/platform2/+/HEAD/hermes/README.md",
+      "range": {
+        "startLine": 5,
+        "startChar": 49,
+        "endLine": 5,
+        "endChar": 55
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0cb0e81_177bd50d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "At least",
+      "range": {
+        "startLine": 21,
+        "startChar": 62,
+        "endLine": 21,
+        "endChar": 69
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec64effa_da1f2654",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/hermes_multi_profile.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "Shorten the ctx after defer to reserve time for defer.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "475bd326_d4bdacc1",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "EUICC",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a893caa_b32f5c07",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "EUICC\n\nIn Golang, the acronyms should have the same case. Refer to http://go/go-style/decisions#initialisms",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4536463e_ac6d921c",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "euiccNum-th (zero based)",
+      "range": {
+        "startLine": 20,
+        "startChar": 41,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549bb069_80be843a",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "NewEUICC as Golang style prohibits the use of Get prefix.\n\nhttp://go/go-style/decisions#getters",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e5734f6_1beb9a1b",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "EUICC object",
+      "range": {
+        "startLine": 40,
+        "startChar": 46,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d32f72_0ba6fc6c",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "returns the installed profiles in the eSIM.",
+      "range": {
+        "startLine": 45,
+        "startChar": 24,
+        "endLine": 45,
+        "endChar": 73
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b99ef15_c0739d07",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "InstalledProfiles",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c32eb9_c3211ffa",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "returns the enabled Profile of the eSIM if found.",
+      "range": {
+        "startLine": 69,
+        "startChar": 21,
+        "endLine": 69,
+        "endChar": 79
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60ffe1b0_b4f06f3c",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "Why not using *Profile?",
+      "range": {
+        "startLine": 70,
+        "startChar": 56,
+        "endLine": 70,
+        "endChar": 63
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a8b878d_7ff6b4d0",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "EnabledProfile",
+      "range": {
+        "startLine": 70,
+        "startChar": 16,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "955b92c1_4a6808af",
+        "filename": "src/chromiumos/tast/local/hermes/hermes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "Hermes.\n\nAlso, how about adding a link to the introductory page of hermes:\nhttps://chromium.googlesource.com/chromiumos/platform2/+/HEAD/hermes/README.md",
+      "range": {
+        "startLine": 5,
+        "startChar": 60,
+        "endLine": 5,
+        "endChar": 66
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f42c03_4cdfb9de",
+        "filename": "src/chromiumos/tast/local/hermes/hermes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-20T17:31:43Z",
+      "side": 1,
+      "message": "D-Bus\n\nAdd the ending period.",
+      "range": {
+        "startLine": 8,
+        "startChar": 10,
+        "endLine": 8,
+        "endChar": 14
+      },
+      "revId": "059c564df0ae00046e640fa96978da0e0540660a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
