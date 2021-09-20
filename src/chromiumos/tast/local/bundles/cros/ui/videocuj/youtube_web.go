@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -55,7 +54,7 @@ func NewYtWeb(cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEvent
 func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	testing.ContextLog(ctx, "Open Youtube web")
 
-	y.ytConn, err = y.cr.NewConn(ctx, y.video.URL, cdputil.WithNewWindow())
+	y.ytConn, err = y.cr.NewConn(ctx, y.video.URL)
 	if err != nil {
 		return errors.Wrap(err, "failed to open youtube")
 	}
@@ -84,7 +83,7 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	}
 
 	skipAdButton := nodewith.NameStartingWith("Skip Ad").Role(role.Button)
-	if err := y.ui.IfSuccessThen(y.ui.WaitUntilExists(skipAdButton), y.uiHdl.Click(skipAdButton))(ctx); err != nil {
+	if err := y.ui.IfSuccessThen(y.ui.WithTimeout(10*time.Second).WaitUntilExists(skipAdButton), y.uiHdl.Click(skipAdButton))(ctx); err != nil {
 		return errors.Wrap(err, "failed to click 'Skip Ad' button")
 	}
 
@@ -103,13 +102,13 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		// Dut to the different response time of different DUTs, we need to combine these actions in Poll() to
 		// make quality switch works reliably.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if err := y.uiHdl.Click(videoPlayer)(ctx); err != nil {
-				return errors.Wrap(err, "failed to click YouTube Video Player to bring up settings panel")
+			// If an ad is playing, skip it before proceeding.
+			if err := y.ui.IfSuccessThen(y.ui.WithTimeout(10*time.Second).WaitUntilExists(skipAdButton), y.uiHdl.Click(skipAdButton))(ctx); err != nil {
+				return errors.Wrap(err, "failed to click 'Skip Ad' button")
 			}
 
-			// If an ad is playing, skip it before proceeding.
-			if err := y.ui.IfSuccessThen(y.ui.WaitUntilExists(skipAdButton), y.uiHdl.Click(skipAdButton))(ctx); err != nil {
-				return errors.Wrap(err, "failed to click 'Skip Ad' button")
+			if err := y.uiHdl.Click(videoPlayer)(ctx); err != nil {
+				return errors.Wrap(err, "failed to click YouTube Video Player to bring up settings panel")
 			}
 
 			if err := y.uiHdl.ClickUntil(settings, y.ui.WithTimeout(10*time.Second).WaitUntilExists(quality))(ctx); err != nil {
