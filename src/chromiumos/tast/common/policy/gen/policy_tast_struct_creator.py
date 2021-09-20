@@ -551,6 +551,21 @@ def parse_override_onc(p, refs):
   attr_structs = ''
   return attr_type, attr_structs
 
+#Override Krb5conf to enable omitting the parameter as omitting it is treated
+# differently from passing an empty array.
+def parse_override_kerberos_accounts(p, refs):
+  value_name = 'KerberosAccountsValue'
+  attr_type = '[]*' + value_name
+  attr_structs = """
+type KerberosAccountsValue struct {
+\tKrb5conf\t[]string\t`json:"krb5conf,omitempty"`
+\tPassword\tstring\t`json:"password"`
+\tPrincipal\tstring\t`json:"principal"`
+\tRememberPassword\tbool\t`json:"remember_password"`
+}
+"""
+  return attr_type, attr_structs
+
 def ref_parse_override_managed_bookmarks(schema, refs):
   name = 'Ref' + schema['items']['id']
   refs[schema['items']['id']] = Reference(name, '*'+name, '')
@@ -571,7 +586,8 @@ PARSE_OVERRIDES = {
     'ArcPolicy': parse_override_arc_policy,
     'DeviceLocalAccounts': parse_override_device_local_accounts,
     'OpenNetworkConfiguration': parse_override_onc,
-    'DeviceOpenNetworkConfiguration': parse_override_onc
+    'DeviceOpenNetworkConfiguration': parse_override_onc,
+    'KerberosAccounts': parse_override_kerberos_accounts
 }
 
 # Functions to use for reference objects when the default way won't work.

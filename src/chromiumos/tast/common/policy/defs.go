@@ -11767,7 +11767,7 @@ type KerberosAccounts struct {
 }
 
 type KerberosAccountsValue struct {
-	Krb5conf         []string `json:"krb5conf"`
+	Krb5conf         []string `json:"krb5conf,omitempty"`
 	Password         string   `json:"password"`
 	Principal        string   `json:"principal"`
 	RememberPassword bool     `json:"remember_password"`
@@ -18226,7 +18226,6 @@ func (p *DevicePciPeripheralDataAccessEnabled) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 // 826. ContextAwareAccessSignalsAllowlist
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
 type ContextAwareAccessSignalsAllowlist struct {
 	Stat Status
@@ -19348,7 +19347,6 @@ func (p *JavaScriptJitBlockedForSites) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 // 870. HttpsOnlyMode
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
 type HttpsOnlyMode struct {
 	Stat Status
@@ -19948,6 +19946,35 @@ func (p *DeviceRestrictedManagedGuestSessionEnabled) UnmarshalAs(m json.RawMessa
 	return v, nil
 }
 func (p *DeviceRestrictedManagedGuestSessionEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 896. PrintPdfAsImageDefault
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type PrintPdfAsImageDefault struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *PrintPdfAsImageDefault) Name() string          { return "PrintPdfAsImageDefault" }
+func (p *PrintPdfAsImageDefault) Field() string         { return "" }
+func (p *PrintPdfAsImageDefault) Scope() Scope          { return ScopeUser }
+func (p *PrintPdfAsImageDefault) Status() Status        { return p.Stat }
+func (p *PrintPdfAsImageDefault) UntypedV() interface{} { return p.Val }
+func (p *PrintPdfAsImageDefault) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *PrintPdfAsImageDefault) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
 		return ok
