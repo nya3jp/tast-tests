@@ -89,6 +89,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85881f9f_803905b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-09-20T01:04:47Z",
+      "side": 1,
+      "message": "Is there a google contact for this test as well?",
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11047843_103450e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
         "patchSetId": 6
