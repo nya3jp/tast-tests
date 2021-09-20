@@ -34,6 +34,24 @@
       "parentUuid": "91d1bdde_539efadd",
       "revId": "4f02ff031982c1dab24996597ecd80f6e6c6722c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa8466ab_c1724726",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-09-20T02:40:24Z",
+      "side": 1,
+      "message": "In practice, no, they generally don\u0027t get removed.",
+      "parentUuid": "d82b3b42_5afd10f3",
+      "revId": "4f02ff031982c1dab24996597ecd80f6e6c6722c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
