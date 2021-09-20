@@ -6,18 +6,22 @@ package inputs
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/imesettings"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -52,6 +56,30 @@ func setKoreanInputType(tconn *chrome.TestConn, cr *chrome.Chrome, keyboardType 
 		testing.Sleep(ctx, 10.0*time.Second)
 		return nil
 	}
+}
+
+func testEnterKeyOnOmnibox(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter) error {
+	ui := uiauto.New(tconn)
+	// Test on Omnibox
+	if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
+		return errors.Wrapf(err, "failed to launch %s: %s", apps.Chrome.Name, err)
+	}
+	if err := ash.WaitForApp(ctx, tconn, apps.Chrome.ID, time.Minute); err != nil {
+		return errors.Wrapf(err, "%s did not appear in shelf after launch", apps.Chrome.Name)
+	}
+	omniboxFinder := nodewith.Attribute("className", "OmniboxViewViews")
+	if err := uiauto.Combine("verify enter key on omnibox",
+		ui.LeftClick(omniboxFinder),
+		keyboard.TypeAction("gks"),
+		keyboard.AccelAction("Enter"),
+		util.WaitForFieldTextToSatisfy(tconn, omniboxFinder, "google URL", func(text string) bool {
+			return strings.Contains(text, "google.com")
+		}),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to verify enter key on omnibox")
+	}
+
+	return nil
 }
 
 func PhysicalKeyboardKoreanTyping(ctx context.Context, s *testing.State) {
@@ -155,14 +183,12 @@ func PhysicalKeyboardKoreanTyping(ctx context.Context, s *testing.State) {
 			ExpectedText: "않",
 		},
 		{
-			// Note: Options other than 2 set are supported at low priority. In fact,
-			// these examples may not be even correct, but these tests will still detect
-			// any change in behavior.
-			TestName: "Romaja",
-			InputFunc: uiauto.Combine("type in 3 set no shift",
-				setKoreanInputType(tconn, cr, "Romaja / 로마자"),
-				keyboard.TypeAction("romaja")),
-			ExpectedText: "로마자",
+			TestName: "EnterKey",
+			InputFunc: uiauto.Combine("type Korean and press enter",
+				setKoreanInputType(tconn, cr, "2 Set / 두벌식"),
+				keyboard.TypeAction("gks"),
+				keyboard.AccelAction("Enter")),
+			ExpectedText: "한\n",
 		},
 	}
 
@@ -175,5 +201,9 @@ func PhysicalKeyboardKoreanTyping(ctx context.Context, s *testing.State) {
 				s.Fatalf("Failed to validate %s: %v", subtest.TestName, err)
 			}
 		})
+	}
+
+	if err := testEnterKeyOnOmnibox(ctx, tconn, keyboard); err != nil {
+		s.Fatal("Omnibox test failed: ", err)
 	}
 }
