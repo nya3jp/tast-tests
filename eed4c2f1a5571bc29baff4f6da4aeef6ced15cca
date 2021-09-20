@@ -16,6 +16,46 @@
       "message": "Adding tbarzic@ and kyleshima@ who might know more about launcher related code.",
       "revId": "eed4c2f1a5571bc29baff4f6da4aeef6ced15cca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faae806a_7d46c736",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-09-20T21:37:45Z",
+      "side": 1,
+      "message": "I\u0027m not against doing this (though, I\u0027d expand the comment to clarify that other test may be creating and using \"Unnamed folder\"), but relying solely on renaming folders here is probably a bit too fragile.\n\nCan we instead ensure that the tests that rely on certain app list structure reset the launcher state (e.g. that they login into a fresh session).\n\nThe test uses a fixture with 100 apps - it\u0027s conceivable that we run out of non-folder app items (let\u0027s say we run this test twice - e.g. for clamshell and tablet mode - at that point we would have already put 96 items into a folder).",
+      "revId": "eed4c2f1a5571bc29baff4f6da4aeef6ced15cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e9a7ee_a5869984",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-09-20T21:37:45Z",
+      "side": 1,
+      "message": "Maybe set the name to the full test name?",
+      "range": {
+        "startLine": 65,
+        "startChar": 56,
+        "endLine": 65,
+        "endChar": 62
+      },
+      "revId": "eed4c2f1a5571bc29baff4f6da4aeef6ced15cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
