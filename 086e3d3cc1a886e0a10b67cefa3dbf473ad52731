@@ -160,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c57c1419_c57d8c2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-20T16:32:42Z",
+      "side": 1,
+      "message": "Thanks for fixing this. I also think Gerrit has a bug where it posts comments twice.",
+      "parentUuid": "5b574fea_fd2a92fe",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "086e3d3cc1a886e0a10b67cefa3dbf473ad52731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6eb289d0_062d6cea",
