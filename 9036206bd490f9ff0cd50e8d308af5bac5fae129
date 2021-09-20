@@ -61,6 +61,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "251f484a_a6477595",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-20T07:16:20Z",
+      "side": 1,
+      "message": "Can I abandoned this patch and create new patch? ,because facing the merge conflicts with your patch?",
+      "parentUuid": "4f1f816b_292e54a9",
+      "revId": "9036206bd490f9ff0cd50e8d308af5bac5fae129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59046429_ee204647",
         "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
         "patchSetId": 10
