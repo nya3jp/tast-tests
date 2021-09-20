@@ -72,8 +72,8 @@ const (
 	RWFirmwareID FMAPSection = "RW_FWID"
 	// RWRollbackVersion is the read-write rollback version.
 	RWRollbackVersion FMAPSection = "RW_RBVER"
-	// EC_RW is the read-write section.
-	EC_RW FMAPSection = "EC_RW"
+	// RWFirmware is the read-write section.
+	RWFirmware FMAPSection = "EC_RW"
 	// SignatureRW is the signature section.
 	SignatureRW FMAPSection = "SIG_RW"
 )
@@ -342,7 +342,7 @@ func (f *firmwareImageGenerator) CorruptFirstByte(ctx context.Context) (string, 
 		return "", errors.Wrap(err, "failed to copy file")
 	}
 
-	rwSection, err := fmapSectionInfo(ctx, f.futilityPath, corruptFilePath, EC_RW)
+	rwSection, err := fmapSectionInfo(ctx, f.futilityPath, corruptFilePath, RWFirmware)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get FMAP info for EC_RW")
 	}
