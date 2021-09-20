@@ -196,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d790671_5f58fdcb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-20T22:23:14Z",
+      "side": 1,
+      "message": "Could you add a TODO here at least?\nSleep is usually the main point of flakiness and should be avoided.",
+      "parentUuid": "13846035_d03bc635",
+      "revId": "7e5c423f5c348c9787bf8df4828ebadfa94e6b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff184620_88ab4ecf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
         "patchSetId": 1

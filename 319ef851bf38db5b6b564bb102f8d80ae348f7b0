@@ -574,6 +574,30 @@
       },
       "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca5b2bf_f71ccdb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-20T22:23:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1024b387_814a6343",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 17
+      },
+      "revId": "319ef851bf38db5b6b564bb102f8d80ae348f7b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

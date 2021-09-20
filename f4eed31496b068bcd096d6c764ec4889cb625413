@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2546400d_2b3cca72",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wakethrough_lid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-20T22:23:14Z",
+      "side": 1,
+      "message": "Note you have shortened 10 seconds for the cleanup. You might want to specify the timeout of the test to ensure the test have enough time to run.",
+      "revId": "f4eed31496b068bcd096d6c764ec4889cb625413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
