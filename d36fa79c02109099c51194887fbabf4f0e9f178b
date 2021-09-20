@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94d2c140_24974edc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-09-20T08:43:38Z",
+      "side": 1,
+      "message": "User splits syllables by themselves \u003d\u003d\u003d User types \"ni hao\"\n\nUser splits syllables by themselves, but wrongly \u003d\u003d\u003d User types \"nih ao\"\n\nUser splits some syllables, but not all \u003d\u003d\u003d User types \"ni haoma\"\n\nUser doesn\u0027t split any syllables \u003d\u003d\u003d User types \"nihao\"",
+      "parentUuid": "1ed33980_72254731",
+      "revId": "d36fa79c02109099c51194887fbabf4f0e9f178b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8d873cb_8220de92",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
         "patchSetId": 3
