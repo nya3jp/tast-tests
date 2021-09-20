@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
@@ -30,7 +31,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromePolicyLoggedIn",
+		Fixture:      fixture.ChromePolicyLoggedIn,
 	})
 }
 
@@ -102,6 +103,7 @@ func AllowScreenLock(ctx context.Context, s *testing.State) {
 			if err := quicksettings.Show(ctx, tconn); err != nil {
 				s.Fatal("Failed to open the system tray: ", err)
 			}
+
 			ui := uiauto.New(tconn)
 			if err := uiauto.Combine("Check lock screen from system tray",
 				ui.WaitUntilExists(nodewith.Name("Shut down").ClassName("TopShortcutButton")),

@@ -7,6 +7,7 @@ package policy
 import (
 	"context"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -31,7 +32,7 @@ func init() {
 			"group:paper-io",
 			"paper-io_printing",
 		},
-		Fixture: "chromePolicyLoggedIn",
+		Fixture: fixture.ChromePolicyLoggedIn,
 	})
 }
 

@@ -11,6 +11,7 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	cpb "chromiumos/system_api/plugin_vm_service_proto"
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/policyutil"
@@ -28,7 +29,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", "plugin_vm"},
 		Attr:         []string{"group:mainline"},
-		Fixture:      "chromePolicyLoggedIn",
+		Fixture:      fixture.ChromePolicyLoggedIn,
 	})
 }
 
