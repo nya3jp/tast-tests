@@ -11763,7 +11763,11 @@ func (p *KerberosAddAccountsAllowed) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 type KerberosAccounts struct {
 	Stat Status
-	Val  []*KerberosAccountsValue
+	Val  []KerberosAccountsValueIf
+}
+
+type KerberosAccountsValueIf interface {
+	SetPassword(string)
 }
 
 type KerberosAccountsValue struct {
@@ -11772,6 +11776,16 @@ type KerberosAccountsValue struct {
 	Principal        string   `json:"principal"`
 	RememberPassword bool     `json:"remember_password"`
 }
+
+func (v *KerberosAccountsValue) SetPassword(password string) { v.Password = password }
+
+type KerberosAccountsValueOmitKrb5conf struct {
+	Password         string `json:"password"`
+	Principal        string `json:"principal"`
+	RememberPassword bool   `json:"remember_password"`
+}
+
+func (v *KerberosAccountsValueOmitKrb5conf) SetPassword(password string) { v.Password = password }
 
 func (p *KerberosAccounts) Name() string          { return "KerberosAccounts" }
 func (p *KerberosAccounts) Field() string         { return "" }
@@ -11786,14 +11800,14 @@ func (p *KerberosAccounts) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	return v, nil
 }
 func (p *KerberosAccounts) Equal(iface interface{}) bool {
-	v, ok := iface.([]*KerberosAccountsValue)
+	v, ok := iface.([]KerberosAccountsValueIf)
 	if !ok {
 		return ok
 	}
-	var sensitive []*KerberosAccountsValue
+	var sensitive []KerberosAccountsValueIf
 	for i := range p.Val {
 		cpy := p.Val[i]
-		cpy.Password = "********"
+		cpy.SetPassword("********")
 		sensitive = append(sensitive, cpy)
 	}
 	return cmp.Equal(sensitive, v)
