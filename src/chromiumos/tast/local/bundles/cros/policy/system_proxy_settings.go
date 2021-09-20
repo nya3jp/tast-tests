@@ -10,6 +10,7 @@ import (
 
 	"github.com/shirou/gopsutil/process"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -28,7 +29,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromeEnrolledLoggedIn",
+		Fixture:      fixture.ChromeEnrolledLoggedIn,
 		Params: []testing.Param{{
 			Name: "enabled",
 			Val:  true,
