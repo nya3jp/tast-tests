@@ -16,6 +16,201 @@
       "message": "Please review the fixes in this patch. Thanks!",
       "revId": "40b55897cef4be273bf3170596f9f62efe420668",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7c539f8_a51c904e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-20T17:36:25Z",
+      "side": 1,
+      "message": "I know one of David\u0027s original comments was to split this into multiple tests to avoid large \"if pin\" blocks, but now that you\u0027ve moved that complexity into the showpassword subpackage, the 3 tests are almost identical except for a small section where you set up a PIN.\n\nWith that in mind, I think it would be best to re-combine these into a single parameterized test, since the body of the tests are pretty much the same now.\n* lockscreen.ShowPassword\n* lockscreen.ShowPassword.pin\n* lockscreen.ShowPassword.switch_to_password\n\nLet me know if you need any help setting up the parameterized test.",
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0af712e_f35da673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/showpassword/show_password.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-20T17:36:25Z",
+      "side": 1,
+      "message": "nit: consider making this a constant in the file or function. it\u0027s a special character that we should call some attention to",
+      "range": {
+        "startLine": 23,
+        "startChar": 30,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a96f771a_d18b497d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/showpassword/show_password.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-20T17:36:25Z",
+      "side": 1,
+      "message": "this might be flaky if you don\u0027t wait for the password field to be focused (like in lockscreen.EnterPassword). you could address that as a follow-up though after b/189597597",
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0dc8ca1_e9ea0619",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-20T17:36:25Z",
+      "side": 1,
+      "message": "this function doesn\u0027t quite do what it claims. it assumes either a PIN/Password has already been entered, so the comment should definitely mention that. I think this function should be more general though if we\u0027re going to add an Unlock function to lockscreen.go:\n\n1. accept a PIN/password as a parameter\n2. clear the current contents of password/pin field\n3. type \u0026 submit",
+      "range": {
+        "startLine": 213,
+        "startChar": 3,
+        "endLine": 213,
+        "endChar": 9
+      },
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d9b168c_ec76c513",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-20T17:36:25Z",
+      "side": 1,
+      "message": "Unlock (no capital L)",
+      "range": {
+        "startLine": 214,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 11
+      },
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd6aee7_a1e70f62",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-20T17:36:25Z",
+      "side": 1,
+      "message": "you need to return this:\n```\nreturn errors.Wrap(...)\n```",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 8
+      },
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d707c50_5b2cce81",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-20T17:36:25Z",
+      "side": 1,
+      "message": "nit: no need for surrounding quotes here.",
+      "range": {
+        "startLine": 216,
+        "startChar": 40,
+        "endLine": 216,
+        "endChar": 57
+      },
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "698246fc_0ec25922",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-20T17:36:25Z",
+      "side": 1,
+      "message": "I think !st.Locked is the right check here",
+      "range": {
+        "startLine": 219,
+        "startChar": 66,
+        "endLine": 219,
+        "endChar": 77
+      },
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "427786c5_5e195e3a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-20T17:36:25Z",
+      "side": 1,
+      "message": "same here, this needs to be returned",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 8
+      },
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
