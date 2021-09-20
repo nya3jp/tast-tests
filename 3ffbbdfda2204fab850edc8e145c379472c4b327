@@ -70,6 +70,46 @@
       "parentUuid": "d98e49f5_deb609f4",
       "revId": "3ffbbdfda2204fab850edc8e145c379472c4b327",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87b40ab4_b8c1319d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002374
+      },
+      "writtenOn": "2021-09-20T23:05:58Z",
+      "side": 1,
+      "message": "Thanks Yuhsuan for taking a stab at this. ",
+      "revId": "3ffbbdfda2204fab850edc8e145c379472c4b327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecef5316_c6438017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1002374
+      },
+      "writtenOn": "2021-09-20T23:05:58Z",
+      "side": 1,
+      "message": "Not sure what the repeated snippet(from lines 396-402) here is about.\n\nShould this be about the planned cras.FetchDelayMilliSeconds?\nAnd few more snippets for cras.MissedCallbackFrequencyInput(Output) too?",
+      "range": {
+        "startLine": 407,
+        "startChar": 25,
+        "endLine": 407,
+        "endChar": 52
+      },
+      "revId": "3ffbbdfda2204fab850edc8e145c379472c4b327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
