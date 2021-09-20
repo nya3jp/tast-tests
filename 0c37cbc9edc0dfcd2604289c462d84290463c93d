@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "0c37cbc9edc0dfcd2604289c462d84290463c93d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6acf50a_f7101d6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-20T16:54:52Z",
+      "side": 1,
+      "message": "LGTM as policy code reviewer.",
+      "revId": "0c37cbc9edc0dfcd2604289c462d84290463c93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
