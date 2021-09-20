@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromeos-test-assets-private/tast/crossdevice/multidevice_snippet_20210909.zip",
+  "size": 265440,
+  "sha256sum": "fa8353ec72038622498fdacc133b9d9373e1db3f358e83117a78255110913363"
+}
