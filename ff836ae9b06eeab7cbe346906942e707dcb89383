@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ff2dc79_d69becfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resizelockhelper/resize_lock_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-20T23:02:09Z",
+      "side": 1,
+      "message": "Tried moving resize_lock_helper.go to wm package, got tast-lint error, src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go:23:2: import of chromiumos/tast/local/bundles/cros/arc/wm is only allowed from chromiumos/tast/local/bundles/*/arc or its descendant\n\nGot same tast-lint error when tried resizelockhelper, src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go:23:2: import of chromiumos/tast/local/bundles/cros/arc/resizelockhelper is only allowed from chromiumos/tast/local/bundles/*/arc or its descendant\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code. As per this doc, Importing a subpackage is allowed only in the category package containing it. Looks like arcappcompat package can\u0027t import subpackage \"wm\". Let me know your suggestions.",
+      "parentUuid": "c43add74_12604f27",
+      "revId": "ff836ae9b06eeab7cbe346906942e707dcb89383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd6100f3_9416fce3",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-17T05:09:59Z",
       "side": 1,
       "message": "I see similar functionality in toggleResizeLockMode to toggle the resize_lock too.",
+      "range": {
+        "startLine": 573,
+        "startChar": 5,
+        "endLine": 573,
+        "endChar": 25
+      },
+      "revId": "ff836ae9b06eeab7cbe346906942e707dcb89383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f067075d_568cde22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-20T23:02:09Z",
+      "side": 1,
+      "message": "Let me explain, basically toggleResizeLockMode, handleConfirmationDialogViaClick and  closeSplash in resize_lock.go file uses predetermined input such as currentMode, test.nextMode and test.method based on the demo.apks.  Whereas selectResizeLockMode func, handleConfirmDialog func and closeSplash func in appcompat doesn\u0027t need any inputs since it is generic for all 100 android apps under arcappcompat test and these func are optimized for arcappcompat tests.",
+      "parentUuid": "cd6100f3_9416fce3",
       "range": {
         "startLine": 573,
         "startChar": 5,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc5f6bcc_5f2076d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-20T23:02:09Z",
+      "side": 1,
+      "message": "Let me explain, basically toggleResizeLockMode, handleConfirmationDialogViaClick and  closeSplash in resize_lock.go file uses predetermined input such as currentMode, test.nextMode and test.method based on the demo.apks.  Whereas selectResizeLockMode func, handleConfirmDialog func and closeSplash func in appcompat doesn\u0027t need any inputs since it is generic for all 100 android apps under arcappcompat tests and these func are optimized for arcappcompat tests.",
+      "parentUuid": "d56e7788_8299f231",
+      "range": {
+        "startLine": 589,
+        "startChar": 5,
+        "endLine": 589,
+        "endChar": 24
+      },
+      "revId": "ff836ae9b06eeab7cbe346906942e707dcb89383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ecd0388_e24551cf",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-09-17T05:09:59Z",
       "side": 1,
       "message": "I see a closeSplash method in resize_lock.go too.",
+      "range": {
+        "startLine": 603,
+        "startChar": 5,
+        "endLine": 603,
+        "endChar": 16
+      },
+      "revId": "ff836ae9b06eeab7cbe346906942e707dcb89383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead5dbe4_97a61c0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-20T23:02:09Z",
+      "side": 1,
+      "message": "Let me explain, basically toggleResizeLockMode, handleConfirmationDialogViaClick and  closeSplash in resize_lock.go file  uses predetermined input such as currentMode, test.nextMode and test.method based on the demo.apks.  Whereas selectResizeLockMode func, handleConfirmDialog func and closeSplash func in appcompat doesn\u0027t need any inputs since it is generic for all 100 android apps under arcappcompay tests and these func are optimized for arcappcompat tests.",
+      "parentUuid": "9ecd0388_e24551cf",
       "range": {
         "startLine": 603,
         "startChar": 5,
