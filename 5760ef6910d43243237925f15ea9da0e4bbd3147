@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42559fc7_ffed115d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2021-09-20T18:29:15Z",
+      "side": 1,
+      "message": "What is this hibernate functionality here? S0ix? S3? S4? S5? ",
+      "revId": "5760ef6910d43243237925f15ea9da0e4bbd3147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61c0b65a_71c581c5",
