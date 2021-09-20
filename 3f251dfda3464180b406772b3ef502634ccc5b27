@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ead196f_fc31cc32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-20T14:39:14Z",
+      "side": 1,
+      "message": "LGTM with nits.",
+      "revId": "3f251dfda3464180b406772b3ef502634ccc5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85c11086_7abda545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-20T14:39:14Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "3f251dfda3464180b406772b3ef502634ccc5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a726de9a_d516b8dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-20T14:39:14Z",
+      "side": 1,
+      "message": "Nit: dailyScreenTimeLimit",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "3f251dfda3464180b406772b3ef502634ccc5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14a3c338_5c248563",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-20T14:39:14Z",
+      "side": 1,
+      "message": "Nit: To improve readability, either\n* Define day :\u003d time.Hour * 24, and do reset.Add(-day)\n* Or do switch weekday :\u003d reset.Weekday(); weekday {\n    case time.Monday:\n        Sunday \u003d dailyLimitEntry\n    case time.Tuesday:\n        Monday \u003d dailyLimitEntry\n    ...\n        \nI would recommend the second option because the field that you set in the switch statement doesn\u0027t have to match the case.",
+      "range": {
+        "startLine": 78,
+        "startChar": 19,
+        "endLine": 78,
+        "endChar": 55
+      },
+      "revId": "3f251dfda3464180b406772b3ef502634ccc5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d220f8bb_db25175e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-20T14:39:14Z",
+      "side": 1,
+      "message": "No need for break statements in Go.\n\nhttps://tour.golang.org/flowcontrol/9",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 7
+      },
+      "revId": "3f251dfda3464180b406772b3ef502634ccc5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
