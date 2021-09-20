@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5b93bda_e5b34b7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-20T07:29:42Z",
+      "side": 1,
+      "message": "This definitely seems like it should be two different tests and some small library functions in a third file. Other than the functions that should be library functions (get \u0026 set brightness), these tests share no common code.",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dc88950_58066514",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-20T07:29:42Z",
+      "side": 1,
+      "message": "Nit: make indent consistent between all params",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5467a9f4_f7a78aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-20T07:29:42Z",
+      "side": 1,
+      "message": "Turn resetBrightnessCmd into an array, and run testexec.CommandContext(ctx, resetBrightnessCmd...)?",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2244f30d_5668831d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-20T07:29:42Z",
+      "side": 1,
+      "message": "Why is ctx in the parameters here? It\u0027s never used (also, the variable is captured by default)",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32db4122_15a8ea43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-20T07:29:42Z",
+      "side": 1,
+      "message": "Nit: rename variable to statusTrayToggler?\nIf my understanding is correct, this isn\u0027t the status tray. This is the button that opens and closes the status tray.",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3c80ce3_72f8019e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-20T07:29:42Z",
+      "side": 1,
+      "message": "Don\u0027t think you need this line. LeftClick calls Location under the hood, which waits for the node to exist.\nhttps://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/4eb1c8764803debaa828311eaaf8f458f458987b:src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d220;drc\u003d0ca8b18d2322b9b8533f28b69973c2e95d673980",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f4dbfd_4f600750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-20T07:29:42Z",
+      "side": 1,
+      "message": "You may want a WaitUntilGone(statusTray) here to confirm it\u0027s cleaned up properly.\n(and I don\u0027t mean your current variable statustray, which as I mentioned earlier, I think contains the status tray toggler).",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be69dfff_8299d515",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-20T07:29:42Z",
+      "side": 1,
+      "message": "Use for level :\u003d 0; level \u003c brightnessLevels; level++ instead. constructing an array of empty things adds confusion (and the variable level doesn\u0027t contain anything meaningful, as readers might expect it to).",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e0ab822_7a610b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-20T07:29:42Z",
+      "side": 1,
+      "message": "We generally avoid using testing.Sleep where possible. It makes tests either flaky or slow. Could we instead poll for a brightness change or something similar?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa187eba_d84496a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-20T07:29:42Z",
+      "side": 1,
+      "message": "Turn brightnessCmd into an array, and run testexec.CommandContext(ctx, brightnessCmd...)?",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
