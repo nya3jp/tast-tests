@@ -149,6 +149,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56f28a91_f0f53fff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-09-20T22:50:56Z",
+      "side": 1,
+      "message": "Fair, though personally I don\u0027t believe this is the same situation.\n\nA test that fails because something else is breaking the ability to open a file will get blame incorrectly. I\u0027m... not a big fan of that. But I do get the point.",
+      "parentUuid": "b5c68e8c_bf2270af",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 42
+      },
+      "revId": "ec1d7e0d9d3034c5145704bd0d48345c6185381d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a688169_be79672f",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
         "patchSetId": 3
