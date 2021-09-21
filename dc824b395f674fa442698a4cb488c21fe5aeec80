@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28892b03_1a55ed56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-09-21T23:41:33Z",
+      "side": 1,
+      "message": "Thanks for the reference, I wasn\u0027t aware of this!\n\nI briefly considered adding \"wifi\" to the list, but I realize it\u0027s probably helpful to also verify check_powerd_config is working (i.e., running on non-wifi devices doesn\u0027t hurt, and is actually helpful).",
+      "parentUuid": "235d74d0_9003de1b",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 70
+      },
+      "revId": "dc824b395f674fa442698a4cb488c21fe5aeec80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e685d3fa_52f06f0c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-21T21:35:13Z",
       "side": 1,
       "message": "Would the \"crosconfig\" package help? http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/crosconfig/crosconfig.go",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 107
+      },
+      "revId": "dc824b395f674fa442698a4cb488c21fe5aeec80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3488fb0f_9548a76b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-09-21T23:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e685d3fa_52f06f0c",
       "range": {
         "startLine": 41,
         "startChar": 1,
