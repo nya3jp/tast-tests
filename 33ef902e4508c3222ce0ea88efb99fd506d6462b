@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44cd35bc_cd8dea8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-21T06:10:45Z",
+      "side": 1,
+      "message": "LGTM, but I have one question.",
+      "revId": "33ef902e4508c3222ce0ea88efb99fd506d6462b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa63d1de_c623d594",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-21T06:10:45Z",
+      "side": 1,
+      "message": "What is the reason we need to find and click \"Rescan\" button twice? Are these different buttons or identical one?",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 0
+      },
+      "revId": "33ef902e4508c3222ce0ea88efb99fd506d6462b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
