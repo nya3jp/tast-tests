@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6e15d5_feaac882",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-09-21T16:28:41Z",
+      "side": 1,
+      "message": "I am writing this reply so that Gerrit will report the CL on Monorail.",
+      "revId": "e0a10ad6f7840255d7ab86d4ce2a5d8b8ef7c2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
