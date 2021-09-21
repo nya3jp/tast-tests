@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19dd2df5_b72482fc",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-21T05:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdd34a92_4aaeefc2",
+      "range": {
+        "startLine": 45,
+        "startChar": 60,
+        "endLine": 45,
+        "endChar": 67
+      },
+      "revId": "c77e8384b20cd59ebe1f84a589df78f637bba426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d8e6b70_e65e6970",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-09-17T14:05:33Z",
       "side": 1,
       "message": "You can use re.Find(out):\n    if matchedLine :\u003d re.Find(out); matchedLine !\u003d nil {\n      volumeID \u003d strings.Split(string(matchedLine), \" \")[0]\n      return nil\n    }\n\nhttps://pkg.go.dev/regexp#Regexp.Find",
+      "revId": "c77e8384b20cd59ebe1f84a589df78f637bba426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a8cc2e_eac035af",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-21T05:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d8e6b70_e65e6970",
       "revId": "c77e8384b20cd59ebe1f84a589df78f637bba426",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57fc528c_53d562c2",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-21T05:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e208abf_81dd8239",
+      "revId": "c77e8384b20cd59ebe1f84a589df78f637bba426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2178f37_2fab29c3",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-21T05:49:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0e208abf_81dd8239",
+      "revId": "c77e8384b20cd59ebe1f84a589df78f637bba426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "985e9c9c_fb6f6692",
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7597139_133a0ffe",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-21T05:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "985e9c9c_fb6f6692",
+      "revId": "c77e8384b20cd59ebe1f84a589df78f637bba426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b467235a_9315b027",
@@ -105,6 +201,24 @@
       "writtenOn": "2021-09-17T14:05:33Z",
       "side": 1,
       "message": "If you return volumeID from waitFor... and you don\u0027t wrap the error message, you can just use the return values of waitFor...:\n  return waitForARCVolumeStatusAndGetVolumeID(ctx, a, stubVolumeIDRegex, \"mounted\", MyFilesUUID)\n\nSame goes for SdcardVolumeID.",
+      "revId": "c77e8384b20cd59ebe1f84a589df78f637bba426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9e4a05a_8eeb5c71",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-21T05:49:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b467235a_9315b027",
       "revId": "c77e8384b20cd59ebe1f84a589df78f637bba426",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
