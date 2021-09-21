@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab8c516d_06bf1977",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-21T18:03:47Z",
+      "side": 1,
+      "message": "a nit",
+      "revId": "6405042df8693ac98cab6418b741a090df5e914c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f88b302e_4ba17d80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-21T18:03:47Z",
+      "side": 1,
+      "message": "Move to next line:\nTODO(b/194644867): revisit after FW fix and verification.",
+      "range": {
+        "startLine": 448,
+        "startChar": 51,
+        "endLine": 448,
+        "endChar": 90
+      },
+      "revId": "6405042df8693ac98cab6418b741a090df5e914c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
