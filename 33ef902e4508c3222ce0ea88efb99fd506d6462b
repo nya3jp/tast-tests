@@ -56,6 +56,30 @@
       },
       "revId": "33ef902e4508c3222ce0ea88efb99fd506d6462b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d9a872d_76bd4e0d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1364231
+      },
+      "writtenOn": "2021-09-21T15:58:40Z",
+      "side": 1,
+      "message": "Yes they are two different buttons.\nFirst: http://screen/9hsyutr8vPRhw3n\nSecond: http://screen/C5hCeMkXzoGZZsk",
+      "parentUuid": "fa63d1de_c623d594",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 0
+      },
+      "revId": "33ef902e4508c3222ce0ea88efb99fd506d6462b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
