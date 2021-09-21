@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b443482d_82258d53",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-21T22:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be97a36d_347c878f",
+      "range": {
+        "startLine": 24,
+        "startChar": 40,
+        "endLine": 24,
+        "endChar": 50
+      },
+      "revId": "22688f4b460055ddf302ce5c29c79825a91969e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "863cdc7b_2146a9ec",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc0b4177_3653cbcc",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-21T22:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "863cdc7b_2146a9ec",
+      "range": {
+        "startLine": 83,
+        "startChar": 48,
+        "endLine": 83,
+        "endChar": 55
+      },
+      "revId": "22688f4b460055ddf302ce5c29c79825a91969e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89c5a23b_f35bec78",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-21T22:13:01Z",
       "side": 1,
       "message": "For the DUT methods that are not in RPCDUT (and not deprecated), such as CompanionDeviceHostname or WaitUnreachable, is the expectation that you should use the DUT() method to get the DUT and use it directly?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 1
+      },
+      "revId": "22688f4b460055ddf302ce5c29c79825a91969e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12989e44_91acc002",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-21T22:50:04Z",
+      "side": 1,
+      "message": "No, the expectation is that they are added to RPCDUT as a proxy.\nWe currently don\u0027t need them, so they aren\u0027t implemented.",
+      "parentUuid": "89c5a23b_f35bec78",
       "range": {
         "startLine": 153,
         "startChar": 0,
