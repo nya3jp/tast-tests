@@ -22,6 +22,30 @@
       },
       "revId": "3e5abcfeef832d85cd0305cfe8f6c6be86ba4422",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f145bf11_f61ed3fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-09-21T20:36:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc8bb647_83711c7b",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 113
+      },
+      "revId": "3e5abcfeef832d85cd0305cfe8f6c6be86ba4422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
