@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4496e492_6f987cd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-21T02:32:18Z",
+      "side": 1,
+      "message": "LGTM with a nitpick.",
+      "revId": "c6ab1a5894601570c6d1542ac4218dd4ddaf132e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8a9d750_b1c16f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/iio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-21T02:32:18Z",
+      "side": 1,
+      "message": "If this is used within this package only, could you keep it private?\n\nerrUnknownDeviceFound",
+      "revId": "c6ab1a5894601570c6d1542ac4218dd4ddaf132e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
