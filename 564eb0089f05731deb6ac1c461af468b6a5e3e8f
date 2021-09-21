@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d302e43_47b9c091",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-09-21T22:20:15Z",
+      "side": 1,
+      "message": "Rebased because failure was fixed recently.",
+      "revId": "564eb0089f05731deb6ac1c461af468b6a5e3e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
