@@ -10,7 +10,6 @@ import (
 	"os"
 	"path"
 	"path/filepath"
-	"strings"
 	"syscall"
 	"time"
 
@@ -102,8 +101,6 @@ func ShareInvalidPaths(ctx context.Context, s *testing.State) {
 		if err := pre.Container.VM.UnshareDownloadsPath(ctx, path); err != nil {
 			s.Fatal("Failed to un-share path containing symlink: ", err)
 		}
-	} else if !strings.Contains(err.Error(), "symlink") {
-		s.Error("Unexpected error when sharing a path containing a symlink: ", err)
 	}
 
 	devs := []int{syscall.S_IFBLK, syscall.S_IFIFO, syscall.S_IFCHR, syscall.S_IFSOCK}
@@ -119,8 +116,6 @@ func ShareInvalidPaths(ctx context.Context, s *testing.State) {
 			if err := pre.Container.VM.UnshareDownloadsPath(ctx, sharedPath); err != nil {
 				s.Fatal("Failed to un-share device node: ", err)
 			}
-		} else if !strings.Contains(err.Error(), "non-regular") {
-			s.Error("Unexpected error when sharing a path to a non-regular file: ", err)
 		}
 	}
 }
