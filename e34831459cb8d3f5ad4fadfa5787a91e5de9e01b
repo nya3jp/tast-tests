@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd24774a_83b6b55c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-21T01:17:37Z",
+      "side": 1,
+      "message": "Now that we have code changes, updating many files increase the possibility of merge conflict, and possible revert cost. I\u0027d recommend splitting the change to multiple patches. For example,\n1. arc related changes (local/arc/* and  bundels/cros/arc/*)\n2. ui related changes (bundles/cros/ui/* and chrome/ui/* )\n3. others\nFeel free to split each category further if you like.\n",
+      "revId": "e34831459cb8d3f5ad4fadfa5787a91e5de9e01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
