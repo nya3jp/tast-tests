@@ -40,7 +40,7 @@ func (config *CrosConfig) SetUp(ctx context.Context) error {
 
 // Run runs vkbench and returns the output.
 func (config *CrosConfig) Run(ctx context.Context, fixtValue interface{}, outDir string) (string, error) {
-	args := []string{"--spirv_dir", vkbenchShaderPath, "--out_dir", filepath.Join(outDir, "vkbench")}
+	args := []string{"--runtime_dir", vkbenchShaderPath, "--out_dir", filepath.Join(outDir, "vkbench")}
 	if config.IsHasty() {
 		args = append(args, "--hasty")
 	}
