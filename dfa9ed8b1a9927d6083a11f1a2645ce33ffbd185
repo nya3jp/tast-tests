@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58be7b53_49a241cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-21T14:24:55Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "dfa9ed8b1a9927d6083a11f1a2645ce33ffbd185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c91495ad_247e1bc9",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-21T14:24:55Z",
+      "side": 1,
+      "message": "nit: missing .\nComments should be sentences ending with proper punctuation.\nIf you feel like it you could also do this for the other comments missing punctuation.",
+      "revId": "dfa9ed8b1a9927d6083a11f1a2645ce33ffbd185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
