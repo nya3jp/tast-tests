@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32d3cec3_a6924e46",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19957,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-09-21T11:07:48Z",
+      "side": 1,
+      "message": "Marking as unresolved, so that it gets surfaced.",
+      "parentUuid": "702f9168_baefc27a",
+      "revId": "63572d4a17e7740ba4b3307d568f32db04d89110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "931f7213_2f30239c",
         "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
         "patchSetId": 1
