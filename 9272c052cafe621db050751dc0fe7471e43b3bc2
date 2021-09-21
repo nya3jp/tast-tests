@@ -51,6 +51,24 @@
       "parentUuid": "6ccc61e5_d0f66620",
       "revId": "9272c052cafe621db050751dc0fe7471e43b3bc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cba4afd_efc6d4c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-21T08:27:48Z",
+      "side": 1,
+      "message": "Seems it took a bit longer to revert the change (https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1250472) but now CLs can be submitted again.",
+      "parentUuid": "88dddd49_1aa8596a",
+      "revId": "9272c052cafe621db050751dc0fe7471e43b3bc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
