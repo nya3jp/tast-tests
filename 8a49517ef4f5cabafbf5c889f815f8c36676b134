@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a1a586c_50db9533",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1333018
+      },
+      "writtenOn": "2021-09-21T03:10:49Z",
+      "side": 1,
+      "message": "This function only looks at tconn, finder and extraOptions as args and ignores the rest. we ignore the expectedText string and ignoreCase book if extraOptions is non-empty. Maybe make a different function that does exactly what you want to test like \"waitForTextFieldToMatchOneOfFunc\" which takes in just the 3 arguments you use and leave this function as is.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "8a49517ef4f5cabafbf5c889f815f8c36676b134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
