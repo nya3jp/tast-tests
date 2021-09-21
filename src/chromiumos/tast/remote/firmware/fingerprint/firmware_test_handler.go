@@ -49,6 +49,15 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
+	// Close RPC connection when this function is going to return an error.
+	defer func() {
+		if initError != nil && cl != nil {
+			testing.ContextLog(ctx, "NewFirmwareTest failed, close RPC connection to release SSH session")
+			if err := cl.Close(ctx); err != nil {
+				testing.ContextLog(ctx, "Failed to close RPC connection")
+			}
+		}
+	}()
 
 	upstartService := platform.NewUpstartServiceClient(cl.Conn)
 
@@ -87,15 +96,16 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 	cleanupTime := timeForCleanup
 
 	if needsReboot {
-		// MakeRootfsWritable may reboot device, so close current connection for now
+		// MakeRootfsWritable may reboot device, so close current connection for now.
 		cl.Close(ctx)
+		cl = nil
 
-		// Rootfs must be writable in order to disable the upstart job
+		// Rootfs must be writable in order to disable the upstart job.
 		if err := sysutil.MakeRootfsWritable(ctx, d, hint); err != nil {
 			return nil, errors.Wrap(err, "failed to make rootfs writable")
 		}
 
-		// MakeRootfsWritable may reboot device, so we need to reconnect
+		// MakeRootfsWritable may reboot device, so we need to reconnect.
 		// TODO(b/187795767): Persistent gRPC connection across reboot
 		cl, err = rpc.Dial(ctx, d, hint, "cros")
 		if err != nil {
@@ -189,6 +199,10 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	testing.ContextLog(ctx, "Tearing down")
 	var firstErr error
 
+	// ReimageFPMCU may reboot device, so close current connection for now.
+	t.cl.Close(ctx)
+	t.cl = nil
+
 	if err := ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing); err != nil {
 		firstErr = err
 	}
@@ -206,7 +220,7 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 		t.dutfsClient = dutfs.NewClient(cl.Conn)
 
 		if t.needsRebootAfterFlashing {
-			// If biod upstart job disabled, re-enable it
+			// If biod upstart job disabled, re-enable it.
 			resp, err := t.upstartService.IsJobEnabled(ctx, &platform.IsJobEnabledRequest{JobName: biodUpstartJobName})
 			if err == nil && !resp.Enabled {
 				if _, err := t.upstartService.EnableJob(ctx, &platform.EnableJobRequest{JobName: biodUpstartJobName}); err != nil && firstErr == nil {
@@ -216,7 +230,7 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 				firstErr = err
 			}
 
-			// If FP updater disabled, re-enable it
+			// If FP updater disabled, re-enable it.
 			fpUpdaterEnabled, err := isFPUpdaterEnabled(ctx, t.dutfsClient)
 			if err == nil && !fpUpdaterEnabled {
 				if err := enableFPUpdater(ctx, t.dutfsClient); err != nil && firstErr == nil {
@@ -226,7 +240,7 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 				firstErr = err
 			}
 
-			// Delete temporary working directory and contents
+			// Delete temporary working directory and contents.
 			// If we rebooted, the directory may no longer exist.
 			tempDirExists, err := t.dutfsClient.Exists(ctx, t.dutTempDir)
 			if err == nil && tempDirExists {
@@ -241,13 +255,14 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 		if err := restoreDaemons(ctx, t.upstartService, t.daemonState); err != nil && firstErr == nil {
 			firstErr = err
 		}
+
+		if err := t.cl.Close(ctx); err != nil && firstErr == nil {
+			firstErr = err
+		}
+		t.cl = nil
 	}
 
 	t.servo.Close(ctx)
-
-	if err := t.cl.Close(ctx); err != nil && firstErr == nil {
-		firstErr = err
-	}
 
 	return firstErr
 }
@@ -299,7 +314,7 @@ func (t *FirmwareTest) FPBoard() FPBoardName {
 
 type daemonState struct {
 	name       string
-	wasRunning bool // true if daemon was originally running
+	wasRunning bool // True if daemon was originally running.
 }
 
 // stopDaemons stops the specified daemons and returns their original state.
