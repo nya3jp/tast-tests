@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64563f14_caead73e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-21T20:15:52Z",
+      "side": 1,
+      "message": "LGTM, thanks Katie!",
+      "revId": "766daae6c9c583f6b6070d5c6f3f73ed098405b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7af02bd_2e89b482",
@@ -48,6 +65,30 @@
       "writtenOn": "2021-09-20T20:21:46Z",
       "side": 1,
       "message": "are there better names for these pitch constants?",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "766daae6c9c583f6b6070d5c6f3f73ed098405b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f645c90_b768d2b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_rich_text_editing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-21T20:15:52Z",
+      "side": 1,
+      "message": "I think they look good. My only recommendation is change linkPitch -\u003e rolePitch, since that pitch should be used for all roles.",
+      "parentUuid": "d7af02bd_2e89b482",
       "range": {
         "startLine": 107,
         "startChar": 1,
