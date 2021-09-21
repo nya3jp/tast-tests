@@ -16,6 +16,23 @@
       "message": "yichenz: Can you help do a first pass? Thanks!",
       "revId": "d8fa5cc1170ae6e2749ace19c187fccbf6d3f32c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9908dba9_b803a3ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-21T21:44:50Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "d8fa5cc1170ae6e2749ace19c187fccbf6d3f32c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
