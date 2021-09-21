@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c2faf78_d080308c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-21T23:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "462f9c3c_3efd712f",
+      "range": {
+        "startLine": 30,
+        "startChar": 36,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "321402f5_a503a7b7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-21T12:32:14Z",
       "side": 1,
       "message": "It is nice to create a cleanup context for defer functions.",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c07e35b_f5bdf19d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-21T23:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "321402f5_a503a7b7",
       "range": {
         "startLine": 49,
         "startChar": 15,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea8c0b88_f1125b8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-21T23:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ed35347_691db56e",
+      "range": {
+        "startLine": 55,
+        "startChar": 32,
+        "endLine": 55,
+        "endChar": 36
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab06e146_4e609add",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-21T12:32:14Z",
       "side": 1,
       "message": "ac.Location waits for the node stabilized. So this is redundant.",
+      "range": {
+        "startLine": 73,
+        "startChar": 14,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8257f325_66fa9363",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-21T23:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab06e146_4e609add",
       "range": {
         "startLine": 73,
         "startChar": 14,
@@ -139,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5705c823_b7fbb2dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-21T23:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c282a051_e4a4da56",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 20
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a35fb6bb_8692ac8e",
@@ -162,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab7047e_ed980844",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-21T23:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a35fb6bb_8692ac8e",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 20
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c853966_48588b7d",
@@ -175,6 +319,30 @@
       "writtenOn": "2021-09-21T12:32:14Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 20
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fc89732_7b65c947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-21T23:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c853966_48588b7d",
       "range": {
         "startLine": 126,
         "startChar": 5,
