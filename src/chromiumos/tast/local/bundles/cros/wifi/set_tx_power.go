@@ -35,6 +35,21 @@ func SetTXPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run check_powerd_config: ", err)
 	}
 
+	// Check to see if this is a static device based on the configuration.
+	// If this is a static device, only test the supported mode.
+	staticMode := ""
+	cmd := testExec.CommandContext(ctx, "cros_config", "/", "power/wifi-transmit-power-mode-for-static-device")
+	if out, err := cmd.Output(); err == nil {
+		staticMode = string(out)
+		if len(staticMode) > 0 {
+			if staticMode != "tablet" && staticMode != "non-tablet" {
+				s.Fatalf("Invalid static mode: %s", staticMode)
+			}
+			s.Logf("Testing static mode: %s", staticMode)
+		}
+	}
+
+	// For both static and dynamic devices, attempt to set transmit power.
 	for _, tc := range []struct {
 		mode   string
 		domain string
@@ -50,8 +65,16 @@ func SetTXPower(ctx context.Context, s *testing.State) {
 		{"non-tablet", "rest-of-world", []string{"--notablet", "--domain=rest-of-world"}},
 		{"non-tablet", "none", []string{"--notablet", "--domain=none"}},
 	} {
-		if err := testexec.CommandContext(ctx, setTxPowerExe, tc.args...).Run(testexec.DumpLogOnError); err != nil {
+		// Dynamic devices support all modes, whereas static devices
+		// only support the specified mode.
+		supported := (len(staticMode) == 0) || (len(staticMode > 0) && tc.mode == staticMode)
+
+		// Supported modes must not fail, and unsupported modes must not succeed.
+		err := testexec.CommandContext(ctx, setTxPowerExe, tc.args...).Run(testexec.DumpLogOnError)
+		if supported && err != nil {
 			s.Errorf("Failed to set TX power for %s mode with reg domain %s: %v", tc.mode, tc.domain, err)
+		} else if !supported && err == nil {
+			s.Errorf("Succeeded setting unsupported TX power for %s mode with reg domain %s: %v", tc.mode, tc.domain, err)
 		}
 	}
 }
