@@ -13,17 +13,17 @@ import (
 	"chromiumos/tast/errors"
 )
 
-// Event contains the contents of one line from `mosys eventlog list`.
+// Event contains the contents of one line from `elogtool list`.
 type Event struct {
 	Timestamp time.Time
 	Message   string
 	Index     int
 }
 
-// EventlogList returns the result of `mosys eventlog list`.
+// EventlogList returns the result of `elogtool list`.
 // The returned events are sorted from oldest to newest.
 func (r *Reporter) EventlogList(ctx context.Context) ([]Event, error) {
-	output, err := r.CommandOutputLines(ctx, "mosys", "eventlog", "list")
+	output, err := r.CommandOutputLines(ctx, "elogtool", "list")
 	if err != nil {
 		return []Event{}, err
 	}
