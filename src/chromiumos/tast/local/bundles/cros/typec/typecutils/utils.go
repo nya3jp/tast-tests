@@ -184,6 +184,9 @@ func buildTestSettings() *enterprise_management.ChromeDeviceSettingsProto {
 		DevicePciPeripheralDataAccessEnabledV2: &enterprise_management.DevicePciPeripheralDataAccessEnabledProtoV2{
 			Enabled: &boolTrue,
 		},
+		DevicePciPeripheralDataAccessEnabled: &enterprise_management.DevicePciPeripheralDataAccessEnabledProto{
+			Enabled: &boolTrue,
+		},
 	}
 }
 
