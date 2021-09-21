@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "462f9c3c_3efd712f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-21T12:32:14Z",
+      "side": 1,
+      "message": "nit: remove the space.",
+      "range": {
+        "startLine": 30,
+        "startChar": 36,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "321402f5_a503a7b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-21T12:32:14Z",
+      "side": 1,
+      "message": "It is nice to create a cleanup context for defer functions.",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed35347_691db56e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-21T12:32:14Z",
+      "side": 1,
+      "message": "nit: do you want to include the err in the log as well?",
+      "range": {
+        "startLine": 55,
+        "startChar": 32,
+        "endLine": 55,
+        "endChar": 36
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab06e146_4e609add",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-21T12:32:14Z",
+      "side": 1,
+      "message": "ac.Location waits for the node stabilized. So this is redundant.",
+      "range": {
+        "startLine": 73,
+        "startChar": 14,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dda485b_b67c53e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-21T12:32:14Z",
+      "side": 1,
+      "message": "Optional: These class names used in this test is very simply and very likely to duplicate. It is highly recommended to use ancestor node to unique identify them.",
+      "range": {
+        "startLine": 92,
+        "startChar": 32,
+        "endLine": 92,
+        "endChar": 39
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c282a051_e4a4da56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-21T12:32:14Z",
+      "side": 1,
+      "message": "The default wait time is 15s. http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go?l\u003d59\n\nI suppose it is too long to wait for its happening.",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 103,
+        "endChar": 20
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a35fb6bb_8692ac8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-21T12:32:14Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 20
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c853966_48588b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/gestures_for_small_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-21T12:32:14Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 20
+      },
+      "revId": "f6b10025b891ec11c6adffdb1bf2bc81a76e049b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
