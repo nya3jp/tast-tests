@@ -217,14 +217,13 @@ func (c *PolicyService) StopChromeAndFakeDMS(ctx context.Context, req *empty.Emp
 			testing.ContextLogf(ctx, "Failed to close connection to extension %s", id)
 			lastErr = errors.Wrapf(err, "failed to close connection to extension %s", id)
 		}
+		delete(c.extensionConns, id)
 	}
 
-	if c.fakeDMS == nil {
-		return nil, errors.New("fake DMS server not started")
+	if c.fakeDMS != nil {
+		c.fakeDMS.Stop(ctx)
+		c.fakeDMS = nil
 	}
-
-	c.fakeDMS.Stop(ctx)
-	c.fakeDMS = nil
 
 	if c.fakeDMSRemoval {
 		if err := os.RemoveAll(c.fakeDMSDir); err != nil {
@@ -233,11 +232,13 @@ func (c *PolicyService) StopChromeAndFakeDMS(ctx context.Context, req *empty.Emp
 		}
 	}
 
-	if err := c.chrome.Close(ctx); err != nil {
-		testing.ContextLog(ctx, "Failed to close chrome: ", err)
-		lastErr = errors.Wrap(err, "failed to close chrome")
+	if c.chrome != nil {
+		if err := c.chrome.Close(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to close chrome: ", err)
+			lastErr = errors.Wrap(err, "failed to close chrome")
+		}
+		c.chrome = nil
 	}
-	c.chrome = nil
 
 	for _, extDir := range c.extensionDirs {
 		if err := os.RemoveAll(extDir); err != nil {
@@ -418,6 +419,85 @@ func (c *PolicyService) EvalExpressionInChromeURL(ctx context.Context, req *ppb.
 
 	if err := conn.WaitForExprFailOnErr(ctx, req.Expression); err != nil {
 		return nil, errors.Wrapf(err, "failed to evaluate expression on %s", req.Url)
+	}
+
+	return &empty.Empty{}, nil
+}
+
+func (c *PolicyService) StartChrome(ctx context.Context, req *ppb.StartChromeRequest) (*empty.Empty, error) {
+	testing.ContextLogf(ctx, "Starting Chrome with policy %s", string(req.PolicyJson))
+
+	if c.chrome != nil {
+		return nil, errors.New("Chrome is already started")
+	}
+
+	var opts []chrome.Option
+
+	if req.KeepEnrollment {
+		opts = append(opts, chrome.KeepEnrollment())
+	}
+
+	user := req.Username
+	if user == "" {
+		user = "tast-user@managedchrome.com"
+	}
+	opts = append(opts, chrome.FakeLogin(chrome.Creds{User: user, Pass: "test0000", GAIAID: "gaiaid"}))
+
+	if req.SkipLogin {
+		opts = append(opts, chrome.NoLogin())
+	} else if req.DeferLogin {
+		opts = append(opts, chrome.DeferLogin())
+	} else {
+		opts = append(opts, chrome.CustomLoginTimeout(chrome.LoginTimeout))
+	}
+
+	if c.fakeDMS != nil {
+		opts = append(opts, chrome.DMSPolicy(c.fakeDMS.URL))
+		if err := c.fakeDMS.WritePolicyBlobRaw(req.PolicyJson); err != nil {
+			return nil, errors.Wrap(err, "failed to write policy blob")
+		}
+	}
+	opts = append(opts, chrome.EnableLoginVerboseLogs())
+
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start Chrome")
+	}
+
+	c.chrome = cr
+
+	return &empty.Empty{}, nil
+}
+
+func (c *PolicyService) StopChrome(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	var lastErr error
+
+	for id, conn := range c.extensionConns {
+		if err := conn.Close(); err != nil {
+			testing.ContextLogf(ctx, "Failed to close connection to extension %s", id)
+			lastErr = errors.Wrapf(err, "failed to close connection to extension %s", id)
+		}
+		delete(c.extensionConns, id)
+	}
+
+	if c.chrome != nil {
+		if err := c.chrome.Close(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to close Chrome: ", err)
+			lastErr = errors.Wrap(err, "failed to close Chrome")
+		}
+		c.chrome = nil
+	}
+
+	return &empty.Empty{}, lastErr
+}
+
+func (c *PolicyService) ContinueLogin(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if c.chrome == nil {
+		return nil, errors.New("No active Chrome instance")
+	}
+
+	if err := c.chrome.ContinueLogin(ctx); err != nil {
+		return nil, errors.Wrap(err, "Chrome login failed")
 	}
 
 	return &empty.Empty{}, nil
