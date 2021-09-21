@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf64f75_97c5be11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-21T23:03:48Z",
+      "side": 1,
+      "message": "Craig has some changes in flight that will probably conflict with this: https://crrev.com/c/3093040. Do his changes address the same issue since they are adding a deferred call to Close()?",
+      "revId": "554b78cdb465f985909d95d7fe94d4d7e2bc0811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
