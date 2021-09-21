@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77da1095_56d4a750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-21T08:15:30Z",
+      "side": 1,
+      "message": "SmartAmpBootTimeCalibration is required by the both test params. Can it be moved to HardwareDeps?",
+      "revId": "368ee0f19d938249d6ce22a6a1ec9ca7240df962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
