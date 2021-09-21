@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98806c83_e7d69745",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-21T11:46:07Z",
+      "side": 1,
+      "message": "Added file authors to CC.\nI confirmed these functions are not referenced by any other code lines by code searching in chromium and chromeos-internal.",
+      "revId": "4eff957e6966193ba075acdb408570a45088b2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
