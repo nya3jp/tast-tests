@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d32a012b_0471f633",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-21T17:40:45Z",
+      "side": 1,
+      "message": "LGTM w/ nits",
+      "revId": "95449c228686f0e0276912e66499de72bb7ec43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de326589_c2e326a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_desks_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-21T17:40:45Z",
+      "side": 1,
+      "message": "nit: desks works correctly or something along those lines",
+      "range": {
+        "startLine": 27,
+        "startChar": 29,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "95449c228686f0e0276912e66499de72bb7ec43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1530630d_c189500a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_desks_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-21T17:40:45Z",
+      "side": 1,
+      "message": "do we need to wait until the app is launched just in case?\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/shelf.go;rcl\u003d0a1bb3dd931ad8349ef82a2476b3f1a34fae3498;l\u003d512",
+      "revId": "95449c228686f0e0276912e66499de72bb7ec43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd91dca_f96e6964",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_desks_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-21T17:40:45Z",
+      "side": 1,
+      "message": "I would renmae these to firstDeskMiniViewLoc. Its a bit long but the desk itself is a different concept and has a location of its own",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 13
+      },
+      "revId": "95449c228686f0e0276912e66499de72bb7ec43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "452cb444_bf040e89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_desks_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-21T17:40:45Z",
+      "side": 1,
+      "message": "This sounds a little strang if the error is the one returned on L130. Maybe something more generic like \"Failed to verify the desk of the app: \", err?",
+      "revId": "95449c228686f0e0276912e66499de72bb7ec43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2681dfa9_fa4b42eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_desks_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-21T17:40:45Z",
+      "side": 1,
+      "message": "nit: extra new line",
+      "revId": "95449c228686f0e0276912e66499de72bb7ec43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "890ca8fa_f9d737d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/virtual_desks_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-21T17:40:45Z",
+      "side": 1,
+      "message": "nit: Looks like this can go on the above line",
+      "revId": "95449c228686f0e0276912e66499de72bb7ec43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
