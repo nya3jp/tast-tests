@@ -87,6 +87,30 @@
       },
       "revId": "2409a01cb518996c4f33715ab3018c3ede710197",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81283df3_a8337dcf",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-21T17:20:41Z",
+      "side": 1,
+      "message": "Yep, I mocked that up in crrev.com/c/3158804. Sliding in the interface might alleviate some of the misuse concern.",
+      "parentUuid": "1bd2fbcf_15afa2a1",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 1
+      },
+      "revId": "2409a01cb518996c4f33715ab3018c3ede710197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
