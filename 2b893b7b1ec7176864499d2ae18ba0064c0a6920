@@ -33,6 +33,24 @@
       "message": "Nit: No Get required, just ReleaseURI",
       "revId": "2b893b7b1ec7176864499d2ae18ba0064c0a6920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "109ef019_59d0a2df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-09-21T02:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e8a2880_56dc5ace",
+      "revId": "2b893b7b1ec7176864499d2ae18ba0064c0a6920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
