@@ -34,6 +34,46 @@
       "parentUuid": "60fb2422_294d00bb",
       "revId": "4d909b35ccc187f693d86ede6ebc4dcdccb274aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df5a852_f462edd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-21T08:14:22Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "4d909b35ccc187f693d86ede6ebc4dcdccb274aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c973b30_1c90984f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-21T08:14:22Z",
+      "side": 1,
+      "message": "nit: you don\u0027t want wrap that err into \"Couldn\u0027t not get flash protect state\"?\n\nWill the error\u0027s message explain well what went wrong?",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 12
+      },
+      "revId": "4d909b35ccc187f693d86ede6ebc4dcdccb274aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
