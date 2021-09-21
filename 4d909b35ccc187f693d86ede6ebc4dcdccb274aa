@@ -16,6 +16,24 @@
       "message": "The final rebased patch will be almost identical.",
       "revId": "4d909b35ccc187f693d86ede6ebc4dcdccb274aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c086b628_36b508da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-21T04:38:13Z",
+      "side": 1,
+      "message": "Plus, it will include tests.",
+      "parentUuid": "60fb2422_294d00bb",
+      "revId": "4d909b35ccc187f693d86ede6ebc4dcdccb274aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
