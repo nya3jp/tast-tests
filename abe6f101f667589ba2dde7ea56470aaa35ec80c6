@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc8ab38f_17bd66de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-21T09:06:37Z",
+      "side": 1,
+      "message": "Sorry, maybe \"test result\" is not a good wording here, and \"measurement result\" or something is better. Same goes for my another comment.",
+      "parentUuid": "57c0dd84_20ac397c",
+      "revId": "abe6f101f667589ba2dde7ea56470aaa35ec80c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e86fa03_34f04bc7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
         "patchSetId": 20
