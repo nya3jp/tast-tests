@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67ac8ecb_e482053d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-09-21T18:10:12Z",
+      "side": 1,
+      "message": "Are you planning to add another check to assert failure in cases where stacicMode !\u003d tc.mode? Or did you decide against that?",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "revId": "940647448d4d296f5bc1776fea170e7d4ff53a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
