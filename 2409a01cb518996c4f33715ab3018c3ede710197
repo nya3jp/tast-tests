@@ -63,6 +63,30 @@
       },
       "revId": "2409a01cb518996c4f33715ab3018c3ede710197",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd2fbcf_15afa2a1",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-21T09:42:05Z",
+      "side": 1,
+      "message": "Ack. Theoretically we could rewrite all functions to take an interface covering DUT and RPCDUT, but it sounds too much.",
+      "parentUuid": "94c9bb84_a1a99236",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 1
+      },
+      "revId": "2409a01cb518996c4f33715ab3018c3ede710197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
