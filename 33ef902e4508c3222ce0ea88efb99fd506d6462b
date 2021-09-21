@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6556335_20c21412",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1170114
+      },
+      "writtenOn": "2021-09-21T18:11:59Z",
+      "side": 1,
+      "message": "LGTM - but add some explanatory comment about what the test is doing.",
+      "revId": "33ef902e4508c3222ce0ea88efb99fd506d6462b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa63d1de_c623d594",
@@ -72,6 +89,30 @@
       "side": 1,
       "message": "Yes they are two different buttons.\nFirst: http://screen/9hsyutr8vPRhw3n\nSecond: http://screen/C5hCeMkXzoGZZsk",
       "parentUuid": "fa63d1de_c623d594",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 0
+      },
+      "revId": "33ef902e4508c3222ce0ea88efb99fd506d6462b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c37914c6_d898193b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1170114
+      },
+      "writtenOn": "2021-09-21T18:11:59Z",
+      "side": 1,
+      "message": "Can you add a comment to explain that and just the flow more generally. It\u0027s hard to understand what the app is actually doing just from the 3 lines of code that describe the mouse.",
+      "parentUuid": "2d9a872d_76bd4e0d",
       "range": {
         "startLine": 237,
         "startChar": 0,
