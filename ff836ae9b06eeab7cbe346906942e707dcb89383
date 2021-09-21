@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5064da5_81ee9b53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-21T01:40:29Z",
+      "side": 1,
+      "message": "Tried changing checkVisibility func to global accessible func as CheckVisibility. repo upload . is failing and got the below tast-lint error, \n\nsrc/chromiumos/tast/local/bundles/cros/arc/resize_lock.go:782:6: Tast requires exactly one symbol (test function or service type) to be exported in an entry file; unexport func CheckVisibility if it is not one\n        src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go:24:2: import of chromiumos/tast/local/bundles/cros/arc is only allowed from chromiumos/tast/local/bundles/*/arc or its descendant\n        \nLet me know your suggestions.",
+      "parentUuid": "cff94fe5_8a443082",
+      "revId": "ff836ae9b06eeab7cbe346906942e707dcb89383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c43add74_12604f27",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resizelockhelper/resize_lock_helper.go",
         "patchSetId": 4
