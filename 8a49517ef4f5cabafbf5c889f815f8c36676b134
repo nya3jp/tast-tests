@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f2beac5_8e34fa9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-21T12:41:31Z",
+      "side": 1,
+      "message": "Please do not ignore error even if it is very unlikely to fail. For these cases, you can use panic to avoid prompting the error.\n\nhttps://gobyexample.com/panic",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 7
+      },
+      "revId": "8a49517ef4f5cabafbf5c889f815f8c36676b134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3724d056_f8a29007",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-21T12:41:31Z",
+      "side": 1,
+      "message": "Just curious that do you want to apply this timezone to the whole test? In this case, will we lose coverage on US timezone?",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 32
+      },
+      "revId": "8a49517ef4f5cabafbf5c889f815f8c36676b134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a1a586c_50db9533",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
         "patchSetId": 3
@@ -14,6 +60,30 @@
       "writtenOn": "2021-09-21T03:10:49Z",
       "side": 1,
       "message": "This function only looks at tconn, finder and extraOptions as args and ignores the rest. we ignore the expectedText string and ignoreCase book if extraOptions is non-empty. Maybe make a different function that does exactly what you want to test like \"waitForTextFieldToMatchOneOfFunc\" which takes in just the 3 arguments you use and leave this function as is.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "8a49517ef4f5cabafbf5c889f815f8c36676b134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c9c6753_f84db801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-21T12:41:31Z",
+      "side": 1,
+      "message": "My suggestion on this would be refactoring waitForFieldTextFunc to waitForFieldTextMatch using a regex. So it works for case sensitive, insensitive, options and any other potentials. WDYT",
+      "parentUuid": "5a1a586c_50db9533",
       "range": {
         "startLine": 82,
         "startChar": 0,
