@@ -87,6 +87,30 @@
       },
       "revId": "0c6319d81f8b9d25832232571d34c5859c56894e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2d04dbf_0f8219aa",
+        "filename": "src/chromiumos/tast/common/fixture/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-21T09:41:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a44d00a_0a271cd1",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 68
+      },
+      "revId": "0c6319d81f8b9d25832232571d34c5859c56894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
