@@ -33,6 +33,23 @@
       "message": "@Hanadasan friendly ping for this review and the other two when you get a moment.",
       "revId": "9ebce737c2a45a39a0fa8c789ebed4dc99a832c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "013bff75_a9b39ab9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-21T08:26:42Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "9ebce737c2a45a39a0fa8c789ebed4dc99a832c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
