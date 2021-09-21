@@ -49,6 +49,15 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
+	// Close RPC connection when this function is going to return an error.
+	defer func() {
+		if initError != nil && cl != nil {
+			testing.ContextLog(ctx, "NewFirmwareTest failed, close RPC connection to release SSH session")
+			if err := cl.Close(ctx); err != nil {
+				testing.ContextLog(ctx, "Failed to close RPC connection")
+			}
+		}
+	}()
 
 	upstartService := platform.NewUpstartServiceClient(cl.Conn)
 
@@ -89,6 +98,7 @@ func NewFirmwareTest(ctx context.Context, d *dut.DUT, servoSpec string, hint *te
 	if needsReboot {
 		// MakeRootfsWritable may reboot device, so close current connection for now
 		cl.Close(ctx)
+		cl = nil
 
 		// Rootfs must be writable in order to disable the upstart job
 		if err := sysutil.MakeRootfsWritable(ctx, d, hint); err != nil {
@@ -189,6 +199,10 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	testing.ContextLog(ctx, "Tearing down")
 	var firstErr error
 
+	// ReimageFPMCU may reboot device, so close current connection for now
+	t.cl.Close(ctx)
+	t.cl = nil
+
 	if err := ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing); err != nil {
 		firstErr = err
 	}
@@ -241,13 +255,13 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 		if err := restoreDaemons(ctx, t.upstartService, t.daemonState); err != nil && firstErr == nil {
 			firstErr = err
 		}
+
+		if err := t.cl.Close(ctx); err != nil && firstErr == nil {
+			firstErr = err
+		}
 	}
 
 	t.servo.Close(ctx)
-
-	if err := t.cl.Close(ctx); err != nil && firstErr == nil {
-		firstErr = err
-	}
 
 	return firstErr
 }
