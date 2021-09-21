@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/testing"
 )
 
@@ -18,7 +19,8 @@ func init() {
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr: []string{"group:mainline", "group:wificell", "wificell_func"},
+		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
+		SoftwareDeps: []string{"cros_config"},
 	})
 }
 
@@ -35,6 +37,17 @@ func SetTXPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run check_powerd_config: ", err)
 	}
 
+	// Check to see if this is a static device based on the configuration.
+	// If this is a static device, verify only the supported mode succeeds.
+	staticMode, err := crosconfig.Get(ctx, "/power", "wifi-transmit-power-mode-for-static-device")
+	if err == nil && len(staticMode) > 0 {
+		if staticMode != "tablet" && staticMode != "non-tablet" {
+			s.Fatalf("Invalid static mode: %s", staticMode)
+		}
+		s.Logf("Testing static mode: %s", staticMode)
+	}
+
+	// For both static and dynamic devices, attempt to set transmit power.
 	for _, tc := range []struct {
 		mode   string
 		domain string
@@ -50,8 +63,17 @@ func SetTXPower(ctx context.Context, s *testing.State) {
 		{"non-tablet", "rest-of-world", []string{"--notablet", "--domain=rest-of-world"}},
 		{"non-tablet", "none", []string{"--notablet", "--domain=none"}},
 	} {
-		if err := testexec.CommandContext(ctx, setTxPowerExe, tc.args...).Run(testexec.DumpLogOnError); err != nil {
+		// Dynamic devices support all modes, whereas static devices
+		// only support the specified mode (or no regulatory domain).
+		supported := (len(staticMode) == 0) || ((len(staticMode) != 0) && (tc.mode == staticMode)) || (tc.domain == "none")
+
+		// Supported modes must not fail, and unsupported modes must not succeed.
+		s.Logf("Testing mode: %s, domain: %s, staticMode: %s, supported: %t", tc.mode, tc.domain, staticMode, supported)
+		err := testexec.CommandContext(ctx, setTxPowerExe, tc.args...).Run(testexec.DumpLogOnError)
+		if supported && err != nil {
 			s.Errorf("Failed to set TX power for %s mode with reg domain %s: %v", tc.mode, tc.domain, err)
+		} else if !supported && err == nil {
+			s.Errorf("Succeeded setting unsupported TX power for %s mode with reg domain %s: %v", tc.mode, tc.domain, err)
 		}
 	}
 }
