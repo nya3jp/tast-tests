@@ -16,6 +16,23 @@
       "message": "Thanks Mohamed!! Do you have the new Tast-Review +1 powers as well? 😊",
       "revId": "0d2dc8bf95c1dc3be3970a34e9042ea1affa31ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73098f7e_9d90bd64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163674
+      },
+      "writtenOn": "2021-09-21T18:08:01Z",
+      "side": 1,
+      "message": "Ah whoops, sounds like we don\u0027t need tast-review +1 anymore -  I just need to +1 verify, and then I can +2 for commit queue - thanks!!",
+      "revId": "0d2dc8bf95c1dc3be3970a34e9042ea1affa31ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
