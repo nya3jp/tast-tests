@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5175752a_fe060790",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-21T08:47:20Z",
+      "side": 1,
+      "message": "LGTM % Tast reviews.\n",
+      "revId": "eed4c2f1a5571bc29baff4f6da4aeef6ced15cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faae806a_7d46c736",
@@ -71,6 +88,52 @@
         "startChar": 56,
         "endLine": 65,
         "endChar": 62
+      },
+      "revId": "eed4c2f1a5571bc29baff4f6da4aeef6ced15cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2143166_a8496063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-21T08:47:20Z",
+      "side": 1,
+      "message": "style: Start local variable names with a lower letter. Also, when assigning to a new variable, :\u003d is more popular.\n\n filledFolder :\u003d ...",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "eed4c2f1a5571bc29baff4f6da4aeef6ced15cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34f40be4_c4a6ee03",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-21T08:47:20Z",
+      "side": 1,
+      "message": "nit: Shorter-scoped variables are always better - let us make this :\u003d and remove the secondItem definition above since it\u0027s not at all used.",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 23
       },
       "revId": "eed4c2f1a5571bc29baff4f6da4aeef6ced15cca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
