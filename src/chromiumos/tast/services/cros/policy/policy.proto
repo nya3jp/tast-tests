@@ -16,6 +16,9 @@ service PolicyService {
   rpc UpdatePolicies(UpdatePoliciesRequest) returns (google.protobuf.Empty) {}
   rpc CheckChromeAndFakeDMS(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc StopChromeAndFakeDMS(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc StartChrome(StartChromeRequest) returns (google.protobuf.Empty) {}
+  rpc StopChrome(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc ContinueLogin(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
   rpc CreateFakeDMSDir(CreateFakeDMSDirRequest) returns (google.protobuf.Empty) {}
   rpc RemoveFakeDMSDir(RemoveFakeDMSDirRequest) returns (google.protobuf.Empty) {}
@@ -96,4 +99,12 @@ message VerifyVisibleNotificationRequest {
 message EvalExpressionInChromeUrlRequest {
   string url = 1;
   string expression = 2;
+}
+
+message StartChromeRequest {
+  bytes policy_json = 1;
+  string username = 2;
+  bool skip_login = 3;
+  bool keep_enrollment = 4;
+  bool defer_login = 5;
 }
