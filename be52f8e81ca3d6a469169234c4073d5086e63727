@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c546be7_9d9eefcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_hint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-21T20:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "235d0397_cebd0122",
+      "revId": "be52f8e81ca3d6a469169234c4073d5086e63727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e0b3995_f9186170",
@@ -82,6 +100,24 @@
       "writtenOn": "2021-09-20T01:16:29Z",
       "side": 1,
       "message": "In the case where ChromeVox is turned on, does it need to be turned off at the end of the test?  Will the next Chrome reset turn it off automatically?",
+      "revId": "be52f8e81ca3d6a469169234c4073d5086e63727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c2317ec_42e258e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_hint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-21T20:53:02Z",
+      "side": 1,
+      "message": "Yes, it appears that ChromeVox is automatically turned off when the device resets. I ran the tests in succession (the \"accept\" variant gets run first, followed by the \"dismiss\" variant) and they both pass locally. I can visually verify that ChromeVox is off when the \"dismiss\" variant of the test starts.",
+      "parentUuid": "4e0b3995_f9186170",
       "revId": "be52f8e81ca3d6a469169234c4073d5086e63727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
