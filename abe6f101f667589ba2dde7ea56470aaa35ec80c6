@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5701cf6e_a4072f63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-21T08:55:22Z",
+      "side": 1,
+      "message": "Thank you! I\u0027ve locally confirmed that both parameterized tests run successfully.",
+      "revId": "abe6f101f667589ba2dde7ea56470aaa35ec80c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57c0dd84_20ac397c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-21T08:55:22Z",
+      "side": 1,
+      "message": "optional: This log text is a little bit hard to understand. How about a more plain one like: Waiting for a text field for the test result to appear (in the app UI)?",
+      "revId": "abe6f101f667589ba2dde7ea56470aaa35ec80c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e86fa03_34f04bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-21T08:55:22Z",
+      "side": 1,
+      "message": "optional: This polling practically waits for a full-volume scan to be finished. How about something like: Waiting for the full-volume scan to be finished and the test result to appear in the app UI?",
+      "revId": "abe6f101f667589ba2dde7ea56470aaa35ec80c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
