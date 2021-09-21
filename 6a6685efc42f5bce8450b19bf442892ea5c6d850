@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd6d416a_e0736b13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-21T07:11:41Z",
+      "side": 1,
+      "message": "This comment explains why this is called at line 257 (the caller), but this does not give explanation about this function. Consider moving it to around line 257 instead.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 59
+      },
+      "revId": "6a6685efc42f5bce8450b19bf442892ea5c6d850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26203af4_31fb8038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-21T07:11:41Z",
+      "side": 1,
+      "message": "appear",
+      "range": {
+        "startLine": 180,
+        "startChar": 74,
+        "endLine": 180,
+        "endChar": 79
+      },
+      "revId": "6a6685efc42f5bce8450b19bf442892ea5c6d850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
