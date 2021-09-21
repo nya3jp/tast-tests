@@ -266,6 +266,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22d33636_1220cc8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-21T08:47:42Z",
+      "side": 1,
+      "message": "Tried deletion of all bearers, and waiting for different states not worked.\n\nFound that connect fails if a sleep/delay not given after disable modem, and this is with all qualcomm modems bug: https://buganizer.corp.google.com/u/0/issues/200644653. as this scenario might not be considered as realtime scenario, delay is needed till fix arrives.\n\non Fibocomm devices issue was with connect properties, now its working fine.\n\nEnabled state resulted as a consequence of retrying connect after failed attempt on  trogdor modem(no delay after disable) specific error, might not required to cover this scenario.",
+      "parentUuid": "569ef030_a793fe60",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1b95da1_5c0466cf",
