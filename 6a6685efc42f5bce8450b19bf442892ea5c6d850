@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51107870_4e94b8b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-21T07:21:37Z",
+      "side": 1,
+      "message": "New line.\n\u003e Wrap the body text to 72 characters so that git log looks nice.\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages\n  arc.MediaScanPerf is a performance test for Android\u0027s MediaProvider\u0027s\n  media scans on Chrome OS files. The .myfiles_vm (resp. .sdcard_vm)\n  parametrized test measures how long it takes to perform a full volume\n  scan on the MyFiles (resp. sdcard) volume in ARCVM.",
+      "range": {
+        "startLine": 10,
+        "startChar": 67,
+        "endLine": 10,
+        "endChar": 79
+      },
+      "revId": "6a6685efc42f5bce8450b19bf442892ea5c6d850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f75ddf_581bede0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-21T07:21:37Z",
+      "side": 1,
+      "message": "New line.",
+      "range": {
+        "startLine": 39,
+        "startChar": 69,
+        "endLine": 39,
+        "endChar": 74
+      },
+      "revId": "6a6685efc42f5bce8450b19bf442892ea5c6d850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cb2af4b_c570f90c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-21T07:21:37Z",
+      "side": 1,
+      "message": "New line.",
+      "range": {
+        "startLine": 40,
+        "startChar": 66,
+        "endLine": 40,
+        "endChar": 85
+      },
+      "revId": "6a6685efc42f5bce8450b19bf442892ea5c6d850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3050b68_549ce0f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-21T07:21:37Z",
+      "side": 1,
+      "message": "creates",
+      "range": {
+        "startLine": 93,
+        "startChar": 35,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "6a6685efc42f5bce8450b19bf442892ea5c6d850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd6d416a_e0736b13",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
         "patchSetId": 19
@@ -43,6 +135,69 @@
         "endLine": 180,
         "endChar": 79
       },
+      "revId": "6a6685efc42f5bce8450b19bf442892ea5c6d850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6068c15_1118837b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-21T07:21:37Z",
+      "side": 1,
+      "message": "the app / the apk / its (main) activity",
+      "range": {
+        "startLine": 204,
+        "startChar": 64,
+        "endLine": 204,
+        "endChar": 75
+      },
+      "revId": "6a6685efc42f5bce8450b19bf442892ea5c6d850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ff20672_bdcf9f25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-21T07:21:37Z",
+      "side": 1,
+      "message": "%v seems to be prefered over %q for file paths:\n\u003e When including a path, URL, or other easily-printable value in a log message or an error, omit leading colons or surrounding quotes: [...]\n\u003e Use quotes when including arbitrary data that may contain hard-to-print characters like spaces: [...]\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 244,
+        "startChar": 51,
+        "endLine": 244,
+        "endChar": 53
+      },
+      "revId": "6a6685efc42f5bce8450b19bf442892ea5c6d850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48206a97_fcd76d15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-09-21T07:21:37Z",
+      "side": 1,
+      "message": "Period.",
       "revId": "6a6685efc42f5bce8450b19bf442892ea5c6d850",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
