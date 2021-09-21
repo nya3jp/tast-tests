@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c79c45_73813b6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-21T12:47:54Z",
+      "side": 1,
+      "message": "Please do not ignore error here.",
+      "range": {
+        "startLine": 89,
+        "startChar": 17,
+        "endLine": 89,
+        "endChar": 20
+      },
+      "revId": "c8f3f72d033cac4bfead51ea08bd2d066d036b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea21eb81_60edc589",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-21T12:47:54Z",
+      "side": 1,
+      "message": "I could not find any step guarantees the device in clamshell mode. Am I missing anything?",
+      "range": {
+        "startLine": 112,
+        "startChar": 25,
+        "endLine": 112,
+        "endChar": 50
+      },
+      "revId": "c8f3f72d033cac4bfead51ea08bd2d066d036b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
