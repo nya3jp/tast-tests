@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e279f6_47fac8f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-21T10:06:21Z",
+      "side": 1,
+      "message": "Adapted policy_tast_struct_creator to create two structs for KerberosAccountsValue.",
+      "revId": "6cfe0a3837bccb457fea0b202d97d5b678ca7499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

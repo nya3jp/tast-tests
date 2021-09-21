@@ -51,6 +51,24 @@
       "message": "Does this work? How would an actual structure be chosen here?\n\n\nI\u0027d expect to unmarshall as KerberosAccountsValue.",
       "revId": "740032c2cc5215fda3f873a406542ae825ca9e5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37db6a37_b05cb73f",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 11797,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-21T10:06:21Z",
+      "side": 1,
+      "message": "No, I oversaw that one. Fixed it to unmarshal to KerberosAccountsValue as that makes most sense here.",
+      "parentUuid": "f517817f_16d1590e",
+      "revId": "740032c2cc5215fda3f873a406542ae825ca9e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

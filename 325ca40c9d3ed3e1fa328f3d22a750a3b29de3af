@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39a5853f_e70bded8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-21T10:06:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59b29a7b_49659bbd",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 77
+      },
+      "revId": "325ca40c9d3ed3e1fa328f3d22a750a3b29de3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "693df1c7_3e89c6de",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-20T13:50:53Z",
       "side": 1,
       "message": "Please, link this CL to a bug. https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1249427 seems like a good candidate.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "325ca40c9d3ed3e1fa328f3d22a750a3b29de3af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c482f24_2cd7dacc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-21T10:06:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "693df1c7_3e89c6de",
       "range": {
         "startLine": 13,
         "startChar": 0,
