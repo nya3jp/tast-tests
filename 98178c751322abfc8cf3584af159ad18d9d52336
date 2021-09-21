@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b35d56_9e0f72bd",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/android_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-21T22:26:54Z",
+      "side": 1,
+      "message": "will update these once the OTA team grants infinite password lifetime to the new account I made for multidevice",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "98178c751322abfc8cf3584af159ad18d9d52336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
