@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cff94fe5_8a443082",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-09-21T01:30:52Z",
+      "side": 1,
+      "message": "You can change resize_lock.go to avoid duplication if the functions in resize_lock.go lacks some flexibility.",
+      "revId": "ff836ae9b06eeab7cbe346906942e707dcb89383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c43add74_12604f27",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/resizelockhelper/resize_lock_helper.go",
         "patchSetId": 4
