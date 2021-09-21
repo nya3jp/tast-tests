@@ -122,6 +122,24 @@
       "parentUuid": "b9a1bce4_1b4ca38e",
       "revId": "2bd7756b79ae7271c5eb80feef8fa1410a48ccf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ecfa601_47e8069b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-21T18:26:14Z",
+      "side": 1,
+      "message": "By the way, the UnicornLogin test looks green now [1] but I\u0027ll still try to deflake it before promoting to CQ.\n\n[1] https://screenshot.googleplex.com/568yTvPkhGBLfDx.png",
+      "parentUuid": "88cdb031_d8dad8f1",
+      "revId": "2bd7756b79ae7271c5eb80feef8fa1410a48ccf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
