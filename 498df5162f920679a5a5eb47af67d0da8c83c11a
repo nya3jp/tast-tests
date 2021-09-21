@@ -33,6 +33,24 @@
       "message": "Nicole, PTAL on recent failures, whether they related to the test before submitting CL: https://cros-health-prod.googleplex.com/test/security.SharedFilesystemState",
       "revId": "498df5162f920679a5a5eb47af67d0da8c83c11a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49aba483_eca320c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-09-21T15:01:31Z",
+      "side": 1,
+      "message": "Yep, I\u0027m aware of those. They are a known issue with Chrome tast tests and not related to the change.",
+      "parentUuid": "1ac5caa1_06b4fc96",
+      "revId": "498df5162f920679a5a5eb47af67d0da8c83c11a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
