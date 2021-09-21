@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "233ba352_c44e4470",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-09-21T20:32:54Z",
+      "side": 1,
+      "message": "You need to Cq-Depend on the attr.go change\n\nerror(s) in registered tests: /build/drallion/tmp/portage/chromeos-base/tast-local-tests-cros-0.0.2-r7649/work/tast-local-tests-cros-0.0.2/src/chromiumos/tast/local/bundles/cros/graphics/igt.go:43: attribute \"graphics_igt\" is invalid in current groups; see chromiumos/tast/internal/testing/attr.go for the full list of valid attributes",
+      "revId": "25a18575aff8d9df8079f98d48fce0f0a53f3ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
