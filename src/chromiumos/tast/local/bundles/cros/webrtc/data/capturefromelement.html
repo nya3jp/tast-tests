@@ -4,7 +4,11 @@
   <canvas id='canvas' width=10 height=10></canvas>
   <video id='video' autoplay></video>
 <script src="third_party/blackframe.js"></script>
+<script type="module" src="third_party/three.js/three.module.js"></script>
 <script>
+
+const WIDTH = 320;
+const HEIGHT = 240;
 
 function nextFrame(t) {
   return new Promise(resolve => {
@@ -14,11 +18,11 @@ function nextFrame(t) {
   })
 }
 
-const GREEN = [0, 1, 0, 1];
-const BLUE = [0, 0, 1, 1];
+async function drawAlternatingColours(canvas, framerate) {
+  const GREEN = [0, 1, 0, 1];
+  const BLUE = [0, 0, 1, 1];
 
-async function draw(canvasId, framerate) {
-  var context = canvasId.getContext('webgl', {alpha : true});
+  var context = canvas.getContext('webgl', {alpha : true});
   context.clearColor(GREEN[0], GREEN[1], GREEN[2], GREEN[3]);
   context.clear(context.COLOR_BUFFER_BIT);
   await nextFrame(1000 / framerate);
@@ -26,18 +30,78 @@ async function draw(canvasId, framerate) {
   context.clear(context.COLOR_BUFFER_BIT);
   await nextFrame(1000 / framerate);
 
-  draw(canvasId, framerate);
+  drawAlternatingColours(canvas, framerate);
 }
 
-const WIDTH = 128;
-const HEIGHT = 128;
+async function renderGetUserMediaWithPerspective(canvas, width, height) {
+  const constraints = {
+    audio: false,
+    video: {
+      width: width,
+      height: height
+    }
+  };
+  const stream = await navigator.mediaDevices.getUserMedia(constraints);
+  video = document.createElement('video');
+  video.autoplay = true;
+  video.srcObject = stream;
+
+  let THREE = await import ('/third_party/three.js/three.module.js');
+
+  let camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  let scene = new THREE.Scene();
+
+  const texture = new THREE.VideoTexture(video);
+  texture.needsUpdate;
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  texture.format = THREE.RGBFormat;
+  texture.crossOrigin = 'anonymous';
+
+  const material = new THREE.MeshBasicMaterial({
+    map: texture
+  });
+
+  const geometry = new THREE.PlaneGeometry(width / height, 1);
+  geometry.rotateX(-Math.PI / 12); // pi / 12 = 15 deg.
+
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.position.z = -1;
+  scene.add(mesh);
+
+  let renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    canvas: canvas
+  });
+  renderer.setPixelRatio(width / height);
+  renderer.setSize(width, height);
+
+  animate(scene, camera, renderer);
+}
+
+function animate(scene, camera, renderer) {
+  renderer.render(scene, camera);
+  requestAnimationFrame((timestamp) => {
+    animate(scene, camera, renderer)
+  });
+}
+
+async function captureCanvasAndInspect1(validate) {
+  const canvas = document.getElementById('canvas');
+  const FRAMERATE = 24;
+  canvas.width = WIDTH;
+  canvas.height = HEIGHT;
+  await drawAlternatingColours(canvas, FRAMERATE);
+  await captureCanvasAndInspect(validate)
+}
+async function captureCanvasAndInspect2(validate) {
+  const canvas = document.getElementById('canvas');
+  await renderGetUserMediaWithPerspective(canvas, WIDTH, HEIGHT);
+  await captureCanvasAndInspect(validate)
+}
 
 async function captureCanvasAndInspect(validate) {
   const canvas = document.getElementById('canvas');
-  canvas.width = WIDTH;
-  canvas.height = HEIGHT;
-  const FRAMERATE = 24;
-  await draw(canvas, FRAMERATE);
 
   // Note that no parameters to captureStream() will force a new capture every
   // time |canvas| is modified.
