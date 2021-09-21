@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8023e992_5de342ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-09-21T00:13:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85c11086_7abda545",
+      "revId": "3f251dfda3464180b406772b3ef502634ccc5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4b0d308_f9f82f47",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-09-20T18:42:47Z",
       "side": 1,
       "message": "Add chromeos-sw-engprod@google.com as a contact.\n\nSee crrev.com/c/3169573 for context.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 10
+      },
+      "revId": "3f251dfda3464180b406772b3ef502634ccc5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb263057_47058572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-09-21T00:13:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4b0d308_f9f82f47",
       "range": {
         "startLine": 30,
         "startChar": 2,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2533227_25bccb29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-09-21T00:13:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a726de9a_d516b8dc",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 11
+      },
+      "revId": "3f251dfda3464180b406772b3ef502634ccc5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14a3c338_5c248563",
@@ -121,6 +187,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95373d5b_fde94acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-09-21T00:13:44Z",
+      "side": 1,
+      "message": "I think it depends on how people understand the |weekday| in the switch statement.\nIt\u0027s might be similar to how people understand the \u0027x\u0027 in 1-x\u003d2 and 2+x\u003d1?",
+      "parentUuid": "14a3c338_5c248563",
+      "range": {
+        "startLine": 78,
+        "startChar": 19,
+        "endLine": 78,
+        "endChar": 55
+      },
+      "revId": "3f251dfda3464180b406772b3ef502634ccc5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d220f8bb_db25175e",
@@ -134,6 +224,30 @@
       "writtenOn": "2021-09-20T14:39:14Z",
       "side": 1,
       "message": "No need for break statements in Go.\n\nhttps://tour.golang.org/flowcontrol/9",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 7
+      },
+      "revId": "3f251dfda3464180b406772b3ef502634ccc5b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d08be28_aaa73ee1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/daily_time_limit.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1403852
+      },
+      "writtenOn": "2021-09-21T00:13:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d220f8bb_db25175e",
       "range": {
         "startLine": 87,
         "startChar": 2,
