@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "583defa7_f373de54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-09-21T15:51:43Z",
+      "side": 1,
+      "message": "+tast-owners",
+      "revId": "da031d03a632d1260215aec5628c2db979e0a5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "678769ba_d6be8072",
@@ -96,6 +113,30 @@
       "side": 1,
       "message": "I see, that makes sense. In that case it makes sense to have a check before clicking it. One more thing to note is that ui.IsNodeFound doesn\u0027t do any waiting, so it may be more stable to use ui.WaitUntilExists",
       "parentUuid": "52e72753_00685ec6",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "da031d03a632d1260215aec5628c2db979e0a5be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c147199_6569d696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-09-21T15:51:43Z",
+      "side": 1,
+      "message": "I think waiting in the lockscreen.Lock should be enough (hopefully) :D",
+      "parentUuid": "8383b1c5_43e3e543",
       "range": {
         "startLine": 80,
         "startChar": 4,
