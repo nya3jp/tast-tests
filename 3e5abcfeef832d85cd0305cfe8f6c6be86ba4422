@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc8bb647_83711c7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-09-21T20:03:34Z",
+      "side": 1,
+      "message": "It turns out that setting an unsupported mode with no regulatory domain succeeds:\n\n  Error at set_tx_power.go:78: Succeeded setting unsupported TX power for tablet mode with reg domain none: \u003cnil\u003e\n\nI\u0027m going to see what the set_wifi_transmit_power is doing in this case -- if it\u0027s not doing the right thing (i.e., succeeding when using an unsupported table), I\u0027ll file a bug and convert this to a log + TODO.",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 113
+      },
+      "revId": "3e5abcfeef832d85cd0305cfe8f6c6be86ba4422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
