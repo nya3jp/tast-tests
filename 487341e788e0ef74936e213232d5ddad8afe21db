@@ -33,6 +33,24 @@
       "message": "super-nit: extraOptions",
       "revId": "487341e788e0ef74936e213232d5ddad8afe21db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1378c72b_2020b361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-09-21T00:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc116151_9d22b90e",
+      "revId": "487341e788e0ef74936e213232d5ddad8afe21db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
