@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1998ff9f_926fe424",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-21T15:49:39Z",
+      "side": 1,
+      "message": "Hi Aki, can you PTAL?",
+      "revId": "766daae6c9c583f6b6070d5c6f3f73ed098405b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7af02bd_2e89b482",
