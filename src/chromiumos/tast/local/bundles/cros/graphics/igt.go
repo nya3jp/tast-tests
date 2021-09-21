@@ -421,7 +421,7 @@ func init() {
 			},
 			Timeout: 5 * time.Minute,
 		}},
-		Attr:    []string{"group:graphics", "graphics_perbuild"},
+		Attr:    []string{"group:graphics", "graphics_perbuild", "graphics_igt"},
 		Fixture: "graphicsNoChrome",
 	})
 }
