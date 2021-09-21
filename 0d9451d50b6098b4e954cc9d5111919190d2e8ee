@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a60c93_5f753a8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-09-21T15:03:47Z",
+      "side": 1,
+      "message": "After talking to nya@, I\u0027ll stay an OWNER until outstanding reviews are wrapped up. This change now only modifies the individual test ownership.",
+      "revId": "0d9451d50b6098b4e954cc9d5111919190d2e8ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
