@@ -179,6 +179,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f17672b_39a5b284",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/mosys.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-21T02:19:06Z",
+      "side": 1,
+      "message": "disregard this comment... \" \u003c 3\" is correct.",
+      "parentUuid": "84358d09_f000b678",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 21
+      },
+      "revId": "7904fd926d6bd2a5ba4fe679ec49096d4b27ba3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "792afdc9_63ce7670",
