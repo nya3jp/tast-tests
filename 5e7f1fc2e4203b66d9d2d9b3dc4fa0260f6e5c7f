@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beba47ec_294bbcdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-21T20:30:32Z",
+      "side": 1,
+      "message": "Thanks Aki. Tast-owners, PTAL?",
+      "revId": "5e7f1fc2e4203b66d9d2d9b3dc4fa0260f6e5c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

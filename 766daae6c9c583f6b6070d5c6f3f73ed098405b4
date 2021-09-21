@@ -97,6 +97,30 @@
       },
       "revId": "766daae6c9c583f6b6070d5c6f3f73ed098405b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baff3bd1_e2e0b223",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_rich_text_editing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-09-21T20:30:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f645c90_b768d2b9",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "766daae6c9c583f6b6070d5c6f3f73ed098405b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
