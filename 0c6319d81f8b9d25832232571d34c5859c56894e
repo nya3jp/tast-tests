@@ -63,6 +63,30 @@
       },
       "revId": "0c6319d81f8b9d25832232571d34c5859c56894e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a44d00a_0a271cd1",
+        "filename": "src/chromiumos/tast/common/fixture/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-21T09:38:36Z",
+      "side": 1,
+      "message": "No, there\u0027s no doc.\n\nI\u0027m supportive of the idea to replace all fixture names with a non-string type. I welcome if you make a proposal :)",
+      "parentUuid": "f9a80130_a377f698",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 68
+      },
+      "revId": "0c6319d81f8b9d25832232571d34c5859c56894e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
