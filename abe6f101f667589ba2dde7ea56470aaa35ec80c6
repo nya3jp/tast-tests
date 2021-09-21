@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1669db47_e7abafa5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-09-21T09:33:19Z",
+      "side": 1,
+      "message": "Nice work! Thank you for the patience. I\u0027m adding tast owners for tast review since the remaining comments are only logs/comments-related.",
+      "revId": "abe6f101f667589ba2dde7ea56470aaa35ec80c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57c0dd84_20ac397c",
