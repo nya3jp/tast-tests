@@ -225,12 +225,7 @@ func launchChromeExtension(ctx context.Context, cr *chrome.Chrome, tconn *chrome
 	}
 	if !isInstalled {
 		testing.ContextLogf(ctx, "Chrome extension %s not exist, try to install", name)
-		app := cws.App{Name: name,
-			URL:          URL,
-			InstalledTxt: "Launch app",
-			AddTxt:       "Add to Chrome",
-			ConfirmTxt:   "Add app",
-		}
+		app := cws.App{Name: name, URL: URL}
 		if err := cws.InstallApp(ctx, cr, tconn, app); err != nil {
 			return errors.Wrapf(err, "failed to install %s", name)
 		}
