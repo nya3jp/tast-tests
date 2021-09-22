@@ -22,6 +22,30 @@
       },
       "revId": "54b0fbe22633643453c06a186fcaddb248d67782",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b7068b_a807875c",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-22T08:49:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "635c594e_1a8117b7",
+      "range": {
+        "startLine": 1432,
+        "startChar": 14,
+        "endLine": 1432,
+        "endChar": 49
+      },
+      "revId": "54b0fbe22633643453c06a186fcaddb248d67782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
