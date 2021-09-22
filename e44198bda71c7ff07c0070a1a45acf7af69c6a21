@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "294dbc60_8d45099f",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T18:54:29Z",
+      "side": 1,
+      "message": "huge nit (here and below)\n  sdcardVolume -\u003e sdCardVolume\n  \nit seems that in our Tast source we are using both versions \"sdcard\" vs \"sdCard\", but the correct one seems to be `sdCard` (and `SDCard` should you need it), since sdcard means \"secure digital\" \n  \n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92150f1a_95cc0bce",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
         "patchSetId": 21
