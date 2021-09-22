@@ -143,6 +143,17 @@ type Chrome struct {
 	loginPending bool // true if login is pending until ContinueLogin is called
 }
 
+// HasChrome is an interface for use with composable fixtures. It allows
+// retrieval of the underlying Chrome object.
+type HasChrome interface {
+	ChromeVal() *Chrome
+}
+
+// ChromeVal retrieves the underlying Chrome object.
+func (c *Chrome) ChromeVal() *Chrome {
+	return c
+}
+
 // Creds returns credentials used to log into a session.
 func (c *Chrome) Creds() Creds { return c.cfg.Creds() }
 
