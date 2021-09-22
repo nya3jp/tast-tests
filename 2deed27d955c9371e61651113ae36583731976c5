@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce2c27ef_8a63e1e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-22T08:09:15Z",
+      "side": 1,
+      "message": "Thanks for updating this! It looks much better now.",
+      "revId": "2deed27d955c9371e61651113ae36583731976c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b03b71e0_4b7daa62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-22T08:09:15Z",
+      "side": 1,
+      "message": "I don\u0027t think this is safe during iteration. Maybe clear out the entire array after the loop?",
+      "revId": "2deed27d955c9371e61651113ae36583731976c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87882419_ae7df168",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-22T08:09:15Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "2deed27d955c9371e61651113ae36583731976c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cb1e27a_a26b0bf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-22T08:09:15Z",
+      "side": 1,
+      "message": "nit: check before closing extensions that we have an actual Chrome instance.",
+      "revId": "2deed27d955c9371e61651113ae36583731976c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c29ff237_0ec752fa",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-22T08:09:15Z",
+      "side": 1,
+      "message": "nit: newline before or move them together with EnrollUsingChrome",
+      "revId": "2deed27d955c9371e61651113ae36583731976c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
