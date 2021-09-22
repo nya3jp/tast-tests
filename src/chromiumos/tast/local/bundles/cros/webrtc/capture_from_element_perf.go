@@ -27,7 +27,7 @@ func init() {
 		Fixture:      "chromeVideo",
 		Params: []testing.Param{{
 			Name: "canvas",
-			Val:  "canvas",
+			Val:  capturefromelement.UseGlClearColor,
 		}},
 		//TODO(b/199174572): add a test case for "video" capture.
 	})
@@ -36,7 +36,7 @@ func init() {
 // CaptureFromElementPerf collects perf metrics for the homonymous API.
 func CaptureFromElementPerf(ctx context.Context, s *testing.State) {
 	const measurementDuration = 25 * time.Second
-	if err := capturefromelement.RunCaptureStream(ctx, s, s.FixtValue().(*chrome.Chrome), measurementDuration); err != nil {
+	if err := capturefromelement.RunCaptureStream(ctx, s, s.FixtValue().(*chrome.Chrome), s.Param().(capturefromelement.CanvasSource), measurementDuration); err != nil {
 		s.Fatal("RunCaptureStream failed: ", err)
 	}
 }
