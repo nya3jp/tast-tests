@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "773461d2_18c0d409",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-22T01:52:19Z",
+      "side": 1,
+      "message": "Moved out of the functions. Thanks!",
+      "parentUuid": "ae1c2527_c82ebf48",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 525,
+        "endChar": 71
+      },
+      "revId": "e79b51d77309d6de74ddeba7c72ebc56c51a542d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "26d008c2_e331016f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
         "patchSetId": 5
