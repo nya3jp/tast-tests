@@ -810,33 +810,26 @@ func testDeviceMode(ctx context.Context, _ *arc.ARC, _ *chrome.Chrome, tconn *ch
 		// The system mode change may generate both mode change callback and workspace change callback.
 		var callbackmsg companionLibMessage
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			var tempMsg companionLibMessage
-			lines, err := getJSONTextViewContent(ctx, d)
+			const maxLastMessageCount = 4
+			messages, err := getJSONMessages(ctx, d)
 			if err != nil {
-				return errors.Wrap(err, "failed to get json text")
+				return err
 			}
-			if err := json.Unmarshal([]byte(lines[len(lines)-1]), &tempMsg); err != nil {
-				return errors.Wrap(err, "parse callback message failure")
+			if messages == nil {
+				return errors.New("failed to get JSON message")
 			}
-			// Waiting for new message coming.
-			if baseMessage.MessageID == tempMsg.MessageID {
-				return errors.New("still waiting the callback json message")
+			endIdx := len(messages) - maxLastMessageCount
+			if endIdx < 0 {
+				endIdx = 0
 			}
-			// If the latest message not the device change callback, check the message before that.
-			if tempMsg.Type == "callback" && tempMsg.DeviceModeMsg != nil {
-				callbackmsg = tempMsg
-			} else {
-				if len(lines) < 2 {
-					return errors.New("still waiting the callback json message")
-				}
-				if err := json.Unmarshal([]byte(lines[len(lines)-2]), &callbackmsg); err != nil {
-					return errors.Wrap(err, "parse callback message failure")
-				}
-				if callbackmsg.Type != "callback" || callbackmsg.DeviceModeMsg == nil {
-					return errors.New("error on callback message generation")
+			for i := len(messages) - 1; i >= endIdx; i-- {
+				tempMsg := messages[i]
+				if baseMessage.MessageID < tempMsg.MessageID && tempMsg.Type == "callback" && tempMsg.DeviceModeMsg != nil {
+					callbackmsg = tempMsg
+					return nil
 				}
 			}
-			return nil
+			return errors.New("failed to match new callback message")
 		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 			return errors.Wrap(err, "failed to get callback message of device mode changed")
 		}
@@ -1491,8 +1484,7 @@ func getJSONTextViewContent(ctx context.Context, d *ui.Device) ([]string, error)
 	return strings.Split(text, "\n"), nil
 }
 
-// getLastJSONMessage returns last JSON format output message of ChromeOS Companion Library Demo
-func getLastJSONMessage(ctx context.Context, d *ui.Device) (*companionLibMessage, error) {
+func getJSONMessages(ctx context.Context, d *ui.Device) ([]companionLibMessage, error) {
 	var lines []string
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
@@ -1505,11 +1497,25 @@ func getLastJSONMessage(ctx context.Context, d *ui.Device) (*companionLibMessage
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		return nil, errors.Wrap(err, "failed to get a new line in status text view")
 	}
-	var msg companionLibMessage
-	if err := json.Unmarshal([]byte(lines[len(lines)-1]), &msg); err != nil {
-		return nil, errors.Wrap(err, "parse JSON format message failure")
+	messages := make([]companionLibMessage, len(lines))
+	for idx, line := range lines {
+		if err := json.Unmarshal([]byte(line), &messages[idx]); err != nil {
+			return nil, errors.Wrap(err, "parse JSON format message failure")
+		}
 	}
-	return &msg, nil
+	return messages, nil
+}
+
+// getLastJSONMessage returns last JSON format output message of ChromeOS Companion Library Demo
+func getLastJSONMessage(ctx context.Context, d *ui.Device) (*companionLibMessage, error) {
+	messages, err := getJSONMessages(ctx, d)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get last JSON message")
+	}
+	if len(messages) == 0 {
+		return nil, nil
+	}
+	return &messages[len(messages)-1], nil
 }
 
 // setWallpaper setting given URL as ChromeOS wallpaper.
