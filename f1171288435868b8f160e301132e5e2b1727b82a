@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "725c1aac_8ad1c327",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-22T16:22:07Z",
+      "side": 1,
+      "message": "return nil, errors.Wrap(...)\n\nSame below for error cases.",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 22
+      },
+      "revId": "f1171288435868b8f160e301132e5e2b1727b82a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "415be089_0eb77aed",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-22T16:22:07Z",
+      "side": 1,
+      "message": "In this case, shall we \nreturn nil, errors.Error(\"failed to find an enabled profile\")",
+      "revId": "f1171288435868b8f160e301132e5e2b1727b82a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
