@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b0b6d5c_4580ddac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_record_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-22T06:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afd1c480_a38e2c1c",
+      "range": {
+        "startLine": 214,
+        "startChar": 18,
+        "endLine": 214,
+        "endChar": 44
+      },
+      "revId": "94487f53a8db517d24f1bf4f7c7c428c3bdbf47c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a033f03_baccc807",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-17T00:19:03Z",
       "side": 1,
       "message": "Return a function to restore EXPERT flag back to prevEnabled.\ni.e.\n```\nfunc (a *App) EnableExpertMode(ctx context.Context) (error, func(context.Context) error) {\n  prevEnabled, err :\u003d a.GetState(ctx, Expert)\n  // ...\n  return nil, func(ctx context.Context) {\n    curEnabled, err :\u003d a.GetState(ctx, Expert)\n    if curEnabled !\u003d prevEnabled {\n      // toggle again\n    }\n  }\n}\n\n// Call site\nerr, cleanupFunc :\u003d a.EnableExpertMode(ctx)\ndefer cleanupFunc(cleanupCtx)\n\n```",
+      "range": {
+        "startLine": 1356,
+        "startChar": 52,
+        "endLine": 1356,
+        "endChar": 57
+      },
+      "revId": "94487f53a8db517d24f1bf4f7c7c428c3bdbf47c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef83ea7_95224469",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-22T06:50:03Z",
+      "side": 1,
+      "message": "Hmm, I prefer not setting the expert mode to its previous state when cleaning up since it will make reader hard to know which state does an expert mode in after executing the cleanup function.\n\nIf we don\u0027t want to preserve the expert mode state between tests, maybe we can have another CL to disable expert mode in app.Close(). Therefore, it is clear that when an app is started, the expert mode is always off. WDYT?",
+      "parentUuid": "5a033f03_baccc807",
       "range": {
         "startLine": 1356,
         "startChar": 52,
