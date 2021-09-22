@@ -45,6 +45,8 @@ const (
 	largeFileCheckboxTimeout = 40 * time.Second
 	// nearbycommon.DetectionTimeout + additional test time needed for ARC setup.
 	baseArcTestTime = nearbycommon.DetectionTimeout + 2*time.Minute
+	// Buffer time to use for Extra Large file transfer timeout.
+	extraBufferTime = 12 * time.Minute
 )
 
 type arcNearbyShareParams struct {
@@ -152,11 +154,11 @@ func init() {
 				Val: arcNearbyShareParams{
 					TestData: nearbytestutils.TestData{
 						Filename:        checkBoxLargeFileID,
-						TransferTimeout: nearbycommon.ExtraLargeFileOnlineTransferTimeout,
-						TestTimeout:     baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout,
+						TransferTimeout: nearbycommon.ExtraLargeFileOnlineTransferTimeout + extraBufferTime,
+						TestTimeout:     baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + extraBufferTime,
 					},
 				},
-				Timeout: baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + largeFileCheckboxTimeout,
+				Timeout: baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + largeFileCheckboxTimeout + extraBufferTime,
 			},
 			{
 				Name:              "dataonline_noone_large_file_vm",
@@ -165,11 +167,11 @@ func init() {
 				Val: arcNearbyShareParams{
 					TestData: nearbytestutils.TestData{
 						Filename:        checkBoxLargeFileID,
-						TransferTimeout: nearbycommon.ExtraLargeFileOnlineTransferTimeout,
-						TestTimeout:     baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout,
+						TransferTimeout: nearbycommon.ExtraLargeFileOnlineTransferTimeout + extraBufferTime,
+						TestTimeout:     baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + extraBufferTime,
 					},
 				},
-				Timeout: baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + largeFileCheckboxTimeout,
+				Timeout: baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + largeFileCheckboxTimeout + extraBufferTime,
 			},
 			{
 				Name:              "dataonline_noone_multiple_files",
@@ -413,9 +415,10 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 			}
 			if !shareCancelled {
 				cancel := nodewith.Name("Cancel").Role(role.Button)
+				close := nodewith.Name("Close").Role(role.Button).ClassName("action-button")
 				if err := uiauto.Combine("find and click cancel button",
-					nativeui.WithTimeout(5*time.Second).WaitUntilExists(cancel),
-					nativeui.LeftClick(cancel),
+					nativeui.IfSuccessThen(nativeui.WithTimeout(5*time.Second).WaitUntilExists(cancel), nativeui.LeftClick(cancel)),
+					nativeui.IfSuccessThen(nativeui.WithTimeout(5*time.Second).WaitUntilExists(close), nativeui.LeftClick(close)),
 				)(ctx); err != nil {
 					s.Error("Failed to click the 'Cancel' button: ", err)
 				}
