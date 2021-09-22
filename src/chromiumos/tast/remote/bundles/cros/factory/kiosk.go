@@ -19,8 +19,6 @@ import (
 const (
 	testPageTitle = "CrOS Factory"
 	testPageType  = "page"
-
-	testUITimeout = 30 * time.Second
 )
 
 func init() {
@@ -37,11 +35,13 @@ func init() {
 }
 
 func Kiosk(ctx context.Context, s *testing.State) {
-	testUICtx, cancel := context.WithTimeout(ctx, testUITimeout)
-	defer cancel()
 	// Wait factory test UI show up
-	if err := testing.Poll(testUICtx, func(ctx context.Context) error {
-		debugEntries, err := getDebugEntries(ctx, s.DUT().Conn())
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		debugResponse, err := getDebugResponse(ctx, s.DUT().Conn())
+		if err != nil {
+			return errors.Wrap(err, "failed to connect to debugging port")
+		}
+		debugEntries, err := getDebugEntries(ctx, debugResponse)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
@@ -49,21 +49,21 @@ func Kiosk(ctx context.Context, s *testing.State) {
 			return errors.New("factory test UI page not ready")
 		}
 		return nil
-	}, nil); err != nil {
+	}, &testing.PollOptions{Interval: time.Second}); err != nil {
 		s.Fatal("Device not showing factory test UI: ", err)
 	}
 }
 
-func getDebugEntries(ctx context.Context, conn *ssh.Conn) ([]*debugEntry, error) {
+func getDebugResponse(ctx context.Context, conn *ssh.Conn) ([]byte, error) {
 	probeDebugPortCmd := conn.CommandContext(ctx, "curl", "localhost:9222/json/list")
-	probeResponse, err := probeDebugPortCmd.Output()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to debugging port")
-	}
-	responseReader := bytes.NewReader(probeResponse)
+	return probeDebugPortCmd.Output()
+}
+
+func getDebugEntries(ctx context.Context, debugResponse []byte) ([]*debugEntry, error) {
+	responseReader := bytes.NewReader(debugResponse)
 	decoder := json.NewDecoder(responseReader)
 	var debugEntries []*debugEntry
-	if decoder.Decode(&debugEntries); err != nil {
+	if err := decoder.Decode(&debugEntries); err != nil {
 		return nil, errors.Wrap(err, "failed to parse probe response")
 	}
 	return debugEntries, nil
