@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0d8a6c2_c365f2a8",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-09-22T08:09:28Z",
+      "side": 1,
+      "message": "What do you think about moving this into a function, e.g. ensureBiosEnabled()?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "5bd3b072fbc33b485dc6f0aece29cf78a4ef104b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9aa7a1d3_ec63800a",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
         "patchSetId": 1
