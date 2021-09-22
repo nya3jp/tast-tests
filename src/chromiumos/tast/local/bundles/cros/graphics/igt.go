@@ -51,6 +51,12 @@ func init() {
 		},
 		SoftwareDeps: []string{"drm_atomic", "igt", "no_qemu"},
 		Params: []testing.Param{{
+			Name: "template",
+			Val: igtTest{
+				exe: "template",
+			},
+			Timeout: 1 * time.Minute,
+		}, {
 			Name: "drm_import_export",
 			Val: igtTest{
 				exe: "drm_import_export",
