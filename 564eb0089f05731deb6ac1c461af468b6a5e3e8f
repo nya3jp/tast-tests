@@ -16,6 +16,23 @@
       "message": "Rebased because failure was fixed recently.",
       "revId": "564eb0089f05731deb6ac1c461af468b6a5e3e8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e26eefc_b17925e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445173
+      },
+      "writtenOn": "2021-09-22T15:53:19Z",
+      "side": 1,
+      "message": "I see what the failure is here. For arm64-generic, arc.Supported() is false, so no ARC mounts are added to the list, but because vm_concierge is started up no matter what (whether ARC is supported or not) the /run/arcvm mount shows up. Will add the /run/arcvm mount to the baseline list.",
+      "revId": "564eb0089f05731deb6ac1c461af468b6a5e3e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
