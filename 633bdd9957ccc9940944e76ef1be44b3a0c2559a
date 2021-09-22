@@ -16,6 +16,29 @@
       "message": "pwang@ PTAL -- refactoring CL\n\nOthers FYI",
       "revId": "633bdd9957ccc9940944e76ef1be44b3a0c2559a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41cf0c53_9f506c90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/capturefromelement/capture_from_element.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-22T01:29:31Z",
+      "side": 1,
+      "message": "This will set CanvasSource to 1 which is a little bit unintuitive. \nHow about having another const block to reset iota to 0?\n\nconst (\n    htmlFile \u003d \n)\n\nconst (\n    UseGLClearColor ...\n)",
+      "range": {
+        "startLine": 32,
+        "startChar": 32,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "633bdd9957ccc9940944e76ef1be44b3a0c2559a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
