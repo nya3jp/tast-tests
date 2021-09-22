@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/dlc"
 	"chromiumos/tast/testing"
 )
@@ -24,7 +25,7 @@ const (
 //
 //	testing.AddTest(&testing.Test{
 //		...
-//		SoftwareDeps: []string{"vm_host", "dlc"},
+//		SoftwareDeps: []string{"vm_host", "dlc", "chrome"},
 //		Fixture: "vmDLC",
 //	})
 //
@@ -38,6 +39,7 @@ func init() {
 			"woodychow@google.com",
 			"crosvm-core@google.com",
 		},
+		Vars:            []string{"ui.signinProfileTestExtensionManifestKey"},
 		Impl:            &dlcFixture{},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    1 * time.Second,
@@ -46,6 +48,7 @@ func init() {
 }
 
 type dlcFixture struct {
+	cr *chrome.Chrome
 }
 
 // The FixtData object is made available to users of this fixture via:
@@ -60,6 +63,26 @@ type FixtData struct {
 }
 
 func (f *dlcFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	// NoLogin is used to land in signin screen.
+	cr, err := chrome.New(
+		ctx,
+		chrome.NoLogin(),
+		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+	)
+	if err != nil {
+		s.Fatal("Chrome startup failed: ", err)
+	}
+
+	// Skip OOBE before Login screen.
+	oobeConn, err := cr.WaitForOOBEConnection(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect OOBE connection: ", err)
+	}
+	if err := oobeConn.Close(); err != nil {
+		s.Fatal("Failed to close OOBE connection: ", err)
+	}
+	f.cr = cr
+
 	if err := dlc.Install(ctx, terminaDLCID, "" /*omahaURL*/); err != nil {
 		s.Fatal("Failed to install DLC: ", err)
 	}
@@ -87,9 +110,20 @@ func (f *dlcFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	if err := dlc.Purge(ctx, terminaDLCID); err != nil {
 		s.Fatal("Purge failed: ", err)
 	}
+
+	if err := f.cr.Close(ctx); err != nil {
+		s.Log("Failed to close Chrome connection: ", err)
+	}
+	f.cr = nil
 }
 
 func (f *dlcFixture) Reset(ctx context.Context) error {
+	if err := f.cr.Responded(ctx); err != nil {
+		return errors.Wrap(err, "existing Chrome connection is unusable")
+	}
+	if err := f.cr.ResetState(ctx); err != nil {
+		return errors.Wrap(err, "failed resetting existing Chrome session")
+	}
 	if err := dlc.Install(ctx, terminaDLCID, "" /*omahaURL*/); err != nil {
 		return errors.Wrap(err, "failed to reinstall dlc")
 	}
