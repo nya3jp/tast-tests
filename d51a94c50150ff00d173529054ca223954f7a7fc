@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28dea489_b5dff03a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_mode.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-22T19:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8369176_1e5dd1e0",
+      "range": {
+        "startLine": 113,
+        "startChar": 23,
+        "endLine": 113,
+        "endChar": 41
+      },
+      "revId": "d51a94c50150ff00d173529054ca223954f7a7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba4f269a_d7fe756f",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a92248_a2c20609",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fixture.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-22T19:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba4f269a_d7fe756f",
+      "revId": "d51a94c50150ff00d173529054ca223954f7a7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93a7f038_eb8535aa",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-09-22T18:06:31Z",
       "side": 1,
       "message": "Looking at firmware_DevBootUSB and the other tests that use usb dev mode. They all reboot to dev, and then reboot to dev-usb. Here, I think we need to do PowerStateRec if the previous mode wasn\u0027t dev already.",
+      "range": {
+        "startLine": 218,
+        "startChar": 39,
+        "endLine": 218,
+        "endChar": 57
+      },
+      "revId": "d51a94c50150ff00d173529054ca223954f7a7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c8e5bce_2aab77b2",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-22T19:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93a7f038_eb8535aa",
       "range": {
         "startLine": 218,
         "startChar": 39,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89c217ef_c4c6d860",
+        "filename": "src/chromiumos/tast/remote/firmware/fixture/fixture.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-22T19:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dde1bc62_0ef5f375",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "d51a94c50150ff00d173529054ca223954f7a7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "461b8354_e6fb0066",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-09-22T18:06:31Z",
       "side": 1,
       "message": "Change to ForcesDevMode: false,",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 87
+      },
+      "revId": "d51a94c50150ff00d173529054ca223954f7a7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e24ba1d_71aea36f",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-22T19:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "461b8354_e6fb0066",
       "range": {
         "startLine": 113,
         "startChar": 3,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3598f253_917e4ca0",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-22T19:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "732c077c_66964a1f",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 104
+      },
+      "revId": "d51a94c50150ff00d173529054ca223954f7a7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc7d6e3d_0cbae611",
@@ -146,6 +284,30 @@
       "writtenOn": "2021-09-22T18:06:31Z",
       "side": 1,
       "message": "Update for dev usb here.",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "d51a94c50150ff00d173529054ca223954f7a7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fbb0101_6a27cc46",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-22T19:25:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc7d6e3d_0cbae611",
       "range": {
         "startLine": 145,
         "startChar": 1,
