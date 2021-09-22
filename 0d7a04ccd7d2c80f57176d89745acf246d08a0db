@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ef166bd_ac63b586",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-22T21:21:35Z",
+      "side": 1,
+      "message": "Please add this here, since I moved it in the cl you rebased to.\n```\n// Reconnect to the DUT.\nif err :\u003d h.WaitConnect(ctx); err !\u003d nil {\n    return errors.Wrap(err, \"failed to reconnect to DUT\")\n}\n```",
+      "revId": "0d7a04ccd7d2c80f57176d89745acf246d08a0db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
