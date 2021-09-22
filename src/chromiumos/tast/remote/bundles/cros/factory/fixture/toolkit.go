@@ -9,7 +9,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
@@ -26,7 +25,7 @@ const (
 	toolkitEnabledPath = "/usr/local/factory/enabled"
 	// reboot takes 30 seconds to pass the boot option selection in developer
 	// mode, plus enough time as buffer to wait for the system and networking to be ready
-	rebootTimeout = 1 * time.Minute
+	rebootTimeout = 3 * time.Minute
 )
 
 func init() {
@@ -35,8 +34,8 @@ func init() {
 		Desc:            "Fixture for ensuring toolkit is installed before test and uninstalled after test",
 		Contacts:        []string{"lschyi@google.com", "chromeos-factory-eng@google.com"},
 		Impl:            &ensureToolkitFixt{},
-		SetUpTimeout:    rebootTimeout,
-		TearDownTimeout: rebootTimeout,
+		SetUpTimeout:    rebootTimeout + time.Minute, // reboot and do toolkit installation
+		TearDownTimeout: rebootTimeout + time.Minute, // reboot and do toolkit uninstallation
 	})
 }
 
@@ -52,7 +51,7 @@ func (e *ensureToolkitFixt) SetUp(ctx context.Context, s *testing.FixtState) int
 		s.Fatal("Install fail: ", err)
 	}
 	s.Logf("Installed factory toolkit with version: %s", ver)
-	if err := rebootDeviceToReady(ctx, s.DUT()); err != nil {
+	if err := s.DUT().Reboot(ctx); err != nil {
 		s.Fatal("Reboot device fail: ", err)
 	}
 	s.Log("Device rebooted successfully")
@@ -65,7 +64,7 @@ func (e *ensureToolkitFixt) TearDown(ctx context.Context, s *testing.FixtState) 
 	if err := removeEnabledCmd.Run(ssh.DumpLogOnError); err != nil {
 		s.Fatal("Disable toolkit fail: ", err)
 	}
-	if err := rebootDeviceToReady(ctx, dut); err != nil {
+	if err := dut.Reboot(ctx); err != nil {
 		s.Fatal("Reboot device fail: ", err)
 	}
 	uninstallCmd := dut.Conn().CommandContext(ctx, "factory_uninstall", "--yes")
@@ -98,16 +97,4 @@ func installFactoryToolKitFromToolkitInstaller(ctx context.Context, installerPat
 	}
 	version = strings.TrimSpace(string(versionByte))
 	return version, nil
-}
-
-func rebootDeviceToReady(ctx context.Context, dut *dut.DUT) error {
-	err := dut.Reboot(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to reboot device")
-	}
-	err = dut.WaitConnect(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to reconnect to device")
-	}
-	return nil
 }
