@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78c7a19e_918248a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-09-22T21:53:04Z",
+      "side": 1,
+      "message": "Tests with the same fixture will reuse the same session, so without creating a new fixture I don\u0027t think there is a way to ensure the launcher state starts with 100 apps.\n\nAlso, from what I can tell, the only two tests that move apps into a folder that use the 100 apps fixture is CreateAndFillFolder and RemoveAppsFromFolder, the rest are performance related. If we wanted to ensure that enough apps exist, maybe we could create a new fixture that installs more apps to begin with, maybe install200apps? This change could also be done when expanding these tests to cover both clamshell and tablet mode.",
+      "parentUuid": "00ce8e51_06a1ef50",
+      "revId": "eed4c2f1a5571bc29baff4f6da4aeef6ced15cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57e9a7ee_a5869984",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
         "patchSetId": 3
@@ -83,6 +101,30 @@
       "writtenOn": "2021-09-20T21:37:45Z",
       "side": 1,
       "message": "Maybe set the name to the full test name?",
+      "range": {
+        "startLine": 65,
+        "startChar": 56,
+        "endLine": 65,
+        "endChar": 62
+      },
+      "revId": "eed4c2f1a5571bc29baff4f6da4aeef6ced15cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4269aa99_54c6ba2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-09-22T21:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57e9a7ee_a5869984",
       "range": {
         "startLine": 65,
         "startChar": 56,
@@ -116,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51473e08_cbe031be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-09-22T21:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2143166_a8496063",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "eed4c2f1a5571bc29baff4f6da4aeef6ced15cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34f40be4_c4a6ee03",
@@ -129,6 +195,30 @@
       "writtenOn": "2021-09-21T08:47:20Z",
       "side": 1,
       "message": "nit: Shorter-scoped variables are always better - let us make this :\u003d and remove the secondItem definition above since it\u0027s not at all used.",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 23
+      },
+      "revId": "eed4c2f1a5571bc29baff4f6da4aeef6ced15cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8363587_2bf2f389",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-09-22T21:53:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34f40be4_c4a6ee03",
       "range": {
         "startLine": 205,
         "startChar": 1,
