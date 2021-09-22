@@ -30,6 +30,13 @@ func init() {
 		Timeout:  2 * time.Minute,
 		Params: []testing.Param{
 			{
+				Name: "apm",
+				Val: crasBenchParameters{
+					BenchmarkFilter: "BM_Apm",
+					MetricFps:       true,
+				},
+			},
+			{
 				Name: "dsp",
 				Val: crasBenchParameters{
 					BenchmarkFilter: "BM_Dsp",
