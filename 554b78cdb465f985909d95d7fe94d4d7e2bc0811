@@ -16,6 +16,24 @@
       "message": "Craig has some changes in flight that will probably conflict with this: https://crrev.com/c/3093040. Do his changes address the same issue since they are adding a deferred call to Close()?",
       "revId": "554b78cdb465f985909d95d7fe94d4d7e2bc0811",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a42820e_6f081472",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-09-22T07:10:02Z",
+      "side": 1,
+      "message": "Yes, you are right. It should also help on other problems with managing session in FpTpmSeed, FpUpdater, FpRDP0 and InitializeKnownState().\n\nI\u0027ll let this CL to be merged. This way I will get information if problem described in b/197498410 is solved, also when Craig\u0027s changes will be merged, we will know if there are some regressions. Sorry for the merge conflict!",
+      "parentUuid": "fbf64f75_97c5be11",
+      "revId": "554b78cdb465f985909d95d7fe94d4d7e2bc0811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
