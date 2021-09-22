@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61fdbc1b_87b7bc7a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-22T13:13:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48f1a0e3_e66838b6",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 4
+      },
+      "revId": "d7351f997b14877adfcec46796bdd3aa569438fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff3c593a_4c36c833",
