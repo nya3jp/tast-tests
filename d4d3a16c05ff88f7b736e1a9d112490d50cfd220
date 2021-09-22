@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "450ac8e4_19593618",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/andreiboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-22T18:43:56Z",
+      "side": 1,
+      "message": "errors should be lowercase",
+      "range": {
+        "startLine": 64,
+        "startChar": 32,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "d4d3a16c05ff88f7b736e1a9d112490d50cfd220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04fa9d24_a9c111cc",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/andreiboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-22T18:43:56Z",
+      "side": 1,
+      "message": "lowercase",
+      "range": {
+        "startLine": 79,
+        "startChar": 27,
+        "endLine": 79,
+        "endChar": 33
+      },
+      "revId": "d4d3a16c05ff88f7b736e1a9d112490d50cfd220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a9193f6_84c532e8",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/andreiboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-22T18:43:56Z",
+      "side": 1,
+      "message": "lowercase",
+      "range": {
+        "startLine": 87,
+        "startChar": 33,
+        "endLine": 87,
+        "endChar": 37
+      },
+      "revId": "d4d3a16c05ff88f7b736e1a9d112490d50cfd220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0235d8a_a519bf16",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/andreiboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-22T18:43:56Z",
+      "side": 1,
+      "message": "More typically this would be: failed to find match",
+      "range": {
+        "startLine": 97,
+        "startChar": 25,
+        "endLine": 97,
+        "endChar": 45
+      },
+      "revId": "d4d3a16c05ff88f7b736e1a9d112490d50cfd220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a74407_27d05b27",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/andreiboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-22T18:43:56Z",
+      "side": 1,
+      "message": "Lowercase",
+      "range": {
+        "startLine": 112,
+        "startChar": 24,
+        "endLine": 112,
+        "endChar": 27
+      },
+      "revId": "d4d3a16c05ff88f7b736e1a9d112490d50cfd220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1482352c_ce553d5e",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/andreiboard_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-22T18:43:56Z",
+      "side": 1,
+      "message": "t.Fatalf should be Uppercased. Yes, it is confusing. Log, Fatal, Error, etc are uppercase with no trailing period, and errors are lowercase.",
+      "range": {
+        "startLine": 39,
+        "startChar": 14,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "d4d3a16c05ff88f7b736e1a9d112490d50cfd220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbf7f89c_db90a6c7",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/andreiboard_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-22T18:43:56Z",
+      "side": 1,
+      "message": "lowercase",
+      "range": {
+        "startLine": 87,
+        "startChar": 24,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "d4d3a16c05ff88f7b736e1a9d112490d50cfd220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5cd2d67_5a20eb91",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/andreiboard_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-22T18:43:56Z",
+      "side": 1,
+      "message": "no period, that applies to all the t.Log statements below also.",
+      "range": {
+        "startLine": 89,
+        "startChar": 41,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "d4d3a16c05ff88f7b736e1a9d112490d50cfd220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "307a6a40_57b2bee6",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/andreiboard_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-22T18:43:56Z",
+      "side": 1,
+      "message": "in",
+      "range": {
+        "startLine": 114,
+        "startChar": 44,
+        "endLine": 114,
+        "endChar": 46
+      },
+      "revId": "d4d3a16c05ff88f7b736e1a9d112490d50cfd220",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
