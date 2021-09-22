@@ -16,6 +16,75 @@
       "message": "yichenz: Thanks for the fast review!\n\nhidehiko, alvinjia: Could you help review this patch? THanks!",
       "revId": "95bde1602c833194729cc024f9b4b53cb712ca93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97916d15_4127fd38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-22T02:12:49Z",
+      "side": 1,
+      "message": "could you document what is this for, too?\nAlso, could you add comments why this is checked with \"max value\" rather than comparing the equality?",
+      "range": {
+        "startLine": 45,
+        "startChar": 82,
+        "endLine": 45,
+        "endChar": 98
+      },
+      "revId": "95bde1602c833194729cc024f9b4b53cb712ca93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c5b1e89_bfa3e5c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-22T02:12:49Z",
+      "side": 1,
+      "message": "style: go often avoids common getter prefixes, such as \"get\", \"has\", \"is\" etc.\n\nfunc overviewItemsInfo(...)",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "95bde1602c833194729cc024f9b4b53cb712ca93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90e575f4_f3321269",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-22T02:12:49Z",
+      "side": 1,
+      "message": "this part looks out of scope of the getter?\nHow about splitting this function into two, getter and verifier? (I think the check at L143, L186 should be a part of that verifier, too).\n\nOr, if you prefer, you may want to keep mixing both like the current implementation, but repurpose this function as just verifying overview items, instead, i.e. not returning items, and rename the function.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 30
+      },
+      "revId": "95bde1602c833194729cc024f9b4b53cb712ca93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
