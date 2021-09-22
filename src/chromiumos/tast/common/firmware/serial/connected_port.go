@@ -18,6 +18,7 @@ type ConnectedPort struct {
 }
 
 // Read reads bytes into provided buffer, returns number of bytes read.
+// Bytes already written to the port shall be moved into buf, up to its size.
 // In blocking mode (port opened without ReadTimeout), it blocks until at least
 // one byte is read.  In non-blocking mode, it may return an error with zero
 // bytes read if ReadTimeout is exceeded, however this is not guaranteed on all
