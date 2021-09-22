@@ -163,6 +163,30 @@
       },
       "revId": "5bd3b072fbc33b485dc6f0aece29cf78a4ef104b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a351e59a_6009798f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-09-22T09:05:02Z",
+      "side": 1,
+      "message": "AFAIK when I press ctrl-c tast exits immediately, no functions are called. It doesn\u0027t even close SSH connection correctly. This is expected behaviour https://github.com/golang/go/issues/38261 unless some magic mechanisms are implemented.\n\nNow, I think we should focus on proper error handling, so we are not leaving biod (and fp_updater) disabled. Also, manual test termination can introduce many more problems which we are not aware. Another problem is that sometimes /mnt/stateful_partition/biod.conf (to disable biod, biod.conf is copied from /etc/init to /mnt/stateful_partition) is missing (not sure when it happens, just found that I was not able to find biod.conf).\n\nI\u0027m not going to merge this. It would be good if pressing ctrl-c cancels context, so we can exit gracefully.",
+      "parentUuid": "53948582_505bbd02",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 3
+      },
+      "revId": "5bd3b072fbc33b485dc6f0aece29cf78a4ef104b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
