@@ -17,8 +17,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
@@ -172,14 +172,14 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			// Drag from the bottom to the top; this should expand the app-list to
 			// fullscreen.
-			if err := mouse.Drag(ctx, tconn, bottom, top, time.Second); err != nil {
+			if err := mouse.Drag(tconn, bottom, top, time.Second)(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag from the bottom to top")
 			}
 			if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
 				return errors.Wrap(err, "failed to switch the state to 'FullscreenAllApps'")
 			}
 			// Drag from the top to the bottom; this should close the app-list.
-			if err := mouse.Drag(ctx, tconn, top, bottom, time.Second); err != nil {
+			if err := mouse.Drag(tconn, top, bottom, time.Second)(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag from the top to bottom")
 			}
 			if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {

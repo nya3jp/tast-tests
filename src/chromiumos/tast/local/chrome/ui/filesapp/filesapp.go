@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -735,7 +735,7 @@ func (f *FilesApp) DragAndDropFile(ctx context.Context, fileName string, dropPoi
 		return errors.Wrap(err, "failed waiting for drag and drop file selection")
 	}
 
-	if err := mouse.Drag(ctx, f.tconn, srcPoint, dropPoint, time.Second); err != nil {
+	if err := mouse.Drag(f.tconn, srcPoint, dropPoint, time.Second)(ctx); err != nil {
 		return errors.Wrap(err, "failed mouse drag")
 	}
 
