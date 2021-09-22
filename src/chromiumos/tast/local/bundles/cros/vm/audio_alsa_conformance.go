@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/vm/audioutils"
@@ -30,7 +31,7 @@ func init() {
 		Func:         AudioAlsaConformance,
 		Desc:         "Tests different audio devices in crosvm with alsa conformance test",
 		Contacts:     []string{"woodychow@google.com", "paulhsia@google.com", "chromeos-audio-bugs@google.com", "crosvm-core@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{runAlsaConformanceTest},
 		Timeout:      8 * time.Minute,
 		SoftwareDeps: []string{"vm_host", "dlc"},
@@ -49,10 +50,10 @@ func init() {
 	})
 }
 
-func parseResults(ctx context.Context, path string) (bool, string, error) {
+func parseResults(ctx context.Context, path string) (int, int, error) {
 	buf, err := ioutil.ReadFile(path)
 	if err != nil {
-		return false, "", errors.Wrapf(err, "failed to read result file %s", path)
+		return 0, 0, errors.Wrapf(err, "failed to read result file %s", path)
 	}
 
 	var results struct {
@@ -61,11 +62,10 @@ func parseResults(ctx context.Context, path string) (bool, string, error) {
 	}
 
 	if err := json.Unmarshal(buf, &results); err != nil {
-		return false, "", errors.Wrapf(err, "failed to parse json file %s", path)
+		return 0, 0, errors.Wrapf(err, "failed to parse json file %s", path)
 	}
 
-	success := results.Fail == 0
-	return success, fmt.Sprintf("%d passed, %d failed", results.Pass, results.Fail), nil
+	return results.Pass, results.Fail, nil
 }
 
 func AudioAlsaConformance(ctx context.Context, s *testing.State) {
@@ -97,19 +97,47 @@ func AudioAlsaConformance(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run crosvm: ", err)
 	}
 
-	playbackSuccess, playbackStr, err := parseResults(ctx, playbackResultPath)
+	playbackPass, playbackFail, err := parseResults(ctx, playbackResultPath)
 	if err != nil {
 		s.Fatal("Failed to parse playback results: ", err)
 	}
-	captureSuccess, captureStr, err := parseResults(ctx, captureResultPath)
+	capturePass, captureFail, err := parseResults(ctx, captureResultPath)
 	if err != nil {
 		s.Fatal("Failed to parse capture results: ", err)
 	}
 
-	combinedStr := fmt.Sprintf("Playback: %s. Capture: %s", playbackStr, captureStr)
-	if !playbackSuccess || !captureSuccess {
-		s.Fatal("Test failed. " + combinedStr)
-	}
-	s.Log(combinedStr)
+	s.Logf("Playback: %d passed, %d failed", playbackPass, playbackFail)
+	s.Logf("Capture: %d passed, %d failed", capturePass, captureFail)
 
+	perfValues := perf.NewValues()
+	defer func() {
+		if err := perfValues.Save(s.OutDir()); err != nil {
+			s.Error("Cannot save perf data: ", err)
+		}
+	}()
+
+	perfValues.Set(
+		perf.Metric{
+			Name:      "playback_pass",
+			Unit:      "n",
+			Direction: perf.BiggerIsBetter,
+		}, float64(playbackPass))
+	perfValues.Set(
+		perf.Metric{
+			Name:      "playback_fail",
+			Unit:      "n",
+			Direction: perf.SmallerIsBetter,
+		}, float64(playbackFail))
+	perfValues.Set(
+		perf.Metric{
+			Name:      "capture_pass",
+			Unit:      "n",
+			Direction: perf.BiggerIsBetter,
+		}, float64(capturePass))
+	perfValues.Set(
+		perf.Metric{
+			Name:      "capture_fail",
+			Unit:      "n",
+			Direction: perf.SmallerIsBetter,
+		}, float64(captureFail))
 }
