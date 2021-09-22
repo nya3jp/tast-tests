@@ -447,6 +447,7 @@ func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, 
 	}
 
 	// Check all other standard FPMCU state.
+	testing.ContextLog(ctx, "Checking other FPMCU state")
 	if err := CheckValidFlashState(ctx, d, fpBoard, buildFWFile); err != nil {
 		testing.ContextLogf(ctx, "%v. Reflashing FP firmware", err)
 		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
@@ -476,7 +477,7 @@ func CheckValidFlashState(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoard
 	// Similar to bio_fw_updater, check is the active FW copy is RW. If it isn't
 	// that might mean that there is a firmware issue.
 	if err := CheckRunningFirmwareCopy(ctx, d.DUT(), ImageTypeRW); err != nil {
-		return errors.Wrapf(err, "FPMCU is not in RW (error: %v)", err)
+		return errors.Wrap(err, "FPMCU is not in RW")
 	}
 
 	// Check that no tests enabled anti-rollback and that entropy has been added
