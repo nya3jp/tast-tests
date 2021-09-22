@@ -176,7 +176,15 @@ func (tab *chromeTab) clickAnchor(ctx context.Context, timeout time.Duration, tc
 	}
 
 	if err := webutil.WaitForQuiescence(ctx, tab.conn, timeout); err != nil {
-		return errors.Wrapf(err, "failed to wait for tab quiescence before clicking anchor within %v", timeout)
+		// It has been seen that content sites such as ESPN sometimes can take minutes to reach
+		// quiescence on DUTs. When this occurred, it can be seen from screenshots that the UI has
+		// actually loaded but background tasks prevented the site to reach quiescence. Therefore,
+		// logic is added here to check whether the site has loaded. If the site has loaded, i.e.,
+		// the site readyState is not "loading", no error will be returned here.
+		if err := tab.conn.WaitForExprFailOnErrWithTimeout(ctx, `document.readyState === "interactive" || document.readyState === "complete"`, 3*time.Second); err != nil {
+			return errors.Wrapf(err, "failed to wait for tab to load within %v before clicking anchor", timeout)
+		}
+		testing.ContextLogf(ctx, "%s could not reach quiescence within %v, but document state has passed loading", tab.url, timeout)
 	}
 	pattern := tab.pageInfo.contentPatterns[pn]
 	testing.ContextLogf(ctx, "Click link and navigate from %q to %q", tab.pageInfo.contentPatterns[p], pattern)
