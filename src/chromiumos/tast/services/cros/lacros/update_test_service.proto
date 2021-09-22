@@ -73,6 +73,7 @@ message GetBrowserVersionResponse {
 }
 
 // UpdateTestService verifies Lacros autoupdate scenarios for remote tests.
+// Note that this service is primarily used to check Lacros updates on a DUT, but not perform any actual updates.
 // Each API should be able to be run in no particular order.
 service UpdateTestService {
   // VerifyUpdate sets a DUT with given contexts and checks if the
