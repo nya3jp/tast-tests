@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f95379a4_7f1cb0b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-22T00:58:18Z",
+      "side": 1,
+      "message": "andrescj@ PTAL at the JS code (or the whole thing, but the saucy part is there).\n\nOthers FYI\n\n",
+      "revId": "dcaa92467f1bd2f43931ce1ef45e3a04c5ee9111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
