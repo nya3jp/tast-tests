@@ -28,13 +28,12 @@ func init() {
 			"akihiroota@chromium.org",      // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		Params: []testing.Param{{
-			Name:      "accept_dialog",
-			Val:       true,
-			ExtraAttr: []string{"informational"},
+			Name: "accept_dialog",
+			Val:  true,
 		}, {
 			Name: "dismiss_dialog",
 			Val:  false,
