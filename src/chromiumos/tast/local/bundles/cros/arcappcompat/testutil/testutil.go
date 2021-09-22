@@ -63,11 +63,11 @@ var ClamshellCommonTests = []TestCase{
 	// TODO: Remove the commented testcases once the first batch of testcases are stablized.
 	{Name: "Clamshell: Orientation", Fn: OrientationSize},
 	{Name: "Clamshell: Touchscreen Scroll", Fn: TouchScreenScroll},
-	//{Name: "Clamshell: Mouse click", Fn: MouseClick},
-	//{Name: "Clamshell: Mouse Scroll", Fn: MouseScrollAction},
+	{Name: "Clamshell: Mouse click", Fn: MouseClick},
+	{Name: "Clamshell: Mouse Scroll", Fn: MouseScrollAction},
 	{Name: "Clamshell: Physical Keyboard", Fn: TouchAndTextInputs},
-	//{Name: "Clamshell: Keyboard Critical Path", Fn: KeyboardNavigations},
-	//{Name: "Clamshell: Special keys: ESC key", Fn: EscKey},
+	{Name: "Clamshell: Keyboard Critical Path", Fn: KeyboardNavigations},
+	{Name: "Clamshell: Special keys: ESC key", Fn: EscKey},
 	// Commented Clamshell: Largescreen Layout testcase since it is handled by Resize lock feature in ARC-VM.
 	//{Name: "Clamshell: Largescreen Layout", Fn: Largescreenlayout},
 	{Name: "Clamshell: Fullscreen app", Fn: ClamshellFullscreenApp},
@@ -81,9 +81,9 @@ var ClamshellCommonTests = []TestCase{
 var TouchviewCommonTests = []TestCase{
 	// TODO: Remove the commented testcases once the first batch of testcases are stablized.
 	{Name: "Touchview: Rotate", Fn: TouchviewRotate},
-	//{Name: "Touchview: Splitscreen", Fn: SplitScreen},
-	//{Name: "Touchview: Touchscreen Scroll", Fn: TouchScreenScroll},
-	//{Name: "Touchview: Virtual Keyboard", Fn: TouchAndTextInputs},
+	{Name: "Touchview: Splitscreen", Fn: SplitScreen},
+	{Name: "Touchview: Touchscreen Scroll", Fn: TouchScreenScroll},
+	{Name: "Touchview: Virtual Keyboard", Fn: TouchAndTextInputs},
 	{Name: "Touchview: Largescreen Layout", Fn: Largescreenlayout},
 	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
