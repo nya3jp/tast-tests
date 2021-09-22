@@ -39,6 +39,30 @@
       },
       "revId": "633bdd9957ccc9940944e76ef1be44b3a0c2559a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd85fa4d_f2a0395c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/capturefromelement/capture_from_element.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-09-22T01:34:12Z",
+      "side": 1,
+      "message": "Oh, please ignore my previous comment about start from 1. \nHowever, I still think another block is helpful for readability.",
+      "parentUuid": "41cf0c53_9f506c90",
+      "range": {
+        "startLine": 32,
+        "startChar": 32,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "633bdd9957ccc9940944e76ef1be44b3a0c2559a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
