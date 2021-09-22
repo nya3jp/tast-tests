@@ -16,6 +16,24 @@
       "message": "Failed CQ:\n\n```\ntast-remote-tests-cros-0.0.2-r7739:  * Building \"chromiumos/tast/remote/bundles/cros:/usr/libexec/tast/bundles/remote/cros\"\ntast-remote-tests-cros-0.0.2-r7739: src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go:14:2: cannot find package \"chromiumos/tast/remote/servo\" in any of:\ntast-remote-tests-cros-0.0.2-r7739: \t/usr/lib/go/src/chromiumos/tast/remote/servo (from $GOROOT)\ntast-remote-tests-cros-0.0.2-r7739: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7739/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/servo (from $GOPATH)\ntast-remote-tests-cros-0.0.2-r7739: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7739/work/tast-remote-tests-cros-0.0.2/tast-base/src/chromiumos/tast/remote/servo\ntast-remote-tests-cros-0.0.2-r7739: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7739/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/firmware/data/fw-testing-configs/src/chromiumos/tast/remote/servo\ntast-remote-tests-cros-0.0.2-r7739: \t/usr/lib/gopath/src/chromiumos/tast/remote/servo\ntast-remote-tests-cros-0.0.2-r7739:  * ERROR: chromeos-base/tast-remote-tests-cros-0.0.2-r7739::chromiumos failed (compile phase):\n\n```",
       "revId": "915ada235551d39c292b095a08ae761440e3c836",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e627cd23_91c42cb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-22T19:27:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74ed7fc6_2ef0c27a",
+      "revId": "915ada235551d39c292b095a08ae761440e3c836",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
