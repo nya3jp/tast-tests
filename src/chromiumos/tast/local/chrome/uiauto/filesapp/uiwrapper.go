@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/testing"
 )
 
@@ -101,4 +102,24 @@ func (f *FilesApp) LeftClickUntil(finder *nodewith.Finder, condition func(contex
 // FocusAndWait calls ui.FocusAndWait scoping the finder to the Files App.
 func (f *FilesApp) FocusAndWait(finder *nodewith.Finder) uiauto.Action {
 	return f.ui.FocusAndWait(finder.FinalAncestor(WindowFinder))
+}
+
+// EnsureFocused calls ui.FocusAndWait if the target node is not focused.
+func (f *FilesApp) EnsureFocused(finder *nodewith.Finder) uiauto.Action {
+	return func(ctx context.Context) error {
+		node := finder.FinalAncestor(WindowFinder)
+		info, err := f.ui.Info(ctx, node)
+		if err != nil {
+			return err
+		}
+		if info.State[state.Focused] {
+			return nil
+		}
+
+		if err = f.ui.FocusAndWait(node)(ctx); err != nil {
+			// There are chances that the focus event does not occur but the node is already focused.
+			return f.ui.WaitUntilExists(node.Focused())(ctx)
+		}
+		return nil
+	}
 }
