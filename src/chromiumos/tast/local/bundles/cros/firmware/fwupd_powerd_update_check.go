@@ -7,6 +7,7 @@ package firmware
 import (
 	"context"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"regexp"
 	"time"
@@ -84,6 +85,7 @@ func FwupdPowerdUpdateCheck(ctx context.Context, s *testing.State) {
 
 	// This command runs an update on a fake device to see how fwupd behaves.
 	upd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", uri)
+	upd.Env = append(os.Environ(), "CACHE_DIRECTORY=/var/cache/fwupd")
 	output, err := upd.Output(testexec.DumpLogOnError)
 	if err == nil && discharge {
 		s.Errorf("%s succeeded erroneously: %v", shutil.EscapeSlice(upd.Args), err)
