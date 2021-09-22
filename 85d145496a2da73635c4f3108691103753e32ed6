@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf5808f_ba4be99d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-22T07:35:23Z",
+      "side": 1,
+      "message": "Thank you for helping with the review on my first Tast change. The feedbacks are really helpful. I\u0027ve upload a new patchset to address the review comments. PTAL. Thank you! @Dean, @Victor, @Pavol",
+      "revId": "85d145496a2da73635c4f3108691103753e32ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

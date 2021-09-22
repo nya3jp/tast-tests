@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "058d6ee5_6fe138a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-22T07:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc0cfaf7_b45ddfe2",
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60f1ade4_876de5d5",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "853b144c_d90fb3e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-22T07:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60f1ade4_876de5d5",
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58843f05_2de6bb81",
@@ -82,6 +118,24 @@
       "writtenOn": "2021-09-14T14:41:31Z",
       "side": 1,
       "message": "Can you also add yourself as a contact?",
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "283a2dae_a132b80f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-22T07:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58843f05_2de6bb81",
       "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +186,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f16bac8_867aca1f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-22T07:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e16f1add_454026d4",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 51
+      },
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f9363a6_a4571f84",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-22T07:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bcc40b6_c08b1c86",
+      "range": {
+        "startLine": 218,
+        "startChar": 10,
+        "endLine": 218,
+        "endChar": 23
+      },
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e214aac_b2a080ba",
@@ -145,6 +247,30 @@
       "writtenOn": "2021-09-14T17:15:35Z",
       "side": 1,
       "message": "Chrome",
+      "range": {
+        "startLine": 269,
+        "startChar": 36,
+        "endLine": 269,
+        "endChar": 42
+      },
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62ed1bbb_68a16d91",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-22T07:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e214aac_b2a080ba",
       "range": {
         "startLine": 269,
         "startChar": 36,
@@ -185,6 +311,48 @@
       "writtenOn": "2021-09-15T10:55:34Z",
       "side": 1,
       "message": "Hmmm why would we even stop chrome?\n\nI think the test could continue just signing in ? (assuming that before this line chrome is on the sign-in screen)",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 73
+      },
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eefa821a_49fa09bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-22T07:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e0b83b_70259907",
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd70152b_c73f35cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-22T07:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "019c37c4_e3a3c519",
       "range": {
         "startLine": 280,
         "startChar": 0,
@@ -362,6 +530,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "319948c1_f40613fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-22T07:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd64b318_d4a5ba77",
+      "range": {
+        "startLine": 308,
+        "startChar": 10,
+        "endLine": 308,
+        "endChar": 23
+      },
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea60601a_3c719687",
@@ -393,6 +585,24 @@
       "side": 1,
       "message": "What does it mean if guid is empty here?",
       "parentUuid": "ea60601a_3c719687",
+      "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfa8c5d4_9a4bc173",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-22T07:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9306e8c8_d32d9abf",
       "revId": "fd4e80fd90baa50508460e696a839dca61bf855b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
