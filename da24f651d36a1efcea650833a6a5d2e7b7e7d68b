@@ -16,6 +16,52 @@
       "message": "Friendly review ping.",
       "revId": "da24f651d36a1efcea650833a6a5d2e7b7e7d68b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aa8091c_12d87678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T17:33:02Z",
+      "side": 1,
+      "message": "returning an error might imply that it had problems executing the command.\n\nPrefer to use crosconfig.IsNotFound(err) and check error.\n\nUse this as a guide:\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/camera/privacy_switch.go;l\u003d66",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "da24f651d36a1efcea650833a6a5d2e7b7e7d68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f411920_59a86a97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T17:33:02Z",
+      "side": 1,
+      "message": "nit: just to make it easier to read, it seems that it should be safe to remove some parenthesis. e.g:\n\n  supported :\u003d len(staticMode) \u003d\u003d 0 || (len(staticMode) !\u003d 0 \u0026\u0026 tc.mode \u003d\u003d staticMode) || tc.domain \u003d\u003d \"none\"\n\n\nhttps://golang.org/ref/spec#Operators",
+      "range": {
+        "startLine": 68,
+        "startChar": 14,
+        "endLine": 68,
+        "endChar": 117
+      },
+      "revId": "da24f651d36a1efcea650833a6a5d2e7b7e7d68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
