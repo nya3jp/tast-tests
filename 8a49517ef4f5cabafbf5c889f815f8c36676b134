@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49b219e2_9699e1d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-22T01:34:19Z",
+      "side": 1,
+      "message": "This should fail in the caller. btw, test state should not be passed through out of the main function.\n\nYou can either do getCurrentTime() ([]string, error)\n\nor \n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go?l\u003d609",
+      "parentUuid": "ce764b0c_b35b9338",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 7
+      },
+      "revId": "8a49517ef4f5cabafbf5c889f815f8c36676b134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3724d056_f8a29007",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
         "patchSetId": 3
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Need to apply the timezone before the IME starts for the change to stick.  I don\u0027t think the IME is set up to get notified if the timezone changes, so doing it here.",
       "parentUuid": "3724d056_f8a29007",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 32
+      },
+      "revId": "8a49517ef4f5cabafbf5c889f815f8c36676b134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b58baee0_a3f8ebc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-22T01:34:19Z",
+      "side": 1,
+      "message": "Like I mentioned, this will make all PK JP tests to run in this timezone. It loses coverage on the default timezone. Maybe consider to add a separate test?",
+      "parentUuid": "3aa4d5fd_c5bf8162",
       "range": {
         "startLine": 108,
         "startChar": 1,
@@ -156,6 +204,30 @@
       "side": 1,
       "message": "Sounds like a good idea for another CL?",
       "parentUuid": "8c9c6753_f84db801",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "8a49517ef4f5cabafbf5c889f815f8c36676b134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f41d96f5_17371ae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-22T01:34:19Z",
+      "side": 1,
+      "message": "Ye. You can add a TODO here, and assign the bug to me / alvin if you are too busy to manage it.",
+      "parentUuid": "4df0fae3_3b1f4cb4",
       "range": {
         "startLine": 82,
         "startChar": 0,
