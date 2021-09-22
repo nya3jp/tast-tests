@@ -24,10 +24,14 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         capturefromelement.DataFiles(),
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-		Fixture:      "chromeVideo",
 		Params: []testing.Param{{
-			Name: "canvas",
-			Val:  capturefromelement.UseGlClearColor,
+			Name:    "canvas",
+			Val:     capturefromelement.UseGlClearColor,
+			Fixture: "chromeVideo",
+		}, {
+			Name:    "canvas_from_video",
+			Val:     capturefromelement.UseVideo,
+			Fixture: "chromeVideoWithFakeWebcam",
 		}},
 		//TODO(b/199174572): add a test case for "video" capture.
 	})
