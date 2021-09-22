@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -146,7 +146,7 @@ func WindowOutsideDisplay(ctx context.Context, s *testing.State) {
 	r := info.WorkArea.WithInset(ScreenEdgeInsetForSnappingSides+marginPX, window.CaptionHeight/2)
 	src := initPoint
 	for _, dst := range []coords.Point{r.TopLeft(), r.TopRight(), r.BottomRight(), r.BottomLeft()} {
-		if err := mouse.Drag(ctx, tconn, src, dst, dragDur); err != nil {
+		if err := mouse.Drag(tconn, src, dst, dragDur)(ctx); err != nil {
 			s.Fatal("Failed to move the mouse: ", err)
 		}
 		src = dst

@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/motioninput"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -134,7 +134,7 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 	e := t.ExpectedPoint(p)
 
 	s.Log("Injected initial move, waiting... ")
-	if err := mouse.Move(ctx, tconn, p, 0); err != nil {
+	if err := mouse.Move(tconn, p, 0)(ctx); err != nil {
 		s.Fatalf("Failed to inject move at %v: %v", e, err)
 	}
 	if err := tester.WaitUntilEvent(ctx, initialEventMatcher(e)); err != nil {
@@ -160,7 +160,7 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 		e = t.ExpectedPoint(p)
 
 		s.Log("Verifying mouse move event at ", e)
-		if err := mouse.Move(ctx, tconn, p, 0); err != nil {
+		if err := mouse.Move(tconn, p, 0)(ctx); err != nil {
 			s.Fatalf("Failed to inject move at %v: %v", e, err)
 		}
 		if err := tester.ExpectEventsAndClear(ctx, mouseMatcher(motioninput.ActionHoverMove, e)); err != nil {
@@ -168,7 +168,7 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 		}
 	}
 
-	if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+	if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
 		s.Fatal("Failed to press button on mouse: ", err)
 	}
 	var pressEvents []motioninput.Matcher
@@ -186,7 +186,7 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 		e = t.ExpectedPoint(p)
 
 		s.Log("Verifying mouse move event at ", e)
-		if err := mouse.Move(ctx, tconn, p, 0); err != nil {
+		if err := mouse.Move(tconn, p, 0)(ctx); err != nil {
 			s.Fatalf("Failed to inject move at %v: %v", e, err)
 		}
 		if err := tester.ExpectEventsAndClear(ctx, mouseMatcher(motioninput.ActionMove, e)); err != nil {
@@ -194,7 +194,7 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 		}
 	}
 
-	if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+	if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
 		s.Fatal("Failed to release mouse button: ", err)
 	}
 	var releaseEvents []motioninput.Matcher
@@ -210,7 +210,7 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 	p.Y -= deltaDP
 	e = t.ExpectedPoint(p)
 
-	if err := mouse.Move(ctx, tconn, p, 0); err != nil {
+	if err := mouse.Move(tconn, p, 0)(ctx); err != nil {
 		s.Fatalf("Failed to inject move at %v: %v", e, err)
 	}
 	var moveEvents []motioninput.Matcher
