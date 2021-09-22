@@ -284,6 +284,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "829e0873_877deea4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modemmanager_enable_and_connect.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-22T16:03:33Z",
+      "side": 1,
+      "message": "I see Pavan marked that bug a duplicate of b:188448918... We should put a TODO referencing that bug here so we know to unwind this hack when the time comes.",
+      "parentUuid": "22d33636_1220cc8c",
+      "revId": "769e475b76dab566551223bc913eba9b243bb180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1b95da1_5c0466cf",
