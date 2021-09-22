@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da79021_5536b61f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multidevice/phone_hub_do_not_disturb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-22T21:38:43Z",
+      "side": 1,
+      "message": "Not a fan of multidevice.PhoneHub*\n\nWe should set it up from the start like phonehub.* \n\nWe can worry about getting all beto tests into a single stainless view later",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "85279634e1300a1fde692e6cb18e4a871841eb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8c879fd_617354e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multidevice/phone_hub_do_not_disturb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-22T21:38:43Z",
+      "side": 1,
+      "message": "Can you make a bug to track how we want these tests to run? Since by default phone hub will pair with both chromebooks",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "85279634e1300a1fde692e6cb18e4a871841eb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
