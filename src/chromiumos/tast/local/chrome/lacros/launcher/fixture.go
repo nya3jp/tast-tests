@@ -204,6 +204,7 @@ const (
 //	}
 type FixtValue interface {
 	Chrome() *chrome.Chrome        // The CrOS-chrome instance.
+	ChromeVal() *chrome.Chrome     // The CrOS-chrome instance.
 	TestAPIConn() *chrome.TestConn // The CrOS-chrome test connection.
 	Mode() SetupMode               // Mode used to get the lacros binary.
 	LacrosPath() string            // Root directory for lacros-chrome.
@@ -222,6 +223,11 @@ type fixtValueImpl struct {
 
 // Chrome gets the CrOS-chrome instance.
 func (f *fixtValueImpl) Chrome() *chrome.Chrome {
+	return f.chrome
+}
+
+// ChromeVal gets the CrOS-chrome instance.
+func (f *fixtValueImpl) ChromeVal() *chrome.Chrome {
 	return f.chrome
 }
 

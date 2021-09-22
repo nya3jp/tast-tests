@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/policyutil/fixtures"
 	policyFixt "chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -90,7 +91,7 @@ func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to connect to Chrome: ", err)
 		}
 	} else {
-		cr = s.FixtValue().(*policyFixt.FixtData).Chrome
+		cr = s.FixtValue().(*fixtures.FixtData).Chrome
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)

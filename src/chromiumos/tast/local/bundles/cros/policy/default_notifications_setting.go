@@ -37,7 +37,6 @@ func init() {
 func DefaultNotificationsSetting(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
-
 	// radioButtonNames is a list of UI element names in the notification settings page.
 	// The order of the strings should follow the order in the settings page.
 	// wantRestriction and wantChecked entries are expected to follow this order as well.

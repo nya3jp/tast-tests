@@ -39,7 +39,6 @@ func init() {
 func DictationEnabled(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
 	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
-
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
