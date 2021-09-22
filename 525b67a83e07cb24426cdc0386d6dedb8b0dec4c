@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3540bd10_db5e5d70",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-22T21:38:37Z",
+      "side": 1,
+      "message": "alphabetical",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 44
+      },
+      "revId": "525b67a83e07cb24426cdc0386d6dedb8b0dec4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39203c66_2d58796c",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/android_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-22T21:38:37Z",
+      "side": 1,
+      "message": "if the account is android specific, keep android in var name",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 28
+      },
+      "revId": "525b67a83e07cb24426cdc0386d6dedb8b0dec4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7615714a_74fc90df",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/android_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-22T21:38:37Z",
+      "side": 1,
+      "message": "add function comment",
+      "range": {
+        "startLine": 65,
+        "startChar": 36,
+        "endLine": 65,
+        "endChar": 41
+      },
+      "revId": "525b67a83e07cb24426cdc0386d6dedb8b0dec4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ecd1322_a05b292b",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/android_setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-22T21:38:37Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 89
+      },
+      "revId": "525b67a83e07cb24426cdc0386d6dedb8b0dec4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd033881_bed12b71",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-22T21:38:37Z",
+      "side": 1,
+      "message": "This isn\u0027t super clear to me. I would also make the comment above clearer that you are logging in on CrOS etc",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 19
+      },
+      "revId": "525b67a83e07cb24426cdc0386d6dedb8b0dec4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63ed0ff9_6327cabb",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-22T21:38:37Z",
+      "side": 1,
+      "message": "Include Android in this var so it\u0027s clearer in the test what you\u0027re dealing with",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "525b67a83e07cb24426cdc0386d6dedb8b0dec4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
