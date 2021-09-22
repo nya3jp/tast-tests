@@ -16,6 +16,24 @@
       "message": "CQ failed.\n\n```\ntast-remote-tests-cros-0.0.2-r7739: src/chromiumos/tast/remote/bundles/cros/firmware/ec_battery.go:14:2: cannot find package \"chromiumos/tast/remote/servo\" in any of:\ntast-remote-tests-cros-0.0.2-r7739: \t/usr/lib/go/src/chromiumos/tast/remote/servo (from $GOROOT)\ntast-remote-tests-cros-0.0.2-r7739: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7739/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/servo (from $GOPATH)\ntast-remote-tests-cros-0.0.2-r7739: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7739/work/tast-remote-tests-cros-0.0.2/tast-base/src/chromiumos/tast/remote/servo\ntast-remote-tests-cros-0.0.2-r7739: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r7739/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/firmware/data/fw-testing-configs/src/chromiumos/tast/remote/servo\ntast-remote-tests-cros-0.0.2-r7739: \t/usr/lib/gopath/src/chromiumos/tast/remote/servo\n```",
       "revId": "ff156258fb0d3b97452f53d96482841c6a9366b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6daf5001_d88796a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-22T19:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96af3ba6_56ffa39a",
+      "revId": "ff156258fb0d3b97452f53d96482841c6a9366b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
