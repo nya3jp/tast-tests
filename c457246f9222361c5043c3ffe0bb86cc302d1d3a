@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae7e7f63_72986fac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-22T18:07:59Z",
+      "side": 1,
+      "message": "Please add firmware_usb also, so it won\u0027t run on machines with broken usb.",
+      "range": {
+        "startLine": 26,
+        "startChar": 44,
+        "endLine": 26,
+        "endChar": 65
+      },
+      "revId": "c457246f9222361c5043c3ffe0bb86cc302d1d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86dc485f_aee2f189",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/emmc_writeload.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-22T18:07:59Z",
+      "side": 1,
+      "message": "USBDevModeGBB might be more stable.",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 27,
+        "endChar": 30
+      },
+      "revId": "c457246f9222361c5043c3ffe0bb86cc302d1d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
