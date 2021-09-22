@@ -17,6 +17,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// InstallationTimeout defines the maximum time duration to install a cws app from the Chrome Web Store.
+const InstallationTimeout = 5 * time.Minute
+
 // App contains info about a Chrome Web Store app. All fields are required.
 type App struct {
 	Name         string // Name of the Chrome app.
@@ -27,7 +30,7 @@ type App struct {
 }
 
 // pollOpts is the polling interval and timeout to be used on the Chrome Web Store.
-var pollOpts = &testing.PollOptions{Interval: time.Second, Timeout: 5 * time.Minute}
+var pollOpts = &testing.PollOptions{Interval: time.Second, Timeout: InstallationTimeout}
 
 // InstallApp installs the specified Chrome app from the Chrome Web Store.
 func InstallApp(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, app App) error {
