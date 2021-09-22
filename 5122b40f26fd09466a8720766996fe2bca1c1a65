@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44258efd_3119543e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-09-22T23:53:46Z",
+      "side": 1,
+      "message": "can we add a function for this?",
+      "revId": "5122b40f26fd09466a8720766996fe2bca1c1a65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
