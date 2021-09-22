@@ -39,7 +39,7 @@ func init() {
 
 func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fakeDMS := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
 
 	// DLP policy with printing blocked restriction.
 	policyDLP := []policy.Policy{&policy.DataLeakPreventionRulesList{
@@ -68,7 +68,7 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 	pb.AddPolicies(policyDLP)
 
 	// Update policy.
-	if err := policyutil.ServeBlobAndRefresh(ctx, fakeDMS, cr, pb); err != nil {
+	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
 		s.Fatal("Failed to serve and refresh: ", err)
 	}
 
