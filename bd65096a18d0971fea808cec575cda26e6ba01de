@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e887d32b_42ec493b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-22T15:57:49Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "6429774d_bfe310b2",
+      "range": {
+        "startLine": 450,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 54
+      },
+      "revId": "bd65096a18d0971fea808cec575cda26e6ba01de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b5677be_e50b7a25",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
         "patchSetId": 34
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-21T22:48:44Z",
       "side": 1,
       "message": "Same as previous question. This doesn\u0027t seem related. Was it intentional?",
+      "range": {
+        "startLine": 480,
+        "startChar": 2,
+        "endLine": 480,
+        "endChar": 47
+      },
+      "revId": "bd65096a18d0971fea808cec575cda26e6ba01de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b58d73df_b00eca07",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-22T15:57:49Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "1b5677be_e50b7a25",
       "range": {
         "startLine": 480,
         "startChar": 2,
