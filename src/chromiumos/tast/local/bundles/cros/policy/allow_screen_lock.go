@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
@@ -36,8 +37,8 @@ func init() {
 
 // AllowScreenLock tests the AllowScreenLock policy.
 func AllowScreenLock(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(fixture.HasChrome).Chrome()
+	fdms := s.FixtValue().(fixture.HasFakeDMS).FakeDMS()
 
 	// Open a keyboard device.
 	kb, err := input.Keyboard(ctx)

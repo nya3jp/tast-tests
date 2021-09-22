@@ -8,9 +8,9 @@ import (
 	"context"
 	"strings"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -182,8 +182,8 @@ func init() {
 }
 
 func URLCheck(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(fixture.HasChrome).Chrome()
+	fdms := s.FixtValue().(fixture.HasFakeDMS).FakeDMS()
 
 	tcs, ok := s.Param().([]blocklistTestTable)
 	if !ok {

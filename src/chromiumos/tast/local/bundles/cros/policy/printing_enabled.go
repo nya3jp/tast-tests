@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -15,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -56,8 +56,8 @@ func init() {
 
 // PrintingEnabled tests the PrintingEnabled policy.
 func PrintingEnabled(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(fixture.HasChrome).Chrome()
+	fdms := s.FixtValue().(fixture.HasFakeDMS).FakeDMS()
 	runTest := s.Param().(func(ctx context.Context, tconn *chrome.TestConn) (bool, error))
 
 	// Connect to Test API to use it with the UI library.

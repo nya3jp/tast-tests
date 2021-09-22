@@ -8,12 +8,12 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/charge"
 	"chromiumos/tast/testing"
@@ -62,8 +62,8 @@ func DeviceBatteryChargeMode(ctx context.Context, s *testing.State) {
 		maxLevel = 95
 	)
 
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(fixture.HasChrome).Chrome()
+	fdms := s.FixtValue().(fixture.HasFakeDMS).FakeDMS()
 
 	// Shorten deadline to leave time for cleanup.
 	cleanupCtx := ctx

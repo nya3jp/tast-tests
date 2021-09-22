@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
@@ -90,7 +91,7 @@ func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to connect to Chrome: ", err)
 		}
 	} else {
-		cr = s.FixtValue().(*policyFixt.FixtData).Chrome
+		cr = s.FixtValue().(fixture.HasChrome).Chrome()
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)

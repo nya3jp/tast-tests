@@ -11,13 +11,13 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/proxy"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -36,8 +36,8 @@ func init() {
 }
 
 func SystemProxyForSystemServices(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(fixture.HasChrome).Chrome()
+	fdms := s.FixtValue().(fixture.HasFakeDMS).FakeDMS()
 
 	const username = "testuser"
 	const password = "testpwd"

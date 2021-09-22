@@ -7,6 +7,7 @@ package policy
 import (
 	"context"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -34,8 +35,8 @@ func init() {
 
 // ChromeOsLockOnIdleSuspend tests the ChromeOsLockOnIdleSuspend policy.
 func ChromeOsLockOnIdleSuspend(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(fixture.HasChrome).Chrome()
+	fdms := s.FixtValue().(fixture.HasFakeDMS).FakeDMS()
 
 	for _, param := range []struct {
 		name            string

@@ -80,10 +80,25 @@ type policyChromeFixture struct {
 
 // FixtData is returned by the fixtures and used by tests to interact with Chrome and FakeDMS.
 type FixtData struct {
-	// FakeDMS is an already running DMS  server.
-	FakeDMS *fakedms.FakeDMS
-	// Chrome is a connection to an already-started Chrome instance that loads policies from FakeDMS.
-	Chrome *chrome.Chrome
+	// fakeDMS is an already running DMS  server.
+	fakeDMS *fakedms.FakeDMS
+	// chrome is a connection to an already-started Chrome instance that loads policies from FakeDMS.
+	chrome *chrome.Chrome
+}
+
+// CreateFixtData return FixtData with the given chrome and fdms instances.
+func CreateFixtData(cr *chrome.Chrome, fdms *fakedms.FakeDMS) FixtData {
+	return FixtData{fakeDMS: fdms, chrome: cr}
+}
+
+// Chrome gets the CrOS-chrome instance.
+func (f FixtData) Chrome() *chrome.Chrome {
+	return f.chrome
+}
+
+// FakeDMS gets the fake DMS to serve policy.
+func (f FixtData) FakeDMS() *fakedms.FakeDMS {
+	return f.fakeDMS
 }
 
 // Credentials used for authenticating the test user.

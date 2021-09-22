@@ -126,7 +126,8 @@ func (k *kioskFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	k.cr = cr
 	k.oldPID = pid
 	ok = true
-	return &fixtures.FixtData{FakeDMS: k.fdms, Chrome: k.cr}
+	fixt := fixtures.CreateFixtData(k.cr, k.fdms)
+	return &fixt
 }
 
 func (k *kioskFixture) TearDown(ctx context.Context, s *testing.FixtState) {

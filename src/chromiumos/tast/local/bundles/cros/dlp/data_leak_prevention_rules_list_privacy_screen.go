@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/testexec"
@@ -17,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -38,8 +38,8 @@ func init() {
 }
 
 func DataLeakPreventionRulesListPrivacyScreen(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fakeDMS := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(fixture.HasChrome).Chrome()
+	fdms := s.FixtValue().(fixture.HasFakeDMS).FakeDMS()
 
 	// DLP policy with privacy screen blocked restriction.
 	policyDLP := []policy.Policy{&policy.DataLeakPreventionRulesList{
@@ -68,7 +68,7 @@ func DataLeakPreventionRulesListPrivacyScreen(ctx context.Context, s *testing.St
 	pb.AddPolicies(policyDLP)
 
 	// Update policy.
-	if err := policyutil.ServeBlobAndRefresh(ctx, fakeDMS, cr, pb); err != nil {
+	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
 		s.Fatal("Failed to serve and refresh: ", err)
 	}
 

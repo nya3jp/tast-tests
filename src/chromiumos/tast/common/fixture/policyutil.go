@@ -4,6 +4,11 @@
 
 package fixture
 
+import (
+	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/local/chrome"
+)
+
 // Fixture defined in chromiumos/tast/remote/policyutil/enrolled_fixture.go.
 const (
 	// Enrolled is a fixture name.
@@ -31,3 +36,13 @@ const (
 	// ChromeEnrolledLoggedInARC is a fixture name.
 	ChromeEnrolledLoggedInARC = "chromeEnrolledLoggedInARC"
 )
+
+// HasChrome is an interface to get Chrome from a fixture.
+type HasChrome interface {
+	Chrome() *chrome.Chrome
+}
+
+// HasFakeDMS is an interface to get FakeDMS from a fixture.
+type HasFakeDMS interface {
+	FakeDMS() *fakedms.FakeDMS
+}

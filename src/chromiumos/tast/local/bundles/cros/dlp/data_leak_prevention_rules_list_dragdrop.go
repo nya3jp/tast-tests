@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
@@ -21,7 +22,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -40,8 +40,8 @@ func init() {
 }
 
 func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fakeDMS := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(fixture.HasChrome).Chrome()
+	fdms := s.FixtValue().(fixture.HasFakeDMS).FakeDMS()
 
 	// DLP policy with clipboard blocked restriction.
 	policyDLP := policy.StandardDLPPolicyForClipboard()
@@ -51,7 +51,7 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 	pb.AddPolicies(policyDLP)
 
 	// Update policy.
-	if err := policyutil.ServeBlobAndRefresh(ctx, fakeDMS, cr, pb); err != nil {
+	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
 		s.Fatal("Failed to serve and refresh: ", err)
 	}
 

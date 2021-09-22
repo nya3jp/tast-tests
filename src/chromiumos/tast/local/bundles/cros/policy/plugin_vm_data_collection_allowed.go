@@ -11,10 +11,10 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	cpb "chromiumos/system_api/plugin_vm_service_proto"
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -33,8 +33,8 @@ func init() {
 }
 
 func PluginVMDataCollectionAllowed(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(fixture.HasChrome).Chrome()
+	fdms := s.FixtValue().(fixture.HasFakeDMS).FakeDMS()
 
 	const (
 		dbusName      = "org.chromium.PluginVmService"
