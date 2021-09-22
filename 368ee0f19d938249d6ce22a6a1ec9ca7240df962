@@ -16,6 +16,24 @@
       "message": "SmartAmpBootTimeCalibration is required by the both test params. Can it be moved to HardwareDeps?",
       "revId": "368ee0f19d938249d6ce22a6a1ec9ca7240df962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae31a5da_409c6afb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-09-22T03:06:19Z",
+      "side": 1,
+      "message": "Yes, `SmartAmpBootTimeCalibration` is required by the both test params. The CL is a intermediate change. The next CL (chromium:3141291) add another test case that only deps on `hwdep.SmartAmp()` and does not dep on SmartAmpBootTimeCalibration.",
+      "parentUuid": "77da1095_56d4a750",
+      "revId": "368ee0f19d938249d6ce22a6a1ec9ca7240df962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
