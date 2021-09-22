@@ -16,6 +16,24 @@
       "message": "(notice: I lost +2 permissions last week... they should be restored today... I\u0027ll +2 once I get them again... )",
       "revId": "a7d08b7e486317fa5d116d26a9185f752b17a923",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a97a962_28a3508e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-22T02:22:22Z",
+      "side": 1,
+      "message": "I\u0027ve +2\u0027d for you",
+      "parentUuid": "8957759e_e25bfba7",
+      "revId": "a7d08b7e486317fa5d116d26a9185f752b17a923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
