@@ -243,7 +243,7 @@ func (f *FilesApp) SelectMultipleFiles(kb *input.KeyboardEventWriter, fileList .
 // CreateFolder returns a function that creates a new folder named dirName in the current directory.
 func (f *FilesApp) CreateFolder(kb *input.KeyboardEventWriter, dirName string) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("CreateFolder(%s)", dirName),
-		f.FocusAndWait(nodewith.Role(role.ListBox)),
+		f.EnsureFocused(nodewith.Role(role.ListBox)),
 		kb.AccelAction("Ctrl+E"), // Press Ctrl+E to create a new folder.
 		// Wait for rename text field.
 		f.WaitUntilExists(nodewith.Role(role.TextField).Editable().Focusable().Focused()),
@@ -301,6 +301,18 @@ func (f *FilesApp) Search(kb *input.KeyboardEventWriter, searchTerms string) uia
 		kb.AccelAction("Enter"),
 		// TODO(b/178020071): Check if waiting for the listbox to stabilize is still required.
 		// It may be possible to ignore this do to always waiting for stability within queries of the new library.
+	)
+}
+
+// ClearSearch clicks the clear button to clear the search results and leave search mode.
+func (f *FilesApp) ClearSearch() uiauto.Action {
+	clear := nodewith.Role(role.Button).ClassName("clear").Name("Clear")
+	return uiauto.Combine("clear search box",
+		uiauto.New(f.tconn).IfSuccessThen(
+			f.WithTimeout(5*time.Second).WaitUntilExists(clear),
+			f.LeftClick(clear),
+		),
+		f.EnsureFocused(nodewith.Role(role.ListBox)),
 	)
 }
 
