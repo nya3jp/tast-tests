@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a53fe443_545486da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-22T00:57:46Z",
+      "side": 1,
+      "message": "pwang@ PTAL -- refactoring CL\n\nOthers FYI",
+      "revId": "633bdd9957ccc9940944e76ef1be44b3a0c2559a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
