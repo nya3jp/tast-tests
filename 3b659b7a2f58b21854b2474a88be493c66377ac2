@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47346a2_ac90290e",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-22T21:28:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "719c8389_b20fb51d",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "3b659b7a2f58b21854b2474a88be493c66377ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a870444c_8899d5a3",
@@ -111,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e81246_94ed915c",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_opener.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-22T21:28:18Z",
+      "side": 1,
+      "message": "Config will be shared with other PortOpener types such as RemotePortOpener in the next CL.  I do not want to create the impression that other opener types embed ConnectedPortOpener.",
+      "parentUuid": "182d10c3_6ddc2465",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "3b659b7a2f58b21854b2474a88be493c66377ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "112e81ca_5e6662c0",
@@ -134,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1829da97_a292b624",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-22T21:28:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "112e81ca_5e6662c0",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "3b659b7a2f58b21854b2474a88be493c66377ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfd71172_59c4cf92",
@@ -147,6 +219,30 @@
       "writtenOn": "2021-09-22T08:54:24Z",
       "side": 1,
       "message": "nit: you can make this one line.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "3b659b7a2f58b21854b2474a88be493c66377ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5f80c2_f89805f5",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-22T21:28:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfd71172_59c4cf92",
       "range": {
         "startLine": 24,
         "startChar": 0,
