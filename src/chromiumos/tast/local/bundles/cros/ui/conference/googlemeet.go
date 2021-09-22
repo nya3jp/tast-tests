@@ -408,15 +408,17 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 func (conf *GoogleMeetConference) BackgroundBlurring(ctx context.Context) error {
 	const (
 		blurBackground    = "Blur your background"
-		skyBackground     = "Blurry sky with purple horizon background"
-		turnOffBackground = "Turn off background effects"
+		skyBackground     = "Blurry sky with purple horizon"
+		turnOffBackground = "Turn off"
 	)
 	ui := uiauto.New(conf.tconn)
 	changeBackground := func(background string) error {
 		moreOptions := nodewith.Name("More options").First()
 		menu := nodewith.Name("Call options").Role(role.Menu)
-		changeBackground := nodewith.Name("Change background").Role(role.MenuItem)
-		backgroundButton := nodewith.Name(background).First()
+		// There are two different versions of ui for different accounts to change the background.
+		// The old version shows "Change background", the new version shows "Apply visual effects".
+		changeBackground := nodewith.NameRegex(regexp.MustCompile("(Apply visual effects|Change background)")).Role(role.MenuItem)
+		backgroundButton := nodewith.NameContaining(background).Role(role.ToggleButton)
 		webArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
 		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(webArea)
 		testing.ContextLog(ctx, "Change background to ", background)
