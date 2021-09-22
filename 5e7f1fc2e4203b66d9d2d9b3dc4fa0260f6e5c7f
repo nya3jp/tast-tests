@@ -16,6 +16,40 @@
       "message": "Thanks Aki. Tast-owners, PTAL?",
       "revId": "5e7f1fc2e4203b66d9d2d9b3dc4fa0260f6e5c7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ef41e84_66266e45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_plain_text_editing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-22T02:15:34Z",
+      "side": 1,
+      "message": "You can just s/ctx/cleanupCtx in this function, and don\u0027t capture it",
+      "revId": "5e7f1fc2e4203b66d9d2d9b3dc4fa0260f6e5c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "124fdfcb_8faedcac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_rich_text_editing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-09-22T02:15:34Z",
+      "side": 1,
+      "message": "same as above, no need to capture",
+      "revId": "5e7f1fc2e4203b66d9d2d9b3dc4fa0260f6e5c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
