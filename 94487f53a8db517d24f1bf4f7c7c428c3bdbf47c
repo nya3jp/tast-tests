@@ -110,6 +110,30 @@
       },
       "revId": "94487f53a8db517d24f1bf4f7c7c428c3bdbf47c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c07ddf_cf9e5e83",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-22T08:16:54Z",
+      "side": 1,
+      "message": "```\nHmm, I prefer not setting the expert mode to its previous state when cleaning up since it will make reader hard to know which state does an expert mode in after executing the cleanup function.\n```\nSimply the state before calling |EnableExpertMode|?\n\n```\nIf we don\u0027t want to preserve the expert mode state between tests, maybe we can have another CL to disable expert mode in app.Close(). Therefore, it is clear that when an app is started, the expert mode is always off. WDYT?\n```\nIdeally we should start a new chrome without |KeepState()| option [1] which will start a new chrome without memorizing any previous state. But it lose the benefit of using precondition/fixture to restart chrome every time. Not sure if there\u0027s a light-weight method to clean up all state without starting a new chrome.\n\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/config/config.go;rcl\u003d6a08ca5681de9bf06ebfea9d7bc7ec2484dea680;l\u003d146",
+      "parentUuid": "8ef83ea7_95224469",
+      "range": {
+        "startLine": 1356,
+        "startChar": 52,
+        "endLine": 1356,
+        "endChar": 57
+      },
+      "revId": "94487f53a8db517d24f1bf4f7c7c428c3bdbf47c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
