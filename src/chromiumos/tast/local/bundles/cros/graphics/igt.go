@@ -511,7 +511,7 @@ func IGT(ctx context.Context, s *testing.State) {
 		} else {
 			failedSubtestsMessage = failedSubtests[0] + " ... " + failedSubtests[len(failedSubtests)-1]
 		}
-		s.Errorf("%q Pass:%d Fail:%d (failing %s)", testOpt.exe, results.passed, results.failed, failedSubtestsMessage)
+		s.Errorf("%s Pass:%d Fail:%d (%s)", testOpt.exe, results.passed, results.failed, failedSubtestsMessage)
 	} else {
 		s.Log(summary)
 	}
