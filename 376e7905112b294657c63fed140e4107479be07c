@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79958f5c_5b4c232f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/conference.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-22T19:26:31Z",
+      "side": 1,
+      "message": "interface changed to a more meaningful name.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "376e7905112b294657c63fed140e4107479be07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d00cc10_345ec9a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-22T19:26:31Z",
+      "side": 1,
+      "message": "put pinToMainScreen in an action function",
+      "range": {
+        "startLine": 416,
+        "startChar": 1,
+        "endLine": 416,
+        "endChar": 16
+      },
+      "revId": "376e7905112b294657c63fed140e4107479be07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28314b9_dac3130e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-22T19:26:31Z",
+      "side": 1,
+      "message": "change to return Action.",
+      "range": {
+        "startLine": 424,
+        "startChar": 52,
+        "endLine": 424,
+        "endChar": 58
+      },
+      "revId": "376e7905112b294657c63fed140e4107479be07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a96e93c9_ac47862f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-22T19:26:31Z",
+      "side": 1,
+      "message": "use retry to make sure changing background succeed.",
+      "range": {
+        "startLine": 435,
+        "startChar": 0,
+        "endLine": 435,
+        "endChar": 68
+      },
+      "revId": "376e7905112b294657c63fed140e4107479be07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cea4e8b_8d0f80d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-22T19:26:31Z",
+      "side": 1,
+      "message": "add procedure to enter full screen.",
+      "range": {
+        "startLine": 439,
+        "startChar": 4,
+        "endLine": 439,
+        "endChar": 22
+      },
+      "revId": "376e7905112b294657c63fed140e4107479be07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7d50737_d4e8e7c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-22T19:26:31Z",
+      "side": 1,
+      "message": "use uiauto.Combine to simplify the action execution.",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 444,
+        "endChar": 66
+      },
+      "revId": "376e7905112b294657c63fed140e4107479be07c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
