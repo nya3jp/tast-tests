@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce764b0c_b35b9338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-09-22T01:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f2beac5_8e34fa9c",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 7
+      },
+      "revId": "8a49517ef4f5cabafbf5c889f815f8c36676b134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3724d056_f8a29007",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-21T12:41:31Z",
       "side": 1,
       "message": "Just curious that do you want to apply this timezone to the whole test? In this case, will we lose coverage on US timezone?",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 32
+      },
+      "revId": "8a49517ef4f5cabafbf5c889f815f8c36676b134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aa4d5fd_c5bf8162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-09-22T01:12:19Z",
+      "side": 1,
+      "message": "Need to apply the timezone before the IME starts for the change to stick.  I don\u0027t think the IME is set up to get notified if the timezone changes, so doing it here.",
+      "parentUuid": "3724d056_f8a29007",
       "range": {
         "startLine": 108,
         "startChar": 1,
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "My suggestion on this would be refactoring waitForFieldTextFunc to waitForFieldTextMatch using a regex. So it works for case sensitive, insensitive, options and any other potentials. WDYT",
       "parentUuid": "5a1a586c_50db9533",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "8a49517ef4f5cabafbf5c889f815f8c36676b134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4df0fae3_3b1f4cb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-09-22T01:12:19Z",
+      "side": 1,
+      "message": "Sounds like a good idea for another CL?",
+      "parentUuid": "8c9c6753_f84db801",
       "range": {
         "startLine": 82,
         "startChar": 0,
