@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "344753c7_597d4c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-09-22T01:37:55Z",
+      "side": 1,
+      "message": "We might need to change this to `[]string{\"group:crosbolt\", \"crosbolt_perbuild\"}` for uploading results to dashboard.\n\nWe need to do the same thing for audio_loopback_latency.go",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 60
+      },
+      "revId": "c2af07873055b8591518d18ba29a014f173086be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
