@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1db2ef4_03308807",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-22T07:37:05Z",
+      "side": 1,
+      "message": "Thank you for the kind help! I changed the policy service according to review comments. PTAL. @Victor, @Dean. Thank you!",
+      "revId": "99d86c9e4c3a5bb326fa8d2633afae7774509bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
