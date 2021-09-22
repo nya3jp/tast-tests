@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "211c502d_218b33f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-09-22T15:12:29Z",
+      "side": 1,
+      "message": "You\u0027re right, I got mixed up with the s.Fatal/s.Log calls. Let\u0027s leave it as error.Wrapf here an below. Sorry for the churn.",
+      "parentUuid": "ff98212e_c6f7788f",
+      "revId": "abe6f101f667589ba2dde7ea56470aaa35ec80c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0436abbe_6f2c1caa",
