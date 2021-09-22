@@ -7,6 +7,7 @@ package cws
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -17,17 +18,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// InstallationTimeout defines the maximum time duration to install a cws app from the Chrome Web Store.
+const InstallationTimeout = 5 * time.Minute
+
 // App contains info about a Chrome Web Store app. All fields are required.
 type App struct {
-	Name         string // Name of the Chrome app.
-	URL          string // URL to install the app from.
-	InstalledTxt string // Button text after the app is installed.
-	AddTxt       string // Button text when the app is available to be added.
-	ConfirmTxt   string // Button text to confirm the installation.
+	Name string // Name of the Chrome app.
+	URL  string // URL to install the app from.
 }
 
 // pollOpts is the polling interval and timeout to be used on the Chrome Web Store.
-var pollOpts = &testing.PollOptions{Interval: time.Second, Timeout: 5 * time.Minute}
+var pollOpts = &testing.PollOptions{Interval: time.Second, Timeout: InstallationTimeout}
 
 // InstallApp installs the specified Chrome app from the Chrome Web Store.
 func InstallApp(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, app App) error {
@@ -38,10 +39,13 @@ func InstallApp(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 	defer cws.Close()
 	defer cws.CloseTarget(ctx)
 
-	ui := uiauto.New(tconn)
-	installed := nodewith.Name(app.InstalledTxt).Role(role.Button).First()
-	add := nodewith.Name(app.AddTxt).Role(role.Button).First()
-	confirm := nodewith.Name(app.ConfirmTxt).Role(role.Button)
+	var (
+		installed = nodewith.Role(role.Button).NameRegex(regexp.MustCompile(`(Remove from Chrome|Launch app)`)).First()
+		add       = nodewith.Role(role.Button).NameRegex(regexp.MustCompile(`^Add to Chrome$`)).First()
+		confirm   = nodewith.Role(role.Button).NameRegex(regexp.MustCompile(`Add (app|extension)`))
+
+		ui = uiauto.New(tconn)
+	)
 
 	// Click the add button at most once to prevent triggering
 	// weird UI behaviors in Chrome Web Store.
