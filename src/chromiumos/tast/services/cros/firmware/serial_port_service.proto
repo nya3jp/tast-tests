@@ -1,0 +1,46 @@
+// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.firmware;
+
+import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+option go_package = "chromiumos/tast/services/cros/firmware";
+
+service SerialPortService {
+  // Open opens a port and returns its id.
+  rpc Open (SerialPortConfig) returns (PortId) {}
+  // Read reads bytes into provided buffer, returns the bytes read.
+  rpc Read (SerialReadRequest) returns (google.protobuf.BytesValue) {}
+  // Write writes bytes from provided buffer, returns number of bytes written.
+  rpc Write (SerialWriteRequest) returns (google.protobuf.Int64Value) {}
+  // Flush flushes un-read/written content from the port.
+  rpc Flush (PortId) returns (google.protobuf.Empty) {}
+  // Close closes the port.
+  rpc Close (PortId) returns (google.protobuf.Empty) {}
+}
+
+message PortId {
+ uint32 value = 1;
+}
+
+message SerialReadRequest {
+ PortId id = 1;
+ uint32 max_len = 2;
+}
+
+message SerialWriteRequest {
+ PortId id = 1;
+ bytes  buffer = 2;
+}
+
+message SerialPortConfig {
+  string name = 1;
+  int64 baud = 2;
+  google.protobuf.Duration read_timeout = 3;
+}
