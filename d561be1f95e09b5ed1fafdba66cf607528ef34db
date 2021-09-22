@@ -16,6 +16,24 @@
       "message": "You forgot to run:\nTAST_GENERATE_UPDATE\u003d1 ~/trunk/src/platform/tast/tools/go.sh test -count\u003d1 chromiumos/tast/remote/bundles/cros/wifi\n\ntast-local-tests-cros-0.0.2-r7649:     simple_connect_test.go:709: simple_connect.go: Params is stale; run the following command to update:\ntast-local-tests-cros-0.0.2-r7649:         TAST_GENERATE_UPDATE\u003d1 ~/trunk/src/platform/tast/tools/go.sh test -count\u003d1 chromiumos/tast/remote/bundles/cros/wifi",
       "revId": "d561be1f95e09b5ed1fafdba66cf607528ef34db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef0855e4_ebe5f2b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-09-22T05:42:31Z",
+      "side": 1,
+      "message": "Sorry about forgetting it. A lesson for me. The doc in test files must match comments in test cases.",
+      "parentUuid": "a8c52918_01fcd112",
+      "revId": "d561be1f95e09b5ed1fafdba66cf607528ef34db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
