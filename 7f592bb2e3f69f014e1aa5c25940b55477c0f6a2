@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "215d7739_8cd12a25",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/cros_image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-22T21:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11081a69_3b911613",
+      "range": {
+        "startLine": 41,
+        "startChar": 50,
+        "endLine": 41,
+        "endChar": 59
+      },
+      "revId": "7f592bb2e3f69f014e1aa5c25940b55477c0f6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc305d5a_c92ec777",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-22T19:00:07Z",
       "side": 1,
       "message": "lowercase, suggest failed instead of unable.",
+      "range": {
+        "startLine": 46,
+        "startChar": 44,
+        "endLine": 46,
+        "endChar": 50
+      },
+      "revId": "7f592bb2e3f69f014e1aa5c25940b55477c0f6a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25482d96_9ac45d8a",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/cros_image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-22T21:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc305d5a_c92ec777",
       "range": {
         "startLine": 46,
         "startChar": 44,
