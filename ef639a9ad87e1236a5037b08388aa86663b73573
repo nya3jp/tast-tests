@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfc72ebf_fa614aa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/speedometer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-22T01:57:17Z",
+      "side": 1,
+      "message": "style: could you merge this with the above section?",
+      "revId": "ef639a9ad87e1236a5037b08388aa86663b73573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

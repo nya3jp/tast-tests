@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52578a72_7b03a1d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-22T01:57:17Z",
+      "side": 1,
+      "message": "code LG. Let me hold on marking CR+2 until sadrul@\u0027s reply.",
+      "revId": "1754c23e86b849e2291447ae57e868d8ce95876c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
