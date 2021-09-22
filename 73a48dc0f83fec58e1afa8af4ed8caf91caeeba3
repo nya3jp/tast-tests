@@ -16,6 +16,74 @@
       "message": "+Seewai for advice on the tls_client in Tast",
       "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a5af90_2e99f26c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-22T22:46:31Z",
+      "side": 1,
+      "message": "I have a few nit comments. Please take a look. Also, please also run \"fast_build.sh -T\" in ~/trunk/src/platform/tast. Thanks.",
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db4af252_eb7c59db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-22T22:46:31Z",
+      "side": 1,
+      "message": "nit: Do you want to try to use the new runtime variable?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#global-runtime-variables-recommended-for-new-code\n\nThen, you can share it with other tests in future.",
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "111b323c_8c69d8a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-22T22:46:31Z",
+      "side": 1,
+      "message": "Should we use a local GRPC service to handle the clean? It is much less flaky than using multiple ssh command.",
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78491cd7_d5c28bd2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-22T22:46:31Z",
+      "side": 1,
+      "message": "Will it be better to name them explicitly?\n```\ntype Version struct {\n\tMajor uint64,\n\tMinor uint64,\n\tBuild unit64,\n\tPatch unit64,\n}\n```",
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
