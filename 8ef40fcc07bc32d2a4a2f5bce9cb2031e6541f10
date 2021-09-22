@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dfe45f8_f17ae1d5",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/dev_board.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-22T21:24:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f07ac372_25af63b1",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "8ef40fcc07bc32d2a4a2f5bce9cb2031e6541f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5114613a_ff4c95c7",
@@ -37,6 +61,54 @@
       "writtenOn": "2021-09-22T19:07:29Z",
       "side": 1,
       "message": "Do you want these to run in the lab? I don\u0027t think you want firmware_experimental here.",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 27,
+        "endChar": 64
+      },
+      "revId": "8ef40fcc07bc32d2a4a2f5bce9cb2031e6541f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0155702_f4e80a3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_test_image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-22T21:24:27Z",
+      "side": 1,
+      "message": "Not yet, done.",
+      "parentUuid": "5114613a_ff4c95c7",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 27,
+        "endChar": 64
+      },
+      "revId": "8ef40fcc07bc32d2a4a2f5bce9cb2031e6541f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7663a9e_4139f2e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_test_image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-22T21:24:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5114613a_ff4c95c7",
       "range": {
         "startLine": 27,
         "startChar": 43,
@@ -70,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "803a86b6_5157d15b",
+        "filename": "src/chromiumos/tast/remote/firmware/ti50/remote_andreiboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-22T21:24:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "867096ff_ed08a52e",
+      "range": {
+        "startLine": 137,
+        "startChar": 21,
+        "endLine": 137,
+        "endChar": 26
+      },
+      "revId": "8ef40fcc07bc32d2a4a2f5bce9cb2031e6541f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a96b663c_f645cf46",
@@ -83,6 +179,30 @@
       "writtenOn": "2021-09-22T19:07:29Z",
       "side": 1,
       "message": "lower",
+      "range": {
+        "startLine": 72,
+        "startChar": 38,
+        "endLine": 72,
+        "endChar": 45
+      },
+      "revId": "8ef40fcc07bc32d2a4a2f5bce9cb2031e6541f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65470cdc_def6c069",
+        "filename": "src/chromiumos/tast/remote/firmware/ti50/remote_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-22T21:24:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a96b663c_f645cf46",
       "range": {
         "startLine": 72,
         "startChar": 38,
