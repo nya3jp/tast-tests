@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06fdc052_8a626132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-22T22:16:35Z",
+      "side": 1,
+      "message": "The test can also call the same function that the \"chromeLoggedInWith100FakeApps\" fixture is using to generate those:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/launcher.go;l\u003d103\n\nI also think we should avoid using the fixture if the test affects the launcher state significantly (chromeLoggedInWith100FakeApps does not restore the state of the launcher/apps between tests). You can just call chrome.New at the start of the test (see Toni\u0027s link), and then call ash.PrepareFakeApps to set up all the apps you need.",
+      "parentUuid": "1d98fe13_e22632c2",
+      "revId": "eed4c2f1a5571bc29baff4f6da4aeef6ced15cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57e9a7ee_a5869984",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
         "patchSetId": 3
