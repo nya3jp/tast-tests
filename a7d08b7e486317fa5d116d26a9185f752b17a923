@@ -52,6 +52,74 @@
       "parentUuid": "3a97a962_28a3508e",
       "revId": "a7d08b7e486317fa5d116d26a9185f752b17a923",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea1f32f7_4572a078",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-22T04:39:02Z",
+      "side": 1,
+      "message": "Unit?",
+      "revId": "a7d08b7e486317fa5d116d26a9185f752b17a923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df4897db_ce66d289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-22T04:39:02Z",
+      "side": 1,
+      "message": "We can be more precise: the expected root device size is (in MB, to avoid 32 bit boundaries:\necho $(( $(cat /sys/block/$(basename $(rootdev -s -d))/size) / 2 / 1024 ))",
+      "revId": "a7d08b7e486317fa5d116d26a9185f752b17a923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3001c1f6_b1ded244",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-22T04:39:02Z",
+      "side": 1,
+      "message": "df -PBM /mnt/stateful_partition/ | tail -1 | sed \u0027s/ \\+/ /g\u0027 | cut -d \u0027 \u0027 -f 2",
+      "revId": "a7d08b7e486317fa5d116d26a9185f752b17a923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d6732d2_e41db5d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-22T04:39:02Z",
+      "side": 1,
+      "message": "df -PBM /mnt/stateful_partition/ | tail -1 | sed \u0027s/ \\+/ /g\u0027 | cut -d \u0027 \u0027 -f 4",
+      "revId": "a7d08b7e486317fa5d116d26a9185f752b17a923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
