@@ -93,8 +93,7 @@ func Fsp(ctx context.Context, s *testing.State) {
 	// Install the unarchiver Chrome app, that supports FSP.
 	unarchiverName := "Wicked Good Unarchiver"
 	unarchiverURL := "https://chrome.google.com/webstore/detail/wicked-good-unarchiver/mljpablpddhocfbnokacjggdbmafjnon?hl=en"
-	app := cws.App{Name: unarchiverName, URL: unarchiverURL, InstalledTxt: "Launch app",
-		AddTxt: "Add to Chrome", ConfirmTxt: "Add app"}
+	app := cws.App{Name: unarchiverName, URL: unarchiverURL}
 	if err := cws.InstallApp(ctx, cr, tconn, app); err != nil {
 		s.Fatal("Chrome app installation failed: ", err)
 	}
