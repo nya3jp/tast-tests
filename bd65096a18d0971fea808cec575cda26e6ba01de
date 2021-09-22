@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5662d146_c89d8ec2",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-22T23:41:24Z",
+      "side": 1,
+      "message": "I\u0027ll take this out and put in followup CL.",
+      "parentUuid": "e887d32b_42ec493b",
+      "range": {
+        "startLine": 450,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 54
+      },
+      "revId": "bd65096a18d0971fea808cec575cda26e6ba01de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b5677be_e50b7a25",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "1b5677be_e50b7a25",
+      "range": {
+        "startLine": 480,
+        "startChar": 2,
+        "endLine": 480,
+        "endChar": 47
+      },
+      "revId": "bd65096a18d0971fea808cec575cda26e6ba01de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4841ece_44751798",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-22T23:41:24Z",
+      "side": 1,
+      "message": "It seems unrelated, but I do recall that this error seemed unreadable the way it was composed before (due to the way err is composed internal to CheckRunningFirmwareCopy).\n\nI\u0027ll take this out and put in followup CL.",
+      "parentUuid": "b58d73df_b00eca07",
       "range": {
         "startLine": 480,
         "startChar": 2,
@@ -192,6 +240,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "118b2ad9_a4da4e54",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-22T23:41:24Z",
+      "side": 1,
+      "message": "I added a comment.\n\n@Patryk, it seems like we need to pass RPCDUT into MakeRootfsWritable, but probably not in this change.",
+      "parentUuid": "3b9a948c_39cd6d8c",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 3
+      },
+      "revId": "bd65096a18d0971fea808cec575cda26e6ba01de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c7256fb_f38507ac",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
         "patchSetId": 34
@@ -203,6 +275,30 @@
       "writtenOn": "2021-09-21T22:48:44Z",
       "side": 1,
       "message": "I\u0027ll defer to the Tast owners on this one, but it seems a little awkward to create a second FirmwareTest object here. Should we just assign to the members that were not already initialized above?\n\n t.fpBoard \u003d fpBoard\n ...",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 7
+      },
+      "revId": "bd65096a18d0971fea808cec575cda26e6ba01de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a64687a_bb16074a",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-22T23:41:24Z",
+      "side": 1,
+      "message": "Instead of doing a series of field settings, I think it would make sense to assign each field as we progress through this function, like:\n\n\u003e t.daemonState, err \u003d stopDaemons(ctx, t...\n\u003e ...\n\u003e t.dutTempDir, err \u003d t.DutfsClient().TempDir(ctx, \"\", dutTempPathPattern)\n\nI did mock this up, but ultimately decided that level of refactoring didn\u0027t need to be in this CL. Would a followup CL doing the above progressive field setting suffice, or would you rather a series of field settings as you mentioned?",
+      "parentUuid": "6c7256fb_f38507ac",
       "range": {
         "startLine": 153,
         "startChar": 1,
