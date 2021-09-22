@@ -134,6 +134,30 @@
       },
       "revId": "94487f53a8db517d24f1bf4f7c7c428c3bdbf47c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "660a1379_978b1ecf",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-22T08:32:43Z",
+      "side": 1,
+      "message": "I mean, it is hard for a reader to know if the following codes should pass or fail:\n```\ncleanupFunc :\u003d EnableExpertMode()\ncleanupFunc()\n\nCheckExpertModeDisabled() // Should it be enabled or disabled?\n```\n\nReader needs to trace the codes executed before and memorizes its state when calling EnableExpertMode() so they can know what is the expected outcome after calling cleanupFunc(), which I think might not be ideal.\n\nAnd if the state you mean is something that we stored in localStorage, just checked we currently do have logic to clear it when closing app:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/camera/cca/cca.go;rcl\u003dc43b0cff6238ec171a094020bc46c0a62c524cd2;l\u003d512",
+      "parentUuid": "a4c07ddf_cf9e5e83",
+      "range": {
+        "startLine": 1356,
+        "startChar": 52,
+        "endLine": 1356,
+        "endChar": 57
+      },
+      "revId": "94487f53a8db517d24f1bf4f7c7c428c3bdbf47c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
