@@ -1234,3 +1234,39 @@ func newRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtyp
 		return nil, errors.Errorf("unexpected routerType, got %v", rtype)
 	}
 }
+
+// WaitWifiConnected waits until WiFi is connected to the SHILL profile with specific GUID.
+func (tf *TestFixture) WaitWifiConnected(ctx context.Context, guid string) error {
+	testing.ContextLog(ctx, "Waiting for WiFi to be connected to profile with GUID: "+guid)
+
+	// Trigger WiFi scan
+	req := &wifi.RequestScansRequest{Count: 1}
+	if _, err := tf.WifiClient().RequestScans(ctx, req); err != nil {
+		errors.Wrap(err, "Failed to request scan: ")
+	}
+
+	// Wait for service with matching GUID is connected
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		serInfo, err := tf.WifiClient().QueryService(ctx)
+		if err != nil {
+			return errors.Wrap(err, "Failed to get the WiFi service information from DUT")
+		}
+		if guid == serInfo.Guid && serInfo.IsConnected {
+			return nil
+		} else {
+			if guid != serInfo.Guid {
+				return errors.New("GUID does not match, current service is: " + serInfo.Guid)
+			} else {
+				return errors.New("Service is not connected")
+			}
+		}
+	}, &testing.PollOptions{
+		Timeout:  time.Minute,
+		Interval: time.Second,
+	}); err != nil {
+		return errors.Wrap(err, "No matching GUID service selected")
+	}
+
+	testing.ContextLog(ctx, "WiFi connected")
+	return nil
+}
