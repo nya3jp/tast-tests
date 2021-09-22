@@ -13,9 +13,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -161,13 +161,13 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 	dragStart := coords.NewPoint(info.Bounds.Left+info.Bounds.Width/4, info.Bounds.Bottom()-1)
 	dragEnd := coords.NewPoint(dragStart.X, info.Bounds.Top+1)
 	r.RunMultiple(ctx, s, "launcher-drag", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
-		if err := mouse.Drag(ctx, tconn, dragStart, dragEnd, time.Second); err != nil {
+		if err := mouse.Drag(tconn, dragStart, dragEnd, time.Second)(ctx); err != nil {
 			return errors.Wrap(err, "failed to drag to open the launcher")
 		}
 		if err := ash.WaitForLauncherState(ctx, tconn, ash.FullscreenAllApps); err != nil {
 			return errors.Wrap(err, "launcher isn't in fullscreen")
 		}
-		if err := mouse.Drag(ctx, tconn, dragEnd, dragStart, time.Second); err != nil {
+		if err := mouse.Drag(tconn, dragEnd, dragStart, time.Second)(ctx); err != nil {
 			return errors.Wrap(err, "failed to drag to close the launcher")
 		}
 		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {

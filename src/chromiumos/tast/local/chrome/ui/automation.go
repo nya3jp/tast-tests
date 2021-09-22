@@ -18,7 +18,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -246,7 +246,7 @@ func (n *Node) mouseClick(ctx context.Context, ct clickType) error {
 		if n.Location.Empty() {
 			return errors.New("This node doesn't have a location on the screen and can't be clicked")
 		}
-		return mouse.DoubleClick(ctx, n.tconn, n.Location.CenterPoint(), 100*time.Millisecond)
+		return mouse.DoubleClick(n.tconn, n.Location.CenterPoint(), 100*time.Millisecond)(ctx)
 	default:
 		return errors.New("invalid click type")
 	}

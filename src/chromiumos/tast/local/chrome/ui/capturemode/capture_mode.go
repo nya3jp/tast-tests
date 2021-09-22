@@ -12,8 +12,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -46,11 +46,11 @@ func TakeAreaScreenshot(ctx context.Context, tconn *chrome.TestConn) error {
 
 	// We need to click outside of previous selected area, otherwise we might
 	// resize selected area to an empty rectangle and won't see a capture button.
-	if err := mouse.Click(ctx, tconn, coords.Point{X: 200, Y: 200}, mouse.LeftButton); err != nil {
+	if err := mouse.Click(tconn, coords.Point{X: 200, Y: 200}, mouse.LeftButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click outside of previously selected area")
 	}
 
-	if err := mouse.Drag(ctx, tconn, coords.Point{X: 0, Y: 0}, coords.Point{X: 100, Y: 100}, 0*time.Second); err != nil {
+	if err := mouse.Drag(tconn, coords.Point{X: 0, Y: 0}, coords.Point{X: 100, Y: 100}, 0*time.Second)(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag mouse")
 	}
 
