@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d98fe13_e22632c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-09-22T22:10:24Z",
+      "side": 1,
+      "message": "still, running this and removing half the apps may impact stability of performance tests (which may assume min number of pages in the UI).\n\nCan we avoid using fixtures and just install the number of fake apps we need when the test starts? Similar to what create_and_rename_folder is doing https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go;drc\u003d3709a18a8b9e212568ce5d169eeb7dd0bb3ffa0e;l\u003d51\n\n(I\u0027m fine if we change this in a more focused cl)",
+      "parentUuid": "78c7a19e_918248a0",
+      "revId": "eed4c2f1a5571bc29baff4f6da4aeef6ced15cca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57e9a7ee_a5869984",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
         "patchSetId": 3
