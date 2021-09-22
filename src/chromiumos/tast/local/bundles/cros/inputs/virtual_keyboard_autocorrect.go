@@ -15,9 +15,9 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
-	"chromiumos/tast/local/chrome/ui/mouse"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
@@ -188,7 +188,7 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		clickTarget := coords.NewPoint(
 			boundingBox.Left+(boundingBox.Width/3),
 			boundingBox.Top+(boundingBox.Height/2))
-		mouse.Click(ctx, tconn, clickTarget, mouse.LeftButton)
+		mouse.Click(tconn, clickTarget, mouse.LeftButton)(ctx)
 
 		undoWindowFinder := nodewith.ClassName("UndoWindow").Role(role.Window)
 		undoButtonFinder := nodewith.Name("Undo").Role(role.Button).Ancestor(undoWindowFinder)
