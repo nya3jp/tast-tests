@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1061638_c423def9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-22T22:31:14Z",
+      "side": 1,
+      "message": "As resize_lock_helper is just having 1 method, you can ignore this and send in the original change with local methods and without helper package. I will look into optimizing the methods later.\n\nI don\u0027t want to hold this change for long.",
+      "revId": "ff836ae9b06eeab7cbe346906942e707dcb89383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c43add74_12604f27",
