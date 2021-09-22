@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/chrome/ui"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -107,7 +107,7 @@ func leftClickLacros(ctx context.Context, ctconn *chrome.TestConn, windowID int,
 	}
 	// Compute the node coordinates in cros-chrome root window coordinate space by
 	// adding the top left coordinate of the lacros-chrome window in cros-chrome root window coorindates.
-	return mouse.Click(ctx, ctconn, w.BoundsInRoot.TopLeft().Add(n.Location.CenterPoint()), mouse.LeftButton)
+	return mouse.Click(ctconn, w.BoundsInRoot.TopLeft().Add(n.Location.CenterPoint()), mouse.LeftButton)(ctx)
 }
 
 func toggleThreeDotMenu(ctx context.Context, tconn *chrome.TestConn, clickFn func(*ui.Node) error) error {
@@ -196,7 +196,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, t
 			// TODO(crbug.com/1067535): Subtract -1 to ensure drag-resize occurs for now.
 			start := coords.NewPoint(sb.Left+sb.Width-1, sb.Top+sb.Height-1)
 			end := coords.NewPoint(sb.Left+sb.Height, sb.Top+sb.Width)
-			if err := mouse.Drag(ctx, f.TestAPIConn, start, end, testDuration); err != nil {
+			if err := mouse.Drag(f.TestAPIConn, start, end, testDuration)(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag resize")
 			}
 			return nil
@@ -239,7 +239,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtData, t
 			// Drag from not occluding to completely occluding.
 			start := coords.NewPoint(sbr.Left+dragMoveOffsetDP, sbr.Top+dragMoveOffsetDP)
 			end := coords.NewPoint(sbl.Left+dragMoveOffsetDP, sbl.Top+dragMoveOffsetDP)
-			if err := mouse.Drag(ctx, f.TestAPIConn, start, end, testDuration); err != nil {
+			if err := mouse.Drag(f.TestAPIConn, start, end, testDuration)(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag move")
 			}
 			return nil

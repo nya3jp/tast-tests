@@ -250,6 +250,7 @@ func dragFromCrostini(ctx context.Context, pre crostini.PreData, files *filesapp
 	ui := uiauto.New(tconn)
 	dragPoint := dragAppletWindow.BoundsInRoot.CenterPoint()
 	dropPoint := coords.Point{X: dragAppletWindow.BoundsInRoot.Left - 100, Y: 400}
+
 	dragDrop := func(ctx context.Context) error {
 		if err = mouse.Drag(tconn, dragPoint, dropPoint, time.Second)(ctx); err != nil {
 			return errors.Wrap(err, "drag and drop")
