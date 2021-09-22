@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b9a948c_39cd6d8c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-22T22:13:39Z",
+      "side": 1,
+      "message": "\u003e This is still necessary because we\u0027re only reconnecting on RPCDUT.Reboot(), right?\n\nCorrect. Introducing an interface like https://crrev.com/c/3158804 that all functions use, instead of *dut.DUT could solve this.\n\n\u003e Actually Reboot() method will be called https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/sysutil/rootfs.go;l\u003d72\n\nRight, but it calls the underlying dut.DUT.Reboot, which won\u0027t reconnect the rpc connection, unless we change the MakeRootfsWritable func signature.\n\n\n\u003e We should probably remove 29-33 lines and 48-53 lines from https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/sysutil/rootfs.go;l\u003d48-53\n\nYou\u0027re right, we should fixup the MakeRootfsWritable func, once we figure out how to deal with these reconnects properly.",
+      "parentUuid": "a5d66320_545a3f82",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 3
+      },
+      "revId": "bd65096a18d0971fea808cec575cda26e6ba01de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c7256fb_f38507ac",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
         "patchSetId": 34
