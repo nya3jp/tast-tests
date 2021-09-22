@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/testing"
 )
+
 // CanvasSource defines what is fed to the <canvas> that we can capture from.
 type CanvasSource int
 
@@ -30,13 +31,15 @@ const (
 
 	// UseGlClearColor indicates flipping colours using WebGL's clearColor().
 	UseGlClearColor CanvasSource = iota
+	// UseVideo indicates using a GetUserMedia() captured stream as canvas source.
+	UseVideo
 )
 
 // RunCaptureStream drives the code verifying the captureStream() functionality.
 // measurementDuration, if != 0, specifies the time to collect performance
 // metrics; conversely if == 0 the test instructs JS code to verify the capture
 // correctness and finishes immediately.
-func RunCaptureStream(ctx context.Context, s *testing.State, cr *chrome.Chrome,  source CanvasSource, measurementDuration time.Duration) error {
+func RunCaptureStream(ctx context.Context, s *testing.State, cr *chrome.Chrome, source CanvasSource, measurementDuration time.Duration) error {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
@@ -51,6 +54,10 @@ func RunCaptureStream(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 	validate := measurementDuration == 0
 	if source == UseGlClearColor {
 		if err := conn.Call(ctx, nil, "captureFromCanvasWithAlternatingColoursAndInspect", validate); err != nil {
+			return errors.Wrap(err, "failed to run test HTML")
+		}
+	} else if source == UseVideo {
+		if err := conn.Call(ctx, nil, "captureFromCanvasWithVideoAndInspect", validate); err != nil {
 			return errors.Wrap(err, "failed to run test HTML")
 		}
 	} else {
@@ -98,5 +105,6 @@ func DataFiles() []string {
 	return []string{
 		htmlFile,
 		"third_party/blackframe.js",
+		"third_party/three.js/three.module.js",
 	}
 }

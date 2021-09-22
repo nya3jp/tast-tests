@@ -4,7 +4,10 @@
   <canvas id='canvas' width=10 height=10></canvas>
   <video id='video' autoplay></video>
 <script src="third_party/blackframe.js"></script>
+<script type="module" src="third_party/three.js/three.module.js"></script>
 <script>
+const WIDTH = 320;
+const HEIGHT = 240;
 
 function nextFrame(t) {
   return new Promise(resolve => {
@@ -30,8 +33,59 @@ async function drawAlternatingColours(canvasId, framerate) {
   drawAlternatingColours(canvasId, framerate);
 }
 
-const WIDTH = 128;
-const HEIGHT = 128;
+
+async function renderGetUserMediaWithPerspective(canvas, width, height) {
+  const constraints = {
+    audio: false,
+    video: {
+      width: width,
+      height: height
+    }
+  };
+  const stream = await navigator.mediaDevices.getUserMedia(constraints);
+  video = document.createElement('video');
+  video.autoplay = true;
+  video.srcObject = stream;
+
+  let THREE = await import ('/third_party/three.js/three.module.js');
+
+  let camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  let scene = new THREE.Scene();
+
+  const texture = new THREE.VideoTexture(video);
+  texture.needsUpdate;
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  texture.format = THREE.RGBFormat;
+  texture.crossOrigin = 'anonymous';
+
+  const material = new THREE.MeshBasicMaterial({
+    map: texture
+  });
+
+  const geometry = new THREE.PlaneGeometry(width / height, 1);
+  geometry.rotateX(-Math.PI / 6); // pi / 6 = 30 deg.
+
+  const mesh = new THREE.Mesh(geometry, material);
+  mesh.position.z = -1;
+  scene.add(mesh);
+
+  let renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    canvas: canvas
+  });
+  renderer.setPixelRatio(width / height);
+  renderer.setSize(width, height, false);
+
+  animate(scene, camera, renderer);
+}
+
+function animate(scene, camera, renderer) {
+  renderer.render(scene, camera);
+  requestAnimationFrame((timestamp) => {
+    animate(scene, camera, renderer)
+  });
+}
 
 async function captureFromCanvasAndInspect(validate) {
   const canvas = document.getElementById('canvas');
@@ -61,9 +115,9 @@ async function captureFromCanvasAndInspect(validate) {
     throw new DOMException(`Bad stream dimensions ` +
                             `${video.width}x${video.height}`);
   }
-  if (video.width !== WIDTH || video.height !== HEIGHT) {
-    throw new DOMException(`Unexpected capture resolution, got: `+
-      `${video.width}x${video.height}, expected ` + `${WIDTH}x${HEIGHT}`);
+  if (video.width !== canvas.width || video.height !== canvas.height) {
+    throw new DOMException(`Unexpected capture resolution, got: ` +
+      `${video.width}x${video.height}, expected ${canvas.width}x${canvas.height}`);
   }
 
   // Draw the <video> contents in an offscreen canvas to validate the pixels.
@@ -83,6 +137,12 @@ async function captureFromCanvasWithAlternatingColoursAndInspect(validate) {
   canvas.width = WIDTH;
   canvas.height = HEIGHT;
   await drawAlternatingColours(canvas, FRAMERATE);
+  await captureFromCanvasAndInspect(validate)
+}
+
+async function captureFromCanvasWithVideoAndInspect(validate) {
+  const canvas = document.getElementById('canvas');
+  await renderGetUserMediaWithPerspective(canvas, WIDTH, HEIGHT);
   await captureFromCanvasAndInspect(validate)
 }
 
