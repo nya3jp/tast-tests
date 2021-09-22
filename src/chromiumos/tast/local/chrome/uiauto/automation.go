@@ -793,3 +793,24 @@ func (ac *Context) DoDefault(finder *nodewith.Finder) Action {
 		return nil
 	}
 }
+
+// EnsureFocused returns a function that calls FocusAndWait() and uses error handling to ensure
+// the given object is focused. This function is used to replace the function FocusAndWait() of
+// filesapp package due to `event does not occur` error.
+func (ac *Context) EnsureFocused(finder *nodewith.Finder) Action {
+	return func(ctx context.Context) error {
+		info, err := ac.Info(ctx, finder)
+		if err != nil {
+			return err
+		}
+		if info.State[state.Focused] {
+			return nil
+		}
+
+		if err = ac.FocusAndWait(finder)(ctx); err != nil {
+			// There are chances that the focus event does not occur but the node is already focused.
+			return ac.WaitUntilExists(finder.Focused())(ctx)
+		}
+		return nil
+	}
+}
