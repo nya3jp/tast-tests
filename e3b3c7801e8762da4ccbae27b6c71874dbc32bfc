@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25285bae_8ed89c01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-22T00:50:59Z",
+      "side": 1,
+      "message": "Hi nya@,\nthe CQ emit the message like:\n\"CL is missing the approving vote on Tast-Review label.\"\nDoes that means the tast-owner need to CR+2 again?",
+      "revId": "e3b3c7801e8762da4ccbae27b6c71874dbc32bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
