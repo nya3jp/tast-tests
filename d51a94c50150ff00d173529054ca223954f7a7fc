@@ -201,6 +201,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca479f74_8a0b5348",
+        "filename": "src/chromiumos/tast/remote/firmware/fixture/fixture.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-22T23:18:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef66ec34_ce250952",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "d51a94c50150ff00d173529054ca223954f7a7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "461b8354_e6fb0066",
@@ -356,6 +380,30 @@
       "side": 1,
       "message": "Incorrect, see comment on fixture.go",
       "parentUuid": "7fbb0101_6a27cc46",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "d51a94c50150ff00d173529054ca223954f7a7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "678c1505_dfaf6dc2",
+        "filename": "src/chromiumos/tast/remote/firmware/pre/pre.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-09-22T23:18:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796341e0_9a159bfa",
       "range": {
         "startLine": 145,
         "startChar": 1,
