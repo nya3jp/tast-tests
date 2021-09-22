@@ -43,6 +43,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23fa2520_3bda4aa6",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T19:19:38Z",
+      "side": 1,
+      "message": "update: leave this variable as it is if you prefer (but see my comment below)",
+      "parentUuid": "294dbc60_8d45099f",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067ff537_a901b504",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T19:19:38Z",
+      "side": 1,
+      "message": "nit (here and in the rest of the function names): Sdcard should be SDCard. \n\nSo the full name should be: WaitForARCSDCardVolumeMount\n\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 32
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92150f1a_95cc0bce",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
         "patchSetId": 21
