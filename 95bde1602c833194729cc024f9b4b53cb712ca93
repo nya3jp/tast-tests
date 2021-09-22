@@ -64,6 +64,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b606b8e_e776e5e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-22T18:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97916d15_4127fd38",
+      "range": {
+        "startLine": 45,
+        "startChar": 82,
+        "endLine": 45,
+        "endChar": 98
+      },
+      "revId": "95bde1602c833194729cc024f9b4b53cb712ca93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47e0f968_ab7df0da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-22T18:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c5b1e89_bfa3e5c4",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "95bde1602c833194729cc024f9b4b53cb712ca93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90e575f4_f3321269",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-09-22T02:12:49Z",
       "side": 1,
       "message": "this part looks out of scope of the getter?\nHow about splitting this function into two, getter and verifier? (I think the check at L143, L186 should be a part of that verifier, too).\n\nOr, if you prefer, you may want to keep mixing both like the current implementation, but repurpose this function as just verifying overview items, instead, i.e. not returning items, and rename the function.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 30
+      },
+      "revId": "95bde1602c833194729cc024f9b4b53cb712ca93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5558dcc4_0c2ac5f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-22T18:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90e575f4_f3321269",
       "range": {
         "startLine": 52,
         "startChar": 1,
