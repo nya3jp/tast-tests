@@ -16,6 +16,213 @@
       "message": "tast review LGTM % comment",
       "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92150f1a_95cc0bce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T18:36:24Z",
+      "side": 1,
+      "message": "nit (here and below):\n\nsince this is a function pointer, it should follow the same rules as Getters naming convention. Basically remove the \"get\" prefix.\n\nhttps://golang.org/doc/effective_go#Getters",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f8bf0d_a130f08a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T18:36:24Z",
+      "side": 1,
+      "message": "nit: add docstring for all non-trivial funcs\n\n(a simple getter qualifies as trivial func, but this getter is not trival-enough... e.g: it does a join for Pictures/capybaras... not possible to guess that by just looking at the function name",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 4
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d19417e4_514a595a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T18:36:24Z",
+      "side": 1,
+      "message": "nit, ditto above\n\nhttps://golang.org/doc/effective_go#Getters",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 8
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "186214a7_e8685e6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T18:36:24Z",
+      "side": 1,
+      "message": "ditto above: Getter without prefix + docstring",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 24
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22a57e48_6bcb58d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T18:36:24Z",
+      "side": 1,
+      "message": "(cont from comment below).\n\nthis func should return an err instead of doing Fatal",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 85
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78ede3e0_77dbe91c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T18:36:24Z",
+      "side": 1,
+      "message": "nit: returned errors should not start with capital letter",
+      "range": {
+        "startLine": 152,
+        "startChar": 24,
+        "endLine": 152,
+        "endChar": 25
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2cdb4cd_ed401992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T18:36:24Z",
+      "side": 1,
+      "message": "ditto above: Getter without prefix.\n\nhttps://golang.org/doc/effective_go#Getters",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 8
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6cd9e67_9791d4d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T18:36:24Z",
+      "side": 1,
+      "message": "this should be after createFileCopies() because at this point the folder was not created (see my comment above)",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 4
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a1aa06_4e731369",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T18:36:24Z",
+      "side": 1,
+      "message": "(cont from comment above)\n\none possible way to put the defer after create and also catch error could be:\n\n  err :\u003d createFileCopiesUnderTargetPath(...)\n  // Cleanup should be called even if err is returned because some files might have been created.\n  defer func() {\n  }\n  if err !\u003d nil {\n    s.Fatal(...)\n  }",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 247,
+        "endChar": 32
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
