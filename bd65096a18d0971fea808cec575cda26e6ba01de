@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14bb4f84_955632fd",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-09-22T07:55:12Z",
+      "side": 1,
+      "message": "Actually Reboot() method will be called https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/sysutil/rootfs.go;l\u003d72\n\nWe should probably remove 29-33 lines and 48-53 lines from https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/sysutil/rootfs.go;l\u003d48-53",
+      "parentUuid": "a5d66320_545a3f82",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 3
+      },
+      "revId": "bd65096a18d0971fea808cec575cda26e6ba01de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c7256fb_f38507ac",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
         "patchSetId": 34
