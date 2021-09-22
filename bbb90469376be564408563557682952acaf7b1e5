@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd10316e_71ba2fb4",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-22T11:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f6c7332_eb156eb9",
+      "range": {
+        "startLine": 554,
+        "startChar": 0,
+        "endLine": 554,
+        "endChar": 1
+      },
+      "revId": "bbb90469376be564408563557682952acaf7b1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "252b8543_9cbcc961",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-09-22T10:44:14Z",
       "side": 1,
       "message": "nit: also add a comment on why this exists, not everybody checks the generator",
+      "revId": "bbb90469376be564408563557682952acaf7b1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18235e5a_c4c9e4d4",
+        "filename": "src/chromiumos/tast/common/policy/gen/policy_tast_struct_creator.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-09-22T11:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "252b8543_9cbcc961",
       "revId": "bbb90469376be564408563557682952acaf7b1e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
