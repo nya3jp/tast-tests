@@ -420,6 +420,12 @@ func init() {
 				exe: "vgem_slow",
 			},
 			Timeout: 5 * time.Minute,
+		}, {
+			Name: "template",
+			Val: igtTest{
+				exe: "template",
+			},
+			Timeout: 1 * time.Minute,
 		}},
 		Attr:    []string{"group:graphics", "graphics_perbuild", "graphics_igt"},
 		Fixture: "graphicsNoChrome",
