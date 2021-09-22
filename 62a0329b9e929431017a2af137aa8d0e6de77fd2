@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e991eeb4_a6c3c61e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-09-22T07:53:21Z",
+      "side": 1,
+      "message": "add cros-tdm-tpe-eng@google.com",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 23
+      },
+      "revId": "62a0329b9e929431017a2af137aa8d0e6de77fd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
