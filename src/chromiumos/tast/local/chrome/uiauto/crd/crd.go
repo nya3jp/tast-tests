@@ -71,8 +71,7 @@ func getAccessCode(ctx context.Context, crd *chrome.Conn) (string, error) {
 func Launch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error {
 	// Ensures the companion extension for the Chrome Remote Desktop website
 	// https://remotedesktop.google.com is installed.
-	app := cws.App{Name: "Remote Desktop", URL: appCWSURL, InstalledTxt: "Remove from Chrome",
-		AddTxt: "Add to Chrome", ConfirmTxt: "Add extension"}
+	app := cws.App{Name: "Remote Desktop", URL: appCWSURL}
 	if err := cws.InstallApp(ctx, cr, tconn, app); err != nil {
 		return errors.Wrap(err, "failed to install CRD app")
 	}
