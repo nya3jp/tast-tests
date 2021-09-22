@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a645dec9_ab1d9111",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1264073
+      },
+      "writtenOn": "2021-09-22T22:01:19Z",
+      "side": 1,
+      "message": "Thanks Kyle, this is awesome!  I\u0027ve never reviewed code in go before, so probably good to have someone with some more experience take a look as well, but lgtm!",
+      "revId": "85279634e1300a1fde692e6cb18e4a871841eb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "630bd105_c2edb695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multidevice/phone_hub_do_not_disturb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1264073
+      },
+      "writtenOn": "2021-09-22T22:01:19Z",
+      "side": 1,
+      "message": "I\u0027ve never worked with go in chromium before so there may be an exception I\u0027m unaware of, but if the 80char line-length rule applies please fix this file.  Also looks like this uses tabs instead of spaces, is that the expectation?",
+      "revId": "85279634e1300a1fde692e6cb18e4a871841eb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0da79021_5536b61f",
@@ -43,6 +77,40 @@
         "endLine": 24,
         "endChar": 46
       },
+      "revId": "85279634e1300a1fde692e6cb18e4a871841eb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9519812_286fcc57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multidevice/phone_hub_do_not_disturb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1264073
+      },
+      "writtenOn": "2021-09-22T22:01:19Z",
+      "side": 1,
+      "message": "This isn\u0027t exactly part of nearby share, is this for emails or test grouping?\n\nFor test grouping, it would probably be good to make a new one for \"cross-device\" or similar.\n\nFor email list, the eng-team can be reached at chromeos-cross-device-eng@",
+      "revId": "85279634e1300a1fde692e6cb18e4a871841eb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98dd9d25_e107208c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multidevice/phone_hub_do_not_disturb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1264073
+      },
+      "writtenOn": "2021-09-22T22:01:19Z",
+      "side": 1,
+      "message": "is this the phone? if so might be good to mention in the name (i.e. androidDevice or similar)",
       "revId": "85279634e1300a1fde692e6cb18e4a871841eb1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
