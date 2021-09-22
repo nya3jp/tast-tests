@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "397c5e2e_c5fe39e1",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-22T09:14:57Z",
+      "side": 1,
+      "message": "tarm.serial will respect the timeout provided in config and return error code if it\u0027s exceeded.  So it will not be indefinite but the granularity depends on what the user configured.  Do you think this is ok or should I still wrap in go routine select loop to get more accurate deadline exceeded behavior?  Will work on the other comments.",
+      "parentUuid": "a870444c_8899d5a3",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "3b659b7a2f58b21854b2474a88be493c66377ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "182d10c3_6ddc2465",
         "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_opener.go",
         "patchSetId": 2
