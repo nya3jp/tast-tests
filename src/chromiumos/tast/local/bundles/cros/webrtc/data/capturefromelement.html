@@ -87,6 +87,21 @@ function animate(scene, camera, renderer) {
   });
 }
 
+async function asyncIsBlackFrame(context, video, width, height) {
+  let i = 10;
+  let frameIsBlack = true;
+  do {
+    i--;
+    await nextFrame(1000/60);
+    // drawImage() and getImageData() are asynchronous and sometimes return
+    // before any actual |video| content has been drawn. Try a few times.
+    context.drawImage(video, 0, 0, width, height);
+    imageData = context.getImageData(0, 0, width, height);
+    frameIsBlack = isBlackFrame(imageData.data, imageData.data.length)
+  } while (i > 0 && frameIsBlack);
+  return frameIsBlack
+}
+
 async function captureFromCanvasAndInspect(validate) {
   const canvas = document.getElementById('canvas');
 
@@ -124,9 +139,7 @@ async function captureFromCanvasAndInspect(validate) {
   const width = Math.max(video.width / 8, 128);
   const height = Math.max(video.height / 8, 128);
   const context = new OffscreenCanvas(width, height).getContext('2d');
-  context.drawImage(video, 0, 0, width, height);
-  const imageData = context.getImageData(0, 0, width, height);
-  if (isBlackFrame(imageData.data, imageData.data.length)) {
+  if (await asyncIsBlackFrame(context, video, width, height)) {
     throw new DOMException('Captured data is considered all black');
   }
 }
