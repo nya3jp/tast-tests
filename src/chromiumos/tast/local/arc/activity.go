@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -508,7 +508,7 @@ func (ac *Activity) resizeWindowR(ctx context.Context, tconn *chrome.TestConn, b
 	to.X = int(math.Round(float64(to.X) / dsf))
 	to.Y = int(math.Round(float64(to.Y) / dsf))
 
-	return mouse.Drag(ctx, tconn, src, to, t)
+	return mouse.Drag(tconn, src, to, t)(ctx)
 }
 
 // SetWindowState sets the window state. Note this method is async, so ensure to call ash.WaitForArcAppWindowState after this.
@@ -801,17 +801,17 @@ func (ac *Activity) Focus(ctx context.Context, tconn *chrome.TestConn) error {
 
 // dragWithPause performs a regular mouse drag with a brief pause before pressing and moving.
 func dragWithPause(ctx context.Context, tconn *chrome.TestConn, from, to coords.Point, t time.Duration) (firstErr error) {
-	if firstErr := mouse.Move(ctx, tconn, from, 0); firstErr != nil {
+	if firstErr := mouse.Move(tconn, from, 0)(ctx); firstErr != nil {
 		return firstErr
 	}
 	if firstErr := testing.Sleep(ctx, time.Second); firstErr != nil {
 		return firstErr
 	}
-	if firstErr := mouse.Press(ctx, tconn, mouse.LeftButton); firstErr != nil {
+	if firstErr := mouse.Press(tconn, mouse.LeftButton)(ctx); firstErr != nil {
 		return firstErr
 	}
 	defer func() {
-		if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+		if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
 			if firstErr == nil {
 				firstErr = err
 			} else {
@@ -819,7 +819,7 @@ func dragWithPause(ctx context.Context, tconn *chrome.TestConn, from, to coords.
 			}
 		}
 	}()
-	return mouse.Move(ctx, tconn, to, t)
+	return mouse.Move(tconn, to, t)(ctx)
 }
 
 // ToAshWindowState returns equivalent ash WindowStateType for the arc WindowState.

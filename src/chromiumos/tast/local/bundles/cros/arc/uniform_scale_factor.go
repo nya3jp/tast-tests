@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/perappdensity"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -123,7 +123,7 @@ func UniformScaleFactor(ctx context.Context, s *testing.State) {
 
 	// Invoke a mouse click (rather than using click from UI automator), as to avoid the caption bar
 	// being shown unnecessarily. This occurs as the events from UI automator aren't forwarded to Chrome.
-	if err := mouse.Click(ctx, tconn, point, mouse.LeftButton); err != nil {
+	if err := mouse.Click(tconn, point, mouse.LeftButton)(ctx); err != nil {
 		s.Fatal("Failed to click on the view: ", err)
 	}
 

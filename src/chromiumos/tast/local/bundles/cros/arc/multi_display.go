@@ -27,7 +27,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ui/mouse"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/input"
@@ -729,11 +729,11 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 				}
 
 				winPt := coords.NewPoint(win.BoundsInRoot.Left+win.BoundsInRoot.Width/2, win.BoundsInRoot.Top+win.CaptionHeight/2)
-				if err := mouse.Move(ctx, tconn, winPt, 0); err != nil {
+				if err := mouse.Move(tconn, winPt, 0)(ctx); err != nil {
 					return err
 				}
 
-				if err := mouse.Press(ctx, tconn, mouse.LeftButton); err != nil {
+				if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
 					return err
 				}
 
@@ -743,11 +743,11 @@ func dragWindowBetweenDisplays(ctx context.Context, s *testing.State, cr *chrome
 
 				dstDispBnds := disp.displayInfo(dir.dstDispType).Bounds
 				dstPt := coords.NewPoint(dstDispBnds.Width/2, dstDispBnds.Height/2)
-				if err := mouse.Move(ctx, tconn, dstPt, time.Second); err != nil {
+				if err := mouse.Move(tconn, dstPt, time.Second)(ctx); err != nil {
 					return err
 				}
 
-				if err := mouse.Release(ctx, tconn, mouse.LeftButton); err != nil {
+				if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
 					return err
 				}
 
@@ -1464,7 +1464,7 @@ func (cursor *cursorOnDisplay) moveTo(ctx context.Context, tconn *chrome.TestCon
 	} else {
 		return errors.Errorf("unexpected display: current %d, destination %d", cursor.currentDisp, dstDisp)
 	}
-	if err := mouse.Move(ctx, tconn, start, 0); err != nil {
+	if err := mouse.Move(tconn, start, 0)(ctx); err != nil {
 		return err
 	}
 	for i := 0; i < coordsMargin*2; i++ {
