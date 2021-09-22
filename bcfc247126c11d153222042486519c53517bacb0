@@ -16,6 +16,41 @@
       "message": "@ricardoq I believe I need a CR+2 from you since @tetsui is not an owner unless there\u0027s something with the Tast-Review process that I\u0027m misunderstanding?",
       "revId": "bcfc247126c11d153222042486519c53517bacb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d9e571e_962d8021",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T16:22:54Z",
+      "side": 1,
+      "message": "+2 (sorry for the delay, I finally got my +2 back)",
+      "revId": "bcfc247126c11d153222042486519c53517bacb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0476e730_8a74c657",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-22T16:22:54Z",
+      "side": 1,
+      "message": "Ah... Ok... I temporary lost +2 last week (working on that... hopefully I\u0027ll regain +2 tomorrow)",
+      "parentUuid": "393160b0_eea00544",
+      "revId": "bcfc247126c11d153222042486519c53517bacb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
