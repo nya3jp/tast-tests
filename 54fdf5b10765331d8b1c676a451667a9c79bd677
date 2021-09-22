@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5000627e_030a3e58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-22T17:25:16Z",
+      "side": 1,
+      "message": "IIRC, termina-dlc is preloading the DLC onto stateful for test image.\nRef: https://source.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/chromeos-base/termina-dlc/termina-dlc-9999.ebuild;l\u003d58?q\u003dtermina-dlc\n\nFor preloaded DLCs, OOBE completion doesn\u0027t matter actually.\nOnly when dlcsevice \"asks\" update_engine to install the DLC from Omaha does OOBE block installation at the moment.\n\nQuestion 1: Did the device you\u0027re testing on have DLC preloaded at `/var/cache/dlc-images/termina-dlc`?\nQuestion 2: Are there run previous to the failing tests that wipe stateful + no get provisioned in the lab due to OS being on the requested version?",
+      "revId": "54fdf5b10765331d8b1c676a451667a9c79bd677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
