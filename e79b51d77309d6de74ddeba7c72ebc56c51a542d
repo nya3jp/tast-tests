@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae1c2527_c82ebf48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-22T01:34:29Z",
+      "side": 1,
+      "message": "This is defined twice. It can be probably moved out from the embed function.",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 525,
+        "endChar": 71
+      },
+      "revId": "e79b51d77309d6de74ddeba7c72ebc56c51a542d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "26d008c2_e331016f",
