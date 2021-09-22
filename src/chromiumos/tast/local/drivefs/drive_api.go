@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // APIClient contains the stored client and Drive API service.
@@ -61,6 +62,22 @@ func (d *APIClient) createNewDriveService(ctx context.Context) (*drive.Service, 
 	}
 
 	return service, nil
+}
+
+// CreateNewFile creates a new file with supplied filename and specified type in the directory path.
+func (d *APIClient) CreateNewFile(ctx context.Context, fileName string, dirPath []string, fileType FileMime) (*drive.File, error) {
+	testing.ContextLogf(ctx, "Creating new %q file with name %q", fileType, fileName)
+	service, err := d.createNewDriveService(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	file := &drive.File{
+		MimeType: string(fileType),
+		Name:     fileName,
+		Parents:  dirPath,
+	}
+	return service.Files.Create(file).Do()
 }
 
 // CreateBlankGoogleDoc creates a google doc with supplied filename in the directory path.
