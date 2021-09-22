@@ -16,7 +16,7 @@ import (
 // URI of the test webcam device in the system.
 func ReleaseURI(ctx context.Context) (string, error) {
 	// b585990a-003e-5270-89d5-3705a17f9a43 is the GUID for a fake device.
-	cmd := testexec.CommandContext(ctx, "fwupdmgr", "get-releases", "-v", "b585990a-003e-5270-89d5-3705a17f9a43", "--ignore-power")
+	cmd := testexec.CommandContext(ctx, "fwupdmgr", "get-releases", "-v", "b585990a-003e-5270-89d5-3705a17f9a43")
 	output, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", err
