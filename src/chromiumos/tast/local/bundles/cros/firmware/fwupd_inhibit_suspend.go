@@ -60,6 +60,7 @@ func FwupdInhibitSuspend(ctx context.Context, s *testing.State) {
 
 	// run the update
 	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", uri)
+	cmd.Env = append(os.Environ(), "CACHE_DIRECTORY=/var/cache/fwupd")
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		s.Fatalf("%q failed: %v", cmd.Args, err)

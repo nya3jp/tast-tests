@@ -6,6 +6,7 @@ package firmware
 
 import (
 	"context"
+	"os"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/bundles/cros/firmware/fwupd"
@@ -34,6 +35,7 @@ func FwupdInstallRemote(ctx context.Context, s *testing.State) {
 	}
 
 	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", uri)
+	cmd.Env = append(os.Environ(), "CACHE_DIRECTORY=/var/cache/fwupd")
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatalf("%q failed: %v", cmd.Args, err)
 	}
