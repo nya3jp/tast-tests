@@ -46,17 +46,6 @@ type clocks struct {
 	guestMono time.Time
 }
 
-type readclocksTimespec struct {
-	Seconds     int64 `json:"tv_sec"`
-	NanoSeconds int64 `json:"tv_nsec"`
-}
-
-type readclocksOutput struct {
-	Boot readclocksTimespec `json:"CLOCK_BOOTTIME"`
-	Mono readclocksTimespec `json:"CLOCK_MONOTONIC"`
-	TSC  int64
-}
-
 func readClocks(ctx context.Context, s *testing.State, a *arc.ARC, readclocksPath string) (clocks, error) {
 	var c clocks
 	var ts unix.Timespec
