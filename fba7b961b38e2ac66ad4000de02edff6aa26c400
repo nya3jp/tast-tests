@@ -153,6 +153,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df5d427a_fe5bb83d",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-09-23T08:25:56Z",
+      "side": 1,
+      "message": "As the members are private, you cannot initialise the struct directly from another package, like kiosk.",
+      "parentUuid": "55449072_92e9e8c1",
+      "revId": "fba7b961b38e2ac66ad4000de02edff6aa26c400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a06b074b_24d52dc1",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
         "patchSetId": 1
