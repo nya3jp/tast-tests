@@ -507,6 +507,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "789cc3ac_7d4e8b04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-23T16:20:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a0797ae_4380fa36",
+      "range": {
+        "startLine": 176,
+        "startChar": 37,
+        "endLine": 176,
+        "endChar": 48
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "022a7483_39e0f11a",
@@ -568,6 +592,30 @@
       "side": 1,
       "message": "Can you please share the output/error when you try to run this command?\n\nAlso, I don\u0027t believe you need \"-rf\" since this is not a directory.\n\nFinally, I think you can use https://pkg.go.dev/os#Remove here, so you wouldn\u0027t need shell command.",
       "parentUuid": "11584afd_eea75418",
+      "range": {
+        "startLine": 201,
+        "startChar": 11,
+        "endLine": 201,
+        "endChar": 105
+      },
+      "revId": "21e1f1fbc6b9ba115813ace971cb0c1539deee7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "469effeb_cd80602a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_data_transfer_after_hotplug.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-23T16:20:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0edcaea9_46b87927",
       "range": {
         "startLine": 201,
         "startChar": 11,
