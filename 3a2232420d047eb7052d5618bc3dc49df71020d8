@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c592c9_4e87d986",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-09-23T16:58:26Z",
+      "side": 1,
+      "message": "Really sorry for letting this sit in my queue for so long. I\u0027ve add a few minor comments but the overall implementation LGTM.",
+      "revId": "3a2232420d047eb7052d5618bc3dc49df71020d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2ee294b_a11ebadf",
@@ -31,6 +48,52 @@
       "writtenOn": "2021-09-23T11:58:41Z",
       "side": 1,
       "message": "remove this line",
+      "revId": "3a2232420d047eb7052d5618bc3dc49df71020d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42d81ff3_0dc76b0f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-09-23T16:58:26Z",
+      "side": 1,
+      "message": "Can you elaborate on the purpose updating these settings here? These values are duped from the Gale overlay right (http://cs/chromeos_internal/src/private-overlays/overlay-gale-private/chromeos-base/chromeos-bsp-gale-testbed/files/)? I see some value in having it as a failsafe in case the Gale doesn\u0027t have the correct version or something, but I worry that we\u0027re duplicating code. If the overlay changes, we\u0027ll still be stuck using these settings. And if the Gale mistakenly has bad settings (due to an old version or otherwise), wouldn\u0027t we want that to surface in the test results, rather than overwriting them and leaving the issue invisible?",
+      "range": {
+        "startLine": 392,
+        "startChar": 2,
+        "endLine": 392,
+        "endChar": 36
+      },
+      "revId": "3a2232420d047eb7052d5618bc3dc49df71020d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74734b42_c19ecb45",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-09-23T16:58:26Z",
+      "side": 1,
+      "message": "Optional: In my experience, people running these tests tend to be clueless about what the setup should look like or what a failed ping likely entails. A very common issue is that the pcap and router don\u0027t have a direct ethernet connection, so we could consider adding an extra ping test that directly pings the pcap from the router, and gives a message that hints to the fact they may be missing an ethernet cable if it fails. Up to you if you think it\u0027s worthwhile, since the connection is already functionally tested by the below ping tests.",
+      "range": {
+        "startLine": 476,
+        "startChar": 1,
+        "endLine": 476,
+        "endChar": 48
+      },
       "revId": "3a2232420d047eb7052d5618bc3dc49df71020d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

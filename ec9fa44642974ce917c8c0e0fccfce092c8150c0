@@ -324,6 +324,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27f2580f_7b2ef9e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-09-23T16:58:26Z",
+      "side": 1,
+      "message": "I think this was mostly answered by Harpreet. Let me know if you have any questions for me that Harpreet didn\u0027t get to.",
+      "parentUuid": "dea92dd2_1f43bdbf",
+      "revId": "ec9fa44642974ce917c8c0e0fccfce092c8150c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "287b863a_81e880f1",
