@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d662f8c_deedbd78",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-23T18:31:06Z",
+      "side": 1,
+      "message": "Can be Unexported as the usage is local. Same for other places too",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 63
+      },
+      "revId": "81a4fb95d0abfd4c0babfdb2c7e4055bb1f1d97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c2494a4_4b463aed",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1952,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-23T18:31:06Z",
+      "side": 1,
+      "message": "Can be unexported  as it appears to be used internally (go/go-style/decisions#initialisms)",
+      "range": {
+        "startLine": 1952,
+        "startChar": 14,
+        "endLine": 1952,
+        "endChar": 35
+      },
+      "revId": "81a4fb95d0abfd4c0babfdb2c7e4055bb1f1d97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
