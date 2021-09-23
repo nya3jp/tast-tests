@@ -29,7 +29,7 @@ func init() {
 		Func:         AppEmacs,
 		Desc:         "Test Emacs in Terminal window",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         append([]string{"keepState", "ui.gaiaPoolDefault"}, screenshot.ScreenDiffVars...),
 		SoftwareDeps: []string{"chrome", "vm_host", "amd64"},
 		Params: []testing.Param{
