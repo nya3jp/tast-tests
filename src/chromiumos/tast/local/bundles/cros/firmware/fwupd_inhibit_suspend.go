@@ -48,18 +48,13 @@ func streamOutput(rc io.ReadCloser) <-chan string {
 // FwupdInhibitSuspend runs the fwupdtool utility and makes sure
 // that the system can suspend before and after, but not during an update.
 func FwupdInhibitSuspend(ctx context.Context, s *testing.State) {
-	uri, err := fwupd.ReleaseURI(ctx)
-	if err != nil {
-		s.Fatal("Failed to get release URI: ", err)
-	}
-
 	// make sure file does not exist before update
 	if _, err := os.Stat("/run/lock/power_override/fwupd.lock"); err == nil {
 		s.Fatal("System cannot suspend but no update has started")
 	}
 
 	// run the update
-	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", uri)
+	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", fwupd.ReleaseURI)
 	cmd.Env = append(os.Environ(), "CACHE_DIRECTORY=/var/cache/fwupd")
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {

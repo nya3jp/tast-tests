@@ -31,10 +31,9 @@ func init() {
 // detects devices in the system.
 func FwupdGetDevices(ctx context.Context, s *testing.State) {
 	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "get-devices", "--show-all")
-
 	output, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
-		s.Fatalf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
+		s.Errorf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
 	}
 	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "fwupdmgr.txt"), output, 0644); err != nil {
 		s.Error("Failed dumping fwupdmgr output: ", err)

@@ -6,7 +6,9 @@ package firmware
 
 import (
 	"context"
+	"io/ioutil"
 	"os"
+	"path/filepath"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/bundles/cros/firmware/fwupd"
@@ -29,14 +31,13 @@ func init() {
 // FwupdInstallRemote runs the fwupdtool utility and verifies that it
 // can update a device in the system using a remote repository.
 func FwupdInstallRemote(ctx context.Context, s *testing.State) {
-	uri, err := fwupd.ReleaseURI(ctx)
-	if err != nil {
-		s.Fatal("Failed to get release URI: ", err)
-	}
-
-	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", uri)
+	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", fwupd.ReleaseURI)
 	cmd.Env = append(os.Environ(), "CACHE_DIRECTORY=/var/cache/fwupd")
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		s.Fatalf("%q failed: %v", cmd.Args, err)
+	output, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Errorf("%q failed: %v", cmd.Args, err)
+	}
+	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "fwupdmgr.txt"), output, 0644); err != nil {
+		s.Error("Failed to write output from update: ", err)
 	}
 }
