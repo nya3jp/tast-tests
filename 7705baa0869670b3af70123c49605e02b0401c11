@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d34e339_dc2ece64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-23T03:07:03Z",
+      "side": 1,
+      "message": "+2\n\nTest passed the latest 18 builds, and no red before that.\nAlthough guideline says to wait for 20 consecutive builds, sounds safe to do it at 18.",
+      "revId": "7705baa0869670b3af70123c49605e02b0401c11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
