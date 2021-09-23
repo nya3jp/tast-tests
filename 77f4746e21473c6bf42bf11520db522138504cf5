@@ -22,6 +22,30 @@
       },
       "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aabc8e6a_6ff848ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T08:11:17Z",
+      "side": 1,
+      "message": "As per the comment from Yu-Hsuan Hsu in another CL, we came to know that headphones are not connected to the DUTs. Hence we just assumed the default node will be \"INTERNAL_SPEAKER\". \n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3132177/4..8/src/chromiumos/tast/local/bundles/cros/audio/local_audio_playback.go#b38",
+      "parentUuid": "021d0a18_bc85b918",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 40
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
