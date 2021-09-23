@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48f14ab0_01cea7a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-23T17:59:27Z",
+      "side": 1,
+      "message": "Ah yes, you\u0027re right. I tend to forget that go idiom, and SSIM is\nan acronym. Corrected throughout the changes.",
+      "parentUuid": "3f9522e7_e1bbc176",
+      "range": {
+        "startLine": 1023,
+        "startChar": 104,
+        "endLine": 1023,
+        "endChar": 119
+      },
+      "revId": "6aa658bdad0247d32a0e37e0827a61b7b073f294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9f9ebeb_baf83dff",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-09-23T06:46:18Z",
       "side": 1,
       "message": "local variables should be in lowerCamelCase, i.e. ssimLogFile",
+      "range": {
+        "startLine": 1054,
+        "startChar": 1,
+        "endLine": 1054,
+        "endChar": 12
+      },
+      "revId": "6aa658bdad0247d32a0e37e0827a61b7b073f294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6063b43_f5a06003",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-23T17:59:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9f9ebeb_baf83dff",
       "range": {
         "startLine": 1054,
         "startChar": 1,
