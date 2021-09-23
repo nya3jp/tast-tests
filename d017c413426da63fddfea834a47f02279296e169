@@ -16,6 +16,24 @@
       "message": "As this has overlapping code with the depending CL. Please send this in later once the master one is done. Thanks",
       "revId": "d017c413426da63fddfea834a47f02279296e169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25cdfc4d_691feab7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-23T21:37:48Z",
+      "side": 1,
+      "message": "Sorry for being not clear over chat. Since both test cases (Clamshell : Resize and Clamshell: Fullscreen) are using common methods, I uploaded the later CL, crrev.com/c/3169585 for Clamshell: Fullscreen with commit dependent on CL, crrev.com/c/3141971.  So that CL (crrev.com/c/3169585) for Clamshell: Fullscreen test case doesn\u0027t have duplicate code.",
+      "parentUuid": "6c6605f2_41a3b778",
+      "revId": "d017c413426da63fddfea834a47f02279296e169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
