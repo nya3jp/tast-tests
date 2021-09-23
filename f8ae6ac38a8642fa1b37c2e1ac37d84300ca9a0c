@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb59861_9237da35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-09-23T00:45:12Z",
+      "side": 1,
+      "message": "Friendly ping. Kindly address the comments so that we can submit this test. Thanks!",
+      "revId": "f8ae6ac38a8642fa1b37c2e1ac37d84300ca9a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87aa57a5_a543beac",
