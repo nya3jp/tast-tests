@@ -70,6 +70,30 @@
       },
       "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeee3631_2469e2ad",
+        "filename": "src/chromiumos/tast/services/cros/lacros/autoupdate_test_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-23T17:26:10Z",
+      "side": 1,
+      "message": "(Replied to the related change at https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3176400/1..2/src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go#b24)\n\nReopening.. until we find better names.",
+      "parentUuid": "e841d17d_c51a2109",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
