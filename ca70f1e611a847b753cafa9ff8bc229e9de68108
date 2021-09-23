@@ -159,6 +159,30 @@
       },
       "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a162a22_d58e9280",
+        "filename": "src/chromiumos/tast/services/cros/lacros/autoupdate_test_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-23T17:52:12Z",
+      "side": 1,
+      "message": "*wrong link in the previous comment 😄  https://source.corp.google.com/search?q\u003df:tast%2F.*service.go$\u0026sq\u003d\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2F",
+      "parentUuid": "4930e3ea_659f0db5",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
