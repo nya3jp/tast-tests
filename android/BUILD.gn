@@ -54,6 +54,7 @@ group("all") {
     "ArcSensorLatencyTest:ArcSensorLatencyTest",
     "ArcSoftInputModeTest:ArcSoftInputModeTest",
     "ArcSurfaceInsetsTest:ArcSurfaceInsetsTest",
+    "ArcTooManyOpenFilesTest:ArcTooManyOpenFilesTest",
     "ArcTtsTest:ArcTtsTest",
     "ArcWMTestApp:ArcWMTestApp_23",
     "ArcWMTestApp:ArcWMTestApp_24",
