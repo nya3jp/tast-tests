@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "763f51aa_8d7bd7ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504745
+      },
+      "writtenOn": "2021-09-23T19:54:36Z",
+      "side": 1,
+      "message": "\u003e We almost certainly do not want to update glibc on a past branch--toolchain updates on old branches are an extreme situation and we\u0027ll need approval from the security team to do this. Last I\u0027ve seen, the CrOS security team has said this should not get merged to the LTS branch.",
+      "revId": "c6f5865fd9a8eb8e6c8e99112b0399954f7da67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
