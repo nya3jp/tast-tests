@@ -6,9 +6,7 @@ package firmware
 
 import (
 	"context"
-	// "strconv"
 
-	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/pre"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -19,20 +17,24 @@ func init() {
 		Func:         ECSize,
 		Desc:         "Compare ec flash size to expected ec size from a chip-to-size map",
 		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
-		Data:         []string{firmware.ConfigFile},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
-		SoftwareDeps: []string{"crossystem", "flashrom"},
-		Pre:          pre.NormalMode(),
-		Vars:         []string{"servo"},
-		ServiceDeps:  []string{"tast.cros.firmware.BiosService"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		SoftwareDeps: pre.SoftwareDeps,
+		ServiceDeps:  pre.ServiceDeps,
+		Pre:          pre.NormalMode(),
+		Data:         pre.Data,
+		Vars:         pre.Vars,
 	})
 }
 
+// in alphabetical order
 var chipSizeMap = map[string]int{
-	"npcx_uut": 512, // (512 * 1024) bytes
-	"it83xx":   512,
-	"stm32":    256,
+	"it83xx":          512, // (512 * 1024) bytes
+	"ite_spi_ccd_i2c": 1024,
+	"mec1322":         256,
+	"npcx_spi":        512,
+	"npcx_uut":        512,
+	"stm32":           256,
 }
 
 func ECSize(ctx context.Context, s *testing.State) {
