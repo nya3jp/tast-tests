@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4df3fc36_ca289511",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-23T20:25:25Z",
+      "side": 1,
+      "message": "happened to add same variables in paralell with different data types in const.go, updated.",
+      "revId": "4cd07e2c8d31f2174c64cbc1162f498753c23a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
