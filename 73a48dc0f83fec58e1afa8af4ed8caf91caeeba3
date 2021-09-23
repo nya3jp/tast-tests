@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b176d0d3_5a43cf37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-23T00:02:50Z",
+      "side": 1,
+      "message": "Sure, will do, and update the CL description with TEST\u003d.",
+      "parentUuid": "d6a5af90_2e99f26c",
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db4af252_eb7c59db",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-09-22T22:46:31Z",
       "side": 1,
       "message": "nit: Do you want to try to use the new runtime variable?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#global-runtime-variables-recommended-for-new-code\n\nThen, you can share it with other tests in future.",
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ae93992_57cf4bcf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-23T00:02:50Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. I think the new runtime variable could be used here. will update in the next patch.",
+      "parentUuid": "db4af252_eb7c59db",
       "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35e016f6_540969a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-23T00:02:50Z",
+      "side": 1,
+      "message": "Sounds good. I\u0027ll be adding a new UnprovisionLacros API to the test service. Thanks for the suggestion.",
+      "parentUuid": "111b323c_8c69d8a1",
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78491cd7_d5c28bd2",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-09-22T22:46:31Z",
       "side": 1,
       "message": "Will it be better to name them explicitly?\n```\ntype Version struct {\n\tMajor uint64,\n\tMinor uint64,\n\tBuild unit64,\n\tPatch unit64,\n}\n```",
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fd57252_d8831be5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-23T00:02:50Z",
+      "side": 1,
+      "message": "I gave it a thought, and ended up using an array since in most cases version would not necessarily be accessed by those explicit names individually and it saves some code lines in loop 😄. Let me know if you have better thoughts.",
+      "parentUuid": "78491cd7_d5c28bd2",
       "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
