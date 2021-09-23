@@ -46,6 +46,30 @@
       },
       "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2040dcbb_df112fb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-23T09:45:20Z",
+      "side": 1,
+      "message": "Not all DUTs, but there are a few DUTs (e.g., some hatch devices) with a pluged headset in Google\u0027s lab. I encontered this when I was working on tests for voice recognition of the virtual keyboard.",
+      "parentUuid": "aabc8e6a_6ff848ba",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 40
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
