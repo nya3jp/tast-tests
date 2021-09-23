@@ -46,6 +46,30 @@
       },
       "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e841d17d_c51a2109",
+        "filename": "src/chromiumos/tast/services/cros/lacros/autoupdate_test_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:48:57Z",
+      "side": 1,
+      "message": "Even better imo, if we it\u0027s prefixed by lacros package name.\n\nRootfs and Stateful selection to me isn\u0027t autoupdating.\nlacros.TestService makes more sense and is less confusing than lacros.AutoupdateTestService.\n\nYou can add anything you want for lacros into this TestService now + in the future.",
+      "parentUuid": "d1c4e0fc_77cc71a2",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
