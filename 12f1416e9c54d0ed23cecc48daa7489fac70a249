@@ -46,6 +46,30 @@
       },
       "revId": "12f1416e9c54d0ed23cecc48daa7489fac70a249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49c30f70_9d82aba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-09-23T03:19:50Z",
+      "side": 1,
+      "message": "From comment two the lowest % complete is 38.4% (3*100/38.4 \u003d ~8 minutes)  If we were to estimate with 30% on the pessimistic side, the timeout should be no more than 10 minutes?\n\nIIUC, Nearby Share transfer time is not ARC specific, it\u0027s the custom app\u0027s large file size (100MB) that may be specific to this tast and timeout.\n\nSince the extra timeout is only for large files, can we add note that in the naming so it\u0027s clear?",
+      "parentUuid": "502eaae7_c388e55e",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "12f1416e9c54d0ed23cecc48daa7489fac70a249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
