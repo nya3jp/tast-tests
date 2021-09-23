@@ -16,6 +16,69 @@
       "message": "tast-owners@ PTAL (clerical changes)",
       "revId": "6aa658bdad0247d32a0e37e0827a61b7b073f294",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "184cbecd_dd6c4444",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-09-23T06:46:18Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "6aa658bdad0247d32a0e37e0827a61b7b073f294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f9522e7_e1bbc176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-09-23T06:46:18Z",
+      "side": 1,
+      "message": "nit: parameters (including returns) should be in lowerCamelCase. (ssimLogFileName?)",
+      "range": {
+        "startLine": 1023,
+        "startChar": 104,
+        "endLine": 1023,
+        "endChar": 119
+      },
+      "revId": "6aa658bdad0247d32a0e37e0827a61b7b073f294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9f9ebeb_baf83dff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-09-23T06:46:18Z",
+      "side": 1,
+      "message": "local variables should be in lowerCamelCase, i.e. ssimLogFile",
+      "range": {
+        "startLine": 1054,
+        "startChar": 1,
+        "endLine": 1054,
+        "endChar": 12
+      },
+      "revId": "6aa658bdad0247d32a0e37e0827a61b7b073f294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
