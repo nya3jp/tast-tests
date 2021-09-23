@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f0c4238_8f60642a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2021-09-23T20:41:00Z",
+      "side": 1,
+      "message": "Hello,\n\nThis tast test is failing on eve builders:\nhttps://ci.chromium.org/ui/p/chrome/builders/ci/chromeos-eve-chrome/17871/overview\nhttps://ci.chromium.org/ui/p/chrome/builders/ci/chromeos-eve-arc-r-chrome/12140/overview\n\nI would like to make it informational.\nPTAL!",
+      "revId": "e68a00136ce7db1d9686c5de6e3441c427983f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
