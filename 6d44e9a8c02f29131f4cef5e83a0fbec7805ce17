@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0cd7ee_9a561748",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-23T14:01:36Z",
+      "side": 1,
+      "message": "very minor nit: I prefer userApSSID :\u003d ...",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "6d44e9a8c02f29131f4cef5e83a0fbec7805ce17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bda52961_99099dd5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-23T14:01:36Z",
+      "side": 1,
+      "message": "You need a cleanup context here. EnsureTPMAndSystemStateAreReset may take up to 3 minutes on slow devices.",
+      "revId": "6d44e9a8c02f29131f4cef5e83a0fbec7805ce17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2956a1ea_57158056",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-23T14:01:36Z",
+      "side": 1,
+      "message": "nit: either add a comment before each test \u0027phase\u0027 or remove this one. It\u0027s not clear when enrollment is done based on comments.",
+      "revId": "6d44e9a8c02f29131f4cef5e83a0fbec7805ce17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e6c539c_9c2bf911",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-23T14:01:36Z",
+      "side": 1,
+      "message": "Move this function inside the for (it does not need to be a separate function anyway). You are not using the correct context or state s.Run creates new instances of both.",
+      "revId": "6d44e9a8c02f29131f4cef5e83a0fbec7805ce17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
