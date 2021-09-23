@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b7ca2c_cb002696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_get_devices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-09-23T18:49:26Z",
+      "side": 1,
+      "message": "It does, it may give us additional insight to at what stage the command is failing",
+      "parentUuid": "97636975_dc4259d3",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "b113785f6c5de6631ca635256c30f58b6f2c4000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bbd9ae7_fdd07795",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-23T18:43:09Z",
       "side": 1,
       "message": "similar question here, it seems like this should go after the error handling for running the command.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "b113785f6c5de6631ca635256c30f58b6f2c4000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1deeca1_5fb8952e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_plugin_startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-09-23T18:49:26Z",
+      "side": 1,
+      "message": "Same here, the purpose of the change is to get additional insight on failure cases.",
+      "parentUuid": "9bbd9ae7_fdd07795",
       "range": {
         "startLine": 58,
         "startChar": 1,
