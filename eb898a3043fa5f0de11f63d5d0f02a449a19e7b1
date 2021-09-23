@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81d17d48_d681a8af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/daily_refresh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-23T18:51:29Z",
+      "side": 1,
+      "message": "It is random but since the default wallpaper does not belong to `Solid colors` collection, I think it\u0027s safe to assume the wallpaper will be different.",
+      "parentUuid": "b123e986_8bec1b3b",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 60
+      },
+      "revId": "eb898a3043fa5f0de11f63d5d0f02a449a19e7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "907b368f_9aeceda9",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d33d56_c0184d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/daily_refresh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-23T18:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "907b368f_9aeceda9",
+      "range": {
+        "startLine": 103,
+        "startChar": 10,
+        "endLine": 103,
+        "endChar": 12
+      },
+      "revId": "eb898a3043fa5f0de11f63d5d0f02a449a19e7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e38c90e_5784e35c",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-15T17:26:58Z",
       "side": 1,
       "message": "is golang always use floating point math? or `diff` is floating point? there is no type definition so it\u0027s hard to tell by reading the code.",
+      "range": {
+        "startLine": 116,
+        "startChar": 21,
+        "endLine": 116,
+        "endChar": 35
+      },
+      "revId": "eb898a3043fa5f0de11f63d5d0f02a449a19e7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7905ca31_1f9080de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/daily_refresh.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-23T18:51:29Z",
+      "side": 1,
+      "message": "it\u0027s int by default. I modified the method to use named return values so it\u0027s more clear.",
+      "parentUuid": "6e38c90e_5784e35c",
       "range": {
         "startLine": 116,
         "startChar": 21,
