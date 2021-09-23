@@ -4,6 +4,7 @@
 
 package kiosk
 
+// DoNotPush example to start
 import (
 	"context"
 

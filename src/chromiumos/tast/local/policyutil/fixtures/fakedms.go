@@ -94,6 +94,8 @@ type fakeDMSFixture struct {
 }
 
 func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	s.Log("DoNotPush SetUp")
+
 	ctx, st := timing.Start(ctx, "fakeDMS_setup")
 	defer st.End()
 
@@ -140,6 +142,7 @@ func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interf
 }
 
 func (f *fakeDMSFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	s.Log("DoNotPush teardown")
 	ctx, st := timing.Start(ctx, "fakeDMS_teardown")
 	defer st.End()
 
