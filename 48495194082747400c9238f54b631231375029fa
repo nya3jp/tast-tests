@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52396441_c6528b1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-09-23T03:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "919d3413_68f59ea2",
+      "revId": "48495194082747400c9238f54b631231375029fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cd3fbfe_8312ed07",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-23T02:49:43Z",
       "side": 1,
       "message": "super-nit: More pleasing to the (or just my?) eyes if this comment block is after the opening brace, within and at the beginning of the commented block.",
+      "revId": "48495194082747400c9238f54b631231375029fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a28547a_3adb841d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-09-23T03:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cd3fbfe_8312ed07",
       "revId": "48495194082747400c9238f54b631231375029fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "991f0cef_4326dc2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-09-23T03:26:10Z",
+      "side": 1,
+      "message": "Yeah. I\u0027m assuming that the top candidate will always match the full composition. I\u0027m not sure if the decoder will always guarantee that, but so far I don\u0027t think I\u0027ve encountered any counterexamples.\n\nI think this is something we need to find out as part of building the pinyin spec.",
+      "parentUuid": "75ef1623_ff95f7cd",
+      "range": {
+        "startLine": 90,
+        "startChar": 51,
+        "endLine": 90,
+        "endChar": 55
+      },
+      "revId": "48495194082747400c9238f54b631231375029fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e28ee6e_1e806279",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-09-23T02:49:43Z",
       "side": 1,
       "message": "nit: mini-comment that user-facing is one-based.",
+      "range": {
+        "startLine": 128,
+        "startChar": 21,
+        "endLine": 128,
+        "endChar": 22
+      },
+      "revId": "48495194082747400c9238f54b631231375029fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a203c59_6582d27a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-09-23T03:26:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e28ee6e_1e806279",
       "range": {
         "startLine": 128,
         "startChar": 21,
