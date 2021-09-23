@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class KeysTestActivity extends Activity {
@@ -35,17 +36,7 @@ public class KeysTestActivity extends Activity {
     }
 
     /** Holds all of the keys that need to be tested. */
-    private List<KeyTestItem> mKeyCodesToTest =
-            List.of(
-                    new KeyTestItem(KeyEvent.KEYCODE_DPAD_LEFT, "KEYS TEST - LEFT ARROW"),
-                    new KeyTestItem(KeyEvent.KEYCODE_DPAD_DOWN, "KEYS TEST - DOWN ARROW"),
-                    new KeyTestItem(KeyEvent.KEYCODE_DPAD_RIGHT, "KEYS TEST - RIGHT ARROW"),
-                    new KeyTestItem(KeyEvent.KEYCODE_DPAD_UP, "KEYS TEST - UP ARROW"),
-                    new KeyTestItem(KeyEvent.KEYCODE_TAB, "KEYS TEST - TAB"),
-                    new KeyTestItem(KeyEvent.KEYCODE_ESCAPE, "KEYS TEST - ESCAPE"),
-                    new KeyTestItem(KeyEvent.KEYCODE_ENTER, "KEYS TEST - ENTER"),
-                    new KeyTestItem(KeyEvent.KEYCODE_FORWARD, "KEYS TEST - FORWARD"),
-                    new KeyTestItem(KeyEvent.KEYCODE_BACK, "KEYS TEST - BACK"));
+    private List<KeyTestItem> mKeyCodesToTest;
 
     private LinearLayout mLayoutMain;
 
@@ -53,6 +44,19 @@ public class KeysTestActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keys_test);
+
+        // Setup the keys to test.
+        mKeyCodesToTest = new ArrayList<>();
+        mKeyCodesToTest.add(new KeyTestItem(KeyEvent.KEYCODE_DPAD_LEFT, "KEYS TEST - LEFT ARROW"));
+        mKeyCodesToTest.add(new KeyTestItem(KeyEvent.KEYCODE_DPAD_DOWN, "KEYS TEST - DOWN ARROW"));
+        mKeyCodesToTest.add(
+                new KeyTestItem(KeyEvent.KEYCODE_DPAD_RIGHT, "KEYS TEST - RIGHT ARROW"));
+        mKeyCodesToTest.add(new KeyTestItem(KeyEvent.KEYCODE_DPAD_UP, "KEYS TEST - UP ARROW"));
+        mKeyCodesToTest.add(new KeyTestItem(KeyEvent.KEYCODE_TAB, "KEYS TEST - TAB"));
+        mKeyCodesToTest.add(new KeyTestItem(KeyEvent.KEYCODE_ESCAPE, "KEYS TEST - ESCAPE"));
+        mKeyCodesToTest.add(new KeyTestItem(KeyEvent.KEYCODE_ENTER, "KEYS TEST - ENTER"));
+        mKeyCodesToTest.add(new KeyTestItem(KeyEvent.KEYCODE_FORWARD, "KEYS TEST - FORWARD"));
+        mKeyCodesToTest.add(new KeyTestItem(KeyEvent.KEYCODE_BACK, "KEYS TEST - BACK"));
 
         // Setup text views with all of the keys that will be tested.
         mLayoutMain = findViewById(R.id.layoutMain);
