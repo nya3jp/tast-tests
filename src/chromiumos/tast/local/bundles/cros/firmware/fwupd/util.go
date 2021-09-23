@@ -4,24 +4,5 @@
 
 package fwupd
 
-import (
-	"context"
-	"regexp"
-	"strings"
-
-	"chromiumos/tast/common/testexec"
-)
-
-// ReleaseURI runs the fwupdmgr utility and obtains the release
-// URI of the test webcam device in the system.
-func ReleaseURI(ctx context.Context) (string, error) {
-	// b585990a-003e-5270-89d5-3705a17f9a43 is the GUID for a fake device.
-	cmd := testexec.CommandContext(ctx, "fwupdmgr", "get-releases", "-v", "b585990a-003e-5270-89d5-3705a17f9a43")
-	output, err := cmd.Output(testexec.DumpLogOnError)
-	if err != nil {
-		return "", err
-	}
-
-	re := regexp.MustCompile(`.*Uri:.*`)
-	return strings.Fields(string(re.Find(output)))[1], nil
-}
+// ReleaseURI contains the release URI of the test webcam device in the system.
+const ReleaseURI = "https://storage.googleapis.com/chromeos-localmirror/lvfs/test/3fab34cfa1ef97238fb24c5e40a979bc544bb2b0967b863e43e7d58e0d9a923f-fakedevice124.cab"
