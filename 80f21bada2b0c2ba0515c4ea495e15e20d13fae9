@@ -16,6 +16,23 @@
       "message": "Friendly ping @Eric Caruso",
       "revId": "80f21bada2b0c2ba0515c4ea495e15e20d13fae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08323cea_9d583368",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 40
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-23T22:40:27Z",
+      "side": 1,
+      "message": "TESTs pass",
+      "revId": "80f21bada2b0c2ba0515c4ea495e15e20d13fae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
