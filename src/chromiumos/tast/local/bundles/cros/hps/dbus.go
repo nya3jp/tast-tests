@@ -8,7 +8,9 @@ import (
 	"context"
 
 	"github.com/godbus/dbus"
+	"github.com/golang/protobuf/proto"
 
+	pb "chromiumos/system_api/hps_proto"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -32,6 +34,7 @@ func DBus(ctx context.Context, s *testing.State) {
 		dbusName      = "org.chromium.Hps"
 		dbusPath      = "/org/chromium/Hps"
 		dbusInterface = "org.chromium.Hps"
+		dbusMethod    = "EnableFeatureHpsSense"
 
 		job = "hpsd"
 	)
@@ -45,10 +48,19 @@ func DBus(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to connect to %s: %v", dbusName, err)
 	}
 
-	s.Log("Running EnableFeature(0) on hpsd")
-	if err := obj.CallWithContext(ctx, dbusInterface+".EnableFeature", 0, byte(0)).Store(); err != nil {
-		s.Error("EnableFeature(0) failed: ", err)
+	s.Log("Running EnableFeatureHpsNotify(BasicFilter) on hpsd")
+	config := &pb.FeatureConfig{
+		FilterConfig: &pb.FeatureConfig_BasicFilterConfig_{
+			BasicFilterConfig: &pb.FeatureConfig_BasicFilterConfig{},
+		},
+	}
+	marshalled, err := proto.Marshal(config)
+	if err != nil {
+		s.Fatal("Failed to marshal FeatureConfig: ", err)
+	}
+	if err := obj.CallWithContext(ctx, dbusInterface+"."+dbusMethod, 0, marshalled).Store(); err != nil {
+		s.Error("EnableFeatureHpsNotify(BasicFilter) failed: ", err)
 	} else {
-		s.Log("EnableFeature(0) success")
+		s.Log("EnableFeatureHpsNotify(BasicFilter) success")
 	}
 }
