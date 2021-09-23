@@ -34,6 +34,14 @@ func Snaplen(s uint64) Option {
 	}
 }
 
+// Expression returns an option which sets a Capturer's filter expression,
+// as in pcap-filter(7) .
+func Expression(e string) Option {
+	return func(c *Capturer) {
+		c.expression = e
+	}
+}
+
 // Capturer controls a tcpdump process to capture packets on an interface.
 type Capturer struct {
 	host    *ssh.Conn
@@ -41,7 +49,8 @@ type Capturer struct {
 	iface   string
 	workDir string
 
-	snaplen uint64
+	snaplen    uint64
+	expression string
 
 	cmd        *ssh.Cmd
 	stdoutFile *os.File
@@ -93,6 +102,9 @@ func (c *Capturer) start(fullCtx context.Context) (err error) {
 	args := []string{"-U", "-i", c.iface, "-w", c.packetPathOnRemote()}
 	if c.snaplen != 0 {
 		args = append(args, "-s", strconv.FormatUint(c.snaplen, 10))
+	}
+	if len(c.expression) > 0 {
+		args = append(args, c.expression)
 	}
 
 	cmd := c.host.CommandContext(ctx, tcpdumpCmd, args...)
