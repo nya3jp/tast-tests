@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6995b8a9_b799b1f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-09-23T18:54:15Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "44bae2f0_382d498c",
@@ -14,6 +37,86 @@
       "writtenOn": "2021-09-23T15:03:46Z",
       "side": 1,
       "message": "Hi all,\n\nPTAL :) \n\nThanks!",
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac819540_64e0f12d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/data/manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-09-23T18:54:15Z",
+      "side": 1,
+      "message": "can we also add optional_permissions?",
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79d8c076_2ba3f186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/data/manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-09-23T18:54:15Z",
+      "side": 1,
+      "message": "this key wouldn\u0027t work after today\u0027s landed CL.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f37af85f_3d4eb0d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/data/manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-09-23T18:54:15Z",
+      "side": 1,
+      "message": "this won\u0027t work, i guess. It needs to be exactly \"http://www.google.com/*\"",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7f9bd5d_4f54d904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/data/manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-09-23T18:54:15Z",
+      "side": 1,
+      "message": "let\u0027s also add options_page key after the CL is landed.\n\nhttps://chromium-review.googlesource.com/c/chromium/src/+/3177260",
       "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +208,29 @@
       "writtenOn": "2021-09-23T15:40:12Z",
       "side": 1,
       "message": "minor nit: create it before its use",
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c5aad2f_9d0fd507",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/telemetry_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-09-23T18:54:15Z",
+      "side": 1,
+      "message": "would it work?\n\nuse http instead.",
+      "range": {
+        "startLine": 77,
+        "startChar": 31,
+        "endLine": 77,
+        "endChar": 36
+      },
       "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
