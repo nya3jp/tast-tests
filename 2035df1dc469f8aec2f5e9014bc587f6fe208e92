@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d3e276b_06a1e123",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:28:09Z",
+      "side": 1,
+      "message": "A few general thoughs:\n1. Take a look at existing utilities in the launcher package (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go). It seems like some of the code here is duplicating existing functionality, and some tricky parts of dragging/dropping have already been debugged and figured out in that package. I\u0027d strongly recommend looking into re-using the existing launcher.go code, and modifying it as necessary to support anything new you need for this test case.\n2. Split up the file a bit, to make it easier to distinguish the test logic and UI controls.",
+      "revId": "2035df1dc469f8aec2f5e9014bc587f6fe208e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c5994a7_5adc7e66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drops.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:28:09Z",
+      "side": 1,
+      "message": "nit: I think AppDragAndDrop sounds better (not clear what it means by making it plural)",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "2035df1dc469f8aec2f5e9014bc587f6fe208e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b43d9d1e_9b8b657c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drops.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:28:09Z",
+      "side": 1,
+      "message": "dragAndDrops (also similar feedback about dropping the \u0027s\u0027 at the end)",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 17
+      },
+      "revId": "2035df1dc469f8aec2f5e9014bc587f6fe208e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c4f843_efbd1c53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drops.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:28:09Z",
+      "side": 1,
+      "message": "can we move this interface code and its implementations outside of the test?",
+      "revId": "2035df1dc469f8aec2f5e9014bc587f6fe208e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "322a2790_d2847f7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drops.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:28:09Z",
+      "side": 1,
+      "message": "see launcher.DragIconToNextPage:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go;l\u003d333\n\nis there a way to dedupe some of this functionality?",
+      "revId": "2035df1dc469f8aec2f5e9014bc587f6fe208e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

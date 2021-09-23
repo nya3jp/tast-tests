@@ -84,6 +84,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f91eab8c_31c1fc76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/app_drag_and_drops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:28:09Z",
+      "side": 1,
+      "message": "@David should we add chromeos-sw-engprod@google.com to the contacts as well, so we can monitor this test in our tastboard?",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 10
+      },
+      "revId": "1e148c75686d3312ff449167bbebee42f6841c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6f521ad_daf9846b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/app_drag_and_drops.go",
         "patchSetId": 1
