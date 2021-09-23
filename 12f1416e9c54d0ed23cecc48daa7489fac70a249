@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fed01052_6cff9061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-09-23T09:28:14Z",
+      "side": 1,
+      "message": "Actually multiplication factor may not work for timeout, so something like this instead:\n\n```\n// ExtraLargeFileOnlineTransferTimeout is for 30MB, add 7 more minutes for the\n// extra 70MBs needed to transfer an ArcShareTestApp large file.\nlargeFileExtraBufferTime \u003d 7 * time.Minute\n...\nTransferTimeout: nearbycommon.ExtraLargeFileOnlineTransferTimeout + largeFileExtraBufferTime,\nTimeout: baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + largeFileExtraBufferTime + largeFileCheckboxTimeout,\n```",
+      "parentUuid": "350c3b26_2f51e8ad",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "12f1416e9c54d0ed23cecc48daa7489fac70a249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b32fe23a_7880e48a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
         "patchSetId": 1
