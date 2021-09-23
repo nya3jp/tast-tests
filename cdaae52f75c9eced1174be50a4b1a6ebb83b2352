@@ -33,6 +33,24 @@
       "message": "Avoid having package level variable. Also, Golang does not reuse error object. Please just inline it in line 92.\n\nIf you want the caller handle the case explicitly, you may create a struct:\n\n\ntype ErrNoEnabledProfile struct {}\n\n// This make ErrNoEnabledProfile an error type as it implements error interface.\nfunc (e ErrNoEnabledProfile) Error() string {\n    return \"failed to find an enabled profile\"\n}\n\n\nHow to use:\nin EnableProfile():\n\nreturn nil, ErrNoEnabledProfile()\n\nin the caller:\nprofile, err:\u003d euicc.EnableProfile(ctx)\nif err {\n  if _, ok :\u003d err.(hermes.ErrNoEnabledProfile); ok {\n    // handle the case that no enabled profile is found.\n  } else {\n    // handle other cases.\n  }\n}",
       "revId": "cdaae52f75c9eced1174be50a4b1a6ebb83b2352",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "247558f9_2480ec1b",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-23T16:04:34Z",
+      "side": 1,
+      "message": "I am not convinced we need to return an error. It is a normal use case to have no profile enabled. Are you convinced that we need an error?",
+      "parentUuid": "aa61013e_96052d81",
+      "revId": "cdaae52f75c9eced1174be50a4b1a6ebb83b2352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
