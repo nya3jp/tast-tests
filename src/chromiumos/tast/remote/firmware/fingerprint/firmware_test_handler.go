@@ -43,7 +43,7 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 
 	t := &FirmwareTest{d: d, servo: pxy}
 
-	daemonState, err := stopDaemons(ctx, t.UpstartService(), []string{
+	t.daemonState, err = stopDaemons(ctx, t.UpstartService(), []string{
 		biodUpstartJobName,
 		// TODO(b/183123775): Remove when bug is fixed.
 		//  Disabling powerd to prevent the display from turning off, which kills
@@ -54,28 +54,28 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		return nil, err
 	}
 
-	fpBoard, err := Board(ctx, t.d)
+	t.fpBoard, err = Board(ctx, t.d)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get fingerprint board")
 	}
 
-	buildFwFile, err := FirmwarePath(ctx, t.d, fpBoard)
+	t.buildFwFile, err = FirmwarePath(ctx, t.d, t.fpBoard)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get build firmware file path")
 	}
 
-	if err := ValidateBuildFwFile(ctx, t.d, fpBoard, buildFwFile); err != nil {
+	if err := ValidateBuildFwFile(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
 		return nil, errors.Wrap(err, "failed to validate build firmware file")
 	}
 
-	needsReboot, err := NeedsRebootAfterFlashing(ctx, t.d)
+	t.needsRebootAfterFlashing, err = NeedsRebootAfterFlashing(ctx, t.d)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to determine if reboot is needed")
 	}
 
-	cleanupTime := timeForCleanup
+	t.cleanupTime = timeForCleanup
 
-	if needsReboot {
+	if t.needsRebootAfterFlashing {
 		// Since MakeRootfsWritable will reboot the device, we must call
 		// RPCClose/RPCDial before/after calling MakeRootfsWritable.
 		if err := t.d.RPCClose(ctx); err != nil {
@@ -120,7 +120,7 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		}()
 
 		// Account for the additional time that rebooting adds.
-		cleanupTime += 3 * time.Minute
+		t.cleanupTime += 3 * time.Minute
 	} else {
 		// If we're not on a device that needs to be rebooted, the rootfs should not
 		// be writable.
@@ -133,35 +133,26 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		}
 	}
 
-	dutTempDir, err := t.DutfsClient().TempDir(ctx, "", dutTempPathPattern)
+	t.dutTempDir, err = t.DutfsClient().TempDir(ctx, "", dutTempPathPattern)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create remote working directory")
 	}
 
 	// Check FPMCU state and reflash if needed.
-	if err := InitializeKnownState(ctx, t.d, outDir, pxy, fpBoard, buildFwFile, needsReboot); err != nil {
+	if err := InitializeKnownState(ctx, t.d, outDir, pxy, t.fpBoard, t.buildFwFile, t.needsRebootAfterFlashing); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
 
 	// Double check our work in the previous step.
-	if err := CheckValidFlashState(ctx, t.d, fpBoard, buildFwFile); err != nil {
+	if err := CheckValidFlashState(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
 		return nil, err
 	}
 
-	if err := InitializeHWAndSWWriteProtect(ctx, t.d, pxy, fpBoard, enableHWWP, enableSWWP); err != nil {
+	if err := InitializeHWAndSWWriteProtect(ctx, t.d, pxy, t.fpBoard, enableHWWP, enableSWWP); err != nil {
 		return nil, errors.Wrap(err, "initializing write protect failed")
 	}
 
-	return &FirmwareTest{
-		d:                        t.d,
-		servo:                    t.servo,
-		fpBoard:                  fpBoard,
-		buildFwFile:              buildFwFile,
-		daemonState:              daemonState,
-		needsRebootAfterFlashing: needsReboot,
-		cleanupTime:              cleanupTime,
-		dutTempDir:               dutTempDir,
-	}, nil
+	return t, nil
 }
 
 // Close cleans up the fingerprint test and restore the FPMCU firmware to the
