@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fa5598d_afa079b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-23T19:36:12Z",
+      "side": 1,
+      "message": "Looks like I already scheduled this change at crrev.com/c/3102605, but we can do it early.",
+      "revId": "c302f81d3308eafb994204998a065dab54b7099e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
