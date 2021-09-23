@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cacf1278_2515f0ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-23T20:16:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fed01052_6cff9061",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "12f1416e9c54d0ed23cecc48daa7489fac70a249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b32fe23a_7880e48a",
@@ -133,6 +157,30 @@
       "writtenOn": "2021-09-23T07:58:45Z",
       "side": 1,
       "message": "Can this be a const variable rather than hardcoded number?",
+      "range": {
+        "startLine": 420,
+        "startChar": 49,
+        "endLine": 420,
+        "endChar": 62
+      },
+      "revId": "12f1416e9c54d0ed23cecc48daa7489fac70a249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48e62772_a72bde63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-23T20:16:40Z",
+      "side": 1,
+      "message": "I see similar usage below as well. I think its ok to leave it as it as.",
+      "parentUuid": "b32fe23a_7880e48a",
       "range": {
         "startLine": 420,
         "startChar": 49,
