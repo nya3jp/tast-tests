@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ec48844_024a7d3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-09-23T23:21:28Z",
+      "side": 1,
+      "message": "updated more chips with their sizes and changed the test stuff to use constants from pre",
+      "revId": "8f7dde446e33226cc106b0f9f6b209045ddf6f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
