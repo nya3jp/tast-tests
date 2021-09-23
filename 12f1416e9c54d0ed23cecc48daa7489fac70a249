@@ -70,6 +70,53 @@
       },
       "revId": "12f1416e9c54d0ed23cecc48daa7489fac70a249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "350c3b26_2f51e8ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-09-23T07:58:45Z",
+      "side": 1,
+      "message": "In b/200643861, Kyle mentioned the 3min timeout is for transferring 30MB.  This tast transfers 100MB for large file, so we can just do 3 * 100/30 \u003d 10 minutes or something like:\n\n```\n// ExtraLargeFileOnlineTransferTimeout is for 30MB, factor is for 100MB\n// large file transfer specific to this tast.\nconst largeFileExtraTimeoutFactor :\u003d 3.33\n...\nTimeout: baseArcTestTime + (nearbycommon.ExtraLargeFileOnlineTransferTimeout * largeFileExtraTimeoutFactor) + largeFileCheckboxTimeout,\n```",
+      "parentUuid": "49c30f70_9d82aba0",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "12f1416e9c54d0ed23cecc48daa7489fac70a249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b32fe23a_7880e48a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-09-23T07:58:45Z",
+      "side": 1,
+      "message": "Can this be a const variable rather than hardcoded number?",
+      "range": {
+        "startLine": 420,
+        "startChar": 49,
+        "endLine": 420,
+        "endChar": 62
+      },
+      "revId": "12f1416e9c54d0ed23cecc48daa7489fac70a249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
