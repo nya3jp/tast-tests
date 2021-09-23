@@ -24,7 +24,6 @@ func init() {
 		Func: Smoke,
 		Desc: "Basic smoke test for the Files app",
 		Contacts: []string{
-			"chromeos-sw-engprod@google.com",
 			"chromeos-files-syd@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},

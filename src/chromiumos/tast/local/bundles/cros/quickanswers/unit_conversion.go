@@ -22,6 +22,7 @@ func init() {
 		Contacts: []string{
 			"updowndota@google.com",
 			"croissant-eng@google.com",
+			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
