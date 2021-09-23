@@ -262,6 +262,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94ac1a8f_25963681",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-09-23T13:19:42Z",
+      "side": 1,
+      "message": "Yeah, you are right. Fixing this later sounds good for me.\n\nJust one thing to consider: Can we create DUT interface and then provide two implementations: RPCDUT and original DUT implementation? That way MakeRootfsWritable would accept both implementations.",
+      "parentUuid": "118b2ad9_a4da4e54",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 3
+      },
+      "revId": "bd65096a18d0971fea808cec575cda26e6ba01de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c7256fb_f38507ac",
