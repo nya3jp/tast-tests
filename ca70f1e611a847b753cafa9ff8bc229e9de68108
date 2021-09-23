@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "105635f4_c0e7a7f5",
+        "filename": "src/chromiumos/tast/services/cros/lacros/autoupdate_test_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:23:17Z",
+      "side": 1,
+      "message": "This is confusing, why isn\u0027t is named \"LacrosTestService\"?\n\nIt doesn\u0027t have anything to do with AutoUpdating?",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
