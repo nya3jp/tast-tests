@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b77496fe_45fb2ca2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-23T21:07:37Z",
+      "side": 1,
+      "message": "That\u0027s only for Chromium\u0027s //third_party. For chromeOS test-only\nadditions, I haven\u0027t needed approval beyond the upload hook\nchecking the LICENSE file.",
+      "parentUuid": "c5c8cf7b_56955b9e",
+      "revId": "867c84798a231bc4e01f80890c9e542ed35c4510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f1dc012_60aec6dd",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-23T20:06:19Z",
       "side": 1,
       "message": "Is this supposed to be set to true?",
+      "range": {
+        "startLine": 56,
+        "startChar": 21,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "867c84798a231bc4e01f80890c9e542ed35c4510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ee4d019_b714dfc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/capturefromelement.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-23T21:07:37Z",
+      "side": 1,
+      "message": "Whoops yeah, good catch.",
+      "parentUuid": "0f1dc012_60aec6dd",
       "range": {
         "startLine": 56,
         "startChar": 21,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96dbaf5d_3e2a9c3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/capturefromelement.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-23T21:07:37Z",
+      "side": 1,
+      "message": "You have a point there. I\u0027ve changed the code to remove the \n  geometry.rotateX(-Math.PI / 6);\n\nin l.67, and instead add a rotation here in animate(), so that \nthe video texture rotates continuously. I had to add a line to\nthe |material| so it would render as well when looking \n\"backwards\".",
+      "parentUuid": "d5d852a8_dc939249",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 5
+      },
+      "revId": "867c84798a231bc4e01f80890c9e542ed35c4510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "009fb9fa_fc5d55cd",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-09-23T20:06:19Z",
       "side": 1,
       "message": "nit: End with ; (same on ln. 140).",
+      "range": {
+        "startLine": 146,
+        "startChar": 44,
+        "endLine": 146,
+        "endChar": 45
+      },
+      "revId": "867c84798a231bc4e01f80890c9e542ed35c4510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35f32165_08551cc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/data/capturefromelement.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-23T21:07:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "009fb9fa_fc5d55cd",
       "range": {
         "startLine": 146,
         "startChar": 44,
