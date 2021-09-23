@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8135422_0e12298d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-09-23T01:19:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49b219e2_9699e1d1",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 7
+      },
+      "revId": "8a49517ef4f5cabafbf5c889f815f8c36676b134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3724d056_f8a29007",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Like I mentioned, this will make all PK JP tests to run in this timezone. It loses coverage on the default timezone. Maybe consider to add a separate test?",
       "parentUuid": "3aa4d5fd_c5bf8162",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 32
+      },
+      "revId": "8a49517ef4f5cabafbf5c889f815f8c36676b134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f108930a_908edb08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-09-23T01:19:23Z",
+      "side": 1,
+      "message": "I think it is fine, ultimately I just want to ensure a specific timezone so I know what to test against.  The bug we had occured when the timezone wasn\u0027t taken into account, so we need to change it.",
+      "parentUuid": "b58baee0_a3f8ebc3",
       "range": {
         "startLine": 108,
         "startChar": 1,
@@ -228,6 +276,30 @@
       "side": 1,
       "message": "Ye. You can add a TODO here, and assign the bug to me / alvin if you are too busy to manage it.",
       "parentUuid": "4df0fae3_3b1f4cb4",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "8a49517ef4f5cabafbf5c889f815f8c36676b134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82bbc084_5551bed5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-09-23T01:19:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f41d96f5_17371ae9",
       "range": {
         "startLine": 82,
         "startChar": 0,
