@@ -22,6 +22,30 @@
       },
       "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1c4e0fc_77cc71a2",
+        "filename": "src/chromiumos/tast/services/cros/lacros/autoupdate_test_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-23T00:37:23Z",
+      "side": 1,
+      "message": "My thought is that it is going to be a dedicated test service for Tast remote tests performing autoupdate scenarios (Rootfs \u003c\u003d\u003e Stateful).\nSee https://crrev.com/c/3176400 as an example of how the test interacts with this service and also https://sequencediagram.googleplex.com/view/6215323990622208\n\nLacrosTestService may sound a bit generic to me without specifying use cases.\n\nThat\u0027s why I ended up with \"lacros.AutoupdateTestService\" \u003d lacros package name + service name. Is it still confusing? I\u0027m open to this and would like to hear from reviewers.",
+      "parentUuid": "105635f4_c0e7a7f5",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
