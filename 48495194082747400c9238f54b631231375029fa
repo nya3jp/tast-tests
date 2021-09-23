@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919d3413_68f59ea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-09-23T02:49:43Z",
+      "side": 1,
+      "message": "nit: rm redundant comment",
+      "revId": "48495194082747400c9238f54b631231375029fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd3fbfe_8312ed07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-09-23T02:49:43Z",
+      "side": 1,
+      "message": "super-nit: More pleasing to the (or just my?) eyes if this comment block is after the opening brace, within and at the beginning of the commented block.",
+      "revId": "48495194082747400c9238f54b631231375029fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ef1623_ff95f7cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-09-23T02:49:43Z",
+      "side": 1,
+      "message": "no prefix treatment here but full match?",
+      "range": {
+        "startLine": 90,
+        "startChar": 51,
+        "endLine": 90,
+        "endChar": 55
+      },
+      "revId": "48495194082747400c9238f54b631231375029fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e28ee6e_1e806279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1291291
+      },
+      "writtenOn": "2021-09-23T02:49:43Z",
+      "side": 1,
+      "message": "nit: mini-comment that user-facing is one-based.",
+      "range": {
+        "startLine": 128,
+        "startChar": 21,
+        "endLine": 128,
+        "endChar": 22
+      },
+      "revId": "48495194082747400c9238f54b631231375029fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
