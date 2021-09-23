@@ -22,6 +22,30 @@
       },
       "revId": "12f1416e9c54d0ed23cecc48daa7489fac70a249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "502eaae7_c388e55e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-23T01:58:28Z",
+      "side": 1,
+      "message": "Added locally as it is only for ARC. Time out please check https://b.corp.google.com/issues/200643861#comment2 for investigation which has details like for 3 mins only 38% is transferred and hence 12 mins.\n\nAs this is extra Buffer Time out would like to leave it as extraBufferTime.",
+      "parentUuid": "b1519678_c3b3d297",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "12f1416e9c54d0ed23cecc48daa7489fac70a249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
