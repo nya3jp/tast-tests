@@ -1,0 +1,291 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f0e5fd2_38dbd9e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:15:36Z",
+      "side": 1,
+      "message": "let\u0027s use a more descriptive variable name for this (screenshotPattern or similar)",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2300c4b9_1d9e8f03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:15:36Z",
+      "side": 1,
+      "message": "you can omit this (timeout is 2 mins by default)",
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "316b9435_3c244189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:15:36Z",
+      "side": 1,
+      "message": "callers should not close tconn:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d580-581",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 20
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b447e29_661622ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:15:36Z",
+      "side": 1,
+      "message": "use Show instead:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go;l\u003d84\n\nand defer Hide afterwards to make sure quicksettings is closed for the following tests",
+      "range": {
+        "startLine": 73,
+        "startChar": 25,
+        "endLine": 73,
+        "endChar": 40
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b39d5a_acce60cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:15:36Z",
+      "side": 1,
+      "message": "quicksettings.ToggleSetting should support this if you add a new SettingPod:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go;l\u003d79-89\n\nthen you could just use quicksettings.ToggleSetting to do all of this",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c598ab11_b8387a26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:15:36Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to declare these separately, I think it\u0027s clearer to just use the full finder below",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 34
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46963ac5_c95050c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:15:36Z",
+      "side": 1,
+      "message": "this and the above code to open Screen Capture from quick settings would be great to add into the wm support package, especially for future Screen Capture tests.",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd8bb10b_f2141ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:15:36Z",
+      "side": 1,
+      "message": "I think this finder should be scoped to the Files app, just in case another Close button is present somewhere. There may also be a utility in the filesapp package to do this as well, you could try taking a look there",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 61
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aab86618_7ea353f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:15:36Z",
+      "side": 1,
+      "message": "the finder is short enough that I think it\u0027s better to just in-line it here (and it\u0027s only used once)",
+      "range": {
+        "startLine": 119,
+        "startChar": 15,
+        "endLine": 119,
+        "endChar": 34
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d821099_41e8add9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:15:36Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 120,
+        "startChar": 21,
+        "endLine": 120,
+        "endChar": 35
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5e0a41_f1a1805d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:15:36Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 125,
+        "startChar": 25,
+        "endLine": 125,
+        "endChar": 41
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bd65354_bd93419c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:15:36Z",
+      "side": 1,
+      "message": "instead of a subpackage, how about a new wm package in src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/wm?",
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ddd8528_98a310f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T19:15:36Z",
+      "side": 1,
+      "message": "capture",
+      "range": {
+        "startLine": 17,
+        "startChar": 55,
+        "endLine": 17,
+        "endChar": 62
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
