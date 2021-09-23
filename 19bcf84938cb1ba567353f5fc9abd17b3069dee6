@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c346e3_d39ecc40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-23T15:26:11Z",
+      "side": 1,
+      "message": "LGTM with minor recommendations.",
+      "revId": "19bcf84938cb1ba567353f5fc9abd17b3069dee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "857279b8_5d136335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-23T15:26:11Z",
+      "side": 1,
+      "message": "huge nit: \"F\"",
+      "range": {
+        "startLine": 48,
+        "startChar": 115,
+        "endLine": 48,
+        "endChar": 116
+      },
+      "revId": "19bcf84938cb1ba567353f5fc9abd17b3069dee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd7f4555_64bf1b0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-23T15:26:11Z",
+      "side": 1,
+      "message": "nit/style: for consistency, how about\n\nexpectedNumItems, maxNumOnscreen",
+      "range": {
+        "startLine": 48,
+        "startChar": 70,
+        "endLine": 48,
+        "endChar": 101
+      },
+      "revId": "19bcf84938cb1ba567353f5fc9abd17b3069dee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e575446_cdea2c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-23T15:26:11Z",
+      "side": 1,
+      "message": "nit: ditto for naming.",
+      "revId": "19bcf84938cb1ba567353f5fc9abd17b3069dee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
