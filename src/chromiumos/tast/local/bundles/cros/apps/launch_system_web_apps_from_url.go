@@ -49,13 +49,6 @@ func LaunchSystemWebAppsFromURL(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get list of SWAs: ", err)
 	}
 
-	// Open up an empty Chrome browser window.
-	conn, err := cr.NewConn(ctx, "")
-	if err != nil {
-		s.Fatal("Failed to open a new renderer: ", err)
-	}
-	defer conn.Close()
-
 	// Get a handle to the input keyboard.
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -63,16 +56,11 @@ func LaunchSystemWebAppsFromURL(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
-	if err != nil {
-		s.Log("Failed to create ScreenRecorder: ", err)
+	if err := uiauto.StartRecordFromKB(ctx, tconn, kb); err != nil {
+		s.Log("Failed to start recording: ", err)
 	}
 
-	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "LaunchSystemWebAppsFromURL.webm"))
-
-	if screenRecorder != nil {
-		screenRecorder.Start(ctx, tconn)
-	}
+	defer uiauto.StopRecordFromKBAndSaveOnError(ctx, tconn, s.HasError, s.OutDir())
 
 	for _, app := range systemWebApps {
 		chromeURL := app.PublisherID
@@ -96,8 +84,15 @@ func verifyAndLaunchSystemWebAppFromURL(ctx context.Context, cr *chrome.Chrome, 
 	ctxWithTimeout, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
 
+	// Open up an empty Chrome browser window.
+	conn, err := cr.NewConn(ctx, "")
+	if err != nil {
+		return errors.Wrap(err, "failed to open a new renderer")
+	}
+	defer conn.Close()
+
 	// Take a screenshot of the display before closing the SWA window (if it exists).
-	var conn *chrome.Conn
+	var connTarget *chrome.Conn
 	defer func() {
 		if retErr != nil {
 			screenshotFile := filepath.Join(outDir, appName+"_failed.png")
@@ -106,39 +101,31 @@ func verifyAndLaunchSystemWebAppFromURL(ctx context.Context, cr *chrome.Chrome, 
 			}
 		}
 
-		if conn != nil {
-			conn.Close()
+		if connTarget != nil {
+			connTarget.Close()
 		}
 	}()
 
 	ui := uiauto.New(tconn)
 	omniboxFinder := nodewith.Name("Address and search bar").Role(role.TextField)
-	if err := ui.LeftClick(omniboxFinder)(ctxWithTimeout); err != nil {
-		return errors.Wrap(err, "failed to click the omnibox")
+	if err := uiauto.Combine("open target "+appURL,
+		ui.LeftClick(omniboxFinder),
+		keyboard.AccelAction("ctrl+a"),
+		keyboard.TypeAction(appURL),
+		keyboard.AccelAction("Enter"))(ctxWithTimeout); err != nil {
+		return err
 	}
 
-	if err := keyboard.Accel(ctxWithTimeout, "ctrl+a"); err != nil {
-		return errors.Wrap(err, "failed pressing enter into chrome omnibox")
-	}
-
-	if err := keyboard.Type(ctxWithTimeout, appURL); err != nil {
-		return errors.Wrap(err, "failed entering URL into chrome omnibox")
-	}
-
-	if err := keyboard.Accel(ctxWithTimeout, "Enter"); err != nil {
-		return errors.Wrap(err, "failed pressing enter into chrome omnibox")
-	}
-
-	conn, err := cr.NewConnForTarget(ctxWithTimeout, chrome.MatchTargetURL(appURL))
+	connTarget, err = cr.NewConnForTarget(ctxWithTimeout, chrome.MatchTargetURL(appURL))
 	if err != nil {
 		return errors.Wrap(err, "failed getting connection to new target")
 	}
 
-	if conn.WaitForExpr(ctxWithTimeout, "document.readyState === 'complete'"); err != nil {
+	if connTarget.WaitForExpr(ctxWithTimeout, "document.readyState === 'complete'"); err != nil {
 		return errors.Wrap(err, "failed waiting for URL to load")
 	}
 
-	if err := conn.Eval(ctxWithTimeout, "window.close()", nil); err != nil {
+	if err := connTarget.Eval(ctxWithTimeout, "window.close()", nil); err != nil {
 		return errors.Wrap(err, "failed closing the window")
 	}
 
