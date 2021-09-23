@@ -642,6 +642,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19e1336e_200eb9e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdateutil/tls_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-23T17:46:02Z",
+      "side": 1,
+      "message": "How about src/chromiumos/tast/remote/bundles/cros/lacros/common.go for now?",
+      "parentUuid": "770d49c8_e891d180",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11a612e7_c7981094",
         "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
         "patchSetId": 1
