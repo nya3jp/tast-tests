@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "262c7912_218f624f",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-23T01:45:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20ed5179_b70097d7",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "b583b9ab2343f20180395d589062b72265248539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86d36478_29538b8f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-21T18:10:38Z",
       "side": 1,
       "message": "In this case, we may just return nil, like what you did for NewEUICC().",
+      "range": {
+        "startLine": 73,
+        "startChar": 9,
+        "endLine": 73,
+        "endChar": 22
+      },
+      "revId": "b583b9ab2343f20180395d589062b72265248539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f12d6f0_8e469438",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-23T01:45:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86d36478_29538b8f",
       "range": {
         "startLine": 73,
         "startChar": 9,
