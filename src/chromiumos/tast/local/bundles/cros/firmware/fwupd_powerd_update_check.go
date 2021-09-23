@@ -36,7 +36,10 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"fwupd"},
-		HardwareDeps: hwdep.D(hwdep.Battery()), // Test doesn't run on ChromeOS devices without a batttery.
+		HardwareDeps: hwdep.D(
+			hwdep.Battery(),  // Test doesn't run on ChromeOS devices without a batttery.
+			hwdep.ChromeEC(), // Test requires Chrome EC to set battery to discharge via ectool.
+		),
 		Params: []testing.Param{
 			{
 				Name: "no_acpower",
@@ -52,11 +55,6 @@ func init() {
 // return with or without errors as appropriate.
 func FwupdPowerdUpdateCheck(ctx context.Context, s *testing.State) {
 	discharge := s.Param().(bool)
-
-	uri, err := fwupd.ReleaseURI(ctx)
-	if err != nil {
-		s.Fatal("Failed to get release URI: ", err)
-	}
 
 	if discharge {
 		setBatteryNormal, err := setup.SetBatteryDischarge(ctx, 20.0)
@@ -84,7 +82,7 @@ func FwupdPowerdUpdateCheck(ctx context.Context, s *testing.State) {
 	}
 
 	// This command runs an update on a fake device to see how fwupd behaves.
-	upd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", uri)
+	upd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", fwupd.ReleaseURI)
 	upd.Env = append(os.Environ(), "CACHE_DIRECTORY=/var/cache/fwupd")
 	output, err := upd.Output(testexec.DumpLogOnError)
 	if err == nil && discharge {
