@@ -1,0 +1,69 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b400da4_5b1cd109",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333932
+      },
+      "writtenOn": "2021-09-23T03:57:42Z",
+      "side": 1,
+      "message": "\u003e \"broswer\" is a possible misspelling of \"browser\".\n\nPlease fix.",
+      "parentUuid": "52ac6813_979a27fe",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "efb84995dc07e96a509d1bc748721870616716ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb172017_94490082",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333932
+      },
+      "writtenOn": "2021-09-23T03:57:42Z",
+      "side": 1,
+      "message": "\u003e \"openning\" is a possible misspelling of \"opening\".\n\nPlease fix.",
+      "parentUuid": "ad661497_0396e342",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "efb84995dc07e96a509d1bc748721870616716ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7aef2e0_f78b1800",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333932
+      },
+      "writtenOn": "2021-09-23T03:57:42Z",
+      "side": 1,
+      "message": "I\u0027m not really familiar with this code, but the test looks good to me.",
+      "revId": "efb84995dc07e96a509d1bc748721870616716ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
