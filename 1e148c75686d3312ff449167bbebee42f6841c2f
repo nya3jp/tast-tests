@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e10cb48_4b5795db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/app_drag_and_drops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-23T05:05:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a87bb4b_f2d8c511",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "1e148c75686d3312ff449167bbebee42f6841c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6f521ad_daf9846b",
@@ -71,6 +95,54 @@
       "writtenOn": "2021-09-17T18:45:27Z",
       "side": 1,
       "message": "Convention is not to name the base test. Just to name the variation",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "1e148c75686d3312ff449167bbebee42f6841c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b047f0b_5fad11f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/app_drag_and_drops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-23T05:05:31Z",
+      "side": 1,
+      "message": "Thanks, fixed",
+      "parentUuid": "d6f521ad_daf9846b",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "1e148c75686d3312ff449167bbebee42f6841c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8ab5d58_c8d78790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/app_drag_and_drops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-23T05:05:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6f521ad_daf9846b",
       "range": {
         "startLine": 45,
         "startChar": 3,
@@ -104,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9d57b64_370f6e1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/app_drag_and_drops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-23T05:05:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "512b14cf_b7e1320b",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 1
+      },
+      "revId": "1e148c75686d3312ff449167bbebee42f6841c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48f85f84_05fd7160",
@@ -117,6 +213,30 @@
       "writtenOn": "2021-09-17T18:45:27Z",
       "side": 1,
       "message": "use function in launcher package",
+      "range": {
+        "startLine": 405,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 0
+      },
+      "revId": "1e148c75686d3312ff449167bbebee42f6841c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f963211_5441e586",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/app_drag_and_drops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-23T05:05:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48f85f84_05fd7160",
       "range": {
         "startLine": 405,
         "startChar": 0,
