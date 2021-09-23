@@ -1020,7 +1020,7 @@ func calculateBitrate(encodedFile string, fileFPS float64, numFrames int) (value
 }
 
 // compareFiles decodes encodedFile using decoder and compares it with yuvFile using tiny_ssim.
-func compareFiles(ctx context.Context, decoder, yuvFile, encodedFile, outDir string, size coords.Size) (logFile string, err error) {
+func compareFiles(ctx context.Context, decoder, yuvFile, encodedFile, outDir string, size coords.Size) (ssimLogFileName string, err error) {
 	yuvFile2 := yuvFile + ".2"
 	tf, err := os.Create(yuvFile2)
 	if err != nil {
@@ -1035,26 +1035,35 @@ func compareFiles(ctx context.Context, decoder, yuvFile, encodedFile, outDir str
 	}
 	decodeCommand = append(decodeCommand, yuvFile2)
 	testing.ContextLogf(ctx, "Executing %s %s", decoder, shutil.EscapeSlice(decodeCommand))
+
+	decodeLogFileName := filepath.Join(outDir, decoder+".txt")
+	decodeLogFile, err := os.Create(decodeLogFileName)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to create log file")
+	}
+	defer decodeLogFile.Close()
 	vpxCmd := testexec.CommandContext(ctx, decoder, decodeCommand...)
+	vpxCmd.Stdout = decodeLogFile
+	vpxCmd.Stderr = decodeLogFile
 	if err := vpxCmd.Run(); err != nil {
 		vpxCmd.DumpLog(ctx)
 		return "", errors.Wrap(err, "decode failed")
 	}
 
-	logFile = filepath.Join(outDir, "tiny_ssim.txt")
-	f, err := os.Create(logFile)
+	SSIMLogFileName = filepath.Join(outDir, "tiny_ssim.txt")
+	SSIMLogFile, err := os.Create(SSIMLogFileName)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to create log file")
 	}
-	defer f.Close()
+	defer SSIMLogFile.Close()
 
 	SSIMCmd := testexec.CommandContext(ctx, "tiny_ssim", yuvFile, yuvFile2, strconv.Itoa(size.Width)+"x"+strconv.Itoa(size.Height))
-	SSIMCmd.Stdout = f
-	SSIMCmd.Stderr = f
+	SSIMCmd.Stdout = SSIMLogFile
+	SSIMCmd.Stderr = SSIMLogFile
 	if err := SSIMCmd.Run(testexec.DumpLogOnError); err != nil {
 		return "", errors.Wrap(err, "failed to run tiny_ssim")
 	}
-	return logFile, nil
+	return SSIMLogFileName, nil
 }
 
 // vp8argsVAAPI constructs the command line for the VP8 encoding binary exe.
