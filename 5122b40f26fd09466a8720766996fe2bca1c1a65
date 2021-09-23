@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc02006b_eae6eac5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-09-23T00:59:01Z",
+      "side": 1,
+      "message": "Added GetPrepareFakeAppsOptions() for this",
+      "parentUuid": "44258efd_3119543e",
+      "revId": "5122b40f26fd09466a8720766996fe2bca1c1a65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5312ae4c_ef051a0f",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-23T00:17:17Z",
       "side": 1,
       "message": "update comment now that we\u0027re not using the fixture (probably also can skip renaming the folder now, up to you though)",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 57
+      },
+      "revId": "5122b40f26fd09466a8720766996fe2bca1c1a65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80150309_366df4ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2021-09-23T00:59:01Z",
+      "side": 1,
+      "message": "Removed the renaming of the folder",
+      "parentUuid": "5312ae4c_ef051a0f",
       "range": {
         "startLine": 88,
         "startChar": 1,
