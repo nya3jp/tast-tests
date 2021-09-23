@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1abf91fa_1c713a89",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-23T09:36:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58804205_81340d4e",
+      "range": {
+        "startLine": 87,
+        "startChar": 60,
+        "endLine": 87,
+        "endChar": 63
+      },
+      "revId": "29b282cb3461e3da7166739aa3c9c20fb8d35730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c716464_3f180605",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47e15f22_5040e47d",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-23T09:36:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c716464_3f180605",
+      "range": {
+        "startLine": 936,
+        "startChar": 1,
+        "endLine": 962,
+        "endChar": 37
+      },
+      "revId": "29b282cb3461e3da7166739aa3c9c20fb8d35730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c59b6e3_667bd2f1",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-16T09:20:01Z",
       "side": 1,
       "message": "GIF recording",
+      "range": {
+        "startLine": 111,
+        "startChar": 62,
+        "endLine": 111,
+        "endChar": 76
+      },
+      "revId": "29b282cb3461e3da7166739aa3c9c20fb8d35730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "367ca494_2b9ed4d6",
+        "filename": "src/chromiumos/tast/local/camera/cca/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-23T09:36:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c59b6e3_667bd2f1",
       "range": {
         "startLine": 111,
         "startChar": 62,
