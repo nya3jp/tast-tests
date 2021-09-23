@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e171fa7_a05e04ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-23T21:14:27Z",
+      "side": 1,
+      "message": "Based on the comments, moved back to the original change.",
+      "parentUuid": "f5064da5_81ee9b53",
+      "revId": "ff836ae9b06eeab7cbe346906942e707dcb89383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c43add74_12604f27",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Tried moving resize_lock_helper.go to wm package, got tast-lint error, src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go:23:2: import of chromiumos/tast/local/bundles/cros/arc/wm is only allowed from chromiumos/tast/local/bundles/*/arc or its descendant\n\nGot same tast-lint error when tried resizelockhelper, src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go:23:2: import of chromiumos/tast/local/bundles/cros/arc/resizelockhelper is only allowed from chromiumos/tast/local/bundles/*/arc or its descendant\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code. As per this doc, Importing a subpackage is allowed only in the category package containing it. Looks like arcappcompat package can\u0027t import subpackage \"wm\". Let me know your suggestions.",
       "parentUuid": "c43add74_12604f27",
+      "revId": "ff836ae9b06eeab7cbe346906942e707dcb89383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc1621b_9339a38c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resizelockhelper/resize_lock_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-23T21:14:27Z",
+      "side": 1,
+      "message": "Based on the comments, moved back to original change.",
+      "parentUuid": "9ff2dc79_d69becfb",
       "revId": "ff836ae9b06eeab7cbe346906942e707dcb89383",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
