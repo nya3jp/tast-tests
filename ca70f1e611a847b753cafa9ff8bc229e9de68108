@@ -135,6 +135,30 @@
       },
       "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4930e3ea_659f0db5",
+        "filename": "src/chromiumos/tast/services/cros/lacros/autoupdate_test_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-23T17:48:49Z",
+      "side": 1,
+      "message": "Having one service for all use cases may be too ideal. Tbh I guess it\u0027s a kind of choosing between monolithic vs microservices.\n\nToday there seems to have already been about 50 dedicated test services that do on their own jobs:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3169575/comments/105635f4_c0e7a7f5\n\nHaven\u0027t looked up all but many of them are stateful that would make it harder to consider composition microservices to have a single entry point.\nFor now I feel it would be okay to have a dedicated service (here, for component update and selection verification) until we come up with better architectural decision on test services. Any advice is welcome.",
+      "parentUuid": "dea7daea_d71fe979",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
