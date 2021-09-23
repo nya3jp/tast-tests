@@ -323,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d7caa68_d98e86f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T17:54:22Z",
+      "side": 1,
+      "message": "Ack, if it\u0027s in the best practices :)",
+      "parentUuid": "a432b057_ce267edc",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bef59ca_da8b4fa8",
@@ -595,6 +619,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52a27025_b1deb943",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T17:54:22Z",
+      "side": 1,
+      "message": "Yes something is missing it seems.\n\nIf removing the lacros components is enough of a cleanup, the function can return without marking stateful as being corrupt.\nShouldn\u0027t you be returning w/o marking stateful corrupt?\n\nAs the code is, every time this test runs, it will cause provisioning logic to wipe+install stateful.\n\n(+ missing a unmount of lacros component?)",
+      "parentUuid": "fe926527_18569d50",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 4
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b5f61bf_84b550c6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdateutil/tls_client.go",
         "patchSetId": 1
@@ -695,6 +743,24 @@
       "side": 1,
       "message": "Being used to parse and bump up versions in this CL (autoupdate_test_service.go:57-61)",
       "parentUuid": "11a612e7_c7981094",
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c69869_34bc0afe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T17:54:22Z",
+      "side": 1,
+      "message": "The function has a TODO, no use of version package?",
+      "parentUuid": "41f42335_3b766466",
       "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
