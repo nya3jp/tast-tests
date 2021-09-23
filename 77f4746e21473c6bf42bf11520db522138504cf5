@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f720d668_bda26a73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32a5c08a_a7fb3b78",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 5
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f176ff3_1f0749ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5ed2870_11f51e6e",
+      "range": {
+        "startLine": 9,
+        "startChar": 110,
+        "endLine": 9,
+        "endChar": 116
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddfc90da_ac85f914",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-23T13:35:32Z",
       "side": 1,
       "message": "nit: put it under TEST field, e.g.\n\nTEST\u003dtast run \u003cDUT_IP\u003e ui.YoutubeMultiTab",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3855ff9b_652b2a87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddfc90da_ac85f914",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2c55797_cf0ecbb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "During our dry runs, we noticed this issue and hence we have included this timeout.\n\nIn L106, we have the logic to skip the 2nd ad if it\u0027s playing as well.",
+      "parentUuid": "870d1dd7_e237ec30",
+      "range": {
+        "startLine": 86,
+        "startChar": 35,
+        "endLine": 86,
+        "endChar": 62
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a20e2b3_2c604bf5",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
         "patchSetId": 1
@@ -106,6 +202,30 @@
       "writtenOn": "2021-09-23T13:35:32Z",
       "side": 1,
       "message": "Shouldn\u0027t this whole test be under \"graphics\" or some other folders?\n\nui package is more about Chrome OS UI",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "535a8fcf_4a4071a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "I agree, but we are just leveraging the ui/videocuj/youtube_web.go file. If we are creating the test under graphics, we will not be able to import this file as only test from chromiumos/tast/local/bundles/*/ui or its descendant can import it.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\nHence we thought it might be better under ui package.",
+      "parentUuid": "3a20e2b3_2c604bf5",
       "range": {
         "startLine": 5,
         "startChar": 8,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b29b1204_1350a5a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "@Alex Levin, Can you please suggest someone from Google?",
+      "parentUuid": "e209ad35_b45d6d42",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 100
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bef0a9ac_b2899c85",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
         "patchSetId": 1
@@ -152,6 +296,24 @@
       "writtenOn": "2021-09-23T13:35:32Z",
       "side": 1,
       "message": "Should add Speaker() as a hardware dep as well?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/hwdep/hwdep.go;l\u003d793?q\u003dhwdep.InternalDisplay",
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4262377c_2d67f4f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bef0a9ac_b2899c85",
       "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -227,6 +389,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc016fb5_75e15800",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "Added logic to select the \"INTERNAL_SPEAKER\" audio node during execution.",
+      "parentUuid": "2040dcbb_df112fb7",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 40
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68ff2f0a_950f5af2",
@@ -240,6 +426,30 @@
       "writtenOn": "2021-09-23T13:35:32Z",
       "side": 1,
       "message": "nit: Tast framework against such log statements: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 0
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "161375f9_023a6a6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68ff2f0a_950f5af2",
       "range": {
         "startLine": 83,
         "startChar": 0,
@@ -273,6 +483,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29456d4_7f2f7da0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f81fd66b_d2f77f25",
+      "range": {
+        "startLine": 92,
+        "startChar": 18,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4141b271_96605255",
@@ -286,6 +520,30 @@
       "writtenOn": "2021-09-23T13:35:32Z",
       "side": 1,
       "message": "nit: i\u0027d remove \"tabs\" constant and inline it in for loop:\n\n```\nextendedDisplay :\u003d false\nvar videoApps []*videocuj.YtWeb\nfor i :\u003d 0; i \u003c 10; i++ {\n  ...\n}\n```",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 43
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e283f1e_d9fa119e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4141b271_96605255",
       "range": {
         "startLine": 106,
         "startChar": 0,
@@ -313,6 +571,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b0973dd_af486d15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbe0b5fc_9d37df21",
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b390f8c_a3b5d147",
@@ -326,6 +602,30 @@
       "writtenOn": "2021-09-23T13:35:32Z",
       "side": 1,
       "message": "nit: always pass context by value into functions",
+      "range": {
+        "startLine": 120,
+        "startChar": 27,
+        "endLine": 120,
+        "endChar": 37
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3996fca2_32088d4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b390f8c_a3b5d147",
       "range": {
         "startLine": 120,
         "startChar": 27,
@@ -359,6 +659,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda12d74_5ff18662",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c81ca15_00e7d650",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 4
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4aff7ac_f181f162",
@@ -382,6 +706,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "575bf45b_7e8f0770",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4aff7ac_f181f162",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 34
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ebefa23_53b057c3",
@@ -395,6 +743,30 @@
       "writtenOn": "2021-09-23T13:35:32Z",
       "side": 1,
       "message": "nit: rename it to wantDevName",
+      "range": {
+        "startLine": 139,
+        "startChar": 95,
+        "endLine": 139,
+        "endChar": 105
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7688afc_9ce3b585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-23T14:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ebefa23_53b057c3",
       "range": {
         "startLine": 139,
         "startChar": 95,
