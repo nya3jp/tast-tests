@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e1ba6a_2b2e5e21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-09-23T11:58:41Z",
+      "side": 1,
+      "message": "OK, let\u0027s move on with this review and spread more mayhem in the tests.",
+      "revId": "3a2232420d047eb7052d5618bc3dc49df71020d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ee294b_a11ebadf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-09-23T11:58:41Z",
+      "side": 1,
+      "message": "remove this line",
+      "revId": "3a2232420d047eb7052d5618bc3dc49df71020d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
