@@ -643,6 +643,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f739840_73fcd229",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-23T18:01:38Z",
+      "side": 1,
+      "message": "Got your point! will be able to check if removing is done okay and marking stateful corrupt conditionally only when it is not okay.",
+      "parentUuid": "52a27025_b1deb943",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 4
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b5f61bf_84b550c6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdateutil/tls_client.go",
         "patchSetId": 1
@@ -714,6 +738,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8847870_8bcf5c3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdateutil/tls_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-23T18:01:38Z",
+      "side": 1,
+      "message": "SGTM. Just to be clear, is the package name still \"lacros\" or \"common\"?",
+      "parentUuid": "19e1336e_200eb9e1",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11a612e7_c7981094",
         "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
         "patchSetId": 1
@@ -761,6 +809,24 @@
       "side": 1,
       "message": "The function has a TODO, no use of version package?",
       "parentUuid": "41f42335_3b766466",
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd98bb01_2bc70534",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-23T18:01:38Z",
+      "side": 1,
+      "message": "My bad. was a critical typo. being used at autoupdate_rootfs_to_stateful.go:52-58",
+      "parentUuid": "17c69869_34bc0afe",
       "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

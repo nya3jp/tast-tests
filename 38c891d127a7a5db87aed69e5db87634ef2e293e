@@ -39,6 +39,30 @@
       },
       "revId": "38c891d127a7a5db87aed69e5db87634ef2e293e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d45c750_73140459",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-23T18:01:38Z",
+      "side": 1,
+      "message": "That will be in a follow up CL for sure to cover possible test scenarios. This is the initial CL for pilot with the simplest case.",
+      "parentUuid": "6c9c6c95_d23853ff",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 54
+      },
+      "revId": "38c891d127a7a5db87aed69e5db87634ef2e293e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
