@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97636975_dc4259d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_get_devices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T18:43:09Z",
+      "side": 1,
+      "message": "will `output` contain anything meaningful if there\u0027s an error? if not, probably best to leave this as Fatalf",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "b113785f6c5de6631ca635256c30f58b6f2c4000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bbd9ae7_fdd07795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_plugin_startup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-23T18:43:09Z",
+      "side": 1,
+      "message": "similar question here, it seems like this should go after the error handling for running the command.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "b113785f6c5de6631ca635256c30f58b6f2c4000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
