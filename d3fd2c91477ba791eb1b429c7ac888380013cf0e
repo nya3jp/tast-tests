@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "799b49d9_42961d37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504745
+      },
+      "writtenOn": "2021-09-23T19:54:54Z",
+      "side": 1,
+      "message": "\u003e We almost certainly do not want to update glibc on a past branch--toolchain updates on old branches are an extreme situation and we\u0027ll need approval from the security team to do this. Last I\u0027ve seen, the security team has said this should not get merged to the LTS branch.",
+      "revId": "d3fd2c91477ba791eb1b429c7ac888380013cf0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
