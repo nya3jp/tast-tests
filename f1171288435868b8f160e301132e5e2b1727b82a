@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a10976_feae0883",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-23T01:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1db8f208_ebd3bdcd",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 22
+      },
+      "revId": "f1171288435868b8f160e301132e5e2b1727b82a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "415be089_0eb77aed",
