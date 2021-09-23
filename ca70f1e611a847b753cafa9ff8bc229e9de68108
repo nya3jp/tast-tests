@@ -207,6 +207,30 @@
       },
       "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef93b8b9_0625771f",
+        "filename": "src/chromiumos/tast/services/cros/lacros/autoupdate_test_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-23T22:27:40Z",
+      "side": 1,
+      "message": "Jae and Seewai, thank you so much for your review! It would be helpful if I can write up a short doc to discuss some ideas regarding \u0027test service API design\u0027 and naming for this CL and https://crrev.com/c/3176400 as well.\nWill keep you posted!",
+      "parentUuid": "492d4281_5e432ade",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
