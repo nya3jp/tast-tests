@@ -55,6 +55,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86592bee_06358ebd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/autoupdate_test_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "Lacros?",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 26
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2300c2a_af8c8e11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/autoupdate_test_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 58
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c360ee5a_42cd90b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/autoupdate_test_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "```\nreturn \u0026lacros.VerifyLacrosVersionResponse{\n\tResult: \u0026lacros.TestResult{\n\t\tStatus:        lacros.TestResult_PASSED,\n\t\tStatusDetails: \"Okay\",\n\t},\n}, nil\n```",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c36965d2_0ce9faf8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "This is a very confusing name, there isn\u0027t any autoupdating happening here.\nIt\u0027s more like a component installation + selection only.\n\nWould recommend renaming this Func to cause less confusion and codesearch hits.\n\nLacrosRootfsToStateful or something.",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 42
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db4af252_eb7c59db",
         "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
         "patchSetId": 1
@@ -84,6 +176,75 @@
       "side": 1,
       "message": "Thanks for the suggestion. I think the new runtime variable could be used here. will update in the next patch.",
       "parentUuid": "db4af252_eb7c59db",
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ace7e4a_f3bae1b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "Can avoid worrying about this creating a new context in the unprovisioning logic?\nFor starters, use a TODO in the function itself or something?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bef59ca_da8b4fa8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "These + others that can fail prior to provisioning anything or touching anything in the DUT, unnecessarily defers the cleanup routine.\n\nWhich can mark stateful corrupt without actually doing anything.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 63
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "296f5417_88bfa93a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "Used multiple times, create const for it.",
+      "range": {
+        "startLine": 101,
+        "startChar": 71,
+        "endLine": 101,
+        "endChar": 100
+      },
       "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -125,6 +286,115 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3acf8e88_82899d55",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "nit: cleanup/cleanupLacros?",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 22
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "643b1632_e0bb0f59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "Output the `err`? ditto everywhere else,",
+      "range": {
+        "startLine": 107,
+        "startChar": 9,
+        "endLine": 107,
+        "endChar": 74
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cdffafc_15831f78",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "If you\u0027re depending on the provisioning logic to cleanup after this test, can ignore removing the provisioned lacros.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 4
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b5f61bf_84b550c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdateutil/tls_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "nit: this should be put into a general location for all tests to utilize + pulled in here.",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11a612e7_c7981094",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "This file isn\u0027t used in this CL? Better to join it into a CL that does.",
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78491cd7_d5c28bd2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
         "patchSetId": 1
@@ -154,6 +424,75 @@
       "side": 1,
       "message": "I gave it a thought, and ended up using an array since in most cases version would not necessarily be accessed by those explicit names individually and it saves some code lines in loop 😄. Let me know if you have better thoughts.",
       "parentUuid": "78491cd7_d5c28bd2",
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6714cfe3_9b33ab1b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "If there is an error parsing, should probably return empty version right away.\n\nOr nil, so IsValid doesn\u0027t even need to exist?",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "276b2df9_3dfc0283",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "```\ncopy :\u003d *v\nreturn \u0026copy\n```\n\nIs probably simpler.",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7861274b_96989d69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-23T00:43:05Z",
+      "side": 1,
+      "message": "Why not just let access to Component?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 1
+      },
       "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
