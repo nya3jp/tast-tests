@@ -80,6 +80,9 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 	logPath := filepath.Join(outDir, LogFile)
 	statePath := filepath.Join(outDir, StateFile)
 
+	testing.ContextLog(ctx, "DoNotPush File log is at ", logPath)
+	testing.ContextLog(ctx, "DoNotPush Test server is at ", testserverPath)
+
 	fr, fw, err := os.Pipe()
 	if err != nil {
 		return nil, errors.Wrap(err, "cannot create startup-pipe file")
@@ -103,6 +106,7 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 		// cmd.ExtraFiles (set below) assigns element i to file descriptor 3+i.
 		// See exec.Cmd for more info.
 		"--startup-pipe", "3",
+		"--log-to-console",
 	}
 
 	cmd := testexec.CommandContext(ctx, "/usr/local/bin/python3", args...)
@@ -222,6 +226,33 @@ func (fdms *FakeDMS) Ping(ctx context.Context) error {
 		return errors.Errorf("ping gave %d response", resp.StatusCode)
 	}
 	return nil
+}
+
+// GetRemoteCommandResult will return the result of the completed remote commands.
+func (fdms *FakeDMS) GetRemoteCommandResult() ([]RemoteCommandResponse, error) {
+	resp, err := http.Get(fdms.URL + "/test/get_remote_command_results")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to contact fake DM server")
+	}
+
+	defer resp.Body.Close()
+
+	if resp.StatusCode != 200 {
+		return nil, errors.Wrap(err, "Http error code: "+resp.Status)
+	}
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, errors.Wrap(err, "Failed to read body")
+	}
+
+	var r []RemoteCommandResponse
+	err = json.Unmarshal(body, &r)
+	if err != nil {
+		return nil, errors.Wrap(err, "Failed to read body as JSON. Body: "+string(body))
+	}
+
+	return r, nil
 }
 
 // kill will kill the running cmd and wait for it to return.

@@ -41,7 +41,58 @@ type PolicyBlob struct {
 	InitialState         map[string]*BlobInitialState `json:"initial_enrollment_state,omitempty"`
 	DeviceAffiliationIds []string                     `json:"device_affiliation_ids,omitempty"`
 	UserAffiliationIds   []string                     `json:"user_affiliation_ids,omitempty"`
+	RemoteCommands       []*RemoteCommandBlob         `json:"remote_commands"`
 }
+
+// DoNotPush move
+// A RemoteCommandBlob is a sub-struct used in a PolicyBlob.
+// It represents a remote command sent by the server to the ChromeOS client.
+type RemoteCommandBlob struct {
+	Type         RemoteCommandType      `json:"type"`
+	CommandId    int                    `json:"command_id"`
+	AgeOfCommand int                    `json:"age_of_command"`
+	Payload      map[string]interface{} `json:"payload"`
+}
+
+// RemoteCommandType is an enum representing the type of the remote command.
+// Note: each values must match the values of the proto enum |RemoteCommand::Type|
+// in device_management_backend.proto.
+// DoNotPush use strings?
+type RemoteCommandType int
+
+const (
+	COMMAND_ECHO_TEST                             RemoteCommandType = -1
+	DEVICE_REBOOT                                 RemoteCommandType = 0
+	DEVICE_SCREENSHOT                             RemoteCommandType = 1
+	DEVICE_SET_VOLUME                             RemoteCommandType = 2
+	DEVICE_FETCH_STATUS                           RemoteCommandType = 3
+	USER_ARC_COMMAND                              RemoteCommandType = 4
+	DEVICE_WIPE_USERS                             RemoteCommandType = 5
+	DEVICE_START_CRD_SESSION                      RemoteCommandType = 6
+	DEVICE_REMOTE_POWERWASH                       RemoteCommandType = 7
+	DEVICE_REFRESH_ENTERPRISE_MACHINE_CERTIFICATE RemoteCommandType = 8
+	DEVICE_GET_AVAILABLE_DIAGNOSTIC_ROUTINES      RemoteCommandType = 9
+	DEVICE_RUN_DIAGNOSTIC_ROUTINE                 RemoteCommandType = 10
+	DEVICE_GET_DIAGNOSTIC_ROUTINE_UPDATE          RemoteCommandType = 11
+	BROWSER_CLEAR_BROWSING_DATA                   RemoteCommandType = 12
+	DEVICE_RESET_EUICC                            RemoteCommandType = 13
+)
+
+type RemoteCommandResponse struct {
+	Result    RemoteCommandResult `json:"result"`
+	CommandId int                 `json:"command_id"`
+	TimeStamp int                 `json:"timestamp"`
+	// DoNotPush try map[string]interface{}
+	Payload string `json:"payload"`
+}
+
+type RemoteCommandResult int
+
+const (
+	RESULT_IGNORED RemoteCommandResult = 0
+	RESULT_FAILURE RemoteCommandResult = 1
+	RESULT_SUCCESS RemoteCommandResult = 2
+)
 
 // A BlobUserPolicies struct is a sub-struct used in a PolicyBlob.
 type BlobUserPolicies struct {
@@ -80,6 +131,21 @@ func NewPolicyBlob() *PolicyBlob {
 		InvalidationSrc:  defaultInvalidationSource,
 		InvalidationName: defaultInvalidationName,
 	}
+}
+
+// DoNotPush
+// NewPolicyBlob returns a simple *PolicyBlob. Callers are expected to add user
+// and device policies or modify initial setup as desired.
+
+func NewRemoteCommand(t RemoteCommandType) *RemoteCommandBlob {
+	return &RemoteCommandBlob{
+		Type:    t,
+		Payload: make(map[string]interface{}),
+	}
+}
+
+func (pb *PolicyBlob) AddRemoteCommand(c *RemoteCommandBlob) {
+	pb.RemoteCommands = append(pb.RemoteCommands, c)
 }
 
 // AddPolicies adds a given slice of Policy to the PolicyBlob.
