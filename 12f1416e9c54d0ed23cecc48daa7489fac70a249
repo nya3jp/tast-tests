@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1519678_c3b3d297",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/nearby_share_send.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-09-23T01:40:48Z",
+      "side": 1,
+      "message": "Why not change the nearbycommon `ExtraLargeFileOnlineTransferTimeout`?  Are we timing out at a specific step (like largeFileCheckboxTimeout was due to UI step timing out when waiting for checkbox to show up) did overall context deadline exceeded? 12 minutes seems excessive.\n\nNaming wise we should use something that starts with `extraLargeFile*`",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "12f1416e9c54d0ed23cecc48daa7489fac70a249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
