@@ -720,7 +720,7 @@ func (ac *Context) MakeVisible(finder *nodewith.Finder) Action {
 //   dialog := nodewith.Name("Dialog").Role(role.Dialog)
 //   button := nodewith.Name("Ok").Role(role.Button).Ancestor(dialog)
 //   ui := uiauto.New(tconn)
-//   if err := ui.IfSuccessThen(ui.Withtimeout(5*time.Second).WaitUntilExists(dialog), ui.LeftClick(button))(ctx); err != nil {
+//   if err := ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(dialog), ui.LeftClick(button))(ctx); err != nil {
 //	    ...
 //   }
 func (ac *Context) IfSuccessThen(preFunc, fn Action) Action {
