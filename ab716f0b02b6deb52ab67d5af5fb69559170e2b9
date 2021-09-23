@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9448d8f3_a3236b0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355298
+      },
+      "writtenOn": "2021-09-23T00:09:29Z",
+      "side": 1,
+      "message": "Sorry, this was an infra issue that persisted from ~12-5 PM. Retrying for you.",
+      "revId": "ab716f0b02b6deb52ab67d5af5fb69559170e2b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
