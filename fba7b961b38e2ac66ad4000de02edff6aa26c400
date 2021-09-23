@@ -169,6 +169,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e2f357a_8155849e",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-23T08:28:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "df5d427a_fe5bb83d",
+      "revId": "fba7b961b38e2ac66ad4000de02edff6aa26c400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3e60e33_893faf69",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-23T08:28:40Z",
+      "side": 1,
+      "message": "Why not have kiosk use it\u0027s own struct, since we can now use interfaces to hide everything anyway?\n\nThis is why I want a review on the DD, we have not discussed the overall structure.",
+      "parentUuid": "df5d427a_fe5bb83d",
+      "revId": "fba7b961b38e2ac66ad4000de02edff6aa26c400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a06b074b_24d52dc1",
