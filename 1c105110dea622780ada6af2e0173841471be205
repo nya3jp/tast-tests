@@ -34,6 +34,24 @@
       "parentUuid": "b19ce9d5_77f63769",
       "revId": "1c105110dea622780ada6af2e0173841471be205",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "875e13eb_80c9e74f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1520088
+      },
+      "writtenOn": "2021-09-23T03:42:10Z",
+      "side": 1,
+      "message": "The correct URL:\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/dut/dut.go;l\u003d224",
+      "parentUuid": "417f8768_5eeb699a",
+      "revId": "1c105110dea622780ada6af2e0173841471be205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
