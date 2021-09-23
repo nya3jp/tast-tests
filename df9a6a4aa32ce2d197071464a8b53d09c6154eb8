@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33dc12d1_25dafdfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-23T14:04:53Z",
+      "side": 1,
+      "message": "Still LGTM % nit",
+      "revId": "df9a6a4aa32ce2d197071464a8b53d09c6154eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c698fb15_397b9fb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-23T14:04:53Z",
+      "side": 1,
+      "message": "Please also check if chrome is nil and stop early in that case.",
+      "revId": "df9a6a4aa32ce2d197071464a8b53d09c6154eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
