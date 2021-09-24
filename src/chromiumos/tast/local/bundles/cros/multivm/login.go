@@ -57,12 +57,12 @@ func Login(ctx context.Context, s *testing.State) {
 	if err := pre.Chrome.Responded(ctx); err != nil {
 		s.Fatal("Chrome did not respond: ", err)
 	}
-	basemem, err := metrics.NewBaseMemoryStats()
+	arc := multivm.ARCFromPre(pre)
+	basemem, err := metrics.NewBaseMemoryStats(ctx, arc)
 	if err != nil {
 		s.Fatal("Failed to retrieve base memory stats: ", err)
 	}
 
-	arc := multivm.ARCFromPre(pre)
 	if arc != nil {
 		// Ensures package manager service is running by checking the existence of the "android" package.
 		pkgs, err := arc.InstalledPackages(ctx)
@@ -92,7 +92,7 @@ func Login(ctx context.Context, s *testing.State) {
 	testing.Sleep(ctx, postLoginCoolDownDuration)
 
 	s.Log("Measuring system memory and pressure in idle state")
-	basemem.Reset()
+	basemem.Reset(ctx, arc)
 	// Let the system quiesce for a while and measure its memory consumption.
 	testing.Sleep(ctx, quietDuration)
 	s.Log("Will now collect idle perf values")
