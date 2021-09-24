@@ -95,6 +95,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86b7759c_65c7f27d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-24T02:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e6185bb_93aaedc1",
+      "revId": "9036206bd490f9ff0cd50e8d308af5bac5fae129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59046429_ee204647",
@@ -108,6 +126,30 @@
       "writtenOn": "2021-09-15T07:13:35Z",
       "side": 1,
       "message": "I think it is good to separate this out from this CL, and put it with wifi test CL.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 66
+      },
+      "revId": "9036206bd490f9ff0cd50e8d308af5bac5fae129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c07e9dd_993d3b78",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-24T02:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59046429_ee204647",
       "range": {
         "startLine": 52,
         "startChar": 0,
