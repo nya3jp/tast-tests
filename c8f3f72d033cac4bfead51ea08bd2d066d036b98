@@ -117,6 +117,30 @@
       },
       "revId": "c8f3f72d033cac4bfead51ea08bd2d066d036b98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f005109_8c324542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-24T04:19:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "240b5656_16233ab6",
+      "range": {
+        "startLine": 112,
+        "startChar": 25,
+        "endLine": 112,
+        "endChar": 50
+      },
+      "revId": "c8f3f72d033cac4bfead51ea08bd2d066d036b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
