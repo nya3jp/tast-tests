@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cde1494_a9527502",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_common.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-24T07:55:11Z",
+      "side": 1,
+      "message": "tguilbert@, can I write this in more brilliant way?",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 171,
+        "endChar": 5
+      },
+      "revId": "c1733e26a6324c91fa8ab147d19c693175d53f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
