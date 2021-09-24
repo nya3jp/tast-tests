@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e9ba17e_18e0011e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-24T00:16:30Z",
+      "side": 1,
+      "message": "The nodewith is smarter now 😊 Instead of hard code the string, you can do nodewith.HasClass(\"accent-container\")\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go?l\u003d602",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 121
+      },
+      "revId": "f6aa26a9e300ba90f02909c22a7c741c185a487e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
