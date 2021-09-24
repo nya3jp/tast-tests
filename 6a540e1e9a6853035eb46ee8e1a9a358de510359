@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "6a540e1e9a6853035eb46ee8e1a9a358de510359",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04838445_409ef7da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-24T16:16:17Z",
+      "side": 1,
+      "message": "Please resolve merge conflict. Thanks.",
+      "revId": "6a540e1e9a6853035eb46ee8e1a9a358de510359",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
