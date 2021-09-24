@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddc38811_a2a212c3",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-24T03:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d662f8c_deedbd78",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 63
+      },
+      "revId": "81a4fb95d0abfd4c0babfdb2c7e4055bb1f1d97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37091261_a9434dbc",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de12f96e_1049ee1c",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-24T03:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37091261_a9434dbc",
+      "range": {
+        "startLine": 254,
+        "startChar": 36,
+        "endLine": 254,
+        "endChar": 56
+      },
+      "revId": "81a4fb95d0abfd4c0babfdb2c7e4055bb1f1d97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03ae38ab_d2d536f8",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-24T02:19:49Z",
       "side": 1,
       "message": "gif review retake button?",
+      "range": {
+        "startLine": 257,
+        "startChar": 38,
+        "endLine": 257,
+        "endChar": 58
+      },
+      "revId": "81a4fb95d0abfd4c0babfdb2c7e4055bb1f1d97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3238dda3_debc2c2f",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-24T03:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03ae38ab_d2d536f8",
       "range": {
         "startLine": 257,
         "startChar": 38,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "307ee782_64bfda94",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-24T03:06:01Z",
+      "side": 1,
+      "message": "There a review page shown between record complete(blob ready in memory) and save blob to disk. Ideally, we would like to verify the blob is only saved after user click \"save\" button in review page. So I set the startTime right before click \u0027save\u0027 button. Rename to |beforeSaveTime| accordingly.",
+      "parentUuid": "fe3c7eec_e472a2e8",
+      "range": {
+        "startLine": 967,
+        "startChar": 1,
+        "endLine": 967,
+        "endChar": 24
+      },
+      "revId": "81a4fb95d0abfd4c0babfdb2c7e4055bb1f1d97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c2494a4_4b463aed",
         "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
         "patchSetId": 2
@@ -106,6 +202,30 @@
       "writtenOn": "2021-09-23T18:31:06Z",
       "side": 1,
       "message": "Can be unexported  as it appears to be used internally (go/go-style/decisions#initialisms)",
+      "range": {
+        "startLine": 1952,
+        "startChar": 14,
+        "endLine": 1952,
+        "endChar": 35
+      },
+      "revId": "81a4fb95d0abfd4c0babfdb2c7e4055bb1f1d97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b303e625_77f9267d",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1952,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-24T03:06:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c2494a4_4b463aed",
       "range": {
         "startLine": 1952,
         "startChar": 14,
