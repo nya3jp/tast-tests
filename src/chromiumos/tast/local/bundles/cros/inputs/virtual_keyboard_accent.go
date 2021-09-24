@@ -69,7 +69,7 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 	}
 
 	inputField := testserver.TextAreaNoCorrectionInputField
-	accentContainerFinder := nodewith.ClassName("goog-container goog-container-vertical accent-container")
+	accentContainerFinder := nodewith.HasClass("accent-container")
 	accentKeyFinder := nodewith.Ancestor(accentContainerFinder).Name(accentKeyName).Role(role.StaticText)
 	languageLabelFinder := vkb.NodeFinder.Name(languageLabel).First()
 	keyFinder := vkb.KeyByNameIgnoringCase(keyName)
