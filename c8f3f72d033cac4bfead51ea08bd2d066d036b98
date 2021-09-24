@@ -93,6 +93,30 @@
       },
       "revId": "c8f3f72d033cac4bfead51ea08bd2d066d036b98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "240b5656_16233ab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-24T00:25:51Z",
+      "side": 1,
+      "message": "Unfortunately this assumption does not always work. To make it robust, you can ensure clamshell mode then reverted it back to original state.\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/tablet.go?l\u003d39\n\nAn example:\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/apps/launch_help_app.go?l\u003d157\n\nbtw, this test will run on most devices, I reckon it would be nice to test both clamshell and tablet mode. Normally, tablet is less performant.",
+      "parentUuid": "531245d1_f5e75bc4",
+      "range": {
+        "startLine": 112,
+        "startChar": 25,
+        "endLine": 112,
+        "endChar": 50
+      },
+      "revId": "c8f3f72d033cac4bfead51ea08bd2d066d036b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
