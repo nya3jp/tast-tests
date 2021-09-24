@@ -16,6 +16,23 @@
       "message": "PTAL!\n\nThanks",
       "revId": "1040da2aa954bc989c02190cccbf94222f5e7e76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc49c68b_9ae7ab11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-24T23:41:14Z",
+      "side": 1,
+      "message": "Previous rebasing accidentally pushed the additional changes to calling CheckWriteProtect... into lower patches. Now this patch is complete and verified.",
+      "revId": "1040da2aa954bc989c02190cccbf94222f5e7e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
