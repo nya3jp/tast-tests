@@ -16,6 +16,75 @@
       "message": "Hi Judy,\nCould you please have a look? Thank you.\nBest regards,\nNancy",
       "revId": "89881418b4e185ff82c3307e2eab2261ffae7a88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42747129_58084e5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_open_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-24T05:46:22Z",
+      "side": 1,
+      "message": "ash browser",
+      "range": {
+        "startLine": 27,
+        "startChar": 27,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "89881418b4e185ff82c3307e2eab2261ffae7a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af9b087_c4c9cfec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_open_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-24T05:46:22Z",
+      "side": 1,
+      "message": "You might want to check that the alert dialog has disappeared after clicking this.",
+      "range": {
+        "startLine": 90,
+        "startChar": 15,
+        "endLine": 90,
+        "endChar": 24
+      },
+      "revId": "89881418b4e185ff82c3307e2eab2261ffae7a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f05ea8c_b29b9f12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_open_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-24T05:46:22Z",
+      "side": 1,
+      "message": "The settings page is supposed to be opened at the full restore setting page, please check that instead of looking for the search box.",
+      "range": {
+        "startLine": 99,
+        "startChar": 46,
+        "endLine": 99,
+        "endChar": 72
+      },
+      "revId": "89881418b4e185ff82c3307e2eab2261ffae7a88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
