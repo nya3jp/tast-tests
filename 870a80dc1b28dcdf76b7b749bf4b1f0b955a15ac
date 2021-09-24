@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a269c2_a845cbdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/dbus.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-24T05:18:15Z",
+      "side": 1,
+      "message": "Could you use dbusutil.CallProtoMethod ?",
+      "revId": "870a80dc1b28dcdf76b7b749bf4b1f0b955a15ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
