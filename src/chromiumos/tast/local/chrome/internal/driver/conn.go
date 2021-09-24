@@ -75,16 +75,6 @@ func (c *Conn) CloseTarget(ctx context.Context) error {
 	return c.co.CloseTarget(ctx)
 }
 
-// Exec executes the JavaScript expression expr and discards its result.
-// If out is a *chrome.JSObject, a reference to the result is returned.
-// The *chrome.JSObject should get released or the memory it references will not be freed.
-// An error is returned if an exception is generated.
-//
-// DEPRECATED: please use Eval(ctx, expr, nil) instead.
-func (c *Conn) Exec(ctx context.Context, expr string) error {
-	return c.doEval(ctx, expr, false, nil)
-}
-
 // Eval evaluates the JavaScript expression expr and stores its result in out.
 // If out is a *chrome.JSObject, a reference to the result is returned.
 // The *chrome.JSObject should get released or the memory it references will not be freed.
@@ -97,7 +87,7 @@ func (c *Conn) Exec(ctx context.Context, expr string) error {
 // it is settled, and the resolved value is stored in out if given.
 //
 //	data := make(map[string]interface{})
-//	err := conn.EvalPromiseDeprecated(ctx,
+//	err := conn.Eval(ctx,
 //		`new Promise(function(resolve, reject) {
 //			runAsync(function(data) {
 //				if (data != null) {
@@ -108,42 +98,13 @@ func (c *Conn) Exec(ctx context.Context, expr string) error {
 //			});
 //		})`, &data)
 func (c *Conn) Eval(ctx context.Context, expr string, out interface{}) error {
-	return c.doEval(ctx, expr, true, out)
-}
-
-// EvalPromiseDeprecated evaluates the JavaScript expression expr (which must return a Promise),
-// awaits its result, and stores the result in out (if non-nil). If out is a *chrome.JSObject,
-// a reference to the result is returned. The *chrome.JSObject should get released or
-// the memory it references will not be freed. An error is returned if evaluation fails,
-// an exception is raised, ctx's deadline is reached, or out is non-nil and the result
-// can't be unmarshaled into it.
-//
-//	data := make(map[string]interface{})
-//	err := conn.EvalPromiseDeprecated(ctx,
-//		`new Promise(function(resolve, reject) {
-//			runAsync(function(data) {
-//				if (data != null) {
-//					resolve(data);
-//				} else {
-//					reject("it failed");
-//				}
-//			});
-//		})`, &data)
-//
-// DEPRECATED: please use Eval, instead.
-func (c *Conn) EvalPromiseDeprecated(ctx context.Context, expr string, out interface{}) error {
-	return c.doEval(ctx, expr, true, out)
-}
-
-// doEval is a helper function that evaluates JavaScript code for Exec, Eval, and EvalPromiseDeprecated.
-func (c *Conn) doEval(ctx context.Context, expr string, awaitPromise bool, out interface{}) error {
 	// If returning JSObject, pass its RemoteObject to Eval.
 	newOb, returnJSObject := out.(*JSObject)
 	if returnJSObject {
 		out = &newOb.ro
 	}
 
-	exc, err := c.co.Eval(ctx, expr, awaitPromise, out)
+	exc, err := c.co.Eval(ctx, expr, true, out)
 	if err != nil {
 		if exc != nil {
 			c.lw.Report(time.Now(), "eval-error", err.Error(), exc.StackTrace)

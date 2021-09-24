@@ -221,23 +221,11 @@ func (c *Conn) ReleaseAllObjects(ctx context.Context) error {
 // The Chrome DevTools Protocol reports exceptions (and failed promises) in different ways depending
 // on how they occur. This function tries to return a single-line string that contains the original error.
 //
-// Exec, Eval: throw new Error("foo"):
+// Eval: throw new Error("foo"):
 //	.Text:                  "Uncaught"
 //	.Error:                 "runtime.ExceptionDetails: Uncaught exception at 0:0: Error: foo\n  <stack>"
 //	.Exception.Description: "Error: foo\n  <stack>"
 //	.Exception.Value:       null
-//
-// EvalPromise: reject("foo"):
-//	.Text:                  "Uncaught (in promise)"
-//	.Error:                 "runtime.ExceptionDetails: Uncaught (in promise) exception at 0:0"
-//	.Exception.Description: nil
-//	.Exception.Value:       "foo"
-//
-// EvalPromise: reject(new Error("foo")), throw new Error("foo"):
-//	.Text:                  "Uncaught (in promise) Error: foo"
-//	.Error:                 "runtime.ExceptionDetails: Uncaught (in promise) Error: foo exception at 0:0"
-//	.Exception.Description: nil
-//	.Exception.Value:       {}
 func extractExceptionText(d *runtime.ExceptionDetails) string {
 	if d.Exception != nil && d.Exception.Description != nil {
 		return strings.Split(*d.Exception.Description, "\n")[0]
