@@ -9,7 +9,6 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -113,7 +112,7 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 
 	// If pixelFormat is NV12, conversion from I420 to NV12 is performed.
 	if pixelFormat == videotype.NV12 {
-		cf, err := publicTempFile(yuvName)
+		cf, err := createPublicTempFile(yuvName)
 		if err != nil {
 			return "", errors.Wrap(err, "failed to create a temporary YUV file")
 		}
@@ -160,20 +159,6 @@ func PrepareYUVJSON(ctx context.Context, yuvPath, jsonPath string) (string, erro
 
 	}
 	return yuvJSONPath, nil
-}
-
-// publicTempFile creates a world-readable temporary file.
-func publicTempFile(prefix string) (*os.File, error) {
-	f, err := ioutil.TempFile("", prefix)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create a public temporary file")
-	}
-	if err := f.Chmod(0644); err != nil {
-		f.Close()
-		os.Remove(f.Name())
-		return nil, errors.Wrap(err, "failed to create a public temporary file")
-	}
-	return f, nil
 }
 
 // convertI420ToNV12 converts i420 YUV to NV12 YUV.
