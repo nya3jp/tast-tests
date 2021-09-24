@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de66255e_f703baba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T10:27:53Z",
+      "side": 1,
+      "message": "Fixed, rename to `screenshotPattern`",
+      "parentUuid": "3f0e5fd2_38dbd9e2",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ec4df8e_b7fc57f8",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-09-23T19:35:43Z",
       "side": 1,
       "message": "can you also add chromeos-sw-engprod@google.com ?",
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d9652b_9ef2baed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T10:27:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ec4df8e_b7fc57f8",
       "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3fbfc58_1c12a167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T10:27:53Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "2300c4b9_1d9e8f03",
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "316b9435_3c244189",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-09-23T19:15:36Z",
       "side": 1,
       "message": "callers should not close tconn:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d580-581",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 20
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "009a265b_d6145ca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T10:27:53Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "316b9435_3c244189",
       "range": {
         "startLine": 59,
         "startChar": 1,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92e6c7a_32201ecb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T10:27:53Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "1b447e29_661622ee",
+      "range": {
+        "startLine": 73,
+        "startChar": 25,
+        "endLine": 73,
+        "endChar": 40
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0b39d5a_acce60cd",
@@ -117,6 +225,30 @@
       "writtenOn": "2021-09-23T19:15:36Z",
       "side": 1,
       "message": "quicksettings.ToggleSetting should support this if you add a new SettingPod:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/quicksettings/constants.go;l\u003d79-89\n\nthen you could just use quicksettings.ToggleSetting to do all of this",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb35c50a_6fc7e9d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T10:27:53Z",
+      "side": 1,
+      "message": "We added \"Screen capture\" as a new SettingPod. \nBut the button is not toggleable, so we used quicksettings.PodIconButton to scoped the button and operate on it.",
+      "parentUuid": "c0b39d5a_acce60cd",
       "range": {
         "startLine": 73,
         "startChar": 1,
@@ -150,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "677ae15b_9eeabd4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T10:27:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c598ab11_b8387a26",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 34
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46963ac5_c95050c2",
@@ -163,6 +319,30 @@
       "writtenOn": "2021-09-23T19:15:36Z",
       "side": 1,
       "message": "this and the above code to open Screen Capture from quick settings would be great to add into the wm support package, especially for future Screen Capture tests.",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a5fde7_9f620e07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T10:27:53Z",
+      "side": 1,
+      "message": "Done, we moved this action to src/chromiumos/tast/local/chrome/uiauto/wm/screenshot.go as wm support function.",
+      "parentUuid": "46963ac5_c95050c2",
       "range": {
         "startLine": 87,
         "startChar": 1,
@@ -196,6 +376,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a405103c_d0dbb4ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T10:27:53Z",
+      "side": 1,
+      "message": "Thank you, we\u0027ll keep this in mind. \nBut we checked again and adopted another way (without UI controls) to check the existence of the captured image file.",
+      "parentUuid": "fd8bb10b_f2141ea7",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 61
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aab86618_7ea353f8",
@@ -209,6 +413,30 @@
       "writtenOn": "2021-09-23T19:15:36Z",
       "side": 1,
       "message": "the finder is short enough that I think it\u0027s better to just in-line it here (and it\u0027s only used once)",
+      "range": {
+        "startLine": 119,
+        "startChar": 15,
+        "endLine": 119,
+        "endChar": 34
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a3a6e8e_b724e3f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T10:27:53Z",
+      "side": 1,
+      "message": "Ack.\nThis has been removed since the files app is not used now.",
+      "parentUuid": "aab86618_7ea353f8",
       "range": {
         "startLine": 119,
         "startChar": 15,
@@ -242,6 +470,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93af8729_8e67ffd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T10:27:53Z",
+      "side": 1,
+      "message": "Ack.\nThis has been removed since the files app is not used now.",
+      "parentUuid": "6d821099_41e8add9",
+      "range": {
+        "startLine": 120,
+        "startChar": 21,
+        "endLine": 120,
+        "endChar": 35
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b5e0a41_f1a1805d",
@@ -255,6 +507,30 @@
       "writtenOn": "2021-09-23T19:15:36Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 125,
+        "startChar": 25,
+        "endLine": 125,
+        "endChar": 41
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f6baff_5b3b7f1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T10:27:53Z",
+      "side": 1,
+      "message": "Ack.\nThis has been removed since the files app is not used now.",
+      "parentUuid": "9b5e0a41_f1a1805d",
       "range": {
         "startLine": 125,
         "startChar": 25,
@@ -282,6 +558,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e8daf17_6bc46651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T10:27:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bd65354_bd93419c",
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ddd8528_98a310f2",
@@ -295,6 +589,30 @@
       "writtenOn": "2021-09-23T19:15:36Z",
       "side": 1,
       "message": "capture",
+      "range": {
+        "startLine": 17,
+        "startChar": 55,
+        "endLine": 17,
+        "endChar": 62
+      },
+      "revId": "2a8fc6b9936fcaf2716bd1e3879c88e5b03bae4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "217dcbcf_662e5d15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/util/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T10:27:53Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "0ddd8528_98a310f2",
       "range": {
         "startLine": 17,
         "startChar": 55,
