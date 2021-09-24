@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "746e9f66_2d990216",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-24T03:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df0cd7ee_9a561748",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 18
+      },
+      "revId": "6d44e9a8c02f29131f4cef5e83a0fbec7805ce17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bda52961_99099dd5",
@@ -59,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc2c1377_b538b52e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-24T03:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf7a5ac0_e4865063",
+      "revId": "6d44e9a8c02f29131f4cef5e83a0fbec7805ce17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2956a1ea_57158056",
@@ -76,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "832c6745_94b1eb9d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-24T03:10:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2956a1ea_57158056",
+      "revId": "6d44e9a8c02f29131f4cef5e83a0fbec7805ce17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e6c539c_9c2bf911",
@@ -89,6 +149,24 @@
       "writtenOn": "2021-09-23T14:01:36Z",
       "side": 1,
       "message": "Move this function inside the for (it does not need to be a separate function anyway). You are not using the correct context or state s.Run creates new instances of both.",
+      "revId": "6d44e9a8c02f29131f4cef5e83a0fbec7805ce17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91d82e6e_3b7d38a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-24T03:10:48Z",
+      "side": 1,
+      "message": "Ah. Thank you for pointing this out. I should pass context and state as function parameters. But, yes, you are right, there are no need to use a function here.",
+      "parentUuid": "7e6c539c_9c2bf911",
       "revId": "6d44e9a8c02f29131f4cef5e83a0fbec7805ce17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
