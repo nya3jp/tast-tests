@@ -20,19 +20,6 @@ type standardizedKeyboardKeyTest struct {
 	key         input.EventCode
 }
 
-// allTestKeys holds all the keys under test. Must match keyCodesToTest in the corresponding app.
-var allTestKeys = []standardizedKeyboardKeyTest{
-	{displayName: "KEYS TEST - LEFT ARROW", key: input.KEY_LEFT},
-	{displayName: "KEYS TEST - DOWN ARROW", key: input.KEY_DOWN},
-	{displayName: "KEYS TEST - RIGHT ARROW", key: input.KEY_RIGHT},
-	{displayName: "KEYS TEST - UP ARROW", key: input.KEY_UP},
-	{displayName: "KEYS TEST - TAB", key: input.KEY_TAB},
-	{displayName: "KEYS TEST - ESCAPE", key: input.KEY_ESC},
-	{displayName: "KEYS TEST - ENTER", key: input.KEY_ENTER},
-	{displayName: "KEYS TEST - FORWARD", key: input.KEY_FORWARD},
-	{displayName: "KEYS TEST - BACK", key: input.KEY_BACK},
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StandardizedKeyboardKeys,
@@ -89,6 +76,35 @@ func runStandardizedKeyboardKeysTest(ctx context.Context, s *testing.State, test
 		s.Fatal("Failed to create virtual keyboard: ", err)
 	}
 	defer kbd.Close()
+
+	// Setup the basic keys to test. Must match keyCodesToTest in the corresponding app.
+	var allTestKeys = []standardizedKeyboardKeyTest{
+		{displayName: "KEYS TEST - LEFT ARROW", key: input.KEY_LEFT},
+		{displayName: "KEYS TEST - DOWN ARROW", key: input.KEY_DOWN},
+		{displayName: "KEYS TEST - RIGHT ARROW", key: input.KEY_RIGHT},
+		{displayName: "KEYS TEST - UP ARROW", key: input.KEY_UP},
+		{displayName: "KEYS TEST - TAB", key: input.KEY_TAB},
+		{displayName: "KEYS TEST - ESCAPE", key: input.KEY_ESC},
+		{displayName: "KEYS TEST - ENTER", key: input.KEY_ENTER},
+	}
+
+	// Add in the available top row keys.
+	topRow, err := input.KeyboardTopRowLayout(ctx, kbd)
+	if err != nil {
+		s.Fatal("Failed to obtain the top-row layout: ", err)
+	}
+
+	if topRow.BrowserBack != "" {
+		allTestKeys = append(allTestKeys, standardizedKeyboardKeyTest{displayName: "KEYS TEST - BACK", key: input.KEY_BACK})
+	} else {
+		s.Log("No back button found on device, skipping")
+	}
+
+	if topRow.BrowserForward != "" {
+		allTestKeys = append(allTestKeys, standardizedKeyboardKeyTest{displayName: "KEYS TEST - FORWARD", key: input.KEY_FORWARD})
+	} else {
+		s.Log("No forward button found on device, skipping")
+	}
 
 	// Setup the selector ids.
 	layoutMainID := testParameters.AppPkgName + ":id/layoutMain"
