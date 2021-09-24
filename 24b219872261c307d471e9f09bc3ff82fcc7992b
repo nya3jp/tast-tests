@@ -16,6 +16,143 @@
       "message": "Abe-san, may I please ask you to review this CL series?",
       "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750ea84a_87a5c964",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-24T07:55:43Z",
+      "side": 1,
+      "message": "nit/style (as you touch this): psnr, ssim",
+      "range": {
+        "startLine": 910,
+        "startChar": 1,
+        "endLine": 910,
+        "endChar": 11
+      },
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c032d69_006fcea8",
+        "filename": "src/chromiumos/tast/local/media/encoding/quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-24T07:55:43Z",
+      "side": 1,
+      "message": "could you document what are returned in detail?\nCould you document of the side effects, too?\nE.g. some files at fixed path in outDir are created. So, calling this twice overwrites them.",
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d66dc5b5_8811a438",
+        "filename": "src/chromiumos/tast/local/media/encoding/quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-24T07:55:43Z",
+      "side": 1,
+      "message": "decoder looks limited? Could you define enum like constants for better maintainability?",
+      "range": {
+        "startLine": 48,
+        "startChar": 39,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "928bf848_21020980",
+        "filename": "src/chromiumos/tast/local/media/encoding/quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-24T07:55:43Z",
+      "side": 1,
+      "message": "do you want to use temp file instead?",
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee9e2944_7eba9829",
+        "filename": "src/chromiumos/tast/local/media/encoding/quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-24T07:55:43Z",
+      "side": 1,
+      "message": "nit: vpxCmd.Run(testexec.DumpLogOnErr)\n\nthen you can drop L74.",
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d956edee_9e297069",
+        "filename": "src/chromiumos/tast/local/media/encoding/quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-24T07:55:43Z",
+      "side": 1,
+      "message": "this approach is unsafe.\nThe output of stdout/stderr can be mixed/interleaved.\n\nCould you take stdout/stderr separately, and search on the one?",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf3f157a_e879f4f6",
+        "filename": "src/chromiumos/tast/local/media/encoding/quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-24T07:55:43Z",
+      "side": 1,
+      "message": "I do not think you\u0027d like to read the file twice. Could you refactor to avoid reading the file twice?",
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
