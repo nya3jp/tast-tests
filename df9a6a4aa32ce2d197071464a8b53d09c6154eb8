@@ -33,6 +33,24 @@
       "message": "Please also check if chrome is nil and stop early in that case.",
       "revId": "df9a6a4aa32ce2d197071464a8b53d09c6154eb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c631a269_c52d1278",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-24T03:08:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c698fb15_397b9fb6",
+      "revId": "df9a6a4aa32ce2d197071464a8b53d09c6154eb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
