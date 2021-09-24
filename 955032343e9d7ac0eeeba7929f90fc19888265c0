@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db38c5d_d7702654",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359085
+      },
+      "writtenOn": "2021-09-24T14:14:49Z",
+      "side": 1,
+      "message": "Thanks Judy for code review. I have modified. Could you please have a look? Thank you.",
+      "revId": "955032343e9d7ac0eeeba7929f90fc19888265c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
