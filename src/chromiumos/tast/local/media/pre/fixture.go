@@ -514,6 +514,21 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeWebCodecs",
+		Desc:     "Similar to chromeVideo fixture but enabling using WebCodecs API",
+		Contacts: []string{"chromeos-gfx-video@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(chromeVideoArgs...),
+				chrome.ExtraArgs(chromeWebCodecsArgs...),
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
 
 var chromeVideoArgs = []string{
@@ -566,3 +581,8 @@ var chromeAllowDistinctiveIdentifierArgs = []string{
 	// allow a distinctive identifier for localhost which is where we server the
 	// DRM content from in the test.
 	"--unsafely-allow-protected-media-identifier-for-domain=127.0.0.1"}
+
+var chromeWebCodecsArgs = []string{
+	"--enable-blink-features=WebCodecs",
+	"--enable-experimental-web-platform-features",
+}
