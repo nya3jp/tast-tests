@@ -99,7 +99,7 @@ func runTakeDocumentPhoto(ctx context.Context, app *cca.App, reviewChoices []rev
 		}
 
 		// In review mode. Click the button according to the output type.
-		if err := app.WaitForVisibleState(ctx, cca.DocumentReviewView, true); err != nil {
+		if err := app.WaitForVisibleState(ctx, cca.ReviewView, true); err != nil {
 			return errors.Wrap(err, "failed to wait for review UI show up")
 		}
 		var button cca.UIComponent
