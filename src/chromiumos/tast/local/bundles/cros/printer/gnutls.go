@@ -118,7 +118,7 @@ func GnuTLS(ctx context.Context, s *testing.State) {
 
 	// Connect to the IPPS server with lpadmin.
 	cmdLpadmin := testexec.CommandContext(ctx, "sudo", "-u", lpadminUser, lpadminCmdLine,
-		"-E", "-m", "everywhere", "-p", "printer", "-v",
+		"-m", "everywhere", "-p", "printer", "-v",
 		fmt.Sprintf("ipps://%s/ipp/print/ipp-everywhere-pdf", serverAddress))
 	outBytes, err := cmdLpadmin.CombinedOutput()
 	if err != nil {
