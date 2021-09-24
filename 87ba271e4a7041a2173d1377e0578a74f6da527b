@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d39cfa59_ba3695e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-24T07:01:54Z",
+      "side": 1,
+      "message": "I would prefer something like this, but it is up to you:\n\n------\nprintpreview: move from ui/ to uiauto/\n\nThe printpreview package now only depends on the new UI library under uiauto/.\nUpdate references to the file from the tests accordingly.\n------",
+      "revId": "87ba271e4a7041a2173d1377e0578a74f6da527b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
