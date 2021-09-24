@@ -16,6 +16,24 @@
       "message": "If err isn\u0027t nil then tmpDir probably doesn\u0027t contain anything useful, so I think you only need to log the error.",
       "revId": "76400631c1138107a701e99a5728ba0dab18746f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85a1fcb8_08fb07ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/gnutls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1413548
+      },
+      "writtenOn": "2021-09-24T23:19:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e216a1d8_561163de",
+      "revId": "76400631c1138107a701e99a5728ba0dab18746f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
