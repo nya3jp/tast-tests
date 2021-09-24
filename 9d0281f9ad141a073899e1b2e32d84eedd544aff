@@ -34,6 +34,24 @@
       "parentUuid": "db05e64c_fe4d9068",
       "revId": "9d0281f9ad141a073899e1b2e32d84eedd544aff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20856f11_8aa85b7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-24T04:36:48Z",
+      "side": 1,
+      "message": "Thank you for your quick reply.  \nI have made a change with this classname just now, but diagnostics.Connectivity still seems not to work. \n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3180643\n\nPlease let me know if I\u0027ve misunderstood your point.",
+      "parentUuid": "979a4c9e_04deea8b",
+      "revId": "9d0281f9ad141a073899e1b2e32d84eedd544aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
