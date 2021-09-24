@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/testing"
 )
