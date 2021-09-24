@@ -22,6 +22,30 @@
       },
       "revId": "f6aa26a9e300ba90f02909c22a7c741c185a487e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cd8d25f_590e9386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_accent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-09-24T00:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e9ba17e_18e0011e",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 121
+      },
+      "revId": "f6aa26a9e300ba90f02909c22a7c741c185a487e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
