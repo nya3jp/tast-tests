@@ -33,6 +33,24 @@
       "message": "nit: newline before",
       "revId": "451ddec08e1dc84b98c7e9cc9ac6ffbe2306a920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b1c024_1f2d95c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-09-24T08:48:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfae2294_1dd9b9c2",
+      "revId": "451ddec08e1dc84b98c7e9cc9ac6ffbe2306a920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
