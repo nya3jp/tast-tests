@@ -189,6 +189,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fe0e368_8a912bd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T14:22:25Z",
+      "side": 1,
+      "message": "Sorry I misunderstood the code! Makes sense!",
+      "parentUuid": "a2c55797_cf0ecbb5",
+      "range": {
+        "startLine": 86,
+        "startChar": 35,
+        "endLine": 86,
+        "endChar": 62
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68821363_293ea221",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T14:22:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a2c55797_cf0ecbb5",
+      "range": {
+        "startLine": 86,
+        "startChar": 35,
+        "endLine": 86,
+        "endChar": 62
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a20e2b3_2c604bf5",
@@ -226,6 +274,30 @@
       "side": 1,
       "message": "I agree, but we are just leveraging the ui/videocuj/youtube_web.go file. If we are creating the test under graphics, we will not be able to import this file as only test from chromiumos/tast/local/bundles/*/ui or its descendant can import it.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code\n\nHence we thought it might be better under ui package.",
       "parentUuid": "3a20e2b3_2c604bf5",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4025dcc_a58df638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T14:22:25Z",
+      "side": 1,
+      "message": "videocuj can be moved into a common place, e.g. src/platform/tast-tests/src/chromiumos/tast/local/videocuj/\n\nHere is UI package documentation and looks like this test shouldn\u0027t be there:\n```\nPackage ui contains local Tast tests that exercise Chrome\u0027s integration with the rest of Chrome OS\n```\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/doc.go\n\nIf you cannot find proper package, you can create a new one under bundles/",
+      "parentUuid": "535a8fcf_4a4071a9",
       "range": {
         "startLine": 5,
         "startChar": 8,
