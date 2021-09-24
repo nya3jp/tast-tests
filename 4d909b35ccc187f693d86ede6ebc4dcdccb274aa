@@ -91,6 +91,30 @@
       },
       "revId": "4d909b35ccc187f693d86ede6ebc4dcdccb274aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9952c4b8_3e188359",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-24T23:33:31Z",
+      "side": 1,
+      "message": "It won\u0027t hurt to wrap, since there is one error case that might not be explicit.",
+      "parentUuid": "9c973b30_1c90984f",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 12
+      },
+      "revId": "4d909b35ccc187f693d86ede6ebc4dcdccb274aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
