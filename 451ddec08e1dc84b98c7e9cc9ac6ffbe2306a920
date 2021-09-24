@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b5f638_cbbead2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-24T07:41:34Z",
+      "side": 1,
+      "message": "LGTM % final nit",
+      "revId": "451ddec08e1dc84b98c7e9cc9ac6ffbe2306a920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfae2294_1dd9b9c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-24T07:41:34Z",
+      "side": 1,
+      "message": "nit: newline before",
+      "revId": "451ddec08e1dc84b98c7e9cc9ac6ffbe2306a920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
