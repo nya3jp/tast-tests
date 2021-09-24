@@ -51,7 +51,7 @@ var DxCancelledBadge = nodewith.Name("STOPPED").Role(role.StaticText)
 var DxConnectivity = nodewith.Name("Connectivity").Role(role.GenericContainer)
 
 // DxNetworkList export is used to find the network list.
-var DxNetworkList = nodewith.ClassName("diagnostics-cards-container").Role(role.GenericContainer)
+var DxNetworkList = nodewith.ClassName("diagnostics-cards-container-nav").Role(role.GenericContainer)
 
 // DiagnosticsRootNode returns the root ui node of Diagnotsics app.
 func DiagnosticsRootNode(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Finder, error) {
