@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de742fe_47a8d469",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-09-24T07:48:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "307ee782_64bfda94",
+      "range": {
+        "startLine": 967,
+        "startChar": 1,
+        "endLine": 967,
+        "endChar": 24
+      },
+      "revId": "81a4fb95d0abfd4c0babfdb2c7e4055bb1f1d97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c2494a4_4b463aed",
