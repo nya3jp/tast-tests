@@ -16,6 +16,69 @@
       "message": "Hi Kyle, PTAL. ",
       "revId": "f8b424fd5f15525ccb6c1b7d37ce33d185025885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0457ab1c_f5f6efa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/daily_refresh.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-24T17:33:09Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need to use uiauto.Combine here, since there\u0027s just 1 UI action",
+      "range": {
+        "startLine": 86,
+        "startChar": 11,
+        "endLine": 86,
+        "endChar": 25
+      },
+      "revId": "f8b424fd5f15525ccb6c1b7d37ce33d185025885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e92a1de_30cf0055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/daily_refresh.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-24T17:33:09Z",
+      "side": 1,
+      "message": "Actually it might be a good idea to additionally check that the window is no longer visible after clicking the minimize button. Minimizing the window has a brief animation, so there\u0027s a chance secondScreenshot could be captured while the animation is in-progress, leading to a false-positive result (since the in-progress minimizing window could be on top of the old wallpaper, possibly creating enough of a difference to pass the 90% similarity threshold).\n\nNot sure if the timing is tight enough that this could be an issue, but I think it\u0027s worth checking.",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "f8b424fd5f15525ccb6c1b7d37ce33d185025885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90515771_508cd46e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/daily_refresh.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-24T17:33:09Z",
+      "side": 1,
+      "message": "how about saving firstScreenshot and secondScreenshot in this case? could make debugging easier",
+      "revId": "f8b424fd5f15525ccb6c1b7d37ce33d185025885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
