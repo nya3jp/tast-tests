@@ -16,6 +16,24 @@
       "message": "I would prefer something like this, but it is up to you:\n\n------\nprintpreview: move from ui/ to uiauto/\n\nThe printpreview package now only depends on the new UI library under uiauto/.\nUpdate references to the file from the tests accordingly.\n------",
       "revId": "87ba271e4a7041a2173d1377e0578a74f6da527b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "295b7b6e_ea4c4a80",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-24T07:10:14Z",
+      "side": 1,
+      "message": "Thank you for advice.",
+      "parentUuid": "d39cfa59_ba3695e0",
+      "revId": "87ba271e4a7041a2173d1377e0578a74f6da527b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
