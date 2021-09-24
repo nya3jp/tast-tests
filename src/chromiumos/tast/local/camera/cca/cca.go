@@ -217,18 +217,11 @@ var (
 	PTZResetAllButton = UIComponent{"ptz reset all button", []string{"#ptz-reset-all"}}
 
 	// ScanModeButton is the button to enter scan mode.
-	ScanModeButton = UIComponent{"scan mode button", []string{
-		// TODO(b/196904871): Remove selector for old mode name after
-		// naming CL on app side fully landed.
-		".mode-item>input[data-mode=\"scanner\"]",
-		".mode-item>input[data-mode=\"scan\"]"}}
+	ScanModeButton = UIComponent{"scan mode button", []string{".mode-item>input[data-mode=\"scan\"]"}}
 	// ScanBarcodeOption is the option button to switch to QR code detection mode.
 	ScanBarcodeOption = UIComponent{"scan barcode option", []string{"#scan-barcode"}}
 	// ScanDocumentModeOption is the document mode option of scan mode.
-	ScanDocumentModeOption = UIComponent{"document mode button", []string{
-		// TODO(b/196904871): Remove selector for old mode name after
-		// naming CL on app side fully landed.
-		"#scanner-document", "#scan-document"}}
+	ScanDocumentModeOption = UIComponent{"document mode button", []string{"#scan-document"}}
 	// DocumentReviewView is the review view after taking a photo under document mode.
 	DocumentReviewView = UIComponent{"document review view", []string{
 		"#view-review-document"}}
@@ -1381,17 +1374,7 @@ func (a *App) SwitchCamera(ctx context.Context) error {
 
 // SwitchMode switches to specified capture mode.
 func (a *App) SwitchMode(ctx context.Context, mode Mode) error {
-	// Name and alternative name of the new/old state.
-	// TODO(b/196904871): Remove the logic here for adapting new/old state
-	// after (crrev.com/c/3102669) fully landed.
 	modeName := string(mode)
-	if mode == Scan {
-		var err error
-		modeName, err = a.AttributeWithIndex(ctx, ScanModeButton, 0, "data-mode")
-		if err != nil {
-			return errors.Wrap(err, "failed to get mode name of scan mode")
-		}
-	}
 	if active, err := a.GetState(ctx, modeName); err != nil {
 		return err
 	} else if active {
