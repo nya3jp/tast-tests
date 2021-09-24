@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9561d956_23539ed8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150472
+      },
+      "writtenOn": "2021-09-24T16:56:30Z",
+      "side": 1,
+      "message": "LGTM for use of this file.",
+      "revId": "8441ef379d20cac646f53f1f6f7221cce2c90a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f8a34e5_fb1581ad",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-09-24T07:53:16Z",
       "side": 1,
       "message": "tast-lint doesn\u0027t allow Chromium License.. Shall we fix this?\n\n[FAILED] chromiumos/platform/tast-tests: _check_cros_license\n    License must match:\n    .*Copyright(?: \\(c\\))? (20[0-9]{2})(?:-20[0-9]{2})? The Chromium OS Authors\\. All rights reserved\\.\\n.*Use of this source code is governed by a BSD-style license that can be\\n.*found in the LICENSE file\\.\\n\n    Found a bad header in these files:\n    src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "8441ef379d20cac646f53f1f6f7221cce2c90a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8b497e2_063a8141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1150472
+      },
+      "writtenOn": "2021-09-24T16:56:30Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "6f8a34e5_fb1581ad",
       "range": {
         "startLine": 1,
         "startChar": 0,
