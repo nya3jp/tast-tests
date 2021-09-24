@@ -9,15 +9,10 @@ import (
 	"image/color"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/media/imgcmp"
-	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/wallpaper"
 	"chromiumos/tast/testing"
 )
@@ -78,39 +73,13 @@ func SwitchOnlineWallpapers(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	windowNode := nodewith.NameContaining("Wallpaper").Role(role.Window).First()
-	minimizeBtn := nodewith.Name("Minimize").Role(role.Button).Ancestor(windowNode)
-	// Minimize window to get the view of wallpaper image.
-	if ui.LeftClick(minimizeBtn)(ctx); err != nil {
-		s.Fatal("Failed to minimize window: ", err)
+	if err := wallpaper.MinimizeWallpaperPicker(ui)(ctx); err != nil {
+		s.Fatal("Failed to minimize wallpaper picker: ", err)
 	}
 
 	yellow := color.RGBA{255, 227, 53, 255}
 	const expectedPercent = 90
-	if err := validateBackground(ctx, cr, yellow, expectedPercent); err != nil {
+	if err := wallpaper.ValidateBackground(ctx, cr, yellow, expectedPercent); err != nil {
 		s.Error("Failed to validate wallpaper background: ", err)
 	}
-}
-
-// validateBackground takes a screenshot and check the percentage of the clr in the image,
-// returns error if it's less than expectedPercent%.
-func validateBackground(ctx context.Context, cr *chrome.Chrome, clr color.Color, expectedPercent int) error {
-	// Take a screenshot and check the clr pixels percentage.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		img, err := screenshot.GrabScreenshot(ctx, cr)
-		if err != nil {
-			return errors.Wrap(err, "failed to grab screenshot")
-		}
-		rect := img.Bounds()
-		correctPixels := imgcmp.CountPixelsWithDiff(img, clr, 10)
-		totalPixels := rect.Dx() * rect.Dy()
-		percent := correctPixels * 100 / totalPixels
-		if percent < expectedPercent {
-			return errors.Errorf("unexpected pixels percentage: got %d / %d = %d%%; want at least %d%%", correctPixels, totalPixels, percent, expectedPercent)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second}); err != nil {
-		return err
-	}
-	return nil
 }
