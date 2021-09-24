@@ -17,6 +17,9 @@ service UtilsService {
 
   // ReadServoKeyboard reads from the servo's keyboard emulator and decodes the key presses.
   rpc ReadServoKeyboard (ReadServoKeyboardRequest) returns (ReadServoKeyboardResponse) {}
+
+  // FindPhysicalKeyboard finds /dev/input/event* file for physical a keyboard.
+  rpc FindPhysicalKeyboard (google.protobuf.Empty) returns (FindPhysicalKeyboardResponse) {}
 }
 
 // ReadServoKeyboardRequest listens the servo's keyboard emulator for a specified duration in seconds.
@@ -27,4 +30,9 @@ message ReadServoKeyboardRequest {
 // ReadServoKeyboardResponse provides what keys were pressed.
 message ReadServoKeyboardResponse {
   repeated string keys = 1;
+}
+
+// FindPhysicalKeyboardResponse provides the path to /dev/input/event* for physical keyboard.
+message FindPhysicalKeyboardResponse {
+  string path = 1;
 }

@@ -38,25 +38,37 @@ func Keyboard(ctx context.Context) (*KeyboardEventWriter, error) {
 	} else if sw == switchOn {
 		testing.ContextLog(ctx, "In tablet mode, so not looking for physical keyboard")
 	} else {
-		infos, err := readDevices("")
+		foundKB, infoPath, err := FindPhysicalKeyboard(ctx)
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to read devices")
+			return nil, err
 		}
-		for _, info := range infos {
-			if info.isKeyboard() && info.phys != "" {
-				testing.ContextLogf(ctx, "Using existing keyboard device %+v", info)
-
-				rw, err := Device(ctx, info.path)
-				if err != nil {
-					return nil, err
-				}
-				return &KeyboardEventWriter{rw: rw, dev: info.path}, nil
+		if foundKB {
+			rw, err := Device(ctx, infoPath)
+			if err != nil {
+				return nil, err
 			}
+			return &KeyboardEventWriter{rw: rw, dev: infoPath}, nil
 		}
 	}
 
 	// If we didn't find a real keyboard, create a virtual one.
 	return VirtualKeyboard(ctx)
+}
+
+// FindPhysicalKeyboard iterates over devices and returns path for physical keyboard
+// otherwise returns boolean stating a physical keyboard was not found
+func FindPhysicalKeyboard(ctx context.Context) (bool, string, error) {
+	infos, err := readDevices("")
+	if err != nil {
+		return false, "", errors.Wrap(err, "failed to read devices")
+	}
+	for _, info := range infos {
+		if info.isKeyboard() && info.phys != "" {
+			testing.ContextLogf(ctx, "Using existing keyboard device %+v", info)
+			return true, info.path, nil
+		}
+	}
+	return false, "", nil
 }
 
 // VirtualKeyboard creates a virtual keyboard device and returns an EventWriter that injects events into it.
