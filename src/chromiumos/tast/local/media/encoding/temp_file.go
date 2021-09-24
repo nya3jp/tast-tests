@@ -11,9 +11,9 @@ import (
 	"chromiumos/tast/errors"
 )
 
-// createPublicTempFile creates a world-readable temporary file. A caller should
+// CreatePublicTempFile creates a world-readable temporary file. A caller should
 // close and remove the file in the end.
-func createPublicTempFile(prefix string) (*os.File, error) {
+func CreatePublicTempFile(prefix string) (*os.File, error) {
 	f, err := ioutil.TempFile("", prefix)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create a public temporary file")
