@@ -12,7 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/lockscreen"
+	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 )

@@ -17,7 +17,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros/launcher"
-	"chromiumos/tast/local/chrome/ui/lockscreen"
+	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/testing"
 )
