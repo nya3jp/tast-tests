@@ -83,7 +83,7 @@ var DxConnectivity = ui.FindParams{
 
 // DxNetworkList export is used to find the network list.
 var DxNetworkList = ui.FindParams{
-	ClassName: "diagnostics-cards-container",
+	ClassName: "diagnostics-cards-container-nav",
 	Role:      ui.RoleTypeGenericContainer,
 }
 
