@@ -1,0 +1,435 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "826784fe_ae757eea",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "You can remove the alias now.",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdfa70c5_46d1703b",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "Is it problematic? I thought it\u0027s fine as we will return an error anyway.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 76
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1726817b_8196616d",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "I think you can use done channel only here.\n\ndone :\u003d make(chan struct{})\ngo func() {\n  n, err \u003d p.port.Read(buf)\n  done \u003c- struct{}{}\n}\nselect {\n  case \u003c- ctx.Done():\n    return 0, ctx.Err()\n  case \u003c- done:\n    return n, err\n}\n\nsame for other methods.",
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e2dd95_13184719",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_opener.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "196f8586_f6ed0cfc",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_opener.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "Can we use serial.Config insted of defining custom type? It might be simpler.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7fc4c6f_006ff13e",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_opener.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "nit: one space",
+      "range": {
+        "startLine": 26,
+        "startChar": 72,
+        "endLine": 26,
+        "endChar": 74
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "996e3ddb_1283fcda",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_opener.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "Can we hold config as a field, to prefer composition over inheritance?",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a2d6b43_7448eed5",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_opener.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "Could you return concrete type?\nhttps://g3doc.corp.google.com/company/teams/go-community/gotip/episodes/49.md?cl\u003dhead",
+      "range": {
+        "startLine": 33,
+        "startChar": 61,
+        "endLine": 33,
+        "endChar": 65
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7f105f9_a6cd4212",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_opener.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "Could you use the minimum of ctx timeout and c.ReadTimeout ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 68,
+        "endLine": 34,
+        "endChar": 79
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "214d2b9f_5268779f",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_opener.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "Do we have to create an instance, rather than just defining OpenConnectedPort function here?\nI know DoTestPort receives PortOpener, but can we make it receive Ports instead?",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 27
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f66a7fa3_599fe283",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "Could you use serial_test packages instead to make sure we are not testing internal implemenetaion details?",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbcc4c1f_d38beb91",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "2 seconds might be short on some machines. If it\u0027s just to make sure tests don\u0027t block, how about increasing it to say 30 seconds?",
+      "range": {
+        "startLine": 16,
+        "startChar": 45,
+        "endLine": 16,
+        "endChar": 58
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e1b73fd_5d67e5a5",
+        "filename": "src/chromiumos/tast/common/firmware/serial/port.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "optional: I think if we can conform it with io.Reader omitting ctx parameter, it\u0027s easier to use.\nAs we give ctx on creation of ConnectedPort, we store ctx in ConnectedPort and use it on Read and Write methods. I know it\u0027s usually not a good idea to store a ctx in a struct, but I feel it\u0027s an acceptable usage.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 57
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e272239f_16503699",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "I\u0027m not sure if treating dut \u003d\u003d nil specially. It\u0027s common to pass a nil value to a function by accident, and if it results in very different behaviour from non-nil case, it will be surprising.\nI\u0027d suggest creating a different function for testing and treating nil value as an error here.",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ee2d70_ad664f78",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "Please use ctx, using exec.CommandContext or chromiumos/tast/common/testexec .",
+      "range": {
+        "startLine": 48,
+        "startChar": 26,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b594a8_b2782234",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "How about using bytes.Buffer, and assign it to cmd.Stderr ?\nExapmle: https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/828608df8e46fcc08df1ec03d8a4e33a851308de:src/chromiumos/tast/common/testexec/testexec.go;l\u003d133;drc\u003d747019aa6fd119bca4d956562aee33d409a06d79\n\nIt seeems what we want to do is to run the command, wait to finish it and get the stderr. If that\u0027s the case, following works?\n\nvar buf bytes.Buffer\ncmd.Stderr \u003d \u0026buf\ncmd.Run()\n// examine buf\n\nOf course this way, you can not use the iCmd interface anymore, but I think you can treat dut command and exec command separately on getting stderr, and it would be much simpler.",
+      "range": {
+        "startLine": 52,
+        "startChar": 20,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "697fafdb_a709bdbe",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "How about returning cancel :\u003d func() { cmd.Abort() } \n?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec01ae6_22a03919",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "Could you split the tests for each method, just like we would do on unit testing?\n\nfunc DoTestRead(...) error {\n  ...\n}\nfunc DoTestWrite(...) error {\n}",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 15
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b740efc_fc7dae31",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-24T02:59:35Z",
+      "side": 1,
+      "message": "Is it actually waiting for timeout in unittest? It will not be very good.",
+      "range": {
+        "startLine": 150,
+        "startChar": 55,
+        "endLine": 150,
+        "endChar": 66
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
