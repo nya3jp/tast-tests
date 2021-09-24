@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb98cea0_cf55ea9c",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-24T02:13:31Z",
+      "side": 1,
+      "message": "Actually on the CQ, 2 platforms (caroline and hatch) failed and it does seem the read was blocked for a long time even though the ReadTimeout was set to 10 ms when opening the port.  So I\u0027ll implement a go routine to handle this as suggested, thanks.",
+      "parentUuid": "397c5e2e_c5fe39e1",
+      "range": {
+        "startLine": 28,
+        "startChar": 15,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "3b659b7a2f58b21854b2474a88be493c66377ac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "182d10c3_6ddc2465",
