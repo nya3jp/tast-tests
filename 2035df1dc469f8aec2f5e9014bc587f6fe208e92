@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "faa6e46a_b960f0c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T09:51:16Z",
+      "side": 1,
+      "message": "thank you Kyle,\n\n\u003e I\u0027d strongly recommend looking into re-using the existing launcher.go code, and modifying it as necessary to support anything new you need for this test case.\nAs suggested, we checked the package and applied some functions in this test case.\nHowever, touch support does not seem to be a common need for tests, so we haven\u0027t changed that package for now. \nDo you suggest that we should improve `launcher.go` to make it support touch control?\n\n\u003e Split up the file a bit, to make it easier to distinguish the test logic and UI controls.\nThe file has been split by moving UI controls out.",
+      "parentUuid": "2d3e276b_06a1e123",
+      "revId": "2035df1dc469f8aec2f5e9014bc587f6fe208e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c5994a7_5adc7e66",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drops.go",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-23T19:28:09Z",
       "side": 1,
       "message": "nit: I think AppDragAndDrop sounds better (not clear what it means by making it plural)",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "2035df1dc469f8aec2f5e9014bc587f6fe208e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e4fdec3_d4d11797",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drops.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T09:51:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c5994a7_5adc7e66",
       "range": {
         "startLine": 32,
         "startChar": 12,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad272d73_c57d28d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drops.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T09:51:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b43d9d1e_9b8b657c",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 17
+      },
+      "revId": "2035df1dc469f8aec2f5e9014bc587f6fe208e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26c4f843_efbd1c53",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d86b7c_b65fef58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drops.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T09:51:16Z",
+      "side": 1,
+      "message": "interface and its implementations are moved to src/chromiumos/tast/local/bundles/cros/launcher/draganddrop/draganddrop.go",
+      "parentUuid": "26c4f843_efbd1c53",
+      "revId": "2035df1dc469f8aec2f5e9014bc587f6fe208e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "322a2790_d2847f7c",
@@ -94,6 +178,24 @@
       "writtenOn": "2021-09-23T19:28:09Z",
       "side": 1,
       "message": "see launcher.DragIconToNextPage:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go;l\u003d333\n\nis there a way to dedupe some of this functionality?",
+      "revId": "2035df1dc469f8aec2f5e9014bc587f6fe208e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f92bc1_d602ebe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drops.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T09:51:16Z",
+      "side": 1,
+      "message": "Thank you for the helpful information.\nWe applied `launcher.DragIconToNextPage` to the mouse handler\u0027s implementation of `dragToNextPage`.\nBut the touch handler\u0027s implementation remains unchanged for now.",
+      "parentUuid": "322a2790_d2847f7c",
       "revId": "2035df1dc469f8aec2f5e9014bc587f6fe208e92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

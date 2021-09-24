@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3c3f7d_e86c4b9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/app_drag_and_drops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-09-24T09:51:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff9fe474_136d5e26",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 10
+      },
+      "revId": "1e148c75686d3312ff449167bbebee42f6841c2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6f521ad_daf9846b",
