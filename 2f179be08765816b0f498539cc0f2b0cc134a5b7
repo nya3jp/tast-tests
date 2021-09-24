@@ -16,6 +16,23 @@
       "message": "Aki - PTAL! 😊",
       "revId": "2f179be08765816b0f498539cc0f2b0cc134a5b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a3cd122_32509c3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-09-24T20:24:01Z",
+      "side": 1,
+      "message": "LGTM, thanks for the fix!",
+      "revId": "2f179be08765816b0f498539cc0f2b0cc134a5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
