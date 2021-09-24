@@ -47,12 +47,6 @@ var regExpFPSVpxenc = regexp.MustCompile(`\((\d+\.\d+) fps\)`)
 // regExpFPSOpenh264enc is the regexp to find the FPS output from openh264enc's log.
 var regExpFPSOpenh264enc = regexp.MustCompile(`(\d+\.\d+) fps`)
 
-// regExpSSIM is the regexp to find the SSIM output in the tiny_ssim log.
-var regExpSSIM = regexp.MustCompile(`\nSSIM: (\d+\.\d+)`)
-
-// regExpPSNR is the regexp to find the PSNR output in the tiny_ssim log.
-var regExpPSNR = regexp.MustCompile(`\nGlbPSNR: (\d+\.\d+)`)
-
 // regExpKeyFramesVP8 is the regexp to find the number of key frames in a VP8
 // bitstream: Key Frames are marked by having a 0x9D 0x01 0x2A sequence, see
 // RFC6386 VP8 Data Format and Decoding Guide, Sec.9.1 "Uncompressed Data Chunk"
@@ -913,17 +907,9 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to extract FPS: ", err)
 	}
 
-	SSIMFile, err := compareFiles(ctx, testOpt.decoder, yuvFile, encodedFile, s.OutDir(), testOpt.size)
+	PSNR, SSIM, err := encoding.CompareFiles(ctx, testOpt.decoder, yuvFile, encodedFile, s.OutDir(), testOpt.size)
 	if err != nil {
 		s.Fatal("Failed to decode and compare results: ", err)
-	}
-	SSIM, err := extractValue(SSIMFile, regExpSSIM)
-	if err != nil {
-		s.Fatal("Failed to extract SSIM: ", err)
-	}
-	PSNR, err := extractValue(SSIMFile, regExpPSNR)
-	if err != nil {
-		s.Fatal("Failed to extract PSNR: ", err)
 	}
 
 	p := perf.NewValues()
@@ -1017,44 +1003,6 @@ func calculateBitrate(encodedFile string, fileFPS float64, numFrames int) (value
 		return 0.0, errors.Wrapf(err, "failed to get stats for file %s", encodedFile)
 	}
 	return float64(s.Size()) * 8 /* bits per byte */ * fileFPS / float64(numFrames), nil
-}
-
-// compareFiles decodes encodedFile using decoder and compares it with yuvFile using tiny_ssim.
-func compareFiles(ctx context.Context, decoder, yuvFile, encodedFile, outDir string, size coords.Size) (logFile string, err error) {
-	yuvFile2 := yuvFile + ".2"
-	tf, err := os.Create(yuvFile2)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to create a temporary YUV file")
-	}
-	defer os.Remove(yuvFile2)
-	defer tf.Close()
-
-	decodeCommand := []string{encodedFile}
-	if decoder == "vpxdec" {
-		decodeCommand = append(decodeCommand, "-o")
-	}
-	decodeCommand = append(decodeCommand, yuvFile2)
-	testing.ContextLogf(ctx, "Executing %s %s", decoder, shutil.EscapeSlice(decodeCommand))
-	vpxCmd := testexec.CommandContext(ctx, decoder, decodeCommand...)
-	if err := vpxCmd.Run(); err != nil {
-		vpxCmd.DumpLog(ctx)
-		return "", errors.Wrap(err, "decode failed")
-	}
-
-	logFile = filepath.Join(outDir, "tiny_ssim.txt")
-	f, err := os.Create(logFile)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to create log file")
-	}
-	defer f.Close()
-
-	SSIMCmd := testexec.CommandContext(ctx, "tiny_ssim", yuvFile, yuvFile2, strconv.Itoa(size.Width)+"x"+strconv.Itoa(size.Height))
-	SSIMCmd.Stdout = f
-	SSIMCmd.Stderr = f
-	if err := SSIMCmd.Run(testexec.DumpLogOnError); err != nil {
-		return "", errors.Wrap(err, "failed to run tiny_ssim")
-	}
-	return logFile, nil
 }
 
 // vp8argsVAAPI constructs the command line for the VP8 encoding binary exe.
