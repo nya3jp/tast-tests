@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14486636_255ea2cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-09-24T03:15:11Z",
+      "side": 1,
+      "message": "Sorry for leaving the CL open for a long time.\nThe issue has been fixed by improving ARC-side event handling logic.\nLet me reopen it if it\u0027s broken again.",
+      "revId": "1b32137cc99ae0aa771f62e604cc3878deb418bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "690e65be_f440ee44",
