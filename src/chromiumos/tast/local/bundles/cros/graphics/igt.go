@@ -425,9 +425,10 @@ func init() {
 			Val: igtTest{
 				exe: "template",
 			},
-			Timeout: 1 * time.Minute,
+			Timeout:   1 * time.Minute,
+			ExtraAttr: []string{"group:mainline", "informational"},
 		}},
-		Attr:    []string{"group:graphics", "graphics_perbuild", "graphics_igt"},
+		Attr:    []string{"group:graphics", "graphics_perbuild"},
 		Fixture: "graphicsNoChrome",
 	})
 }
