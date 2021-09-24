@@ -42,6 +42,90 @@ const (
 	DFP USBCDataRole = "DFP"
 )
 
+// KBMatrixPair is a struct to store key row and col for the kbpress cmd
+type KBMatrixPair struct {
+	row int
+	col int
+}
+
+// KeyMatrix is a map that stores a row/col pair for each key using KBMatrixPair
+// It's stored in order of appearance in a keyboard
+var KeyMatrix = map[string]KBMatrixPair{
+	"<esc>":       KBMatrixPair{1, 1},
+	"<f1>":        KBMatrixPair{0, 2},
+	"<f2>":        KBMatrixPair{3, 2},
+	"<f3>":        KBMatrixPair{2, 2},
+	"<f4>":        KBMatrixPair{1, 2},
+	"<f5>":        KBMatrixPair{3, 4},
+	"<f6>":        KBMatrixPair{2, 4},
+	"<f7>":        KBMatrixPair{1, 4},
+	"<f8>":        KBMatrixPair{2, 9},
+	"<f9>":        KBMatrixPair{1, 9},
+	"<f10>":       KBMatrixPair{0, 4},
+	"`":           KBMatrixPair{3, 1},
+	"1":           KBMatrixPair{6, 1},
+	"2":           KBMatrixPair{6, 4},
+	"3":           KBMatrixPair{6, 2},
+	"4":           KBMatrixPair{6, 3},
+	"5":           KBMatrixPair{3, 3},
+	"6":           KBMatrixPair{3, 6},
+	"7":           KBMatrixPair{6, 6},
+	"8":           KBMatrixPair{6, 5},
+	"9":           KBMatrixPair{6, 9},
+	"0":           KBMatrixPair{6, 8},
+	"-":           KBMatrixPair{3, 8},
+	"=":           KBMatrixPair{0, 8},
+	"<backspace>": KBMatrixPair{1, 11},
+	"<tab>":       KBMatrixPair{2, 1},
+	"q":           KBMatrixPair{7, 1},
+	"w":           KBMatrixPair{7, 4},
+	"e":           KBMatrixPair{7, 2},
+	"r":           KBMatrixPair{7, 3},
+	"t":           KBMatrixPair{2, 3},
+	"y":           KBMatrixPair{2, 6},
+	"u":           KBMatrixPair{7, 6},
+	"i":           KBMatrixPair{7, 5},
+	"o":           KBMatrixPair{7, 9},
+	"p":           KBMatrixPair{7, 8},
+	"[":           KBMatrixPair{2, 8},
+	"]":           KBMatrixPair{2, 5},
+	"\\":          KBMatrixPair{3, 11},
+	"<search>":    KBMatrixPair{0, 1},
+	"a":           KBMatrixPair{4, 1},
+	"s":           KBMatrixPair{4, 4},
+	"d":           KBMatrixPair{4, 2},
+	"f":           KBMatrixPair{4, 3},
+	"g":           KBMatrixPair{1, 3},
+	"h":           KBMatrixPair{1, 6},
+	"j":           KBMatrixPair{4, 6},
+	"k":           KBMatrixPair{4, 5},
+	"l":           KBMatrixPair{4, 9},
+	";":           KBMatrixPair{4, 8},
+	"'":           KBMatrixPair{1, 8},
+	"<enter>":     KBMatrixPair{4, 11},
+	"<shift_l>":   KBMatrixPair{5, 7},
+	"z":           KBMatrixPair{5, 1},
+	"x":           KBMatrixPair{5, 4},
+	"c":           KBMatrixPair{5, 2},
+	"v":           KBMatrixPair{5, 3},
+	"b":           KBMatrixPair{0, 3},
+	"n":           KBMatrixPair{0, 6},
+	"m":           KBMatrixPair{5, 6},
+	",":           KBMatrixPair{5, 5},
+	".":           KBMatrixPair{5, 9},
+	"/":           KBMatrixPair{5, 8},
+	"<shift_r>":   KBMatrixPair{7, 7},
+	"<ctrl_l>":    KBMatrixPair{2, 0},
+	"<alt_l>":     KBMatrixPair{6, 10},
+	" ":           KBMatrixPair{5, 1},
+	"<alt_r>":     KBMatrixPair{0, 10},
+	"<ctrl_r>":    KBMatrixPair{4, 0},
+	"<left>":      KBMatrixPair{7, 12},
+	"<up>":        KBMatrixPair{7, 11},
+	"<down>":      KBMatrixPair{6, 11},
+	"<right>":     KBMatrixPair{6, 12},
+}
+
 // RunECCommand runs the given command on the EC on the device.
 func (s *Servo) RunECCommand(ctx context.Context, cmd string) error {
 	if err := s.SetString(ctx, ECUARTRegexp, "None"); err != nil {
@@ -113,4 +197,14 @@ func (s *Servo) GetECChip(ctx context.Context) (string, error) {
 // Will fail if there is no chromeos EC.
 func (s *Servo) SetDUTPDDataRole(ctx context.Context, role USBCDataRole) error {
 	return s.SetString(ctx, DUTPDDataRole, string(role))
+}
+
+// GetKeyRowCol returns the key row and column for kbpress cmd
+func (s *Servo) GetKeyRowCol(key string) (int, int, error) {
+	pair, ok := KeyMatrix[key]
+	if !ok {
+		return 0, 0, errors.New("failed to find key in KeyMatrix map")
+	}
+	return pair.row, pair.col, nil
+
 }

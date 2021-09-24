@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/firmware"
+	"chromiumos/tast/local/input"
 	fwpb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )
@@ -139,4 +140,15 @@ func (us *UtilsService) ReadServoKeyboard(ctx context.Context, req *fwpb.ReadSer
 	}
 	us.s.Log("Detected keys on the DUT: ", keys)
 	return &fwpb.ReadServoKeyboardResponse{Keys: keys}, nil
+}
+
+func (us *UtilsService) FindPhysicalKeyboard(ctx context.Context, req *empty.Empty) (*fwpb.FindPhysicalKeyboardResponse, error) {
+	foundKB, path, err := input.FindPhysicalKeyboard(ctx)
+	if err != nil {
+		return nil, err
+	} else if !foundKB {
+		return nil, errors.New("no physical keyboard found")
+	} else {
+		return &fwpb.FindPhysicalKeyboardResponse{Path: path}, nil
+	}
 }
