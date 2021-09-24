@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "517e0137_d18110dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/daily_refresh.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-24T19:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0457ab1c_f5f6efa1",
+      "range": {
+        "startLine": 86,
+        "startChar": 11,
+        "endLine": 86,
+        "endChar": 25
+      },
+      "revId": "f8b424fd5f15525ccb6c1b7d37ce33d185025885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e92a1de_30cf0055",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe811a00_0c2e1ffa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/daily_refresh.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-24T19:32:23Z",
+      "side": 1,
+      "message": "Updated. Thanks for the suggestion.",
+      "parentUuid": "1e92a1de_30cf0055",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "f8b424fd5f15525ccb6c1b7d37ce33d185025885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90515771_508cd46e",
@@ -77,6 +125,24 @@
       "writtenOn": "2021-09-24T17:33:09Z",
       "side": 1,
       "message": "how about saving firstScreenshot and secondScreenshot in this case? could make debugging easier",
+      "revId": "f8b424fd5f15525ccb6c1b7d37ce33d185025885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "202c0c0e_58cb4156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/daily_refresh.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-24T19:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90515771_508cd46e",
       "revId": "f8b424fd5f15525ccb6c1b7d37ce33d185025885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
