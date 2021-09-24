@@ -8,6 +8,8 @@ import (
 	"bufio"
 	"context"
 	"fmt"
+	"io/ioutil"
+	"os"
 	"strings"
 	"time"
 
@@ -68,14 +70,14 @@ func waitForServerAddress(ctx context.Context, lines chan string) (string, error
 }
 
 // startServer starts IPPS server using ippserver utility.
-func startServer(ctx context.Context, s *testing.State) (address string) {
+func startServer(ctx context.Context, s *testing.State, certsPath string) (address string) {
 	const ippserverBinDir = "CUPS_SERVERBIN=/usr/libexec/cups"
 	const ippserverCommand = "/usr/local/sbin/ippserver"
 	const ippserverTestDir = "/usr/local/share/ippsample/test"
 
 	// Launch ippserver.
 	cmdIppserver := testexec.CommandContext(ctx, "env", ippserverBinDir,
-		ippserverCommand, "-C", ippserverTestDir, "-r", "_print")
+		ippserverCommand, "-K", certsPath, "-C", ippserverTestDir, "-r", "_print")
 
 	// ippserver utility uses stderr for displaying logs.
 	stderr, err := cmdIppserver.StderrPipe()
@@ -111,10 +113,16 @@ func GnuTLS(ctx context.Context, s *testing.State) {
 	const lpadminCmdLine = "/usr/sbin/lpadmin"
 	const lpadminUser = "lpadmin"
 
+	tmpDir, err := ioutil.TempDir("", "")
+	if err != nil {
+		s.Fatal("Could not create temp directory: ", err)
+	}
+	defer os.RemoveAll(tmpDir)
+
 	// Start IPPS server.
 	serverCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
-	serverAddress := startServer(serverCtx, s)
+	serverAddress := startServer(serverCtx, s, tmpDir)
 
 	// Connect to the IPPS server with lpadmin.
 	cmdLpadmin := testexec.CommandContext(ctx, "sudo", "-u", lpadminUser, lpadminCmdLine,
