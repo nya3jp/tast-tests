@@ -112,7 +112,7 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 
 	// If pixelFormat is NV12, conversion from I420 to NV12 is performed.
 	if pixelFormat == videotype.NV12 {
-		cf, err := createPublicTempFile(yuvName)
+		cf, err := CreatePublicTempFile(yuvName)
 		if err != nil {
 			return "", errors.Wrap(err, "failed to create a temporary YUV file")
 		}

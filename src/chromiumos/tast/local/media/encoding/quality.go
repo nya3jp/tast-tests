@@ -62,7 +62,7 @@ func extractValues(logFile string, regExps []*regexp.Regexp) (values []float64, 
 // PSNR and SSIM are returned on success.
 // Caveats: This creates text files in outDir and writes them. Calling twice overwrites the files.
 func CompareFiles(ctx context.Context, decoder Decoder, yuvFile, encodedFile, outDir string, size coords.Size) (psnr, ssim float64, err error) {
-	yuvFile2, err := createPublicTempFile(filepath.Base(yuvFile) + ".2")
+	yuvFile2, err := CreatePublicTempFile(filepath.Base(yuvFile) + ".2")
 	if err != nil {
 		return psnr, ssim, errors.Wrap(err, "failed to create a temporary YUV file")
 	}
