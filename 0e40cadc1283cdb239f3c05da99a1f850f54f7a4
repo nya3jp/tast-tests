@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4048b40e_2beb1cb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6995b8a9_b799b1f3",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "44bae2f0_382d498c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -58,6 +82,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b4a171_b9d7c687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/data/manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac819540_64e0f12d",
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f8f7fb4_990cb3ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/data/manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac819540_64e0f12d",
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79d8c076_2ba3f186",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-09-23T18:54:15Z",
       "side": 1,
       "message": "this key wouldn\u0027t work after today\u0027s landed CL.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "914ef09c_880744a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/data/manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79d8c076_2ba3f186",
       "range": {
         "startLine": 15,
         "startChar": 5,
@@ -104,6 +188,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0992c7_6e7c3b19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/data/manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f37af85f_3d4eb0d4",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "412c8cdf_51dadc67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/data/manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Yes, so I created a CL to make it work :)",
+      "parentUuid": "f37af85f_3d4eb0d4",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7f9bd5d_4f54d904",
@@ -117,6 +249,24 @@
       "writtenOn": "2021-09-23T18:54:15Z",
       "side": 1,
       "message": "let\u0027s also add options_page key after the CL is landed.\n\nhttps://chromium-review.googlesource.com/c/chromium/src/+/3177260",
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d73f2445_ab4a184f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/data/manifest.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7f9bd5d_4f54d904",
       "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +288,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41c9540a_f15139dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/data/sw.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Yes, added in the new patch.",
+      "parentUuid": "e0cf62d7_e4201f49",
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "996ad47c_a7991f94",
@@ -151,6 +319,24 @@
       "writtenOn": "2021-09-23T15:40:12Z",
       "side": 1,
       "message": "nit: move to a separate doc.go file, there will be more tests.",
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e5a3efb_27da9d09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/telemetry_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "996ad47c_a7991f94",
       "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -178,6 +364,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0212ca32_9a0fbcd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/telemetry_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab10a384_1873e799",
+      "range": {
+        "startLine": 35,
+        "startChar": 34,
+        "endLine": 35,
+        "endChar": 38
+      },
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06ecbf7b_60747ebe",
@@ -191,6 +401,24 @@
       "writtenOn": "2021-09-23T15:40:12Z",
       "side": 1,
       "message": "nit: create a group mailing list 😊",
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3655b1cd_f69ece2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/telemetry_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06ecbf7b_60747ebe",
       "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -212,6 +440,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f22b1f_0896a744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/telemetry_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2435edc_2a4b4ccc",
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c5aad2f_9d0fd507",
@@ -225,6 +471,30 @@
       "writtenOn": "2021-09-23T18:54:15Z",
       "side": 1,
       "message": "would it work?\n\nuse http instead.",
+      "range": {
+        "startLine": 77,
+        "startChar": 31,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ea88905_99ceeef5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/telemetry_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "google page will be redirected to https",
+      "parentUuid": "3c5aad2f_9d0fd507",
       "range": {
         "startLine": 77,
         "startChar": 31,
@@ -258,6 +528,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df0736f_f3a99fd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/telemetry_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a396fa35_3dffa276",
+      "range": {
+        "startLine": 79,
+        "startChar": 42,
+        "endLine": 79,
+        "endChar": 61
+      },
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecf48325_6269da93",
@@ -271,6 +565,24 @@
       "writtenOn": "2021-09-23T15:40:12Z",
       "side": 1,
       "message": "nit: use a shorter context here for a shorter timeout.",
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b24e47a_a04d7d2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/telemetry_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "no need to do that. If there will be some issue, it returns immediately.",
+      "parentUuid": "ecf48325_6269da93",
       "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -298,6 +610,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26cb1a1c_6d64362f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/telemetry_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f882aa4c_b8b7b718",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 10
+      },
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1379c52d_ea1eb12a",
@@ -311,6 +647,30 @@
       "writtenOn": "2021-09-23T15:40:12Z",
       "side": 1,
       "message": "nit: maybe expectedSwResponse ?",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 19
+      },
+      "revId": "0e40cadc1283cdb239f3c05da99a1f850f54f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3495047_531b2877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/telemetry_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-24T15:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1379c52d_ea1eb12a",
       "range": {
         "startLine": 121,
         "startChar": 5,
