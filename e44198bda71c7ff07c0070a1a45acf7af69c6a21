@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32adcf6c_32b8fdbc",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-24T00:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23fa2520_3bda4aa6",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "067ff537_a901b504",
@@ -88,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad624463_5251f3ca",
+        "filename": "src/chromiumos/tast/local/arc/volume.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-24T00:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "067ff537_a901b504",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 32
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92150f1a_95cc0bce",
@@ -101,6 +149,30 @@
       "writtenOn": "2021-09-22T18:36:24Z",
       "side": 1,
       "message": "nit (here and below):\n\nsince this is a function pointer, it should follow the same rules as Getters naming convention. Basically remove the \"get\" prefix.\n\nhttps://golang.org/doc/effective_go#Getters",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6383d99a_81b3ff9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-24T00:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92150f1a_95cc0bce",
       "range": {
         "startLine": 37,
         "startChar": 1,
@@ -157,6 +229,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "410783ad_42c5c905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-24T00:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27f8bf0d_a130f08a",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 4
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa90a379_75e9b00c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-24T00:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d19417e4_514a595a",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 8
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "186214a7_e8685e6d",
@@ -170,6 +290,30 @@
       "writtenOn": "2021-09-22T18:36:24Z",
       "side": 1,
       "message": "ditto above: Getter without prefix + docstring",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 24
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50f1d4de_fbeaece6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-24T00:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "186214a7_e8685e6d",
       "range": {
         "startLine": 86,
         "startChar": 5,
@@ -203,6 +347,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c535e52_da532d71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-24T00:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22a57e48_6bcb58d4",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 85
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78ede3e0_77dbe91c",
@@ -216,6 +384,30 @@
       "writtenOn": "2021-09-22T18:36:24Z",
       "side": 1,
       "message": "nit: returned errors should not start with capital letter",
+      "range": {
+        "startLine": 152,
+        "startChar": 24,
+        "endLine": 152,
+        "endChar": 25
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1888e54e_e049ee35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-24T00:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78ede3e0_77dbe91c",
       "range": {
         "startLine": 152,
         "startChar": 24,
@@ -249,6 +441,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a002cb89_f4a34812",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-24T00:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2cdb4cd_ed401992",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 8
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6cd9e67_9791d4d7",
@@ -272,6 +488,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9ca5c99_bf389539",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-24T00:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6cd9e67_9791d4d7",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 4
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60a1aa06_4e731369",
@@ -285,6 +525,30 @@
       "writtenOn": "2021-09-22T18:36:24Z",
       "side": 1,
       "message": "(cont from comment above)\n\none possible way to put the defer after create and also catch error could be:\n\n  err :\u003d createFileCopiesUnderTargetPath(...)\n  // Cleanup should be called even if err is returned because some files might have been created.\n  defer func() {\n  }\n  if err !\u003d nil {\n    s.Fatal(...)\n  }",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 247,
+        "endChar": 32
+      },
+      "revId": "e44198bda71c7ff07c0070a1a45acf7af69c6a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82196a7f_fe977dfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1519657
+      },
+      "writtenOn": "2021-09-24T00:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a1aa06_4e731369",
       "range": {
         "startLine": 247,
         "startChar": 1,
