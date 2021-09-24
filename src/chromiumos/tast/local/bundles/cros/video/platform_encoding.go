@@ -47,12 +47,6 @@ var regExpFPSVpxenc = regexp.MustCompile(`\((\d+\.\d+) fps\)`)
 // regExpFPSOpenh264enc is the regexp to find the FPS output from openh264enc's log.
 var regExpFPSOpenh264enc = regexp.MustCompile(`(\d+\.\d+) fps`)
 
-// regExpSSIM is the regexp to find the SSIM output in the tiny_ssim log.
-var regExpSSIM = regexp.MustCompile(`\nSSIM: (\d+\.\d+)`)
-
-// regExpPSNR is the regexp to find the PSNR output in the tiny_ssim log.
-var regExpPSNR = regexp.MustCompile(`\nGlbPSNR: (\d+\.\d+)`)
-
 // regExpKeyFramesVP8 is the regexp to find the number of key frames in a VP8
 // bitstream: Key Frames are marked by having a 0x9D 0x01 0x2A sequence, see
 // RFC6386 VP8 Data Format and Decoding Guide, Sec.9.1 "Uncompressed Data Chunk"
@@ -88,7 +82,7 @@ type testParam struct {
 	fps             float64          // FPS of the input file.
 	commandBuilder  commandBuilderFn // Function to create the command line arguments.
 	regExpFPS       *regexp.Regexp   // Regexp to find the FPS from output.
-	decoder         string           // Command line decoder binary.
+	decoder         encoding.Decoder // Command line decoder binary
 	regExpKeyFrames *regexp.Regexp   // Regexp to count the number of key frames.
 }
 
@@ -116,7 +110,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  vp8argsVAAPI,
 				regExpFPS:       regExpFPSVP8,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
@@ -131,7 +125,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  vp8argsVAAPI,
 				regExpFPS:       regExpFPSVP8,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
@@ -146,7 +140,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  vp8argsVAAPI,
 				regExpFPS:       regExpFPSVP8,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
@@ -163,7 +157,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  vp8argsVAAPI,
 				regExpFPS:       regExpFPSVP8,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"gipsrestat-320x180.vp9.webm"},
@@ -178,7 +172,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  vp8argsVAAPI,
 				regExpFPS:       regExpFPSVP8,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"gipsrestat-640x360.vp9.webm"},
@@ -193,7 +187,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  vp8argsVAAPI,
 				regExpFPS:       regExpFPSVP8,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
@@ -210,7 +204,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  vp9argsVAAPI,
 				regExpFPS:       regExpFPSVP9,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
@@ -225,7 +219,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  vp9argsVAAPI,
 				regExpFPS:       regExpFPSVP9,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
@@ -240,7 +234,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  vp9argsVAAPI,
 				regExpFPS:       regExpFPSVP9,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
@@ -257,7 +251,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  vp9argsVAAPI,
 				regExpFPS:       regExpFPSVP9,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData:         []string{"gipsrestat-320x180.vp9.webm"},
@@ -272,7 +266,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  vp9argsVAAPI,
 				regExpFPS:       regExpFPSVP9,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData:         []string{"gipsrestat-640x360.vp9.webm"},
@@ -287,7 +281,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  vp9argsVAAPI,
 				regExpFPS:       regExpFPSVP9,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
@@ -304,7 +298,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  h264argsVAAPI,
 				regExpFPS:       regExpFPSH264,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
@@ -319,7 +313,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  h264argsVAAPI,
 				regExpFPS:       regExpFPSH264,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
@@ -334,7 +328,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  h264argsVAAPI,
 				regExpFPS:       regExpFPSH264,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
@@ -351,7 +345,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  h264argsVAAPI,
 				regExpFPS:       regExpFPSH264,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"gipsrestat-320x180.vp9.webm"},
@@ -366,7 +360,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  h264argsVAAPI,
 				regExpFPS:       regExpFPSH264,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"gipsrestat-640x360.vp9.webm"},
@@ -381,7 +375,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  h264argsVAAPI,
 				regExpFPS:       regExpFPSH264,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
@@ -398,7 +392,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData: []string{"tulip2-320x180.vp9.webm"},
@@ -412,7 +406,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData: []string{"tulip2-640x360.vp9.webm"},
@@ -426,7 +420,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData: []string{"tulip2-1280x720.vp9.webm"},
@@ -442,7 +436,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData: []string{"gipsrestat-320x180.vp9.webm"},
@@ -456,7 +450,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData: []string{"gipsrestat-640x360.vp9.webm"},
@@ -470,7 +464,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData: []string{"gipsrestat-1280x720.vp9.webm"},
@@ -486,7 +480,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData: []string{"tulip2-320x180.vp9.webm"},
@@ -500,7 +494,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData: []string{"tulip2-640x360.vp9.webm"},
@@ -514,7 +508,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData: []string{"tulip2-1280x720.vp9.webm"},
@@ -530,7 +524,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData: []string{"gipsrestat-320x180.vp9.webm"},
@@ -544,7 +538,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData: []string{"gipsrestat-640x360.vp9.webm"},
@@ -558,7 +552,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  argsVpxenc,
 				regExpFPS:       regExpFPSVpxenc,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP9,
 			},
 			ExtraData: []string{"gipsrestat-1280x720.vp9.webm"},
@@ -574,7 +568,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  argsOpenh264enc,
 				regExpFPS:       regExpFPSOpenh264enc,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData: []string{"tulip2-320x180.vp9.webm"},
@@ -588,7 +582,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  argsOpenh264enc,
 				regExpFPS:       regExpFPSOpenh264enc,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData: []string{"tulip2-640x360.vp9.webm"},
@@ -602,7 +596,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  argsOpenh264enc,
 				regExpFPS:       regExpFPSOpenh264enc,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData: []string{"tulip2-1280x720.vp9.webm"},
@@ -618,7 +612,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  argsOpenh264enc,
 				regExpFPS:       regExpFPSOpenh264enc,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData: []string{"gipsrestat-320x180.vp9.webm"},
@@ -632,7 +626,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  argsOpenh264enc,
 				regExpFPS:       regExpFPSOpenh264enc,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData: []string{"gipsrestat-640x360.vp9.webm"},
@@ -646,7 +640,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  argsOpenh264enc,
 				regExpFPS:       regExpFPSOpenh264enc,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData: []string{"gipsrestat-1280x720.vp9.webm"},
@@ -662,7 +656,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  argsV4L2,
 				regExpFPS:       regExpFPSV4L2,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
@@ -679,7 +673,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  argsV4L2,
 				regExpFPS:       regExpFPSV4L2,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
@@ -696,7 +690,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  argsV4L2,
 				regExpFPS:       regExpFPSV4L2,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
@@ -713,7 +707,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  argsV4L2,
 				regExpFPS:       regExpFPSV4L2,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"gipsrestat-320x180.vp9.webm"},
@@ -730,7 +724,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  argsV4L2,
 				regExpFPS:       regExpFPSV4L2,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"gipsrestat-640x360.vp9.webm"},
@@ -747,7 +741,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  argsV4L2,
 				regExpFPS:       regExpFPSV4L2,
-				decoder:         "openh264dec",
+				decoder:         encoding.OpenH264Decoder,
 				regExpKeyFrames: regExpKeyFramesH264,
 			},
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
@@ -764,7 +758,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  argsV4L2,
 				regExpFPS:       regExpFPSV4L2,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
@@ -781,7 +775,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  argsV4L2,
 				regExpFPS:       regExpFPSV4L2,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"tulip2-640x360.vp9.webm"},
@@ -798,7 +792,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  argsV4L2,
 				regExpFPS:       regExpFPSV4L2,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"tulip2-1280x720.vp9.webm"},
@@ -815,7 +809,7 @@ func init() {
 				size:            coords.NewSize(320, 180),
 				commandBuilder:  argsV4L2,
 				regExpFPS:       regExpFPSV4L2,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"gipsrestat-320x180.vp9.webm"},
@@ -832,7 +826,7 @@ func init() {
 				size:            coords.NewSize(640, 360),
 				commandBuilder:  argsV4L2,
 				regExpFPS:       regExpFPSV4L2,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"gipsrestat-640x360.vp9.webm"},
@@ -849,7 +843,7 @@ func init() {
 				size:            coords.NewSize(1280, 720),
 				commandBuilder:  argsV4L2,
 				regExpFPS:       regExpFPSV4L2,
-				decoder:         "vpxdec",
+				decoder:         encoding.LibvpxDecoder,
 				regExpKeyFrames: regExpKeyFramesVP8,
 			},
 			ExtraData:         []string{"gipsrestat-1280x720.vp9.webm"},
@@ -913,17 +907,9 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to extract FPS: ", err)
 	}
 
-	SSIMFile, err := compareFiles(ctx, testOpt.decoder, yuvFile, encodedFile, s.OutDir(), testOpt.size)
+	psnr, ssim, err := encoding.CompareFiles(ctx, testOpt.decoder, yuvFile, encodedFile, s.OutDir(), testOpt.size)
 	if err != nil {
 		s.Fatal("Failed to decode and compare results: ", err)
-	}
-	SSIM, err := extractValue(SSIMFile, regExpSSIM)
-	if err != nil {
-		s.Fatal("Failed to extract SSIM: ", err)
-	}
-	PSNR, err := extractValue(SSIMFile, regExpPSNR)
-	if err != nil {
-		s.Fatal("Failed to extract PSNR: ", err)
 	}
 
 	p := perf.NewValues()
@@ -936,12 +922,12 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 		Name:      "SSIM",
 		Unit:      "percent",
 		Direction: perf.BiggerIsBetter,
-	}, SSIM*100)
+	}, ssim*100)
 	p.Set(perf.Metric{
 		Name:      "PSNR",
 		Unit:      "dB",
 		Direction: perf.BiggerIsBetter,
-	}, PSNR)
+	}, psnr)
 
 	if energyDiff != nil && energyErr == nil {
 		energyDiff.ReportWattPerfMetrics(p, "", timeDelta)
@@ -1017,53 +1003,6 @@ func calculateBitrate(encodedFile string, fileFPS float64, numFrames int) (value
 		return 0.0, errors.Wrapf(err, "failed to get stats for file %s", encodedFile)
 	}
 	return float64(s.Size()) * 8 /* bits per byte */ * fileFPS / float64(numFrames), nil
-}
-
-// compareFiles decodes encodedFile using decoder and compares it with yuvFile using tiny_ssim.
-func compareFiles(ctx context.Context, decoder, yuvFile, encodedFile, outDir string, size coords.Size) (ssimLogFileName string, err error) {
-	yuvFile2 := yuvFile + ".2"
-	tf, err := os.Create(yuvFile2)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to create a temporary YUV file")
-	}
-	defer os.Remove(yuvFile2)
-	defer tf.Close()
-
-	decodeCommand := []string{encodedFile}
-	if decoder == "vpxdec" {
-		decodeCommand = append(decodeCommand, "-o")
-	}
-	decodeCommand = append(decodeCommand, yuvFile2)
-	testing.ContextLogf(ctx, "Executing %s %s", decoder, shutil.EscapeSlice(decodeCommand))
-
-	decodeLogFileName := filepath.Join(outDir, decoder+".txt")
-	decodeLogFile, err := os.Create(decodeLogFileName)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to create log file")
-	}
-	defer decodeLogFile.Close()
-	vpxCmd := testexec.CommandContext(ctx, decoder, decodeCommand...)
-	vpxCmd.Stdout = decodeLogFile
-	vpxCmd.Stderr = decodeLogFile
-	if err := vpxCmd.Run(); err != nil {
-		vpxCmd.DumpLog(ctx)
-		return "", errors.Wrap(err, "decode failed")
-	}
-
-	ssimLogFileName = filepath.Join(outDir, "tiny_ssim.txt")
-	ssimLogFile, err := os.Create(ssimLogFileName)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to create log file")
-	}
-	defer ssimLogFile.Close()
-
-	ssimCmd := testexec.CommandContext(ctx, "tiny_ssim", yuvFile, yuvFile2, strconv.Itoa(size.Width)+"x"+strconv.Itoa(size.Height))
-	ssimCmd.Stdout = ssimLogFile
-	ssimCmd.Stderr = ssimLogFile
-	if err := ssimCmd.Run(testexec.DumpLogOnError); err != nil {
-		return "", errors.Wrap(err, "failed to run tiny_ssim")
-	}
-	return ssimLogFileName, nil
 }
 
 // vp8argsVAAPI constructs the command line for the VP8 encoding binary exe.
