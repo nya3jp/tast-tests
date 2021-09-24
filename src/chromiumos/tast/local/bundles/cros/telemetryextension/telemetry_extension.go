@@ -151,11 +151,11 @@ type swResponse struct {
 	Error string `json:"error"`
 }
 
-// TODO(lamzin): add skuNumber
 type vpdInfo struct {
 	ActivateDate string `json:"activateDate"`
 	ModelName    string `json:"modelName"`
 	SerialNumber string `json:"serialNumber"`
+	SkuNumber    string `json:"skuNumber"`
 }
 
 func expectedSwResponse(ctx context.Context) (swResponse, error) {
@@ -191,12 +191,21 @@ func expectedSwResponse(ctx context.Context) (swResponse, error) {
 		return swResponse{}, errors.New("serial_number VPD is empty")
 	}
 
+	skuNumberBytes, err := ioutil.ReadFile("/sys/firmware/vpd/ro/sku_number")
+	if err != nil {
+		return swResponse{}, errors.Wrap(err, "failed to read sku_number VPD field")
+	}
+	if len(skuNumberBytes) == 0 {
+		return swResponse{}, errors.New("sku_number VPD is empty")
+	}
+
 	return swResponse{
 		OemData: string(oemDataBytes),
 		VpdInfo: vpdInfo{
 			ActivateDate: string(activateDateBytes),
 			ModelName:    string(modelNameBytes),
 			SerialNumber: string(serialNumberBytes),
+			SkuNumber:    string(skuNumberBytes),
 		},
 		Routines: []string{
 			"battery_capacity",
