@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41bab821_9178c02d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/capturefromelement/capture_from_element.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-24T05:42:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd85fa4d_f2a0395c",
+      "range": {
+        "startLine": 32,
+        "startChar": 32,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "633bdd9957ccc9940944e76ef1be44b3a0c2559a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "626e471b_478fbe58",
@@ -78,6 +102,30 @@
       "writtenOn": "2021-09-22T01:39:15Z",
       "side": 1,
       "message": "This function returns an error, so let\u0027s follow the normal code flow than abort here.\n\nreturn errors.Errorf(\"Unknown CanvasSource: %d\", source);",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 33
+      },
+      "revId": "633bdd9957ccc9940944e76ef1be44b3a0c2559a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6b781f2_c8c858a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/capturefromelement/capture_from_element.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-24T05:42:25Z",
+      "side": 1,
+      "message": "Oh you\u0027re right, I\u0027m too used to CHECK/assert etc.",
+      "parentUuid": "626e471b_478fbe58",
       "range": {
         "startLine": 57,
         "startChar": 2,
