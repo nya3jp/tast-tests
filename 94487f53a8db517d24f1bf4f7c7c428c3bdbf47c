@@ -206,6 +206,30 @@
       },
       "revId": "94487f53a8db517d24f1bf4f7c7c428c3bdbf47c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faacab84_c11c6abf",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-24T06:09:01Z",
+      "side": 1,
+      "message": "```\nThe intention of using EnableExpertMode() instead of ToggleExpertMode() is to improve the readability so that we know after calling EnableExpertMode(), the expert mode should be enabled no matter the previous state is on or off. Similarly, in my opinion, DisableExpertMode() will be clearer than functions like ToggleExpertModeBack() since developers can know the expected state from its name after calling the function.\n```\nCleanup by calling the returned cleanup function is also a common pattern in tast codebase e.g.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/tablet.go;rcl\u003db212ca8f68f89b75a0ca49abc748d6fed18620fe;l\u003d39 \n\nAnyway, since the all flags will be cleared after app close. I think it should be OK for not to explicitly clear expert mode flag.",
+      "parentUuid": "c3e3388a_62b4236d",
+      "range": {
+        "startLine": 1356,
+        "startChar": 52,
+        "endLine": 1356,
+        "endChar": 57
+      },
+      "revId": "94487f53a8db517d24f1bf4f7c7c428c3bdbf47c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

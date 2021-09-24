@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12939cec_032ea294",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1399,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-09-24T06:09:01Z",
+      "side": 1,
+      "message": "nit: inline in its only usage.",
+      "range": {
+        "startLine": 1399,
+        "startChar": 14,
+        "endLine": 1399,
+        "endChar": 38
+      },
+      "revId": "3d15a74cd539e5ebb6b0e9529ced026afd0e93ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
