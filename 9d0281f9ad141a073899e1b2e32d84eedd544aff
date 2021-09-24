@@ -16,6 +16,24 @@
       "message": "@Michael Checo\nThis test seems to have failed recently. I\u0027d like to use this test to validate the changes in this patch, but I haven\u0027t been able to do so now, so could you please check it for me? Thank you!\n\nhttps://tastboard.corp.google.com/test/diagnostics.Connectivity",
       "revId": "9d0281f9ad141a073899e1b2e32d84eedd544aff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "979a4c9e_04deea8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2021-09-24T03:09:00Z",
+      "side": 1,
+      "message": "Hello! \n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ui/diagnosticsapp/diagnosticsapp.go;l\u003d86?q\u003ddiagnosticsapp.go\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch\n\nThis needs to be updated to diagnostics-cards-container-nav. The class name changed but the selector wasn\u0027t updated.",
+      "parentUuid": "db05e64c_fe4d9068",
+      "revId": "9d0281f9ad141a073899e1b2e32d84eedd544aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
