@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e235a7c_ccaa1b70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-24T18:54:46Z",
+      "side": 1,
+      "message": "nit: since this CL affects encoding, probably it was verified\nwith other tests, maybe video.WebCodecs.* ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "1bdf274570e2d5eecf64bc605199a082da5a8e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
