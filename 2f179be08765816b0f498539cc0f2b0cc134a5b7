@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9944a7ad_e6b6df33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163674
+      },
+      "writtenOn": "2021-09-24T19:08:04Z",
+      "side": 1,
+      "message": "Aki - PTAL! 😊",
+      "revId": "2f179be08765816b0f498539cc0f2b0cc134a5b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
