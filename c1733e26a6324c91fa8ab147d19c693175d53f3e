@@ -22,6 +22,30 @@
       },
       "revId": "c1733e26a6324c91fa8ab147d19c693175d53f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a44f1a25_089f0520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_common.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1150472
+      },
+      "writtenOn": "2021-09-24T17:03:04Z",
+      "side": 1,
+      "message": "If you \"await decoder.flush()\", all of the outputs should have been emitted when the promise resolves. I\u0027m not great with chaining promises, but there\u0027s certainly a way to write this which avoids polling.",
+      "parentUuid": "8cde1494_a9527502",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 171,
+        "endChar": 5
+      },
+      "revId": "c1733e26a6324c91fa8ab147d19c693175d53f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
