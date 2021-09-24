@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "019c831c_d3d6f312",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-24T07:41:20Z",
+      "side": 1,
+      "message": "Abe-san, may I please ask you to review this CL series?",
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
