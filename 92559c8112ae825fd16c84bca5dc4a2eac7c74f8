@@ -16,6 +16,23 @@
       "message": "Let\u0027s add the audio metrics first and resolve the muted mic in different change.",
       "revId": "92559c8112ae825fd16c84bca5dc4a2eac7c74f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b261e1e2_54810adf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-24T16:16:51Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "92559c8112ae825fd16c84bca5dc4a2eac7c74f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
