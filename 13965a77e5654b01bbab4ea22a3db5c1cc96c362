@@ -33,6 +33,29 @@
       "message": "LGTM",
       "revId": "13965a77e5654b01bbab4ea22a3db5c1cc96c362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5a223d_0cef84a9",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-09-27T08:24:18Z",
+      "side": 1,
+      "message": "I think we can remove this function, expectedFlashProtectOutput() and expected outputs too.",
+      "range": {
+        "startLine": 185,
+        "startChar": 5,
+        "endLine": 185,
+        "endChar": 22
+      },
+      "revId": "13965a77e5654b01bbab4ea22a3db5c1cc96c362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
