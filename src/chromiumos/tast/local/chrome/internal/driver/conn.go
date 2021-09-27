@@ -248,6 +248,7 @@ func (c *Conn) GetMediaPropertiesChangedObserver(ctx context.Context) (observer 
 
 // TestConn is a connection to the Tast test extension's background page.
 // cf) crbug.com/1043590
+// Please do not directly instantiate TestConn instance from Conn.
 type TestConn struct {
 	*Conn
 }

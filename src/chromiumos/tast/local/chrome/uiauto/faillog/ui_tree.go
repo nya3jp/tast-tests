@@ -42,6 +42,7 @@ func DumpUITreeOnError(ctx context.Context, outDir string, hasError func() bool,
 
 // DumpUITreeOnErrorToFile checks the given hasError function and dumps the whole UI tree data
 // into a file 'fileName' when the test fails. It does nothing when the test succeeds.
+// TODO(b/201247306): The dump content may not include ARC UI tree due to timing issue.
 func DumpUITreeOnErrorToFile(ctx context.Context, outDir string, hasError func() bool, tconn *chrome.TestConn, fileName string) {
 	if !hasError() {
 		return

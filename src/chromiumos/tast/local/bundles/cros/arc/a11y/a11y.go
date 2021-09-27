@@ -90,12 +90,12 @@ func waitForSpokenFeedbackReady(ctx context.Context, cr *chrome.Chrome, a *arc.A
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
-		return nil, errors.Wrap(err, "failed to ensure accessibility is enabled: ")
+		return nil, errors.Wrap(err, "failed to ensure accessibility is enabled")
 	}
 
 	cvconn, err := a11y.NewChromeVoxConn(ctx, cr)
 	if err != nil {
-		return nil, errors.Wrap(err, "creating connection to ChromeVox extension failed: ")
+		return nil, errors.Wrap(err, "creating connection to ChromeVox extension failed")
 	}
 
 	return cvconn, nil
@@ -166,9 +166,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 				s.Fatal("Failed to start activity: ", err)
 			}
 			defer act.Stop(ctx, tconn)
-
-			// TODO(b/161864703): Use chrome.Conn instead of TestConn.
-			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, &chrome.TestConn{Conn: cvconn.Conn}, "ui_tree"+activity.Name+".txt")
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree"+activity.Name+".txt")
 
 			if err := func() error {
 				application := nodewith.Name(activity.Title).Role(role.Application)
