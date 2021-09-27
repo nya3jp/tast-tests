@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8176bbc_66b13fc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-27T10:05:02Z",
+      "side": 1,
+      "message": "Adjusted test to use new policy structure and waiting for more adjustments.\nThis change will need rebase.",
+      "revId": "dc4b65d045457cc4fa80c47a3a8c4fa3aedb8042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
