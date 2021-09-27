@@ -48,6 +48,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8508b1c7_b14ffa2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-09-27T01:59:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c8fb56dc_e7133293",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "f6b69637d532ab7ad2ef87a8671a07f9cf4b2c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8990b9f5_ac0fa946",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-09-27T01:59:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c8fb56dc_e7133293",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "f6b69637d532ab7ad2ef87a8671a07f9cf4b2c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "833a351e_ee1477b0",
@@ -85,6 +133,30 @@
       "side": 1,
       "message": "\u003e By propagation here, you mean from Chrome to shill to dns-proxy right? \n\nYes, including the DoH settings, nameservers, and DNS redirection rules.\n\n\u003e If so, rather than introduce an arbitrary delay maybe you could just poll the shill property on dbus instead? \n\nBecause I\u0027m still not sure if this would fix the problem, would it be okay to try this patch first and see if it fixes the problem? If the propagation is actually the issue, then I\u0027ll add polling on the dbus property. Otherwise, I\u0027ll undo this patch.",
       "parentUuid": "833a351e_ee1477b0",
+      "range": {
+        "startLine": 13,
+        "startChar": 50,
+        "endLine": 13,
+        "endChar": 61
+      },
+      "revId": "f6b69637d532ab7ad2ef87a8671a07f9cf4b2c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa3c06f2_04b0ea49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-09-27T01:59:29Z",
+      "side": 1,
+      "message": "OK can you add something to this effect in the CL desc so we can refer back to it? Thanks\n\nAlso, if this is an experiment, is 3 seconds pessimistic enough?",
+      "parentUuid": "7641b7f8_4615b210",
       "range": {
         "startLine": 13,
         "startChar": 50,
