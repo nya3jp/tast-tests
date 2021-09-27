@@ -9,13 +9,13 @@ import (
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/browser"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -42,8 +42,8 @@ func init() {
 
 // EditBookmarksEnabled tests the EditBookmarksEnabaled policy for the enabled, disabled and unset cases.
 func EditBookmarksEnabled(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fakeDMS := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(chrome.HasChrome).ChromeVal()
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMSVal()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -51,7 +51,7 @@ func EditBookmarksEnabled(ctx context.Context, s *testing.State) {
 	}
 
 	// Enable bookmark editing for allowing setup step - adding bookmark.
-	if err := policyutil.ServeAndVerify(ctx, fakeDMS, cr, []policy.Policy{&policy.EditBookmarksEnabled{Val: true}}); err != nil {
+	if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{&policy.EditBookmarksEnabled{Val: true}}); err != nil {
 		s.Fatal("Failed to update policies: ", err)
 	}
 
@@ -97,12 +97,12 @@ func EditBookmarksEnabled(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Perform Chrome reset.
-			if err := policyutil.ResetChrome(ctx, fakeDMS, cr); err != nil {
+			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to reset Chrome: ", err)
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndRefresh(ctx, fakeDMS, cr, []policy.Policy{param.value}); err != nil {
+			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 

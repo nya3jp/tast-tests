@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -91,8 +92,8 @@ func validateBackground(ctx context.Context, cr *chrome.Chrome, clr color.Color,
 
 // WallpaperImage tests the WallpaperImage policy.
 func WallpaperImage(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(chrome.HasChrome).ChromeVal()
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMSVal()
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
