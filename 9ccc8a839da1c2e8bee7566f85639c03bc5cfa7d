@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31252acb_de1a09fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-27T22:19:27Z",
+      "side": 1,
+      "message": "Where does 100 come from?",
+      "revId": "9ccc8a839da1c2e8bee7566f85639c03bc5cfa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b1ba9fa_5f99392a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-27T22:19:27Z",
+      "side": 1,
+      "message": "How can freeDiskSpace (from spaced) be bigger than expectedFreeDiskSpace(). Is it in case files has been allocated/freed between the delta?\n\nShould the test be:\nfreeDiskSpace \u003c expectedFreeDiskSpace - spaceMarginBytes ||\nfreeDiskSpace \u003e expectedFreeDiskSpace + spaceMarginBytes",
+      "revId": "9ccc8a839da1c2e8bee7566f85639c03bc5cfa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a3b7fac_f3d58218",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-27T22:19:27Z",
+      "side": 1,
+      "message": "See above, and space around \u0027+\u0027 [unless gofmt says otherwise].",
+      "revId": "9ccc8a839da1c2e8bee7566f85639c03bc5cfa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
