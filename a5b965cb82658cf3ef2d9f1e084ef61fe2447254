@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d3062b_adae65b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-09-27T02:40:50Z",
+      "side": 1,
+      "message": "Remove a space here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "a5b965cb82658cf3ef2d9f1e084ef61fe2447254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bef8fd9_b41ac869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-09-27T02:40:50Z",
+      "side": 1,
+      "message": "Should we use pdcontrol to simulate it? Can we use \"udevadm trigger -s usb -c ${action}\" to simulate it?",
+      "range": {
+        "startLine": 97,
+        "startChar": 40,
+        "endLine": 97,
+        "endChar": 61
+      },
+      "revId": "a5b965cb82658cf3ef2d9f1e084ef61fe2447254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
