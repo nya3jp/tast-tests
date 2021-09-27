@@ -7,15 +7,11 @@ package crostini
 import (
 	"bytes"
 	"context"
-	"fmt"
-	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/local/cryptohome"
-	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -122,53 +118,21 @@ func trySaveContainerLogs(ctx context.Context, dir string, cont *vm.Container) {
 // Persistent reader for VM logs, keeps track of where it was up to.
 // Internally it closes the old file and opens the new as logs get rotated, we
 // never explicitly close it.
-var logReader *syslog.LineReader
-
-func newLogReader(ctx context.Context, user string) (*syslog.LineReader, error) {
-	ownerID, err := cryptohome.UserHash(ctx, user)
-	if err != nil {
-		return nil, err
-	}
-	path := "/run/daemon-store/crosvm/" + ownerID + "/log/" + vm.GetEncodedName(vm.DefaultVMName) + ".log"
-
-	// Only wait 1 second for the log file to exist, don't want to hang until
-	// timeout if it doesn't exist, instead we continue.
-	return syslog.NewLineReader(ctx, path, true,
-		&testing.PollOptions{Timeout: 1 * time.Second})
-}
+var logReader *vm.LogReader
 
 // trySaveVMLogs writes logs since the last call to the
 // current test's output folder.
 func trySaveVMLogs(ctx context.Context, dir, user string) {
 	if logReader == nil {
 		var err error
-		logReader, err = newLogReader(ctx, user)
+		logReader, err = vm.NewLogReaderForVM(ctx, vm.DefaultVMName, user)
 		if err != nil {
 			testing.ContextLog(ctx, "Error creating log reader: ", err)
 			return
 		}
 	}
-
-	path := filepath.Join(dir, "termina_logs.txt")
-	f, err := os.Create(path)
-	if err != nil {
-		testing.ContextLog(ctx, "Error creating file: ", err)
-		return
-	}
-	defer f.Close()
-
-	for {
-		line, err := logReader.ReadLine()
-		if err != nil {
-			if err != io.EOF {
-				testing.ContextLog(ctx, "Error reading file: ", err)
-			}
-			break
-		}
-		_, err = f.WriteString(line)
-		if err != nil {
-			testing.ContextLog(ctx, fmt.Sprintf("Error writing %s to file: ", line), err)
-		}
+	if err := logReader.TrySaveLogs(ctx, dir); err != nil {
+		testing.ContextLog(ctx, "Error saving logs: ", err)
 	}
 }
 
