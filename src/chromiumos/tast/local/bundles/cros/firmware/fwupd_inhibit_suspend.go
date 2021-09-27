@@ -60,11 +60,20 @@ func FwupdInhibitSuspend(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatalf("%q failed: %v", cmd.Args, err)
 	}
+	stderr, err := cmd.StderrPipe()
+	if err != nil {
+		s.Fatalf("%q failed: %v", cmd.Args, err)
+	}
 
 	// watch output until update begins write phase
 	outch := streamOutput(stdout)
 	defer func() {
 		for range outch {
+		}
+	}()
+	errch := streamOutput(stderr)
+	defer func() {
+		for range errch {
 		}
 	}()
 
@@ -85,17 +94,26 @@ func FwupdInhibitSuspend(ctx context.Context, s *testing.State) {
 		}
 	}
 	if !write {
-		s.Fatal("Write phase not entered by fwupd")
-	}
+		acerr := false
+		for str := range errch {
+			if strings.Contains(str, "does not currently allow updates: Cannot install update when not on AC power") {
+				acerr = true
+				break
+			}
+		}
+		if !acerr {
+			s.Fatal("Write phase not entered by fwupd")
+		}
+	} else {
+		// ensure that file exists during update
+		if _, err := os.Stat("/run/lock/power_override/fwupd.lock"); os.IsNotExist(err) {
+			s.Fatal("System can suspend but update is in progress")
+		}
 
-	// ensure that file exists during update
-	if _, err := os.Stat("/run/lock/power_override/fwupd.lock"); os.IsNotExist(err) {
-		s.Fatal("System can suspend but update is in progress")
-	}
-
-	// make sure that file does not exist after update completed
-	cmd.Wait()
-	if _, err := os.Stat("/run/lock/power_override/fwupd.lock"); err == nil {
-		s.Fatal("System cannot suspend but update has finished")
+		// make sure that file does not exist after update completed
+		cmd.Wait()
+		if _, err := os.Stat("/run/lock/power_override/fwupd.lock"); err == nil {
+			s.Fatal("System cannot suspend but update has finished")
+		}
 	}
 }
