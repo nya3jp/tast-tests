@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f77f7cd_938d44ed",
+        "filename": "src/chromiumos/tast/local/chrome/ui/mouse/mouse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-27T03:22:26Z",
+      "side": 0,
+      "message": "Could you create another patch for deleting the file?\nOtherwise, you should make this patch depend on other pathces that migrate ui/mouse to uiauto/mouse.\n\nFYI, you can make a CL depend on other CLs by using Cq-Depend attribute in the comment message. https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#cq-depend",
+      "range": {
+        "startLine": 1,
+        "startChar": 47,
+        "endLine": 1,
+        "endChar": 53
+      },
+      "revId": "2e43d9af62f949ad21f40ba666682b1f3e07d0a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
