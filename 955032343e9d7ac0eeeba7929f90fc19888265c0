@@ -63,6 +63,30 @@
       },
       "revId": "955032343e9d7ac0eeeba7929f90fc19888265c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406703b7_80e3b140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_open_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-27T00:40:58Z",
+      "side": 1,
+      "message": "It is for code simplicity.",
+      "parentUuid": "34bd7a2f_13e3c70c",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "955032343e9d7ac0eeeba7929f90fc19888265c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
