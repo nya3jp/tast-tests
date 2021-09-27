@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "522e9a4c_dd61307c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-27T01:06:27Z",
+      "side": 1,
+      "message": "Where is the scroll code? There is only the SwipeDown in the defer.",
+      "range": {
+        "startLine": 123,
+        "startChar": 51,
+        "endLine": 123,
+        "endChar": 94
+      },
+      "revId": "50780b4fa54b29ea225ced76528e8bb004009887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef53302_a7a4cdd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-27T01:06:27Z",
+      "side": 1,
+      "message": "This looks a bit redundant?",
+      "range": {
+        "startLine": 564,
+        "startChar": 4,
+        "endLine": 564,
+        "endChar": 7
+      },
+      "revId": "50780b4fa54b29ea225ced76528e8bb004009887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "951dcfa0_61563dcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-27T01:06:27Z",
+      "side": 1,
+      "message": "Maybe write a func getStartEnd to get the value instead of copy it twice?",
+      "range": {
+        "startLine": 571,
+        "startChar": 2,
+        "endLine": 581,
+        "endChar": 3
+      },
+      "revId": "50780b4fa54b29ea225ced76528e8bb004009887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22a56980_cc318984",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-27T01:06:27Z",
+      "side": 1,
+      "message": "This looks a bit redundant?",
+      "range": {
+        "startLine": 982,
+        "startChar": 4,
+        "endLine": 982,
+        "endChar": 7
+      },
+      "revId": "50780b4fa54b29ea225ced76528e8bb004009887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
