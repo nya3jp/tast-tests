@@ -99,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bd106d3_9d155ab2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-09-27T16:03:11Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "dde0bf20_00775c3d",
+      "range": {
+        "startLine": 392,
+        "startChar": 2,
+        "endLine": 392,
+        "endChar": 36
+      },
+      "revId": "3a2232420d047eb7052d5618bc3dc49df71020d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74734b42_c19ecb45",
@@ -136,6 +160,30 @@
       "side": 1,
       "message": "I\u0027m doing three pings:\n1) Ping router AP, \u003cwlan\u003e interface (this ensures wireless connection is OK)\n2) Ping router AP, \u003ceth\u003e interface (this checks that forwarding is done properly)\n3) Ping pcap AP, \u003ceth\u003e interface (this verifies the cable is connected and the link is configured properly).\n\nI\u0027d rather keep it that way, as at the end of the day, it is the DUT\u003c-\u003ePCAP traffic flow that matters.\n\nThat being said, I like the idea of hints in error messages, I will update the code.",
       "parentUuid": "74734b42_c19ecb45",
+      "range": {
+        "startLine": 476,
+        "startChar": 1,
+        "endLine": 476,
+        "endChar": 48
+      },
+      "revId": "3a2232420d047eb7052d5618bc3dc49df71020d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d9a44ed_735eed6f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-09-27T16:03:11Z",
+      "side": 1,
+      "message": "Ok, I\u0027m happy with that.",
+      "parentUuid": "24b8cc76_e17bd123",
       "range": {
         "startLine": 476,
         "startChar": 1,
