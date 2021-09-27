@@ -22,6 +22,30 @@
       },
       "revId": "2e43d9af62f949ad21f40ba666682b1f3e07d0a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ab74ce1_a37a25bc",
+        "filename": "src/chromiumos/tast/local/chrome/ui/mouse/mouse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-27T03:23:18Z",
+      "side": 0,
+      "message": "Ah. Never mind. Other CLs were alredy submitted. Good job!",
+      "parentUuid": "6f77f7cd_938d44ed",
+      "range": {
+        "startLine": 1,
+        "startChar": 47,
+        "endLine": 1,
+        "endChar": 53
+      },
+      "revId": "2e43d9af62f949ad21f40ba666682b1f3e07d0a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
