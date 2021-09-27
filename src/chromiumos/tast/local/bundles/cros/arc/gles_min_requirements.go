@@ -30,9 +30,9 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GLESMinRequirements,
 		Desc:         "Checks whether the OpenGL ES minimun requirements are satisfied",
-		Contacts:     []string{"ricardo@chromium.org", "arc-gaming+tast@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
+		Contacts:     []string{"ricardoq@chromium.org", "arc-gaming+tast@google.com"},
+		Attr:         []string{"group:mainline"},
+		SoftwareDeps: []string{"chrome", "no_qemu"},
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
