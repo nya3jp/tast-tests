@@ -23,6 +23,7 @@ import (
 const (
 	youtubePkg                   = "com.google.android.youtube"
 	playerViewID                 = youtubePkg + ":id/player_view"
+	optionsDialogID              = youtubePkg + ":id/bottom_sheet_list_view"
 	uiWaitTime                   = 15 * time.Second // this is for arc-obj, not for uiauto.Context
 	waitTimeAfterClickPlayerView = 3 * time.Second
 )
@@ -160,6 +161,16 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 
 		startTime := time.Now()
 		if err := testing.Poll(ctx, func(context.Context) error {
+			// The playerView cannot be found/clicked when the options dialog (used for selecting quality) is present.
+			// Press "Esc" to dismiss the options dialog, if present.
+			optionsDialog := y.d.Object(androidui.ID(optionsDialogID))
+			if err := optionsDialog.Exists(ctx); err == nil {
+				if err := y.kb.AccelAction("Esc")(ctx); err != nil {
+					return errors.Wrap(err, "failed to press Esc to dismiss existing options dialog before clicking 'More options' button")
+				}
+				testing.ContextLog(ctx, "Dismissed existing options dialog before clicking 'More options' button")
+			}
+
 			playerView := y.d.Object(androidui.ID(playerViewID))
 			if err := cuj.FindAndClick(playerView, uiWaitTime)(ctx); err != nil {
 				return errors.Wrap(err, "failed to find/click the player view on switch quality")
