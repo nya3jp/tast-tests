@@ -111,7 +111,6 @@ fad3ea9c2911a7bd3e92dac63a00b2afbf0453ed
 15c235f85dbec4a3568f46c7a1b97f4a1832ac6a
 1f0fc1e5c1000180b48892aa283f163e0d28132c
 389ea3bd2db54033d80e046b76e79adda09e5016
-824f609ea50e2c2cd161cb64758c95c0e114ce6e
 a5b4439d910b7d90345304431d9d9faecaf47686
 d6e4dd59a9b708895738b9cc59e6bdcb3a43ff14
 3c2bc6358072ede0f11b
@@ -123,26 +122,13 @@ ae488dc136a4cc6ba32b
 b282b65c2c68492df769
 98be80110b9043885626
 
-# kasan: GPF could be caused by NULL-ptr deref or user memory access (on octopus).
-# 15c235f85dbec4a3568f46c7a1b97f4a1832ac6a
-# f690f901034c9e96038f9c5fa539f614023dc087
-
-# WARNING: CPU: 1 PID: 10366 at lib/debugobjects.c:488 debug_print_object+0x155/0x1bc
-# from __tun_chr_ioctl (on octopus).
-# 62fd75d1e63266d74869565ae225732095d75396
+# BUG: unable to handle kernel paging request at kvm_arch_vcpu_create
+824f609ea50e2c2cd161cb64758c95c0e114ce6e
 
 # Fixed by b97f07458373 ("KVM: x86: determine if an exception has an error code only when injecting it.").
 # 4c9043f20d7397012c9bc1652ab381104a706004
 # 7c53ccce361435608a7596592038dc845293ede5
 # 4d7de0e6a195b6a5ffef01d2776e737a52c7de60
-
-# WARNING: CPU: 2 PID: 3600 at net/bluetooth/hci_core.c:1477 hci_dev_do_open+0x4fd/0x6d6
-# 70cbd1b4257a8631183e
-# 24107bdc68de466d5c18
-# 3b3b94e0b7309423adfc
-# 05017ad275a64a3246f8
-# 7f064ba1704c2466e36d
-# d98704e1f65e44589b68
 
 # WARNING in handle_ept_misconfig
 # Fix is to remove the WARN; see 95e057e25892 and 2c151b25441a.
@@ -154,44 +140,11 @@ b282b65c2c68492df769
 # 77c67c409dad0ba32099
 # 0a54a840b5c4790624a7
 
-# Causes OOM on VM.
-# b4f9b1a41ad57a31a9e3b50c71145c971f51f8a5
-
-# reboot chunk 1 (further testing required)
-# b2aafe337dc5a8a0cda9575fd53ba960ad614c31
-# b67fcc95c0d84ea5424813a0d8703fc5c06de7ee
+# WARNING in free_loaded_vmcs
 # b72c8498b69ebcb93ac1605aa8e231e271dc0798
 
-# reboot chunk 2 (further testing required)
 # 48416b0e063ad24428bf04ec2da5b59711dc0eb3
 # 48781c4af80aa18724ffca7a0be2e8055dfd5315
-# 498f56aa693f8736a6a9d6e0e6afb1fe50f6f070
-# 4e78ae6b12b00b9d1042
-# 4f1db8b5e7dfcca55e20931aec0ee707c5cafc99
-
-# reboot chunk 3 (further testing required)
-# 232223b1e1dc405ba8ca60125d643ea8bbeb65ac
-# 243010a29bc1a503159df5f1991c30581ccb84f5
-# 29b67450152e0c106ab336b5bf3ccd58a91ecc62
-# 2a7156e11dc199bdbd8a
 # 2afe818b234569241b469b331e67da4a1b4ee2a7
-
-# reboot chunk 4 (further testing required)
-# 4f8082ccbdf77d79a3e26f7fbc83fe6403894674
-# 3df32ec144d7fabbe9ccba77061f554cab333794
-# 468f8d1f46c226b866012cf6a770a70547ed9d24
-# 516667c144d77aa5ba3c
-# 3f29ca2efb056a761e38
-# 59cd93bc8960efdbae86
-# 5199b695d40ee67d4754c9f4c2e7c7a59256bd8d
-# 362bfe15351ccf1c9e3424b7bdd953f4657e717a
-# a36047e10146d93e3a5a
-# f196caa45793d6374707
-# be95cda1773d91aa53b69916d76dc5a9e0b59eeb
-# d57ba39d3d527e3e1b1ad4fe390a47844f0b8a04
 # 7a4919b3b2bb049b59d5d26996456bda9f12b081
-# 705f4401d5a93a59b87d
 # 60ff874c7b251129e028c90b5d4926c5b3fccbe2
-# 72577251ea933ab8600c
-# 5a4cda7115c3d035542a2618140c8c1d9b68b7c2
-# 59eb3e7dfa79860df27c
