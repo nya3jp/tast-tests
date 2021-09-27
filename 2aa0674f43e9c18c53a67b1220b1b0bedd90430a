@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f10eeae_07a9bf35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-09-27T19:10:03Z",
+      "side": 1,
+      "message": "Hello Sarthak, please help me check if the general direction of this CL is OK. More CLs coming soon. Thank you.",
+      "revId": "2aa0674f43e9c18c53a67b1220b1b0bedd90430a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
