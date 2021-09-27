@@ -627,23 +627,31 @@ func ShowHotseat(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
-// PinAppFromShelf pins an open app on the shelf using the context menu.
+// UpdateAppPinFromShelf pins or unpins an app shown in the shelf using the context menu.
 // The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
-func PinAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName string) error {
+func UpdateAppPinFromShelf(ctx context.Context, tconn *chrome.TestConn, appName string, pin bool) error {
 	// Find the icon from shelf.
 	icon := nodewith.Name(appName).ClassName(shelfIconClassName)
-	option := nodewith.Name("Pin").ClassName("MenuItemView")
+
+	var action string
+	if pin {
+		action = "Pin"
+	} else {
+		action = "Unpin"
+	}
+
+	option := nodewith.Name(action).ClassName("MenuItemView")
 	ac := uiauto.New(tconn)
 	return uiauto.Combine(
-		"click icon and then click pin",
+		"click icon and then click "+action,
 		ac.RightClick(icon),
 		ac.LeftClick(option),
 	)(ctx)
 }
 
-// PinAppFromHotseat pins an open app on the hotseat using the context menu.
+// UpdateAppPinFromHotseat pins or unpins an app shown in the hotseat using the context menu.
 // The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
-func PinAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName string) error {
+func UpdateAppPinFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName string, pin bool) error {
 	// Get touch controller for tablet.
 	tsew, tcc, err := touch.NewTouchscreenAndConverter(ctx, tconn)
 	if err != nil {
@@ -665,10 +673,17 @@ func PinAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName stri
 		return errors.Wrap(err, "failed to initialize the touch context")
 	}
 
+	var action string
+	if pin {
+		action = "Pin"
+	} else {
+		action = "Unpin"
+	}
+
 	return uiauto.Combine(
-		"open the menu and tap the pin menu",
+		"open the menu and tap the "+action+" menu",
 		tc.LongPress(nodewith.Name(appName).ClassName(shelfIconClassName)),
-		tc.Tap(nodewith.Name("Pin").ClassName("MenuItemView")),
+		tc.Tap(nodewith.Name(action).ClassName("MenuItemView")),
 	)(ctx)
 }
 
