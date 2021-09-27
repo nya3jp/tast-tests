@@ -14,7 +14,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/vm/audioutils"
@@ -30,10 +29,6 @@ const (
 	bufferSize         int    = 8192
 )
 
-type loopbackLatencyConfig struct {
-	deviceArgs []string
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AudioLoopbackLatency,
@@ -45,14 +40,19 @@ func init() {
 		SoftwareDeps: []string{"vm_host", "dlc", "chrome"},
 		Fixture:      "vmDLC",
 		Params: []testing.Param{{
-			Name: "virtio_cras_snd",
-			Val: loopbackLatencyConfig{
-				deviceArgs: []string{"--cras-snd", "capture=true,socket_type=legacy"},
+			Name: "virtio_cras",
+			Val: audioutils.Config{
+				CrosvmArgs: []string{"--cras-snd", "capture=true,socket_type=legacy"},
+			},
+		}, {
+			Name: "vhost_user_cras",
+			Val: audioutils.Config{
+				VhostUserArgs: []string{"cras-snd", "--config", "capture=true,socket_type=legacy"},
 			},
 		}, {
 			Name: "ac97",
-			Val: loopbackLatencyConfig{
-				deviceArgs: []string{"--ac97", "backend=cras,capture=true,socket_type=legacy"},
+			Val: audioutils.Config{
+				CrosvmArgs: []string{"--ac97", "backend=cras,capture=true,socket_type=legacy"},
 			},
 		}},
 	})
@@ -126,7 +126,7 @@ func extractNumbers(strs []string) ([]float64, error) {
 }
 
 func AudioLoopbackLatency(ctx context.Context, s *testing.State) {
-	config := s.Param().(loopbackLatencyConfig)
+	config := s.Param().(audioutils.Config)
 
 	unload, err := audio.LoadAloop(ctx)
 	if err != nil {
@@ -151,12 +151,8 @@ func AudioLoopbackLatency(ctx context.Context, s *testing.State) {
 		loopbackLogPath,
 	}
 
-	cmd, err := audioutils.CrosvmCmd(ctx, data.Kernel, kernelLogPath, kernelArgs, config.deviceArgs)
+	err = audioutils.RunCrosvm(ctx, data.Kernel, kernelLogPath, kernelArgs, config)
 	if err != nil {
-		s.Fatal("Failed to get crosvm cmd: ", err)
-	}
-
-	if err = cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to run crosvm: ", err)
 	}
 
