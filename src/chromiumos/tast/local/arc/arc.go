@@ -130,7 +130,7 @@ func Type() (t InstallType, ok bool) {
 // those resources.
 type ARC struct {
 	device       *adb.Device   // ADB device to communicate with ARC
-	outDir       string        // directory for log files. This becomes empty after ARC.saveLogFiles().
+	outDir       string        // directory for log files. This becomes empty after ARC.SaveLogFiles().
 	logcatCmd    *testexec.Cmd // process saving Android logs
 	logcatWriter dynamicWriter // writes output from logcatCmd to logcatFile
 	logcatFile   *os.File      // file currently being written to
@@ -143,7 +143,7 @@ func (a *ARC) Close(ctx context.Context) error {
 		panic("Do not call Close while precondition is being used")
 	}
 	var errs []error
-	if err := a.saveLogFiles(ctx); err != nil {
+	if err := a.SaveLogFiles(ctx); err != nil {
 		errs = append(errs, err)
 	}
 	if err := a.cleanUpLogcatFile(); err != nil {
@@ -315,8 +315,8 @@ func checkSoftwareDeps(ctx context.Context) error {
 	return errors.Errorf("test must declare at least one of Android software dependencies %v", androidDeps)
 }
 
-// resetOutDir updates the outDir field of ARC object.
-func (a *ARC) resetOutDir(ctx context.Context, outDir string) error {
+// ResetOutDir updates the outDir field of ARC object.
+func (a *ARC) ResetOutDir(ctx context.Context, outDir string) error {
 	a.outDir = outDir
 	if err := a.setLogcatFile(filepath.Join(a.outDir, logcatName)); err != nil {
 		return err
@@ -616,8 +616,8 @@ func GetState(ctx context.Context, tconn *chrome.TestConn) (State, error) {
 	return state, nil
 }
 
-// saveLogFiles writes log files to the a.outDir directory and clears the a.outDir.
-func (a *ARC) saveLogFiles(ctx context.Context) error {
+// SaveLogFiles writes log files to the a.outDir directory and clears the a.outDir.
+func (a *ARC) SaveLogFiles(ctx context.Context) error {
 	if a.outDir == "" {
 		return nil
 	}
