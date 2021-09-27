@@ -9,11 +9,15 @@ import (
 	"math/rand"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
 )
 
@@ -34,6 +38,11 @@ func init() {
 			// The action filter regular expression. Only action names match
 			// the filter will be stressed.
 			"action_filter",
+			// The list of comma separated actions(more than 1 action) that will be stressed.
+			// In a single iteration, these actions will be stressed in the same order as given.
+			"action_sequence",
+			// Optional. Expecting "tablet".
+			"mode",
 		},
 		Params: []testing.Param{{
 			Name:              "real",
@@ -94,6 +103,7 @@ func stringVar(s *testing.State, name, defaultValue string) string {
 }
 
 func CCAUIStress(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(cca.FixtureData).Chrome
 	app := s.FixtValue().(cca.FixtureData).App()
 	tb := s.FixtValue().(cca.FixtureData).TestBridge()
 	s.FixtValue().(cca.FixtureData).SetDebugParams(cca.DebugParams{SaveScreenshotWhenFail: true})
@@ -110,9 +120,42 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to compile action_filter as a regexp")
 	}
+	actionSequences := strings.Split(stringVar(s, "action_sequence", ""), ",")
 
 	seed := intVar(s, "seed", defaultSeed)
 	rand.Seed(int64(seed))
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+	var tabletMode bool
+	if mode, ok := s.Var("mode"); ok {
+		tabletMode = mode == "tablet"
+		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+		if err != nil {
+			s.Fatalf("Failed to enable tablet mode to %v: %v", tabletMode, err)
+		}
+		defer cleanup(cleanupCtx)
+	} else {
+		// Use default screen mode of the DUT.
+		tabletMode, err = ash.TabletModeEnabled(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get DUT default screen mode: ", err)
+		}
+	}
+	s.Log("Running test with tablet mode: ", tabletMode)
+	if tabletMode {
+		cleanup, err := display.RotateToLandscape(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to rotate display to landscape: ", err)
+		}
+		defer cleanup(cleanupCtx)
+	}
 
 	// TODO(b/182248415): Add variables to control per action parameters, like
 	// how many photo should be taken consecutively or how long the video
@@ -145,6 +188,18 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 				return err
 			},
 		},
+		{
+			name: "switch-photo",
+			perform: func(c context.Context) error {
+				return app.SwitchMode(ctx, cca.Photo)
+			},
+		},
+		{
+			name: "switch-video",
+			perform: func(c context.Context) error {
+				return app.SwitchMode(ctx, cca.Video)
+			},
+		},
 	}
 
 	numCameras, err := app.GetNumOfCameras(ctx)
@@ -161,9 +216,21 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 	}
 
 	var actions []stressAction
-	for _, action := range allActions {
-		if actionFilter.MatchString(action.name) {
-			actions = append(actions, action)
+
+	if len(actionSequences) > 1 {
+		for _, actionSeq := range actionSequences {
+			for _, action := range allActions {
+				if string(actionSeq) == action.name {
+					actions = append(actions, action)
+					break
+				}
+			}
+		}
+	} else {
+		for _, action := range allActions {
+			if actionFilter.MatchString(action.name) {
+				actions = append(actions, action)
+			}
 		}
 	}
 
@@ -172,16 +239,27 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 	// TODO(b/182248415): Clear camera/ folder periodically, otherwise the disk
 	// might be full after running many iterations.
 	for i := 1; i <= iterations; i++ {
-		action := actions[rand.Intn(len(actions))]
-		if i <= skipIterations {
-			// We still need to call rand.Intn() to advance the internal state of PRNG.
-			continue
+		if len(actionSequences) > 1 {
+			for _, action := range actions {
+				s.Logf("Iteration %d/%d: Performing action %s", i, iterations, action.name)
+				actionCtx, actionCancel := context.WithTimeout(ctx, actionTimeout)
+				defer actionCancel()
+				if err := action.perform(actionCtx); err != nil {
+					s.Fatalf("Failed to perform action %v: %v", action.name, err)
+				}
+			}
+		} else {
+			action := actions[rand.Intn(len(actions))]
+			if i <= skipIterations {
+				// We still need to call rand.Intn() to advance the internal state of PRNG.
+				continue
+			}
+			s.Logf("Iteration %d/%d: Performing action %s", i, iterations, action.name)
+			actionCtx, actionCancel := context.WithTimeout(ctx, actionTimeout)
+			defer actionCancel()
+			if err := action.perform(actionCtx); err != nil {
+				s.Fatalf("Failed to perform action %v: %v", action.name, err)
+			}
 		}
-		s.Logf("Iteration %d/%d: Performing action %s", i, iterations, action.name)
-		actionCtx, actionCancel := context.WithTimeout(ctx, actionTimeout)
-		if err := action.perform(actionCtx); err != nil {
-			s.Fatalf("Failed to perform action %v: %v", action.name, err)
-		}
-		actionCancel()
 	}
 }
