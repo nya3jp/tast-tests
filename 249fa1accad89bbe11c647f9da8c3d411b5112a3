@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22ba56eb_ed32aaff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-09-27T19:22:45Z",
+      "side": 1,
+      "message": "No, based on seeing Alt+VolUp+h this seems to be testing \"EC hibernate\". It\u0027s unfortunate that the names collide. I think Daisuke is working on standardizing our power state naming, and is leaning towards PG3 for this \"EC hibernate\" state.",
+      "parentUuid": "2641872b_5b58f9c7",
+      "revId": "249fa1accad89bbe11c647f9da8c3d411b5112a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a9ad0e2_b68308ee",
