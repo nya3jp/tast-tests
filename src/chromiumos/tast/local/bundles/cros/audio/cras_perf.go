@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/audio/device"
+	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/local/profiler"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
@@ -175,6 +176,7 @@ func crasPerfOneIteration(ctx context.Context, s *testing.State, pid int, pv *pe
 
 func CrasPerf(ctx context.Context, s *testing.State) {
 	const (
+		crasPath   = "/usr/bin/cras"
 		iterations = 10
 	)
 
@@ -205,14 +207,13 @@ func CrasPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait for any output or input device: ", err)
 		}
 
-		pid, err := audio.GetCRASPID()
-		s.Log("Get PID done: ", pid)
-
+		proc, err := procutil.FindUnique(procutil.ByExe(crasPath))
 		if err != nil {
 			s.Fatal("Failed to find PID of cras: ", err)
 		}
 
-		crasPerfOneIteration(ctx, s, pid, pv)
+		s.Log("Get PID done: ", proc.Pid)
+		crasPerfOneIteration(ctx, s, int(proc.Pid), pv)
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
