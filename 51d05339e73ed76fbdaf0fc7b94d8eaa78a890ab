@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1886bddd_5b9c58ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-09-27T21:35:27Z",
+      "side": 1,
+      "message": "Friendly ping for tast review from deanliao@",
+      "revId": "51d05339e73ed76fbdaf0fc7b94d8eaa78a890ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
