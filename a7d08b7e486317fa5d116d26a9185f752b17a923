@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "126d937f_d97e23f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2021-09-27T22:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea1f32f7_4572a078",
+      "revId": "a7d08b7e486317fa5d116d26a9185f752b17a923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df4897db_ce66d289",
@@ -84,6 +102,24 @@
       "writtenOn": "2021-09-22T04:39:02Z",
       "side": 1,
       "message": "We can be more precise: the expected root device size is (in MB, to avoid 32 bit boundaries:\necho $(( $(cat /sys/block/$(basename $(rootdev -s -d))/size) / 2 / 1024 ))",
+      "revId": "a7d08b7e486317fa5d116d26a9185f752b17a923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c105ab6f_88822529",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2021-09-27T22:00:59Z",
+      "side": 1,
+      "message": "The spaced interface returns uint64 anyway so it\u0027s good to check against that. Added code for expected root device size.",
+      "parentUuid": "df4897db_ce66d289",
       "revId": "a7d08b7e486317fa5d116d26a9185f752b17a923",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e84df040_cd7070b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2021-09-27T22:00:59Z",
+      "side": 1,
+      "message": "Done (used statfs() instead).",
+      "parentUuid": "3001c1f6_b1ded244",
+      "revId": "a7d08b7e486317fa5d116d26a9185f752b17a923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d6732d2_e41db5d7",
@@ -118,6 +172,24 @@
       "writtenOn": "2021-09-22T04:39:02Z",
       "side": 1,
       "message": "df -PBM /mnt/stateful_partition/ | tail -1 | sed \u0027s/ \\+/ /g\u0027 | cut -d \u0027 \u0027 -f 4",
+      "revId": "a7d08b7e486317fa5d116d26a9185f752b17a923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcac1722_f400743b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2021-09-27T22:00:59Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "1d6732d2_e41db5d7",
       "revId": "a7d08b7e486317fa5d116d26a9185f752b17a923",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
