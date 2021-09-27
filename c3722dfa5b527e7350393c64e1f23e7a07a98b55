@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be2d2672_d23685e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-27T18:44:51Z",
+      "side": 1,
+      "message": "Resolved merge conflict and uploaded new patch. ",
+      "revId": "c3722dfa5b527e7350393c64e1f23e7a07a98b55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
