@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e28ef187_f4d89506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2021-09-27T22:26:15Z",
+      "side": 1,
+      "message": "it\u0027s an arbitrary margin so that tests don\u0027t flake out if we have some cleanup in the interim.",
+      "parentUuid": "31252acb_de1a09fd",
+      "revId": "9ccc8a839da1c2e8bee7566f85639c03bc5cfa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b1ba9fa_5f99392a",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6322e4c_970ce00d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2021-09-27T22:26:15Z",
+      "side": 1,
+      "message": "mainly checking for overflow/invalid values: freeDiskSpace can be less than  expectedFreeDiskSpace - spaceMarginBytes eg. if the underlying thinpool doesn\u0027t have enough space.",
+      "parentUuid": "7b1ba9fa_5f99392a",
+      "revId": "9ccc8a839da1c2e8bee7566f85639c03bc5cfa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a3b7fac_f3d58218",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-09-27T22:19:27Z",
       "side": 1,
       "message": "See above, and space around \u0027+\u0027 [unless gofmt says otherwise].",
+      "revId": "9ccc8a839da1c2e8bee7566f85639c03bc5cfa7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a447890_de77e83e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/spaced.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2021-09-27T22:26:15Z",
+      "side": 1,
+      "message": "same as above, we want to make sure that the total disk space provided by spaced never exceeds the filesystem\u0027s value; it can be lower though (eg. if a filesystem is set up with a size greater than the underlying thinpool).\n\ngofmt says no space (which was surprising for me too!).",
+      "parentUuid": "2a3b7fac_f3d58218",
       "revId": "9ccc8a839da1c2e8bee7566f85639c03bc5cfa7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
