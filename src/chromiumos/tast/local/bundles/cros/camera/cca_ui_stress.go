@@ -9,6 +9,7 @@ import (
 	"math/rand"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
@@ -33,6 +34,9 @@ func init() {
 			// The action filter regular expression. Only action names match
 			// the filter will be stressed.
 			"action_filter",
+			// The action sequence regular expression. Only action names match
+			// the filter will be stressed.
+			"action_sequence",
 		},
 		Params: []testing.Param{{
 			Name:              "real",
@@ -109,6 +113,11 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to compile action_filter as a regexp")
 	}
+	actionSequence := stringVar(s, "action_sequence", "")
+	var actionSequences []string
+	if actionSequence != "" {
+		actionSequences = strings.Split(actionSequence, ",")
+	}
 
 	seed := intVar(s, "seed", defaultSeed)
 	rand.Seed(int64(seed))
@@ -160,8 +169,15 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 	}
 
 	var actions []stressAction
+
 	for _, action := range allActions {
-		if actionFilter.MatchString(action.name) {
+		if actionSequence != "" {
+			for _, actionSeq := range actionSequences {
+				if string(actionSeq) == action.name {
+					actions = append(actions, action)
+				}
+			}
+		}else if actionFilter.MatchString(action.name) {
 			actions = append(actions, action)
 		}
 	}
@@ -171,16 +187,27 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 	// TODO(b/182248415): Clear camera/ folder periodically, otherwise the disk
 	// might be full after running many iterations.
 	for i := 1; i <= iterations; i++ {
-		action := actions[rand.Intn(len(actions))]
-		if i <= skipIterations {
-			// We still need to call rand.Intn() to advance the internal state of PRNG.
-			continue
+		if actionSequence != "" {
+			for _, action := range actions {
+				s.Logf("Iteration %d/%d: Performing action %s", i, iterations, action.name)
+				actionCtx, actionCancel := context.WithTimeout(ctx, actionTimeout)
+				if err := action.perform(actionCtx); err != nil {
+					s.Fatalf("Failed to perform action %v: %v", action.name, err)
+				}
+				actionCancel()
+			}
+		}else {
+			action := actions[rand.Intn(len(actions))]
+			if i <= skipIterations {
+				// We still need to call rand.Intn() to advance the internal state of PRNG.
+				continue
+			}
+			s.Logf("Iteration %d/%d: Performing action %s", i, iterations, action.name)
+			actionCtx, actionCancel := context.WithTimeout(ctx, actionTimeout)
+			if err := action.perform(actionCtx); err != nil {
+				s.Fatalf("Failed to perform action %v: %v", action.name, err)
+			}
+			actionCancel()
 		}
-		s.Logf("Iteration %d/%d: Performing action %s", i, iterations, action.name)
-		actionCtx, actionCancel := context.WithTimeout(ctx, actionTimeout)
-		if err := action.perform(actionCtx); err != nil {
-			s.Fatalf("Failed to perform action %v: %v", action.name, err)
-		}
-		actionCancel()
 	}
 }
