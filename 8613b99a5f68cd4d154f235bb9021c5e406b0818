@@ -16,6 +16,24 @@
       "message": "revert?",
       "revId": "8613b99a5f68cd4d154f235bb9021c5e406b0818",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74745e50_7c25218b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/drag_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-27T07:27:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b0e9355_d3a38dc8",
+      "revId": "8613b99a5f68cd4d154f235bb9021c5e406b0818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
