@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4f64821_4484834c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-27T05:10:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f5b93bda_e5b34b7a",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dc88950_58066514",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-20T07:29:42Z",
       "side": 1,
       "message": "Nit: make indent consistent between all params",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c8efbd_4d7ab5e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-27T05:10:09Z",
+      "side": 1,
+      "message": "Test cases move to different tests as per comment in L51.",
+      "parentUuid": "0dc88950_58066514",
       "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17b3dcb4_32e0ebd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-27T05:10:09Z",
+      "side": 1,
+      "message": "As per comment in L51, function moved to library \"brightness\".",
+      "parentUuid": "5467a9f4_f7a78aa7",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2244f30d_5668831d",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
         "patchSetId": 2
@@ -65,6 +119,24 @@
       "writtenOn": "2021-09-20T07:29:42Z",
       "side": 1,
       "message": "Why is ctx in the parameters here? It\u0027s never used (also, the variable is captured by default)",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58cf292a_a0d209f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-27T05:10:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2244f30d_5668831d",
       "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c41f5d5e_30924936",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-27T05:10:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "32db4122_15a8ea43",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3c80ce3_72f8019e",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-09-20T07:29:42Z",
       "side": 1,
       "message": "Don\u0027t think you need this line. LeftClick calls Location under the hood, which waits for the node to exist.\nhttps://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/4eb1c8764803debaa828311eaaf8f458f458987b:src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d220;drc\u003d0ca8b18d2322b9b8533f28b69973c2e95d673980",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "100f418d_cc9df657",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-27T05:10:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f3c80ce3_72f8019e",
       "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +230,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "425d0eac_4efffa46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-27T05:10:09Z",
+      "side": 1,
+      "message": "As status tray toggler is always visible, we cannot perform WaitUntilGone(statusTray).",
+      "parentUuid": "07f4dbfd_4f600750",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be69dfff_8299d515",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
         "patchSetId": 2
@@ -133,6 +259,24 @@
       "writtenOn": "2021-09-20T07:29:42Z",
       "side": 1,
       "message": "Use for level :\u003d 0; level \u003c brightnessLevels; level++ instead. constructing an array of empty things adds confusion (and the variable level doesn\u0027t contain anything meaningful, as readers might expect it to).",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44535c01_525c246d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-27T05:10:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be69dfff_8299d515",
       "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +298,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7afce37_8fb0fb67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-27T05:10:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e0ab822_7a610b55",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa187eba_d84496a7",
@@ -167,6 +329,24 @@
       "writtenOn": "2021-09-20T07:29:42Z",
       "side": 1,
       "message": "Turn brightnessCmd into an array, and run testexec.CommandContext(ctx, brightnessCmd...)?",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "538d17b8_64befd02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-27T05:10:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aa187eba_d84496a7",
       "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
