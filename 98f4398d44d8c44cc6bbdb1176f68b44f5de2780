@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9243c165_5b501b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-27T23:54:52Z",
+      "side": 1,
+      "message": "nit: Not sure if this was taken verbatim from elsewhere, but\nwe could move this to an \n  async Initialize() \n  \nfunction and then use\n  await fetch()",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92a8ddd8_06d988a5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
         "patchSetId": 4
@@ -152,6 +175,29 @@
         "startChar": 2,
         "endLine": 125,
         "endChar": 14
+      },
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8d7ef81_44830931",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-27T23:54:52Z",
+      "side": 1,
+      "message": "nit: s/nalu/NALU/? Same in l.133.",
+      "range": {
+        "startLine": 129,
+        "startChar": 9,
+        "endLine": 129,
+        "endChar": 13
       },
       "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
