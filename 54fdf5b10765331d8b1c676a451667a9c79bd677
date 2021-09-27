@@ -51,6 +51,24 @@
       "parentUuid": "5000627e_030a3e58",
       "revId": "54fdf5b10765331d8b1c676a451667a9c79bd677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c48e523_509b1f34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-27T07:17:13Z",
+      "side": 1,
+      "message": "From https://stainless.corp.google.com/search?first_date\u003d2021-09-21\u0026last_date\u003d2021-09-27\u0026owner\u003d\u0026builder_name\u003d\u0026master_builder_name\u003d\u0026branch\u003d\u0026suite\u003d\u0026declared_name\u003d\u0026test\u003d\u0026build\u003d%5ER96%5C-14244%5C.0%5C.0%24\u0026board\u003d%5Eatlas%24\u0026model\u003d%5Eatlas%24\u0026shard\u003d\u0026hostname\u003d\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026reason\u003dvmDLC%3A%20Failed%20to%20install%20DLC%3A%20failed%20to%20install%3A%20context%20deadline%20exceeded\u0026exclude_reason\u003d\u0026retry\u003d\u0026task_reference_type\u003d\u0026firmware_ro_version\u003d\u0026firmware_rw_version\u003d\u0026buildbucket_id\u003d\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026view\u003dlist\n\n```\n/mnt/stateful_partition/var_overlay/cache/dlc-images\n|-- libsoda\n|   `-- package\n|       `-- dlc.img\n|-- libsoda-model-en-us\n|   `-- package\n|       `-- dlc.img\n|-- pita\n|   `-- package\n|       `-- dlc.img\n|-- sample-dlc\n|   `-- package\n|       `-- dlc.img\n`-- termina-dlc\n    `-- package\n        `-- dlc.img\n```\n\nThe only thing that I can think of is the 10s timeout of the dlc fixture.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/vm/dlc/fixture.go;l\u003d44?q\u003dfixture.go%20dlc%20p:chromeos_.*\n\nLet\u0027s give 1 minute a try?",
+      "parentUuid": "23b34378_22ffe21c",
+      "revId": "54fdf5b10765331d8b1c676a451667a9c79bd677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
