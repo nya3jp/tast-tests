@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/remote/bundles/cros/lacros/version"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/lacros"
-	proto "chromiumos/tast/services/cros/lacros"
+	lacrosservice "chromiumos/tast/services/cros/lacros"
 	"chromiumos/tast/testing"
 )
 
@@ -47,7 +47,7 @@ func UpdateRootfsToStateful(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to DUT: ", err)
 	}
 	defer conn.Close(ctx)
-	utsClient := proto.NewUpdateTestServiceClient(conn.Conn)
+	utsClient := lacrosservice.NewUpdateTestServiceClient(conn.Conn)
 
 	// Bump up the major version of Stateful Lacros to be newer than of Rootfs
 	// one in order to simulate the desired test scenario (Rootfs => Stateful).
@@ -80,9 +80,10 @@ func UpdateRootfsToStateful(ctx context.Context, s *testing.State) {
 }
 
 // getRootfsLacrosVersion returns the version of Lacros Chrome in the Rootfs partition.
-func getRootfsLacrosVersion(ctx context.Context, dut *dut.DUT, utsClient proto.UpdateTestServiceClient) (version.Version, error) {
-	req := &proto.GetBrowserVersionRequest{
-		Browser: proto.BrowserType_LACROS_ROOTFS,
+// TODO(hyungtaekim): Move the function to a common place for other tests.
+func getRootfsLacrosVersion(ctx context.Context, dut *dut.DUT, utsClient lacrosservice.UpdateTestServiceClient) (version.Version, error) {
+	req := &lacrosservice.GetBrowserVersionRequest{
+		Browser: lacrosservice.BrowserType_LACROS_ROOTFS,
 	}
 	res, err := utsClient.GetBrowserVersion(ctx, req)
 	if err != nil {
@@ -93,6 +94,7 @@ func getRootfsLacrosVersion(ctx context.Context, dut *dut.DUT, utsClient proto.U
 }
 
 // provisionLacrosFromRootfsImage calls a RPC to the TLS to provision Stateful Lacros from Rootfs Lacros.
+// TODO(hyungtaekim): Move the function to a common place for other tests.
 func provisionLacrosFromRootfsImage(ctx context.Context, tlsAddr string, dut *dut.DUT, overrideVersion, overrideComponent string) error {
 	tlsClient, err := provision.Dial(ctx, tlsAddr)
 	if err != nil {
@@ -107,25 +109,26 @@ func provisionLacrosFromRootfsImage(ctx context.Context, tlsAddr string, dut *du
 }
 
 // verifyLacrosUpdate calls a RPC to the test service to verify the provisioned Lacros update is installed and selected in runtime on a DUT as expected.
+// TODO(hyungtaekim): Move the function to a common place for other tests.
 func verifyLacrosUpdate(ctx context.Context, overrideVersion, overrideComponent string, utsClient lacros.UpdateTestServiceClient) error {
 	// Build browser contexts for a test request.
-	ashCtx := &proto.BrowserContext{
-		Browser: proto.BrowserType_ASH,
+	ashCtx := &lacrosservice.BrowserContext{
+		Browser: lacrosservice.BrowserType_ASH,
 		Opts: []string{
 			"--enable-features=LacrosSupport",
 			"--component-updater=url-source=" + bogusComponentUpdaterURL, // Block Component Updater.
 		},
 	}
-	lacrosCtx := &proto.BrowserContext{
-		Browser: proto.BrowserType_LACROS_STATEFUL,
+	lacrosCtx := &lacrosservice.BrowserContext{
+		Browser: lacrosservice.BrowserType_LACROS_STATEFUL,
 	}
 
 	// Send a test request to the DUT.
 	res, err := utsClient.VerifyUpdate(ctx,
-		&proto.VerifyUpdateRequest{
+		&lacrosservice.VerifyUpdateRequest{
 			AshContext:               ashCtx,
-			ProvisionedLacrosContext: []*proto.BrowserContext{lacrosCtx},
-			ExpectedBrowser:          proto.BrowserType_LACROS_STATEFUL,
+			ProvisionedLacrosContext: []*lacrosservice.BrowserContext{lacrosCtx},
+			ExpectedBrowser:          lacrosservice.BrowserType_LACROS_STATEFUL,
 			ExpectedVersion:          overrideVersion,
 			ExpectedComponent:        overrideComponent,
 			UseUi:                    true,
@@ -133,15 +136,16 @@ func verifyLacrosUpdate(ctx context.Context, overrideVersion, overrideComponent 
 	if err != nil {
 		return errors.Wrap(err, "verifyLacrosUpdate: failed to verify version on Lacros")
 	}
-	if res.Result.Status != proto.TestResult_PASSED {
+	if res.Result.Status != lacrosservice.TestResult_PASSED {
 		return errors.Wrapf(err, "verifyLacrosUpdate: returns test failure status: %v", res.Result)
 	}
 	return nil
 }
 
 // clearLacrosUpdate calls a RPC to the test service to remove provisioned Lacros and reset to the previous state.
-func clearLacrosUpdate(ctx context.Context, utsClient proto.UpdateTestServiceClient) error {
-	if _, err := utsClient.ClearUpdate(ctx, &proto.ClearUpdateRequest{}); err != nil {
+// TODO(hyungtaekim): Move the function to a common place for other tests.
+func clearLacrosUpdate(ctx context.Context, utsClient lacrosservice.UpdateTestServiceClient) error {
+	if _, err := utsClient.ClearUpdate(ctx, &lacrosservice.ClearUpdateRequest{}); err != nil {
 		return errors.Wrap(err, "clearLacrosUpdate: failed to clear provisioned Lacros")
 	}
 	return nil
