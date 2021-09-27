@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af05f76c_825be912",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/shutdown_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-27T17:22:31Z",
+      "side": 1,
+      "message": "group:firmware firmware_experimental is probably a better set of attributes.",
+      "range": {
+        "startLine": 44,
+        "startChar": 26,
+        "endLine": 44,
+        "endChar": 57
+      },
+      "revId": "d552cacd27f31395b18f0a5c47f49da06476b5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "625e33b4_910dc10e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/shutdown_mode.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-27T17:22:31Z",
+      "side": 1,
+      "message": "You can use h.Servo instead",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 21
+      },
+      "revId": "d552cacd27f31395b18f0a5c47f49da06476b5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
