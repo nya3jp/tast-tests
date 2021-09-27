@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/session"
@@ -21,9 +22,95 @@ import (
 // cryptohome instead.
 const localPassword = "test0000"
 
-// errLoginRetry is used to indicate the GAIA login procedure is currently at the retry page
-// and should be retried.
+// errLoginRetry is used to indicate the GAIA login procedure is currently
+// at the retry page and should be retried.
 var errLoginRetry = errors.New("login needs retry")
+
+// Prefix of the prod GAIA sign in url.
+const prodGAIASignInURLPrefix = "https://accounts.google.com/"
+const stagingGAIASignInURLPrefix = "https://gaiastaging.corp.google.com/"
+
+// isGAIASignInURL checks if the given URL string is for GAIA sign in.
+func isGAIASignInURL(u string) bool {
+	return strings.HasPrefix(u, prodGAIASignInURLPrefix) ||
+		strings.HasPrefix(u, stagingGAIASignInURLPrefix)
+}
+
+// waitForWebViewOptions is the argument list for the waitForSingleGAIAWebView
+// function.
+type waitForWebViewOptions struct {
+	Context context.Context
+	Session *driver.Session
+	// TargetMatcher: a "(t *driver.Target) bool" function that evaluates if the
+	// WebView in the *driver.Target is the desired WebView that
+	// waitForSingleGAIAWebView is looking for.
+	TargetMatcher cdputil.TargetMatcher
+	// PollingOptions: the waitForSingleGAIAWebView function will poll until
+	// a single WebView target matching the TargetMatcher function is found, or
+	// until timeout.
+	PollingOptions *testing.PollOptions
+}
+
+// waitForSingleGAIAWebView waits until it finds a WebView target matching the
+// specified requirements, or until timeout. Returns an error if the function
+// finds more than one target matching the requirements.
+// Used by automation to identify the correct GAIA WebView targets on the
+// ChromeOS oobe. ChromeOS oobe typically have multiple different GAIA WebView
+// targets simultaneously.
+func waitForSingleGAIAWebView(opt waitForWebViewOptions) (*driver.Target, error) {
+	testing.ContextLog(opt.Context, "Waiting for GAIA webview")
+	var target *driver.Target
+	if err := testing.Poll(opt.Context, func(ctx context.Context) error {
+		if targets, err := opt.Session.FindTargets(ctx, opt.TargetMatcher); err != nil {
+			return err
+		} else if len(targets) != 1 {
+			return errors.Errorf("got %d GAIA targets; want 1", len(targets))
+		} else {
+			target = targets[0]
+			return nil
+		}
+	}, opt.PollingOptions); err != nil {
+		return nil, errors.Wrap(opt.Session.Watcher().ReplaceErr(err),
+			"GAIA webview not found")
+	}
+
+	return target, nil
+}
+
+// MatchSignInGAIAWebView returns a function that matches GAIA sign in webview
+// targets. The strategy for identifying a GAIA sign in target is copied from
+// the Catapult telemetry project's oobe.py script.
+func MatchSignInGAIAWebView(ctx context.Context, sess *driver.Session) cdputil.TargetMatcher {
+	return func(t *driver.Target) bool {
+		if t.Type != "webview" || !isGAIASignInURL(t.URL) {
+			return false
+		}
+
+		gaiaConn, err := sess.NewConnForTarget(ctx, driver.MatchTargetID(t.TargetID))
+		if err != nil {
+			return false
+		}
+		defer gaiaConn.Close()
+
+		isGAIA := false
+		jsEval := fmt.Sprintf(`
+		(function () {
+			bases = document.getElementsByTagName('base');
+			if (bases.length == 0) {
+				return false;
+			}
+      href = bases[0].href;
+      return (href.indexOf(%q) == 0 ||
+          href.indexOf(%q) == 0);
+		})()
+		`, prodGAIASignInURLPrefix, stagingGAIASignInURLPrefix)
+		if err = gaiaConn.Eval(ctx, jsEval, &isGAIA); err != nil {
+			return false
+		}
+
+		return isGAIA
+	}
+}
 
 // performGAIALogin waits for and interacts with the GAIA webview to perform login.
 // This function is heavily based on NavigateGaiaLogin() in Catapult's
@@ -67,23 +154,14 @@ func performGAIALogin(ctx context.Context, cfg *config.Config, sess *driver.Sess
 		}
 	}
 
-	isGAIAWebView := func(t *driver.Target) bool {
-		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
-	}
-
-	testing.ContextLog(ctx, "Waiting for GAIA webview")
-	var target *driver.Target
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if targets, err := sess.FindTargets(ctx, isGAIAWebView); err != nil {
-			return err
-		} else if len(targets) != 1 {
-			return errors.Errorf("got %d GAIA targets; want 1", len(targets))
-		} else {
-			target = targets[0]
-			return nil
-		}
-	}, pollOpts); err != nil {
-		return errors.Wrap(sess.Watcher().ReplaceErr(err), "GAIA webview not found")
+	target, err := waitForSingleGAIAWebView(waitForWebViewOptions{
+		Context:        ctx,
+		Session:        sess,
+		TargetMatcher:  MatchSignInGAIAWebView(ctx, sess),
+		PollingOptions: pollOpts,
+	})
+	if err != nil {
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "failed to find GAIA webview")
 	}
 
 	gaiaConn, err := sess.NewConnForTarget(ctx, driver.MatchTargetID(target.TargetID))
