@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c74bc591_902b35cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1150472
+      },
+      "writtenOn": "2021-09-27T19:01:31Z",
+      "side": 1,
+      "message": "This was a todo from the original demo (e.g. \"This step is left as an exercise for the reader\"). If your test video files don\u0027t have config changes, then it\u0027s fine to remove it here and not file a bug.",
+      "parentUuid": "92a8ddd8_06d988a5",
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cad4c8bd_9a018233",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
         "patchSetId": 4
@@ -48,6 +66,24 @@
       "writtenOn": "2021-09-27T18:46:48Z",
       "side": 1,
       "message": "File a bug for this or it will get lost.",
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d239a085_424bc3fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1150472
+      },
+      "writtenOn": "2021-09-27T19:01:31Z",
+      "side": 1,
+      "message": "Same comment here. This comment can be removed, or at least the \"TODO\" part.",
+      "parentUuid": "d51af0fc_026bc530",
       "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
