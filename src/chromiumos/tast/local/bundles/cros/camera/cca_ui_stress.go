@@ -144,6 +144,19 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 				return err
 			},
 		},
+		{
+			name: "restart-app-take-photo",
+			perform: func(ctx context.Context) error {
+				if err := app.Restart(ctx, tb); err != nil {
+					return err
+				}
+				if err = app.SwitchMode(ctx, cca.Photo); err != nil {
+					return err
+				}
+				_, err := app.TakeSinglePhoto(ctx, cca.TimerOff)
+				return err
+			},
+		},
 	}
 
 	numCameras, err := app.GetNumOfCameras(ctx)
