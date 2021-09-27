@@ -16,6 +16,46 @@
       "message": "Vin FYI.",
       "revId": "eae8a6c597adc6a6757314623a591ed95429dceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0413456_1d040714",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-27T18:13:16Z",
+      "side": 1,
+      "message": "Sorry! I was out sick. Still LGTM % a minor check. Do you need a Googler to give you the CQ+2?",
+      "revId": "eae8a6c597adc6a6757314623a591ed95429dceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec5a9254_d94ebab8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-27T18:13:16Z",
+      "side": 1,
+      "message": "Maybe also check that deviceType \u003d\u003d expectedAudioNode as a sanity check.",
+      "range": {
+        "startLine": 155,
+        "startChar": 5,
+        "endLine": 155,
+        "endChar": 15
+      },
+      "revId": "eae8a6c597adc6a6757314623a591ed95429dceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

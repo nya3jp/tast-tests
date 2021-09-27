@@ -196,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84bd7e6e_67855400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-27T18:13:16Z",
+      "side": 1,
+      "message": "I\u0027m fine if you add me (andrescj@google.com) and chromeos-gfx-video@google.com.",
+      "parentUuid": "ec46d09b_bc4b1bbe",
+      "revId": "2eee4b61214ef19e0bd6e5a0eb2b71132d2d533a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11047843_103450e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
         "patchSetId": 6
