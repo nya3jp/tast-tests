@@ -69,6 +69,24 @@
       "parentUuid": "23b34378_22ffe21c",
       "revId": "54fdf5b10765331d8b1c676a451667a9c79bd677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2fda521_82c37e69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-27T17:45:06Z",
+      "side": 1,
+      "message": "b/200637442#comment5, yes 1 minute should resolve this.\n\nIf you look at the pastebin log, it does infact preload the DLC, just not enough time is given for the fixture.",
+      "parentUuid": "4c48e523_509b1f34",
+      "revId": "54fdf5b10765331d8b1c676a451667a9c79bd677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
