@@ -154,16 +154,6 @@ func PhysicalKeyboardKoreanTyping(ctx context.Context, s *testing.State) {
 				keyboard.TypeAction("jfs1")),
 			ExpectedText: "않",
 		},
-		{
-			// Note: Options other than 2 set are supported at low priority. In fact,
-			// these examples may not be even correct, but these tests will still detect
-			// any change in behavior.
-			TestName: "Romaja",
-			InputFunc: uiauto.Combine("type in 3 set no shift",
-				setKoreanInputType(tconn, cr, "Romaja / 로마자"),
-				keyboard.TypeAction("romaja")),
-			ExpectedText: "로마자",
-		},
 	}
 
 	var inputField = testserver.TextAreaInputField
