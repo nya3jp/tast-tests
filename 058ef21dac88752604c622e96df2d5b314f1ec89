@@ -22,6 +22,30 @@
       },
       "revId": "058ef21dac88752604c622e96df2d5b314f1ec89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7177aa20_55a593c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2021-09-27T05:39:19Z",
+      "side": 1,
+      "message": "yes, there\u0027s a termina_logs.txt in the right folder and it has correctly timestamped logs in it",
+      "parentUuid": "e92f99d2_ee5ee818",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "058ef21dac88752604c622e96df2d5b314f1ec89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
