@@ -158,6 +158,24 @@
       "parentUuid": "5ecfa601_47e8069b",
       "revId": "2bd7756b79ae7271c5eb80feef8fa1410a48ccf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5306078_36ef8833",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/unicorn_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-09-27T16:38:28Z",
+      "side": 1,
+      "message": "There was a core Tast issue unrelated to these tests. It looks like the issue has been resolved. I\u0027m happy to wait 20 days until all the builds are green again.",
+      "parentUuid": "2b455862_fa7484fd",
+      "revId": "2bd7756b79ae7271c5eb80feef8fa1410a48ccf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
