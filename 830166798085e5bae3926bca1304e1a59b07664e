@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2389351_4f2aa793",
+        "filename": "src/chromiumos/tast/local/media/encoding/quality.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-27T09:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d91a5e08_03e2b964",
+      "range": {
+        "startLine": 38,
+        "startChar": 52,
+        "endLine": 38,
+        "endChar": 68
+      },
+      "revId": "830166798085e5bae3926bca1304e1a59b07664e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86520db1_d98b4b40",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59ec98ae_88bad9f7",
+        "filename": "src/chromiumos/tast/local/media/encoding/quality.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-27T09:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86520db1_d98b4b40",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 54
+      },
+      "revId": "830166798085e5bae3926bca1304e1a59b07664e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36192eec_ad175ff2",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-09-27T05:40:03Z",
       "side": 1,
       "message": "nit: createPublicTempFile to make this package private.",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 25
+      },
+      "revId": "830166798085e5bae3926bca1304e1a59b07664e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e69caf00_5c7cd0ba",
+        "filename": "src/chromiumos/tast/local/media/encoding/temp_file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-27T09:55:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36192eec_ad175ff2",
       "range": {
         "startLine": 16,
         "startChar": 5,
