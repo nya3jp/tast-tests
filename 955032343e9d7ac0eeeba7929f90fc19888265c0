@@ -135,6 +135,30 @@
       },
       "revId": "955032343e9d7ac0eeeba7929f90fc19888265c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc01fc1c_405ad585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_open_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1359085
+      },
+      "writtenOn": "2021-09-27T01:59:47Z",
+      "side": 1,
+      "message": "I tried to combin, \n\nif err :\u003d uiauto.Combine(\"restore files app\",\n                        // Click SETTINGS on the restore notification.\n                        ui.LeftClick(settingsButton),\n                        ui.WaitUntilGone(alertDialog),\n                        ash.WaitForApp(ctx, tconn, apps.Settings.ID, time.Minute),\n                        \n                        // Confirm that the Settings apps page is open.\n                        uiauto.New(tconn).WaitUntilExists(nodewith.Name(\"Apps\").Role(role.Heading).Ancestor(ossettings.WindowFinder)),\n\n                        // After clicking the SETTINGS button, the notification is hidden in the system tray.\n                        // Show the quick settings to find the notification.\n                        quicksettings.Show(ctx, tconn),\n                 \n                        ui.LeftClick(nodewith.Name(\"RESTORE\").Role(role.Button)),\n                        ui.WaitUntilGone(nodewith.Name(\"RESTORE\").Role(role.Button)),\n\n                        ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.WindowType \u003d\u003d ash.WindowTypeBrowser }))(ctx); err !\u003dnul {\n                        s.Fatal(\"Failed to restore browser: \", err)\n                }\n                \nThen I got error:\n2021-09-27T01:56:22.283691Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/apps/full_restore_open_settings.go:94:18: cannot use ash.WaitForApp(ctx, tconn, apps.Settings.ID, time.Minute) (type error) as type func(context.Context) error in argument to uiauto.Combine\n2021-09-27T01:56:22.283717Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/apps/full_restore_open_settings.go:101:22: cannot use quicksettings.Show(ctx, tconn) (type error) as type func(context.Context) error in argument to uiauto.Combine\n2021-09-27T01:56:22.283735Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/apps/full_restore_open_settings.go:104:21: undefined: restoreButton\n2021-09-27T01:56:22.283752Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/apps/full_restore_open_settings.go:106:18: multiple-value ash.FindWindow() in single-value context\n2021-09-27T01:56:22.283771Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/apps/full_restore_open_settings.go:106:119: undefined: nul\n2021-09-27T01:56:22.307550Z Failed to run tests: failed to build and push: failed to prepare primary DUT localhost:2201: build failed: failed to build chromiumos/tast/local/bundles/cros: exit status 2\n\n\nSee the above code. I feel combine just makes things confused. So I don\u0027t think we should combine here.\n\nIf it\u0027s just simple operation, then it might be fine to combine, but there are many operations here, so I feel combine is really hard to read/understand.",
+      "parentUuid": "c2cbd2b7_ec73cbab",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "955032343e9d7ac0eeeba7929f90fc19888265c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
