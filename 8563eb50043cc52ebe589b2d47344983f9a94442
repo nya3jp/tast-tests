@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e41aee_cdc48c86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/pin_app_to_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-27T23:59:33Z",
+      "side": 1,
+      "message": "nit: it\u0027s more idiomatic in Go to return an error here and use that to handle the case where the item was not found:\nhttps://golang.org/doc/effective_go#multiple-returns",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 10
+      },
+      "revId": "8563eb50043cc52ebe589b2d47344983f9a94442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
