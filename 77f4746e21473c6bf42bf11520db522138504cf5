@@ -310,6 +310,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d82f2f3d_059471a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-27T19:12:14Z",
+      "side": 1,
+      "message": "I wouldn\u0027t mind if this were under video/. The problem is that some of the videocuj tests do overlap non-trivially with ui. For example, see the metrics measured by one of the other tests [1].\n\nTherefore, it may make sense to have a separate folder just for videocuj.\n\n[1] https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/dc65556e0f75ae549255b8f16d5c73a2caeb58c8:src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go;l\u003d174-185;drc\u003d04f0942cb0ea8c441ff27df691caf3f5970ec18e",
+      "parentUuid": "e4025dcc_a58df638",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e209ad35_b45d6d42",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
         "patchSetId": 1
@@ -345,6 +369,30 @@
       "side": 1,
       "message": "@Alex Levin, Can you please suggest someone from Google?",
       "parentUuid": "e209ad35_b45d6d42",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 100
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14027048_dfda846a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-27T19:12:14Z",
+      "side": 1,
+      "message": "You can add me (andrescj@google.com) and chromeos-gfx-video@google.com.",
+      "parentUuid": "b29b1204_1350a5a9",
       "range": {
         "startLine": 29,
         "startChar": 26,

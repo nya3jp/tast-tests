@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2404bf1c_56f498b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-09-27T19:12:14Z",
+      "side": 0,
+      "message": "Why did this go away? Is it because you want to open in multiple tabs instead of multiple windows? But wouldn\u0027t that affect existing tests?",
+      "range": {
+        "startLine": 58,
+        "startChar": 47,
+        "endLine": 58,
+        "endChar": 71
+      },
+      "revId": "eae8a6c597adc6a6757314623a591ed95429dceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
