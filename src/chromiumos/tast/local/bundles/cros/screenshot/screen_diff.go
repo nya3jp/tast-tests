@@ -27,6 +27,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         screenshot.ScreenDiffVars,
+		VarDeps:      screenshot.ScreenDiffVarDeps,
 	})
 }
 
@@ -97,7 +98,7 @@ func takeScreenshots(ctx context.Context, d screenshot.Differ) error {
 	if err := expectError(
 		d.Diff(ctx, "filesApp", nodewith.First())(ctx),
 		"screenshot has already been taken"); err != nil {
-		return errors.Wrap(err, "sending the same diff twice succeeded: ")
+		return errors.Wrap(err, "sending the same diff twice succeeded")
 	}
 	return nil
 }

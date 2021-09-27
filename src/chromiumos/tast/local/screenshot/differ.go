@@ -41,9 +41,14 @@ const screendiffDryrunVar = "screendiff.dryrun"
 const goldServiceAccountKeyVar = "goldctl.GoldServiceAccountKey"
 const goldServiceAccountKeyFile = "/tmp/gold_service_account_key.json"
 
+// ScreenDiffVarDeps contains a list of all variables used by the screendiff
+// that are required for the test to run.
+var ScreenDiffVarDeps = []string{
+	goldServiceAccountKeyVar,
+}
+
 // ScreenDiffVars contains a list of all variables used by the screendiff library.
 var ScreenDiffVars = []string{
-	goldServiceAccountKeyVar,
 	screendiffDebugVar,
 	screendiffDryrunVar,
 }
