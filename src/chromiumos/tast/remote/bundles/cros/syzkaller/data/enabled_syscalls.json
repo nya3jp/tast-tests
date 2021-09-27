@@ -742,5 +742,32 @@
 			"ioctl$DRM_IOCTL_MODE_GET_LEASE",
 			"ioctl$DRM_IOCTL_MODE_REVOKE_LEASE"
 		]
+	},
+	{
+		"driver": "devlink(CONFIG_NET_DEVLINK)",
+		"syscalls": [
+			"syz_genetlink_get_family_id$devlink",
+			"sendmsg$DEVLINK_CMD_GET",
+			"sendmsg$DEVLINK_CMD_RELOAD",
+			"sendmsg$DEVLINK_CMD_PORT_GET",
+			"sendmsg$DEVLINK_CMD_PORT_SET",
+			"sendmsg$DEVLINK_CMD_PORT_SPLIT",
+			"sendmsg$DEVLINK_CMD_PORT_UNSPLIT",
+			"sendmsg$DEVLINK_CMD_TRAP_GET",
+			"sendmsg$DEVLINK_CMD_TRAP_SET",
+			"sendmsg$DEVLINK_CMD_TRAP_GROUP_GET",
+			"sendmsg$DEVLINK_CMD_TRAP_GROUP_SET",
+			"sendmsg$DEVLINK_CMD_TRAP_POLICER_GET",
+			"sendmsg$DEVLINK_CMD_TRAP_POLICER_SET",
+			"sendmsg$DEVLINK_CMD_SB_GET",
+			"sendmsg$DEVLINK_CMD_SB_POOL_GET",
+			"sendmsg$DEVLINK_CMD_SB_POOL_SET",
+			"sendmsg$DEVLINK_CMD_SB_PORT_POOL_GET",
+			"sendmsg$DEVLINK_CMD_SB_PORT_POOL_SET",
+			"sendmsg$DEVLINK_CMD_SB_TC_POOL_BIND_GET",
+			"sendmsg$DEVLINK_CMD_SB_TC_POOL_BIND_SET",
+			"sendmsg$DEVLINK_CMD_SB_OCC_SNAPSHOT",
+			"sendmsg$DEVLINK_CMD_SB_OCC_MAX_CLEAR"
+		]
 	}
 ]
