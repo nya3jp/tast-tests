@@ -90,6 +90,9 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set DNS-over-HTTPS mode: ", err)
 	}
 
+	// Wait for the updated DoH mode to be propagated to the proxy.
+	testing.Sleep(ctx, 10*time.Second)
+
 	var domainDefault, domainDNSBlocked string
 	switch params.mode {
 	case dns.DoHOff:
