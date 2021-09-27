@@ -7,6 +7,8 @@ package lacros
 // Constants used by Lacros update remote test or test service.
 const (
 	LacrosRootComponentPath  = "/home/chronos/cros-components/"
+	CorruptStatefulFilePath  = "/mnt/stateful_partition/.corrupt_stateful"
 	RootfsLacrosImageFileURL = "file:///opt/google/lacros"
 	BogusComponentUpdaterURL = "http://localhost:12345"
+	VersionURL               = "chrome://version/"
 )
