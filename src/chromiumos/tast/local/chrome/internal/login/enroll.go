@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/shill"
@@ -20,26 +21,31 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// maxGAIAEnterpriseEnrollmentRetries is the maximum number of times to retry enrollment.
-// Enterprise enrollment may fail as a result of temporary server issues. Such failures are
-// recoverable. To bypass these one-off failures, automation functions will re-attempt
-// enrollment until consistent failure.
+// maxGAIAEnterpriseEnrollmentRetries is the maximum number of times to retry
+// enrollment.
+// Enterprise enrollment may fail as a result of temporary server issues. Such
+// failures are recoverable. To bypass these one-off failures, automation
+// functions will re-attempt enrollment until consistent failure.
 const maxGAIAEnterpriseEnrollmentRetries = 3
 
-// gaiaEnterpriseEnrollmentTimeout is the maximum amount of time to wait for enrollment to succeed.
+// gaiaEnterpriseEnrollmentTimeout is the maximum amount of time to wait for enrollment to
+// succeed.
 const gaiaEnterpriseEnrollmentTimeout = 3 * time.Minute
 
-//  domainRe is a regex used to obtain the domain (without top level domain) out of an email string.
+//  domainRe is a regex used to obtain the domain (without top level domain)
+//  out of an email string.
 //  e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome] and
 //  ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2]
 var domainRe = regexp.MustCompile(`^[^@]+@([^@]+)\.[^.@]*$`)
 
-//  fullDomainRe is a regex used to obtain the full domain (with top level domain) out of an email string.
+//  fullDomainRe is a regex used to obtain the full domain (with top level
+//  domain) out of an email string.
 //  e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome.com] and
 //  ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2.com]
 var fullDomainRe = regexp.MustCompile(`^[^@]+@([^@]+)$`)
 
-// userDomain will return the "domain" section (without top level domain) of user.
+// userDomain will return the "domain" section (without top level domain) of
+// user.
 // e.g. something@managedchrome.com will return "managedchrome"
 // or x@domainp1.domainp2.com would return "domainp1domainp2"
 func userDomain(user string) (string, error) {
@@ -51,7 +57,8 @@ func userDomain(user string) (string, error) {
 	return strings.Replace(m[1], ".", "", -1), nil
 }
 
-// fullUserDomain will return the full "domain" (including top level domain) of user.
+// fullUserDomain will return the full "domain" (including top level domain) of
+// user.
 // e.g. something@managedchrome.com will return "managedchrome.com"
 // or x@domainp1.domainp2.com would return "domainp1.domainp2.com"
 func fullUserDomain(user string) (string, error) {
@@ -63,24 +70,24 @@ func fullUserDomain(user string) (string, error) {
 	return m[1], nil
 }
 
-// enterpriseEnrollTargets returns the Gaia WebView targets, which are used
-// to help enrollment on the device.
+// findEnrollmentTargets returns the Gaia WebView targets, that are used to
+// help enrollment on the device.
 // Returns nil if none are found.
-func enterpriseEnrollTargets(ctx context.Context, sess *driver.Session, userDomain string) ([]*driver.Target, error) {
+func findEnrollmentTargets(ctx context.Context, sess *driver.Session, userDomain string) ([]*driver.Target, error) {
 	isGAIAWebView := func(t *driver.Target) bool {
-		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
+		return t.Type == "webview" && isGAIASignInURL(t.URL)
 	}
 
-	targets, err := sess.FindTargets(ctx, isGAIAWebView)
+	ts, err := sess.FindTargets(ctx, isGAIAWebView)
 	if err != nil {
 		return nil, err
 	}
 
 	// It's common for multiple targets to be returned.
 	// We want to run the command specifically on the "apps" target.
-	var enterpriseTargets []*driver.Target
-	for _, target := range targets {
-		u, err := url.Parse(target.URL)
+	var targets []*driver.Target
+	for _, t := range ts {
+		u, err := url.Parse(t.URL)
 		if err != nil {
 			continue
 		}
@@ -94,32 +101,64 @@ func enterpriseEnrollTargets(ctx context.Context, sess *driver.Session, userDoma
 			if strings.Contains(clientID, "apps.googleusercontent.com") &&
 				strings.Contains(managedDomain, userDomain) &&
 				strings.Contains(flowName, "SetupChromeOs") {
-				enterpriseTargets = append(enterpriseTargets, target)
+				targets = append(targets, t)
 			}
 		}
 	}
 
-	return enterpriseTargets, nil
+	return targets, nil
+}
+
+// matchTargetDomains returns a function that matches only the GAIA WebView
+// target for post-enrollment enterprise account sign in.
+// Used by test automation to distinguish between multiple GAIA webview
+// targets in the OOBE after enterprise enrollment.
+func matchTargetDomains(ctx context.Context, sess *driver.Session, fullDomain, userDomain string) cdputil.TargetMatcher {
+	return func(t *driver.Target) bool {
+		// First, check if the webview is a valid GAIA sign in target.
+		if !MatchSignInGAIAWebView(ctx, sess)(t) {
+			return false
+		}
+
+		// Next, check that the webview url has the right set of query parameters.
+		u, err := url.Parse(t.URL)
+		if err != nil {
+			return false
+		}
+
+		q := u.Query()
+		clientID := q.Get("client_id")
+		managedDomain := q.Get("manageddomain")
+		flowName := q.Get("flowName")
+
+		if !strings.Contains(clientID, "apps.googleusercontent.com") ||
+			!strings.Contains(managedDomain, userDomain) ||
+			!strings.Contains(flowName, "SetupChromeOs") {
+			return false
+		}
+
+		// Finally, check that the webview has a login banner with the enrolled
+		// enterprise's full domain.
+		loginBanner := fmt.Sprintf(`document.querySelectorAll('span[title=%q]').length;`, fullDomain)
+
+		conn, err := sess.NewConnForTarget(ctx, driver.MatchTargetID(t.TargetID))
+		if err != nil {
+			return false
+		}
+		defer conn.Close()
+		content := -1
+		if err := conn.Eval(ctx, loginBanner, &content); err != nil {
+			return false
+		}
+		return content == 1
+	}
 }
 
 // waitForEnrollmentLoginScreen waits for the Enrollment screen to complete
-// and the Enrollment login screen to appear. If the login screen does not appear
-// testing.Poll times out.
+// and the Enrollment login screen to appear. If the login screen does not
+// appear testing.Poll times out.
 func waitForEnrollmentLoginScreen(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
 	testing.ContextLog(ctx, "Waiting for enrollment login screen")
-	user := cfg.EnrollmentCreds().User
-
-	fullDomain, err := fullUserDomain(user)
-	if err != nil {
-		return errors.Wrap(err, "no valid full user domain found")
-	}
-	loginBanner := fmt.Sprintf(`document.querySelectorAll('span[title=%q]').length;`,
-		fullDomain)
-
-	userDomain, err := userDomain(user)
-	if err != nil {
-		return errors.Wrap(err, "no valid user domain found")
-	}
 
 	// Wait for the enrollment OOBE page to disappear.
 	if err := waitForPageWithPrefixToBeDismissed(ctx, sess, "chrome://oobe/oobe"); err != nil {
@@ -133,42 +172,31 @@ func waitForEnrollmentLoginScreen(ctx context.Context, cfg *config.Config, sess 
 	}
 	defer oobeConn.Close()
 
-	if err := oobeConn.WaitForExprWithTimeout(ctx,
-		"OobeAPI.screens.GaiaScreen.isReadyForTesting()", 10*time.Second); err != nil {
+	if err := oobeConn.WaitForExprWithTimeout(ctx, "OobeAPI.screens.GaiaScreen.isReadyForTesting()", 10*time.Second); err != nil {
 		return errors.Wrap(err, "the signin screen is not ready")
 	}
 
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		gaiaTargets, err := enterpriseEnrollTargets(ctx, sess, userDomain)
-		if err != nil {
-			return errors.Wrap(err, "no Enrollment webview targets")
-		}
-		for _, gaiaTarget := range gaiaTargets {
-			webViewConn, err := sess.NewConnForTarget(ctx, driver.MatchTargetURL(gaiaTarget.URL))
-			if err != nil {
-				// If an error occurs during connection, continue to try.
-				// Enrollment will only proceed if the eval below succeeds.
-				continue
-			}
-			defer webViewConn.Close()
-			content := -1
-			if err := webViewConn.Eval(ctx, loginBanner, &content); err != nil {
-				return err
-			}
-			// Found the login screen.
-			if content == 1 {
-				return nil
-			}
-		}
-		return errors.New("Enterprise Enrollment login screen not found")
-	}, &testing.PollOptions{Timeout: 45 * time.Second}); err != nil {
-		return err
+	user := cfg.EnrollmentCreds().User
+
+	fullDomain, err := fullUserDomain(user)
+	if err != nil {
+		return errors.Wrap(err, "no valid full user domain found")
 	}
 
+	userDomain, err := userDomain(user)
+	if err != nil {
+		return errors.Wrap(err, "no valid user domain found")
+	}
+
+	mt := matchTargetDomains(ctx, sess, fullDomain, userDomain)
+	if _, err := waitForSingleGAIAWebView(ctx, sess, mt, 45*time.Second); err != nil {
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "failed to find the enterprise sign-in GAIA webview")
+	}
 	return nil
 }
 
-// performFakeEnrollment performs enterprise enrollment with a fake, local device management server and wait for it to complete.
+// performFakeEnrollment performs enterprise enrollment with a fake, local
+// device management server and wait for it to complete.
 func performFakeEnrollment(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
 	ctx, st := timing.Start(ctx, "enroll")
 	defer st.End()
@@ -234,7 +262,8 @@ func performGAIAEnrollment(ctx context.Context, cfg *config.Config, sess *driver
 	return nil
 }
 
-// performGAIAEnrollmentSignIn performs GAIA enrollment using the given credentials.
+// performGAIAEnrollmentSignIn performs GAIA enrollment using the given
+// credentials.
 // Uses maxGAIAEnterpriseEnrollmentRetries as the retry count.
 // Uses gaiaEnterpriseEnrollmentTimeout as the timeout limit.
 func performGAIAEnrollmentSignIn(ctx context.Context, oobeConn *driver.Conn, creds config.Creds, sess *driver.Session) error {
@@ -244,15 +273,15 @@ func performGAIAEnrollmentSignIn(ctx context.Context, oobeConn *driver.Conn, cre
 			return testing.PollBreak(err)
 		}
 
-		if err := oobeConn.WaitForExprFailOnErr(ctx,
-			"OobeAPI.screens.EnterpriseEnrollmentScreen.successStep.isReadyForTesting()"); err == nil {
+		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.successStep.isReadyForTesting()"); err == nil {
 			if err := oobeConn.Eval(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.successStep.clickNext()", nil); err != nil {
 				return testing.PollBreak(errors.Wrap(err, "failed to click the enrollment done button"))
 			}
 			return nil
 		}
 
-		// Sometimes enrollment may fail due to one-off issues with the device management server.
+		// Sometimes enrollment may fail due to one-off issues with the device
+		// management server.
 		// Check if enrollment maybe retried.
 		var isOnErrorStep bool
 		if err := oobeConn.Eval(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.errorStep.isReadyForTesting()", &isOnErrorStep); err != nil {
@@ -289,6 +318,29 @@ func performGAIAEnrollmentSignIn(ctx context.Context, oobeConn *driver.Conn, cre
 	}, &testing.PollOptions{Timeout: gaiaEnterpriseEnrollmentTimeout, Interval: time.Millisecond})
 }
 
+// isEnrollmentWebView checks if the WebView in the specified driver.Target
+// is the enterprise enrollment WebView. Used by automation to distinguish
+// multiple WebView targets in ChromeOS's OOBE.
+func isEnrollmentWebView(t *driver.Target) bool {
+	if t.Type != "webview" || !isGAIASignInURL(t.URL) {
+		return false
+	}
+
+	u, err := url.Parse(t.URL)
+	if err != nil {
+		return false
+	}
+
+	q := u.Query()
+	flow := q.Get("flow")
+
+	if flow == "enterprise" {
+		return true
+	}
+
+	return false
+}
+
 // submitGAIAEnrollmentSignIn submits the enrollment GAIA credentials
 // (user email + password) through the GAIA webview on the OOBE enrollment page.
 func submitGAIAEnrollmentSignIn(ctx context.Context, oobeConn *driver.Conn, creds config.Creds, sess *driver.Session) error {
@@ -296,39 +348,12 @@ func submitGAIAEnrollmentSignIn(ctx context.Context, oobeConn *driver.Conn, cred
 		return errors.Wrap(err, "failed to wait for the OOBE enterprise enrollment signin screen to be ready")
 	}
 
-	// Get GaiaConn for automating login on the enrollment screen.
-	isGAIAWebView := func(t *driver.Target) bool {
-		return t.Type == "webview" && strings.HasPrefix(t.URL, "https://accounts.google.com/")
+	target, err := waitForSingleGAIAWebView(ctx, sess, isEnrollmentWebView, pollOpts.Timeout)
+	if err != nil {
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "failed to find GAIA webview")
 	}
 
-	testing.ContextLog(ctx, "Waiting for GAIA webview")
-	var enterpriseTarget *driver.Target
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		targets, err := sess.FindTargets(ctx, isGAIAWebView)
-		if err != nil {
-			return err
-		}
-		for _, target := range targets {
-			u, err := url.Parse(target.URL)
-			if err != nil {
-				continue
-			}
-
-			q := u.Query()
-			flow := q.Get("flow")
-
-			if flow == "enterprise" {
-				enterpriseTarget = target
-				return nil
-			}
-		}
-		return errors.New("could not find the enterprise enrollment Gaia login webview")
-
-	}, pollOpts); err != nil {
-		return errors.Wrap(sess.Watcher().ReplaceErr(err), "GAIA webview not found")
-	}
-
-	gaiaConn, err := sess.NewConnForTarget(ctx, driver.MatchTargetID(enterpriseTarget.TargetID))
+	gaiaConn, err := sess.NewConnForTarget(ctx, driver.MatchTargetID(target.TargetID))
 	if err != nil {
 		return errors.Wrap(sess.Watcher().ReplaceErr(err), "failed to connect to GAIA webview")
 	}
@@ -340,7 +365,6 @@ func submitGAIAEnrollmentSignIn(ctx context.Context, oobeConn *driver.Conn, cred
 
 	if err := oobeConn.Call(ctx, nil, "Oobe.clickGaiaPrimaryButtonForTesting"); err != nil {
 		return errors.Wrap(err, "failed to click on the primary action button")
-
 	}
 
 	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.signInStep.isReadyForTesting()"); err != nil {
@@ -356,8 +380,7 @@ func submitGAIAEnrollmentSignIn(ctx context.Context, oobeConn *driver.Conn, cred
 	}
 
 	testing.ContextLog(ctx, "Wait for enrollment to complete")
-	if err := oobeConn.WaitForExprFailOnErr(ctx,
-		"!OobeAPI.screens.EnterpriseEnrollmentScreen.isEnrollmentInProgress()"); err != nil {
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "!OobeAPI.screens.EnterpriseEnrollmentScreen.isEnrollmentInProgress()"); err != nil {
 		return errors.Wrap(err, "failed to wait for enrollment to complete")
 	}
 
