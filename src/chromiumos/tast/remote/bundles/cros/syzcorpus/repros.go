@@ -25,24 +25,38 @@ const (
 	kvmEnabledRepros = "kvm_x86_64.txt"
 )
 
+type testParam struct {
+	binariesZip string
+	reprosList  string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: KVMRepros,
-		Desc: "Test that runs KVM repros",
+		Func: Repros,
+		Desc: "Test that runs syzkaller repros",
 		Contacts: []string{
 			"zsm@chromium.org", // Test author
 			"chromeos-kernel@google.com",
 		},
 		Timeout: 30 * time.Minute,
 		Attr:    []string{"group:syzcorpus"},
-		Data:    []string{binKVMX64Zip, kvmEnabledRepros},
+		Params: []testing.Param{{
+			Val: testParam{
+				binariesZip: binKVMX64Zip,
+				reprosList:  kvmEnabledRepros,
+			},
+			ExtraData: []string{binKVMX64Zip, kvmEnabledRepros},
+		}},
 	})
 }
 
-// KVMRepros runs KVM syzkaller repros against the DUT.
-func KVMRepros(ctx context.Context, s *testing.State) {
+// Repros runs syzkaller repros against the DUT.
+func Repros(ctx context.Context, s *testing.State) {
 	start := time.Now()
 	d := s.DUT()
+
+	param := s.Param().(testParam)
+	s.Log("Running repros from: ", param.reprosList)
 
 	arch, err := syzutils.FindDUTArch(ctx, d)
 	if err != nil {
@@ -62,14 +76,14 @@ func KVMRepros(ctx context.Context, s *testing.State) {
 	}
 
 	// Read enabled repros.
-	enabledRepros, err := syzutils.LoadEnabledRepros(s.DataPath(kvmEnabledRepros))
+	enabledRepros, err := syzutils.LoadEnabledRepros(s.DataPath(param.reprosList))
 	if err != nil {
 		s.Fatal("Unable to load enabled repros: ", err)
 	}
 
 	// Extract corpus.
 	s.Log("Extracting syzkaller corpus")
-	if err := syzutils.ExtractCorpus(ctx, tastDir, s.DataPath(binKVMX64Zip)); err != nil {
+	if err := syzutils.ExtractCorpus(ctx, tastDir, s.DataPath(param.binariesZip)); err != nil {
 		s.Fatal("Encountered error fetching fuzz artifacts: ", err)
 	}
 	binDir := filepath.Join(tastDir, fmt.Sprintf("bin_kvm_%v", arch))
