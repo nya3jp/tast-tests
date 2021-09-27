@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3162d8f1_c1e61912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/data/sw.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-27T18:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "188a9a76_888221e7",
+      "range": {
+        "startLine": 12,
+        "startChar": 59,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "2c1babd5ace3a7bff1d67d6c46336789ec92e086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bda31e0_f42ad2e8",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-09-27T11:06:43Z",
       "side": 1,
       "message": "nit: Add comment on why ui interaction is required",
+      "revId": "2c1babd5ace3a7bff1d67d6c46336789ec92e086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20fd5ad9_292966cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/telemetry_extension.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-27T18:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bda31e0_f42ad2e8",
       "revId": "2c1babd5ace3a7bff1d67d6c46336789ec92e086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
