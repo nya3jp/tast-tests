@@ -169,6 +169,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "659b0e82_8a8cd99f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-09-27T02:17:02Z",
+      "side": 1,
+      "message": "\u003e OK can you add something to this effect in the CL desc so we can refer back to it? Thanks\n\nDone, thanks! Will track the result and update accordingly.\n\n\u003e Also, if this is an experiment, is 3 seconds pessimistic enough?\n\nUpdated to 10s to be pessimistic.",
+      "parentUuid": "fa3c06f2_04b0ea49",
+      "range": {
+        "startLine": 13,
+        "startChar": 50,
+        "endLine": 13,
+        "endChar": 61
+      },
+      "revId": "f6b69637d532ab7ad2ef87a8671a07f9cf4b2c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cef3bbd4_52a510ac",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
