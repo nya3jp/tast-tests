@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0016a6c3_9630a589",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1359085
+      },
+      "writtenOn": "2021-09-27T05:07:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db493820_1c2875e6",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "revId": "e404864ba60941944f7931167ca721b55e52eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e4705ae_fe76d0ec",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2776652d_b92de414",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1359085
+      },
+      "writtenOn": "2021-09-27T05:07:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e4705ae_fe76d0ec",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "e404864ba60941944f7931167ca721b55e52eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c92d1419_793933b2",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-09-27T00:39:44Z",
       "side": 1,
       "message": "Failed to restore the Settings app",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 54
+      },
+      "revId": "e404864ba60941944f7931167ca721b55e52eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f418269_56c322ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1359085
+      },
+      "writtenOn": "2021-09-27T05:07:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c92d1419_793933b2",
       "range": {
         "startLine": 107,
         "startChar": 12,
