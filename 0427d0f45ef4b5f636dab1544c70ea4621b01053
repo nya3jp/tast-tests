@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f216b0_1528453e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-27T07:30:15Z",
+      "side": 1,
+      "message": "nit: please move to another CL",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "0427d0f45ef4b5f636dab1544c70ea4621b01053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "622bd8fc_4ec4a547",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-09-27T03:22:05Z",
       "side": 1,
       "message": "PTAL, thanks!",
+      "revId": "0427d0f45ef4b5f636dab1544c70ea4621b01053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "015323cc_c8ba6fdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-27T07:30:15Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "0427d0f45ef4b5f636dab1544c70ea4621b01053",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
