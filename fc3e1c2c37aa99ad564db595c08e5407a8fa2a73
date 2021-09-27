@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5df68105_76f88d8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-09-27T09:54:51Z",
+      "side": 1,
+      "message": "\u003e \"manaul\" is a possible misspelling of \"manual\".\n\nPlease fix.",
+      "parentUuid": "16f55afe_31c67f0b",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "fc3e1c2c37aa99ad564db595c08e5407a8fa2a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0811deb0_c7164bf6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/camerabox_align.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-09-27T09:54:51Z",
+      "side": 1,
+      "message": "Do we need this? We already show this in L315",
+      "revId": "fc3e1c2c37aa99ad564db595c08e5407a8fa2a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
