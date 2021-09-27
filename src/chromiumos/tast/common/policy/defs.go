@@ -11763,11 +11763,7 @@ func (p *KerberosAddAccountsAllowed) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 type KerberosAccounts struct {
 	Stat Status
-	Val  []KerberosAccountsValueIf
-}
-
-type KerberosAccountsValueIf interface {
-	SetPassword(string)
+	Val  []*KerberosAccountsValue
 }
 
 type KerberosAccountsValue struct {
@@ -11776,19 +11772,6 @@ type KerberosAccountsValue struct {
 	Principal        string   `json:"principal"`
 	RememberPassword bool     `json:"remember_password"`
 }
-
-func (v *KerberosAccountsValue) SetPassword(password string) { v.Password = password }
-
-// The KerberosAccounts policy behaves differently when the Krb5conf field is
-// omitted compared to just passing an empty array. Therefore we need an
-// additional struct in which the field is omitted to cover that case.
-type KerberosAccountsValueOmitKrb5conf struct {
-	Password         string `json:"password"`
-	Principal        string `json:"principal"`
-	RememberPassword bool   `json:"remember_password"`
-}
-
-func (v *KerberosAccountsValueOmitKrb5conf) SetPassword(password string) { v.Password = password }
 
 func (p *KerberosAccounts) Name() string          { return "KerberosAccounts" }
 func (p *KerberosAccounts) Field() string         { return "" }
@@ -11803,14 +11786,14 @@ func (p *KerberosAccounts) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	return v, nil
 }
 func (p *KerberosAccounts) Equal(iface interface{}) bool {
-	v, ok := iface.([]KerberosAccountsValueIf)
+	v, ok := iface.([]*KerberosAccountsValue)
 	if !ok {
 		return ok
 	}
-	var sensitive []KerberosAccountsValueIf
+	var sensitive []*KerberosAccountsValue
 	for i := range p.Val {
 		cpy := p.Val[i]
-		cpy.SetPassword("********")
+		cpy.Password = "********"
 		sensitive = append(sensitive, cpy)
 	}
 	return cmp.Equal(sensitive, v)
