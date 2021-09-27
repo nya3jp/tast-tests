@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cef3bbd4_52a510ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-09-27T00:53:50Z",
+      "side": 1,
+      "message": "PTAL, thanks! I\u0027m still unable to repro the failures even with different envs and multiple retries, but it might be due to the settings not propagated properly.",
+      "revId": "f6b69637d532ab7ad2ef87a8671a07f9cf4b2c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
