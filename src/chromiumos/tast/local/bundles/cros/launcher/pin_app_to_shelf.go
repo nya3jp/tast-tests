@@ -123,9 +123,9 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 
 	// Pin the app that was just launched.
 	if tabletMode {
-		err = ash.PinAppFromHotseat(ctx, tconn, app5.Name)
+		err = ash.UpdateAppPinFromHotseat(ctx, tconn, app5.Name, true)
 	} else {
-		err = ash.PinAppFromShelf(ctx, tconn, app5.Name)
+		err = ash.UpdateAppPinFromShelf(ctx, tconn, app5.Name, true)
 	}
 	if err != nil {
 		s.Fatalf("Failed to pin app %q to shelf: %v", app5.Name, err)
@@ -148,6 +148,66 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 	if err = ash.LaunchAppFromShelf(ctx, tconn, app1.Name, app1.ID); err != nil {
 		s.Fatalf("Failed to run app %v: %v", app1.Name, err)
 	}
+
+	// Unpin a running app, and verify the app remains in shelf, but gets shifted to the right.
+	if tabletMode {
+		err = ash.UpdateAppPinFromHotseat(ctx, tconn, app1.Name, false)
+	} else {
+		err = ash.UpdateAppPinFromShelf(ctx, tconn, app1.Name, false)
+	}
+
+	if err != nil {
+		s.Fatalf("Failed to unpin app %q to shelf: %v", app1.Name, err)
+	}
+
+	// Save the latest position of each app on the shelf.
+	items, err := ash.ShelfItems(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the shelf items: ", err)
+	}
+	// Make sure the unpinned running app is positioned on the right of the most recently pinned app.
+	app1Index, err := getAppIndexInShelf(items, app1.Name)
+	if err != nil {
+		s.Fatalf("Unable to find %q, %v", app1.Name, err)
+	}
+
+	app5Index, err := getAppIndexInShelf(items, app5.Name)
+	if app5Index == -1 {
+		s.Fatalf("Unable to find %q, %v", app5.Name, err)
+	}
+
+	if app1Index < app5Index {
+		s.Fatalf("%q not moved after %q after unpinning", app1.Name, app5.Name)
+	}
+
+	// Unpin an app that's not running, and verify it gets removed from shelf.
+	if err := launcher.UnpinAppFromShelf(tconn, app3)(ctx); err != nil {
+		s.Fatalf("Failed to unpin app %q from shelf", app3.Name)
+	}
+
+	items, err = ash.ShelfItems(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the shelf items: ", err)
+	}
+
+	app3Index, err := getAppIndexInShelf(items, app3.Name)
+
+	if err == nil {
+		s.Fatalf("Found app \"%q\" in shelf at %d after it was unpinned", app3.Name, app3Index)
+	} else if err.Error() != "Not found" {
+		s.Fatal("Failed to search for app in shelf items: ", err)
+	}
+}
+
+// getAppIndexInShelf returns the index of an app with the provided name within shelf item list.
+func getAppIndexInShelf(items []*ash.ShelfItem, name string) (int, error) {
+	for index, item := range items {
+		if item.Title == name {
+			return index, nil
+		}
+	}
+
+	return -1, errors.New("Not found")
 }
 
 // pinApps pins a list of applications onto the shelf.

@@ -165,6 +165,17 @@ func PinAppToShelf(tconn *chrome.TestConn, app apps.App) uiauto.Action {
 	)
 }
 
+// UnpinAppFromShelf return a function that unpins an app from the shelf using a context menu in the expanded launcher UI.
+func UnpinAppFromShelf(tconn *chrome.TestConn, app apps.App) uiauto.Action {
+	ui := uiauto.New(tconn)
+	return uiauto.Combine(fmt.Sprintf("UnpinAppFromShelf(%+q)", app),
+		OpenExpandedView(tconn),
+		ui.FocusAndWait(AppItemViewFinder(app.Name)),
+		ui.RightClick(AppItemViewFinder(app.Name)),
+		ui.LeftClick(nodewith.Name("Unpin from shelf").ClassName("MenuItemView")),
+	)
+}
+
 // RenameFolder return a function that renames a folder to a new name.
 func RenameFolder(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, from, to string) uiauto.Action {
 	// Chrome add prefix "Folder " to all folder names in AppListItemView.
