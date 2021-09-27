@@ -159,6 +159,30 @@
       },
       "revId": "955032343e9d7ac0eeeba7929f90fc19888265c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3625c96a_798fd15c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_open_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-27T02:54:26Z",
+      "side": 1,
+      "message": "Oh, sorry, my bad, I did not notice there is a call to WaitForApp which could not be combined.",
+      "parentUuid": "bc01fc1c_405ad585",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "955032343e9d7ac0eeeba7929f90fc19888265c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
