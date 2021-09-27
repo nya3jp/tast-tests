@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70cba58f_19fba719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-27T06:28:51Z",
+      "side": 1,
+      "message": "I am not sure if Tast encourages this kind of logging. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\n\n@nya, could you please confirm?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 65
+      },
+      "revId": "1ab5758df82dea3d3e99ceeeff745a502d090241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
