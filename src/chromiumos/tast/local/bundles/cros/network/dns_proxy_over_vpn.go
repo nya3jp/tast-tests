@@ -129,6 +129,9 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to setup internet connectivity for VPN: ", err)
 	}
 
+	// Wait for the updated network configuration (VPN) to be propagated to the proxy.
+	testing.Sleep(ctx, 10*time.Second)
+
 	// By default, DNS query should work over VPN.
 	var defaultTC = []dns.ProxyTestCase{
 		{Client: dns.System},
