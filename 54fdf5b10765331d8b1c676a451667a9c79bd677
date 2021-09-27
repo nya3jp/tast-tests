@@ -33,6 +33,24 @@
       "message": "LGTM",
       "revId": "54fdf5b10765331d8b1c676a451667a9c79bd677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23b34378_22ffe21c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-27T00:32:14Z",
+      "side": 1,
+      "message": "\u003e Did the device you\u0027re testing on have DLC preloaded at `/var/cache/dlc-images/termina-dlc`?\n\nYes for my local DUT, but some boards in the lab probably didn\u0027t. Is `SoftwareDeps: []string{\"dlc\"}` enough? Is there any other flag that we can use?\n\n\u003e Are there run previous to the failing tests that wipe stateful + no get provisioned in the lab due to OS being on the requested version?\n\nNo (https://stainless.corp.google.com/browse/chromeos-test-logs/test-runner/prod/2021-09-26/b3e7f978-9f9d-45d1-96b4-5e3948fdc0cf/). Are you saying the stateful will be wiped after a failing test?",
+      "parentUuid": "5000627e_030a3e58",
+      "revId": "54fdf5b10765331d8b1c676a451667a9c79bd677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
