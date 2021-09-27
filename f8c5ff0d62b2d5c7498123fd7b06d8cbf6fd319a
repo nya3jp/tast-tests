@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3be25e8a_3ec2bc79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1114919
+      },
+      "writtenOn": "2021-09-27T02:29:55Z",
+      "side": 1,
+      "message": "(hi from CQ maintainers here! Your CL encountered a bug in CQ https://crbug.com/1253203, which has just paged us. It\u0027ll take ~4 hours to ship this because I\u0027m falling asleep)",
+      "revId": "f8c5ff0d62b2d5c7498123fd7b06d8cbf6fd319a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
