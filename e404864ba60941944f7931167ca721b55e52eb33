@@ -16,6 +16,75 @@
       "message": "Hi Judy,\nCould you please have a look? Thank you.\nBest regards,\nNancy",
       "revId": "e404864ba60941944f7931167ca721b55e52eb33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db493820_1c2875e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-27T00:39:44Z",
+      "side": 1,
+      "message": "Since you are using the returnning settings instance, maybe just:\nif _, err \u003d ...; err !\u003d nil {\n}",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "revId": "e404864ba60941944f7931167ca721b55e52eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e4705ae_fe76d0ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-27T00:39:44Z",
+      "side": 1,
+      "message": "Please combine these two steps together using uiauto.Combine",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "e404864ba60941944f7931167ca721b55e52eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c92d1419_793933b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-27T00:39:44Z",
+      "side": 1,
+      "message": "Failed to restore the Settings app",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 54
+      },
+      "revId": "e404864ba60941944f7931167ca721b55e52eb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
