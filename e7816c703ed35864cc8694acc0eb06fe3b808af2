@@ -16,6 +16,29 @@
       "message": "I\u0027d prefer GetFakeDMS here + document why the Get is required here. Use playground to show a minimal reproduction of the issue.",
       "revId": "e7816c703ed35864cc8694acc0eb06fe3b808af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d7dc01c_843fac99",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-09-27T14:36:10Z",
+      "side": 1,
+      "message": "This should be defined only on the fixtures, I don\u0027t see any usages for defining it on *Chrome.",
+      "range": {
+        "startLine": 153,
+        "startChar": 17,
+        "endLine": 153,
+        "endChar": 26
+      },
+      "revId": "e7816c703ed35864cc8694acc0eb06fe3b808af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
