@@ -15,7 +15,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/vm/audioutils"
@@ -29,10 +28,6 @@ const (
 	loop               int    = 5
 )
 
-type loopbackLatencyConfig struct {
-	deviceArgs []string
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AudioLoopbackLatency,
@@ -45,13 +40,18 @@ func init() {
 		Fixture:      "vmDLC",
 		Params: []testing.Param{{
 			Name: "virtio_cras_snd",
-			Val: loopbackLatencyConfig{
-				deviceArgs: []string{"--cras-snd", "capture=true,socket_type=legacy"},
+			Val: audioutils.Config{
+				CrosvmArgs: []string{"--cras-snd", "capture=true,socket_type=legacy"},
+			},
+		}, {
+			Name: "vhost_user_cras",
+			Val: audioutils.Config{
+				VhostUserArgs: []string{"cras-snd", "--config", "capture=true,socket_type=legacy"},
 			},
 		}, {
 			Name: "ac97",
-			Val: loopbackLatencyConfig{
-				deviceArgs: []string{"--ac97", "backend=cras,capture=true,socket_type=legacy"},
+			Val: audioutils.Config{
+				CrosvmArgs: []string{"--ac97", "backend=cras,capture=true,socket_type=legacy"},
 			},
 		}},
 	})
@@ -137,7 +137,7 @@ func extractNumbers(strs []string) ([]float64, error) {
 func AudioLoopbackLatency(ctx context.Context, s *testing.State) {
 	bufferSizes := []string{"512", "1024", "2048", "4096", "8192"}
 
-	config := s.Param().(loopbackLatencyConfig)
+	config := s.Param().(audioutils.Config)
 
 	unload, err := audio.LoadAloop(ctx)
 	if err != nil {
@@ -161,12 +161,8 @@ func AudioLoopbackLatency(ctx context.Context, s *testing.State) {
 	}
 	kernelArgs = append(kernelArgs, bufferSizes...)
 
-	cmd, err := audioutils.CrosvmCmd(ctx, data.Kernel, kernelLogPath, kernelArgs, config.deviceArgs)
+	err = audioutils.RunCrosvm(ctx, data.Kernel, kernelLogPath, kernelArgs, config)
 	if err != nil {
-		s.Fatal("Failed to get crosvm cmd: ", err)
-	}
-
-	if err = cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to run crosvm: ", err)
 	}
 
