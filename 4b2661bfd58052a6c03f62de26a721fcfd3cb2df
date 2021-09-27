@@ -16,6 +16,24 @@
       "message": "(sorry for the delay, I was OOO last week) LGTM as temporary workaround. Based on the discussion in the bug, I think we should fix tast-local-apks-cros ebuild in the long term.",
       "revId": "4b2661bfd58052a6c03f62de26a721fcfd3cb2df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c9a525a_54eed661",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-27T15:14:30Z",
+      "side": 1,
+      "message": "Agree. I\u0027m unfamiliar with the setup of the ebuilds but I\u0027ll get a new bug filed after this is complete and CC you.",
+      "parentUuid": "64dec465_aed59826",
+      "revId": "4b2661bfd58052a6c03f62de26a721fcfd3cb2df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
