@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67eb65dc_8d09e102",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-27T04:31:44Z",
+      "side": 1,
+      "message": "I suppose this error should terminate the test instead of continue. If it is the case, it should use s.Fatal instead of Error",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 11
+      },
+      "revId": "4cae0ab7cb3b6f1e9aa8c05c6966794e76661229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
