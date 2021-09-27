@@ -8,21 +8,75 @@ package audioutils
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
+	"os"
 	"os/user"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"syscall"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 const (
 	cgroupPath string = "/sys/fs/cgroup/cpu/vms/termina/tasks"
 )
 
-// CrosvmCmd setups the crosvm command for audio device testing
-func CrosvmCmd(ctx context.Context, kernelPath, kernelLogPath string, kernelArgs, deviceArgs []string) (*testexec.Cmd, error) {
+// Config includes all the params needed to setup crosvm for vm audio tests
+type Config struct {
+	CrosvmArgs    []string
+	VhostUserArgs []string
+}
+
+// RunCrosvm runs crosvm and the crosvm vhost user device if required
+func RunCrosvm(ctx context.Context, kernelPath, kernelLogPath string, kernelArgs []string, config Config) error {
+	crosvmCmd, devCmd, cleanupFunc, err := CrosvmCmd(ctx, kernelPath, kernelLogPath, kernelArgs, config)
+	defer cleanupFunc()
+	if err != nil {
+		return errors.Wrap(err, "failed to get crosvm cmd")
+	}
+
+	if devCmd != nil {
+		testing.ContextLog(ctx, "Starting crosvm device")
+		if err = devCmd.Start(); err != nil {
+			return errors.Wrap(err, "failed to start crosvm device")
+		}
+	}
+
+	testing.ContextLog(ctx, "Launching crosvm")
+	if err = crosvmCmd.Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to run crosvm")
+	}
+
+	if devCmd != nil {
+		if err = devCmd.Wait(testexec.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "failed to complete vhost-user-snd-device")
+		}
+	}
+
+	return nil
+}
+
+// CrosvmCmd setups the crosvm and device acommand for audio device testing
+func CrosvmCmd(ctx context.Context, kernelPath, kernelLogPath string, kernelArgs []string, config Config) (*testexec.Cmd, *testexec.Cmd, func() error, error) {
+	var devCmd *testexec.Cmd
+	cleanupFunc := func() error { return nil }
+	if len(config.VhostUserArgs) > 0 {
+		tempDir, err := ioutil.TempDir("/usr/local/tmp", "CrosvmCmd.")
+		if err != nil {
+			return nil, nil, cleanupFunc, errors.Wrap(err, "failed to create temporary directory")
+		}
+		cleanupFunc = func() error { return os.RemoveAll(tempDir) }
+		sock := filepath.Join(tempDir, "vhost-user-snd.sock")
+		deviceArgs := append([]string{"device"}, config.VhostUserArgs...)
+		deviceArgs = append(deviceArgs, "--socket", sock)
+		devCmd = testexec.CommandContext(ctx, "crosvm", deviceArgs...)
+		config.CrosvmArgs = append(config.CrosvmArgs, "--vhost-user-snd", sock)
+	}
+
 	kernelParams := []string{
 		"root=/dev/root",
 		"rootfstype=virtiofs",
@@ -31,7 +85,7 @@ func CrosvmCmd(ctx context.Context, kernelPath, kernelLogPath string, kernelArgs
 	kernelParams = append(kernelParams, kernelArgs...)
 
 	crosvmArgs := []string{"crosvm", "run"}
-	crosvmArgs = append(crosvmArgs, deviceArgs...)
+	crosvmArgs = append(crosvmArgs, config.CrosvmArgs...)
 	crosvmArgs = append(crosvmArgs,
 		"-p", "\""+strings.Join(kernelParams, " ")+"\"",
 		"--serial", fmt.Sprintf("type=file,num=1,console=true,path=%s", kernelLogPath),
@@ -43,26 +97,30 @@ func CrosvmCmd(ctx context.Context, kernelPath, kernelLogPath string, kernelArgs
 	// Set the rtprio limit of the shell process to unlimited.
 	cmdStr = append(cmdStr, "prlimit", "--pid", "$$", "--rtprio=unlimited", "&&")
 	cmdStr = append(cmdStr, crosvmArgs...)
-	cmd := testexec.CommandContext(ctx, "sh", []string{"-c", strings.Join(cmdStr, " ")}...)
+	crosvmCmd := testexec.CommandContext(ctx, "sh", []string{"-c", strings.Join(cmdStr, " ")}...)
 
-	// Same effect as calling `newgrp cras` before `crosvm` in shell
-	// This is needed to access /run/cras/.cras_socket (legacy socket)
-	crasGrp, err := user.LookupGroup("cras")
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find group id for cras")
-	}
-	crasGrpID, err := strconv.ParseUint(crasGrp.Gid, 10, 32)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to convert cras grp id to integer")
-	}
-	cmd.SysProcAttr = &syscall.SysProcAttr{
-		Credential: &syscall.Credential{
-			Uid:         0,
-			Gid:         0,
-			Groups:      []uint32{uint32(crasGrpID)},
-			NoSetGroups: false,
-		},
+	if devCmd == nil {
+		// Same effect as calling `newgrp cras` before `crosvm` in shell
+		// This is needed to access /run/cras/.cras_socket (legacy socket)
+		//
+		// vhost-user device does not need this as it doesn't involve minijail
+		crasGrp, err := user.LookupGroup("cras")
+		if err != nil {
+			return nil, nil, cleanupFunc, errors.Wrap(err, "failed to find group id for cras")
+		}
+		crasGrpID, err := strconv.ParseUint(crasGrp.Gid, 10, 32)
+		if err != nil {
+			return nil, nil, cleanupFunc, errors.Wrap(err, "failed to convert cras grp id to integer")
+		}
+		crosvmCmd.SysProcAttr = &syscall.SysProcAttr{
+			Credential: &syscall.Credential{
+				Uid:         0,
+				Gid:         0,
+				Groups:      []uint32{uint32(crasGrpID)},
+				NoSetGroups: false,
+			},
+		}
 	}
 
-	return cmd, nil
+	return crosvmCmd, devCmd, cleanupFunc, nil
 }
