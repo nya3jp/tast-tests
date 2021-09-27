@@ -5,6 +5,7 @@
 package firmware
 
 import (
+	"bytes"
 	"context"
 	"io/ioutil"
 	"os"
@@ -33,8 +34,8 @@ func init() {
 func FwupdInstallRemote(ctx context.Context, s *testing.State) {
 	cmd := testexec.CommandContext(ctx, "/usr/bin/fwupdmgr", "install", "--allow-reinstall", "-v", fwupd.ReleaseURI)
 	cmd.Env = append(os.Environ(), "CACHE_DIRECTORY=/var/cache/fwupd")
-	output, err := cmd.Output(testexec.DumpLogOnError)
-	if err != nil {
+	output, err := cmd.CombinedOutput()
+	if err != nil && !bytes.Contains(output, []byte("does not currently allow updates: Cannot install update when not on AC power")) {
 		s.Errorf("%q failed: %v", cmd.Args, err)
 	}
 	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), "fwupdmgr.txt"), output, 0644); err != nil {
