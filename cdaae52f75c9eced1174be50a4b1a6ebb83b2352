@@ -51,6 +51,24 @@
       "parentUuid": "aa61013e_96052d81",
       "revId": "cdaae52f75c9eced1174be50a4b1a6ebb83b2352",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aad462c_1b1a5666",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-27T00:09:43Z",
+      "side": 1,
+      "message": "That also makes sense. In this case, EnabledProfile() shall return nil, nil when there\u0027s no enabled profile. Thus, we don\u0027t need ErrNoEnabledProfile global variable.",
+      "parentUuid": "247558f9_2480ec1b",
+      "revId": "cdaae52f75c9eced1174be50a4b1a6ebb83b2352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
