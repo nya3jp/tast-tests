@@ -16,6 +16,29 @@
       "message": "updated more chips with their sizes and changed the test stuff to use constants from pre",
       "revId": "8f7dde446e33226cc106b0f9f6b209045ddf6f82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0936e1f2_c0f22eb2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_size.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-27T17:45:59Z",
+      "side": 1,
+      "message": "Can you sort these?",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "8f7dde446e33226cc106b0f9f6b209045ddf6f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
