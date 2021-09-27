@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "199b086e_2f6e8aaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-09-27T01:24:49Z",
+      "side": 1,
+      "message": "You don\u0027t seem convinced...",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "f6b69637d532ab7ad2ef87a8671a07f9cf4b2c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "833a351e_ee1477b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-09-27T01:24:49Z",
+      "side": 1,
+      "message": "By propagation here, you mean from Chrome to shill to dns-proxy right? If so, rather than introduce an arbitrary delay maybe you could just poll the shill property on dbus instead? That would be a more reasonable place to introduce a deadline, and would provide a meaningful failure signal as well (i.e. if the property was unchanged with n seconds)...",
+      "range": {
+        "startLine": 13,
+        "startChar": 50,
+        "endLine": 13,
+        "endChar": 61
+      },
+      "revId": "f6b69637d532ab7ad2ef87a8671a07f9cf4b2c5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cef3bbd4_52a510ac",
