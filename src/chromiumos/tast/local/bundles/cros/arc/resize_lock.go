@@ -18,7 +18,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -464,13 +465,9 @@ func testFullyLockedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 	}
 
 	// The compat-mode button of a fully-locked app is disabled.
-	icon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: wm.CenterButtonClassName}, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the compat-mode button")
-	}
-	defer icon.Release(ctx)
-
-	if err := icon.LeftClick(ctx); err != nil {
+	ui := uiauto.New(tconn)
+	icon := nodewith.ClassName(wm.CenterButtonClassName)
+	if err := ui.WithTimeout(10 * time.Second).LeftClick(icon)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click on the compat-mode button")
 	}
 
@@ -488,7 +485,7 @@ func testFullyLockedApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 		return errors.Wrapf(err, "failed to open the app management page of %s", wm.ResizeLockAppName)
 	}
 	defer wm.CloseAppManagementSetting(ctx, tconn)
-	return chromeui.WaitUntilGone(ctx, tconn, chromeui.FindParams{Name: wm.AppManagementSettingToggleName}, 10*time.Second)
+	return ui.WithTimeout(10 * time.Second).WaitUntilGone(nodewith.Name(wm.AppManagementSettingToggleName))(ctx)
 }
 
 // testSplash installs 3 different resize-locked app, launches an activity twice, and verifies that the splash screen works as expected.
