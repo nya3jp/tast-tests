@@ -13,7 +13,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/vm/audioutils"
 	"chromiumos/tast/local/bundles/cros/vm/dlc"
@@ -38,13 +37,18 @@ func init() {
 		Fixture:      "vmDLC",
 		Params: []testing.Param{{
 			Name: "virtio_cras_snd",
-			Val: alsaConfig{
-				deviceArgs: []string{"--cras-snd", "capture=true,socket_type=legacy"},
+			Val: audioutils.Config{
+				CrosvmArgs: []string{"--cras-snd", "capture=true,socket_type=legacy"},
+			},
+		}, {
+			Name: "vhost_user_cras",
+			Val: audioutils.Config{
+				VhostUserArgs: []string{"cras-snd", "--config", "capture=true,socket_type=legacy"},
 			},
 		}, {
 			Name: "ac97",
-			Val: alsaConfig{
-				deviceArgs: []string{"--ac97", "backend=cras,capture=true,socket_type=legacy"},
+			Val: audioutils.Config{
+				CrosvmArgs: []string{"--ac97", "backend=cras,capture=true,socket_type=legacy"},
 			},
 		}},
 	})
@@ -69,7 +73,7 @@ func parseResults(ctx context.Context, path string) (int, int, error) {
 }
 
 func AudioAlsaConformance(ctx context.Context, s *testing.State) {
-	config := s.Param().(alsaConfig)
+	config := s.Param().(audioutils.Config)
 	data := s.FixtValue().(dlc.FixtData)
 
 	kernelLogPath := filepath.Join(s.OutDir(), "kernel.log")
@@ -87,13 +91,7 @@ func AudioAlsaConformance(ctx context.Context, s *testing.State) {
 		captureResultPath,
 	}
 
-	cmd, err := audioutils.CrosvmCmd(ctx, data.Kernel, kernelLogPath, kernelArgs, config.deviceArgs)
-	if err != nil {
-		s.Fatal("Failed to get crosvm cmd: ", err)
-	}
-
-	s.Log("Running Alsa conformance test")
-	if err = cmd.Run(testexec.DumpLogOnError); err != nil {
+	if err := audioutils.RunCrosvm(ctx, data.Kernel, kernelLogPath, kernelArgs, config); err != nil {
 		s.Fatal("Failed to run crosvm: ", err)
 	}
 
