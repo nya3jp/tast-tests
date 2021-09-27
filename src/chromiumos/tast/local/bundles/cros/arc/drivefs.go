@@ -30,7 +30,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome", "chrome_internal", "drivefs"},
 		Timeout:      4 * time.Minute,
-		VarDeps:      []string{"arc.Drivefs.user", "arc.Drivefs.password"},
+		VarDeps:      []string{"arc.Drivefs.user1", "arc.Drivefs.password1"},
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
@@ -47,8 +47,8 @@ func Drivefs(ctx context.Context, s *testing.State) {
 		ctx,
 		chrome.ARCEnabled(),
 		chrome.GAIALogin(chrome.Creds{
-			User: s.RequiredVar("arc.Drivefs.user"),
-			Pass: s.RequiredVar("arc.Drivefs.password"),
+			User: s.RequiredVar("arc.Drivefs.user1"),
+			Pass: s.RequiredVar("arc.Drivefs.password1"),
 		}),
 	)
 	if err != nil {
