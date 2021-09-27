@@ -46,6 +46,30 @@
       },
       "revId": "c1733e26a6324c91fa8ab147d19c693175d53f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce26d6e_09d37b58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_common.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-27T04:55:04Z",
+      "side": 1,
+      "message": "I think the problem is demuxer doesn\u0027t have a flush function..\nIs it possible to implement it? I am not so familiar with mp4box that I know if it\u0027s possible.\n\nIf we can \"await demuxer.flush()\", then I would be able to do\n\nawait demuxer.flush();\nawait decoder.flush();\nawait decoder.clse();\nreturn videoFrames;",
+      "parentUuid": "a44f1a25_089f0520",
+      "range": {
+        "startLine": 154,
+        "startChar": 2,
+        "endLine": 171,
+        "endChar": 5
+      },
+      "revId": "c1733e26a6324c91fa8ab147d19c693175d53f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
