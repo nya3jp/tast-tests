@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6227d404_415d37be",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-27T02:55:06Z",
+      "side": 1,
+      "message": "Well, what\u0027s the real problem caused by this? In your code, do you ever touch buf when an error is returned? I\u0027d say that it\u0027s a caller side error if buf is used even though an error is returned on timeout.",
+      "parentUuid": "59f4045d_f211188c",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 76
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1726817b_8196616d",
         "filename": "src/chromiumos/tast/common/firmware/serial/connected_port.go",
         "patchSetId": 4
@@ -231,6 +255,30 @@
       "side": 1,
       "message": "serial.Config has additional options that we\u0027re not using, so just limiting to what\u0027s being used.  It also reduces the proto bloat in the next cl where grpc service is defined to open a port on the dut.  Additionally it better isolates high level code from having to know about tarm.serial.",
       "parentUuid": "196f8586_f6ed0cfc",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9c207ba_17f779e9",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_opener.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-27T02:55:06Z",
+      "side": 1,
+      "message": "Got it. Let me revisit it in the next CL if needed.",
+      "parentUuid": "32db5222_9252a532",
       "range": {
         "startLine": 15,
         "startChar": 5,
@@ -525,6 +573,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da5ddf1c_80e4215f",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-27T02:55:06Z",
+      "side": 1,
+      "message": "Test files that declare a package with the suffix \"_test\" will be compiled as a separate package, and then linked and run with the main test binary.\nSee https://pkg.go.dev/cmd/go@master#hdr-Test_packages .\n\nIn unit testing it\u0027s a good practice to test only public APIs. https://engdoc.corp.google.com/eng/doc/devguide/testing/unit/best-practices.md?cl\u003dhead#public-apis .\nUsing _test package is a good way to make sure that practice is followed.",
+      "parentUuid": "466695a9_8eaec66a",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fbcc4c1f_d38beb91",
         "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_test.go",
         "patchSetId": 4
@@ -748,6 +820,30 @@
       "side": 1,
       "message": "The socat command doesn\u0027t terminate upon return from CreatePtyPair, it needs to keep running to perform the forwarding of traffic between ports, so I can\u0027t use Run.\n\nIf I don\u0027t use iCmd, then ifs needed anywhere cmd methods are called.",
       "parentUuid": "d2b594a8_b2782234",
+      "range": {
+        "startLine": 52,
+        "startChar": 20,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aafbc273_e5c4b5ed",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-27T02:55:06Z",
+      "side": 1,
+      "message": "Got it. Thank you for the explanation.",
+      "parentUuid": "50ddf38c_f6518aa8",
       "range": {
         "startLine": 52,
         "startChar": 20,
