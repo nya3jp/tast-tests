@@ -77,6 +77,7 @@ func UpdateRootfsToStateful(ctx context.Context, s *testing.State) {
 }
 
 // getRootfsLacrosVersion returns the version of Lacros Chrome in the Rootfs partition.
+// TODO(hyungtaekim): Move the function to a common place for other tests.
 func getRootfsLacrosVersion(ctx context.Context, dut *dut.DUT, utsClient lacrosservice.UpdateTestServiceClient) (version.Version, error) {
 	req := &lacrosservice.GetBrowserVersionRequest{
 		Browser: lacrosservice.BrowserType_LACROS_ROOTFS,
@@ -91,6 +92,7 @@ func getRootfsLacrosVersion(ctx context.Context, dut *dut.DUT, utsClient lacross
 
 // provisionLacrosFromRootfsLacrosImagePath calls a RPC to the TLS to provision Stateful Lacros from the source of Rootfs Lacros image installation path.
 // This is useful when making the test hermetic by removing external source of Lacros binary.
+// TODO(hyungtaekim): Move the function to a common place for other tests.
 func provisionLacrosFromRootfsLacrosImagePath(ctx context.Context, tlsAddr string, dut *dut.DUT, overrideVersion, overrideComponent string) error {
 	tlsClient, err := provision.Dial(ctx, tlsAddr)
 	if err != nil {
@@ -106,6 +108,7 @@ func provisionLacrosFromRootfsLacrosImagePath(ctx context.Context, tlsAddr strin
 }
 
 // verifyLacrosUpdate calls a RPC to the test service to verify the provisioned Lacros update is installed and selected in runtime on a DUT as expected.
+// TODO(hyungtaekim): Move the function to a common place for other tests.
 func verifyLacrosUpdate(ctx context.Context, overrideVersion, overrideComponent string, utsClient lacros.UpdateTestServiceClient) error {
 	// Build browser contexts for a test request.
 	ashCtx := &lacrosservice.BrowserContext{
@@ -139,6 +142,7 @@ func verifyLacrosUpdate(ctx context.Context, overrideVersion, overrideComponent 
 }
 
 // clearLacrosUpdate calls a RPC to the test service to remove provisioned Lacros and reset to the previous state.
+// TODO(hyungtaekim): Move the function to a common place for other tests.
 func clearLacrosUpdate(ctx context.Context, utsClient lacrosservice.UpdateTestServiceClient) error {
 	if _, err := utsClient.ClearUpdate(ctx, &lacrosservice.ClearUpdateRequest{}); err != nil {
 		return errors.Wrap(err, "clearLacrosUpdate: failed to clear provisioned Lacros")
