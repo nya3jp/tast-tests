@@ -111,6 +111,30 @@
       },
       "revId": "955032343e9d7ac0eeeba7929f90fc19888265c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2cbd2b7_ec73cbab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_open_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-27T00:53:57Z",
+      "side": 1,
+      "message": "uiauto.Combine will also tell you which step.",
+      "parentUuid": "137492f5_aadc3d65",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "955032343e9d7ac0eeeba7929f90fc19888265c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
