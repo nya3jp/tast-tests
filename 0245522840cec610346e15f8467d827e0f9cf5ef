@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d4c6e7e4_249719d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-27T09:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c99003d7_e7b6026f",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "0245522840cec610346e15f8467d827e0f9cf5ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bfd4f2d2_dff45efb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-24T15:38:52Z",
       "side": 1,
       "message": "nit: hasSNPermission",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "0245522840cec610346e15f8467d827e0f9cf5ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7c105dd_5a6be328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/data/sw.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-09-27T09:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c8d2df3_cc3be465",
       "range": {
         "startLine": 10,
         "startChar": 6,
