@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cadbe21f_b60d42df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-09-27T20:01:43Z",
+      "side": 1,
+      "message": "in addition to this we want to add the test team, please reach out to dhaddock@ for the proper email (we use it in some of the notification package tests, but we should add their contact to all of them)",
+      "range": {
+        "startLine": 29,
+        "startChar": 50,
+        "endLine": 29,
+        "endChar": 81
+      },
+      "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b509b1be_28990225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-09-27T20:01:43Z",
+      "side": 1,
+      "message": "Is clipboard size the number of items stored in the buffer? One for each format?  If so, why do we care there is just 1? Don\u0027t we just care that something was put there, not the composition of that item on the buffer?\n\nAs-is, won\u0027t we break if they decide to include the html, plain-text, and bitmap/jpeg versions in the buffer instead of just the bitmap/jpeg?",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 48
+      },
+      "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
