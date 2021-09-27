@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a5749d2_e8aa881b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-27T09:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "235301d7_f280e361",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "fba7b961b38e2ac66ad4000de02edff6aa26c400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2881ed56_021803f0",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-23T08:00:23Z",
       "side": 1,
       "message": "You modified fixtures.FixtData",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "fba7b961b38e2ac66ad4000de02edff6aa26c400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3b0c5d3_31f16c61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-27T09:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2881ed56_021803f0",
       "range": {
         "startLine": 9,
         "startChar": 9,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60cf2ad2_6ceee981",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-27T09:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "236d135a_d359b4e3",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "fba7b961b38e2ac66ad4000de02edff6aa26c400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6fb6040_85e62e0f",
@@ -124,6 +196,30 @@
       "writtenOn": "2021-09-23T08:21:36Z",
       "side": 1,
       "message": "nit: remove double space",
+      "range": {
+        "startLine": 83,
+        "startChar": 37,
+        "endLine": 83,
+        "endChar": 39
+      },
+      "revId": "fba7b961b38e2ac66ad4000de02edff6aa26c400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbb6b88b_2c3a719c",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-27T09:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2bcf272_1af75266",
       "range": {
         "startLine": 83,
         "startChar": 37,
@@ -205,6 +301,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "015c41f7_f4be377a",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-27T09:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3e60e33_893faf69",
+      "revId": "fba7b961b38e2ac66ad4000de02edff6aa26c400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a06b074b_24d52dc1",
@@ -222,6 +336,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93cc4453_fb7fc15d",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-27T09:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a06b074b_24d52dc1",
+      "revId": "fba7b961b38e2ac66ad4000de02edff6aa26c400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55acdd09_8e61946f",
@@ -235,6 +367,30 @@
       "writtenOn": "2021-09-23T08:21:36Z",
       "side": 1,
       "message": "nit: remove space",
+      "range": {
+        "startLine": 99,
+        "startChar": 24,
+        "endLine": 99,
+        "endChar": 25
+      },
+      "revId": "fba7b961b38e2ac66ad4000de02edff6aa26c400",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8d31a35_724f3357",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-27T09:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55acdd09_8e61946f",
       "range": {
         "startLine": 99,
         "startChar": 24,
