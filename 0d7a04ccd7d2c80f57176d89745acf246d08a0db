@@ -34,6 +34,24 @@
       "parentUuid": "1ef166bd_ac63b586",
       "revId": "0d7a04ccd7d2c80f57176d89745acf246d08a0db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1044dfb1_2dde2973",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-27T16:20:28Z",
+      "side": 1,
+      "message": "No you added an extra one to fwScreenToDevMode, but I wanted you to add it to fwScreenToUSBDevMode",
+      "parentUuid": "fc5d05a3_234e3ba8",
+      "revId": "0d7a04ccd7d2c80f57176d89745acf246d08a0db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
