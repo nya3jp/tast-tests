@@ -26,8 +26,7 @@ func init() {
 			"tomhughes@chromium.org",
 			"chromeos-fingerprint@google.com",
 		},
-		// TODO(b/197478410): Re-enable it when the test turns green.
-		// Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
 		ServiceDeps:  []string{"tast.cros.platform.UpstartService", dutfs.ServiceName},
