@@ -33,7 +33,7 @@ const uiTimeout = 10 * time.Second
 // findStatusArea finds the status area UI node.
 func findStatusArea(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Finder, error) {
 	ui := uiauto.New(tconn)
-	statusArea := nodewith.ClassName("UnifiedSystemTray")
+	statusArea := nodewith.ClassName("UnifiedSystemTray").First()
 	return statusArea, ui.WithTimeout(uiTimeout).WaitUntilExists(statusArea)(ctx)
 }
 
