@@ -16,6 +16,29 @@
       "message": "Thanks Judy for code review. I have modified. Could you please have a look? Thank you.",
       "revId": "955032343e9d7ac0eeeba7929f90fc19888265c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1496949_10defbef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_open_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-27T00:33:53Z",
+      "side": 1,
+      "message": "Please combine these three steps together using uiauto.Combine",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "955032343e9d7ac0eeeba7929f90fc19888265c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
