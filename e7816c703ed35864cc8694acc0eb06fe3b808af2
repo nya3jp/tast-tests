@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "418f9eb0_a337244d",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-27T14:24:49Z",
+      "side": 1,
+      "message": "I\u0027d prefer GetFakeDMS here + document why the Get is required here. Use playground to show a minimal reproduction of the issue.",
+      "revId": "e7816c703ed35864cc8694acc0eb06fe3b808af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
