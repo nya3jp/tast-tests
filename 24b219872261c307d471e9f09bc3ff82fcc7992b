@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "093f341d_bf665ea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_encoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-27T04:32:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "750ea84a_87a5c964",
+      "range": {
+        "startLine": 910,
+        "startChar": 1,
+        "endLine": 910,
+        "endChar": 11
+      },
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c032d69_006fcea8",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-09-24T07:55:43Z",
       "side": 1,
       "message": "could you document what are returned in detail?\nCould you document of the side effects, too?\nE.g. some files at fixed path in outDir are created. So, calling this twice overwrites them.",
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74410440_291ee998",
+        "filename": "src/chromiumos/tast/local/media/encoding/quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-27T04:32:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c032d69_006fcea8",
       "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fbbc020_d79bf02a",
+        "filename": "src/chromiumos/tast/local/media/encoding/quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-27T04:32:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d66dc5b5_8811a438",
+      "range": {
+        "startLine": 48,
+        "startChar": 39,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "928bf848_21020980",
@@ -98,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a2cadf_e360f5f9",
+        "filename": "src/chromiumos/tast/local/media/encoding/quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-27T04:32:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "928bf848_21020980",
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee9e2944_7eba9829",
@@ -111,6 +195,24 @@
       "writtenOn": "2021-09-24T07:55:43Z",
       "side": 1,
       "message": "nit: vpxCmd.Run(testexec.DumpLogOnErr)\n\nthen you can drop L74.",
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f952ea98_9b144278",
+        "filename": "src/chromiumos/tast/local/media/encoding/quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-27T04:32:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee9e2944_7eba9829",
       "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2a8810e_34541f8a",
+        "filename": "src/chromiumos/tast/local/media/encoding/quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-27T04:32:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d956edee_9e297069",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 54
+      },
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf3f157a_e879f4f6",
@@ -151,6 +277,24 @@
       "writtenOn": "2021-09-24T07:55:43Z",
       "side": 1,
       "message": "I do not think you\u0027d like to read the file twice. Could you refactor to avoid reading the file twice?",
+      "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "310c04a3_afa63eb7",
+        "filename": "src/chromiumos/tast/local/media/encoding/quality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-27T04:32:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf3f157a_e879f4f6",
       "revId": "24b219872261c307d471e9f09bc3ff82fcc7992b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
