@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dde0bf20_00775c3d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-09-27T10:00:07Z",
+      "side": 1,
+      "message": "No, the values are duped from: https://b.corp.google.com/issues/172211699#comment14 (my humble TVC persona has no access to the link you\u0027ve provided).\n\nMy assumption is that these values are prone to be changed (e.g. during reset or by other tests):\n```\nroot@localhost $ cat /sys/class/net/eth1/queues/tx-0/xps_cpus\n0\nroot@localhost $ echo 1 \u003e /sys/class/net/eth1/queues/tx-0/xps_cpus\nroot@localhost $ cat /sys/class/net/eth1/queues/tx-0/xps_cpus\n1\nroot@localhost $ reboot; exit\nroot@localhost $ cat /sys/class/net/eth1/queues/tx-0/xps_cpus\n0\n```\nEither way, I\u0027d prefer to have the same setup on each platform to have comparable results.",
+      "parentUuid": "42d81ff3_0dc76b0f",
+      "range": {
+        "startLine": 392,
+        "startChar": 2,
+        "endLine": 392,
+        "endChar": 36
+      },
+      "revId": "3a2232420d047eb7052d5618bc3dc49df71020d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74734b42_c19ecb45",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
         "patchSetId": 10
@@ -88,6 +112,30 @@
       "writtenOn": "2021-09-23T16:58:26Z",
       "side": 1,
       "message": "Optional: In my experience, people running these tests tend to be clueless about what the setup should look like or what a failed ping likely entails. A very common issue is that the pcap and router don\u0027t have a direct ethernet connection, so we could consider adding an extra ping test that directly pings the pcap from the router, and gives a message that hints to the fact they may be missing an ethernet cable if it fails. Up to you if you think it\u0027s worthwhile, since the connection is already functionally tested by the below ping tests.",
+      "range": {
+        "startLine": 476,
+        "startChar": 1,
+        "endLine": 476,
+        "endChar": 48
+      },
+      "revId": "3a2232420d047eb7052d5618bc3dc49df71020d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24b8cc76_e17bd123",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-09-27T10:00:07Z",
+      "side": 1,
+      "message": "I\u0027m doing three pings:\n1) Ping router AP, \u003cwlan\u003e interface (this ensures wireless connection is OK)\n2) Ping router AP, \u003ceth\u003e interface (this checks that forwarding is done properly)\n3) Ping pcap AP, \u003ceth\u003e interface (this verifies the cable is connected and the link is configured properly).\n\nI\u0027d rather keep it that way, as at the end of the day, it is the DUT\u003c-\u003ePCAP traffic flow that matters.\n\nThat being said, I like the idea of hints in error messages, I will update the code.",
+      "parentUuid": "74734b42_c19ecb45",
       "range": {
         "startLine": 476,
         "startChar": 1,
