@@ -16,6 +16,29 @@
       "message": "Please get +2 from a team member before adding tast owners.",
       "revId": "4b46773ecc72ce93b483482a17df7f48598187e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6adbf073_4ddc37be",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-09-27T09:01:20Z",
+      "side": 1,
+      "message": "I\u0027m not sure but I think FpTpmSeed and FpUpdater also needs this (they are not using NewFirmwareTest()). How about moving it to InitializeKnownState()?",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 28
+      },
+      "revId": "4b46773ecc72ce93b483482a17df7f48598187e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
