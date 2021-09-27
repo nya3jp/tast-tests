@@ -152,8 +152,19 @@ type VoiceData struct {
 	Name   string `json:"voiceName"`
 }
 
-// GetVoices returns the current TTS voices which are available.
-func GetVoices(ctx context.Context, conn *chrome.TestConn) ([]VoiceData, error) {
+// Voices returns the current TTS voices which are available.
+func Voices(ctx context.Context, conn *chrome.TestConn) ([]VoiceData, error) {
+	return voicesImpl(ctx, conn)
+}
+
+// voicesImpl implements the Voices for both TestConn and the Conn for Chrome Vox.
+// Specifically, the extension connected from conn must have tast library and
+// permission to use TTS.
+func voicesImpl(
+	ctx context.Context,
+	conn interface {
+		Eval(ctx context.Context, expr string, out interface{}) error
+	}) ([]VoiceData, error) {
 	var voices []VoiceData
 	if err := conn.Eval(ctx, "tast.promisify(chrome.tts.getVoices)()", &voices); err != nil {
 		return nil, err
@@ -164,7 +175,7 @@ func GetVoices(ctx context.Context, conn *chrome.TestConn) ([]VoiceData, error) 
 // SetVoice sets the ChromeVox's voice, which is specified by using an extension
 // ID and a locale.
 func (cv *ChromeVoxConn) SetVoice(ctx context.Context, vd VoiceData) error {
-	voices, err := GetVoices(ctx, &chrome.TestConn{Conn: cv.Conn})
+	voices, err := voicesImpl(ctx, cv.Conn)
 	if err != nil {
 		return errors.Wrap(err, "failed to getVoices")
 	}

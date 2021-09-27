@@ -64,7 +64,7 @@ func TextToSpeech(ctx context.Context, s *testing.State) {
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		voices, err := a11y.GetVoices(ctx, tconn)
+		voices, err := a11y.Voices(ctx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to get voices")
 		}
