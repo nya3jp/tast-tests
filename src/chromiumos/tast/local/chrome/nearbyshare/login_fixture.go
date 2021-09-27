@@ -198,5 +198,17 @@ func (f *nearbyShareLoginFixture) Reset(ctx context.Context) error {
 	}
 	return nil
 }
-func (f *nearbyShareLoginFixture) PreTest(ctx context.Context, s *testing.FixtTestState)  {}
-func (f *nearbyShareLoginFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *nearbyShareLoginFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	if f.arcEnabled {
+		if err := f.arc.ResetOutDir(ctx, s.OutDir()); err != nil {
+			s.Error("Failed to to reset outDir field of ARC object: ", err)
+		}
+	}
+}
+func (f *nearbyShareLoginFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if f.arcEnabled {
+		if err := f.arc.SaveLogFiles(ctx); err != nil {
+			s.Error("Failed to to save ARC-related log files: ", err)
+		}
+	}
+}

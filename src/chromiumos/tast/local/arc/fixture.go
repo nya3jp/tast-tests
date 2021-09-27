@@ -370,7 +370,7 @@ func (f *bootedFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	// TODO(crbug.com/1136382): Support per-test logcat once we get pre/post-test
 	// hooks in fixtures.
 
-	if err := f.arc.resetOutDir(ctx, s.OutDir()); err != nil {
+	if err := f.arc.ResetOutDir(ctx, s.OutDir()); err != nil {
 		s.Error("Failed to to reset outDir field of ARC object: ", err)
 	}
 }
@@ -379,7 +379,7 @@ func (f *bootedFixture) PostTest(ctx context.Context, s *testing.FixtTestState) 
 	// TODO(crbug.com/1136382): Support per-test logcat once we get pre/post-test
 	// hooks in fixtures.
 
-	if err := f.arc.saveLogFiles(ctx); err != nil {
+	if err := f.arc.SaveLogFiles(ctx); err != nil {
 		s.Error("Failed to to save ARC-related log files: ", err)
 	}
 
