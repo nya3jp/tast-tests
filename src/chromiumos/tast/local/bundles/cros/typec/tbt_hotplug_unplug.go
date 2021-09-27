@@ -35,6 +35,15 @@ func init() {
 		Data:         []string{testConfig, "testcert.p12"},
 		Vars:         []string{"typec.dutTbtPort", "typec.cSwitchPort", "typec.domainIP", "ui.signinProfileTestExtensionManifestKey"},
 		HardwareDeps: hwdep.D(hwdep.Model("volteer", "voxel")),
+		Params: []testing.Param{{
+			Val:       1,
+			ExtraAttr: []string{"group:mainline"},
+		}, {
+			Name:      "stress",
+			Val:       500,
+			ExtraAttr: []string{"group:stress"},
+			Timeout:   3 * time.Hour,
+		}},
 	})
 }
 
@@ -106,57 +115,63 @@ func TbtHotplugUnplug(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := cswitch.ToggleCSwitchPort(ctx, sessionID, cSwitchON, domainIP); err != nil {
-		s.Fatal("Failed to enable c-switch port: ", err)
-	}
+	numTrial := s.Param().(int)
+	for i := 0; i < numTrial; i++ {
+		if numTrial > 1 {
+			s.Logf("Trial %d/%d", i+1, numTrial)
+		}
+		if err := cswitch.ToggleCSwitchPort(ctx, sessionID, cSwitchON, domainIP); err != nil {
+			s.Fatal("Failed to enable c-switch port: ", err)
+		}
 
-	connected, err := cswitch.IsDeviceEnumerated(ctx, tbtVal["device_name"].(string), tbtPort)
-	if !connected {
-		s.Fatal("Failed to enumerate the TBT device: ", err)
-	}
+		connected, err := cswitch.IsDeviceEnumerated(ctx, tbtVal["device_name"].(string), tbtPort)
+		if !connected {
+			s.Fatal("Failed to enumerate the TBT device: ", err)
+		}
 
-	txSpeed, err := cswitch.TxSpeed(ctx, tbtPort)
-	if err != nil {
-		s.Fatal("Failed to get the txSpeed: ", err)
-	}
+		txSpeed, err := cswitch.TxSpeed(ctx, tbtPort)
+		if err != nil {
+			s.Fatal("Failed to get the txSpeed: ", err)
+		}
 
-	if strings.TrimSpace(txSpeed) != tbtVal["tx_speed"].(string) {
-		s.Fatalf("Failed to verify the tx speed, got %s, want %s", txSpeed, tbtVal["tx_speed"].(string))
-	}
+		if strings.TrimSpace(txSpeed) != tbtVal["tx_speed"].(string) {
+			s.Fatalf("Failed to verify the tx speed, got %s, want %s", txSpeed, tbtVal["tx_speed"].(string))
+		}
 
-	rxSpeed, err := cswitch.RxSpeed(ctx, tbtPort)
-	if err != nil {
-		s.Fatal("Failed to get the rxSpeed: ", err)
-	}
+		rxSpeed, err := cswitch.RxSpeed(ctx, tbtPort)
+		if err != nil {
+			s.Fatal("Failed to get the rxSpeed: ", err)
+		}
 
-	if strings.TrimSpace(rxSpeed) != tbtVal["rx_speed"].(string) {
-		s.Fatalf("Failed to verify the rx speed, got %s, want %s", rxSpeed, tbtVal["rx_speed"].(string))
-	}
+		if strings.TrimSpace(rxSpeed) != tbtVal["rx_speed"].(string) {
+			s.Fatalf("Failed to verify the rx speed, got %s, want %s", rxSpeed, tbtVal["rx_speed"].(string))
+		}
 
-	nvmVersion, err := cswitch.NvmVersion(ctx, tbtPort)
-	if err != nil {
-		s.Fatal("Failed to get the nvmVersion: ", err)
-	}
+		nvmVersion, err := cswitch.NvmVersion(ctx, tbtPort)
+		if err != nil {
+			s.Fatal("Failed to get the nvmVersion: ", err)
+		}
 
-	if strings.TrimSpace(nvmVersion) != tbtVal["nvme_version"].(string) {
-		s.Fatalf("Failed to verify the nvme version, got %s, want %s", nvmVersion, tbtVal["nvme_version"].(string))
-	}
+		if strings.TrimSpace(nvmVersion) != tbtVal["nvme_version"].(string) {
+			s.Fatalf("Failed to verify the nvme version, got %s, want %s", nvmVersion, tbtVal["nvme_version"].(string))
+		}
 
-	tbtGeneration, err := cswitch.Generation(ctx, tbtPort)
-	if err != nil {
-		s.Fatal("Failed to get the tbtGeneration: ", err)
-	}
-	if strings.TrimSpace(tbtGeneration) != tbtVal["generation"].(string) {
-		s.Fatalf("Failed to verify the generation, got %s, want %s", tbtGeneration, tbtVal["generation"].(string))
-	}
+		tbtGeneration, err := cswitch.Generation(ctx, tbtPort)
+		if err != nil {
+			s.Fatal("Failed to get the tbtGeneration: ", err)
+		}
+		if strings.TrimSpace(tbtGeneration) != tbtVal["generation"].(string) {
+			s.Fatalf("Failed to verify the generation, got %s, want %s", tbtGeneration, tbtVal["generation"].(string))
+		}
 
-	cSwitchOFF := "0"
-	if err := cswitch.ToggleCSwitchPort(ctx, sessionID, cSwitchOFF, domainIP); err != nil {
-		s.Fatal("Failed to disable c-switch port: ", err)
-	}
+		cSwitchOFF := "0"
+		if err := cswitch.ToggleCSwitchPort(ctx, sessionID, cSwitchOFF, domainIP); err != nil {
+			s.Fatal("Failed to disable c-switch port: ", err)
+		}
 
-	isConnected, err := cswitch.IsDeviceEnumerated(ctx, tbtVal["device_name"].(string), tbtPort)
-	if isConnected {
-		s.Fatal("Failed to disconnect the TBT device: ", err)
+		isConnected, err := cswitch.IsDeviceEnumerated(ctx, tbtVal["device_name"].(string), tbtPort)
+		if isConnected {
+			s.Fatal("Failed to disconnect the TBT device: ", err)
+		}
 	}
 }
