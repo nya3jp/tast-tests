@@ -434,6 +434,9 @@ func diagnoseInitfailure(reader *syslog.Reader, observedErr error) error {
 		if entry.Program == "crash_reporter" && strings.Contains(entry.Content, "Received crash notification for crosvm") {
 			return errors.Wrap(observedErr, entry.Content)
 		}
+		if strings.HasPrefix(entry.Program, "ARCVM") && strings.Contains(entry.Content, "crosvm has exited with error: ") {
+			return errors.Wrap(observedErr, entry.Content)
+		}
 		if strings.HasPrefix(entry.Program, "ARCVM") {
 			// TODO(b/167944318): try a better message
 			lastMessage = entry.Content
