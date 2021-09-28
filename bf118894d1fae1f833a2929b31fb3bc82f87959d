@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b46aa2f_0a386374",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-28T02:09:27Z",
+      "side": 1,
+      "message": "I think we basically should not pass a test that did not verify the condition that the test is designed to do; \"Ensures .lock file does not exist before, after update, does exist during\" in this case.\n\nWhat is the problem with having this test failed when the setup phase failed?",
+      "revId": "bf118894d1fae1f833a2929b31fb3bc82f87959d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab7c887a_dba5bc7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-28T02:09:27Z",
+      "side": 1,
+      "message": "Is there a case where other errors than the AC power exists at the same time?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "bf118894d1fae1f833a2929b31fb3bc82f87959d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
