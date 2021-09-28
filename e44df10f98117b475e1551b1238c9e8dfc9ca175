@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d700fb2e_673b7325",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/login_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-28T20:40:48Z",
+      "side": 1,
+      "message": "you can add `ARCEnabled: f.arcEnabled` here to access it in fixture.go. then just add the `ARCEnabled` bool field here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/nearbyshare/fixture.go;l\u003d214",
+      "revId": "e44df10f98117b475e1551b1238c9e8dfc9ca175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0ffd871_fef8e0ff",
         "filename": "src/chromiumos/tast/local/chrome/nearbyshare/login_fixture.go",
         "patchSetId": 1
