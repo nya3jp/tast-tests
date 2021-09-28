@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package encoding
+// Package video provides common code to run ARC binary tests for video encoding.
+package video
 
 import (
 	"context"
@@ -76,20 +77,16 @@ func TestReportMetrics(t *testing.T) {
 	ctx := context.Background()
 
 	p := perf.NewValues()
-	if err := ReportFPS(ctx, p, name, "testdata/TestFPS.log"); err != nil {
-		t.Error("Failed at ReportFPS(): ", err)
+	if err := reportFPS(ctx, p, name, "testdata/TestFPS.log"); err != nil {
+		t.Error("Failed at reportFPS(): ", err)
 	}
 
-	if err := ReportEncodeLatency(ctx, p, name, "testdata/TestLatency.log"); err != nil {
-		t.Error("Failed at ReportEncodeLatency(): ", err)
+	if err := reportEncodeLatency(ctx, p, name, "testdata/TestLatency.log"); err != nil {
+		t.Error("Failed at reportEncodeLatency(): ", err)
 	}
 
-	if err := ReportCPUUsage(ctx, p, name, "testdata/TestCPU.log"); err != nil {
-		t.Error("Failed at ReportCPUUsage(): ", err)
-	}
-
-	if err := ReportFrameStats(p, name, "testdata/TestFrameStats.log"); err != nil {
-		t.Error("Failed at ReportFrameStats(): ", err)
+	if err := reportCPUUsage(ctx, p, name, "testdata/TestCPU.log"); err != nil {
+		t.Error("Failed at reportCPUUsage(): ", err)
 	}
 
 	saveAndCompare(t, p, "testdata/TestResultsChart.json")
