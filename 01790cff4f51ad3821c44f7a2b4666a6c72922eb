@@ -50,6 +50,23 @@
       "message": "Blocked by b/172972948",
       "revId": "01790cff4f51ad3821c44f7a2b4666a6c72922eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02aeab05_957962f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-28T07:19:19Z",
+      "side": 1,
+      "message": "What\u0027s the next step of the CL?",
+      "revId": "01790cff4f51ad3821c44f7a2b4666a6c72922eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
