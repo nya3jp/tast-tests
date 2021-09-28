@@ -9,13 +9,14 @@ import (
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -35,8 +36,8 @@ func init() {
 
 // PasswordManagerEnabled tests the PasswordManagerEnabled policy.
 func PasswordManagerEnabled(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	for _, param := range []struct {
 		name            string

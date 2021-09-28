@@ -10,11 +10,12 @@ import (
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/charge"
 	"chromiumos/tast/local/rtc"
@@ -62,8 +63,8 @@ func DevicePowerPeakShift(ctx context.Context, s *testing.State) {
 	)
 	mockDate := time.Date(2001, time.January, 1, 12, 0, 0, 0, time.UTC) // 12 pm, Monday, January 1, 2001
 
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	// Shorten deadline to leave time for cleanup.
 	cleanupCtx := ctx
