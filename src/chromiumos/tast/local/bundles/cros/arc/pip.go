@@ -773,8 +773,8 @@ func waitForPIPMenu(ctx context.Context, cr *chrome.Chrome, bounds coords.Rect) 
 			return errors.Wrap(err, "did not grab PIP window screenshot")
 		}
 		// Count the number of pixels that match the PIP window background.
-		pipBgPixels := imgcmp.CountPixels(img, color.RGBA{241, 241, 241, 255})
-		pipMenuPixels := imgcmp.CountPixels(img, color.RGBA{176, 176, 176, 255})
+		pipBgPixels := imgcmp.CountPixelsWithDiff(img, color.RGBA{241, 241, 241, 255}, 30)
+		pipMenuPixels := imgcmp.CountPixelsWithDiff(img, color.RGBA{176, 176, 176, 255}, 30)
 
 		if pipBgPixels > pipMenuPixels {
 			// The menu isn't showing, otherwise there would be more menu overlay pixels than bg pixels.
