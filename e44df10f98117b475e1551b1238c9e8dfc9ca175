@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0ffd871_fef8e0ff",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/login_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-28T20:32:49Z",
+      "side": 1,
+      "message": "is it possible to do the logging in nearbyshare/fixture.go instead? just to keep all of the log collection in the same place\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/nearbyshare/fixture.go;l\u003d353",
+      "revId": "e44df10f98117b475e1551b1238c9e8dfc9ca175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
