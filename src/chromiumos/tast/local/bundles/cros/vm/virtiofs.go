@@ -28,7 +28,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{runPjdfstest},
 		Timeout:      20 * time.Minute,
-		SoftwareDeps: []string{"vm_host", "dlc", "chrome"},
+		SoftwareDeps: []string{"vm_host", "dlc"},
 		Fixture:      "vmDLC",
 	})
 }
