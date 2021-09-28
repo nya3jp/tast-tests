@@ -70,6 +70,52 @@
       },
       "revId": "c1733e26a6324c91fa8ab147d19c693175d53f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca751bb5_8b592e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs_encode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-28T00:16:17Z",
+      "side": 1,
+      "message": "nit: the name of the API is WebCodecs [1], so we should use\nthat here (\"WebCodecsEncode\") and also rename the file to\nweb_codecs_encode.go, etc.\n\n[1] https://w3c.github.io/webcodecs/",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "c1733e26a6324c91fa8ab147d19c693175d53f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d2d8b38_d3e151dc",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-09-28T00:16:17Z",
+      "side": 1,
+      "message": "QQ: Do we need this if we already have l.586?",
+      "range": {
+        "startLine": 587,
+        "startChar": 0,
+        "endLine": 587,
+        "endChar": 47
+      },
+      "revId": "c1733e26a6324c91fa8ab147d19c693175d53f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
