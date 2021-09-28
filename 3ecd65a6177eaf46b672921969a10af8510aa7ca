@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d453f2c7_ee949676",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-09-28T23:52:28Z",
+      "side": 1,
+      "message": "this is fine, but why not just wait until we actually do the uprev? wpa_supplicant/next already has backwards compatibility for this, so we can just remove that and change this together once the uprev is complete (and not introduce extra backward compatibility things)",
+      "revId": "3ecd65a6177eaf46b672921969a10af8510aa7ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff7932f_3d17ffaa",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-09-28T23:52:28Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 52,
+        "startChar": 74,
+        "endLine": 52,
+        "endChar": 81
+      },
+      "revId": "3ecd65a6177eaf46b672921969a10af8510aa7ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
