@@ -16,6 +16,23 @@
       "message": "I don\u0027t think this patch is working. We should revert soon.\n\nhttps://tastboard.corp.google.com/test/vm.AudioLoopbackLatency.ac97",
       "revId": "24c371868d566a671851cd43b674ae11bcd69e24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df60747c_d071fef8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-28T00:36:29Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "24c371868d566a671851cd43b674ae11bcd69e24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
