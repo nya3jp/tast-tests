@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60908b7d_88cc95ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-28T09:34:39Z",
+      "side": 1,
+      "message": "from the commit message:\n\u003e Some lab dut report errors due to be on battery power.\n\nIs that because of a tentative infra issue (like some random device goes battery-power mode)? (please point to a bug if there is a bug tracking that issue.)\nAlso, this test is mainline and informational now. What is the reason that we need to do this workaround?\n\nTast tests by design can only result in PASSED or FAILED. If we \"skip\" the test in the proposed way, it cannot be distinguished from actual PASSED result in the Tast result. So if there is something wrong in the infra and test cannot examine what it is designed to, that test should fail.",
+      "parentUuid": "66f6e141_e51d14b1",
+      "revId": "bf118894d1fae1f833a2929b31fb3bc82f87959d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab7c887a_dba5bc7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
         "patchSetId": 2
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Should not. If no AC power is present fwupd inhibits the device from receiving updates.",
       "parentUuid": "ab7c887a_dba5bc7d",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "bf118894d1fae1f833a2929b31fb3bc82f87959d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5565f5_d9966780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-28T09:34:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a4c837e0_a8a98086",
       "range": {
         "startLine": 97,
         "startChar": 0,
