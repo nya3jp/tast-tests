@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package encoding
+// Package video provides common code to run ARC binary tests for video encoding.
+package video
 
 import (
 	"context"
@@ -86,10 +87,6 @@ func TestReportMetrics(t *testing.T) {
 
 	if err := ReportCPUUsage(ctx, p, name, "testdata/TestCPU.log"); err != nil {
 		t.Error("Failed at ReportCPUUsage(): ", err)
-	}
-
-	if err := ReportFrameStats(p, name, "testdata/TestFrameStats.log"); err != nil {
-		t.Error("Failed at ReportFrameStats(): ", err)
 	}
 
 	saveAndCompare(t, p, "testdata/TestResultsChart.json")

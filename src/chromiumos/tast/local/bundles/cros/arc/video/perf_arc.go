@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package encoding
+// Package video provides common code to run ARC binary tests for video encoding.
+package video
 
 import (
 	"context"
 	"fmt"
 	"io/ioutil"
-	"math"
 	"regexp"
 	"strconv"
 	"strings"
@@ -135,125 +135,6 @@ func ReportPowerConsumption(ctx context.Context, p *perf.Values, name, logPath s
 	testing.ContextLogf(ctx, "> Power consumption: %.2f", v)
 
 	return nil
-}
-
-// channelStats records min, max, sum of statistics (e.g. PSNR) for a channel.
-type channelStats struct {
-	min, max, sum float64
-	num           int
-}
-
-// report saves min, max, avg perf metrics to p.
-func (cs *channelStats) report(p *perf.Values, prefix, unit string) {
-	setPerf := func(stat string, val float64) {
-		p.Set(perf.Metric{
-			Name:      prefix + stat,
-			Unit:      unit,
-			Direction: perf.BiggerIsBetter,
-		}, val)
-	}
-	setPerf("min", cs.min)
-	setPerf("max", cs.max)
-	if cs.num > 0 {
-		setPerf("avg", cs.sum/float64(cs.num))
-	}
-}
-
-// update updates statistics (e.g. PSNR) with the input value.
-func (cs *channelStats) update(value float64) {
-	cs.min = math.Min(value, cs.min)
-	cs.max = math.Max(value, cs.max)
-	cs.sum += value
-	cs.num++
-}
-
-// newChannelStats returns a channelStats struct with default values.
-func newChannelStats() channelStats { return channelStats{min: math.MaxFloat64} }
-
-// frameStats records frame-wise statistics (e.g. PSNR) for YUV and combined channels.
-type frameStats struct{ y, u, v, combined channelStats }
-
-// report saves all stats to p.
-// name is the initial arg passed to getMetricName.
-// typ is the metric type, e.g. "ssim" or "psnr", and is as the unit of perf metric.
-func (fs *frameStats) report(p *perf.Values, name, typ string) {
-	// For "y", "u", "v" channels, the metric key is formatted as "quality.<typ>.<channel>.<stat>", such as "quality.ssim.y.max".
-	// For "combined" channel, the metric key is formatted as "quality.<typ>.<stat>", such as "quality.psnr.avg".
-	prefix := getMetricName(name, fmt.Sprintf("quality.%s.", typ))
-	fs.y.report(p, prefix+"y.", typ)
-	fs.u.report(p, prefix+"u.", typ)
-	fs.v.report(p, prefix+"v.", typ)
-	fs.combined.report(p, prefix, typ)
-}
-
-// newFrameStats returns a frameStats struct with default values.
-func newFrameStats() frameStats {
-	return frameStats{
-		y:        newChannelStats(),
-		u:        newChannelStats(),
-		v:        newChannelStats(),
-		combined: newChannelStats(),
-	}
-}
-
-// ReportFrameStats reports quality from log file which assumes input is YUV420 (for MSE samples per channel), and sets as the perf metrics.
-func ReportFrameStats(p *perf.Values, name, logPath string) error {
-	b, err := ioutil.ReadFile(logPath)
-	if err != nil {
-		return errors.Wrapf(err, "failed to read file %s", logPath)
-	}
-
-	ssim := newFrameStats()
-	psnr := newFrameStats()
-
-	for i, line := range strings.Split(string(b), "\n") {
-		if i == 0 || line == "" {
-			// Skip the first CSV header line or blank line.
-			continue
-		}
-		values := strings.Split(line, ",")
-		if len(values) != 9 {
-			return errors.Errorf("line %d does not contain 9 comma-separated values %q", i, line)
-		}
-
-		var index, width, height, ssimY, ssimU, ssimV, mseY, mseU, mseV float64
-		for j, dst := range []*float64{&index, &width, &height, &ssimY, &ssimU, &ssimV, &mseY, &mseU, &mseV} {
-			if *dst, err = strconv.ParseFloat(values[j], 64); err != nil {
-				return errors.Wrapf(err, "failed to parse %q in field %d", values[j], j)
-			}
-		}
-
-		ssim.y.update(ssimY)
-		ssim.u.update(ssimU)
-		ssim.v.update(ssimV)
-		// Weighting of YUV channels for SSIM taken from libvpx.
-		ssim.combined.update(0.8*ssimY + 0.1*(ssimU+ssimV))
-
-		// Samples per MSE score assumes YUV420 subsampling.
-		psnr.y.update(mseToPSNR(width*height*4/4, 255, mseY))
-		psnr.u.update(mseToPSNR(width*height*4/4, 255, mseU))
-		psnr.v.update(mseToPSNR(width*height*4/4, 255, mseV))
-		psnr.combined.update(mseToPSNR(width*height*6/4, 255, mseY+mseU+mseV))
-	}
-
-	if ssim.y.num == 0 {
-		return errors.New("frame statistics do not exist")
-	}
-
-	ssim.report(p, name, "ssim")
-	psnr.report(p, name, "psnr")
-	return nil
-}
-
-// mseToPSNR calculates PSNR from MSE for a frame.
-func mseToPSNR(samples, peak, mse float64) float64 {
-	const maxPSNR = 100.0
-	// Prevent a divide-by-zero, MSE at 0 is perfect quality (no error).
-	if mse == 0 {
-		return maxPSNR
-	}
-	psnr := 10.0 * math.Log10(peak*peak*samples/mse)
-	return math.Min(psnr, maxPSNR)
 }
 
 // getMetricName wraps the stream name and key into the metric name.
