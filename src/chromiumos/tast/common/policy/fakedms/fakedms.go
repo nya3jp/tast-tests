@@ -59,11 +59,11 @@ type FakeDMS struct {
 // Value is an interface for use with composable fixtures. It allows
 // retrieval of the underlying FakeDMS object.
 type Value interface {
-	FakeDMSValue() *FakeDMS
+	FakeDMS() *FakeDMS
 }
 
-// FakeDMSValue retrieves the underlying FakeDMS object.
-func (fdms *FakeDMS) FakeDMSValue() *FakeDMS {
+// FakeDMS retrieves the underlying FakeDMS object.
+func (fdms *FakeDMS) FakeDMS() *FakeDMS {
 	return fdms
 }
 
