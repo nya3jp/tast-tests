@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3140179_57a8fc81",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_pwrbutton_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-28T01:31:23Z",
+      "side": 1,
+      "message": "Please leave some time for cleanup, e.g:\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/app_android_studio.go;l\u003d47",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 6
+      },
+      "revId": "98ff6a18eb445a909b0bfb32ccbec3aed83607b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d30fc30c_d39b5b03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_pwrbutton_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-28T01:31:23Z",
+      "side": 1,
+      "message": "Please define a func outside this main func and call it to make it clearer.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 12
+      },
+      "revId": "98ff6a18eb445a909b0bfb32ccbec3aed83607b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2936f0fd_29726195",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_pwrbutton_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-28T01:31:23Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 9
+      },
+      "revId": "98ff6a18eb445a909b0bfb32ccbec3aed83607b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5600058c_d3cf7025",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_pwrbutton_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-28T01:31:23Z",
+      "side": 1,
+      "message": "to convert string",
+      "range": {
+        "startLine": 117,
+        "startChar": 19,
+        "endLine": 117,
+        "endChar": 36
+      },
+      "revId": "98ff6a18eb445a909b0bfb32ccbec3aed83607b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f6ace0_46f98824",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_pwrbutton_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-09-28T01:31:23Z",
+      "side": 1,
+      "message": "Failed to check the sleept state, got %d, want 5",
+      "revId": "98ff6a18eb445a909b0bfb32ccbec3aed83607b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
