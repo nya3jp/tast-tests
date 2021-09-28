@@ -83,6 +83,11 @@ func SoundCardInit(ctx context.Context, s *testing.State) {
 
 // exitSuccess verifies sound_card_init completes running without any error.
 func exitSuccess(ctx context.Context, s *testing.State, soundCardID string) {
+
+	if err := soundcardinit.CreateCalibFiles(ctx, soundCardID, ampCount); err != nil {
+		s.Fatal("Failed to create calib files: ", err)
+	}
+
 	// Run sound_card_init.
 	runTimeFile := fmt.Sprintf(soundcardinit.RunTimeFile, soundCardID)
 	startTime := time.Now()
