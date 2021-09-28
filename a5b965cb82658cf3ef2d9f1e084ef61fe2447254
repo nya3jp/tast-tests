@@ -69,6 +69,30 @@
       },
       "revId": "a5b965cb82658cf3ef2d9f1e084ef61fe2447254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2b13bf5_85c96595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-09-28T09:21:25Z",
+      "side": 1,
+      "message": "oh, err, it\u0027s an example. I think you need change the subsystem \"usb\" to others, maybe \"thunderbolt\" I guess?",
+      "parentUuid": "665b1140_d51a800e",
+      "range": {
+        "startLine": 97,
+        "startChar": 40,
+        "endLine": 97,
+        "endChar": 61
+      },
+      "revId": "a5b965cb82658cf3ef2d9f1e084ef61fe2447254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
