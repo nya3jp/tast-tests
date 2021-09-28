@@ -22,6 +22,30 @@
       },
       "revId": "670cdc82d9ed87f34c6807c247612d97a0667fa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc0b1e64_66cbb764",
+        "filename": "src/chromiumos/tast/local/chrome/ui/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-28T23:44:12Z",
+      "side": 1,
+      "message": "Jun, I understand your point. We once thought to use the class name \"RootWindow-0\" of the most higher ancestor window on the native display to uniquely identify it, but we are not sure if this class name \"RootWindow-0\" will stay the same on different devices, such as on chrombox which doesn\u0027t have a builtin display. Given the uncertainty and possible flakiness, we decided to use First() which will be guaranteed to work.",
+      "parentUuid": "56379650_510a9d98",
+      "range": {
+        "startLine": 36,
+        "startChar": 55,
+        "endLine": 36,
+        "endChar": 60
+      },
+      "revId": "670cdc82d9ed87f34c6807c247612d97a0667fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
