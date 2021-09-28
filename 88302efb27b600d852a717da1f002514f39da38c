@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7879dc5_716c6464",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-28T09:25:15Z",
+      "side": 1,
+      "message": "LGTM, thanks for the change!",
+      "revId": "88302efb27b600d852a717da1f002514f39da38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc1a4c5_72f4f59b",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-28T09:25:15Z",
+      "side": 1,
+      "message": "Could you please rename this interface to `HasFakeDMS` instead?\nor maybe I can do it in another CL, if it\u0027s not relevant.",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "88302efb27b600d852a717da1f002514f39da38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
