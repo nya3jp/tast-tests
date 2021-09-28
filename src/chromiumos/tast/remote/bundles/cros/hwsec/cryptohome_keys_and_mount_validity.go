@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/common/storage/files"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/hwsec/util"
 	hwsecremote "chromiumos/tast/remote/hwsec"
@@ -30,17 +31,17 @@ func init() {
 		SoftwareDeps: []string{"tpm", "reboot"},
 		// Skip "enguarde" due to the reboot issue when removing the key. Please see b/151057300.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("enguarde")),
-		Timeout:      15 * time.Minute,
+		Timeout:      25 * time.Minute,
 	})
 }
 
 // unmountTestVault is a helper function that unmount the test vault. It expects
 // the test vault to be mounted when it is called.
-func unmountTestVault(ctx context.Context, utility *hwsec.CryptohomeClient) error {
+func unmountTestVault(ctx context.Context, utility *hwsec.CryptohomeClient, hf *files.HomedirFiles) error {
 	if _, err := utility.Unmount(ctx, util.FirstUsername); err != nil {
 		return errors.Wrap(err, "failed to unmount vault")
 	}
-	if err := checkMountState(ctx, utility, false); err != nil {
+	if err := checkMountState(ctx, utility, hf, false); err != nil {
 		return errors.Wrap(err, "vault still mounted after unmount")
 	}
 	return nil
@@ -49,13 +50,26 @@ func unmountTestVault(ctx context.Context, utility *hwsec.CryptohomeClient) erro
 // checkMountState is a helper function that returns an error if the result
 // from IsMounted() is not equal to expected, or if we've problem calling
 // IsMounted().
-func checkMountState(ctx context.Context, utility *hwsec.CryptohomeClient, expected bool) error {
+// Also, if the vault is mounted, it'll check that previous files stored in there
+// is still available and correct. Also, it'll update the file contents so that we
+// can detect if the changes made to the vault is not lost.
+func checkMountState(ctx context.Context, utility *hwsec.CryptohomeClient, hf *files.HomedirFiles, expected bool) error {
 	actuallyMounted, err := utility.IsMounted(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to call IsMounted()")
 	}
 	if actuallyMounted != expected {
 		return errors.Errorf("incorrect IsMounted() state %t, expected %t", actuallyMounted, expected)
+	}
+	if expected {
+		// Mounted? Let's check the files.
+		if err = hf.Verify(ctx); err != nil {
+			return errors.Wrap(err, "homedir files failed to verify")
+		}
+		// Add more content to make sure contents are not lost.
+		if err = hf.Step(ctx); err != nil {
+			return errors.Wrap(err, "homedir files failed to step")
+		}
 	}
 	return nil
 }
@@ -114,7 +128,7 @@ func testListKeysEx(ctx context.Context, utility *hwsec.CryptohomeClient) error 
 }
 
 // testAddRemoveKeyEx tests that AddKeyEx() and RemoveKeyEx() work as expected.
-func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) error {
+func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient, hf *files.HomedirFiles) error {
 	// AddKeyEx shouldn't work if password is incorrect.
 	if err := utility.AddVaultKey(ctx, util.FirstUsername, util.IncorrectPassword, util.Password1Label, util.FirstPassword2, util.Password2Label, false); err == nil {
 		return errors.New("add key succeeded when it shouldn't")
@@ -129,13 +143,13 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) er
 	}
 
 	// Mount and unmount with the new key.
-	if err := checkMountState(ctx, utility, false); err != nil {
+	if err := checkMountState(ctx, utility, hf, false); err != nil {
 		return errors.Wrap(err, "vault mounted before testing AddKeyEx")
 	}
 	if err := utility.MountVault(ctx, util.Password2Label, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword2), false, hwsec.NewVaultConfig()); err != nil {
 		return errors.Wrap(err, "failed to mount vault with the added key")
 	}
-	if err := checkMountState(ctx, utility, true); err != nil {
+	if err := checkMountState(ctx, utility, hf, true); err != nil {
 		return errors.Wrap(err, "vault not mounted after mounting with added key")
 	}
 
@@ -147,7 +161,7 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) er
 		return errors.Wrap(err, "new key malfunctions while mounted with added key")
 	}
 	// Now unmount it.
-	if err := unmountTestVault(ctx, utility); err != nil {
+	if err := unmountTestVault(ctx, utility, hf); err != nil {
 		return errors.Wrap(err, "failed to unmount")
 	}
 
@@ -155,7 +169,7 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) er
 	if err := utility.MountVault(ctx, util.Password1Label, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword1), false, hwsec.NewVaultConfig()); err != nil {
 		return errors.Wrap(err, "failed to mount vault with the old key after adding pin")
 	}
-	if err := checkMountState(ctx, utility, true); err != nil {
+	if err := checkMountState(ctx, utility, hf, true); err != nil {
 		return errors.Wrap(err, "vault not mounted after mounting with old key after adding new key")
 	}
 	// CheckKeyEx should work correctly with both the new and old key.
@@ -165,7 +179,7 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) er
 	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.Password2Label, util.FirstPassword2, util.IncorrectPassword); err != nil {
 		return errors.Wrap(err, "new key malfunctions while mounted with old key")
 	}
-	if err := unmountTestVault(ctx, utility); err != nil {
+	if err := unmountTestVault(ctx, utility, hf); err != nil {
 		return errors.Wrap(err, "failed to unmount")
 	}
 
@@ -176,7 +190,7 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) er
 	if err := utility.MountVault(ctx, util.Password2Label, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword2), false, hwsec.NewVaultConfig()); err == nil {
 		return errors.New("still can mount vault with removed key")
 	}
-	if err := checkMountState(ctx, utility, false); err != nil {
+	if err := checkMountState(ctx, utility, hf, false); err != nil {
 		return errors.Wrap(err, "vault mounted after unmounting and failed mount")
 	}
 
@@ -185,7 +199,7 @@ func testAddRemoveKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) er
 
 // testMigrateKeyEx tests that MigrateKeyEx() works correctly.
 // Note: MigrateKeyEx() changes the vault password.
-func testMigrateKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) error {
+func testMigrateKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient, hf *files.HomedirFiles) error {
 	// MigrateKeyEx should work, and check if both new and old password behave as expected.
 	if err := utility.ChangeVaultPassword(ctx, util.FirstUsername, util.FirstPassword1, util.Password1Label, util.FirstChangedPassword); err != nil {
 		return errors.Wrap(err, "failed to change vault password")
@@ -201,13 +215,13 @@ func testMigrateKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) erro
 	if err := utility.MountVault(ctx, util.Password1Label, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstChangedPassword), false, hwsec.NewVaultConfig()); err != nil {
 		return errors.Wrap(err, "failed to mount with new password")
 	}
-	if err := checkMountState(ctx, utility, true); err != nil {
+	if err := checkMountState(ctx, utility, hf, true); err != nil {
 		return errors.Wrap(err, "vault not mounted after mounting with changed password")
 	}
 	if err := utility.ChangeVaultPassword(ctx, util.FirstUsername, util.FirstChangedPassword, util.Password1Label, util.FirstPassword1); err != nil {
 		return errors.Wrap(err, "failed to change vault password back when mounted")
 	}
-	if err := checkMountState(ctx, utility, true); err != nil {
+	if err := checkMountState(ctx, utility, hf, true); err != nil {
 		return errors.Wrap(err, "vault not mounted after changing password while mounted")
 	}
 
@@ -219,10 +233,10 @@ func testMigrateKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) erro
 
 	// The new secret should continue to work when we try to authenticate
 	// through CheckKeyEx() API, even after we unmount.
-	if err := unmountTestVault(ctx, utility); err != nil {
+	if err := unmountTestVault(ctx, utility, hf); err != nil {
 		return errors.Wrap(err, "failed to unmount")
 	}
-	if err := checkMountState(ctx, utility, false); err != nil {
+	if err := checkMountState(ctx, utility, hf, false); err != nil {
 		return errors.Wrap(err, "vault mounted after unmounting while testing MigrateKeyEx")
 	}
 	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.Password1Label, util.FirstPassword1, util.FirstChangedPassword); err != nil {
@@ -233,7 +247,7 @@ func testMigrateKeyEx(ctx context.Context, utility *hwsec.CryptohomeClient) erro
 }
 
 // checkUserVault checks that the vault/keys related API works correctly.
-func checkUserVault(ctx context.Context, utility *hwsec.CryptohomeClient) error {
+func checkUserVault(ctx context.Context, utility *hwsec.CryptohomeClient, hf *files.HomedirFiles) error {
 	if err := testCheckKeyEx(ctx, utility, util.FirstUsername, util.Password1Label, util.FirstPassword1, util.IncorrectPassword); err != nil {
 		return errors.Wrap(err, "test on CheckKeyEx failed")
 	}
@@ -242,11 +256,11 @@ func checkUserVault(ctx context.Context, utility *hwsec.CryptohomeClient) error 
 		return errors.Wrap(err, "test on ListKeysEx failed")
 	}
 
-	if err := testAddRemoveKeyEx(ctx, utility); err != nil {
+	if err := testAddRemoveKeyEx(ctx, utility, hf); err != nil {
 		return errors.Wrap(err, "test on AddKeyEx/RemoveKeyEx failed")
 	}
 
-	if err := testMigrateKeyEx(ctx, utility); err != nil {
+	if err := testMigrateKeyEx(ctx, utility, hf); err != nil {
 		return errors.Wrap(err, "test on MigrateKeyEx failed")
 	}
 
@@ -270,20 +284,34 @@ func CryptohomeKeysAndMountValidity(ctx context.Context, s *testing.State) {
 	}
 	s.Log("TPM is confirmed to be reset")
 
+	hf, err := files.NewHomedirFiles(ctx, utility, r, util.FirstUsername)
+	if err != nil {
+		s.Fatal("Failed to create HomedirFiles for testing files in user's home directory: ", err)
+	}
+
 	// Create the user and check it is correctly mounted and can be unmounted.
 	func() {
 		if err := utility.MountVault(ctx, util.Password1Label, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword1), true, hwsec.NewVaultConfig()); err != nil {
 			s.Fatal("Failed to create user: ", err)
 		}
+
+		// Reset the state of the test files and Step() it once so we've something to start with.
+		if err := hf.Clear(ctx); err != nil {
+			s.Fatal("Failed to clear test files in the user's home directory: ", err)
+		}
+		if err := hf.Step(ctx); err != nil {
+			s.Fatal("Failed to initialize the test files in the user's home directory: ", err)
+		}
+
 		// Unmount within this closure, because we want to have the thing
 		// unmounted for checkUserVault() to work.
 		defer func() {
-			if err := unmountTestVault(ctx, utility); err != nil {
+			if err := unmountTestVault(ctx, utility, hf); err != nil {
 				s.Fatal("Failed to unmount: ", err)
 			}
 		}()
 
-		if err := checkMountState(ctx, utility, true); err != nil {
+		if err := checkMountState(ctx, utility, hf, true); err != nil {
 			s.Fatal("Vault is not mounted: ", err)
 		}
 	}()
@@ -297,27 +325,27 @@ func CryptohomeKeysAndMountValidity(ctx context.Context, s *testing.State) {
 		if err := utility.MountVault(ctx, util.Password1Label, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword1), false, hwsec.NewVaultConfig()); err == nil {
 			s.Fatal("Still can mount vault after removing vault: ")
 		}
-		if err := checkMountState(ctx, utility, false); err != nil {
+		if err := checkMountState(ctx, utility, hf, false); err != nil {
 			s.Fatal(err, "Vault mounted after removing vault: ")
 		}
 	}()
 
 	// Take ownership, confirming the vault state before and afterwards.
-	if err := checkUserVault(ctx, utility); err != nil {
+	if err = checkUserVault(ctx, utility, hf); err != nil {
 		s.Fatal("Check user failed: ", err)
 	}
-	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
+	if err = helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Time out waiting for TPM to be ready: ", err)
 	}
-	if err := checkUserVault(ctx, utility); err != nil {
+	if err = checkUserVault(ctx, utility, hf); err != nil {
 		s.Fatal("Check user failed: ", err)
 	}
 
 	// Reboot then confirm vault status.
-	if err := helper.Reboot(ctx); err != nil {
+	if err = helper.Reboot(ctx); err != nil {
 		s.Fatal("Failed to reboot: ", err)
 	}
-	if err := checkUserVault(ctx, utility); err != nil {
+	if err = checkUserVault(ctx, utility, hf); err != nil {
 		s.Fatal("Check user failed: ", err)
 	}
 }
