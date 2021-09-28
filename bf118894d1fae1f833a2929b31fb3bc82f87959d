@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f4bb8c4_ed734d29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-28T15:36:04Z",
+      "side": 1,
+      "message": "Thanks for the details information. I can see there have been flakiness, but in order to go forward, we need to make sure if it is intended behavior by the infra design. Especially, if having some devices DC-powered is by-design, test skip should be done by the Tast framework or the test scheduler infra side, rather than the individual test. (Othrewise, due to sharding and test scheduling, we cannot keep the test coverage.)\nI will raise the question to the infra team.",
+      "parentUuid": "df216341_fab07a38",
+      "revId": "bf118894d1fae1f833a2929b31fb3bc82f87959d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab7c887a_dba5bc7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
         "patchSetId": 2
