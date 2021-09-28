@@ -39,8 +39,8 @@ func init() {
 			"crosvm-core@google.com",
 		},
 		Impl:            &dlcFixture{},
-		SetUpTimeout:    10 * time.Second,
-		ResetTimeout:    1 * time.Second,
+		SetUpTimeout:    30 * time.Second,
+		ResetTimeout:    5 * time.Second,
 		TearDownTimeout: 5 * time.Second,
 	})
 }
