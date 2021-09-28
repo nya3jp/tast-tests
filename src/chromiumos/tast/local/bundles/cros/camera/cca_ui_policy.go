@@ -23,7 +23,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -40,8 +39,8 @@ func init() {
 }
 
 func CCAUIPolicy(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	scripts := []string{s.DataPath("cca_ui.js")}
 	outDir := s.OutDir()
