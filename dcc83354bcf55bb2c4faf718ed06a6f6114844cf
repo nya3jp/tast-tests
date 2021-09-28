@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5a324b_21557af6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-09-28T16:59:28Z",
+      "side": 1,
+      "message": "added to cellular_sim_active group as active sim needed to run this test(Missed this earlier)",
+      "revId": "dcc83354bcf55bb2c4faf718ed06a6f6114844cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
