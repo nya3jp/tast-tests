@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
@@ -16,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
 )
@@ -32,7 +32,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "ash",
-				Fixture: "chromePolicyLoggedIn",
+				Fixture: fixture.ChromePolicyLoggedIn,
 				Val:     lacros.ChromeTypeChromeOS,
 			},
 			{
@@ -47,15 +47,8 @@ func init() {
 
 // GetUserMediaPolicy tests whether admin policy can successfully blocks getUserMedia().
 func GetUserMediaPolicy(ctx context.Context, s *testing.State) {
-	var cr *chrome.Chrome
-	var fdms *fakedms.FakeDMS
-	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
-		cr = s.FixtValue().(launcher.FixtValue).Chrome()
-		fdms = s.FixtValue().(fakedms.Value).FakeDMS()
-	} else {
-		cr = s.FixtValue().(*fixtures.FixtData).Chrome
-		fdms = s.FixtValue().(*fixtures.FixtData).FakeDMS
-	}
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{&policy.VideoCaptureAllowed{Val: false}}); err != nil {
 		s.Fatal("Failed to serve policy to ban video capture: ", err)
