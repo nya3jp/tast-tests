@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7a85c0a_3879a038",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-28T16:30:41Z",
+      "side": 1,
+      "message": "lgtm,thanks!",
+      "revId": "bdfee9be1ec1cf7087589bbcac79a1d4f0c71034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4d2ed94_48401496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-28T16:30:41Z",
+      "side": 1,
+      "message": "should we start putting them in package wmp? If you don\u0027t want to waste time updating and move them all later thats fine as well.",
+      "revId": "bdfee9be1ec1cf7087589bbcac79a1d4f0c71034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8152cb53_0251c5ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-28T16:30:41Z",
+      "side": 1,
+      "message": "nit: ctx -\u003e cleanupCtx",
+      "range": {
+        "startLine": 58,
+        "startChar": 33,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "bdfee9be1ec1cf7087589bbcac79a1d4f0c71034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8296643_67064690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-28T16:30:41Z",
+      "side": 1,
+      "message": "nit: suggestion to reword the comment a bit to match the algorithm\n\n// Overview only animates the user visible windows for performance reasons. Here the Chrome window is maximized and completely occludes the Files window, so the expectation is that only the Chrome window animates.\n\nor something along those lines.",
+      "revId": "bdfee9be1ec1cf7087589bbcac79a1d4f0c71034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "284d3dd7_b9da5b5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-28T16:30:41Z",
+      "side": 1,
+      "message": "nit: Click -\u003e Clicking",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "bdfee9be1ec1cf7087589bbcac79a1d4f0c71034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be896408_bc96b31d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-09-28T16:30:41Z",
+      "side": 1,
+      "message": "optional nit: I added some metadata for this button about a week ago [1]. I personally like using the class names because they are bit more unique.\n\n[1] https://chromium-review.googlesource.com/c/chromium/src/+/3162829",
+      "range": {
+        "startLine": 109,
+        "startChar": 31,
+        "endLine": 109,
+        "endChar": 35
+      },
+      "revId": "bdfee9be1ec1cf7087589bbcac79a1d4f0c71034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
