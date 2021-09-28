@@ -162,7 +162,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		// Launch lacros via shelf.
 		f := s.FixtValue().(cuj.FixtureData).LacrosFixt
 
-		l, err := lacros.ShelfLaunch(ctx, tconn, f)
+		l, err := lacros.LaunchFromShelf(ctx, tconn, f.LacrosPath())
 		if err != nil {
 			s.Fatal("Failed to launch lacros: ", err)
 		}
