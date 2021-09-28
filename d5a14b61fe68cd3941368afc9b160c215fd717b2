@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0df4dc7d_5495ce6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-28T14:23:11Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "parentUuid": "da334807_f6df9613",
+      "revId": "d5a14b61fe68cd3941368afc9b160c215fd717b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06311cb0_7e4fd714",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-28T14:11:16Z",
       "side": 1,
       "message": "nit: rename to address",
+      "range": {
+        "startLine": 284,
+        "startChar": 12,
+        "endLine": 284,
+        "endChar": 16
+      },
+      "revId": "d5a14b61fe68cd3941368afc9b160c215fd717b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b9555d2_43f44a14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-28T14:23:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06311cb0_7e4fd714",
       "range": {
         "startLine": 284,
         "startChar": 12,
