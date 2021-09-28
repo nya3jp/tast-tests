@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dbb9537_eaa203e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-09-28T17:59:12Z",
+      "side": 1,
+      "message": "Hi Alex, Could you add some WIFI experts in Google who can review this change?. Thanks\n",
+      "revId": "c3b95d4099fc81aaa30fd6a241602747f4a215d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
