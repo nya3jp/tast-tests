@@ -46,6 +46,30 @@
       },
       "revId": "359bb7701b8bfc8013b535f6be9135fa3618059b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b4dd5e6_e26c6fa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/dlc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-28T01:09:20Z",
+      "side": 1,
+      "message": "Failing runs seem to be around 4-5 seconds.",
+      "parentUuid": "fc892fb8_094a8927",
+      "range": {
+        "startLine": 44,
+        "startChar": 19,
+        "endLine": 44,
+        "endChar": 34
+      },
+      "revId": "359bb7701b8bfc8013b535f6be9135fa3618059b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
