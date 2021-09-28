@@ -16,6 +16,24 @@
       "message": "Cq-Depend on the previous CL and Cq-Depend in the previous CL on this one to make it more obvious it\u0027s needed.\n\nIf Gerrit is not happy, add a comment that the CLs need to be used together.",
       "revId": "b61bb09b194970971acc90d9c99b98b997e53034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447bf405_3b53995d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-28T17:24:47Z",
+      "side": 1,
+      "message": "What to write exactly?",
+      "parentUuid": "b0797952_0ea62c22",
+      "revId": "b61bb09b194970971acc90d9c99b98b997e53034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
