@@ -245,21 +245,22 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 func sendNetworkDataToLocalhost(sizeMiBs int, s *testing.State) {
 	var wg sync.WaitGroup
 	wg.Add(2)
-	port := "localhost:12121"
-	go listener(port, int64(sizeMiBs), &wg, s)
-	go dialer(port, sizeMiBs, &wg, s)
-	wg.Wait()
-}
 
-// listener listens to the tcp connection on given port.
-func listener(port string, sizeMiBs int64, wg *sync.WaitGroup, s *testing.State) {
-	defer wg.Done()
-
-	lstnr, err := net.Listen("tcp", port)
+	// Listen from an available port in localhost.
+	lstnr, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
 		s.Error("Can't listen to tcp port: ", err)
 	}
 	defer lstnr.Close()
+
+	go listener(lstnr, int64(sizeMiBs), &wg, s)
+	go dialer(lstnr.Addr().String(), sizeMiBs, &wg, s)
+	wg.Wait()
+}
+
+// listener listens to the tcp connection on given Listener and reads the data.
+func listener(lstnr net.Listener, sizeMiBs int64, wg *sync.WaitGroup, s *testing.State) {
+	defer wg.Done()
 
 	conn, err := lstnr.Accept()
 	if err != nil {
