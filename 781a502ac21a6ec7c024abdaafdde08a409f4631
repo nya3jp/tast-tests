@@ -1107,6 +1107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "832cacba_00b4314b",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T23:07:43Z",
+      "side": 1,
+      "message": "Sorry I\u0027m still not sure if actual timeout is used in unit tests or not here.\nDoes the unit test actually consumes 200ms here? If that\u0027s the case, that should be avoided.",
+      "parentUuid": "bc1527d5_1181f918",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 67
+      },
+      "revId": "781a502ac21a6ec7c024abdaafdde08a409f4631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "791cdc09_d89cde93",
         "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
         "patchSetId": 5

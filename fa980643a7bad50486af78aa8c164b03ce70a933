@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fafe20d7_b5bf58c1",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T23:07:43Z",
+      "side": 1,
+      "message": "command ?\nLet\u0027s avoid type specifying prefix.",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 9
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa82b86d_158ae913",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T23:07:43Z",
+      "side": 1,
+      "message": "nit: sshCommand ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e3e2730_12a70dca",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T23:07:43Z",
+      "side": 1,
+      "message": "Is this method needed?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f985b890_0c056c1a",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T23:07:43Z",
+      "side": 1,
+      "message": "nit: ptyRE\nI guess RE is an acronym for regular expression.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 6
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efe31357_39f03292",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T23:07:43Z",
+      "side": 1,
+      "message": "It has a risk of race condition. If we break here, the goroutine update both ptyFound and ptyDone. Then the main go routine can choose case \u003c- ptyDone path unexpectedly. You have to return here instead of break.\nAlso, I think we don\u0027t have to split ptyFound and ptyDone. We can go with only one channel which has type chan error.\n\ncase err :\u003d \u003c-done:\n  if err !\u003d nil {\n     return ...\n  }\n  return ....",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 9
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f2d40bf_4d21edb2",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T23:07:43Z",
+      "side": 1,
+      "message": "read succeeded unexpectedly\n\nLet\u0027s stick with stating got value first.",
+      "range": {
+        "startLine": 117,
+        "startChar": 21,
+        "endLine": 117,
+        "endChar": 44
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e838453_36b39c1f",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T23:07:43Z",
+      "side": 1,
+      "message": "read returned %v, want 0",
+      "range": {
+        "startLine": 120,
+        "startChar": 24,
+        "endLine": 120,
+        "endChar": 61
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d09a5a6_31618a7f",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T23:07:43Z",
+      "side": 1,
+      "message": "could you handle err !\u003d nil and n!\u003d 7 separately?\n\nif n, err :\u003d p1.Write(...); err !\u003d nil {\n  return errors.Wrapf(err, \"Write\")\n} else if n !\u003d 7 {\n  return errors.Errorf(\"Write returned %v, want 7\", n)\n}",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 3
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0fed77a_331d75d8",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T23:07:43Z",
+      "side": 1,
+      "message": "write returned %v, want 7",
+      "range": {
+        "startLine": 126,
+        "startChar": 28,
+        "endLine": 126,
+        "endChar": 62
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eff0c394_df218c6c",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T23:07:43Z",
+      "side": 1,
+      "message": "I think Read should make sure it doesn\u0027t succeed after it returns an error.\nOtherwise, every caller should do this polling, which is complex.\nI think each implementation should do polling as needed, because implementations better know about if pollings are needed.\nIt would make this code be like:\n\nfor total \u003c len(buf) {\n  n, err :\u003d p2.Read(ctx, buf[total:])\n  if err !\u003d nil {\n    return err\n  }\n  total +\u003d n\n}\nif string(buf) !\u003d \"abcdefg\" {\n  ...\n}\n\nOptinoally, if we see this for loop everywhere, we can define a common helper method like io.ReadFull https://pkg.go.dev/io#ReadFull .\nImagine we have portutil.ReadFull method, and the above code would look like\n\nif err :\u003d portutil.ReadFull(ctx, p2.Read, buf); err !\u003d nil {\n  return err\n}\n...",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03da5b47_50ac9ef4",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T23:07:43Z",
+      "side": 1,
+      "message": "Is it guaranteed that Write writes full bytes in case of non error?\nCould you update the API document of Write accordingly?\nYou may want to refer to https://pkg.go.dev/io#Writer",
+      "range": {
+        "startLine": 150,
+        "startChar": 14,
+        "endLine": 150,
+        "endChar": 19
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f6e75fe_b6a431f2",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T23:07:43Z",
+      "side": 1,
+      "message": "Is it guarnateed that Read reads full bytes (i.e. for loop around Read is not needed)? If so, could you udpate the API document of Read accordingly?\nYou may want to refer to io.Reader https://pkg.go.dev/io#Reader on writing API document.",
+      "range": {
+        "startLine": 160,
+        "startChar": 13,
+        "endLine": 160,
+        "endChar": 17
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "721bf44c_9da95e10",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T23:07:43Z",
+      "side": 1,
+      "message": "I think Read should make sure it doesn\u0027t succeed after it returns an error.\nOtherwise, every caller should do this polling, which is complex.\nI think instead polling could be done in each implementation as needed, because implementations better know about if pollings are needed.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 84
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
