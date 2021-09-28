@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -59,9 +58,9 @@ func runStandardizedTrackpadZoomTest(ctx context.Context, s *testing.State, test
 	txtZoomOutStateID := testParameters.AppPkgName + ":id/txtZoomOutState"
 	zoomOutSuccessLabelSelector := testParameters.Device.Object(ui.ID(txtZoomOutStateID), ui.Text("ZOOM OUT: COMPLETE"))
 
-	trackpad, err := input.Trackpad(ctx)
+	trackpad, err := standardizedtestutil.NewTrackpadInputDevice(ctx, testParameters)
 	if err != nil {
-		s.Fatal("Failed to initialize the trackpad: ", err)
+		s.Fatal("Failed to setup the trackpad: ", err)
 	}
 	defer trackpad.Close()
 
@@ -79,7 +78,7 @@ func runStandardizedTrackpadZoomTest(ctx context.Context, s *testing.State, test
 	}
 
 	// After the zoom in, only the zoom in label should be in the success state.
-	if err := standardizedtestutil.TrackpadZoom(ctx, trackpad, testParameters, txtZoomSelector, standardizedtestutil.ZoomIn); err != nil {
+	if err := trackpad.Zoom(txtZoomSelector, standardizedtestutil.ZoomIn); err != nil {
 		s.Fatal("Failed to perform the zoom: ", err)
 	}
 
@@ -92,7 +91,7 @@ func runStandardizedTrackpadZoomTest(ctx context.Context, s *testing.State, test
 	}
 
 	// After the zoom out, all zoom labels should be in the success state.
-	if err := standardizedtestutil.TrackpadZoom(ctx, trackpad, testParameters, txtZoomSelector, standardizedtestutil.ZoomOut); err != nil {
+	if err := trackpad.Zoom(txtZoomSelector, standardizedtestutil.ZoomOut); err != nil {
 		s.Fatal("Failed to perform the zoom: ", err)
 	}
 

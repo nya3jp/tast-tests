@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -54,7 +53,7 @@ func runStandardizedTrackpadLeftClickTest(ctx context.Context, s *testing.State,
 	btnLeftClickID := testParameters.AppPkgName + ":id/btnLeftClick"
 	btnLeftClickSelector := testParameters.Device.Object(ui.ID(btnLeftClickID))
 
-	trackpad, err := input.Trackpad(ctx)
+	trackpad, err := standardizedtestutil.NewTrackpadInputDevice(ctx, testParameters)
 	if err != nil {
 		s.Fatal("Failed to setup the trackpad: ", err)
 	}
@@ -64,7 +63,7 @@ func runStandardizedTrackpadLeftClickTest(ctx context.Context, s *testing.State,
 		s.Fatal("Failed to find the button to click: ", err)
 	}
 
-	if err := standardizedtestutil.TrackpadClickObject(ctx, testParameters, btnLeftClickSelector, trackpad, standardizedtestutil.LeftPointerButton); err != nil {
+	if err := trackpad.ClickObject(btnLeftClickSelector, standardizedtestutil.LeftPointerButton); err != nil {
 		s.Fatal("Failed to click the button: ", err)
 	}
 

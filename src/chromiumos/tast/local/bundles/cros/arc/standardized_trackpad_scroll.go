@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -53,9 +52,9 @@ func StandardizedTrackpadScroll(ctx context.Context, s *testing.State) {
 
 // runStandardizedTrackpadScrollTest performs up and down scroll tests using the trackpad.
 func runStandardizedTrackpadScrollTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
-	trackpad, err := input.Trackpad(ctx)
+	trackpad, err := standardizedtestutil.NewTrackpadInputDevice(ctx, testParameters)
 	if err != nil {
-		s.Fatal("Failed to initialize the trackpad: ", err)
+		s.Fatal("Failed to setup the trackpad: ", err)
 	}
 	defer trackpad.Close()
 
@@ -70,7 +69,7 @@ func runStandardizedTrackpadScrollTest(ctx context.Context, s *testing.State, te
 }
 
 // performTrackpadScrollTest runs a scroll test in a provided direction, and checks for the correct end state.
-func performTrackpadScrollTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams, txtSuccessSelector *ui.Object, trackpad *input.TrackpadEventWriter, scrollDirection standardizedtestutil.ScrollDirection) {
+func performTrackpadScrollTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams, txtSuccessSelector *ui.Object, trackpad *standardizedtestutil.TrackpadInputDevice, scrollDirection standardizedtestutil.ScrollDirection) {
 	const maxNumScrollIterations = 15
 
 	txtScrollableContentID := testParameters.AppPkgName + ":id/txtScrollableContent"
@@ -88,7 +87,7 @@ func performTrackpadScrollTest(ctx context.Context, s *testing.State, testParame
 	testPassed := false
 	for i := 0; i < maxNumScrollIterations; i++ {
 		// Perform the scroll.
-		if err := standardizedtestutil.TrackpadScroll(ctx, trackpad, testParameters, txtScrollableContentSelector, scrollDirection); err != nil {
+		if err := trackpad.Scroll(txtScrollableContentSelector, scrollDirection); err != nil {
 			s.Fatal("Failed to perform a scroll: ", err)
 		}
 
