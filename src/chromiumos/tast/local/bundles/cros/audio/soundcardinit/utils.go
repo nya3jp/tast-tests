@@ -40,12 +40,29 @@ secs: %d
 nanos: 0
 `
 
+const calibYamlFile = `
+---
+UseVPD
+`
+
 // RemoveCalibFiles removes CalibFiles.
 func RemoveCalibFiles(ctx context.Context, soundCardID string, count uint) error {
 	for i := 0; i < int(count); i++ {
 		calib := fmt.Sprintf(CalibFiles, soundCardID, i)
 		if err := os.Remove(calib); err != nil && !os.IsNotExist(err) {
 			return errors.Wrapf(err, "failed to rm %s: ", calib)
+		}
+	}
+	return nil
+}
+
+// CreateCalibFiles creates CalibFiles.
+func CreateCalibFiles(ctx context.Context, soundCardID string, count uint) error {
+	for i := 0; i < int(count); i++ {
+		s := fmt.Sprintf(calibYamlFile)
+		calib := fmt.Sprintf(CalibFiles, soundCardID, i)
+		if err := ioutil.WriteFile(calib, []byte(s), 0644); err != nil {
+			return errors.Wrapf(err, "failed to create %s: ", calib)
 		}
 	}
 	return nil
