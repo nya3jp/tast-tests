@@ -9,13 +9,13 @@ import (
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/browser"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -42,8 +42,8 @@ func init() {
 
 // EditBookmarksEnabled tests the EditBookmarksEnabaled policy for the enabled, disabled and unset cases.
 func EditBookmarksEnabled(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fakeDMS := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	fakeDMS := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
