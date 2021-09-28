@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80709105_649e8faa",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-28T17:23:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecbb8ba7_96bfceb7",
+      "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c375cb38_37440dc2",
@@ -82,6 +100,24 @@
       "writtenOn": "2021-09-28T16:24:00Z",
       "side": 1,
       "message": "Same as for FakeDMS",
+      "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d590374f_52194972",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-28T17:23:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c375cb38_37440dc2",
       "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +141,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a8adb20_18b55968",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-28T17:23:34Z",
+      "side": 1,
+      "message": "I tried `return \u0026fixtures.CreateFixtData(k.cr, k.fdms)` but got this error `invalid operation: cannot take address of fixtures.CreateFixtData(k.cr, k.fdms) (value of type fixtures.FixtData)`",
+      "parentUuid": "b3965ffa_72134995",
+      "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5768edbb_593b08c8",
         "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
         "patchSetId": 6
@@ -116,6 +170,24 @@
       "writtenOn": "2021-09-28T16:24:00Z",
       "side": 1,
       "message": "nit: indicate the need to use the interfaces to access the objects",
+      "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a27e76a7_9c0f98db",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-28T17:23:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5768edbb_593b08c8",
       "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +209,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34b218ba_63f768c6",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-28T17:23:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36509726_705ea78e",
+      "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7b7ebe2_cca1b6ca",
@@ -150,6 +240,24 @@
       "writtenOn": "2021-09-28T16:24:00Z",
       "side": 1,
       "message": "Same as above",
+      "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e64d5d_aa4ebfb1",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-28T17:23:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7b7ebe2_cca1b6ca",
       "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
