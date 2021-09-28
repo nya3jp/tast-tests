@@ -368,7 +368,13 @@ func testPIPGravityQuickSettings(ctx context.Context, cr *chrome.Chrome, tconn *
 	}
 	bounds := coords.ConvertBoundsFromDPToPX(window.BoundsInRoot, dispMode.DeviceScaleFactor)
 
-	if err = waitForNewBoundsWithMargin(ctx, tconn, dispMode.WidthInNativePixels-collisionWindowWorkAreaInsetsPX, right, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
+	dispInfo, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "could not get primary display info")
+	}
+	dispBounds := coords.ConvertBoundsFromDPToPX(dispInfo.Bounds, dispMode.DeviceScaleFactor)
+
+	if err = waitForNewBoundsWithMargin(ctx, tconn, dispBounds.Width-collisionWindowWorkAreaInsetsPX, right, dispMode.DeviceScaleFactor, pipPositionErrorMarginPX); err != nil {
 		return errors.Wrap(err, "the PIP window must be along the right edge of the display")
 	}
 
