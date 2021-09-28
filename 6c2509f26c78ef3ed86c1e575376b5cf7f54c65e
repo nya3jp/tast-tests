@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "119e1a24_c76f7563",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-09-28T12:21:02Z",
+      "side": 1,
+      "message": "Please use a shorter title.",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 75
+      },
+      "revId": "6c2509f26c78ef3ed86c1e575376b5cf7f54c65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d6c66f01_ac57da16",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-09-28T08:55:41Z",
       "side": 1,
       "message": "PTAL!",
+      "revId": "6c2509f26c78ef3ed86c1e575376b5cf7f54c65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d1da04_cd6a327d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-09-28T12:21:02Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "6c2509f26c78ef3ed86c1e575376b5cf7f54c65e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
