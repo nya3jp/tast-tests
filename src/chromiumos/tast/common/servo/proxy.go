@@ -206,7 +206,7 @@ func logServoStatus(ctx context.Context, hst *ssh.Conn, port int) {
 	}
 	testing.ContextLogf(ctx, "Servod instance is running on port %v of the servo host", port)
 	// Check if servod is busy.
-	if out, err = hst.CommandContext(ctx, "dut-control", "-p ", fmt.Sprint(port), "serialname").CombinedOutput(); err != nil {
+	if out, err = hst.CommandContext(ctx, "dut-control", "-p", fmt.Sprint(port), "serialname").CombinedOutput(); err != nil {
 		testing.ContextLogf(ctx, "The servod is not responsive or busy: %v: %v", err, string(out))
 		return
 	}
