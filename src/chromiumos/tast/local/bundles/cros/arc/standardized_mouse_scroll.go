@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -71,11 +70,11 @@ func runMouseScroll(ctx context.Context, s *testing.State, testParameters standa
 	txtScrollableContentSelector := testParameters.Device.Object(ui.ID(txtScrollableContentID))
 
 	// Setup the mouse.
-	mouse, err := input.Mouse(ctx)
+	mid, err := standardizedtestutil.NewMouseInputDevice(ctx, testParameters)
 	if err != nil {
-		s.Fatal("Unable to setup the mouse, info: ", err)
+		s.Fatal("Failed to setup the mouse: ", err)
 	}
-	defer mouse.Close()
+	defer mid.Close()
 
 	if err := txtScrollableContentSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("Failed to find the scrollable content: ", err)
@@ -85,7 +84,7 @@ func runMouseScroll(ctx context.Context, s *testing.State, testParameters standa
 		s.Fatal("Failed to make sure the success label does not exist: ", err)
 	}
 
-	if err := standardizedtestutil.MouseMoveOntoObject(ctx, testParameters, txtScrollableContentSelector, mouse); err != nil {
+	if err := mid.MoveOntoObject(txtScrollableContentSelector); err != nil {
 		s.Fatal("Failed to move onto the scrollable content: ", err)
 	}
 
@@ -93,7 +92,7 @@ func runMouseScroll(ctx context.Context, s *testing.State, testParameters standa
 	testPassed := false
 	for i := 0; i < maxNumScrollIterations; i++ {
 		// Perform the scroll.
-		if err := standardizedtestutil.MouseScroll(ctx, testParameters, scrollDirection, mouse); err != nil {
+		if err := mid.Scroll(scrollDirection); err != nil {
 			s.Fatal("Failed to perform the scroll: ", err)
 		}
 

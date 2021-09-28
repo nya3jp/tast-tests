@@ -444,78 +444,6 @@ func ClickInputAndGuaranteeFocus(ctx context.Context, selector *ui.Object) error
 	return nil
 }
 
-// MouseClickObject implements a standard way to click the mouse button on an object.
-func MouseClickObject(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, mew *input.MouseEventWriter, mouseButton PointerButton) error {
-	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
-		return errors.Wrap(err, "mouse cannot be used")
-	}
-
-	// Move the mouse into position
-	if err := centerPointerOnObject(ctx, testParameters, selector); err != nil {
-		return errors.Wrap(err, "failed to move the mouse into position")
-	}
-
-	// Perform the correct click
-	switch mouseButton {
-	case LeftPointerButton:
-		if err := mew.Click(); err != nil {
-			return errors.Wrap(err, "unable to perform left mouse click")
-		}
-
-		break
-	case RightPointerButton:
-		if err := mew.RightClick(); err != nil {
-			return errors.Wrap(err, "unable to perform right mouse click")
-		}
-
-		break
-	default:
-		return errors.Errorf("invalid button provided: %v", mouseButton)
-	}
-
-	return nil
-}
-
-// MouseMoveOntoObject moves the mouse onto the center of an object.
-func MouseMoveOntoObject(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, mew *input.MouseEventWriter) error {
-	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
-		return errors.Wrap(err, "mouse cannot be used")
-	}
-
-	if err := centerPointerOnObject(ctx, testParameters, selector); err != nil {
-		return errors.Wrap(err, "failed to move the mouse into position")
-	}
-
-	return nil
-}
-
-// MouseScroll performs a scroll on the mouse. Due to different device
-// settings, the actual scroll amount in pixels will be imprecise. Therefore,
-// multiple iterations should be run, with a check for the desired output
-// between each call.
-func MouseScroll(ctx context.Context, testParameters TestFuncParams, scrollDirection ScrollDirection, mew *input.MouseEventWriter) error {
-	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
-		return errors.Wrap(err, "mouse cannot be used")
-	}
-
-	switch scrollDirection {
-	case UpScroll:
-		if err := mew.ScrollUp(); err != nil {
-			return errors.Wrap(err, "unable to scroll up")
-		}
-		break
-	case DownScroll:
-		if err := mew.ScrollDown(); err != nil {
-			return errors.Wrap(err, "unable to scroll down")
-		}
-		break
-	default:
-		return errors.Errorf("invalid scroll direction: %v", scrollDirection)
-	}
-
-	return nil
-}
-
 // Trackpad related constants. These values were derived experimentally and
 // should work on both physical, and virtual trackpads.
 const (
@@ -688,11 +616,11 @@ func validatePointerCanBeUsed(ctx context.Context, testParameters TestFuncParams
 	// The device cannot be in tablet mode.
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, testParameters.TestConn)
 	if err != nil {
-		return errors.Wrap(err, "unable to determine tablet mode")
+		return errors.Wrap(err, "unable to determine if tablet mode is enabled")
 	}
 
 	if tabletModeEnabled {
-		return errors.New("Device is in tablet mode, cannot click with a mouse")
+		return errors.New("unable to use a pointer while in tablet mode")
 	}
 
 	return nil
