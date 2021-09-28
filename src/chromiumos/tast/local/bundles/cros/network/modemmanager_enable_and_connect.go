@@ -24,7 +24,7 @@ func init() {
 		Func:     ModemmanagerEnableAndConnect,
 		Desc:     "Verifies that modemmanager can trigger modem enable, disable, connect and disconnect succeeds",
 		Contacts: []string{"srikanthkumar@google.com", "chromeos-cellular-team@google.com"},
-		Attr:     []string{"group:cellular", "cellular_unstable"},
+		Attr:     []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
 		Fixture:  "cellular",
 		Timeout:  5 * time.Minute,
 	})
