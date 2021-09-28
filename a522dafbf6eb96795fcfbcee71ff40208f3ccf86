@@ -16,6 +16,125 @@
       "message": "PTAL gain",
       "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3079a90d_1670f998",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T16:24:00Z",
+      "side": 1,
+      "message": "Overall approach LGTM. IMO we should be more clear in some comments.",
+      "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecbb8ba7_96bfceb7",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T16:24:00Z",
+      "side": 1,
+      "message": "nit: it\u0027s not just used for composable fixtures.\n\nMaybe: HasFakeDMS is an interface for fixture values that contain a FakeDMS instance.",
+      "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c375cb38_37440dc2",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T16:24:00Z",
+      "side": 1,
+      "message": "Same as for FakeDMS",
+      "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3965ffa_72134995",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T16:24:00Z",
+      "side": 1,
+      "message": "nit: return directly",
+      "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5768edbb_593b08c8",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T16:24:00Z",
+      "side": 1,
+      "message": "nit: indicate the need to use the interfaces to access the objects",
+      "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36509726_705ea78e",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T16:24:00Z",
+      "side": 1,
+      "message": "nit: Maybe \"Chrome implements the HasChrome interface\"?",
+      "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7b7ebe2_cca1b6ca",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T16:24:00Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
