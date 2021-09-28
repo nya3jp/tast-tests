@@ -45,6 +45,30 @@
       },
       "revId": "a5b965cb82658cf3ef2d9f1e084ef61fe2447254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "665b1140_d51a800e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-28T09:19:07Z",
+      "side": 1,
+      "message": "Hi Yang,\n\nI have referred below patch and automated this test cases.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2923969\n\nI tried the udevadm trigger -s usb -c ${action} this solution too but tbt plug/unplug is not happening.\n\nused below commands. Please correct me if i am doing wrong.\nudevadm trigger -s usb -c add\nudevadm trigger -s usb -c remove\n\nThanks",
+      "parentUuid": "7bef8fd9_b41ac869",
+      "range": {
+        "startLine": 97,
+        "startChar": 40,
+        "endLine": 97,
+        "endChar": 61
+      },
+      "revId": "a5b965cb82658cf3ef2d9f1e084ef61fe2447254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
