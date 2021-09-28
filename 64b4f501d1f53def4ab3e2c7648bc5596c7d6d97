@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f270e50_9ba7a1c0",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-28T17:13:20Z",
+      "side": 1,
+      "message": "done, caller should be responsible for not using buf upon error.",
+      "parentUuid": "6227d404_415d37be",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 76
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1726817b_8196616d",
@@ -585,6 +609,30 @@
       "side": 1,
       "message": "Test files that declare a package with the suffix \"_test\" will be compiled as a separate package, and then linked and run with the main test binary.\nSee https://pkg.go.dev/cmd/go@master#hdr-Test_packages .\n\nIn unit testing it\u0027s a good practice to test only public APIs. https://engdoc.corp.google.com/eng/doc/devguide/testing/unit/best-practices.md?cl\u003dhead#public-apis .\nUsing _test package is a good way to make sure that practice is followed.",
       "parentUuid": "466695a9_8eaec66a",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 14
+      },
+      "revId": "64b4f501d1f53def4ab3e2c7648bc5596c7d6d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc663996_9b604f36",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-28T17:13:20Z",
+      "side": 1,
+      "message": "Got it, thanks.",
+      "parentUuid": "da5ddf1c_80e4215f",
       "range": {
         "startLine": 5,
         "startChar": 8,
