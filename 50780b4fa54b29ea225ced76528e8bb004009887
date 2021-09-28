@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7353c982_a98acda5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-28T14:33:36Z",
+      "side": 1,
+      "message": "Not use the SwipeDown any more, instead verified that MakeVisible will work. So this function of joinButtonGone() is removed.",
+      "parentUuid": "c584459d_31fab807",
+      "range": {
+        "startLine": 123,
+        "startChar": 51,
+        "endLine": 123,
+        "endChar": 94
+      },
+      "revId": "50780b4fa54b29ea225ced76528e8bb004009887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eef53302_a7a4cdd9",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-09-27T01:06:27Z",
       "side": 1,
       "message": "This looks a bit redundant?",
+      "range": {
+        "startLine": 564,
+        "startChar": 4,
+        "endLine": 564,
+        "endChar": 7
+      },
+      "revId": "50780b4fa54b29ea225ced76528e8bb004009887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05715626_bf3fd0b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-28T14:33:36Z",
+      "side": 1,
+      "message": "Removed the \"error\" return value and just return the action slice.",
+      "parentUuid": "eef53302_a7a4cdd9",
       "range": {
         "startLine": 564,
         "startChar": 4,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08220468_0da8d239",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-28T14:33:36Z",
+      "side": 1,
+      "message": "Good point! Made a getSwipePoint() function for this purpose.",
+      "parentUuid": "951dcfa0_61563dcd",
+      "range": {
+        "startLine": 571,
+        "startChar": 2,
+        "endLine": 581,
+        "endChar": 3
+      },
+      "revId": "50780b4fa54b29ea225ced76528e8bb004009887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22a56980_cc318984",
@@ -107,6 +179,30 @@
       "writtenOn": "2021-09-27T01:06:27Z",
       "side": 1,
       "message": "This looks a bit redundant?",
+      "range": {
+        "startLine": 982,
+        "startChar": 4,
+        "endLine": 982,
+        "endChar": 7
+      },
+      "revId": "50780b4fa54b29ea225ced76528e8bb004009887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e65362fc_c48e0778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-28T14:33:36Z",
+      "side": 1,
+      "message": "Removed the \"error\" return value and just return the action slice.",
+      "parentUuid": "22a56980_cc318984",
       "range": {
         "startLine": 982,
         "startChar": 4,

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c59bef06_1da23e9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-28T14:33:36Z",
+      "side": 1,
+      "message": "Use MaveVisible here after the joinButton location is stable, and then click it.",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 33
+      },
+      "revId": "368c842caa145bcbcaaa9af62b9e89e3e195fb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
