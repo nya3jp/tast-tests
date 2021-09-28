@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0577c673_24378536",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T07:15:41Z",
+      "side": 1,
+      "message": "We don\u0027t have a max line lenght in go. I\u0027ve added comments in the CL, but in general I prefer longer self-contained lines.",
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24f63894_956c1f6b",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T07:15:41Z",
+      "side": 1,
+      "message": "Isn\u0027t this only used for GAIA? Why remove the prefix?",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef1a68e3_f45ef987",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T07:15:41Z",
+      "side": 1,
+      "message": "maybe: \"that are used for enrollment\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 59,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71df2894_90df4d3b",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T07:15:41Z",
+      "side": 1,
+      "message": "minor nit: I prefer the js inline if it\u0027s just one line.",
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "914f4142_0c9b3026",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T07:15:41Z",
+      "side": 1,
+      "message": "nit: this is less readable than having everything on one line",
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8557207_0cef7911",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T07:15:41Z",
+      "side": 1,
+      "message": "nit: also add a comment here",
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "892b5f54_b8690c3f",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T07:15:41Z",
+      "side": 1,
+      "message": "I don\u0027t know why you need a struct here to pass the arguments, 4 is not that many.",
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb0a2f6a_39a5bf24",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T07:15:41Z",
+      "side": 1,
+      "message": "Don\u0027t store context in a struct, always pass it as an argument.",
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d273e0e4_3c519c6a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T07:15:41Z",
+      "side": 1,
+      "message": "nit: reformat code",
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
