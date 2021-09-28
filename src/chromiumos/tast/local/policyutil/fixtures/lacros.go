@@ -22,10 +22,10 @@ func init() {
 		Contacts: []string{"mohamedaomar@google.com", "wtlee@chromium.org", "chromeos-commercial-remote-management@google.com"},
 		Impl: launcher.NewComposedFixture(launcher.External, func(v launcher.FixtValue, pv interface{}) interface{} {
 			return &struct {
-				fakedms.Value
+				fakedms.HasFakeDMS
 				launcher.FixtValue
 			}{
-				pv.(fakedms.Value),
+				pv.(fakedms.HasFakeDMS),
 				v,
 			}
 		}, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {

@@ -56,9 +56,9 @@ type FakeDMS struct {
 	policyPath string        // where policies are written for server to read
 }
 
-// Value is an interface for use with composable fixtures. It allows
+// HasFakeDMS is an interface for fixture values that contain a FakeDMS instance. It allows
 // retrieval of the underlying FakeDMS object.
-type Value interface {
+type HasFakeDMS interface {
 	FakeDMS() *FakeDMS
 }
 
