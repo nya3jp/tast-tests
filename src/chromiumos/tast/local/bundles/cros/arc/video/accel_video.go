@@ -228,7 +228,7 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 			return errors.Wrap(err, "failed to write CPU usage to file")
 		}
 
-		if err := encoding.ReportCPUUsage(ctx, pv, schemaName, cpuLogPath); err != nil {
+		if err := reportCPUUsage(ctx, pv, schemaName, cpuLogPath); err != nil {
 			return errors.Wrap(err, "failed to report CPU usage")
 		}
 
@@ -240,7 +240,7 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 				return errors.Wrap(err, "failed to write power consumption to file")
 			}
 
-			if err := encoding.ReportPowerConsumption(ctx, pv, schemaName, powerLogPath); err != nil {
+			if err := reportPowerConsumption(ctx, pv, schemaName, powerLogPath); err != nil {
 				return errors.Wrap(err, "failed to report power consumption")
 			}
 		}
@@ -262,11 +262,11 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 
 		// Parse the performance result.
 		if pv != nil {
-			if err := encoding.ReportFPS(ctx, pv, schemaName, localOutputLogFile); err != nil {
+			if err := reportFPS(ctx, pv, schemaName, localOutputLogFile); err != nil {
 				return errors.Wrap(err, "failed to report FPS value")
 			}
 
-			if err := encoding.ReportEncodeLatency(ctx, pv, schemaName, localOutputLogFile); err != nil {
+			if err := reportEncodeLatency(ctx, pv, schemaName, localOutputLogFile); err != nil {
 				return errors.Wrap(err, "failed to report encode latency")
 			}
 		}

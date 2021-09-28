@@ -1,0 +1,42 @@
+{
+  "crowd-1920x1080_h264.cpu_usage": {
+    "summary": {
+      "units": "percent",
+      "improvement_direction": "down",
+      "type": "scalar",
+      "value": 1.259446
+    }
+  },
+  "crowd-1920x1080_h264.encode_latency.50_percentile": {
+    "summary": {
+      "units": "us",
+      "improvement_direction": "down",
+      "type": "scalar",
+      "value": 7638
+    }
+  },
+  "crowd-1920x1080_h264.encode_latency.75_percentile": {
+    "summary": {
+      "units": "us",
+      "improvement_direction": "down",
+      "type": "scalar",
+      "value": 8242
+    }
+  },
+  "crowd-1920x1080_h264.encode_latency.95_percentile": {
+    "summary": {
+      "units": "us",
+      "improvement_direction": "down",
+      "type": "scalar",
+      "value": 8588
+    }
+  },
+  "crowd-1920x1080_h264.fps": {
+    "summary": {
+      "units": "fps",
+      "improvement_direction": "up",
+      "type": "scalar",
+      "value": 197.975
+    }
+  }
+}
