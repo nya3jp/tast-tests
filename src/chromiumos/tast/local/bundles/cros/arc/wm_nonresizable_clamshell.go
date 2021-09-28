@@ -629,9 +629,9 @@ func ncDisplaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn,
 }
 
 // buttonBoundsCheckAfterZoom calculates old rect (before zoom) values based on the new rect and the ratio.
-// If the difference between calculated values and old rect values is greater than roundingErrorInt (1), the function will return an error.
+// If the difference between calculated values and old rect values is greater than roundingErrorInt (3), the function will return an error.
 func buttonBoundsCheckAfterZoom(newRect, oldRect coords.Rect, ratio float64) error {
-	const roundingErrorInt = 1
+	const roundingErrorInt = 3
 
 	oldWidthCalc := (int)(math.Round((float64)(newRect.Width) * ratio))
 	oldHeightCalc := (int)(math.Round((float64)(newRect.Height) * ratio))
