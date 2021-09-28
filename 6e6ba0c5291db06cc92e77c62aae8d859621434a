@@ -16,6 +16,23 @@
       "message": "LGTM as policy reviewer",
       "revId": "6e6ba0c5291db06cc92e77c62aae8d859621434a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d092d1e7_9d3de64c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-28T08:58:37Z",
+      "side": 1,
+      "message": "I defer to Anastasiia and Victor.\n",
+      "revId": "6e6ba0c5291db06cc92e77c62aae8d859621434a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
