@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c584459d_31fab807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-09-28T02:12:18Z",
+      "side": 1,
+      "message": "Thanks Judy for your review. We are testing to see if MakeVisible works, following this code example: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_3.md#scrolling-to-target. Will submit changes after some verification.",
+      "parentUuid": "522e9a4c_dd61307c",
+      "range": {
+        "startLine": 123,
+        "startChar": 51,
+        "endLine": 123,
+        "endChar": 94
+      },
+      "revId": "50780b4fa54b29ea225ced76528e8bb004009887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eef53302_a7a4cdd9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
         "patchSetId": 1
