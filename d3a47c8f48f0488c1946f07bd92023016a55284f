@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a30021_e71283e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-28T22:51:48Z",
+      "side": 1,
+      "message": "nit: these two can be combined: \n\nTEST\u003dtast run ui.StadiaGameplayCUJ.lacros ui.TaskSwitchCUJ.lacros_clamshell",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 47
+      },
+      "revId": "d3a47c8f48f0488c1946f07bd92023016a55284f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
