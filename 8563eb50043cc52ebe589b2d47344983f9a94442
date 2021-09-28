@@ -22,6 +22,30 @@
       },
       "revId": "8563eb50043cc52ebe589b2d47344983f9a94442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3499144_a483f3d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/pin_app_to_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-09-28T01:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70e41aee_cdc48c86",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 10
+      },
+      "revId": "8563eb50043cc52ebe589b2d47344983f9a94442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
