@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -54,12 +53,12 @@ func runStandardizedMouseLeftClickTest(ctx context.Context, s *testing.State, te
 	btnLeftClickID := testParameters.AppPkgName + ":id/btnLeftClick"
 	btnLeftClickSelector := testParameters.Device.Object(ui.ID(btnLeftClickID))
 
-	// Setup the mouse
-	mouse, err := input.Mouse(ctx)
+	// Setup the mouse.
+	mid, err := standardizedtestutil.NewMouseInputDevice(ctx, testParameters)
 	if err != nil {
-		s.Fatal("Unable to setup the mouse, info: ", err)
+		s.Fatal("Failed to setup the mouse: ", err)
 	}
-	defer mouse.Close()
+	defer mid.Close()
 
 	if err := btnLeftClickSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("Unable to find the button to click, info: ", err)
@@ -69,7 +68,7 @@ func runStandardizedMouseLeftClickTest(ctx context.Context, s *testing.State, te
 		s.Fatal("The success label should not yet exist, info: ", err)
 	}
 
-	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnLeftClickSelector, mouse, standardizedtestutil.LeftPointerButton); err != nil {
+	if err := mid.ClickObject(btnLeftClickSelector, standardizedtestutil.LeftPointerButton); err != nil {
 		s.Fatal("Unable to click the button, info: ", err)
 	}
 

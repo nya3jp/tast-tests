@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -51,11 +50,11 @@ func StandardizedMouseHover(ctx context.Context, s *testing.State) {
 
 func runStandardizedMouseHoverTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
 	// Setup the mouse.
-	mouse, err := input.Mouse(ctx)
+	mid, err := standardizedtestutil.NewMouseInputDevice(ctx, testParameters)
 	if err != nil {
 		s.Fatal("Failed to setup the mouse: ", err)
 	}
-	defer mouse.Close()
+	defer mid.Close()
 
 	// Ensure the test is in the initial state.
 	btnStartHoverTestSelector := testParameters.Device.Object(ui.ID(testParameters.AppPkgName + ":id/btnStartHoverTest"))
@@ -74,13 +73,13 @@ func runStandardizedMouseHoverTest(ctx context.Context, s *testing.State, testPa
 	}
 
 	// Click to start the test.
-	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnStartHoverTestSelector, mouse, standardizedtestutil.LeftPointerButton); err != nil {
+	if err := mid.ClickObject(btnStartHoverTestSelector, standardizedtestutil.LeftPointerButton); err != nil {
 		s.Fatal("Failed to click the button to start the test: ", err)
 	}
 
 	// Move over the hover element.
 	txtToHoverSelector := testParameters.Device.Object(ui.ID(testParameters.AppPkgName + ":id/txtToHover"))
-	if err := standardizedtestutil.MouseMoveOntoObject(ctx, testParameters, txtToHoverSelector, mouse); err != nil {
+	if err := mid.MoveOntoObject(txtToHoverSelector); err != nil {
 		s.Fatal("Failed to move the mouse onto the hover element: ", err)
 	}
 
@@ -91,7 +90,7 @@ func runStandardizedMouseHoverTest(ctx context.Context, s *testing.State, testPa
 
 	// Move over the end state element.
 	txtToEndOnSelector := testParameters.Device.Object(ui.ID(testParameters.AppPkgName + ":id/txtToEndOn"))
-	if err := standardizedtestutil.MouseMoveOntoObject(ctx, testParameters, txtToEndOnSelector, mouse); err != nil {
+	if err := mid.MoveOntoObject(txtToEndOnSelector); err != nil {
 		s.Fatal("Failed to move the mouse onto the end element: ", err)
 	}
 

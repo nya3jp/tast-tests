@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -53,11 +52,11 @@ func runStandardizedMouseRightClickTest(ctx context.Context, s *testing.State, t
 	btnRightClickSelector := testParameters.Device.Object(ui.ID(btnRightClickID))
 
 	// Setup the mouse.
-	mouse, err := input.Mouse(ctx)
+	mid, err := standardizedtestutil.NewMouseInputDevice(ctx, testParameters)
 	if err != nil {
-		s.Fatal("Unable to setup the mouse, info: ", err)
+		s.Fatal("Failed to setup the mouse: ", err)
 	}
-	defer mouse.Close()
+	defer mid.Close()
 
 	if err := btnRightClickSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("Unable to find the button to click, info: ", err)
@@ -67,7 +66,7 @@ func runStandardizedMouseRightClickTest(ctx context.Context, s *testing.State, t
 		s.Fatal("The success label should not yet exist, info: ", err)
 	}
 
-	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnRightClickSelector, mouse, standardizedtestutil.RightPointerButton); err != nil {
+	if err := mid.ClickObject(btnRightClickSelector, standardizedtestutil.RightPointerButton); err != nil {
 		s.Fatal("Unable to click the button, info: ", err)
 	}
 
