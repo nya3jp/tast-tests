@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74d132d9_efe0773a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-09-28T09:26:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cfd1d4d_e8dc4ee6",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "4829ee9d9353bfcc1967ed84f44ea796f47e7938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1137fd37_2b83d7ed",
@@ -61,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92fa7c37_34733522",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-09-28T09:26:38Z",
+      "side": 1,
+      "message": "I think it takes 2 or more minute to cool down the speakers. So a fast reboot does not meet my requirement.",
+      "parentUuid": "02c60a48_38000ee4",
+      "revId": "4829ee9d9353bfcc1967ed84f44ea796f47e7938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6e944c5_c9534864",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
         "patchSetId": 4
@@ -72,6 +114,30 @@
       "writtenOn": "2021-09-28T08:53:47Z",
       "side": 1,
       "message": "This file has formatting errors. Did you run hooks on repo upload?",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "4829ee9d9353bfcc1967ed84f44ea796f47e7938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a7bb79d_3cf21c58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-09-28T09:26:38Z",
+      "side": 1,
+      "message": "Fix it in a seperate CL. Thanks!",
+      "parentUuid": "e6e944c5_c9534864",
       "range": {
         "startLine": 37,
         "startChar": 4,
@@ -95,6 +161,30 @@
       "writtenOn": "2021-09-28T08:53:47Z",
       "side": 1,
       "message": "Please drop \": \". It\u0027s automatically inserted by errors.Wrapf between the message and err.",
+      "range": {
+        "startLine": 65,
+        "startChar": 48,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "4829ee9d9353bfcc1967ed84f44ea796f47e7938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c50295e7_0dfd2426",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-09-28T09:26:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8ee51bf_c3e698d5",
       "range": {
         "startLine": 65,
         "startChar": 48,
