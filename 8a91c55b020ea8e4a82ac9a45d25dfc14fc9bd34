@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "77d19bc4_179544fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-28T12:54:45Z",
+      "side": 1,
+      "message": "nit: synchronization",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "8a91c55b020ea8e4a82ac9a45d25dfc14fc9bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "76f23f71_abb470be",
@@ -31,6 +54,24 @@
       "writtenOn": "2021-09-28T12:09:30Z",
       "side": 1,
       "message": "nit: add a comment explaining why this is done.\n\nAlternatively call net.Listen in this function and avoid the need for the channel completely.",
+      "revId": "8a91c55b020ea8e4a82ac9a45d25dfc14fc9bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a0b5dd_e5d28a5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2021-09-28T12:54:45Z",
+      "side": 1,
+      "message": "Good point, that would also work. May even be nicer/preferable.",
+      "parentUuid": "9a974f7e_b47c27b7",
       "revId": "8a91c55b020ea8e4a82ac9a45d25dfc14fc9bd34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
