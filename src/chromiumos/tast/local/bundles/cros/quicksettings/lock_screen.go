@@ -9,11 +9,12 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/lockscreen"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -74,12 +75,9 @@ func LockScreen(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to take a screenshot: ", err)
 	}
 
-	params := ui.FindParams{
-		Role:      ui.RoleTypeWindow,
-		ClassName: "ash/message_center/MessagePopup",
-	}
+	finder := nodewith.Role(role.Window).ClassName("ash/message_center/MessagePopup")
 
-	if err := ui.WaitUntilExists(ctx, tconn, params, 30*time.Second); err != nil {
+	if err := uiauto.New(tconn).WithTimeout(30 * time.Second).WaitUntilExists(finder)(ctx); err != nil {
 		s.Fatal("Failed to find notification center: ", err)
 	}
 
