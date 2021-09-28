@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e59ebf9_3b924026",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 32
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-28T18:20:48Z",
+      "side": 1,
+      "message": "Is that because it\u0027s triggering a mass erase from the RDP1 -\u003e RDP0 transition or something else? Could you add that here?",
+      "range": {
+        "startLine": 10,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "4b46773ecc72ce93b483482a17df7f48598187e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9230c97b_5a086542",
@@ -31,6 +54,30 @@
       "writtenOn": "2021-09-27T09:01:20Z",
       "side": 1,
       "message": "I\u0027m not sure but I think FpTpmSeed and FpUpdater also needs this (they are not using NewFirmwareTest()). How about moving it to InitializeKnownState()?",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 28
+      },
+      "revId": "4b46773ecc72ce93b483482a17df7f48598187e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27db233e_64bcdaa1",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-28T18:20:48Z",
+      "side": 1,
+      "message": "Seems like a good suggestion",
+      "parentUuid": "6adbf073_4ddc37be",
       "range": {
         "startLine": 141,
         "startChar": 1,
