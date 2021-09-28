@@ -67,6 +67,23 @@
       "message": "What\u0027s the next step of the CL?",
       "revId": "01790cff4f51ad3821c44f7a2b4666a6c72922eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "163424ea_4d8e37de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-28T07:25:19Z",
+      "side": 1,
+      "message": "Answered by myself: blocked by http://b/172972948#comment8 .",
+      "revId": "01790cff4f51ad3821c44f7a2b4666a6c72922eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
