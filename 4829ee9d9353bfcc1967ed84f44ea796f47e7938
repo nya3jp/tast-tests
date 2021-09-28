@@ -57,6 +57,52 @@
       "parentUuid": "1137fd37_2b83d7ed",
       "revId": "4829ee9d9353bfcc1967ed84f44ea796f47e7938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e944c5_c9534864",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-28T08:53:47Z",
+      "side": 1,
+      "message": "This file has formatting errors. Did you run hooks on repo upload?",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "4829ee9d9353bfcc1967ed84f44ea796f47e7938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ee51bf_c3e698d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/soundcardinit/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-09-28T08:53:47Z",
+      "side": 1,
+      "message": "Please drop \": \". It\u0027s automatically inserted by errors.Wrapf between the message and err.",
+      "range": {
+        "startLine": 65,
+        "startChar": 48,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "4829ee9d9353bfcc1967ed84f44ea796f47e7938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
