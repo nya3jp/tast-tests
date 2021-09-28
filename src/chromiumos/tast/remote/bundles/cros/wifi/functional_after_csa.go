@@ -28,14 +28,17 @@ func init() {
 		},
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
-		Fixture:     "wificellFixt",
 		Params: []testing.Param{
 			{
-				Name: "client",
-				Val:  true,
+				Name:    "client",
+				Val:     true,
+				Fixture: "wificellFixt",
 			}, {
 				Name: "router",
 				Val:  false,
+				// TODO(b/197414763): Adding pcap to investigate the failure
+				// of disconnecting due to "CLASS3_FRAME_FROM_NONASSOC_STA".
+				Fixture: "wificellFixtWithCapture",
 			},
 		},
 	})
