@@ -174,7 +174,7 @@ func ChannelHop(ctx context.Context, s *testing.State) {
 		//
 		// This maybe something to refine. We can shorten the timeout after it
 		// is fixed or remove this TODO if it is WAI.
-		ctx, cancel = context.WithTimeout(ctx, 90*time.Second)
+		ctx, cancel = context.WithTimeout(ctx, 150*time.Second)
 		defer cancel()
 		props := []*wificell.ShillProperty{{
 			Property:       shillconst.ServicePropertyIsConnected,
