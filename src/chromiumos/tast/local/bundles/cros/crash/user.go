@@ -82,7 +82,6 @@ func init() {
 				testFunc:    testChronosCrasher,
 				consentType: localcrash.RealConsent,
 			},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 		}, {
 			Name: "chronos_crasher_mock_consent",
@@ -103,7 +102,6 @@ func init() {
 				testFunc:    testRootCrasher,
 				consentType: localcrash.RealConsent,
 			},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
 		}, {
 			Name: "root_crasher_mock_consent",
@@ -118,7 +116,6 @@ func init() {
 				consentType: localcrash.RealConsent,
 			},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "crash_filtering",
 			Val: userCrashParams{
