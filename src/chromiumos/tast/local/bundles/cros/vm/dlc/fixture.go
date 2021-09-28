@@ -41,8 +41,8 @@ func init() {
 		},
 		Vars:            []string{"ui.signinProfileTestExtensionManifestKey"},
 		Impl:            &dlcFixture{},
-		SetUpTimeout:    10 * time.Second,
-		ResetTimeout:    1 * time.Second,
+		SetUpTimeout:    1 * time.Minute,
+		ResetTimeout:    5 * time.Second,
 		TearDownTimeout: 5 * time.Second,
 	})
 }
