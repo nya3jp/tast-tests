@@ -45,14 +45,13 @@ func (r *Runner) Ping(ctx context.Context, iface string) ([]byte, error) {
 }
 
 // ClearBSSIDIgnore clears the BSSID_IGNORE list on DUT.
-// TODO(b/161915905): replace "blacklist" with more inclusive term once wpa_supplicant updated.
 func (r *Runner) ClearBSSIDIgnore(ctx context.Context) error {
-	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("blacklist", "clear")...)
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("bssid_ignore", "clear")...)
 	if err != nil {
-		return errors.Wrap(err, "failed running wpa_cli blacklist clear")
+		return errors.Wrap(err, "failed running wpa_cli bssid_ignore clear")
 	}
 	if !strings.Contains(string(cmdOut), "OK") {
-		return errors.Errorf("failed to expect 'OK' in wpa_cli blacklist clear output: %s", string(cmdOut))
+		return errors.Errorf("failed to expect 'OK' in wpa_cli bssid_ignore clear output: %s", string(cmdOut))
 	}
 	return nil
 }
