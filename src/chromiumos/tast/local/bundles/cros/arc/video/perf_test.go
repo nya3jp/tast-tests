@@ -77,16 +77,16 @@ func TestReportMetrics(t *testing.T) {
 	ctx := context.Background()
 
 	p := perf.NewValues()
-	if err := ReportFPS(ctx, p, name, "testdata/TestFPS.log"); err != nil {
-		t.Error("Failed at ReportFPS(): ", err)
+	if err := reportFPS(ctx, p, name, "testdata/TestFPS.log"); err != nil {
+		t.Error("Failed at reportFPS(): ", err)
 	}
 
-	if err := ReportEncodeLatency(ctx, p, name, "testdata/TestLatency.log"); err != nil {
-		t.Error("Failed at ReportEncodeLatency(): ", err)
+	if err := reportEncodeLatency(ctx, p, name, "testdata/TestLatency.log"); err != nil {
+		t.Error("Failed at reportEncodeLatency(): ", err)
 	}
 
-	if err := ReportCPUUsage(ctx, p, name, "testdata/TestCPU.log"); err != nil {
-		t.Error("Failed at ReportCPUUsage(): ", err)
+	if err := reportCPUUsage(ctx, p, name, "testdata/TestCPU.log"); err != nil {
+		t.Error("Failed at reportCPUUsage(): ", err)
 	}
 
 	saveAndCompare(t, p, "testdata/TestResultsChart.json")

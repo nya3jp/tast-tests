@@ -25,8 +25,8 @@ var regExpEncodeLatency50 = regexp.MustCompile(`(?m)^Encode latency for the 50th
 var regExpEncodeLatency75 = regexp.MustCompile(`(?m)^Encode latency for the 75th percentile: (\d+) us$`)
 var regExpEncodeLatency95 = regexp.MustCompile(`(?m)^Encode latency for the 95th percentile: (\d+) us$`)
 
-// ReportFPS reports FPS info from log file and sets as the perf metric.
-func ReportFPS(ctx context.Context, p *perf.Values, name, logPath string) error {
+// reportFPS reports FPS info from log file and sets as the perf metric.
+func reportFPS(ctx context.Context, p *perf.Values, name, logPath string) error {
 	b, err := ioutil.ReadFile(logPath)
 	if err != nil {
 		return errors.Wrapf(err, "failed to read file %s", logPath)
@@ -53,8 +53,8 @@ func ReportFPS(ctx context.Context, p *perf.Values, name, logPath string) error 
 	return nil
 }
 
-// ReportEncodeLatency reports encode latency from log file and sets as the perf metrics.
-func ReportEncodeLatency(ctx context.Context, p *perf.Values, name, logPath string) error {
+// reportEncodeLatency reports encode latency from log file and sets as the perf metrics.
+func reportEncodeLatency(ctx context.Context, p *perf.Values, name, logPath string) error {
 	b, err := ioutil.ReadFile(logPath)
 	if err != nil {
 		return errors.Wrapf(err, "failed to read file %s", logPath)
@@ -89,8 +89,8 @@ func ReportEncodeLatency(ctx context.Context, p *perf.Values, name, logPath stri
 	return nil
 }
 
-// ReportCPUUsage reports CPU usage from log file and sets as the perf metric.
-func ReportCPUUsage(ctx context.Context, p *perf.Values, name, logPath string) error {
+// reportCPUUsage reports CPU usage from log file and sets as the perf metric.
+func reportCPUUsage(ctx context.Context, p *perf.Values, name, logPath string) error {
 	b, err := ioutil.ReadFile(logPath)
 	if err != nil {
 		return errors.Wrapf(err, "failed to read file %s", logPath)
@@ -113,8 +113,8 @@ func ReportCPUUsage(ctx context.Context, p *perf.Values, name, logPath string) e
 	return nil
 }
 
-// ReportPowerConsumption reports power consumption from log file and sets as the perf metric.
-func ReportPowerConsumption(ctx context.Context, p *perf.Values, name, logPath string) error {
+// reportPowerConsumption reports power consumption from log file and sets as the perf metric.
+func reportPowerConsumption(ctx context.Context, p *perf.Values, name, logPath string) error {
 	b, err := ioutil.ReadFile(logPath)
 	if err != nil {
 		return errors.Wrapf(err, "failed to read file %s", logPath)
