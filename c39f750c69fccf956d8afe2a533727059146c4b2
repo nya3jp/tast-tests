@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf36ab75_fc8fcc75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_common.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ddebecd_071c62a8",
+      "range": {
+        "startLine": 51,
+        "startChar": 15,
+        "endLine": 51,
+        "endChar": 26
+      },
+      "revId": "c39f750c69fccf956d8afe2a533727059146c4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b343b4a_27a3cb5b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-28T00:16:17Z",
       "side": 1,
       "message": "nit: s/M/m/",
+      "range": {
+        "startLine": 67,
+        "startChar": 37,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "c39f750c69fccf956d8afe2a533727059146c4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f014046_2ebed116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_common.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b343b4a_27a3cb5b",
       "range": {
         "startLine": 67,
         "startChar": 37,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3091c6c5_83dcdfb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/bitstream.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9db1d7a3_9e08f631",
+      "range": {
+        "startLine": 17,
+        "startChar": 46,
+        "endLine": 17,
+        "endChar": 53
+      },
+      "revId": "c39f750c69fccf956d8afe2a533727059146c4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bd085fc_4bf5e9b1",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-28T00:16:17Z",
       "side": 1,
       "message": "nit: Yeah, but given the first CL in the chain, you should be able \nto just use encode.createPublicTempFile() (you might need to make\nit public in this CL though of course) :)",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 85
+      },
+      "revId": "c39f750c69fccf956d8afe2a533727059146c4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "638bdbe6_ed68c587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/bitstream.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bd085fc_4bf5e9b1",
       "range": {
         "startLine": 82,
         "startChar": 0,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a5821bc_5a331f10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:59Z",
+      "side": 1,
+      "message": "We\u0027re using ctx to wait for Call/Eval. If ctx is timed out, in my understanding we cannot either call any conn function to get JS log.",
+      "parentUuid": "07915762_c59dd6ad",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 15
+      },
+      "revId": "c39f750c69fccf956d8afe2a533727059146c4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b9b86e1_6272f28f",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
         "patchSetId": 7
@@ -129,6 +249,30 @@
       "writtenOn": "2021-09-28T00:16:17Z",
       "side": 1,
       "message": "Could we bundle complete() and success() ?",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "c39f750c69fccf956d8afe2a533727059146c4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ef01814_0520b081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b9b86e1_6272f28f",
       "range": {
         "startLine": 183,
         "startChar": 0,
@@ -152,6 +296,30 @@
       "writtenOn": "2021-09-28T00:16:17Z",
       "side": 1,
       "message": "Would it make sense to store perf for crosbolt? Other tests, e.g.\nvideo.Seek, log perf values even without being a ...Perf test, FTR.",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 40
+      },
+      "revId": "c39f750c69fccf956d8afe2a533727059146c4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad1ad6db_19210004",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a67a9b8_58513877",
       "range": {
         "startLine": 223,
         "startChar": 0,
