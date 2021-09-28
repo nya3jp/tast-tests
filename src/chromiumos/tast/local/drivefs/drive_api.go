@@ -57,16 +57,8 @@ func CreateAPIClient(ctx context.Context, cr *chrome.Chrome, oauthCredentials st
 		return nil, err
 	}
 
-	// Next will either be an oauth scope allow dialog or a checkbox, so wait for either of them and allow it.
-	oauthScopeDialogAllow := "div[data-custom-id=\"oauthScopeDialog-allow\"]"
-	oauthScopeCheckbox := "div[data-value=\"https://www.googleapis.com/auth/drive.file\"]"
-	oauthScopeSelector := fmt.Sprintf("document.querySelector('%s, %s')", oauthScopeDialogAllow, oauthScopeCheckbox)
-	if err := waitAndClickElement(ctx, conn, oauthScopeSelector); err != nil {
-		return nil, err
-	}
-
 	// Wait for the oauth approval screen to show then click the final Allow.
-	if err := waitAndClickElement(ctx, conn, "document.querySelector('div[id=\"submit_approve_access\"]')"); err != nil {
+	if err := waitAndClickElement(ctx, conn, "document.evaluate('//span[text()=\"Continue\"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE).singleNodeValue"); err != nil {
 		return nil, err
 	}
 
