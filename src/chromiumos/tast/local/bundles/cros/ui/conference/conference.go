@@ -6,9 +6,13 @@ package conference
 
 import (
 	"context"
+	"regexp"
 	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
 
 const (
@@ -34,6 +38,7 @@ type Conference interface {
 }
 
 const participantError = "number of participants is incorrect (ERROR - PARTICIPANT NUMBER)"
+const signedOutError = "the account has been signed out: "
 
 // ParticipantError wraps the given error with participant error specific information
 // which can be used to identify the error type with IsParticipantError() function.
@@ -45,4 +50,16 @@ func ParticipantError(err error) error {
 func IsParticipantError(err error) bool {
 	// Use string comparason because error loses its type after wrapping.
 	return strings.Contains(err.Error(), participantError)
+}
+
+// CheckSignedOutError check whether the account is signed out or not.
+// If the acoount is signed out, wraps the given error with signed out error specific information.
+func CheckSignedOutError(ctx context.Context, tconn *chrome.TestConn, err error) error {
+	ui := uiauto.New(tconn)
+	signedOutMessage := nodewith.NameRegex(regexp.MustCompile("(Sign in to add a Google account|You have been signed out).*")).First()
+	info, infoErr := ui.Info(ctx, signedOutMessage)
+	if infoErr != nil {
+		return err
+	}
+	return errors.Wrap(err, signedOutError+info.Name)
 }

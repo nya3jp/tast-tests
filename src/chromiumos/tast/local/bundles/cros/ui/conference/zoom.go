@@ -388,7 +388,7 @@ func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 		)(ctx)
 	}
 	if err := conf.uiHandler.SwitchToChromeTabByName("Zoom")(ctx); err != nil {
-		return errors.Wrap(err, "failed to switch to zoom page")
+		return CheckSignedOutError(ctx, conf.tconn, errors.Wrap(err, "failed to switch to zoom page"))
 	}
 	// Background item doesn't have a specific node name but a role name.
 	// We could get the background item from the listitem.

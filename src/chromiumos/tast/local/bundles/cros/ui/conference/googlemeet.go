@@ -49,11 +49,11 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	openConference := func(ctx context.Context) error {
 		conn, err := conf.cr.NewConn(ctx, room)
 		if err != nil {
-			return errors.Wrap(err, "failed to create chrome connection to join the conference")
+			return CheckSignedOutError(ctx, tconn, errors.Wrap(err, "failed to create chrome connection to join the conference"))
 		}
 
 		if err := webutil.WaitForQuiescence(ctx, conn, 45*time.Second); err != nil {
-			return errors.Wrapf(err, "failed to wait for %q to be loaded and achieve quiescence", room)
+			return CheckSignedOutError(ctx, tconn, errors.Wrapf(err, "failed to wait for %q to be loaded and achieve quiescence", room))
 		}
 		return nil
 	}
@@ -441,13 +441,16 @@ func (conf *GoogleMeetConference) BackgroundChange(ctx context.Context) error {
 				doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Meet", false),
 			))
 	}
-	return uiauto.Combine("pin to main screen and change background",
+	if err := uiauto.Combine("pin to main screen and change background",
 		conf.uiHandler.SwitchToChromeTabByName("Meet"),
 		pinToMainScreen,
 		changeBackground(blurBackground),
 		changeBackground(skyBackground),
 		changeBackground(turnOffBackground),
-	)(ctx)
+	)(ctx); err != nil {
+		return CheckSignedOutError(ctx, conf.tconn, err)
+	}
+	return nil
 }
 
 // Presenting creates Google Slides and Google Docs, shares screen and presents

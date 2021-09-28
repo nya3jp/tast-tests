@@ -96,7 +96,7 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 	defer cancel()
 
 	if err := googleapps.NewGoogleSlides(cr, tconn, extendedDisplay)(ctx); err != nil {
-		return err
+		return CheckSignedOutError(ctx, tconn, err)
 	}
 	// Delete slide after presenting.
 	defer func() {
@@ -111,11 +111,11 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 	}()
 	renameSlideErr = googleapps.RenameSlide(tconn, kb, testTitle)(ctx)
 	if renameSlideErr != nil {
-		return renameSlideErr
+		return CheckSignedOutError(ctx, tconn, renameSlideErr)
 	}
 	editSlideErr = googleapps.EditSlideTitle(tconn, kb, slideTitle, slideSubTitle)(ctx)
 	if editSlideErr != nil {
-		return editSlideErr
+		return CheckSignedOutError(ctx, tconn, editSlideErr)
 	}
 	for i := 0; i < slideCount; i++ {
 		title := fmt.Sprintf(subSlideTitle+" page %d", i+1)
@@ -123,12 +123,12 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 		pageNumber := strconv.Itoa(i + 2)
 		editSlideErr = googleapps.NewSlide(tconn, kb, title, content, pageNumber)(ctx)
 		if editSlideErr != nil {
-			return editSlideErr
+			return CheckSignedOutError(ctx, tconn, editSlideErr)
 		}
 	}
 
 	if err := googleapps.NewGoogleDocs(cr, tconn, extendedDisplay)(ctx); err != nil {
-		return err
+		return CheckSignedOutError(ctx, tconn, err)
 	}
 	// Delete document after presenting.
 	defer func() {
@@ -141,12 +141,15 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 	}()
 	renameDocErr = googleapps.RenameDoc(tconn, kb, testTitle)(ctx)
 	if renameDocErr != nil {
-		return renameDocErr
+		return CheckSignedOutError(ctx, tconn, renameDocErr)
 	}
 	testing.ContextLog(ctx, "Share screen and present ", application)
-	return uiauto.Combine("share screen and present "+string(application),
+	if err := uiauto.Combine("share screen and present "+string(application),
 		shareScreen,
 		presentApplication,
 		stopPresenting,
-	)(ctx)
+	)(ctx); err != nil {
+		return CheckSignedOutError(ctx, tconn, err)
+	}
+	return nil
 }
