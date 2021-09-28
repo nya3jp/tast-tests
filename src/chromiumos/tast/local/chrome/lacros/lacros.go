@@ -94,8 +94,8 @@ func FindFirstNonBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash
 	})
 }
 
-// ShelfLaunch launches lacros-chrome via shelf.
-func ShelfLaunch(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtValue) (*launcher.LacrosChrome, error) {
+// LaunchFromShelf launches lacros-chrome via shelf.
+func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*launcher.LacrosChrome, error) {
 	const newTabTitle = "New Tab"
 
 	// Ensure shelf is visible in case of tablet mode.
@@ -113,7 +113,7 @@ func ShelfLaunch(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtVal
 		return nil, errors.Wrap(err, "failed to wait for lacros")
 	}
 
-	l, err := launcher.ConnectToLacrosChrome(ctx, f.LacrosPath(), launcher.LacrosUserDataDir)
+	l, err := launcher.ConnectToLacrosChrome(ctx, lacrosPath, launcher.LacrosUserDataDir)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to lacros")
 	}
