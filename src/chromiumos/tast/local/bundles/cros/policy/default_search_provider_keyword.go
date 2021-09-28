@@ -11,12 +11,13 @@ import (
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -42,8 +43,8 @@ func DefaultSearchProviderKeyword(ctx context.Context, s *testing.State) {
 	)
 	addressBarNode := nodewith.Role(role.TextField).Name("Address and search bar")
 
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)

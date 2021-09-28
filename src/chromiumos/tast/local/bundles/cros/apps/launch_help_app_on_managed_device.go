@@ -90,7 +90,7 @@ func LaunchHelpAppOnManagedDevice(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to connect to Chrome: ", err)
 		}
 	} else {
-		cr = s.FixtValue().(*policyFixt.FixtData).Chrome
+		cr = s.FixtValue().(chrome.HasChrome).Chrome()
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
