@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0797952_0ea62c22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T16:27:26Z",
+      "side": 1,
+      "message": "Cq-Depend on the previous CL and Cq-Depend in the previous CL on this one to make it more obvious it\u0027s needed.\n\nIf Gerrit is not happy, add a comment that the CLs need to be used together.",
+      "revId": "b61bb09b194970971acc90d9c99b98b997e53034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
