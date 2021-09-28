@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "740cd478_6e95db94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 24,
+        "startChar": 14,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222b85ef_d327b56b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "You can merge them to\nui.WithTimeout(10 * time.Second).LeftClick()",
+      "range": {
+        "startLine": 415,
+        "startChar": 11,
+        "endLine": 419,
+        "endChar": 34
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38c224a1_2ea34e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "This would not be needed as Info should fail when node doesn\u0027t exist.",
+      "range": {
+        "startLine": 694,
+        "startChar": 0,
+        "endLine": 696,
+        "endChar": 3
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "358c5001_4fa03944",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "Could you update this function to return an action?\nIt means we can use the same design paradigm as uiauto to defer actual evaluation as far as possible, and can use uiauto utilities over returned actions.\n\nSame for other functions where possible.",
+      "range": {
+        "startLine": 785,
+        "startChar": 5,
+        "endLine": 785,
+        "endChar": 20
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2491bea4_fd7ae3aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "nit: could you define this part as ui and use it here and on the line below to avoid code duplication?",
+      "range": {
+        "startLine": 787,
+        "startChar": 9,
+        "endLine": 787,
+        "endChar": 57
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "668af1a3_589476e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "same here. ui.WithTimeout(10 * time.Second).LeftClick(icon)(ctx)",
+      "range": {
+        "startLine": 822,
+        "startChar": 11,
+        "endLine": 826,
+        "endChar": 23
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c827b68_183edf31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "I think we can use RetryUntil.\n\nui.WithTimeout(10 * time.Second).RetryUntil(keyboard.AccelAction(...), ui.WithTimeout(2 * time.Second).WaitUntilExists(...))",
+      "range": {
+        "startLine": 836,
+        "startChar": 0,
+        "endLine": 845,
+        "endChar": 52
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4132f369_86452b49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 894,
+        "startChar": 0,
+        "endLine": 895,
+        "endChar": 23
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2070344c_58b4c169",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 1000,
+        "startChar": 0,
+        "endLine": 1003,
+        "endChar": 40
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b43583cb_1ac3ac73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 1007,
+        "startChar": 0,
+        "endLine": 1012,
+        "endChar": 54
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b7395fd_665d8014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 1018,
+        "startChar": 0,
+        "endLine": 1022,
+        "endChar": 41
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "746475dd_c92eb716",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 1031,
+        "startChar": 0,
+        "endLine": 1035,
+        "endChar": 47
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f65852a_fad3ba4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 1121,
+        "startChar": 24,
+        "endLine": 1127,
+        "endChar": 64
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69cf4303_def1e355",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 1132,
+        "startChar": 0,
+        "endLine": 1136,
+        "endChar": 42
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f192444d_006a4185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 1143,
+        "startChar": 0,
+        "endLine": 1147,
+        "endChar": 61
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "329f3c59_2bbe10f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 1152,
+        "startChar": 0,
+        "endLine": 1156,
+        "endChar": 40
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b4aa73_b1d665ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T03:01:34Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 1165,
+        "startChar": 0,
+        "endLine": 1169,
+        "endChar": 46
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
