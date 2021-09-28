@@ -1,6 +1,30 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "482caf74_87bee078",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-28T22:54:26Z",
+      "side": 1,
+      "message": "\u003e \"criticial\" is a possible misspelling of \"critical\".\n\nPlease fix.",
+      "parentUuid": "7356488d_18227862",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "a3efb2638ebb1498991e39e60ff7944d5cc16690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "59195422_15508bd0",
@@ -14,6 +38,47 @@
       "writtenOn": "2021-09-28T22:39:27Z",
       "side": 1,
       "message": "PTAL",
+      "revId": "a3efb2638ebb1498991e39e60ff7944d5cc16690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db6b3ee2_0aacd13c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-28T22:54:26Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "a3efb2638ebb1498991e39e60ff7944d5cc16690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfda3ce2_ee91fe33",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-28T22:54:26Z",
+      "side": 1,
+      "message": "\u003e \"criticial\" is a possible misspelling of \"critical\".\n\nPlease fix.",
+      "parentUuid": "e25a0119_1e5c12ef",
+      "range": {
+        "startLine": 35,
+        "startChar": 72,
+        "endLine": 35,
+        "endChar": 81
+      },
       "revId": "a3efb2638ebb1498991e39e60ff7944d5cc16690",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
