@@ -11,7 +11,10 @@ import (
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -40,11 +43,8 @@ func init() {
 // waitForVKVisibility waits until the virtual keyboard is shown or hidden.
 func waitForVKVisibility(ctx context.Context, tconn *chrome.TestConn, shown bool) error {
 	// Wait for the correct visibility.
-	params := chromeui.FindParams{
-		Role:  chromeui.RoleTypeKeyboard,
-		State: map[chromeui.StateType]bool{chromeui.StateTypeInvisible: !shown},
-	}
-	return chromeui.WaitUntilExists(ctx, tconn, params, 30*time.Second)
+	finder := nodewith.Role(role.Keyboard).State(state.Invisible, !shown)
+	return uiauto.New(tconn).WithTimeout(30 * time.Second).WaitUntilExists(finder)(ctx)
 }
 
 func IMEBlockingVK(ctx context.Context, s *testing.State) {
