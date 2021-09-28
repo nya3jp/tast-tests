@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ccd7a43d_ec88a03f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T07:22:39Z",
+      "side": 1,
+      "message": "Use the fixture \"chromeLoggedIn\" instead.",
+      "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b509b1be_28990225",
         "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
         "patchSetId": 1
@@ -42,6 +59,93 @@
         "startChar": 11,
         "endLine": 83,
         "endChar": 48
+      },
+      "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e9093e_9ab16c16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T07:22:39Z",
+      "side": 1,
+      "message": "+1, make sure that the clipboard is initially empty.",
+      "parentUuid": "b509b1be_28990225",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 48
+      },
+      "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48e4bc61_37d59bb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T07:22:39Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 9
+      },
+      "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0bd7bd1_4988cb47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T07:22:39Z",
+      "side": 1,
+      "message": "You should poll here, delete might not be instant.",
+      "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "079afbf2_998dfab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T07:22:39Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 9
       },
       "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
