@@ -74,6 +74,24 @@ func AutoHideSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find primary display info: ", err)
 	}
 
+	// The test verifies flow for enabling shelf-autohide. Make sure the shelf is shown at the start of the test.
+	origShelfBehavior, err := ash.GetShelfBehavior(ctx, tconn, primaryDisplayInfo.ID)
+	if err != nil {
+		s.Fatal("Failed to get shelf behavior: ", err)
+	}
+
+	if origShelfBehavior != ash.ShelfBehaviorNeverAutoHide {
+		if err := ash.SetShelfBehavior(ctx, tconn, primaryDisplayInfo.ID, ash.ShelfBehaviorNeverAutoHide); err != nil {
+			s.Fatal("Failed to set shelf behavior to Never Auto Hide: ", err)
+		}
+		if err := ash.WaitForHotseatToUpdateAutoHideState(ctx, tconn, false); err != nil {
+			s.Fatal("Failed verify shelf is shown without any open windows: ", err)
+		}
+	}
+
+	// Restore shelf state to original behavior.
+	defer ash.SetShelfBehavior(ctx, tconn, primaryDisplayInfo.ID, origShelfBehavior)
+
 	if err := ash.AutoHide(ctx, tconn, primaryDisplayInfo.ID); err != nil {
 		s.Fatal("Failed to autohide shelf: ", err)
 	}
