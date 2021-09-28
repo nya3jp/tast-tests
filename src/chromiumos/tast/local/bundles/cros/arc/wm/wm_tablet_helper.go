@@ -638,7 +638,7 @@ func checkUnspecifiedActivityInTabletMode(ctx context.Context, tconn *chrome.Tes
 	}
 
 	// Compare display orientation after the activity is ready, it should be equal to the initial display orientation.
-	if orientation != newDO.Type {
+	if isPortraitOrientation(orientation) != isPortraitOrientation(newDO.Type) {
 		return errors.Errorf("invalid display orientation for unspecified activity: got %q; want %q", newDO.Type, orientation)
 	}
 
@@ -649,12 +649,12 @@ func checkUnspecifiedActivityInTabletMode(ctx context.Context, tconn *chrome.Tes
 
 	if isPortraitRect(windowInfo.BoundsInRoot) {
 		// If app is portrait but the display is not, then return error.
-		if orientation != display.OrientationPortraitPrimary {
+		if !isPortraitOrientation(orientation) {
 			return errors.New("invalid unspecified activity orientation: got Portrait; want Landscape")
 		}
 	} else { // App is Landscape
 		// If app is Landscape but the display is not, then return error.
-		if orientation != display.OrientationLandscapePrimary {
+		if isPortraitOrientation(orientation) {
 			return errors.New("invalid unspecified activity orientation: got Landscape; want Portrait")
 		}
 	}
