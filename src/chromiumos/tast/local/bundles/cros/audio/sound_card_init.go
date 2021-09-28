@@ -33,14 +33,14 @@ func init() {
 				},
 			},
 			{
-				Name: "boot_time_calibration",
+				Name:              "boot_time_calibration",
 				ExtraHardwareDeps: hwdep.D(hwdep.SmartAmpBootTimeCalibration()),
 				Val: soundcardinit.TestParameters{
 					Func: bootTimeCalibration,
 				},
 			},
 			{
-				Name: "recent_reboot",
+				Name:              "recent_reboot",
 				ExtraHardwareDeps: hwdep.D(hwdep.SmartAmpBootTimeCalibration()),
 				Val: soundcardinit.TestParameters{
 					Func: recentReboot,
