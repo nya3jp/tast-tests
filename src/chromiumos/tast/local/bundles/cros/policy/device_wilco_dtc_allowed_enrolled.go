@@ -10,8 +10,8 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
 )
@@ -35,8 +35,8 @@ func init() {
 // DeviceWilcoDtcAllowedEnrolled tests the DeviceWilcoDtcAllowed policy.
 // TODO(b/189457904): rename to policy.DeviceWilcoDtcAllowed once stable and remote policy.DeviceWilcoDtcAllowed removed.
 func DeviceWilcoDtcAllowedEnrolled(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fdms := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	for _, tc := range []struct {
 		name           string                       // name is the subtest name.
