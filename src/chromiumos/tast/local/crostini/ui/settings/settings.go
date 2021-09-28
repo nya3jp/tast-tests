@@ -368,6 +368,7 @@ func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.Keybo
 	for {
 		// Check whether it has reached the target.
 		if (increase && size >= targetDiskSize) || (!increase && size <= targetDiskSize) {
+			testing.ContextLog(ctx, "ChangeDiskSize reached the target")
 			return size, nil
 		}
 
@@ -385,6 +386,7 @@ func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.Keybo
 			return 0, errors.Wrap(err, "failed to get disk size")
 		}
 		if size == newSize {
+			testing.ContextLog(ctx, "ChangeDiskSize reached the End")
 			return size, nil
 		}
 		size = newSize
@@ -410,17 +412,20 @@ func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to resize to the maximum disk size")
 	}
+	testing.ContextLogf(ctx, "The max size is: %d", maxSize)
 
 	// Get the minimum size.
 	minSize, err := ChangeDiskSize(ctx, s.tconn, keyboard, ResizeDiskDialog.Slider, false, 0)
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to resize to the minimum disk size")
 	}
+	testing.ContextLogf(ctx, "The min size is: %d", minSize)
 
 	targetSize = minSize + (maxSize-minSize)/2
 	if targetSize == curSize {
 		targetSize = minSize + (maxSize-minSize)/3
 	}
+	testing.ContextLogf(ctx, "The target size is: %d", targetSize)
 
 	if err := uiauto.Combine("click button Cancel and wait resize dialog gone",
 		s.ui.LeftClick(ResizeDiskDialog.Cancel),
