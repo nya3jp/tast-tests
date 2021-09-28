@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f6e141_e51d14b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-09-28T02:18:53Z",
+      "side": 1,
+      "message": "The issue I\u0027m trying to solve is that these tests are not able to run on battery power. fwupd completely inhibits the devices to accept update/install requests.",
+      "parentUuid": "3b46aa2f_0a386374",
+      "revId": "bf118894d1fae1f833a2929b31fb3bc82f87959d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab7c887a_dba5bc7d",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-28T02:09:27Z",
       "side": 1,
       "message": "Is there a case where other errors than the AC power exists at the same time?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "bf118894d1fae1f833a2929b31fb3bc82f87959d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c837e0_a8a98086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-09-28T02:18:53Z",
+      "side": 1,
+      "message": "Should not. If no AC power is present fwupd inhibits the device from receiving updates.",
+      "parentUuid": "ab7c887a_dba5bc7d",
       "range": {
         "startLine": 97,
         "startChar": 0,
