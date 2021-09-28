@@ -16,6 +16,23 @@
       "message": "PTAL too. Should I use the flag in more tests?",
       "revId": "1f6d2b57ccf5d44f8cb16fcb308533d7acecfce9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b3dfa76_398ae49c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-09-28T03:53:23Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm",
+      "revId": "1f6d2b57ccf5d44f8cb16fcb308533d7acecfce9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
