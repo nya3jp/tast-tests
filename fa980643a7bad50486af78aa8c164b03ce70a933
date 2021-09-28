@@ -118,6 +118,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b96924df_fc6c10dd",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-28T23:42:17Z",
+      "side": 1,
+      "message": "cmd.Wait() is blocking if cmd.Abort() hasn\u0027t been called, as is the case here.  ptyFound \u003c- struct{}{} is the normal execution flow, cmd.Wait will block, continue to forward traffic, until the caller calls cancel at the end of testing.  Let me add some comments.",
+      "parentUuid": "efe31357_39f03292",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 9
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f2d40bf_4d21edb2",
         "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
         "patchSetId": 8
@@ -231,6 +255,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd8870dd_954f33cb",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-28T23:42:17Z",
+      "side": 1,
+      "message": "The firmware/serial package is a low level layer that does basic Read/Write, the purpose is to be able to handle local and remote serial ports.  More convenient layers can be built on top of it to do more interesting things.  In the case of firmware dev-board testing, I\u0027ve built a layer that reads until a regexp is matched (https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/changes/67/3174567/8/src/chromiumos/tast/common/firmware/ti50/andreiboard.go#61), which is useful to match expected responses where the length of output maybe unknown ahead of time.",
+      "parentUuid": "eff0c394_df218c6c",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03da5b47_50ac9ef4",
@@ -244,6 +292,30 @@
       "writtenOn": "2021-09-28T23:07:43Z",
       "side": 1,
       "message": "Is it guaranteed that Write writes full bytes in case of non error?\nCould you update the API document of Write accordingly?\nYou may want to refer to https://pkg.go.dev/io#Writer",
+      "range": {
+        "startLine": 150,
+        "startChar": 14,
+        "endLine": 150,
+        "endChar": 19
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d49d2cd9_8d859f66",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-28T23:42:17Z",
+      "side": 1,
+      "message": "It\u0027s not guaranteed, will update api doc.",
+      "parentUuid": "03da5b47_50ac9ef4",
       "range": {
         "startLine": 150,
         "startChar": 14,
@@ -279,6 +351,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14d8d969_8f93caf8",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-28T23:42:17Z",
+      "side": 1,
+      "message": "Not guaranteed, for example if ReadTimeout is exceeded, it\u0027ll return if at least 1 byte was read and won\u0027t fill the buffer.  Will update api doc.",
+      "parentUuid": "4f6e75fe_b6a431f2",
+      "range": {
+        "startLine": 160,
+        "startChar": 13,
+        "endLine": 160,
+        "endChar": 17
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "721bf44c_9da95e10",
         "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
         "patchSetId": 8
@@ -290,6 +386,30 @@
       "writtenOn": "2021-09-28T23:07:43Z",
       "side": 1,
       "message": "I think Read should make sure it doesn\u0027t succeed after it returns an error.\nOtherwise, every caller should do this polling, which is complex.\nI think instead polling could be done in each implementation as needed, because implementations better know about if pollings are needed.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 84
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb767ce1_94af1a2b",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-28T23:42:17Z",
+      "side": 1,
+      "message": "Oh actually here I don\u0027t need the poll loop since only reading 1 byte, will update cl.",
+      "parentUuid": "721bf44c_9da95e10",
       "range": {
         "startLine": 181,
         "startChar": 0,
