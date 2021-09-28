@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40097c31_f3ffaefa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-09-28T07:42:41Z",
+      "side": 1,
+      "message": "Updated. Would you take another look before I loop in the tast owners?",
+      "parentUuid": "800d4faf_fe8f07b6",
+      "revId": "12e20d42a47d022bee2ebe055180018c1b5932f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e26580a_ab7bfe2b",
