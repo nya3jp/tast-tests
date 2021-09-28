@@ -46,6 +46,30 @@
       },
       "revId": "a5e6676009c6d44ba6b27c80c1dfcbc057891fa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bf58069_b908d5af",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-28T05:53:08Z",
+      "side": 1,
+      "message": "Ah, if that\u0027s the case, I\u0027d recommend to create only redirects in the new file intermediately, so that we don\u0027t have to worry about someone changing the original file content while we are migrating.\nAfter the migration has finished, we can finally move the actual file.\nUpdate file content would like as follows.\n\n```\nimport \"chromiumos/tast/local/chrome/ui/lockscreen\"\n\ntype State \u003d lockscreen.State\n\nfunc GetState(...) (...) {\n  return lockscreen.GetState(...)\n}\n\n...\n```",
+      "parentUuid": "9d54fd26_5a48866d",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "a5e6676009c6d44ba6b27c80c1dfcbc057891fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
