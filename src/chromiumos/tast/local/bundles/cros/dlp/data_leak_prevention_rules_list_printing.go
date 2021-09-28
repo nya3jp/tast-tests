@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -38,8 +37,8 @@ func init() {
 }
 
 func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fakeDMS := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	fakeDMS := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	// DLP policy with printing blocked restriction.
 	policyDLP := []policy.Policy{&policy.DataLeakPreventionRulesList{
