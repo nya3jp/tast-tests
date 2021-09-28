@@ -16,6 +16,23 @@
       "message": "Thanks Judy for code review. I have modified. Could you please have a look? Thank you.",
       "revId": "70a76243b7dbf06a9958dbc462a36ee70bf0d515",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03bd96ed_c505ca1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359085
+      },
+      "writtenOn": "2021-09-28T01:20:41Z",
+      "side": 1,
+      "message": "Thanks Judy for code review. I will submit it soon.",
+      "revId": "70a76243b7dbf06a9958dbc462a36ee70bf0d515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
