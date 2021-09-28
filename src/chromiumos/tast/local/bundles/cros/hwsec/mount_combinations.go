@@ -9,7 +9,9 @@ import (
 	"time"
 
 	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/common/storage/files"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/hwsec/util"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -25,6 +27,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"tpm"},
 		Attr:         []string{"group:mainline"},
+		Timeout:      5 * time.Minute,
 	})
 }
 
@@ -40,6 +43,21 @@ func cleanupVault(ctx context.Context, s *testing.State, utility *hwsec.Cryptoho
 	if err := utility.UnmountAndRemoveVault(ctx, username); err != nil {
 		s.Errorf("Failed to remove user vault for %q: %v", username, err)
 	}
+}
+
+// setupHomedirFiles set up the HomedirFiles for the given user.
+func setupHomedirFiles(ctx context.Context, utility *hwsec.CryptohomeClient, r hwsec.CmdRunner, username string) (*files.HomedirFiles, error) {
+	hf, err := files.NewHomedirFiles(ctx, utility, r, username)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to create HomedirFiles in home directory of %q", username)
+	}
+	if err := hf.Clear(ctx); err != nil {
+		return nil, errors.Wrapf(err, "failed to clear HomedirFiles in home directory of %q", username)
+	}
+	if err := hf.Step(ctx); err != nil {
+		return nil, errors.Wrapf(err, "failed to step HomedirFiles during initialization for %q", username)
+	}
+	return hf, nil
 }
 
 // MountCombinations tests that we are able to signin/mount 2+ users with different combinations of pin/password.
@@ -91,16 +109,26 @@ func MountCombinations(ctx context.Context, s *testing.State) {
 	}
 	defer cleanupVault(ctx, s, utility, util.SecondUsername)
 
+	// Create the corresponding test files in the 2 users.
+	hf1, err := setupHomedirFiles(ctx, utility, cmdRunner, util.FirstUsername)
+	if err != nil {
+		s.Fatal("Failed to create HomedirFiles for user1: ", err)
+	}
+	hf2, err := setupHomedirFiles(ctx, utility, cmdRunner, util.SecondUsername)
+	if err != nil {
+		s.Fatal("Failed to create HomedirFiles for user2: ", err)
+	}
+
 	// Add pins to them.
-	if err := utility.AddVaultKey(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, util.FirstPin, util.PinLabel, false /* not low entropy credential */); err != nil {
+	if err = utility.AddVaultKey(ctx, util.FirstUsername, util.FirstPassword, util.PasswordLabel, util.FirstPin, util.PinLabel, false /* not low entropy credential */); err != nil {
 		s.Fatal("Failed to add keys: ", err)
 	}
-	if err := utility.AddVaultKey(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, util.SecondPin, util.PinLabel, false /* not low entropy credential */); err != nil {
+	if err = utility.AddVaultKey(ctx, util.SecondUsername, util.SecondPassword, util.PasswordLabel, util.SecondPin, util.PinLabel, false /* not low entropy credential */); err != nil {
 		s.Fatal("Failed to add keys: ", err)
 	}
 
 	// Unmount before testing.
-	if err := utility.UnmountAll(ctx); err != nil {
+	if err = utility.UnmountAll(ctx); err != nil {
 		s.Fatal("Failed to unmount user vaults: ", err)
 	}
 
@@ -127,6 +155,20 @@ func MountCombinations(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to check is mounted: ", err)
 		} else if !mounted {
 			s.Errorf("Vault not mounted for label %q on first user and label %q on second user", c.label1, c.label2)
+		}
+
+		// Check that files in both vaults are correct.
+		if err := hf1.Verify(ctx); err != nil {
+			s.Errorf("Verify failed for user1 with label %q on first user and label %q on second user", c.label1, c.label2)
+		}
+		if err := hf2.Verify(ctx); err != nil {
+			s.Errorf("Verify failed for user2 with label %q on first user and label %q on second user", c.label1, c.label2)
+		}
+		if err := hf1.Step(ctx); err != nil {
+			s.Errorf("Step failed for user1 with label %q on first user and label %q on second user", c.label1, c.label2)
+		}
+		if err := hf2.Step(ctx); err != nil {
+			s.Errorf("Step failed for user2 with label %q on first user and label %q on second user", c.label1, c.label2)
 		}
 
 		// Now unmount.
