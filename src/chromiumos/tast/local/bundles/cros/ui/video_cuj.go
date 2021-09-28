@@ -206,7 +206,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 
 	s.Log("Open youtube Web")
 	ytConn, err := cs.NewConn(ctx,
-		"https://www.youtube.com/watch?v=EEIk7gwjgIM&absolute_experiments="+
+		"https://www.youtube.com/watch?v=by_xCK2Jo5c&absolute_experiments="+
 			s.RequiredVar("ui.VideoCUJ.ytExperiments"),
 		cdputil.WithNewWindow())
 	if err != nil {
