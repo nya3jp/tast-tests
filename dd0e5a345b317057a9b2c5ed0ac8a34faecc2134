@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17bfb5e8_0851e353",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_restart_take_picture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-28T13:57:44Z",
+      "side": 1,
+      "message": "Could you avoid using the function defined in another test entry file?\nInstead, you can move the function to sub directory as utility lib for this category.",
+      "revId": "dd0e5a345b317057a9b2c5ed0ac8a34faecc2134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
