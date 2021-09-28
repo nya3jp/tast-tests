@@ -16,6 +16,103 @@
       "message": "Hello tast-owners@, please help me review this CL and the stack above it. Thank you.",
       "revId": "fe9f6ffdbe7244e6726cdb581d9178bf4844a155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "464b9ed4_2e6b9089",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-28T20:33:49Z",
+      "side": 1,
+      "message": "Passing around sizes and lengths in multiples of 32 bytes feels like it might get a bit confusing...",
+      "revId": "fe9f6ffdbe7244e6726cdb581d9178bf4844a155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45df2456_b22b600b",
+        "filename": "src/chromiumos/tast/common/storage/files/crypto_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-28T20:33:49Z",
+      "side": 1,
+      "message": "We should probably figure out what these potential errors actually are... and possibly report them back to the caller.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "fe9f6ffdbe7244e6726cdb581d9178bf4844a155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e28f63a_5bc6923f",
+        "filename": "src/chromiumos/tast/common/storage/files/crypto_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-28T20:33:49Z",
+      "side": 1,
+      "message": "we can probably remove this comment",
+      "revId": "fe9f6ffdbe7244e6726cdb581d9178bf4844a155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08679ec_2dc3ef41",
+        "filename": "src/chromiumos/tast/common/storage/files/crypto_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-28T20:33:49Z",
+      "side": 1,
+      "message": "If this is really guaranteed to never happen, we can probably just do\n\n h.Write(dst)\n\n(also you don\u0027t need to reference it with *h, I\u0027m pretty sure)",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "fe9f6ffdbe7244e6726cdb581d9178bf4844a155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49b88c0f_89e46d35",
+        "filename": "src/chromiumos/tast/common/storage/files/file_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-09-28T20:33:49Z",
+      "side": 1,
+      "message": "nit:\n\n NOTE: While AES, SHA256, and PBKDF2 are used here, it is not for security,",
+      "revId": "fe9f6ffdbe7244e6726cdb581d9178bf4844a155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
