@@ -16,6 +16,121 @@
       "message": "Hi Pavan, please take a look. This is my first Tast test and first Go CL, so I am probably doing some things wrong. Sorry in advance!",
       "revId": "fe6ee3f20ee2c8b8b43b78e093560629e315e23c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cea79fbc_93c3a8d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stork_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-28T02:07:56Z",
+      "side": 1,
+      "message": "You will need to reserve enough time for cleanup.\nPlease see https://docs.google.com/presentation/d/1g9QFbY6q8Z8cHBsuRkJoa1YY90LKzVyQ9wT6RgN4Gc4/edit?resourcekey\u003d0-gXDjOBJegiw_mxvc7qLVDw",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "fe6ee3f20ee2c8b8b43b78e093560629e315e23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c43ecbef_e616234f",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-28T02:07:56Z",
+      "side": 1,
+      "message": "I would keep this at 1 minute, just in case the lab has a slow network. We\u0027ve seen it occasionally and get it fixed by contacting the lab team. If we don\u0027t want to get involved unless necessary, I think 1 minute is a good threshold.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "fe6ee3f20ee2c8b8b43b78e093560629e315e23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "842da901_45918631",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-28T02:07:56Z",
+      "side": 1,
+      "message": "nit: I would split this const into 4 const() declarations. One each for jsonRequest , jsonResponse, curl, and others.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "fe6ee3f20ee2c8b8b43b78e093560629e315e23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93ef6f63_fee98468",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-28T02:07:56Z",
+      "side": 1,
+      "message": "We probably want an errors.Wrap here so that it shows up in the error stack trace",
+      "range": {
+        "startLine": 161,
+        "startChar": 34,
+        "endLine": 161,
+        "endChar": 37
+      },
+      "revId": "fe6ee3f20ee2c8b8b43b78e093560629e315e23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b702de89_aedd9e33",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-28T02:07:56Z",
+      "side": 1,
+      "message": "Probably need an errors.Wrap here.",
+      "range": {
+        "startLine": 166,
+        "startChar": 34,
+        "endLine": 166,
+        "endChar": 37
+      },
+      "revId": "fe6ee3f20ee2c8b8b43b78e093560629e315e23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
