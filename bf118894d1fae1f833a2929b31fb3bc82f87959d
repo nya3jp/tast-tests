@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df216341_fab07a38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-09-28T14:27:41Z",
+      "side": 1,
+      "message": "I don\u0027t think the error is tentative or transient: https://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dfirmware.FwupdI\u0026dep\u003d\n\nThe final objective is to promote out of informational.\n\nThe main reasoning behind skipping this particular failure tests is that they would be covered by other test which specifically tests the behavior on battery power vs AC: src/chromiumos/tast/local/bundles/cros/firmware/fwupd_powerd_update_check.go",
+      "parentUuid": "60908b7d_88cc95ea",
+      "revId": "bf118894d1fae1f833a2929b31fb3bc82f87959d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab7c887a_dba5bc7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
         "patchSetId": 2
