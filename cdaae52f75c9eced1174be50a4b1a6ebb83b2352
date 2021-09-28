@@ -69,6 +69,24 @@
       "parentUuid": "247558f9_2480ec1b",
       "revId": "cdaae52f75c9eced1174be50a4b1a6ebb83b2352",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "758410d7_b4e3c252",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-09-28T20:08:12Z",
+      "side": 1,
+      "message": "Ack. I have removed ErrNoEnabledProfile.",
+      "parentUuid": "3aad462c_1b1a5666",
+      "revId": "cdaae52f75c9eced1174be50a4b1a6ebb83b2352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
