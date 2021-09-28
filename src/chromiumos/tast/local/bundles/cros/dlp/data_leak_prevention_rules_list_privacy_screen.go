@@ -13,11 +13,11 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -38,8 +38,8 @@ func init() {
 }
 
 func DataLeakPreventionRulesListPrivacyScreen(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome
-	fakeDMS := s.FixtValue().(*fixtures.FixtData).FakeDMS
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	fakeDMS := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	// DLP policy with privacy screen blocked restriction.
 	policyDLP := []policy.Policy{&policy.DataLeakPreventionRulesList{
