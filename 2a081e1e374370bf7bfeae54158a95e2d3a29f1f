@@ -16,6 +16,23 @@
       "message": "PTAL.",
       "revId": "2a081e1e374370bf7bfeae54158a95e2d3a29f1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22a6be9b_39fddf8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-09-28T00:17:11Z",
+      "side": 1,
+      "message": "LGTM, thank you!\n\nCC-ing Aki, FYI.",
+      "revId": "2a081e1e374370bf7bfeae54158a95e2d3a29f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
