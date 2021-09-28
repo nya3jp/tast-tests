@@ -39,15 +39,16 @@ func (p *sharedDirParam) toArg() string {
 
 // CrosvmParams - Parameters for starting a crosvm instance.
 type CrosvmParams struct {
-	vmKernel     string           // path to the VM kernel image
-	rootfsPath   string           // optional path to the VM rootfs
-	diskPaths    []string         // paths that will be mounted read only
-	rwDiskPaths  []string         // paths that will be mounted read/write
-	socketPath   string           // path to the VM control socket
-	kernelArgs   []string         // string arguments to be passed to the VM kernel
-	sharedDirs   []sharedDirParam // array of configuration of a directory to be shared with the VM
-	serialOutput string           // path to a file where serial output will be written
-	vhostUserNet []string         // paths to sockets that vhost-user-net devices will use
+	vmKernel       string           // path to the VM kernel image
+	rootfsPath     string           // optional path to the VM rootfs
+	diskPaths      []string         // paths that will be mounted read only
+	rwDiskPaths    []string         // paths that will be mounted read/write
+	socketPath     string           // path to the VM control socket
+	kernelArgs     []string         // string arguments to be passed to the VM kernel
+	sharedDirs     []sharedDirParam // array of configuration of a directory to be shared with the VM
+	serialOutput   string           // path to a file where serial output will be written
+	vhostUserNet   []string         // paths to sockets that vhost-user-net devices will use
+	disableSandbox bool             // whether or not the sandbox is disabled
 }
 
 // Option configures a CrosvmParams
@@ -109,6 +110,13 @@ func VhostUserNet(socket string) Option {
 	}
 }
 
+// DisableSandbox disables the sandbox (sandbox is enabled by default without this option)
+func DisableSandbox() Option {
+	return func(p *CrosvmParams) {
+		p.disableSandbox = true
+	}
+}
+
 // NewCrosvmParams constructs a set of crosvm parameters.
 func NewCrosvmParams(kernel string, opts ...Option) *CrosvmParams {
 	p := &CrosvmParams{
@@ -148,6 +156,10 @@ func (p *CrosvmParams) ToArgs() []string {
 
 	if p.serialOutput != "" {
 		args = append(args, "--serial", fmt.Sprintf("type=file,num=1,console=true,path=%s", p.serialOutput))
+	}
+
+	if p.disableSandbox {
+		args = append(args, "--disable-sandbox")
 	}
 
 	for _, sock := range p.vhostUserNet {

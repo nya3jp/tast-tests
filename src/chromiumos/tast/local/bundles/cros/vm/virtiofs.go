@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/bundles/cros/vm/dlc"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -31,6 +32,29 @@ func init() {
 		SoftwareDeps: []string{"vm_host", "dlc"},
 		Fixture:      "vmDLC",
 	})
+}
+
+func setupCrosvmCmd(ctx context.Context, kernel, serialLog, script string, scriptArgs []string) *testexec.Cmd {
+	kernParams := []string{
+		"root=/dev/root",
+		"rootfstype=virtiofs",
+		"rw",
+		fmt.Sprintf("init=%s", script),
+		"--",
+	}
+	kernParams = append(kernParams, scriptArgs...)
+
+	ps := vm.NewCrosvmParams(
+		kernel,
+		vm.SharedDir("/", "/dev/root", "fs", "always"),
+		vm.DisableSandbox(),
+		vm.KernelArgs(kernParams...),
+		vm.SerialOutput(serialLog),
+	)
+
+	args := []string{"--nofile=262144", "crosvm"}
+	args = append(args, ps.ToArgs()...)
+	return testexec.CommandContext(ctx, "prlimit", args...)
 }
 
 func Virtiofs(ctx context.Context, s *testing.State) {
@@ -51,29 +75,7 @@ func Virtiofs(ctx context.Context, s *testing.State) {
 
 	logFile := filepath.Join(s.OutDir(), "serial.log")
 
-	params := []string{
-		"root=/dev/root",
-		"rootfstype=virtiofs",
-		"rw",
-		fmt.Sprintf("init=%s", s.DataPath(runPjdfstest)),
-		"--",
-		td,
-	}
-
-	// The sandbox needs to be disabled because the test creates some device nodes, which is
-	// only possible when running as root in the initial namespace.
-	args := []string{
-		"--nofile=262144",
-		"crosvm", "run",
-		"-p", strings.Join(params, " "),
-		"-c", "1",
-		"-m", "256",
-		"-s", td,
-		"--serial", fmt.Sprintf("type=file,num=1,console=true,path=%s", logFile),
-		"--shared-dir", "/:/dev/root:type=fs:cache=always",
-		"--disable-sandbox",
-		data.Kernel,
-	}
+	script := s.DataPath(runPjdfstest)
 
 	output, err := os.Create(filepath.Join(s.OutDir(), "crosvm.log"))
 	if err != nil {
@@ -82,7 +84,7 @@ func Virtiofs(ctx context.Context, s *testing.State) {
 	defer output.Close()
 
 	s.Log("Running pjdfstests")
-	cmd := testexec.CommandContext(ctx, "prlimit", args...)
+	cmd := setupCrosvmCmd(ctx, data.Kernel, logFile, script, []string{td})
 	cmd.Stdout = output
 	cmd.Stderr = output
 
