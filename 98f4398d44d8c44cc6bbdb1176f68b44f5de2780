@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86907db1_d4091912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:44Z",
+      "side": 1,
+      "message": "Done.\nSince we cannot make a constructor async. I call initialize() in getConfig(). Does it look good to you?",
+      "parentUuid": "9243c165_5b501b23",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92a8ddd8_06d988a5",
@@ -59,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f3541c_7936eaef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c74bc591_902b35cb",
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cad4c8bd_9a018233",
@@ -72,6 +114,24 @@
       "writtenOn": "2021-09-27T18:46:48Z",
       "side": 1,
       "message": "File a bug for this or else it will get lost.",
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "850c1e36_a83b8902",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cad4c8bd_9a018233",
       "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +171,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43a2f007_d96ae0b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d239a085_424bc3fe",
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a0a10f0_c184894d",
@@ -124,6 +202,30 @@
       "writtenOn": "2021-09-27T18:46:48Z",
       "side": 1,
       "message": "Uint16Array.of lets you save a line here",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 19
+      },
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de98929d_a2e4aa4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a0a10f0_c184894d",
       "range": {
         "startLine": 107,
         "startChar": 0,
@@ -157,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fa98d46_62b41422",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2f26d55_fc1e37ca",
+      "range": {
+        "startLine": 111,
+        "startChar": 13,
+        "endLine": 111,
+        "endChar": 16
+      },
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af5bf7cf_902a19e5",
@@ -170,6 +296,30 @@
       "writtenOn": "2021-09-27T18:46:48Z",
       "side": 1,
       "message": "nit: getExtraData?",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad13b50a_2c2e310d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af5bf7cf_902a19e5",
       "range": {
         "startLine": 125,
         "startChar": 2,
@@ -203,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2760a753_e8d925c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8d7ef81_44830931",
+      "range": {
+        "startLine": 129,
+        "startChar": 9,
+        "endLine": 129,
+        "endChar": 13
+      },
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b8d5d79_500b3113",
@@ -226,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60dd104e_b331903f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b8d5d79_500b3113",
+      "range": {
+        "startLine": 130,
+        "startChar": 6,
+        "endLine": 130,
+        "endChar": 12
+      },
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "105a4401_f8784c1c",
@@ -239,6 +437,30 @@
       "writtenOn": "2021-09-27T18:46:48Z",
       "side": 1,
       "message": "nit: space between size and +\u003d",
+      "range": {
+        "startLine": 134,
+        "startChar": 6,
+        "endLine": 134,
+        "endChar": 12
+      },
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2035d009_89f40156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105a4401_f8784c1c",
       "range": {
         "startLine": 134,
         "startChar": 6,

@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5fb72e3_151c21b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "028a36a9_4eb14401",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 3
+      },
+      "revId": "8441ef379d20cac646f53f1f6f7221cce2c90a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2258bf71_f83ac7c5",
@@ -167,6 +191,30 @@
       "side": 1,
       "message": "Yes, this is BSD 3-Clause. I wrote that in the commit message.\nIs there anything to write more here? I copy-pasted the LICENSE file of mp4box.js directory. https://github.com/gpac/mp4box.js/blob/master/LICENSE.",
       "parentUuid": "2258bf71_f83ac7c5",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 23
+      },
+      "revId": "8441ef379d20cac646f53f1f6f7221cce2c90a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4dc509c_46ea6a34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4box.all.min.js",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-28T04:44:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0602d3b4_4814cef7",
       "range": {
         "startLine": 2,
         "startChar": 0,
