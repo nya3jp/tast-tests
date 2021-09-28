@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b11efabc_57ffdd20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-28T14:02:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77d19bc4_179544fe",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "8a91c55b020ea8e4a82ac9a45d25dfc14fc9bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "76f23f71_abb470be",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "Good point, that would also work. May even be nicer/preferable.",
       "parentUuid": "9a974f7e_b47c27b7",
+      "revId": "8a91c55b020ea8e4a82ac9a45d25dfc14fc9bd34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b6defd3_344c2719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/packet_capture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1466712
+      },
+      "writtenOn": "2021-09-28T14:02:39Z",
+      "side": 1,
+      "message": "Done :) I called the net.Listen here and passed the port address and listener to the goroutines to remove the channel. Thanks for suggestion!",
+      "parentUuid": "48a0b5dd_e5d28a5e",
       "revId": "8a91c55b020ea8e4a82ac9a45d25dfc14fc9bd34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
