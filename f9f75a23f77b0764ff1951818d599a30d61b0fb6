@@ -16,6 +16,23 @@
       "message": "lgtm\n\nI am not tast owner though.",
       "revId": "f9f75a23f77b0764ff1951818d599a30d61b0fb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0e9ec54_11950cc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-28T19:21:45Z",
+      "side": 1,
+      "message": "Thank you Xiyuan for your review!",
+      "revId": "f9f75a23f77b0764ff1951818d599a30d61b0fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
