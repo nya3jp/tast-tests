@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/audio/soundcardinit"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -57,6 +58,11 @@ const soundCardInitTimeout = 5 * time.Second
 
 // SoundCardInit Verifies sound_card_init boot time calibration logic.
 func SoundCardInit(ctx context.Context, s *testing.State) {
+
+	if err := audio.WaitForDevice(ctx, audio.OutputStream); err != nil {
+		s.Fatal("Failed to wait for output device: ", err)
+	}
+
 	soundCardID, err := soundcardinit.GetSoundCardID(ctx)
 	if err != nil {
 		s.Fatal("Failed to get sound card name: ", err)
