@@ -34,6 +34,24 @@
       "parentUuid": "b0797952_0ea62c22",
       "revId": "b61bb09b194970971acc90d9c99b98b997e53034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6451e14_18b64b17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-28T18:17:54Z",
+      "side": 1,
+      "message": "Before Change-Id line (no space between them)\nCq-Depend: chromium:3176641\n\nThe other CL will reference this one 😊",
+      "parentUuid": "447bf405_3b53995d",
+      "revId": "b61bb09b194970971acc90d9c99b98b997e53034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
