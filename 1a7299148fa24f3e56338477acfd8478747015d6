@@ -16,6 +16,29 @@
       "message": "Thanks for uploading this.\n\nAs the tests stand, they require too much manual intervention to get the DUT in a state to run these tests.\n\nBefore we add any more tests, we really need to automated the deployment of the existing TQC agent packages. Here are the steps I recommend:\n- The contents of tqc_20.x.x.tgz should be put into an ebuild (it can be private ebuild if necessary)\n- The ./install_ftdi.sh and ./install_mongodb.sh can probably be added as part of the above ebuild (although I\u0027m not sure of the details).\n- Add a package in tast to intialize the Mux agent (`initctl start tqc` etc).\n\nAttempting to automate the above will be benefical for both Intel as well as Google in running these tests faster.",
       "revId": "1a7299148fa24f3e56338477acfd8478747015d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79aba7f0_1a2ab237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-09-28T09:54:25Z",
+      "side": 1,
+      "message": "Why is group:mainline being added? AFAIK mainline machines don\u0027t have the hardware (cswitch) or the packages installed on the DUTs to support these tests.",
+      "range": {
+        "startLine": 37,
+        "startChar": 26,
+        "endLine": 40,
+        "endChar": 3
+      },
+      "revId": "1a7299148fa24f3e56338477acfd8478747015d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
