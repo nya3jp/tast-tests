@@ -22,6 +22,30 @@
       },
       "revId": "a5e6676009c6d44ba6b27c80c1dfcbc057891fa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d54fd26_5a48866d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-28T05:47:56Z",
+      "side": 1,
+      "message": "Yes. Actually I separated this \"lockscreen\" migration into two patches, and in the other one the original file is going to be removed. Thank you for noting this!",
+      "parentUuid": "9de95be2_52d4c5b2",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "a5e6676009c6d44ba6b27c80c1dfcbc057891fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
