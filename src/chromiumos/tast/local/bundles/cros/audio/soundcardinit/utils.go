@@ -45,7 +45,7 @@ func RemoveCalibFiles(ctx context.Context, soundCardID string, count uint) error
 	for i := 0; i < int(count); i++ {
 		calib := fmt.Sprintf(CalibFiles, soundCardID, i)
 		if err := os.Remove(calib); err != nil && !os.IsNotExist(err) {
-			return errors.Wrapf(err, "failed to rm %s: ", calib)
+			return errors.Wrapf(err, "failed to rm %s", calib)
 		}
 	}
 	return nil
@@ -70,7 +70,7 @@ func VerifyUseVPD(ctx context.Context, soundCardID string, count uint) error {
 		calib := fmt.Sprintf(CalibFiles, soundCardID, i)
 		b, err := ioutil.ReadFile(calib)
 		if err != nil {
-			errors.Wrapf(err, "failed to read %s: ", calib)
+			errors.Wrapf(err, "failed to read %s", calib)
 		}
 		if !strings.Contains(string(b), "UseVPD") {
 			return errors.Errorf("%s expect:UseVPD, got: %s", calib, string(b))
