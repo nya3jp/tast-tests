@@ -245,21 +245,22 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 func sendNetworkDataToLocalhost(sizeMiBs int, s *testing.State) {
 	var wg sync.WaitGroup
 	wg.Add(2)
-	port := "localhost:12121"
-	go listener(port, int64(sizeMiBs), &wg, s)
-	go dialer(port, sizeMiBs, &wg, s)
-	wg.Wait()
-}
 
-// listener listens to the tcp connection on given port.
-func listener(port string, sizeMiBs int64, wg *sync.WaitGroup, s *testing.State) {
-	defer wg.Done()
-
-	lstnr, err := net.Listen("tcp", port)
+	// Listen from an available port in localhost.
+	lstnr, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
 		s.Error("Can't listen to tcp port: ", err)
 	}
 	defer lstnr.Close()
+
+	go listener(lstnr, int64(sizeMiBs), &wg, s)
+	go dialer(lstnr.Addr().String(), sizeMiBs, &wg, s)
+	wg.Wait()
+}
+
+// listener listens to the tcp connection on given Listener and reads the data.
+func listener(lstnr net.Listener, sizeMiBs int64, wg *sync.WaitGroup, s *testing.State) {
+	defer wg.Done()
 
 	conn, err := lstnr.Accept()
 	if err != nil {
@@ -279,13 +280,13 @@ func listener(port string, sizeMiBs int64, wg *sync.WaitGroup, s *testing.State)
 	}
 }
 
-// dialer sends <sizeMiBs> of data to given tcp port to imitate network operation on device.
-func dialer(port string, sizeMiBs int, wg *sync.WaitGroup, s *testing.State) {
+// dialer sends <sizeMiBs> of data to given tcp address to imitate network operation on device.
+func dialer(address string, sizeMiBs int, wg *sync.WaitGroup, s *testing.State) {
 	defer wg.Done()
 	var dlr net.Dialer
-	conn, err := dlr.Dial("tcp", port)
+	conn, err := dlr.Dial("tcp", address)
 	if err != nil {
-		s.Fatal("Can't dial localhost tcp port: ", err)
+		s.Fatal("Can't dial localhost tcp address: ", err)
 		return
 	}
 	defer conn.Close()
@@ -293,7 +294,7 @@ func dialer(port string, sizeMiBs int, wg *sync.WaitGroup, s *testing.State) {
 	mb := 1024 * sizeMiBs
 	for i := 0; i < mb; i++ {
 		if _, err := conn.Write(chunk1KiB); err != nil {
-			s.Error("Can't write to localhost tcp port: ", err)
+			s.Error("Can't write to localhost tcp address: ", err)
 		}
 	}
 }
