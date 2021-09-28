@@ -245,21 +245,23 @@ func PacketCapture(ctx context.Context, s *testing.State) {
 func sendNetworkDataToLocalhost(sizeMiBs int, s *testing.State) {
 	var wg sync.WaitGroup
 	wg.Add(2)
-	port := "localhost:12121"
-	go listener(port, int64(sizeMiBs), &wg, s)
-	go dialer(port, sizeMiBs, &wg, s)
+	c := make(chan string)
+	go listener(c, int64(sizeMiBs), &wg, s)
+	go dialer(c, sizeMiBs, &wg, s)
 	wg.Wait()
 }
 
 // listener listens to the tcp connection on given port.
-func listener(port string, sizeMiBs int64, wg *sync.WaitGroup, s *testing.State) {
+func listener(c chan string, sizeMiBs int64, wg *sync.WaitGroup, s *testing.State) {
 	defer wg.Done()
 
-	lstnr, err := net.Listen("tcp", port)
+	lstnr, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
 		s.Error("Can't listen to tcp port: ", err)
 	}
 	defer lstnr.Close()
+
+	c <- lstnr.Addr().String()
 
 	conn, err := lstnr.Accept()
 	if err != nil {
@@ -280,8 +282,9 @@ func listener(port string, sizeMiBs int64, wg *sync.WaitGroup, s *testing.State)
 }
 
 // dialer sends <sizeMiBs> of data to given tcp port to imitate network operation on device.
-func dialer(port string, sizeMiBs int, wg *sync.WaitGroup, s *testing.State) {
+func dialer(c chan string, sizeMiBs int, wg *sync.WaitGroup, s *testing.State) {
 	defer wg.Done()
+	port := <-c
 	var dlr net.Dialer
 	conn, err := dlr.Dial("tcp", port)
 	if err != nil {
