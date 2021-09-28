@@ -42,7 +42,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{runLoopbackLatency},
 		Timeout:      8 * time.Minute,
-		SoftwareDeps: []string{"vm_host", "dlc", "chrome"},
+		SoftwareDeps: []string{"vm_host", "dlc"},
 		Fixture:      "vmDLC",
 		Params: []testing.Param{{
 			Name: "virtio_cras_snd",
