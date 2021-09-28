@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6cfd1d4d_e8dc4ee6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-09-28T08:36:17Z",
+      "side": 1,
+      "message": "the?",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "4829ee9d9353bfcc1967ed84f44ea796f47e7938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1137fd37_2b83d7ed",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -14,6 +37,24 @@
       "writtenOn": "2021-09-28T08:23:49Z",
       "side": 1,
       "message": "Hi Tast Owner, \nThe audio playback from previous tests might result in high temperature measurement on the DUT and cause the error of \"invalid calibration temperature, and\n    there is no datastore\". This CL fixes the test failure by giving it a valid datastore, however \"the valid calibration temperature scenario\" becomes un-tested. \nCan I avoid the audio playback from previous tests by changing the test execution order (re-name the test name, ex: aaSoundCardInit.go)? \nOr can I sleep for 2 minutes in the test to wait for the speakers to cool down?\nThanks!\n",
+      "revId": "4829ee9d9353bfcc1967ed84f44ea796f47e7938",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c60a48_38000ee4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-09-28T08:36:17Z",
+      "side": 1,
+      "message": "Does rebooting before running this test meet your requirement?",
+      "parentUuid": "1137fd37_2b83d7ed",
       "revId": "4829ee9d9353bfcc1967ed84f44ea796f47e7938",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
