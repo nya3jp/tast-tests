@@ -34,7 +34,7 @@ func init() {
 }
 
 func ChromeValidity(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	testConcurrentTabs(ctx, s, cr)
 }
