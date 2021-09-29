@@ -1,0 +1,6 @@
+{
+  "url":
+  "gs://chromiumos-test-assets-public/tast/cros/arc/com.halfbrick.fruitninjafree-58156200_20210929.apk",
+  "size": 151870642,
+  "sha256sum": "8e44a3d5555b2f3d100851f6359f1d7ac226563b85bdcabeb1b1818602e14b58"
+}
