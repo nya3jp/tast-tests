@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc4525bc_9e476232",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-09-29T22:36:56Z",
+      "side": 1,
+      "message": "Though it may not be needed for promoting to CQ, you can run it on a skylab device via `crosfleet`, either by leasing a device then running the test: `tast run \u003cDUT\u003e crash.AuthFailure`,or by directly running the test: `crosfleet run test -board \u003cboard\u003e -pool DUT_POOL_QUOTA -test-args \"tast_expr\u003dcrash.AuthFailure\" tast.generic`\n\nsee details at https://g3doc.corp.google.com/company/teams/chrome/ops/chromeos/chromeos-infra/test_platform/internal/tools/crosfleet.md?cl\u003dhead#commands",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "5cdc0465f5458848c3b4d720409aa7c7196c66e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6a908a01_bc941af7",
