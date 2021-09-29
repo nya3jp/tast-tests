@@ -25,6 +25,11 @@ const (
 	forceYouTubeRestrictStrict
 )
 
+const (
+	strictlyRestrictedVideo   = "https://www.youtube.com/watch?v=Fmwfmee2ZTE"
+	moderatelyRestrictedVideo = "https://www.youtube.com/watch?v=yR79oLrI1g4"
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: ForceYouTubeRestrict,
@@ -49,22 +54,34 @@ func ForceYouTubeRestrict(ctx context.Context, s *testing.State) {
 		name string
 		// value is the policy value.
 		value *policy.ForceYouTubeRestrict
+		// moderateViewability is whether the contents with moderate restriction are expected to be accessable.
+		moderateViewability bool
+		// strictViewability is whether the contents with strict restriction are expected to be accessable.
+		strictViewability bool
 	}{
 		{
-			name:  "disabled",
-			value: &policy.ForceYouTubeRestrict{Val: forceYouTubeRestrictDisabled},
+			name:                "disabled",
+			value:               &policy.ForceYouTubeRestrict{Val: forceYouTubeRestrictDisabled},
+			moderateViewability: true,
+			strictViewability:   true,
 		},
 		{
-			name:  "moderate",
-			value: &policy.ForceYouTubeRestrict{Val: forceYouTubeRestrictModerate},
+			name:                "moderate",
+			value:               &policy.ForceYouTubeRestrict{Val: forceYouTubeRestrictModerate},
+			moderateViewability: false,
+			strictViewability:   true,
 		},
 		{
-			name:  "strict",
-			value: &policy.ForceYouTubeRestrict{Val: forceYouTubeRestrictStrict},
+			name:                "strict",
+			value:               &policy.ForceYouTubeRestrict{Val: forceYouTubeRestrictStrict},
+			moderateViewability: false,
+			strictViewability:   false,
 		},
 		{
-			name:  "unset",
-			value: &policy.ForceYouTubeRestrict{Stat: policy.StatusUnset},
+			name:                "unset",
+			value:               &policy.ForceYouTubeRestrict{Stat: policy.StatusUnset},
+			moderateViewability: true,
+			strictViewability:   true,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -79,60 +96,34 @@ func ForceYouTubeRestrict(ctx context.Context, s *testing.State) {
 			}
 
 			// Run actual test.
-			if err := testRestrictedMode(ctx, cr, param.value); err != nil {
+			if err := testRestrictedMode(ctx, cr, param.moderateViewability, param.strictViewability); err != nil {
 				s.Error("Failed to verify YouTube content restriction: ", err)
 			}
 		})
 	}
 }
 
-func testRestrictedMode(ctx context.Context, cr *chrome.Chrome, policyVal *policy.ForceYouTubeRestrict) error {
-	var expectedModerateViewability, expectedStrictViewability bool
-	if policyVal.Stat == policy.StatusUnset {
-		expectedModerateViewability = true
-		expectedStrictViewability = true
-	} else {
-		switch policyVal.Val {
-		case forceYouTubeRestrictDisabled:
-			expectedModerateViewability = true
-			expectedStrictViewability = true
-		case forceYouTubeRestrictModerate:
-			expectedModerateViewability = false
-			expectedStrictViewability = true
-		case forceYouTubeRestrictStrict:
-			expectedModerateViewability = false
-			expectedStrictViewability = false
-		default:
-			return errors.Errorf("unexpected policy value: %d", policyVal.Val)
-		}
+func testRestrictedMode(ctx context.Context, cr *chrome.Chrome, expectedModerateViewability, expectedStrictViewability bool) error {
+	if strictViewability, err := isStrictlyRestrictedContentViewable(ctx, cr); err != nil {
+		return err
+	} else if strictViewability != expectedStrictViewability {
+		return errors.Errorf("unexpected strictly restricted content accessibility; got %t, wanted %t", strictViewability, expectedStrictViewability)
 	}
 
-	r, err := isStrictlyRestrictedContentViewable(ctx, cr)
-	if err != nil {
+	if moderateViewability, err := isModeratelyRestrictedContentViewable(ctx, cr); err != nil {
 		return err
-	}
-	if r != expectedStrictViewability {
-		return errors.Errorf("unexpected strictly restricted content accessibility, got %t, wanted %t", r, expectedStrictViewability)
-	}
-
-	r, err = isModeratelyRestrictedContentViewable(ctx, cr)
-	if err != nil {
-		return err
-	}
-	if r != expectedModerateViewability {
-		return errors.Errorf("unexpected moderately restricted content accessibility, got %t, wanted %t", r, expectedModerateViewability)
+	} else if moderateViewability != expectedModerateViewability {
+		return errors.Errorf("unexpected moderately restricted content accessibility; got %t, wanted %t", moderateViewability, expectedModerateViewability)
 	}
 
 	return nil
 }
 
 func isStrictlyRestrictedContentViewable(ctx context.Context, cr *chrome.Chrome) (bool, error) {
-	const strictlyRestrictedVideo = "https://www.youtube.com/watch?v=Fmwfmee2ZTE"
 	return isYouTubeContentViewable(ctx, cr, strictlyRestrictedVideo)
 }
 
 func isModeratelyRestrictedContentViewable(ctx context.Context, cr *chrome.Chrome) (bool, error) {
-	const moderatelyRestrictedVideo = "https://www.youtube.com/watch?v=yR79oLrI1g4"
 	return isYouTubeContentViewable(ctx, cr, moderatelyRestrictedVideo)
 }
 
