@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c58975f_465f708d",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/phonehub/phonehub_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:02:45Z",
+      "side": 1,
+      "message": "There\u0027s some JS we can use instead:\nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/resources/settings/chromeos/multidevice_page/multidevice_page.js?q\u003dshouldShowButton_%20file:multidevice_page.js\n\nIt\u0027s a bit harder to understand than the UI automation, but could possibly be more stable? Let me know what you think.",
+      "parentUuid": "85baf504_bbdaac4f",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 47
+      },
+      "revId": "3bea5e973d983db9432d7c70cf6a448378f0f605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b00f5ab4_2b91d136",
         "filename": "src/chromiumos/tast/local/chrome/multidevice/phonehub/phonehub_ui.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-22T21:38:25Z",
       "side": 1,
       "message": "Why different than the default?",
+      "range": {
+        "startLine": 28,
+        "startChar": 37,
+        "endLine": 28,
+        "endChar": 53
+      },
+      "revId": "3bea5e973d983db9432d7c70cf6a448378f0f605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9058e092_49633aa4",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/phonehub/phonehub_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:02:45Z",
+      "side": 1,
+      "message": "It can take some time for the onboarding/pairing to complete, so if you call this immediately after, it may not be enabled yet. Added a comment.",
+      "parentUuid": "b00f5ab4_2b91d136",
       "range": {
         "startLine": 28,
         "startChar": 37,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe175511_2a6d6997",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/phonehub/phonehub_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:02:45Z",
+      "side": 1,
+      "message": "Just the role (toggleButton), the other attributes are pretty generic IIRC, since it\u0027s all OS settings UI stuff.",
+      "parentUuid": "5a10eb3b_7533e071",
+      "range": {
+        "startLine": 29,
+        "startChar": 40,
+        "endLine": 29,
+        "endChar": 75
+      },
+      "revId": "3bea5e973d983db9432d7c70cf6a448378f0f605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce4366a0_466c317c",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-22T21:38:25Z",
       "side": 1,
       "message": "I have a feeling I won\u0027t know what this is when I see the error in stainless in a few weeks :) Can you make this clearer",
+      "range": {
+        "startLine": 31,
+        "startChar": 27,
+        "endLine": 31,
+        "endChar": 77
+      },
+      "revId": "3bea5e973d983db9432d7c70cf6a448378f0f605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "524a5dcf_c5b986fc",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/phonehub/phonehub_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce4366a0_466c317c",
       "range": {
         "startLine": 31,
         "startChar": 27,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "970a6f56_2ec49af3",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/phonehub/phonehub_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce80daad_65d712fa",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 78
+      },
+      "revId": "3bea5e973d983db9432d7c70cf6a448378f0f605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64e6ab38_59769b66",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-09-22T21:38:25Z",
       "side": 1,
       "message": "\"Connected devices\"",
+      "range": {
+        "startLine": 44,
+        "startChar": 29,
+        "endLine": 44,
+        "endChar": 47
+      },
+      "revId": "3bea5e973d983db9432d7c70cf6a448378f0f605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8636e92_f613b30e",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/phonehub/phonehub_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64e6ab38_59769b66",
       "range": {
         "startLine": 44,
         "startChar": 29,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bcf19ad_a4b43548",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/phonehub/phonehub_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84f22f0f_1dcacc79",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "3bea5e973d983db9432d7c70cf6a448378f0f605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf34c0b4_2171756b",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "868a7b26_d92c2721",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/phonehub/phonehub_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf34c0b4_2171756b",
+      "range": {
+        "startLine": 71,
+        "startChar": 37,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "3bea5e973d983db9432d7c70cf6a448378f0f605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2735447e_4ef71b61",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-09-22T21:38:25Z",
       "side": 1,
       "message": "Check if it worked?",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 11
+      },
+      "revId": "3bea5e973d983db9432d7c70cf6a448378f0f605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d96cc781_7e60d8e0",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/phonehub/phonehub_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2735447e_4ef71b61",
       "range": {
         "startLine": 140,
         "startChar": 1,
