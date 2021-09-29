@@ -16,6 +16,368 @@
       "message": "Hi Tast reviewers,\n\nCould you help to take a look on this CL?",
       "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdd7bbb2_7734e945",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "First pass of the CL.",
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2257226_a09e2feb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "More of a broader question (probably more so for kerker@ potentially?) how are we ensuring these end up critical tests (i.e. remove the information tag) or is there a more appropriate group for these to be added to?",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc4b521_06a9bbdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "Curious, is it worth ensuring this file is empty before starting this test? Just in some edge case this still has contents prior to starting the test?",
+      "range": {
+        "startLine": 40,
+        "startChar": 28,
+        "endLine": 40,
+        "endChar": 45
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1c6a2e2_1cf08a15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "nit: lowercase n",
+      "range": {
+        "startLine": 53,
+        "startChar": 18,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac6430d9_ff5a7c5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "Remember to use ctxForCleanUp here otherwise this won\u0027t run in the leftover 5s",
+      "range": {
+        "startLine": 61,
+        "startChar": 36,
+        "endLine": 61,
+        "endChar": 39
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a16e6090_7a6ca74a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "Can you use the os.Remove package to do this instead of shell commands?",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaba687b_f016b56b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "ctxForCleanUp",
+      "range": {
+        "startLine": 64,
+        "startChar": 36,
+        "endLine": 64,
+        "endChar": 39
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2175d868_28872f88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "Can we get the error output in this log? Might be useful for debugging.",
+      "range": {
+        "startLine": 65,
+        "startChar": 65,
+        "endLine": 65,
+        "endChar": 66
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a239e33_7936c3df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "Error output in this log please.",
+      "range": {
+        "startLine": 73,
+        "startChar": 34,
+        "endLine": 73,
+        "endChar": 35
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2140cac_ebd72bf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "Why is this a function? Seems you\u0027re only calling it once.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 29
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a5fd86_2ff37eaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "Is it possible this might error out, maybe check the error in case.",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 58
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f9264a1_2984dae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "nit: lowercase e",
+      "range": {
+        "startLine": 83,
+        "startChar": 22,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76f7ba25_a2a3cc58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "nit: lowercase p",
+      "range": {
+        "startLine": 89,
+        "startChar": 23,
+        "endLine": 89,
+        "endChar": 24
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bbc71c5_5c3c54e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "Please use the idiomatic go functions instead of shelling out\n\nhttps://pkg.go.dev/os#ReadFile",
+      "range": {
+        "startLine": 90,
+        "startChar": 59,
+        "endLine": 90,
+        "endChar": 63
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d3ecc87_e6a889b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "Please include the error output in the fatal message",
+      "range": {
+        "startLine": 92,
+        "startChar": 41,
+        "endLine": 92,
+        "endChar": 42
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaa51eca_ccf73c08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-09-29T05:35:51Z",
+      "side": 1,
+      "message": "nit: consider having this as a variable defined up top for use here and at line 118",
+      "range": {
+        "startLine": 106,
+        "startChar": 34,
+        "endLine": 106,
+        "endChar": 50
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
