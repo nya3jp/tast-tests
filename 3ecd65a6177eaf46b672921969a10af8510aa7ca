@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "965b4f6b_3075daa5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-09-29T00:04:51Z",
+      "side": 1,
+      "message": "I am okay with waiting until the uprev is done.",
+      "parentUuid": "d453f2c7_ee949676",
+      "revId": "3ecd65a6177eaf46b672921969a10af8510aa7ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bff7932f_3d17ffaa",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-28T23:52:28Z",
       "side": 1,
       "message": "rm",
+      "range": {
+        "startLine": 52,
+        "startChar": 74,
+        "endLine": 52,
+        "endChar": 81
+      },
+      "revId": "3ecd65a6177eaf46b672921969a10af8510aa7ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b503ff8_9095d7c2",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-09-29T00:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bff7932f_3d17ffaa",
       "range": {
         "startLine": 52,
         "startChar": 74,
