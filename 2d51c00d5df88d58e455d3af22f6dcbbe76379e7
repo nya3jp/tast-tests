@@ -16,6 +16,46 @@
       "message": "Just a clean up of the code related recent library update. PTAL.",
       "revId": "2d51c00d5df88d58e455d3af22f6dcbbe76379e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bee6c90_aab1b4f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2021-09-29T16:59:26Z",
+      "side": 1,
+      "message": "lgtm assuming the answer to my question is \u0027yes\u0027. thanks!",
+      "revId": "2d51c00d5df88d58e455d3af22f6dcbbe76379e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49695236_091ce8a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chrome_mlocked.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2021-09-29T16:59:26Z",
+      "side": 1,
+      "message": "(i presume this filters to focus only on Chrome-y processes?)",
+      "range": {
+        "startLine": 62,
+        "startChar": 15,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "2d51c00d5df88d58e455d3af22f6dcbbe76379e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
