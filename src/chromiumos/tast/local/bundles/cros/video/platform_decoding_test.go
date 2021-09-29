@@ -490,6 +490,273 @@ var vp9WebmFiles = map[string]map[string]map[string][]string{
 			},
 		},
 	},
+	"profile_2": {
+		"group1": {
+			"buf": {
+				"test_vectors/vp9/Profile_2_10bit/buf/crowd_run_256X144_fr15_bd10_8buf_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/grass_1_256X144_fr15_bd10_8buf_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/street1_1_256X144_fr15_bd10_8buf_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/crowd_run_384X192_fr30_bd10_8buf_l11.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/grass_1_384X192_fr30_bd10_8buf_l11.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/street1_1_384X192_fr30_bd10_8buf_l11.ivf",
+			},
+			"frm_resize": {
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/crowd_run_256X144_fr15_bd10_frm_resize_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/grass_1_256X144_fr15_bd10_frm_resize_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/street1_1_256X144_fr15_bd10_frm_resize_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/crowd_run_384X192_fr30_bd10_frm_resize_l11.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/grass_1_384X192_fr30_bd10_frm_resize_l11.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/street1_1_384X192_fr30_bd10_frm_resize_l11.ivf",
+			},
+			"gf_dist": {
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/crowd_run_256X144_fr15_bd10_gf_dist_4_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/grass_1_256X144_fr15_bd10_gf_dist_4_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/street1_1_256X144_fr15_bd10_gf_dist_4_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/crowd_run_384X192_fr30_bd10_gf_dist_4_l11.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/grass_1_384X192_fr30_bd10_gf_dist_4_l11.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/street1_1_384X192_fr30_bd10_gf_dist_4_l11.ivf",
+			},
+			"odd_size": {
+				"test_vectors/vp9/Profile_2_10bit/odd_size/crowd_run_248X144_fr15_bd10_odd_size_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/grass_1_248X144_fr15_bd10_odd_size_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/street1_1_248X144_fr15_bd10_odd_size_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/crowd_run_376X184_fr30_bd10_odd_size_l11.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/grass_1_376X184_fr30_bd10_odd_size_l11.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/street1_1_376X184_fr30_bd10_odd_size_l11.ivf",
+			},
+			"sub8x8": {
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/crowd_run_256X144_fr15_bd10_sub8X8_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/grass_1_256X144_fr15_bd10_sub8X8_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/street1_1_256X144_fr15_bd10_sub8X8_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/crowd_run_384X192_fr30_bd10_sub8X8_l11.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/grass_1_384X192_fr30_bd10_sub8X8_l11.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/street1_1_384X192_fr30_bd10_sub8X8_l11.ivf",
+			},
+			"sub8x8_sf": {
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/crowd_run_256X144_fr15_bd10_sub8x8_sf_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/grass_1_256X144_fr15_bd10_sub8x8_sf_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/street1_1_256X144_fr15_bd10_sub8x8_sf_l1.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/crowd_run_384X192_fr30_bd10_sub8x8_sf_l11.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/grass_1_384X192_fr30_bd10_sub8x8_sf_l11.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/street1_1_384X192_fr30_bd10_sub8x8_sf_l11.ivf",
+			},
+		},
+		"group2": {
+			"buf": {
+				"test_vectors/vp9/Profile_2_10bit/buf/crowd_run_480X256_fr30_bd10_8buf_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/grass_1_480X256_fr30_bd10_8buf_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/street1_1_480X256_fr30_bd10_8buf_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/crowd_run_640X384_fr30_bd10_8buf_l21.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/grass_1_640X384_fr30_bd10_8buf_l21.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/street1_1_640X384_fr30_bd10_8buf_l21.ivf",
+			},
+			"frm_resize": {
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/crowd_run_480X256_fr30_bd10_frm_resize_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/grass_1_480X256_fr30_bd10_frm_resize_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/street1_1_480X256_fr30_bd10_frm_resize_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/crowd_run_640X384_fr30_bd10_frm_resize_l21.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/grass_1_640X384_fr30_bd10_frm_resize_l21.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/street1_1_640X384_fr30_bd10_frm_resize_l21.ivf",
+			},
+			"gf_dist": {
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/crowd_run_480X256_fr30_bd10_gf_dist_4_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/grass_1_480X256_fr30_bd10_gf_dist_4_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/street1_1_480X256_fr30_bd10_gf_dist_4_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/crowd_run_640X384_fr30_bd10_gf_dist_4_l21.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/grass_1_640X384_fr30_bd10_gf_dist_4_l21.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/street1_1_640X384_fr30_bd10_gf_dist_4_l21.ivf",
+			},
+			"odd_size": {
+				"test_vectors/vp9/Profile_2_10bit/odd_size/crowd_run_472X248_fr30_bd10_odd_size_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/grass_1_472X248_fr30_bd10_odd_size_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/street1_1_472X248_fr30_bd10_odd_size_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/crowd_run_632X376_fr30_bd10_odd_size_l21.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/grass_1_632X376_fr30_bd10_odd_size_l21.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/street1_1_632X376_fr30_bd10_odd_size_l21.ivf",
+			},
+			"sub8x8": {
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/crowd_run_480X256_fr30_bd10_sub8X8_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/grass_1_480X256_fr30_bd10_sub8X8_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/street1_1_480X256_fr30_bd10_sub8X8_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/crowd_run_640X384_fr30_bd10_sub8X8_l21.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/grass_1_640X384_fr30_bd10_sub8X8_l21.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/street1_1_640X384_fr30_bd10_sub8X8_l21.ivf",
+			},
+			"sub8x8_sf": {
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/crowd_run_480X256_fr30_bd10_sub8x8_sf_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/grass_1_480X256_fr30_bd10_sub8x8_sf_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/street1_1_480X256_fr30_bd10_sub8x8_sf_l2.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/crowd_run_640X384_fr30_bd10_sub8x8_sf_l21.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/grass_1_640X384_fr30_bd10_sub8x8_sf_l21.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/street1_1_640X384_fr30_bd10_sub8x8_sf_l21.ivf",
+			},
+		},
+		"group3": {
+			"buf": {
+				"test_vectors/vp9/Profile_2_10bit/buf/crowd_run_1080X512_fr30_bd10_8buf_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/grass_1_1080X512_fr30_bd10_8buf_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/street1_1_1080X512_fr30_bd10_8buf_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/crowd_run_1280X768_fr30_bd10_8buf_l31.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/grass_1_1280X768_fr30_bd10_8buf_l31.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/street1_1_1280X768_fr30_bd10_8buf_l31.ivf",
+			},
+			"frm_resize": {
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/crowd_run_1080X512_fr30_bd10_frm_resize_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/grass_1_1080X512_fr30_bd10_frm_resize_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/street1_1_1080X512_fr30_bd10_frm_resize_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/crowd_run_1280X768_fr30_bd10_frm_resize_l31.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/grass_1_1280X768_fr30_bd10_frm_resize_l31.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/street1_1_1280X768_fr30_bd10_frm_resize_l31.ivf",
+			},
+			"gf_dist": {
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/crowd_run_1080X512_fr30_bd10_gf_dist_4_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/grass_1_1080X512_fr30_bd10_gf_dist_4_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/street1_1_1080X512_fr30_bd10_gf_dist_4_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/crowd_run_1280X768_fr30_bd10_gf_dist_4_l31.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/grass_1_1280X768_fr30_bd10_gf_dist_4_l31.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/street1_1_1280X768_fr30_bd10_gf_dist_4_l31.ivf",
+			},
+			"odd_size": {
+				"test_vectors/vp9/Profile_2_10bit/odd_size/crowd_run_1080X504_fr30_bd10_odd_size_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/grass_1_1080X504_fr30_bd10_odd_size_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/street1_1_1080X504_fr30_bd10_odd_size_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/crowd_run_1280X768_fr30_bd10_odd_size_l31.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/grass_1_1280X768_fr30_bd10_odd_size_l31.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/street1_1_1280X768_fr30_bd10_odd_size_l31.ivf",
+			},
+			"sub8x8": {
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/crowd_run_1080X512_fr30_bd10_sub8X8_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/grass_1_1080X512_fr30_bd10_sub8X8_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/street1_1_1080X512_fr30_bd10_sub8X8_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/crowd_run_1280X768_fr30_bd10_sub8X8_l31.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/grass_1_1280X768_fr30_bd10_sub8X8_l31.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/street1_1_1280X768_fr30_bd10_sub8X8_l31.ivf",
+			},
+			"sub8x8_sf": {
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/crowd_run_1080X512_fr30_bd10_sub8x8_sf_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/grass_1_1080X512_fr30_bd10_sub8x8_sf_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/street1_1_1080X512_fr30_bd10_sub8x8_sf_l3.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/crowd_run_1280X768_fr30_bd10_sub8x8_sf_l31.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/grass_1_1280X768_fr30_bd10_sub8x8_sf_l31.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/street1_1_1280X768_fr30_bd10_sub8x8_sf_l31.ivf",
+			},
+		},
+		"group4": {
+			"buf": {
+				"test_vectors/vp9/Profile_2_10bit/buf/crowd_run_2048X1088_fr30_bd10_8buf_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/grass_1_2048X1088_fr30_bd10_8buf_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/street1_1_2048X1088_fr30_bd10_8buf_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/crowd_run_2048X1088_fr60_bd10_6buf_l41.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/grass_1_2048X1088_fr60_bd10_6buf_l41.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/street1_1_2048X1088_fr60_bd10_6buf_l41.ivf",
+			},
+			"frm_resize": {
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/crowd_run_2048X1088_fr30_bd10_frm_resize_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/grass_1_2048X1088_fr30_bd10_frm_resize_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/street1_1_2048X1088_fr30_bd10_frm_resize_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/crowd_run_2048X1088_fr60_bd10_frm_resize_l41.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/grass_1_2048X1088_fr60_bd10_frm_resize_l41.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/street1_1_2048X1088_fr60_bd10_frm_resize_l41.ivf",
+			},
+			"gf_dist": {
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/crowd_run_2048X1088_fr30_bd10_gf_dist_4_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/grass_1_2048X1088_fr30_bd10_gf_dist_4_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/street1_1_2048X1088_fr30_bd10_gf_dist_4_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/crowd_run_2048X1088_fr60_bd10_gf_dist_5_l41.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/grass_1_2048X1088_fr60_bd10_gf_dist_5_l41.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/street1_1_2048X1088_fr60_bd10_gf_dist_5_l41.ivf",
+			},
+			"odd_size": {
+				"test_vectors/vp9/Profile_2_10bit/odd_size/crowd_run_2040X1080_fr30_bd10_odd_size_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/grass_1_2040X1080_fr30_bd10_odd_size_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/street1_1_2040X1080_fr30_bd10_odd_size_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/crowd_run_2040X1080_fr60_bd10_odd_size_l41.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/grass_1_2040X1080_fr60_bd10_odd_size_l41.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/street1_1_2040X1080_fr60_bd10_odd_size_l41.ivf",
+			},
+			"sub8x8": {
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/crowd_run_2048X1088_fr30_bd10_sub8X8_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/grass_1_2048X1088_fr30_bd10_sub8X8_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/street1_1_2048X1088_fr30_bd10_sub8X8_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/crowd_run_2048X1088_fr60_bd10_sub8X8_l41.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/grass_1_2048X1088_fr60_bd10_sub8X8_l41.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/street1_1_2048X1088_fr60_bd10_sub8X8_l41.ivf",
+			},
+			"sub8x8_sf": {
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/crowd_run_2048X1088_fr30_bd10_sub8x8_sf_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/grass_1_2048X1088_fr30_bd10_sub8x8_sf_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/street1_1_2048X1088_fr30_bd10_sub8x8_sf_l4.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/crowd_run_2048X1088_fr60_bd10_sub8x8_sf_l41.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/grass_1_2048X1088_fr60_bd10_sub8x8_sf_l41.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/street1_1_2048X1088_fr60_bd10_sub8x8_sf_l41.ivf",
+			},
+		},
+		// Name this level "5.0" instead of 5 to ensure it runs before 5.1.
+		"level5_0": {
+			"buf": {
+				"test_vectors/vp9/Profile_2_10bit/buf/crowd_run_4096X2176_fr30_bd10_4buf_l5.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/grass_1_4096X2176_fr30_bd10_4buf_l5.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/street1_1_4096X2176_fr30_bd10_4buf_l5.ivf",
+			},
+			"frm_resize": {
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/crowd_run_4096X2176_fr30_bd10_frm_resize_l5.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/grass_1_4096X2176_fr30_bd10_frm_resize_l5.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/street1_1_4096X2176_fr30_bd10_frm_resize_l5.ivf",
+			},
+			"gf_dist": {
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/crowd_run_4096X2176_fr30_bd10_gf_dist_6_l5.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/grass_1_4096X2176_fr30_bd10_gf_dist_6_l5.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/street1_1_4096X2176_fr30_bd10_gf_dist_6_l5.ivf",
+			},
+			"odd_size": {
+				"test_vectors/vp9/Profile_2_10bit/odd_size/crowd_run_4088X2168_fr30_bd10_odd_size_l5.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/grass_1_4088X2168_fr30_bd10_odd_size_l5.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/street1_1_4088X2168_fr30_bd10_odd_size_l5.ivf",
+			},
+			"sub8x8": {
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/crowd_run_4096X2176_fr30_bd10_sub8X8_l5.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/grass_1_4096X2176_fr30_bd10_sub8X8_l5.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/street1_1_4096X2176_fr30_bd10_sub8X8_l5.ivf",
+			},
+			"sub8x8_sf": {
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/crowd_run_4096X2176_fr30_bd10_sub8x8_sf_l5.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/grass_1_4096X2176_fr30_bd10_sub8x8_sf_l5.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/street1_1_4096X2176_fr30_bd10_sub8x8_sf_l5.ivf",
+			},
+		},
+		"level5_1": {
+			"buf": {
+				"test_vectors/vp9/Profile_2_10bit/buf/crowd_run_4096X2176_fr60_bd10_4buf_l51.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/grass_1_4096X2176_fr60_bd10_4buf_l51.ivf",
+				"test_vectors/vp9/Profile_2_10bit/buf/street1_1_4096X2176_fr60_bd10_4buf_l51.ivf",
+			},
+			"frm_resize": {
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/crowd_run_4096X2176_fr60_bd10_frm_resize_l51.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/grass_1_4096X2176_fr60_bd10_frm_resize_l51.ivf",
+				"test_vectors/vp9/Profile_2_10bit/frm_resize/street1_1_4096X2176_fr60_bd10_frm_resize_l51.ivf",
+			},
+			"gf_dist": {
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/crowd_run_4096X2176_fr60_bd10_gf_dist_10_l51.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/grass_1_4096X2176_fr60_bd10_gf_dist_10_l51.ivf",
+				"test_vectors/vp9/Profile_2_10bit/gf_dist/street1_1_4096X2176_fr60_bd10_gf_dist_10_l51.ivf",
+			},
+			"odd_size": {
+				"test_vectors/vp9/Profile_2_10bit/odd_size/crowd_run_4088X2168_fr60_bd10_odd_size_l51.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/grass_1_4088X2168_fr60_bd10_odd_size_l51.ivf",
+				"test_vectors/vp9/Profile_2_10bit/odd_size/street1_1_4088X2168_fr60_bd10_odd_size_l51.ivf",
+			},
+			"sub8x8": {
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/crowd_run_4096X2176_fr60_bd10_sub8X8_l51.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/grass_1_4096X2176_fr60_bd10_sub8X8_l51.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8X8/street1_1_4096X2176_fr60_bd10_sub8X8_l51.ivf",
+			},
+			"sub8x8_sf": {
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/crowd_run_4096X2176_fr60_bd10_sub8x8_sf_l51.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/grass_1_4096X2176_fr60_bd10_sub8x8_sf_l51.ivf",
+				"test_vectors/vp9/Profile_2_10bit/sub8x8_sf/street1_1_4096X2176_fr60_bd10_sub8x8_sf_l51.ivf",
+			},
+		},
+	},
 }
 
 var vp9SVCFile = "test_vectors/vp9/kSVC/ksvc_3sl_3tl_key100.ivf"
@@ -601,7 +868,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 	}
 
 	// Generate VAAPI VP9 tests.
-	for i, profile := range []string{"profile_0"} {
+	for i, profile := range []string{"profile_0", "profile_2"} {
 		for _, levelGroup := range []string{"group1", "group2", "group3", "group4", "level5_0", "level5_1"} {
 			for _, cat := range []string{
 				"buf", "frm_resize", "gf_dist", "odd_size", "sub8x8", "sub8x8_sf",
