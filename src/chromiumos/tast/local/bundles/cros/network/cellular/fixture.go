@@ -35,6 +35,7 @@ func init() {
 // cellularFixture implements testing.FixtureImpl.
 type cellularFixture struct {
 	modemfwdStopped bool
+	hermesStopped   bool
 }
 
 func newCellularFixture() testing.FixtureImpl {
@@ -42,18 +43,29 @@ func newCellularFixture() testing.FixtureImpl {
 }
 
 const modemfwdJobName = "modemfwd"
+const hermesJobName = "hermes"
 
 func (f *cellularFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	stopped, err := stopJob(ctx, modemfwdJobName)
-	if err != nil {
+	var err error
+	if f.modemfwdStopped, err = stopJob(ctx, modemfwdJobName); err != nil {
 		s.Fatalf("Failed to stop job: %q, %s", modemfwdJobName, err)
 	}
-	if stopped {
+	if f.modemfwdStopped {
 		s.Logf("Stopped %q", modemfwdJobName)
 	} else {
 		s.Logf("%q not running", modemfwdJobName)
 	}
-	f.modemfwdStopped = stopped
+
+	if f.hermesStopped, err = stopJob(ctx, hermesJobName); err != nil {
+		s.Fatalf("Failed to stop job: %q, %s", hermesJobName, err)
+	}
+
+	if f.hermesStopped {
+		s.Logf("Stopped %q", hermesJobName)
+	} else {
+		s.Logf("%q not running", hermesJobName)
+	}
+
 	return nil
 }
 
@@ -70,6 +82,14 @@ func (f *cellularFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 			s.Fatalf("Failed to start %q: %s", modemfwdJobName, err)
 		}
 		s.Logf("Started %q", modemfwdJobName)
+	}
+
+	if f.hermesStopped {
+		err := upstart.StartJob(ctx, hermesJobName)
+		if err != nil {
+			s.Fatalf("Failed to start %q: %s", hermesJobName, err)
+		}
+		s.Logf("Started %q", hermesJobName)
 	}
 }
 
