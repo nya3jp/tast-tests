@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8903348e_4bb7f738",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2021-09-29T14:35:35Z",
+      "side": 1,
+      "message": "Have you tried the CCAUIStress test? I think it can do the same thing.\n\n tast run -var\u003daction_filter\u003dswitch-camera -var\u003diterations\u003d\u003cN\u003e \u003cDUT_IP\u003e camera.CCAUIStress.real",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "13795f5c70df940a1c8d5d3c73f34edcd54ad008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
