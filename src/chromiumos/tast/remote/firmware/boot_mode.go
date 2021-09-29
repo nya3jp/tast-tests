@@ -28,6 +28,9 @@ const (
 	// offTimeout is the timeout to wait for the DUT to be unreachable after powering off.
 	offTimeout = 3 * time.Minute
 
+	// powerStateTimeout is the timeout to wait for the DUT reach S5 or G3.
+	powerStateTimeout = 1 * time.Minute
+
 	// reconnectTimeout is the timeout to wait to reconnect to the DUT after rebooting.
 	reconnectTimeout = 3 * time.Minute
 )
@@ -551,9 +554,7 @@ func (ms *ModeSwitcher) powerOff(ctx context.Context) error {
 		return errors.Wrapf(err, "DUT poweroff %T", err)
 	}
 
-	offCtx, cancel := context.WithTimeout(ctx, offTimeout)
-	defer cancel()
-	if err := ms.waitUnreachable(offCtx); err != nil {
+	if err := ms.waitUnreachable(ctx); err != nil {
 		return errors.Wrap(err, "waiting for DUT to be unreachable after sending poweroff command")
 	}
 	return nil
@@ -571,10 +572,11 @@ func (ms *ModeSwitcher) waitUnreachable(ctx context.Context) error {
 		}
 		return nil
 	}, &testing.PollOptions{
-		Timeout: offTimeout, Interval: 250 * time.Millisecond})
+		Timeout: powerStateTimeout, Interval: 250 * time.Millisecond})
 	if err == nil {
 		return nil
 	}
+	testing.ContextLogf(ctx, "Failed to get G3 or S5 power state: %s", err)
 	// If the EC didn't return a power state, try wait unreachable instead.
 	offCtx, cancel := context.WithTimeout(ctx, offTimeout)
 	defer cancel()
