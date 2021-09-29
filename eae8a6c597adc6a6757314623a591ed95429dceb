@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1a2a851_b4f4fa73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-29T08:21:25Z",
+      "side": 1,
+      "message": "I hope you are better now. \nThere is a dependent CL for which I\u0027m trying to get CR+2 again after a merge conflict. I think this CL can be merged only if the dependent CL also gets CQ+2 right?",
+      "parentUuid": "d0413456_1d040714",
+      "revId": "eae8a6c597adc6a6757314623a591ed95429dceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec5a9254_d94ebab8",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-09-27T18:13:16Z",
       "side": 1,
       "message": "Maybe also check that deviceType \u003d\u003d expectedAudioNode as a sanity check.",
+      "range": {
+        "startLine": 155,
+        "startChar": 5,
+        "endLine": 155,
+        "endChar": 15
+      },
+      "revId": "eae8a6c597adc6a6757314623a591ed95429dceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1afefa51_a76aed1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-29T08:21:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec5a9254_d94ebab8",
       "range": {
         "startLine": 155,
         "startChar": 5,
