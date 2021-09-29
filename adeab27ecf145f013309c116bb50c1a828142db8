@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a52ee4f_4f299a1c",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-29T17:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fff1d181_df85e4ce",
+      "range": {
+        "startLine": 47,
+        "startChar": 110,
+        "endLine": 47,
+        "endChar": 117
+      },
+      "revId": "adeab27ecf145f013309c116bb50c1a828142db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a1cc032_af22f98d",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-09-29T07:43:47Z",
       "side": 1,
       "message": "minor nit: indent once more",
+      "revId": "adeab27ecf145f013309c116bb50c1a828142db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e749d860_a77db5d7",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-29T17:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a1cc032_af22f98d",
       "revId": "adeab27ecf145f013309c116bb50c1a828142db8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
