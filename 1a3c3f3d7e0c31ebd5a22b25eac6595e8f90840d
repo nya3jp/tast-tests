@@ -16,6 +16,46 @@
       "message": "LGTM",
       "revId": "1a3c3f3d7e0c31ebd5a22b25eac6595e8f90840d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd4d490d_fca92d46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-29T13:15:21Z",
+      "side": 1,
+      "message": "LGST %nit",
+      "revId": "1a3c3f3d7e0c31ebd5a22b25eac6595e8f90840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "156ee38f_f4cf7362",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-29T13:15:21Z",
+      "side": 1,
+      "message": "there was recently a remark about that naming in the proposal doc. Let\u0027s see what the outcome is.",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "1a3c3f3d7e0c31ebd5a22b25eac6595e8f90840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -81,6 +81,23 @@
       },
       "revId": "e7816c703ed35864cc8694acc0eb06fe3b808af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6209cac4_326672a3",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-29T13:15:21Z",
+      "side": 1,
+      "message": "Why not to rename that function to ChromeVal? Or as suggested to drop -Val suffix from ChromeVal() and other interfaces\u0027 names?",
+      "revId": "e7816c703ed35864cc8694acc0eb06fe3b808af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
