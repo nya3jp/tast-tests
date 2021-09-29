@@ -11800,7 +11800,16 @@ func (p *KerberosAccounts) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	if err := json.Unmarshal(m, &v); err != nil {
 		return nil, errors.Wrapf(err, "could not read %s as []*KerberosAccountsValue", m)
 	}
-	return v, nil
+	var value []KerberosAccountsValueIf
+	for i := range v {
+		if v[i].Krb5conf == nil {
+			tmp := KerberosAccountsValueOmitKrb5conf{Password: v[i].Password, Principal: v[i].Principal, RememberPassword: v[i].RememberPassword}
+			value = append(value, &tmp)
+		} else {
+			value = append(value, v[i])
+		}
+	}
+	return value, nil
 }
 func (p *KerberosAccounts) Equal(iface interface{}) bool {
 	v, ok := iface.([]KerberosAccountsValueIf)
