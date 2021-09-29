@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e84d1f_d593b3ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-29T07:43:47Z",
+      "side": 1,
+      "message": "LGTM % nits, waiting for Alex to review.",
+      "revId": "adeab27ecf145f013309c116bb50c1a828142db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fff1d181_df85e4ce",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-29T07:43:47Z",
+      "side": 1,
+      "message": "Somehow this got lost last review: Please use a timeout here, it\u0027s easier to understand.",
+      "range": {
+        "startLine": 47,
+        "startChar": 110,
+        "endLine": 47,
+        "endChar": 117
+      },
+      "revId": "adeab27ecf145f013309c116bb50c1a828142db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a1cc032_af22f98d",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-29T07:43:47Z",
+      "side": 1,
+      "message": "minor nit: indent once more",
+      "revId": "adeab27ecf145f013309c116bb50c1a828142db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
