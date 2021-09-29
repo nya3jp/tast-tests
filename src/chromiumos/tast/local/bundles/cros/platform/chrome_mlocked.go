@@ -5,17 +5,13 @@
 package platform
 
 import (
-	"bytes"
 	"context"
-	"fmt"
-	"io/ioutil"
-	"regexp"
-	"strings"
 	"time"
 
 	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -63,63 +59,31 @@ func ChromeMlocked(ctx context.Context, s *testing.State) {
 }
 
 func chromeHasMlockedPages(ctx context.Context) (hasMlocked bool, checkedPIDs []int32, err error) {
-	procs, err := process.Processes()
+	procs, err := ashproc.Processes()
 	if err != nil {
 		return false, nil, errors.Wrap(err, "failed getting processes")
 	}
 
-	lockedRegexp := regexp.MustCompile(`^VmLck:\s+(\d+)\s+kB$`)
+	var pids []int32
+	lockedFound := false
 	for _, proc := range procs {
-		cmdline, err := proc.CmdlineSlice()
+		rlimits, err := proc.RlimitUsage(true)
 		if err != nil {
-			testing.ContextLogf(ctx, "Failed to read cmdline for %d: %v", proc.Pid, err)
+			// Ignore error because the process may be terminated.
 			continue
 		}
 
-		// Until https://crbug.com/887875 is fixed, we need to double-split. CmdlineSlice
-		// will handle splitting on \0s; we need to split on spaces.
-		if len(cmdline) == 0 {
-			continue
-		}
-
-		cmdline = strings.Fields(cmdline[0])
-		if len(cmdline) == 0 || !strings.HasSuffix(cmdline[0], "/chrome") {
-			continue
-		}
-
-		// At the time of writing, proc.MemoryInfo() doesn't properly populate Locked
-		// memory. Apparently other non-memory methods *do*, but they don't hand us memory
-		// info... Just parse it out ourselves.
-		status, err := ioutil.ReadFile(fmt.Sprintf("/proc/%d/status", proc.Pid))
-		if err != nil {
-			return false, nil, errors.Wrapf(err, "failed to get status for %d", proc.Pid)
-		}
-
-		checkedPIDs = append(checkedPIDs, proc.Pid)
-		foundLocked := false
-		for _, line := range bytes.Split(status, []byte{'\n'}) {
-			subm := lockedRegexp.FindSubmatch(line)
-			if subm == nil {
-				continue
-			}
-
-			foundLocked = true
+		pids = append(pids, proc.Pid)
+		for _, rs := range rlimits {
 			// The actual value, as long as it's non-zero, doesn't really matter here:
 			// - We only try to lock a single PT_LOAD section in Chrome's binary
 			// - We only do it in a subset of Chrome's processes (e.g. zygote and its children)
 			// - The value is subject to change over time, as we better discover
 			//   how/where to apply mlock.
-			if !bytes.Equal(subm[1], []byte{'0'}) {
-				return true, checkedPIDs, nil
+			if rs.Resource == process.RLIMIT_MEMLOCK && rs.Used > 0 {
+				lockedFound = true
 			}
-			break
-		}
-
-		// Cheap check to emit a nice diagnostic if our parsing breaks.
-		if !foundLocked {
-			return false, nil, errors.Errorf("no locked memory found in %d", proc.Pid)
 		}
 	}
-
-	return false, checkedPIDs, nil
+	return lockedFound, pids, nil
 }
