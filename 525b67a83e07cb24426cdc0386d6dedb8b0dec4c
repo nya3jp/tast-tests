@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e9c9820_e37d8f6d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3540bd10_db5e5d70",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 44
+      },
+      "revId": "525b67a83e07cb24426cdc0386d6dedb8b0dec4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39203c66_2d58796c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-22T21:38:37Z",
       "side": 1,
       "message": "if the account is android specific, keep android in var name",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 28
+      },
+      "revId": "525b67a83e07cb24426cdc0386d6dedb8b0dec4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "377ef376_a4d4ee6a",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/android_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:03:08Z",
+      "side": 1,
+      "message": "it\u0027s not, for these tests both devices need to be logged in with the same account.",
+      "parentUuid": "39203c66_2d58796c",
       "range": {
         "startLine": 27,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a287e2d2_7848c4aa",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/android_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:03:08Z",
+      "side": 1,
+      "message": "I don\u0027t think fixture functions like this usually have comments, going to skip for now",
+      "parentUuid": "7615714a_74fc90df",
+      "range": {
+        "startLine": 65,
+        "startChar": 36,
+        "endLine": 65,
+        "endChar": 41
+      },
+      "revId": "525b67a83e07cb24426cdc0386d6dedb8b0dec4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ecd1322_a05b292b",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-22T21:38:37Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 89
+      },
+      "revId": "525b67a83e07cb24426cdc0386d6dedb8b0dec4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da48100_ae609dd1",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/android_setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:03:08Z",
+      "side": 1,
+      "message": "done, not sure how that got there lol",
+      "parentUuid": "0ecd1322_a05b292b",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcee42ad_03b96a92",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:03:08Z",
+      "side": 1,
+      "message": "Changed this and the fixture name to make it clearer, let me know what you think",
+      "parentUuid": "dd033881_bed12b71",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 19
+      },
+      "revId": "525b67a83e07cb24426cdc0386d6dedb8b0dec4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63ed0ff9_6327cabb",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-09-22T21:38:37Z",
       "side": 1,
       "message": "Include Android in this var so it\u0027s clearer in the test what you\u0027re dealing with",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "525b67a83e07cb24426cdc0386d6dedb8b0dec4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fcfd284_ce426601",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:03:08Z",
+      "side": 1,
+      "message": "Done, changed it to AndroidDevice for clarity (instead of keeping it close to the UI strings)",
+      "parentUuid": "63ed0ff9_6327cabb",
       "range": {
         "startLine": 88,
         "startChar": 1,
