@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf86a2cb_137b1701",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/hibernate_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-29T13:36:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec57d329_fca49918",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 3
+      },
+      "revId": "5760ef6910d43243237925f15ea9da0e4bbd3147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "706ee4ec_1a07438d",
