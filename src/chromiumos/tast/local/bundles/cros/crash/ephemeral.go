@@ -50,7 +50,6 @@ func init() {
 				consentType:  crash.RealConsent,
 			},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name: "post_oobe_with_consent",
 			Val: ephemeralCollectionParams{
