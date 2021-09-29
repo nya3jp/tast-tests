@@ -25,6 +25,15 @@ const (
 	forceYouTubeRestrictStrict
 )
 
+// There are 3 kinds of contents:
+// - Strong content is restricted even for a moderate restriction.
+// - Mild content is only restricted when strict restriction is set.
+// - Friendly content is never restricted.
+const (
+	mildContent   = "https://www.youtube.com/watch?v=Fmwfmee2ZTE"
+	strongContent = "https://www.youtube.com/watch?v=yR79oLrI1g4"
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: ForceYouTubeRestrict,
@@ -49,22 +58,34 @@ func ForceYouTubeRestrict(ctx context.Context, s *testing.State) {
 		name string
 		// value is the policy value.
 		value *policy.ForceYouTubeRestrict
+		// stringContentRestricted is whether strong content is expected to be restricted.
+		strongContentRestricted bool
+		// mildContentRestricted is whether mild content is expected to be restricted.
+		mildContentRestricted bool
 	}{
 		{
-			name:  "disabled",
-			value: &policy.ForceYouTubeRestrict{Val: forceYouTubeRestrictDisabled},
+			name:                    "disabled",
+			value:                   &policy.ForceYouTubeRestrict{Val: forceYouTubeRestrictDisabled},
+			strongContentRestricted: false,
+			mildContentRestricted:   false,
 		},
 		{
-			name:  "moderate",
-			value: &policy.ForceYouTubeRestrict{Val: forceYouTubeRestrictModerate},
+			name:                    "moderate",
+			value:                   &policy.ForceYouTubeRestrict{Val: forceYouTubeRestrictModerate},
+			strongContentRestricted: true,
+			mildContentRestricted:   false,
 		},
 		{
-			name:  "strict",
-			value: &policy.ForceYouTubeRestrict{Val: forceYouTubeRestrictStrict},
+			name:                    "strict",
+			value:                   &policy.ForceYouTubeRestrict{Val: forceYouTubeRestrictStrict},
+			strongContentRestricted: true,
+			mildContentRestricted:   true,
 		},
 		{
-			name:  "unset",
-			value: &policy.ForceYouTubeRestrict{Stat: policy.StatusUnset},
+			name:                    "unset",
+			value:                   &policy.ForceYouTubeRestrict{Stat: policy.StatusUnset},
+			strongContentRestricted: false,
+			mildContentRestricted:   false,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -79,70 +100,36 @@ func ForceYouTubeRestrict(ctx context.Context, s *testing.State) {
 			}
 
 			// Run actual test.
-			if err := testRestrictedMode(ctx, cr, param.value); err != nil {
+			if err := testRestrictedMode(ctx, cr, param.strongContentRestricted, param.mildContentRestricted); err != nil {
 				s.Error("Failed to verify YouTube content restriction: ", err)
 			}
 		})
 	}
 }
 
-func testRestrictedMode(ctx context.Context, cr *chrome.Chrome, policyVal *policy.ForceYouTubeRestrict) error {
-	var expectedModerateViewability, expectedStrictViewability bool
-	if policyVal.Stat == policy.StatusUnset {
-		expectedModerateViewability = true
-		expectedStrictViewability = true
-	} else {
-		switch policyVal.Val {
-		case forceYouTubeRestrictDisabled:
-			expectedModerateViewability = true
-			expectedStrictViewability = true
-		case forceYouTubeRestrictModerate:
-			expectedModerateViewability = false
-			expectedStrictViewability = true
-		case forceYouTubeRestrictStrict:
-			expectedModerateViewability = false
-			expectedStrictViewability = false
-		default:
-			return errors.Errorf("unexpected policy value: %d", policyVal.Val)
-		}
+func testRestrictedMode(ctx context.Context, cr *chrome.Chrome, expectedStrongContentRestricted, expectedMildContentRestricted bool) error {
+	if mildContentRestricted, err := isYouTubeContentRestricted(ctx, cr, mildContent); err != nil {
+		return err
+	} else if mildContentRestricted != expectedMildContentRestricted {
+		return errors.Errorf("unexpected mild content restriction; got %t, wanted %t", mildContentRestricted, expectedMildContentRestricted)
 	}
 
-	r, err := isStrictlyRestrictedContentViewable(ctx, cr)
-	if err != nil {
+	if strongContentRestricted, err := isYouTubeContentRestricted(ctx, cr, strongContent); err != nil {
 		return err
-	}
-	if r != expectedStrictViewability {
-		return errors.Errorf("unexpected strictly restricted content accessibility, got %t, wanted %t", r, expectedStrictViewability)
-	}
-
-	r, err = isModeratelyRestrictedContentViewable(ctx, cr)
-	if err != nil {
-		return err
-	}
-	if r != expectedModerateViewability {
-		return errors.Errorf("unexpected moderately restricted content accessibility, got %t, wanted %t", r, expectedModerateViewability)
+	} else if strongContentRestricted != expectedStrongContentRestricted {
+		return errors.Errorf("unexpected strong content restriction; got %t, wanted %t", strongContentRestricted, expectedStrongContentRestricted)
 	}
 
 	return nil
 }
 
-func isStrictlyRestrictedContentViewable(ctx context.Context, cr *chrome.Chrome) (bool, error) {
-	const strictlyRestrictedVideo = "https://www.youtube.com/watch?v=Fmwfmee2ZTE"
-	return isYouTubeContentViewable(ctx, cr, strictlyRestrictedVideo)
-}
-
-func isModeratelyRestrictedContentViewable(ctx context.Context, cr *chrome.Chrome) (bool, error) {
-	const moderatelyRestrictedVideo = "https://www.youtube.com/watch?v=yR79oLrI1g4"
-	return isYouTubeContentViewable(ctx, cr, moderatelyRestrictedVideo)
-}
-
-func isYouTubeContentViewable(ctx context.Context, cr *chrome.Chrome, url string) (bool, error) {
+func isYouTubeContentRestricted(ctx context.Context, cr *chrome.Chrome, url string) (bool, error) {
 	message, err := getYouTubeErrorMessage(ctx, cr, url)
 	if err != nil {
 		return false, err
 	}
 
-	return message == "", nil
+	return message != "", nil
 }
 
 // getYouTubeErrorMessage returns the error message, if any, returned by Youtube while trying to view the given url.
