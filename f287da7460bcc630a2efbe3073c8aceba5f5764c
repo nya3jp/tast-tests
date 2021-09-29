@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "374d33bb_c77768ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-09-29T04:58:08Z",
+      "side": 1,
+      "message": "Hi Tast reviewers,\n\nCould you help to take a look on this CL?",
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
