@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38f9a331_09949d21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multidevice/phone_hub_do_not_disturb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:03:29Z",
+      "side": 1,
+      "message": "Yeah, Go is a bit unusual in that way haha. No line-length rule enforced, and tabs for indentation\nhttps://golang.org/doc/effective_go#formatting",
+      "parentUuid": "630bd105_c2edb695",
+      "revId": "85279634e1300a1fde692e6cb18e4a871841eb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0da79021_5536b61f",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-09-22T21:38:43Z",
       "side": 1,
       "message": "Not a fan of multidevice.PhoneHub*\n\nWe should set it up from the start like phonehub.* \n\nWe can worry about getting all beto tests into a single stainless view later",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "85279634e1300a1fde692e6cb18e4a871841eb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a3ba09b_45c023d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multidevice/phone_hub_do_not_disturb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da79021_5536b61f",
       "range": {
         "startLine": 18,
         "startChar": 8,
@@ -98,6 +140,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e62a859_2c5b2027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multidevice/phone_hub_do_not_disturb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:03:29Z",
+      "side": 1,
+      "message": "This is for test grouping, I\u0027ll open a bug to set up a new one for cross-device. Just used nearby-share for now since it\u0027s already available.\n\nI\u0027ll add the eng team alias to the contacts section of this test though!",
+      "parentUuid": "e9519812_286fcc57",
+      "revId": "85279634e1300a1fde692e6cb18e4a871841eb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "579ff832_0228f029",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multidevice/phone_hub_do_not_disturb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:03:29Z",
+      "side": 1,
+      "message": "https://buganizer.corp.google.com/issues/201462797 will get that going in a follow up and run on nearby-share for now just to see how it goes.",
+      "parentUuid": "c8c879fd_617354e7",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "85279634e1300a1fde692e6cb18e4a871841eb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98dd9d25_e107208c",
@@ -111,6 +195,24 @@
       "writtenOn": "2021-09-22T22:01:19Z",
       "side": 1,
       "message": "is this the phone? if so might be good to mention in the name (i.e. androidDevice or similar)",
+      "revId": "85279634e1300a1fde692e6cb18e4a871841eb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b5b8c51_42e0ba17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multidevice/phone_hub_do_not_disturb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-29T01:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98dd9d25_e107208c",
       "revId": "85279634e1300a1fde692e6cb18e4a871841eb1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
