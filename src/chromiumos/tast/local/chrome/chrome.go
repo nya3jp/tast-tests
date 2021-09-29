@@ -425,7 +425,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 	}
 
 	// Free all remote JS objects in the test extension.
-	if err := driver.PrivateReleaseAllObjects(ctx, tconn.Conn); err != nil {
+	if err := driver.PrivateReleaseAllObjects(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to free tast remote JS object group")
 	}
 

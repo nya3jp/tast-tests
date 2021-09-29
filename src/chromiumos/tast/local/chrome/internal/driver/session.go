@@ -211,7 +211,7 @@ func (s *Session) SigninProfileTestAPIConn(ctx context.Context) (*TestConn, erro
 // extID.
 func (s *Session) testAPIConnFor(ctx context.Context, extConn **Conn, extID string) (*TestConn, error) {
 	if *extConn != nil {
-		return &TestConn{*extConn}, nil
+		return &TestConn{conn: *extConn}, nil
 	}
 
 	bgURL := extension.BackgroundPageURL(extID)
@@ -237,7 +237,7 @@ func (s *Session) testAPIConnFor(ctx context.Context, extConn **Conn, extID stri
 	}
 
 	testing.ContextLog(ctx, "Test API extension is ready")
-	return &TestConn{*extConn}, nil
+	return &TestConn{conn: *extConn}, nil
 }
 
 // StartTracing starts trace events collection for the selected categories. Android
