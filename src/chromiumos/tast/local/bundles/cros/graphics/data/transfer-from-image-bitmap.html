@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<body>
+    <h1>2d</h1>
+    <h2>Reference</h2>
+    <canvas id="expected2d" width="300" height="300"></canvas>
+    <h2>Result</h2>
+    <canvas id="result2d" width="300" height="300"></canvas>
+    <h1>WebGL</h1>
+    <h2>Reference</h2>
+    <canvas id="expectedWebgl" width="300" height="300"></canvas>
+    <h2>Result</h2>
+    <canvas id="resultWebgl" width="300" height="300"></canvas>
+</body>
+<script type="text/javascript">
+    /**
+     * Draws colored squares to the quadrants of the provided canvas using a 2d rendering context.
+     */
+    function draw2d(canvas) {
+        const context = canvas.getContext('2d')
+        context.fillStyle = 'red';
+        context.fillRect(0, 0, 150, 150);
+        context.fillStyle = 'green';
+        context.fillRect(150, 0, 300, 150);
+        context.fillStyle = 'blue';
+        context.fillRect(0, 150, 150, 300);
+    }
+
+    /**
+     * Draws colored squares to the quadrants of the provided canvas using a webgl rendering
+     * context.
+     */
+    function drawWebgl(canvas) {
+        const context = canvas.getContext('webgl', { preserveDrawingBuffer: true })
+        context.enable(context.SCISSOR_TEST);
+        context.scissor(0, 150, 150, 150);
+        context.clearColor(1, 0, 0, 1);
+        context.clear(context.COLOR_BUFFER_BIT);
+        context.scissor(150, 150, 300, 150);
+        context.clearColor(0, 1, 0, 1);
+        context.clear(context.COLOR_BUFFER_BIT);
+        context.scissor(0, 0, 150, 150);
+        context.clearColor(0, 0, 1, 1);
+        context.clear(context.COLOR_BUFFER_BIT);
+    }
+
+    /**
+     * Transfers the contents of the provided offscreen canvas to the provided canvas using an image
+     * bitmap rendering context.
+     */
+    function drawBitmaprenderer(canvas, offscreen) {
+        const image = offscreen.transferToImageBitmap();
+        const context = canvas.getContext('bitmaprenderer');
+        context.transferFromImageBitmap(image);
+        image.close();
+    }
+
+    let fullscreenEventCallback;
+    /**
+     * Registers an event listener which requests fullscreen on the specified element in response to
+     * 'f'-keydown events. The listener is removed the next time this function is called.
+     */
+    function setFullscreenEventListener(id) {
+        if (fullscreenEventCallback != null) {
+            window.removeEventListener('keydown', fullscreenEventCallback);
+        }
+        fullscreenEventCallback = event => {
+            if (event.key === 'f') {
+                document.getElementById(id).requestFullscreen();
+            }
+        };
+        window.addEventListener('keydown', fullscreenEventCallback);
+    }
+
+    window.onload = () => {
+        draw2d(document.getElementById('expected2d'));
+        const offscreen2d = new OffscreenCanvas(300, 300);
+        draw2d(offscreen2d);
+        drawBitmaprenderer(document.getElementById('result2d'), offscreen2d);
+
+        drawWebgl(document.getElementById('expectedWebgl'));
+        const offscreenWebgl = new OffscreenCanvas(300, 300);
+        drawWebgl(offscreenWebgl);
+        drawBitmaprenderer(document.getElementById('resultWebgl'), offscreenWebgl);
+    }
+</script>
