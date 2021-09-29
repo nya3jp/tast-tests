@@ -87,6 +87,24 @@
       "parentUuid": "39a3790b_96ba33dd",
       "revId": "8f322f85b216a390611fd3981b2af3f0226cb824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5c4a28c_01ee1c27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-09-29T11:49:33Z",
+      "side": 1,
+      "message": "Finally, I found that it is hard to implement tests that suspends DUT for a long time with Tast\u0027s local tests, so I rewrote the tests as remote tests. Please check https://crrev.com/c/3174895 . (Now the test tries to suspend the device for 10, 120 and 600 seconds, which is long enough to catch any watchdogs in the kernel I guess.)",
+      "parentUuid": "028dcfe7_045ce8dc",
+      "revId": "8f322f85b216a390611fd3981b2af3f0226cb824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
