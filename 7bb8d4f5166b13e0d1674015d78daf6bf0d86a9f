@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9194b7aa_fc8f2879",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_behaviour_on_ac_insertion_in_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-29T07:30:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "abc12e90_8003fd1b",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "7bb8d4f5166b13e0d1674015d78daf6bf0d86a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d10221f_4cdabd87",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-27T17:17:58Z",
       "side": 1,
       "message": "connect",
+      "range": {
+        "startLine": 73,
+        "startChar": 22,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "7bb8d4f5166b13e0d1674015d78daf6bf0d86a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f8fe023_346c7cb4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_behaviour_on_ac_insertion_in_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-29T07:30:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7d10221f_4cdabd87",
       "range": {
         "startLine": 73,
         "startChar": 22,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fea1897b_2d06c0d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_behaviour_on_ac_insertion_in_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-29T07:30:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9685ddcc_45e1fb59",
+      "range": {
+        "startLine": 79,
+        "startChar": 23,
+        "endLine": 79,
+        "endChar": 89
+      },
+      "revId": "7bb8d4f5166b13e0d1674015d78daf6bf0d86a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbf164e4_8d8c1f23",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-27T17:17:58Z",
       "side": 1,
       "message": "Attaching",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 125,
+        "endChar": 17
+      },
+      "revId": "7bb8d4f5166b13e0d1674015d78daf6bf0d86a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b57ecc46_3493fbef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_behaviour_on_ac_insertion_in_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-29T07:30:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fbf164e4_8d8c1f23",
       "range": {
         "startLine": 125,
         "startChar": 8,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aacd25f_0304a268",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_behaviour_on_ac_insertion_in_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-29T07:30:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f0719a27_34040722",
+      "range": {
+        "startLine": 127,
+        "startChar": 21,
+        "endLine": 127,
+        "endChar": 27
+      },
+      "revId": "7bb8d4f5166b13e0d1674015d78daf6bf0d86a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0966b08e_5e532005",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-09-27T17:17:58Z",
       "side": 1,
       "message": "charger is not attached",
+      "range": {
+        "startLine": 133,
+        "startChar": 22,
+        "endLine": 133,
+        "endChar": 88
+      },
+      "revId": "7bb8d4f5166b13e0d1674015d78daf6bf0d86a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae2e5787_7dd034ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_behaviour_on_ac_insertion_in_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-29T07:30:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0966b08e_5e532005",
       "range": {
         "startLine": 133,
         "startChar": 22,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd110cc_91aa1c6b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_behaviour_on_ac_insertion_in_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-29T07:30:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e3b8ebe5_eb55e9d3",
+      "range": {
+        "startLine": 137,
+        "startChar": 21,
+        "endLine": 137,
+        "endChar": 27
+      },
+      "revId": "7bb8d4f5166b13e0d1674015d78daf6bf0d86a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dd499bd_5347e761",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-09-27T17:17:58Z",
       "side": 1,
       "message": "You probably want to set a timeout on the ctx before making this call, but since everything else will fail if this doesn\u0027t connect, maybe waiting for the test to time out is fine also.",
+      "range": {
+        "startLine": 139,
+        "startChar": 11,
+        "endLine": 139,
+        "endChar": 26
+      },
+      "revId": "7bb8d4f5166b13e0d1674015d78daf6bf0d86a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be690f4c_d582f8ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_behaviour_on_ac_insertion_in_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-29T07:30:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6dd499bd_5347e761",
       "range": {
         "startLine": 139,
         "startChar": 11,
