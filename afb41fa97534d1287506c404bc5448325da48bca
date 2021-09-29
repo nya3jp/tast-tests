@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc75fe89_5f32df21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-09-29T01:59:11Z",
+      "side": 1,
+      "message": "I modified PRESUBMIT.cfg so that presubmit doesn\u0027t check LICENSE to mp4_demuxer.js.\n\nEric, may I ask to review it?",
+      "revId": "afb41fa97534d1287506c404bc5448325da48bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
