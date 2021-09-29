@@ -665,9 +665,18 @@ UNMARSHAL_OVERRIDES = {
 \treturn value, nil""",
     'KerberosAccounts': """\tvar v []*KerberosAccountsValue
 \tif err := json.Unmarshal(m, &v); err != nil {
-\treturn nil, errors.Wrapf(err, "could not read %s as []*KerberosAccountsValue", m)
+\t\treturn nil, errors.Wrapf(err, "could not read %s as []*KerberosAccountsValue", m)
 \t}
-\treturn v, nil"""
+\tvar v2 []KerberosAccountsValueIf
+\tfor i := range v {
+\t\tif v[i].Krb5conf == nil {
+\t\t\ttmp := KerberosAccountsValueOmitKrb5conf{Password: v[i].Password, Principal: v[i].Principal, RememberPassword: v[i].RememberPassword}
+\t\t\tv2 = append(v2, &tmp)
+\t\t} else {
+\t\t\tv2 = append(v2, v[i])
+\t\t}
+\t}
+\treturn v2, nil"""
 }
 
 def write_code(output_path, policies_by_id, schema_ids):
