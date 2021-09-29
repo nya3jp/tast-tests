@@ -209,13 +209,6 @@ type PreData struct {
 	Keyboard    *input.KeyboardEventWriter
 }
 
-// StartedByDlcStretch ensures that a VM running stretch has
-// started before the test runs. This precondition has complex
-// requirements to use that are best met using the test parameter
-// generator in params.go.
-// Tip: Run tests with -var=keepState=true to speed up local development
-func StartedByDlcStretch() testing.Precondition { return startedByDlcStretchPre }
-
 // StartedByDlcBuster ensures that a VM running buster has
 // started before the test runs. This precondition has complex
 // requirements to use that are best met using the test parameter
@@ -229,10 +222,6 @@ func StartedByDlcBuster() testing.Precondition { return startedByDlcBusterPre }
 // generator in params.go.
 // Tip: Run tests with -var=keepState=true to speed up local development
 func StartedByDlcBullseye() testing.Precondition { return startedByDlcBullseyePre }
-
-// StartedByDlcStretchGaia is similar to StartedByDlcStretch, except for
-// logging in to Chrome using gaia user.
-func StartedByDlcStretchGaia() testing.Precondition { return startedByDlcStretchGaiaPre }
 
 // StartedByDlcBusterGaia is similar to StartedByDlcBuster, except for
 // logging in to Chrome using gaia user.
@@ -262,13 +251,6 @@ const (
 	loginGaia
 )
 
-var startedByDlcStretchPre = &preImpl{
-	name:          "crostini_started_by_dlc_stretch",
-	timeout:       chrome.LoginTimeout + 7*time.Minute,
-	container:     normal,
-	debianVersion: vm.DebianStretch,
-}
-
 var startedByDlcBusterPre = &preImpl{
 	name:          "crostini_started_by_dlc_buster",
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
@@ -281,14 +263,6 @@ var startedByDlcBullseyePre = &preImpl{
 	timeout:       chrome.LoginTimeout + 7*time.Minute,
 	container:     normal,
 	debianVersion: vm.DebianBullseye,
-}
-
-var startedByDlcStretchGaiaPre = &preImpl{
-	name:          "crostini_started_by_dlc_stretch_gaia",
-	timeout:       chrome.GAIALoginTimeout + 7*time.Minute,
-	container:     normal,
-	debianVersion: vm.DebianStretch,
-	loginType:     loginGaia,
 }
 
 var startedByDlcBusterGaiaPre = &preImpl{

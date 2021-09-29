@@ -42,8 +42,10 @@ var testFiles = []string{
 	"open_with_terminal.go",
 	"package_info.go",
 	"package_install_uninstall.go",
+	"pulse_audio_basic.go",
 	"remove_cancel.go",
 	"remove_ok.go",
+	"resize_backup_restore.go",
 	"resize_cancel.go",
 	"resize_ok.go",
 	"resize_restart.go",
@@ -59,6 +61,7 @@ var testFiles = []string{
 	"share_files_restart.go",
 	"share_files_toast.go",
 	"share_folders.go",
+	"share_folder_zip_file.go",
 	"share_invalid_paths.go",
 	"sshfs_mount.go",
 	"sync_time.go",
@@ -89,8 +92,7 @@ var perfTests = map[string]time.Duration{
 }
 
 var mainlineExpensiveTests = map[string]time.Duration{
-	"fs_corruption.go":     10 * time.Minute,
-	"pulse_audio_basic.go": 7 * time.Minute, // Not actually expensive, but broken on stretch.
+	"fs_corruption.go": 10 * time.Minute,
 }
 
 func TestExpensiveParams(t *testing.T) {
