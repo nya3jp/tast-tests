@@ -33,6 +33,24 @@
       "message": "It is generally recommended not to passing in testing.State as an argument.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#state\n\nIf a function needs to report an error, just return an error value, and call testing.State.Error (or its family) at the highest possible level in the call stack.\n\nI know it is not within scope of this change. I just want to suggest that looking to change TestParameter.Func to return error instead of passing in testing.State.",
       "revId": "9dfef3e2acf48e71e5ac4da74b4cbac365303579",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59696e99_7fb78d39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-09-29T01:25:48Z",
+      "side": 1,
+      "message": "Thanks for your input, I will address it in a seperate CL.",
+      "parentUuid": "8ce7b4f0_d383a624",
+      "revId": "9dfef3e2acf48e71e5ac4da74b4cbac365303579",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
