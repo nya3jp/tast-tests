@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c9937bb_eba7e780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/data/light_pink.jpg",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-29T17:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b649e834_47313423",
+      "revId": "e97031b054fa4da7e71981316b56cc8eb1d38319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d094dfe4_c1792a41",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-29T01:17:14Z",
       "side": 1,
       "message": "you could use fsutil.CopyFile here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/fsutil/fsutil.go;l\u003d24",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "e97031b054fa4da7e71981316b56cc8eb1d38319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f6ebe8c_5a7955d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_local_wallpaper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-29T17:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d094dfe4_c1792a41",
       "range": {
         "startLine": 54,
         "startChar": 1,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8489abb8_8264f3c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_local_wallpaper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-29T17:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16feadb9_065982b3",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "e97031b054fa4da7e71981316b56cc8eb1d38319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df7fe712_bcf3e0a6",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-09-29T01:17:14Z",
       "side": 1,
       "message": "maybe s.Error is better here, so we\u0027ll fail through to the final, more descriptive error.",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 10
+      },
+      "revId": "e97031b054fa4da7e71981316b56cc8eb1d38319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1cf490a_97097c2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_local_wallpaper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-09-29T17:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df7fe712_bcf3e0a6",
       "range": {
         "startLine": 126,
         "startChar": 5,
