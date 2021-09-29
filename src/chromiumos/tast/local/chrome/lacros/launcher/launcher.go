@@ -159,8 +159,8 @@ func killLacrosChrome(ctx context.Context, lacrosPath string) error {
 	return nil
 }
 
-// extensionArgs returns a list of args needed to pass to a lacros instance to enable the test extension.
-func extensionArgs(extID, extList string) []string {
+// ExtensionArgs returns a list of args needed to pass to a lacros instance to enable the test extension.
+func ExtensionArgs(extID, extList string) []string {
 	return []string{
 		"--remote-debugging-port=0",              // Let Chrome choose its own debugging port.
 		"--enable-experimental-extension-apis",   // Allow Chrome to use the Chrome Automation API.
@@ -211,7 +211,7 @@ func LaunchLacrosChrome(ctx context.Context, f FixtValue) (*LacrosChrome, error)
 		"--use-cras",                                 // Use CrAS.
 		chrome.BlankURL,                              // Specify first tab to load.
 	}
-	args = append(args, extensionArgs(chrome.TestExtensionID, extList)...)
+	args = append(args, ExtensionArgs(chrome.TestExtensionID, extList)...)
 	args = append(args, f.Chrome().LacrosExtraArgs()...)
 
 	cmd := testexec.CommandContext(ctx, "sudo", append([]string{"-E", "-u", "chronos",
