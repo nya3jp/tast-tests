@@ -13,6 +13,13 @@ import (
 	"chromiumos/tast/local/crosconfig"
 )
 
+func TestReadStringFile(t *testing.T) {
+	readFile = func(string) ([]byte, error) { return []byte(" test  \n"), nil }
+	if v, _ := ReadStringFile(""); v != "test" {
+		t.Fatal("ReadStringFile failed to read file, got:", v)
+	}
+}
+
 func TestReadOptional(t *testing.T) {
 	readFile = func(string) ([]byte, error) { return []byte("test\n"), nil }
 	if v, _ := ReadOptionalStringFile(""); v == nil || *v != "test" {
