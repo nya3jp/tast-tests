@@ -26,7 +26,7 @@ func init() {
 		Func:         VirtualKeyboardFloat,
 		Desc:         "Validity check on floating virtual keyboard",
 		Contacts:     []string{"essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational", "group:input-tools-upstream"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Params: []testing.Param{{
 			Name:              "tablet",
