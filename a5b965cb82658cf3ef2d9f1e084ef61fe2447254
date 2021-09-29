@@ -117,6 +117,30 @@
       },
       "revId": "a5b965cb82658cf3ef2d9f1e084ef61fe2447254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feb351e7_3d372758",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-09-29T01:16:34Z",
+      "side": 1,
+      "message": "hmmm, interesting. I\u0027m also fine with other command if it can simulate the event. But I\u0027m not sure if this command is acceptable in tast lab. This needs tast owner to approve.",
+      "parentUuid": "65a5eb34_be439f41",
+      "range": {
+        "startLine": 97,
+        "startChar": 40,
+        "endLine": 97,
+        "endChar": 61
+      },
+      "revId": "a5b965cb82658cf3ef2d9f1e084ef61fe2447254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
