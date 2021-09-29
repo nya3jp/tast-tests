@@ -27,6 +27,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0a317f57_411c7249",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-09-29T21:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "482caf74_87bee078",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "a3efb2638ebb1498991e39e60ff7944d5cc16690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "59195422_15508bd0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -73,6 +97,30 @@
       "side": 1,
       "message": "\u003e \"criticial\" is a possible misspelling of \"critical\".\n\nPlease fix.",
       "parentUuid": "e25a0119_1e5c12ef",
+      "range": {
+        "startLine": 35,
+        "startChar": 72,
+        "endLine": 35,
+        "endChar": 81
+      },
+      "revId": "a3efb2638ebb1498991e39e60ff7944d5cc16690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "379f469d_42d1c370",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-09-29T21:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfda3ce2_ee91fe33",
       "range": {
         "startLine": 35,
         "startChar": 72,
