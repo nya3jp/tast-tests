@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "718f2fb8_33451559",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-29T00:07:46Z",
+      "side": 1,
+      "message": "Roger that. Pardon, many of the issues you raised originates from my misguided effort to restrict line lengths.",
+      "parentUuid": "0577c673_24378536",
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24f63894_956c1f6b",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-28T07:15:41Z",
       "side": 1,
       "message": "Isn\u0027t this only used for GAIA? Why remove the prefix?",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a23e6a2b_00b58a40",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-29T00:07:46Z",
+      "side": 1,
+      "message": "Once again, trying to save lines by removing surrounding context from local variable names. Fixed.",
+      "parentUuid": "24f63894_956c1f6b",
       "range": {
         "startLine": 33,
         "startChar": 6,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "389e4607_196b7c5d",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-29T00:07:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef1a68e3_f45ef987",
+      "range": {
+        "startLine": 73,
+        "startChar": 59,
+        "endLine": 74,
+        "endChar": 33
+      },
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71df2894_90df4d3b",
@@ -77,6 +143,24 @@
       "writtenOn": "2021-09-28T07:15:41Z",
       "side": 1,
       "message": "minor nit: I prefer the js inline if it\u0027s just one line.",
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e6a336f_0568a16f",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-29T00:07:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71df2894_90df4d3b",
       "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e0a1da_9bb3de4a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-29T00:07:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "914f4142_0c9b3026",
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8557207_0cef7911",
@@ -111,6 +213,24 @@
       "writtenOn": "2021-09-28T07:15:41Z",
       "side": 1,
       "message": "nit: also add a comment here",
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7442cba4_66f3fcb5",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-29T00:07:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8557207_0cef7911",
       "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +252,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2690e951_7a18f33a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-29T00:07:46Z",
+      "side": 1,
+      "message": "Huh, just one of the misguided effort on my part to restrict the line lengths, per https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#func-formatting.\n\nFixed.",
+      "parentUuid": "892b5f54_b8690c3f",
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb0a2f6a_39a5bf24",
@@ -149,6 +287,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de24cda6_d5060e07",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-29T00:07:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb0a2f6a_39a5bf24",
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d273e0e4_3c519c6a",
@@ -162,6 +318,24 @@
       "writtenOn": "2021-09-28T07:15:41Z",
       "side": 1,
       "message": "nit: reformat code",
+      "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a542e3_6e677f38",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/gaia.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1251641
+      },
+      "writtenOn": "2021-09-29T00:07:46Z",
+      "side": 1,
+      "message": "Whoops, tab pains. Fixed.",
+      "parentUuid": "d273e0e4_3c519c6a",
       "revId": "cebda24a5c3a8650ddd7b2c55b11298871b063d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
