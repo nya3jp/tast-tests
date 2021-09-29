@@ -302,7 +302,7 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 		s.Fatal("Failed to prepare extensions: ", err)
 	}
 	extList := strings.Join(extDirs, ",")
-	opts = append(opts, chrome.LacrosExtraArgs(extensionArgs(chrome.TestExtensionID, extList)...))
+	opts = append(opts, chrome.LacrosExtraArgs(ExtensionArgs(chrome.TestExtensionID, extList)...))
 
 	deployed := false
 	if f.mode == External {
