@@ -25,12 +25,12 @@ import (
 )
 
 const (
-	mediaScanTimePkg = "org.chromium.arc.testapp.mediascanperf"
+	mediaScanPerfPkg = "org.chromium.arc.testapp.mediascanperf"
 	capybaraFileName = "capybara.jpg"
 	// numberOfCopies is the number of files to be copied to the target directory to be scanned.
 	// The number should be large enough to get stable results. To clarify the difference
 	// in elapsed time due to performance we need to create a lot of files under the target directory.
-	numberOfCopies = 10000
+	numberOfCopies = 100
 )
 
 type arcMediaScanPerfParams struct {
@@ -182,10 +182,10 @@ func mountDirectory(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, volumeID
 // elapsedTimeData gets the elapsed time during full-volume media scan
 // from Android app UI.
 func elapsedTimeData(ctx context.Context, d *ui.Device) (float64, error) {
-	view := d.Object(ui.ID(mediaScanTimePkg + ":id/media_scan_perf"))
-	testing.ContextLogf(ctx, "Waiting for a view %s matching the selector to appear", mediaScanTimePkg)
+	view := d.Object(ui.ID(mediaScanPerfPkg + ":id/media_scan_perf"))
+	testing.ContextLogf(ctx, "Waiting for a view %s matching the selector to appear", mediaScanPerfPkg)
 	if err := view.WaitForExists(ctx, 5*time.Minute); err != nil {
-		return 0.0, errors.Wrapf(err, "failed to wait for a view %s matching the selector to appear", mediaScanTimePkg)
+		return 0.0, errors.Wrapf(err, "failed to wait for a view %s matching the selector to appear", mediaScanPerfPkg)
 	}
 
 	testing.ContextLog(ctx, "Waiting for getting the text content in app ui")
@@ -218,7 +218,7 @@ func startMeasureMediaScanPerfWithApp(ctx context.Context, a *arc.ARC, tconn *ch
 		return nil, err
 	}
 
-	act, err := arc.NewActivity(a, mediaScanTimePkg, cls)
+	act, err := arc.NewActivity(a, mediaScanPerfPkg, cls)
 	if err != nil {
 		return nil, err
 	}
