@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87b7ef71_2ae1e674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-09-29T00:45:52Z",
+      "side": 1,
+      "message": "Is it guaranteed that the poll actually seems chrome animating? The default poll interval is 100ms, which I guess is probably shorter than the animation. But this still seems racy.",
+      "range": {
+        "startLine": 93,
+        "startChar": 51,
+        "endLine": 93,
+        "endChar": 70
+      },
+      "revId": "4a4b8f43feda5b91bcde403476b4ca7e6874be63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3688c8c8_ac9686e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-09-29T00:45:52Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with ui code, so I might be missing something, but the poll doesn\u0027t seem to directly observe anything about overview mode. Are there any more direct observations that can be made?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 93
+      },
+      "revId": "4a4b8f43feda5b91bcde403476b4ca7e6874be63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
