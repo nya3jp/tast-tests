@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41bb8f8a_5d53eceb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-29T21:49:16Z",
+      "side": 1,
+      "message": "sure. please, next time add tast-owners@google.com as reviewer:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md\n\n\nAdding Cici / Armen who might have some suggestion...",
+      "revId": "0110c4ebf387387a1ec395cd63e5020357c7b83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16929caf_1104e04f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_auto_hide_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-29T21:49:16Z",
+      "side": 1,
+      "message": "games behave differently. Some might not launch in fullscreen, etc.\n\nMy suggestion is that you define what are the needed properties that an activity must have so that the shelf gets auto-hidden.\n\nFor example: if the activity is full-screen then do something...\nBut if it is not, then do something else.\n\nCould you have two tests in this same file:\n\n - check that shelf gets auto-hidden\n - check that shelf does not get auto-hidden\n\n\nAnd instead of using a random game (like Fruit Ninja), you can create your own activity that does that.\n\nIn fact, we already have some apk that does that.\nSee:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/android/ArcWMTestApp/\n\nJust search for ArcWMTestApp for tests that are using it:\nhttps://source.corp.google.com/search?q\u003dArcWMTestApp\u0026sq\u003dpackage:%5Echromeos_(public%7Cinternal)",
+      "range": {
+        "startLine": 20,
+        "startChar": 60,
+        "endLine": 20,
+        "endChar": 73
+      },
+      "revId": "0110c4ebf387387a1ec395cd63e5020357c7b83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6019cc1f_1f1d56d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_auto_hide_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-29T21:49:16Z",
+      "side": 1,
+      "message": "this comment seemms to be in the wrong line (?)",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 59
+      },
+      "revId": "0110c4ebf387387a1ec395cd63e5020357c7b83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
