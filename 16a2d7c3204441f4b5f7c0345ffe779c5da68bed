@@ -16,6 +16,24 @@
       "message": "QQ: marked as WIP. Do you mean this is ready for review? Or should I wait?",
       "revId": "16a2d7c3204441f4b5f7c0345ffe779c5da68bed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fb0f0b1_196847a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-09-29T05:04:53Z",
+      "side": 1,
+      "message": "Sorry for the confusion, this should wait until the uprev for wpa_supplicant is done. Feel free to remove yourself from the reviewers list.",
+      "parentUuid": "356d6476_4f30847b",
+      "revId": "16a2d7c3204441f4b5f7c0345ffe779c5da68bed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
