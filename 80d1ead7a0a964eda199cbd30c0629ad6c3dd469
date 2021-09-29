@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f859e8c7_0569d186",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/perf_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-09-29T14:41:55Z",
+      "side": 1,
+      "message": "I had a CQ presubmit complain that I needed to update the copyright date here since it\u0027s a \"new\" file. I\u0027ve been unable to get git to recognize this file as a move instead.\n\nIs it fine to update the copyright? Or should I have one CL to move, and the other to make the change so we can have a more consistent history for this file?",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "80d1ead7a0a964eda199cbd30c0629ad6c3dd469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
