@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed8f21b_5c5199b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-09-29T23:14:55Z",
+      "side": 1,
+      "message": "Looking good.",
+      "revId": "585e19eefc109bf76aab2feca6f029674785c598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3980602_dabbf88c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_encode.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-09-29T23:14:55Z",
+      "side": 1,
+      "message": "nit: I think if we already have a webcodecs_common.js we could\nalso put this JS in a file, e.g. webcodecs.js.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 33
+      },
+      "revId": "585e19eefc109bf76aab2feca6f029674785c598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c575386_70567a92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_encode.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-09-29T23:14:55Z",
+      "side": 1,
+      "message": "nit: This can be written:\n\n  for (const frame of encoderInputFrames) {\n\n\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "585e19eefc109bf76aab2feca6f029674785c598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dd43699_526f13df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_encode.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-09-29T23:14:55Z",
+      "side": 1,
+      "message": "Q: can this actually happen, that a given |frame| is null ?\nIf you think that should never happen you can leave a\n  console.assert(frame, \"error message\");",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 9
+      },
+      "revId": "585e19eefc109bf76aab2feca6f029674785c598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29123fec_920c0114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_encode.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-09-29T23:14:55Z",
+      "side": 1,
+      "message": "Q: shouldn\u0027t we force the first encoded chunk to be a key frame?\nAlthough I read now that the spec says [1]:\n  A value of false indicates that the User Agent has flexibility to decide whether the frame will be encoded as a key frame.\n\nMaybe leave a comment for lazy developers like me? : )\n\n\n[1] https://www.w3.org/TR/webcodecs/#dictdef-videoencoderencodeoptions",
+      "range": {
+        "startLine": 34,
+        "startChar": 42,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "585e19eefc109bf76aab2feca6f029674785c598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05fa993b_e2d047ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-09-29T23:14:55Z",
+      "side": 1,
+      "message": "Does this mean \"save\" as in store in a common GS bucket? Or locally\nin the DUT?",
+      "range": {
+        "startLine": 237,
+        "startChar": 10,
+        "endLine": 237,
+        "endChar": 14
+      },
+      "revId": "585e19eefc109bf76aab2feca6f029674785c598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
