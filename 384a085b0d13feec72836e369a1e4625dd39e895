@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be50b070_219febff",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-29T20:53:05Z",
+      "side": 1,
+      "message": "it\u0027s multidevice in the javascript? ridiculous lol",
+      "range": {
+        "startLine": 31,
+        "startChar": 28,
+        "endLine": 31,
+        "endChar": 39
+      },
+      "revId": "384a085b0d13feec72836e369a1e4625dd39e895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c39dddc_bcc0505f",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-29T20:53:05Z",
+      "side": 1,
+      "message": "Comment doesn\u0027t match what\u0027s happening",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 47
+      },
+      "revId": "384a085b0d13feec72836e369a1e4625dd39e895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff7d371_27426076",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-29T20:53:05Z",
+      "side": 1,
+      "message": "Does the shelf icon and the settings pod appear at the same time? Would waiting for the later one help?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 81
+      },
+      "revId": "384a085b0d13feec72836e369a1e4625dd39e895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8ab820c_e6531558",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-29T20:53:05Z",
+      "side": 1,
+      "message": "Does the existence of the settings pod during Enable() not mean that it is connected?",
+      "range": {
+        "startLine": 115,
+        "startChar": 85,
+        "endLine": 115,
+        "endChar": 109
+      },
+      "revId": "384a085b0d13feec72836e369a1e4625dd39e895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "120e5a10_be616886",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-29T20:53:05Z",
+      "side": 1,
+      "message": "Include the status we wanted in the error message",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 77
+      },
+      "revId": "384a085b0d13feec72836e369a1e4625dd39e895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
