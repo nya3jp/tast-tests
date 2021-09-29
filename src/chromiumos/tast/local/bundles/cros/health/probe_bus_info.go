@@ -92,12 +92,13 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 		udIn := d.BusInfo.USBBusInfo
 		// TODO:(b/199683963): Validation of busDevice.DeviceClass is skipped.
 		udOut := usb.Device{
-			VendorID:   fmt.Sprintf("%04x", udIn.VendorID),
-			ProdID:     fmt.Sprintf("%04x", udIn.ProductID),
-			DeviceName: d.VendorName + " " + d.ProductName,
-			Class:      fmt.Sprintf("%02x", udIn.ClassID),
-			SubClass:   fmt.Sprintf("%02x", udIn.SubClassID),
-			Protocol:   fmt.Sprintf("%02x", udIn.ProtocolID),
+			VendorID:    fmt.Sprintf("%04x", udIn.VendorID),
+			ProdID:      fmt.Sprintf("%04x", udIn.ProductID),
+			VendorName:  d.VendorName,
+			ProductName: d.ProductName,
+			Class:       fmt.Sprintf("%02x", udIn.ClassID),
+			SubClass:    fmt.Sprintf("%02x", udIn.SubClassID),
+			Protocol:    fmt.Sprintf("%02x", udIn.ProtocolID),
 		}
 		for _, ifc := range udIn.Interfaces {
 			udOut.Interfaces = append(udOut.Interfaces, usb.Interface{
