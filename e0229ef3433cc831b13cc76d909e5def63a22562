@@ -16,6 +16,42 @@
       "message": "I think remote (in the file and type names) is redundant. I don\u0027t think there\u0027s a suspend local test yet, so just suspend should be fine.",
       "revId": "e0229ef3433cc831b13cc76d909e5def63a22562",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6a23afb_6e8198e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/suspend_remote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-09-29T11:54:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "140cdbca_308333a8",
+      "revId": "e0229ef3433cc831b13cc76d909e5def63a22562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22045f67_32828341",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/suspend_remote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-09-29T11:54:47Z",
+      "side": 1,
+      "message": "Done! (Remote suffix was needed since I wrote this CL on top of another CL that implements arc.Suspend as local tests in https://crrev.com/c/3097411 . Now the code is fully migrated into this CL, so I abandoned the old one and removed the suffix.)",
+      "parentUuid": "140cdbca_308333a8",
+      "revId": "e0229ef3433cc831b13cc76d909e5def63a22562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
