@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd192899_56a7d9a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-09-29T22:40:54Z",
+      "side": 1,
+      "message": "Makes sense.",
+      "parentUuid": "86907db1_d4091912",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "98f4398d44d8c44cc6bbdb1176f68b44f5de2780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92a8ddd8_06d988a5",
