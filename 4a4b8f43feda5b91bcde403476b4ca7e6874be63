@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d69989a8_ce37596b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-29T01:05:48Z",
+      "side": 1,
+      "message": "As far as I know, the window animation takes ~300ms. I changed it to 50ms to make it more reliable.",
+      "parentUuid": "87b7ef71_2ae1e674",
+      "range": {
+        "startLine": 93,
+        "startChar": 51,
+        "endLine": 93,
+        "endChar": 70
+      },
+      "revId": "4a4b8f43feda5b91bcde403476b4ca7e6874be63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3688c8c8_ac9686e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_mode.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-29T00:45:52Z",
       "side": 1,
       "message": "I\u0027m not familiar with ui code, so I might be missing something, but the poll doesn\u0027t seem to directly observe anything about overview mode. Are there any more direct observations that can be made?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 93
+      },
+      "revId": "4a4b8f43feda5b91bcde403476b4ca7e6874be63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34d6205d_ef2e0f63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-29T01:05:48Z",
+      "side": 1,
+      "message": "What we want to verify here is that, when entering overview mode, the active maximized window should open with an animation while other windows stay in their positions(no animations). It was a window management manual test and they called it \"overview mode\"[1] so we just name this test \"OverviewMode\" as well.\n\n[1] https://testtracker.googleplex.com/testplans/testcase/detail/1876228?id\u003d25036\u0026revision\u003d52",
+      "parentUuid": "3688c8c8_ac9686e0",
       "range": {
         "startLine": 102,
         "startChar": 0,
