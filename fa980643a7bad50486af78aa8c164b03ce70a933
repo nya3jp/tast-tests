@@ -260,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5548e63c_da5c6c6f",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-29T06:25:11Z",
+      "side": 1,
+      "message": "Got it. Thank you for the explanation.",
+      "parentUuid": "978ed763_4c1f312d",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 9
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f2d40bf_4d21edb2",
@@ -627,6 +651,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "14d8d969_8f93caf8",
+      "range": {
+        "startLine": 160,
+        "startChar": 13,
+        "endLine": 160,
+        "endChar": 17
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a344ba2_f86ce816",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-29T06:25:11Z",
+      "side": 1,
+      "message": "Ok. So do we have to use Poll (loop) here like L135?",
+      "parentUuid": "96bc01e6_f3586d36",
       "range": {
         "startLine": 160,
         "startChar": 13,

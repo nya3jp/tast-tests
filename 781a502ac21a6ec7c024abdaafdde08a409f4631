@@ -1179,6 +1179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cddb45e_b87054cd",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-29T06:25:11Z",
+      "side": 1,
+      "message": "So could you avoid unit tests to consume 200ms? It\u0027s long time for a unit test.\nAlso relying on timing is a frequent cause of test flakiness.\nMaybe you can split the function for unit tests and integration tests, and do time consuming tests on integration test only function.",
+      "parentUuid": "15671682_13e7a40d",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 67
+      },
+      "revId": "781a502ac21a6ec7c024abdaafdde08a409f4631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "791cdc09_d89cde93",
         "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
         "patchSetId": 5
