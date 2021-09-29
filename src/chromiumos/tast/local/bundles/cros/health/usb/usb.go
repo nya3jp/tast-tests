@@ -19,13 +19,14 @@ import (
 
 // Device represents a USB device.
 type Device struct {
-	VendorID   string
-	ProdID     string
-	DeviceName string
-	Class      string
-	SubClass   string
-	Protocol   string
-	Interfaces []Interface
+	VendorID    string
+	ProdID      string
+	VendorName  string
+	ProductName string
+	Class       string
+	SubClass    string
+	Protocol    string
+	Interfaces  []Interface
 }
 
 // Interface represents a USB interface.
@@ -72,23 +73,58 @@ func usbDevices(ctx context.Context) ([][]string, error) {
 	return res, nil
 }
 
-// deviceName returns the string name of device with vendorID:prodID. The
-// name is extracted from lsusb.
-func deviceName(ctx context.Context, vendorID, prodID string) (string, error) {
+// deviceNames returns the vendor name and the product name of device with
+// vendorID:prodID. The names are extracted from lsusb.
+func deviceNames(ctx context.Context, vendorID, prodID string) (string, string, error) {
 	arg := fmt.Sprintf("-d%s:%s", vendorID, prodID)
-	b, err := runCommand(ctx, "lsusb", arg)
+	b, err := runCommand(ctx, "lsusb", "-v", arg)
 	if err != nil {
-		return "", err
+		return "", "", err
 	}
-	// The name is the suffix string after ID field. E.g:
-	//   Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
-	// The name of the above line is "Linux Foundation 3.0 root hub".
-	re := regexp.MustCompile(`^Bus [0-9]+ Device [0-9]+: ID [0-9a-f]+:[0-9a-f]+ ([^\n]+)\n`)
-	m := re.FindStringSubmatch(string(b))
-	if m == nil {
-		return "", errors.Errorf("failed to parse lsusb output: %v", string(b))
+	lsusbOut := string(b)
+	// Example output:
+	//   Device Descriptor:
+	//     ...
+	//     idVendor           0x1d6b Linux Foundation
+	//     idProduct          0x0003 3.0 root hub
+	//     iManufacturer          2 Linux Foundation
+	//     iProduct               3
+	//     ...
+	// We use these fields to get the names.
+	reM := map[string]*regexp.Regexp{
+		"iManufacturer": regexp.MustCompile(`^[ ]+iManufacturer[ ]+[\S]+([^\n]*)$`),
+		"iProduct":      regexp.MustCompile(`^[ ]+iProduct[ ]+[\S]+([^\n]*)$`),
+		"idVendor":      regexp.MustCompile(`^[ ]+idVendor[ ]+[\S]+([^\n]*)$`),
+		"idProduct":     regexp.MustCompile(`^[ ]+idProduct[ ]+[\S]+([^\n]*)$`),
 	}
-	return m[1], nil
+	res := make(map[string]string)
+	sc := bufio.NewScanner(strings.NewReader(lsusbOut))
+	for sc.Scan() {
+		for k, reg := range reM {
+			m := reg.FindStringSubmatch(sc.Text())
+			if m == nil {
+				continue
+			}
+			if s := strings.Trim(m[1], " "); len(s) > 0 {
+				res[k] = s
+			}
+		}
+	}
+	vendor, ok := res["idVendor"]
+	if !ok {
+		vendor, ok = res["iManufacturer"]
+		if !ok {
+			vendor = ""
+		}
+	}
+	product, ok := res["idProduct"]
+	if !ok {
+		product, ok = res["iProduct"]
+		if !ok {
+			product = ""
+		}
+	}
+	return vendor, product, nil
 }
 
 // ExpectedDevices returns expected USB devices, sorted by VendorID+ProdID.
@@ -144,7 +180,7 @@ func ExpectedDevices(ctx context.Context) ([]Device, error) {
 			}
 		}
 		var err error
-		if r.DeviceName, err = deviceName(ctx, r.VendorID, r.ProdID); err != nil {
+		if r.VendorName, r.ProductName, err = deviceNames(ctx, r.VendorID, r.ProdID); err != nil {
 			return nil, err
 		}
 		res = append(res, r)
