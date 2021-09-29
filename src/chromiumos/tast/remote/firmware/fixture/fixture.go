@@ -302,7 +302,11 @@ func (i *impl) TearDown(ctx context.Context, s *testing.FixtState) {
 			}
 		}
 		if err := i.rebootToMode(ctx, toMode, opts...); err != nil {
-			s.Fatalf("Failed to reboot to mode %q: %s", toMode, err)
+			s.Errorf("Failed to reboot to mode %q: %s", toMode, err)
+		}
+		// Make sure the DUT is booted, just in case the rebootToMode failed.
+		if err := i.value.Helper.EnsureDUTBooted(ctx); err != nil {
+			s.Fatal("DUT is offline after test end: ", err)
 		}
 	}
 }
