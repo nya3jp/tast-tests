@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "87a2e0c91bdfeedd064f9354b80b17b3ca8d8e6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25c0eb93_678cf392",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11803,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-29T10:58:16Z",
+      "side": 1,
+      "message": "nit: add a comment to explain why this is done. It should not be forgotten the next time we need to omit a field.",
+      "revId": "87a2e0c91bdfeedd064f9354b80b17b3ca8d8e6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
