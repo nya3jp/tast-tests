@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f3809a4_73a9fb21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-09-29T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff10fed2_4c8864d0",
+      "range": {
+        "startLine": 7,
+        "startChar": 58,
+        "endLine": 7,
+        "endChar": 63
+      },
+      "revId": "89d8c5111c7c923619a92cdf2f9e37274a91a06b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79af1682_7f170a4c",
@@ -49,6 +73,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2da7ba5e_bb216aa7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-09-29T21:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79af1682_7f170a4c",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "89d8c5111c7c923619a92cdf2f9e37274a91a06b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "715ad0ea_721c5312",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -60,6 +108,24 @@
       "writtenOn": "2021-09-29T21:49:01Z",
       "side": 1,
       "message": "Looks good. Can you please update the message with the bug and note? Thanks!",
+      "revId": "89d8c5111c7c923619a92cdf2f9e37274a91a06b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a23497f7_fbef9982",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-09-29T21:52:25Z",
+      "side": 1,
+      "message": "Done, thank you!",
+      "parentUuid": "715ad0ea_721c5312",
       "revId": "89d8c5111c7c923619a92cdf2f9e37274a91a06b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
