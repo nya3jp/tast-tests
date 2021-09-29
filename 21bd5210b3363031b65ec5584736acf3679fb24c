@@ -50,6 +50,41 @@
       "message": "Sorry, missed this somehow.\n\nDo we use webpage replay? Using live data like this could be quite unreliable. Not just because the video is deleted or changed, but youtube could roll out site changes that impact performance?\n\nlgtm regardless.",
       "revId": "21bd5210b3363031b65ec5584736acf3679fb24c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f1db046_53bedf21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-09-29T22:50:38Z",
+      "side": 1,
+      "message": "Let me land this to stop the bleeding...",
+      "revId": "21bd5210b3363031b65ec5584736acf3679fb24c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9892fb7f_4966198f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-09-29T22:50:38Z",
+      "side": 1,
+      "message": "Only TabSwitchCUJ is using wpr at the moment. I agree using live site is not ideal. Not sure how straightforward to use wpr for video playback though.",
+      "parentUuid": "a5981195_d95cf9d9",
+      "revId": "21bd5210b3363031b65ec5584736acf3679fb24c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
