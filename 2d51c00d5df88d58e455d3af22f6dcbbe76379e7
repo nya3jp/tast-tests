@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eed2d92_7a74db4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-29T14:33:43Z",
+      "side": 1,
+      "message": "Just a clean up of the code related recent library update. PTAL.",
+      "revId": "2d51c00d5df88d58e455d3af22f6dcbbe76379e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
