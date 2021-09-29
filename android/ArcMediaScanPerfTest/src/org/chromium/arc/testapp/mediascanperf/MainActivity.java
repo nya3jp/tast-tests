@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
     private BroadcastReceiver mMediaScanListener = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (!mTargetBroadcastUri.equals(intent.getData()) || mFirstScanFinished) {
+          if (!mTargetBroadcastUri.equals(intent.getData()) || mFirstScanFinished) {
                 return;
             }
             String action = intent.getAction();
