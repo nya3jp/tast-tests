@@ -93,7 +93,9 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 				"*auto_enrollment_controller*=1"}, ","))
 	}
 
+	testing.ContextLogf(ctx, "DoNotPush maybe disable gaia services? login mode is %s", cfg.LoginMode())
 	if cfg.LoginMode() != config.GAIALogin {
+		testing.ContextLog(ctx, "DoNotPush disable gaia services!")
 		args = append(args, "--disable-gaia-services")
 	}
 

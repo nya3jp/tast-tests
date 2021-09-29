@@ -7,6 +7,7 @@ package login
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
@@ -31,6 +32,8 @@ var ErrNeedNewSession = errors.New("Chrome restarted; need a new session")
 // in which case errNeedNewSession is returned.
 // Also performs enterprise enrollment before login when requested.
 func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
+
+	fmt.Printf("DoNotPush Logging in")
 	switch cfg.EnrollMode() {
 	case config.NoEnroll:
 		// Nothing to do.
@@ -39,6 +42,8 @@ func LogIn(ctx context.Context, cfg *config.Config, sess *driver.Session) error 
 			return err
 		}
 	case config.GAIAEnroll:
+		fmt.Printf("DoNotPush Performing gaia enrollment")
+
 		if err := performGAIAEnrollment(ctx, cfg, sess); err != nil {
 			return err
 		}

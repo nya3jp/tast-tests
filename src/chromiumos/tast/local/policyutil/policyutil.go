@@ -29,10 +29,13 @@ func ServeAndVerify(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrom
 }
 
 // ServeAndRefresh updates the policies served by FakeDMS and refreshes them in Chrome.
-// Not all polcies can be set in this way and may require restarting Chrome or a reboot.
+// Not all policies can be set in this way and may require restarting Chrome or a reboot.
 func ServeAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, ps []policy.Policy) error {
 	pb := fakedms.NewPolicyBlob()
 	pb.AddPolicies(ps)
+	// DoNotPush obviously
+	pb.ServiceAccountIdentity = "055772cab2e614f3dd6676cde1b9bda1_5376930786@chrome-enterprise-devices.gserviceaccount.com"
+	//pb.ServiceAccountIdentity = "jeroendh.minion@managedchrome.com"
 	return ServeBlobAndRefresh(ctx, fdms, cr, pb)
 }
 

@@ -178,6 +178,8 @@ func (c *Chrome) LogFilename() string {
 // New restarts the ui job, tells Chrome to enable testing, and (by default) logs in.
 // The NoLogin option can be passed to avoid logging in.
 func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
+
+	testing.ContextLog(ctx, "DoNotPush Creating chrome")
 	if locked {
 		panic("Cannot create Chrome instance while precondition is being used")
 	}
@@ -246,6 +248,7 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		return nil, errors.Wrap(err, "failed to prepare extensions")
 	}
 
+	testing.ContextLog(ctx, "DoNotPush Restarting chrome for testing")
 	if err := setup.RestartChromeForTesting(ctx, cfg, exts); err != nil {
 		return nil, errors.Wrap(err, "failed to restart chrome for testing")
 	}

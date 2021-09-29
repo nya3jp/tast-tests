@@ -66,6 +66,7 @@ func (k *kioskFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		testing.ContextLog(ctx, "kioskLoggedIn - starting Chrome to set Kiosk policies")
 		cr, err := chrome.New(ctx,
 			chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
+			//chrome.GAIALogin(chrome.Creds{User: "jeroendh.minion@managedchrome.com", Pass: "duikbuilkuil"}),
 			chrome.DMSPolicy(fdms.URL),
 			chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout),
 			chrome.KeepEnrollment(),

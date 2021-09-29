@@ -93,6 +93,16 @@ func SetAutolaunch(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome
 	})
 }
 
+func GetAutolaunchPolicy(appID string) []policy.Policy {
+
+	return []policy.Policy{
+		&defaultLocalAccountsConfiguration,
+		&policy.DeviceLocalAccountAutoLoginId{
+			Val: appID,
+		},
+	}
+}
+
 // ConfirmKioskStarted uses reader for looking for logs that confirm Kiosk mode
 // starting and also successful launch of Kiosk.
 // reader Reader instance should be processing all logs filtered for Chrome

@@ -86,6 +86,7 @@ func DeferLogin() Option {
 
 // GAIALogin returns an Option that can be passed to New to perform a real
 // GAIA-based login rather than the default fake login.
+// DoNotPush login code here:
 func GAIALogin(creds Creds) Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.LoginMode = config.GAIALogin

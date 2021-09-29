@@ -24,24 +24,25 @@ const (
 // A PolicyBlob is a struct that marshals into what is expected by Chrome's
 // policy_testserver.py.
 type PolicyBlob struct {
-	UserPs               *BlobUserPolicies            `json:"google/chromeos/user,omitempty"`
-	DevicePM             BlobPolicyMap                `json:"google/chromeos/device,omitempty"`
-	ExtensionPM          BlobPolicyMap                `json:"google/chromeos/extension,omitempty"`
-	PublicAccountPs      map[string]*BlobUserPolicies `json:"-"` // Public account policies are identical to user policies.
-	PolicyUser           string                       `json:"policy_user"`
-	ManagedUsers         []string                     `json:"managed_users"`
-	CurrentKeyIdx        int                          `json:"current_key_index,omitempty"`
-	RobotAPIAuthCode     string                       `json:"robot_api_auth_code,omitempty"`
-	InvalidationSrc      int                          `json:"invalidation_source"`
-	InvalidationName     string                       `json:"invalidation_name"`
-	Licenses             *BlobLicenses                `json:"available_licenses,omitempty"`
-	TokenEnrollment      *BlobTokenEnrollment         `json:"token_enrollment,omitempty"`
-	RequestErrors        map[string]int               `json:"request_errors,omitempty"`
-	AllowDeviceAttrs     bool                         `json:"allow_set_device_attributes,omitempty"`
-	InitialState         map[string]*BlobInitialState `json:"initial_enrollment_state,omitempty"`
-	DeviceAffiliationIds []string                     `json:"device_affiliation_ids,omitempty"`
-	UserAffiliationIds   []string                     `json:"user_affiliation_ids,omitempty"`
-	RemoteCommands       []*RemoteCommandBlob         `json:"remote_commands"`
+	UserPs                 *BlobUserPolicies            `json:"google/chromeos/user,omitempty"`
+	DevicePM               BlobPolicyMap                `json:"google/chromeos/device,omitempty"`
+	ExtensionPM            BlobPolicyMap                `json:"google/chromeos/extension,omitempty"`
+	PublicAccountPs        map[string]*BlobUserPolicies `json:"-"` // Public account policies are identical to user policies.
+	PolicyUser             string                       `json:"policy_user"`
+	ManagedUsers           []string                     `json:"managed_users"`
+	CurrentKeyIdx          int                          `json:"current_key_index,omitempty"`
+	RobotAPIAuthCode       string                       `json:"robot_api_auth_code,omitempty"`
+	InvalidationSrc        int                          `json:"invalidation_source"`
+	InvalidationName       string                       `json:"invalidation_name"`
+	Licenses               *BlobLicenses                `json:"available_licenses,omitempty"`
+	TokenEnrollment        *BlobTokenEnrollment         `json:"token_enrollment,omitempty"`
+	RequestErrors          map[string]int               `json:"request_errors,omitempty"`
+	AllowDeviceAttrs       bool                         `json:"allow_set_device_attributes,omitempty"`
+	InitialState           map[string]*BlobInitialState `json:"initial_enrollment_state,omitempty"`
+	DeviceAffiliationIds   []string                     `json:"device_affiliation_ids,omitempty"`
+	UserAffiliationIds     []string                     `json:"user_affiliation_ids,omitempty"`
+	RemoteCommands         []*RemoteCommandBlob         `json:"remote_commands,omitempty"`
+	ServiceAccountIdentity string                       `json:"service_account_identity,omitempty"`
 }
 
 // DoNotPush move
