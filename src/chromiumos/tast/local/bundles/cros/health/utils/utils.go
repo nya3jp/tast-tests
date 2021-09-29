@@ -25,7 +25,7 @@ func ReadStringFile(fpath string) (string, error) {
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to read file: %v", fpath)
 	}
-	return strings.TrimRight(string(v), "\n"), nil
+	return strings.Trim(string(v), " \n"), nil
 }
 
 // ReadOptionalStringFile returns nil if file not found.
