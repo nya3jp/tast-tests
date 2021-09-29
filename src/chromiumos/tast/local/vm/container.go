@@ -52,8 +52,6 @@ const (
 type ContainerDebianVersion string
 
 const (
-	// DebianStretch refers to the "stretch" distribution of debian (a.k.a. debian 9).
-	DebianStretch ContainerDebianVersion = "stretch"
 	// DebianBuster refers to the "buster" distribution of debian (a.k.a. debian 10).
 	DebianBuster ContainerDebianVersion = "buster"
 	// DebianBullseye refers to the "bullseye" distribution of debian (a.k.a. debian 11).

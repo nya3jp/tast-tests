@@ -64,7 +64,7 @@ import (
 // Param specifies how each set of crostini tests should be generated.
 type Param struct {
 	// Name of the test case. Generated tests will look like
-	// "name_amd64_buster_stable", "name_arm_stretch_unstable"
+	// "name_amd64_buster_stable", "name_arm_bullseye_unstable"
 	// etc.
 	Name string
 
@@ -195,7 +195,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 	}
 	var it = []iterator{}
 
-	for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianStretch, vm.DebianBuster, vm.DebianBullseye} {
+	for _, debianVersion := range []vm.ContainerDebianVersion{vm.DebianBuster, vm.DebianBullseye} {
 		for _, stable := range []bool{true, false} {
 			it = append(it, iterator{
 				debianVersion: debianVersion,
@@ -207,7 +207,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 	for _, testCase := range baseCases {
 
 		if testCase.UseLargeContainer && !testCase.MinimalSet {
-			t.Fatalf("Test %q: Testing apps on stretch is not supported", testCase.Name)
+			t.Fatalf("Test %q: Testing apps is supported with minimal testsets", testCase.Name)
 		}
 
 		// Check here if it's possible for any iteration of
@@ -253,9 +253,8 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 			}
 
 			// _unstable tests can never be CQ critical.
-			// stretch is informational while we phase it out.
 			var extraAttr []string
-			if (!i.stable || i.debianVersion == vm.DebianStretch) && canBeCritical {
+			if !i.stable && canBeCritical {
 				extraAttr = append(extraAttr, "informational")
 			}
 
