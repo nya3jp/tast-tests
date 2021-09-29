@@ -633,7 +633,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K)
 				case "level5_1":
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K60)
-					hardwareDeps = append(hardwareDeps, "hwdep.MinMemory(4097)")
+					hardwareDeps = append(hardwareDeps, "hwdep.MinMemory(7169)")
 				default:
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9)
 				}
@@ -715,7 +715,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K)
 				case "level5_1":
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9_4K60)
-					hardwareDeps = append(hardwareDeps, "hwdep.MinMemory(4097)")
+					hardwareDeps = append(hardwareDeps, "hwdep.MinMemory(7169)")
 				default:
 					param.SoftwareDeps = append(param.SoftwareDeps, caps.HWDecodeVP9)
 				}
