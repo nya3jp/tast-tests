@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c45b9090_fe3acecc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-09-29T18:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cadbe21f_b60d42df",
+      "range": {
+        "startLine": 29,
+        "startChar": 50,
+        "endLine": 29,
+        "endChar": 81
+      },
+      "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccd7a43d_ec88a03f",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-09-28T07:22:39Z",
       "side": 1,
       "message": "Use the fixture \"chromeLoggedIn\" instead.",
+      "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "572997aa_f54f04a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-09-29T18:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccd7a43d_ec88a03f",
       "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08d42961_0ea54264",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-09-29T18:28:34Z",
+      "side": 1,
+      "message": "Done. Will just check that clipboard is not empty.",
+      "parentUuid": "29e9093e_9ab16c16",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 48
+      },
+      "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48e4bc61_37d59bb6",
@@ -101,6 +167,30 @@
       "writtenOn": "2021-09-28T07:22:39Z",
       "side": 1,
       "message": "Error",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 9
+      },
+      "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ec2778_2a573b43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-09-29T18:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48e4bc61_37d59bb6",
       "range": {
         "startLine": 93,
         "startChar": 4,
@@ -128,6 +218,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a39ea530_c4fb04c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-09-29T18:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0bd7bd1_4988cb47",
+      "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "079afbf2_998dfab4",
@@ -141,6 +249,30 @@
       "writtenOn": "2021-09-28T07:22:39Z",
       "side": 1,
       "message": "Error",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 9
+      },
+      "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf90e1e_7ada9647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-09-29T18:28:34Z",
+      "side": 1,
+      "message": "Can you provide the reason for using Error here? I thought err is provided here and we should use Fatal?",
+      "parentUuid": "079afbf2_998dfab4",
       "range": {
         "startLine": 125,
         "startChar": 4,
