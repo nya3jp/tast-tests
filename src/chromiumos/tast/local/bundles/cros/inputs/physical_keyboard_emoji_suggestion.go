@@ -30,7 +30,7 @@ func init() {
 		Func:         PhysicalKeyboardEmojiSuggestion,
 		Desc:         "Checks emoji suggestions with physical keyboard typing",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraAttr:         []string{"group:input-tools-upstream"},
@@ -49,6 +49,7 @@ func init() {
 		}, {
 			// Only run informational tests in consumer mode.
 			Name:              "informational",
+			ExtraAttr:         []string{"informational"},
 			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			Pre:               pre.NonVKClamshell,
 		}}})
