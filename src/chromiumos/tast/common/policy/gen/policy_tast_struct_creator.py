@@ -663,11 +663,23 @@ UNMARSHAL_OVERRIDES = {
 \t\treturn nil, errors.Wrapf(err, "could not read %s as ArcPolicyValue", m)
 \t}
 \treturn value, nil""",
-    'KerberosAccounts': """\tvar v []*KerberosAccountsValue
+    'KerberosAccounts': """\t//First unmarshal into []*KerberosAccountsValue as KerberosAccountsValue has all fields.
+\tvar v []*KerberosAccountsValue
 \tif err := json.Unmarshal(m, &v); err != nil {
-\treturn nil, errors.Wrapf(err, "could not read %s as []*KerberosAccountsValue", m)
+\t\treturn nil, errors.Wrapf(err, "could not read %s as []*KerberosAccountsValue", m)
 \t}
-\treturn v, nil"""
+\t// Next store the elements in a KerberosAccountsValueIf slice and convert all elements without Krb5conf to *KerberosAccountsValueOmitKrb5conf
+\t// as otherwise the Equal function will fail.
+\tvar value []KerberosAccountsValueIf
+\tfor i := range v {
+\t\tif v[i].Krb5conf == nil {
+\t\t\ttmp := KerberosAccountsValueOmitKrb5conf{Password: v[i].Password, Principal: v[i].Principal, RememberPassword: v[i].RememberPassword}
+\t\t\tvalue = append(value, &tmp)
+\t\t} else {
+\t\t\tvalue = append(value, v[i])
+\t\t}
+\t}
+\treturn value, nil"""
 }
 
 def write_code(output_path, policies_by_id, schema_ids):

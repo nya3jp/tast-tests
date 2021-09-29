@@ -11796,11 +11796,23 @@ func (p *KerberosAccounts) Scope() Scope          { return ScopeUser }
 func (p *KerberosAccounts) Status() Status        { return p.Stat }
 func (p *KerberosAccounts) UntypedV() interface{} { return p.Val }
 func (p *KerberosAccounts) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	//First unmarshal into []*KerberosAccountsValue as KerberosAccountsValue has all fields.
 	var v []*KerberosAccountsValue
 	if err := json.Unmarshal(m, &v); err != nil {
 		return nil, errors.Wrapf(err, "could not read %s as []*KerberosAccountsValue", m)
 	}
-	return v, nil
+	// Next store the elements in a KerberosAccountsValueIf slice and convert all elements without Krb5conf to *KerberosAccountsValueOmitKrb5conf
+	// as otherwise the Equal function will fail.
+	var value []KerberosAccountsValueIf
+	for i := range v {
+		if v[i].Krb5conf == nil {
+			tmp := KerberosAccountsValueOmitKrb5conf{Password: v[i].Password, Principal: v[i].Principal, RememberPassword: v[i].RememberPassword}
+			value = append(value, &tmp)
+		} else {
+			value = append(value, v[i])
+		}
+	}
+	return value, nil
 }
 func (p *KerberosAccounts) Equal(iface interface{}) bool {
 	v, ok := iface.([]KerberosAccountsValueIf)
