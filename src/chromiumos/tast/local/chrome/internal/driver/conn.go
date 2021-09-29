@@ -247,10 +247,47 @@ func (c *Conn) GetMediaPropertiesChangedObserver(ctx context.Context) (observer 
 }
 
 // TestConn is a connection to the Tast test extension's background page.
-// cf) crbug.com/1043590
-// Please do not directly instantiate TestConn instance from Conn.
 type TestConn struct {
-	*Conn
+	conn *Conn
+}
+
+// Close closes the TestConn. This should not be called outside of this package.
+// Currently, it is exposed just for backward compatibility, but will be removed.
+// TODO(b/187790769): Remove this.
+func (tconn *TestConn) Close() error {
+	return tconn.conn.Close()
+}
+
+// Eval evaluates expr on the test connection. See Conn.Eval for details.
+func (tconn *TestConn) Eval(ctx context.Context, expr string, out interface{}) error {
+	return tconn.conn.Eval(ctx, expr, out)
+}
+
+// Call calls the javascript fn with given args. See Conn.Call for details
+func (tconn *TestConn) Call(ctx context.Context, out interface{}, fn string, args ...interface{}) error {
+	return tconn.conn.Call(ctx, out, fn, args...)
+}
+
+// WaitForExpr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
+// Errors returned by Eval are treated the same as expr == false.
+func (tconn *TestConn) WaitForExpr(ctx context.Context, expr string) error {
+	return tconn.conn.WaitForExpr(ctx, expr)
+}
+
+// WaitForExprWithTimeout is the same as WaitForExpr but fails if timeout is exceeded.
+func (tconn *TestConn) WaitForExprWithTimeout(ctx context.Context, expr string, timeout time.Duration) error {
+	return tconn.conn.WaitForExprWithTimeout(ctx, expr, timeout)
+}
+
+// WaitForExprFailOnErr repeatedly evaluates the JavaScript expression expr until it evaluates to true.
+// It returns immediately if Eval returns an error.
+func (tconn *TestConn) WaitForExprFailOnErr(ctx context.Context, expr string) error {
+	return tconn.conn.WaitForExprFailOnErr(ctx, expr)
+}
+
+// WaitForExprFailOnErrWithTimeout is the same as WaitForExprFailOnErr but will fail if timeout is exceeded.
+func (tconn *TestConn) WaitForExprFailOnErrWithTimeout(ctx context.Context, expr string, timeout time.Duration) error {
+	return tconn.conn.WaitForExprFailOnErrWithTimeout(ctx, expr, timeout)
 }
 
 // ResetAutomation resets the automation API feature. The automation API feature
@@ -284,6 +321,6 @@ func (tconn *TestConn) ResetAutomation(ctx context.Context) error {
 
 // PrivateReleaseAllObjects releases all remote JavaScript objects not released yet.
 // This function must kept private to the chrome package.
-func PrivateReleaseAllObjects(ctx context.Context, c *Conn) error {
-	return c.co.ReleaseAllObjects(ctx)
+func PrivateReleaseAllObjects(ctx context.Context, tconn *TestConn) error {
+	return tconn.conn.co.ReleaseAllObjects(ctx)
 }
