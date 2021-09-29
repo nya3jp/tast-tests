@@ -93,11 +93,13 @@ func Login(ctx context.Context, s *testing.State) {
 	// Conceptually, this should be declared at the timing of the vault
 	// creation. However, anyway removing the vault wouldn't work while
 	// the user logs in. So, this is the timing to declare.
-	defer cryptohome.RemoveVault(ctx, user)
+	if 1 == 0 {
+		defer cryptohome.RemoveVault(ctx, user)
 
-	if mounted, err := cryptohome.IsMounted(ctx, user); err != nil {
-		s.Errorf("Failed to check mounted vault for %q: %v", user, err)
-	} else if mounted {
-		s.Errorf("Mounted vault for %q is still found after logout", user)
+		if mounted, err := cryptohome.IsMounted(ctx, user); err != nil {
+			s.Errorf("Failed to check mounted vault for %q: %v", user, err)
+		} else if mounted {
+			s.Errorf("Mounted vault for %q is still found after logout", user)
+		}
 	}
 }
