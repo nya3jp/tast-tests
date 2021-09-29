@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0c2f7459_24e85e61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-09-29T22:48:44Z",
+      "side": 1,
+      "message": "Oh, cool, I didn\u0027t know about that second syntax, that\u0027s useful!",
+      "parentUuid": "dc4525bc_9e476232",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "5cdc0465f5458848c3b4d720409aa7c7196c66e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6a908a01_bc941af7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
