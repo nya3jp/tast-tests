@@ -334,6 +334,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2cfbd811_5ce98219",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-29T10:50:25Z",
+      "side": 1,
+      "message": "Can you please confirm if I should move this and related tests under video or graphics or videocuj package?",
+      "parentUuid": "d82f2f3d_059471a0",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e209ad35_b45d6d42",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
         "patchSetId": 1
@@ -393,6 +417,30 @@
       "side": 1,
       "message": "You can add me (andrescj@google.com) and chromeos-gfx-video@google.com.",
       "parentUuid": "b29b1204_1350a5a9",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 100
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb9487e0_28cb2788",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-29T10:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14027048_dfda846a",
       "range": {
         "startLine": 29,
         "startChar": 26,

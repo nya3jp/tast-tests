@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20f3f79a_e8d93d62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-29T10:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9e12361_84fa88de",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 115
+      },
+      "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "613304d1_ddad7a3d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-27T19:12:14Z",
       "side": 1,
       "message": "Why is this needed now and not before?",
+      "range": {
+        "startLine": 86,
+        "startChar": 35,
+        "endLine": 86,
+        "endChar": 63
+      },
+      "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8167f656_b62ee2aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-29T10:50:25Z",
+      "side": 1,
+      "message": "In the above comments, we came to know that Google have changed the Ad algorithm. Hence we need this timeout now.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3168678/comments/870d1dd7_e237ec30",
+      "parentUuid": "613304d1_ddad7a3d",
       "range": {
         "startLine": 86,
         "startChar": 35,
@@ -116,6 +164,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4f87744_61406b0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-29T10:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a89aeb0_f926464c",
+      "range": {
+        "startLine": 28,
+        "startChar": 66,
+        "endLine": 28,
+        "endChar": 69
+      },
+      "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e224858d_83319977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-29T10:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e86d5f98_f75e3927",
+      "range": {
+        "startLine": 28,
+        "startChar": 102,
+        "endLine": 28,
+        "endChar": 109
+      },
+      "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b9a44a_536a9c3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-29T10:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3d8eb3c_461ec569",
+      "range": {
+        "startLine": 28,
+        "startChar": 53,
+        "endLine": 28,
+        "endChar": 54
+      },
+      "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68125187_d81a9b39",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-09-27T19:12:14Z",
       "side": 1,
       "message": "Same comments as above.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 136
+      },
+      "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b179f6e_f6e52ebd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-29T10:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68125187_d81a9b39",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a765e5d_920998eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-29T10:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "879ea062_f2fa9d88",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 44
+      },
+      "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "277aab31_7f351ce8",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6d94ccd_acffadcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-29T10:50:25Z",
+      "side": 1,
+      "message": "My bad. I\u0027ve added now",
+      "parentUuid": "277aab31_7f351ce8",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26f860b1_ec529d3b",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-09-27T19:12:14Z",
       "side": 1,
       "message": "I know you said that the video plays for around 20 seconds before measuring the dropped frames, but what is ensuring these 20 seconds? I haven\u0027t found any place where we explicitly wait for that.",
+      "range": {
+        "startLine": 131,
+        "startChar": 30,
+        "endLine": 131,
+        "endChar": 51
+      },
+      "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95dd1424_139092c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-29T10:50:25Z",
+      "side": 1,
+      "message": "In OpenAndPlayVideo() there are multiple timeouts for different actions which takes around 10-20 seconds. After which we are calling this PerformFrameDropsTest(). Please see the sample logs below where it is playing the video for 13-15 seconds before checking the framedrops.\n\n2021-09-29T08:31:13.130762Z [08:37:45.491] Open Youtube web\n2021-09-29T08:31:13.130806Z [08:37:45.491] Creating new page with URL https://www.youtube.com/watch?v\u003dLXb3EKWsInQ\n2021-09-29T08:31:13.148699Z [08:37:45.519] Connecting to Chrome target 91B799C077A1E93157C2DF9283A6EC67\n2021-09-29T08:31:24.197529Z [08:37:56.568] The prefunc failed, the action was not executed, the error was: context deadline exceeded; last error follows: Uncaught (in promise): \"failed to find node with properties: {name: /^Stay in Chrome$/, role: button}\"\n2021-09-29T08:31:34.197815Z [08:38:06.568] The prefunc failed, the action was not executed, the error was: context deadline exceeded; last error follows: Uncaught (in promise): \"failed to find node with properties: {name: /^Skip Ad/, role: button}\"\n2021-09-29T08:31:37.198460Z [08:38:09.569] The prefunc failed, the action was not executed, the error was: context deadline exceeded; last error follows: Uncaught (in promise): \"failed to find node with properties: {name: /^Allow$/, role: button}\"\n2021-09-29T08:31:40.199088Z [08:38:12.569] The prefunc failed, the action was not executed, the error was: context deadline exceeded; last error follows: Uncaught (in promise): \"failed to find node with properties: {name: /^Never$/, role: button}\"\n2021-09-29T08:31:43.199537Z [08:38:15.570] The prefunc failed, the action was not executed, the error was: context deadline exceeded; last error follows: Uncaught (in promise): \"failed to find node with properties: {name: /^NO THANKS$/, role: button}\"\n2021-09-29T08:31:53.247101Z [08:38:25.618] The prefunc failed, the action was not executed, the error was: context deadline exceeded; last error follows: Uncaught (in promise): \"failed to find node with properties: {name: /^Skip Ad/, role: button}\"\n2021-09-29T08:31:56.476745Z [08:38:28.848] Elapsed time to click setting panel: 13.231 s\n2021-09-29T08:32:00.756432Z [08:38:33.128] Elapsed time when waiting for youtube ready state: 1.057 s\n2021-09-29T08:32:03.756938Z [08:38:36.128] The prefunc failed, the action was not executed, the error was: context deadline exceeded; last error follows: Uncaught (in promise): \"failed to find node with properties: {name: /^Play \\\\(k\\\\)$/, role: button, ancestor: {name: /^YouTube Video Player$/, ancestor: {className: \\\"RootWindow-0\\\", role: window}}}\"\n2021-09-29T08:32:04.271583Z [08:38:36.643] decodedFrameCount\u003d 236\n2021-09-29T08:32:04.271662Z [08:38:36.643] droppedFrameCount\u003d 4",
+      "parentUuid": "26f860b1_ec529d3b",
       "range": {
         "startLine": 131,
         "startChar": 30,

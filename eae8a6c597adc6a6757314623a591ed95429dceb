@@ -22,6 +22,30 @@
       },
       "revId": "eae8a6c597adc6a6757314623a591ed95429dceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb19cb54_d342c2eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-09-29T10:50:25Z",
+      "side": 0,
+      "message": "The below 2 tests only call this OpenAndPlayVideo() and they open Youtube in a single tab. Hence even if we remove cdputil.WithNewWindow(), these tests won\u0027t be affected. I\u0027ve checked their behavior with and without this additional parameter.\n\nlocal_tests/ui/video_cuj2.go\nlocal_tests/ui/extended_display_cuj.go",
+      "parentUuid": "2404bf1c_56f498b2",
+      "range": {
+        "startLine": 58,
+        "startChar": 47,
+        "endLine": 58,
+        "endChar": 71
+      },
+      "revId": "eae8a6c597adc6a6757314623a591ed95429dceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
