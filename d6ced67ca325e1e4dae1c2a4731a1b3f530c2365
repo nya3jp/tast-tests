@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48ea0253_ff662e17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/do_not_disturb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-29T19:48:40Z",
+      "side": 1,
+      "message": "Wondering about the code layout. is this possible?\n\nsrc/chromiumos/tast/local/bundles/cros/crosdevice/nearbyshare/\nsrc/chromiumos/tast/local/bundles/cros/crosdevice/phonehub/",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 1
+      },
+      "revId": "d6ced67ca325e1e4dae1c2a4731a1b3f530c2365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f3d823_bad5e24c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/do_not_disturb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-29T19:48:40Z",
+      "side": 1,
+      "message": "So Silence phone \u003d\u003d Do Not Disturb?\n\nShould we use the Phone Hub naming then? I guess it depends on whatever the CUJs call it. Do we have a list of CUJs?",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "d6ced67ca325e1e4dae1c2a4731a1b3f530c2365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
