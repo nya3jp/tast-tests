@@ -16,6 +16,24 @@
       "message": "Resolved the merge conflicts.\n@Patrick/Jeremy Can you please review this CL?",
       "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59853d50_877346bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-29T15:28:32Z",
+      "side": 1,
+      "message": "You should add people to the attention set if you want them to look at the cl.",
+      "parentUuid": "4adeedba_748b4b03",
+      "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
