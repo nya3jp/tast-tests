@@ -157,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f15853_f729a6b6",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-29T07:40:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a8adb20_18b55968",
+      "revId": "a522dafbf6eb96795fcfbcee71ff40208f3ccf86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5768edbb_593b08c8",
