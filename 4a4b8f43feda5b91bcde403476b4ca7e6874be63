@@ -93,6 +93,30 @@
       },
       "revId": "4a4b8f43feda5b91bcde403476b4ca7e6874be63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b7e3bda_6d11fbd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-09-29T01:44:15Z",
+      "side": 1,
+      "message": "Is the animation part of the test? The only thing this test is guaranteed to check is that the window opens in overlay mode. If the animation doesn\u0027t happen, then the goroutine can loop until chrome is closed, at which point it will exit successfully. Perhaps check that the goroutine is has completed after SetOverviewModeAndWait returns?",
+      "parentUuid": "34d6205d_ef2e0f63",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 93
+      },
+      "revId": "4a4b8f43feda5b91bcde403476b4ca7e6874be63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
