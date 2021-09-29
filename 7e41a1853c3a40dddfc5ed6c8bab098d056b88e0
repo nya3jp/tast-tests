@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5942560a_311cf6ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_auto_hide_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-09-29T20:35:46Z",
+      "side": 1,
+      "message": "not needed",
+      "revId": "7e41a1853c3a40dddfc5ed6c8bab098d056b88e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

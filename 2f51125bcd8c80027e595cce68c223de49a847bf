@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b97516_47574695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_auto_hide_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-09-29T20:35:46Z",
+      "side": 1,
+      "message": "detail what behavior is expected",
+      "revId": "2f51125bcd8c80027e595cce68c223de49a847bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfd5520c_7bba4dfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_auto_hide_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-09-29T20:35:46Z",
+      "side": 1,
+      "message": "log what app is being installed",
+      "revId": "2f51125bcd8c80027e595cce68c223de49a847bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a7b3a42_98459e09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_auto_hide_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-09-29T20:35:46Z",
+      "side": 1,
+      "message": "also ensure that autohide is disabled.",
+      "revId": "2f51125bcd8c80027e595cce68c223de49a847bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
