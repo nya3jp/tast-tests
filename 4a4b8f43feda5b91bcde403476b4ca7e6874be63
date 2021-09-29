@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c505881_17463384",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-29T02:46:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d69989a8_ce37596b",
+      "range": {
+        "startLine": 93,
+        "startChar": 51,
+        "endLine": 93,
+        "endChar": 70
+      },
+      "revId": "4a4b8f43feda5b91bcde403476b4ca7e6874be63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3688c8c8_ac9686e0",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "Is the animation part of the test? The only thing this test is guaranteed to check is that the window opens in overlay mode. If the animation doesn\u0027t happen, then the goroutine can loop until chrome is closed, at which point it will exit successfully. Perhaps check that the goroutine is has completed after SetOverviewModeAndWait returns?",
       "parentUuid": "34d6205d_ef2e0f63",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 93
+      },
+      "revId": "4a4b8f43feda5b91bcde403476b4ca7e6874be63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2dfbf5e_eb945aba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-29T02:46:14Z",
+      "side": 1,
+      "message": "That\u0027s a good point, thanks! I added a check after SetOverviewModeAndWait and also changed timeout from 5 secs to 1 sec.",
+      "parentUuid": "3b7e3bda_6d11fbd6",
       "range": {
         "startLine": 102,
         "startChar": 0,
