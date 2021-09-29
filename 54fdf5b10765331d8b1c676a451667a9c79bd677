@@ -87,6 +87,24 @@
       "parentUuid": "4c48e523_509b1f34",
       "revId": "54fdf5b10765331d8b1c676a451667a9c79bd677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a0e805_9c960e03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-09-29T00:19:29Z",
+      "side": 1,
+      "message": "New fix: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3189271",
+      "parentUuid": "a2fda521_82c37e69",
+      "revId": "54fdf5b10765331d8b1c676a451667a9c79bd677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
