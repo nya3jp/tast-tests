@@ -144,7 +144,7 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to sleep: ", err)
 		}
 		if _, err = h.Servo.Echo(ctx, "ping"); err != nil {
-			s.Fatal("Failed to ping servo")
+			s.Log("Failed to ping servo: ", err)
 		}
 	}
 
