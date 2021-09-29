@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f94ac4b2_e7e2d9d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-09-29T19:39:58Z",
+      "side": 1,
+      "message": "nit: \"This CL moves\"...\nAlso move to where?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "77d7e591019dbcaa01cc7533f0d430b6a4f57d33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -22,6 +22,30 @@
       },
       "revId": "80d1ead7a0a964eda199cbd30c0629ad6c3dd469",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75d25ad7_30b5bdb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/perf_arc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-09-29T19:39:58Z",
+      "side": 1,
+      "message": "Don\u0027t update it and do a final `repo upload` with `--ignore-hooks` \nso you only address other concerns.",
+      "parentUuid": "f859e8c7_0569d186",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "80d1ead7a0a964eda199cbd30c0629ad6c3dd469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
