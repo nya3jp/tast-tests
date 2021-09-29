@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42aa898a_9258c2cb",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-29T05:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fafe20d7_b5bf58c1",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 9
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa82b86d_158ae913",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-28T23:07:43Z",
       "side": 1,
       "message": "nit: sshCommand ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a2686ac_b08f0c46",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-29T05:20:51Z",
+      "side": 1,
+      "message": "yes, done.",
+      "parentUuid": "aa82b86d_158ae913",
       "range": {
         "startLine": 35,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed23adbb_7674770b",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-29T05:20:51Z",
+      "side": 1,
+      "message": "Needed to make https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/ssh/exec_ctx.go;l\u003d277 conform to https://pkg.go.dev/os/exec#Cmd.Wait",
+      "parentUuid": "8e3e2730_12a70dca",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f985b890_0c056c1a",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-28T23:07:43Z",
       "side": 1,
       "message": "nit: ptyRE\nI guess RE is an acronym for regular expression.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 6
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51cf7398_ecfda660",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-29T05:20:51Z",
+      "side": 1,
+      "message": "Yes for regexp, done.",
+      "parentUuid": "f985b890_0c056c1a",
       "range": {
         "startLine": 69,
         "startChar": 1,
@@ -140,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "978ed763_4c1f312d",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-29T05:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b96924df_fc6c10dd",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 9
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f2d40bf_4d21edb2",
@@ -153,6 +273,30 @@
       "writtenOn": "2021-09-28T23:07:43Z",
       "side": 1,
       "message": "read succeeded unexpectedly\n\nLet\u0027s stick with stating got value first.",
+      "range": {
+        "startLine": 117,
+        "startChar": 21,
+        "endLine": 117,
+        "endChar": 44
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b3b0c10_1940a7cf",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-29T05:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f2d40bf_4d21edb2",
       "range": {
         "startLine": 117,
         "startChar": 21,
@@ -186,6 +330,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cf8045d_23c79485",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-29T05:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e838453_36b39c1f",
+      "range": {
+        "startLine": 120,
+        "startChar": 24,
+        "endLine": 120,
+        "endChar": 61
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d09a5a6_31618a7f",
@@ -209,6 +377,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d236f01_5e8e2051",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-29T05:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d09a5a6_31618a7f",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 3
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0fed77a_331d75d8",
@@ -222,6 +414,30 @@
       "writtenOn": "2021-09-28T23:07:43Z",
       "side": 1,
       "message": "write returned %v, want 7",
+      "range": {
+        "startLine": 126,
+        "startChar": 28,
+        "endLine": 126,
+        "endChar": 62
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95ef1ef5_90197617",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-29T05:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0fed77a_331d75d8",
       "range": {
         "startLine": 126,
         "startChar": 28,
@@ -326,6 +542,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "521cb178_acc66d94",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-29T05:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d49d2cd9_8d859f66",
+      "range": {
+        "startLine": 150,
+        "startChar": 14,
+        "endLine": 150,
+        "endChar": 19
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f6e75fe_b6a431f2",
@@ -373,6 +613,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96bc01e6_f3586d36",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-29T05:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14d8d969_8f93caf8",
+      "range": {
+        "startLine": 160,
+        "startChar": 13,
+        "endLine": 160,
+        "endChar": 17
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "721bf44c_9da95e10",
@@ -410,6 +674,30 @@
       "side": 1,
       "message": "Oh actually here I don\u0027t need the poll loop since only reading 1 byte, will update cl.",
       "parentUuid": "721bf44c_9da95e10",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 84
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a10c62e_9ce54ea0",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-29T05:20:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb767ce1_94af1a2b",
       "range": {
         "startLine": 181,
         "startChar": 0,
