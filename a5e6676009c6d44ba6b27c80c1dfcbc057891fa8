@@ -94,6 +94,30 @@
       },
       "revId": "a5e6676009c6d44ba6b27c80c1dfcbc057891fa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa302b87_3debcd8a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-29T02:43:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24a56afe_c6da6d3d",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "a5e6676009c6d44ba6b27c80c1dfcbc057891fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
