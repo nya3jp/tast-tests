@@ -35,6 +35,7 @@ type Feature string
 // List of accessibility features.
 const (
 	Autoclick       Feature = "autoclick"
+	Dictation       Feature = "dictation"
 	DockedMagnifier Feature = "dockedMagnifier"
 	FocusHighlight  Feature = "focusHighlight"
 	ScreenMagnifier Feature = "screenMagnifier"
@@ -558,4 +559,37 @@ func NewTabWithHTML(ctx context.Context, cr *chrome.Chrome, html string) (*chrom
 	}
 
 	return c, nil
+}
+
+// CloseDictationDialog closes the dialog that is shown when Dictation is first
+// enabled. The dialog warns the user that their voice is sent to Google. This
+// function accepts the dialog so we can use the feature.
+func CloseDictationDialog(ctx context.Context, ui *uiauto.Context) error {
+	dialogText := nodewith.NameContaining("Dictation sends your voice to Google").Onscreen()
+	continueButton := nodewith.Name("Continue").ClassName("MdTextButton").Onscreen()
+	if err := uiauto.Combine("Close Dictation dialog",
+		ui.WithTimeout(5*time.Second).WaitUntilExists(dialogText),
+		ui.LeftClick(continueButton),
+		ui.WithTimeout(5*time.Second).WaitUntilGone(dialogText),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to close the Dictation dialog")
+	}
+
+	return nil
+}
+
+// ToggleDictation presses Search + D on the keyboard to either turn Dictation
+// on or off, depending on the current state.
+func ToggleDictation(ctx context.Context) error {
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "error with creating EventWriter from keyboard")
+	}
+	defer ew.Close()
+
+	if err := ew.Accel(ctx, "Search+D"); err != nil {
+		return errors.Wrap(err, "error when presing Search + D to toggle Dictation")
+	}
+
+	return nil
 }
