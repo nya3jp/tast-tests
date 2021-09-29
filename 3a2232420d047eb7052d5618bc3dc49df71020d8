@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6d881c_13cdcc6d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-09-29T08:41:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ee294b_a11ebadf",
+      "revId": "3a2232420d047eb7052d5618bc3dc49df71020d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42d81ff3_0dc76b0f",
