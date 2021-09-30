@@ -46,6 +46,30 @@
       },
       "revId": "dc705e14a6eb5d7de671179d4a75df8ae1756992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "530a83db_187341d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/remote_serial_port.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T23:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab8748fa_fbe79eff",
+      "range": {
+        "startLine": 66,
+        "startChar": 23,
+        "endLine": 66,
+        "endChar": 33
+      },
+      "revId": "dc705e14a6eb5d7de671179d4a75df8ae1756992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
