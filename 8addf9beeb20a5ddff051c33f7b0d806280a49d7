@@ -190,6 +190,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3c7d6e2_48f91b6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2021-09-30T05:44:05Z",
+      "side": 1,
+      "message": "Oh right I didn\u0027t quite understand you the first time. I think it\u0027s fine because this test will work regardless of the layout. It\u0027s testing enter key, which should work regardless.\n\nI can make it change the IME if you\u0027d prefer.",
+      "parentUuid": "e5de8ea7_1962146b",
+      "range": {
+        "startLine": 206,
+        "startChar": 11,
+        "endLine": 206,
+        "endChar": 32
+      },
+      "revId": "8addf9beeb20a5ddff051c33f7b0d806280a49d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29f2a08f_ae5ad779",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
         "patchSetId": 2
