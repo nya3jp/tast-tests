@@ -1227,6 +1227,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3987833c_91480cb9",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-30T01:22:12Z",
+      "side": 1,
+      "message": "Please note that we usually run unit tests as a whole, using the command ./fast_build.sh -T . Each unit test\u0027s running time contributes to the collective unit tests\u0027 running time, and there are many unit tests. If each unit test consumes 200ms, collective running time would be prohibitedly large. That\u0027s why each unit test should take care of its own running time.\n\nThank you. Also, could you comment on the method that these methods are used from both unit tests and integration tests, and it should finish promptly?\nSame for other methods.",
+      "parentUuid": "01a3d9fa_f0ba6dfe",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 67
+      },
+      "revId": "781a502ac21a6ec7c024abdaafdde08a409f4631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "791cdc09_d89cde93",
         "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
         "patchSetId": 5
