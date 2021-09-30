@@ -16,6 +16,24 @@
       "message": "I think we can just name the file perf.go as the directory arc should indicates its relationship.",
       "revId": "bd4c84b813caac2a90814eca5849a8d171afe8af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b68449_770fd846",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/perf_arc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-09-30T15:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a93b23c_90dd6d1f",
+      "revId": "bd4c84b813caac2a90814eca5849a8d171afe8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
