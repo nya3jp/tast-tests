@@ -9,6 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/action"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
@@ -87,4 +89,18 @@ func getClipboardText(ctx context.Context, tconn *chrome.TestConn) (string, erro
 		return "", err
 	}
 	return clipData, nil
+}
+
+// scrollTabPage scrolls the specified tab index of the webpage.
+func scrollTabPage(ctx context.Context, uiHdl cuj.UIActionHandler, idx int) error {
+	scrollActions := uiHdl.ScrollChromePage(ctx)
+	if err := uiHdl.SwitchToChromeTabByIndex(idx)(ctx); err != nil {
+		return errors.Wrap(err, "failed to switch tab")
+	}
+	for _, act := range scrollActions {
+		if err := act(ctx); err != nil {
+			return errors.Wrap(err, "failed to execute action")
+		}
+	}
+	return nil
 }
