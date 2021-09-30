@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61f2711f_6a876d27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2021-09-30T01:27:01Z",
+      "side": 1,
+      "message": "send-uptime-metrics is run on chrome start and may sometimes show in sandbox services failures.\n\nPTAL.",
+      "revId": "253f19a7357da5eca5b408c2a3696d5ccee65263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
