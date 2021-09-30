@@ -10,9 +10,9 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/wallpaper"
 	"chromiumos/tast/testing"
 )
@@ -23,10 +23,12 @@ func init() {
 		Desc: "Test quickly switching online wallpapers in the new wallpaper app",
 		Contacts: []string{
 			"jasontt@google.com",
-			"croissant-eng@google.com",
+			"chromeos-sw-engprod@google.com",
+			"assistive-eng@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      5 * time.Minute,
 	})
 }
 
@@ -39,18 +41,19 @@ func SwitchOnlineWallpapers(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	// Open a keyboard device.
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to open keyboard device: ", err)
-	}
-	defer kb.Close()
-
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	// Force Chrome to be in clamshell mode to make sure wallpaper view is clearly
+	// visible for us to compare it with the given rgba color.
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to ensure DUT is not in tablet mode: ", err)
+	}
+	defer cleanup(ctx)
 
 	// The test has a dependency of network speed, so we give uiauto.Context ample time to
 	// wait for nodes to load.
