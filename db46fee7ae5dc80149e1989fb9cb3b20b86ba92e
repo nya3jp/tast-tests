@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f627ef7_195509cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-30T19:08:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c36d0961_0bf741a7",
+      "revId": "db46fee7ae5dc80149e1989fb9cb3b20b86ba92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6aae2984_a573c816",
@@ -101,6 +119,30 @@
       "writtenOn": "2021-09-30T19:00:15Z",
       "side": 1,
       "message": "nit: Use a local var to make it easier to read.\ne.g.\n\n  param :\u003d s.Param().(TabSwitchParam)\n  \nthen use `param.ChromeType` here, and other 2 places.",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 30
+      },
+      "revId": "db46fee7ae5dc80149e1989fb9cb3b20b86ba92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d96da8df_51516ef1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-30T19:08:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aae2984_a573c816",
       "range": {
         "startLine": 106,
         "startChar": 4,
@@ -172,6 +214,30 @@
       "side": 1,
       "message": "We can replace tclaiborne@ with \"chromeos-perfmetrics-eng@google.com\".",
       "parentUuid": "69766a51_0f95c741",
+      "range": {
+        "startLine": 43,
+        "startChar": 26,
+        "endLine": 43,
+        "endChar": 72
+      },
+      "revId": "db46fee7ae5dc80149e1989fb9cb3b20b86ba92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b1cfac8_2d7506ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/task_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-30T19:08:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c2c4672_01d7466c",
       "range": {
         "startLine": 43,
         "startChar": 26,
