@@ -281,6 +281,30 @@
       },
       "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0417355c_4485c8aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-30T07:29:29Z",
+      "side": 1,
+      "message": "s.Fatal is used when a test can not continue due to the error. s.Fatal and s.Error report errors in the same way.",
+      "parentUuid": "9cf90e1e_7ada9647",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 9
+      },
+      "revId": "169e2624b03e182ffafbd070d006843f85d13e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
