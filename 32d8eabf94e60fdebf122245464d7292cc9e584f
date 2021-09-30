@@ -135,6 +135,30 @@
       },
       "revId": "32d8eabf94e60fdebf122245464d7292cc9e584f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd2e326d_2b01f9d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/automatic_ticket_access_file_system.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-09-30T07:38:08Z",
+      "side": 1,
+      "message": "Done. krb5conf is not set for tests with automatic ticket creation.",
+      "parentUuid": "8e81bfa0_4de92ea7",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "32d8eabf94e60fdebf122245464d7292cc9e584f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
