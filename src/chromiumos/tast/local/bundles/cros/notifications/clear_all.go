@@ -12,9 +12,11 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -62,13 +64,9 @@ func ClearAll(ctx context.Context, s *testing.State) {
 	}
 	defer quicksettings.Hide(ctx, tconn)
 
-	clearAllParams := ui.FindParams{Name: "Clear all", Role: ui.RoleTypeStaticText}
-	clearAll, err := ui.FindWithTimeout(ctx, tconn, clearAllParams, uiTimeout)
-	if err != nil {
-		s.Fatal("Failed to find 'Clear all' button: ", err)
-	}
-	defer clearAll.Release(ctx)
-	if err := clearAll.LeftClick(ctx); err != nil {
+	ui := uiauto.New(tconn)
+	clearAll := nodewith.Name("Clear all").Role(role.StaticText)
+	if err := ui.WithTimeout(uiTimeout).LeftClick(clearAll)(ctx); err != nil {
 		s.Fatal("Failed to click 'Clear all' button: ", err)
 	}
 
@@ -78,14 +76,11 @@ func ClearAll(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to compile notification regex: ", err)
 	}
-	notificationParams := ui.FindParams{
-		ClassName:  "MessageView",
-		Attributes: map[string]interface{}{"name": r},
-	}
-	if err := ui.WaitUntilGone(ctx, tconn, notificationParams, uiTimeout); err != nil {
+	notification := nodewith.ClassName("MessageView").Attribute("name", r)
+	if err := ui.WithTimeout(uiTimeout).WaitUntilGone(notification)(ctx); err != nil {
 		s.Fatal("Failed waiting for notifications to be dismissed: ", err)
 	}
-	if err := ui.WaitUntilGone(ctx, tconn, clearAllParams, uiTimeout); err != nil {
+	if err := ui.WithTimeout(uiTimeout).WaitUntilGone(clearAll)(ctx); err != nil {
 		s.Fatal("Failed waiting for 'Clear all' button to be gone: ", err)
 	}
 }
