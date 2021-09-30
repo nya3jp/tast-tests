@@ -39,7 +39,7 @@ const statefulPath = "/mnt/stateful_partition/etc/lsb-release"
 // CheckForUpdate starts update_engine_client to update the OS.
 func (u *UpdateService) CheckForUpdate(ctx context.Context, req *aupb.UpdateRequest) (*empty.Empty, error) {
 	// Collect the arguments.
-	args := []string{"--update"}
+	args := []string{"--follow", "--check_for_update"}
 
 	if req.OmahaUrl != "" {
 		testing.ContextLog(ctx, "Adding Omaha URL to arguments")
