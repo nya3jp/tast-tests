@@ -83,6 +83,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b6b767c_f302020a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T11:27:32Z",
+      "side": 1,
+      "message": "Thanks for the input,we are creating the file L61 and we are flushing the file at L95 to ensure capturing only expected output.",
+      "parentUuid": "2dc4b521_06a9bbdb",
+      "range": {
+        "startLine": 40,
+        "startChar": 28,
+        "endLine": 40,
+        "endChar": 45
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1c6a2e2_1cf08a15",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
         "patchSetId": 2
@@ -94,6 +118,30 @@
       "writtenOn": "2021-09-29T05:35:51Z",
       "side": 1,
       "message": "nit: lowercase n",
+      "range": {
+        "startLine": 53,
+        "startChar": 18,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0cc8d42_ee13771a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T11:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1c6a2e2_1cf08a15",
       "range": {
         "startLine": 53,
         "startChar": 18,
@@ -127,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f90c4f_9f8e6aa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T11:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac6430d9_ff5a7c5b",
+      "range": {
+        "startLine": 61,
+        "startChar": 36,
+        "endLine": 61,
+        "endChar": 39
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a16e6090_7a6ca74a",
@@ -140,6 +212,30 @@
       "writtenOn": "2021-09-29T05:35:51Z",
       "side": 1,
       "message": "Can you use the os.Remove package to do this instead of shell commands?",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8008c135_20241249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T11:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a16e6090_7a6ca74a",
       "range": {
         "startLine": 61,
         "startChar": 2,
@@ -173,6 +269,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0e17ae_c4569f33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T11:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaba687b_f016b56b",
+      "range": {
+        "startLine": 64,
+        "startChar": 36,
+        "endLine": 64,
+        "endChar": 39
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2175d868_28872f88",
@@ -186,6 +306,30 @@
       "writtenOn": "2021-09-29T05:35:51Z",
       "side": 1,
       "message": "Can we get the error output in this log? Might be useful for debugging.",
+      "range": {
+        "startLine": 65,
+        "startChar": 65,
+        "endLine": 65,
+        "endChar": 66
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecd8200a_8b46d99c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T11:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2175d868_28872f88",
       "range": {
         "startLine": 65,
         "startChar": 65,
@@ -219,6 +363,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83bfe8c7_4adbf898",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T11:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a239e33_7936c3df",
+      "range": {
+        "startLine": 73,
+        "startChar": 34,
+        "endLine": 73,
+        "endChar": 35
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2140cac_ebd72bf0",
@@ -232,6 +400,30 @@
       "writtenOn": "2021-09-29T05:35:51Z",
       "side": 1,
       "message": "Why is this a function? Seems you\u0027re only calling it once.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 29
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c74312f_58224d41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T11:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2140cac_ebd72bf0",
       "range": {
         "startLine": 76,
         "startChar": 1,
@@ -265,6 +457,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9003e095_51ae60d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T11:27:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f8a5fd86_2ff37eaa",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 58
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f9264a1_2984dae3",
@@ -278,6 +494,30 @@
       "writtenOn": "2021-09-29T05:35:51Z",
       "side": 1,
       "message": "nit: lowercase e",
+      "range": {
+        "startLine": 83,
+        "startChar": 22,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc84c2ab_7e9f55d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T11:27:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f9264a1_2984dae3",
       "range": {
         "startLine": 83,
         "startChar": 22,
@@ -311,6 +551,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8df5d7e6_aeb28334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T11:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76f7ba25_a2a3cc58",
+      "range": {
+        "startLine": 89,
+        "startChar": 23,
+        "endLine": 89,
+        "endChar": 24
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bbc71c5_5c3c54e9",
@@ -324,6 +588,30 @@
       "writtenOn": "2021-09-29T05:35:51Z",
       "side": 1,
       "message": "Please use the idiomatic go functions instead of shelling out\n\nhttps://pkg.go.dev/os#ReadFile",
+      "range": {
+        "startLine": 90,
+        "startChar": 59,
+        "endLine": 90,
+        "endChar": 63
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b2848f7_3fc9a2e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T11:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bbc71c5_5c3c54e9",
       "range": {
         "startLine": 90,
         "startChar": 59,
@@ -357,6 +645,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb73523e_3a0597c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T11:27:32Z",
+      "side": 1,
+      "message": "replaced with https://pkg.go.dev/os#ReadFile",
+      "parentUuid": "9d3ecc87_e6a889b4",
+      "range": {
+        "startLine": 92,
+        "startChar": 41,
+        "endLine": 92,
+        "endChar": 42
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aaa51eca_ccf73c08",
@@ -370,6 +682,30 @@
       "writtenOn": "2021-09-29T05:35:51Z",
       "side": 1,
       "message": "nit: consider having this as a variable defined up top for use here and at line 118",
+      "range": {
+        "startLine": 106,
+        "startChar": 34,
+        "endLine": 106,
+        "endChar": 50
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4ba0193_afa9ddbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T11:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaa51eca_ccf73c08",
       "range": {
         "startLine": 106,
         "startChar": 34,
