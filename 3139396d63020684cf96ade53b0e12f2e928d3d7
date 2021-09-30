@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2615511_6b4981a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T18:39:46Z",
+      "side": 1,
+      "message": "Thank you so much Jae and Seewai for your time and thoughts on this! Much appreciated!",
+      "revId": "3139396d63020684cf96ade53b0e12f2e928d3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "036bafee_413f9a6a",
@@ -62,6 +79,30 @@
       "side": 1,
       "message": "In that case you can even bundle the provisioning in the VerifyUpdate as well. :)",
       "parentUuid": "bd816178_13b2fb0f",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "3139396d63020684cf96ade53b0e12f2e928d3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1502f36_1a0a93a1",
+        "filename": "src/chromiumos/tast/services/cros/lacros/update_test_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T18:39:46Z",
+      "side": 1,
+      "message": "Yea, actually I gave it a thought. \nIt could probably be a good idea post MVP if everything could be done on a DUT and TLS is reliably accessible from a DUT. Currently the remote test is at the center orchestrating provision with TLS, and verification on a DUT though.",
+      "parentUuid": "afadcbfb_6701af3d",
       "range": {
         "startLine": 39,
         "startChar": 3,
