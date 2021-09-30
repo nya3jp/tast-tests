@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t there also be a change to the test script to mount this device and run the test there?\n\nRight now it looks like we start the vhost-user device but we still run the test on the built-in device.",
       "revId": "24d55aebbefaed78772990e1a70159ea05bf38e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e29455d_8c2c04ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2021-09-30T08:13:26Z",
+      "side": 1,
+      "message": "We could avoid changing the script by dropping the vm.SharedDir() call in setupCrosvmParams and then choose between vm.SharedDir() or vm.VhostUserFs() depending on the test variant.\n\nI expect we\u0027ll need to add a --disable-sandbox mode to the vhost-user-fs device before these tests will pass.",
+      "parentUuid": "82848505_0350b5fd",
+      "revId": "24d55aebbefaed78772990e1a70159ea05bf38e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
