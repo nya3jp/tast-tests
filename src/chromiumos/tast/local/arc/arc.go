@@ -167,6 +167,22 @@ func (a *ARC) Close(ctx context.Context) error {
 //
 // The returned ARC instance must be closed when the test is finished.
 func New(ctx context.Context, outDir string) (*ARC, error) {
+	// Start a syslog reader so we can give more useful debug information
+	// waiting for boot. This is too late in the boot to
+	// catch crosvm startup crashes.
+	reader, err := syslog.NewReader(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open syslog reader")
+	}
+	defer reader.Close()
+
+	return NewWithSyslogReader(ctx, outDir, reader)
+}
+
+// NewWithSyslogReader waits for Android to finish booting.
+//
+// Give a syslog.Reader instantiated before chrome.New to allow diagnosing init failure.
+func NewWithSyslogReader(ctx context.Context, outDir string, reader *syslog.Reader) (*ARC, error) {
 	ctx, st := timing.Start(ctx, "arc_new")
 	defer st.End()
 
@@ -203,7 +219,7 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 		return nil, errors.Wrap(err, "failed to create logcat output file")
 	}
 
-	if err := WaitAndroidInit(ctx); err != nil {
+	if err := WaitAndroidInit(ctx, reader); err != nil {
 		// Try starting logcat just in case logcat is possible. Android might still be up.
 		logcatCmd := BootstrapCommand(ctx, "/system/bin/logcat", "-d")
 		logcatCmd.Stdout = &arc.logcatWriter
@@ -451,18 +467,9 @@ func diagnoseInitfailure(reader *syslog.Reader, observedErr error) error {
 // case is when you want to interact with Android mini container.
 //
 // It is fine to call BootstrapCommand after this function successfully returns.
-func WaitAndroidInit(ctx context.Context) error {
+func WaitAndroidInit(ctx context.Context, reader *syslog.Reader) error {
 	ctx, cancel := context.WithTimeout(ctx, androidInitTimeout)
 	defer cancel()
-
-	// Start a syslog reader so we can give more useful debug information
-	// waiting for boot. TODO(b/201349340): This is too late in the boot to
-	// catch crosvm startup crashes.
-	reader, err := syslog.NewReader(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to open syslog reader")
-	}
-	defer reader.Close()
 
 	// Wait for init or crosvm process to start before checking deeper.
 	testing.ContextLog(ctx, "Waiting for initial ARC process")
