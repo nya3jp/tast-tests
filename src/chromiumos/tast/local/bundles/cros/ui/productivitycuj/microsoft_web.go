@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -174,16 +175,61 @@ func (app *MicrosoftWebOffice) OpenSpreadsheet(ctx context.Context, fileName str
 
 // MoveDataFromDocToSheet moves data from document to spreadsheet.
 func (app *MicrosoftWebOffice) MoveDataFromDocToSheet(ctx context.Context) error {
-	return nil
+	testing.ContextLog(ctx, "Moving data from document to spreadsheet")
+
+	// tabIndexMap define the index of the corresponding service tab.
+	tabIndexMap := map[string]int{
+		wordTab:  0,
+		excelTab: 2,
+	}
+
+	if err := uiauto.Combine("switch to Microsoft Word cut selected text from the document",
+		app.uiHdl.SwitchToChromeTabByIndex(tabIndexMap[wordTab]),
+		app.kb.AccelAction("Ctrl+A"),
+		app.ui.Sleep(500*time.Millisecond), // Waiting for all text to be selected.
+		app.kb.AccelAction("Ctrl+X"),
+	)(ctx); err != nil {
+		return err
+	}
+
+	return uiauto.Combine("switch to Microsoft Excel and paste the content into a cell of the spreadsheet",
+		app.uiHdl.SwitchToChromeTabByIndex(tabIndexMap[excelTab]),
+		app.selectBox("H3"),
+		app.kb.AccelAction("Ctrl+V"),
+	)(ctx)
 }
 
 // MoveDataFromSheetToDoc moves data from spreadsheet to document.
 func (app *MicrosoftWebOffice) MoveDataFromSheetToDoc(ctx context.Context) error {
-	return nil
+	testing.ContextLog(ctx, "Moving data from spreadsheet to document")
+
+	if err := uiauto.Combine("cut selected text from cell",
+		app.selectBox("H1"),
+		app.kb.AccelAction("Ctrl+C"),
+	)(ctx); err != nil {
+		return err
+	}
+
+	wordWebArea := nodewith.Name("Word").Role(role.RootWebArea)
+	paragraph := nodewith.Role(role.Paragraph).Ancestor(wordWebArea).Editable()
+	return uiauto.Combine("switch to Microsoft Word and paste the content",
+		app.uiHdl.SwitchToChromeTabByIndex(0),
+		app.reloadWordDocument,
+		app.ui.WaitUntilExists(paragraph),
+		app.kb.AccelAction("Ctrl+V"),
+	)(ctx)
 }
 
 // ScrollPage scrolls the document and spreadsheet.
 func (app *MicrosoftWebOffice) ScrollPage(ctx context.Context) error {
+	testing.ContextLog(ctx, "Scrolling the document and spreadsheet")
+
+	for _, tabIdx := range []int{0, 2} {
+		if err := scrollTabPage(ctx, app.uiHdl, tabIdx); err != nil {
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -194,16 +240,74 @@ func (app *MicrosoftWebOffice) SwitchToOfflineMode(ctx context.Context) error {
 
 // UpdateCells updates one of the independent cells and propagate values to dependent cells.
 func (app *MicrosoftWebOffice) UpdateCells(ctx context.Context) error {
+	if err := app.editBoxValue(ctx, "A3", "100"); err != nil {
+		return errors.Wrap(err, "failed to edit the value of the cell")
+	}
+
+	val, err := app.getBoxValue(ctx, "B1")
+	if err != nil {
+		return errors.Wrap(err, "failed to get the value of the cell")
+	}
+
+	sum, err := strconv.Atoi(val)
+	if err != nil {
+		return errors.Wrap(err, "failed to convert type to integer")
+	}
+
+	if expectedSum := calculateSum(3, 100); sum != expectedSum {
+		return errors.Errorf("failed to validate the sum %d rows: got: %v; want: %v", rangeOfCells, sum, expectedSum)
+	}
 	return nil
 }
 
 // VoiceToTextTesting uses the "Dictation" function to achieve voice-to-text (VTT) and directly input text into office documents.
-func (app *MicrosoftWebOffice) VoiceToTextTesting(ctx context.Context, expectedText string, playAudio action.Action) error {
+func (app *MicrosoftWebOffice) VoiceToTextTesting(ctx context.Context, expectedText string, playAudio func(ctx context.Context) error) error {
 	return nil
 }
 
 // End cleans up case. Removes the document and slide which we created in the test case and close all tabs.
 func (app *MicrosoftWebOffice) End(ctx context.Context) error {
+	testing.ContextLog(ctx, "End")
+
+	conn, err := app.openOneDrive(ctx)
+	if err != nil {
+		return err
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
+	if err := app.clickNavigationItem(recent)(ctx); err != nil {
+		return err
+	}
+
+	startTime := time.Now()
+	if err := webutil.WaitForRender(ctx, conn, time.Minute); err != nil {
+		return errors.Wrap(err, "failed to wait for the tab to be visible")
+	}
+	testing.ContextLog(ctx, "Tab rendering time: ", time.Since(startTime))
+	if err := webutil.WaitForQuiescence(ctx, conn, time.Minute); err != nil {
+		return err
+	}
+	testing.ContextLog(ctx, "Tab quiescence time: ", time.Since(startTime))
+
+	// Because we did not rename the document and the slide, the file names will be named as the default values.
+	files := []string{"Document", "Presentation"}
+
+	for _, f := range files {
+		if err := app.removeDocument(ctx, f); err != nil {
+			return err
+		}
+	}
+
+	tabs := []string{wordTab, powerpointTab, excelTab}
+
+	// Close all tabs.
+	for _, tab := range tabs {
+		if err := app.closeTab(tab)(ctx); err != nil {
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -776,6 +880,22 @@ func (app *MicrosoftWebOffice) closeTab(title string) action.Action {
 
 		return nil
 	}
+}
+
+// removeDocument removes the document with the specified file name.
+func (app *MicrosoftWebOffice) removeDocument(ctx context.Context, fileName string) error {
+	testing.ContextLog(ctx, "Removing an existing document: ", fileName)
+
+	row := nodewith.NameContaining(fileName).Role(role.Row).First()
+	checkBox := nodewith.NameContaining("Checkbox").Role(role.CheckBox).Ancestor(row)
+	complementary := nodewith.Role(role.Complementary).First()
+	commandBar := nodewith.NameContaining("Command bar").Role(role.MenuBar).Ancestor(complementary)
+	remove := nodewith.Name("Remove").Role(role.MenuItem).Ancestor(commandBar)
+	return uiauto.Combine("remove the file",
+		app.switchToListView,
+		app.uiHdl.ClickUntil(checkBox, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(commandBar)),
+		app.uiHdl.Click(remove),
+	)(ctx)
 }
 
 // NewMicrosoftWebOffice creates MicrosoftWebOffice instance which implements ProductivityApp interface.
