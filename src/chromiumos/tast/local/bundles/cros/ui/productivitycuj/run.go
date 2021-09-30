@@ -121,7 +121,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 				return errors.Wrap(err, "failed to test voice to text")
 			}
 		}
-		if err := app.End(ctx); err != nil {
+		if err := app.Cleanup(ctx); err != nil {
 			return err
 		}
 
