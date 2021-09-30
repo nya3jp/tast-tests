@@ -154,6 +154,9 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
+	if testParam.Tracing {
+		recorder.EnableTracing(s.OutDir())
+	}
 	defer recorder.Close(closeCtx)
 
 	if err := crastestclient.Mute(ctx); err != nil {
