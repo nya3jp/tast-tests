@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a00d0c8_9c7cb15d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-30T16:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b955d2c0_0853635b",
+      "revId": "b5518ccd6f2af776190ad8b23a06d1b2db0dfd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fcd49f2_7bd18a14",
