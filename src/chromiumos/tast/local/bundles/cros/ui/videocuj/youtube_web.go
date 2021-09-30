@@ -229,7 +229,7 @@ func (y *YtWeb) PauseAndPlayVideo(ctx context.Context) error {
 	playBtn := nodewith.Name(playButton).Role(role.Button)
 
 	// The video should be playing at this point. However, we'll double check to make sure
-	// as we have seen a few cases when the video became paused automatically.
+	// as we have seen a few cases where the video became paused automatically.
 	if err := y.ui.IfSuccessThen(
 		y.ui.WithTimeout(waitTime).WaitUntilExists(playBtn),
 		y.uiHdl.Click(playBtn),
