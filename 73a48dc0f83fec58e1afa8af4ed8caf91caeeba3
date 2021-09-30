@@ -243,6 +243,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d44d2b96_d4a7f62e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T01:52:31Z",
+      "side": 1,
+      "message": "I wrote up go/lacros-autoupdate-test-naming to suggest less confusing names for the tests and the test service with some justifications. Can you take a look and help me move on with better one? Thanks,\ntl;dr - \nlacros: package name\nlacros.Update\u003cTestCase\u003e: test name\nlacros.UpdateTestService: test service name\nlacros.UpdateTestService.VerifyUpdate: test APIs\nlacros.UpdateTestService.ClearUpdate",
+      "parentUuid": "14a8a1b9_4bcfdca6",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 42
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db4af252_eb7c59db",
         "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
         "patchSetId": 1
@@ -665,6 +689,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2600d39_905cdbc2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T01:52:31Z",
+      "side": 1,
+      "message": "The cleanup logic has moved to the test service side, implemented in a follow-up CL: https://crrev.com/c/3195185",
+      "parentUuid": "9f739840_73fcd229",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 4
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b5f61bf_84b550c6",
@@ -750,6 +798,30 @@
       "side": 1,
       "message": "SGTM. Just to be clear, is the package name still \"lacros\" or \"common\"?",
       "parentUuid": "19e1336e_200eb9e1",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 43
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b2e4288_f2edcd93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdateutil/tls_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T01:52:31Z",
+      "side": 1,
+      "message": "I\u0027ll be able to move it to a general location in a follow-up CL when it is needed by other tests. Please let me know if this change should be blocked on this.",
+      "parentUuid": "d8847870_8bcf5c3e",
       "range": {
         "startLine": 25,
         "startChar": 24,
