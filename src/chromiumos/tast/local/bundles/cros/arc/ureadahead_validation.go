@@ -30,8 +30,9 @@ func init() {
 			"arc-performance@google.com"},
 		// NOTE: This test should never be promoted to critical. It has build dependency and it will
 		//       always fail in PFQ since we don't have ureadahead caches generated at PFQ time.
-		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
-		SoftwareDeps: []string{"chrome"},
+		Attr: []string{"group:mainline", "informational", "group:arc-functional"},
+		// Skip userdebug boards which we don't generate ureadahead packs for.
+		SoftwareDeps: []string{"chrome", "no_arc_userdebug"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
