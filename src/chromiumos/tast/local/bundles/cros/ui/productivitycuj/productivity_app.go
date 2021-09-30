@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/action"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
 
@@ -64,4 +65,26 @@ type dialogInfo struct {
 	dialog *nodewith.Finder
 	// node indicates the node displayed on the specified dialog.
 	node *nodewith.Finder
+}
+
+// calculateSum calculates the sum of the "rangeOfCells" rows, but change one of the values (from "preVal" to "curVal").
+func calculateSum(preVal, curVal int) int {
+	sum := 0
+	for i := 1; i <= rangeOfCells; i++ {
+		if i == preVal {
+			sum += curVal
+		} else {
+			sum += i
+		}
+	}
+	return sum
+}
+
+// getClipboardText gets the clipboard text data.
+func getClipboardText(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+	var clipData string
+	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getClipboardTextData)()`, &clipData); err != nil {
+		return "", err
+	}
+	return clipData, nil
 }
