@@ -34,6 +34,23 @@
       "parentUuid": "356d6476_4f30847b",
       "revId": "16a2d7c3204441f4b5f7c0345ffe779c5da68bed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00891f23_02a87c8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-30T00:14:45Z",
+      "side": 1,
+      "message": "Thanks. Removed from attention set temporarily. Feel free to add me back when ready.",
+      "revId": "16a2d7c3204441f4b5f7c0345ffe779c5da68bed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
