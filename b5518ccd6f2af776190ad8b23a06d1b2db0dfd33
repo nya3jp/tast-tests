@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f82501f4_48be6b7b",
+        "filename": "src/chromiumos/tast/local/policyutil/lacrospolicyutil/lacrospolicyutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-30T15:25:11Z",
+      "side": 1,
+      "message": "It\u0027ll introduce import cycle because we need to call lacros package",
+      "parentUuid": "1fcd49f2_7bd18a14",
+      "revId": "b5518ccd6f2af776190ad8b23a06d1b2db0dfd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9cc9bd79_483cf7a3",
         "filename": "src/chromiumos/tast/local/policyutil/lacrospolicyutil/lacrospolicyutil.go",
         "patchSetId": 1
