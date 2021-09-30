@@ -56,6 +56,30 @@
       },
       "revId": "1a3c3f3d7e0c31ebd5a22b25eac6595e8f90840d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c881d2_bde2b3a1",
+        "filename": "src/chromiumos/tast/common/policy/fakedms/fakedms.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-30T13:41:52Z",
+      "side": 1,
+      "message": "It\u0027s agreed to use this name to have a consistent naming.",
+      "parentUuid": "156ee38f_f4cf7362",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "1a3c3f3d7e0c31ebd5a22b25eac6595e8f90840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
