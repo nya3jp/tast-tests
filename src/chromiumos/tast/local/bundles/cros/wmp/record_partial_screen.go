@@ -2,26 +2,34 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package wmp
 
 import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/ui/wmp"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
+type deviceModeType string
+
+const (
+	clamshellMode deviceModeType = "clamshell mode"
+	tabletMode    deviceModeType = "tablet mode"
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RecordFullScreen,
-		Desc: "Checks that full screen video record works correctly",
+		Func: RecordPartialScreen,
+		Desc: "Checks that partial screen video record works correctly",
 		Contacts: []string{
 			"yichenz@chromium.org",
 			"chromeos-wmp@google.com",
@@ -33,18 +41,18 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "clamshell_mode",
-				Val:  false,
+				Val:  clamshellMode,
 			},
 			{
 				Name: "tablet_mode",
-				Val:  true,
+				Val:  tabletMode,
 			},
 		},
 	})
 }
 
-func RecordFullScreen(ctx context.Context, s *testing.State) {
-	tabletMode := s.Param().(bool)
+func RecordPartialScreen(ctx context.Context, s *testing.State) {
+	deviceMode := s.Param().(deviceModeType)
 
 	cr := s.FixtValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
@@ -52,9 +60,15 @@ func RecordFullScreen(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	var isTabletMode bool
+	if deviceMode == tabletMode {
+		isTabletMode = true
+	} else {
+		isTabletMode = false
+	}
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isTabletMode)
 	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
+		s.Fatalf("Failed to ensure %s: %v", deviceMode, err)
 	}
 	defer cleanup(ctx)
 
@@ -67,33 +81,42 @@ func RecordFullScreen(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a keyboard: ", err)
 	}
 
-	// Starts full screen recording via UI.
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the primary display info: ", err)
+	}
+
+	// Starts partial screen recording via UI.
 	statusArea := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
 	collapseButton := nodewith.ClassName("CollapseButton")
 	screenCaptureButton := nodewith.ClassName("FeaturePodIconButton").Name("Screen capture")
 	screenRecordToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Screen record")
-	recordFullscreenToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Record full screen")
+	recordPartialScreenToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Record partial screen")
+	dragStartPt := info.WorkArea.TopLeft()
+	dragEndPt := info.WorkArea.CenterPoint()
 	stopRecordButton := nodewith.ClassName("TrayBackgroundView").Name("Stop screen recording")
 	recordTakenLabel := nodewith.ClassName("Label").Name("Screen recording taken")
 	if err := uiauto.Combine(
-		"record full screen",
+		"record partial screen",
 		ac.LeftClick(statusArea),
 		ac.WaitUntilExists(collapseButton),
 		ac.LeftClick(screenCaptureButton),
 		ac.LeftClick(screenRecordToggleButton),
-		ac.LeftClick(recordFullscreenToggleButton),
+		ac.LeftClick(recordPartialScreenToggleButton),
+		// Drags to select an area to record.
+		mouse.Drag(tconn, dragStartPt, dragEndPt, time.Second),
 		kb.AccelAction("Enter"),
-		// Records full screen for about 30 seconds.
+		// Records partial screen for about 30 seconds.
 		ac.Sleep(30*time.Second),
 		ac.LeftClick(stopRecordButton),
 		// Checks if the screen record is taken.
 		ac.WaitUntilExists(recordTakenLabel),
 	)(ctx); err != nil {
-		s.Fatal("Failed to record full screen: ", err)
+		s.Fatal("Failed to record partial screen: ", err)
 	}
 
 	// Checks there is a screen record video file stored in Downloads folder.
-	has, err := wmp.HasScreenRecord(ctx)
+	has, err := HasScreenRecord(ctx)
 	if err != nil {
 		s.Fatal("Failed to check whether screen record is present: ", err)
 	}
