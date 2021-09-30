@@ -149,6 +149,10 @@ type HasChrome interface {
 	Chrome() *Chrome
 }
 
+// Chrome returns the Chrome instance.
+// It implements the HasChrome interface.
+func (c *Chrome) Chrome() *Chrome { return c }
+
 // Creds returns credentials used to log into a session.
 func (c *Chrome) Creds() Creds { return c.cfg.Creds() }
 
