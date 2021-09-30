@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afadcbfb_6701af3d",
+        "filename": "src/chromiumos/tast/services/cros/lacros/update_test_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-30T18:31:21Z",
+      "side": 1,
+      "message": "In that case you can even bundle the provisioning in the VerifyUpdate as well. :)",
+      "parentUuid": "bd816178_13b2fb0f",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "3139396d63020684cf96ade53b0e12f2e928d3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "614de074_47ac2823",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I was wondering that too, but ended up with empty message instead of protobuf.Empty in case the request is needed for conditional cleanup (binary or user data) or removing certain components.\n\nThis could be a overthought, but generally when we want to add a request to this API, it would be a build breaking change (if we don\u0027t update clients using it atomically), not a client breaking change. just referred to https://yaqs.corp.google.com/eng/q/4638494726291456",
       "parentUuid": "614de074_47ac2823",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 68
+      },
+      "revId": "3139396d63020684cf96ade53b0e12f2e928d3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6600f172_3bf3a4d0",
+        "filename": "src/chromiumos/tast/services/cros/lacros/update_test_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-30T18:31:21Z",
+      "side": 1,
+      "message": "\"Empty should be used if the API method is designed to be returning Empty for the life time of this API method. It gives a clear signal to caller that the interface will stay with it without any possibility of change. On the other hand, if you are not sure while designing the API, define the MethodResponse.\"\n\nGreat to know, but I think for tast IIUC everything will be in sync(?) - since these aren\u0027t public facing + exposed to the world but between DUT + runner.",
+      "parentUuid": "9bbec532_6415e7df",
       "range": {
         "startLine": 84,
         "startChar": 6,
