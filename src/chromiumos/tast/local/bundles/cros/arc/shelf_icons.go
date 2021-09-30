@@ -13,7 +13,8 @@ import (
 	"chromiumos/tast/errors"
 	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/screenshot"
@@ -102,17 +103,17 @@ func ShelfIcons(ctx context.Context, s *testing.State) {
 	defer a.Command(ctx, "pm", "clear", pkg).Run()
 
 	// Get the root view to translate coordinates in different resolutions.
-	root, err := ui.Root(ctx, tconn)
+	ui := uiauto.New(tconn)
+	root, err := ui.Info(ctx, nodewith.Root())
 	if err != nil {
 		s.Fatal("Could not find root node: ", err)
 	}
 
-	params := ui.FindParams{ClassName: "ash/ShelfAppButton", Name: "ArcShelfIconTest"}
-	buttons, err := ui.FindAll(ctx, tconn, params)
+	button := nodewith.ClassName("ash/ShelfAppButton").Name("ArcShelfIconTest")
+	buttons, err := ui.NodesInfo(ctx, button)
 	if err != nil {
 		s.Fatal("Failed to find shelf button: ", err)
 	}
-	defer buttons.Release(ctx)
 	if len(buttons) != 2 {
 		s.Fatalf("Unexpected number of ArcShelfIconTest buttons: got %d, expected 2", len(buttons))
 	}
@@ -123,8 +124,8 @@ func ShelfIcons(ctx context.Context, s *testing.State) {
 	// is fixed, since the white window of group1 was created first.
 	// We will click both of these buttons and check the context menu
 	// if the right windows are being listed, and then check the button color.
-	for i, button := range buttons {
-		if err := button.LeftClick(ctx); err != nil {
+	for i := range buttons {
+		if err := ui.LeftClick(button.Nth(i))(ctx); err != nil {
 			s.Fatalf("Failed to click button %d: %s", i+1, err)
 		}
 		// Wait for menu animation to finish. It should take less than 150ms.
@@ -137,8 +138,8 @@ func ShelfIcons(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to grab screenshot: ", err)
 		}
-		menuItemsParams := ui.FindParams{ClassName: "MenuItemView"}
-		menuItems, err := ui.FindAll(ctx, tconn, menuItemsParams)
+		menu := nodewith.ClassName("MenuItemView")
+		menuItems, err := ui.NodesInfo(ctx, menu)
 		if err != nil {
 			s.Fatal("Could not find menu items: ", err)
 		}
@@ -152,7 +153,7 @@ func ShelfIcons(ctx context.Context, s *testing.State) {
 			s.Fatalf("Found %d menu items, expected %d", len(menuItems), len(expGroupTitles[i])+1)
 		}
 		// Check if animation of menu item is finished. The menu is simply fading in, samplePt stays constant.
-		samplePt := getIconCoordsFromUINode(menuItems[1], menuIconOffset, img, root)
+		samplePt := getIconCoordsFromUINode(&menuItems[1], menuIconOffset, img, root)
 		expColor := expGroupColor[i][0]
 		sampleColor := img.At(samplePt.X, samplePt.Y)
 		if !colorcmp.ColorsMatch(sampleColor, expColor, colorMaxDiff) {
@@ -172,32 +173,32 @@ func ShelfIcons(ctx context.Context, s *testing.State) {
 			}
 		}
 		// Animation is done, compare all menu titles and icons.
-		for j, menuItem := range menuItems {
+		for j := range menuItems {
 			// The first item is the header without icon.
 			if j == 0 {
-				if menuItem.Name != appTitle {
-					s.Errorf("Got menu title %s, expected %s", menuItem.Name, appTitle)
+				if menuItems[j].Name != appTitle {
+					s.Errorf("Got menu title %s, expected %s", menuItems[j].Name, appTitle)
 				}
 				continue
 			}
 			expColor := expGroupColor[i][j-1]
 			expTitle := expGroupTitles[i][j-1] + titleSuffix
-			if menuItem.Name != expTitle {
-				s.Errorf("Got menu title %d, %d as %s, expected %s", i, j, menuItem.Name, expTitle)
+			if menuItems[j].Name != expTitle {
+				s.Errorf("Got menu title %d, %d as %s, expected %s", i, j, menuItems[j].Name, expTitle)
 			}
-			samplePt := getIconCoordsFromUINode(menuItem, menuIconOffset, img, root)
+			samplePt := getIconCoordsFromUINode(&menuItems[j], menuIconOffset, img, root)
 			iconColor := img.At(samplePt.X, samplePt.Y)
 			if !colorcmp.ColorsMatch(iconColor, expColor, colorMaxDiff) {
 				s.Errorf("Got icon color %v, not close enough to %v", iconColor, expColor)
 			}
 		}
 		// Check icon on the shelf button.
-		buttonCoords := getIconCoordsFromUINode(button, 0 /*iconOffset*/, img, root)
+		buttonCoords := getIconCoordsFromUINode(&buttons[i], 0 /*iconOffset*/, img, root)
 		buttonColor := img.At(buttonCoords.X, buttonCoords.Y)
 		if !colorcmp.ColorsMatch(buttonColor, expGroupColor[i][0], colorMaxDiff) {
 			s.Errorf("Button color %v was not close enough to %v", buttonColor, expGroupColor[i])
 		}
-		if err := button.LeftClick(ctx); err != nil {
+		if err := ui.LeftClick(button.Nth(i))(ctx); err != nil {
 			s.Fatal("Could not close context menu: ", err)
 		}
 	}
@@ -205,13 +206,13 @@ func ShelfIcons(ctx context.Context, s *testing.State) {
 
 // adjustResolution is a helper function to convert a point from the resolution
 // of the ui.Node coordinate system to the coordinate system of a screenshot.
-func adjustResolution(p coords.Point, img image.Image, root *ui.Node) coords.Point {
+func adjustResolution(p coords.Point, img image.Image, root *uiauto.NodeInfo) coords.Point {
 	return coords.NewPoint(p.X*img.Bounds().Dx()/root.Location.Width, p.Y*img.Bounds().Dy()/root.Location.Height)
 }
 
 // getIconCoordsFromUINode takes a UI Node, and outputs the coordinates of
 // a pixel that should be close to the center of the item's icon.
-func getIconCoordsFromUINode(item *ui.Node, iconOffset int, img image.Image, root *ui.Node) coords.Point {
+func getIconCoordsFromUINode(item *uiauto.NodeInfo, iconOffset int, img image.Image, root *uiauto.NodeInfo) coords.Point {
 	// This is the layout of one menu item, we want the color of O:
 	// /-------------------\
 	// |  /-\              |
