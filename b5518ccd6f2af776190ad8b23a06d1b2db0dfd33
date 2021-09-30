@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d5e107_b0e82799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-30T15:13:42Z",
+      "side": 1,
+      "message": "Please split up this CL in 3, one for the helpers and one for each test.",
+      "revId": "b5518ccd6f2af776190ad8b23a06d1b2db0dfd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b955d2c0_0853635b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-30T15:13:42Z",
+      "side": 1,
+      "message": "Maybe add a separate test first to not remove this from the Cq?\n\nAllowDinosaurEasterEggLacros that would test both behaviours.",
+      "revId": "b5518ccd6f2af776190ad8b23a06d1b2db0dfd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fcd49f2_7bd18a14",
+        "filename": "src/chromiumos/tast/local/policyutil/lacrospolicyutil/lacrospolicyutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-30T15:13:42Z",
+      "side": 1,
+      "message": "Not sure this function needs to live in it\u0027s own package, I\u0027d keep it in policyutil.",
+      "revId": "b5518ccd6f2af776190ad8b23a06d1b2db0dfd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28bf6560_638b66ad",
+        "filename": "src/chromiumos/tast/local/policyutil/lacrospolicyutil/lacrospolicyutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-30T15:13:42Z",
+      "side": 1,
+      "message": "This needs much more specific documentation, an example would also help.",
+      "revId": "b5518ccd6f2af776190ad8b23a06d1b2db0dfd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cc9bd79_483cf7a3",
+        "filename": "src/chromiumos/tast/local/policyutil/lacrospolicyutil/lacrospolicyutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-09-30T15:13:42Z",
+      "side": 1,
+      "message": "use a more descriptive name",
+      "range": {
+        "startLine": 15,
+        "startChar": 39,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "b5518ccd6f2af776190ad8b23a06d1b2db0dfd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
