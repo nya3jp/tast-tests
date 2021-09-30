@@ -57,6 +57,14 @@ func init() {
 				},
 			},
 			{
+				Name: "tablet_mode_trace",
+				Val: windowarrangementcuj.TestParam{
+					ChromeType: lacros.ChromeTypeChromeOS,
+					Tablet:     true,
+					Tracing:    true,
+				},
+			},
+			{
 				Name: "lacros",
 				Val: windowarrangementcuj.TestParam{
 					ChromeType: lacros.ChromeTypeLacros,
@@ -153,6 +161,9 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
+	}
+	if testParam.Tracing {
+		recorder.EnableTracing(s.OutDir())
 	}
 	defer recorder.Close(closeCtx)
 
