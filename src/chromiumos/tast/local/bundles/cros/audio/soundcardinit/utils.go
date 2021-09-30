@@ -22,7 +22,7 @@ import (
 type TestParameters struct {
 	SoundCardID string
 	AmpCount    uint
-	Func        func(context.Context, *testing.State, string)
+	Func        func(context.Context, string) error
 }
 
 // StopTimeFile is the file stores previous CRAS stop time.
