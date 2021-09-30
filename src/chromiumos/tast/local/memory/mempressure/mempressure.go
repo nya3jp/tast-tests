@@ -698,7 +698,7 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, arc *arc.ARC, p 
 		return errors.Wrap(err, "cannot obtain memory info")
 	}
 
-	basemem, err := metrics.NewBaseMemoryStats()
+	basemem, err := metrics.NewBaseMemoryStats(ctx, arc)
 	if err != nil {
 		return errors.Wrap(err, "unable to initialize base metrics")
 	}
@@ -760,7 +760,7 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, arc *arc.ARC, p 
 	if err := metrics.LogMemoryStats(ctx, basemem, arc, perfValues, outDir, "_setup"); err != nil {
 		return errors.Wrap(err, "failed to collect setup memory metrics")
 	}
-	if err := basemem.Reset(); err != nil {
+	if err := basemem.Reset(ctx, arc); err != nil {
 		return errors.Wrap(err, "failed reset memory metrics post setup")
 	}
 
@@ -773,7 +773,7 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, arc *arc.ARC, p 
 	if err := metrics.LogMemoryStats(ctx, basemem, arc, perfValues, outDir, "_cold"); err != nil {
 		return errors.Wrap(err, "failed to collect cold memory metrics")
 	}
-	if err := basemem.Reset(); err != nil {
+	if err := basemem.Reset(ctx, arc); err != nil {
 		return errors.Wrap(err, "failed reset memory metrics post cold")
 	}
 
