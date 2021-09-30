@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -37,6 +38,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{filename},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      5 * time.Minute,
 	})
 }
 
@@ -50,15 +52,25 @@ func SetLocalWallpaper(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	if err := fsutil.CopyFile(s.DataPath(filename), filePath); err != nil {
-		s.Fatalf("Could not copy %s to %s: %v", filename, filePath, err)
-	}
-
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	// The wallpaper in tablet mode is behind the view of app icons so it is tricky to
+	// compare the wallpaper and the given rgba color. Skipping the test in tablet mode
+	// for now.
+	if tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn); err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	} else if tabletModeEnabled {
+		s.Log("Device is in tablet mode. Skipping test")
+		return
+	}
+
+	if err := fsutil.CopyFile(s.DataPath(filename), filePath); err != nil {
+		s.Fatalf("Could not copy %s to %s: %v", filename, filePath, err)
+	}
 
 	// The test has a dependency of network speed, so we give uiauto.Context ample
 	// time to wait for nodes to load.
