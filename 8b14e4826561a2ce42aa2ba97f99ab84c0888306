@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "366455e2_12327bbe",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-30T01:02:47Z",
+      "side": 1,
+      "message": "crossdevice",
+      "range": {
+        "startLine": 16,
+        "startChar": 78,
+        "endLine": 16,
+        "endChar": 89
+      },
+      "revId": "8b14e4826561a2ce42aa2ba97f99ab84c0888306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "246544a3_442e75aa",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-30T01:02:47Z",
+      "side": 1,
+      "message": "cross device",
+      "range": {
+        "startLine": 26,
+        "startChar": 88,
+        "endLine": 26,
+        "endChar": 99
+      },
+      "revId": "8b14e4826561a2ce42aa2ba97f99ab84c0888306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da217e1d_ce4d30e6",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-30T01:02:47Z",
+      "side": 1,
+      "message": "crosdevice",
+      "range": {
+        "startLine": 37,
+        "startChar": 40,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "8b14e4826561a2ce42aa2ba97f99ab84c0888306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c28a989_ab758c53",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-30T01:02:47Z",
+      "side": 1,
+      "message": "Are you supposed to use defaultCrossDeviceUsername here?",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 57
+      },
+      "revId": "8b14e4826561a2ce42aa2ba97f99ab84c0888306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a37ee68f_9c3f0218",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/cros_logging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-30T01:02:47Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 124
+      },
+      "revId": "8b14e4826561a2ce42aa2ba97f99ab84c0888306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8155be31_a0938e19",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/data/google_account_util.zip.external",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-30T01:02:47Z",
+      "side": 1,
+      "message": "crossdevice and move all the apks we need there",
+      "range": {
+        "startLine": 2,
+        "startChar": 49,
+        "endLine": 2,
+        "endChar": 60
+      },
+      "revId": "8b14e4826561a2ce42aa2ba97f99ab84c0888306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b0b1fb_63373d57",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-30T01:02:47Z",
+      "side": 1,
+      "message": "crossdevice crossdeviceANdroidSetup",
+      "range": {
+        "startLine": 24,
+        "startChar": 13,
+        "endLine": 24,
+        "endChar": 70
+      },
+      "revId": "8b14e4826561a2ce42aa2ba97f99ab84c0888306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e25ef36_a7ff7716",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-30T01:02:47Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 93,
+        "startChar": 19,
+        "endLine": 93,
+        "endChar": 23
+      },
+      "revId": "8b14e4826561a2ce42aa2ba97f99ab84c0888306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "003a0799_8580f674",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-30T01:02:47Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 54
+      },
+      "revId": "8b14e4826561a2ce42aa2ba97f99ab84c0888306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d44c78ac_1bf9b916",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-09-30T01:02:47Z",
+      "side": 1,
+      "message": "Did you experience this with your new snippet too?",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "8b14e4826561a2ce42aa2ba97f99ab84c0888306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
