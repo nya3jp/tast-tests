@@ -23,9 +23,13 @@ import (
 const (
 	binKVMX64Zip     = "bin_kvm_x86_64.zip"
 	kvmEnabledRepros = "kvm_x86_64.txt"
+
+	binBlockX64Zip     = "bin_block_x86_64.zip"
+	blockEnabledRepros = "block_x86_64.txt"
 )
 
 type testParam struct {
+	subsystem   string
 	binariesZip string
 	reprosList  string
 }
@@ -40,13 +44,26 @@ func init() {
 		},
 		Timeout: 30 * time.Minute,
 		Attr:    []string{"group:syzcorpus"},
-		Params: []testing.Param{{
-			Val: testParam{
-				binariesZip: binKVMX64Zip,
-				reprosList:  kvmEnabledRepros,
+		Params: []testing.Param{
+			{
+				Name: "kvm",
+				Val: testParam{
+					subsystem:   "kvm",
+					binariesZip: binKVMX64Zip,
+					reprosList:  kvmEnabledRepros,
+				},
+				ExtraData: []string{binKVMX64Zip, kvmEnabledRepros},
 			},
-			ExtraData: []string{binKVMX64Zip, kvmEnabledRepros},
-		}},
+			{
+				Name: "block",
+				Val: testParam{
+					subsystem:   "block",
+					binariesZip: binBlockX64Zip,
+					reprosList:  blockEnabledRepros,
+				},
+				ExtraData: []string{binBlockX64Zip, blockEnabledRepros},
+			},
+		},
 	})
 }
 
@@ -86,7 +103,7 @@ func Repros(ctx context.Context, s *testing.State) {
 	if err := syzutils.ExtractCorpus(ctx, tastDir, s.DataPath(param.binariesZip)); err != nil {
 		s.Fatal("Encountered error fetching fuzz artifacts: ", err)
 	}
-	binDir := filepath.Join(tastDir, fmt.Sprintf("bin_kvm_%v", arch))
+	binDir := filepath.Join(tastDir, fmt.Sprintf("bin_%v_%v", param.subsystem, arch))
 	files, err := ioutil.ReadDir(binDir)
 	if err != nil {
 		s.Fatalf("Unable to read extracted corpus dir at: %v: %v", binDir, err)
