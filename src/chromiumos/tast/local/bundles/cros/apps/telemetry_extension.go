@@ -18,8 +18,10 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
@@ -100,16 +102,11 @@ func TelemetryExtension(ctx context.Context, s *testing.State) {
 	if err := ash.WaitForApp(ctx, tconn, apps.TelemetryExtension.ID, time.Minute); err != nil {
 		s.Fatalf("Failed to wait for %q by app id %q: %v", apps.TelemetryExtension.Name, apps.TelemetryExtension.ID, err)
 	}
-
-	params := ui.FindParams{
-		ClassName: "telemetryExtension",
-		Role:      ui.RoleTypeHeading,
-	}
-	node, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
-	if err != nil {
+	ui := uiauto.New(tconn)
+	heading := nodewith.ClassName("telemetryExtension").Role(role.Heading)
+	if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(heading)(ctx); err != nil {
 		s.Fatal("Failed to find TelemetryExtension heading: ", err)
 	}
-	defer node.Release(cleanupCtx)
 
 	var apiStatus, apiResponse string
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -146,25 +143,19 @@ func TelemetryExtension(ctx context.Context, s *testing.State) {
 }
 
 func preText(ctx context.Context, tconn *chrome.TestConn, className string) (string, error) {
-	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
 
-	params := ui.FindParams{
-		ClassName: className,
-		Role:      ui.RoleTypePre,
-	}
-	node, err := ui.FindWithTimeout(ctx, tconn, params, time.Second)
-	if err != nil {
+	ui := uiauto.New(tconn)
+	pre := nodewith.ClassName(className).Role(role.Pre)
+	if err := ui.WithTimeout(time.Second).WaitUntilExists(pre)(ctx); err != nil {
 		return "", errors.Wrap(err, "failed to find pre node")
 	}
-	defer node.Release(cleanupCtx)
 
-	children, err := node.Children(ctx)
+	children, err := ui.NodesInfo(ctx, nodewith.Ancestor(pre))
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get children for pre node")
 	}
-	defer children.Release(cleanupCtx)
 
 	if len(children) != 1 {
 		return "", errors.Errorf("unexpected number of children: want 1; got %d", len(children))
