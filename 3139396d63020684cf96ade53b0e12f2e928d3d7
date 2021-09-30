@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd816178_13b2fb0f",
+        "filename": "src/chromiumos/tast/services/cros/lacros/update_test_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T18:12:05Z",
+      "side": 1,
+      "message": "Jae Thanks for your thought!\nI would say it is my intention because of two things:\n\n1. simplify actual tests to focus on orchestration. this will be better to deal with more complicated cases in the future (eg, provision dev -\u003e verify -\u003e provision beta -\u003e verify -\u003e clear for simulating channel switching)\n\n2. make the test service as stateless and order-independent as possible, which is otherwise hard to use and maintain. The test service implementation won\u0027t be likely changing often for each test scenario. See a follow-up CL: https://crrev.com/c/3195185.",
+      "parentUuid": "036bafee_413f9a6a",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "3139396d63020684cf96ade53b0e12f2e928d3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "614de074_47ac2823",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-30T17:50:13Z",
       "side": 1,
       "message": "nit: Use protobuf.Empty?\nNo request + response",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 68
+      },
+      "revId": "3139396d63020684cf96ade53b0e12f2e928d3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bbec532_6415e7df",
+        "filename": "src/chromiumos/tast/services/cros/lacros/update_test_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T18:12:05Z",
+      "side": 1,
+      "message": "I was wondering that too, but ended up with empty message instead of protobuf.Empty in case the request is needed for conditional cleanup (binary or user data) or removing certain components.\n\nThis could be a overthought, but generally when we want to add a request to this API, it would be a build breaking change (if we don\u0027t update clients using it atomically), not a client breaking change. just referred to https://yaqs.corp.google.com/eng/q/4638494726291456",
+      "parentUuid": "614de074_47ac2823",
       "range": {
         "startLine": 84,
         "startChar": 6,
