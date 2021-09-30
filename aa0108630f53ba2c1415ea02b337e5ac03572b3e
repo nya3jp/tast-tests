@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "064d1992_d1277b2d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_pwrbutton_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T04:57:06Z",
+      "side": 1,
+      "message": "Yes, defer func should fail the test case as dut is not up after performing test case.",
+      "parentUuid": "4b9e97d1_85113ada",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "aa0108630f53ba2c1415ea02b337e5ac03572b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c1edbc8_ee0ef879",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_pwrbutton_stress.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-29T23:39:00Z",
       "side": 1,
       "message": "Please do not pass s around. In the func, return the error if it there is one so that s is not needed.",
+      "range": {
+        "startLine": 110,
+        "startChar": 50,
+        "endLine": 110,
+        "endChar": 66
+      },
+      "revId": "aa0108630f53ba2c1415ea02b337e5ac03572b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "776efd7c_3cac5650",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_pwrbutton_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-09-30T04:57:06Z",
+      "side": 1,
+      "message": "s.Fatal is removed and replaced with return in L113, \"s\" is required for initiating  rpc in L111(s.RPCHint).",
+      "parentUuid": "7c1edbc8_ee0ef879",
       "range": {
         "startLine": 110,
         "startChar": 50,
