@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/bundles/cros/audio/soundcardinit"
+	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -130,21 +131,29 @@ func exitSuccess(ctx context.Context, soundCardID string) error {
 
 // bootTimeCalibration verifies sound_card_init boot time calibration works correctly.
 func bootTimeCalibration(ctx context.Context, soundCardID string) error {
+
 	// Run sound_card_init.
-	runCtx, cancel := context.WithTimeout(ctx, initctlTimeout)
+	runCtx, cancel := context.WithTimeout(ctx, soundCardInitTimeout)
 	defer cancel()
+	config, err := crosconfig.Get(ctx, "/audio/main", "sound-card-init-conf")
+	if err != nil {
+		return errors.Wrap(err, "cros_config /audio/main sound-card-init-conf failed")
+	}
+
 	if err := testexec.CommandContext(
-		runCtx, "/sbin/initctl",
-		"start", "sound_card_init",
-		"SOUND_CARD_ID="+soundCardID,
+		runCtx,
+		"/usr/bin/sound_card_init",
+		"--id="+soundCardID,
+		"--conf="+config,
+		"--bypass_temperature_check",
 	).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to run sound_card_init")
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return soundcardinit.VerifyUseVPD(ctx, soundCardID, ampCount)
+		return soundcardinit.VerifyCalibExist(ctx, soundCardID, ampCount)
 	}, &testing.PollOptions{Timeout: soundCardInitTimeout}); err != nil {
-		return errors.Wrap(err, "failed to verify calib files using VPD value")
+		return errors.Wrap(err, "failed to verify calib files exists")
 	}
 
 	return nil
