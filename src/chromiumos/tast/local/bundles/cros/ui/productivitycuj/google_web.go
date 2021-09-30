@@ -6,7 +6,10 @@ package productivitycuj
 
 import (
 	"context"
+	"fmt"
 	"regexp"
+	"strconv"
+	"time"
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
@@ -74,7 +77,45 @@ func (app *GoogleDocs) CreateSlides(ctx context.Context) error {
 
 // CreateSpreadsheet creates a new spreadsheet and fill default data.
 func (app *GoogleDocs) CreateSpreadsheet(ctx context.Context) (string, error) {
-	return "", nil
+	conn, err := app.cr.NewConn(ctx, sheetsURL)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to open URL: %s", sheetsURL)
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
+	// If the file already exists, check the dependent cells first to prevent continuous failure due to incorrect content.
+	checkComputeChain := func(ctx context.Context) error {
+		for i := 1; i <= rangeOfCells; i++ {
+			idx := strconv.Itoa(i)
+			cell := fmt.Sprintf("A%d", i)
+			value, err := app.getCellValue(ctx, cell)
+			if err != nil {
+				return err
+			}
+			if value != idx {
+				if err := app.editCellValue(ctx, cell, idx); err != nil {
+					return err
+				}
+			}
+		}
+		return nil
+	}
+
+	section := nodewith.NameRegex(regexp.MustCompile("^(Today|Yesterday|Previous (7|30) days|Earlier).*")).Role(role.ListBox).First()
+	fileOption := nodewith.NameContaining(sheetName).Role(role.ListBoxOption).Ancestor(section).First()
+
+	// Check if the sample file exists. If not, create a blank one.
+	if err := app.ui.WaitUntilExists(fileOption)(ctx); err != nil {
+		return sheetName, app.createSampleSheet(ctx)
+	}
+
+	testing.ContextLog(ctx, "Opening an existing spreadsheet")
+	return sheetName, uiauto.Combine("open an existing spreadsheet",
+		app.uiHdl.ClickUntil(fileOption, app.ui.WithTimeout(time.Second).WaitUntilGone(fileOption)),
+		app.validateEditMode,
+		uiauto.NamedAction("check dependent compute chain in a spreadsheet", checkComputeChain),
+	)(ctx)
 }
 
 // OpenSpreadsheet creates a new document from GDocs.
@@ -149,13 +190,112 @@ func (app *GoogleDocs) validateEditMode(ctx context.Context) error {
 
 // openBlankDocument opens a blank document for the specified service.
 func (app *GoogleDocs) openBlankDocument(ctx context.Context) error {
-	testing.ContextLog(ctx, "Opening a blank document")
-
 	blankOption := nodewith.Name("Blank").Role(role.ListBoxOption)
 	return uiauto.Combine("open a blank document",
 		app.maybeCloseWelcomeDialog,
 		app.uiHdl.Click(blankOption),
 		app.validateEditMode,
+	)(ctx)
+}
+
+// selectCell selects the specified cell using the name box.
+func (app *GoogleDocs) selectCell(cell string) action.Action {
+	nameBox := nodewith.Name("Name box (Ctrl + J)").Role(role.GenericContainer)
+	nameField := nodewith.Role(role.TextField).FinalAncestor(nameBox)
+	nameFieldFocused := nameField.Focused()
+	return uiauto.NamedAction(fmt.Sprintf("to select cell %q", cell),
+		uiauto.Combine("click the name box and name a range",
+			app.uiHdl.ClickUntil(nameField, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(nameFieldFocused)),
+			app.kb.TypeAction(cell),
+			app.kb.AccelAction("Enter"),
+			// Given time to jump to the specific cell and select it.
+			// And because we cannot be sure whether the target cell is focused, we have to wait a short time.
+			app.ui.Sleep(500*time.Millisecond),
+		),
+	)
+}
+
+// getCellValue gets the value of the specified cell.
+func (app *GoogleDocs) getCellValue(ctx context.Context, cell string) (clipData string, err error) {
+	if err := app.selectCell(cell)(ctx); err != nil {
+		return "", err
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Due to the unstable network, there might be no data in the clipboard after the copy operation.
+		// Therefore, we also need to retry the copy operation.
+		if err := app.kb.AccelAction("Ctrl+C")(ctx); err != nil {
+			return err
+		}
+		clipData, err = getClipboardText(ctx, app.tconn)
+		if err != nil {
+			return err
+		}
+		if clipData == "Retrieving data. Wait a few seconds and try to cut or copy again." {
+			return errors.New("clipboard data is not yet ready")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Minute}); err != nil {
+		return "", err
+	}
+
+	testing.ContextLogf(ctx, "Getting cell %q value: %s", cell, clipData)
+
+	return clipData, nil
+}
+
+// editCellValue edits the cell to the specified value.
+func (app *GoogleDocs) editCellValue(ctx context.Context, cell, value string) error {
+	testing.ContextLogf(ctx, "Writing cell %q value: %s", cell, value)
+
+	return uiauto.Combine(fmt.Sprintf("write cell %q value", cell),
+		app.selectCell(cell),
+		app.kb.TypeAction(value),
+		app.kb.AccelAction("Enter"),
+	)(ctx)
+}
+
+// createSampleSheet creates a sample spreadsheet.
+func (app *GoogleDocs) createSampleSheet(ctx context.Context) error {
+	if err := app.openBlankDocument(ctx); err != nil {
+		return errors.Wrap(err, "failed to open a blank document")
+	}
+
+	testing.ContextLogf(ctx, "Writing cell(A1:A%d) values", rangeOfCells)
+	for i := 1; i <= rangeOfCells; i++ {
+		idx := strconv.Itoa(i)
+		cell := fmt.Sprintf("A%d", i)
+		if err := app.editCellValue(ctx, cell, idx); err != nil {
+			return errors.Wrapf(err, "failed to edit cell %q", cell)
+		}
+	}
+
+	formula := fmt.Sprintf("=SUM(A1:A%d)", rangeOfCells)
+	testing.ContextLog(ctx, "Writing cell(B1) value")
+	if err := app.editCellValue(ctx, "B1", formula); err != nil {
+		return errors.Wrap(err, `failed to edit cell "B1"`)
+	}
+
+	testing.ContextLog(ctx, "Writing cell(H1) value")
+	if err := app.editCellValue(ctx, "H1", "Copy to document"); err != nil {
+		return errors.Wrap(err, `failed to edit cell "H1"`)
+	}
+
+	menuBar := nodewith.Name("Menu bar").Role(role.Banner)
+	fileItem := nodewith.Name("File").Role(role.MenuItem).Ancestor(menuBar)
+	renameItem := nodewith.Name("Rename r").Role(role.MenuItem)
+	renameField := nodewith.Name("Rename").Role(role.TextField).Editable().Focused()
+
+	testing.ContextLog(ctx, "Renaming spreadsheet")
+	return uiauto.Combine("rename then save document",
+		app.ui.WaitUntilExists(menuBar),
+		// Click "File" and then "Rename".
+		app.uiHdl.Click(fileItem),
+		app.uiHdl.Click(renameItem),
+		app.ui.WaitUntilExists(renameField),
+		app.kb.TypeAction(sheetName),
+		app.kb.AccelAction("Enter"),
+		app.ui.Sleep(2*time.Second), // Wait Google Sheets to save the changes.
 	)(ctx)
 }
 
