@@ -26,13 +26,26 @@ func init() {
 		Params: []testing.Param{{
 			ExtraAttr: []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraData: []string{tabswitchcuj.WPRArchiveName},
-			Val:       lacros.ChromeTypeChromeOS,
-			Pre:       wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
+			Val: tabswitchcuj.TabSwitchParam{
+				ChromeType: lacros.ChromeTypeChromeOS
+			},
+			Pre: wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
 		}, {
-			Name:              "lacros",
-			Val:               lacros.ChromeTypeLacros,
+			Name: "lacros",
+			Val: tabswitchcuj.TabSwitchParam{
+				ChromeType: lacros.ChromeTypeLacros
+			},
 			Fixture:           "loggedInToCUJUserLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			Name:      "trace",
+			ExtraAttr: []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraData: []string{tabswitchcuj.WPRArchiveName},
+			Val: tabswitchcuj.TabSwitchParam{
+				ChromeType: lacros.ChromeTypeChromeOS,
+				Tracing:    true
+			},
+			Pre: wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
 		}},
 	})
 }
