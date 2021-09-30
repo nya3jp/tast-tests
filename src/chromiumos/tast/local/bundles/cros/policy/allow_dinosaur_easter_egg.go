@@ -6,32 +6,52 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/lacrospolicyutil"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: AllowDinosaurEasterEgg,
-		Desc: "Behavior of AllowDinosaurEasterEgg policy",
+		Desc: "Behavior of AllowDinosaurEasterEgg policy on both Ash and Lacros browser",
 		Contacts: []string{
-			"vsavu@google.com", // Test author
+			"mohamedaomar@google.com", // Test author
+			"vsavu@google.com",
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
+		Attr:         []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Name:    "ash",
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               lacros.ChromeTypeLacros,
+		}},
 	})
 }
 
 func AllowDinosaurEasterEgg(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	for _, param := range []struct {
 		// name is the subtest name.
@@ -53,6 +73,7 @@ func AllowDinosaurEasterEgg(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
@@ -63,10 +84,17 @@ func AllowDinosaurEasterEgg(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// Run actual test.
-			conn, err := cr.NewConn(ctx, "chrome://dino")
+			// Setup browser based on the chrome type.
+			br, cleanup, err := lacrospolicyutil.BrowserSetup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
 			if err != nil {
-				s.Fatal("Failed to connect to chrome: ", err)
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer cleanup(cleanupCtx)
+
+			// Run actual test.
+			conn, err := br.NewConn(ctx, "chrome://dino")
+			if err != nil {
+				s.Fatal("Failed to connect to the browser: ", err)
 			}
 			defer conn.Close()
 
