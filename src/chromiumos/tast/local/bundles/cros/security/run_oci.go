@@ -10,7 +10,6 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"strings"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/sysutil"
@@ -68,8 +67,9 @@ func RunOCI(ctx context.Context, s *testing.State) {
 	}
 
 	runTest := func(tc testCase) {
-		// Create temp dir under /tmp to ensure that it's accessible by the chronos user.
-		td, err := ioutil.TempDir("/tmp", "tast.security.RunOCI.")
+		// Create temp dir under /usr/local/tmp to ensure that it's accessible by the chronos user.
+		// We can't put it in /tmp as it is noexec, and we need to load shared libs.
+		td, err := ioutil.TempDir("/usr/local/tmp", "tast.security.RunOCI.")
 		if err != nil {
 			s.Fatal("Failed to create temp dir: ", err)
 		}
@@ -108,11 +108,6 @@ func RunOCI(ctx context.Context, s *testing.State) {
 		stdout, stderr, err := cmd.SeparatedOutput()
 
 		failed := false
-
-		// TODO(b/194923131): Hack to disable failures which involve librt.so.1
-		if strings.Contains(string(stderr), "librt.so.1") {
-			return
-		}
 
 		if err != nil && !tc.expFail {
 			failed = true
