@@ -31,10 +31,16 @@ func init() {
 		Timeout:      20 * time.Minute,
 		SoftwareDeps: []string{"vm_host", "dlc"},
 		Fixture:      "vmDLC",
+		Params: []testing.Param{{
+			Val: false,
+		}, {
+			Name: "vhost_user_fs",
+			Val:  true,
+		}},
 	})
 }
 
-func setupCrosvmCmd(ctx context.Context, kernel, serialLog, script string, scriptArgs []string) *testexec.Cmd {
+func setupCrosvmParams( /*ctx context.Context, */ kernel, serialLog, script string, scriptArgs []string /*, sock string*/) *vm.CrosvmParams {
 	kernParams := []string{
 		"root=/dev/root",
 		"rootfstype=virtiofs",
@@ -51,13 +57,16 @@ func setupCrosvmCmd(ctx context.Context, kernel, serialLog, script string, scrip
 		vm.KernelArgs(kernParams...),
 		vm.SerialOutput(serialLog),
 	)
+	return ps
 
-	args := []string{"--nofile=262144", "crosvm"}
-	args = append(args, ps.ToArgs()...)
-	return testexec.CommandContext(ctx, "prlimit", args...)
+	//args := []string{"--nofile=262144", "crosvm"}
+	//args = append(args, ps.ToArgs()...)
+	//return testexec.CommandContext(ctx, "prlimit", args...)
 }
 
 func Virtiofs(ctx context.Context, s *testing.State) {
+	isVhostUserFS := s.Param().(bool)
+
 	// Create a temporary directory on the stateful partition rather than in memory.
 	td, err := ioutil.TempDir("/usr/local/tmp", "tast.vm.Virtiofs.")
 	if err != nil {
@@ -83,14 +92,51 @@ func Virtiofs(ctx context.Context, s *testing.State) {
 	}
 	defer output.Close()
 
-	s.Log("Running pjdfstests")
-	cmd := setupCrosvmCmd(ctx, data.Kernel, logFile, script, []string{td})
+	crosvmParams := setupCrosvmParams(data.Kernel, logFile, script, []string{td})
+	vhostSock := filepath.Join(td, "vhost-user-fs.sock")
+	if isVhostUserFS {
+		vm.VhostUserFS(vhostSock, "fstag")(crosvmParams)
+	}
+	crosvmArgs := []string{"--nofile=262144", "crosvm"}
+	crosvmArgs = append(crosvmArgs, crosvmParams.ToArgs()...)
+	cmd := testexec.CommandContext(ctx, "prlimit", crosvmArgs...)
 	cmd.Stdout = output
 	cmd.Stderr = output
 
+	if isVhostUserFS {
+		devlog, err := os.Create(filepath.Join(s.OutDir(), "device.log"))
+		if err != nil {
+			s.Fatal("Failed to create crosvm log file: ", err)
+		}
+		defer devlog.Close()
+
+		devArgs := []string{
+			"device",
+			"fs",
+			"--socket", vhostSock,
+			"--tag", "fstag",
+			"--shared-dir", td,
+		}
+		devCmd := testexec.CommandContext(ctx, "crosvm", devArgs...)
+		devCmd.Stdout = devlog
+		devCmd.Stderr = devlog
+		if err := devCmd.Start(); err != nil {
+			s.Fatal("Failed to start vhost-user fs device: ", err)
+		}
+	}
+
+	s.Log("Running pjdfstests")
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to run crosvm: ", err)
 	}
+
+	//if isVhostUserFS {
+	//	// vhost-user-fs device must stop right after all of VMs stopped.
+	//	if err := devCmd.Wait(testexec.DumpLogOnError); err != nil {
+	//		s.Fatal("Failed to complete vhost-user-net-device: ", err)
+	//	}
+	//}
+	s.Log("Finished running pjdfstests")
 
 	log, err := ioutil.ReadFile(logFile)
 	if err != nil {
@@ -129,4 +175,5 @@ func Virtiofs(ctx context.Context, s *testing.State) {
 
 		s.Error("pjdfstest failed")
 	}
+
 }
