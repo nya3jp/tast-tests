@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "756b5173_11db9f87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-30T18:19:59Z",
+      "side": 1,
+      "message": "Please take a look at my comments. Thanks.",
+      "revId": "e1c54a1e0f57094e59c52208a64af3affecaf44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92345e44_df0022f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-30T18:19:59Z",
+      "side": 1,
+      "message": "Sorry, it is a bit complicate for me to read here. Is it possible to split it to different functions?\n\nSomething like\n\n```\nif req.UseUi {\n    return verifyUpdateWithUI(...)\n}\nreturn verifyUpdateWithoutUI(...) \n    \n```",
+      "revId": "e1c54a1e0f57094e59c52208a64af3affecaf44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd6d574_6eee35d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-30T18:19:59Z",
+      "side": 1,
+      "message": "if matches, err :\u003d filepath.Glob(lacrosComponentPathGlob); err !\u003d nil || len(matches) \u003e 0 {",
+      "revId": "e1c54a1e0f57094e59c52208a64af3affecaf44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a01cb5a1_210f1f6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-30T18:19:59Z",
+      "side": 1,
+      "message": "If I read the code correctly, this function will not return more than one version. Do you think it will better to change the member to Versions to Version? It will make the client code simpler.",
+      "revId": "e1c54a1e0f57094e59c52208a64af3affecaf44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
