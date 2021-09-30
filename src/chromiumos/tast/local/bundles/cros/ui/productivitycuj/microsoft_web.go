@@ -309,8 +309,11 @@ func (app *MicrosoftWebOffice) VoiceToTextTesting(ctx context.Context, expectedT
 		alertDialog := nodewith.NameContaining("Use your microphone").ClassName("RootView").Role(role.AlertDialog).First()
 		allowButton := nodewith.Name("Allow").Role(role.Button).Ancestor(alertDialog)
 		if err := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(allowButton)(ctx); err != nil {
-			testing.ContextLog(ctx, "No action to grant microphone permission")
-			return nil
+			if strings.Contains(err.Error(), nodewith.ErrNotFound) {
+				testing.ContextLog(ctx, "No action to grant microphone permission")
+				return nil
+			}
+			return err
 		}
 		return app.uiHdl.ClickUntil(allowButton, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(alertDialog))(ctx)
 	}
@@ -1061,9 +1064,13 @@ func (app *MicrosoftWebOffice) turnOnDictation(ctx context.Context) error {
 		dictationToolbar := nodewith.Name("Dictation toolbar").Role(role.Toolbar)
 		// Sometimes the "Dictation toolbar" will be displayed directly, so we don't need to click the "Dictation" button again.
 		if err := app.ui.WaitUntilExists(dictationToolbar)(ctx); err != nil {
-			if err := turnOnAction(ctx); err != nil {
-				return err
+			if strings.Contains(err.Error(), nodewith.ErrNotFound) {
+				if err := turnOnAction(ctx); err != nil {
+					return err
+				}
+				return nil
 			}
+			return err
 		}
 
 		return nil
