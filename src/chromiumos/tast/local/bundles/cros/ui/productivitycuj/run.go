@@ -70,6 +70,12 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
 
+	// Shorten the context to clean up the files created in the test case.
+	cleanUpResourceCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+	defer app.Cleanup(cleanUpResourceCtx)
+
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return err != nil }, cr, "ui_dump")
 
 	productivityTimeout := 90 * time.Second
@@ -120,9 +126,6 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 			if err := voiceToTextTesting(ctx, app, tconn, expectedText, testFileLocation); err != nil {
 				return errors.Wrap(err, "failed to test voice to text")
 			}
-		}
-		if err := app.End(ctx); err != nil {
-			return err
 		}
 
 		// Wait for productivityTimeout expires in goroutine and get GPU result.
