@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4958f35_9b26562b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-09-30T19:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcab4f3d_0d67e055",
+      "revId": "0ca1605b5d3338fa2aa54da0f3c3637b224a0701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1117aec9_a785b8f3",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-09-30T00:26:53Z",
       "side": 1,
       "message": "same",
+      "revId": "0ca1605b5d3338fa2aa54da0f3c3637b224a0701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "341af8db_e017dbab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-09-30T19:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1117aec9_a785b8f3",
       "revId": "0ca1605b5d3338fa2aa54da0f3c3637b224a0701",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
