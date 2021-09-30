@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "123c9b8c_97d6cecf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T00:41:08Z",
+      "side": 1,
+      "message": "FYI this is the last CL of a chain of CLs implementing lacros.UpdateRootfsToStateful. See also other pending changes below:\nhttps://crrev.com/c/3169575\nhttps://crrev.com/c/3176400",
+      "revId": "0f3666987fae4008d656af9641db59209b506d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
