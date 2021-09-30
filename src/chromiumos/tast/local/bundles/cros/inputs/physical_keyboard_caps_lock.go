@@ -24,7 +24,7 @@ func init() {
 		Func:         PhysicalKeyboardCapsLock,
 		Desc:         "Checks that user can lock Caps on physical keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      2 * time.Minute,
 		Params: []testing.Param{{
@@ -33,6 +33,7 @@ func init() {
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
 			Name:              "informational",
+			ExtraAttr:         []string{"informational"},
 			Pre:               pre.NonVKClamshellReset,
 			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 		}},
