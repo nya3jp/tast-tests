@@ -117,6 +117,12 @@ func GBBAddFlag(s *pb.GBBFlagsState, flags ...pb.GBBFlag) {
 	*s = canonicalGBBFlagsState(*s)
 }
 
+// GBBClearFlag modifies `s` to add all flags as clear in `flags`.
+func GBBClearFlag(s *pb.GBBFlagsState, flags ...pb.GBBFlag) {
+	s.Clear = append(s.Clear, flags...)
+	*s = canonicalGBBFlagsState(*s)
+}
+
 // CopyGBBFlags returns a new GBBFlagsState that is a copy of `s`.
 func CopyGBBFlags(s pb.GBBFlagsState) *pb.GBBFlagsState {
 	// Depends on the behavior of canonicalGBBFlagsState to always return a copy with new Set & Clear arrays.
