@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8be87a4a_a6ae186f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T18:30:15Z",
+      "side": 1,
+      "message": "will consider splitting for easy reading!",
+      "parentUuid": "92345e44_df0022f8",
+      "revId": "e1c54a1e0f57094e59c52208a64af3affecaf44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2fd6d574_6eee35d5",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
         "patchSetId": 3
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e2d4afb_77845ba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T18:30:15Z",
+      "side": 1,
+      "message": "Maybe a newbie golang mistake😊 Is there any style guide for this sort of formatting that I can refer to?",
+      "parentUuid": "2fd6d574_6eee35d5",
+      "revId": "e1c54a1e0f57094e59c52208a64af3affecaf44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a01cb5a1_210f1f6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
         "patchSetId": 3
@@ -65,6 +101,24 @@
       "writtenOn": "2021-09-30T18:19:59Z",
       "side": 1,
       "message": "If I read the code correctly, this function will not return more than one version. Do you think it will better to change the member to Versions to Version? It will make the client code simpler.",
+      "revId": "e1c54a1e0f57094e59c52208a64af3affecaf44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "382319b3_5f0706c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T18:30:15Z",
+      "side": 1,
+      "message": "You read it right! I understood your point. \nSince a TODO at line 173 that will return a list of versions is not yet implemented, this API would return only one version for now. I wanted this API to be used for all types of browsers - ash-chrome, lacros rootfs and lacros stateful - and not to be too granular for clients. The only client for this API is the lacros update tests. Is it okay to consider simplifying when it becomes problematic?",
+      "parentUuid": "a01cb5a1_210f1f6c",
       "revId": "e1c54a1e0f57094e59c52208a64af3affecaf44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
