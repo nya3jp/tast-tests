@@ -153,6 +153,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"update_rw_vpd", "root", "root", 0},
 		{"vpd_get_value", "root", "root", 0},
 		{"vpd_icc", "root", "root", 0},
+		{"send-uptime-metrics", "root", "root", 0},
 
 		// One-off processes that we see when this test runs together with other tests.
 		// src/overlays/overlay-kip/chromeos-base/modem-watchdog/files/chromeos-kip-modem-watchdog.sh
