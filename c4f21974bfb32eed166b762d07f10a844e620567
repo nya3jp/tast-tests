@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce571ec2_55856bd0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-30T02:18:24Z",
+      "side": 1,
+      "message": "If this is just a file move, can we simply say\nquicksettings: move from ui/ to uiauto/\n?\nThe commit message may look like:\nui/quicksettings does not depend on ui/, so we can move it to uiauto/.\n\nI think we don\u0027t necessarily have to mention tests, as they are just import path changes, and no essential updates happen in them.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "c4f21974bfb32eed166b762d07f10a844e620567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2243ec9_ec9a235d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-30T02:18:24Z",
+      "side": 1,
+      "message": "can we remove the original file?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 7
+      },
+      "revId": "c4f21974bfb32eed166b762d07f10a844e620567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39fa7506_35062999",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/quicksettings.go",
         "patchSetId": 2
