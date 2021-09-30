@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31950ae7_fff7cf67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-30T20:27:04Z",
+      "side": 1,
+      "message": "Actually, I could not find anywhere in https://g3doc.corp.google.com/go/g3doc/style/index.md?cl\u003dhead to mention this one. Just most of the code I saw were like that. I think the current one ok. Please ignore the original comment. Thanks.",
+      "parentUuid": "8e2d4afb_77845ba0",
+      "revId": "e1c54a1e0f57094e59c52208a64af3affecaf44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a01cb5a1_210f1f6c",
