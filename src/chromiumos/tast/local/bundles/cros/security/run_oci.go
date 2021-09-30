@@ -10,7 +10,6 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"strings"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/sysutil"
@@ -108,11 +107,6 @@ func RunOCI(ctx context.Context, s *testing.State) {
 		stdout, stderr, err := cmd.SeparatedOutput()
 
 		failed := false
-
-		// TODO(b/194923131): Hack to disable failures which involve librt.so.1
-		if strings.Contains(string(stderr), "librt.so.1") {
-			return
-		}
 
 		if err != nil && !tc.expFail {
 			failed = true
