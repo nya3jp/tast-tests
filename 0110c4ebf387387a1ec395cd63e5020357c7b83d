@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "538fa275_558e67df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_auto_hide_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-09-30T19:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16929caf_1104e04f",
+      "range": {
+        "startLine": 20,
+        "startChar": 60,
+        "endLine": 20,
+        "endChar": 73
+      },
+      "revId": "0110c4ebf387387a1ec395cd63e5020357c7b83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6019cc1f_1f1d56d4",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-29T21:49:16Z",
       "side": 1,
       "message": "this comment seemms to be in the wrong line (?)",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 59
+      },
+      "revId": "0110c4ebf387387a1ec395cd63e5020357c7b83d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdb7a67a_41295155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/game_auto_hide_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-09-30T19:16:01Z",
+      "side": 1,
+      "message": "Moved to where we check shelf behavior",
+      "parentUuid": "6019cc1f_1f1d56d4",
       "range": {
         "startLine": 71,
         "startChar": 2,

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf43af4c_3c82cc3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/immersive_auto_hidden_shelf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-09-30T19:16:01Z",
+      "side": 1,
+      "message": "gofmt didn\u0027t catch this?",
+      "revId": "8455b8c3d7c2da92f9efff26e913eacfb414c301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
