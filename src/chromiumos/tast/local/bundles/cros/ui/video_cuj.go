@@ -34,8 +34,9 @@ import (
 )
 
 type videoCUJTestParam struct {
-	ct     lacros.ChromeType
-	tablet bool
+	ct      lacros.ChromeType
+	tablet  bool
+	tracing bool
 }
 
 func init() {
@@ -58,6 +59,13 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 			Val: videoCUJTestParam{
 				ct: lacros.ChromeTypeChromeOS,
+			},
+		}, {
+			Name:    "clamshell_trace",
+			Fixture: "loggedInToCUJUser",
+			Val: videoCUJTestParam{
+				ct:      lacros.ChromeTypeChromeOS,
+				tracing: true,
 			},
 		}, {
 			Name:    "tablet",
@@ -186,6 +194,9 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
+	}
+	if testParam.tracing {
+		recorder.EnableTracing(s.OutDir())
 	}
 	defer recorder.Close(closeCtx)
 

@@ -26,13 +26,25 @@ func init() {
 		Vars:         []string{"mute"},
 		Params: []testing.Param{{
 			ExtraData: []string{tabswitchcuj.WPRArchiveName},
-			Val:       lacros.ChromeTypeChromeOS,
-			Pre:       wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
+			Val: tabswitchcuj.TabSwitchParam{
+				ChromeType: lacros.ChromeTypeChromeOS,
+			},
+			Pre: wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
 		}, {
-			Name:              "lacros",
-			Val:               lacros.ChromeTypeLacros,
+			Name: "lacros",
+			Val: tabswitchcuj.TabSwitchParam{
+				ChromeType: lacros.ChromeTypeLacros,
+			},
 			Fixture:           "tabSwitchCUJWPRLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			Name:      "trace",
+			ExtraData: []string{tabswitchcuj.WPRArchiveName},
+			Val: tabswitchcuj.TabSwitchParam{
+				ChromeType: lacros.ChromeTypeChromeOS,
+				Tracing:    true,
+			},
+			Pre: wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
 		}},
 	})
 }
