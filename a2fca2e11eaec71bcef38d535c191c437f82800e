@@ -24,6 +24,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b468d261_d67da5e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2021-09-30T22:07:57Z",
+      "side": 1,
+      "message": "nit: should be \"tast run DUT xxx\"?",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "a2fca2e11eaec71bcef38d535c191c437f82800e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e47f84f4_45d449e6",
