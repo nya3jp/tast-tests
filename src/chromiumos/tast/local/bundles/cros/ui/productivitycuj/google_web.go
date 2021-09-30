@@ -29,6 +29,13 @@ const (
 	slidesURL = "http://docs.google.com/slides"
 	// sheetsURL indicates the homepage URL of Google Sheets.
 	sheetsURL = "http://docs.google.com/spreadsheets"
+
+	// docsTab indicates the tab name of the "Google Docs".
+	docsTab = "Google Docs"
+	// slidesTab indicates the tab name of the "Google Slides".
+	slidesTab = "Google Slides"
+	// sheetsTab indicates the tab name of the "Google Sheets".
+	sheetsTab = "Google Sheets"
 )
 
 // GoogleDocs implements the ProductivityApp interface.
@@ -138,16 +145,68 @@ func (app *GoogleDocs) OpenSpreadsheet(ctx context.Context, filename string) err
 
 // MoveDataFromDocToSheet moves data from document to spreadsheet.
 func (app *GoogleDocs) MoveDataFromDocToSheet(ctx context.Context) error {
-	return nil
+	testing.ContextLog(ctx, "Moving data from document to spreadsheet")
+
+	// tabIndexMap define the index of the corresponding service tab.
+	tabIndexMap := map[string]int{
+		docsTab:   0,
+		sheetsTab: 2,
+	}
+
+	content := nodewith.Name("Document content").Role(role.TextField).Editable()
+
+	if err := uiauto.Combine("cut selected text from the document",
+		app.uiHdl.SwitchToChromeTabByIndex(tabIndexMap[docsTab]),
+		app.uiHdl.Click(content),
+		app.kb.AccelAction("Ctrl+A"),
+		app.kb.AccelAction("Ctrl+X"),
+	)(ctx); err != nil {
+		return err
+	}
+
+	if err := uiauto.Combine("switch to Google Sheets and jump to the target cell",
+		app.uiHdl.SwitchToChromeTabByIndex(tabIndexMap[sheetsTab]),
+		app.maybeCloseEditHistoryDialog,
+		app.selectCell("H3"),
+	)(ctx); err != nil {
+		return err
+	}
+
+	return uiauto.Combine("paste content into the cell",
+		app.kb.AccelAction("Ctrl+V"),
+		app.kb.AccelAction("Enter"),
+	)(ctx)
 }
 
 // MoveDataFromSheetToDoc moves data from spreadsheet to document.
 func (app *GoogleDocs) MoveDataFromSheetToDoc(ctx context.Context) error {
-	return nil
+	testing.ContextLog(ctx, "Moving data from document to spreadsheet")
+
+	if err := uiauto.Combine("cut selected text from cell",
+		app.selectCell("H1"),
+		app.kb.AccelAction("Ctrl+X"),
+	)(ctx); err != nil {
+		return err
+	}
+
+	content := nodewith.Name("Document content").Role(role.TextField).Editable()
+	return uiauto.Combine("switch to Google Docs and paste the content",
+		app.uiHdl.SwitchToChromeTabByIndex(0),
+		app.ui.WaitUntilExists(content),
+		app.kb.AccelAction("Ctrl+V"),
+	)(ctx)
 }
 
 // ScrollPage scrolls the document and spreadsheet.
 func (app *GoogleDocs) ScrollPage(ctx context.Context) error {
+	testing.ContextLog(ctx, "Scrolling the document and spreadsheet")
+
+	for _, tabIdx := range []int{0, 2} {
+		if err := scrollTabPage(ctx, app.uiHdl, tabIdx); err != nil {
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -297,6 +356,13 @@ func (app *GoogleDocs) createSampleSheet(ctx context.Context) error {
 		app.kb.AccelAction("Enter"),
 		app.ui.Sleep(2*time.Second), // Wait Google Sheets to save the changes.
 	)(ctx)
+}
+
+// maybeCloseEditHistoryDialog closes the "See edit history of a cell" dialog if it exists.
+func (app *GoogleDocs) maybeCloseEditHistoryDialog(ctx context.Context) error {
+	dialog := nodewith.Name("See edit history of a cell").Role(role.Dialog)
+	button := nodewith.Name("GOT IT").Role(role.Button).Ancestor(dialog)
+	return app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dialog), app.uiHdl.Click(button))(ctx)
 }
 
 // NewGoogleDocs creates GoogleDocs instance which implements ProductivityApp interface.
