@@ -84,14 +84,17 @@ func SoundCardInit(ctx context.Context, s *testing.State) {
 
 	// Run test cases.
 	testFunc := s.Param().(soundcardinit.TestParameters).Func
-	testFunc(ctx, s, soundCardID)
+	s.Logf("Running test %q", s.TestName())
+	if err := testFunc(ctx, soundCardID); err != nil {
+		s.Fatalf("%s test failed: %v", s.TestName(), err)
+	}
 }
 
 // exitSuccess verifies sound_card_init completes running without any error.
-func exitSuccess(ctx context.Context, s *testing.State, soundCardID string) {
+func exitSuccess(ctx context.Context, soundCardID string) error {
 
 	if err := soundcardinit.CreateCalibFiles(ctx, soundCardID, ampCount); err != nil {
-		s.Fatal("Failed to create calib files: ", err)
+		return errors.Wrap(err, "failed to create calib files")
 	}
 
 	// Run sound_card_init.
@@ -105,26 +108,28 @@ func exitSuccess(ctx context.Context, s *testing.State, soundCardID string) {
 		"start", "sound_card_init",
 		"SOUND_CARD_ID="+soundCardID,
 	).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to run sound_card_init: ", err)
+		return errors.Wrap(err, "failed to run sound_card_init")
 	}
 
 	// Poll for sound_card_init run time file being updated, which means sound_card_init completes running.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		info, err := os.Stat(runTimeFile)
 		if err != nil {
-			return errors.Wrapf(err, "failed to stat %s:", runTimeFile)
+			return errors.Wrapf(err, "failed to stat %s", runTimeFile)
 		}
 		if info.ModTime().After(startTime) {
 			return nil
 		}
 		return errors.New(runTimeFile + " is not updated")
 	}, &testing.PollOptions{Timeout: soundCardInitTimeout}); err != nil {
-		s.Fatal("Failed to wait for sound_card_init completion: ", err)
+		return errors.Wrap(err, "failed to wait for sound_card_init completion")
 	}
+
+	return nil
 }
 
 // bootTimeCalibration verifies sound_card_init boot time calibration works correctly.
-func bootTimeCalibration(ctx context.Context, s *testing.State, soundCardID string) {
+func bootTimeCalibration(ctx context.Context, soundCardID string) error {
 	// Run sound_card_init.
 	runCtx, cancel := context.WithTimeout(ctx, initctlTimeout)
 	defer cancel()
@@ -133,25 +138,27 @@ func bootTimeCalibration(ctx context.Context, s *testing.State, soundCardID stri
 		"start", "sound_card_init",
 		"SOUND_CARD_ID="+soundCardID,
 	).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to run sound_card_init: ", err)
+		return errors.Wrap(err, "failed to run sound_card_init")
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return soundcardinit.VerifyUseVPD(ctx, soundCardID, ampCount)
 	}, &testing.PollOptions{Timeout: soundCardInitTimeout}); err != nil {
-		s.Fatal("Failed to verify calib files using VPD value: ", err)
+		return errors.Wrap(err, "failed to verify calib files using VPD value")
 	}
+
+	return nil
 }
 
 // recentReboot Verifies sound_card_init skips boot time calibration after the recent reboot.
-func recentReboot(ctx context.Context, s *testing.State, soundCardID string) {
+func recentReboot(ctx context.Context, soundCardID string) error {
 	// Create previous sound_car_init run time as yesterday.
 	if err := soundcardinit.CreateRunTimeFile(ctx, soundCardID, time.Now().AddDate(0, 0, -1).Unix()); err != nil {
-		s.Fatal("Failed to create RunTimeFile: ", err)
+		return errors.Wrap(err, "failed to create RunTimeFile")
 	}
 	// Create previous CRAS stop time as now to mock the recent reboot.
 	if err := soundcardinit.CreateStopTimeFile(ctx, time.Now().Unix()); err != nil {
-		s.Fatalf("Failed to create %s: %v", soundcardinit.StopTimeFile, err)
+		return errors.Wrapf(err, "failed to create %s", soundcardinit.StopTimeFile)
 	}
 
 	// Run sound_card_init.
@@ -162,13 +169,15 @@ func recentReboot(ctx context.Context, s *testing.State, soundCardID string) {
 		"start", "sound_card_init",
 		"SOUND_CARD_ID="+soundCardID,
 	).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to run sound_card_init: ", err)
+		return errors.Wrap(err, "failed to run sound_card_init")
 	}
 	//Wait for sound_card_init completion.
 	testing.Sleep(ctx, soundCardInitTimeout)
 
 	// Verify calib files still do not exist after sound_card_init completion.
 	if err := soundcardinit.VerifyCalibNotExist(ctx, soundCardID, ampCount); err != nil {
-		s.Fatal("Boot time calibration should be skipped after the recent reboot: ", err)
+		return errors.Wrap(err, "boot time calibration should be skipped after the recent reboot")
 	}
+
+	return nil
 }
