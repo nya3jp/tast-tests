@@ -18,6 +18,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// officeURL the link URL of "Microsoft Office Home".
+const officeURL = "https://www.office.com/"
+
 // MicrosoftWebOffice implements the ProductivityApp interface.
 type MicrosoftWebOffice struct {
 	cr         *chrome.Chrome
@@ -28,6 +31,15 @@ type MicrosoftWebOffice struct {
 	tabletMode bool
 	username   string
 	password   string
+}
+
+// scenario records the scene that represents the page that needs to be reloaded.
+type scenario struct {
+	name string
+	// dialog indicates the specified scene displayed.
+	dialog *nodewith.Finder
+	// node indicates the node displayed on the specified dialog.
+	node *nodewith.Finder
 }
 
 // CreateDocument creates a new document from microsoft web app.
@@ -196,6 +208,119 @@ func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(passwordField),
 		fillPassword,
 	)(ctx)
+}
+
+// reloadPage reloads the website if it down.
+// There might be five situations and there is no guarantee that the page will be restored after one click.
+// 1. "This page isn’t working" means that the Microsoft website returns an HTTP status code of 500, sometimes with a "Reload" button.
+// 2. The heading "Something went wrong" pops up with a "Go to OneDrive" button.
+// 3. The image "Something went wrong" pops up with a "Go to my OneDrive" button.
+// 4. The heading "This item might not exist or is no longer available" pops up with a "Go to OneDrive" button.
+// 5. The link "Microsoft OneDrive" pops up.
+func (app *MicrosoftWebOffice) reloadPage(ctx context.Context) error {
+	testing.ContextLog(ctx, "Checking if the website needs to be reloaded")
+
+	reloadButton := nodewith.Name("Reload").Role(role.Button).ClassName("blue-button text-button")
+	goToOneDrive := nodewith.Name("Go to OneDrive").Role(role.Button).First()
+	goToMyOneDrive := nodewith.Name("Go to my OneDrive").Role(role.Button).First()
+	oneDriveLink := nodewith.Name("Microsoft OneDrive").Role(role.Link).First()
+
+	// scenarios defines the scene that represents the page that needs to be reloaded.
+	// The order of slices starts with the most frequent occurrence.
+	scenarios := []scenario{
+		{
+			name: "Reload",
+			node: reloadButton,
+		},
+		{
+			name: "Go to OneDrive",
+			node: goToOneDrive,
+		},
+		{
+			name: "Go to my OneDrive",
+			node: goToMyOneDrive,
+		},
+		{
+			name: "Microsoft OneDrive",
+			node: oneDriveLink,
+		},
+	}
+
+	for _, scene := range scenarios {
+		testing.ContextLogf(ctx, "Checking if the %q node exists", scene.name)
+
+		node := scene.node
+		if err := app.ui.WaitUntilExists(node)(ctx); err != nil {
+			continue
+		}
+
+		return app.ui.Retry(retryTimes, func(ctx context.Context) error {
+			if err := app.uiHdl.ClickUntil(node, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(node))(ctx); err != nil {
+				return err
+			}
+			// Sometimes it just disappears for a while and then reappears.
+			if err := app.ui.WaitUntilExists(node)(ctx); err != nil {
+				return nil
+			}
+			return errors.New("the website needs to be reloaded")
+		})(ctx)
+	}
+
+	return nil
+}
+
+// reload reloads the page if the display is different from what we expected.
+// If the tab navigates to the "My Files" page after reloading, then we need to re-operate the operation.
+// After clicking the "Go to OneDrive" or "Go to My OneDrive" button, it will create another new tab called "My files - OneDrive".
+// Therefore, it needs to be closed after re-operation. Otherwise, the number of current tabs will be affected and subsequent operations will fail.
+func (app *MicrosoftWebOffice) reload(finder *nodewith.Finder, action func(ctx context.Context) error) action.Action {
+	return func(ctx context.Context) error {
+		oneDriveWebArea := nodewith.Name("My files - OneDrive").Role(role.RootWebArea)
+		oneDriveTab := nodewith.Name("My files - OneDrive").Role(role.Tab).ClassName("Tab").First()
+		closeTab := nodewith.Name("Close").Role(role.Button).ClassName("TabCloseButton").Ancestor(oneDriveTab)
+		if err := app.ui.WaitUntilExists(finder)(ctx); err != nil {
+			return uiauto.Combine("reload and reoperate the action",
+				app.reloadPage,
+				app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(oneDriveWebArea), action),
+				app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeTab), app.uiHdl.Click(closeTab)),
+			)(ctx)
+		}
+		return nil
+	}
+}
+
+// openOneDrive navigates to OneDrive web page from Microsoft Office Home.
+func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, error) {
+	testing.ContextLog(ctx, "Navigating to OneDrive")
+
+	conn, err := app.cr.NewConn(ctx, officeURL)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to open URL: %s", officeURL)
+	}
+
+	msWebArea := nodewith.Name("Microsoft Office Home").Role(role.RootWebArea)
+	appLauncher := nodewith.Name("App launcher").Ancestor(msWebArea)
+	appLauncherOpened := nodewith.Name("App launcher opened").Ancestor(msWebArea).First()
+	oneDriveLink := nodewith.Name("OneDrive").Role(role.Link).Ancestor(appLauncherOpened)
+	if err := uiauto.Combine("navigate to OneDrive",
+		app.checkSignIn,
+		app.uiHdl.ClickUntil(appLauncher, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(appLauncherOpened)),
+		app.uiHdl.Click(oneDriveLink),
+	)(ctx); err != nil {
+		return nil, err
+	}
+
+	myFiles := nodewith.Name("My files").Role(role.Heading).First()
+	if err := app.reload(myFiles, func(ctx context.Context) error { return nil })(ctx); err != nil {
+		return nil, err
+	}
+
+	gotItButton := nodewith.Name("Got it").Role(role.Button)
+	if err := app.ui.IfSuccessThen(app.ui.WaitUntilExists(gotItButton), app.uiHdl.Click(gotItButton))(ctx); err != nil {
+		return nil, err
+	}
+
+	return conn, nil
 }
 
 // NewMicrosoftWebOffice creates MicrosoftWebOffice instance which implements ProductivityApp interface.
