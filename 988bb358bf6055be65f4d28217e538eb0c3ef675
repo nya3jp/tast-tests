@@ -39,6 +39,30 @@
       },
       "revId": "988bb358bf6055be65f4d28217e538eb0c3ef675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a3f854_dd26a34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-09-30T20:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b6735a4_61b0697d",
+      "range": {
+        "startLine": 30,
+        "startChar": 41,
+        "endLine": 30,
+        "endChar": 43
+      },
+      "revId": "988bb358bf6055be65f4d28217e538eb0c3ef675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
