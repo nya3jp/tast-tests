@@ -29,7 +29,7 @@ func init() {
 		Func:         VirtualKeyboardAutoShift,
 		Desc:         "Checks that auto shift feature of virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		// Auto-shift is primarily designed for tablet mode.
 		Pre:          pre.VKEnabledTabletReset,
