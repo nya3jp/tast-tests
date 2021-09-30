@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/security/filesetup"
 	"chromiumos/tast/local/moblab"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -55,8 +56,14 @@ func Mtab(ctx context.Context, s *testing.State) {
 		if arc.Supported() {
 			// TODO(crbug.com/1033637): support ARCVM.
 			if t, ok := arc.Type(); ok && t == arc.Container {
+				reader, err := syslog.NewReader(ctx)
+				if err != nil {
+					s.Fatal("Failed to open syslog reader: ", err)
+				}
+				defer reader.Close()
+
 				s.Log("Waiting for Android mounts")
-				if err := arc.WaitAndroidInit(ctx); err != nil {
+				if err := arc.WaitAndroidInit(ctx, reader); err != nil {
 					s.Error("Failed waiting for Android mounts: ", err) // non-fatal so we can check other mounts
 				}
 			}
