@@ -16,6 +16,206 @@
       "message": "+deanliao for OWNERS review. Dean, this is my first Tast/Go CL - sorry in advance if there are idiomatic mistakes here!",
       "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a10cbc_5242fd0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-30T02:42:28Z",
+      "side": 1,
+      "message": "Sorry for late reply. I was OOO yesterday.",
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "831e7887_ecc3c2a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stork_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-30T02:42:28Z",
+      "side": 1,
+      "message": "the cancel function shall be called when exiting the function.\n\nctx, cancel :\u003d ctxutil.Shorten(...)\ndefer cancel()\n\nRefer to: https://pkg.go.dev/context\nhttps://www.sohamkamani.com/golang/context-cancellation-and-values/",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "310ab4fc_eed45b93",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-30T02:42:28Z",
+      "side": 1,
+      "message": "Bad name as this could be a common variable name. Note that top level const are package level visible in Golang, which is quite different from popular programming languages.\n\nHow about \"startGtsSessionURL\"?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 4
+      },
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26ad66da_8d87fd13",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-30T02:42:28Z",
+      "side": 1,
+      "message": "Does the test hit the services? Is it necessary to do so? If so, the test has an external dependency and when regression happens, it might be the dependency\u0027s fault.",
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aca88cd_4da64d6e",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-30T02:42:28Z",
+      "side": 1,
+      "message": "For marshaling JSON data, you may refer this:\nhttps://www.sohamkamani.com/golang/json/#marshaling-json-data\n\nIf you can use struct to represent your JSON data, use it.\n\nAlso, if you use struct to represent requestData and profileListData, you may omit the definition of keys and default values.",
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6987c41_d7ede061",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-30T02:42:28Z",
+      "side": 1,
+      "message": "\"invalid\" or \"not a JSON object\"",
+      "range": {
+        "startLine": 112,
+        "startChar": 80,
+        "endLine": 112,
+        "endChar": 94
+      },
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23027869_e996aaf6",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-30T02:42:28Z",
+      "side": 1,
+      "message": "If you don\u0027t want the output, you can just command.Run()\nRefer to http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/testexec/testexec.go",
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "202d8f44_7f7163f0",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-30T02:42:28Z",
+      "side": 1,
+      "message": "\"invalid\" or \"not a JSON object\"",
+      "range": {
+        "startLine": 164,
+        "startChar": 70,
+        "endLine": 164,
+        "endChar": 84
+      },
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b448eb1b_a1edce28",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-30T02:42:28Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 169,
+        "startChar": 66,
+        "endLine": 169,
+        "endChar": 67
+      },
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be4e22c2_4a24035d",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-09-30T02:42:28Z",
+      "side": 1,
+      "message": "We shall move out the sessionIDKey extraction logic and the createEndSessionFunc can be inlined as:\n\ncleanupProfile :\u003d func(ctx context.Context) error {\n  ...\n}",
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
