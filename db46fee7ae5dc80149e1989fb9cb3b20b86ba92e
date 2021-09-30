@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31130838_b8c74433",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-09-30T18:48:52Z",
+      "side": 1,
+      "message": "lgtm from me. Let\u0027s have Xiyuan take a look as well since I\u0027m not familiar with this.",
+      "revId": "db46fee7ae5dc80149e1989fb9cb3b20b86ba92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e68e716_7ee036ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-09-30T18:48:52Z",
+      "side": 1,
+      "message": "Is this fixing a bug?",
+      "revId": "db46fee7ae5dc80149e1989fb9cb3b20b86ba92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69766a51_0f95c741",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/task_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-09-30T18:48:52Z",
+      "side": 1,
+      "message": "let\u0027s change this while we\u0027re here? Maybe you and xiyuan?",
+      "range": {
+        "startLine": 43,
+        "startChar": 26,
+        "endLine": 43,
+        "endChar": 72
+      },
+      "revId": "db46fee7ae5dc80149e1989fb9cb3b20b86ba92e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
