@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -106,6 +107,12 @@ func runBoot(ctx context.Context, s *testing.State) {
 		defer arc.RestoreArcvmDevConf(ctx)
 	}
 
+	reader, err := syslog.NewReader(ctx)
+	if err != nil {
+		s.Fatal("Failed to open syslog reader: ", err)
+	}
+	defer reader.Close()
+
 	cr, err := chrome.New(ctx, chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
@@ -116,7 +123,7 @@ func runBoot(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	a, err := arc.New(ctx, s.OutDir())
+	a, err := arc.NewWithSyslogReader(ctx, s.OutDir(), reader)
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}

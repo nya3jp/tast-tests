@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -103,6 +104,12 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 
 	p.fdms = fdms
 
+	reader, err := syslog.NewReader(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open syslog reader")
+	}
+	defer reader.Close()
+
 	opts := []chrome.Option{
 		chrome.FakeLogin(chrome.Creds{User: Username, Pass: Password}),
 		chrome.DMSPolicy(fdms.URL),
@@ -124,7 +131,7 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 			// to D-Bus methods. Cloud policy initialisation relies on being
 			// able to contact session_manager, otherwise initialisation
 			// will time out.
-			err = arc.WaitAndroidInit(ctx)
+			err = arc.WaitAndroidInit(ctx, reader)
 			if err != nil {
 				s.Fatal("Failed waiting for Android init: ", err)
 			}

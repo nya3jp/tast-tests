@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -42,13 +43,20 @@ func MiniContainer(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the Android container to stop: ", err)
 	}
 
+	reader, err := syslog.NewReader(ctx)
+	if err != nil {
+		s.Fatal("Failed to open syslog reader: ", err)
+	}
+	defer reader.Close()
+
 	initCh := make(chan error, 1)
 	sleepCh := make(chan error, 1)
 
 	// Start a goroutine that sends messages over channels as the Android mini container is brought up.
 	go func() {
+
 		// Wait for the Android mini container to start.
-		initCh <- arc.WaitAndroidInit(ctx)
+		initCh <- arc.WaitAndroidInit(ctx, reader)
 
 		// Start a process in the Android mini container. This process should be running
 		// until we close *ARC.
