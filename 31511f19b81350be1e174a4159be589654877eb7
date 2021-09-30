@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43636c97_e7f5834b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-30T17:14:44Z",
+      "side": 1,
+      "message": "I have one question and two nit comments. Please take a look. Thanks.",
+      "revId": "31511f19b81350be1e174a4159be589654877eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5fa1489_ffc2ec20",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-30T17:14:44Z",
+      "side": 1,
+      "message": "What happen if there is no newer version of stateful lacros? Will the test failed? Also, I don\u0027t see any code to revert to the current version. What will happen if this test is run multiple times on the same DUT? Will each run get the consistent result?",
+      "revId": "31511f19b81350be1e174a4159be589654877eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe7dc4ff_4965439b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-30T17:14:44Z",
+      "side": 1,
+      "message": "nit: I think the service should guarantee non-empty if there is no error.",
+      "revId": "31511f19b81350be1e174a4159be589654877eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c976d9a_b42b9208",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-09-30T17:14:44Z",
+      "side": 1,
+      "message": "nit: Please put a comment on why the rest of versions can be ignored.",
+      "revId": "31511f19b81350be1e174a4159be589654877eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
