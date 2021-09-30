@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "661ebbe6_f5732fe7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-30T03:59:41Z",
+      "side": 1,
+      "message": "LGTM if the unreleated change in src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go is reverted.",
+      "revId": "8fc849aa50c00dff5c8079e866e29726843d7c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58ef6383_5e41bf37",
