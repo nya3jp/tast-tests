@@ -33,13 +33,14 @@ import (
 type taskSWitchCUJTestParam struct {
 	tablet    bool
 	useLacros bool
+	tracing   bool
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TaskSwitchCUJ,
 		Desc:         "Measures the performance of tab-switching CUJ",
-		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
+		Contacts:     []string{"yichenz@chromium.org", "xiyuan@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      8 * time.Minute,
@@ -50,6 +51,13 @@ func init() {
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "loggedInToCUJUser",
 				Val:               taskSWitchCUJTestParam{},
+			},
+			{
+				Name:              "trace",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+				ExtraSoftwareDeps: []string{"android_p"},
+				Fixture:           "loggedInToCUJUser",
+				Val:               taskSWitchCUJTestParam{tracing: true},
 			},
 			{
 				Name:              "vm",
@@ -418,6 +426,9 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
+	}
+	if testParam.tracing {
+		recorder.EnableTracing(s.OutDir())
 	}
 	defer recorder.Close(closeCtx)
 
