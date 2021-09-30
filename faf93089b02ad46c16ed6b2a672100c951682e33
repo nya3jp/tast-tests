@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4902dd2_5b1419e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/clear_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-09-30T07:30:26Z",
+      "side": 1,
+      "message": "These can be merged to LeftClick() with timeout.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 52
+      },
+      "revId": "faf93089b02ad46c16ed6b2a672100c951682e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
