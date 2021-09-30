@@ -503,8 +503,8 @@ type touchCoordPoint struct {
 }
 
 // getPointsBetweenCoords returns all the coordinates between two points, spread out
-// across the provided number of steps.
-func getPointsBetweenCoords(x0, y0, x1, y1 TouchCoord, steps int) []touchCoordPoint {
+// across the provided number of steps. Points are capped to the bounds of the touchscreen.
+func getPointsBetweenCoords(ts *TouchscreenEventWriter, x0, y0, x1, y1 TouchCoord, steps int) []touchCoordPoint {
 	// A minimum of two steps are needed. One for the start point and another one for the end point.
 	stepsToUse := steps
 	if stepsToUse < 2 {
@@ -516,12 +516,26 @@ func getPointsBetweenCoords(x0, y0, x1, y1 TouchCoord, steps int) []touchCoordPo
 
 	var result []touchCoordPoint
 	for i := 0; i < stepsToUse; i++ {
-		curPoint := touchCoordPoint{
-			X: x0 + TouchCoord(math.Round(deltaX*float64(i))),
-			Y: y0 + TouchCoord(math.Round(deltaY*float64(i))),
+		// Determine where the new point should be and keep it within the
+		// bounds of the touchscreen.
+		newX := x0 + TouchCoord(math.Round(deltaX*float64(i)))
+		if newX < 0 {
+			newX = 0
+		} else if newX >= ts.Width() {
+			newX = ts.Width() - 1
 		}
 
-		result = append(result, curPoint)
+		newY := y0 + TouchCoord(math.Round(deltaY*float64(i)))
+		if newY < 0 {
+			newY = 0
+		} else if newY >= ts.Height() {
+			newY = ts.Height() - 1
+		}
+
+		result = append(result, touchCoordPoint{
+			X: newX,
+			Y: newY,
+		})
 	}
 
 	return result
@@ -572,8 +586,8 @@ func (tw *TouchEventWriter) ZoomIn(ctx context.Context, centerX, centerY, d Touc
 	}
 
 	steps := int(t/touchFrequency) + 1
-	leftFingerPoints := getPointsBetweenCoords(centerX, centerY, centerX-d, centerY-d, steps)
-	rightFingerPoints := getPointsBetweenCoords(centerX, centerY, centerX+d, centerY+d, steps)
+	leftFingerPoints := getPointsBetweenCoords(tw.tsw, centerX, centerY, centerX-d, centerY-d, steps)
+	rightFingerPoints := getPointsBetweenCoords(tw.tsw, centerX, centerY, centerX+d, centerY+d, steps)
 	return tw.moveMultipleTouches(ctx, leftFingerPoints, rightFingerPoints)
 }
 
@@ -585,8 +599,8 @@ func (tw *TouchEventWriter) ZoomOut(ctx context.Context, centerX, centerY, d Tou
 	}
 
 	steps := int(t/touchFrequency) + 1
-	leftFingerPoints := getPointsBetweenCoords(centerX-d, centerY-d, centerX, centerY, steps)
-	rightFingerPoints := getPointsBetweenCoords(centerX+d, centerY+d, centerX, centerY, steps)
+	leftFingerPoints := getPointsBetweenCoords(tw.tsw, centerX-d, centerY-d, centerX, centerY, steps)
+	rightFingerPoints := getPointsBetweenCoords(tw.tsw, centerX+d, centerY+d, centerX, centerY, steps)
 	return tw.moveMultipleTouches(ctx, leftFingerPoints, rightFingerPoints)
 }
 

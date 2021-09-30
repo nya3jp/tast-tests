@@ -9,6 +9,7 @@ package standardizedtestutil
 import (
 	"context"
 	"fmt"
+	"math"
 	"path/filepath"
 	"time"
 
@@ -303,8 +304,8 @@ func TouchscreenScroll(ctx context.Context, touchScreen *input.TouchscreenEventW
 // when zooming in, or .5 when zooming out).
 func TouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters TestFuncParams, selector *ui.Object, zoomType ZoomType) error {
 	const (
-		zoomDistancePerFinger = 900
-		zoomDuration          = 250 * time.Millisecond
+		zoomDistanceAsProportionOfTouchscreen = .15
+		zoomDuration                          = 250 * time.Millisecond
 	)
 
 	// Zoom is implemented as a two finger pinch so it requires two touches.
@@ -320,16 +321,20 @@ func TouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWri
 		return errors.Wrap(err, "unable to get start coordinates")
 	}
 
+	// Start from the element and move fingers an amount relative to the size of the touchscreen
+	// in order to trigger the pinch zoom. Attempt to keep it within the bounds of the smallest dimension.
+	zoomDistancePerFinger := math.Min(float64(touchScreen.Width()), float64(touchScreen.Height())) * zoomDistanceAsProportionOfTouchscreen
+
 	// Perform the appropriate zoom.
 	switch zoomType {
 	case ZoomIn:
-		if err := mtw.ZoomIn(ctx, *x, *y, zoomDistancePerFinger, zoomDuration); err != nil {
+		if err := mtw.ZoomIn(ctx, *x, *y, input.TouchCoord(zoomDistancePerFinger), zoomDuration); err != nil {
 			return errors.Wrap(err, "unable to zoom in")
 		}
 
 		break
 	case ZoomOut:
-		if err := mtw.ZoomOut(ctx, *x, *y, zoomDistancePerFinger, zoomDuration); err != nil {
+		if err := mtw.ZoomOut(ctx, *x, *y, input.TouchCoord(zoomDistancePerFinger), zoomDuration); err != nil {
 			return errors.Wrap(err, "unable to zoom in")
 		}
 
