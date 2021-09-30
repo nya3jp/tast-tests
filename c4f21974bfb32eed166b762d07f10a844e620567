@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39fa7506_35062999",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-09-30T02:10:13Z",
+      "side": 1,
+      "message": "Can we remove original file?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 7
+      },
+      "revId": "c4f21974bfb32eed166b762d07f10a844e620567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
