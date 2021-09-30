@@ -28,6 +28,13 @@ const (
 	myFiles = "My files"
 	// recent indicates the "Recent" item label in the navigation bar.
 	recent = "Recent"
+
+	// word indicates the label of the new document.
+	word = "Word document"
+	// powerpoint indicates the label of the new presentation.
+	powerpoint = "PowerPoint presentation"
+	// excel indicates the label of the new spreadsheet.
+	excel = "Excel workbook"
 )
 
 // MicrosoftWebOffice implements the ProductivityApp interface.
@@ -44,15 +51,48 @@ type MicrosoftWebOffice struct {
 
 // CreateDocument creates a new document from microsoft web app.
 func (app *MicrosoftWebOffice) CreateDocument(ctx context.Context) error {
-	return nil
+	conn, err := app.openOneDrive(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open OneDrive")
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
+	wordWebArea := nodewith.Name("Word").Role(role.RootWebArea)
+	paragraph := nodewith.Role(role.Paragraph).Ancestor(wordWebArea).Editable()
+	return uiauto.Combine("open a new document",
+		app.openBlankDocument(word),
+		app.reloadWordDocument,
+		// Make sure paragraph exists before typing. This is especially necessary on low-end DUTs.
+		app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(paragraph),
+		app.kb.TypeAction(docText),
+	)(ctx)
 }
 
 // CreateSlides creates a new presentation from microsoft web app.
 func (app *MicrosoftWebOffice) CreateSlides(ctx context.Context) error {
-	return nil
+	conn, err := app.openOneDrive(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open OneDrive")
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
+	title := nodewith.Name("Click to add title").First()
+	subtitle := nodewith.Name("Click to add subtitle").Role(role.StaticText)
+	return uiauto.Combine("create a new presentation",
+		app.openBlankDocument(powerpoint),
+		// Make sure title exists before typing. This is especially necessary on low-end DUTs.
+		app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(title),
+		app.uiHdl.Click(title),
+		app.kb.TypeAction(titleText),
+		app.uiHdl.Click(subtitle),
+		app.kb.TypeAction(subtitleText),
+		app.kb.AccelAction("Enter"),
+	)(ctx)
 }
 
-// CreateSpreadsheet creates a new spreadsheet from microsoft web app and returns the sheet name.
+// CreateSpreadsheet creates a new spreadsheet from microsoft web app and returns sheet name.
 func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context) (string, error) {
 	return "", nil
 }
@@ -336,6 +376,70 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 	}
 
 	return conn, nil
+}
+
+// openNewFile open a new document for the specified service.
+func (app *MicrosoftWebOffice) openNewFile(service string) action.Action {
+	return func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Opening a new ", service)
+
+		oneDriveWebArea := nodewith.Name("My files - OneDrive").Role(role.RootWebArea)
+		newItem := nodewith.Name("New").Role(role.MenuItem).Ancestor(oneDriveWebArea)
+		newItemMenu := nodewith.Role(role.Menu).Ancestor(newItem)
+		serviceItem := nodewith.Name(service).Role(role.MenuItem).Ancestor(oneDriveWebArea)
+		return uiauto.Combine("create a new file",
+			app.uiHdl.ClickUntil(newItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(newItemMenu)),
+			app.uiHdl.ClickUntil(serviceItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(oneDriveWebArea)),
+		)(ctx)
+	}
+}
+
+// openBlankDocument opens a blank document with specified service.
+// When we try to open a blank document on the corresponding service page, it will jump to the Microsoft Office App to request permission.
+// Therefore, we try to open a blank document from OneDrive to avoid this situation.
+func (app *MicrosoftWebOffice) openBlankDocument(service string) action.Action {
+	return func(ctx context.Context) error {
+		if err := app.openNewFile(service)(ctx); err != nil {
+			return err
+		}
+
+		paragraph := nodewith.Role(role.Paragraph).Editable()
+		title := nodewith.Name("Click to add title").First()
+		excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
+		canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
+
+		// element defines the node to specify whether it navigates to the corresponding service page correctly.
+		element := map[string]*nodewith.Finder{
+			word:       paragraph,
+			powerpoint: title,
+			excel:      canvas,
+		}
+
+		return app.reload(element[service], app.openNewFile(service))(ctx)
+	}
+}
+
+// reloadWordDocument reloads the page because it pops up "Couldn't save automatically" on Microsoft Word.
+func (app *MicrosoftWebOffice) reloadWordDocument(ctx context.Context) error {
+	reloadButtonName := "Reload Couldn't save automatically To avoid losing your changes, please copy them before you reload this document."
+	reloadButton := nodewith.Name(reloadButtonName).Role(role.Button)
+	if err := app.ui.WaitUntilExists(reloadButton)(ctx); err != nil {
+		return nil
+	}
+
+	testing.ContextLog(ctx, `Reloading the page because it pops up "Couldn't save automatically"`)
+
+	wordWebArea := nodewith.Name("Word").Role(role.RootWebArea)
+	paragraph := nodewith.Role(role.Paragraph).Ancestor(wordWebArea).First()
+	paragraphEditable := nodewith.Role(role.Paragraph).Ancestor(wordWebArea).Editable()
+	return uiauto.Combine("copy content before reloading the page",
+		app.uiHdl.Click(paragraph),
+		app.kb.AccelAction("Ctrl+A"),
+		app.kb.AccelAction("Ctrl+C"),
+		app.uiHdl.Click(reloadButton),
+		app.uiHdl.Click(paragraphEditable),
+		app.kb.AccelAction("Ctrl+V"),
+	)(ctx)
 }
 
 // clickNavigationItem clicks the specified item in the navigation bar.
