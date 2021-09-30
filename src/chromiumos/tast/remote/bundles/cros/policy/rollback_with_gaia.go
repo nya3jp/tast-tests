@@ -83,6 +83,12 @@ func RollbackWithGaia(ctx context.Context, s *testing.State) {
 		policyClient := ppb.NewPolicyServiceClient(cl.Conn)
 		updateClient := aupb.NewUpdateServiceClient(cl.Conn)
 
+		// Create an empty /mnt/stateful_partition/etc/lsb-release if it doesn't
+		// exist yet.
+		if err := s.DUT().Conn().CommandContext(ctx, "touch", "/mnt/stateful_partition/etc/lsb-release").Run(); err != nil {
+			s.Error("Failed to touch stateful lsb-release: ", err)
+		}
+
 		// Enable the DUT to receive updates.
 		originalContent, err := signBoardName(ctx, updateClient)
 		if err != nil {
@@ -112,7 +118,7 @@ func RollbackWithGaia(ctx context.Context, s *testing.State) {
 			// Note: the update will fail if the other partition already has the same image
 			// that is selected below to rollback to.
 			// &policy.DeviceTargetVersionPrefix{Val: "13982."}, // M92
-			&policy.DeviceTargetVersionPrefix{Val: "13904."}, // M91
+			&policy.DeviceTargetVersionPrefix{Val: "14092."}, // M94
 			&policy.DeviceRollbackAllowedMilestones{Val: 4},
 			&policy.DeviceRollbackToTargetVersion{Val: 3}, // Roll back and stay on target version if OS version is newer than target. Try to carry over device-level configuration.
 			&policy.ChromeOsReleaseChannel{Val: "stable-channel"},
@@ -138,8 +144,12 @@ func RollbackWithGaia(ctx context.Context, s *testing.State) {
 			}
 		}(cleanupCtx)
 
-		// Update DUT.
-		if _, err := updateClient.CheckForUpdate(ctx, &aupb.UpdateRequest{}); err != nil {
+		// Update DUT with an update from the official prod server.
+		// The server is given explicitly because self-built images may not have
+		// it configured in their lsb-release file.
+		if _, err := updateClient.CheckForUpdate(ctx, &aupb.UpdateRequest{
+			OmahaUrl: "https://tools.google.com/service/update2",
+		}); err != nil {
 			s.Fatal("Failed to check for updates: ", err)
 		}
 
