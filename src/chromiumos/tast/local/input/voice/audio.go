@@ -14,9 +14,9 @@ import (
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 )
 
@@ -69,7 +69,7 @@ func activateAloopNodes(ctx context.Context, tconn *chrome.TestConn) error {
 	cleanupCtx, shortCancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer shortCancel()
 	if err := quicksettings.Show(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to show Quick Settings: ")
+		return errors.Wrap(err, "failed to show Quick Settings")
 	}
 	defer quicksettings.Hide(cleanupCtx, tconn)
 
