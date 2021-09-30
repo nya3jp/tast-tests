@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package wmp
 
 import (
 	"context"
@@ -66,7 +66,7 @@ func GesturesForSmallScreen(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the window list: ", err)
 	}
 	if len(ws) != 1 {
-		s.Fatalf("Expected 1 window, got %v", len(ws))
+		s.Fatal("Expected 1 window, got ", len(ws))
 	}
 
 	const uiTimeout = 5 * time.Second
