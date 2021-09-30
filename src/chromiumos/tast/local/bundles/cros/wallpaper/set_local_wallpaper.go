@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui/filesapp"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -37,6 +38,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{filename},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      5 * time.Minute,
 	})
 }
 
@@ -50,15 +52,28 @@ func SetLocalWallpaper(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	if err := fsutil.CopyFile(s.DataPath(filename), filePath); err != nil {
-		s.Fatalf("Could not copy %s to %s: %v", filename, filePath, err)
-	}
-
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	// Restore tablet mode to its original state on exit.
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+
+	// Force Chrome to be in clamshell mode to make sure wallpaper view is clearly
+	// visible for us to compare it with the given rgba color.
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to disable tablet mode: ", err)
+	}
+
+	if err := fsutil.CopyFile(s.DataPath(filename), filePath); err != nil {
+		s.Fatalf("Could not copy %s to %s: %v", filename, filePath, err)
+	}
 
 	// The test has a dependency of network speed, so we give uiauto.Context ample
 	// time to wait for nodes to load.
