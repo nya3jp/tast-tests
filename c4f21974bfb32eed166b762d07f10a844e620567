@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2bb3c0a_fb9ae2f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-30T02:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce571ec2_55856bd0",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "c4f21974bfb32eed166b762d07f10a844e620567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2243ec9_ec9a235d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb85176f_51b10737",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-30T02:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2243ec9_ec9a235d",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 7
+      },
+      "revId": "c4f21974bfb32eed166b762d07f10a844e620567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39fa7506_35062999",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-30T02:10:13Z",
       "side": 1,
       "message": "Can we remove original file?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 7
+      },
+      "revId": "c4f21974bfb32eed166b762d07f10a844e620567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13f0d5b_b68b3a63",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-09-30T02:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39fa7506_35062999",
       "range": {
         "startLine": 6,
         "startChar": 0,
