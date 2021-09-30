@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ffc488e_3bbed60e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-09-30T16:12:37Z",
+      "side": 1,
+      "message": "nit: there are a few repeated error messages for each of the cases. Can we include details about which operation is failing? Something like\n\"Failed to open launcher with search key accelerator\"\n\"Failed to wait for peeking launcher state (search key accelerator)\"\n\"Failed to close launcher with the home button\"\netc.\n\nIt\u0027ll make it easier to know what failed when checking stainless/tastboard",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "e4a2743752aa16a52115c55cf36051c34c886973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
