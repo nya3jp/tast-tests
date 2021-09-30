@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6805323b_6b8e97e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-30T20:56:35Z",
+      "side": 1,
+      "message": "nit: technically you are no longer launching a game",
+      "range": {
+        "startLine": 7,
+        "startChar": 52,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "a2fca2e11eaec71bcef38d535c191c437f82800e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e47f84f4_45d449e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-30T20:56:35Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "a2fca2e11eaec71bcef38d535c191c437f82800e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97d31c78_4b72da2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/immersive_auto_hidden_shelf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-09-30T20:56:35Z",
+      "side": 1,
+      "message": "ditto above:\n\nsomething like \"launching an immersive ARC application\" seems to be more accurate.",
+      "range": {
+        "startLine": 21,
+        "startChar": 68,
+        "endLine": 21,
+        "endChar": 72
+      },
+      "revId": "a2fca2e11eaec71bcef38d535c191c437f82800e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
