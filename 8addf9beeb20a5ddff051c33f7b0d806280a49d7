@@ -16,6 +16,92 @@
       "message": "Hi PTAL thanks!",
       "revId": "8addf9beeb20a5ddff051c33f7b0d806280a49d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd042d0a_2257924f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-30T03:15:53Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 19
+      },
+      "revId": "8addf9beeb20a5ddff051c33f7b0d806280a49d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b829e4_d617279d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-30T03:15:53Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "8addf9beeb20a5ddff051c33f7b0d806280a49d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "613ce6ca_8c3b821f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-30T03:15:53Z",
+      "side": 1,
+      "message": "Besides, this only test the last korean input type from the subtest loop. It is a bit confusing.",
+      "range": {
+        "startLine": 206,
+        "startChar": 11,
+        "endLine": 206,
+        "endChar": 32
+      },
+      "revId": "8addf9beeb20a5ddff051c33f7b0d806280a49d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29f2a08f_ae5ad779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-09-30T03:15:53Z",
+      "side": 1,
+      "message": "Ideally making this as a subtest.\n\ntestName :\u003d \"EnterKeyOnOmnibox\"\ns.Run(ctx, testName, func(ctx context.Context, s *testing.State){\n    defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, \"ui_tree_\"+testName)\n    if err :\u003d testEnterKeyOnOmnibox(ctx, tconn, keyboard); err !\u003d nil {\n\ts.Fatal(\"Omnibox test failed: \", err)\n    }\n})",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 2
+      },
+      "revId": "8addf9beeb20a5ddff051c33f7b0d806280a49d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
