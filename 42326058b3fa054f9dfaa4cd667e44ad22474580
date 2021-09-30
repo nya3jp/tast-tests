@@ -16,6 +16,24 @@
       "message": "So we want to do trace in a variation in an additional run instead turning them on by default?",
       "revId": "42326058b3fa054f9dfaa4cd667e44ad22474580",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c83bd25_3804489d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-09-30T19:39:40Z",
+      "side": 1,
+      "message": "Thoughts on this?\n\nIf we are concerned that tracing has too much overhead and have bigger than wanted impact on performance data, we should add variations like the CL. Otherwise, maybe we don\u0027t need to new variations.",
+      "parentUuid": "c7134680_ed9bedfd",
+      "revId": "42326058b3fa054f9dfaa4cd667e44ad22474580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
