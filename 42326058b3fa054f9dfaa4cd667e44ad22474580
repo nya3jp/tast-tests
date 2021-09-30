@@ -34,6 +34,24 @@
       "parentUuid": "c7134680_ed9bedfd",
       "revId": "42326058b3fa054f9dfaa4cd667e44ad22474580",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44196534_4b018b0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-09-30T20:00:06Z",
+      "side": 1,
+      "message": "We\u0027re interested in seeing the impact of tracing on TPS scores across boards for these tests:\nhttps://b.corp.google.com/issues/201552761#comment3\n\nIf there\u0027s no impact, then that seems worrying. Is tracing very lightweight? If adding tracing does not change TPS at all, then other performance regressions won\u0027t either.\n\nWe can probably just enable tracing by default in the future, but for right now, we want to examine the impact on TPS.",
+      "parentUuid": "3c83bd25_3804489d",
+      "revId": "42326058b3fa054f9dfaa4cd667e44ad22474580",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
