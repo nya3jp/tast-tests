@@ -56,6 +56,30 @@
       },
       "revId": "2d51c00d5df88d58e455d3af22f6dcbbe76379e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3643f89f_fb78b24c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/chrome_mlocked.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-30T00:12:22Z",
+      "side": 1,
+      "message": "Yes\n\ncf) https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/ashproc/proc.go;l\u003d23\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/chromeproc/chromeproc.go;l\u003d29",
+      "parentUuid": "49695236_091ce8a0",
+      "range": {
+        "startLine": 62,
+        "startChar": 15,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "2d51c00d5df88d58e455d3af22f6dcbbe76379e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
