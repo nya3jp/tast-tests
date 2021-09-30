@@ -232,6 +232,27 @@ func (app *GoogleDocs) SwitchToOfflineMode(ctx context.Context) error {
 
 // UpdateCells updates one of the independent cells and propagate values to dependent cells.
 func (app *GoogleDocs) UpdateCells(ctx context.Context) error {
+	if err := app.maybeCloseEditHistoryDialog(ctx); err != nil {
+		return errors.Wrap(err, `failed to close "See edit history of a cell" dialog`)
+	}
+
+	if err := app.editCellValue(ctx, "A3", "100"); err != nil {
+		return errors.Wrap(err, "failed to edit the value of the cell")
+	}
+
+	val, err := app.getCellValue(ctx, "B1")
+	if err != nil {
+		return errors.Wrap(err, "failed to get the value of the cell")
+	}
+
+	sum, err := strconv.Atoi(val)
+	if err != nil {
+		return errors.Wrap(err, "failed to convert type to integer")
+	}
+
+	if expectedSum := calculateSum(3, 100); sum != expectedSum {
+		return errors.Errorf("failed to validate the sum %d rows: got: %v; want: %v", rangeOfCells, sum, expectedSum)
+	}
 	return nil
 }
 
@@ -242,6 +263,36 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 
 // End cleans up GDocs resources. Remove the document and slide which we created in the test case and close all tabs.
 func (app *GoogleDocs) End(ctx context.Context) error {
+	// tabIndexMap define the index of the corresponding service tab.
+	tabIndexMap := map[string]int{
+		docsTab:   0,
+		slidesTab: 1,
+	}
+
+	menuBar := nodewith.Name("Menu bar").Role(role.Banner)
+	file := nodewith.Name("File").Role(role.MenuItem).Ancestor(menuBar)
+	moveToTrash := nodewith.NameContaining("Move to trash t").Role(role.MenuItem)
+	dialog := nodewith.Name("File moved to trash").Role(role.Dialog)
+	homeScreen := nodewith.NameRegex(regexp.MustCompile("^Go to (Docs|Slides) home screen")).Role(role.Button).Ancestor(dialog)
+
+	for k, v := range tabIndexMap {
+		testing.ContextLogf(ctx, "Switching to %q", k)
+		if err := uiauto.Combine("remove the file",
+			app.uiHdl.SwitchToChromeTabByIndex(v),
+			app.closeDialogs,
+			app.uiHdl.Click(file),
+			app.uiHdl.Click(moveToTrash),
+			app.uiHdl.Click(homeScreen),
+		)(ctx); err != nil {
+			return err
+		}
+	}
+
+	// Close all tabs.
+	for _, conn := range app.tabs {
+		conn.CloseTarget(ctx)
+		conn.Close()
+	}
 	return nil
 }
 
@@ -378,6 +429,43 @@ func (app *GoogleDocs) maybeCloseEditHistoryDialog(ctx context.Context) error {
 	dialog := nodewith.Name("See edit history of a cell").Role(role.Dialog)
 	button := nodewith.Name("GOT IT").Role(role.Button).Ancestor(dialog)
 	return app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dialog), app.uiHdl.Click(button))(ctx)
+}
+
+// closeDialogs closes dialogs if the display is different from what we expected.
+func (app *GoogleDocs) closeDialogs(ctx context.Context) error {
+	testing.ContextLog(ctx, "Checking if any dialogs need to be closed")
+
+	unableToLoadDialog := nodewith.Name("Unable to load file").Role(role.Dialog)
+	dialogButton := nodewith.Name("Reload").Ancestor(unableToLoadDialog).First()
+	reloadContainer := nodewith.Name("Reload to allow offline editing. Reload").Role(role.GenericContainer)
+	reloadButton := nodewith.Name("Reload").Role(role.Button).FinalAncestor(reloadContainer)
+
+	// dialogsInfo holds the information of dialogs that will be encountered and needs to be handled during testing.
+	// The order of slices starts with the most frequent occurrence.
+	dialogsInfo := []dialogInfo{
+		{
+			name:   "Unable to load file",
+			dialog: unableToLoadDialog,
+			node:   dialogButton,
+		},
+		{
+			name:   "Reload to allow offline editing. Reload",
+			dialog: reloadContainer,
+			node:   reloadButton,
+		},
+	}
+
+	for _, info := range dialogsInfo {
+		name, dialog, button := info.name, info.dialog, info.node
+
+		testing.ContextLogf(ctx, "Checking if the %q dialog exists", name)
+		if err := app.ui.WaitUntilExists(dialog)(ctx); err != nil {
+			continue
+		}
+		return app.uiHdl.ClickUntil(button, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(button))(ctx)
+	}
+
+	return nil
 }
 
 // NewGoogleDocs creates GoogleDocs instance which implements ProductivityApp interface.
