@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75ef857c_8c96617c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T17:45:11Z",
+      "side": 1,
+      "message": "\u003e\u003e What happen if there is no newer version of stateful lacros?\nTest will fail if no newer version of stateful lacros is selected by ash chrome, which is what this test is verifying.\n\n\u003e\u003e What will happen if this test is run multiple times on the same DUT?\nClearUpdate API should be called for this remote test to reset to the previous state between tests.\nSee https://sequencediagram.googleplex.com/view/6215323990622208 for the flow.\n\nFYI, there will be more complicated scenarios to implement like:\nProvision -\u003e Verify -\u003e Clear\nProvision dev -\u003e Verify -\u003e Provision beta -\u003e Verify -\u003e Clear",
+      "parentUuid": "c5fa1489_ffc2ec20",
+      "revId": "31511f19b81350be1e174a4159be589654877eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe7dc4ff_4965439b",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e12661_34e268b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T17:45:11Z",
+      "side": 1,
+      "message": "Thanks for the catch. If no error, res will not be nil with non-empty Versions, so \"len(res.Versions) \u003d\u003d 0\" check could be redundant.\nFYI forgot to add you to a follow-up CL for the service implementation https://crrev.com/c/3195185.",
+      "parentUuid": "fe7dc4ff_4965439b",
+      "revId": "31511f19b81350be1e174a4159be589654877eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c976d9a_b42b9208",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-09-30T17:14:44Z",
       "side": 1,
       "message": "nit: Please put a comment on why the rest of versions can be ignored.",
+      "revId": "31511f19b81350be1e174a4159be589654877eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "896443c7_50f8334e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T17:45:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c976d9a_b42b9208",
       "revId": "31511f19b81350be1e174a4159be589654877eb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
