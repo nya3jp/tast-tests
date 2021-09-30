@@ -7,7 +7,12 @@ package productivitycuj
 import (
 	"context"
 	"fmt"
+	"regexp"
+	"strconv"
+	"strings"
 	"time"
+
+	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
@@ -24,8 +29,17 @@ const (
 	// officeURL indicates the link URL of "Microsoft Office Home".
 	officeURL = "https://www.office.com/"
 
+	// myFiles indicates the "My files" item name in the navigation bar.
+	myFiles = "My files"
 	// recent indicates the "Recent" item label in the navigation bar.
 	recent = "Recent"
+
+	// word indicates the label of the new document.
+	word = "Word document"
+	// powerpoint indicates the label of the new presentation.
+	powerpoint = "PowerPoint presentation"
+	// excel indicates the label of the new spreadsheet.
+	excel = "Excel workbook"
 )
 
 // MicrosoftWebOffice implements the ProductivityApp interface.
@@ -42,15 +56,48 @@ type MicrosoftWebOffice struct {
 
 // CreateDocument creates a new document from microsoft web app.
 func (app *MicrosoftWebOffice) CreateDocument(ctx context.Context) error {
-	return nil
+	conn, err := app.openOneDrive(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open OneDrive")
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
+	wordWebArea := nodewith.Name("Word").Role(role.RootWebArea)
+	paragraph := nodewith.Role(role.Paragraph).Ancestor(wordWebArea).Editable()
+	return uiauto.Combine("open a new document",
+		app.openBlankDocument(word),
+		app.reloadWordDocument,
+		// Make sure paragraph exists before typing. This is especially necessary on low-end DUTs.
+		app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(paragraph),
+		app.kb.TypeAction(docText),
+	)(ctx)
 }
 
 // CreateSlides creates a new presentation from microsoft web app.
 func (app *MicrosoftWebOffice) CreateSlides(ctx context.Context) error {
-	return nil
+	conn, err := app.openOneDrive(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open OneDrive")
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
+	title := nodewith.Name("Click to add title").First()
+	subtitle := nodewith.Name("Click to add subtitle").Role(role.StaticText)
+	return uiauto.Combine("create a new presentation",
+		app.openBlankDocument(powerpoint),
+		// Make sure title exists before typing. This is especially necessary on low-end DUTs.
+		app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(title),
+		app.uiHdl.Click(title),
+		app.kb.TypeAction(titleText),
+		app.uiHdl.Click(subtitle),
+		app.kb.TypeAction(subtitleText),
+		app.kb.AccelAction("Enter"),
+	)(ctx)
 }
 
-// CreateSpreadsheet creates a new spreadsheet from microsoft web app and returns the sheet name.
+// CreateSpreadsheet creates a new spreadsheet from microsoft web app and returns sheet name.
 func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context) (string, error) {
 	return "", nil
 }
@@ -336,6 +383,70 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 	return conn, nil
 }
 
+// openNewFile open a new document for the specified service.
+func (app *MicrosoftWebOffice) openNewFile(service string) action.Action {
+	return func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Opening a new ", service)
+
+		oneDriveWebArea := nodewith.Name("My files - OneDrive").Role(role.RootWebArea)
+		newItem := nodewith.Name("New").Role(role.MenuItem).Ancestor(oneDriveWebArea)
+		newItemMenu := nodewith.Role(role.Menu).Ancestor(newItem)
+		serviceItem := nodewith.Name(service).Role(role.MenuItem).Ancestor(oneDriveWebArea)
+		return uiauto.Combine("create a new file",
+			app.uiHdl.ClickUntil(newItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(newItemMenu)),
+			app.uiHdl.ClickUntil(serviceItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(oneDriveWebArea)),
+		)(ctx)
+	}
+}
+
+// openBlankDocument opens a blank document with specified service.
+// When we try to open a blank document on the corresponding service page, it will jump to the Microsoft Office App to request permission.
+// Therefore, we try to open a blank document from OneDrive to avoid this situation.
+func (app *MicrosoftWebOffice) openBlankDocument(service string) action.Action {
+	return func(ctx context.Context) error {
+		if err := app.openNewFile(service)(ctx); err != nil {
+			return err
+		}
+
+		paragraph := nodewith.Role(role.Paragraph).Editable()
+		title := nodewith.Name("Click to add title").First()
+		excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
+		canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
+
+		// element defines the node to specify whether it navigates to the corresponding service page correctly.
+		element := map[string]*nodewith.Finder{
+			word:       paragraph,
+			powerpoint: title,
+			excel:      canvas,
+		}
+
+		return app.reload(element[service], app.openNewFile(service))(ctx)
+	}
+}
+
+// reloadWordDocument reloads the page because it pops up "Couldn't save automatically" on Microsoft Word.
+func (app *MicrosoftWebOffice) reloadWordDocument(ctx context.Context) error {
+	reloadButtonName := "Reload Couldn't save automatically To avoid losing your changes, please copy them before you reload this document."
+	reloadButton := nodewith.Name(reloadButtonName).Role(role.Button)
+	if err := app.ui.WaitUntilExists(reloadButton)(ctx); err != nil {
+		return nil
+	}
+
+	testing.ContextLog(ctx, `Reloading the page because it pops up "Couldn't save automatically"`)
+
+	wordWebArea := nodewith.Name("Word").Role(role.RootWebArea)
+	paragraph := nodewith.Role(role.Paragraph).Ancestor(wordWebArea).First()
+	paragraphEditable := nodewith.Role(role.Paragraph).Ancestor(wordWebArea).Editable()
+	return uiauto.Combine("copy content before reloading the page",
+		app.uiHdl.Click(paragraph),
+		app.kb.AccelAction("Ctrl+A"),
+		app.kb.AccelAction("Ctrl+C"),
+		app.uiHdl.Click(reloadButton),
+		app.uiHdl.Click(paragraphEditable),
+		app.kb.AccelAction("Ctrl+V"),
+	)(ctx)
+}
+
 // clickNavigationItem clicks the specified item in the navigation bar.
 func (app *MicrosoftWebOffice) clickNavigationItem(itemName string) action.Action {
 	navigation := nodewith.Role(role.Navigation)
@@ -412,6 +523,357 @@ func (app *MicrosoftWebOffice) searchSampleSheet(ctx context.Context) error {
 	}
 
 	return nil
+}
+
+// openFindAndSelect opens "Find & Select".
+func (app *MicrosoftWebOffice) openFindAndSelect(ctx context.Context) error {
+	testing.ContextLog(ctx, `Opening "Find & Select"`)
+
+	findAndSelectButton := nodewith.Name("Find & Select").Role(role.PopUpButton)
+	moreOptions := nodewith.Name("More Options").Role(role.Group)
+	moreOptionsMenu := nodewith.Name("More Options").Role(role.Menu)
+	editing := nodewith.Name("Editing").Role(role.Group).Ancestor(moreOptionsMenu)
+	findAndSelectItem := nodewith.Name("Find & Select").Role(role.MenuItem).Ancestor(editing)
+
+	// There might be two situations.
+	// 1. TabPanel shows "Find & Select" directly.
+	// 2. First click on "More Options" then you can find "Find & Select".
+	found, err := app.ui.IsNodeFound(ctx, findAndSelectButton)
+	if err != nil {
+		return err
+	}
+	if found {
+		return app.uiHdl.Click(findAndSelectButton)(ctx)
+	}
+
+	return uiauto.Combine("click more options",
+		app.uiHdl.Click(moreOptions),
+		app.uiHdl.Click(findAndSelectItem),
+	)(ctx)
+}
+
+// selectRange selects the range by clicking on the "Name Box" or opening "Go to" box since the tapping response is different with clicking.
+func (app *MicrosoftWebOffice) selectRange(ctx context.Context) error {
+	testing.ContextLog(ctx, `Selecting "Range"`)
+
+	// In the clamshell mode, the "Name Box" can be focused with just click.
+	if !app.tabletMode {
+		testing.ContextLog(ctx, `Selecting range by focus on "Name Box"`)
+		nameBox := nodewith.Name("Name Box").Role(role.TextFieldWithComboBox).Editable()
+		nameBoxFocused := nameBox.Focused()
+		return app.uiHdl.ClickUntil(nameBox, app.ui.Exists(nameBoxFocused))(ctx)
+	}
+
+	rangeText := nodewith.Name("Range:").Role(role.TextField).Editable()
+	rangeTextFocused := rangeText.Focused()
+	// Pressing Ctrl+G will open the "Go To" box.
+	// Sometimes key events are typed but the UI does not respond. Retry to alert dialog does appear.
+	if err := app.ui.WithInterval(time.Second).RetryUntil(app.kb.AccelAction("Ctrl+G"), app.ui.Exists(rangeText))(ctx); err != nil {
+		testing.ContextLog(ctx, "Opening with panel")
+
+		home := nodewith.Name("Home").Role(role.Tab)
+		homeTabPanel := nodewith.Name("Home").Role(role.TabPanel)
+		goTo := nodewith.Name("Go to").Role(role.MenuItem)
+		if err := uiauto.Combine(`open "Go To" with panel`,
+			app.uiHdl.ClickUntil(home, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(homeTabPanel)),
+			app.openFindAndSelect,
+			app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(goTo), app.uiHdl.Click(goTo)),
+		)(ctx); err != nil {
+			return err
+		}
+	}
+
+	return app.uiHdl.ClickUntil(rangeText, app.ui.Exists(rangeTextFocused))(ctx)
+}
+
+// selectBox selects the specified cell using the name box.
+func (app *MicrosoftWebOffice) selectBox(box string) action.Action {
+	return func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Selecting box(%v)", box)
+
+		ok := nodewith.Name("OK").Role(role.Button).First()
+		return uiauto.Combine(fmt.Sprintf("select box (%s) value", box),
+			app.selectRange,
+			app.kb.AccelAction("Ctrl+A"), // Make sure to clear the content and re-input.
+			app.kb.TypeAction(box),
+			app.kb.AccelAction("Enter"),
+			app.ui.IfSuccessThen(app.ui.Exists(ok), app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(ok)),
+		)(ctx)
+	}
+}
+
+// getBoxValue gets the value of the specified box.
+func (app *MicrosoftWebOffice) getBoxValue(ctx context.Context, box string) (clipData string, err error) {
+	if err := app.selectBox(box)(ctx); err != nil {
+		return "", err
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Due to the unstable network, there might be no data in the clipboard after the copy operation.
+		// Therefore, we also need to retry the copy operation.
+		if err := app.kb.AccelAction("Ctrl+C")(ctx); err != nil {
+			return err
+		}
+		clipData, err = getClipboardText(ctx, app.tconn)
+		if err != nil {
+			return err
+		}
+		if clipData == "Retrieving data. Wait a few seconds and try to cut or copy again." {
+			return errors.New("clipboard data is not yet ready")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Minute}); err != nil {
+		return "", err
+	}
+
+	testing.ContextLogf(ctx, "Getting box (%s) value: %s", box, clipData)
+
+	return clipData, nil
+}
+
+// editBoxValue edits the cell to the specified value.
+func (app *MicrosoftWebOffice) editBoxValue(ctx context.Context, box, value string) error {
+	testing.ContextLogf(ctx, "Writing box (%s) value: %s", box, value)
+
+	return uiauto.Combine(fmt.Sprintf("write box (%s) value", box),
+		app.selectBox(box),
+		app.kb.TypeAction(value),
+		app.kb.AccelAction("Enter"),
+	)(ctx)
+}
+
+// checkFormula checks if the formula is correct.
+func (app *MicrosoftWebOffice) checkFormula(ctx context.Context, box, value string) error {
+	if err := app.selectBox(box)(ctx); err != nil {
+		return err
+	}
+
+	formulaBar := nodewith.Name("formula bar").Role(role.TextField).Editable()
+	formulaBarText := nodewith.Role(role.StaticText).FinalAncestor(formulaBar)
+	node, err := app.ui.Info(ctx, formulaBarText)
+	if err != nil {
+		return err
+	}
+	if node.Name != value {
+		return errors.New("incorrect formula")
+	}
+
+	return nil
+}
+
+// createSampleSheet creates a sample spreadsheet.
+func (app *MicrosoftWebOffice) createSampleSheet(ctx context.Context) error {
+	testing.ContextLog(ctx, "Creating a new spreadsheet")
+
+	myFilesWebArea := nodewith.Name("My files - OneDrive").Role(role.RootWebArea)
+	excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
+	canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
+	savedButton := nodewith.NameContaining("Saved to OneDrive").Role(role.Button)
+	fileNameBox := nodewith.Name("File Name").Role(role.TextField)
+
+	if err := uiauto.Combine("open a blank spreadsheet",
+		// Make sure we are in "My Files" so that "New" can be found.
+		app.ui.IfSuccessThen(app.ui.Gone(myFilesWebArea), app.clickNavigationItem(myFiles)),
+		app.openBlankDocument(excel),
+		// Make sure canvas exists before typing. This is especially necessary on low-end DUTs.
+		app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(canvas),
+	)(ctx); err != nil {
+		return err
+	}
+
+	testing.ContextLogf(ctx, "Writing cell(A1:A%d) values", rangeOfCells)
+	for i := 1; i <= rangeOfCells; i++ {
+		idx := strconv.Itoa(i)
+		cell := fmt.Sprintf("A%d", i)
+		if err := app.editBoxValue(ctx, cell, idx); err != nil {
+			return err
+		}
+	}
+
+	formula := fmt.Sprintf("=SUM(A1:A%d)", rangeOfCells)
+	testing.ContextLog(ctx, "Writing cell(B1) value")
+	if err := app.editBoxValue(ctx, "B1", formula); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Writing cell(H1) value")
+	if err := app.editBoxValue(ctx, "H1", "Copy to document"); err != nil {
+		return err
+	}
+
+	testing.ContextLog(ctx, "Renaming spreadsheet")
+	return uiauto.Combine("rename file",
+		app.uiHdl.Click(savedButton),
+		app.ui.DoubleClick(fileNameBox),
+		app.kb.AccelAction("Ctrl+A"),
+		app.kb.TypeAction(sheetName),
+		app.kb.AccelAction("Enter"),
+		app.ui.WaitUntilExists(savedButton),
+	)(ctx)
+}
+
+// closeTab closes the tab with the title of the specified name.
+func (app *MicrosoftWebOffice) closeTab(title string) action.Action {
+	return func(ctx context.Context) error {
+		matcher := func(t *target.Info) bool {
+			return strings.Contains(t.Title, title) && t.Type == "page"
+		}
+
+		conn, err := app.cr.NewConnForTarget(ctx, matcher)
+		if err != nil {
+			return err
+		}
+		conn.CloseTarget(ctx)
+		conn.Close()
+
+		return nil
+	}
+}
+
+// closeHelpPanel closes the "Help" panel if it exists.
+func (app *MicrosoftWebOffice) closeHelpPanel(ctx context.Context) error {
+	helpPanel := nodewith.Name("Help").Role(role.TabPanel)
+	close := nodewith.Name("Close").Role(role.Button).Ancestor(helpPanel)
+	return app.ui.IfSuccessThen(
+		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(helpPanel),
+		app.uiHdl.Click(close),
+	)(ctx)
+}
+
+// checkDictation checks whether the dictation is turned on by checking the "Start Dictation" button exists.
+func (app *MicrosoftWebOffice) checkDictation(ctx context.Context) error {
+	dictationToolbar := nodewith.Name("Dictation toolbar").Role(role.Toolbar)
+	startDictationButton := nodewith.Name("Start Dictation").Role(role.Button).Ancestor(dictationToolbar)
+
+	if err := app.ui.WaitUntilExists(dictationToolbar)(ctx); err != nil {
+		return err
+	}
+
+	return app.ui.IfSuccessThen(
+		app.ui.WaitUntilExists(startDictationButton),
+		app.uiHdl.Click(startDictationButton),
+	)(ctx)
+}
+
+// turnOnDictationFromMoreOptions turns on the dictation function through "More Options".
+func (app *MicrosoftWebOffice) turnOnDictationFromMoreOptions(ctx context.Context) error {
+	testing.ContextLog(ctx, `Turning on the dictation through "More options"`)
+
+	homeTabPanel := nodewith.Name("Home").Role(role.TabPanel)
+	moreOptions := nodewith.Name("More Options").Role(role.PopUpButton).Ancestor(homeTabPanel).First()
+	dictationButton := nodewith.Name("Dictate").Role(role.Button).Ancestor(moreOptions).First()
+	dictationCheckBox := nodewith.Name("Dictate").Role(role.MenuItemCheckBox).First()
+	dictationToolbar := nodewith.Name("Dictation toolbar").Role(role.Toolbar)
+	return uiauto.Combine(`turn on the dictation through "More Options"`,
+		app.uiHdl.ClickUntil(moreOptions, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictationButton)),
+		app.uiHdl.ClickUntil(dictationButton, app.ui.Gone(dictationButton)),
+		app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictationCheckBox), app.uiHdl.Click(dictationCheckBox)),
+		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictationToolbar),
+	)(ctx)
+}
+
+// turnOnDictationFromPanel turns on the dictation function via the button in the "Home" panel.
+func (app *MicrosoftWebOffice) turnOnDictationFromPanel(ctx context.Context) error {
+	testing.ContextLog(ctx, "Turning on the dictation through the panel")
+
+	homeTabPanel := nodewith.Name("Home").Role(role.TabPanel)
+	dictationToggleButton := nodewith.Name("Dictate").Role(role.ToggleButton).Ancestor(homeTabPanel).First()
+	dictationCheckBox := nodewith.Name("Dictate").Role(role.MenuItemCheckBox).First()
+	dictationToolbar := nodewith.Name("Dictation toolbar").Role(role.Toolbar)
+	return uiauto.Combine("turn on the dictation through the panel",
+		app.uiHdl.ClickUntil(dictationToggleButton, func(ctx context.Context) error {
+			return uiauto.Combine("check if the dictation works",
+				app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictationCheckBox), app.uiHdl.Click(dictationCheckBox)),
+				app.ui.WaitUntilExists(dictationToolbar),
+			)(ctx)
+		}),
+	)(ctx)
+}
+
+// turnOnDictation turns on the dictation function.
+func (app *MicrosoftWebOffice) turnOnDictation(ctx context.Context) error {
+	testing.ContextLog(ctx, "Turning on dictation")
+
+	openDocument := func(ctx context.Context) error {
+		// Since we did not specify the name of the "Word" document, we need to extract the document name from the tab name.
+		docTab := nodewith.NameRegex(regexp.MustCompile(".*.docx - Microsoft Word Online")).Role(role.Tab).First()
+		node, err := app.ui.Info(ctx, docTab)
+		if err != nil {
+			return err
+		}
+		docsName := strings.Replace(node.Name, " - Microsoft Word Online", "", -1)
+		testing.ContextLog(ctx, "Getting the document name from the tab: ", docsName)
+
+		row := nodewith.NameContaining(docsName).Role(role.Row).First()
+		link := nodewith.NameContaining(docsName).Role(role.Link).Ancestor(row)
+		return uiauto.Combine("reopen the document",
+			app.clickNavigationItem(recent),
+			app.uiHdl.Click(link),
+		)(ctx)
+	}
+
+	homeTabPanel := nodewith.Name("Home").Role(role.TabPanel)
+
+	reoperate := func(ctx context.Context, turnOnAction action.Action) error {
+		testing.ContextLog(ctx, "Reloading the page and reoperating the function to turn on the dictation function")
+
+		reload := nodewith.Name("Reload").ClassName("ReloadButton")
+		paragraph := nodewith.Role(role.Paragraph).Editable()
+		if err := turnOnAction(ctx); err != nil {
+			if err := uiauto.Combine("reload the page",
+				app.uiHdl.Click(reload),
+				// After reloading the webpage, it might encounter "This page isn’t working".
+				app.reload(paragraph, openDocument),
+				app.ui.WithTimeout(longerUIWaitTime).WaitUntilGone(homeTabPanel),
+			)(ctx); err != nil {
+				return err
+			}
+		}
+
+		dictationToolbar := nodewith.Name("Dictation toolbar").Role(role.Toolbar)
+		// Sometimes the "Dictation toolbar" will be displayed directly, so we don't need to click the "Dictation" button again.
+		if err := app.ui.WaitUntilExists(dictationToolbar)(ctx); err != nil {
+			if err := turnOnAction(ctx); err != nil {
+				return err
+			}
+		}
+
+		return nil
+	}
+
+	dictateButton := nodewith.Name("Dictate").Role(role.ToggleButton).Ancestor(homeTabPanel).First()
+	if err := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictateButton)(ctx); err != nil {
+		if err := reoperate(ctx, app.turnOnDictationFromMoreOptions); err != nil {
+			return err
+		}
+	} else {
+		if err := reoperate(ctx, app.turnOnDictationFromPanel); err != nil {
+			return err
+		}
+	}
+
+	featureBrokenContainer := nodewith.Name("We couldn't connect to the catalog server for this feature.").Role(role.GenericContainer)
+	retryButton := nodewith.Name("RETRY").Role(role.Button).Ancestor(featureBrokenContainer)
+	return uiauto.Combine("turn on the dictation",
+		app.ui.IfSuccessThen(app.ui.Exists(featureBrokenContainer), app.uiHdl.Click(retryButton)),
+		app.checkDictation,
+	)(ctx)
+}
+
+// removeDocument removes the document with the specified file name.
+func (app *MicrosoftWebOffice) removeDocument(ctx context.Context, fileName string) error {
+	testing.ContextLog(ctx, "Removing an existing document: ", fileName)
+
+	row := nodewith.NameContaining(fileName).Role(role.Row).First()
+	checkBox := nodewith.NameContaining("Checkbox").Role(role.CheckBox).Ancestor(row)
+	complementary := nodewith.Role(role.Complementary).First()
+	commandBar := nodewith.NameContaining("Command bar").Role(role.MenuBar).Ancestor(complementary)
+	remove := nodewith.Name("Remove").Role(role.MenuItem).Ancestor(commandBar)
+	return uiauto.Combine("remove the file",
+		app.switchToListView,
+		app.uiHdl.ClickUntil(checkBox, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(commandBar)),
+		app.uiHdl.Click(remove),
+	)(ctx)
 }
 
 // NewMicrosoftWebOffice creates MicrosoftWebOffice instance which implements ProductivityApp interface.
