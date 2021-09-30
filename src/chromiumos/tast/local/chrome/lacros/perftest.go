@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros/launcher"
-	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
