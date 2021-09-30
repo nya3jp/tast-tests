@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91e0483c_97277a15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-30T00:26:53Z",
+      "side": 1,
+      "message": "Tast LGTM with a request.",
+      "revId": "0ca1605b5d3338fa2aa54da0f3c3637b224a0701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcab4f3d_0d67e055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-30T00:26:53Z",
+      "side": 1,
+      "message": "could you mention the background of this change in the commit message, too?\nor, split into another CL is safer.",
+      "revId": "0ca1605b5d3338fa2aa54da0f3c3637b224a0701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1117aec9_a785b8f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_backup_restore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-09-30T00:26:53Z",
+      "side": 1,
+      "message": "same",
+      "revId": "0ca1605b5d3338fa2aa54da0f3c3637b224a0701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
