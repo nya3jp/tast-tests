@@ -519,13 +519,13 @@ func MouseScroll(ctx context.Context, testParameters TestFuncParams, scrollDirec
 // Trackpad related constants. These values were derived experimentally and
 // should work on both physical, and virtual trackpads.
 const (
-	TrackpadMajorSize            = 240
-	TrackpadMinorSize            = 180
-	TrackpadClickPressure        = 25
-	TrackpadGesturePressure      = 10
-	TrackpadVerticalScrollAmount = 900
-	TrackpadScrollDuration       = 200 * time.Millisecond
-	TrackpadFingerSeparation     = 350
+	TrackpadMajorSize                          = 240
+	TrackpadMinorSize                          = 180
+	TrackpadClickPressure                      = 25
+	TrackpadGesturePressure                    = 10
+	TrackpadVerticalScrollAmountAsPercentOfPad = .2
+	TrackpadScrollDuration                     = 250 * time.Millisecond
+	TrackpadFingerSeparation                   = 350
 )
 
 // TrackpadClickObject implements a click on the trackpad.
@@ -582,6 +582,7 @@ func TrackpadClickObject(ctx context.Context, testParameters TestFuncParams, sel
 }
 
 // TrackpadScroll performs a two-finger scroll gesture on the trackpad.
+// TrackpadScroll performs a two-finger scroll gesture on the trackpad.
 func TrackpadScroll(ctx context.Context, trackpad *input.TrackpadEventWriter, testParameters TestFuncParams, selector *ui.Object, scrollDirection ScrollDirection) error {
 	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
 		return errors.Wrap(err, "pointer cannot cannot be used")
@@ -601,17 +602,22 @@ func TrackpadScroll(ctx context.Context, trackpad *input.TrackpadEventWriter, te
 		return errors.Wrap(err, "unable to setup writer for two finger gestures")
 	}
 
-	// Calculate where to scroll to based on the provided direction.
+	// The scroll can always begin at the middle of the trackpad.
 	x := trackpad.Width() / 2
 	y := trackpad.Height() / 2
+
+	// The scroll should travel through a distance that is proportional to the
+	// size of the trackpad. This ensures the event generates enough movement
+	// to fire off the action, and that an out of bounds error does not occur.
+	verticalScrollDistance := input.TouchCoord(float64(trackpad.Height()) * TrackpadVerticalScrollAmountAsPercentOfPad)
 
 	scrollToX := x
 	scrollToY := y
 	switch scrollDirection {
 	case DownScroll:
-		scrollToY = y + TrackpadVerticalScrollAmount
+		scrollToY = y + verticalScrollDistance
 	case UpScroll:
-		scrollToY = y - TrackpadVerticalScrollAmount
+		scrollToY = y - verticalScrollDistance
 	default:
 		return errors.Errorf("invalid scroll direction: %v", scrollDirection)
 	}
