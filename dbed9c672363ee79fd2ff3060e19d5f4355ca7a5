@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1f5dcd6_3a40651d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-09-30T16:47:13Z",
+      "side": 1,
+      "message": "Adjusted the zoom logic to account for out of bounds errors",
+      "revId": "dbed9c672363ee79fd2ff3060e19d5f4355ca7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
