@@ -48,6 +48,7 @@ type CrosvmParams struct {
 	sharedDirs     []sharedDirParam // array of configuration of a directory to be shared with the VM
 	serialOutput   string           // path to a file where serial output will be written
 	vhostUserNet   []string         // paths to sockets that vhost-user-net devices will use
+	vhostUserFs    []string         // path to socket + tag that vhost-user-fs devices will use
 	disableSandbox bool             // whether or not the sandbox is disabled
 }
 
@@ -110,6 +111,13 @@ func VhostUserNet(socket string) Option {
 	}
 }
 
+// VhostUserFS sets a socket and fs tag to be used by a vhost-user fs device.
+func VhostUserFS(socket, tag string) Option {
+	return func(p *CrosvmParams) {
+		p.vhostUserFs = append(p.vhostUserFs, socket, tag)
+	}
+}
+
 // DisableSandbox disables the sandbox (sandbox is enabled by default without this option)
 func DisableSandbox() Option {
 	return func(p *CrosvmParams) {
@@ -164,6 +172,10 @@ func (p *CrosvmParams) ToArgs() []string {
 
 	for _, sock := range p.vhostUserNet {
 		args = append(args, "--vhost-user-net", sock)
+	}
+
+	if len(p.vhostUserFs) == 2 {
+		args = append(args, "--vhost-user-fs", fmt.Sprintf("%s:%s", p.vhostUserFs[0], p.vhostUserFs[1]))
 	}
 
 	args = append(args, "-p", strings.Join(p.kernelArgs, " "))
