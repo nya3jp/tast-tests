@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "036bafee_413f9a6a",
+        "filename": "src/chromiumos/tast/services/cros/lacros/update_test_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-30T17:50:13Z",
+      "side": 1,
+      "message": "nit: It seems that this request is very complicated to use for people who don\u0027t understand lacros to begin with.\n\nVerifyUpdateRequest seems like it\u0027s consisted of:\n 1. SetBrowsers\n 2. GetActiveBrowser\n   3. GetVersion \u003d\u003d expected version\n   4. (only for LACROS_STATEFUL) GetComponent \u003d\u003d ExpectedComponent\n\nW/ the current request setup, the actual tests will be less complex, but more to maintain in these services.\n\nIMO the logic of this \"Verify\"ing should be in the tests no?",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "3139396d63020684cf96ade53b0e12f2e928d3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "614de074_47ac2823",
+        "filename": "src/chromiumos/tast/services/cros/lacros/update_test_service.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-30T17:50:13Z",
+      "side": 1,
+      "message": "nit: Use protobuf.Empty?\nNo request + response",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 68
+      },
+      "revId": "3139396d63020684cf96ade53b0e12f2e928d3d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

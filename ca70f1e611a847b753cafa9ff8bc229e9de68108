@@ -279,6 +279,30 @@
       },
       "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82f199bc_a354c63a",
+        "filename": "src/chromiumos/tast/services/cros/lacros/autoupdate_test_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-09-30T17:50:13Z",
+      "side": 1,
+      "message": "Sorry for the delay, thanks for writing the document Hyung.\nLGTM",
+      "parentUuid": "eb23edb2_ad2234c4",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "ca70f1e611a847b753cafa9ff8bc229e9de68108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
