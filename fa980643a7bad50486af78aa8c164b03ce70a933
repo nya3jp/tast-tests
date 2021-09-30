@@ -685,6 +685,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c1804c_410295ca",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "No need, I\u0027ve removed polling from the test.  Polling is not needed if data was already written before the read happens.",
+      "parentUuid": "1a344ba2_f86ce816",
+      "range": {
+        "startLine": 160,
+        "startChar": 13,
+        "endLine": 160,
+        "endChar": 17
+      },
+      "revId": "fa980643a7bad50486af78aa8c164b03ce70a933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "721bf44c_9da95e10",

@@ -1201,6 +1201,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a3d9fa_f0ba6dfe",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "For a point of reference, average execution time of tests in chromiumos/tast/common/testexec takes about 50ms, so 200ms is long but not horribly so.\n\nThat being said, since the remote_serial_port.go integration test in the next cl also tests read error, I\u0027ve removed it from the unit test as suggested so that now the test can execute in around 3-5ms.",
+      "parentUuid": "8cddb45e_b87054cd",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 67
+      },
+      "revId": "781a502ac21a6ec7c024abdaafdde08a409f4631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "791cdc09_d89cde93",

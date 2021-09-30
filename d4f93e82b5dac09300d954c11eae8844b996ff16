@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c60256d1_5c9d9632",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "The interface doesn\u0027t have the concept of blocking vs. non-blocking mode, so I don\u0027t think it\u0027s the proper place to add this detail.  I have, however, added the comment in the remote port implementation in the next cl.",
+      "parentUuid": "24bd60fe_d8a42c21",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 55
+      },
+      "revId": "d4f93e82b5dac09300d954c11eae8844b996ff16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c05a853_e84c3e05",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-29T06:25:11Z",
       "side": 1,
       "message": "Could you add this to Port.Write\u0027s comment ?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 62
+      },
+      "revId": "d4f93e82b5dac09300d954c11eae8844b996ff16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "361bd34a_bc2f5643",
+        "filename": "src/chromiumos/tast/common/firmware/serial/connected_port.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c05a853_e84c3e05",
       "range": {
         "startLine": 45,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99fd2a25_f361eed0",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b39e33f1_a93e988b",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "d4f93e82b5dac09300d954c11eae8844b996ff16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a6eeefe_c30a3183",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-29T06:25:11Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "d4f93e82b5dac09300d954c11eae8844b996ff16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e4282a_38230111",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a6eeefe_c30a3183",
       "range": {
         "startLine": 125,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13f5e471_67242c60",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "Actually I realized polling isn\u0027t needed here because data was already written and will be read in a single shot, so no need for loops or polling.",
+      "parentUuid": "9cbde65f_fe07d808",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "d4f93e82b5dac09300d954c11eae8844b996ff16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d54d5cd_399c7414",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-09-29T06:25:11Z",
       "side": 1,
       "message": "same here.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 0
+      },
+      "revId": "d4f93e82b5dac09300d954c11eae8844b996ff16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba976403_f0f7a252",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d54d5cd_399c7414",
       "range": {
         "startLine": 154,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d7231f9_233cc7e4",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a9ff564_4e09fe82",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 2
+      },
+      "revId": "d4f93e82b5dac09300d954c11eae8844b996ff16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f4661f8_4c27676a",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-09-29T06:25:11Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 2
+      },
+      "revId": "d4f93e82b5dac09300d954c11eae8844b996ff16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f009f34d_70ed8975",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f4661f8_4c27676a",
       "range": {
         "startLine": 178,
         "startChar": 0,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e0bef78_11be30fa",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "369d9ba5_f94f579f",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 2
+      },
+      "revId": "d4f93e82b5dac09300d954c11eae8844b996ff16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea7bb43b_18261570",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-09-29T06:25:11Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 2
+      },
+      "revId": "d4f93e82b5dac09300d954c11eae8844b996ff16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ee09ae2_b19df96f",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea7bb43b_18261570",
       "range": {
         "startLine": 190,
         "startChar": 0,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b582e729_61a06239",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70d17b4b_8d12a98f",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 2
+      },
+      "revId": "d4f93e82b5dac09300d954c11eae8844b996ff16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcdba751_beab3359",
@@ -277,6 +541,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2c5db3c_9a84a777",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcdba751_beab3359",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 2
+      },
+      "revId": "d4f93e82b5dac09300d954c11eae8844b996ff16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5308b09_cebcdafa",
@@ -290,6 +578,30 @@
       "writtenOn": "2021-09-29T06:25:11Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 2
+      },
+      "revId": "d4f93e82b5dac09300d954c11eae8844b996ff16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebd1f2c0_b7571043",
+        "filename": "src/chromiumos/tast/common/firmware/serial/test_utils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T00:38:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5308b09_cebcdafa",
       "range": {
         "startLine": 205,
         "startChar": 0,
