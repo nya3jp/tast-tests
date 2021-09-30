@@ -265,6 +265,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9e7d9ca_a39990c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/autoupdate_rootfs_to_stateful.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-09-30T16:26:35Z",
+      "side": 1,
+      "message": "Done updating based on the proposal go/lacros-autoupdate-test-naming",
+      "parentUuid": "d44d2b96_d4a7f62e",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 42
+      },
+      "revId": "73a48dc0f83fec58e1afa8af4ed8caf91caeeba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db4af252_eb7c59db",
