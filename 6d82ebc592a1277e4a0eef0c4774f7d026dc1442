@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75e833b1_10c1b61b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-09-30T00:54:28Z",
+      "side": 1,
+      "message": "Yury, I think CQs are actually failing due to this patch. In order to address this, we need a bulk timeout change. That\u0027s why I submit crrev/c/3193486 and crrev/i/4153270 instead.\n\nThanks!",
+      "revId": "6d82ebc592a1277e4a0eef0c4774f7d026dc1442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
