@@ -21,7 +21,7 @@ func init() {
 		Func:         Gralloc,
 		Desc:         "Test ARC++ gralloc implementation",
 		Contacts:     []string{"stevensd@chromium.org"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
