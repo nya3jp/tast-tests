@@ -27,7 +27,7 @@ func init() {
 			"arc-storage@google.com",
 			"cros-arc-te@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
+		Attr:         []string{"group:mainline", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome", "chrome_internal", "drivefs"},
 		Timeout:      4 * time.Minute,
 		VarDeps:      []string{"arc.Drivefs.user1", "arc.Drivefs.password1"},
