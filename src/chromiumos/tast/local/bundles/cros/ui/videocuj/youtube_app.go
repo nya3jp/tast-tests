@@ -308,10 +308,20 @@ func (y *YtApp) PauseAndPlayVideo(ctx context.Context) error {
 	playBtn := y.d.Object(androidui.ID(playPauseBtnID), androidui.Description(playBtnDesc))
 
 	startTime := time.Now()
+	firstAttempt := true
 	return testing.Poll(ctx, func(ctx context.Context) error {
-
 		if err := cuj.FindAndClick(playerView, uiWaitTime)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to find/click the player view in %s", uiWaitTime)
+		}
+
+		if firstAttempt {
+			// The video should be playing at this point. However, we'll double check to make sure
+			// as we have seen a few cases where the video became paused automatically.
+			firstAttempt = false
+			if err := cuj.ClickIfExist(playBtn, 2*time.Second)(ctx); err == nil {
+				testing.ContextLog(ctx, "Video is paused to begin with; resuming video")
+				return errors.New("video is paused to begin with; resumed")
+			}
 		}
 
 		if err := cuj.FindAndClick(pauseBtn, waitTimeAfterClickPlayerView)(ctx); err != nil {
