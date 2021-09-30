@@ -31,10 +31,16 @@ func init() {
 		Timeout:      20 * time.Minute,
 		SoftwareDeps: []string{"vm_host", "dlc"},
 		Fixture:      "vmDLC",
+		Params: []testing.Param{{
+			Val: false,
+		}, {
+			Name: "vhost_user_fs",
+			Val:  true,
+		}},
 	})
 }
 
-func setupCrosvmCmd(ctx context.Context, kernel, serialLog, script string, scriptArgs []string) *testexec.Cmd {
+func setupCrosvmParams(kernel, serialLog, script string, scriptArgs []string) *vm.CrosvmParams {
 	kernParams := []string{
 		"root=/dev/root",
 		"rootfstype=virtiofs",
@@ -51,13 +57,81 @@ func setupCrosvmCmd(ctx context.Context, kernel, serialLog, script string, scrip
 		vm.KernelArgs(kernParams...),
 		vm.SerialOutput(serialLog),
 	)
+	return ps
+}
 
-	args := []string{"--nofile=262144", "crosvm"}
-	args = append(args, ps.ToArgs()...)
-	return testexec.CommandContext(ctx, "prlimit", args...)
+func runTest(ctx context.Context, s *testing.State, crosvmParams *vm.CrosvmParams) {
+	output, err := os.Create(filepath.Join(s.OutDir(), "crosvm.log"))
+	if err != nil {
+		s.Fatal("Failed to create crosvm log file: ", err)
+	}
+
+	defer output.Close()
+	crosvmArgs := []string{"--nofile=262144", "crosvm"}
+	crosvmArgs = append(crosvmArgs, crosvmParams.ToArgs()...)
+	cmd := testexec.CommandContext(ctx, "prlimit", crosvmArgs...)
+	cmd.Stdout = output
+	cmd.Stderr = output
+	devlog, err := os.Create(filepath.Join(s.OutDir(), "device.log"))
+	if err != nil {
+		s.Fatal("Failed to create crosvm log file: ", err)
+	}
+	defer devlog.Close()
+
+	s.Log("Running pjdfstests")
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to run crosvm: ", err)
+	}
+}
+
+func runTestWithVhostUserFS(ctx context.Context, s *testing.State, crosvmParams *vm.CrosvmParams, td string) {
+	output, err := os.Create(filepath.Join(s.OutDir(), "crosvm.log"))
+	if err != nil {
+		s.Fatal("Failed to create crosvm log file: ", err)
+	}
+
+	defer output.Close()
+	sock := filepath.Join(td, "vhost-user-fs.sock")
+	vm.VhostUserFS(sock, "fstag")(crosvmParams)
+	crosvmArgs := []string{"--nofile=262144", "crosvm"}
+	crosvmArgs = append(crosvmArgs, crosvmParams.ToArgs()...)
+	cmd := testexec.CommandContext(ctx, "prlimit", crosvmArgs...)
+	cmd.Stdout = output
+	cmd.Stderr = output
+	devlog, err := os.Create(filepath.Join(s.OutDir(), "device.log"))
+	if err != nil {
+		s.Fatal("Failed to create crosvm log file: ", err)
+	}
+	defer devlog.Close()
+
+	devArgs := []string{
+		"device",
+		"fs",
+		"--socket", sock,
+		"--tag", "fstag",
+		"--shared-dir", td,
+	}
+	devCmd := testexec.CommandContext(ctx, "crosvm", devArgs...)
+	devCmd.Stdout = devlog
+	devCmd.Stderr = devlog
+	if err := devCmd.Start(); err != nil {
+		s.Fatal("Failed to start vhost-user fs device: ", err)
+	}
+
+	s.Log("Running pjdfstests")
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to run crosvm: ", err)
+	}
+
+	// vhost-user-fs device must stop right after all of VMs stopped.
+	if err := devCmd.Wait(testexec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to complete vhost-user-net-device: ", err)
+	}
 }
 
 func Virtiofs(ctx context.Context, s *testing.State) {
+	isVhostUserFS := s.Param().(bool)
+
 	// Create a temporary directory on the stateful partition rather than in memory.
 	td, err := ioutil.TempDir("/usr/local/tmp", "tast.vm.Virtiofs.")
 	if err != nil {
@@ -77,19 +151,11 @@ func Virtiofs(ctx context.Context, s *testing.State) {
 
 	script := s.DataPath(runPjdfstest)
 
-	output, err := os.Create(filepath.Join(s.OutDir(), "crosvm.log"))
-	if err != nil {
-		s.Fatal("Failed to create crosvm log file: ", err)
-	}
-	defer output.Close()
-
-	s.Log("Running pjdfstests")
-	cmd := setupCrosvmCmd(ctx, data.Kernel, logFile, script, []string{td})
-	cmd.Stdout = output
-	cmd.Stderr = output
-
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to run crosvm: ", err)
+	crosvmParams := setupCrosvmParams(data.Kernel, logFile, script, []string{td})
+	if isVhostUserFS {
+		runTestWithVhostUserFS(ctx, s, crosvmParams, td)
+	} else {
+		runTest(ctx, s, crosvmParams)
 	}
 
 	log, err := ioutil.ReadFile(logFile)
