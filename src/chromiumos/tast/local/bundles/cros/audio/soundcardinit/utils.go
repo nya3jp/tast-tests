@@ -81,16 +81,12 @@ func CreateStopTimeFile(ctx context.Context, ts int64) error {
 	return ioutil.WriteFile(StopTimeFile, []byte(s), 0644)
 }
 
-// VerifyUseVPD verifies calib* content contains UseVPD.
-func VerifyUseVPD(ctx context.Context, soundCardID string, count uint) error {
+// VerifyCalibExist verifies calib* exist.
+func VerifyCalibExist(ctx context.Context, soundCardID string, count uint) error {
 	for i := 0; i < int(count); i++ {
 		calib := fmt.Sprintf(CalibFiles, soundCardID, i)
-		b, err := ioutil.ReadFile(calib)
-		if err != nil {
-			errors.Wrapf(err, "failed to read %s", calib)
-		}
-		if !strings.Contains(string(b), "UseVPD") {
-			return errors.Errorf("%s expect:UseVPD, got: %s", calib, string(b))
+		if _, err := os.Stat(calib); err != nil {
+			return err
 		}
 	}
 	return nil
