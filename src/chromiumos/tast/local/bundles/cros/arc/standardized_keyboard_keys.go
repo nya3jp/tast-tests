@@ -17,7 +17,35 @@ import (
 // standardizedKeyboardKeyTest represents a key to verify in the keys test.
 type standardizedKeyboardKeyTest struct {
 	displayName string
-	key         input.EventCode
+	keyPress    keyboardKeyPress
+}
+
+// keyboardKeyPress represents a key that can be pressed on the keyboard. The actual
+// implementation of a press is abstracted since certain keys (namely in the top row)
+// behave differently on a per device basis.
+type keyboardKeyPress struct {
+	key input.EventCode
+}
+
+// Press sends a key press (down, and up) for the created key. If the key does not
+// exist on the device, a value indicating the key was skipped is returned.
+func (eck *keyboardKeyPress) Press(ctx context.Context, topRow *input.TopRowLayout, kbd *input.KeyboardEventWriter) (bool, error) {
+	// Handle top row keys first.
+	if eck.key == input.KEY_FORWARD {
+		if topRow.BrowserForward == "" {
+			return true, nil
+		}
+
+		return false, kbd.Accel(ctx, topRow.BrowserForward)
+	} else if eck.key == input.KEY_BACK {
+		if topRow.BrowserBack == "" {
+			return true, nil
+		}
+
+		return false, kbd.Accel(ctx, topRow.BrowserBack)
+	} else {
+		return false, kbd.TypeKey(ctx, eck.key)
+	}
 }
 
 func init() {
@@ -77,33 +105,22 @@ func runStandardizedKeyboardKeysTest(ctx context.Context, s *testing.State, test
 	}
 	defer kbd.Close()
 
-	// Set up the basic keys to test. Must match keyCodesToTest in the corresponding app.
-	var allTestKeys = []standardizedKeyboardKeyTest{
-		{displayName: "KEYS TEST - LEFT ARROW", key: input.KEY_LEFT},
-		{displayName: "KEYS TEST - DOWN ARROW", key: input.KEY_DOWN},
-		{displayName: "KEYS TEST - RIGHT ARROW", key: input.KEY_RIGHT},
-		{displayName: "KEYS TEST - UP ARROW", key: input.KEY_UP},
-		{displayName: "KEYS TEST - TAB", key: input.KEY_TAB},
-		{displayName: "KEYS TEST - ESCAPE", key: input.KEY_ESC},
-		{displayName: "KEYS TEST - ENTER", key: input.KEY_ENTER},
-	}
-
-	// Add in the available top row keys.
 	topRow, err := input.KeyboardTopRowLayout(ctx, kbd)
 	if err != nil {
-		s.Fatal("Failed to obtain the top-row layout: ", err)
+		s.Fatal("Failed to load the top-row layout: ", err)
 	}
 
-	if topRow.BrowserBack != "" {
-		allTestKeys = append(allTestKeys, standardizedKeyboardKeyTest{displayName: "KEYS TEST - BACK", key: input.KEY_BACK})
-	} else {
-		s.Log("No browser back button found on device, skipping")
-	}
-
-	if topRow.BrowserForward != "" {
-		allTestKeys = append(allTestKeys, standardizedKeyboardKeyTest{displayName: "KEYS TEST - FORWARD", key: input.KEY_FORWARD})
-	} else {
-		s.Log("No browser forward button found on device, skipping")
+	// Set up the basic keys to test. Must match keyCodesToTest in the corresponding app.
+	var allTestKeys = []standardizedKeyboardKeyTest{
+		{displayName: "KEYS TEST - LEFT ARROW", keyPress: keyboardKeyPress{key: input.KEY_LEFT}},
+		{displayName: "KEYS TEST - DOWN ARROW", keyPress: keyboardKeyPress{key: input.KEY_DOWN}},
+		{displayName: "KEYS TEST - RIGHT ARROW", keyPress: keyboardKeyPress{key: input.KEY_RIGHT}},
+		{displayName: "KEYS TEST - UP ARROW", keyPress: keyboardKeyPress{key: input.KEY_UP}},
+		{displayName: "KEYS TEST - TAB", keyPress: keyboardKeyPress{key: input.KEY_TAB}},
+		{displayName: "KEYS TEST - ESCAPE", keyPress: keyboardKeyPress{key: input.KEY_ESC}},
+		{displayName: "KEYS TEST - ENTER", keyPress: keyboardKeyPress{key: input.KEY_ENTER}},
+		{displayName: "KEYS TEST - FORWARD", keyPress: keyboardKeyPress{key: input.KEY_FORWARD}},
+		{displayName: "KEYS TEST - BACK", keyPress: keyboardKeyPress{key: input.KEY_BACK}},
 	}
 
 	// Set up the selector ids.
@@ -123,8 +140,15 @@ func runStandardizedKeyboardKeysTest(ctx context.Context, s *testing.State, test
 			s.Fatalf("Failed to find %v element key: %v", curTestKey.displayName, err)
 		}
 
-		if err := kbd.TypeKey(ctx, curTestKey.key); err != nil {
+		keySkipped, err := curTestKey.keyPress.Press(ctx, topRow, kbd)
+		if err != nil {
 			s.Fatalf("Failed to send %v key: %v", curTestKey.displayName, err)
+		}
+
+		// Log and continue if the key was skipped.
+		if keySkipped {
+			s.Logf("Key for test %v does not exist on device and was skipped", curTestKey.displayName)
+			continue
 		}
 
 		if err := testParameters.Device.Object(ui.Text(curTestKey.displayName)).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
