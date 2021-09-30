@@ -307,9 +307,14 @@ func (y *YtApp) PauseAndPlayVideo(ctx context.Context) error {
 	pauseBtn := y.d.Object(androidui.ID(playPauseBtnID), androidui.Description(pauseBtnDesc))
 	playBtn := y.d.Object(androidui.ID(playPauseBtnID), androidui.Description(playBtnDesc))
 
+	// The video should be playing at this point. However, we'll double check to make sure
+	// as we have seen a few cases where the video became paused automatically.
+	if err := y.ensureVideoPlaying(ctx, playerView, playBtn); err != nil {
+		return errors.Wrap(err, "failed to ensure video is playing before pausing")
+	}
+
 	startTime := time.Now()
 	return testing.Poll(ctx, func(ctx context.Context) error {
-
 		if err := cuj.FindAndClick(playerView, uiWaitTime)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to find/click the player view in %s", uiWaitTime)
 		}
@@ -341,6 +346,19 @@ func (y *YtApp) PauseAndPlayVideo(ctx context.Context) error {
 		testing.ContextLogf(ctx, "Elapsed time when checking the playback status of youtube app: %.3f s", time.Since(startTime).Seconds())
 		return nil
 	}, &testing.PollOptions{Interval: time.Second, Timeout: 2 * time.Minute})
+}
+
+func (y *YtApp) ensureVideoPlaying(ctx context.Context, playerView, playBtn *androidui.Object) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := cuj.FindAndClick(playerView, 2*time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to find/click the player view in 2s")
+		}
+		if err := playBtn.WaitForExists(ctx, 2*time.Second); err == nil {
+			testing.ContextLog(ctx, "Video is paused; resuming video")
+			return playBtn.Click(ctx)
+		}
+		return nil
+	}, &testing.PollOptions{Interval: time.Second, Timeout: 20 * time.Second})
 }
 
 // Close closes the resources related to video.
