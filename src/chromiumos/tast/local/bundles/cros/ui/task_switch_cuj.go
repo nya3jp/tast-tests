@@ -33,6 +33,7 @@ import (
 type taskSWitchCUJTestParam struct {
 	tablet    bool
 	useLacros bool
+	tracing   bool
 }
 
 func init() {
@@ -50,6 +51,13 @@ func init() {
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "loggedInToCUJUser",
 				Val:               taskSWitchCUJTestParam{},
+			},
+			{
+				Name:              "trace",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+				ExtraSoftwareDeps: []string{"android_p"},
+				Fixture:           "loggedInToCUJUser",
+				Val:               taskSWitchCUJTestParam{tracing: true},
 			},
 			{
 				Name:              "vm",
@@ -418,6 +426,9 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
+	}
+	if testParam.tracing {
+		recorder.EnableTracing(s.OutDir())
 	}
 	defer recorder.Close(closeCtx)
 

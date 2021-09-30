@@ -7,8 +7,6 @@ package ui
 import (
 	"context"
 	"fmt"
-	"os"
-	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
@@ -63,6 +61,7 @@ type meetTest struct {
 	power     bool           // Whether to collect power metrics.
 	duration  time.Duration  // Duration of the meet call. Must be less than test timeout.
 	useLacros bool           // Whether to use lacros browser.
+	tracing   bool           // Whether to turn on tracing.
 }
 
 const defaultTestTimeout = 7 * time.Minute
@@ -115,6 +114,17 @@ func init() {
 				num:    16,
 				layout: meetLayoutTiled,
 				cam:    true,
+			},
+			Fixture: "loggedInToCUJUser",
+		}, {
+			// Big meeting with tracing.
+			Name:    "16p_trace",
+			Timeout: defaultTestTimeout,
+			Val: meetTest{
+				num:     16,
+				layout:  meetLayoutTiled,
+				cam:     true,
+				tracing: true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -308,29 +318,26 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
 	}
 
-	if _, ok := s.Var("record"); ok {
-		screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to create ScreenRecorder: ", err)
-		}
-		defer func() {
-			screenRecorder.Stop(ctx)
-			dir, ok := testing.ContextOutDir(ctx)
-			if ok && dir != "" {
-				if _, err := os.Stat(dir); err == nil {
-					testing.ContextLogf(ctx, "Saving screen record to %s", dir)
-					if err := screenRecorder.SaveInString(ctx, filepath.Join(dir, "screen_record.txt")); err != nil {
-						s.Fatal("Failed to save screen record in string: ", err)
-					}
-					if err := screenRecorder.SaveInBytes(ctx, filepath.Join(dir, "screen_record.webm")); err != nil {
-						s.Fatal("Failed to save screen record in bytes: ", err)
-					}
-				}
-			}
-			screenRecorder.Release(ctx)
-		}()
-		screenRecorder.Start(ctx, tconn)
-	}
+	// if _, ok := s.Var("record"); ok {
+	// 	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	// 	if err != nil {
+	// 		s.Fatal("Failed to create ScreenRecorder: ", err)
+	// 	}
+	// 	defer func() {
+	// 		screenRecorder.Stop(closeCtx)
+	// 		dir, ok := testing.ContextOutDir(closeCtx)
+	// 		if ok && dir != "" {
+	// 			if _, err := os.Stat(dir); err == nil {
+	// 				testing.ContextLogf(ctx, "Saving screen record to %s", dir)
+	// 				if err := screenRecorder.SaveInBytes(ctx, filepath.Join(dir, "screen_record.webm")); err != nil {
+	// 					s.Fatal("Failed to save screen record in bytes: ", err)
+	// 				}
+	// 			}
+	// 		}
+	// 		screenRecorder.Release(closeCtx)
+	// 	}()
+	// 	screenRecorder.Start(ctx, tconn)
+	// }
 
 	tweakPerfValues := func(pv *perf.Values) error { return nil }
 	if meet.power {
@@ -397,6 +404,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
+	}
+	if meet.tracing {
+		recorder.EnableTracing(s.OutDir())
 	}
 	defer func() {
 		if err := recorder.Close(closeCtx); err != nil {
@@ -672,7 +682,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 		if prof != nil {
 			defer func() {
-				if err := prof.End(ctx); err != nil {
+				if err := prof.End(closeCtx); err != nil {
 					s.Error("Failed to stop profiler: ", err)
 				}
 			}()
