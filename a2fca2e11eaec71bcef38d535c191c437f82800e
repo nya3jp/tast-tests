@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "738115fe_e934d7e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-09-30T23:00:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6805323b_6b8e97e4",
+      "range": {
+        "startLine": 7,
+        "startChar": 52,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "a2fca2e11eaec71bcef38d535c191c437f82800e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b468d261_d67da5e8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-30T22:07:57Z",
       "side": 1,
       "message": "nit: should be \"tast run DUT xxx\"?",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "a2fca2e11eaec71bcef38d535c191c437f82800e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f0cbca9_38354cf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-09-30T23:00:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b468d261_d67da5e8",
       "range": {
         "startLine": 10,
         "startChar": 5,
@@ -77,6 +125,30 @@
       "writtenOn": "2021-09-30T20:56:35Z",
       "side": 1,
       "message": "ditto above:\n\nsomething like \"launching an immersive ARC application\" seems to be more accurate.",
+      "range": {
+        "startLine": 21,
+        "startChar": 68,
+        "endLine": 21,
+        "endChar": 72
+      },
+      "revId": "a2fca2e11eaec71bcef38d535c191c437f82800e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe18163_224d6391",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/immersive_auto_hidden_shelf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-09-30T23:00:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97d31c78_4b72da2e",
       "range": {
         "startLine": 21,
         "startChar": 68,
