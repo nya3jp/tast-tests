@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3457a65_5ec208bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/deep_sleep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-09-30T17:34:30Z",
+      "side": 1,
+      "message": "Should the test require that it doesn\u0027t see too many consecutive ping failures?",
+      "revId": "b32e489df6f205c753b9148ab3a3bd2b66c7639d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
