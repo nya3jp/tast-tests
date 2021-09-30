@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40bbc332_5bad8793",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-30T16:27:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17d5e107_b0e82799",
+      "revId": "b5518ccd6f2af776190ad8b23a06d1b2db0dfd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b955d2c0_0853635b",
@@ -87,6 +105,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "364c7b70_16ded2e6",
+        "filename": "src/chromiumos/tast/local/policyutil/lacrospolicyutil/lacrospolicyutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-30T16:27:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f82501f4_48be6b7b",
+      "revId": "b5518ccd6f2af776190ad8b23a06d1b2db0dfd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8f007d7_f450ca33",
+        "filename": "src/chromiumos/tast/local/policyutil/lacrospolicyutil/lacrospolicyutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-30T16:27:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28bf6560_638b66ad",
+      "revId": "b5518ccd6f2af776190ad8b23a06d1b2db0dfd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cc9bd79_483cf7a3",
@@ -100,6 +154,30 @@
       "writtenOn": "2021-09-30T15:13:42Z",
       "side": 1,
       "message": "use a more descriptive name",
+      "range": {
+        "startLine": 15,
+        "startChar": 39,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "b5518ccd6f2af776190ad8b23a06d1b2db0dfd33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ec32320_fb5fcd52",
+        "filename": "src/chromiumos/tast/local/policyutil/lacrospolicyutil/lacrospolicyutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-30T16:27:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc9bd79_483cf7a3",
       "range": {
         "startLine": 15,
         "startChar": 39,
