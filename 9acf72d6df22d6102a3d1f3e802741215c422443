@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7deb6e9e_09052b48",
+        "filename": "src/chromiumos/tast/local/policyutil/lacrospolicyutil/lacrospolicyutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-09-30T16:48:25Z",
+      "side": 1,
+      "message": "\u003e \"usuage\" is a possible misspelling of \"usage\".\n\nPlease fix.",
+      "parentUuid": "93ce9551_c5df0994",
+      "range": {
+        "startLine": 17,
+        "startChar": 14,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "9acf72d6df22d6102a3d1f3e802741215c422443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
