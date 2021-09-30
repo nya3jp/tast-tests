@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/action"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
 
 const (
@@ -54,4 +55,13 @@ type ProductivityApp interface {
 	UpdateCells(ctx context.Context) error
 	VoiceToTextTesting(ctx context.Context, expectedText string, playAudio action.Action) error
 	End(ctx context.Context) error
+}
+
+// dialogInfo holds the information of a dialog that will be encountered and needs to be handled during testing.
+type dialogInfo struct {
+	name string
+	// dialog indicates the specified scene displayed.
+	dialog *nodewith.Finder
+	// node indicates the node displayed on the specified dialog.
+	node *nodewith.Finder
 }
