@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc66b4cc_7b326dee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-09-30T18:16:56Z",
+      "side": 1,
+      "message": "Fixed the commit queue error and uploaded the new patch.                                                                               Please find the snippet from the commit queue error logs \"src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go:729:10: Wrapf format %s has arg resizeLockModeButton of wrong type *chromiumos/tast/local/chrome/ui.Node\". ",
+      "revId": "53657491ff553630f7173085091cb52e180d6d25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
