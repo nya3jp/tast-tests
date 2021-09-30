@@ -7,7 +7,11 @@ package productivitycuj
 import (
 	"context"
 	"fmt"
+	"strconv"
+	"strings"
 	"time"
+
+	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
@@ -28,6 +32,13 @@ const (
 	myFiles = "My files"
 	// recent indicates the "Recent" item label in the navigation bar.
 	recent = "Recent"
+
+	// wordTab indicates the tab name of the "Microsoft Word".
+	wordTab = "Microsoft Word Online"
+	// powerpointTab indicates the tab name of the "Microsoft PowerPoint".
+	powerpointTab = "Microsoft PowerPoint Online"
+	// excelTab indicates the tab name of the "Microsoft Excel".
+	excelTab = "Microsoft Excel Online"
 
 	// word indicates the label of the new document.
 	word = "Word document"
@@ -94,7 +105,57 @@ func (app *MicrosoftWebOffice) CreateSlides(ctx context.Context) error {
 
 // CreateSpreadsheet creates a new spreadsheet from microsoft web app and returns sheet name.
 func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context) (string, error) {
-	return "", nil
+	conn, err := app.openOneDrive(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to open OneDrive")
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
+	// If the file already exists, check the dependent cells first to prevent continuous failure due to incorrect content.
+	checkSheet := func(ctx context.Context) error {
+		for i := 1; i <= rangeOfCells; i++ {
+			idx := strconv.Itoa(i)
+			cell := fmt.Sprintf("A%d", i)
+			value, err := app.getBoxValue(ctx, cell)
+			if err != nil {
+				return err
+			}
+			if value != idx {
+				if err := app.editBoxValue(ctx, cell, idx); err != nil {
+					return err
+				}
+			}
+		}
+
+		formulaBox := "B1"
+		formula := fmt.Sprintf("=SUM(A1:A%d)", rangeOfCells)
+		return app.ui.Retry(retryTimes, func(ctx context.Context) error {
+			if err := app.checkFormula(ctx, formulaBox, formula); err != nil {
+				if err := app.editBoxValue(ctx, formulaBox, formula); err != nil {
+					return err
+				}
+				return app.checkFormula(ctx, formulaBox, formula)
+			}
+			return nil
+		})(ctx)
+	}
+
+	// Check if the sample file exists. If not, create a blank one.
+	if err := app.searchSampleSheet(ctx); err != nil {
+		return sheetName, uiauto.Combine("create a new spreadsheet",
+			app.createSampleSheet,
+			app.closeTab(excelTab),
+		)(ctx)
+	}
+
+	excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
+	canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
+	return sheetName, uiauto.Combine("check the contents of the sheet",
+		app.reload(canvas, app.searchSampleSheet),
+		uiauto.NamedAction("check the contents of the spreadsheet", checkSheet),
+		app.closeTab(excelTab),
+	)(ctx)
 }
 
 // OpenSpreadsheet opens an existing spreadsheet from microsoft web app.
@@ -514,6 +575,211 @@ func (app *MicrosoftWebOffice) searchSampleSheet(ctx context.Context) error {
 	}
 
 	return nil
+}
+
+// openFindAndSelect opens "Find & Select".
+func (app *MicrosoftWebOffice) openFindAndSelect(ctx context.Context) error {
+	testing.ContextLog(ctx, `Opening "Find & Select"`)
+
+	findAndSelectButton := nodewith.Name("Find & Select").Role(role.PopUpButton)
+	moreOptions := nodewith.Name("More Options").Role(role.Group)
+	moreOptionsMenu := nodewith.Name("More Options").Role(role.Menu)
+	editing := nodewith.Name("Editing").Role(role.Group).Ancestor(moreOptionsMenu)
+	findAndSelectItem := nodewith.Name("Find & Select").Role(role.MenuItem).Ancestor(editing)
+
+	// There might be two situations.
+	// 1. TabPanel shows "Find & Select" directly.
+	// 2. First click on "More Options" then you can find "Find & Select".
+	found, err := app.ui.IsNodeFound(ctx, findAndSelectButton)
+	if err != nil {
+		return err
+	}
+	if found {
+		return app.uiHdl.Click(findAndSelectButton)(ctx)
+	}
+
+	return uiauto.Combine("click more options",
+		app.uiHdl.Click(moreOptions),
+		app.uiHdl.Click(findAndSelectItem),
+	)(ctx)
+}
+
+// selectRange selects the range by clicking on the "Name Box" or opening "Go to" box since the tapping response is different with clicking.
+func (app *MicrosoftWebOffice) selectRange(ctx context.Context) error {
+	testing.ContextLog(ctx, `Selecting "Range"`)
+
+	// In the clamshell mode, the "Name Box" can be focused with just click.
+	if !app.tabletMode {
+		testing.ContextLog(ctx, `Selecting range by focus on "Name Box"`)
+		nameBox := nodewith.Name("Name Box").Role(role.TextFieldWithComboBox).Editable()
+		nameBoxFocused := nameBox.Focused()
+		return app.uiHdl.ClickUntil(nameBox, app.ui.Exists(nameBoxFocused))(ctx)
+	}
+
+	rangeText := nodewith.Name("Range:").Role(role.TextField).Editable()
+	rangeTextFocused := rangeText.Focused()
+	// Pressing Ctrl+G will open the "Go To" box.
+	// Sometimes key events are typed but the UI does not respond. Retry to alert dialog does appear.
+	if err := app.ui.WithInterval(time.Second).RetryUntil(app.kb.AccelAction("Ctrl+G"), app.ui.Exists(rangeText))(ctx); err != nil {
+		testing.ContextLog(ctx, "Opening with panel")
+
+		home := nodewith.Name("Home").Role(role.Tab)
+		homeTabPanel := nodewith.Name("Home").Role(role.TabPanel)
+		goTo := nodewith.Name("Go to").Role(role.MenuItem)
+		if err := uiauto.Combine(`open "Go To" with panel`,
+			app.uiHdl.ClickUntil(home, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(homeTabPanel)),
+			app.openFindAndSelect,
+			app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(goTo), app.uiHdl.Click(goTo)),
+		)(ctx); err != nil {
+			return err
+		}
+	}
+
+	return app.uiHdl.ClickUntil(rangeText, app.ui.Exists(rangeTextFocused))(ctx)
+}
+
+// selectBox selects the specified cell using the name box.
+func (app *MicrosoftWebOffice) selectBox(box string) action.Action {
+	ok := nodewith.Name("OK").Role(role.Button).First()
+	return uiauto.NamedAction(fmt.Sprintf("to select box %q", box),
+		uiauto.Combine("click the name box and name a range",
+			app.selectRange,
+			app.kb.AccelAction("Ctrl+A"), // Make sure to clear the content and re-input.
+			app.kb.TypeAction(box),
+			app.kb.AccelAction("Enter"),
+			app.ui.IfSuccessThen(app.ui.Exists(ok), app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(ok)),
+		),
+	)
+}
+
+// getBoxValue gets the value of the specified box.
+func (app *MicrosoftWebOffice) getBoxValue(ctx context.Context, box string) (clipData string, err error) {
+	if err := app.selectBox(box)(ctx); err != nil {
+		return "", err
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Due to the unstable network, there might be no data in the clipboard after the copy operation.
+		// Therefore, we also need to retry the copy operation.
+		if err := app.kb.AccelAction("Ctrl+C")(ctx); err != nil {
+			return err
+		}
+		// Given time to copy data.
+		testing.Sleep(ctx, time.Second)
+		clipData, err = getClipboardText(ctx, app.tconn)
+		if err != nil {
+			return err
+		}
+		if clipData == "Retrieving data. Wait a few seconds and try to cut or copy again." {
+			return errors.New("clipboard data is not yet ready")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Minute}); err != nil {
+		return "", err
+	}
+
+	testing.ContextLogf(ctx, "Getting box %q value: %s", box, clipData)
+
+	return clipData, nil
+}
+
+// editBoxValue edits the cell to the specified value.
+func (app *MicrosoftWebOffice) editBoxValue(ctx context.Context, box, value string) error {
+	testing.ContextLogf(ctx, "Writing box %q value: %s", box, value)
+
+	return uiauto.Combine(fmt.Sprintf("write box %q value", box),
+		app.selectBox(box),
+		app.kb.TypeAction(value),
+		app.kb.AccelAction("Enter"),
+	)(ctx)
+}
+
+// checkFormula checks if the formula is correct.
+func (app *MicrosoftWebOffice) checkFormula(ctx context.Context, box, value string) error {
+	if err := app.selectBox(box)(ctx); err != nil {
+		return err
+	}
+
+	formulaBar := nodewith.Name("formula bar").Role(role.TextField).Editable()
+	formulaBarText := nodewith.Role(role.StaticText).FinalAncestor(formulaBar)
+	node, err := app.ui.Info(ctx, formulaBarText)
+	if err != nil {
+		return err
+	}
+	if node.Name != value {
+		return errors.New("incorrect formula")
+	}
+
+	return nil
+}
+
+// createSampleSheet creates a sample spreadsheet.
+func (app *MicrosoftWebOffice) createSampleSheet(ctx context.Context) error {
+	testing.ContextLog(ctx, "Creating a new spreadsheet")
+
+	myFilesWebArea := nodewith.Name("My files - OneDrive").Role(role.RootWebArea)
+	excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
+	canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
+	savedButton := nodewith.NameContaining("Saved to OneDrive").Role(role.Button)
+	fileNameBox := nodewith.Name("File Name").Role(role.TextField)
+
+	if err := uiauto.Combine("open a blank spreadsheet",
+		// Make sure we are in "My Files" so that "New" can be found.
+		app.ui.IfSuccessThen(app.ui.Gone(myFilesWebArea), app.clickNavigationItem(myFiles)),
+		app.openBlankDocument(excel),
+		// Make sure canvas exists before typing. This is especially necessary on low-end DUTs.
+		app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(canvas),
+	)(ctx); err != nil {
+		return err
+	}
+
+	testing.ContextLogf(ctx, "Writing cell(A1:A%d) values", rangeOfCells)
+	for i := 1; i <= rangeOfCells; i++ {
+		idx := strconv.Itoa(i)
+		cell := fmt.Sprintf("A%d", i)
+		if err := app.editBoxValue(ctx, cell, idx); err != nil {
+			return errors.Wrapf(err, "failed to edit cell %q", cell)
+		}
+	}
+
+	formula := fmt.Sprintf("=SUM(A1:A%d)", rangeOfCells)
+	testing.ContextLog(ctx, "Writing cell(B1) value")
+	if err := app.editBoxValue(ctx, "B1", formula); err != nil {
+		return errors.Wrap(err, `failed to edit cell "B1"`)
+	}
+
+	testing.ContextLog(ctx, "Writing cell(H1) value")
+	if err := app.editBoxValue(ctx, "H1", "Copy to document"); err != nil {
+		return errors.Wrap(err, `failed to edit cell "H1"`)
+	}
+
+	testing.ContextLog(ctx, "Renaming spreadsheet")
+	return uiauto.Combine("rename file",
+		app.uiHdl.Click(savedButton),
+		app.ui.DoubleClick(fileNameBox),
+		app.kb.AccelAction("Ctrl+A"),
+		app.kb.TypeAction(sheetName),
+		app.kb.AccelAction("Enter"),
+		app.ui.WaitUntilExists(savedButton),
+	)(ctx)
+}
+
+// closeTab closes the tab with the title of the specified name.
+func (app *MicrosoftWebOffice) closeTab(title string) action.Action {
+	return func(ctx context.Context) error {
+		matcher := func(t *target.Info) bool {
+			return strings.Contains(t.Title, title) && t.Type == "page"
+		}
+
+		conn, err := app.cr.NewConnForTarget(ctx, matcher)
+		if err != nil {
+			return err
+		}
+		conn.CloseTarget(ctx)
+		conn.Close()
+
+		return nil
+	}
 }
 
 // NewMicrosoftWebOffice creates MicrosoftWebOffice instance which implements ProductivityApp interface.
