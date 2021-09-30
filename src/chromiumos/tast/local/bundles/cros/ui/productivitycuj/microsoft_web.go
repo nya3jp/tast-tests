@@ -7,6 +7,7 @@ package productivitycuj
 import (
 	"context"
 	"fmt"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -28,6 +29,13 @@ const (
 	myFiles = "My files"
 	// recent indicates the "Recent" item label in the navigation bar.
 	recent = "Recent"
+
+	// wordTab indicates the tab name of the "Microsoft Word".
+	wordTab = "Microsoft Word Online"
+	// powerpointTab indicates the tab name of the "Microsoft PowerPoint".
+	powerpointTab = "Microsoft PowerPoint Online"
+	// excelTab indicates the tab name of the "Microsoft Excel".
+	excelTab = "Microsoft Excel Online"
 
 	// word indicates the label of the new document.
 	word = "Word document"
@@ -94,7 +102,58 @@ func (app *MicrosoftWebOffice) CreateSlides(ctx context.Context) error {
 
 // CreateSpreadsheet creates a new spreadsheet from microsoft web app and returns sheet name.
 func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context) (string, error) {
-	return "", nil
+	conn, err := app.openOneDrive(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to open OneDrive")
+	}
+	defer conn.Close()
+	defer conn.CloseTarget(ctx)
+
+	// If the file already exists, check the dependent cell first.
+	checkSheet := func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Checking dependent compute chain in a spreasheet")
+		for i := 1; i <= rangeOfCells; i++ {
+			idx := strconv.Itoa(i)
+			cell := fmt.Sprintf("A%d", i)
+			value, err := app.getBoxValue(ctx, cell)
+			if err != nil {
+				return err
+			}
+			if value != idx {
+				if err := app.editBoxValue(ctx, cell, idx); err != nil {
+					return err
+				}
+			}
+		}
+
+		formulaBox := "B1"
+		formula := fmt.Sprintf("=SUM(A1:A%d)", rangeOfCells)
+		return app.ui.Retry(retryTimes, func(ctx context.Context) error {
+			if err := app.checkFormula(ctx, formulaBox, formula); err != nil {
+				if err := app.editBoxValue(ctx, formulaBox, formula); err != nil {
+					return err
+				}
+				return app.checkFormula(ctx, formulaBox, formula)
+			}
+			return nil
+		})(ctx)
+	}
+
+	// Check if the sample file exists. If not, create a blank one.
+	if err := app.searchSampleSheet(ctx); err != nil {
+		return sheetName, uiauto.Combine("create a new spreadsheet",
+			app.createSampleSheet,
+			app.closeTab(excelTab),
+		)(ctx)
+	}
+
+	excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
+	canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
+	return sheetName, uiauto.Combine("check the contents of the sheet",
+		app.reload(canvas, app.searchSampleSheet),
+		checkSheet,
+		app.closeTab(excelTab),
+	)(ctx)
 }
 
 // OpenSpreadsheet opens an existing spreadsheet from microsoft web app.
