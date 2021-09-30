@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package wmp
 
 import (
 	"context"
@@ -98,7 +98,7 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a new desk: ", err)
 	}
 	// Verifies that there are 2 desks.
-	deskMiniViewsInfo, err := findDeskMiniViews(ac, ctx, 2)
+	deskMiniViewsInfo, err := findDeskMiniViews(ctx, ac, 2)
 	if err != nil {
 		s.Fatal("Failed to find desks: ", err)
 	}
@@ -161,7 +161,7 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 
 // findDeskMiniViews returns a list of DeskMiniView nodes and verifies the number of nodes.
 // TODO(crbug/1251558): use autotest api to get the number of desks instead.
-func findDeskMiniViews(ac *uiauto.Context, ctx context.Context, count int) ([]uiauto.NodeInfo, error) {
+func findDeskMiniViews(ctx context.Context, ac *uiauto.Context, count int) ([]uiauto.NodeInfo, error) {
 	deskMiniViews := nodewith.ClassName("DeskMiniView")
 	deskMiniViewsInfo, err := ac.NodesInfo(ctx, deskMiniViews)
 	if err != nil {

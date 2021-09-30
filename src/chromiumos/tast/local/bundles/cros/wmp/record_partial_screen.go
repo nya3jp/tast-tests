@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package wmp
 
 import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/ui/wmp"
+	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -117,7 +117,7 @@ func RecordPartialScreen(ctx context.Context, s *testing.State) {
 	}
 
 	// Checks there is a screen record video file stored in Downloads folder.
-	has, err := wmp.HasScreenRecord(ctx)
+	has, err := wmputils.HasScreenRecord(ctx)
 	if err != nil {
 		s.Fatal("Failed to check whether screen record is present: ", err)
 	}
