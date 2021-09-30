@@ -9,6 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/action"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
@@ -55,7 +57,7 @@ type ProductivityApp interface {
 	SwitchToOfflineMode(ctx context.Context) error
 	UpdateCells(ctx context.Context) error
 	VoiceToTextTesting(ctx context.Context, expectedText string, playAudio action.Action) error
-	End(ctx context.Context) error
+	Cleanup(ctx context.Context) error
 }
 
 // dialogInfo holds the information of a dialog that will be encountered and needs to be handled during testing.
@@ -87,4 +89,18 @@ func getClipboardText(ctx context.Context, tconn *chrome.TestConn) (string, erro
 		return "", err
 	}
 	return clipData, nil
+}
+
+// scrollTabPage scrolls the specified tab index of the webpage.
+func scrollTabPage(ctx context.Context, uiHdl cuj.UIActionHandler, idx int) error {
+	scrollActions := uiHdl.ScrollChromePage(ctx)
+	if err := uiHdl.SwitchToChromeTabByIndex(idx)(ctx); err != nil {
+		return errors.Wrap(err, "failed to switch tab")
+	}
+	for _, act := range scrollActions {
+		if err := act(ctx); err != nil {
+			return errors.Wrap(err, "failed to execute action")
+		}
+	}
+	return nil
 }

@@ -125,8 +125,10 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 	return nil
 }
 
-// End cleans up GDocs resources. Remove the document and slide which we created in the test case and close all tabs.
-func (app *GoogleDocs) End(ctx context.Context) error {
+// Cleanup cleans up the resources used by running the GDocs testing.
+// It removes the document and slide which we created in the test case and close all tabs after completing the test.
+// This function should be called as deferred function after the app is created.
+func (app *GoogleDocs) Cleanup(ctx context.Context) error {
 	return nil
 }
 
