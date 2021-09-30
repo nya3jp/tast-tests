@@ -11,15 +11,19 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/audio"
+	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/bundles/cros/ui/cuj/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/graphics"
+	"chromiumos/tast/local/input/voice"
 	"chromiumos/tast/testing"
 )
 
 // Run runs the specified user scenario in productivity with different CUJ tiers.
-func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.Tier, tabletMode bool, outDir, testFileLocation string) error {
+func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.Tier, tabletMode bool, outDir, expectedText, testFileLocation string) (err error) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the test API connection")
@@ -54,7 +58,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
 
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return true }, cr, "ui_dump")
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return err != nil }, cr, "ui_dump")
 
 	productivityTimeout := 80 * time.Second
 	if tier == cuj.Premium {
@@ -98,6 +102,12 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 		if err := app.UpdateCells(ctx); err != nil {
 			return err
 		}
+		// For the "Premium" tier, it will have another process that uses voice-to-text (VTT) to enter text directly into the document.
+		if tier == cuj.Premium {
+			if err := voiceToTextTesting(ctx, app, tconn, expectedText, testFileLocation); err != nil {
+				return errors.Wrap(err, "failed to test voice to text")
+			}
+		}
 		if err := app.End(ctx); err != nil {
 			return err
 		}
@@ -130,6 +140,61 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 
 	if err := recorder.SaveHistograms(outDir); err != nil {
 		return errors.Wrap(err, "failed to save histogram raw data")
+	}
+
+	return nil
+}
+
+func voiceToTextTesting(ctx context.Context, app ProductivityApp, tconn *chrome.TestConn, expectedText, testFileLocation string) error {
+
+	playAudio := func(ctx context.Context) error {
+		// Set up the test audio file.
+		audioInput := audio.TestRawData{
+			Path:          testFileLocation,
+			BitsPerSample: 16,
+			Channels:      2,
+			Rate:          48000,
+		}
+
+		// Playback function by CRAS.
+		playCmd := crastestclient.PlaybackFileCommand(
+			ctx, audioInput.Path,
+			audioInput.Duration,
+			audioInput.Channels,
+			audioInput.Rate)
+		playCmd.Start()
+
+		return playCmd.Wait()
+	}
+
+	// Since the DUT may be connected to multiple audio devices, the "Loopback Playback/Capture" option will not be displayed directly in the detailed page of the audio settings
+	// (you need to scroll down the page to find it). Therefore, disable Bluetooth to display options before enabling Aloop. Otherwise, it will fail in voice.EnableAloop().
+	isBtEnabled, err := bluetooth.IsEnabled(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get bluetooth status")
+	}
+
+	if isBtEnabled {
+		testing.ContextLog(ctx, "Start to disable bluetooth")
+		if err := bluetooth.Disable(ctx); err != nil {
+			return errors.Wrap(err, "failed to disable bluetooth")
+		}
+		defer bluetooth.Enable(ctx)
+	}
+
+	// Reserve time to remove input file and unload ALSA loopback at the end of the test.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	cleanup, err := voice.EnableAloop(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to load ALSA loopback module")
+	}
+	defer cleanup(cleanupCtx)
+
+	if err := app.VoiceToTextTesting(ctx, expectedText, playAudio); err != nil {
+		return err
 	}
 
 	return nil
