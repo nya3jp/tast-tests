@@ -33,6 +33,24 @@
       "message": "I don\u0027t see where we explicitly check for nil ctx or arc, did I miss it?",
       "revId": "66b868875a14bd9fe5987b486c2227b66aa570de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a8f36b_d21ec20a",
+        "filename": "src/chromiumos/tast/local/multivm/metrics_shell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-09-30T05:18:35Z",
+      "side": 1,
+      "message": "in src/chromiumos/tast/local/memory/psi_stats.go:87  (right file),  there is a check for whether arc is nil,  and ctx is only used within that block... so it is kind of okay -   but I will go ahead and add an explicit check for ctx being nil at that same spot (so it will check for both). thx.",
+      "parentUuid": "43da6ebe_a92db571",
+      "revId": "66b868875a14bd9fe5987b486c2227b66aa570de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
