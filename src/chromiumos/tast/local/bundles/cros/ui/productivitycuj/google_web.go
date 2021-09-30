@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
@@ -258,7 +260,70 @@ func (app *GoogleDocs) UpdateCells(ctx context.Context) error {
 
 // VoiceToTextTesting uses the "Dictate" function to achieve voice-to-text (VTT) and directly input text into office documents.
 func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText string, playAudio action.Action) error {
-	return nil
+	testing.ContextLog(ctx, "Using voice to text (VTT) to enter text directly to document")
+
+	// allowPermission allows microphone if browser asks for the permission.
+	allowPermission := func(ctx context.Context) error {
+		alertDialog := nodewith.NameContaining("Use your microphone").ClassName("RootView").Role(role.AlertDialog).First()
+		allowButton := nodewith.Name("Allow").Role(role.Button).Ancestor(alertDialog)
+		if err := app.ui.WaitUntilExists(allowButton)(ctx); err != nil {
+			testing.ContextLog(ctx, "No action to grant microphone permission")
+			return nil
+		}
+		return app.uiHdl.ClickUntil(allowButton, app.ui.WaitUntilGone(alertDialog))(ctx)
+	}
+
+	checkDictationResult := func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Check if the result is as expected")
+
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := uiauto.Combine("copy the content of the document to the clipboard",
+				app.kb.AccelAction("Ctrl+A"),
+				app.ui.Sleep(500*time.Millisecond), // Wait for all text to be selected.
+				app.kb.AccelAction("Ctrl+C"),
+			)(ctx); err != nil {
+				return err
+			}
+
+			clipData, err := getClipboardText(ctx, app.tconn)
+			if err != nil {
+				return err
+			}
+			ignoreCaseData := strings.TrimSuffix(strings.ToLower(clipData), "\n")
+			if !strings.Contains(ignoreCaseData, strings.ToLower(expectedText)) {
+				return errors.Errorf("failed to validate input value ignoring case: got: %s; want: %s", clipData, expectedText)
+			}
+			return nil
+		}, &testing.PollOptions{Interval: time.Second, Timeout: 15 * time.Second})
+	}
+
+	menuBar := nodewith.Role(role.MenuBar)
+	tools := nodewith.Name("Tools").Role(role.MenuItem).FinalAncestor(menuBar)
+	toolsExpanded := tools.Expanded()
+	voiceTypingItem := nodewith.Name("Voice typing v Ctrl+Shift+S").Role(role.MenuItem)
+	voiceTypingDialog := nodewith.Name("Voice typing").Role(role.Dialog)
+	dictationButton := nodewith.Name("Start dictation").Role(role.ToggleButton).FinalAncestor(voiceTypingDialog)
+
+	// Click "Tools" and then "Voice typing". A microphone box appears.
+	// Click the microphone box when ready to speak.
+	if err := uiauto.Combine("turn on the voice typing",
+		app.uiHdl.SwitchToChromeTabByIndex(0), // Switch to Google Docs.
+		app.closeDialogs,
+		app.uiHdl.ClickUntil(tools, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(toolsExpanded)),
+		app.ui.WaitUntilExists(voiceTypingItem), // Sometimes the "Voice typing" menu item can be found but UI has not showed up yet.
+		app.uiHdl.Click(voiceTypingItem),
+		app.uiHdl.ClickUntil(dictationButton, app.checkDictionButton),
+		allowPermission,
+	)(ctx); err != nil {
+		return err
+	}
+
+	return uiauto.Combine("play an audio file and check dictation results",
+		app.uiHdl.ClickUntil(dictationButton, app.checkDictionButton), // Make sure that the dictation does not stop by waiting a long time.
+		playAudio,
+		checkDictationResult,
+		app.uiHdl.Click(dictationButton), // Click again to stop voice typing.
+	)(ctx)
 }
 
 // End cleans up GDocs resources. Remove the document and slide which we created in the test case and close all tabs.
@@ -466,6 +531,22 @@ func (app *GoogleDocs) closeDialogs(ctx context.Context) error {
 	}
 
 	return nil
+}
+
+// checkDictionButton checks if the "Start dictation" button is checked.
+func (app *GoogleDocs) checkDictionButton(ctx context.Context) error {
+	voiceTypingDialog := nodewith.Name("Voice typing").Role(role.Dialog)
+	dictationButton := nodewith.Name("Start dictation").Role(role.ToggleButton).FinalAncestor(voiceTypingDialog)
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		button, err := app.ui.Info(ctx, dictationButton)
+		if err != nil {
+			return err
+		}
+		if button.Checked != checked.True {
+			return errors.Errorf("button not checked yet: got: %v; want: %v", button.Checked, checked.True)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 15 * time.Second})
 }
 
 // NewGoogleDocs creates GoogleDocs instance which implements ProductivityApp interface.
