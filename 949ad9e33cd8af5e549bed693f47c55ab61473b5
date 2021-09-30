@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84f601b3_1bd45924",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_gaia.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-09-30T14:32:27Z",
+      "side": 1,
+      "message": "Should we move this somehow to lsbrelease.go? I think it would better be placed there, but nothing about the stateful lsbrelease is there yet, so I wasn\u0027t sure. Maybe leave it here since it\u0027s only needed in this test that\u0027s never executed automatically.",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 3
+      },
+      "revId": "949ad9e33cd8af5e549bed693f47c55ab61473b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
