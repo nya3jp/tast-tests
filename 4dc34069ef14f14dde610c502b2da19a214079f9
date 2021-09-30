@@ -16,6 +16,23 @@
       "message": "PTAL, thanks! Would you approve or I should wait until Cherie is back from OOO?",
       "revId": "4dc34069ef14f14dde610c502b2da19a214079f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b95132bb_0bdf88d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2021-09-30T16:00:19Z",
+      "side": 1,
+      "message": "Thanks :D",
+      "revId": "4dc34069ef14f14dde610c502b2da19a214079f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
