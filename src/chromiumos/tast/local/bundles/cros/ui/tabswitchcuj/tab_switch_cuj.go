@@ -43,6 +43,12 @@ const (
 	WPRArchiveName = "tab_switch_cuj.wprgo"
 )
 
+// TabSwitchParam holds parameters of tab switch cuj test variations.
+type TabSwitchParam struct {
+	ChromeType lacros.ChromeType // Chrome type.
+	Tracing    bool              // Whether to turn on tracing.
+}
+
 // findAnchorURLs returns the unique URLs of the anchors, which matches the pattern.
 // If it finds more than limit, returns the first limit elements.
 func findAnchorURLs(ctx context.Context, c *chrome.Conn, pattern string, limit int) ([]string, error) {
@@ -97,7 +103,7 @@ func Run(ctx context.Context, s *testing.State) {
 	var cs ash.ConnSource
 	var bTconn *chrome.TestConn
 
-	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeChromeOS {
+	if s.Param().(TabSwitchParam).ChromeType == lacros.ChromeTypeChromeOS {
 		cr = s.PreValue().(*chrome.Chrome)
 		cs = cr
 
@@ -108,7 +114,7 @@ func Run(ctx context.Context, s *testing.State) {
 	} else {
 		var l *launcher.LacrosChrome
 		var err error
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), s.Param().(TabSwitchParam).ChromeType)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
@@ -152,6 +158,9 @@ func Run(ctx context.Context, s *testing.State) {
 		[]int64{800, 1600}, bTconn))
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
+	}
+	if s.Param().(TabSwitchParam).Tracing {
+		recorder.EnableTracing(s.OutDir())
 	}
 	defer recorder.Close(closeCtx)
 
