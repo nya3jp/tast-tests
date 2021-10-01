@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "554a8f97_2aa7a04c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-01T07:55:35Z",
+      "side": 1,
+      "message": "nit: \"Add\"",
+      "revId": "8c9ef89a22f349e9310de80aa401fc46329dec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001cecf0_a425c7c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-01T07:55:35Z",
+      "side": 1,
+      "message": "nit: please use tast-tests or memory prefix. Either is fine.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "8c9ef89a22f349e9310de80aa401fc46329dec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7146ec7e_c09c3b43",
@@ -31,6 +71,69 @@
       "writtenOn": "2021-10-01T02:53:46Z",
       "side": 1,
       "message": "Thanks for the explanation.",
+      "revId": "8c9ef89a22f349e9310de80aa401fc46329dec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "917a2d5a_1054bc6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-01T07:55:35Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "8c9ef89a22f349e9310de80aa401fc46329dec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fccf22f8_6c6f63ba",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-01T07:55:35Z",
+      "side": 1,
+      "message": "nit: \"system.\"",
+      "range": {
+        "startLine": 49,
+        "startChar": 66,
+        "endLine": 49,
+        "endChar": 72
+      },
+      "revId": "8c9ef89a22f349e9310de80aa401fc46329dec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c6e414b_e21bd394",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-01T07:55:35Z",
+      "side": 1,
+      "message": "Please use full sentences. Same for the next comments.",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 21
+      },
       "revId": "8c9ef89a22f349e9310de80aa401fc46329dec7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -84,6 +187,46 @@
       "side": 1,
       "message": "yes, there is at least one case -  see local/multivm/metrics_shell.go in this review.  \nThe rationale for it being nil (on the caller side) is because the caller is a general purpose library, which acts on behalf of an upper layer that has no \"arc\" instance.\nIn that case, there will be no arc memory pressure metrics - and that\u0027s okay, we still have host memory pressure.",
       "parentUuid": "422fdaea_1a5209a2",
+      "revId": "8c9ef89a22f349e9310de80aa401fc46329dec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbacb8ff_a0e4fc00",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-01T07:55:35Z",
+      "side": 1,
+      "message": "\"guest).\"",
+      "range": {
+        "startLine": 138,
+        "startChar": 61,
+        "endLine": 138,
+        "endChar": 67
+      },
+      "revId": "8c9ef89a22f349e9310de80aa401fc46329dec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97f7c9e6_0afebbe3",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-01T07:55:35Z",
+      "side": 1,
+      "message": "nit: invert the condition, and return early in case it is true.\nYou can have 1 level of indentation less this way.",
       "revId": "8c9ef89a22f349e9310de80aa401fc46329dec7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
