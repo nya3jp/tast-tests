@@ -16,6 +16,24 @@
       "message": "FYI: This didn\u0027t build for me.",
       "revId": "e2f7ddc4e21109c1235a523a85efa5bb2d00a477",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d44d4ca_eae7a059",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-01T14:04:14Z",
+      "side": 1,
+      "message": "Can you please confirm if you have included the below 2 dependent CLs in your build?\n\n  * https://chromium-review.googlesource.com/c/3132177\n  * https://chromium-review.googlesource.com/c/3161114",
+      "parentUuid": "4c9af433_9f3c9b4b",
+      "revId": "e2f7ddc4e21109c1235a523a85efa5bb2d00a477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
