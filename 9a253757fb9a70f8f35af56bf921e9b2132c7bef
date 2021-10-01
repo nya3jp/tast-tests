@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22dac312_bfdf0f3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-10-01T09:51:44Z",
+      "side": 1,
+      "message": "Just verified that now the test also runs with a self built image out of the box. :) ",
+      "revId": "9a253757fb9a70f8f35af56bf921e9b2132c7bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
