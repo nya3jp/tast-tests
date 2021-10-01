@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "e0aadb4e5b325a503a6f6b641c684b18249065f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f26754cc_db1cb725",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2021-10-01T20:31:47Z",
+      "side": 1,
+      "message": "Sheriff chumping (simple change + tree is currently blocked on another issue). This test has been failing in CQ and postsubmits fairly frequently on Dedede + Hatch.",
+      "revId": "e0aadb4e5b325a503a6f6b641c684b18249065f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
