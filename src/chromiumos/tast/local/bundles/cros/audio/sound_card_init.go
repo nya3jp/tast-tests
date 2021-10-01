@@ -18,11 +18,18 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+// Skip these models as they don't use sound_card_init to configure their
+// smart amps.
+var skipModels = []string{
+	"atlas",
+	"nocturne",
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SoundCardInit,
-		Desc:         "Verifies sound_card_init boot time calibration logic",
-		HardwareDeps: hwdep.D(hwdep.SmartAmp()),
+		Desc:         "Verfies sound_card_init boot time calibration logic",
+		HardwareDeps: hwdep.D(hwdep.SmartAmp(), hwdep.SkipOnModel(skipModels...)),
 		Contacts:     []string{"judyhsiao@chromium.org", "cychiang@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      1 * time.Minute,
