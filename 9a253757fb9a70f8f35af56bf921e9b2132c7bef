@@ -16,6 +16,23 @@
       "message": "Just verified that now the test also runs with a self built image out of the box. :) ",
       "revId": "9a253757fb9a70f8f35af56bf921e9b2132c7bef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c6ffcc8_60f5603a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-01T09:54:05Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "9a253757fb9a70f8f35af56bf921e9b2132c7bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
