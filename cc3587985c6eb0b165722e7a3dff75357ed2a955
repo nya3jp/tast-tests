@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe8c45dd_92c928ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-10-01T06:03:16Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "cc3587985c6eb0b165722e7a3dff75357ed2a955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "579a2df8_cfa677aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-10-01T06:03:16Z",
+      "side": 1,
+      "message": "Is this change from 200ms to 250ms intentional e.g. making it less flaky? If so let\u0027s briefly mention it in the commit message.",
+      "range": {
+        "startLine": 527,
+        "startChar": 46,
+        "endLine": 527,
+        "endChar": 49
+      },
+      "revId": "cc3587985c6eb0b165722e7a3dff75357ed2a955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
