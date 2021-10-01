@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b56b62d_2aab0638",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-10-01T20:06:11Z",
+      "side": 1,
+      "message": "I don\u0027t consider myself quite an expert in go/tast, but this looks good to me",
+      "revId": "a27c0b1756d7408f392490aad00d8a3d09dbaf88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a646d20_dcf56148",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-10-01T20:06:11Z",
+      "side": 1,
+      "message": "we could add a constant for AppListBubbleView to src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+      "revId": "a27c0b1756d7408f392490aad00d8a3d09dbaf88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03dbcdff_e346b1e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-10-01T20:06:11Z",
+      "side": 1,
+      "message": "I think there\u0027s apps.Settings in \"chromiumos/tast/local/apps\"",
+      "revId": "a27c0b1756d7408f392490aad00d8a3d09dbaf88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
