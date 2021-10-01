@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "acc909c05d548419566bff503e0c1b6853fc0050",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a70afc_3af8f275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-10-01T14:18:27Z",
+      "side": 1,
+      "message": "nit: might be easier just to inline these into testRestrictedMode as all we\u0027re doing is moving an enum argument name into the function identifier",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 1
+      },
+      "revId": "acc909c05d548419566bff503e0c1b6853fc0050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

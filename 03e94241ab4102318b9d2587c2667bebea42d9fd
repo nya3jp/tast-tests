@@ -142,6 +142,30 @@
       },
       "revId": "03e94241ab4102318b9d2587c2667bebea42d9fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a83950a_21050335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-10-01T14:18:27Z",
+      "side": 1,
+      "message": "I disagree. One of the reasons we use types is to restrict the value space to exclude incoherent states, and it might be confusing for readers or later authors who see two booleans and expect them to be independent. I also don\u0027t see how the code would become longer; testRestrictedMode would take one argument instead of two, and you would check for how the expected level compares to the restriction level of the video.",
+      "parentUuid": "e0f3bf55_5c31806d",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 29
+      },
+      "revId": "03e94241ab4102318b9d2587c2667bebea42d9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
