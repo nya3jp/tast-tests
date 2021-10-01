@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2246ebcc_88f25438",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-01T18:14:58Z",
+      "side": 1,
+      "message": "Might be a bit more readable to do something like:\n\n\n        fileReadFromFlash \u003d filepath.Join(tempdirPath, \"test_rdp1.bin\")\n        args \u003d []string{\"--noservices\", \"--read\"}\n\n        if ! removeFlashReadProtect {\n                // Use different file name to avoid errors in removing file.\n                fileReadFromFlash \u003d filepath.Join(tempdirPath, \"test_rdp1_noremove.bin\")\n\t\targs \u003d append(args, \"--noremove_flash_read_protect\")\n\t}\n\targs \u003d append(args, fileReadFromFlash)",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "f04323e3bfc612fc6b1a53f54db93bcc40431a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bab5f063_d80417aa",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
         "patchSetId": 2
