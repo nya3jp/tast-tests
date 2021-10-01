@@ -87,6 +87,21 @@ var TouchviewCommonTests = []TestCase{
 	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
 }
 
+// ClamshellSmokeTests is a list of clamshell tests common to apps in appcompat_smoke suite.
+var ClamshellSmokeTests = []TestCase{
+	{Name: "Clamshell: Touchscreen Scroll", Fn: TouchScreenScroll},
+	{Name: "Clamshell: Physical Keyboard", Fn: TouchAndTextInputs},
+	{Name: "Clamshell: Mouse click", Fn: MouseClick},
+	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
+}
+
+// TouchviewSmokeTests is a list of touchview tests common to apps in appcompat_smoke suite.
+var TouchviewSmokeTests = []TestCase{
+	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
+	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
+	{Name: "Touchview: Touchscreen Scroll", Fn: TouchScreenScroll},
+}
+
 // RunTestCases setups the device and runs all app compat test cases.
 func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity string, testCases TestParams) {
 	// Step up chrome on Chromebook.
