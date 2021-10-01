@@ -70,6 +70,30 @@
       },
       "revId": "f9ba08275943b73a4dc08b8e05942fe8eb6c5e09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18f25626_f1187e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_warning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2021-10-01T18:00:33Z",
+      "side": 1,
+      "message": "I created crrev.com/c/3199847, which should take care of both items.",
+      "parentUuid": "5051d695_4e6fa7a1",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "f9ba08275943b73a4dc08b8e05942fe8eb6c5e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
