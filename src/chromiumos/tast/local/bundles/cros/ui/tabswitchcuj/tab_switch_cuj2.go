@@ -230,7 +230,7 @@ var allTargets = []struct {
 	{"https://news.yahoo.com/world/", newPageInfo(Basic, yahooNews, `/world/`, `/health/`)},
 	{"https://news.yahoo.com/science/", newPageInfo(Plus, yahooNews, `/science/`, `/tagged/skullduggery/`)},
 	{"https://news.yahoo.com/originals/", newPageInfo(Premium, yahooNews, `/originals/`, `/videos`)},
-	{"https://news.yahoo.com/videos/in-depth/", newPageInfo(Premium, yahooNews, `/videos/in-depth/`, `/videos/ideas-election/`)},
+	{"https://news.yahoo.com/tagged/climate-change/", newPageInfo(Premium, yahooNews, `/tagged/climate-change/`, `/us/`)},
 
 	{"https://edition.cnn.com/world", newPageInfo(Plus, cnn, `/world`, `/africa`)},
 	{"https://edition.cnn.com/americas", newPageInfo(Plus, cnn, `/americas`, `/asia`)},
