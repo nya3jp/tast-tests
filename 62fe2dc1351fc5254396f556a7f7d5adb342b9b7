@@ -39,6 +39,30 @@
       },
       "revId": "62fe2dc1351fc5254396f556a7f7d5adb342b9b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c1fdfe_6c3b44d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_local_wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-10-01T18:20:45Z",
+      "side": 1,
+      "message": "I can\u0027t seem to think of a reasonable way to do it. We need to return from the main func to end the test.",
+      "parentUuid": "aa61fbfc_e1cf331f",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "62fe2dc1351fc5254396f556a7f7d5adb342b9b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
