@@ -46,6 +46,11 @@ func (u *UpdateService) CheckForUpdate(ctx context.Context, req *aupb.UpdateRequ
 		args = append(args, fmt.Sprintf("--omaha_url=%s", req.OmahaUrl))
 	}
 
+	if req.AppVersion != "" {
+		testing.ContextLog(ctx, "Adding app version to arguments")
+		args = append(args, fmt.Sprintf("--app_version=%s", req.AppVersion))
+	}
+
 	cmd := testexec.CommandContext(ctx, "update_engine_client", args...)
 
 	testing.ContextLog(ctx, "Starting the update")
