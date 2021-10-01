@@ -21,6 +21,7 @@ service UpdateService {
 
 message UpdateRequest {
   string omaha_url = 1;
+  string app_version = 2;
 }
 
 message LSBRelease {

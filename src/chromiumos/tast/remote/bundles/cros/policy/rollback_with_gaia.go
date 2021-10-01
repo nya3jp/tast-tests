@@ -34,16 +34,26 @@ func init() {
 			"chromeos-commercial-stability@google.com",
 		},
 		Attr:         []string{}, // Manual execution only.
-		VarDeps:      []string{"policy.RollbackWithGaia.confirm"},
+		VarDeps:      []string{"policy.RollbackWithGaia.confirm", "policy.RollbackWithGaia.sourceVersion", "policy.RollbackWithGaia.targetVersion"},
 		SoftwareDeps: []string{"reboot", "chrome"},
 		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.autoupdate.UpdateService"},
 		Timeout:      5 * time.Minute,
 	})
 }
 
+// RollbackWithGaia test must be provided the source and target image versions.
+// The source version should be a full version string. The target can be
+// just a prefix. Furthermore, test should be started with
+//   -var=policy.RollbackWithGaia.confirm=ICanRollbackMyDUT
+// to avoid accidental execution of the test.
+//
+// For example, to run a rollback from M96 to M94:
+// tast run
+//   -var=policy.RollbackWithGaia.confirm=ICanRollbackMyDUT
+//   -var=policy.RollbackWithGaia.sourceVersion=14244.0.0
+//   -var=policy.RollbackWithGaia.targetVersion=14092.
+//   <ip> policy.RollbackWithGaia
 func RollbackWithGaia(ctx context.Context, s *testing.State) {
-	// Test should be started with -var=policy.RollbackWithGaia.confirm=ICanRollbackMyDUT
-	// to avoid accidental execution of the test.
 	if s.RequiredVar("policy.RollbackWithGaia.confirm") != "ICanRollbackMyDUT" {
 		s.Log("You should only run this example test if you have manual access to your DUT")
 		s.Log("After the update, you can restore the previous partition with the following command:")
@@ -92,7 +102,7 @@ func RollbackWithGaia(ctx context.Context, s *testing.State) {
 		// Enable the DUT to receive updates.
 		originalContent, err := signBoardName(ctx, updateClient)
 		if err != nil {
-			s.Fatal("Failed to enable the DUT to recieve updates: ", err)
+			s.Fatal("Failed to enable the DUT to receive updates: ", err)
 		}
 		defer func(ctx context.Context, lsbContent []byte) {
 			if _, err := updateClient.OverwriteStatefulLSBRelease(ctx, &aupb.LSBRelease{ContentJson: lsbContent}); err != nil {
@@ -113,12 +123,13 @@ func RollbackWithGaia(ctx context.Context, s *testing.State) {
 		}
 		defer policyClient.StopChromeAndFakeDMS(ctx, &empty.Empty{})
 
+		targetVersion := s.RequiredVar("policy.RollbackWithGaia.targetVersion")
+
 		// Set update policies.
 		rollbackPolicies := []policy.Policy{
 			// Note: the update will fail if the other partition already has the same image
 			// that is selected below to rollback to.
-			// &policy.DeviceTargetVersionPrefix{Val: "13982."}, // M92
-			&policy.DeviceTargetVersionPrefix{Val: "14092."}, // M94
+			&policy.DeviceTargetVersionPrefix{Val: targetVersion}, // Pass by argument, e.g. "13982." for M92.
 			&policy.DeviceRollbackAllowedMilestones{Val: 4},
 			&policy.DeviceRollbackToTargetVersion{Val: 3}, // Roll back and stay on target version if OS version is newer than target. Try to carry over device-level configuration.
 			&policy.ChromeOsReleaseChannel{Val: "stable-channel"},
@@ -144,11 +155,14 @@ func RollbackWithGaia(ctx context.Context, s *testing.State) {
 			}
 		}(cleanupCtx)
 
+		sourceVersion := s.RequiredVar("policy.RollbackWithGaia.sourceVersion")
+
 		// Update DUT with an update from the official prod server.
 		// The server is given explicitly because self-built images may not have
 		// it configured in their lsb-release file.
 		if _, err := updateClient.CheckForUpdate(ctx, &aupb.UpdateRequest{
-			OmahaUrl: "https://tools.google.com/service/update2",
+			OmahaUrl:   "https://tools.google.com/service/update2",
+			AppVersion: sourceVersion,
 		}); err != nil {
 			s.Fatal("Failed to check for updates: ", err)
 		}
