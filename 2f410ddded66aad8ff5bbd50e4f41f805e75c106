@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "991a093f_6d2c7054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-01T07:27:47Z",
+      "side": 1,
+      "message": "@Oleh \nHi,\nthe test apps.TelemetryExtension seems to fail without any changes. Could you please check it for me?",
+      "revId": "2f410ddded66aad8ff5bbd50e4f41f805e75c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
