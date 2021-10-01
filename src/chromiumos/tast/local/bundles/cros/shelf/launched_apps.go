@@ -105,7 +105,7 @@ func LaunchedApps(ctx context.Context, s *testing.State) {
 
 	// Check that the icons are also present in the UI
 	for _, app := range defaultApps {
-		err := ui.Exists(nodewith.Role(role.Button).Name(app.Name))(ctx)
+		err := ui.Exists(nodewith.ClassName(ash.ShelfIconClassName).Name(app.Name).Role(role.Button))(ctx)
 		if err != nil {
 			s.Errorf("There was no icon for %s in the shelf", app.Name)
 		} else {
