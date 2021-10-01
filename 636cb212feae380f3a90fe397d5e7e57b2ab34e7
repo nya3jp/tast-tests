@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b2abd8_fbfe061d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-01T04:43:50Z",
+      "side": 1,
+      "message": "This looks like a simple rename, LGTM.\n",
+      "revId": "636cb212feae380f3a90fe397d5e7e57b2ab34e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "439c07dd_fc27c2d4",
+        "filename": "android/ArcMediaScanPerfTest/src/org/chromium/arc/testapp/mediascanperf/MainActivity.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-01T04:43:50Z",
+      "side": 1,
+      "message": "For the record for myself: AndroidManifest.xml already points to org.chromium.arc.testapp.mediascanperf.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/android/ArcMediaScanPerfTest/AndroidManifest.xml",
+      "revId": "636cb212feae380f3a90fe397d5e7e57b2ab34e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
