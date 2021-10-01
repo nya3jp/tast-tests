@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23a21b9f_2db65988",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-01T08:59:34Z",
+      "side": 1,
+      "message": "I think you should overwrite the original AllowDinosaurEaterEgg test. The original goal is to not duplicate the tests, we should go in direction from the start.",
+      "revId": "3bbf9fe7afa289efa68f4fcd1b4da040b9fa1c5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86aee8eb_133f9d37",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg_ash_lacros.go",
         "patchSetId": 1
