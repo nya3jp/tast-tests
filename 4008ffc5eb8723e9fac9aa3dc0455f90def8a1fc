@@ -16,6 +16,23 @@
       "message": "Is this a duplicate of tast.shelf.AutoHideSmoke ?",
       "revId": "4008ffc5eb8723e9fac9aa3dc0455f90def8a1fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62baed38_1a7d6813",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1522642
+      },
+      "writtenOn": "2021-10-01T16:17:29Z",
+      "side": 1,
+      "message": "Skip",
+      "revId": "4008ffc5eb8723e9fac9aa3dc0455f90def8a1fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
