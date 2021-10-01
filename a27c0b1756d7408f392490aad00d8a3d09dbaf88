@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab5374f_32c88aff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-10-01T22:07:31Z",
+      "side": 1,
+      "message": "I don\u0027t think launcher.go is in separate git repo, it\u0027s in platform/tast-tests, just like this file (though, I don\u0027t feel to strongly)\n\n(yeah, I agree about using class names, but I\u0027m not sure whether there\u0027s an easy way around it - one idea I had recently was to add class names to autotest_private API - that way, we could at least make chrome only changes to update the class names that are used in tast)",
+      "parentUuid": "263c8c5f_4e3a7fb4",
+      "revId": "a27c0b1756d7408f392490aad00d8a3d09dbaf88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03dbcdff_e346b1e0",
