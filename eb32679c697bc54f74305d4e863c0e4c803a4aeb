@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c599f2_c404466f",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-01T02:45:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "878a28a5_e2f1a857",
+      "revId": "eb32679c697bc54f74305d4e863c0e4c803a4aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aae618d8_af424b30",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-01T01:10:11Z",
       "side": 1,
       "message": "nit: add once spece between // and State.",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "eb32679c697bc54f74305d4e863c0e4c803a4aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20be1f02_728c07d8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-01T02:45:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aae618d8_af424b30",
       "range": {
         "startLine": 18,
         "startChar": 2,
