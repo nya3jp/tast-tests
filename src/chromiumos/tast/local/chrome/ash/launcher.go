@@ -21,6 +21,9 @@ import (
 	"chromiumos/tast/local/chrome/internal/extension"
 )
 
+// AppListBubbleClassName is the automation API class name of the bubble launcher.
+const AppListBubbleClassName = "AppListBubbleView"
+
 // LauncherState represents the launcher (a.k.a AppList) state.
 type LauncherState string
 
