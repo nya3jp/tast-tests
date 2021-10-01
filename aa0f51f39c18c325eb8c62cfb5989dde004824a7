@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc0bbdd8_15b0037e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-01T17:48:05Z",
+      "side": 1,
+      "message": "I think it\u0027s OK as is.",
+      "parentUuid": "e2d8fc0a_f8b1064a",
+      "range": {
+        "startLine": 32,
+        "startChar": 63,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "aa0f51f39c18c325eb8c62cfb5989dde004824a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7ec2931_b9da3da2",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-01T06:17:52Z",
       "side": 1,
       "message": "move this back to runStandardizedKeyboardKeysTest and pass it as an argument of Press()? (It seems input.KeyboardTopRowLayout is calling an external command so perhaps we should avoid calling it repeatedly)",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "aa0f51f39c18c325eb8c62cfb5989dde004824a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0380321_699db54d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-01T17:48:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7ec2931_b9da3da2",
       "range": {
         "startLine": 34,
         "startChar": 1,
