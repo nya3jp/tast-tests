@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c2db3da_146a1c40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/provision/tls_client.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-01T00:48:41Z",
+      "side": 1,
+      "message": "[Advice needed] I\u0027m consistently getting an grpc error on this line when running this test locally from my workstation with TLS in the lab on a DUT leased from crosfleet (for comparison no issue when running locally from my workstation with local TLS on a local DUT, which makes me think it\u0027s probably related to the environmental issue):\n\nrpc error: code \u003d Unavailable desc \u003d all SubConns are in TransientFailure, latest connection error: connection error: desc \u003d \"transport: Error while dialing dial tcp 10.254.254.254:7152: connect: connection timed out\" UNLISTED 34 lines by hyungtaekim\nFull log - https://paste.googleplex.com/6603852666109952\n\nCan anyone help debug this or have any advice to fix it? Thanks,",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
