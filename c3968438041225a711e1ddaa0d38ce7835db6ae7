@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a396ed46_335b911e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/suspend_stress_in_guest_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-01T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b2c4a2ab_3c0dd088",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 81
+      },
+      "revId": "c3968438041225a711e1ddaa0d38ce7835db6ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4e8b588_85ee9d93",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-30T14:51:30Z",
       "side": 1,
       "message": "You don\u0027t need this now. Just grabbing powerItrVar.Value() is enough. (Might want to rename defaultIter if you\u0027re keeping that identifier, as well.)",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "c3968438041225a711e1ddaa0d38ce7835db6ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55167614_cbcbfccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/suspend_stress_in_guest_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-01T07:32:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4e8b588_85ee9d93",
       "range": {
         "startLine": 44,
         "startChar": 0,
