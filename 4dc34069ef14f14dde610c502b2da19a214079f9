@@ -33,6 +33,23 @@
       "message": "Thanks :D",
       "revId": "4dc34069ef14f14dde610c502b2da19a214079f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c59dda75_9aa766cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-01T10:49:42Z",
+      "side": 1,
+      "message": "This test is not yet stable enough, please wait until there are at least 2 weeks of successful runs. \n\nhttps://cros-health-prod.googleplex.com/test/arc.Drivefs",
+      "revId": "4dc34069ef14f14dde610c502b2da19a214079f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
