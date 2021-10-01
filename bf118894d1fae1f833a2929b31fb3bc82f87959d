@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c276f38_b0d6d024",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-10-01T09:00:56Z",
+      "side": 1,
+      "message": "We discussed in the email list and got that there has been a hardware issue in the lab infra, at least for one device.\n\n- If another DUT has same issue, let\u0027s ask the lab team again.\n- If there is any software-side issue that we still don\u0027t know (such as battery charging mode change) affecting this test, it should be handled either in the infra or Tast framework.\n\nSo I think we don\u0027t need this change anymore. Does this plan work for you?",
+      "parentUuid": "0f4bb8c4_ed734d29",
+      "revId": "bf118894d1fae1f833a2929b31fb3bc82f87959d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab7c887a_dba5bc7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
         "patchSetId": 2
