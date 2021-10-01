@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db7cb98f_3ecb1075",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-10-01T06:51:25Z",
+      "side": 1,
+      "message": "Please wrap lines to 72 columns.\nhttps://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/contributing.md#uploading-a-change-for-review",
+      "revId": "75331756abe6721aa1e9819d39b6b9a0ee878bc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
