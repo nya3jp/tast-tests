@@ -16,6 +16,57 @@
       "message": "LGTM",
       "revId": "9525568dc097b8fe31b597a1ac4071c95aec6db9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d405d3_baee182e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_camera_box_document_scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-10-01T05:55:22Z",
+      "side": 1,
+      "message": "nit: update the comment in cca_ui_document_scanning.go that mentions remote test",
+      "revId": "9525568dc097b8fe31b597a1ac4071c95aec6db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dfb4ace_a218abbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/testing_rsa",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-10-01T05:55:22Z",
+      "side": 1,
+      "message": "qq: If syzkaller remove the testing_rsa, will CQ catch this error? I am not sure if it\u0027s a good idea to symlink to an foreign remote bundle from a local camera test, but if the error would be caught by CQ then I am ok with it.",
+      "revId": "9525568dc097b8fe31b597a1ac4071c95aec6db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f345cab7_a54799c2",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-10-01T05:55:22Z",
+      "side": 1,
+      "message": "nit: use named arg here to decipher the `string, string, string` part as the public interface.",
+      "revId": "9525568dc097b8fe31b597a1ac4071c95aec6db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
