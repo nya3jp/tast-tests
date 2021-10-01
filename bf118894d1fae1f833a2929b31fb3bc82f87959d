@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "484530f3_2b7f4cdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1312379
+      },
+      "writtenOn": "2021-10-01T14:49:36Z",
+      "side": 1,
+      "message": "I replied on  http://b/201524631  with a list of dut that failed the test today... The list is so large that I would rather wait for response in the bug before completely discarding this CL.",
+      "parentUuid": "4c276f38_b0d6d024",
+      "revId": "bf118894d1fae1f833a2929b31fb3bc82f87959d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab7c887a_dba5bc7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
         "patchSetId": 2
