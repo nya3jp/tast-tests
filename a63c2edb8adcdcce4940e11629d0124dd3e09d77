@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a42bb462_e57a786d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-01T16:25:53Z",
+      "side": 1,
+      "message": "Code looks ok, but I think it should Google contact. Also, I don\u0027t know much about WIFI testing. I want a domain expert to take a look at it first. Thanks.",
+      "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f64feb05_341df23c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/wifi_ap_browse_internet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-01T16:25:53Z",
+      "side": 1,
+      "message": "Do you have a Google contact? If so, please add the email here. Thanks.",
+      "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
