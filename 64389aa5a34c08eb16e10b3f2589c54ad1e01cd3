@@ -16,6 +16,23 @@
       "message": "PTAL again, I modified more tests that was added recently",
       "revId": "64389aa5a34c08eb16e10b3f2589c54ad1e01cd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c0b74b8_56852917",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-01T08:06:25Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "64389aa5a34c08eb16e10b3f2589c54ad1e01cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
