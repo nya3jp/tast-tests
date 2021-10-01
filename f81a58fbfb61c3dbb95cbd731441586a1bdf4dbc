@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "188898dc_89662ce6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-01T04:28:57Z",
+      "side": 1,
+      "message": "This needs some adjusting in how often it runs. Stress tests do not go into the CQ, hence no mainline.",
+      "revId": "f81a58fbfb61c3dbb95cbd731441586a1bdf4dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7e3c393_ef3ec285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-01T04:28:57Z",
+      "side": 1,
+      "message": "ExtraAttr: []string{\"group:mainline\", \"informational\", \"group:graphics\", \"graphics_nightly\"},",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 17
+      },
+      "revId": "f81a58fbfb61c3dbb95cbd731441586a1bdf4dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ce08dcf_e0446640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-01T04:28:57Z",
+      "side": 1,
+      "message": "Replace \"basic\" with \"smoke\".",
+      "range": {
+        "startLine": 33,
+        "startChar": 10,
+        "endLine": 33,
+        "endChar": 15
+      },
+      "revId": "f81a58fbfb61c3dbb95cbd731441586a1bdf4dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af340ad9_c1f4c929",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-01T04:28:57Z",
+      "side": 1,
+      "message": "This one takes way too long. No \"group:mainline\", \"informational\" for the stress test. Use \"group:graphics\", \"graphics_weekly\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "f81a58fbfb61c3dbb95cbd731441586a1bdf4dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "367d8cda_9ed77e59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-01T04:28:57Z",
+      "side": 1,
+      "message": "More information with less words please:\n\ns.Fatalf(\"Failed %d/%d switches\", numErrors, iterations)",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 72
+      },
+      "revId": "f81a58fbfb61c3dbb95cbd731441586a1bdf4dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
