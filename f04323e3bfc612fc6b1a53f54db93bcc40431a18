@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bab5f063_d80417aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-01T18:07:44Z",
+      "side": 1,
+      "message": "Similar to the other comment, let\u0027s get the file size with \"dutfs.Stat\" (there are several instances in the test where we do this, so we should replace them all).",
+      "range": {
+        "startLine": 138,
+        "startChar": 2,
+        "endLine": 142,
+        "endChar": 3
+      },
+      "revId": "f04323e3bfc612fc6b1a53f54db93bcc40431a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "174d7f99_237c9248",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
         "patchSetId": 2
