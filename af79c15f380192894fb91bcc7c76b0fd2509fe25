@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c35d1d30_3c5ee9ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stork_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-10-01T18:27:59Z",
+      "side": 1,
+      "message": "Could you please add \"cellular_test_esim\" here.",
+      "range": {
+        "startLine": 25,
+        "startChar": 57,
+        "endLine": 25,
+        "endChar": 58
+      },
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "831e7887_ecc3c2a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/stork_profile.go",
         "patchSetId": 2
