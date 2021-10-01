@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c6bc965_7e750647",
+        "filename": "android/ArcMediaScanPerfTest/src/org/chromium/arc/testapp/mediascanperf/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-10-01T02:39:15Z",
+      "side": 1,
+      "message": "Please fix the indent width.",
+      "revId": "933ab0b4f4744c72cc1e139508418b7517f96989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ce09341_c279b899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-10-01T02:39:15Z",
+      "side": 1,
+      "message": "It\u0027s probably better to keep using mediaScanTime here because the reported metric is the elapsed time.",
+      "revId": "933ab0b4f4744c72cc1e139508418b7517f96989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
