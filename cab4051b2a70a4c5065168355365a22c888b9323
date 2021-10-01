@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37485953_2d3b988e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2021-10-01T19:21:34Z",
+      "side": 1,
+      "message": "Toni, can you do a first pass review here? It\u0027s been a while since I\u0027ve written any go code, and I\u0027ve never written a UI tast test before. :-)\n\nThe test failures are unrelated to my CL. (Is there a way to tell gerrit to just give up and retry again with ToT? I was trying to wait for at least 1 green tryjob before sending this to you. Unlike chromium gerrit there\u0027s no button to pick a bot to add to a CL.)",
+      "revId": "cab4051b2a70a4c5065168355365a22c888b9323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
