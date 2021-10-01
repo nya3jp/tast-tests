@@ -22,6 +22,30 @@
       },
       "revId": "bb0d725e67df16da14e5cc893be8b1fcbf9a6ade",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00ddd4d6_1bcffedd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_warning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2021-10-01T19:58:23Z",
+      "side": 1,
+      "message": "Done: I was hoping something could be done at the global level but when I first tried moving ExtraHardware deps to that level it complained about it being an unknown attribute. I should have gone to the docs, or at least the source (:",
+      "parentUuid": "d87db8aa_2b8ec6c3",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 58
+      },
+      "revId": "bb0d725e67df16da14e5cc893be8b1fcbf9a6ade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
