@@ -77,6 +77,9 @@ func AlternateErrorPagesEnabled(ctx context.Context, s *testing.State) {
 				}
 
 				if line != tc.suggestion {
+					// The normal error page is visible for a view milliseconds. Do not
+					// break the polling if the wrong message is shown but instead wait
+					// for the correct message.
 					return errors.Errorf("unexpected suggestion on the error page; got %q, want %q", line, tc.suggestion)
 				}
 
