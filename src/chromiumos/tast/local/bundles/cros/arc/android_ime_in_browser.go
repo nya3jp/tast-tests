@@ -17,7 +17,8 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
-	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/testing"
 )
 
@@ -143,11 +144,10 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Showing the virtual keyboard")
-	var keyboard *chromeui.Node
+	uia := uiauto.New(tconn)
+	keyboard := nodewith.ClassName("ExoInputMethodSurface")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		keyboard, err = chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: "ExoInputMethodSurface"})
-		if err == nil {
+		if err := uia.Exists(keyboard)(ctx); err == nil {
 			return nil
 		}
 
@@ -161,7 +161,6 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 	}, nil); err != nil {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
 	}
-	defer keyboard.Release(ctx)
 
 	// You can only type "a" from the test IME.
 	const expected = "aaaa"
@@ -171,7 +170,7 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 		// It is better to press the keyboard from chromeui instead of UIAutomator for two reasons:
 		// - IME is not accessible from UIAutomator, so we're forced to use UiDevice.click.
 		// - chromeui can provide test coverage for window input region.
-		if err := keyboard.StableLeftClick(ctx, nil); err != nil {
+		if err := uia.LeftClick(keyboard)(ctx); err != nil {
 			s.Fatal("Failed to left click the keyboard")
 		}
 	}
