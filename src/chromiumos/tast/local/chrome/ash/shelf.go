@@ -39,8 +39,8 @@ const (
 	// ShelfBehaviorInvalid represents an invalid state.
 	ShelfBehaviorInvalid = "invalid"
 
-	// shelfIconClassName is the class name of the node of the apps on shelf.
-	shelfIconClassName = "ash/ShelfAppButton"
+	// ShelfIconClassName is the class name of the node of the apps on shelf.
+	ShelfIconClassName = "ash/ShelfAppButton"
 )
 
 // SetShelfBehavior sets the shelf visibility behavior.
@@ -741,7 +741,7 @@ func LaunchAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName, ap
 	if err := ShowHotseat(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to launch app from shelf")
 	}
-	params := nodewith.Name(appName).ClassName(shelfIconClassName)
+	params := nodewith.Name(appName).ClassName(ShelfIconClassName)
 	if err := uiauto.New(tconn).WithTimeout(10 * time.Second).LeftClick(params)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to launch app %q", appName)
 	}
@@ -782,7 +782,7 @@ func ShowHotseat(ctx context.Context, tconn *chrome.TestConn) error {
 // The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
 func UpdateAppPinFromShelf(ctx context.Context, tconn *chrome.TestConn, appName string, pin bool) error {
 	// Find the icon from shelf.
-	icon := nodewith.Name(appName).ClassName(shelfIconClassName)
+	icon := nodewith.Name(appName).ClassName(ShelfIconClassName)
 
 	var action string
 	if pin {
@@ -833,7 +833,7 @@ func UpdateAppPinFromHotseat(ctx context.Context, tconn *chrome.TestConn, appNam
 
 	return uiauto.Combine(
 		"open the menu and tap the "+action+" menu",
-		tc.LongPress(nodewith.Name(appName).ClassName(shelfIconClassName)),
+		tc.LongPress(nodewith.Name(appName).ClassName(ShelfIconClassName)),
 		tc.Tap(nodewith.Name(action).ClassName("MenuItemView")),
 	)(ctx)
 }
@@ -905,7 +905,7 @@ func ShowHotseatAction(tconn *chrome.TestConn) uiauto.Action {
 
 // RightClickApp returns a function that right clicks the given app's icon on the shelf.
 func RightClickApp(tconn *chrome.TestConn, appName string) uiauto.Action {
-	appOnShelf := nodewith.Name(appName).Role(role.Button).ClassName(shelfIconClassName)
+	appOnShelf := nodewith.Name(appName).Role(role.Button).ClassName(ShelfIconClassName)
 	return uiauto.Combine(fmt.Sprintf("right click %s icon on the shelf", appName),
 		ShowHotseatAction(tconn),
 		uiauto.New(tconn).RightClick(appOnShelf))
