@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c5e7e39_400b72b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-10-01T03:07:42Z",
+      "side": 1,
+      "message": "Just to clarify: The suggestion is to just edit the commit message.",
+      "parentUuid": "27eb2846_aed5dbb4",
+      "range": {
+        "startLine": 11,
+        "startChar": 17,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "653d126b7d9b39c42955d0c9dd86ed1a19b20f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2d3f7a58_eb6ce339",
