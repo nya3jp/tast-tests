@@ -52,6 +52,24 @@
       "parentUuid": "fc5d05a3_234e3ba8",
       "revId": "0d7a04ccd7d2c80f57176d89745acf246d08a0db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ba5ad21_6300c510",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-10-01T14:27:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1044dfb1_2dde2973",
+      "revId": "0d7a04ccd7d2c80f57176d89745acf246d08a0db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
