@@ -33,6 +33,24 @@
       "message": "In what situation that a or ctx will be nil? Is this check necessary?",
       "revId": "8c9ef89a22f349e9310de80aa401fc46329dec7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3252b83f_f4d5c6e7",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-10-01T02:51:37Z",
+      "side": 1,
+      "message": "There are some code paths (which we are working to remove) that don\u0027t have ctx (or arc.ARC) available to call this, but we still need it to collect the other metrics (which don\u0027t need ctx and a).",
+      "parentUuid": "422fdaea_1a5209a2",
+      "revId": "8c9ef89a22f349e9310de80aa401fc46329dec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
