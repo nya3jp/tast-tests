@@ -27,7 +27,6 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type testParam struct {
@@ -76,30 +75,6 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
 				maxErrorBootCount: 1,
-			},
-		}, {
-			Name:              "unmanaged_guest_readahead_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(7500)),
-			Val: testParam{
-				maxErrorBootCount: 3,
-				dropCaches:        true,
-			},
-		}, {
-			Name:              "unmanaged_huge_pages_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			Val: testParam{
-				maxErrorBootCount: 3,
-				chromeArgs:        []string{"--arcvm-use-hugepages"},
-			},
-		}, {
-			Name:              "unmanaged_no_guest_readahead_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(7500)),
-			Val: testParam{
-				maxErrorBootCount: 3,
-				chromeArgs:        []string{"--arcvm-ureadahead-mode=disabled"},
-				dropCaches:        true,
 			},
 		}, {
 			Name:              "unmanaged_o_direct_vm",
