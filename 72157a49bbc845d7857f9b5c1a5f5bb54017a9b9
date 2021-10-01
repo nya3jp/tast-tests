@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "243c3c83_b40f5ba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/suspend_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-01T16:17:07Z",
+      "side": 1,
+      "message": "nit: comments to describe the struct and its functions would be useful.",
+      "revId": "72157a49bbc845d7857f9b5c1a5f5bb54017a9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
