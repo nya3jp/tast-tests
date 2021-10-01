@@ -22,6 +22,30 @@
       },
       "revId": "f9ba08275943b73a4dc08b8e05942fe8eb6c5e09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5051d695_4e6fa7a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/kernel_warning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2021-10-01T17:34:43Z",
+      "side": 1,
+      "message": "1) We only skip the \"mock_consent\" case because that is the only case that was failing in our build. The \"real_consent\" case was not running in our build because (I presume) it is currently marked informational. You are absolutely right that we should make a follow-up CL that skips this test globally.\n2) b/201790026. I will also put up a separate CL that references this bug ID.",
+      "parentUuid": "2eb13e58_c463233e",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "f9ba08275943b73a4dc08b8e05942fe8eb6c5e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
