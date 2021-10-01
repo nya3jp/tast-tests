@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da28ff3_78c742b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-01T02:18:49Z",
+      "side": 1,
+      "message": "Don\u0027t break the URL.",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "b735ebe504436b23f9431ff615488fa8ea6992e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ca5643f2_6203612f",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-09-30T16:17:48Z",
       "side": 1,
       "message": "LGTM, but you need a owner vote for this.",
+      "revId": "b735ebe504436b23f9431ff615488fa8ea6992e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f8d1fc_bbae422d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-01T02:18:49Z",
+      "side": 1,
+      "message": "That\u0027s correct not calling s.Fatal() except in the test main function. Thanks for fixing it.",
       "revId": "b735ebe504436b23f9431ff615488fa8ea6992e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
