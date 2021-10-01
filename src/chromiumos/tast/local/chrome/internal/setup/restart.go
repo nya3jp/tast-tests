@@ -6,11 +6,13 @@ package setup
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/config"
@@ -214,6 +216,8 @@ func restartSession(ctx context.Context, cfg *config.Config) error {
 		return err
 	}
 
+	fixLogSymlink(ctx)
+
 	testing.ContextLog(ctx, "Starting ui job")
 	return upstart.EnsureJobRunning(ctx, "ui")
 }
@@ -277,4 +281,44 @@ func clearUserData(ctx context.Context, cfg *config.Config) error {
 		}
 	}
 	return nil
+}
+
+// fixLogSymlink fixes the symlink at /var/log/chrome/chrome.
+// This is a workaround for a bug in Chrome that causes the symlink to
+// occasionally become a regular file and Chrome logs to stop rotating
+// (b/187795771).
+// This function must be called while the ui job is stopped.
+func fixLogSymlink(ctx context.Context) {
+	const (
+		logDir          = "/var/log/chrome"
+		symlinkName     = "chrome"
+		timestampLayout = "20060102-150405"
+	)
+
+	if err := func() error {
+		// Check if /var/log/chrome/chrome is a symlink.
+		st, err := os.Lstat(filepath.Join(logDir, symlinkName))
+		if os.IsNotExist(err) {
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+		if st.Mode()&os.ModeType == os.ModeSymlink {
+			return nil
+		}
+
+		// If the file is not a symlink, rename it so that a new symlink is created
+		// later when starting the ui job.
+		newName := fmt.Sprintf("%s_%s_b187795771", symlinkName, time.Now().Format(timestampLayout))
+		testing.ContextLogf(ctx, "Warning: %s is not a symlink; renaming it to %s to recover log rotation (b/187795771)", filepath.Join(logDir, symlinkName), newName)
+		if err := os.Rename(filepath.Join(logDir, symlinkName), filepath.Join(logDir, newName)); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		// Don't make the whole process fail even if we could not fix
+		// the symlink.
+		testing.ContextLogf(ctx, "Warning: failed to fix Chrome log symlink: %v; continuing anyway", err)
+	}
 }
