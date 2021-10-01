@@ -15,8 +15,10 @@ import (
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/ui/quicksettings"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -87,17 +89,20 @@ func BluetoothQueries(ctx context.Context, s *testing.State) {
 		// The buttons don't update immediately, so we'll need to poll their statuses.
 		// The "aria-pressed" htmlAttribute of the toggle buttons can be used to check the on/off status
 		s.Log("Checking bluetooth toggle button status")
+		ui := uiauto.New(tconn)
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			params := ui.FindParams{Name: "Bluetooth enable", Role: ui.RoleTypeToggleButton}
-			bluetoothToggle, err := ui.FindWithTimeout(ctx, tconn, params, 10*time.Second)
+			bluetoothToggle := nodewith.Name("Bluetooth enable").Role(role.ToggleButton)
+			if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(bluetoothToggle)(ctx); err != nil {
+				testing.PollBreak(err)
+			}
+
+			info, err := ui.Info(ctx, bluetoothToggle)
 			if err != nil {
 				testing.PollBreak(err)
 			}
-			defer bluetoothToggle.Release(ctx)
-
-			if bluetoothToggle.HTMLAttributes["aria-pressed"] != strconv.FormatBool(status) {
+			if info.HTMLAttributes["aria-pressed"] != strconv.FormatBool(status) {
 				return errors.Errorf("bluetooth not toggled yet, aria-pressed is %v, expected %v",
-					bluetoothToggle.HTMLAttributes["aria-pressed"], status)
+					info.HTMLAttributes["aria-pressed"], status)
 			}
 			return nil
 		}, nil); err != nil {
