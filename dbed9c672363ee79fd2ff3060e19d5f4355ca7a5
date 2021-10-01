@@ -16,6 +16,46 @@
       "message": "Adjusted the zoom logic to account for out of bounds errors",
       "revId": "dbed9c672363ee79fd2ff3060e19d5f4355ca7a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e70f3d51_9a8965f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-01T05:40:57Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm modulo comments",
+      "revId": "dbed9c672363ee79fd2ff3060e19d5f4355ca7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7e48269_b70a590b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-01T05:40:57Z",
+      "side": 1,
+      "message": "nit: This is not a percent, it\u0027s a proportion",
+      "range": {
+        "startLine": 307,
+        "startChar": 2,
+        "endLine": 307,
+        "endChar": 36
+      },
+      "revId": "dbed9c672363ee79fd2ff3060e19d5f4355ca7a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
