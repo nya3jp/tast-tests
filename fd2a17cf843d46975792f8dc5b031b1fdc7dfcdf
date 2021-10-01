@@ -16,6 +16,29 @@
       "message": "Hi Tao and Kyle, PTAL. Added some more changes from the previous patch.",
       "revId": "fd2a17cf843d46975792f8dc5b031b1fdc7dfcdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0381523d_a7cf528c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_local_wallpaper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2021-10-01T18:44:01Z",
+      "side": 1,
+      "message": "Why need so long",
+      "range": {
+        "startLine": 41,
+        "startChar": 16,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "fd2a17cf843d46975792f8dc5b031b1fdc7dfcdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
