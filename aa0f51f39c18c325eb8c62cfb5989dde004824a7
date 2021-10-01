@@ -16,6 +16,52 @@
       "message": "Adjusted the keyboard test to send the correct key combinations for forward/backward when they are different. I\u0027m working towards abstracting away the StandardizedKeyboard into its own struct that will house all these methods but wanted to correct the issues first.",
       "revId": "aa0f51f39c18c325eb8c62cfb5989dde004824a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2d8fc0a_f8b1064a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-10-01T06:17:52Z",
+      "side": 1,
+      "message": "nit: typo?",
+      "range": {
+        "startLine": 32,
+        "startChar": 63,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "aa0f51f39c18c325eb8c62cfb5989dde004824a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ec2931_b9da3da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-10-01T06:17:52Z",
+      "side": 1,
+      "message": "move this back to runStandardizedKeyboardKeysTest and pass it as an argument of Press()? (It seems input.KeyboardTopRowLayout is calling an external command so perhaps we should avoid calling it repeatedly)",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 2
+      },
+      "revId": "aa0f51f39c18c325eb8c62cfb5989dde004824a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
