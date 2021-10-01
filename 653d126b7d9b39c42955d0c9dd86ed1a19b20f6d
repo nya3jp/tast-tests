@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "27eb2846_aed5dbb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-10-01T03:03:23Z",
+      "side": 1,
+      "message": "Could you change this to org.chromium.arc.testapp.mediascanperf? The reason for this change is make the directory structure aligned with it: org \u003e chromium \u003e arc \u003e testapp \u003e mediascanperf.",
+      "range": {
+        "startLine": 11,
+        "startChar": 17,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "653d126b7d9b39c42955d0c9dd86ed1a19b20f6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2d3f7a58_eb6ce339",
