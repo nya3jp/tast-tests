@@ -51,6 +51,24 @@
       "parentUuid": "422fdaea_1a5209a2",
       "revId": "8c9ef89a22f349e9310de80aa401fc46329dec7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7148f161_89fcb2fa",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-10-01T02:51:39Z",
+      "side": 1,
+      "message": "yes, there is at least one case -  see local/multivm/metrics_shell.go in this review.  \nThe rationale for it being nil (on the caller side) is because the caller is a general purpose library, which acts on behalf of an upper layer that has no \"arc\" instance.\nIn that case, there will be no arc memory pressure metrics - and that\u0027s okay, we still have host memory pressure.",
+      "parentUuid": "422fdaea_1a5209a2",
+      "revId": "8c9ef89a22f349e9310de80aa401fc46329dec7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
