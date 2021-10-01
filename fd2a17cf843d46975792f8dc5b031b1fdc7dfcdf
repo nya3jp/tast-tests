@@ -39,6 +39,30 @@
       },
       "revId": "fd2a17cf843d46975792f8dc5b031b1fdc7dfcdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2b18024_92f4ab96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_local_wallpaper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-10-01T18:54:39Z",
+      "side": 1,
+      "message": "I wanted to give more time for the test to download the images. Looking at the test logs, many of them has `context deadline exceeded`.",
+      "parentUuid": "0381523d_a7cf528c",
+      "range": {
+        "startLine": 41,
+        "startChar": 16,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "fd2a17cf843d46975792f8dc5b031b1fdc7dfcdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
