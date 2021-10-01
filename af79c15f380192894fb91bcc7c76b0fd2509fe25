@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f1ee78e_c60ac7db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stork_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-10-01T22:09:35Z",
+      "side": 1,
+      "message": "Please check \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3200510\n\nPlease add \"cellular_sim_test_esim\"  here, and ignore my previous comments.",
+      "parentUuid": "11d9a74d_722f5808",
+      "range": {
+        "startLine": 25,
+        "startChar": 57,
+        "endLine": 25,
+        "endChar": 58
+      },
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "831e7887_ecc3c2a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/stork_profile.go",
         "patchSetId": 2
