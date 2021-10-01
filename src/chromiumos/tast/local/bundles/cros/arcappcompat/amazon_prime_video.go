@@ -51,7 +51,7 @@ func init() {
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForAmazonPrimeVideo,
-				CommonTests:      testutil.ClamshellCommonTests,
+				CommonTests:      testutil.ClamshellSmokeTests,
 				AppSpecificTests: clamshellAppSpecificTestsForAmazonPrimeVideo,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -63,7 +63,7 @@ func init() {
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForAmazonPrimeVideo,
-				CommonTests:      testutil.TouchviewCommonTests,
+				CommonTests:      testutil.TouchviewSmokeTests,
 				AppSpecificTests: touchviewAppSpecificTestsForAmazonPrimeVideo,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -75,7 +75,7 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForAmazonPrimeVideo,
-				CommonTests:      testutil.ClamshellCommonTests,
+				CommonTests:      testutil.ClamshellSmokeTests,
 				AppSpecificTests: clamshellAppSpecificTestsForAmazonPrimeVideo,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -87,7 +87,7 @@ func init() {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForAmazonPrimeVideo,
-				CommonTests:      testutil.TouchviewCommonTests,
+				CommonTests:      testutil.TouchviewSmokeTests,
 				AppSpecificTests: touchviewAppSpecificTestsForAmazonPrimeVideo,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
