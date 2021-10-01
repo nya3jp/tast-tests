@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0591b0af_05b798ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-10-01T00:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "599c8ace_12b369a8",
+      "revId": "fef0ce6e82cdca276945ad2975842a2dbe641666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15559238_a76d1201",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8c5ae55_cb4dc42e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-10-01T00:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15559238_a76d1201",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 9
+      },
+      "revId": "fef0ce6e82cdca276945ad2975842a2dbe641666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b01e14d1_8864b4e1",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-09-30T07:29:29Z",
       "side": 1,
       "message": "nit: This is slightly misleading. Maybe \"Verify that our screenshot is deleted\" ?",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 77
+      },
+      "revId": "fef0ce6e82cdca276945ad2975842a2dbe641666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac3de4ff_973b56aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-10-01T00:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b01e14d1_8864b4e1",
       "range": {
         "startLine": 116,
         "startChar": 5,
