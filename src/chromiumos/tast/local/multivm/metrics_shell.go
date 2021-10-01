@@ -22,7 +22,7 @@ type BaseMetrics struct {
 // NewBaseMetrics is a thin wrapper around metrics.NewBaseMetrics, scheduled for deletion.
 // See details in BaseMetrics comment.
 func NewBaseMetrics() (*BaseMetrics, error) {
-	m, err := metrics.NewBaseMemoryStats()
+	m, err := metrics.NewBaseMemoryStats(nil, nil)
 	if err != nil {
 		return nil, err
 	}
