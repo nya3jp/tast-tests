@@ -22,6 +22,30 @@
       },
       "revId": "1a5cc608d224c4a6796ce19aa000ee54a5adb18f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8896a5f2_be3089a6",
+        "filename": "src/chromiumos/tast/local/policyutil/lacrospolicyutil/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-01T08:47:19Z",
+      "side": 1,
+      "message": "Lacros imports launher, which previously imported fixtures, which imports policyutil.\nNow launcher doesn\u0027t import fixtures, so I also think this helper function can go to policyutil.",
+      "parentUuid": "13a99ab6_03d61e78",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "1a5cc608d224c4a6796ce19aa000ee54a5adb18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
