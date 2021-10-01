@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "445fc0db_56e97119",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-10-01T09:15:18Z",
+      "side": 1,
+      "message": "ptal, I think this is a minimal implementation but let me know if I should take another approach... \n",
+      "revId": "c429e7b15ef501b9aa45bd0e0161020d85c45121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
