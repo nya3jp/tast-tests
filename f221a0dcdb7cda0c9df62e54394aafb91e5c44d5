@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "315c0b7b_701fa50e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-01T17:13:17Z",
+      "side": 1,
+      "message": "nit: Percent -\u003e Proportion",
+      "range": {
+        "startLine": 526,
+        "startChar": 31,
+        "endLine": 526,
+        "endChar": 38
+      },
+      "revId": "f221a0dcdb7cda0c9df62e54394aafb91e5c44d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
