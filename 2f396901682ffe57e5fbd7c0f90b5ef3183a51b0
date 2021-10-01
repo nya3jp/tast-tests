@@ -45,6 +45,30 @@
       },
       "revId": "2f396901682ffe57e5fbd7c0f90b5ef3183a51b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6108b149_a0b7b16a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-10-01T03:41:54Z",
+      "side": 1,
+      "message": "Sorry I sent a draft comment. Correction:\n\nCan we update types of the paremters item and root to uiauto.Finder, deferring actual evaluation as far as possbile? This style will better work together with uiauto/ libraries .",
+      "parentUuid": "59cb62b7_061c490f",
+      "range": {
+        "startLine": 215,
+        "startChar": 5,
+        "endLine": 215,
+        "endChar": 28
+      },
+      "revId": "2f396901682ffe57e5fbd7c0f90b5ef3183a51b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
