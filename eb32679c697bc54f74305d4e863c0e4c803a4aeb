@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "878a28a5_e2f1a857",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-10-01T01:37:29Z",
+      "side": 1,
+      "message": "We don\u0027t rewrite copyright year of existing file upon modification.\nhttps://chromium.googlesource.com/chromium/src/+/HEAD/styleguide/c++/c++.md#file-headers",
+      "revId": "eb32679c697bc54f74305d4e863c0e4c803a4aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aae618d8_af424b30",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
         "patchSetId": 3
@@ -20,6 +37,23 @@
         "endLine": 18,
         "endChar": 7
       },
+      "revId": "eb32679c697bc54f74305d4e863c0e4c803a4aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "190c19d9_9497a4bc",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-10-01T01:37:29Z",
+      "side": 1,
+      "message": "just a random idea:\nI once thought we may change the function signature to return a function(ctx)error, like the new uiauto library. However I think it is OK for now as this is simple library migration.",
       "revId": "eb32679c697bc54f74305d4e863c0e4c803a4aeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
