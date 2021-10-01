@@ -56,6 +56,24 @@
       "message": "That\u0027s correct not calling s.Fatal() except in the test main function. Thanks for fixing it.",
       "revId": "b735ebe504436b23f9431ff615488fa8ea6992e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae483f86_bc54843e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-01T02:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7f8d1fc_bbae422d",
+      "revId": "b735ebe504436b23f9431ff615488fa8ea6992e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
