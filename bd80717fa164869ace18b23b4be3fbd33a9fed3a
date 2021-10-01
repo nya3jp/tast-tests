@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d08c08ac_87f41aa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-10-01T07:04:58Z",
+      "side": 1,
+      "message": "We decided to merge this after another change that conflicts with this change is landed.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3189284",
+      "revId": "bd80717fa164869ace18b23b4be3fbd33a9fed3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
