@@ -22,6 +22,15 @@ func init() {
 		Desc:     "Verify kernel warnings are logged as expected",
 		Contacts: []string{"mutexlox@google.com", "cros-telemetry@google.com"},
 		Attr:     []string{"group:mainline"},
+		// TODO(b/201790026): The lkdtm resides on the debugfs,
+		// which is not accessible when integrity mode is
+		// enabled.
+		//
+		// We either need to refactor the test not to use lkdtm
+		// to trigger crashes or we need to modify the kernel to
+		// allow access to the required path. Skip on reven for
+		// now, since reven uses integrity mode.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("reven")),
 		Params: []testing.Param{{
 			Name:              "real_consent",
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
@@ -31,14 +40,6 @@ func init() {
 		}, {
 			Name: "mock_consent",
 			Val:  crash.MockConsent,
-			// TODO: The lkdtm resides on the debugfs, which is not
-			// accessible when integrity mode is enabled.
-			//
-			// We either need to refactor the test not to use lkdtm
-			// to trigger crashes or we need to modify the kernel to
-			// allow access to the required path. Skip on reven for
-			// now, since reven uses integrity mode.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("reven")),
 		}},
 	})
 }
