@@ -24,7 +24,7 @@ func init() {
 			"pholla@google.com",
 			"chromeos-cellular-team@google.com",
 		},
-		Attr:    []string{"group:cellular", "cellular_unstable"},
+		Attr:    []string{"group:cellular", "cellular_unstable", "cellular_sim_prod_esim"},
 		Timeout: 10 * time.Minute,
 	})
 }
