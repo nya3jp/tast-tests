@@ -29,12 +29,12 @@ type BaseMemoryStats struct {
 //     base := metrics.NewBaseMemoryStats()
 //     ..run the test..
 //     metrics.LogMemoryStats( ..., base, ...)
-func NewBaseMemoryStats() (*BaseMemoryStats, error) {
+func NewBaseMemoryStats(ctx context.Context, arc *arc.ARC) (*BaseMemoryStats, error) {
 	basezram, err := memory.NewZramStats()
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get baseline memory stats")
 	}
-	basepsi, err := memory.NewPSIStats()
+	basepsi, err := memory.NewPSIStats(ctx, arc)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get baseline PSI stats")
 	}
@@ -43,12 +43,12 @@ func NewBaseMemoryStats() (*BaseMemoryStats, error) {
 
 // Reset sets the base metrics values to "now", so they can be
 // a new baseline reflecting the time of "now".
-func (base *BaseMemoryStats) Reset() error {
+func (base *BaseMemoryStats) Reset(ctx context.Context, arc *arc.ARC) error {
 	basezram, err := memory.NewZramStats()
 	if err != nil {
 		return errors.Wrap(err, "unable to get baseline memory stats for reset")
 	}
-	basepsi, err := memory.NewPSIStats()
+	basepsi, err := memory.NewPSIStats(ctx, arc)
 	if err != nil {
 		return errors.Wrap(err, "unable to get baseline PSI stats")
 	}
@@ -82,7 +82,7 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, arc *arc.ARC, p 
 	if err := memory.ZramStatMetrics(ctx, zramprevstats, p, outdir, suffix); err != nil {
 		return errors.Wrap(err, "failed to collect zram stats metrics")
 	}
-	if err := memory.PSIMetrics(ctx, psiprevstats, p, outdir, suffix); err != nil {
+	if err := memory.PSIMetrics(ctx, arc, psiprevstats, p, outdir, suffix); err != nil {
 		return errors.Wrap(err, "failed to collect PSI stats metrics")
 	}
 

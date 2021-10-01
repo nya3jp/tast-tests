@@ -76,7 +76,7 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get /proc/meminfo: ", err)
 	}
-	basemem, err := metrics.NewBaseMemoryStats()
+	basemem, err := metrics.NewBaseMemoryStats(ctx, preARC)
 	if err != nil {
 		s.Fatal("Failed to retrieve base memory stats: ", err)
 	}
