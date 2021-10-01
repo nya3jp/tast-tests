@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "645f015c_81f1a7ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-01T06:12:15Z",
+      "side": 1,
+      "message": "Hello, Arthur\nThere seems to be somthing with the test firm.ECTabletMode, and it fails without any changes (it would be better for you to look at it again), so I\u0027ve submitted this patch even though it hadn\u0027t passed it. Sorry for telling you after it have already merged.",
+      "revId": "b6b4f55f3695453a6f8030cb8c33fa71d3d8df30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
