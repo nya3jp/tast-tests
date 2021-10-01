@@ -22,6 +22,30 @@
       },
       "revId": "949ad9e33cd8af5e549bed693f47c55ab61473b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20dc9abc_45bf5d35",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_gaia.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-01T08:14:35Z",
+      "side": 1,
+      "message": "lsbrelease.go just reads these files, and it gives an error, if the file does not exists, so it handles what is should. It is most probably on the users to do this check if they want to write it as well. So I think it is enough to do it here.\nAnd good catch!",
+      "parentUuid": "84f601b3_1bd45924",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 3
+      },
+      "revId": "949ad9e33cd8af5e549bed693f47c55ab61473b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
