@@ -21,8 +21,8 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SoundCardInit,
-		Desc:         "Verifies sound_card_init boot time calibration logic",
-		HardwareDeps: hwdep.D(hwdep.SmartAmp()),
+		Desc:         "Verfies sound_card_init boot time calibration logic",
+		HardwareDeps: hwdep.D(hwdep.SmartAmp(), hwdep.SkipOnModel("atlas", "nocturne")),
 		Contacts:     []string{"judyhsiao@chromium.org", "cychiang@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      1 * time.Minute,
