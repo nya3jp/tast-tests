@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac802155_6c726bf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-01T06:44:58Z",
+      "side": 1,
+      "message": "KeyboardBrightnessTest func is removed and functionality moved to inputbrightness_keyboard.go.",
+      "parentUuid": "c1db57fd_1c676bdb",
+      "revId": "095f5aa35e2f5c7b80f9b7811db998985825694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8203fef4_61f4f923",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-27T05:53:18Z",
       "side": 1,
       "message": "You should probably confirm that the brightness level has gone in the desired direction, not just that it\u0027s changed.",
+      "revId": "095f5aa35e2f5c7b80f9b7811db998985825694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a0ba417_2351e131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-01T06:44:58Z",
+      "side": 1,
+      "message": "KeyboardBrightnessTest func is removed and functionality moved to inputbrightness_keyboard.go.",
+      "parentUuid": "8203fef4_61f4f923",
       "revId": "095f5aa35e2f5c7b80f9b7811db998985825694e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef175f5c_bf3c18bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-01T06:44:58Z",
+      "side": 1,
+      "message": "changes done and created new function in L76.",
+      "parentUuid": "fbb9c958_5a6e919a",
+      "revId": "095f5aa35e2f5c7b80f9b7811db998985825694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3cb152f9_f3c970c9",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_ui.go",
         "patchSetId": 3
@@ -65,6 +119,24 @@
       "writtenOn": "2021-09-27T05:53:18Z",
       "side": 1,
       "message": "This doesn\u0027t appear to verify that brightness actually increases and decreases. It only verifies that the slider displays the brightness that it should be. Could you please also verify that GetSystemBrightness returns that same value.",
+      "revId": "095f5aa35e2f5c7b80f9b7811db998985825694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c493bb04_3d5e2a66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-01T06:44:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3cb152f9_f3c970c9",
       "revId": "095f5aa35e2f5c7b80f9b7811db998985825694e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
