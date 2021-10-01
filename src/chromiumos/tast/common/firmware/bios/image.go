@@ -24,9 +24,21 @@ import (
 // ImageSection is the name of sections supported by this package.
 type ImageSection string
 
+// FlashromProgrammer is the type of programmer being passed to flashrom command line.
+type FlashromProgrammer string
+
 const (
+	// HostProgrammer is the flashrom programmer type used to operate with AP firmware chip.
+	HostProgrammer FlashromProgrammer = "host"
+	
+	// ECProgrammer is the flashrom programmer type used to operate with EC chip.
+	ECProgrammer FlashromProgrammer = "ec"
+
 	// GBBImageSection is the named section for GBB as output from dump_fmap.
 	GBBImageSection ImageSection = "GBB"
+
+	// ECRWImageSection is the named section for EC writable data as output from dump_fmap.
+	ECRWImageSection ImageSection = "EC_RW"
 
 	// gbbHeaderOffset is the location of the GBB header in GBBImageSection.
 	gbbHeaderOffset uint = 12
@@ -55,14 +67,14 @@ func NewImageFromData(data []byte, sections map[ImageSection]SectionInfo) *Image
 }
 
 // NewImage creates an Image object representing the currently loaded BIOS image. If you pass in a section, only that section will be read.
-func NewImage(ctx context.Context, section ImageSection) (*Image, error) {
+func NewImage(ctx context.Context, section ImageSection, programmer FlashromProgrammer) (*Image, error) {
 	tmpFile, err := ioutil.TempFile("", "")
 	if err != nil {
 		return nil, errors.Wrap(err, "creating tmpfile for image contents")
 	}
 	defer os.Remove(tmpFile.Name())
 
-	frArgs := []string{"-p", "host", "-r"}
+	frArgs := []string{"-p", string(programmer), "-r"}
 	isOneSection := section != ""
 	if isOneSection {
 		frArgs = append(frArgs, "-i", fmt.Sprintf("%s:%s", section, tmpFile.Name()))
@@ -124,7 +136,7 @@ func (i *Image) ClearAndSetGBBFlags(clearFlags, setFlags []pb.GBBFlag) error {
 }
 
 // WriteFlashrom writes the current data in the specified section into flashrom.
-func (i *Image) WriteFlashrom(ctx context.Context, sec ImageSection) error {
+func (i *Image) WriteFlashrom(ctx context.Context, sec ImageSection, programmer FlashromProgrammer) error {
 	dataRange, ok := i.Sections[sec]
 	if !ok {
 		return errors.Errorf("section %q is not recognized", string(sec))
@@ -143,7 +155,7 @@ func (i *Image) WriteFlashrom(ctx context.Context, sec ImageSection) error {
 	}
 
 	// -N == no verify all. Verify is slow.
-	if err = testexec.CommandContext(ctx, "flashrom", "-N", "-p", "host", "-i", fmt.Sprintf("%s:%s", sec, imgTmp.Name()), "-w").Run(testexec.DumpLogOnError); err != nil {
+	if err = testexec.CommandContext(ctx, "flashrom", "-N", "-p", string(programmer), "-i", fmt.Sprintf("%s:%s", sec, imgTmp.Name()), "-w").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "could not write host image")
 	}
 
