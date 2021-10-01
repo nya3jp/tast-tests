@@ -17,7 +17,8 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
-	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/testing"
 )
 
@@ -143,37 +144,32 @@ func AndroidIMEInBrowser(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Showing the virtual keyboard")
-	var keyboard *chromeui.Node
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		keyboard, err = chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: "ExoInputMethodSurface"})
-		if err == nil {
-			return nil
-		}
+	uia := uiauto.New(tconn)
+	keyboard := nodewith.ClassName("ExoInputMethodSurface")
+	showVirtualKeyboardIfEnabled := func(ctx context.Context) error {
 
 		// Repeatedly call showVirtualKeyboardIfEnabled until isKeyboardShown returns true.
 		// Usually it requires only one call of showVirtualKeyboardIfEnabled, but on rare occasions it requires
 		// multiple ones e.g. the function was called right in the middle of IME switch.
 		if err := tconn.Eval(ctx, `chrome.autotestPrivate.showVirtualKeyboardIfEnabled()`, nil); err != nil {
-			return testing.PollBreak(err)
+			return errors.New("virtual keyboard still not shown")
 		}
-		return errors.New("virtual keyboard still not shown")
-	}, nil); err != nil {
+		return nil
+	}
+
+	if err := uia.RetryUntil(showVirtualKeyboardIfEnabled, uia.Exists(keyboard))(ctx); err != nil {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
 	}
-	defer keyboard.Release(ctx)
 
 	// You can only type "a" from the test IME.
 	const expected = "aaaa"
 
 	s.Log("Trying to press the button in ARC Test IME")
-	for i := 0; i < len(expected); i++ {
-		// It is better to press the keyboard from chromeui instead of UIAutomator for two reasons:
-		// - IME is not accessible from UIAutomator, so we're forced to use UiDevice.click.
-		// - chromeui can provide test coverage for window input region.
-		if err := keyboard.StableLeftClick(ctx, nil); err != nil {
-			s.Fatal("Failed to left click the keyboard")
-		}
+	// It is better to press the keyboard from chromeui instead of UIAutomator for two reasons:
+	// - IME is not accessible from UIAutomator, so we're forced to use UiDevice.click.
+	// - chromeui can provide test coverage for window input region.
+	if err := uiauto.Repeat(len(expected), uia.LeftClick(keyboard))(ctx); err != nil {
+		s.Fatal("Failed to left click the keyboard")
 	}
 
 	s.Log("Waiting for the text field to have the correct contents")
