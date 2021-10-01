@@ -23,7 +23,6 @@ import (
 
 // testParameters contains all the data needed to run a single test iteration.
 type testParameters struct {
-	batteryMode       setup.BatteryDischargeMode
 	binaryTranslation bool
 }
 
@@ -47,9 +46,6 @@ var (
 	// arcAppLoadingRtVcpuVMBooted adds feature to boot ARC with realtime vcpu is enabled.
 	arcAppLoadingRtVcpuVMBooted = arc.NewPrecondition("arcapploading_rt_vcpu_vmbooted", arcAppLoadingGaia, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-arcvm-rt-vcpu")...)
 
-	// arcAppLoadingUseHugePagesVMBooted enable Huge Pages for guest memory mappings.
-	arcAppLoadingUseHugePagesVMBooted = arc.NewPrecondition("arcapploading_use_hugepages_vmbooted", arcAppLoadingGaia, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--arcvm-use-hugepages")...)
-
 	// arcAppLoadingODirectVMBooted enables O_DIRECT for crosvm.
 	arcAppLoadingODirectVMBooted = arc.NewPrecondition("arcapploading_odirect_vmbooted", arcAppLoadingGaia, true /* O_DIRECT */, append(arc.DisableSyncFlags())...)
 )
@@ -71,7 +67,6 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingBooted,
@@ -80,7 +75,6 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingVMBooted,
@@ -89,7 +83,6 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingVMBootedWithMoreVCPUs,
@@ -98,25 +91,14 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingRtVcpuVMBooted,
-		}, {
-			Name:              "huge_pages_vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
-				binaryTranslation: false,
-			},
-			Pre: arcAppLoadingUseHugePagesVMBooted,
 		}, {
 			Name:              "o_direct_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingODirectVMBooted,
@@ -125,7 +107,6 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge(), hwdep.X86()),
 			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: true,
 			},
 			Pre: arcAppLoadingBooted,
@@ -134,43 +115,6 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge(), hwdep.X86()),
 			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
-				binaryTranslation: true,
-			},
-			Pre: arcAppLoadingVMBooted,
-		}, {
-			Name:              "nobatterymetrics",
-			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val: testParameters{
-				batteryMode:       setup.NoBatteryDischarge,
-				binaryTranslation: false,
-			},
-			Pre: arcAppLoadingBooted,
-		}, {
-			Name:              "vm_nobatterymetrics",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
-			Val: testParameters{
-				batteryMode:       setup.NoBatteryDischarge,
-				binaryTranslation: false,
-			},
-			Pre: arcAppLoadingVMBooted,
-		}, {
-			Name:              "binarytranslation_nobatterymetrics",
-			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge(), hwdep.X86()),
-			Val: testParameters{
-				batteryMode:       setup.NoBatteryDischarge,
-				binaryTranslation: true,
-			},
-			Pre: arcAppLoadingBooted,
-		}, {
-			Name:              "vm_binarytranslation_nobatterymetrics",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge(), hwdep.X86()),
-			Val: testParameters{
-				batteryMode:       setup.NoBatteryDischarge,
 				binaryTranslation: true,
 			},
 			Pre: arcAppLoadingVMBooted,
@@ -271,7 +215,7 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	}
 	config := apploading.TestConfig{
 		PerfValues:           finalPerfValues,
-		BatteryDischargeMode: param.batteryMode,
+		BatteryDischargeMode: setup.ForceBatteryDischarge,
 		ApkPath:              s.DataPath(apkName),
 		OutDir:               s.OutDir(),
 	}
