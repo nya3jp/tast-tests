@@ -77,6 +77,8 @@ func AlternateErrorPagesEnabled(ctx context.Context, s *testing.State) {
 				}
 
 				if line != tc.suggestion {
+					// Do not break here because the alternate page overrides the normal
+					// one after a small delay.
 					return errors.Errorf("unexpected suggestion on the error page; got %q, want %q", line, tc.suggestion)
 				}
 
