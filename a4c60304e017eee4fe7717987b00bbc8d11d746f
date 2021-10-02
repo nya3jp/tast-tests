@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21155198_d6039674",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-10-02T17:32:43Z",
+      "side": 1,
+      "message": "Sounds good, thank you! :)",
+      "parentUuid": "bb7367d7_c92ead26",
+      "revId": "a4c60304e017eee4fe7717987b00bbc8d11d746f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "121b9693_0545adb4",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-02T06:55:21Z",
       "side": 1,
       "message": "should we put non zero size?",
+      "revId": "a4c60304e017eee4fe7717987b00bbc8d11d746f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d6f47ec_2688edb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-10-02T17:32:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "121b9693_0545adb4",
       "revId": "a4c60304e017eee4fe7717987b00bbc8d11d746f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
