@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc900c19_185fa261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/context_menu_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61aa115b_16649816",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01617950_a8269a04",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf079d08_b6fef38d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/context_menu_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01617950_a8269a04",
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd2533c8_abd9d012",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-08-09T20:38:56Z",
       "side": 1,
       "message": "The *only* item?",
+      "range": {
+        "startLine": 53,
+        "startChar": 14,
+        "endLine": 53,
+        "endChar": 24
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d0d2450_edb9b87e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/context_menu_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd2533c8_abd9d012",
       "range": {
         "startLine": 53,
         "startChar": 14,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99632b5e_6906b77e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/context_menu_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "As you helped me discover in the team chat, the use of chrome.LoggedInDisableSync sets us up in en-US.",
+      "parentUuid": "05bc9121_a1369af3",
+      "range": {
+        "startLine": 54,
+        "startChar": 48,
+        "endLine": 54,
+        "endChar": 66
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bc2d0d9_f046e13f",
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0595ffab_063d3109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/drag_and_drop_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "I went on a whole journey with this.\n-The existing screenshot tast API does not trigger notifications or the holding space.\n-Using the tast input.KeyboardEventWriter to press the screenshot accelerator does work, but obviously does not return a file path, and...\n-Because screenshots have non-trivial file names (that include the date and time), we can\u0027t just go os.Remove the file.\n-The screenshot notifications can mess with the test if they cover up something we\u0027re trying to click on.\n-For some reason, tast is unaware of os.ReadDir, and I haven\u0027t figured out why, found any documentation on it or reference to it, or been able to get it to acknowledge that function exists, even though it\u0027s a standard part of Go. os.ReadDir is not used anywhere in any tast tests.\n-This lead me to call os.RemoveAll on the downloads path, and document the face that this happens in the function\u0027s doc comment.\n\nI\u0027m open to other approaches here if that os.RemoveAll call is too worrisome. But at least it works now. :D\n\nEdit: Before I even published this comment, we talked more in depth about it, and agreed to move this to the holdingspace package to make it easy to replace later, but keep it as a text file since screenshots are a mess. Keeping the above for later reference.",
+      "parentUuid": "2bc2d0d9_f046e13f",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 32
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04fb4121_09f5aaab",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-08-09T20:38:56Z",
       "side": 1,
       "message": "What\u0027s this for?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d0e51cd_0ee7d947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/drag_and_drop_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "This is needed for the DragAndDropFile call below.",
+      "parentUuid": "04fb4121_09f5aaab",
       "range": {
         "startLine": 78,
         "startChar": 0,
@@ -179,6 +317,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f758fb8_601a462b",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7dc9403_227a284a",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f19adf4c_892470e6",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "This one on the other hand isn\u0027t used outside of here any more, won\u0027t export it and will delete the comment.",
+      "parentUuid": "4d1c8163_b4ea7856",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74a9c9b2_293e81d7",
@@ -192,6 +378,30 @@
       "writtenOn": "2021-08-09T20:38:56Z",
       "side": 1,
       "message": "Will this find the node even if its not visible?",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 55
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54790f7b_ff36b3bc",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "I believe so. Adding a check.",
+      "parentUuid": "74a9c9b2_293e81d7",
       "range": {
         "startLine": 28,
         "startChar": 11,
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15082901_75fdf51d",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6301ca8_0c961066",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 18
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9716ae48_64748f52",
@@ -238,6 +472,30 @@
       "writtenOn": "2021-08-09T20:38:56Z",
       "side": 1,
       "message": "You\u0027ll want to confirm we are looking at the pinned files section, `HoldingSpaceItemChipView` is also in the downloads section and may not be pinned :)",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 85
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4382d603_59733f7e",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9716ae48_64748f52",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -271,6 +529,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4593bf9a_18cc115b",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca5d4b51_3776825b",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 85
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb40395e_76f1cae9",
@@ -284,6 +566,30 @@
       "writtenOn": "2021-08-09T20:38:56Z",
       "side": 1,
       "message": "You may want to wait after it disappears and reconfirm that it doesn\u0027t come back. When an item is added/removed, all other existing items are animated out, destroyed, and recreated so this might not indicate actual removal from holding space. UI may just be in transition :)",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e47c33b_00363944",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb40395e_76f1cae9",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -317,6 +623,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8a041ff_654968e0",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eff3b53_7cbc5121",
+      "range": {
+        "startLine": 82,
+        "startChar": 5,
+        "endLine": 82,
+        "endChar": 14
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48da49f8_109ad085",
@@ -340,6 +670,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eab95ccb_b118cb9d",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "Assuming you mean the comment. Because this function is exposed outside this file, it\u0027s required by the linter to have a comment above it starting with its name.",
+      "parentUuid": "48da49f8_109ad085",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e1c7152_3a691ef1",
@@ -353,6 +707,30 @@
       "writtenOn": "2021-08-09T20:38:56Z",
       "side": 1,
       "message": "We have the need to create files elsewhere, I\u0027d recommend splitting out two APIs:\n1. CreateFile\n2. PinViaFilesAppContextMenu",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 24
+      },
+      "revId": "4de275c3b3d8fb0ffec783ee7cbb75126da3012c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c96679a5_e4b186fa",
+        "filename": "src/chromiumos/tast/local/chrome/holdingspace/holding_space.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-10-02T01:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e1c7152_3a691ef1",
       "range": {
         "startLine": 117,
         "startChar": 5,
