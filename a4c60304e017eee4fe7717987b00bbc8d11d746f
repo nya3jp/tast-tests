@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb7367d7_c92ead26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-10-02T06:55:21Z",
+      "side": 1,
+      "message": "looks fine on the first read, I\u0027ll have a closer look Monday",
+      "revId": "a4c60304e017eee4fe7717987b00bbc8d11d746f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "121b9693_0545adb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-10-02T06:55:21Z",
+      "side": 1,
+      "message": "should we put non zero size?",
+      "revId": "a4c60304e017eee4fe7717987b00bbc8d11d746f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
