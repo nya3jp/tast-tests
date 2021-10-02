@@ -1,0 +1,38 @@
+<!-- Copyright 2021 The Chromium OS Authors. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <title>Download</title>
+  <script>
+    window.addEventListener('load', () => {
+      // Parse `filename` and `filesize` from search `params`.
+      const params = new URLSearchParams(window.location.search);
+      const filename = params.get('filename');
+      const filesize = params.get('filesize');
+
+      // Insert `filename` and `filesize` into the DOM for debugging.
+      document.querySelector('#filename').textContent = filename || '! Required !';
+      document.querySelector('#filesize').textContent = filesize || '! Required !';
+
+      if (!filename || !filesize) {
+        return;
+      }
+
+      // Create a `link` which will download a `filesize` `blob` to `filename`.
+      const link = document.createElement('a');
+      const blob = new Blob([new ArrayBuffer(filesize)], {'type': 'application/octet-stream'});
+      link.download = filename;
+      link.href = window.URL.createObjectURL(blob);
+
+      // Click `link` to automatically start the download.
+      link.click();
+    });
+  </script>
+  <body>
+    <h1>Download</h1>
+    <p>Filename: <span id="filename"></span></p>
+    <p>Filesize: <span id="filesize"></span></p>
+  </body>
+</html>
