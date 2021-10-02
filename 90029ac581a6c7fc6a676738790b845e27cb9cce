@@ -20,6 +20,167 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12578c4f_d177d09b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "This is a naming part I don\u0027t like haha\n\nI think Test in the name is redundant\n\nlacros.UpdateService isn\u0027t great but it\u0027s better",
+      "range": {
+        "startLine": 19,
+        "startChar": 54,
+        "endLine": 19,
+        "endChar": 58
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09495f92_4c8a23a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c825d6cb_421fb36e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "what does this mean?",
+      "range": {
+        "startLine": 41,
+        "startChar": 61,
+        "endLine": 41,
+        "endChar": 77
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba013ae6_cb2a8659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "did you manually wrap this? golang has no line limits\n\nAnd elsewhere",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4b65e05_45f578fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "Wrapping is weird here",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ace3cf79_7ed68c57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/provision/doc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "You could put this comment in the next file and delete this doc.go",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 73
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aee83eb_ec6b36fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/provision/tls_client.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "Can you add an explanation of what this file does to dumb future users like me :)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c2db3da_146a1c40",
         "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/provision/tls_client.go",
         "patchSetId": 10
@@ -60,6 +221,190 @@
         "startChar": 0,
         "endLine": 63,
         "endChar": 40
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d898d545_a2558553",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "Uncomment imo. Let it fail and see if it uncovers any other errors you missed",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 63
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fad76fe0_a8b29774",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "is this necessary/enforced? in OS update tests we always just use 999999.0.0",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 92
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c01faaf8_31b78835",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "is this necessary?",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 51
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf105a3_80b381cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "what\u0027s a device image file",
+      "range": {
+        "startLine": 72,
+        "startChar": 35,
+        "endLine": 72,
+        "endChar": 56
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f44c7e94_b05707b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "Should these following functions go in a util lib somewhere?",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 27
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39bbdb10_f5b3b3f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "add a function comment",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82f79201_0362fda6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "Why is this a function if it is only one line?",
+      "range": {
+        "startLine": 141,
+        "startChar": 5,
+        "endLine": 141,
+        "endChar": 22
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0c8e0ba_45632375",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-02T00:22:32Z",
+      "side": 1,
+      "message": "This file feels like overkill to me. Is there no existing library to play with build strings? Is just changing the first or last number not enough?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 12
       },
       "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
