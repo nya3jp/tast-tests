@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "14522c6c25c18a8988ed25da80bb040435aa2986",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "746418db_3098e2f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-03T23:51:45Z",
+      "side": 1,
+      "message": "BTW, Can you try one more thing? Run tast unit test inside chroot.\n\n$ ~/trunk/src/platform/tast\n$ ./fast_build.sh  -T\n\nShould take less than 2 minutes.\n\nThanks.\n",
+      "revId": "14522c6c25c18a8988ed25da80bb040435aa2986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
