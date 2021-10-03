@@ -33,6 +33,24 @@
       "message": "BTW, Can you try one more thing? Run tast unit test inside chroot.\n\n$ ~/trunk/src/platform/tast\n$ ./fast_build.sh  -T\n\nShould take less than 2 minutes.\n\nThanks.\n",
       "revId": "14522c6c25c18a8988ed25da80bb040435aa2986",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "888a24dd_e0053179",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-03T23:53:24Z",
+      "side": 1,
+      "message": "Sorry should be\n$ cd ~/trunk/src/platform/tast\n$ ./fast_build.sh  -T",
+      "parentUuid": "746418db_3098e2f2",
+      "revId": "14522c6c25c18a8988ed25da80bb040435aa2986",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
