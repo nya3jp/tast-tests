@@ -52,6 +52,24 @@
       "parentUuid": "979a4c9e_04deea8b",
       "revId": "9d0281f9ad141a073899e1b2e32d84eedd544aff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee8edf6_04df0823",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-03T22:27:20Z",
+      "side": 1,
+      "message": "This is a mechanical change, so it allows us to submit even though it didn\u0027t pass diagnostics.Connectivity.",
+      "parentUuid": "20856f11_8aa85b7f",
+      "revId": "9d0281f9ad141a073899e1b2e32d84eedd544aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
