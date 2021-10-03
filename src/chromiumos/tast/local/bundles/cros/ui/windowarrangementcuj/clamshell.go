@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
@@ -198,7 +197,7 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 		return errors.Wrap(err, "failed to create a new desk")
 	}
 	// Wait for location-change events to be completed.
-	if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
 	}
 	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
@@ -210,7 +209,7 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 		return errors.Wrap(err, "failed to drag window from overview to snap")
 	}
 	// Wait for location-change events to be completed.
-	if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
 	}
 	w, err = ash.FindFirstWindowInOverview(ctx, tconn)
@@ -231,7 +230,7 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 		return errors.Wrap(err, "failed to drag window from overview grid to desk mini-view")
 	}
 	// Wait for location-change events to be completed.
-	if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
 	}
 
