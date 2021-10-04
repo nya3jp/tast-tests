@@ -11,6 +11,7 @@ import (
 	"testing"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/common/testutil"
 	"chromiumos/tast/errors"
 )
 
@@ -190,6 +191,10 @@ func testAddStraceLogExecCase(ctx context.Context, t *testing.T, filter Filter) 
 }
 
 func TestPolicyGeneratorAddStraceLog(t *testing.T) {
+	if !testutil.InChroot() {
+		t.Skip("Needs CrOS SDK (for strace) to run this test")
+	}
+
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
@@ -197,7 +202,6 @@ func TestPolicyGeneratorAddStraceLog(t *testing.T) {
 	testAddStraceLogNoexecCase(t, ExcludeSyscallsBeforeSandboxing)
 	testAddStraceLogExecCase(ctx, t, IncludeAllSyscalls)
 	testAddStraceLogExecCase(ctx, t, ExcludeSyscallsBeforeSandboxing)
-
 }
 
 func TestPolicyGeneratorLookupSyscall(t *testing.T) {

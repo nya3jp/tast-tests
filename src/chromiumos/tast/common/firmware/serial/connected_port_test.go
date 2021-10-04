@@ -10,9 +10,14 @@ import (
 	"time"
 
 	"chromiumos/tast/common/firmware/serial"
+	"chromiumos/tast/common/testutil"
 )
 
 func TestConnectedPort(t *testing.T) {
+	if !testutil.InChroot() {
+		t.Skip("Needs CrOS SDK (for socat) to run this test")
+	}
+
 	ctx := context.Background()
 
 	ctx, ctxCancel := context.WithTimeout(ctx, 30*time.Second)
