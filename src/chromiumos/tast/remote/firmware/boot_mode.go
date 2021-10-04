@@ -75,6 +75,7 @@ func msOptsContain(opts []ModeSwitchOption, want ModeSwitchOption) bool {
 
 // RebootToMode reboots the DUT into the specified boot mode.
 // This has the side-effect of disconnecting the RPC client.
+// Requires `SoftwareDeps: []string{"crossystem", "flashrom"},` and `ServiceDeps: []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"}`.
 func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMode, opts ...ModeSwitchOption) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
