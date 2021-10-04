@@ -190,6 +190,30 @@
       },
       "revId": "03e94241ab4102318b9d2587c2667bebea42d9fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "037affad_55e9e401",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-10-04T13:09:45Z",
+      "side": 1,
+      "message": "I wasn\u0027t suggesting deriving those values from the policy value as that indeed forced there to be a lot of extra boilerplate and was not helpful. In this circumstance we would still be keeping those things separate, and the expectations should still be simple to understand with proper naming (i.e. \"AllBlocked, StrictOnly, AllAllowed\", or something like that). I only bring this up because this actually felt hard for me to read when I first looked at it.\n\nTo be honest, the fact that the sub-test labeled \"strict\" blocks everything, and \"moderate\" allows strict content but not moderate content is probably a big reason why this ended up being confusing for me, but I\u0027m not actually sure that has anything to do with the test authors here -- that appears to be because of the way the policy itself works. Not sure what that\u0027s about.\n\nIf you still feel strongly about this, then go ahead and push it -- Kamil has OWNERs and already approved it.",
+      "parentUuid": "cd286b8a_4489a00f",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 29
+      },
+      "revId": "03e94241ab4102318b9d2587c2667bebea42d9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
