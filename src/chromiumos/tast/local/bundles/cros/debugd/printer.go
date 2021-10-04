@@ -21,8 +21,9 @@ func init() {
 		Func: Printer,
 		Desc: "Performs validity testing of printer-related D-Bus methods",
 		Contacts: []string{
-			"skau@chromium.org",     // Original autotest author
+			"bmgordon@chromium.org",
 			"hidehiko@chromium.org", // Tast port author
+			"project-bolton@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "cups"},
 		Data:         []string{"GenericPostScript.ppd.gz"},

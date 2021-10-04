@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     PrintIPPUSB,
 		Desc:     "Tests ipp-over-usb printing",
-		Contacts: []string{"skau@chromium.org", "project-bolton@google.com"},
+		Contacts: []string{"bmgordon@chromium.org", "project-bolton@google.com"},
 		Attr: []string{
 			"group:mainline",
 			"group:paper-io",

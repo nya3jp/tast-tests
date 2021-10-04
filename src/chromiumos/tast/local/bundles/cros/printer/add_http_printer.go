@@ -21,7 +21,8 @@ func init() {
 		Func: AddHTTPPrinter,
 		Desc: "Verifies that http printers can be installed",
 		Contacts: []string{
-			"skau@chromium.org",
+			"bmgordon@chromium.org",
+			"project-bolton@google.com",
 		},
 		SoftwareDeps: []string{"cros_internal", "cups"},
 		Data:         []string{httpTestPPDFile},
