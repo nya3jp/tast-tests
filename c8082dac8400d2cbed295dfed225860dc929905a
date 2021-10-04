@@ -22,6 +22,54 @@
       },
       "revId": "c8082dac8400d2cbed295dfed225860dc929905a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8d22085_d3e20fab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/daily_refresh.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-10-04T19:07:02Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion!",
+      "parentUuid": "3d73a817_de9c0b61",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 8
+      },
+      "revId": "c8082dac8400d2cbed295dfed225860dc929905a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ced1124_3d147905",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/daily_refresh.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-10-04T19:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d73a817_de9c0b61",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 8
+      },
+      "revId": "c8082dac8400d2cbed295dfed225860dc929905a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
