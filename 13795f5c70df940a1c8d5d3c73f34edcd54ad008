@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f5f71b6_58f096c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-04T08:16:14Z",
+      "side": 1,
+      "message": "Thanks for this command. We just tried out this test and it\u0027s the same what we are trying to achieve in this CL as well. I guess I can abandon this patch right?",
+      "parentUuid": "8903348e_4bb7f738",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "13795f5c70df940a1c8d5d3c73f34edcd54ad008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "925e2ae0_1b47ac32",
