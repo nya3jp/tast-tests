@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2164e9d5_5acd1e99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-10-04T09:23:44Z",
+      "side": 1,
+      "message": "Not sure if we should only enable this test on brya. I think we should test it on all TBT device?\n\nHi Ben, do you have any suggestion on this?",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 44
+      },
+      "revId": "0d12f94dd539ab1cec2db9357dfcdf60a372c530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
