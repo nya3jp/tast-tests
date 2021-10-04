@@ -16,6 +16,23 @@
       "message": "@Oleh \nHi,\nthe test apps.TelemetryExtension seems to fail without any changes. Could you please check it for me?",
       "revId": "2f410ddded66aad8ff5bbd50e4f41f805e75c106",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91a3ce80_933f9d11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-04T08:04:49Z",
+      "side": 1,
+      "message": "LGTM, no worries if test didn\u0027t pass, we probably will remove it soon.",
+      "revId": "2f410ddded66aad8ff5bbd50e4f41f805e75c106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
