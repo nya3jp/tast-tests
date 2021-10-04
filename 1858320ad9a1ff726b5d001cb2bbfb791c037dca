@@ -33,6 +33,24 @@
       "message": "You still need to add tast reviewer",
       "revId": "1858320ad9a1ff726b5d001cb2bbfb791c037dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6241ab34_5cd91bb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-10-04T18:34:50Z",
+      "side": 1,
+      "message": "ack. apparently they like getting domain approval *first* though.",
+      "parentUuid": "964242df_4a8e6794",
+      "revId": "1858320ad9a1ff726b5d001cb2bbfb791c037dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
