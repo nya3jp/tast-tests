@@ -18,7 +18,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     PrintUSB,
 		Desc:     "Tests that USB print job can be successfully sent",
-		Contacts: []string{"skau@chromium.org", "project-bolton@google.com"},
+		Contacts: []string{"bmgordon@chromium.org", "project-bolton@google.com"},
 		Attr: []string{
 			"group:mainline",
 			"group:paper-io",

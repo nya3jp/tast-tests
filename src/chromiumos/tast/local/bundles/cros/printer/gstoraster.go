@@ -15,7 +15,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     Gstoraster,
 		Desc:     "Tests that the gstoraster CUPS filter produces expected output",
-		Contacts: []string{"skau@chromium.org", "project-bolton@google.com"},
+		Contacts: []string{"bmgordon@chromium.org", "project-bolton@google.com"},
 		Attr: []string{
 			"group:mainline",
 			"group:paper-io",

@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     USBPrinterTimeout,
 		Desc:     "Tests that USB print jobs timeout if the device does not exist",
-		Contacts: []string{"skau@chromium.org"},
+		Contacts: []string{"bmgordon@chromium.org", "project-bolton@google.com"},
 		Attr: []string{
 			"group:mainline",
 			"group:paper-io",

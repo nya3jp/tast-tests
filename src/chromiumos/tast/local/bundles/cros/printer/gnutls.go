@@ -24,7 +24,7 @@ func init() {
 		Desc: "Validity test for lpadmin connecting to IPPS server using GnuTLS",
 		Contacts: []string{
 			"mw@semihalf.com",
-			"skau@google.com",
+			"bmgordon@google.com",
 			"cros-printing-dev@chromium.org",
 		},
 		SoftwareDeps: []string{"cros_internal", "cups"},
