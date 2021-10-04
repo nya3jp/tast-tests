@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7052b589_ee5b7908",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-04T14:04:45Z",
+      "side": 1,
+      "message": "Thanks for addressing my many comments, just a few now 😊",
+      "revId": "652f8aaa75ee3e1c0d171fdff68d41994442df57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca9f542b_e895271f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-04T14:04:45Z",
+      "side": 1,
+      "message": "I\u0027d err on the side of caution and have 10 minutes here",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "652f8aaa75ee3e1c0d171fdff68d41994442df57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c4ee58f_69f8442e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-04T14:04:45Z",
+      "side": 1,
+      "message": "This is not helpful here, the context needs to be shortened before the defer to have an effect.\n\n3 Minutest is a safer timeout for slower devices to have time to boot.",
+      "revId": "652f8aaa75ee3e1c0d171fdff68d41994442df57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58e03ced_12eee146",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-04T14:04:45Z",
+      "side": 1,
+      "message": "nit: also mention what you are waiting for. Maybe \"Closing lid, waiting for DUT to become unreachable\"",
+      "revId": "652f8aaa75ee3e1c0d171fdff68d41994442df57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2657ba06_f2846f3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-04T14:04:45Z",
+      "side": 1,
+      "message": "nit: same as above, maybe \"Waiting for DUT to be in S3 state after suspend\"",
+      "range": {
+        "startLine": 174,
+        "startChar": 8,
+        "endLine": 174,
+        "endChar": 16
+      },
+      "revId": "652f8aaa75ee3e1c0d171fdff68d41994442df57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
