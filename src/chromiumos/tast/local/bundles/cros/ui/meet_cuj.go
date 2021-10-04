@@ -632,6 +632,9 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to wait for entering meeting")
 		}
 
+		if err := meetConn.Eval(ctx, "hrTelemetryApi.setMicMuted(false)", nil); err != nil {
+			return errors.Wrap(err, "failed to turn on mic")
+		}
 		if !meet.cam {
 			if err := meetConn.Eval(ctx, "hrTelemetryApi.setCameraMuted(true)", nil); err != nil {
 				return errors.Wrap(err, "failed to turn off camera")
