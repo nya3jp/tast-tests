@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "966ae031_9d52f563",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-10-04T02:25:11Z",
+      "side": 1,
+      "message": "Please wrap lines to 72 columns.",
+      "revId": "58b37119f8c7aca32c8e89c75b3955a59a4482cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
