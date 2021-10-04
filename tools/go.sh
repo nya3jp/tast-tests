@@ -1,0 +1,1 @@
+../../tast/tools/go.sh
