@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "9abfd198dd86b2e5cba0c2c7a461a63424a3e11d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24d8c6c0_687842a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-04T16:52:09Z",
+      "side": 1,
+      "message": "There is a spelling error in the commit message -\u003e \"computs\" should be \"computes\" otherwise LGTM",
+      "revId": "9abfd198dd86b2e5cba0c2c7a461a63424a3e11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
