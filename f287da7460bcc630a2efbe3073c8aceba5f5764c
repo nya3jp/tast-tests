@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a33380a6_715c168d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-10-04T02:53:07Z",
+      "side": 1,
+      "message": "Usually we will create another issue to make it critical until it\u0027s stable. And we have cros healthd sheriff to take a look on all healthd tast-test every week.",
+      "parentUuid": "f2257226_a09e2feb",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2dc4b521_06a9bbdb",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
         "patchSetId": 2
