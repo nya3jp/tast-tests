@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3371c8ae_a72917d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-04T22:55:53Z",
+      "side": 1,
+      "message": "nit: If the sleep is necessary, please do it in between changeLayout functions below. It should not be part of changeLayout function.",
+      "range": {
+        "startLine": 394,
+        "startChar": 3,
+        "endLine": 394,
+        "endChar": 115
+      },
+      "revId": "e4bf1d15a4887b7d196a9e1898ed876ffde6f143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
