@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff413c18_c5638ab4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-04T18:19:31Z",
+      "side": 1,
+      "message": "Changed it to just bytes with checks that it\u0027s multiples of 32.",
+      "parentUuid": "464b9ed4_2e6b9089",
+      "revId": "fe9f6ffdbe7244e6726cdb581d9178bf4844a155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45df2456_b22b600b",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-09-28T20:33:49Z",
       "side": 1,
       "message": "We should probably figure out what these potential errors actually are... and possibly report them back to the caller.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "fe9f6ffdbe7244e6726cdb581d9178bf4844a155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f477010f_40e35683",
+        "filename": "src/chromiumos/tast/common/storage/files/crypto_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-04T18:19:31Z",
+      "side": 1,
+      "message": "Error wrapped and returned.",
+      "parentUuid": "45df2456_b22b600b",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -77,6 +119,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4248c673_86340149",
+        "filename": "src/chromiumos/tast/common/storage/files/crypto_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-04T18:19:31Z",
+      "side": 1,
+      "message": "Updated the comment to reflect why it\u0027s zero.",
+      "parentUuid": "3e28f63a_5bc6923f",
+      "revId": "fe9f6ffdbe7244e6726cdb581d9178bf4844a155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e08679ec_2dc3ef41",
         "filename": "src/chromiumos/tast/common/storage/files/crypto_utils.go",
         "patchSetId": 3
@@ -100,6 +160,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81f5f962_4fe3d3d8",
+        "filename": "src/chromiumos/tast/common/storage/files/crypto_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-04T18:19:31Z",
+      "side": 1,
+      "message": "Error wrapped and returned.\n(*h) is left intact due to this error:\ncrypto_utils.go:52:18: h.Write undefined (type *hash.Hash is pointer to interface, not interface)",
+      "parentUuid": "e08679ec_2dc3ef41",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "fe9f6ffdbe7244e6726cdb581d9178bf4844a155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49b88c0f_89e46d35",
         "filename": "src/chromiumos/tast/common/storage/files/file_utils.go",
         "patchSetId": 3
@@ -111,6 +195,24 @@
       "writtenOn": "2021-09-28T20:33:49Z",
       "side": 1,
       "message": "nit:\n\n NOTE: While AES, SHA256, and PBKDF2 are used here, it is not for security,",
+      "revId": "fe9f6ffdbe7244e6726cdb581d9178bf4844a155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f38741_096a705d",
+        "filename": "src/chromiumos/tast/common/storage/files/file_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-04T18:19:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49b88c0f_89e46d35",
       "revId": "fe9f6ffdbe7244e6726cdb581d9178bf4844a155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
