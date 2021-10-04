@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f04b539_3c3f174a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-04T02:51:49Z",
+      "side": 1,
+      "message": "We have to know the node info (name) in L.179 anyway, so computing it here is needed.",
+      "parentUuid": "6cf4957f_5d79df26",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 2
+      },
+      "revId": "2f396901682ffe57e5fbd7c0f90b5ef3183a51b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59cb62b7_061c490f",
