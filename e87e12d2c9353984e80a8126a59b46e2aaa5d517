@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19b39fda_df2cee23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-04T08:21:00Z",
+      "side": 1,
+      "message": "The ui package is deprecated, use functions from the uiauto package instead.",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "e87e12d2c9353984e80a8126a59b46e2aaa5d517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ab8e20_4f00458e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-04T08:21:00Z",
+      "side": 1,
+      "message": "As the test is interacting with the ui it would be better to use DumpUITreeWithScreenshotOnError.",
+      "range": {
+        "startLine": 55,
+        "startChar": 15,
+        "endLine": 55,
+        "endChar": 32
+      },
+      "revId": "e87e12d2c9353984e80a8126a59b46e2aaa5d517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e27e666_6a2ae96c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-04T08:21:00Z",
+      "side": 1,
+      "message": "You can use the WaitForEvent function from the uiauto package instead.\nUsing the Root ui element and the LocationChanged event should do the same.",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 44
+      },
+      "revId": "e87e12d2c9353984e80a8126a59b46e2aaa5d517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5602584_8994ee29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/bubble_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-04T08:21:00Z",
+      "side": 1,
+      "message": "nit: use s.Log when the testing.State is available.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 19
+      },
+      "revId": "e87e12d2c9353984e80a8126a59b46e2aaa5d517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
