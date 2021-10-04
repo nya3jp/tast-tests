@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4579f3a_31c7eb78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/api/api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-10-04T18:55:00Z",
+      "side": 1,
+      "message": "Can do! Done :)",
+      "parentUuid": "9a6a3013_07dc6e4f",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "0bbfdcfab53bf0068972f5ef06a4199116e5cdfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d12bb122_f67e491e",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d505ba73_3125c9de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-10-04T18:55:00Z",
+      "side": 1,
+      "message": "Yup! Added to comment :)",
+      "parentUuid": "d12bb122_f67e491e",
+      "revId": "0bbfdcfab53bf0068972f5ef06a4199116e5cdfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93be4e61_cb9f2917",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-10-04T18:23:52Z",
       "side": 1,
       "message": "no comment needed here as it\u0027s a fairly standard thing across tast tests",
+      "revId": "0bbfdcfab53bf0068972f5ef06a4199116e5cdfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "076829e4_7bc1b237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-10-04T18:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93be4e61_cb9f2917",
       "revId": "0bbfdcfab53bf0068972f5ef06a4199116e5cdfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
