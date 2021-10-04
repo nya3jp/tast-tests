@@ -17,10 +17,8 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/dut"
-	"chromiumos/tast/errors"
-	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/remote/policyutil"
+	"chromiumos/tast/remote/updateutil"
 	"chromiumos/tast/rpc"
 	aupb "chromiumos/tast/services/cros/autoupdate"
 	ppb "chromiumos/tast/services/cros/policy"
@@ -88,7 +86,7 @@ func RollbackWithNebraska(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to convert test parameters to the desired type")
 	}
 
-	originalVersion, err := imageVersion(ctx, s.DUT(), s.RPCHint())
+	originalVersion, err := updateutil.ImageVersion(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to read DUT image version before the update: ", err)
 	}
@@ -226,7 +224,7 @@ func RollbackWithNebraska(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the image version.
-	version, err := imageVersion(ctx, s.DUT(), s.RPCHint())
+	version, err := updateutil.ImageVersion(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to read DUT image version after the update: ", err)
 	}
@@ -252,7 +250,7 @@ func RollbackWithNebraska(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the image version again.
-	version, err = imageVersion(ctx, s.DUT(), s.RPCHint())
+	version, err = updateutil.ImageVersion(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to read DUT image version after the update: ", err)
 	}
@@ -260,36 +258,4 @@ func RollbackWithNebraska(ctx context.Context, s *testing.State) {
 	if version != originalVersion {
 		s.Errorf("Unexpected image version after rollback; got %s, want %s", version, originalVersion)
 	}
-}
-
-func imageVersion(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) (string, error) {
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 20*time.Second)
-	defer cancel()
-
-	// Connect to DUT.
-	cl, err := rpc.Dial(ctx, dut, rpcHint, "cros")
-	if err != nil {
-		return "", errors.Wrap(err, "failed to connect to the RPC service on the DUT")
-	}
-	defer cl.Close(cleanupCtx)
-
-	// Check the new image version.
-	updateClient := aupb.NewUpdateServiceClient(cl.Conn)
-	response, err := updateClient.LSBReleaseContent(ctx, &empty.Empty{})
-	if err != nil {
-		return "", errors.Wrap(err, "failed to read lsb-release")
-	}
-
-	var lsb map[string]string
-	if err := json.Unmarshal(response.ContentJson, &lsb); err != nil {
-		return "", errors.Wrap(err, "failed to unmarshal lsb-relese content")
-	}
-
-	version, ok := lsb[lsbrelease.Version]
-	if !ok {
-		return "", errors.Wrap(err, "failed to get version from lsb-release content")
-	}
-
-	return version, nil
 }
