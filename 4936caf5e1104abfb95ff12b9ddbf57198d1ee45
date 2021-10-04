@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2d11cae_4142afd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_codecs_encode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-04T15:41:44Z",
+      "side": 1,
+      "message": "Logged messages like s.Error, s.Fatal and s.Log should be capitalized.",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "4936caf5e1104abfb95ff12b9ddbf57198d1ee45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d91af28c_af85e05a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-04T15:41:44Z",
+      "side": 1,
+      "message": "Messages logged by ContextLog should be capitalized.",
+      "range": {
+        "startLine": 127,
+        "startChar": 26,
+        "endLine": 127,
+        "endChar": 30
+      },
+      "revId": "4936caf5e1104abfb95ff12b9ddbf57198d1ee45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
