@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
@@ -56,16 +56,14 @@ func init() {
 			hwdep.SkipOnPlatform("veyron_fievel"),
 			hwdep.SkipOnPlatform("veyron_tiger"),
 		),
-		Data:         pre.Data,
-		ServiceDeps:  pre.ServiceDeps,
-		SoftwareDeps: pre.SoftwareDeps,
-		Vars:         pre.Vars,
+		SoftwareDeps: []string{"crossystem", "flashrom"},
+		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		Params: []testing.Param{
 			// Test eventlog upon normal->normal reboot.
 			{
 				Name:              "normal",
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("leona")),
-				Pre:               pre.NormalMode(),
+				Fixture:           fixture.NormalMode,
 				Val: eventLogParams{
 					resetType:         firmware.WarmReset,
 					requiredEventSets: [][]string{[]string{`System boot`}},
@@ -76,7 +74,7 @@ func init() {
 				// Allow some normally disallowed events on leona. b/184778308
 				Name:              "leona_normal",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("leona")),
-				Pre:               pre.NormalMode(),
+				Fixture:           fixture.NormalMode,
 				Val: eventLogParams{
 					resetType:         firmware.WarmReset,
 					requiredEventSets: [][]string{[]string{`System boot`}},
@@ -88,7 +86,7 @@ func init() {
 			{
 				Name:              "dev",
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("leona")),
-				Pre:               pre.DevModeGBB(),
+				Fixture:           fixture.DevModeGBB,
 				Val: eventLogParams{
 					resetType:         firmware.WarmReset,
 					requiredEventSets: [][]string{[]string{`System boot`, `Chrome OS Developer Mode`}},
@@ -99,7 +97,7 @@ func init() {
 			{
 				Name:              "leona_dev",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("leona")),
-				Pre:               pre.DevModeGBB(),
+				Fixture:           fixture.DevModeGBB,
 				Val: eventLogParams{
 					resetType:         firmware.WarmReset,
 					requiredEventSets: [][]string{[]string{`System boot`, `Chrome OS Developer Mode`}},
@@ -110,7 +108,7 @@ func init() {
 			// Test eventlog upon normal->rec reboot.
 			{
 				Name:      "normal_rec",
-				Pre:       pre.NormalMode(),
+				Fixture:   fixture.NormalMode,
 				ExtraAttr: []string{"firmware_usb"},
 				Val: eventLogParams{
 					bootToMode:        fwCommon.BootModeRecovery,
@@ -123,7 +121,7 @@ func init() {
 			{
 				Name:              "rec_normal",
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("leona")),
-				Pre:               pre.RecMode(),
+				Fixture:           fixture.RecMode,
 				ExtraAttr:         []string{"firmware_usb"},
 				Val: eventLogParams{
 					bootToMode:        fwCommon.BootModeNormal,
@@ -136,7 +134,7 @@ func init() {
 				// Allow some normally disallowed events on leona. b/184778308
 				Name:              "leona_rec_normal",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("leona")),
-				Pre:               pre.RecMode(),
+				Fixture:           fixture.RecMode,
 				ExtraAttr:         []string{"firmware_usb"},
 				Val: eventLogParams{
 					bootToMode:        fwCommon.BootModeNormal,
@@ -153,8 +151,8 @@ func init() {
 			// eldrid: S0ix Enter, S0ix Exit, Wake Source | Power Button | 0, EC Event | Power Button
 			// hayato: Sleep, Wake
 			{
-				Name: "suspend_resume",
-				Pre:  pre.NormalMode(),
+				Name:    "suspend_resume",
+				Fixture: fixture.NormalMode,
 				Val: eventLogParams{
 					suspendResume: true,
 					requiredEventSets: [][]string{
@@ -171,8 +169,8 @@ func init() {
 			// hayato: FAIL Sleep, System boot
 			// treeya: FAIL Nothing logged
 			{
-				Name: "suspend_resume_idle",
-				Pre:  pre.NormalMode(),
+				Name:    "suspend_resume_idle",
+				Fixture: fixture.NormalMode,
 				Val: eventLogParams{
 					suspendResume: true,
 					suspendToIdle: "1",
@@ -189,8 +187,8 @@ func init() {
 			// hayato: Sleep, Wake
 			// x86 duts: ACPI Enter | S3, EC Event | Power Button, ACPI Wake | S3, Wake Source | Power Button | 0
 			{
-				Name: "suspend_resume_noidle",
-				Pre:  pre.NormalMode(),
+				Name:    "suspend_resume_noidle",
+				Fixture: fixture.NormalMode,
 				Val: eventLogParams{
 					suspendResume: true,
 					suspendToIdle: "0",
@@ -204,7 +202,7 @@ func init() {
 			// Test eventlog with hardware watchdog.
 			{
 				Name:              "watchdog",
-				Pre:               pre.NormalMode(),
+				Fixture:           fixture.NormalMode,
 				ExtraSoftwareDeps: []string{"watchdog"},
 				Val: eventLogParams{
 					hardwareWatchdog: true,
@@ -229,7 +227,7 @@ func eventMessagesContainReMatch(ctx context.Context, events []reporters.Event, 
 
 func Eventlog(ctx context.Context, s *testing.State) {
 	// Create mode-switcher.
-	v := s.PreValue().(*pre.Value)
+	v := s.FixtValue().(*fixture.Value)
 	h := v.Helper
 	ms, err := firmware.NewModeSwitcher(ctx, h)
 	if err != nil {
