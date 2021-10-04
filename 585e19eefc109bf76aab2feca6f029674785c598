@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "274bdf30_52338dd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_encode.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-04T03:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3980602_dabbf88c",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 33
+      },
+      "revId": "585e19eefc109bf76aab2feca6f029674785c598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c575386_70567a92",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-29T23:14:55Z",
       "side": 1,
       "message": "nit: This can be written:\n\n  for (const frame of encoderInputFrames) {\n\n\nhttps://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "585e19eefc109bf76aab2feca6f029674785c598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20445b46_fa4ed0a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_encode.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-04T03:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c575386_70567a92",
       "range": {
         "startLine": 29,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "689b14b4_d8b4b6f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_encode.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-04T03:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dd43699_526f13df",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 9
+      },
+      "revId": "585e19eefc109bf76aab2feca6f029674785c598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29123fec_920c0114",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89c1d038_4ea91c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_encode.html",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-04T03:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29123fec_920c0114",
+      "range": {
+        "startLine": 34,
+        "startChar": 42,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "585e19eefc109bf76aab2feca6f029674785c598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05fa993b_e2d047ef",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-09-29T23:14:55Z",
       "side": 1,
       "message": "Does this mean \"save\" as in store in a common GS bucket? Or locally\nin the DUT?",
+      "range": {
+        "startLine": 237,
+        "startChar": 10,
+        "endLine": 237,
+        "endChar": 14
+      },
+      "revId": "585e19eefc109bf76aab2feca6f029674785c598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b9c7e6b_502e7683",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-04T03:53:00Z",
+      "side": 1,
+      "message": "Save in outDir, so it will be saved in the test artifact? Thus I consider this should be done only in a failure case.",
+      "parentUuid": "05fa993b_e2d047ef",
       "range": {
         "startLine": 237,
         "startChar": 10,
