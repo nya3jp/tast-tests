@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c5a43a_9a6411e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39f363ca_c3b43836",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d42f3275_b88416ce",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-01T16:06:57Z",
       "side": 1,
       "message": "nit: move after getting the PreValue",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1b446fb_f5daef8c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d42f3275_b88416ce",
       "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd85eaad_316e276f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d1a7a5dd_0ddd4b69",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "156a6195_790500ba",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-10-01T16:06:57Z",
       "side": 1,
       "message": "nit: add newline",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a8c191e_aa6009e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "156a6195_790500ba",
       "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b507725e_72e294b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e898b5eb_e1ee1f7c",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8800a1d0_cd6aa8d3",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-10-01T16:06:57Z",
       "side": 1,
       "message": "nit: add newline",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca0c8cff_5f24003d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8800a1d0_cd6aa8d3",
       "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +251,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b1f99ff_2c976f2c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4d2f5326_feac87ba",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a733b2d7_090057a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2d454e69_a5de23d6",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc1c9bc0_5729bd00",
@@ -156,6 +306,24 @@
       "writtenOn": "2021-10-01T16:06:57Z",
       "side": 1,
       "message": "nit: add newline\n\n+ maybe log that dut is suspending",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8735054e_ffe374bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc1c9bc0_5729bd00",
       "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -177,6 +345,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75ca367_0099cad1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f4594c1_4c0e5aeb",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2e1eda7_95b7e94d",
@@ -194,6 +380,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b3b86b4_8faba54d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e2e1eda7_95b7e94d",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72a4906d_8440dc3d",
@@ -207,6 +411,24 @@
       "writtenOn": "2021-10-01T16:06:57Z",
       "side": 1,
       "message": "nit: add newline\n\nnit: maybe log that cleanup is being performed.",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "476f1a96_0e487f96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "72a4906d_8440dc3d",
       "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -234,6 +456,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f3082f_ece68f79",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e03d1634_f91ab9d6",
+      "range": {
+        "startLine": 94,
+        "startChar": 30,
+        "endLine": 94,
+        "endChar": 33
+      },
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f3194f5_87751d14",
@@ -247,6 +493,24 @@
       "writtenOn": "2021-10-01T16:06:57Z",
       "side": 1,
       "message": "nit: log that DUT needs to be powered up for cleanup",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de05ac6_b17f6d19",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2f3194f5_87751d14",
       "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -268,6 +532,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfc40473_b39b38f2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aec79655_f2d78dea",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80995167_58170395",
@@ -285,6 +567,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "035d8902_2ec73110",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "80995167_58170395",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18205c69_a5003356",
@@ -298,6 +598,24 @@
       "writtenOn": "2021-10-01T16:06:57Z",
       "side": 1,
       "message": "nit: add newline",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94adf187_fb311098",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18205c69_a5003356",
       "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -325,6 +643,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a86b3b1f_4f78ffaf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "44199e0c_a4961099",
+      "range": {
+        "startLine": 126,
+        "startChar": 22,
+        "endLine": 126,
+        "endChar": 27
+      },
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43e2369e_a6893eb4",
@@ -338,6 +680,24 @@
       "writtenOn": "2021-10-01T16:06:57Z",
       "side": 1,
       "message": "nit: add newline\n\nnit: why is this sleep needed, add a log or a comment at least.",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07c325ba_8fea0018",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "43e2369e_a6893eb4",
       "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -359,6 +719,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46438d44_40090399",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8bec1277_5ebaa6fd",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a94ea88_fab2ebe8",
@@ -372,6 +750,24 @@
       "writtenOn": "2021-10-01T16:06:57Z",
       "side": 1,
       "message": "nit: add newline",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d405b138_07c2ae15",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a94ea88_fab2ebe8",
       "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -393,6 +789,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36ddfa3c_d7982c93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "32dbedc7_f26708d3",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b785275_3593edf8",
@@ -406,6 +820,24 @@
       "writtenOn": "2021-10-01T16:06:57Z",
       "side": 1,
       "message": "nit: log what you are waiting for",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4624c7d9_7619aed2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b785275_3593edf8",
       "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -427,6 +859,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5230d98_e5f7e9e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e38c4df_0b2a9b0a",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f49f4b38_930bf1cb",
@@ -440,6 +890,24 @@
       "writtenOn": "2021-10-01T16:06:57Z",
       "side": 1,
       "message": "nit: add newline",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61266a4_dbc2816f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f49f4b38_930bf1cb",
       "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -467,6 +935,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df41ede_8b1ca81c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4ac6b5a_e221bb0f",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 10
+      },
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "693bde22_4044dffe",
@@ -484,6 +976,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "889c9715_10607cf2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "693bde22_4044dffe",
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65cacc24_88292749",
@@ -497,6 +1007,30 @@
       "writtenOn": "2021-10-01T16:06:57Z",
       "side": 1,
       "message": "Error",
+      "range": {
+        "startLine": 181,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 9
+      },
+      "revId": "b9b63a91ef011251b1515d85712988d84e4b1194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ebda0f_8585fa41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-04T12:44:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "65cacc24_88292749",
       "range": {
         "startLine": 181,
         "startChar": 4,
