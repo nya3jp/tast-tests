@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a35dd7_8d64fb0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-04T16:56:50Z",
+      "side": 1,
+      "message": "Sent to Patrick a bit too soon - @tetsui, the adjustments have been made.",
+      "revId": "1cd9d52b1d86f4804b6bbd627a664886e9642902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
