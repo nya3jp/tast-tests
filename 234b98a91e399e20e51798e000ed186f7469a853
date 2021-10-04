@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddfce7c3_3d5913ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-04T08:12:40Z",
+      "side": 1,
+      "message": "There\u0027s one failure on tastboard, but it looks like it was caused by some system wide failure that caused the disk to become read only, leading to most/all tests failing. Ignoring that failure, this test looks fine for critical.",
+      "revId": "234b98a91e399e20e51798e000ed186f7469a853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
