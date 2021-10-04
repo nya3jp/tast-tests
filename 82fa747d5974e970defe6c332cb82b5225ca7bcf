@@ -16,6 +16,23 @@
       "message": "We need this in R94 for moblab to run performance_cuj with new accounts.",
       "revId": "82fa747d5974e970defe6c332cb82b5225ca7bcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e152d852_ec9f9880",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-10-04T16:21:16Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "82fa747d5974e970defe6c332cb82b5225ca7bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
