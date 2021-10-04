@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6896aebf_9c32ad08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-04T07:03:15Z",
+      "side": 1,
+      "message": "nit: \"wifi: Add\"",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4962e2de_d3747eca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-04T07:03:15Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need this, true is the default value of this flag.",
+      "range": {
+        "startLine": 13,
+        "startChar": 14,
+        "endLine": 13,
+        "endChar": 27
+      },
+      "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a42bb462_e57a786d",
@@ -37,6 +83,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f01cec2e_d1861309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/wifi_ap_browse_internet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-04T07:03:15Z",
+      "side": 1,
+      "message": "Usually the value setting + error check blocks are separated from each other by empty lines. E.g:\n\u003e  empty line\n\u003e  if err :\u003d manager.EnableTechnology(ctx, shill.TechnologyWifi); err !\u003d nil {\n\u003e  \ts.Fatal(\"Failed to enable WiFi: \", err)\n\u003e  }\n\u003e  empty line",
+      "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f64feb05_341df23c",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/wifi_ap_browse_internet.go",
         "patchSetId": 2
@@ -48,6 +111,98 @@
       "writtenOn": "2021-10-01T16:25:53Z",
       "side": 1,
       "message": "Do you have a Google contact? If so, please add the email here. Thanks.",
+      "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c1c213_ed79c78e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/wifi_ap_browse_internet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-04T07:03:15Z",
+      "side": 1,
+      "message": "Please add a comment on what does it mean if enableFunc is nil.",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ab9bcd8_37d18f08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/wifi_ap_browse_internet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-04T07:03:15Z",
+      "side": 1,
+      "message": "The usual pattern is:\n\u003e  cleanupCtx :\u003d ctx\n\u003e  ctx, cancel :\u003d ctxutil.Shorten(ctx, shill.EnableWaitTime)\n\u003e  defer cancel()\n\u003e  defer enableFunc(cleanupCtx)",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a5670b_9cb0651e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/wifi_ap_browse_internet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-04T07:03:15Z",
+      "side": 1,
+      "message": "This can be shortened to:\n\u003e  if enabled, err :\u003d manager.IsEnabled(ctx, shill.TechnologyWifi); err !\u003d nil {\n\u003e  \ts.Fatal(\"Failed to get WiFi enabled state: \", err)\n\u003e  } else if !enabled {\n\u003e  \ts.Fatal(\"Failed to enable wifi: \", err)\n\u003e  }",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4aca513_71f7a7df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/wifi_ap_browse_internet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-04T07:03:15Z",
+      "side": 1,
+      "message": "This can be shortened to:\n\u003e  if enabled, err :\u003d manager.IsEnabled(ctx, shill.TechnologyWifi); err !\u003d nil {\n\u003e  \ts.Fatal(\"Failed to get WiFi enabled state: \", err)\n\u003e  } else if !enabled {\n\u003e  \ts.Fatal(\"Failed to enable wifi: \", err)\n\u003e  }",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
       "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
