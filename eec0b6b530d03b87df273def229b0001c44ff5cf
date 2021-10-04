@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "554942d1_3b7958de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-10-04T02:13:57Z",
+      "side": 1,
+      "message": "Can we use RetryUntil() here?\nhttps://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/f2c6135ee6d6a463de38f99f5730a3d6553705ae:src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d628;drc\u003dcaea960eddf4072f015a64f5e995a1010701e2ad\n\nIt differs from the existing code slightly; RetryUntil() always does action first, before evaluating the condition.\n\n- Is it expected that the keyboard is not yet shown here (i.e. polling iteration is executed at least once)?\n- Is it OK to call showVirtualKeyboardIfEnabled when keyboard is shown?\nTetsui, WDYT?",
+      "revId": "eec0b6b530d03b87df273def229b0001c44ff5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3affcc8e_fd514739",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-10-04T02:13:57Z",
+      "side": 1,
+      "message": "There is Repeat() function in automation.go.\n\n\u003e func Repeat(n int, fn Action) Action {",
+      "revId": "eec0b6b530d03b87df273def229b0001c44ff5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
