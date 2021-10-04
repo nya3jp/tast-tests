@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d73a817_de9c0b61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/daily_refresh.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-04T18:06:54Z",
+      "side": 1,
+      "message": "Rather than trivially passing the test, I\u0027d recommend explicitly forcing clamshell mode with ash.SetTabletModeEnabled:(https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/tablet.go;l\u003d15?q\u003dash.SetTabletModeEnabled)\n\nWe\u0027ve changed a couple other tests to do this recently to ensure the DUT is in the state we need when we start the test.",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 8
+      },
+      "revId": "c8082dac8400d2cbed295dfed225860dc929905a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
