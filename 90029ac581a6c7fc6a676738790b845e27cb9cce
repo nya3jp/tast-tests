@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f267acf_aa9562db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "UpdateService was one of the names in mind. however, one concern is that it may be confusing in that it does not do any update itself (since provisioning is run out-of-band by a remote test), but just *test* whether it is properly installed and selected in runtime. That\u0027s why I thought the test is better in the name. WDYT? I\u0027m open to renaming though.",
+      "parentUuid": "12578c4f_d177d09b",
+      "range": {
+        "startLine": 19,
+        "startChar": 54,
+        "endLine": 19,
+        "endChar": 58
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09495f92_4c8a23a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
         "patchSetId": 10
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-02T00:22:32Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08f239b3_0e863c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "09495f92_4c8a23a6",
       "range": {
         "startLine": 25,
         "startChar": 32,
@@ -77,6 +125,30 @@
       "writtenOn": "2021-10-02T00:22:32Z",
       "side": 1,
       "message": "what does this mean?",
+      "range": {
+        "startLine": 41,
+        "startChar": 61,
+        "endLine": 41,
+        "endChar": 77
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0f23765_2b895554",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "Thanks for the catch. I\u0027m updating the comment removing this irrelevant part. I was initially thinking of ClearUpdate to be capable of removing installed files or browser user data profile conditionally.",
+      "parentUuid": "c825d6cb_421fb36e",
       "range": {
         "startLine": 41,
         "startChar": 61,
@@ -133,6 +205,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be2dd654_774ce693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4b65e05_45f578fb",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84cb0629_82fae7b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba013ae6_cb2a8659",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ace3cf79_7ed68c57",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad33e31f_1c09f40a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/provision/doc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ace3cf79_7ed68c57",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 73
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3aee83eb_ec6b36fa",
@@ -169,6 +313,30 @@
       "writtenOn": "2021-10-02T00:22:32Z",
       "side": 1,
       "message": "Can you add an explanation of what this file does to dumb future users like me :)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfb2e0e0_fccd56f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/provision/tls_client.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "Done adding the package comment. Thanks for the catch. forgot to explain it!",
+      "parentUuid": "3aee83eb_ec6b36fa",
       "range": {
         "startLine": 7,
         "startChar": 0,
@@ -249,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c679f66_03ba1540",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d898d545_a2558553",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 63
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fad76fe0_a8b29774",
@@ -262,6 +454,30 @@
       "writtenOn": "2021-10-02T00:22:32Z",
       "side": 1,
       "message": "is this necessary/enforced? in OS update tests we always just use 999999.0.0",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 92
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66cca772_774f8f99",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "I believe this should reflect the version skew between Ash and Lacros in the near future. IIUC the version skew decision is made but the enforcement has not yet implemented in production. Once enforced, this test needs to be updated to use proper versions for both positive and negative test scenarios.",
+      "parentUuid": "fad76fe0_a8b29774",
       "range": {
         "startLine": 60,
         "startChar": 0,
@@ -295,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3593f720_a9f66758",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "I think it is necessary to make sure it could finish a clean up to reset to the previous state (by removing provisioned files) between tests.\nInstructions: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "parentUuid": "c01faaf8_31b78835",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 51
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aaf105a3_80b381cd",
@@ -308,6 +548,30 @@
       "writtenOn": "2021-10-02T00:22:32Z",
       "side": 1,
       "message": "what\u0027s a device image file",
+      "range": {
+        "startLine": 72,
+        "startChar": 35,
+        "endLine": 72,
+        "endChar": 56
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1932cae2_583ef785",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "Updated to \"Rootfs Lacros image file\" for clarification",
+      "parentUuid": "aaf105a3_80b381cd",
       "range": {
         "startLine": 72,
         "startChar": 35,
@@ -341,6 +605,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84177feb_02337867",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "Yea, I was going to do that. Is it okay to move to a util lib or helper in a follow-up CL?",
+      "parentUuid": "f44c7e94_b05707b7",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 27
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39bbdb10_f5b3b3f2",
@@ -354,6 +642,30 @@
       "writtenOn": "2021-10-02T00:22:32Z",
       "side": 1,
       "message": "add a function comment",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5e9509d_91a7a691",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39bbdb10_f5b3b3f2",
       "range": {
         "startLine": 109,
         "startChar": 5,
@@ -387,6 +699,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2506b6f3_b5f30120",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "This function will be commonly used by upcoming tests for various test scenarios: Stateful \u003d\u003e Rootfs, Stateful \u003d\u003e Stateful.\nOnce this CL gets in for MVP, I\u0027ll be able to move this function to a common place or helper module.",
+      "parentUuid": "82f79201_0362fda6",
+      "range": {
+        "startLine": 141,
+        "startChar": 5,
+        "endLine": 141,
+        "endChar": 22
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0c8e0ba_45632375",
@@ -400,6 +736,30 @@
       "writtenOn": "2021-10-02T00:22:32Z",
       "side": 1,
       "message": "This file feels like overkill to me. Is there no existing library to play with build strings? Is just changing the first or last number not enough?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "751a6338_c3e26c54",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-04T22:25:02Z",
+      "side": 1,
+      "message": "couldn\u0027t find other existing lib for browser versions. \nFor now, it just needs to update the major version. However, this could be extended to validate the range of supported version skew and make it easy to manipulate versions for positive/negative test scenarios in the future.",
+      "parentUuid": "a0c8e0ba_45632375",
       "range": {
         "startLine": 13,
         "startChar": 5,
