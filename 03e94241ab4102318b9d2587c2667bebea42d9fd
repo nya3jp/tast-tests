@@ -166,6 +166,30 @@
       },
       "revId": "03e94241ab4102318b9d2587c2667bebea42d9fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd286b8a_4489a00f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-10-04T12:45:17Z",
+      "side": 1,
+      "message": "Eric, I am fan of restricting value space for variables. However there is important change that was done here - the previous implementation had a logic or deriving values of expectedModerateViewability and expectedStrictViewability (lines 98-108) from the policy value. That is discouraged in the test - the test should not be calculating expected values. For readability reason expected values should be known and statically set for the test.\n\nIf we use enum, in the case the one that will hold mixed case (moderate false, strict false) test will have to find out which video is restricted moderately and which one strictly.\n\nIMHO, I am fine with having booleans here.\n\nWDYT Eric?",
+      "parentUuid": "1a83950a_21050335",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 29
+      },
+      "revId": "03e94241ab4102318b9d2587c2667bebea42d9fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
