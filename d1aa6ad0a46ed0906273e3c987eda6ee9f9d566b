@@ -33,6 +33,23 @@
       "message": "LGTM",
       "revId": "d1aa6ad0a46ed0906273e3c987eda6ee9f9d566b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f293641_dfcf81dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2021-10-04T16:55:07Z",
+      "side": 1,
+      "message": "Thanks for the review and the help over Chat.",
+      "revId": "d1aa6ad0a46ed0906273e3c987eda6ee9f9d566b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
