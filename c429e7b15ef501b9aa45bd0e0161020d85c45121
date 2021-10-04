@@ -16,6 +16,23 @@
       "message": "ptal, I think this is a minimal implementation but let me know if I should take another approach... \n",
       "revId": "c429e7b15ef501b9aa45bd0e0161020d85c45121",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb6421e_94e8a4bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-04T08:18:42Z",
+      "side": 1,
+      "message": "nit: Maybe unintentional blank line",
+      "revId": "c429e7b15ef501b9aa45bd0e0161020d85c45121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
