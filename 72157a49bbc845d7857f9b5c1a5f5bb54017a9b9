@@ -16,6 +16,24 @@
       "message": "nit: comments to describe the struct and its functions would be useful.",
       "revId": "72157a49bbc845d7857f9b5c1a5f5bb54017a9b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fed7c8e_bb6a7778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/suspend_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-10-04T04:17:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "243c3c83_b40f5ba2",
+      "revId": "72157a49bbc845d7857f9b5c1a5f5bb54017a9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da2736ff_fa30f222",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-10-04T04:17:34Z",
+      "side": 1,
+      "message": "Thanks for the review! Once the patches to the kernel has landed, I\u0027ll submit this CL.",
+      "revId": "dfdfbf45d144cfa1a725675e9ba1a106d95758da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
