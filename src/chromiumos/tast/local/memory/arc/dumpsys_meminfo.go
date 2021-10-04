@@ -62,7 +62,7 @@ var usedMemoryTotalsRE = regexp.MustCompile(
 var freeRAMRE = regexp.MustCompile(`(?m)^[ \t]*Free RAM:[ \t]*[0-9][0-9,]*K`)
 
 // lostRAMRE is a regex to match the Lost RAM line of dumpinfo's summary.
-var lostRAMRE = regexp.MustCompile(`(?m)^[ \t]*Lost RAM:[ \t]*[0-9][0-9,]*K`)
+var lostRAMRE = regexp.MustCompile(`(?m)^[ \t]*Lost RAM:[ \t]*\-?[0-9][0-9,]*K`)
 
 // memDetailPercentage defines how much % of PSS consumption will be
 // listed in details in metrics.
@@ -94,7 +94,7 @@ var appCategories = []appCategory{
 	},
 }
 
-func parseNumBetweenMarkers(s, leftMarker, rightMarker string) (uint64, error) {
+func parseNumBetweenMarkers(s, leftMarker, rightMarker string) (int64, error) {
 	preix := strings.Index(s, leftMarker)
 	if preix < 0 {
 		return 0, errors.New("cannot enclosing left marker")
@@ -106,7 +106,7 @@ func parseNumBetweenMarkers(s, leftMarker, rightMarker string) (uint64, error) {
 	}
 	numkstr := s[pastpreix : pastpreix+postix]
 	numkstr = strings.ReplaceAll(strings.TrimSpace(numkstr), ",", "")
-	return strconv.ParseUint(numkstr, 10, 64)
+	return strconv.ParseInt(numkstr, 10, 64)
 }
 
 // DumpsysMeminfoMetrics write the output of `dumpsys meminfo` to outdir. If p
@@ -203,7 +203,7 @@ func DumpsysMeminfoMetrics(ctx context.Context, a *arc.ARC, p *perf.Values, outd
 	// and the total of all of them is in "used pss", which we
 	// parsed earlier into usedPssTotal.
 	catglines := strings.Split(string(meminfo[pos[0]:pos[1]]), "\n")
-	var detailedPssUsage uint64
+	var detailedPssUsage int64
 	var detailThreshold = (usedPssTotal * memDetailPercentage) / 100
 	for _, line := range catglines[1:] {
 		kix := strings.Index(line, "K: ")
@@ -211,7 +211,7 @@ func DumpsysMeminfoMetrics(ctx context.Context, a *arc.ARC, p *perf.Values, outd
 			return errors.New("unable to parse category line [" + line + "]")
 		}
 		numkstr := strings.ReplaceAll(strings.TrimSpace(line[:kix]), ",", "")
-		numk, err := strconv.ParseUint(numkstr, 10, 64)
+		numk, err := strconv.ParseInt(numkstr, 10, 64)
 		if err != nil {
 			return errors.New("failed to parse category memory size [" + numkstr + "]")
 		}
