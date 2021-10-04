@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ce36cc_120f01db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/conference.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-04T22:51:43Z",
+      "side": 1,
+      "message": "This step means each error will wait maximum 15s to check error type. http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go?l\u003d150",
+      "range": {
+        "startLine": 60,
+        "startChar": 21,
+        "endLine": 60,
+        "endChar": 25
+      },
+      "revId": "67577d1f2ae3a7f9ff216e454fb814eb863f9652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2268da3_a3d8a603",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/conference.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-04T22:51:43Z",
+      "side": 1,
+      "message": "Do you think this step can possibly overwrite the original error message and causes noise?",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 12
+      },
+      "revId": "67577d1f2ae3a7f9ff216e454fb814eb863f9652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
