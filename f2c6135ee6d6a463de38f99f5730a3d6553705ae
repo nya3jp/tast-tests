@@ -16,6 +16,24 @@
       "message": "Is this deletion related to this change?",
       "revId": "f2c6135ee6d6a463de38f99f5730a3d6553705ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a06c13a_710c3fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-04T02:22:09Z",
+      "side": 0,
+      "message": "That change is not intentional. Thank you!",
+      "parentUuid": "9c1c4b7d_08ea436e",
+      "revId": "f2c6135ee6d6a463de38f99f5730a3d6553705ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
