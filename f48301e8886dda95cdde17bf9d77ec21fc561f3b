@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb60472a_ba4d7238",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-04T08:19:46Z",
+      "side": 1,
+      "message": "jbettis@, would you mind taking a look at this firmware-related test?",
+      "revId": "f48301e8886dda95cdde17bf9d77ec21fc561f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
