@@ -16,6 +16,23 @@
       "message": "https://tastboard.corp.google.com/test/power.CpufreqConf, for ease of checking",
       "revId": "1858320ad9a1ff726b5d001cb2bbfb791c037dca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "964242df_4a8e6794",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2021-10-04T18:07:12Z",
+      "side": 1,
+      "message": "You still need to add tast reviewer",
+      "revId": "1858320ad9a1ff726b5d001cb2bbfb791c037dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
