@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c1c4b7d_08ea436e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/command_vim.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-10-04T01:53:49Z",
+      "side": 0,
+      "message": "Is this deletion related to this change?",
+      "revId": "f2c6135ee6d6a463de38f99f5730a3d6553705ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
