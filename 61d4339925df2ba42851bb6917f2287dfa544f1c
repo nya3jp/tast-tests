@@ -16,6 +16,40 @@
       "message": "Hi Kyle, gentle ping.",
       "revId": "61d4339925df2ba42851bb6917f2287dfa544f1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3b2885e_a80d9f5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T16:34:45Z",
+      "side": 1,
+      "message": "LGTM, just one note about using ash.EnsureTabletModeEnabled to condense things a bit further.",
+      "revId": "61d4339925df2ba42851bb6917f2287dfa544f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a908440d_ae1309c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_local_wallpaper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T16:34:45Z",
+      "side": 1,
+      "message": "Ah actually I forgot about ash.EnsureTabletModeEnabled:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/tablet.go;l\u003d39\n\nIt will set tablet mode to your desired state, and also return a cleanup function to restore the initial state. That way you don\u0027t have to check it here. See example usage here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/notifications/smoke.go;l\u003d51-55",
+      "revId": "61d4339925df2ba42851bb6917f2287dfa544f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
