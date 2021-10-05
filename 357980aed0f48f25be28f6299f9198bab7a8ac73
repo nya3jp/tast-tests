@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "822fbfad_fbca319b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-10-05T18:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74afe124_c4ea0671",
+      "range": {
+        "startLine": 89,
+        "startChar": 26,
+        "endLine": 89,
+        "endChar": 44
+      },
+      "revId": "357980aed0f48f25be28f6299f9198bab7a8ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "447bff30_c03a9589",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-10-05T17:49:06Z",
       "side": 1,
       "message": "you could combine all of the UI steps here using uiauto.Combine:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d109?q\u003duiauto.Combine",
+      "revId": "357980aed0f48f25be28f6299f9198bab7a8ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67aa1be6_c5d631cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-10-05T18:24:31Z",
+      "side": 1,
+      "message": "Nice! Done :)",
+      "parentUuid": "447bff30_c03a9589",
       "revId": "357980aed0f48f25be28f6299f9198bab7a8ac73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aec3945_4d8d8397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-10-05T18:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d69c76cb_3336dbca",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "357980aed0f48f25be28f6299f9198bab7a8ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24c5d2de_f5453176",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a63ef8c7_2052aa82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-10-05T18:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24c5d2de_f5453176",
+      "revId": "357980aed0f48f25be28f6299f9198bab7a8ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "731311b5_ac33109c",
@@ -94,6 +178,42 @@
       "writtenOn": "2021-10-05T17:49:06Z",
       "side": 1,
       "message": "same",
+      "revId": "357980aed0f48f25be28f6299f9198bab7a8ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78dfc922_ce88be47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-10-05T18:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "731311b5_ac33109c",
+      "revId": "357980aed0f48f25be28f6299f9198bab7a8ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c82f8c9_10079a6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-10-05T18:24:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "731311b5_ac33109c",
       "revId": "357980aed0f48f25be28f6299f9198bab7a8ac73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
