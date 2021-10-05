@@ -50,6 +50,23 @@
       "message": "Thanks for the review and the help over Chat.",
       "revId": "d1aa6ad0a46ed0906273e3c987eda6ee9f9d566b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e2f2e02_11378348",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2021-10-05T20:07:33Z",
+      "side": 1,
+      "message": "I\u0027m guessing this failure to run \"tast list\" isn\u0027t related to the current CL, resubmitting.\n\nERROR: failed to list tests: failed to retrieve DUT info: getting DUT info: Process exited with status 2: panic: runtime error: invalid memory address or nil pointer dereference\n[signal SIGSEGV: segmentation violation code\u003d0x1 addr\u003d0x0 pc\u003d0x9a0ccc]\n\ngoroutine 1 [running]:\nchromiumos/tast/internal/runner.newDeviceConfigAndHardwareFeatures(0xc0001cec60\n",
+      "revId": "d1aa6ad0a46ed0906273e3c987eda6ee9f9d566b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
