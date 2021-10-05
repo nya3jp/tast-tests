@@ -33,6 +33,24 @@
       "message": "Just curious, do we have lab devices which cover the enabled case?",
       "revId": "76b7e17fe81a71e4037971e7b1b868b15c59407e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f894f12b_0abd088d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-10-05T05:48:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure. I just make sure that I can retrieve the correct value.",
+      "parentUuid": "1b871f4f_c94ee03d",
+      "revId": "76b7e17fe81a71e4037971e7b1b868b15c59407e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
