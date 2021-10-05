@@ -32,7 +32,7 @@ func init() {
 }
 
 func Signout(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx)
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--force-tablet-mode=clamshell", "--disable-virtual-keyboard"))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
