@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d33db7b1_14595ad1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/silence_phone.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-05T23:11:59Z",
+      "side": 1,
+      "message": "cros-system-services@google.com too",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 36
+      },
+      "revId": "4729bdabd07f5c5580c38d4ef364612abaec09be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
