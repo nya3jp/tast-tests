@@ -66,7 +66,15 @@ func init() {
 			Val:               peerconnection.MakeTestOptions("VP9"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
-			Fixture:           "chromeVideoWithFakeWebcamAndForceVP9SVC3SL3TLKey",
+			Fixture:           "chromeVideoWithFakeWebcamAndForceL3T3KeyVP9",
+		}, {
+			// This is 3 spatial layers, 3 temporal layers (each) k-SVC.
+			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
+			Name:              "vp9_sw_force_l3t3_key",
+			Val:               peerconnection.MakeSWTestOptions("VP9"),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
+			Fixture:           "chromeVideoWithFakeWebcamAndForceL3T3KeyVP9AndNoHwAcceleration",
 		}, {
 			// This is a 2 temporal layers test, via the (experimental) API.
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
@@ -79,6 +87,13 @@ func init() {
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
 			Name:              "vp9_hw_svc_l1t3",
 			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", "L1T3"),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
+			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
+		}, {
+			// This is a 3 spatial layers, 3 temporal layers (each) k-SVC test, via the (experimental) API.
+			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
+			Name:              "vp9_hw_svc_l3t3_key",
+			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", "L3T3_KEY"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
 		}, {
