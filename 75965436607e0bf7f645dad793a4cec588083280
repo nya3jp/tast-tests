@@ -22,6 +22,30 @@
       },
       "revId": "75965436607e0bf7f645dad793a4cec588083280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99dcc756_9a353d52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1520077
+      },
+      "writtenOn": "2021-10-05T06:36:49Z",
+      "side": 1,
+      "message": "Hi Judy, the 90s here is for combining the two steps into one. \n\nPreviously, it employed a one-minute timeout for clicking the link and another 30-second timeout for verifying the browser has navigated after clicking link.\n\nNow that the two steps are combined into one and hence the 90-second timeout. Thanks.",
+      "parentUuid": "64e8676e_0a94a983",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 8
+      },
+      "revId": "75965436607e0bf7f645dad793a4cec588083280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
