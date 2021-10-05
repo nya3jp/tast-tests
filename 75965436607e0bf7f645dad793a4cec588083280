@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64e8676e_0a94a983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-05T05:13:31Z",
+      "side": 1,
+      "message": "You mentioned it does not change after 30s and use 90s here, is it necessary?",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 8
+      },
+      "revId": "75965436607e0bf7f645dad793a4cec588083280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
