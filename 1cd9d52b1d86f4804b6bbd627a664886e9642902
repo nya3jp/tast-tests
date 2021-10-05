@@ -33,6 +33,23 @@
       "message": "Thank you and sorry for the delay!",
       "revId": "1cd9d52b1d86f4804b6bbd627a664886e9642902",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aa92f8f_03614074",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-05T14:47:09Z",
+      "side": 1,
+      "message": "@meiring - ready for tast review now.",
+      "revId": "1cd9d52b1d86f4804b6bbd627a664886e9642902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
