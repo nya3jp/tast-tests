@@ -189,6 +189,9 @@ func RenameFolder(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, from, t
 		func(ctx context.Context) error {
 			return kb.Type(ctx, to+"\n")
 		},
+		func(ctx context.Context) error {
+			return kb.Accel(ctx, "esc")
+		},
 		ui.WaitUntilExists(toFolder),
 	)
 }
