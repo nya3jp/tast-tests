@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fbb84e2_e808039d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/productivity_cuj_voice_to_text_20210708.wav.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-05T23:06:32Z",
+      "side": 1,
+      "message": "It is requested to suffix create date on external deps https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#external-data-files.\n\nHowever, it is not required in the external file name. e.g. http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/data/handwriting_en_hello.svg.external\n\nYou can name the file as productiviy_cuj_voice_to_text.wav.external, so that if you update the gs file in future, you do not need to update the file name.",
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f09348_99c27eb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-05T23:06:32Z",
+      "side": 1,
+      "message": "testFile is associated with the output text. They should be put together in the parameters or both hardcoded inside function.",
+      "range": {
+        "startLine": 108,
+        "startChar": 49,
+        "endLine": 108,
+        "endChar": 65
+      },
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a90f5fdc_f9864418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-05T23:06:32Z",
+      "side": 1,
+      "message": "any reason to disable bluetooth?",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abf46185_705fc650",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-05T23:06:32Z",
+      "side": 1,
+      "message": "This is only for logging purpose. It is better to make a check on your expectation. Otherwise just get rid of it.",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 41
+      },
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c7ccda4_9b5162d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-05T23:06:32Z",
+      "side": 1,
+      "message": "Could not find the implementation, I assume it is not implemented yet.\n\nBelow test is for your reference if you are going to do it with VKB.\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+      "range": {
+        "startLine": 203,
+        "startChar": 15,
+        "endLine": 203,
+        "endChar": 33
+      },
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
