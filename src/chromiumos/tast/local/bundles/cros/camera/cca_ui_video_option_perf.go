@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/media/cpu"
@@ -25,7 +26,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Timeout:      20 * time.Minute,
-		Fixture:      "ccaLaunched",
+		Fixture:      "ccaTestBridgeReady",
 	})
 }
 
@@ -38,7 +39,8 @@ var multiplierCandidates = []int{2, 4, 6, 8, 10}
 const stabilizationDuration time.Duration = 5 * time.Second
 
 func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
-	app := s.FixtValue().(cca.FixtureData).App()
+	startApp := s.FixtValue().(cca.FixtureData).StartApp
+	stopApp := s.FixtValue().(cca.FixtureData).StopApp
 
 	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
 	if err != nil {
@@ -49,6 +51,21 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed to wait CPU idle: ", err)
 	}
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	app, err := startApp(ctx)
+	if err != nil {
+		s.Fatal("Failed to open CCA: ", err)
+	}
+	defer func(cleanupCtx context.Context) {
+		if err := stopApp(cleanupCtx, s.HasError()); err != nil {
+			s.Fatal("Failed to close CCA: ", err)
+		}
+	}(cleanupCtx)
+
 	if err := app.SwitchMode(ctx, cca.Video); err != nil {
 		s.Fatal("Failed to switch to video mode: ", err)
 	}
