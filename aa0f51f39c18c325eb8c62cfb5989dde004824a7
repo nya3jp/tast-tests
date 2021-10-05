@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6af13a7_84baa2f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-10-05T05:22:52Z",
+      "side": 1,
+      "message": "oops, my bad.",
+      "parentUuid": "cc0bbdd8_15b0037e",
+      "range": {
+        "startLine": 32,
+        "startChar": 63,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "aa0f51f39c18c325eb8c62cfb5989dde004824a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7ec2931_b9da3da2",
