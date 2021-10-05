@@ -16,6 +16,24 @@
       "message": "This looks ok. May be can leave just 1 app to have all tests in case you wish to.",
       "revId": "3383d1292bbbeff008762d1566dfcc765521e989",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d700397b_e0854979",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-10-05T17:34:00Z",
+      "side": 1,
+      "message": "When I ran the smoke suite locally, I have observed that the runtime for this CL for smoke test is around 50 minutes which is closer to the global timeout of 60 minutes. I think it\u0027s better to keep the CL to remain the same considering the waiting time of devices available in the lab.",
+      "parentUuid": "c794726a_5168f3fb",
+      "revId": "3383d1292bbbeff008762d1566dfcc765521e989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
