@@ -84,11 +84,13 @@ var (
 	// PhotoPattern is the filename format of photos taken by CCA.
 	PhotoPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\.jpg$`)
 	// VideoPattern is the filename format of videos recorded by CCA.
-	VideoPattern = regexp.MustCompile(`^VID_\d{8}_\d{6}[^.]*\.(mkv|mp4)$`)
-	// PortraitPattern is the filename format of portrait-mode photos taken by CCA.
-	PortraitPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}_COVER.jpg$`)
-	// PortraitRefPattern is the filename format of the reference photo captured in portrait-mode.
-	PortraitRefPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}.jpg$`)
+	VideoPattern = regexp.MustCompile(`^VID_\d{8}_\d{6}[^.]*\.mp4$`)
+	// gifPattern is the filename format of gif recorded by CCA.
+	gifPattern = regexp.MustCompile(`^VID_\d{8}_\d{6}[^.]*\.gif$`)
+	// portraitPattern is the filename format of portrait-mode photos taken by CCA.
+	portraitPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}_COVER.jpg$`)
+	// portraitRefPattern is the filename format of the reference photo captured in portrait-mode.
+	portraitRefPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\_BURST\d{5}.jpg$`)
 	// DocumentPDFPattern is the filename format of the document PDF file.
 	DocumentPDFPattern = regexp.MustCompile(`^SCN_\d{8}_\d{6}[^.]*\.pdf$`)
 	// DocumentPhotoPattern is the filename format of the document photo file.
@@ -244,6 +246,15 @@ var (
 	// DocumentCornerOverlay is the overlay that CCA used to draw document corners on.
 	DocumentCornerOverlay = UIComponent{"document corner overlay", []string{
 		"#preview-document-corner-overlay"}}
+
+	// GifRecordingOption is the radio button to toggle gif recording option.
+	GifRecordingOption = UIComponent{"gif recording button", []string{
+		"input[type=radio][data-state=record-type-gif]"}}
+	// GifReviewSaveButton is the save button in gif review page.
+	GifReviewSaveButton = UIComponent{"save gif button", []string{
+		"#view-review button[i18n-text=label_save]"}}
+	// GifReviewRetakeButton is the retake button in gif review page.
+	GifReviewRetakeButton = UIComponent{"retake gif button", []string{"#review-retake"}}
 )
 
 // ResolutionType is different capture resolution type.
@@ -750,8 +761,8 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 		return nil, err
 	}
 	if isPortrait {
-		patterns = append(patterns, PortraitRefPattern)
-		patterns = append(patterns, PortraitPattern)
+		patterns = append(patterns, portraitRefPattern)
+		patterns = append(patterns, portraitPattern)
 	} else {
 		patterns = append(patterns, PhotoPattern)
 	}
@@ -913,6 +924,62 @@ func (a *App) RecordVideo(ctx context.Context, timerState TimerState, duration t
 		return nil, err
 	}
 	return info, err
+}
+
+// RecordGif records a gif with maximal duration and |save| specify whether to save result gif in review page.
+func (a *App) RecordGif(ctx context.Context, save bool) (os.FileInfo, error) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
+	defer cancel()
+
+	// TODO(b:191950622): Remove logic of enabling gif recording from expert mode after it's formally launched.
+	if err := a.setEnableGifRecording(ctx, true); err != nil {
+		return nil, errors.Wrap(err, "failed to enable gif recording")
+	}
+	defer a.setEnableGifRecording(cleanupCtx, false)
+	if err := a.Click(ctx, GifRecordingOption); err != nil {
+		return nil, err
+	}
+
+	// Start recording and wait for record to maximal gif duration and review page opened.
+	if err := a.ClickShutter(ctx); err != nil {
+		return nil, err
+	}
+	if err := a.WaitForState(ctx, "recording-gif", true); err != nil {
+		return nil, errors.Wrap(err, "gif recording is not started")
+	}
+	if err := a.WaitForState(ctx, "view-review", true); err != nil {
+		return nil, errors.Wrap(err, "review page not opened after recording gif")
+	}
+	if !save {
+		if err := a.Click(ctx, GifReviewRetakeButton); err != nil {
+			return nil, err
+		}
+		if err := a.WaitForState(ctx, "taking", false); err != nil {
+			return nil, errors.Wrap(err, "shutter is ended after clicking retake")
+		}
+
+		return nil, nil
+	}
+
+	// Check saved file.
+	beforeSaveTime := time.Now()
+	if err := a.Click(ctx, GifReviewSaveButton); err != nil {
+		return nil, err
+	}
+	dir, err := a.SavedDir(ctx)
+	if err != nil {
+		return nil, err
+	}
+	info, err := a.WaitForFileSaved(ctx, dir, gifPattern, beforeSaveTime)
+	if err != nil {
+		return nil, errors.Wrap(err, "cannot find result gif")
+	}
+	if err := a.WaitForState(ctx, "taking", false); err != nil {
+		return nil, errors.Wrap(err, "shutter is ended after saving file")
+	}
+
+	return info, nil
 }
 
 // savedDir returns the path to the folder where captured files might be saved.
@@ -1439,6 +1506,33 @@ func (a *App) SetEnableMultiStreamRecording(ctx context.Context, enabled bool) e
 	defer ExpertMenu.Close(ctx, a)
 
 	if err := a.setEnableOption(ctx, "enable-multistream-recording", "#expert-enable-multistream-recording", enabled); err != nil {
+		return errors.Wrap(err, "failed to enable multi-stream recording")
+	}
+
+	if err := a.WaitForVideoActive(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for video active")
+	}
+
+	return nil
+}
+
+// setEnableGifRecording enables/disables the gif recording via expert mode.
+func (a *App) setEnableGifRecording(ctx context.Context, enabled bool) error {
+	if err := a.EnableExpertMode(ctx); err != nil {
+		return errors.Wrap(err, "failed to enable expert mode")
+	}
+
+	if err := MainMenu.Open(ctx, a); err != nil {
+		return errors.Wrap(err, "failed to open main menu")
+	}
+	defer MainMenu.Close(ctx, a)
+
+	if err := ExpertMenu.Open(ctx, a); err != nil {
+		return errors.Wrap(err, "failed to open expert menu")
+	}
+	defer ExpertMenu.Close(ctx, a)
+
+	if err := a.setEnableOption(ctx, "enable-gif-recording", "#expert-enable-gif-recording", enabled); err != nil {
 		return errors.Wrap(err, "failed to enable multi-stream recording")
 	}
 
