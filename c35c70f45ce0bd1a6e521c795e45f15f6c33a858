@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c143b17_c60a20a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2021-10-05T11:13:58Z",
+      "side": 1,
+      "message": "Unlike the previous CL in the chain, this seems not achievable by the CCAUIStress test. Maybe consider extending CCAUIStress instead of adding a new test?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 83
+      },
+      "revId": "c35c70f45ce0bd1a6e521c795e45f15f6c33a858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4413778d_6cad2df5",
