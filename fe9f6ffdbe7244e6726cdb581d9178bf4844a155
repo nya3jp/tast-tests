@@ -184,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa6d2ce9_1755197f",
+        "filename": "src/chromiumos/tast/common/storage/files/crypto_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-10-05T21:24:27Z",
+      "side": 1,
+      "message": "Huh. I thought it would work regardless. Thanks for trying that out, though.",
+      "parentUuid": "81f5f962_4fe3d3d8",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "fe9f6ffdbe7244e6726cdb581d9178bf4844a155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49b88c0f_89e46d35",
         "filename": "src/chromiumos/tast/common/storage/files/file_utils.go",
         "patchSetId": 3
