@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74afe124_c4ea0671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T17:49:06Z",
+      "side": 1,
+      "message": "might be nice to extract this into a variable since it\u0027s used a couple times, makes it a bit clearer",
+      "range": {
+        "startLine": 89,
+        "startChar": 26,
+        "endLine": 89,
+        "endChar": 44
+      },
+      "revId": "357980aed0f48f25be28f6299f9198bab7a8ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447bff30_c03a9589",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T17:49:06Z",
+      "side": 1,
+      "message": "you could combine all of the UI steps here using uiauto.Combine:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d109?q\u003duiauto.Combine",
+      "revId": "357980aed0f48f25be28f6299f9198bab7a8ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d69c76cb_3336dbca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T17:49:06Z",
+      "side": 1,
+      "message": "the usual pattern here is\n```\nif err :\u003d ui.RightClick(...); err !\u003d nil {...}\n```\n\nAlso Go has no line length limit, it would be more natural from a go style perspective for lines 132-133 to be a single line",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "357980aed0f48f25be28f6299f9198bab7a8ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c5d2de_f5453176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T17:49:06Z",
+      "side": 1,
+      "message": "this function can also be combined into a single uiauto.Combine",
+      "revId": "357980aed0f48f25be28f6299f9198bab7a8ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "731311b5_ac33109c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T17:49:06Z",
+      "side": 1,
+      "message": "same",
+      "revId": "357980aed0f48f25be28f6299f9198bab7a8ac73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
