@@ -292,15 +292,22 @@ func Eventlog(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to suspend: ", err)
 		}
 
-		// Let the DUT stay in suspend a little while. 10s seems to be enough to allow power key wake up.Shorter times might work also.
+		// Let the DUT stay in suspend a little while. 10s seems to be enough to allow wake up. Shorter times might work also.
 		if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 			s.Fatal("Failed to sleep: ", err)
 		}
 
-		s.Log("Pressing Power key to wake DUT")
-		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
-			s.Fatal("Failed to press power key")
+		powerState, err := h.Servo.GetECSystemPowerState(ctx)
+		if err != nil {
+			s.Error("Failed to get power state: ", err)
 		}
+		s.Log("Power state: ", powerState)
+
+		s.Log("Pressing ENTER key to wake DUT")
+		if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
+			s.Fatal("Failed to press enter key")
+		}
+
 		s.Log("Reconnecting to DUT")
 		shortCtx, cancel = context.WithTimeout(ctx, 60*time.Second)
 		defer cancel()
