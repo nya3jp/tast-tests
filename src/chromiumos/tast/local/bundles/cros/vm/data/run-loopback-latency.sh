@@ -27,10 +27,11 @@ main() {
   local log="$4"
   truncate -s 0 "${log}"
 
-  for (( i = 0; i < loop; i++ )); do
-    loopback_latency -i hw:0,0 -o hw:0,0 -n 1000 -r 48000 \
-      -p "${period_size}" -b "${buffer_size}" &>> "${log}"
-  done
+  alsa_latency -P hw:0,0 -C hw:0,0 -r 48000 -p -m ${buffer_size} -M ${buffer_size} &>> "${log}"
+  # for (( i = 0; i < loop; i++ )); do
+  #   /usr/bin/loopback_latency -i hw:0,0 -o hw:0,0 -n 1000 -r 48000 \
+  #     -p "${period_size}" -b "${buffer_size}" &>> "${log}"
+  # done
 }
 
 main "$@"
