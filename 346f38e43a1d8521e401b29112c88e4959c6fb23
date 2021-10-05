@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7054838a_65fcd9cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-10-05T04:18:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a366c526_329ce730",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 80
+      },
+      "revId": "346f38e43a1d8521e401b29112c88e4959c6fb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d59884fd_2e599828",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e60ef64e_7d03b488",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-10-05T04:18:52Z",
+      "side": 1,
+      "message": "Not sure what we need to poll here.",
+      "parentUuid": "d59884fd_2e599828",
+      "range": {
+        "startLine": 76,
+        "startChar": 27,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "346f38e43a1d8521e401b29112c88e4959c6fb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e39570ce_98fee6fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
         "patchSetId": 6
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-29T04:44:09Z",
       "side": 1,
       "message": "nit: Good to have the error info in the log. \n\ns.Fatal(\"Failed to set time zone: \", err)",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 36
+      },
+      "revId": "346f38e43a1d8521e401b29112c88e4959c6fb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d5308ef_8e6b530d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_japanese_typing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-10-05T04:18:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e39570ce_98fee6fb",
       "range": {
         "startLine": 94,
         "startChar": 2,
