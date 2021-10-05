@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c794726a_5168f3fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-10-05T05:50:57Z",
+      "side": 1,
+      "message": "This looks ok. May be can leave just 1 app to have all tests in case you wish to.",
+      "revId": "3383d1292bbbeff008762d1566dfcc765521e989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
