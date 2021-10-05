@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feef3189_2388ad4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-05T00:55:41Z",
+      "side": 1,
+      "message": "Check that the brightness has gone down. Otherwise, this will infinite loop, because it never gets to 0",
+      "revId": "f2d8b78720a2eb9e087725ad7b6cbd30bf42a6eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec2321a9_aba27bb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-05T00:55:41Z",
+      "side": 1,
+      "message": "Similarly, check brightness has gone up",
+      "revId": "f2d8b78720a2eb9e087725ad7b6cbd30bf42a6eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

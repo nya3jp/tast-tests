@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b2192ee_fa754b41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-05T00:55:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac802155_6c726bf7",
+      "revId": "095f5aa35e2f5c7b80f9b7811db998985825694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8203fef4_61f4f923",
@@ -71,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f8f9567_409707c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-05T00:55:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a0ba417_2351e131",
+      "revId": "095f5aa35e2f5c7b80f9b7811db998985825694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbb9c958_5a6e919a",
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "changes done and created new function in L76.",
       "parentUuid": "fbb9c958_5a6e919a",
+      "revId": "095f5aa35e2f5c7b80f9b7811db998985825694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd0e3443_6ff953bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-05T00:55:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ef175f5c_bf3c18bc",
       "revId": "095f5aa35e2f5c7b80f9b7811db998985825694e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
