@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/media/vm"
 	"chromiumos/tast/local/webrtc"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -44,10 +43,9 @@ func init() {
 				Val:               lacros.ChromeTypeChromeOS,
 			},
 			{
-				Name:              "fake",
-				Pre:               pre.ChromeVideoWithFakeWebcam(),
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("reven")),
-				Val:               lacros.ChromeTypeChromeOS,
+				Name: "fake",
+				Pre:  pre.ChromeVideoWithFakeWebcam(),
+				Val:  lacros.ChromeTypeChromeOS,
 			},
 			{
 				Name:              "lacros",
