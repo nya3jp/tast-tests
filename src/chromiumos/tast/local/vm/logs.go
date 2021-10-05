@@ -18,7 +18,9 @@ import (
 )
 
 // LogReader keeps a persistent view of the log files created by a VM, and
-// can be used to save them to an output directory for tast.
+// can be used to save them to an output directory for tast. The internal
+// reader will be created lazily, so you can instantiate the log reader before
+// the log file is created.
 type LogReader struct {
 	vmName  string
 	ownerID string
@@ -32,21 +34,33 @@ func NewLogReaderForVM(ctx context.Context, vmName, user string) (*LogReader, er
 	if err != nil {
 		return nil, err
 	}
-	path := "/run/daemon-store/crosvm/" + ownerID + "/log/" + GetEncodedName(vmName) + ".log"
+	return &LogReader{vmName, ownerID, nil}, nil
+}
 
+func (r *LogReader) maybeInitializeLogReader(ctx context.Context) error {
+	if r.reader != nil {
+		return nil
+	}
+
+	path := "/run/daemon-store/crosvm/" + r.ownerID + "/log/" + GetEncodedName(r.vmName) + ".log"
 	// Only wait 1 second for the log file to exist, don't want to hang until
 	// timeout if it doesn't exist, instead we continue.
 	reader, err := syslog.NewLineReader(ctx, path, true,
 		&testing.PollOptions{Timeout: 1 * time.Second})
 	if err != nil {
-		return nil, err
+		return err
 	}
-	return &LogReader{vmName, ownerID, reader}, nil
+	r.reader = reader
+	return nil
 }
 
 // TrySaveLogs attempts to save the VM logs to the given directory. The logs
 // will be saved in a file called "<vm name>_logs.txt".
 func (r *LogReader) TrySaveLogs(ctx context.Context, dir string) error {
+	if err := r.maybeInitializeLogReader(ctx); err != nil {
+		return errors.Wrap(err, "failed to initialize log reader")
+	}
+
 	path := filepath.Join(dir, r.vmName+"_logs.txt")
 	f, err := os.Create(path)
 	if err != nil {
