@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fcc4668_c85e3190",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-05T21:16:17Z",
+      "side": 1,
+      "message": "Talked offline with David. To address the concern I\u0027ll be updating the comment for this service to be more clear on what it does, basically saying that it is to *test/verify* updates that are provisioned outside of this service, but not to perform any updates.",
+      "parentUuid": "7f267acf_aa9562db",
+      "range": {
+        "startLine": 19,
+        "startChar": 54,
+        "endLine": 19,
+        "endChar": 58
+      },
+      "revId": "90029ac581a6c7fc6a676738790b845e27cb9cce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09495f92_4c8a23a6",
