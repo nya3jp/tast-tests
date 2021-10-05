@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e973352_bbb08740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_encode.js",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-05T07:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e15c9424_05d0b208",
+      "range": {
+        "startLine": 14,
+        "startChar": 15,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "4936caf5e1104abfb95ff12b9ddbf57198d1ee45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2d11cae_4142afd0",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-04T15:41:44Z",
       "side": 1,
       "message": "Logged messages like s.Error, s.Fatal and s.Log should be capitalized.",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "4936caf5e1104abfb95ff12b9ddbf57198d1ee45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dff27b7_a9f5e78f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_codecs_encode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-05T07:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2d11cae_4142afd0",
       "range": {
         "startLine": 59,
         "startChar": 11,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5def86a_a6d5db6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-05T07:33:45Z",
+      "side": 1,
+      "message": "Yes, Crowd720p is used in web_codecs_encode.go. So it is capitalized.",
+      "parentUuid": "5bb18253_a965244c",
+      "range": {
+        "startLine": 66,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 18
+      },
+      "revId": "4936caf5e1104abfb95ff12b9ddbf57198d1ee45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d91af28c_af85e05a",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-10-04T15:41:44Z",
       "side": 1,
       "message": "Messages logged by ContextLog should be capitalized.",
+      "range": {
+        "startLine": 127,
+        "startChar": 26,
+        "endLine": 127,
+        "endChar": 30
+      },
+      "revId": "4936caf5e1104abfb95ff12b9ddbf57198d1ee45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d490c65_26eada8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-05T07:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d91af28c_af85e05a",
       "range": {
         "startLine": 127,
         "startChar": 26,
