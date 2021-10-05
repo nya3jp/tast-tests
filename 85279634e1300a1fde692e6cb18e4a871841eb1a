@@ -200,6 +200,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbff21d2_1d93440d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multidevice/phone_hub_do_not_disturb.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T19:04:48Z",
+      "side": 1,
+      "message": "It\u0027s pretty straightforward, I have some CLs for it in review now so I\u0027ll change this to \"cross-device\".",
+      "parentUuid": "402e140a_5acf3e9e",
+      "revId": "85279634e1300a1fde692e6cb18e4a871841eb1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98dd9d25_e107208c",
