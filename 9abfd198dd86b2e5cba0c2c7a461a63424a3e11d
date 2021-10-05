@@ -33,6 +33,46 @@
       "message": "There is a spelling error in the commit message -\u003e \"computs\" should be \"computes\" otherwise LGTM",
       "revId": "9abfd198dd86b2e5cba0c2c7a461a63424a3e11d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18cbc2eb_6e005d52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-05T03:18:07Z",
+      "side": 1,
+      "message": "LGTM with a minor fix request.",
+      "revId": "9abfd198dd86b2e5cba0c2c7a461a63424a3e11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acfb4c2a_56d56627",
+        "filename": "src/chromiumos/tast/local/memory/arc/dumpsys_meminfo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-05T03:18:07Z",
+      "side": 1,
+      "message": "nit: escape for minus looks redundant, since this is not within bracket.",
+      "range": {
+        "startLine": 65,
+        "startChar": 62,
+        "endLine": 65,
+        "endChar": 63
+      },
+      "revId": "9abfd198dd86b2e5cba0c2c7a461a63424a3e11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
