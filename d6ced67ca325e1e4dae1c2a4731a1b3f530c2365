@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23271349_da7cec9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/do_not_disturb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T00:11:40Z",
+      "side": 1,
+      "message": "Nope, the top level under cros is the test\u0027s \"category\", and tests have to be added in that top level.",
+      "parentUuid": "48ea0253_ff662e17",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 1
+      },
+      "revId": "d6ced67ca325e1e4dae1c2a4731a1b3f530c2365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7f3d823_bad5e24c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-29T19:48:40Z",
       "side": 1,
       "message": "So Silence phone \u003d\u003d Do Not Disturb?\n\nShould we use the Phone Hub naming then? I guess it depends on whatever the CUJs call it. Do we have a list of CUJs?",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "d6ced67ca325e1e4dae1c2a4731a1b3f530c2365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01bc957_4b8e7317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/do_not_disturb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T00:11:40Z",
+      "side": 1,
+      "message": "Ah good catch, I\u0027ll match the Phone Hub UI strings here. I\u0027ll use \"Silence Phone\" to refer to Phone Hub\u0027s functionality, and \"Do Not Disturb\" for the corresponding phone setting.",
+      "parentUuid": "b7f3d823_bad5e24c",
       "range": {
         "startLine": 19,
         "startChar": 8,
