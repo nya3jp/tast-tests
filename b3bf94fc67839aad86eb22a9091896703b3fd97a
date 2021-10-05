@@ -52,6 +52,127 @@
       "parentUuid": "59853d50_877346bc",
       "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b066135b_9a213fdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-05T23:30:24Z",
+      "side": 1,
+      "message": "Apologies, I didn\u0027t see this CL -- I get a lot of email from gerrit, so my tendency is to only monitor the attention set. Reviewed now.",
+      "parentUuid": "b5be9039_ae3f6d07",
+      "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7de5a362_f6d91b1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-05T23:30:24Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10998f0f_3bc9e818",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/audionode/audionode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-05T23:30:24Z",
+      "side": 1,
+      "message": "nit: I don\u0027t see where this method is used in the test. Can it (alongside all the methods on the type) be deleted?",
+      "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "507a3811_635a5dba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/audionode/audionode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-05T23:30:24Z",
+      "side": 1,
+      "message": "nit: as you have two result parameters of the same type, and their meaning is unclear, prefer to name them to make clear what they are.",
+      "range": {
+        "startLine": 99,
+        "startChar": 65,
+        "endLine": 99,
+        "endChar": 80
+      },
+      "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccfcd10b_44bb50f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/audionode/audionode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-05T23:30:24Z",
+      "side": 1,
+      "message": "nit: what about just \u0027audioNode\u0027?",
+      "range": {
+        "startLine": 99,
+        "startChar": 39,
+        "endLine": 99,
+        "endChar": 56
+      },
+      "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a302a75_5e0ceac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/audionode/audionode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-05T23:30:24Z",
+      "side": 1,
+      "message": "nit: I am not really clear what the point of returning the deviceType is. \n\nIt seems that this will always be the \u0027expectedAudioNode\u0027 that is passed, unless an error encountered (in which case the unexpected deviceType could be included in the error if necessary?)",
+      "range": {
+        "startLine": 123,
+        "startChar": 20,
+        "endLine": 123,
+        "endChar": 30
+      },
+      "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
