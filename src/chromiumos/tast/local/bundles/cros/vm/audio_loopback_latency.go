@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"math"
 	"path/filepath"
 	"regexp"
 	"strconv"
@@ -65,6 +66,16 @@ func findDevice(ctx context.Context, devices []audio.CrasNode, isInput bool) (au
 		}
 	}
 	return audio.CrasNode{}, errors.Errorf("cannot find device with type=%s and isInput=%v", deviceType, isInput)
+}
+
+func minAndMax(nums []float64) (float64, float64) {
+	min := math.Inf(1)
+	max := math.Inf(-1)
+	for _, n := range nums {
+		max = math.Max(max, n)
+		min = math.Min(min, n)
+	}
+	return min, max
 }
 
 func setupLoopback(ctx context.Context) error {
@@ -196,6 +207,8 @@ func AudioLoopbackLatency(ctx context.Context, s *testing.State) {
 			s.Error("Cannot save perf data: ", err)
 		}
 	}()
+	measuredMin, measuredMax := minAndMax(measuredLatencies)
+	reportedMin, reportedMax := minAndMax(reportedLatencies)
 
 	perfValues.Set(
 		perf.Metric{
@@ -211,4 +224,31 @@ func AudioLoopbackLatency(ctx context.Context, s *testing.State) {
 			Direction: perf.SmallerIsBetter,
 			Multiple:  true,
 		}, reportedLatencies...)
+	// crosbolt, please calculate the mins and maxes for multiple values :|
+	// go/crosbolt-result-parser-g3doc#results-chartjson
+	// min and max are important as latency can spike
+	perfValues.Set(
+		perf.Metric{
+			Name:      "measured_latency_min",
+			Unit:      "uS",
+			Direction: perf.SmallerIsBetter,
+		}, measuredMin)
+	perfValues.Set(
+		perf.Metric{
+			Name:      "measured_latency_max",
+			Unit:      "uS",
+			Direction: perf.SmallerIsBetter,
+		}, measuredMax)
+	perfValues.Set(
+		perf.Metric{
+			Name:      "reported_latency_min",
+			Unit:      "uS",
+			Direction: perf.SmallerIsBetter,
+		}, reportedMin)
+	perfValues.Set(
+		perf.Metric{
+			Name:      "reported_latency_max",
+			Unit:      "uS",
+			Direction: perf.SmallerIsBetter,
+		}, reportedMax)
 }
