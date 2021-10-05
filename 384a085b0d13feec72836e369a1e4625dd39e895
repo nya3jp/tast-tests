@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0fa71ce_6bb70fc6",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T00:10:53Z",
+      "side": 1,
+      "message": "lol yeah",
+      "parentUuid": "be50b070_219febff",
+      "range": {
+        "startLine": 31,
+        "startChar": 28,
+        "endLine": 31,
+        "endChar": 39
+      },
+      "revId": "384a085b0d13feec72836e369a1e4625dd39e895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c39dddc_bcc0505f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-29T20:53:05Z",
       "side": 1,
       "message": "Comment doesn\u0027t match what\u0027s happening",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 47
+      },
+      "revId": "384a085b0d13feec72836e369a1e4625dd39e895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aae1872_00d2cd15",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T00:10:53Z",
+      "side": 1,
+      "message": "just removed the comment, since this first part is pretty self-explanatory.",
+      "parentUuid": "4c39dddc_bcc0505f",
       "range": {
         "startLine": 44,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83970630_20f65ad8",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T00:10:53Z",
+      "side": 1,
+      "message": "The shelf icon appears as soon as the devices are paired (opening it in that state lets you turn on Phone Hub from within the tray). If you enable it from settings and open the tray like we\u0027re doing here, it has a UI that indicates the connection to the phone is in-progress. Once that finishes, the settings pods (silence phone, find my phone, etc.) will appear.\n\nSo the flow here is:\nturn on from settings -\u003e open the tray -\u003e wait for connecting UI to transition to fully-enabled phone hub",
+      "parentUuid": "aff7d371_27426076",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 81
+      },
+      "revId": "384a085b0d13feec72836e369a1e4625dd39e895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8ab820c_e6531558",
         "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-29T20:53:05Z",
       "side": 1,
       "message": "Does the existence of the settings pod during Enable() not mean that it is connected?",
+      "range": {
+        "startLine": 115,
+        "startChar": 85,
+        "endLine": 115,
+        "endChar": 109
+      },
+      "revId": "384a085b0d13feec72836e369a1e4625dd39e895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b6ba6a7_2a8b5c79",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T00:10:53Z",
+      "side": 1,
+      "message": "It does, I guess that means we can use the default timeout here.",
+      "parentUuid": "d8ab820c_e6531558",
       "range": {
         "startLine": 115,
         "startChar": 85,
@@ -106,6 +202,30 @@
       "writtenOn": "2021-09-29T20:53:05Z",
       "side": 1,
       "message": "Include the status we wanted in the error message",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 77
+      },
+      "revId": "384a085b0d13feec72836e369a1e4625dd39e895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded7edd2_13dd711c",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T00:10:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "120e5a10_be616886",
       "range": {
         "startLine": 167,
         "startChar": 0,
