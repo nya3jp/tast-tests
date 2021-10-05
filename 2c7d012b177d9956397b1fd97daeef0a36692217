@@ -543,6 +543,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e70b2d45_8fc5dcc4",
+        "filename": "src/chromiumos/tast/local/chrome/multidevice/connected_android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-05T00:10:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00bcd31_17423b8a",
+      "range": {
+        "startLine": 72,
+        "startChar": 62,
+        "endLine": 72,
+        "endChar": 69
+      },
+      "revId": "2c7d012b177d9956397b1fd97daeef0a36692217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a67eb3d2_96506863",
