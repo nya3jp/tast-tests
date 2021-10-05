@@ -51,6 +51,7 @@ func init() {
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForAmazonPrimeVideo,
+				SmokeTests:       testutil.ClamshellSmokeTests,
 				CommonTests:      testutil.ClamshellCommonTests,
 				AppSpecificTests: clamshellAppSpecificTestsForAmazonPrimeVideo,
 			},
@@ -75,6 +76,7 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForAmazonPrimeVideo,
+				SmokeTests:       testutil.ClamshellSmokeTests,
 				CommonTests:      testutil.ClamshellCommonTests,
 				AppSpecificTests: clamshellAppSpecificTestsForAmazonPrimeVideo,
 			},

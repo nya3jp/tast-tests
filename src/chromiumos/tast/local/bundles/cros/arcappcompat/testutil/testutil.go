@@ -55,8 +55,16 @@ type TestCase struct {
 type TestParams struct {
 	LaunchTests      []TestCase
 	CommonTests      []TestCase
+	SmokeTests       []TestCase
 	AppSpecificTests []TestCase
 }
+
+// Global variable
+var smokeTest = testing.RegisterVarString(
+	"testutil.RunTestCases",
+	"",
+	"Global variable for smoke suite",
+)
 
 // ClamshellCommonTests is a list of all tests common to all apps in clamshell mode.
 var ClamshellCommonTests = []TestCase{
@@ -83,6 +91,20 @@ var TouchviewCommonTests = []TestCase{
 	{Name: "Touchview: Touchscreen Scroll", Fn: TouchScreenScroll},
 	{Name: "Touchview: Virtual Keyboard", Fn: TouchAndTextInputs},
 	{Name: "Touchview: Largescreen Layout", Fn: Largescreenlayout},
+	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
+	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
+}
+
+// ClamshellSmokeTests is a list of clamshell tests common to apps in appcompat_smoke suite.
+var ClamshellSmokeTests = []TestCase{
+	{Name: "Clamshell: Touchscreen Scroll", Fn: TouchScreenScroll},
+	{Name: "Clamshell: Physical Keyboard", Fn: TouchAndTextInputs},
+	{Name: "Clamshell: Mouse click", Fn: MouseClick},
+	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
+}
+
+// TouchviewSmokeTests is a list of touchview tests common to apps in appcompat_smoke suite.
+var TouchviewSmokeTests = []TestCase{
 	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
 	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
 }
@@ -115,18 +137,10 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	}
 	s.Log("Successfully tested launching and closing the app")
 
-	// AllTests will have LaunchTests, CommonTests and AppSpecificTests.
-	var AllTests = []TestCase{}
-	for _, curTest := range testCases.LaunchTests {
-		AllTests = append(AllTests, curTest)
-	}
-	for _, curTest := range testCases.CommonTests {
-		AllTests = append(AllTests, curTest)
-	}
-	for _, curTest := range testCases.AppSpecificTests {
-		AllTests = append(AllTests, curTest)
-	}
+	smokeTestValue := smokeTest.Value()
+	s.Log("smokeTestValue: ", smokeTestValue)
 
+	AllTests := allTests(s, smokeTestValue, testCases)
 	// Run the different test cases.
 	for idx, test := range AllTests {
 		// If a timeout is not specified, limited individual test cases to the default.
@@ -236,6 +250,35 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 		})
 		cancel()
 	}
+}
+
+// allTests func for smoke testing and other automation runs.
+func allTests(s *testing.State, smokeTestValue string, testCases TestParams) []TestCase {
+	var AllTests = []TestCase{}
+	if smokeTestValue == "smoke" {
+		// AllTests will have LaunchTests, CommonTests and AppSpecificTests.
+		for _, curTest := range testCases.LaunchTests {
+			AllTests = append(AllTests, curTest)
+		}
+		for _, curTest := range testCases.SmokeTests {
+			AllTests = append(AllTests, curTest)
+		}
+		for _, curTest := range testCases.AppSpecificTests {
+			AllTests = append(AllTests, curTest)
+		}
+		return AllTests
+	}
+	// AllTests will have LaunchTests, CommonTests and AppSpecificTests.
+	for _, curTest := range testCases.LaunchTests {
+		AllTests = append(AllTests, curTest)
+	}
+	for _, curTest := range testCases.CommonTests {
+		AllTests = append(AllTests, curTest)
+	}
+	for _, curTest := range testCases.AppSpecificTests {
+		AllTests = append(AllTests, curTest)
+	}
+	return AllTests
 }
 
 // setUpDevice func setup Chrome on Chromebook.
