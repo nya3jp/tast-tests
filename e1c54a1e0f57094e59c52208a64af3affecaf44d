@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31998c0c_322233d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-05T21:53:25Z",
+      "side": 1,
+      "message": "Is it okay to do this in a follow-up CL moving other common functions to a helper? Thanks,",
+      "parentUuid": "8be87a4a_a6ae186f",
+      "revId": "e1c54a1e0f57094e59c52208a64af3affecaf44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fd6d574_6eee35d5",
@@ -102,6 +120,30 @@
       "side": 1,
       "message": "Actually, I could not find anywhere in https://g3doc.corp.google.com/go/g3doc/style/index.md?cl\u003dhead to mention this one. Just most of the code I saw were like that. I think the current one ok. Please ignore the original comment. Thanks.",
       "parentUuid": "8e2d4afb_77845ba0",
+      "revId": "e1c54a1e0f57094e59c52208a64af3affecaf44d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "398fd227_2b8b78a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-05T21:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4efc8a2b_3b8b403b",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 70
+      },
       "revId": "e1c54a1e0f57094e59c52208a64af3affecaf44d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

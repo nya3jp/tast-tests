@@ -82,6 +82,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dc4a003_548fc8b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-05T21:53:25Z",
+      "side": 1,
+      "message": "Done changing to lacrosservice. Please let me know if you have better naming ideas.",
+      "parentUuid": "7990ad08_b6667c7b",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "ae75cddf9106b45bf0e29b81f89fdd473cd6acf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5afcf9b_2cfe0ab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-05T21:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7990ad08_b6667c7b",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "ae75cddf9106b45bf0e29b81f89fdd473cd6acf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50ca83e8_def81651",
@@ -223,6 +271,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3737cd5_c6aba969",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-05T21:53:25Z",
+      "side": 1,
+      "message": "Left a TODO.",
+      "parentUuid": "c79d7cd7_4e82b23d",
+      "range": {
+        "startLine": 184,
+        "startChar": 30,
+        "endLine": 184,
+        "endChar": 43
+      },
+      "revId": "ae75cddf9106b45bf0e29b81f89fdd473cd6acf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "442e0fe3_3f0b416a",
@@ -270,6 +342,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38be8ab7_6f1cd184",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-05T21:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10264f30_1ddfe793",
+      "range": {
+        "startLine": 197,
+        "startChar": 30,
+        "endLine": 197,
+        "endChar": 52
+      },
+      "revId": "ae75cddf9106b45bf0e29b81f89fdd473cd6acf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe68a45b_65b93a14",
@@ -307,6 +403,54 @@
       "side": 1,
       "message": "setupChrome or any suggestions?",
       "parentUuid": "fe68a45b_65b93a14",
+      "range": {
+        "startLine": 215,
+        "startChar": 30,
+        "endLine": 215,
+        "endChar": 44
+      },
+      "revId": "ae75cddf9106b45bf0e29b81f89fdd473cd6acf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6867e58_dce47a3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-05T21:53:25Z",
+      "side": 1,
+      "message": "Changed to setupChrome. Please let me know if you have better naming ideas. I can update it in the next patch.",
+      "parentUuid": "73500e97_9b910382",
+      "range": {
+        "startLine": 215,
+        "startChar": 30,
+        "endLine": 215,
+        "endChar": 44
+      },
+      "revId": "ae75cddf9106b45bf0e29b81f89fdd473cd6acf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a22bbf1_062a5da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-05T21:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73500e97_9b910382",
       "range": {
         "startLine": 215,
         "startChar": 30,
