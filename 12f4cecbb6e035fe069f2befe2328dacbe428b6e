@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b531a79_7aaa5dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-10-05T12:01:58Z",
+      "side": 0,
+      "message": "Can we delay submitting removing this test config until we have one data point in crosbolt after http://ag/15848899 lands to make sure the refactor works properly?",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 54
+      },
+      "revId": "12f4cecbb6e035fe069f2befe2328dacbe428b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
