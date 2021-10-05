@@ -19,19 +19,19 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TabSwitchCUJ,
 		Desc:         "Measures the performance of tab-switching CUJ",
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org", "chromeos-wmp@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      22 * time.Minute,
 		Vars:         []string{"mute"},
 		Params: []testing.Param{{
-			ExtraAttr: []string{"group:crosbolt", "crosbolt_perbuild"},
 			ExtraData: []string{tabswitchcuj.WPRArchiveName},
 			Val:       lacros.ChromeTypeChromeOS,
 			Pre:       wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
 		}, {
 			Name:              "lacros",
 			Val:               lacros.ChromeTypeLacros,
-			Fixture:           "loggedInToCUJUserLacros",
+			Fixture:           "tabSwitchCUJWPRLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})
