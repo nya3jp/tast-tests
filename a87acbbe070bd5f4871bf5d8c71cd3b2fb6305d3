@@ -80,6 +80,30 @@
       },
       "revId": "a87acbbe070bd5f4871bf5d8c71cd3b2fb6305d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcb44504_a23b19f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_validity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-10-05T15:03:25Z",
+      "side": 1,
+      "message": "10 minutes of buffer still seems fine, but this is fine too.",
+      "parentUuid": "d751e8eb_514b618f",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "a87acbbe070bd5f4871bf5d8c71cd3b2fb6305d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
