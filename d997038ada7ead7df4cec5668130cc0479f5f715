@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "166f3288_82f6c53d",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-05T23:32:07Z",
+      "side": 1,
+      "message": "update it to the buganizer bug",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 22
+      },
+      "revId": "d997038ada7ead7df4cec5668130cc0479f5f715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "228cd31a_c0df62bd",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-05T23:32:07Z",
+      "side": 1,
+      "message": "Just wondering out loud now: I made the nearbyshare nested fixtures start with Android so that we could have a single android setup exist across mulitiple chromeos logins. For PhoneHub we probably won\u0027t have to do that. Is it better to put the Android fixture after the CrOS login so that we don\u0027t have to do the reconnectsnippet on Sarien? \n\nIf we think it is worth doing we can file a bug to come back too.\n\nI guess for SmartLock we will be logging in and out and would want to the ANdroid fixture to stay alive. So maybe not worth changing everything just for a small optimization for PHone Hub",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "d997038ada7ead7df4cec5668130cc0479f5f715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a61d8a48_1d0ca684",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-05T23:32:07Z",
+      "side": 1,
+      "message": "Pair",
+      "range": {
+        "startLine": 137,
+        "startChar": 11,
+        "endLine": 137,
+        "endChar": 18
+      },
+      "revId": "d997038ada7ead7df4cec5668130cc0479f5f715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2d90572_8f6cca7a",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-05T23:32:07Z",
+      "side": 1,
+      "message": "is logging out all that is needed for the the Chromebook and ANdroid phones to get unpaired?",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 40
+      },
+      "revId": "d997038ada7ead7df4cec5668130cc0479f5f715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
