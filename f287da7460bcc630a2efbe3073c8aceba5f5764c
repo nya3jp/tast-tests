@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17836567_3727cf01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-05T22:43:58Z",
+      "side": 1,
+      "message": "Sounds good, just want to make sure there is a plan in place to get this test to critical. Thanks for the info!",
+      "parentUuid": "a33380a6_715c168d",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "f287da7460bcc630a2efbe3073c8aceba5f5764c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dc4b521_06a9bbdb",

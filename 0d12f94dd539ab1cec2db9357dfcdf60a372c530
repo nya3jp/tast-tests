@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02330927_b3e47c2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-05T22:43:58Z",
+      "side": 1,
+      "message": "LGTM from Tast perspective!",
+      "revId": "0d12f94dd539ab1cec2db9357dfcdf60a372c530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2164e9d5_5acd1e99",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-10-04T09:23:44Z",
       "side": 1,
       "message": "Not sure if we should only enable this test on brya. I think we should test it on all TBT device?\n\nHi Ben, do you have any suggestion on this?",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 44
+      },
+      "revId": "0d12f94dd539ab1cec2db9357dfcdf60a372c530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e18e0784_904ecb94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-05T22:43:58Z",
+      "side": 1,
+      "message": "Yeah it\u0027s a good point. Your best bet is to probably implement a HardwareDep [1] maybe called HasTBT or something like that.\n\n[1] go/tast-deps#adding-new-hardware-conditions",
+      "parentUuid": "2164e9d5_5acd1e99",
       "range": {
         "startLine": 32,
         "startChar": 16,
