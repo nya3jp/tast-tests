@@ -16,6 +16,29 @@
       "message": "Hi Judy,\nWe have been told to ask you as reviewer of CLs of MTA essential apps/input/filesapp, do you mind to review this CL?",
       "revId": "f7874c79458e20f702011ec771e285c9823b40c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74379760_91824d84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-05T05:04:11Z",
+      "side": 1,
+      "message": "Please do not combine all the scenarios in one tast test. Recommend to split it into 6 sub cases:\n1. delete a file from My files\n2. delete a empty folder from My files\n3. delete a non-empty folder from My files\n4. delete a file from Downloads\n5. delete a empty folder from Downloads\n6. delete a non-empty folder from Downloads",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 29
+      },
+      "revId": "f7874c79458e20f702011ec771e285c9823b40c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
