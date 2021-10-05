@@ -22,6 +22,30 @@
       },
       "revId": "e4bf1d15a4887b7d196a9e1898ed876ffde6f143",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1e0a679_23e49b82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-10-05T06:47:59Z",
+      "side": 1,
+      "message": "Thanks for your advice.",
+      "parentUuid": "3371c8ae_a72917d2",
+      "range": {
+        "startLine": 394,
+        "startChar": 3,
+        "endLine": 394,
+        "endChar": 115
+      },
+      "revId": "e4bf1d15a4887b7d196a9e1898ed876ffde6f143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
