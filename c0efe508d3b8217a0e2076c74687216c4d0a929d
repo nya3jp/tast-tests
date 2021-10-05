@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "003e0a6e_209880d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/multi_account_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-05T05:23:04Z",
+      "side": 1,
+      "message": "How many accounts are there?",
+      "revId": "c0efe508d3b8217a0e2076c74687216c4d0a929d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16dc3d04_7ce5c282",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/multi_account_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-05T05:23:04Z",
+      "side": 1,
+      "message": "nit: Failed to parse",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "c0efe508d3b8217a0e2076c74687216c4d0a929d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e37c27_f11d8512",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/multi_account_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-05T05:23:04Z",
+      "side": 1,
+      "message": "This will end the case immediately and the rest account will not be used to login. Suggest to test each account as subtest.",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "c0efe508d3b8217a0e2076c74687216c4d0a929d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0636bcff_f591d35b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/multi_account_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-05T05:23:04Z",
+      "side": 1,
+      "message": "\"... line %s, got %d parts, want 2 parts\", line, len(ps)",
+      "range": {
+        "startLine": 59,
+        "startChar": 63,
+        "endLine": 59,
+        "endChar": 70
+      },
+      "revId": "c0efe508d3b8217a0e2076c74687216c4d0a929d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
