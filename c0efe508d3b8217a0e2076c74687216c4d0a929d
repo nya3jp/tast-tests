@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8d5cb51_5946a441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/multi_account_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-10-05T05:37:06Z",
+      "side": 1,
+      "message": "40+ accounts.",
+      "parentUuid": "003e0a6e_209880d6",
+      "revId": "c0efe508d3b8217a0e2076c74687216c4d0a929d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16dc3d04_7ce5c282",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-05T05:23:04Z",
       "side": 1,
       "message": "nit: Failed to parse",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "c0efe508d3b8217a0e2076c74687216c4d0a929d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "055fcec9_506fd033",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/multi_account_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-10-05T05:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16dc3d04_7ce5c282",
       "range": {
         "startLine": 35,
         "startChar": 11,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a73105_e5746237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/multi_account_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-10-05T05:37:06Z",
+      "side": 1,
+      "message": "Even if just one account fails, there\u0027s a high chance that others will fail too. In this case, we would fix the accounts manually and rerun the tests.",
+      "parentUuid": "67e37c27_f11d8512",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 10
+      },
+      "revId": "c0efe508d3b8217a0e2076c74687216c4d0a929d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0636bcff_f591d35b",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-10-05T05:23:04Z",
       "side": 1,
       "message": "\"... line %s, got %d parts, want 2 parts\", line, len(ps)",
+      "range": {
+        "startLine": 59,
+        "startChar": 63,
+        "endLine": 59,
+        "endChar": 70
+      },
+      "revId": "c0efe508d3b8217a0e2076c74687216c4d0a929d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bb60a2f_4754e1cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/multi_account_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-10-05T05:37:06Z",
+      "side": 1,
+      "message": "We don\u0027t want to print the actual string, since it contains password. This is why I only print the line number, which is enough for debugging.",
+      "parentUuid": "0636bcff_f591d35b",
       "range": {
         "startLine": 59,
         "startChar": 63,
