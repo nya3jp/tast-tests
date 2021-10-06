@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c0665e3_e59b0c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_stateful_partition_available_capacity_enrolled.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-06T20:20:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56d64003_236c3804",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 52
+      },
+      "revId": "703e7ac197bd8b3f8c39049d6e1e4c489307ee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92092529_2bf59396",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_stateful_partition_available_capacity_enrolled.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-06T20:20:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e92b9cc1_aed2cc6c",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "703e7ac197bd8b3f8c39049d6e1e4c489307ee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "524739c0_adf4b6cf",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-08T08:23:55Z",
       "side": 1,
       "message": "nit: com",
+      "range": {
+        "startLine": 29,
+        "startChar": 18,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "703e7ac197bd8b3f8c39049d6e1e4c489307ee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe6d8126_f2ea008f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_stateful_partition_available_capacity_enrolled.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-06T20:20:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "524739c0_adf4b6cf",
       "range": {
         "startLine": 29,
         "startChar": 18,
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e3ac1a9_19819687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_stateful_partition_available_capacity_enrolled.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-06T20:20:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4df45195_be657900",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "703e7ac197bd8b3f8c39049d6e1e4c489307ee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b49a733_cbcc60f4",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-09-08T08:23:55Z",
       "side": 1,
       "message": "This setup it repetitive across all tests, so I think we should move this to a fixture.\n\nThere should be next flow:\n1. SetUp\n    - Set policy\n    - Wait until wilco_dtc_supportd daemon is started\n    - Wait until wilco_dtc VM started\n    - Stop VM and start VM in the test mode\n2. PostTest\n    - Verify PID not changed for VM and supportd daemond\n3. TearDown\n    - Disallow wilco_dtc_supportd\n    - Verify wilco_dtc_supportd and wilco_dtc VM are stopped",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "703e7ac197bd8b3f8c39049d6e1e4c489307ee69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a7e6ba_be5e3fda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_stateful_partition_available_capacity_enrolled.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-06T20:20:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3b49a733_cbcc60f4",
       "range": {
         "startLine": 52,
         "startChar": 0,
