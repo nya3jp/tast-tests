@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed90b2e2_0e68745e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T23:50:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25fdf981_0424c568",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 67
+      },
+      "revId": "1610577921080edbb059c904ab85460b4b087229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87fa07b6_881d9339",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-06T21:27:09Z",
       "side": 1,
       "message": "Sanity check that statefulLacrosVersion is infact greater (\u003e) than rootfsLacrosVersion? + (IsValid() due to integer overflow?)",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 47
+      },
+      "revId": "1610577921080edbb059c904ab85460b4b087229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3e4230e_c358797d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T23:50:23Z",
+      "side": 1,
+      "message": "Good idea. added IsNewerThan to make this check easy.",
+      "parentUuid": "87fa07b6_881d9339",
       "range": {
         "startLine": 58,
         "startChar": 1,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "043e53a8_b2e250d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T23:50:23Z",
+      "side": 1,
+      "message": "Thanks for pointing this out! I\u0027ll be looking up to see if there is any existing service that I can use to restart ui (Ash Chrome) with no options.",
+      "parentUuid": "f7cbe240_89c055a9",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "1610577921080edbb059c904ab85460b4b087229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6ecd2fe_26c3a982",
         "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
         "patchSetId": 16
@@ -100,6 +172,30 @@
       "writtenOn": "2021-10-06T21:27:09Z",
       "side": 1,
       "message": "Use int64 + make IsValid() return false if any is \u003c 0?",
+      "range": {
+        "startLine": 14,
+        "startChar": 15,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "1610577921080edbb059c904ab85460b4b087229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e247409_8ee96238",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T23:50:23Z",
+      "side": 1,
+      "message": "My intention was porting the original source code[1][2] to Tast as much as possible if exists. One exception to this is using uint64 instead of uint32, which requires extra conversion in golang.\n\n[1] uint https://osscs.corp.google.com/chromium/chromium/src/+/main:base/version.h;l\u003d64;drc\u003dfde745d058a8a50019c01c838a7efa5be2f6268c\n[2] isValid implementation: https://osscs.corp.google.com/chromium/chromium/src/+/main:base/version.cc;l\u003d99;drc\u003de93e9b25656ed40d6a7f81bd3945362b4130c09e",
+      "parentUuid": "a6ecd2fe_26c3a982",
       "range": {
         "startLine": 14,
         "startChar": 15,
@@ -123,6 +219,30 @@
       "writtenOn": "2021-10-06T21:27:09Z",
       "side": 1,
       "message": "Use regexp.MustCompile(`(\\d+)\\.(\\d+)\\.(\\d+)\\.(\\d+)`)\nInstead of rolling yourself.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "1610577921080edbb059c904ab85460b4b087229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf5d3a9_1e5625c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T23:50:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c2a5099_50d4b6a7",
       "range": {
         "startLine": 27,
         "startChar": 1,
