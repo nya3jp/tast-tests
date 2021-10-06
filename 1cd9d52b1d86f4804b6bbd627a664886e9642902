@@ -92,6 +92,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf171f6_0415b7b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-06T16:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "699f79bb_b20d4a93",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "1cd9d52b1d86f4804b6bbd627a664886e9642902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68ba0e04_55888377",
@@ -115,6 +139,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "576534f2_455b241a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-06T16:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68ba0e04_55888377",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "1cd9d52b1d86f4804b6bbd627a664886e9642902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b38ff76_f124a9c6",
@@ -128,6 +176,30 @@
       "writtenOn": "2021-10-05T23:12:22Z",
       "side": 1,
       "message": "nit: When I first looked at this function, my expectation was that \"true\" would indicate success and \"false\" failure (i.e. it would return whether it Pressed or not).\n\nI would recommend to:\n- Invert the logic, so true indicates success and false failure (to press).\n- Change \"a value indicating the key was skipped is returned\" to \"false is returned\".\n- Consider naming the result parameters, so that the meaning is clear from the signature e.g. \"(pressed bool, err error)\". See go/go-style/decisions#named-result-parameters for further guidance.",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 75
+      },
+      "revId": "1cd9d52b1d86f4804b6bbd627a664886e9642902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "883e76c2_c6522bf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-06T16:32:11Z",
+      "side": 1,
+      "message": "Great feedback, the named parameter helps eliminate a lot of the confusion and makes the rest of the code easier to follow.",
+      "parentUuid": "2b38ff76_f124a9c6",
       "range": {
         "startLine": 31,
         "startChar": 24,
