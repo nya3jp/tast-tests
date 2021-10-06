@@ -100,7 +100,7 @@ func init() {
 			Name:              "vp9_enc_force_l1t3",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			Fixture:           "chromeVideoWithFakeWebcamAndForceVP9ThreeTemporalLayers",
+			Fixture:           "chromeVideoWithFakeWebcamAndForceL1T3VP9",
 		}, {
 			// This is 3 spatial layers, 3 temporal layers (each) k-SVC.
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
