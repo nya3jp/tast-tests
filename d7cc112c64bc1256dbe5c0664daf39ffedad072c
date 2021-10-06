@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4abb3c0_5ddef982",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-10-06T16:30:24Z",
+      "side": 1,
+      "message": "Are we confident in removing this right away? What if we alter it to explicitly disable WallpaperWebUI feature and leave it running for another few weeks/months?",
+      "revId": "d7cc112c64bc1256dbe5c0664daf39ffedad072c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
