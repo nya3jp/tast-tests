@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "068a039e_3e1fd293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-06T08:38:13Z",
+      "side": 1,
+      "message": "The time period of \"productivityTimeout\" is also slightly modified.",
+      "parentUuid": "fa3b5b19_5c9969cb",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 41
+      },
+      "revId": "fb534f63bbf233485b53d438b9dd495d3f8de2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5942ca12_a0c88bb2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-05T23:36:43Z",
       "side": 1,
       "message": "Wrap the err?",
+      "range": {
+        "startLine": 65,
+        "startChar": 9,
+        "endLine": 65,
+        "endChar": 12
+      },
+      "revId": "fb534f63bbf233485b53d438b9dd495d3f8de2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c501298_7389b52d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-06T08:38:13Z",
+      "side": 1,
+      "message": "I think the implementation of these functions provides enough information, so we don\u0027t need to wrap it.",
+      "parentUuid": "5942ca12_a0c88bb2",
       "range": {
         "startLine": 65,
         "startChar": 9,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fadbe7e4_602f5a5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-06T08:38:13Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "301074b3_43e06e68",
+      "range": {
+        "startLine": 78,
+        "startChar": 10,
+        "endLine": 78,
+        "endChar": 13
+      },
+      "revId": "fb534f63bbf233485b53d438b9dd495d3f8de2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96a190d5_5fe84aed",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-05T23:36:43Z",
       "side": 1,
       "message": "Is it guaranteed that there is still more than one minute left?",
+      "range": {
+        "startLine": 115,
+        "startChar": 47,
+        "endLine": 115,
+        "endChar": 58
+      },
+      "revId": "fb534f63bbf233485b53d438b9dd495d3f8de2f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c320d3cc_f89ce251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-06T08:38:13Z",
+      "side": 1,
+      "message": "We originally want to work around this issue (https://partnerissuetracker.corp.google.com/issues/196856854). Given the issue has a fix inside the API, we don\u0027t need it in the test logic any more.",
+      "parentUuid": "96a190d5_5fe84aed",
       "range": {
         "startLine": 115,
         "startChar": 47,
