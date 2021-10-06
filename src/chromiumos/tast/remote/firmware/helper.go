@@ -77,6 +77,7 @@ type Helper struct {
 	// and the USB recovery image are known to have up-to-date Tast host files.
 	doesDUTImageHaveTastFiles bool
 	doesRecHaveTastFiles      bool
+	doesUSBDevHaveTastFiles   bool
 
 	// DUT is used for communicating with the device under test.
 	DUT *dut.DUT
