@@ -16,6 +16,10 @@ service BiosService {
   rpc GetGBBFlags (google.protobuf.Empty) returns (GBBFlagsState) {}
   // ClearAndSetGBBFlags modifies the specified flags, leaving the rest unchanged.
   rpc ClearAndSetGBBFlags (GBBFlagsState) returns (google.protobuf.Empty) {}
+  // BackupECRW backs up the current EC_RW region locally and returns its path
+  rpc BackupECRW (google.protobuf.Empty) returns (ECRWPath) {}
+  // RestoreECRW restores the EC_RW region from path
+  rpc RestoreECRW (ECRWPath) returns (google.protobuf.Empty) {}
 }
 
 // GBBFlag bit positions
@@ -40,4 +44,9 @@ enum GBBFlag {
 message GBBFlagsState {
   repeated GBBFlag Clear = 1;
   repeated GBBFlag Set = 2;
+}
+
+// ECRWPath represents the path of EC_RW section backup.
+message ECRWPath {
+  string Path = 1;
 }
