@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f9df04f_84de0b33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1509302
+      },
+      "writtenOn": "2021-10-06T18:57:52Z",
+      "side": 1,
+      "message": "the issue has been fixed: https://tastboard.corp.google.com/test/arc.Gralloc. feel free to revert this.",
+      "revId": "a4173a2519e940287653db695cd1e1a0e6e993dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
