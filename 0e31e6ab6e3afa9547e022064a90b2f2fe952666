@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db73f9c0_17acb084",
+        "filename": "src/chromiumos/tast/common/cros/lacros/update.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T21:04:58Z",
+      "side": 1,
+      "message": "For debugging purpose it doesn\u0027t have to. Moved to the scoped var in test runtime. Anyway this CL will introduce a global var for the TLS address 😄 https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#global-runtime-variables-recommended-for-new-code",
+      "parentUuid": "e3cc6ca6_4e1e73f1",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 51
+      },
+      "revId": "0e31e6ab6e3afa9547e022064a90b2f2fe952666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3a4e3af_264a0d28",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-06T20:31:05Z",
       "side": 1,
       "message": "lacroscommon",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 7
+      },
+      "revId": "0e31e6ab6e3afa9547e022064a90b2f2fe952666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2637af82_e153d50f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T21:04:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3a4e3af_264a0d28",
       "range": {
         "startLine": 12,
         "startChar": 1,
