@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e0db07_d0372d8d",
+        "filename": "src/chromiumos/tast/common/storage/files/homedir_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-06T18:11:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1319cebb_6a511e57",
+      "revId": "f3b6c201de7c64dfbfa11438a585293784567dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faa71053_78b8c1a4",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-10-05T21:18:55Z",
       "side": 1,
       "message": "micro nit: maybe just inline getTestfileTemplates() here",
+      "range": {
+        "startLine": 44,
+        "startChar": 19,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "f3b6c201de7c64dfbfa11438a585293784567dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1ffed1_cf0aca4b",
+        "filename": "src/chromiumos/tast/common/storage/files/homedir_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-06T18:11:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faa71053_78b8c1a4",
       "range": {
         "startLine": 44,
         "startChar": 19,
