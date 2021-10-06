@@ -33,6 +33,46 @@
       "message": "shadow reviewer lgtm",
       "revId": "301492cf713341ad6f03932952731cfc3bfd1850",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f92325f_ec4852da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-06T01:05:12Z",
+      "side": 1,
+      "message": "LGTM!",
+      "revId": "301492cf713341ad6f03932952731cfc3bfd1850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57931d43_a9d4a201",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-06T01:05:12Z",
+      "side": 1,
+      "message": "nit: change this to L1T3VP9. maybe in another CL.",
+      "range": {
+        "startLine": 212,
+        "startChar": 46,
+        "endLine": 212,
+        "endChar": 68
+      },
+      "revId": "301492cf713341ad6f03932952731cfc3bfd1850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
