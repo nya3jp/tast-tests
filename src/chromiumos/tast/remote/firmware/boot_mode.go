@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
 	fwpb "chromiumos/tast/services/cros/firmware"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -138,6 +139,8 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		// Remember which image the Tast files came from.
 		if fromMode == fwCommon.BootModeRecovery {
 			h.doesRecHaveTastFiles = true
+		} else if fromMode == fwCommon.BootModeUSBDev {
+			h.doesUSBDevHaveTastFiles = true
 		} else {
 			h.doesDUTImageHaveTastFiles = true
 		}
@@ -189,6 +192,10 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			return errors.Wrapf(err, "failed to reconnect to DUT after booting to %s", toMode)
 		}
 	case fwCommon.BootModeDev:
+		testing.ContextLog(ctx, "Disabling dev_boot_usb, disabling dev_boot_signed_only")
+		if err := h.DUT.Conn().CommandContext(ctx, "crossystem", "dev_boot_usb=0", "dev_boot_signed_only=0", "dev_default_boot=disk").Run(ssh.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "disabling dev_boot_usb")
+		}
 		if msOptsContain(opts, AllowGBBForce) {
 			// 1. Set the GBB flag which forces dev mode upon reboot.
 			//    This was handled earlier in this function, prior to terminating the RPC connection.
@@ -201,7 +208,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		transitionToDev := true
 		// Recovery -> Dev sometimes gets stuck on the recovery screen. Try a normal reboot first.
 		// Even if it doesn't get us back to Dev, rebooting from Normal -> Dev is less flaky.
-		if fromMode == fwCommon.BootModeRecovery {
+		if fromMode == fwCommon.BootModeRecovery || fromMode == fwCommon.BootModeUSBDev {
 			if err := h.Servo.SetPowerState(ctx, servo.PowerStateWarmReset); err != nil {
 				return err
 			}
@@ -234,14 +241,87 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			}
 		}
 	case fwCommon.BootModeUSBDev:
-		if err := ms.powerOff(ctx); err != nil {
-			return errors.Wrap(err, "powering off DUT")
+		transitionToDev := true
+		transitionToDevUsb := true
+		if msOptsContain(opts, AllowGBBForce) {
+			transitionToDev = false
 		}
-		if err := h.Servo.SetPowerState(ctx, servo.PowerStateRec); err != nil {
-			return err
+		// Recovery -> Dev sometimes gets stuck on the recovery screen. Try a normal reboot first.
+		// Even if it doesn't get us back to Dev, rebooting from Normal -> Dev is less flaky.
+		if fromMode == fwCommon.BootModeRecovery {
+			testing.ContextLog(ctx, "Rebooting to leave recovery mode")
+			if err := h.Servo.SetPowerState(ctx, servo.PowerStateWarmReset); err != nil {
+				return err
+			}
+			// Depending on how we got to to rec mode, we might end up in normal mode or the recovery
+			// menu, so navigate to dev mode, but it that fails, fall through to the next attempt below.
+			if err := ms.fwScreenToDevMode(ctx); err == nil {
+				newMode, err := h.Reporter.CurrentBootMode(ctx)
+				if err != nil {
+					return errors.Wrap(err, "determining boot mode after simple reboot")
+				}
+				testing.ContextLogf(ctx, "Warm reset finished, DUT in %s", newMode)
+				switch newMode {
+				case fwCommon.BootModeDev:
+					transitionToDev = false
+				case fwCommon.BootModeUSBDev:
+					transitionToDev = false
+					transitionToDevUsb = false
+				}
+			}
 		}
-		if err := ms.fwScreenToUSBDevMode(ctx); err != nil {
-			return errors.Wrap(err, "moving from firmware screen to usb dev mode")
+		if fromMode == fwCommon.BootModeDev {
+			transitionToDev = false
+		}
+		if transitionToDev {
+			// 1. Set power_state to 'rec', but don't show the DUT a USB image to boot from.
+			// 2. From the firmware screen that appears, press keys to transition to dev mode.
+			//    The specific keypresses will depend on the DUT's ModeSwitcherType.
+			testing.ContextLog(ctx, "Rebooting to enter dev mode first")
+			if err := ms.enableRecMode(ctx, servo.USBMuxOff); err != nil {
+				return err
+			}
+			if err := ms.fwScreenToDevMode(ctx); err != nil {
+				return errors.Wrap(err, "moving from firmware screen to dev mode")
+			}
+		}
+		if transitionToDevUsb {
+			// 1. Set power_state to 'rec', but don't show the DUT a USB image to boot from.
+			// 2. From the firmware screen that appears, press keys to transition to dev mode.
+			//    The specific keypresses will depend on the DUT's ModeSwitcherType.
+			testing.ContextLog(ctx, "Enabling dev_boot_usb, disabling dev_boot_signed_only")
+			if err := h.DUT.Conn().CommandContext(ctx, "crossystem", "dev_boot_usb=1", "dev_boot_signed_only=0", "dev_default_boot=usb").Run(ssh.DumpLogOnError); err != nil {
+				return errors.Wrap(err, "enabling dev_boot_usb")
+			}
+			testing.ContextLog(ctx, "Enabling USB")
+			if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxDUT); err != nil {
+				return err
+			}
+			testing.ContextLog(ctx, "Sleeping 5s to let USB become visible to DUT")
+			if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+				return err
+			}
+			testing.ContextLog(ctx, "Rebooting")
+			powerOffCtx, cancel := context.WithTimeout(ctx, cmdTimeout)
+			defer cancel()
+			// Since the DUT will power off, deadline exceeded is expected here.
+			if err := h.DUT.Conn().CommandContext(powerOffCtx, "reboot").Run(); err != nil && !errors.Is(err, context.DeadlineExceeded) {
+				return errors.Wrapf(err, "DUT poweroff %T", err)
+			}
+
+			offCtx, cancel := context.WithTimeout(ctx, offTimeout)
+			defer cancel()
+			if err := ms.Helper.DUT.WaitUnreachable(offCtx); err != nil {
+				return errors.Wrap(err, "waiting for DUT to be unreachable after reboot")
+			}
+			if err := ms.fwScreenToUSBDevMode(ctx); err != nil {
+				return errors.Wrap(err, "moving from firmware screen to dev mode")
+			}
+		}
+		// Reconnect to the DUT.
+		testing.ContextLog(ctx, "Reestablishing connection to DUT")
+		if err := h.WaitConnect(ctx); err != nil {
+			return errors.Wrapf(err, "failed to reconnect to DUT after booting to %s", toMode)
 		}
 	default:
 		return errors.Errorf("unsupported firmware boot mode: %s", toMode)
@@ -251,6 +331,8 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 	needSync := toMode != fromMode
 	if toMode == fwCommon.BootModeRecovery {
 		needSync = needSync && !h.doesRecHaveTastFiles
+	} else if toMode == fwCommon.BootModeUSBDev {
+		needSync = needSync && !h.doesUSBDevHaveTastFiles
 	} else {
 		needSync = needSync && !h.doesDUTImageHaveTastFiles
 	}
@@ -260,6 +342,8 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		}
 		if toMode == fwCommon.BootModeRecovery {
 			h.doesRecHaveTastFiles = true
+		} else if toMode == fwCommon.BootModeUSBDev {
+			h.doesUSBDevHaveTastFiles = true
 		} else {
 			h.doesDUTImageHaveTastFiles = true
 		}
@@ -476,28 +560,39 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context) error {
 		// 2. Press Ctrl-D to move to the confirm screen.
 		// 3. Wait until the confirm screen appears.
 		// 4. Push some button depending on the DUT's config: toggle the rec button, press power, or press enter.
+		testing.ContextLogf(ctx, "Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
 		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
-			return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) while disabling dev mode", h.Config.FirmwareScreen)
+			return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) while enabling dev mode", h.Config.FirmwareScreen)
 		}
+		testing.ContextLog(ctx, "Pressing Ctrl-D")
 		if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlD, servo.DurTab); err != nil {
 			return err
 		}
+		testing.ContextLogf(ctx, "Sleeping %s (KeypressDelay)", h.Config.KeypressDelay)
 		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
 			return err
 		}
 		if h.Config.RecButtonDevSwitch {
+			testing.ContextLog(ctx, "Toggling RecMode")
 			if err := h.Servo.ToggleOnOff(ctx, servo.RecMode); err != nil {
 				return err
 			}
 		} else if h.Config.PowerButtonDevSwitch {
+			testing.ContextLog(ctx, "Pressing power key")
 			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
 				return err
 			}
 		} else {
+			testing.ContextLog(ctx, "Pressing enter key")
 			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
 				return err
 			}
 		}
+		testing.ContextLogf(ctx, "Sleeping %s", 2*time.Second)
+		if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+			return err
+		}
+		testing.ContextLog(ctx, "Set DFP mode")
 		if err := h.Servo.SetDUTPDDataRole(ctx, servo.DFP); err != nil {
 			testing.ContextLogf(ctx, "Failed to set pd data role to DFP: %s", err)
 		}
@@ -568,27 +663,21 @@ func (ms *ModeSwitcher) fwScreenToUSBDevMode(ctx context.Context) error {
 		// 2. Press Ctrl-U to move to the confirm screen.
 		// 3. Wait until the confirm screen appears.
 		// 4. Push some button depending on the DUT's config: toggle the rec button, press power, or press enter.
-		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
-			return err
+		testing.ContextLog(ctx, "Set DFP mode")
+		if err := h.Servo.SetDUTPDDataRole(ctx, servo.DFP); err != nil {
+			testing.ContextLogf(ctx, "Failed to set pd data role to DFP: %s", err)
 		}
-		if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlU, servo.DurTab); err != nil {
-			return err
-		}
-		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
-			return err
-		}
-		if h.Config.RecButtonDevSwitch {
-			if err := h.Servo.ToggleOnOff(ctx, servo.RecMode); err != nil {
+		// Keep pressing CTRL-U until connected
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			testing.ContextLog(ctx, "Pressing CTRL-U")
+			if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlU, servo.DurTab); err != nil {
 				return err
 			}
-		} else if h.Config.PowerButtonDevSwitch {
-			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
-				return err
-			}
-		} else {
-			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
-				return err
-			}
+			ctx, cancel := context.WithTimeout(ctx, 2*time.Second)
+			defer cancel()
+			return h.DUT.WaitConnect(ctx)
+		}, &testing.PollOptions{Timeout: 1 * time.Minute}); err != nil {
+			return errors.Wrap(err, "failed to reconnect to DUT")
 		}
 	default:
 		return errors.Errorf("booting to dev mode: unsupported ModeSwitcherType: %s", h.Config.ModeSwitcherType)

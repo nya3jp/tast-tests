@@ -77,7 +77,7 @@ func init() {
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeUSBDev, false),
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync"},
-		SetUpTimeout:    60 * time.Second,
+		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
@@ -90,7 +90,7 @@ func init() {
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeUSBDev, true),
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync"},
-		SetUpTimeout:    60 * time.Second,
+		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
@@ -175,7 +175,7 @@ func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	i.initHelper(ctx, s)
 
 	// If rebooting to recovery mode, verify the usb key.
-	if i.value.BootMode == common.BootModeRecovery {
+	if i.value.BootMode == common.BootModeRecovery || i.value.BootMode == common.BootModeUSBDev {
 		if err := i.value.Helper.RequireServo(ctx); err != nil {
 			s.Fatal("Failed to connect to servod: ", err)
 		}
