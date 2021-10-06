@@ -206,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb41713b_a422f3e6",
+        "filename": "src/chromiumos/tast/common/storage/files/crypto_utils.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-06T18:11:13Z",
+      "side": 1,
+      "message": "(Resolving this comment)",
+      "parentUuid": "fa6d2ce9_1755197f",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 3
+      },
+      "revId": "fe9f6ffdbe7244e6726cdb581d9178bf4844a155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49b88c0f_89e46d35",
