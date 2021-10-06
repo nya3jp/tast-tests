@@ -29,6 +29,22 @@ type BiosService struct {
 	s *testing.ServiceState
 }
 
+// BackupECRW dumps the EC RW region into temporary file locally and returns its path
+func (*BiosService) BackupECRW(ctx context.Context, req *empty.Empty) (*pb.ECRWPath, error) {
+	path, err := bios.NewImageToFile(ctx, bios.ECRWImageSection, bios.ECProgrammer)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not backup EC_RW region")
+	}
+	return &pb.ECRWPath{Path: path}, nil
+}
+
+func (*BiosService) RestoreECRW(ctx context.Context, path *pb.ECRWPath) (*empty.Empty, error) {
+	if err := bios.WriteImageFromFile(ctx, path.Path, bios.ECRWImageSection, bios.ECProgrammer); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "could not restore EC_RW region")
+	}
+	return &empty.Empty{}, nil
+}
+
 // GetGBBFlags gets the flags that are cleared and set.
 func (*BiosService) GetGBBFlags(ctx context.Context, req *empty.Empty) (*pb.GBBFlagsState, error) {
 	img, err := bios.NewImage(ctx, bios.GBBImageSection, bios.HostProgrammer)
