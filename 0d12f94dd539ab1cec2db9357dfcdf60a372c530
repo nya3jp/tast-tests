@@ -63,6 +63,30 @@
       },
       "revId": "0d12f94dd539ab1cec2db9357dfcdf60a372c530",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7668944_7ba3e55c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-10-06T00:53:18Z",
+      "side": 1,
+      "message": "Hi Pathan,\n\nIt\u0027s fine for me to go ahead this CL. But could you implement this in another CL? Otherwise, there might by no test for other TBT devices in the future.",
+      "parentUuid": "e18e0784_904ecb94",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 44
+      },
+      "revId": "0d12f94dd539ab1cec2db9357dfcdf60a372c530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
