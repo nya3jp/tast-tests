@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f7dd899_989595ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-06T15:29:30Z",
+      "side": 1,
+      "message": "nya@ ping",
+      "revId": "301492cf713341ad6f03932952731cfc3bfd1850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57931d43_a9d4a201",
@@ -65,6 +82,30 @@
       "writtenOn": "2021-10-06T01:05:12Z",
       "side": 1,
       "message": "nit: change this to L1T3VP9. maybe in another CL.",
+      "range": {
+        "startLine": 212,
+        "startChar": 46,
+        "endLine": 212,
+        "endChar": 68
+      },
+      "revId": "301492cf713341ad6f03932952731cfc3bfd1850",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c54a4d7_96ff499c",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-06T15:29:30Z",
+      "side": 1,
+      "message": "Good point, let me do that in a follow up CL.",
+      "parentUuid": "57931d43_a9d4a201",
       "range": {
         "startLine": 212,
         "startChar": 46,
