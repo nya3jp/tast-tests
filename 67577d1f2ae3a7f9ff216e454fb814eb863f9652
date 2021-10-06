@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "356d3065_edc7221a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/conference.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-10-06T02:23:33Z",
+      "side": 1,
+      "message": "Thanks for your reminder.\nI add ui.Exists to check if there is the signed out message immediately.\nIf it exists, get info to wrap the error message.",
+      "parentUuid": "86ce36cc_120f01db",
+      "range": {
+        "startLine": 60,
+        "startChar": 21,
+        "endLine": 60,
+        "endChar": 25
+      },
+      "revId": "67577d1f2ae3a7f9ff216e454fb814eb863f9652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2268da3_a3d8a603",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-04T22:51:43Z",
       "side": 1,
       "message": "Do you think this step can possibly overwrite the original error message and causes noise?",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 62,
+        "endChar": 12
+      },
+      "revId": "67577d1f2ae3a7f9ff216e454fb814eb863f9652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a60cd6_3f37ac1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/conference.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-10-06T02:23:33Z",
+      "side": 1,
+      "message": "Yes, errors that info can\u0027t catch are not the point.\nI added the comment for this section:\n\"If any other error happens or there is no signed out message, the original error will be returned.\"",
+      "parentUuid": "d2268da3_a3d8a603",
       "range": {
         "startLine": 62,
         "startChar": 2,
