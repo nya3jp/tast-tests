@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3cc6ca6_4e1e73f1",
+        "filename": "src/chromiumos/tast/common/cros/lacros/update.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-06T20:31:05Z",
+      "side": 1,
+      "message": "does this really need to be global?\nLooks like you\u0027re gonna be the first user of this functionality if it does ;)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 51
+      },
+      "revId": "0e31e6ab6e3afa9547e022064a90b2f2fe952666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a4e3af_264a0d28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-06T20:31:05Z",
+      "side": 1,
+      "message": "lacroscommon",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 7
+      },
+      "revId": "0e31e6ab6e3afa9547e022064a90b2f2fe952666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
