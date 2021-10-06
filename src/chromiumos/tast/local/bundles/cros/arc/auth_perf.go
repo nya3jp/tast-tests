@@ -148,7 +148,7 @@ type measuredValues struct {
 func AuthPerf(ctx context.Context, s *testing.State) {
 	const (
 		// successBootCount is the number of passing ARC boots to collect results.
-		successBootCount = 10
+		successBootCount = 7
 	)
 
 	param := s.Param().(testParam)
