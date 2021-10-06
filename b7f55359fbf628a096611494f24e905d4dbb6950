@@ -16,6 +16,23 @@
       "message": "still lgtm",
       "revId": "b7f55359fbf628a096611494f24e905d4dbb6950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16e4d21a_a0037d7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-06T07:59:07Z",
+      "side": 1,
+      "message": "Hi Kamil, friendly ping for CR+2 again, thanks!",
+      "revId": "b7f55359fbf628a096611494f24e905d4dbb6950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
