@@ -49,7 +49,7 @@ func init() {
 			"gredelston@google.com", // Test author.
 			"cros-fw-engprod@google.com",
 		},
-		Attr: []string{"group:firmware", "firmware_unstable"},
+		Attr: []string{"group:firmware"},
 		HardwareDeps: hwdep.D(
 			// Eventlog is broken/wontfix on veyron devices.
 			// See http://b/35585376#comment14 for more info.
@@ -62,6 +62,7 @@ func init() {
 			// Test eventlog upon normal->normal reboot.
 			{
 				Name:              "normal",
+				ExtraAttr:         []string{"firmware_unstable"},
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("leona")),
 				Fixture:           fixture.NormalMode,
 				Val: eventLogParams{
@@ -73,6 +74,7 @@ func init() {
 			{
 				// Allow some normally disallowed events on leona. b/184778308
 				Name:              "leona_normal",
+				ExtraAttr:         []string{"firmware_ec"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("leona")),
 				Fixture:           fixture.NormalMode,
 				Val: eventLogParams{
@@ -85,6 +87,7 @@ func init() {
 			// Test eventlog upon dev->dev reboot.
 			{
 				Name:              "dev",
+				ExtraAttr:         []string{"firmware_ec"},
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("leona")),
 				Fixture:           fixture.DevModeGBB,
 				Val: eventLogParams{
@@ -96,6 +99,7 @@ func init() {
 			// Allow some normally disallowed events on leona. b/184778308
 			{
 				Name:              "leona_dev",
+				ExtraAttr:         []string{"firmware_ec"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("leona")),
 				Fixture:           fixture.DevModeGBB,
 				Val: eventLogParams{
@@ -108,8 +112,8 @@ func init() {
 			// Test eventlog upon normal->rec reboot.
 			{
 				Name:      "normal_rec",
+				ExtraAttr: []string{"firmware_unstable", "firmware_usb"},
 				Fixture:   fixture.NormalMode,
-				ExtraAttr: []string{"firmware_usb"},
 				Val: eventLogParams{
 					bootToMode:        fwCommon.BootModeRecovery,
 					requiredEventSets: [][]string{[]string{`System boot`, `Chrome OS Recovery Mode \| Recovery Button`}},
@@ -120,9 +124,9 @@ func init() {
 			// Test eventlog upon rec->normal reboot.
 			{
 				Name:              "rec_normal",
+				ExtraAttr:         []string{"firmware_unstable", "firmware_usb"},
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("leona")),
 				Fixture:           fixture.RecMode,
-				ExtraAttr:         []string{"firmware_usb"},
 				Val: eventLogParams{
 					bootToMode:        fwCommon.BootModeNormal,
 					requiredEventSets: [][]string{[]string{`System boot`}},
@@ -133,9 +137,9 @@ func init() {
 			{
 				// Allow some normally disallowed events on leona. b/184778308
 				Name:              "leona_rec_normal",
+				ExtraAttr:         []string{"firmware_ec", "firmware_usb"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("leona")),
 				Fixture:           fixture.RecMode,
-				ExtraAttr:         []string{"firmware_usb"},
 				Val: eventLogParams{
 					bootToMode:        fwCommon.BootModeNormal,
 					requiredEventSets: [][]string{[]string{`System boot`}},
@@ -151,8 +155,9 @@ func init() {
 			// eldrid: S0ix Enter, S0ix Exit, Wake Source | Power Button | 0, EC Event | Power Button
 			// hayato: Sleep, Wake
 			{
-				Name:    "suspend_resume",
-				Fixture: fixture.NormalMode,
+				Name:      "suspend_resume",
+				ExtraAttr: []string{"firmware_unstable"},
+				Fixture:   fixture.NormalMode,
 				Val: eventLogParams{
 					suspendResume: true,
 					requiredEventSets: [][]string{
@@ -169,8 +174,9 @@ func init() {
 			// hayato: FAIL Sleep, System boot
 			// treeya: FAIL Nothing logged
 			{
-				Name:    "suspend_resume_idle",
-				Fixture: fixture.NormalMode,
+				Name:      "suspend_resume_idle",
+				ExtraAttr: []string{"firmware_unstable"},
+				Fixture:   fixture.NormalMode,
 				Val: eventLogParams{
 					suspendResume: true,
 					suspendToIdle: "1",
@@ -187,8 +193,9 @@ func init() {
 			// hayato: Sleep, Wake
 			// x86 duts: ACPI Enter | S3, EC Event | Power Button, ACPI Wake | S3, Wake Source | Power Button | 0
 			{
-				Name:    "suspend_resume_noidle",
-				Fixture: fixture.NormalMode,
+				Name:      "suspend_resume_noidle",
+				ExtraAttr: []string{"firmware_unstable"},
+				Fixture:   fixture.NormalMode,
 				Val: eventLogParams{
 					suspendResume: true,
 					suspendToIdle: "0",
@@ -202,6 +209,7 @@ func init() {
 			// Test eventlog with hardware watchdog.
 			{
 				Name:              "watchdog",
+				ExtraAttr:         []string{"firmware_unstable"},
 				Fixture:           fixture.NormalMode,
 				ExtraSoftwareDeps: []string{"watchdog"},
 				Val: eventLogParams{
