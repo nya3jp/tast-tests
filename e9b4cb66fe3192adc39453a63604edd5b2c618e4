@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "471df59c_3f9d852b",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-10-06T22:45:07Z",
+      "side": 1,
+      "message": "nit, is there some command to check if USB is visible that can be polled upon for this?",
+      "revId": "e9b4cb66fe3192adc39453a63604edd5b2c618e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "912f07a3_391649d8",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-10-06T22:45:07Z",
+      "side": 1,
+      "message": "nit, add a comment for doesUSBDevHaveTastFiles.",
+      "revId": "e9b4cb66fe3192adc39453a63604edd5b2c618e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
