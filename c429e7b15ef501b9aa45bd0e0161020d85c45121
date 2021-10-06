@@ -33,6 +33,24 @@
       "message": "nit: Maybe unintentional blank line",
       "revId": "c429e7b15ef501b9aa45bd0e0161020d85c45121",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5a924bb_4d563b1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mini_container.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2021-10-06T00:20:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bb6421e_94e8a4bc",
+      "revId": "c429e7b15ef501b9aa45bd0e0161020d85c45121",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
