@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19f7e0ef_280b2018",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-06T17:41:00Z",
+      "side": 1,
+      "message": "The python test uses normal mode. If you don\u0027t need dev mode, stay in normal.",
+      "range": {
+        "startLine": 24,
+        "startChar": 20,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "d2622c58dd8666204e82ce171b855adf0869a39d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8f9b429_be4dc1c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-06T17:41:00Z",
+      "side": 1,
+      "message": "The old test skips if the no ec software sync flag is set. We don\u0027t really have a way to skip test here. But I think we could do better. Since you are making a backup of the EC_RW image you could:\n\n1) BackupECRW (you do this now)\n2) Call biosService.ClearAndSetGBBFlags() to clear GBBFlag_DISABLE_EC_SOFTWARE_SYNC\n3) Do your test stuff.\n4) RestoreECRW\n5) Let the precondition reset the GBB flags.  You\u0027ll have to double check that this actually works though. The important bit is that there are no reboots between the restore in step 4, and when the GBBFlag_DISABLE_EC_SOFTWARE_SYNC gets set again.\n\nAs it is, this test will fail if you run with --arg firmware.no_ec_sync\u003dtrue",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "d2622c58dd8666204e82ce171b855adf0869a39d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4541f1e_39822e21",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-06T17:41:00Z",
+      "side": 1,
+      "message": "I would put the restore and delete the temp file right here in a defer.\n\ndefer function(ctx context) {\n  h.EnsureDUTBooted\n  restoreFW\n  delete tmp file\n}(ctx)\n\n// Shorten the deadline for everything else to save some time for the restore\nctx, cancel :\u003d ctxutil.Shorten(ctx, ?? * time.Second)\ndefer cancel()",
+      "revId": "d2622c58dd8666204e82ce171b855adf0869a39d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
