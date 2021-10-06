@@ -73,10 +73,10 @@ type Helper struct {
 	// Any tests requiring a Config should set cfgFilepath to s.DataPath(firmware.ConfigFile) during NewHelper.
 	cfgFilepath string
 
-	// doesDUTImageHaveTastFiles and doesRecHaveTastFiles track whether the DUT's on-board image
-	// and the USB recovery image are known to have up-to-date Tast host files.
+	// These vars track whether the DUT's on-board image, and the USB recovery images are known to have up-to-date Tast host files.
 	doesDUTImageHaveTastFiles bool
 	doesRecHaveTastFiles      bool
+	doesUSBDevHaveTastFiles   bool
 
 	// DUT is used for communicating with the device under test.
 	DUT *dut.DUT
