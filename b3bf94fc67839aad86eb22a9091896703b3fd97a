@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5a3b502_2ad0ec54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/audionode/audionode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-06T07:15:19Z",
+      "side": 1,
+      "message": "we are using this Helper struct and its related functions in a different CL.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3156643",
+      "parentUuid": "10998f0f_3bc9e818",
+      "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "507a3811_635a5dba",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/audionode/audionode.go",
         "patchSetId": 10
@@ -152,6 +170,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49d71866_4c911816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/audionode/audionode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-06T07:15:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccfcd10b_44bb50f6",
+      "range": {
+        "startLine": 99,
+        "startChar": 39,
+        "endLine": 99,
+        "endChar": 56
+      },
+      "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e62fe94_f0fa1123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/audionode/audionode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-06T07:15:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "507a3811_635a5dba",
+      "range": {
+        "startLine": 99,
+        "startChar": 65,
+        "endLine": 99,
+        "endChar": 80
+      },
+      "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a302a75_5e0ceac7",
@@ -165,6 +231,30 @@
       "writtenOn": "2021-10-05T23:30:24Z",
       "side": 1,
       "message": "nit: I am not really clear what the point of returning the deviceType is. \n\nIt seems that this will always be the \u0027expectedAudioNode\u0027 that is passed, unless an error encountered (in which case the unexpected deviceType could be included in the error if necessary?)",
+      "range": {
+        "startLine": 123,
+        "startChar": 20,
+        "endLine": 123,
+        "endChar": 30
+      },
+      "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c3d580b_4812cc73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/audionode/audionode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-06T07:15:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a302a75_5e0ceac7",
       "range": {
         "startLine": 123,
         "startChar": 20,
