@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae3893b4_a2355a23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-10-06T04:14:17Z",
+      "side": 1,
+      "message": "capturemode --\u003e diagnostics",
+      "revId": "97b20886c2f1b58b7e223667cb164ae3bd7fc6e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e24bac4d_f609a00a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-10-06T04:14:17Z",
+      "side": 1,
+      "message": "Please also retry syncing to HEAD.",
+      "revId": "97b20886c2f1b58b7e223667cb164ae3bd7fc6e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
