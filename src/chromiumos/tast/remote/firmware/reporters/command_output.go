@@ -26,7 +26,7 @@ func (r *Reporter) CommandOutputLines(ctx context.Context, format string, args .
 func (r *Reporter) CommandOutput(ctx context.Context, format string, args ...string) (string, error) {
 	res, err := r.d.Conn().CommandContext(ctx, format, args...).Output()
 	if err != nil {
-		return "", errors.Wrapf(err, "failed to run %q command on dut", prependString(format, args))
+		return "", errors.Wrapf(err, "failed to run %q command on dut: %q", prependString(format, args), res)
 	}
 
 	// Command returns an extra newline vs running the command in shell, so remove it.
