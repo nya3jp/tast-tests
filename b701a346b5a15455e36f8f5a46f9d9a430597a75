@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7ee04ee_ea865c91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-06T22:56:22Z",
+      "side": 1,
+      "message": "we need to pass in --fake-variations-channel in this test, since test images always have \"unknown\" as their channel. just hard-coding it for now, but we can also get the OS channel from lsb-release and use that here.",
+      "range": {
+        "startLine": 103,
+        "startChar": 47,
+        "endLine": 103,
+        "endChar": 77
+      },
+      "revId": "b701a346b5a15455e36f8f5a46f9d9a430597a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
