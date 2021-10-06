@@ -12,8 +12,10 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -103,30 +105,22 @@ func ManagedBookmarks(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-				Name: folder,
-				Role: ui.RoleTypePopUpButton,
-			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			ui := uiauto.New(tconn)
+			if err := ui.WithTimeout(10 * time.Second).LeftClick(nodewith.Name(folder).Role(role.PopUpButton))(ctx); err != nil {
 				s.Fatal("Could not find top level bookmark folder: ", err)
 			}
 
-			bookmarks, err := ui.FindAll(ctx, tconn, ui.FindParams{Role: ui.RoleTypeMenuItem})
+			bookmarks, err := ui.NodesInfo(ctx, nodewith.Role(role.MenuItem))
 			if err != nil {
 				s.Fatal("Failed to find bookmarks: ", err)
 			}
-			defer bookmarks.Release(ctx)
 
 			if len(bookmarks) != len(param.value.Val) {
 				s.Errorf("Unexpected number of bookmarks: got %d, expected %d bookmark(s)", len(bookmarks), len(param.value.Val))
 			}
 
 			for _, bookmark := range param.value.Val {
-				params := ui.FindParams{
-					Role: ui.RoleTypeMenuItem,
-					Name: bookmark.Name,
-				}
-				err := ui.WaitUntilExists(ctx, tconn, params, 15*time.Second)
-				if err != nil {
+				if err := ui.WithTimeout(15 * time.Second).WaitUntilExists(nodewith.Role(role.MenuItem).Name(bookmark.Name))(ctx); err != nil {
 					s.Fatal("Could not find bookmark name: ", err)
 				}
 			}
