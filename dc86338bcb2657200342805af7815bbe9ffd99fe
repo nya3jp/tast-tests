@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a1e774_f48f19cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2021-10-06T17:35:03Z",
+      "side": 1,
+      "message": "Cherry-pick the fix to R94 for moblab to run performance cuj.",
+      "revId": "dc86338bcb2657200342805af7815bbe9ffd99fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
