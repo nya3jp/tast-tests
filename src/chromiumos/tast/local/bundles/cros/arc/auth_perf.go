@@ -315,6 +315,18 @@ func readResultProp(ctx context.Context, a *arc.ARC, propName string) (float64, 
 	return strconv.ParseFloat(m[1], 64)
 }
 
+// coolDownConfig returns the config to wait for the machine to cooldown for AuthPerf tests.
+// This has higher temperature (46 to 52c) threshold to let pass AMD low-end devices that
+// frequently fail due to higher temperatures.
+func coolDownConfig() power.CoolDownConfig {
+	return power.CoolDownConfig{
+		PollTimeout:             300 * time.Second,
+		PollInterval:            2 * time.Second,
+		CPUTemperatureThreshold: 52000,
+		CoolDownMode:            power.CoolDownPreserveUI,
+	}
+}
+
 // bootARC performs one ARC boot iteration, opt-out and opt-in again.
 // It calculates the time when the Play Store appears and set of ARC auth times.
 func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *chrome.TestConn) (measuredValues, error) {
@@ -354,7 +366,7 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 		}
 	}
 
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
+	if _, err := power.WaitUntilCPUCoolDown(ctx, coolDownConfig()); err != nil {
 		s.Fatal("Failed to wait until CPU is cooled down: ", err)
 	}
 
