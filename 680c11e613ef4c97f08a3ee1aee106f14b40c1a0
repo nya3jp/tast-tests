@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ee8c01_940cc2dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T20:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5bd768c_6fd70440",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdd74585_e09c7551",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-10-06T18:21:57Z",
       "side": 1,
       "message": "Can you use os.RemoveAll https://pkg.go.dev/os#RemoveAll?",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee4b088_b2c0f749",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T20:18:23Z",
+      "side": 1,
+      "message": "This removes files with a wildcard that is not supported by os, but by shell. Could this be exempt?",
+      "parentUuid": "cdd74585_e09c7551",
       "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e31d7b7_c694b720",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T20:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24b54e58_a2060057",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9310f4ab_5715c8ad",
@@ -82,6 +136,42 @@
       "writtenOn": "2021-10-06T18:21:57Z",
       "side": 1,
       "message": "I suggest to change the name ot ashVersion\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d5c688_3b35f24c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T20:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9310f4ab_5715c8ad",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecaac06f_73077388",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T20:18:23Z",
+      "side": 1,
+      "message": "Changed to the suggested names here and below. By the way, I was wondering if it is idiomatically necessary when it is not a simple getter that returns any field in struct or module, but requires extra operations and validations. Thanks for the suggestion!",
+      "parentUuid": "9310f4ab_5715c8ad",
       "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +193,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2293c2_687de8f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T20:18:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d053af1a_9af4741f",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3600dbaa_3a161822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T20:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d053af1a_9af4741f",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ebfaa71_c3795b57",
@@ -120,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e478e70_50195adb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T20:18:23Z",
+      "side": 1,
+      "message": "Thanks for the catch!",
+      "parentUuid": "7ebfaa71_c3795b57",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c31bd1c5_43432e7c",
@@ -133,6 +277,60 @@
       "writtenOn": "2021-10-06T18:21:57Z",
       "side": 1,
       "message": "I suggested change the name to versionFromUI\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ca2314_8e5e5d7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T20:18:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c31bd1c5_43432e7c",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "266fc989_3b3b2268",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T20:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31bd1c5_43432e7c",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1848ae33_d8a7fcdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T20:18:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31bd1c5_43432e7c",
       "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
