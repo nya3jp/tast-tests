@@ -30,7 +30,7 @@ type FlashromProgrammer string
 const (
 	// HostProgrammer is the flashrom programmer type used to operate with AP firmware chip.
 	HostProgrammer FlashromProgrammer = "host"
-	
+
 	// ECProgrammer is the flashrom programmer type used to operate with EC chip.
 	ECProgrammer FlashromProgrammer = "ec"
 
@@ -110,6 +110,29 @@ func NewImage(ctx context.Context, section ImageSection, programmer FlashromProg
 	return &Image{data, info}, nil
 }
 
+// NewImageToFile creates a file representing the desired section of currently loaded firmware image.
+func NewImageToFile(ctx context.Context, section ImageSection, programmer FlashromProgrammer) (string, error) {
+	tmpFile, err := ioutil.TempFile("", "")
+	if err != nil {
+		return "", errors.Wrap(err, "creating tmpfile for image contents")
+	}
+
+	frArgs := []string{"-p", string(programmer), "-r"}
+	isOneSection := section != ""
+	if isOneSection {
+		frArgs = append(frArgs, "-i", fmt.Sprintf("%s:%s", section, tmpFile.Name()))
+	} else {
+		frArgs = append(frArgs, tmpFile.Name())
+	}
+
+	if err = testexec.CommandContext(ctx, "flashrom", frArgs...).Run(testexec.DumpLogOnError); err != nil {
+		os.Remove(tmpFile.Name())
+		return "", errors.Wrap(err, "could not read firmware host image")
+	}
+
+	return tmpFile.Name(), nil
+}
+
 // GetGBBFlags returns the list of cleared and list of set flags.
 func (i *Image) GetGBBFlags() ([]pb.GBBFlag, []pb.GBBFlag, error) {
 	var gbb uint32
@@ -156,6 +179,21 @@ func (i *Image) WriteFlashrom(ctx context.Context, sec ImageSection, programmer 
 
 	// -N == no verify all. Verify is slow.
 	if err = testexec.CommandContext(ctx, "flashrom", "-N", "-p", string(programmer), "-i", fmt.Sprintf("%s:%s", sec, imgTmp.Name()), "-w").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "could not write host image")
+	}
+
+	return nil
+}
+
+// WriteImageFromFile writes the provided path in the specified section of the firmware
+func WriteImageFromFile(ctx context.Context, path string, sec ImageSection, programmer FlashromProgrammer) error {
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		return errors.Wrap(err, "file does not exist")
+	} else if err != nil {
+		return errors.Wrap(err, "reading image from file")
+	}
+
+	if err := testexec.CommandContext(ctx, "flashrom", "-N", "-p", string(programmer), "-i", fmt.Sprintf("%s:%s", sec, path), "-w").Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "could not write host image")
 	}
 
