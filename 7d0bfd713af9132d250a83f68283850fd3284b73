@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bcc297f_4025804f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T17:11:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7cd0ae8_ad5d6916",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 66
+      },
+      "revId": "7d0bfd713af9132d250a83f68283850fd3284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "471a4aca_69c9fb3b",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5497fd7a_c17b3a29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T17:11:11Z",
+      "side": 1,
+      "message": "Done updating the comment with details.",
+      "parentUuid": "b58d61db_af0d517e",
+      "range": {
+        "startLine": 41,
+        "startChar": 42,
+        "endLine": 41,
+        "endChar": 62
+      },
+      "revId": "7d0bfd713af9132d250a83f68283850fd3284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb3bf604_36a088f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T17:11:11Z",
+      "side": 1,
+      "message": "Done. it\u0027s all provisioned lacros for now.",
+      "parentUuid": "471a4aca_69c9fb3b",
+      "range": {
+        "startLine": 41,
+        "startChar": 23,
+        "endLine": 41,
+        "endChar": 41
+      },
+      "revId": "7d0bfd713af9132d250a83f68283850fd3284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b603b8e_375b5039",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "784bfd9f_ee0fe1ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T17:11:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b603b8e_375b5039",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "7d0bfd713af9132d250a83f68283850fd3284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52fe1f27_f0d89e2f",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-10-05T22:33:07Z",
       "side": 1,
       "message": "should this be read from somewhere instead of hardcoding?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "7d0bfd713af9132d250a83f68283850fd3284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b6f3212_e6906b85",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/provision/tls_client.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T17:11:11Z",
+      "side": 1,
+      "message": "I was wondering that too. See http://b/201790332#comment8 for some clarifications on this. This hardcoded address will be okay in the drone env, but just in case this could be overridden with this var in runtime.",
+      "parentUuid": "52fe1f27_f0d89e2f",
       "range": {
         "startLine": 22,
         "startChar": 1,
@@ -162,6 +282,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d8483b7_f94ed734",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/provision/tls_client.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T17:11:11Z",
+      "side": 1,
+      "message": "FYI TLS accepts a source path prefixed with \u0027DeviceFilePath\u0027 in which provisioning can use image files from local device file path on a DUT. Changed to \u0027DeviceFilePath\u0027 that matches the proto field name.",
+      "parentUuid": "6dcca3a7_4abb9397",
+      "range": {
+        "startLine": 51,
+        "startChar": 39,
+        "endLine": 51,
+        "endChar": 49
+      },
+      "revId": "7d0bfd713af9132d250a83f68283850fd3284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2899472b_413d48a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/provision/tls_client.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T17:11:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e263017_a5c81916",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "7d0bfd713af9132d250a83f68283850fd3284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20028407_47146ab1",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-10-05T22:33:07Z",
       "side": 1,
       "message": "Would it be useful to be able to configure these when debugging locally? Does it make sense to have (some of) them as runtime vars?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 62
+      },
+      "revId": "7d0bfd713af9132d250a83f68283850fd3284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d18db917_abb3ff04",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T17:11:11Z",
+      "side": 1,
+      "message": "Done adding a runtime var for component. However, other constants are probably okay since it\u0027s not supposed to change.",
+      "parentUuid": "20028407_47146ab1",
       "range": {
         "startLine": 24,
         "startChar": 1,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b53da643_675a1c39",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T17:11:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e677a04a_359031f9",
+      "range": {
+        "startLine": 34,
+        "startChar": 53,
+        "endLine": 34,
+        "endChar": 77
+      },
+      "revId": "7d0bfd713af9132d250a83f68283850fd3284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9027b74f_8a303d96",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-10-05T22:33:07Z",
       "side": 1,
       "message": "This seems excessive",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "7d0bfd713af9132d250a83f68283850fd3284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5605ecbe_9c799e33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T17:11:11Z",
+      "side": 1,
+      "message": "Changed to 5 minutes. Let me know if this is still excessive.",
+      "parentUuid": "9027b74f_8a303d96",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1ccc10_7c7359b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T17:11:11Z",
+      "side": 1,
+      "message": "Done splitting errors for each condition.",
+      "parentUuid": "2183d417_a31511b7",
+      "range": {
+        "startLine": 55,
+        "startChar": 18,
+        "endLine": 55,
+        "endChar": 48
+      },
+      "revId": "7d0bfd713af9132d250a83f68283850fd3284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd1a06bf_9f9e80d9",
@@ -267,6 +531,30 @@
       "writtenOn": "2021-10-05T22:33:07Z",
       "side": 1,
       "message": "Give a better description here",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 105
+      },
+      "revId": "7d0bfd713af9132d250a83f68283850fd3284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "013f77c5_f9ddee80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T17:11:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd1a06bf_9f9e80d9",
       "range": {
         "startLine": 95,
         "startChar": 0,
@@ -300,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "127c0ee9_9388458d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T17:11:11Z",
+      "side": 1,
+      "message": "any naming suggestions? provisionLacrosFromRootfsLacrosImagePath? My intention is to provision from the source dir of where Rootfs Lacros image is uprevved. Please feel free to reopen if there is any better name.",
+      "parentUuid": "cb277ec4_41fbe622",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "7d0bfd713af9132d250a83f68283850fd3284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0918f9c9_4595cfbb",
@@ -313,6 +625,30 @@
       "writtenOn": "2021-10-05T22:33:07Z",
       "side": 1,
       "message": "check lacros updates were applied successfully on a DUT. It does not perform the actual updates",
+      "range": {
+        "startLine": 76,
+        "startChar": 53,
+        "endLine": 76,
+        "endChar": 76
+      },
+      "revId": "7d0bfd713af9132d250a83f68283850fd3284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39b8595b_b6c18150",
+        "filename": "src/chromiumos/tast/services/cros/lacros/update_test_service.proto",
+        "patchSetId": 12
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-06T17:11:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0918f9c9_4595cfbb",
       "range": {
         "startLine": 76,
         "startChar": 53,
