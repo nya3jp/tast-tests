@@ -510,7 +510,21 @@ func playYoutubeMusic(ctx context.Context, resources *runResources) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		return uiauto.Combine("play youtube music",
 			resources.uiHandler.Click(shuffleButton),
+			dismissReviewIconUpdateIfPresent(resources.ui, resources.uiHandler),
 			resources.ui.WaitUntilExists(pauseButton),
 		)(ctx)
 	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second})
+}
+
+func dismissReviewIconUpdateIfPresent(ui *uiauto.Context, uiHdl cuj.UIActionHandler) func(context.Context) error {
+	reviewIconUpdateDialog := nodewith.Name("Review icon update").Role(role.Dialog)
+	okButton := nodewith.Name("OK").Role(role.Button)
+
+	return func(ctx context.Context) error {
+		if err := ui.WithTimeout(3 * time.Second).WaitUntilExists(reviewIconUpdateDialog)(ctx); err == nil {
+			testing.ContextLog(ctx, "Detected 'Review icon update' dialog")
+			return uiHdl.Click(okButton)(ctx)
+		}
+		return nil
+	}
 }
