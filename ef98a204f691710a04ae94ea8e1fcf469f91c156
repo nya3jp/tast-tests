@@ -66,6 +66,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c9e5259_7526a031",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-06T21:29:04Z",
+      "side": 1,
+      "message": "+jonmann@",
+      "parentUuid": "5ec7b643_f100da95",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 18
+      },
+      "revId": "ef98a204f691710a04ae94ea8e1fcf469f91c156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71b3f554_25dc730c",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-06T21:29:04Z",
+      "side": 1,
+      "message": "Hi Jon, could you take a look at the JS we\u0027re using to control OS settings here? Initially I used UI automation for this, but we opted for JS since we\u0027ve been reliably using the same approach for Nearby Share settings control.\n\nWe\u0027re using JS to do the following:\n1. Wait for the toggle to appear in the \"Connected devices\" section of OS Settings, to confirm that a phone has been paired.\n2. Navigate to the multidevice subpage and toggle Phone Hub on.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "ef98a204f691710a04ae94ea8e1fcf469f91c156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2dd543c8_db3a597c",
         "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
         "patchSetId": 3
