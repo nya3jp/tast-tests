@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82be9c5e_32f19cae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-06T22:52:12Z",
+      "side": 1,
+      "message": "That\u0027s fine. For future reference, I think you can do something like this\n\n```\n\tfiles, err :\u003d filepath.Glob(lacrosComponentPathGlob)\n\tif err !\u003d nil {\n\t\treturn err\n\t}\n\tfor _, file :\u003d range files {\n\t\terr \u003d os.RemoveAll(file)\n\t\t...\n\t}\n\treturn nil\n```",
+      "parentUuid": "fee4b088_b2c0f749",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24b54e58_a2060057",
