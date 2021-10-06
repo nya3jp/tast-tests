@@ -24,8 +24,9 @@ func init() {
 		Contacts:     []string{"cros-oac@google.com", "rsorokin@google.com", "chromeos-sw-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Val:       1,
-			ExtraAttr: []string{"group:mainline"},
+			Val: 1,
+			// Mark it informational until crbug/1257339 is resolved.
+			ExtraAttr: []string{"group:mainline", "informational"},
 			Timeout:   chrome.LoginTimeout + 30*time.Second,
 		}, {
 			Name:      "stress",
