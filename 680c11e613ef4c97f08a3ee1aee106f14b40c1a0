@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bc0128a_4f5d9356",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-06T18:21:57Z",
+      "side": 1,
+      "message": "In general, I prefer to use a function instead of exec if a function that is doing the same thing is avaiable in an existing library. Please take a look at my comment. Thanks.",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5bd768c_6fd70440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-06T18:21:57Z",
+      "side": 1,
+      "message": "Can you use os.RemoveAll https://pkg.go.dev/os#RemoveAll?",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd74585_e09c7551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-06T18:21:57Z",
+      "side": 1,
+      "message": "Can you use os.RemoveAll https://pkg.go.dev/os#RemoveAll?",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24b54e58_a2060057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-06T18:21:57Z",
+      "side": 1,
+      "message": "Can you use os.RemoveAll https://pkg.go.dev/os#RemoveAll?",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9310f4ab_5715c8ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-06T18:21:57Z",
+      "side": 1,
+      "message": "I suggest to change the name ot ashVersion\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d053af1a_9af4741f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-06T18:21:57Z",
+      "side": 1,
+      "message": "I suggest to change the name to lacrosRootfsVerson\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ebfaa71_c3795b57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-06T18:21:57Z",
+      "side": 1,
+      "message": "Why do you need to call \"cat\"? Why don\u0027t you just open the file and read the content?",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c31bd1c5_43432e7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-06T18:21:57Z",
+      "side": 1,
+      "message": "I suggested change the name to versionFromUI\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters",
+      "revId": "680c11e613ef4c97f08a3ee1aee106f14b40c1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
