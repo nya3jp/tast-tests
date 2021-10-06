@@ -12,8 +12,11 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -124,10 +127,7 @@ func PrintingEnabled(ctx context.Context, s *testing.State) {
 // testPrintingFromThreeDotMenu tests whether printing is possible via Chrome's dropdown menu.
 func testPrintingFromThreeDotMenu(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	// Click the three dot button node.
-	if err := ui.StableFindAndClick(ctx, tconn, ui.FindParams{
-		Role:      ui.RoleTypePopUpButton,
-		ClassName: "BrowserAppMenuButton",
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	if err := uiauto.New(tconn).WithTimeout(10 * time.Second).LeftClick(nodewith.Role(role.PopUpButton).ClassName("BrowserAppMenuButton"))(ctx); err != nil {
 		return false, errors.Wrap(err, "failed to click on dropdown menu")
 	}
 
@@ -155,10 +155,11 @@ func testPrintingWithHotkey(ctx context.Context, tconn *chrome.TestConn) (bool, 
 
 	// Check if printing dialog has appeared.
 	printWindowExists := true
-	findParams := ui.FindParams{Name: "Print", ClassName: "RootView", Role: ui.RoleTypeWindow}
-	if err := ui.WaitUntilExists(ctx, tconn, findParams, 10*time.Second); err != nil {
+	ui := uiauto.New(tconn)
+	finder := nodewith.Name("Print").ClassName("RootView").Role(role.Window)
+	if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(finder)(ctx); err != nil {
 		// If function above failed, it could be either a timeout or an actual error. Check once again.
-		printWindowExists, err = ui.Exists(ctx, tconn, findParams)
+		printWindowExists, err = ui.IsNodeFound(ctx, finder)
 		// If the dialog does not exist by now, we assume that it will never be displayed.
 		if err != nil {
 			return false, errors.Wrap(err, "failed to check for printing windows existance")
@@ -171,16 +172,14 @@ func testPrintingWithHotkey(ctx context.Context, tconn *chrome.TestConn) (bool, 
 // testPrintingFromContextMenu tests whether printing is possible via web page context menu.
 func testPrintingFromContextMenu(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	// Find the webview node.
-	webViewNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-		Role: ui.RoleTypeWebView,
-	}, 10*time.Second)
-	if err != nil {
+	ui := uiauto.New(tconn)
+	webViewNode := nodewith.Role(role.WebView)
+	if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(webViewNode)(ctx); err != nil {
 		return false, errors.Wrap(err, "failed to find web view")
 	}
-	defer webViewNode.Release(ctx)
 
 	// Invoke context menu of the web page.
-	if err := webViewNode.RightClick(ctx); err != nil {
+	if err := ui.RightClick(webViewNode)(ctx); err != nil {
 		return false, errors.Wrap(err, "failed to right click web view")
 	}
 
@@ -194,15 +193,16 @@ func testPrintingFromContextMenu(ctx context.Context, tconn *chrome.TestConn) (b
 
 func checkPrintMenuItemIsRestricted(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
 	// Find the printing menu item.
-	menuItemNode, err := ui.FindWithTimeout(ctx, tconn, ui.FindParams{
-		Role: ui.RoleTypeMenuItem,
-		Name: "Print… Ctrl+P",
-	}, 5*time.Second)
-	if err != nil {
+	ui := uiauto.New(tconn)
+	menuItemNode := nodewith.Role(role.MenuItem).Name("Print… Ctrl+P")
+	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(menuItemNode)(ctx); err != nil {
 		return false, errors.Wrap(err, "failed to find print menu item")
 	}
-	defer menuItemNode.Release(ctx)
 
 	// Check whether the printing menu item is restricted.
-	return menuItemNode.Restriction != ui.RestrictionDisabled, nil
+	info, err := ui.Info(ctx, menuItemNode)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get menuitem node infomation")
+	}
+	return info.Restriction != restriction.Disabled, nil
 }
