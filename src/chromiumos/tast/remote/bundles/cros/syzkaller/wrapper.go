@@ -180,7 +180,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 		Syzkaller: artifactsDir,
 		Type:      "isolated",
 		SSHKey:    sshKey,
-		Procs:     1,
+		Procs:     5,
 		DUTConfig: dutConfig{
 			Targets:       []string{d.HostName()},
 			TargetDir:     "/usr/local/tmp",

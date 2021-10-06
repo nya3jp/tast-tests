@@ -769,5 +769,46 @@
 			"sendmsg$DEVLINK_CMD_SB_OCC_SNAPSHOT",
 			"sendmsg$DEVLINK_CMD_SB_OCC_MAX_CLEAR"
 		]
+	},
+	{
+		"driver": "virtio-net(CONFIG_VIRTIO_NET)",
+		"syscalls": [
+			"openat$vnet",
+			"openat$vsock",
+			"openat$vhost_vsock",
+			"bind$vsock_stream",
+			"bind$vsock_dgram",
+			"connect$vsock_stream",
+			"connect$vsock_dgram",
+			"socket$vsock_stream",
+			"socket$vsock_dgram",
+			"accept4$vsock_stream",
+			"setsockopt$SO_VM_SOCKETS_BUFFER_SIZE",
+			"setsockopt$SO_VM_SOCKETS_BUFFER_MAX_SIZE",
+			"setsockopt$SO_VM_SOCKETS_BUFFER_MIN_SIZE",
+			"setsockopt$SO_VM_SOCKETS_CONNECT_TIMEOUT",
+			"write$vhost_msg",
+			"write$vhost_msg_v2",
+			"ioctl$VHOST_VSOCK_SET_GUEST_CID",
+			"ioctl$VHOST_VSOCK_SET_RUNNING",
+			"ioctl$VHOST_NET_SET_BACKEND",
+			"ioctl$VHOST_GET_FEATURES",
+			"ioctl$VHOST_SET_FEATURES",
+			"ioctl$VHOST_SET_OWNER",
+			"ioctl$VHOST_RESET_OWNER",
+			"ioctl$VHOST_SET_MEM_TABLE",
+			"ioctl$VHOST_SET_LOG_BASE",
+			"ioctl$VHOST_SET_LOG_FD",
+			"ioctl$VHOST_SET_VRING_NUM",
+			"ioctl$VHOST_SET_VRING_BASE",
+			"ioctl$VHOST_GET_VRING_BASE",
+			"ioctl$VHOST_SET_VRING_ADDR",
+			"ioctl$VHOST_SET_VRING_KICK",
+			"ioctl$VHOST_SET_VRING_CALL",
+			"ioctl$VHOST_SET_VRING_ERR",
+			"ioctl$VHOST_SET_VRING_ENDIAN",
+			"ioctl$VHOST_GET_VRING_ENDIAN",
+			"ioctl$VHOST_SET_VRING_BUSYLOOP_TIMEOUT"
+		]
 	}
 ]
