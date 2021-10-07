@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab891679_6727e766",
+        "filename": "src/chromiumos/tast/local/policyutil/cyclebreakpolicyutil/cyclebreakpolicyutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-07T11:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d2e6999_77bc2408",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 5
+      },
+      "revId": "d7c933bba337cdd259052be8d523d9c1a1f05eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "010a647d_7d49fb44",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-10-07T11:43:05Z",
       "side": 1,
       "message": "nit: name them",
+      "range": {
+        "startLine": 5,
+        "startChar": 41,
+        "endLine": 5,
+        "endChar": 48
+      },
+      "revId": "d7c933bba337cdd259052be8d523d9c1a1f05eda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4059df9c_07ebcd79",
+        "filename": "src/chromiumos/tast/local/policyutil/cyclebreakpolicyutil/doc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-07T11:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "010a647d_7d49fb44",
       "range": {
         "startLine": 5,
         "startChar": 41,
