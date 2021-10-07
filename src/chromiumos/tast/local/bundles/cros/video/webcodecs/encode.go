@@ -39,6 +39,9 @@ const (
 type TestArgs struct {
 	// Codec is the codec of a bitstream produced by an encoder.
 	Codec videotype.Codec
+	// ScalabilityMode is a "scalabilityMode" identifier.
+	// https://www.w3.org/TR/webrtc-svc/#scalabilitymodes
+	ScalabilityMode string
 	// Acceleration denotes which encoder is used, hardware or software.
 	Acceleration HardwareAcceleration
 }
@@ -128,6 +131,29 @@ func outputJSLogAndError(ctx context.Context, conn *chrome.Conn, callErr error) 
 	return callErr
 }
 
+// verifyTLStruct verifies temporalLayerIDs matches the expected temporal layer structures.
+// See https://www.w3.org/TR/webrtc-svc/#dependencydiagrams* for the expected temporal layer structures.
+func verifyTLStruct(numTemporalLayers int, temporalLayerIDs []int) error {
+	var expectedTLIDs []int
+	switch numTemporalLayers {
+	case 2:
+		expectedTLIDs = []int{0, 1}
+	case 3:
+		expectedTLIDs = []int{0, 2, 1, 2}
+	default:
+		return nil
+	}
+
+	for i, tid := range temporalLayerIDs {
+		expectedTID := expectedTLIDs[i%len(expectedTLIDs)]
+		if tid != expectedTID {
+			return errors.Errorf("unexpected temporal layer structure: %v", temporalLayerIDs)
+		}
+	}
+
+	return nil
+}
+
 // RunEncodeTest tests encoding in WebCodecs API. It verifies a specified encoder is used and
 // the produced bitstream.
 func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, testArgs TestArgs, videoFile, outDir string) error {
@@ -178,7 +204,8 @@ func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 	}
 
 	bitrate := config.width * config.height * config.framerate / 10
-	if err := conn.Call(ctx, nil, "EncodeAndSave", codec, testArgs.Acceleration, config.width, config.height, bitrate, config.framerate); err != nil {
+	if err := conn.Call(ctx, nil, "EncodeAndSave", codec, testArgs.Acceleration, config.width, config.height,
+		bitrate, config.framerate, testArgs.ScalabilityMode); err != nil {
 		return outputJSLogAndError(cleanupCtx, conn, errors.Wrap(err, "failed executing EncodeAndSave"))
 	}
 
@@ -205,6 +232,34 @@ func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 		return outputJSLogAndError(cleanupCtx, conn, errors.Wrap(err, "error getting bitstream"))
 	}
 
+	var numTemporalLayers int
+	switch testArgs.ScalabilityMode {
+	case "":
+		numTemporalLayers = 1
+	case "L1T2":
+		numTemporalLayers = 2
+	case "L1T3":
+		numTemporalLayers = 3
+	default:
+		return errors.Errorf("unknown scalabilityMode: %s", testArgs.ScalabilityMode)
+	}
+
+	if numTemporalLayers > 1 {
+		var temporalLayerIds []int
+		if err := conn.Eval(ctx, "bitstreamSaver.getTemporalLayerIds()", &temporalLayerIds); err != nil {
+			return outputJSLogAndError(cleanupCtx, conn, errors.Wrap(err, "error getting temporal layer ids"))
+		}
+
+		if len(temporalLayerIds) != config.numFrames {
+			return errors.Errorf("temporal layer ids mismatch: expected=%d, actual=%d", config.numFrames, len(temporalLayerIds))
+		}
+
+		if err := verifyTLStruct(numTemporalLayers, temporalLayerIds); err != nil {
+			return err
+		}
+	}
+
+	// TODO(b/196307009): Compute quality of each temporal layer.
 	bitstreamFile, err := SaveBitstream(bitstreams, testArgs.Codec, config.width, config.height, config.framerate, outDir)
 	if err != nil {
 		return errors.Wrap(err, "failed saving bitstream")

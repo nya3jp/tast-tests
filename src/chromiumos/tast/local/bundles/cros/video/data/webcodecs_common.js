@@ -49,9 +49,15 @@ let TEST = new TestHarness();
 class BitstreamSaver {
   constructor() {
     this.bitstreams = [];
+    this.temporalLayerIds = [];
   }
 
-  save(chunk) {
+  save(chunk, metadata) {
+    let temporalLayerId = metadata.temporalLayerId;
+    if (temporalLayerId !== undefined)
+      this.temporalLayerIds.push(temporalLayerId);
+
+
     let buffer = new Uint8Array(chunk.byteLength);
     chunk.copyTo(buffer);
     this.bitstreams.push(buffer);
@@ -70,6 +76,10 @@ class BitstreamSaver {
     }
 
     return base64Strings;
+  }
+
+  getTemporalLayerIds() {
+    return this.temporalLayerIds;
   }
 }
 
@@ -112,9 +122,9 @@ async function CreateEncoder(
   }
 
   const encoderInit = {
-    output(chunk, _) {
+    output(chunk, metadata) {
       if (saver) {
-        saver.save(chunk);
+        saver.save(chunk, metadata);
       }
 
       TEST.numEncodedFrames++;
