@@ -1,6 +1,74 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51f35a7f_2078bda2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-07T18:46:21Z",
+      "side": 1,
+      "message": "Please take a look at my comments. Thanks.",
+      "revId": "80e5055acd80c133de41f9aef0540fad3e4e36cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a4cc5e0_caa865be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ap_browse_internet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-07T18:46:21Z",
+      "side": 1,
+      "message": "Please add a google contact here. Thanks.",
+      "revId": "80e5055acd80c133de41f9aef0540fad3e4e36cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e35d0b1_19ba5291",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ap_browse_internet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-07T18:46:21Z",
+      "side": 1,
+      "message": "This function is over 100 lines. Hard to read. Is it possible to split some of its code to different functions?",
+      "revId": "80e5055acd80c133de41f9aef0540fad3e4e36cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15fcb6c1_48e35ff3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ap_browse_internet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-07T18:46:21Z",
+      "side": 1,
+      "message": "Is it possible fo enableFunc to be nil if there is no error? If so, please remove else.\n\n```\nenableFunc, err :\u003d manager.DisableTechnologyForTesting(ctx, shill.TechnologyEthernet)\nif err !\u003d nil {\n...\n}\n..\n```",
+      "revId": "80e5055acd80c133de41f9aef0540fad3e4e36cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c92147b9_edf06b57",
