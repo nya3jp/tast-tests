@@ -6,7 +6,9 @@
 			"munmap",
 			"mremap",
 			"mprotect",
-			"clock_gettime"
+			"clock_gettime",
+			"socket$nl_generic",
+			"socket$xdp"
 		]
 	},
 	{
