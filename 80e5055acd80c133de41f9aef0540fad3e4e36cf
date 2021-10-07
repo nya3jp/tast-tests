@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c92147b9_edf06b57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ap_browse_internet.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-07T07:13:08Z",
+      "side": 1,
+      "message": "With this order, both ctx and CleanupCtx are shorter. The idea is to only make ctx shorter, and use CleanupCtx in the cleanup steps. So even if some checks in the test time out, we still have some time to do the cleanup steps.",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "80e5055acd80c133de41f9aef0540fad3e4e36cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
