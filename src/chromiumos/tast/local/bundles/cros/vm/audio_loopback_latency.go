@@ -27,8 +27,6 @@ const (
 	runLoopbackLatency string = "run-loopback-latency.sh"
 	deviceType         string = "ALSA_LOOPBACK"
 	loop               int    = 5
-	periodSize         int    = 4096
-	bufferSize         int    = 8192
 )
 
 type loopbackLatencyConfig struct {
@@ -137,6 +135,8 @@ func extractNumbers(strs []string) ([]float64, error) {
 }
 
 func AudioLoopbackLatency(ctx context.Context, s *testing.State) {
+	bufferSizes := []string{"512", "1024", "2048", "4096", "8192"}
+
 	config := s.Param().(loopbackLatencyConfig)
 
 	unload, err := audio.LoadAloop(ctx)
@@ -156,11 +156,10 @@ func AudioLoopbackLatency(ctx context.Context, s *testing.State) {
 	kernelArgs := []string{
 		fmt.Sprintf("init=%s", s.DataPath(runLoopbackLatency)),
 		"--",
-		strconv.Itoa(periodSize),
-		strconv.Itoa(bufferSize),
 		strconv.Itoa(loop),
 		loopbackLogPath,
 	}
+	kernelArgs = append(kernelArgs, bufferSizes...)
 
 	cmd, err := audioutils.CrosvmCmd(ctx, data.Kernel, kernelLogPath, kernelArgs, config.deviceArgs)
 	if err != nil {
@@ -171,11 +170,12 @@ func AudioLoopbackLatency(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run crosvm: ", err)
 	}
 
-	loopbackLogBytes, err := ioutil.ReadFile(loopbackLogPath)
-	if err != nil {
-		s.Fatal("Failed to read loopback log: ", err)
-	}
-	loopbackLog := string(loopbackLogBytes)
+	perfValues := perf.NewValues()
+	defer func() {
+		if err := perfValues.Save(s.OutDir()); err != nil {
+			s.Error("Cannot save perf data: ", err)
+		}
+	}()
 
 	// Sample output:
 	// 	Assign cap_dev hw:0,0
@@ -187,68 +187,70 @@ func AudioLoopbackLatency(ctx context.Context, s *testing.State) {
 	// 	Reported Latency: 174666 uS
 	measuredRe := regexp.MustCompile("Measured Latency: [0-9]+ uS")
 	reportedRe := regexp.MustCompile("Reported Latency: [0-9]+ uS")
-
-	measuredLatencies, err := extractNumbers(measuredRe.FindAllString(loopbackLog, -1))
-	if err != nil {
-		s.Fatal("Extract numbers failed: ", err)
-	}
-	reportedLatencies, err := extractNumbers(reportedRe.FindAllString(loopbackLog, -1))
-	if err != nil {
-		s.Fatal("Extract numbers failed: ", err)
-	}
-
-	if len(measuredLatencies) != loop || len(reportedLatencies) != loop {
-		s.Fatalf("Requested %d loops. Got %d. Increase the buffer/period size?", loop, len(measuredLatencies))
-	}
-
-	perfValues := perf.NewValues()
-	defer func() {
-		if err := perfValues.Save(s.OutDir()); err != nil {
-			s.Error("Cannot save perf data: ", err)
+	for _, bufferSize := range bufferSizes {
+		loopbackLogBytes, err := ioutil.ReadFile(loopbackLogPath + "." + bufferSize)
+		if err != nil {
+			s.Fatal("Failed to read loopback log: ", err)
 		}
-	}()
-	measuredMin, measuredMax := minAndMax(measuredLatencies)
-	reportedMin, reportedMax := minAndMax(reportedLatencies)
+		loopbackLog := string(loopbackLogBytes)
 
-	perfValues.Set(
-		perf.Metric{
-			Name:      "measured_latency",
-			Unit:      "uS",
-			Direction: perf.SmallerIsBetter,
-			Multiple:  true,
-		}, measuredLatencies...)
-	perfValues.Set(
-		perf.Metric{
-			Name:      "reported_latency",
-			Unit:      "uS",
-			Direction: perf.SmallerIsBetter,
-			Multiple:  true,
-		}, reportedLatencies...)
-	// crosbolt, please calculate the mins and maxes for multiple values :|
-	// go/crosbolt-result-parser-g3doc#results-chartjson
-	// min and max are important as latency can spike
-	perfValues.Set(
-		perf.Metric{
-			Name:      "measured_latency_min",
-			Unit:      "uS",
-			Direction: perf.SmallerIsBetter,
-		}, measuredMin)
-	perfValues.Set(
-		perf.Metric{
-			Name:      "measured_latency_max",
-			Unit:      "uS",
-			Direction: perf.SmallerIsBetter,
-		}, measuredMax)
-	perfValues.Set(
-		perf.Metric{
-			Name:      "reported_latency_min",
-			Unit:      "uS",
-			Direction: perf.SmallerIsBetter,
-		}, reportedMin)
-	perfValues.Set(
-		perf.Metric{
-			Name:      "reported_latency_max",
-			Unit:      "uS",
-			Direction: perf.SmallerIsBetter,
-		}, reportedMax)
+		measuredLatencies, err := extractNumbers(measuredRe.FindAllString(loopbackLog, -1))
+		if err != nil {
+			s.Fatal("Extract numbers failed: ", err)
+		}
+		reportedLatencies, err := extractNumbers(reportedRe.FindAllString(loopbackLog, -1))
+		if err != nil {
+			s.Fatal("Extract numbers failed: ", err)
+		}
+
+		if len(measuredLatencies) != loop || len(reportedLatencies) != loop {
+			s.Logf("Requested %d loops, got %d for bufferSize=%s", loop, len(measuredLatencies), bufferSize)
+			continue
+		}
+
+		measuredMin, measuredMax := minAndMax(measuredLatencies)
+		reportedMin, reportedMax := minAndMax(reportedLatencies)
+
+		perfValues.Set(
+			perf.Metric{
+				Name:      "measured_latency_" + bufferSize,
+				Unit:      "uS",
+				Direction: perf.SmallerIsBetter,
+				Multiple:  true,
+			}, measuredLatencies...)
+		perfValues.Set(
+			perf.Metric{
+				Name:      "reported_latency_" + bufferSize,
+				Unit:      "uS",
+				Direction: perf.SmallerIsBetter,
+				Multiple:  true,
+			}, reportedLatencies...)
+		// crosbolt, please calculate the mins and maxes for multiple values :|
+		// go/crosbolt-result-parser-g3doc#results-chartjson
+		// min and max are important as latency can spike
+		perfValues.Set(
+			perf.Metric{
+				Name:      "measured_latency_" + bufferSize + "_min",
+				Unit:      "uS",
+				Direction: perf.SmallerIsBetter,
+			}, measuredMin)
+		perfValues.Set(
+			perf.Metric{
+				Name:      "measured_latency_" + bufferSize + "_max",
+				Unit:      "uS",
+				Direction: perf.SmallerIsBetter,
+			}, measuredMax)
+		perfValues.Set(
+			perf.Metric{
+				Name:      "reported_latency_" + bufferSize + "_min",
+				Unit:      "uS",
+				Direction: perf.SmallerIsBetter,
+			}, reportedMin)
+		perfValues.Set(
+			perf.Metric{
+				Name:      "reported_latency_" + bufferSize + "_max",
+				Unit:      "uS",
+				Direction: perf.SmallerIsBetter,
+			}, reportedMax)
+	}
 }

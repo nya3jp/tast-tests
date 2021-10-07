@@ -4,7 +4,7 @@
 # found in the LICENSE file.
 
 # This script is meant to be run as PID 1 inside a VM.
-set -ex
+set -x
 
 die() {
   echo "$1"
@@ -18,18 +18,20 @@ usage() {
 main() {
   [[ "$$" == "1" ]] || die "Not runnnig as PID 1"
 
-  [[ $# -eq 4 ]] || \
-      die "Usage: $(basename "$0") <period_size> <buffer_size> <loop> <log>"
+  [[ $# -ge 3 ]] || \
+      die "Usage: $(basename "$0") <loop> <log> <buffer_sizes>..."
 
-  local period_size="$1"
-  local buffer_size="$2"
-  local loop="$3"
-  local log="$4"
-  truncate -s 0 "${log}"
+  local loop="$1"
+  local log="$2"
+  local buffer_sizes = "$@"
 
-  for (( i = 0; i < loop; i++ )); do
-    loopback_latency -i hw:0,0 -o hw:0,0 -n 1000 -r 48000 \
-      -p "${period_size}" -b "${buffer_size}" &>> "${log}"
+  local buffer_sizes=(512 1024 2048 4096 8192)
+  for buffer_size in "${buffer_sizes[@]}"; do
+    truncate -s 0 "${log}.${buffer_size}"
+    for (( i = 0; i < loop; i++ )); do
+      loopback_latency -i hw:0,0 -o hw:0,0 -n 1000 -r 48000 \
+        -p $((buffer_size/2)) -b "${buffer_size}" &>> "${log}.${buffer_size}"
+    done
   done
 }
 
