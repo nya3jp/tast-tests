@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ac44723_a1144ed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-10-07T15:43:50Z",
+      "side": 1,
+      "message": "Any reason not to just assign f.modemfwdStopped and f.hermesStopped directly here?",
+      "revId": "85388ac8901992201ddee963ba6680d2f1033566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
