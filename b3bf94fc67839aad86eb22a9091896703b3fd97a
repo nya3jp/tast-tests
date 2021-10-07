@@ -124,6 +124,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12efc610_d37ccd89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/audionode/audionode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-07T05:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5a3b502_2ad0ec54",
+      "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d88e97b2_2e8247f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/audionode/audionode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-07T05:23:50Z",
+      "side": 1,
+      "message": "Sounds good.",
+      "parentUuid": "a5a3b502_2ad0ec54",
+      "revId": "b3bf94fc67839aad86eb22a9091896703b3fd97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "507a3811_635a5dba",
