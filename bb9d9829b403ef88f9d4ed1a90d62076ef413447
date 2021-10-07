@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eca5b86_6d20e6d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-07T18:28:08Z",
+      "side": 1,
+      "message": "looks good from a Tast perspective, with a few minor comments",
+      "revId": "bb9d9829b403ef88f9d4ed1a90d62076ef413447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f1ab09_1518d1d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/provision/tls_client.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-07T18:28:08Z",
+      "side": 1,
+      "message": "I\u0027m not very familiar with grpc, but I wonder if DialContext would be a good choice here, to ensure the setup honors the context deadline",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "bb9d9829b403ef88f9d4ed1a90d62076ef413447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb40e3b7_5c9f73bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-07T18:28:08Z",
+      "side": 1,
+      "message": "any reason for this to be a value receiver?",
+      "range": {
+        "startLine": 44,
+        "startChar": 6,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "bb9d9829b403ef88f9d4ed1a90d62076ef413447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb9e5490_10a2646e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-07T18:28:08Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 15
+      },
+      "revId": "bb9d9829b403ef88f9d4ed1a90d62076ef413447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
