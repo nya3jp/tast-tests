@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c96685e_4d7e0792",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-07T05:20:08Z",
+      "side": 1,
+      "message": "Why do we need to return error if there is none?",
+      "range": {
+        "startLine": 321,
+        "startChar": 65,
+        "endLine": 321,
+        "endChar": 66
+      },
+      "revId": "9c6f51496f7a23d6b5eef97974c5f1b0e38dac18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
