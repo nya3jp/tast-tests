@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81421000_92c5ac77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-10-07T11:05:49Z",
+      "side": 1,
+      "message": "Hello Jeremy,\n\nI\u0027m uploading the TouchpadService \u0026 TouchscreenService as --wip CL. There may still be room for modifications, but I just wanted to get these up on Gerrit first while still working on my script for ScreenWakeTabletMode().",
+      "revId": "9e720e9d31ce67ed8fd0b5c82365f9eb5b1c7b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
