@@ -345,6 +345,18 @@ func (f *FilesApp) Search(kb *input.KeyboardEventWriter, searchTerms string) uia
 	)
 }
 
+// ClearSearch clicks the clear button to clear the search results and leave search mode.
+func (f *FilesApp) ClearSearch() uiauto.Action {
+	clear := nodewith.Role(role.Button).ClassName("clear").Name("Clear")
+	return uiauto.Combine("clear search box",
+		f.ui.IfSuccessThen(
+			f.WithTimeout(5*time.Second).WaitUntilExists(clear),
+			f.LeftClick(clear),
+		),
+		f.EnsureFocused(nodewith.Role(role.ListBox)),
+	)
+}
+
 // ToggleAvailableOfflineForFile selects the specified file and toggles the Available Offline switch.
 func (f *FilesApp) ToggleAvailableOfflineForFile(fileName string) uiauto.Action {
 	toggleOfflineErrorOkButton := nodewith.Name("OK").Role(role.Button)
