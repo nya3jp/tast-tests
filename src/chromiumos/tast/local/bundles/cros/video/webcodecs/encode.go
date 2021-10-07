@@ -39,6 +39,9 @@ const (
 type TestArgs struct {
 	// Codec is the codec of a bitstream produced by an encoder.
 	Codec videotype.Codec
+	// ScalabilityMode is"scalabilityMode" identifier.
+	// https://www.w3.org/TR/webrtc-svc/#scalabilitymodes
+	ScalabilityMode string
 	// Acceleration denotes which encoder is used, hardware or software.
 	Acceleration HardwareAcceleration
 }
@@ -178,7 +181,8 @@ func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 	}
 
 	bitrate := config.width * config.height * config.framerate / 10
-	if err := conn.Call(ctx, nil, "EncodeAndSave", codec, testArgs.Acceleration, config.width, config.height, bitrate, config.framerate); err != nil {
+	if err := conn.Call(ctx, nil, "EncodeAndSave", codec, testArgs.Acceleration, config.width, config.height,
+		bitrate, config.framerate, testArgs.ScalabilityMode); err != nil {
 		return outputJSLogAndError(cleanupCtx, conn, errors.Wrap(err, "failed executing EncodeAndSave"))
 	}
 
@@ -205,6 +209,42 @@ func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 		return outputJSLogAndError(cleanupCtx, conn, errors.Wrap(err, "error getting bitstream"))
 	}
 
+	var numTemporalLayers int
+	switch testArgs.ScalabilityMode {
+	case "":
+		numTemporalLayers = 1
+	case "L1T2":
+		numTemporalLayers = 2
+	case "L1T3":
+		numTemporalLayers = 3
+	default:
+		return errors.Errorf("unknown scalabilityMode: %s", testArgs.ScalabilityMode)
+	}
+
+	if numTemporalLayers > 1 {
+		var temporalLayerIds []int
+		if err := conn.Eval(ctx, "bitstreamSaver.getTemporalLayerIds()", &temporalLayerIds); err != nil {
+			return outputJSLogAndError(cleanupCtx, conn, errors.Wrap(err, "error getting temporal layer ids"))
+		}
+		if len(temporalLayerIds) != len(bitstreams) {
+			return errors.Errorf("temporal layer ids mismatch: expected=%d, actual=%d", len(bitstreams), len(temporalLayerIds))
+		}
+
+		numFramesInTL := make([]int, numTemporalLayers)
+		for _, tid := range temporalLayerIds {
+			if tid >= numTemporalLayers || tid < 0 {
+				return errors.Errorf("invalid temporal layer id: %d", tid)
+			}
+			numFramesInTL[tid]++
+		}
+		for tid, frames := range numFramesInTL {
+			if frames == 0 {
+				return errors.Errorf("no frame with tid=%d", tid)
+			}
+		}
+	}
+
+	// TODO(b/196307009): Compute quality of each temporal layer.
 	bitstreamFile, err := SaveBitstream(bitstreams, testArgs.Codec, config.width, config.height, config.framerate, outDir)
 	if err != nil {
 		return errors.Wrap(err, "failed saving bitstream")

@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -35,6 +36,26 @@ func init() {
 			Val:               webcodecs.TestArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferHardware},
 			ExtraSoftwareDeps: []string{"proprietary_codecs", caps.HWEncodeH264},
 		}, {
+			Name:              "h264_sw_l1t2",
+			Val:               webcodecs.TestArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T2"},
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
+		}, {
+			Name:              "h264_hw_l1t2",
+			Val:               webcodecs.TestArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T2"},
+			ExtraSoftwareDeps: []string{"proprietary_codecs", caps.HWEncodeH264, "vaapi"},
+			// TODO(b/199487660): Run on AMD platforms once their driver supports H.264 temporal layer encoding.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("grunt", "zork")),
+		}, {
+			Name:              "h264_sw_l1t3",
+			Val:               webcodecs.TestArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T3"},
+			ExtraSoftwareDeps: []string{"proprietary_codecs"},
+		}, {
+			Name:              "h264_hw_l1t3",
+			Val:               webcodecs.TestArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T3"},
+			ExtraSoftwareDeps: []string{"proprietary_codecs", caps.HWEncodeH264, "vaapi"},
+			// TODO(b/199487660): Run on AMD platforms once their driver supports H.264 temporal layer encoding.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("grunt", "zork")),
+		}, {
 			Name: "vp8_sw",
 			Val:  webcodecs.TestArgs{Codec: videotype.VP8, Acceleration: webcodecs.PreferSoftware},
 		}, {
@@ -47,6 +68,22 @@ func init() {
 		}, {
 			Name:              "vp9_hw",
 			Val:               webcodecs.TestArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferHardware},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+		}, {
+			Name: "vp9_sw_l1t2",
+			Val:  webcodecs.TestArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T2"},
+		}, {
+			Name:              "vp9_hw_l1t2",
+			Val:               webcodecs.TestArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T2"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+		}, {
+			Name: "vp9_sw_l1t3",
+			Val:  webcodecs.TestArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T3"},
+		}, {
+			Name:              "vp9_hw_l1t3",
+			Val:               webcodecs.TestArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T3"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 		}},
 	})
