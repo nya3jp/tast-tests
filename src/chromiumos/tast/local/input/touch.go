@@ -118,6 +118,22 @@ func Touchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 	return VirtualTouchscreen(ctx)
 }
 
+// FindPhysicalTouchscreen iterates over devices and returns path for a physical touchscreen,
+// otherwise returns boolean indicating a physical touchscreen was not found.
+func FindPhysicalTouchscreen(ctx context.Context) (bool, string, error) {
+	infos, err := readDevices("")
+	if err != nil {
+		return false, "", errors.Wrap(err, "failed to read devices")
+	}
+	for _, info := range infos {
+		if info.isTouchscreen() && info.phys != "" {
+			testing.ContextLogf(ctx, "Using existing touch screen device %+v", info)
+			return true, info.path, nil
+		}
+	}
+	return false, "", nil
+}
+
 // VirtualTouchscreen creates a virtual touchscreen device and returns an EventWriter that injects events into it.
 func VirtualTouchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 	const (

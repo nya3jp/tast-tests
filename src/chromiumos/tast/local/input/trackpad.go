@@ -83,6 +83,22 @@ func Trackpad(ctx context.Context) (*TrackpadEventWriter, error) {
 	return VirtualTrackpad(ctx)
 }
 
+// FindPhysicalTrackpad iterates over devices and returns path for a physical trackpad,
+// otherwise returns boolean indicating a physical trackpad was not found.
+func FindPhysicalTrackpad(ctx context.Context) (bool, string, error) {
+	infos, err := readDevices("")
+	if err != nil {
+		return false, "", errors.Wrap(err, "failed to read devices")
+	}
+	for _, info := range infos {
+		if info.isTrackpad() && info.hasBit(absGroup, uint16(ABS_MT_SLOT)) {
+			testing.ContextLogf(ctx, "Using existing track pad device %+v", info)
+			return true, info.path, nil
+		}
+	}
+	return false, "", nil
+}
+
 // VirtualTrackpad creates a virtual trackpad device and returns an EventWriter that injects events into it.
 func VirtualTrackpad(ctx context.Context) (*TrackpadEventWriter, error) {
 	const (
