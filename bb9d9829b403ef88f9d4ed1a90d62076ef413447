@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20970f3c_2346df6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/provision/tls_client.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-07T19:08:17Z",
+      "side": 1,
+      "message": "Thanks for the catch! Using DialContext here sounds more reasonable.",
+      "parentUuid": "a2f1ab09_1518d1d2",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "bb9d9829b403ef88f9d4ed1a90d62076ef413447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb40e3b7_5c9f73bf",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3e8ab7b_7467fb42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-07T19:08:17Z",
+      "side": 1,
+      "message": "My intention was indicating it is an *immutable* function to avoid any field in struct from accidentally being updated. Please let me know if there is any golang practice for this. It has changed to (v* Version) now. Thanks,",
+      "parentUuid": "eb40e3b7_5c9f73bf",
+      "range": {
+        "startLine": 44,
+        "startChar": 6,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "bb9d9829b403ef88f9d4ed1a90d62076ef413447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb9e5490_10a2646e",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-10-07T18:28:08Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 15
+      },
+      "revId": "bb9d9829b403ef88f9d4ed1a90d62076ef413447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b4f30db_3ab58b6b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-07T19:08:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eb9e5490_10a2646e",
       "range": {
         "startLine": 94,
         "startChar": 6,
