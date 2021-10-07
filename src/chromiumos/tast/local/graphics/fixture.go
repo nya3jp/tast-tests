@@ -110,8 +110,9 @@ func (f *graphicsNoChromeFixture) TearDown(ctx context.Context, s *testing.FixtS
 }
 
 type gpuWatchHangsFixture struct {
-	regexp   *regexp.Regexp
-	postFunc []func(ctx context.Context) error
+	regexp       *regexp.Regexp
+	postFunc     []func(ctx context.Context) error
+	tearDownFunc []func(ctx context.Context) error
 }
 
 func (f *gpuWatchHangsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -129,10 +130,32 @@ func (f *gpuWatchHangsFixture) SetUp(ctx context.Context, s *testing.FixtState) 
 	// TODO(pwang): add regex for memory faults.
 	f.regexp = regexp.MustCompile(strings.Join(hangRegexStrs, "|"))
 	s.Log("Setup regex to detect GPU hang: ", f.regexp)
+
+	hangCheckTimer, err := getHangCheckTimer()
+	if err != nil {
+		testing.ContextLog(ctx, "Warning: failed to get hangcheck timer. This is normal for kernels older than 5.4: ", err)
+	} else {
+		if er := setHangCheckTimer(10 * time.Second); er != nil {
+			s.Fatal("Failed to set hangcheck timer: ", err)
+		}
+
+		f.tearDownFunc = append(f.tearDownFunc, func(ctx context.Context) error {
+			if err := setHangCheckTimer(hangCheckTimer); err != nil {
+				return errors.Wrap(err, "failed to set hangcheck timer back")
+			}
+			return nil
+		})
+	}
 	return nil
 }
 
-func (f *gpuWatchHangsFixture) TearDown(ctx context.Context, s *testing.FixtState) {}
+func (f *gpuWatchHangsFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	for i := len(f.tearDownFunc) - 1; i >= 0; i-- {
+		if err := f.tearDownFunc[i](ctx); err != nil {
+			s.Error("TearDown failed: ", err)
+		}
+	}
+}
 
 func (f *gpuWatchHangsFixture) Reset(ctx context.Context) error {
 	return nil
