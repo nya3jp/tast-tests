@@ -678,6 +678,27 @@ func (ac *Context) FocusAndWait(finder *nodewith.Finder) Action {
 	})
 }
 
+// EnsureFocused returns a function that ensures the found node is focused.
+// This can be used to focus on nodes whose state isn't certained.
+// It checks the found node's state and calls FocusAndWait() only if the node is not focused.
+func (ac *Context) EnsureFocused(finder *nodewith.Finder) Action {
+	return func(ctx context.Context) error {
+		info, err := ac.Info(ctx, finder)
+		if err != nil {
+			return err
+		}
+		if info.State[state.Focused] {
+			return nil
+		}
+
+		if err = ac.FocusAndWait(finder)(ctx); err != nil {
+			// There are chances that the focus event does not occur but the node is already focused.
+			return ac.WaitUntilExists(finder.Focused())(ctx)
+		}
+		return nil
+	}
+}
+
 // MouseMoveTo returns a function moving the mouse to hover on the center point of located node.
 // When duration is 0, it moves instantly to the specified location.
 // Otherwise, the cursor should move linearly during the period.

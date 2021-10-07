@@ -105,3 +105,8 @@ func (f *FilesApp) LeftClickUntil(finder *nodewith.Finder, condition func(contex
 func (f *FilesApp) FocusAndWait(finder *nodewith.Finder) uiauto.Action {
 	return f.ui.FocusAndWait(finder.FinalAncestor(WindowFinder(f.appID)))
 }
+
+// EnsureFocused calls ui.FocusAndWait if the target node is not focused.
+func (f *FilesApp) EnsureFocused(finder *nodewith.Finder) uiauto.Action {
+	return f.ui.EnsureFocused(finder.FinalAncestor(WindowFinder(f.appID)))
+}
