@@ -42,8 +42,14 @@ func writeIVFFrameHeader(bitstreamFile io.Writer, size uint32, timestamp uint64)
 	binary.Write(bitstreamFile, binary.LittleEndian, timestamp)
 }
 
-// SaveBitstream saves bitstreams in dir. The saved format is H.264 Annex B format if codec is H264 and IVF file format otherwise.
-func SaveBitstream(bitstreams [][]byte, codec videotype.Codec, width, height, framerate int, dir string) (string, error) {
+// saveBitstream saves bitstreams in a temporary directory. The saved format is H.264 Annex B format if codec is H264 and IVF file format otherwise.
+func saveBitstream(bitstreams [][]byte, codec videotype.Codec, width, height, framerate int) (string, error) {
+	return saveBitstreamWithTL(bitstreams, codec, width, height, framerate, 0, []int{})
+}
+
+// saveBitstreamWithTL saves bitstreams in a temporary directory. The saved format is H.264 Annex B format if codec is H264 and IVF file format otherwise.
+// If tids is non empty, the saved bitstream represents frames that are in temporal layers up to tid.
+func saveBitstreamWithTL(bitstreams [][]byte, codec videotype.Codec, width, height, framerate, temporalID int, temporalIDs []int) (string, error) {
 	var filePrefix string
 	switch codec {
 	case videotype.H264:
@@ -70,6 +76,11 @@ func SaveBitstream(bitstreams [][]byte, codec videotype.Codec, width, height, fr
 	}
 
 	for i, b := range bitstreams {
+		if len(temporalIDs) > 0 && temporalIDs[i] > temporalID {
+			// Skip the encoded chunk b if it belongs to a temporal layer higher than temporalId.
+			continue
+		}
+
 		if codec != videotype.H264 {
 			timestamp := uint64(i * 1000 / framerate)
 			writeIVFFrameHeader(bitstreamFile, uint32(len(b)), timestamp)
