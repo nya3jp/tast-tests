@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9af7307_d1482b31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2021-10-07T02:30:15Z",
+      "side": 1,
+      "message": "I\u0027m not a go expert, but from kernel driver PoV this is the right thing to do.. thanks",
+      "revId": "3fd029ce8cbf0e8dea89b7e4e203aad07c99f689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
