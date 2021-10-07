@@ -50,6 +50,23 @@
       "message": "shadow reviewer lgtm",
       "revId": "cd27c090ebc410413a48669441eecb45b679086f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d599f41_2f284b11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-07T15:16:05Z",
+      "side": 1,
+      "message": "TY",
+      "revId": "cd27c090ebc410413a48669441eecb45b679086f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
