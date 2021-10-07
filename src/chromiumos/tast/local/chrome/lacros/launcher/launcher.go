@@ -172,6 +172,11 @@ func ExtensionArgs(extID, extList string) []string {
 
 // LaunchLacrosChrome launches a fresh instance of lacros-chrome.
 func LaunchLacrosChrome(ctx context.Context, f FixtValue) (*LacrosChrome, error) {
+	return LaunchLacrosChromeWithURL(ctx, f, chrome.BlankURL)
+}
+
+// LaunchLacrosChromeWithURL launches a fresh instance of lacros-chrome having the given url.
+func LaunchLacrosChromeWithURL(ctx context.Context, f FixtValue, url string) (*LacrosChrome, error) {
 	if err := killLacrosChrome(ctx, f.LacrosPath()); err != nil {
 		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}
@@ -209,7 +214,7 @@ func LaunchLacrosChrome(ctx context.Context, f FixtValue) (*LacrosChrome, error)
 		"--enable-webgl-image-chromium",              // Enable WebGL image.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
 		"--use-cras",                                 // Use CrAS.
-		chrome.BlankURL,                              // Specify first tab to load.
+		url,                                          // Specify first tab to load.
 	}
 	args = append(args, ExtensionArgs(chrome.TestExtensionID, extList)...)
 	args = append(args, f.Chrome().LacrosExtraArgs()...)
