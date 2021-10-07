@@ -93,6 +93,30 @@
       },
       "revId": "1a5cc608d224c4a6796ce19aa000ee54a5adb18f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e95b4c37_4b1a53d4",
+        "filename": "src/chromiumos/tast/local/policyutil/lacrospolicyutil/lacrospolicyutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-07T11:11:59Z",
+      "side": 1,
+      "message": "If ChromeType is set to ChromeTypeChromeOS, and the fixture is a HasChrome interface, it should work.",
+      "parentUuid": "d440c097_0b42c635",
+      "range": {
+        "startLine": 15,
+        "startChar": 19,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "1a5cc608d224c4a6796ce19aa000ee54a5adb18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
