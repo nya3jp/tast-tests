@@ -146,6 +146,20 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 	// So make it the first deferred function to use cleanupCtx.
 	defer setBatteryNormal(cleanupCtx)
 
+	// Give 10 seconds to reset initial settings. It is critical to ensure
+	// resetSettings can be executed with a valid context so it has its
+	// own cleanup context from other cleanup functions. This is to avoid
+	// other cleanup functions executed earlier to use up the context time.
+	cleanupSettingsCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	resetSettings, err := cuj.SetUp(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to reset initial settings")
+	}
+	defer resetSettings(cleanupSettingsCtx)
+
 	faillogCtx := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()

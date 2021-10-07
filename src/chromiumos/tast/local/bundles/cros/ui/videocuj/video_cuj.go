@@ -154,6 +154,20 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 	}
 	defer setBatteryNormal(cleanupDischargeCtx)
 
+	// Give 10 seconds to reset initial settings. It is critical to ensure
+	// resetSettings can be executed with a valid context so it has its
+	// own cleanup context from other cleanup functions. This is to avoid
+	// other cleanup functions executed earlier to use up the context time.
+	cleanupSettingsCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	resetSettings, err := cuj.SetUp(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to reset initial settings")
+	}
+	defer resetSettings(cleanupSettingsCtx)
+
 	testing.ContextLog(ctx, "Start to get browser start time")
 	browserStartTime, err := cuj.GetBrowserStartTime(ctx, cr, tconn, tabletMode)
 	if err != nil {
