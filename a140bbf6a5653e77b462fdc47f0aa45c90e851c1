@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1bbc8f7_7f4f3c22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/productivity_cuj_voice_to_text_20210708.wav.external",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-07T04:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fbb84e2_e808039d",
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27f09348_99c27eb7",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-05T23:06:32Z",
       "side": 1,
       "message": "testFile is associated with the output text. They should be put together in the parameters or both hardcoded inside function.",
+      "range": {
+        "startLine": 108,
+        "startChar": 49,
+        "endLine": 108,
+        "endChar": 65
+      },
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ab9e96e_ee55a771",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-07T04:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27f09348_99c27eb7",
       "range": {
         "startLine": 108,
         "startChar": 49,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2745ed8e_0eb7498e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-07T04:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a90f5fdc_f9864418",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abf46185_705fc650",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a40b5e5b_d7a6db88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-07T04:02:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abf46185_705fc650",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 41
+      },
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c7ccda4_9b5162d3",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-10-05T23:06:32Z",
       "side": 1,
       "message": "Could not find the implementation, I assume it is not implemented yet.\n\nBelow test is for your reference if you are going to do it with VKB.\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_speech.go",
+      "range": {
+        "startLine": 203,
+        "startChar": 15,
+        "endLine": 203,
+        "endChar": 33
+      },
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "586952a1_8ab187ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-07T04:02:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8c7ccda4_9b5162d3",
       "range": {
         "startLine": 203,
         "startChar": 15,
