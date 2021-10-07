@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54923f4f_b59f33fe",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-07T20:04:53Z",
+      "side": 1,
+      "message": "not exported anywhere unfortunately",
+      "parentUuid": "3d050e3a_cfd73a11",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 54
+      },
+      "revId": "ef98a204f691710a04ae94ea8e1fcf469f91c156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ec7b643_f100da95",
@@ -114,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "846a4920_1a445184",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-07T20:04:53Z",
+      "side": 1,
+      "message": "The main downsides to UI automation are:\n1. Brittle to string changes, since finding nodes in the accessibility tree usually relies on their human-readable text.\n2. Location-based flakiness. UI automation actually tries to send mouse events to on-screen locations, which can sometimes cause issues when things are still loading and moving around. Also for OS settings in particular, we might have to be careful about scrolling things into view depending on screen resolution.\n\nThe main benefit to this approach is working around 2, since we don\u0027t have to worry about where things are on the screen. We used this JS approach in the Nearby Share tests, though, and haven\u0027t really had to change anything there.\n\nI don\u0027t have a very strong opinion either way, though, the uiauto library is pretty robust and I was using it successfully in the first patch of this CL. WDYT? +dhaddock@ as well to weigh in",
+      "parentUuid": "e9687acf_8d366d4c",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 18
+      },
+      "revId": "ef98a204f691710a04ae94ea8e1fcf469f91c156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2985f2e3_e4dc0783",
         "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
         "patchSetId": 3
@@ -125,6 +173,24 @@
       "writtenOn": "2021-10-06T23:43:43Z",
       "side": 1,
       "message": "nit: prefer to check the public checked() state of the underlying toggle, instead of this private variable in the wrapper, I think checked() would be accessible from the the #toggle element in the shadow dom.",
+      "revId": "ef98a204f691710a04ae94ea8e1fcf469f91c156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76082c1c_bf953355",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-07T20:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2985f2e3_e4dc0783",
       "revId": "ef98a204f691710a04ae94ea8e1fcf469f91c156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -142,6 +208,24 @@
       "writtenOn": "2021-10-06T23:43:43Z",
       "side": 1,
       "message": "I think it might be better to actually click the toggle, rather than calling the internal function that gets called by polymer after the toggle has been changed[1], I think if you select #toggle in the shadow dom, you can call .click() on it.\n\n[1]https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/resources/settings/chromeos/multidevice_page/multidevice_feature_toggle.html;l\u003d14",
+      "revId": "ef98a204f691710a04ae94ea8e1fcf469f91c156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e72afb4_7a585ab2",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-07T20:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47473513_71753daa",
       "revId": "ef98a204f691710a04ae94ea8e1fcf469f91c156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -210,6 +294,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "451f9299_f8d0eba7",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-07T20:04:53Z",
+      "side": 1,
+      "message": "It will wait up until the context deadline expires. This will be used in the fixture (test setup) which has 2 minutes allotted.",
+      "parentUuid": "b668f51a_48e4331c",
+      "revId": "ef98a204f691710a04ae94ea8e1fcf469f91c156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dd543c8_db3a597c",
@@ -233,6 +335,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e9d1144_2e54efbf",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-07T20:04:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dd543c8_db3a597c",
+      "range": {
+        "startLine": 59,
+        "startChar": 54,
+        "endLine": 59,
+        "endChar": 75
+      },
+      "revId": "ef98a204f691710a04ae94ea8e1fcf469f91c156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7709b460_1ce23bfe",
@@ -246,6 +372,24 @@
       "writtenOn": "2021-10-06T23:43:43Z",
       "side": 1,
       "message": "nit: mention which side is unexpected, something like: \"Silence Phone status in Phone Hub does not match updated value from the phone\" (to differentiate from \"Silence Phone status on the phone does not reflect update from Phone Hub\")",
+      "revId": "ef98a204f691710a04ae94ea8e1fcf469f91c156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e58a844a_a4a3af37",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-07T20:04:53Z",
+      "side": 1,
+      "message": "I\u0027ll leave it for callers to wrap this function\u0027s errors with that sort of information, just because this function doesn\u0027t have any knowledge of the phone side.",
+      "parentUuid": "7709b460_1ce23bfe",
       "revId": "ef98a204f691710a04ae94ea8e1fcf469f91c156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
