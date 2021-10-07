@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "998c87f7_205892b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-10-07T14:32:51Z",
+      "side": 1,
+      "message": "+1 as audio owner. add tast-owners",
+      "revId": "e0c613317fc80917616c250c979f1ad99ade180c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4198daaa_7925a721",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_loopback_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-10-07T14:32:51Z",
+      "side": 1,
+      "message": "Could we upload the # of failures ( `(loop - len(measureLatencies))` and `(loop - len(reportedLatencies))`) as metrics as well?",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 11
+      },
+      "revId": "e0c613317fc80917616c250c979f1ad99ade180c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
