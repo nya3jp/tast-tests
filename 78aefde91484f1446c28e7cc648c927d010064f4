@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae5123b_d0c27868",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-07T22:28:28Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "range": {
+        "startLine": 211,
+        "startChar": 44,
+        "endLine": 211,
+        "endChar": 46
+      },
+      "revId": "78aefde91484f1446c28e7cc648c927d010064f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f69499a8_923a06f4",
+        "filename": "src/chromiumos/tast/local/vm/logs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-07T22:28:28Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "range": {
+        "startLine": 47,
+        "startChar": 38,
+        "endLine": 47,
+        "endChar": 48
+      },
+      "revId": "78aefde91484f1446c28e7cc648c927d010064f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
