@@ -18,6 +18,8 @@ type bootConfig struct {
 	numTrials int
 	// Use O_DIRECT in disk access for ARCVM
 	oDirect bool
+	// Extra Chrome command line options
+	chromeArgs []string
 }
 
 func init() {
@@ -56,6 +58,17 @@ func init() {
 			Name: "vm",
 			Val: bootConfig{
 				numTrials: 1,
+			},
+			ExtraAttr:         []string{"group:mainline"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Timeout:           5 * time.Minute,
+		}, {
+			Name: "vm_with_per_vcpu_core_scheduling",
+			Val: bootConfig{
+				numTrials: 1,
+				// Switch from per-VM core scheduling to per-vCPU core scheduling which
+				// is more secure but slow.
+				chromeArgs: []string{"--disable-features=ArcEnablePerVmCoreScheduling"},
 			},
 			ExtraAttr:         []string{"group:mainline"},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -106,7 +119,8 @@ func runBoot(ctx context.Context, s *testing.State) {
 		defer arc.RestoreArcvmDevConf(ctx)
 	}
 
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	args := s.Param().(bootConfig).chromeArgs
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(args...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
