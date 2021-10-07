@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/faillog"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
@@ -51,6 +52,17 @@ type Config interface {
 
 // Run runs the glbench binary. outDir specifies the directories to store the results. preValue is the structure given by precondition/fixture for test to access container/environment.
 func Run(ctx context.Context, outDir string, preValue interface{}, config Config) (resultErr error) {
+	// TODO(b:201939097): Adjust back the hangcheck timer to allow longer gpu operations.
+	if originalHangCheckTimer, err := graphics.GetHangCheckTimer(); err != nil {
+		testing.ContextLog(ctx, "Failed to get hangcheck timer: ", err)
+	} else {
+		// GetHangCheckTimer only works for newer kernel. We only sets the duration if we successfully find the existing configurations.
+		if er := graphics.SetHangCheckTimer(5 * time.Second); er != nil {
+			testing.ContextLog(ctx, "Failed to set hangcheck timer: ", er)
+		}
+		defer graphics.SetHangCheckTimer(originalHangCheckTimer)
+	}
+
 	// appendErr append the error with msg to resultErr.
 	var appendErr = func(err error, msg string, args ...interface{}) error {
 		resultErr = errors.Wrap(resultErr, errors.Wrapf(err, msg, args...).Error())
