@@ -392,6 +392,7 @@ func (i *impl) rebootToMode(ctx context.Context, mode common.BootMode, opts ...f
 		if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
 			return errors.Wrap(err, "failed to warm reboot")
 		}
+		return nil
 	}
 	if err := ms.RebootToMode(ctx, mode, opts...); err != nil {
 		return errors.Wrapf(err, "failed to reboot to mode %q", mode)
