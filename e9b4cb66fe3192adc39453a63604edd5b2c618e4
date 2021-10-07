@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28754285_3dcd679a",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-10-07T13:04:39Z",
+      "side": 1,
+      "message": "What about `MenuSwitcher` and `TabletDetachableSwitcher`? I personally haven\u0027t added them only because I don\u0027t have any non-keyboard device at hand.",
+      "revId": "e9b4cb66fe3192adc39453a63604edd5b2c618e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "912f07a3_391649d8",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 1
