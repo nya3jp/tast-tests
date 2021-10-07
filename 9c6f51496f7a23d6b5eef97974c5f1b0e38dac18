@@ -22,6 +22,30 @@
       },
       "revId": "9c6f51496f7a23d6b5eef97974c5f1b0e38dac18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb43620_5e89abf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1520077
+      },
+      "writtenOn": "2021-10-07T06:01:52Z",
+      "side": 1,
+      "message": "An error is returned here so that we can go back to line 313 to start the next retry via Polling. The pause button (line 327) would not be present before clicking the player view (line 313). Thanks.",
+      "parentUuid": "3c96685e_4d7e0792",
+      "range": {
+        "startLine": 321,
+        "startChar": 65,
+        "endLine": 321,
+        "endChar": 66
+      },
+      "revId": "9c6f51496f7a23d6b5eef97974c5f1b0e38dac18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
