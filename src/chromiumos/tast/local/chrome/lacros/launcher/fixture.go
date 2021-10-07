@@ -342,23 +342,19 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 		// When launched by Omaha we need to wait several seconds for lacros to be launchable.
 		// It is ready when the image loader path is created with the chrome executable.
 		testing.ContextLog(ctx, "Waiting for Lacros to initialize")
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			matches, err := filepath.Glob("/run/imageloader/lacros-dogfood*/*/chrome")
-			if err != nil {
-				return errors.Wrap(err, "binary path does not exist yet")
-			}
-			if len(matches) == 0 {
-				return errors.New("binary path does not exist yet")
-			}
-			f.lacrosPath = matches[0]
-			return nil
-		}, &testing.PollOptions{Interval: 5 * time.Second}); err != nil {
+		matches, err := f.waitForPathToExist(ctx, "/run/imageloader/lacros-dogfood*/*/chrome")
+		if err != nil {
 			s.Fatal("Failed to find lacros binary: ", err)
 		}
+		f.lacrosPath = filepath.Dir(matches[0])
 	case Rootfs:
 		// When launched from the rootfs partition, the lacros-chrome is already located
 		// at /opt/google/lacros/lacros.squash in the OS, will be mounted at /run/lacros/.
-		f.lacrosPath = "/run/lacros"
+		matches, err := f.waitForPathToExist(ctx, "/run/lacros/chrome")
+		if err != nil {
+			s.Fatal("Failed to find lacros binary: ", err)
+		}
+		f.lacrosPath = filepath.Dir(matches[0])
 	default:
 		s.Fatal("Unrecognized mode: ", f.mode)
 	}
@@ -417,4 +413,20 @@ func (f *fixtImpl) buildFixtData(ctx context.Context, s *testing.FixtState) *fix
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
 	return &fixtValueImpl{f.cr, f.tconn, f.mode, f.lacrosPath}
+}
+
+// waitForPathToExist is a helper method that waits the given binary path to be present
+// then returns the matching paths or it will be timed out if the ctx's timeout is reached.
+func (f *fixtImpl) waitForPathToExist(ctx context.Context, pattern string) (matches []string, err error) {
+	return matches, testing.Poll(ctx, func(ctx context.Context) error {
+		m, err := filepath.Glob(pattern)
+		if err != nil {
+			return errors.Wrapf(err, "binary path does not exist yet. expected: %v", pattern)
+		}
+		if len(m) == 0 {
+			return errors.New("binary path does not exist yet. expected: " + pattern)
+		}
+		matches = append(matches, m...)
+		return nil
+	}, &testing.PollOptions{Interval: 5 * time.Second})
 }
