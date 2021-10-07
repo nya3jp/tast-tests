@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e87d71_294fb6e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-07T00:43:08Z",
+      "side": 1,
+      "message": "By the way, this would not necessarily be blocking this CL submission since the service is skeleton code with no actual implementation for this yet.\nI\u0027ll be figuring out how the test framework can gracefully help clean up Ash setup before starting the next tests. Thanks,",
+      "parentUuid": "043e53a8_b2e250d7",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "1610577921080edbb059c904ab85460b4b087229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6ecd2fe_26c3a982",
