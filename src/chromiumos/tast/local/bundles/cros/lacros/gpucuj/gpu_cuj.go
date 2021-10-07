@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrostest"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -279,7 +280,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtValue, 
 }
 
 func runLacrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocation) error {
-	_, ltconn, l, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, invoc.page.url)
+	_, ltconn, l, cleanup, err := lacrostest.SetupLacrosTestWithPage(ctx, f, invoc.page.url)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup cros-chrome test page")
 	}
@@ -307,7 +308,7 @@ func runLacrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocat
 }
 
 func runCrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocation) error {
-	_, cleanup, err := lacros.SetupCrosTestWithPage(ctx, f, invoc.page.url)
+	_, cleanup, err := lacrostest.SetupCrosTestWithPage(ctx, f, invoc.page.url)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup cros-chrome test page")
 	}
@@ -328,8 +329,8 @@ func runCrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocatio
 
 // RunGpuCUJ runs a GpuCUJ test according to the given parameters.
 func RunGpuCUJ(ctx context.Context, f launcher.FixtValue, params TestParams, serverURL, traceDir string) (
-	retPV *perf.Values, retCleanup lacros.CleanupCallback, retErr error) {
-	cleanup, err := lacros.SetupPerfTest(ctx, f.TestAPIConn(), "lacros.GpuCUJ")
+	retPV *perf.Values, retCleanup lacrostest.CleanupCallback, retErr error) {
+	cleanup, err := lacrostest.SetupPerfTest(ctx, f.TestAPIConn(), "lacros.GpuCUJ")
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to setup GpuCUJ test")
 	}
@@ -354,7 +355,7 @@ func RunGpuCUJ(ctx context.Context, f launcher.FixtValue, params TestParams, ser
 			return nil, nil, errors.Wrap(err, "failed to rotate display")
 		}
 		// Restore the initial rotation.
-		cleanup = lacros.CombineCleanup(ctx, cleanup, func(ctx context.Context) error {
+		cleanup = lacrostest.CombineCleanup(ctx, cleanup, func(ctx context.Context) error {
 			return display.SetDisplayProperties(ctx, f.TestAPIConn(), infos[0].ID, display.DisplayProperties{Rotation: &infos[0].Rotation})
 		}, "failed to restore the initial display rotation")
 	}

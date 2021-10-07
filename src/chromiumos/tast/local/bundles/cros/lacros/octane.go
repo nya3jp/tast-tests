@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrostest"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/testing"
 )
@@ -61,7 +62,7 @@ func runOctaneTest(ctx context.Context, f launcher.FixtValue, conn *chrome.Conn)
 }
 
 func runLacrosOctaneTest(ctx context.Context, f launcher.FixtValue) (float64, error) {
-	conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, octaneURL)
+	conn, _, _, cleanup, err := lacrostest.SetupLacrosTestWithPage(ctx, f, octaneURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup lacros-chrome test page")
 	}
@@ -71,7 +72,7 @@ func runLacrosOctaneTest(ctx context.Context, f launcher.FixtValue) (float64, er
 }
 
 func runCrosOctaneTest(ctx context.Context, f launcher.FixtValue) (float64, error) {
-	conn, cleanup, err := lacros.SetupCrosTestWithPage(ctx, f, octaneURL)
+	conn, cleanup, err := lacrostest.SetupCrosTestWithPage(ctx, f, octaneURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup cros-chrome test page")
 	}
@@ -86,7 +87,7 @@ func Octane(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	cleanup, err := lacros.SetupPerfTest(ctx, tconn, "lacros.Octane")
+	cleanup, err := lacrostest.SetupPerfTest(ctx, tconn, "lacros.Octane")
 	if err != nil {
 		s.Fatal("Failed to setup test: ", err)
 	}

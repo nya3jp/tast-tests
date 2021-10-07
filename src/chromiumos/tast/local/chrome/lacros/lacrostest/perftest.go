@@ -1,9 +1,9 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package lacros implements a library used for utilities and communication with lacros-chrome on ChromeOS.
-package lacros
+// Package lacrostest implements a library used for utilities for performance testing lacros-chrome on ChromeOS.
+package lacrostest
 
 import (
 	"context"

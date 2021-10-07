@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrostest"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/testing"
@@ -78,7 +79,7 @@ func runSpeedometerTest(ctx context.Context, f launcher.FixtValue, conn *chrome.
 }
 
 func runLacrosSpeedometerTest(ctx context.Context, f launcher.FixtValue) (float64, error) {
-	conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, speedometerURL)
+	conn, _, _, cleanup, err := lacrostest.SetupLacrosTestWithPage(ctx, f, speedometerURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup lacros-chrome test page")
 	}
@@ -88,7 +89,7 @@ func runLacrosSpeedometerTest(ctx context.Context, f launcher.FixtValue) (float6
 }
 
 func runCrosSpeedometerTest(ctx context.Context, f launcher.FixtValue) (float64, error) {
-	conn, cleanup, err := lacros.SetupCrosTestWithPage(ctx, f, speedometerURL)
+	conn, cleanup, err := lacrostest.SetupCrosTestWithPage(ctx, f, speedometerURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup cros-chrome test page")
 	}
@@ -103,7 +104,7 @@ func Speedometer(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	cleanup, err := lacros.SetupPerfTest(ctx, tconn, "lacros.Speedometer")
+	cleanup, err := lacrostest.SetupPerfTest(ctx, tconn, "lacros.Speedometer")
 	if err != nil {
 		s.Fatal("Failed to setup test: ", err)
 	}
