@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d2265b_b4a360a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-07T16:23:17Z",
+      "side": 1,
+      "message": "Please wrap to 74 chars.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 179
+      },
+      "revId": "9e720e9d31ce67ed8fd0b5c82365f9eb5b1c7b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "81421000_92c5ac77",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-10-07T11:05:49Z",
       "side": 1,
       "message": "Hello Jeremy,\n\nI\u0027m uploading the TouchpadService \u0026 TouchscreenService as --wip CL. There may still be room for modifications, but I just wanted to get these up on Gerrit first while still working on my script for ScreenWakeTabletMode().",
+      "revId": "9e720e9d31ce67ed8fd0b5c82365f9eb5b1c7b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44796bec_6517f371",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-07T16:23:17Z",
+      "side": 1,
+      "message": "The service implementations need comments, but they look good.\n\nThis should do what you need, but you might consider looking into using a streaming rpc call instead of killing evtest after a fixed deadline. https://grpc.io/docs/languages/go/basics/#bidirectional-streaming-rpc\n\nIt might be nicer, it might be too much trouble, I don\u0027t know.",
       "revId": "9e720e9d31ce67ed8fd0b5c82365f9eb5b1c7b69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
