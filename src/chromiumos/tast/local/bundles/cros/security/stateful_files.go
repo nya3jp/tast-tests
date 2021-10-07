@@ -209,6 +209,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		// mounting unencrypted dlc-images directory.
 		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/cache/dlc-images"), chk.Users("root"), chk.Groups("root"), chk.NotMode(022)))
 		prependPatterns(chk.NewPattern(chk.Tree("encrypted/var/lib/dlcservice"), chk.Users("dlcservice"), chk.Groups("dlcservice"), chk.NotMode(022)))
+		prependPatterns(chk.NewPattern(chk.Tree("unencrypted/dlc-factory-images"), chk.Users("root"), chk.Groups("root"), chk.NotMode(022)))
 	}
 
 	if _, err := user.Lookup("wilco_dtc"); err == nil {
