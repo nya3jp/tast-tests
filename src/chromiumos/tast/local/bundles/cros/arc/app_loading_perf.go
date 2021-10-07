@@ -41,9 +41,6 @@ var (
 	// that it disables some heavy post-provisioned Android activities that use system resources.
 	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
 
-	// arcAppLoadingVMBootedWithMoreVCPUs is to boot ARC with more vCPUs on core-scheduling devices like eve.
-	arcAppLoadingVMBootedWithMoreVCPUs = arc.NewPrecondition("arcapploading_vmbooted_with_more_vcpus", arcAppLoadingGaia, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcMoreVcpusWithCoreScheduling")...)
-
 	// arcAppLoadingRtVcpuVMBooted adds feature to boot ARC with realtime vcpu is enabled.
 	arcAppLoadingRtVcpuVMBooted = arc.NewPrecondition("arcapploading_rt_vcpu_vmbooted", arcAppLoadingGaia, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-arcvm-rt-vcpu")...)
 
@@ -84,15 +81,6 @@ func init() {
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingVMBooted,
-		}, {
-			Name:              "vm_with_more_vcpus",
-			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
-			Val: testParameters{
-				batteryMode:       setup.ForceBatteryDischarge,
-				binaryTranslation: false,
-			},
-			Pre: arcAppLoadingVMBootedWithMoreVCPUs,
 		}, {
 			Name:              "rt_vcpu_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
