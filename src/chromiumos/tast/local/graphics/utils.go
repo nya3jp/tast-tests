@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"math"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -30,6 +31,9 @@ const (
 
 	// Path to get/set the dirty_writeback_centisecs kernel parameter.
 	dirtyWritebackCentisecsPath = "/proc/sys/vm/dirty_writeback_centisecs"
+
+	// Path to get/set the hangcheck_period_ms kernel parameter.
+	hangCheckPeriodPath = "/sys/kernel/debug/dri/*/hangcheck_period_ms"
 )
 
 // APIType identifies a graphics API that can be tested by DEQP.
@@ -319,4 +323,63 @@ func GetDirtyWritebackDuration() (time.Duration, error) {
 		return -1, errors.Wrapf(err, "could not parse %v", filepath.Base(dirtyWritebackCentisecsPath))
 	}
 	return time.Duration(centisecs) * (time.Second / 100), nil
+}
+
+// SetHangCheckTimer sets the hangcheck timer to d to allow longer gpu runtime before hangcheck kicks in.
+// If multiple hangcheck configuration paths are found, all of them are modified.
+// Notice that it is expected to fail if running on older kernels.
+// Notice that the unit of hangcheck timer is millisecond and the function would fail if d is smaller or equal to 1 millisecond.
+func SetHangCheckTimer(d time.Duration) error {
+	if d < 1*time.Millisecond {
+		return errors.Errorf("invalid hangcheck timer parameter, %v, hangcheck timer must be greater or equal to 1 millisecond", d)
+	}
+
+	ps, err := filepath.Glob(hangCheckPeriodPath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to list files with pattern: %v", hangCheckPeriodPath)
+	}
+	if len(ps) == 0 {
+		return errors.Wrapf(err, "none of the path found with pattern: %v", hangCheckPeriodPath)
+	}
+
+	for _, p := range ps {
+		periodMs := int64(d / time.Millisecond)
+		if err := ioutil.WriteFile(p, []byte(fmt.Sprintf("%d", periodMs)), 0600); err != nil {
+			return errors.Wrapf(err, "failed to write %d to %s", periodMs, p)
+		}
+	}
+	return nil
+}
+
+// GetHangCheckTimer returns the current hangcheck duration timer.
+// If multiple hangcheck configuration paths are found, it returns the smallest timer among all the configurations.
+// Notice that it is expected to fail if running on older kernels and it is better to produce a warning instead of failing.
+func GetHangCheckTimer() (time.Duration, error) {
+	ps, err := filepath.Glob(hangCheckPeriodPath)
+	if err != nil {
+		return -1, errors.Wrapf(err, "failed to list files with pattern: %v", hangCheckPeriodPath)
+	}
+	if len(ps) == 0 {
+		return -1, errors.Wrapf(err, "none of the path found with pattern: %v", hangCheckPeriodPath)
+	}
+
+	minDuration := uint64(math.Inf(1))
+	for _, p := range ps {
+		b, err := ioutil.ReadFile(p)
+		if err != nil {
+			return -1, errors.Wrapf(err, "failed to read %s", p)
+		}
+		s := strings.TrimSpace(string(b))
+		if len(s) == 0 {
+			return -1, errors.Errorf("%s is empty", p)
+		}
+		d, err := strconv.ParseUint(s, 10, 64)
+		if err != nil {
+			return -1, errors.Wrapf(err, "malformed content in %s: %s", p, s)
+		}
+		if d < minDuration {
+			minDuration = d
+		}
+	}
+	return time.Duration(minDuration) * time.Millisecond, nil
 }
