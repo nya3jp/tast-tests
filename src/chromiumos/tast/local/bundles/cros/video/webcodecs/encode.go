@@ -7,9 +7,13 @@ package webcodecs
 
 import (
 	"context"
+	"fmt"
+	"io"
+	"math"
 	"net/http"
 	"net/http/httptest"
 	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -99,12 +103,31 @@ func toMIMECodec(codec videotype.Codec) string {
 	return ""
 }
 
-func computeBitstreamQuality(ctx context.Context, videoFile, bitstreamFile, outDir string, codec videotype.Codec, w, h int) (psnr, ssim float64, err error) {
-	yuvFile, err := encoding.PrepareYUV(ctx, videoFile, videotype.I420, coords.NewSize(0, 0) /* placeholder size */)
-	if err != nil {
-		return psnr, ssim, errors.Wrap(err, "failed to prepare YUV file")
+// computeBitstreamQuality computes SSIM and PSNR of bitstreams comparing with yuvFile.
+// If numTemporalLayers is more than 1, then this computes SSIM and PSNR of bitstreams
+// whose represented frames are in temporal layers up to tid.
+func computeBitstreamQuality(ctx context.Context, yuvFile, outDir string, bitstreams [][]byte,
+	codec videotype.Codec, w, h, framerate, tid, numTemporalLayers int, tids []int) (psnr, ssim float64, err error) {
+	var bitstreamFile string
+	if tid == numTemporalLayers-1 {
+		bitstreamFile, err = saveBitstream(bitstreams, codec, w, h, framerate)
+		if err != nil {
+			return psnr, ssim, errors.Wrap(err, "failed preparing bitstream")
+		}
+		defer os.Remove(bitstreamFile)
+	} else {
+		yuvFile, err = prepareYUVFileWithTL(ctx, yuvFile, w, h, tid, tids)
+		if err != nil {
+			return psnr, ssim, errors.Wrap(err, "failed preparing yuv")
+		}
+		defer os.Remove(yuvFile)
+
+		bitstreamFile, err = saveBitstreamWithTL(bitstreams, codec, w, h, framerate, tid, tids)
+		if err != nil {
+			return psnr, ssim, errors.Wrap(err, "failed preparing bitstream")
+		}
+		defer os.Remove(bitstreamFile)
 	}
-	defer os.Remove(yuvFile)
 
 	var decoder encoding.Decoder
 	switch codec {
@@ -244,8 +267,9 @@ func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 		return errors.Errorf("unknown scalabilityMode: %s", testArgs.ScalabilityMode)
 	}
 
-	if numTemporalLayers > 1 {
-		var temporalLayerIds []int
+	isTLEncoding := numTemporalLayers > 1
+	var temporalLayerIds []int
+	if isTLEncoding {
 		if err := conn.Eval(ctx, "bitstreamSaver.getTemporalLayerIds()", &temporalLayerIds); err != nil {
 			return outputJSLogAndError(cleanupCtx, conn, errors.Wrap(err, "error getting temporal layer ids"))
 		}
@@ -259,37 +283,111 @@ func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 		}
 	}
 
-	// TODO(b/196307009): Compute quality of each temporal layer.
-	bitstreamFile, err := SaveBitstream(bitstreams, testArgs.Codec, config.width, config.height, config.framerate, outDir)
+	yuvFile, err := encoding.PrepareYUV(ctx, videoFile, videotype.I420, coords.NewSize(0, 0) /* placeholder size */)
 	if err != nil {
-		return errors.Wrap(err, "failed saving bitstream")
+		return errors.Wrap(err, "failed to prepare YUV file")
 	}
-	defer os.Remove(bitstreamFile)
-
-	psnr, ssim, err := computeBitstreamQuality(ctx, videoFile, bitstreamFile, outDir, testArgs.Codec, config.width, config.height)
-	if err != nil {
-		return errors.Wrap(err, "failed computing bitstream quality")
-	}
-
-	// TODO: Have thresholds and fails the test if SSIM or PSNR is lower than them?
-	testing.ContextLog(ctx, "PSNR: ", psnr)
-	testing.ContextLog(ctx, "SSIM: ", ssim)
+	defer os.Remove(yuvFile)
 
 	p := perf.NewValues()
-	p.Set(perf.Metric{
-		Name:      "SSIM",
-		Unit:      "percent",
-		Direction: perf.BiggerIsBetter,
-	}, ssim*100)
-	p.Set(perf.Metric{
-		Name:      "PSNR",
-		Unit:      "dB",
-		Direction: perf.BiggerIsBetter,
-	}, psnr)
+	for tid := 0; tid < numTemporalLayers; tid++ {
+		psnr, ssim, err := computeBitstreamQuality(ctx, yuvFile, outDir, bitstreams,
+			testArgs.Codec, config.width, config.height, config.framerate,
+			tid, numTemporalLayers, temporalLayerIds)
+		if err != nil {
+			if isTLEncoding {
+				return errors.Wrapf(err, "failed computing bitstream quality: tid=%d", tid)
+			}
+			return errors.Wrap(err, "failed computing bitstream quality")
+		}
+
+		psnrStr := "PSNR"
+		ssimStr := "SSIM"
+		if isTLEncoding {
+			psnrStr += "." + fmt.Sprintf("L1T%d", tid+1)
+			ssimStr += "." + fmt.Sprintf("L1T%d", tid+1)
+		}
+		testing.ContextLogf(ctx, "%s: %f", psnrStr, psnr)
+		testing.ContextLogf(ctx, "%s: %f", ssimStr, ssim)
+		p.Set(perf.Metric{
+			Name:      ssimStr,
+			Unit:      "percent",
+			Direction: perf.BiggerIsBetter,
+		}, ssim*100)
+		p.Set(perf.Metric{
+			Name:      psnrStr,
+			Unit:      "dB",
+			Direction: perf.BiggerIsBetter,
+		}, psnr)
+	}
+
 	if err := p.Save(outDir); err != nil {
 		return errors.Wrap(err, "failed to save perf results")
 	}
 
 	// TODO: Save bitstream always, if SSIM or PSNR is bad or never?
 	return nil
+}
+
+// prepareYUVFileWithTL creates a file that contains YUV frames whose temporal layer id is not more than tid.
+// yuvFilePath is the source of YUV frames and tids are the temporal layer ids of them.
+// The filepath of the created file is returned.
+func prepareYUVFileWithTL(ctx context.Context, yuvFilePath string, w, h, tid int, tids []int) (string, error) {
+	yuvFile, err := os.Open(yuvFilePath)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to open YUV file")
+	}
+	defer yuvFile.Close()
+	if _, err := yuvFile.Seek(0, io.SeekStart); err != nil {
+		return "", err
+	}
+
+	newYUVFile, err := encoding.CreatePublicTempFile(filepath.Base(yuvFilePath) + fmt.Sprintf("L1T%d", tid+1))
+	if err != nil {
+		return "", errors.Wrap(err, "failed to create a temporary YUV file")
+	}
+	keep := false
+	defer func() {
+		newYUVFile.Close()
+		if !keep {
+			os.Remove(newYUVFile.Name())
+		}
+	}()
+
+	// This code assumes yuvFile contains YUV 4:2:0
+	planeLen := int(w*h) + int(math.RoundToEven(float64(w))*math.RoundToEven(float64(h))/2.0)
+	numYUVFrames := len(tids)
+	if stat, err := yuvFile.Stat(); err != nil {
+		return "", errors.Wrap(err, "failed to getting a YUV file size")
+	} else if stat.Size() != int64(planeLen*numYUVFrames) {
+		return "", errors.Errorf("unexpected file size: expected=%d, actual=%d", planeLen*numYUVFrames, stat.Size())
+	}
+
+	endOfFile := false
+	buf := make([]byte, planeLen)
+	for i := 0; i < numYUVFrames && !endOfFile; i++ {
+		readSize, err := yuvFile.Read(buf)
+		if err == io.EOF {
+			endOfFile = true
+		} else if err != nil {
+			return "", err
+		} else if readSize != 0 && readSize != planeLen {
+			return "", errors.Errorf("unexpected read size, expected=%d, actual=%d", planeLen, readSize)
+		}
+
+		if tids[i] > tid {
+			continue
+		}
+
+		writeSize, err := newYUVFile.Write(buf)
+		if err != nil {
+			return "", err
+		} else if writeSize != planeLen {
+			return "", errors.Errorf("invalid writing size, got=%d, want=%d",
+				writeSize, planeLen)
+		}
+	}
+
+	keep = true
+	return newYUVFile.Name(), nil
 }
