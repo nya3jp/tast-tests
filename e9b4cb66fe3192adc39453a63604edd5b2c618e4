@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5424ec41_952caf8c",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-07T15:53:51Z",
+      "side": 1,
+      "message": "Yes, ish. On the dut we could `ls /sys/block/sd*/removable` and wait for a new result to show up there. We don\u0027t know which device the usb drive will be, and we don\u0027t know if there is already another usb device present on the dut, so to be sure, we would have to:\n\nSetUSBMuxState(ctx, servo.USBMuxOff) to make sure the dut can\u0027t see it, then `ls /sys/block/sd*/removable`, to find the false positive devices, then SetUSBMuxState(ctx, servo.USBMuxDUT), and then ls for new devices. Which would take a lot more time than the sleep.",
+      "parentUuid": "471df59c_3f9d852b",
+      "revId": "e9b4cb66fe3192adc39453a63604edd5b2c618e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28754285_3dcd679a",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7d583b1_7ad3ad73",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-07T15:53:51Z",
+      "side": 1,
+      "message": "I tried menu switcher, it works. I don\u0027t have a tablet, so I haven\u0027t tried that one.",
+      "parentUuid": "28754285_3dcd679a",
+      "revId": "e9b4cb66fe3192adc39453a63604edd5b2c618e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "912f07a3_391649d8",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-10-06T22:45:07Z",
       "side": 1,
       "message": "nit, add a comment for doesUSBDevHaveTastFiles.",
+      "revId": "e9b4cb66fe3192adc39453a63604edd5b2c618e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fcace78_f59660e9",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-07T15:53:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "912f07a3_391649d8",
       "revId": "e9b4cb66fe3192adc39453a63604edd5b2c618e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
