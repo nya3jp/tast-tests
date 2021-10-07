@@ -1,0 +1,32 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.inputs;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/inputs";
+
+// TouchscreenService provides some operations of a touchscreen device.
+service TouchscreenService {
+  // NewChrome logs into a Chrome session as a fake user. CloseChrome must be called later
+  // to clean up the associated resources.
+  rpc NewChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // CloseChrome releases the resources obtained by NewChrome.
+  rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // FindPhysicalTouchscreen finds /dev/input/event* file for a physical touchscreen.
+  rpc FindPhysicalTouchscreen (google.protobuf.Empty) returns (FindPhysicalTouchscreenResponse) {}
+
+  // TouchscreenTap injects a tap event to the touch screen.
+  rpc TouchscreenTap (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+// FindPhysicalTouchscreenResponse provides the path to /dev/input/event* for a physical trackscreen.
+message FindPhysicalTouchscreenResponse {
+  string path = 1;
+}
