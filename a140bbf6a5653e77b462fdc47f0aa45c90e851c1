@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3c69a89_081116c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-07T22:18:43Z",
+      "side": 1,
+      "message": "I do not think this is a good approach to workaround. Does MakeVisible work here?\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/input/voice/audio.go?l\u003d93",
+      "parentUuid": "2745ed8e_0eb7498e",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abf46185_705fc650",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
         "patchSetId": 2
