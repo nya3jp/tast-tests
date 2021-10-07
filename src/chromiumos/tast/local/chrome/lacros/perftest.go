@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
+	"chromiumos/tast/testing"
 )
 
 // CleanupCallback is a callback that should be deferred to clean up test resources.
@@ -85,26 +86,32 @@ func waitForStableEnvironment(ctx context.Context) error {
 
 // SetupCrosTestWithPage opens a cros-chrome page after waiting for a stable environment (CPU temperature, etc).
 func SetupCrosTestWithPage(ctx context.Context, f launcher.FixtValue, url string) (*chrome.Conn, CleanupCallback, error) {
-	if err := waitForStableEnvironment(ctx); err != nil {
-		return nil, nil, err
-	}
-
 	conn, err := f.Chrome().NewConn(ctx, url)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to open new tab")
 	}
-	return conn, func(ctx context.Context) error {
+
+	cleanup := func(ctx context.Context) error {
 		conn.CloseTarget(ctx)
 		conn.Close()
 		return nil
-	}, nil
+	}
+
+	if err := waitForStableEnvironment(ctx); err != nil {
+		if cerr := cleanup(ctx); cerr != nil {
+			testing.ContextLog(ctx, "Failed to clean up: ", cerr)
+		}
+		return nil, nil, err
+	}
+
+	return conn, cleanup, err
 }
 
 // SetupLacrosTestWithPage opens a lacros-chrome page after waiting for a stable environment (CPU temperature, etc).
 func SetupLacrosTestWithPage(ctx context.Context, f launcher.FixtValue, url string) (
 	retConn *chrome.Conn, retTConn *chrome.TestConn, retL *launcher.LacrosChrome, retCleanup CleanupCallback, retErr error) {
-	// Launch lacros-chrome with about:blank loaded first - we don't want to include startup cost.
-	l, err := launcher.LaunchLacrosChrome(ctx, f)
+	// Launch lacros-chrome with given url.
+	l, err := launcher.LaunchLacrosChromeWithURL(ctx, f, url)
 	if err != nil {
 		return nil, nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 	}
@@ -123,11 +130,7 @@ func SetupLacrosTestWithPage(ctx context.Context, f launcher.FixtValue, url stri
 		return nil, nil, nil, nil, errors.Wrap(err, "failed to connect to test API")
 	}
 
-	if err := waitForStableEnvironment(ctx); err != nil {
-		return nil, nil, nil, nil, err
-	}
-
-	conn, err := l.NewConn(ctx, url)
+	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetURL(url))
 	if err != nil {
 		return nil, nil, nil, nil, errors.Wrap(err, "failed to open new tab")
 	}
@@ -137,9 +140,8 @@ func SetupLacrosTestWithPage(ctx context.Context, f launcher.FixtValue, url stri
 		return nil
 	}, "")
 
-	// Close the initial "about:blank" tab present at startup.
-	if err := l.CloseAboutBlank(ctx, f.TestAPIConn(), 0); err != nil {
-		return nil, nil, nil, nil, errors.Wrap(err, "failed to close about:blank tab")
+	if err := waitForStableEnvironment(ctx); err != nil {
+		return nil, nil, nil, nil, err
 	}
 
 	return conn, ltconn, l, cleanup, nil
