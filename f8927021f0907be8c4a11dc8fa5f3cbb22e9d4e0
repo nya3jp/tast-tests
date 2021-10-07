@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61259ec2_6294ea02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-10-07T22:38:01Z",
+      "side": 1,
+      "message": "Yury, PTAL too. This is the last one for core scheduling.",
+      "revId": "f8927021f0907be8c4a11dc8fa5f3cbb22e9d4e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
