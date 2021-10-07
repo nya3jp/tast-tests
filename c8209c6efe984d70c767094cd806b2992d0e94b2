@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b4e1661_b5349b9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-07T11:45:38Z",
+      "side": 1,
+      "message": "dependency to break an import cycle",
+      "range": {
+        "startLine": 10,
+        "startChar": 50,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "c8209c6efe984d70c767094cd806b2992d0e94b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22190830_0a47f4c8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -14,6 +37,46 @@
       "writtenOn": "2021-10-07T11:35:13Z",
       "side": 1,
       "message": "I don\u0027t really like the new package name, can you come up with something better?",
+      "revId": "c8209c6efe984d70c767094cd806b2992d0e94b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24e41cde_8668ff10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-07T11:45:38Z",
+      "side": 1,
+      "message": "LGMT % nit, no great idea for a better package name",
+      "revId": "c8209c6efe984d70c767094cd806b2992d0e94b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d29a42_7208823f",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrostest/perftest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-07T11:45:38Z",
+      "side": 1,
+      "message": "nit: maybe testutil, but it would become a bit too generic. lacrostestutil is too long IMO.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 18
+      },
       "revId": "c8209c6efe984d70c767094cd806b2992d0e94b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
