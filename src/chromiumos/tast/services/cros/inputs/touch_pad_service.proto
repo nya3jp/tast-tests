@@ -1,0 +1,38 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.inputs;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/inputs";
+
+// TouchpadService provides some operations of a touchpad device.
+service TouchpadService {
+
+  // NewChrome logs into a Chrome session as a fake user. CloseChrome must be called later
+  // to clean up the associated resources.
+  rpc NewChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  
+  // CloseChrome releases the resources obtained by NewChrome.
+  rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // touchpadSwipe injects a swipe event to the touchpad.
+  rpc TouchpadSwipe (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // ReadEvtestTouchPad reads from the evtest output and decodes the touchpad actions that evtest receives.
+  rpc ReadEvtestTouchpad (ReadEvtestTouchpadRequest) returns (ReadEvtestTouchpadResponse) {}
+}
+
+// ReadEvtestTouchPadRequest sets the timeout for detection on the touch pad.
+message ReadEvtestTouchpadRequest {
+  uint32 duration = 1;
+}
+
+// ReadEvtestTouchPadResponse returns a bool value to indicate whether any touch pad action is received by evtest.
+message ReadEvtestTouchpadResponse {
+  bool tp_event_detected = 1;
+}
