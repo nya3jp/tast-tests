@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03a0ada3_479fc0c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-07T22:43:57Z",
+      "side": 1,
+      "message": "CQ failure on puff-cq \"failed to install chromeos-base/protofiles-0.0.49\" doesn\u0027t seem to be related. submitting now.",
+      "revId": "fb8afb2aeeb340d90bcf06021e444913060d0d82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
