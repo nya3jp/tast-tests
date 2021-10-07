@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fd55b0e_75df59aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-07T19:01:55Z",
+      "side": 1,
+      "message": "sorry for the delay, things look good, but still have some concerns about using draganddrop.go rather than launcher.go.\n\nmany of the existing launcher tests support tablet mode, so I think it\u0027s worth looking into. I\u0027m not familiar with the specifics, though, perhaps +seewaifu@ or +jonfan@ can weigh in on whether we need separate touch controls for tablet mode launcher tests",
+      "revId": "046bd37266740d637c043fe5276b6e5b808e49fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

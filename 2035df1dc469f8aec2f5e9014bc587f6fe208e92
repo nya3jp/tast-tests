@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18a09d88_69b2d3d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-07T19:01:55Z",
+      "side": 1,
+      "message": "I think launcher.go should support tablet mode devices as well. Some of the launcher tests have an explicit tablet mode subtest:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go\n\nso I believe tablets should be supported with some of the existing libraries.",
+      "parentUuid": "faa6e46a_b960f0c1",
+      "revId": "2035df1dc469f8aec2f5e9014bc587f6fe208e92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c5994a7_5adc7e66",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drops.go",
         "patchSetId": 2
