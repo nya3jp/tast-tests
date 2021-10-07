@@ -16,6 +16,24 @@
       "message": "I\u0027m not a go expert, but from kernel driver PoV this is the right thing to do.. thanks",
       "revId": "3fd029ce8cbf0e8dea89b7e4e203aad07c99f689",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d328a62_50798f4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-07T02:37:40Z",
+      "side": 1,
+      "message": "Manually run update_kernel.sh locks me out of sshing into my dut.\nTesting on existing v5.4 works as no-op as GetHangCheckTimer always fails.",
+      "parentUuid": "f9af7307_d1482b31",
+      "revId": "3fd029ce8cbf0e8dea89b7e4e203aad07c99f689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
