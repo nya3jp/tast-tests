@@ -39,6 +39,9 @@ const (
 type TestArgs struct {
 	// Codec is the codec of a bitstream produced by an encoder.
 	Codec videotype.Codec
+	// ScalabilityMode is a "scalabilityMode" identifier.
+	// https://www.w3.org/TR/webrtc-svc/#scalabilitymodes
+	ScalabilityMode string
 	// Acceleration denotes which encoder is used, hardware or software.
 	Acceleration HardwareAcceleration
 }
@@ -128,6 +131,41 @@ func outputJSLogAndError(ctx context.Context, conn *chrome.Conn, callErr error) 
 	return callErr
 }
 
+// verifyTLStruct verifies the number of frames in each temporal layer structure matches
+// the ones in an expected temporal layer structure. See https://www.w3.org/TR/webrtc-svc/#dependencydiagrams*
+// for the expected temporal layer structures.
+func verifyTLStruct(numTemporalLayers, numFrames int, numFramesInTL []int) error {
+	expectedNumFramesInTL := make([]int, len(numFramesInTL))
+	switch numTemporalLayers {
+	case 2:
+		expectedNumFramesInTL[0] = (numFrames + 1) / 2
+		expectedNumFramesInTL[1] = numFrames / 2
+	case 3:
+		expectedNumFramesInTL[0] = numFrames / 4
+		expectedNumFramesInTL[1] = numFrames / 4
+		expectedNumFramesInTL[2] = numFrames / 4 * 2
+		if numFrames%4 >= 1 {
+			expectedNumFramesInTL[0]++
+		}
+		if numFrames%4 >= 2 {
+			expectedNumFramesInTL[2]++
+		}
+		if numFrames%4 >= 3 {
+			expectedNumFramesInTL[1]++
+		}
+	default:
+		return nil
+	}
+
+	for i := 0; i < len(numFramesInTL); i++ {
+		if expectedNumFramesInTL[i] != numFramesInTL[i] {
+			return errors.Errorf("unexpected temporal layer structure: expected numFramesInTL=%v, actual numFramesInTL=%v", expectedNumFramesInTL, numFramesInTL)
+		}
+	}
+
+	return nil
+}
+
 // RunEncodeTest tests encoding in WebCodecs API. It verifies a specified encoder is used and
 // the produced bitstream.
 func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, testArgs TestArgs, videoFile, outDir string) error {
@@ -178,7 +216,8 @@ func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 	}
 
 	bitrate := config.width * config.height * config.framerate / 10
-	if err := conn.Call(ctx, nil, "EncodeAndSave", codec, testArgs.Acceleration, config.width, config.height, bitrate, config.framerate); err != nil {
+	if err := conn.Call(ctx, nil, "EncodeAndSave", codec, testArgs.Acceleration, config.width, config.height,
+		bitrate, config.framerate, testArgs.ScalabilityMode); err != nil {
 		return outputJSLogAndError(cleanupCtx, conn, errors.Wrap(err, "failed executing EncodeAndSave"))
 	}
 
@@ -205,6 +244,46 @@ func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 		return outputJSLogAndError(cleanupCtx, conn, errors.Wrap(err, "error getting bitstream"))
 	}
 
+	var numTemporalLayers int
+	switch testArgs.ScalabilityMode {
+	case "":
+		numTemporalLayers = 1
+	case "L1T2":
+		numTemporalLayers = 2
+	case "L1T3":
+		numTemporalLayers = 3
+	default:
+		return errors.Errorf("unknown scalabilityMode: %s", testArgs.ScalabilityMode)
+	}
+
+	if numTemporalLayers > 1 {
+		var temporalLayerIds []int
+		if err := conn.Eval(ctx, "bitstreamSaver.getTemporalLayerIds()", &temporalLayerIds); err != nil {
+			return outputJSLogAndError(cleanupCtx, conn, errors.Wrap(err, "error getting temporal layer ids"))
+		}
+
+		if len(temporalLayerIds) != config.numFrames {
+			return errors.Errorf("temporal layer ids mismatch: expected=%d, actual=%d", config.numFrames, len(temporalLayerIds))
+		}
+
+		numFramesInTL := make([]int, numTemporalLayers)
+		for _, tid := range temporalLayerIds {
+			if tid >= numTemporalLayers || tid < 0 {
+				return errors.Errorf("invalid temporal layer id: %d", tid)
+			}
+			numFramesInTL[tid]++
+		}
+		for tid, frames := range numFramesInTL {
+			if frames == 0 {
+				return errors.Errorf("no frame with tid=%d", tid)
+			}
+		}
+		if err := verifyTLStruct(numTemporalLayers, config.numFrames, numFramesInTL); err != nil {
+			return err
+		}
+	}
+
+	// TODO(b/196307009): Compute quality of each temporal layer.
 	bitstreamFile, err := SaveBitstream(bitstreams, testArgs.Codec, config.width, config.height, config.framerate, outDir)
 	if err != nil {
 		return errors.Wrap(err, "failed saving bitstream")
