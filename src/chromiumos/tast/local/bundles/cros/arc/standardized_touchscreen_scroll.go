@@ -26,7 +26,7 @@ func init() {
 			{
 				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchScreenScrollTest),
 				ExtraSoftwareDeps: []string{"android_p"},
-				Fixture:           "arcBooted",
+				Fixture:           "arcBootedInClamshellMode",
 				ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 			},
 			{
@@ -40,7 +40,7 @@ func init() {
 				Name:              "vm",
 				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchScreenScrollTest),
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Fixture:           "arcBooted",
+				Fixture:           "arcBootedInClamshellMode",
 				ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 			},
 			{

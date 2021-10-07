@@ -26,14 +26,14 @@ func init() {
 			{
 				Val:               standardizedtestutil.GetClamshellTests(runStandardizedMouseScrollTest),
 				ExtraSoftwareDeps: []string{"android_p"},
-				Fixture:           "arcBooted",
+				Fixture:           "arcBootedInClamshellMode",
 				ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 			},
 			{
 				Name:              "vm",
 				Val:               standardizedtestutil.GetClamshellTests(runStandardizedMouseScrollTest),
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Fixture:           "arcBooted",
+				Fixture:           "arcBootedInClamshellMode",
 				ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 			},
 		},
