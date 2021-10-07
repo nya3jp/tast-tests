@@ -37,18 +37,9 @@ func init() {
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		Params: []testing.Param{{
-			Name:    "normal",
-			Fixture: fixture.NormalMode,
-			Val: bootModeTestParams{
-				bootToMode: fwCommon.BootModeNormal,
-			},
-			ExtraAttr: []string{"firmware_smoke"},
-			Timeout:   15 * time.Minute,
-		}, {
 			Name:    "normal_warm",
 			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
-				bootToMode:     fwCommon.BootModeNormal,
 				resetAfterBoot: true,
 				resetType:      firmware.WarmReset,
 			},
@@ -58,25 +49,15 @@ func init() {
 			Name:    "normal_cold",
 			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
-				bootToMode:     fwCommon.BootModeNormal,
 				resetAfterBoot: true,
 				resetType:      firmware.ColdReset,
 			},
 			ExtraAttr: []string{"firmware_smoke"},
 			Timeout:   15 * time.Minute,
 		}, {
-			Name:    "rec",
-			Fixture: fixture.NormalMode,
-			Val: bootModeTestParams{
-				bootToMode: fwCommon.BootModeRecovery,
-			},
-			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
-			Timeout:   60 * time.Minute,
-		}, {
 			Name:    "rec_warm",
-			Fixture: fixture.NormalMode,
+			Fixture: fixture.RecMode,
 			Val: bootModeTestParams{
-				bootToMode:     fwCommon.BootModeRecovery,
 				resetAfterBoot: true,
 				resetType:      firmware.WarmReset,
 			},
@@ -84,27 +65,17 @@ func init() {
 			Timeout:   60 * time.Minute,
 		}, {
 			Name:    "rec_cold",
-			Fixture: fixture.NormalMode,
+			Fixture: fixture.RecMode,
 			Val: bootModeTestParams{
-				bootToMode:     fwCommon.BootModeRecovery,
 				resetAfterBoot: true,
 				resetType:      firmware.ColdReset,
 			},
 			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 			Timeout:   60 * time.Minute,
 		}, {
-			Name:    "dev",
-			Fixture: fixture.NormalMode,
+			Name:    "dev_usb_cold",
+			Fixture: fixture.USBDevMode,
 			Val: bootModeTestParams{
-				bootToMode: fwCommon.BootModeDev,
-			},
-			ExtraAttr: []string{"firmware_experimental"},
-			Timeout:   15 * time.Minute,
-		}, {
-			Name:    "dev_usb",
-			Fixture: fixture.NormalMode,
-			Val: bootModeTestParams{
-				bootToMode:     fwCommon.BootModeUSBDev,
 				resetAfterBoot: true,
 				resetType:      firmware.ColdReset,
 			},
@@ -112,9 +83,8 @@ func init() {
 			Timeout:   60 * time.Minute,
 		}, {
 			Name:    "dev_warm",
-			Fixture: fixture.NormalMode,
+			Fixture: fixture.DevMode,
 			Val: bootModeTestParams{
-				bootToMode:     fwCommon.BootModeDev,
 				resetAfterBoot: true,
 				resetType:      firmware.WarmReset,
 			},
@@ -122,9 +92,8 @@ func init() {
 			Timeout:   15 * time.Minute,
 		}, {
 			Name:    "dev_cold",
-			Fixture: fixture.NormalMode,
+			Fixture: fixture.DevMode,
 			Val: bootModeTestParams{
-				bootToMode:     fwCommon.BootModeDev,
 				resetAfterBoot: true,
 				resetType:      firmware.ColdReset,
 			},
@@ -147,15 +116,6 @@ func init() {
 			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
 			Timeout:   60 * time.Minute,
 		}, {
-			Name:    "dev_gbb",
-			Fixture: fixture.NormalMode,
-			Val: bootModeTestParams{
-				bootToMode:    fwCommon.BootModeDev,
-				allowGBBForce: true,
-			},
-			ExtraAttr: []string{"firmware_experimental"},
-			Timeout:   15 * time.Minute,
-		}, {
 			Name:    "dev_gbb_to_rec",
 			Fixture: fixture.DevModeGBB,
 			Val: bootModeTestParams{
@@ -172,14 +132,6 @@ func init() {
 			},
 			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
 			Timeout:   60 * time.Minute,
-		}, {
-			Name:    "dev_gbb_to_normal",
-			Fixture: fixture.DevModeGBB,
-			Val: bootModeTestParams{
-				bootToMode: fwCommon.BootModeNormal,
-			},
-			ExtraAttr: []string{"firmware_experimental"},
-			Timeout:   15 * time.Minute,
 		}},
 	})
 }
@@ -239,21 +191,6 @@ func BootMode(ctx context.Context, s *testing.State) {
 		}
 	}(ctxForCleanup)
 
-	// Switch to tc.bootToMode.
-	// RebootToMode ensures that the DUT winds up in the expected boot mode afterward.
-	var opts []firmware.ModeSwitchOption
-	if tc.allowGBBForce {
-		opts = append(opts, firmware.AllowGBBForce)
-	} else if !pv.ForcesDevMode {
-		// Don't check the dev-force GBB flag if there's no reason for it to have been set.
-		opts = append(opts, firmware.AssumeGBBFlagsCorrect)
-	}
-	s.Logf("Transitioning to %s mode with options %+v", tc.bootToMode, opts)
-	if err = ms.RebootToMode(ctx, tc.bootToMode, opts...); err != nil {
-		s.Fatalf("Error during transition from %s to %s: %+v", fwCommon.BootModeNormal, tc.bootToMode, err)
-	}
-	s.Log("Transition completed successfully")
-
 	// Reset the DUT, if the test case calls for it.
 	// ModeAwareReboot ensures the DUT winds up in the expected boot mode afterward.
 	if tc.resetAfterBoot {
@@ -261,18 +198,42 @@ func BootMode(ctx context.Context, s *testing.State) {
 		if err := ms.ModeAwareReboot(ctx, tc.resetType); err != nil {
 			s.Fatal("Error resetting DUT: ", err)
 		}
+		// See the doc for ModeAwareReboot, the boot mode should be unchanged except that Recovery goes to normal.
+		if curr, err := h.Reporter.CurrentBootMode(ctx); err != nil {
+			s.Fatal("Failed to determine DUT boot mode: ", err)
+		} else if curr != pv.BootMode && pv.BootMode != fwCommon.BootModeRecovery {
+			s.Fatalf("Wrong boot mode: got %q, want %q", curr, pv.BootMode)
+		} else if curr != fwCommon.BootModeNormal && pv.BootMode == fwCommon.BootModeRecovery {
+			s.Fatalf("Wrong boot mode: got %q, want %q", curr, fwCommon.BootModeNormal)
+		}
 		s.Log("Reset completed successfully")
-	}
-
-	// Switch back to normal mode.
-	// This isn't necessary if the DUT is already in normal mode.
-	if curr, err := h.Reporter.CurrentBootMode(ctx); err != nil {
-		s.Fatal("Failed to determine DUT boot mode: ", err)
-	} else if curr != fwCommon.BootModeNormal {
-		s.Logf("Transitioning back from %s to normal mode", curr)
-		if err = ms.RebootToMode(ctx, fwCommon.BootModeNormal); err != nil {
-			s.Fatalf("Error returning from %s to %s: %+v", curr, fwCommon.BootModeNormal, err)
+	} else {
+		// Switch to tc.bootToMode.
+		// RebootToMode ensures that the DUT winds up in the expected boot mode afterward.
+		var opts []firmware.ModeSwitchOption
+		if tc.allowGBBForce {
+			opts = append(opts, firmware.AllowGBBForce)
+		} else if !pv.ForcesDevMode {
+			// Don't check the dev-force GBB flag if there's no reason for it to have been set.
+			opts = append(opts, firmware.AssumeGBBFlagsCorrect)
+		}
+		s.Logf("Transitioning to %s mode with options %+v", tc.bootToMode, opts)
+		if err = ms.RebootToMode(ctx, tc.bootToMode, opts...); err != nil {
+			s.Fatalf("Error during transition from %s to %s: %+v", fwCommon.BootModeNormal, tc.bootToMode, err)
 		}
 		s.Log("Transition completed successfully")
+
+		// Verify the boot mode and then reboot to normal.
+		if curr, err := h.Reporter.CurrentBootMode(ctx); err != nil {
+			s.Fatal("Failed to determine DUT boot mode: ", err)
+		} else if curr != tc.bootToMode {
+			s.Fatalf("Wrong boot mode: got %q, want %q", curr, pv.BootMode)
+		} else if curr != fwCommon.BootModeNormal {
+			s.Logf("Transitioning back from %s to normal mode", curr)
+			if err = ms.RebootToMode(ctx, fwCommon.BootModeNormal); err != nil {
+				s.Fatalf("Error returning from %s to %s: %+v", curr, fwCommon.BootModeNormal, err)
+			}
+			s.Log("Transition completed successfully")
+		}
 	}
 }
