@@ -69,7 +69,7 @@ func RunCrostiniPostTest(ctx context.Context, p PreData) {
 
 	// VM logs are stored on the host, so we don't need the VM to
 	// be running at all to get them.
-	trySaveVMLogs(ctx, dir, p.Chrome.NormalizedUser())
+	trySaveVMLogs(ctx, p.post, dir, p.Chrome.NormalizedUser())
 }
 
 // When we run trySaveContainerLogs we only want to capture logs since we last
@@ -115,23 +115,18 @@ func trySaveContainerLogs(ctx context.Context, dir string, cont *vm.Container) {
 	cursor = string(output[pos+len(cursorMarker):])
 }
 
-// Persistent reader for VM logs, keeps track of where it was up to.
-// Internally it closes the old file and opens the new as logs get rotated, we
-// never explicitly close it.
-var logReader *vm.LogReader
-
 // trySaveVMLogs writes logs since the last call to the
 // current test's output folder.
-func trySaveVMLogs(ctx context.Context, dir, user string) {
-	if logReader == nil {
-		var err error
-		logReader, err = vm.NewLogReaderForVM(ctx, vm.DefaultVMName, user)
+func trySaveVMLogs(ctx context.Context, post *postTestData, dir, user string) {
+	if post.vmLogReader == nil {
+		logReader, err := vm.NewLogReaderForVM(ctx, vm.DefaultVMName, user)
 		if err != nil {
 			testing.ContextLog(ctx, "Error creating log reader: ", err)
 			return
 		}
+		post.vmLogReader = logReader
 	}
-	if err := logReader.TrySaveLogs(ctx, dir); err != nil {
+	if err := post.vmLogReader.TrySaveLogs(ctx, dir); err != nil {
 		testing.ContextLog(ctx, "Error saving logs: ", err)
 	}
 }

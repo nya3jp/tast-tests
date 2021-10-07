@@ -44,6 +44,11 @@ func NewLogReaderForVM(ctx context.Context, vmName, user string) (*LogReader, er
 	return &LogReader{vmName, ownerID, reader}, nil
 }
 
+// Close closes the underlying syslog.LineReader.
+func (r *LogReader) Close() error {
+	return r.reader.Close()
+}
+
 // TrySaveLogs attempts to save the VM logs to the given directory. The logs
 // will be saved in a file called "<vm name>_logs.txt".
 func (r *LogReader) TrySaveLogs(ctx context.Context, dir string) error {
