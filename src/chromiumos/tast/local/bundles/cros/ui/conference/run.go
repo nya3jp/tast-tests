@@ -55,13 +55,25 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 	}
 	defer setBatteryNormal(cleanUpCtx)
 
+	// Give 10 seconds to set initial settings. It is critical to ensure
+	// cleanupSetting can be executed with a valid context so it has its
+	// own cleanup context from other cleanup functions. This is to avoid
+	// other cleanup functions executed earlier to use up the context time.
+	cleanupSettingsCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	cleanupSetting, err := cuj.InitializeSetting(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to set initial settings")
+	}
+	defer cleanupSetting(cleanupSettingsCtx)
+
 	// Shorten the context to cleanup recorder.
 	cleanUpRecorderCtx := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-
 	testing.ContextLog(ctx, "Start recording actions")
-
 	recorder, err := cuj.NewRecorder(ctx, cr, cuj.MetricConfigs()...)
 	if err != nil {
 		return errors.Wrap(err, "failed to create the recorder")

@@ -108,6 +108,20 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 	// run and the battery change can be set back to normal.
 	defer setBatteryNormal(cleanupCtx)
 
+	// Give 10 seconds to set initial settings. It is critical to ensure
+	// cleanupSetting can be executed with a valid context so it has its
+	// own cleanup context from other cleanup functions. This is to avoid
+	// other cleanup functions executed earlier to use up the context time.
+	cleanupSettingsCtx := ctx
+	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	cleanupSetting, err := cuj.InitializeSetting(ctx)
+	if err != nil {
+		s.Fatal("Failed to set initial settings")
+	}
+	defer cleanupSetting(cleanupSettingsCtx)
+
 	pv := perf.NewValues()
 
 	// Execute Suspend function outside of recorder at the beginning because suspend will pause the
