@@ -70,6 +70,30 @@
       },
       "revId": "9c6f51496f7a23d6b5eef97974c5f1b0e38dac18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33f79007_af585b47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1520077
+      },
+      "writtenOn": "2021-10-07T06:46:13Z",
+      "side": 1,
+      "message": "I got what you meant now. I\u0027ll update a patch to take care of it. Thanks",
+      "parentUuid": "4408cb9b_88a8d1a8",
+      "range": {
+        "startLine": 321,
+        "startChar": 65,
+        "endLine": 321,
+        "endChar": 66
+      },
+      "revId": "9c6f51496f7a23d6b5eef97974c5f1b0e38dac18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
