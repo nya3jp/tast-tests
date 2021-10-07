@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware"
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 )
 
@@ -33,22 +33,20 @@ func init() {
 		Func:         BootMode,
 		Desc:         "Verifies that remote tests can boot the DUT into, and confirm that the DUT is in, the different firmware modes (normal, dev, and recovery)",
 		Contacts:     []string{"cros-fw-engprod@google.com"},
-		Data:         pre.Data,
-		ServiceDeps:  pre.ServiceDeps,
-		SoftwareDeps: pre.SoftwareDeps,
-		Vars:         pre.Vars,
 		Attr:         []string{"group:firmware"},
+		SoftwareDeps: []string{"crossystem", "flashrom"},
+		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		Params: []testing.Param{{
-			Name: "normal",
-			Pre:  pre.NormalMode(),
+			Name:    "normal",
+			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeNormal,
 			},
 			ExtraAttr: []string{"firmware_smoke"},
 			Timeout:   15 * time.Minute,
 		}, {
-			Name: "normal_warm",
-			Pre:  pre.NormalMode(),
+			Name:    "normal_warm",
+			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
 				bootToMode:     fwCommon.BootModeNormal,
 				resetAfterBoot: true,
@@ -57,8 +55,8 @@ func init() {
 			ExtraAttr: []string{"firmware_smoke"},
 			Timeout:   15 * time.Minute,
 		}, {
-			Name: "normal_cold",
-			Pre:  pre.NormalMode(),
+			Name:    "normal_cold",
+			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
 				bootToMode:     fwCommon.BootModeNormal,
 				resetAfterBoot: true,
@@ -67,16 +65,16 @@ func init() {
 			ExtraAttr: []string{"firmware_smoke"},
 			Timeout:   15 * time.Minute,
 		}, {
-			Name: "rec",
-			Pre:  pre.NormalMode(),
+			Name:    "rec",
+			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeRecovery,
 			},
 			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 			Timeout:   60 * time.Minute,
 		}, {
-			Name: "rec_warm",
-			Pre:  pre.NormalMode(),
+			Name:    "rec_warm",
+			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
 				bootToMode:     fwCommon.BootModeRecovery,
 				resetAfterBoot: true,
@@ -85,8 +83,8 @@ func init() {
 			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 			Timeout:   60 * time.Minute,
 		}, {
-			Name: "rec_cold",
-			Pre:  pre.NormalMode(),
+			Name:    "rec_cold",
+			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
 				bootToMode:     fwCommon.BootModeRecovery,
 				resetAfterBoot: true,
@@ -95,16 +93,16 @@ func init() {
 			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 			Timeout:   60 * time.Minute,
 		}, {
-			Name: "dev",
-			Pre:  pre.NormalMode(),
+			Name:    "dev",
+			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeDev,
 			},
 			ExtraAttr: []string{"firmware_experimental"},
 			Timeout:   15 * time.Minute,
 		}, {
-			Name: "dev_usb",
-			Pre:  pre.NormalMode(),
+			Name:    "dev_usb",
+			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
 				bootToMode:     fwCommon.BootModeUSBDev,
 				resetAfterBoot: true,
@@ -113,8 +111,8 @@ func init() {
 			ExtraAttr: []string{"firmware_usb", "firmware_experimental"},
 			Timeout:   60 * time.Minute,
 		}, {
-			Name: "dev_warm",
-			Pre:  pre.NormalMode(),
+			Name:    "dev_warm",
+			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
 				bootToMode:     fwCommon.BootModeDev,
 				resetAfterBoot: true,
@@ -123,8 +121,8 @@ func init() {
 			ExtraAttr: []string{"firmware_experimental"},
 			Timeout:   15 * time.Minute,
 		}, {
-			Name: "dev_cold",
-			Pre:  pre.NormalMode(),
+			Name:    "dev_cold",
+			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
 				bootToMode:     fwCommon.BootModeDev,
 				resetAfterBoot: true,
@@ -133,24 +131,24 @@ func init() {
 			ExtraAttr: []string{"firmware_experimental"},
 			Timeout:   15 * time.Minute,
 		}, {
-			Name: "dev_to_rec",
-			Pre:  pre.DevMode(),
+			Name:    "dev_to_rec",
+			Fixture: fixture.DevMode,
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeRecovery,
 			},
 			ExtraAttr: []string{"firmware_smoke", "firmware_usb"},
 			Timeout:   60 * time.Minute,
 		}, {
-			Name: "rec_to_dev",
-			Pre:  pre.RecMode(),
+			Name:    "rec_to_dev",
+			Fixture: fixture.RecMode,
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeDev,
 			},
 			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
 			Timeout:   60 * time.Minute,
 		}, {
-			Name: "dev_gbb",
-			Pre:  pre.NormalMode(),
+			Name:    "dev_gbb",
+			Fixture: fixture.NormalMode,
 			Val: bootModeTestParams{
 				bootToMode:    fwCommon.BootModeDev,
 				allowGBBForce: true,
@@ -158,16 +156,16 @@ func init() {
 			ExtraAttr: []string{"firmware_experimental"},
 			Timeout:   15 * time.Minute,
 		}, {
-			Name: "dev_gbb_to_rec",
-			Pre:  pre.DevModeGBB(),
+			Name:    "dev_gbb_to_rec",
+			Fixture: fixture.DevModeGBB,
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeRecovery,
 			},
 			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
 			Timeout:   60 * time.Minute,
 		}, {
-			Name: "rec_to_dev_gbb",
-			Pre:  pre.RecMode(),
+			Name:    "rec_to_dev_gbb",
+			Fixture: fixture.RecMode,
 			Val: bootModeTestParams{
 				bootToMode:    fwCommon.BootModeDev,
 				allowGBBForce: true,
@@ -175,8 +173,8 @@ func init() {
 			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
 			Timeout:   60 * time.Minute,
 		}, {
-			Name: "dev_gbb_to_normal",
-			Pre:  pre.DevModeGBB(),
+			Name:    "dev_gbb_to_normal",
+			Fixture: fixture.DevModeGBB,
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeNormal,
 			},
@@ -188,7 +186,7 @@ func init() {
 
 func BootMode(ctx context.Context, s *testing.State) {
 	tc := s.Param().(bootModeTestParams)
-	pv := s.PreValue().(*pre.Value)
+	pv := s.FixtValue().(*fixture.Value)
 	h := pv.Helper
 	ms, err := firmware.NewModeSwitcher(ctx, h)
 	if err != nil {
