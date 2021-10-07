@@ -98,6 +98,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad00ed8_720d5690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/wifi_ap_browse_internet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-07T05:40:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f01cec2e_d1861309",
+      "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f64feb05_341df23c",
@@ -111,6 +129,24 @@
       "writtenOn": "2021-10-01T16:25:53Z",
       "side": 1,
       "message": "Do you have a Google contact? If so, please add the email here. Thanks.",
+      "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71f688e6_e409cd0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/wifi_ap_browse_internet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-07T05:40:28Z",
+      "side": 1,
+      "message": "@Alex,\n\n Please provide the Google contact.\n\nThanks,\nJilani",
+      "parentUuid": "f64feb05_341df23c",
       "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +174,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "000aef8b_f8816315",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/wifi_ap_browse_internet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-07T05:40:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "11c1c213_ed79c78e",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ab9bcd8_37d18f08",
@@ -151,6 +211,30 @@
       "writtenOn": "2021-10-04T07:03:15Z",
       "side": 1,
       "message": "The usual pattern is:\n\u003e  cleanupCtx :\u003d ctx\n\u003e  ctx, cancel :\u003d ctxutil.Shorten(ctx, shill.EnableWaitTime)\n\u003e  defer cancel()\n\u003e  defer enableFunc(cleanupCtx)",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 14
+      },
+      "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20066398_6acb5153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/wifi_ap_browse_internet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-07T05:40:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1ab9bcd8_37d18f08",
       "range": {
         "startLine": 50,
         "startChar": 0,
@@ -197,6 +281,30 @@
       "writtenOn": "2021-10-04T07:03:15Z",
       "side": 1,
       "message": "This can be shortened to:\n\u003e  if enabled, err :\u003d manager.IsEnabled(ctx, shill.TechnologyWifi); err !\u003d nil {\n\u003e  \ts.Fatal(\"Failed to get WiFi enabled state: \", err)\n\u003e  } else if !enabled {\n\u003e  \ts.Fatal(\"Failed to enable wifi: \", err)\n\u003e  }",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "a63c2edb8adcdcce4940e11629d0124dd3e09d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9b0f6ee_43d04c80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/wifi_ap_browse_internet.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-07T05:40:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f4a5670b_9cb0651e",
       "range": {
         "startLine": 58,
         "startChar": 0,
