@@ -207,6 +207,9 @@ type PreData struct {
 	TestAPIConn *chrome.TestConn
 	Container   *vm.Container
 	Keyboard    *input.KeyboardEventWriter
+
+	// Persistent reader for VM logs, see post.go
+	vmLogReader *vm.LogReader
 }
 
 // StartedByDlcStretch ensures that a VM running stretch has
@@ -326,6 +329,9 @@ type preImpl struct {
 	keyboard      *input.KeyboardEventWriter
 	startedOK     bool
 	loginType     loginType
+
+	// Persistent reader for VM logs, see post.go
+	vmLogReader *vm.LogReader
 }
 
 // Interface methods for a testing.Precondition.
@@ -355,7 +361,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			if err := p.cr.ResetState(ctx); err != nil {
 				s.Fatal("Failed to reset chrome's state: ", err)
 			}
-			return PreData{p.cr, p.tconn, p.cont, p.keyboard}
+			return PreData{p.cr, p.tconn, p.cont, p.keyboard, p.vmLogReader}
 		}
 	}
 
@@ -365,7 +371,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	shouldClose := true
 	defer func() {
 		if shouldClose {
-			RunCrostiniPostTest(ctx, PreData{p.cr, p.tconn, p.cont, p.keyboard})
+			RunCrostiniPostTest(ctx, PreData{p.cr, p.tconn, p.cont, p.keyboard, p.vmLogReader})
 			p.cleanUp(ctx, s)
 		}
 	}()
@@ -403,6 +409,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	var err error
 	if p.cr, err = chrome.New(ctx, opts...); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+
+	// VM log reader must be created after chrome is logged in so the cryptohome is available.
+	if vmLogReader, err := vm.NewLogReaderForVM(ctx, vm.DefaultVMName, p.cr.NormalizedUser()); err != nil {
+		s.Log(ctx, "Error creating log reader: ", err)
+	} else {
+		p.vmLogReader = vmLogReader
 	}
 
 	if p.tconn, err = p.cr.TestAPIConn(ctx); err != nil {
@@ -449,7 +462,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 	if err := p.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return PreData{p.cr, p.tconn, p.cont, p.keyboard}
+	return PreData{p.cr, p.tconn, p.cont, p.keyboard, p.vmLogReader}
 }
 
 // keepState returns whether the precondition should keep state from the
@@ -497,6 +510,10 @@ func (p *preImpl) cleanUp(ctx context.Context, s *testing.PreState) {
 			s.Log("Failure closing keyboard: ", err)
 		}
 		p.keyboard = nil
+	}
+
+	if err := p.vmLogReader.Close(); err != nil {
+		s.Log("Failed to close VM log reader: ", err)
 	}
 
 	// Don't uninstall crostini or delete the image for keepState so that

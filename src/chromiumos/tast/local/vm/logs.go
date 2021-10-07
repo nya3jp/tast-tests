@@ -36,12 +36,17 @@ func NewLogReaderForVM(ctx context.Context, vmName, user string) (*LogReader, er
 
 	// Only wait 1 second for the log file to exist, don't want to hang until
 	// timeout if it doesn't exist, instead we continue.
-	reader, err := syslog.NewLineReader(ctx, path, true,
+	reader, err := syslog.NewLineReader(ctx, path, false,
 		&testing.PollOptions{Timeout: 1 * time.Second})
 	if err != nil {
 		return nil, err
 	}
 	return &LogReader{vmName, ownerID, reader}, nil
+}
+
+// Close closes the underlying syslog.LineReader
+func (r *LogReader) Close() error {
+	return r.reader.Close()
 }
 
 // TrySaveLogs attempts to save the VM logs to the given directory. The logs
