@@ -68,6 +68,23 @@
       "message": "Don\u0027t want to remove this right away, since it is still referenced in the UI automation codelab:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_3.md\n\nMaybe it would be best for our team to update that before removing this test",
       "revId": "d7cc112c64bc1256dbe5c0664daf39ffedad072c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83644172_f30f0a2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-07T16:57:36Z",
+      "side": 1,
+      "message": "What about wallpaper.Child ? does that need to be updated or deleted?",
+      "revId": "d7cc112c64bc1256dbe5c0664daf39ffedad072c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
