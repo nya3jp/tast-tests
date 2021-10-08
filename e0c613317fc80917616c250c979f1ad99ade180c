@@ -56,6 +56,30 @@
       },
       "revId": "e0c613317fc80917616c250c979f1ad99ade180c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7c1c4d3_34a96d43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_loopback_latency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-10-08T02:40:20Z",
+      "side": 1,
+      "message": "Sounds good. Actually len(measuredLatencies) \u003d\u003d len(reportedLatencies)",
+      "parentUuid": "4198daaa_7925a721",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 11
+      },
+      "revId": "e0c613317fc80917616c250c979f1ad99ade180c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
