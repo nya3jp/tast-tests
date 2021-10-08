@@ -11,7 +11,7 @@ import (
 	"strconv"
 
 	"chromiumos/tast/common/servo"
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -21,12 +21,8 @@ func init() {
 		Func:         ECBattery,
 		Desc:         "Check battery temperature, voltage, and current readings",
 		Contacts:     []string{"js@semihalf.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
-		Pre:          pre.NormalMode(),
-		Data:         pre.Data,
-		ServiceDeps:  pre.ServiceDeps,
-		SoftwareDeps: pre.SoftwareDeps,
-		Vars:         pre.Vars,
+		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 	})
 }
@@ -60,7 +56,7 @@ func ECBattery(ctx context.Context, s *testing.State) {
 		`
 	)
 
-	h := s.PreValue().(*pre.Value).Helper
+	h := s.FixtValue().(*fixture.Value).Helper
 
 	s.Log("Checking for battery info in sysfs")
 	batteryNameOut, err := h.DUT.Conn().CommandContext(ctx, "bash", "-c", BatteryNameLookupScript).Output()
@@ -70,7 +66,7 @@ func ECBattery(ctx context.Context, s *testing.State) {
 
 	batteryName := bytes.TrimSuffix(batteryNameOut, []byte("\n"))
 	if batteryName == nil {
-		s.Fatal("Cannot find battery in sysfs or device does not have battery installed!")
+		s.Fatal("Cannot find battery in sysfs or device does not have battery installed")
 	}
 
 	s.Log("Battery name is ", batteryName)
@@ -128,8 +124,7 @@ func ECBattery(ctx context.Context, s *testing.State) {
 
 	if batteryTemperature > BatteryTemperatureCelsiusUpperBound ||
 		batteryTemperature < BatteryTemperatureCelsiusLowerBound {
-		s.Fatalf(
-			"Abnormal battery temperature %0.2f (should be within %d-%d C)",
+		s.Fatalf("Abnormal battery temperature %0.2f (should be within %d-%d C)",
 			batteryTemperature,
 			BatteryTemperatureCelsiusLowerBound,
 			BatteryTemperatureCelsiusUpperBound)
