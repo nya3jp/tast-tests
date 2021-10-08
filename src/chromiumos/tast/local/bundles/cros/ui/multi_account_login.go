@@ -22,6 +22,7 @@ func init() {
 			"abergman@google.com",
 			"chromeos-perf-reliability-eng@google.com",
 		},
+		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"ui.MultiAccountLogin.accounts"},
 		Timeout:      60 * time.Minute,
@@ -34,7 +35,7 @@ func MultiAccountLogin(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to parse account list: ", err)
 	}
-	s.Logf("Available accounts: %s", creds)
+	s.Logf("Total accounts to validate: %d", len(creds))
 
 	for _, cred := range creds {
 		gaia := chrome.GAIALogin(cred)
