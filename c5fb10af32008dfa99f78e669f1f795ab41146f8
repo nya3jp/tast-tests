@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c12cf862_c0db01df",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-08T01:39:16Z",
+      "side": 1,
+      "message": "I think we can inline this now.",
+      "revId": "c5fb10af32008dfa99f78e669f1f795ab41146f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e37a4319_9248d5a2",
+        "filename": "src/chromiumos/tast/local/policyutil/cyclebreakpolicyutil/cyclebreakpolicyutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-08T01:39:16Z",
+      "side": 1,
+      "message": "This looks redundant to me. Callers can just use lacros.SetUp and lacros.CloseLacrosChrome directly without extra lines.",
+      "revId": "c5fb10af32008dfa99f78e669f1f795ab41146f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
