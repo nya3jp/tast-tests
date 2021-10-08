@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "502a98a8_767f3ab1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-08T01:33:46Z",
+      "side": 1,
+      "message": "this is what we\u0027d like to avoid, I think.\nWhat circular dependency we have now?\nCan we remove the dependency to policyutil, instead?",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "c8209c6efe984d70c767094cd806b2992d0e94b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22190830_0a47f4c8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -71,6 +94,30 @@
       "writtenOn": "2021-10-07T11:45:38Z",
       "side": 1,
       "message": "nit: maybe testutil, but it would become a bit too generic. lacrostestutil is too long IMO.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 18
+      },
+      "revId": "c8209c6efe984d70c767094cd806b2992d0e94b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "576635f4_0247436c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrostest/perftest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-08T01:33:46Z",
+      "side": 1,
+      "message": "maybe lacrosperf?\n\n- nice to keep a name \"lacros\" somehow in the package name in this case.\n- \"test\" may not be meaningful, because all Tast code is for test :-).\n- lacrosutil is what I also considered, but it\u0027s difficult for me to figure out the diff between lacros and lacrosutil then.\n\nStepping back, it\u0027s not yet unclear if this is a way to go if the only goal is to break the circular deps as mentioned commit message. Could you take a look at my comment to the commit message as a first step?",
+      "parentUuid": "f3d29a42_7208823f",
       "range": {
         "startLine": 6,
         "startChar": 8,
