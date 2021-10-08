@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efa79663_993df907",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-08T21:18:44Z",
+      "side": 1,
+      "message": "IIRC background scanning isn\u0027t available on all boards. If that\u0027s the case, we may want to add a dependency (go/tast-deps) to prevent these tests from running on such boards.\n\nThere likely isn\u0027t an existing dependency that covers this, though, so you may need to add a new one. It can either be:\n1. Software dependency - these are based on USE flags. Workflow described here https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md#new-features\n2. Hardware dependency - this requires working with the infra team https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md#adding-new-hardware-conditions\n\nIf background scanning works on all of the boards currently in the lab, you can address this as a follow-up. Current boards are: hatch(kindred), octopus(blooglet), sarien(arcada), coral(babymega), poppy(atlas)",
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df9e768_3a1b2ee0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-08T21:18:44Z",
+      "side": 1,
+      "message": "same question here, are we okay enabling these for all tests?",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 59
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97122bea_f9d0082a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_background_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-08T21:18:44Z",
+      "side": 1,
+      "message": "nit: surround with quotes",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd9cfdbb_f2484ff9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_background_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-08T21:18:44Z",
+      "side": 1,
+      "message": "a personal email contact is also required now (I also need to go back and update the existing tests)",
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa2f5898_be73f986",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-08T21:18:44Z",
+      "side": 1,
+      "message": "I think you can remove this comment",
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0736499_17ae133b",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-08T21:18:44Z",
+      "side": 1,
+      "message": "you can delete this comment too",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 159
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92877343_41627033",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/login_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-08T21:18:44Z",
+      "side": 1,
+      "message": "Are we OK with enabling these for all tests? If so, do we need to adjust them in any way to accommodate this?",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f7fdc5e_150c8f3a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_to_cros_background_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-08T21:18:44Z",
+      "side": 1,
+      "message": "also add a personal email contact here",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "411954d7_40bd0670",
+        "filename": "src/chromiumos/tast/services/cros/nearbyservice/nearby_share_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-08T21:18:44Z",
+      "side": 1,
+      "message": "Add a comment describing what this one does",
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
