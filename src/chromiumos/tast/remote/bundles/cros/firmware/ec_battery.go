@@ -69,7 +69,7 @@ func ECBattery(ctx context.Context, s *testing.State) {
 		s.Fatal("Cannot find battery in sysfs or device does not have battery installed")
 	}
 
-	s.Log("Battery name is ", batteryName)
+	s.Log("Battery name is ", string(batteryName))
 	batteryVoltageFP := fmt.Sprintf(BatteryVoltageReadingFPTemplate, batteryName)
 	batteryCurrentFP := fmt.Sprintf(BatteryCurrentReadingFPTemplate, batteryName)
 
