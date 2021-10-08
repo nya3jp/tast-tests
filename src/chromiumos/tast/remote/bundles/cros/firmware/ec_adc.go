@@ -8,7 +8,7 @@ import (
 	"context"
 	"strconv"
 
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -19,11 +19,7 @@ func init() {
 		Desc:         "Basic check for EC ADC temperature",
 		Contacts:     []string{"js@semihalf.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_experimental"},
-		Pre:          pre.NormalMode(),
-		Data:         pre.Data,
-		ServiceDeps:  pre.ServiceDeps,
-		SoftwareDeps: pre.SoftwareDeps,
-		Vars:         pre.Vars,
+		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
 }
@@ -41,7 +37,7 @@ func ECADC(ctx context.Context, s *testing.State) {
 		minECTemp = 273
 	)
 
-	h := s.PreValue().(*pre.Value).Helper
+	h := s.FixtValue().(*fixture.Value).Helper
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to init servo: ", err)
 	}

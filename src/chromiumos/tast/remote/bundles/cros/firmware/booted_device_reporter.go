@@ -7,30 +7,26 @@ package firmware
 import (
 	"context"
 
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         BootedDeviceReporter,
-		Desc:         "Verifies that the BootedDevice reporter identifies which device mode the DUT was booted from",
-		Contacts:     []string{"cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_smoke"},
-		Data:         pre.Data,
-		ServiceDeps:  pre.ServiceDeps,
-		SoftwareDeps: pre.SoftwareDeps,
-		Vars:         pre.Vars,
+		Func:     BootedDeviceReporter,
+		Desc:     "Verifies that the BootedDevice reporter identifies which device mode the DUT was booted from",
+		Contacts: []string{"cros-fw-engprod@google.com"},
+		Attr:     []string{"group:firmware", "firmware_smoke"},
 		Params: []testing.Param{{
-			Pre: pre.NormalMode(),
+			Fixture: fixture.NormalMode,
 		}, {
 			Name:      "rec",
-			Pre:       pre.RecMode(),
+			Fixture:   fixture.RecMode,
 			ExtraAttr: []string{"firmware_usb"},
 		}, {
-			Name: "dev",
-			Pre:  pre.DevMode(),
+			Name:    "dev",
+			Fixture: fixture.DevModeGBB,
 		}},
 	})
 }

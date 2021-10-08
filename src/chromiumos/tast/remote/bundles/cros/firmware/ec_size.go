@@ -7,7 +7,7 @@ package firmware
 import (
 	"context"
 
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -19,11 +19,7 @@ func init() {
 		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		SoftwareDeps: pre.SoftwareDeps,
-		ServiceDeps:  pre.ServiceDeps,
-		Pre:          pre.NormalMode(),
-		Data:         pre.Data,
-		Vars:         pre.Vars,
+		Fixture:      fixture.NormalMode,
 	})
 }
 
@@ -39,7 +35,7 @@ var chipSizeMap = map[string]int{
 }
 
 func ECSize(ctx context.Context, s *testing.State) {
-	h := s.PreValue().(*pre.Value).Helper
+	h := s.FixtValue().(*fixture.Value).Helper
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}

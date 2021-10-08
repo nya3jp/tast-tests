@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -20,17 +20,13 @@ func init() {
 		Desc:         "Checks that device will reboot when EC gets the remote requests via UART",
 		Contacts:     []string{"js@semihalf.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_experimental"},
-		Pre:          pre.NormalMode(),
-		Data:         pre.Data,
-		ServiceDeps:  pre.ServiceDeps,
-		SoftwareDeps: pre.SoftwareDeps,
-		Vars:         pre.Vars,
+		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
 }
 
 func ECReboot(ctx context.Context, s *testing.State) {
-	h := s.PreValue().(*pre.Value).Helper
+	h := s.FixtValue().(*fixture.Value).Helper
 
 	type rebootTestCase struct {
 		rebootName    string
@@ -80,7 +76,7 @@ func ECReboot(ctx context.Context, s *testing.State) {
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 				state, err := h.Servo.GetECSystemPowerState(ctx)
 				if err != nil {
-					return testing.PollBreak(errors.Wrapf(err, "Failed to get EC system power state"))
+					return testing.PollBreak(errors.Wrap(err, "failed to get EC system power state"))
 				}
 				if state != "G3" {
 					return errors.New("power state is " + state)

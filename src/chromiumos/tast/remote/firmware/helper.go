@@ -32,26 +32,22 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Helper tracks several firmware-related objects. The recommended way to initialize the helper is to use firmware.Pre:
+// Helper tracks several firmware-related objects. The recommended way to initialize the helper is to use firmware.fixture:
 //
 // import (
 //	...
-//	"chromiumos/tast/remote/firmware/pre"
+//	"chromiumos/tast/remote/firmware/fixture"
 // )
 //
 // func init() {
 //	testing.AddTest(&testing.Test{
 //		...
-//              Data:         pre.Data,
-//              Pre:          pre.NormalMode,
-//              ServiceDeps:  pre.ServiceDeps,
-//              SoftwareDeps: pre.SoftwareDeps,
-//              Vars:         pre.Vars,
+//              Fixture: fixture.NormalMode,
 //	})
 // }
 //
 // func MyTest(ctx context.Context, s *testing.State) {
-// 	h := s.PreValue().(*pre.Value).Helper
+// 	h := s.FixtValue().(*fixture.Value).Helper
 //
 // 	if err := h.RequireServo(ctx); err != nil {
 // 		s.Fatal("Failed to init servo: ", err)

@@ -17,7 +17,7 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/rpc"
 	crash_service "chromiumos/tast/services/cros/crash"
 	"chromiumos/tast/ssh/linuxssh"
@@ -31,14 +31,12 @@ func init() {
 		Contacts:    []string{"mutexlox@chromium.org", "cros-telemetry@google.com"},
 		Attr:        []string{"group:mainline", "informational"},
 		Timeout:     10 * time.Minute,
-		Data:        pre.Data,
-		Pre:         pre.NormalMode(),
-		ServiceDeps: append(pre.ServiceDeps, "tast.cros.crash.FixtureService"),
+		Fixture:     fixture.NormalMode,
+		ServiceDeps: []string{"tast.cros.crash.FixtureService"},
 		// no_qemu because the servo is not available in VMs, and tast does
 		// not (yet) support skipping tests if required vars are not provided.
 		// TODO(crbug.com/967901): Remove no_qemu dep once servo var is sufficient.
-		SoftwareDeps: append(pre.SoftwareDeps, []string{"device_crash", "ec_crash", "pstore", "reboot", "no_qemu"}...),
-		Vars:         pre.Vars,
+		SoftwareDeps: []string{"device_crash", "ec_crash", "pstore", "reboot", "no_qemu"},
 	})
 }
 
@@ -47,7 +45,7 @@ func ECCrash(ctx context.Context, s *testing.State) {
 	const systemCrashDir = "/var/spool/crash"
 	d := s.DUT()
 
-	h := s.PreValue().(*pre.Value).Helper
+	h := s.FixtValue().(*fixture.Value).Helper
 
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to init servo: ", err)
