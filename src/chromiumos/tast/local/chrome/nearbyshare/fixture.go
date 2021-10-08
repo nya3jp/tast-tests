@@ -105,6 +105,21 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareDataUsageOfflineNoOneBackgroundScanningEnabled",
+		Desc: "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'No One'",
+		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityNoOne, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityNoOne, false),
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+		},
+		Parent:          "nearbyShareGAIALoginBackgroundScanningEnabled",
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareDataUsageOfflineSomeContactsAndroidSelectedContact",
 		Desc: "Nearby Share enabled on CrOS and Android with 'Data Usage' set to 'Offline' on both. The Android device 'Visibility' is 'All Contacts'. The CrOS device 'Visibility' is 'Some contacts' with the Android user set as an allowed contact so it will be visible to the Android device. The CrOS device is logged in with a GAIA account which is mutual contacts with the Android GAIA account",
 		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilitySelectedContacts, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, true),
@@ -208,6 +223,7 @@ type nearbyShareFixture struct {
 	// createBtsnoopCmd returns the command for btsnoop log capture. The command is started in PreTest and must be killed in PostTest before saving the logs.
 	createBtsnoopCmd func(string) *testexec.Cmd
 	btsnoopCmd       *testexec.Cmd
+	flags            []string
 }
 
 // FixtData holds information made available to tests that specify this Fixture.

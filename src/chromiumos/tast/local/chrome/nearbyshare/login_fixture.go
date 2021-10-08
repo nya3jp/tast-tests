@@ -18,13 +18,17 @@ import (
 
 // NewNearbyShareLogin creates a fixture that logs in and enables Nearby Share.
 // Note that nearbyShareGAIALogin inherits from nearbyShareAndroidSetup.
-func NewNearbyShareLogin(arcEnabled bool) testing.FixtureImpl {
+func NewNearbyShareLogin(arcEnabled, backgroundScanningEnabled bool) testing.FixtureImpl {
 	defaultNearbyOpts := []chrome.Option{
 		chrome.DisableFeatures("SplitSettingsSync"),
 		chrome.ExtraArgs("--nearby-share-verbose-logging", "--enable-logging", "--vmodule=*blue*=1", "--vmodule=*nearby*=1"),
 	}
 	if arcEnabled {
 		defaultNearbyOpts = append(defaultNearbyOpts, chrome.ARCEnabled(), chrome.EnableFeatures("ArcNearbySharing"), chrome.ExtraArgs(arc.DisableSyncFlags()...))
+	}
+	if backgroundScanningEnabled {
+		defaultNearbyOpts = append(defaultNearbyOpts, chrome.EnableFeatures("BluetoothAdvertisementMonitoring"),
+			chrome.EnableFeatures("NearbySharingBackgroundScanning"))
 	}
 	return &nearbyShareLoginFixture{
 		opts:       defaultNearbyOpts,
@@ -54,7 +58,29 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "nearbyShareAndroidSetup",
-		Impl:   NewNearbyShareLogin(false),
+		Impl:   NewNearbyShareLogin(false, false),
+		Vars: []string{
+			defaultCrOSUsername,
+			defaultCrOSPassword,
+			customCrOSUsername,
+			customCrOSPassword,
+			keepState,
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareGAIALoginBackgroundScanningEnabled",
+		Desc: "CrOS login with GAIA and Nearby Share flags enabled",
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+		},
+		Parent: "nearbyShareAndroidSetup",
+		Impl:   NewNearbyShareLogin(false, true),
 		Vars: []string{
 			defaultCrOSUsername,
 			defaultCrOSPassword,
@@ -77,7 +103,7 @@ func init() {
 			"arc-app-dev@google.com",
 		},
 		Parent: "nearbyShareAndroidSetup",
-		Impl:   NewNearbyShareLogin(true),
+		Impl:   NewNearbyShareLogin(true, false),
 		Vars: []string{
 			defaultCrOSUsername,
 			defaultCrOSPassword,
