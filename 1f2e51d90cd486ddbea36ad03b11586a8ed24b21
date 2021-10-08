@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcbcf9b3_679f80d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T19:04:01Z",
+      "side": 1,
+      "message": "Move this to the settings package. \n\nsee settings.ToggleAdvanced",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "1f2e51d90cd486ddbea36ad03b11586a8ed24b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac06da30_1fea0906",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T19:04:01Z",
+      "side": 1,
+      "message": "AllSections",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "1f2e51d90cd486ddbea36ad03b11586a8ed24b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "485ed46e_1ca8b3c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T19:04:01Z",
+      "side": 1,
+      "message": "add this alias to all of your tests too please:\nchromeos-sw-engprod@google.com",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 88
+      },
+      "revId": "1f2e51d90cd486ddbea36ad03b11586a8ed24b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7c0941a_56115f9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T19:04:01Z",
+      "side": 1,
+      "message": "Why? \n\nEither way this is already written as part of quicksettings.OpenSettings so you can reuse that code",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 91
+      },
+      "revId": "1f2e51d90cd486ddbea36ad03b11586a8ed24b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ff2b8e2_68a37f8c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_display.go",
         "patchSetId": 2
@@ -20,6 +112,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "adb4123d_6466be88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T19:04:01Z",
+      "side": 1,
+      "message": "Move section names to the settings package if they\u0027re not already there",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "1f2e51d90cd486ddbea36ad03b11586a8ed24b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "508bf27e_86f5ca14",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_display.go",
         "patchSetId": 2
@@ -31,6 +146,29 @@
       "writtenOn": "2021-10-08T18:59:14Z",
       "side": 1,
       "message": "use Focused()?",
+      "revId": "1f2e51d90cd486ddbea36ad03b11586a8ed24b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "214da569_3e7bc139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T19:04:01Z",
+      "side": 1,
+      "message": "what is this for?",
+      "range": {
+        "startLine": 143,
+        "startChar": 5,
+        "endLine": 143,
+        "endChar": 24
+      },
       "revId": "1f2e51d90cd486ddbea36ad03b11586a8ed24b21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
