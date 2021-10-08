@@ -383,6 +383,17 @@ func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 		if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, nonEligibleResizeLockMode, false /* isSplashVisible */); err != nil {
 			return errors.Wrapf(err, "failed to verify resize lock state of %s", activityName)
 		}
+		// Restore the app again and verify the app is in resizable state with compat-mode button shown.
+		// We need this because (launch in maximize->restore) and (restored->maximized->restored) go through different code paths internally.
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, packageName, ash.WMEventNormal); err != nil {
+			return errors.Wrapf(err, "failed to restore %s", activityName)
+		}
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, packageName, ash.WindowStateNormal); err != nil {
+			return errors.Wrapf(err, "failed to wait for %s to be restored", activityName)
+		}
+		if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, resizableResizeLockMode, false /* isSplashVisible */); err != nil {
+			return errors.Wrapf(err, "failed to verify resize lock state of %s", activityName)
+		}
 	}
 	return nil
 }
