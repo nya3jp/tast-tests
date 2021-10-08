@@ -16,7 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     CheckDiskSpace,
 		Desc:     "Checks that sufficient space is available in the root filesystem",
-		Contacts: []string{"norvez@chromium.org", "sarthakkukreti@chromium.org", "chromeos-storage@google.com"},
+		Contacts: []string{"cros-telemetry@google.com"}, // or http://b/new?component=885467
 		Attr:     []string{"group:mainline"},
 	})
 }
