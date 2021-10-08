@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeb0b092_f9dc3c15",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/perftest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-08T02:55:01Z",
+      "side": 1,
+      "message": "err is nil here always, but I agreed that definitely we should use nil constant.",
+      "parentUuid": "f9d30b0b_1a0ef90c",
+      "range": {
+        "startLine": 107,
+        "startChar": 23,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "cfca31b5a08895d6e6a3d4c92a926fdaf8ee8b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c832f7a_f17c1fa3",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-08T02:47:52Z",
       "side": 1,
       "message": "Same issue here with closing the tab and lacros",
+      "range": {
+        "startLine": 143,
+        "startChar": 11,
+        "endLine": 143,
+        "endChar": 35
+      },
+      "revId": "cfca31b5a08895d6e6a3d4c92a926fdaf8ee8b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb295c51_6003e81d",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/perftest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-08T02:55:01Z",
+      "side": 1,
+      "message": "This case should not be problematic, IIUC.\nIn case of error, defer stmt at L122 should invoke the cleanup.",
+      "parentUuid": "0c832f7a_f17c1fa3",
       "range": {
         "startLine": 143,
         "startChar": 11,
