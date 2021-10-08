@@ -16,6 +16,24 @@
       "message": "style: could you merge this with the above section?",
       "revId": "ef639a9ad87e1236a5037b08388aa86663b73573",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b508b6_2016ca98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/speedometer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-08T05:19:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfc72ebf_fa614aa8",
+      "revId": "ef639a9ad87e1236a5037b08388aa86663b73573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
