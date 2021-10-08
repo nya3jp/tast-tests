@@ -16,6 +16,52 @@
       "message": "Thank you for review. PTAL.",
       "revId": "cfca31b5a08895d6e6a3d4c92a926fdaf8ee8b6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9d30b0b_1a0ef90c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/perftest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-08T02:47:52Z",
+      "side": 1,
+      "message": "this err should be guaranteed to be nil. iiuc convention is to use nil not err here?",
+      "range": {
+        "startLine": 107,
+        "startChar": 23,
+        "endLine": 107,
+        "endChar": 26
+      },
+      "revId": "cfca31b5a08895d6e6a3d4c92a926fdaf8ee8b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c832f7a_f17c1fa3",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/perftest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-08T02:47:52Z",
+      "side": 1,
+      "message": "Same issue here with closing the tab and lacros",
+      "range": {
+        "startLine": 143,
+        "startChar": 11,
+        "endLine": 143,
+        "endChar": 35
+      },
+      "revId": "cfca31b5a08895d6e6a3d4c92a926fdaf8ee8b6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
