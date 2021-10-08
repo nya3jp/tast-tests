@@ -57,6 +57,19 @@ func StartReceiving(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chro
 	return receiveSurface, nil
 }
 
+// GetReceiveSurface establishes a connection to the current receive surface if there is one.
+func GetReceiveSurface(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (*ReceiveSurface, error) {
+	// First do some UI automation to click the background scanning notification and open OS settings...
+	settingsConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURLPrefix(settingsURL+nearbySettingsURL+"?receive"))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start Chrome session to OS settings")
+	}
+	if err = settingsConn.WaitForExpr(ctx, nearbySettingsSubpageJS); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for nearby subpage to load")
+	}
+	return &ReceiveSurface{conn: settingsConn}, nil
+}
+
 // WaitForSender waits until the specified sender is detected, and returns the confirmation token.
 func (r *ReceiveSurface) WaitForSender(ctx context.Context, senderName string, timeout time.Duration) (string, error) {
 	if err := r.conn.WaitForExprFailOnErrWithTimeout(ctx, receiveShareTargetJS, timeout); err != nil {

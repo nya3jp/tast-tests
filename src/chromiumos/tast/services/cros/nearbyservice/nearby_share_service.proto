@@ -50,6 +50,8 @@ service NearbyShareService {
   // waits for a followup notification to see the transfer is complete.
   rpc AcceptIncomingShareNotificationAndWaitForCompletion(CrOSReceiveFilesRequest) returns (google.protobuf.Empty) {}
 
+  rpc AcceptFastInitiationNotification(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
   // StartLogging is used to begin logging at the start of a test.
   rpc StartLogging (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 

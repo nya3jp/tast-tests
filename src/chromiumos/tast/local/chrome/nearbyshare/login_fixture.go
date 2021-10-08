@@ -21,6 +21,8 @@ import (
 func NewNearbyShareLogin(arcEnabled bool) testing.FixtureImpl {
 	defaultNearbyOpts := []chrome.Option{
 		chrome.DisableFeatures("SplitSettingsSync"),
+		chrome.EnableFeatures("BluetoothAdvertisementMonitoring"),
+		chrome.EnableFeatures("NearbySharingBackgroundScanning"),
 		chrome.ExtraArgs("--nearby-share-verbose-logging", "--enable-logging", "--vmodule=*blue*=1", "--vmodule=*nearby*=1"),
 	}
 	if arcEnabled {
