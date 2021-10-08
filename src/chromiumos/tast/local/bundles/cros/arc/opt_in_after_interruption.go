@@ -146,7 +146,6 @@ func OptInAfterInterruption(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Failed to create test API connection: ", err)
 			}
-			defer tconn.Close()
 
 			s.Log("Wait for ARC to complete provisioning")
 			if err := waitForArcProvisioned(ctx, tconn); err != nil {
@@ -209,7 +208,6 @@ func attemptOptIn(ctx context.Context, username, password string, args []string,
 	if err != nil {
 		return false, errors.Wrap(err, "failed to create test API connection")
 	}
-	defer tconn.Close()
 
 	testing.ContextLog(ctx, "Check Play Store state")
 	if playStoreState, err := optin.GetPlayStoreState(ctx, tconn); err != nil {

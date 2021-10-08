@@ -141,12 +141,6 @@ func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 	ctx, cancel := ctxutil.Shorten(ctx, 20*time.Second)
 	defer cancel()
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to connect to test API")
-	}
-	defer tconn.Close()
-
 	server := httptest.NewServer(http.FileServer(fileSystem))
 	defer server.Close()
 

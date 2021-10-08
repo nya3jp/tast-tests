@@ -42,7 +42,6 @@ func AudioRecord(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal(err, "failed to open new tab")
 	}
-	defer conn.Close()
 
 	var found bool
 	s.Log("Check audio input")
