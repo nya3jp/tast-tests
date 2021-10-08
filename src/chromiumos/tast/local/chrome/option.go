@@ -119,6 +119,26 @@ func GAIALoginPool(creds string) Option {
 	}
 }
 
+// GAIAFixedCredsFromLoginPool works similar to GAIALoginPool. However it uses random
+// only for the first invocaion. For all consequence calls it returns the same Creds
+// as for the first one. This is useful for scenarios when multple Chrome logins are
+// required for the same test user.
+func GAIAFixedCredsFromLoginPool(creds string) Option {
+	var c Creds
+	return func(cfg *config.MutableConfig) error {
+		if c.User == "" {
+			cs, err := config.ParseCreds(creds)
+			if err != nil {
+				return err
+			}
+			c = cs[random.Intn(len(cs))]
+		}
+		cfg.LoginMode = config.GAIALogin
+		cfg.Creds = c
+		return nil
+	}
+}
+
 // FakeLogin returns an Option that can be passed to New to perform a fake
 // login, which skips credential verifications with GAIA servers.
 //
