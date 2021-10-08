@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ffc2ae_d0e2e5fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-08T00:18:01Z",
+      "side": 1,
+      "message": "Looks great, thank you! But one more small change please.",
+      "revId": "69aec01d163226f1d775946a0db3b81f25d69d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5625c69_92d855f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-08T00:18:01Z",
+      "side": 1,
+      "message": "This needs to be weekly. We simply don\u0027t have 20 minutes every night.",
+      "range": {
+        "startLine": 37,
+        "startChar": 51,
+        "endLine": 37,
+        "endChar": 58
+      },
+      "revId": "69aec01d163226f1d775946a0db3b81f25d69d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
