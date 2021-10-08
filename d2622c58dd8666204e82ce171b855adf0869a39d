@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7bb901a_0800be54",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-10-08T13:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f7e0ef_280b2018",
+      "range": {
+        "startLine": 24,
+        "startChar": 20,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "d2622c58dd8666204e82ce171b855adf0869a39d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8f9b429_be4dc1c5",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a0bfc6a_082794b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-10-08T13:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8f9b429_be4dc1c5",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 11
+      },
+      "revId": "d2622c58dd8666204e82ce171b855adf0869a39d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4541f1e_39822e21",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-10-06T17:41:00Z",
       "side": 1,
       "message": "I would put the restore and delete the temp file right here in a defer.\n\ndefer function(ctx context) {\n  h.EnsureDUTBooted\n  restoreFW\n  delete tmp file\n}(ctx)\n\n// Shorten the deadline for everything else to save some time for the restore\nctx, cancel :\u003d ctxutil.Shorten(ctx, ?? * time.Second)\ndefer cancel()",
+      "revId": "d2622c58dd8666204e82ce171b855adf0869a39d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4ae2426_4c5bd72d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-10-08T13:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4541f1e_39822e21",
       "revId": "d2622c58dd8666204e82ce171b855adf0869a39d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
