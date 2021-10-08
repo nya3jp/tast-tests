@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08372252_828ba7b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-08T08:37:08Z",
+      "side": 1,
+      "message": "Please use a shorter subject. E.g:\nvm: Test buffer sizes from 512 to 8192 in AudioLoopbackLatency",
+      "revId": "b8dfbe99f2af17050d3dd7fe21b64d3df7c1b7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ecf8170_96ed5c9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-08T08:37:08Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "b8dfbe99f2af17050d3dd7fe21b64d3df7c1b7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93352ad3_00b6c855",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_loopback_latency.go",
         "patchSetId": 4
@@ -65,6 +99,29 @@
       "range": {
         "startLine": 206,
         "startChar": 19,
+        "endLine": 209,
+        "endChar": 3
+      },
+      "revId": "b8dfbe99f2af17050d3dd7fe21b64d3df7c1b7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0c00b5_00c9cd23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_loopback_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-08T08:37:08Z",
+      "side": 1,
+      "message": "Before it was expected that both values are equal to loop. Can you add a comment on why this expectation changed?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
         "endLine": 209,
         "endChar": 3
       },
