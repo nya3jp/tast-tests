@@ -50,6 +50,26 @@ func (v *Version) GetString() string {
 	return strings.Join(version, ".")
 }
 
+// Major returns a major version component.
+func (v *Version) Major() int64 {
+	return v.components[0]
+}
+
+// Minor returns a minor version component.
+func (v *Version) Minor() int64 {
+	return v.components[1]
+}
+
+// Build returns a build version component.
+func (v *Version) Build() int64 {
+	return v.components[2]
+}
+
+// Patch returns a patch version component.
+func (v *Version) Patch() int64 {
+	return v.components[3]
+}
+
 // Increment increases version by given components, returns a copy of it.
 func (v *Version) Increment(major, minor, build, patch int64) Version {
 	v.components[0] += major

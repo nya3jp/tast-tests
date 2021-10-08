@@ -64,9 +64,21 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 	}(ctx)
 
 	// Open Lacros.
-	expectedVersionedLacrosDir := filepath.Join("/run/imageloader", req.ExpectedComponent, req.ExpectedVersion)
-	expectedVersionedLacrosPath := filepath.Join(expectedVersionedLacrosDir, "chrome")
-	l, err := lacros.LaunchFromShelf(ctx, tconn, expectedVersionedLacrosDir)
+	var expectedLacrosDir string
+	switch req.ExpectedBrowser {
+	case lacrosservice.BrowserType_LACROS_STATEFUL:
+		// expectedLacrosDir will be versioned if Stateful Lacros is mounted.
+		expectedLacrosDir = filepath.Join("/run/imageloader", req.ExpectedComponent, req.ExpectedVersion)
+	case lacrosservice.BrowserType_LACROS_ROOTFS:
+		if req.ExpectedComponent != "" {
+			return nil, errors.New("invalid request: ExpectedComponent should be nil for verifying Rootfs Lacros")
+		}
+		expectedLacrosDir = "/run/lacros"
+	default:
+		return nil, errors.Errorf("Able to verify only Lacros browser, but got: %v", req.ExpectedBrowser)
+	}
+	expectedLacrosPath := filepath.Join(expectedLacrosDir, "chrome")
+	l, err := lacros.LaunchFromShelf(ctx, tconn, expectedLacrosDir)
 	if err != nil {
 		// TODO(crbug.com/1258664): Log shelf items in case the Lacros app is neither launched nor shown.
 		items, _ := ash.ShelfItems(ctx, tconn)
@@ -78,7 +90,7 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 	defer l.Close(ctx)
 
 	// Verify Lacros updates.
-	testing.ContextLogf(ctx, "Verifying provisioned Lacros at %v with UI: %v", expectedVersionedLacrosPath, req.UseUi)
+	testing.ContextLogf(ctx, "Verifying provisioned Lacros at %v with UI: %v", expectedLacrosPath, req.UseUi)
 	status := lacrosservice.TestResult_NO_STATUS
 	statusDetails := ""
 	if req.UseUi {
@@ -90,17 +102,17 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to read Lacros executable path")
 		}
-		if actualVersionedLacrosPath == expectedVersionedLacrosPath {
+		if actualVersionedLacrosPath == expectedLacrosPath {
 			status = lacrosservice.TestResult_PASSED
 			statusDetails = fmt.Sprintf("executable path: %v", actualVersionedLacrosPath)
 		} else {
 			status = lacrosservice.TestResult_FAILED
-			statusDetails = fmt.Sprintf("executable path expected: %v, actual: %v", expectedVersionedLacrosPath, actualVersionedLacrosPath)
+			statusDetails = fmt.Sprintf("executable path expected: %v, actual: %v", expectedLacrosPath, actualVersionedLacrosPath)
 		}
 	} else {
 		// Verify without UI that the lacros process is running from the expected versioned path.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			pids, err := launcher.PidsFromPath(ctx, expectedVersionedLacrosPath)
+			pids, err := launcher.PidsFromPath(ctx, expectedLacrosPath)
 			if err != nil {
 				return err
 			}
@@ -128,7 +140,7 @@ func (uts *UpdateTestService) ClearUpdate(ctx context.Context, req *lacrosservic
 		testing.ContextLog(ctx, "Failed to touch file: ", err)
 	}
 
-	// Unmount and remove mount points.
+	// Try to unmount provisioned Stateful Lacros, then remove mount points.
 	matches, _ := filepath.Glob("/run/imageloader/lacros*/*")
 	for _, match := range matches {
 		if err := testexec.CommandContext(ctx, "umount", "-f", match).Run(); err != nil {
