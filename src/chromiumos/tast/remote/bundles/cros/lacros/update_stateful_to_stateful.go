@@ -93,7 +93,7 @@ func UpdateStatefulToStateful(ctx context.Context, s *testing.State) {
 		}
 
 		// Verify that the expected Stateful Lacros version/component is selected.
-		if err := update.VerifyLacrosUpdate(ctx, overrideVersion.GetString(), overrideComponent, utsClient); err != nil {
+		if err := update.VerifyLacrosUpdate(ctx, lacrosservice.BrowserType_LACROS_STATEFUL, overrideVersion.GetString(), overrideComponent, utsClient); err != nil {
 			s.Fatal("Failed to verify provisioned Lacros version: ", err)
 		}
 	}
