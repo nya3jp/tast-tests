@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e615f2_505784dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-10-08T16:28:47Z",
+      "side": 1,
+      "message": "Changes LGTM!",
+      "revId": "27832910fe80756994c727d281ba0ed9300bceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6ef3d27_4569535b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-10-08T16:28:47Z",
+      "side": 1,
+      "message": "nit: A random thought: looking at [1], in L1T2 there should be as\nmany frames in the first temporal layer as in the zero-th (perhaps\nplus-minus one). Should we verify that?\n\nSimilarly, in L1T3, the second temporal layer should have as \nmany frames as the first and the zero-th temporal layers combined\n(and the first temporal layer should have as many as the zero-th\none, just like L1T2). \n\n\n[1] https://www.w3.org/TR/webrtc-svc/#L1T2*",
+      "revId": "27832910fe80756994c727d281ba0ed9300bceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
