@@ -141,6 +141,7 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 		} else if validatorType == MD5 {
 			args = append(args, "--validator_type=md5")
 		}
+		args = append(args, "--vmodule=*media/gpu/test*=2")
 		filename := filepath.Base(file)
 		if _, err = runAccelVideoTestCmd(shortCtx,
 			exec, "VideoDecoderTest.FlushAtEndOfStream",
