@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0d70992_02b730b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-08T18:28:58Z",
+      "side": 1,
+      "message": "Looking good, running out of battery.",
+      "revId": "fe53a4939f47be103e7a7125aeac0333b60cdf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b13c248_0d8ce887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/bitstream.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-08T18:28:58Z",
+      "side": 1,
+      "message": "nit: I usually refer to \"bitstream\" as the whole encoded sequence,\nso here I\u0027d use \"encoded chunk\" or so, e.g.\n\n  // Skip the encoded chunk b if it belongs to a temporal layer higher than temporalId.\n  \nWDYT?",
+      "range": {
+        "startLine": 80,
+        "startChar": 6,
+        "endLine": 80,
+        "endChar": 85
+      },
+      "revId": "fe53a4939f47be103e7a7125aeac0333b60cdf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7846e271_81c6067a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-08T18:28:58Z",
+      "side": 1,
+      "message": "nit: naming suggestion: prepareYUVFileWithTLs() ? Just wanted to \nhardcode in the name that there\u0027s a number of temporal layers\nin the produced file, so those should be plural.",
+      "range": {
+        "startLine": 319,
+        "startChar": 5,
+        "endLine": 319,
+        "endChar": 24
+      },
+      "revId": "fe53a4939f47be103e7a7125aeac0333b60cdf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4da66cac_c36b8dc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-08T18:28:58Z",
+      "side": 1,
+      "message": "nit: there\u0027s a Go math.RoundToEven() function (but uses float64):\n\n  int64(math.RoundToEven(w) * math.RoundToEven(h) / 2.0)\n  \nnot sure if it\u0027s better (it certainly is verbose) but it\u0027s easier to\nread.",
+      "range": {
+        "startLine": 342,
+        "startChar": 19,
+        "endLine": 342,
+        "endChar": 40
+      },
+      "revId": "fe53a4939f47be103e7a7125aeac0333b60cdf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "131a116e_f6c1ebfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-08T18:28:58Z",
+      "side": 1,
+      "message": "nit: len(tids) is used in a few places and it might benefit from\nhaving a name, what about in l.341 or so\n  numYUVFrames :\u003d len(tids)\n  \n?",
+      "range": {
+        "startLine": 351,
+        "startChar": 17,
+        "endLine": 351,
+        "endChar": 26
+      },
+      "revId": "fe53a4939f47be103e7a7125aeac0333b60cdf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bae3a93d_576b3f56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-08T18:28:58Z",
+      "side": 1,
+      "message": "micro-nit: maybe\n  if tids[1] \u003e tid {\n    continue;\n  }\n  writeSize, err :\u003d ...\n  \n?",
+      "range": {
+        "startLine": 362,
+        "startChar": 2,
+        "endLine": 370,
+        "endChar": 3
+      },
+      "revId": "fe53a4939f47be103e7a7125aeac0333b60cdf1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
