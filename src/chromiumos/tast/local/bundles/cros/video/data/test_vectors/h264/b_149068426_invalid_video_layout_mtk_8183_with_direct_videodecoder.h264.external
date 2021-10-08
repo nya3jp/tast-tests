@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/b_149068426_invalid_video_layout_mtk_8183_with_direct_videodecoder_20211007.h264",
+  "sha256sum": "01f8693888290449873ce2af3024fdc5e096d092e69c17bfcc5982434e4c74e3",
+  "size": 433059
+}
