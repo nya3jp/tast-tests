@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1653bb75_846a84f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/js_microbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-08T15:40:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c4e98aa_700e74d0",
+      "range": {
+        "startLine": 22,
+        "startChar": 25,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "52c7ec08d1f28b6a07c989eb8e8f012141f59cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5aa36d54_2c4f07b9",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-10-08T02:37:28Z",
       "side": 1,
       "message": "nit: spelling, check other locations too",
+      "range": {
+        "startLine": 35,
+        "startChar": 68,
+        "endLine": 35,
+        "endChar": 80
+      },
+      "revId": "52c7ec08d1f28b6a07c989eb8e8f012141f59cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a585f82f_40ce2bb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/js_microbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-08T15:40:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aa36d54_2c4f07b9",
       "range": {
         "startLine": 35,
         "startChar": 68,
