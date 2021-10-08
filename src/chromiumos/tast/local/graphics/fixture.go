@@ -81,6 +81,16 @@ func init() {
 		SetUpTimeout:    upstart.UIRestartTimeout,
 		TearDownTimeout: upstart.UIRestartTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "chromeGraphicsIgt",
+		Desc:            "Stop and later restart services for IGT",
+		Contacts:        []string{"markyacoub@google.com, chromeos-gfx-display@google.com"},
+		Parent:          "graphicsNoChrome",
+		Impl:            &graphicsIgtFixture{},
+		SetUpTimeout:    upstart.UIRestartTimeout,
+		TearDownTimeout: upstart.UIRestartTimeout,
+	})
 }
 
 type graphicsNoChromeFixture struct {
@@ -282,4 +292,34 @@ func (f *gpuWatchDogFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	if postErr != nil {
 		s.Error("PostTest failed: ", postErr)
 	}
+}
+
+type graphicsIgtFixture struct {
+}
+
+func (f *graphicsIgtFixture) Reset(ctx context.Context) error {
+	return nil
+}
+
+func (f *graphicsIgtFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+}
+
+func (f *graphicsIgtFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+}
+
+func (f *graphicsIgtFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	// Tests such as kms_flip requires Suspend and Wake-up which are achieved using the RTC wake-up alarm.
+	// tlsdated is holding /dev/rtc so IGT fails to take the lock and set a wake up alarm. Hence, it
+	// is required to stop the tlsdated before running the IGT test.
+	s.Log("SetUp: Stop tlsdated")
+	if err := upstart.StopJob(ctx, "tlsdated"); err != nil {
+		s.Fatal("Failed to stop tlsdated job: ", err)
+	}
+
+	return nil
+}
+
+func (f *graphicsIgtFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	s.Log("TearDown: Start tlsdated")
+	upstart.EnsureJobRunning(ctx, "tlsdated")
 }
