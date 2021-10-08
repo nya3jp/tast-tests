@@ -187,6 +187,10 @@ var testCases = []resizeLockTestCase{
 		name: "Install from outside of PlayStore",
 		fn:   testAppFromOutsideOfPlayStore,
 	},
+	{
+		name: "Tablet mode",
+		fn:   testTablet,
+	},
 }
 
 func init() {
@@ -338,6 +342,60 @@ func testResizableMaximizedApp(ctx context.Context, tconn *chrome.TestConn, a *a
 // testAppFromOutsideOfPlayStore verifies that an resize-lock-eligible app installed from outside of PlayStore is not resize locked even if it's newly-installed.
 func testAppFromOutsideOfPlayStore(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
 	return testNonResizeLocked(ctx, tconn, a, d, cr, keyboard, wm.Pkg24InMaximizedList, wm.APKNameArcWMTestApp24Maximized, wm.ResizableUnspecifiedActivity, false /* checkRestoreMaximize */)
+}
+
+// testTablet verifies that tablet conversion properly updates the resize lock state of an app.
+func testTablet(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
+	const (
+		packageName  = resizeLockTestPkgName
+		activityName = resizeLockMainActivityName
+	)
+
+	tabletModeStatus, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get tablet mode status")
+	}
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeStatus)
+
+	if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
+		return errors.Wrap(err, "failed to change device to tablet mode")
+	}
+
+	activity, err := arc.NewActivity(a, packageName, activityName)
+	if err != nil {
+		return errors.Wrapf(err, "failed to create %s", activityName)
+	}
+	defer activity.Close()
+
+	if err := activity.Start(ctx, tconn); err != nil {
+		return errors.Wrapf(err, "failed to start %s", activityName)
+	}
+	defer activity.Stop(ctx, tconn)
+
+	// Verify that resize lock isn't enabled in tablet mode.
+	if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, nonEligibleResizeLockMode, false /* isSplashVisible */); err != nil {
+		return errors.Wrapf(err, "failed to verify the resize lock state of %s", activityName)
+	}
+
+	// Convert the device to clamshell and verify that resize lock is enabled.
+	if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+		return errors.Wrap(err, "failed to change device to clamshell mode")
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, packageName, ash.WindowStateNormal); err != nil {
+		return errors.Wrapf(err, "failed to wait for %s to be restored", activityName)
+	}
+	if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, resizableResizeLockMode, false /* isSplashVisible */); err != nil {
+		return errors.Wrapf(err, "failed to verify the resize lock state of %s", activityName)
+	}
+
+	// Convert the device back to clamshell and verify that resize lock is disabled again.
+	if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
+		return errors.Wrap(err, "failed to change device to clamshell mode")
+	}
+	if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, nonEligibleResizeLockMode, false /* isSplashVisible */); err != nil {
+		return errors.Wrapf(err, "failed to verify the resize lock state of %s", activityName)
+	}
+	return nil
 }
 
 // testNonResizeLocked verifies that the given app is not resize locked.
@@ -652,8 +710,12 @@ func getExpectedResizability(activity *arc.Activity, mode resizeLockMode) bool {
 func checkMaximizeRestoreButtonVisibility(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, activity *arc.Activity, mode resizeLockMode) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		expected := ash.CaptionButtonBack | ash.CaptionButtonMinimize | ash.CaptionButtonClose
+		tabletModeStatus, err := ash.TabletModeEnabled(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get tablet mode status")
+		}
 		// The visibility of the maximize/restore button matches the resizability of the app.
-		if getExpectedResizability(activity, mode) {
+		if getExpectedResizability(activity, mode) && !tabletModeStatus {
 			expected |= ash.CaptionButtonMaximizeAndRestore
 		}
 		return wm.CompareCaption(ctx, tconn, activity.PackageName(), expected)
