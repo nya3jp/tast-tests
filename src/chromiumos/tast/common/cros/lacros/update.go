@@ -11,4 +11,10 @@ const (
 	RootfsLacrosImageFileURL = "file:///opt/google/lacros"
 	BogusComponentUpdaterURL = "http://localhost:12345"
 	VersionURL               = "chrome://version/"
+
+	// Lacros component names.
+	LacrosCanaryChannelName = "lacros-dogfood-canary"
+	LacrosDevChannelName    = "lacros-dogfood-dev"
+	LacrosBetaChannelName   = "lacros-dogfood-beta"
+	LacrosStableChannelName = "lacros-dogfood-stable"
 )
