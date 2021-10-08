@@ -18,6 +18,115 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f12835d_c352ea77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-08T16:30:00Z",
+      "side": 1,
+      "message": "Sorry somehow I mixed my accounts and had a few nits here too.\nStill LGTM.",
+      "revId": "27832910fe80756994c727d281ba0ed9300bceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d06065fa_c386c0c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_common.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-08T16:30:00Z",
+      "side": 1,
+      "message": "nit: !\u003d\u003d in JS. (Same as !\u003d, but also compares types).",
+      "range": {
+        "startLine": 57,
+        "startChar": 24,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "27832910fe80756994c727d281ba0ed9300bceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a99d195c_32aafbf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_encode.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-08T16:30:00Z",
+      "side": 1,
+      "message": "nit: Same here, prefer \u003d\u003d\u003d .",
+      "range": {
+        "startLine": 20,
+        "startChar": 23,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "27832910fe80756994c727d281ba0ed9300bceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f2163b9_b9a1be28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-08T16:30:00Z",
+      "side": 1,
+      "message": "nit: s/is\"scalabilityMode\"/is a \"scalabilityMode\"/ ?",
+      "range": {
+        "startLine": 42,
+        "startChar": 20,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "27832910fe80756994c727d281ba0ed9300bceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180014f4_3db44de1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-08T16:30:00Z",
+      "side": 1,
+      "message": "nit: I read this first if() too quickly, thinking that it was a sanity\ncheck on |temporalLayerIds|, but on second readings I see that the \ntotal amount of |temporalLayerIds| should be the total amount of frames\nthat we encode. Maybe we could make it clearer by giving it a name? E.g.\n\n  totalNumberOfFrames :\u003d len(bitstreams)\n  if len(temporalLayerIds) !\u003d totalNumberOfFrames {\n    ...\n    \nWDYT? (This might be my C++ developer kicking in : )",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 3
+      },
+      "revId": "27832910fe80756994c727d281ba0ed9300bceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6ef3d27_4569535b",
