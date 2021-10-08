@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c2b3321_b80ebfae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-08T20:17:16Z",
+      "side": 1,
+      "message": "A huge thank, Oleh.",
+      "revId": "e6bc3b27f2c05d81a011257ad2fbd462b88ab96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c18ec1c2_9cbd37a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-08T20:17:16Z",
+      "side": 1,
+      "message": "Oleh! Thanks for debugging. This was the main culprit. One thing I don\u0027t understand, the idea of flushing queued event were taken from the precondition impl  https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wilco/pre/pre.go;l\u003d75?q\u003dWilcoDtcSupportdAPI\u0026ss\u003dchromiumos\n\nBut it seems it was the source of the bug. Somehow though the process has been spawned (because on 202 we were successfully getting a pid), the initialization took longer in every scenario.\n\nSo ideally, I am dropping this chunk from PreTest.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 5
+      },
+      "revId": "e6bc3b27f2c05d81a011257ad2fbd462b88ab96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd87032_5c9a9b25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-08T20:17:16Z",
+      "side": 1,
+      "message": "If I understand correctly, this is a redundant block, right? Though these two things will be killed along with the chrome unenrollment, do you think keeping this would be logical as per the documentation?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testing/fixt.go;l\u003d303\nI have checked, keeping the block doesn\u0027t break anything more.",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 5
+      },
+      "revId": "e6bc3b27f2c05d81a011257ad2fbd462b88ab96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
