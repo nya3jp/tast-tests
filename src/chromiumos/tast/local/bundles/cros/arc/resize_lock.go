@@ -172,6 +172,14 @@ var testCases = []resizeLockTestCase{
 		fn:   testFullyLockedApp,
 	},
 	{
+		name: "Resize Locked App - Toggle immersive mode",
+		fn:   testToggleImmersiveMode,
+	},
+	{
+		name: "Resize Locked App - Toggle splitview",
+		fn:   testToggleSplitView,
+	},
+	{
 		name: "O4C App",
 		fn:   testO4CApp,
 	},
@@ -322,6 +330,64 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 			s.Errorf("Failed to run test %s: %v", test.name, err)
 		}
 	}
+}
+
+// testToggleImmersiveMode verifies that a resize locked app rejects a fullscreen event.
+func testToggleImmersiveMode(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
+	return testChangeWindowState(ctx, tconn, a, d, cr, keyboard, ash.WMEventFullscreen, ash.WindowStateNormal)
+}
+
+// testToggleSplitView verifies that a resize locked app rejects a snap event.
+func testToggleSplitView(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter) error {
+	return testChangeWindowState(ctx, tconn, a, d, cr, keyboard, ash.WMEventSnapLeft, ash.WindowStateNormal)
+}
+
+// testChangeWindowState verifies that the given WM event transitions a resize-locked app to the expected state.
+func testChangeWindowState(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, cr *chrome.Chrome, keyboard *input.KeyboardEventWriter, event ash.WMEventType, expectedState ash.WindowStateType) error {
+	const (
+		packageName  = resizeLockTestPkgName
+		activityName = resizeLockMainActivityName
+	)
+	activity, err := arc.NewActivity(a, packageName, activityName)
+	if err != nil {
+		return errors.Wrapf(err, "failed to create %s", activityName)
+	}
+	defer activity.Close()
+	if err := activity.Start(ctx, tconn); err != nil {
+		return errors.Wrapf(err, "failed to start %s", activityName)
+	}
+	defer activity.Stop(ctx, tconn)
+
+	if err := checkResizeLockState(ctx, tconn, a, d, cr, activity, phoneResizeLockMode, false /* isSplashVisible */); err != nil {
+		return errors.Wrapf(err, "failed to verify the resize lock state of %s", activityName)
+	}
+	window, err := ash.GetARCAppWindowInfo(ctx, tconn, packageName)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get ARC window infomation for package name %s", packageName)
+	}
+
+	if _, err := ash.SetWindowState(ctx, tconn, window.ID, event, false /* waitForStateChange */); err != nil {
+		return errors.Wrapf(err, "failed to send window event %v to %s", event, activityName)
+	}
+	defer func() error {
+		if _, err := ash.SetARCAppWindowState(ctx, tconn, packageName, ash.WMEventNormal); err != nil {
+			return errors.Wrapf(err, "failed to restore %s", activityName)
+		}
+		if err := ash.WaitForARCAppWindowState(ctx, tconn, packageName, ash.WindowStateNormal); err != nil {
+			return errors.Wrapf(err, "failed to wait for %s to be restored", activityName)
+		}
+		return nil
+	}()
+
+	if expectedState == ash.WindowStateNormal {
+		if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+			return errors.Wrap(err, "failed to sleep waiting for window state change event to be completed")
+		}
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, packageName, expectedState); err != nil {
+		return errors.Wrapf(err, "failed to wait for %s to be expected state %v", activityName, expectedState)
+	}
+	return nil
 }
 
 // testO4CApp verifies that an O4C app is not resize locked even if it's newly-installed.
