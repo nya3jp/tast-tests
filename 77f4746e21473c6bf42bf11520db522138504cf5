@@ -358,6 +358,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a89fbf00_fa460b2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-08T09:24:37Z",
+      "side": 1,
+      "message": "since you are using chromeGraphics fixture, maybe it makes sense to put it under graphics package?",
+      "parentUuid": "2cfbd811_5ce98219",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "77f4746e21473c6bf42bf11520db522138504cf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e209ad35_b45d6d42",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
         "patchSetId": 1
