@@ -33,6 +33,24 @@
       "message": "nit: can you please put your name at the end of the list because you won\u0027t be able to maintain this fixture long term?",
       "revId": "3b9aae7c0a52748280be6826c59db923ca09c564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95675e5b_e94f035e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-08T22:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b28a9e91_6892251d",
+      "revId": "3b9aae7c0a52748280be6826c59db923ca09c564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
