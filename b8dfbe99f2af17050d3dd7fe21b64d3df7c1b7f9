@@ -46,6 +46,30 @@
       },
       "revId": "b8dfbe99f2af17050d3dd7fe21b64d3df7c1b7f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcddad48_1018b302",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_loopback_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-10-08T07:15:49Z",
+      "side": 1,
+      "message": "ah, yes, it\u0027s only float64 without generic...\n\nno worries, let\u0027s go this way first, thanks!",
+      "parentUuid": "ec55e314_e43b6628",
+      "range": {
+        "startLine": 206,
+        "startChar": 19,
+        "endLine": 209,
+        "endChar": 3
+      },
+      "revId": "b8dfbe99f2af17050d3dd7fe21b64d3df7c1b7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
