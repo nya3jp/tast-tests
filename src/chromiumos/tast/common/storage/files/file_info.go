@@ -89,10 +89,16 @@ func (f *FileInfo) Clear(ctx context.Context) error {
 
 // Step append to the test file.
 func (f *FileInfo) Step(ctx context.Context) error {
+	return f.StepOverridePath(ctx, f.path)
+}
+
+// StepOverridePath append to the test file, but assuming the file is located at
+// the given path. This is used to test bind mount.
+func (f *FileInfo) StepOverridePath(ctx context.Context, path string) error {
 	// Update the file first.
 	l := f.getIterationLength(f.iteration)
 	k := f.getIterationKey(f.iteration)
-	if err := AppendFile(ctx, f.runner, f.path, k, l); err != nil {
+	if err := AppendFile(ctx, f.runner, path, k, l); err != nil {
 		return errors.Wrapf(err, "failed to append file in iteration %d", f.iteration)
 	}
 
@@ -105,7 +111,7 @@ func (f *FileInfo) Step(ctx context.Context) error {
 	f.iteration++
 
 	// Now run verification once to make sure it's correct.
-	if err := f.Verify(ctx); err != nil {
+	if err := f.VerifyOverridePath(ctx, path); err != nil {
 		return errors.Wrap(err, "test files are incorrect right after Step()")
 	}
 
@@ -114,11 +120,17 @@ func (f *FileInfo) Step(ctx context.Context) error {
 
 // Verify tests the file on disk is correct.
 func (f *FileInfo) Verify(ctx context.Context) error {
+	return f.VerifyOverridePath(ctx, f.path)
+}
+
+// VerifyOverridePath tests the file on disk is correct, assuming the file is located at
+// the given path. This is used to test bind mount.
+func (f *FileInfo) VerifyOverridePath(ctx context.Context, path string) error {
 	// First get the hash from the internal state.
 	hInt := strings.ToLower(hex.EncodeToString((*f.hash).Sum(nil)))
 
 	// Then get the hash from the DUT.
-	hDut, err := CalcSHA256(ctx, f.runner, f.path)
+	hDut, err := CalcSHA256(ctx, f.runner, path)
 	if err != nil {
 		return errors.Wrap(err, "failed to calculate SHA256 on the DUT")
 	}
@@ -127,7 +139,7 @@ func (f *FileInfo) Verify(ctx context.Context) error {
 
 	if hInt != hDut {
 		// Something is wrong.
-		return errors.Errorf("mismatch in SHA256 for test file %q, got %q expected %q", f.path, hDut, hInt)
+		return errors.Errorf("mismatch in SHA256 for test file %q, got %q expected %q", path, hDut, hInt)
 	}
 
 	return nil
@@ -168,4 +180,9 @@ func (f *FileInfo) getIterationSeed(iteration int) int64 {
 // Path returns the path for the file info.
 func (f *FileInfo) Path() string {
 	return f.path
+}
+
+// Iteration return the current iteration.
+func (f *FileInfo) Iteration() int {
+	return f.iteration
 }
