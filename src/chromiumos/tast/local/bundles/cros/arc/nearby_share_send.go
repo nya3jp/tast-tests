@@ -42,7 +42,7 @@ const (
 	checkBoxLargeFileID = "checkBoxLargeFile"
 
 	// Large file generation additional UI timeout.
-	largeFileCheckboxTimeout = 40 * time.Second
+	largeFileTimeout = 40 * time.Second
 	// nearbycommon.DetectionTimeout + additional test time needed for ARC setup.
 	baseArcTestTime = nearbycommon.DetectionTimeout + 2*time.Minute
 	// ExtraLargeFileOnlineTransferTimeout is for 30MB, add 7 more minutes for the
@@ -159,7 +159,7 @@ func init() {
 						TestTimeout:     baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + largeFileExtraBufferTime,
 					},
 				},
-				Timeout: baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + largeFileCheckboxTimeout + largeFileExtraBufferTime,
+				Timeout: baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + largeFileTimeout + largeFileExtraBufferTime,
 			},
 			{
 				Name:              "dataonline_noone_large_file_vm",
@@ -172,7 +172,7 @@ func init() {
 						TestTimeout:     baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + largeFileExtraBufferTime,
 					},
 				},
-				Timeout: baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + largeFileCheckboxTimeout + largeFileExtraBufferTime,
+				Timeout: baseArcTestTime + nearbycommon.ExtraLargeFileOnlineTransferTimeout + largeFileTimeout + largeFileExtraBufferTime,
 			},
 			{
 				Name:              "dataonline_noone_multiple_files",
@@ -322,20 +322,17 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 	testData := s.Param().(arcNearbyShareParams).TestData
 
 	sharingFiles := false
+	isSharingLargeFile := false
 	for _, uiID := range strings.Split(string(testData.Filename), ",") {
 		if !sharingFiles && uiID != checkBoxTextID {
 			// Mark sharing at least one file.
 			sharingFiles = true
 		}
 		if uiID == checkBoxLargeFileID {
-			// Need additional timeout for large file to generate when app starts.
-			if err = shareUIClickWithTimeout(ctx, d, largeFileCheckboxTimeout, ui.ClassName(checkBoxClassName), shareUIID(uiID)); err != nil {
-				s.Fatal("Failed to click text check box item: ", err)
-			}
-		} else {
-			if err = shareUIClick(ctx, d, ui.ClassName(checkBoxClassName), shareUIID(uiID)); err != nil {
-				s.Fatal("Failed to click text check box item: ", err)
-			}
+			isSharingLargeFile = true
+		}
+		if err = shareUIClick(ctx, d, ui.ClassName(checkBoxClassName), shareUIID(uiID)); err != nil {
+			s.Fatal("Failed to click text check box item: ", err)
 		}
 
 		// Verify that check box is checked.
@@ -362,8 +359,14 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 	}
 
 	// Click to open the Nearby Share target.
-	if err = shareUIClick(ctx, d, ui.ClassName(nearbyClass), ui.TextMatches(nearbyText)); err != nil {
-		s.Fatal("Failed to select Nearby Share target: ", err)
+	if isSharingLargeFile {
+		if err = shareUIClickWithTimeout(ctx, d, largeFileTimeout, ui.ClassName(nearbyClass), ui.TextMatches(nearbyText)); err != nil {
+			s.Fatal("Failed to select Nearby Share target: ", err)
+		}
+	} else {
+		if err = shareUIClick(ctx, d, ui.ClassName(nearbyClass), ui.TextMatches(nearbyText)); err != nil {
+			s.Fatal("Failed to select Nearby Share target: ", err)
+		}
 	}
 
 	crosDisplayName := s.FixtValue().(*nearbyshare.FixtData).CrOSDeviceName
