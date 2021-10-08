@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script>
+      window.addEventListener('resize', () => {
+        const container = document.getElementById('content');
+        container.innerHTML = '';
+
+        while (container.firstChild) {
+          container.removeChild(container.firstChild);
+        }
+        for (var i = 0; i != 2000; ++i) {
+        const div = document.createElement('div');
+          div.style.display = "inline-block";
+          div.appendChild(document.createTextNode("X"));
+          container.appendChild(div);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div id="content"></div>
+  </body>
+</html>
