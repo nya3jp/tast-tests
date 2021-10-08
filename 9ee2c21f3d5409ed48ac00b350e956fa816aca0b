@@ -16,6 +16,23 @@
       "message": "PTAL too",
       "revId": "9ee2c21f3d5409ed48ac00b350e956fa816aca0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c61c82e_02da31cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-10-08T21:44:29Z",
+      "side": 1,
+      "message": "kansho@ FYI, this Chrome command line flag based approach might make things easier.",
+      "revId": "9ee2c21f3d5409ed48ac00b350e956fa816aca0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
