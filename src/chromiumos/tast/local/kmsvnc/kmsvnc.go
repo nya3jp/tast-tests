@@ -2,7 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package graphics
+// Package kmsvnc is a library for wrapping the kmsvnc binary from tast.
+package kmsvnc
 
 import (
 	"bufio"
