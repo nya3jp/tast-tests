@@ -422,6 +422,30 @@
       },
       "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42b465e9_9e206f3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T23:48:35Z",
+      "side": 1,
+      "message": "\u003e 2021-09-29T08:31:56.476745Z [08:38:28.848] Elapsed time to click setting panel: 13.231 s\n\nAre you including these 13.231 seconds in your statement (\"where it is playing the video for 13-15 seconds\")? If so, I\u0027m not convinced that\u0027s right: the video of interest has started playing only a bit before the end of those 13.231 seconds because that\u0027s when you\u0027ve just skipped the ad and opened the settings panel.\n\n\u003e 2021-09-29T08:32:04.271583Z [08:38:36.643] decodedFrameCount\u003d 236\n\u003e 2021-09-29T08:32:04.271662Z [08:38:36.643] droppedFrameCount\u003d 4\n\nAssuming a video FPS of 30, the number of decoded frames suggests the video actually played for at most ~8 seconds. Also, maybe not all of these 8 seconds of video have actually played -- maybe they\u0027re buffered frames.",
+      "parentUuid": "95dd1424_139092c8",
+      "range": {
+        "startLine": 131,
+        "startChar": 30,
+        "endLine": 131,
+        "endChar": 51
+      },
+      "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
