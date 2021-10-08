@@ -44,7 +44,6 @@ func TouchInput(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
-	defer tconn.Close()
 
 	if err := a.Install(ctx, arc.APKPath(motioninput.APK)); err != nil {
 		s.Fatal("Failed installing ", motioninput.APK, ": ", err)

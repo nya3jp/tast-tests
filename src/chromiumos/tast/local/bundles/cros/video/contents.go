@@ -205,7 +205,6 @@ func Contents(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
-	defer tconn.Close()
 
 	if err := play.TestPlayAndScreenshot(ctx, s, tconn, cs, testOpt.fileName, testOpt.refFileName); err != nil {
 		s.Fatal("TestPlayAndScreenshot failed: ", err)

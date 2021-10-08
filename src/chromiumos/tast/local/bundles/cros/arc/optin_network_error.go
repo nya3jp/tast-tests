@@ -59,7 +59,6 @@ func OptinNetworkError(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-	defer tconn.Close()
 
 	s.Log("Performing optin")
 	if err := optin.Perform(ctx, cr, tconn); err == nil {

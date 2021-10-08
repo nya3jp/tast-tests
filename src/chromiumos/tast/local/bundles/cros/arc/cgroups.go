@@ -80,7 +80,6 @@ func Cgroups(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer tconn.Close()
 
 	// TODO(sonnyrao): Try to figure out how to use the app launcher to do this.
 	act, err := arc.NewActivity(a, pkgName, ".Settings")

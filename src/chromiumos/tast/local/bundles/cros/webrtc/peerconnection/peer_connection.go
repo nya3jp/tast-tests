@@ -58,7 +58,6 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to test API")
 	}
-	defer tconn.Close()
 
 	if _, err := display.GetInternalInfo(ctx, tconn); err == nil {
 		// The device has an internal display.

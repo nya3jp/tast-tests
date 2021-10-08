@@ -58,7 +58,6 @@ func DeviceGuestModeEnabled(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Creating login test API connection failed: ", err)
 	}
-	defer tconn.Close()
 
 	uia := uiauto.New(tconn)
 

@@ -90,7 +90,6 @@ func ModeHotplug(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get Test API connection: ", err)
 	}
-	defer testConn.Close()
 
 	if err := typecutils.EnablePeripheralDataAccess(ctx, s.DataPath("testcert.p12")); err != nil {
 		s.Fatal("Failed to enable peripheral data access setting: ", err)

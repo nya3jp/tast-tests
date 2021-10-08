@@ -194,7 +194,6 @@ func playDRMVideo(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *
 	if err != nil {
 		return false, errors.Wrap(err, "failed to connect to test API")
 	}
-	defer tconn.Close()
 
 	if err := ash.WaitForFullScreen(ctx, tconn); err != nil {
 		return false, errors.Wrap(err, "failed waiting for full screen")
