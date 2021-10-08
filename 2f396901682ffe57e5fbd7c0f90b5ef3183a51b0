@@ -115,6 +115,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61be91c7_b0af96aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-10-08T04:29:44Z",
+      "side": 1,
+      "message": "Curious why we went with menuItems[j] over menuItem?",
+      "revId": "2f396901682ffe57e5fbd7c0f90b5ef3183a51b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59cb62b7_061c490f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
         "patchSetId": 1
@@ -198,6 +215,30 @@
       "side": 1,
       "message": "1. In general uiauto.Finder is commonly used for pointing to UI node. It is accepted by manu functions in automation.go, like LeftClick(). So it is considered more suitable for the function interface.\n2. Having uiauto.NodeInfo means taking snapshot of node status, so that test holds a certain \"state\". On the other hand if we pass uiauto.Finder and get node info inside this function, the test will be come more stateless, thus theoretically simpler.\n3. However, specifically to this case, this function can also be considered to a pure function that calculates something from NodeInfo. So I think having this way may also make sense.\n\nJonathan, do we have a guideline about the use of uiauto.NodeInfo / uiauto.Finder like this case?",
       "parentUuid": "f4bd7269_cb9cc09f",
+      "range": {
+        "startLine": 215,
+        "startChar": 5,
+        "endLine": 215,
+        "endChar": 28
+      },
+      "revId": "2f396901682ffe57e5fbd7c0f90b5ef3183a51b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76682386_889e5356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-10-08T04:29:44Z",
+      "side": 1,
+      "message": "Both approaches theoretically are not immune to changes between uiauto.NodeInfos and accessing the information on nodes. \n\nMy personal preference is to go with uiauto.Finder, more in the angle of interface and paradigm alignment.",
+      "parentUuid": "7480d7b5_be2cef62",
       "range": {
         "startLine": 215,
         "startChar": 5,
