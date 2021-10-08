@@ -20,6 +20,92 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ed5edb54_6991a7cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-08T07:50:02Z",
+      "side": 1,
+      "message": "Thanks! In general lgtm, left a few comments and suggestions.",
+      "revId": "b701a346b5a15455e36f8f5a46f9d9a430597a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e822a7e_1cb49e5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-08T07:50:02Z",
+      "side": 1,
+      "message": "Should this be made a constant as well?",
+      "range": {
+        "startLine": 46,
+        "startChar": 32,
+        "endLine": 46,
+        "endChar": 59
+      },
+      "revId": "b701a346b5a15455e36f8f5a46f9d9a430597a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "618d04ab_706f07d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-08T07:50:02Z",
+      "side": 1,
+      "message": "Just use seed? Technically, anything can be compressed.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "b701a346b5a15455e36f8f5a46f9d9a430597a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f8cb5d6_8fa8b061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-08T07:50:02Z",
+      "side": 1,
+      "message": "Just curious, why is this encapsulated inside an anonymous function?",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 5
+      },
+      "revId": "b701a346b5a15455e36f8f5a46f9d9a430597a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c7ee04ee_ea865c91",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
         "patchSetId": 1
@@ -36,6 +122,53 @@
         "startChar": 47,
         "endLine": 103,
         "endChar": 77
+      },
+      "revId": "b701a346b5a15455e36f8f5a46f9d9a430597a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "136c3b1f_b30e9e70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-08T07:50:02Z",
+      "side": 1,
+      "message": "This provides very important context, please add a real comment in the code.",
+      "parentUuid": "c7ee04ee_ea865c91",
+      "range": {
+        "startLine": 103,
+        "startChar": 47,
+        "endLine": 103,
+        "endChar": 77
+      },
+      "revId": "b701a346b5a15455e36f8f5a46f9d9a430597a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eb0501a_643671f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-08T07:50:02Z",
+      "side": 1,
+      "message": "Should we do a testing polling here as well? Downloading the new seed might take some time, so this part may be liable to flakiness.",
+      "range": {
+        "startLine": 147,
+        "startChar": 21,
+        "endLine": 147,
+        "endChar": 39
       },
       "revId": "b701a346b5a15455e36f8f5a46f9d9a430597a75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
