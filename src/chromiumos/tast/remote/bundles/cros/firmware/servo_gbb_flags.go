@@ -18,23 +18,19 @@ import (
 	commonbios "chromiumos/tast/common/firmware/bios"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/remote/firmware/bios"
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ServoGBBFlags,
-		Desc:         "Verifies GBB flags state can be obtained and manipulated via the servo interface",
-		Timeout:      8 * time.Minute,
-		Contacts:     []string{"cros-fw-engprod@google.com", "jbettis@google.com"},
-		Attr:         []string{"group:firmware", "firmware_cr50", "firmware_ccd"},
-		Pre:          pre.NormalMode(),
-		Data:         pre.Data,
-		ServiceDeps:  pre.ServiceDeps,
-		SoftwareDeps: pre.SoftwareDeps,
-		Vars:         pre.Vars,
+		Func:     ServoGBBFlags,
+		Desc:     "Verifies GBB flags state can be obtained and manipulated via the servo interface",
+		Timeout:  8 * time.Minute,
+		Contacts: []string{"cros-fw-engprod@google.com", "jbettis@google.com"},
+		Attr:     []string{"group:firmware", "firmware_cr50", "firmware_ccd"},
+		Fixture:  fixture.NormalMode,
 	})
 }
 
@@ -58,7 +54,7 @@ func dutControl(ctx context.Context, s *testing.State, svo *servo.Servo, command
 // Verified fail on Servo V4 + ServoMicro w/o dual v4 mode.
 // Has not been tested with CCD closed (assumed to fail), nor with C2D2 (assumed to pass).
 func ServoGBBFlags(ctx context.Context, s *testing.State) {
-	h := s.PreValue().(*pre.Value).Helper
+	h := s.FixtValue().(*fixture.Value).Helper
 
 	if err := h.RequireConfig(ctx); err != nil {
 		s.Fatal("Failed to create firmware config: ", err)

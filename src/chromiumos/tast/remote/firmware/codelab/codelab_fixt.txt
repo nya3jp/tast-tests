@@ -10,7 +10,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	fwCommon "chromiumos/tast/common/firmware"
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -18,7 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CodelabPre,
+		Func:         CodelabFixt,
 		Desc:         "Demonstrates common functionality for remote firmware tests",
 		Contacts:     []string{
 			"me@chromium.org",      // Test author
@@ -26,17 +26,13 @@ func init() {
 		},
 		Attr:         []string{"group:firmware", "firmware_experimental"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		Data:         pre.Data,
-		ServiceDeps:  pre.ServiceDeps,
-		SoftwareDeps: pre.SoftwareDeps,
-		Vars:         pre.Vars,
-		Pre:          pre.NormalMode(),
+		Fixture:      fixture.NormalMode,
 	})
 }
 
-// CodelabPre demonstrates using a firmware.Pre to ensure that the DUT is in an expected state at the start and end of a test.
-func CodelabPre(ctx context.Context, s *testing.State) {
-	h := s.PreValue().(*pre.Value).Helper
+// CodelabFixt demonstrates using a fixture to ensure that the DUT is in an expected state at the start and end of a test.
+func CodelabFixt(ctx context.Context, s *testing.State) {
+	h := s.FixtValue().(*fixture.Value).Helper
 
 	r := h.Reporter
 	board, err := r.Board(ctx)

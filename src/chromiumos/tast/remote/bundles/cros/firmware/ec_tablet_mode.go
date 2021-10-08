@@ -14,7 +14,7 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/services/cros/graphics"
 	"chromiumos/tast/services/cros/ui"
@@ -34,12 +34,10 @@ func init() {
 		Desc:         "Checks that power button actions behave as expected in tablet mode, replacing case 1.4.9",
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_experimental"},
-		SoftwareDeps: append([]string{"chrome"}, pre.SoftwareDeps...),
-		Data:         pre.Data,
+		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
-		Vars:         pre.Vars,
-		ServiceDeps:  append([]string{"tast.cros.ui.ScreenLockService", "tast.cros.ui.PowerMenuService", "tast.cros.graphics.ScreenshotService"}, pre.ServiceDeps...),
-		Pre:          pre.DevModeGBB(),
+		ServiceDeps:  []string{"tast.cros.ui.ScreenLockService", "tast.cros.ui.PowerMenuService", "tast.cros.graphics.ScreenshotService"},
+		Fixture:      fixture.DevModeGBB,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
 }
@@ -47,7 +45,7 @@ func init() {
 func ECTabletMode(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 
-	h := s.PreValue().(*pre.Value).Helper
+	h := s.FixtValue().(*fixture.Value).Helper
 
 	if err := h.RequireConfig(ctx); err != nil {
 		s.Fatal("Failed to get config: ", err)
