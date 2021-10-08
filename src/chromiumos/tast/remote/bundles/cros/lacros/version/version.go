@@ -5,6 +5,7 @@
 package version
 
 import (
+	"math"
 	"regexp"
 	"strconv"
 	"strings"
@@ -12,15 +13,15 @@ import (
 
 // Version represents a browser version in the format of "(major).(minor).(build).(patch)".
 type Version struct {
-	components [4]uint64
+	components [4]int64
 }
 
 var versionRegexp = regexp.MustCompile(`(\d+).(\d+).(\d+).(\d+)`)
 
 // New creates a new instance of Version with version components.
-func New(major, minor, build, patch uint64) Version {
+func New(major, minor, build, patch int64) Version {
 	return Version{
-		components: [4]uint64{major, minor, build, patch},
+		components: [4]int64{major, minor, build, patch},
 	}
 }
 
@@ -30,7 +31,7 @@ func Parse(version string) Version {
 	parts := versionRegexp.FindStringSubmatch(version)
 	if parts != nil {
 		for id, part := range parts[1:] {
-			number, err := strconv.ParseUint(part, 10, 64)
+			number, err := strconv.ParseInt(part, 10, 64)
 			if err != nil {
 				return Version{}
 			}
@@ -44,13 +45,13 @@ func Parse(version string) Version {
 func (v *Version) GetString() string {
 	var version []string
 	for _, component := range v.components {
-		version = append(version, strconv.FormatUint(component, 10))
+		version = append(version, strconv.FormatInt(component, 10))
 	}
 	return strings.Join(version, ".")
 }
 
 // Increment increases version by given components, returns a copy of it.
-func (v *Version) Increment(major, minor, build, patch uint64) Version {
+func (v *Version) Increment(major, minor, build, patch int64) Version {
 	v.components[0] += major
 	v.components[1] += minor
 	v.components[2] += build
@@ -59,7 +60,7 @@ func (v *Version) Increment(major, minor, build, patch uint64) Version {
 }
 
 // Decrement decreases version by given components, returns a copy of it.
-func (v *Version) Decrement(major, minor, build, patch uint64) Version {
+func (v *Version) Decrement(major, minor, build, patch int64) Version {
 	v.components[0] -= major
 	v.components[1] -= minor
 	v.components[2] -= build
@@ -69,15 +70,13 @@ func (v *Version) Decrement(major, minor, build, patch uint64) Version {
 
 // IsNewerThan compares two version and returns true when lhs is newer than rhs.
 func (v *Version) IsNewerThan(rhs Version) bool {
-	if v.IsEqualTo(rhs) {
-		return false
-	}
 	for i, component := range v.components {
-		if component < rhs.components[i] {
-			return false
+		o := rhs.components[i]
+		if component != o {
+			return component > o
 		}
 	}
-	return true
+	return false
 }
 
 // IsOlderThan compares two version and returns true when lhs is older than rhs.
@@ -93,4 +92,15 @@ func (v *Version) IsEqualTo(rhs Version) bool {
 // IsValid checks if the version is set with valid numbers.
 func (v *Version) IsValid() bool {
 	return v.GetString() != "0.0.0.0"
+}
+
+// IsSkewValid returns whether it is a valid version skew that is compatible with the given ash/OS version.
+func (v *Version) IsSkewValid(ash Version) bool {
+	// TODO(crbug.com/1258138): Update version skew policy for Tast. Currently, it is [-1, inf] but should be [0, +2] as soon as the issue is resolved.
+	// Note that this version skew policy should be in line with the production code.
+	// See LacrosInstallerPolicy::ComponentReady at
+	//   https://osscs.corp.google.com/chromium/chromium/src/+/main:chrome/browser/component_updater/cros_component_installer_chromeos.cc
+	const minMajorVersionSkew = -1
+	return v.components[0] >= ash.components[0]+minMajorVersionSkew &&
+		v.components[0] <= math.MaxInt64
 }
