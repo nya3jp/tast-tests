@@ -16,6 +16,24 @@
       "message": "[optional] Is this change (not using initctl) also related to the flakiness? If so, I suggest mentioning it in the commit message.",
       "revId": "7475958d5c4dac2b7747fe9b3a1bbd95bccbf0b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b071c1_800d8bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-10-08T06:21:44Z",
+      "side": 0,
+      "message": "To pass --bypass_temperature_check option to the sound_card_init main program, I need to invoke the soudn_card_init main program directly as initctl starting soudn_card_init with fixed args in the upstart config.",
+      "parentUuid": "1f6551d9_d86d7e6a",
+      "revId": "7475958d5c4dac2b7747fe9b3a1bbd95bccbf0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
