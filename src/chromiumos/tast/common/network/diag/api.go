@@ -31,8 +31,13 @@ function() {
 
     getNetworkDiagnostics() {
       if (!this.networkDiagnostics_) {
-        this.networkDiagnostics_ = chromeos.networkDiagnostics.mojom
-                                       .NetworkDiagnosticsRoutines.getRemote()
+        // TODO(crbug.com/1255018): Check ash namespace and fallback to chromeos
+        // if unavailable, for renaming.
+        let has_ash_mojom = typeof ash !== "undefined" &&
+                            typeof ash.networkDiagnostics !== "undefined";
+        this.networkDiagnostics_ = has_ash_mojom ?
+            ash.networkDiagnostics.mojom.NetworkDiagnosticsRoutines.getRemote() :
+            chromeos.networkDiagnostics.mojom.NetworkDiagnosticsRoutines.getRemote();
       }
       return this.networkDiagnostics_;
     },
