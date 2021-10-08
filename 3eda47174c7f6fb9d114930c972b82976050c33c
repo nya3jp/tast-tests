@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0234cb4d_76348100",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-08T07:49:53Z",
+      "side": 1,
+      "message": "err is nil here.\n\nYou shall log \"Failed to restart powerd; expect \u0027powerd start/running\u0027, got: \", string(restartOut)",
+      "range": {
+        "startLine": 80,
+        "startChar": 40,
+        "endLine": 80,
+        "endChar": 43
+      },
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2084799d_52d8e006",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-08T07:49:53Z",
+      "side": 1,
+      "message": "Please check https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task\n\n// Reserve time for clean-up task.\nctxCleanup :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, time_for_cleanup_to_run)\ndefer cancel()\n\n// Clean-up\ndefer func(ctx context.Context) {\n  ...\n}(ctxCleanup)\n\n// your main logic...",
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97048466_b9ccfa78",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-08T07:49:53Z",
+      "side": 1,
+      "message": "to wait for the DUT being unreachable",
+      "range": {
+        "startLine": 140,
+        "startChar": 19,
+        "endLine": 140,
+        "endChar": 39
+      },
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e447213f_55e4e730",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-08T07:49:53Z",
+      "side": 1,
+      "message": "Remove this.",
+      "range": {
+        "startLine": 145,
+        "startChar": 57,
+        "endLine": 145,
+        "endChar": 63
+      },
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afd318ff_61c29345",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-08T07:49:53Z",
+      "side": 1,
+      "message": "eventRe\n\nOr you may make requiredEventSets of type [][]*regexp.Regexp and prepare in the beginning.",
+      "range": {
+        "startLine": 172,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35dee566_8375319e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-08T07:49:53Z",
+      "side": 1,
+      "message": "press power key via servo",
+      "range": {
+        "startLine": 193,
+        "startChar": 37,
+        "endLine": 193,
+        "endChar": 55
+      },
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f4dbd71_45886a09",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-08T07:49:53Z",
+      "side": 1,
+      "message": "Please comment the reason why it should retry once when it fails to wake up the DUT.",
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
