@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa2c0b90_cb62e33a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-08T08:13:49Z",
+      "side": 1,
+      "message": "The subject line should start with a prefix:\narc: Add immersive and splitview tests to ResizeLock",
+      "revId": "dda12691b2d72bc6cb9f6c9c61527276bdbe570c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a9347cd7_31480b6e",
@@ -14,6 +31,40 @@
       "writtenOn": "2021-10-08T07:34:40Z",
       "side": 1,
       "message": "PTAL!",
+      "revId": "dda12691b2d72bc6cb9f6c9c61527276bdbe570c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d4e5865_3301afc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-08T08:13:49Z",
+      "side": 1,
+      "message": "Please add a arc domain expert to the review as well.",
+      "revId": "dda12691b2d72bc6cb9f6c9c61527276bdbe570c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1fe89a5_7ceed054",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-08T08:13:49Z",
+      "side": 1,
+      "message": "What is goal here with returning the error?\nIf you want it to propagate to the return error of testChangeWindowState, you have to use named return values, and overwrite it in the deferred function.",
       "revId": "dda12691b2d72bc6cb9f6c9c61527276bdbe570c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
