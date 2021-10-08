@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2bd9de_8ebece2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/change.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-10-08T22:49:32Z",
+      "side": 0,
+      "message": "Please also remove these variables from wallpaper.yaml.\n\nhttps://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/vars/wallpaper.yaml?q\u003df:wallpaper.yaml",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 40
+      },
+      "revId": "12f4cecbb6e035fe069f2befe2328dacbe428b6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
