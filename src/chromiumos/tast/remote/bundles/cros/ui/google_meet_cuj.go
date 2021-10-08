@@ -74,6 +74,20 @@ func init() {
 					Tier: "premium",
 					Size: conference.LargeRoomSize,
 				},
+			}, {
+				Name:    "plus_no_meet",
+				Timeout: time.Minute * 10,
+				Val: conference.TestParameters{
+					Tier: "plus",
+					Size: conference.NoRoom,
+				},
+			}, {
+				Name:    "premium_no_meet",
+				Timeout: time.Minute * 10,
+				Val: conference.TestParameters{
+					Tier: "premium",
+					Size: conference.NoRoom,
+				},
 			},
 		},
 	})

@@ -482,6 +482,15 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 	// shareScreen shares screen by "A Tab" and selects the tab which is going to present.
 	// If there is extended display, move conference to extended display.
 	shareScreen := func(ctx context.Context) error {
+		if conf.roomSize == NoRoom {
+			// Share screen will automatically switch to the specified application tab.
+			// Without googlemeet, it must switch to slide tab before present slide.
+			// And present document doesn't need a switch because it is already on the document page.
+			if application == googleSlides {
+				return switchToTab(appTabName)(ctx)
+			}
+			return nil
+		}
 		ui := uiauto.New(tconn)
 		menu := nodewith.Name("Presentation options").Role(role.Menu).Ancestor(meetWebArea)
 		presentNowButton := nodewith.Name("Present now").Ancestor(meetWebArea)
@@ -531,6 +540,9 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 		))(ctx)
 	}
 	stopPresenting := func(ctx context.Context) error {
+		if conf.roomSize == NoRoom {
+			return nil
+		}
 		// There are two "Stop presenting" buttons on the screen with the same ancestor, role and name that we can't use unique finder.
 		stopPresentingButton := nodewith.Name("Stop presenting").Role(role.Button).Ancestor(meetWebArea).First()
 		testing.ContextLog(ctx, "Stop presenting")

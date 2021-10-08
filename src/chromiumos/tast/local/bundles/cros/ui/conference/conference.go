@@ -16,6 +16,8 @@ import (
 )
 
 const (
+	// NoRoom means not joining google meet when running the test.
+	NoRoom = 0
 	// TwoRoomSize creates a conference room with 2 participants.
 	TwoRoomSize = 2
 	// SmallRoomSize creates a conference room with 5 participants.

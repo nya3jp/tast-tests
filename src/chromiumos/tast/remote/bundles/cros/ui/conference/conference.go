@@ -5,13 +5,15 @@
 package conference
 
 const (
-	// TwoRoomSize creates a conference room with 2 participants
+	// NoRoom means not joining google meet when running the test.
+	NoRoom = 0
+	// TwoRoomSize creates a conference room with 2 participants.
 	TwoRoomSize = 2
-	// SmallRoomSize creates a conference room with 5 participants
+	// SmallRoomSize creates a conference room with 5 participants.
 	SmallRoomSize = 5
-	// LargeRoomSize creates a conference room with 16 participants
+	// LargeRoomSize creates a conference room with 16 participants.
 	LargeRoomSize = 16
-	// ClassRoomSize creates a conference room with 38 participants
+	// ClassRoomSize creates a conference room with 38 participants.
 	ClassRoomSize = 38
 )
 
