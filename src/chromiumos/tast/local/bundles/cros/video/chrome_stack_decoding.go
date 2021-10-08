@@ -69,7 +69,7 @@ var h264FilesFromBugs = []string{
 	"test_vectors/h264/b_149068426_invalid_video_layout_mtk_8183_with_direct_videodecoder.h264",
 }
 
-func testFiles(videoFiles []string) []string {
+func appendJSONFiles(videoFiles []string) []string {
 	var tf []string
 	for _, file := range videoFiles {
 		tf = append(tf, file)
@@ -78,82 +78,82 @@ func testFiles(videoFiles []string) []string {
 	return tf
 }
 
-// testOpt is used to describe the options used to run each test.
-type decodeComplianceTestParam struct {
+// chromeStackDecodingTestParam is used to describe the options used to run each test.
+type chromeStackDecodingTestParam struct {
 	videoFiles    []string               // The paths of video files to be tested.
 	validatorType decoding.ValidatorType // The frame validation type of video_decode_accelerator_tests.
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DecodeCompliance,
-		Desc:         "Verifies the result of decoding a variety of videos (i.e., test vectors) that target mostly specific codec features by running the video_decode_accelerator_tests binary",
+		Func:         ChromeStackDecoding,
+		Desc:         "Verifies video decoding using Chrome's stack (via the video_decode_accelerator_tests binary) and either MD5 or SSIM criteria",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-gfx-video@google.com"},
 		SoftwareDeps: []string{"chrome", "video_decoder_direct"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name:              "av1_common",
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
-			ExtraData:         testFiles(av1CommonFiles),
-			Val: decodeComplianceTestParam{
+			ExtraData:         appendJSONFiles(av1CommonFiles),
+			Val: chromeStackDecodingTestParam{
 				videoFiles:    av1CommonFiles,
 				validatorType: decoding.MD5,
 			},
 		}, {
 			Name:              "av1_film_grain",
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
-			// Different decoders may use different film grain synthesis methods while producing
-			// a visually correct output (AV1 spec 7.2). Thus, for volteer, we don't validate
-			// the decoding of film-grain streams using MD5. Instead, we validate them using
-			// SSIM (see the av1_ssim test).
+			// Different decoders may use different film grain synthesis methods while
+			// producing a visually correct output (AV1 spec 7.2). Thus, for volteer,
+			// don't validate the decoding of film-grain streams using MD5. Instead,
+			// validate them using SSIM (see the av1_ssim test).
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("volteer")),
-			ExtraData:         testFiles(av1FilmGrainFiles),
-			Val: decodeComplianceTestParam{
+			ExtraData:         appendJSONFiles(av1FilmGrainFiles),
+			Val: chromeStackDecodingTestParam{
 				videoFiles:    av1FilmGrainFiles,
 				validatorType: decoding.MD5,
 			},
 		}, {
 			Name:              "av1_ssim",
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
-			ExtraData:         testFiles(av1Files),
-			Val: decodeComplianceTestParam{
+			ExtraData:         appendJSONFiles(av1Files),
+			Val: chromeStackDecodingTestParam{
 				videoFiles:    av1Files,
 				validatorType: decoding.SSIM,
 			},
 		}, {
 			Name:              "av1_10bit_common",
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_10BPP},
-			ExtraData:         testFiles(av110BitCommonFiles),
-			Val: decodeComplianceTestParam{
+			ExtraData:         appendJSONFiles(av110BitCommonFiles),
+			Val: chromeStackDecodingTestParam{
 				videoFiles:    av110BitCommonFiles,
 				validatorType: decoding.MD5,
 			},
 		}, {
 			Name:              "av1_10bit_film_grain",
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_10BPP},
-			// Different decoders may use different film grain synthesis methods while producing
-			// a visually correct output (AV1 spec 7.2). Thus, for volteer, we don't validate
-			// the decoding of film-grain streams using MD5. Instead, we validate them using
-			// SSIM (see the av1_10bit_ssim test).
+			// Different decoders may use different film grain synthesis methods while
+			// producing a visually correct output (AV1 spec 7.2). Thus, for volteer,
+			// don't validate the decoding of film-grain streams using MD5. Instead,
+			// validate them using SSIM (see the av1_10bit_ssim test).
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("volteer")),
-			ExtraData:         testFiles(av110BitFilmGrainFiles),
-			Val: decodeComplianceTestParam{
+			ExtraData:         appendJSONFiles(av110BitFilmGrainFiles),
+			Val: chromeStackDecodingTestParam{
 				videoFiles:    av110BitFilmGrainFiles,
 				validatorType: decoding.MD5,
 			},
 		}, {
 			Name:              "av1_10bit_ssim",
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_10BPP},
-			ExtraData:         testFiles(av110BitFiles),
-			Val: decodeComplianceTestParam{
+			ExtraData:         appendJSONFiles(av110BitFiles),
+			Val: chromeStackDecodingTestParam{
 				videoFiles:    av110BitFiles,
 				validatorType: decoding.SSIM,
 			},
 		}, {
 			Name:              "h264",
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
-			ExtraData:         testFiles(h264FilesFromBugs),
-			Val: decodeComplianceTestParam{
+			ExtraData:         appendJSONFiles(h264FilesFromBugs),
+			Val: chromeStackDecodingTestParam{
 				videoFiles:    h264FilesFromBugs,
 				validatorType: decoding.MD5,
 			},
@@ -161,9 +161,9 @@ func init() {
 	})
 }
 
-func DecodeCompliance(ctx context.Context, s *testing.State) {
+func ChromeStackDecoding(ctx context.Context, s *testing.State) {
 	var tv []string
-	param := s.Param().(decodeComplianceTestParam)
+	param := s.Param().(chromeStackDecodingTestParam)
 	for _, file := range param.videoFiles {
 		tv = append(tv, s.DataPath(file))
 	}
