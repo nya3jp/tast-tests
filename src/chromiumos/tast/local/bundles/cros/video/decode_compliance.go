@@ -65,6 +65,10 @@ var av110BitFilmGrainFiles = []string{
 
 var av110BitFiles = append(av110BitCommonFiles, av110BitFilmGrainFiles...)
 
+var h264FilesFromBugs = []string{
+	"test_vectors/h264/b_149068426_invalid_video_layout_mtk_8183_with_direct_videodecoder.h264",
+}
+
 func testFiles(videoFiles []string) []string {
 	var tf []string
 	for _, file := range videoFiles {
@@ -144,6 +148,14 @@ func init() {
 			Val: decodeComplianceTestParam{
 				videoFiles:    av110BitFiles,
 				validatorType: decoding.SSIM,
+			},
+		}, {
+			Name:              "h264",
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
+			ExtraData:         testFiles(h264FilesFromBugs),
+			Val: decodeComplianceTestParam{
+				videoFiles:    h264FilesFromBugs,
+				validatorType: decoding.MD5,
 			},
 		}},
 	})
