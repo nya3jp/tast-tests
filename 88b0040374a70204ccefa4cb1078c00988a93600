@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cf76c1b_55756657",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-08T16:25:35Z",
+      "side": 1,
+      "message": "We probably want to remove the temp file even if the restoreECRW step fails. So I would use s.Error here instead of Fatal.",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 10
+      },
+      "revId": "88b0040374a70204ccefa4cb1078c00988a93600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa7a1e14_d97a10aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hash.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-08T16:25:35Z",
+      "side": 1,
+      "message": "bs.ClearAndSetGBBFlags will operate only on the flags present in the proto, so you don\u0027t need to read the GBB flags here just do:\n\nflg :\u003d \u0026pb.GBBFlagsState{Clear: []pb.GBBFlag{pb.GBBFlag_DISABLE_EC_SOFTWARE_SYNC}}\nif _, err :\u003d bs.ClearAndSetGBBFlags(ctx, flg); err !\u003d nil {\n\ts.Fatal(\"Failed clearing DISABLE_EC_SOFTWARE_SYNC GBB flag\")\n}\n\nOr probably move the pointer address operator \u0026 to the function call.\n\nflg :\u003d pb.GBBFlagsState{Clear: []pb.GBBFlag{pb.GBBFlag_DISABLE_EC_SOFTWARE_SYNC}}\nif _, err :\u003d bs.ClearAndSetGBBFlags(ctx, \u0026flg); err !\u003d nil {\n\ts.Fatal(\"Failed clearing DISABLE_EC_SOFTWARE_SYNC GBB flag\")\n}",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "88b0040374a70204ccefa4cb1078c00988a93600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
