@@ -28,10 +28,9 @@ func init() {
 		Func: APSupportedRates,
 		Desc: "Verifies that we avoid legacy bitrates on APs that disable them",
 		Contacts: []string{
-			"briannorris@chromium.org",        // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:        []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Fixture:     "wificellFixt",
 		// See b/138406224. ath10k only supports this on CrOS kernels >=4.14
@@ -47,7 +46,8 @@ func init() {
 				},
 			},
 			{
-				Name: "11ac",
+				Name:      "11ac",
+				ExtraAttr: []string{"wificell_unstable"},
 				Val: supportedRatesCase{
 					apOpts: []hostapd.Option{
 						hostapd.Mode(hostapd.Mode80211acMixed), hostapd.Channel(157), hostapd.VHTCenterChannel(155),
