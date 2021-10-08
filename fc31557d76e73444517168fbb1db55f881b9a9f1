@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1139abbd_bde228ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-10-08T03:03:36Z",
+      "side": 1,
+      "message": "Turns out we can\u0027t create the log reader before the first log file, so I\u0027m now passing around a precondition-scoped struct for the post test tasks to create the log reader in.",
+      "revId": "fc31557d76e73444517168fbb1db55f881b9a9f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
