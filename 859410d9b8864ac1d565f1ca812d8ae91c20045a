@@ -16,6 +16,23 @@
       "message": "PTAL.",
       "revId": "859410d9b8864ac1d565f1ca812d8ae91c20045a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1eb134_78b82916",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/perftest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-08T02:39:12Z",
+      "side": 1,
+      "message": "If waitForStableEnvironment fails, this doesn\u0027t clean up the new tab.",
+      "revId": "859410d9b8864ac1d565f1ca812d8ae91c20045a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
