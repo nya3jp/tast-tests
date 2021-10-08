@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1f85e1dd_81c7b0a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-10-08T08:45:51Z",
+      "side": 1,
+      "message": "I thought the subject has to start with tast-tests. OK",
+      "parentUuid": "08372252_828ba7b4",
+      "revId": "b8dfbe99f2af17050d3dd7fe21b64d3df7c1b7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7ecf8170_96ed5c9c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -119,6 +137,30 @@
       "writtenOn": "2021-10-08T08:37:08Z",
       "side": 1,
       "message": "Before it was expected that both values are equal to loop. Can you add a comment on why this expectation changed?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 3
+      },
+      "revId": "b8dfbe99f2af17050d3dd7fe21b64d3df7c1b7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "266bfc73_6de2d6ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_loopback_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-10-08T08:45:51Z",
+      "side": 1,
+      "message": "The truth is loopback-latency is not so well written, and I am not super concerned about numValidLoops at the moment. I am looking into ways to improve the program.",
+      "parentUuid": "7e0c00b5_00c9cd23",
       "range": {
         "startLine": 206,
         "startChar": 0,
