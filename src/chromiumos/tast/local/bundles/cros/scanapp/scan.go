@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/scanapp/scanning"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/scanapp"
+	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
 )
 
@@ -48,7 +49,7 @@ var tests = []scanning.TestingStruct{
 	{
 		Name: "flatbed_png_color_letter_300_dpi",
 		Settings: scanapp.ScanSettings{
-			Scanner:    scanning.ScannerName,
+			Scanner:    "Canon TR8500 series (USB)",
 			Source:     scanapp.SourceFlatbed,
 			FileType:   scanapp.FileTypePNG,
 			ColorMode:  scanapp.ColorModeColor,
@@ -59,20 +60,20 @@ var tests = []scanning.TestingStruct{
 	}, {
 		Name: "adf_simplex_jpg_grayscale_a4_150_dpi",
 		Settings: scanapp.ScanSettings{
-			Scanner:  scanning.ScannerName,
+			Scanner:  "Canon TR8500 series (USB)",
 			Source:   scanapp.SourceADFOneSided,
 			FileType: scanapp.FileTypeJPG,
 			// TODO(b/181773386): Change this to black and white when the virtual
 			// USB printer correctly reports the color mode.
 			ColorMode:  scanapp.ColorModeGrayscale,
-			PageSize:   scanapp.PageSizeA4,
+			PageSize:   scanapp.PageSizeLetter,
 			Resolution: scanapp.Resolution150DPI,
 		},
 		GoldenFile: jpgGoldenFile,
 	}, {
 		Name: "adf_duplex_pdf_grayscale_max_300_dpi",
 		Settings: scanapp.ScanSettings{
-			Scanner:    scanning.ScannerName,
+			Scanner:    "Canon TR8500 series (USB)",
 			Source:     scanapp.SourceADFTwoSided,
 			FileType:   scanapp.FileTypePDF,
 			ColorMode:  scanapp.ColorModeGrayscale,
@@ -86,12 +87,13 @@ var tests = []scanning.TestingStruct{
 func Scan(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
-	var scannerParams = scanning.ScannerStruct{
-		Descriptors:     scanning.Descriptors,
-		Attributes:      scanning.Attributes,
-		EsclCaps:        scanning.EsclCapabilities,
-		SourceImagePath: s.DataPath(scanning.SourceImage),
+	var scannerParams = scanning.UsbScanner{
+		Name: "Canon TR8500 series (USB)",
+		DevInfo: usbprinter.DevInfo{
+			VID: "04a9",
+			PID: "1823",
+		},
 	}
 
-	scanning.RunAppSettingsTests(ctx, s, cr, tests, scannerParams)
+	scanning.RunAppSettingsTestsUsb(ctx, s, cr, tests, scannerParams)
 }
