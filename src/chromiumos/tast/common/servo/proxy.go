@@ -170,6 +170,17 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 				logServoStatus(ctx, pxy.hst, port)
 			}
 		}()
+
+		// Detect if we are in the lab, we shouldn't need ssh forwarding in the lab.
+		// TODO(jbettis): Detect we are in the lab, and skip forwarding the port to the servod.
+		testing.ContextLogf(ctx, "DRONE_AGENT_BOT:%q ", os.Getenv("DRONE_AGENT_BOT"))
+		testing.ContextLogf(ctx, "HOSTNAME:%q ", os.Getenv("HOSTNAME"))
+		if hostname, err := os.Hostname(); err != nil {
+			testing.ContextLogf(ctx, "Error getting hostname:%s", err)
+		} else {
+			testing.ContextLogf(ctx, "hostname:%s", hostname)
+		}
+
 		// Next, forward a local port over the SSH connection to the servod port.
 		testing.ContextLog(ctx, "Creating forwarded connection to port ", port)
 		pxy.fwd, err = pxy.hst.NewForwarder("localhost:0", fmt.Sprintf("localhost:%d", port),
