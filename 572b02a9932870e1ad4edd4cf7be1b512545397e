@@ -33,6 +33,29 @@
       "message": "LGTM",
       "revId": "572b02a9932870e1ad4edd4cf7be1b512545397e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e06d0f_483df2ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_disk_space.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-10-08T17:07:51Z",
+      "side": 1,
+      "message": "(optional) If you need individual owners as well as a group, feel free to list Ian and me",
+      "range": {
+        "startLine": 19,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "572b02a9932870e1ad4edd4cf7be1b512545397e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
