@@ -6,10 +6,12 @@ package scanapp
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/scanapp/scanning"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/scanapp"
+	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
 )
 
@@ -28,6 +30,7 @@ func init() {
 			"paper-io_scanning",
 		},
 		SoftwareDeps: []string{"chrome", "virtual_usb_printer"},
+		Timeout:      20 * time.Minute,
 		Fixture:      "chromeLoggedIn",
 		Data: []string{
 			scanning.SourceImage,
@@ -39,7 +42,7 @@ func init() {
 }
 
 const (
-	pngGoldenFile = "flatbed_png_color_letter_300_dpi.png"
+	pngGoldenFile = "test_png.png"
 	jpgGoldenFile = "adf_simplex_jpg_grayscale_a4_150_dpi.jpg"
 	pdfGoldenFile = "adf_duplex_pdf_grayscale_max_300_dpi.pdf"
 )
@@ -48,7 +51,7 @@ var tests = []scanning.TestingStruct{
 	{
 		Name: "flatbed_png_color_letter_300_dpi",
 		Settings: scanapp.ScanSettings{
-			Scanner:    scanning.ScannerName,
+			Scanner:    "Canon MF741C/743C (USB)",
 			Source:     scanapp.SourceFlatbed,
 			FileType:   scanapp.FileTypePNG,
 			ColorMode:  scanapp.ColorModeColor,
@@ -59,7 +62,7 @@ var tests = []scanning.TestingStruct{
 	}, {
 		Name: "adf_simplex_jpg_grayscale_a4_150_dpi",
 		Settings: scanapp.ScanSettings{
-			Scanner:  scanning.ScannerName,
+			Scanner:  "Canon MF741C/743C (USB)",
 			Source:   scanapp.SourceADFOneSided,
 			FileType: scanapp.FileTypeJPG,
 			// TODO(b/181773386): Change this to black and white when the virtual
@@ -72,7 +75,7 @@ var tests = []scanning.TestingStruct{
 	}, {
 		Name: "adf_duplex_pdf_grayscale_max_300_dpi",
 		Settings: scanapp.ScanSettings{
-			Scanner:    scanning.ScannerName,
+			Scanner:    "Canon MF741C/743C (USB)",
 			Source:     scanapp.SourceADFTwoSided,
 			FileType:   scanapp.FileTypePDF,
 			ColorMode:  scanapp.ColorModeGrayscale,
@@ -86,12 +89,13 @@ var tests = []scanning.TestingStruct{
 func Scan(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
-	var scannerParams = scanning.ScannerStruct{
-		Descriptors:     scanning.Descriptors,
-		Attributes:      scanning.Attributes,
-		EsclCaps:        scanning.EsclCapabilities,
-		SourceImagePath: s.DataPath(scanning.SourceImage),
+	var scannerParams = scanning.UsbScanner{
+		Name: "Canon MF741C/743C (USB)",
+		DevInfo: usbprinter.DevInfo{
+			VID: "04a9",
+			PID: "27fc",
+		},
 	}
 
-	scanning.RunAppSettingsTests(ctx, s, cr, tests, scannerParams)
+	scanning.RunAppSettingsTestsUsb(ctx, s, cr, tests, scannerParams)
 }

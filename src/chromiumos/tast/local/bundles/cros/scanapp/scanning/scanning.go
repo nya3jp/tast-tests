@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -92,6 +93,12 @@ type ScannerStruct struct {
 	Attributes      string
 	EsclCaps        string
 	SourceImagePath string
+}
+
+// TODO: Comment.
+type UsbScanner struct {
+	Name    string
+	DevInfo usbprinter.DevInfo
 }
 
 // RunAppSettingsTests takes in the Chrome instance and the specific testing parameters
@@ -196,4 +203,76 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	// to finish using the printer (e.g. CUPS background probing).
 	usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
 	printer = nil
+}
+
+func RunAppSettingsTestsUsb(ctx context.Context, s *testing.State, cr *chrome.Chrome, testParams []TestingStruct, scannerParams UsbScanner) {
+	// Use cleanupCtx for any deferred cleanups in case of timeouts or
+	// cancellations on the shortened context.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect Test API: ", err)
+	}
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
+	if err = ippusbbridge.WaitForSocket(ctx, scannerParams.DevInfo); err != nil {
+		s.Fatal("Failed to wait for ippusb_bridge socket: ", err)
+	}
+	if err = cups.EnsurePrinterIdle(ctx, scannerParams.DevInfo); err != nil {
+		s.Fatal("Failed to wait for printer to be idle: ", err)
+	}
+	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(scannerParams.Name)); err != nil {
+		s.Fatal("Failed to wait for printer notification: ", err)
+	}
+	if err = ippusbbridge.ContactPrinterEndpoint(ctx, scannerParams.DevInfo, "/eSCL/ScannerCapabilities"); err != nil {
+		s.Fatal("Failed to get scanner status over ippusb_bridge socket: ", err)
+	}
+
+	// Launch the Scan app, configure the settings, and perform scans.
+	app, err := scanapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch app: ", err)
+	}
+
+	if err := app.ClickMoreSettings()(ctx); err != nil {
+		s.Fatal("Failed to expand More settings: ", err)
+	}
+
+	for _, test := range testParams {
+		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+test.Name)
+			defer func() {
+				if err := RemoveScans(DefaultScanPattern); err != nil {
+					s.Error("Failed to remove scans: ", err)
+				}
+			}()
+
+			// Make sure printer connected notifications don't cover the Scan button.
+			if err := ash.CloseNotifications(ctx, tconn); err != nil {
+				s.Fatal("Failed to close notifications: ", err)
+			}
+
+			if err := uiauto.Combine("scan",
+				app.SetScanSettings(test.Settings),
+				app.Scan(),
+				app.ClickDone(),
+			)(ctx); err != nil {
+				s.Fatal("Failed to perform scan: ", err)
+			}
+
+			scan, err := GetScan(DefaultScanPattern)
+			if err != nil {
+				s.Fatal("Failed to find scan: ", err)
+			}
+
+			diff := testexec.CommandContext(ctx, "perceptualdiff", "-verbose", "-threshold", "1", scan, s.DataPath(test.GoldenFile))
+			if err := diff.Run(); err != nil {
+				s.Error("Scanned file differed from golden image: ", err)
+				diff.DumpLog(ctx)
+			}
+		})
+	}
 }
