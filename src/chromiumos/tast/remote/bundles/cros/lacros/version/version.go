@@ -94,3 +94,18 @@ func (v *Version) IsEqualTo(rhs Version) bool {
 func (v *Version) IsValid() bool {
 	return v.GetString() != "0.0.0.0"
 }
+
+// IsSkewValid returns whether it is a valid version skew that is compatible with the given ash/OS version.
+func (v *Version) IsSkewValid(ash Version) bool {
+	// TODO(crbug.com/1258138): Implement version skew policy for Tast.
+	// Note that this version skew policy should be in line with the production code.
+	// See LacrosInstallerPolicy::ComponentReady at
+	//   https://osscs.corp.google.com/chromium/chromium/src/+/main:chrome/browser/component_updater/cros_component_installer_chromeos.cc
+	// Otherwise, Tast tests may fail due to the outdated policy here.
+	major := v.components[0]
+	if major+1 < ash.components[0] {
+		// Current install is not compatible with ash/OS version.
+		return false
+	}
+	return true
+}
