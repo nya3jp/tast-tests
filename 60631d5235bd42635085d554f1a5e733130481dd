@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bddc12f_678b346e",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-10-08T13:20:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f743cc03_cc1f4b7e",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 67
+      },
+      "revId": "60631d5235bd42635085d554f1a5e733130481dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e671dbd_f6fcaf63",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-06T15:31:16Z",
       "side": 1,
       "message": "Add . to these comments",
+      "range": {
+        "startLine": 19,
+        "startChar": 74,
+        "endLine": 19,
+        "endChar": 78
+      },
+      "revId": "60631d5235bd42635085d554f1a5e733130481dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e33fb7aa_74d799b1",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2021-10-08T13:20:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e671dbd_f6fcaf63",
       "range": {
         "startLine": 19,
         "startChar": 74,
