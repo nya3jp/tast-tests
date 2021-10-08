@@ -3,6 +3,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b4411f6_0135512c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T19:30:08Z",
+      "side": 1,
+      "message": "settings package",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "f4e01b2d325572ca23f785055d75ecf81d16aa73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9401eb06_d9f87496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T19:30:08Z",
+      "side": 1,
+      "message": "add chromeos-sw-engprod@google.com",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 48,
+        "endChar": 57
+      },
+      "revId": "f4e01b2d325572ca23f785055d75ecf81d16aa73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b7d9533_45616630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T19:30:08Z",
+      "side": 1,
+      "message": "Make the ARC++ version a separate parameterized test",
+      "range": {
+        "startLine": 53,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "f4e01b2d325572ca23f785055d75ecf81d16aa73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d1298f_cc041790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T19:30:08Z",
+      "side": 1,
+      "message": "use quicksettings.OpenSettings",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 84
+      },
+      "revId": "f4e01b2d325572ca23f785055d75ecf81d16aa73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad2e1330_5dff1e11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T19:30:08Z",
+      "side": 1,
+      "message": "Each of these could be a separate test",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 11
+      },
+      "revId": "f4e01b2d325572ca23f785055d75ecf81d16aa73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a910498e_46d89628",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_search.go",
         "patchSetId": 2
