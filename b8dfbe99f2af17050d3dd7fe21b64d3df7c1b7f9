@@ -22,6 +22,30 @@
       },
       "revId": "b8dfbe99f2af17050d3dd7fe21b64d3df7c1b7f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec55e314_e43b6628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_loopback_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-10-08T06:50:12Z",
+      "side": 1,
+      "message": "Welcome to golang. math.Min only works on float64, yay!\n\nWe should probably modify loopback_latency to dump out a json file if we want robustness. I don\u0027t want to overengineer this.",
+      "parentUuid": "93352ad3_00b6c855",
+      "range": {
+        "startLine": 206,
+        "startChar": 19,
+        "endLine": 209,
+        "endChar": 3
+      },
+      "revId": "b8dfbe99f2af17050d3dd7fe21b64d3df7c1b7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
