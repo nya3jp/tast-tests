@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/bundles/cros/telemetryextension/dep"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -46,6 +47,16 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         dataFiles,
+		Params: []testing.Param{
+			{
+				Name:              "target_models",
+				ExtraHardwareDeps: dep.TargetModels(),
+			},
+			{
+				Name:              "not_target_models",
+				ExtraHardwareDeps: dep.NonTargetModels(),
+			},
+		},
 	})
 }
 

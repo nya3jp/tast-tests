@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/bundles/cros/telemetryextension/dep"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/testing"
 )
@@ -23,6 +24,16 @@ func init() {
 			"cros-oem-services-team@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
+		Params: []testing.Param{
+			{
+				Name:              "target_models",
+				ExtraHardwareDeps: dep.TargetModels(),
+			},
+			{
+				Name:              "not_target_models",
+				ExtraHardwareDeps: dep.NonTargetModels(),
+			},
+		},
 	})
 }
 
