@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f6551d9_d86d7e6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-10-08T05:13:24Z",
+      "side": 0,
+      "message": "[optional] Is this change (not using initctl) also related to the flakiness? If so, I suggest mentioning it in the commit message.",
+      "revId": "7475958d5c4dac2b7747fe9b3a1bbd95bccbf0b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
