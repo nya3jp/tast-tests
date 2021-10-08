@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65004276_cba45ce7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-10-08T23:35:28Z",
+      "side": 1,
+      "message": "you missed the remainder of that phrase: \"Failed to collect pcap or perform action:\"\n\nI believe the \"action\" is \"connect to the AP\" -- as in, we\u0027re failing to associate; e.g.:\n\n  Failed to collect pcap or perform action: rpc error: code \u003d Unknown desc \u003d failed to associate: failed to wait for any property: [\"State\"]: didn\u0027t receive PropertyChanged signal: context deadline exceeded\n\nI don\u0027t know what\u0027s wrong there, but it\u0027s a very different failure mode as the Tauto version. (For *Tauto*, a very large chunk of failures are exclusively infra.)",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "ffd28695ce5cf0f2384833ee6abe480bc42fec7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
