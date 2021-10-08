@@ -119,10 +119,10 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*ScanApp, error) {
 		return nil, err
 	}
 
-	// Create a uiauto.Context with default timeout.
+	// Create a uiauto.Context.
 	ui := uiauto.New(tconn)
 
-	s := ScanApp{tconn: tconn, ui: ui}
+	s := ScanApp{tconn: tconn, ui: ui.WithTimeout(1 * time.Minute)}
 
 	// Wait until the scan button is enabled to verify the app is loaded.
 	if err := s.WithTimeout(time.Minute).WaitUntilExists(scanButtonFinder)(ctx); err != nil {
