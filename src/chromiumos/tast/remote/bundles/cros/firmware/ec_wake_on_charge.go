@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -21,11 +21,7 @@ func init() {
 		Desc:         "Checks that device will charge when EC is in a low-power mode, as a replacement for manual test 1.4.11",
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_experimental"},
-		SoftwareDeps: pre.SoftwareDeps,
-		Data:         pre.Data,
-		Vars:         pre.Vars,
-		ServiceDeps:  pre.ServiceDeps,
-		Pre:          pre.DevModeGBB(),
+		Fixture:      fixture.DevModeGBB,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
 }
@@ -52,7 +48,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 
 	d := s.DUT()
 
-	h := s.PreValue().(*pre.Value).Helper
+	h := s.FixtValue().(*fixture.Value).Helper
 
 	if err := h.RequireConfig(ctx); err != nil {
 		s.Fatal("Failed to get config: ", err)

@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -21,13 +21,10 @@ func init() {
 		Desc:         "Estimate battery life in deep sleep state, as a replacement for manual test 1.10.1",
 		Contacts:     []string{"hc.tsai@cienet.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
-		Vars:         append([]string{"firmware.hibernate_time"}, pre.Vars...),
-		SoftwareDeps: pre.SoftwareDeps,
-		Data:         pre.Data,
+		Vars:         []string{"firmware.hibernate_time"},
 		HardwareDeps: hwdep.D(hwdep.Battery(), hwdep.ChromeEC()),
 		Timeout:      260 * time.Minute, // 4hrs 20mins
-		ServiceDeps:  pre.ServiceDeps,
-		Pre:          pre.NormalMode(),
+		Fixture:      fixture.NormalMode,
 	})
 }
 
@@ -54,7 +51,7 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		Interval: 250 * time.Millisecond,
 	}
 
-	h := s.PreValue().(*pre.Value).Helper
+	h := s.FixtValue().(*fixture.Value).Helper
 
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to init servo: ", err)
