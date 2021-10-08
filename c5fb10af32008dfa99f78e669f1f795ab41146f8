@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa187fc1_0a630466",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-08T15:02:24Z",
+      "side": 1,
+      "message": "If you mean this function is untouched in this CL, then sure, I\u0027m ok with the separation.",
+      "parentUuid": "e8da86bc_5086cf4b",
+      "revId": "c5fb10af32008dfa99f78e669f1f795ab41146f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e37a4319_9248d5a2",
         "filename": "src/chromiumos/tast/local/policyutil/cyclebreakpolicyutil/cyclebreakpolicyutil.go",
         "patchSetId": 5
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Yes, the idea was to hide the lacros package name to avoid confusion.\nI think with Georg\u0027s contribution, it will be possible to rewrite all the policy tests for Lacros.",
       "parentUuid": "2121ca17_1089fd32",
+      "revId": "c5fb10af32008dfa99f78e669f1f795ab41146f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03057c6f_a2a59497",
+        "filename": "src/chromiumos/tast/local/policyutil/cyclebreakpolicyutil/cyclebreakpolicyutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-08T15:02:24Z",
+      "side": 1,
+      "message": "This does not hide the lacros name from client code.\nActually, callers have to pass whether chrome type is Ash-chrome or Lacros-chrome explicitly. So, actually it does not encapsulate the lacros from callers, I think.\n\nIn addition, callers have to understand what fixtvalue can be passed here, which depends on ChromeType param. Specifically, if ChromeType is Lacros, the fixture must be the one of the lacros fixtures.\n\nThus, I still think we should use lacros.Setup/CloseLacrosChrome instead of this at least at this moment. If you have more thoughts, please let me know. If further discussion is needed, maybe VC works better than gerrit, I think.",
+      "parentUuid": "4ac6867a_0782569c",
       "revId": "c5fb10af32008dfa99f78e669f1f795ab41146f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
