@@ -30,10 +30,11 @@ import (
 const resetTimeout = 1 * time.Minute
 
 // NewNearbyShareFixture creates a fixture for Nearby Share tests in different configurations.
-func NewNearbyShareFixture(dataUsage nearbycommon.DataUsage, visibility nearbycommon.Visibility) testing.FixtureImpl {
+func NewNearbyShareFixture(dataUsage nearbycommon.DataUsage, visibility nearbycommon.Visibility, isBackgroundScanningEnabled bool) testing.FixtureImpl {
 	return &nearbyShareFixture{
-		dataUsage:  dataUsage,
-		visibility: visibility,
+		dataUsage:                   dataUsage,
+		visibility:                  visibility,
+		isBackgroundScanningEnabled: isBackgroundScanningEnabled,
 		// TODO(crbug/1127165): Remove after data is supported in fixture.
 		testFiles: []string{"small_jpg.zip", "small_png.zip", "big_txt.zip"},
 	}
@@ -43,7 +44,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "nearbyShareRemoteDataUsageOfflineAllContacts",
 		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'",
-		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilityAllContacts),
+		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilityAllContacts, false),
 		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
 			"nearbyshare.cros_username",
@@ -62,7 +63,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "nearbyShareRemoteDataUsageOfflineSomeContacts",
 		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'Some Contacts' with the sender selected as a contact on the receiver side",
-		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilitySelectedContacts),
+		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilitySelectedContacts, false),
 		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
 			"nearbyshare.cros_username",
@@ -81,7 +82,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "nearbyShareRemoteDataUsageOnlineAllContacts",
 		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'All Contacts'",
-		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilityAllContacts),
+		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilityAllContacts, false),
 		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
 			"nearbyshare.cros_username",
@@ -100,7 +101,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "nearbyShareRemoteDataUsageOnlineSomeContacts",
 		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'Some Contacts' with the sender selected as a contact on the receiver side",
-		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilitySelectedContacts),
+		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilitySelectedContacts, false),
 		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
 			"nearbyshare.cros_username",
@@ -119,7 +120,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "nearbyShareRemoteDataUsageOnlineNoOne",
 		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'No One'",
-		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilityNoOne),
+		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilityNoOne, false),
 		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
 			"nearbyshare.cros_username",
@@ -138,7 +139,26 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "nearbyShareRemoteDataUsageOfflineNoOne",
 		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'No One'",
-		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilityNoOne),
+		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilityNoOne, false),
+		Contacts: []string{"chromeos-sw-engprod@google.com"},
+		Vars: []string{
+			"nearbyshare.cros_username",
+			"nearbyshare.cros_password",
+			"nearbyshare.cros2_username",
+			"nearbyshare.cros2_password",
+			nearbycommon.KeepStateVar,
+		},
+		ServiceDeps:     []string{"tast.cros.nearbyservice.NearbyShareService"},
+		SetUpTimeout:    3 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     "nearbyShareRemoteDataUsageOfflineNoOneBackgroundScanning",
+		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'No One'",
+		Impl:     NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityNoOne, true),
 		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
 			"nearbyshare.cros_username",
@@ -159,7 +179,8 @@ func init() {
 type nearbyShareFixture struct {
 	dataUsage  nearbycommon.DataUsage
 	visibility nearbycommon.Visibility
-	testFiles  []string
+	isBackgroundScanningEnabled bool
+	testFiles                   []string
 
 	// Sender and receiver devices.
 	d1 *dut.DUT
@@ -243,7 +264,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	s.Log("Enabling Nearby Share on DUT1 (Sender). Name: ", senderDisplayName)
 	senderUsername := s.RequiredVar("nearbyshare.cros_username")
 	senderPassword := s.RequiredVar("nearbyshare.cros_password")
-	sender, err := f.enableNearbyShare(ctx, s, cl1, senderDisplayName, senderUsername, senderPassword, "", keepState)
+	sender, err := f.enableNearbyShare(ctx, s, cl1, senderDisplayName, senderUsername, senderPassword, "", keepState, f.isBackgroundScanningEnabled)
 	if err != nil {
 		s.Fatal("Failed to enable Nearby Share on DUT1 (Sender): ", err)
 	}
@@ -258,7 +279,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	s.Log("Enabling Nearby Share on DUT2 (Receiver). Name: ", receiverDisplayName)
 	receiverUsername := s.RequiredVar("nearbyshare.cros2_username")
 	receiverPassword := s.RequiredVar("nearbyshare.cros2_password")
-	receiver, err := f.enableNearbyShare(ctx, s, cl2, receiverDisplayName, receiverUsername, receiverPassword, senderUsername, keepState)
+	receiver, err := f.enableNearbyShare(ctx, s, cl2, receiverDisplayName, receiverUsername, receiverPassword, senderUsername, keepState, f.isBackgroundScanningEnabled)
 	if err != nil {
 		s.Fatal("Failed to enable Nearby Share on DUT2 (Receiver): ", err)
 	}
@@ -304,11 +325,15 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 // senderUsername is only used when the device visibility is "Some contacts".
 // keepState is used to optionally preserve user accounts on the DUT.
 // Sender devices should pass an empty string since the visibility setting is only relevant to receivers.
-func (f *nearbyShareFixture) enableNearbyShare(ctx context.Context, s *testing.FixtState, cl *rpc.Client, deviceName, username, password, senderUsername string, keepState bool) (nearbyservice.NearbyShareServiceClient, error) {
+func (f *nearbyShareFixture) enableNearbyShare(ctx context.Context, s *testing.FixtState, cl *rpc.Client, deviceName, username, password, senderUsername string, keepState, isBackgroundScanningEnabled bool) (nearbyservice.NearbyShareServiceClient, error) {
 	// Connect to the Nearby Share Service so we can execute local code on the DUT.
 	ns := nearbyservice.NewNearbyShareServiceClient(cl.Conn)
 	testing.ContextLog(ctx, "Logging into ChromeOS")
-	loginReq := &nearbyservice.CrOSLoginRequest{Username: username, Password: password, KeepState: keepState}
+	var enabledFlags []string
+	if isBackgroundScanningEnabled {
+		enabledFlags = append(enabledFlags, "backgroundScanning")
+	}
+	loginReq := &nearbyservice.CrOSLoginRequest{Username: username, Password: password, KeepState: keepState, EnabledFlags: enabledFlags}
 	if _, err := ns.NewChromeLogin(ctx, loginReq); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}

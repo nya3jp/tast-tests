@@ -72,6 +72,15 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyservice.C
 	if req.KeepState {
 		nearbyOpts = append(nearbyOpts, chrome.KeepState())
 	}
+
+	for _, flag := range req.EnabledFlags {
+		if flag == "backgroundScanning" {
+			testing.ContextLog(ctx, "NewChromeLogin EnabledFlags")
+			nearbyOpts = append(nearbyOpts, chrome.EnableFeatures("BluetoothAdvertisementMonitoring"),
+				chrome.EnableFeatures("NearbySharingBackgroundScanning"))
+		}
+	}
+
 	cr, err := chrome.New(ctx, nearbyOpts...)
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to start Chrome")
@@ -277,7 +286,12 @@ func (n *NearbyService) WaitForSenderAndAcceptShare(ctx context.Context, req *ne
 		return nil, errors.New("Chrome not available")
 	}
 	if n.receiverSurface == nil {
-		return nil, errors.New("ReceiveSurface is not defined")
+		// Try to connect to an existing receive surface.
+		receiver, err := nearbyshare.GetReceiveSurface(ctx, n.tconn, n.cr)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to set up control over the receiving surface")
+		}
+		n.receiverSurface = receiver
 	}
 	var res nearbyservice.CrOSShareTokenResponse
 	token, err := n.receiverSurface.WaitForSender(ctx, req.SenderName, nearbycommon.DetectShareTargetTimeout)
@@ -322,6 +336,18 @@ func (n *NearbyService) AcceptIncomingShareNotificationAndWaitForCompletion(ctx 
 	if err := nearbyshare.WaitForReceivingCompleteNotification(ctx, n.tconn, req.SenderName, time.Duration(req.TransferTimeoutSeconds)*time.Second); err != nil {
 		return nil, errors.Wrap(err, "failed waiting for notification to indicate sharing has completed on CrOS")
 	}
+	return &empty.Empty{}, nil
+}
+
+// AcceptFastInitiationNotification accepts the incoming fast initiation notification. Fast initiation is shown when a nearby device is trying to find a share target. Used by background scanning tests.
+func (n *NearbyService) AcceptFastInitiationNotification(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if n.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+	if err := nearbyshare.AcceptFastInitiationNotification(ctx, n.tconn, nearbycommon.DetectShareTargetTimeout); err != nil {
+		return nil, errors.Wrap(err, "CrOS receiver failed to accept fast initiation notification")
+	}
+	testing.ContextLog(ctx, "Accepted the fast initiation notification on the CrOS receiver")
 	return &empty.Empty{}, nil
 }
 
