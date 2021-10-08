@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff2b8e2_68a37f8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-10-08T18:59:14Z",
+      "side": 1,
+      "message": "Combine line 61 and 62.",
+      "revId": "1f2e51d90cd486ddbea36ad03b11586a8ed24b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "508bf27e_86f5ca14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-10-08T18:59:14Z",
+      "side": 1,
+      "message": "use Focused()?",
+      "revId": "1f2e51d90cd486ddbea36ad03b11586a8ed24b21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
