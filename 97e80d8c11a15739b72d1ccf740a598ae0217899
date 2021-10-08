@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba839c5c_c45ffa8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-08T22:12:44Z",
+      "side": 1,
+      "message": "LGTM % a few comments",
+      "revId": "97e80d8c11a15739b72d1ccf740a598ae0217899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed62c770_5a6076a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-08T22:12:44Z",
+      "side": 1,
+      "message": "I\u0027d suggest moving this closer to the functions where it\u0027s first used",
+      "revId": "97e80d8c11a15739b72d1ccf740a598ae0217899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77440fb0_b2f7a128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-08T22:12:44Z",
+      "side": 1,
+      "message": "tconn should not be closed explicitly based on the comment for TestAPIConn\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d586-587",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "97e80d8c11a15739b72d1ccf740a598ae0217899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ef0a8b_277f984e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-08T22:12:44Z",
+      "side": 1,
+      "message": "is this necessary? I thought CommandContext would automatically join the given args together separated by spaces",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 140,
+        "endChar": 68
+      },
+      "revId": "97e80d8c11a15739b72d1ccf740a598ae0217899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a9c0d3a_dd3b1740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-08T22:12:44Z",
+      "side": 1,
+      "message": "I don\u0027t think this comment accurately describes what the function is doing. It\u0027s just evaluating javascript on chrome://version right? Might be better to update this function\u0027s name and comment to better reflect that",
+      "range": {
+        "startLine": 243,
+        "startChar": 21,
+        "endLine": 243,
+        "endChar": 70
+      },
+      "revId": "97e80d8c11a15739b72d1ccf740a598ae0217899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
