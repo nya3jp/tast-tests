@@ -156,6 +156,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54951067_17111ae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-08T06:17:12Z",
+      "side": 1,
+      "message": "I think MakeVisible does not work here (based on our test results). It finds nodes based on the accessibility tree. If CrOS does not have this node in the a11y tree, the operation will fail.\nMaybe we can enhance `func selectAudioOption()` and scroll down the page so that audio options can be found and selected on the UI?",
+      "parentUuid": "d3c69a89_081116c8",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abf46185_705fc650",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
         "patchSetId": 2
