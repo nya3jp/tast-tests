@@ -47,6 +47,8 @@ func APIGetStatefulPartitionAvailableCapacityEnrolled(ctx context.Context, s *te
 	}
 
 	if resp.Status != dtcpb.GetStatefulPartitionAvailableCapacityResponse_STATUS_OK {
+		// s.Log("STOP NOW")
+		// time.Sleep(time.Minute)
 		s.Fatalf("Unexpected status received from vsh rpc method call. Status code: %s", resp.Status)
 	}
 
