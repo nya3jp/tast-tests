@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93352ad3_00b6c855",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_loopback_latency.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-10-08T06:42:10Z",
+      "side": 1,
+      "message": "nit: math.Min directly?\n\nNote: if one success in loop 1, 3, 5 and one in 2, 4 then the actual valid loop is 0 but here will be 2 ... lol",
+      "range": {
+        "startLine": 206,
+        "startChar": 19,
+        "endLine": 209,
+        "endChar": 3
+      },
+      "revId": "b8dfbe99f2af17050d3dd7fe21b64d3df7c1b7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
