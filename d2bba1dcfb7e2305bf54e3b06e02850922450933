@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2c7182_7c981a95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-08T04:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01e7b7a9_01948ea9",
+      "revId": "d2bba1dcfb7e2305bf54e3b06e02850922450933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "111e92fd_671aaa70",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-07T18:50:46Z",
       "side": 1,
       "message": "no need for a new bundle, \"wmp\" is the correct one (window management \u0026 performance)",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 97,
+        "endChar": 42
+      },
+      "revId": "d2bba1dcfb7e2305bf54e3b06e02850922450933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df726a03_a5bc2b62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-08T04:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "111e92fd_671aaa70",
       "range": {
         "startLine": 97,
         "startChar": 3,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a55b01bf_f5b68a7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-08T04:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb27e4d2_e40198d0",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "d2bba1dcfb7e2305bf54e3b06e02850922450933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd2069ae_0514df02",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e049a6c6_65cb2ce8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-08T04:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd2069ae_0514df02",
+      "revId": "d2bba1dcfb7e2305bf54e3b06e02850922450933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e4f1a7c_db7e964a",
@@ -94,6 +178,24 @@
       "writtenOn": "2021-10-07T18:50:46Z",
       "side": 1,
       "message": "you can delete this comment, since the log above says the same thing",
+      "revId": "d2bba1dcfb7e2305bf54e3b06e02850922450933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db696167_31b1f467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-08T04:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e4f1a7c_db7e964a",
       "revId": "d2bba1dcfb7e2305bf54e3b06e02850922450933",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc6b9fe3_daf692af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wm/full_screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-08T04:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f65b879e_d88cfda7",
+      "range": {
+        "startLine": 100,
+        "startChar": 12,
+        "endLine": 100,
+        "endChar": 19
+      },
+      "revId": "d2bba1dcfb7e2305bf54e3b06e02850922450933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8dc9ae8_92a1e045",
@@ -134,6 +260,30 @@
       "writtenOn": "2021-10-07T18:50:46Z",
       "side": 1,
       "message": "let\u0027s make this wmp too, to be consistent with the test bundle",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "d2bba1dcfb7e2305bf54e3b06e02850922450933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae0707aa_202d21d5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/wm/screenshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-08T04:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8dc9ae8_92a1e045",
       "range": {
         "startLine": 6,
         "startChar": 8,
