@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/graphics"
+	"chromiumos/tast/local/kmsvnc"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -33,7 +33,7 @@ func init() {
 func KmsvncConnect(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
-	k, err := graphics.NewKmsvnc(ctx)
+	k, err := kmsvnc.NewKmsvnc(ctx)
 	if err != nil {
 		s.Fatal("Failed to start kmsvnc: ", err)
 	}
