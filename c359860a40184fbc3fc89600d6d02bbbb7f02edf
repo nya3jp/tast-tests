@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75602c5a_91f93c73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-10-08T17:49:18Z",
+      "side": 1,
+      "message": "nit: s/video/a video/",
+      "revId": "c359860a40184fbc3fc89600d6d02bbbb7f02edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04188fec_4d0e24fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-10-08T17:49:18Z",
+      "side": 1,
+      "message": "LGTM with few nits and questions.",
+      "revId": "c359860a40184fbc3fc89600d6d02bbbb7f02edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55393ee4_5a25aa33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/h264/b_149068426_invalid_video_layout_mtk_8183_with_direct_videodecoder.h264.json.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-10-08T17:49:18Z",
+      "side": 1,
+      "message": "I assume that json file has md5 value for each frame. \n\nI assume this this sha256sum value is for the json file itself.",
+      "revId": "c359860a40184fbc3fc89600d6d02bbbb7f02edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "689bd5e0_57f59dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-10-08T17:49:18Z",
+      "side": 1,
+      "message": "Is there any file name guidelines for these test files?\n\npre-fix b_149068426 seems strange to me at first sight, but as you are making it part of h264FilesFromBugs, it does make sense. \n\nI assume that you are expecting this to grow for different codecs over time.",
+      "revId": "c359860a40184fbc3fc89600d6d02bbbb7f02edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbc18cae_dda42ed7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_compliance.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2021-10-08T17:49:18Z",
+      "side": 1,
+      "message": "Is there any need to consider ExtraHardwareDeps?\n\nAssuming that most platforms have this capacity (h264), but just checking.",
+      "revId": "c359860a40184fbc3fc89600d6d02bbbb7f02edf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
