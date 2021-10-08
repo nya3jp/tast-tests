@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ae67632_2bbb8046",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T21:53:33Z",
+      "side": 1,
+      "message": "Did you run the whole suite to verify background scanning doesn\u0027t break the existing testS?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "efa79663_993df907",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -36,6 +59,53 @@
         "startChar": 2,
         "endLine": 66,
         "endChar": 59
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3315d023_c833fea5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T21:53:33Z",
+      "side": 1,
+      "message": "Since background scanning changes the notifications, can we verify that this doesn\u0027t break the existing tests too",
+      "parentUuid": "9df9e768_3a1b2ee0",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 59
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f871462d_b44bb8b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T21:53:33Z",
+      "side": 1,
+      "message": "Move this to the last sentence. Used *by* background scanning tests",
+      "range": {
+        "startLine": 335,
+        "startChar": 87,
+        "endLine": 335,
+        "endChar": 119
       },
       "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
