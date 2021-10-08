@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "662ae009_33f66191",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-08T06:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8eb9bda_baa5f322",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 20
+      },
+      "revId": "3e71a029f4448654868ebc1069318abbf9f875b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aed360dc_09441065",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-07T23:04:57Z",
       "side": 1,
       "message": "len(pids) \u003d\u003d 0, can have err as nil?\nIIUC, this assumes it to be a PASSED below then?",
+      "range": {
+        "startLine": 107,
+        "startChar": 20,
+        "endLine": 107,
+        "endChar": 34
+      },
+      "revId": "3e71a029f4448654868ebc1069318abbf9f875b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd148d2c_0a84a23a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-08T06:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aed360dc_09441065",
       "range": {
         "startLine": 107,
         "startChar": 20,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53fc6cbb_d1d77b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-08T06:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17af3c7e_e3150653",
+      "range": {
+        "startLine": 111,
+        "startChar": 35,
+        "endLine": 111,
+        "endChar": 37
+      },
+      "revId": "3e71a029f4448654868ebc1069318abbf9f875b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3270cf07_645bf2ca",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-10-07T23:04:57Z",
       "side": 1,
       "message": "nit: there are two ways to indicate failures:\n\nreturning an error or having status\u003d\u003dFAILED.\n\nWhen to use which?",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 65
+      },
+      "revId": "3e71a029f4448654868ebc1069318abbf9f875b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5fd7964_f70ea143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-08T06:03:01Z",
+      "side": 1,
+      "message": "My intention is returning an error when anything breaks before it reaches actual version check, and marking status\u003d\u003dFAILED when version checked but mismatch.",
+      "parentUuid": "3270cf07_645bf2ca",
       "range": {
         "startLine": 112,
         "startChar": 3,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd28021e_085276a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-08T06:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "815de5e8_d106bd88",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 82
+      },
+      "revId": "3e71a029f4448654868ebc1069318abbf9f875b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d27fd0c6_a9a11be0",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "754eae81_5ffb4a22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-08T06:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d27fd0c6_a9a11be0",
+      "range": {
+        "startLine": 193,
+        "startChar": 13,
+        "endLine": 193,
+        "endChar": 42
+      },
+      "revId": "3e71a029f4448654868ebc1069318abbf9f875b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d552b04_c4524c5d",
@@ -169,6 +313,30 @@
       "writtenOn": "2021-10-07T23:04:57Z",
       "side": 1,
       "message": "nit: Maybe a higher timeout? It might flake in polling, taking longer than 10 seconds.",
+      "range": {
+        "startLine": 257,
+        "startChar": 34,
+        "endLine": 257,
+        "endChar": 50
+      },
+      "revId": "3e71a029f4448654868ebc1069318abbf9f875b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07635ce3_eb05f75b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-08T06:03:01Z",
+      "side": 1,
+      "message": "30 seconds (just heuristics)? Done",
+      "parentUuid": "6d552b04_c4524c5d",
       "range": {
         "startLine": 257,
         "startChar": 34,
