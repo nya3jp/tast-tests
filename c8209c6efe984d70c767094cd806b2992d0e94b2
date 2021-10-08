@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9eb904a_15439525",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-08T06:28:47Z",
+      "side": 1,
+      "message": "I filed a bug about it, and put the details there. The bug is linked in the commit message.",
+      "parentUuid": "502a98a8_767f3ab1",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "c8209c6efe984d70c767094cd806b2992d0e94b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "22190830_0a47f4c8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
