@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c10013a_4f575e8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/dep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-08T14:26:29Z",
+      "side": 1,
+      "message": "Could you add more documents?\n- how this list is made / should be maintained?\n- What is the clear definition of this list?\n- In general it is not encouraged to use Models/SkipOnModels with exceptions.\n  E.g., one of the typical expected use cases is test is failing on some specific\n  model, but the reason is unknown. We\u0027d like to exclude it from CQ, but would\n  like to keep others while investigation. Or something.\n  Do you have some similar situation, like above? Or ... something else?",
+      "revId": "f6b6cd2b5bafb922eb3bebcd47b6d105507a6e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
