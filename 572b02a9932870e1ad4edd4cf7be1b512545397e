@@ -56,6 +56,30 @@
       },
       "revId": "572b02a9932870e1ad4edd4cf7be1b512545397e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "733bba94_95598927",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_disk_space.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-08T18:12:10Z",
+      "side": 1,
+      "message": "Thanks for the offer!\n\nIt should be ok to not have individual owners. As long as new bugs in the b/ component are triaged and assigned when they\u0027re filed, having group ownership instead of individual owners helps spread out the workload.\nWe do that for WiFi tests, for example http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/caps.go",
+      "parentUuid": "26e06d0f_483df2ee",
+      "range": {
+        "startLine": 19,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "572b02a9932870e1ad4edd4cf7be1b512545397e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
