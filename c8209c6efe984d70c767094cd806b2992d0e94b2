@@ -150,6 +150,30 @@
       },
       "revId": "c8209c6efe984d70c767094cd806b2992d0e94b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f932ef9_8e35cb09",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrostest/perftest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-08T06:31:15Z",
+      "side": 1,
+      "message": "We were thinking about where to break the cycle as well. Our reasoning was to find the \"top level\" package that should be independent from \"lower level\" packages.",
+      "parentUuid": "576635f4_0247436c",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 18
+      },
+      "revId": "c8209c6efe984d70c767094cd806b2992d0e94b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
