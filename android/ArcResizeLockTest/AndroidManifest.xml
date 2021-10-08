@@ -33,6 +33,10 @@
             android:resizeableActivity="false"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".PipActivity"
+            android:exported="true"
+            android:supportsPictureInPicture="true" />
+        <activity
             android:name=".ResizableUnspecifiedMaximizedActivity"
             android:exported="true">
             <meta-data android:name="WindowManagerPreference:FreeformWindowSize" android:value="maximize" />
