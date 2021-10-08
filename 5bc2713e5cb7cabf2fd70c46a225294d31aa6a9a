@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa8141a_b0bbe758",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-08T22:12:55Z",
+      "side": 1,
+      "message": "Yuke, please let me know if you have better naming ideas as discussed in go/lacros-autoupdate-test-naming.",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "5bc2713e5cb7cabf2fd70c46a225294d31aa6a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
