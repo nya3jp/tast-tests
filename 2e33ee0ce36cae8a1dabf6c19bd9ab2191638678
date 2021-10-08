@@ -16,6 +16,92 @@
       "message": "Hey Katie, here\u0027s a tast test for Dictation with network speech. We haven\u0027t figured out how to test on-device speech yet, but will follow-up on that at a later time. Thanks!",
       "revId": "2e33ee0ce36cae8a1dabf6c19bd9ab2191638678",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc027829_c20b4fa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-10-08T15:30:21Z",
+      "side": 1,
+      "message": "This is great! Mostly some questions around the assumption that the TAST device won\u0027t try to use offline dictation (leading to no dialog and different strings).",
+      "revId": "2e33ee0ce36cae8a1dabf6c19bd9ab2191638678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68ff1dec_6b3064ec",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-10-08T15:30:21Z",
+      "side": 1,
+      "message": "Do all Tast devices not support SODA / are we sure the dialog will be shown, now that offline Dictation is enabled by default?\nMight make sense to pick a non-US-english application language to ensure that the dialog and text is what\u0027s expected.",
+      "range": {
+        "startLine": 564,
+        "startChar": 3,
+        "endLine": 566,
+        "endChar": 57
+      },
+      "revId": "2e33ee0ce36cae8a1dabf6c19bd9ab2191638678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cccd205e_35f46ef6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/dictation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-10-08T15:30:21Z",
+      "side": 1,
+      "message": "is there a way to confirm network connectivity too?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "2e33ee0ce36cae8a1dabf6c19bd9ab2191638678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79cc0ba7_5aad871f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/dictation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1250213
+      },
+      "writtenOn": "2021-10-08T15:30:21Z",
+      "side": 1,
+      "message": "nit: period at the end",
+      "range": {
+        "startLine": 46,
+        "startChar": 39,
+        "endLine": 46,
+        "endChar": 46
+      },
+      "revId": "2e33ee0ce36cae8a1dabf6c19bd9ab2191638678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
