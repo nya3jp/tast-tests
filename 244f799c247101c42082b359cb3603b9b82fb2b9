@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b2ecc2_ef2bb50d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-08T06:58:34Z",
+      "side": 1,
+      "message": "It is better to use ctx inside defer func() and explicitly pass the ctx the function uses:\n\ndefer func(ctx context.Context) {\n  screenRecorder.Stop(closeCtx)\n  ...\n}(closeCtx)\n\nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 329,
+        "startChar": 23,
+        "endLine": 329,
+        "endChar": 31
+      },
+      "revId": "244f799c247101c42082b359cb3603b9b82fb2b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
