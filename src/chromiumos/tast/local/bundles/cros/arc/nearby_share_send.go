@@ -312,6 +312,12 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 	if err := a.Command(ctx, "am", "start", "--windowingMode", "1", "-n", apkPackageName+"/.MainActivity").Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to start: ", err)
 	}
+	defer func() {
+		s.Log("Closing the app")
+		if err := a.Command(ctx, "am", "force-stop", apkPackageName).Run(testexec.DumpLogOnError); err != nil {
+			s.Error("Failed to close the app: ", err)
+		}
+	}()
 
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
