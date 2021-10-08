@@ -22,6 +22,30 @@
       },
       "revId": "d64b3f32cff2b10762bc66e00c2a12e7b8c6a995",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2264c9e2_09d983d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_loopback_latency.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2021-10-08T05:45:11Z",
+      "side": 1,
+      "message": "Let\u0027s just take the min then. There\u0027s no point in having 2 num fails.",
+      "parentUuid": "239766fc_96b25877",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 64
+      },
+      "revId": "d64b3f32cff2b10762bc66e00c2a12e7b8c6a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
