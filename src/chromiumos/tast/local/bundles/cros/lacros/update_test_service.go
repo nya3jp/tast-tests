@@ -64,7 +64,16 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 	}(ctx)
 
 	// Open Lacros.
-	expectedVersionedLacrosDir := filepath.Join("/run/imageloader", req.ExpectedComponent, req.ExpectedVersion)
+	var expectedVersionedLacrosDir string
+	switch req.ExpectedBrowser {
+	case lacrosservice.BrowserType_LACROS_STATEFUL:
+		expectedVersionedLacrosDir = filepath.Join("/run/imageloader", req.ExpectedComponent, req.ExpectedVersion)
+	case lacrosservice.BrowserType_LACROS_ROOTFS:
+		// TODO: check component and version should not be passed if rootfs.
+		expectedVersionedLacrosDir = "/run/lacros"
+	default:
+		return nil, errors.New("not supported browser")
+	}
 	expectedVersionedLacrosPath := filepath.Join(expectedVersionedLacrosDir, "chrome")
 	l, err := lacros.LaunchFromShelf(ctx, tconn, expectedVersionedLacrosDir)
 	if err != nil {
@@ -125,6 +134,8 @@ func (uts *UpdateTestService) ClearUpdate(ctx context.Context, req *lacrosservic
 
 	// Unmount and remove mount points.
 	matches, _ := filepath.Glob("/run/imageloader/lacros*/*")
+	//TODO
+	matches = append(matches, "/run/lacros")
 	for _, match := range matches {
 		if err := testexec.CommandContext(ctx, "umount", "-f", match).Run(); err != nil {
 			testing.ContextLog(ctx, "Failed to unmount ", match)
