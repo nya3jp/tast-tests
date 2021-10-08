@@ -2,10 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package arc
+// Package arcent provides enterprise test related ARC utilities.
+package arcent
 
 import (
 	"context"
+	"sort"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
@@ -54,4 +56,15 @@ func VerifyArcPolicyForceInstalled(ctx context.Context, tconn *chrome.TestConn, 
 		return errors.Errorf("Extra FORCE_INSTALLED packages in ArcPolicy: %s", makeList(forceInstalled))
 	}
 	return nil
+}
+
+// makeList returns a list of keys from map.
+// TODO: there's several duplication of makeList. Unify them.
+func makeList(packages map[string]bool) []string {
+	var packagesList []string
+	for pkg := range packages {
+		packagesList = append(packagesList, pkg)
+	}
+	sort.Strings(packagesList)
+	return packagesList
 }
