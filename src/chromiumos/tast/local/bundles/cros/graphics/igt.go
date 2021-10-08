@@ -16,7 +16,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -50,6 +49,8 @@ func init() {
 			"markyacoub@google.com",
 		},
 		SoftwareDeps: []string{"drm_atomic", "igt", "no_qemu"},
+		Attr:         []string{"group:graphics", "graphics_perbuild"},
+		Fixture:      "chromeGraphicsIgt",
 		Params: []testing.Param{{
 			Name: "drm_import_export",
 			Val: igtTest{
@@ -428,8 +429,6 @@ func init() {
 			Timeout:   1 * time.Minute,
 			ExtraAttr: []string{"group:mainline", "informational"},
 		}},
-		Attr:    []string{"group:graphics", "graphics_perbuild"},
-		Fixture: "graphicsNoChrome",
 	})
 }
 
@@ -461,28 +460,6 @@ func IGT(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a log file: ", err)
 	}
 	defer f.Close()
-
-	// Tests such as kms_flip requires Suspend and Wake-up which are achieved using the RTC wake-up alarm.
-	// tlsdated is holding /dev/rtc so IGT fails to take the lock and set a wake up alarm. Hence, it
-	// is required to stop the tlsdated before running the IGT test.
-	// While doing a suspend/resume cycles, some TPM context is lost. Normally, this context
-	// is saved by trunksd before suspend, by listening for the SuspendImminent from power_manager.
-	// Since the IGT tests use `rtcwake` to perform the suspend, trunksd isn't notified to save
-	// the context and hence any login attempt after IGT tests have run will fail. Stopping
-	// trunksd and cryptohome before running the tests and restarting it after resets the TPM
-	// context and allows users to login.
-	stopStartDaemons := []string{"tlsdated", "cryptohomed", "trunksd"}
-	for _, daemon := range stopStartDaemons {
-		d := daemon
-		if err := upstart.StopJob(ctx, d); err != nil {
-			s.Fatalf("Failed to stop %s: %v", d, err)
-		}
-		defer func() {
-			if err := upstart.StartJob(ctx, d); err != nil {
-				s.Errorf("Failed to start %s: %v", d, err)
-			}
-		}()
-	}
 
 	exePath := filepath.Join("/usr/local/libexec/igt-gpu-tools", testOpt.exe)
 	cmd := testexec.CommandContext(ctx, exePath)
