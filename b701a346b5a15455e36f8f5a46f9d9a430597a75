@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ce0baa22_c60571eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002410
+      },
+      "writtenOn": "2021-10-08T07:22:03Z",
+      "side": 1,
+      "message": "Looks great, thanks!",
+      "revId": "b701a346b5a15455e36f8f5a46f9d9a430597a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c7ee04ee_ea865c91",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
         "patchSetId": 1
