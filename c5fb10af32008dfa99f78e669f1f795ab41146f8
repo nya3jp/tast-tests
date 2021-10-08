@@ -33,6 +33,24 @@
       "message": "This looks redundant to me. Callers can just use lacros.SetUp and lacros.CloseLacrosChrome directly without extra lines.",
       "revId": "c5fb10af32008dfa99f78e669f1f795ab41146f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2121ca17_1089fd32",
+        "filename": "src/chromiumos/tast/local/policyutil/cyclebreakpolicyutil/cyclebreakpolicyutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-08T07:44:36Z",
+      "side": 1,
+      "message": "This is used in policy tests that authors do not need to be aware that lacros exists and is being used. Luckily most policy test just need to open a browser, which we can easily accommodate for lacros.\n\nWe don\u0027t have a plan/resources to rewrite all policy tests for lacros.",
+      "parentUuid": "e37a4319_9248d5a2",
+      "revId": "c5fb10af32008dfa99f78e669f1f795ab41146f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
