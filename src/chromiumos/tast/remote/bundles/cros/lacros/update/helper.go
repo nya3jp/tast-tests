@@ -77,7 +77,7 @@ func ProvisionLacrosFromRootfsLacrosImagePath(ctx context.Context, tlsAddr strin
 }
 
 // VerifyLacrosUpdate calls a RPC to the test service to verify the provisioned Lacros update is installed and selected in runtime on a DUT as expected.
-func VerifyLacrosUpdate(ctx context.Context, overrideVersion, overrideComponent string, utsClient lacros.UpdateTestServiceClient) error {
+func VerifyLacrosUpdate(ctx context.Context, expectedBrowser lacrosservice.BrowserType, expectedVersion, expectedComponent string, utsClient lacros.UpdateTestServiceClient) error {
 	// Build browser contexts for a test request.
 	ashCtx := &lacrosservice.BrowserContext{
 		Browser: lacrosservice.BrowserType_ASH,
@@ -95,9 +95,9 @@ func VerifyLacrosUpdate(ctx context.Context, overrideVersion, overrideComponent 
 		&lacrosservice.VerifyUpdateRequest{
 			AshContext:               ashCtx,
 			ProvisionedLacrosContext: []*lacrosservice.BrowserContext{lacrosCtx},
-			ExpectedBrowser:          lacrosservice.BrowserType_LACROS_STATEFUL,
-			ExpectedVersion:          overrideVersion,
-			ExpectedComponent:        overrideComponent,
+			ExpectedBrowser:          expectedBrowser,
+			ExpectedVersion:          expectedVersion,
+			ExpectedComponent:        expectedComponent,
 			UseUi:                    true,
 		})
 	if err != nil {
