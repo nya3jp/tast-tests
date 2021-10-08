@@ -425,6 +425,10 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 				}
 			}
 		}
+		s.Log("Closing the app")
+		if err := a.Command(ctx, "am", "force-stop", apkPackageName).Run(testexec.DumpLogOnError); err != nil {
+			s.Error("Failed to close the app: ", err)
+		}
 	}()
 
 	if s.Param().(arcNearbyShareParams).Cancel {
