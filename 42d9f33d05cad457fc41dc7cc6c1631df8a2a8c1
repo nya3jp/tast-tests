@@ -22,6 +22,30 @@
       },
       "revId": "42d9f33d05cad457fc41dc7cc6c1631df8a2a8c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cb59902_5ad3f9dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_perform_web_request_enrolled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-08T22:17:05Z",
+      "side": 1,
+      "message": "Updated.\nBut the thing is even for google.com the test behaves flaky.\n\nin some runs, it fails and in some cases, it succeeds.\n\nRun Fail\n```\n2021-10-08T22:10:19.748517Z [22:10:19.510] Starting subtest google\n2021-10-08T22:10:30.125380Z [22:10:29.892] Error at api_perform_web_request_enrolled.go:67: google: Request for https://google.com failed with invalid status; got STATUS_NETWORK_ERROR; expect STATUS_OK\n2021-10-08T22:10:30.125441Z [22:10:29.892] Stack trace:\ngoogle: Request for https://google.com failed with invalid status; got STATUS_NETWORK_ERROR; expect STATUS_OK\n        at chromiumos/tast/local/bundles/cros/wilco.APIPerformWebRequestEnrolled.func1 (api_perform_web_request_enrolled.go:67)\n        at chromiumos/tast/internal/testing.(*State).Run.func1 (state.go:584)\n        at runtime.goexit (asm_amd64.s:1374)\n2021-10-08T22:10:30.125503Z [22:10:29.892] Starting subtest localhost\n```\n\nRun Success\n```\n2021-10-08T21:57:41.332607Z [21:57:40.648] Starting subtest google\n2021-10-08T21:57:51.711787Z [21:57:51.037] Starting subtest localhost\n2021-10-08T21:57:51.779890Z Completed test wilco.APIPerformWebRequestEnrolled in 15.118s with 0 error(s)\n```\n\nSeeing the old code, it seems the previous author was aware of this behaviour and added logOnly as a hack.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wilco/wilco_service.go;l\u003d143\n\nWhat do you suggest, we should do now?",
+      "parentUuid": "118dec2d_61c9e430",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "42d9f33d05cad457fc41dc7cc6c1631df8a2a8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
