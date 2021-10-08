@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8da86bc_5086cf4b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-08T08:02:29Z",
+      "side": 1,
+      "message": "There are other usages of GetChrome outside of this package, so I would make it inline in a followup CL if you don\u0027t mind.",
+      "parentUuid": "c12cf862_c0db01df",
+      "revId": "c5fb10af32008dfa99f78e669f1f795ab41146f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e37a4319_9248d5a2",
         "filename": "src/chromiumos/tast/local/policyutil/cyclebreakpolicyutil/cyclebreakpolicyutil.go",
         "patchSetId": 5
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "This is used in policy tests that authors do not need to be aware that lacros exists and is being used. Luckily most policy test just need to open a browser, which we can easily accommodate for lacros.\n\nWe don\u0027t have a plan/resources to rewrite all policy tests for lacros.",
       "parentUuid": "e37a4319_9248d5a2",
+      "revId": "c5fb10af32008dfa99f78e669f1f795ab41146f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ac6867a_0782569c",
+        "filename": "src/chromiumos/tast/local/policyutil/cyclebreakpolicyutil/cyclebreakpolicyutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-08T08:02:29Z",
+      "side": 1,
+      "message": "Yes, the idea was to hide the lacros package name to avoid confusion.\nI think with Georg\u0027s contribution, it will be possible to rewrite all the policy tests for Lacros.",
+      "parentUuid": "2121ca17_1089fd32",
       "revId": "c5fb10af32008dfa99f78e669f1f795ab41146f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
