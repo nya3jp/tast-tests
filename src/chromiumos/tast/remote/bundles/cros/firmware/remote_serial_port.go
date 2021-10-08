@@ -25,7 +25,7 @@ func init() {
 			"chromeos-firmware@google.com", // CrOS Firmware Developers
 		},
 		ServiceDeps: []string{"tast.cros.firmware.SerialPortService"},
-		Attr:        []string{"group:firmware", "firmware_experimental"},
+		Attr:        []string{"group:firmware", "firmware_unstable"},
 	})
 }
 

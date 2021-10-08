@@ -13,7 +13,7 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -29,16 +29,13 @@ func init() {
 		Func:         BootTime,
 		Desc:         "Measures EC boot time",
 		Contacts:     []string{"jbettis@chromium.org", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
-		Data:         pre.Data,
-		ServiceDeps:  pre.ServiceDeps,
-		SoftwareDeps: pre.SoftwareDeps,
-		Vars:         pre.Vars,
-		Pre:          pre.NormalMode(),
+		Attr:         []string{"group:firmware"},
+		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Params: []testing.Param{
 			{
 				Name:              "x86",
+				ExtraAttr:         []string{"firmware_unstable"},
 				ExtraHardwareDeps: hwdep.D(hwdep.X86()),
 				Val: testParameters{
 					apBootRegexp: `HC 0x|Port 80|ACPI query|Executing host reboot command`,
@@ -47,6 +44,7 @@ func init() {
 			},
 			{
 				Name:              "default",
+				ExtraAttr:         []string{"firmware_ec"},
 				ExtraHardwareDeps: hwdep.D(hwdep.NoX86()),
 				Val: testParameters{
 					apBootRegexp: `power state 3 = S0`,
@@ -75,7 +73,7 @@ func BootTime(ctx context.Context, s *testing.State) {
 	// See HOST_STRFTIME in src/platform/ec/util/ec3po/console.py
 	uartAbsoluteTime := regexp.MustCompile(`^\d+-\d+-\d+ \d+:(\d+):(\d+)\.(\d+)`)
 
-	h := s.PreValue().(*pre.Value).Helper
+	h := s.FixtValue().(*fixture.Value).Helper
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to init servo: ", err)
 	}

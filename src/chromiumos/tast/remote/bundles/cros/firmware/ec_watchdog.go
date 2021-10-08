@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"time"
 
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -20,12 +20,8 @@ func init() {
 		Func:         ECWatchdog,
 		Desc:         "Servo based EC watchdog test",
 		Contacts:     []string{"js@semihalf.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
-		Pre:          pre.NormalMode(),
-		Data:         pre.Data,
-		ServiceDeps:  pre.ServiceDeps,
-		SoftwareDeps: pre.SoftwareDeps,
-		Vars:         pre.Vars,
+		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
 }
@@ -47,7 +43,7 @@ func ECWatchdog(ctx context.Context, s *testing.State) {
 		err       error
 	)
 
-	h := s.PreValue().(*pre.Value).Helper
+	h := s.FixtValue().(*fixture.Value).Helper
 
 	if oldBootID, err = h.Reporter.BootID(ctx); err != nil {
 		s.Fatal("Failed to fetch current boot ID: ", err)
@@ -75,6 +71,6 @@ func ECWatchdog(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to fetch current boot ID: ", err)
 	}
 	if newBootID == oldBootID {
-		s.Fatalf("Failed to reboot trigger watchdog reset, old boot ID is the same as new boot ID")
+		s.Fatal("Failed to reboot trigger watchdog reset, old boot ID is the same as new boot ID")
 	}
 }
