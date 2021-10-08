@@ -81,7 +81,6 @@ func ModeSuspend(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get Test API connection: ", err)
 	}
-	defer testConn.Close()
 
 	if err := typecutils.EnablePeripheralDataAccess(ctx, s.DataPath("testcert.p12")); err != nil {
 		s.Fatal("Failed to enable peripheral data access setting: ", err)
@@ -104,12 +103,10 @@ func ModeSuspend(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reconnect to the Chrome session: ", err)
 	}
 
-	testConn.Close()
 	testConn, err = cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to re-establish the Test API connection: ", err)
 	}
-	defer testConn.Close()
 
 	if err := typecutils.CheckTBTAndDP(ctx, testConn); err != nil {
 		s.Fatal("Failed to verify TBT & DP after resume: ", err)

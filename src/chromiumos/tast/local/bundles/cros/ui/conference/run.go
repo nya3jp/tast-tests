@@ -40,7 +40,6 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the test API connection")
 	}
-	defer tconn.Close()
 
 	testing.ContextLog(ctx, "Start to get browser start time")
 	browserStartTime, err := cuj.GetBrowserStartTime(ctx, cr, tconn, tabletMode)

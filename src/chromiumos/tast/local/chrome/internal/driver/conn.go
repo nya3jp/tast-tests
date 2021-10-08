@@ -251,13 +251,6 @@ type TestConn struct {
 	conn *Conn
 }
 
-// Close closes the TestConn. This should not be called outside of this package.
-// Currently, it is exposed just for backward compatibility, but will be removed.
-// TODO(b/187790769): Remove this.
-func (tconn *TestConn) Close() error {
-	return tconn.conn.Close()
-}
-
 // Eval evaluates expr on the test connection. See Conn.Eval for details.
 func (tconn *TestConn) Eval(ctx context.Context, expr string, out interface{}) error {
 	return tconn.conn.Eval(ctx, expr, out)

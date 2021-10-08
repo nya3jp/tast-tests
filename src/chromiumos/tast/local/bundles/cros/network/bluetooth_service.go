@@ -51,7 +51,6 @@ func (s *BluetoothService) SetBluetoothPowered(ctx context.Context, req *network
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create login test API connection")
 	}
-	defer tLoginConn.Close()
 
 	// Toggling this settingsPrivate setting should be sufficient to toggle Bluetooth as well as its boot preference.
 	if err := tLoginConn.Call(ctx, nil, `tast.promisify(chrome.settingsPrivate.setPref)`, "ash.system.bluetooth.adapter_enabled", req.Powered); err != nil {
@@ -132,7 +131,6 @@ func (s *BluetoothService) GetBluetoothBootPref(ctx context.Context, req *networ
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create login test API connection")
 	}
-	defer tLoginConn.Close()
 
 	// Get Bluetooth pref.
 	var enabled struct {

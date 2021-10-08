@@ -32,9 +32,7 @@ func ProfileExtension(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
-	tLoginConn, err := cr.SigninProfileTestAPIConn(ctx)
-	if err != nil {
+	if _, err := cr.SigninProfileTestAPIConn(ctx); err != nil {
 		s.Fatal("Creating login test API connection failed: ", err)
 	}
-	defer tLoginConn.Close()
 }

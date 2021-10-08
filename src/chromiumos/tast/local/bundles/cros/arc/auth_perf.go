@@ -188,7 +188,6 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
-	defer tconn.Close()
 
 	errorCount := 0
 	var playStoreShownTimes []float64

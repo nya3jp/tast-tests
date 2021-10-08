@@ -526,12 +526,6 @@ func Play(ctx context.Context, s *testing.State) {
 	}
 	defer lacros.CloseLacrosChrome(ctx, l)
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
-	}
-	defer tconn.Close()
-
 	if err := play.TestPlay(ctx, s, cs, cr, testOpt.fileName, testOpt.videoType, testOpt.verifyMode, testOpt.unmutePlayer); err != nil {
 		s.Fatal("TestPlay failed: ", err)
 	}

@@ -79,7 +79,6 @@ func loginPerfStartToLoginScreen(ctx context.Context, s *testing.State, arcOpt [
 	if err != nil {
 		return nil, errors.Wrap(err, "creating login test api connection failed")
 	}
-	defer tLoginConn.Close()
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), func() bool { return retErr != nil }, tLoginConn)
 
 	if err = ash.SetTabletModeEnabled(ctx, tLoginConn, useTabletMode); err != nil {
@@ -108,7 +107,6 @@ func loginPerfDoLogin(ctx context.Context, cr *chrome.Chrome, credentials chrome
 	if err != nil {
 		return errors.Wrap(err, "creating login test API connection failed")
 	}
-	defer tLoginConn.Close()
 	defer faillog.DumpUITreeOnError(ctx, outdir, func() bool { return retErr != nil }, tLoginConn)
 
 	// TODO(crbug/1109381): the password field isn't actually ready just yet when WaitState returns.
@@ -373,7 +371,6 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 						if err != nil {
 							return nil, errors.Wrap(err, "creating login test api connection failed")
 						}
-						defer tLoginConn.Close()
 						testFunc := func(ctx context.Context) error {
 							err := loginPerfDoLogin(ctx, cr, creds)
 							if err != nil {

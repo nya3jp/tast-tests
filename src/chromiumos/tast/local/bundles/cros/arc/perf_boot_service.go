@@ -93,7 +93,6 @@ func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (
 	if err != nil {
 		return nil, errors.Wrap(err, "Creating test API connection failed")
 	}
-	defer tconn.Close()
 
 	var arcStartTimeMS float64
 	if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.getArcStartTime)()", &arcStartTimeMS); err != nil {

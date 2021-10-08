@@ -43,7 +43,6 @@ func (*AdbSideloadService) SetRequestAdbSideloadFlag(ctx context.Context, reques
 	if err != nil {
 		return nil, errors.Wrap(err, "creating test API connection failed")
 	}
-	defer tconn.Close()
 
 	// Adding the flag in Local State json
 	// couldn't use tast.promisify here as we are using the TestAPIConn before the login has happened, and tast is not defined yet
