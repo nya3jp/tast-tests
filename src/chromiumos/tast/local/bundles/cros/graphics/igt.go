@@ -49,50 +49,57 @@ func init() {
 			"markyacoub@google.com",
 		},
 		SoftwareDeps: []string{"drm_atomic", "igt", "no_qemu"},
-		Attr:         []string{"group:graphics", "graphics_perbuild"},
+		Attr:         []string{"group:graphics", "graphics_igt"},
 		Fixture:      "chromeGraphicsIgt",
 		Params: []testing.Param{{
 			Name: "drm_import_export",
 			Val: igtTest{
 				exe: "drm_import_export",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "drm_mm",
 			Val: igtTest{
 				exe: "drm_mm",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "drm_read",
 			Val: igtTest{
 				exe: "drm_read",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_addfb_basic",
 			Val: igtTest{
 				exe: "kms_addfb_basic",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_atomic",
 			Val: igtTest{
 				exe: "kms_atomic",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_perbuild"},
 		}, {
 			Name: "kms_atomic_interruptible",
 			Val: igtTest{
 				exe: "kms_atomic_interruptible",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_perbuild"},
 		}, {
 			Name: "kms_atomic_transition",
 			Val: igtTest{
 				exe: "kms_atomic_transition",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuQcom...)),
 		}, {
 			Name: "kms_atomic_transition_unstable",
@@ -100,6 +107,7 @@ func init() {
 				exe: "kms_atomic_transition",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuQcom...)),
 		}, {
 			Name: "kms_color",
@@ -107,6 +115,7 @@ func init() {
 				exe: "kms_color",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuMtk...)),
 		}, {
 			Name: "kms_color_unstable",
@@ -114,6 +123,7 @@ func init() {
 				exe: "kms_color",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuMtk...)),
 		}, {
 			Name: "kms_concurrent",
@@ -121,6 +131,7 @@ func init() {
 				exe: "kms_concurrent",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuMtk...)),
 		}, {
 			Name: "kms_concurrent_unstable",
@@ -128,19 +139,22 @@ func init() {
 				exe: "kms_concurrent",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuMtk...)),
 		}, {
 			Name: "kms_content_protection",
 			Val: igtTest{
 				exe: "kms_content_protection",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_cursor_crc",
 			Val: igtTest{
 				exe: "kms_cursor_crc",
 			},
 			Timeout:           15 * time.Minute,
+			ExtraAttr:         []string{"graphics_weekly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...)),
 		}, {
 			Name: "kms_cursor_crc_unstable",
@@ -148,6 +162,7 @@ func init() {
 				exe: "kms_cursor_crc",
 			},
 			Timeout:           15 * time.Minute,
+			ExtraAttr:         []string{"graphics_weekly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...)),
 		}, {
 			Name: "kms_cursor_legacy",
@@ -155,6 +170,7 @@ func init() {
 				exe: "kms_cursor_legacy",
 			},
 			Timeout:           20 * time.Minute,
+			ExtraAttr:         []string{"graphics_weekly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...)),
 		}, {
 			Name: "kms_cursor_legacy_unstable",
@@ -162,25 +178,29 @@ func init() {
 				exe: "kms_cursor_legacy",
 			},
 			Timeout:           20 * time.Minute,
+			ExtraAttr:         []string{"graphics_weekly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...)),
 		}, {
 			Name: "kms_dp_aux_dev",
 			Val: igtTest{
 				exe: "kms_dp_aux_dev",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_dp_dsc",
 			Val: igtTest{
 				exe: "kms_dp_dsc",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_flip",
 			Val: igtTest{
 				exe: "kms_flip",
 			},
 			Timeout:           30 * time.Minute,
+			ExtraAttr:         []string{"graphics_weekly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...), hwdep.SkipOnPlatform(gpuMtk...)),
 		}, {
 			Name: "kms_flip_unstable",
@@ -188,43 +208,50 @@ func init() {
 				exe: "kms_flip",
 			},
 			Timeout:           30 * time.Minute,
+			ExtraAttr:         []string{"graphics_weekly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...), hwdep.Platform(gpuMtk...)),
 		}, {
 			Name: "kms_flip_event_leak",
 			Val: igtTest{
 				exe: "kms_flip_event_leak",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_getfb",
 			Val: igtTest{
 				exe: "kms_getfb",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_hdmi_inject",
 			Val: igtTest{
 				exe: "kms_hdmi_inject",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_hdr",
 			Val: igtTest{
 				exe: "kms_hdr",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_multipipe_modeset",
 			Val: igtTest{
 				exe: "kms_multipipe_modeset",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_panel_fitting",
 			Val: igtTest{
 				exe: "kms_panel_fitting",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...)),
 		}, {
 			Name: "kms_panel_fitting_unstable",
@@ -232,19 +259,22 @@ func init() {
 				exe: "kms_panel_fitting",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...)),
 		}, {
 			Name: "kms_pipe_crc_basic",
 			Val: igtTest{
 				exe: "kms_pipe_crc_basic",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_plane",
 			Val: igtTest{
 				exe: "kms_plane",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...)),
 		}, {
 			Name: "kms_plane_unstable",
@@ -252,6 +282,7 @@ func init() {
 				exe: "kms_plane",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...)),
 		}, {
 			Name: "kms_plane_alpha_blend",
@@ -259,6 +290,7 @@ func init() {
 				exe: "kms_plane_alpha_blend",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...)),
 		}, {
 			Name: "kms_plane_alpha_blend_unstable",
@@ -266,6 +298,7 @@ func init() {
 				exe: "kms_plane_alpha_blend",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...)),
 		}, {
 			Name: "kms_plane_cursor",
@@ -273,6 +306,7 @@ func init() {
 				exe: "kms_plane_cursor",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...), hwdep.SkipOnPlatform(gpuMtk...)),
 		}, {
 			Name: "kms_plane_cursor_unstable",
@@ -280,19 +314,22 @@ func init() {
 				exe: "kms_plane_cursor",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...), hwdep.Platform(gpuMtk...)),
 		}, {
 			Name: "kms_plane_lowres",
 			Val: igtTest{
 				exe: "kms_plane_lowres",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_plane_multiple",
 			Val: igtTest{
 				exe: "kms_plane_multiple",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...)),
 		}, {
 			Name: "kms_plane_multiple_unstable",
@@ -300,6 +337,7 @@ func init() {
 				exe: "kms_plane_multiple",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...)),
 		}, {
 			Name: "kms_plane_scaling",
@@ -307,6 +345,7 @@ func init() {
 				exe: "kms_plane_scaling",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...)),
 		}, {
 			Name: "kms_plane_scaling_unstable",
@@ -314,6 +353,7 @@ func init() {
 				exe: "kms_plane_scaling",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...)),
 		}, {
 			Name: "kms_prime",
@@ -321,6 +361,7 @@ func init() {
 				exe: "kms_prime",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...)),
 		}, {
 			Name: "kms_prime_unstable",
@@ -328,19 +369,22 @@ func init() {
 				exe: "kms_prime",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...)),
 		}, {
 			Name: "kms_prop_blob",
 			Val: igtTest{
 				exe: "kms_prop_blob",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_properties",
 			Val: igtTest{
 				exe: "kms_properties",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuMtk...)),
 		}, {
 			Name: "kms_properties_unstable",
@@ -348,79 +392,92 @@ func init() {
 				exe: "kms_properties",
 			},
 			Timeout:           5 * time.Minute,
+			ExtraAttr:         []string{"graphics_nightly"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuMtk...)),
 		}, {
 			Name: "kms_rmfb",
 			Val: igtTest{
 				exe: "kms_rmfb",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_rotation_crc",
 			Val: igtTest{
 				exe: "kms_rotation_crc",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_selftest",
 			Val: igtTest{
 				exe: "kms_selftest",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_setmode",
 			Val: igtTest{
 				exe: "kms_setmode",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_sysfs_edid_timing",
 			Val: igtTest{
 				exe: "kms_sysfs_edid_timing",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_universal_plane",
 			Val: igtTest{
 				exe: "kms_universal_plane",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "kms_vblank",
 			Val: igtTest{
 				exe: "kms_vblank",
 			},
-			Timeout: 15 * time.Minute,
+			Timeout:   15 * time.Minute,
+			ExtraAttr: []string{"graphics_weekly"},
 		}, {
 			Name: "kms_vrr",
 			Val: igtTest{
 				exe: "kms_vrr",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "sw_sync",
 			Val: igtTest{
 				exe: "sw_sync",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "testdisplay",
 			Val: igtTest{
 				exe: "testdisplay",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "vgem_basic",
 			Val: igtTest{
 				exe: "vgem_basic",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "vgem_slow",
 			Val: igtTest{
 				exe: "vgem_slow",
 			},
-			Timeout: 5 * time.Minute,
+			Timeout:   5 * time.Minute,
+			ExtraAttr: []string{"graphics_nightly"},
 		}, {
 			Name: "template",
 			Val: igtTest{
