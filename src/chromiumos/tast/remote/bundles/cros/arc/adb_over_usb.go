@@ -10,7 +10,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/arc"
 	arcpb "chromiumos/tast/services/cros/arc"
@@ -27,8 +27,8 @@ func init() {
 			// Available boards info, please refer to doc https://www.chromium.org/chromium-os/chrome-os-systems-supporting-adb-debugging-over-usb
 			hwdep.Model("eve", "atlas", "nocturne", "soraka"),
 		),
-		SoftwareDeps: append([]string{"reboot", "chrome"}, pre.SoftwareDeps...),
-		ServiceDeps:  append([]string{"tast.cros.arc.ADBOverUSBService"}, pre.ServiceDeps...),
+		SoftwareDeps: []string{"reboot", "chrome"},
+		ServiceDeps:  []string{"tast.cros.arc.ADBOverUSBService"},
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -36,9 +36,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Data:    pre.Data,
-		Pre:     pre.DevModeGBB(),
-		Vars:    pre.Vars,
+		Fixture: fixture.DevModeGBB,
 		Timeout: 20 * time.Minute,
 	})
 }

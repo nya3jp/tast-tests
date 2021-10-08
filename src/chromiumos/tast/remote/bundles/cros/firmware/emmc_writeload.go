@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -24,11 +24,8 @@ func init() {
 		Desc:         "Continuous test which runs chromeos-install in a loop",
 		Contacts:     []string{"js@semihalf.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_experimental", "firmware_usb"},
-		Pre:          pre.USBDevModeGBB(),
-		Data:         pre.Data,
-		ServiceDeps:  pre.ServiceDeps,
-		SoftwareDeps: pre.SoftwareDeps,
-		Vars:         append([]string{"firmware.reinstall_time"}, pre.Vars...),
+		Fixture:      fixture.USBDevModeGBB,
+		Vars:         []string{"firmware.reinstall_time"},
 		HardwareDeps: hwdep.D(),
 		Timeout:      260 * time.Minute, // 4hrs 20mins, added 20mins for the last run
 	})
@@ -45,7 +42,7 @@ func EMMCWriteload(ctx context.Context, s *testing.State) {
 	endTime := time.Now().Add(testDuration)
 	warningRegex := regexp.MustCompile(`mmc[0-9]+: Timeout waiting for hardware interrupt`)
 
-	h := s.PreValue().(*pre.Value).Helper
+	h := s.FixtValue().(*fixture.Value).Helper
 
 	// Spawn chromeOS installation as many times as we can within
 	// the test duration. Single install takes about 3-5 minutes

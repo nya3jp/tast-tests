@@ -14,7 +14,7 @@ This codelab follows the creation of a remote firmware test in Tast. In doing so
 * Send RPC commands to the DUT
 * Manage common firmware structures via `firmware.Helper`
 * Boot the DUT into recovery/developer mode via `firmware.ModeSwitcher`
-* Ensure that the DUT is in an expected state at the start and end of the test via `firmware.Pre`
+* Ensure that the DUT is in an expected state at the start and end of the test via `firmware.fixture`
 
 In order to demonstrate what's happening "under the hood," some sections of this codelab will overwrite code from earlier sections. Thus, working through the codelab will teach you more than just studying the final code.
 
@@ -465,7 +465,7 @@ For that reason, we have a structure called [`firmware.Helper`], whose job is to
 
 At the start of your test body, initialize a `firmware.Helper`. The [`NewHelper`] constructor requires several parameters, which it will use later to initialize other structures: `dut` (to construct the Reporter and Servo), `rpcHint` (for the RPC connection), `cfgFilepath` (for the Config), and `servoHostPort` (for Servo).
 
-> This is simpler, but keep reading. firmware.Pre is simpler yet!
+> This is simpler, but keep reading. firmware.fixture is simpler yet!
 
 ```go
 func Codelab(ctx context.Context, s *testing.State) {
@@ -658,41 +658,35 @@ At this point (after running `gofmt`), your test file should resemble [`codelab_
 [`common/firmware`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/firmware/
 [`codelab_boot_mode.txt`]: ./codelab_boot_mode.txt
 
-## Control start/end state with firmware.Pre
+## Control start/end state with firmware.fixture
 
-> TODO (gredelston): After b/174846911, update this section to describe Fixture instead of Pre. For context, [Fixtures] are an updated version of Precondition, but they do not yet support data files, which are required for our use-case.
+Tast has a wonderful feature called [Fixtures]. This allows us to perform certain actions before and after each test. If several tests have the same Fixture, they will all be run in a row.
 
-Tast has a wonderful feature called [Preconditions]. This allows us to perform certain actions before and after each test. If several tests have the same Precondition, they will all be run in a row.
+This is really useful for firmware testing. In FAFT, we like to ensure that the GBB flags start and end in an expected state. We also have many tests that have to run in normal mode, many others that run in recovery mode, and others that run in developer mode. Clumping those tests together means that we can boot into recovery mode once, and then run all of the recovery mode tests. It also makes cleanup easier, because if a DUT ends the test in an unexpected state (such as a strange boot mode or strange GBB flags), the Fixture will return it to the expected state.
 
-This is really useful for firmware testing. In FAFT, we like to ensure that the GBB flags start and end in an expected state. We also have many tests that have to run in normal mode, many others that run in recovery mode, and others that run in developer mode. Clumping those tests together means that we can boot into recovery mode once, and then run all of the recovery mode tests. It also makes cleanup easier, because if a DUT ends the test in an unexpected state (such as a strange boot mode or strange GBB flags), the Precondition will return it to the expected state.
-
-Let's add a Precondition to our test to ensure that it starts and ends in normal mode. First, import the [`remote/firmware/pre`] library:
+Let's add a Fixture to our test to ensure that it starts and ends in normal mode. First, import the [`remote/firmware/fixture`] library:
 
 ```go
 import (
 	...
-	"chromiumos/tast/remote/firmware/pre"
+	"chromiumos/tast/remote/firmware/fixture"
 )
 ```
 
-In the test initialization, declare a `Pre` of `pre.NormalMode()`:
+In the test initialization, declare a `Fixture` of `fixture.NormalMode`:
 
 ```go
 func init() {
 	testing.AddTest(&testing.Test{
 		...
-		Data:         []string{firmware.ConfigFile},
-		Pre:          pre.NormalMode(),
-		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
-                SoftwareDeps: []string{"crossystem", "flashrom"},
-		Vars:         []string{"servo"},
+		Fixture:      fixture.NormalMode,
 	})
 }
 ```
 
-Now, before the test runs, the test harness will invoke the precondition's `Prepare` method, which will put it into normal-mode. After all tests using this same precondition have finished, the test harness will invoke its `Close` method, which restores the DUT's GBB flags and boot-mode from before the tests began.
+Now, before the test runs, the test harness will invoke the fixtures's `SetUp` and `PreTest` methods, which will put it into normal-mode. After all tests using this same fixture have finished, the test harness will invoke its `TearDown` method, which restores the DUT's GBB flags and boot-mode from before the tests began.
 
-The `Pre` has a built-in `Helper`, so we don't need to create our own. Let's replace the `NewHelper` line so that we can reuse the `Pre`'s `Helper`.
+The `Fixture` has a built-in `Helper`, so we don't need to create our own. Let's replace the `NewHelper` line so that we can reuse the `Fixture`'s `Helper`.
 
 ```go
 	// OLD
@@ -701,19 +695,18 @@ The `Pre` has a built-in `Helper`, so we don't need to create our own. Let's rep
 	defer h.Close(ctx)
 
 	// NEW
-	h := s.PreValue().(*pre.Value).Helper
+	h := s.FixtValue().(*fixture.Value).Helper
 ```
 
-Note that we don't need to close the `Helper`, because the `Pre` will use it again at the end of all tests, and will close it afterward.
+Note that we don't need to close the `Helper`, because the `Fixture` will use it again at the end of all tests, and will close it afterward.
 
 Go ahead and run your code—this is the last time we'll modify it.
 
-At this point (after running `gofmt`), your test file should resemble [`codelab_pre.txt`].
+At this point (after running `gofmt`), your test file should resemble [`codelab_fixt.txt`].
 
 [Fixtures]: http://doc/1kA79M7bB4O0tje-sdOuX6BIL3YmC8eyEqkwNaKvMEJI#heading=h.5irk4csrpu0y
-[Preconditions]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Preconditions
-[`remote/firmware/pre`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/firmware/pre/
-[`codelab_pre.txt`]: ./codelab_pre.txt
+[`remote/firmware/fixture`]: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/firmware/fixture/
+[`codelab_fixt.txt`]: ./codelab_fixt.txt
 
 ## Reviews
 
