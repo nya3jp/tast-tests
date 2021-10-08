@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3fcf8bb_7e830f9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-10-08T15:24:46Z",
+      "side": 1,
+      "message": "LGTM. Thanks, Oleh.",
+      "revId": "7adca03c8cf82d6b23ab2a29932d30c617045c10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
