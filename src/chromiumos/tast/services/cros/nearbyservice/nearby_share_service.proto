@@ -50,6 +50,10 @@ service NearbyShareService {
   // waits for a followup notification to see the transfer is complete.
   rpc AcceptIncomingShareNotificationAndWaitForCompletion(CrOSReceiveFilesRequest) returns (google.protobuf.Empty) {}
 
+  // Accepts the notification that appears when a nearby device is trying to
+  // discover a share target. This puts the user into high visibility mode.
+  rpc AcceptFastInitiationNotification(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
   // StartLogging is used to begin logging at the start of a test.
   rpc StartLogging (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
@@ -68,6 +72,7 @@ message CrOSLoginRequest {
   string username = 1;
   string password = 2;
   bool keep_state = 3;
+  repeated string enabled_flags = 4;
 }
 
 // CrOSSetupRequest is a request to setup and configure Nearby Share on a
