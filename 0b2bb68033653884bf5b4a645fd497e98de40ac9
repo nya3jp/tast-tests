@@ -1,0 +1,446 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e3c1c28_63cd00b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "Thanks! This looks mostly great to me. I have only hopefully minor comments.",
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "181fbcdc_2eb4336b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "nit: s/gl/GL/",
+      "range": {
+        "startLine": 11,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 29
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4af9ad2_afa17c97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "nit: s/gl/GL/",
+      "range": {
+        "startLine": 13,
+        "startChar": 25,
+        "endLine": 13,
+        "endChar": 27
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad111655_353cd2c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "nit: Place the \u003cscript\u003e\u003c/script\u003e before the \u003c/body\u003e end tag.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d2f03ec_5205dcdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think we use this style of comments in Chromium/Chromium OS code. I would use multiple lines of //.",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 7
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4be3ad49_0e218988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "nit: Use 2-space indentation to be consistent with other Chromium/Chromium OS code.",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3561d13_4c51e413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "nit: Is this supposed to be 150 (the remaining width)?",
+      "range": {
+        "startLine": 24,
+        "startChar": 33,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a017e087_6a27b1be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "nit: Is this supposed to be 150 (the remaining height)?",
+      "range": {
+        "startLine": 26,
+        "startChar": 38,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38fda1b2_efa4a8dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "nit: s/gl/GL/",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "134627f4_71dfeb3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "Is this needed so that all color-ed squares are visible simultaneously? If so, mention this as a comment.",
+      "range": {
+        "startLine": 34,
+        "startChar": 53,
+        "endLine": 34,
+        "endChar": 80
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0630d70c_64d6978d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "nit: Is this supposed to be 150 (the remaining width)?",
+      "range": {
+        "startLine": 39,
+        "startChar": 34,
+        "endLine": 39,
+        "endChar": 37
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df32436b_86e8b656",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "replaced",
+      "range": {
+        "startLine": 61,
+        "startChar": 43,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae58df4_d69c54b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "nit: s/gl/GL/",
+      "range": {
+        "startLine": 82,
+        "startChar": 26,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee30820e_c9ab9cf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "I believe you need:\n\n  HardwareDeps: hwdep.D(hwdep.InternalDisplay())\n\nYou can try without it, but I think the screenshot command doesn\u0027t work if there\u0027s no screen connected to the device (like with Chromeboxes).",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b80e7f9d_f5bf4d1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "You don\u0027t have to take action for now, but imagine one of your canvases is promoted to an overlay. This may affect the result of your check (e.g. if the overlay path is broken) and you may not really want to test that.\n\nTo remove this possibility in some video.Contents tests, I set\n\n  Fixture: \"chromeCompositedVideo\",\n\nThis fixture disables hardware overlays in Chrome.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31ddfbd5_a8559a5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "Add\n\n  defer tconn.Close()",
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a8bc60_37b49d0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "Add\n\n  defer kb.Close()",
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e53dcd19_2a50dd83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "Do\n\n  defer f.Close()\n  \nAfter ln. 108 instead.",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 3
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02198762_694f36df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "I think you may get black stripes on the top/bottom or left/right of the screenshot depending on the aspect ratio of the canvas and the device\u0027s screen. If so, these points don\u0027t necessarily represent the center of each quadrant. That might be okay, but if the stripes are big enough, the points you\u0027re sampling may fall on them in theory.\n\nIf you are worried about this possibility, there are at least two options:\n\n1) Do a blind pixel-by-pixel comparison of the two images.\n\n2) Find the points where the canvas contents start on the screenshot and use those to compute the sampling points.",
+      "range": {
+        "startLine": 134,
+        "startChar": 32,
+        "endLine": 134,
+        "endChar": 42
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88fa7864_6f8ea91a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-08T18:33:56Z",
+      "side": 1,
+      "message": "In video.Contents, I have this just because I\u0027m interested in tracking the difference between expected and actual as a performance value for data analysis. You\u0027re probably not interested in that (you likely just want a pass/fail result).",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 20
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
