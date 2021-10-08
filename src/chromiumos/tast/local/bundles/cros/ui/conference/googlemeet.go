@@ -106,18 +106,18 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 
 		emailContent := nodewith.NameContaining(meetAccount).Role(role.InlineTextBox).Editable()
 		emailField := nodewith.Name("Email or phone").Role(role.TextField)
-		emailFieldFocused := nodewith.Name("Email or phone").Role(role.TextField).Focused()
 		nextButton := nodewith.Name("Next").Role(role.Button)
 		passwordField := nodewith.Name("Enter your password").Role(role.TextField)
-		passwordFieldFocused := nodewith.Name("Enter your password").Role(role.TextField).Focused()
 		iAgree := nodewith.Name("I agree").Role(role.Button)
 		var actions []uiauto.Action
+		// If emailContent is not found, it should fill in the account.
 		if err := ui.WaitUntilExists(emailContent)(ctx); err != nil {
 			// Email has not been entered into the text box yet.
 			actions = append(actions,
 				// Make sure text area is focused before typing. This is especially necessary on low-end DUTs.
-				ui.LeftClickUntil(emailField, ui.Exists(emailFieldFocused)),
-				kb.TypeAction(meetAccount),
+				uiauto.NamedAction("click email field",
+					ui.LeftClickUntil(emailField, ui.WithTimeout(3*time.Second).WaitUntilExists(emailField.Focused()))),
+				uiauto.NamedAction("type account", kb.TypeAction(meetAccount)),
 			)
 		}
 		actions = append(actions,
@@ -127,11 +127,13 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 			},
 			ui.LeftClick(nextButton),
 			// Make sure text area is focused before typing. This is especially necessary on low-end DUTs.
-			ui.LeftClickUntil(passwordField, ui.Exists(passwordFieldFocused)),
+			ui.LeftClickUntil(passwordField, ui.Exists(passwordField.Focused())),
 			kb.TypeAction(conf.password),
 			ui.LeftClick(nextButton),
 			ui.LeftClickUntil(iAgree, ui.WithTimeout(time.Second).WaitUntilGone(iAgree)),
 		)
+
+		testing.ContextLog(ctx, "Enter email and password")
 		if err := uiauto.Combine("enter email and password",
 			actions...,
 		)(ctx); err != nil {
