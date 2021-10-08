@@ -318,3 +318,17 @@ func (d *Device) Click(ctx context.Context, x, y int) error {
 	}
 	return nil
 }
+
+// Drag performs a drag between arbitrary coordinates specified by the user.
+// This method corresponds to UiDevice.drag(int, int, int, int, int)
+// https://developer.android.com/reference/android/support/test/uiautomator/UiDevice.html#drag
+func (d *Device) Drag(ctx context.Context, startX, startY, endX, endY, steps int) error {
+	var success bool
+	if err := d.call(ctx, "drag", &success, startX, startY, endX, endY, steps); err != nil {
+		return err
+	}
+	if !success {
+		return errors.Errorf("failed to drag (%d,%d, %d, %d, %d)", startX, startY, endX, endY, steps)
+	}
+	return nil
+}
