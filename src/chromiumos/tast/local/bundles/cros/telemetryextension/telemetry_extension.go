@@ -6,6 +6,7 @@ package telemetryextension
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -19,6 +20,7 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/sysutil"
@@ -29,6 +31,8 @@ const (
 	manifestJSON = "manifest.json"
 	optionsHTML  = "options.html"
 	swJS         = "sw.js"
+
+	testExtensionID = "gogonhoemckpdpadfnjnpgbjpbjnodgc"
 )
 
 var dataFiles = []string{manifestJSON, optionsHTML, swJS}
@@ -50,6 +54,12 @@ func init() {
 
 // TelemetryExtension tests that Telemetry Extension has access to APIs and can talk with PWA.
 func TelemetryExtension(ctx context.Context, s *testing.State) {
+	// Load want response first to be sure that DUT satisfies all requirements to run Telemetry Extension.
+	wantResp, err := expectedSwResponse(ctx)
+	if err != nil {
+		s.Fatal("Failed to get expected response: ", err)
+	}
+
 	dir, err := ioutil.TempDir("", "telemetry_extension")
 	if err != nil {
 		s.Fatal("Failed to create temporary directory for TelemetryExtension: ", err)
@@ -76,30 +86,29 @@ func TelemetryExtension(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to get test API connections: ", err)
+	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
 	conn, err := cr.NewConn(ctx, "https://www.google.com")
 	if err != nil {
 		s.Fatal("Failed to create connection to google.com: ", err)
 	}
 	defer conn.Close()
 
-	const js = `
-		new Promise((resolve, reject) => {
-			chrome.runtime.sendMessage('gogonhoemckpdpadfnjnpgbjpbjnodgc', {'msg': 'ping'},
-				function(response) {
-					resolve(response);
-				}
-			);
-		})
-	`
-
-	var resp swResponse
-	if err := conn.Eval(ctx, js, &resp); err != nil {
-		s.Fatal("Failed to get response from Telemetry extenion service worker: ", err)
+	if err := chrome.AddTastLibrary(ctx, conn); err != nil {
+		s.Fatal("Failed to add Tast library to PWA: ", err)
 	}
 
-	wantResp, err := expectedSwResponse(ctx)
-	if err != nil {
-		s.Fatal("Failed to get expected response: ", err)
+	var resp swResponse
+	if err := conn.Call(ctx, &resp,
+		"tast.promisify(chrome.runtime.sendMessage)",
+		testExtensionID,
+		"ping message",
+	); err != nil {
+		s.Fatal("Failed to get response from Telemetry extenion service worker: ", err)
 	}
 
 	// These fields should be empty due to lack of "os.telemetry.serial_number" permission.
@@ -110,16 +119,11 @@ func TelemetryExtension(ctx context.Context, s *testing.State) {
 		s.Fatal("Unexpected response from Telemetry extension (-want +got): ", diff)
 	}
 
-	optionsConn, err := cr.NewConn(ctx, "chrome://extensions/?id=gogonhoemckpdpadfnjnpgbjpbjnodgc")
+	optionsConn, err := cr.NewConn(ctx, fmt.Sprintf("chrome://extensions/?id=%s", testExtensionID))
 	if err != nil {
 		s.Fatal("Failed to create connection to Chrome extensions page: ", err)
 	}
 	defer optionsConn.Close()
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to get test API connections: ", err)
-	}
 
 	// Request and accept "os.telemetry.serial_number" permission in order to
 	// get access to serial number and OEM data (e.g. battery serial number).
@@ -129,18 +133,24 @@ func TelemetryExtension(ctx context.Context, s *testing.State) {
 	allowButton := nodewith.Name("Allow").Role(role.Button)
 	if err := uiauto.Combine("allow serial number permission",
 		ui.WithTimeout(5*time.Second).WaitUntilExists(optionsButton),
+		ui.FocusAndWait(optionsButton),
 		ui.LeftClick(optionsButton),
 		ui.WithTimeout(5*time.Second).WaitUntilExists(requestButton),
 		ui.LeftClick(requestButton),
 		ui.WithTimeout(5*time.Second).WaitUntilExists(allowButton),
-		ui.LeftClick(allowButton),
+		ui.LeftClickUntil(allowButton, ui.Gone(allowButton)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to allow serial number permission: ", err)
 	}
 
-	if err := conn.Eval(ctx, js, &resp); err != nil {
+	if err := conn.Call(ctx, &resp,
+		"tast.promisify(chrome.runtime.sendMessage)",
+		testExtensionID,
+		"ping message",
+	); err != nil {
 		s.Fatal("Failed to get response from Telemetry extenion service worker: ", err)
 	}
+
 	if diff := cmp.Diff(wantResp, resp); diff != "" {
 		s.Error("Unexpected response from Telemetry extension (-want +got): ", diff)
 	}
