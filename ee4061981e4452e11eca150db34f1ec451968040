@@ -16,6 +16,29 @@
       "message": "Hi David, reviewers,\nthis CL contains one test case, two sub cases.\nWe split it into two sub cases due to those corresponding to two MTA cases.\nPlease let us know if you are concerned about the conventions of sub cases, thank you all.",
       "revId": "ee4061981e4452e11eca150db34f1ec451968040",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d2075d0_0a481816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_ubertray_layout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-08T19:31:17Z",
+      "side": 1,
+      "message": "quicksettings",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "ee4061981e4452e11eca150db34f1ec451968040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
