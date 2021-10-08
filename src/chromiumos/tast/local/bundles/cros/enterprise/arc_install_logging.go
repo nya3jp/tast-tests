@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
@@ -108,7 +109,7 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify ArcEnabled: ", err)
 	}
 
-	if err := arc.VerifyArcPolicyForceInstalled(ctx, tconn, []string{testPackage}); err != nil {
+	if err := arcent.VerifyArcPolicyForceInstalled(ctx, tconn, []string{testPackage}); err != nil {
 		s.Fatal("Failed to verify force-installed apps in ArcPolicy: ", err)
 	}
 
