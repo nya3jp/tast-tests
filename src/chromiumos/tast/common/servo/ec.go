@@ -163,7 +163,7 @@ func (s *Servo) ECHibernate(ctx context.Context) error {
 		return errors.Wrap(err, "failed to remove watchdog for ccd")
 	}
 	if err := s.RunECCommand(ctx, "hibernate"); err != nil {
-		return errors.Wrap(err, "failed to run EC command")
+		return errors.Wrap(err, "failed to run EC command: hibernate")
 	}
 	testing.Sleep(ctx, hibernateDelay)
 
@@ -173,7 +173,9 @@ func (s *Servo) ECHibernate(ctx context.Context) error {
 		testing.ContextLogf(ctx, "Got %v expected error", out)
 		return errors.New("EC is still active after hibernate")
 	}
-	if !strings.Contains(err.Error(), "No data was sent from the pty") && !strings.Contains(err.Error(), "EC: Timeout waiting for response.") {
+	if !strings.Contains(err.Error(), "No data was sent from the pty") &&
+		!strings.Contains(err.Error(), "EC: Timeout waiting for response.") &&
+		!strings.Contains(err.Error(), "Timed out waiting for interfaces to become available") {
 		return errors.Wrap(err, "unexpected EC error")
 	}
 	return nil
