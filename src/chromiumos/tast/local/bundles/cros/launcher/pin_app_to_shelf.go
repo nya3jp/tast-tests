@@ -12,9 +12,10 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -70,7 +71,7 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 
 	// When a DUT switching from tablet mode to clamshell mode, sometimes it takes a while to settle down.
 	// Added a delay here to let all events finishing up.
-	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+	if err := uiauto.New(tconn).WaitForLocation(nodewith.Root())(ctx); err != nil {
 		s.Fatal("Failed to wait for location changes: ", err)
 	}
 
@@ -222,11 +223,12 @@ func pinApps(ctx context.Context, tconn *chrome.TestConn, apps []apps.App) error
 		}
 
 		//  Verify that pinned Application appears on the Shelf.
-		params := ui.FindParams{Name: app.Name, ClassName: shelfAppButton}
-		if err := ui.WaitUntilExists(ctx, tconn, params, 10*time.Second); err != nil {
+		ui := uiauto.New(tconn)
+		finder := nodewith.Name(app.Name).ClassName(shelfAppButton)
+		if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(finder)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to find app %v on shelf", app.Name)
 		}
-		if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+		if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
 			errors.Wrap(err, "failed to wait for location changes")
 		}
 
@@ -245,12 +247,11 @@ func pinApps(ctx context.Context, tconn *chrome.TestConn, apps []apps.App) error
 // buttonLocations returns the left coordinates of the locations of all buttons on the shelf.
 func buttonLocations(ctx context.Context, tconn *chrome.TestConn) (map[string]int, error) {
 	button2Loc := make(map[string]int)
-	params := ui.FindParams{ClassName: shelfAppButton}
-	appButtons, err := ui.FindAll(ctx, tconn, params)
+	finder := nodewith.ClassName(shelfAppButton)
+	appButtons, err := uiauto.New(tconn).NodesInfo(ctx, finder)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get all button on shelf")
 	}
-	defer appButtons.Release(ctx)
 	for _, b := range appButtons {
 		button2Loc[b.Name] = b.Location.Left
 	}
@@ -259,12 +260,11 @@ func buttonLocations(ctx context.Context, tconn *chrome.TestConn) (map[string]in
 
 // buttonsShiftLeft makes sure all the existing buttons on the shelf shifting to the left after a new item is added to the shelf.
 func buttonsShiftLeft(ctx context.Context, tconn *chrome.TestConn, prevLocations map[string]int) error {
-	params := ui.FindParams{ClassName: shelfAppButton}
-	appButtons, err := ui.FindAll(ctx, tconn, params)
+	finder := nodewith.ClassName(shelfAppButton)
+	appButtons, err := uiauto.New(tconn).NodesInfo(ctx, finder)
 	if err != nil {
 		return errors.Wrap(err, "failed to get all button on shelf")
 	}
-	defer appButtons.Release(ctx)
 	if len(appButtons) != len(prevLocations)+1 {
 		return errors.Errorf("have %v buttons on the shelf; want %v", len(appButtons), len(prevLocations)+1)
 	}
@@ -278,12 +278,11 @@ func buttonsShiftLeft(ctx context.Context, tconn *chrome.TestConn, prevLocations
 
 // rightmostButton checks if the given app is the rightmost app on the shelf.
 func rightmostButton(ctx context.Context, tconn *chrome.TestConn, appName string) error {
-	params := ui.FindParams{ClassName: shelfAppButton}
-	appButtons, err := ui.FindAll(ctx, tconn, params)
+	finder := nodewith.ClassName(shelfAppButton)
+	appButtons, err := uiauto.New(tconn).NodesInfo(ctx, finder)
 	if err != nil {
 		return errors.Wrap(err, "failed to get all buttons on shelf")
 	}
-	defer appButtons.Release(ctx)
 	if len(appButtons) == 0 {
 		return errors.New("no app buttons on the shelf")
 	}
