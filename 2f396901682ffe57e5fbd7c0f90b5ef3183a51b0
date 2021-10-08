@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5440dcc_5e60ea22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-10-08T03:28:26Z",
+      "side": 1,
+      "message": "I think Yamaguchi and Jonathan discuss it throughly. I defer the review to them. Feel free to add me back if needed.",
+      "revId": "2f396901682ffe57e5fbd7c0f90b5ef3183a51b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cf4957f_5d79df26",
