@@ -24,7 +24,7 @@ type Cleanup func(context.Context) error
 type Prepare func(context.Context) (string, Cleanup, error)
 
 // Run runs the specified user scenario in conference room with different CUJ tiers.
-func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir string, tabletMode, extendedDisplay bool) error {
+func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir string, tabletMode, extendedDisplay bool, roomSize int) error {
 	// Shorten context a bit to allow for cleanup.
 	cleanUpCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -96,21 +96,23 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 			errc <- graphics.MeasureGPUCounters(gpuCtx, meetTimeout, pv)
 		}()
 
-		if err := conf.Join(ctx, inviteLink); err != nil {
-			return err
-		}
+		if roomSize != NoRoom {
+			if err := conf.Join(ctx, inviteLink); err != nil {
+				return err
+			}
 
-		// Basic
-		if err := conf.SwitchTabs(ctx); err != nil {
-			return err
-		}
+			// Basic
+			if err := conf.SwitchTabs(ctx); err != nil {
+				return err
+			}
 
-		if err := conf.VideoAudioControl(ctx); err != nil {
-			return err
-		}
+			if err := conf.VideoAudioControl(ctx); err != nil {
+				return err
+			}
 
-		if err := conf.ChangeLayout(ctx); err != nil {
-			return err
+			if err := conf.ChangeLayout(ctx); err != nil {
+				return err
+			}
 		}
 
 		// Plus and premium tier.
@@ -125,7 +127,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		}
 
 		// Premium tier.
-		if tier == "premium" {
+		if roomSize != NoRoom && tier == "premium" {
 			if err := conf.BackgroundChange(ctx); err != nil {
 				return err
 			}

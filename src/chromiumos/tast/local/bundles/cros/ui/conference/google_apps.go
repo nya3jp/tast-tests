@@ -19,6 +19,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -86,7 +88,13 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 	// docCleanup switches to the document page and deletes it.
 	docCleanup := func(ctx context.Context) error {
 		return uiauto.Combine("switch to the document page and delete it",
-			ui.IfSuccessThen(func(ctx context.Context) error { return renameDocErr }, switchToTab(string(googleDocs))),
+			ui.IfSuccessThen(func(ctx context.Context) error {
+				docWebArea := nodewith.NameContaining("Google Docs").Role(role.RootWebArea)
+				if ui.Exists(docWebArea)(ctx) == nil {
+					return errors.New("already on the Google Docs page")
+				}
+				return renameDocErr
+			}, switchToTab(string(googleDocs))),
 			googleapps.DeleteDoc(tconn),
 		)(ctx)
 	}
