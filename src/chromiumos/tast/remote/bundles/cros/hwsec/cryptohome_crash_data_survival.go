@@ -80,7 +80,7 @@ func CryptohomeCrashDataSurvival(ctx context.Context, s *testing.State) {
 	if err = hf.Clear(ctx); err != nil {
 		s.Fatal("Failed to clear test files in the user's home directory: ", err)
 	}
-	if err = hf.Step(ctx); err != nil {
+	if err = hf.StepAll(ctx); err != nil {
 		s.Fatal("Failed to initialize the test files in the user's home directory: ", err)
 	}
 
@@ -113,7 +113,7 @@ func CryptohomeCrashDataSurvival(ctx context.Context, s *testing.State) {
 	if err = utility.UnmountAll(ctx); err != nil {
 		s.Fatal("Failed to unmount all: ", err)
 	}
-	if err = hf.Verify(ctx); err == nil {
+	if err = hf.VerifyAll(ctx); err == nil {
 		s.Error("Files still visible after Unmount() post crash")
 	}
 
@@ -121,10 +121,10 @@ func CryptohomeCrashDataSurvival(ctx context.Context, s *testing.State) {
 	if err = utility.MountVault(ctx, util.Password1Label, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword1), false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount user post crash: ", err)
 	}
-	if err = hf.Verify(ctx); err != nil {
+	if err = hf.VerifyAll(ctx); err != nil {
 		s.Fatal("Files invalid after remount post crash: ", err)
 	}
-	if err = hf.Step(ctx); err != nil {
+	if err = hf.StepAll(ctx); err != nil {
 		s.Fatal("Unable to write files after remount post crash: ", err)
 	}
 
@@ -135,10 +135,10 @@ func CryptohomeCrashDataSurvival(ctx context.Context, s *testing.State) {
 	if err = utility.MountVault(ctx, util.Password1Label, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword1), false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount user post restart: ", err)
 	}
-	if err = hf.Verify(ctx); err != nil {
+	if err = hf.VerifyAll(ctx); err != nil {
 		s.Fatal("Files invalid after restart post crash: ", err)
 	}
-	if err = hf.Step(ctx); err != nil {
+	if err = hf.StepAll(ctx); err != nil {
 		s.Fatal("Unable to write files after restart post crash: ", err)
 	}
 }
