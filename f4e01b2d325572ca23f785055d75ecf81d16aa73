@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a910498e_46d89628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-10-08T17:50:13Z",
+      "side": 1,
+      "message": "Instead of switching on particular string like `gpu`, how about if we extend search struct to include role. And if specified, it would be used in place of \"role.GenericContainer\"?",
+      "revId": "f4e01b2d325572ca23f785055d75ecf81d16aa73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a569ff41_f61cc72e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-10-08T17:50:13Z",
+      "side": 1,
+      "message": "use format string.",
+      "revId": "f4e01b2d325572ca23f785055d75ecf81d16aa73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "510e925c_df14c64b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-10-08T17:50:13Z",
+      "side": 1,
+      "message": "use format string.",
+      "revId": "f4e01b2d325572ca23f785055d75ecf81d16aa73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a99dc61_1482dc57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-10-08T17:50:13Z",
+      "side": 1,
+      "message": "use `Focused()`?",
+      "revId": "f4e01b2d325572ca23f785055d75ecf81d16aa73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee57d441_1b0ca0d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/settings_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-10-08T17:50:13Z",
+      "side": 1,
+      "message": "Did not quite understand the purpose of this block. \nIt seems like all the information coming already in NodesInfo (which is a snapshot of the nodes), and we are again using those information to verify if the nodes are there.",
+      "revId": "f4e01b2d325572ca23f785055d75ecf81d16aa73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
