@@ -57,30 +57,20 @@ func SetOnlineWallpaper(ctx context.Context, s *testing.State) {
 	// time to wait for nodes to load.
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 
-	if err := wallpaper.OpenWallpaperPicker(ui)(ctx); err != nil {
-		s.Fatal("Failed to open wallpaper picker: ", err)
-	}
-	if err := wallpaper.SelectCollection(ui, firstCollection)(ctx); err != nil {
-		s.Fatalf("Failed to select collection %q: %v", firstCollection, err)
-	}
-	if err := wallpaper.SelectImage(ui, firstImage)(ctx); err != nil {
-		s.Fatalf("Failed to select image %q: %v", firstImage, err)
-	}
-	if err := ui.WaitUntilExists(nodewith.Name(fmt.Sprintf("Currently set %v", firstImage)).Role(role.Heading))(ctx); err != nil {
-		s.Fatalf("Failed to validate selected wallpaper %q: %v", firstImage, err)
+	if err := uiauto.Combine(fmt.Sprintf("Change the wallpaper to %s %s", firstCollection, firstImage),
+		wallpaper.OpenWallpaperPicker(ui),
+		wallpaper.SelectCollection(ui, firstCollection),
+		wallpaper.SelectImage(ui, firstImage),
+		ui.WaitUntilExists(nodewith.Name(fmt.Sprintf("Currently set %v", firstImage)).Role(role.Heading)))(ctx); err != nil {
+		s.Fatalf("Failed to validate selected wallpaper %s %s: %v", firstCollection, firstImage, err)
 	}
 
 	// Navigate back to collection view by clicking on the back arrow in breadcrumb.
-	if err := ui.LeftClick(nodewith.Name("Back to Wallpaper").HasClass("icon-arrow-back").Role(role.Button))(ctx); err != nil {
-		s.Fatal("Failed to navigate back to collection view: ", err)
-	}
-	if err := wallpaper.SelectCollection(ui, secondCollection)(ctx); err != nil {
-		s.Fatalf("Failed to select collection %q: %v", secondCollection, err)
-	}
-	if err := wallpaper.SelectImage(ui, secondImage)(ctx); err != nil {
-		s.Fatalf("Failed to select image %q: %v", secondImage, err)
-	}
-	if err := ui.WaitUntilExists(nodewith.Name(fmt.Sprintf("Currently set %v", secondImage)).Role(role.Heading))(ctx); err != nil {
-		s.Fatalf("Failed to validate selected wallpaper %q: %v", secondImage, err)
+	if err := uiauto.Combine(fmt.Sprintf("Change the wallpaper to %s %s", secondCollection, secondImage),
+		ui.LeftClick(nodewith.Name("Back to Wallpaper").HasClass("icon-arrow-back").Role(role.Button)),
+		wallpaper.SelectCollection(ui, secondCollection),
+		wallpaper.SelectImage(ui, secondImage),
+		ui.WaitUntilExists(nodewith.Name(fmt.Sprintf("Currently set %v", secondImage)).Role(role.Heading)))(ctx); err != nil {
+		s.Fatalf("Failed to validate selected wallpaper %s %s: %v", secondCollection, secondImage, err)
 	}
 }
