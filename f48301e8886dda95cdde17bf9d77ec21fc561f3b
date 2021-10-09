@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "239601e5_cb51c4bd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-09T21:14:22Z",
+      "side": 1,
+      "message": "Should we remove the event log test then?",
+      "parentUuid": "4932489b_1f6df5fa",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "f48301e8886dda95cdde17bf9d77ec21fc561f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69604560_95a515e3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_stability_check.go",
         "patchSetId": 2
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "As per test steps we have used above commands, please suggest if any changes required.",
       "parentUuid": "69604560_95a515e3",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "f48301e8886dda95cdde17bf9d77ec21fc561f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a7de42_ea509d28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-09T21:14:22Z",
+      "side": 1,
+      "message": "I suggest you use mount --bind, just like I said in the prior comment. It will be safer if the test crashes.",
+      "parentUuid": "57b7fe68_982997d8",
       "range": {
         "startLine": 52,
         "startChar": 2,
