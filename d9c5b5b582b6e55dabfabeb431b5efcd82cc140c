@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b530f057_a1ed048e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/system_wake_on_powerbtn_press.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T13:02:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b7d700f5_0110419f",
+      "revId": "d9c5b5b582b6e55dabfabeb431b5efcd82cc140c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "018de65e_7c7aef06",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-04T21:00:49Z",
       "side": 1,
       "message": "Please start with lowercase with local variables.\n\nc10PkgPattern",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "d9c5b5b582b6e55dabfabeb431b5efcd82cc140c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3f7fd08_afd92f87",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/system_wake_on_powerbtn_press.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T13:02:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "018de65e_7c7aef06",
       "range": {
         "startLine": 36,
         "startChar": 5,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65278e98_4219ed4d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/system_wake_on_powerbtn_press.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T13:02:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0bf4aa12_6ae653ee",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "d9c5b5b582b6e55dabfabeb431b5efcd82cc140c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70f7b7b3_79846c09",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-10-04T21:00:49Z",
       "side": 1,
       "message": "pkgCstateCmd",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "d9c5b5b582b6e55dabfabeb431b5efcd82cc140c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa87537f_adad5c40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/system_wake_on_powerbtn_press.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T13:02:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "70f7b7b3_79846c09",
       "range": {
         "startLine": 39,
         "startChar": 2,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75f982f2_74133614",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/system_wake_on_powerbtn_press.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T13:02:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ca3d3b95_94afd72f",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "d9c5b5b582b6e55dabfabeb431b5efcd82cc140c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc5e9f5c_f0bc3c9f",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-10-04T21:00:49Z",
       "side": 1,
       "message": "super nit. Put to line 39 to group with other const variables.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 16
+      },
+      "revId": "d9c5b5b582b6e55dabfabeb431b5efcd82cc140c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d630ec4_228125b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/system_wake_on_powerbtn_press.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T13:02:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fc5e9f5c_f0bc3c9f",
       "range": {
         "startLine": 70,
         "startChar": 1,
