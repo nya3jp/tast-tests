@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4932489b_1f6df5fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T11:26:40Z",
+      "side": 1,
+      "message": "We are verifying \"s3\" entry/exit stress using \"suspend_stress_test -c 10\", but in src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go it was verified using \"powerd_dbus_suspend\".",
+      "parentUuid": "63b12f3c_75032f02",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "f48301e8886dda95cdde17bf9d77ec21fc561f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69604560_95a515e3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_stability_check.go",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-04T15:47:21Z",
       "side": 1,
       "message": "If you look at src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go, it implements the power manager changes by using a `mount --bind` command, which is safer, since it will go away on the next boot and not leave the powerd settings changed if the test crashes in the middle.",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "f48301e8886dda95cdde17bf9d77ec21fc561f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b7fe68_982997d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T11:26:40Z",
+      "side": 1,
+      "message": "As per test steps we have used above commands, please suggest if any changes required.",
+      "parentUuid": "69604560_95a515e3",
       "range": {
         "startLine": 52,
         "startChar": 2,
