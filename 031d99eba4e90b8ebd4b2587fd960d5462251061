@@ -16,6 +16,40 @@
       "message": "PTAL\nTY",
       "revId": "031d99eba4e90b8ebd4b2587fd960d5462251061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cece28db_f4665376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-09T22:52:37Z",
+      "side": 1,
+      "message": "nit: missing a period at the end of the sentence.",
+      "revId": "031d99eba4e90b8ebd4b2587fd960d5462251061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7199defc_5eb8512b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-09T22:52:37Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need to call Fatalf to pass err, you can call s.Fatal, remove the %q, and pass err to achieve the same thing.\n\ns.Fatal(\"Failed to do initial optin: \", err)\n\nThis applies here, and in the rest of the method.",
+      "revId": "031d99eba4e90b8ebd4b2587fd960d5462251061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
