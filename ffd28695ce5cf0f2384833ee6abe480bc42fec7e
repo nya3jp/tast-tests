@@ -22,6 +22,30 @@
       },
       "revId": "ffd28695ce5cf0f2384833ee6abe480bc42fec7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4e93815_1bc581b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-09T03:09:06Z",
+      "side": 1,
+      "message": "Thanks for catching this. I looked into the failure to connect to WiFi, see b/160281713#comment53.\n\ntl;dr: it\u0027s not this test that fails, all the consecutive tests in that run fail because the DUT is in a bad state. Apparently the bad state is leftover from another test, maybe a suspend/resume test.\n\nOverall I think it would still be beneficial to promote the 11g test to wifi_matfunc, the root cause of the majority of the flake should not be present there. That way we can remove the tauto version, which is almost the last tauto test that we have (save for suspend/resume).\nThe 11ac test still sometimes flakes because of a genuine incorrect AP rate, so maybe we don\u0027t promote it right away.\n\nWdyt?",
+      "parentUuid": "65004276_cba45ce7",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "ffd28695ce5cf0f2384833ee6abe480bc42fec7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
