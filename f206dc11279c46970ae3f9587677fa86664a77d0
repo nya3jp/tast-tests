@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d806d587_a6f6461a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-10-09T00:10:16Z",
+      "side": 1,
+      "message": "Nit: would it work to put the bugs in the same line? (I thought that was typical; if not never mind)",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "f206dc11279c46970ae3f9587677fa86664a77d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "deddf2cd_f4a73a80",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-10-09T00:06:33Z",
       "side": 1,
       "message": "jchinlee@, tast-owners@ PTAL\n\nOthers FYI",
+      "revId": "f206dc11279c46970ae3f9587677fa86664a77d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03fbdf5e_418f4606",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-10-09T00:10:16Z",
+      "side": 1,
+      "message": "Thank you!",
       "revId": "f206dc11279c46970ae3f9587677fa86664a77d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
