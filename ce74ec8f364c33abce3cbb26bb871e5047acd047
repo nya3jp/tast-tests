@@ -446,6 +446,30 @@
       },
       "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7389308b_bbd7ce94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-09T00:01:54Z",
+      "side": 1,
+      "message": "Actually, I\u0027m wrong about the possibility of buffered frames: decodedFrameCount comes from VideoPlaybackQuality.totalVideoFrames, and according to [1]:\n\n\u003e The totalVideoFrames attribute MUST return the total number of frames that would have been displayed if no frames are dropped.\n  \nand\n\n\u003e Each HTMLVideoElement MUST maintain a total video frame count variable keeping track of the total number of frames that have been displayed and dropped. It MUST follow these rules:\n\u003e \n\u003e - It is initialized to 0 when the element is created.\n\u003e - It is reset to 0 when the media element load algorithm is invoked.\n\u003e - It is incremented when a video frame is displayed.\n\u003e - It is incremented when the dropped video frame count is incremented\n\nI\u0027m okay with this number of frames as long as you can guarantee that it will be roughly the same across test runs.\n\n[1] https://w3c.github.io/media-playback-quality/#videoplaybackquality-interface",
+      "parentUuid": "42b465e9_9e206f3b",
+      "range": {
+        "startLine": 131,
+        "startChar": 30,
+        "endLine": 131,
+        "endChar": 51
+      },
+      "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
