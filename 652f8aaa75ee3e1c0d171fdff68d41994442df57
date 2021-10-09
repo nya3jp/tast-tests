@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e760d54_4169fef0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T09:46:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ca9f542b_e895271f",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 17
+      },
+      "revId": "652f8aaa75ee3e1c0d171fdff68d41994442df57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c4ee58f_69f8442e",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-10-04T14:04:45Z",
       "side": 1,
       "message": "This is not helpful here, the context needs to be shortened before the defer to have an effect.\n\n3 Minutest is a safer timeout for slower devices to have time to boot.",
+      "revId": "652f8aaa75ee3e1c0d171fdff68d41994442df57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24de1f65_53f47447",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T09:46:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5c4ee58f_69f8442e",
       "revId": "652f8aaa75ee3e1c0d171fdff68d41994442df57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f18466d_6ddf5c49",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T09:46:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "58e03ced_12eee146",
+      "revId": "652f8aaa75ee3e1c0d171fdff68d41994442df57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2657ba06_f2846f3c",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-10-04T14:04:45Z",
       "side": 1,
       "message": "nit: same as above, maybe \"Waiting for DUT to be in S3 state after suspend\"",
+      "range": {
+        "startLine": 174,
+        "startChar": 8,
+        "endLine": 174,
+        "endChar": 16
+      },
+      "revId": "652f8aaa75ee3e1c0d171fdff68d41994442df57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8cbe40_2d09c347",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T09:46:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2657ba06_f2846f3c",
       "range": {
         "startLine": 174,
         "startChar": 8,
