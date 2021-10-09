@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1269e43_8918be3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-09T03:19:38Z",
+      "side": 1,
+      "message": "PS #2: promote the .11g test, keep the .11ac test in the unstable/informational suite",
+      "revId": "ede380ca2e21afe9d6016935eaad56daa5d973d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
