@@ -33,6 +33,41 @@
       "message": "I am fine with the new name as long as it makes sense.\nAside, I feel ChromeDecoding decodes a video by Chrome browser rather than a binary. Is ChromeBinaryDecoding better? Completely up to you all.",
       "revId": "b9fbe6f03bd1e782e590933a0b16debe72300881",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf6e6986_77eabb4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-09T21:29:21Z",
+      "side": 1,
+      "message": "I think you\u0027re right. How about ChromeStackDecoding?\nImplying that it uses Chrome\u0027s stack, but not Chrome\nitself?",
+      "parentUuid": "e973b6cf_6cdb1ed7",
+      "revId": "b9fbe6f03bd1e782e590933a0b16debe72300881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e82a4625_32300aae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-09T21:29:21Z",
+      "side": 1,
+      "message": "jchinlee@, hiroh@: what about ChromeStackDecoding?",
+      "revId": "b9fbe6f03bd1e782e590933a0b16debe72300881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
