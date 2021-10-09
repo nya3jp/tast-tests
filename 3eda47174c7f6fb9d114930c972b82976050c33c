@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9512ba_93995767",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T13:44:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0234cb4d_76348100",
+      "range": {
+        "startLine": 80,
+        "startChar": 40,
+        "endLine": 80,
+        "endChar": 43
+      },
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2084799d_52d8e006",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "574d6c67_76729ec6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T13:44:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2084799d_52d8e006",
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97048466_b9ccfa78",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-10-08T07:49:53Z",
       "side": 1,
       "message": "to wait for the DUT being unreachable",
+      "range": {
+        "startLine": 140,
+        "startChar": 19,
+        "endLine": 140,
+        "endChar": 39
+      },
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5f83c8_817709a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T13:44:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "97048466_b9ccfa78",
       "range": {
         "startLine": 140,
         "startChar": 19,
@@ -87,6 +153,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b501b93_8baeedcd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T13:44:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e447213f_55e4e730",
+      "range": {
+        "startLine": 145,
+        "startChar": 57,
+        "endLine": 145,
+        "endChar": 63
+      },
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29512993_5a265c23",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T13:44:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e447213f_55e4e730",
+      "range": {
+        "startLine": 145,
+        "startChar": 57,
+        "endLine": 145,
+        "endChar": 63
+      },
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afd318ff_61c29345",
@@ -100,6 +214,30 @@
       "writtenOn": "2021-10-08T07:49:53Z",
       "side": 1,
       "message": "eventRe\n\nOr you may make requiredEventSets of type [][]*regexp.Regexp and prepare in the beginning.",
+      "range": {
+        "startLine": 172,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49dfa545_4582b0db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T13:44:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "afd318ff_61c29345",
       "range": {
         "startLine": 172,
         "startChar": 4,
@@ -133,6 +271,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61fa4cda_aab807c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T13:44:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35dee566_8375319e",
+      "range": {
+        "startLine": 193,
+        "startChar": 37,
+        "endLine": 193,
+        "endChar": 55
+      },
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f4dbd71_45886a09",
@@ -146,6 +308,24 @@
       "writtenOn": "2021-10-08T07:49:53Z",
       "side": 1,
       "message": "Please comment the reason why it should retry once when it fails to wake up the DUT.",
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "322e2751_b9462fdc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-09T13:44:26Z",
+      "side": 1,
+      "message": "Context log \"Unable to wake up DUT. Retrying\" added in L196, to make sure DUT wake from S3 state before failing the test case.",
+      "parentUuid": "0f4dbd71_45886a09",
       "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
