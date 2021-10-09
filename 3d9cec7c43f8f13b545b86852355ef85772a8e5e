@@ -16,6 +16,115 @@
       "message": "Can you please review this CL?",
       "revId": "3d9cec7c43f8f13b545b86852355ef85772a8e5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3648f374_63a39155",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-10-09T00:54:25Z",
+      "side": 1,
+      "message": "Thanks! LGTM % final comments.",
+      "revId": "3d9cec7c43f8f13b545b86852355ef85772a8e5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36b9cf65_b6605d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-10-09T00:54:25Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 28,
+        "startChar": 66,
+        "endLine": 28,
+        "endChar": 67
+      },
+      "revId": "3d9cec7c43f8f13b545b86852355ef85772a8e5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaa6da5d_75c35683",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-10-09T00:54:25Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 38,
+        "startChar": 68,
+        "endLine": 38,
+        "endChar": 69
+      },
+      "revId": "3d9cec7c43f8f13b545b86852355ef85772a8e5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57f52e9a_94acefe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-10-09T00:54:25Z",
+      "side": 1,
+      "message": "Should this be s.Fatal()? It doesn\u0027t seem like you should continue the test if this fails. Also, it\u0027s better to handle errors consistently at this level. Same for CL:3161114 which also seems to use s.Error() in some places instead of s.Fatal().",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "3d9cec7c43f8f13b545b86852355ef85772a8e5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a78d33de_7613001f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-10-09T00:54:25Z",
+      "side": 1,
+      "message": "Same here and in the rest of the CL.",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "3d9cec7c43f8f13b545b86852355ef85772a8e5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
