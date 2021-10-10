@@ -50,6 +50,24 @@
       "message": "nit: you don\u0027t need to call Fatalf to pass err, you can call s.Fatal, remove the %q, and pass err to achieve the same thing.\n\ns.Fatal(\"Failed to do initial optin: \", err)\n\nThis applies here, and in the rest of the method.",
       "revId": "031d99eba4e90b8ebd4b2587fd960d5462251061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6454596f_dea53ed0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-10T00:37:54Z",
+      "side": 1,
+      "message": "Some more context here: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#log_error_fatal-vs_logf_errorf_fatalf",
+      "parentUuid": "7199defc_5eb8512b",
+      "revId": "031d99eba4e90b8ebd4b2587fd960d5462251061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
