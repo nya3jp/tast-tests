@@ -156,3 +156,8 @@ func VirtualTrackpad(ctx context.Context) (*TrackpadEventWriter, error) {
 		maxPressure:   axisMaxPressure,
 	}}, nil
 }
+
+// MaxPressure returns the max pressure for the touchpad.
+func (tew *TrackpadEventWriter) MaxPressure() int {
+	return tew.maxPressure
+}
