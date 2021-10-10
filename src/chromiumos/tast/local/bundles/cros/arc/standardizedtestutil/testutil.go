@@ -524,13 +524,14 @@ func MouseScroll(ctx context.Context, testParameters TestFuncParams, scrollDirec
 // Trackpad related constants. These values were derived experimentally and
 // should work on both physical, and virtual trackpads.
 const (
-	TrackpadMajorSize                             = 240
-	TrackpadMinorSize                             = 180
-	TrackpadClickPressure                         = 25
-	TrackpadGesturePressure                       = 10
-	TrackpadVerticalScrollAmountAsProportionOfPad = .2
-	TrackpadScrollDuration                        = 250 * time.Millisecond
-	TrackpadFingerSeparation                      = 350
+	TrackpadMajorSize                              = 240
+	TrackpadMinorSize                              = 180
+	TrackpadClickPressureAsProportionOfMaxPressure = .2
+	TrackpadClickDefaultPressure                   = 50
+	TrackpadGesturePressure                        = 10
+	TrackpadVerticalScrollAmountAsProportionOfPad  = .2
+	TrackpadScrollDuration                         = 250 * time.Millisecond
+	TrackpadFingerSeparation                       = 350
 )
 
 // TrackpadClickObject implements a click on the trackpad.
@@ -553,7 +554,15 @@ func TrackpadClickObject(ctx context.Context, testParameters TestFuncParams, sel
 		return errors.Wrap(err, "unable to set size")
 	}
 
-	if err := stw.SetPressure(TrackpadClickPressure); err != nil {
+	// The pressure should be based on a proportion of the max pressure. If it's less than 0,
+	// use the default value and report it.
+	pressureToUse := int32(float64(tew.MaxPressure()) * TrackpadClickPressureAsProportionOfMaxPressure)
+	if pressureToUse <= 0 {
+		testing.ContextLog(ctx, "Pressure is less than 0, setting to: ", TrackpadClickDefaultPressure)
+		pressureToUse = TrackpadClickDefaultPressure
+	}
+
+	if err := stw.SetPressure(pressureToUse); err != nil {
 		return errors.Wrap(err, "unable to set pressure")
 	}
 
