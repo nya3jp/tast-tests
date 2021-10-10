@@ -33,6 +33,23 @@
       "message": "kansho@ FYI, this Chrome command line flag based approach might make things easier.",
       "revId": "9ee2c21f3d5409ed48ac00b350e956fa816aca0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1b5450e_12732b21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-10T23:00:48Z",
+      "side": 1,
+      "message": "+2 for Tast Review",
+      "revId": "9ee2c21f3d5409ed48ac00b350e956fa816aca0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
