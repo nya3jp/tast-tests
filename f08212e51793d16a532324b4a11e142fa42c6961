@@ -16,6 +16,23 @@
       "message": "PTAL.",
       "revId": "f08212e51793d16a532324b4a11e142fa42c6961",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "774b4d09_8f32b4a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-11T01:56:04Z",
+      "side": 1,
+      "message": "Thanks! Change LGTM, but the build failure looks real.\n",
+      "revId": "f08212e51793d16a532324b4a11e142fa42c6961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
