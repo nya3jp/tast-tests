@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "753fa80b_5e997e53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-11T06:28:58Z",
+      "side": 1,
+      "message": "I modified verifyTLStruct in encode.go. \nMatthew, can I ask you to review again the diff?\n\nThanks in advance.",
+      "revId": "0201a18c2d806a564ff518a366a6cd9692c90545",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

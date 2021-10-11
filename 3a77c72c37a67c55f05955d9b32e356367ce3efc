@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1192c4e_6cfc6541",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_common.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-11T06:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a25d124a_c23dfb01",
+      "range": {
+        "startLine": 57,
+        "startChar": 37,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "3a77c72c37a67c55f05955d9b32e356367ce3efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48060839_dab14e8f",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-11T04:34:13Z",
       "side": 1,
       "message": "nit: braces on if statements",
+      "range": {
+        "startLine": 20,
+        "startChar": 28,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "3a77c72c37a67c55f05955d9b32e356367ce3efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ba96d5_5deb89af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_encode.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-11T06:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48060839_dab14e8f",
       "range": {
         "startLine": 20,
         "startChar": 28,
