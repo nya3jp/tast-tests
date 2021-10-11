@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "51615bf4_c558255c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-11T05:33:44Z",
+      "side": 1,
+      "message": "nit: tast run \u003cDUT\u003e arc.GhostWindow",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3bdb9f19_da3dd653",
@@ -31,6 +54,190 @@
       "writtenOn": "2021-10-11T04:02:14Z",
       "side": 1,
       "message": "LGTM",
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5957da2f_1cdddbd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-11T05:33:44Z",
+      "side": 1,
+      "message": "nit: no need to create a const var for this. Simply specify it in the test param: \ntesting.AddTest(\u0026testing.Test{\n    ...\n    TimeOut: 5 * time.Minute\n}\n\nAlso, it doesn\u0027t look good to use test-level timeout for individual functions (see belows).",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "911ee93b_9550a10a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-11T05:33:44Z",
+      "side": 1,
+      "message": "do you need a screenshot for this? if so, you can use faillog.DumpUITreeWithScreenshotOnError",
+      "range": {
+        "startLine": 94,
+        "startChar": 15,
+        "endLine": 94,
+        "endChar": 32
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e23bb03_d02dbd46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-11T05:33:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 110,
+        "startChar": 15,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d93487ce_d4be51a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-11T05:33:44Z",
+      "side": 1,
+      "message": "Can you suggest another reasonbale timeout here? to avoid using the test-level timeout. It would result in the test being run for 5 minutes when an error happens. If a shorter timeout can be specific, the test can terminate early to save lab resources.\n\nPls, you don\u0027t need to pass this as a param to this function while you can just speficify the timeout in the Polling part.",
+      "range": {
+        "startLine": 144,
+        "startChar": 42,
+        "endLine": 144,
+        "endChar": 53
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ab9fc22_8604abbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-11T05:33:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 173,
+        "startChar": 53,
+        "endLine": 173,
+        "endChar": 64
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e699231c_8460375b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-11T05:33:44Z",
+      "side": 1,
+      "message": "super-nit: \"Failed\"",
+      "range": {
+        "startLine": 183,
+        "startChar": 11,
+        "endLine": 183,
+        "endChar": 15
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bd6d1e8_03d02a84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-11T05:33:44Z",
+      "side": 1,
+      "message": "Consider saving time for clean-up tasks. A simple template:\n\ncleanupCtx :\u003d ctx\n// Reserve 10 seconds for clean-up tasks.\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n\n... //use ctx for functions/actions.\n\ndefer func(cleanupCtx)  //use cleanupCtx for defer functions.\n \nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 185,
+        "startChar": 16,
+        "endLine": 185,
+        "endChar": 19
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe57f578_ec902b34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-11T05:33:44Z",
+      "side": 1,
+      "message": "super-nit: \"Failed\"",
+      "range": {
+        "startLine": 198,
+        "startChar": 11,
+        "endLine": 198,
+        "endChar": 15
+      },
       "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
