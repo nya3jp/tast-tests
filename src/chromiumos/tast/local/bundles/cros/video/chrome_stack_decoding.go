@@ -68,6 +68,7 @@ var av110BitFiles = append(av110BitCommonFiles, av110BitFilmGrainFiles...)
 var h264FilesFromBugs = []string{
 	"test_vectors/h264/b_149068426_invalid_video_layout_mtk_8183_with_direct_videodecoder.h264",
 	"test_vectors/h264/b_172838252_pixelated_video_on_rk3399.h264",
+	"test_vectors/h264/b_174733646_video_with_out_of_order_frames_mtk_8173.h264",
 }
 
 func appendJSONFiles(videoFiles []string) []string {
