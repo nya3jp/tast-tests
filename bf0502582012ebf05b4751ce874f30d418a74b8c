@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9efca7ab_c2137a4b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder_vnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-11T03:23:07Z",
+      "side": 1,
+      "message": "This name is a bit confusing. Suggest rename as recordOnSuccess",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "bf0502582012ebf05b4751ce874f30d418a74b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdab62c2_9c71aa89",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder_vnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-11T03:23:07Z",
+      "side": 1,
+      "message": "It seems that only s.HasError() and s.OutDir() is needed here, pass them instead of s?",
+      "range": {
+        "startLine": 77,
+        "startChar": 41,
+        "endLine": 77,
+        "endChar": 55
+      },
+      "revId": "bf0502582012ebf05b4751ce874f30d418a74b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24a5320a_ee1df5f4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder_vnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-11T03:23:07Z",
+      "side": 1,
+      "message": "Either do not return the error in the example, or process it.",
+      "range": {
+        "startLine": 77,
+        "startChar": 107,
+        "endLine": 77,
+        "endChar": 112
+      },
+      "revId": "bf0502582012ebf05b4751ce874f30d418a74b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
