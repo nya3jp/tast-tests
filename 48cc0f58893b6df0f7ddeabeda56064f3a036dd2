@@ -16,6 +16,24 @@
       "message": "If you\u0027re removing a personal email, Please add another one to replace it.\n\nSee chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-registration: At least one personal email address of an active committer should be specified so that we can file bugs or ask for code reviews.",
       "revId": "48cc0f58893b6df0f7ddeabeda56064f3a036dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96fa6bb3_4e8eca6d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ap_supported_rates.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-10-11T17:25:07Z",
+      "side": 0,
+      "message": "We really need to get the docs updated somehow. But so far, we\u0027ve been living off an \"exception\":\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3131601/1/src/chromiumos/tast/local/bundles/cros/network/ethernet_8021x.go#34\nhttps://groups.google.com/a/chromium.org/g/tast-users/c/ERbAxYMhYEI/m/I-3Mu3w9BwAJ\n\nUnfortunately, nobody is doing the work that would make this a real policy change.",
+      "parentUuid": "077ed260_c2e2762d",
+      "revId": "48cc0f58893b6df0f7ddeabeda56064f3a036dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
