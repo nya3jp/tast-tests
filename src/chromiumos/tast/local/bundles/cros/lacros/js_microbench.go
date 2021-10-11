@@ -6,6 +6,9 @@ package lacros
 
 import (
 	"context"
+	"io/ioutil"
+	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -25,9 +28,25 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacros",
 		// Waiting for the stability can take longer time. So, we have a longer buffer.
-		Timeout: 4 * time.Minute,
+		Timeout: 6 * time.Minute,
 	})
 }
+
+// jsMicrobenchCode is the core JS code snipet to measure the JS performance
+// between ash-chrome and lacros-chrome. Shared between cdp-based testing and
+// HTML based testing.
+const jsMicrobenchCode = `
+  let elapsed, ignored;
+  eval(` + "`" + `
+    let start = performance.now();
+    let sum = 0;
+    for (let i = 0; i < 1000000000; i++) {
+      sum += i;
+    }
+    let end = performance.now();
+    elapsed = end - start;
+    ignored = sum;
+  ` + "`" + `);`
 
 func JSMicrobench(ctx context.Context, s *testing.State) {
 	f := s.FixtValue().(launcher.FixtValue)
@@ -37,6 +56,27 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set up lacros perf test: ", err)
 	}
 	defer cleanup(ctx)
+
+	// Prepare HTML data file.
+	dir, err := ioutil.TempDir("/home/chronos/user/Downloads", "")
+	if err != nil {
+		s.Fatal("Failed to create working directory: ", err)
+	}
+	defer func() {
+		if err := os.RemoveAll(dir); err != nil {
+			s.Logf("Failed to remove working dir at %q: %v", dir, err)
+		}
+	}()
+
+	if err := os.Chmod(dir, 0755); err != nil {
+		s.Fatal("Failed to set permission to the working directory: ", err)
+	}
+
+	htmlPath, err := createJSMicrobenchHTML(ctx, dir)
+	if err != nil {
+		s.Fatal("Failed to create micorbench html: ", err)
+	}
+	defer os.Remove(htmlPath)
 
 	pv := perf.NewValues()
 
@@ -67,6 +107,33 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 		}, elapsed.Seconds())
 	}
 
+	// Run JS benchmark against ash-chrome.
+	if elapsed, err := runJSMicrobenchFromHTML(ctx, htmlPath, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
+		return lacros.SetupCrosTestWithPage(ctx, f, url)
+	}); err != nil {
+		s.Error("Failed to run ash-chrome benchmark: ", err)
+	} else {
+		pv.Set(perf.Metric{
+			Name:      "jsmicrobench_html_ash",
+			Unit:      "seconds",
+			Direction: perf.SmallerIsBetter,
+		}, elapsed.Seconds())
+	}
+
+	// Run JS benchmark against lacros-chrome.
+	if elapsed, err := runJSMicrobenchFromHTML(ctx, htmlPath, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
+		conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, url)
+		return conn, cleanup, err
+	}); err != nil {
+		s.Error("Failed to run lacros-chrome benchrmark: ", err)
+	} else {
+		pv.Set(perf.Metric{
+			Name:      "jsmicrobench_html_lacros",
+			Unit:      "seconds",
+			Direction: perf.SmallerIsBetter,
+		}, elapsed.Seconds())
+	}
+
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
 	}
@@ -89,21 +156,64 @@ func runJSMicrobench(
 		// Ignored is the result of the calculation. Accept here to avoid opitmized out in JS code.
 		Ignored float64 `json:"ignored"`
 	}
-	if err := conn.Eval(ctx, `(() => {
-	  let elapsed, ignored;
-	  eval(`+"`"+`
-	    let start = performance.now();
-	    let sum = 0;
-	    for (let i = 0; i < 1000000000; i++) {
-	      sum += i;
-	    }
-	    let end = performance.now();
-	    elapsed = end - start;
-	    ignored = sum;
-	  `+"`"+`);
+	if err := conn.Eval(ctx, `(() => {`+jsMicrobenchCode+`
 	  return {"elapsed": elapsed, "ignored": ignored};
 	})()`, &result); err != nil {
 		return 0, errors.Wrap(err, "failed to run JS microbenchmark")
 	}
 	return time.Duration(result.Elapsed * float64(time.Millisecond)), nil
+}
+
+// runJSMicrobenchFromHTML runs the same microbenchmark as runJSMicrobench.
+// The difference is, instead of running the benchmark directly on CDP connection,
+// this test loads the HTML page with the same microbenchmark code.
+func runJSMicrobenchFromHTML(
+	ctx context.Context,
+	path string,
+	setup func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error)) (time.Duration, error) {
+	conn, cleanup, err := setup(ctx, chrome.BlankURL)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to open a new tab")
+	}
+	defer cleanup(ctx)
+
+	// Navigate the blankpage to the HTML file to be loaded.
+	if err := conn.Navigate(ctx, "file://"+path); err != nil {
+		return 0, errors.Wrap(err, "failed to navigate a blankpage to the path")
+	}
+
+	// In order not to interrupt running JS, wait for 30 seconds.
+	// This should be enough long to obtain the data.
+	// Avoid polling to avoid impact on measurement.
+	if err := testing.Sleep(ctx, 30*time.Second); err != nil {
+		return 0, errors.Wrap(err, "failed to wait for 30 seconds")
+	}
+
+	var elapsed float64
+	if err := conn.Eval(ctx, "elapsed", &elapsed); err != nil {
+		return 0, errors.Wrap(err, "failed to run JS microbenchmark")
+	}
+	return time.Duration(elapsed * float64(time.Millisecond)), nil
+}
+
+// createJSMicrobenchHTML creates a temporary file at dir to be loaded for
+// runJSMicrobenchFromHTML.
+// Callers have the responsibility to remove the file after its use.
+func createJSMicrobenchHTML(ctx context.Context, dir string) (string, error) {
+	const content = `
+<p id="p">Running...</p>
+<script>` + jsMicrobenchCode + `
+
+let paragraph = document.getElementById("p");
+paragraph.appendChild(document.createTextNode(elapsed));
+
+let result = "\nignore me " + ignored % 1000;
+paragraph.appendChild(document.createTextNode(result))
+</script>`
+
+	path := filepath.Join(dir, "microbench.html")
+	if err := ioutil.WriteFile(path, []byte(content), 0666); err != nil {
+		return "", errors.Wrap(err, "failed to create microbench.html")
+	}
+	return path, nil
 }
