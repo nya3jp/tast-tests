@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b86bb8c_4f1512ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "181fbcdc_2eb4336b",
+      "range": {
+        "startLine": 11,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 29
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4af9ad2_afa17c97",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-10-08T18:33:56Z",
       "side": 1,
       "message": "nit: s/gl/GL/",
+      "range": {
+        "startLine": 13,
+        "startChar": 25,
+        "endLine": 13,
+        "endChar": 27
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62f2e06b_4edf41e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4af9ad2_afa17c97",
       "range": {
         "startLine": 13,
         "startChar": 25,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "147efa91_29bdbcce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad111655_353cd2c2",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d2f03ec_5205dcdb",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-10-08T18:33:56Z",
       "side": 1,
       "message": "nit: I don\u0027t think we use this style of comments in Chromium/Chromium OS code. I would use multiple lines of //.",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 7
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df5a71d6_8b0d6bea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d2f03ec_5205dcdb",
       "range": {
         "startLine": 16,
         "startChar": 4,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1eb8ae_3237ffc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4be3ad49_0e218988",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3561d13_4c51e413",
@@ -163,6 +283,30 @@
       "writtenOn": "2021-10-08T18:33:56Z",
       "side": 1,
       "message": "nit: Is this supposed to be 150 (the remaining width)?",
+      "range": {
+        "startLine": 24,
+        "startChar": 33,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bed92fa8_d00728ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "No, this logic is copied from https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/web_tests/external/wpt/html/canvas/element/manual/imagebitmap/imageBitmapRendering-transferFromImageBitmap-flipped.html. In practice, it doesn\u0027t make any difference, since it extends beyond the bounds of the canvas, but I\u0027m guessing the original author thought it would better help to catch certain regressions?",
+      "parentUuid": "f3561d13_4c51e413",
       "range": {
         "startLine": 24,
         "startChar": 33,
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81e1c090_3b810888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Ditto (see above)",
+      "parentUuid": "a017e087_6a27b1be",
+      "range": {
+        "startLine": 26,
+        "startChar": 38,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38fda1b2_efa4a8dd",
@@ -209,6 +377,30 @@
       "writtenOn": "2021-10-08T18:33:56Z",
       "side": 1,
       "message": "nit: s/gl/GL/",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0c57137_422477b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38fda1b2_efa4a8dd",
       "range": {
         "startLine": 33,
         "startChar": 20,
@@ -242,6 +434,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc72054_0dcaca95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "This was necessary to make toDataUrl work, but I\u0027m not using that anymore. Removed.",
+      "parentUuid": "134627f4_71dfeb3a",
+      "range": {
+        "startLine": 34,
+        "startChar": 53,
+        "endLine": 34,
+        "endChar": 80
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0630d70c_64d6978d",
@@ -255,6 +471,30 @@
       "writtenOn": "2021-10-08T18:33:56Z",
       "side": 1,
       "message": "nit: Is this supposed to be 150 (the remaining width)?",
+      "range": {
+        "startLine": 39,
+        "startChar": 34,
+        "endLine": 39,
+        "endChar": 37
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d2d439_de844756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Ditto (see above)",
+      "parentUuid": "0630d70c_64d6978d",
       "range": {
         "startLine": 39,
         "startChar": 34,
@@ -288,6 +528,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "366a9ff6_42e41a8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df32436b_86e8b656",
+      "range": {
+        "startLine": 61,
+        "startChar": 43,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ae58df4_d69c54b9",
@@ -311,6 +575,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ca0bc4a_f2000d36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ae58df4_d69c54b9",
+      "range": {
+        "startLine": 82,
+        "startChar": 26,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee30820e_c9ab9cf2",
@@ -324,6 +612,30 @@
       "writtenOn": "2021-10-08T18:33:56Z",
       "side": 1,
       "message": "I believe you need:\n\n  HardwareDeps: hwdep.D(hwdep.InternalDisplay())\n\nYou can try without it, but I think the screenshot command doesn\u0027t work if there\u0027s no screen connected to the device (like with Chromeboxes).",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c2f5d6_a81f3ab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee30820e_c9ab9cf2",
       "range": {
         "startLine": 44,
         "startChar": 0,
@@ -359,6 +671,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30eba1f5_f0b7da94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Could you elaborate on this? What would cause a canvas to be promoted to an overlay? Is there an argument for leaving as-is so that we can detect if the overlay path is broken?",
+      "parentUuid": "b80e7f9d_f5bf4d1c",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31ddfbd5_a8559a5f",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
         "patchSetId": 7
@@ -370,6 +706,24 @@
       "writtenOn": "2021-10-08T18:33:56Z",
       "side": 1,
       "message": "Add\n\n  defer tconn.Close()",
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2780d2a8_86a7ecdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31ddfbd5_a8559a5f",
       "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -391,6 +745,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aae7f29_4190ef90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43a8bc60_37b49d0b",
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e53dcd19_2a50dd83",
@@ -404,6 +776,30 @@
       "writtenOn": "2021-10-08T18:33:56Z",
       "side": 1,
       "message": "Do\n\n  defer f.Close()\n  \nAfter ln. 108 instead.",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 3
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "018e377c_2e8a8a4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e53dcd19_2a50dd83",
       "range": {
         "startLine": 113,
         "startChar": 2,
@@ -437,6 +833,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9a2ac9f_f8d6be10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Done (with a version of method 2).",
+      "parentUuid": "02198762_694f36df",
+      "range": {
+        "startLine": 134,
+        "startChar": 32,
+        "endLine": 134,
+        "endChar": 42
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88fa7864_6f8ea91a",
@@ -450,6 +870,30 @@
       "writtenOn": "2021-10-08T18:33:56Z",
       "side": 1,
       "message": "In video.Contents, I have this just because I\u0027m interested in tracking the difference between expected and actual as a performance value for data analysis. You\u0027re probably not interested in that (you likely just want a pass/fail result).",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 20
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3c4e8f_35f3f19d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-11T20:27:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88fa7864_6f8ea91a",
       "range": {
         "startLine": 148,
         "startChar": 0,
