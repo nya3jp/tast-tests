@@ -68,6 +68,187 @@
       "parentUuid": "7199defc_5eb8512b",
       "revId": "031d99eba4e90b8ebd4b2587fd960d5462251061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f128315_25bf1200",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T03:24:33Z",
+      "side": 1,
+      "message": "\u003e \"acutally\" is a possible misspelling of \"actually\".\n\nPlease fix.",
+      "parentUuid": "55655193_17270168",
+      "range": {
+        "startLine": 73,
+        "startChar": 87,
+        "endLine": 73,
+        "endChar": 95
+      },
+      "revId": "031d99eba4e90b8ebd4b2587fd960d5462251061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c8b7a4c_c03f7e7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T03:24:33Z",
+      "side": 1,
+      "message": "\u003e \"acutally\" is a possible misspelling of \"actually\".\n\nPlease fix.",
+      "parentUuid": "2d5f12e0_a53b8101",
+      "range": {
+        "startLine": 75,
+        "startChar": 19,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "031d99eba4e90b8ebd4b2587fd960d5462251061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e1b678_06ded296",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T03:24:33Z",
+      "side": 1,
+      "message": "nit/style\n\nopts :\u003d []chrome.Option{\n   chrome.ARCSupported(),\n   ...,\n   gaia,\n}",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "031d99eba4e90b8ebd4b2587fd960d5462251061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27e68ce0_33bfc42a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T03:24:33Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 121,
+        "startChar": 9,
+        "endLine": 121,
+        "endChar": 10
+      },
+      "revId": "031d99eba4e90b8ebd4b2587fd960d5462251061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee6e198_41c2a0c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T03:24:33Z",
+      "side": 1,
+      "message": ":\u003d",
+      "range": {
+        "startLine": 127,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 9
+      },
+      "revId": "031d99eba4e90b8ebd4b2587fd960d5462251061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1138daa_092e0e5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T03:24:33Z",
+      "side": 1,
+      "message": "this will truncate the fractional part.",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 29
+      },
+      "revId": "031d99eba4e90b8ebd4b2587fd960d5462251061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be66c06d_b64b6e5f",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T03:24:33Z",
+      "side": 1,
+      "message": "This looks too complicated. How about,\n\nuse GAIALoginPool for the first launch in your test.\nThen, keep Creds from the returned Chrome (can be taken by Creds() method).\nThen, keep using it in the following code with GAIALogin() API.",
+      "revId": "031d99eba4e90b8ebd4b2587fd960d5462251061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "295d25d6_2c8659fd",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T03:24:33Z",
+      "side": 1,
+      "message": "\u003e \"multple\" is a possible misspelling of \"multiple\".\n\nPlease fix.",
+      "parentUuid": "53658ea7_cd6b1e6d",
+      "range": {
+        "startLine": 124,
+        "startChar": 59,
+        "endLine": 124,
+        "endChar": 66
+      },
+      "revId": "031d99eba4e90b8ebd4b2587fd960d5462251061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
