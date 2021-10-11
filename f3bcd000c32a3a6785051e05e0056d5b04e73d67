@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "363a46d9_4aa479ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-10-11T22:14:33Z",
+      "side": 1,
+      "message": "Decided may as well add a check for rejected update too soon.",
+      "revId": "f3bcd000c32a3a6785051e05e0056d5b04e73d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
