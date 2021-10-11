@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1b1f231_db28c20c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-11T23:31:22Z",
+      "side": 1,
+      "message": "Code wise looks fine. I\u0027d make it a little clearer for people with no context though. E.g what is: seed, variations, what it can control, etc ",
+      "revId": "87dad39251f96ed602efd4b1e3b7d464d50a77f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f7fbbe_fbea5553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-11T23:31:22Z",
+      "side": 1,
+      "message": "does it not need finch in the name?",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "87dad39251f96ed602efd4b1e3b7d464d50a77f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8eb7563_8409e61c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-11T23:31:22Z",
+      "side": 1,
+      "message": "Can you make it clearer what is in seed and what kind of things it can control in Chrome",
+      "range": {
+        "startLine": 24,
+        "startChar": 63,
+        "endLine": 24,
+        "endChar": 67
+      },
+      "revId": "87dad39251f96ed602efd4b1e3b7d464d50a77f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9288b47b_9b114fbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-11T23:31:22Z",
+      "side": 1,
+      "message": "Is there nobody on the chrome team that asked for this test?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "87dad39251f96ed602efd4b1e3b7d464d50a77f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16250e80_77568543",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-11T23:31:22Z",
+      "side": 1,
+      "message": "add this to the desc in the test definition",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 140
+      },
+      "revId": "87dad39251f96ed602efd4b1e3b7d464d50a77f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
