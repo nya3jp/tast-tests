@@ -16,6 +16,23 @@
       "message": "Hi all,\n\nPTAL :) \n\nVictor, are you OK to be owner of wilco related files?\n\nThanks!",
       "revId": "f39f76172752e08c15951e05f3342fcbe9845917",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c8c6ec0_835f8804",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-11T11:48:11Z",
+      "side": 1,
+      "message": "I\u0027d wait until crbug.com/1250472 is resolved.",
+      "revId": "f39f76172752e08c15951e05f3342fcbe9845917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
