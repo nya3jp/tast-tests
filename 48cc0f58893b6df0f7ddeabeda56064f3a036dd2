@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "077ed260_c2e2762d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ap_supported_rates.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-11T00:09:02Z",
+      "side": 0,
+      "message": "If you\u0027re removing a personal email, Please add another one to replace it.\n\nSee chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-registration: At least one personal email address of an active committer should be specified so that we can file bugs or ask for code reviews.",
+      "revId": "48cc0f58893b6df0f7ddeabeda56064f3a036dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
