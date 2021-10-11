@@ -84,7 +84,7 @@ func ResizeInstallation(ctx context.Context, s *testing.State) {
 		}
 		defer kb.Close()
 
-		crostini.RunCrostiniPostTest(cleanupCtx, crostini.PreData{Chrome: cr, TestAPIConn: tconn, Container: cont, Keyboard: kb})
+		crostini.RunCrostiniPostTest(cleanupCtx, crostini.PreData{Chrome: cr, TestAPIConn: tconn, Container: cont, Keyboard: kb, Post: &crostini.PostTestData{}})
 
 		// Unmount the component.
 		vm.UnmountComponent(cleanupCtx)

@@ -106,7 +106,7 @@ func CheckUsers(ctx context.Context, s *testing.State) {
 
 	// Cleanup.
 	defer func() {
-		crostini.RunCrostiniPostTest(cleanupCtx, crostini.PreData{Chrome: cr, TestAPIConn: tconn, Container: nil, Keyboard: kb})
+		crostini.RunCrostiniPostTest(cleanupCtx, crostini.PreData{Chrome: cr, TestAPIConn: tconn, Container: nil, Keyboard: kb, Post: &crostini.PostTestData{}})
 
 		// Open the Linux settings.
 		st, err := settings.OpenLinuxSettings(cleanupCtx, tconn, cr)

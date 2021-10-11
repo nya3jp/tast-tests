@@ -98,7 +98,7 @@ func CheckValidUsers(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
 	defer cancel()
-	defer crostini.RunCrostiniPostTest(cleanupCtx, crostini.PreData{Chrome: cr, TestAPIConn: tconn, Container: nil, Keyboard: kb})
+	defer crostini.RunCrostiniPostTest(cleanupCtx, crostini.PreData{Chrome: cr, TestAPIConn: tconn, Container: nil, Keyboard: kb, Post: &crostini.PostTestData{}})
 
 	for k, users := range validUsersMap {
 		testName := fmt.Sprintf("test_%s", k)
