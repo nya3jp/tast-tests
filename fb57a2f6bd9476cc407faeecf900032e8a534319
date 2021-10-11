@@ -33,6 +33,23 @@
       "message": "LGTM. Thanks!",
       "revId": "fb57a2f6bd9476cc407faeecf900032e8a534319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "852b2447_11bad272",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-11T13:06:01Z",
+      "side": 1,
+      "message": "Hi Victor,\n\nWe are missing CR+2, can you please take a look?\n\nThanks!",
+      "revId": "fb57a2f6bd9476cc407faeecf900032e8a534319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
