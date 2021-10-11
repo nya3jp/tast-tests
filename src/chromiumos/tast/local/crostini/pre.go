@@ -208,7 +208,7 @@ type PreData struct {
 	Container   *vm.Container
 	Keyboard    *input.KeyboardEventWriter
 
-	post *postTestData
+	Post *PostTestData
 }
 
 // StartedByDlcBuster ensures that a VM running buster has
@@ -290,8 +290,8 @@ var startedByDlcBusterLargeContainerPre = &preImpl{
 	debianVersion: vm.DebianBuster,
 }
 
-// Data for post test tasks in post.go that should be persistent across tests.
-type postTestData struct {
+// PostTestData contains data for post test tasks in post.go that should be persistent across tests.
+type PostTestData struct {
 	// Persistent reader for VM logs.
 	vmLogReader *vm.LogReader
 }
@@ -309,7 +309,7 @@ type preImpl struct {
 	startedOK     bool
 	loginType     loginType
 
-	post *postTestData
+	post *PostTestData
 }
 
 // Interface methods for a testing.Precondition.
@@ -343,7 +343,7 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 	}
 
-	p.post = &postTestData{}
+	p.post = &PostTestData{}
 
 	// If initialization fails, this defer is used to clean-up the partially-initialized pre
 	// and copies over lxc + container boot logs.

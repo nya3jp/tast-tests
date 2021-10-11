@@ -69,7 +69,7 @@ func RunCrostiniPostTest(ctx context.Context, p PreData) {
 
 	// VM logs are stored on the host, so we don't need the VM to
 	// be running at all to get them.
-	trySaveVMLogs(ctx, p.post, dir, p.Chrome.NormalizedUser())
+	trySaveVMLogs(ctx, p.Post, dir, p.Chrome.NormalizedUser())
 }
 
 // When we run trySaveContainerLogs we only want to capture logs since we last
@@ -117,7 +117,7 @@ func trySaveContainerLogs(ctx context.Context, dir string, cont *vm.Container) {
 
 // trySaveVMLogs writes logs since the last call to the
 // current test's output folder.
-func trySaveVMLogs(ctx context.Context, post *postTestData, dir, user string) {
+func trySaveVMLogs(ctx context.Context, post *PostTestData, dir, user string) {
 	if post.vmLogReader == nil {
 		logReader, err := vm.NewLogReaderForVM(ctx, vm.DefaultVMName, user)
 		if err != nil {
