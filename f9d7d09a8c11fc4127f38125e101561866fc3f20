@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89e7e6e9_778bccc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-11T00:24:19Z",
+      "side": 1,
+      "message": "Which is the cl to implement the funcs?",
+      "revId": "f9d7d09a8c11fc4127f38125e101561866fc3f20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34e99f8b_9dfb39e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/microsoft_office_web_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-11T00:24:19Z",
+      "side": 1,
+      "message": "Usually the optional parameter is listed in the end?",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "f9d7d09a8c11fc4127f38125e101561866fc3f20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e0345f0_4e9687d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/microsoft_office_web_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-11T00:24:19Z",
+      "side": 1,
+      "message": "If tier is not cuj.Premium, expectedText, testFileLocation are not initialized?",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 23
+      },
+      "revId": "f9d7d09a8c11fc4127f38125e101561866fc3f20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
