@@ -98,6 +98,15 @@ func init() {
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Timeout:           25 * time.Minute,
+		}, {
+			Name: "vm_stress_o_direct",
+			Val: bootConfig{
+				numTrials: 10,
+				oDirect:   true,
+			},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Timeout:           25 * time.Minute,
 		}},
 	})
 }
