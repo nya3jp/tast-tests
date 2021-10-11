@@ -87,6 +87,30 @@
       },
       "revId": "f7874c79458e20f702011ec771e285c9823b40c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00fa313a_2955f131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-11T00:35:43Z",
+      "side": 1,
+      "message": "Thanks for the update.\n\nSorry for not making it clearer. With subtest, I meant something like this: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
+      "parentUuid": "9ebfb220_f12e4399",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 29
+      },
+      "revId": "f7874c79458e20f702011ec771e285c9823b40c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

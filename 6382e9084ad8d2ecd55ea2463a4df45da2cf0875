@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db80470b_ce114e2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-11T00:35:43Z",
+      "side": 1,
+      "message": "Please declare this one and filesTitlePrefix in filesapp.go",
+      "range": {
+        "startLine": 40,
+        "startChar": 21,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "6382e9084ad8d2ecd55ea2463a4df45da2cf0875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3389211f_a4915960",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-11T00:35:43Z",
+      "side": 1,
+      "message": "This has been declared in filesapp.go",
+      "range": {
+        "startLine": 41,
+        "startChar": 21,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "6382e9084ad8d2ecd55ea2463a4df45da2cf0875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8991b3_06ffd69a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-11T00:35:43Z",
+      "side": 1,
+      "message": "Could WaitUntilFileGone meet the same requirement?",
+      "range": {
+        "startLine": 160,
+        "startChar": 3,
+        "endLine": 160,
+        "endChar": 11
+      },
+      "revId": "6382e9084ad8d2ecd55ea2463a4df45da2cf0875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
