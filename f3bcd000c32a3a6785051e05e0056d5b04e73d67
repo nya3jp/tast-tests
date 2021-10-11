@@ -33,6 +33,29 @@
       "message": "You\u0027ll also need approval from a code owner (jbettis@ is familiar with fw tests) until such time that I add myself to an owners file.",
       "revId": "f3bcd000c32a3a6785051e05e0056d5b04e73d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1313b62a_c9d2157f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-11T22:27:42Z",
+      "side": 1,
+      "message": "Here and elsewhere. Log messages, such as s.Fatal, s.Error, and s.Log are normally capitalized. I would probably not capitalize the ones that are names of tools, like lsusb. But you could say \"Failed to run lsusb: \"",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 9
+      },
+      "revId": "f3bcd000c32a3a6785051e05e0056d5b04e73d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
