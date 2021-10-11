@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "846d5e41_208dad9a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-11T20:48:00Z",
+      "side": 1,
+      "message": "In Cr50 lab the setup is such that each host running tests has three chrombooks connected to it, each with its own Cr50, all with the same USB vid:did. In that lab the addressing is done be the device serial number exposed in lsusb -v output as iSerial attribute value.",
+      "parentUuid": "8fa49613_9f24ac33",
+      "revId": "67565e5df2c468ba8b72c12d2b303d3c00c0a8b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37a69837_790dfeb3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
         "patchSetId": 1
