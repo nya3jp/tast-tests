@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21164c99_d797ab09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-11T22:13:41Z",
+      "side": 1,
+      "message": "LGTM from Tast perspective. Please wait for jorgelo@ LGTM as well!",
+      "revId": "1c67f41893d387f731b4e11badd4d20e7b310d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
