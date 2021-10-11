@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cd474fe_3ac29abb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_common.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-11T03:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d06065fa_c386c0c0",
+      "range": {
+        "startLine": 57,
+        "startChar": 24,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "27832910fe80756994c727d281ba0ed9300bceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a99d195c_32aafbf3",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-10-08T16:30:00Z",
       "side": 1,
       "message": "nit: Same here, prefer \u003d\u003d\u003d .",
+      "range": {
+        "startLine": 20,
+        "startChar": 23,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "27832910fe80756994c727d281ba0ed9300bceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "373b0961_19efc869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_encode.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-11T03:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a99d195c_32aafbf3",
       "range": {
         "startLine": 20,
         "startChar": 23,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dedbe29_2c2fff07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-11T03:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f2163b9_b9a1be28",
+      "range": {
+        "startLine": 42,
+        "startChar": 20,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "27832910fe80756994c727d281ba0ed9300bceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "180014f4_3db44de1",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9555c7a8_d576e902",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-11T03:16:51Z",
+      "side": 1,
+      "message": "Ok. I use config.numFrames. Note that it is checked in JS that len(bitstreams) is the same as config.numFrames.",
+      "parentUuid": "180014f4_3db44de1",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 3
+      },
+      "revId": "27832910fe80756994c727d281ba0ed9300bceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6ef3d27_4569535b",
@@ -140,6 +236,24 @@
       "writtenOn": "2021-10-08T16:28:47Z",
       "side": 1,
       "message": "nit: A random thought: looking at [1], in L1T2 there should be as\nmany frames in the first temporal layer as in the zero-th (perhaps\nplus-minus one). Should we verify that?\n\nSimilarly, in L1T3, the second temporal layer should have as \nmany frames as the first and the zero-th temporal layers combined\n(and the first temporal layer should have as many as the zero-th\none, just like L1T2). \n\n\n[1] https://www.w3.org/TR/webrtc-svc/#L1T2*",
+      "revId": "27832910fe80756994c727d281ba0ed9300bceb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05a3feff_19c22519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-11T03:16:51Z",
+      "side": 1,
+      "message": "Good idea! Done.",
+      "parentUuid": "e6ef3d27_4569535b",
       "revId": "27832910fe80756994c727d281ba0ed9300bceb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
