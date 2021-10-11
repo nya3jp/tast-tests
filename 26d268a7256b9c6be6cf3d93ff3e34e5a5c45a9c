@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e34f38b3_8fcf7116",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-10-11T21:10:22Z",
+      "side": 1,
+      "message": "Hey Jacek, sorry for the constant plan changes here, but I think we\u0027d like to go ahead with iperf instead of netperf for this test to remain consistent with autotest (and maybe just deprecate netperf altogether in tast). In addition, Harpreet mentioned that it should be fine to schedule attenuator-based tests based on the current run time of the tests (but that may be a little longer for the attenuator tests).\n\nAgain sorry for all the directional changes and thank for your patience, I realize that this change has been sitting here for a while.",
+      "revId": "26d268a7256b9c6be6cf3d93ff3e34e5a5c45a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
