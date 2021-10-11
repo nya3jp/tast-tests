@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/video/playback"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
 )
@@ -807,11 +808,7 @@ func PlaybackPerf(ctx context.Context, s *testing.State) {
 	}
 	defer lacros.CloseLacrosChrome(ctx, l)
 
-	f := s.FixtValue()
-	cr, err := lacros.GetChrome(ctx, f)
-	if err != nil {
-		s.Fatal("Failed to reconnect to Chrome: ", err)
-	}
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	playback.RunTest(ctx, s, cs, cr, testOpt.fileName, testOpt.decoderType)
 }
