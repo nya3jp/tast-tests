@@ -15,10 +15,10 @@ import (
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/cuj/volume"
-	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
+	"chromiumos/tast/local/videocuj"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
