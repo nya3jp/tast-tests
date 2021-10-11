@@ -33,6 +33,24 @@
       "message": "We should probably factor this out and name it as we\u0027re using it in a few places here",
       "revId": "7adca03c8cf82d6b23ab2a29932d30c617045c10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "897552a6_6fc6fa7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/telemetry_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-11T10:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31b7351a_48a885be",
+      "revId": "7adca03c8cf82d6b23ab2a29932d30c617045c10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
