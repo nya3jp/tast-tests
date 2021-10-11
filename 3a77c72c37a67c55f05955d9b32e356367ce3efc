@@ -16,6 +16,52 @@
       "message": "I noticed I said PreferSoftware to *hw_l1* tests. Fixed in the latest patchset.",
       "revId": "3a77c72c37a67c55f05955d9b32e356367ce3efc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a25d124a_c23dfb01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_common.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-10-11T04:34:13Z",
+      "side": 1,
+      "message": "nit: braces for the if statement",
+      "range": {
+        "startLine": 57,
+        "startChar": 37,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "3a77c72c37a67c55f05955d9b32e356367ce3efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48060839_dab14e8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_encode.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-10-11T04:34:13Z",
+      "side": 1,
+      "message": "nit: braces on if statements",
+      "range": {
+        "startLine": 20,
+        "startChar": 28,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "3a77c72c37a67c55f05955d9b32e356367ce3efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
