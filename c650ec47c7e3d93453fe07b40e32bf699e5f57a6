@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62bfdf1d_2c3be410",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-11T17:20:51Z",
+      "side": 1,
+      "message": "tast shadow review complete - just a couple quick nits.",
+      "revId": "c650ec47c7e3d93453fe07b40e32bf699e5f57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aecd64c9_5459ad06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-11T17:20:51Z",
+      "side": 1,
+      "message": "nit: a named return result could help self-document the code. (createdFilePath string, err error)",
+      "revId": "c650ec47c7e3d93453fe07b40e32bf699e5f57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3556b722_7b781e8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-11T17:20:51Z",
+      "side": 1,
+      "message": "nit: There\u0027s a lot going on in this line. Maybe break up the filename construction and use Sprintf for the whole thing to make it a little easier to read? i.e.\n\nnewYUVFileName :\u003d fmt.Sprintf(\"%vL1T%d\", filepath.Base(yuvFilePath), tid+1)",
+      "revId": "c650ec47c7e3d93453fe07b40e32bf699e5f57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6108d943_e2e19783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-11T17:20:51Z",
+      "side": 1,
+      "message": "nit: missing \u0027.\u0027 to end the sentence.",
+      "revId": "c650ec47c7e3d93453fe07b40e32bf699e5f57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
