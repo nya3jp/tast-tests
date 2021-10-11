@@ -34,6 +34,24 @@
       "parentUuid": "5c10013a_4f575e8e",
       "revId": "f6b6cd2b5bafb922eb3bebcd47b6d105507a6e64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "017e96a9_7a1e067f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/dep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T13:52:32Z",
+      "side": 1,
+      "message": "I\u0027m still a bit confused.\n\ntelemetryextension.Compliance.target_models runs on such devices, indeed, but telemetryextension.Compliance.not_target_models runs on the devices which is not listed still.\n\nDo you want to disable the tests on those devices? If so, could you update this CL?\nOr, if you need to keep them run, could you clarify more details?",
+      "parentUuid": "f4ccccf8_f7a2f9e4",
+      "revId": "f6b6cd2b5bafb922eb3bebcd47b6d105507a6e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
