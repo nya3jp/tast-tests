@@ -180,6 +180,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76379a5c_ce1b02aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-11T03:33:46Z",
+      "side": 1,
+      "message": "It is weird if the device is not present on the page. IIUC, your point is like 5 input / output devices on the page, but quicksettings page can only show 3 of them.\n\nI could not find any other places to change audio device. So if do face this problem, it should be a bug. Can you provide an example test result of this?",
+      "parentUuid": "54951067_17111ae3",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abf46185_705fc650",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
         "patchSetId": 2
