@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "874042bc_39d8ac54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/bitstream.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T23:32:19Z",
+      "side": 1,
+      "message": "could you document what\u0027s the return value?\nAlso, what to be done by callers for the file? I think it needs to be (re)moved?",
+      "revId": "0933ef70de16b8fd3024a591c63e1af66f9b7702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "848bc756_b8d89956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T23:32:19Z",
+      "side": 1,
+      "message": "do you need to continue here?",
+      "revId": "0933ef70de16b8fd3024a591c63e1af66f9b7702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa404003_7112d552",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T23:32:19Z",
+      "side": 1,
+      "message": "should this be covered by io.EOF above?",
+      "range": {
+        "startLine": 398,
+        "startChar": 12,
+        "endLine": 398,
+        "endChar": 25
+      },
+      "revId": "0933ef70de16b8fd3024a591c63e1af66f9b7702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "924d844a_9e5b1fe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T23:32:19Z",
+      "side": 1,
+      "message": "nit: redundant.",
+      "range": {
+        "startLine": 409,
+        "startChar": 4,
+        "endLine": 409,
+        "endChar": 8
+      },
+      "revId": "0933ef70de16b8fd3024a591c63e1af66f9b7702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -20,6 +20,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a4f31be_cd0a463e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T23:32:19Z",
+      "side": 1,
+      "message": "nit: go often drops getter-ish prefix, such as get/is/has.\nMaybe tlEncoding is enough.",
+      "revId": "c650ec47c7e3d93453fe07b40e32bf699e5f57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54065ab8_ac2f1922",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T23:32:19Z",
+      "side": 1,
+      "message": "nit: psnrStr \u003d fmt.Sprintf(\"%s.L1T%d\", psnrStr, tid+1)\n\nto avoid formatting twice.\n\nNice to comment where the offset \"+1\" comes from.",
+      "revId": "c650ec47c7e3d93453fe07b40e32bf699e5f57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aecd64c9_5459ad06",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
         "patchSetId": 5
@@ -31,6 +65,23 @@
       "writtenOn": "2021-10-11T17:20:51Z",
       "side": 1,
       "message": "nit: a named return result could help self-document the code. (createdFilePath string, err error)",
+      "revId": "c650ec47c7e3d93453fe07b40e32bf699e5f57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd88e62f_0c1bc3cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T23:32:19Z",
+      "side": 1,
+      "message": "Is this really needed?\nI think FD just after the opening should points to the beginning?",
       "revId": "c650ec47c7e3d93453fe07b40e32bf699e5f57a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -65,6 +116,23 @@
       "writtenOn": "2021-10-11T17:20:51Z",
       "side": 1,
       "message": "nit: missing \u0027.\u0027 to end the sentence.",
+      "revId": "c650ec47c7e3d93453fe07b40e32bf699e5f57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08841419_46a97973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T23:32:19Z",
+      "side": 1,
+      "message": "Do you need to write another plane even at EOF?",
       "revId": "c650ec47c7e3d93453fe07b40e32bf699e5f57a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
