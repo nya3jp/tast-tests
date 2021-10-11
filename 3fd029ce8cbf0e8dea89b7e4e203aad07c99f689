@@ -220,6 +220,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b585c8a0_e99ce21d",
+        "filename": "src/chromiumos/tast/local/graphics/glbench/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1363554
+      },
+      "writtenOn": "2021-10-11T23:01:30Z",
+      "side": 1,
+      "message": "oh, I guess I should have noted this earlier, but this debugfs path is drm/msm specific, I\u0027m not sure if other drivers have an equivalent thing.  So I guess failing to _get_ the hangcheck timer should defn not be an error.  But failure to set the hangcheck timer once you\u0027ve already read out the original value would be an abnormal situation.",
+      "parentUuid": "d7c7676d_5474320d",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "3fd029ce8cbf0e8dea89b7e4e203aad07c99f689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5647d04e_cad07cc1",
         "filename": "src/chromiumos/tast/local/graphics/glbench/glbench.go",
         "patchSetId": 1
