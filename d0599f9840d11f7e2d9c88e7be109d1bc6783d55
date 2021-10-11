@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b76ab0fe_35c9f680",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-10-11T10:55:03Z",
+      "side": 1,
+      "message": "May you leave a TODO?",
+      "parentUuid": "930ca6bd_69abd4d3",
+      "range": {
+        "startLine": 37,
+        "startChar": 71,
+        "endLine": 37,
+        "endChar": 78
+      },
+      "revId": "d0599f9840d11f7e2d9c88e7be109d1bc6783d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e980935_131b10ca",
