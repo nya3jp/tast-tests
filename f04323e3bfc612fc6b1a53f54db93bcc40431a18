@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a1a0379_2bbc205e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-11T21:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2246ebcc_88f25438",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "f04323e3bfc612fc6b1a53f54db93bcc40431a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bab5f063_d80417aa",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-01T18:07:44Z",
       "side": 1,
       "message": "Similar to the other comment, let\u0027s get the file size with \"dutfs.Stat\" (there are several instances in the test where we do this, so we should replace them all).",
+      "range": {
+        "startLine": 138,
+        "startChar": 2,
+        "endLine": 142,
+        "endChar": 3
+      },
+      "revId": "f04323e3bfc612fc6b1a53f54db93bcc40431a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "325ae3f0_87be313f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-11T21:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bab5f063_d80417aa",
       "range": {
         "startLine": 138,
         "startChar": 2,
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "Yes, let\u0027s replace this with dutfs.ReadFile and then loop through all the bytes. That will be a bit easier to read and less error prone (e.g., accidentally messing up the regex).\n\nOriginally, I think it was done this way in the autotest world because there isn\u0027t (or wasn\u0027t) an easy way to copy files from the device. However, in tast it\u0027s easy to do with dutfs.ReadFile.\n\nWe do use \"dutfs\" in other tests. See for example:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp0.go;l\u003d123?q\u003dfp_rdp0",
       "parentUuid": "174d7f99_237c9248",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 60
+      },
+      "revId": "f04323e3bfc612fc6b1a53f54db93bcc40431a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00159631_9fa0fa40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-11T21:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ffc633a_8530b353",
       "range": {
         "startLine": 152,
         "startChar": 2,
