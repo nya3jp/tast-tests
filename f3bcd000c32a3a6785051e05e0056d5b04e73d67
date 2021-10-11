@@ -16,6 +16,23 @@
       "message": "Decided may as well add a check for rejected update too soon.",
       "revId": "f3bcd000c32a3a6785051e05e0056d5b04e73d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fe52794_0eeb6594",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-10-11T22:15:19Z",
+      "side": 1,
+      "message": "You\u0027ll also need approval from a code owner (jbettis@ is familiar with fw tests) until such time that I add myself to an owners file.",
+      "revId": "f3bcd000c32a3a6785051e05e0056d5b04e73d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
