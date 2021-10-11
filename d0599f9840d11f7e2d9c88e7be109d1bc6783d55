@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b307b38a_e1ddd43b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-10-11T00:41:54Z",
+      "side": 1,
+      "message": "nit:\n \u003d %q, want %q\n\nWe usually use : for separating errors.",
+      "range": {
+        "startLine": 34,
+        "startChar": 34,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "d0599f9840d11f7e2d9c88e7be109d1bc6783d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "491a5fb4_5c3003e4",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
         "patchSetId": 1
@@ -19,6 +42,29 @@
         "startChar": 71,
         "endLine": 37,
         "endChar": 78
+      },
+      "revId": "d0599f9840d11f7e2d9c88e7be109d1bc6783d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e980935_131b10ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-10-11T00:41:54Z",
+      "side": 1,
+      "message": "nit: same here.",
+      "range": {
+        "startLine": 70,
+        "startChar": 34,
+        "endLine": 70,
+        "endChar": 51
       },
       "revId": "d0599f9840d11f7e2d9c88e7be109d1bc6783d55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
