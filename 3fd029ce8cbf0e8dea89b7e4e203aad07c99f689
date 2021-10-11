@@ -76,6 +76,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1986f980_e6db1960",
+        "filename": "src/chromiumos/tast/local/graphics/glbench/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-11T22:57:44Z",
+      "side": 1,
+      "message": "Moved to fixture. Done",
+      "parentUuid": "1f7de8b5_dabe895a",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "3fd029ce8cbf0e8dea89b7e4e203aad07c99f689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db88c11b_9941b45a",
+        "filename": "src/chromiumos/tast/local/graphics/glbench/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-11T22:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f7de8b5_dabe895a",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "3fd029ce8cbf0e8dea89b7e4e203aad07c99f689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cee03ac_bac6832d",
@@ -89,6 +137,30 @@
       "writtenOn": "2021-10-11T21:51:31Z",
       "side": 1,
       "message": "Do you mind increasing this to 10 seconds?",
+      "range": {
+        "startLine": 60,
+        "startChar": 38,
+        "endLine": 60,
+        "endChar": 39
+      },
+      "revId": "3fd029ce8cbf0e8dea89b7e4e203aad07c99f689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "424ba230_0513b433",
+        "filename": "src/chromiumos/tast/local/graphics/glbench/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-11T22:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cee03ac_bac6832d",
       "range": {
         "startLine": 60,
         "startChar": 38,
@@ -122,6 +194,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f67f3ea_53f2c2d1",
+        "filename": "src/chromiumos/tast/local/graphics/glbench/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-11T22:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7c7676d_5474320d",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "3fd029ce8cbf0e8dea89b7e4e203aad07c99f689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5647d04e_cad07cc1",
@@ -135,6 +231,30 @@
       "writtenOn": "2021-10-11T21:51:31Z",
       "side": 1,
       "message": "Can you place a copy of this into func (f *gpuWatchHangsFixture) checkHangs\n\nIn particular read value, then compare with saved value. If different spew warning and set to saved value.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/graphics/fixture.go;l\u003d142?q\u003dtast%20gpu%20hang",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 58
+      },
+      "revId": "3fd029ce8cbf0e8dea89b7e4e203aad07c99f689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0735a808_9eb811ea",
+        "filename": "src/chromiumos/tast/local/graphics/glbench/glbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-11T22:57:44Z",
+      "side": 1,
+      "message": "I believe you meant func (f *gpuWatchHangsFixture) TearDown to set it back to normal hangcheck value.\nDone.",
+      "parentUuid": "5647d04e_cad07cc1",
       "range": {
         "startLine": 63,
         "startChar": 0,
@@ -191,6 +311,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae6878da_4ff009bf",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-11T22:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7f171d3_9992968d",
+      "range": {
+        "startLine": 330,
+        "startChar": 5,
+        "endLine": 330,
+        "endChar": 22
+      },
+      "revId": "3fd029ce8cbf0e8dea89b7e4e203aad07c99f689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae36089_dd8a8afa",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-11T22:57:44Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "10ba8983_f0bc50cd",
+      "range": {
+        "startLine": 330,
+        "startChar": 25,
+        "endLine": 330,
+        "endChar": 38
+      },
+      "revId": "3fd029ce8cbf0e8dea89b7e4e203aad07c99f689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c77806_e994e545",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-11T22:57:44Z",
+      "side": 1,
+      "message": "Added comment. \nDone",
+      "parentUuid": "a7f171d3_9992968d",
+      "range": {
+        "startLine": 330,
+        "startChar": 5,
+        "endLine": 330,
+        "endChar": 22
+      },
+      "revId": "3fd029ce8cbf0e8dea89b7e4e203aad07c99f689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b40472c1_2549a2d9",
@@ -204,6 +396,30 @@
       "writtenOn": "2021-10-11T21:51:31Z",
       "side": 1,
       "message": "This will cause rounding errors to the downside. Reading/writing repeatedly will reduce the length of the timer. Could you just keep all times in MS?",
+      "range": {
+        "startLine": 340,
+        "startChar": 2,
+        "endLine": 340,
+        "endChar": 41
+      },
+      "revId": "3fd029ce8cbf0e8dea89b7e4e203aad07c99f689",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef063a24_27f500b9",
+        "filename": "src/chromiumos/tast/local/graphics/utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-11T22:57:44Z",
+      "side": 1,
+      "message": "time.Duration is baked in int64 with nanosecond precision. Anything smaller than 1 ms would be discarded.\nLet me added a comment.",
+      "parentUuid": "b40472c1_2549a2d9",
       "range": {
         "startLine": 340,
         "startChar": 2,
