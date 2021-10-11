@@ -31,3 +31,9 @@ const (
 	// ChromeEnrolledLoggedInARC is a fixture name.
 	ChromeEnrolledLoggedInARC = "chromeEnrolledLoggedInARC"
 )
+
+// Fixtures defined in chromiumos/tast/local/policyutil/fixtures/lacros.go.
+const (
+	// LacrosPolicyLoggedIn is a fixture name.
+	LacrosPolicyLoggedIn = "lacrosPolicyLoggedIn"
+)

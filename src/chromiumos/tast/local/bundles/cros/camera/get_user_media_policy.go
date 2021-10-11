@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -37,7 +36,7 @@ func init() {
 			},
 			{
 				Name:              "lacros",
-				Fixture:           "lacrosPolicyLoggedIn",
+				Fixture:           fixture.LacrosPolicyLoggedIn,
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val:               lacros.ChromeTypeLacros,
 			},
@@ -50,31 +49,27 @@ func GetUserMediaPolicy(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{&policy.VideoCaptureAllowed{Val: false}}); err != nil {
 		s.Fatal("Failed to serve policy to ban video capture: ", err)
 	}
 
-	var conn *chrome.Conn
-	var err error
-	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
-		cleanupCtx := ctx
-		ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-		defer cancel()
-
-		lacros, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtValue))
-		if err != nil {
-			s.Fatal("Failed to launch lacros-chrome: ", err)
-		}
-		defer lacros.Close(cleanupCtx)
-
-		if conn, err = lacros.NewConn(ctx, "chrome://newtab"); err != nil {
-			s.Fatal("Failed to create a tab in Chrome: ", err)
-		}
-	} else {
-		if conn, err = cr.NewConn(ctx, "chrome://newtab"); err != nil {
-			s.Fatal("Failed to create a tab in Chrome: ", err)
-		}
+	_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
 	}
+	defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
+	// Run actual test.
+	conn, err := br.NewConn(ctx, "chrome://newtab")
+	if err != nil {
+		s.Fatal("Failed to connect to the browser: ", err)
+	}
+	defer conn.Close()
 
 	if err := conn.Call(ctx, nil, `async () => {
 		return navigator.mediaDevices.getUserMedia({video: true});
