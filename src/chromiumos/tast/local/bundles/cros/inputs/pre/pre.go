@@ -26,6 +26,7 @@ var StableModels = []string{
 	// Another top board -- convertible, x64.
 	"snappy",
 	// Kukui family, not much usage, but very small tablet.
+	"kukui",
 	"kodama",
 	"krane",
 	// Convertible chromebook, top usage in 2018 and 2019.
