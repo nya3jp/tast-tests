@@ -46,6 +46,30 @@
       },
       "revId": "ffd28695ce5cf0f2384833ee6abe480bc42fec7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb4453fe_65c6f0fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-10-11T17:38:09Z",
+      "side": 1,
+      "message": "(oops, failed to reply to the comment, since it was a different thread in email)\n\nSeems fine. Especially with the understanding that it\u0027s very likely some other test causing the problem, my \"failure to associate\" concern is probably not important. It\u0027d be nice to get that broken test isolated somehow, but that can be orthogonal.",
+      "parentUuid": "e4e93815_1bc581b9",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "ffd28695ce5cf0f2384833ee6abe480bc42fec7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
