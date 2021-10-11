@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38528058_367087e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T17:05:01Z",
+      "side": 0,
+      "message": "caused the build failure at PS1.\nThis misuse was introduced on the day.",
+      "revId": "fd0e139ec07e85de52b5ced13f5df5bb7b980741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

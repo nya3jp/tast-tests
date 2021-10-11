@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6abae00_9496e589",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-11T17:05:01Z",
+      "side": 1,
+      "message": "FYI: honda-san for recent encode.go change.\n\nHmm... CR+2 was disappeared suddenly? Anyways, giving it a try to send this CQ now, though.",
+      "revId": "ddcc5d6bdb0450a21622eafd0a8cc29b57b81c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
