@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e45f1ca1_638ae736",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-11T07:12:44Z",
+      "side": 1,
+      "message": "nit: remove this newline",
+      "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d624e434_65a50975",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-11T07:12:44Z",
+      "side": 1,
+      "message": "You can skip creating cleanupCtx by just calling this piece of code after the call to defer. defer saves the value of context since it\u0027s sent as a parameter.",
+      "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "335e1bfe_e7412c5e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-11T07:12:44Z",
+      "side": 1,
+      "message": "You want ctx here.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "834924ba_5a1a24a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-11T07:12:44Z",
+      "side": 1,
+      "message": "nit: remove this newline.",
+      "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d276bbb_ca2f34c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-11T07:12:44Z",
+      "side": 1,
+      "message": "Does this take long? Maybe add a log here as well.",
+      "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "797e6b45_465570e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-11T07:12:44Z",
+      "side": 1,
+      "message": "nit: remove this newline",
+      "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
