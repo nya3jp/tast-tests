@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed1bfe3_f1b74e0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-10-11T22:01:43Z",
+      "side": 1,
+      "message": "nit, golang convention is to use ...CCD...",
+      "revId": "d301477e267ffe6af7f16e0e92f951bef94c7438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e58525da_45742639",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-10-11T22:01:43Z",
+      "side": 1,
+      "message": "use s.RequiredVar or default to a sensible path if not provided.",
+      "revId": "d301477e267ffe6af7f16e0e92f951bef94c7438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8819e1fb_7cd76f33",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-10-11T22:01:43Z",
+      "side": 1,
+      "message": "use s.RequiredVar or skip using it later if not provided.",
+      "revId": "d301477e267ffe6af7f16e0e92f951bef94c7438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6906dcb2_62cf6e5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-10-11T22:01:43Z",
+      "side": 1,
+      "message": "use s.RequiredVar or default to a sensible path if not provided.",
+      "revId": "d301477e267ffe6af7f16e0e92f951bef94c7438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
