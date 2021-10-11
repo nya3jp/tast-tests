@@ -68,6 +68,24 @@
       "message": "jchinlee@, hiroh@: what about ChromeStackDecoding?",
       "revId": "b9fbe6f03bd1e782e590933a0b16debe72300881",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83588848_60a20251",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-11T01:37:35Z",
+      "side": 1,
+      "message": "Uh, ChromeStack seems to contain a software decoder too. Naming is difficult, so I would not like bother you so much.\nI am fine with a new name if you all are fine.",
+      "parentUuid": "e82a4625_32300aae",
+      "revId": "b9fbe6f03bd1e782e590933a0b16debe72300881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
