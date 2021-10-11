@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c8f5e14_22d6f150",
+        "filename": "src/chromiumos/tast/local/policyutil/cyclebreakpolicyutil/cyclebreakpolicyutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-10-11T12:53:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba88d8d4_d3536f4b",
+      "revId": "1a5cc608d224c4a6796ce19aa000ee54a5adb18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13a99ab6_03d61e78",
@@ -72,6 +90,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32284609_06b48321",
+        "filename": "src/chromiumos/tast/local/policyutil/lacrospolicyutil/doc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-10-11T12:53:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "70f802fa_d2352a7e",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 24
+      },
+      "revId": "1a5cc608d224c4a6796ce19aa000ee54a5adb18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d440c097_0b42c635",
@@ -109,6 +151,30 @@
       "side": 1,
       "message": "If ChromeType is set to ChromeTypeChromeOS, and the fixture is a HasChrome interface, it should work.",
       "parentUuid": "d440c097_0b42c635",
+      "range": {
+        "startLine": 15,
+        "startChar": 19,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "1a5cc608d224c4a6796ce19aa000ee54a5adb18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61d6efbf_1ba1ed00",
+        "filename": "src/chromiumos/tast/local/policyutil/lacrospolicyutil/lacrospolicyutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-10-11T12:53:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e95b4c37_4b1a53d4",
       "range": {
         "startLine": 15,
         "startChar": 19,
