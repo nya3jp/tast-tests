@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c8b16e58_b879cac7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-10-11T12:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51615bf4_c558255c",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3bdb9f19_da3dd653",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc01925_ed38f4b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-10-11T12:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5957da2f_1cdddbd1",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "911ee93b_9550a10a",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-10-11T05:33:44Z",
       "side": 1,
       "message": "do you need a screenshot for this? if so, you can use faillog.DumpUITreeWithScreenshotOnError",
+      "range": {
+        "startLine": 94,
+        "startChar": 15,
+        "endLine": 94,
+        "endChar": 32
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29f91161_e6538c3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-10-11T12:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "911ee93b_9550a10a",
       "range": {
         "startLine": 94,
         "startChar": 15,
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be9c93f0_8a5e3ef3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-10-11T12:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e23bb03_d02dbd46",
+      "range": {
+        "startLine": 110,
+        "startChar": 15,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d93487ce_d4be51a3",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-10-11T05:33:44Z",
       "side": 1,
       "message": "Can you suggest another reasonbale timeout here? to avoid using the test-level timeout. It would result in the test being run for 5 minutes when an error happens. If a shorter timeout can be specific, the test can terminate early to save lab resources.\n\nPls, you don\u0027t need to pass this as a param to this function while you can just speficify the timeout in the Polling part.",
+      "range": {
+        "startLine": 144,
+        "startChar": 42,
+        "endLine": 144,
+        "endChar": 53
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "968ca732_eac2e480",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-10-11T12:19:57Z",
+      "side": 1,
+      "message": "I reduce to 1 minute, align with Poll timeout in arc.PlayStore [1]. It\u0027s necessary for this test since different DUT have different performance.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/play_store.go;rcl\u003d7158ba3c97e92da51e38a8e2209e5fac3d958cf8;l\u003d74",
+      "parentUuid": "d93487ce_d4be51a3",
       "range": {
         "startLine": 144,
         "startChar": 42,
@@ -173,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e77ba618_ee8b0fe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-10-11T12:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ab9fc22_8604abbc",
+      "range": {
+        "startLine": 173,
+        "startChar": 53,
+        "endLine": 173,
+        "endChar": 64
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e699231c_8460375b",
@@ -186,6 +330,30 @@
       "writtenOn": "2021-10-11T05:33:44Z",
       "side": 1,
       "message": "super-nit: \"Failed\"",
+      "range": {
+        "startLine": 183,
+        "startChar": 11,
+        "endLine": 183,
+        "endChar": 15
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5656bed3_7354dad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-10-11T12:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e699231c_8460375b",
       "range": {
         "startLine": 183,
         "startChar": 11,
@@ -219,6 +387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf84fff5_29582bde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-10-11T12:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd6d1e8_03d02a84",
+      "range": {
+        "startLine": 185,
+        "startChar": 16,
+        "endLine": 185,
+        "endChar": 19
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe57f578_ec902b34",
@@ -232,6 +424,30 @@
       "writtenOn": "2021-10-11T05:33:44Z",
       "side": 1,
       "message": "super-nit: \"Failed\"",
+      "range": {
+        "startLine": 198,
+        "startChar": 11,
+        "endLine": 198,
+        "endChar": 15
+      },
+      "revId": "85e5d36b71c9b2b2ccde2183bd2fedb99a1088b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e377d1_1d5a23d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-10-11T12:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe57f578_ec902b34",
       "range": {
         "startLine": 198,
         "startChar": 11,
