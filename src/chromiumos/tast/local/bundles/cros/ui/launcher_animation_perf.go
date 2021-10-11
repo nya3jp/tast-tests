@@ -113,11 +113,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	f := s.FixtValue()
-	cr, err := lacros.GetChrome(ctx, f)
-	if err != nil {
-		s.Fatal("Failed to initialize test: ", err)
-	}
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
