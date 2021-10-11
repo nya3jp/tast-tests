@@ -230,6 +230,8 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 		"COMPAT_BRK",
 		// Dangerous; allows direct kernel memory writing.
 		"DEVKMEM",
+		// Dangerous; allows userspace to change kernel logging.
+		"DYNAMIC_DEBUG",
 		// Dangerous; allows replacement of running kernel.
 		"KEXEC",
 		// Dangerous; allows replacement of running kernel.
