@@ -16,6 +16,29 @@
       "message": "PTAL.",
       "revId": "01246d7075df4148baec86d4e16b6427fded8b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08fe91a4_969887c0",
+        "filename": "src/chromiumos/tast/common/network/diag/api.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-10-11T00:42:43Z",
+      "side": 1,
+      "message": "I think TODO lines in most cases in the existing code describes what should be done in the future, instead of what is done as a transitional fix. (e.g. TODO(...): remove this transitional fix after X is available).",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "01246d7075df4148baec86d4e16b6427fded8b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
