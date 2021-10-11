@@ -540,10 +540,9 @@ func simpleConnect8021xWPA3() []simpleConnectParams {
 			Val:  mkOps("Optional", "Mixed"),
 		},
 		{
-			Name:      "8021xwpa3",
-			Doc:       simpleConnectDocPref("an WPA3-Enterprise-only AP"),
-			Val:       mkOps("Required", "Pure"),
-			ExtraAttr: []string{"wificell_unstable"},
+			Name: "8021xwpa3",
+			Doc:  simpleConnectDocPref("an WPA3-Enterprise-only AP"),
+			Val:  mkOps("Required", "Pure"),
 		},
 	}
 
