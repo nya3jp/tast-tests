@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83299c2d_c18f57c8",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-11T07:43:18Z",
+      "side": 1,
+      "message": "What exactly do you mean by making it inline? Deleting the function, and instead if using the function, just use what is inside of the function?",
+      "parentUuid": "aa187fc1_0a630466",
+      "revId": "c5fb10af32008dfa99f78e669f1f795ab41146f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e37a4319_9248d5a2",
         "filename": "src/chromiumos/tast/local/policyutil/cyclebreakpolicyutil/cyclebreakpolicyutil.go",
         "patchSetId": 5
@@ -121,6 +139,24 @@
       "side": 1,
       "message": "This does not hide the lacros name from client code.\nActually, callers have to pass whether chrome type is Ash-chrome or Lacros-chrome explicitly. So, actually it does not encapsulate the lacros from callers, I think.\n\nIn addition, callers have to understand what fixtvalue can be passed here, which depends on ChromeType param. Specifically, if ChromeType is Lacros, the fixture must be the one of the lacros fixtures.\n\nThus, I still think we should use lacros.Setup/CloseLacrosChrome instead of this at least at this moment. If you have more thoughts, please let me know. If further discussion is needed, maybe VC works better than gerrit, I think.",
       "parentUuid": "4ac6867a_0782569c",
+      "revId": "c5fb10af32008dfa99f78e669f1f795ab41146f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba88d8d4_d3536f4b",
+        "filename": "src/chromiumos/tast/local/policyutil/cyclebreakpolicyutil/cyclebreakpolicyutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-11T07:43:18Z",
+      "side": 1,
+      "message": "We still prefer this method, as calling lacros.CloseLacrosChrome when we don\u0027t even have a lacros browser open can be confusing.\nIt is fine to use lacros package, when there is a lacros specific interaction, but it is nice to hide it when it can be anything.\n\nIn this sense lacros.ChromeTypeChromeOS is also confusing, it would be nicer to have something like\n\u003e  chrome.TypeChromeOS\nand\n\u003e  chrome.TypeLacros",
+      "parentUuid": "03057c6f_a2a59497",
       "revId": "c5fb10af32008dfa99f78e669f1f795ab41146f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
