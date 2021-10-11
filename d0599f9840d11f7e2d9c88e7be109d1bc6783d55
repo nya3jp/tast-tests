@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df5b6d03_e2df183b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-11T10:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b307b38a_e1ddd43b",
+      "range": {
+        "startLine": 34,
+        "startChar": 34,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "d0599f9840d11f7e2d9c88e7be109d1bc6783d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "491a5fb4_5c3003e4",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "930ca6bd_69abd4d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-11T10:34:08Z",
+      "side": 1,
+      "message": "Right. We will need to change the test if there will be more OEMs.",
+      "parentUuid": "491a5fb4_5c3003e4",
+      "range": {
+        "startLine": 37,
+        "startChar": 71,
+        "endLine": 37,
+        "endChar": 78
+      },
+      "revId": "d0599f9840d11f7e2d9c88e7be109d1bc6783d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e980935_131b10ca",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-11T00:41:54Z",
       "side": 1,
       "message": "nit: same here.",
+      "range": {
+        "startLine": 70,
+        "startChar": 34,
+        "endLine": 70,
+        "endChar": 51
+      },
+      "revId": "d0599f9840d11f7e2d9c88e7be109d1bc6783d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "632baef1_f2be74d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/compliance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-11T10:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e980935_131b10ca",
       "range": {
         "startLine": 70,
         "startChar": 34,
