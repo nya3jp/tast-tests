@@ -34,6 +34,24 @@
       "parentUuid": "077ed260_c2e2762d",
       "revId": "48cc0f58893b6df0f7ddeabeda56064f3a036dd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caea2642_ae5a39b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ap_supported_rates.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-11T17:27:21Z",
+      "side": 0,
+      "message": "Agreed :-)\n\nb/202561761",
+      "parentUuid": "96fa6bb3_4e8eca6d",
+      "revId": "48cc0f58893b6df0f7ddeabeda56064f3a036dd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
