@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ea1d0d2_f6dc4e5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-10-11T22:07:11Z",
+      "side": 1,
+      "message": "Can you mention what is \u0027regular boot\u0027 in the commit message too?",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e24a140a_34478539",
@@ -14,6 +37,97 @@
       "writtenOn": "2021-10-11T18:32:55Z",
       "side": 1,
       "message": "TY for comments. PTAL updated version",
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0746ee71_b425b630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-10-11T22:07:11Z",
+      "side": 1,
+      "message": "Please mention rebooting and page caches too. (see my comment below)",
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5768719f_2f02ab0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-10-11T22:07:11Z",
+      "side": 1,
+      "message": "AuthPerf uses 7. Can we do the same?",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 25
+      },
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22d6fe14_9be78e64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-10-11T22:07:11Z",
+      "side": 1,
+      "message": "So between each iteration, DUT won\u0027t reboot, right? We\u0027re effectively reusing the previous iteration\u0027s page caches. Is that OK?",
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09d1c56e_eb38e890",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-10-11T22:07:11Z",
+      "side": 1,
+      "message": "Can we shod the core OS boot time portion too? (enable_screen)",
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "129b21b5_4977f4b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-10-11T22:07:11Z",
+      "side": 1,
+      "message": "Isn\u0027t it better to start play store app here too to populate host\u0027s page cache? Otherwise, on 8GB+ devices, first first iteration could become slower than later iterations.",
       "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
