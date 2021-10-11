@@ -16,6 +16,75 @@
       "message": "Thanks for your review.",
       "revId": "3820305fade53866d6c37a40a565b0bc65493809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0738d824_4324341a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-11T21:28:55Z",
+      "side": 1,
+      "message": "Did you forget to call `defer cr.Close(cleanupCtx)` after this?",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "3820305fade53866d6c37a40a565b0bc65493809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c81049f_92e5812a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-11T21:28:55Z",
+      "side": 1,
+      "message": "this should be called before its use (`verifyGhostWindow` in this case), otherwise, `cr.Close` will never be called if an error is returned by `verifyGhostWindow`.Also it doesn\u0027t make sense to call a defer func in the end of a functon",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 27
+      },
+      "revId": "3820305fade53866d6c37a40a565b0bc65493809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591dd869_4ef5ddb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-11T21:28:55Z",
+      "side": 1,
+      "message": "this should be called following its creation/initialization, also it doesn\u0027t make sense to call a defer func in the end of a functon",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 27
+      },
+      "revId": "3820305fade53866d6c37a40a565b0bc65493809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
