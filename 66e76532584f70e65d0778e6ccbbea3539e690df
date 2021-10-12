@@ -47,6 +47,30 @@
       },
       "revId": "66e76532584f70e65d0778e6ccbbea3539e690df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c4f771_72ec3386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/data/run-pjdfstest-vhost.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2021-10-12T08:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e331cfe9_7456d3f1",
+      "range": {
+        "startLine": 39,
+        "startChar": 21,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "66e76532584f70e65d0778e6ccbbea3539e690df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f314d6ee_373e93d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2021-10-12T08:38:49Z",
+      "side": 1,
+      "message": "Sorry for the spam, I think gerrit bugged on my response.",
+      "revId": "a09730b9c61f01e2bd24b610517a23ca8d7f438c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
