@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6dadcaf7_5d3b9b57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-12T14:33:18Z",
+      "side": 1,
+      "message": "I don\u0027t think the bug fix has landed yet. Could you check if your build includes https://crrev.com/c/3171576?",
+      "parentUuid": "da16b5a2_444e2631",
+      "revId": "80ce67bc242d3837743a4b214cf5a06317ad6bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df175072_6be62d62",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
         "patchSetId": 10
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-11T22:43:58Z",
       "side": 1,
       "message": "It is too early to create a compositor folder. But we should name this in a way to signify testing intent. How about naming the test CompositorTransferFrom... ?",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 42
+      },
+      "revId": "80ce67bc242d3837743a4b214cf5a06317ad6bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ccad33_a803fc98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-12T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df175072_6be62d62",
       "range": {
         "startLine": 32,
         "startChar": 8,
@@ -54,6 +96,30 @@
       "writtenOn": "2021-10-11T22:43:58Z",
       "side": 1,
       "message": "We will not add graphics tests targeting Chrome to the CQ, as this prevents Chrome uprev without any benefit to us. Please use \"group:graphics\", \"graphics_nightly\". We will monitor it as part of the graphics rotation and kick off bisects when we notice a regression. We also don\u0027t get more than one Chrome uprev a day.",
+      "range": {
+        "startLine": 38,
+        "startChar": 25,
+        "endLine": 38,
+        "endChar": 58
+      },
+      "revId": "80ce67bc242d3837743a4b214cf5a06317ad6bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb1672c5_f13ee0b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-12T14:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ed38334_d216cbc2",
       "range": {
         "startLine": 38,
         "startChar": 25,
