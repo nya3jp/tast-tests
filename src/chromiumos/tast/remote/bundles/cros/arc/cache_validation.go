@@ -141,6 +141,17 @@ func CacheValidation(ctx context.Context, s *testing.State) {
 
 	param := s.Param().(testParamCacheValidation)
 
+	desc, err := version.GetBuildDescriptorRemotely(ctx, d, param.vmEnabled)
+	if err != nil {
+		s.Fatal("Failed to get ARC build desc: ", err)
+	}
+
+	v := fmt.Sprintf("%s_%s_%s", desc.CPUAbi, desc.BuildType, desc.BuildID)
+	s.Logf("Detected version: %s", v)
+	if desc.BuildType != "user" {
+		s.Fatal("Cache validation should only be run on a user build")
+	}
+
 	tempDir, err := ioutil.TempDir("", "tmp_dir")
 	if err != nil {
 		s.Fatal("Failed to create global temp dir: ", err)

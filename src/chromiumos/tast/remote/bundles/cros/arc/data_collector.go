@@ -171,6 +171,9 @@ func DataCollector(ctx context.Context, s *testing.State) {
 
 	v := fmt.Sprintf("%s_%s_%s", desc.CPUAbi, desc.BuildType, desc.BuildID)
 	s.Logf("Detected version: %s", v)
+	if desc.BuildType != "user" {
+		s.Fatal("Data collector should only be run on a user build")
+	}
 
 	// Checks if generated resources need to be uploaded to the server.
 	needUpload := func(bucket string) bool {
