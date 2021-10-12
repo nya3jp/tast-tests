@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdeb6bbd_e54a71a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfboot/perfboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "no diff, just function returns map instead perf values proto.",
+      "parentUuid": "3ef284b8_0e6fe244",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 18
+      },
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ed46919_e5a9f6d9",
@@ -78,6 +102,30 @@
       "writtenOn": "2021-10-12T15:36:37Z",
       "side": 1,
       "message": "optional: can this be time.Time? Also ditto for all following.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 48
+      },
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f520f94b_a6b601b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfboot/perfboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "Technically yes, but it would represent wrong time since it is ticks.\nAs alternative I\u0027ve changed this to Duration that might be better.\nWDYT?",
+      "parentUuid": "5ed46919_e5a9f6d9",
       "range": {
         "startLine": 45,
         "startChar": 1,
@@ -111,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae2748cf_97b54277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfboot/perfboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3a2dadb_01310eb0",
+      "range": {
+        "startLine": 126,
+        "startChar": 40,
+        "endLine": 126,
+        "endChar": 45
+      },
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a09655c2_41bf3361",
@@ -128,6 +200,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5787a974_a88129a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfboot/perfboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a09655c2_41bf3361",
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f5a8dab_4829920a",
@@ -141,6 +231,30 @@
       "writtenOn": "2021-10-12T15:36:37Z",
       "side": 1,
       "message": "it is not recommended to passing testing.State to utility. (cf go/tast-writing).\nCould you avoid it, and instead pass the variable?",
+      "range": {
+        "startLine": 83,
+        "startChar": 47,
+        "endLine": 83,
+        "endChar": 64
+      },
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1e0967f_4b192070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f5a8dab_4829920a",
       "range": {
         "startLine": 83,
         "startChar": 47,
@@ -174,6 +288,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3000dd1a_8f2210b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e4e6a62_d7d3b32a",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 13
+      },
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d67b77a_fe9af4e3",
@@ -187,6 +325,30 @@
       "writtenOn": "2021-10-12T15:36:37Z",
       "side": 1,
       "message": "nit: could you merge this into the second sentence mentioning return value?",
+      "range": {
+        "startLine": 122,
+        "startChar": 71,
+        "endLine": 123,
+        "endChar": 49
+      },
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c95f12f_fc400cd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d67b77a_fe9af4e3",
       "range": {
         "startLine": 122,
         "startChar": 71,
@@ -220,6 +382,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3512e03e_3ba99c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5598abb7_5f042e4f",
+      "range": {
+        "startLine": 124,
+        "startChar": 34,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21996940_77eba04e",
@@ -233,6 +419,30 @@
       "writtenOn": "2021-10-12T15:36:37Z",
       "side": 1,
       "message": "ditto, just passing outDir.",
+      "range": {
+        "startLine": 126,
+        "startChar": 48,
+        "endLine": 126,
+        "endChar": 64
+      },
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d39817e_5b05ce54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21996940_77eba04e",
       "range": {
         "startLine": 126,
         "startChar": 48,
@@ -277,6 +487,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87705da9_f0129b5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "Thanks! will rebase once that is landed",
+      "parentUuid": "9a3e3c06_99cce9be",
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3cc9a2f_ddc4ae28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "Most failure from auth perf test are because unable to cool down and last reported temp is very most cases \u003c 52c.\nThis test does similar payload. I know that it could be done better to extracting to helper or even doing globally but probably not now.\nComment added.",
+      "parentUuid": "e80f44de_ac680499",
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ce871ff_852b93f7",
@@ -290,6 +536,24 @@
       "writtenOn": "2021-10-12T07:53:25Z",
       "side": 1,
       "message": "Can you add some code comments on why this is necessary? (this is to simulate cold boot, right?)",
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31e9acdc_7e2b16d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ce871ff_852b93f7",
       "revId": "841545d4dfb851723e99584427e2ba58f652b668",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -311,6 +575,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c861b1e0_e07f59db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fb9e8f6_1e1fa9ed",
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cf829a5_91617db2",
@@ -324,6 +606,30 @@
       "writtenOn": "2021-10-12T15:36:37Z",
       "side": 1,
       "message": "can this be \ntime.Duration(timeMs * time.Millisecond) ?",
+      "range": {
+        "startLine": 206,
+        "startChar": 8,
+        "endLine": 206,
+        "endChar": 57
+      },
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53deaa9b_703b4dec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "unfortunately this does not work:\nmismatched types time.Duration and float64",
+      "parentUuid": "0cf829a5_91617db2",
       "range": {
         "startLine": 206,
         "startChar": 8,

@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acf1276d_78c84a3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T17:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d81372d_b8ac5a2f",
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5768719f_2f02ab0c",
