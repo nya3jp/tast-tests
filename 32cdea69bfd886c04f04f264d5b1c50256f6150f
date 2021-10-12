@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f256a7_42948aa2",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-10-12T20:17:20Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "253fecda_07639dd6",
+      "revId": "32cdea69bfd886c04f04f264d5b1c50256f6150f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e93c30f5_a38cdd37",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "It\u0027s too late here, the DUT is not ssh-able at this point.",
       "parentUuid": "e93c30f5_a38cdd37",
+      "revId": "32cdea69bfd886c04f04f264d5b1c50256f6150f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62f82892_18e71896",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-10-12T20:17:20Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "0efbb3a6_b07902df",
       "revId": "32cdea69bfd886c04f04f264d5b1c50256f6150f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
