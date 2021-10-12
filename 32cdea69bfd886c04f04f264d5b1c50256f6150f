@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f5d16b_4bbed968",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-10-12T19:41:23Z",
+      "side": 1,
+      "message": "nit, I\u0027d just do this check in an if-block before the switch block so I don\u0027t have to repeat the same code 3 times.",
+      "revId": "32cdea69bfd886c04f04f264d5b1c50256f6150f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e93c30f5_a38cdd37",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-10-12T19:41:23Z",
+      "side": 1,
+      "message": "nit, consider calling hasSerialAPFirmware internally here to simplify calling code.  Same for fwScreenToDevMode.",
+      "revId": "32cdea69bfd886c04f04f264d5b1c50256f6150f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7b692d3_8af4278a",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-10-12T19:41:23Z",
+      "side": 1,
+      "message": "nit, if callers just assume false upon error, can just directly do it in this func and then only have to return 1 bool value, .",
+      "revId": "32cdea69bfd886c04f04f264d5b1c50256f6150f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
