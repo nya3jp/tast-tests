@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f01ec4ee_a283385c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/js_microbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-12T05:30:06Z",
+      "side": 1,
+      "message": "I set 6 to include CPU cooldown period. It may take longer time, but it depends on surrounding set up. How about adjusting this with taking a look at lab result?",
+      "parentUuid": "5062b917_879877e8",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "f55518944577bdc1994d9d2afcee7b3e58ff1e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e9f6c21_920e283d",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/js_microbench.go",
         "patchSetId": 1
@@ -55,6 +79,30 @@
       "side": 1,
       "message": "\u003e \"snipet\" is a possible misspelling of \"snippet\".\n\nPlease fix.",
       "parentUuid": "88871469_c524edd6",
+      "range": {
+        "startLine": 35,
+        "startChar": 40,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "f55518944577bdc1994d9d2afcee7b3e58ff1e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2b5b21f_a330a0fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/js_microbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-12T05:30:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e9f6c21_920e283d",
       "range": {
         "startLine": 35,
         "startChar": 40,
@@ -88,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a349213_f58365b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/js_microbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-12T05:30:06Z",
+      "side": 1,
+      "message": "SG. Done.",
+      "parentUuid": "990228a0_609eca29",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "f55518944577bdc1994d9d2afcee7b3e58ff1e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f64107c8_45145816",
@@ -101,6 +173,30 @@
       "writtenOn": "2021-10-12T02:32:31Z",
       "side": 1,
       "message": "an alternative is to poll on the value of elapsed. Are you sure 30 seconds is enough, for all devices? Sleeping is not recommended, in general, as you know.\n\nIf it fails for some reason, will elapsed be zero? If so, IMO we should check that case.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 0
+      },
+      "revId": "f55518944577bdc1994d9d2afcee7b3e58ff1e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ca2ce54_95107aca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/js_microbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-12T05:30:06Z",
+      "side": 1,
+      "message": "I wanted to avoid polling here, because it has some potential impact on performance measurement in this case. Clarified in the comment.\n\nI agreed that testing.Sleep is not ideal solution, and am looking for the alternative without polling, but I couldn\u0027t come up with a good idea.\nPlease let me know if you have better alternative.",
+      "parentUuid": "f64107c8_45145816",
       "range": {
         "startLine": 183,
         "startChar": 0,
