@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a550aa8e_4be48c09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-12T23:37:07Z",
+      "side": 1,
+      "message": "Don\u0027t know how to check if we have switched desk but this can ensure no new window is created...(so far we have 3 windows)",
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c053b56_3b5e7e17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-12T23:37:07Z",
+      "side": 1,
+      "message": "Previous action switched to Desk 1 so need to switch back(again how do I check which desk is the active desk :(",
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
