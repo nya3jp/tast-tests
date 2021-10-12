@@ -18,7 +18,7 @@ func init() {
 		Func:         ModemHelperManifestVerification,
 		Desc:         "Verifies the validity of the helper manifest",
 		Contacts:     []string{"andrewlassalle@google.com", "chromeos-cellular-team@google.com"},
-		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
+		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active", "cellular_cq"},
 		SoftwareDeps: []string{"modemfwd"},
 	})
 }
