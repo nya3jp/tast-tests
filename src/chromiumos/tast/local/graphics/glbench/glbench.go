@@ -20,8 +20,8 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/faillog"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
@@ -82,10 +82,10 @@ func Run(ctx context.Context, outDir string, preValue interface{}, config Config
 	// Only setup benchmark mode if we are not in hasty mode.
 	if !config.IsHasty() {
 		// Make machine behaviour consistent.
-		if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
+		if _, err := cpu.WaitUntilCoolDown(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
 			SaveFailLog(ctx, filepath.Join(outDir, "before_tests1"))
 			testing.ContextLog(ctx, "Unable get cool machine by default setting: ", err)
-			if _, err := power.WaitUntilCPUCoolDown(ctx, power.CoolDownConfig{PollTimeout: 1 * time.Minute, PollInterval: 2 * time.Second, CPUTemperatureThreshold: 60000, CoolDownMode: power.CoolDownPreserveUI}); err != nil {
+			if _, err := cpu.WaitUntilCoolDown(ctx, cpu.CoolDownConfig{PollTimeout: 1 * time.Minute, PollInterval: 2 * time.Second, TemperatureThreshold: 60000, CoolDownMode: cpu.CoolDownPreserveUI}); err != nil {
 				SaveFailLog(ctx, filepath.Join(outDir, "before_tests2"))
 				appendErr(err, "unable to get cool machine to reach 60C")
 			}

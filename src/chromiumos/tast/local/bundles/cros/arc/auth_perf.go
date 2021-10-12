@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/disk"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/lsbrelease"
@@ -317,12 +318,12 @@ func readResultProp(ctx context.Context, a *arc.ARC, propName string) (float64, 
 // coolDownConfig returns the config to wait for the machine to cooldown for AuthPerf tests.
 // This has higher temperature (46 to 52c) threshold to let pass AMD low-end devices that
 // frequently fail due to higher temperatures.
-func coolDownConfig() power.CoolDownConfig {
-	return power.CoolDownConfig{
-		PollTimeout:             300 * time.Second,
-		PollInterval:            2 * time.Second,
-		CPUTemperatureThreshold: 52000,
-		CoolDownMode:            power.CoolDownPreserveUI,
+func coolDownConfig() cpu.CoolDownConfig {
+	return cpu.CoolDownConfig{
+		PollTimeout:          300 * time.Second,
+		PollInterval:         2 * time.Second,
+		TemperatureThreshold: 52000,
+		CoolDownMode:         cpu.CoolDownPreserveUI,
 	}
 }
 
@@ -365,7 +366,7 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 		}
 	}
 
-	if _, err := power.WaitUntilCPUCoolDown(ctx, coolDownConfig()); err != nil {
+	if _, err := cpu.WaitUntilCoolDown(ctx, coolDownConfig()); err != nil {
 		s.Fatal("Failed to wait until CPU is cooled down: ", err)
 	}
 

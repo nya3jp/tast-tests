@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
@@ -138,7 +139,7 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	s.Log("Finished setup")
 
 	// Wait until CPU is cooled down.
-	cooldownTime, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI))
+	cooldownTime, err := cpu.WaitUntilCoolDown(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI))
 	if err != nil {
 		s.Fatal("CPU failed to cool down: ", err)
 	}
