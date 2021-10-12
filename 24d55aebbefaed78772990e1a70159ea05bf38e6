@@ -34,6 +34,24 @@
       "parentUuid": "82848505_0350b5fd",
       "revId": "24d55aebbefaed78772990e1a70159ea05bf38e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6880fa9_ba36901d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1359131
+      },
+      "writtenOn": "2021-10-12T08:35:44Z",
+      "side": 1,
+      "message": "Yep, I added a new script for vhost_user_fs but as you said there\u0027s a few failures. It might be because it\u0027s missing disable-sandbox so I\u0027ll experiment with that but we can probably submit this since the test is informational and then work on fixing it. What do you think?",
+      "parentUuid": "3e29455d_8c2c04ab",
+      "revId": "24d55aebbefaed78772990e1a70159ea05bf38e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
