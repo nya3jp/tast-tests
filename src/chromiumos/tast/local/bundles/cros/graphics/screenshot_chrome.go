@@ -19,7 +19,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Takes a screenshot using Chrome",
 		Contacts:     []string{"jkardatzke@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:graphics", "graphics_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeGraphics",
 	})
