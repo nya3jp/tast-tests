@@ -27,6 +27,10 @@ func init() {
 		}, {
 			Name:    "dev",
 			Fixture: fixture.DevModeGBB,
+		}, {
+			Name:      "usbdev",
+			Fixture:   fixture.USBDevModeGBB,
+			ExtraAttr: []string{"firmware_usb"},
 		}},
 	})
 }
