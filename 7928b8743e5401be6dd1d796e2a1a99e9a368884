@@ -39,6 +39,30 @@
       },
       "revId": "7928b8743e5401be6dd1d796e2a1a99e9a368884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf173ed_73954f01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/pin_app_to_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-12T06:06:37Z",
+      "side": 1,
+      "message": "Thanks for pointing it out. We don\u0027t need this.",
+      "parentUuid": "4839fa6b_220b5051",
+      "range": {
+        "startLine": 76,
+        "startChar": 28,
+        "endLine": 76,
+        "endChar": 40
+      },
+      "revId": "7928b8743e5401be6dd1d796e2a1a99e9a368884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
