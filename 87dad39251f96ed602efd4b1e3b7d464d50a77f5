@@ -255,6 +255,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a18b42e4_a2ea159b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002410
+      },
+      "writtenOn": "2021-10-12T23:17:53Z",
+      "side": 1,
+      "message": "Thanks! Could you please also add a comment referencing the OWNERS file for now as the source of truth, even if we can\u0027t parse it programmatically?",
+      "parentUuid": "235e6137_8e017fce",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "87dad39251f96ed602efd4b1e3b7d464d50a77f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16250e80_77568543",
