@@ -12,6 +12,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -102,13 +103,16 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 	}()
 
 	// TODO(hiroh): When YV12 test case is added, try generate YV12 yuv here by passing "--yv12" instead of "--i420".
-	command := []string{"vpxdec", webMFile, "-o", yuvFile, "--codec=vp9", "--i420"}
+	command := []string{"vpxdec", "--threads=2", webMFile, "-o", yuvFile, "--codec=vp9", "--i420"}
 	testing.ContextLogf(ctx, "Running %s", shutil.EscapeSlice(command))
+	vpxdecStartTime := time.Now()
 	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
 	if err := cmd.Run(); err != nil {
 		cmd.DumpLog(ctx)
 		return "", errors.Wrap(err, "vpxdec failed")
 	}
+	durationMs := time.Since(vpxdecStartTime).Milliseconds()
+	testing.ContextLogf(ctx, "Finished vpxdec durationMs=%v", durationMs)
 
 	// If pixelFormat is NV12, conversion from I420 to NV12 is performed.
 	if pixelFormat == videotype.NV12 {
