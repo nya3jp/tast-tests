@@ -6,6 +6,7 @@ package launcher
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -13,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/testing"
@@ -61,6 +63,26 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	// TODO: Remove screen recording code after b/202340057 is resolved.
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to create ScreenRecorder: ", err)
+	}
+	defer func() {
+		screenRecorder.Stop(ctx)
+		if s.HasError() {
+			s.Log(ctx, "Saving screen record to %s", s.OutDir())
+			if err := screenRecorder.SaveInString(ctx, filepath.Join(s.OutDir(), "screen_record.txt")); err != nil {
+				s.Fatal("Failed to save screen record in string: ", err)
+			}
+			if err := screenRecorder.SaveInBytes(ctx, filepath.Join(s.OutDir(), "screen_record.webm")); err != nil {
+				s.Fatal("Failed to save screen record in bytes: ", err)
+			}
+		}
+		screenRecorder.Release(ctx)
+	}()
+	screenRecorder.Start(ctx, tconn)
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 	if err != nil {
@@ -182,7 +204,7 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 
 	// Unpin an app that's not running, and verify it gets removed from shelf.
 	if err := launcher.UnpinAppFromShelf(tconn, app3)(ctx); err != nil {
-		s.Fatalf("Failed to unpin app %q from shelf", app3.Name)
+
 	}
 
 	items, err = ash.ShelfItems(ctx, tconn)
