@@ -198,6 +198,16 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 	webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
 	joinFromYourBrowser := nodewith.Name("Join from Your Browser").Role(role.StaticText)
 	acceptCookiesButton := nodewith.Name("ACCEPT COOKIES").Role(role.Button)
+	clickJoinButton := func(ctx context.Context) error {
+		// In Zoom website, the join button may be hidden in tablet mode.
+		// Make it visible before clicking.
+		// Since ui.MakeVisible() is not always successful, add a retry here.
+		return ui.Retry(3, uiauto.Combine("click join button",
+			ui.WaitForLocation(joinButton),
+			ui.MakeVisible(joinButton),
+			ui.LeftClickUntil(joinButton, ui.WithTimeout(time.Second).WaitUntilGone(joinButton)),
+		))(ctx)
+	}
 	testing.ContextLog(ctx, "Join conference")
 	return uiauto.Combine("join conference",
 		openZoomAndSignIn,
@@ -206,9 +216,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 			ui.LeftClickUntil(acceptCookiesButton, ui.WithTimeout(time.Second).WaitUntilGone(acceptCookiesButton))),
 		ui.LeftClick(joinFromYourBrowser),
 		ui.WithTimeout(time.Minute).WaitUntilExists(joinButton),
-		ui.WaitForLocation(joinButton),
-		ui.MakeVisible(joinButton),
-		ui.LeftClickUntil(joinButton, ui.WithTimeout(time.Second).WaitUntilGone(joinButton)),
+		clickJoinButton,
 		// Use 1 minute timeout value because it may take longer to wait for page loading,
 		// especially for some low end DUTs.
 		ui.WithTimeout(time.Minute).WaitUntilExists(webArea),
