@@ -56,6 +56,30 @@
       },
       "revId": "5cf11d1d6750ab119f8b1299ca5bcf286e70c866",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7247819e_418c6dde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-12T15:52:28Z",
+      "side": 1,
+      "message": "I would like to have the \"informational\" part for the first few tests ported just to be sure.",
+      "parentUuid": "49cee070_c8b43c69",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "5cf11d1d6750ab119f8b1299ca5bcf286e70c866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
