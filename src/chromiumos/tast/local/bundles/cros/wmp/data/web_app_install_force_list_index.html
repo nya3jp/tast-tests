@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="manifest" href="/web_app_install_force_list_manifest.json">
+  <meta charset="utf-8">
+  <title>Test PWA</title>
+</head>
+<body>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/web_app_install_force_list_service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>
