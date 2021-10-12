@@ -1,0 +1,204 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// Package shimlessrmaapp contains drivers for controlling the ui of Shimless RMA SWA.
+package shimlessrmaapp
+
+import (
+	"context"
+	"os"
+	"os/user"
+	"strconv"
+	"time"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/restriction"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/testing"
+)
+
+var rootNode = nodewith.Name(apps.ShimlessRMA.Name).Role(role.Window)
+
+var nextButton = nodewith.Name("Next >").Role(role.Button)
+var cancelButton = nodewith.Name("Cancel").Role(role.Button)
+
+// Titles of pages.
+// role.Heading nodes with this text are found to confirm a page loaded.
+const (
+	welcomePageTitle  = "Chromebook repair"
+	updateOSPageTitle = "Make sure Chrome OS is up to date"
+)
+
+const (
+	stateFile = "/mnt/stateful_partition/unencrypted/rma-data/state"
+)
+
+// RMAApp represents an instance of the Shimless RMA App.
+type RMAApp struct {
+	ui    *uiauto.Context
+	tconn *chrome.TestConn
+}
+
+// CreateEmptyStateFile creates a valid empty state file.
+func CreateEmptyStateFile() error {
+	return CreateStateFile("{}\n")
+}
+
+// CreateStateFile creates a state file with contents |state|.
+func CreateStateFile(state string) error {
+	uid, err := getRmadUID()
+	if err != nil {
+		return err
+	}
+	f, err := os.Create(stateFile)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	l, err := f.WriteString(state)
+	if err != nil || l < 3 {
+		return err
+	}
+	if err := f.Chown(uid, -1); err != nil {
+		return err
+	}
+	return nil
+}
+
+// RemoveStateFile deletes the state file, if it exists.
+func RemoveStateFile() {
+	os.Remove(stateFile)
+}
+
+// Launch launches the Shimless RMA App and returns it.
+// An error is returned if the app fails to launch.
+func Launch(ctx context.Context, tconn *chrome.TestConn) (*RMAApp, error) {
+	// Launch the Shimless RMA App.
+	if err := apps.Launch(ctx, tconn, apps.ShimlessRMA.ID); err != nil {
+		return nil, err
+	}
+
+	return App(ctx, tconn)
+}
+
+// App returns an existing instance of the Shimless RMA app.
+// An error is returned if the app cannot be found.
+func App(ctx context.Context, tconn *chrome.TestConn) (*RMAApp, error) {
+	// Create a uiauto.Context with default timeout.
+	ui := uiauto.New(tconn)
+
+	// Find the main Shimless RMA window
+	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(rootNode)(ctx); err != nil {
+		return nil, err
+	}
+
+	return &RMAApp{tconn: tconn, ui: ui}, nil
+}
+
+// Close closes the Shimless RMA App.
+func (r *RMAApp) Close(ctx context.Context) error {
+	// Close the Shimless RMA App.
+	if err := apps.Close(ctx, r.tconn, apps.ShimlessRMA.ID); err != nil {
+		return err
+	}
+
+	// Wait for window to close.
+	return r.ui.WithTimeout(time.Minute).WaitUntilGone(rootNode)(ctx)
+}
+
+// WaitForStateFileDeleted returns a function that waits for the state file to be deleted.
+func (r *RMAApp) WaitForStateFileDeleted() uiauto.Action {
+	return r.waitForFileDeleted(stateFile)
+}
+
+// WaitForWelcomePageToLoad returns a function that waits for the Welcome state page to load.
+func (r *RMAApp) WaitForWelcomePageToLoad() uiauto.Action {
+	return r.waitForPageToLoad(welcomePageTitle)
+}
+
+// WaitForUpdateOSPageToLoad returns a function that waits for the Update OS state page to load.
+func (r *RMAApp) WaitForUpdateOSPageToLoad() uiauto.Action {
+	return r.waitForPageToLoad(updateOSPageTitle)
+}
+
+// LeftClickNextButton returns a function that clicks the next button.
+func (r *RMAApp) LeftClickNextButton() uiauto.Action {
+	return r.leftClickButton(nextButton.Visible().Ancestor(rootNode))
+}
+
+// LeftClickCancelButton returns a function that clicks the cancel button.
+func (r *RMAApp) LeftClickCancelButton() uiauto.Action {
+	return r.leftClickButton(cancelButton.Visible().Ancestor(rootNode))
+}
+
+func getRmadUID() (int, error) {
+	u, err := user.Lookup("rmad")
+	if err != nil {
+		return -1, err
+	}
+	uid, err := strconv.Atoi(u.Uid)
+	if err != nil {
+		return -1, err
+	}
+	return uid, nil
+}
+
+func (r *RMAApp) waitUntilEnabled(button *nodewith.Finder) uiauto.Action {
+	return uiauto.Combine("waiting for enabled button",
+		r.ui.WithTimeout(10*time.Second).WaitUntilExists(button),
+		func(ctx context.Context) error {
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if err := r.ui.CheckRestriction(button, restriction.Disabled)(ctx); err == nil {
+					return errors.Errorf("Button state %s", restriction.Disabled)
+				}
+				return nil
+			}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: 2 * time.Second}); err != nil {
+				return errors.Wrap(err, "Button failed to become enabled")
+			}
+			return nil
+		})
+}
+
+func (r *RMAApp) leftClickButton(button *nodewith.Finder) uiauto.Action {
+	return uiauto.Combine("waiting for enabled button",
+		r.ui.WithTimeout(10*time.Second).WaitUntilExists(button),
+		func(ctx context.Context) error {
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if err := r.ui.CheckRestriction(button, restriction.Disabled)(ctx); err == nil {
+					return errors.Errorf("Button state %s", restriction.Disabled)
+				}
+				return nil
+			}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: 2 * time.Second}); err != nil {
+				return errors.Wrap(err, "Button failed to become enabled")
+			}
+			return nil
+		},
+		r.ui.LeftClick(button),
+	)
+}
+
+func (r *RMAApp) waitForFileDeleted(fileName string) uiauto.Action {
+	return func(ctx context.Context) error {
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if _, err := os.Stat(fileName); err == nil {
+				return errors.Errorf("File %s was not deleted", fileName)
+			} else if !os.IsNotExist(err) {
+				return err
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: 2 * time.Second}); err != nil {
+			return errors.Wrap(err, "File was not deleted")
+		}
+		return nil
+	}
+}
+
+func (r *RMAApp) waitForPageToLoad(pageTitle string) uiauto.Action {
+	title := nodewith.Name(pageTitle).Role(role.Heading).Ancestor(rootNode)
+	return r.ui.WithTimeout(20 * time.Second).WaitUntilExists(title)
+}
