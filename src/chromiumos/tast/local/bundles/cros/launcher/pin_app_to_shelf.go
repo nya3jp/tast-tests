@@ -6,7 +6,6 @@ package launcher
 
 import (
 	"context"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -34,7 +33,7 @@ func init() {
 			"cros-system-ui-eng@google.com",
 		},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "crossystem"}, // TODO: Find a better attribute to disable it on VM: b/202340057
 		Fixture:      "install2Apps",
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
@@ -63,23 +62,6 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	// TODO: Remove screen recording code after b/202340057 is resolved.
-	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to create ScreenRecorder: ", err)
-	}
-	defer func() {
-		screenRecorder.Stop(ctx)
-		if s.HasError() {
-			s.Log("Saving screen record to ", s.OutDir())
-			if err := screenRecorder.SaveInBytes(ctx, filepath.Join(s.OutDir(), "screen_record.webm")); err != nil {
-				s.Log("Failed to save screen record in bytes: ", err)
-			}
-		}
-		screenRecorder.Release(ctx)
-	}()
-	screenRecorder.Start(ctx, tconn)
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 	if err != nil {
