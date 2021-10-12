@@ -66,10 +66,12 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
 
-	if h.Config.APFlashCCDProgrammer == "" {
-		s.Fatal("DUT does not have APFlashCCDProgrammer configured ", h.Config)
+	programmer := h.Config.APFlashCCDProgrammer
+	if programmer == "" {
+		s.Log("DUT does not have APFlashCCDProgrammer configured, using default")
+		programmer = "raiden_debug_spi:target=AP,serial=%s"
 	}
-	s.Logf("Programmer is %s", h.Config.APFlashCCDProgrammer)
+	s.Logf("Programmer is %s", programmer)
 
 	if err := h.Servo.RequireCCD(ctx); err != nil {
 		s.Fatal("Servo does not have CCD: ", err)
@@ -98,7 +100,7 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 	s.Log("Reading fw image over CCD")
 	h.DisconnectDUT(ctx) // Some of the dutControl commands will reboot
 	dutControl(ctx, s, h.Servo, h.Config.APFlashCCDPreCommands)
-	programmer := fmt.Sprintf(h.Config.APFlashCCDProgrammer, ccdSerial)
+	programmer = fmt.Sprintf(programmer, ccdSerial)
 	img, err := bios.NewRemoteImage(ctx, h.ServoProxy, programmer, commonbios.GBBImageSection)
 	if err != nil {
 		s.Error("Could not read firmware: ", err)
