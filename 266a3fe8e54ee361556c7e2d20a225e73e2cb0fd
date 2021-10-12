@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "670dbc04_2a1d75ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T00:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ea1d0d2_f6dc4e5a",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e24a140a_34478539",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8ab6532_e53117c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T00:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5768719f_2f02ab0c",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 25
+      },
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22d6fe14_9be78e64",
@@ -94,6 +142,24 @@
       "writtenOn": "2021-10-11T22:07:11Z",
       "side": 1,
       "message": "So between each iteration, DUT won\u0027t reboot, right? We\u0027re effectively reusing the previous iteration\u0027s page caches. Is that OK?",
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7f2ceb_9c6753d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T00:34:56Z",
+      "side": 1,
+      "message": "We don\u0027t reboot however we reset caches. Please see DropCaches L123 this view. So it is more-less equivalent.\n\nHere is debug log from iterations:\nAppLaunchTime: 19.529000, Enable Screen: 16.750000\nAppLaunchTime: 18.284000, Enable Screen: 15.658000\nAppLaunchTime: 18.627000, Enable Screen: 16.093000\nAppLaunchTime: 18.076000, Enable Screen: 15.475000\nAppLaunchTime: 18.434000, Enable Screen: 15.700000\nAppLaunchTime: 19.033000, Enable Screen: 16.038000\nAppLaunchTime: 18.700000, Enable Screen: 16.067000\n\nI also did manual tests for real test account and getting numbers ~20.5 (AppLaunchTime)\n\nI think this is acceptable in order not to go with much more complicated flow with server test impl and reboot\n\nDoes it sound good?",
+      "parentUuid": "22d6fe14_9be78e64",
       "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ca40463_9b587fd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T00:34:56Z",
+      "side": 1,
+      "message": "Good idea, done",
+      "parentUuid": "09d1c56e_eb38e890",
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "129b21b5_4977f4b0",
@@ -128,6 +212,24 @@
       "writtenOn": "2021-10-11T22:07:11Z",
       "side": 1,
       "message": "Isn\u0027t it better to start play store app here too to populate host\u0027s page cache? Otherwise, on 8GB+ devices, first first iteration could become slower than later iterations.",
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9294de19_d3da6673",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T00:34:56Z",
+      "side": 1,
+      "message": "We do fresh login with DropCaches. So this is redundant. Also manually verified that numbers +- consistent. There is no observation that 1-st regular is slower.",
+      "parentUuid": "129b21b5_4977f4b0",
       "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

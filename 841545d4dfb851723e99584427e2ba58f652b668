@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c139e371_2681e912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/perfboot/perfboot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T00:34:56Z",
+      "side": 1,
+      "message": "this almost copy-paste from service imp",
+      "range": {
+        "startLine": 24,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 18
+      },
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
