@@ -21,6 +21,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// docsName represents the name of the Google Docs web area.
+const docsName = "Google Docs"
+
 // NewGoogleDocs returns an action to create a new google document.
 func NewGoogleDocs(cr *chrome.Chrome, tconn *chrome.TestConn, newWindow bool) action.Action {
 	const newDocsURL = "https://docs.new"
@@ -35,7 +38,7 @@ func NewGoogleDocs(cr *chrome.Chrome, tconn *chrome.TestConn, newWindow bool) ac
 			return err
 		}
 		defer conn.Close()
-		if err := webutil.WaitForQuiescence(ctx, conn, time.Minute); err != nil {
+		if err := webutil.WaitForQuiescence(ctx, conn, longerUIWaitTime); err != nil {
 			return errors.Wrap(err, "failed to wait for page to finish loading")
 		}
 		return nil
@@ -45,8 +48,7 @@ func NewGoogleDocs(cr *chrome.Chrome, tconn *chrome.TestConn, newWindow bool) ac
 // RenameDoc returns an action to rename the document.
 func RenameDoc(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title string) action.Action {
 	ui := uiauto.New(tconn)
-	docWebArea := nodewith.NameContaining("Google Docs").Role(role.RootWebArea)
-	documentSavedState := nodewith.NameContaining("Document status: Saved to Drive").Role(role.Button)
+	docWebArea := nodewith.NameContaining(docsName).Role(role.RootWebArea)
 	renameTextbox := nodewith.Name("Rename").ClassName("docs-title-input").Ancestor(docWebArea).Editable().Focusable()
 	return uiauto.NamedAction("to rename document",
 		ui.Retry(5, uiauto.Combine("rename document",
@@ -56,7 +58,7 @@ func RenameDoc(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title stri
 			kb.TypeAction(title),
 			waitForFieldTextToBe(tconn, renameTextbox, title),
 			kb.AccelAction("Enter"),
-			ui.WithTimeout(30*time.Second).WaitUntilExists(documentSavedState),
+			waitForDocsSaved(tconn),
 		)),
 	)
 }
@@ -64,14 +66,13 @@ func RenameDoc(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title stri
 // EditDoc returns an action to edit the document.
 func EditDoc(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, paragraph string) action.Action {
 	ui := uiauto.New(tconn)
-	docWebArea := nodewith.NameContaining("Google Docs").Role(role.RootWebArea)
+	docWebArea := nodewith.NameContaining(docsName).Role(role.RootWebArea)
 	content := nodewith.Name("Document content").Role(role.TextField).Ancestor(docWebArea).Editable().First()
-	documentSavedState := nodewith.NameContaining("Document status: Saved to Drive").Role(role.Button)
 	return uiauto.NamedAction("to edit document",
 		uiauto.Combine("edit document",
 			ui.WaitUntilExists(content),
 			kb.TypeAction(paragraph),
-			ui.WithTimeout(30*time.Second).WaitUntilExists(documentSavedState),
+			waitForDocsSaved(tconn),
 		),
 	)
 }
@@ -79,8 +80,8 @@ func EditDoc(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, paragraph st
 // DeleteDoc returns an action to delete the document.
 func DeleteDoc(tconn *chrome.TestConn) action.Action {
 	ui := uiauto.New(tconn)
-	docWebArea := nodewith.NameContaining("Google Docs").Role(role.RootWebArea)
-	docHomeWebArea := nodewith.Name("Google Docs").Role(role.RootWebArea)
+	docWebArea := nodewith.NameContaining(docsName).Role(role.RootWebArea)
+	docHomeWebArea := nodewith.Name(docsName).Role(role.RootWebArea)
 	application := nodewith.Role(role.Application).Ancestor(docWebArea) // Google Docs appliction node.
 	fileButton := nodewith.Name("File").Role(role.MenuItem).Ancestor(application)
 	menu := nodewith.Role(role.Menu).Ancestor(application)
@@ -95,22 +96,12 @@ func DeleteDoc(tconn *chrome.TestConn) action.Action {
 			// When leaving the edit document, sometimes the "Leave Site?" dialog box will pop up.
 			// If it appears, click the leave button.
 			ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(leaveButton), ui.LeftClick(leaveButton)),
-			ui.WithTimeout(time.Minute).WaitUntilExists(docHomeWebArea),
+			ui.WithTimeout(longerUIWaitTime).WaitUntilExists(docHomeWebArea),
 		),
 	)
 }
 
-func waitForFieldTextToBe(tconn *chrome.TestConn, finder *nodewith.Finder, expectedText string) action.Action {
-	ui := uiauto.New(tconn)
-	return ui.WithInterval(400*time.Millisecond).Retry(5,
-		func(ctx context.Context) error {
-			nodeInfo, err := ui.Info(ctx, finder)
-			if err != nil {
-				return err
-			}
-			if nodeInfo.Value != expectedText {
-				return errors.Errorf("failed to validate input value: got: %s; want: %s", nodeInfo.Value, expectedText)
-			}
-			return nil
-		})
+// waitForDocsSaved waits for the docs document state to be saved.
+func waitForDocsSaved(tconn *chrome.TestConn) action.Action {
+	return waitForDocumentSaved(tconn, docsName)
 }
