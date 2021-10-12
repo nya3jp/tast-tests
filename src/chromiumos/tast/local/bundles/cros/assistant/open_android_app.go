@@ -26,7 +26,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		VarDeps:      []string{"assistant.username", "assistant.password"},
-		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
+		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 3*time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -99,7 +99,7 @@ func waitForArcPackageListInitialRefreshed(ctx context.Context, s *testing.State
 			return errors.New("ARC package list is not refreshed yet")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 60 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 3 * time.Minute}); err != nil {
 		return errors.Wrap(err, "failed to wait for ARC package list to be refreshed")
 	}
 	return nil
