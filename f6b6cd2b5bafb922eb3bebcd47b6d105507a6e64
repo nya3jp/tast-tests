@@ -70,6 +70,24 @@
       "parentUuid": "017e96a9_7a1e067f",
       "revId": "f6b6cd2b5bafb922eb3bebcd47b6d105507a6e64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dd86900_1b1fb3f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/dep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-12T15:15:09Z",
+      "side": 1,
+      "message": "Note: I could not come up with alternative approach we can take now, so LGTM.\nThough, in the future, this may be revisited specifically from infra team\u0027s point of view.",
+      "parentUuid": "de3d162a_76780487",
+      "revId": "f6b6cd2b5bafb922eb3bebcd47b6d105507a6e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
