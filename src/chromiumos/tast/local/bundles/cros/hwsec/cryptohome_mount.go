@@ -24,6 +24,20 @@ func init() {
 		},
 		SoftwareDeps: []string{"tpm"},
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			Name: "tpm1",
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"tpm2", "qemu"},
+		}, {
+			Name:              "tpm2",
+			ExtraSoftwareDeps: []string{"tpm2", "no_qemu"},
+			// No ExtraAttr; this test is critical.
+		}, {
+			Name: "dynamic_tpm1",
+			// ExtraSoftwareDeps: []string{"tpm1", "qemu"},
+			Fixture: "hwsecTPM1Simulator",
+		}},
 	})
 }
 

@@ -189,6 +189,13 @@ var UIDaemon = &DaemonInfo{
 	HasDBus:    false,
 }
 
+// TPMSimulatorDaemon represents the DaemonsInfo for tpm2_simulator.
+var TPMSimulatorDaemon = &DaemonInfo{
+	Name:       "tpm2-simulator",
+	DaemonName: "tpm2-simulator",
+	HasDBus:    false,
+}
+
 // LowLevelTPMDaemons represents the low level TPM daemons.
 var LowLevelTPMDaemons = []*DaemonInfo{
 	TcsdDaemon,
