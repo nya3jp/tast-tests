@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f5a338_cc623e9c",
+        "filename": "src/chromiumos/tast/local/graphics/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-12T07:26:38Z",
+      "side": 1,
+      "message": "I think I spoke imprecise about the code here. Lets discuss on Wednesday. I just want the defaults monitored and restored here, not set for all graphics tests.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 3
+      },
+      "revId": "302ce0fe65389c2490b8fad127fe2055929244d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
