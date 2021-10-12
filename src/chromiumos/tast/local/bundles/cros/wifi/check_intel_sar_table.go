@@ -54,21 +54,32 @@ const (
 
 // geoSARTable stores a Geo SAR table in units of 0.125 dBm.
 type geoSARTable struct {
+	version        int64
 	max2g          int64
 	chainAOffset2g int64
 	chainBOffset2g int64
 	max5g          int64
 	chainAOffset5g int64
 	chainBOffset5g int64
+	max6g          int64
+	chainAOffset6g int64
+	chainBOffset6g int64
 }
 
 // For the sake of clarity, we convert the the Geo SAR tables to units of 1 dBm
 // before printing.
 func (table geoSARTable) String() string {
-	return fmt.Sprintf("{%.3f %.3f %.3f %.3f %.3f %.3f}",
+	v2Part := ""
+	if table.version == 2 {
+		v2Part = fmt.Sprintf(" %.3f %.3f %.3f",
+			float64(table.max6g)/8.0, float64(table.chainAOffset6g)/8.0,
+			float64(table.chainBOffset6g)/8.0)
+	}
+	return fmt.Sprintf("{%.3f %.3f %.3f %.3f %.3f %.3f%v}",
 		float64(table.max2g)/8.0, float64(table.chainAOffset2g)/8.0,
 		float64(table.chainBOffset2g)/8.0, float64(table.max5g)/8.0,
-		float64(table.chainAOffset5g)/8.0, float64(table.chainBOffset5g)/8.0)
+		float64(table.chainAOffset5g)/8.0, float64(table.chainBOffset5g)/8.0,
+		v2Part)
 }
 
 const (
@@ -96,11 +107,12 @@ func getWifiVendorID(ctx context.Context, netIf string) (string, error) {
 }
 
 // getRawSARValuesAndCheckVersion returns the raw SAR values contained in data
-// under the given tableKey. If the table is not found, a nil table will be returned
-// without an error, since it is not necessarily an error for a table to be missing.
+// under the given tableKey and the version of the format of the SAR table.
+// If the table is not found, a nil table (and an invalid version number)
+// will be returned without an error, since it is not necessarily an error for a table to be missing.
 // If we encounter an error while parsing the table, or the version number is not valid,
-// return a nil table alongside the error itself.
-func getRawSARValuesAndCheckVersion(data []byte, tableKey string, validVersions []int64) ([]int64, error) {
+// return a nil table and an invalid version number alongside the error itself.
+func getRawSARValuesAndCheckVersion(data []byte, tableKey string, validVersions []int64) ([]int64, int64, error) {
 	dataString := string(data)
 	// Remove spaces and newlines from from data to make parsing easier.
 	dataString = strings.Replace(dataString, "\n", "", -1)
@@ -109,7 +121,7 @@ func getRawSARValuesAndCheckVersion(data []byte, tableKey string, validVersions 
 	// Try to find the Geo SAR table within the data.
 	keyIndex := strings.Index(dataString, "Name("+tableKey+",Package")
 	if keyIndex == -1 {
-		return nil, nil
+		return nil, -1, nil
 	}
 
 	// The fist "{" character denotes the beginning of the data package descriptor.
@@ -117,7 +129,7 @@ func getRawSARValuesAndCheckVersion(data []byte, tableKey string, validVersions 
 	sarVersion := dataString[startIndex : startIndex+strings.Index(dataString[startIndex:], ",")]
 	intVersion, err := strconv.ParseInt(sarVersion, 0, 64)
 	if err != nil {
-		return nil, err
+		return nil, -1, err
 	}
 	validVersion := false
 	for _, version := range validVersions {
@@ -127,7 +139,7 @@ func getRawSARValuesAndCheckVersion(data []byte, tableKey string, validVersions 
 		}
 	}
 	if !validVersion {
-		return nil, errors.Errorf("invalid SAR version number %x for table %s", intVersion, tableKey)
+		return nil, -1, errors.Errorf("invalid SAR version number %x for table %s", intVersion, tableKey)
 	}
 	// The second "{" character denotes the beginning of the actual SAR data.
 	startIndex = strings.Index(dataString[startIndex:], "{") + startIndex + 1
@@ -137,11 +149,11 @@ func getRawSARValuesAndCheckVersion(data []byte, tableKey string, validVersions 
 	for _, val := range values {
 		intVal, err := strconv.ParseInt(val, 0, 64)
 		if err != nil {
-			return nil, errors.Wrap(err, "invalid ASL format or key")
+			return nil, -1, errors.Wrap(err, "invalid ASL format or key")
 		}
 		intValues = append(intValues, intVal)
 	}
-	return intValues, nil
+	return intValues, intVersion, nil
 }
 
 // getGeoSARTablesFromASL parses ASL formatted data and returns an array of
@@ -179,29 +191,45 @@ func getGeoSARTablesFromASL(data []byte) ([]geoSARTable, error) {
 	//                }
 	//            })
 	//
-	validGeoSARVersions := []int64{0x00}
-	values, err := getRawSARValuesAndCheckVersion(data, "WGDS", validGeoSARVersions)
+	validGeoSARVersions := []int64{0x00, 0x02}
+	values, version, err := getRawSARValuesAndCheckVersion(data, "WGDS", validGeoSARVersions)
 	if values == nil {
 		// If the Geo table was not found, err will be nil.
 		return nil, err
 	}
 
 	expectedNumValues := 19
+	if version == 2 {
+		expectedNumValues = 28
+	}
 	if len(values) != expectedNumValues {
 		return nil, errors.Errorf("Geo SAR table: got %d values; want %d", len(values), expectedNumValues)
 	}
 
 	var geoTables []geoSARTable
+	offset := 6
+	if version == 2 {
+		offset = 9
+	}
 	// Parse out the Geo SAR values.
 	for i := 0; i < 3; i++ {
-		start := (i * 6) + 1
+		start := (i * offset) + 1
 		currentTable := geoSARTable{
+			version:        version,
 			max2g:          values[start],
 			chainAOffset2g: values[start+1],
 			chainBOffset2g: values[start+2],
 			max5g:          values[start+3],
 			chainAOffset5g: values[start+4],
 			chainBOffset5g: values[start+5],
+			max6g:          255,
+			chainAOffset6g: 0,
+			chainBOffset6g: 0,
+		}
+		if version == 2 {
+			currentTable.max6g = values[start+6]
+			currentTable.chainAOffset6g = values[start+7]
+			currentTable.chainBOffset6g = values[start+8]
 		}
 		geoTables = append(geoTables, currentTable)
 	}
@@ -255,14 +283,29 @@ func getSARTableFromASL(data []byte, tableType sarTableType) ([]int64, error) {
 		tableIndices = []int{3, 13}
 		tableLength = 33
 	}
-	validSARVersions := []int64{0x00}
-	values, err := getRawSARValuesAndCheckVersion(data, tableKey, validSARVersions)
+	validSARVersions := []int64{0x00, 0x02}
+	values, version, err := getRawSARValuesAndCheckVersion(data, tableKey, validSARVersions)
 	if err != nil {
 		return nil, err
 	}
 	if values == nil {
 		// Missing dynamic SAR table.
 		return nil, nil
+	}
+	if version == 2 {
+		switch tableType {
+		case profileA:
+			tableLength = 46
+			// We do not support CDB, ignore those tables. Only look at SAR tables
+			// for Chain A and Chain B.
+			tableIndices = []int{2, 24}
+		case profileB:
+			extraSets := int(values[2])
+			tableLength = 135
+			// The table has at least 1 set of SAR settings, |extraSets|
+			// indicates how many optional sets are present in the table.
+			tableIndices = []int{3, 3 + 11*(1+extraSets)}
+		}
 	}
 
 	// tableIndices[1] should be the length of the array.
@@ -294,7 +337,7 @@ func verifyAndGetGeoTables(decodedSSDT []byte, s *testing.State) []geoSARTable {
 	}
 	s.Log("Geo SAR (WGDS) tables: ", geoSARTables)
 	for _, table := range geoSARTables {
-		if table.max2g < sarHardMin || table.max5g < sarHardMin {
+		if table.max2g < sarHardMin || table.max5g < sarHardMin || table.max6g < sarHardMin {
 			s.Error("Geo SAR table found with max power field below the minimum allowed power")
 		}
 	}
@@ -362,15 +405,32 @@ func verifyTable(decodedSSDT []byte, tableType sarTableType, geoTables []geoSART
 		for index, realSARValue := range realSARValues {
 			for _, geoTable := range geoTables {
 				var geoOffset int64
-				// SAR table format: [0 = 2G_A, 1-4 = 5G_A, 5=2G_B, 6-9=5G_B]
-				if index == 0 {
-					geoOffset = geoTable.chainAOffset2g
-				} else if index < 5 {
-					geoOffset = geoTable.chainAOffset5g
-				} else if index == 5 {
-					geoOffset = geoTable.chainBOffset2g
-				} else {
-					geoOffset = geoTable.chainBOffset5g
+				if geoTable.version == 0 {
+					// SAR table format: [0 = 2G_A, 1-4 = 5G_A, 5=2G_B, 6-9=5G_B]
+					if index == 0 {
+						geoOffset = geoTable.chainAOffset2g
+					} else if index < 5 {
+						geoOffset = geoTable.chainAOffset5g
+					} else if index == 5 {
+						geoOffset = geoTable.chainBOffset2g
+					} else {
+						geoOffset = geoTable.chainBOffset5g
+					}
+				} else if geoTable.version == 2 {
+					// SAR table format: [0 = 2G_A, 1-5 = 5G_A, 6-10 = 6G_A, 11=2G_B, 12-16=5G_B, 17-21 = 6G_B]
+					if index == 0 {
+						geoOffset = geoTable.chainAOffset2g
+					} else if index < 6 {
+						geoOffset = geoTable.chainAOffset5g
+					} else if index < 11 {
+						geoOffset = geoTable.chainAOffset6g
+					} else if index == 11 {
+						geoOffset = geoTable.chainBOffset2g
+					} else if index < 17 {
+						geoOffset = geoTable.chainBOffset5g
+					} else if index < 21 {
+						geoOffset = geoTable.chainBOffset6g
+					}
 				}
 				// Actual Geo SAR values are 1/8 * the stored ints.
 				realGeoOffset := float64(geoOffset) / 8.0
