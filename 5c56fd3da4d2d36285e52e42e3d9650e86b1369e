@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e517f2e8_8a7446d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-10-12T03:06:51Z",
+      "side": 1,
+      "message": "Conflicting CL is now merged:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3200481\n\nAdd me back to the Attention Set when you\u0027re ready for review. Thanks! :)",
+      "revId": "5c56fd3da4d2d36285e52e42e3d9650e86b1369e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
