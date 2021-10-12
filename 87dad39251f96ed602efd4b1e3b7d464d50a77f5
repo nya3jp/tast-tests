@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16804f53_12128954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002410
+      },
+      "writtenOn": "2021-10-12T01:01:35Z",
+      "side": 1,
+      "message": "Finch is an internal codename; for open source code, we use the term \"Chrome variations\" or \"variations\" or \"field trial(s)\".",
+      "parentUuid": "90f7fbbe_fbea5553",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "87dad39251f96ed602efd4b1e3b7d464d50a77f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8eb7563_8409e61c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
         "patchSetId": 2
@@ -77,6 +101,30 @@
       "writtenOn": "2021-10-11T23:31:22Z",
       "side": 1,
       "message": "Is there nobody on the chrome team that asked for this test?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "87dad39251f96ed602efd4b1e3b7d464d50a77f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "430e0a79_49065966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002410
+      },
+      "writtenOn": "2021-10-12T01:01:35Z",
+      "side": 1,
+      "message": "//base/metrics/OWNERS are the contact points on the Chrome team – is it possible to reference an OWNERS file? We don\u0027t have a public mailing list for our team.",
+      "parentUuid": "9288b47b_9b114fbe",
       "range": {
         "startLine": 27,
         "startChar": 0,
