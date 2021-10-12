@@ -69,10 +69,9 @@ type Helper struct {
 	// Any tests requiring a Config should set cfgFilepath to s.DataPath(firmware.ConfigFile) during NewHelper.
 	cfgFilepath string
 
-	// These vars track whether the DUT's on-board image, and the USB recovery images are known to have up-to-date Tast host files.
-	doesDUTImageHaveTastFiles bool
-	doesRecHaveTastFiles      bool
-	doesUSBDevHaveTastFiles   bool
+	// These vars track whether the DUT's on-board image, and the USB images are known to have up-to-date Tast host files.
+	dutInternalStorageHasTastFiles bool
+	dutUsbHasTastFiles             bool
 
 	// DUT is used for communicating with the device under test.
 	DUT *dut.DUT
@@ -537,6 +536,8 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	// Reduce the context deadline to let the deferred calls succeed.
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
+	// If it did have tast files, it won't shortly.
+	h.dutUsbHasTastFiles = false
 	// On my computer with a servo v4, this takes 48 minutes.
 	if err = h.ServoProxy.InputCommand(ctx, true, reader, "sh", "-c", fmt.Sprintf("tar -JxOf - | dd of=%s bs=1M iflag=fullblock oflag=dsync", shutil.Escape(usbdev))); err != nil {
 		return errors.Wrapf(err, "failed to flash os image %q to USB %q", testImageURL, usbdev)
