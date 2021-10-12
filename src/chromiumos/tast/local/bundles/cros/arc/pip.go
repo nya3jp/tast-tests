@@ -477,13 +477,18 @@ func testPIPAutoPIPMinimize(ctx context.Context, cr *chrome.Chrome, tconn *chrom
 }
 
 func minimizePIP(ctx context.Context, tconn *chrome.TestConn, pipAct *arc.Activity) error {
-	if _, err := ash.SetARCAppWindowState(ctx, tconn, pipAct.PackageName(), ash.WMEventMinimize); err != nil {
+	if err := ash.WaitForVisible(ctx, tconn, pipAct.PackageName()); err != nil {
+		return errors.Wrap(err, "failed to wait for PIP activity to be visible")
+	}
+	window, err := ash.GetARCAppWindowInfo(ctx, tconn, pipAct.PackageName())
+	if err != nil {
+		return errors.Wrapf(err, "failed to get ARC window infomation for package name %s", pipAct.ActivityName())
+	}
+	// The window is minimized here, but the expected state is PIP, so the async API must used.
+	if _, err := ash.SetWindowState(ctx, tconn, window.ID, ash.WMEventMinimize, false /* waitForStateChange */); err != nil {
 		return errors.Wrapf(err, "failed to minimize %s", pipAct.ActivityName())
 	}
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, pipAct.PackageName(), ash.WindowStateMinimized); err != nil {
-		return errors.Wrapf(err, "failed to wait for %s to be minimized", pipAct.ActivityName())
-	}
-	return nil
+	return waitForPIPWindow(ctx, tconn)
 }
 
 // testPIPExpandViaMenuTouch verifies that PIP window is properly expanded by touching menu.
