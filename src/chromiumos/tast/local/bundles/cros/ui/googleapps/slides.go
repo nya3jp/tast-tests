@@ -23,6 +23,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// slideName represents the name of the Google Slides web area.
+const slideName = "Google Slides"
+
 // NewGoogleSlides returns an action that creates a new google slides from web.
 func NewGoogleSlides(cr *chrome.Chrome, tconn *chrome.TestConn, newWindow bool) action.Action {
 	const newSlidesURL = "https://slides.new"
@@ -42,12 +45,12 @@ func NewGoogleSlides(cr *chrome.Chrome, tconn *chrome.TestConn, newWindow bool) 
 			}
 			defer conn.Close()
 
-			if err := webutil.WaitForQuiescence(ctx, conn, time.Minute); err != nil {
+			if err := webutil.WaitForQuiescence(ctx, conn, longerUIWaitTime); err != nil {
 				return errors.Wrap(err, "failed to wait for page to finish loading")
 			}
 			return nil
 		},
-		ui.WithTimeout(time.Minute).WaitUntilExists(filmstripView),
+		ui.WithTimeout(longerUIWaitTime).WaitUntilExists(filmstripView),
 		ui.IfSuccessThen(ui.Exists(gotIt), ui.LeftClick(gotIt)),
 	)
 }
@@ -59,11 +62,10 @@ func NewSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title, cont
 	titleNode := nodewith.Name("title").First()
 	pageNumberNode := nodewith.Name(pageNumber).First()
 	textNode := nodewith.Name("text").First()
-	documentSavedState := nodewith.NameContaining("Document status: Saved to Drive").Role(role.Button)
 	return uiauto.NamedAction(fmt.Sprintf("to create a new slide with page number %s and edit its content", pageNumber),
 		uiauto.Combine("create a new slide and edit content",
 			ui.WaitUntilExists(newSlide),
-			ui.WithTimeout(time.Minute).LeftClickUntil(newSlide, ui.WithTimeout(25*time.Second).WaitUntilExists(pageNumberNode)),
+			ui.WithTimeout(longerUIWaitTime).LeftClickUntil(newSlide, ui.WithTimeout(25*time.Second).WaitUntilExists(pageNumberNode)),
 			ui.WaitUntilExists(titleNode),
 			ui.DoubleClick(titleNode),
 			ui.Sleep(time.Second),
@@ -72,7 +74,7 @@ func NewSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title, cont
 			ui.DoubleClick(textNode),
 			ui.Sleep(time.Second),
 			kb.TypeAction(content),
-			ui.WithTimeout(30*time.Second).WaitUntilExists(documentSavedState),
+			waitForSlideSaved(tconn),
 		),
 	)
 }
@@ -80,8 +82,7 @@ func NewSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title, cont
 // RenameSlide returns an action that renames google slide.
 func RenameSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title string) action.Action {
 	ui := uiauto.New(tconn)
-	slideWebArea := nodewith.NameContaining("Google Slides").Role(role.RootWebArea)
-	documentSavedState := nodewith.NameContaining("Document status: Saved to Drive").Role(role.Button)
+	slideWebArea := nodewith.NameContaining(slideName).Role(role.RootWebArea)
 	renameTextbox := nodewith.Name("Rename").ClassName("docs-title-input").Ancestor(slideWebArea).Editable().Focusable()
 	return uiauto.NamedAction("to rename the slide",
 		ui.Retry(5, uiauto.Combine("rename slide",
@@ -91,7 +92,7 @@ func RenameSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title st
 			kb.TypeAction(title),
 			waitForFieldTextToBe(tconn, renameTextbox, title),
 			kb.AccelAction("Enter"),
-			ui.WithTimeout(30*time.Second).WaitUntilExists(documentSavedState),
+			waitForSlideSaved(tconn),
 		)),
 	)
 }
@@ -132,7 +133,6 @@ func EditSlideTitle(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title
 	ui := uiauto.New(tconn)
 	titleNode := nodewith.Name("title").First()
 	subtitleNode := nodewith.Name("subtitle").First()
-	documentSavedState := nodewith.NameContaining("Document status: Saved to Drive").Role(role.Button)
 	return uiauto.NamedAction("to edit slide title and subtitle",
 		uiauto.Combine("edit slide and subtitle",
 			ui.WaitUntilExists(titleNode),
@@ -143,7 +143,7 @@ func EditSlideTitle(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title
 			ui.DoubleClick(subtitleNode),
 			ui.Sleep(time.Second),
 			kb.TypeAction(subtitle),
-			ui.WithTimeout(30*time.Second).WaitUntilExists(documentSavedState),
+			waitForSlideSaved(tconn),
 		),
 	)
 }
@@ -151,7 +151,6 @@ func EditSlideTitle(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title
 // EditSlide returns an action that edits google slide.
 func EditSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, text, expectedText string) action.Action {
 	ui := uiauto.New(tconn)
-	documentSavedState := nodewith.NameContaining("Document status: Saved to Drive").Role(role.Button)
 	return uiauto.NamedAction("to edit slide",
 		uiauto.Combine("edit slide",
 			func(ctx context.Context) error {
@@ -165,7 +164,7 @@ func EditSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, text, expe
 			kb.TypeAction(expectedText),
 			kb.AccelAction("Esc"),
 			kb.AccelAction("Esc"),
-			ui.WithTimeout(30*time.Second).WaitUntilExists(documentSavedState),
+			waitForSlideSaved(tconn),
 		),
 	)
 }
@@ -173,8 +172,8 @@ func EditSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, text, expe
 // DeleteSlide returns an action that deletes google slide.
 func DeleteSlide(tconn *chrome.TestConn) action.Action {
 	ui := uiauto.New(tconn)
-	slideWebArea := nodewith.NameContaining("Google Slides").Role(role.RootWebArea)
-	slideHomeWebArea := nodewith.Name("Google Slides").Role(role.RootWebArea)
+	slideWebArea := nodewith.NameContaining(slideName).Role(role.RootWebArea)
+	slideHomeWebArea := nodewith.Name(slideName).Role(role.RootWebArea)
 	application := nodewith.Role(role.Application).Ancestor(slideWebArea) // Google Slide appliction node.
 	fileButton := nodewith.Name("File").Role(role.MenuItem).Ancestor(application)
 	menu := nodewith.Role(role.Menu).Ancestor(application)
@@ -189,7 +188,12 @@ func DeleteSlide(tconn *chrome.TestConn) action.Action {
 			// When leaving the edit slide, sometimes the "Leave Site?" dialog box will pop up.
 			// If it appears, click the leave button.
 			ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(leaveButton), ui.LeftClick(leaveButton)),
-			ui.WithTimeout(time.Minute).WaitUntilExists(slideHomeWebArea),
+			ui.WithTimeout(longerUIWaitTime).WaitUntilExists(slideHomeWebArea),
 		),
 	)
+}
+
+// waitForSlideSaved waits for the slide document state to be saved.
+func waitForSlideSaved(tconn *chrome.TestConn) action.Action {
+	return waitForDocumentSaved(tconn, slideName)
 }
