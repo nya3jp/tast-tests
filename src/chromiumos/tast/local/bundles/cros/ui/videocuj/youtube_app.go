@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/android/ui"
 	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
@@ -21,11 +22,10 @@ import (
 )
 
 const (
-	youtubePkg                   = "com.google.android.youtube"
-	playerViewID                 = youtubePkg + ":id/player_view"
-	optionsDialogID              = youtubePkg + ":id/bottom_sheet_list_view"
-	uiWaitTime                   = 15 * time.Second // this is for arc-obj, not for uiauto.Context
-	waitTimeAfterClickPlayerView = 3 * time.Second
+	youtubePkg      = "com.google.android.youtube"
+	playerViewID    = youtubePkg + ":id/player_view"
+	optionsDialogID = youtubePkg + ":id/bottom_sheet_list_view"
+	uiWaitTime      = 3 * time.Second // this is for arc-obj, not for uiauto.Context
 )
 
 var appStartTime time.Duration
@@ -73,7 +73,6 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 		qualityListItemID       = youtubePkg + ":id/list_item_text"
 		moreOptions             = youtubePkg + ":id/player_overflow_button"
 		dismissID               = youtubePkg + ":id/dismiss"
-		skipAdsID               = youtubePkg + ":id/skip_ad_button"
 	)
 
 	if appStartTime, y.act, err = cuj.OpenAppAndGetStartTime(ctx, y.tconn, y.a, youtubePkg, youtubeApp, youtubeAct); err != nil {
@@ -150,15 +149,11 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 	// Dut to the different response time of DUTs.
 	// We need to combine these actions in Poll to make switch quality works smoothly.
 	switchQuality := func(resolution string) error {
-		testing.ContextLogf(ctx, "Switch Quality to %q", resolution)
-
-		if !y.premium {
-			skipAds := y.d.Object(androidui.ID(skipAdsID))
-			if err := cuj.ClickIfExist(skipAds, uiWaitTime)(ctx); err != nil {
-				return errors.Wrap(err, "failed to click 'Skip Ads'")
-			}
+		if err := y.skipAds(ctx); err != nil {
+			return errors.Wrap(err, "failed to skip YouTube ads")
 		}
 
+		testing.ContextLogf(ctx, "Switch Quality to %q", resolution)
 		startTime := time.Now()
 		if err := testing.Poll(ctx, func(context.Context) error {
 			// The playerView cannot be found/clicked when the options dialog (used for selecting quality) is present.
@@ -177,7 +172,7 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 			}
 
 			moreBtn := y.d.Object(androidui.ID(moreOptions))
-			if err := cuj.FindAndClick(moreBtn, waitTimeAfterClickPlayerView)(ctx); err != nil {
+			if err := cuj.FindAndClick(moreBtn, uiWaitTime)(ctx); err != nil {
 				return errors.Wrap(err, "failed to find/click the 'More options'")
 			}
 
@@ -274,7 +269,7 @@ func (y *YtApp) EnterFullscreen(ctx context.Context) error {
 		}
 
 		fsBtn := y.d.Object(androidui.Description(fullscreenDesc))
-		if err := cuj.FindAndClick(fsBtn, waitTimeAfterClickPlayerView)(ctx); err != nil {
+		if err := cuj.FindAndClick(fsBtn, uiWaitTime)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find/click the fullscreen button")
 		}
 
@@ -285,11 +280,11 @@ func (y *YtApp) EnterFullscreen(ctx context.Context) error {
 			return errors.Wrap(err, "failed to find/click the player view")
 		}
 		exitFullscreenBtn := y.d.Object(androidui.Description(exitFullscreenDesc))
-		if err := exitFullscreenBtn.WaitForExists(ctx, waitTimeAfterClickPlayerView); err != nil {
+		if err := exitFullscreenBtn.WaitForExists(ctx, uiWaitTime); err != nil {
 			return errors.Wrap(err, "failed to play video in fullscreen")
 		}
 		return nil
-	}, &testing.PollOptions{Interval: time.Second, Timeout: uiWaitTime})
+	}, &testing.PollOptions{Interval: time.Second, Timeout: 15 * time.Second})
 }
 
 // PauseAndPlayVideo verifies video playback on youtube app.
@@ -319,8 +314,8 @@ func (y *YtApp) PauseAndPlayVideo(ctx context.Context) error {
 			return errors.Wrapf(err, "failed to find/click the player view in %s", uiWaitTime)
 		}
 
-		if err := cuj.FindAndClick(pauseBtn, waitTimeAfterClickPlayerView)(ctx); err != nil {
-			return errors.Wrapf(err, "failed to find/click the pause button in %s", waitTimeAfterClickPlayerView)
+		if err := cuj.FindAndClick(pauseBtn, uiWaitTime)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to find/click the pause button in %s", uiWaitTime)
 		}
 
 		if err := playBtn.WaitForExists(ctx, 2*time.Second); err != nil {
@@ -359,6 +354,31 @@ func (y *YtApp) ensureVideoPlaying(ctx context.Context, playerView, playBtn *and
 		}
 		return nil
 	}, &testing.PollOptions{Interval: time.Second, Timeout: 20 * time.Second})
+}
+
+func (y *YtApp) skipAds(ctx context.Context) error {
+	if y.premium {
+		testing.ContextLog(ctx, "Currently using Premium account; no need to check for ads")
+		return nil
+	}
+
+	testing.ContextLog(ctx, "Checking for YouTube ads")
+	visitAdvertiserBtn := y.d.Object(androidui.Text("Visit advertiser"))
+	skipAdsID := youtubePkg + ":id/skip_ad_button"
+	skipAdsBtn := y.d.Object(androidui.ID(skipAdsID))
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := visitAdvertiserBtn.WaitForExists(ctx, uiWaitTime); err != nil && ui.IsTimeout(err) {
+			return nil
+		}
+
+		if err := skipAdsBtn.Exists(ctx); err != nil {
+			return errors.Wrap(err, "'Skip ads' button not available yet")
+		}
+		if err := skipAdsBtn.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click 'Skip ads'")
+		}
+		return errors.New("have not determined whether the ad has been skipped successfully")
+	}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 30 * time.Second})
 }
 
 // Close closes the resources related to video.
