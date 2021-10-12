@@ -52,6 +52,24 @@
       "parentUuid": "f4ccccf8_f7a2f9e4",
       "revId": "f6b6cd2b5bafb922eb3bebcd47b6d105507a6e64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de3d162a_76780487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/dep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-12T12:15:41Z",
+      "side": 1,
+      "message": "sorry for confusion.\n\nWe still want to run our test on non-target models to see what problems do they have.\n\nNow I created 2 conditions: targetModels and lowPrioriyTargetModels. Hope this should help.",
+      "parentUuid": "017e96a9_7a1e067f",
+      "revId": "f6b6cd2b5bafb922eb3bebcd47b6d105507a6e64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
