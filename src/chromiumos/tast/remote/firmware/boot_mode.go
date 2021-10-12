@@ -431,25 +431,15 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 		return err
 	}
 
-	// Wait for DUT's BootID to change.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// Set a short timeout to the iteration in case of any SSH operations
-		// blocking for a long time. For example, the DUT's network interface
-		// might go down in the middle of readBootID, which might block for a
-		// long time.
-		ctx, cancel := context.WithTimeout(ctx, 3*time.Second)
-		defer cancel()
-		if err := h.WaitConnect(ctx); err != nil {
-			return errors.Wrap(err, "failed to connect to DUT")
-		}
-		if bootID, err := h.Reporter.BootID(ctx); err != nil {
-			return errors.Wrap(err, "reporting boot ID")
-		} else if bootID == origBootID {
-			return errors.Errorf("new boot ID == old boot ID: %s", bootID)
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: offTimeout, Interval: 5 * time.Second}); err != nil {
-		return errors.Wrapf(err, "waiting for DUT to reboot after setting power_state to %q", powerState)
+	ctx, cancel := context.WithTimeout(ctx, offTimeout)
+	defer cancel()
+	if err := h.WaitConnect(ctx); err != nil {
+		return errors.Wrap(err, "failed to connect to DUT")
+	}
+	if bootID, err := h.Reporter.BootID(ctx); err != nil {
+		return errors.Wrap(err, "reporting boot ID")
+	} else if bootID == origBootID {
+		return errors.Errorf("new boot ID == old boot ID: %s", bootID)
 	}
 
 	// If in dev mode, bypass the TO_DEV screen.
