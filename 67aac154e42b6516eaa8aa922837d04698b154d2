@@ -46,6 +46,30 @@
       },
       "revId": "67aac154e42b6516eaa8aa922837d04698b154d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "337a658d_40ba2b53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/screenshot_chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-12T05:50:18Z",
+      "side": 1,
+      "message": "Thanks! But we only get one uprev of Chrome a day, at best (pupr). Also it is a good idea to move graphics testing to nightly and weekly testing to save lab time.",
+      "parentUuid": "2327d0e0_1aba3e7a",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "67aac154e42b6516eaa8aa922837d04698b154d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
