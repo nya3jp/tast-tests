@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74434ff0_df846625",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-12T20:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16804f53_12128954",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "87dad39251f96ed602efd4b1e3b7d464d50a77f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8eb7563_8409e61c",
@@ -78,6 +102,30 @@
       "writtenOn": "2021-10-11T23:31:22Z",
       "side": 1,
       "message": "Can you make it clearer what is in seed and what kind of things it can control in Chrome",
+      "range": {
+        "startLine": 24,
+        "startChar": 63,
+        "endLine": 24,
+        "endChar": 67
+      },
+      "revId": "87dad39251f96ed602efd4b1e3b7d464d50a77f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a3f361a_f6e14508",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-12T20:40:10Z",
+      "side": 1,
+      "message": "Done, added a few comments throughout to better explain things.",
+      "parentUuid": "a8eb7563_8409e61c",
       "range": {
         "startLine": 24,
         "startChar": 63,
@@ -137,6 +185,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7509bdd_d2409f03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-12T20:40:10Z",
+      "side": 1,
+      "message": "Unfortunately we can\u0027t reference an OWNERS file (I think there\u0027s a long-standing request to add that as an option). Is there any personal contact or alias we can include here in addition to ours?",
+      "parentUuid": "430e0a79_49065966",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "87dad39251f96ed602efd4b1e3b7d464d50a77f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16250e80_77568543",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
         "patchSetId": 2
@@ -148,6 +220,30 @@
       "writtenOn": "2021-10-11T23:31:22Z",
       "side": 1,
       "message": "add this to the desc in the test definition",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 140
+      },
+      "revId": "87dad39251f96ed602efd4b1e3b7d464d50a77f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd065087_290bb565",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-12T20:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16250e80_77568543",
       "range": {
         "startLine": 84,
         "startChar": 0,
