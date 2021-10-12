@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3edaa97b_00817e07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-12T23:51:12Z",
+      "side": 1,
+      "message": "Minor comments only.",
+      "revId": "206d84cea673c31b5d504cf1858ab0d8918ea53b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a645f3a_bbf166d5",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-12T23:51:12Z",
+      "side": 1,
+      "message": "I would say:\n\n// Autotest\u0027s firmware_check_keys.py takes the last keyboard device.\n\nBut the python code also doesn\u0027t check if the device is physical, so this may or may not be needed.",
+      "range": {
+        "startLine": 65,
+        "startChar": 25,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "206d84cea673c31b5d504cf1858ab0d8918ea53b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0894542f_578b59fc",
+        "filename": "src/chromiumos/tast/local/input/keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-12T23:51:12Z",
+      "side": 1,
+      "message": "Instead of reversing the list, just iterate in reverse:\n\nfor i :\u003d len(infos)-1; i \u003e\u003d 0; i-- {\n  info :\u003d infos[i]\n  ...\n}",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "206d84cea673c31b5d504cf1858ab0d8918ea53b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f12ba108_795b2341",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-12T23:51:12Z",
+      "side": 1,
+      "message": "I am deleting pre. Use `Fixture: fixture.NormalMode` instead, and remove SoftwareDeps, ServiceDeps, Data, and Vars.",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 5
+      },
+      "revId": "206d84cea673c31b5d504cf1858ab0d8918ea53b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30d58f55_0941741c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-12T23:51:12Z",
+      "side": 1,
+      "message": "s.FixtValue().(*fixture.Value).Helper",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 16
+      },
+      "revId": "206d84cea673c31b5d504cf1858ab0d8918ea53b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3503e66a_3ea95051",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-12T23:51:12Z",
+      "side": 1,
+      "message": "This might be useful as h.Servo.ECPressKey(ctx, key)",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 1
+      },
+      "revId": "206d84cea673c31b5d504cf1858ab0d8918ea53b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "311072ac_4dbd01b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-12T23:51:12Z",
+      "side": 1,
+      "message": "bufio.Scanner might make this much easier. It will read lines instead: https://pkg.go.dev/bufio#example-Scanner-Lines",
+      "range": {
+        "startLine": 104,
+        "startChar": 12,
+        "endLine": 104,
+        "endChar": 30
+      },
+      "revId": "206d84cea673c31b5d504cf1858ab0d8918ea53b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
