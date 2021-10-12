@@ -16,6 +16,99 @@
       "message": "PTAL",
       "revId": "f55518944577bdc1994d9d2afcee7b3e58ff1e09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5062b917_879877e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/js_microbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-12T02:32:31Z",
+      "side": 1,
+      "message": "Did you notice it took close to 6 minutes? If so we should bump to like 15 because slower devices can take a long time. Also, waiting for temperature to drop can take minutes.",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "f55518944577bdc1994d9d2afcee7b3e58ff1e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e9f6c21_920e283d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/js_microbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-12T02:32:31Z",
+      "side": 1,
+      "message": "\u003e \"snipet\" is a possible misspelling of \"snippet\".\n\nPlease fix.",
+      "parentUuid": "88871469_c524edd6",
+      "range": {
+        "startLine": 35,
+        "startChar": 40,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "f55518944577bdc1994d9d2afcee7b3e58ff1e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "990228a0_609eca29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/js_microbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-12T02:32:31Z",
+      "side": 1,
+      "message": "do we want to log in the case where these don\u0027t work? It will leave stuff on the disk which may affect future tests, so it could be nice to have it logged for debug. WDYT?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 24
+      },
+      "revId": "f55518944577bdc1994d9d2afcee7b3e58ff1e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f64107c8_45145816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/js_microbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-12T02:32:31Z",
+      "side": 1,
+      "message": "an alternative is to poll on the value of elapsed. Are you sure 30 seconds is enough, for all devices? Sleeping is not recommended, in general, as you know.\n\nIf it fails for some reason, will elapsed be zero? If so, IMO we should check that case.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 0
+      },
+      "revId": "f55518944577bdc1994d9d2afcee7b3e58ff1e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
