@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68678928_aeeef269",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_fw_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-10-12T22:46:41Z",
+      "side": 1,
+      "message": "It doesn\u0027t make sense to have this in both \"unstable\" and \"cq\". We should remove \"cellular_unstable\" here, the test appears to be stable on Stainless.",
+      "revId": "9c451e2387aa9d491265e89304fc10171f43f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e82d336f_404ec12e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_helper_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-10-12T22:46:41Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "9c451e2387aa9d491265e89304fc10171f43f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
