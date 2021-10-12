@@ -16,6 +16,46 @@
       "message": "LGTM",
       "revId": "5cf11d1d6750ab119f8b1299ca5bcf286e70c866",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b72486d_e16c0183",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-12T15:48:00Z",
+      "side": 1,
+      "message": "Great work!",
+      "revId": "5cf11d1d6750ab119f8b1299ca5bcf286e70c866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49cee070_c8b43c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-12T15:48:00Z",
+      "side": 1,
+      "message": "\"chrome\" suffix can be dropped so that the test history can be carried.\n\"informational\" is not needed, because this is what we have as of today, which is already in CQ.",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "5cf11d1d6750ab119f8b1299ca5bcf286e70c866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
