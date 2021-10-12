@@ -209,6 +209,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64a04917_e8945a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002410
+      },
+      "writtenOn": "2021-10-12T21:15:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the best practice is in that case. You could list myself and asvitkine@ as the current TLs, but that might become stale over time.",
+      "parentUuid": "e7509bdd_d2409f03",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 36
+      },
+      "revId": "87dad39251f96ed602efd4b1e3b7d464d50a77f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16250e80_77568543",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
         "patchSetId": 2
