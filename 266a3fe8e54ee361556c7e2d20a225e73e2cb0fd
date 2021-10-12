@@ -84,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d81372d_b8ac5a2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-10-12T07:53:25Z",
+      "side": 1,
+      "message": "ping?",
+      "parentUuid": "0746ee71_b425b630",
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5768719f_2f02ab0c",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
         "patchSetId": 3
@@ -182,6 +200,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d540d0_344b125a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-10-12T07:53:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "64b3ac08_3b9e0234",
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09d1c56e_eb38e890",
@@ -248,6 +284,24 @@
       "side": 1,
       "message": "We do fresh login with DropCaches. So this is redundant. Also manually verified that numbers +- consistent. There is no observation that 1-st regular is slower.",
       "parentUuid": "129b21b5_4977f4b0",
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf72e8e_66c6a10f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-10-12T07:53:25Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "9294de19_d3da6673",
       "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

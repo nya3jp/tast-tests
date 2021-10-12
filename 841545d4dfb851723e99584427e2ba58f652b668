@@ -22,6 +22,23 @@
       },
       "revId": "841545d4dfb851723e99584427e2ba58f652b668",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce871ff_852b93f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-10-12T07:53:25Z",
+      "side": 1,
+      "message": "Can you add some code comments on why this is necessary? (this is to simulate cold boot, right?)",
+      "revId": "841545d4dfb851723e99584427e2ba58f652b668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
