@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e579f199_7138f6da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-10-12T10:12:31Z",
+      "side": 1,
+      "message": "Currently we don\u0027t have any way to avoid sleep. We have to sleep a time interval.",
+      "parentUuid": "2a7c3f20_9e6e66ab",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 34
+      },
+      "revId": "3820305fade53866d6c37a40a565b0bc65493809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0738d824_4324341a",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-11T21:28:55Z",
       "side": 1,
       "message": "Did you forget to call `defer cr.Close(cleanupCtx)` after this?",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "3820305fade53866d6c37a40a565b0bc65493809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74ffa7e0_88a120b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-10-12T10:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0738d824_4324341a",
       "range": {
         "startLine": 180,
         "startChar": 1,
@@ -124,6 +172,54 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "591dd869_4ef5ddb7",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 27
+      },
+      "revId": "3820305fade53866d6c37a40a565b0bc65493809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53b7f99f_2da4d5bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-10-12T10:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c81049f_92e5812a",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 27
+      },
+      "revId": "3820305fade53866d6c37a40a565b0bc65493809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44a6fb00_a8da36f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2021-10-12T10:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34fdfb0e_d1ad1c99",
       "range": {
         "startLine": 209,
         "startChar": 1,
