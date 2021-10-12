@@ -166,6 +166,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64b3ac08_3b9e0234",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-10-12T00:35:45Z",
+      "side": 1,
+      "message": "\u003e\u003e I also did manual tests for real test account and getting numbers ~20.5 (AppLaunchTime)\n\nThis includes reboot",
+      "parentUuid": "bc7f2ceb_9c6753d0",
+      "revId": "266a3fe8e54ee361556c7e2d20a225e73e2cb0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09d1c56e_eb38e890",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
         "patchSetId": 3
