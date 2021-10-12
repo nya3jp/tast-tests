@@ -29,13 +29,12 @@ func init() {
 		Func:         BootTime,
 		Desc:         "Measures EC boot time",
 		Contacts:     []string{"jbettis@chromium.org", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware"},
+		Attr:         []string{"group:firmware", "firmware_ec", "firmware_smoke"},
 		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Params: []testing.Param{
 			{
 				Name:              "x86",
-				ExtraAttr:         []string{"firmware_unstable"},
 				ExtraHardwareDeps: hwdep.D(hwdep.X86()),
 				Val: testParameters{
 					apBootRegexp: `HC 0x|Port 80|ACPI query|Executing host reboot command`,
@@ -44,7 +43,6 @@ func init() {
 			},
 			{
 				Name:              "default",
-				ExtraAttr:         []string{"firmware_ec"},
 				ExtraHardwareDeps: hwdep.D(hwdep.NoX86()),
 				Val: testParameters{
 					apBootRegexp: `power state 3 = S0`,
