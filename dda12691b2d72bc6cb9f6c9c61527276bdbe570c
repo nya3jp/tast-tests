@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9a217cdf_c4a97d51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-10-12T02:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa2c0b90_cb62e33a",
+      "revId": "dda12691b2d72bc6cb9f6c9c61527276bdbe570c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a9347cd7_31480b6e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a27be532_ef3e460f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-10-12T02:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d4e5865_3301afc0",
+      "revId": "dda12691b2d72bc6cb9f6c9c61527276bdbe570c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1fe89a5_7ceed054",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-10-08T08:13:49Z",
       "side": 1,
       "message": "What is goal here with returning the error?\nIf you want it to propagate to the return error of testChangeWindowState, you have to use named return values, and overwrite it in the deferred function.",
+      "revId": "dda12691b2d72bc6cb9f6c9c61527276bdbe570c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "976b0df0_fea0afcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-10-12T02:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1fe89a5_7ceed054",
       "revId": "dda12691b2d72bc6cb9f6c9c61527276bdbe570c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
