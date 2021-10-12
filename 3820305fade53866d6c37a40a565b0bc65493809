@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a7c3f20_9e6e66ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-10-12T05:22:03Z",
+      "side": 1,
+      "message": "Any other way to wait instead of sleep?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 34
+      },
+      "revId": "3820305fade53866d6c37a40a565b0bc65493809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0738d824_4324341a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
         "patchSetId": 3
@@ -77,6 +100,30 @@
       "writtenOn": "2021-10-11T21:28:55Z",
       "side": 1,
       "message": "this should be called following its creation/initialization, also it doesn\u0027t make sense to call a defer func in the end of a functon",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 27
+      },
+      "revId": "3820305fade53866d6c37a40a565b0bc65493809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34fdfb0e_d1ad1c99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-10-12T05:22:03Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "591dd869_4ef5ddb7",
       "range": {
         "startLine": 209,
         "startChar": 1,
