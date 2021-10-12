@@ -198,6 +198,12 @@ var Settings = App{
 	Name: "Settings",
 }
 
+// ShimlessRma has details about the Shimless RMA app.
+var ShimlessRma = App{
+	ID:   "ijolhdommgkkhpenofmpkkhlepahelcm",
+	Name: "Shimless RMA",
+}
+
 // TelemetryExtension has details about the TelemetryExtension app.
 var TelemetryExtension = App{
 	ID:   "lhoocnmbcmmbjgdeaallonfplogkcneb",
