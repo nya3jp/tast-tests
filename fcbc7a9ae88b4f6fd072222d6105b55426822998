@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28e42043_35009efe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/trace_processor_shell-amd64.external",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-12T06:05:38Z",
+      "side": 1,
+      "message": "The binary needs to be stripped. Same for arm and arm64 binaries.",
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7d1923d_17dc535c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-12T06:05:38Z",
+      "side": 1,
+      "message": "We can share the implementation without having 2 implementations, 1 for blocking and 1 for nonblocking trace collection.",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8912bb3f_4af65f6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-12T06:05:38Z",
+      "side": 1,
+      "message": "The return values are better wrapped in a struct to keep track of the states of the tracing session. It lacks the context of what the int and File represents without looking at the comment. By returning a tracing session struct:\n(*perfetto.TracingSession, error)\n\nThe caller of this function can do this:\n\nsess, err :\u003d perfetto.StartTracing(ctx, configFile)\n\nand then stop the tracing\n\nsess.Stop(ctx)\n\nand maybe\n\nsess.RunMetrics()",
+      "range": {
+        "startLine": 77,
+        "startChar": 70,
+        "endLine": 77,
+        "endChar": 92
+      },
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02990a6b_ae4c529e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-12T06:05:38Z",
+      "side": 1,
+      "message": "I think we can have a better abstraction in this name like StartTracing()",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee48b17_3c520ece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-12T06:05:38Z",
+      "side": 1,
+      "message": "PID is not a good choice for representing the state of the tracing session.",
+      "range": {
+        "startLine": 105,
+        "startChar": 47,
+        "endLine": 105,
+        "endChar": 54
+      },
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c30814_1e957b02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-12T06:05:38Z",
+      "side": 1,
+      "message": "We need to consider more about ending the session:\nYou may send SIGTERM to the perfetto cmdline process, but it can fail because:\n1. The tracing session duration elspaed. The process exits automatically (need to check if the process stays as a zombie).\n2. Some other unexpected errors happen. This needs to be reported to the user.",
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67145136_c25b7257",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-12T06:05:38Z",
+      "side": 1,
+      "message": "The library user shouldn\u0027t needs to know about this. We should resolve this in the implementation.",
+      "range": {
+        "startLine": 111,
+        "startChar": 37,
+        "endLine": 111,
+        "endChar": 62
+      },
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e311f43_a4faec37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-12T06:05:38Z",
+      "side": 1,
+      "message": "This should be the internal implementation details and not be exposed to the test developers.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 2
+      },
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f9df7ad_84cdf5e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-12T06:05:38Z",
+      "side": 1,
+      "message": "nit: this comment doesn\u0027t say much about what the 2 following lines do.\nConsider removing it or make it more descriptive about what it does. Or you may be specific about how the metrics are used in these 2 functions.",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 69
+      },
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
