@@ -540,27 +540,17 @@ func ToggleMic(ctx context.Context, tconn *chrome.TestConn, enable bool) error {
 }
 
 // SelectAudioOption selects the audio input or output device with the given name from the audio settings page.
-func SelectAudioOption(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, device string) error {
+func SelectAudioOption(ctx context.Context, tconn *chrome.TestConn, device string) error {
 	if err := OpenAudioSettings(ctx, tconn); err != nil {
 		return err
 	}
-
 	ui := uiauto.New(tconn)
 	option := nodewith.Role(role.CheckBox).Name(device)
-	if err := ui.WithTimeout(uiTimeout).WaitUntilExists(option)(ctx); err != nil {
-		return errors.Wrapf(err, "failed finding node for %v audio option", device)
-	}
 
 	// If there are several audio options available, the target option may be out of view.
-	// In that case we need to scroll to it before we can click it. Calling FocusAndWait on the node will scroll it into view.
-	// TODO(crbug/1140196): Remove this Tab press when it's no longer needed for focus to work correctly within Quick Settings.
-	if err := kb.Accel(ctx, "Tab"); err != nil {
-		return errors.Wrap(err, "failed to press tab key")
-	}
-	if err := ui.WithTimeout(uiTimeout).FocusAndWait(option)(ctx); err != nil {
-		return errors.Wrapf(err, "failed to focus the %v audio option", device)
-	}
-	if err := ui.LeftClick(option)(ctx); err != nil {
+	// Furthermore, chrome.automation occasionally reports the wrong location of the audio option after focusing it into view.
+	// Using DoDefault here is more reliable since we cannot rely on a stable location from the a11y tree.
+	if err := ui.DoDefault(option)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to click %v audio option", device)
 	}
 
