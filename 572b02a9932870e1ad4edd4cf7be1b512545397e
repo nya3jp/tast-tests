@@ -121,6 +121,30 @@
       },
       "revId": "572b02a9932870e1ad4edd4cf7be1b512545397e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f6d3e73_8262223c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_disk_space.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-12T00:00:51Z",
+      "side": 1,
+      "message": "Thanks!\n\nI filed b/202561761 to clarify the policy since that comes up pretty regularly",
+      "parentUuid": "27092e1f_bd0ba787",
+      "range": {
+        "startLine": 19,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "572b02a9932870e1ad4edd4cf7be1b512545397e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
