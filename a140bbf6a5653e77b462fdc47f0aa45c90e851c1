@@ -204,6 +204,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be80a415_3aa13719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-12T06:44:14Z",
+      "side": 1,
+      "message": "I\u0027ll remove the workaround usage here and I create a bug(link provided below) to deal with this issue. In addition, provide relevant example test result information to describe it. Is it okay? Thanks!\n\nhttps://partnerissuetracker.corp.google.com/issues/202760330",
+      "parentUuid": "76379a5c_ce1b02aa",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abf46185_705fc650",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
         "patchSetId": 2
