@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "374dc7e5_459434ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/js_microbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-12T05:35:26Z",
+      "side": 1,
+      "message": "SGTM as long as 6 minutes isn\u0027t an extremely tight bound, give it at least 1 minute of slack imo",
+      "parentUuid": "f01ec4ee_a283385c",
+      "range": {
+        "startLine": 31,
+        "startChar": 11,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "f55518944577bdc1994d9d2afcee7b3e58ff1e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e9f6c21_920e283d",
@@ -197,6 +221,30 @@
       "side": 1,
       "message": "I wanted to avoid polling here, because it has some potential impact on performance measurement in this case. Clarified in the comment.\n\nI agreed that testing.Sleep is not ideal solution, and am looking for the alternative without polling, but I couldn\u0027t come up with a good idea.\nPlease let me know if you have better alternative.",
       "parentUuid": "f64107c8_45145816",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 0
+      },
+      "revId": "f55518944577bdc1994d9d2afcee7b3e58ff1e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cc03e5a_214fae0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/js_microbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-12T05:35:26Z",
+      "side": 1,
+      "message": "Either poll with an interval of 30 seconds or fail if the test didn\u0027t finish IMO (I I guess elapsed is 0 in this case).",
+      "parentUuid": "8ca2ce54_95107aca",
       "range": {
         "startLine": 183,
         "startChar": 0,
