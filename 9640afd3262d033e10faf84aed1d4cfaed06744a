@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36403c36_39c0d61f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-12T17:29:33Z",
+      "side": 1,
+      "message": "Logic looks correct. Comments are just around style. Next step is to add the Tast reviewers since they will need to +2 from a Tast style perspective: http://go/tast-reviews",
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c297d8c_a7f006d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-12T17:29:33Z",
+      "side": 1,
+      "message": "Can you add the test description from https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/server/site_tests/firmware_Fingerprint/control.rdp1;l\u003d26-41;drc\u003d1243ee5fe9e77e47aab1b9a76493104b140acbbf",
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5a53d13_d28c9d59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-12T17:29:33Z",
+      "side": 1,
+      "message": "\"modifying\"",
+      "range": {
+        "startLine": 61,
+        "startChar": 22,
+        "endLine": 61,
+        "endChar": 30
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77da196f_cb18b460",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-12T17:29:33Z",
+      "side": 1,
+      "message": "nit: extra space here",
+      "range": {
+        "startLine": 73,
+        "startChar": 34,
+        "endLine": 73,
+        "endChar": 36
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898132e1_0b5e3109",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-12T17:29:33Z",
+      "side": 1,
+      "message": "nit: You can use \":\u003d\" on line 119 and 120 to declare and assign at once: https://tour.golang.org/basics/10. I think that\u0027s a little more idiomatic for golang, but defer to Tast reviewers on style.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 17
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40018782_3216e2ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-12T17:29:33Z",
+      "side": 1,
+      "message": "This error message is a little misleading. In the removeFlashReadProtect \u003d\u003d false case, we get an error because we are not supposed to be able to read the flash. In the removeFlashReadProtect \u003d\u003d true case, we get an error for a different reason: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/server/site_tests/firmware_Fingerprint/tests/rdp1.sh;l\u003d60-62;drc\u003d5558dc49a9f31184fafac97c6b77fd300ad05ae1",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 69
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d11161de_cf9a3111",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-12T17:29:33Z",
+      "side": 1,
+      "message": "\"successfully read from flash\"",
+      "range": {
+        "startLine": 131,
+        "startChar": 49,
+        "endLine": 131,
+        "endChar": 67
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77fd11e9_b754f1f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-12T17:29:33Z",
+      "side": 1,
+      "message": "fileReadFromFlash?",
+      "range": {
+        "startLine": 135,
+        "startChar": 41,
+        "endLine": 135,
+        "endChar": 51
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb26e853_46daae64",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-12T17:29:33Z",
+      "side": 1,
+      "message": "nit: The variable name is fileReadFromFlash?",
+      "range": {
+        "startLine": 160,
+        "startChar": 36,
+        "endLine": 160,
+        "endChar": 56
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b5295ed_876e0a21",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-12T17:29:33Z",
+      "side": 1,
+      "message": "This isn\u0027t in the original autotest test. Is it needed?",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 2
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
