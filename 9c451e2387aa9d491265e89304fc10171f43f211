@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67033e9f_16ff3db0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_fw_manifest_verification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2021-10-12T23:12:45Z",
+      "side": 1,
+      "message": "correct. I\u0027ve uploaded another CL this morning to remove it from unstable",
+      "parentUuid": "68678928_aeeef269",
+      "revId": "9c451e2387aa9d491265e89304fc10171f43f211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e82d336f_404ec12e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/modem_helper_manifest_verification.go",
         "patchSetId": 1
