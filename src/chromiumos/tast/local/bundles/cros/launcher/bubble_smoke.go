@@ -37,11 +37,7 @@ func init() {
 }
 
 func BubbleSmoke(ctx context.Context, s *testing.State) {
-	// The feature is being renamed from AppListBubble to ProductivityLauncher.
-	// TODO(jamescook): Remove "AppListBubble" below after chrome uprevs to
-	// include https://crrev.com/c/3195312.
-	cr, err := chrome.New(
-		ctx, chrome.EnableFeatures("AppListBubble", "ProductivityLauncher"))
+	cr, err := chrome.New(ctx, chrome.EnableFeatures("ProductivityLauncher"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
