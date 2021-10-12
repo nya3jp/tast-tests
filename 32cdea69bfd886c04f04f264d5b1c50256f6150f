@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "253fecda_07639dd6",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-12T20:03:32Z",
+      "side": 1,
+      "message": "True, but I was trying to only do it when needed, since it ssh\u0027s to the dut and extracts files from the firmware, it does take some time. Not a long time because it only extracts the coreboot section.",
+      "parentUuid": "01f5d16b_4bbed968",
+      "revId": "32cdea69bfd886c04f04f264d5b1c50256f6150f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e93c30f5_a38cdd37",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0efbb3a6_b07902df",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-12T20:03:32Z",
+      "side": 1,
+      "message": "It\u0027s too late here, the DUT is not ssh-able at this point.",
+      "parentUuid": "e93c30f5_a38cdd37",
+      "revId": "32cdea69bfd886c04f04f264d5b1c50256f6150f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7b692d3_8af4278a",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-10-12T19:41:23Z",
       "side": 1,
       "message": "nit, if callers just assume false upon error, can just directly do it in this func and then only have to return 1 bool value, .",
+      "revId": "32cdea69bfd886c04f04f264d5b1c50256f6150f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce756a01_a52e62e5",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-12T20:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7b692d3_8af4278a",
       "revId": "32cdea69bfd886c04f04f264d5b1c50256f6150f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
