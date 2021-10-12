@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
@@ -111,7 +112,7 @@ func PowerCameraRecordingPerf(ctx context.Context, s *testing.State) {
 	sup.Add(setup.GrantAndroidPermission(ctx, a, cameraAppPackage, "android.permission.WRITE_EXTERNAL_STORAGE"))
 
 	// Wait until CPU is cooled down.
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
+	if _, err := cpu.WaitUntilCoolDown(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
 		s.Error("CPU failed to cool down: ", err)
 	}
 

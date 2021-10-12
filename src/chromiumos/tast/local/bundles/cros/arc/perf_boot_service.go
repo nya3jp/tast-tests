@@ -23,8 +23,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/memory/metrics"
-	"chromiumos/tast/local/power"
 	arcpb "chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -44,7 +44,7 @@ type PerfBootService struct {
 }
 
 func (c *PerfBootService) WaitUntilCPUCoolDown(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownStopUI)); err != nil {
+	if _, err := cpu.WaitUntilCoolDown(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownStopUI)); err != nil {
 		return nil, errors.Wrap(err, "failed to wait until CPU is cooled down")
 	}
 	return &empty.Empty{}, nil

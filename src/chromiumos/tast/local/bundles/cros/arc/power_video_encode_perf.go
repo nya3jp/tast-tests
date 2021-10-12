@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/c2e2etest"
 	"chromiumos/tast/local/bundles/cros/arc/video"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/power"
@@ -166,7 +167,7 @@ func PowerVideoEncodePerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait until CPU is cooled down.
-	if _, err := power.WaitUntilCPUCoolDown(ctx, power.DefaultCoolDownConfig(power.CoolDownPreserveUI)); err != nil {
+	if _, err := cpu.WaitUntilCoolDown(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
 		s.Fatal("CPU failed to cool down: ", err)
 	}
 

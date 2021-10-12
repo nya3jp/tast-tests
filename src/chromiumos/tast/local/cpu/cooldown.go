@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package power provides set of util functions used to control power in ARC.
-package power
+package cpu
 
 import (
 	"context"
@@ -33,25 +32,23 @@ const (
 type CoolDownConfig struct {
 	PollTimeout  time.Duration
 	PollInterval time.Duration
-	// CPUTemperatureThreshold is the threshold for CPU temperature.
-	CPUTemperatureThreshold int
-	CoolDownMode            CoolDownMode
+	// TemperatureThreshold is the threshold for CPU temperature.
+	TemperatureThreshold int
+	CoolDownMode         CoolDownMode
 }
 
 // DefaultCoolDownConfig returns the default config to wait for the machine to cooldown.
 func DefaultCoolDownConfig(mode CoolDownMode) CoolDownConfig {
 	return CoolDownConfig{
-		PollTimeout:             300 * time.Second,
-		PollInterval:            2 * time.Second,
-		CPUTemperatureThreshold: 46000,
-		CoolDownMode:            mode,
+		PollTimeout:          300 * time.Second,
+		PollInterval:         2 * time.Second,
+		TemperatureThreshold: 46000,
+		CoolDownMode:         mode,
 	}
 }
 
-// WaitUntilCPUCoolDown waits until CPU is cooled down and returns the time it
-// took to cool down.
-// Ported from cheets_PerfBoot.wait_cpu_cool_down().
-func WaitUntilCPUCoolDown(ctx context.Context, config CoolDownConfig) (time.Duration, error) {
+// WaitUntilCoolDown waits until CPU is cooled down and returns the time it took to cool down.
+func WaitUntilCoolDown(ctx context.Context, config CoolDownConfig) (time.Duration, error) {
 	const (
 		// thermalZonePath is the path to thermal zone directories.
 		thermalZonePath = "/sys/class/thermal/thermal_zone*"
@@ -124,11 +121,11 @@ func WaitUntilCPUCoolDown(ctx context.Context, config CoolDownConfig) (time.Dura
 					"failed to parse temperature value in %q", zoneTempPath))
 			}
 
-			if zoneTemp > config.CPUTemperatureThreshold {
+			if zoneTemp > config.TemperatureThreshold {
 				testing.ContextLogf(ctx, "Waiting until %s temperature (%d) falls below %d",
-					zoneType, zoneTemp, config.CPUTemperatureThreshold)
+					zoneType, zoneTemp, config.TemperatureThreshold)
 				return errors.Errorf("timed out while waiting until %s temperature (%d) falls below %d",
-					zoneType, zoneTemp, config.CPUTemperatureThreshold)
+					zoneType, zoneTemp, config.TemperatureThreshold)
 			}
 		}
 		return nil
