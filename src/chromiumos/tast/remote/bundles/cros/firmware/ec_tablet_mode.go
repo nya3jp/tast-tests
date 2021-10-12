@@ -82,6 +82,7 @@ func ECTabletMode(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Power-cycle DUT with a warm reset")
+	h.CloseRPCConnection(ctx)
 	if err := h.Servo.SetPowerState(ctx, servo.PowerStateWarmReset); err != nil {
 		s.Fatal("Failed to reboot DUT by servo: ", err)
 	}
