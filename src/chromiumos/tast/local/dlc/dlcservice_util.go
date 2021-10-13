@@ -37,10 +37,15 @@ type Info struct {
 // Install calls the DBus method to install a DLC.
 func Install(ctx context.Context, id, omahaURL string) error {
 	testing.ContextLog(ctx, "Installing DLC: ", id, " using ", omahaURL)
-	if err := testexec.CommandContext(ctx, "dlcservice_util", "--install", "--id="+id, "--omaha_url="+omahaURL).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to install")
+	// TODO(b/172220710): Remove retries once util + dlcservice timeouts are fixed.
+	var err error
+	for i := 0; i < 3; i++ {
+		err = testexec.CommandContext(ctx, "dlcservice_util", "--install", "--id="+id, "--omaha_url="+omahaURL).Run(testexec.DumpLogOnError)
+		if err == nil {
+			return nil
+		}
 	}
-	return nil
+	return errors.Wrap(err, "failed to install")
 }
 
 // Purge calls the DBus method to Purge a DLC.
