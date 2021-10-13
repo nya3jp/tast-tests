@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8696444_621284d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-13T07:14:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e45f1ca1_638ae736",
+      "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d624e434_65a50975",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-11T07:12:44Z",
       "side": 1,
       "message": "You can skip creating cleanupCtx by just calling this piece of code after the call to defer. defer saves the value of context since it\u0027s sent as a parameter.",
+      "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6917447_272240fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-13T07:14:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d624e434_65a50975",
       "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b647663_6f08b853",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-13T07:14:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "335e1bfe_e7412c5e",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "834924ba_5a1a24a9",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-10-11T07:12:44Z",
       "side": 1,
       "message": "nit: remove this newline.",
+      "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b58fbf_6cbf1b22",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-13T07:14:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "834924ba_5a1a24a9",
       "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b933032_898de9c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-13T07:14:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5d276bbb_ca2f34c1",
+      "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "797e6b45_465570e1",
@@ -105,6 +201,24 @@
       "writtenOn": "2021-10-11T07:12:44Z",
       "side": 1,
       "message": "nit: remove this newline",
+      "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0946073_b4a96f95",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_entry_exit_after_lid_close.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-13T07:14:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "797e6b45_465570e1",
       "revId": "d61fd0d9c6df2f47e85059e41be81eb37dbb9bc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
