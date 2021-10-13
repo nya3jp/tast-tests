@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4136025_87cd9dc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-10-13T09:02:43Z",
+      "side": 1,
+      "message": "I\u0027ve removed the Name field from the chrome case.",
+      "parentUuid": "f70fe1cb_0ef41047",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "5cf11d1d6750ab119f8b1299ca5bcf286e70c866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f42d094_ab03edbf",
@@ -119,6 +143,30 @@
       "writtenOn": "2021-10-13T07:20:39Z",
       "side": 1,
       "message": "Please change it to fixture.LacrosPolicyLoggedIn (the corresponding CL that introduced this just got merged).",
+      "range": {
+        "startLine": 45,
+        "startChar": 22,
+        "endLine": 45,
+        "endChar": 44
+      },
+      "revId": "5cf11d1d6750ab119f8b1299ca5bcf286e70c866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e7db33a_f4b8d102",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-10-13T09:02:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f42d094_ab03edbf",
       "range": {
         "startLine": 45,
         "startChar": 22,
