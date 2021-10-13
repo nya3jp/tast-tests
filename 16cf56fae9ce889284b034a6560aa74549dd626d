@@ -16,6 +16,80 @@
       "message": "PTAL",
       "revId": "16cf56fae9ce889284b034a6560aa74549dd626d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1face386_b2723b51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-13T13:07:03Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "16cf56fae9ce889284b034a6560aa74549dd626d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "888b4bb0_f952e575",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_cross_origin_auth_prompt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-13T13:07:03Z",
+      "side": 1,
+      "message": "This is not needed. This way the test results will continue to gather with the original test.",
+      "revId": "16cf56fae9ce889284b034a6560aa74549dd626d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db9ad612_d241c8e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_wake_locks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-13T13:07:03Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "16cf56fae9ce889284b034a6560aa74549dd626d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c190889_56783d5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/images_for_url_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-13T13:07:03Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 49,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 18
+      },
+      "revId": "16cf56fae9ce889284b034a6560aa74549dd626d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
