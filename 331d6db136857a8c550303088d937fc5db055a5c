@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1622a5d3_076b37e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-13T20:43:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1591a689_f2c010a8",
+      "revId": "331d6db136857a8c550303088d937fc5db055a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd31edd6_9edc07e6",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-10-13T18:05:37Z",
       "side": 1,
       "message": "nit: The function doesn\u0027t match the description anymore: \"return a nil table alongside the error itself\". Update the description to note the version or name the return parameters.",
+      "revId": "331d6db136857a8c550303088d937fc5db055a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a3292a_c9433bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-13T20:43:36Z",
+      "side": 1,
+      "message": "Good catch, thanks! I updated the description of the function to mention the version number.",
+      "parentUuid": "dd31edd6_9edc07e6",
       "revId": "331d6db136857a8c550303088d937fc5db055a5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
