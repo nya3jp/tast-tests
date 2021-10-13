@@ -69,6 +69,30 @@
       },
       "revId": "221036ba848eae551085a2f072b5d0ab88af952c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "839faf1c_0ae642e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T10:37:09Z",
+      "side": 1,
+      "message": "Maybe policyutil.ServeAndVerify open lacros and make sure that policies are propagated?\n\nI think it makes sense to add a TODO with a bug to fix that, so other people will be aware that it\u0027s temporary workaround.",
+      "parentUuid": "127ac817_d269d06a",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "221036ba848eae551085a2f072b5d0ab88af952c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
