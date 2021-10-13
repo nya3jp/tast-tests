@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b72652_8e4c495d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T15:03:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "664fde4b_f513582c",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 48
+      },
+      "revId": "221036ba848eae551085a2f072b5d0ab88af952c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3f5ac63_841cf9a3",
@@ -126,6 +150,30 @@
       "side": 1,
       "message": "Modifying policyutil.ServeAndVerify would mean that it has to return with the browser instance as well, and closing the browser would be also problematic.\n\nFiling a bug is a good idea, but I think this should be added to the fixture, and not to every test case.",
       "parentUuid": "839faf1c_0ae642e0",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "221036ba848eae551085a2f072b5d0ab88af952c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd49ba16_fe0e01c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T15:03:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8646bb2b_87d40a20",
       "range": {
         "startLine": 99,
         "startChar": 0,
