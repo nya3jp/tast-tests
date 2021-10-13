@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44199326_c34771e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T15:05:49Z",
+      "side": 1,
+      "message": "I am not sure whether it was a culprit, because we had a bug related to wilco_dtc_supportd daemon when it connected to the Chrome.",
+      "parentUuid": "c18ec1c2_9cbd37a6",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 5
+      },
+      "revId": "e6bc3b27f2c05d81a011257ad2fbd462b88ab96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cd87032_5c9a9b25",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-08T20:17:16Z",
       "side": 1,
       "message": "If I understand correctly, this is a redundant block, right? Though these two things will be killed along with the chrome unenrollment, do you think keeping this would be logical as per the documentation?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testing/fixt.go;l\u003d303\nI have checked, keeping the block doesn\u0027t break anything more.",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 5
+      },
+      "revId": "e6bc3b27f2c05d81a011257ad2fbd462b88ab96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab95c456_e6442b0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T15:05:49Z",
+      "side": 1,
+      "message": "Let\u0027s actually keep them. Chrome actually should kill them when receives policy with not allowed wilco DTC, but we are not doing that.",
+      "parentUuid": "7cd87032_5c9a9b25",
       "range": {
         "startLine": 232,
         "startChar": 0,
