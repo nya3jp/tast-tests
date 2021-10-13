@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/CABA3_Sony_C_20211012.h264.json",
+  "size": 11651,
+  "sha256sum": "722de8ac26f0fa1cd453c28f53ade22e4951ff269c396a6c37d762d6dd0e4cdc"
+}

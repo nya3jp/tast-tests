@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/baseline/BASQP1_Sony_C_20211012.h264",
+  "size": 15045,
+  "sha256sum": "14cf421b985e0e5f62ac01129ea56c343a9804a13d4bd16122916a3315e6b71c"
+}

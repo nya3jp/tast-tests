@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/baseline/BA_MW_D_20211012.h264",
+  "size": 55885,
+  "sha256sum": "47c59fbe8de6edad04457b8b412579d10cf6ecf87393f252cb2493f9c20dca32"
+}

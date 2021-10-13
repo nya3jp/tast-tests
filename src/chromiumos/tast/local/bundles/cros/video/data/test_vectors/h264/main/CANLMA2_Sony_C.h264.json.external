@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/CANLMA2_Sony_C_20211012.h264.json",
+  "size": 897,
+  "sha256sum": "5afb82cb4d69201fc927646c90e6492b9660a76d8506763adf25fd1b9549ffe6"
+}

@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/cvmp_mot_picaff0_full_B_20211012.h264.json",
+  "size": 1400,
+  "sha256sum": "4af4b5b6fa3acb8a1dbcd76697e32825675f60f0b71cfa858dbdea80dddc6797"
+}

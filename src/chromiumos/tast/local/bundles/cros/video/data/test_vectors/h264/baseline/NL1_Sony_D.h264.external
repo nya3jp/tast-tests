@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/baseline/NL1_Sony_D_20211012.h264",
+  "size": 55537,
+  "sha256sum": "125f334b98af2609b481d9c2d34a2b855d0ced981145c8021618c5f10cb864e5"
+}

@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/extended/MR6_BT_B_20211012.h264",
+  "size": 130685,
+  "sha256sum": "6b7fc0b3e6d57d7b5f58286c1fb4f5afb2324cc21e6d1c9ee9a846471fc21ae8"
+}

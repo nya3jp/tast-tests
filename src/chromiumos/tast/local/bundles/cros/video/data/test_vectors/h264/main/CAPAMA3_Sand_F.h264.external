@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/CAPAMA3_Sand_F_20211012.h264",
+  "size": 340855,
+  "sha256sum": "a6490cfa63b5a3a8ce7e0a9d64af5dc2b32a1e66d2f0630bbcb182dceeef336c"
+}

@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/CANL2_SVA_B_20211012.h264",
+  "size": 30920,
+  "sha256sum": "d757f31c2546cbe222df728536765d7c162dcd71eb30279c1be8a5785a135dc3"
+}

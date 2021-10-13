@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/CVSEFDFT3_Sony_E_20211012.h264",
+  "size": 144796,
+  "sha256sum": "4ddecf869f616f49ef5a8cac725479082b834bf496357f47f6da7e214954a444"
+}

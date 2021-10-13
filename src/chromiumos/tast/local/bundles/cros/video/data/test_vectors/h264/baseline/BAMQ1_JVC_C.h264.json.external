@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/baseline/BAMQ1_JVC_C_20211012.h264.json",
+  "size": 1392,
+  "sha256sum": "c983575e6cc78565ac0a6eef9280966a48205523f3c922597079f4fb8dfe87ea"
+}
