@@ -104,6 +104,29 @@
       },
       "revId": "5cf11d1d6750ab119f8b1299ca5bcf286e70c866",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f42d094_ab03edbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-13T07:20:39Z",
+      "side": 1,
+      "message": "Please change it to fixture.LacrosPolicyLoggedIn (the corresponding CL that introduced this just got merged).",
+      "range": {
+        "startLine": 45,
+        "startChar": 22,
+        "endLine": 45,
+        "endChar": 44
+      },
+      "revId": "5cf11d1d6750ab119f8b1299ca5bcf286e70c866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
