@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/CAFI1_SVA_C_20211012.h264.json",
+  "size": 1502,
+  "sha256sum": "7511748cb8fb70d040383f1dad44c70910c8b278f221e2da3b2fb018bbda9cc1"
+}

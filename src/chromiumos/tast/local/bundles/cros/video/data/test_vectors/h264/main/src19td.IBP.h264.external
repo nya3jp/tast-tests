@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/src19td_20211012.IBP.h264",
+  "size": 9286871,
+  "sha256sum": "5dc8e06bb1730033dd1ef06e88994704f1f30662a9229df5105bf78b0c29622b"
+}

@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/CVMAQP2_Sony_G_20211012.h264",
+  "size": 150227,
+  "sha256sum": "785ba74a2a60efce6c081d8ac0001e13d1db8cd7ec1c83c8f7bfc47c27ec7d4d"
+}

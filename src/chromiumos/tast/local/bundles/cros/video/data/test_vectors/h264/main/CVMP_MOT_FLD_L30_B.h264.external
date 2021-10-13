@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/CVMP_MOT_FLD_L30_B_20211012.h264",
+  "size": 561762,
+  "sha256sum": "9fa4178d0695cd5508d8523f4f6a614a0091df5c8cbddd338c591ba7ed1523b7"
+}

@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/baseline/NRF_MW_E_20211012.h264.json",
+  "size": 4051,
+  "sha256sum": "67374eb21b2f99e967b1cdfcb6d980dbc37578c4b84346095a45266ea2e071da"
+}

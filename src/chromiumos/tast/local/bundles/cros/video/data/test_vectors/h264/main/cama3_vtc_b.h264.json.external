@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/cama3_vtc_b_20211012.h264.json",
+  "size": 398,
+  "sha256sum": "c76a08279b46b1a608fd2dc2f0c057674123b0d6422ed6032835bb5e7db28acc"
+}

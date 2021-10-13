@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/CABREF3_Sand_D_20211012.h264",
+  "size": 287163,
+  "sha256sum": "93ff63a7f042abd81c7d1895d7e33ee7cd7264e493891752087c0f126e412cc9"
+}

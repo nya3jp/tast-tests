@@ -123,8 +123,26 @@ The directory holds test vectors from
 [here](https://chromium.googlesource.com/webm/vp8-test-vectors/). The clips are
 organized into subdirectories by clip type. I.e. `intra`, `inter`, ...
 
+## H.264
+
+> The files available here constitute part of the corresponding ITU-T
+> Recommendations and are protected by copyrights laws.  You may use them
+> during product or service development for the purpose of implementing the
+> corresponding ITU-T Recommendations.
+>
+> [ITU-T H.264.1]
+
+The directory holds test vectors from the file "Bitstreams for Constrained
+Baseline, Baseline, Extended and Main profiles [2016-02] (1.56 GB)"
+[ITU-T H.264.1]. The clips from this file are organized into subdirectories by
+H.264 profile. I.e. baseline, main, extended, ...
+
+For most clips, metadata files are available and end with `_readme.txt`. These
+files may include source, resolution, and GOP structure information.
+
 [video decoder compliance tests]: ../../README.md#video-decoder-compliance-tests
 [aomenc]: https://aomedia.googlesource.com/aom/
 [AOM license]: ../licenses/AOM-LICENSE
 [Creative Commons Attribution 3.0 Unported License]: ../licenses/CC-LICENSE
 [test-25fps.av1.ivf]: https://source.chromium.org/chromium/chromium/src/+/main:media/test/data/test-25fps.av1.ivf
+[ITU-T H.264.1]: https://www.itu.int/net/ITU-T/sigdb/spevideo/VideoForm-s.aspx?val=102002641

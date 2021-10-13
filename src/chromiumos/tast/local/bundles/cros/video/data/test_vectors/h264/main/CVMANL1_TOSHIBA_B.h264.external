@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/CVMANL1_TOSHIBA_B_20211012.h264",
+  "size": 1501093,
+  "sha256sum": "22342adae9a2c629aca85f348f76b5852b4f2cc17b1bc212546fd4102b0d37c4"
+}

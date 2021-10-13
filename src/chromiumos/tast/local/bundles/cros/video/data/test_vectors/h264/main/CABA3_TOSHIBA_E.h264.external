@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/CABA3_TOSHIBA_E_20211012.h264",
+  "size": 163989,
+  "sha256sum": "5051192d0fa49c938048791a31b8de7110b5f0d2b1ceb791b57bcc172572e813"
+}

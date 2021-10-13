@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/cvmp_mot_frm0_full_B_20211012.h264",
+  "size": 391412,
+  "sha256sum": "d21e49a4f174a6933015ff2ecd94886d2ee5b5ebcf7cf1350ec7a97249e7bd77"
+}
