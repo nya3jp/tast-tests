@@ -17,7 +17,7 @@ func init() {
 		Func:         CCAUICameraBoxPortraitMode,
 		Desc:         "Verifies that CCA can take portrait mode photo via CameraBox",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera", "group:camerabox"},
+		Attr:         []string{"group:camerabox"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"testing_rsa", "human_face_scene.jpg"},
 		Vars:         []string{"chart"},
