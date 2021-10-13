@@ -301,6 +301,30 @@
       },
       "revId": "f55518944577bdc1994d9d2afcee7b3e58ff1e09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd6d8b17_78ccd9d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/js_microbench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-13T08:52:44Z",
+      "side": 1,
+      "message": "Double checked. It failed if the benchmark wasn\u0027t finished successfully.\n(i.e. converting undefined -\u003e float64 fails on Eval()).",
+      "parentUuid": "dfaf646c_75b78db7",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 0
+      },
+      "revId": "f55518944577bdc1994d9d2afcee7b3e58ff1e09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
