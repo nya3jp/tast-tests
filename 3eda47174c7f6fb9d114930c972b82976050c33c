@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c091ac0e_0696b50c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-13T07:17:45Z",
+      "side": 1,
+      "message": "worked on comments and new patch set pushed, please check.",
+      "parentUuid": "84b61fff_d670624e",
+      "revId": "3eda47174c7f6fb9d114930c972b82976050c33c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0234cb4d_76348100",
