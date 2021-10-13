@@ -153,6 +153,12 @@ func getRawSARValuesAndCheckVersion(data []byte, tableKey string, validVersions 
 		}
 		intValues = append(intValues, intVal)
 	}
+	// Ensure that the table is a WiFi table.
+	domainType := int(intValues[0])
+	if domainType != 0x07 {
+		// Domain Type must be 0x07 (WiFi Core).
+		return nil, -1, errors.Errorf("invalid Domain Type 0x%02X", domainType)
+	}
 	return intValues, intVersion, nil
 }
 
