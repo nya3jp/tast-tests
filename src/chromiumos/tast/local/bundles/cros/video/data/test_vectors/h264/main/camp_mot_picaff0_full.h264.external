@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/camp_mot_picaff0_full_20211012.h264",
+  "size": 408004,
+  "sha256sum": "cdf09622b0879240864f1258dd3ae0a0fe03690028780d4be834f528ecdade83"
+}

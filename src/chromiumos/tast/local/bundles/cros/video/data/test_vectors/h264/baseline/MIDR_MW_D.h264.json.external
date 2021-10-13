@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/baseline/MIDR_MW_D_20211012.h264.json",
+  "size": 4052,
+  "sha256sum": "13557247b4300ebf2eff10ccf6928468dd78387408ce894ae99aca24a3de7014"
+}

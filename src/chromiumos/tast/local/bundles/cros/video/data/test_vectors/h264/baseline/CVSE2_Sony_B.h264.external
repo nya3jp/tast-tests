@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/baseline/CVSE2_Sony_B_20211012.h264",
+  "size": 205817,
+  "sha256sum": "f10009500cef910947b3e9f0369f27c44a1de2f966a5c75d852a1c8d70e2cfa7"
+}

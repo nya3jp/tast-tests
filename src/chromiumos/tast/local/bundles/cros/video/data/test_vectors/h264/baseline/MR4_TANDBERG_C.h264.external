@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/baseline/MR4_TANDBERG_C_20211012.h264",
+  "size": 382111,
+  "sha256sum": "22c7460de21aa0b3ec68d2eb9e5ea712597e781c2e90940ed9c23803073d35e0"
+}

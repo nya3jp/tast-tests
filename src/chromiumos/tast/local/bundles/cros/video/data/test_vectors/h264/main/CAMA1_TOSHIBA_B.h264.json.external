@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/CAMA1_TOSHIBA_B_20211012.h264.json",
+  "size": 3672,
+  "sha256sum": "ac8b4f68bdf5c29d49553b218537cb4efee5c885fd64e2dc59444be72e1764c7"
+}

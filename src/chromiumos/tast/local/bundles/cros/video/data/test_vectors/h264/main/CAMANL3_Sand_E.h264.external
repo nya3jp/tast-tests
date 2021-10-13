@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/CAMANL3_Sand_E_20211012.h264",
+  "size": 278858,
+  "sha256sum": "7a60ca81fdd59d6a27219fdc884dce33ac8fcd94004ef7f30153767f35d6be6e"
+}

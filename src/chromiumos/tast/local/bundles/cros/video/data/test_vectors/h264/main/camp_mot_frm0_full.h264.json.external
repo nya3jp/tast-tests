@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/camp_mot_frm0_full_20211012.h264.json",
+  "size": 1395,
+  "sha256sum": "b5b8f9af83a7b87097e16f4ccca44631ca4ef2521b361b2e10cc3e8bdccb4da7"
+}

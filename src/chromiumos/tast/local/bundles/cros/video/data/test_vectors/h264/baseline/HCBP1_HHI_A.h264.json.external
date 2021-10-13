@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/baseline/HCBP1_HHI_A_20211012.h264.json",
+  "size": 9754,
+  "sha256sum": "b693949f343b975406a9b8972f87f69a840bd9fd8a99c491b0ad2429ec241f7c"
+}

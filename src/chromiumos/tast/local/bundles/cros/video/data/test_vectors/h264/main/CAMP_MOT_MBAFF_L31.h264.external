@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/main/CAMP_MOT_MBAFF_L31_20211012.h264",
+  "size": 468220,
+  "sha256sum": "ecf283ed5c6b60a80fcabbf33f8c8b107eadd991890a3e44fd22bad3e88f5889"
+}
