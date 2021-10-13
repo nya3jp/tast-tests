@@ -33,6 +33,47 @@
       "message": "LGTM\nI had a discussion with the other reviewers about this test, and we found that it is much longer than it should be. Our suggestion is to create a separate subfolder/package to it, and split the test into multiple files.\n@Toshiki: What do you think about it?",
       "revId": "28f066119985620557a5addeb66ef32fa52f9b35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ef048c9_dddf7527",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-10-13T00:54:55Z",
+      "side": 1,
+      "message": "Agree. 1300+ lines in a single test file is too much...\nI don\u0027t think we should do it in this CL, but it\u0027s better to do it before the next update.\nTakise-san, could you consider separating it into multiple files in near future?",
+      "parentUuid": "9c87b192_f206ffac",
+      "revId": "28f066119985620557a5addeb66ef32fa52f9b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63205b84_3f282253",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-10-13T00:54:55Z",
+      "side": 1,
+      "message": "ash.SetARCAppWindowState? With that, you don\u0027t have to fetch |window|, but we can pass |packageName|.",
+      "range": {
+        "startLine": 369,
+        "startChar": 18,
+        "endLine": 369,
+        "endChar": 32
+      },
+      "revId": "28f066119985620557a5addeb66ef32fa52f9b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
