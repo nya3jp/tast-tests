@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf362e7_eed0d2db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-13T20:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c297d8c_a7f006d9",
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5a53d13_d28c9d59",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-10-12T17:29:33Z",
       "side": 1,
       "message": "\"modifying\"",
+      "range": {
+        "startLine": 61,
+        "startChar": 22,
+        "endLine": 61,
+        "endChar": 30
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10cc3b10_2478587f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-13T20:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5a53d13_d28c9d59",
       "range": {
         "startLine": 61,
         "startChar": 22,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a56fd6_8e247635",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-13T20:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77da196f_cb18b460",
+      "range": {
+        "startLine": 73,
+        "startChar": 34,
+        "endLine": 73,
+        "endChar": 36
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "898132e1_0b5e3109",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-10-12T17:29:33Z",
       "side": 1,
       "message": "nit: You can use \":\u003d\" on line 119 and 120 to declare and assign at once: https://tour.golang.org/basics/10. I think that\u0027s a little more idiomatic for golang, but defer to Tast reviewers on style.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 17
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "857593ef_54cf37be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-13T20:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898132e1_0b5e3109",
       "range": {
         "startLine": 93,
         "startChar": 0,
@@ -150,6 +240,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1cf7013_5d6911ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-13T20:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d11161de_cf9a3111",
+      "range": {
+        "startLine": 131,
+        "startChar": 49,
+        "endLine": 131,
+        "endChar": 67
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7d819ae_cfe603f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-13T20:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40018782_3216e2ed",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 69
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77fd11e9_b754f1f4",
@@ -173,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6807249e_7aedf6ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-13T20:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77fd11e9_b754f1f4",
+      "range": {
+        "startLine": 135,
+        "startChar": 41,
+        "endLine": 135,
+        "endChar": 51
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb26e853_46daae64",
@@ -186,6 +348,30 @@
       "writtenOn": "2021-10-12T17:29:33Z",
       "side": 1,
       "message": "nit: The variable name is fileReadFromFlash?",
+      "range": {
+        "startLine": 160,
+        "startChar": 36,
+        "endLine": 160,
+        "endChar": 56
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "798d22df_5b39fbb0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-13T20:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb26e853_46daae64",
       "range": {
         "startLine": 160,
         "startChar": 36,
