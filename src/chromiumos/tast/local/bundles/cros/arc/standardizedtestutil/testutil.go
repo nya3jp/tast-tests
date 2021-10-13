@@ -33,6 +33,10 @@ const ShortUITimeout = 30 * time.Second
 // RunTestCasesCleanupTime stores the amount of time a test has to clean up between runs.
 const RunTestCasesCleanupTime = 20 * time.Second
 
+// standardizedTestLayoutID stores the id of the layout of the standardized test. All tests
+// are required to set the id of their layout to this.
+const standardizedTestLayoutID = "layoutStandardizedTest"
+
 // PointerButton abstracts the underlying pointer button implementation into a
 // standard type that can be used by callers.
 type PointerButton int
@@ -194,6 +198,12 @@ func RunTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 				s.Fatal("Failed to wait for the app to be idle: ", err)
 			}
 
+			// All standardized tests have a layout with the same id. Wait for it to exist
+			// to ensure the application is ready to be tested.
+			if err := d.Object(ui.ID(StandardizedTestLayoutID(appPkgName))).WaitForExists(ctx, ShortUITimeout); err != nil {
+				s.Fatal("Failed to wait for the app to render: ", err)
+			}
+
 			// Set the window state. Note that this can hang indefinitely as this is the
 			// non-async version. The context is shortened for this call to make sure it
 			// errors out early and additional tests can run.
@@ -214,6 +224,12 @@ func RunTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 			})
 		})
 	}
+}
+
+// StandardizedTestLayoutID returns the fully qualified path to the layout each
+// standardized application is built with.
+func StandardizedTestLayoutID(appPkgName string) string {
+	return fmt.Sprintf("%s:id/%s", appPkgName, standardizedTestLayoutID)
 }
 
 // TouchscreenTap performs a tap on the touchscreen.
