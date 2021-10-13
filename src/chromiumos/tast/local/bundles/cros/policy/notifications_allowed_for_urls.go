@@ -8,11 +8,14 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -28,8 +31,18 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
-		Data:         []string{"notifications_for_urls_test_page.html"},
+		Params: []testing.Param{{
+			ExtraAttr: []string{"informational"},
+			Fixture:   fixture.ChromePolicyLoggedIn,
+			Val:       lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"informational"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               lacros.ChromeTypeLacros,
+		}},
+		Data: []string{"notifications_for_urls_test_page.html"},
 	})
 }
 
@@ -37,6 +50,11 @@ func init() {
 func NotificationsAllowedForUrls(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
@@ -78,7 +96,7 @@ func NotificationsAllowedForUrls(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
@@ -90,8 +108,15 @@ func NotificationsAllowedForUrls(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			// TODO(crbug.com/1259615): This should be part of the fixture.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+			if err != nil {
+				s.Fatal("Failed to setup chrome: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
 			// Open the test page.
-			conn, err := cr.NewConn(ctx, server.URL+"/notifications_for_urls_test_page.html")
+			conn, err := br.NewConn(ctx, server.URL+"/notifications_for_urls_test_page.html")
 			if err != nil {
 				s.Fatal("Failed to connect to the policy page: ", err)
 			}
