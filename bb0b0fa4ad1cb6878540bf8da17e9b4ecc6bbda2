@@ -3,6 +3,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea6ea027_f3d45a81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-13T01:03:57Z",
+      "side": 1,
+      "message": "nit: does\n\nif YoutubeAppID, err :\u003d apps.Install.. ; err !\u003dnil {\n}\n\nwork?\n\nAlso i think golang uses small case for first char",
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c282ae5e_4023bc20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-13T01:03:57Z",
+      "side": 1,
+      "message": "I wonder if we should be hosting our own html to keep the test more stable, but I\u0027ll defer that to the tast-owners.",
+      "range": {
+        "startLine": 71,
+        "startChar": 54,
+        "endLine": 71,
+        "endChar": 77
+      },
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e2b170_8246b0ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-13T01:03:57Z",
+      "side": 1,
+      "message": "I\u0027d click on the desk 2 button. The API is nice in some cases, but doing what a tester would actually do is prefered if possible. You can do another uiauto.Combine here or combine it with the one at L101",
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a550aa8e_4be48c09",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
         "patchSetId": 1
@@ -20,6 +77,93 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ab152b9_f0f596fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-13T01:03:57Z",
+      "side": 1,
+      "message": "Don\u0027t know of a way, we might need to add a new api to desks.go, but that can be done in a follwo up",
+      "parentUuid": "a550aa8e_4be48c09",
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96e12199_fe9b0448",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-13T01:03:57Z",
+      "side": 1,
+      "message": "nit: YoutubeBtn -\u003e youtubeBtn, or maybe youtubeShelfBtn",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 11
+      },
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e7c44a_9b10cbcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-13T01:03:57Z",
+      "side": 1,
+      "message": "nit: this is declared as a variable at the top, we should remove the variable or use it",
+      "range": {
+        "startLine": 136,
+        "startChar": 36,
+        "endLine": 136,
+        "endChar": 53
+      },
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92cf34d6_16ca8274",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-13T01:03:57Z",
+      "side": 1,
+      "message": "Should we have a seaparate error for this?\n\n\tif len(ws) !\u003d 3 {\n\t\ts.Fatalf(\"Unexpected number of windows found; wanted %v, got %v\", 3, len(ws))\n\t}",
+      "range": {
+        "startLine": 145,
+        "startChar": 19,
+        "endLine": 145,
+        "endChar": 30
+      },
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c053b56_3b5e7e17",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
         "patchSetId": 1
@@ -31,6 +175,29 @@
       "writtenOn": "2021-10-12T23:37:07Z",
       "side": 1,
       "message": "Previous action switched to Desk 1 so need to switch back(again how do I check which desk is the active desk :(",
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8830a942_cde77e5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-13T01:03:57Z",
+      "side": 1,
+      "message": "Is there a way to just check for substring? I worry if the website changes title, don\u0027t know likely that is.",
+      "range": {
+        "startLine": 165,
+        "startChar": 18,
+        "endLine": 165,
+        "endChar": 25
+      },
       "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
