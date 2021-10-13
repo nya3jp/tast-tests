@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7723056f_3d761fbd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-13T15:27:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1efbe226_dd135ce7",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "f48301e8886dda95cdde17bf9d77ec21fc561f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69604560_95a515e3",
