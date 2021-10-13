@@ -171,10 +171,7 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 		s.Fatal("Failed to press button on mouse: ", err)
 	}
 	var pressEvents []motioninput.Matcher
-	if version <= arc.SDKP {
-		pressEvents = append(pressEvents, mouseMatcher(motioninput.ActionHoverExit, e))
-	}
-	pressEvents = append(pressEvents, mouseMatcher(motioninput.ActionDown, e), mouseMatcher(motioninput.ActionButtonPress, e))
+	pressEvents = append(pressEvents, mouseMatcher(motioninput.ActionHoverExit, e), mouseMatcher(motioninput.ActionDown, e), mouseMatcher(motioninput.ActionButtonPress, e))
 	if err := tester.ExpectEventsAndClear(ctx, pressEvents...); err != nil {
 		s.Fatal("Failed to expect events and clear: ", err)
 	}
@@ -199,7 +196,7 @@ func verifyMouse(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 	var releaseEvents []motioninput.Matcher
 	releaseEvents = append(releaseEvents, mouseMatcher(motioninput.ActionButtonRelease, e), mouseMatcher(motioninput.ActionUp, e))
 	if version > arc.SDKP {
-		releaseEvents = append(releaseEvents, mouseMatcher(motioninput.ActionHoverMove, e))
+		releaseEvents = append(releaseEvents, mouseMatcher(motioninput.ActionHoverEnter, e), mouseMatcher(motioninput.ActionHoverMove, e))
 	}
 	if err := tester.ExpectEventsAndClear(ctx, releaseEvents...); err != nil {
 		s.Fatal("Failed to expect events and clear: ", err)
