@@ -1,0 +1,331 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac8e64ca_56cd6897",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "LGTM % nits, thanks a lot Bisakh! This will dramatically speed-up our tests!",
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2abe1c_612300ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "nit: IIUC we should use chrome.LoginTimeout, because we don\u0027t use managed accounts.",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 49
+      },
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f07276e_a96c108b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "nit: let\u0027s remove this method and inline fixture struct construction in the fixture declaration for better readability:\n\n```\nImpl: \u0026wilcoDTCFixture{\n\tlaunchVMInTestMode: true, // or explicit false\n}\n```",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 1
+      },
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b1575d4_f04427db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "nit: this flag controls only wilco VM",
+      "range": {
+        "startLine": 72,
+        "startChar": 42,
+        "endLine": 72,
+        "endChar": 50
+      },
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "142f45f4_5addb531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "nit: rename to launchVMInTestMode\n\nalso, let\u0027s move it at the beginning of the structure",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 14
+      },
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac6df0db_153aad0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "nit: typo: assets",
+      "range": {
+        "startLine": 77,
+        "startChar": 30,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e30a9b_847283ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "nit: fixture.FakeDMSEnrolled performs enrollment, here we just set policies.\n\nmaybe remove completely that line?",
+      "range": {
+        "startLine": 119,
+        "startChar": 26,
+        "endLine": 119,
+        "endChar": 36
+      },
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6af2990_92e9f41b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "nit: remove it, this comment does not add much value IMO",
+      "range": {
+        "startLine": 153,
+        "startChar": 26,
+        "endLine": 153,
+        "endChar": 41
+      },
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9222e33c_0922f485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "nit: IIRC, we don\u0027t add \".\" at the end of inline comments",
+      "range": {
+        "startLine": 153,
+        "startChar": 40,
+        "endLine": 153,
+        "endChar": 41
+      },
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73c68954_6d83c558",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "nit: start",
+      "range": {
+        "startLine": 155,
+        "startChar": 22,
+        "endLine": 155,
+        "endChar": 29
+      },
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8aac44f_ce4bb24f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "nit: let\u0027s move it before line 147 just to make sure that starting VM does not stop wilco_dtc_supportd daemon",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59a80440_db26a312",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "nit: daemon",
+      "range": {
+        "startLine": 190,
+        "startChar": 43,
+        "endLine": 190,
+        "endChar": 49
+      },
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c09ad01_53dfa537",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "nit: I think we also should stop Chrome in this function. Maybe at the beginning?",
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad9350a7_0979b09a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "this should never be empty",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 26
+      },
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9813dc37_c139bc07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:42:40Z",
+      "side": 1,
+      "message": "nit: add a blank line before",
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
