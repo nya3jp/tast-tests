@@ -16,6 +16,23 @@
       "message": "PTAL, too.",
       "revId": "de4c7110d88fb3b0d995590ec95232014594ce7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d012de_4a1d8cc0",
+        "filename": "src/chromiumos/tast/local/cpu/idle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-13T15:19:25Z",
+      "side": 1,
+      "message": "Note: functions in this file is exact same as the original one, except this line. (there are some rooms to clean up along with the move, but I\u0027m thinking to make it in a follow up CL). This line is changed from cpu.MeasureUsage to MeasureUsage, along with package move.",
+      "revId": "de4c7110d88fb3b0d995590ec95232014594ce7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
