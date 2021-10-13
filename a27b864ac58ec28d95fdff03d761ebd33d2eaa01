@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "773a13c2_c60f013d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-10-13T16:50:32Z",
+      "side": 1,
+      "message": "Thanks Hidehiko, so I plan on restructuring internals of dlcservice quite a bit in the imminent future.\n\nIs it okay to stick with this retry ATM instead of increasing the timeout in the daemon?",
+      "parentUuid": "b62d6161_f06bb105",
+      "revId": "a27b864ac58ec28d95fdff03d761ebd33d2eaa01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e4558a74_06f435ea",
