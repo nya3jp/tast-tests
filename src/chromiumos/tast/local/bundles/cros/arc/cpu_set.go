@@ -55,10 +55,15 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: cpuSetConfig{
 				// Make sure the DUT uses per-VM core scheduling rather than per-vCPU one. This will prevent the test
-				// from failing even when ArcEnablePerVmCoreScheduling's in components/arc/arc_features.cc is changed.
-				// When ArcEnablePerVmCoreScheduling's default is changed, the flag below should eventually be changed
-				// too.
-				chromeExtraArgs: []string{"--enable-features=ArcEnablePerVmCoreScheduling"},
+				// from failing even when ArcEnablePerVmCoreScheduling's default in components/arc/arc_features.cc is
+				// changed. When ArcEnablePerVmCoreScheduling's default is changed, the flag below should eventually
+				// be changed too.
+				chromeExtraArgs: []string{"--enable-features=ArcEnablePerVmCoreScheduling",
+					// Similarly, make sure the DUT won't set up RT vCPU when the host's # of logical CPUs is 2.
+					// This will prevent the test from failing even when ArcRtVcpuDualCore's default in
+					// components/arc/arc_features.cc is changed. When ArcRtVcpuDualCore's default is changed, the
+					// flag below should eventually be changed too.
+					"--disable-features=ArcRtVcpuDualCore"},
 			},
 		}},
 		Timeout: 7 * time.Minute,
@@ -242,8 +247,11 @@ func CPUSet(ctx context.Context, s *testing.State) {
 			return
 		}
 
-		// ARCVM always has one additional vCPU for supporting RT processes.
-		numExpectedGuestCpus++
+		// ARCVM has one additional vCPU for supporting RT processes when # logical cores on the host is
+		// >2.
+		if numExpectedGuestCpus > 2 {
+			numExpectedGuestCpus++
+		}
 	}
 
 	for _, t := range types {
