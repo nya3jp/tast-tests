@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class PointerRightClickTestActivity extends Activity {
 
-    private LinearLayout mLayoutMain;
+    private LinearLayout mLayout;
     private int mBtnRightClickCounter = 1;
 
     @Override
@@ -22,7 +22,7 @@ public class PointerRightClickTestActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pointer_right_click_test);
 
-        mLayoutMain = findViewById(R.id.layoutMain);
+        mLayout = findViewById(R.id.layoutStandardizedTest);
 
         // Add the text 'Pointer Right Click' when the right click button is pressed.
         // Always add the click counter so the tast test can make sure a single click
@@ -34,7 +34,7 @@ public class PointerRightClickTestActivity extends Activity {
                     TextView el = new TextView(this);
                     el.setText(String.format("POINTER RIGHT CLICK (%d)", mBtnRightClickCounter));
                     mBtnRightClickCounter++;
-                    mLayoutMain.addView(el);
+                    mLayout.addView(el);
                     return true;
                 });
     }

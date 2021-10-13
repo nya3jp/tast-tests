@@ -124,9 +124,9 @@ func runStandardizedKeyboardKeysTest(ctx context.Context, s *testing.State, test
 	}
 
 	// Set up the selector ids.
-	layoutMainID := testParameters.AppPkgName + ":id/layoutMain"
+	layoutID := standardizedtestutil.GetStandardizedTestLayoutID(testParameters.AppPkgName)
 
-	isFocused, err := testParameters.Device.Object(ui.ID(layoutMainID)).IsFocused(ctx)
+	isFocused, err := testParameters.Device.Object(ui.ID(layoutID)).IsFocused(ctx)
 	if err != nil {
 		s.Fatal("Failed to check focus of the layout: ", err)
 	}

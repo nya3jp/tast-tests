@@ -38,7 +38,7 @@ public class KeysTestActivity extends Activity {
     /** Holds all of the keys that need to be tested. */
     private List<KeyTestItem> mKeyCodesToTest;
 
-    private LinearLayout mLayoutMain;
+    private LinearLayout mLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,17 +59,17 @@ public class KeysTestActivity extends Activity {
         mKeyCodesToTest.add(new KeyTestItem(KeyEvent.KEYCODE_BACK, "KEYS TEST - BACK"));
 
         // Setup text views with all of the keys that will be tested.
-        mLayoutMain = findViewById(R.id.layoutMain);
+        mLayout = findViewById(R.id.layoutStandardizedTest);
         for (KeyTestItem curKeyTestItem : mKeyCodesToTest) {
             TextView el = new TextView(this);
             el.setId(curKeyTestItem.layoutId);
             el.setText(curKeyTestItem.displayName);
-            mLayoutMain.addView(el);
+            mLayout.addView(el);
         }
 
         // Force focus on the layout so the key presses can be caught.
-        mLayoutMain.setFocusableInTouchMode(true);
-        mLayoutMain.requestFocus();
+        mLayout.setFocusableInTouchMode(true);
+        mLayout.requestFocus();
     }
 
     /**
@@ -86,9 +86,9 @@ public class KeysTestActivity extends Activity {
 
         if (foundItem != null) {
             // Find the corresponding element and remove it if it exists.
-            TextView foundViewItem = (TextView) mLayoutMain.findViewById(foundItem.layoutId);
+            TextView foundViewItem = (TextView) mLayout.findViewById(foundItem.layoutId);
             if (foundViewItem != null) {
-                mLayoutMain.removeView(foundViewItem);
+                mLayout.removeView(foundViewItem);
             }
         }
 
