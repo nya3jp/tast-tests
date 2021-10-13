@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "028450aa_da40ee79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-13T00:27:38Z",
+      "side": 1,
+      "message": "LGTM with comment.\n\ncpu package CL is now landed, so pls rebase before sending to CQ.",
+      "revId": "f397c664a78cef0cdf1d775a060619dd107f6919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
