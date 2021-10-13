@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34469e70_eead9eb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-13T23:21:56Z",
+      "side": 1,
+      "message": "Ack, I\u0027ll defer to owners.",
+      "parentUuid": "b8c10696_070cc04a",
+      "range": {
+        "startLine": 71,
+        "startChar": 54,
+        "endLine": 71,
+        "endChar": 77
+      },
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12e2b170_8246b0ec",
@@ -267,6 +291,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea30f84a_f705de37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-13T23:21:56Z",
+      "side": 1,
+      "message": "Theres  a variable on L24 declared:\n\nvar shelfAppButton \u003d \"ash/ShelfAppButton\"\n\nthats not used. The variable should be used here, or deleted.",
+      "parentUuid": "0d814cc1_c8fd9cd5",
+      "range": {
+        "startLine": 136,
+        "startChar": 36,
+        "endLine": 136,
+        "endChar": 53
+      },
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92cf34d6_16ca8274",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
         "patchSetId": 1
@@ -366,6 +414,30 @@
       "side": 1,
       "message": "Not sure, examples I saw uses \"Chrome - New Tab\" and this is the PWA app window so might be okay.",
       "parentUuid": "8830a942_cde77e5d",
+      "range": {
+        "startLine": 165,
+        "startChar": 18,
+        "endLine": 165,
+        "endChar": 25
+      },
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9aad406_c8c9ffab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-13T23:21:56Z",
+      "side": 1,
+      "message": "I just feel that something like w.Title.contains(\"Chrome\") would be more robust (wrong go syntax). But if other folks have been checking like this it should be fine.",
+      "parentUuid": "26232e72_09b1ce14",
       "range": {
         "startLine": 165,
         "startChar": 18,
