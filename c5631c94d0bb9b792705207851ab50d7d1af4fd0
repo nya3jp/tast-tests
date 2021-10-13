@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a30f331_e8286eb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-13T03:04:33Z",
+      "side": 1,
+      "message": "LGTM % Tast reviews, I defer to Yury.\n",
+      "revId": "c5631c94d0bb9b792705207851ab50d7d1af4fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8c6c0d1_070102ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/cache_validation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-13T03:04:33Z",
+      "side": 1,
+      "message": "Optional: You may want to include desc.BuildType in the error message for better debuggability.",
+      "range": {
+        "startLine": 152,
+        "startChar": 57,
+        "endLine": 152,
+        "endChar": 64
+      },
+      "revId": "c5631c94d0bb9b792705207851ab50d7d1af4fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
