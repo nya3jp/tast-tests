@@ -33,6 +33,24 @@
       "message": "Remove myself from the reviewers.",
       "revId": "26d268a7256b9c6be6cf3d93ff3e34e5a5c45a9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f8d4b8d_ae94e18d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2021-10-13T04:48:00Z",
+      "side": 1,
+      "message": "I don\u0027t see attenuator being used in this test. This has the wificell_perf attribute so it should be run in wificell_perf pool.",
+      "parentUuid": "e34f38b3_8fcf7116",
+      "revId": "26d268a7256b9c6be6cf3d93ff3e34e5a5c45a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
