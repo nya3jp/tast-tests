@@ -52,6 +52,24 @@
       "parentUuid": "3e29455d_8c2c04ab",
       "revId": "24d55aebbefaed78772990e1a70159ea05bf38e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf7e8719_d8a44442",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/virtiofs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2021-10-13T03:35:13Z",
+      "side": 1,
+      "message": "I\u0027m not sure how useful it is to have a test that\u0027s failing 100% of the time.  We\u0027re not in any particular hurry to get the test merged so I\u0027d rather wait until it actually passes consistently.",
+      "parentUuid": "a6880fa9_ba36901d",
+      "revId": "24d55aebbefaed78772990e1a70159ea05bf38e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
