@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39c9e379_8ce2eac8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-10-13T13:57:15Z",
+      "side": 1,
+      "message": "Oh thanks, I had done these changes already but somehow they got reverted in PS4. Does repo upload automatically overwrite the CL description with the git commit message?",
+      "parentUuid": "8e1371dd_704ad7fa",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "f3fb18ed8ee1405eb574c4ecfa3b461748555bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e0c914e_cea2cfdc",
         "filename": "/COMMIT_MSG",
         "patchSetId": 6
