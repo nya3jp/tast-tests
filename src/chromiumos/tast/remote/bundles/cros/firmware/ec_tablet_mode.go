@@ -6,7 +6,6 @@ package firmware
 
 import (
 	"context"
-	"regexp"
 	"strings"
 	"time"
 
@@ -57,31 +56,16 @@ func ECTabletMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to init servo: ", err)
 	}
 
-	// Get the initial tablet_mode_angle settings to restore at the end of test.
-	re := regexp.MustCompile(`tablet_mode_angle=(\d+) hys=(\d+)`)
-	out, err := d.Conn().CommandContext(ctx, "ectool", "motionsense", "tablet_mode_angle").Output()
-	if err != nil {
-		s.Fatal("Failed to retrieve tablet_mode_angle settings: ", err)
-	}
-	m := re.FindSubmatch(out)
-	if len(m) != 3 {
-		s.Fatalf("Failed to get initial tablet_mode_angle settings: got submatches %+v", m)
-	}
-	initLidAngle := m[1]
-	initHys := m[2]
-	s.Logf("Initial settings: lid_angle=%q hys=%q", initLidAngle, initHys)
-
-	defer func() {
-		if err := d.Conn().CommandContext(ctx, "ectool", "motionsense", "tablet_mode_angle", string(initLidAngle), string(initHys)).Run(); err != nil {
-			s.Fatal("Failed to restore tablet_mode_angle to the original settings: ", err)
-		}
-	}()
-
-	// Set tabletModeAngle to 0 to force the DUT into tablet mode.
-	s.Log("Put DUT into tablet mode")
-	if err := d.Conn().CommandContext(ctx, "ectool", "motionsense", "tablet_mode_angle", "0", "0").Run(); err != nil {
+	// Run EC command to put DUT in tablet mode.
+	if err := h.Servo.RunECCommand(ctx, "tabletmode on"); err != nil {
 		s.Fatal("Failed to set DUT into tablet mode: ", err)
 	}
+
+	defer func() {
+		if err := h.Servo.RunECCommand(ctx, "tabletmode reset"); err != nil {
+			s.Fatal("Failed to restore DUT to the original tabletmode setting: ", err)
+		}
+	}()
 
 	s.Log("Power-cycle DUT with a warm reset")
 	h.CloseRPCConnection(ctx)
@@ -151,6 +135,11 @@ func ECTabletMode(ctx context.Context, s *testing.State) {
 				if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
 					return errors.Wrap(err, "error pressing power_key:tab")
 				}
+
+				if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+					return errors.Wrap(err, "error in sleeping for 1 second after pressing on the power key")
+				}
+
 				switch turnOn {
 				case false:
 					err := checkDisplay(ctx)
@@ -166,7 +155,7 @@ func ECTabletMode(ctx context.Context, s *testing.State) {
 					}
 				}
 				return nil
-			}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 5 * time.Second}); err != nil {
+			}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
 				return errors.Wrap(err, "failed to set display on/off")
 			}
 		}
@@ -239,7 +228,7 @@ func ECTabletMode(ctx context.Context, s *testing.State) {
 
 		// Short press on power button to activate the pre-shutdown animation.
 		s.Log("Activate the pre-shutdown animation")
-		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur((h.Config.HoldPwrButtonPowerOff)/2)); err != nil {
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur((h.Config.HoldPwrButtonPowerOff)/3)); err != nil {
 			s.Fatal("Failed to set a KeypressControl by servo: ", err)
 		}
 
