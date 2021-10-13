@@ -156,6 +156,17 @@ func getRawSARValuesAndCheckVersion(data []byte, tableKey string, validVersions 
 	return intValues, intVersion, nil
 }
 
+// verifySARTableDomainType returns nil if the Domain Type parameter
+// of the SAR table is valid. Otherwise it returns an error.
+func verifySARTableDomainType(values []int64) error {
+	domainType := int(values[0])
+	if domainType != 0x07 {
+		// Domain Type must be 0x07 (WiFi Core).
+		return errors.Errorf("invalid Domain Type 0x%02X", domainType)
+	}
+	return nil
+}
+
 // getGeoSARTablesFromASL parses ASL formatted data and returns an array of
 // geoSARTable structs derived from the body of the WGDS section.
 // If the WGDS section is not found, return nil. If the parsing of the ASL data
@@ -191,8 +202,9 @@ func getGeoSARTablesFromASL(data []byte) ([]geoSARTable, error) {
 	//                }
 	//            })
 	//
+	tableName := "WGDS"
 	validGeoSARVersions := []int64{0x00, 0x02}
-	values, version, err := getRawSARValuesAndCheckVersion(data, "WGDS", validGeoSARVersions)
+	values, version, err := getRawSARValuesAndCheckVersion(data, tableName, validGeoSARVersions)
 	if values == nil {
 		// If the Geo table was not found, err will be nil.
 		return nil, err
@@ -204,6 +216,9 @@ func getGeoSARTablesFromASL(data []byte) ([]geoSARTable, error) {
 	}
 	if len(values) != expectedNumValues {
 		return nil, errors.Errorf("Geo SAR table: got %d values; want %d", len(values), expectedNumValues)
+	}
+	if err := verifySARTableDomainType(values); err != nil {
+		return nil, errors.Wrapf(err, "table %q", tableName)
 	}
 
 	var geoTables []geoSARTable
@@ -292,6 +307,9 @@ func getSARTableFromASL(data []byte, tableType sarTableType) ([]int64, error) {
 	if values == nil {
 		// Missing dynamic SAR table.
 		return nil, nil
+	}
+	if err := verifySARTableDomainType(values); err != nil {
+		return nil, errors.Wrapf(err, "table %q", tableName)
 	}
 	if version == 2 {
 		switch tableType {
