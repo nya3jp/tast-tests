@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e456e231_106916b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-10-13T07:17:51Z",
+      "side": 1,
+      "message": "Previously, running ECTabletMode() would show an error from PowerMenuPresent, and the message was \"multiple nodes matched, if you expect this and only want the first use First(): {}\". This error is marked as ErrTooGeneric under `nodewith.go`. I found that directly using Onscreen() would solve this error on my Delbin/Volteer DUT, but I\u0027d welcome suggestions in case that I\u0027ve overlooked something. ",
+      "revId": "1378bd4c9382571b614c779659ffcae69f4a8884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
