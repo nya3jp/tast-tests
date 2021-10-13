@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0188307_86504b1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T14:54:34Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a37ea21_e949358f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_send_message_to_ui_enrolled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T14:54:34Z",
+      "side": 1,
+      "message": "nit: rename to wConn, usually conn used for chrome.Conn type",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 5
+      },
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bb8de1e_54581b2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_send_message_to_ui_enrolled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T14:54:34Z",
+      "side": 1,
+      "message": "nit: please run CloseTarget() before Close() method to avoid tests affecting each other\n\ni think i had error related to that issue",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97b684fd_56a75913",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_send_message_to_ui_enrolled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T14:54:34Z",
+      "side": 1,
+      "message": "nit: add a blank line before this one",
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c05c05eb_68f7fe9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_send_message_to_ui_enrolled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T14:54:34Z",
+      "side": 1,
+      "message": "nit: Unexpected reply received \u003d got %v, want %v",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 54
+      },
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32058b7d_22b69137",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_send_message_to_ui_enrolled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T14:54:34Z",
+      "side": 1,
+      "message": "nit: Failed to wait for a message received by extension",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 49
+      },
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4e9ef4a_252c46ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_send_message_to_ui_enrolled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T14:54:34Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 56
+      },
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67c46cb5_396c037a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/wilcoextension/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T14:54:34Z",
+      "side": 1,
+      "message": "nit: i think we should not touch that package. let\u0027s keep as it is",
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
