@@ -15,14 +15,16 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
 type imagesSettingTestTable struct {
-	name        string          // name is the subtest name.
-	wantAllowed bool            // wantAllowed is the allow state of images.
-	policies    []policy.Policy // policies is a list of DefaultImagesSetting, ImagesAllowedForUrls and ImagesBlockedForUrls policies to update before checking images on URL.
+	name        string            // name is the subtest name.
+	browserType lacros.ChromeType // browser type used in the subtest.
+	wantAllowed bool              // wantAllowed is the allow state of images.
+	policies    []policy.Policy   // policies is a list of DefaultImagesSetting, ImagesAllowedForUrls and ImagesBlockedForUrls policies to update before checking images on URL.
 }
 
 // TODO(crbug.com/1125571): investigate using an easier filter like "*" in the allow/deny-listing policies along with DefaultImagesSetting policy.
@@ -41,34 +43,39 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
 		Data:         []string{"images_for_url_check_index.html", "images_for_url_check_index_img.jpg"},
 		Params: []testing.Param{
 			{
-				Name: "default",
+				Name:    "default",
+				Fixture: fixture.ChromePolicyLoggedIn,
 				Val: []imagesSettingTestTable{
 					{
 						name:        "allow",
+						browserType: lacros.ChromeTypeChromeOS,
 						wantAllowed: true,
 						policies:    []policy.Policy{&policy.DefaultImagesSetting{Val: defaultImagesSettingAllowed}},
 					},
 					{
 						name:        "block",
+						browserType: lacros.ChromeTypeChromeOS,
 						wantAllowed: false,
 						policies:    []policy.Policy{&policy.DefaultImagesSetting{Val: defaultImagesSettingBlocked}},
 					},
 					{
 						name:        "unset",
+						browserType: lacros.ChromeTypeChromeOS,
 						wantAllowed: true,
 						policies:    []policy.Policy{&policy.DefaultImagesSetting{Stat: policy.StatusUnset}},
 					},
 				},
 			},
 			{
-				Name: "allowlist",
+				Name:    "allowlist",
+				Fixture: fixture.ChromePolicyLoggedIn,
 				Val: []imagesSettingTestTable{
 					{
 						name:        "blocklist_unset_default_block",
+						browserType: lacros.ChromeTypeChromeOS,
 						wantAllowed: true,
 						policies: []policy.Policy{
 							&policy.ImagesBlockedForUrls{Stat: policy.StatusUnset},
@@ -79,10 +86,12 @@ func init() {
 				},
 			},
 			{
-				Name: "blocklist",
+				Name:    "blocklist",
+				Fixture: fixture.ChromePolicyLoggedIn,
 				Val: []imagesSettingTestTable{
 					{
 						name:        "allowlist_unset_default_allow",
+						browserType: lacros.ChromeTypeChromeOS,
 						wantAllowed: false,
 						policies: []policy.Policy{
 							&policy.ImagesBlockedForUrls{Val: []string{filterImagesURL}},
@@ -92,6 +101,77 @@ func init() {
 					},
 					{
 						name:        "allowlist_identical_default_allow",
+						browserType: lacros.ChromeTypeChromeOS,
+						wantAllowed: false,
+						policies: []policy.Policy{
+							&policy.ImagesBlockedForUrls{Val: []string{filterImagesURL}},
+							&policy.ImagesAllowedForUrls{Val: []string{filterImagesURL}},
+							&policy.DefaultImagesSetting{Val: defaultImagesSettingAllowed},
+						},
+					},
+				},
+			},
+
+			{
+				Name:              "lacros_default",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				Val: []imagesSettingTestTable{
+					{
+						name:        "allow",
+						browserType: lacros.ChromeTypeLacros,
+						wantAllowed: true,
+						policies:    []policy.Policy{&policy.DefaultImagesSetting{Val: defaultImagesSettingAllowed}},
+					},
+					{
+						name:        "block",
+						browserType: lacros.ChromeTypeLacros,
+						wantAllowed: false,
+						policies:    []policy.Policy{&policy.DefaultImagesSetting{Val: defaultImagesSettingBlocked}},
+					},
+					{
+						name:        "unset",
+						browserType: lacros.ChromeTypeLacros,
+						wantAllowed: true,
+						policies:    []policy.Policy{&policy.DefaultImagesSetting{Stat: policy.StatusUnset}},
+					},
+				},
+			},
+			{
+				Name:              "lacros_allowlist",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				Val: []imagesSettingTestTable{
+					{
+						name:        "blocklist_unset_default_block",
+						browserType: lacros.ChromeTypeLacros,
+						wantAllowed: true,
+						policies: []policy.Policy{
+							&policy.ImagesBlockedForUrls{Stat: policy.StatusUnset},
+							&policy.ImagesAllowedForUrls{Val: []string{filterImagesURL}},
+							&policy.DefaultImagesSetting{Val: defaultImagesSettingBlocked},
+						},
+					},
+				},
+			},
+			{
+				Name:              "lacros_blocklist",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				Val: []imagesSettingTestTable{
+					{
+						name:        "allowlist_unset_default_allow",
+						browserType: lacros.ChromeTypeLacros,
+						wantAllowed: false,
+						policies: []policy.Policy{
+							&policy.ImagesBlockedForUrls{Val: []string{filterImagesURL}},
+							&policy.ImagesAllowedForUrls{Stat: policy.StatusUnset},
+							&policy.DefaultImagesSetting{Val: defaultImagesSettingAllowed},
+						},
+					},
+					{
+						name:        "allowlist_identical_default_allow",
+						browserType: lacros.ChromeTypeLacros,
 						wantAllowed: false,
 						policies: []policy.Policy{
 							&policy.ImagesBlockedForUrls{Val: []string{filterImagesURL}},
@@ -110,6 +190,11 @@ func ImagesForURLCheck(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 	tcs := s.Param().([]imagesSettingTestTable)
 
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
@@ -125,7 +210,15 @@ func ImagesForURLCheck(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			conn, err := cr.NewConn(ctx, server.URL+"/images_for_url_check_index.html")
+			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
+			// Setup browser based on the chrome type.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), tc.browserType)
+			if err != nil {
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
+			conn, err := br.NewConn(ctx, server.URL+"/images_for_url_check_index.html")
 			if err != nil {
 				s.Fatal("Failed to connect to chrome: ", err)
 			}
