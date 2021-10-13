@@ -7,6 +7,7 @@ package productivitycuj
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -262,7 +263,67 @@ func (app *MicrosoftWebOffice) UpdateCells(ctx context.Context) error {
 
 // VoiceToTextTesting uses the "Dictation" function to achieve voice-to-text (VTT) and directly input text into office documents.
 func (app *MicrosoftWebOffice) VoiceToTextTesting(ctx context.Context, expectedText string, playAudio func(ctx context.Context) error) error {
-	return nil
+	testing.ContextLog(ctx, "Using voice to text (VTT) to enter text directly to document")
+
+	// allowPermission allows microphone if browser asks for the permissions.
+	allowPermission := func(ctx context.Context) error {
+		alertDialog := nodewith.NameContaining("Use your microphone").ClassName("RootView").Role(role.AlertDialog).First()
+		allowButton := nodewith.Name("Allow").Role(role.Button).Ancestor(alertDialog)
+		if err := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(allowButton)(ctx); err != nil {
+			testing.ContextLog(ctx, "No action to grant microphone permission")
+			return nil
+		}
+		return app.uiHdl.ClickUntil(allowButton, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(alertDialog))(ctx)
+	}
+
+	// checkDictationResult checks if the document contains the expected dictation results.
+	checkDictationResult := func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Check if the result is as expected")
+
+		wordWebArea := nodewith.Name("Word").Role(role.RootWebArea)
+		paragraph := nodewith.Role(role.GenericContainer).Ancestor(wordWebArea).Editable().Focused().HasClass("EditingSurfaceBody")
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := uiauto.Combine("copy the content of the document to the clipboard",
+				app.uiHdl.Click(paragraph),
+				app.kb.AccelAction("Ctrl+A"),
+				app.ui.Sleep(500*time.Millisecond), // Wait for all text to be selected.
+				app.kb.AccelAction("Ctrl+C"),
+			)(ctx); err != nil {
+				return err
+			}
+
+			clipData, err := getClipboardText(ctx, app.tconn)
+			if err != nil {
+				return err
+			}
+			ignoreCaseData := strings.TrimSuffix(strings.ToLower(clipData), "\n")
+			if !strings.Contains(ignoreCaseData, strings.ToLower(expectedText)) {
+				return errors.Errorf("failed to validate input value ignoring case: got: %s; want: %s", clipData, expectedText)
+			}
+			return nil
+		}, &testing.PollOptions{Interval: time.Second, Timeout: 15 * time.Second})
+	}
+
+	dictationToolbar := nodewith.Name("Dictation toolbar").Role(role.Toolbar)
+	stopDictationButton := nodewith.Name("Stop Dictation").Role(role.Button).Ancestor(dictationToolbar).First()
+
+	dictate := func(ctx context.Context) error {
+		return uiauto.Combine("play an audio file and check dictation results",
+			playAudio,
+			app.closeHelpPanel,
+			app.checkDictation,
+			checkDictationResult,
+		)(ctx)
+	}
+
+	return uiauto.Combine("turn on the voice typing",
+		app.uiHdl.SwitchToChromeTabByIndex(0), // Switch to Microsoft Word.
+		app.turnOnDictation,
+		allowPermission,
+		app.reloadWordDocument,
+		app.ui.Retry(retryTimes, dictate),
+		app.ui.IfSuccessThen(app.ui.Exists(stopDictationButton), app.uiHdl.Click(stopDictationButton)),
+	)(ctx)
 }
 
 // End cleans up case. Removes the document and slide which we created in the test case and close all tabs.
@@ -861,6 +922,136 @@ func (app *MicrosoftWebOffice) createSampleSheet(ctx context.Context) error {
 		app.kb.TypeAction(sheetName),
 		app.kb.AccelAction("Enter"),
 		app.ui.WaitUntilExists(savedButton),
+	)(ctx)
+}
+
+// closeHelpPanel closes the "Help" panel if it exists.
+func (app *MicrosoftWebOffice) closeHelpPanel(ctx context.Context) error {
+	helpPanel := nodewith.Name("Help").Role(role.TabPanel)
+	close := nodewith.Name("Close").Role(role.Button).Ancestor(helpPanel)
+	return app.ui.IfSuccessThen(
+		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(helpPanel),
+		app.uiHdl.Click(close),
+	)(ctx)
+}
+
+// checkDictation checks whether the dictation is turned on by checking the "Start Dictation" button exists.
+func (app *MicrosoftWebOffice) checkDictation(ctx context.Context) error {
+	dictationToolbar := nodewith.Name("Dictation toolbar").Role(role.Toolbar)
+	startDictationButton := nodewith.Name("Start Dictation").Role(role.Button).Ancestor(dictationToolbar)
+
+	if err := app.ui.WaitUntilExists(dictationToolbar)(ctx); err != nil {
+		return err
+	}
+
+	return app.ui.IfSuccessThen(
+		app.ui.WaitUntilExists(startDictationButton),
+		app.uiHdl.Click(startDictationButton),
+	)(ctx)
+}
+
+// turnOnDictationFromMoreOptions turns on the dictation function through "More Options".
+func (app *MicrosoftWebOffice) turnOnDictationFromMoreOptions(ctx context.Context) error {
+	testing.ContextLog(ctx, `Turning on the dictation through "More options"`)
+
+	homeTabPanel := nodewith.Name("Home").Role(role.TabPanel)
+	moreOptions := nodewith.Name("More Options").Role(role.PopUpButton).Ancestor(homeTabPanel).First()
+	dictationButton := nodewith.Name("Dictate").Role(role.Button).Ancestor(moreOptions).First()
+	dictationCheckBox := nodewith.Name("Dictate").Role(role.MenuItemCheckBox).First()
+	dictationToolbar := nodewith.Name("Dictation toolbar").Role(role.Toolbar)
+	return uiauto.Combine(`turn on the dictation through "More Options"`,
+		app.uiHdl.ClickUntil(moreOptions, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictationButton)),
+		app.uiHdl.ClickUntil(dictationButton, app.ui.Gone(dictationButton)),
+		app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictationCheckBox), app.uiHdl.Click(dictationCheckBox)),
+		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictationToolbar),
+	)(ctx)
+}
+
+// turnOnDictationFromPanel turns on the dictation function via the button in the "Home" panel.
+func (app *MicrosoftWebOffice) turnOnDictationFromPanel(ctx context.Context) error {
+	testing.ContextLog(ctx, "Turning on the dictation through the panel")
+
+	homeTabPanel := nodewith.Name("Home").Role(role.TabPanel)
+	dictationToggleButton := nodewith.Name("Dictate").Role(role.ToggleButton).Ancestor(homeTabPanel).First()
+	dictationCheckBox := nodewith.Name("Dictate").Role(role.MenuItemCheckBox).First()
+	dictationToolbar := nodewith.Name("Dictation toolbar").Role(role.Toolbar)
+	return uiauto.Combine("turn on the dictation through the panel",
+		app.uiHdl.ClickUntil(dictationToggleButton, func(ctx context.Context) error {
+			return uiauto.Combine("check if the dictation works",
+				app.ui.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictationCheckBox), app.uiHdl.Click(dictationCheckBox)),
+				app.ui.WaitUntilExists(dictationToolbar),
+			)(ctx)
+		}),
+	)(ctx)
+}
+
+// turnOnDictation turns on the dictation function.
+func (app *MicrosoftWebOffice) turnOnDictation(ctx context.Context) error {
+	testing.ContextLog(ctx, "Turning on dictation")
+
+	openDocument := func(ctx context.Context) error {
+		// Since we did not specify the name of the "Word" document, we need to extract the document name from the tab name.
+		docTab := nodewith.NameRegex(regexp.MustCompile(".*.docx - Microsoft Word Online")).Role(role.Tab).First()
+		node, err := app.ui.Info(ctx, docTab)
+		if err != nil {
+			return err
+		}
+		docsName := strings.Replace(node.Name, " - Microsoft Word Online", "", -1)
+		testing.ContextLog(ctx, "Getting the document name from the tab: ", docsName)
+
+		row := nodewith.NameContaining(docsName).Role(role.Row).First()
+		link := nodewith.NameContaining(docsName).Role(role.Link).Ancestor(row)
+		return uiauto.Combine("reopen the document",
+			app.clickNavigationItem(recent),
+			app.uiHdl.Click(link),
+		)(ctx)
+	}
+
+	homeTabPanel := nodewith.Name("Home").Role(role.TabPanel)
+
+	reoperate := func(ctx context.Context, turnOnAction action.Action) error {
+		testing.ContextLog(ctx, "Reloading the page and reoperating the function to turn on the dictation function")
+
+		reload := nodewith.Name("Reload").ClassName("ReloadButton")
+		paragraph := nodewith.Role(role.Paragraph).Editable()
+		if err := turnOnAction(ctx); err != nil {
+			if err := uiauto.Combine("reload the page",
+				app.uiHdl.Click(reload),
+				// After reloading the webpage, it might encounter "This page isn’t working".
+				app.reload(paragraph, openDocument),
+				app.ui.WithTimeout(longerUIWaitTime).WaitUntilGone(homeTabPanel),
+			)(ctx); err != nil {
+				return err
+			}
+		}
+
+		dictationToolbar := nodewith.Name("Dictation toolbar").Role(role.Toolbar)
+		// Sometimes the "Dictation toolbar" will be displayed directly, so we don't need to click the "Dictation" button again.
+		if err := app.ui.WaitUntilExists(dictationToolbar)(ctx); err != nil {
+			if err := turnOnAction(ctx); err != nil {
+				return err
+			}
+		}
+
+		return nil
+	}
+
+	dictateButton := nodewith.Name("Dictate").Role(role.ToggleButton).Ancestor(homeTabPanel).First()
+	if err := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(dictateButton)(ctx); err != nil {
+		if err := reoperate(ctx, app.turnOnDictationFromMoreOptions); err != nil {
+			return err
+		}
+	} else {
+		if err := reoperate(ctx, app.turnOnDictationFromPanel); err != nil {
+			return err
+		}
+	}
+
+	featureBrokenContainer := nodewith.Name("We couldn't connect to the catalog server for this feature.").Role(role.GenericContainer)
+	retryButton := nodewith.Name("RETRY").Role(role.Button).Ancestor(featureBrokenContainer)
+	return uiauto.Combine("turn on the dictation",
+		app.ui.IfSuccessThen(app.ui.Exists(featureBrokenContainer), app.uiHdl.Click(retryButton)),
+		app.checkDictation,
 	)(ctx)
 }
 
