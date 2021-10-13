@@ -117,6 +117,13 @@ func Retry(n int, fn Action) Action {
 	return action.Retry(n, fn, 0)
 }
 
+// RetrySilently returns a function that retries a given action if it returns error.
+// The action will be executed up to n times, including the first attempt.
+// The last error will be returned.  Any other errors will be ignored.
+func RetrySilently(n int, fn Action) Action {
+	return action.RetrySilently(n, fn, 0)
+}
+
 // Repeat returns a function that runs the specified function repeatedly for the specific number of times.
 func Repeat(n int, fn Action) Action {
 	return func(ctx context.Context) error {
@@ -733,6 +740,14 @@ func (ac *Context) IfSuccessThen(preFunc, fn Action) Action {
 // Between each run of the loop, it will sleep according the the uiauto.Context pollOpts.
 func (ac *Context) Retry(n int, fn Action) Action {
 	return action.Retry(n, fn, ac.pollOpts.Interval)
+}
+
+// RetrySilently returns a function that retries a given action if it returns error.
+// The action will be executed up to n times, including the first attempt.
+// The last error will be returned.  Any other errors will be ignored.
+// Between each run of the loop, it will sleep according the the uiauto.Context pollOpts.
+func (ac *Context) RetrySilently(n int, fn Action) Action {
+	return action.RetrySilently(n, fn, ac.pollOpts.Interval)
 }
 
 // CheckRestriction returns a function that checks the restriction of the node found by the input finder is as expected.

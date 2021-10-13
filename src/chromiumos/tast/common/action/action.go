@@ -51,21 +51,35 @@ func Combine(name string, steps ...Action) Action {
 // The last error will be returned.  Any other errors will be silently logged.
 // Between each run of the loop, it will sleep according the specified interval.
 func Retry(n int, action Action, interval time.Duration) Action {
+	return retryWithLogging(n, action, interval, true)
+}
+
+// RetrySilently returns a function that retries a given action if it returns error.
+// The action will be executed up to n times, including the first attempt.
+// The last error will be returned.  Any other errors will be ignored.
+// Between each run of the loop, it will sleep according the specified interval.
+func RetrySilently(n int, action Action, interval time.Duration) Action {
+	return retryWithLogging(n, action, interval, false)
+}
+
+func retryWithLogging(n int, action Action, interval time.Duration, verboseLog bool) Action {
 	return func(ctx context.Context) error {
 		var err error
 		for i := 0; i < n; i++ {
 			if err = action(ctx); err == nil {
 				// Print a success log to clear confusing.
 				// Retry logs are sometimes mistaken as errors.
-				if i > 0 {
+				if i > 0 && verboseLog {
 					testing.ContextLogf(ctx, "Retry succeed in attempt %d", i+1)
 				}
 				return nil
 			}
-			testing.ContextLogf(ctx, "Retry failed attempt %d: %v", i+1, err)
+			if verboseLog {
+				testing.ContextLogf(ctx, "Retry failed attempt %d: %v", i+1, err)
+			}
 			// Sleep between all iterations.
 			if i < n-1 {
-				if err := testing.Sleep(ctx, interval); err != nil {
+				if err := testing.Sleep(ctx, interval); err != nil && verboseLog {
 					testing.ContextLog(ctx, "Failed to sleep between retry iterations: ", err)
 				}
 			}

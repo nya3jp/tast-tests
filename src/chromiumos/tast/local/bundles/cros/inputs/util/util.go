@@ -69,7 +69,7 @@ func WaitForFieldTextToSatisfy(tconn *chrome.TestConn, finder *nodewith.Finder, 
 		// Sleep 200ms before validating text field.
 		// Without sleep, it almost never pass the first time check due to the input delay.
 		ui.Sleep(200*time.Millisecond),
-		ui.Retry(5, func(ctx context.Context) error {
+		ui.RetrySilently(5, func(ctx context.Context) error {
 			nodeInfo, err := ui.Info(ctx, finder)
 			if err != nil {
 				return err

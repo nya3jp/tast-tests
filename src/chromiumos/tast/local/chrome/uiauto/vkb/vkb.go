@@ -116,7 +116,7 @@ func (vkbCtx *VirtualKeyboardContext) BackgroundConn(ctx context.Context) (*chro
 // Usage: It can be used to test Layout and UI interaction in a quick way.
 // For example, testing switch layout.
 func (vkbCtx *VirtualKeyboardContext) ShowVirtualKeyboard() uiauto.Action {
-	return uiauto.Retry(3,
+	return uiauto.RetrySilently(3,
 		uiauto.Combine("force show virtual keyboard via Chrome API",
 			func(ctx context.Context) error {
 				return vkbCtx.tconn.Eval(ctx, `tast.promisify(chrome.inputMethodPrivate.showInputView)()`, nil)
@@ -129,7 +129,7 @@ func (vkbCtx *VirtualKeyboardContext) ShowVirtualKeyboard() uiauto.Action {
 // Virtual keyboard should be normally triggered by defocusing an input field.
 // Usage: It can be used in test cleanup.
 func (vkbCtx *VirtualKeyboardContext) HideVirtualKeyboard() uiauto.Action {
-	return uiauto.Retry(3,
+	return uiauto.RetrySilently(3,
 		uiauto.Combine("force hide virtual keyboard via Chrome API",
 			func(ctx context.Context) error {
 				return vkbCtx.tconn.Eval(ctx, `tast.promisify(chrome.inputMethodPrivate.hideInputView)()`, nil)
@@ -399,7 +399,7 @@ func (vkbCtx *VirtualKeyboardContext) closeInfoDialogue(buttonName string) uiaut
 // The interval between clicks and the timeout can be specified using testing.PollOptions.
 func (vkbCtx *VirtualKeyboardContext) ClickUntilVKShown(nodeFinder *nodewith.Finder) uiauto.Action {
 	ac := vkbCtx.ui.WithPollOpts(testing.PollOptions{Interval: 2 * time.Second, Timeout: 10 * time.Second})
-	return uiauto.Retry(5, ac.LeftClickUntil(nodeFinder, vkbCtx.WaitLocationStable()))
+	return uiauto.RetrySilently(5, ac.LeftClickUntil(nodeFinder, vkbCtx.WaitLocationStable()))
 }
 
 // SwitchToKeyboard returns an action changing to keyboard layout.

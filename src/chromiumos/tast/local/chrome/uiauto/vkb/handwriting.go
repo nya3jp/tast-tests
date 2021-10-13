@@ -334,5 +334,5 @@ func (hwCtx *HandwritingContext) ClearHandwritingCanvas() uiauto.Action {
 // WaitForHandwritingEngineReady returns an action that waits for the handwriting engine to become ready.
 func (hwCtx *HandwritingContext) WaitForHandwritingEngineReady(checkHandwritingEngineReady uiauto.Action) uiauto.Action {
 	return uiauto.NamedAction("Wait for handwriting engine ready",
-		hwCtx.ui.WithTimeout(time.Minute).Retry(10, checkHandwritingEngineReady))
+		hwCtx.ui.WithTimeout(time.Minute).RetrySilently(10, checkHandwritingEngineReady))
 }
