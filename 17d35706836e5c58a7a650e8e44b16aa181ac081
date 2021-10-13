@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce6e1d0_c835f772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-13T10:25:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "19c8efbd_4d7ab5e9",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5467a9f4_f7a78aa7",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "As per comment in L51, function moved to library \"brightness\".",
       "parentUuid": "5467a9f4_f7a78aa7",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b853c9e_1cacf867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-13T10:25:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "17b3dcb4_32e0ebd1",
       "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -242,6 +278,24 @@
       "side": 1,
       "message": "As status tray toggler is always visible, we cannot perform WaitUntilGone(statusTray).",
       "parentUuid": "07f4dbfd_4f600750",
+      "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5088119_78f78b6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-13T10:25:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "425d0eac_4efffa46",
       "revId": "17d35706836e5c58a7a650e8e44b16aa181ac081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
