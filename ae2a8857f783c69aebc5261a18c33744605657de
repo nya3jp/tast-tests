@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69520e4d_7f8226bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-10-13T09:21:08Z",
+      "side": 1,
+      "message": "yhanada@: Please take a look. Thank you.",
+      "revId": "ae2a8857f783c69aebc5261a18c33744605657de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c3584c6_ecfc59b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-10-13T09:21:08Z",
+      "side": 1,
+      "message": "Can we remove these checks altogether? Currently arc.MouseInput is exclusive to R and I\u0027m not sure if there is a plan to run it on P.",
+      "revId": "ae2a8857f783c69aebc5261a18c33744605657de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
