@@ -71,6 +71,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c8eb37_282dc460",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-10-13T02:07:41Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "28f066119985620557a5addeb66ef32fa52f9b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63205b84_3f282253",
@@ -108,6 +125,30 @@
       "side": 1,
       "message": "SetARCAppWindowState waits for the state change, right?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go;l\u003d292?q\u003dWaitForARCAppWindowState",
       "parentUuid": "63205b84_3f282253",
+      "range": {
+        "startLine": 369,
+        "startChar": 18,
+        "endLine": 369,
+        "endChar": 32
+      },
+      "revId": "28f066119985620557a5addeb66ef32fa52f9b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4e26378_65a88fbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-10-13T02:07:41Z",
+      "side": 1,
+      "message": "Sorry, you\u0027re totally right! I forgot it although I\u0027m the author of that flag 😂",
+      "parentUuid": "b5cc4fc9_db162106",
       "range": {
         "startLine": 369,
         "startChar": 18,
