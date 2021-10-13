@@ -24,9 +24,10 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/media/constants"
-	"chromiumos/tast/local/media/cpu"
+	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/histogram"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
@@ -50,7 +51,7 @@ func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSys
 
 	p := perf.NewValues()
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to set up CPU benchmark")
 	}

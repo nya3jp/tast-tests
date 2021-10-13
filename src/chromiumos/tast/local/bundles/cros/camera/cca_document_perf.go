@@ -14,8 +14,9 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/gtest"
-	"chromiumos/tast/local/media/cpu"
+	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -44,7 +45,7 @@ func CCADocumentPerf(ctx context.Context, s *testing.State) {
 	}
 	defer upstart.EnsureJobRunning(cleanupCtx, "ui")
 
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}

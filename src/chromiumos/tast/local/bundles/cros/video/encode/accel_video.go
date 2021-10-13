@@ -18,8 +18,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/gtest"
-	"chromiumos/tast/local/media/cpu"
+	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/videotype"
@@ -240,7 +241,7 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 	ctx, cancel := ctxutil.Shorten(ctxForDefer, 10*time.Second)
 	defer cancel()
 	// Setup benchmark mode.
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to set up benchmark mode")
 	}
@@ -336,7 +337,7 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 
 	// Test 2: Measure CPU usage and power consumption while running capped
 	// performance test only.
-	measurements, err := cpu.MeasureProcessUsage(ctx, measureInterval, cpu.KillProcess, gtest.New(
+	measurements, err := mediacpu.MeasureProcessUsage(ctx, measureInterval, mediacpu.KillProcess, gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
 		gtest.Logfile(filepath.Join(s.OutDir(), exec+".cap.log")),
 		gtest.Filter("*"+cappedTestname),

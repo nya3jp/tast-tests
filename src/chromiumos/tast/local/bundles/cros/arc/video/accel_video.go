@@ -20,7 +20,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/c2e2etest"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/cpu"
+	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/videotype"
@@ -217,7 +218,7 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 		}
 
 		s.Log("Starting CPU measurements")
-		measurements, err := cpu.MeasureUsage(ctx, ba.measureDuration)
+		measurements, err := mediacpu.MeasureUsage(ctx, ba.measureDuration)
 		if err != nil {
 			return errors.Wrapf(err, "failed to run (measure CPU and power consumption): %v", err)
 		}
@@ -297,7 +298,7 @@ func RunARCPerfVideoTest(ctx context.Context, s *testing.State, a *arc.ARC,
 		cleanupTime = 5 * time.Second
 	)
 
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}

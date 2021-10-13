@@ -23,7 +23,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/disk"
-	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
@@ -137,7 +136,7 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 	}
 
 	testing.ContextLog(ctx, "Waiting until CPU is idle")
-	if err := mediacpu.WaitUntilIdle(ctx); err != nil {
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return 0, errors.Wrap(err, "failed to wait until CPU is idle")
 	}
 
