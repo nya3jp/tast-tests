@@ -58,7 +58,7 @@ type TestFuncParams struct {
 }
 
 // TestFunc represents the test function.
-type TestFunc func(ctx context.Context, s *testing.State, testParameters TestFuncParams)
+type TestFunc func(ctx context.Context, testParameters TestFuncParams) error
 
 // TestCase holds information about a test to run.
 type TestCase struct {
@@ -214,14 +214,16 @@ func RunTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 			}
 
 			// Run the test.
-			test.Fn(workCtx, s, TestFuncParams{
+			if err := test.Fn(workCtx, TestFuncParams{
 				TestConn:        tconn,
 				Arc:             a,
 				Device:          d,
 				AppPkgName:      appPkgName,
 				AppActivityName: appActivity,
 				Activity:        act,
-			})
+			}); err != nil {
+				s.Fatal("Test run failed: ", err)
+			}
 		})
 	}
 }

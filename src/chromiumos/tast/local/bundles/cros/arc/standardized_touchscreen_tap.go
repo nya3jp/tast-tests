@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
 	"chromiumos/tast/testing"
@@ -60,7 +61,7 @@ func StandardizedTouchscreenTap(ctx context.Context, s *testing.State) {
 	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
-func runStandardizedTouchscreenTapTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
+func runStandardizedTouchscreenTapTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
 	btnTapID := testParameters.AppPkgName + ":id/btnTap"
 	btnTapSelector := testParameters.Device.Object(ui.ID(btnTapID))
 
@@ -68,22 +69,24 @@ func runStandardizedTouchscreenTapTest(ctx context.Context, s *testing.State, te
 	tooManyTapsLabelSelector := testParameters.Device.Object(ui.Text("TOUCHSCREEN TAP (2)"))
 
 	if err := btnTapSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("Unable to find the button to tap, info: ", err)
+		return errors.Wrap(err, "unable to find the button to tap")
 	}
 
 	if err := successLabelSelector.WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The success label should not yet exist, info: ", err)
+		return errors.Wrap(err, "the success label should not yet exist")
 	}
 
 	if err := standardizedtestutil.TouchscreenTap(ctx, testParameters, btnTapSelector, standardizedtestutil.ShortTouchscreenTap); err != nil {
-		s.Fatal("Unable to tap the button, info: ", err)
+		return errors.Wrap(err, "unable to tap the button")
 	}
 
 	if err := successLabelSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The success label should exist, info: ", err)
+		return errors.Wrap(err, "the success label should exist")
 	}
 
 	if err := tooManyTapsLabelSelector.WaitUntilGone(ctx, 0); err != nil {
-		s.Fatal("A single tap triggered multiple events, info: ", err)
+		return errors.Wrap(err, "a single tap triggered multiple events")
 	}
+
+	return nil
 }
