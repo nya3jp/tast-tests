@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1dfd93e_87c5516f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-13T18:17:32Z",
+      "side": 1,
+      "message": "Jae, how about filing an issue for the tracking the restructuring and adding a TODO here to remove this once it is done?\n\nBecause this change is useful as it avoids CQ flakes testing anything DLC/Crostini/Borealis. Is ARCVM a DLC?",
+      "parentUuid": "773a13c2_c60f013d",
+      "revId": "a27b864ac58ec28d95fdff03d761ebd33d2eaa01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e4558a74_06f435ea",
