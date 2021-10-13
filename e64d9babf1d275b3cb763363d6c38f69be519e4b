@@ -16,6 +16,24 @@
       "message": "it has to be added in the CL description, not in the CL summary. The title cannot be longer that 72 chars, ideally should be less than 50 chars. https://g3doc.corp.google.com/company/teams/chromeos/subteams/technical-docu-and-training/submit-change.md?cl\u003dhead#plan-your-commit-message",
       "revId": "e64d9babf1d275b3cb763363d6c38f69be519e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12ce02f4_c64c747b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2021-10-13T18:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "255da6ac_a017125d",
+      "revId": "e64d9babf1d275b3cb763363d6c38f69be519e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
