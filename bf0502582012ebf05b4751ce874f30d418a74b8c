@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e70fb95f_05bbfa46",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder_vnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-13T04:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9efca7ab_c2137a4b",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "bf0502582012ebf05b4751ce874f30d418a74b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdab62c2_9c71aa89",
@@ -60,6 +84,54 @@
       "writtenOn": "2021-10-11T03:23:07Z",
       "side": 1,
       "message": "Either do not return the error in the example, or process it.",
+      "range": {
+        "startLine": 77,
+        "startChar": 107,
+        "endLine": 77,
+        "endChar": 112
+      },
+      "revId": "bf0502582012ebf05b4751ce874f30d418a74b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05698609_e9168e7f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder_vnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-13T04:09:41Z",
+      "side": 1,
+      "message": "That seems like added complexity for no benefit to the user.\nOutDir should never change, since you can simply do RecordingFileName(\"mydir/blah.webm\") if you want to change the directory.\nHasError should always be s.HasError.",
+      "parentUuid": "bdab62c2_9c71aa89",
+      "range": {
+        "startLine": 77,
+        "startChar": 41,
+        "endLine": 77,
+        "endChar": 55
+      },
+      "revId": "bf0502582012ebf05b4751ce874f30d418a74b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "639882ec_28c634a8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder_vnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-13T04:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24a5320a_ee1df5f4",
       "range": {
         "startLine": 77,
         "startChar": 107,
