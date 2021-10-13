@@ -43,6 +43,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8c10696_070cc04a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-13T22:16:09Z",
+      "side": 1,
+      "message": "Right but so far there\u0027s no API for PWA apps related functions, not even sure if any other url would work except Youtube. :/",
+      "parentUuid": "c282ae5e_4023bc20",
+      "range": {
+        "startLine": 71,
+        "startChar": 54,
+        "endLine": 71,
+        "endChar": 77
+      },
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d58d20b6_de098959",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-13T22:16:09Z",
+      "side": 1,
+      "message": "That won\u0027t work, YoutubeAppID won\u0027t be defined with that syntax.",
+      "parentUuid": "ea6ea027_f3d45a81",
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12e2b170_8246b0ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
         "patchSetId": 1
@@ -54,6 +96,24 @@
       "writtenOn": "2021-10-13T01:03:57Z",
       "side": 1,
       "message": "I\u0027d click on the desk 2 button. The API is nice in some cases, but doing what a tester would actually do is prefered if possible. You can do another uiauto.Combine here or combine it with the one at L101",
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc48e2ed_02a9decf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-13T22:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12e2b170_8246b0ec",
       "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -89,6 +149,24 @@
       "side": 1,
       "message": "Don\u0027t know of a way, we might need to add a new api to desks.go, but that can be done in a follwo up",
       "parentUuid": "a550aa8e_4be48c09",
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53b5e234_0ee87bb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-13T22:16:09Z",
+      "side": 1,
+      "message": "Added todo for follow up.",
+      "parentUuid": "8ab152b9_f0f596fd",
       "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -139,6 +217,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae3cdc5_d48a2948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-13T22:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96e12199_fe9b0448",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 11
+      },
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d814cc1_c8fd9cd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-13T22:16:09Z",
+      "side": 1,
+      "message": "Its used below, not sure what this mean.",
+      "parentUuid": "b6e7c44a_9b10cbcf",
+      "range": {
+        "startLine": 136,
+        "startChar": 36,
+        "endLine": 136,
+        "endChar": 53
+      },
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92cf34d6_16ca8274",
@@ -152,6 +278,30 @@
       "writtenOn": "2021-10-13T01:03:57Z",
       "side": 1,
       "message": "Should we have a seaparate error for this?\n\n\tif len(ws) !\u003d 3 {\n\t\ts.Fatalf(\"Unexpected number of windows found; wanted %v, got %v\", 3, len(ws))\n\t}",
+      "range": {
+        "startLine": 145,
+        "startChar": 19,
+        "endLine": 145,
+        "endChar": 30
+      },
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a90fe05_c8ff811f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-13T22:16:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92cf34d6_16ca8274",
       "range": {
         "startLine": 145,
         "startChar": 19,
@@ -192,6 +342,30 @@
       "writtenOn": "2021-10-13T01:03:57Z",
       "side": 1,
       "message": "Is there a way to just check for substring? I worry if the website changes title, don\u0027t know likely that is.",
+      "range": {
+        "startLine": 165,
+        "startChar": 18,
+        "endLine": 165,
+        "endChar": 25
+      },
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26232e72_09b1ce14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-13T22:16:09Z",
+      "side": 1,
+      "message": "Not sure, examples I saw uses \"Chrome - New Tab\" and this is the PWA app window so might be okay.",
+      "parentUuid": "8830a942_cde77e5d",
       "range": {
         "startLine": 165,
         "startChar": 18,
