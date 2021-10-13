@@ -16,6 +16,86 @@
       "message": "Thanks for reviewing. Addressed all the comments.",
       "revId": "d5310eceb60ca4af166699c64046ce6c52402847",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c9e8112_1e7c56da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-13T09:34:49Z",
+      "side": 1,
+      "message": "LGTM with comment.",
+      "revId": "d5310eceb60ca4af166699c64046ce6c52402847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d35dc0_9fb58e75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/bitstream.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-13T09:34:49Z",
+      "side": 1,
+      "message": "nit: could you update the comment about file removal here, too, or refer saveBitstreamWithTL?",
+      "revId": "d5310eceb60ca4af166699c64046ce6c52402847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cc563bb_14ce132b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-13T09:34:49Z",
+      "side": 1,
+      "message": "style: you do not need else.\n\nif err \u003d\u003d io.EOF {\n  return ...\n}\nif err !\u003d nil {\n  return ...\n}\n...",
+      "range": {
+        "startLine": 371,
+        "startChar": 4,
+        "endLine": 371,
+        "endChar": 8
+      },
+      "revId": "d5310eceb60ca4af166699c64046ce6c52402847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eca87e73_9c8b0187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-13T09:34:49Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 373,
+        "startChar": 4,
+        "endLine": 373,
+        "endChar": 8
+      },
+      "revId": "d5310eceb60ca4af166699c64046ce6c52402847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
