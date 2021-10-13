@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a2ffd8f_77e361a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-10-13T11:09:55Z",
+      "side": 1,
+      "message": "Hello Jeremy,\n\nI\u0027m still in the process of condensing the script, and also working on the following items:\n\n1. Send keyboard command via EC console, and monitor it with evtest. I have a keyboard service, similar to Touchscreen \u0026 Touchpad, that\u0027s already able to do this, but just want to evaluate whether using EC would be easier.\n2. Sometimes tapping the power button to turn DUT\u0027s screen off fails. I\u0027m yet to determine if it\u0027s because of the script, or something else.\n3. Stylus ejection, which is to be emulated on my new Sparky360.Octopus DUT.\n\nDUT I\u0027ve been using for this test: [Delbin/Volteer]",
+      "revId": "2aef399c31204963b370237a9b831f2d02d74f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
