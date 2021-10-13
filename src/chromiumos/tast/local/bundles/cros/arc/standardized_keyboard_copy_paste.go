@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
 	"chromiumos/tast/local/input"
@@ -64,10 +65,10 @@ func StandardizedKeyboardCopyPaste(ctx context.Context, s *testing.State) {
 // runStandardizedKeyboardCopyPasteTest verifies an input with pre-established source text
 // exists, runs a Ctrl+a/Ctrl+c to copy the text, pastes it into a destination, and
 // verifies it was properly copied. This does not use the virtual, on screen keyboard.
-func runStandardizedKeyboardCopyPasteTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
+func runStandardizedKeyboardCopyPasteTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
 	kbd, err := input.Keyboard(ctx)
 	if err != nil {
-		s.Fatal("Unable to create virtual keyboard: ", err)
+		return errors.Wrap(err, "unable to create virtual keyboard")
 	}
 	defer kbd.Close()
 
@@ -77,27 +78,29 @@ func runStandardizedKeyboardCopyPasteTest(ctx context.Context, s *testing.State,
 	const sourceText = "SOURCE_TEXT_TO_COPY"
 
 	if err := standardizedtestutil.ClickInputAndGuaranteeFocus(ctx, testParameters.Device.Object(ui.ID(textSourceID), ui.Text(sourceText))); err != nil {
-		s.Fatal("Unable to focus the source input, info: ", err)
+		return errors.Wrap(err, "unable to focus the source input")
 	}
 
 	if err := kbd.Accel(ctx, "Ctrl+a"); err != nil {
-		s.Fatal("Unable to send ctrl+a to input, info: ", err)
+		return errors.Wrap(err, "unable to send ctrl+a to input")
 	}
 
 	if err := kbd.Accel(ctx, "Ctrl+c"); err != nil {
-		s.Fatal("Unable to send ctrl+c to input, info: ", err)
+		return errors.Wrap(err, "unable to send ctrl+c to input")
 	}
 
 	// Verify the destination field exists and paste into it.
 	if err := standardizedtestutil.ClickInputAndGuaranteeFocus(ctx, testParameters.Device.Object(ui.ID(textDestinationID))); err != nil {
-		s.Fatal("Unable to focus the destination input, info: ", err)
+		return errors.Wrap(err, "unable to focus the destination input")
 	}
 
 	if err := kbd.Accel(ctx, "Ctrl+v"); err != nil {
-		s.Fatal("Unable to send ctrl+v to input, info: ", err)
+		return errors.Wrap(err, "unable to send ctrl+v to input")
 	}
 
 	if err := testParameters.Device.Object(ui.ID(textDestinationID), ui.Text(sourceText)).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatalf("Unable to confirm: %v was pasted into the destination, info: %v", sourceText, err)
+		return errors.Wrapf(err, "unable to confirm: %v was pasted into the destination", sourceText)
 	}
+
+	return nil
 }

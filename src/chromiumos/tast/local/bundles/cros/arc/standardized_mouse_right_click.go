@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
 	"chromiumos/tast/local/input"
@@ -48,34 +49,36 @@ func StandardizedMouseRightClick(ctx context.Context, s *testing.State) {
 	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
-func runStandardizedMouseRightClickTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
+func runStandardizedMouseRightClickTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
 	btnRightClickID := testParameters.AppPkgName + ":id/btnRightClick"
 	btnRightClickSelector := testParameters.Device.Object(ui.ID(btnRightClickID))
 
 	// Setup the mouse.
 	mouse, err := input.Mouse(ctx)
 	if err != nil {
-		s.Fatal("Unable to setup the mouse, info: ", err)
+		return errors.Wrap(err, "unable to setup the mouse")
 	}
 	defer mouse.Close()
 
 	if err := btnRightClickSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("Unable to find the button to click, info: ", err)
+		return errors.Wrap(err, "unable to find the button to click")
 	}
 
 	if err := testParameters.Device.Object(ui.Text("POINTER RIGHT CLICK (1)")).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The success label should not yet exist, info: ", err)
+		return errors.Wrap(err, "the success label should not yet exist")
 	}
 
 	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnRightClickSelector, mouse, standardizedtestutil.RightPointerButton); err != nil {
-		s.Fatal("Unable to click the button, info: ", err)
+		return errors.Wrap(err, "unable to click the button")
 	}
 
 	if err := testParameters.Device.Object(ui.Text("POINTER RIGHT CLICK (1)")).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The success label should exist, info: ", err)
+		return errors.Wrap(err, "the success label should exist")
 	}
 
 	if err := testParameters.Device.Object(ui.Text("POINTER RIGHT CLICK (2)")).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("A single mouse click triggered two click events, info: ", err)
+		return errors.Wrap(err, "a single mouse click triggered two click events")
 	}
+
+	return nil
 }

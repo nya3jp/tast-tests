@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
 	"chromiumos/tast/local/input"
@@ -65,24 +66,30 @@ func StandardizedTouchscreenScroll(ctx context.Context, s *testing.State) {
 	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
-func runStandardizedTouchScreenScrollTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
+func runStandardizedTouchScreenScrollTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
 	touchScreen, err := input.Touchscreen(ctx)
 	if err != nil {
-		s.Fatal("Unable to initialize the touchscreen, info: ", err)
+		return errors.Wrap(err, "unable to initialize the touchscreen")
 	}
 	defer touchScreen.Close()
 
 	// Perform the down test first as the up test depends on it to be complete.
 	txtScrollDownTestStateID := testParameters.AppPkgName + ":id/txtScrollDownTestState"
 	txtScrollDownSuccessSelector := testParameters.Device.Object(ui.ID(txtScrollDownTestStateID), ui.Text("COMPLETE"))
-	performTest(ctx, s, testParameters, txtScrollDownSuccessSelector, touchScreen, standardizedtestutil.DownScroll)
+	if err := performTest(ctx, testParameters, txtScrollDownSuccessSelector, touchScreen, standardizedtestutil.DownScroll); err != nil {
+		return errors.Wrap(err, "unable to perform down scroll")
+	}
 
 	txtScrollUpTestStateID := testParameters.AppPkgName + ":id/txtScrollUpTestState"
 	txtScrollUpSuccessSelector := testParameters.Device.Object(ui.ID(txtScrollUpTestStateID), ui.Text("COMPLETE"))
-	performTest(ctx, s, testParameters, txtScrollUpSuccessSelector, touchScreen, standardizedtestutil.UpScroll)
+	if err := performTest(ctx, testParameters, txtScrollUpSuccessSelector, touchScreen, standardizedtestutil.UpScroll); err != nil {
+		return errors.Wrap(err, "unable to perform up scroll")
+	}
+
+	return nil
 }
 
-func performTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams, txtSuccessSelector *ui.Object, touchScreen *input.TouchscreenEventWriter, scrollDirection standardizedtestutil.ScrollDirection) {
+func performTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams, txtSuccessSelector *ui.Object, touchScreen *input.TouchscreenEventWriter, scrollDirection standardizedtestutil.ScrollDirection) error {
 	const (
 		maxNumScrollIterations = 15
 	)
@@ -91,11 +98,11 @@ func performTest(ctx context.Context, s *testing.State, testParameters standardi
 	txtScrollableContentSelector := testParameters.Device.Object(ui.ID(txtScrollableContentID))
 
 	if err := txtScrollableContentSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("Unable to find the scrollable content, info: ", err)
+		return errors.Wrap(err, "unable to find the scrollable content")
 	}
 
 	if err := txtSuccessSelector.WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The success label should not yet exist, info: ", err)
+		return errors.Wrap(err, "the success label should not yet exist")
 	}
 
 	// Scroll multiple times, if the threshold is reached early, the test passes.
@@ -103,7 +110,7 @@ func performTest(ctx context.Context, s *testing.State, testParameters standardi
 	for i := 0; i < maxNumScrollIterations; i++ {
 		// Perform the scroll.
 		if err := standardizedtestutil.TouchscreenScroll(ctx, touchScreen, testParameters, txtScrollableContentSelector, scrollDirection); err != nil {
-			s.Fatal("Unable to perform a scroll, info: ", err)
+			return errors.Wrap(err, "unable to perform a scroll")
 		}
 
 		// Check to see if the test is done.
@@ -115,6 +122,8 @@ func performTest(ctx context.Context, s *testing.State, testParameters standardi
 
 	// Error out if the test did not pass.
 	if testPassed == false {
-		s.Fatalf("Unable to scroll the content past the threshold after %v iterations", maxNumScrollIterations)
+		errors.Errorf("unable to scroll the content past the threshold after %v iterations", maxNumScrollIterations)
 	}
+
+	return nil
 }
