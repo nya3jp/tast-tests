@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1efbe226_dd135ce7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-13T07:50:15Z",
+      "side": 1,
+      "message": "As we are validating \"Suspend failures\" and \"Firmware log errors\" after performing suspend stress which is not found in \"event log\" test. as this test case is targeting suspend stress, it better to have both scenarios.",
+      "parentUuid": "239601e5_cb51c4bd",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "f48301e8886dda95cdde17bf9d77ec21fc561f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69604560_95a515e3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_stability_check.go",
         "patchSetId": 2
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "I suggest you use mount --bind, just like I said in the prior comment. It will be safer if the test crashes.",
       "parentUuid": "57b7fe68_982997d8",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "f48301e8886dda95cdde17bf9d77ec21fc561f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12426911_e759d866",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-13T07:50:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a6a7de42_ea509d28",
       "range": {
         "startLine": 52,
         "startChar": 2,
