@@ -33,6 +33,24 @@
       "message": "Can we remove these checks altogether? Currently arc.MouseInput is exclusive to R and I\u0027m not sure if there is a plan to run it on P.",
       "revId": "ae2a8857f783c69aebc5261a18c33744605657de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "618e1f71_68589cf9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-10-13T15:14:14Z",
+      "side": 1,
+      "message": "sgtm. Let\u0027s remove \u0027if version \u003e arc.SDKP\u0027.",
+      "parentUuid": "3c3584c6_ecfc59b0",
+      "revId": "ae2a8857f783c69aebc5261a18c33744605657de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
