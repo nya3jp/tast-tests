@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b62a081_d3105337",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/performant_split_view_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1509712
+      },
+      "writtenOn": "2021-10-13T23:40:19Z",
+      "side": 1,
+      "message": "Yeah.. :)\n\nAdded it back.",
+      "parentUuid": "aa1a016f_4b8b0bd1",
+      "revId": "cb4218afca55ce4705f345e5493750a05debe047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13028c16_e43deb6f",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-10-09T00:25:08Z",
       "side": 1,
       "message": "What if the device was in portrait secondary or landscape secondary?",
+      "revId": "cb4218afca55ce4705f345e5493750a05debe047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc4e3111_f1d93447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/performant_split_view_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1509712
+      },
+      "writtenOn": "2021-10-13T23:40:19Z",
+      "side": 1,
+      "message": "Good catch. I changed the code so that the display is always placed in landscape primary.",
+      "parentUuid": "13028c16_e43deb6f",
       "revId": "cb4218afca55ce4705f345e5493750a05debe047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
