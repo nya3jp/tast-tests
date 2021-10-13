@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04527cc4_e8c4423a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-13T03:52:14Z",
+      "side": 1,
+      "message": "The function has been removed in the following commit. Therefore, this line should be removed. \n\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/d967fe8cc467a53ad547dbac5c44e7f776df6ab8",
+      "revId": "2e01657947f18d2278ac6de2e2061ee906d66faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
