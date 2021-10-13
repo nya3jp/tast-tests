@@ -53,6 +53,7 @@ const (
 	h264Baseline Profile = iota
 	h264Main
 	h264High
+	h264Extended
 	vp8Any
 	vp90
 	vp92
@@ -77,6 +78,8 @@ func profileToString(p Profile) string {
 		return "H264PROFILE_MAIN"
 	case h264High:
 		return "H264PROFILE_HIGH"
+	case h264Extended:
+		return "H264PROFILE_EXTENDED"
 	case vp8Any:
 		return "VP8PROFILE_ANY"
 	case vp90:
@@ -91,7 +94,7 @@ func profileToString(p Profile) string {
 
 func profileToCodec(p Profile) Codec {
 	switch p {
-	case h264Baseline, h264Main, h264High:
+	case h264Baseline, h264Main, h264High, h264Extended:
 		return h264
 	case vp8Any:
 		return vp8
@@ -115,6 +118,8 @@ func ffprobeCodecToProfile(codec, profile string) (Profile, error) {
 			return h264Main, nil
 		case "High":
 			return h264High, nil
+		case "Extended":
+			return h264Extended, nil
 		}
 	case "vp8":
 		return vp8Any, nil
