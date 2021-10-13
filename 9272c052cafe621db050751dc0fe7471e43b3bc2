@@ -86,6 +86,24 @@
       "message": "Any updates on getting this CL or the minijail uprev that it depends on landed? 😊",
       "revId": "9272c052cafe621db050751dc0fe7471e43b3bc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "229b6ab9_5341a6ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-10-13T20:44:59Z",
+      "side": 1,
+      "message": "I had to revert the dependent commit in minijail to unblock the uprev and haven\u0027t revisited it yet. The particular blocking issue doesn\u0027t have a obvious connection to the minijail change, so it is hard to predict how much effort resolve the issue.",
+      "parentUuid": "8e3162fd_d88c4f51",
+      "revId": "9272c052cafe621db050751dc0fe7471e43b3bc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
