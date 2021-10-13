@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcec120f_7e1d27fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-13T09:27:01Z",
+      "side": 1,
+      "message": "PTAL.",
+      "revId": "888d17461c53aa1560091984f97f0ce02db5feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "542e2148_ca8823a3",
+        "filename": "src/chromiumos/tast/local/cpu/measure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-13T09:27:01Z",
+      "side": 1,
+      "message": "note: the function is exact same, except getStat -\u003e timesStat renaming.",
+      "revId": "888d17461c53aa1560091984f97f0ce02db5feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90ec26dc_27a463b7",
+        "filename": "src/chromiumos/tast/local/cpu/measure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-13T09:27:01Z",
+      "side": 1,
+      "message": "The function is exact same, except MeasureCPUUsage -\u003e MeasureUsage, getStat -\u003e timesStat renaming.",
+      "revId": "888d17461c53aa1560091984f97f0ce02db5feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af1792e8_353a59c5",
+        "filename": "src/chromiumos/tast/local/cpu/measure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-13T09:27:01Z",
+      "side": 1,
+      "message": "Ditto. Exact same except getStat/MeasureCPUUsage -\u003e timesStat/MeasureUsage renaming.",
+      "revId": "888d17461c53aa1560091984f97f0ce02db5feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
