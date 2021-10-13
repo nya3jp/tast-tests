@@ -81,7 +81,7 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 		mouse.Press(tconn, mouse.LeftButton),
 		// Popup accent window sometimes flash on showing, so using Retry instead of WaitUntilExist.
 
-		ui.WithInterval(time.Second).Retry(10, ui.WaitForLocation(accentContainerFinder)),
+		ui.WithInterval(time.Second).RetrySilently(10, ui.WaitForLocation(accentContainerFinder)),
 		ui.MouseMoveTo(accentKeyFinder, 500*time.Millisecond),
 		mouse.Release(tconn, mouse.LeftButton),
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), accentKeyName),

@@ -254,7 +254,7 @@ func (its *InputsTestServer) WaitForFieldToBeActive(inputField InputField) uiaut
 
 // ClickFieldAndWaitForActive returns an action clicking the input field and waiting for it to be active.
 func (its *InputsTestServer) ClickFieldAndWaitForActive(inputField InputField) uiauto.Action {
-	return uiauto.Retry(3,
+	return uiauto.RetrySilently(3,
 		uiauto.Combine(
 			"click input field and wait for it to be active",
 			its.ClickField(inputField),
@@ -284,7 +284,7 @@ func (its *InputsTestServer) ClickField(inputField InputField) uiauto.Action {
 // RightClickFieldAndWaitForActive returns an action right clicking the input field.
 func (its *InputsTestServer) RightClickFieldAndWaitForActive(inputField InputField) uiauto.Action {
 	fieldFinder := inputField.Finder()
-	return uiauto.Retry(3, uiauto.Combine(
+	return uiauto.RetrySilently(3, uiauto.Combine(
 		"right click input field and wait for it to be active",
 		its.ui.MakeVisible(fieldFinder),
 		its.ui.RightClick(fieldFinder),

@@ -90,7 +90,7 @@ func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine(fmt.Sprintf("assert input mode is %s", mode.name),
 			vkbCtx.ClickUntilVKShown(omniboxFinder),
 			vkbCtx.TapKey(mode.typeKey),
-			ui.Retry(5, func(ctx context.Context) error {
+			ui.RetrySilently(5, func(ctx context.Context) error {
 				omniboxFirstResultInfo, err := ui.Info(ctx, omniboxFirstResultFinder)
 				if err != nil {
 					return errors.Wrap(err, "failed to find omnibox results")
