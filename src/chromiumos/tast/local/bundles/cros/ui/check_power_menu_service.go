@@ -6,12 +6,14 @@ package ui
 
 import (
 	"context"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	pb "chromiumos/tast/services/cros/ui"
@@ -39,8 +41,12 @@ func (p *PowerMenuService) NewChrome(ctx context.Context, req *pb.NewChromeReque
 		return nil, errors.New("Chrome already available")
 	}
 
+	oldpid, err := chromeproc.GetRootPID()
+	if err != nil {
+		return nil, errors.Wrap(err, "error getting Chrome root PID")
+	}
+
 	p.loginRequested = req.Login
-	var err error
 	if p.loginRequested {
 		p.cr, err = chrome.New(ctx)
 	} else {
@@ -49,6 +55,25 @@ func (p *PowerMenuService) NewChrome(ctx context.Context, req *pb.NewChromeReque
 	if err != nil {
 		return nil, err
 	}
+
+	// Additional check to ensure that a Chrome session has fully started.
+	comparePIDPollOptions := testing.PollOptions{Timeout: 30 * time.Second, Interval: 1 * time.Second}
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		newpid, err := chromeproc.GetRootPID()
+		if err != nil {
+			return err
+		}
+		if newpid == oldpid {
+			return errors.New("Chrome still did not restart")
+		}
+		return nil
+
+	}, &comparePIDPollOptions)
+
+	if err != nil {
+		return nil, errors.Wrap(err, "timeout waiting for Chrome to restart")
+	}
+
 	return &empty.Empty{}, nil
 }
 
