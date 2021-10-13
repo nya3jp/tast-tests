@@ -93,6 +93,30 @@
       },
       "revId": "221036ba848eae551085a2f072b5d0ab88af952c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8646bb2b_87d40a20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-13T10:40:28Z",
+      "side": 1,
+      "message": "Modifying policyutil.ServeAndVerify would mean that it has to return with the browser instance as well, and closing the browser would be also problematic.\n\nFiling a bug is a good idea, but I think this should be added to the fixture, and not to every test case.",
+      "parentUuid": "839faf1c_0ae642e0",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "221036ba848eae551085a2f072b5d0ab88af952c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
