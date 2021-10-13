@@ -45,6 +45,30 @@
       },
       "revId": "221036ba848eae551085a2f072b5d0ab88af952c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "127ac817_d269d06a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-13T10:20:14Z",
+      "side": 1,
+      "message": "If we open the browser before serving the policies, the policies are not propagated to the Lacros browser. When it is fixed (I think we didn\u0027t check it in the last few weeks), we can move this code to the fixture.",
+      "parentUuid": "e3f5ac63_841cf9a3",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "221036ba848eae551085a2f072b5d0ab88af952c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
