@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664fde4b_f513582c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T10:05:05Z",
+      "side": 1,
+      "message": "same here: why we cannot do it in policyutil.ResetChrome() ?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 48
+      },
+      "revId": "221036ba848eae551085a2f072b5d0ab88af952c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f5ac63_841cf9a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_home_button.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T10:05:05Z",
+      "side": 1,
+      "message": "Why don\u0027t we open lacros browser in the fixture?\n\ni think it adds some unnecessary complexity to each test",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "221036ba848eae551085a2f072b5d0ab88af952c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
