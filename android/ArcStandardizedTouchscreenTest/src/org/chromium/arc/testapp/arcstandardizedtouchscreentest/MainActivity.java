@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-    private LinearLayout mLayoutMain;
+    private LinearLayout mLayout;
 
     private Button mBtnTap;
     private int mBtnTapCounter = 1;
@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mLayoutMain = findViewById(R.id.layoutMain);
+        mLayout = findViewById(R.id.layoutStandardizedTest);
 
         // Add the text 'Touchscreen Tap' when the button is pressed.
         // Always add the counter so the tast test can make sure a single tap
@@ -51,6 +51,6 @@ public class MainActivity extends Activity {
     private void addTextViewToLayout(String text) {
         TextView el = new TextView(this);
         el.setText(text);
-        mLayoutMain.addView(el);
+        mLayout.addView(el);
     }
 }
