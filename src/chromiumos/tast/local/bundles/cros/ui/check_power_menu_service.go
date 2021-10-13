@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 )
@@ -78,7 +77,7 @@ func (p *PowerMenuService) PowerMenuPresent(ctx context.Context, req *empty.Empt
 	}
 
 	// Check if the power menu is displayed
-	finder := nodewith.ClassName("PowerButtonMenuView").Role(role.Menu).Ancestor(nodewith.Root())
+	finder := nodewith.ClassName("PowerButtonMenuView").Onscreen().First()
 	exists, err := uiauto.New(p.tconn).IsNodeFound(ctx, finder)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to find power menu")
