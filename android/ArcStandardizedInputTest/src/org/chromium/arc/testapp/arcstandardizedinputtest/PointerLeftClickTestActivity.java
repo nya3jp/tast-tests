@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class PointerLeftClickTestActivity extends Activity {
 
-    private LinearLayout mLayoutMain;
+    private LinearLayout mLayout;
     private int mBtnLeftClickCounter = 1;
 
     @Override
@@ -22,7 +22,7 @@ public class PointerLeftClickTestActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pointer_left_click_test);
 
-        mLayoutMain = findViewById(R.id.layoutMain);
+        mLayout = findViewById(R.id.layoutStandardizedTest);
 
         // Add the text 'Pointer Left Click' when the left click button is pressed.
         // Always add the click counter so the tast test can make sure a single click
@@ -33,7 +33,7 @@ public class PointerLeftClickTestActivity extends Activity {
                     TextView el = new TextView(this);
                     el.setText(String.format("POINTER LEFT CLICK (%d)", mBtnLeftClickCounter));
                     mBtnLeftClickCounter++;
-                    mLayoutMain.addView(el);
+                    mLayout.addView(el);
                 });
     }
 }
