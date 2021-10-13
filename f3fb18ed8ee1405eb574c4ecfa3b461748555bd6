@@ -24,6 +24,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0c914e_cea2cfdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-10-13T13:50:26Z",
+      "side": 1,
+      "message": "remove the dot (.)",
+      "range": {
+        "startLine": 13,
+        "startChar": 35,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "f3fb18ed8ee1405eb574c4ecfa3b461748555bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "55ca2eff_cc57d99a",
