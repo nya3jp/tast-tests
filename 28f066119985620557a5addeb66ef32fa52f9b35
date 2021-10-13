@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84f33eec_2c3aa7a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-10-13T01:53:06Z",
+      "side": 1,
+      "message": "Yeah sounds good. I\u0027ll split it into separate files soon.",
+      "parentUuid": "5ef048c9_dddf7527",
+      "revId": "28f066119985620557a5addeb66ef32fa52f9b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63205b84_3f282253",
@@ -66,6 +84,30 @@
       "writtenOn": "2021-10-13T00:54:55Z",
       "side": 1,
       "message": "ash.SetARCAppWindowState? With that, you don\u0027t have to fetch |window|, but we can pass |packageName|.",
+      "range": {
+        "startLine": 369,
+        "startChar": 18,
+        "endLine": 369,
+        "endChar": 32
+      },
+      "revId": "28f066119985620557a5addeb66ef32fa52f9b35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5cc4fc9_db162106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-10-13T01:53:06Z",
+      "side": 1,
+      "message": "SetARCAppWindowState waits for the state change, right?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go;l\u003d292?q\u003dWaitForARCAppWindowState",
+      "parentUuid": "63205b84_3f282253",
       "range": {
         "startLine": 369,
         "startChar": 18,
