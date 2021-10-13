@@ -174,12 +174,13 @@ func WaitForPrintPreview(tconn *chrome.TestConn) uiauto.Action {
 	ui := uiauto.New(tconn)
 	loadingPreviewText := nodewith.Name("Loading preview")
 	printPreviewFailedText := nodewith.Name("Print preview failed")
+	emptyAction := func(context.Context) error { return nil }
 	return uiauto.Combine("wait for Print Preview to finish loading",
 		// Wait for the loading text to appear to indicate print preview is loading.
 		// Since print preview can finish loading before the loading text is found,
-		// IfSuccessThen() is used with a nil "success" action just so that the
+		// IfSuccessThen() is used with a stub "success" action just so that the
 		// WaitUntilExists() error is ignored and won't fail the test.
-		ui.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(loadingPreviewText), nil),
+		ui.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(loadingPreviewText), emptyAction),
 		// Wait for the loading text to be removed to indicate print preview is no
 		// longer loading.
 		ui.WithTimeout(30*time.Second).WaitUntilGone(loadingPreviewText),
