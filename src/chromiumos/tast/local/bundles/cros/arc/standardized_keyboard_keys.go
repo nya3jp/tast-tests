@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
 	"chromiumos/tast/local/input"
@@ -98,16 +99,16 @@ func StandardizedKeyboardKeys(ctx context.Context, s *testing.State) {
 // runStandardizedKeyboardKeysTest verifies that all the provided keys are handled by
 // the android application's layout when it is focused. This ensures they can all be
 // handled by android applications.
-func runStandardizedKeyboardKeysTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
+func runStandardizedKeyboardKeysTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
 	kbd, err := input.Keyboard(ctx)
 	if err != nil {
-		s.Fatal("Failed to create virtual keyboard: ", err)
+		return errors.Wrap(err, "failed to create virtual keyboard")
 	}
 	defer kbd.Close()
 
 	topRow, err := input.KeyboardTopRowLayout(ctx, kbd)
 	if err != nil {
-		s.Fatal("Failed to load the top-row layout: ", err)
+		return errors.Wrap(err, "failed to load the top-row layout")
 	}
 
 	// Set up the basic keys to test. Must match keyCodesToTest in the corresponding app.
@@ -128,30 +129,32 @@ func runStandardizedKeyboardKeysTest(ctx context.Context, s *testing.State, test
 
 	isFocused, err := testParameters.Device.Object(ui.ID(layoutID)).IsFocused(ctx)
 	if err != nil {
-		s.Fatal("Failed to check focus of the layout: ", err)
+		return errors.Wrap(err, "failed to check focus of the layout")
 	}
 
 	if isFocused == false {
-		s.Fatal("Failed to focus the layout: ", err)
+		return errors.Wrap(err, "failed to focus the layout")
 	}
 
 	for _, curTestKey := range allTestKeys {
 		if err := testParameters.Device.Object(ui.Text(curTestKey.displayName)).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-			s.Fatalf("Failed to find %v element key: %v", curTestKey.displayName, err)
+			return errors.Wrapf(err, "failed to find %v element key", curTestKey.displayName)
 		}
 
 		keyPressed, err := curTestKey.key.Press(ctx, topRow, kbd)
 		if err != nil {
-			s.Fatalf("Failed to send %v key: %v", curTestKey.displayName, err)
+			return errors.Wrapf(err, "failed to send %v key", curTestKey.displayName)
 		}
 
 		if !keyPressed {
-			s.Logf("Key for test %v does not exist on device and was skipped", curTestKey.displayName)
+			testing.ContextLogf(ctx, "Key for test %v does not exist on device and was skipped", curTestKey.displayName)
 			continue
 		}
 
 		if err := testParameters.Device.Object(ui.Text(curTestKey.displayName)).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-			s.Fatalf("Failed to wait for the %v element key to be removed: %v", curTestKey.displayName, err)
+			return errors.Wrapf(err, "failed to wait for the %v element key to be removed", curTestKey.displayName)
 		}
 	}
+
+	return nil
 }

@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
 	"chromiumos/tast/testing"
@@ -60,7 +61,7 @@ func StandardizedTouchscreenLongTap(ctx context.Context, s *testing.State) {
 	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
-func runStandardizedTouchscreenLongTapTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
+func runStandardizedTouchscreenLongTapTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
 	btnLongTapID := testParameters.AppPkgName + ":id/btnLongTap"
 	btnLongTapSelector := testParameters.Device.Object(ui.ID(btnLongTapID))
 
@@ -68,22 +69,24 @@ func runStandardizedTouchscreenLongTapTest(ctx context.Context, s *testing.State
 	tooManyTapsLabelSelector := testParameters.Device.Object(ui.Text("TOUCHSCREEN LONG TAP (2)"))
 
 	if err := btnLongTapSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("Unable to find the button to long tap, info: ", err)
+		return errors.Wrap(err, "unable to find the button to long tap")
 	}
 
 	if err := successLabelSelector.WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The success label should not yet exist, info: ", err)
+		return errors.Wrap(err, "the success label should not yet exist")
 	}
 
 	if err := standardizedtestutil.TouchscreenTap(ctx, testParameters, btnLongTapSelector, standardizedtestutil.LongTouchscreenTap); err != nil {
-		s.Fatal("Unable to long tap the button, info: ", err)
+		return errors.Wrap(err, "unable to long tap the button")
 	}
 
 	if err := successLabelSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The success label should exist, info: ", err)
+		return errors.Wrap(err, "the success label should exist")
 	}
 
 	if err := tooManyTapsLabelSelector.WaitUntilGone(ctx, 0); err != nil {
-		s.Fatal("A single long tap triggered multiple events, info: ", err)
+		return errors.Wrap(err, "a single long tap triggered multiple events")
 	}
+
+	return nil
 }
