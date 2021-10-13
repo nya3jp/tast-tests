@@ -17,8 +17,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/graphics"
-	"chromiumos/tast/local/media/cpu"
+	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
 
@@ -354,7 +355,7 @@ func RunDecodePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 	defer server.Close()
 	loopbackURL := server.URL + "/" + LoopbackFile
 
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to set up CPU benchmark")
 	}

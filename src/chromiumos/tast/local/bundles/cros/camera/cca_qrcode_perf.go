@@ -14,7 +14,8 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/cpu"
+	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
 
@@ -42,7 +43,7 @@ func CCAQRCodePerf(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark: ", err)
 	}

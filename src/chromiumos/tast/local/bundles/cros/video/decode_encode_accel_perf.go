@@ -16,8 +16,9 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/gtest"
-	"chromiumos/tast/local/media/cpu"
+	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/sysutil"
@@ -65,7 +66,7 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	// Setup benchmark mode.
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}
@@ -114,7 +115,7 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 		})
 
 	// Measure CPU usage while both the encoder and decoder performance tests are running.
-	measurements, err := cpu.MeasureProcessUsage(ctx, measureDuration, cpu.KillProcess, encodeTest, decodeTest)
+	measurements, err := mediacpu.MeasureProcessUsage(ctx, measureDuration, mediacpu.KillProcess, encodeTest, decodeTest)
 	if err != nil {
 		s.Fatal("Failed to measure CPU usage: ", err)
 	}

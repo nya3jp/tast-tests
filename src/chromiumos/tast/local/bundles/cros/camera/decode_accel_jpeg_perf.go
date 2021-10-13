@@ -17,8 +17,9 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/gtest"
-	"chromiumos/tast/local/media/cpu"
+	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -70,7 +71,7 @@ func DecodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	}
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}
@@ -129,7 +130,7 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, testDir string,
 	logPath := fmt.Sprintf("%s/%s.%s.log", s.OutDir(), exec, id)
 	outPath := fmt.Sprintf("%s/perf_output.%s.json", s.OutDir(), id)
 	startTime := time.Now()
-	measurements, err := cpu.MeasureProcessUsage(ctx, measureDuration, cpu.WaitProcess,
+	measurements, err := mediacpu.MeasureProcessUsage(ctx, measureDuration, mediacpu.WaitProcess,
 		gtest.New(
 			filepath.Join(chrome.BinTestDir, exec),
 			gtest.Logfile(logPath),

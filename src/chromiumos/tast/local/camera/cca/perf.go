@@ -16,7 +16,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/testutil"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/cpu"
+	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
 
@@ -40,7 +41,7 @@ type MeasurementOptions struct {
 
 // MeasurePerformance measures performance for CCA.
 func MeasurePerformance(ctx context.Context, startApp StartAppFunc, stopApp StopAppFunc, options MeasurementOptions) (retErr error) {
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to set up benchmark")
 	}
@@ -118,7 +119,7 @@ func measureStablizedUsage(ctx context.Context) (map[string]float64, error) {
 	}
 
 	testing.ContextLog(ctx, "Measuring CPU usage for ", measureDuration)
-	return cpu.MeasureUsage(ctx, measureDuration)
+	return mediacpu.MeasureUsage(ctx, measureDuration)
 }
 
 // measurePreviewPerformance measures the performance of preview with QR code detection on and off.

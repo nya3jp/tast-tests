@@ -19,8 +19,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/gtest"
-	"chromiumos/tast/local/media/cpu"
+	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -64,7 +65,7 @@ func EncodeAccelJPEGPerf(ctx context.Context, s *testing.State) {
 	}
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}

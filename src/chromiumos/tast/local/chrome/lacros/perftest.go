@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/cpu"
-	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
 )
@@ -78,7 +77,7 @@ func waitForStableEnvironment(ctx context.Context) error {
 	}
 
 	// Wait for quiescent state.
-	if err := mediacpu.WaitUntilIdle(ctx); err != nil {
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
 	return nil

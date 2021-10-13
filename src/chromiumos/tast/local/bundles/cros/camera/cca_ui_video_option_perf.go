@@ -14,7 +14,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/cpu"
+	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
 
@@ -42,7 +43,7 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 	startApp := s.FixtValue().(cca.FixtureData).StartApp
 	stopApp := s.FixtValue().(cca.FixtureData).StopApp
 
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark: ", err)
 	}
@@ -122,7 +123,7 @@ func CCAUIVideoOptionPerf(ctx context.Context, s *testing.State) {
 				if err := testing.Sleep(ctx, stabilizationDuration); err != nil {
 					return errors.Wrap(err, "failed to sleep for CPU usage to stabilize")
 				}
-				usage, err := cpu.MeasureUsage(ctx, 15*time.Second)
+				usage, err := mediacpu.MeasureUsage(ctx, 15*time.Second)
 				if err != nil {
 					return errors.Wrap(err, "failed to measure cpu usage")
 				}

@@ -24,7 +24,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/c2e2etest"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/cpu"
+	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
@@ -288,7 +289,7 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 
 	s.Log("Starting cpu measurement")
 	var stats map[string]float64
-	stats, err = cpu.MeasureUsage(ctx, perfMeasurementDuration)
+	stats, err = mediacpu.MeasureUsage(ctx, perfMeasurementDuration)
 	if err != nil {
 		s.Fatal("Failed measuring CPU usage: ", err)
 	}
@@ -384,7 +385,7 @@ func reportFrameStats(logPath string) (float64, float64, error) {
 
 // RunARCVideoPerfTest runs testFPS in c2_e2e_test and sets as perf metric.
 func RunARCVideoPerfTest(ctx context.Context, s *testing.State, opts DecodeTestOptions) {
-	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}

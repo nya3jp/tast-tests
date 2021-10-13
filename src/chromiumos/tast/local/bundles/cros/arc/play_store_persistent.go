@@ -16,8 +16,8 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/cryptohome"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
 

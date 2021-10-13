@@ -11,8 +11,8 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )

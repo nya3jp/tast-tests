@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/media/cpu"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/testing"
 )
 
