@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d539f2a_8ddb097f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-13T17:49:48Z",
+      "side": 1,
+      "message": "kglund@, since you have context on SAR can you review the parsing logic? Thanks!",
+      "revId": "331d6db136857a8c550303088d937fc5db055a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
