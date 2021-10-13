@@ -28,13 +28,14 @@ var voiceTestIMEs = []ime.InputMethod{
 	ime.ChinesePinyin,
 	ime.EnglishUS,
 }
-var voiceTestIMEsExtra = []ime.InputMethod{
+var voiceTestIMEsNewData = []ime.InputMethod{
 	ime.AlphanumericWithJapaneseKeyboard,
 	ime.Arabic,
 	ime.EnglishUK,
 	ime.EnglishUSWithInternationalKeyboard,
 	ime.Japanese,
 	ime.Korean,
+	ime.EnglishSouthAfrica,
 }
 
 func init() {
@@ -44,31 +45,25 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
-		Data:         data.ExtractExternalFiles(voiceTestMessages, voiceTestIMEs),
 		Pre:          pre.VKEnabledReset,
-		Timeout:      time.Duration(len(voiceTestIMEs)+len(voiceTestIMEsExtra)) * time.Duration(len(voiceTestMessages)) * time.Minute,
+		Timeout:      time.Duration(len(voiceTestIMEs)+len(voiceTestIMEsNewData)) * time.Duration(len(voiceTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraData:         data.ExtractExternalFiles(voiceTestMessages, voiceTestIMEs),
 				Val:               voiceTestIMEs,
 			},
 			{
 				Name:              "newdata", // This test will be merged into CQ once it is proved to be stable.
-				Val:               voiceTestIMEsExtra,
-				ExtraData:         data.ExtractExternalFiles(voiceTestMessages, voiceTestIMEsExtra),
+				ExtraData:         data.ExtractExternalFiles(voiceTestMessages, voiceTestIMEsNewData),
+				Val:               voiceTestIMEsNewData,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "informational",
-				Val:               voiceTestIMEs,
-				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
-				ExtraAttr:         []string{"informational"},
-			},
-			{
-				Name:              "informational_newdata", // This test will be merged into informational together with the CQ ones.
-				Val:               voiceTestIMEsExtra,
-				ExtraData:         data.ExtractExternalFiles(voiceTestMessages, voiceTestIMEsExtra),
+				ExtraData:         data.ExtractExternalFiles(voiceTestMessages, append(voiceTestIMEs, voiceTestIMEsNewData...)),
+				Val:               append(voiceTestIMEs, voiceTestIMEsNewData...),
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 			},

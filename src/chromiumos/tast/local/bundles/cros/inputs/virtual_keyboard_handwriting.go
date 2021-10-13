@@ -35,6 +35,10 @@ var hwTestIMEs = []ime.InputMethod{
 	ime.Korean,
 }
 
+var hwTestIMEsNewData = []ime.InputMethod{
+	ime.EnglishSouthAfrica,
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardHandwriting,
@@ -42,27 +46,50 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
-		Data:         data.ExtractExternalFiles(hwTestMessages, hwTestIMEs),
 		Pre:          pre.VKEnabledReset,
-		Timeout:      time.Duration(len(hwTestIMEs)) * time.Duration(len(hwTestMessages)) * time.Minute,
+		Timeout:      2 * time.Duration(len(hwTestIMEs)+len(hwTestIMEsNewData)) * time.Duration(len(hwTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
 				Name:              "docked",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraData:         data.ExtractExternalFiles(hwTestMessages, hwTestIMEs),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
+				Val:               hwTestIMEs,
+			},
+			{
+				Name:              "docked_newdata", // This test will be merged into CQ once it is proved to be stable.
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraData:         data.ExtractExternalFiles(hwTestMessages, hwTestIMEsNewData),
+				ExtraAttr:         []string{"group:input-tools-upstream", "informational"},
+				Val:               hwTestIMEsNewData,
 			},
 			{
 				Name:              "docked_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraData:         data.ExtractExternalFiles(hwTestMessages, append(hwTestIMEs, hwTestIMEsNewData...)),
+				ExtraAttr:         []string{"informational"},
+				Val:               append(hwTestIMEs, hwTestIMEsNewData...),
 			},
 			{
 				Name:              "floating",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraData:         data.ExtractExternalFiles(hwTestMessages, hwTestIMEs),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
+				Val:               hwTestIMEs,
+			},
+			{
+				Name:              "floating_newdata",
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraData:         data.ExtractExternalFiles(hwTestMessages, hwTestIMEsNewData),
+				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
+				Val:               hwTestIMEsNewData,
 			},
 			{
 				Name:              "floating_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraData:         data.ExtractExternalFiles(hwTestMessages, append(hwTestIMEs, hwTestIMEsNewData...)),
+				ExtraAttr:         []string{"informational"},
+				Val:               append(hwTestIMEs, hwTestIMEsNewData...),
 			},
 		},
 	})
@@ -71,6 +98,8 @@ func init() {
 func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+
+	testIMEs := s.Param().([]ime.InputMethod)
 
 	cleanupCtx := ctx
 	// Use a shortened context for test operations to reserve time for cleanup.
@@ -133,5 +162,5 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 		}
 	}
 	// Run defined subtest per input method and message combination.
-	util.RunSubtestsPerInputMethodAndMessage(ctx, tconn, s, hwTestIMEs, hwTestMessages, subtest)
+	util.RunSubtestsPerInputMethodAndMessage(ctx, tconn, s, testIMEs, hwTestMessages, subtest)
 }

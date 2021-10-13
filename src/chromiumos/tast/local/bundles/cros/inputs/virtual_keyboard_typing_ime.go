@@ -39,6 +39,10 @@ var typingTestIMEs = []ime.InputMethod{
 	ime.Arabic,
 }
 
+var typingTestIMEsNewData = []ime.InputMethod{
+	ime.EnglishSouthAfrica,
+}
+
 var typingTestMessages = []data.Message{data.TypingMessageHello}
 
 func init() {
@@ -51,6 +55,27 @@ func init() {
 		Pre:          pre.VKEnabledTabletReset,
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      time.Duration(len(typingTestIMEs)) * time.Duration(len(typingTestMessages)) * time.Minute,
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraData:         data.ExtractExternalFiles(typingTestMessages, typingTestIMEs),
+				Val:               typingTestIMEs,
+			},
+			{
+				Name:              "newdata", // This test will be merged into CQ once it is proved to be stable.
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraData:         data.ExtractExternalFiles(typingTestMessages, typingTestIMEsNewData),
+				Val:               typingTestIMEsNewData,
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name:              "informational",
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraData:         data.ExtractExternalFiles(typingTestMessages, append(typingTestIMEs, typingTestIMEsNewData...)),
+				Val:               append(typingTestIMEs, typingTestIMEsNewData...),
+				ExtraAttr:         []string{"informational"},
+			},
+		},
 	})
 }
 

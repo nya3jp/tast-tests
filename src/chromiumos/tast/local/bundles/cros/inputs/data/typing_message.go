@@ -50,6 +50,11 @@ var TypingMessageHello = typingMessage{
 		LocationKeySeq:  strings.Split("hello", ""),
 		ExpectedText:    "hello",
 	},
+	ime.EnglishSouthAfrica: {
+		CharacterKeySeq: strings.Split("hello", ""),
+		LocationKeySeq:  strings.Split("hello", ""),
+		ExpectedText:    "hello",
+	},
 	ime.SpanishSpain: {
 		CharacterKeySeq: strings.Split("hola", ""),
 		LocationKeySeq:  strings.Split("hola", ""),
@@ -123,6 +128,10 @@ var TypingMessagePassword = typingMessage{
 // TypingMessageNumber defines messages of input methods for numberInputField.
 var TypingMessageNumber = typingMessage{
 	ime.EnglishUS: {
+		CharacterKeySeq: strings.Split("-123.456", ""),
+		ExpectedText:    "-123.456",
+	},
+	ime.EnglishSouthAfrica: {
 		CharacterKeySeq: strings.Split("-123.456", ""),
 		ExpectedText:    "-123.456",
 	},
