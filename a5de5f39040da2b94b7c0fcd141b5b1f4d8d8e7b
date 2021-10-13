@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc510f9_4a8e6959",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-13T23:35:38Z",
+      "side": 1,
+      "message": "Hi Yichen, added you as a reviewer since I\u0027m not too familiar with Task and Go...",
+      "revId": "a5de5f39040da2b94b7c0fcd141b5b1f4d8d8e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0b31d5c_d7d0e83b",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-10-13T23:21:56Z",
       "side": 1,
       "message": "nit: remove",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 7
+      },
+      "revId": "a5de5f39040da2b94b7c0fcd141b5b1f4d8d8e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20557794_56179cab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-13T23:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0b31d5c_d7d0e83b",
       "range": {
         "startLine": 42,
         "startChar": 4,
@@ -58,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8feed5fd_f8a6c080",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-13T23:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "673ee01c_bd245e03",
+      "revId": "a5de5f39040da2b94b7c0fcd141b5b1f4d8d8e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cecb063_17921d27",
@@ -71,6 +130,30 @@
       "writtenOn": "2021-10-13T23:21:56Z",
       "side": 1,
       "message": "nit: remove as we are just using the apps.Launch api and not launcher.\n\nBut don\u0027t we want to click from shelf?",
+      "range": {
+        "startLine": 115,
+        "startChar": 25,
+        "endLine": 115,
+        "endChar": 39
+      },
+      "revId": "a5de5f39040da2b94b7c0fcd141b5b1f4d8d8e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77f7ce8e_eb6fc7dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-13T23:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cecb063_17921d27",
       "range": {
         "startLine": 115,
         "startChar": 25,
