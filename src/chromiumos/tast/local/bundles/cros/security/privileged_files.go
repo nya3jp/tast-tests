@@ -50,6 +50,8 @@ func PrivilegedFiles(ctx context.Context, s *testing.State) {
 	// No error is reported if these files are missing or don't have the bit.
 	setuidBaseline := makeStringSet([]string{
 		"/usr/bin/powerd_setuid_helper",
+		// TODO(b/202991326): Remove fusermount3.
+		"/usr/bin/fusermount3",
 		"/usr/bin/sudo",
 		"/usr/libexec/dbus-daemon-launch-helper",
 
