@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3231590a_ce654e01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-10-13T14:08:27Z",
+      "side": 1,
+      "message": "Thanks, I marked it as resolved.\nRegarding your question, I don\u0027t think so.\nDid you use `git commit --amend`? or changed it directly from the Gerrit?",
+      "parentUuid": "39c9e379_8ce2eac8",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "f3fb18ed8ee1405eb574c4ecfa3b461748555bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e0c914e_cea2cfdc",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-10-13T13:50:26Z",
       "side": 1,
       "message": "remove the dot (.)",
+      "range": {
+        "startLine": 13,
+        "startChar": 35,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "f3fb18ed8ee1405eb574c4ecfa3b461748555bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a7f41f5_88a51c79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-10-13T14:08:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e0c914e_cea2cfdc",
       "range": {
         "startLine": 13,
         "startChar": 35,
