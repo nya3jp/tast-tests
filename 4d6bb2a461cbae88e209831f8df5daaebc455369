@@ -16,6 +16,24 @@
       "message": "Could you list the tests that are being moved in the description?",
       "revId": "4d6bb2a461cbae88e209831f8df5daaebc455369",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb8c8b42_b512312d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2021-10-13T17:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0442456_e88bfe74",
+      "revId": "4d6bb2a461cbae88e209831f8df5daaebc455369",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
