@@ -55,10 +55,8 @@ func init() {
 			// TODO(b/209833758): Removed from CQ due to flake in VM.
 			ExtraAttr: []string{"informational"},
 		}, {
-			Name:    "video_fake",
-			Fixture: "ccaLaunchedWithFakeCamera",
-			// TODO(b/191846403): Promote the test to Chrome CQ once it is stable enough.
-			ExtraAttr:         []string{"informational"},
+			Name:              "video_fake",
+			Fixture:           "ccaLaunchedWithFakeCamera",
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Val:               videoRecoridng,
 		}},
