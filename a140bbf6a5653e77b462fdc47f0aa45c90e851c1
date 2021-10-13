@@ -250,6 +250,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06040ad3_fc2e0e50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-13T02:40:25Z",
+      "side": 1,
+      "message": "I first deleted the workaround usage here, and I am now ready to deal with the above bug. Thanks for your reviewing!",
+      "parentUuid": "9ba2c3e0_84f1901a",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "a140bbf6a5653e77b462fdc47f0aa45c90e851c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abf46185_705fc650",
