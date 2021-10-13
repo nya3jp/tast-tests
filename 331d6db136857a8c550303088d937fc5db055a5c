@@ -16,6 +16,57 @@
       "message": "kglund@, since you have context on SAR can you review the parsing logic? Thanks!",
       "revId": "331d6db136857a8c550303088d937fc5db055a5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1edbf330_c7652bef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-13T18:05:37Z",
+      "side": 1,
+      "message": "tast shadow review complete, just a few nits.",
+      "revId": "331d6db136857a8c550303088d937fc5db055a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1591a689_f2c010a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-13T18:05:37Z",
+      "side": 1,
+      "message": "nit: Spanning multiple lines makes it a bit difficult to see the full context (i.e. \u0027{...}\u0027). You could simplify it by putting the v2Part, code first and then returning the fully formatted string so the format is all in one place:\n\n// v2Part...\nreturn fmt.Sprintf(\"{%.3f %.3f %.3f %.3f %.3f %.3f %v}\", ... v2Part)",
+      "revId": "331d6db136857a8c550303088d937fc5db055a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd31edd6_9edc07e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-13T18:05:37Z",
+      "side": 1,
+      "message": "nit: The function doesn\u0027t match the description anymore: \"return a nil table alongside the error itself\". Update the description to note the version or name the return parameters.",
+      "revId": "331d6db136857a8c550303088d937fc5db055a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
