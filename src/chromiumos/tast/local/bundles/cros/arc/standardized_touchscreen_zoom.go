@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
 	"chromiumos/tast/local/input"
@@ -61,7 +62,7 @@ func StandardizedTouchscreenZoom(ctx context.Context, s *testing.State) {
 	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
-func runStandardizedTouchscreenZoomTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
+func runStandardizedTouchscreenZoomTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
 	txtZoomID := testParameters.AppPkgName + ":id/txtZoom"
 	txtZoomSelector := testParameters.Device.Object(ui.ID(txtZoomID))
 
@@ -73,46 +74,48 @@ func runStandardizedTouchscreenZoomTest(ctx context.Context, s *testing.State, t
 
 	touchScreen, err := input.Touchscreen(ctx)
 	if err != nil {
-		s.Fatal("Unable to initialize the touchscreen, info: ", err)
+		return errors.Wrap(err, "unable to initialize the touchscreen")
 	}
 	defer touchScreen.Close()
 
 	if err := txtZoomSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("Unable to find the element to zoom in on, info: ", err)
+		return errors.Wrap(err, "unable to find the element to zoom in on")
 	}
 
 	// No labels should be in their complete state before the tests begin.
 	if err := zoomInSuccessLabelSelector.WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The zoom in success label should not yet exist, info: ", err)
+		return errors.Wrap(err, "the zoom in success label should not yet exist")
 	}
 
 	if err := zoomOutSuccessLabelSelector.WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The zoom out success label should not yet exist, info: ", err)
+		return errors.Wrap(err, "the zoom out success label should not yet exist")
 	}
 
 	// After the zoom in, only the zoom in label should be in the success state.
 	if err := standardizedtestutil.TouchscreenZoom(ctx, touchScreen, testParameters, txtZoomSelector, standardizedtestutil.ZoomIn); err != nil {
-		s.Fatal("Unable to perform the zoom, info: ", err)
+		return errors.Wrap(err, "unable to perform the zoom")
 	}
 
 	if err := zoomInSuccessLabelSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The zoom in success label should exist, info: ", err)
+		return errors.Wrap(err, "the zoom in success label should exist")
 	}
 
 	if err := zoomOutSuccessLabelSelector.WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The zoom out success label should not yet exist, info: ", err)
+		return errors.Wrap(err, "the zoom out success label should not yet exist")
 	}
 
 	// After the zoom out, all zoom labels should be in the success state.
 	if err := standardizedtestutil.TouchscreenZoom(ctx, touchScreen, testParameters, txtZoomSelector, standardizedtestutil.ZoomOut); err != nil {
-		s.Fatal("Unable to perform the zoom, info: ", err)
+		return errors.Wrap(err, "unable to perform the zoom")
 	}
 
 	if err := zoomInSuccessLabelSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The zoom in success label should exist, info: ", err)
+		return errors.Wrap(err, "the zoom in success label should exist")
 	}
 
 	if err := zoomOutSuccessLabelSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("The zoom out success label should exist, info: ", err)
+		return errors.Wrap(err, "the zoom out success label should exist")
 	}
+
+	return nil
 }

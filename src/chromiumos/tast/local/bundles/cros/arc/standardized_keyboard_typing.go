@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
 	"chromiumos/tast/local/input"
@@ -63,10 +64,10 @@ func StandardizedKeyboardTyping(ctx context.Context, s *testing.State) {
 
 // runStandardizedKeyboardTypingTest types into the input field, and ensures the text appears.
 // This does not use the virtual, on screen keyboard.
-func runStandardizedKeyboardTypingTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
+func runStandardizedKeyboardTypingTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
 	kbd, err := input.Keyboard(ctx)
 	if err != nil {
-		s.Fatal("Unable to create virtual keyboard: ", err)
+		return errors.Wrap(err, "unable to create virtual keyboard")
 	}
 	defer kbd.Close()
 
@@ -75,14 +76,16 @@ func runStandardizedKeyboardTypingTest(ctx context.Context, s *testing.State, te
 	const textForTest = "abcdEFGH0123!@#$"
 
 	if err := standardizedtestutil.ClickInputAndGuaranteeFocus(ctx, textKeyboardSelector); err != nil {
-		s.Fatal("Unable to focus the input, info: ", err)
+		return errors.Wrap(err, "unable to focus the input")
 	}
 
 	if err := kbd.Type(ctx, textForTest); err != nil {
-		s.Fatalf("Unable to type: %v, info: %v", textForTest, err)
+		return errors.Wrapf(err, "unable to type: %v", textForTest)
 	}
 
 	if err := testParameters.Device.Object(ui.ID(textKeyboardInputID), ui.Text(textForTest)).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatalf("Unable to confirm: %v was typed, info: %v", textForTest, err)
+		return errors.Wrapf(err, "unable to confirm %v was typed", textForTest)
 	}
+
+	return nil
 }

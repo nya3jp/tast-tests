@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
 	"chromiumos/tast/local/input"
@@ -50,29 +51,31 @@ func StandardizedTrackpadRightClick(ctx context.Context, s *testing.State) {
 	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
 }
 
-func runStandardizedTrackpadRightClickTest(ctx context.Context, s *testing.State, testParameters standardizedtestutil.TestFuncParams) {
+func runStandardizedTrackpadRightClickTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
 	btnRightClickID := testParameters.AppPkgName + ":id/btnRightClick"
 	btnRightClickSelector := testParameters.Device.Object(ui.ID(btnRightClickID))
 
 	trackpad, err := input.Trackpad(ctx)
 	if err != nil {
-		s.Fatal("Failed to setup the trackpad: ", err)
+		return errors.Wrap(err, "failed to setup the trackpad")
 	}
 	defer trackpad.Close()
 
 	if err := btnRightClickSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("Failed to find the button to click: ", err)
+		return errors.Wrap(err, "failed to find the button to click")
 	}
 
 	if err := standardizedtestutil.TrackpadClickObject(ctx, testParameters, btnRightClickSelector, trackpad, standardizedtestutil.RightPointerButton); err != nil {
-		s.Fatal("Failed to click the button: ", err)
+		return errors.Wrap(err, "failed to click the button")
 	}
 
 	if err := testParameters.Device.Object(ui.Text("POINTER RIGHT CLICK (1)")).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("Failed to verify success: ", err)
+		return errors.Wrap(err, "failed to verify success")
 	}
 
 	if err := testParameters.Device.Object(ui.Text("POINTER RIGHT CLICK (2)")).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		s.Fatal("Failed to verify only one click event was fired: ", err)
+		return errors.Wrap(err, "failed to verify only one click event was fired")
 	}
+
+	return nil
 }
