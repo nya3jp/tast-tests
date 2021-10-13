@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41ce8d58_978cf046",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T14:26:29Z",
+      "side": 1,
+      "message": "LGTM % nits, thanks!",
+      "revId": "aeff77a6cd056a6408798a057b315fa74d6d8033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3486fabe_f3057061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine_enrolled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T14:26:29Z",
+      "side": 1,
+      "message": "nit: exists ?",
+      "range": {
+        "startLine": 309,
+        "startChar": 45,
+        "endLine": 309,
+        "endChar": 50
+      },
+      "revId": "aeff77a6cd056a6408798a057b315fa74d6d8033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c823eb57_67ff126a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine_enrolled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T14:26:29Z",
+      "side": 1,
+      "message": "nit: i think we can move it outside of this if condition and run it no matter of the expected routine status",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 0
+      },
+      "revId": "aeff77a6cd056a6408798a057b315fa74d6d8033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c4b6c2d_cbc75a0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine_enrolled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T14:26:29Z",
+      "side": 1,
+      "message": "nit: maybe smth like:\n\n```\n\"Failed to wait until routine change status to %s: %v\", wantedRoutineStatus, err\n``",
+      "range": {
+        "startLine": 344,
+        "startChar": 14,
+        "endLine": 344,
+        "endChar": 65
+      },
+      "revId": "aeff77a6cd056a6408798a057b315fa74d6d8033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4f483f7_f2452a5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine_enrolled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T14:26:29Z",
+      "side": 1,
+      "message": "nit: Unexpected status \u003d got %v, want %v",
+      "range": {
+        "startLine": 353,
+        "startChar": 14,
+        "endLine": 353,
+        "endChar": 48
+      },
+      "revId": "aeff77a6cd056a6408798a057b315fa74d6d8033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
