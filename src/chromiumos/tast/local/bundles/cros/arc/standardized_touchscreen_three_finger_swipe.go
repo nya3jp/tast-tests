@@ -68,7 +68,7 @@ func runStandardizedTouchscreenThreeFingerSwipeTest(ctx context.Context, s *test
 	txtTestStateID := testParameters.AppPkgName + ":id/txtTestState"
 
 	// Ensure the test starts out in a pending state.
-	if err := testParameters.Device.Object(ui.ID(txtTestStateID), ui.Text("PENDING")).Exists(ctx); err != nil {
+	if err := testParameters.Device.Object(ui.ID(txtTestStateID), ui.Text("PENDING")).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("Failed to make sure the app is in a pending state: ", err)
 	}
 
@@ -77,7 +77,7 @@ func runStandardizedTouchscreenThreeFingerSwipeTest(ctx context.Context, s *test
 		s.Fatal("Failed to perform a two finger swipe: ", err)
 	}
 
-	if err := testParameters.Device.Object(ui.ID(txtTestStateID), ui.Text("PENDING")).Exists(ctx); err != nil {
+	if err := testParameters.Device.Object(ui.ID(txtTestStateID), ui.Text("PENDING")).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		s.Fatal("Failed to verify a two finger swipe does not trigger a swipe state: ", err)
 	}
 

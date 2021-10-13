@@ -27,11 +27,11 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-// Variables used by other tast tests
-const (
-	defaultTestCaseTimeout = 2 * time.Minute
-	ShortUITimeout         = 30 * time.Second
-)
+// ShortUITimeout stores the time a UI action has before a timeout should occur.
+const ShortUITimeout = 30 * time.Second
+
+// RunTestCasesCleanupTime stores the amount of time a test has to clean up between runs.
+const RunTestCasesCleanupTime = 20 * time.Second
 
 // PointerButton abstracts the underlying pointer button implementation into a
 // standard type that can be used by callers.
@@ -133,45 +133,39 @@ func GetTabletHardwareDeps() hwdep.Deps {
 // RunTestCases runs the provided test cases and handles cleanup between tests.
 func RunTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, testCases []TestCase) {
 	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
+	d := s.FixtValue().(*arc.PreData).UIDevice
+
+	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
+		s.Fatal("Failed to install the APK: ", err)
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Could not open Test API connection: ", err)
 	}
 
-	a := s.FixtValue().(*arc.PreData).ARC
-	d := s.FixtValue().(*arc.PreData).UIDevice
-	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
-		s.Fatal("Failed to install the APK: ", err)
-	}
-
-	act, err := arc.NewActivity(a, appPkgName, appActivity)
-	if err != nil {
-		s.Fatal("Failed to create new app activity: ", err)
-	}
-	defer act.Close()
-
 	// Run the different test cases.
 	for idx, test := range testCases {
-		// If a timeout is not specified, limited individual test cases to the default.
-		// This makes sure that one test case doesn't use all of the time when it fails.
-		timeout := defaultTestCaseTimeout
-		if test.Timeout != 0 {
-			timeout = test.Timeout
-		}
-		testCaseCtx, cancel := ctxutil.Shorten(ctx, timeout)
-		defer cancel()
+		s.Run(ctx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
+			// Save time for cleanup by working on a shortened context.
+			workCtx, workCtxCancel := ctxutil.Shorten(cleanupCtx, RunTestCasesCleanupTime)
+			defer workCtxCancel()
 
-		s.Run(testCaseCtx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
-			// Save time for cleanup
-			ctx, cancel := ctxutil.Shorten(cleanupCtx, 20*time.Second)
-			defer cancel()
+			// Launch the activity.
+			act, err := arc.NewActivity(a, appPkgName, appActivity)
+			if err != nil {
+				s.Fatal("Failed to create new app activity: ", err)
+			}
 
-			// Launch the app.
-			if err := act.Start(ctx, tconn); err != nil {
+			defer func(ctx context.Context) {
+				act.Close()
+			}(cleanupCtx)
+
+			if err := act.Start(workCtx, tconn); err != nil {
 				s.Fatal("Failed to start app: ", err)
 			}
 
-			// Close the app between iterations.
 			defer func(ctx context.Context) {
 				if err := act.Stop(ctx, tconn); err != nil {
 					s.Fatal("Failed to stop app: ", err)
@@ -191,11 +185,26 @@ func RunTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 				}
 			}(cleanupCtx)
 
-			if _, err := ash.SetARCAppWindowStateAndWait(ctx, tconn, appPkgName, test.WindowStateType); err != nil {
+			// Wait for the activity to be ready.
+			if err := ash.WaitForVisible(workCtx, tconn, act.PackageName()); err != nil {
+				s.Fatal("Failed to wait for the app to be visible: ", err)
+			}
+
+			if err := d.WaitForIdle(workCtx, ShortUITimeout); err != nil {
+				s.Fatal("Failed to wait for the app to be idle: ", err)
+			}
+
+			// Set the window state. Note that this can hang indefinitely as this is the
+			// non-async version. The context is shortened for this call to make sure it
+			// errors out early and additional tests can run.
+			setWindowStateWorkCtx, setWindowStateCtxCancel := context.WithTimeout(workCtx, ShortUITimeout)
+			defer setWindowStateCtxCancel()
+			if _, err := ash.SetARCAppWindowStateAndWait(setWindowStateWorkCtx, tconn, appPkgName, test.WindowStateType); err != nil {
 				s.Fatal("Failed to set window state: ", err)
 			}
 
-			test.Fn(ctx, s, TestFuncParams{
+			// Run the test.
+			test.Fn(workCtx, s, TestFuncParams{
 				TestConn:        tconn,
 				Arc:             a,
 				Device:          d,
@@ -204,7 +213,6 @@ func RunTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 				Activity:        act,
 			})
 		})
-		cancel()
 	}
 }
 
