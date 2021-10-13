@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e24886_adb5edbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:50:52Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "f284434fa0114f4561784b1ebc7894233d2c8eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "227a2902_42154da4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_stateful_partition_available_capacity_enrolled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:50:52Z",
+      "side": 1,
+      "message": "nit: move Roland contact after line 23",
+      "revId": "f284434fa0114f4561784b1ebc7894233d2c8eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34cb7d9_0dff5ed1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_stateful_partition_available_capacity_enrolled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:50:52Z",
+      "side": 1,
+      "message": "nit: \n\n```\nif want:\u003d dtcpb.GetStatefulPartitionAvailableCapacityResponse_STATUS_OK; resp.Status !\u003d want {\n  s.Fatalf(\"Unexpected status received from vsh rpc method call \u003d got %v, want %v\", resp.Status, want)\n}\n```",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 1
+      },
+      "revId": "f284434fa0114f4561784b1ebc7894233d2c8eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce1798ab_775c74f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_stateful_partition_available_capacity_enrolled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-13T13:50:52Z",
+      "side": 1,
+      "message": "nit: looks like this is preferred format, because \":\" is used in errors:\n\n```\nInvalid available capacity \u003d got %v, want %v +- %v\n```",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 61
+      },
+      "revId": "f284434fa0114f4561784b1ebc7894233d2c8eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
