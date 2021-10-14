@@ -16,6 +16,52 @@
       "message": "This approach will loose Lacros test coverage on chromium CQ, IIUC?",
       "revId": "8daab9c8daa0a66232d951d690fca5b09099123a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50ba17fa_893b7b02",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-14T17:11:02Z",
+      "side": 1,
+      "message": "nit: comment is outdated",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 109
+      },
+      "revId": "8daab9c8daa0a66232d951d690fca5b09099123a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bcdc0e3_a037e9a5",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-14T17:11:02Z",
+      "side": 1,
+      "message": "I would probably like to check this again. \nIs this change okay with the Browser CQ/CI wanting to pass in the lacrosDeployedBinary runtime var for Lacros aritifacts to be tested rather than Rootfs?\nIf this is declared at this fixture level and the runtime var is not honored in fixture, all the tests using this fixture would lose flexibility in conditionally choosing lacros binary source. This might be not very helpful for test debugging on a certain lacros build or bisecting builds for troubleshooting.\n\nWhat I think we want to do is:\n1. Check the lacrosDeployedBinary runtime var. If it\u0027s passed in, it should be honored as if it runs in the `External` mode.\n2. If not, it defaults to `Rootfs` mode\n3. Aside, any tests needing `Omaha` mode (very rare) should define its own dedicated fixture.\n\nIn case it helps I re-posted our early discussion: https://docs.google.com/document/d/15wRgdQA9Pk_j6aIp4XpSqajDmwCt6MZH7wT45wIHyF4/edit#bookmark\u003did.f2g1o1vlxvo\nsrc/chromiumos/tast/local/chrome/lacros/launcher/util.go",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 0
+      },
+      "revId": "8daab9c8daa0a66232d951d690fca5b09099123a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
