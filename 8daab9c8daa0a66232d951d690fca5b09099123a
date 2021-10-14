@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7864702d_dddc7e19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-14T15:01:24Z",
+      "side": 1,
+      "message": "This approach will loose Lacros test coverage on chromium CQ, IIUC?",
+      "revId": "8daab9c8daa0a66232d951d690fca5b09099123a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
