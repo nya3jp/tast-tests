@@ -454,15 +454,15 @@ func parseStringListInternal(value []rune, index *int) ([]interface{}, error) {
 	if *index >= len(value) {
 		return nil, errors.Errorf("unexpected end of string at %d in %s", *index, string(value))
 	}
-	// The first char should always be a [
-	if value[*index] != '[' {
+	// The first char should always be a [ or (, as it might be a list or a tuple.
+	if value[*index] != '[' && value[*index] != '(' {
 		return nil, errors.Errorf("unexpected list char %c at index %d in %s", value[*index], *index, string(value))
 	}
 	(*index)++
 	for ; *index < len(value); (*index)++ {
 		c := value[*index]
 		switch c {
-		case '[':
+		case '[', '(':
 			sublist, err := parseStringListInternal(value, index)
 			if err != nil {
 				return nil, err
@@ -476,7 +476,7 @@ func parseStringListInternal(value []rune, index *int) ([]interface{}, error) {
 			result = append(result, substr)
 		case ',', ' ':
 			// Ignore this char
-		case ']':
+		case ']', ')':
 			return result, nil
 		default:
 			return nil, errors.Errorf("unexpected list char %c at index %d in %s", c, *index, string(value))

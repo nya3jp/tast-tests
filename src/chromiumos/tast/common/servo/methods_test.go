@@ -23,6 +23,7 @@ func TestParseStringList(t *testing.T) {
 		{`[['one', 'two'], ['three']]`, false, []interface{}{[]interface{}{"one", "two"}, []interface{}{"three"}}},
 		{`["\x00\u0001\U00000002"]`, false, []interface{}{"\000\001\002"}},
 		{`["\x4a\u1E0A\U0001F6B4"]`, false, []interface{}{"JḊ🚴"}},
+		{`[('chg.*:\r\n\tvoltage = 8200mV', '8200')]`, false, []interface{}{[]interface{}{"chg.*:\r\n\tvoltage = 8200mV", "8200"}}},
 	} {
 		res, err := ParseStringList(tc.pslParam)
 		if tc.expectErr {
