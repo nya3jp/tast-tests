@@ -1026,6 +1026,11 @@ func (tf *TestFixture) WifiClient() *WifiClient {
 	return tf.wifiClient
 }
 
+// Rpc returns the gRPC connection of the DUT.
+func (tf *TestFixture) Rpc() *rpc.Client {
+	return tf.rpc
+}
+
 // DefaultOpenNetworkAPOptions returns the Options for an common 802.11n open wifi.
 // The function is useful to allow common logic shared between the default setting
 // and customized setting.
@@ -1239,7 +1244,7 @@ func newRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtyp
 func (tf *TestFixture) WaitWifiConnected(ctx context.Context, guid string) error {
 	testing.ContextLog(ctx, "Waiting for WiFi to be connected to profile with GUID: "+guid)
 
-	req := &wifi.RequestScansRequest{Count: 1}
+	req := &wifi.RequestScansRequest{Count: 3}
 	if _, err := tf.WifiClient().RequestScans(ctx, req); err != nil {
 		errors.Wrap(err, "Failed to request scan: ")
 	}
@@ -1249,8 +1254,22 @@ func (tf *TestFixture) WaitWifiConnected(ctx context.Context, guid string) error
 		if err != nil {
 			return errors.Wrap(err, "Failed to get the WiFi service information from DUT")
 		}
+
 		if guid == serInfo.Guid && serInfo.IsConnected {
-			return nil
+			iface, err := tf.ClientInterface(ctx)
+			if err != nil {
+				return errors.Wrap(err, "failed to get interface from the DUT")
+			}
+
+			addrs, err := tf.WifiClient().GetIPv4Addrs(ctx, &wifi.GetIPv4AddrsRequest{InterfaceName: iface})
+			if err != nil {
+				return errors.Wrap(err, "failed to get client IPv4 addresses")
+			}
+			if len(addrs.Ipv4) > 0 {
+				return nil
+			} else {
+				return errors.New("IPv4 address not assigned yet")
+			}
 		} else {
 			if guid != serInfo.Guid {
 				return errors.New("GUID does not match, current service is: " + serInfo.Guid)
