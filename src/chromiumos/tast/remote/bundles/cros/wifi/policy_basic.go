@@ -14,11 +14,8 @@ import (
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/tunneled1x"
 	"chromiumos/tast/common/wifi/security/wpa"
-	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/remote/wificell"
 	ap "chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/rpc"
 	ps "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 
@@ -36,8 +33,8 @@ func init() {
 		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{wificell.TFServiceName, "tast.cros.policy.PolicyService"},
-		Timeout:      15 * time.Minute,
-		Fixture:      "wificellFixt",
+		Timeout:      10 * time.Minute,
+		Fixture:      "wificellFixtEnrolled",
 	})
 }
 
@@ -205,43 +202,7 @@ func PolicyBasic(ctx context.Context, s *testing.State) {
 	}
 
 	tf := s.FixtValue().(*wificell.TestFixture)
-
-	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
-			s.Error("Failed to reset TPM: ", err)
-		}
-	}(ctx)
-
-	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
-	defer cancel()
-
-	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
-		s.Fatal("Failed to reset TPM: ", err)
-	}
-
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
-	}
-	defer cl.Close(ctx)
-
-	pc := ps.NewPolicyServiceClient(cl.Conn)
-	pJSON, err := json.Marshal(fakedms.NewPolicyBlob())
-	if err != nil {
-		s.Fatal("Failed to serialize policies: ", err)
-	}
-
-	if _, err := pc.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
-		PolicyJson: pJSON,
-		SkipLogin:  true,
-	}); err != nil {
-		s.Fatal("Failed to enroll using Chrome: ", err)
-	}
-	defer pc.StopChromeAndFakeDMS(ctx, &empty.Empty{})
-
-	if _, err = pc.StopChrome(ctx, &empty.Empty{}); err != nil {
-		s.Fatal(err, "failed to close Chrome instance")
-	}
+	pc := ps.NewPolicyServiceClient(tf.Rpc().Conn)
 
 	for _, tc := range testCases {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
