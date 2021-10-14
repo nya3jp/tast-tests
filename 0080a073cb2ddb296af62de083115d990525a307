@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e2b98739_f83ed7bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-10-14T00:30:29Z",
+      "side": 1,
+      "message": "Done. Changed to tast-tests.",
+      "parentUuid": "428a83dd_37eafdc9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "0080a073cb2ddb296af62de083115d990525a307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b05e906a_1d3e0d28",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -88,6 +112,30 @@
       "writtenOn": "2021-10-13T07:17:36Z",
       "side": 1,
       "message": "As the wallpaper functions return with ui actions, you can use uiauto.Combine() here.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "0080a073cb2ddb296af62de083115d990525a307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a412a89c_1c4ad722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper_child.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-10-14T00:30:29Z",
+      "side": 1,
+      "message": "Done, here and in set_online_wallpaper.go for consistency.",
+      "parentUuid": "7895f249_43913c0c",
       "range": {
         "startLine": 49,
         "startChar": 0,
