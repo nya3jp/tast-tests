@@ -102,7 +102,7 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 		}
 		for _, ifc := range udIn.Interfaces {
 			udOut.Interfaces = append(udOut.Interfaces, usb.Interface{
-				InterfaceNumber: fmt.Sprintf("%x", ifc.InterfaceNumber),
+				InterfaceNumber: ifc.InterfaceNumber,
 				Class:           fmt.Sprintf("%02x", ifc.ClassID),
 				SubClass:        fmt.Sprintf("%02x", ifc.SubClassID),
 				Protocol:        fmt.Sprintf("%02x", ifc.ProtocolID),
@@ -117,7 +117,7 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 		return errors.Wrap(err, "failed to get expected devices")
 	}
 	if d := cmp.Diff(exp, got); d != "" {
-		return errors.Errorf("unexpected USB device data, (-expected + got): %s", d)
+		return errors.Errorf("%v %v unexpected USB device data, (-expected + got): %s", len(exp), len(got), d)
 	}
 	return nil
 }
