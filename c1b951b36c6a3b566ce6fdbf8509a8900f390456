@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e62f9bab_7bd4af48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-14T07:20:39Z",
+      "side": 1,
+      "message": "Follow up CLs will be to remove External SetupMode, and allow the lacros deployed binary var in rootfs and omaha.",
+      "revId": "c1b951b36c6a3b566ce6fdbf8509a8900f390456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
