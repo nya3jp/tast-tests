@@ -6,16 +6,20 @@ package wificell
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/rpc"
+	"chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
@@ -101,6 +105,20 @@ func init() {
 		ServiceDeps:     []string{TFServiceName},
 		Vars:            []string{"routers", "pcap", "attenuator"},
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "wificellFixtEnrolled",
+		Desc: "Wificell setup with router and pcap object and chrome enrolled",
+		Contacts: []string{
+			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
+		},
+		Impl:            newTastFixture(TFFeaturesEnroll),
+		SetUpTimeout:    10 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: 10 * time.Minute,
+		ServiceDeps:     []string{TFServiceName, "tast.cros.policy.PolicyService"},
+		Vars:            []string{"router", "pcap"},
+	})
 }
 
 // TFFeatures is an enum type for extra features needed for Tast fixture.
@@ -118,6 +136,8 @@ const (
 	TFFeaturesAttenuator
 	// TFFeaturesRouterAsCapture configures the router as a capturer as well.
 	TFFeaturesRouterAsCapture
+	// TFFeaturesEnroll enrolls Chrome.
+	TFFeaturesEnroll
 )
 
 // String returns name component corresponding to enum value(s).
@@ -217,7 +237,35 @@ func (f *tastFixtureImpl) recoverUnhealthyDUT(ctx context.Context, s *testing.Fi
 	return nil
 }
 
+func (f *tastFixtureImpl) enrollChrome(ctx context.Context, s *testing.FixtState) error {
+	pc := policy.NewPolicyServiceClient(f.tf.rpc.Conn)
+	pJSON, err := json.Marshal(fakedms.NewPolicyBlob())
+	if err != nil {
+		return errors.Wrap(err, "Failed to serialize policies")
+	}
+
+	if _, err := pc.EnrollUsingChrome(ctx, &policy.EnrollUsingChromeRequest{
+		PolicyJson: pJSON,
+		SkipLogin:  true,
+	}); err != nil {
+		return errors.Wrap(err, "Failed to enroll using Chrome")
+	}
+
+	if _, err = pc.StopChrome(ctx, &empty.Empty{}); err != nil {
+		return errors.Wrap(err, "Failed to close Chrome instance")
+	}
+
+	return nil
+}
+
 func (f *tastFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	if f.features&TFFeaturesEnroll != 0 {
+		// Do this before NewTestFixture as DUT might be rebooted which will break tf.rpc.
+		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+			s.Fatal("Failed to reset TPM: ", err)
+		}
+	}
+
 	if err := f.recoverUnhealthyDUT(ctx, s); err != nil {
 		s.Fatal("Failed to recover unhealthy DUT: ", err)
 	}
@@ -279,6 +327,12 @@ func (f *tastFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 	f.tf = tf
 
+	if f.features&TFFeaturesEnroll != 0 {
+		if err := f.enrollChrome(ctx, s); err != nil {
+			s.Fatal("Failed to enroll Chrome: ", err)
+		}
+	}
+
 	return f.tf
 }
 
@@ -287,6 +341,19 @@ func (f *tastFixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) {
 	// bad state to later tests/tasks.
 	if err := f.recoverUnhealthyDUT(ctx, s); err != nil {
 		s.Fatal("Failed to recover unhealthy DUT: ", err)
+	}
+
+	if f.features&TFFeaturesEnroll != 0 {
+		pc := policy.NewPolicyServiceClient(f.tf.rpc.Conn)
+
+		if _, err := pc.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
+			s.Error("Failed to close Chrome instance and Fake DMS: ", err)
+		}
+
+		// Reset DUT TPM and system state to leave it in a good state post test.
+		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT()); err != nil {
+			s.Error("Failed to reset TPM: ", err)
+		}
 	}
 
 	if f.tf == nil {
