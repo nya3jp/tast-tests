@@ -16,6 +16,23 @@
       "message": "Removing myself from the attention set, since it looks like there is still one more comment to address.",
       "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f1cd7c3_f58137a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-14T20:10:52Z",
+      "side": 1,
+      "message": "Make sure to get review from Tast reviewers before submitting: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md",
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

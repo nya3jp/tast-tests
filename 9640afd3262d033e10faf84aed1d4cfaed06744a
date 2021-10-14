@@ -403,6 +403,30 @@
       },
       "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97229435_40262a62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-14T20:10:52Z",
+      "side": 1,
+      "message": "Actually, it is in the test: https://source.chromium.org/chromium/chromiumos/third_party/autotest/+/HEAD:server/site_tests/firmware_Fingerprint/firmware_Fingerprint.py;l\u003d160-162;drc\u003d4c6f8cdd3bfb668ee86fd042399f38526c417d49\n\nI was looking at the old (bash) versions of the test: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/server/site_tests/firmware_Fingerprint/tests/rdp1.sh;l\u003d1?q\u003drdp1.sh",
+      "parentUuid": "8b5295ed_876e0a21",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 2
+      },
+      "revId": "9640afd3262d033e10faf84aed1d4cfaed06744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
