@@ -33,6 +33,52 @@
       "message": "Make sure to get review from Tast reviewers before submitting: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md",
       "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eccdfde9_6a7323e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-10-14T20:54:56Z",
+      "side": 1,
+      "message": "Josie and I spoke offline. This is not super necessary now, but more of a note for the future:\n\nA flash_fp_mcu read should succeed after removing read protect. The error returned by flash_fp_mcu in the remove-read-protect case is caused by stm32mon not knowing how to handle the downgrade of read-protect properly, but the read after should succeed. This flash_fp_mcu error behavior may change in the future.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "129693fc_fa11b7ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-10-14T20:54:56Z",
+      "side": 1,
+      "message": "nit: Maybe not use the var name \"line\", since this iterates over the file bytes. You could do the following:\n\n```\nfor _, b :\u003d range testfile {\n\tif b !\u003d 0xFF {\n\t\treturn errors.New(\"test file does not contain all 0xFF bytes\")\n\t}\n}\n```",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 3
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
