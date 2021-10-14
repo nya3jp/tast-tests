@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c30b557_71f4e0ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-14T04:18:43Z",
+      "side": 1,
+      "message": "Completely agree with your suggestion. It does make others confused about the definition. Learn a lot. Thanks for the review!",
+      "parentUuid": "dd3a1a96_f471c3d0",
+      "range": {
+        "startLine": 68,
+        "startChar": 27,
+        "endLine": 68,
+        "endChar": 59
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fefa2bb4_224f7ffe",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/setup.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-13T05:55:50Z",
       "side": 1,
       "message": "I do not see anything special in this type. Can you just use action.Action instead?",
+      "range": {
+        "startLine": 25,
+        "startChar": 39,
+        "endLine": 25,
+        "endChar": 54
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb53cf2a_0380800a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-14T04:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fefa2bb4_224f7ffe",
       "range": {
         "startLine": 25,
         "startChar": 39,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "834be5ed_0c27404e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-14T04:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3292eaa6_7dd01763",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 51
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c643228e_57c5cf07",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-13T05:55:50Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 51
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "086ef573_cc59c275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-14T04:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c643228e_57c5cf07",
       "range": {
         "startLine": 33,
         "startChar": 9,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27c0dd90_6ed475c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-14T04:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66ac0453_43730a9e",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81bed33b_80e47fdc",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-10-13T05:55:50Z",
       "side": 1,
       "message": "Inconsistent data type: The default value is set as int, but uses float here.",
+      "range": {
+        "startLine": 50,
+        "startChar": 65,
+        "endLine": 50,
+        "endChar": 72
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53043da3_9b57c8f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-14T04:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81bed33b_80e47fdc",
       "range": {
         "startLine": 50,
         "startChar": 65,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ec3516f_10d65c64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-14T04:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a7690b8_04b0e8f9",
+      "range": {
+        "startLine": 59,
+        "startChar": 27,
+        "endLine": 59,
+        "endChar": 56
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "507ba84f_643b1596",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-10-13T05:55:50Z",
       "side": 1,
       "message": "use NamedAction would be simpler. http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/action/action.go?l\u003d22",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "421f0377_a68fdc6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-14T04:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "507ba84f_643b1596",
       "range": {
         "startLine": 63,
         "startChar": 1,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "963ced93_74978b3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-14T04:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c8d0d1c_009c934c",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 7
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7407b185_efc1a7d0",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-10-13T05:55:50Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 159,
+        "startChar": 37,
+        "endLine": 159,
+        "endChar": 42
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c196e56_7e67530b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-14T04:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7407b185_efc1a7d0",
       "range": {
         "startLine": 159,
         "startChar": 37,
@@ -307,6 +547,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89642ba0_587a3419",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-14T04:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daab4117_b7aaf8f6",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 14
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9743d2e2_84aba1f7",
@@ -320,6 +584,30 @@
       "writtenOn": "2021-10-13T05:55:50Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 121,
+        "startChar": 21,
+        "endLine": 121,
+        "endChar": 26
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5615ab53_6fdb1099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-14T04:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9743d2e2_84aba1f7",
       "range": {
         "startLine": 121,
         "startChar": 21,
@@ -353,6 +641,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c71acd8_64767efa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-14T04:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a78c33d3_a1484d4b",
+      "range": {
+        "startLine": 368,
+        "startChar": 21,
+        "endLine": 368,
+        "endChar": 26
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a3925b2_9a7eed6a",
@@ -366,6 +678,30 @@
       "writtenOn": "2021-10-13T05:55:50Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 167,
+        "startChar": 27,
+        "endLine": 167,
+        "endChar": 59
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28579e53_4b90ab45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-14T04:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a3925b2_9a7eed6a",
       "range": {
         "startLine": 167,
         "startChar": 27,
