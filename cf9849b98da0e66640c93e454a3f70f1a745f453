@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddb1d4d4_4ebc8815",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-10-14T00:06:07Z",
+      "side": 1,
+      "message": "nit: ,",
+      "range": {
+        "startLine": 121,
+        "startChar": 57,
+        "endLine": 121,
+        "endChar": 58
+      },
+      "revId": "cf9849b98da0e66640c93e454a3f70f1a745f453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be38fbb_b1cc540f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-10-14T00:06:07Z",
+      "side": 1,
+      "message": "return errors.New(\"youtube app should be in the active desk\")",
+      "revId": "cf9849b98da0e66640c93e454a3f70f1a745f453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553cf490_000ffdb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-10-14T00:06:07Z",
+      "side": 1,
+      "message": "instead of waiting for a fixed duration, can you use WaitForLocation? https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d260?q\u003dWaitForLocation\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fchrome%2Fuiauto%2F",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 34
+      },
+      "revId": "cf9849b98da0e66640c93e454a3f70f1a745f453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6011482_50b01bbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-10-14T00:06:07Z",
+      "side": 1,
+      "message": "can combine these two with uiauto.Combine",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 34
+      },
+      "revId": "cf9849b98da0e66640c93e454a3f70f1a745f453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023f236b_0023daf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-10-14T00:06:07Z",
+      "side": 1,
+      "message": "\"youtube app should be in the active desk\"\n\nerror string should not be capitalized go/go-style/decisions#error-strings",
+      "range": {
+        "startLine": 174,
+        "startChar": 21,
+        "endLine": 174,
+        "endChar": 63
+      },
+      "revId": "cf9849b98da0e66640c93e454a3f70f1a745f453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
