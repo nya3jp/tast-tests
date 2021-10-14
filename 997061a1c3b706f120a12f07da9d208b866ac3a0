@@ -16,6 +16,24 @@
       "message": "This is unfortunate.",
       "revId": "997061a1c3b706f120a12f07da9d208b866ac3a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3915d07_117cb496",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-10-14T01:31:07Z",
+      "side": 1,
+      "message": "I agree -- https://b.corp.google.com/issues/202991326 tracks removing the setuid bit.",
+      "parentUuid": "8bc07d70_82e11966",
+      "revId": "997061a1c3b706f120a12f07da9d208b866ac3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
