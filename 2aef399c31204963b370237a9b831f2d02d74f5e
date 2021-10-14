@@ -16,6 +16,70 @@
       "message": "Hello Jeremy,\n\nI\u0027m still in the process of condensing the script, and also working on the following items:\n\n1. Send keyboard command via EC console, and monitor it with evtest. I have a keyboard service, similar to Touchscreen \u0026 Touchpad, that\u0027s already able to do this, but just want to evaluate whether using EC would be easier.\n2. Sometimes tapping the power button to turn DUT\u0027s screen off fails. I\u0027m yet to determine if it\u0027s because of the script, or something else.\n3. Stylus ejection, which is to be emulated on my new Sparky360.Octopus DUT.\n\nDUT I\u0027ve been using for this test: [Delbin/Volteer]",
       "revId": "2aef399c31204963b370237a9b831f2d02d74f5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "346362c3_a24564ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-14T18:55:43Z",
+      "side": 1,
+      "message": "1. You look at tij\u0027s keyboard test for some code you can copy: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3217416\n\n2. You might try other durations instead of tab. We could always add the time to fw-testing-configs if it varies by model.\n\n3. Sparky (bobba) doesn\u0027t seem to have the PEN_DET_ODL gpio that other boards have. If the machine still responds to ssh, we could write an event to /dev/input/event##, but since it\u0027s suspended, I don\u0027t think we can do that. We probably just can\u0027t test this on this model. Models that do have it are boten, drawcia, gooey, haboki, kracko, lantis, metaknight, storo, waddledee, wheelie. Now the name of the interrupt is pen_detect_interrupt, so I don\u0027t know if it is detecting a pen on the screen, or a pen in the garage.",
+      "parentUuid": "7a2ffd8f_77e361a2",
+      "revId": "2aef399c31204963b370237a9b831f2d02d74f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a397a339_ef2913af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/screen_wake_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-14T18:55:43Z",
+      "side": 1,
+      "message": "I\u0027m deleting the precondition. Please use Fixture: fixture.DevModeGBB.",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "2aef399c31204963b370237a9b831f2d02d74f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ee5a75f_1327dd25",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/screen_wake_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-14T18:55:43Z",
+      "side": 1,
+      "message": "Fixt().(*fixture.Value) instead.",
+      "range": {
+        "startLine": 73,
+        "startChar": 8,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "2aef399c31204963b370237a9b831f2d02d74f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
