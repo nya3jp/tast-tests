@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "08d403a4_0c31274c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-14T16:27:51Z",
+      "side": 1,
+      "message": "Done. I\u0027m trying to follow the guidelines in http://shortn/_FZFJsZ9Pji",
+      "parentUuid": "34f074e8_fd6b995c",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 14,
+        "endChar": 56
+      },
+      "revId": "7cc3f5d7fccfce0675b5b8649143821220e39715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "77d140d0_c6e67897",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb31c794_6d8cde3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-14T16:27:51Z",
+      "side": 1,
+      "message": "Adding a space would result in poor formatting in the v0 case where v2Part \u003d\u003d \"\"",
+      "parentUuid": "57f0b0e4_8352f172",
+      "range": {
+        "startLine": 78,
+        "startChar": 51,
+        "endLine": 78,
+        "endChar": 53
+      },
+      "revId": "7cc3f5d7fccfce0675b5b8649143821220e39715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11750fb3_d1db099d",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-10-14T08:22:38Z",
       "side": 1,
       "message": "nit: remove extra \"and\"",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 25
+      },
+      "revId": "7cc3f5d7fccfce0675b5b8649143821220e39715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c78a3174_c98f719f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-14T16:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11750fb3_d1db099d",
       "range": {
         "startLine": 114,
         "startChar": 22,
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e6c304b_586139e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-14T16:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d7af040_9a3fe438",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 3
+      },
+      "revId": "7cc3f5d7fccfce0675b5b8649143821220e39715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "216b6b87_8d9d706f",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-10-14T08:22:38Z",
       "side": 1,
       "message": "Maybe don\u0027t introduce this temporary variable for better readability? you can make shorter original variable name",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 21
+      },
+      "revId": "7cc3f5d7fccfce0675b5b8649143821220e39715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dcbe7ad_7305ad43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-14T16:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "216b6b87_8d9d706f",
       "range": {
         "startLine": 230,
         "startChar": 2,
