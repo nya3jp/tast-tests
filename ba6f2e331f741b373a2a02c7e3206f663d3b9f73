@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a31a818_01556f6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-14T00:41:19Z",
+      "side": 1,
+      "message": "Why do we need to avoid logs like this as they could be useful sometimes. Also this could make test-writers even more confused which one to use (e.g. when/why do they need to log?). Otherwise, there are other cases we need to provide options for users to turn on/off the logs, which is complicated.\n\nI am not sure about this, +Matt to review.",
+      "revId": "ba6f2e331f741b373a2a02c7e3206f663d3b9f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
