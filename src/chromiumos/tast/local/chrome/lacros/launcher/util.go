@@ -33,7 +33,7 @@ func prepareLacrosChromeBinary(ctx context.Context, s *testing.FixtState) error 
 
 	testing.ContextLog(ctx, "Extracting lacros binary")
 	tarCmd := testexec.CommandContext(ctx, "sudo", "-E", "-u", "chronos",
-		"tar", "-xvf", s.DataPath(DataArtifact), "-C", lacrosTestPath)
+		"tar", "-xvf", s.DataPath(dataArtifact), "-C", lacrosTestPath)
 
 	if err := tarCmd.Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to untar test artifacts")

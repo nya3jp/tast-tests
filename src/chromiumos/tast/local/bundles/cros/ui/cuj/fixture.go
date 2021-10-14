@@ -66,7 +66,7 @@ func init() {
 			"xiyuan@chromium.org",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl: launcher.NewFixture(launcher.External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: launcher.NewFixture(launcher.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				getLoginOption(s),
 				chrome.ARCSupported(),
@@ -77,7 +77,6 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
-		Data:            []string{launcher.DataArtifact},
 		Vars: []string{
 			"ui.cujAccountPool",
 			"cuj_username",
