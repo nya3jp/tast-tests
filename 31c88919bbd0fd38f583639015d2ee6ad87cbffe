@@ -16,6 +16,23 @@
       "message": "Thanks for the reviews!",
       "revId": "31c88919bbd0fd38f583639015d2ee6ad87cbffe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c26851d_2e544be0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-10-14T01:42:41Z",
+      "side": 1,
+      "message": "Hi Gabor, could you +2 this CL again? Your previous +2 disappeared for some reason.",
+      "revId": "31c88919bbd0fd38f583639015d2ee6ad87cbffe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
