@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79d94b52_657a4639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/basic_ubertray_layout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-14T18:19:21Z",
+      "side": 1,
+      "message": "We don\u0027t want to use the term ubertray anymore. quicksettings is the name that is used instead\n\nPlease update everywhere that you used ubertray",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "8e01d147b6177a2f338af345770d60451de2f8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee83d9e6_0feeaf3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/basic_ubertray_layout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-14T18:19:21Z",
+      "side": 1,
+      "message": "BasicLayout",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "8e01d147b6177a2f338af345770d60451de2f8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c56b0120_248437d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/basic_ubertray_layout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-14T18:19:21Z",
+      "side": 1,
+      "message": "Add this to all tests you guys are writing:\nchromeos-sw-engprod@google.com",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 13
+      },
+      "revId": "8e01d147b6177a2f338af345770d60451de2f8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da57e62e_e135141b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/basic_ubertray_layout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-14T18:19:21Z",
+      "side": 1,
+      "message": "You can leave out the name for the default test",
+      "range": {
+        "startLine": 47,
+        "startChar": 11,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "8e01d147b6177a2f338af345770d60451de2f8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750aa025_edf4126c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/basic_ubertray_layout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-14T18:19:21Z",
+      "side": 1,
+      "message": "can you use the chrome loggedin fixture instead of logging in yourself",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 41
+      },
+      "revId": "8e01d147b6177a2f338af345770d60451de2f8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8cceeb6_aa51ae4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/basic_ubertray_layout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-14T18:19:21Z",
+      "side": 1,
+      "message": "please see quicksettings/constants where these should already be defined",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 4
+      },
+      "revId": "8e01d147b6177a2f338af345770d60451de2f8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "305cf4c2_b9614456",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/basic_ubertray_layout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-14T18:19:21Z",
+      "side": 1,
+      "message": "same here. These should all be defined already in constants",
+      "range": {
+        "startLine": 209,
+        "startChar": 7,
+        "endLine": 212,
+        "endChar": 25
+      },
+      "revId": "8e01d147b6177a2f338af345770d60451de2f8f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
