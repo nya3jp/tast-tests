@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0569f1c_3caaf86b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-14T04:26:36Z",
+      "side": 1,
+      "message": "Adjusted the TestFunc to return an error and adjusted all implementations to account for that change. This allows me to do additional things later (i.e. retries/better error handling/etc.) from a centralized spot.",
+      "revId": "163c3affb933e94b801d8a56c053888dec9db8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
