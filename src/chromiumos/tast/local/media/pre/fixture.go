@@ -35,7 +35,7 @@ func init() {
 		Name:     "chromeVideoLacros",
 		Desc:     "Logged into a user session with logging enabled (lacros)",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: launcher.NewFixture(launcher.External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: launcher.NewFixture(launcher.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
@@ -47,7 +47,6 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Data:            []string{launcher.DataArtifact},
 		Vars:            []string{launcher.LacrosDeployedBinary},
 	})
 
@@ -55,7 +54,7 @@ func init() {
 		Name:     "chromeCameraPerfLacros",
 		Desc:     "Logged into a user session on Lacros without verbose logging that can affect the performance",
 		Contacts: []string{"chromeos-camera-eng@google.com"},
-		Impl: launcher.NewFixture(launcher.External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: launcher.NewFixture(launcher.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeBypassPermissionsArgs...),
 				chrome.LacrosExtraArgs(chromeBypassPermissionsArgs...),
@@ -67,7 +66,6 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Data:            []string{launcher.DataArtifact},
 		Vars:            []string{launcher.LacrosDeployedBinary},
 	})
 
@@ -141,7 +139,7 @@ func init() {
 		Name:     "chromeAshCompositedVideoLacros",
 		Desc:     "Similar to chromeVideoLacros fixture but disabling hardware overlays in ash-chrome entirely to force video to be composited",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: launcher.NewFixture(launcher.External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: launcher.NewFixture(launcher.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
@@ -152,7 +150,6 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Data:            []string{launcher.DataArtifact},
 		Vars:            []string{launcher.LacrosDeployedBinary},
 	})
 
@@ -160,7 +157,7 @@ func init() {
 		Name:     "chromeLacrosCompositedVideoLacros",
 		Desc:     "Similar to chromeVideoLacros fixture but disabling hardware overlays in lacros-chrome entirely to force video to be composited",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: launcher.NewFixture(launcher.External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: launcher.NewFixture(launcher.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
@@ -171,7 +168,6 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Data:            []string{launcher.DataArtifact},
 		Vars:            []string{launcher.LacrosDeployedBinary},
 	})
 

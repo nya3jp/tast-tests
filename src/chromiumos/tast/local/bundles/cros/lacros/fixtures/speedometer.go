@@ -33,14 +33,13 @@ func init() {
 		Name:     "speedometerWPRLacros",
 		Desc:     "Composed fixture for speedometer with WPR",
 		Contacts: []string{"edcourtney@chromium.org", "hidehiko@chromium.org"},
-		Impl: wpr.NewLacrosFixture(launcher.External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: wpr.NewLacrosFixture(launcher.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Parent:          "speedometerWPR",
-		Data:            []string{launcher.DataArtifact},
 		Vars:            []string{launcher.LacrosDeployedBinary},
 	})
 }
