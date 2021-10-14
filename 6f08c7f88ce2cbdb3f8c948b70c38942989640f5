@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b288cefd_dcc8f20d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-14T09:48:23Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "6f08c7f88ce2cbdb3f8c948b70c38942989640f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41dfda06_11e1823c",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-14T09:48:23Z",
+      "side": 1,
+      "message": "Maybe be more generous here for the extra reboot.",
+      "revId": "6f08c7f88ce2cbdb3f8c948b70c38942989640f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c378747f_d8aaaa5e",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-14T09:48:23Z",
+      "side": 1,
+      "message": "nit: add a comment on why this is done here and not by enrollChrome",
+      "revId": "6f08c7f88ce2cbdb3f8c948b70c38942989640f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae89f274_9bb0556d",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-14T09:48:23Z",
+      "side": 1,
+      "message": "nit: add a comment that this needs to be done to leave the DUT in a good state.",
+      "revId": "6f08c7f88ce2cbdb3f8c948b70c38942989640f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "973c74c1_cfe72ae4",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-14T09:48:23Z",
+      "side": 1,
+      "message": "nit: this seems unrelated, move to a separate CL.",
+      "revId": "6f08c7f88ce2cbdb3f8c948b70c38942989640f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
