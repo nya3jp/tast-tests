@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52f01303_7f6e9c83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-10-14T13:29:04Z",
+      "side": 1,
+      "message": "Note: test author (nikitapodguzov) is not working on Chrome anymore.",
+      "revId": "f47be6d6812dcb5ce60b169b72bf10956db9338f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
