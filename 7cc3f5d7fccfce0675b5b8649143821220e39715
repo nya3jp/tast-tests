@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "34f074e8_fd6b995c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-14T08:22:38Z",
+      "side": 1,
+      "message": "nit: please give more details how did you test this CL",
+      "range": {
+        "startLine": 14,
+        "startChar": 45,
+        "endLine": 14,
+        "endChar": 56
+      },
+      "revId": "7cc3f5d7fccfce0675b5b8649143821220e39715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "77d140d0_c6e67897",
@@ -14,6 +37,115 @@
       "writtenOn": "2021-10-13T21:18:40Z",
       "side": 1,
       "message": "This looks good to me. Thanks for handling this Nicolas.",
+      "revId": "7cc3f5d7fccfce0675b5b8649143821220e39715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1257fe5b_9ee5f544",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-14T08:22:38Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "7cc3f5d7fccfce0675b5b8649143821220e39715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57f0b0e4_8352f172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-14T08:22:38Z",
+      "side": 1,
+      "message": "nit: add space before %v ?",
+      "range": {
+        "startLine": 78,
+        "startChar": 51,
+        "endLine": 78,
+        "endChar": 53
+      },
+      "revId": "7cc3f5d7fccfce0675b5b8649143821220e39715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11750fb3_d1db099d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-14T08:22:38Z",
+      "side": 1,
+      "message": "nit: remove extra \"and\"",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 25
+      },
+      "revId": "7cc3f5d7fccfce0675b5b8649143821220e39715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d7af040_9a3fe438",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-14T08:22:38Z",
+      "side": 1,
+      "message": "nit: maybe calculate it before for loop?",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 3
+      },
+      "revId": "7cc3f5d7fccfce0675b5b8649143821220e39715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "216b6b87_8d9d706f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-14T08:22:38Z",
+      "side": 1,
+      "message": "Maybe don\u0027t introduce this temporary variable for better readability? you can make shorter original variable name",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 21
+      },
       "revId": "7cc3f5d7fccfce0675b5b8649143821220e39715",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
