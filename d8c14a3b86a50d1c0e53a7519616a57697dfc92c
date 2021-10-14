@@ -16,6 +16,24 @@
       "message": "They are still failing in stainless. \nAs this test is in CQ, we need to wait till bios update in the lab.\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2021-10-06\u0026last_date\u003d2021-10-12\u0026test\u003dgraphics.Connector\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse",
       "revId": "d8c14a3b86a50d1c0e53a7519616a57697dfc92c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b050d0e_25e2a14b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2021-10-14T18:23:13Z",
+      "side": 1,
+      "message": "I believe they are still failing because the version of firmware with the fix still needs to get added to the firmware-updater so that it can be distributed via OTA to these devices in the field.  My volteer2 failed the test locally without this fix, and passed the test locally with this fix.\n\nSee https://b.corp.google.com/issues/190100059#comment14 for more detail on FW qual needed to get this change into the firmware-updater.",
+      "parentUuid": "799cfb8a_64c1afd5",
+      "revId": "d8c14a3b86a50d1c0e53a7519616a57697dfc92c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
