@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eca2a41_b9667503",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-14T17:16:23Z",
+      "side": 1,
+      "message": "No need to introduce a new runtime for conditionally selecting lacros binary. checking if the existing var \u0027lacrosDeployBinary\u0027 is enough.",
+      "range": {
+        "startLine": 404,
+        "startChar": 17,
+        "endLine": 404,
+        "endChar": 39
+      },
+      "revId": "befa22c5e6dc6ce7401601edf527327d5e4f17e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03558e32_93d0d506",
+        "filename": "src/chromiumos/tast/local/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-14T17:16:23Z",
+      "side": 1,
+      "message": "Needs to change `Rootfs` in Q4 2021",
+      "range": {
+        "startLine": 418,
+        "startChar": 9,
+        "endLine": 418,
+        "endChar": 17
+      },
+      "revId": "befa22c5e6dc6ce7401601edf527327d5e4f17e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
