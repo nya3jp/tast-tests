@@ -9,8 +9,10 @@ import (
 	"bufio"
 	"context"
 	"fmt"
+	"io/ioutil"
 	"regexp"
 	"sort"
+	"strconv"
 	"strings"
 
 	"chromiumos/tast/common/testexec"
@@ -31,7 +33,7 @@ type Device struct {
 
 // Interface represents a USB interface.
 type Interface struct {
-	InterfaceNumber string
+	InterfaceNumber uint8
 	Class           string
 	SubClass        string
 	Protocol        string
@@ -43,14 +45,20 @@ var runCommand = func(ctx context.Context, cmd string, args ...string) ([]byte, 
 	return testexec.CommandContext(ctx, cmd, args...).Output(testexec.DumpLogOnError)
 }
 
+// For mocking
+var readFile = ioutil.ReadFile
+
 // usbDevices returns a list of USB devices. Each device is represented as a
 // list of string. Each string contains some attributes related to the device.
 func usbDevices(ctx context.Context) ([][]string, error) {
-	b, err := runCommand(ctx, "usb-devices")
+	const (
+		usbDevicesPath = "/sys/kernel/debug/usb/devices"
+	)
+	b, err := readFile(usbDevicesPath)
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrapf(err, "failed to read file: %v", usbDevicesPath)
 	}
-	// Output of usb-devices looks like:
+	// /sys/kernel/debug/usb/devices looks like:
 	//   [An empty line]
 	//   T: Bus=01 Lev=00 Prnt=00 Port=00 Cnt=00 Dev#=  1 Spd=480 MxCh=16
 	//   D: Ver= 2.00 Cls=09(hub  ) Sub=00 Prot=01 MxPS=64 #Cfgs=  1
@@ -135,8 +143,8 @@ func ExpectedDevices(ctx context.Context) ([]Device, error) {
 	reD := regexp.MustCompile(`Cls=([0-9a-f]{2}).* Sub=([0-9a-f]{2}) Prot=([0-9a-f]{2})`)
 	// E.g. P:  Vendor=1d6b ProdID=0002 Rev=05.04
 	reP := regexp.MustCompile(`Vendor=([0-9a-f]{4}) ProdID=([0-9a-f]{4})`)
-	// E.g. I:  If#=0x0 Alt= 0 #EPs= 1 Cls=09(hub  ) Sub=00 Prot=00 Driver=hub
-	reI := regexp.MustCompile(`If#=0x([0-9a-f]+) .* Cls=([0-9a-f]{2}).* Sub=([0-9a-f]{2}) Prot=([0-9a-f]{2}) Driver=([\S]*)`)
+	// E.g. I:*  If#= 0 Alt= 0 #EPs= 1 Cls=09(hub  ) Sub=00 Prot=00 Driver=hub
+	reI := regexp.MustCompile(`^I:[*] If#=([0-9 ]{2}) .* Cls=([0-9a-f]{2}).* Sub=([0-9a-f]{2}) Prot=([0-9a-f]{2}) Driver=([\S]*)`)
 
 	var res []Device
 	devs, err := usbDevices(ctx)
@@ -160,12 +168,20 @@ func ExpectedDevices(ctx context.Context) ([]Device, error) {
 				}
 				r.VendorID, r.ProdID = m[1], m[2]
 			case 'I':
+				if line[2] != '*' {
+					// Ignore interfaces which are not active.
+					continue
+				}
 				m := reI.FindStringSubmatch(line)
 				if m == nil {
 					return nil, errors.Errorf("cannot parse usb-devices I: %v", line)
 				}
+				ifnum, err := strconv.ParseUint(strings.Trim(m[1], " "), 10, 8)
+				if err != nil {
+					return nil, errors.Wrapf(err, "cannot parse interface number %v: ", m[1])
+				}
 				ifc := Interface{
-					InterfaceNumber: m[1],
+					InterfaceNumber: uint8(ifnum),
 					Class:           m[2],
 					SubClass:        m[3],
 					Protocol:        m[4],
