@@ -70,6 +70,24 @@
       "parentUuid": "fd5349d1_895a8732",
       "revId": "d8c14a3b86a50d1c0e53a7519616a57697dfc92c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4f9d177_8afabdf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-14T23:14:10Z",
+      "side": 1,
+      "message": "https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2021-10-12\u0026last_date\u003d2021-10-14\u0026test\u003dgraphics.Connector%24\u0026board\u003dvolteer\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\n\ndrobit, copano, collis, chronicler is failing on R97. They are run since we didn\u0027t listed them but also volteer-cq.hw.bvt-tast-cq is marked low-capacity and non-critical in infra.\n\nAs for eldrid, lillipup, lindar failures on R94, those boards are added in 14152.0.0",
+      "parentUuid": "85fbfb65_874ae028",
+      "revId": "d8c14a3b86a50d1c0e53a7519616a57697dfc92c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
