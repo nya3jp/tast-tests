@@ -192,6 +192,12 @@ var Scan = App{
 	Name: "Scan",
 }
 
+// AndroidSettings has details about ARC settings app.
+var AndroidSettings = App{
+	ID:   "mconboelelhjpkbdhhiijkgcimoangdj",
+	Name: "Android Settings",
+}
+
 // Settings has details about the Settings app.
 var Settings = App{
 	ID:   "odknhmnlageboeamepcngndbggdpaobj",
