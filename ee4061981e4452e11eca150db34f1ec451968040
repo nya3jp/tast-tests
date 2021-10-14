@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "469d21ba_108747da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_ubertray_layout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-14T10:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d2075d0_0a481816",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "ee4061981e4452e11eca150db34f1ec451968040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3b934dd_13dc1299",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-10-08T20:17:08Z",
       "side": 1,
       "message": "This could be a problem if pc is not initialized.",
+      "revId": "ee4061981e4452e11eca150db34f1ec451968040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d49fcd96_10af337f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_ubertray_layout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-14T10:33:16Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "d3b934dd_13dc1299",
       "revId": "ee4061981e4452e11eca150db34f1ec451968040",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6b102e0_8f94619c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_ubertray_layout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-14T10:33:16Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "1b614cca_4c064f7c",
+      "revId": "ee4061981e4452e11eca150db34f1ec451968040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "816e8f7c_f7c13f9c",
@@ -92,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "511b218e_d0dd587b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_ubertray_layout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-14T10:33:16Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "816e8f7c_f7c13f9c",
+      "revId": "ee4061981e4452e11eca150db34f1ec451968040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec2bf9d4_a4c65feb",
@@ -105,6 +183,24 @@
       "writtenOn": "2021-10-08T20:17:08Z",
       "side": 1,
       "message": "If we separate this out from LaunchAtPageURL, let\u0027s also use this function inside of launchAtPageURL so there is only one place to maintain.",
+      "revId": "ee4061981e4452e11eca150db34f1ec451968040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0144f763_c13b9905",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-14T10:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec2bf9d4_a4c65feb",
       "revId": "ee4061981e4452e11eca150db34f1ec451968040",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
