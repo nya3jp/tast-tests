@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0092607_ffb5de5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-14T03:16:29Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 14
+      },
+      "revId": "d65817bcd535e1c0669c87a25e8928c52855b0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "529e4d62_915bf934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/usb/usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-14T03:16:29Z",
+      "side": 1,
+      "message": "nit: this can be done in one line.",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "d65817bcd535e1c0669c87a25e8928c52855b0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
