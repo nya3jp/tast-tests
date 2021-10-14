@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8b4a2b_5b6f3ad8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-14T17:00:17Z",
+      "side": 1,
+      "message": "APAC sheriff reported that the test showed failures in the boards other than VMs. Mark the test as informational. Please review. Thanks.",
+      "revId": "25d9ad5e87f931f928aeb5dcf5fbf1f887439030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
