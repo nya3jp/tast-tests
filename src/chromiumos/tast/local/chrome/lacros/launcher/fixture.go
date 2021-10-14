@@ -40,19 +40,19 @@ func NewComposedFixture(mode SetupMode, makeValue func(v FixtValue, pv interface
 }
 
 func init() {
-	// lacros uses a pre-built image downloaded from cloud storage as a
-	// data-dependency. This fixture should be used by tests that start lacros from the lacros/launcher package.
+	// lacros uses rootfs lacros, which is the recommend way to use lacros
+	// in Tast tests, unless you have a specific use case for using lacros from
+	// another source.
 	testing.AddFixture(&testing.Fixture{
 		Name:     "lacros",
 		Desc:     "Lacros Chrome from a pre-built image",
-		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
-		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Data:            []string{DataArtifact},
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
@@ -62,14 +62,13 @@ func init() {
 		Name:     "lacrosBypassPermissions",
 		Desc:     "Lacros Chrome from a pre-built image with camera/microphone permissions",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--use-fake-ui-for-media-stream"),
 				chrome.LacrosExtraArgs("--use-fake-ui-for-media-stream")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Data:            []string{DataArtifact},
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
@@ -79,14 +78,13 @@ func init() {
 		Name:     "lacrosWith100FakeApps",
 		Desc:     "Lacros Chrome from a pre-built image with 100 fake apps installed",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return nil, nil
 		}),
 		Parent:          "install100Apps",
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Data:            []string{DataArtifact},
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
@@ -96,13 +94,12 @@ func init() {
 		Name:     "lacrosForceComposition",
 		Desc:     "Lacros Chrome from a pre-built image with composition forced on",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--enable-hardware-overlays=\"\"")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Data:            []string{DataArtifact},
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
@@ -112,13 +109,12 @@ func init() {
 		Name:     "lacrosWithArcEnabled",
 		Desc:     "Lacros Chrome from a pre-built image with ARC enabled",
 		Contacts: []string{"amusbach@chromium.org", "xiyuan@chromium.org"},
-		Impl: NewFixture(External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ARCEnabled()}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Data:            []string{DataArtifact},
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
@@ -129,13 +125,12 @@ func init() {
 		Name:     "lacrosUI",
 		Desc:     "Lacros Chrome from a pre-built image using the UI",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
-		Impl: NewFixture(External, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.EnableFeatures("LacrosSupport")}, nil
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return nil, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Data:            []string{DataArtifact},
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
@@ -147,10 +142,7 @@ func init() {
 		Desc:     "Lacros Chrome from omaha",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
 		Impl: NewFixture(Omaha, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
-				chrome.EnableFeatures("LacrosSupport"),
-				chrome.ExtraArgs("--lacros-selection=stateful"),
-			}, nil
+			return nil, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -165,10 +157,7 @@ func init() {
 		Desc:     "Lacros Chrome from rootfs",
 		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
-				chrome.EnableFeatures("LacrosSupport"),
-				chrome.ExtraArgs("--lacros-selection=rootfs"),
-			}, nil
+			return nil, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -183,10 +172,9 @@ const (
 	// from ash-chrome to lacros.
 	mojoSocketPath = "/tmp/lacros.socket"
 
-	// DataArtifact holds the name of the tarball which contains the lacros-chrome
-	// binary. When using the lacros fixture, you must list this as one
-	// of the data dependencies of your test.
-	DataArtifact = "lacros_binary.tar"
+	// dataArtifact holds the name of the tarball which contains the lacros-chrome
+	// binary.
+	dataArtifact = "lacros_binary.tar"
 
 	// LacrosSquashFSPath indicates the location of the rootfs lacros squashfs filesystem.
 	LacrosSquashFSPath = "/opt/google/lacros/lacros.squash"
@@ -253,7 +241,10 @@ type fixtImpl struct {
 	makeValue  func(v FixtValue, pv interface{}) interface{} // Closure to create FixtValue to return from SetUp. Used for composable fixtures.
 }
 
-// SetupMode describes how lacros-chrome should be set-up during the test. See the SetupMode constants for more explanation.
+// SetupMode describes how lacros-chrome should be set-up during the test.
+// See the SetupMode constants for more explanation. Use Rootfs as a default.
+// Note that if the lacrosDeployedBinary var is specified, the lacros binary
+// located at the path specified by that var will be used in all cases.
 type SetupMode int
 
 const (
@@ -263,6 +254,7 @@ const (
 	// Omaha is used to get the lacros binary.
 	Omaha
 	// Rootfs is used to force the rootfs version of lacros-chrome. No external data dependency is needed.
+	// For tests that don't care which lacros they are using, use this as a default.
 	Rootfs
 )
 
