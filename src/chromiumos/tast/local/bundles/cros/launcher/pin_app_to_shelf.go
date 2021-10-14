@@ -32,8 +32,8 @@ func init() {
 			"tbarzic@chromium.org",
 			"cros-system-ui-eng@google.com",
 		},
-		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome", "crossystem"}, // TODO: Find a better attribute to disable it on VM: b/202340057
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
 		Fixture:      "install2Apps",
 		Params: []testing.Param{{
 			Name: "clamshell_mode",
@@ -41,7 +41,6 @@ func init() {
 		}, {
 			Name:              "tablet_mode",
 			Val:               true,
-			ExtraAttr:         []string{"informational"},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		},
 		},
