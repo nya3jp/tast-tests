@@ -37,7 +37,7 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl: wpr.NewLacrosFixture(
-			launcher.External,
+			launcher.Rootfs,
 			func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 				return nil, nil
 			}),
@@ -45,7 +45,6 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Parent:          "tabSwitchCUJWPR",
-		Data:            []string{launcher.DataArtifact},
 		Vars:            []string{launcher.LacrosDeployedBinary},
 	})
 }

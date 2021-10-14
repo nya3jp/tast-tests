@@ -20,7 +20,7 @@ func init() {
 		Name:     "lacrosPolicyLoggedIn",
 		Desc:     "Fixture for a running FakeDMS with lacros",
 		Contacts: []string{"mohamedaomar@google.com", "wtlee@chromium.org", "chromeos-commercial-remote-management@google.com"},
-		Impl: launcher.NewComposedFixture(launcher.External, func(v launcher.FixtValue, pv interface{}) interface{} {
+		Impl: launcher.NewComposedFixture(launcher.Rootfs, func(v launcher.FixtValue, pv interface{}) interface{} {
 			return &struct {
 				fakedms.HasFakeDMS
 				launcher.FixtValue
@@ -41,7 +41,6 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Parent:          "fakeDMS",
-		Data:            []string{launcher.DataArtifact},
 		Vars:            []string{launcher.LacrosDeployedBinary},
 	})
 }
