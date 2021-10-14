@@ -99,6 +99,15 @@ var EnglishCanada = InputMethod{
 	VoiceLanguage:       LanguageEn,
 }
 
+// EnglishSouthAfrica represents the input method of English (South Africa).
+var EnglishSouthAfrica = InputMethod{
+	Name:                "English (South Africa)",
+	ID:                  "xkb:za:gb:eng",
+	ShortLabel:          "ZA",
+	HandwritingLanguage: LanguageEn,
+	VoiceLanguage:       LanguageEn,
+}
+
 // Japanese represents the input method of Japanese.
 var Japanese = InputMethod{
 	Name:                "Japanese",
@@ -185,6 +194,7 @@ var inputMethods = []InputMethod{
 	EnglishUS,
 	EnglishUSWithInternationalKeyboard,
 	EnglishUK,
+	EnglishSouthAfrica,
 	SpanishSpain,
 	Swedish,
 	AlphanumericWithJapaneseKeyboard,
