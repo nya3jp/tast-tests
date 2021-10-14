@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7eb416c4_196b4173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-10-14T00:07:16Z",
+      "side": 1,
+      "message": "sorry, error should be \"chrome app should be not be in the active desk\"",
+      "parentUuid": "8be38fbb_b1cc540f",
+      "revId": "cf9849b98da0e66640c93e454a3f70f1a745f453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "553cf490_000ffdb4",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
         "patchSetId": 3
