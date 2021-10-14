@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eff3da8_55fdf816",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-14T00:33:12Z",
+      "side": 1,
+      "message": "Nit: dec \u003e\u003d pre makes it much more readable",
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cc2fd0a_e79f46ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-14T00:33:12Z",
+      "side": 1,
+      "message": "Nit: inc \u003c\u003d pre makes it much more readable",
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
