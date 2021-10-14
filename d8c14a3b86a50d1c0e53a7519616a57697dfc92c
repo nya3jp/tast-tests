@@ -52,6 +52,24 @@
       "parentUuid": "5b050d0e_25e2a14b",
       "revId": "d8c14a3b86a50d1c0e53a7519616a57697dfc92c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85fbfb65_874ae028",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2021-10-14T18:37:52Z",
+      "side": 1,
+      "message": "I\u0027m curious, how do devices in the test\u0027s omit list fail in the lab currently?  Doesn\u0027t the lab have the checked-in connector test that has the problematic variants in the omit list still (the ones being reversed by this change), or does  the CQ run the test in some mode that does not respect the bad bios omit list or something?",
+      "parentUuid": "fd5349d1_895a8732",
+      "revId": "d8c14a3b86a50d1c0e53a7519616a57697dfc92c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
