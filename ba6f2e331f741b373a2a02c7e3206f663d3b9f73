@@ -16,6 +16,24 @@
       "message": "Why do we need to avoid logs like this as they could be useful sometimes. Also this could make test-writers even more confused which one to use (e.g. when/why do they need to log?). Otherwise, there are other cases we need to provide options for users to turn on/off the logs, which is complicated.\n\nI am not sure about this, +Matt to review.",
       "revId": "ba6f2e331f741b373a2a02c7e3206f663d3b9f73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba92555_ac7b336d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-14T00:58:51Z",
+      "side": 1,
+      "message": "Ye, actually this is a historical reason that when uiauto was introduced, some reviewers suggested to use retry rather than polling. For some use cases such as `waiting until text change after press a key`, it always retries. e.g. \n\nRetry failed attempt 1: failed to validate input value: got: 今日は; want: こんにちは (ignoring case)\n2021-10-13T05:57:23.559101Z [05:57:23.513] Retry failed attempt 2: failed to validate input value: got: 今日は; want: こんにちは (ignoring case)\n2021-10-13T05:57:24.583457Z [05:57:24.538] Retry succeed in attempt 3\n\nIf we play a trick to use retry as a simplified version of polling (less code), we just want it to repeatedly check without any log.",
+      "parentUuid": "2a31a818_01556f6a",
+      "revId": "ba6f2e331f741b373a2a02c7e3206f663d3b9f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
