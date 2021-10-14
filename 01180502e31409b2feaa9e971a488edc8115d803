@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d60e8ef3_377fc70d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-14T04:30:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c30b557_71f4e0ee",
+      "range": {
+        "startLine": 68,
+        "startChar": 27,
+        "endLine": 68,
+        "endChar": 59
+      },
+      "revId": "01180502e31409b2feaa9e971a488edc8115d803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fefa2bb4_224f7ffe",
