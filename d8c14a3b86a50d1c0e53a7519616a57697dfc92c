@@ -34,6 +34,24 @@
       "parentUuid": "799cfb8a_64c1afd5",
       "revId": "d8c14a3b86a50d1c0e53a7519616a57697dfc92c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd5349d1_895a8732",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2021-10-14T18:25:22Z",
+      "side": 1,
+      "message": "re: \"needed to get this change into the firmware-updater\"\n\nI didn\u0027t mean \"this change\" as in this CL, I meant the actual VBT changes for volteer variants that fix the actual problem.",
+      "parentUuid": "5b050d0e_25e2a14b",
+      "revId": "d8c14a3b86a50d1c0e53a7519616a57697dfc92c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
