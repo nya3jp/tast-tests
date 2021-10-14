@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a687ab9_2deef327",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-14T04:25:34Z",
+      "side": 1,
+      "message": "Renamed the layoutMain to be the same everywhere so I could update the test code runner to generically wait on that element. Helps to ensure the app is ready to be tested against.",
+      "revId": "a5eb6318dce128a7bcc24133e0a8894634b56bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
