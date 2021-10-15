@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9867b576_eef7105b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2021-10-15T09:56:50Z",
+      "side": 1,
+      "message": "The hardware dependencies are now using the FormFactor and SkipOnFormFactor with predefined constants as inputs.",
+      "revId": "14e0d5d24010b4a5675cd167213a26127bd365ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
