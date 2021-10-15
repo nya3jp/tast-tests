@@ -1995,3 +1995,37 @@ func (a *App) SaveScreenshot(ctx context.Context) error {
 	path := filepath.Join(a.outDir, filename)
 	return screenshot.CaptureChrome(ctx, a.cr, path)
 }
+
+// CheckMode checks whether CCA window is in correct capture mode.
+func (a *App) CheckMode(ctx context.Context, mode Mode) error {
+	if result, err := a.GetState(ctx, string(mode)); err != nil {
+		return errors.Wrap(err, "failed to check state")
+	} else if !result {
+		return errors.Errorf("CCA is not in the expected mode: %s", mode)
+	}
+	return nil
+}
+
+// CheckCameraFacing checks whether CCA is in correct facing if there's a camera with that facing.
+func (a *App) CheckCameraFacing(ctx context.Context, facing Facing) error {
+	initialFacing, err := a.GetFacing(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get initial facing")
+	}
+	if initialFacing == facing {
+		return nil
+	}
+	// It may fail to open desired facing camera on device without camera of
+	// that facing or on device without facing configurations which returns
+	// facing unknown for every camera. Try to query facing from every
+	// available camera to ensure it's a true failure.
+	// TODO(pihsun): Change this to a more light-weight solution that use
+	// enumerateDevices() in js instead of actually switching through all
+	// cameras.
+	return a.RunThroughCameras(ctx, func(f Facing) error {
+		if f == facing {
+			return errors.Errorf("camera in wrong facing: got %v, want %v", initialFacing, facing)
+		}
+		return nil
+	})
+}
