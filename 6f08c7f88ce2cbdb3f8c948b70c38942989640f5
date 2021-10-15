@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62071a4_b5052dc1",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-10-15T02:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41dfda06_11e1823c",
+      "revId": "6f08c7f88ce2cbdb3f8c948b70c38942989640f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c378747f_d8aaaa5e",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-10-14T09:48:23Z",
       "side": 1,
       "message": "nit: add a comment on why this is done here and not by enrollChrome",
+      "revId": "6f08c7f88ce2cbdb3f8c948b70c38942989640f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69c57b5a_374dec7a",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-10-15T02:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c378747f_d8aaaa5e",
       "revId": "6f08c7f88ce2cbdb3f8c948b70c38942989640f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a65905e_cdbbc993",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-10-15T02:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae89f274_9bb0556d",
+      "revId": "6f08c7f88ce2cbdb3f8c948b70c38942989640f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "973c74c1_cfe72ae4",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-10-14T09:48:23Z",
       "side": 1,
       "message": "nit: this seems unrelated, move to a separate CL.",
+      "revId": "6f08c7f88ce2cbdb3f8c948b70c38942989640f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fc8e6fd_ee99c3d0",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-10-15T02:54:32Z",
+      "side": 1,
+      "message": "The change in this file is to address the second and third issue mentioned in the CL commit message. Check IPv4 address is available before ping and increase scan count.",
+      "parentUuid": "973c74c1_cfe72ae4",
       "revId": "6f08c7f88ce2cbdb3f8c948b70c38942989640f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
