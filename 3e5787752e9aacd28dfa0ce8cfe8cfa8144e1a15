@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07b259d_9b90bd51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-15T04:50:54Z",
+      "side": 1,
+      "message": "Minor change based on Jun\u0027s comment in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3222280. Thanks!",
+      "range": {
+        "startLine": 75,
+        "startChar": 102,
+        "endLine": 75,
+        "endChar": 115
+      },
+      "revId": "3e5787752e9aacd28dfa0ce8cfe8cfa8144e1a15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
