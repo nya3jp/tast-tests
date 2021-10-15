@@ -16,6 +16,52 @@
       "message": "Hello Eric, please help me review this change. Thank you.",
       "revId": "95711e901c14c1b393e17c591a154a75036c35ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e7a1f3a_e30154e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_disk_full_data_survival.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-15T22:52:50Z",
+      "side": 1,
+      "message": "what does it depend on? is there some quota that prevents user processes from taking the last X MB? or what\u0027s the reason for it to be non-zero?\n\nI\u0027m curious since I\u0027d like to add a comment to tell that this constant needs to be changed if it depends on some parameter elsewhere in Chrome OS.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "95711e901c14c1b393e17c591a154a75036c35ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7de9513e_7eb56743",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_disk_full_data_survival.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-15T22:52:50Z",
+      "side": 1,
+      "message": "don\u0027t we want sync after each \"openssl | dd\" run?",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "95711e901c14c1b393e17c591a154a75036c35ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
