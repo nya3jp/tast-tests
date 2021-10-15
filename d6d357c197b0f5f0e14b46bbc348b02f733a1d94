@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f9d0814_eac96b0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_perform_web_request_enrolled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33b11b4a_295a525e",
+      "range": {
+        "startLine": 68,
+        "startChar": 13,
+        "endLine": 68,
+        "endChar": 114
+      },
+      "revId": "d6d357c197b0f5f0e14b46bbc348b02f733a1d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac50a0c5_8986c1d4",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-13T15:01:32Z",
       "side": 1,
       "message": "nit:\n\n```\nif tc.logOnly {\n  s.Logf(\"Request for %s failed with invalid status; got %s; expect %s\", tc.url, response.Status, tc.wantStatus)\n  return\n}\n  \ns.Errorf(\"Request for %s failed with invalid status; got %s; expect %s\", tc.url, response.Status, tc.wantStatus)\n```",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "d6d357c197b0f5f0e14b46bbc348b02f733a1d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "add9e179_f8fbfce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_perform_web_request_enrolled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:53:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac50a0c5_8986c1d4",
       "range": {
         "startLine": 67,
         "startChar": 0,
