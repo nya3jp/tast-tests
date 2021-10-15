@@ -54,6 +54,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7ce8881f_da2ebf2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-15T22:51:46Z",
+      "side": 1,
+      "message": "Please take a look at my comment. Thanks.",
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6500b315_e0034abf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
         "patchSetId": 6
@@ -100,6 +117,24 @@
       "side": 1,
       "message": "Fingerprint tast precedent is to use \"Vars\": http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/firmware/\n\nThis is because we use default value for servo var which also makes running tests locally easier.",
       "parentUuid": "1bf6d78f_1d574a5d",
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc74049_a3356994",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-15T22:51:46Z",
+      "side": 1,
+      "message": "I don\u0027t see you use default value in line 62 \n```\n\tservoSpec, _ :\u003d s.Var(\"servo\")\n\tt, err :\u003d fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), false, true)\n```\n\nI agree with Hidehiko\u0027s comment that you should handle error in this case.",
+      "parentUuid": "fefe2f2f_49133205",
       "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
