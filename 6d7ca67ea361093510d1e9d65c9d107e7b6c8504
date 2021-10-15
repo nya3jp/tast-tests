@@ -16,6 +16,24 @@
       "message": "does this work always?\nSome code seems like the dir is owned by root still?\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/chromite/lib/dlc_lib.py;l\u003d679\n\nI couldn\u0027t find other place that the dir is created now...? Could you share if you know more?",
       "revId": "6d7ca67ea361093510d1e9d65c9d107e7b6c8504",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e8d735f_8548a916",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-10-15T04:32:52Z",
+      "side": 1,
+      "message": "The Cq-Depend has the required change that sets the correct ownership during build the flow of factory installing DLCs. (owner to dlcservice instead of root)",
+      "parentUuid": "0f70043b_29aef39f",
+      "revId": "6d7ca67ea361093510d1e9d65c9d107e7b6c8504",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
