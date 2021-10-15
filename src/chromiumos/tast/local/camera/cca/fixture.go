@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/ssh"
@@ -150,6 +151,17 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaTestBridgeReadyWithAssistantLogging",
+		Desc:            "Set up test bridge for CCA with assistant logging enabled",
+		Contacts:        []string{"pihsun@chromium.org"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            &fixture{enableAssistantLogging: true},
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		TearDownTimeout: tearDownTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:            "ccaTestBridgeReadyWithDocumentScene",
 		Desc:            "Set up test bridge for CCA with document scene as camera input",
 		Contacts:        []string{"wtlee@chromium.org"},
@@ -220,6 +232,8 @@ type fixture struct {
 	guestMode        bool
 	genScene         string
 	debugParams      DebugParams
+
+	enableAssistantLogging bool
 }
 
 func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -261,6 +275,9 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	}
 	if f.forceClamshell {
 		chromeOpts = append(chromeOpts, chrome.ExtraArgs("--force-tablet-mode=clamshell"))
+	}
+	if f.enableAssistantLogging {
+		chromeOpts = append(chromeOpts, assistant.VerboseLogging())
 	}
 
 	cr, err := chrome.New(ctx, chromeOpts...)
