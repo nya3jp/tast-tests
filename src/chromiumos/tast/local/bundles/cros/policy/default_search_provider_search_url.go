@@ -8,11 +8,14 @@ import (
 	"context"
 	"fmt"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -31,7 +34,15 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               lacros.ChromeTypeLacros,
+		}},
 	})
 }
 
@@ -44,6 +55,11 @@ func DefaultSearchProviderSearchURL(ctx context.Context, s *testing.State) {
 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -89,6 +105,13 @@ func DefaultSearchProviderSearchURL(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			// TODO(crbug.com/1259615): This should be part of the fixture.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+			if err != nil {
+				s.Fatal("Failed to setup chrome: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
 			// Clear the browser history, otherwise the previous search results can interfere with the test.
 			if err := tconn.Eval(ctx, `tast.promisify(chrome.browsingData.removeHistory({"since": 0}))`, nil); err != nil {
 				s.Fatal("Failed to clear browsing history: ", err)
@@ -96,7 +119,7 @@ func DefaultSearchProviderSearchURL(ctx context.Context, s *testing.State) {
 
 			// Open an empty page.
 			// Use chrome://newtab to open new tab page (see https://crbug.com/1188362#c19).
-			conn, err := cr.NewConn(ctx, "chrome://newtab/")
+			conn, err := br.NewConn(ctx, "chrome://newtab/")
 			if err != nil {
 				s.Fatal("Failed to connect to chrome: ", err)
 			}
