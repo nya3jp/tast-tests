@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fed5a226_fca22bfb",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-15T07:10:21Z",
+      "side": 1,
+      "message": "This is likely not necessary, Chrome infra doesn\u0027t run this test as it\u0027s not testing against a freshly built Lacros.",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 50
+      },
+      "revId": "e132c40bab3dbe4bab06d106aa588f26dc86af4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
