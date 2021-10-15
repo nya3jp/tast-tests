@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ac991c1_104d149b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-15T07:14:11Z",
+      "side": 1,
+      "message": "Is this still needed?",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 35
+      },
+      "revId": "65c05dff48d46baaee8f4dd77ce14aab0028333b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
