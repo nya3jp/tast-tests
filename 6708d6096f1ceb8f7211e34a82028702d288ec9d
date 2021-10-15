@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ed21f5_fc86abbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-10-15T23:49:26Z",
+      "side": 1,
+      "message": "\u003e Tast shadow review complete, one nit with two other thoughts:\n\u003e \n\u003e 1. For the comment, I think the TEST should say the actual steps to run (i.e. tast run ...) but mention it is flaky based on synchronization of tast and android and will fail after a random number of runs (unless it is exactly 15 every time).\n\nWe see the error pop up every few days in the labs, so I\u0027m not sure how many runs are needed to have high confidence that the problem is gone.  Unfortunately, there are other sources of flakiness in this test that won\u0027t be addressed here, so I can\u0027t just run it 100 times.  15 was a compromise between babysitting other flakes and getting some confidence that this doesn\u0027t crop up all the time.  Updated the message as you requested.\n\n\u003e \n\u003e 2. Additionally, and this may be for later, but it seems the \u0027WaitForPrintPreview\u0027 is misusing the \u0027IfSuccessThen\u0027. Is it possible to rewrite in the future to:\n\u003e \n\u003e 1. Wait for existence of the print preview window \n\u003e 2. Use the WaitUntilGone method to check for the loading preview to no longer be there?\n\u003e \n\u003e That may give you a less flaky test that\u0027s more clearly states what it\u0027s waiting on.\n\nThat\u0027s actually what the synchronization comment refers to.  The test Android app starts the print job as soon as it launches, but the test doesn\u0027t have any way to wait for that specific event.  By the time the test checks for the preview text, it might:\n\n1. Not have shown up yet and needs to be waited for.\n2. Already be visible.\n3. Already be gone because the print preview is done rendering.\n\nThe reason we can\u0027t directly wait for the preview to be done rendering is because the PDF plugin used to render it doesn\u0027t offer access to that event.  In the future, I plan to change the Android app to include a print button instead of immediately launching print preview.  This should let us get the app and test into the same state and eliminate this abuse of `IfSuccessThen`.  But that\u0027s a bigger change and I\u0027d like to reduce the flakiness in the meantime.",
+      "parentUuid": "9d10695b_a5644175",
+      "revId": "6708d6096f1ceb8f7211e34a82028702d288ec9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "972aef80_8795f21a",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-10-15T21:08:09Z",
       "side": 1,
       "message": "nit: If you really want it to do nothing then does a func(ctx Context) error { \n  // Do nothing - here to ignore failure and continue on.\n}\n\nconvey that message better?",
+      "revId": "6708d6096f1ceb8f7211e34a82028702d288ec9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b5797f_2dc949c0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-10-15T23:49:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "972aef80_8795f21a",
       "revId": "6708d6096f1ceb8f7211e34a82028702d288ec9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
