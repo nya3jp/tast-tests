@@ -58,30 +58,8 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 			defaultFacing = cca.FacingFront
 		}
 
-		initialFacing, err := app.GetFacing(ctx)
-		if err != nil {
-			s.Fatal("Get facing failed: ", err)
-		}
-		if initialFacing == defaultFacing {
-			return
-		}
-		// It may fail to open desired default facing camera with respect to
-		// tablet or clamshell mode on device without camera of that facing
-		// or on device without facing configurations which returns facing
-		// unknown for every camera. Try to query facing from every available
-		// camera to ensure it's a true failure.
-		if err := app.RunThroughCameras(ctx, func(facing cca.Facing) error {
-			facing, err := app.GetFacing(ctx)
-			if err != nil {
-				return errors.Wrap(err, "failed to get facing")
-			}
-			if facing == defaultFacing {
-				s.Fatalf("Failed to open default camera facing got %v; want %v",
-					initialFacing, defaultFacing)
-			}
-			return nil
-		}); err != nil {
-			s.Fatal("Failed to get all camera facing: ", err)
+		if err := app.CheckCameraFacing(ctx, defaultFacing); err != nil {
+			s.Fatal("Failed to open default camera facing: ", err)
 		}
 	}
 
