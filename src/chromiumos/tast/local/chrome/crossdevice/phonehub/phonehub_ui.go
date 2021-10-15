@@ -36,6 +36,7 @@ const (
 )
 
 // Enable enables Phone Hub from OS Settings using JS. Assumes a connected device has already been paired.
+// Hide should be called afterwards to close the Phone Hub tray. It is left open here so callers can capture the UI state upon error if needed.
 func Enable(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) error {
 	_, err := ossettings.Launch(ctx, tconn)
 	if err != nil {
@@ -85,7 +86,6 @@ func Enable(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) erro
 	if err := Show(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to show Phone Hub")
 	}
-	defer Hide(ctx, tconn)
 	if err := ui.WaitUntilExists(phoneHubSettingPod.First())(ctx); err != nil {
 		return errors.Wrap(err, "failed to find a Phone Hub setting pod")
 	}
