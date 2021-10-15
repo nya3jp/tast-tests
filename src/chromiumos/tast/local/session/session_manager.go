@@ -11,7 +11,6 @@ import (
 
 	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
-	"github.com/shirou/gopsutil/process"
 
 	"chromiumos/policy/enterprise_management"
 	lm "chromiumos/system_api/login_manager_proto"
@@ -19,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/procutil"
-	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
 
@@ -106,40 +104,23 @@ func (m *SessionManager) EnableChromeTesting(ctx context.Context, forceRelaunch 
 func (m *SessionManager) EnableChromeTestingAndWait(ctx context.Context, forceRelaunch bool,
 	extraArguments, extraEnvironmentVariables []string) (filepath string, err error) {
 	// Wait for a browser to start since session_manager can take a while to start it.
-	var old *process.Process
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		old, err = ashproc.Root()
-		return err
-	}, nil); err != nil {
+	old, err := ashproc.WaitForRoot(ctx, time.Minute)
+	if err != nil {
 		return "", errors.Wrap(err, "failed to find the browser process")
 	}
 
-	filepath, enableErr := m.EnableChromeTesting(ctx, forceRelaunch, extraArguments, extraEnvironmentVariables)
-	if enableErr != nil {
-		return "", enableErr
-	}
-
-	// Wait for the current Chrome to shut down first.
-	pollOpts := testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: 10 * time.Second}
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		r, err := old.IsRunning()
-		if err != nil {
-			return errors.Wrap(err, "failed to check chrome is running")
-		}
-		if r {
-			return errors.New("chrome is still running")
-		}
-		return nil
-	}, &pollOpts); err != nil {
+	filepath, err = m.EnableChromeTesting(ctx, forceRelaunch, extraArguments, extraEnvironmentVariables)
+	if err != nil {
 		return "", err
 	}
 
+	// Wait for the current Chrome to shut down first.
+	if err := procutil.WaitForTerminated(ctx, old, 10*time.Second); err != nil {
+		return "", errors.Wrap(err, "browser process didn't terminate")
+	}
+
 	// Wait for a new browser to appear.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		_, err := ashproc.Root()
-		return err
-	}, &pollOpts); err != nil {
+	if _, err := ashproc.WaitForRoot(ctx, 10*time.Second); err != nil {
 		return "", errors.Wrap(err, "chrome is not restarted")
 	}
 
