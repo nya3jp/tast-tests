@@ -224,26 +224,23 @@ var (
 	ScanBarcodeOption = UIComponent{"scan barcode option", []string{"#scan-barcode"}}
 	// ScanDocumentModeOption is the document mode option of scan mode.
 	ScanDocumentModeOption = UIComponent{"document mode button", []string{"#scan-document"}}
+	// CropDocumentView is the view letting user select document crop area.
+	CropDocumentView = UIComponent{"crop document view", []string{"#view-crop-document"}}
+	// CropDoneButton is the button clicked after user finish crop area selection.
+	CropDoneButton = UIComponent{"crop done button", []string{"#view-crop-document button[i18n-text=label_crop_done]"}}
 	// ReviewView is the review view after taking a photo under document mode.
-	ReviewView = UIComponent{"document review view", []string{
-		// TODO(b/191950622): Remove selector for old mode name after
-		// naming CL on app side fully landed.
-		"#view-review-document", "#view-review"}}
+	ReviewView = UIComponent{"document review view", []string{"#view-review"}}
 	// SaveAsPDFButton is the button to save document as PDF.
 	SaveAsPDFButton = UIComponent{"save document as pdf button", []string{
-		// TODO(b/191950622): Remove selector for old mode name after
-		// naming CL on app side fully landed.
-		"#save-pdf-document", "#view-review button[i18n-text=label_save_pdf_document]"}}
+		"#view-review button[i18n-text=label_save_pdf_document]"}}
 	// SaveAsPhotoButton is the button to save document as photo.
 	SaveAsPhotoButton = UIComponent{"save document as photo button", []string{
-		// TODO(b/191950622): Remove selector for old mode name after
-		// naming CL on app side fully landed.
-		"#save-photo-document", "#view-review button[i18n-text=label_save_photo_document]"}}
+		"#view-review button[i18n-text=label_save_photo_document]"}}
 	// RetakeButton is the button to retake the document photo.
 	RetakeButton = UIComponent{"retake document photo button", []string{
-		// TODO(b/191950622): Remove selector for old mode name after
+		// TODO(b/203028477): Remove selector for old mode name after
 		// naming CL on app side fully landed.
-		"#retake-document", "#review-retake"}}
+		"button.review-retake", "#review-retake"}}
 	// DocumentCornerOverlay is the overlay that CCA used to draw document corners on.
 	DocumentCornerOverlay = UIComponent{"document corner overlay", []string{
 		"#preview-document-corner-overlay"}}
@@ -1090,12 +1087,34 @@ func (a *App) Mirrored(ctx context.Context) (bool, error) {
 	return actual, err
 }
 
+type errorUINotExist struct {
+	ui *UIComponent
+}
+
+func (err errorUINotExist) Error() string {
+	return fmt.Sprintf("failed to resolved ui %v to its correct selector", err.ui.Name)
+}
+
 func (a *App) selectorExist(ctx context.Context, selector string) (bool, error) {
 	var exist bool
 	if err := a.conn.Call(ctx, &exist, "Tast.isExist", selector); err != nil {
 		return false, errors.Wrapf(err, "failed to check selector %v exist", selector)
 	}
 	return exist, nil
+}
+
+// IsUINotExist returns true if the given error is of type |errorUINotExist|.
+func IsUINotExist(err error) bool {
+	if err == nil {
+		return false
+	}
+	if _, ok := err.(errorUINotExist); ok {
+		return true
+	}
+	if wrappedErr, ok := err.(*errors.E); ok {
+		return IsUINotExist(wrappedErr.Unwrap())
+	}
+	return false
 }
 
 // resolveUISelector resolves ui to its correct selector.
@@ -1107,7 +1126,7 @@ func (a *App) resolveUISelector(ctx context.Context, ui UIComponent) (string, er
 			return s, nil
 		}
 	}
-	return "", errors.Errorf("failed to resolved ui %v to its correct selector", ui.Name)
+	return "", errorUINotExist{ui: &ui}
 }
 
 // Style returns the value of an CSS attribute of an UI component.
