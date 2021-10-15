@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f6152a1_d623780f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-10-15T14:46:34Z",
+      "side": 1,
+      "message": "nit:\nIn Go, for getters, remove the prefix \"Get\" / \"Fetch\".\n\nhttps://golang.org/doc/effective_go#Getters",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f8aa7da_51e8da57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-10-15T14:46:34Z",
+      "side": 1,
+      "message": "nit: perhaps strings.Trim or strings.TrimSpace ?",
+      "range": {
+        "startLine": 22,
+        "startChar": 42,
+        "endLine": 22,
+        "endChar": 84
+      },
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "148c1dea_f5c8e515",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-10-15T14:46:34Z",
+      "side": 1,
+      "message": "you are assuming that the device has brightness at 100%.\nPerhaps the defaults change in the future.\nBetter to read the current brightness, and the defer function should restore the original brightness value.",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4eff3da8_55fdf816",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
         "patchSetId": 5
@@ -20,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c59795a_da0a5f3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-10-15T14:46:34Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "4eff3da8_55fdf816",
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5cc2fd0a_e79f46ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
         "patchSetId": 5
@@ -31,6 +118,75 @@
       "writtenOn": "2021-10-14T00:33:12Z",
       "side": 1,
       "message": "Nit: inc \u003c\u003d pre makes it much more readable",
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e03e5206_644f3fe9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-10-15T14:46:34Z",
+      "side": 1,
+      "message": "nit: add docstring for all non trivial functions.\n\nAlso, the name of the function is a bit confusing... Initially I thought that the function was waiting for a certain value. But, IIUC, it just wait until there is a change the brightness value, and returns that.\n\nSo perhaps a name like \"waitForChangeInBrightness\" or something like that might be better (?)",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 26
+      },
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72634551_5428a687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-10-15T14:46:34Z",
+      "side": 1,
+      "message": "nit: doBrtChange",
+      "range": {
+        "startLine": 96,
+        "startChar": 50,
+        "endLine": 96,
+        "endChar": 58
+      },
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bbe2a6e_54fd9897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-10-15T14:46:34Z",
+      "side": 1,
+      "message": "not clear why this extra \"GetSystemBrightness\" is needed. Can\u0027t you just use the last value from the Poll",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 58
+      },
       "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
