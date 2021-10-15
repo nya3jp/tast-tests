@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb9e846_5eeab0d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-15T01:19:05Z",
+      "side": 1,
+      "message": "Let me move the CL which adds lacrosDeployedBinary support for rootfs and omaha to come /before/ this CL",
+      "revId": "8daab9c8daa0a66232d951d690fca5b09099123a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50ba17fa_893b7b02",
