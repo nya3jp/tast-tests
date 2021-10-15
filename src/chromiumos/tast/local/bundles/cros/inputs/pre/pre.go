@@ -65,7 +65,7 @@ func inputsPreCondition(name string, dm deviceMode, vkEnabled, reset bool, opts 
 		dm:        dm,
 		vkEnabled: vkEnabled,
 		reset:     reset,
-		opts:      append(opts, chrome.EnableFeatures("ImeMojoDecoder")),
+		opts:      opts,
 	}
 }
 
