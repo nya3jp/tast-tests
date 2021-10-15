@@ -37,6 +37,155 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6500b315_e0034abf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-15T01:45:09Z",
+      "side": 1,
+      "message": "note: looks very long.\nIt\u0027s not a blocker to add this as informational now, but if you\u0027re trying to promote this to CQ blocker, this can be a blocker.",
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d73c4339_18023e50",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-15T01:45:09Z",
+      "side": 1,
+      "message": "could you handle error?",
+      "range": {
+        "startLine": 61,
+        "startChar": 12,
+        "endLine": 61,
+        "endChar": 13
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a467f528_2dac638c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-15T01:45:09Z",
+      "side": 1,
+      "message": "style: \"cleanupCtx\" for consistency with other tests and preferring shorter name.\nOr, can pass ctx to the defer function.\n\ndefer func(ctx context.Context) {\n  ...\n}(ctx)\n\nnote ctx is evaluated here in this code, so it won\u0027t be affected from assignment at L72.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 14
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "078417f5_4916d59a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-15T01:45:09Z",
+      "side": 1,
+      "message": "could you add comment for this? or could you use named constant?\n\nDitto for just below.",
+      "range": {
+        "startLine": 86,
+        "startChar": 45,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea3c1387_900b3eb9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-15T01:45:09Z",
+      "side": 1,
+      "message": "Instead could you check error return from RemoveAll?\n\nhttps://pkg.go.dev/os#IsNotExist\n\ndutfs should be transparent at the error code, IIUC.",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 3
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f891fff5_68b128af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-15T01:45:09Z",
+      "side": 1,
+      "message": "is this just one line?\nIf not could you dump it to output dir?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 140,
+        "startChar": 55,
+        "endLine": 140,
+        "endChar": 66
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fe7f3e7_60bba5ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-15T01:45:09Z",
+      "side": 1,
+      "message": "errors.New() should be used, instead.",
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "eccdfde9_6a7323e4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
         "patchSetId": 6
@@ -76,6 +225,29 @@
         "startChar": 0,
         "endLine": 169,
         "endChar": 3
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2294b630_8640f9be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-15T01:45:09Z",
+      "side": 1,
+      "message": "better to split the function responsibility for version check and whether it was executed. Specifically, this is called over ssh, and there\u0027s no handling here in case SSH errors, e.g.",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 47
       },
       "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
