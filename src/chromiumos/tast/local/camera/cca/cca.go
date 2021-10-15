@@ -1959,3 +1959,13 @@ func (a *App) SaveScreenshot(ctx context.Context) error {
 	path := filepath.Join(a.outDir, filename)
 	return screenshot.CaptureChrome(ctx, a.cr, path)
 }
+
+// CheckMode checks whether CCA window is in correct capture mode.
+func (a *App) CheckMode(ctx context.Context, mode Mode) error {
+	if result, err := a.GetState(ctx, string(mode)); err != nil {
+		return errors.Wrap(err, "failed to check state")
+	} else if !result {
+		return errors.Errorf("CCA is not in the expected mode: %s", mode)
+	}
+	return nil
+}
