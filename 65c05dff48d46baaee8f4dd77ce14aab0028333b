@@ -46,6 +46,30 @@
       },
       "revId": "65c05dff48d46baaee8f4dd77ce14aab0028333b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40e47014_2769a03a",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-15T07:17:16Z",
+      "side": 1,
+      "message": "Sorry, why is it still needed for now? I thought this CL switch all tests to use RootFS?",
+      "parentUuid": "7b530c8b_b9915ccb",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 35
+      },
+      "revId": "65c05dff48d46baaee8f4dd77ce14aab0028333b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
