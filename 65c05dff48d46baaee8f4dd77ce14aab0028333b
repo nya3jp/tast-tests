@@ -70,6 +70,30 @@
       },
       "revId": "65c05dff48d46baaee8f4dd77ce14aab0028333b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6abf2557_96121a79",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-15T07:21:04Z",
+      "side": 1,
+      "message": "Because the External setupmode still exists.\n\nI want to separate the switching everything over, and removing the external mode.  It makes the CLs smaller and easier to review. Also, if we have a problem with one of the switched tests, we don\u0027t have to revert everything.",
+      "parentUuid": "40e47014_2769a03a",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 35
+      },
+      "revId": "65c05dff48d46baaee8f4dd77ce14aab0028333b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
