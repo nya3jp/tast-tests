@@ -1959,3 +1959,13 @@ func (a *App) SaveScreenshot(ctx context.Context) error {
 	path := filepath.Join(a.outDir, filename)
 	return screenshot.CaptureChrome(ctx, a.cr, path)
 }
+
+// CheckLandingMode checks whether CCA window lands in correct capture mode.
+func (a *App) CheckLandingMode(ctx context.Context, mode Mode) error {
+	if result, err := a.GetState(ctx, string(mode)); err != nil {
+		return errors.Wrap(err, "failed to check state")
+	} else if !result {
+		return errors.Errorf("CCA does not land on the expected mode: %s", mode)
+	}
+	return nil
+}

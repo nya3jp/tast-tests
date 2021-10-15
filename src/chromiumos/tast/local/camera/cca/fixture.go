@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/ssh"
@@ -262,6 +263,11 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	if f.forceClamshell {
 		chromeOpts = append(chromeOpts, chrome.ExtraArgs("--force-tablet-mode=clamshell"))
 	}
+
+	// Enable assistant verbose logging for the CCAUIAssistant test. Since
+	// assistant is disabled by default, this should not affect other tests,
+	// and enable CCAUIAssistant test to reuse the ccaTestBridgeReady fixture.
+	chromeOpts = append(chromeOpts, assistant.VerboseLogging())
 
 	cr, err := chrome.New(ctx, chromeOpts...)
 	if err != nil {

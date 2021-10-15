@@ -326,7 +326,7 @@ func checkIntentBehavior(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, uiD
 	if err := checkUI(ctx, app, options); err != nil {
 		return err
 	}
-	if err := checkLandingMode(ctx, app, options.Mode); err != nil {
+	if err := app.CheckLandingMode(ctx, options.Mode); err != nil {
 		return err
 	}
 
@@ -361,16 +361,6 @@ func checkIntentBehavior(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, uiD
 		if err := checkTestAppResult(ctx, a, uiDevice, shouldFinished); err != nil {
 			return err
 		}
-	}
-	return nil
-}
-
-// checkLandingMode checks whether CCA window lands in correct capture mode.
-func checkLandingMode(ctx context.Context, app *cca.App, mode cca.Mode) error {
-	if result, err := app.GetState(ctx, string(mode)); err != nil {
-		return errors.Wrap(err, "failed to check state")
-	} else if !result {
-		return errors.Errorf("CCA does not land on the expected mode: %s", mode)
 	}
 	return nil
 }
@@ -546,7 +536,7 @@ func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.AR
 	}
 
 	// Check if the regular CCA still lands on video mode.
-	if err := checkLandingMode(ctx, regularApp, cca.Video); err != nil {
+	if err := regularApp.CheckLandingMode(ctx, cca.Video); err != nil {
 		return errors.Wrap(err, "failed to land on video mode when resuming window")
 	}
 	return nil
