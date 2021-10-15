@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06f998af_afab20a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_message_from_ui_enrolled.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa736704_118e635d",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "7fcdce6f837be2502c03e9f9c8faf49ae32f60db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08b06eda_fb1790c9",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-13T14:58:31Z",
       "side": 1,
       "message": "same: wConn",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "7fcdce6f837be2502c03e9f9c8faf49ae32f60db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "560af0c1_eaa9a244",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_message_from_ui_enrolled.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08b06eda_fb1790c9",
       "range": {
         "startLine": 66,
         "startChar": 1,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9be1c4dd_6562fc97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_message_from_ui_enrolled.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02276858_6879f229",
+      "revId": "7fcdce6f837be2502c03e9f9c8faf49ae32f60db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2f9afc2_6023004d",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98053b76_5536a5f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_message_from_ui_enrolled.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2f9afc2_6023004d",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 83
+      },
+      "revId": "7fcdce6f837be2502c03e9f9c8faf49ae32f60db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fd02223_7d4c308c",
@@ -117,6 +207,24 @@
       "writtenOn": "2021-10-13T14:58:31Z",
       "side": 1,
       "message": "same: format",
+      "revId": "7fcdce6f837be2502c03e9f9c8faf49ae32f60db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acde93c3_fb2a0b54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_handle_message_from_ui_enrolled.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:52:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fd02223_7d4c308c",
       "revId": "7fcdce6f837be2502c03e9f9c8faf49ae32f60db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
