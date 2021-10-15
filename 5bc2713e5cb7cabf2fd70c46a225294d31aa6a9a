@@ -22,6 +22,30 @@
       },
       "revId": "5bc2713e5cb7cabf2fd70c46a225294d31aa6a9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "446806b4_c09d2285",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-15T06:49:25Z",
+      "side": 1,
+      "message": "I think this is good, though just want to double check, we don\u0027t allow users downgrading to an older version, is that correct?",
+      "parentUuid": "5aa8141a_b0bbe758",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "5bc2713e5cb7cabf2fd70c46a225294d31aa6a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

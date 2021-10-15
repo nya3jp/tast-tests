@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25757f18_5a78c069",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-15T06:49:25Z",
+      "side": 1,
+      "message": "I\u0027m not very familiar with Tast, and the complexity of this CL has clearly exceeded my recognition capacity, so I\u0027ll count on someone else to review, left a few high level questions.",
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af80ff6f_87756119",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-15T06:49:25Z",
+      "side": 1,
+      "message": "This is fine to simplify the test setup, but in reality, it is possible to RootFS to be newer than Stateful, such as on the trunk.",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 75
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e2596ba_021d66b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-15T06:49:25Z",
+      "side": 1,
+      "message": "It\u0027s probably calling out this is true only as of today, it will increase to up to 5 in the future.",
+      "range": {
+        "startLine": 45,
+        "startChar": 95,
+        "endLine": 45,
+        "endChar": 120
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e06d04f_b173523a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-15T06:49:25Z",
+      "side": 1,
+      "message": "I\u0027m a little bit confused about this part, IIUC, v should be +9000 major milestone, then the test would fail, but shouldn\u0027t the test be expected to pass?",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 10
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
