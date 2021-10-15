@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23d00d79_a05ee99d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_send_message_to_ui_enrolled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a37ea21_e949358f",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 5
+      },
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bb8de1e_54581b2d",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-13T14:54:34Z",
       "side": 1,
       "message": "nit: please run CloseTarget() before Close() method to avoid tests affecting each other\n\ni think i had error related to that issue",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b705193d_a82803f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_send_message_to_ui_enrolled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:52:41Z",
+      "side": 1,
+      "message": "Totally agree with you :+1",
+      "parentUuid": "3bb8de1e_54581b2d",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "215df6df_c0896a11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_send_message_to_ui_enrolled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97b684fd_56a75913",
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c05c05eb_68f7fe9e",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-10-13T14:54:34Z",
       "side": 1,
       "message": "nit: Unexpected reply received \u003d got %v, want %v",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 54
+      },
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b421a98_6117b947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_send_message_to_ui_enrolled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c05c05eb_68f7fe9e",
       "range": {
         "startLine": 87,
         "startChar": 12,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "511660ba_24028281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_send_message_to_ui_enrolled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:52:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "32058b7d_22b69137",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 93,
+        "endChar": 49
+      },
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4e9ef4a_252c46ac",
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73c03109_38b65499",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_send_message_to_ui_enrolled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4e9ef4a_252c46ac",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 56
+      },
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67c46cb5_396c037a",
@@ -163,6 +301,24 @@
       "writtenOn": "2021-10-13T14:54:34Z",
       "side": 1,
       "message": "nit: i think we should not touch that package. let\u0027s keep as it is",
+      "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e34633d8_4a21977e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wilco/wilcoextension/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:52:41Z",
+      "side": 1,
+      "message": "Okay, that makes sense.",
+      "parentUuid": "67c46cb5_396c037a",
       "revId": "60f4fb197d1d706dee097582968f054e0cb17b09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
