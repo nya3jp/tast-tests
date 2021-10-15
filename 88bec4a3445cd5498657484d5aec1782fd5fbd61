@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c3aaa3_ddc53c13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-15T16:43:21Z",
+      "side": 1,
+      "message": "So annoying, since I uploaded a patchset, now I can\u0027t be the owner approver, and I need another one.",
+      "revId": "88bec4a3445cd5498657484d5aec1782fd5fbd61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
