@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4cefb95_7e5d849c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_stateful_partition_available_capacity_enrolled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:51:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "227a2902_42154da4",
+      "revId": "f284434fa0114f4561784b1ebc7894233d2c8eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c34cb7d9_0dff5ed1",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d26c1b61_4352bd6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_stateful_partition_available_capacity_enrolled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:51:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c34cb7d9_0dff5ed1",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 1
+      },
+      "revId": "f284434fa0114f4561784b1ebc7894233d2c8eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce1798ab_775c74f7",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-10-13T13:50:52Z",
       "side": 1,
       "message": "nit: looks like this is preferred format, because \":\" is used in errors:\n\n```\nInvalid available capacity \u003d got %v, want %v +- %v\n```",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 61
+      },
+      "revId": "f284434fa0114f4561784b1ebc7894233d2c8eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cb56291_f5fe4f80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_get_stateful_partition_available_capacity_enrolled.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1512082
+      },
+      "writtenOn": "2021-10-15T14:51:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce1798ab_775c74f7",
       "range": {
         "startLine": 65,
         "startChar": 12,
