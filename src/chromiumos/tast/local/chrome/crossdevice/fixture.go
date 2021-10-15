@@ -12,10 +12,12 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/crossdevice/phonehub"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -56,7 +58,7 @@ func init() {
 			customCrOSPassword,
 			KeepStateVar,
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -87,11 +89,16 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	// Android device from parent fixture.
 	androidDevice := s.ParentValue().(*FixtData).AndroidDevice
 
+	// Allocate time for logging and saving a screenshot in case of failure.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// Reset and save logcat so we have Android logs even if fixture setup fails.
 	if err := androidDevice.ClearLogcat(ctx); err != nil {
 		s.Fatal("Failed to clear logcat at start of fixture setup")
 	}
-	defer androidDevice.DumpLogs(ctx, s.OutDir(), "fixture_setup_logcat.txt")
+	defer androidDevice.DumpLogs(cleanupCtx, s.OutDir(), "fixture_setup_logcat.txt")
 
 	crosUsername := s.RequiredVar(defaultCrossDeviceUsername)
 	crosPassword := s.RequiredVar(defaultCrossDevicePassword)
@@ -132,6 +139,7 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "fixture")
 
 	// Sometimes during login the tcp connection to the snippet server on Android is lost.
 	// If the Pair RPC fails, reconnect to the snippet server and try again.
@@ -153,6 +161,9 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 
 	if err := phonehub.Enable(ctx, tconn, cr); err != nil {
 		s.Fatal("Failed to enable Phone Hub: ", err)
+	}
+	if err := phonehub.Hide(ctx, tconn); err != nil {
+		s.Fatal("Failed to hide Phone Hub after enabling it: ", err)
 	}
 
 	// Store Android attributes for reporting.
