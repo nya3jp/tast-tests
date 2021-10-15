@@ -16,6 +16,46 @@
       "message": "Thanks Oleh!",
       "revId": "8d70c36e2ea9c24f5a48794f73a7dacf41bd2bb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f157b303_64e93f9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-15T15:08:10Z",
+      "side": 1,
+      "message": "LGMT % nit",
+      "revId": "8d70c36e2ea9c24f5a48794f73a7dacf41bd2bb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b87fe981_c41b54f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-15T15:08:10Z",
+      "side": 1,
+      "message": "nit: rename it to vmTestMode or smth like this. Right now it\u0027s not self descriptive",
+      "range": {
+        "startLine": 62,
+        "startChar": 21,
+        "endLine": 62,
+        "endChar": 26
+      },
+      "revId": "8d70c36e2ea9c24f5a48794f73a7dacf41bd2bb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

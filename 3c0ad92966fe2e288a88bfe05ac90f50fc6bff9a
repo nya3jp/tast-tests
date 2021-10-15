@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3124ddc0_c294d094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-15T15:08:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "25e408e5_6813f30b",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 49
+      },
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f07276e_a96c108b",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "IIRC, I went to that pathway to fix some linting errors. A test file must have an exported function or service. Let me check that once,\n\nYes:\n\n```\n[FAILED] chromiumos/platform/tast-tests: tast_lint                         \n    Hook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        src/chromiumos/tast/local/bundles/cros/wilco/fixture.go: Tast requires exactly one symbol (test function or service type) to be exported in an entry file\n      \n```\n\nAny workaround here?",
       "parentUuid": "4f07276e_a96c108b",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 1
+      },
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed4d4a2_14bd98d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-15T15:08:10Z",
+      "side": 1,
+      "message": "OK, let\u0027s keep as it is",
+      "parentUuid": "11f4d377_b67088d8",
       "range": {
         "startLine": 61,
         "startChar": 0,
@@ -566,6 +614,24 @@
       "side": 1,
       "message": "By \"stop chrome\", you mean to close connection with the chrome instance, right? We have that in line 208.",
       "parentUuid": "1c09ad01_53dfa537",
+      "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d377a10a_3e3637b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-15T15:08:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ffb92727_c801f842",
       "revId": "3c0ad92966fe2e288a88bfe05ac90f50fc6bff9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
