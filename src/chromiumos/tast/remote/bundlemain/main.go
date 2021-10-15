@@ -125,6 +125,21 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 			s.Error("Failed to check TPM state: ", err)
 		}
 
+		// Get output directory.
+		dir, ok := testing.ContextOutDir(ctx)
+		if !ok {
+			s.Log("Failed to get name of output directory")
+			return
+		}
+
+		// Get /var/log/messages file
+		dst := filepath.Join(dir, "messages")
+		//Transfer messages file from DUT to host machine
+		if err := linuxssh.GetFile(ctx, dut.Conn(), "/var/log/messages", dst, linuxssh.PreserveSymlinks); err != nil {
+			s.Logf("Failed to download /var/log/messages from DUT to %v at local host: %v", dst, err)
+			return
+		}
+
 		// Only save faillog when there is an error.
 		if !s.HasError() {
 			return
@@ -159,15 +174,8 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 			return
 		}
 
-		// Get output directory.
-		dir, ok := testing.ContextOutDir(ctx)
-		if !ok {
-			s.Log("Failed to get name of output directory")
-			return
-		}
-
 		// Get name of target
-		dst := filepath.Join(dir, "faillog")
+		dst = filepath.Join(dir, "faillog")
 		// Transfer the file from DUT to host machine.
 		if err := linuxssh.GetFile(ctx, dut.Conn(), res.Path, dst, linuxssh.PreserveSymlinks); err != nil {
 			s.Logf("Failed to download %v from DUT to %v at local host: %v", res.Path, dst, err)
