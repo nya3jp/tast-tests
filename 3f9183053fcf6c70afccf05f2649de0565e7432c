@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9034c10a_677371ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-15T17:45:14Z",
+      "side": 1,
+      "message": "Understood. Transitioning from an older Stateful \u003d\u003e newer Rootfs will be covered in a follow-up CL (https://crrev.com/c/3223762) separately from this test.\n\nFYI that case is being blocked on a potential issue in the selection logic + version skew (https://crbug.com/1258214). will be working on it figuring out what the intended behavior is with Jae.",
+      "parentUuid": "af80ff6f_87756119",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 75
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e2596ba_021d66b4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
         "patchSetId": 6
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6bb8ca2d_706b7896",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-15T17:45:14Z",
+      "side": 1,
+      "message": "Well noted!\nAs you know, a version skew of [0, +2] has not yet even been implemented. For now `IsSkewValid` in `version.go` in this CL has copied the version skew policy from production code, which is [-1, infinite].\nFiled crbug.com/1258138 to track the change and apply to the tests.",
+      "parentUuid": "6e2596ba_021d66b4",
+      "range": {
+        "startLine": 45,
+        "startChar": 95,
+        "endLine": 45,
+        "endChar": 120
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e06d04f_b173523a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
         "patchSetId": 6
@@ -77,6 +125,30 @@
       "writtenOn": "2021-10-15T06:49:25Z",
       "side": 1,
       "message": "I\u0027m a little bit confused about this part, IIUC, v should be +9000 major milestone, then the test would fail, but shouldn\u0027t the test be expected to pass?",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 10
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb4a8eb3_f1e132fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-15T17:45:14Z",
+      "side": 1,
+      "message": "Thanks for pointing that out. It is because the production code hasn\u0027t implement the version skew policy yet. Currently the test copies the policy from the production code (see https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3214891/6/src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go), which is [-1, inf] so +9000 won\u0027t let the test fail. \n\nThis will be updated as soon as the final version skew decision gets in chromium.",
+      "parentUuid": "3e06d04f_b173523a",
       "range": {
         "startLine": 86,
         "startChar": 5,

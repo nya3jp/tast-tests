@@ -46,6 +46,30 @@
       },
       "revId": "5bc2713e5cb7cabf2fd70c46a225294d31aa6a9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04deadfd_c26ca48f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-15T17:45:14Z",
+      "side": 1,
+      "message": "My understanding is yes, correct.\nFrom what I tested/observed, if there were multiple versions of Lacros present (for the same channel), the newest one would be always picked up and the older ones removed from filesystem. If necessary, we can write a test for that.\n\n+Jae in case you have anything to add.",
+      "parentUuid": "446806b4_c09d2285",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 40
+      },
+      "revId": "5bc2713e5cb7cabf2fd70c46a225294d31aa6a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
