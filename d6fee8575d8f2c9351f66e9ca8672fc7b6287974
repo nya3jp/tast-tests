@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8e4140f_b26aa6e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1177980
+      },
+      "writtenOn": "2021-10-15T14:07:10Z",
+      "side": 1,
+      "message": "lgtm % nit",
+      "revId": "d6fee8575d8f2c9351f66e9ca8672fc7b6287974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fecc5fd_a7302966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_cycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1177980
+      },
+      "writtenOn": "2021-10-15T14:07:10Z",
+      "side": 1,
+      "message": "nit: link to the crbug?",
+      "range": {
+        "startLine": 28,
+        "startChar": 44,
+        "endLine": 28,
+        "endChar": 57
+      },
+      "revId": "d6fee8575d8f2c9351f66e9ca8672fc7b6287974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
