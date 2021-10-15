@@ -11,7 +11,9 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -29,14 +31,29 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
+		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			ExtraAttr: []string{"informational"},
+			Fixture:   fixture.ChromePolicyLoggedIn,
+			Val:       lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"informational"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               lacros.ChromeTypeLacros,
+		}},
 	})
 }
 
 func ManagedBookmarks(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -63,30 +80,30 @@ func ManagedBookmarks(ctx context.Context, s *testing.State) {
 			},
 			},
 		},
-		{
-			name: "multiple",
-			value: &policy.ManagedBookmarks{Val: []*policy.RefBookmarkType{
-				{
-					Name:         "Google",
-					Url:          "https://google.com/",
-					ToplevelName: folder,
-				},
-				{
-					Name:         "YouTube",
-					Url:          "https://youtube.com/",
-					ToplevelName: folder,
-				},
-				{
-					Name:         "Chromium",
-					Url:          "https://chromium.org/",
-					ToplevelName: folder,
-				},
-			},
-			},
-		},
+    //{
+		//	name: "multiple",
+		//	value: &policy.ManagedBookmarks{Val: []*policy.RefBookmarkType{
+		//		{
+		//			Name:         "Google",
+		//			Url:          "https://google.com/",
+		//			ToplevelName: folder,
+		//		},
+		//		{
+		//			Name:         "YouTube",
+		//			Url:          "https://youtube.com/",
+		//			ToplevelName: folder,
+		//		},
+		//		{
+		//			Name:         "Chromium",
+		//			Url:          "https://chromium.org/",
+		//			ToplevelName: folder,
+		//		},
+		//	},
+		//	},
+		//},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
@@ -98,15 +115,22 @@ func ManagedBookmarks(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			// TODO(crbug.com/1259615): This should be part of the fixture.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+			if err != nil {
+				s.Fatal("Failed to setup chrome: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
 			// Run actual test.
-			conn, err := cr.NewConn(ctx, "chrome://newtab/")
+			conn, err := br.NewConn(ctx, "chrome://newtab/")
 			if err != nil {
 				s.Fatal("Failed to connect to chrome: ", err)
 			}
 			defer conn.Close()
 
 			ui := uiauto.New(tconn)
-			if err := ui.WithTimeout(10 * time.Second).LeftClick(nodewith.Name(folder).Role(role.PopUpButton))(ctx); err != nil {
+      if err := ui.WithTimeout(10 * time.Second).LeftClick(nodewith.Name(folder).Role(role.PopUpButton))(ctx); err != nil {
 				s.Fatal("Could not find top level bookmark folder: ", err)
 			}
 
@@ -114,6 +138,7 @@ func ManagedBookmarks(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Failed to find bookmarks: ", err)
 			}
+      s.Log(bookmarks)
 
 			if len(bookmarks) != len(param.value.Val) {
 				s.Errorf("Unexpected number of bookmarks: got %d, expected %d bookmark(s)", len(bookmarks), len(param.value.Val))
