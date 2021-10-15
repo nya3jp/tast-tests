@@ -16,6 +16,40 @@
       "message": "Friendly ping.",
       "revId": "6708d6096f1ceb8f7211e34a82028702d288ec9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d10695b_a5644175",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-15T21:08:09Z",
+      "side": 1,
+      "message": "Tast shadow review complete, one nit with two other thoughts:\n\n1. For the comment, I think the TEST should say the actual steps to run (i.e. tast run ...) but mention it is flaky based on synchronization of tast and android and will fail after a random number of runs (unless it is exactly 15 every time).\n\n2. Additionally, and this may be for later, but it seems the \u0027WaitForPrintPreview\u0027 is misusing the \u0027IfSuccessThen\u0027. Is it possible to rewrite in the future to:\n\n1. Wait for existence of the print preview window \n2. Use the WaitUntilGone method to check for the loading preview to no longer be there?\n\nThat may give you a less flaky test that\u0027s more clearly states what it\u0027s waiting on.",
+      "revId": "6708d6096f1ceb8f7211e34a82028702d288ec9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "972aef80_8795f21a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-15T21:08:09Z",
+      "side": 1,
+      "message": "nit: If you really want it to do nothing then does a func(ctx Context) error { \n  // Do nothing - here to ignore failure and continue on.\n}\n\nconvey that message better?",
+      "revId": "6708d6096f1ceb8f7211e34a82028702d288ec9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
