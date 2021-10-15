@@ -40,7 +40,7 @@ func init() {
 			{
 				Name:              "omaha",
 				Fixture:           "lacrosOmaha",
-				ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("eve", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
 				ExtraAttr:         []string{"informational"},
 			}},
 	})
