@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f79d4a7_a6b7638b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-10-15T21:34:01Z",
+      "side": 1,
+      "message": "PTAL at your leisure.\n\nThe usage text in the README is copied from the ITU-T web pages. I included the per-clip readme.txt metadata where they were available.\n\nI\u0027ll add the tast owner from the previous CL in the relation chain once they are added.",
+      "revId": "8c9998f8edf2f06ca4241f8c45f31596ae2eb013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
