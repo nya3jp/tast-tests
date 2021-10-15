@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2c50f3c_7c5dfa64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-15T21:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddb1d4d4_4ebc8815",
+      "range": {
+        "startLine": 121,
+        "startChar": 57,
+        "endLine": 121,
+        "endChar": 58
+      },
+      "revId": "cf9849b98da0e66640c93e454a3f70f1a745f453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8be38fbb_b1cc540f",
@@ -77,6 +101,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "305b7982_1468a288",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-15T21:21:50Z",
+      "side": 1,
+      "message": "Right! Thanks for catching that.",
+      "parentUuid": "75edce11_d1954485",
+      "revId": "cf9849b98da0e66640c93e454a3f70f1a745f453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "553cf490_000ffdb4",
@@ -123,6 +165,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f767ff9d_b2f23564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-15T21:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6011482_50b01bbd",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 34
+      },
+      "revId": "cf9849b98da0e66640c93e454a3f70f1a745f453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf8d2b77_2a8ceefb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-15T21:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "553cf490_000ffdb4",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 34
+      },
+      "revId": "cf9849b98da0e66640c93e454a3f70f1a745f453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "023f236b_0023daf8",
@@ -136,6 +226,30 @@
       "writtenOn": "2021-10-14T00:06:07Z",
       "side": 1,
       "message": "\"youtube app should be in the active desk\"\n\nerror string should not be capitalized go/go-style/decisions#error-strings",
+      "range": {
+        "startLine": 174,
+        "startChar": 21,
+        "endLine": 174,
+        "endChar": 63
+      },
+      "revId": "cf9849b98da0e66640c93e454a3f70f1a745f453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd097d16_77f4d747",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-15T21:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "023f236b_0023daf8",
       "range": {
         "startLine": 174,
         "startChar": 21,
