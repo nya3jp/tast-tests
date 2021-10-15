@@ -35,10 +35,10 @@ func init() {
 
 func SetOnlineWallpaper(ctx context.Context, s *testing.State) {
 	const (
-		firstCollection  = "Solid colors"
-		firstImage       = "Light Blue"
-		secondCollection = "Colors"
-		secondImage      = "Bubbly"
+		firstCollection  = "Cityscapes"
+		firstImage       = "J. Paul Getty Museum, Los Angeles Photo by Victor Cheng"
+		secondCollection = "Imaginary"
+		secondImage      = "The Savanna's Band Digital Art by Leo Natsume"
 	)
 
 	cr, err := chrome.New(ctx, chrome.EnableFeatures("WallpaperWebUI"))
