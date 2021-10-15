@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6674dcc9_c750905d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/productivity_app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-15T01:24:11Z",
+      "side": 1,
+      "message": "Minor change based on your comment in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3222280. Thanks!",
+      "range": {
+        "startLine": 55,
+        "startChar": 72,
+        "endLine": 55,
+        "endChar": 85
+      },
+      "revId": "8c9696e471fc26c5db14e5227260fa88c730e4e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
