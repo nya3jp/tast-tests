@@ -37,6 +37,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9b9de2ee_62536ec1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-15T02:01:24Z",
+      "side": 1,
+      "message": "I have one comment. Please take a look.",
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6500b315_e0034abf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
         "patchSetId": 6
@@ -48,6 +65,23 @@
       "writtenOn": "2021-10-15T01:45:09Z",
       "side": 1,
       "message": "note: looks very long.\nIt\u0027s not a blocker to add this as informational now, but if you\u0027re trying to promote this to CQ blocker, this can be a blocker.",
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bf6d78f_1d574a5d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-15T02:01:24Z",
+      "side": 1,
+      "message": "Do you want the test to be skipped if servo is not available? If so, I suggest you to use \"VarDeps\".\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#skipping-tests-if-a-variable-is-not-set",
       "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
