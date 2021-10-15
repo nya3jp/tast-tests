@@ -22,6 +22,30 @@
       },
       "revId": "214cd639bc9b0e8eeb1b6a11b6f1a23e4a697f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76bd3005_e7c6fbe4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update/helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-15T22:13:59Z",
+      "side": 1,
+      "message": "Moved to the common. Done.",
+      "parentUuid": "ac35c6ad_aea8ab6f",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "214cd639bc9b0e8eeb1b6a11b6f1a23e4a697f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
