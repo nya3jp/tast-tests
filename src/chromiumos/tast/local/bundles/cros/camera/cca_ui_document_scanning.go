@@ -98,6 +98,19 @@ func runTakeDocumentPhoto(ctx context.Context, app *cca.App, reviewChoices []rev
 			return errors.Wrap(err, "failed to click the shutter button")
 		}
 
+		if err := app.WaitForVisibleState(ctx, cca.CropDocumentView, true); err != nil {
+			if cca.IsUINotExist(err) {
+				// TODO(b/203028477): Don't skip testing crop page after the crop feature fully landed.
+				testing.ContextLog(ctx, "Crop document view does exist, skip wait for view show up")
+			} else {
+				return errors.Wrap(err, "failed to wait for crop UI show up")
+			}
+		} else {
+			if err := app.Click(ctx, cca.CropDoneButton); err != nil {
+				return err
+			}
+		}
+
 		// In review mode. Click the button according to the output type.
 		if err := app.WaitForVisibleState(ctx, cca.ReviewView, true); err != nil {
 			return errors.Wrap(err, "failed to wait for review UI show up")
