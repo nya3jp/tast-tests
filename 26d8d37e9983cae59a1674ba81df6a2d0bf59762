@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce21f47_82606287",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_disk_full_data_survival.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-15T12:33:19Z",
+      "side": 1,
+      "message": "I\u0027ve changed the way we detect if the vault is indeed filled and thus fillerMinSize is removed.",
+      "parentUuid": "12c6293b_80f05901",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 39
+      },
+      "revId": "26d8d37e9983cae59a1674ba81df6a2d0bf59762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "609e59c1_1b888c29",
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f93b90a4_76585af6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_disk_full_data_survival.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-15T12:33:19Z",
+      "side": 1,
+      "message": "It is always guaranteed that this test will fill up the available disk spaces. We do have some cleanup that will be done but this test will fill those up again, provided that it happened within the 20 seconds when it\u0027s full.",
+      "parentUuid": "609e59c1_1b888c29",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 67
+      },
+      "revId": "26d8d37e9983cae59a1674ba81df6a2d0bf59762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "840652c2_438b9fd6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_disk_full_data_survival.go",
         "patchSetId": 3
@@ -94,6 +142,30 @@
       "writtenOn": "2021-10-14T02:19:59Z",
       "side": 1,
       "message": "how much data does it produce? how do we get to 1GiB+ after 30 iterations?",
+      "range": {
+        "startLine": 59,
+        "startChar": 21,
+        "endLine": 59,
+        "endChar": 83
+      },
+      "revId": "26d8d37e9983cae59a1674ba81df6a2d0bf59762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "548acb34_4904a06a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_disk_full_data_survival.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-15T12:33:19Z",
+      "side": 1,
+      "message": "Unlimited, openssl doesn\u0027t terminate until EOF. dd without bs and count will continue until it run into an error.\n\nOne run will generate any amount of data that\u0027s required to fill it.",
+      "parentUuid": "840652c2_438b9fd6",
       "range": {
         "startLine": 59,
         "startChar": 21,
