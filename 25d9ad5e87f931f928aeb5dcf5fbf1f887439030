@@ -16,6 +16,23 @@
       "message": "APAC sheriff reported that the test showed failures in the boards other than VMs. Mark the test as informational. Please review. Thanks.",
       "revId": "25d9ad5e87f931f928aeb5dcf5fbf1f887439030",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a0cf1dc_b311de05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324920
+      },
+      "writtenOn": "2021-10-15T05:19:00Z",
+      "side": 1,
+      "message": "@akahuang\n\ni think we should chump. The reven board\u0027s failures are definitely unrelated to this change (afaict that board has never passed https://ci.chromium.org/p/chromeos/builders/vmtest/reven-vmtest-direct-tast-vm?limit\u003d200)\n\nAlso this change helps unblock chromium uprev",
+      "revId": "25d9ad5e87f931f928aeb5dcf5fbf1f887439030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
