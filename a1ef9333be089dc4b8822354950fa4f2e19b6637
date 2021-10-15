@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b94d35c_bbe2eb9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-10-15T06:56:48Z",
+      "side": 1,
+      "message": "Only whitespace change.",
+      "revId": "a1ef9333be089dc4b8822354950fa4f2e19b6637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
