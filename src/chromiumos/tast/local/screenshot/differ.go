@@ -48,8 +48,7 @@ var ScreenDiffVars = []string{
 	screendiffDryrunVar,
 }
 
-// TODO(crbug.com/skia/10808): Change this once we have a production instance.
-const goldInstance = "cros-tast-dev"
+const goldInstance = "cros-tast"
 
 const goldctlWorkDir = "/tmp/goldctl"
 const keysFile = "keys.json"
