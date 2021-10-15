@@ -25,7 +25,8 @@ func init() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		// Disabling flaky test, see https://crbug.com/1260046.
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})
