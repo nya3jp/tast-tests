@@ -33,6 +33,24 @@
       "message": "@akahuang\n\ni think we should chump. The reven board\u0027s failures are definitely unrelated to this change (afaict that board has never passed https://ci.chromium.org/p/chromeos/builders/vmtest/reven-vmtest-direct-tast-vm?limit\u003d200)\n\nAlso this change helps unblock chromium uprev",
       "revId": "25d9ad5e87f931f928aeb5dcf5fbf1f887439030",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb7c5ae1_73627eab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2021-10-15T06:08:51Z",
+      "side": 1,
+      "message": "Agree. Let me chump it if the latest CQ still fails.",
+      "parentUuid": "2a0cf1dc_b311de05",
+      "revId": "25d9ad5e87f931f928aeb5dcf5fbf1f887439030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
