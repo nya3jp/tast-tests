@@ -127,6 +127,30 @@
       },
       "revId": "8daab9c8daa0a66232d951d690fca5b09099123a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff3d0cef_22eb936b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-15T17:18:34Z",
+      "side": 1,
+      "message": "LGTM\u0027d to the CL. Thanks for addressing this!",
+      "parentUuid": "f13c796d_1c513873",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 0
+      },
+      "revId": "8daab9c8daa0a66232d951d690fca5b09099123a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

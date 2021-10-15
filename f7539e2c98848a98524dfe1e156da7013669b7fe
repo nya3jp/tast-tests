@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b27e832_e835118a",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-15T17:18:34Z",
+      "side": 1,
+      "message": "nit: It would be nice to explain somewhere to users that when the runtime var lacrosDeployBinary is present it will take priority and this SetupMode will not be honored. also Rootfs mode should be a default for new fixtures unless otherwise needed.",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "f7539e2c98848a98524dfe1e156da7013669b7fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
