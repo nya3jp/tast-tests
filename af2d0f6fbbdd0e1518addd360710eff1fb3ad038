@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a4f4cc_6ff8a8e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-15T14:40:16Z",
+      "side": 1,
+      "message": "SSID. Same for line 290.",
+      "range": {
+        "startLine": 267,
+        "startChar": 44,
+        "endLine": 267,
+        "endChar": 48
+      },
+      "revId": "af2d0f6fbbdd0e1518addd360710eff1fb3ad038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd287994_c5871124",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-15T14:40:16Z",
+      "side": 1,
+      "message": "You have to reserve some time to the defer function. Same as line 258 and line 292.",
+      "revId": "af2d0f6fbbdd0e1518addd360710eff1fb3ad038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ed9a6e_4469fe11",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-15T14:40:16Z",
+      "side": 1,
+      "message": "Why we need 10 minutes to tear down? Isn\u0027t it too long?",
+      "range": {
+        "startLine": 118,
+        "startChar": 19,
+        "endLine": 118,
+        "endChar": 35
+      },
+      "revId": "af2d0f6fbbdd0e1518addd360710eff1fb3ad038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04cccfda_7f41d65e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-15T14:40:16Z",
+      "side": 1,
+      "message": "IPv4",
+      "range": {
+        "startLine": 1266,
+        "startChar": 50,
+        "endLine": 1266,
+        "endChar": 54
+      },
+      "revId": "af2d0f6fbbdd0e1518addd360710eff1fb3ad038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
