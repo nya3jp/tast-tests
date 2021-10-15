@@ -20,6 +20,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38da918f_f6673343",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update/helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-10-15T18:50:41Z",
+      "side": 1,
+      "message": "Can inline into |GetBrowserVersion()|\n\nditto others",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 4
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "087dac1a_dbbf1c71",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update/helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-10-15T18:50:41Z",
+      "side": 1,
+      "message": "Should check the len is 1?\n+ output as warning if the list is longer so debugging can be easier in the case that future code changes cause it to be longer than 1?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 65
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc5245d_b31148db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update/helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-10-15T18:50:41Z",
+      "side": 1,
+      "message": "nit: constants",
+      "range": {
+        "startLine": 120,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 99
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf8516a_9856f1d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-10-15T18:50:41Z",
+      "side": 1,
+      "message": "There isn\u0027t a conflict with other packages, reason to explicitly rename?",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af80ff6f_87756119",
         "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
         "patchSetId": 6
@@ -114,6 +206,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5d905dd_59f80c93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-10-15T18:50:41Z",
+      "side": 1,
+      "message": "nit: overrideVersion or add a comment about it",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 9
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b79e2d47_a90394de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-10-15T18:50:41Z",
+      "side": 1,
+      "message": "This can probably be in a helper fucntion of its own + reused in both rootfs2stateful + stateful2stateful tests.",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 20
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e06d04f_b173523a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
         "patchSetId": 6
@@ -154,6 +292,98 @@
         "startChar": 5,
         "endLine": 86,
         "endChar": 10
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be2130c5_dd392d79",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-10-15T18:50:41Z",
+      "side": 1,
+      "message": "nit:\n```\nfor i, component :\u003d range v.components {\n  o :\u003d rhs.components[i]\n  if component !\u003d o {\n    return component \u003e o\n  }\n}\nreturn false\n```",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9953864_d760aeb3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-10-15T18:50:41Z",
+      "side": 1,
+      "message": "nit: inline, only single use",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 6
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3cde4e1_d4949526",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-10-15T18:50:41Z",
+      "side": 1,
+      "message": "Helpful to create a constant:\nkAllowedMajorVersionSkew || kMaxMajorVersionSkew",
+      "range": {
+        "startLine": 106,
+        "startChar": 10,
+        "endLine": 106,
+        "endChar": 11
+      },
+      "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f1529b5_56573462",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/version/version.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-10-15T18:50:41Z",
+      "side": 1,
+      "message": "single line for entire function?\n```\nreturn v.components[0] + kMaxMajorVersionSkew \u003e\u003d ash.components[0]\n```\n\nEven down the line is the actual skew allowed is [0, 2]\n```\nreturn v.components[0] - kMinMajorVersionSkew \u003e\u003d ash.components[0] \u0026\u0026\n       v.components[0] + kMaxMajorVersionSkew \u003c\u003d ash.components[0]\n```",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 12
       },
       "revId": "3f9183053fcf6c70afccf05f2649de0565e7432c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
