@@ -244,9 +244,9 @@ func getGeoSARTablesFromASL(data []byte) ([]geoSARTable, error) {
 
 // getSARTableFromASL parses ASL formatted data and returns
 // the array of integers from the body of the section labeled with the given key.
-// Returns nil if dynamic SAR table is missing as it is a valid case.
+// Returns nil if dynamic SAR table is missing or disabled as it is a valid case.
 // TODO(kglund) unit test this function
-func getSARTableFromASL(data []byte, tableType sarTableType) ([]int64, error) {
+func getSARTableFromASL(data []byte, tableType sarTableType, s *testing.State) ([]int64, error) {
 	// Below is an example of the format for the ASL data being parsed.
 	//
 	// Name (WRDS, Package (0x02)
@@ -297,6 +297,20 @@ func getSARTableFromASL(data []byte, tableType sarTableType) ([]int64, error) {
 	if values == nil {
 		// Missing dynamic SAR table.
 		return nil, nil
+	}
+	enabled := values[1]
+	switch enabled {
+	case 0:
+		// There is a SAR table but it's "disabled". Don't check the  validity
+		// of the raw values of the table since those will be ignored.
+		s.Logf("Table %q is present but disabled", tableKey)
+		return nil, nil
+	case 1:
+		// SAR table is enabled, proceed to validation.
+	default:
+		return nil, errors.Errorf("invalid 'enabled' setting 0x%02X for table %q",
+			enabled, tableName)
+
 	}
 	if version == 2 {
 		switch tableType {
@@ -367,7 +381,7 @@ func verifyTable(decodedSSDT []byte, tableType sarTableType, geoTables []geoSART
 		tableName = "PROFILE_B"
 	}
 
-	sarTable, err := getSARTableFromASL(decodedSSDT, tableType)
+	sarTable, err := getSARTableFromASL(decodedSSDT, tableType, s)
 	if err != nil {
 		s.Fatal("Error parsing SAR table: ", err)
 	}
