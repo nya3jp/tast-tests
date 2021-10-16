@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c7d2ab89_15a52a8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-16T00:37:05Z",
+      "side": 1,
+      "message": "LGTM (can only +1 with my @chromium.org 😞 )",
+      "revId": "8c9998f8edf2f06ca4241f8c45f31596ae2eb013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "81424849_7f1a0ace",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
         "patchSetId": 1
@@ -31,6 +48,70 @@
       "writtenOn": "2021-10-15T21:37:34Z",
       "side": 1,
       "message": "The allowed usage message was copied from the ITU-T website where the test vectors were downloaded from.",
+      "revId": "8c9998f8edf2f06ca4241f8c45f31596ae2eb013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ea8bbf_6c882688",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-16T00:37:05Z",
+      "side": 1,
+      "message": "Since this is copied from the website, I\u0027d quote it out and\nsay that it\u0027s coming from [ITU-T H.264.1].",
+      "parentUuid": "81424849_7f1a0ace",
+      "revId": "8c9998f8edf2f06ca4241f8c45f31596ae2eb013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4ae99dc_a627a6a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-16T00:37:05Z",
+      "side": 1,
+      "message": "Concretely just the first mega-zip file, right? \n\u003e Bitstreams for Constrained Baseline, Baseline, Extended and Main profiles\n\u003e [2016-02] (1.56 GB)\n\nI\u0027d mention that too for posterity. (Someone might think we also\nwant to verify SVC, which we don\u0027t support anyhow).",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 54
+      },
+      "revId": "8c9998f8edf2f06ca4241f8c45f31596ae2eb013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18560a00_158ddd8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-16T00:37:05Z",
+      "side": 1,
+      "message": "QQ: There\u0027s a few \"..._readme.external\" files, how are they\nintended to be used?",
+      "range": {
+        "startLine": 136,
+        "startChar": 59,
+        "endLine": 136,
+        "endChar": 66
+      },
       "revId": "8c9998f8edf2f06ca4241f8c45f31596ae2eb013",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
