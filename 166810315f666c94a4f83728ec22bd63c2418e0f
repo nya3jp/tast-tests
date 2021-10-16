@@ -16,6 +16,23 @@
       "message": "ihf@, tast-owners@ PTAL\n\nmcasas@ FYI",
       "revId": "166810315f666c94a4f83728ec22bd63c2418e0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c82b67a9_c95bc6a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-16T05:02:04Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "166810315f666c94a4f83728ec22bd63c2418e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
