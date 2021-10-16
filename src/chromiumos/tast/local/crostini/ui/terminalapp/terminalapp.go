@@ -14,10 +14,10 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui/pointer"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/vm"
@@ -166,7 +166,7 @@ func (ta *TerminalApp) ShutdownCrostini(cont *vm.Container) uiauto.Action {
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second})
 		if err != nil {
-			return errors.Wrap(err, "VM failed to stop: ")
+			return errors.Wrap(err, "VM failed to stop")
 		}
 
 		return nil
