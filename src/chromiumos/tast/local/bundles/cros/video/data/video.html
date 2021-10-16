@@ -69,9 +69,11 @@ function randomSeek() {
   });
 }
 
+let video_is_in_fullscreen = false;
 window.addEventListener("keydown", function(event) {
   if (event.key == 'f')
-    document.getElementById('video').requestFullscreen();
+    document.getElementById('video').requestFullscreen()
+        .then(() => { video_is_in_fullscreen = true; });
 });
 
 </script>

@@ -507,12 +507,29 @@ func TestPlayAndScreenshot(ctx context.Context, s *testing.State, tconn *chrome.
 	}
 
 	// Make the video go to full screen mode by pressing 'f': requestFullScreen() needs a user gesture.
+	// This may need to be done more than once in case the keyboard input is transiently ignored during
+	// the transition from the previous test. See b/199393037.
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to initialize the keyboard writer")
 	}
-	if err := ew.Type(ctx, "f"); err != nil {
-		return errors.Wrap(err, "failed to inject the 'f' key")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := ew.Type(ctx, "f"); err != nil {
+			return errors.Wrap(err, "failed to inject the 'f' key")
+		}
+		var videoIsInFullscreen bool
+		if err := conn.Eval(ctx, `video_is_in_fullscreen`, &videoIsInFullscreen); err != nil {
+			return errors.Wrap(err, "could not determine whether the video is being displayed in fullscreen")
+		}
+		if !videoIsInFullscreen {
+			return errors.New("the video is not yet displayed in fullscreen")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  5 * time.Second,
+		Interval: 1 * time.Second,
+	}); err != nil {
+		s.Fatal("Could not display the video in fullscreen: ", err)
 	}
 
 	// Start playing the video indefinitely.
