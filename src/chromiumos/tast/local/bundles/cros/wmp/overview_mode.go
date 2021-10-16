@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -118,7 +117,7 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 	if err := ac.LeftClick(closeChromeButton)(ctx); err != nil {
 		s.Fatal("Failed to close chrome window: ", err)
 	}
-	if err := chromeui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+	if err := ac.WaitForLocation(nodewith.Root())(ctx); err != nil {
 		s.Fatal("Failed to wait for location-change events to be completed: ", err)
 	}
 	ws, err := ash.GetAllWindows(ctx, tconn)
