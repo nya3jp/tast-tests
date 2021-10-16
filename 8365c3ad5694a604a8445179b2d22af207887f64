@@ -16,6 +16,29 @@
       "message": "\u003e Patch Set 8:\n\u003e \n\u003e WARNING: gwsq was unable to find a reviewer who is not on vacation. As a fallback, gwsq is ignoring vacations and assigning kyleshima.\n\u003e \n\u003e Reviewer source(s):\n\u003e kyleshima is from context\n\nI didn\u0027t expect this. :)",
       "revId": "8365c3ad5694a604a8445179b2d22af207887f64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "110d9f45_e34d41fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-16T01:03:08Z",
+      "side": 1,
+      "message": "Is there any difference to the test by changing component? Do we need parameterized tests or is one sufficient?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 55
+      },
+      "revId": "8365c3ad5694a604a8445179b2d22af207887f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
