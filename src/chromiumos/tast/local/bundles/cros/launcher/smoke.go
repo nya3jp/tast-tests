@@ -9,7 +9,6 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -47,9 +46,11 @@ func Smoke(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
+	ui := uiauto.New(tconn)
+
 	// When a DUT switches from tablet mode to clamshell mode, sometimes it takes a while to settle down.
 	// Added a delay here to let all events finishing up.
-	if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
 		s.Fatal("Failed to wait for location changes: ", err)
 	}
 
@@ -60,8 +61,6 @@ func Smoke(ctx context.Context, s *testing.State) {
 	if err := ash.WaitForLauncherState(ctx, tconn, ash.Peeking); err != nil {
 		s.Fatal("Failed to enter peeking launcher state using search key: ", err)
 	}
-
-	ui := uiauto.New(tconn)
 
 	// Click expand arrow to transition launcher to fullscreen state.
 	if err := ui.LeftClick(nodewith.ClassName("ExpandArrowView"))(ctx); err != nil {
