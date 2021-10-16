@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abe938b3_098084ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-16T01:40:23Z",
+      "side": 1,
+      "message": "IMO logging shelf items is just good enough to troubleshoot the flake. Taking screenshot may not be really helpful in that the failure always occurred at WaitForApp in ash.go after launching the app. ",
+      "revId": "7ad574ff9d7b5979be0f0118026439c3ceb39d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
