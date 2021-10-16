@@ -13,10 +13,12 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
@@ -132,20 +134,20 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to execute JS expression: ", err)
 	}
 
+	ui := uiauto.New(tconn)
+
 	// Choose platform authenticator
-	buttonParams := ui.FindParams{Role: ui.RoleTypeButton, Name: "This device"}
-	platformAuthenticatorButton, err := ui.FindWithTimeout(ctx, tconn, buttonParams, 2*time.Second)
-	if err != nil {
+	platformAuthenticatorButton := nodewith.Role(role.Button).Name("This device")
+	if err := ui.WithTimeout(2 * time.Second).WaitUntilExists(platformAuthenticatorButton)(ctx); err != nil {
 		s.Fatal("Failed to select platform authenticator from transport selection sheet: ", err)
 	}
-	err = platformAuthenticatorButton.LeftClick(ctx)
-	if err != nil {
+	if err = ui.LeftClick(platformAuthenticatorButton)(ctx); err != nil {
 		s.Fatal("Failed to click button for platform authenticator: ", err)
 	}
 
 	// Wait for ChromeOS WebAuthn dialog.
-	dialogParams := ui.FindParams{ClassName: "AuthDialogWidget"}
-	if err := ui.WaitUntilExists(ctx, tconn, dialogParams, 5*time.Second); err != nil {
+	dialog := nodewith.ClassName("AuthDialogWidget")
+	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(dialog)(ctx); err != nil {
 		s.Fatal("ChromeOS dialog did not show up: ", err)
 	}
 
@@ -167,7 +169,7 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for ChromeOS WebAuthn dialog.
-	if err := ui.WaitUntilExists(ctx, tconn, dialogParams, 5*time.Second); err != nil {
+	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(dialog)(ctx); err != nil {
 		s.Fatal("ChromeOS dialog did not show up: ", err)
 	}
 
