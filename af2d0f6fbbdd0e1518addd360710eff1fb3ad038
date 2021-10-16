@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e68c1fd1_dbaa894f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-10-16T01:33:50Z",
+      "side": 1,
+      "message": "Thanks for the review. Upload a new patchset according to review comments. PTAL.",
+      "revId": "af2d0f6fbbdd0e1518addd360710eff1fb3ad038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30a4f4cc_6ff8a8e5",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-10-15T14:40:16Z",
       "side": 1,
       "message": "SSID. Same for line 290.",
+      "range": {
+        "startLine": 267,
+        "startChar": 44,
+        "endLine": 267,
+        "endChar": 48
+      },
+      "revId": "af2d0f6fbbdd0e1518addd360710eff1fb3ad038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9511f0dc_e0138d1d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-10-16T01:33:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30a4f4cc_6ff8a8e5",
       "range": {
         "startLine": 267,
         "startChar": 44,
@@ -41,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "285e3f3b_576ea61c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-10-16T01:33:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd287994_c5871124",
+      "revId": "af2d0f6fbbdd0e1518addd360710eff1fb3ad038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19ed9a6e_4469fe11",
@@ -64,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "264c0488_bf07ee3a",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-10-16T01:33:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19ed9a6e_4469fe11",
+      "range": {
+        "startLine": 118,
+        "startChar": 19,
+        "endLine": 118,
+        "endChar": 35
+      },
+      "revId": "af2d0f6fbbdd0e1518addd360710eff1fb3ad038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04cccfda_7f41d65e",
@@ -77,6 +160,30 @@
       "writtenOn": "2021-10-15T14:40:16Z",
       "side": 1,
       "message": "IPv4",
+      "range": {
+        "startLine": 1266,
+        "startChar": 50,
+        "endLine": 1266,
+        "endChar": 54
+      },
+      "revId": "af2d0f6fbbdd0e1518addd360710eff1fb3ad038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf709c81_525f569e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-10-16T01:33:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04cccfda_7f41d65e",
       "range": {
         "startLine": 1266,
         "startChar": 50,
