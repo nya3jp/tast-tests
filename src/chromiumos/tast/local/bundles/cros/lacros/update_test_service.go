@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	lacrosservice "chromiumos/tast/services/cros/lacros"
@@ -67,6 +68,11 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 	expectedVersionedLacrosPath := filepath.Join(expectedVersionedLacrosDir, "chrome")
 	l, err := lacros.LaunchFromShelf(ctx, tconn, expectedVersionedLacrosDir)
 	if err != nil {
+		// TODO(crbug.com/1258664): Log shelf items in case the Lacros app is not launched or shown.
+		items, _ := ash.ShelfItems(ctx, tconn)
+		for _, item := range items {
+			testing.ContextLogf(ctx, "ShelfItem: Title: %v, Status: %v, Type: %v, AppID: %v", item.Title, item.Status, item.Type, item.AppID)
+		}
 		return nil, errors.Wrap(err, "failed to launch Lacros browser from Shelf")
 	}
 	defer l.Close(ctx)
