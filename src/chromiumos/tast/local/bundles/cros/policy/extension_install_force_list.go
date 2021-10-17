@@ -9,8 +9,10 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -59,14 +61,9 @@ func ExtensionInstallForceList(ctx context.Context, s *testing.State) {
 	defer sconn.Close()
 
 	// If the extension is installed, the Installed button will be present which is not clickable.
-	installedButtonParams := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: "Installed",
-	}
+	installedButton := nodewith.Role(role.Button).Name("Installed")
 
-	node, err := ui.FindWithTimeout(ctx, tconn, installedButtonParams, 15*time.Second)
-	if err != nil {
+	if err := uiauto.New(tconn).WithTimeout(15 * time.Second).WaitUntilExists(installedButton.First())(ctx); err != nil {
 		s.Fatal("Finding button node failed: ", err)
 	}
-	defer node.Release(ctx)
 }
