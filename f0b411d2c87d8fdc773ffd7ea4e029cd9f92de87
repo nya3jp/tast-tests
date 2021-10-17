@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91338807_58d06c9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-17T23:07:28Z",
+      "side": 1,
+      "message": "lgtm with one nit comment.",
+      "revId": "f0b411d2c87d8fdc773ffd7ea4e029cd9f92de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bc22139_a317494a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-17T23:07:28Z",
+      "side": 1,
+      "message": "This function actual check the account field and fill in the right account name. Therefore, suggest changing the func name to fillInAccount",
+      "range": {
+        "startLine": 120,
+        "startChar": 31,
+        "endLine": 120,
+        "endChar": 51
+      },
+      "revId": "f0b411d2c87d8fdc773ffd7ea4e029cd9f92de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
