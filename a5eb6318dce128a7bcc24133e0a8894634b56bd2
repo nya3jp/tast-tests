@@ -16,6 +16,46 @@
       "message": "Renamed the layoutMain to be the same everywhere so I could update the test code runner to generically wait on that element. Helps to ensure the app is ready to be tested against.",
       "revId": "a5eb6318dce128a7bcc24133e0a8894634b56bd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3ff2c65_874e4c39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-17T23:18:11Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nit",
+      "revId": "a5eb6318dce128a7bcc24133e0a8894634b56bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4e802a4_75cd327c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-17T23:18:11Z",
+      "side": 1,
+      "message": "nit: Get...() is not idomatic go, unless the underlying concept relates to GET (i.e. HTTP GET)\ngo/go-style/decisions#getters\n\nPrefer StandardizedTestLayoutID(...)",
+      "range": {
+        "startLine": 231,
+        "startChar": 5,
+        "endLine": 231,
+        "endChar": 8
+      },
+      "revId": "a5eb6318dce128a7bcc24133e0a8894634b56bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
