@@ -16,6 +16,23 @@
       "message": "@Evgeny Uvarov\nHi,Evgeny, \npolicy.HideWebStoreIcon seems to fail with no change. I would like to use the test to verify changes in this patch is correct.Could you look at the test?",
       "revId": "e312a73bd6158b801bb88a4e3b8b2aba5a0ed704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a00b7639_501b4ef5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-17T23:41:17Z",
+      "side": 1,
+      "message": "@Evgeny Uvarov\nHi,Evgeny, \npolicy.HideWebStoreIcon seems to fail with no change. I would like to use the test to verify changes in this patch is correct.Could you look at the test?",
+      "revId": "e312a73bd6158b801bb88a4e3b8b2aba5a0ed704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
