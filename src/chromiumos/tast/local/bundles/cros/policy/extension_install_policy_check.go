@@ -13,8 +13,10 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -135,6 +137,7 @@ func ExtensionInstallPolicyCheck(ctx context.Context, s *testing.State) {
 			}
 
 			// Run actual test.
+			// s.Fatal("I would like a UI dump")
 			if allowInstall, err := isInstallationAllowed(ctx, tconn, cr); err != nil {
 				s.Fatal("Failed to check if extension can be installed: ", err)
 			} else if allowInstall != tc.allowInstall {
@@ -147,14 +150,8 @@ func ExtensionInstallPolicyCheck(ctx context.Context, s *testing.State) {
 
 // isInstallationAllowed verifies whether the extension should be allowed to install or not.
 func isInstallationAllowed(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (bool, error) {
-	addParam := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: "Add to Chrome",
-	}
-	blockedParam := ui.FindParams{
-		Role: ui.RoleTypeButton,
-		Name: "Blocked by admin",
-	}
+	addfinder := nodewith.Role(role.Button).Name("Add to Chrome")
+	blockedfinder := nodewith.Role(role.Button).Name("Blocked by admin")
 
 	// Open the Chrome Web Store page of the extension.
 	conn, err := cr.NewConn(ctx, extensionURL)
@@ -164,10 +161,11 @@ func isInstallationAllowed(ctx context.Context, tconn *chrome.TestConn, cr *chro
 	defer conn.Close()
 
 	var allowInstall bool
-
+	ui := uiauto.New(tconn)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// For blocked extensions, there should be a blocked button.
-		if blocked, err := ui.Exists(ctx, tconn, blockedParam); err != nil {
+
+		if blocked, err := ui.IsNodeFound(ctx, blockedfinder.First()); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to check Blocked by admin button"))
 		} else if blocked {
 			allowInstall = false
@@ -175,7 +173,7 @@ func isInstallationAllowed(ctx context.Context, tconn *chrome.TestConn, cr *chro
 		}
 
 		// For allowed extensions, there should be a button to add them.
-		if allowed, err := ui.Exists(ctx, tconn, addParam); err != nil {
+		if allowed, err := ui.IsNodeFound(ctx, addfinder.First()); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to check Add to chrome button"))
 		} else if allowed {
 			allowInstall = true
