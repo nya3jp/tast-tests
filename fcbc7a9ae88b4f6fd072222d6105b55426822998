@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e141997b_ef8c00a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/trace_processor_shell-amd64.external",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-18T09:14:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28e42043_35009efe",
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7d1923d_17dc535c",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-12T06:05:38Z",
       "side": 1,
       "message": "We can share the implementation without having 2 implementations, 1 for blocking and 1 for nonblocking trace collection.",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcdd083e_595efe96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-18T09:14:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7d1923d_17dc535c",
       "range": {
         "startLine": 55,
         "startChar": 5,
@@ -89,6 +131,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31247465_36d838d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-18T09:14:29Z",
+      "side": 1,
+      "message": "Done. Please check.",
+      "parentUuid": "8912bb3f_4af65f6a",
+      "range": {
+        "startLine": 77,
+        "startChar": 70,
+        "endLine": 77,
+        "endChar": 92
+      },
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f018d4e_959bd029",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-18T09:14:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02990a6b_ae4c529e",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aee48b17_3c520ece",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
         "patchSetId": 4
@@ -100,6 +190,30 @@
       "writtenOn": "2021-10-12T06:05:38Z",
       "side": 1,
       "message": "PID is not a good choice for representing the state of the tracing session.",
+      "range": {
+        "startLine": 105,
+        "startChar": 47,
+        "endLine": 105,
+        "endChar": 54
+      },
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d88cf051_5d99ca0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-18T09:14:29Z",
+      "side": 1,
+      "message": "Removed and used Cmd instead.",
+      "parentUuid": "aee48b17_3c520ece",
       "range": {
         "startLine": 105,
         "startChar": 47,
@@ -129,6 +243,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8857fb2a_93f46a77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-18T09:14:29Z",
+      "side": 1,
+      "message": "Using Cmd.Start() and Cmd.Wait() should be safe.\nPlease check.",
+      "parentUuid": "c2c30814_1e957b02",
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67145136_c25b7257",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
         "patchSetId": 4
@@ -140,6 +272,30 @@
       "writtenOn": "2021-10-12T06:05:38Z",
       "side": 1,
       "message": "The library user shouldn\u0027t needs to know about this. We should resolve this in the implementation.",
+      "range": {
+        "startLine": 111,
+        "startChar": 37,
+        "endLine": 111,
+        "endChar": 62
+      },
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca210c20_4baca88c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-18T09:14:29Z",
+      "side": 1,
+      "message": "We need testing.State.DataPath(string), while it\u0027s discouraged to pass tesitng.State into functions[1], so I guess we should keep it this way...?\n\n[1]: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#State,",
+      "parentUuid": "67145136_c25b7257",
       "range": {
         "startLine": 111,
         "startChar": 37,
@@ -173,6 +329,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d215c16_1b231da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-18T09:14:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e311f43_a4faec37",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 2
+      },
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f9df7ad_84cdf5e3",
@@ -186,6 +366,30 @@
       "writtenOn": "2021-10-12T06:05:38Z",
       "side": 1,
       "message": "nit: this comment doesn\u0027t say much about what the 2 following lines do.\nConsider removing it or make it more descriptive about what it does. Or you may be specific about how the metrics are used in these 2 functions.",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 69
+      },
+      "revId": "fcbc7a9ae88b4f6fd072222d6105b55426822998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5137ba20_53623f19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-18T09:14:29Z",
+      "side": 1,
+      "message": "I guess I should simply remove it :)",
+      "parentUuid": "8f9df7ad_84cdf5e3",
       "range": {
         "startLine": 118,
         "startChar": 1,
