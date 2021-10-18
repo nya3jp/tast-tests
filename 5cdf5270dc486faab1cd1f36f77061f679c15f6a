@@ -124,6 +124,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "541686a4_e6efd6f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/saving_browser_history_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-10-18T09:54:52Z",
+      "side": 1,
+      "message": "I\u0027m not exactly sure why there were multiple nodes, but it didn\u0027t work unless I choose First node.",
+      "parentUuid": "2f9c4961_a247e396",
+      "range": {
+        "startLine": 148,
+        "startChar": 116,
+        "endLine": 148,
+        "endChar": 121
+      },
+      "revId": "5cdf5270dc486faab1cd1f36f77061f679c15f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "944bc75a_d607f7fa",
         "filename": "src/chromiumos/tast/local/policyutil/settings.go",
         "patchSetId": 1
@@ -135,6 +159,30 @@
       "writtenOn": "2021-10-18T09:47:52Z",
       "side": 1,
       "message": "Are all tests that are using this function taken care of in this CL?\nI thought there were more.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 108
+      },
+      "revId": "5cdf5270dc486faab1cd1f36f77061f679c15f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf616be_1fc3ea74",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-10-18T09:54:52Z",
+      "side": 1,
+      "message": "Yes, those are the only usages for opening a browser with url, most of the usages are opening the os-settings.",
+      "parentUuid": "944bc75a_d607f7fa",
       "range": {
         "startLine": 37,
         "startChar": 0,
