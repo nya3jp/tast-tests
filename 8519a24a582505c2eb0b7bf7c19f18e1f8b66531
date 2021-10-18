@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1ffb7cb_0b355b58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-18T11:05:05Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "2365abe4_58e42a2c",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 8
+      },
+      "revId": "8519a24a582505c2eb0b7bf7c19f18e1f8b66531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1a233e3_f52abfb4",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-18T00:19:16Z",
       "side": 1,
       "message": "I don\u0027t think we need to relaunch files app in each sub test. Maybe just launch before all sub tests and then switch to the specified folder in each sub test.",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 36
+      },
+      "revId": "8519a24a582505c2eb0b7bf7c19f18e1f8b66531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c7f3a39_8de8c89f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-18T11:05:05Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "a1a233e3_f52abfb4",
       "range": {
         "startLine": 93,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "239d5805_fce0bf36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-18T11:05:05Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "cbdbb9b6_da4e03dd",
+      "range": {
+        "startLine": 155,
+        "startChar": 15,
+        "endLine": 155,
+        "endChar": 22
+      },
+      "revId": "8519a24a582505c2eb0b7bf7c19f18e1f8b66531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8db7aace_e6f6ace9",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "844d7b02_89fee65e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-18T11:05:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8db7aace_e6f6ace9",
+      "range": {
+        "startLine": 181,
+        "startChar": 11,
+        "endLine": 181,
+        "endChar": 17
+      },
+      "revId": "8519a24a582505c2eb0b7bf7c19f18e1f8b66531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83fbb673_66c5506f",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-10-18T00:19:16Z",
       "side": 1,
       "message": "Why this change?",
+      "range": {
+        "startLine": 247,
+        "startChar": 4,
+        "endLine": 247,
+        "endChar": 17
+      },
+      "revId": "8519a24a582505c2eb0b7bf7c19f18e1f8b66531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8605f5e7_010531cf",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-18T11:05:05Z",
+      "side": 1,
+      "message": "If the node has been focused already, then the focused event won\u0027t ever be received again.\nWhich causes it to fail to create multiple folders.\nBut as your suggestion, we\u0027ve adopted another way to create folders, so this change is no longer related to this CL, which we will upload in another CL.",
+      "parentUuid": "83fbb673_66c5506f",
       "range": {
         "startLine": 247,
         "startChar": 4,
