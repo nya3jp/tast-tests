@@ -215,6 +215,30 @@
       },
       "revId": "8c9998f8edf2f06ca4241f8c45f31596ae2eb013",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "798fa615_42b3f228",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-18T22:56:33Z",
+      "side": 1,
+      "message": "Oh, my bad, they\u0027re actually just \"...readme.txt\" files (e.g.\n.../h264/baseline/AUD_MW_E_readme.txt). We don\u0027t have per-test\nvector readme files in other folders. I was just wondering the\nintent, but if the tast owners don\u0027t have issue having them,\nI don\u0027t see how they can be a bad thing.",
+      "parentUuid": "24154292_a564f7e4",
+      "range": {
+        "startLine": 136,
+        "startChar": 59,
+        "endLine": 136,
+        "endChar": 66
+      },
+      "revId": "8c9998f8edf2f06ca4241f8c45f31596ae2eb013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
