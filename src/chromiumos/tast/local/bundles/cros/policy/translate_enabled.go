@@ -13,8 +13,10 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -101,15 +103,13 @@ func TranslateEnabled(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			if err := ui.WaitForLocationChangeCompleted(ctx, tconn); err != nil {
+			ui := uiauto.New(tconn)
+			if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
 				s.Fatal("Failed to wait for location change: ", err)
 			}
 
 			// Find the translate node and validate against error.
-			foundTranslate, err := ui.Exists(ctx, tconn, ui.FindParams{
-				Role: ui.RoleTypeButton,
-				Name: "Translate this page",
-			})
+			foundTranslate, err := ui.IsNodeFound(ctx, nodewith.Role(role.Button).Name("Translate this page"))
 			if err != nil {
 				s.Fatal("Error during checking for UI Compontent to translate: ", err)
 			}
