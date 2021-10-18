@@ -16,8 +16,10 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -33,14 +35,27 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
-		Data:         []string{"download_restrictions_index.html", "download_restrictions.zip"},
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               lacros.ChromeTypeLacros,
+		}},
+		Data: []string{"download_restrictions_index.html", "download_restrictions.zip"},
 	})
 }
 
 func DownloadRestrictions(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	// Clear Downloads directory.
 	files, err := ioutil.ReadDir(filesapp.DownloadPath)
@@ -88,7 +103,15 @@ func DownloadRestrictions(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			dconn, err := cr.NewConn(ctx, server.URL+"/download_restrictions_index.html")
+			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
+			// Setup browser based on the chrome type.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+			if err != nil {
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
+			dconn, err := br.NewConn(ctx, server.URL+"/download_restrictions_index.html")
 			if err != nil {
 				s.Fatal("Failed to connect to chrome: ", err)
 			}

@@ -14,8 +14,10 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -33,14 +35,27 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
+		Attr:         []string{"group:mainline", "informational"},
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               lacros.ChromeTypeLacros,
+		}},
 	})
 }
 
 func SavingBrowserHistoryDisabled(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -94,16 +109,24 @@ func SavingBrowserHistoryDisabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to clear browsing history: ", err)
 			}
 
-			// Open a website to create a browsing history entry.
-			conn, err := cr.NewConn(ctx, server.URL)
+			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
+			// Setup browser based on the chrome type.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
 			if err != nil {
-				s.Fatal("Failed to connect to chrome: ", err)
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
+			// Open a website to create a browsing history entry.
+			conn, err := br.NewConn(ctx, server.URL)
+			if err != nil {
+				s.Fatal("Failed to connect to the browser: ", err)
 			}
 			defer conn.Close()
 
-			hconn, err := cr.NewConn(ctx, "chrome://history")
+			hconn, err := br.NewConn(ctx, "chrome://history")
 			if err != nil {
-				s.Fatal("Failed to connect to chrome: ", err)
+				s.Fatal("Failed to connect to the browser: ", err)
 			}
 			defer hconn.Close()
 
@@ -113,16 +136,18 @@ func SavingBrowserHistoryDisabled(ctx context.Context, s *testing.State) {
 			histFound := false
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
 
+				// TODO(b/203396229): Remove First() after fixing the duplication in the ui tree.
 				// Check if there is a browser history entry.
-				if exists, err := ui.IsNodeFound(ctx, nodewith.ClassName("website-link").Role(role.Link)); err != nil {
+				if exists, err := ui.IsNodeFound(ctx, nodewith.ClassName("website-link").Role(role.Link).First()); err != nil {
 					return testing.PollBreak(errors.Wrap(err, "finding website-link node failed"))
 				} else if exists {
 					histFound = true
 					return nil
 				}
 
+				// TODO(b/203396229): Remove First() after fixing the duplication in the ui tree.
 				// Check if there is no browser history.
-				if exists, err := ui.IsNodeFound(ctx, nodewith.Name("Your browsing history appears here").Role(role.StaticText)); err != nil {
+				if exists, err := ui.IsNodeFound(ctx, nodewith.Name("Your browsing history appears here").Role(role.StaticText).First()); err != nil {
 					return testing.PollBreak(errors.Wrap(err, "finding text node failed"))
 				} else if exists {
 					histFound = false

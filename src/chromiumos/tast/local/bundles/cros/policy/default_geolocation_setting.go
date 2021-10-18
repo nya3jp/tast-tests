@@ -13,7 +13,9 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -34,8 +36,16 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
-		Data:         []string{"default_geolocation_setting_index.html"},
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               lacros.ChromeTypeLacros,
+		}},
+		Data: []string{"default_geolocation_setting_index.html"},
 	})
 }
 
@@ -43,6 +53,11 @@ func init() {
 func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
@@ -116,8 +131,16 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
+			// Setup browser based on the chrome type.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+			if err != nil {
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
 			// Open a website.
-			conn, err := cr.NewConn(ctx, server.URL+"/default_geolocation_setting_index.html")
+			conn, err := br.NewConn(ctx, server.URL+"/default_geolocation_setting_index.html")
 			if err != nil {
 				s.Fatal("Failed to open website: ", err)
 			}
@@ -173,7 +196,7 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 
 			// Check the state of the buttons.
 			for i, radioButtonName := range radioButtonNames {
-				if err := policyutil.SettingsPage(ctx, cr, "content/location").
+				if err := policyutil.SettingsPage(ctx, cr, br, "content/location").
 					SelectNode(ctx, nodewith.
 						Role(role.RadioButton).
 						Name(radioButtonName)).
