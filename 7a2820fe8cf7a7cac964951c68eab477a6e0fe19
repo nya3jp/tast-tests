@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd667e17_d5c8f3c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-18T22:53:19Z",
+      "side": 1,
+      "message": "I have a few comments. Please take a look. thanks.",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f0d708_3296a9e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-18T22:53:19Z",
+      "side": 1,
+      "message": "Please add a google contact to the Contacts list if possible.",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "463c97a9_c62aa574",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-18T22:53:19Z",
+      "side": 1,
+      "message": "This function is a bit too long. Is it possible to refactor it to a few functions. Thanks.",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2332488_61f7ee18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-18T22:53:19Z",
+      "side": 1,
+      "message": "Is it possible to wait for a specific object or event intead of sleeping?",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ac02f9b_eeded7b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-18T22:53:19Z",
+      "side": 1,
+      "message": "Same question as above.",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448ed43e_2cac40ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-18T22:53:19Z",
+      "side": 1,
+      "message": "How about making it as a regular function.",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13a68e7a_b5ad9c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-18T22:53:19Z",
+      "side": 1,
+      "message": "Please add image file name to error.",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92f728da_835494f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-18T22:53:19Z",
+      "side": 1,
+      "message": "Please add image file name to error.",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4f3d86b_33150125",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-18T22:53:19Z",
+      "side": 1,
+      "message": "1. Please add a comment on how this formula works.\n2. Please assign the value to a value so that you don\u0027t need to calculate twice: one in log and one in return.",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
