@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "768b4a14_f063e64f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T11:25:38Z",
+      "side": 1,
+      "message": "You can define named actions in this case. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/action/action.go;l\u003d22",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec56bf5_b34145b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T11:25:38Z",
+      "side": 1,
+      "message": "I personally do not recommend to use First() selecting node, which means you actually have not worked out an unique identifier.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 100
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75966f2f_dedb2560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T11:25:38Z",
+      "side": 1,
+      "message": "nit: how about %q to highlight cell value.",
+      "range": {
+        "startLine": 213,
+        "startChar": 55,
+        "endLine": 213,
+        "endChar": 59
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e39f8023_c50f391e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T11:25:38Z",
+      "side": 1,
+      "message": "Not sure if this is the best approach to get a cell value. Maybe api can be more reliable and stable. https://developers.google.com/sheets/api/guides/values.\n\nAlternatively, javascript might work as well. I can see the data is saved in an object. Not very sure about it.",
+      "range": {
+        "startLine": 226,
+        "startChar": 23,
+        "endLine": 226,
+        "endChar": 35
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a868d892_6b3faeab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T11:25:38Z",
+      "side": 1,
+      "message": "nit: please wrap the error.",
+      "range": {
+        "startLine": 270,
+        "startChar": 9,
+        "endLine": 270,
+        "endChar": 12
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "543bdc46_99e0bac4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T11:25:38Z",
+      "side": 1,
+      "message": "nit: please wrap the error, nicely with the cell info.",
+      "range": {
+        "startLine": 278,
+        "startChar": 10,
+        "endLine": 278,
+        "endChar": 13
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc251465_6db067f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T11:25:38Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 285,
+        "startChar": 9,
+        "endLine": 285,
+        "endChar": 12
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12af64b6_21ba6994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T11:25:38Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 290,
+        "startChar": 9,
+        "endLine": 290,
+        "endChar": 12
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeec2c2b_e79e8888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T11:25:38Z",
+      "side": 1,
+      "message": "Google sheet opened in web page is not saved by Ctrl+S. It is automatically saved.",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 31
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
