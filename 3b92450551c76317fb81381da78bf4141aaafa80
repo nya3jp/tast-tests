@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83ae57c8_04223efc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-18T03:56:25Z",
+      "side": 1,
+      "message": "nit: Kind of think the landing mode is also one of the assistantBehavior that we want to test. How about putting the mode into the |assistantBehavior| and only passes the |assistantBehavior| into checkAssistantBehavior()?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 5
+      },
+      "revId": "3b92450551c76317fb81381da78bf4141aaafa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76874170_38ed1f65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-18T03:56:25Z",
+      "side": 1,
+      "message": "Do we still need it given that we will call ClearSavedDir() in the beginning of every sub tests?",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 2
+      },
+      "revId": "3b92450551c76317fb81381da78bf4141aaafa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac5ecb9a_3208290b",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-18T03:56:25Z",
+      "side": 1,
+      "message": "What are the cons when enabling assistant logging? Will the performance affected a lot or there will be flood of assistant logs? I am thinking if the cons are acceptable maybe we can enable it by default and still use \"ccaTestBridgeReady\" to save some time for running tests.",
+      "range": {
+        "startLine": 280,
+        "startChar": 34,
+        "endLine": 280,
+        "endChar": 60
+      },
+      "revId": "3b92450551c76317fb81381da78bf4141aaafa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
