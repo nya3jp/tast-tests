@@ -99,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7ea1b23_38258789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-18T12:48:22Z",
+      "side": 1,
+      "message": "`l` was already established in the Lacros package, and `br` should be quite widespread in the policy tests, so it will be easy to learn that it is short for browser.",
+      "parentUuid": "12061ba9_9a4058d1",
+      "range": {
+        "startLine": 136,
+        "startChar": 6,
+        "endLine": 136,
+        "endChar": 11
+      },
+      "revId": "5cdf5270dc486faab1cd1f36f77061f679c15f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "198c8d0f_6b8691c3",
