@@ -225,25 +225,16 @@ var (
 	// ScanDocumentModeOption is the document mode option of scan mode.
 	ScanDocumentModeOption = UIComponent{"document mode button", []string{"#scan-document"}}
 	// ReviewView is the review view after taking a photo under document mode.
-	ReviewView = UIComponent{"document review view", []string{
-		// TODO(b/191950622): Remove selector for old mode name after
-		// naming CL on app side fully landed.
-		"#view-review-document", "#view-review"}}
+	ReviewView = UIComponent{"document review view", []string{"#view-review"}}
 	// SaveAsPDFButton is the button to save document as PDF.
-	SaveAsPDFButton = UIComponent{"save document as pdf button", []string{
-		// TODO(b/191950622): Remove selector for old mode name after
-		// naming CL on app side fully landed.
-		"#save-pdf-document", "#view-review button[i18n-text=label_save_pdf_document]"}}
+	SaveAsPDFButton = UIComponent{"save document as pdf button", []string{"#view-review button[i18n-text=label_save_pdf_document]"}}
 	// SaveAsPhotoButton is the button to save document as photo.
-	SaveAsPhotoButton = UIComponent{"save document as photo button", []string{
-		// TODO(b/191950622): Remove selector for old mode name after
-		// naming CL on app side fully landed.
-		"#save-photo-document", "#view-review button[i18n-text=label_save_photo_document]"}}
+	SaveAsPhotoButton = UIComponent{"save document as photo button", []string{"#view-review button[i18n-text=label_save_photo_document]"}}
 	// RetakeButton is the button to retake the document photo.
 	RetakeButton = UIComponent{"retake document photo button", []string{
-		// TODO(b/191950622): Remove selector for old mode name after
+		// TODO(b/203028477): Remove selector for old mode name after
 		// naming CL on app side fully landed.
-		"#retake-document", "#review-retake"}}
+		"#review-retake", "#view-review button[i18n-text=label_retake]"}}
 	// DocumentCornerOverlay is the overlay that CCA used to draw document corners on.
 	DocumentCornerOverlay = UIComponent{"document corner overlay", []string{
 		"#preview-document-corner-overlay"}}
