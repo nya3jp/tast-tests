@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f153d02d_8fa3df7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-18T19:08:26Z",
+      "side": 1,
+      "message": "Make sure to run the other test too to ensure it is not broken",
+      "range": {
+        "startLine": 12,
+        "startChar": 29,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "b6e9c7713e7f7414a073f6d1ac96429764d09d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a50eaf1a_2fab9978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-18T19:08:26Z",
+      "side": 1,
+      "message": "Don\u0027t need this comment. the code is pretty easy to understand",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 67
+      },
+      "revId": "b6e9c7713e7f7414a073f6d1ac96429764d09d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "937f869c_ad047101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-18T19:08:26Z",
+      "side": 1,
+      "message": "There is a test called quicksettings.SignInScreen that does a similar thing (checking a list of UI elements is visible). I remember that getting stuck in code review for a few iterations as Tast owners were very picky. \n\nI recommend you to take a look at that and see if you can make your code similar to that to avoid having multiple patterns for testing the same thing",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "b6e9c7713e7f7414a073f6d1ac96429764d09d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b6c5a7_10dd5c46",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-18T19:08:26Z",
+      "side": 1,
+      "message": "What is this for?",
+      "range": {
+        "startLine": 72,
+        "startChar": 65,
+        "endLine": 72,
+        "endChar": 108
+      },
+      "revId": "b6e9c7713e7f7414a073f6d1ac96429764d09d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
