@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb2cf6fe_761d4d82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-18T07:33:28Z",
+      "side": 1,
+      "message": "It is not a rule, but usually the prefix is either the repo name tast-tests, or the package name (wifi in this case).\nCan I ask to change the prefix in this, and the following CLs?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "0a125049a3a991128a7cb8663085b33bb0cec670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b2156d_64687982",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-18T07:33:28Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "0a125049a3a991128a7cb8663085b33bb0cec670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
