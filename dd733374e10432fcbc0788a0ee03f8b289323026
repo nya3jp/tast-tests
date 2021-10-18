@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f20e18e_2b1bd8fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-10-18T21:22:00Z",
+      "side": 1,
+      "message": "nit: extra space here",
+      "range": {
+        "startLine": 304,
+        "startChar": 62,
+        "endLine": 304,
+        "endChar": 64
+      },
+      "revId": "dd733374e10432fcbc0788a0ee03f8b289323026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
