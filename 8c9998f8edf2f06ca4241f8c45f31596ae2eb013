@@ -239,6 +239,30 @@
       },
       "revId": "8c9998f8edf2f06ca4241f8c45f31596ae2eb013",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc96433f_ff0e8255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-10-18T23:13:21Z",
+      "side": 1,
+      "message": "Gotcha. They came with the test set and are just informative.",
+      "parentUuid": "798fa615_42b3f228",
+      "range": {
+        "startLine": 136,
+        "startChar": 59,
+        "endLine": 136,
+        "endChar": 66
+      },
+      "revId": "8c9998f8edf2f06ca4241f8c45f31596ae2eb013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
