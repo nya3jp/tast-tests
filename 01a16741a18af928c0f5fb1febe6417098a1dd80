@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f19227d3_56e37f09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-18T21:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65422347_ba60a066",
+      "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3ac4d42_db049308",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-10-18T12:03:27Z",
       "side": 1,
       "message": "File a bug and link it here. This needs more context.",
+      "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fd00d8e_2648d682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-18T21:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3ac4d42_db049308",
       "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +130,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "586274e5_074cc7fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-18T21:27:30Z",
+      "side": 1,
+      "message": "I wasn\u0027t able to find methods to install a test PWA, please advice.\n(Currently only API I find is InstallPWAForURL and it seems to only works for URLs that comes with install button, for example even ESPN.com won\u0027t work compare to Youtube.com...)",
+      "parentUuid": "a788b31a_2bb7320c",
+      "range": {
+        "startLine": 70,
+        "startChar": 54,
+        "endLine": 70,
+        "endChar": 78
+      },
+      "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08e81105_415f9127",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
         "patchSetId": 4
@@ -105,6 +165,24 @@
       "writtenOn": "2021-10-18T12:03:27Z",
       "side": 1,
       "message": "Is something missing here?",
+      "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf024dfc_d5611f56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-18T21:27:30Z",
+      "side": 1,
+      "message": "No...",
+      "parentUuid": "08e81105_415f9127",
       "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +200,24 @@
       "writtenOn": "2021-10-18T12:03:27Z",
       "side": 1,
       "message": "File a bug and link it here.",
+      "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17e768db_2869e397",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-18T21:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84df2197_03b22c13",
       "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +245,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce72b31_42c77e2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-18T21:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb2a9d3a_03711a57",
+      "range": {
+        "startLine": 158,
+        "startChar": 68,
+        "endLine": 158,
+        "endChar": 69
+      },
+      "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ecc4b76_5da6b337",
@@ -162,6 +282,30 @@
       "writtenOn": "2021-10-18T12:03:27Z",
       "side": 1,
       "message": "Are we depending on the title coming from the Youtube website? This seems like something that can break in odd ways.",
+      "range": {
+        "startLine": 182,
+        "startChar": 18,
+        "endLine": 182,
+        "endChar": 35
+      },
+      "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad9484d6_cea5ec72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-18T21:27:30Z",
+      "side": 1,
+      "message": "Was following the example here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_basic.go;drc\u003dacd37e45e17ccc0acb7f45469b622c13b5ee9eef;l\u003d135\n\nPlease Suggest alternative solutions than this?",
+      "parentUuid": "2ecc4b76_5da6b337",
       "range": {
         "startLine": 182,
         "startChar": 18,

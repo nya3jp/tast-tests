@@ -401,6 +401,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5992040_bf4eb530",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-10-18T21:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c053b56_3b5e7e17",
+      "revId": "bb0b0fa4ad1cb6878540bf8da17e9b4ecc6bbda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8830a942_cde77e5d",
