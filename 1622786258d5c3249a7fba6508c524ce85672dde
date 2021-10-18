@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cf60efd_99fe458c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T06:21:20Z",
+      "side": 1,
+      "message": "nit: the code is self explained.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 50
+      },
+      "revId": "1622786258d5c3249a7fba6508c524ce85672dde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f83a6c8_26d073e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T06:21:20Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "1622786258d5c3249a7fba6508c524ce85672dde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a6c2f0f_9c29a0b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T06:21:20Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "1622786258d5c3249a7fba6508c524ce85672dde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91b2bab6_bb06f07b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T06:21:20Z",
+      "side": 1,
+      "message": "nit: this function only close the dialog if it exists. You can rename the function to `maybeCloseWelcomeDialog` in conversion. https://source.chromium.org/search?q\u003d%22maybe%22\u0026sq\u003d\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2F",
+      "range": {
+        "startLine": 138,
+        "startChar": 23,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "1622786258d5c3249a7fba6508c524ce85672dde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
