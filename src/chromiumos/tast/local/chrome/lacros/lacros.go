@@ -84,18 +84,17 @@ func FindFirstNonBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash
 
 // LaunchFromShelf launches lacros-chrome via shelf.
 func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*launcher.LacrosChrome, error) {
-	const newTabTitle = "New Tab"
-
-	// Ensure shelf is visible in case of tablet mode.
-	if err := ash.ShowHotseat(ctx, tconn); err != nil {
-		return nil, errors.Wrap(err, "failed to show hot seat")
+	// If a lacros-chrome is already running, force close it before launching a new window from shelf.
+	if err := launcher.KillLacrosChrome(ctx, lacrosPath); err != nil {
+		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}
+
+	const newTabTitle = "New Tab"
 
 	testing.ContextLog(ctx, "Launch lacros via Shelf")
 	if err := ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
 		return nil, errors.Wrap(err, "failed to launch lacros via shelf")
 	}
-
 	testing.ContextLog(ctx, "Wait for Lacros window")
 	if err := launcher.WaitForLacrosWindow(ctx, tconn, newTabTitle); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for lacros")

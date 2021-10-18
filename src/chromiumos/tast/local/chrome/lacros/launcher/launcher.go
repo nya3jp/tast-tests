@@ -108,7 +108,7 @@ func (l *LacrosChrome) Close(ctx context.Context) error {
 		l.cmd = nil
 	}
 
-	if err := killLacrosChrome(ctx, l.lacrosPath); err != nil {
+	if err := KillLacrosChrome(ctx, l.lacrosPath); err != nil {
 		return errors.Wrap(err, "failed to kill lacros-chrome")
 	}
 	return nil
@@ -139,9 +139,9 @@ func PidsFromPath(ctx context.Context, path string) ([]int, error) {
 	return pids, nil
 }
 
-// killLacrosChrome kills all binaries whose executable contains the base path
+// KillLacrosChrome kills all binaries whose executable contains the base path
 // to lacros-chrome.
-func killLacrosChrome(ctx context.Context, lacrosPath string) error {
+func KillLacrosChrome(ctx context.Context, lacrosPath string) error {
 	if lacrosPath == "" {
 		return errors.New("Path to lacros-chrome cannot be empty")
 	}
@@ -177,7 +177,7 @@ func LaunchLacrosChrome(ctx context.Context, f FixtValue) (*LacrosChrome, error)
 
 // LaunchLacrosChromeWithURL launches a fresh instance of lacros-chrome having the given url.
 func LaunchLacrosChromeWithURL(ctx context.Context, f FixtValue, url string) (*LacrosChrome, error) {
-	if err := killLacrosChrome(ctx, f.LacrosPath()); err != nil {
+	if err := KillLacrosChrome(ctx, f.LacrosPath()); err != nil {
 		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}
 
