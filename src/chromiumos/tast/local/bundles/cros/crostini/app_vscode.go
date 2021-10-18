@@ -116,6 +116,7 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 	)
 
 	ui := uiauto.New(tconn)
+	getStarted := nodewith.Name("Get Started - Visual Studio Code").Role(role.Window).First()
 	appWindowUnsaved := nodewith.NameStartingWith(fmt.Sprintf("● %s - Visual Studio Code", testFile)).Role(role.Window).First()
 	appWindowSaved := nodewith.NameStartingWith(fmt.Sprintf("%s - Visual Studio Code", testFile)).Role(role.Window).First()
 
@@ -125,7 +126,22 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 		return errors.Wrapf(err, "failed to run %v", strings.Join(cmd.Args, " "))
 	}
 
-	if err := uiauto.Combine("Create file with VSCode",
+	// Even with the workbench.startupEditor set to None,
+	// it still opens the Get Started tab when it is opened for the first time.
+	// Therefore, open it and close it firstly.
+	if err := uiauto.Combine("open VSCode for the first time",
+		// Launch Visual Studio Code.
+		terminalApp.RunCommand(keyboard, fmt.Sprintf("code --disable-extensions %s", testFile)),
+		// Left click the app window to focus.
+		ui.LeftClick(getStarted),
+		// Press ctrl+Q to exit window.
+		keyboard.AccelAction("ctrl+Q"),
+		ui.WaitUntilGone(getStarted))(ctx); err != nil {
+		return err
+	}
+
+	// Open the VSCode again, this time, it won't open the Get Started tab.
+	if err := uiauto.Combine("create file with VSCode",
 		// Launch Visual Studio Code.
 		terminalApp.RunCommand(keyboard, fmt.Sprintf("code --disable-extensions %s", testFile)),
 		// Left click the app window and type string.
