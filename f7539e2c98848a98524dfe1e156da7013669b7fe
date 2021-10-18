@@ -22,6 +22,30 @@
       },
       "revId": "f7539e2c98848a98524dfe1e156da7013669b7fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "929d1467_5bff1acf",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-18T04:15:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b27e832_e835118a",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "f7539e2c98848a98524dfe1e156da7013669b7fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
