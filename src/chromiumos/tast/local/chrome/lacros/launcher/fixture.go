@@ -164,6 +164,20 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars:            []string{LacrosDeployedBinary},
 	})
+
+	// lacrosPrimary is a fixture to bring up Lacros as a primary browser from the rootfs partition by default.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosPrimary",
+		Desc:     "Lacros Chrome from rootfs as a primary browser",
+		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{LacrosDeployedBinary},
+	})
 }
 
 const (

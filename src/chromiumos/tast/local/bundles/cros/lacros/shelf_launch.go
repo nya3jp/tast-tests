@@ -34,8 +34,8 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 			},
 			{
-				Name:    "rootfs",
-				Fixture: "lacrosRootfs",
+				Name:    "primary",
+				Fixture: "lacrosPrimary",
 			},
 			{
 				Name:              "omaha",
