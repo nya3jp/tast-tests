@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0d07cb8_aa4311ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_crash_data_survival.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2021-10-18T22:20:47Z",
+      "side": 1,
+      "message": "This MountVault() doesn\u0027t have an associated UnmountAll() call. The next MountVault() call might fail immediately since the vault is already mounted.",
+      "range": {
+        "startLine": 121,
+        "startChar": 18,
+        "endLine": 121,
+        "endChar": 28
+      },
+      "revId": "69752cfe664c2d52dba213288269cd2e01ff5d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5971bca2_494488fc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_crash_data_survival.go",
         "patchSetId": 4
