@@ -16,6 +16,23 @@
       "message": "Hi Trent, PTAL at this CL.",
       "revId": "837d2798eef814b4548ac847cde4ab11a7652d5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "713bd6d8_c12eaa0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2021-10-18T15:32:52Z",
+      "side": 1,
+      "message": "LGTM! Thanks for the patience",
+      "revId": "837d2798eef814b4548ac847cde4ab11a7652d5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
