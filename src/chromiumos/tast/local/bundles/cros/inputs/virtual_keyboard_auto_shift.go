@@ -69,8 +69,7 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 	shiftLock := uiauto.Combine("double tap to lock shift state",
 		// Throws out error if VK is shifted already.
 		vkbCtx.WaitUntilShiftStatus(vkb.ShiftStateNone),
-		manualShift,
-		manualShift,
+		vkbCtx.DoubleTapNode(leftShiftKey),
 	)
 
 	validateManualShiftAndShiftLock := uiauto.Combine("validate manual shift and shift-lock",
