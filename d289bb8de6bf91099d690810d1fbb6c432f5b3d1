@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e51f7d0_bc8c60c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-10-18T16:38:15Z",
+      "side": 1,
+      "message": "lgtm\n\nWe still need tast owner approval to land this.",
+      "revId": "d289bb8de6bf91099d690810d1fbb6c432f5b3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c8fbd2_f80c7882",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/heavy_resize.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-10-18T16:38:15Z",
+      "side": 1,
+      "message": "nit: wrong indent ?",
+      "revId": "d289bb8de6bf91099d690810d1fbb6c432f5b3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
