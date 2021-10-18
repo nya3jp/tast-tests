@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d7b0a5f_2c2da3b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-10-18T10:31:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d882623_003f21bc",
+      "revId": "4121826a0c2ef8fade0885a176933998ef988d98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69836ef1_9f0b83f1",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-10-18T09:04:57Z",
       "side": 1,
       "message": "nit: while we had this kind of error messages in the past they are a bit unclear.\nBetter would be:\ns.Fatalf(\"Failed to connect to %v: %v\", url, err)",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 44
+      },
+      "revId": "4121826a0c2ef8fade0885a176933998ef988d98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9b2bb4_28b884e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-10-18T10:31:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69836ef1_9f0b83f1",
       "range": {
         "startLine": 126,
         "startChar": 2,
