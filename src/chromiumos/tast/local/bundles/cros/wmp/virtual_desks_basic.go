@@ -82,7 +82,7 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	}
 
 	// Creates new desk.
-	addDeskButton := nodewith.ClassName("ZeroStateNewDeskButton")
+	addDeskButton := nodewith.ClassName("ZeroStateIconButton")
 	newDeskNameView := nodewith.ClassName("DeskNameView").Name("Desk 2")
 	newDeskName := "new desk"
 	newDeskMiniView :=
