@@ -11,6 +11,8 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/shutil"
@@ -119,6 +121,13 @@ func DisplayDensity(ctx context.Context, s *testing.State) {
 		lowDensity density = iota
 		highDensity
 	)
+
+	if err := uiauto.StartRecordFromKB(ctx, tconn, keyboard); err != nil {
+		s.Log("Failed to start recording from keyboard: ", err)
+	}
+
+	defer uiauto.StopRecordFromKBAndSaveOnError(cleanupCtx, tconn, s.HasError, s.OutDir())
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	demoWindowSize := func(densityConfiguration density) (coords.Size, error) {
 		windowName := conf.Name
