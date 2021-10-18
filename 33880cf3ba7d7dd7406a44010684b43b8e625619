@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0a106e8_c131fc32",
+        "filename": "helpers/local/arc.Suspend.readclocks.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-10-18T05:34:39Z",
+      "side": 1,
+      "message": "Is there no way to read these from the shell?",
+      "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29b6abcd_ca99ef47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/suspend_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-10-18T05:34:39Z",
+      "side": 1,
+      "message": "You can use constants from time: https://cs.opensource.google/go/go/+/refs/tags/go1.17.2:src/time/time.go;l\u003d608",
+      "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37cbbb17_a1d2d8cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/suspend_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-10-18T05:34:39Z",
+      "side": 1,
+      "message": "Why do we create a new arc instead of holding on to the one we created in Prepare?\n\nDoes it not survive the suspend? A comment would be nice.",
+      "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fdff10a_4192e03b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/suspend.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-10-18T05:34:39Z",
+      "side": 1,
+      "message": "nit: grammar, \"Longer than watchdog timeouts\", or \"Long enough to trigger watchdog timeouts\"",
+      "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23be0683_35f9b3e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/suspend.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-10-18T05:34:39Z",
+      "side": 1,
+      "message": "Ah, does the rpc connection get killed by the suspend? Which kills the service on the remote side? Which means we need to reconnect here, but also call arc.New again on the server?\n\nA comment saying why we need to establish the connection again would be helpful.",
+      "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78687f6f_53b95fec",
+        "filename": "src/chromiumos/tast/services/cros/arc/suspend_service.proto",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-10-18T05:34:39Z",
+      "side": 1,
+      "message": "I think we can use https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration\n\nWhich will probably make a lot of the time conversion code much simpler.",
+      "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
