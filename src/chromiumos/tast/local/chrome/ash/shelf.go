@@ -744,8 +744,9 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 // LaunchAppFromShelf opens an app by name which is currently pinned to the shelf.
 // The parameter appName should be the name of the app which is same as the value stored in apps.App.Name.
 func LaunchAppFromShelf(ctx context.Context, tconn *chrome.TestConn, appName, appID string) error {
+	// Ensure shelf is visible in case of tablet mode.
 	if err := ShowHotseat(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to launch app from shelf")
+		return errors.Wrap(err, "failed to show hot seat")
 	}
 	params := nodewith.Name(appName).ClassName(ShelfIconClassName)
 	if err := uiauto.New(tconn).WithTimeout(10 * time.Second).LeftClick(params)(ctx); err != nil {

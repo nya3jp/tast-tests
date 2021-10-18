@@ -8,6 +8,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/apps"
@@ -28,22 +29,27 @@ func init() {
 			{
 				Fixture:           "lacrosUI",
 				ExtraSoftwareDeps: []string{"lacros_stable"},
+				Val:               false,
 			},
 			{
 				Name:              "unstable",
 				Fixture:           "lacrosUI",
 				ExtraSoftwareDeps: []string{"lacros_unstable"},
 				ExtraAttr:         []string{"informational"},
+				Val:               false,
 			},
 			{
-				Name:    "rootfs",
-				Fixture: "lacrosRootfs",
+				Name:      "primary",
+				Fixture:   "lacrosPrimary",
+				ExtraAttr: []string{"informational"},
+				Val:       true, // whether a new browser window opens on startup. See crbug.com/1260037.
 			},
 			{
 				Name:              "omaha",
 				Fixture:           "lacrosOmaha",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
 				ExtraAttr:         []string{"informational"},
+				Val:               false,
 			}},
 	})
 }
@@ -76,7 +82,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Lacros was not included in the list of installed applications: ", err)
 	}
 
-	s.Log("Check that Lacros is a pinned app in the shelf")
+	s.Log("Checking that Lacros is a pinned app in the shelf")
 	shelfItems, err := ash.ShelfItems(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get shelf items: ", err)
@@ -90,6 +96,14 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 	if !found {
 		s.Fatal("Lacros was not found in the list of shelf items: ", err)
+	}
+
+	// TODO(crbug.com/1260037): Remove a hardcoded sleep used to avoid a flake on VMs in the lacros primary case.
+	// There might be a race condition where lacros primary opening a new window on startup and closing all windows in the following lines would occur together.
+	// This sleep is a workaround to give time to all popup windows showing up on startup before closing them.
+	startupWindow := s.Param().(bool)
+	if startupWindow {
+		testing.Sleep(ctx, 3*time.Second)
 	}
 
 	ws, err := ash.GetAllWindows(ctx, tconn)
