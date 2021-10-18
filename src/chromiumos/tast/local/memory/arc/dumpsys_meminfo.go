@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/testing"
 )
 
 // DumpsysMeminfo writes the results of `adb shell dumpsys meminfo` to
@@ -118,12 +119,20 @@ func DumpsysMeminfoMetrics(ctx context.Context, a *arc.ARC, p *perf.Values, outd
 		return errors.Wrap(err, "failed to run \"dumpsys meminfo\"")
 	}
 
+	errorContext := func() string {
+		testing.ContextLogf(ctx, "Failed to parse 'dumpsys meminfo' output: %s", string(meminfo))
+		return "see log for 'dumpsys meminfo' output"
+	}
+
 	// Keep a copy in logs for debugging.
 	if len(outdir) > 0 {
 		outfile := "arc.meminfo" + suffix + ".txt"
 		outpath := filepath.Join(outdir, outfile)
 		if err := ioutil.WriteFile(outpath, meminfo, 0644); err != nil {
 			return errors.Wrapf(err, "failed to write meminfo to %q", outpath)
+		}
+		errorContext = func() string {
+			return fmt.Sprintf("see %q for 'dumpsys meminfo' output", outpath)
 		}
 	}
 
@@ -135,19 +144,19 @@ func DumpsysMeminfoMetrics(ctx context.Context, a *arc.ARC, p *perf.Values, outd
 	// Extract the position of the "Total PSS by process" section.
 	pos := pssByProcessPosRE.FindIndex(meminfo)
 	if pos == nil {
-		return errors.New("failed to find 'Total PSS by process' section")
+		return errors.Errorf("failed to find 'Total PSS by process' section, %s", errorContext())
 	}
 	matches := processPssRE.FindAllSubmatch(meminfo[pos[0]:pos[1]], -1)
 
 	if matches == nil {
-		return errors.New("unable to parse meminfo")
+		return errors.Errorf("unable to parse meminfo, %s", errorContext())
 	}
 
 	metrics := make(map[string]float64)
 	for _, match := range matches {
 		pss, err := strconv.ParseUint(strings.ReplaceAll(string(match[1]), ",", ""), 10, 64)
 		if err != nil {
-			return errors.Errorf("unable to parse meminfo line %q", match[0])
+			return errors.Errorf("unable to parse meminfo line %q, %s", match[0], errorContext())
 		}
 		for _, category := range appCategories {
 			if category.appRE.Match(match[2]) {
@@ -160,42 +169,42 @@ func DumpsysMeminfoMetrics(ctx context.Context, a *arc.ARC, p *perf.Values, outd
 
 	pos = freeRAMRE.FindIndex(meminfo)
 	if pos == nil {
-		return errors.New("failed to find 'Free RAM' section")
+		return errors.Errorf("failed to find 'Free RAM' section, %s", errorContext())
 	}
 	freeRAM, err := parseNumBetweenMarkers(string(meminfo[pos[0]:pos[1]]), ":", "K")
 	if err != nil {
-		return errors.Wrap(err, "unable to parse Free RAM section")
+		return errors.Wrapf(err, "unable to parse Free RAM section, %s", errorContext())
 	}
 
 	pos = lostRAMRE.FindIndex(meminfo)
 	if pos == nil {
-		return errors.New("failed to find 'Lost RAM' section")
+		return errors.Errorf("failed to find 'Lost RAM' section, %s", errorContext())
 	}
 	lostRAM, err := parseNumBetweenMarkers(string(meminfo[pos[0]:pos[1]]), ":", "K")
 	if err != nil {
-		return errors.Wrap(err, "unable to parse Lost RAM section")
+		return errors.Wrapf(err, "unable to parse Lost RAM section, %s", errorContext())
 	}
 
 	pos = usedMemoryTotalsRE.FindIndex(meminfo)
 	if pos == nil {
-		return errors.New("Unable to match regex")
+		return errors.Errorf("failed to find 'Used RAM' section, %s", errorContext())
 	}
 
 	usedRAMText := string(meminfo[pos[0]:pos[1]])
 
 	usedPssTotal, err := parseNumBetweenMarkers(usedRAMText, "(", "K")
 	if err != nil {
-		return errors.Wrap(err, "unable to find PSS total")
+		return errors.Wrapf(err, "unable to find PSS total, %s", errorContext())
 	}
 
 	kernelTotal, err := parseNumBetweenMarkers(usedRAMText, "+", "K")
 	if err != nil {
-		return errors.Wrap(err, "unable to find Kernel total")
+		return errors.Wrapf(err, "unable to find Kernel total, %s", errorContext())
 	}
 
 	pos = pssByCategoryPosRE.FindIndex(meminfo)
 	if pos == nil {
-		return errors.New("failed to find 'Total PSS by category' section")
+		return errors.Errorf("failed to find 'Total PSS by category' section, %s", errorContext())
 	}
 
 	// Parse all categories of memory consumption.
@@ -208,12 +217,12 @@ func DumpsysMeminfoMetrics(ctx context.Context, a *arc.ARC, p *perf.Values, outd
 	for _, line := range catglines[1:] {
 		kix := strings.Index(line, "K: ")
 		if kix < 0 {
-			return errors.New("unable to parse category line [" + line + "]")
+			return errors.Errorf("unable to parse category line %q, %s", line, errorContext())
 		}
 		numkstr := strings.ReplaceAll(strings.TrimSpace(line[:kix]), ",", "")
 		numk, err := strconv.ParseInt(numkstr, 10, 64)
 		if err != nil {
-			return errors.New("failed to parse category memory size [" + numkstr + "]")
+			return errors.Errorf("failed to parse category memory size %q, %s", numkstr, errorContext())
 		}
 		name := strings.ReplaceAll(line[kix+3:], ".", "")
 		name = strings.ReplaceAll(name, " ", "_")
