@@ -76,8 +76,8 @@ func init() {
 
 // Usage:
 // Manual execution only, as the test images must be copied to DUT manually, as the test images are not public.
-// The update payload and teh metadata file should be copied to a subfolder of /mnt/stateful_partition
-// For example for subtest "m93" /mnt/stateful_partition/m93/
+// The update payload and the metadata file should be copied to a subfolder of /mnt/stateful_partition.
+// For example for subtest "m93" /mnt/stateful_partition/m93/.
 const (
 	updateFolder = "/mnt/stateful_partition/"
 )
@@ -246,7 +246,6 @@ func RollbackWithNebraska(ctx context.Context, s *testing.State) {
 
 	// Reboot the DUT.
 	s.Log("Rebooting the DUT after the rollback")
-	s.DUT().Reboot(ctx)
 	if err := s.DUT().Reboot(ctx); err != nil {
 		s.Fatal("Failed to reboot the DUT after rollback: ", err)
 	}
