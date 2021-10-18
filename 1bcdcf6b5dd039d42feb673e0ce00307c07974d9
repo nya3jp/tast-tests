@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6207b56_43107749",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-18T01:09:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7544fcd3_5aeff093",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "1bcdcf6b5dd039d42feb673e0ce00307c07974d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86de68d9_d1b07aca",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-10-18T00:55:14Z",
       "side": 1,
       "message": "Add to BUG\u003d\nBUG\u003dchromium:1197335\n\nAlso, optionally, add this to commit message:\n-----\nThe class attribute of the element has been changed by:\nhttps://chromium-review.googlesource.com/c/chromium/src/+/3159263\n-----\n\n(The bug number above is the one that is linked from the change 3159263, which changed the class in the HTML file. If there is another bug for the problem that this CL targets, link it instead.)",
+      "revId": "1bcdcf6b5dd039d42feb673e0ce00307c07974d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8063dbb_c2444e32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-18T01:09:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86de68d9_d1b07aca",
       "revId": "1bcdcf6b5dd039d42feb673e0ce00307c07974d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
