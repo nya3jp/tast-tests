@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d1ce6b3_172b87d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/search_sections.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-18T19:39:44Z",
+      "side": 1,
+      "message": "I don\u0027t think people would search with the hypen (-). Does the test case work without that?",
+      "range": {
+        "startLine": 169,
+        "startChar": 24,
+        "endLine": 169,
+        "endChar": 36
+      },
+      "revId": "b24659724bb276a42a89e8e347bab0c77302a25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02437487_d05364d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/search_sections.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-18T19:39:44Z",
+      "side": 1,
+      "message": "remove this comment",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 67
+      },
+      "revId": "b24659724bb276a42a89e8e347bab0c77302a25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6f21c67_ac3cf225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/search_sections.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-18T19:39:44Z",
+      "side": 1,
+      "message": "move this to the ossettings package",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 1
+      },
+      "revId": "b24659724bb276a42a89e8e347bab0c77302a25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41832c47_45a9501f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/search_sections.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-18T19:39:44Z",
+      "side": 1,
+      "message": "This can move to the package too",
+      "range": {
+        "startLine": 274,
+        "startChar": 5,
+        "endLine": 274,
+        "endChar": 23
+      },
+      "revId": "b24659724bb276a42a89e8e347bab0c77302a25f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
