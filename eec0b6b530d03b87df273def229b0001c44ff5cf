@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "079262cd_6447993a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-10-18T02:30:30Z",
+      "side": 1,
+      "message": "\u003e Is it expected that the keyboard is not yet shown here (i.e. polling iteration is executed at least once)?\nYes it is.\n\n\u003e Is it OK to call showVirtualKeyboardIfEnabled when keyboard is shown?\nYes.\n\nHaruka-san, could you update the CL based on that? Thanks!",
+      "parentUuid": "554942d1_3b7958de",
+      "revId": "eec0b6b530d03b87df273def229b0001c44ff5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3affcc8e_fd514739",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/android_ime_in_browser.go",
         "patchSetId": 1
