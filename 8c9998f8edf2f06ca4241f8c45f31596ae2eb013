@@ -54,6 +54,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "74dd7b1c_7847a6a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-10-18T21:08:04Z",
+      "side": 1,
+      "message": "👍 Done.",
+      "parentUuid": "5312a095_c41a6c89",
+      "revId": "8c9998f8edf2f06ca4241f8c45f31596ae2eb013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "81424849_7f1a0ace",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
         "patchSetId": 1
@@ -87,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "233fc20f_4ad12e5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-10-18T21:08:04Z",
+      "side": 1,
+      "message": "👍 Done.",
+      "parentUuid": "c1ea8bbf_6c882688",
+      "revId": "8c9998f8edf2f06ca4241f8c45f31596ae2eb013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4ae99dc_a627a6a6",
@@ -110,6 +146,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "883dff05_dac6ef15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-10-18T21:08:04Z",
+      "side": 1,
+      "message": "👍 Done.",
+      "parentUuid": "b4ae99dc_a627a6a6",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 54
+      },
+      "revId": "8c9998f8edf2f06ca4241f8c45f31596ae2eb013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18560a00_158ddd8b",
@@ -123,6 +183,30 @@
       "writtenOn": "2021-10-16T00:37:05Z",
       "side": 1,
       "message": "QQ: There\u0027s a few \"..._readme.external\" files, how are they\nintended to be used?",
+      "range": {
+        "startLine": 136,
+        "startChar": 59,
+        "endLine": 136,
+        "endChar": 66
+      },
+      "revId": "8c9998f8edf2f06ca4241f8c45f31596ae2eb013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24154292_a564f7e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/test_vectors/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-10-18T21:08:04Z",
+      "side": 1,
+      "message": "I don\u0027t see any readme.external or readme.txt.external files. Can you point out an example?",
+      "parentUuid": "18560a00_158ddd8b",
       "range": {
         "startLine": 136,
         "startChar": 59,
