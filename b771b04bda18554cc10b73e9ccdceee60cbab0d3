@@ -33,6 +33,161 @@
       "message": "LGTM",
       "revId": "b771b04bda18554cc10b73e9ccdceee60cbab0d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4d9edc_0833a787",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T06:12:55Z",
+      "side": 1,
+      "message": "Already defined at `https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/apps/apps.go;l\u003d159?q\u003dcnbgggchhmkkdmeppjobngjoejnihlei\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch`",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "b771b04bda18554cc10b73e9ccdceee60cbab0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49e62270_d019dbd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T06:12:55Z",
+      "side": 1,
+      "message": "nit: action name should start with lowercase. `open`",
+      "range": {
+        "startLine": 169,
+        "startChar": 27,
+        "endLine": 169,
+        "endChar": 31
+      },
+      "revId": "b771b04bda18554cc10b73e9ccdceee60cbab0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1face284_f56d544c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T06:12:55Z",
+      "side": 1,
+      "message": "nit: settings.",
+      "range": {
+        "startLine": 169,
+        "startChar": 40,
+        "endLine": 169,
+        "endChar": 48
+      },
+      "revId": "b771b04bda18554cc10b73e9ccdceee60cbab0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94cfef56_0a099f97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T06:12:55Z",
+      "side": 1,
+      "message": "Optional: return settingPage.Close(ctx)\n\nThe errors.Wrap does not look necessary.",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 47
+      },
+      "revId": "b771b04bda18554cc10b73e9ccdceee60cbab0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed7d0857_b64b43be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T06:12:55Z",
+      "side": 1,
+      "message": "typo: setting.",
+      "range": {
+        "startLine": 183,
+        "startChar": 52,
+        "endLine": 183,
+        "endChar": 60
+      },
+      "revId": "b771b04bda18554cc10b73e9ccdceee60cbab0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a97d3a93_5774645f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T06:12:55Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 237,
+        "startChar": 5,
+        "endLine": 237,
+        "endChar": 13
+      },
+      "revId": "b771b04bda18554cc10b73e9ccdceee60cbab0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "752ebe2b_6fa262e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-18T06:12:55Z",
+      "side": 1,
+      "message": "Optional: these tests are in parallel and not dependent to each other. You can make it run in subtest so it will not terminate in case one test fails. e.g. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_auto_shift.go;l\u003d238?q\u003dvirtualkeyboardaut\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch",
+      "revId": "b771b04bda18554cc10b73e9ccdceee60cbab0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
