@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73bf1437_5ebd6327",
+        "filename": "src/chromiumos/tast/local/memory/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-10-18T07:37:35Z",
+      "side": 1,
+      "message": "is it possible to retry only in case the inner failure is a timeout?",
+      "range": {
+        "startLine": 107,
+        "startChar": 6,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "c53e866c756c93a4496a9ab8b6970a1d2cf5e654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
