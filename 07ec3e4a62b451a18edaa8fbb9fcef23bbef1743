@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df07c501_4f427523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-10-18T00:25:14Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 140,
+        "startChar": 6,
+        "endLine": 140,
+        "endChar": 7
+      },
+      "revId": "07ec3e4a62b451a18edaa8fbb9fcef23bbef1743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
