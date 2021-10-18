@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1397b0d6_54cd6d0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-10-18T21:28:26Z",
+      "side": 1,
+      "message": "Looks good from the golang readability side, though Andrey still has outstanding concerns",
+      "revId": "95711e901c14c1b393e17c591a154a75036c35ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e7a1f3a_e30154e5",
@@ -36,6 +53,29 @@
         "startChar": 1,
         "endLine": 31,
         "endChar": 29
+      },
+      "revId": "95711e901c14c1b393e17c591a154a75036c35ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b4c55cd_a4763db8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_disk_full_data_survival.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-10-18T21:28:26Z",
+      "side": 1,
+      "message": "nit: \"less than 2 lines\"?",
+      "range": {
+        "startLine": 64,
+        "startChar": 41,
+        "endLine": 64,
+        "endChar": 59
       },
       "revId": "95711e901c14c1b393e17c591a154a75036c35ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
