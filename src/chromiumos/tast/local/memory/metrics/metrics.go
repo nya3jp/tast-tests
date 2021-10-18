@@ -6,12 +6,14 @@ package metrics
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/memory"
 	memoryarc "chromiumos/tast/local/memory/arc"
+	"chromiumos/tast/testing"
 )
 
 // BaseMemoryStats holds initial metrics, which can be used as a baseline
@@ -99,8 +101,21 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, arc *arc.ARC, p 
 	}
 
 	if arc != nil {
-		if err := memoryarc.DumpsysMeminfoMetrics(ctx, arc, p, outdir, suffix); err != nil {
-			return errors.Wrap(err, "failed to collect ARC dumpsys meminfo metrics")
+		const dumpsysRetries = 3
+		for i := 0; ; i++ {
+			// TODO(b:191802472): Make DumpsysMeminfoMetrics silently fail if
+			// retries are not enough.
+			if err := memoryarc.DumpsysMeminfoMetrics(ctx, arc, p, outdir, suffix); err != nil {
+				if i < dumpsysRetries {
+					testing.ContextLog(ctx, "Failed to collect ARC dumpsys meminfo metrics: ", err)
+					if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+						return errors.Wrap(err, "failed to sleep between dumpsys meminfo retries")
+					}
+					continue
+				}
+				return errors.Wrapf(err, "failed to collect ARC dumpsys meminfo metrics %d times", i)
+			}
+			break
 		}
 	}
 	return nil
