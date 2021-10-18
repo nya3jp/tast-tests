@@ -150,14 +150,13 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
-	// lacrosRootfs is a fixture to bring up Lacros from the rootfs partition.
-	// This does not require downloading a binary from Google Storage before the tests.
+	// lacrosPrimary is a fixture to bring up Lacros as a primary browser from the rootfs partition by default.
 	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosRootfs",
-		Desc:     "Lacros Chrome from rootfs",
+		Name:     "lacrosPrimary",
+		Desc:     "Lacros Chrome from rootfs as a primary browser",
 		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return nil, nil
+			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
