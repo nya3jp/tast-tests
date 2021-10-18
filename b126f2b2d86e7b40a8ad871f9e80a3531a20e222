@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "413a18c4_7753d995",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-10-18T01:31:51Z",
+      "side": 1,
+      "message": "Recently, most test passed. Some of them failed because of affected by another failing tast \"health.ProbeGraphicsInfo\". See b/203025351.",
+      "revId": "b126f2b2d86e7b40a8ad871f9e80a3531a20e222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
