@@ -14,17 +14,20 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
 type popupsSettingTestTable struct {
-	name      string          // name is the subtest name.
-	wantTitle string          // wantTitle is the expected title of the window after test is run with policies applied.
-	policies  []policy.Policy // policies is a list of PopupsBlockedForUrls, PopupsAllowedForUrls and DefaultPopupsSetting policies to update before checking popups.
+	name        string            // name is the subtest name.
+	browserType lacros.ChromeType // browser type used in the subtest.
+	wantTitle   string            // wantTitle is the expected title of the window after test is run with policies applied.
+	policies    []policy.Policy   // policies is a list of PopupsBlockedForUrls, PopupsAllowedForUrls and DefaultPopupsSetting policies to update before checking popups.
 }
 
 // TODO(crbug.com/1125586): investigate using an easier filter like "*" in the allow/deny-listing policies along with DefaultPopupsSetting policy.
@@ -41,36 +44,41 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
+		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"popups_for_url_check_index.html", "popups_for_url_check_popup.html"},
 		Params: []testing.Param{
 			{
-				Name: "default",
+				Name:    "default",
+				Fixture: fixture.ChromePolicyLoggedIn,
 				Val: []popupsSettingTestTable{
 					{
-						name:      "allowed",
-						wantTitle: "Popups allowed",
-						policies:  []policy.Policy{&policy.DefaultPopupsSetting{Val: 1}}, // 1: Popups are allowed
+						name:        "allowed",
+						browserType: lacros.ChromeTypeChromeOS,
+						wantTitle:   "Popups allowed",
+						policies:    []policy.Policy{&policy.DefaultPopupsSetting{Val: 1}}, // 1: Popups are allowed
 					},
 					{
-						name:      "blocked",
-						wantTitle: "Popups blocked",
-						policies:  []policy.Policy{&policy.DefaultPopupsSetting{Val: 2}}, // 2: Popups are blocked
+						name:        "blocked",
+						browserType: lacros.ChromeTypeChromeOS,
+						wantTitle:   "Popups blocked",
+						policies:    []policy.Policy{&policy.DefaultPopupsSetting{Val: 2}}, // 2: Popups are blocked
 					},
 					{
-						name:      "unset",
-						wantTitle: "Popups blocked",
-						policies:  []policy.Policy{&policy.DefaultPopupsSetting{Stat: policy.StatusUnset}},
+						name:        "unset",
+						browserType: lacros.ChromeTypeChromeOS,
+						wantTitle:   "Popups blocked",
+						policies:    []policy.Policy{&policy.DefaultPopupsSetting{Stat: policy.StatusUnset}},
 					},
 				},
 			},
 			{
-				Name: "allowlist",
+				Name:    "allowlist",
+				Fixture: fixture.ChromePolicyLoggedIn,
 				Val: []popupsSettingTestTable{
 					{
-						name:      "blocklist_unset_default_block",
-						wantTitle: "Popups allowed",
+						name:        "blocklist_unset_default_block",
+						browserType: lacros.ChromeTypeChromeOS,
+						wantTitle:   "Popups allowed",
 						policies: []policy.Policy{
 							&policy.PopupsBlockedForUrls{Stat: policy.StatusUnset},
 							&policy.PopupsAllowedForUrls{Val: []string{filterPopupsURL}},
@@ -78,8 +86,9 @@ func init() {
 						},
 					},
 					{
-						name:      "blocklist_set_default_block",
-						wantTitle: "Popups allowed",
+						name:        "blocklist_set_default_block",
+						browserType: lacros.ChromeTypeChromeOS,
+						wantTitle:   "Popups allowed",
 						policies: []policy.Policy{
 							&policy.PopupsBlockedForUrls{Val: []string{"https://chromium.org", "http://example.org"}},
 							&policy.PopupsAllowedForUrls{Val: []string{filterPopupsURL}},
@@ -89,11 +98,13 @@ func init() {
 				},
 			},
 			{
-				Name: "blocklist",
+				Name:    "blocklist",
+				Fixture: fixture.ChromePolicyLoggedIn,
 				Val: []popupsSettingTestTable{
 					{
-						name:      "allowlist_unset_default_allow",
-						wantTitle: "Popups blocked",
+						name:        "allowlist_unset_default_allow",
+						browserType: lacros.ChromeTypeChromeOS,
+						wantTitle:   "Popups blocked",
 						policies: []policy.Policy{
 							&policy.PopupsBlockedForUrls{Val: []string{filterPopupsURL}},
 							&policy.PopupsAllowedForUrls{Stat: policy.StatusUnset},
@@ -101,8 +112,85 @@ func init() {
 						},
 					},
 					{
-						name:      "allowlist_set_default_allow",
-						wantTitle: "Popups blocked",
+						name:        "allowlist_set_default_allow",
+						browserType: lacros.ChromeTypeChromeOS,
+						wantTitle:   "Popups blocked",
+						policies: []policy.Policy{
+							&policy.PopupsBlockedForUrls{Val: []string{filterPopupsURL}},
+							&policy.PopupsAllowedForUrls{Val: []string{"https://chromium.org", "http://example.org"}},
+							&policy.DefaultPopupsSetting{Val: 1}, // 1: Popups are allowed by default
+						},
+					},
+				},
+			},
+			{
+				Name:    "lacros_default",
+				Fixture: fixture.LacrosPolicyLoggedIn,
+				Val: []popupsSettingTestTable{
+					{
+						name:        "allowed",
+						browserType: lacros.ChromeTypeLacros,
+						wantTitle:   "Popups allowed",
+						policies:    []policy.Policy{&policy.DefaultPopupsSetting{Val: 1}}, // 1: Popups are allowed
+					},
+					{
+						name:        "blocked",
+						browserType: lacros.ChromeTypeLacros,
+						wantTitle:   "Popups blocked",
+						policies:    []policy.Policy{&policy.DefaultPopupsSetting{Val: 2}}, // 2: Popups are blocked
+					},
+					{
+						name:        "unset",
+						browserType: lacros.ChromeTypeLacros,
+						wantTitle:   "Popups blocked",
+						policies:    []policy.Policy{&policy.DefaultPopupsSetting{Stat: policy.StatusUnset}},
+					},
+				},
+			},
+			{
+				Name:    "lacros_allowlist",
+				Fixture: fixture.LacrosPolicyLoggedIn,
+				Val: []popupsSettingTestTable{
+					{
+						name:        "blocklist_unset_default_block",
+						browserType: lacros.ChromeTypeLacros,
+						wantTitle:   "Popups allowed",
+						policies: []policy.Policy{
+							&policy.PopupsBlockedForUrls{Stat: policy.StatusUnset},
+							&policy.PopupsAllowedForUrls{Val: []string{filterPopupsURL}},
+							&policy.DefaultPopupsSetting{Val: 2}, // 2: Popups are blocked by default
+						},
+					},
+					{
+						name:        "blocklist_set_default_block",
+						browserType: lacros.ChromeTypeLacros,
+						wantTitle:   "Popups allowed",
+						policies: []policy.Policy{
+							&policy.PopupsBlockedForUrls{Val: []string{"https://chromium.org", "http://example.org"}},
+							&policy.PopupsAllowedForUrls{Val: []string{filterPopupsURL}},
+							&policy.DefaultPopupsSetting{Val: 2}, // 2: Popups are blocked by default
+						},
+					},
+				},
+			},
+			{
+				Name:    "lacros_blocklist",
+				Fixture: fixture.LacrosPolicyLoggedIn,
+				Val: []popupsSettingTestTable{
+					{
+						name:        "allowlist_unset_default_allow",
+						browserType: lacros.ChromeTypeLacros,
+						wantTitle:   "Popups blocked",
+						policies: []policy.Policy{
+							&policy.PopupsBlockedForUrls{Val: []string{filterPopupsURL}},
+							&policy.PopupsAllowedForUrls{Stat: policy.StatusUnset},
+							&policy.DefaultPopupsSetting{Val: 1}, // 1: Popups are allowed by default
+						},
+					},
+					{
+						name:        "allowlist_set_default_allow",
+						browserType: lacros.ChromeTypeLacros,
+						wantTitle:   "Popups blocked",
 						policies: []policy.Policy{
 							&policy.PopupsBlockedForUrls{Val: []string{filterPopupsURL}},
 							&policy.PopupsAllowedForUrls{Val: []string{"https://chromium.org", "http://example.org"}},
@@ -118,6 +206,11 @@ func init() {
 func PopupsForURLCheck(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
@@ -139,7 +232,15 @@ func PopupsForURLCheck(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			conn, err := cr.NewConn(ctx, server.URL+"/popups_for_url_check_index.html")
+			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
+			// Setup browser based on the chrome type.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), tc.browserType)
+			if err != nil {
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
+			conn, err := br.NewConn(ctx, server.URL+"/popups_for_url_check_index.html")
 			if err != nil {
 				s.Fatal("Creating renderer failed: ", err)
 			}
