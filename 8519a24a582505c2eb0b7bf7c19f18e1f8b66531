@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2365abe4_58e42a2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-18T00:19:16Z",
+      "side": 1,
+      "message": "Please clean up all the created folders and files in the end.",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 8
+      },
+      "revId": "8519a24a582505c2eb0b7bf7c19f18e1f8b66531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a233e3_f52abfb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-18T00:19:16Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to relaunch files app in each sub test. Maybe just launch before all sub tests and then switch to the specified folder in each sub test.",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 36
+      },
+      "revId": "8519a24a582505c2eb0b7bf7c19f18e1f8b66531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbdbb9b6_da4e03dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-18T00:19:16Z",
+      "side": 1,
+      "message": "This could also cover if len(targets) \u003d\u003d 1? Just adding targets to the description will give enough log to distinguish the difference.",
+      "range": {
+        "startLine": 155,
+        "startChar": 15,
+        "endLine": 155,
+        "endChar": 22
+      },
+      "revId": "8519a24a582505c2eb0b7bf7c19f18e1f8b66531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8db7aace_e6f6ace9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-18T00:19:16Z",
+      "side": 1,
+      "message": "Suggest not to use the ui to create folders and files. Instead, use the os.MkdirAll to make dir and ioutil.WriteFile to creat files.",
+      "range": {
+        "startLine": 181,
+        "startChar": 11,
+        "endLine": 181,
+        "endChar": 17
+      },
+      "revId": "8519a24a582505c2eb0b7bf7c19f18e1f8b66531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83fbb673_66c5506f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-18T00:19:16Z",
+      "side": 1,
+      "message": "Why this change?",
+      "range": {
+        "startLine": 247,
+        "startChar": 4,
+        "endLine": 247,
+        "endChar": 17
+      },
+      "revId": "8519a24a582505c2eb0b7bf7c19f18e1f8b66531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
