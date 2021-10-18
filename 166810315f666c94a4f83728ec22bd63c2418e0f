@@ -33,6 +33,23 @@
       "message": "Thanks!",
       "revId": "166810315f666c94a4f83728ec22bd63c2418e0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc787bc6_dacc7a31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/play/play.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-10-18T02:21:06Z",
+      "side": 1,
+      "message": "Optional: this should work, but this kind of thing is usually done more directly with tast.promisify:\n\nhttps://source.corp.google.com/search?q\u003dtast.promisify",
+      "revId": "166810315f666c94a4f83728ec22bd63c2418e0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
