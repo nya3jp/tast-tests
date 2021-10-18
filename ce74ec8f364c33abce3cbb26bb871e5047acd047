@@ -494,6 +494,30 @@
       },
       "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7b4668_3585d4fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_multi_tab.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-18T10:07:41Z",
+      "side": 1,
+      "message": "Thanks for these info. \n\nI\u0027ve checked these frame counts on all our YouTube tests and its roughly the same.",
+      "parentUuid": "7389308b_bbd7ce94",
+      "range": {
+        "startLine": 131,
+        "startChar": 30,
+        "endLine": 131,
+        "endChar": 51
+      },
+      "revId": "ce74ec8f364c33abce3cbb26bb871e5047acd047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
