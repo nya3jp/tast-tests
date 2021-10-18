@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "5cdf5270dc486faab1cd1f36f77061f679c15f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6674694b_eb41be4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-18T09:32:05Z",
+      "side": 1,
+      "message": "LGTM % question",
+      "revId": "5cdf5270dc486faab1cd1f36f77061f679c15f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "198c8d0f_6b8691c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/saving_browser_history_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-18T09:32:05Z",
+      "side": 1,
+      "message": "Can you have multiple of this one?",
+      "range": {
+        "startLine": 148,
+        "startChar": 116,
+        "endLine": 148,
+        "endChar": 121
+      },
+      "revId": "5cdf5270dc486faab1cd1f36f77061f679c15f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
