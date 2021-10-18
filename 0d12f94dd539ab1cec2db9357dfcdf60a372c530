@@ -87,6 +87,30 @@
       },
       "revId": "0d12f94dd539ab1cec2db9357dfcdf60a372c530",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "295609c1_eff51631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-18T16:29:20Z",
+      "side": 1,
+      "message": "Hi Kerker,\n\nSorry for delay!!.\n\nI am working on this comment, soon i will let you know the status.\n\nThanks,\nJilani",
+      "parentUuid": "b7668944_7ba3e55c",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 44
+      },
+      "revId": "0d12f94dd539ab1cec2db9357dfcdf60a372c530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
