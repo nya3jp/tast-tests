@@ -33,6 +33,46 @@
       "message": "@Ren-Pei Zeng, Can you please help in reviewing this CL?",
       "revId": "f8ec168e658912c3f1c18ae25dd88e49024d215d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36475803_8c013158",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2021-10-18T09:23:47Z",
+      "side": 1,
+      "message": "I can take some look but would let Shik or other CCAUI* owners do the final review.",
+      "revId": "f8ec168e658912c3f1c18ae25dd88e49024d215d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b76ef11_6fb75c66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2021-10-18T09:23:47Z",
+      "side": 1,
+      "message": "Instead of adding this kind of compound action, I would prefer having an option to change the strategy of placing actions, like \"--strategy\u003drandom\" and \"--strategy\u003drepeat_all\". It may also be useful for your other test cases.",
+      "range": {
+        "startLine": 148,
+        "startChar": 10,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "f8ec168e658912c3f1c18ae25dd88e49024d215d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
