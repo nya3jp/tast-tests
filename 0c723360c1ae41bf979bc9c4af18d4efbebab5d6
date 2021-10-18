@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e095981f_44eb1be3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-10-18T20:13:55Z",
+      "side": 1,
+      "message": "Thanks! LG % a few potential pitfalls.",
+      "revId": "0c723360c1ae41bf979bc9c4af18d4efbebab5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d4314d_05d03dd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/compositor_transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-10-18T20:13:55Z",
+      "side": 1,
+      "message": "Just as a heads-up: we recently started getting flakes in video.Contents because the keyboard input may get ignored. See b/199393037#comment11 for an explanation and the next comment for potential solutions.\n\nYou can try just landing your test as-is and see if you start getting flakes too.",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "0c723360c1ae41bf979bc9c4af18d4efbebab5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34316402_23dd9301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/compositor_transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-10-18T20:13:55Z",
+      "side": 1,
+      "message": "I think the way you\u0027re using to get the sampling points doesn\u0027t give you the exact center. Maybe just say \"pixels within each image quadrant\" instead.",
+      "range": {
+        "startLine": 132,
+        "startChar": 29,
+        "endLine": 132,
+        "endChar": 42
+      },
+      "revId": "0c723360c1ae41bf979bc9c4af18d4efbebab5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86be027e_72cfb4ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/compositor_transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-10-18T20:13:55Z",
+      "side": 1,
+      "message": "nit: Are they actually transparent or are they black?",
+      "range": {
+        "startLine": 133,
+        "startChar": 64,
+        "endLine": 133,
+        "endChar": 75
+      },
+      "revId": "0c723360c1ae41bf979bc9c4af18d4efbebab5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9085a56c_e655a5a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/compositor_transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-10-18T20:13:55Z",
+      "side": 1,
+      "message": "Can you assert that expectedColor is not the color of the margin (whatever that is, black or transparent)? That would be kind of a sanity check for the way you choose the sampling points. This might require you to not use black as a color in your canvases.",
+      "revId": "0c723360c1ae41bf979bc9c4af18d4efbebab5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d5e2c75_a6c7ec1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-10-18T20:13:55Z",
+      "side": 1,
+      "message": "Some words on synchronization:\n\nWe don\u0027t know when the results of these operations will appear on the screen, so if the screenshots happen too early, you might be comparing incorrect (but equal) images. I don\u0027t know if there\u0027s an easy way to wait on the results of these operations before the test proceeds to inject the \u0027f\u0027 key. You might want to ask kbr@. Maybe trying to obtain the image data from the canvases would force synchronization.",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 5
+      },
+      "revId": "0c723360c1ae41bf979bc9c4af18d4efbebab5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

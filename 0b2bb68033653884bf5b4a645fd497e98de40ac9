@@ -695,6 +695,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df950f6f_94da9330",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-10-18T20:13:55Z",
+      "side": 1,
+      "message": "\u003e Could you elaborate on this? What would cause a canvas to be promoted to an overlay?\n\nThat\u0027s up to the compositor; there may be multiple factors that affect whether something is promoted to an overlay (e.g., size, how often the content changes, etc.).\n\n\u003e Is there an argument for leaving as-is so that we can detect if the overlay path is broken?\n\nYes, but if the canvas gets promoted to an overlay flakily (which is not an invalid behavior necessarily) and the overlay path is broken, then the tests will become flaky and one could argue that this test is not meant to detect overlay breakages. Nonetheless, this is an integration test, so one could also argue it can be affected by anything in the pipeline and that\u0027s valid.\n\nSo overall, I would leave it as you have it and just keep this possibility in mind.",
+      "parentUuid": "30eba1f5_f0b7da94",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31ddfbd5_a8559a5f",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
         "patchSetId": 7
