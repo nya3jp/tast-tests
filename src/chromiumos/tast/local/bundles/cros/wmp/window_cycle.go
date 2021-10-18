@@ -24,6 +24,7 @@ func init() {
 		Desc: "Checks Alt+Tab and Alt+Shift+Tab functionality for cycling windows",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
+			"chromeos-wmp@google.com",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
