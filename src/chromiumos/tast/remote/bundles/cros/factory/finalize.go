@@ -26,7 +26,8 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Timeout:      8 * time.Minute,
 		// Skip "nyan_kitty" due to slow reboot speed.
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty")),
+		// TODO(b/203313828): Skip on dedede due to CQ failures
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty"), hwdep.SkipOnPlatform("dedede")),
 	})
 }
 
