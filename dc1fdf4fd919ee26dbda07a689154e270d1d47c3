@@ -33,6 +33,24 @@
       "message": "Note: The change from u2fd to shill is intended. This is because u2fd is not available on TPM1.2 devices and the test will fail.",
       "revId": "dc1fdf4fd919ee26dbda07a689154e270d1d47c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a2ff200_2bffa9d3",
+        "filename": "src/chromiumos/tast/common/storage/files/homedir_files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-10-18T21:33:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b8e6a7ef_3a803ccf",
+      "revId": "dc1fdf4fd919ee26dbda07a689154e270d1d47c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
