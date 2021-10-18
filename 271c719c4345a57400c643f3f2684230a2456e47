@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a268e1_ab184fbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-18T01:27:07Z",
+      "side": 1,
+      "message": "LGTM with one comment. Thanks!\n",
+      "revId": "271c719c4345a57400c643f3f2684230a2456e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa397da2_1e593509",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-18T01:27:07Z",
+      "side": 1,
+      "message": "I think we want to continue to saving faillog even if we had an error with getting /var/log/messages.",
+      "range": {
+        "startLine": 140,
+        "startChar": 3,
+        "endLine": 140,
+        "endChar": 9
+      },
+      "revId": "271c719c4345a57400c643f3f2684230a2456e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
