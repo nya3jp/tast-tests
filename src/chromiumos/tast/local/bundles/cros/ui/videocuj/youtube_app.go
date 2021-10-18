@@ -214,11 +214,43 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 		return errors.Wrap(err, "failed to play video")
 	}
 
+	// It has been seen that low-end DUTs sometimes can take as much as 10-20 seconds to finish loading after clicking
+	// on a video from the search results. Logic is added here to wait for the loading to complete before proceeding to
+	// prevent unexpected errors.
+	if err := y.waitForLoadingComplete(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for loading to complete")
+	}
+
 	if err := switchQuality(y.video.quality); err != nil {
 		return errors.Wrap(err, "failed to switch Quality")
 	}
 
 	return nil
+}
+
+func (y *YtApp) waitForLoadingComplete(ctx context.Context) error {
+	const (
+		titleID        = youtubePkg + ":id/title"
+		shareBtnText   = "Share"
+		shareBtnTextID = youtubePkg + ":id/button_text"
+		sidebarID      = youtubePkg + ":id/video_metadata_layout"
+	)
+	videoTitle := y.d.Object(androidui.ID(titleID))
+	shareBtn := y.d.Object(androidui.Text(shareBtnText), androidui.ID(shareBtnTextID))
+	sidebar := y.d.Object(androidui.ID(sidebarID))
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if err := videoTitle.Exists(ctx); err != nil {
+			return errors.Wrap(err, "still loading... video title not rendered")
+		}
+		if err := shareBtn.Exists(ctx); err != nil {
+			return errors.Wrap(err, "still loading... share button not rendered")
+		}
+		if err := sidebar.Exists(ctx); err != nil {
+			return errors.Wrap(err, "still loading... sidebar not rendered")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 30 * time.Second})
 }
 
 func (y *YtApp) isPremiumAccount() bool {
