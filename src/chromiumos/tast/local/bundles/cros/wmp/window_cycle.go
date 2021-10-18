@@ -11,9 +11,11 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -90,8 +92,8 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 	// Index of the window we'll cycle to.
 	var target int
 
-	// Params for the window cycle menu.
-	cycleMenuParams := ui.FindParams{ClassName: "WindowCycleList (Alt+Tab)"}
+	// Finder for the window cycle menu.
+	cycleMenu := nodewith.ClassName("WindowCycleList (Alt+Tab)")
 
 	// Cycle forwards (Alt + Tab) and backwards (Alt + Shift + Tab).
 	for _, direction := range []string{"forward", "backward"} {
@@ -99,10 +101,11 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 		// Press 'tab' 1, 2, 3, and 4 times to verify cycling behavior.
 		// This verifies we can tab to all open windows, and checks the
 		// cycling behavior since 4 tab presses will cycle back around.
+		ui := uiauto.New(tconn)
 		for i := 0; i < 4; i++ {
 			func() {
 				// Make sure the cycle menu isn't open already before we try to alt+tab.
-				if err := ui.WaitUntilGone(ctx, tconn, cycleMenuParams, 5*time.Second); err != nil {
+				if err := ui.WithTimeout(5 * time.Second).WaitUntilGone(cycleMenu)(ctx); err != nil {
 					s.Fatal("Cycle menu unexpectedly open before pressing alt+tab: ", err)
 				}
 
@@ -126,21 +129,15 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 				}
 
 				// Verify that the cycle window appears in the UI with the right number of windows.
-				cycleWindow, err := ui.FindWithTimeout(ctx, tconn, cycleMenuParams, 5*time.Second)
-				if err != nil {
+				if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(cycleMenu)(ctx); err != nil {
 					s.Fatal("Failed to get Alt+Tab cycle menu: ", err)
 				}
-				defer cycleWindow.Release(ctx)
 
 				// Check that there are 3 windows in the cycle menu.
-				openApps, err := cycleWindow.Descendants(ctx, ui.FindParams{
-					Role:  ui.RoleTypeWindow,
-					State: map[ui.StateType]bool{ui.StateTypeFocusable: true},
-				})
+				openApps, err := ui.NodesInfo(ctx, nodewith.Role(role.Window).Focusable().Ancestor(cycleMenu))
 				if err != nil {
 					s.Fatal("Failed to get open windows in the cycle menu: ", err)
 				}
-				defer openApps.Release(ctx)
 
 				if len(openApps) != len(windows) {
 					s.Fatalf("Wrong number of apps in cycle window. Expected %v, got %v", len(windows), len(openApps))
