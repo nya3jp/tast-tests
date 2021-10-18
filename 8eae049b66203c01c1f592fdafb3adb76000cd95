@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3832b1fe_dfb88c5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-18T09:17:28Z",
+      "side": 1,
+      "message": "Moved tast/local/bundles/cros/ui/videocuj to tast/local/videocuj as discussed in \n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3168678/comments/3a20e2b3_2c604bf5",
+      "revId": "8eae049b66203c01c1f592fdafb3adb76000cd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
