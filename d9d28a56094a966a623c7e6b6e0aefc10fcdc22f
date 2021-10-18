@@ -141,6 +141,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85116823_7ba6eac0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-10-18T18:35:15Z",
+      "side": 1,
+      "message": "The default value was integrated into the servo proxy lib. See crrev.com/c/2997802",
+      "parentUuid": "2dc74049_a3356994",
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d73c4339_18023e50",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
         "patchSetId": 6
