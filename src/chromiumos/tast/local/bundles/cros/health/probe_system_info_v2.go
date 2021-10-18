@@ -28,7 +28,7 @@ func init() {
 		Contacts: []string{
 			"cros-tdm-tpe-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
 	})
