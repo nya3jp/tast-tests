@@ -1,0 +1,278 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb0db665_4c8c333d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-18T06:35:15Z",
+      "side": 1,
+      "message": "my initial scan.",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced3dbed_f836246d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-18T06:35:15Z",
+      "side": 1,
+      "message": "nit: why not to take tconn by arg?",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b6ffa57_e60444b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-18T06:35:15Z",
+      "side": 1,
+      "message": "unused. pls remove.",
+      "range": {
+        "startLine": 75,
+        "startChar": 44,
+        "endLine": 75,
+        "endChar": 59
+      },
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e59a17b2_0064519d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-18T06:35:15Z",
+      "side": 1,
+      "message": "prob. typo: seconds",
+      "range": {
+        "startLine": 83,
+        "startChar": 85,
+        "endLine": 83,
+        "endChar": 92
+      },
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f1cde23_640ce8fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-18T06:35:15Z",
+      "side": 1,
+      "message": "could you describe the semantics for each field?",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a18d41d_7e9389aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-18T06:35:15Z",
+      "side": 1,
+      "message": "nit/style: we do not often shorten text by txt in the context like this.",
+      "range": {
+        "startLine": 97,
+        "startChar": 10,
+        "endLine": 97,
+        "endChar": 13
+      },
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f242755_a8ec0301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-18T06:35:15Z",
+      "side": 1,
+      "message": "confusing function name. Maybe UpdateWebstoreApp or something? (Hmm... I couldn\u0027t come up with the best name immediately. Better naming is welcome).",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 39
+      },
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f21090_89856ee9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-18T06:35:15Z",
+      "side": 1,
+      "message": "so, app.URL should be non-empty always?\nCould you return if so, then?",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eccefa3_ab680f1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-18T06:35:15Z",
+      "side": 1,
+      "message": "ditto for confusion, since this may not be \"add\" for uninstall case.",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8931c0_6fb0b9d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-18T06:35:15Z",
+      "side": 1,
+      "message": "could you clarify what is the intention of this activate?",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 3
+      },
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbacede5_85ae04fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore_app_install_uninstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-18T06:35:15Z",
+      "side": 1,
+      "message": "why is this in graphics package? Looks like not very directly related to graphics to me.",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "302f30a9_d763b1c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore_app_install_uninstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-18T06:35:15Z",
+      "side": 1,
+      "message": "could you use loggedIn fixture?",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d383b90_ae1f1354",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore_app_install_uninstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-18T06:35:15Z",
+      "side": 1,
+      "message": "nit/style: we often do not have empty line between the function call returning err and if err check.",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61830212_56d80981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore_app_install_uninstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-18T06:35:15Z",
+      "side": 1,
+      "message": "style:\n\nappURL :\u003d fmt.Sprintf(...)",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 114
+      },
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
