@@ -206,6 +206,23 @@ func (vkbCtx *VirtualKeyboardContext) TapNode(finder *nodewith.Finder) uiauto.Ac
 	)
 }
 
+// DoubleTapNode returns an action to double tap on a node.
+// Note: DoubleTapNode cannot be replaced by calling TapNode twice.
+// vkbCtx.ui.MouseMoveTo function waits for the node location to be stable.
+// It can take ~500ms and causing long sleep between 2 clicks.
+func (vkbCtx *VirtualKeyboardContext) DoubleTapNode(finder *nodewith.Finder) uiauto.Action {
+	return uiauto.Combine("move mouse to node center point and click",
+		vkbCtx.ui.MouseMoveTo(finder, 10*time.Millisecond),
+		mouse.Press(vkbCtx.tconn, mouse.LeftButton),
+		vkbCtx.ui.Sleep(50*time.Millisecond),
+		mouse.Release(vkbCtx.tconn, mouse.LeftButton),
+		vkbCtx.ui.Sleep(50*time.Millisecond),
+		mouse.Press(vkbCtx.tconn, mouse.LeftButton),
+		vkbCtx.ui.Sleep(50*time.Millisecond),
+		mouse.Release(vkbCtx.tconn, mouse.LeftButton),
+	)
+}
+
 // TapKeys return an action simulating tap events in the middle of the specified sequence of keys via touch event.
 // Each key can be any letter of the alphabet, "space" or "backspace".
 // Keys are case sensitive.
