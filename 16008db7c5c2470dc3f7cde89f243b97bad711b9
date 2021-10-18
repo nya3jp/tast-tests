@@ -16,6 +16,24 @@
       "message": "We could make a new feature that is the inverse of `tast_vm`, `no_tast_vm`. The `tast_vm` flag is set here:\nhttps://chromium.googlesource.com/chromiumos/chromite/+/HEAD/lib/cros_test.py#401\n\nThat flag is poorly documented outside of the chromite source. I will add it to the tast document that lists the available dependencies.\n\nAccording to the doc on test dependencies, flags like `real_hardware` or `non_vm` should be avoided, but something like `no_tast_vm`, that only claims to be the inverse of `tast_vm` (once documented) sounds reasonable to me:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md\n\nWhat do you think?\n\nWe should also probably consider refactoring the features in the local_test_runner not to hardcode `betty` in so many places, since there are several VM testing boards now (amd64-generic, novato, one of my team\u0027s boards, reven-vmtest):\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/src/chromiumos/tast/cmd/local_test_runner/main.go.\n\nI created b/202936571 for the tast team to consider that idea.",
       "revId": "16008db7c5c2470dc3f7cde89f243b97bad711b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35e39901_7723be3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/pin_app_to_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-18T22:27:10Z",
+      "side": 1,
+      "message": "I have change the test to informational, so it is not needed now. We will look into  b/202936571 in future. Thanks.",
+      "parentUuid": "4c7e5b1f_d777c9f3",
+      "revId": "16008db7c5c2470dc3f7cde89f243b97bad711b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
