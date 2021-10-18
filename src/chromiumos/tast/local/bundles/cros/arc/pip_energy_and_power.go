@@ -42,7 +42,7 @@ func init() {
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-perf@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      5 * time.Minute,
+		Timeout:      6 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "small",
 			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
