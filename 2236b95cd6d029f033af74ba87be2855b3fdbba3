@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fd0186a_804171da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-18T17:23:18Z",
+      "side": 1,
+      "message": "Currently only two tests (lacros.ShelfLaunch.rootfs and a11y.Smoke.lacros_rootfs) will be affected by this change.",
+      "revId": "2236b95cd6d029f033af74ba87be2855b3fdbba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
