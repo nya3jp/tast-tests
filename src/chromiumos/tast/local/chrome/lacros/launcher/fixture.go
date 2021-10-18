@@ -166,6 +166,7 @@ func init() {
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.EnableFeatures("LacrosSupport"),
+				chrome.EnableFeatures("LacrosPrimary"),
 				chrome.ExtraArgs("--lacros-selection=rootfs"),
 			}, nil
 		}),
