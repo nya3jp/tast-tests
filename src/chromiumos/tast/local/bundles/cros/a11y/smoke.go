@@ -41,8 +41,8 @@ func init() {
 			ExtraAttr:         []string{"informational"},
 			Val:               lacros.ChromeTypeLacros,
 		}, {
-			Name:              "lacros_rootfs",
-			Fixture:           "lacrosRootfs",
+			Name:              "lacros_primary",
+			Fixture:           "lacrosPrimary",
 			ExtraSoftwareDeps: []string{"lacros"},
 			ExtraAttr:         []string{"informational"},
 			Val:               lacros.ChromeTypeLacros,
