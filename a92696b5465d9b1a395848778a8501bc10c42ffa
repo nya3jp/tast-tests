@@ -16,6 +16,24 @@
       "message": "This didn\u0027t build:\n```\ntast-remote-tests-cros-0.0.2-r8072: # chromiumos/tast/remote/bundles/cros/firmware\ntast-remote-tests-cros-0.0.2-r8072: src/chromiumos/tast/remote/bundles/cros/firmware/boot_battery_cutoff.go:38:31: undefined: hwdep.FormFactor\ntast-remote-tests-cros-0.0.2-r8072: src/chromiumos/tast/remote/bundles/cros/firmware/boot_battery_cutoff.go:38:48: undefined: hwdep.Chromeslate\ntast-remote-tests-cros-0.0.2-r8072: src/chromiumos/tast/remote/bundles/cros/firmware/boot_battery_cutoff.go:41:31: undefined: hwdep.SkipOnFormFactor\ntast-remote-tests-cros-0.0.2-r8072: src/chromiumos/tast/remote/bundles/cros/firmware/boot_battery_cutoff.go:41:54: undefined: hwdep.Chromeslate\n```",
       "revId": "a92696b5465d9b1a395848778a8501bc10c42ffa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3a26e36_e2551c4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-18T21:36:19Z",
+      "side": 1,
+      "message": "The CQ must have started before the dependent cl was merged. Let me try CQ again.",
+      "parentUuid": "1b67236a_aec57335",
+      "revId": "a92696b5465d9b1a395848778a8501bc10c42ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
