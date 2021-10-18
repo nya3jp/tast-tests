@@ -171,7 +171,7 @@ func init() {
 			},
 			Timeout:           20 * time.Minute,
 			ExtraAttr:         []string{"graphics_weekly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(gpuAmd, gpuQcom...)...)),
 		}, {
 			Name: "kms_cursor_legacy_unstable",
 			Val: igtTest{
@@ -179,7 +179,7 @@ func init() {
 			},
 			Timeout:           20 * time.Minute,
 			ExtraAttr:         []string{"graphics_weekly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(gpuAmd, gpuQcom...)...)),
 		}, {
 			Name: "kms_dp_aux_dev",
 			Val: igtTest{
@@ -201,7 +201,7 @@ func init() {
 			},
 			Timeout:           30 * time.Minute,
 			ExtraAttr:         []string{"graphics_weekly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...), hwdep.SkipOnPlatform(gpuMtk...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(append(gpuAmd, gpuQcom...), gpuMtk...)...)),
 		}, {
 			Name: "kms_flip_unstable",
 			Val: igtTest{
@@ -209,7 +209,7 @@ func init() {
 			},
 			Timeout:           30 * time.Minute,
 			ExtraAttr:         []string{"graphics_weekly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...), hwdep.Platform(gpuMtk...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(append(gpuAmd, gpuQcom...), gpuMtk...)...)),
 		}, {
 			Name: "kms_flip_event_leak",
 			Val: igtTest{
@@ -252,7 +252,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(gpuAmd, gpuQcom...)...)),
 		}, {
 			Name: "kms_panel_fitting_unstable",
 			Val: igtTest{
@@ -260,7 +260,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(gpuAmd, gpuQcom...)...)),
 		}, {
 			Name: "kms_pipe_crc_basic",
 			Val: igtTest{
@@ -275,7 +275,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(gpuAmd, gpuQcom...)...)),
 		}, {
 			Name: "kms_plane_unstable",
 			Val: igtTest{
@@ -283,7 +283,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(gpuAmd, gpuQcom...)...)),
 		}, {
 			Name: "kms_plane_alpha_blend",
 			Val: igtTest{
@@ -291,7 +291,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(gpuAmd, gpuQcom...)...)),
 		}, {
 			Name: "kms_plane_alpha_blend_unstable",
 			Val: igtTest{
@@ -299,7 +299,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(gpuAmd, gpuQcom...)...)),
 		}, {
 			Name: "kms_plane_cursor",
 			Val: igtTest{
@@ -307,7 +307,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...), hwdep.SkipOnPlatform(gpuMtk...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(append(gpuAmd, gpuQcom...), gpuMtk...)...)),
 		}, {
 			Name: "kms_plane_cursor_unstable",
 			Val: igtTest{
@@ -315,7 +315,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...), hwdep.Platform(gpuMtk...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(append(gpuAmd, gpuQcom...), gpuMtk...)...)),
 		}, {
 			Name: "kms_plane_lowres",
 			Val: igtTest{
@@ -330,7 +330,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(gpuAmd, gpuQcom...)...)),
 		}, {
 			Name: "kms_plane_multiple_unstable",
 			Val: igtTest{
@@ -338,7 +338,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(gpuAmd, gpuQcom...)...)),
 		}, {
 			Name: "kms_plane_scaling",
 			Val: igtTest{
@@ -346,7 +346,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(gpuAmd...), hwdep.SkipOnPlatform(gpuQcom...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(append(gpuAmd, gpuQcom...)...)),
 		}, {
 			Name: "kms_plane_scaling_unstable",
 			Val: igtTest{
@@ -354,7 +354,7 @@ func init() {
 			},
 			Timeout:           5 * time.Minute,
 			ExtraAttr:         []string{"graphics_nightly"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(gpuAmd...), hwdep.Platform(gpuQcom...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(append(gpuAmd, gpuQcom...)...)),
 		}, {
 			Name: "kms_prime",
 			Val: igtTest{
