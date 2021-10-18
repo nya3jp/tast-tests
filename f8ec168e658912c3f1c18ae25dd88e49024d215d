@@ -73,6 +73,30 @@
       },
       "revId": "f8ec168e658912c3f1c18ae25dd88e49024d215d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f14d4c40_117f6644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-10-18T10:05:17Z",
+      "side": 1,
+      "message": "For this specific case, maybe we can have a var `action_sequence` to specify the desired action sequence to stress, like `action_sequence\u003drestart-app,take_photo` in this case.",
+      "parentUuid": "3b76ef11_6fb75c66",
+      "range": {
+        "startLine": 148,
+        "startChar": 10,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "f8ec168e658912c3f1c18ae25dd88e49024d215d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
