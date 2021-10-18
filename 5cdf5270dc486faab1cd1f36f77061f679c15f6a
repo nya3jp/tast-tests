@@ -35,6 +35,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cde11b7_43971cc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-18T09:47:52Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "5cdf5270dc486faab1cd1f36f77061f679c15f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8d7c63_1fe4fa0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_geolocation_setting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-18T09:47:52Z",
+      "side": 1,
+      "message": "nit: We actually wanted to move away from too short variable names to improve readability. As these tests will serve as example we should take extra care here.",
+      "range": {
+        "startLine": 136,
+        "startChar": 6,
+        "endLine": 136,
+        "endChar": 11
+      },
+      "revId": "5cdf5270dc486faab1cd1f36f77061f679c15f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "198c8d0f_6b8691c3",
@@ -53,6 +93,53 @@
         "startChar": 116,
         "endLine": 148,
         "endChar": 121
+      },
+      "revId": "5cdf5270dc486faab1cd1f36f77061f679c15f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f9c4961_a247e396",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/saving_browser_history_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-18T09:47:52Z",
+      "side": 1,
+      "message": "That shouldn\u0027t happen unless you have multiple histories open at the same time.",
+      "parentUuid": "198c8d0f_6b8691c3",
+      "range": {
+        "startLine": 148,
+        "startChar": 116,
+        "endLine": 148,
+        "endChar": 121
+      },
+      "revId": "5cdf5270dc486faab1cd1f36f77061f679c15f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "944bc75a_d607f7fa",
+        "filename": "src/chromiumos/tast/local/policyutil/settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-18T09:47:52Z",
+      "side": 1,
+      "message": "Are all tests that are using this function taken care of in this CL?\nI thought there were more.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 108
       },
       "revId": "5cdf5270dc486faab1cd1f36f77061f679c15f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
