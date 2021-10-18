@@ -113,7 +113,9 @@ func init() {
 			},
 
 			{
-				Name:              "lacros_default",
+				Name: "lacros_default",
+				// Mark as informational until crbug.com/1261211 is resolved.
+				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 				Fixture:           fixture.LacrosPolicyLoggedIn,
 				Val: []imagesSettingTestTable{
