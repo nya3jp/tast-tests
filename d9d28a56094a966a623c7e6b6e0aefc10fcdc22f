@@ -71,6 +71,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cce20925_20ed5961",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-18T22:23:42Z",
+      "side": 1,
+      "message": "Fine with me, but please address Hidehiko\u0027s comments.",
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6500b315_e0034abf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
         "patchSetId": 6
@@ -153,6 +170,24 @@
       "side": 1,
       "message": "The default value was integrated into the servo proxy lib. See crrev.com/c/2997802",
       "parentUuid": "2dc74049_a3356994",
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9d10047_ade2522c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-10-18T22:23:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "85116823_7ba6eac0",
       "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
