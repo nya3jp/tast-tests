@@ -16,8 +16,10 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -39,8 +41,16 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
-		Data:         []string{"prompt_for_download_location.html", "prompt_for_download_location.zip"},
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               lacros.ChromeTypeLacros,
+		}},
+		Data: []string{"prompt_for_download_location.html", "prompt_for_download_location.zip"},
 	})
 }
 
@@ -48,6 +58,11 @@ func init() {
 func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -112,7 +127,15 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			if err := policyutil.SettingsPage(ctx, cr, "downloads").
+			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
+			// Setup browser based on the chrome type.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+			if err != nil {
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
+			if err := policyutil.SettingsPage(ctx, cr, br, "downloads").
 				SelectNode(ctx, nodewith.
 					Name("Ask where to save each file before downloading").
 					Role(role.ToggleButton)).
@@ -123,7 +146,7 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 			}
 
 			// Start a download.
-			conn, err := cr.NewConn(ctx, server.URL+"/prompt_for_download_location.html")
+			conn, err := br.NewConn(ctx, server.URL+"/prompt_for_download_location.html")
 			if err != nil {
 				s.Fatal("Failed to start download: ", err)
 			}
