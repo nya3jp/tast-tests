@@ -92,7 +92,7 @@ func init() {
 func Autocad(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.autodesk.autocadws"
-		appActivity = ".legacy.activities.StartupActivity"
+		appActivity = ".ui.RootActivity"
 	)
 	testSet := s.Param().(testutil.TestParams)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
@@ -117,7 +117,7 @@ func launchAppForAutocad(ctx context.Context, s *testing.State, tconn *chrome.Te
 	)
 
 	// Click on sign in button.
-	signInButton := d.Object(ui.Text(signInText))
+	signInButton := d.Object(ui.TextMatches("(?i)" + signInText))
 	if err := signInButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Error("sign in button doesn't exist: ", err)
 	} else if err := signInButton.Click(ctx); err != nil {
