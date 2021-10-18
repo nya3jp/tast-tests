@@ -85,7 +85,7 @@ func ResizeOk(ctx context.Context, s *testing.State) {
 		s.Log("Failed to start recording: ", err)
 	}
 
-	defer uiauto.StopRecordFromKBAndSaveOnError(ctx, tconn, s.HasError, s.OutDir())
+	defer uiauto.StopRecordFromKBAndSaveOnError(cleanupCtx, tconn, s.HasError, s.OutDir())
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
