@@ -79,6 +79,17 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 	a := multivm.ARCFromPre(pre)
 	cont := multivm.CrostiniFromPre(pre)
 
+	// Ensure connectivity is available.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return testexec.CommandContext(ctx, "/bin/ping", "-c1", "-w1", "8.8.8.8").Run()
+	}, &testing.PollOptions{Timeout: 1 * time.Second}); err != nil {
+		s.Fatal("Failed to ping 8.8.8.8: ", err)
+	}
+
+	if err := dns.WaitUntilDoHStable(ctx); err != nil {
+		s.Fatal("DoH provider list is not stable: ", err)
+	}
+
 	// Install dig in container.
 	if err := dns.InstallDigInContainer(ctx, cont); err != nil {
 		s.Fatal("Failed to install dig in container: ", err)
@@ -89,10 +100,6 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 	if err := dns.SetDoHMode(ctx, cr, tconn, params.mode, dns.GoogleDoHProvider); err != nil {
 		s.Fatal("Failed to set DNS-over-HTTPS mode: ", err)
 	}
-
-	// Wait for the updated DoH mode to be propagated to the proxy.
-	// TODO(jasongustaman): Update to polling shill DBus property.
-	testing.Sleep(ctx, 10*time.Second)
 
 	var domainDefault, domainDNSBlocked string
 	switch params.mode {

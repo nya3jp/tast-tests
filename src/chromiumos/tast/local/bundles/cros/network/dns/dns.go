@@ -6,7 +6,10 @@ package dns
 
 import (
 	"context"
+	"reflect"
+	"time"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -18,7 +21,9 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/vm"
+	"chromiumos/tast/testing"
 )
 
 // DoHMode defines possible type of DNS-over-HTTPS.
@@ -110,7 +115,7 @@ func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 		if err := toggleSecureDNS(ctx, checked.False); err != nil {
 			return err
 		}
-		return nil
+		break
 	case DoHAutomatic:
 		if err := toggleSecureDNS(ctx, checked.True); err != nil {
 			return err
@@ -120,7 +125,7 @@ func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 		if err := ac.LeftClick(rb)(ctx); err != nil {
 			return errors.Wrap(err, "failed to enable automatic mode")
 		}
-		return nil
+		break
 	case DoHAlwaysOn:
 		if err := toggleSecureDNS(ctx, checked.True); err != nil {
 			return err
@@ -163,7 +168,19 @@ func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 		)(ctx); err != nil {
 			return errors.Wrap(err, "failed to enable DoH with a custom provider")
 		}
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := WaitUntilDoHStable(ctx); err != nil {
+			return err
+		}
+		if m, err := getDoHMode(ctx); err != nil {
+			return err
+		} else if m != mode {
+			return errors.New("failed to get the correct DoH mode")
+		}
 		return nil
+	}, &testing.PollOptions{Timeout: 1 * time.Second}); err != nil {
+		return err
 	}
 	return nil
 }
@@ -220,4 +237,66 @@ func InstallDigInContainer(ctx context.Context, cont *vm.Container) error {
 		return errors.Wrap(err, "failed to install dig in container")
 	}
 	return nil
+}
+
+// WaitUntilDoHStable waits until the list of DNS-over-HTTPS providers is stable.
+func WaitUntilDoHStable(ctx context.Context) error {
+	var lastProviders map[string]interface{}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		providers, err := getDoHProviders(ctx)
+		if err != nil {
+			return err
+		}
+		if !reflect.DeepEqual(lastProviders, providers) {
+			lastProviders = make(map[string]interface{})
+			for provider, ns := range providers {
+				lastProviders[provider] = ns
+			}
+			return errors.New("mismatched DoH providers")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 1 * time.Second}); err != nil {
+		return err
+	}
+	return nil
+}
+
+// getDoHProviders returns the current DNS-over-HTTPS providers.
+func getDoHProviders(ctx context.Context) (map[string]interface{}, error) {
+	m, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create shill manager object")
+	}
+
+	props, err := m.GetProperties(ctx)
+	if err != nil {
+		return nil, err
+	}
+	out, err := props.Get(shillconst.ManagerPropertyDOHProviders)
+	if err != nil {
+		return nil, err
+	}
+	providers, ok := out.(map[string]interface{})
+	if !ok {
+		return nil, errors.Errorf("property %s is not a map of string to interface: %q", shillconst.ManagerPropertyDOHProviders, out)
+	}
+	return providers, nil
+}
+
+// getDoHMode returns the current DNS-over-HTTPS mode.
+func getDoHMode(ctx context.Context) (DoHMode, error) {
+	providers, err := getDoHProviders(ctx)
+	if err != nil {
+		return DoHOff, err
+	}
+	if len(providers) == 0 {
+		return DoHOff, nil
+	}
+	for _, ns := range providers {
+		if ns == "" {
+			continue
+		}
+		return DoHAutomatic, nil
+	}
+	return DoHAlwaysOn, nil
 }
