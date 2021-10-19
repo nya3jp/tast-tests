@@ -117,6 +117,24 @@
       "parentUuid": "0b452a6d_37330ecf",
       "revId": "4a93d0397f375de5bfb168dbc20d37cd6b16e3cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96424b63_df9af9f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/record_partial_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-10-19T22:15:59Z",
+      "side": 1,
+      "message": "You are right!",
+      "parentUuid": "8eb1c6ea_8b3aad6e",
+      "revId": "4a93d0397f375de5bfb168dbc20d37cd6b16e3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
