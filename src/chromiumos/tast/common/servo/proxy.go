@@ -54,6 +54,10 @@ func splitHostPort(servoHostPort string) (string, int, int, error) {
 	}
 
 	hostport := servoHostPort
+	if strings.HasSuffix(hostport, ":nossh") {
+		sshPort = 0
+		hostport = strings.TrimSuffix(hostport, ":nossh")
+	}
 	sshParts := strings.SplitN(hostport, ":ssh:", 2)
 	if len(sshParts) == 2 {
 		hostport = sshParts[0]
@@ -113,6 +117,8 @@ func splitHostPort(servoHostPort string) (string, int, int, error) {
 // which can be blank (defaults to localhost:9999:ssh:22) or a hostname (defaults to hostname:9999:ssh:22)
 // or a host:port (ssh port defaults to 22) or to fully qualify everything host:port:ssh:sshport.
 //
+// Use hostname:9999:nossh to prevent the use of ssh at all. You probably don't ever want to use this.
+//
 // You can also use IPv4 addresses as the hostnames, or IPv6 addresses in square brackets [::1].
 //
 // If you are using ssh port forwarding, please note that the host and ssh port will be evaluated locally,
@@ -143,7 +149,7 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 	}
 	pxy.port = port
 	// If the servod instance isn't running locally, assume that we need to connect to it via SSH.
-	if !isDockerHost(host) && ((host != "localhost" && host != "127.0.0.1" && host != "::1") || sshPort != 22) {
+	if sshPort > 0 && !isDockerHost(host) && ((host != "localhost" && host != "127.0.0.1" && host != "::1") || sshPort != 22) {
 		// First, create an SSH connection to the remote system running servod.
 		sopt := ssh.Options{
 			KeyFile:        keyFile,
