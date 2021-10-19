@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/video/perf/h264/2160p_60fps_600frames_20181225.h264.mp4",
-  "size": 42718702,
-  "sha256sum": "65e0b2768c850a22530f40fb87b6ddc9adcb277efef7ffc073279bae0dd41a1c"
+  "sha256sum": "8bb44662f17714ac300837ae4491bf3cc30e1769ca012d342cb5f46a8294e0ca",
+  "size": 17587909,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/perf/h264/2160p_60fps_600frames_20211019.h264.mp4"
 }
