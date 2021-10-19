@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d29f3e_ff4f4533",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_crash_data_survival.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-19T12:58:14Z",
+      "side": 1,
+      "message": "This is taken care of by the defer cleanup on L69.",
+      "parentUuid": "e0d07cb8_aa4311ef",
+      "range": {
+        "startLine": 121,
+        "startChar": 18,
+        "endLine": 121,
+        "endChar": 28
+      },
+      "revId": "69752cfe664c2d52dba213288269cd2e01ff5d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5971bca2_494488fc",
@@ -87,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db804736_462eea70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_crash_data_survival.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-19T12:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5971bca2_494488fc",
+      "range": {
+        "startLine": 139,
+        "startChar": 44,
+        "endLine": 139,
+        "endChar": 49
+      },
+      "revId": "69752cfe664c2d52dba213288269cd2e01ff5d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12c60d9b_88f50c2b",
@@ -100,6 +148,30 @@
       "writtenOn": "2021-10-18T21:31:50Z",
       "side": 1,
       "message": "restart?",
+      "range": {
+        "startLine": 142,
+        "startChar": 52,
+        "endLine": 142,
+        "endChar": 57
+      },
+      "revId": "69752cfe664c2d52dba213288269cd2e01ff5d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a482372_a28ec80a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_crash_data_survival.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-19T12:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12c60d9b_88f50c2b",
       "range": {
         "startLine": 142,
         "startChar": 52,
