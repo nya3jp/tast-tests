@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27845294_50ff2814",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-19T05:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "768b4a14_f063e64f",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ec56bf5_b34145b0",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-18T11:25:38Z",
       "side": 1,
       "message": "I personally do not recommend to use First() selecting node, which means you actually have not worked out an unique identifier.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 100
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f981e5_12d0ab98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-19T05:34:16Z",
+      "side": 1,
+      "message": "If we fail during execution, there may be multiple files with \"sample\" as the prefix of the file name (e.g. sample.xlsx, sample-1.xlsx... etc.). Sometimes, \"sample.xlsx\" doesn\u0027t even appear on the homepage anymore because we created too many files after it.\nThe location of the file varies according to the frequency of testing, and we cannot ensure its location.\nSince our purpose is to open an existing spreadsheet and manipulate it, I think it is acceptable for us to only open First() files that satisfy the regular expression.",
+      "parentUuid": "0ec56bf5_b34145b0",
       "range": {
         "startLine": 110,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0546427a_f6704ae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-19T05:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75966f2f_dedb2560",
+      "range": {
+        "startLine": 213,
+        "startChar": 55,
+        "endLine": 213,
+        "endChar": 59
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e39f8023_c50f391e",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-18T11:25:38Z",
       "side": 1,
       "message": "Not sure if this is the best approach to get a cell value. Maybe api can be more reliable and stable. https://developers.google.com/sheets/api/guides/values.\n\nAlternatively, javascript might work as well. I can see the data is saved in an object. Not very sure about it.",
+      "range": {
+        "startLine": 226,
+        "startChar": 23,
+        "endLine": 226,
+        "endChar": 35
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abe54d7c_3106fcdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-19T05:34:16Z",
+      "side": 1,
+      "message": "We have been testing this method for several months. According to the results, we can see that it is working well. At least so far we have not encountered any problems.\nBut I will study the api you provided to see if it is really more reliable and stable in our internal testing.",
+      "parentUuid": "e39f8023_c50f391e",
       "range": {
         "startLine": 226,
         "startChar": 23,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "495a150f_b6cd6dc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-19T05:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a868d892_6b3faeab",
+      "range": {
+        "startLine": 270,
+        "startChar": 9,
+        "endLine": 270,
+        "endChar": 12
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "543bdc46_99e0bac4",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-10-18T11:25:38Z",
       "side": 1,
       "message": "nit: please wrap the error, nicely with the cell info.",
+      "range": {
+        "startLine": 278,
+        "startChar": 10,
+        "endLine": 278,
+        "endChar": 13
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95861ddd_f570d6ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-19T05:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "543bdc46_99e0bac4",
       "range": {
         "startLine": 278,
         "startChar": 10,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c2a4d1_51004f42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-19T05:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc251465_6db067f4",
+      "range": {
+        "startLine": 285,
+        "startChar": 9,
+        "endLine": 285,
+        "endChar": 12
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12af64b6_21ba6994",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6727c6ef_a0f318e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-19T05:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12af64b6_21ba6994",
+      "range": {
+        "startLine": 290,
+        "startChar": 9,
+        "endLine": 290,
+        "endChar": 12
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aeec2c2b_e79e8888",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-10-18T11:25:38Z",
       "side": 1,
       "message": "Google sheet opened in web page is not saved by Ctrl+S. It is automatically saved.",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 31
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6920120a_ad7282a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-19T05:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aeec2c2b_e79e8888",
       "range": {
         "startLine": 306,
         "startChar": 0,
