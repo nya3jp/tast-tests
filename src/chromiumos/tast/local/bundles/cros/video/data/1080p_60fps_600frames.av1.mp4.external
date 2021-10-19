@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/video/perf/av1/1080p_60fps_600frames_20190305.av1.mp4",
-  "size": 2444983,
-  "sha256sum": "f2be47f29f9bd1b126ec0d5c11e154912bd637406c8f1f8a0c5d29ff11162bee"
+  "sha256sum": "e01c1ccdf5505f10c6e91273aeb873fd185ee9d0fb1c9b4f6427502688c787c9",
+  "size": 8735095,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/perf/av1/1080p_60fps_600frames_20211019.av1.mp4"
 }
