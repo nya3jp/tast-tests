@@ -22,6 +22,30 @@
       },
       "revId": "89d5cfa2fbcc59a1f35da600ae46bdb692e16b6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f72726c2_722c5c49",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/data/enabled_syscalls.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-10-19T18:54:50Z",
+      "side": 1,
+      "message": "I just put up a CL earlier today here that does exactly that; the symlink generation is added in as well. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3232158",
+      "parentUuid": "0d94fab8_9292c4d4",
+      "range": {
+        "startLine": 452,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 58
+      },
+      "revId": "89d5cfa2fbcc59a1f35da600ae46bdb692e16b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
