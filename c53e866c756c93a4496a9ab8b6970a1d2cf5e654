@@ -63,6 +63,30 @@
       },
       "revId": "c53e866c756c93a4496a9ab8b6970a1d2cf5e654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "057a7ea5_c3fd3b84",
+        "filename": "src/chromiumos/tast/local/memory/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-10-19T06:47:52Z",
+      "side": 1,
+      "message": "I think it\u0027s okay to not specifically look for timeout. But in that case, I have two recommendations:\n1) Surface the process output from within DumpsysMeminfoMetrics() as part of the err object (perhaps only surface the first x bytes, as that can be huge), so that we know in the future why it failed.\n2) Introduce a short pause before retries, so that the retries don\u0027t compound a possible system resource issue...",
+      "parentUuid": "9bda0f83_0401aad8",
+      "range": {
+        "startLine": 107,
+        "startChar": 6,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "c53e866c756c93a4496a9ab8b6970a1d2cf5e654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
