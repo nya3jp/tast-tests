@@ -198,6 +198,30 @@
       },
       "revId": "26d8d37e9983cae59a1674ba81df6a2d0bf59762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bd9a329_d708b8fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_disk_full_data_survival.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-19T12:59:21Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the case.",
+      "parentUuid": "c0d5c3e7_546609bf",
+      "range": {
+        "startLine": 59,
+        "startChar": 21,
+        "endLine": 59,
+        "endChar": 83
+      },
+      "revId": "26d8d37e9983cae59a1674ba81df6a2d0bf59762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
