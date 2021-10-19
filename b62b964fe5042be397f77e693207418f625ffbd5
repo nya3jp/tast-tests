@@ -33,6 +33,23 @@
       "message": "Benson, could you PTAL?\n\nThanks!",
       "revId": "b62b964fe5042be397f77e693207418f625ffbd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b67a1c3d_13835537",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-10-19T20:07:38Z",
+      "side": 1,
+      "message": "Friendly ping, Benson PTAL.",
+      "revId": "b62b964fe5042be397f77e693207418f625ffbd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
