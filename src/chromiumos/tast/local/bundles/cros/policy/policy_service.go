@@ -52,6 +52,133 @@ type PolicyService struct { // NOLINT
 
 // EnrollUsingChrome starts a FakeDMS insstance that serves the provided policies and
 // enrolls the device. Specified user is logged in after this function completes.
+func (c *PolicyService) GaiaEnrollUsingChrome(ctx context.Context, req *ppb.EnrollUsingChromeRequest, s *testing.State) (*empty.Empty, error) {
+	testing.ContextLogf(ctx, "Enrolling using Chrome with policy %s", string(req.PolicyJson))
+
+	/*
+		var opts []chrome.Option
+
+		ok := false
+
+		for _, extension := range req.Extensions {
+			extDir, err := ioutil.TempDir("", "tast-extensions-")
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to create temp dir")
+			}
+			defer func(ctx context.Context) {
+				if !ok {
+					if err := os.RemoveAll(extDir); err != nil {
+						testing.ContextLogf(ctx, "Failed to delete %s: %v", extDir, err)
+					}
+				}
+			}(ctx)
+
+			c.extensionDirs = append(c.extensionDirs, extDir)
+
+			for _, file := range extension.Files {
+				if err := ioutil.WriteFile(filepath.Join(extDir, file.Name), file.Contents, 0644); err != nil {
+					return nil, errors.Wrapf(err, "failed to write %s for %s", file.Name, extension.Id)
+				}
+			}
+
+			if extID, err := chrome.ComputeExtensionID(extDir); err != nil {
+				return nil, errors.Wrap(err, "failed to compute extension id")
+			} else if extID != extension.Id {
+				return nil, errors.Errorf("unexpected extension id: got %s; want %s", extID, extension.Id)
+			}
+
+			opts = append(opts, chrome.UnpackedExtension(extDir))
+		}
+	*/
+
+	/*
+		if req.FakedmsDir == "" {
+			tmpdir, err := ioutil.TempDir("", "fdms-")
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to create temp dir")
+			}
+			c.fakeDMSDir = tmpdir
+			c.fakeDMSRemoval = true
+		} else {
+			c.fakeDMSDir = req.FakedmsDir
+			c.fakeDMSRemoval = false
+		}
+
+		defer func() {
+			if !ok {
+				if err := os.RemoveAll(c.fakeDMSDir); err != nil {
+					testing.ContextLogf(ctx, "Failed to delete %s: %v", c.fakeDMSDir, err)
+				}
+				c.fakeDMSDir = ""
+			}
+		}()
+
+		// fakedms.New starts a background process that outlives the current context.
+		fdms, err := fakedms.New(context.Background(), c.fakeDMSDir) // NOLINT
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to start FakeDMS")
+		}
+		c.fakeDMS = fdms
+		defer func() {
+			if !ok {
+				c.fakeDMS.Stop(ctx)
+				c.fakeDMS = nil
+			}
+		}()
+
+		if err := fdms.WritePolicyBlobRaw(req.PolicyJson); err != nil {
+			return nil, errors.Wrap(err, "failed to write policy blob")
+		}
+
+		user := req.Username
+		if user == "" {
+			user = "tast-user@managedchrome.com"
+		}
+	*/
+	/*
+		opts = append(opts, chrome.FakeEnterpriseEnroll(chrome.Creds{User: user, Pass: "test0000"}))
+		if req.SkipLogin {
+			opts = append(opts, chrome.NoLogin())
+		} else {
+			opts = append(opts, chrome.CustomLoginTimeout(chrome.EnrollmentAndLoginTimeout))
+			opts = append(opts, chrome.FakeLogin(chrome.Creds{User: user, Pass: "test0000", GAIAID: "gaiaid"}))
+		}
+
+		opts = append(opts, chrome.DMSPolicy(fdms.URL))
+		opts = append(opts, chrome.ExtraArgs(req.ExtraArgs))
+		opts = append(opts, chrome.EnableLoginVerboseLogs())
+	*/
+	//cr, err := chrome.New(ctx, opts...)
+
+	type testInfo struct {
+		username string // username for Chrome login
+		password string // password to login
+		dmserver string // device management server url
+	}
+
+	param := s.Param().(testInfo)
+	username := s.RequiredVar(param.username)
+	password := s.RequiredVar(param.password)
+	dmServerURL := param.dmserver
+
+	cr, err := chrome.New(
+		ctx,
+		chrome.GAIAEnterpriseEnroll(chrome.Creds{User: username, Pass: password}),
+		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.DMSPolicy(dmServerURL),
+		chrome.ExtraArgs("--login-manager"),
+	)
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+
+	c.chrome = cr
+
+	return &empty.Empty{}, nil
+}
+
+// EnrollUsingChrome starts a FakeDMS insstance that serves the provided policies and
+// enrolls the device. Specified user is logged in after this function completes.
 func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUsingChromeRequest) (*empty.Empty, error) {
 	testing.ContextLogf(ctx, "Enrolling using Chrome with policy %s", string(req.PolicyJson))
 
