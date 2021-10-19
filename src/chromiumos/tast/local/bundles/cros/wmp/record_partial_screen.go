@@ -87,36 +87,35 @@ func RecordPartialScreen(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the primary display info: ", err)
 	}
 
-	// Starts partial screen recording via UI.
-	statusArea := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
-	collapseButton := nodewith.ClassName("CollapseButton")
-	screenCaptureButton := nodewith.ClassName("FeaturePodIconButton").Name("Screen capture")
+	// Start partial screen recording via UI.
 	screenRecordToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Screen record")
 	recordPartialScreenToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Record partial screen")
 	dragStartPt := info.WorkArea.TopLeft()
 	dragEndPt := info.WorkArea.CenterPoint()
+	dragClearPt := info.WorkArea.BottomCenter()
 	stopRecordButton := nodewith.ClassName("TrayBackgroundView").Name("Stop screen recording")
 	recordTakenLabel := nodewith.ClassName("Label").Name("Screen recording taken")
 	if err := uiauto.Combine(
 		"record partial screen",
-		ac.LeftClick(statusArea),
-		ac.WaitUntilExists(collapseButton),
-		ac.LeftClick(screenCaptureButton),
+		// Enter screen capture mode.
+		kb.AccelAction("sysrq"),
 		ac.LeftClick(screenRecordToggleButton),
 		ac.LeftClick(recordPartialScreenToggleButton),
-		// Drags to select an area to record.
+		// Clear the drag area.
+		mouse.Click(tconn, dragClearPt, mouse.LeftButton),
+		// Drag to select an area to record.
 		mouse.Drag(tconn, dragStartPt, dragEndPt, time.Second),
-		kb.AccelAction("Enter"),
-		// Records partial screen for about 30 seconds.
+		kb.AccelAction("enter"),
+		// Record partial screen for about 30 seconds.
 		ac.Sleep(30*time.Second),
 		ac.LeftClick(stopRecordButton),
-		// Checks if the screen record is taken.
+		// Check if the screen record is taken.
 		ac.WaitUntilExists(recordTakenLabel),
 	)(ctx); err != nil {
 		s.Fatal("Failed to record partial screen: ", err)
 	}
 
-	// Checks there is a screen record video file stored in Downloads folder.
+	// Check there is a screen record video file stored in Downloads folder.
 	has, err := wmputils.HasScreenRecord(ctx)
 	if err != nil {
 		s.Fatal("Failed to check whether screen record is present: ", err)
