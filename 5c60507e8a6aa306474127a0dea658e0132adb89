@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cdfc9cd_0740bd46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175549
+      },
+      "writtenOn": "2021-10-19T22:26:12Z",
+      "side": 1,
+      "message": "ptal; this reflects in code what I intended to change here go/cl/401451342",
+      "revId": "5c60507e8a6aa306474127a0dea658e0132adb89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
