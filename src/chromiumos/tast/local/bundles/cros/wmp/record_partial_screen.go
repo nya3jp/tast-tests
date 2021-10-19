@@ -88,30 +88,31 @@ func RecordPartialScreen(ctx context.Context, s *testing.State) {
 	}
 
 	// Starts partial screen recording via UI.
-	statusArea := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
-	collapseButton := nodewith.ClassName("CollapseButton")
-	screenCaptureButton := nodewith.ClassName("FeaturePodIconButton").Name("Screen capture")
 	screenRecordToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Screen record")
 	recordPartialScreenToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Record partial screen")
 	dragStartPt := info.WorkArea.TopLeft()
 	dragEndPt := info.WorkArea.CenterPoint()
+	dragClearPt := info.WorkArea.BottomCenter()
 	stopRecordButton := nodewith.ClassName("TrayBackgroundView").Name("Stop screen recording")
 	recordTakenLabel := nodewith.ClassName("Label").Name("Screen recording taken")
 	if err := uiauto.Combine(
 		"record partial screen",
-		ac.LeftClick(statusArea),
-		ac.WaitUntilExists(collapseButton),
-		ac.LeftClick(screenCaptureButton),
+		// Enters screen capture mode.
+		kb.AccelAction("sysrq"),
 		ac.LeftClick(screenRecordToggleButton),
 		ac.LeftClick(recordPartialScreenToggleButton),
+		// Clears the drag area.
+		mouse.Click(tconn, dragClearPt, mouse.LeftButton),
 		// Drags to select an area to record.
 		mouse.Drag(tconn, dragStartPt, dragEndPt, time.Second),
-		kb.AccelAction("Enter"),
+		kb.AccelAction("enter"),
 		// Records partial screen for about 30 seconds.
 		ac.Sleep(30*time.Second),
 		ac.LeftClick(stopRecordButton),
 		// Checks if the screen record is taken.
 		ac.WaitUntilExists(recordTakenLabel),
+		// Exits screen capture mode.
+		kb.AccelAction("esc"),
 	)(ctx); err != nil {
 		s.Fatal("Failed to record partial screen: ", err)
 	}
