@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68428ad8_0c462b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-19T03:30:59Z",
+      "side": 1,
+      "message": "Use EnsureGoneFor?\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d406",
+      "range": {
+        "startLine": 252,
+        "startChar": 3,
+        "endLine": 256,
+        "endChar": 56
+      },
+      "revId": "c11a9f143ec42de0bf669c80254afa528e699070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de555e8f_ef2a03d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-19T03:30:59Z",
+      "side": 1,
+      "message": "this is not covered in this code?",
+      "range": {
+        "startLine": 265,
+        "startChar": 23,
+        "endLine": 265,
+        "endChar": 37
+      },
+      "revId": "c11a9f143ec42de0bf669c80254afa528e699070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e51ba5b1_2b760d13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-19T03:30:59Z",
+      "side": 1,
+      "message": "This is actually IfSuccessThen?",
+      "range": {
+        "startLine": 267,
+        "startChar": 31,
+        "endLine": 267,
+        "endChar": 37
+      },
+      "revId": "c11a9f143ec42de0bf669c80254afa528e699070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
