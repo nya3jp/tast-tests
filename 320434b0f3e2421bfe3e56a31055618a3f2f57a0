@@ -22,6 +22,30 @@
       },
       "revId": "320434b0f3e2421bfe3e56a31055618a3f2f57a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "973d76d2_3f9615b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-19T23:21:58Z",
+      "side": 1,
+      "message": "We actually need ctrl+Q to quit VSCode entirely. ui accessibility does not have access to the internal items in Linux apps.",
+      "parentUuid": "d310f480_c6392279",
+      "range": {
+        "startLine": 138,
+        "startChar": 23,
+        "endLine": 138,
+        "endChar": 31
+      },
+      "revId": "320434b0f3e2421bfe3e56a31055618a3f2f57a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
