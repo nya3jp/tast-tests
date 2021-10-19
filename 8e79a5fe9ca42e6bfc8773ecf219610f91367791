@@ -166,6 +166,30 @@
       },
       "revId": "8e79a5fe9ca42e6bfc8773ecf219610f91367791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcad051d_ac729e61",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/data/enabled_syscalls.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-10-19T20:02:18Z",
+      "side": 1,
+      "message": "Sure. Can you file a bug?",
+      "parentUuid": "1fa1a420_0774294a",
+      "range": {
+        "startLine": 616,
+        "startChar": 14,
+        "endLine": 616,
+        "endChar": 21
+      },
+      "revId": "8e79a5fe9ca42e6bfc8773ecf219610f91367791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
