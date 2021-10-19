@@ -22,6 +22,30 @@
       },
       "revId": "8e79a5fe9ca42e6bfc8773ecf219610f91367791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb10719_72801296",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/data/enabled_syscalls.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-10-19T19:20:31Z",
+      "side": 1,
+      "message": "I see-- I\u0027m not how this can be done, but it would be great to be able to do this!",
+      "parentUuid": "08b10669_b7b1ee99",
+      "range": {
+        "startLine": 616,
+        "startChar": 14,
+        "endLine": 616,
+        "endChar": 21
+      },
+      "revId": "8e79a5fe9ca42e6bfc8773ecf219610f91367791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
