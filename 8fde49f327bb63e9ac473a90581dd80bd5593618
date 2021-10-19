@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "831e493a_6b583cda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2021-10-19T14:46:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ab2e69_f229a3b2",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 61
+      },
+      "revId": "8fde49f327bb63e9ac473a90581dd80bd5593618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75cc289f_4e261c2e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-19T02:16:28Z",
       "side": 1,
       "message": "Well, Golang has different style rule other than C++/Python in terms of initialism:\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nThe variables should be named as gpuAMD, gpuQCOM and gpuMTK. This is out of the scope of the CL. Please consider fixing them later.",
+      "range": {
+        "startLine": 174,
+        "startChar": 58,
+        "endLine": 174,
+        "endChar": 64
+      },
+      "revId": "8fde49f327bb63e9ac473a90581dd80bd5593618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13ae3598_99749f59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/igt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1328396
+      },
+      "writtenOn": "2021-10-19T14:46:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "75cc289f_4e261c2e",
       "range": {
         "startLine": 174,
         "startChar": 58,
