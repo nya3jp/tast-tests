@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a8f57cc_9035e9ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-19T03:49:03Z",
+      "side": 1,
+      "message": "The following line defer cleanUp(cleanupCtx) will not be called if err !\u003d nil here. So need to move defer cleanUp(cleanupCtx) before this line.",
+      "range": {
+        "startLine": 112,
+        "startChar": 7,
+        "endLine": 112,
+        "endChar": 10
+      },
+      "revId": "e4eacbbbfb3cab215d1dbd1407e11e2087ba0299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb1663ea_c5a7f0df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-19T03:49:03Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 25
+      },
+      "revId": "e4eacbbbfb3cab215d1dbd1407e11e2087ba0299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c9f179f_b1bda9d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-19T03:49:03Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to create all the files for each subtest.",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 8
+      },
+      "revId": "e4eacbbbfb3cab215d1dbd1407e11e2087ba0299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
