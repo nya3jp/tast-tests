@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d310f480_c6392279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2021-10-19T06:01:55Z",
+      "side": 1,
+      "message": "Just FYI - on my glinux ctrl+Q quits VSCode entirely, whereas ctrl+W closes the active window.   Have not changed any keybindings so this is out of the box behaviour on mine.",
+      "range": {
+        "startLine": 138,
+        "startChar": 23,
+        "endLine": 138,
+        "endChar": 31
+      },
+      "revId": "320434b0f3e2421bfe3e56a31055618a3f2f57a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
