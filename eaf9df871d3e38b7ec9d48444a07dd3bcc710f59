@@ -52,6 +52,24 @@
       "parentUuid": "27f4a9a2_5aec0655",
       "revId": "eaf9df871d3e38b7ec9d48444a07dd3bcc710f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca495aac_9f41e12a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-10-19T04:31:01Z",
+      "side": 1,
+      "message": "I filed https://b.corp.google.com/issues/203474103 (for linking from tastboard) and it may be handled by another CL.",
+      "parentUuid": "25d10d1e_25e67448",
+      "revId": "eaf9df871d3e38b7ec9d48444a07dd3bcc710f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
