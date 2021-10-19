@@ -114,7 +114,7 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 
 	// Clicking the close button in overview should close the window.
 	chromeOverviewItemView := nodewith.NameRegex(regexp.MustCompile("Chrome(.*?)")).ClassName("OverviewItemView")
-	closeChromeButton := nodewith.ClassName("ImageButton").Ancestor(chromeOverviewItemView)
+	closeChromeButton := nodewith.ClassName("OverviewCloseButton").Ancestor(chromeOverviewItemView)
 	if err := ac.LeftClick(closeChromeButton)(ctx); err != nil {
 		s.Fatal("Failed to close chrome window: ", err)
 	}
