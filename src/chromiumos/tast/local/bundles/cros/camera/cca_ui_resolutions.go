@@ -10,11 +10,9 @@ import (
 	"math"
 	"os"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/abema/go-mp4"
-	"github.com/pixelbender/go-matroska/matroska"
 	"github.com/rwcarlsen/goexif/exif"
 
 	"chromiumos/tast/common/media/caps"
@@ -163,53 +161,39 @@ func testPhotoResolution(ctx context.Context, app *cca.App) error {
 
 // videoTrackResolution returns the resolution from video file under specified path.
 func videoTrackResolution(path string) (*cca.Resolution, error) {
-	if strings.HasSuffix(path, ".mkv") {
-		doc, err := matroska.Decode(path)
-		if err != nil {
-			return nil, errors.Wrapf(err, "failed to decode video file %v", path)
-		}
-		for _, track := range doc.Segment.Tracks {
-			for _, ent := range track.Entries {
-				if ent.Type == matroska.TrackTypeVideo {
-					return &cca.Resolution{Width: ent.Video.Width, Height: ent.Video.Height}, nil
-				}
-			}
-		}
-	} else if strings.HasSuffix(path, ".mp4") {
-		file, err := os.Open(path)
-		defer file.Close()
-		if err != nil {
-			return nil, errors.Wrapf(err, "failed to open video file %v", path)
-		}
-		boxes, err := mp4.ExtractBoxWithPayload(
-			file, nil, mp4.BoxPath{mp4.BoxTypeMoov(), mp4.BoxTypeTrak(), mp4.BoxTypeTkhd()})
-		if err != nil {
-			return nil, errors.Wrapf(err, "failed to find track boxes in video file %v", path)
-		}
-		for _, b := range boxes {
-			thkd := b.Payload.(*mp4.Tkhd)
-			if thkd.Width > 0 && thkd.Height > 0 {
-				// Ignore the 16 low bits of fractional part.
-				intW := int(thkd.Width >> 16)
-				intH := int(thkd.Height >> 16)
+	file, err := os.Open(path)
+	defer file.Close()
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to open video file %v", path)
+	}
+	boxes, err := mp4.ExtractBoxWithPayload(
+		file, nil, mp4.BoxPath{mp4.BoxTypeMoov(), mp4.BoxTypeTrak(), mp4.BoxTypeTkhd()})
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to find track boxes in video file %v", path)
+	}
+	for _, b := range boxes {
+		thkd := b.Payload.(*mp4.Tkhd)
+		if thkd.Width > 0 && thkd.Height > 0 {
+			// Ignore the 16 low bits of fractional part.
+			intW := int(thkd.Width >> 16)
+			intH := int(thkd.Height >> 16)
 
-				// All possible rotation matrices(values in matrices are 32-bit fixed-point) in mp4 thkd produced from CCA.
-				rotate0 := [9]int32{65536, 0, 0, 0, 65536, 0, 0, 0, 1073741824}
-				rotate90 := [9]int32{0, 65536, 0, -2147418112, 0, 0, 0, 0, 1073741824}
-				rotate180 := [9]int32{-2147418112, 0, 0, 0, -2147418112, 0, 0, 0, 1073741824}
-				rotate270 := [9]int32{0, -2147418112, 0, 65536, 0, 0, 0, 0, 1073741824}
-				switch thkd.Matrix {
-				case rotate0:
-				case rotate180:
-				case rotate90:
-					fallthrough
-				case rotate270:
-					intW, intH = intH, intW
-				default:
-					return nil, errors.Errorf("unknown mp4 thkd matrix %v", thkd.Matrix)
-				}
-				return &cca.Resolution{Width: intW, Height: intH}, nil
+			// All possible rotation matrices(values in matrices are 32-bit fixed-point) in mp4 thkd produced from CCA.
+			rotate0 := [9]int32{65536, 0, 0, 0, 65536, 0, 0, 0, 1073741824}
+			rotate90 := [9]int32{0, 65536, 0, -2147418112, 0, 0, 0, 0, 1073741824}
+			rotate180 := [9]int32{-2147418112, 0, 0, 0, -2147418112, 0, 0, 0, 1073741824}
+			rotate270 := [9]int32{0, -2147418112, 0, 65536, 0, 0, 0, 0, 1073741824}
+			switch thkd.Matrix {
+			case rotate0:
+			case rotate180:
+			case rotate90:
+				fallthrough
+			case rotate270:
+				intW, intH = intH, intW
+			default:
+				return nil, errors.Errorf("unknown mp4 thkd matrix %v", thkd.Matrix)
 			}
+			return &cca.Resolution{Width: intW, Height: intH}, nil
 		}
 	}
 	return nil, errors.Errorf("no video track found in the file %v", path)
