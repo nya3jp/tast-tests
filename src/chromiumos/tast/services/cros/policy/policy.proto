@@ -13,6 +13,7 @@ option go_package = "chromiumos/tast/services/cros/policy";
 // Policy provides functions to perform enrollment.
 service PolicyService {
   rpc EnrollUsingChrome(EnrollUsingChromeRequest) returns (google.protobuf.Empty) {}
+  rpc GAIAEnrollUsingChrome(GAIAEnrollUsingChromeRequest) returns (google.protobuf.Empty) {}
   rpc UpdatePolicies(UpdatePoliciesRequest) returns (google.protobuf.Empty) {}
   rpc CheckChromeAndFakeDMS(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc StopChromeAndFakeDMS(google.protobuf.Empty) returns (google.protobuf.Empty) {}
@@ -50,6 +51,12 @@ message EnrollUsingChromeRequest {
   string extra_args = 4;
   string fakedms_dir = 5;
   bool skip_login = 6;
+}
+
+message GAIAEnrollUsingChromeRequest {
+  string username = 1;
+  string password = 2;
+  string dmserverURL = 3;
 }
 
 message CreateFakeDMSDirRequest {

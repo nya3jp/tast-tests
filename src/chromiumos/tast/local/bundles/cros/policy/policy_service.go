@@ -50,6 +50,26 @@ type PolicyService struct { // NOLINT
 	eds *externaldata.Server
 }
 
+// GAIAEnrollUsingChrome enrolls the device using dmserver. Specified user is logged in after this function completes.
+func (c *PolicyService) GAIAEnrollUsingChrome(ctx context.Context, req *ppb.GAIAEnrollUsingChromeRequest) (*empty.Empty, error) {
+	testing.ContextLogf(ctx, "Enrolling using Chrome with username: %s, dmserver: %s", string(req.Username), string(req.DmserverURL))
+
+	cr, err := chrome.New(
+		ctx,
+		chrome.GAIAEnterpriseEnroll(chrome.Creds{User: req.Username, Pass: req.Password}),
+		chrome.GAIALogin(chrome.Creds{User: req.Username, Pass: req.Password}),
+		chrome.DMSPolicy(req.DmserverURL),
+		//chrome.ExtraArgs("--login-manager"),
+	)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start chrome")
+	}
+
+	c.chrome = cr
+
+	return &empty.Empty{}, nil
+}
+
 // EnrollUsingChrome starts a FakeDMS insstance that serves the provided policies and
 // enrolls the device. Specified user is logged in after this function completes.
 func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUsingChromeRequest) (*empty.Empty, error) {
@@ -299,7 +319,7 @@ func (c *PolicyService) StopChrome(ctx context.Context, req *empty.Empty) (*empt
 	var lastErr error
 
 	if c.chrome == nil {
-		return nil, errors.New("No active Chrome instance")
+		return nil, errors.New("no active Chrome instance")
 	}
 
 	for id, conn := range c.extensionConns {
@@ -321,7 +341,7 @@ func (c *PolicyService) StopChrome(ctx context.Context, req *empty.Empty) (*empt
 
 func (c *PolicyService) ContinueLogin(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	if c.chrome == nil {
-		return nil, errors.New("No active Chrome instance")
+		return nil, errors.New("no active Chrome instance")
 	}
 
 	if err := c.chrome.ContinueLogin(ctx); err != nil {
