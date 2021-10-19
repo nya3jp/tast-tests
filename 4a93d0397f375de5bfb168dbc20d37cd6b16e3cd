@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a49df964_99f0e256",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/record_partial_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-19T15:33:50Z",
+      "side": 1,
+      "message": "q: What does this new esc press do?",
+      "revId": "4a93d0397f375de5bfb168dbc20d37cd6b16e3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
