@@ -39,6 +39,30 @@
       },
       "revId": "c53e866c756c93a4496a9ab8b6970a1d2cf5e654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bda0f83_0401aad8",
+        "filename": "src/chromiumos/tast/local/memory/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-10-19T05:05:36Z",
+      "side": 1,
+      "message": "The `dumpsys meminfo` commend still returns 0 when it times out, and just prints different text. So I was lazy and didn\u0027t want to write more text parsing code. (and then worry about different versions of android printing out different things...)\n\nDo you think we should try?",
+      "parentUuid": "73bf1437_5ebd6327",
+      "range": {
+        "startLine": 107,
+        "startChar": 6,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "c53e866c756c93a4496a9ab8b6970a1d2cf5e654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
