@@ -16,6 +16,190 @@
       "message": "Moved tast/local/bundles/cros/ui/videocuj to tast/local/videocuj as discussed in \n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3168678/comments/3a20e2b3_2c604bf5",
       "revId": "8eae049b66203c01c1f592fdafb3adb76000cd95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "843f6dea_e0f25ba5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-19T13:05:39Z",
+      "side": 1,
+      "message": "nit: split into multiple line, e.g.\n\n```\nContacts: []string{\n    \"ambalavanan.m.m@intel.com\",\n    \"andrescj@google.com\", \n    \"intel-chrome-system-automation-team@intel.com\",\n    \"chromeos-gfx-video@google.com\"\n},\n```",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 159
+      },
+      "revId": "8eae049b66203c01c1f592fdafb3adb76000cd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ed961c7_e6ec1162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-19T13:05:39Z",
+      "side": 1,
+      "message": "same: s.Error vs s.Fatal\n\nsame in other places",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "8eae049b66203c01c1f592fdafb3adb76000cd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c780b849_68286535",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-19T13:05:39Z",
+      "side": 1,
+      "message": "nit: use VirtualKeyboard to make test more stable. Not all devices have keyboard and sometimes keyboard layouts slightly different.",
+      "range": {
+        "startLine": 82,
+        "startChar": 18,
+        "endLine": 82,
+        "endChar": 26
+      },
+      "revId": "8eae049b66203c01c1f592fdafb3adb76000cd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc21747_3bd02ca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-19T13:05:39Z",
+      "side": 1,
+      "message": "nit: maybe just inline cuj.NewSmoothnessMetricConfig(\"Ash.WindowCycleView.AnimationSmoothness.Container\") here instead of introducing \"configs\"?",
+      "range": {
+        "startLine": 100,
+        "startChar": 43,
+        "endLine": 100,
+        "endChar": 53
+      },
+      "revId": "8eae049b66203c01c1f592fdafb3adb76000cd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70372e2f_17fef24f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-19T13:05:39Z",
+      "side": 1,
+      "message": "nit: be more specific, e.g. s.Fatal(\"Failed to run recorder: \", err)",
+      "range": {
+        "startLine": 141,
+        "startChar": 11,
+        "endLine": 141,
+        "endChar": 17
+      },
+      "revId": "8eae049b66203c01c1f592fdafb3adb76000cd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6bc7722_3c073b0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-19T13:05:39Z",
+      "side": 1,
+      "message": "with s.Error you actually will continue running your test (but test will have stats \"Fail\" at the end), but does it makes sense for you? Probably if err !\u003d nil, then devicyType should be invalid and you compare that value with expectedAudioNode in line 149",
+      "range": {
+        "startLine": 146,
+        "startChar": 4,
+        "endLine": 146,
+        "endChar": 9
+      },
+      "revId": "8eae049b66203c01c1f592fdafb3adb76000cd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6023b325_10a6f8ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-19T13:05:39Z",
+      "side": 1,
+      "message": "Maybe it will be easier to always call cras.SetActiveNodeByType to be sure that active node is expected?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 2
+      },
+      "revId": "8eae049b66203c01c1f592fdafb3adb76000cd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62c40fad_503ced06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-19T13:05:39Z",
+      "side": 1,
+      "message": "PTAL on a guideline when to log in Tast\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 53
+      },
+      "revId": "8eae049b66203c01c1f592fdafb3adb76000cd95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
