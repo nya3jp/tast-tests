@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3927424_9a29709d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-19T06:10:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d0f981e5_12d0ab98",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 100
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75966f2f_dedb2560",
@@ -414,6 +438,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "aeec2c2b_e79e8888",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 31
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "203b9514_b9838311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-19T06:10:24Z",
+      "side": 1,
+      "message": "Do you need to kb.Accel(\"Enter\") to submit the rename?",
+      "parentUuid": "6920120a_ad7282a5",
       "range": {
         "startLine": 306,
         "startChar": 0,
