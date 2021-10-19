@@ -46,6 +46,30 @@
       },
       "revId": "89d5cfa2fbcc59a1f35da600ae46bdb692e16b6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6246c7b6_ef6a9e0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/data/enabled_syscalls.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-10-19T19:05:11Z",
+      "side": 1,
+      "message": "Ok thanks!",
+      "parentUuid": "f72726c2_722c5c49",
+      "range": {
+        "startLine": 452,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 58
+      },
+      "revId": "89d5cfa2fbcc59a1f35da600ae46bdb692e16b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
