@@ -46,14 +46,12 @@ type resultInfo struct {
 }
 
 const (
-	takePhotoAction         = "android.media.action.IMAGE_CAPTURE"
-	recordVideoAction       = "android.media.action.VIDEO_CAPTURE"
-	launchOnPhotoModeAction = "android.media.action.STILL_IMAGE_CAMERA"
-	launchOnVideoModeAction = "android.media.action.VIDEO_CAMERA"
-	testPhotoURI            = "content://org.chromium.arc.intent_helper.fileprovider/download/test.jpg"
-	// TODO(https://crbug.com/1058325): Change all mkv to mp4 once the migration is done.
-	// The content of test.mkv might be mp4 during the mkv to mp4 migration period.
-	testVideoURI              = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mkv"
+	takePhotoAction           = "android.media.action.IMAGE_CAPTURE"
+	recordVideoAction         = "android.media.action.VIDEO_CAPTURE"
+	launchOnPhotoModeAction   = "android.media.action.STILL_IMAGE_CAMERA"
+	launchOnVideoModeAction   = "android.media.action.VIDEO_CAMERA"
+	testPhotoURI              = "content://org.chromium.arc.intent_helper.fileprovider/download/test.jpg"
+	testVideoURI              = "content://org.chromium.arc.intent_helper.fileprovider/download/test.mp4"
 	arcCameraFolderPath       = "data/media/0/DCIM/Camera"
 	testAppPkg                = "org.chromium.arc.testapp.cameraintent"
 	testAppActivity           = "org.chromium.arc.testapp.cameraintent.MainActivity"
@@ -65,7 +63,7 @@ const (
 
 var (
 	testPhotoPattern      = regexp.MustCompile(`^test\.jpg$`)
-	testVideoPattern      = regexp.MustCompile(`^test\.(mkv|mp4)$`)
+	testVideoPattern      = regexp.MustCompile(`^test\.mp4$`)
 	captureConfirmAndDone = testBehavior{
 		ShouldReview:              true,
 		ShouldConfirmAfterCapture: true,
