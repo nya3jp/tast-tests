@@ -135,14 +135,9 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 		return 0, errors.Wrap(err, "failed to drop caches")
 	}
 
-	testing.ContextLog(ctx, "Waiting until CPU is idle")
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		return 0, errors.Wrap(err, "failed to wait until CPU is idle")
-	}
-
-	testing.ContextLog(ctx, "Waiting until CPU is cool down")
-	if _, err := cpu.WaitUntilCoolDown(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
-		return 0, errors.Wrap(err, "failed to wait until CPU is cool down")
+	testing.ContextLog(ctx, "Waiting until CPU is stabilized")
+	if err := cpu.WaitUntilStabilized(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
+		return 0, errors.Wrap(err, "failed to wait until CPU is stabilized")
 	}
 
 	testing.ContextLogf(ctx, "Running test: %s", testName)

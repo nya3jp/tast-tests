@@ -70,18 +70,9 @@ func SetupPerfTest(ctx context.Context, tconn *chrome.TestConn, name string) (re
 	return cleanup, nil
 }
 
-func waitForStableEnvironment(ctx context.Context) error {
-	// Wait for CPU to cool down.
-	if _, err := cpu.WaitUntilCoolDown(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
-		return errors.Wrap(err, "failed to wait for CPU to cool down")
-	}
-
-	// Wait for quiescent state.
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		return errors.Wrap(err, "failed waiting for CPU to become idle")
-	}
-	return nil
-}
+// cooldownConfig is the configuration used to wait for the stabilization of CPU
+// shared between ash-chrome test setup and lacros-chrome test setup.
+var cooldownConfig = cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
 
 // SetupCrosTestWithPage opens a cros-chrome page after waiting for a stable environment (CPU temperature, etc).
 func SetupCrosTestWithPage(ctx context.Context, f launcher.FixtValue, url string) (*chrome.Conn, CleanupCallback, error) {
@@ -96,7 +87,7 @@ func SetupCrosTestWithPage(ctx context.Context, f launcher.FixtValue, url string
 		return nil
 	}
 
-	if err := waitForStableEnvironment(ctx); err != nil {
+	if err := cpu.WaitUntilStabilized(ctx, cooldownConfig); err != nil {
 		if cerr := cleanup(ctx); cerr != nil {
 			testing.ContextLog(ctx, "Failed to clean up: ", cerr)
 		}
@@ -139,7 +130,7 @@ func SetupLacrosTestWithPage(ctx context.Context, f launcher.FixtValue, url stri
 		return nil
 	}, "")
 
-	if err := waitForStableEnvironment(ctx); err != nil {
+	if err := cpu.WaitUntilStabilized(ctx, cooldownConfig); err != nil {
 		return nil, nil, nil, nil, err
 	}
 
