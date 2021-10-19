@@ -75,8 +75,8 @@ type syzkallerConfig struct {
 type fuzzEnvConfig struct {
 	// Driver or subsystem.
 	Driver string `json:"driver"`
-	// If `archs` is not specified, run on all archs.
-	Archs []string `json:"archs"`
+	// If `boards` is not specified, run on all boards.
+	Boards []string `json:"boards"`
 	// Startup commands specific to this subsystem.
 	StartupCmds []string `json:"startup_cmds"`
 	// Syscalls belonging to the driver or subsystem.
@@ -153,7 +153,7 @@ func Wrapper(ctx context.Context, s *testing.State) {
 	}
 
 	// Read enabled_syscalls.
-	drivers, enabledSyscalls, scriptContents, err := loadEnabledSyscalls(s.DataPath("enabled_syscalls.json"), syzArch)
+	drivers, enabledSyscalls, scriptContents, err := loadEnabledSyscalls(s.DataPath("enabled_syscalls.json"), board)
 	if err != nil {
 		s.Fatal("Unable to load enabled syscalls: ", err)
 	}
@@ -337,7 +337,7 @@ func fetchFuzzArtifacts(ctx context.Context, d *dut.DUT, artifactsDir, syzArch s
 	return nil
 }
 
-func loadEnabledSyscalls(fpath, syzArch string) (drivers, enabledSyscalls []string, scriptContents string, err error) {
+func loadEnabledSyscalls(fpath, board string) (drivers, enabledSyscalls []string, scriptContents string, err error) {
 	contains := func(aList []string, item string) bool {
 		for _, each := range aList {
 			if each == item {
@@ -360,7 +360,7 @@ func loadEnabledSyscalls(fpath, syzArch string) (drivers, enabledSyscalls []stri
 
 	scriptContents = startupScriptContents
 	for _, config := range feconfig {
-		if len(config.Archs) == 0 || contains(config.Archs, syzArch) {
+		if len(config.Boards) == 0 || contains(config.Boards, board) {
 			enabledSyscalls = append(enabledSyscalls, config.Syscalls...)
 			drivers = append(drivers, config.Driver)
 			scriptContents = scriptContents + strings.Join(config.StartupCmds, "\n") + "\n"
