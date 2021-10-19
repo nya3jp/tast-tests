@@ -6,13 +6,10 @@ package firmware
 
 import (
 	"context"
-	"time"
 
 	fwCommon "chromiumos/tast/common/firmware"
-	"chromiumos/tast/common/servo"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware"
-	"chromiumos/tast/remote/firmware/reporters"
+	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 )
 
@@ -21,42 +18,35 @@ func init() {
 		Func:         FWTries,
 		Desc:         "Verify that the DUT can be specified to boot from A or B",
 		Contacts:     []string{"cros-fw-engprod@google.com"},
-		SoftwareDeps: []string{"crossystem"},
-		Attr:         []string{"group:firmware", "firmware_smoke"},
+		SoftwareDeps: []string{"crossystem", "flashrom"},
+		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+		Attr:         []string{"group:firmware", "firmware_bios"},
 		Vars:         []string{"servo"},
+		Params: []testing.Param{
+			testing.Param{
+				Name:    "normal",
+				Fixture: fixture.NormalMode,
+			},
+			testing.Param{
+				Name:    "dev",
+				Fixture: fixture.DevModeGBB,
+			},
+		},
 	})
 }
 
 func FWTries(ctx context.Context, s *testing.State) {
-	d := s.DUT()
-	r := reporters.New(d)
+	h := s.FixtValue().(*fixture.Value).Helper
 
-	// Sometimes the reboots error, leaving the DUT powered-off at end-of-test.
-	// This prevents Tast from reconnecting to the DUT for future tests, and from reporting results after all tests are finished.
-	// To address this, use Servo to defer a power-mode reset at end-of-test.
-	ctxForCleanup := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
-	defer cancel()
-	defer func(ctx context.Context) {
-		if d.Connected(ctx) {
-			return
-		}
-		s.Log("DUT not connected at end-of-test. Cold-resetting")
-		servoSpec, _ := s.Var("servo")
-		pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
-		if err != nil {
-			s.Fatal("Failed to connect to servo: ", err)
-		}
-		defer pxy.Close(ctx)
-		if err := pxy.Servo().SetPowerState(ctx, servo.PowerStateReset); err != nil {
-			s.Fatal("Resetting DUT during cleanup: ", err)
-		}
-		if err := d.WaitConnect(ctx); err != nil {
-			s.Fatal("Reconnecting to DUT during cleanup: ", err)
-		}
-	}(ctxForCleanup)
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to init servo: ", err)
+	}
+	ms, err := firmware.NewModeSwitcher(ctx, h)
+	if err != nil {
+		s.Fatal("Creating mode switcher: ", err)
+	}
 
-	vboot2, err := r.Vboot2(ctx)
+	vboot2, err := h.Reporter.Vboot2(ctx)
 	if err != nil {
 		s.Fatal("Failed to determine fw_vboot2: ", err)
 	}
@@ -66,30 +56,30 @@ func FWTries(ctx context.Context, s *testing.State) {
 		s.Log("DUT does not use vboot2")
 	}
 
-	currentFW, nextFW, tryCount, err := r.FWTries(ctx)
+	currentFW, nextFW, tryCount, err := h.Reporter.FWTries(ctx)
 	if err != nil {
 		s.Fatal("Reporting FW Tries at start of test: ", err)
 	}
 	s.Logf("At start of test, currentFW/nextFW/tryCount are: %s/%s/%d", currentFW, nextFW, tryCount)
 
 	// Set next=B, tries=2.
-	if err := firmware.SetFWTries(ctx, d, fwCommon.RWSectionB, 2); err != nil {
+	if err := firmware.SetFWTries(ctx, h.DUT, fwCommon.RWSectionB, 2); err != nil {
 		s.Fatal("Setting FWTries to B/2: ", err)
 	}
-	if err := firmware.CheckFWTries(ctx, r, fwCommon.RWSectionUnspecified, fwCommon.RWSectionB, 2); err != nil {
+	if err := firmware.CheckFWTries(ctx, h.Reporter, fwCommon.RWSectionUnspecified, fwCommon.RWSectionB, 2); err != nil {
 		s.Fatal("After setting FWTries to B/2, before rebooting: ", err)
 	}
 	s.Log("nextFW/tryCount has been set to B/2")
 
 	// Reboot the DUT.
 	s.Log("Rebooting; expect to boot into B leaving tryCount=1 or 0")
-	if err := d.Reboot(ctx); err != nil {
-		s.Fatal("Rebooting: ", err)
+	if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
+		s.Fatal("Error resetting DUT: ", err)
 	}
 
 	// DUT should have rebooted into firmware B, and tryCount should have decremented by 1.
 	// Occasionally, vboot needs an extra reboot along the way, so the tryCount decrements by 2 instead. This is OK.
-	currentFW, nextFW, tryCount, err = r.FWTries(ctx)
+	currentFW, nextFW, tryCount, err = h.Reporter.FWTries(ctx)
 	if err != nil {
 		s.Fatal("Reporting FW tries after first reboot: ", err)
 	}
@@ -99,12 +89,14 @@ func FWTries(ctx context.Context, s *testing.State) {
 	if nextFW == fwCommon.RWSectionB && tryCount == 1 {
 		s.Log("DUT rebooted once. currentFW/nextFW/tryCount: B/B/1")
 		s.Log("Rebooting; expect to boot into B leaving tryCount=0")
-		if err := d.Reboot(ctx); err != nil {
-			s.Fatal("Rebooting: ", err)
+		if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
+			s.Fatal("Error resetting DUT: ", err)
 		}
-		if err := firmware.CheckFWTries(ctx, r, fwCommon.RWSectionB, fwCommon.RWSectionUnspecified, 0); err != nil {
+		if err := firmware.CheckFWTries(ctx, h.Reporter, fwCommon.RWSectionB, fwCommon.RWSectionUnspecified, 0); err != nil {
 			s.Fatal("After rebooting from B/B/1: ", err)
 		}
+		currentFW, nextFW, tryCount, err = h.Reporter.FWTries(ctx)
+		s.Logf("DUT rebooted. currentFW/nextFW/tryCount:%s/%s/%d", currentFW, nextFW, tryCount)
 	} else if tryCount == 0 {
 		s.Logf("DUT rebooted twice. currentFW/nextFW/tryCount: B/%s/0", nextFW)
 	} else {
@@ -113,10 +105,10 @@ func FWTries(ctx context.Context, s *testing.State) {
 
 	// Next reboot should return to Firmware A.
 	s.Log("Rebooting; expect to boot into A leaving tryCount=0")
-	if err := d.Reboot(ctx); err != nil {
-		s.Fatal("Rebooting: ", err)
+	if err := ms.ModeAwareReboot(ctx, firmware.WarmReset); err != nil {
+		s.Fatal("Error resetting DUT: ", err)
 	}
-	if err := firmware.CheckFWTries(ctx, r, fwCommon.RWSectionA, fwCommon.RWSectionA, 0); err != nil {
+	if err := firmware.CheckFWTries(ctx, h.Reporter, fwCommon.RWSectionA, fwCommon.RWSectionA, 0); err != nil {
 		s.Fatal("After rebooting from B/A/0: ", err)
 	}
 }
