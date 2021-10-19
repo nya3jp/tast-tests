@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "621ed250_9254cff2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-19T22:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "740cd478_6e95db94",
+      "range": {
+        "startLine": 24,
+        "startChar": 14,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "222b85ef_d327b56b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-28T03:01:34Z",
       "side": 1,
       "message": "You can merge them to\nui.WithTimeout(10 * time.Second).LeftClick()",
+      "range": {
+        "startLine": 415,
+        "startChar": 11,
+        "endLine": 419,
+        "endChar": 34
+      },
+      "revId": "110b4152a4799f8866cde1fb5c88d94860ac1608",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc669165_0a3c8a95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-19T22:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "222b85ef_d327b56b",
       "range": {
         "startLine": 415,
         "startChar": 11,
