@@ -6,10 +6,13 @@ package cellular
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
@@ -49,6 +52,9 @@ func NewHelper(ctx context.Context) (*Helper, error) {
 		}
 	}
 
+	if err := helper.CaptureDBusLogs(ctx); err != nil {
+		return nil, errors.Wrap(err, "unable to start DBus log capture")
+	}
 	return &helper, nil
 }
 
@@ -309,6 +315,40 @@ func (h *Helper) RestartModemManager(ctx context.Context, enableDebugLogs bool) 
 	if err := upstart.RestartJob(ctx, "modemmanager", upstart.WithArg("MM_LOGLEVEL", logLevel)); err != nil {
 		return errors.Wrap(err, "failed to restart modemmanager")
 	}
+
+	return nil
+}
+
+// CaptureDBusLogs - Capture DBus system logs
+// Return nil if DBus log collection succeeds, else return error.
+func (h *Helper) CaptureDBusLogs(ctx context.Context) error {
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("failed to get out dir")
+	}
+
+	f, err := os.Create(filepath.Join(outDir, "dbus-system.txt"))
+	if err != nil {
+		return err
+	}
+
+	cmd := testexec.CommandContext(ctx, "/usr/bin/dbus-monitor", "--system")
+	if f != nil {
+		cmd.Stdout = f
+		cmd.Stderr = f
+	}
+
+	if err := cmd.Start(); err != nil {
+		f.Close()
+		return errors.Wrap(err, "failed to start command")
+	}
+
+	go func() {
+		defer cmd.Kill()
+		defer cmd.Wait()
+		defer f.Close()
+		<-ctx.Done()
+	}()
 
 	return nil
 }
