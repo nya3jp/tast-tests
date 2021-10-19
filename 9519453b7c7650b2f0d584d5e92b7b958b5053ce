@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d52482d8_b6ba0646",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-10-19T11:17:49Z",
+      "side": 1,
+      "message": "Hello Jeremy,\n\nThis change addresses issues found on Hayato/Asurada and Kakadu/Kukui. Namely, the display would sometimes not get turned on/off as expected. Adding a one second sleep after power press would increase stability, allowing the test to pass almost always. Also, I have used an EC command instead to set tablet mode, which is much easier than parsing regular expression.",
+      "revId": "9519453b7c7650b2f0d584d5e92b7b958b5053ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
