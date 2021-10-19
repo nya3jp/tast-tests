@@ -42,7 +42,7 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"images_for_url_check_index.html", "images_for_url_check_index_img.jpg"},
 		Params: []testing.Param{
 			{
