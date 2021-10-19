@@ -84,7 +84,7 @@ var (
 	// PhotoPattern is the filename format of photos taken by CCA.
 	PhotoPattern = regexp.MustCompile(`^IMG_\d{8}_\d{6}[^.]*\.jpg$`)
 	// VideoPattern is the filename format of videos recorded by CCA.
-	VideoPattern = regexp.MustCompile(`^VID_\d{8}_\d{6}[^.]*\.(mkv|mp4)$`)
+	VideoPattern = regexp.MustCompile(`^VID_\d{8}_\d{6}[^.]*\.mp4$`)
 	// gifPattern is the filename format of gif recorded by CCA.
 	gifPattern = regexp.MustCompile(`^VID_\d{8}_\d{6}[^.]*\.gif$`)
 	// portraitPattern is the filename format of portrait-mode photos taken by CCA.
