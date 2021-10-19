@@ -1,6 +1,63 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d45f5e8_921e4153",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-19T08:15:55Z",
+      "side": 1,
+      "message": "minor nit: no need for . at the end of the subject.",
+      "range": {
+        "startLine": 7,
+        "startChar": 45,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "e72efd6fe5337148041693ad06355612c16cf9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7950e316_9f867d63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-19T08:15:55Z",
+      "side": 1,
+      "message": "nit: no need for . at the end of the subject.",
+      "revId": "e72efd6fe5337148041693ad06355612c16cf9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a41086_3e9998c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-19T08:15:55Z",
+      "side": 1,
+      "message": "minor nit: Most of the CL subject lines starts with a prefix, that is either \"tast-tests\", or the package related to the change, e.g.\n\u003e  lacros: Switch tests to use rootfs lacros",
+      "revId": "e72efd6fe5337148041693ad06355612c16cf9f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "feab2719_f052bf6a",
