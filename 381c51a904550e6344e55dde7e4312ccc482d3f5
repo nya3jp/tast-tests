@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aa882fe_4479803b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-10-19T23:58:12Z",
+      "side": 1,
+      "message": "You showed this was the case right?",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "35c2a0c2_e2eda315",
@@ -14,6 +37,184 @@
       "writtenOn": "2021-10-19T14:30:17Z",
       "side": 1,
       "message": "PTAL, thanks!",
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d5fe80e_7d117355",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-10-19T23:58:12Z",
+      "side": 1,
+      "message": "logic LGTM but can you take a pass on the terminology and add comments to make things clear?",
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19f3838c_0ca9e7a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-10-19T23:58:12Z",
+      "side": 1,
+      "message": "rm else",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 8
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b3793d9_b7c1887f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-10-19T23:58:12Z",
+      "side": 1,
+      "message": "Same as above, let\u0027s find a better word here, there isn\u0027t any \"instability\" you\u0027re waiting on; also comments...",
+      "range": {
+        "startLine": 242,
+        "startChar": 74,
+        "endLine": 242,
+        "endChar": 80
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57f6d865_e667c039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-10-19T23:58:12Z",
+      "side": 1,
+      "message": "mismatched?",
+      "range": {
+        "startLine": 255,
+        "startChar": 22,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97cc4be1_7e3d8607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-10-19T23:58:12Z",
+      "side": 1,
+      "message": "if err !\u003d nil || len \u003d\u003d 0 {\n   return off, err\n}",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 294,
+        "endChar": 2
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1b98dc2_3c2956f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-10-19T23:58:12Z",
+      "side": 1,
+      "message": "what does not stable mean?",
+      "range": {
+        "startLine": 90,
+        "startChar": 36,
+        "endLine": 90,
+        "endChar": 42
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abadfd2e_450dca53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-10-19T23:58:12Z",
+      "side": 1,
+      "message": "(1) Can you find a better name for this? There\u0027s no instability you\u0027re trying to clear.... \n(2) Can you also add some comments and explain what you\u0027re doing here and how it does what you expect it to?",
+      "range": {
+        "startLine": 269,
+        "startChar": 3,
+        "endLine": 269,
+        "endChar": 84
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a911b037_31bb73ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-10-19T23:58:12Z",
+      "side": 1,
+      "message": "mismatched?",
+      "range": {
+        "startLine": 284,
+        "startChar": 22,
+        "endLine": 284,
+        "endChar": 32
+      },
       "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
