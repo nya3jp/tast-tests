@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3af92d15_e1f00038",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-19T12:51:30Z",
+      "side": 1,
+      "message": "Apologize for bothering, we weren\u0027t quite sure what you mean about \"other test\", is it \"other separate-parameterized test\" that you\u0027re referring to?",
+      "parentUuid": "f153d02d_8fa3df7e",
+      "range": {
+        "startLine": 12,
+        "startChar": 29,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "b6e9c7713e7f7414a073f6d1ac96429764d09d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a50eaf1a_2fab9978",
         "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
         "patchSetId": 4
@@ -83,6 +107,30 @@
       "writtenOn": "2021-10-18T19:08:26Z",
       "side": 1,
       "message": "What is this for?",
+      "range": {
+        "startLine": 72,
+        "startChar": 65,
+        "endLine": 72,
+        "endChar": 108
+      },
+      "revId": "b6e9c7713e7f7414a073f6d1ac96429764d09d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "091364fd_4a04bf90",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-19T12:51:30Z",
+      "side": 1,
+      "message": "This `AboutChromeOS` was declared in `ossettings/ossettings.go`, we were only moved it from `ossettings/ossettings.go` to `ossettings/constants.go`.",
+      "parentUuid": "f7b6c5a7_10dd5c46",
       "range": {
         "startLine": 72,
         "startChar": 65,
