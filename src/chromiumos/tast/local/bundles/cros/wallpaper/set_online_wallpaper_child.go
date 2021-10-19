@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -41,6 +42,14 @@ func SetOnlineWallpaperChild(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	// Force Chrome to be in clamshell mode to make sure wallpaper preview is not
+	// enabled.
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to ensure DUT is not in tablet mode: ", err)
+	}
+	defer cleanup(ctx)
 
 	// The test has a dependency of network speed, so we give uiauto.Context ample
 	// time to wait for nodes to load.
