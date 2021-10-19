@@ -5,12 +5,14 @@
 package network
 
 import (
+	"bytes"
 	"context"
 	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/dns"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	"chromiumos/tast/local/crostini"
@@ -84,15 +86,22 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 	a := multivm.ARCFromPre(pre)
 	cont := multivm.CrostiniFromPre(pre)
 
-	// Install dig in container.
-	if err := dns.InstallDigInContainer(ctx, cont); err != nil {
-		s.Fatal("Failed to install dig in container: ", err)
+	// Ensure connectivity is available.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return testexec.CommandContext(ctx, "/bin/ping", "-c1", "-w1", "8.8.8.8").Run()
+	}, &testing.PollOptions{Timeout: 1 * time.Second}); err != nil {
+		s.Fatal("Failed to ping 8.8.8.8: ", err)
 	}
 
 	// Toggle plain-text DNS or secureDNS depending on test parameter.
 	params := s.Param().(dnsProxyOverVPNTestParams)
 	if err := dns.SetDoHMode(ctx, cr, tconn, params.mode, dns.GoogleDoHProvider); err != nil {
 		s.Fatal("Failed to set DNS-over-HTTPS mode: ", err)
+	}
+
+	// Install dig in container after the DoH mode is set up properly.
+	if err := dns.InstallDigInContainer(ctx, cont); err != nil {
+		s.Fatal("Failed to install dig in container: ", err)
 	}
 
 	var domainDefault, domainVPNBlocked string
@@ -130,7 +139,9 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for the updated network configuration (VPN) to be propagated to the proxy.
-	testing.Sleep(ctx, 10*time.Second)
+	if err := waitUntilNATIptablesConfigured(ctx); err != nil {
+		s.Fatal("iptables NAT output is not fully configured: ", err)
+	}
 
 	// By default, DNS query should work over VPN.
 	var defaultTC = []dns.ProxyTestCase{
@@ -249,4 +260,30 @@ func modifyDoHOverVPNBlockRule(ctx context.Context, op, ns string) []error {
 		}
 	}
 	return e
+}
+
+// waitUntilNATIptablesConfigured waits until the NAT rule output of iptables is fully configured.
+// Whenever a network setting related to DNS is changed, DNS proxy updates iptables by deleting the old rule and creating a new rule.
+// This function confirms that the expected changes have been fully propagated by periodically comparing the rules until no differences are detected between successive iterations
+func waitUntilNATIptablesConfigured(ctx context.Context) error {
+	var lastRules, lastRules6 []byte
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		rules, err := testexec.CommandContext(ctx, "iptables", "-t", "nat", "-S").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return err
+		}
+		rules6, err := testexec.CommandContext(ctx, "ip6tables", "-t", "nat", "-S").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return err
+		}
+		if bytes.Compare(lastRules, rules) != 0 || bytes.Compare(lastRules6, rules6) != 0 {
+			lastRules = rules
+			lastRules6 = rules6
+			return errors.New("iptables NAT rules are still being configured")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 1 * time.Second}); err != nil {
+		return err
+	}
+	return nil
 }
