@@ -327,16 +327,6 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		ctx, cancel = ap1.ReserveForClose(ctx)
 		defer cancel()
 
-		iface, err := tf.ClientInterface(ctx)
-		if err != nil {
-			s.Fatal("Failed to get interface from the DUT: ", err)
-		}
-		discCtx, cancel := context.WithTimeout(ctx, 15*time.Second)
-		defer cancel()
-		if err := tf.WifiClient().DiscoverBSSID(discCtx, mac1.String(), iface, []byte(ap1.Config().SSID)); err != nil {
-			s.Fatalf("Failed to discover the BSSID %s: %v", mac1.String(), err)
-		}
-
 		s.Logf("Sending BSS TM Request from AP %s to DUT %s", mac0, clientMAC)
 		req := hostapd.BSSTMReqParams{Neighbors: []string{mac1.String()}}
 		if err := ap0.SendBSSTMRequest(ctx, clientMAC, req); err != nil {
