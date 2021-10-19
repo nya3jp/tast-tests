@@ -28,7 +28,6 @@ func init() {
 		Func: Boot,
 		Desc: "Checks that Android boots",
 		Contacts: []string{
-			"ereth@chromium.org",
 			"arc-core@google.com",
 			"nya@chromium.org", // Tast port author.
 		},
