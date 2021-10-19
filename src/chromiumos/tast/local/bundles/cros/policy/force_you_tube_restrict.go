@@ -12,8 +12,11 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -44,7 +47,15 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               lacros.ChromeTypeLacros,
+		}},
 	})
 }
 
@@ -52,6 +63,11 @@ func init() {
 func ForceYouTubeRestrict(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	for _, param := range []struct {
 		// name is the subtest name.
@@ -99,22 +115,29 @@ func ForceYouTubeRestrict(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			// TODO(crbug.com/1259615): This should be part of the fixture.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+			if err != nil {
+				s.Fatal("Failed to setup chrome: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
 			// Run actual test.
-			if err := testRestrictedMode(ctx, cr, param.strongContentRestricted, param.mildContentRestricted); err != nil {
+			if err := testRestrictedMode(ctx, br, param.strongContentRestricted, param.mildContentRestricted); err != nil {
 				s.Error("Failed to verify YouTube content restriction: ", err)
 			}
 		})
 	}
 }
 
-func testRestrictedMode(ctx context.Context, cr *chrome.Chrome, expectedStrongContentRestricted, expectedMildContentRestricted bool) error {
-	if mildContentRestricted, err := isYouTubeContentRestricted(ctx, cr, mildContent); err != nil {
+func testRestrictedMode(ctx context.Context, br ash.ConnSource, expectedStrongContentRestricted, expectedMildContentRestricted bool) error {
+	if mildContentRestricted, err := isYouTubeContentRestricted(ctx, br, mildContent); err != nil {
 		return err
 	} else if mildContentRestricted != expectedMildContentRestricted {
 		return errors.Errorf("unexpected mild content restriction; got %t, wanted %t", mildContentRestricted, expectedMildContentRestricted)
 	}
 
-	if strongContentRestricted, err := isYouTubeContentRestricted(ctx, cr, strongContent); err != nil {
+	if strongContentRestricted, err := isYouTubeContentRestricted(ctx, br, strongContent); err != nil {
 		return err
 	} else if strongContentRestricted != expectedStrongContentRestricted {
 		return errors.Errorf("unexpected strong content restriction; got %t, wanted %t", strongContentRestricted, expectedStrongContentRestricted)
@@ -123,8 +146,8 @@ func testRestrictedMode(ctx context.Context, cr *chrome.Chrome, expectedStrongCo
 	return nil
 }
 
-func isYouTubeContentRestricted(ctx context.Context, cr *chrome.Chrome, url string) (bool, error) {
-	message, err := getYouTubeErrorMessage(ctx, cr, url)
+func isYouTubeContentRestricted(ctx context.Context, br ash.ConnSource, url string) (bool, error) {
+	message, err := getYouTubeErrorMessage(ctx, br, url)
 	if err != nil {
 		return false, err
 	}
@@ -133,8 +156,8 @@ func isYouTubeContentRestricted(ctx context.Context, cr *chrome.Chrome, url stri
 }
 
 // getYouTubeErrorMessage returns the error message, if any, returned by Youtube while trying to view the given url.
-func getYouTubeErrorMessage(ctx context.Context, cr *chrome.Chrome, url string) (string, error) {
-	conn, err := cr.NewConn(ctx, url)
+func getYouTubeErrorMessage(ctx context.Context, br ash.ConnSource, url string) (string, error) {
+	conn, err := br.NewConn(ctx, url)
 	if err != nil {
 		return "", err
 	}
