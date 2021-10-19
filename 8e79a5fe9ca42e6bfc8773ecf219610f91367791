@@ -142,6 +142,30 @@
       },
       "revId": "8e79a5fe9ca42e6bfc8773ecf219610f91367791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fa1a420_0774294a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/data/enabled_syscalls.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-10-19T19:42:42Z",
+      "side": 1,
+      "message": "I see, thanks-- In that case I\u0027ll go ahead and merge this change in so that the msm driver gets tested; and we can update this once we have a good mechanism to detect which drivers are present on the board during the test.",
+      "parentUuid": "8456b786_73a189e7",
+      "range": {
+        "startLine": 616,
+        "startChar": 14,
+        "endLine": 616,
+        "endChar": 21
+      },
+      "revId": "8e79a5fe9ca42e6bfc8773ecf219610f91367791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
