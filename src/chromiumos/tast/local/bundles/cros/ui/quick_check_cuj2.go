@@ -1,7 +1,6 @@
 // Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-
 package ui
 
 import (
@@ -39,15 +38,17 @@ func init() {
 		},
 		Params: []testing.Param{
 			{
-				Name:    "basic_unlock",
-				Timeout: 5 * time.Minute,
+				Name:      "basic_unlock",
+				Timeout:   5 * time.Minute,
+				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
 				Val: quickCheckParam{
 					tier:     cuj.Basic,
 					scenario: quickcheckcuj.Lock,
 				},
 			}, {
-				Name:    "basic_wakeup",
-				Timeout: 5 * time.Minute,
+				Name:      "basic_wakeup",
+				Timeout:   5 * time.Minute,
+				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
 				Val: quickCheckParam{
 					tier:     cuj.Basic,
 					scenario: quickcheckcuj.Suspend,
