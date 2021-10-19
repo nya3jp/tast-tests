@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72167405_0e1151b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-19T22:49:21Z",
+      "side": 1,
+      "message": "@Kazuki Takise\nThis test seems to fail without changes. Could you look at it? Thank you.",
+      "revId": "647018badc7c5a380da503c46ba22af63288b2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
