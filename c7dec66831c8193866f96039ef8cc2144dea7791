@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff769949_98178d37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-19T21:58:19Z",
+      "side": 1,
+      "message": "If you wanted to run this in the CQ, this is the wrong choice. This will run nightly on all boards/models in pool:faft-debug",
+      "revId": "c7dec66831c8193866f96039ef8cc2144dea7791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
