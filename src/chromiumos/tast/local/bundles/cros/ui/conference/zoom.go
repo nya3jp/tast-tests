@@ -197,7 +197,8 @@ func (conf *ZoomConference) Join(ctx context.Context, room string) error {
 	joinButton := nodewith.Name("Join").Role(role.Button)
 	webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
 	joinFromYourBrowser := nodewith.Name("Join from Your Browser").Role(role.StaticText)
-	acceptCookiesButton := nodewith.Name("ACCEPT COOKIES").Role(role.Button)
+	// There are two types of cookie accept dialogs: "ACCEPT COOKIES" and "ACCEPT ALL COOKIES".
+	acceptCookiesButton := nodewith.NameRegex(regexp.MustCompile("ACCEPT.*COOKIES")).Role(role.Button)
 	clickJoinButton := func(ctx context.Context) error {
 		// In Zoom website, the join button may be hidden in tablet mode.
 		// Make it visible before clicking.
