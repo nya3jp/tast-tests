@@ -626,6 +626,7 @@
 	{
 		"driver": "freedreno(CONFIG_DRM_MSM)",
 		"archs": ["arm"],
+		"startup_cmds": ["ln -s /dev/dri/card1 /dev/msm"],
 		"syscalls": [
 			"openat$msm",
 			"ioctl$DRM_IOCTL_MSM_GET_PARAM",
