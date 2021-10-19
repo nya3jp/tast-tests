@@ -276,7 +276,11 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		if expectedFailure {
 			s.Fatal("Expected failure but succeeded")
 		}
+		roamSucceeded := false
 		defer func(ctx context.Context) {
+			if roamSucceeded {
+				return
+			}
 			if err := tf.CleanDisconnectWifi(ctx); err != nil {
 				s.Error("Failed to disconnect from the AP: ", err)
 			}
@@ -337,6 +341,15 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to wait for the properties: ", err)
 		}
+		roamSucceeded = true
+		defer func(ctx context.Context) {
+			if roamSucceeded {
+				return
+			}
+			if err := tf.CleanDisconnectWifi(ctx); err != nil {
+				s.Error("Failed to disconnect from the AP: ", err)
+			}
+		}(ctx)
 		// Check that we don't disconnect along the way here, in case we're ping-ponging around APs --
 		// and after the first (failed) roam, the second re-connection will not be testing FT at all.
 		for _, ph := range monitorResult {

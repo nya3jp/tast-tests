@@ -103,7 +103,11 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 	} else {
 		servicePath = resp.ServicePath
 	}
+	roamSucceeded := false
 	defer func(ctx context.Context) {
+		if roamSucceeded {
+			return
+		}
 		if err := tf.CleanDisconnectWifi(ctx); err != nil {
 			s.Error("Failed to disconnect WiFi: ", err)
 		}
@@ -178,6 +182,12 @@ func RoamDbus(ctx context.Context, s *testing.State) {
 		s.Fatal("DUT: failed to wait for the properties, err: ", err)
 	}
 	s.Log("DUT: roamed")
+	roamSucceeded = true
+	defer func(ctx context.Context) {
+		if err := tf.CleanDisconnectWifi(ctx); err != nil {
+			s.Error("Failed to disconnect WiFi: ", err)
+		}
+	}(ctx)
 
 	// Assert there was no disconnection during roaming.
 	for _, ph := range monitorResult {
