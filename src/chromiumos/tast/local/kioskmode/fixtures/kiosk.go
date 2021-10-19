@@ -126,8 +126,7 @@ func (k *kioskFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	k.cr = cr
 	k.oldPID = pid
 	ok = true
-	fixt := fixtures.CreateFixtData(k.cr, k.fdms)
-	return &fixt
+	return fixtures.NewFixtData(k.cr, k.fdms)
 }
 
 func (k *kioskFixture) TearDown(ctx context.Context, s *testing.FixtState) {
