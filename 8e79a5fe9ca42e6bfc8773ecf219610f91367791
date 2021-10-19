@@ -94,6 +94,30 @@
       },
       "revId": "8e79a5fe9ca42e6bfc8773ecf219610f91367791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca765f76_b2a157ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/data/enabled_syscalls.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-10-19T19:33:36Z",
+      "side": 1,
+      "message": "Hmm, could you give an example of which drivers you are referring to? msm.ko, qrtr.ko seem to show up in modules.builtin. What am I missing?",
+      "parentUuid": "59503f70_e32b8e16",
+      "range": {
+        "startLine": 616,
+        "startChar": 14,
+        "endLine": 616,
+        "endChar": 21
+      },
+      "revId": "8e79a5fe9ca42e6bfc8773ecf219610f91367791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
