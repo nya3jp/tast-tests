@@ -70,6 +70,30 @@
       },
       "revId": "8e79a5fe9ca42e6bfc8773ecf219610f91367791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59503f70_e32b8e16",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/data/enabled_syscalls.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-10-19T19:29:14Z",
+      "side": 1,
+      "message": "The module approach won\u0027t work for builtin kernel drivers.",
+      "parentUuid": "3223e020_c89a72d9",
+      "range": {
+        "startLine": 616,
+        "startChar": 14,
+        "endLine": 616,
+        "endChar": 21
+      },
+      "revId": "8e79a5fe9ca42e6bfc8773ecf219610f91367791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
