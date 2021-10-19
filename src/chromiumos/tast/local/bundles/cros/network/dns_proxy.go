@@ -79,9 +79,11 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 	a := multivm.ARCFromPre(pre)
 	cont := multivm.CrostiniFromPre(pre)
 
-	// Install dig in container.
-	if err := dns.InstallDigInContainer(ctx, cont); err != nil {
-		s.Fatal("Failed to install dig in container: ", err)
+	// Ensure connectivity is available.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return testexec.CommandContext(ctx, "/bin/ping", "-c1", "-w1", "8.8.8.8").Run()
+	}, &testing.PollOptions{Timeout: 1 * time.Second}); err != nil {
+		s.Fatal("Failed to ping 8.8.8.8: ", err)
 	}
 
 	// Toggle plain-text DNS or secureDNS depending on test parameter.
@@ -90,9 +92,10 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set DNS-over-HTTPS mode: ", err)
 	}
 
-	// Wait for the updated DoH mode to be propagated to the proxy.
-	// TODO(jasongustaman): Update to polling shill DBus property.
-	testing.Sleep(ctx, 10*time.Second)
+	// Install dig in container after the DoH mode is set up properly.
+	if err := dns.InstallDigInContainer(ctx, cont); err != nil {
+		s.Fatal("Failed to install dig in container: ", err)
+	}
 
 	var domainDefault, domainDNSBlocked string
 	switch params.mode {
