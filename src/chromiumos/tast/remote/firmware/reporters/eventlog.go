@@ -27,10 +27,6 @@ func (r *Reporter) EventlogList(ctx context.Context) ([]Event, error) {
 	if err != nil {
 		return []Event{}, err
 	}
-	now, err := r.Now(ctx)
-	if err != nil {
-		return []Event{}, errors.Wrap(err, "getting current time")
-	}
 	const timeFmt = "2006-01-02 15:04:05"
 	var events []Event
 	// Expecting output similar to this one:
@@ -49,9 +45,6 @@ func (r *Reporter) EventlogList(ctx context.Context) ([]Event, error) {
 			if err != nil {
 				return []Event{}, err
 			}
-		}
-		if timestamp.After(now) {
-			return []Event{}, errors.Errorf("event occurred later than current DUT time: now=%s; event=%s", now, line)
 		}
 		index, err := strconv.ParseInt(split[0], 10, 0)
 		if err != nil {
