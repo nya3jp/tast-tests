@@ -201,6 +201,7 @@ func init() {
 					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoShared)),
 				}},
+				ExtraHardwareDeps: hwdep.D(hwdep.WifiWEP()),
 			}, {
 				// Verifies that DUT can connect to a WEP network with both open and shared system authentication and 104-bit pre-shared keys.
 				Name: "wep104",
@@ -229,6 +230,7 @@ func init() {
 					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoShared)),
 				}},
+				ExtraHardwareDeps: hwdep.D(hwdep.WifiWEP()),
 			}, {
 				// Verifies that DUT can connect to a hidden WEP network with open/shared system authentication and 40/104-bit pre-shared keys.
 				Name: "wephidden",
@@ -245,6 +247,7 @@ func init() {
 					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
 					secConfFac: wep.NewConfigFactory(wep104KeysHidden(), wep.AuthAlgs(wep.AuthAlgoShared)),
 				}},
+				ExtraHardwareDeps: hwdep.D(hwdep.WifiWEP()),
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for pure WPA with TKIP.
 				Name: "wpatkip",
@@ -523,7 +526,7 @@ func init() {
 				// Skip on trogdor and strongbad board because of 8021xwep test regression post Qualcomm FW746 b/194644867,
 				// Qualcomm looks at the security fixes in the FW.
 				// TODO(b/194644867): revisit after FW fix and verification.
-				ExtraHardwareDeps: hwdep.D(hwdep.WifiNotMarvell(), hwdep.SkipOnPlatform("trogdor", "strongbad", "trogdor-kernelnext")),
+				ExtraHardwareDeps: hwdep.D(hwdep.WifiNotMarvell(), hwdep.SkipOnPlatform("trogdor", "strongbad", "trogdor-kernelnext"), hwdep.WifiWEP()),
 			}, {
 				// Verifies that DUT can connect to a protected network supporting for WPA-EAP encryption.
 				Name: "8021xwpa",
