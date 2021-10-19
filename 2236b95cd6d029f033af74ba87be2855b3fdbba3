@@ -16,6 +16,29 @@
       "message": "Currently only two tests (lacros.ShelfLaunch.rootfs and a11y.Smoke.lacros_rootfs) will be affected by this change.",
       "revId": "2236b95cd6d029f033af74ba87be2855b3fdbba3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2852f68_0fc02f13",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-19T01:36:31Z",
+      "side": 1,
+      "message": "Will this be in conflict with Eliot\u0027s work to make rootfs lacros the default one for testing?",
+      "range": {
+        "startLine": 169,
+        "startChar": 27,
+        "endLine": 169,
+        "endChar": 40
+      },
+      "revId": "2236b95cd6d029f033af74ba87be2855b3fdbba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
