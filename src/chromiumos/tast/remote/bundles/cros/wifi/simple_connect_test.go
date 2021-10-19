@@ -165,8 +165,9 @@ func simpleConnectHidden() simpleConnectParams {
 func simpleConnectWEP() []simpleConnectParams {
 	mkP := func(keyLen int) simpleConnectParams {
 		ret := simpleConnectParams{
-			Name: "wep" + strconv.Itoa(keyLen),
-			Doc:  simpleConnectDocPref(fmt.Sprintf("a WEP network with both open and shared system authentication and %d-bit pre-shared keys.", keyLen)),
+			Name:              "wep" + strconv.Itoa(keyLen),
+			Doc:               simpleConnectDocPref(fmt.Sprintf("a WEP network with both open and shared system authentication and %d-bit pre-shared keys.", keyLen)),
+			ExtraHardwareDeps: `hwdep.D(hwdep.WifiWEP())`,
 		}
 		for _, algo := range []string{"Open", "Shared"} {
 			for key := 0; key < 4; key++ {
@@ -192,9 +193,10 @@ func simpleConnectWEPHidden() simpleConnectParams {
 		}
 	}
 	return simpleConnectParams{
-		Name: "wephidden",
-		Doc:  simpleConnectDocPref("a hidden WEP network with open/shared system authentication and 40/104-bit pre-shared keys."),
-		Val:  p,
+		Name:              "wephidden",
+		Doc:               simpleConnectDocPref("a hidden WEP network with open/shared system authentication and 40/104-bit pre-shared keys."),
+		Val:               p,
+		ExtraHardwareDeps: `hwdep.D(hwdep.WifiWEP())`,
 	}
 }
 
@@ -447,7 +449,7 @@ func simpleConnect8021xWEP() simpleConnectParams {
 			"Skip on trogdor and strongbad board because of 8021xwep test regression post Qualcomm FW746 b/194644867,",
 			"Qualcomm looks at the security fixes in the FW.",
 			"TODO(b/194644867): revisit after FW fix and verification."},
-		ExtraHardwareDeps: `hwdep.D(hwdep.WifiNotMarvell(), hwdep.SkipOnPlatform("trogdor", "strongbad", "trogdor-kernelnext"))`,
+		ExtraHardwareDeps: `hwdep.D(hwdep.WifiNotMarvell(), hwdep.SkipOnPlatform("trogdor", "strongbad", "trogdor-kernelnext"), hwdep.WifiWEP())`,
 		Val: []simpleConnectParamsVal{{
 			APOpts: simpleConnectCommonSecApOpts,
 			SecConfFac: `dynamicwep.NewConfigFactory(
