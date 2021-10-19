@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff8ffea5_c1e9a19f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-19T04:58:15Z",
+      "side": 1,
+      "message": "Yes.\n\nWe found that it might exist conflict of the deletion on files between `filesapp` and `os.Remove`, \nwhich is, it is possible that the file might disappear on UI but haven’t been removed from the system, this causes `os.Remove` remove the file before `filesapp` completes the deletion (an error dialogue/bubble will show).",
+      "parentUuid": "bb1663ea_c5a7f0df",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 25
+      },
+      "revId": "e4eacbbbfb3cab215d1dbd1407e11e2087ba0299",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c9f179f_b1bda9d1",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
         "patchSetId": 5
