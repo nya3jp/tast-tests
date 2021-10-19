@@ -8,12 +8,16 @@
 			"mprotect",
 			"clock_gettime",
 			"socket$nl_generic",
-			"socket$xdp"
+			"fork",
+			"getpid",
+			"gettid",
+			"geteuid",
+			"getuid"
 		]
 	},
 	{
 		"driver": "i915(CONFIG_DRM_I915)",
-		"archs": ["amd64"],
+		"boards": ["octopus", "nautilus", "dedede"],
 		"startup_cmds": ["ln -s /dev/dri/card0 /dev/i915"],
 		"syscalls": [
 			"openat$i915",
@@ -393,7 +397,7 @@
 	},
 	{
 		"driver": "bifrost(CONFIG_MALI_MIDGARD)",
-		"archs": ["arm"],
+		"boards": ["elm"],
 		"startup_cmds": ["if [ -f /dev/mali0 ]; then ln -s /dev/mali0 /dev/bifrost; fi"],
 		"syscalls": [
 			"openat$bifrost",
@@ -448,7 +452,7 @@
 	},
 	{
 		"driver": "IMGPowerVR(CONFIG_DRM_POWERVR_ROGUE_1_13)",
-		"archs": ["arm"],
+		"boards": ["elm"],
 		"startup_cmds": ["ln -s /dev/dri/card1 /dev/img-rogue"],
 		"syscalls": [
 			"openat$img_rogue",
@@ -609,7 +613,7 @@
 	},
 	{
 		"driver": "qrtr-modem(CONFIG_QRTR)",
-		"archs": ["arm"],
+		"boards": ["trogdor"],
 		"syscalls": [
 			"socket$qrtr",
 			"bind$qrtr",
@@ -625,7 +629,8 @@
 	},
 	{
 		"driver": "freedreno(CONFIG_DRM_MSM)",
-		"archs": ["arm"],
+		"boards": ["trogdor"],
+		"startup_cmds": ["ln -s /dev/dri/card1 /dev/msm"],
 		"syscalls": [
 			"openat$msm",
 			"ioctl$DRM_IOCTL_MSM_GET_PARAM",
