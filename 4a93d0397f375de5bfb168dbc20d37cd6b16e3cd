@@ -81,6 +81,24 @@
       "parentUuid": "a49df964_99f0e256",
       "revId": "4a93d0397f375de5bfb168dbc20d37cd6b16e3cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b452a6d_37330ecf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/record_partial_screen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-19T20:24:30Z",
+      "side": 1,
+      "message": "Interesting, I thought capture mode exits after pressing enter on L108. Maybe it changed. Anyhow, doesn\u0027t hurt to press esc again.",
+      "parentUuid": "8f8e2bb8_0eb98dda",
+      "revId": "4a93d0397f375de5bfb168dbc20d37cd6b16e3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
