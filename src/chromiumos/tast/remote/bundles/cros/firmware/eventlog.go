@@ -123,28 +123,13 @@ func init() {
 			},
 			// Test eventlog upon rec->normal reboot.
 			{
-				Name:              "rec_normal",
-				ExtraAttr:         []string{"firmware_unstable", "firmware_usb"},
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("leona")),
-				Fixture:           fixture.RecMode,
+				Name:      "rec_normal",
+				ExtraAttr: []string{"firmware_unstable", "firmware_usb"},
+				Fixture:   fixture.RecMode,
 				Val: eventLogParams{
 					bootToMode:        fwCommon.BootModeNormal,
 					requiredEventSets: [][]string{[]string{`System boot`}},
-					prohibitedEvents:  `Developer Mode|Recovery Mode|Sleep| Wake`,
-				},
-				Timeout: 6 * time.Minute,
-			},
-			{
-				// Allow some normally disallowed events on leona. b/184778308
-				Name:              "leona_rec_normal",
-				ExtraAttr:         []string{"firmware_ec", "firmware_usb"},
-				ExtraHardwareDeps: hwdep.D(hwdep.Model("leona")),
-				Fixture:           fixture.RecMode,
-				Val: eventLogParams{
-					bootToMode:        fwCommon.BootModeNormal,
-					requiredEventSets: [][]string{[]string{`System boot`}},
-					prohibitedEvents:  `Developer Mode|Recovery Mode|Sleep| Wake`,
-					allowedEvents:     `^ACPI Wake \| Deep S5$`,
+					prohibitedEvents:  `Developer Mode|Recovery Mode|Sleep`,
 				},
 				Timeout: 6 * time.Minute,
 			},
