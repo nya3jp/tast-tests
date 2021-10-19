@@ -470,6 +470,30 @@
       },
       "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4bf231_b13ee832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-19T09:30:18Z",
+      "side": 1,
+      "message": "Yes. Thank you for your reminder and review!",
+      "parentUuid": "203b9514_b9838311",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 31
+      },
+      "revId": "f39d47acf8ff502a059503dc9e38b03bd05cc66e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
