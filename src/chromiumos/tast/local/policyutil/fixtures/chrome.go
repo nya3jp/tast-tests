@@ -88,10 +88,10 @@ type FixtData struct {
 	chrome *chrome.Chrome
 }
 
-// CreateFixtData return FixtData with the given chrome and fdms instances.
-// TODO(b/201422078): Remove CreateFixtData once a new composite fixture is created for kiosk.
-func CreateFixtData(cr *chrome.Chrome, fdms *fakedms.FakeDMS) FixtData {
-	return FixtData{fakeDMS: fdms, chrome: cr}
+// NewFixtData returns a FixtData reference with the given chrome and fdms instances.
+// TODO(b/201422078): Remove NewFixtData once a new composite fixture is created for kiosk.
+func NewFixtData(cr *chrome.Chrome, fdms *fakedms.FakeDMS) *FixtData {
+	return &FixtData{fakeDMS: fdms, chrome: cr}
 }
 
 // Chrome implements the HasChrome interface.
