@@ -6,7 +6,9 @@ package lacros
 
 import (
 	"context"
+	"io"
 	"os"
+	"path/filepath"
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
@@ -111,6 +113,31 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 
 	s.Log("Checking that Lacros window is visible")
 	if err := launcher.WaitForLacrosWindow(ctx, tconn, "New Tab"); err != nil {
+		copyFile := func(srcFile, dstFile string) error {
+			source, err := os.Open(srcFile)
+			if err != nil {
+				return err
+			}
+			defer source.Close()
+
+			destination, err := os.Create(dstFile)
+			if err != nil {
+				return err
+			}
+			defer destination.Close()
+
+			_, err = io.Copy(destination, source)
+			if err != nil {
+				return err
+			}
+			return nil
+		}
+
+		// Grab Lacros logs to assist debugging before exiting.
+		if errCopy := copyFile(filepath.Join(launcher.LacrosUserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros.log")); errCopy != nil {
+			s.Log("Failed to copy /home/chronos/user/lacros/lacros.log to the OutDir ", errCopy)
+		}
+
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
 	}
 
