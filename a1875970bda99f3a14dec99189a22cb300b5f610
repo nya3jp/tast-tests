@@ -33,6 +33,24 @@
       "message": "Don\u0027t we want to change this behavior so we no longer remove it but Chrome has to do that?",
       "revId": "a1875970bda99f3a14dec99189a22cb300b5f610",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "255a2c63_5eed6bef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-20T04:31:06Z",
+      "side": 1,
+      "message": "Yes, we wanted to move this behaviour from cryptohomed to Chrome, and to verify that we moved it correctly, this test tries the mount from the Chromium side, so the behaviour should be the same before and after the move.\n\nNote that later on when the Chromium side added the UIs, we might have to change this test to indicate on the UI to delete the vault.",
+      "parentUuid": "4a9b098e_f3e10a16",
+      "revId": "a1875970bda99f3a14dec99189a22cb300b5f610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
