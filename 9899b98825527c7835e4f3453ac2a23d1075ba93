@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "078eae6f_37136f8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-20T13:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f92ad202_1dcef950",
+      "range": {
+        "startLine": 209,
+        "startChar": 99,
+        "endLine": 209,
+        "endChar": 100
+      },
+      "revId": "9899b98825527c7835e4f3453ac2a23d1075ba93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b5c296f_a53702d5",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I also think it\u0027s better to pass the *uiauto.Context object.\nAlternate option is to pass *coords.Rect (item.Location / root.Location).",
       "parentUuid": "1b5c296f_a53702d5",
+      "range": {
+        "startLine": 222,
+        "startChar": 129,
+        "endLine": 222,
+        "endChar": 146
+      },
+      "revId": "9899b98825527c7835e4f3453ac2a23d1075ba93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36a71fbf_5bcd43e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-20T13:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c630fe70_3ee8a8dc",
       "range": {
         "startLine": 222,
         "startChar": 129,

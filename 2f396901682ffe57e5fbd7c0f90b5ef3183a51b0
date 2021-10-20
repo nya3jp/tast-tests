@@ -289,6 +289,30 @@
       },
       "revId": "2f396901682ffe57e5fbd7c0f90b5ef3183a51b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb17bed7_9527224e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/shelf_icons.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1519363
+      },
+      "writtenOn": "2021-10-20T13:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55707d82_15926863",
+      "range": {
+        "startLine": 215,
+        "startChar": 5,
+        "endLine": 215,
+        "endChar": 28
+      },
+      "revId": "2f396901682ffe57e5fbd7c0f90b5ef3183a51b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
