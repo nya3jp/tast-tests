@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2f6b846_ec3a7c0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-10-20T08:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6e8b1a3_a198aae7",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "a90598fc5f9e7cc7d360d5866879cdccb6602d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9af8e370_725e5d76",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df793a16_58a88036",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/record_partial_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-10-20T08:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9af8e370_725e5d76",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 11
+      },
+      "revId": "a90598fc5f9e7cc7d360d5866879cdccb6602d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7eadb84a_d7e8f790",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-20T02:10:35Z",
       "side": 1,
       "message": "Can we abtrary click a place within working area to clear the drag area if presented? If so, we can just click dragEndPt for example.",
+      "range": {
+        "startLine": 105,
+        "startChar": 21,
+        "endLine": 105,
+        "endChar": 32
+      },
+      "revId": "a90598fc5f9e7cc7d360d5866879cdccb6602d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5271d475_02dc5c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/record_partial_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-10-20T08:43:59Z",
+      "side": 1,
+      "message": "Clicking within working area (including the boundary) won\u0027t clear the drag area. Should we use the current dragClearPt or another point like dragEndPt.Add(coords.NewPoint(1,1))?",
+      "parentUuid": "7eadb84a_d7e8f790",
       "range": {
         "startLine": 105,
         "startChar": 21,
