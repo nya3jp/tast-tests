@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -25,8 +26,18 @@ import (
 // and ensures the features in the "Connected devices" section of OS Settings are ready to use (Smart Lock, Phone Hub, etc.).
 // Note that crossdevice fixtures inherit from crossdeviceAndroidSetup.
 func NewCrossDeviceOnboarded() testing.FixtureImpl {
+	tags := []string{
+		"*nearby*=3",
+		"*cryptauth*=3",
+		"*device_sync*=3",
+		"*multidevice*=3",
+		"*secure_channel*=3",
+		"*phonehub*=3",
+		"*blue*=3",
+		"ble_*=3",
+	}
 	defaultOpts := []chrome.Option{
-		chrome.ExtraArgs("--enable-logging", "--vmodule=*blue*=1", "--vmodule=*nearby*=1"),
+		chrome.ExtraArgs("--enable-logging", "--vmodule="+strings.Join(tags, ",")),
 	}
 	return &crossdeviceFixture{
 		opts: defaultOpts,
