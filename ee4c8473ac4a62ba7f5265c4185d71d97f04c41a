@@ -16,6 +16,23 @@
       "message": "ptal",
       "revId": "ee4c8473ac4a62ba7f5265c4185d71d97f04c41a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1907b39c_a76997af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-20T18:11:29Z",
+      "side": 1,
+      "message": "Just curious, what does the dashboard in the CL description show and what builds of lacros and OS are being used for test results here? I\u0027m seeing lacros.Basic.unstable but no lacros.Basic there.",
+      "revId": "ee4c8473ac4a62ba7f5265c4185d71d97f04c41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
