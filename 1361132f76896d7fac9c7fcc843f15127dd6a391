@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dcb70df_e057d3ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-20T06:59:58Z",
+      "side": 1,
+      "message": "You need to update the proto file and regeneratate the bindings\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_4.md#grpc-services",
+      "revId": "1361132f76896d7fac9c7fcc843f15127dd6a391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f62f126_6da396e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-20T06:59:58Z",
+      "side": 1,
+      "message": "GAIA",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 9
+      },
+      "revId": "1361132f76896d7fac9c7fcc843f15127dd6a391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
