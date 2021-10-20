@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3620b471_9a9219df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_n_update_with_nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-20T03:15:01Z",
+      "side": 1,
+      "message": "Hard-coding gs://chromeos-image-archive would prevent this test from running on Moblab (partners don\u0027t have access to this bucket).\n\nIn Moblab, Tast CLI is run with -buildartifactsurl flag which specifies an alternative GS bucket to pull build artifacts from. Currently the flag value is not exposed directly to tests, but tests can use it in two ways:\n\n1. Build artifact data files (go/tast-writing#external-data-files)\n2. testing.CloudStorage with build-artifact:// URL (https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testing/cloud_storage.go;rcl\u003da77051d165ad2f6352ab69138411abd12381d76a;l\u003d51)\n\ntesting.CloudStorage supports CacheForDUT TLW API transparently, so one alternative approach is to implement a local web server that serves build artifacts using testing.CloudStorage. But a downside is that it\u0027s not very efficient compared to directly downloading files from lab cache servers.",
+      "range": {
+        "startLine": 70,
+        "startChar": 31,
+        "endLine": 70,
+        "endChar": 58
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
