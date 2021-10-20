@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e503624_1ea98fd2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update/helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-20T21:23:05Z",
+      "side": 1,
+      "message": "Thanks for your review Kyle!\nI was actually reading up the first doc link to see if passing the testing.State to a helper in subpackage is okay or not. David and I talked about changing it to the global var but ended up not doing so since it is just purely for debugging purpose of the tests in this package, but none in other packages. I\u0027ll probably take it into consideration when the var is rescoped and the current one becomes problematic. Please let me know if you see this differently. Thanks,",
+      "parentUuid": "005f071b_b4e6ab78",
+      "range": {
+        "startLine": 120,
+        "startChar": 24,
+        "endLine": 120,
+        "endChar": 40
+      },
+      "revId": "8365c3ad5694a604a8445179b2d22af207887f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "110d9f45_e34d41fd",
