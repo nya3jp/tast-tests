@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -69,13 +68,11 @@ func ScreenCaptureNotification(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to take a screenshot: ", err)
 	}
 
-	params := ui.FindParams{
-		Role:      ui.RoleTypeWindow,
-		ClassName: "ash/message_center/MessagePopup",
-	}
+	ui := uiauto.New(tconn)
+	popup := nodewith.Role(role.Window).ClassName("ash/message_center/MessagePopup")
 
 	// Verify that the screen capture popup notification is shown after taking the screenshot.
-	if err := ui.WaitUntilExists(ctx, tconn, params, 30*time.Second); err != nil {
+	if err := ui.WithTimeout(30 * time.Second).WaitUntilExists(popup)(ctx); err != nil {
 		s.Fatal("Failed to find popup notification: ", err)
 	}
 
@@ -108,8 +105,6 @@ func ScreenCaptureNotification(ctx context.Context, s *testing.State) {
 		s.Error("Clipboard item should be an image instead of ", t)
 	}
 
-	ac := uiauto.New(tconn)
-
 	// Click "delete" button.
 	deleteButton := nodewith.Name("DELETE").Role(role.Button)
 	if err := ac.LeftClick(deleteButton)(ctx); err != nil {
@@ -137,7 +132,7 @@ func ScreenCaptureNotification(ctx context.Context, s *testing.State) {
 
 	// Click edit button, check if Gallery app open up.
 	editButton := nodewith.Name("EDIT").Role(role.Button)
-	if err := ac.LeftClick(editButton)(ctx); err != nil {
+	if err := ui.LeftClick(editButton)(ctx); err != nil {
 		s.Fatal("Failed to click edit button: ", err)
 	}
 
