@@ -215,6 +215,11 @@ func (h *Helper) RequireRPCClient(ctx context.Context) error {
 	var cl *rpc.Client
 	const rpcConnectTimeout = 5 * time.Minute
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if !h.DUT.Connected(ctx) {
+			if err := h.DUT.Connect(ctx); err != nil {
+				return err
+			}
+		}
 		var err error
 		cl, err = rpc.Dial(ctx, h.DUT, h.rpcHint, "cros")
 		return err
