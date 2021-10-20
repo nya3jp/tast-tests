@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/crossdevice/phonehub"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/testing"
 )
 
@@ -85,6 +86,7 @@ type crossdeviceFixture struct {
 	androidAttributes *AndroidAttributes
 	crosAttributes    *CrosAttributes
 	btsnoopCmd        *testexec.Cmd
+	logMarker         *logsaver.Marker // Marker for per-test log.
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -233,6 +235,16 @@ func (f *crossdeviceFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 	if err := f.btsnoopCmd.Start(); err != nil {
 		s.Fatal("Failed to start btsnoop logging: ", err)
 	}
+
+	if f.logMarker != nil {
+		s.Log("A log marker is already created but not cleaned up")
+	}
+	logMarker, err := logsaver.NewMarker(f.cr.LogFilename())
+	if err == nil {
+		f.logMarker = logMarker
+	} else {
+		s.Log("Failed to start the log saver: ", err)
+	}
 }
 
 func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
@@ -241,6 +253,13 @@ func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	}
 	f.btsnoopCmd.Wait()
 	f.btsnoopCmd = nil
+
+	if f.logMarker != nil {
+		if err := f.logMarker.Save(filepath.Join(s.OutDir(), "chrome.log")); err != nil {
+			s.Log("Failed to store per-test log data: ", err)
+		}
+		f.logMarker = nil
+	}
 }
 
 // saveDeviceAttributes saves the CrOS and Android device attributes as a formatted JSON at the specified filepath.
