@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44643ab5_041480b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-20T12:04:18Z",
+      "side": 1,
+      "message": "Let\u0027s keep it in the Cq then.",
+      "parentUuid": "45e7d2d7_5aac3e82",
+      "revId": "1a078346b58caecab3f845ce0505b35af61ca3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e127aec_0be0a990",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
         "patchSetId": 1
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Because at the moment it only works if we open Lacros after the policies are served.",
       "parentUuid": "4e127aec_0be0a990",
+      "revId": "1a078346b58caecab3f845ce0505b35af61ca3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edbe752b_b9836012",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-20T12:04:18Z",
+      "side": 1,
+      "message": "LacrosPolicyLoggedIn does not fit then 😊\n\nWhat\u0027s the ETA on fixing the issue. Can we hold off on porting tests until it\u0027s ready?",
+      "parentUuid": "5436a833_0fb115b1",
       "revId": "1a078346b58caecab3f845ce0505b35af61ca3b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
