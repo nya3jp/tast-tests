@@ -16,6 +16,24 @@
       "message": "Hi,\n\nshouldn\u0027t there be an ExtraSoftwareDeps line for lacros somewhere?",
       "revId": "b065e9ec6abf2cdfb6424c2b4e163ccde0966820",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5df2caf_af0e72f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-10-20T13:38:54Z",
+      "side": 1,
+      "message": "You are right, Thanks!\nI\u0027ll fix it in another CL.",
+      "parentUuid": "e5f65f6b_c99cbbc4",
+      "revId": "b065e9ec6abf2cdfb6424c2b4e163ccde0966820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
