@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd6d83d_d7a0140f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/disable_3dapis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-10-20T12:39:56Z",
+      "side": 1,
+      "message": "I\u0027ve removed informational from the main variant.",
+      "parentUuid": "44643ab5_041480b3",
+      "revId": "1a078346b58caecab3f845ce0505b35af61ca3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e127aec_0be0a990",
