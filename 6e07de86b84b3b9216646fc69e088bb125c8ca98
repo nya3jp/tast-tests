@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde73386_18a0ec00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-20T05:47:17Z",
+      "side": 1,
+      "message": "Very nice!",
+      "revId": "6e07de86b84b3b9216646fc69e088bb125c8ca98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff46f848_6ed113b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-20T05:47:17Z",
+      "side": 1,
+      "message": "This is platform Vulkan. And it records the values.",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "6e07de86b84b3b9216646fc69e088bb125c8ca98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "169f335e_1bcd72cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-20T05:47:17Z",
+      "side": 1,
+      "message": "Assume we also need VK version from borealis, crostini, arc.\nHow is this going to get expanded?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "6e07de86b84b3b9216646fc69e088bb125c8ca98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e349c4b_591db053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-20T05:47:17Z",
+      "side": 1,
+      "message": "The problem with reporting 3 numbers is that Bigger is not Better.\n\nSay 1.2.4 -\u003e 2.1.1",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 21
+      },
+      "revId": "6e07de86b84b3b9216646fc69e088bb125c8ca98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a7ba66f_0daac283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-20T05:47:17Z",
+      "side": 1,
+      "message": "vulkaninfo",
+      "range": {
+        "startLine": 83,
+        "startChar": 25,
+        "endLine": 83,
+        "endChar": 36
+      },
+      "revId": "6e07de86b84b3b9216646fc69e088bb125c8ca98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e6b54c2_510feeaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-20T05:47:17Z",
+      "side": 1,
+      "message": "Expected disabled vulkan",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 46
+      },
+      "revId": "6e07de86b84b3b9216646fc69e088bb125c8ca98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
