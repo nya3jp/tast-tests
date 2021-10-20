@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db0d16e6_913fcf91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-20T10:44:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a50eaf1a_2fab9978",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 67
+      },
+      "revId": "b6e9c7713e7f7414a073f6d1ac96429764d09d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "937f869c_ad047101",
@@ -84,6 +108,30 @@
       "writtenOn": "2021-10-18T19:08:26Z",
       "side": 1,
       "message": "There is a test called quicksettings.SignInScreen that does a similar thing (checking a list of UI elements is visible). I remember that getting stuck in code review for a few iterations as Tast owners were very picky. \n\nI recommend you to take a look at that and see if you can make your code similar to that to avoid having multiple patterns for testing the same thing",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "b6e9c7713e7f7414a073f6d1ac96429764d09d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42c8105b_28b37612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-20T10:44:03Z",
+      "side": 1,
+      "message": "Fixed,\nMoved to `ossettings.CommonSections`.",
+      "parentUuid": "937f869c_ad047101",
       "range": {
         "startLine": 66,
         "startChar": 1,
