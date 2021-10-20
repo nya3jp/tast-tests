@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb56c15_9cce8223",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-20T04:25:25Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "369df3ca04e4420d3e714c671006002892912765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f62761a_72209bfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-20T04:25:25Z",
+      "side": 1,
+      "message": "Please wrap the error.",
+      "range": {
+        "startLine": 237,
+        "startChar": 2,
+        "endLine": 237,
+        "endChar": 12
+      },
+      "revId": "369df3ca04e4420d3e714c671006002892912765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3376649f_2db89f7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-20T04:25:25Z",
+      "side": 1,
+      "message": "Please wrap the error.",
+      "range": {
+        "startLine": 251,
+        "startChar": 2,
+        "endLine": 251,
+        "endChar": 12
+      },
+      "revId": "369df3ca04e4420d3e714c671006002892912765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47539e4c_8b505500",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-20T04:25:25Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "369df3ca04e4420d3e714c671006002892912765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9f71070_b7ad47d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-20T04:25:25Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "369df3ca04e4420d3e714c671006002892912765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf45b9d_4dbb34bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-20T04:25:25Z",
+      "side": 1,
+      "message": "Just to confirm that you want to use the default timeout for checking dialog. 15s?",
+      "range": {
+        "startLine": 465,
+        "startChar": 16,
+        "endLine": 465,
+        "endChar": 18
+      },
+      "revId": "369df3ca04e4420d3e714c671006002892912765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
