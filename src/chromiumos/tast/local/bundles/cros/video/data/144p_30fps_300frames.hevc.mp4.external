@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/video/perf/hevc/144p_30fps_300frames_20210226.hevc.mp4",
-  "size": 93398,
-  "sha256sum": "82fe8f1d78cc016c0f81e727f5d38d9b81c1a789f35236aefbf2737442d172c3"
+  "sha256sum": "3c4676f38f85cf40905f93557d78a9dec1060a1f395c4049441b8c57903dcfe3",
+  "size": 97415,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/perf/hevc/144p_30fps_300frames_20211020.hevc.mp4"
 }
