@@ -87,6 +87,41 @@
       "message": "LGTM",
       "revId": "e96f95684ff86d9bb3ca6c8fb223d829d38cd582",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a4d2b77_d91f5a14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-20T13:31:35Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "e96f95684ff86d9bb3ca6c8fb223d829d38cd582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cedc154_1f1dd9c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-20T13:31:35Z",
+      "side": 1,
+      "message": "Can you file a bug for it? It is easier to keep track of it that way.",
+      "parentUuid": "3a272013_46c7ffa7",
+      "revId": "e96f95684ff86d9bb3ca6c8fb223d829d38cd582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
