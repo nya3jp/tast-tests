@@ -39,6 +39,29 @@
       },
       "revId": "eefe029b91b5120bf6abaaaa3bf1eefc6569fa61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "262d625a_a32b8086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-20T13:58:23Z",
+      "side": 1,
+      "message": "Victor, do we need the blacklist and whitelist subtests in both Ash and Lacros?\nI feel like one should be enough, but I am not sure where should we keep it.",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 80
+      },
+      "revId": "eefe029b91b5120bf6abaaaa3bf1eefc6569fa61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
