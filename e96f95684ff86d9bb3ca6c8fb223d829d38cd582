@@ -52,6 +52,41 @@
       "parentUuid": "6e71dce0_eb97f9d3",
       "revId": "e96f95684ff86d9bb3ca6c8fb223d829d38cd582",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a272013_46c7ffa7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-20T12:40:36Z",
+      "side": 1,
+      "message": "Thanks. This really looks like a timing issue. Maybe I need a poll for a few seconds around that check.\nFor this CL it\u0027s fine as it runs without any flakes on the CI servers. I might revisit it for BugBash next week to make sure.",
+      "parentUuid": "bb4aed21_03ca5456",
+      "revId": "e96f95684ff86d9bb3ca6c8fb223d829d38cd582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dfdd313_7dea8d2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-20T12:40:36Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "e96f95684ff86d9bb3ca6c8fb223d829d38cd582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
