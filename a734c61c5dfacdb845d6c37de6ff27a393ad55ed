@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bebbb3b9_ccbfa5ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-20T03:26:25Z",
+      "side": 1,
+      "message": "This is used before assigned?",
+      "range": {
+        "startLine": 186,
+        "startChar": 25,
+        "endLine": 186,
+        "endChar": 37
+      },
+      "revId": "a734c61c5dfacdb845d6c37de6ff27a393ad55ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6e4c78_b473eb3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-20T03:26:25Z",
+      "side": 1,
+      "message": "Sorry I\u0027m not sure whether this will remove both dir and fire?\n\nBtw, what would happen if the target does not exist or there is error?",
+      "range": {
+        "startLine": 187,
+        "startChar": 6,
+        "endLine": 187,
+        "endChar": 15
+      },
+      "revId": "a734c61c5dfacdb845d6c37de6ff27a393ad55ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
