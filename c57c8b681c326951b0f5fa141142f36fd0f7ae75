@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d09ff74_bdafdc2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-20T21:51:14Z",
+      "side": 1,
+      "message": "Looks good, just a few small comments.",
+      "revId": "c57c8b681c326951b0f5fa141142f36fd0f7ae75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c327ce68_b406654f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/terms_link_clickable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-20T21:51:14Z",
+      "side": 1,
+      "message": "would this be more appropriate in the settings package?",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "c57c8b681c326951b0f5fa141142f36fd0f7ae75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2263bef5_64a36325",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/terms_link_clickable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-20T21:51:14Z",
+      "side": 1,
+      "message": "this may not be necessary, I think the chrome reset is pretty good about closing browser windows. I\u0027d try without it. Also verifyContents is calling this already, so you probably don\u0027t need it up here",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "c57c8b681c326951b0f5fa141142f36fd0f7ae75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be835030_5079c09b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/terms_link_clickable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-20T21:51:14Z",
+      "side": 1,
+      "message": "I think you can continue on to the next subtest instead of failing early, since they\u0027re not dependent on one another",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 53
+      },
+      "revId": "c57c8b681c326951b0f5fa141142f36fd0f7ae75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d547a03_c1e91436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/terms_link_clickable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-20T21:51:14Z",
+      "side": 1,
+      "message": "I have a feeling that you may need to scroll this link into view (using ui.FocusAndWait) before clicking it on certain form factors, not sure though. Might be worth testing on a small-screen device if you have one.",
+      "range": {
+        "startLine": 102,
+        "startChar": 23,
+        "endLine": 102,
+        "endChar": 72
+      },
+      "revId": "c57c8b681c326951b0f5fa141142f36fd0f7ae75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74206bfa_e31b887f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/terms_link_clickable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-20T21:51:14Z",
+      "side": 1,
+      "message": "is this accessible from uiauto? like as a `nodewith.Name(expected).Role(role.Heading)`?\n\neither way is fine, but the uiauto approach might be more resilient to page layout changes (and requires less code)",
+      "range": {
+        "startLine": 128,
+        "startChar": 21,
+        "endLine": 128,
+        "endChar": 70
+      },
+      "revId": "c57c8b681c326951b0f5fa141142f36fd0f7ae75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
