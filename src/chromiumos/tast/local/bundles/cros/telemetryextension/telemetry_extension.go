@@ -60,6 +60,7 @@ func init() {
 				ExtraHardwareDeps: dep.LowPriorityTargetModels(),
 			},
 		},
+		Timeout: 5*time.Minute,
 	})
 }
 
@@ -75,7 +76,7 @@ func TelemetryExtension(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create temporary directory for TelemetryExtension: ", err)
 	}
-	defer os.RemoveAll(dir)
+	// defer os.RemoveAll(dir)
 
 	if err := os.Chown(dir, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
 		s.Fatal("Failed to chown TelemetryExtension dir: ", err)
@@ -103,12 +104,14 @@ func TelemetryExtension(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
+	s.Log("Connecting to google.com")
 	conn, err := cr.NewConn(ctx, "https://www.google.com")
 	if err != nil {
 		s.Fatal("Failed to create connection to google.com: ", err)
 	}
 	defer conn.Close()
 
+	s.Log("Adding tast library")
 	if err := chrome.AddTastLibrary(ctx, conn); err != nil {
 		s.Fatal("Failed to add Tast library to PWA: ", err)
 	}
@@ -168,6 +171,7 @@ func TelemetryExtension(ctx context.Context, s *testing.State) {
 }
 
 type swResponse struct {
+	ApiStats string   `json:"apiStats"`
 	OemData  string   `json:"oemData"`
 	VpdInfo  vpdInfo  `json:"vpdInfo"`
 	Routines []string `json:"routines"`
@@ -229,7 +233,7 @@ func expectedSwResponse(ctx context.Context) (swResponse, error) {
 			ActivateDate: string(activateDateBytes),
 			ModelName:    string(modelNameBytes),
 			SerialNumber: string(serialNumberBytes),
-			SkuNumber:    string(skuNumberBytes),
+			// SkuNumber:    string(skuNumberBytes),
 		},
 		Routines: []string{
 			"battery_capacity",
