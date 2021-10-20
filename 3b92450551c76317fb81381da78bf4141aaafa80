@@ -294,6 +294,30 @@
       },
       "revId": "3b92450551c76317fb81381da78bf4141aaafa80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04d2208d_f2e29466",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-10-20T10:38:29Z",
+      "side": 1,
+      "message": "\u003e if we are able to set the scene for file VCD dynamically after launching Chrome, we can use \"ccaLaunched\" instead of \"ccaLaunchedWith*Scene\" for many tests.\n\n(Not directly related to this CL) That\u0027s a good point! Random idea: If we replace the y4m file for File VCD dynamically, will it work?",
+      "parentUuid": "c5275327_7bc88a73",
+      "range": {
+        "startLine": 280,
+        "startChar": 34,
+        "endLine": 280,
+        "endChar": 60
+      },
+      "revId": "3b92450551c76317fb81381da78bf4141aaafa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
