@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ba97284_b7b9ad8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-20T05:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bb56c15_9cce8223",
+      "revId": "369df3ca04e4420d3e714c671006002892912765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f62761a_72209bfd",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-20T04:25:25Z",
       "side": 1,
       "message": "Please wrap the error.",
+      "range": {
+        "startLine": 237,
+        "startChar": 2,
+        "endLine": 237,
+        "endChar": 12
+      },
+      "revId": "369df3ca04e4420d3e714c671006002892912765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "523eb8ac_4255b6db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-20T05:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f62761a_72209bfd",
       "range": {
         "startLine": 237,
         "startChar": 2,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f0e0a27_e226679a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-20T05:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3376649f_2db89f7a",
+      "range": {
+        "startLine": 251,
+        "startChar": 2,
+        "endLine": 251,
+        "endChar": 12
+      },
+      "revId": "369df3ca04e4420d3e714c671006002892912765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47539e4c_8b505500",
@@ -77,6 +143,24 @@
       "writtenOn": "2021-10-20T04:25:25Z",
       "side": 1,
       "message": "nit: remove empty line.",
+      "revId": "369df3ca04e4420d3e714c671006002892912765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec39f5af_4624c8f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-20T05:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47539e4c_8b505500",
       "revId": "369df3ca04e4420d3e714c671006002892912765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dbe36d1_9a96312c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-20T05:33:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9f71070_b7ad47d5",
+      "revId": "369df3ca04e4420d3e714c671006002892912765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edf45b9d_4dbb34bf",
@@ -111,6 +213,30 @@
       "writtenOn": "2021-10-20T04:25:25Z",
       "side": 1,
       "message": "Just to confirm that you want to use the default timeout for checking dialog. 15s?",
+      "range": {
+        "startLine": 465,
+        "startChar": 16,
+        "endLine": 465,
+        "endChar": 18
+      },
+      "revId": "369df3ca04e4420d3e714c671006002892912765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b171383_d2269088",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-20T05:33:52Z",
+      "side": 1,
+      "message": "According to the test results, the dialog will appear late on the low-end DUT. Therefore, use the default timeout for checking.",
+      "parentUuid": "edf45b9d_4dbb34bf",
       "range": {
         "startLine": 465,
         "startChar": 16,
