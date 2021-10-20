@@ -15,7 +15,9 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/crash"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/testing"
 )
@@ -28,10 +30,17 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
+		Params: []testing.Param{{
+			Val: false,
+		}, {
+			Name: "shortcut",
+			Val:  true,
+		}},
 	})
 }
 
 func Signout(ctx context.Context, s *testing.State) {
+	signoutWithKeyboardShortcut := s.Param().(bool)
 	cr, err := chrome.New(ctx, chrome.ExtraArgs("--force-tablet-mode=clamshell", "--disable-virtual-keyboard"))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
@@ -68,16 +77,37 @@ func Signout(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get Chrome root PID: ", err)
 	}
 
-	ui := uiauto.New(tconn)
-	signOutButton := nodewith.Name("Sign out").Role(role.Button)
-	buttonFound, err := ui.IsNodeFound(ctx, signOutButton)
-	if !buttonFound {
-		s.Fatal("Signout button was not found: ", err)
+	// We wait here to give Chrome more chances to shutdown in 3 seconds and
+	// won't get killed by the session manager.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed to wait for CPU to become idle: ", err)
 	}
 
-	// We ignore errors here because when we click on "Sign out" button Chrome
-	// shuts down and the connection is closed. So we always get an error.
-	ui.LeftClick(signOutButton)(ctx)
+	if signoutWithKeyboardShortcut {
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			s.Fatal("Failed to get keyboard: ", err)
+		}
+		if err := kb.Accel(ctx, "Ctrl+Shift+Q"); err != nil {
+			s.Fatal("Failed emulate shortcut 1st press: ", err)
+		}
+		if err := kb.Accel(ctx, "Ctrl+Shift+Q"); err != nil {
+			s.Fatal("Failed emulate shortcut 2nd press: ", err)
+		}
+	} else {
+		// Sign out using button.
+		ui := uiauto.New(tconn)
+		signOutButton := nodewith.Name("Sign out").Role(role.Button)
+		buttonFound, err := ui.IsNodeFound(ctx, signOutButton)
+		if !buttonFound {
+			s.Fatal("Signout button was not found: ", err)
+		}
+
+		// We ignore errors here because when we click on "Sign out" button
+		// Chrome shuts down and the connection is closed. So we always get an
+		// error.
+		ui.LeftClick(signOutButton)(ctx)
+	}
 
 	// Wait for Chrome restart
 	if err := procutil.WaitForTerminated(ctx, oldProc, 30*time.Second); err != nil {
