@@ -191,6 +191,42 @@ window.Tast = class Tast {
   }
 
   /**
+   * Gets screen x, y of the center of |index|'th ui with |selector|.
+   * @param {string} selector
+   * @param {number} index 0-based target index.
+   * @return {{x: number, y: number}}
+   */
+  static async getScreenXY(selector, index) {
+    if (!Tast.isVisible(selector)) {
+      throw new Error('No visible element: ', selector);
+    }
+    const element = document.querySelectorAll(selector)[index];
+    if (element === undefined) {
+      return new Error(`No ${index}'th element from ${selector}`);
+    }
+    const rect = element.getBoundingClientRect();
+    const actionBarH = window.outerHeight - window.innerHeight;
+    return {
+      x: Math.round(rect.x + window.screenX),
+      y: Math.round(rect.y + actionBarH + window.screenY),
+    };
+  }
+
+  /**
+   * Gets size of ui with |selector|.
+   * @param {string} selector
+   * @return {{width: number, height: number}}
+   */
+  static async getSize(selector) {
+    if (!Tast.isVisible(selector)) {
+      throw new Error('No visible element: ', selector);
+    }
+    const element = document.querySelector(selector);
+    const {width, height} = element.getBoundingClientRect();
+    return {width: Math.round(width), height: Math.round(height)};
+  }
+
+  /**
    * @param {string} selector Selector for the target element.
    * @param {string} value Value of option to be selected.
    */
