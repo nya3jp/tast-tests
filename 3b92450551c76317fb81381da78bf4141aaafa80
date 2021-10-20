@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8adb39a_229bbb39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-20T09:49:30Z",
+      "side": 1,
+      "message": "I see. I just expect that landing Mode can be part of the |assistantBehavior|. But since it is minor I am okay with either ways.",
+      "parentUuid": "a2c973f6_4bab3fa0",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 5
+      },
+      "revId": "3b92450551c76317fb81381da78bf4141aaafa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76874170_38ed1f65",
@@ -214,6 +238,30 @@
       "side": 1,
       "message": "The assistant logging enables verbose logging for assistant related things (--vmodule\u003d*/assistant/*\u003d3), and enable an additional feature AssistantDebugging.\n\nIIRC assistant aren\u0027t default enabled when running tests, so enabling this should have no effect on other tests. But I think it\u0027s still safer to just enable it when we really need it.\n\nI\u0027m not sure what do you mean by \"save some time for running tests\", since this should have minimal run time impact even if we keep this separated.",
       "parentUuid": "ac5ecb9a_3208290b",
+      "range": {
+        "startLine": 280,
+        "startChar": 34,
+        "endLine": 280,
+        "endChar": 60
+      },
+      "revId": "3b92450551c76317fb81381da78bf4141aaafa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "006e4979_8dc6fdcc",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-20T09:49:30Z",
+      "side": 1,
+      "message": "If we put it into its own fixture, it won\u0027t reuse the environment set up for another test. Therefore, comparing to using the same fixture case, it might take some more time for setting up/tearing down Chrome in addition.\n\nCurrently we have several fixtures which are only used by themselves. But ideally, we should use as least fixtures as possible to boost the overall run time. For example, if we are able to set the scene for file VCD dynamically after launching Chrome, we can use \"ccaLaunched\" instead of \"ccaLaunchedWith*Scene\" for many tests.",
+      "parentUuid": "58087b09_9b21bb7d",
       "range": {
         "startLine": 280,
         "startChar": 34,
