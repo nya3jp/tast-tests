@@ -177,7 +177,9 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		}
 		// Reconnect to the DUT.
 		testing.ContextLog(ctx, "Reestablishing connection to DUT")
-		if err := h.WaitConnect(ctx); err != nil {
+		connectCtx, cancel := context.WithTimeout(ctx, reconnectTimeout)
+		defer cancel()
+		if err := h.WaitConnect(connectCtx); err != nil {
 			return errors.Wrapf(err, "failed to reconnect to DUT after booting to %s", toMode)
 		}
 	case fwCommon.BootModeRecovery:
@@ -188,7 +190,9 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		}
 		// Reconnect to the DUT.
 		testing.ContextLog(ctx, "Reestablishing connection to DUT")
-		if err := h.WaitConnect(ctx); err != nil {
+		connectCtx, cancel := context.WithTimeout(ctx, reconnectTimeout)
+		defer cancel()
+		if err := h.WaitConnect(connectCtx); err != nil {
 			return errors.Wrapf(err, "failed to reconnect to DUT after booting to %s", toMode)
 		}
 	case fwCommon.BootModeDev:
@@ -236,7 +240,9 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		} else {
 			// Reconnect to the DUT.
 			testing.ContextLog(ctx, "Reestablishing connection to DUT")
-			if err := h.WaitConnect(ctx); err != nil {
+			connectCtx, cancel := context.WithTimeout(ctx, reconnectTimeout)
+			defer cancel()
+			if err := h.WaitConnect(connectCtx); err != nil {
 				return errors.Wrapf(err, "failed to reconnect to DUT after booting to %s", toMode)
 			}
 		}
@@ -320,7 +326,9 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		}
 		// Reconnect to the DUT.
 		testing.ContextLog(ctx, "Reestablishing connection to DUT")
-		if err := h.WaitConnect(ctx); err != nil {
+		connectCtx, cancel := context.WithTimeout(ctx, reconnectTimeout)
+		defer cancel()
+		if err := h.WaitConnect(connectCtx); err != nil {
 			return errors.Wrapf(err, "failed to reconnect to DUT after booting to %s", toMode)
 		}
 	default:
@@ -446,7 +454,9 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 	} else {
 		// Reconnect to the DUT.
 		testing.ContextLog(ctx, "Reestablishing connection to DUT")
-		if err := h.WaitConnect(ctx); err != nil {
+		connectCtx, cancel := context.WithTimeout(ctx, reconnectTimeout)
+		defer cancel()
+		if err := h.WaitConnect(connectCtx); err != nil {
 			return errors.Wrapf(err, "failed to reconnect to DUT after resetting from %s", fromMode)
 		}
 	}
@@ -636,7 +646,9 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context) error {
 			return errors.Wrap(err, "selecting menu item 'Confirm enabling developer mode' on TO_DEV screen")
 		}
 		// Reconnect to the DUT.
-		if err := h.WaitConnect(ctx); err != nil {
+		connectCtx, cancel := context.WithTimeout(ctx, reconnectTimeout)
+		defer cancel()
+		if err := h.WaitConnect(connectCtx); err != nil {
 			return errors.Wrap(err, "failed to reconnect to DUT")
 		}
 	default:
@@ -684,7 +696,9 @@ func (ms *ModeSwitcher) fwScreenToUSBDevMode(ctx context.Context) error {
 	}
 
 	// Reconnect to the DUT.
-	if err := h.WaitConnect(ctx); err != nil {
+	connectCtx, cancel := context.WithTimeout(ctx, reconnectTimeout)
+	defer cancel()
+	if err := h.WaitConnect(connectCtx); err != nil {
 		return errors.Wrap(err, "failed to reconnect to DUT")
 	}
 
