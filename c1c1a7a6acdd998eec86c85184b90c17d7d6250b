@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44f5e28e_ea922039",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299073
+      },
+      "writtenOn": "2021-10-20T20:10:42Z",
+      "side": 1,
+      "message": "This code is a bit mysterious to me, but strong LGTM for the idea 😊",
+      "revId": "c1c1a7a6acdd998eec86c85184b90c17d7d6250b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
