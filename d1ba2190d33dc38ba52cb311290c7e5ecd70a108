@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3deb8bf1_cfb27557",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1299073
+      },
+      "writtenOn": "2021-10-20T20:14:47Z",
+      "side": 1,
+      "message": "FYI, 1 might be sufficient instead of 3, though 3 should be fine. There are different levels of VERBOSE logging, but I think all of our features only use level 1 verbose logging.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 12
+      },
+      "revId": "d1ba2190d33dc38ba52cb311290c7e5ecd70a108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
