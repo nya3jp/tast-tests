@@ -69,6 +69,30 @@
       },
       "revId": "a734c61c5dfacdb845d6c37de6ff27a393ad55ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a52fe66_167ee70b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-20T23:21:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d15ca8c_eec90db7",
+      "range": {
+        "startLine": 187,
+        "startChar": 6,
+        "endLine": 187,
+        "endChar": 15
+      },
+      "revId": "a734c61c5dfacdb845d6c37de6ff27a393ad55ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
