@@ -124,8 +124,9 @@ func init() {
 				},
 			},
 			{
-				Name:    "lacros_default",
-				Fixture: fixture.LacrosPolicyLoggedIn,
+				Name:              "lacros_default",
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				ExtraSoftwareDeps: []string{"lacros"},
 				Val: []popupsSettingTestTable{
 					{
 						name:        "allowed",
@@ -148,8 +149,9 @@ func init() {
 				},
 			},
 			{
-				Name:    "lacros_allowlist",
-				Fixture: fixture.LacrosPolicyLoggedIn,
+				Name:              "lacros_allowlist",
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				ExtraSoftwareDeps: []string{"lacros"},
 				Val: []popupsSettingTestTable{
 					{
 						name:        "blocklist_unset_default_block",
@@ -174,8 +176,9 @@ func init() {
 				},
 			},
 			{
-				Name:    "lacros_blocklist",
-				Fixture: fixture.LacrosPolicyLoggedIn,
+				Name:              "lacros_blocklist",
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				ExtraSoftwareDeps: []string{"lacros"},
 				Val: []popupsSettingTestTable{
 					{
 						name:        "allowlist_unset_default_allow",
