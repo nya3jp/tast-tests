@@ -6,20 +6,24 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
 type homepageSettingTestTable struct {
-	name         string          // name is the subtest name.
-	wantHomepage bool            // wantHomepage is whether the homepage is expected to be the one set in the HomepageLocation policy.
-	policies     []policy.Policy // policies is a list of HomepageLocation and HomepageIsNewTabPage policies to update before checking the homepage.
+	name         string            // name is the subtest name.
+	browserType  lacros.ChromeType // browser type used in the subtest; must match the fixture.
+	wantHomepage bool              // wantHomepage is whether the homepage is expected to be the one set in the HomepageLocation policy.
+	policies     []policy.Policy   // policies is a list of HomepageLocation and HomepageIsNewTabPage policies to update before checking the homepage.
 }
 
 const chromePoliciesURL = "chrome://policy/"
@@ -34,13 +38,14 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
 		Params: []testing.Param{
 			{
-				Name: "location",
+				Name:    "location",
+				Fixture: fixture.ChromePolicyLoggedIn,
 				Val: []homepageSettingTestTable{
 					{
 						name:         "set",
+						browserType:  lacros.ChromeTypeChromeOS,
 						wantHomepage: true,
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Val: chromePoliciesURL},
@@ -49,6 +54,7 @@ func init() {
 					},
 					{
 						name:         "unset",
+						browserType:  lacros.ChromeTypeChromeOS,
 						wantHomepage: false,
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Stat: policy.StatusUnset},
@@ -58,11 +64,38 @@ func init() {
 				},
 			},
 			{
-				Name: "is_new_tab_page",
+				Name:              "lacros_location",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				Val: []homepageSettingTestTable{
+					{
+						name:         "set",
+						browserType:  lacros.ChromeTypeLacros,
+						wantHomepage: true,
+						policies: []policy.Policy{
+							&policy.HomepageLocation{Val: chromePoliciesURL},
+							&policy.HomepageIsNewTabPage{Val: false},
+						},
+					},
+					{
+						name:         "unset",
+						browserType:  lacros.ChromeTypeLacros,
+						wantHomepage: false,
+						policies: []policy.Policy{
+							&policy.HomepageLocation{Stat: policy.StatusUnset},
+							&policy.HomepageIsNewTabPage{Val: false},
+						},
+					},
+				},
+			},
+			{
+				Name:    "is_new_tab_page",
+				Fixture: fixture.ChromePolicyLoggedIn,
 				Val: []homepageSettingTestTable{
 					// The test case for HomepageIsNewTabPage{Val: false} is not present here as it is already included in the above group.
 					{
 						name:         "set_true",
+						browserType:  lacros.ChromeTypeChromeOS,
 						wantHomepage: false,
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Val: chromePoliciesURL},
@@ -71,6 +104,33 @@ func init() {
 					},
 					{
 						name:         "unset",
+						browserType:  lacros.ChromeTypeChromeOS,
+						wantHomepage: false,
+						policies: []policy.Policy{
+							&policy.HomepageLocation{Val: chromePoliciesURL},
+							&policy.HomepageIsNewTabPage{Stat: policy.StatusUnset},
+						},
+					},
+				},
+			},
+			{
+				Name:              "lacros_is_new_tab_page",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				Val: []homepageSettingTestTable{
+					// The test case for HomepageIsNewTabPage{Val: false} is not present here as it is already included in the above group.
+					{
+						name:         "set_true",
+						browserType:  lacros.ChromeTypeLacros,
+						wantHomepage: false,
+						policies: []policy.Policy{
+							&policy.HomepageLocation{Val: chromePoliciesURL},
+							&policy.HomepageIsNewTabPage{Val: true},
+						},
+					},
+					{
+						name:         "unset",
+						browserType:  lacros.ChromeTypeLacros,
 						wantHomepage: false,
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Val: chromePoliciesURL},
@@ -86,6 +146,11 @@ func init() {
 func Homepage(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	tcs, ok := s.Param().([]homepageSettingTestTable)
 	if !ok {
@@ -114,7 +179,14 @@ func Homepage(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			conn, err := cr.NewConn(ctx, "chrome://version/")
+			// TODO(crbug.com/1259615): This should be part of the fixture.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), tc.browserType)
+			if err != nil {
+				s.Fatal("Failed to setup chrome: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
+			conn, err := br.NewConn(ctx, "chrome://version/")
 			if err != nil {
 				s.Fatal("Failed to connect to chrome: ", err)
 			}
