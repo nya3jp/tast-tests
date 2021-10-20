@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7089f16f_3ddbf25f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-20T00:01:28Z",
+      "side": 1,
+      "message": "Lgtm modulo method-extraction comments from Eric",
+      "revId": "08a4f1e8e6da5ae12f26a21cfa8ecdfd92df5e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "050127cf_e0b118e8",
