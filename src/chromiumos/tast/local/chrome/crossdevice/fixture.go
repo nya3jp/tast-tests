@@ -13,8 +13,10 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/crossdevice/phonehub"
@@ -82,6 +84,7 @@ type crossdeviceFixture struct {
 	cr                *chrome.Chrome
 	androidAttributes *AndroidAttributes
 	crosAttributes    *CrosAttributes
+	btsnoopCmd        *testexec.Cmd
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -152,6 +155,14 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	}
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "fixture")
 
+	// Capture btsnoop logs during fixture setup to have adequate logging during the onboarding phase.
+	btsnoopCmd := bluetooth.StartBTSnoopLogging(ctx, filepath.Join(s.OutDir(), "crossdevice-fixture-btsnoop.log"))
+	if err := btsnoopCmd.Start(); err != nil {
+		s.Fatal("Failed to start btsnoop logging: ", err)
+	}
+	defer btsnoopCmd.Wait()
+	defer btsnoopCmd.Kill()
+
 	// Sometimes during login the tcp connection to the snippet server on Android is lost.
 	// If the Pair RPC fails, reconnect to the snippet server and try again.
 	if err := androidDevice.Pair(ctx); err != nil {
@@ -218,8 +229,19 @@ func (f *crossdeviceFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 	if err := saveDeviceAttributes(f.crosAttributes, f.androidAttributes, filepath.Join(s.OutDir(), "device_attributes.json")); err != nil {
 		s.Error("Failed to save device attributes: ", err)
 	}
+	f.btsnoopCmd = bluetooth.StartBTSnoopLogging(s.TestContext(), filepath.Join(s.OutDir(), "crossdevice-btsnoop.log"))
+	if err := f.btsnoopCmd.Start(); err != nil {
+		s.Fatal("Failed to start btsnoop logging: ", err)
+	}
 }
-func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+
+func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if err := f.btsnoopCmd.Kill(); err != nil {
+		s.Error("Failed to stop btsnoop log capture: ", err)
+	}
+	f.btsnoopCmd.Wait()
+	f.btsnoopCmd = nil
+}
 
 // saveDeviceAttributes saves the CrOS and Android device attributes as a formatted JSON at the specified filepath.
 func saveDeviceAttributes(crosAttrs *CrosAttributes, androidAttrs *AndroidAttributes, filepath string) error {
