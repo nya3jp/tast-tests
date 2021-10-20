@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/upstart"
@@ -226,6 +227,8 @@ var (
 	ScanDocumentModeOption = UIComponent{"document mode button", []string{"#scan-document"}}
 	// ReviewView is the review view after taking a photo under document mode.
 	ReviewView = UIComponent{"document review view", []string{"#view-review"}}
+	// ReviewImage is the image to be reviewed.
+	ReviewImage = UIComponent{"reivew image", []string{"#view-review .review-image"}}
 	// SaveAsPDFButton is the button to save document as PDF.
 	SaveAsPDFButton = UIComponent{"save document as pdf button", []string{"#view-review button[i18n-text=label_save_pdf_document]"}}
 	// SaveAsPhotoButton is the button to save document as photo.
@@ -235,6 +238,16 @@ var (
 		// TODO(b/203028477): Remove selector for old mode name after
 		// naming CL on app side fully landed.
 		"#review-retake", "#view-review button[i18n-text=label_retake]"}}
+	// FixCropButton is the button to fix document crop area.
+	FixCropButton = UIComponent{"fix document crop area button", []string{"#view-review button[i18n-text=label_fix_document]"}}
+	// CropDocumentView is the view for fix document crop area.
+	CropDocumentView = UIComponent{"crop document view", []string{"#view-crop-document"}}
+	// CropDocumentImage is the image to be cropped document from.
+	CropDocumentImage = UIComponent{"crop document image", []string{"#view-crop-document .review-image"}}
+	// CropDoneButton is the button clicked after fix document crop area.
+	CropDoneButton = UIComponent{"crop document done button", []string{"#view-crop-document button[i18n-text=label_crop_done]"}}
+	// DocumentCorner is the dragging point of document corner in crop area page.
+	DocumentCorner = UIComponent{"document corner dragging point", []string{"#view-crop-document .dot"}}
 	// DocumentCornerOverlay is the overlay that CCA used to draw document corners on.
 	DocumentCornerOverlay = UIComponent{"document corner overlay", []string{
 		"#preview-document-corner-overlay"}}
@@ -1245,6 +1258,38 @@ func (a *App) AttributeWithIndex(ctx context.Context, ui UIComponent, index int,
 		return "", wrapError(err)
 	}
 	return value, nil
+}
+
+// ScreenXYWithIndex returns the screen coordinates of the left-top corner of the |index|'th |ui|.
+func (a *App) ScreenXYWithIndex(ctx context.Context, ui UIComponent, index int) (*coords.Point, error) {
+	wrapError := func(err error) error {
+		return errors.Wrapf(err, "failed to get screen coordindates of %v th %v", index, ui.Name)
+	}
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return nil, wrapError(err)
+	}
+	var pt coords.Point
+	if err := a.conn.Call(ctx, &pt, `Tast.getScreenXY`, selector, index); err != nil {
+		return nil, wrapError(err)
+	}
+	return &pt, nil
+}
+
+// Size returns size of the |ui|.
+func (a *App) Size(ctx context.Context, ui UIComponent) (*Resolution, error) {
+	wrapError := func(err error) error {
+		return errors.Wrapf(err, "failed to get size of %v", ui.Name)
+	}
+	selector, err := a.resolveUISelector(ctx, ui)
+	if err != nil {
+		return nil, wrapError(err)
+	}
+	var size Resolution
+	if err := a.conn.Call(ctx, &size, `Tast.getSize`, selector); err != nil {
+		return nil, wrapError(err)
+	}
+	return &size, nil
 }
 
 // ConfirmResult clicks the confirm button or the cancel button according to the given isConfirmed.
