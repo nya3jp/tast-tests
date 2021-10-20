@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e8b1a3_a198aae7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-20T02:10:35Z",
+      "side": 1,
+      "message": "DUTs",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "a90598fc5f9e7cc7d360d5866879cdccb6602d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9af8e370_725e5d76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/record_partial_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-20T02:10:35Z",
+      "side": 1,
+      "message": "For comment inside implementation, we shall use imperative verbs instead.",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 11
+      },
+      "revId": "a90598fc5f9e7cc7d360d5866879cdccb6602d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eadb84a_d7e8f790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/record_partial_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-20T02:10:35Z",
+      "side": 1,
+      "message": "Can we abtrary click a place within working area to clear the drag area if presented? If so, we can just click dragEndPt for example.",
+      "range": {
+        "startLine": 105,
+        "startChar": 21,
+        "endLine": 105,
+        "endChar": 32
+      },
+      "revId": "a90598fc5f9e7cc7d360d5866879cdccb6602d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
