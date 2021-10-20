@@ -210,6 +210,7 @@ type SysfsBatteryMetrics struct {
 	batteryPath     string
 	dischargeMetric perf.Metric
 	initialEnergy   float64
+	capacityMetric  perf.Metric
 }
 
 // Assert that SysfsBatteryMetrics can be used in perf.Timeline.
@@ -245,6 +246,7 @@ func (b *SysfsBatteryMetrics) Setup(ctx context.Context, prefix string) error {
 	}
 	b.powerMetric = perf.Metric{Name: prefix + "system", Unit: "W", Direction: perf.SmallerIsBetter, Multiple: true}
 	b.dischargeMetric = perf.Metric{Name: prefix + "discharge_mwh", Unit: "mWh", Direction: perf.SmallerIsBetter, Multiple: false}
+	b.capacityMetric = perf.Metric{Name: prefix + "bat_capacity", Unit: "percent", Direction: perf.BiggerIsBetter, Multiple: true}
 	return nil
 }
 
@@ -267,6 +269,13 @@ func (b *SysfsBatteryMetrics) Snapshot(_ context.Context, values *perf.Values) e
 		return err
 	}
 	values.Append(b.powerMetric, power)
+
+	capacity, err := ReadBatteryCapacity(b.batteryPath)
+	if err != nil {
+		return err
+	}
+	values.Append(b.capacityMetric, capacity)
+
 	return nil
 }
 
