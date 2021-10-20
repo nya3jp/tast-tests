@@ -136,6 +136,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9118d2e5_1cdb3cb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-20T15:16:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "97a0f146_8e5b7381",
+      "revId": "eefe029b91b5120bf6abaaaa3bf1eefc6569fa61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "262d625a_a32b8086",
