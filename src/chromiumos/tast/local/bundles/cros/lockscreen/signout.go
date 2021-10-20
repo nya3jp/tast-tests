@@ -8,15 +8,15 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/chromeproc"
+	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crash"
+	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/testing"
 )
 
@@ -63,7 +63,7 @@ func Signout(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	oldpid, err := chromeproc.GetRootPID()
+	oldProc, err := ashproc.Root()
 	if err != nil {
 		s.Fatal("Failed to get Chrome root PID: ", err)
 	}
@@ -80,21 +80,11 @@ func Signout(ctx context.Context, s *testing.State) {
 	ui.LeftClick(signOutButton)(ctx)
 
 	// Wait for Chrome restart
-	opts := testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second}
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		newpid, err := chromeproc.GetRootPID()
-		if err != nil {
-			return err
-		}
-		if newpid == oldpid {
-			return errors.New("Chrome still did not restart")
-		}
-		return nil
-
-	}, &opts)
-
-	if err != nil {
-		s.Fatal("Timeout waiting for Chrome to restart: ", err)
+	if err := procutil.WaitForTerminated(ctx, oldProc, 30*time.Second); err != nil {
+		s.Fatal("Timeout waiting for Chrome to shutdown: ", err)
+	}
+	if _, err := ashproc.WaitForRoot(ctx, 30*time.Second); err != nil {
+		s.Fatal("TImeout waiting for Chrome to restart: ", err)
 	}
 
 	newCrashes, err := crash.GetCrashes(crash.DefaultDirs()...)
