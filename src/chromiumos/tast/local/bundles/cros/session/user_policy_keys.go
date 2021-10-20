@@ -9,13 +9,15 @@ import (
 	"os"
 	"path/filepath"
 	"syscall"
+	"time"
 
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/policy/enterprise_management"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/chromeproc"
+	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/session/ownership"
 	"chromiumos/tast/local/sysutil"
@@ -173,26 +175,25 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 	if err := cryptohome.UnmountVault(ctx, testUser); err != nil {
 		s.Fatal("Failed to unmount user vault: ", err)
 	}
-	chromePID, err := chromeproc.GetRootPID()
+
+	oldProc, err := ashproc.Root()
 	if err != nil {
 		s.Fatal("Failed to find Chrome: ", err)
 	}
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to restart ui: ", err)
 	}
+
 	// The actual deletion is done in the session_manager's Chrome setup
 	// code. Thus wait for the Chrome reboot, which should be after the
 	// setup.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if newPID, err := chromeproc.GetRootPID(); err != nil {
-			return err
-		} else if chromePID == newPID {
-			return errors.Errorf("Chrome PID is not yet changed: %d", chromePID)
-		}
-		return nil
-	}, nil); err != nil {
-		s.Fatal("Restarted Chrome is not found: ", err)
+	if err := procutil.WaitForTerminated(ctx, oldProc, 30*time.Second); err != nil {
+		s.Fatal("Failed to wait for chrome shutdown: ", err)
 	}
+	if _, err := ashproc.WaitForRoot(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to wait for chrome to restart: ", err)
+	}
+
 	if _, err := os.Stat(keyFile); err == nil {
 		s.Fatalf("%s exists unexpectedly", keyFile)
 	} else if !os.IsNotExist(err) {
