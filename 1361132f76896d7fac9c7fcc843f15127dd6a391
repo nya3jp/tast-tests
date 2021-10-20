@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3352ba92_e08759e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-10-20T23:05:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dcb70df_e057d3ed",
+      "revId": "1361132f76896d7fac9c7fcc843f15127dd6a391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f62f126_6da396e0",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-20T06:59:58Z",
       "side": 1,
       "message": "GAIA",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 9
+      },
+      "revId": "1361132f76896d7fac9c7fcc843f15127dd6a391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eddf3150_4f17e108",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-10-20T23:05:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f62f126_6da396e0",
       "range": {
         "startLine": 57,
         "startChar": 5,
