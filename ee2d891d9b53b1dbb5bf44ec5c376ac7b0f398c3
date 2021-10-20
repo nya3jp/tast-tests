@@ -16,6 +16,52 @@
       "message": "ptal",
       "revId": "ee2d891d9b53b1dbb5bf44ec5c376ac7b0f398c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cb3e865_dc83178a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-20T18:33:19Z",
+      "side": 1,
+      "message": "IMO it would be also good to add logging here since it also checks if the lacros app is open by the given ID[1] before it returns.\nIf something went wrong on app startup, this could be another failure point. \n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/shelf.go;l\u003d749-751;drc\u003d6616a1369e5ef8e114fb46daa8e3ffee551f04ab",
+      "range": {
+        "startLine": 110,
+        "startChar": 10,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "ee2d891d9b53b1dbb5bf44ec5c376ac7b0f398c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71737c25_0e041b40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-20T18:33:19Z",
+      "side": 1,
+      "message": "Q maybe for tast owners - is there a way to send cros feedback for more debuggable logs including crashlogs in addition to this?",
+      "range": {
+        "startLine": 137,
+        "startChar": 68,
+        "endLine": 137,
+        "endChar": 78
+      },
+      "revId": "ee2d891d9b53b1dbb5bf44ec5c376ac7b0f398c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
