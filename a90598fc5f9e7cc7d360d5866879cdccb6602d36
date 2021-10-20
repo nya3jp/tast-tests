@@ -140,6 +140,30 @@
       },
       "revId": "a90598fc5f9e7cc7d360d5866879cdccb6602d36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b97d4cca_840dc29b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/record_partial_screen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-20T09:50:18Z",
+      "side": 1,
+      "message": "I see. Please place the comment in the definition of dragClearPt:\n\n// The click point must be outside of work area (i.e. outside of dragStartPt - dragEndPt rectangle).",
+      "parentUuid": "5271d475_02dc5c52",
+      "range": {
+        "startLine": 105,
+        "startChar": 21,
+        "endLine": 105,
+        "endChar": 32
+      },
+      "revId": "a90598fc5f9e7cc7d360d5866879cdccb6602d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
