@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd347be8_ae25e61b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-20T14:13:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68428ad8_0c462b7d",
+      "range": {
+        "startLine": 252,
+        "startChar": 3,
+        "endLine": 256,
+        "endChar": 56
+      },
+      "revId": "c11a9f143ec42de0bf669c80254afa528e699070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de555e8f_ef2a03d2",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4875e1bf_3a6f0cf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-20T14:13:00Z",
+      "side": 1,
+      "message": "We have dealt with these two cases (check line 233 in `func reloadPage`). Just because their process is the same (return to the OneDrive page after clicking the button), this common function can handle both situations at the same time.",
+      "parentUuid": "de555e8f_ef2a03d2",
+      "range": {
+        "startLine": 265,
+        "startChar": 23,
+        "endLine": 265,
+        "endChar": 37
+      },
+      "revId": "c11a9f143ec42de0bf669c80254afa528e699070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e51ba5b1_2b760d13",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-19T03:30:59Z",
       "side": 1,
       "message": "This is actually IfSuccessThen?",
+      "range": {
+        "startLine": 267,
+        "startChar": 31,
+        "endLine": 267,
+        "endChar": 37
+      },
+      "revId": "c11a9f143ec42de0bf669c80254afa528e699070",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a633bf0_6f5acb1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-20T14:13:00Z",
+      "side": 1,
+      "message": "The concept of this function is similar to `IfSuccessThen`. Since preFunc is the same in all cases (ui.WaitUntilExists(ui-node)), I wrap it into this function.",
+      "parentUuid": "e51ba5b1_2b760d13",
       "range": {
         "startLine": 267,
         "startChar": 31,
