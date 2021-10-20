@@ -19,7 +19,6 @@ func init() {
 		Func:         VideoDecodeAccel,
 		Desc:         "Verifies ARC++ hardware decode acceleration by running the c2_e2e_test APK",
 		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBootedWithVideoLogging",
