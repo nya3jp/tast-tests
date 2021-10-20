@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61589428_18e9db1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-20T13:56:47Z",
+      "side": 1,
+      "message": "The change in popups_for_url_check.go is a fix, can you add it to a separate CL?",
+      "revId": "eefe029b91b5120bf6abaaaa3bf1eefc6569fa61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48bb2727_a5f9ee27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-20T13:56:47Z",
+      "side": 1,
+      "message": "The original parts of the tests where lacros is added seem stable, so now it is enough to mark the lacros parts as informational.",
+      "range": {
+        "startLine": 41,
+        "startChar": 44,
+        "endLine": 41,
+        "endChar": 57
+      },
+      "revId": "eefe029b91b5120bf6abaaaa3bf1eefc6569fa61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
