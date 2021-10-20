@@ -34,6 +34,24 @@
       "parentUuid": "6e71dce0_eb97f9d3",
       "revId": "e96f95684ff86d9bb3ca6c8fb223d829d38cd582",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb4aed21_03ca5456",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-10-20T12:30:25Z",
+      "side": 1,
+      "message": "Here\u0027s the error:\n\n2021-10-20T10:15:13.969200Z [10:15:13.974] Starting subtest unset\n2021-10-20T10:15:13.969262Z [10:15:13.975] Resetting Chrome\u0027s state\n2021-10-20T10:15:16.101247Z [10:15:16.274] Error at search_suggest_enabled.go:134: unset: Unexpected existence of search suggestions: got false; want true\n2021-10-20T10:15:16.101370Z [10:15:16.274] Stack trace:\nunset: Unexpected existence of search suggestions: got false; want true\n        at chromiumos/tast/local/bundles/cros/policy.SearchSuggestEnabled.func1 (search_suggest_enabled.go:134)\n        at chromiumos/tast/internal/testing.(*State).Run.func1 (state.go:584)\n        at runtime.goexit (asm_amd64.s:1374)",
+      "parentUuid": "6e71dce0_eb97f9d3",
+      "revId": "e96f95684ff86d9bb3ca6c8fb223d829d38cd582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
