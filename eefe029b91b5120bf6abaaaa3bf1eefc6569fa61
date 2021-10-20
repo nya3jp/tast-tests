@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "659722bc_9939302b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-10-20T15:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48bb2727_a5f9ee27",
+      "range": {
+        "startLine": 41,
+        "startChar": 44,
+        "endLine": 41,
+        "endChar": 57
+      },
+      "revId": "eefe029b91b5120bf6abaaaa3bf1eefc6569fa61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc92fef3_0709228b",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Yes, this needs to apply to both. We don\u0027t want a rogue about page to get you full internet access.",
       "parentUuid": "262d625a_a32b8086",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 80
+      },
+      "revId": "eefe029b91b5120bf6abaaaa3bf1eefc6569fa61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad8c6707_7468e4d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-10-20T15:10:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f8b1a02_f2d9564c",
       "range": {
         "startLine": 206,
         "startChar": 4,
