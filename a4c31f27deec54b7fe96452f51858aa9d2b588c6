@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5d1b1dd_70b84e98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-20T08:14:50Z",
+      "side": 1,
+      "message": "minor nit: no need for a dot at the end of the subject line.",
+      "range": {
+        "startLine": 7,
+        "startChar": 56,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "a4c31f27deec54b7fe96452f51858aa9d2b588c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c4a58948_274c0014",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-10-20T06:46:52Z",
       "side": 1,
       "message": "PTAL",
+      "revId": "a4c31f27deec54b7fe96452f51858aa9d2b588c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ab9bb52_c291c9b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-20T08:14:50Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "a4c31f27deec54b7fe96452f51858aa9d2b588c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
