@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cecff557_2f69f6a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-20T01:36:21Z",
+      "side": 1,
+      "message": "Add step to set the brightness and volume. Please refer to https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3218886",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "2591c42a8af8180921abe1f8db185aa9f1d49644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
