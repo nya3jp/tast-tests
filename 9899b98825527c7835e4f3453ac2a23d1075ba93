@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43346baf_4084b6d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-10-20T08:19:57Z",
+      "side": 1,
+      "message": "Feel free to defer this CL to me or yamaguchi@, if you are busy on other stuff.\n",
+      "revId": "9899b98825527c7835e4f3453ac2a23d1075ba93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc030a0e_8c5e1750",
