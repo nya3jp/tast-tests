@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2298a245_964f0ef7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-10-20T12:21:02Z",
+      "side": 1,
+      "message": "nit: Please, link this CL to crbug/1249427, for additional context.",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "cec7ba56d18763ba0aca1922d6b0e2162b47a344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d1a0e9e9_3f5936f5",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-10-20T12:05:10Z",
       "side": 1,
       "message": "PTAL",
+      "revId": "cec7ba56d18763ba0aca1922d6b0e2162b47a344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "194bef21_95c22a9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-10-20T12:21:02Z",
+      "side": 1,
+      "message": "LGTM with a nit.",
       "revId": "cec7ba56d18763ba0aca1922d6b0e2162b47a344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
