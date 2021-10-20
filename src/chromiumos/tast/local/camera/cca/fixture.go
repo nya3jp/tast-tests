@@ -33,7 +33,7 @@ const (
 const (
 	qrcodeScene     string = "qrcode_1280x960.y4m"
 	qrcodeTextScene        = "qrcode_text_1280x960.y4m"
-	documentScene          = "document_1280x960.y4m"
+	documentScene          = "two_document_3264x2448_20211020.mjpeg"
 	genPTZScene            = "GENERATED_PTZ_SCENE"
 )
 

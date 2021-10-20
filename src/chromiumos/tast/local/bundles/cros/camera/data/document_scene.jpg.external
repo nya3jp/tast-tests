@@ -1,5 +1,5 @@
 {
-  "url": "gs://chromiumos-test-assets-public/tast/cros/camera/document_scene_20210908.jpg",
-  "size": 1442202,
-  "sha256sum": "9d966f1d1bedf6a0bc9266f83ec583f5999a1f39ab017fc93393cf7048d5bd87"
+  "url": "gs://chromiumos-test-assets-public/tast/cros/camera/two_document_3264x2448_20211020.jpg",
+  "size": 1897742,
+  "sha256sum": "0c4bf95ed4c18a6eabc54d3b6bdfc8579ecfb8751290767ce8e65e5dcc34eefa"
 }
