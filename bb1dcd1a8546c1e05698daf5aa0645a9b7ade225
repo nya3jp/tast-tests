@@ -16,6 +16,98 @@
       "message": "Thanks Katie! Adding tast owners for official approval.",
       "revId": "bb1dcd1a8546c1e05698daf5aa0645a9b7ade225",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1489ca8_9dcd29c3",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-20T23:52:27Z",
+      "side": 1,
+      "message": "nit: keep your error messages consistent, i.e. failed to create EventWriter",
+      "range": {
+        "startLine": 594,
+        "startChar": 27,
+        "endLine": 594,
+        "endChar": 37
+      },
+      "revId": "bb1dcd1a8546c1e05698daf5aa0645a9b7ade225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fd92fda_46e4fc46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/dictation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-20T23:52:27Z",
+      "side": 1,
+      "message": "Although preconditions aren\u0027t deprecated, they\u0027re not encouraged [1]. Given you\u0027re not using anything particularly coupled to this precondition, consider using the fixture variant, i.e. \n```\nFixture: \"chromeLoggedIn\"\n```\n\n[1] https://groups.google.com/a/chromium.org/g/tast-users/c/-vC6RR8fYlQ/m/JhiULM82BAAJ",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "bb1dcd1a8546c1e05698daf5aa0645a9b7ade225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c75ee3_b438d2b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/dictation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-20T23:52:27Z",
+      "side": 1,
+      "message": "nit: You can set the timeout here if you want to avoid setting it over and over again. i.e.\n```\nui :\u003d uiauto.New(tconn).WithTimeout(5*time.Second)\n```",
+      "range": {
+        "startLine": 63,
+        "startChar": 7,
+        "endLine": 63,
+        "endChar": 24
+      },
+      "revId": "bb1dcd1a8546c1e05698daf5aa0645a9b7ade225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1266b8c4_364b4d17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/dictation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-20T23:52:27Z",
+      "side": 1,
+      "message": "Remember to check for the error here (ditto on line 82 and 94)",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 40
+      },
+      "revId": "bb1dcd1a8546c1e05698daf5aa0645a9b7ade225",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
