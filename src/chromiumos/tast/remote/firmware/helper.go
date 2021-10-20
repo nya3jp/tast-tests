@@ -445,13 +445,17 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	if usbdev == "" {
 		return errors.New("no USB key detected")
 	}
+	var fdiskOutput []byte
 	// Verify that the device really exists on the servo host.
-	if err = testing.Poll(ctx, func(ctx context.Context) error {
-		return h.ServoProxy.RunCommand(ctx, true, "fdisk", "-l", usbdev)
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		fdiskOutput, err = h.ServoProxy.OutputCommand(ctx, true, "fdisk", "-l", usbdev)
+		return err
 	}, &testing.PollOptions{
 		Timeout:  10 * time.Second,
 		Interval: 1 * time.Second,
-	}); err != nil {
+	})
+	testing.ContextLogf(ctx, "Output from fdisk -l %q: %s", usbdev, fdiskOutput)
+	if err != nil {
 		return errors.Wrapf(err, "validate usb key at %q", usbdev)
 	}
 
@@ -538,7 +542,7 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 	// On my computer with a servo v4, this takes 48 minutes.
-	if err = h.ServoProxy.InputCommand(ctx, true, reader, "sh", "-c", fmt.Sprintf("tar -JxOf - | dd of=%s bs=1M iflag=fullblock oflag=dsync", shutil.Escape(usbdev))); err != nil {
+	if err = h.ServoProxy.InputCommand(ctx, true, reader, "sh", "-c", fmt.Sprintf("tar -JxOf - | dd of=%s bs=1M iflag=fullblock conv=nocreat,fsync", shutil.Escape(usbdev))); err != nil {
 		return errors.Wrapf(err, "failed to flash os image %q to USB %q", testImageURL, usbdev)
 	}
 
