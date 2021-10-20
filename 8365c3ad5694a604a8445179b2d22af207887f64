@@ -35,6 +35,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f0f3f6_c6caca93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-20T21:14:15Z",
+      "side": 1,
+      "message": "LGTM from a Tast perspective with one nit about passing testing.State to a helper function (best practice is to avoid this when possible).",
+      "revId": "8365c3ad5694a604a8445179b2d22af207887f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "005f071b_b4e6ab78",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update/helper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-20T21:14:15Z",
+      "side": 1,
+      "message": "While it is technically OK to pass the state into subpackages, it is preferred to avoid doing so when possible:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#state\n\nGlobal runtime variables are also preferred now over test runtime variables:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#global-runtime-variables-recommended-for-new-code\n\nI would suggest unpacking the var in the tests themselves and passing the result in to this function, or change the var to a global one to access it here instead.",
+      "range": {
+        "startLine": 120,
+        "startChar": 24,
+        "endLine": 120,
+        "endChar": 40
+      },
+      "revId": "8365c3ad5694a604a8445179b2d22af207887f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "110d9f45_e34d41fd",
