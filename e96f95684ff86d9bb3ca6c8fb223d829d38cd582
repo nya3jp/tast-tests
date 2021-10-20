@@ -16,6 +16,24 @@
       "message": "BTW, the original test is already flaky for me when running it locally (workstation in office to DUT in home WIFI). Might be a timing issue?",
       "revId": "e96f95684ff86d9bb3ca6c8fb223d829d38cd582",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78ea1d2c_3fb56cc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-20T10:35:02Z",
+      "side": 1,
+      "message": "What kind of error message do you get?\nOn tastboard it runs very stable but as the test interacts with the UI timing related flakyness is definitely possible.",
+      "parentUuid": "6e71dce0_eb97f9d3",
+      "revId": "e96f95684ff86d9bb3ca6c8fb223d829d38cd582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
