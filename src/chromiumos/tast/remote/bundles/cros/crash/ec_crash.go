@@ -29,7 +29,7 @@ func init() {
 		Func:        ECCrash,
 		Desc:        "Verify artificial EC crash creates crash files",
 		Contacts:    []string{"mutexlox@chromium.org", "cros-telemetry@google.com"},
-		Attr:        []string{"group:mainline", "informational"},
+		Attr:        []string{"group:mainline", "informational", "group:firmware", "firmware_unstable"},
 		Timeout:     10 * time.Minute,
 		Fixture:     fixture.NormalMode,
 		ServiceDeps: []string{"tast.cros.crash.FixtureService"},
@@ -114,7 +114,7 @@ func ECCrash(ctx context.Context, s *testing.State) {
 	s.Log("Running crash command")
 	// This should reboot the device
 	if err := h.Servo.RunECCommand(ctx, "crash divzero"); err != nil {
-		s.Fatal("Failed to run EC command")
+		s.Fatal("Failed to run EC command: ", err)
 	}
 
 	s.Log("Waiting for DUT to become unreachable")
