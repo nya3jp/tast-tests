@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06f08e15_6ec5a435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/compositor_transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-20T21:43:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "76d4314d_05d03dd3",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "0c723360c1ae41bf979bc9c4af18d4efbebab5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34316402_23dd9301",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-18T20:13:55Z",
       "side": 1,
       "message": "I think the way you\u0027re using to get the sampling points doesn\u0027t give you the exact center. Maybe just say \"pixels within each image quadrant\" instead.",
+      "range": {
+        "startLine": 132,
+        "startChar": 29,
+        "endLine": 132,
+        "endChar": 42
+      },
+      "revId": "0c723360c1ae41bf979bc9c4af18d4efbebab5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d9533c1_f072792a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/compositor_transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-20T21:43:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34316402_23dd9301",
       "range": {
         "startLine": 132,
         "startChar": 29,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b258e1d2_3f7bb3f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/compositor_transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-20T21:43:14Z",
+      "side": 1,
+      "message": "Oops, they are black.",
+      "parentUuid": "86be027e_72cfb4ca",
+      "range": {
+        "startLine": 133,
+        "startChar": 64,
+        "endLine": 133,
+        "endChar": 75
+      },
+      "revId": "0c723360c1ae41bf979bc9c4af18d4efbebab5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9085a56c_e655a5a3",
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1943414_c0923893",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/compositor_transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-20T21:43:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9085a56c_e655a5a3",
+      "revId": "0c723360c1ae41bf979bc9c4af18d4efbebab5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d5e2c75_a6c7ec1c",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-10-18T20:13:55Z",
       "side": 1,
       "message": "Some words on synchronization:\n\nWe don\u0027t know when the results of these operations will appear on the screen, so if the screenshots happen too early, you might be comparing incorrect (but equal) images. I don\u0027t know if there\u0027s an easy way to wait on the results of these operations before the test proceeds to inject the \u0027f\u0027 key. You might want to ask kbr@. Maybe trying to obtain the image data from the canvases would force synchronization.",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 5
+      },
+      "revId": "0c723360c1ae41bf979bc9c4af18d4efbebab5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4579e90f_227b0bf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-20T21:43:14Z",
+      "side": 1,
+      "message": "Good point. I changed this to a function that can be called from the test, so that it can be executed synchronously.",
+      "parentUuid": "4d5e2c75_a6c7ec1c",
       "range": {
         "startLine": 66,
         "startChar": 4,

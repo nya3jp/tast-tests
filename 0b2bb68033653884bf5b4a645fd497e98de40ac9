@@ -717,6 +717,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a009796f_70b16bb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-20T21:43:14Z",
+      "side": 1,
+      "message": "Ack, thanks!",
+      "parentUuid": "df950f6f_94da9330",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31ddfbd5_a8559a5f",
