@@ -45,6 +45,30 @@
       },
       "revId": "a734c61c5dfacdb845d6c37de6ff27a393ad55ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d15ca8c_eec90db7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-20T11:21:09Z",
+      "side": 1,
+      "message": "It removes the target and any children it contains,\nif the target does not exist, it returns nil (no error).\n\nA log is added to inspect if any error returned.",
+      "parentUuid": "2e6e4c78_b473eb3f",
+      "range": {
+        "startLine": 187,
+        "startChar": 6,
+        "endLine": 187,
+        "endChar": 15
+      },
+      "revId": "a734c61c5dfacdb845d6c37de6ff27a393ad55ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
