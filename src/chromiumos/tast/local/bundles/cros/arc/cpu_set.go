@@ -59,11 +59,11 @@ func init() {
 				// changed. When ArcEnablePerVmCoreScheduling's default is changed, the flag below should eventually
 				// be changed too.
 				chromeExtraArgs: []string{"--enable-features=ArcEnablePerVmCoreScheduling",
-					// Similarly, make sure the DUT won't set up RT vCPU when the host's # of logical CPUs is 2.
-					// This will prevent the test from failing even when ArcRtVcpuDualCore's default in
-					// components/arc/arc_features.cc is changed. When ArcRtVcpuDualCore's default is changed, the
-					// flag below should eventually be changed too.
-					"--disable-features=ArcRtVcpuDualCore"},
+					// Similarly, make sure the DUT won't set up RT vCPU for all machines at the moment.
+					// This will prevent the test from failing even when [ArcRtVcpuDualCore|ArcRtVcpuQuadCore]'s default
+					// in components/arc/arc_features.cc is changed. When [ArcRtVcpuDualCore|ArcRtVcpuQuadCore]'s default
+					// is changed, the flags below should eventually be changed too.
+					"--disable-features=ArcRtVcpuDualCore,ArcRtVcpuQuadCore"},
 			},
 		}},
 		Timeout: 7 * time.Minute,
@@ -245,12 +245,6 @@ func CPUSet(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get kernel version: ", err)
 		} else if ver.Is(4, 4) {
 			return
-		}
-
-		// ARCVM has one additional vCPU for supporting RT processes when # logical cores on the host is
-		// >2.
-		if numExpectedGuestCpus > 2 {
-			numExpectedGuestCpus++
 		}
 	}
 
