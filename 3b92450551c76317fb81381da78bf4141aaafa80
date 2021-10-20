@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2c973f6_4bab3fa0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-10-20T05:33:09Z",
+      "side": 1,
+      "message": "We still need the Query to be passed into checkAssistantBehavior, so checkAssistantBehavior would still need the whole assistantOptions. Would the change still be preferred in this case?",
+      "parentUuid": "83ae57c8_04223efc",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 5
+      },
+      "revId": "3b92450551c76317fb81381da78bf4141aaafa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76874170_38ed1f65",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-18T03:56:25Z",
       "side": 1,
       "message": "Do we still need it given that we will call ClearSavedDir() in the beginning of every sub tests?",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 2
+      },
+      "revId": "3b92450551c76317fb81381da78bf4141aaafa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83a9537d_562e1118",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-10-20T05:33:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76874170_38ed1f65",
       "range": {
         "startLine": 173,
         "startChar": 1,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad7c60c2_c8bdfb26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-10-20T05:33:09Z",
+      "side": 1,
+      "message": "startTime need to be a time before capturing photo, so it should be here.",
+      "parentUuid": "c05622f0_ffed5d09",
+      "revId": "3b92450551c76317fb81381da78bf4141aaafa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9770413e_458b38fc",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf9fc0d5_d0d5274b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-10-20T05:33:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9770413e_458b38fc",
+      "range": {
+        "startLine": 205,
+        "startChar": 29,
+        "endLine": 205,
+        "endChar": 49
+      },
+      "revId": "3b92450551c76317fb81381da78bf4141aaafa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac5ecb9a_3208290b",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-10-18T03:56:25Z",
       "side": 1,
       "message": "What are the cons when enabling assistant logging? Will the performance affected a lot or there will be flood of assistant logs? I am thinking if the cons are acceptable maybe we can enable it by default and still use \"ccaTestBridgeReady\" to save some time for running tests.",
+      "range": {
+        "startLine": 280,
+        "startChar": 34,
+        "endLine": 280,
+        "endChar": 60
+      },
+      "revId": "3b92450551c76317fb81381da78bf4141aaafa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58087b09_9b21bb7d",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-10-20T05:33:09Z",
+      "side": 1,
+      "message": "The assistant logging enables verbose logging for assistant related things (--vmodule\u003d*/assistant/*\u003d3), and enable an additional feature AssistantDebugging.\n\nIIRC assistant aren\u0027t default enabled when running tests, so enabling this should have no effect on other tests. But I think it\u0027s still safer to just enable it when we really need it.\n\nI\u0027m not sure what do you mean by \"save some time for running tests\", since this should have minimal run time impact even if we keep this separated.",
+      "parentUuid": "ac5ecb9a_3208290b",
       "range": {
         "startLine": 280,
         "startChar": 34,
