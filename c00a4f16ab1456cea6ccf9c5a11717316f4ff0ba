@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2738b69e_9c674359",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2021-10-21T22:03:32Z",
+      "side": 1,
+      "message": "Hi Ben can you please review this?",
+      "revId": "c00a4f16ab1456cea6ccf9c5a11717316f4ff0ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc798784_62bacdfe",
@@ -65,6 +82,30 @@
       "writtenOn": "2021-10-21T21:29:07Z",
       "side": 1,
       "message": "R is a little too specific. It should in actually work with all versions, but I could see restricting it to the vm versions. \"android_vm\" would be that.",
+      "range": {
+        "startLine": 42,
+        "startChar": 32,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "c00a4f16ab1456cea6ccf9c5a11717316f4ff0ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74df0ccf_72b3bb1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2021-10-21T22:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc798784_62bacdfe",
       "range": {
         "startLine": 42,
         "startChar": 32,
@@ -98,6 +139,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "472a6ce9_b921a671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2021-10-21T22:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "776011df_983825f9",
+      "range": {
+        "startLine": 50,
+        "startChar": 19,
+        "endLine": 50,
+        "endChar": 144
+      },
+      "revId": "c00a4f16ab1456cea6ccf9c5a11717316f4ff0ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2876f92_68ba0713",
@@ -111,6 +176,30 @@
       "writtenOn": "2021-10-21T21:29:07Z",
       "side": 1,
       "message": "We generally don\u0027t like commented out code like this to be submitted.",
+      "range": {
+        "startLine": 89,
+        "startChar": 49,
+        "endLine": 89,
+        "endChar": 104
+      },
+      "revId": "c00a4f16ab1456cea6ccf9c5a11717316f4ff0ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9f9d678_08a49983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2021-10-21T22:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2876f92_68ba0713",
       "range": {
         "startLine": 89,
         "startChar": 49,
