@@ -12,7 +12,8 @@
 			"getpid",
 			"gettid",
 			"geteuid",
-			"getuid"
+			"getuid",
+			"memfd_create"
 		]
 	},
 	{
@@ -645,6 +646,14 @@
 			"ioctl$DRM_IOCTL_MSM_SUBMITQUEUE_CLOSE",
 			"ioctl$DRM_IOCTL_MSM_SUBMITQUEUE_QUERY",
 			"mmap$DRM_MSM"
+		]
+	},
+	{
+		"driver": "udmabuf(CONFIG_UDMABUF)",
+		"syscalls": [
+			"openat$udambuf",
+			"ioctl$UDMABUF_CREATE",
+			"ioctl$UDMABUF_CREATE_LIST"
 		]
 	},
 	{
