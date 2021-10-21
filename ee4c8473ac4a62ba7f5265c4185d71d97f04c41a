@@ -91,6 +91,41 @@
       "message": "The failure is due to another flaky test, not lacros.Basic.",
       "revId": "ee4c8473ac4a62ba7f5265c4185d71d97f04c41a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26925015_314194f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-21T16:55:55Z",
+      "side": 1,
+      "message": "RSLGTM since this builder is not scheduled on the OS side",
+      "revId": "ee4c8473ac4a62ba7f5265c4185d71d97f04c41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8843513_96982dea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-21T16:55:55Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "84dfb4b3_ab611efd",
+      "revId": "ee4c8473ac4a62ba7f5265c4185d71d97f04c41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
