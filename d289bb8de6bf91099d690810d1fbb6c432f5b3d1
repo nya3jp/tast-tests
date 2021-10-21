@@ -33,6 +33,24 @@
       "message": "nit: wrong indent ?",
       "revId": "d289bb8de6bf91099d690810d1fbb6c432f5b3d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a93fc00c_2ac50cbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/data/heavy_resize.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1509712
+      },
+      "writtenOn": "2021-10-21T21:57:49Z",
+      "side": 1,
+      "message": "Thanks, fixed!",
+      "parentUuid": "76c8fbd2_f80c7882",
+      "revId": "d289bb8de6bf91099d690810d1fbb6c432f5b3d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
