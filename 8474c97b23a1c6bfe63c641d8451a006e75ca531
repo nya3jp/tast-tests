@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "059274f0_c94530f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-21T07:08:10Z",
+      "side": 1,
+      "message": "We can send a signal to the process so that Stop() can stop the session immediately without waiting for the trace session duration.",
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67242556_9c310411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-21T07:08:10Z",
+      "side": 1,
+      "message": "If we are to make sess.Stop() stop the tracing session immediately, we need to use cmd.Wait() here.\n\nBTW, do we really need to the blocking call version (i.e. this function)? The answer looks like no to me.",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 20
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3ad7620_d769dba6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-21T07:08:10Z",
+      "side": 1,
+      "message": "nit: CollectTracing doesn\u0027t sound right. Maybe CollectTrace()?",
+      "range": {
+        "startLine": 35,
+        "startChar": 23,
+        "endLine": 35,
+        "endChar": 37
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "694d2938_58bfe5c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-21T07:08:10Z",
+      "side": 1,
+      "message": "Do we still need to validate the trace data in this test? You may remove this comment since there is another test that runs metrics and this test can act as the smoke test that performs basic validations.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 61
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6928641_40954d51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-21T07:08:10Z",
+      "side": 1,
+      "message": "Use defer sess.RemoveTraceResultFile() so we are sure it\u0027ll run if we return early.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bb6415d_4f70f9b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-21T07:08:10Z",
+      "side": 1,
+      "message": "There is a remote version of this test with exactly the same name. This makes it hard to tell which test fails.",
+      "range": {
+        "startLine": 26,
+        "startChar": 12,
+        "endLine": 26,
+        "endChar": 35
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1bab5af_9b5e8a0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-21T07:08:10Z",
+      "side": 1,
+      "message": "The team doesn\u0027t own the test now.",
+      "range": {
+        "startLine": 28,
+        "startChar": 77,
+        "endLine": 28,
+        "endChar": 114
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff9c66b6_cbbd6209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-21T07:08:10Z",
+      "side": 1,
+      "message": "nit: this makes it harder for users to use trace_processor_shell. Is it possible to make this a fixture (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Fixtures)?",
+      "range": {
+        "startLine": 29,
+        "startChar": 57,
+        "endLine": 29,
+        "endChar": 91
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4473e84c_b57e561b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-21T07:08:10Z",
+      "side": 1,
+      "message": "Does /usr/bin/traced_probes always show up in the trace? I downloaded the CL, ran the test and found that the remote test fails because it doesn\u0027t find /usr/bin/traced_probes in the metrics. Would be good to make sure this doesn\u0027t become a flake.",
+      "range": {
+        "startLine": 39,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 47
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "628d109d_b01a3b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-10-21T07:08:10Z",
+      "side": 1,
+      "message": "defer sess.RemoveTraceResultFile()",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 5
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
