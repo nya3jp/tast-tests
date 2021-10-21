@@ -16,6 +16,24 @@
       "message": "Checking http://tastboard/test/factory.Kiosk, it is flaky from time to time. The criteria to promote a test is consistently passing 20 builds. https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-4_remove-attribute-to-make-it-run-on-infra\n\nI understand it is hard to stabilize all boards. I can personally suggest to shortlist a few boards and promote the test first and stabilize the rest.\n\nrefer to: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji.go?l\u003d30",
       "revId": "c00ec4d77d2333ef363f83b436aafea9284d4f07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "294c1b05_6f535e23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2021-10-21T11:10:10Z",
+      "side": 1,
+      "message": "Hi Jun, these failures are caused by the lab environment issue (ssh connection fail and are not able to run commands on DUT right after the fixture starts), which seem to be not related to the test or fixture itself. Is there any suggestion to improve this behavior? Thank you.\n\nAlso, because the failure seems to be lab environment related, it could happen on any device, so probably shortlist may not help (as we do not know which device to include/exclude first).",
+      "parentUuid": "823e04d1_65c1523e",
+      "revId": "c00ec4d77d2333ef363f83b436aafea9284d4f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
