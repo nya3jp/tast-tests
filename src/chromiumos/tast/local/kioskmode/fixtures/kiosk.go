@@ -12,10 +12,12 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/shirou/gopsutil/process"
+
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/chromeproc"
+	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/kioskmode"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -48,8 +50,8 @@ type kioskFixture struct {
 	extraOpts []chrome.Option
 	// autoLaunchKioskAppID is a preselected Kiosk app ID used for autolaunch.
 	autoLaunchKioskAppID string
-	// oldPID is a pid of the Chrome started in Kiosk mode.
-	oldPID int
+	// proc is the root chrome process.
+	proc *process.Process
 }
 
 func (k *kioskFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -117,14 +119,14 @@ func (k *kioskFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		s.Fatal("Problem while checking Chrome logs for Kiosk related entries: ", err)
 	}
 
-	pid, err := chromeproc.GetRootPID()
+	proc, err := ashproc.Root()
 	if err != nil {
 		s.Fatal("Failed to get root Chrome PID: ", err)
 	}
 
 	chrome.Lock()
 	k.cr = cr
-	k.oldPID = pid
+	k.proc = proc
 	ok = true
 	return fixtures.NewFixtData(k.cr, k.fdms)
 }
@@ -149,14 +151,9 @@ func (k *kioskFixture) Reset(ctx context.Context) error {
 		return errors.Wrap(err, "existing Chrome connection is unusable")
 	}
 
-	// Get Chrome PID and check if it stayed the same
-	pid, err := chromeproc.GetRootPID()
-	if err != nil {
-		return errors.Wrap(err, "failed to get root Chrome PID")
-	}
-
-	if k.oldPID != pid {
-		return errors.New("chrome PID while running in Kiosk mode has changed")
+	// Check if the root chrome process is still running.
+	if r, err := k.proc.IsRunning(); err != nil || !r {
+		return errors.New("found root chrome process termination while running in Kiosk mode")
 	}
 	return nil
 }
