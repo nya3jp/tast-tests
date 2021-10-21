@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93790cb1_a4e2110a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-21T00:14:09Z",
+      "side": 1,
+      "message": "what\u0027s this for? a comment about it would be useful",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "dd425521890e0a045f45ef4d6369d9a8520debcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eddc8473_0c5c8932",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-21T00:14:09Z",
+      "side": 1,
+      "message": "this can just be func() and you can refer to cleanupCtx directly within, anonymous functions have access to variables in their outer scope",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 32
+      },
+      "revId": "dd425521890e0a045f45ef4d6369d9a8520debcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "190ea51a_973baa6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-21T00:14:09Z",
+      "side": 1,
+      "message": "why are we waiting for the focus here?",
+      "range": {
+        "startLine": 61,
+        "startChar": 57,
+        "endLine": 61,
+        "endChar": 66
+      },
+      "revId": "dd425521890e0a045f45ef4d6369d9a8520debcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d69c5a95_7b689d13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-21T00:14:09Z",
+      "side": 1,
+      "message": "I\u0027m personally finding the use of maps in this test to be a bit unclear, it took me a few read-throughs to understand the structure and flow of the test.\n\nCan we make this more explicit by using a struct to contain the necessary test data instead of various maps? Something like\n```\ntype sectionTest struct{\n  SectionName string\n  SectionFinder *nodewith.Finder\n  SubsectionToExpand string\n  SettingToToggle string\n}\n```\nThen change checkSections to take a slice of this struct as its input, instead of 3 different maps.\n\nI think this kind of organization is more idiomatic within Go and would definitely improve the readability of this test.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "dd425521890e0a045f45ef4d6369d9a8520debcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abbc0662_a73a7733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-21T00:14:09Z",
+      "side": 1,
+      "message": "add a comment about what this function is doing",
+      "revId": "dd425521890e0a045f45ef4d6369d9a8520debcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71d3349_c0afd648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-21T00:14:09Z",
+      "side": 1,
+      "message": "maps are reference types, so I don\u0027t think you need to pass a pointer here.",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "dd425521890e0a045f45ef4d6369d9a8520debcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da0ab58_8bad8f87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-21T00:14:09Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 85,
+        "startChar": 68,
+        "endLine": 85,
+        "endChar": 96
+      },
+      "revId": "dd425521890e0a045f45ef4d6369d9a8520debcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf48b970_84974a90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-21T00:14:09Z",
+      "side": 1,
+      "message": "spelling nit: Section",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 31
+      },
+      "revId": "dd425521890e0a045f45ef4d6369d9a8520debcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b29d252d_b37cf4e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-21T00:14:09Z",
+      "side": 1,
+      "message": "I think you can skip this log message",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 78
+      },
+      "revId": "dd425521890e0a045f45ef4d6369d9a8520debcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
