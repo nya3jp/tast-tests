@@ -212,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f676389a_0d6ff65b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/compositor_transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-21T17:57:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64983b01_dcffd27e",
+      "revId": "0c723360c1ae41bf979bc9c4af18d4efbebab5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d5e2c75_a6c7ec1c",
@@ -273,6 +291,30 @@
       "side": 1,
       "message": "I don\u0027t think this will fix it :(\n\nOnce executeDraw() is called, we don\u0027t really know how much to wait before being sure that the graphics commands have completed. Right now, you wait 1 second, and that may be reasonable but it\u0027s brittle. It might be okay to do that for now, but longer term you might want to see if there\u0027s something like a glFinish() but for canvases so that you know that when executeDraw() returns, the contents are on the screen.",
       "parentUuid": "4579e90f_227b0bf2",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 5
+      },
+      "revId": "0c723360c1ae41bf979bc9c4af18d4efbebab5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1bedae4_7167ce6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/data/transfer-from-image-bitmap.html",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-21T17:57:39Z",
+      "side": 1,
+      "message": "Ah, tricky. Added the finish() call for gl contexts. 2d contexts are already synchronous. I can\u0027t find any info about whether bitmaprenderer is synchronous, but hopefully the 7s timeout is sufficient.",
+      "parentUuid": "2bbb6472_0d65bfeb",
       "range": {
         "startLine": 66,
         "startChar": 4,

@@ -39,6 +39,30 @@
       },
       "revId": "d18ed7e9063ec223dd4f78fe17f0e954d99f8c12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74ab5656_482d8ae8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/compositor_transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-21T17:57:39Z",
+      "side": 1,
+      "message": "The message does appear for canvases. I was trying to be clever by checking pixels that weren\u0027t near the message, but I suppose I can\u0027t be confident of that for all screen sizes.",
+      "parentUuid": "0440effd_294d3e5e",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 3
+      },
+      "revId": "d18ed7e9063ec223dd4f78fe17f0e954d99f8c12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
