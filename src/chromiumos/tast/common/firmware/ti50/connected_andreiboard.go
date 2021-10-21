@@ -77,11 +77,11 @@ func (a *ConnectedAndreiboard) FlashImage(ctx context.Context, image string) err
 
 	cmd = testexec.CommandContext(ctx, a.GetSpiFlash(), "--dauntless", "--tty=2", "--verbose", "--extraverbose", "--input="+image)
 
-	out, err := cmd.Output()
+	out, err := cmd.CombinedOutput()
 
 	if err != nil {
 		testing.ContextLogf(ctx, "Flash failed: %v, Output below:", err)
-		testing.ContextLog(ctx, out)
+		testing.ContextLog(ctx, string(out))
 	}
 
 	return err
