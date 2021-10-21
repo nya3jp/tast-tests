@@ -16,6 +16,91 @@
       "message": "PTAL",
       "revId": "db5f1f8fc48013c430ca5a226216dd1e509d3d24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82456471_0d7a54d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-21T15:12:29Z",
+      "side": 1,
+      "message": "Walked through about half of the files, but it looks like there is some bug in your script? Will do another iteration on the updated PS.\nCould you take a look?",
+      "revId": "db5f1f8fc48013c430ca5a226216dd1e509d3d24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8612244_700d68b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-21T15:12:29Z",
+      "side": 1,
+      "message": "could you fix this?",
+      "revId": "db5f1f8fc48013c430ca5a226216dd1e509d3d24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8c8c39b_6cfee0ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/hwdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-21T15:12:29Z",
+      "side": 1,
+      "message": "I do not expect this is identified as a target of LacrosStatus because of no SoftwareDeps.\nCould you check your script?",
+      "revId": "db5f1f8fc48013c430ca5a226216dd1e509d3d24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a67d855b_5bcf9ca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/param.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-21T15:12:29Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "db5f1f8fc48013c430ca5a226216dd1e509d3d24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "028bd9eb_2b3f2534",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/app_launcher_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-21T15:12:29Z",
+      "side": 1,
+      "message": "I expect there will be another CL to update the field to fill status from your audit spreadsheet.",
+      "revId": "db5f1f8fc48013c430ca5a226216dd1e509d3d24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
