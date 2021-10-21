@@ -22,6 +22,30 @@
       },
       "revId": "49fc7672a41d5373c8863f322872dcfb4020b17e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfe808b9_6126665f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-21T06:51:39Z",
+      "side": 1,
+      "message": "Sorry, I haven\u0027t found another stable way to help check if the list has been reloaded through the accessibility tree. Therefore, waiting for a short time now seems to be a better option. If I find any useful information, I will update it. Thank you for your review.",
+      "parentUuid": "1731a684_b5d19092",
+      "range": {
+        "startLine": 374,
+        "startChar": 16,
+        "endLine": 374,
+        "endChar": 21
+      },
+      "revId": "49fc7672a41d5373c8863f322872dcfb4020b17e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
