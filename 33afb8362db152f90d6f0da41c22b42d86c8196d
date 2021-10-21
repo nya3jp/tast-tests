@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19c62cff_996caf3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-10-21T05:06:00Z",
+      "side": 1,
+      "message": "@nya, your +2 wasn\u0027t sticky across my update to add more detailed error handling that raging@ asked for.",
+      "revId": "33afb8362db152f90d6f0da41c22b42d86c8196d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
