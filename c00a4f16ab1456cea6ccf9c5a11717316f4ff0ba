@@ -16,6 +16,92 @@
       "message": "Ready for your review Lloyd",
       "revId": "c00a4f16ab1456cea6ccf9c5a11717316f4ff0ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8614d33_504dfe06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2021-10-21T21:29:07Z",
+      "side": 1,
+      "message": "LGTM with just my minor nits.",
+      "revId": "c00a4f16ab1456cea6ccf9c5a11717316f4ff0ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc798784_62bacdfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2021-10-21T21:29:07Z",
+      "side": 1,
+      "message": "R is a little too specific. It should in actually work with all versions, but I could see restricting it to the vm versions. \"android_vm\" would be that.",
+      "range": {
+        "startLine": 42,
+        "startChar": 32,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "c00a4f16ab1456cea6ccf9c5a11717316f4ff0ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "776011df_983825f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2021-10-21T21:29:07Z",
+      "side": 1,
+      "message": "As this is Chriomium, we should not provide internal-only shortlinks. The publicly visible links to the same file are either:\n\nhttps://cs.android.com/android/platform/superproject/+/master:system/core/libsystem/include/system/graphics-base-v1.0.h;l\u003d36;drc\u003d7d940ae4afa450696afa25e07982f3a95e17e9b2\n\nor alternatively:\n\nhttps://android.googlesource.com/platform/system/core/+/c39d42ddde52fe27ec804e3087b0fde1366dc092/libsystem/include/system/graphics-base-v1.0.h#36",
+      "range": {
+        "startLine": 50,
+        "startChar": 19,
+        "endLine": 50,
+        "endChar": 144
+      },
+      "revId": "c00a4f16ab1456cea6ccf9c5a11717316f4ff0ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2876f92_68ba0713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2021-10-21T21:29:07Z",
+      "side": 1,
+      "message": "We generally don\u0027t like commented out code like this to be submitted.",
+      "range": {
+        "startLine": 89,
+        "startChar": 49,
+        "endLine": 89,
+        "endChar": 104
+      },
+      "revId": "c00a4f16ab1456cea6ccf9c5a11717316f4ff0ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
