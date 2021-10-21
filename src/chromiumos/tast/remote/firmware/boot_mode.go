@@ -25,13 +25,13 @@ import (
 
 const (
 	// cmdTimeout is a short duration used for sending commands.
-	cmdTimeout = 3 * time.Second
+	cmdTimeout = 6 * time.Second
 
 	// offTimeout is the timeout to wait for the DUT to be unreachable after powering off.
 	offTimeout = 3 * time.Minute
 
 	// powerStateTimeout is the timeout to wait for the DUT reach S5 or G3.
-	powerStateTimeout = 1 * time.Minute
+	powerStateTimeout = 20 * time.Second
 
 	// reconnectTimeout is the timeout to wait to reconnect to the DUT after rebooting.
 	reconnectTimeout = 3 * time.Minute
@@ -738,13 +738,6 @@ func (ms *ModeSwitcher) powerOff(ctx context.Context) error {
 		return errors.Wrapf(err, "DUT poweroff %T", err)
 	}
 
-	if err := ms.waitUnreachable(ctx); err != nil {
-		return errors.Wrap(err, "waiting for DUT to be unreachable after sending poweroff command")
-	}
-	return nil
-}
-
-func (ms *ModeSwitcher) waitUnreachable(ctx context.Context) error {
 	// Try reading the power state from the EC.
 	err := testing.Poll(ctx, func(c context.Context) error {
 		powerState, err := ms.Helper.Servo.GetECSystemPowerState(ctx)
@@ -761,7 +754,20 @@ func (ms *ModeSwitcher) waitUnreachable(ctx context.Context) error {
 		return nil
 	}
 	testing.ContextLogf(ctx, "Failed to get G3 or S5 power state: %s", err)
+
+	// We didn't reach G3/S5 so try having servo power off instead.
+	if err := h.Servo.SetPowerState(ctx, servo.PowerStateOff); err != nil {
+		return errors.Wrap(err, "set power_state:off")
+	}
+
 	// If the EC didn't return a power state, try wait unreachable instead.
+	if err := ms.waitUnreachable(ctx); err != nil {
+		return errors.Wrap(err, "waiting for DUT to be unreachable after sending poweroff command")
+	}
+	return nil
+}
+
+func (ms *ModeSwitcher) waitUnreachable(ctx context.Context) error {
 	offCtx, cancel := context.WithTimeout(ctx, offTimeout)
 	defer cancel()
 	if err := ms.Helper.DUT.WaitUnreachable(offCtx); err != nil {
