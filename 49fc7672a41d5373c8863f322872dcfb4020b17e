@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1731a684_b5d19092",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-21T00:37:26Z",
+      "side": 1,
+      "message": "Is there anything we could check instead of just waiting",
+      "range": {
+        "startLine": 374,
+        "startChar": 16,
+        "endLine": 374,
+        "endChar": 21
+      },
+      "revId": "49fc7672a41d5373c8863f322872dcfb4020b17e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
