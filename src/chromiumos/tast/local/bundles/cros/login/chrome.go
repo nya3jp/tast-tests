@@ -26,7 +26,7 @@ func init() {
 		Params: []testing.Param{{
 			Val: 1,
 			// Mark it informational until crbug/1257339 is resolved.
-			ExtraAttr: []string{"group:mainline", "informational"},
+			ExtraAttr: []string{"group:mainline"},
 			Timeout:   chrome.LoginTimeout + 30*time.Second,
 		}, {
 			Name:      "stress",
