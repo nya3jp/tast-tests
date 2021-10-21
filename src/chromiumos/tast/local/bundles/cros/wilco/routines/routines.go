@@ -16,8 +16,8 @@ import (
 
 // CallRunRoutine executes a RunRoutine call and does validity checks on the
 // result.
-func CallRunRoutine(ctx context.Context, request dtcpb.RunRoutineRequest, response *dtcpb.RunRoutineResponse) error {
-	if err := wilco.DPSLSendMessage(ctx, "RunRoutine", &request, response); err != nil {
+func CallRunRoutine(ctx context.Context, request *dtcpb.RunRoutineRequest, response *dtcpb.RunRoutineResponse) error {
+	if err := wilco.DPSLSendMessage(ctx, "RunRoutine", request, response); err != nil {
 		return errors.Wrapf(err, "unable to run routine %s", request.Routine)
 	}
 
@@ -35,9 +35,9 @@ func CallRunRoutine(ctx context.Context, request dtcpb.RunRoutineRequest, respon
 
 // CallGetRoutineUpdate executes a GetRoutineUpdate call.
 func CallGetRoutineUpdate(ctx context.Context,
-	request dtcpb.GetRoutineUpdateRequest, response *dtcpb.GetRoutineUpdateResponse) error {
+	request *dtcpb.GetRoutineUpdateRequest, response *dtcpb.GetRoutineUpdateResponse) error {
 
-	if err := wilco.DPSLSendMessage(ctx, "GetRoutineUpdate", &request, response); err != nil {
+	if err := wilco.DPSLSendMessage(ctx, "GetRoutineUpdate", request, response); err != nil {
 		return errors.Wrap(err, "unable to get update on routine")
 	}
 
@@ -48,7 +48,7 @@ func CallGetRoutineUpdate(ctx context.Context,
 func GetRoutineStatus(ctx context.Context, uuid int32, includeOutput bool,
 	response *dtcpb.GetRoutineUpdateResponse) error {
 
-	request := dtcpb.GetRoutineUpdateRequest{
+	request := &dtcpb.GetRoutineUpdateRequest{
 		Uuid:          uuid,
 		Command:       dtcpb.GetRoutineUpdateRequest_GET_STATUS,
 		IncludeOutput: includeOutput,
@@ -59,7 +59,7 @@ func GetRoutineStatus(ctx context.Context, uuid int32, includeOutput bool,
 
 // CancelRoutine cancels a routine by calling CANCEL.
 func CancelRoutine(ctx context.Context, uuid int32) error {
-	request := dtcpb.GetRoutineUpdateRequest{
+	request := &dtcpb.GetRoutineUpdateRequest{
 		Uuid:          uuid,
 		Command:       dtcpb.GetRoutineUpdateRequest_CANCEL,
 		IncludeOutput: false,
@@ -71,7 +71,7 @@ func CancelRoutine(ctx context.Context, uuid int32) error {
 
 // ResumeRoutine resumes a routine by calling RESUME.
 func ResumeRoutine(ctx context.Context, uuid int32) error {
-	request := dtcpb.GetRoutineUpdateRequest{
+	request := &dtcpb.GetRoutineUpdateRequest{
 		Uuid:          uuid,
 		Command:       dtcpb.GetRoutineUpdateRequest_RESUME,
 		IncludeOutput: false,
@@ -83,7 +83,7 @@ func ResumeRoutine(ctx context.Context, uuid int32) error {
 
 // RemoveRoutine removes a routine by calling REMOVE.
 func RemoveRoutine(ctx context.Context, uuid int32) error {
-	request := dtcpb.GetRoutineUpdateRequest{
+	request := &dtcpb.GetRoutineUpdateRequest{
 		Uuid:          uuid,
 		Command:       dtcpb.GetRoutineUpdateRequest_REMOVE,
 		IncludeOutput: false,

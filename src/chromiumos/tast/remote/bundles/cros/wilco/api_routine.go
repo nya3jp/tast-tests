@@ -93,14 +93,14 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 	// back to service right away, so shortening test time by cancelling them and
 	// check if they are in cancelled status respectively.
 	testRoutineExecution := func(ctx context.Context,
-		rrRequest dtcpb.RunRoutineRequest,
+		rrRequest *dtcpb.RunRoutineRequest,
 		expectedStatus wilco.DiagnosticRoutineStatus,
 		postRoutineValidityCheck validityCheckFn) error {
 
 		ctx, cancel := context.WithTimeout(ctx, 35*time.Second)
 		defer cancel()
 
-		data, err := proto.Marshal(&rrRequest)
+		data, err := proto.Marshal(rrRequest)
 		if err != nil {
 			return errors.Wrap(err, "failed to marshall")
 		}
@@ -137,13 +137,13 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 
 	for _, param := range []struct {
 		name                  string
-		request               dtcpb.RunRoutineRequest
+		request               *dtcpb.RunRoutineRequest
 		expectedStatus        wilco.DiagnosticRoutineStatus
 		validityCheckFunction validityCheckFn
 	}{
 		{
 			name: "urandom",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_URANDOM,
 				Parameters: &dtcpb.RunRoutineRequest_UrandomParams{
 					UrandomParams: &dtcpb.UrandomRoutineParameters{
@@ -155,7 +155,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "urandom_cancel",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_URANDOM,
 				Parameters: &dtcpb.RunRoutineRequest_UrandomParams{
 					UrandomParams: &dtcpb.UrandomRoutineParameters{
@@ -167,7 +167,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "battery",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_BATTERY,
 				Parameters: &dtcpb.RunRoutineRequest_BatteryParams{
 					BatteryParams: &dtcpb.BatteryRoutineParameters{},
@@ -177,7 +177,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "battery_sysfs",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_BATTERY_SYSFS,
 				Parameters: &dtcpb.RunRoutineRequest_BatterySysfsParams{
 					BatterySysfsParams: &dtcpb.BatterySysfsRoutineParameters{},
@@ -187,7 +187,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "smartctl",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_SMARTCTL_CHECK,
 				Parameters: &dtcpb.RunRoutineRequest_SmartctlCheckParams{
 					SmartctlCheckParams: &dtcpb.SmartctlCheckRoutineParameters{},
@@ -198,7 +198,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		// Success is not tested because the CPU cache routine takes too much time.
 		{
 			name: "cpu_cache_fail",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_CACHE,
 				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
 					CpuParams: &dtcpb.CpuRoutineParameters{
@@ -212,7 +212,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "cpu_cache_cancelled",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_CACHE,
 				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
 					CpuParams: &dtcpb.CpuRoutineParameters{
@@ -225,7 +225,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		// Success is not tested because the CPU stress routine takes too much time.
 		{
 			name: "cpu_stress_fail",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
 				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
 					CpuParams: &dtcpb.CpuRoutineParameters{
@@ -239,7 +239,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "cpu_stress_cancelled",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_CPU_STRESS,
 				Parameters: &dtcpb.RunRoutineRequest_CpuParams{
 					CpuParams: &dtcpb.CpuRoutineParameters{
@@ -251,7 +251,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "floating_point_accuracy",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_FLOATING_POINT_ACCURACY,
 				Parameters: &dtcpb.RunRoutineRequest_FloatingPointAccuracyParams{
 					FloatingPointAccuracyParams: &dtcpb.FloatingPointAccuracyRoutineParameters{
@@ -263,7 +263,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "floating_point_accuracy_cancelled",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_FLOATING_POINT_ACCURACY,
 				Parameters: &dtcpb.RunRoutineRequest_FloatingPointAccuracyParams{
 					FloatingPointAccuracyParams: &dtcpb.FloatingPointAccuracyRoutineParameters{
@@ -275,7 +275,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "nvme_wear_level",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_WEAR_LEVEL,
 				Parameters: &dtcpb.RunRoutineRequest_NvmeWearLevelParams{
 					NvmeWearLevelParams: &dtcpb.NvmeWearLevelRoutineParameters{
@@ -287,7 +287,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "nvme_wear_level_failed",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_WEAR_LEVEL,
 				Parameters: &dtcpb.RunRoutineRequest_NvmeWearLevelParams{
 					NvmeWearLevelParams: &dtcpb.NvmeWearLevelRoutineParameters{
@@ -303,7 +303,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		// much time.
 		{
 			name: "nvme_short_self_test_cancelled",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_SHORT_SELF_TEST,
 				Parameters: &dtcpb.RunRoutineRequest_NvmeShortSelfTestParams{
 					NvmeShortSelfTestParams: &dtcpb.NvmeShortSelfTestRoutineParameters{},
@@ -315,7 +315,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		// much time.
 		{
 			name: "nvme_long_self_test_cancelled",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_LONG_SELF_TEST,
 				Parameters: &dtcpb.RunRoutineRequest_NvmeLongSelfTestParams{
 					NvmeLongSelfTestParams: &dtcpb.NvmeLongSelfTestRoutineParameters{},
@@ -325,7 +325,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "disk_read_linear",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_LINEAR_READ,
 				Parameters: &dtcpb.RunRoutineRequest_DiskLinearReadParams{
 					DiskLinearReadParams: &dtcpb.DiskLinearReadRoutineParameters{
@@ -338,7 +338,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "disk_read_random",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_RANDOM_READ,
 				Parameters: &dtcpb.RunRoutineRequest_DiskRandomReadParams{
 					DiskRandomReadParams: &dtcpb.DiskRandomReadRoutineParameters{
@@ -351,7 +351,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 		},
 		{
 			name: "disk_read_linear_cancelled",
-			request: dtcpb.RunRoutineRequest{
+			request: &dtcpb.RunRoutineRequest{
 				Routine: dtcpb.DiagnosticRoutine_ROUTINE_DISK_LINEAR_READ,
 				Parameters: &dtcpb.RunRoutineRequest_DiskLinearReadParams{
 					DiskLinearReadParams: &dtcpb.DiskLinearReadRoutineParameters{
