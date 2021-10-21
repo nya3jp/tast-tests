@@ -33,6 +33,24 @@
       "message": "(The code looks good otherwise, though.)",
       "revId": "c95c8ef78f4e9cc23778427c3e906dfe51fae610",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a9b694a_a9e30a4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2021-10-21T17:26:58Z",
+      "side": 1,
+      "message": "I\u0027ve updated it to include to/from shill, and modemmanager. Will update it later to include Hermes and modemfwd.",
+      "parentUuid": "73db600e_ea9aae29",
+      "revId": "c95c8ef78f4e9cc23778427c3e906dfe51fae610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
