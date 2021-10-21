@@ -27,9 +27,7 @@ func init() {
 	})
 }
 
-// deqpTests contains the names of the DEQP tests to run. Some may be skipped
-// depending on the supported graphics APIs. This list is directly obtained from
-// autotest/files/client/site_tests/graphics_dEQP/master/bvt.txt.
+// deqpTests contains the names of the DEQP tests to run. Some may be skipped depending on the supported graphics APIs.
 var deqpTests = []string{
 	"dEQP-GLES2.info.vendor",
 	"dEQP-GLES2.info.renderer",
