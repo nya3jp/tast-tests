@@ -33,6 +33,24 @@
       "message": "looks like real CQ failure:\n```\ntast-remote-tests-cros-0.0.2-r8114: src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go:82:12: undefined: \"chromiumos/tast/local/media/cpu\".WaitUntilIdle\ntast-remote-tests-cros-0.0.2-r8114:  * ERROR: chromeos-base/tast-remote-tests-cros-0.0.2-r8114::chromiumos failed (compile phase):\ntast-remote-tests-cros-0.0.2-r8114:  *   (no error message)\ntast-remote-tests-cros-0.0.2-r8114:  * \n```\n\nMaybe wrong import path for cpu? I see other tests using chromiumos/tast/local/cpu",
       "revId": "04a2e3d45250c66dd32ac9feb69195312d928296",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e009d73_56526f62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-10-21T05:16:09Z",
+      "side": 1,
+      "message": "lol, thanks for noticing. I thought SDK errors should not be related. Seems that cpu was moved recently:https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3221170 \nand I have an old checkout",
+      "parentUuid": "d51c63e1_2dc3119a",
+      "revId": "04a2e3d45250c66dd32ac9feb69195312d928296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
