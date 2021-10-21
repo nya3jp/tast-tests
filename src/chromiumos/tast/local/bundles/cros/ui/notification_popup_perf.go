@@ -22,7 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NotificationPopupPerf,
 		Desc:         "Measures animation smoothness of notification popup animations",
-		Contacts:     []string{"leandre@chromium.org", "amehfooz@chromium.org", "chromeos-wmp@google.com"},
+		Contacts:     []string{"leandre@chromium.org", "amehfooz@chromium.org", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
@@ -61,7 +61,7 @@ func NotificationPopupPerf(ctx context.Context, s *testing.State) {
 
 		ids, err = addNotifications(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "failed to add notifications: ")
+			return errors.Wrap(err, "failed to add notifications")
 		}
 
 		return nil
@@ -95,7 +95,7 @@ func addNotifications(ctx context.Context, tconn *chrome.TestConn) ([]string, er
 
 	// Wait for the last notification to finish creating.
 	if _, err := ash.WaitForNotification(ctx, tconn, uiTimeout, ash.WaitTitle(fmt.Sprintf("Test%sNotification", ts[len(ts)-1]))); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for notification: ")
+		return nil, errors.Wrap(err, "failed to wait for notification")
 	}
 	return ids, nil
 }
