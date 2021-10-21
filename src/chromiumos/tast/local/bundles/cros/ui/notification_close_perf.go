@@ -38,7 +38,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NotificationClosePerf,
 		Desc:         "Measures animation performance of the clear all animation or individual notification deletion in the message center",
-		Contacts:     []string{"newcomer@chromium.org", "cros-status-area-eng@google.com", "chromeos-wmp@google.com"},
+		Contacts:     []string{"newcomer@chromium.org", "cros-status-area-eng@google.com", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
@@ -223,7 +223,7 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 					"click the ClearAll button to close all notifications",
 					automationController.LeftClick(nodewith.ClassName("StackingBarLabelButton")),
 				)(ctx); err != nil {
-					return errors.Wrap(err, "failed to collapse the uber tray: ")
+					return errors.Wrap(err, "failed to collapse the uber tray")
 				}
 
 				// Wait a few seconds for notifications to stabilize.
