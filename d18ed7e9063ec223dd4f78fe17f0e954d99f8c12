@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0440effd_294d3e5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/compositor_transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-21T16:54:56Z",
+      "side": 1,
+      "message": "Interesting, I had forgotten to comment on this :) It looks like this delay is serving two purposes, one is to wait for the draw commands to finish executing, and the other is to wait for the fullscreen transition to complete.\n\nI\u0027m not sure that 1 second is enough for the latter purpose. Does Chrome show the \"Press Esc to exit full screen\" message for a fullscreen canvas? For video, I made it wait 7 seconds to be reasonably confident that message wouldn\u0027t appear in the screenshot.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 3
+      },
+      "revId": "d18ed7e9063ec223dd4f78fe17f0e954d99f8c12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
