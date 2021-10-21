@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c583d780_43aca4ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-21T07:36:54Z",
+      "side": 1,
+      "message": "nit: can you comment on this to explaine it?",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "bf10b903c10965e38a06c2feed6d82a0e7ddcb45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
