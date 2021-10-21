@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92d44a79_c3264917",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_n_update_with_nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-21T08:55:29Z",
+      "side": 1,
+      "message": "I guess we will eventually a canonical runtime variable for TLW address (not specific to AU tests), but this looks fine until we actually get one.",
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3620b471_9a9219df",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "Right now the goal is to test policies together with the OS update, so if the test can run in 1 lab, that is quite enough. My target now is the skylab. Adding the other labs can be a follow up, but I would prefer to focus on working towards an Enterprise Rollback test running in a lab.\n\nAre the test results that we can see in Tastboard from test executions in the skylab?",
       "parentUuid": "3620b471_9a9219df",
+      "range": {
+        "startLine": 70,
+        "startChar": 31,
+        "endLine": 70,
+        "endChar": 58
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f85e7072_2720110a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_n_update_with_nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-21T08:55:29Z",
+      "side": 1,
+      "message": "I see, it sounds fine if the initial target is Chrome OS lab only.\n\nYes, you should be able to see results in Tastboard.",
+      "parentUuid": "ea03c78e_84280a58",
       "range": {
         "startLine": 70,
         "startChar": 31,
