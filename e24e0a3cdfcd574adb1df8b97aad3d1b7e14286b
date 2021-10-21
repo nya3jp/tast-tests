@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dce1e6e6_ec0d8917",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-21T03:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43ba13cd_abe6390c",
+      "range": {
+        "startLine": 269,
+        "startChar": 19,
+        "endLine": 269,
+        "endChar": 34
+      },
+      "revId": "e24e0a3cdfcd574adb1df8b97aad3d1b7e14286b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15b132c1_cf3e268d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "287b324a_5d8e57e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-21T03:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15b132c1_cf3e268d",
+      "range": {
+        "startLine": 273,
+        "startChar": 47,
+        "endLine": 273,
+        "endChar": 49
+      },
+      "revId": "e24e0a3cdfcd574adb1df8b97aad3d1b7e14286b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "667c1276_b5e7ba22",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-21T00:04:39Z",
       "side": 1,
       "message": "This looks redundant.",
+      "range": {
+        "startLine": 546,
+        "startChar": 49,
+        "endLine": 546,
+        "endChar": 66
+      },
+      "revId": "e24e0a3cdfcd574adb1df8b97aad3d1b7e14286b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b6451e0_ba3bd914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-21T03:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "667c1276_b5e7ba22",
       "range": {
         "startLine": 546,
         "startChar": 49,
