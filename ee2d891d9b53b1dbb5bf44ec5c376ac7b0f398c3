@@ -86,6 +86,53 @@
       },
       "revId": "ee2d891d9b53b1dbb5bf44ec5c376ac7b0f398c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "712f2ceb_f356ab23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-21T14:22:43Z",
+      "side": 1,
+      "message": "can this be simply fsutil.CopyFile?\n\nsrc/platform/tast/src/chromiumos/tast/fsutil/fsutil.go",
+      "range": {
+        "startLine": 137,
+        "startChar": 16,
+        "endLine": 137,
+        "endChar": 24
+      },
+      "revId": "ee2d891d9b53b1dbb5bf44ec5c376ac7b0f398c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "209503ca_75304a71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-21T14:22:43Z",
+      "side": 1,
+      "message": "Preserving logs is what we often do.\nThough, I may not fully understand you point. What kind of log preserving you\u0027re thinking about...? Could you elaborate to help me understand your intention more?",
+      "parentUuid": "71737c25_0e041b40",
+      "range": {
+        "startLine": 137,
+        "startChar": 68,
+        "endLine": 137,
+        "endChar": 78
+      },
+      "revId": "ee2d891d9b53b1dbb5bf44ec5c376ac7b0f398c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
