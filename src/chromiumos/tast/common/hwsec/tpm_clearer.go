@@ -39,6 +39,5 @@ var SystemStateFiles = []string{
 	"/var/lib/tpm_manager",
 	"/var/lib/tpm",
 	"/var/lib/u2f",
-	"/var/lib/whitelist/*",
 	"/var/lib/devicesettings/*",
 }
