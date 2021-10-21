@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "87882493_3a24b74c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-10-21T18:28:20Z",
+      "side": 1,
+      "message": "nit: Can we rephrase to something like \"promote factory.Kiosk to critical test\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "c00ec4d77d2333ef363f83b436aafea9284d4f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "823e04d1_65c1523e",
