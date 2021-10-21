@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c4976d3_5b0bb763",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/terms_link_clickable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-21T10:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c327ce68_b406654f",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "c57c8b681c326951b0f5fa141142f36fd0f7ae75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2263bef5_64a36325",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-20T21:51:14Z",
       "side": 1,
       "message": "this may not be necessary, I think the chrome reset is pretty good about closing browser windows. I\u0027d try without it. Also verifyContents is calling this already, so you probably don\u0027t need it up here",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "c57c8b681c326951b0f5fa141142f36fd0f7ae75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f5ed191_13f0d2de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/terms_link_clickable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-21T10:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2263bef5_64a36325",
       "range": {
         "startLine": 57,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18c1ea90_f955bfa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/terms_link_clickable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-21T10:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be835030_5079c09b",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 53
+      },
+      "revId": "c57c8b681c326951b0f5fa141142f36fd0f7ae75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d547a03_c1e91436",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70d17cf1_98d28f52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/terms_link_clickable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-21T10:33:53Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "5d547a03_c1e91436",
+      "range": {
+        "startLine": 102,
+        "startChar": 23,
+        "endLine": 102,
+        "endChar": 72
+      },
+      "revId": "c57c8b681c326951b0f5fa141142f36fd0f7ae75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74206bfa_e31b887f",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-10-20T21:51:14Z",
       "side": 1,
       "message": "is this accessible from uiauto? like as a `nodewith.Name(expected).Role(role.Heading)`?\n\neither way is fine, but the uiauto approach might be more resilient to page layout changes (and requires less code)",
+      "range": {
+        "startLine": 128,
+        "startChar": 21,
+        "endLine": 128,
+        "endChar": 70
+      },
+      "revId": "c57c8b681c326951b0f5fa141142f36fd0f7ae75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6753cf23_4807bb1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/terms_link_clickable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-21T10:33:53Z",
+      "side": 1,
+      "message": "The idea is to make sure the content is within the web page instead of making sure it is on the screen, a comment was added to clarify.\n\nShould we still adopt the ui way?",
+      "parentUuid": "74206bfa_e31b887f",
       "range": {
         "startLine": 128,
         "startChar": 21,
