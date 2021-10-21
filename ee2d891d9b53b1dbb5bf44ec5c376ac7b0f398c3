@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91f6b2c_dd1c3d26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-21T06:16:04Z",
+      "side": 1,
+      "message": "I think this could be a separate issue and is better to be addressed in a different CL, this CL is specifically only concerned about lacros.log when Lacros fails to launch.",
+      "parentUuid": "1cb3e865_dc83178a",
+      "range": {
+        "startLine": 110,
+        "startChar": 10,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "ee2d891d9b53b1dbb5bf44ec5c376ac7b0f398c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71737c25_0e041b40",
