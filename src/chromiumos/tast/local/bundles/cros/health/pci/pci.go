@@ -9,6 +9,7 @@ import (
 	"bufio"
 	"context"
 	"fmt"
+	"os"
 	"sort"
 	"strings"
 
@@ -61,7 +62,12 @@ func lspci(ctx context.Context, arg string) ([]map[string]string, error) {
 
 // ExpectedDevices returns expected PCI devices, sorted by VendorID + DeviceID.
 func ExpectedDevices(ctx context.Context) ([]Device, error) {
+	const pciPath = "/sys/bus/pci"
 	var res []Device
+	if _, err := os.Stat(pciPath); os.IsNotExist(err) {
+		return res, nil
+	}
+
 	// "-n" ask lspci to output the hex value of each field.
 	devs, err := lspci(ctx, "-n")
 	if err != nil {
