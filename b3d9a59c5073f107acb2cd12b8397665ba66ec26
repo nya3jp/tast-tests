@@ -22,6 +22,30 @@
       },
       "revId": "b3d9a59c5073f107acb2cd12b8397665ba66ec26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e853b9_7388e61f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/basic_layout.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-21T05:55:27Z",
+      "side": 1,
+      "message": "Sorry for not making this clear in the commit message.\n\nThis CL contains two test cases, refer to b:200064362, b:200058954.\nWhich b:200058954 is the tablet version of b:200064362.\nWe\u0027ve posted this specific question in b:200064362 and got approval to combine them into a single test.\n\nShould we split them as two independent tests?",
+      "parentUuid": "43af45e5_ae17bbb4",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "b3d9a59c5073f107acb2cd12b8397665ba66ec26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
