@@ -33,6 +33,24 @@
       "message": "do we need to keep this? Or do you plan to remove this in a following CL?",
       "revId": "3e8c383ae7cdb1e04b8733406b4f6b12c415b59d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d34c476_02bd221b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-21T02:09:54Z",
+      "side": 1,
+      "message": "Follow up CL. You can see my response to Yuke\u0027s comment for the rationale.",
+      "parentUuid": "14d1789c_5d21551d",
+      "revId": "3e8c383ae7cdb1e04b8733406b4f6b12c415b59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
