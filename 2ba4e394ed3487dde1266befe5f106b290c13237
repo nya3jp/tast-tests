@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf5a930e_17b4cebc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/data/enabled_syscalls.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2021-10-21T17:51:32Z",
+      "side": 1,
+      "message": "Thank you!\n\nWould it make sense to add this in as another driver/section \"dmabuf(CONFIG_UDMABUF)\"? Not specifying any boards would mean that it runs on all boards.",
+      "revId": "2ba4e394ed3487dde1266befe5f106b290c13237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
