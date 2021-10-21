@@ -26,11 +26,13 @@ func init() {
 		Func:     Kiosk,
 		Desc:     "Test if factory UI is running",
 		Contacts: []string{"lschyi@google.com", "chromeos-factory-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 		Timeout:  time.Minute,
 		Fixture:  "ensureToolkit",
-		// Skip "nyan_kitty" due to slow reboot speed.
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty")),
+		// Skip "nyan_kitty" due to slow reboot speed, skip nocturne as
+		// it can not open the Kiosk page and is not manufactured. Skip
+		// volteer as it is not stable.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty"), hwdep.SkipOnPlatform("nocturne"), hwdep.SkipOnPlatform("volteer")),
 	})
 }
 
