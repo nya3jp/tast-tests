@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "427c637e_decf0a34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-21T22:30:03Z",
+      "side": 1,
+      "message": "VkInfo \u003c- Host\nVkInfo.no_vulkan \u003c- Host_no_vulkan\nVkInfo.crostini \u003c- crostini\nVkInfo.crostini_no_vulkan \u003c- crostini_no_vulkan\nVkInfo.borealis \u003c- borealis\n...",
+      "parentUuid": "169f335e_1bcd72cb",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "6e07de86b84b3b9216646fc69e088bb125c8ca98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e349c4b_591db053",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
         "patchSetId": 2
@@ -77,6 +101,30 @@
       "writtenOn": "2021-10-20T05:47:17Z",
       "side": 1,
       "message": "The problem with reporting 3 numbers is that Bigger is not Better.\n\nSay 1.2.4 -\u003e 2.1.1",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 21
+      },
+      "revId": "6e07de86b84b3b9216646fc69e088bb125c8ca98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa232ff8_6c1bfa95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-21T22:30:03Z",
+      "side": 1,
+      "message": "the metrics is designed for perf. So there are only two options.\nI simply feel reporting using the perf pipeline is good. Any other suggestions?",
+      "parentUuid": "7e349c4b_591db053",
       "range": {
         "startLine": 47,
         "startChar": 0,
