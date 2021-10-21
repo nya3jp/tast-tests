@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43af45e5_ae17bbb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/basic_layout.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-21T00:16:29Z",
+      "side": 1,
+      "message": "If specific gesture control is not required by the test, I\u0027d suggest sticking to the core uiauto/automation.go controls to keep things simple and consistent with the rest of the UI tests. Let\u0027s reserve usage of touch controllers for tests that specify certain touch gestures.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "b3d9a59c5073f107acb2cd12b8397665ba66ec26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
