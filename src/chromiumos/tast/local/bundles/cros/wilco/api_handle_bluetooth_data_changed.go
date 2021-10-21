@@ -73,12 +73,12 @@ func APIHandleBluetoothDataChanged(ctx context.Context, s *testing.State) {
 
 			for {
 				s.Log("Waiting for Bluetooth event")
-				msg := dtcpb.HandleBluetoothDataChangedRequest{}
-				if err := rec.WaitForMessage(ctx, &msg); err != nil {
+				msg := &dtcpb.HandleBluetoothDataChangedRequest{}
+				if err := rec.WaitForMessage(ctx, msg); err != nil {
 					s.Fatal("Unable to receive Bluetooth event: ", err)
 				}
 
-				if err := bt.ValidateBluetoothData(ctx, &msg, bt.ExpectPowered(enable)); err != nil {
+				if err := bt.ValidateBluetoothData(ctx, msg, bt.ExpectPowered(enable)); err != nil {
 					s.Logf("Unable to validate Bluetooth data %v: %v", msg, err)
 				} else {
 					break

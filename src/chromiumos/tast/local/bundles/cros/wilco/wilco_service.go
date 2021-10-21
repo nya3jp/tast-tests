@@ -168,8 +168,8 @@ func (c *WilcoService) TestPerformWebRequest(ctx context.Context, req *empty.Emp
 }
 
 func (c *WilcoService) ExecuteRoutine(ctx context.Context, req *wpb.ExecuteRoutineRequest) (*wpb.ExecuteRoutineResponse, error) {
-	rrRequest := dtcpb.RunRoutineRequest{}
-	if err := proto.Unmarshal(req.Request, &rrRequest); err != nil {
+	rrRequest := &dtcpb.RunRoutineRequest{}
+	if err := proto.Unmarshal(req.Request, rrRequest); err != nil {
 		return nil, errors.Wrap(err, "failed to unmarshall request")
 	}
 
@@ -211,8 +211,8 @@ func (c *WilcoService) ExecuteRoutine(ctx context.Context, req *wpb.ExecuteRouti
 }
 
 func (c *WilcoService) TestRoutineCancellation(ctx context.Context, req *wpb.ExecuteRoutineRequest) (*empty.Empty, error) {
-	rrRequest := dtcpb.RunRoutineRequest{}
-	if err := proto.Unmarshal(req.Request, &rrRequest); err != nil {
+	rrRequest := &dtcpb.RunRoutineRequest{}
+	if err := proto.Unmarshal(req.Request, rrRequest); err != nil {
 		return nil, errors.Wrap(err, "failed to unmarshall request")
 	}
 
