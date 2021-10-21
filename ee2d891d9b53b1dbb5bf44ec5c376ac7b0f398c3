@@ -133,6 +133,30 @@
       },
       "revId": "ee2d891d9b53b1dbb5bf44ec5c376ac7b0f398c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef067b63_fee99a90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-21T17:09:12Z",
+      "side": 1,
+      "message": "There is a similar flake issue of Lacros provisioned but not opening from Shelf sometimes in Lacros Update Tast tests (lacros.Update*) that I\u0027m trying to troubleshoot. https://crbug.com/1258664.\nI wanted to get some insights on how to log more actionable logs like \"lacros.log\" or \"crashlog\" or simply sending \"feedback\" if possible since it seems to have failed on startup.",
+      "parentUuid": "209503ca_75304a71",
+      "range": {
+        "startLine": 137,
+        "startChar": 68,
+        "endLine": 137,
+        "endChar": 78
+      },
+      "revId": "ee2d891d9b53b1dbb5bf44ec5c376ac7b0f398c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
