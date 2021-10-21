@@ -12,7 +12,11 @@
 			"getpid",
 			"gettid",
 			"geteuid",
-			"getuid"
+			"getuid",
+			"memfd_create",
+			"openat$udambuf",
+			"ioctl$UDMABUF_CREATE",
+			"ioctl$UDMABUF_CREATE_LIST"
 		]
 	},
 	{
