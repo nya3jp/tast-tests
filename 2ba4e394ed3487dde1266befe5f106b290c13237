@@ -34,6 +34,24 @@
       "parentUuid": "bf5a930e_17b4cebc",
       "revId": "2ba4e394ed3487dde1266befe5f106b290c13237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "775dfb39_a5e1f77f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/data/enabled_syscalls.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-10-21T17:56:44Z",
+      "side": 1,
+      "message": "PS2 has the split way. Either way is fine with me.",
+      "parentUuid": "cecab0ae_28fed06c",
+      "revId": "2ba4e394ed3487dde1266befe5f106b290c13237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
