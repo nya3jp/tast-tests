@@ -33,6 +33,41 @@
       "message": "Just curious, what does the dashboard in the CL description show and what builds of lacros and OS are being used for test results here? I\u0027m seeing lacros.Basic.unstable but no lacros.Basic there.",
       "revId": "ee4c8473ac4a62ba7f5265c4185d71d97f04c41a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84dfb4b3_ab611efd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-21T06:13:52Z",
+      "side": 1,
+      "message": "lacros.Basic.unstable is essentially lacros.Basic, and the unstable is specifically for restricting it to run on VMs. (it existed because the test was flaky on VM, but not on HW, so we wanted to partially make it critical on HW)",
+      "parentUuid": "1907b39c_a76997af",
+      "revId": "ee4c8473ac4a62ba7f5265c4185d71d97f04c41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54040408_1d99940d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-21T06:13:52Z",
+      "side": 1,
+      "message": "The failure is due to another flaky test, not lacros.Basic.",
+      "revId": "ee4c8473ac4a62ba7f5265c4185d71d97f04c41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
