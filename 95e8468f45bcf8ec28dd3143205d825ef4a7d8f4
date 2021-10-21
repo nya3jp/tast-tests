@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fa6cfd3_5a064954",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-10-21T18:33:21Z",
+      "side": 1,
+      "message": "Thanks! I\u0027ll submit this after https://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/4203218 is in.",
+      "revId": "95e8468f45bcf8ec28dd3143205d825ef4a7d8f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

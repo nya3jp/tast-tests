@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d3852e5_57202199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-10-21T18:33:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a14c0c1_6f11d87b",
+      "revId": "20e6440f31b0c745289e3fabe4009c01304d0772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4473fa2f_a0d9ad2d",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45624d89_a8eea405",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-10-21T18:33:21Z",
+      "side": 1,
+      "message": "Removed it and it actually still worked without it.",
+      "parentUuid": "4473fa2f_a0d9ad2d",
+      "revId": "20e6440f31b0c745289e3fabe4009c01304d0772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5893c87d_65e6ff29",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-10-21T07:50:44Z",
       "side": 1,
       "message": "Do we want to check anything here? Maybe have a policy set on that user and validate that it\u0027s actually set.",
+      "revId": "20e6440f31b0c745289e3fabe4009c01304d0772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de8ab2eb_a87c09f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_enrollment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-10-21T18:33:21Z",
+      "side": 1,
+      "message": "This is just an enrollment test - no need to check anything after the test enrolls. I also want to even remove the login part since we really only care about enrollment but when I try to do this now enrollment fails, I\u0027ll have to look into why. Will do it in future cls.",
+      "parentUuid": "5893c87d_65e6ff29",
       "revId": "20e6440f31b0c745289e3fabe4009c01304d0772",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
