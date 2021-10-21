@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea8bebd8_ae3df549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-21T10:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "059274f0_c94530f6",
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67242556_9c310411",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-21T07:08:10Z",
       "side": 1,
       "message": "If we are to make sess.Stop() stop the tracing session immediately, we need to use cmd.Wait() here.\n\nBTW, do we really need to the blocking call version (i.e. this function)? The answer looks like no to me.",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 20
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebde769d_c2297ab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto/utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-21T10:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67242556_9c310411",
       "range": {
         "startLine": 129,
         "startChar": 16,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40b961c7_9b74d2ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-21T10:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3ad7620_d769dba6",
+      "range": {
+        "startLine": 35,
+        "startChar": 23,
+        "endLine": 35,
+        "endChar": 37
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "694d2938_58bfe5c1",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a50ce06_90ea0605",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-21T10:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "694d2938_58bfe5c1",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 61
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6928641_40954d51",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-10-21T07:08:10Z",
       "side": 1,
       "message": "Use defer sess.RemoveTraceResultFile() so we are sure it\u0027ll run if we return early.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9914de1_45b56683",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_system_tracing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-21T10:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6928641_40954d51",
       "range": {
         "startLine": 48,
         "startChar": 0,
@@ -135,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9589c23e_41c89560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-21T10:00:36Z",
+      "side": 1,
+      "message": "Renamed as LocalPerfettoTBMTracedProbes",
+      "parentUuid": "8bb6415d_4f70f9b9",
+      "range": {
+        "startLine": 26,
+        "startChar": 12,
+        "endLine": 26,
+        "endChar": 35
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1bab5af_9b5e8a0e",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
         "patchSetId": 5
@@ -146,6 +284,30 @@
       "writtenOn": "2021-10-21T07:08:10Z",
       "side": 1,
       "message": "The team doesn\u0027t own the test now.",
+      "range": {
+        "startLine": 28,
+        "startChar": 77,
+        "endLine": 28,
+        "endChar": 114
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c2ffa4d_2958b2c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-21T10:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1bab5af_9b5e8a0e",
       "range": {
         "startLine": 28,
         "startChar": 77,
@@ -204,6 +366,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c7a7f41_189e09ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-21T10:00:36Z",
+      "side": 1,
+      "message": "I thought that traced_probes will be installed and started on all DUTs [1].\nMy remote trials failed with another error (regardless of this CL) though:\n\n2021-10-21T08:24:14.057288Z Got global error: runner.go:140: rpc error: code \u003d Unknown desc \u003d cros: rpc error: code \u003d Unknown desc \u003d failed to connect to DUT: failed to connect to DUT: dial tcp: lookup helios on 127.0.0.1:53: no such host (status 1)\n\n[1]: https://source.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/chromeos-base/perfetto/perfetto-19.0-r2.ebuild",
+      "parentUuid": "4473e84c_b57e561b",
+      "range": {
+        "startLine": 39,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 47
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "628d109d_b01a3b92",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
         "patchSetId": 5
@@ -215,6 +401,30 @@
       "writtenOn": "2021-10-21T07:08:10Z",
       "side": 1,
       "message": "defer sess.RemoveTraceResultFile()",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 5
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dab3af03_8267e211",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-21T10:00:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "628d109d_b01a3b92",
       "range": {
         "startLine": 85,
         "startChar": 1,
