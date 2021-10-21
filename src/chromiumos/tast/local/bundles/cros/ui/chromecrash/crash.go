@@ -188,7 +188,7 @@ func crashReporterRunning(ctx context.Context) (bool, error) {
 type CrashTester struct {
 	ptype     ProcessType
 	waitFor   CrashFileType
-	killedPID int
+	killedPID int32
 }
 
 // NewCrashTester returns a CrashTester. This must be called before chrome.New.
@@ -487,13 +487,13 @@ func (ct *CrashTester) killNonBrowser(ctx context.Context, dirs []string) error 
 		}
 
 		testing.ContextLogf(ctx, "Sending SIGSEGV to target Chrome %s pid %d", ct.ptype, toKill.Pid)
-		if err = syscall.Kill(int(toKill.Pid), syscall.SIGSEGV); err != nil {
+		if err := toKill.SendSignal(syscall.SIGSEGV); err != nil {
 			if errno, ok := err.(syscall.Errno); ok && errno == syscall.ESRCH {
 				return errors.Errorf("target process %d does not exist", toKill.Pid)
 			}
 			return testing.PollBreak(errors.Wrapf(err, "could not kill target process %d", toKill.Pid))
 		}
-		ct.killedPID = int(toKill.Pid)
+		ct.killedPID = toKill.Pid
 
 		return nil
 	}, nil)
@@ -548,15 +548,15 @@ func (ct *CrashTester) killBrowser(ctx context.Context) error {
 	// The root Chrome process (i.e. the one that doesn't have another Chrome process
 	// as its parent) is the browser process. It's not sandboxed, so it should be able
 	// to write a minidump file when it crashes.
-	rp, err := chromeproc.GetRootPID()
+	rp, err := ashproc.Root()
 	if err != nil {
-		return errors.Wrap(err, "failed to get root Chrome PID")
+		return errors.Wrap(err, "failed to get Chrome root process")
 	}
 	testing.ContextLog(ctx, "Sending SIGSEGV to root Chrome process ", rp)
-	if err = syscall.Kill(rp, syscall.SIGSEGV); err != nil {
+	if err := rp.SendSignal(syscall.SIGSEGV); err != nil {
 		return errors.Wrap(err, "failed to kill process")
 	}
-	ct.killedPID = rp
+	ct.killedPID = rp.Pid
 
 	// Wait for all the processes to die (not just the root one). This avoids
 	// messing up other killNonBrowser tests that might try to kill an orphaned
