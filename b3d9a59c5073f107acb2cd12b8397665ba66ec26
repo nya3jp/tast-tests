@@ -46,6 +46,30 @@
       },
       "revId": "b3d9a59c5073f107acb2cd12b8397665ba66ec26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71965192_4ecf4df5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/basic_layout.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-22T00:16:39Z",
+      "side": 1,
+      "message": "It\u0027s fine to keep them together, but tablet mode does not necessarily require touch input to drive the test as far as I know.",
+      "parentUuid": "d3e853b9_7388e61f",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "b3d9a59c5073f107acb2cd12b8397665ba66ec26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
