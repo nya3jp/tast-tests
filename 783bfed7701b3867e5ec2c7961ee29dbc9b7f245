@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5d5582_53d2886a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-10-22T18:10:51Z",
+      "side": 1,
+      "message": "According to our test results, we found that this is a necessary operation for the low-end DUTs to have time to retrieve data. Manually, when typing Ctrl+C, it takes about 1 second before we paste.",
+      "revId": "783bfed7701b3867e5ec2c7961ee29dbc9b7f245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
