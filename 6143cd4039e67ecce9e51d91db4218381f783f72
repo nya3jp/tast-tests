@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a054837_79ac321f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-22T00:15:09Z",
+      "side": 1,
+      "message": "Thanks for making the changes! Just a few minor comments but otherwise LGTM.",
+      "revId": "6143cd4039e67ecce9e51d91db4218381f783f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8fb06cd_51b437f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-22T00:15:09Z",
+      "side": 1,
+      "message": "`var testSamples []*sectionTest` is more idiomatic. the struct is pretty small so you could also consider not using a pointer.",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 39
+      },
+      "revId": "6143cd4039e67ecce9e51d91db4218381f783f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11af66bd_079a7ccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-22T00:15:09Z",
+      "side": 1,
+      "message": "also minor naming nit, how about `sectionTests`?",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 12
+      },
+      "revId": "6143cd4039e67ecce9e51d91db4218381f783f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "561dfdc9_5026b5eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-22T00:15:09Z",
+      "side": 1,
+      "message": "and just `test` here maybe?",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 8
+      },
+      "revId": "6143cd4039e67ecce9e51d91db4218381f783f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b34cf25_43117142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-22T00:15:09Z",
+      "side": 1,
+      "message": "nit: this could just be 1 or 2 lines. there\u0027s no line length limit in Go so you only need to wrap comments when they\u0027re getting really long, or there\u0027s a good grammatical break.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 74
+      },
+      "revId": "6143cd4039e67ecce9e51d91db4218381f783f72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
