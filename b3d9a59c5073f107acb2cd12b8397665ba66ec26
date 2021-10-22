@@ -70,6 +70,30 @@
       },
       "revId": "b3d9a59c5073f107acb2cd12b8397665ba66ec26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0baefb70_48d1db80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/basic_layout.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-22T03:38:37Z",
+      "side": 1,
+      "message": "Thank you for clarifying, we\u0027ll keep this in mind.\n\nAs to this CL, refer to b:200058954, it says:\n`Ensure that the UberTray(at the bottom RHS of the screen) test cases work correctly in a variety of touch scenarios`\n\nSo we assumed that the tablet mode for this test case is not only to enable tablet mode, but also uses touch control.\n\nShould we remove the touch control anyway?",
+      "parentUuid": "71965192_4ecf4df5",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "b3d9a59c5073f107acb2cd12b8397665ba66ec26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
