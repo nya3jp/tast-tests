@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4459d2b_c437ab93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/all_sections.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-22T04:25:10Z",
+      "side": 1,
+      "message": "Many apologies, I\u0027m mixed up with the other similar CL.\nReplace with ossettings.WaitForSearchBox() instead.",
+      "parentUuid": "bb61bdaa_40fb9683",
+      "range": {
+        "startLine": 61,
+        "startChar": 57,
+        "endLine": 61,
+        "endChar": 66
+      },
+      "revId": "dd425521890e0a045f45ef4d6369d9a8520debcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d69c5a95_7b689d13",
