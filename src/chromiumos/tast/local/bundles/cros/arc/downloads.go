@@ -9,6 +9,7 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"time"
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/testing"
@@ -65,6 +66,19 @@ func Downloads(ctx context.Context, s *testing.State) {
 	}
 	if err = os.Remove(crosPath); err != nil {
 		s.Fatal("Failed to remove a file: ", err)
+	}
+
+	isARCVMEnabled, err := arc.VMEnabled()
+	if err != nil {
+		s.Fatal("Failed to check whether ARCVM is enabled: ", err)
+	}
+	if isARCVMEnabled {
+		// Current configuration of virtio-fs has a cache sync issue
+		// for a short period of time. In order to avoid adb push
+		// failures due to this, insert a second of sleep here.
+		// TODO(b/171422889): Remove this hack once the cache sync issue
+		// is resolved.
+		testing.Sleep(ctx, time.Second)
 	}
 
 	// Android -> CrOS
