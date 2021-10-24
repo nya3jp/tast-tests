@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e731cc5e_09c72045",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-24T22:20:56Z",
+      "side": 1,
+      "message": "Thanks for all the update. I think we are almost there. Please make sure that local run passes.",
+      "revId": "d66ae09f42982ab17f199d5ed3aedb112a824f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f04eddf_b85bac7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-24T22:20:56Z",
+      "side": 1,
+      "message": "With current implementation, cleanUp only relates to targets. Therefore, suggest define a separate func and call defer cleanUp(cleanupDeleteCtx, targets) just after generateTestTargets.",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 11
+      },
+      "revId": "d66ae09f42982ab17f199d5ed3aedb112a824f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68962ad4_e67baf9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-24T22:20:56Z",
+      "side": 1,
+      "message": "This is inside a func, please create another cleanup context.",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 29
+      },
+      "revId": "d66ae09f42982ab17f199d5ed3aedb112a824f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3454f923_1abb32bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-24T22:20:56Z",
+      "side": 1,
+      "message": "I guess it because the content of the folder also got deleted as the folder is deleted?",
+      "range": {
+        "startLine": 173,
+        "startChar": 3,
+        "endLine": 173,
+        "endChar": 15
+      },
+      "revId": "d66ae09f42982ab17f199d5ed3aedb112a824f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
