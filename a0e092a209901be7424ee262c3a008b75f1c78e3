@@ -62,6 +62,23 @@
       "message": "friendly bump",
       "revId": "a0e092a209901be7424ee262c3a008b75f1c78e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c886e819_7307fbd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-10-25T16:23:46Z",
+      "side": 1,
+      "message": "LGTM mod Nicolas suggestions. ",
+      "revId": "a0e092a209901be7424ee262c3a008b75f1c78e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
