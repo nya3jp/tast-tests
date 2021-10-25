@@ -16,6 +16,23 @@
       "message": "Hey Hiro, This is a more of a \"nice to have\", but thought it might help save a bit of execution time in large infrastructure media test runs. Hope you have a great rest of your week. Thanks!",
       "revId": "a0176f7647c39348995cb76932c6e13f67c35bdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6df4979_79442737",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-25T03:10:55Z",
+      "side": 1,
+      "message": "I had the same idea. \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2060571\n\nMy concern was it affects the metrics in performance tests.\nI would be fine to try this though.",
+      "revId": "a0176f7647c39348995cb76932c6e13f67c35bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
