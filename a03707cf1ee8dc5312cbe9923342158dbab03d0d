@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9015239_76ee4b33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-10-25T22:31:33Z",
+      "side": 1,
+      "message": "in auth_session_moun.go\n\nit creates a user and then tries to mount the kiosk user with old flow.",
+      "parentUuid": "7fa914c3_87917c9c",
+      "revId": "a03707cf1ee8dc5312cbe9923342158dbab03d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1709f16b_1426efce",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2021-10-25T20:54:21Z",
       "side": 1,
       "message": "nit: mounts a user*",
+      "revId": "a03707cf1ee8dc5312cbe9923342158dbab03d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa42e49a_0c99640f",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-10-25T22:31:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1709f16b_1426efce",
       "revId": "a03707cf1ee8dc5312cbe9923342158dbab03d0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +118,24 @@
       "writtenOn": "2021-10-25T20:54:21Z",
       "side": 1,
       "message": "I\u0027ll defer to the go experts, but can isKioskUser be defaulted to false to save argument count in most of the cdoe?",
+      "revId": "a03707cf1ee8dc5312cbe9923342158dbab03d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549cb6a7_1bdbafbc",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-10-25T22:31:33Z",
+      "side": 1,
+      "message": "This is same function but I\u0027ve moved it to Utils so it can be used in KioskSession test. MountWithAuthSession calls this function now.",
+      "parentUuid": "9d350c3d_c973508d",
       "revId": "a03707cf1ee8dc5312cbe9923342158dbab03d0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
