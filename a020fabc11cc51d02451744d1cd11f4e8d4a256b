@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00a1ed37_86db0135",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-10-25T06:42:17Z",
+      "side": 1,
+      "message": "I see. Thanks for the investigation. I will leave this open in case Chirantan knows what happens here.",
+      "parentUuid": "01d1fe12_f4abf3f3",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "a020fabc11cc51d02451744d1cd11f4e8d4a256b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b9fdfc5_86253161",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
         "patchSetId": 2
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "I think it\u0027s 1 second. Currently, the \"timeout\" value for the shared-dir option is set to 1 second: https://source.chromium.org/chromium/chromiumos/platform2/+/HEAD:vm_tools/concierge/vm_util.cc;l\u003d620;drc\u003d31903b7f7da738667cf0064659aabaef7b797e01\nIn my local experiment, when I set the value to 3 seconds, this test needed 3 seconds of sleep to pass.",
       "parentUuid": "4b9fdfc5_86253161",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "a020fabc11cc51d02451744d1cd11f4e8d4a256b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c43a76_635bc210",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-10-25T06:42:17Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "c08fd2af_6c8904a7",
       "range": {
         "startLine": 81,
         "startChar": 21,
