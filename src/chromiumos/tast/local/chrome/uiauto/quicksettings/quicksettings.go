@@ -126,14 +126,13 @@ func Hide(ctx context.Context, tconn *chrome.TestConn) error {
 // TODO(crbug/1099502): remove this once there's a better indicator for when the status area
 // is ready to receive clicks.
 func ShowWithRetry(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) error {
-	statusArea, err := findStatusArea(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the status area widget")
-	}
-
-	ui := uiauto.New(tconn)
-	if err := ui.WithPollOpts(testing.PollOptions{Timeout: timeout, Interval: time.Second}).LeftClickUntil(statusArea, ui.Exists(quickSettingsFinder))(ctx); err != nil {
-		return errors.Wrap(err, "quick settings not shown")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := Show(ctx, tconn); err != nil {
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "timeout waiting to show quicksettings")
 	}
 	return nil
 }
