@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b110a68_aa7ef9b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-10-25T06:00:36Z",
+      "side": 1,
+      "message": "Hi Kyle,\nHow do you feel about making the logic of ShowWithRetry() the same as Show(), AFAICT the logic should the same?\n\nAs for the reasoning, I am trying to find out why crrev/c/3226293 is failing CQ, and it seems to be with Show/ ShowWithRetry. ",
+      "revId": "f13300a6091b15f5ab9d43f753991ab2f1952f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
