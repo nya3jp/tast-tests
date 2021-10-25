@@ -20114,10 +20114,30 @@ type ONCWifi struct {
 	Passphrase  string  `json:"Passphrase,omitempty"`
 }
 
+type ONCVPN struct {
+	AutoConnect bool      `json:"AutoConnect"`
+	Host        string    `json:"Host"`
+	IPsec       *ONCIPsec `json:"IPsec,omitempty"`
+	L2TP        *ONCL2TP  `json:"L2TP,omitempty"`
+	Type        string    `json:"Type"`
+}
+
+type ONCL2TP struct {
+	Username string `json:"Username"`
+	Password string `json:"Password"`
+}
+
+type ONCIPsec struct {
+	AuthenticationType string `json:"AuthenticationType"`
+	IKEVersion         int    `json:"IKEVersion"`
+	PSK                string `json:"PSK,omitempty"`
+}
+
 type ONCNetworkConfiguration struct {
 	GUID string   `json:"GUID"`
 	Name string   `json:"Name"`
 	Type string   `json:"Type"`
+	VPN  *ONCVPN  `json:"VPN,omitempty"`
 	WiFi *ONCWifi `json:"WiFi,omitempty"`
 }
 
