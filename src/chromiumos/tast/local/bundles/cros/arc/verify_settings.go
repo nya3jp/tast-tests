@@ -69,6 +69,7 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start ARC: ", err)
 	}
 	defer a.Close(ctx)
+	defer a.DumpUIHierarchyOnError(ctx, s.OutDir(), s.HasError)
 
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
@@ -174,14 +175,7 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 		return errors.Wrap(err, "failed to click Backup")
 	}
 
-	var err error
-	if t == arc.VM {
-		err = testBackupButtonVM(ctx, arcDevice)
-	} else {
-		err = testBackupButton(ctx, arcDevice)
-	}
-
-	if err != nil {
+	if err := testBackupToggle(ctx, arcDevice); err != nil {
 		return errors.Wrap(err, "failed to turn backup off and on")
 	}
 
@@ -227,11 +221,20 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 		}
 	}
 
-	// Turn Location On.
-	if err := locationToggle.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click Location toggle")
+	turnOnlocation := arcDevice.Object(androidui.ClassName("android.widget.Button"), androidui.TextMatches("(?i)TURN ON LOCATION"), androidui.Enabled(true))
+	if err := turnOnlocation.WaitForExists(ctx, timeoutUI); err != nil {
+		return errors.Wrap(err, "failed finding TURN ON LOCATION")
 	}
 
+	if err := turnOnlocation.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click TURN ON LOCATION")
+	}
+
+	// locationStatus will check for toggle On/Off
+	locationStatus, err = arcDevice.Object(androidui.ID(locationID)).IsChecked(ctx)
+	if err != nil {
+		return err
+	}
 	if locationStatus == false {
 		return errors.New("Unable to Turn Location ON")
 	}
@@ -239,10 +242,9 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 	return nil
 }
 
-// testBackupButtonVM verifes if backup button can be turned off and on in ARC-R
-func testBackupButtonVM(ctx context.Context, arcDevice *androidui.Device) error {
-
-	const backupID = "com.google.android.gms:id/switchWidget"
+// testBackupToggle verifes if backup button can be turned off and on.
+func testBackupToggle(ctx context.Context, arcDevice *androidui.Device) error {
+	const backupID = "android:id/switch_widget"
 	backupToggle := arcDevice.Object(androidui.ID(backupID))
 
 	// backupStatus will check for toggle on/off.
@@ -250,7 +252,6 @@ func testBackupButtonVM(ctx context.Context, arcDevice *androidui.Device) error 
 	if err != nil {
 		return err
 	}
-
 	if backupStatus == true {
 		// Turn Backup OFF.
 		if err := backupToggle.Click(ctx); err != nil {
@@ -266,8 +267,9 @@ func testBackupButtonVM(ctx context.Context, arcDevice *androidui.Device) error 
 			return errors.Wrap(err, "failed to click turn off & delete button")
 		}
 	}
-	// Turn Backup ON.
-	if err := backupToggle.Click(ctx); err != nil {
+
+	backupToggleOn := arcDevice.Object(androidui.ClassName("android.widget.Button"), androidui.TextMatches("(?i)Turn on"), androidui.Enabled(true))
+	if err := backupToggleOn.Click(ctx); err != nil {
 		return errors.Wrap(err, "failed to click backup toggle")
 	}
 
@@ -276,50 +278,7 @@ func testBackupButtonVM(ctx context.Context, arcDevice *androidui.Device) error 
 		return err
 	}
 	if backupStatus == false {
-		return errors.New("Unable to turn Backup ON")
-	}
-	return nil
-}
-
-// testBackupButton verifes if backup button can be turned off and on in ARC-P
-func testBackupButton(ctx context.Context, arcDevice *androidui.Device) error {
-
-	const backupID = "com.google.android.gms:id/switchWidget"
-
-	backupStatus, err := arcDevice.Object(androidui.ID(backupID)).GetText(ctx)
-	if err != nil {
-		return err
-	}
-
-	backupToggleOff := arcDevice.Object(androidui.ClassName("android.widget.Switch"), androidui.TextMatches("(?i)off"), androidui.Enabled(true))
-	backupToggleOn := arcDevice.Object(androidui.ClassName("android.widget.Switch"), androidui.TextMatches("(?i)on"), androidui.Enabled(true))
-
-	if backupStatus == "ON" {
-		// Turn Backup OFF.
-		if err := backupToggleOn.Click(ctx); err != nil {
-			return errors.Wrap(err, "failed to click backup toggle")
-		}
-
-		turnOffBackup := arcDevice.Object(androidui.ClassName("android.widget.Button"), androidui.TextMatches("(?i)turn off & delete"), androidui.Enabled(true))
-		if err := turnOffBackup.WaitForExists(ctx, timeoutUI); err != nil {
-			return errors.Wrap(err, "failed to find turn off & delete button")
-		}
-
-		if err := turnOffBackup.Click(ctx); err != nil {
-			return errors.Wrap(err, "failed to click turn off & delete button")
-		}
-	}
-	// Turn Backup ON.
-	if err := backupToggleOff.WaitForExists(ctx, timeoutUI); err != nil {
-		return errors.Wrap(err, "failed to find backup off toggle")
-	}
-
-	if err := backupToggleOff.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click backup toggle")
-	}
-
-	if err := backupToggleOn.WaitForExists(ctx, timeoutUI); err != nil {
-		return errors.Wrap(err, "failed to turn backup toggle on")
+		return errors.New("unable to Turn Backup ON")
 	}
 	return nil
 }
