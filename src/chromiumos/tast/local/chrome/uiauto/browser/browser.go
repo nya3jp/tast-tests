@@ -11,6 +11,8 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -23,13 +25,13 @@ const shortTimeout = 5 * time.Second
 // Browser represents an instance of the browser.
 type Browser struct {
 	ui   *uiauto.Context
-	conn *chrome.Conn
+	conn *driver.Conn
 }
 
 // Launch launches a browser with the given url.
 // An error is returned if the browser fails to launch.
-func Launch(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, url string) (*Browser, error) {
-	conn, err := cr.NewConn(ctx, url)
+func Launch(ctx context.Context, tconn *chrome.TestConn, br ash.ConnSource, url string) (*Browser, error) {
+	conn, err := br.NewConn(ctx, url)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to open browser")
 	}

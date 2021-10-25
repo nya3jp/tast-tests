@@ -6,11 +6,14 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -31,7 +34,15 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               lacros.ChromeTypeLacros,
+		}},
 	})
 }
 
@@ -39,6 +50,11 @@ func init() {
 func AllowDeletingBrowserHistory(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -73,7 +89,7 @@ func AllowDeletingBrowserHistory(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
@@ -85,8 +101,16 @@ func AllowDeletingBrowserHistory(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
+			// Setup browser based on the chrome type.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+			if err != nil {
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
 			// Open settings page where the affected checkboxes can be found.
-			conn, err := cr.NewConn(ctx, "chrome://settings/clearBrowserData")
+			conn, err := br.NewConn(ctx, "chrome://settings/clearBrowserData")
 			if err != nil {
 				s.Fatal("Failed to connect to the settings page: ", err)
 			}

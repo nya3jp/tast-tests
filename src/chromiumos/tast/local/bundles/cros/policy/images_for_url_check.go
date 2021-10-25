@@ -42,7 +42,7 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Data:         []string{"images_for_url_check_index.html", "images_for_url_check_index_img.jpg"},
 		Params: []testing.Param{
 			{
@@ -114,7 +114,8 @@ func init() {
 
 			{
 				Name:              "lacros_default",
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				Fixture:           fixture.LacrosPolicyLoggedIn,
 				Val: []imagesSettingTestTable{
 					{
@@ -139,7 +140,8 @@ func init() {
 			},
 			{
 				Name:              "lacros_allowlist",
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				Fixture:           fixture.LacrosPolicyLoggedIn,
 				Val: []imagesSettingTestTable{
 					{
@@ -156,7 +158,8 @@ func init() {
 			},
 			{
 				Name:              "lacros_blocklist",
-				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				Fixture:           fixture.LacrosPolicyLoggedIn,
 				Val: []imagesSettingTestTable{
 					{
