@@ -311,9 +311,13 @@ func StartRecordFromKB(ctx context.Context, tconn *chrome.TestConn, kb *input.Ke
 // It also removes the record file from Downloads for cleanup.
 func StopRecordFromKBAndSaveOnError(ctx context.Context, tconn *chrome.TestConn, hasError func() bool, dir string) error {
 	stopBtn := nodewith.Name("Stop screen recording").Role(role.Button)
+	recordResult := nodewith.Name("Screen recording completed").Role(role.Alert)
 	ui := New(tconn)
-	if err := ui.LeftClick(stopBtn)(ctx); err != nil {
-		return errors.Wrap(err, "failed to stop recording")
+	if err := Combine("stop record",
+		ui.LeftClick(stopBtn),
+		ui.WaitUntilExists(recordResult))(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to stop recording: ", err)
+		return err
 	}
 
 	const downloads = "/home/chronos/user/Downloads/"

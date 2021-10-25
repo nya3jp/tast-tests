@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -37,6 +38,11 @@ func init() {
 
 // LaunchSystemWebAppsFromURL tries to navigate to System Web Apps from their chrome:// URL.
 func LaunchSystemWebAppsFromURL(ctx context.Context, s *testing.State) {
+	// Shorten deadline to leave time for cleanup
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	cr := s.PreValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -60,7 +66,7 @@ func LaunchSystemWebAppsFromURL(ctx context.Context, s *testing.State) {
 		s.Log("Failed to start recording: ", err)
 	}
 
-	defer uiauto.StopRecordFromKBAndSaveOnError(ctx, tconn, s.HasError, s.OutDir())
+	defer uiauto.StopRecordFromKBAndSaveOnError(cleanupCtx, tconn, s.HasError, s.OutDir())
 
 	for _, app := range systemWebApps {
 		chromeURL := app.PublisherID
