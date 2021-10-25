@@ -22,6 +22,30 @@
       },
       "revId": "9bd2c564e75b1c94d607d0e838d9d7706b8fe650",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "725b6cb6_0faca897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/nfl.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-10-25T22:25:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c86b25eb_991262b4",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "9bd2c564e75b1c94d607d0e838d9d7706b8fe650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
