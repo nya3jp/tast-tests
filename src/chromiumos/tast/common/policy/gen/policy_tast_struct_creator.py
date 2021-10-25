@@ -110,10 +110,30 @@ type ONCWifi struct {
 \tPassphrase\tstring\t`json:"Passphrase,omitempty"`
 }
 
+type ONCVPN struct {
+\tAutoConnect\tbool\t`json:"AutoConnect"`
+\tHost\tstring\t`json:"Host"`
+\tIPsec\t*ONCIPsec\t`json:"IPsec,omitempty"`
+\tL2TP\t*ONCL2TP\t`json:"L2TP,omitempty"`
+\tType\tstring\t`json:"Type"`
+}
+
+type ONCL2TP struct {
+\tUsername\tstring\t`json:"Username"`
+\tPassword\tstring\t`json:"Password"`
+}
+
+type ONCIPsec struct {
+\tAuthenticationType\tstring\t`json:"AuthenticationType"`
+\tIKEVersion\tint\t`json:"IKEVersion"`
+\tPSK\tstring\t`json:"PSK,omitempty"`
+}
+
 type ONCNetworkConfiguration struct {
 \tGUID\tstring\t`json:"GUID"`
 \tName\tstring\t`json:"Name"`
 \tType\tstring\t`json:"Type"`
+\tVPN\t*ONCVPN\t`json:"VPN,omitempty"`
 \tWiFi\t*ONCWifi\t`json:"WiFi,omitempty"`
 }
 
