@@ -42,7 +42,7 @@ func init() {
 			"chromeos-wmp@google.com",
 			"mukai@chromium.org", // Tast author
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      "chromeLoggedIn",
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(
