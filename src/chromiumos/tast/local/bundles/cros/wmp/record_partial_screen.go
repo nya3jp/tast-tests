@@ -99,7 +99,7 @@ func RecordPartialScreen(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine(
 		"record partial screen",
 		// Enter screen capture mode.
-		kb.AccelAction("sysrq"),
+		wmputils.EnsureCaptureModeActivated(tconn, true),
 		ac.LeftClick(screenRecordToggleButton),
 		ac.LeftClick(recordPartialScreenToggleButton),
 		// Clear the drag area.
@@ -112,6 +112,8 @@ func RecordPartialScreen(ctx context.Context, s *testing.State) {
 		ac.LeftClick(stopRecordButton),
 		// Check if the screen record is taken.
 		ac.WaitUntilExists(recordTakenLabel),
+		// Exit screen capture mode.
+		wmputils.EnsureCaptureModeActivated(tconn, false),
 	)(ctx); err != nil {
 		s.Fatal("Failed to record partial screen: ", err)
 	}
