@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9085b02c_78051a21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-25T05:56:45Z",
+      "side": 1,
+      "message": "Perhaps a better idea would be to use modetest -c, check the error of that, and use strings.Contains to look for privacy-screen.\n\nGo strongly discourages completely ignoring errors. The problem with your current solution is that if \u0027modetest -c\u0027 fails, then you\u0027ll never know, since you discard the error.",
+      "revId": "feee44dcd3588f71167151e461da51081222dec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
