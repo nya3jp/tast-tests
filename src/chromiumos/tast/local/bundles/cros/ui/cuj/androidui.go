@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/testing"
 )
 
 // OpenAppAndGetStartTime launches a new activity, starts it and records start time.
@@ -30,6 +31,26 @@ func OpenAppAndGetStartTime(ctx context.Context, tconn *chrome.TestConn, a *arc.
 	}
 
 	return time.Since(startTime), act, nil
+}
+
+// WaitForExists returns an action function which waits for a view matching the selector to appear.
+func WaitForExists(obj *ui.Object, timeout time.Duration) action.Action {
+	return func(ctx context.Context) error {
+		if err := obj.WaitForExists(ctx, timeout); err != nil {
+			return errors.Wrap(err, "failed to wait for the target object")
+		}
+		return nil
+	}
+}
+
+// WaitUntilGone returns an action function which waits for a view matching the selector to disappear.
+func WaitUntilGone(obj *ui.Object, timeout time.Duration) action.Action {
+	return func(ctx context.Context) error {
+		if err := obj.WaitUntilGone(ctx, timeout); err != nil {
+			return errors.Wrap(err, "failed to wait for the target object disappear")
+		}
+		return nil
+	}
 }
 
 // FindAndClick returns an action function which finds and clicks Android ui object.
@@ -55,5 +76,18 @@ func ClickIfExist(obj *ui.Object, timeout time.Duration) action.Action {
 			return errors.Wrap(err, "failed to wait for the target object")
 		}
 		return obj.Click(ctx)
+	}
+}
+
+// DoActionUntilExists returns an action function that will repeat the action until the UI object exists.
+func DoActionUntilExists(act action.Action, obj *ui.Object, options *testing.PollOptions) action.Action {
+	return func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := obj.Exists(ctx); err != nil {
+				act(ctx)
+				return err
+			}
+			return nil
+		}, options)
 	}
 }
