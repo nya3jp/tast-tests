@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf5e7fdb_488063a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-25T21:52:15Z",
+      "side": 1,
+      "message": "Here\u0027s a chrome log from one of the CQ failures:\nhttps://ci.chromium.org/ui/artifact/raw/invocations/task-chromium-swarm.appspot.com-56b3dda2dd89d011/tests/ninja:%2F%2Fchromeos:chrome_all_tast_tests%2Fquicksettings.OpenSettings/results/c1709c1a-00003/artifacts/chrome.log\n\nNot too sure how to parse the info here, but I do see one FATAL level error in the failures:\n```\n2021-10-20T00:17:54.665201Z FATAL chrome[5533:5533]: [scroll_view.cc(510)] Check failed: horiz_sb_-\u003eOverlapsContent() \u003d\u003d vert_sb_-\u003eOverlapsContent() (1 vs. 0)\n```",
+      "parentUuid": "61df40b7_00777dd2",
+      "revId": "f13300a6091b15f5ab9d43f753991ab2f1952f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ca35022_cbab4fbf",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/quicksettings.go",
         "patchSetId": 1
