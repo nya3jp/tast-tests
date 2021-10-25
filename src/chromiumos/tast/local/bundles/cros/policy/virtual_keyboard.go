@@ -11,8 +11,10 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -22,9 +24,10 @@ import (
 )
 
 type vkTestCase struct {
-	name          string          // name is the subtest name.
-	wantedAllowVK bool            // wantedAllowVK describes if virtual keyboard is expected to be shown or not.
-	policies      []policy.Policy // policies is the policies values.
+	name          string            // name is the subtest name.
+	browserType   lacros.ChromeType // browser type used in the subtest.
+	wantedAllowVK bool              // wantedAllowVK describes if virtual keyboard is expected to be shown or not.
+	policies      []policy.Policy   // policies is the policies values.
 }
 
 func init() {
@@ -39,93 +42,221 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
 		Params: []testing.Param{
 			{
-				Name: "both",
+				Name:    "both",
+				Fixture: fixture.ChromePolicyLoggedIn,
 				Val: []vkTestCase{
 					{
 						name:          "vke_enabled-tvke_enabled",
+						browserType:   lacros.ChromeTypeChromeOS,
 						wantedAllowVK: true,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}, &policy.TouchVirtualKeyboardEnabled{Val: true}},
 					},
 					{
 						name:          "vke_enabled-tvke_disabled",
+						browserType:   lacros.ChromeTypeChromeOS,
 						wantedAllowVK: true,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}, &policy.TouchVirtualKeyboardEnabled{Val: false}},
 					},
 					{
 						name:          "vke_disabled-tvke_enabled",
+						browserType:   lacros.ChromeTypeChromeOS,
 						wantedAllowVK: true,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}, &policy.TouchVirtualKeyboardEnabled{Val: true}},
 					},
 					{
 						name:          "vke_disabled-tvke_disabled",
+						browserType:   lacros.ChromeTypeChromeOS,
 						wantedAllowVK: false,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}, &policy.TouchVirtualKeyboardEnabled{Val: false}},
 					},
 					{
 						name:          "vke_unset-tvke_enabled",
+						browserType:   lacros.ChromeTypeChromeOS,
 						wantedAllowVK: true,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}, &policy.TouchVirtualKeyboardEnabled{Val: true}},
 					},
 					{
 						name:          "vke_enabled-tvke_unset",
+						browserType:   lacros.ChromeTypeChromeOS,
 						wantedAllowVK: true,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}, &policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
 					},
 					{
 						name:          "vke_unset-tvke_disabled",
+						browserType:   lacros.ChromeTypeChromeOS,
 						wantedAllowVK: false,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}, &policy.TouchVirtualKeyboardEnabled{Val: false}},
 					},
 					{
 						name:          "vke_disabled-tvke_unset",
+						browserType:   lacros.ChromeTypeChromeOS,
 						wantedAllowVK: false,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}, &policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
 					},
 					{
 						name:          "vke_unset-tvke_unset",
+						browserType:   lacros.ChromeTypeChromeOS,
 						wantedAllowVK: false,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}, &policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
 					},
 				},
 			},
 			{
-				Name: "virtual",
+				Name:    "virtual",
+				Fixture: fixture.ChromePolicyLoggedIn,
 				Val: []vkTestCase{
 					{
 						name:          "enabled",
+						browserType:   lacros.ChromeTypeChromeOS,
 						wantedAllowVK: true,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}},
 					},
 					{
 						name:          "disabled",
+						browserType:   lacros.ChromeTypeChromeOS,
 						wantedAllowVK: false,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}},
 					},
 					{
 						name:          "unset",
+						browserType:   lacros.ChromeTypeChromeOS,
 						wantedAllowVK: false,
 						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}},
 					},
 				},
 			},
 			{
-				Name: "touch_virtual",
+				Name:    "touch_virtual",
+				Fixture: fixture.ChromePolicyLoggedIn,
 				Val: []vkTestCase{
 					{
 						name:          "enabled",
+						browserType:   lacros.ChromeTypeChromeOS,
 						wantedAllowVK: true,
 						policies:      []policy.Policy{&policy.TouchVirtualKeyboardEnabled{Val: true}},
 					},
 					{
 						name:          "disabled",
+						browserType:   lacros.ChromeTypeChromeOS,
 						wantedAllowVK: false,
 						policies:      []policy.Policy{&policy.TouchVirtualKeyboardEnabled{Val: false}},
 					},
 					{
 						name:          "unset",
+						browserType:   lacros.ChromeTypeChromeOS,
+						wantedAllowVK: false,
+						policies:      []policy.Policy{&policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
+					},
+				},
+			},
+			{
+				Name:              "lacros_both",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				Val: []vkTestCase{
+					{
+						name:          "vke_enabled-tvke_enabled",
+						browserType:   lacros.ChromeTypeLacros,
+						wantedAllowVK: true,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}, &policy.TouchVirtualKeyboardEnabled{Val: true}},
+					},
+					{
+						name:          "vke_enabled-tvke_disabled",
+						browserType:   lacros.ChromeTypeLacros,
+						wantedAllowVK: true,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}, &policy.TouchVirtualKeyboardEnabled{Val: false}},
+					},
+					{
+						name:          "vke_disabled-tvke_enabled",
+						browserType:   lacros.ChromeTypeLacros,
+						wantedAllowVK: true,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}, &policy.TouchVirtualKeyboardEnabled{Val: true}},
+					},
+					{
+						name:          "vke_disabled-tvke_disabled",
+						browserType:   lacros.ChromeTypeLacros,
+						wantedAllowVK: false,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}, &policy.TouchVirtualKeyboardEnabled{Val: false}},
+					},
+					{
+						name:          "vke_unset-tvke_enabled",
+						browserType:   lacros.ChromeTypeLacros,
+						wantedAllowVK: true,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}, &policy.TouchVirtualKeyboardEnabled{Val: true}},
+					},
+					{
+						name:          "vke_enabled-tvke_unset",
+						browserType:   lacros.ChromeTypeLacros,
+						wantedAllowVK: true,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}, &policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
+					},
+					{
+						name:          "vke_unset-tvke_disabled",
+						browserType:   lacros.ChromeTypeLacros,
+						wantedAllowVK: false,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}, &policy.TouchVirtualKeyboardEnabled{Val: false}},
+					},
+					{
+						name:          "vke_disabled-tvke_unset",
+						browserType:   lacros.ChromeTypeLacros,
+						wantedAllowVK: false,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}, &policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
+					},
+					{
+						name:          "vke_unset-tvke_unset",
+						browserType:   lacros.ChromeTypeLacros,
+						wantedAllowVK: false,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}, &policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
+					},
+				},
+			},
+			{
+				Name:              "lacros_virtual",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				Val: []vkTestCase{
+					{
+						name:          "enabled",
+						browserType:   lacros.ChromeTypeLacros,
+						wantedAllowVK: true,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: true}},
+					},
+					{
+						name:          "disabled",
+						browserType:   lacros.ChromeTypeLacros,
+						wantedAllowVK: false,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Val: false}},
+					},
+					{
+						name:          "unset",
+						browserType:   lacros.ChromeTypeLacros,
+						wantedAllowVK: false,
+						policies:      []policy.Policy{&policy.VirtualKeyboardEnabled{Stat: policy.StatusUnset}},
+					},
+				},
+			},
+			{
+				Name:              "lacros_touch_virtual",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				Val: []vkTestCase{
+					{
+						name:          "enabled",
+						browserType:   lacros.ChromeTypeLacros,
+						wantedAllowVK: true,
+						policies:      []policy.Policy{&policy.TouchVirtualKeyboardEnabled{Val: true}},
+					},
+					{
+						name:          "disabled",
+						browserType:   lacros.ChromeTypeLacros,
+						wantedAllowVK: false,
+						policies:      []policy.Policy{&policy.TouchVirtualKeyboardEnabled{Val: false}},
+					},
+					{
+						name:          "unset",
+						browserType:   lacros.ChromeTypeLacros,
 						wantedAllowVK: false,
 						policies:      []policy.Policy{&policy.TouchVirtualKeyboardEnabled{Stat: policy.StatusUnset}},
 					},
@@ -140,6 +271,11 @@ func init() {
 func VirtualKeyboard(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -179,7 +315,15 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			conn, err := cr.NewConn(ctx, "")
+			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
+			// Setup browser based on the chrome type.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), tc.browserType)
+			if err != nil {
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
+			conn, err := br.NewConn(ctx, "")
 			if err != nil {
 				s.Fatal("Failed to connect to chrome: ", err)
 			}

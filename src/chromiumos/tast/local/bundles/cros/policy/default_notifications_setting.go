@@ -6,11 +6,14 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -30,7 +33,15 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               lacros.ChromeTypeLacros,
+		}},
 	})
 }
 
@@ -38,6 +49,11 @@ func init() {
 func DefaultNotificationsSetting(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	// radioButtonNames is a list of UI element names in the notification settings page.
 	// The order of the strings should follow the order in the settings page.
@@ -97,8 +113,16 @@ func DefaultNotificationsSetting(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
+			// Setup browser based on the chrome type.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+			if err != nil {
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
 			// Open notification settings.
-			conn, err := cr.NewConn(ctx, "chrome://settings/content/notifications")
+			conn, err := br.NewConn(ctx, "chrome://settings/content/notifications")
 			if err != nil {
 				s.Fatal("Failed to open notification settings: ", err)
 			}
