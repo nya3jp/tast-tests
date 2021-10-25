@@ -628,6 +628,12 @@ func (c *Chrome) WaitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	return login.WaitForOOBEConnection(ctx, c.sess)
 }
 
+// WaitForOOBEConnectionToBeDismissed waits for that the OOBE page to be
+// dismissed.
+func (c *Chrome) WaitForOOBEConnectionToBeDismissed(ctx context.Context) error {
+	return login.WaitForOOBEConnectionToBeDismissed(ctx, c.sess)
+}
+
 // ContinueLogin continues login deferred by DeferLogin option. It is an error to call
 // this method when DeferLogin option was not passed to New.
 func (c *Chrome) ContinueLogin(ctx context.Context) error {
