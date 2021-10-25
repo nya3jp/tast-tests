@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "413f9539_4fd074c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2021-10-25T05:59:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87882493_3a24b74c",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "c00ec4d77d2333ef363f83b436aafea9284d4f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "823e04d1_65c1523e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -73,6 +97,24 @@
       "side": 1,
       "message": "ssh connection fail is a known issue and happened from time to time in every remote test.\n\nMy concern will be the nocturne and volteer boards, they seems consistently fail and we probably want to skip these two boards until we fixed them.",
       "parentUuid": "294c1b05_6f535e23",
+      "revId": "c00ec4d77d2333ef363f83b436aafea9284d4f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78b4b390_1cb3f8af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2021-10-25T05:59:56Z",
+      "side": 1,
+      "message": "Sure, I think it is good to also skip volteer.\n\nIf the assumption of ssh failure is really caused by the lab environment, probably it could happen more often on some specific model. Does it make sense to adopt the idea of short list, leave some platform or model still as informational so that we will not forget to put it back?",
+      "parentUuid": "a0c0cadf_847c11a1",
       "revId": "c00ec4d77d2333ef363f83b436aafea9284d4f07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
