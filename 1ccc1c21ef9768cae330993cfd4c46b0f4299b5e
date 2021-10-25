@@ -22,6 +22,30 @@
       },
       "revId": "1ccc1c21ef9768cae330993cfd4c46b0f4299b5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71292502_462431d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/pci/pci.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2021-10-25T05:03:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4452a45_6f6a7100",
+      "range": {
+        "startLine": 69,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 12
+      },
+      "revId": "1ccc1c21ef9768cae330993cfd4c46b0f4299b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
