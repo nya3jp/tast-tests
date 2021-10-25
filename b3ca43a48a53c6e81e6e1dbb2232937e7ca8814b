@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "687acce0_a1ff0cb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-25T09:11:38Z",
+      "side": 1,
+      "message": "Hi Ambalavanan,\n\nPlease apply other comment from [1] to this and other CLs for consistency, e.g. VirtualKeyboard, logging.\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3161114",
+      "revId": "b3ca43a48a53c6e81e6e1dbb2232937e7ca8814b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
