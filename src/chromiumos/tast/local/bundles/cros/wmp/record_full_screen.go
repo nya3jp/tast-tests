@@ -68,18 +68,14 @@ func RecordFullScreen(ctx context.Context, s *testing.State) {
 	}
 
 	// Starts full screen recording via UI.
-	statusArea := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
-	collapseButton := nodewith.ClassName("CollapseButton")
-	screenCaptureButton := nodewith.ClassName("FeaturePodIconButton").Name("Screen capture")
 	screenRecordToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Screen record")
 	recordFullscreenToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Record full screen")
 	stopRecordButton := nodewith.ClassName("TrayBackgroundView").Name("Stop screen recording")
 	recordTakenLabel := nodewith.ClassName("Label").Name("Screen recording taken")
 	if err := uiauto.Combine(
 		"record full screen",
-		ac.LeftClick(statusArea),
-		ac.WaitUntilExists(collapseButton),
-		ac.LeftClick(screenCaptureButton),
+		// Enter screen capture mode.
+		wmputils.EnsureRecordModeActivated(tconn, true),
 		ac.LeftClick(screenRecordToggleButton),
 		ac.LeftClick(recordFullscreenToggleButton),
 		kb.AccelAction("Enter"),
@@ -88,6 +84,8 @@ func RecordFullScreen(ctx context.Context, s *testing.State) {
 		ac.LeftClick(stopRecordButton),
 		// Checks if the screen record is taken.
 		ac.WaitUntilExists(recordTakenLabel),
+		// Exit screen capture mode.
+		wmputils.EnsureRecordModeActivated(tconn, false),
 	)(ctx); err != nil {
 		s.Fatal("Failed to record full screen: ", err)
 	}
