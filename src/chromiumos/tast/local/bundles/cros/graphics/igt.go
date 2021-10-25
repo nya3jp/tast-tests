@@ -49,7 +49,7 @@ func init() {
 			"markyacoub@google.com",
 		},
 		SoftwareDeps: []string{"drm_atomic", "igt", "no_qemu"},
-		Attr:         []string{"group:graphics", "graphics_igt"},
+		Attr:         []string{"group:graphics"},
 		Fixture:      "chromeGraphicsIgt",
 		Params: []testing.Param{{
 			Name: "drm_import_export",
@@ -57,7 +57,7 @@ func init() {
 				exe: "drm_import_export",
 			},
 			Timeout:   5 * time.Minute,
-			ExtraAttr: []string{"graphics_nightly"},
+			ExtraAttr: []string{"graphics_nightly", "graphics_igt"},
 		}, {
 			Name: "drm_mm",
 			Val: igtTest{
