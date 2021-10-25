@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dab38468_54061f49",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-25T17:47:56Z",
+      "side": 1,
+      "message": "The old test, which is very hard to read does 4 test cases.\n\n1) Shutdown, wait for G3/S5, sleep 10, close lid, sleep 1, open lid, wait for S0. It looks like you test this case also.\n2) Shutdown, wait for G3/S5, close lid, sleep 1, open lid, wait for S0. I don\u0027t see this in your test.\n3) Close lid, wait for G3/S5, close lid (redundant), sleep 1, open lid, wait for S0. It seems like you have this in your test, except you don\u0027t wait for G3/S5, which seems like the important part of the test.\n4) Stop powerd, open lid, sleep 2, close lid, verify evtest saw no keypresses, sleep 2, open lid, verify evtest saw no keypresses, set backlight to 100, close lid, verify backlight 0, open lid, verify backlight not 0, restore backlight, start powerd.  This really should be 2 separate scenarios, there was really no reason to combine them other than that they both want powerd disabled. It appears you did this, but without the 2s sleeps.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e469862_5305f4e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-25T17:47:56Z",
+      "side": 1,
+      "message": "This is an unnecessary indirection. The code would be much simpler to just call testing.Sleep everywhere you call this. Also you didn\u0027t check for sleep failures.",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 20
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a3b422_be5f7bf1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-25T17:47:56Z",
+      "side": 1,
+      "message": "Check for sleep failure.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 15
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65dec7d1_ec232df6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-25T17:47:56Z",
+      "side": 1,
+      "message": "Why does this function exist? Just inline the ms.PowerOff call.",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705c35f3_3b8e96fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-25T17:47:56Z",
+      "side": 1,
+      "message": "I think this would be better if you start evtest, then open the lid, then close the lid, wait a little bit, kill evtest, wait for evtest to exit, then check stdout to see if there were any keypresses in there.",
+      "range": {
+        "startLine": 197,
+        "startChar": 5,
+        "endLine": 197,
+        "endChar": 19
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49081782_3288521a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-25T17:47:56Z",
+      "side": 1,
+      "message": "I would get rid of this function, and move the code to the call site.",
+      "range": {
+        "startLine": 245,
+        "startChar": 5,
+        "endLine": 245,
+        "endChar": 30
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77c5b681_c7361b59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-25T17:47:56Z",
+      "side": 1,
+      "message": "add defer stopPowerd() right after this, then you don\u0027t have to remember to start it after every failure.",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 2
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8646cef2_94e9105d",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-25T17:47:56Z",
+      "side": 1,
+      "message": "Change to call ms.WaitForPowerState().",
+      "range": {
+        "startLine": 763,
+        "startChar": 1,
+        "endLine": 776,
+        "endChar": 2
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95676574_7f8ec6d4",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-25T17:47:56Z",
+      "side": 1,
+      "message": "To make this more generic, it should probably take the timeout as a parameter. Also, it doesn\u0027t work for the case above where there are 2 allowed power states.",
+      "range": {
+        "startLine": 810,
+        "startChar": 3,
+        "endLine": 810,
+        "endChar": 66
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
