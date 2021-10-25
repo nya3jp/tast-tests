@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f90fad4c_d8188b45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-25T22:44:57Z",
+      "side": 1,
+      "message": "If we\u0027re using fixtures, we should clean up the app installations in this test, since I don\u0027t think this is taken care of by the fixture\u0027s default clean-up.\n\nUsing a fixture means sharing a login session with other tests which also specify the fixture, so restoring the initial state is important for the tests that run next.\n\nIf cleaning up the installed apps is tricky, you can also avoid using fixtures and start chrome directly with chrome.New.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "0bc95f249b0e584e7cec2de689bfa63291cee40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
