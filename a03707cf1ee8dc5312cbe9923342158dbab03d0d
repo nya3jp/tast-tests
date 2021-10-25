@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6954ecb_ecc7f7b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-10-25T20:54:21Z",
+      "side": 1,
+      "message": "Adding antrim@ and zuan@ to the direct attention set",
+      "revId": "a03707cf1ee8dc5312cbe9923342158dbab03d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1709f16b_1426efce",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-10-25T20:54:21Z",
+      "side": 1,
+      "message": "nit: mounts a user*",
+      "revId": "a03707cf1ee8dc5312cbe9923342158dbab03d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d350c3d_c973508d",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-10-25T20:54:21Z",
+      "side": 1,
+      "message": "How is this different than MountWithAuthSession before?",
+      "revId": "a03707cf1ee8dc5312cbe9923342158dbab03d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20d86c58_81407c76",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-10-25T20:54:21Z",
+      "side": 1,
+      "message": "I\u0027ll defer to the go experts, but can isKioskUser be defaulted to false to save argument count in most of the cdoe?",
+      "revId": "a03707cf1ee8dc5312cbe9923342158dbab03d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
