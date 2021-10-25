@@ -146,6 +146,8 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 		terminalApp.RunCommand(keyboard, fmt.Sprintf("code --disable-extensions %s", testFile)),
 		// Left click the app window and type string.
 		ui.LeftClick(appWindowUnsaved),
+		// Sometimes the first character got lost if input immediately.
+		ui.Sleep(time.Second),
 		keyboard.TypeAction(testString),
 		// Press ctrl+S to save the file.
 		keyboard.AccelAction("ctrl+S"),
