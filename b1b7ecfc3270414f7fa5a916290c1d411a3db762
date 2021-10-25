@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "512610a9_9fd204bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/terms_link_clickable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-25T22:53:57Z",
+      "side": 1,
+      "message": "one last thing about this one, the link won\u0027t be visible if the settings app horizontal width is insufficient.\n\nyou can see this if you run the test in portrait mode, or observe the behavior if you shrink the OS settings page width. at a certain threshold, the sidebar disappears and you have to toggle it with a menu button. Scarlet devices are like this by default due to their small resolution and default portrait display.\n\nthere\u0027s some handling in ossettings.LaunchAtPage for this case that you can reference:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go;l\u003d96-108",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 48
+      },
+      "revId": "b1b7ecfc3270414f7fa5a916290c1d411a3db762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5721a96e_97f1cad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/terms_link_clickable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-25T22:53:57Z",
+      "side": 1,
+      "message": "you can remove this part, it\u0027s not entirely accurate (content can be within the page, but off-screen)",
+      "range": {
+        "startLine": 127,
+        "startChar": 49,
+        "endLine": 127,
+        "endChar": 72
+      },
+      "revId": "b1b7ecfc3270414f7fa5a916290c1d411a3db762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -251,6 +251,30 @@
       },
       "revId": "c57c8b681c326951b0f5fa141142f36fd0f7ae75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f7479f7_95a3aec1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/terms_link_clickable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-25T22:53:57Z",
+      "side": 1,
+      "message": "JS way should be fine, we can keep an eye on it over time and adjust if necessary. The ToS page is probably pretty stable anyways.",
+      "parentUuid": "6753cf23_4807bb1c",
+      "range": {
+        "startLine": 128,
+        "startChar": 21,
+        "endLine": 128,
+        "endChar": 70
+      },
+      "revId": "c57c8b681c326951b0f5fa141142f36fd0f7ae75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
