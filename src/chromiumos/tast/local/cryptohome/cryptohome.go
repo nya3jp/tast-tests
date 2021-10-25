@@ -41,6 +41,9 @@ const (
 	// Defined in libbrillo/brillo/cryptohome.cc.
 	GuestUser = "$guest"
 
+	// KioskUser is the name representing a kiosk user account.
+	KioskUser = "kiosk"
+
 	// mounterExe is the full executable for the out-of-process cryptohome
 	// mounter.
 	// Defined in cryptohome/BUILD.gn.
@@ -419,6 +422,22 @@ func MountGuest(ctx context.Context) error {
 	return nil
 }
 
+// MountKiosk sends a request to cryptohome to create a mount point for a
+// kiosk user.
+func MountKiosk(ctx context.Context) error {
+	testing.ContextLog(ctx, "Mounting kiosk cryptohome")
+	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=mount_ex", "--key_label=public_mount", "--public_mount", "--user="+KioskUser, "--create")
+	if err := cmd.Run(); err != nil {
+		cmd.DumpLog(ctx)
+		return errors.Wrap(err, "failed to request mounting kiosk vault")
+	}
+
+	if err := WaitForUserMount(ctx, KioskUser); err != nil {
+		return errors.Wrap(err, "failed to mount kiosk vault")
+	}
+	return nil
+}
+
 // CheckMountNamespace checks whether the user session mount namespace has been created.
 func CheckMountNamespace(ctx context.Context) error {
 	var buff *syscall.Statfs_t
@@ -485,14 +504,11 @@ func CheckDeps(ctx context.Context) (errs []error) {
 }
 
 // StartAuthSession starts an AuthSession for a given user.
-func StartAuthSession(ctx context.Context, user string, publicMount bool) (string, error) {
+func StartAuthSession(ctx context.Context, user string) (string, error) {
 	testing.ContextLogf(ctx, "Creating AuthSession for user %q", user)
 	cmd := testexec.CommandContext(
 		ctx, "cryptohome", "--action=start_auth_session",
 		"--user="+user)
-	if publicMount {
-		cmd.Args = append(cmd.Args, "--public_mount")
-	}
 	out, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to create AuthSession for %q", user)
@@ -546,7 +562,7 @@ func AddCredentialsWithAuthSession(ctx context.Context, user, password, authSess
 	return nil
 }
 
-// MountWithAuthSession mounts user with AuthSessionID.
+// MountWithAuthSession mounts a user with AuthSessionID.
 func MountWithAuthSession(ctx context.Context, authSessionID string, publicMount bool) error {
 	testing.ContextLogf(ctx, "Trying to mount user vault with AuthSession id: %q", authSessionID)
 	cmd := testexec.CommandContext(
@@ -557,6 +573,50 @@ func MountWithAuthSession(ctx context.Context, authSessionID string, publicMount
 	}
 	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to mount vault")
+	}
+	return nil
+}
+
+// AuthSessionMountFlow mounts a user with AuthSession.
+func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, password string, createUser bool) error {
+	// Start an Auth session and get an authSessionID.
+	authSessionID, err := StartAuthSession(ctx, username)
+	if err != nil {
+		return errors.Wrap(err, "failed to start Auth session")
+	}
+	testing.ContextLogf(ctx, "Auth session ID: %s", authSessionID)
+
+	if createUser {
+		if err := AddCredentialsWithAuthSession(ctx, username, password, authSessionID, isKioskUser); err != nil {
+			return errors.Wrap(err, "failed to add credentials with AuthSession")
+		}
+	}
+
+	defer func(ctx context.Context, testUser string) error {
+		// Removing the user now despite if we could authenticate or not.
+		if err := RemoveVault(ctx, testUser); err != nil {
+			return errors.Wrap(err, "failed to remove user -")
+		}
+		testing.ContextLog(ctx, "User removed")
+		return nil
+	}(ctx, username)
+
+	// Authenticate the same AuthSession using authSessionID.
+	// If we cannot authenticate, do not proceed with mount and unmount.
+	if err := AuthenticateAuthSession(ctx, password, authSessionID, isKioskUser); err != nil {
+		return errors.Wrap(err, "failed to authenticate with AuthSession")
+	}
+	testing.ContextLog(ctx, "User authenticated successfully")
+
+	// Mounting with AuthSession now.
+	if err := MountWithAuthSession(ctx, authSessionID, isKioskUser); err != nil {
+		return errors.Wrap(err, "failed to mount user -")
+	}
+	testing.ContextLog(ctx, "User mounted successfully")
+
+	// Unmounting user vault.
+	if err := UnmountVault(ctx, username); err != nil {
+		return errors.Wrap(err, "failed to unmount vault user -")
 	}
 	return nil
 }
