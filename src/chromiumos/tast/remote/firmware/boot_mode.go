@@ -30,8 +30,11 @@ const (
 	// offTimeout is the timeout to wait for the DUT to be unreachable after powering off.
 	offTimeout = 3 * time.Minute
 
-	// powerStateTimeout is the timeout to wait for the DUT reach S5 or G3.
-	powerStateTimeout = 20 * time.Second
+	// PowerStateTimeout is the timeout to wait for the DUT reach a powerstate.
+	PowerStateTimeout = 20 * time.Second
+
+	// PowerStateInterval is the interval to wait before polling DUT powerstate.
+	PowerStateInterval = 250 * time.Millisecond
 
 	// reconnectTimeout is the timeout to wait to reconnect to the DUT after rebooting.
 	reconnectTimeout = 3 * time.Minute
@@ -159,7 +162,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		if fromMode != fwCommon.BootModeNormal {
 			hasSerialAP = ms.hasSerialAPFirmware(ctx)
 		}
-		if err := ms.powerOff(ctx); err != nil {
+		if err := ms.PowerOff(ctx); err != nil {
 			return errors.Wrap(err, "powering off DUT")
 		}
 		if err := h.Servo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
@@ -713,7 +716,7 @@ func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxSt
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
 	}
-	if err := ms.powerOff(ctx); err != nil {
+	if err := ms.PowerOff(ctx); err != nil {
 		return errors.Wrap(err, "powering off DUT")
 	}
 	if err := h.Servo.SetUSBMuxState(ctx, usbMux); err != nil {
@@ -725,8 +728,8 @@ func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxSt
 	return nil
 }
 
-// powerOff safely powers off the DUT with the "poweroff" command, then waits for the DUT to be unreachable.
-func (ms *ModeSwitcher) powerOff(ctx context.Context) error {
+// PowerOff safely powers off the DUT with the "poweroff" command, then waits for the DUT to be unreachable.
+func (ms *ModeSwitcher) PowerOff(ctx context.Context) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
@@ -740,21 +743,7 @@ func (ms *ModeSwitcher) powerOff(ctx context.Context) error {
 	}
 
 	// Try reading the power state from the EC.
-	err := testing.Poll(ctx, func(c context.Context) error {
-		powerState, err := ms.Helper.Servo.GetECSystemPowerState(ctx)
-		if err != nil {
-			// This error is temporary
-			if strings.Contains(err.Error(), "No data was sent from the pty") {
-				return err
-			}
-			return testing.PollBreak(err)
-		}
-		if powerState != "G3" && powerState != "S5" {
-			return errors.Errorf("Power state = %s", powerState)
-		}
-		return nil
-	}, &testing.PollOptions{
-		Timeout: powerStateTimeout, Interval: 250 * time.Millisecond})
+	err := ms.WaitForPowerStates(ctx, PowerStateInterval, PowerStateTimeout, "G3", "S5")
 	if err == nil {
 		return nil
 	}
@@ -783,5 +772,37 @@ func (ms *ModeSwitcher) waitUnreachable(ctx context.Context) error {
 
 func (ms *ModeSwitcher) hasSerialAPFirmware(ctx context.Context) bool {
 	// TODO(b/206004543): Get this working. Reading CONFIG_CONSOLE_SERIAL doesn't work.
+	return false
+}
+
+// WaitForPowerStates polls for DUT to get to a specific powerstate
+func (ms *ModeSwitcher) WaitForPowerStates(ctx context.Context, interval, timeout time.Duration, powerStates ...string) error {
+	// Try reading the power state from the EC.
+	err := testing.Poll(ctx, func(c context.Context) error {
+		currPowerState, err := ms.Helper.Servo.GetECSystemPowerState(ctx)
+		if err != nil {
+			// This error is temporary.
+			if strings.Contains(err.Error(), "No data was sent from the pty") {
+				return err
+			}
+			return testing.PollBreak(err)
+		}
+		if !comparePowerStates(currPowerState, powerStates...) {
+			return errors.Errorf("Power state = %s", currPowerState)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout, Interval: interval})
+	if err != nil {
+		return errors.Errorf("failed to get one of %v power state: %s", powerStates, err)
+	}
+	return nil
+}
+
+func comparePowerStates(currState string, expectedStates ...string) bool {
+	for _, state := range expectedStates {
+		if currState == state {
+			return true
+		}
+	}
 	return false
 }
