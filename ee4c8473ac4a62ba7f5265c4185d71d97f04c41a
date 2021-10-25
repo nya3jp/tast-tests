@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f70267_830fec28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-25T05:51:17Z",
+      "side": 1,
+      "message": "I think it is still running, see screenshot: https://screenshot.googleplex.com/7Ru2MtMXQAWKKuX, and as mentioned in the commit message, the redness is due to something else, if you click into the build and see the tast run log, you would see the following:\n\n2021-10-25T04:46:47.388786Z Started test lacros.Basic.unstable\n2021-10-25T04:46:47.618866Z [04:46:45.975] Starting chrome: --ozone-platform\u003dwayland --no-first-run --user-data-dir\u003d/tmp/lacros648598812 --lang\u003den-US --breakpad-dump-location\u003d/run/lacros --window-size\u003d800,600 --log-file\u003d/tmp/lacros648598812/logfile --enable-logging --enable-gpu-rasterization --enable-oop-rasterization --enable-webgl-image-chromium --autoplay-policy\u003dno-user-gesture-required --use-cras about:blank --remote-debugging-port\u003d0 --enable-experimental-extension-apis --whitelisted-extension-id\u003dbehllobkkfkfnphdnhnkndlbkcpglgmj --load-extension\u003d/usr/local/tmp/tast/chrome_session/extensions/test_api --disable-extensions-except\u003d/usr/local/tmp/tast/chrome_session/extensions/test_api --remote-debugging-port\u003d0 --enable-experimental-extension-apis --whitelisted-extension-id\u003dbehllobkkfkfnphdnhnkndlbkcpglgmj --load-extension\u003d/usr/local/tmp/tast/run_tmp/tast_test_api_extension.859472090/extensions/test_api --disable-extensions-except\u003d/usr/local/tmp/tast/run_tmp/tast_test_api_extension.859472090/extensions/test_api\n2021-10-25T04:46:51.414888Z [04:46:49.771] Waiting for Chrome to write its debugging port to /tmp/lacros648598812/DevToolsActivePort\n2021-10-25T04:46:51.418863Z [04:46:49.775] Connecting to browser at ws://localhost:35491/devtools/browser/9efe504a-ba0d-47f9-9416-07c059a44453\n2021-10-25T04:46:51.427433Z [04:46:49.783] Creating new page with URL about:blank\n2021-10-25T04:46:51.446701Z [04:46:49.801] Connecting to Chrome target 6935BB86431E46F0B95A5D97BD0A119A\n2021-10-25T04:46:51.703648Z Completed test lacros.Basic.unstable in 4.316s with 0 error(s)\n\nThat\u0027s how I concluded it is passing, am I missing something?\n\nI rarely land CLs at the OS side, so I\u0027m not very familiar with the development tools in general, is there a better tool or something that helps monitor the status of an informational test?",
+      "parentUuid": "623c5215_7dcb5ee3",
+      "range": {
+        "startLine": 13,
+        "startChar": 55,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "ee4c8473ac4a62ba7f5265c4185d71d97f04c41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9a37e10a_c911abf8",
