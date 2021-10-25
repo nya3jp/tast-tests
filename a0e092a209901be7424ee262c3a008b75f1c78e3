@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbbb998e_0f3e63d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-25T16:19:50Z",
+      "side": 1,
+      "message": "That\u0027s a bit short, I think. External contributors don\u0027t have access to that bug, and even for internal contributors it adds extra steps. It would be good to explain in more details what the CL does (or more importantly *why*)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "a0e092a209901be7424ee262c3a008b75f1c78e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac09c44e_dc0d75c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-25T16:19:50Z",
+      "side": 1,
+      "message": "nit: it\u0027s good to give the exact command, easier to replicate for readers.\n\ntast run ...",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "a0e092a209901be7424ee262c3a008b75f1c78e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "79bcdc06_80e4162b",
