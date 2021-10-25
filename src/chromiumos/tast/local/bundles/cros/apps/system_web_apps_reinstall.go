@@ -28,7 +28,7 @@ func init() {
 		},
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Name:              "default_enabled_apps_stable",
 			Val:               []chrome.Option{},
