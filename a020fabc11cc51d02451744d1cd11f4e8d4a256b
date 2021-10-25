@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01d1fe12_f4abf3f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-10-25T06:17:13Z",
+      "side": 1,
+      "message": "FWIW,\n  a.WriteFile(ctx, androidPath, expected)\n\nin L71 of the original file succeeds without inserting a sleep if we remove\n  os.Remove(crosPath)\n\nin L66, or replace it with\n  ioutil.WriteFile(crosPath, []byte(\"stale-data\"), 0666).\n\nSo, os.Remove(crosPath) seems to trigger the adb push failure.",
+      "parentUuid": "dccb93cf_7fbf07bf",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "a020fabc11cc51d02451744d1cd11f4e8d4a256b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b9fdfc5_86253161",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
         "patchSetId": 2
