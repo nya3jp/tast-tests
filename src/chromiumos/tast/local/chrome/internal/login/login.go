@@ -83,6 +83,11 @@ func WaitForOOBEConnection(ctx context.Context, sess *driver.Session) (*driver.C
 	return WaitForOOBEConnectionWithPrefix(ctx, sess, oobePrefix)
 }
 
+// WaitForOOBEConnectionToBeDismissed waits for the OOBE page to be dismissed.
+func WaitForOOBEConnectionToBeDismissed(ctx context.Context, sess *driver.Session) error {
+	return waitForPageWithPrefixToBeDismissed(ctx, sess, oobePrefix)
+}
+
 // WaitForOOBEConnectionWithPrefix establishes a connection to the OOBE page matching the specified prefix.
 func WaitForOOBEConnectionWithPrefix(ctx context.Context, sess *driver.Session, prefix string) (*driver.Conn, error) {
 	testing.ContextLog(ctx, "Finding OOBE DevTools target")

@@ -75,7 +75,7 @@ func PasswordFieldFinder(ctx context.Context, tconn *chrome.TestConn, username s
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to compile regexp for name attribute")
 	}
-	return nodewith.Role(role.TextField).Attribute("name", r), nil
+	return nodewith.Role(role.TextField).Attribute("name", r).Attribute("placeholder", "Password"), nil
 }
 
 // WaitForPasswordField waits for the password text field for a given user pod to appear in the UI.
