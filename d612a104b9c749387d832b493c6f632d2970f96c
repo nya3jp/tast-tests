@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa908e5_a20eebbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-25T19:51:05Z",
+      "side": 1,
+      "message": "Still LGTM though I have a couple of questions.",
+      "revId": "d612a104b9c749387d832b493c6f632d2970f96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc2c4f24_68202442",
+        "filename": "src/chromiumos/tast/local/videocuj/youtube_web.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-10-25T19:51:05Z",
+      "side": 1,
+      "message": "Why did the order of this switch with respect to PS8?",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 4
+      },
+      "revId": "d612a104b9c749387d832b493c6f632d2970f96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
