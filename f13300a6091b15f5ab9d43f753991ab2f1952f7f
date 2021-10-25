@@ -16,6 +16,70 @@
       "message": "Hi Kyle,\nHow do you feel about making the logic of ShowWithRetry() the same as Show(), AFAICT the logic should the same?\n\nAs for the reasoning, I am trying to find out why crrev/c/3226293 is failing CQ, and it seems to be with Show/ ShowWithRetry. ",
       "revId": "f13300a6091b15f5ab9d43f753991ab2f1952f7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61df40b7_00777dd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-25T21:45:39Z",
+      "side": 1,
+      "message": "I think this doesn\u0027t quite work out, because of the nested polling. quicksettings.Show includes `ui.WithTimeout(uiTimeout).WaitUntilExists(...)`, so I don\u0027t think ShowWithRetry\u0027s poll will ever execute more than once with a 10 second timeout. The interval gets a bit messed up here as well (ShowWithRetry clicks then checks once per second).\n\nIf you want to get rid of LeftClickUntil, you\u0027d probably want to copy waht quicksettings.Show is doing into this poll.\n\nThe CQ failures don\u0027t seem to indicate an issue with ShowWithRetry/LeftClickUntil functionality as far as I can tell, though. The root error in the trace is:\n```\ncdp.Runtime: CallFunctionOn: rpcc: the connection is closing\n```\nhttps://ci.chromium.org/ui/p/chromium/builders/try/chromeos-amd64-generic-rel/978044/test-results\n\nThis is not normal and often indicates a crash (since the connection is lost to Chrome or the test extension). I think the tests could be catching a bug there.\n\nAlso not seeing such errors in recent stainless results:\nhttps://stainless.corp.google.com/search?view\u003dcluster\u0026first_date\u003d2021-10-19\u0026last_date\u003d2021-10-25\u0026test\u003dtast.quicksettings.OpenSettings%7Ctast.quicksettings.ManagedDeviceInfo\u0026status\u003dGOOD\u0026status\u003dWARN\u0026status\u003dFAIL\u0026status\u003dERROR\u0026status\u003dABORT\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dtrue\u0026exclude_non_production\u003dfalse",
+      "parentUuid": "6b110a68_aa7ef9b5",
+      "revId": "f13300a6091b15f5ab9d43f753991ab2f1952f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ca35022_cbab4fbf",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-25T21:45:39Z",
+      "side": 1,
+      "message": "In the error case here (which is what ShowWithRetry is dealing with), we will wait 10 seconds (uiTimeout), which will exceed the polling timeout you\u0027ve added.\n\nShowWithRetry tries again more quickly than this (1 second interval).",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "f13300a6091b15f5ab9d43f753991ab2f1952f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19483171_e6a122df",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/quicksettings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-25T21:45:39Z",
+      "side": 1,
+      "message": "`Show` implicitly takes longer than this in the failure case, so I don\u0027t think this will ever be polled more than once (and possibly the context timeout will be hit prior to that).",
+      "range": {
+        "startLine": 134,
+        "startChar": 34,
+        "endLine": 134,
+        "endChar": 50
+      },
+      "revId": "f13300a6091b15f5ab9d43f753991ab2f1952f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
