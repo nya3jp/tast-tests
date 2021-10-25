@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e09b5c5_cbd2368e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-10-25T03:45:09Z",
+      "side": 1,
+      "message": "Do you know why this is not affected by the cache issue?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "a020fabc11cc51d02451744d1cd11f4e8d4a256b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b9fdfc5_86253161",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1221932
+      },
+      "writtenOn": "2021-10-25T03:45:09Z",
+      "side": 1,
+      "message": "What is the threshold for the duration until the cache can be invalidated?",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "a020fabc11cc51d02451744d1cd11f4e8d4a256b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
