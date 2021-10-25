@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a3b6843a_7ed26dbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-10-25T14:11:19Z",
+      "side": 1,
+      "message": "Yes, done",
+      "parentUuid": "9aa882fe_4479803b",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "35c2a0c2_e2eda315",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d38b9e49_61a517fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-10-25T14:11:19Z",
+      "side": 1,
+      "message": "I don\u0027t think it is possible here because `m` is not available outside of the if. Please let me know if it would be preferable to split the assignment instead, e.g.\n```\nm, err :\u003d ...\nif err !\u003d nil {\n  ...\n}\nif m !\u003d mode {\n  ...\n}\n```\nThanks!",
+      "parentUuid": "19f3838c_0ca9e7a4",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 8
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b3793d9_b7c1887f",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-10-19T23:58:12Z",
       "side": 1,
       "message": "Same as above, let\u0027s find a better word here, there isn\u0027t any \"instability\" you\u0027re waiting on; also comments...",
+      "range": {
+        "startLine": 242,
+        "startChar": 74,
+        "endLine": 242,
+        "endChar": 80
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e7bc97a_9cc0e627",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-10-25T14:11:19Z",
+      "side": 1,
+      "message": "Just realized that this function is unnecessary, removed.",
+      "parentUuid": "5b3793d9_b7c1887f",
       "range": {
         "startLine": 242,
         "startChar": 74,
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5ac5c41_09631278",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-10-25T14:11:19Z",
+      "side": 1,
+      "message": "Function is removed.",
+      "parentUuid": "57f6d865_e667c039",
+      "range": {
+        "startLine": 255,
+        "startChar": 22,
+        "endLine": 255,
+        "endChar": 32
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97cc4be1_7e3d8607",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-10-19T23:58:12Z",
       "side": 1,
       "message": "if err !\u003d nil || len \u003d\u003d 0 {\n   return off, err\n}",
+      "range": {
+        "startLine": 288,
+        "startChar": 1,
+        "endLine": 294,
+        "endChar": 2
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8adaf7ca_0ee1fcd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-10-25T14:11:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97cc4be1_7e3d8607",
       "range": {
         "startLine": 288,
         "startChar": 1,
@@ -173,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c1e28b_a1b21783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-10-25T14:11:19Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "d1b98dc2_3c2956f1",
+      "range": {
+        "startLine": 90,
+        "startChar": 36,
+        "endLine": 90,
+        "endChar": 42
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abadfd2e_450dca53",
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d266aeba_f4fc7652",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-10-25T14:11:19Z",
+      "side": 1,
+      "message": "Done, let me know if it makes any sense, thanks!",
+      "parentUuid": "abadfd2e_450dca53",
+      "range": {
+        "startLine": 269,
+        "startChar": 3,
+        "endLine": 269,
+        "endChar": 84
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a911b037_31bb73ce",
@@ -209,6 +377,30 @@
       "writtenOn": "2021-10-19T23:58:12Z",
       "side": 1,
       "message": "mismatched?",
+      "range": {
+        "startLine": 284,
+        "startChar": 22,
+        "endLine": 284,
+        "endChar": 32
+      },
+      "revId": "381c51a904550e6344e55dde7e4312ccc482d3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1bf15e0_3dc5cb66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-10-25T14:11:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a911b037_31bb73ce",
       "range": {
         "startLine": 284,
         "startChar": 22,
