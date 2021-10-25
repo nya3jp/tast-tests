@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e2efbde_1d084a7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-10-25T02:39:16Z",
+      "side": 1,
+      "message": "ConnectedNamespace disconnects here.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 36
+      },
+      "revId": "57d58accfa5ff741ba7d0e9816bafe1b35face18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
