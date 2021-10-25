@@ -7,19 +7,23 @@ package cryptohome
 import (
 	"context"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
 // authSessionMountParam contains the test parameters which are different
 // between the types of mounts.
 type authSessionMountParam struct {
-	// Specifies the user email with which to login
+	// Specifies the user email with which to login.
 	testUser string
 	// Specifies the password to login with, for kiosk users this is empty.
 	testPass string
-	// Specifies if the user is a kiosk user
+	// Specifies if the user is a kiosk user.
 	isKioskUser bool
+	// Should AuthSession create user.
+	createUser bool
 }
 
 func init() {
@@ -34,16 +38,18 @@ func init() {
 		Params: []testing.Param{{
 			Name: "regular_mount",
 			Val: authSessionMountParam{
-				testUser:    "cryptohome_auth_session_test@chromium.org",
+				testUser:    "cryptohome_test@chromium.org",
 				testPass:    "testPass",
 				isKioskUser: false,
+				createUser:  true,
 			},
 		}, {
 			Name: "kiosk_mount",
 			Val: authSessionMountParam{
-				testUser:    "cryptohome_auth_session_kiosk_test@chromium.org",
+				testUser:    cryptohome.KioskUser,
 				testPass:    "", // Password is derived from username
 				isKioskUser: true,
+				createUser:  true,
 			},
 		}},
 	})
@@ -58,40 +64,35 @@ func init() {
 // 5. Unmount and remove the user
 func AuthSessionMount(ctx context.Context, s *testing.State) {
 	userParam := s.Param().(authSessionMountParam)
-	// Start an Auth session and get an authSessionID.
-	authSessionID, err := cryptohome.StartAuthSession(ctx, userParam.testUser, userParam.isKioskUser)
+
+	cmdRunner := hwseclocal.NewCmdRunner()
+	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
-		s.Fatal("Failed to start Auth session: ", err)
+		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
-	testing.ContextLogf(ctx, "Auth session ID: %s", authSessionID)
+	daemonController := helper.DaemonController()
 
-	if err := cryptohome.AddCredentialsWithAuthSession(ctx, userParam.testUser, userParam.testPass, authSessionID, userParam.isKioskUser); err != nil {
-		s.Fatal("Failed to add credentials with AuthSession: ", err)
+	// Ensure cryptohomed is started and wait for it to be available
+	if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
+		s.Fatal("Failed to ensure cryptohomed: ", err)
 	}
 
-	defer func(ctx context.Context, s *testing.State, testUser string) {
-		// Removing the user now despite if we could authenticate or not.
-		if err := cryptohome.RemoveVault(ctx, testUser); err != nil {
-			s.Fatal("Failed to remove user -: ", err)
+	// Unmount all user vaults before we start.
+	if err := cryptohome.UnmountAll(ctx); err != nil {
+		s.Log("Failed to unmount all before test starts: ", err)
+	}
+
+	// Run AuthSession Mount Flow for creating user.
+	if err := cryptohome.AuthSessionMountFlow(ctx, userParam.isKioskUser, userParam.testUser, userParam.testPass, userParam.createUser); err != nil {
+		s.Fatal("Failed to Mount with AuthSession -: ", err)
+	}
+
+	// Tests to ensure the kiosk users work with the old API.
+	if userParam.isKioskUser {
+		if err := cryptohome.MountKiosk(ctx); err != nil {
+			s.Fatal("Failed to mount kiosk: ", err)
 		}
-		testing.ContextLog(ctx, "User removed")
-	}(ctx, s, userParam.testUser)
-
-	// Authenticate the same AuthSession using authSessionID.
-	// If we cannot authenticate, do not proceed with mount and unmount.
-	if err := cryptohome.AuthenticateAuthSession(ctx, userParam.testPass, authSessionID, userParam.isKioskUser); err != nil {
-		s.Fatal("Failed to authenticate with AuthSession: ", err)
-	}
-	testing.ContextLog(ctx, "User authenticated successfully")
-
-	// Mounting with AuthSession now.
-	if err := cryptohome.MountWithAuthSession(ctx, authSessionID, userParam.isKioskUser); err != nil {
-		s.Fatal("Failed to mount user -: ", err)
-	}
-	testing.ContextLog(ctx, "User mounted successfully")
-
-	// Unmounting user vault.
-	if err := cryptohome.UnmountVault(ctx, userParam.testUser); err != nil {
-		s.Fatal("Failed to unmount vault user -: ", err)
+		// Unmount Vault.
+		defer cryptohome.UnmountVault(ctx, cryptohome.KioskUser)
 	}
 }
