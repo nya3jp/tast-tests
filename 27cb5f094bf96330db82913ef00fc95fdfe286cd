@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d2c8f4b_eb4a9885",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1423826
+      },
+      "writtenOn": "2021-10-25T15:21:27Z",
+      "side": 1,
+      "message": "Thanks for submitting Hiro. This saves a noticeable amount of time when doing back to back video encode experiments. Sorry about my duplicate change. ",
+      "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "4ed47550_74eb7da9",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
@@ -20,10 +38,10 @@
         "endChar": 90
       },
       "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e294d81a_da634e84",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
@@ -44,10 +62,10 @@
         "endChar": 90
       },
       "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c648274a_02430c31",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
@@ -68,8 +86,24 @@
         "endChar": 90
       },
       "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf228a3_b277a1e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1423826
+      },
+      "writtenOn": "2021-10-25T15:21:27Z",
+      "side": 1,
+      "message": "Remove frame-parallel? From `vpxdec --help`, \"--frame-parallel Frame parallel decode (ignored)\".",
+      "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
