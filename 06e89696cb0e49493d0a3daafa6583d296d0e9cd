@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b71eee_93457140",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-25T12:27:55Z",
+      "side": 1,
+      "message": "I prefer to don\u0027t to merge files into a wrong folder in the first place.",
+      "parentUuid": "9e4c8d86_2c2690fb",
+      "revId": "06e89696cb0e49493d0a3daafa6583d296d0e9cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3aab8724_c7fb2418",
