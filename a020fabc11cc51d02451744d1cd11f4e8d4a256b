@@ -168,6 +168,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a4647c_7e910208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2021-10-25T10:13:58Z",
+      "side": 1,
+      "message": "I see. Thanks!",
+      "parentUuid": "e197607f_cc5c8e04",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "a020fabc11cc51d02451744d1cd11f4e8d4a256b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b9fdfc5_86253161",
