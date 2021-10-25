@@ -16,6 +16,24 @@
       "message": "Now that there\u0027s no pipe, you should just be able to use ctx, \"modetest\", \"-c\"",
       "revId": "306458b6d82603c80f7aa659679ee04de1996ee6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc393abd_92a0517e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-10-25T06:30:10Z",
+      "side": 1,
+      "message": "Right, thanks for catching this!",
+      "parentUuid": "954d0479_90b957d2",
+      "revId": "306458b6d82603c80f7aa659679ee04de1996ee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
