@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86b25eb_991262b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/nfl.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-10-25T20:40:32Z",
+      "side": 1,
+      "message": "Add a TODO bug if any for record.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "9bd2c564e75b1c94d607d0e838d9d7706b8fe650",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
