@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9bdc3f1_21ab9d0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/record_full_screen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-10-25T18:10:58Z",
+      "side": 1,
+      "message": "it makes sure it enters record mode, so we should keep this, no?",
+      "parentUuid": "0a20c15b_a6736307",
+      "revId": "def8fdfeae940b604b16120901318ee369e27678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c2ab64d_1b735dab",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/record_partial_screen.go",
         "patchSetId": 5
@@ -48,6 +66,30 @@
       "writtenOn": "2021-10-25T16:30:58Z",
       "side": 1,
       "message": "q: I guess this is the snipit / printscreen key which doesn\u0027t exist on all phsyical keyboards. I thought the keyboard created by input might make it avaialbe for all, but maybe it enters overview on some devices? Would polling and pressing it multiple times help fix the issue? There are also other shortcuts for capture mode, i think they are avaiable to all default chromeos keyboards.\n\nhttps://screenshot.googleplex.com/9CeXujZNMhXBT7E",
+      "range": {
+        "startLine": 53,
+        "startChar": 30,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "def8fdfeae940b604b16120901318ee369e27678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5202c317_e72868ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/record.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-10-25T18:10:58Z",
+      "side": 1,
+      "message": "Acked, thanks!",
+      "parentUuid": "66f5a966_14d6fa39",
       "range": {
         "startLine": 53,
         "startChar": 30,
