@@ -70,6 +70,30 @@
       },
       "revId": "5122841c9723788802c8fa35001c05c85618928f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "030083f1_5e7dd298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-10-25T08:50:46Z",
+      "side": 1,
+      "message": "I think it’s because if the interval is too short, it will retry too many times during downtime.\nTwo minutes is a conservative time. \nIf you want to adjust, you can add parameters to override it.",
+      "parentUuid": "f8710841_ea2526ce",
+      "range": {
+        "startLine": 248,
+        "startChar": 25,
+        "endLine": 248,
+        "endChar": 81
+      },
+      "revId": "5122841c9723788802c8fa35001c05c85618928f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
