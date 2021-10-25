@@ -169,7 +169,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		if fromMode != fwCommon.BootModeNormal {
 			hasSerialAP = ms.hasSerialAPFirmware(ctx)
 		}
-		if err := ms.powerOff(ctx); err != nil {
+		if err := ms.PowerOff(ctx); err != nil {
 			return errors.Wrap(err, "powering off DUT")
 		}
 		if err := h.Servo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
@@ -726,7 +726,7 @@ func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxSt
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
 	}
-	if err := ms.powerOff(ctx); err != nil {
+	if err := ms.PowerOff(ctx); err != nil {
 		return errors.Wrap(err, "powering off DUT")
 	}
 	if err := h.Servo.SetUSBMuxState(ctx, usbMux); err != nil {
@@ -738,8 +738,8 @@ func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxSt
 	return nil
 }
 
-// powerOff safely powers off the DUT with the "poweroff" command, then waits for the DUT to be unreachable.
-func (ms *ModeSwitcher) powerOff(ctx context.Context) error {
+// PowerOff safely powers off the DUT with the "poweroff" command, then waits for the DUT to be unreachable.
+func (ms *ModeSwitcher) PowerOff(ctx context.Context) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
@@ -805,4 +805,24 @@ func (ms *ModeSwitcher) hasSerialAPFirmware(ctx context.Context) bool {
 	}
 	// The default is enabled.
 	return true
+}
+
+// WaitForPowerState polls for DUT to get to a specific powerstate
+func (ms *ModeSwitcher) WaitForPowerState(ctx context.Context, powerState string) error {
+	// Try reading the power state from the EC.
+	err := testing.Poll(ctx, func(c context.Context) error {
+		currPowerState, err := ms.Helper.Servo.GetECSystemPowerState(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if currPowerState != powerState {
+			return errors.Errorf("Power state = %s", currPowerState)
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout: powerStateTimeout, Interval: 250 * time.Millisecond})
+	if err == nil {
+		return nil
+	}
+	return errors.Errorf("failed to get %v power state: %s", powerState, err)
 }

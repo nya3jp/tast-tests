@@ -939,3 +939,13 @@ func (s *Servo) RequireDebugHeader(ctx context.Context) error {
 	}
 	return nil
 }
+
+// OpenLid sends the ec command to simulate DUT lid opening
+func (s *Servo) OpenLid(ctx context.Context) error {
+	return s.SetStringAndCheck(ctx, LidOpen, string(LidOpenYes))
+}
+
+// CloseLid sends the ec command to simulate DUT lid closing
+func (s *Servo) CloseLid(ctx context.Context) error {
+	return s.SetStringAndCheck(ctx, LidOpen, string(LidOpenNo))
+}

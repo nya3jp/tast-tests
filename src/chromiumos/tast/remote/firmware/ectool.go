@@ -10,10 +10,12 @@ package firmware
 import (
 	"context"
 	"regexp"
+	"strconv"
 
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
+	"chromiumos/tast/testing"
 )
 
 // ECToolName specifies which of the many Chromium EC based MCUs ectool will
@@ -26,6 +28,12 @@ const (
 	ECToolNameMain ECToolName = "cros_ec"
 	// ECToolNameFingerprint selects the FPMCU using cros_fp.
 	ECToolNameFingerprint ECToolName = "cros_fp"
+)
+
+// ectool command consts
+const (
+	GetBacklight string = "pwmgetkblight"
+	SetBacklight string = "pwmsetkblight"
 )
 
 // ECTool allows for interaction with the host command `ectool`.
@@ -41,9 +49,11 @@ func NewECTool(d *dut.DUT, name ECToolName) *ECTool {
 
 // Regexps to capture values outputted by ectool version.
 var (
-	reFirmwareCopy = regexp.MustCompile(`Firmware copy:\s*(RO|RW)`)
-	reROVersion    = regexp.MustCompile(`RO version:\s*(\S+)\s`)
-	reRWVersion    = regexp.MustCompile(`RW version:\s*(\S+)\s`)
+	reFirmwareCopy        = regexp.MustCompile(`Firmware copy:\s*(RO|RW)`)
+	reROVersion           = regexp.MustCompile(`RO version:\s*(\S+)\s`)
+	reRWVersion           = regexp.MustCompile(`RW version:\s*(\S+)\s`)
+	reKBBacklight         = regexp.MustCompile(`Current keyboard backlight percent:.*(\d+)`)
+	reKBBacklightDisabled = regexp.MustCompile(`Keyboard backlight disabled`)
 )
 
 // Command return the prebuilt ssh Command with options and args applied.
@@ -80,4 +90,38 @@ func (ec *ECTool) Version(ctx context.Context) (string, error) {
 		return "", errors.Errorf("failed to match regexp %s in ectool version output: %s", reActiveFWVersion, output)
 	}
 	return string(match[1]), nil
+}
+
+// SetKBBacklight sets the DUT keyboards backlight to the given value (0 - 100)
+func (ec *ECTool) SetKBBacklight(ctx context.Context, percent int) error {
+	stringPercent := strconv.Itoa(percent)
+	testing.ContextLog(ctx, "Setting keyboard backlight to: ", stringPercent)
+	_, err := ec.Command(ctx, SetBacklight, stringPercent).Output(ssh.DumpLogOnError)
+	if err != nil {
+		return errors.Wrapf(err, "running 'ectool %v' on DUT", SetBacklight)
+	}
+	return nil
+}
+
+// GetKBBacklight gets the DUT keyboards backlight value in percent (0 - 100)
+func (ec *ECTool) GetKBBacklight(ctx context.Context) (int, error) {
+	testing.ContextLog(ctx, "Getting current keyboard backlight percent")
+	output, err := ec.Command(ctx, GetBacklight).Output(ssh.DumpLogOnError)
+	if err != nil {
+		return 0, errors.Wrapf(err, "running 'ectool %v' on DUT", GetBacklight)
+	}
+	percentMatch := reKBBacklight.FindSubmatch(output)
+	disabledMatch := reKBBacklightDisabled.FindSubmatch(output)
+	if len(percentMatch) == 0 && len(disabledMatch) == 0 {
+		return 0, errors.Errorf("did not find backlight value in 'ectool %v' output: %v", GetBacklight, output)
+	} else if len(percentMatch) != 0 {
+		return strconv.Atoi(string(percentMatch[1]))
+	}
+	return 0, nil // KB backlight is disabled
+}
+
+// HasKBBacklight checks if the DUT keyboards has backlight functionality
+func (ec *ECTool) HasKBBacklight(ctx context.Context) bool {
+	_, err := ec.Command(ctx, GetBacklight).Output()
+	return err == nil
 }
