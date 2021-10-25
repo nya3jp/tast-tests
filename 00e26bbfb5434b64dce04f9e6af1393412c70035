@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd2c16e6_634ed114",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-25T00:52:29Z",
+      "side": 1,
+      "message": "f",
+      "revId": "00e26bbfb5434b64dce04f9e6af1393412c70035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c9efe2_93fa23ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/search_drive.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-25T00:52:29Z",
+      "side": 1,
+      "message": "it is usually called files.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "00e26bbfb5434b64dce04f9e6af1393412c70035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "789cd0e7_8eae8986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/search_drive.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-25T00:52:29Z",
+      "side": 1,
+      "message": "Here it is only testing folder searching. We need to search other types of files as well. \nIn addition, we also need to verify the file icon as well.",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 115,
+        "endChar": 27
+      },
+      "revId": "00e26bbfb5434b64dce04f9e6af1393412c70035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4f90a4_0c5df33b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-25T00:52:29Z",
+      "side": 1,
+      "message": "f.ui",
+      "range": {
+        "startLine": 311,
+        "startChar": 2,
+        "endLine": 311,
+        "endChar": 21
+      },
+      "revId": "00e26bbfb5434b64dce04f9e6af1393412c70035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f9630a_0bdb9768",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/uiwrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-25T00:52:29Z",
+      "side": 1,
+      "message": "Suggest to define this func in automation.go and wrap it here.",
+      "range": {
+        "startLine": 108,
+        "startChar": 19,
+        "endLine": 108,
+        "endChar": 32
+      },
+      "revId": "00e26bbfb5434b64dce04f9e6af1393412c70035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
