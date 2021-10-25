@@ -46,6 +46,30 @@
       },
       "revId": "5122841c9723788802c8fa35001c05c85618928f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8710841_ea2526ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-25T07:37:18Z",
+      "side": 1,
+      "message": "Thanks. How about interval? Do we need to wait 2 mins for next try?",
+      "parentUuid": "9f6c99c2_505d705f",
+      "range": {
+        "startLine": 248,
+        "startChar": 25,
+        "endLine": 248,
+        "endChar": 81
+      },
+      "revId": "5122841c9723788802c8fa35001c05c85618928f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
