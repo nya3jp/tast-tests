@@ -50,17 +50,13 @@ type embeddedDisplayInfo struct {
 }
 
 func isPrivacyScreenSupported(ctx context.Context) (bool, error) {
-	cmd := "modetest -c | grep 'privacy-screen'"
+	cmd := "modetest -c"
 	b, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to run modetest command")
 	}
 
-	if string(b) != "" {
-		return true, nil
-	}
-
-	return false, nil
+	return strings.Contains(string(b), "privacy-screen"), nil
 }
 
 func isPrivacyScreenEnabled(ctx context.Context) (bool, error) {
