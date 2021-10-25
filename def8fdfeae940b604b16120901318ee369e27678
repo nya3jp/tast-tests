@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fc525e4_95c6954c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/record_full_screen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-25T18:30:01Z",
+      "side": 1,
+      "message": "Oh I see, I got thought EnsureRecordModeActivated would enter recording mode as well.\n\nWould EnsureCaptureModeActivated make sense instead?",
+      "parentUuid": "d9bdc3f1_21ab9d0a",
+      "revId": "def8fdfeae940b604b16120901318ee369e27678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c2ab64d_1b735dab",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/record_partial_screen.go",
         "patchSetId": 5
