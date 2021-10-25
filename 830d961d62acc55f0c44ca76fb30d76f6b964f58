@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58163713_5d71c18f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-25T03:55:41Z",
+      "side": 1,
+      "message": "You do not need this func, just uiauto.Combine will do.",
+      "range": {
+        "startLine": 358,
+        "startChar": 36,
+        "endLine": 358,
+        "endChar": 67
+      },
+      "revId": "830d961d62acc55f0c44ca76fb30d76f6b964f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
