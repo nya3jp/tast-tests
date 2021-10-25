@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1facfe21_23f9de71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002983
+      },
+      "writtenOn": "2021-10-25T07:44:40Z",
+      "side": 1,
+      "message": "I think it\u0027s not a data cache but a directory cache issue.  The lines from 58-61 are writing and reading data, which fuse can handle without issue.  The problem here is the call to os.Remove() on line 67, which will delete the file on the chrome os side without the knowledge of the arcvm kernel. \n\nIn the bad case:\n\n* An entry with the exact name exists in the arcvm kernel directory entry cache.\n* The arcvm kernel sends an open request for the entry.\n* The open request fails on the virtio-fs side because the file is removed.\n\nIn the good case where a delay longer than the cache timeout is inserted:\n\n* The arcvm kernel notices that its cached directory entries are stale and sends a lookup request for the path.\n* The lookup request fails because the file has been deleted.\n* The arcvm kernel sends a create request for the path, which then succeeds.\n\nThere are a few ways we can fix this:\n\n* Insert a timeout in the test (this CL).\n* Delete the file from the android side.  This will also remove the cached entry in the arcvm kernel.\n* Set the timeout to an even smaller value (10 ms?).  This will not fix the underlying race but will make it much harder to trigger.\n* Don\u0027t allow directory entry caching.  Data caching and directory entry caching are 2 separate options but we currently use the same setting for both in the virtiofs server.  We can add a new type of cache policy that only allows data caching for a short time but not directory entry caching.",
+      "parentUuid": "00a1ed37_86db0135",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "a020fabc11cc51d02451744d1cd11f4e8d4a256b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b9fdfc5_86253161",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/downloads.go",
         "patchSetId": 2
