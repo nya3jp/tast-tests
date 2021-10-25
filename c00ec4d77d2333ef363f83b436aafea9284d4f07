@@ -117,6 +117,24 @@
       "parentUuid": "a0c0cadf_847c11a1",
       "revId": "c00ec4d77d2333ef363f83b436aafea9284d4f07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "875d5030_a110c32b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-10-25T10:03:54Z",
+      "side": 1,
+      "message": "We can create a new parameter and marked informational to handle the unstable devices. A normal way is marking those boards not to run in primary test and put all boards under parameter and all are informational.",
+      "parentUuid": "78b4b390_1cb3f8af",
+      "revId": "c00ec4d77d2333ef363f83b436aafea9284d4f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
