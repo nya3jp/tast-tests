@@ -33,6 +33,24 @@
       "message": "I had the same idea. \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2060571\n\nMy concern was it affects the metrics in performance tests.\nI would be fine to try this though.",
       "revId": "a0176f7647c39348995cb76932c6e13f67c35bdf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "892fc50b_85f496e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111649
+      },
+      "writtenOn": "2021-10-25T13:56:21Z",
+      "side": 1,
+      "message": "For this change I tried to keep it as simple as possible, but your approach is definitely better. On most machines I\u0027ve been running --threads\u003d4 to match nproc.",
+      "parentUuid": "c6df4979_79442737",
+      "revId": "a0176f7647c39348995cb76932c6e13f67c35bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
