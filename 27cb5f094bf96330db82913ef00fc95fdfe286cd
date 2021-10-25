@@ -104,6 +104,30 @@
       "message": "Remove frame-parallel? From `vpxdec --help`, \"--frame-parallel Frame parallel decode (ignored)\".",
       "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdcc34f6_632c957b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-25T15:34:41Z",
+      "side": 1,
+      "message": "I had forgotten about this CL \n\nWe had a parallel discussion about how Perf tests run one\nafter each other might affect the results (by leaving the\nmachine \"hot\"), and also discussed if we should do sth\ngeneric (i.e. have a \"preamble\" to every perf tests where\nwe \"wait until the machine cools down\") or if we should\ndo that at the *Perf test level. \nIf the latter, then e.g. https://crrev.com/c/2981356 \nshould do the trick. Could we use something similar here?\nI think the idea of this CL is good and we should go for\nit, it\u0027s just a matter of not affecting the tests using\nit.",
+      "parentUuid": "c648274a_02430c31",
+      "range": {
+        "startLine": 70,
+        "startChar": 84,
+        "endLine": 70,
+        "endChar": 90
+      },
+      "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
