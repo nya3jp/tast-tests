@@ -49,18 +49,11 @@ type embeddedDisplayInfo struct {
 	PrivacyScreenSupported bool `json:"privacy_screen_supported"`
 }
 
-func isPrivacyScreenSupported(ctx context.Context) (bool, error) {
-	cmd := "modetest -c | grep 'privacy-screen'"
-	b, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
-	if err != nil {
-		return false, errors.Wrap(err, "failed to run modetest command")
-	}
+func isPrivacyScreenSupported(ctx context.Context) bool {
+	cmd := "modetest -c | grep 'privacy-screen' || true"
+	b, _ := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
 
-	if string(b) != "" {
-		return true, nil
-	}
-
-	return false, nil
+	return string(b) != ""
 }
 
 func isPrivacyScreenEnabled(ctx context.Context) (bool, error) {
@@ -74,10 +67,7 @@ func isPrivacyScreenEnabled(ctx context.Context) (bool, error) {
 }
 
 func verifyEmbeddedDisplayInfo(ctx context.Context, EDP embeddedDisplayInfo) error {
-	privacyScreenSupported, err := isPrivacyScreenSupported(ctx)
-	if err != nil {
-		return err
-	}
+	privacyScreenSupported := isPrivacyScreenSupported(ctx)
 	if privacyScreenSupported != EDP.PrivacyScreenSupported {
 		return errors.Errorf("failed. PrivacyScreenSupported doesn't match: got %v; want %v", EDP.PrivacyScreenSupported, privacyScreenSupported)
 	}
