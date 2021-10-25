@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fa914c3_87917c9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-10-25T20:55:49Z",
+      "side": 1,
+      "message": "Where does it test the opposite flow?",
+      "revId": "a03707cf1ee8dc5312cbe9923342158dbab03d0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1709f16b_1426efce",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 2
