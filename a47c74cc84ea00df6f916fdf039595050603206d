@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a35433f0_e7f4e908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2021-10-25T20:01:41Z",
+      "side": 1,
+      "message": "Should this be \"upload_var_seccomp_proc_pid_syscall\u003dbrk\"? We should know the name (even if the number is different on different platforms)",
+      "range": {
+        "startLine": 130,
+        "startChar": 43,
+        "endLine": 130,
+        "endChar": 80
+      },
+      "revId": "a47c74cc84ea00df6f916fdf039595050603206d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
