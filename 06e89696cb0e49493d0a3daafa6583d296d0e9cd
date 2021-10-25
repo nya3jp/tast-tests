@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e4c8d86_2c2690fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-25T10:59:42Z",
+      "side": 1,
+      "message": "Once these CLs are merged, I\u0027ll create another CL just to move the tests to relevant packages.",
+      "parentUuid": "073e5ba3_058fcc39",
+      "revId": "06e89696cb0e49493d0a3daafa6583d296d0e9cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3aab8724_c7fb2418",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-25T09:16:03Z",
       "side": 1,
       "message": "nit: Fatalf",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 10
+      },
+      "revId": "06e89696cb0e49493d0a3daafa6583d296d0e9cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05908a9a_b8ec8665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-25T10:59:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aab8724_c7fb2418",
       "range": {
         "startLine": 149,
         "startChar": 4,
