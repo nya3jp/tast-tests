@@ -11,6 +11,7 @@ This file implements functions to check or switch the DUT's boot mode.
 import (
 	"bytes"
 	"context"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -759,6 +760,10 @@ func (ms *ModeSwitcher) powerOff(ctx context.Context) error {
 	err := testing.Poll(ctx, func(c context.Context) error {
 		powerState, err := ms.Helper.Servo.GetECSystemPowerState(ctx)
 		if err != nil {
+			// This error is temporary
+			if strings.Contains(err.Error(), "No data was sent from the pty") {
+				return err
+			}
 			return testing.PollBreak(err)
 		}
 		if powerState != "G3" && powerState != "S5" {
