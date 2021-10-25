@@ -7,6 +7,7 @@ package servo
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -30,6 +31,19 @@ const (
 // These controls accept only "on" and "off" as values.
 const (
 	ECUARTCapture OnOffControl = "ec_uart_capture"
+)
+
+// Cmd constants for RunECCommand.
+const (
+	// Using with no additional arguments returns current backlight level
+	// If additional int arg (0-100) provided, sets backlight to that level
+	kbLight string = "kblight"
+)
+
+// Pattern expression for RunCommandGetOutput.
+const (
+	reKBBacklight  string = `Keyboard backlight: (\d+)\%`
+	reCheckKBLight string = `Keyboard backlight: \d+\%|Command 'kblight' not found or ambiguous.`
 )
 
 // USBCDataRole is a USB-C data role.
@@ -212,7 +226,7 @@ func (s *Servo) GetKeyRowCol(key string) (int, int, error) {
 
 }
 
-// ECPressKey simulates a keypress on the DUT from the servo using kbpress
+// ECPressKey simulates a keypress on the DUT from the servo using kbpress.
 func (s *Servo) ECPressKey(ctx context.Context, key string) error {
 	row, col, err := s.GetKeyRowCol(key)
 	if err != nil {
@@ -221,4 +235,33 @@ func (s *Servo) ECPressKey(ctx context.Context, key string) error {
 	s.RunECCommand(ctx, fmt.Sprintf("kbpress %d %d 1", col, row))
 	s.RunECCommand(ctx, fmt.Sprintf("kbpress %d %d 0", col, row))
 	return nil
+}
+
+// SetKBBacklight sets the DUT keyboards backlight to the given value (0 - 100).
+func (s *Servo) SetKBBacklight(ctx context.Context, percent int) error {
+	testing.ContextLog(ctx, "Setting keyboard backlight to: ", percent)
+	err := s.RunECCommand(ctx, fmt.Sprintf("%v %v", kbLight, percent))
+	if err != nil {
+		return errors.Wrapf(err, "running '%v %v' on DUT", kbLight, percent)
+	}
+	return nil
+}
+
+// GetKBBacklight gets the DUT keyboards backlight value in percent (0 - 100).
+func (s *Servo) GetKBBacklight(ctx context.Context) (int, error) {
+	testing.ContextLog(ctx, "Getting current keyboard backlight percent")
+	out, err := s.RunECCommandGetOutput(ctx, kbLight, []string{reKBBacklight})
+	if err != nil {
+		return 0, errors.Wrapf(err, "running %v on DUT", kbLight)
+	}
+	return strconv.Atoi(out[0].([]interface{})[1].(string))
+}
+
+// HasKBBacklight checks if the DUT keyboards has backlight functionality.
+func (s *Servo) HasKBBacklight(ctx context.Context) bool {
+	testing.ContextLog(ctx, "Checking if DUT keyboard supports backlight")
+	out, _ := s.RunECCommandGetOutput(ctx, kbLight, []string{reCheckKBLight})
+	expMatch := regexp.MustCompile(reKBBacklight)
+	match := expMatch.FindStringSubmatch(out[0].(string))
+	return match != nil
 }
