@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a34b0f_2fd67f89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-25T00:19:47Z",
+      "side": 1,
+      "message": "Please resolve the merge conflict.\n\nPlease do not submit multiple cls at the same time. I got a bit confused when reviewing them. Let\u0027s do it one by one.",
+      "revId": "9a14db3a1487d7b092cda852b6f24f069d6b6752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
