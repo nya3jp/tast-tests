@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58631197_042bc87e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-10-26T13:54:44Z",
+      "side": 1,
+      "message": "Kyle, PTAL.\n\nI wonder if we should have one test (together with lockscreen.PINUnlock) with the bunch of params to handle all the cases:\nset pin in oobe or in settings,\nwith/without autosubmit,\nlock, unlock (and maybe logout, login for certain devices)\n\nwould it be too big?\n\n\n\n",
+      "revId": "d52662790c34e120e11f020605c9852d3b233b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
