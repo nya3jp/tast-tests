@@ -11,7 +11,9 @@ import (
 	"io/ioutil"
 	"path/filepath"
 
-	"chromiumos/tast/local/bundles/cros/session/cmp"
+	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
+
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/session/ownership"
@@ -56,7 +58,7 @@ func RemoteOwnership(ctx context.Context, s *testing.State) {
 	}
 	if retrieved, err := session.RetrieveSettings(ctx, sm); err != nil {
 		s.Fatal("Failed to retrieve settings: ", err)
-	} else if diff := cmp.ProtoDiff(settings, retrieved); diff != "" {
+	} else if diff := cmp.Diff(settings, retrieved, protocmp.Transform()); diff != "" {
 		const diffName = "diff.txt"
 		if err = ioutil.WriteFile(filepath.Join(s.OutDir(), diffName), []byte(diff), 0644); err != nil {
 			s.Error("Failed to write diff: ", err)
@@ -74,7 +76,7 @@ func RemoteOwnership(ctx context.Context, s *testing.State) {
 	}
 	if retrieved, err := session.RetrieveSettings(ctx, sm); err != nil {
 		s.Fatal("Failed to retrieve rekeyed settings: ", err)
-	} else if diff := cmp.ProtoDiff(settings, retrieved); diff != "" {
+	} else if diff := cmp.Diff(settings, retrieved, protocmp.Transform()); diff != "" {
 		const diffName = "diff-rekeyed.txt"
 		if err = ioutil.WriteFile(filepath.Join(s.OutDir(), diffName), []byte(diff), 0644); err != nil {
 			s.Error("Failed to write diff: ", err)
@@ -107,7 +109,7 @@ func RemoteOwnership(ctx context.Context, s *testing.State) {
 	}
 	if retrieved, err := session.RetrieveSettings(ctx, sm); err != nil {
 		s.Fatal("Failed to retrieve user settings: ", err)
-	} else if diff := cmp.ProtoDiff(settings, retrieved); diff != "" {
+	} else if diff := cmp.Diff(settings, retrieved, protocmp.Transform()); diff != "" {
 		const diffName = "diff-user.txt"
 		if err = ioutil.WriteFile(filepath.Join(s.OutDir(), diffName), []byte(diff), 0644); err != nil {
 			s.Error("Failed to write diff: ", err)
