@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee569865_18d17108",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_disk_full_data_survival.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-26T19:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "050127cf_e0b118e8",
+      "range": {
+        "startLine": 167,
+        "startChar": 28,
+        "endLine": 167,
+        "endChar": 33
+      },
+      "revId": "08a4f1e8e6da5ae12f26a21cfa8ecdfd92df5e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b5be31b_cf666563",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-10-19T20:53:04Z",
       "side": 1,
       "message": "any reason we can\u0027t factor this out?",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "08a4f1e8e6da5ae12f26a21cfa8ecdfd92df5e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a902aef1_13ce9bde",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_disk_full_data_survival.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-26T19:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b5be31b_cf666563",
       "range": {
         "startLine": 194,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4511ade8_83c33916",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_disk_full_data_survival.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-26T19:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d289265_5b6d6640",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 0
+      },
+      "revId": "08a4f1e8e6da5ae12f26a21cfa8ecdfd92df5e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09629505_1768b585",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-10-19T20:53:04Z",
       "side": 1,
       "message": "can presumably reuse the factored-out functions for the above",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "08a4f1e8e6da5ae12f26a21cfa8ecdfd92df5e22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ee3dcd_38ac2610",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_disk_full_data_survival.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-26T19:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09629505_1768b585",
       "range": {
         "startLine": 234,
         "startChar": 0,
