@@ -5,7 +5,12 @@
 package policyutil
 
 import (
+	"bytes"
 	"context"
+	"image"
+	"image/color"
+	"image/jpeg"
+	"os"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
@@ -99,4 +104,24 @@ func Refresh(ctx context.Context, tconn *chrome.TestConn) error {
 	defer st.End()
 
 	return tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.refreshEnterprisePolicies)()`, nil)
+}
+
+// getImgFromFilePath returns bytes of the image with the filePath.
+func getImgFromFilePath(filePath string) ([]byte, error) {
+	f, err := os.Open(filePath)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	image, _, err := image.Decode(f)
+	if err != nil {
+		return nil, err
+	}
+	buf := new(bytes.Buffer)
+	err = jpeg.Encode(buf, image, nil)
+	if err != nil {
+		return nil, err
+	}
+	imgBytes := buf.Bytes()
+	return imgBytes, nil
 }
