@@ -29,6 +29,9 @@ const (
 
 	binJbd2X64Zip     = "bin_jbd2_x86_64.zip"
 	jbd2EnabledRepros = "jbd2_x86_64.txt"
+
+	binFuseX64Zip     = "bin_fuse_x86_64.zip"
+	fuseEnabledRepros = "fuse_x86_64.txt"
 )
 
 type testParam struct {
@@ -74,6 +77,15 @@ func init() {
 					reprosList:  jbd2EnabledRepros,
 				},
 				ExtraData: []string{binJbd2X64Zip, jbd2EnabledRepros},
+			},
+			{
+				Name: "fuse",
+				Val: testParam{
+					subsystem:   "fuse",
+					binariesZip: binFuseX64Zip,
+					reprosList:  fuseEnabledRepros,
+				},
+				ExtraData: []string{binFuseX64Zip, fuseEnabledRepros},
 			},
 		},
 	})
