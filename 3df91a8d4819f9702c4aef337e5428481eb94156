@@ -84,6 +84,24 @@
       "message": "Hi camera team, can you please review this CL?",
       "revId": "3df91a8d4819f9702c4aef337e5428481eb94156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fcd3cb5_a13ea0c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1143539
+      },
+      "writtenOn": "2021-10-26T06:39:36Z",
+      "side": 1,
+      "message": "Shik is reviewing it.",
+      "parentUuid": "92deaf3d_d0224ec1",
+      "revId": "3df91a8d4819f9702c4aef337e5428481eb94156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
