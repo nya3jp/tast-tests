@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9959baf9_b0230839",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-10-26T12:36:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cec0d8e_db35f186",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "65ebd49dd700bc586f2132d5c1bab824613d2471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e73b53ff_c0aad8b3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-26T11:11:33Z",
       "side": 1,
       "message": "startingPolicies maybe? It should highlighted that it is only set at the start, and later these policies are dropped.",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 14
+      },
+      "revId": "65ebd49dd700bc586f2132d5c1bab824613d2471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a202263_0a6a5ab1",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-10-26T12:36:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18dbde40_b29f1841",
       "range": {
         "startLine": 89,
         "startChar": 1,
