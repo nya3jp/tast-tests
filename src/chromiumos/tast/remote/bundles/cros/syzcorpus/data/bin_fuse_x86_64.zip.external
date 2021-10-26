@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/syzcorpus/bin_fuse_x86_64_20211026.zip",
+  "size": 6275151,
+  "sha256sum": "97c63e56493a4f6209baa706be9bc4cb803b7df713b9267d25f650c116279b0f"
+}
