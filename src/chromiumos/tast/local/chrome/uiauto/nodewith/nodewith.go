@@ -505,11 +505,13 @@ func (f *Finder) nameAttribute(english string, other map[string]string, matchSta
 
 // Name creates a Finder with the specified name.
 func Name(n string) *Finder {
+	panic("use of Name is forbidden")
 	return newFinder().Name(n)
 }
 
 // Name creates a copy of the input Finder with the specified name.
 func (f *Finder) Name(n string) *Finder {
+	panic("use of Name is forbidden")
 	return f.MultilingualName(n, map[string]string{})
 }
 
@@ -525,6 +527,7 @@ func (f *Finder) MultilingualName(english string, other map[string]string) *Find
 
 // NameContaining creates a Finder with a name containing the specified string.
 func NameContaining(n string) *Finder {
+	panic("use of NameContaining is forbidden")
 	return newFinder().NameContaining(n)
 }
 
@@ -545,11 +548,13 @@ func (f *Finder) MultilingualNameContaining(english string, other map[string]str
 
 // NameStartingWith creates a Finder with a name starting with the specified string.
 func NameStartingWith(n string) *Finder {
+	panic("use of NameStartingWith is forbidden")
 	return newFinder().NameStartingWith(n)
 }
 
 // NameStartingWith creates a copy of the input Finder with a name starting with the specified string.
 func (f *Finder) NameStartingWith(n string) *Finder {
+	panic("use of NameStartingWith is forbidden")
 	return f.MultilingualNameStartingWith(n, map[string]string{})
 }
 
@@ -565,6 +570,7 @@ func (f *Finder) MultilingualNameStartingWith(english string, other map[string]s
 
 // NameRegex creates a Finder with a name containing the specified regexp.
 func NameRegex(r *regexp.Regexp) *Finder {
+	panic("use of NameRegex is forbidden")
 	return newFinder().NameRegex(r)
 }
 
