@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a2cbb2d_f61b527c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-26T09:34:22Z",
+      "side": 1,
+      "message": "If you would like to return an error instead, maybe you can rename it to something like \"checkSimilar()\" or \"ensureSimilar()\".\n\nThe term \"similar\" gives me a feeling that it should tell me either \"Yes, it is similar\" or \"No, it is not similar\". However, an error is more like: \"I cannot tell since something went wrong\".",
+      "parentUuid": "d8f3b199_672b39b1",
+      "range": {
+        "startLine": 54,
+        "startChar": 44,
+        "endLine": 54,
+        "endChar": 51
+      },
+      "revId": "edb6d933997467582bb73f96edacb8185e6359e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "aaef24f1_42cf94db",
