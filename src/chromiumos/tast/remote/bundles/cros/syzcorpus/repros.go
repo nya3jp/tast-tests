@@ -26,6 +26,9 @@ const (
 
 	binBlockX64Zip     = "bin_block_x86_64.zip"
 	blockEnabledRepros = "block_x86_64.txt"
+
+	binJbd2X64Zip     = "bin_jbd2_x86_64.zip"
+	jbd2EnabledRepros = "jbd2_x86_64.txt"
 )
 
 type testParam struct {
@@ -62,6 +65,15 @@ func init() {
 					reprosList:  blockEnabledRepros,
 				},
 				ExtraData: []string{binBlockX64Zip, blockEnabledRepros},
+			},
+			{
+				Name: "jbd2",
+				Val: testParam{
+					subsystem:   "jbd2",
+					binariesZip: binJbd2X64Zip,
+					reprosList:  jbd2EnabledRepros,
+				},
+				ExtraData: []string{binJbd2X64Zip, jbd2EnabledRepros},
 			},
 		},
 	})
