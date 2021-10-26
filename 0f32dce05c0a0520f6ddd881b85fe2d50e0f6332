@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54b09845_86396abc",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-26T07:48:27Z",
+      "side": 1,
+      "message": "This is a generated file, please change tast/common/policy/gen/policy_tast_struct_creator.py instead and regenerate the file.",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50c38dd_4ef1d456",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-26T07:48:27Z",
+      "side": 1,
+      "message": "This is not needed",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cfb6746_3c9c6f55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-26T07:48:27Z",
+      "side": 1,
+      "message": "Why not use a table driven test here?\n\ngo/tast-policy-codelab#table-driven-testing",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68740165_30076392",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-26T07:48:27Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "885cc8e3_ab276590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-26T07:48:27Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 9
+      },
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "056c4c1e_44a7d80d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-26T07:48:27Z",
+      "side": 1,
+      "message": "nit: newline before",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54da4406_3ac7a362",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-26T07:48:27Z",
+      "side": 1,
+      "message": "nit: combine the two log statements.",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc52aacb_edaa8f32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-26T07:48:27Z",
+      "side": 1,
+      "message": "nit: newline before",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16a47d0c_0b5aab0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-26T07:48:27Z",
+      "side": 1,
+      "message": "nit: this is not useful",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
