@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "069b9a13_e8dd3e22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-26T16:26:24Z",
+      "side": 1,
+      "message": "Just two nits.",
+      "revId": "29a96a43da31b5c287223c899a949772be96a852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0a889e_f2ba150a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-26T16:26:24Z",
+      "side": 1,
+      "message": "nit: It looks like there was a blank line here that was added at some point - should be removed if possible.",
+      "revId": "29a96a43da31b5c287223c899a949772be96a852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fba943e_d3ac87fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-26T16:26:24Z",
+      "side": 1,
+      "message": "nit: \"unable\" - shouldn\u0027t start with an uppercase.",
+      "revId": "29a96a43da31b5c287223c899a949772be96a852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
