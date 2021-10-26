@@ -33,7 +33,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"wilco", "chrome"},
 		Timeout:      30 * time.Minute,
-		Attr:         []string{"group:enrollment"},
+		Attr:         []string{},
 		ServiceDeps:  []string{"tast.cros.policy.PolicyService"},
 		// Var "servo" is a ServoV4 Type-C device paired with a Servo Micro via the micro USB port.
 		// Servo Micro as usual gets connected to the DUT motherboard debug header and the other cable with
