@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b78aeb7_7aa96a3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-10-26T03:24:32Z",
+      "side": 1,
+      "message": "FYI: To speed up local testing I added an option to cache the raw video file, which can easily save 30s or more when encoding larger resolutions. But with the switch to the new video encoding tests the option to enable this seems to have been lost. I re-added it in crrev.com/c/3244549. It can be enabled locally by changing \u0027cacheExtractedVideo\u0027 at the top of the test case to \u0027true\u0027.",
+      "parentUuid": "5d2c8f4b_eb4a9885",
+      "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ed47550_74eb7da9",
