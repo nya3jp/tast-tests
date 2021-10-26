@@ -144,7 +144,7 @@ func codecProfileToEncodeCodecOption(profile videotype.CodecProfile) (string, er
 }
 
 // RunAccelVideoTest runs all tests in video_encode_accelerator_tests.
-func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestOptions) {
+func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestOptions, cacheExtractedVideo bool) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -164,7 +164,9 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 	if err != nil {
 		s.Fatal("Failed to create a yuv file: ", err)
 	}
-	defer os.Remove(yuvPath)
+	if !cacheExtractedVideo {
+		defer os.Remove(yuvPath)
+	}
 
 	yuvJSONPath, err := encoding.PrepareYUVJSON(ctx, yuvPath,
 		s.DataPath(YUVJSONFileNameFor(opts.webMName)))
@@ -225,7 +227,7 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 // - Capped performance: the specified test video is encoded for 300 frames by the hardware encoder at 30fps.
 // This is used to measure cpu usage and power consumption in the practical case.
 // - Quality performance: the specified test video is encoded for 300 frames and computes the SSIM and PSNR metrics of the encoded stream.
-func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts TestOptions) error {
+func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts TestOptions, cacheExtractedVideo bool) error {
 	const (
 		// Name of the uncapped performance test.
 		uncappedTestname = "MeasureUncappedPerformance"
@@ -256,7 +258,9 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 	if err != nil {
 		s.Fatal("Failed to create a yuv file: ", err)
 	}
-	defer os.Remove(yuvPath)
+	if !cacheExtractedVideo {
+		defer os.Remove(yuvPath)
+	}
 
 	yuvJSONPath, err := encoding.PrepareYUVJSON(ctx, yuvPath,
 		s.DataPath(YUVJSONFileNameFor(opts.webMName)))
