@@ -47,6 +47,29 @@
       },
       "revId": "e82ba9ef006fdd6cb9024d893939a032b76eaf52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4426bb35_9a66cb4f",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-10-26T13:04:32Z",
+      "side": 1,
+      "message": "fixture.LacrosPolicyLoggedIn",
+      "range": {
+        "startLine": 21,
+        "startChar": 12,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "e82ba9ef006fdd6cb9024d893939a032b76eaf52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
