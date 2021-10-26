@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49dc4916_20e5516b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-10-26T21:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c0a889e_f2ba150a",
+      "revId": "29a96a43da31b5c287223c899a949772be96a852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fba943e_d3ac87fb",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-10-26T16:26:24Z",
       "side": 1,
       "message": "nit: \"unable\" - shouldn\u0027t start with an uppercase.",
+      "revId": "29a96a43da31b5c287223c899a949772be96a852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa25cd38_0a58760c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-10-26T21:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fba943e_d3ac87fb",
       "revId": "29a96a43da31b5c287223c899a949772be96a852",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
