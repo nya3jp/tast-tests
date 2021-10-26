@@ -13,8 +13,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/golang/protobuf/proto"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 
 	"chromiumos/policy/enterprise_management"
 	"chromiumos/tast/common/testexec"
@@ -204,15 +204,15 @@ func EnablePeripheralDataAccess(ctx context.Context, keyPath string) error {
 		return errors.Wrap(err, "failed to parse PKCS #12 file")
 	}
 
-	settings := buildTestSettings()
-	if err := session.StoreSettings(ctx, sm, "", privKey, nil, settings); err != nil {
+	want := buildTestSettings()
+	if err := session.StoreSettings(ctx, sm, "", privKey, nil, want); err != nil {
 		return errors.Wrap(err, "failed to store settings")
 	}
 
-	if retrieved, err := session.RetrieveSettings(ctx, sm); err != nil {
+	if got, err := session.RetrieveSettings(ctx, sm); err != nil {
 		return errors.Wrap(err, "failed to retrieve settings")
-	} else if !proto.Equal(retrieved, settings) {
-		return errors.Errorf("unexpected settings retrieved, diff: %s", cmp.Diff(retrieved, settings))
+	} else if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+		return errors.Errorf("settings mismatch (-want +got): %s", diff)
 	}
 
 	return nil

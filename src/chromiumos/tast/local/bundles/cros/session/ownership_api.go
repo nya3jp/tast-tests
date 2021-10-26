@@ -15,9 +15,11 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
+
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/session/cmp"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/session/ownership"
@@ -177,7 +179,7 @@ func OwnershipAPI(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify that there's no diff between sent data and fetched data.
-	if diff := cmp.ProtoDiff(settings, ret); diff != "" {
+	if diff := cmp.Diff(settings, ret, protocmp.Transform()); diff != "" {
 		const diffName = "diff.txt"
 		if err = ioutil.WriteFile(filepath.Join(s.OutDir(), diffName), []byte(diff), 0644); err != nil {
 			s.Error("Failed to write diff: ", err)
