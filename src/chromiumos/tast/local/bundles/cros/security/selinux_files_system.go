@@ -31,11 +31,6 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		s.Error("Failed to enumerate gpu devices: ", err)
 	}
 
-	crosEcIioDevices, err := selinux.IIOSensorDevices()
-	if err != nil {
-		s.Error("Failed to enumerate iio devices: ", err)
-	}
-
 	testArgs := []selinux.FileTestCase{
 		{Path: "/bin", Context: "cros_coreutils_exec", Recursive: true, Filter: selinux.InvertFilterSkipFile(selinux.SkipCoreutilsFile)},
 		{Path: "/bin/bash", Context: "sh_exec"},
@@ -84,8 +79,8 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/sbin/setfiles", Context: "cros_restorecon_exec"},
 		{Path: "/sbin/udevd", Context: "cros_udevd_exec"},
 		{Path: "/sbin/upstart-socket-bridge", Context: "upstart_socket_bridge_exec"},
-		{Path: "/sys", Context: "sysfs.*", Recursive: true, Filter: selinux.IgnorePathsRegex(append(append([]string{
-			"/sys/bus/iio/devices",
+		{Path: "/sys", Context: "sysfs.*", Recursive: true, Filter: selinux.IgnorePathsRegex(append([]string{
+			"/sys/bus/iio/devices", // Remove once iioservice is deployed everywhere.
 			"/sys/class/drm",
 			"/sys/devices/system/cpu",
 			"/sys/fs/cgroup",
@@ -95,7 +90,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 			"/sys/kernel/debug",
 			// we don't have anything special of conntrack files than others. conntrack slab cache changes when connections established or closes, and may cause flakiness.
 			"/sys/kernel/slab/nf_conntrack_.*",
-		}, gpuDevices...), crosEcIioDevices...))},
+		}, gpuDevices...))},
 		{Path: "/sys/fs/cgroup", Context: "cgroup", Recursive: true, Filter: selinux.IgnorePathButNotContents("/sys/fs/cgroup")},
 		{Path: "/sys/fs/cgroup", Context: "tmpfs"},
 		{Path: "/sys/fs/pstore", Context: "pstorefs"},
