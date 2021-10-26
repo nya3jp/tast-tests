@@ -18,6 +18,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -191,6 +192,14 @@ func (fdms *FakeDMS) start(ctx context.Context, p *os.File) error {
 
 // WritePolicyBlob will write the given PolicyBlob to be read by the FakeDMS.
 func (fdms *FakeDMS) WritePolicyBlob(pb *PolicyBlob) error {
+	// For now, enable lacros in all policy tests.
+	// TODO: Set this up on a per test basis.
+	pb.AddPolicies([]policy.Policy{&policy.LacrosAvailability{
+		Val: "side_by_side",
+	}, &policy.LacrosSecondaryProfilesAllowed{
+		Val: true,
+	}})
+
 	pJSON, err := json.Marshal(pb)
 	if err != nil {
 		return errors.Wrap(err, "could not convert policies to JSON")
