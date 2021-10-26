@@ -36,8 +36,8 @@ func BioCryptoInitSuccess(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get recent audit logs: ", err)
 	}
 	for _, l := range auditLogs {
-		if strings.Contains(l, "bio_crypto_init") {
-			s.Fatal("bio_crypto_init warning found in audit logs, check syscall https://chromium.googlesource.com/chromiumos/docs/+/HEAD/constants/syscalls.md: ", l)
+		if strings.Contains(l, "bio_crypto_init") && strings.Contains(l, "SECCOMP") {
+			s.Fatal("bio_crypto_init SECCOMP error found in audit logs, check syscall https://chromium.googlesource.com/chromiumos/docs/+/HEAD/constants/syscalls.md: ", l)
 		}
 	}
 
