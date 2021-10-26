@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
@@ -84,7 +85,9 @@ type fakeDMSFixture struct {
 	fdmsDir string
 	// importState is the path to an existing state file for FakeDMS.
 	importState string
-
+	// startingPolicies holds the starting policies that will be applied. Later it
+	// will be dropped.
+	startingPolicies []policy.Policy
 	// policyUser is the user account that used as policyUser in policy blob. The value is
 	// fakedms.DefaultPolicyUser if policyUserVar is not set.
 	policyUser string
@@ -129,6 +132,11 @@ func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interf
 	if f.policyUserVar != "" {
 		f.policyUser = s.RequiredVar(f.policyUserVar)
 		pb.PolicyUser = f.policyUser
+	}
+
+	// Add the starting policies.
+	if f.startingPolicies != nil {
+		pb.AddPolicies(f.startingPolicies)
 	}
 
 	if err := fdms.WritePolicyBlob(pb); err != nil {
