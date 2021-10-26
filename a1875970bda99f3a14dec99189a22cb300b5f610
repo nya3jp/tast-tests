@@ -126,6 +126,30 @@
       },
       "revId": "a1875970bda99f3a14dec99189a22cb300b5f610",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51aeb9fc_c4cf48bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_unrecoverable_vault.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-26T19:01:20Z",
+      "side": 1,
+      "message": "Added comments on one is in the key/auth material directory and the other is in the actual home dir.",
+      "parentUuid": "b4243ac0_e8f1dedf",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 47
+      },
+      "revId": "a1875970bda99f3a14dec99189a22cb300b5f610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
