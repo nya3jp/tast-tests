@@ -8,6 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -17,7 +19,20 @@ import (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosPolicyLoggedIn",
+		Name:     "fakeDMSWithLacrosEnabled",
+		Desc:     "Fixture for a running FakeDMS with Lacros enabled",
+		Contacts: []string{"mohamedaomar@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl: &fakeDMSFixture{
+			extraPolicies: []policy.Policy{&policy.LacrosAvailability{Val: "side_by_side"}},
+		},
+		SetUpTimeout:    15 * time.Second,
+		ResetTimeout:    5 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.LacrosPolicyLoggedIn,
 		Desc:     "Fixture for a running FakeDMS with lacros",
 		Contacts: []string{"mohamedaomar@google.com", "wtlee@chromium.org", "chromeos-commercial-remote-management@google.com"},
 		Impl: launcher.NewComposedFixture(launcher.Rootfs, func(v launcher.FixtValue, pv interface{}) interface{} {
@@ -40,7 +55,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Parent:          "fakeDMS",
+		Parent:          "fakeDMSWithLacrosEnabled",
 		Vars:            []string{launcher.LacrosDeployedBinary},
 	})
 }
