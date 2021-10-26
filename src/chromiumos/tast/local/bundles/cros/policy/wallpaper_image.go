@@ -5,12 +5,7 @@
 package policy
 
 import (
-	"bytes"
 	"context"
-	"image"
-	"image/color"
-	"image/jpeg"
-	"os"
 	"time"
 
 	"chromiumos/tast/common/fixture"
@@ -46,26 +41,6 @@ func init() {
 		Fixture:      fixture.ChromePolicyLoggedIn,
 		Data:         []string{"wallpaper_image.jpeg"},
 	})
-}
-
-// getImgBytesFromFilePath returns bytes of the image with the filePath.
-func getImgBytesFromFilePath(filePath string) ([]byte, error) {
-	f, err := os.Open(filePath)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-	image, _, err := image.Decode(f)
-	if err != nil {
-		return nil, err
-	}
-	buf := new(bytes.Buffer)
-	err = jpeg.Encode(buf, image, nil)
-	if err != nil {
-		return nil, err
-	}
-	imgBytes := buf.Bytes()
-	return imgBytes, nil
 }
 
 // validateBackground takes a screenshot and check the percentage of the clr in the image, returns error if it's less than expectedPercent%.
@@ -131,7 +106,7 @@ func WallpaperImage(ctx context.Context, s *testing.State) {
 	}
 	defer eds.Stop(ctx)
 
-	imgBytes, err := getImgBytesFromFilePath(s.DataPath("wallpaper_image.jpeg"))
+	imgBytes, err := policyutil.getImgBytesFromFilePath(s.DataPath("wallpaper_image.jpeg"))
 	if err != nil {
 		s.Fatal("Failed to read wallpaper image: ", err)
 	}
