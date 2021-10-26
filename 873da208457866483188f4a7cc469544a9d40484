@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f7855c9_0a7820ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T14:58:13Z",
+      "side": 1,
+      "message": "Is this enough, or should I add some more info?",
+      "parentUuid": "30dc2a6c_d8e86c3b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 57
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f422f76b_81e1ac20",
@@ -98,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b46917fe_f59057ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_n_update_with_nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T14:58:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91693ece_02675007",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 14
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f22ff6b_f0a3e0b0",
@@ -111,6 +159,30 @@
       "writtenOn": "2021-10-26T05:06:50Z",
       "side": 1,
       "message": "I don\u0027t think you need to include nebraska in the test name. \n\nI would also try to match some of the naming schemes of the autotests.\n\nSo have the test name be something like \"Basic\" with a subname \"n2n\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 30
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6601c300_995155e2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_n_update_with_nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T14:58:13Z",
+      "side": 1,
+      "message": "Can I use NToN here? Using a number in the test name feels odd.",
+      "parentUuid": "4f22ff6b_f0a3e0b0",
       "range": {
         "startLine": 27,
         "startChar": 8,
@@ -146,6 +218,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62684425_0f1b9c39",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_n_update_with_nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T14:58:13Z",
+      "side": 1,
+      "message": "The Desc in init should substitute the comment here I think.",
+      "parentUuid": "1955da46_79847061",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2494d4eb_6bc3fd29",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_n_update_with_nebraska.go",
         "patchSetId": 2
@@ -157,6 +253,30 @@
       "writtenOn": "2021-10-26T05:06:50Z",
       "side": 1,
       "message": "no longer the test name",
+      "range": {
+        "startLine": 44,
+        "startChar": 88,
+        "endLine": 44,
+        "endChar": 115
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f63c13e3_83021887",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_n_update_with_nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T14:58:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2494d4eb_6bc3fd29",
       "range": {
         "startLine": 44,
         "startChar": 88,
@@ -261,6 +381,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3bbeef2_ffb2b4ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_n_update_with_nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T14:58:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5533270c_66a146bc",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 84
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25213d29_f341a7ea",
@@ -284,6 +428,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec423c48_4d78991b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_n_update_with_nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T14:58:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25213d29_f341a7ea",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 67
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90d641c1_a88f9288",
@@ -297,6 +465,30 @@
       "writtenOn": "2021-10-26T05:06:50Z",
       "side": 1,
       "message": "Comment",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 44
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3971da82_ed3bf3ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/n_to_n_update_with_nebraska.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T14:58:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90d641c1_a88f9288",
       "range": {
         "startLine": 105,
         "startChar": 3,
@@ -332,6 +524,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba23b3e3_ae2f5035",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T14:58:13Z",
+      "side": 1,
+      "message": "As this information changes with the update, it is hard to decide when to update the cache built. In the test we are building up the connection 1 extra time that could be avoided. Considering the possible complication with the outdated cache, I think it would be too small of a gain.",
+      "parentUuid": "209cd3cf_90f98086",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 0
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4fab6e7_128e0394",
         "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
         "patchSetId": 2
@@ -343,6 +559,30 @@
       "writtenOn": "2021-10-26T05:06:50Z",
       "side": 1,
       "message": "which update files? give examples",
+      "range": {
+        "startLine": 73,
+        "startChar": 35,
+        "endLine": 73,
+        "endChar": 47
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38b73104_1a92ab39",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T14:58:13Z",
+      "side": 1,
+      "message": "Did you mean it like this?",
+      "parentUuid": "a4fab6e7_128e0394",
       "range": {
         "startLine": 73,
         "startChar": 35,
@@ -401,6 +641,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c057d138_e5f27b81",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T14:58:13Z",
+      "side": 1,
+      "message": "I copied over the comments as well. Does it answer your question?",
+      "parentUuid": "c774d9b7_d7ab3e99",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 12
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecfedeb7_662500e4",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T14:58:13Z",
+      "side": 1,
+      "message": "It should be clear with the added comment.",
+      "parentUuid": "cc5825c5_51ffa60c",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 12
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fe85eeb_a0e43490",
         "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
         "patchSetId": 2
@@ -412,6 +700,30 @@
       "writtenOn": "2021-10-26T05:06:50Z",
       "side": 1,
       "message": "why not use testing.poll ?",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 6
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cac3166_58662653",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T14:58:13Z",
+      "side": 1,
+      "message": "It is the copy of the original function. I wanted to edit as little as I can.",
+      "parentUuid": "1fe85eeb_a0e43490",
       "range": {
         "startLine": 126,
         "startChar": 1,
