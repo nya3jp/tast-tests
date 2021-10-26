@@ -18,6 +18,8 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/caller"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -54,6 +56,8 @@ type FakeDMS struct {
 	URL        string        // fakedms url; needs to be passed to Chrome; set in start()
 	done       chan struct{} // channel that is closed when Wait() completes
 	policyPath string        // where policies are written for server to read
+
+	persistentPolicies []policy.Policy // policies that are always set
 }
 
 // HasFakeDMS is an interface for fixture values that contain a FakeDMS instance. It allows
@@ -191,6 +195,9 @@ func (fdms *FakeDMS) start(ctx context.Context, p *os.File) error {
 
 // WritePolicyBlob will write the given PolicyBlob to be read by the FakeDMS.
 func (fdms *FakeDMS) WritePolicyBlob(pb *PolicyBlob) error {
+	// Make sure persistent policies are always set.
+	pb.AddPolicies(fdms.persistentPolicies)
+
 	pJSON, err := json.Marshal(pb)
 	if err != nil {
 		return errors.Wrap(err, "could not convert policies to JSON")
@@ -204,11 +211,24 @@ func (fdms *FakeDMS) WritePolicyBlob(pb *PolicyBlob) error {
 }
 
 // WritePolicyBlobRaw writes the given PolicyBlob JSON string to be read by the FakeDMS.
+// TODO(crbug.com/1263455): Remove policy_service.go as a caller and make private for persistent settings to always work.
 func (fdms *FakeDMS) WritePolicyBlobRaw(pJSON []byte) error {
 	if err := ioutil.WriteFile(fdms.policyPath, pJSON, 0644); err != nil {
 		return errors.Wrap(err, "could not write JSON to file")
 	}
 	return nil
+}
+
+// allowedPersistentPackages lists packages that are allowed to set persistent settings for FakeDMS.
+var allowedPersistentPackages = []string{
+	"chromiumos/tast/local/policyutil/fixtures",
+}
+
+// SetPersistentPolicies will ensure that the provided policies are always set.
+func (fdms *FakeDMS) SetPersistentPolicies(persistentPolicies []policy.Policy) {
+	caller.Check(2, allowedPersistentPackages)
+
+	fdms.persistentPolicies = persistentPolicies
 }
 
 // Ping pings the running FakeDMS server and returns an error if all is not well.
