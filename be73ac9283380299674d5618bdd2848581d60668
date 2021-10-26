@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfbd8f4a_184bb1ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T10:43:16Z",
+      "side": 1,
+      "message": "If you change files mainly for one package, you can use the package name as the prefix if you prefer. It is totally optional.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "be73ac9283380299674d5618bdd2848581d60668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94bd8851_44377563",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T10:43:16Z",
+      "side": 1,
+      "message": "I think if you write chromium instead of CL, it will handle it as a link here in Gerrit, just like in the BUG line.",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 5
+      },
+      "revId": "be73ac9283380299674d5618bdd2848581d60668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d80a3e_799619f9",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T10:43:16Z",
+      "side": 1,
+      "message": "I think returning with an error here would be nice.",
+      "range": {
+        "startLine": 62,
+        "startChar": 42,
+        "endLine": 62,
+        "endChar": 45
+      },
+      "revId": "be73ac9283380299674d5618bdd2848581d60668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab7c9840_8eaec0b9",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T10:43:16Z",
+      "side": 1,
+      "message": "What happens if you start it while it is already running?\nCan it cause any problems?",
+      "range": {
+        "startLine": 62,
+        "startChar": 17,
+        "endLine": 62,
+        "endChar": 22
+      },
+      "revId": "be73ac9283380299674d5618bdd2848581d60668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2a6de69_33e3112b",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T10:43:16Z",
+      "side": 1,
+      "message": "What is the reason for this line?",
+      "revId": "be73ac9283380299674d5618bdd2848581d60668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d0c0c2_31bb7bfe",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T10:43:16Z",
+      "side": 1,
+      "message": "This should be a space I think.",
+      "range": {
+        "startLine": 73,
+        "startChar": 30,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "be73ac9283380299674d5618bdd2848581d60668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ece7279_9161bba9",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T10:43:16Z",
+      "side": 1,
+      "message": "I the not ok branch expected here?",
+      "revId": "be73ac9283380299674d5618bdd2848581d60668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
