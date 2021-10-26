@@ -23,7 +23,6 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: DisableScreenshotsHotkey,
-		// TODO(crbug.com/1125556): check whether screenshot can be taken by extensions APIs.
 		Desc: "Behavior of the DisableScreenshots policy, check whether screenshot can be taken by pressing hotkeys",
 		Contacts: []string{
 			"lamzin@google.com", // Test port author
