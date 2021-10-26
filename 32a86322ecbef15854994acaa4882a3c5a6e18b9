@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77cbfed0_22c5e2de",
+        "filename": "src/chromiumos/tast/local/camera/cca/data/document_1280x960.y4m.external",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-26T09:01:28Z",
+      "side": 0,
+      "message": "Can you also remove the file it links to?",
+      "range": {
+        "startLine": 1,
+        "startChar": 9,
+        "endLine": 1,
+        "endChar": 64
+      },
+      "revId": "32a86322ecbef15854994acaa4882a3c5a6e18b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
