@@ -8,11 +8,14 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -32,8 +35,16 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
-		Data:         []string{"translate_enabled_page_fr.html"},
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               lacros.ChromeTypeLacros,
+		}},
+		Data: []string{"translate_enabled_page_fr.html"},
 	})
 }
 
@@ -44,6 +55,11 @@ func init() {
 func TranslateEnabled(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -79,7 +95,7 @@ func TranslateEnabled(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Setup Chrome and enable policy
 			// Perform cleanup.
@@ -92,12 +108,19 @@ func TranslateEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			// TODO(crbug.com/1259615): This should be part of the fixture.
+			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+			if err != nil {
+				s.Fatal("Failed to setup chrome: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
 			// Provide more data in artefacts if test fails.
 			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 			// Open the browser and navigate to the to be translated page.
 			url := server.URL + "/translate_enabled_page_fr.html"
-			conn, err := cr.NewConn(ctx, url)
+			conn, err := br.NewConn(ctx, url)
 			if err != nil {
 				s.Fatal("Failed to connect to chrome: ", err)
 			}
