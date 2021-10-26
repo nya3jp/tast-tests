@@ -85,6 +85,7 @@ type fakeDMSFixture struct {
 	// importState is the path to an existing state file for FakeDMS.
 	importState string
 
+	// TODO(crbug.com/1263455): Move policyUser handling to persistent.go.
 	// policyUser is the user account that used as policyUser in policy blob. The value is
 	// fakedms.DefaultPolicyUser if policyUserVar is not set.
 	policyUser string
