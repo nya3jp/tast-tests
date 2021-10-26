@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "433b5109_936646ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-10-26T04:55:15Z",
+      "side": 1,
+      "message": "thank you for the detailed comments!",
+      "parentUuid": "cf5e7fdb_488063a0",
+      "revId": "f13300a6091b15f5ab9d43f753991ab2f1952f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ca35022_cbab4fbf",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/quicksettings.go",
         "patchSetId": 1
