@@ -69,6 +69,24 @@
       "parentUuid": "66d51553_37c0ba58",
       "revId": "0b53b5b4724edf3ba645c85d4990a956e98570cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8399f17f_e6c5ae34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-26T16:52:52Z",
+      "side": 1,
+      "message": "There are no wilco_dtc related logs in messages. Maybe there is a bug in logging collector?\n\nI am OK to wait 1 more week.",
+      "parentUuid": "3cc8593d_a8e79ba8",
+      "revId": "0b53b5b4724edf3ba645c85d4990a956e98570cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
