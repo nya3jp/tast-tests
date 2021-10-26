@@ -33,6 +33,29 @@
       "message": "n.b. I removed autosubmit/cq+2 since a non-shadow tast review still needs to look at this",
       "revId": "eee4b468e97cbc824cb88752c80badc2413f2ee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70ccacf9_c055f8c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_resolutions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-26T03:24:01Z",
+      "side": 1,
+      "message": "Should the error be handled first otherwise file is nil?",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 2
+      },
+      "revId": "eee4b468e97cbc824cb88752c80badc2413f2ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
