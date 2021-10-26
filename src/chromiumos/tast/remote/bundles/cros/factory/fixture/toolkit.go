@@ -26,6 +26,7 @@ const (
 	// reboot takes 30 seconds to pass the boot option selection in developer
 	// mode, plus enough time as buffer to wait for the system and networking to be ready
 	rebootTimeout = 3 * time.Minute
+	testListName  = "generic_tast"
 )
 
 func init() {
@@ -82,7 +83,19 @@ func installFactoryToolKit(ctx context.Context, conn *ssh.Conn) (version string,
 
 	// TODO(b/150189948): Support installing toolkit from artifacts
 	// factory_image.zip
-	return installFactoryToolKitFromToolkitInstaller(ctx, toolkitInstallerPath, conn)
+	if version, err = installFactoryToolKitFromToolkitInstaller(ctx, toolkitInstallerPath, conn); err != nil {
+		return "", errors.Wrapf(err, "can not install toolkit: %s", toolkitInstallerPath)
+	}
+
+	// set tast specific test list to prevent from unexpected behavior, such
+	// as cr50 update and reboot, etc.
+	setTestListCmd := conn.CommandContext(ctx, "factory", "test-list", testListName)
+	if err := setTestListCmd.Run(ssh.DumpLogOnError); err != nil {
+		return "", errors.Wrapf(err, "can not set test list to %s: %s", testListName, toolkitInstallerPath)
+	}
+
+	return version, nil
+
 }
 
 func installFactoryToolKitFromToolkitInstaller(ctx context.Context, installerPath string, conn *ssh.Conn) (version string, err error) {
