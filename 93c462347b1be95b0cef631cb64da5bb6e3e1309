@@ -16,6 +16,24 @@
       "message": "We should move this to somewhere better and make it per-test. I didn\u0027t do that because chrome needs to be restarted for these policies AFAICT so I think it will be a reasonable amount of work to do properly",
       "revId": "93c462347b1be95b0cef631cb64da5bb6e3e1309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb5339ec_85905293",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-26T09:39:49Z",
+      "side": 1,
+      "message": "We have an idea, it might be doable in the fixtures before Chrome login, because the LacrosEnabled is not a dynamically refreshed policy, and after login it should not be a problem if this policy is not set. I think we can try it out today.",
+      "parentUuid": "75cbae7e_0cbc5aed",
+      "revId": "93c462347b1be95b0cef631cb64da5bb6e3e1309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
