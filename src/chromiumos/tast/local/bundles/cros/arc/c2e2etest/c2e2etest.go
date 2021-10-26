@@ -167,5 +167,5 @@ func WaitForCodecReady(ctx context.Context, a *arc.ARC) error {
 			return errors.Errorf("Codec not yet configured: %d", res.Result)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 60 * time.Second})
+	}, &testing.PollOptions{Timeout: 120 * time.Second})
 }
