@@ -121,6 +121,30 @@
       },
       "revId": "eae8a6c597adc6a6757314623a591ed95429dceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "837faf99_5dbe9332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-26T04:54:13Z",
+      "side": 1,
+      "message": "As we discussed in another CL, I\u0027ve brought those changes to this parent CL.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3168678/comments/2404bf1c_56f498b2",
+      "parentUuid": "cbf3259c_7dd12a89",
+      "range": {
+        "startLine": 58,
+        "startChar": 48,
+        "endLine": 58,
+        "endChar": 71
+      },
+      "revId": "eae8a6c597adc6a6757314623a591ed95429dceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

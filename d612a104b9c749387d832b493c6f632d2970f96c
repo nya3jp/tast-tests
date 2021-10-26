@@ -39,6 +39,30 @@
       },
       "revId": "d612a104b9c749387d832b493c6f632d2970f96c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "471b27e7_0f1e77f5",
+        "filename": "src/chromiumos/tast/local/videocuj/youtube_web.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-26T04:54:13Z",
+      "side": 1,
+      "message": "Due to change in Google Ad algo., sometimes the ad is being clicked without checking if actual video is playing or ad is playing.\n\nHence I\u0027ve changed the order to skip the ad if it\u0027s still being played and then click on the Youtube video.",
+      "parentUuid": "fc2c4f24_68202442",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 4
+      },
+      "revId": "d612a104b9c749387d832b493c6f632d2970f96c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
