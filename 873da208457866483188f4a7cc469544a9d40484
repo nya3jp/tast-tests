@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "16bca90d_350046f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-26T18:57:56Z",
+      "side": 1,
+      "message": "You mentioned this is semi manual right now? Call that out too for tast owners",
+      "parentUuid": "1f7855c9_0a7820ca",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 57
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f422f76b_81e1ac20",
@@ -677,6 +701,30 @@
       "side": 1,
       "message": "It should be clear with the added comment.",
       "parentUuid": "cc5825c5_51ffa60c",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 12
+      },
+      "revId": "873da208457866483188f4a7cc469544a9d40484",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a68b4843_194fa22a",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-26T18:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c057d138_e5f27b81",
       "range": {
         "startLine": 116,
         "startChar": 5,

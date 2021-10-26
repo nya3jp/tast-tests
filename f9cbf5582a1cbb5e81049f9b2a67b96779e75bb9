@@ -16,6 +16,92 @@
       "message": "Thanks for pointing out the places that could use some comments.\nDavid, PTAL.\nAs there were no suggestions for structural changes, I am starting the Tast review process as well.",
       "revId": "f9cbf5582a1cbb5e81049f9b2a67b96779e75bb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05aeb48e_7e96a185",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-26T18:57:56Z",
+      "side": 1,
+      "message": "LGTM with nits ",
+      "revId": "f9cbf5582a1cbb5e81049f9b2a67b96779e75bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1cf8817_fd0df631",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_n.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-26T18:57:56Z",
+      "side": 1,
+      "message": "No line limits in go so no need to wrap this",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 70
+      },
+      "revId": "f9cbf5582a1cbb5e81049f9b2a67b96779e75bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f00f5d01_71d96d49",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_n.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-26T18:57:56Z",
+      "side": 1,
+      "message": "cleanups",
+      "range": {
+        "startLine": 66,
+        "startChar": 40,
+        "endLine": 66,
+        "endChar": 47
+      },
+      "revId": "f9cbf5582a1cbb5e81049f9b2a67b96779e75bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f86c47_e6cc21b5",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-10-26T18:57:56Z",
+      "side": 1,
+      "message": "Move these under the explanation of the function",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 87
+      },
+      "revId": "f9cbf5582a1cbb5e81049f9b2a67b96779e75bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
