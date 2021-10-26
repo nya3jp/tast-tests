@@ -16,6 +16,57 @@
       "message": "Thanks for the review! Added tast owners, PTAL, thanks!",
       "revId": "0a296c9abe1c983ed5c9028ad516a25bea4eced4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b670bc48_7cf09110",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-26T16:37:21Z",
+      "side": 1,
+      "message": "Tast shadow review done - just a few nits.",
+      "revId": "0a296c9abe1c983ed5c9028ad516a25bea4eced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9b5c976_03e3051d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-26T16:37:21Z",
+      "side": 1,
+      "message": "nit: missing a \u0027.\u0027 at the end of the sentence.",
+      "revId": "0a296c9abe1c983ed5c9028ad516a25bea4eced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0714c094_b3c019fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-10-26T16:37:21Z",
+      "side": 1,
+      "message": "nit: I think these should be: error.Wrap(err, \"\u003cERROR MESSAGE\u003e\") to provide extra context. Same below for ip6tables.",
+      "revId": "0a296c9abe1c983ed5c9028ad516a25bea4eced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
