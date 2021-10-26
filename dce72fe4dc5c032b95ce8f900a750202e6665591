@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5794a529_1b5e8c72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-26T06:53:07Z",
+      "side": 1,
+      "message": "Any reason this is in Params and not just part of the outer variables? Seems you could just append android_vm to SoftwareDeps and same for Data, usually Params is used for multi test variants which it doesn\u0027t look like here.",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 5
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ef23b3d_177d4cbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-26T06:53:07Z",
+      "side": 1,
+      "message": "nit: use HEAD or main",
+      "range": {
+        "startLine": 51,
+        "startChar": 58,
+        "endLine": 51,
+        "endChar": 64
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e931147b_c4720594",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-26T06:53:07Z",
+      "side": 1,
+      "message": "Is there an appropriate fixture you could use that would handle a lot of this setup for you? arcBooted might server your purpose?",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 19
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "471d50fb_bf1c76a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-26T06:53:07Z",
+      "side": 1,
+      "message": "nit: full stop to end your comments (ditto elsewhere).",
+      "range": {
+        "startLine": 131,
+        "startChar": 80,
+        "endLine": 131,
+        "endChar": 81
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84c6ff48_24a19d8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-26T06:53:07Z",
+      "side": 1,
+      "message": "In this context s.Fatal will stop the entire test, no other subtests will run. Is this desired behaviour?\n\nIf you run them as subtests [1] you can use s.Fatal within this scope and it will only fail that single test but run the remainder. This would require appropriate setup to ensure in between tests the environment is ready.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests",
+      "range": {
+        "startLine": 156,
+        "startChar": 3,
+        "endLine": 156,
+        "endChar": 10
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "043b8e6f_96669deb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-26T06:53:07Z",
+      "side": 1,
+      "message": "nit: don\u0027t need this",
+      "range": {
+        "startLine": 163,
+        "startChar": 31,
+        "endLine": 163,
+        "endChar": 33
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b720c05_78ebc685",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-26T06:53:07Z",
+      "side": 1,
+      "message": "nit: Failed to... consistent error messages",
+      "range": {
+        "startLine": 186,
+        "startChar": 12,
+        "endLine": 186,
+        "endChar": 21
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
