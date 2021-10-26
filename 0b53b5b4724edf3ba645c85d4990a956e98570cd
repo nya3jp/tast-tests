@@ -16,6 +16,23 @@
       "message": "Hi Victor,\n\nPTAL :) \n\nThanks!",
       "revId": "0b53b5b4724edf3ba645c85d4990a956e98570cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed44f592_c23d89e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-26T15:28:01Z",
+      "side": 1,
+      "message": "The test seems to have recently failed. Any reason to promote it despite of it?",
+      "revId": "0b53b5b4724edf3ba645c85d4990a956e98570cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
