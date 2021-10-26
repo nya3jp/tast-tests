@@ -318,6 +318,30 @@
       },
       "revId": "3b92450551c76317fb81381da78bf4141aaafa80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5395a7c1_a333d05a",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-26T10:09:15Z",
+      "side": 1,
+      "message": "I tried it and yes it works! Filed b/204164385 to track this task. Thanks.",
+      "parentUuid": "04d2208d_f2e29466",
+      "range": {
+        "startLine": 280,
+        "startChar": 34,
+        "endLine": 280,
+        "endChar": 60
+      },
+      "revId": "3b92450551c76317fb81381da78bf4141aaafa80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
