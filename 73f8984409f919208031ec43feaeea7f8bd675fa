@@ -16,6 +16,41 @@
       "message": "Do you have a bug number for it? Can you use b/198327140?",
       "revId": "73f8984409f919208031ec43feaeea7f8bd675fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c5447d9_d3947d72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-26T01:03:39Z",
+      "side": 1,
+      "message": "LGTM after Seewai\u0027s comment.\n",
+      "revId": "73f8984409f919208031ec43feaeea7f8bd675fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ad856c_35fb84d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-26T01:03:39Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "7d681f11_77b4005a",
+      "revId": "73f8984409f919208031ec43feaeea7f8bd675fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
