@@ -30,7 +30,7 @@ func init() {
 			"chromeos-wilco@google.com",
 			"bisakhmondal00@gmail.com", // test author
 		},
-		Attr:         []string{"group:enrollment"},
+		Attr:         []string{},
 		SoftwareDeps: []string{"chrome", "wilco"},
 		ServiceDeps:  []string{"tast.cros.policy.PolicyService"},
 		Timeout:      20 * time.Minute,
