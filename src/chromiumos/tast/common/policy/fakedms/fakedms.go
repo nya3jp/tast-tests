@@ -93,7 +93,6 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 		}
 	}()
 
-	// TODO(crbug.com/999751): Let caller specify --client-state.
 	args := []string{
 		testserverPath,
 		"--config-file", policyPath,
