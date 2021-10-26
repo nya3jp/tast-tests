@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e10e104b_d9449fa5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-10-26T17:10:06Z",
+      "side": 1,
+      "message": "y\n",
+      "revId": "e66befe6920ac549b6ed1698a50d9355fdb70b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "166d4957_ed2d0d99",
@@ -24,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28055acc_709789d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/auth_session_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-10-26T17:10:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "166d4957_ed2d0d99",
+      "range": {
+        "startLine": 75,
+        "startChar": 64,
+        "endLine": 75,
+        "endChar": 65
+      },
+      "revId": "e66befe6920ac549b6ed1698a50d9355fdb70b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72bcaa2d_c2b73a52",
@@ -37,6 +78,30 @@
       "writtenOn": "2021-10-26T16:50:31Z",
       "side": 1,
       "message": "nit: reserve time for cleanup\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 12
+      },
+      "revId": "e66befe6920ac549b6ed1698a50d9355fdb70b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20c29d7d_bd94ba11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/kiosk_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-10-26T17:10:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72bcaa2d_c2b73a52",
       "range": {
         "startLine": 37,
         "startChar": 1,
@@ -105,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e3d6fd7_4f64177b",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-10-26T17:10:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b978a17_3f132b28",
+      "range": {
+        "startLine": 587,
+        "startChar": 19,
+        "endLine": 587,
+        "endChar": 20
+      },
+      "revId": "e66befe6920ac549b6ed1698a50d9355fdb70b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcca821f_71872c99",
@@ -118,6 +207,30 @@
       "writtenOn": "2021-10-26T16:50:31Z",
       "side": 1,
       "message": "nit: reserve time for cleanup\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 595,
+        "startChar": 1,
+        "endLine": 595,
+        "endChar": 12
+      },
+      "revId": "e66befe6920ac549b6ed1698a50d9355fdb70b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d027c147_558b0587",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-10-26T17:10:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcca821f_71872c99",
       "range": {
         "startLine": 595,
         "startChar": 1,
