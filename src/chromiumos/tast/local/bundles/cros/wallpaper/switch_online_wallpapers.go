@@ -80,7 +80,7 @@ func SwitchOnlineWallpapers(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to minimize wallpaper picker: ", err)
 	}
 
-	yellow := color.RGBA{255, 227, 53, 255}
+	yellow := color.RGBA{255, 235, 60, 255}
 	const expectedPercent = 90
 	if err := wallpaper.ValidateBackground(ctx, cr, yellow, expectedPercent); err != nil {
 		s.Error("Failed to validate wallpaper background: ", err)
