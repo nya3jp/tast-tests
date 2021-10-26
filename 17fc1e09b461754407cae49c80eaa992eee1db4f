@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bccdaa3f_0591803e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-26T15:05:34Z",
+      "side": 1,
+      "message": "Reminded me that I found another obsolete TODO today.",
+      "revId": "17fc1e09b461754407cae49c80eaa992eee1db4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
