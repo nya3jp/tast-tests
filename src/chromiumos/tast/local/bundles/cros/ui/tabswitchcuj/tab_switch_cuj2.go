@@ -245,7 +245,6 @@ var allTargets = []struct {
 	{"https://news.yahoo.com/world/", newPageInfo(Basic, yahooNews, `/world/`, `/health/`)},
 	{"https://news.yahoo.com/science/", newPageInfo(Plus, yahooNews, `/science/`, `/tagged/skullduggery/`)},
 	{"https://news.yahoo.com/originals/", newPageInfo(Premium, yahooNews, `/originals/`, `/videos`)},
-	{"https://news.yahoo.com/tagged/climate-change/", newPageInfo(Premium, yahooNews, `/tagged/climate-change/`, `/us/`)},
 
 	{"https://edition.cnn.com/world", newPageInfo(Plus, cnn, `/world`, `/africa`)},
 	{"https://edition.cnn.com/americas", newPageInfo(Plus, cnn, `/americas`, `/asia`)},
@@ -260,6 +259,7 @@ var allTargets = []struct {
 	{"https://www.espn.com/soccer/", newPageInfo(Premium, espn, `/soccer/scoreboard`, `/soccer/schedule`)},
 
 	{"https://www.hulu.com/hub/movies", newPageInfo(Plus, hulu, `/hub/movies`, `/hub/originals`)},
+	{"https://www.hulu.com/hub/kids", newPageInfo(Premium, hulu, `/hub/kids`, `/hub/networks`)},
 
 	{"https://www.pinterest.com/ideas/", newPageInfo(Plus, pinterest, `/ideas/`, `/ideas/holidays/910319220330/`)},
 
