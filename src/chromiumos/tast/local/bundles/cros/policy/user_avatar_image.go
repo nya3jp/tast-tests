@@ -5,12 +5,8 @@
 package policy
 
 import (
-	"bytes"
 	"context"
 	"image"
-	"image/color"
-	"image/jpeg"
-	"os"
 	"time"
 
 	"chromiumos/tast/common/fixture"
@@ -63,7 +59,7 @@ func UserAvatarImage(ctx context.Context, s *testing.State) {
 	defer eds.Stop(ctx)
 
 	// Serve UserAvatarImage policy data.
-	imgBytes, err := getImgFromFilePath(s.DataPath("user_avatar_image.jpeg"))
+	imgBytes, err := policyutil.getImgFromFilePath(s.DataPath("user_avatar_image.jpeg"))
 	if err != nil {
 		s.Fatal("Failed to read user avatar image: ", err)
 	}
@@ -178,27 +174,6 @@ func UserAvatarImage(ctx context.Context, s *testing.State) {
 			}
 		})
 	}
-}
-
-// getImgFromFilePath returns bytes of the image with the filePath.
-// TODO(crbug.com/1188690): Remove when the bug is fixed.
-func getImgFromFilePath(filePath string) ([]byte, error) {
-	f, err := os.Open(filePath)
-	if err != nil {
-		return nil, err
-	}
-	defer f.Close()
-	image, _, err := image.Decode(f)
-	if err != nil {
-		return nil, err
-	}
-	buf := new(bytes.Buffer)
-	err = jpeg.Encode(buf, image, nil)
-	if err != nil {
-		return nil, err
-	}
-	imgBytes := buf.Bytes()
-	return imgBytes, nil
 }
 
 func getRedColorPercentage(img image.Image) int {
