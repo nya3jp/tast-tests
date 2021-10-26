@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbf1533d_0650fe35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-26T18:03:13Z",
+      "side": 1,
+      "message": "Po-Hsien found a job that seems to run it. So maybe the control files are deployed now and the lab is restarting. Lets wait just a little longer.\n\nhttps://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8832292338406086993/overview",
+      "revId": "be29b663745ca0dae6232c5854702fcd1e7af244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
