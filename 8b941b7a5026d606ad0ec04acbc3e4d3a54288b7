@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "06aff2c4_66b966ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-26T18:15:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f511037b_3f770151",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "8b941b7a5026d606ad0ec04acbc3e4d3a54288b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "225b0ab3_ec8b3b45",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54764a5b_d0965d56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user_pod.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-26T18:15:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afb91ff1_732974af",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 4
+      },
+      "revId": "8b941b7a5026d606ad0ec04acbc3e4d3a54288b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c39ad33a_64a6717c",
@@ -112,6 +160,24 @@
       "side": 1,
       "message": "+1. Ideally we could also check \"KnownUsers\" list in the local state too. And after that restart Chrome again with  chrome.NoLogin(), chrome.KeepState() and check the pods again.",
       "parentUuid": "c39ad33a_64a6717c",
+      "revId": "8b941b7a5026d606ad0ec04acbc3e4d3a54288b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0d12899_1424b9f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user_pod.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-26T18:15:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8553627_9558cb2e",
       "revId": "8b941b7a5026d606ad0ec04acbc3e4d3a54288b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
