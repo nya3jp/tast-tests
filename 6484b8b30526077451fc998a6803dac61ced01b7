@@ -16,6 +16,24 @@
       "message": "still LGTM, let me know if you need me to trigger submission",
       "revId": "6484b8b30526077451fc998a6803dac61ced01b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b80ebfb_1a402c10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-26T08:20:11Z",
+      "side": 1,
+      "message": "Thank you very much",
+      "parentUuid": "59d617df_8abb3e8e",
+      "revId": "6484b8b30526077451fc998a6803dac61ced01b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
