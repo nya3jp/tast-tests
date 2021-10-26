@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d50a24_726aba29",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2021-10-26T11:32:44Z",
+      "side": 1,
+      "message": "It looks like the operations added here can pretty much all be done through command line, thus I would recommend that AuthSession kiosk mount be done through the tast/common/hwsec/cryptohome_client.go library instead of tast/local/cryptohome library. This is so that we\u0027ll have more flexibility to test AuthSession kiosk mount in both local and remote test in the future.\n\nHowever, I understand that there are some existing code in this library that you might need to properly test AuthSession kiosk mount and it may be too expensive to go with tast/common in this CL, so I think it\u0027s fine to leave this as is and move to tast/common later.",
+      "revId": "e66befe6920ac549b6ed1698a50d9355fdb70b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
