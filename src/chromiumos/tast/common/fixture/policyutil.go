@@ -37,3 +37,9 @@ const (
 	// LacrosPolicyLoggedIn is a fixture name.
 	LacrosPolicyLoggedIn = "lacrosPolicyLoggedIn"
 )
+
+// Fixtures defined in chromiumos/tast/local/policyutil/fixtures/persistent.go.
+const (
+	// PersistentLacros is a fixture name.
+	PersistentLacros = "persistentLacros"
+)
