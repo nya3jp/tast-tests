@@ -1,0 +1,61 @@
+syntax = "proto2";
+
+package google.chromeos.uidetection;
+
+option go_package = "./api";
+
+message UiDetectionRequest {
+  // Required field that represents a PNG image.
+  optional bytes image_png = 1;
+  // Required field indicating the detection type.
+  optional DetectionRequest request = 2;
+}
+
+// Detection type specifies what to detect in the image.
+message DetectionRequest {
+  oneof detection_request_type {
+    WordDetectionRequest word_detection_request = 1;
+    TextBlockDetectionRequest text_block_detection_request = 2;
+    CustomIconDetectionRequest custom_icon_detection_request = 3;
+  }
+}
+
+message WordDetectionRequest {
+  // Required.
+  optional string word = 1;
+}
+
+message TextBlockDetectionRequest {
+  // Required.
+  repeated string words = 1;
+}
+
+message CustomIconDetectionRequest {
+  // Required field that represents a PNG image.
+  optional bytes icon_png = 1;
+}
+
+message UiDetectionResponse {
+  // Locations of matching UI elements.
+  repeated BoundingBox bounding_boxes = 1;
+}
+
+// Represents the location of a UI element.
+message BoundingBox {
+  // Required for word or text block detection.
+  optional string text = 1;
+  // Required.
+  optional int32 top = 2;
+  // Required.
+  optional int32 left = 3;
+  // Required.
+  optional int32 bottom = 4;
+  // Required.
+  optional int32 right = 5;
+}
+
+// Provides image-based UI detection service.
+service UiDetectionService {
+  // Runs the detection.
+  rpc Detect(UiDetectionRequest) returns (UiDetectionResponse);
+}
