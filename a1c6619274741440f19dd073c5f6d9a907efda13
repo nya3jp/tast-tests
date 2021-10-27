@@ -16,6 +16,23 @@
       "message": "Kyle, PTAL!",
       "revId": "a1c6619274741440f19dd073c5f6d9a907efda13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "979a01a9_7e7692b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-27T23:57:34Z",
+      "side": 1,
+      "message": "how about using power.TurnOnDisplay to explicitly handle this?\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/power/power_manager.go;l\u003d85",
+      "revId": "a1c6619274741440f19dd073c5f6d9a907efda13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
