@@ -165,7 +165,7 @@ func runARCVideoTestSetup(ctx context.Context, s *testing.State, testVideo strin
 		pushFiles = append(pushFiles, frameMD5Path)
 	}
 
-	if err := a.Command(ctx, "mkdir", arcFilePath).Run(testexec.DumpLogOnError); err != nil {
+	if err := a.Command(ctx, "mkdir", "-p", arcFilePath).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed creating test data dir: ", err)
 	}
 	// Push files to ARC container.
