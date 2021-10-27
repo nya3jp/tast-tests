@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fd22e96_886fef64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-27T03:24:57Z",
+      "side": 1,
+      "message": "shadow reviewer initial round, probably will go through a few more rounds of comments",
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "128a4b70_a56a3522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-27T03:24:57Z",
+      "side": 1,
+      "message": "Can you use chromeLoggedIn fixture instead?",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3a645cc_952aa7d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-27T03:24:57Z",
+      "side": 1,
+      "message": "maybe suffix all with RE, it\u0027s shorter and more consistent",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a04f3f_f2976fbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-27T03:24:57Z",
+      "side": 1,
+      "message": "nit: don\u0027t abbreviate these imo",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5359365_d55a39e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-27T03:24:57Z",
+      "side": 1,
+      "message": "nit: use a lowercase letter at the beginning, here and in other locations in this file",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2871a6bd_005a7980",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-27T03:24:57Z",
+      "side": 1,
+      "message": "nit: can we move this to a constant?",
+      "range": {
+        "startLine": 64,
+        "startChar": 12,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0dcb1ff_6ab62769",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-27T03:24:57Z",
+      "side": 1,
+      "message": "is there a reason to use s.Log over testing.ContextLog ?",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 7
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58313e0b_54f10e6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-27T03:24:57Z",
+      "side": 1,
+      "message": "In general we try to avoid shelling out in Tast tests. Is there a way you can write this without (or reducing the mount of) shelling out?",
+      "range": {
+        "startLine": 98,
+        "startChar": 14,
+        "endLine": 98,
+        "endChar": 68
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c221c8ff_013a7871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-27T03:24:57Z",
+      "side": 1,
+      "message": "Seems like there are parens around pattern usages here and in other locations. Can you remove them?",
+      "range": {
+        "startLine": 106,
+        "startChar": 16,
+        "endLine": 106,
+        "endChar": 31
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ec8c30_07cdd51d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-27T03:24:57Z",
+      "side": 1,
+      "message": "commented out stuff here",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 80
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
