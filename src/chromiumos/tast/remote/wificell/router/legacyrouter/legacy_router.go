@@ -77,12 +77,12 @@ func NewLegacyRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string
 	ctx, st := timing.Start(shortCtx, "initialize")
 	defer st.End()
 
-	board, err := hostBoard(shortCtx, r.Host)
-	if err != nil {
-		r.Close(shortCtx)
-		return nil, err
-	}
-	r.board = board
+	// board, err := hostBoard(shortCtx, r.Host)
+	// if err != nil {
+	// 	r.Close(shortCtx)
+	// 	return nil, err
+	// }
+	// r.board = board
 
 	// Clean up Autotest working dir, in case we're out of space.
 	// NB: we need 'sh' to handle the glob.
@@ -112,15 +112,15 @@ func NewLegacyRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string
 		r.Close(shortCtx)
 		return nil, err
 	}
-	if err := r.removeDevicesWithPrefix(shortCtx, router.BridgePrefix); err != nil {
-		r.Close(shortCtx)
-		return nil, err
-	}
-	// Note that we only need to remove one side of each veth pair.
-	if err := r.removeDevicesWithPrefix(shortCtx, router.VethPrefix); err != nil {
-		r.Close(shortCtx)
-		return nil, err
-	}
+	// if err := r.removeDevicesWithPrefix(shortCtx, router.BridgePrefix); err != nil {
+	// 	r.Close(shortCtx)
+	// 	return nil, err
+	// }
+	// // Note that we only need to remove one side of each veth pair.
+	// if err := r.removeDevicesWithPrefix(shortCtx, router.VethPrefix); err != nil {
+	// 	r.Close(shortCtx)
+	// 	return nil, err
+	// }
 
 	killHostapdDhcp := func() {
 		shortCtx, st := timing.Start(shortCtx, "killHostapdDhcp")
@@ -561,7 +561,8 @@ func (r *legacyRouterStruct) StartCapture(ctx context.Context, name string, ch i
 			}
 		}
 	}()
-
+	testing.ContextLog(ctx, "HERERERE")
+	testing.Sleep(ctx, time.Second*20)
 	if !shared {
 		// The interface is not shared, set up frequency and bandwidth.
 		if err := r.iwr.SetFreq(ctx, iface, freq, freqOps...); err != nil {

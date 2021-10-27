@@ -384,7 +384,7 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 	configure("logger_syslog_level", "0")
 	// Default RTS and frag threshold to "off".
 	configure("rts_threshold", "-1")
-	configure("fragm_threshold", "2346")
+	configure("fragm_threshold", "-1")
 	configure("driver", "nl80211")
 
 	// Configurable.

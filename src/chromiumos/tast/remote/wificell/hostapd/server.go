@@ -84,13 +84,15 @@ func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir strin
 			s.Close(ctx)
 		}
 	}()
-
+	testing.ContextLog(ctx, "I HERE")
 	if err := s.initConfig(ctx); err != nil {
 		return nil, err
 	}
+	testing.ContextLog(ctx, "I HERE2")
 	if err := s.start(ctx); err != nil {
 		return nil, err
 	}
+	testing.ContextLog(ctx, "I HERE3")
 	return s, nil
 }
 
@@ -158,6 +160,7 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 		// hostapd command.
 		hostapdCmd, "-dd", "-t", "-K", shutil.Escape(s.confPath()),
 	}
+	testing.ContextLog(ctx, strings.Join(cmdStrs, " "))
 	cmd := s.host.CommandContext(ctx, "sh", "-c", strings.Join(cmdStrs, " "))
 	// Prepare stdout/stderr log files.
 	var err error
@@ -176,7 +179,9 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 	if err != nil {
 		return errors.Wrap(err, "failed to obtain StdoutPipe of hostapd")
 	}
+	testing.ContextLog(ctx, "REE")
 	readyFunc := func(buf []byte) (bool, error) {
+		testing.ContextLog(ctx, string(buf)[:])
 		if bytes.Contains(buf, []byte("Interface initialization failed")) {
 			return false, errors.New("hostapd failed to initialize AP interface")
 		} else if bytes.Contains(buf, []byte("Setup of interface done")) {
@@ -195,16 +200,16 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 		multiWriter := io.MultiWriter(s.stdoutFile, readyWriter)
 		io.Copy(multiWriter, stdoutPipe)
 	}()
-
+	testing.ContextLog(ctx, "REEREE")
 	if err := cmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to start hostapd")
 	}
 	s.cmd = cmd
-
-	// Wait for hostapd to get ready.
-	if err := readyWriter.Wait(ctx); err != nil {
-		return err
-	}
+	testing.Sleep(ctx, 10*time.Second)
+	// // Wait for hostapd to get ready.
+	// if err := readyWriter.Wait(ctx); err != nil {
+	// 	return err
+	// }
 
 	testing.ContextLog(ctx, "hostapd started")
 	return nil

@@ -216,16 +216,16 @@ func (r *Runner) UnsetBridge(ctx context.Context, dev string) error {
 
 // LinkWithPrefix shows the device names that start with prefix.
 func (r *Runner) LinkWithPrefix(ctx context.Context, prefix string) ([]string, error) {
-	output, err := r.cmd.Output(ctx, "ip", "-brief", "link", "show")
+	output, err := r.cmd.Output(ctx, "ip", "link", "show")
 	if err != nil {
-		return nil, errors.Wrap(err, `failed to run "ip -brief link show"`)
+		return nil, errors.Wrap(err, `failed to run "ip link show"`)
 	}
 	content := strings.TrimSpace(string(output))
 	var ret []string
 	for _, line := range strings.Split(content, "\n") {
 		fields := strings.Fields(line)
 		if len(fields) == 0 {
-			return nil, errors.New(`failed to parse the output of "ip -brief link show": unexpected empty line`)
+			return nil, errors.New(`failed to parse the output of "ip link show": unexpected empty line`)
 		}
 		if strings.HasPrefix(fields[0], prefix) {
 			ret = append(ret, fields[0])
