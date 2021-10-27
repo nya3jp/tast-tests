@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ced9d4d_40a6abb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-27T23:27:56Z",
+      "side": 1,
+      "message": "nit: rephrase the title. It is mostly `tast-tests: ...` in conversion.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "ee292c5b2de78568a6b9307f686eaf8a5b07e466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "882a4458_8fd03a9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-27T23:27:56Z",
+      "side": 1,
+      "message": "nit: TEST\u003dtast run \u003cDUT\u003e apps.LaunchGallery*",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "ee292c5b2de78568a6b9307f686eaf8a5b07e466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
