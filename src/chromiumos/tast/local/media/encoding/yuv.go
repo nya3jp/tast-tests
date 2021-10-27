@@ -11,6 +11,8 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"runtime"
+	"strconv"
 	"strings"
 
 	"chromiumos/tast/common/testexec"
@@ -101,8 +103,14 @@ func PrepareYUV(ctx context.Context, webMFile string, pixelFormat videotype.Pixe
 		}
 	}()
 
+	threads := runtime.NumCPU()
+	if threads > 16 {
+		// The maximum number of threads is the same as chrome.
+		// https://source.chromium.org/chromium/chromium/src/+/main:media/base/limits.h;l=83;drc=5539ecff898c79b0771340051d62bf81649e448d
+		threads = 16
+	}
 	// TODO(hiroh): When YV12 test case is added, try generate YV12 yuv here by passing "--yv12" instead of "--i420".
-	command := []string{"vpxdec", webMFile, "-o", yuvFile, "--codec=vp9", "--i420"}
+	command := []string{"vpxdec", webMFile, "-t", strconv.Itoa(threads), "-o", yuvFile, "--codec=vp9", "--i420"}
 	testing.ContextLogf(ctx, "Running %s", shutil.EscapeSlice(command))
 	cmd := testexec.CommandContext(ctx, command[0], command[1:]...)
 	if err := cmd.Run(); err != nil {
