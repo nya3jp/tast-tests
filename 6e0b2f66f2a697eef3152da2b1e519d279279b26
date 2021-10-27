@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35e2373c_2620bc60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/galleryapp/galleryapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-27T22:42:38Z",
+      "side": 1,
+      "message": "Please use HasClass instead.\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/nodewith/nodewith.go?l\u003d607\n\nClassName in A11y tree is a string. It is different from findElementByClassName in js.",
+      "range": {
+        "startLine": 38,
+        "startChar": 65,
+        "endLine": 38,
+        "endChar": 74
+      },
+      "revId": "6e0b2f66f2a697eef3152da2b1e519d279279b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1bd6d61_af4518de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/galleryapp/galleryapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-27T22:42:38Z",
+      "side": 1,
+      "message": "Do you need to use First() here. It is also not encouraged, which means you have not found an unique identifier.",
+      "range": {
+        "startLine": 41,
+        "startChar": 73,
+        "endLine": 41,
+        "endChar": 78
+      },
+      "revId": "6e0b2f66f2a697eef3152da2b1e519d279279b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
