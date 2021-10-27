@@ -27,7 +27,6 @@ import (
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -94,11 +93,6 @@ func init() {
 }
 
 func VideoCUJ(ctx context.Context, s *testing.State) {
-	// Ensure display on to record ui performance correctly.
-	if err := power.TurnOnDisplay(ctx); err != nil {
-		s.Fatal("Failed to turn on display: ", err)
-	}
-
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
