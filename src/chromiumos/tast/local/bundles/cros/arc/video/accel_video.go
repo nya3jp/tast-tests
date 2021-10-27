@@ -207,6 +207,14 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 
 	const schemaName = "c2e2etest"
 	if ba.measureUsage {
+		// We need to manually stop the activity after measuring CPU usage.
+		defer func() {
+			s.Log("Stopping activity")
+			if err := act.Stop(ctx, tconn); err != nil {
+				s.Fatal("Failed to stop activity: ", err)
+			}
+		}()
+
 		if pv == nil {
 			return errors.New("pv should not be nil when measuring CPU usage and power consumption")
 		}
