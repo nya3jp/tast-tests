@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8dd77d36_2ad01bad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-27T15:57:00Z",
+      "side": 1,
+      "message": "I think you can omit the form factors from the comment, they are right on the next line. And end sentence with .",
+      "range": {
+        "startLine": 29,
+        "startChar": 39,
+        "endLine": 29,
+        "endChar": 87
+      },
+      "revId": "6d080482f0adb371f44ef09e1524e70cbc9f6636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961efe57_4165b3af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-27T15:57:00Z",
+      "side": 1,
+      "message": "Logs should be capitalized",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "6d080482f0adb371f44ef09e1524e70cbc9f6636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c992859_07555639",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
         "patchSetId": 3
