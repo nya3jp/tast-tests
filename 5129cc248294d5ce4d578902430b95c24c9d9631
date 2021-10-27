@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8bcd27c_3b1c2054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-27T10:24:43Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67ef27ac_40326de5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-27T10:24:43Z",
+      "side": 1,
+      "message": "Preconditions are getting deprecated. Please use Fixtures instead:\nFixture: \"chromeLoggedIn\",",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d8475b_099bd475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-27T10:24:43Z",
+      "side": 1,
+      "message": "Use logging only when something might take a while to execute or the message is crucial for debugging.",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c82e40e_39a68edb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-27T10:24:43Z",
+      "side": 1,
+      "message": "Please make the error message more clear. Now it only states the result of the failure but not what it was that failed. This makes bug triage more difficult as often people will not be familiar with the test.",
+      "range": {
+        "startLine": 112,
+        "startChar": 13,
+        "endLine": 112,
+        "endChar": 19
+      },
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e0ec08c_29a7a82f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-27T10:24:43Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 122,
+        "startChar": 12,
+        "endLine": 122,
+        "endChar": 18
+      },
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd800e7c_a8c3f0b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-27T10:24:43Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "508af964_e0d354f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-27T10:24:43Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 134,
+        "startChar": 12,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fd2312e_015d07d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-27T10:24:43Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 137,
+        "startChar": 11,
+        "endLine": 137,
+        "endChar": 17
+      },
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
