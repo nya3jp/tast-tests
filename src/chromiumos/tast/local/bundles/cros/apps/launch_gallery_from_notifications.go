@@ -102,7 +102,7 @@ func LaunchGalleryFromNotifications(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Wait for Gallery app rendering")
-	imageElementFinder := nodewith.Role(role.Image).Name(testImageFileName)
+	imageElementFinder := nodewith.Role(role.Image).Name(testImageFileName).Ancestor(galleryapp.BrowserFinder)
 	// Use image section to verify Gallery App rendering.
 	if err := ui.WaitUntilExists(imageElementFinder)(ctx); err != nil {
 		s.Fatal("Failed to render Gallery: ", err)
