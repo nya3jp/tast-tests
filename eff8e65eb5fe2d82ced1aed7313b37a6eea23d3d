@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e10b43d_9cf96cf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-27T08:19:57Z",
+      "side": 1,
+      "message": "\u003e \"Peristent\" is a possible misspelling of \"Persistent\".\n\nDone",
+      "parentUuid": "776ad1e7_1824041b",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "eff8e65eb5fe2d82ced1aed7313b37a6eea23d3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d3db693_c7be163e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-27T08:19:57Z",
+      "side": 1,
+      "message": "\u003e \"Peristent\" is a possible misspelling of \"Persistent\".\n\nDone",
+      "parentUuid": "1979b3f4_e2dbb7a3",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 21
+      },
+      "revId": "eff8e65eb5fe2d82ced1aed7313b37a6eea23d3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
