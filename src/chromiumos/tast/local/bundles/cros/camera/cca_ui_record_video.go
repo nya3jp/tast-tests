@@ -166,7 +166,7 @@ func (v *video) stop(ctx context.Context, app *cca.App) error {
 
 func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(cca.FixtureData).Chrome
-	runSubTest := s.FixtValue().(cca.FixtureData).RunSubTest
+	runTestWithApp := s.FixtValue().(cca.FixtureData).RunTestWithApp
 	enableMultiStream := s.Param().(bool)
 	subTestTimeout := 40 * time.Second
 	for _, tc := range []struct {
@@ -184,7 +184,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 	} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tc.name, func(ctx context.Context, s *testing.State) {
-			if err := runSubTest(ctx, func(ctx context.Context, app *cca.App) error {
+			if err := runTestWithApp(ctx, func(ctx context.Context, app *cca.App) error {
 				cleanupCtx := ctx
 				ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 				defer cancel()
@@ -208,7 +208,7 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 					}
 					return tc.run(ctx, app)
 				})
-			}, cca.SubTestParams{}); err != nil {
+			}, cca.TestWithAppParams{}); err != nil {
 				s.Errorf("Failed to pass %v subtest: %v", tc.name, err)
 			}
 		})
@@ -217,9 +217,9 @@ func CCAUIRecordVideo(ctx context.Context, s *testing.State) {
 
 	subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 	s.Run(subTestCtx, "testConfirmDialog", func(ctx context.Context, s *testing.State) {
-		if err := runSubTest(ctx, func(ctx context.Context, app *cca.App) error {
+		if err := runTestWithApp(ctx, func(ctx context.Context, app *cca.App) error {
 			return testConfirmDialog(ctx, app, cr)
-		}, cca.SubTestParams{StopAppOnlyIfExist: true}); err != nil {
+		}, cca.TestWithAppParams{StopAppOnlyIfExist: true}); err != nil {
 			s.Error("Failed to pass confirm dialog subtest: ", err)
 		}
 	})

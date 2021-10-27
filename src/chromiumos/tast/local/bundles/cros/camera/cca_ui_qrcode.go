@@ -17,6 +17,7 @@ import (
 type qrcodeTestParams struct {
 	format     string
 	expected   string
+	scene      string
 	chip       cca.UIComponent
 	copyButton cca.UIComponent
 	canOpen    bool
@@ -29,53 +30,76 @@ func init() {
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "chrome_internal"},
-		Params: []testing.Param{{
-			Name:    "url",
-			Fixture: "ccaLaunchedWithQRCodeUrlScene",
-			Val: qrcodeTestParams{
-				format:     "url",
-				expected:   "https://www.google.com/chromebook/chrome-os/",
-				chip:       cca.BarcodeChipURL,
-				copyButton: cca.BarcodeCopyURLButton,
-				canOpen:    true,
-			},
-		}, {
-			Name:    "text",
-			Fixture: "ccaLaunchedWithQRCodeTextScene",
-			Val: qrcodeTestParams{
-				format:     "text",
-				expected:   "Chrome OS is the speedy, simple and secure operating system that powers every Chromebook.",
-				chip:       cca.BarcodeChipText,
-				copyButton: cca.BarcodeCopyTextButton,
-				canOpen:    false,
-			},
-		}},
+		Data:         []string{"qrcode_1280x960.mjpeg", "qrcode_text_1280x960.mjpeg"},
+		Fixture:      "ccaTestBridgeReadyWithFakeCamera",
 	})
 }
 
 func CCAUIQRCode(ctx context.Context, s *testing.State) {
-	app := s.FixtValue().(cca.FixtureData).App()
 	cr := s.FixtValue().(cca.FixtureData).Chrome
-	testParams := s.Param().(qrcodeTestParams)
+	runTestWithApp := s.FixtValue().(cca.FixtureData).RunTestWithApp
+	switchScene := s.FixtValue().(cca.FixtureData).SwitchScene
 
-	if err := app.EnableQRCodeDetection(ctx); err != nil {
-		s.Fatal("Failed to enable QR code detection: ", err)
+	subTestTimeout := 30 * time.Second
+	for _, tst := range []struct {
+		name       string
+		scene      string
+		testParams qrcodeTestParams
+	}{{
+		"testURL",
+		"qrcode_1280x960.mjpeg",
+		qrcodeTestParams{
+			format:     "url",
+			expected:   "https://www.google.com/chromebook/chrome-os/",
+			chip:       cca.BarcodeChipURL,
+			copyButton: cca.BarcodeCopyURLButton,
+			canOpen:    true,
+		},
+	}, {
+		"testText",
+		"qrcode_text_1280x960.mjpeg",
+		qrcodeTestParams{
+			format:     "text",
+			expected:   "Chrome OS is the speedy, simple and secure operating system that powers every Chromebook.",
+			chip:       cca.BarcodeChipText,
+			copyButton: cca.BarcodeCopyTextButton,
+			canOpen:    false,
+		},
+	}} {
+		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
+		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
+			if err := switchScene(s.DataPath(tst.scene)); err != nil {
+				s.Fatal("Failed to setup QRCode scene: ", err)
+			}
+			if err := runTestWithApp(ctx, func(ctx context.Context, app *cca.App) error {
+				return runQRCodeTest(ctx, cr, app, tst.testParams)
+			}, cca.TestWithAppParams{}); err != nil {
+				s.Errorf("Failed to pass %v subtest: %v", tst.name, err)
+			}
+		})
+		cancel()
 	}
-	s.Log("Start scanning QR Code")
+}
+
+func runQRCodeTest(ctx context.Context, cr *chrome.Chrome, app *cca.App, testParams qrcodeTestParams) error {
+	if err := app.EnableQRCodeDetection(ctx); err != nil {
+		return errors.Wrap(err, "failed to enable QR code detection")
+	}
+	testing.ContextLog(ctx, "Start scanning QR Code")
 
 	if err := app.WaitForVisibleState(ctx, testParams.chip, true); err != nil {
-		s.Fatalf("Failed to detect %v from barcode: %v", testParams.format, err)
+		return errors.Wrapf(err, "failed to detect %v from barcode", testParams.format)
 	}
-	s.Logf("%v detected", testParams.format)
+	testing.ContextLogf(ctx, "%v detected", testParams.format)
 
 	// Copy the content.
 	if err := app.Click(ctx, testParams.copyButton); err != nil {
-		s.Fatal("Failed to click copy button: ", err)
+		return errors.Wrap(err, "failed to click copy button")
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to get test connection: ", err)
+		return errors.Wrap(err, "failed to get test connection")
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -86,15 +110,15 @@ func CCAUIQRCode(ctx context.Context, s *testing.State) {
 		if clipData != testParams.expected {
 			return errors.Errorf("unexpected clipboard data: got %q, want %q", clipData, testParams.expected)
 		}
-		s.Logf("%v copied successfully", testParams.format)
+		testing.ContextLogf(ctx, "%v copied successfully", testParams.format)
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-		s.Fatal("Failed to get expected clipboard data: ", err)
+		return errors.Wrap(err, "failed to get expected clipboard data")
 	}
 
 	if testParams.canOpen {
 		if err := app.Click(ctx, testParams.chip); err != nil {
-			s.Fatal("Failed to click chip: ", err)
+			return errors.Wrap(err, "failed to click chip")
 		}
 
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -105,11 +129,12 @@ func CCAUIQRCode(ctx context.Context, s *testing.State) {
 			if !ok {
 				return errors.Errorf("no match target for %v", testParams.expected)
 			}
-			s.Logf("%v opened successfully", testParams.format)
+			testing.ContextLogf(ctx, "%v opened successfully", testParams.format)
 			return nil
 		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-			s.Fatal("Failed to open: ", err)
+			return errors.Wrap(err, "failed to open")
 		}
 	}
 	// TODO(b/172879638): Test invalid binary content.
+	return nil
 }

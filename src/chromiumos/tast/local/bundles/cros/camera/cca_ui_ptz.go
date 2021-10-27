@@ -21,7 +21,8 @@ func init() {
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome"},
-		Fixture:      "ccaLaunchedWithPTZScene",
+		Data:         []string{"ptz_scene_1280x720.mjpeg"},
+		Fixture:      "ccaTestBridgeReadyWithFakeCamera",
 	})
 }
 
@@ -146,9 +147,23 @@ func (ctrl *ptzControl) testToggle(ctx context.Context, app *cca.App) error {
 }
 
 func CCAUIPTZ(ctx context.Context, s *testing.State) {
-	app := s.FixtValue().(cca.FixtureData).App()
+	runTestWithApp := s.FixtValue().(cca.FixtureData).RunTestWithApp
+	switchScene := s.FixtValue().(cca.FixtureData).SwitchScene
+
+	if err := switchScene(s.DataPath("ptz_scene_1280x720.mjpeg")); err != nil {
+		s.Fatal("Failed to setup QRCode scene: ", err)
+	}
+
+	if err := runTestWithApp(ctx, func(ctx context.Context, app *cca.App) error {
+		return runPTZTest(ctx, app)
+	}, cca.TestWithAppParams{}); err != nil {
+		s.Fatal("Failed to pass PTZ test: ", err)
+	}
+}
+
+func runPTZTest(ctx context.Context, app *cca.App) error {
 	if err := app.Click(ctx, cca.OpenPTZPanelButton); err != nil {
-		s.Fatal("Failed to open ptz panel: ", err)
+		return errors.Wrap(err, "failed to open ptz panel")
 	}
 
 	// Check cannot pan/tilt when zoom at initial level 0.
@@ -161,10 +176,10 @@ func CCAUIPTZ(ctx context.Context, s *testing.State) {
 	} {
 		disabled, err := app.Disabled(ctx, *control.ui)
 		if err != nil {
-			s.Fatalf("Failed to get disabled state of %v: %v", control.ui.Name, err)
+			return errors.Wrapf(err, "failed to get disabled state of %v", control.ui.Name)
 		}
 		if !disabled {
-			s.Fatalf("UI %v is not disabled at initial zoom level", control.ui.Name)
+			return errors.Wrapf(err, "UI %v is not disabled at initial zoom level", control.ui.Name)
 		}
 	}
 
@@ -183,13 +198,13 @@ func CCAUIPTZ(ctx context.Context, s *testing.State) {
 		zoomOut,
 	} {
 		if err := control.testToggle(ctx, app); err != nil {
-			s.Fatal("Failed: ", err)
+			return errors.Wrap(err, "failed to test toggle")
 		}
 	}
 
 	// Check cannot pan/tilt when zoom reset to initial level 0.
 	if err := app.Click(ctx, cca.PTZResetAllButton); err != nil {
-		s.Fatal("Failed to reset ptz: ", err)
+		return errors.Wrap(err, "failed to reset ptz")
 	}
 	for _, control := range []ptzControl{
 		zoomOut,
@@ -199,7 +214,8 @@ func CCAUIPTZ(ctx context.Context, s *testing.State) {
 		tiltDown,
 	} {
 		if err := app.WaitForDisabled(ctx, *control.ui, true); err != nil {
-			s.Fatalf("Failed to wait for ui %v disabled : %v", control.ui.Name, err)
+			return errors.Wrapf(err, "failed to wait for ui %v disabled", control.ui.Name)
 		}
 	}
+	return nil
 }
