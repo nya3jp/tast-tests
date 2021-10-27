@@ -111,7 +111,7 @@ func Hide(ctx context.Context, tconn *chrome.TestConn) error {
 	if err := ClickStatusArea(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to click the status area")
 	}
-
+L
 	ui := uiauto.New(tconn)
 	if err := ui.WithTimeout(uiTimeout).WaitUntilGone(quickSettingsFinder)(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for quick settings to be hidden")
