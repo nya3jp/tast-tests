@@ -16,6 +16,92 @@
       "message": "Still WIP. Please take a look. Thanks.",
       "revId": "91bd956071abe4cd8672cef22a2b205d1ce418b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42e43ac_ed812529",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-27T08:52:18Z",
+      "side": 1,
+      "message": "LGTM with nits.\n",
+      "revId": "91bd956071abe4cd8672cef22a2b205d1ce418b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e1261ed_3e72b447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/power_off.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-27T08:52:18Z",
+      "side": 1,
+      "message": "Maybe meta package is a better fit since this is not a cool example :)",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 15
+      },
+      "revId": "91bd956071abe4cd8672cef22a2b205d1ce418b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9e25648_54b85b05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/power_off.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-27T08:52:18Z",
+      "side": 1,
+      "message": "I recommend using cmd.Run(testexec.DumpLogOnError). Then the command output is sent to logs.",
+      "range": {
+        "startLine": 25,
+        "startChar": 20,
+        "endLine": 25,
+        "endChar": 26
+      },
+      "revId": "91bd956071abe4cd8672cef22a2b205d1ce418b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b4dec7_f820b986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/power_off.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-27T08:52:18Z",
+      "side": 1,
+      "message": "You might want to wait until we hit the timeout since it takes some time for the DUT to go down.\n\nYou can wait for test timeout by:\n\n \u003c-ctx.Done()",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 2
+      },
+      "revId": "91bd956071abe4cd8672cef22a2b205d1ce418b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
