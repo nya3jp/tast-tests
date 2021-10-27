@@ -52,6 +52,24 @@
       "parentUuid": "f15f205b_bcb7a0bc",
       "revId": "f6e30b3a0529fb3705b26d6b090a555c6236b649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a0942f2_fac9a8eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-27T23:36:41Z",
+      "side": 1,
+      "message": "Sorry but I\u0027m not qualified to review proto :(",
+      "parentUuid": "828b8eef_c2a177ea",
+      "revId": "f6e30b3a0529fb3705b26d6b090a555c6236b649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
