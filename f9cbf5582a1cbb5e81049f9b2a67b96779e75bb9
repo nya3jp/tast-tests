@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0010ba0_1e347185",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-27T12:07:20Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "f9cbf5582a1cbb5e81049f9b2a67b96779e75bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1cf8817_fd0df631",
@@ -76,6 +93,29 @@
         "startChar": 40,
         "endLine": 66,
         "endChar": 47
+      },
+      "revId": "f9cbf5582a1cbb5e81049f9b2a67b96779e75bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a140b219_ec21f9c5",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-10-27T12:07:20Z",
+      "side": 1,
+      "message": "nit: wouldn\u0027t it be better to go for a bit more descriptive variable names, even though they are used only in a small scope.\nEspecially for the s as we already have that kind of established for testing.State so it would be nice if there are no other usages of s.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 2
       },
       "revId": "f9cbf5582a1cbb5e81049f9b2a67b96779e75bb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
