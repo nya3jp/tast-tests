@@ -23,7 +23,8 @@ func init() {
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "ondevice_document_scanner", caps.BuiltinOrVividCamera},
-		Fixture:      "ccaTestBridgeReadyWithDocumentScene",
+		Data:         []string{"document_1280x960.y4m"},
+		Fixture:      "ccaTestBridgeReadyWithFakeCamera",
 	})
 }
 
@@ -44,6 +45,10 @@ const (
 func CCAUIDocumentScanning(ctx context.Context, s *testing.State) {
 	runSubTest := s.FixtValue().(cca.FixtureData).RunSubTest
 	s.FixtValue().(cca.FixtureData).SetDebugParams(cca.DebugParams{SaveCameraFolderWhenFail: true})
+
+	if err := s.FixtValue().(cca.FixtureData).SwitchScene(s.DataPath("document_1280x960.y4m")); err != nil {
+		s.Fatal("Failed to prepare document scene: ", err)
+	}
 
 	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
