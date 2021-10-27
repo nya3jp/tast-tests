@@ -52,6 +52,24 @@
       "parentUuid": "fb5339ec_85905293",
       "revId": "93c462347b1be95b0cef631cb64da5bb6e3e1309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44fbc973_3bb4c27c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-27T07:44:36Z",
+      "side": 1,
+      "message": "There was a general solution to this problem, and the CL is already ready:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3245492",
+      "parentUuid": "81ef80cd_832c1c7c",
+      "revId": "93c462347b1be95b0cef631cb64da5bb6e3e1309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
