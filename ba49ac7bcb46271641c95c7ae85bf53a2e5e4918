@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6545b941_d8439272",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/galleryapp/galleryapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-27T23:25:09Z",
+      "side": 1,
+      "message": "Can you keep the name RootFinder, Root does not mean RootWebArea, but the root node of the subtree which includes all your test target.",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "ba49ac7bcb46271641c95c7ae85bf53a2e5e4918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
