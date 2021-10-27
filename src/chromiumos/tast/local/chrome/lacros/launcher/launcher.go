@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/jslog"
@@ -42,6 +43,11 @@ type LacrosChrome struct {
 	cmd  *testexec.Cmd // The command context used to start lacros-chrome.
 	agg  *jslog.Aggregator
 	sess *driver.Session // Debug session connected lacros-chrome.
+}
+
+// Browser returns a Browser instance.
+func (l *LacrosChrome) Browser() *browser.Browser {
+	return browser.New(l.sess)
 }
 
 // ConnectToLacrosChrome connects to a running lacros instance (e.g launched by the UI) and returns a LacrosChrome object that can be used to interact with it.
