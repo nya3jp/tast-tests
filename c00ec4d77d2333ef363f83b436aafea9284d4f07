@@ -153,6 +153,24 @@
       "parentUuid": "875d5030_a110c32b",
       "revId": "c00ec4d77d2333ef363f83b436aafea9284d4f07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89719f16_70a30c8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2021-10-27T04:50:30Z",
+      "side": 1,
+      "message": "Yes, with the following patchset we will use shortlist to make unstable models in information test.",
+      "parentUuid": "0835b249_f9bf44c9",
+      "revId": "c00ec4d77d2333ef363f83b436aafea9284d4f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
