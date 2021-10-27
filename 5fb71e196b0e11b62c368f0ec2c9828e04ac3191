@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1791539d_6c04ece2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-10-27T06:15:48Z",
+      "side": 1,
+      "message": "Thanks a lot for reviewing!",
+      "revId": "5fb71e196b0e11b62c368f0ec2c9828e04ac3191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bd0a795_cf2a9f5e",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-10-27T04:55:35Z",
       "side": 1,
       "message": "nit: Does this has to be inside the if as act.stop is good to be done anyways (Both FPS and CPU).",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 5
+      },
+      "revId": "5fb71e196b0e11b62c368f0ec2c9828e04ac3191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0742929b_c8517448",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-10-27T06:15:48Z",
+      "side": 1,
+      "message": "We only need to explicitly stop the activity here as we\u0027re measuring CPU usage. To do so we run the test indefinitely in loop so it needs to be manually stopped. In the other branch of the if statement \"act.WaitForFinished\" is used to just wait until all tests are completed. There is definitely some room for improvement to make the code more readable.",
+      "parentUuid": "8bd0a795_cf2a9f5e",
       "range": {
         "startLine": 210,
         "startChar": 0,
