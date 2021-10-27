@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce66f07d_3a25aa64",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-27T01:00:50Z",
+      "side": 1,
+      "message": "I think this should just be ctx, not context.background",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce172369_491dd4f3",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-27T01:00:50Z",
+      "side": 1,
+      "message": "Go favors explicit over implicit. Unnamed parameters are not explicit. What does \"false\" mean? I had to look at the struct definition.",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f3d44c_77985778",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-27T01:00:50Z",
+      "side": 1,
+      "message": "This API has some issues.\n* In terms of naming, I would generally follow exec.cmd\u0027s lead, and use start to indicate that the function starts a background process, and run to indicate that we only return once the server has returned\n* I strongly recommend against requiring the user to create a goroutine, because you cannot get a return value from a goroutine. Look at your child cl - you call go server.Start(), and don\u0027t check the error it returns.\n\nMy reccomendation for the API is to create a background process with s.Start, which would call cmd.Start. Stop would then call signal, and then wait, and then attempt to check for errors in the stop function.",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aab9fd8_fb5c2b71",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-27T01:00:50Z",
+      "side": 1,
+      "message": "Don\u0027t try and parse combinedoutput (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#CombinedOutput)",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be32db5_e7862676",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-27T01:00:50Z",
+      "side": 1,
+      "message": "I believe you can just do err.Error() to get the string.",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
