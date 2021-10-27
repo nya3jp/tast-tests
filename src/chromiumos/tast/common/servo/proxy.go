@@ -43,6 +43,20 @@ func isDockerHost(host string) bool {
 	return strings.HasSuffix(host, "docker_servod")
 }
 
+func createDockerClient() (*client.Client, error) {
+	// Create Docker Client.
+	// If the dockerd socket exists, use the default option.
+	// Otherwise, try to use the tcp connection local host IP 192.168.231.1:2375
+	// for satlab device.
+	if _, err := os.Stat("/var/run/docker.sock"); err != nil {
+		if !errors.Is(err, os.ErrNotExist) {
+			return nil, err
+		}
+		return client.NewClientWithOpts(client.WithHost("tcp://192.168.231.1:2375"), client.WithAPIVersionNegotiation())
+	}
+	return client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
+}
+
 func splitHostPort(servoHostPort string) (string, int, int, error) {
 	host := "localhost"
 	port := 9999
@@ -192,7 +206,7 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 		return nil, err
 	}
 	if strings.Contains(host, "docker_servod") {
-		pxy.dcl, err = client.NewClientWithOpts(client.FromEnv)
+		pxy.dcl, err = createDockerClient()
 		if err != nil {
 			return nil, err
 		}
