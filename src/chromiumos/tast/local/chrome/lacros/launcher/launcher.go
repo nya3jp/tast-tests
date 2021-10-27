@@ -44,6 +44,8 @@ type LacrosChrome struct {
 	sess *driver.Session // Debug session connected lacros-chrome.
 }
 
+func (l *LacrosChrome) Sess() *driver.Session { return c.sess }
+
 // ConnectToLacrosChrome connects to a running lacros instance (e.g launched by the UI) and returns a LacrosChrome object that can be used to interact with it.
 func ConnectToLacrosChrome(ctx context.Context, lacrosPath, userDataDir string) (l *LacrosChrome, retErr error) {
 	debuggingPortPath := filepath.Join(userDataDir, "DevToolsActivePort")

@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -355,6 +356,9 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 		case Rootfs:
 			// When launched from the rootfs partition, the lacros-chrome is already located
 			// at /opt/google/lacros/lacros.squash in the OS, will be mounted at /run/lacros/.
+			if err := upstart.StartJob(ctx, "lacros-mounter"); err != nil {
+				s.Fatal("fadf", err)
+			}
 			matches, err := f.waitForPathToExist(ctx, "/run/lacros/chrome")
 			if err != nil {
 				s.Fatal("Failed to find lacros binary: ", err)

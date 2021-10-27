@@ -150,6 +150,8 @@ type HasChrome interface {
 	Chrome() *Chrome
 }
 
+func (c *Chrome) Sess() *driver.Session { return c.sess }
+
 // Chrome returns the Chrome instance.
 // It implements the HasChrome interface.
 func (c *Chrome) Chrome() *Chrome { return c }
