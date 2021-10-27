@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0deb755f_98a3cd61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-27T09:43:18Z",
+      "side": 1,
+      "message": "nit: please specify the exact command, e.g.\n\nnami board: tast run \u003cIP\u003e hwsec.CryptohomeUnrecoverableVault",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "a2a37616ad81b8dd3bfb838f83ef4d534ca760b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7665ef97_c2733928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_unrecoverable_vault.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-27T09:43:18Z",
+      "side": 1,
+      "message": "who are \"we\"? :) Please be more specific",
+      "range": {
+        "startLine": 45,
+        "startChar": 30,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "a2a37616ad81b8dd3bfb838f83ef4d534ca760b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42a720c3_549eaeb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_unrecoverable_vault.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-27T09:43:18Z",
+      "side": 1,
+      "message": "i prefer to move helper methods after a test method (CryptohomeUnrecoverableVault), so when you open this file you will be focused on the test logic first rather than helper methods.",
+      "revId": "a2a37616ad81b8dd3bfb838f83ef4d534ca760b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d07b5f_c04fc4d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_unrecoverable_vault.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-27T09:43:18Z",
+      "side": 1,
+      "message": "nit: you actually was able to call IsMounted() function, but it returned error. So you was not able to determine whether cryptohome is mounted. Please update error message.",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "a2a37616ad81b8dd3bfb838f83ef4d534ca760b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b1291aa_67be578e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_unrecoverable_vault.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-27T09:43:18Z",
+      "side": 1,
+      "message": "it\u0027s pretty common in Tast and Go to use the next format for such errors:\n\n```\nif got !\u003d want {\n  return errors.Errorf(\"unexpected mounted state \u003d got %t, want %t\", got, want)\n}\n```",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "a2a37616ad81b8dd3bfb838f83ef4d534ca760b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d63faaef_47da41fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_unrecoverable_vault.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-27T09:43:18Z",
+      "side": 1,
+      "message": "nit: Let\u0027s rephrase it to smth like \"Failed to check IsMounted state\".\n\nThere might be other errors returned by checkIsMounted function, for example \"context deadline exceeded\".",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 91,
+        "endChar": 28
+      },
+      "revId": "a2a37616ad81b8dd3bfb838f83ef4d534ca760b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98192e66_1131fdd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_unrecoverable_vault.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-27T09:43:18Z",
+      "side": 1,
+      "message": "You actually don\u0027t create a file, check function documentation [1].\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/storage/files/file_info.go?q\u003dfiles.NewFileInfo\n\n\nInstead error should be:\n\n```\ns.Fatal(\"Failed to create file info for file1: \", err)\n```",
+      "range": {
+        "startLine": 97,
+        "startChar": 11,
+        "endLine": 97,
+        "endChar": 39
+      },
+      "revId": "a2a37616ad81b8dd3bfb838f83ef4d534ca760b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebfa8a95_99689e3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_unrecoverable_vault.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-27T09:43:18Z",
+      "side": 1,
+      "message": "Don\u0027t ignore errors. Same in other places",
+      "revId": "a2a37616ad81b8dd3bfb838f83ef4d534ca760b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb97acfe_0e5cb19e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_unrecoverable_vault.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-27T09:43:18Z",
+      "side": 1,
+      "message": "This is not correct to assume that if err !\u003d nil than err is want you expect.\n\nAs mentioned above, err can be \"context deadline exceeded\".\n\nThe right way will be to explicitly compare returned error value with expected error",
+      "range": {
+        "startLine": 147,
+        "startChar": 27,
+        "endLine": 147,
+        "endChar": 37
+      },
+      "revId": "a2a37616ad81b8dd3bfb838f83ef4d534ca760b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
