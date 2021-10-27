@@ -134,6 +134,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a64c6796_6f4ee7c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-27T01:21:54Z",
+      "side": 1,
+      "message": "Should probably defer the disconnect. there are multiple error states between here and the disconnect.",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc52aacb_edaa8f32",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
         "patchSetId": 2
