@@ -32,9 +32,8 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
-			ExtraAttr: []string{"informational"},
-			Fixture:   fixture.ChromePolicyLoggedIn,
-			Val:       lacros.ChromeTypeChromeOS,
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     lacros.ChromeTypeChromeOS,
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
