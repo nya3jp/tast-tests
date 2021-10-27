@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c36ba9d7_7928d057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/terms_link_clickable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-27T02:58:58Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "512610a9_9fd204bb",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 48
+      },
+      "revId": "b1b7ecfc3270414f7fa5a916290c1d411a3db762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5721a96e_97f1cad0",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-25T22:53:57Z",
       "side": 1,
       "message": "you can remove this part, it\u0027s not entirely accurate (content can be within the page, but off-screen)",
+      "range": {
+        "startLine": 127,
+        "startChar": 49,
+        "endLine": 127,
+        "endChar": 72
+      },
+      "revId": "b1b7ecfc3270414f7fa5a916290c1d411a3db762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d4ccb1_92cb7fbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/terms_link_clickable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-27T02:58:58Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "5721a96e_97f1cad0",
       "range": {
         "startLine": 127,
         "startChar": 49,
