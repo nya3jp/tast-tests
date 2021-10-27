@@ -219,9 +219,9 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 			return errors.New("pv should not be nil when measuring CPU usage and power consumption")
 		}
 
-		s.Log("Waiting for codec to be ready")
+		s.Log("Initializing test and loading test data")
 		if err := c2e2etest.WaitForCodecReady(ctx, a); err != nil {
-			return errors.Wrap(err, "failed to wait for codec before measuring usage")
+			return errors.Wrap(err, "failed to initialize test")
 		}
 
 		s.Log("Starting CPU measurements")
@@ -253,6 +253,11 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 			}
 		}
 	} else {
+		s.Log("Initializing test and loading test data")
+		if err := c2e2etest.WaitForCodecReady(ctx, a); err != nil {
+			return errors.Wrap(err, "failed to initialize test")
+		}
+
 		s.Log("Waiting for activity to finish")
 		if err := act.WaitForFinished(ctx, 0*time.Second); err != nil {
 			s.Fatal("Failed to wait for activity: ", err)
