@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -139,7 +140,7 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
-		Parent:          "fakeDMSFamilyLink",
+		Parent:          fixture.PersistentFamilyLink,
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -158,7 +159,7 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
-		Parent:          "fakeDMSFamilyLinkArc",
+		Parent:          fixture.PersistentFamilyLinkARC,
 	})
 
 	testing.AddFixture(&testing.Fixture{

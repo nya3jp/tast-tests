@@ -57,7 +57,8 @@ type FakeDMS struct {
 	done       chan struct{} // channel that is closed when Wait() completes
 	policyPath string        // where policies are written for server to read
 
-	persistentPolicies []policy.Policy // policies that are always set
+	persistentPolicies   []policy.Policy // policies that are always set
+	persistentPolicyUser *string         // policyUser that is always set, nil if not used
 }
 
 // HasFakeDMS is an interface for fixture values that contain a FakeDMS instance. It allows
@@ -196,6 +197,9 @@ func (fdms *FakeDMS) start(ctx context.Context, p *os.File) error {
 func (fdms *FakeDMS) WritePolicyBlob(pb *PolicyBlob) error {
 	// Make sure persistent policies are always set.
 	pb.AddPolicies(fdms.persistentPolicies)
+	if fdms.persistentPolicyUser != nil {
+		pb.PolicyUser = *fdms.persistentPolicyUser
+	}
 
 	pJSON, err := json.Marshal(pb)
 	if err != nil {
@@ -228,6 +232,13 @@ func (fdms *FakeDMS) SetPersistentPolicies(persistentPolicies []policy.Policy) {
 	caller.Check(2, allowedPersistentPackages)
 
 	fdms.persistentPolicies = persistentPolicies
+}
+
+// SetPersistentPolicyUser will ensure that the provided PolicyUser is always set.
+func (fdms *FakeDMS) SetPersistentPolicyUser(persistentPolicyUser *string) {
+	caller.Check(2, allowedPersistentPackages)
+
+	fdms.persistentPolicyUser = persistentPolicyUser
 }
 
 // Ping pings the running FakeDMS server and returns an error if all is not well.

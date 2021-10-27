@@ -28,6 +28,38 @@ func init() {
 		PostTestTimeout: 5 * time.Second,
 		Parent:          fixture.FakeDMS,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.PersistentFamilyLink,
+		Desc:     "Fixture settig persistent policy user for a Family Link account",
+		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
+		Vars: []string{
+			"unicorn.childUser",
+		},
+		Impl: &persistentFixture{
+			policyUserVar: "unicorn.childUser",
+		},
+		SetUpTimeout:    5 * time.Second,
+		ResetTimeout:    5 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+		Parent:          fixture.FakeDMS,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.PersistentFamilyLinkARC,
+		Desc:     "Fixture settig persistent policy user for a Family Link account",
+		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
+		Vars: []string{
+			"arc.childUser",
+		},
+		Impl: &persistentFixture{
+			policyUserVar: "arc.childUser",
+		},
+		SetUpTimeout:    5 * time.Second,
+		ResetTimeout:    5 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+		Parent:          fixture.FakeDMS,
+	})
 }
 
 type persistentFixture struct {
@@ -35,7 +67,16 @@ type persistentFixture struct {
 	fdms *fakedms.FakeDMS
 
 	// policies is the list of persistent policies set for FakeDMS.
+	// Keep empty if unused.
 	policies []policy.Policy
+
+	// policyUser is the persistentuser account that used as policyUser in policy blob.
+	// Keep nil if unused.
+	policyUser *string
+	// The policyUserVar is the account variable (i.e. "unicorn.childUser") when using
+	// a different account instead of tast-user@managedchrome.com for policy test.
+	// It is used to set the value of the policyUser variable above.
+	policyUserVar string
 }
 
 func (p *persistentFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -46,7 +87,14 @@ func (p *persistentFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 
 	p.fdms = fdms
 
+	// Load policyUser from policyUserVar before using.
+	if p.policyUserVar != "" {
+		policyUser := s.RequiredVar(p.policyUserVar)
+		p.policyUser = &policyUser
+	}
+
 	p.fdms.SetPersistentPolicies(p.policies)
+	p.fdms.SetPersistentPolicyUser(p.policyUser)
 
 	// Write the policy blob with persistent values set as the one set by FakeDMS is the default.
 	if err := p.fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {

@@ -16,10 +16,6 @@ const (
 	FakeDMS = "fakeDMS"
 	// FakeDMSEnrolled is a fixture name.
 	FakeDMSEnrolled = "fakeDMSEnrolled"
-	// FakeDMSFamilyLink is a fixture name.
-	FakeDMSFamilyLink = "fakeDMSFamilyLink"
-	// FakeDMSFamilyLinkArc is a fixture name.
-	FakeDMSFamilyLinkArc = "fakeDMSFamilyLinkArc"
 )
 
 // Fixtures defined in chromiumos/tast/local/policyutil/fixtures/chrome.go.
@@ -42,4 +38,8 @@ const (
 const (
 	// PersistentLacros is a fixture name.
 	PersistentLacros = "persistentLacros"
+	// PersistentFamilyLink is a fixture name.
+	PersistentFamilyLink = "persistentFamilyLink"
+	// PersistentFamilyLinkARC is a fixture name.
+	PersistentFamilyLinkARC = "persistentFamilyLinkARC"
 )
