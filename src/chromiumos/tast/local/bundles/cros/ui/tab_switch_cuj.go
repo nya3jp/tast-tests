@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
@@ -53,6 +54,11 @@ func TabSwitchCUJ(ctx context.Context, s *testing.State) {
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
+	}
+
+	// Wait for cpu idle before test.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed to wait for CPU to become idle: ", err)
 	}
 
 	tabswitchcuj.Run(ctx, s)

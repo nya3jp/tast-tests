@@ -18,13 +18,25 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/logsaver"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
 const resetTimeout = 30 * time.Second
 
 func init() {
+	testing.AddFixture(&testing.Fixture{
+		Name: "prepareForCUJ",
+		Desc: "The fixture to prepare DUT for CUJ tests",
+		Contacts: []string{
+			"xiyuan@chromium.org",
+			"chromeos-perfmetrics-eng@google.com",
+		},
+		Impl:           &prepareCUJFixture{},
+		PreTestTimeout: 3 * time.Minute,
+	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInToCUJUser",
 		Desc: "The main fixture used for UI CUJ tests",
@@ -33,6 +45,7 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl:            &loggedInToCUJUserFixture{},
+		Parent:          "prepareForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
@@ -50,6 +63,7 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl:            &loggedInToCUJUserFixture{keepState: true, webUITabStrip: true},
+		Parent:          "prepareForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
@@ -73,6 +87,7 @@ func init() {
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
 			}, nil
 		}),
+		Parent:          "prepareForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
@@ -125,6 +140,34 @@ func runningPackages(ctx context.Context, a *arc.ARC) (map[string]struct{}, erro
 		}
 	}
 	return acts, nil
+}
+
+type prepareCUJFixture struct{}
+
+func (f *prepareCUJFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	return nil
+}
+
+func (f *prepareCUJFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+}
+
+func (f *prepareCUJFixture) Reset(ctx context.Context) error {
+	return nil
+}
+
+func (f *prepareCUJFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	// Ensure display on to record ui performance correctly.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
+
+	// Wait for cpu idle before test.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed to wait for CPU to become idle: ", err)
+	}
+}
+
+func (f *prepareCUJFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 }
 
 // FixtureData is the struct returned by the preconditions.
