@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "714c4a7c_632d8216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-27T22:01:01Z",
+      "side": 1,
+      "message": "Desc: This Vulkaninfo test records the state of Vulkan in vulaninfo.txt and reports to crosbolt.",
+      "parentUuid": "ff46f848_6ed113b6",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "6e07de86b84b3b9216646fc69e088bb125c8ca98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "169f335e_1bcd72cb",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
         "patchSetId": 2
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "VkInfo \u003c- Host\nVkInfo.no_vulkan \u003c- Host_no_vulkan\nVkInfo.crostini \u003c- crostini\nVkInfo.crostini_no_vulkan \u003c- crostini_no_vulkan\nVkInfo.borealis \u003c- borealis\n...",
       "parentUuid": "169f335e_1bcd72cb",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "6e07de86b84b3b9216646fc69e088bb125c8ca98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "782cbeec_e1c4547e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-27T22:01:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "427c637e_decf0a34",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -166,6 +214,30 @@
       "side": 1,
       "message": "I mean the crosbolt is desiged for performance tracking, which is less ideal for reporting the version number than other pipeline, e.g. goldeneye or crosnames.\nI can remove this if you want.",
       "parentUuid": "aa232ff8_6c1bfa95",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 21
+      },
+      "revId": "6e07de86b84b3b9216646fc69e088bb125c8ca98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf3dc338_7182f16b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-27T22:01:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b20dd63_79d45c79",
       "range": {
         "startLine": 47,
         "startChar": 0,
