@@ -6,13 +6,16 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -28,13 +31,26 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     lacros.ChromeTypeChromeOS,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               lacros.ChromeTypeLacros,
+		}},
 	})
 }
 
 func IncognitoModeAvailability(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	// IncognitoModeAvailability policy values
 	const (
@@ -53,18 +69,18 @@ func IncognitoModeAvailability(ctx context.Context, s *testing.State) {
 			name:  "unset",
 			value: &policy.IncognitoModeAvailability{Stat: policy.StatusUnset},
 		},
-		{
-			name:  "enabled",
-			value: &policy.IncognitoModeAvailability{Val: IncognitoModeEnabled},
-		},
-		{
-			name:  "disabled",
-			value: &policy.IncognitoModeAvailability{Val: IncognitoModeDisabled},
-		},
-		{
-			name:  "forced",
-			value: &policy.IncognitoModeAvailability{Val: IncognitoModeForced},
-		},
+		//{
+		//	name:  "enabled",
+		//	value: &policy.IncognitoModeAvailability{Val: IncognitoModeEnabled},
+		//},
+		//{
+		//	name:  "disabled",
+		//	value: &policy.IncognitoModeAvailability{Val: IncognitoModeDisabled},
+		//},
+		//{
+		//	name:  "forced",
+		//	value: &policy.IncognitoModeAvailability{Val: IncognitoModeForced},
+		//},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			// Perform cleanup.
@@ -82,6 +98,16 @@ func IncognitoModeAvailability(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Failed to create Test API connection: ", err)
 			}
+
+			// TODO(crbug.com/1259615): This should be part of the fixture.
+			_, l, _, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+			if err != nil {
+				s.Fatal("Failed to setup chrome: ", err)
+			}
+			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
+			s.Log("ready")
+			testing.Sleep(ctx, 30*time.Second)
 
 			incognitoEnabled := param.value.Val != IncognitoModeDisabled
 
