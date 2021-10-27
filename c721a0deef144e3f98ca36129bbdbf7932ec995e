@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1c4df665_1031df0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-10-27T23:44:53Z",
+      "side": 1,
+      "message": "Thanks for reviewing!",
+      "revId": "c721a0deef144e3f98ca36129bbdbf7932ec995e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f9be36f3_98d7b715",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go",
         "patchSetId": 1
@@ -14,6 +31,24 @@
       "writtenOn": "2021-10-27T08:27:10Z",
       "side": 1,
       "message": "I assumed that this change only changes the logging and initialization failure case, so no logical change for the normal code path.",
+      "revId": "c721a0deef144e3f98ca36129bbdbf7932ec995e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39098992_a94bef6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-10-27T23:44:53Z",
+      "side": 1,
+      "message": "Correct, this step was already done implicitly by \"WaitForFinished\", so aside from some extra logging nothing changes.",
+      "parentUuid": "f9be36f3_98d7b715",
       "revId": "c721a0deef144e3f98ca36129bbdbf7932ec995e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
