@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6938a9d_240500a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/galleryapp/galleryapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1176019
+      },
+      "writtenOn": "2021-10-27T23:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35e2373c_2620bc60",
+      "range": {
+        "startLine": 38,
+        "startChar": 65,
+        "endLine": 38,
+        "endChar": 74
+      },
+      "revId": "6e0b2f66f2a697eef3152da2b1e519d279279b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1bd6d61_af4518de",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-27T22:42:38Z",
       "side": 1,
       "message": "Do you need to use First() here. It is also not encouraged, which means you have not found an unique identifier.",
+      "range": {
+        "startLine": 41,
+        "startChar": 73,
+        "endLine": 41,
+        "endChar": 78
+      },
+      "revId": "6e0b2f66f2a697eef3152da2b1e519d279279b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3721e268_7ab2fae0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/galleryapp/galleryapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1176019
+      },
+      "writtenOn": "2021-10-27T23:21:04Z",
+      "side": 1,
+      "message": "thanks! have removed RootFinder altogether since (as you pointed out offline) its not even necessary :)",
+      "parentUuid": "d1bd6d61_af4518de",
       "range": {
         "startLine": 41,
         "startChar": 73,
