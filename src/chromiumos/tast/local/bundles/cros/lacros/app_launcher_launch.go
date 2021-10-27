@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppLauncherLaunch,
 		Desc:         "Tests launching lacros from the App Launcher",
-		Contacts:     []string{"liaoyuke@chromium.org", "lacros-team@google.com"},
+		Contacts:     []string{"liaoyuke@chromium.org", "lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacrosUI",

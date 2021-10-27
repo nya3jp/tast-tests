@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Basic,
 		Desc:         "Tests basic lacros startup",
-		Contacts:     []string{"erikchen@chromium.org", "hidehiko@chromium.org", "edcourtney@chromium.org", "lacros-team@google.com"},
+		Contacts:     []string{"erikchen@chromium.org", "hidehiko@chromium.org", "edcourtney@chromium.org", "lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacros",
