@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fab6753a_3f4224c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/search_drive.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-27T10:11:50Z",
+      "side": 1,
+      "message": "Thank you for the suggestion,\nHowever, the node of icon on a11y tree that we found has no detail can be used to verify.\nOnly the `Size`, `Type`, `Date modified` can be used to verify.\nShould we use the `Type` to verify?",
+      "parentUuid": "789cd0e7_8eae8986",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 115,
+        "endChar": 27
+      },
+      "revId": "00e26bbfb5434b64dce04f9e6af1393412c70035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b4f90a4_0c5df33b",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
         "patchSetId": 1
