@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcdad31c_c6095fc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-27T09:45:32Z",
+      "side": 1,
+      "message": "Hi John,\n\nPlease update this file as soon as possible to avoid problems in the future.",
+      "revId": "945a9f060123db6109e6bf7b3350190b84ebbbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
