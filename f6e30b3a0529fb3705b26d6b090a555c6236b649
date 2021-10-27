@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf2f56af_ac0b1d28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-27T06:18:45Z",
+      "side": 1,
+      "message": "Hi all, this CL is ready for review. Please note that the .pb.go is an automatically generated file.",
+      "revId": "f6e30b3a0529fb3705b26d6b090a555c6236b649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
