@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2bc8a4a_0d39ac07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-27T05:21:55Z",
+      "side": 1,
+      "message": "mode -\u003e Mode",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 37
+      },
+      "revId": "6ebf277e450bc4ce4e2b2d43c254c80304f12461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c4cf631_5f256165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-27T05:21:55Z",
+      "side": 1,
+      "message": "3 seconds is kind of short, especially since cleanupCtx is used a few times. There aren\u0027t really any clear guidelines on how much time should be saved for cleanup, but I\u0027d make this a little bit longer. Maybe 10 seconds?",
+      "range": {
+        "startLine": 53,
+        "startChar": 37,
+        "endLine": 53,
+        "endChar": 50
+      },
+      "revId": "6ebf277e450bc4ce4e2b2d43c254c80304f12461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b7bff9_acdf40e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-27T05:21:55Z",
+      "side": 1,
+      "message": "Handle the !ok case, rather than having the test silently do nothing. Rather than just handling that in an else case here, handle it in its own if case, so the body of the test can be unnnested. In other words:\n\n chameleonAddr, ok :\u003d ...\n if !ok {\n   s.Fatal(...)\n }\n \u003crest-of-test\u003e",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 60
+      },
+      "revId": "6ebf277e450bc4ce4e2b2d43c254c80304f12461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7911815_23f5f436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-27T05:21:55Z",
+      "side": 1,
+      "message": "I think these can be combined into a single line.",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "6ebf277e450bc4ce4e2b2d43c254c80304f12461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7983063a_d55a769e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-27T05:21:55Z",
+      "side": 1,
+      "message": "I assume this is safe to call even if the port isn\u0027t plugged in? Can you add a comment stating that, and move it to right after che.NewPort?",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 29
+      },
+      "revId": "6ebf277e450bc4ce4e2b2d43c254c80304f12461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a0ddb9_a759444c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-27T05:21:55Z",
+      "side": 1,
+      "message": "Doesn\u0027t this check fail if no displays are connected? If we just unplugged the display, won\u0027t it always fail?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 3
+      },
+      "revId": "6ebf277e450bc4ce4e2b2d43c254c80304f12461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7c7451a_4a9f06b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-27T05:21:55Z",
+      "side": 1,
+      "message": "What\u0027s before this look is nearly the same was what\u0027s in the loop. The only difference is the call to dp.WaitVideoInputStable. If that call is added into the loop, then we can just get rid of the plug/unplug before the loop, which would make the test shorter and easier to understand.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 30
+      },
+      "revId": "6ebf277e450bc4ce4e2b2d43c254c80304f12461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcde810d_180cb50d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-27T05:21:55Z",
+      "side": 1,
+      "message": "Isn\u0027t there a race here? The fact that polling in externalMonitorDetection is necessary suggests that plug/unplug aren\u0027t synchronous. In that case, it\u0027s possible that this check executes before unplugging finishes, in which case err will be nil and the test will fail.\n\nI think it should work to rewrite externalMonitorDetection to also support waiting for zero external displays (i.e. just remove the displCount \u003c 2 check). Then you can change the 1 to a 0 here, and check for err !\u003d nil. That will fix the race, and has the extra benefit of not always waiting 15 seconds in the success case.",
+      "range": {
+        "startLine": 118,
+        "startChar": 13,
+        "endLine": 118,
+        "endChar": 78
+      },
+      "revId": "6ebf277e450bc4ce4e2b2d43c254c80304f12461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d1fb6ea_0176ea83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-27T05:21:55Z",
+      "side": 1,
+      "message": "externalMonitorDetection -\u003e waitForExternalMonitorCount",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 125,
+        "endChar": 29
+      },
+      "revId": "6ebf277e450bc4ce4e2b2d43c254c80304f12461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849c7d74_d02b1a48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-27T05:21:55Z",
+      "side": 1,
+      "message": "DisplayInfo -\u003e displayInfo",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 16
+      },
+      "revId": "6ebf277e450bc4ce4e2b2d43c254c80304f12461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9382141c_216e1fb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-27T05:21:55Z",
+      "side": 1,
+      "message": "const DisplayInfoFile \u003d \"/sys/kernel/debug/dri/0/i915_display_info\"\ntestexec.CommandContext(ctx, \"cat\", DisplayInfoFile)",
+      "range": {
+        "startLine": 138,
+        "startChar": 14,
+        "endLine": 138,
+        "endChar": 74
+      },
+      "revId": "6ebf277e450bc4ce4e2b2d43c254c80304f12461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73111461_95422334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-27T05:21:55Z",
+      "side": 1,
+      "message": "Unnecessary parentheses",
+      "range": {
+        "startLine": 143,
+        "startChar": 19,
+        "endLine": 143,
+        "endChar": 32
+      },
+      "revId": "6ebf277e450bc4ce4e2b2d43c254c80304f12461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc3f198_52ee46d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-27T05:21:55Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we check that it the number of matches is equal to numberOfDisplays? It\u0027s not clear to me exactly what the relationship between numberOfDisplays and regexpPatterns is.",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 44
+      },
+      "revId": "6ebf277e450bc4ce4e2b2d43c254c80304f12461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a07a75_a85512fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-27T05:21:55Z",
+      "side": 1,
+      "message": "Unnecessary parentheses",
+      "range": {
+        "startLine": 149,
+        "startChar": 8,
+        "endLine": 149,
+        "endChar": 17
+      },
+      "revId": "6ebf277e450bc4ce4e2b2d43c254c80304f12461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
