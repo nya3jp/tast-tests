@@ -34,6 +34,24 @@
       "parentUuid": "75cbae7e_0cbc5aed",
       "revId": "93c462347b1be95b0cef631cb64da5bb6e3e1309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81ef80cd_832c1c7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-27T03:52:17Z",
+      "side": 1,
+      "message": "SGTM, imo let\u0027s land this until that\u0027s ready.",
+      "parentUuid": "fb5339ec_85905293",
+      "revId": "93c462347b1be95b0cef631cb64da5bb6e3e1309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
