@@ -38,8 +38,6 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		Vars: []string{
 			"ui.cujAccountPool",
-			"cuj_username",
-			"cuj_password",
 		},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -55,8 +53,6 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		Vars: []string{
 			"ui.cujAccountPool",
-			"cuj_username",
-			"cuj_password",
 		},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -68,7 +64,7 @@ func init() {
 		},
 		Impl: launcher.NewFixture(launcher.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
-				getLoginOption(s),
+				loginOption(s),
 				chrome.ARCSupported(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
 			}, nil
@@ -78,8 +74,6 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		Vars: []string{
 			"ui.cujAccountPool",
-			"cuj_username",
-			"cuj_password",
 			launcher.LacrosDeployedBinary,
 		},
 	})
@@ -98,18 +92,7 @@ func init() {
 	})
 }
 
-func getLoginOption(s *testing.FixtState) chrome.Option {
-	var username string
-	var password string
-
-	cujUser, userOk := s.Var("cuj_username")
-	cujPass, passOk := s.Var("cuj_password")
-	if userOk && passOk {
-		username = cujUser
-		password = cujPass
-		return chrome.GAIALogin(chrome.Creds{User: username, Pass: password})
-	}
-
+func loginOption(s *testing.FixtState) chrome.Option {
 	return chrome.GAIALoginPool(s.RequiredVar("ui.cujAccountPool"))
 }
 
@@ -161,7 +144,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 			defer cancel()
 
 			opts := []chrome.Option{
-				getLoginOption(s),
+				loginOption(s),
 				chrome.ARCSupported(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
 			}
