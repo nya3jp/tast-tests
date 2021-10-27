@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0663a51a_437d5d78",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-27T05:31:28Z",
+      "side": 1,
+      "message": "Probably worth logging here that sigterm didn\u0027t work, so you\u0027re performing sigkill.",
+      "revId": "d8e473e6af49a755ade11d179ed0f66e3e13b49a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

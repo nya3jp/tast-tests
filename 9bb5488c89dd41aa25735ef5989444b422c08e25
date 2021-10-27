@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9acbcacf_bf3be1d4",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-27T05:31:28Z",
+      "side": 1,
+      "message": "That\u0027s fine, but in that case, I think ctx should be removed as a param - it doesn\u0027t appear to be used anywhere else.",
+      "parentUuid": "f6be4891_cc1e5720",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce172369_491dd4f3",
         "filename": "src/chromiumos/tast/local/smb/server.go",
         "patchSetId": 4
@@ -108,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfbc1854_3285d5aa",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-27T05:31:28Z",
+      "side": 1,
+      "message": "FYI, There\u0027s a much simpler way to do this in go that completely avoids having to store the logs anywhere:\n\nf \u003d os.Create(outdir/smbd.log)\ndefer f.Close()\ncmd.Stdout \u003d f\ncmd.Stderr \u003d f\n\nThe advantage of this is generally that you can error early - before even starting the goroutine.",
+      "parentUuid": "af58ae25_88d6b521",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0aab9fd8_fb5c2b71",
         "filename": "src/chromiumos/tast/local/smb/server.go",
         "patchSetId": 4
@@ -137,6 +173,24 @@
       "side": 1,
       "message": "I don\u0027t believe I am, I\u0027m using |output| to dump the smbd log files in the case of an error.",
       "parentUuid": "0aab9fd8_fb5c2b71",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fc16eac_03113441",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-27T05:31:28Z",
+      "side": 1,
+      "message": "Ah, my bad, I saw strings.contains and thought you were doing that on combinedoutput, but it looks like you\u0027re doing this on the error.",
+      "parentUuid": "c899fa58_8db83b3b",
       "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
