@@ -16,6 +16,23 @@
       "message": "This CL remove cuj_username/password if we no longer need them for ui.MeetCUJ.*,\n\nThe vars are added for crbug/1181121 but I am not sure whether they are used.",
       "revId": "103dee5fb8582431ba01960f27e131d557d0be28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c3f703d_c21a08c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-10-27T22:56:57Z",
+      "side": 1,
+      "message": "Thanks Yichen.\n\nAlex, moving you to cc but you are welcome to review.\n\nOwners, please bless the CL.",
+      "revId": "103dee5fb8582431ba01960f27e131d557d0be28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
