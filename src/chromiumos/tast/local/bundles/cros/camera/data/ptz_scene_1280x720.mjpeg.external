@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/camera/ptz_scene_1280x720_20211101.mjpeg",
+  "size": 6269,
+  "sha256sum": "b7d2c02e0039ecbcca70f5e2b4b9040ef455cfeb2435cf1056cc3fecbe512ead"
+}

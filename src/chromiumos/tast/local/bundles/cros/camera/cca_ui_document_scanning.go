@@ -27,8 +27,9 @@ func init() {
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "ondevice_document_scanner", caps.BuiltinOrVividCamera},
+		Data:         []string{"document_3264x2448.mjpeg"},
 		Params: []testing.Param{{
-			Fixture: "ccaTestBridgeReadyWithDocumentScene",
+			Fixture: "ccaTestBridgeReadyWithFakeCamera",
 			Val: []documentScanSubTest{
 				{
 					name: "testPDF",
@@ -129,17 +130,21 @@ var (
 // cannot use File VCD to test it. Therefore, we will leave that part to another
 // test which is executed on a CameraBox.
 func CCAUIDocumentScanning(ctx context.Context, s *testing.State) {
-	runSubTest := s.FixtValue().(cca.FixtureData).RunSubTest
+	runTestWithApp := s.FixtValue().(cca.FixtureData).RunTestWithApp
 	s.FixtValue().(cca.FixtureData).SetDebugParams(cca.DebugParams{SaveCameraFolderWhenFail: true})
+
+	if err := s.FixtValue().(cca.FixtureData).SwitchScene(s.DataPath("document_3264x2448.mjpeg")); err != nil {
+		s.Fatal("Failed to prepare document scene: ", err)
+	}
 
 	subTestTimeout := 30 * time.Second
 	for _, tst := range s.Param().([]documentScanSubTest) {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		defer cancel()
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
-			if err := runSubTest(ctx, func(ctx context.Context, app *cca.App) error {
+			if err := runTestWithApp(ctx, func(ctx context.Context, app *cca.App) error {
 				return tst.run(ctx, app, s.FixtValue().(cca.FixtureData).Chrome)
-			}, cca.SubTestParams{}); err != nil {
+			}, cca.TestWithAppParams{}); err != nil {
 				s.Errorf("Failed to pass %v subtest: %v", tst.name, err)
 			}
 		})
