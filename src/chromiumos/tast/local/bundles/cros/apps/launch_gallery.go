@@ -108,7 +108,7 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 	s.Log("Wait for Gallery app rendering")
 	// Use image section to verify Gallery App rendering.
 	ui = uiauto.New(tconn).WithTimeout(time.Minute)
-	imageElementFinder := nodewith.Role(role.Image).Name(localFile).Ancestor(galleryapp.RootFinder)
+	imageElementFinder := nodewith.Role(role.Image).Name(localFile).Ancestor(galleryapp.BrowserFinder)
 	if err := ui.WaitUntilExists(imageElementFinder)(ctx); err != nil {
 		s.Fatal("Failed to render Gallery: ", err)
 	}
