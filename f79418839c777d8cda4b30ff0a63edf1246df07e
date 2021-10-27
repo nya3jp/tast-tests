@@ -16,6 +16,23 @@
       "message": "Can you take a look? Thanks!",
       "revId": "f79418839c777d8cda4b30ff0a63edf1246df07e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25853d06_c75db639",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-27T03:33:02Z",
+      "side": 1,
+      "message": "Thanks for the CL.\n\nCan we make use of \"-var\" option in tast run, like tast run -var\u003dcache\u003dtrue?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go;l\u003d39;drc\u003d15ea3ce239fe1c39d712a2f4246b8a75523154b1",
+      "revId": "f79418839c777d8cda4b30ff0a63edf1246df07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
