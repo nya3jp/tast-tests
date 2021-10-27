@@ -28,6 +28,9 @@ const (
 	defaultCrossDeviceUsername = "crossdevice.username"
 	defaultCrossDevicePassword = "crossdevice.password"
 
+	smartLockUsername = "crossdevice.smartLockUsername"
+	smartLockPassword = "crossdevice.smartLockPassword"
+
 	// Specify -var=skipAndroidLogin=true if the Android device is logged in to a personal account.
 	// Otherwise we will attempt removing all Google accounts and adding a test account to the phone.
 	// Adding/removing accounts requires ADB root access, so this will automatically be set to true if root is not available.
@@ -45,8 +48,10 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Vars: []string{
-			defaultCrossDeviceUsername,
-			defaultCrossDevicePassword,
+			smartLockUsername,
+			smartLockPassword,
+			//defaultCrossDeviceUsername,
+			//defaultCrossDevicePassword,
 			skipAndroidLogin,
 		},
 		SetUpTimeout:    3 * time.Minute,
@@ -97,8 +102,8 @@ func (f *crossdeviceAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		}
 		loggedIn = b
 	}
-	androidUsername := s.RequiredVar(defaultCrossDeviceUsername)
-	androidPassword := s.RequiredVar(defaultCrossDevicePassword)
+	androidUsername := s.RequiredVar(smartLockUsername)
+	androidPassword := s.RequiredVar(smartLockPassword)
 
 	if !loggedIn {
 		if rooted {
