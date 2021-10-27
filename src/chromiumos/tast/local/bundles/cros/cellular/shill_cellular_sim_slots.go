@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package cellular
 
 import (
 	"context"
@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/network/cellular"
+	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/testing"
@@ -26,7 +26,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     ShillCellularSimSlots,
 		Desc:     "Verifies that Shill receives SimSlot information from ModemManager and can set the primary sim slot",
-		Contacts: []string{"stevenjb@google.com", "cros-network-health@google.com"},
+		Contacts: []string{"stevenjb@google.com", "cros-network-health@google.com", "chromeos-cellular-team@google.com"},
 		Attr:     []string{"group:cellular", "cellular_sim_dual_active"},
 	})
 }

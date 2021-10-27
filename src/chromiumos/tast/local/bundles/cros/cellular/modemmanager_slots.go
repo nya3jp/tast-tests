@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package cellular
 
 import (
 	"context"
@@ -16,7 +16,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     ModemmanagerSlots,
 		Desc:     "Verifies that modemmanager reports multiple SIM slots",
-		Contacts: []string{"stevenjb@google.com", "cros-network-health@google.com"},
+		Contacts: []string{"stevenjb@google.com", "cros-network-health@google.com", "chromeos-cellular-team@google.com"},
 		Attr:     []string{"group:cellular", "cellular_sim_active", "cellular_cq"},
 		Fixture:  "cellular",
 	})

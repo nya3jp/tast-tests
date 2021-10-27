@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// Package cellular provides functions for testing Cellular connectivity.
 package cellular
 
 import (
@@ -272,12 +273,12 @@ func (h *Helper) SetDeviceProperty(ctx context.Context, prop string, value inter
 }
 
 // InitDeviceProperty sets a device property and returns a function to restore the initial value.
-func (h *Helper) InitDeviceProperty(ctx context.Context, prop string, value interface{}) (func(ctx context.Context, s *testing.State), error) {
+func (h *Helper) InitDeviceProperty(ctx context.Context, prop string, value interface{}) (func(ctx context.Context), error) {
 	return initProperty(ctx, h.Device.PropertyHolder, prop, value)
 }
 
 // InitServiceProperty sets a service property and returns a function to restore the initial value.
-func (h *Helper) InitServiceProperty(ctx context.Context, prop string, value interface{}) (func(ctx context.Context, s *testing.State), error) {
+func (h *Helper) InitServiceProperty(ctx context.Context, prop string, value interface{}) (func(ctx context.Context), error) {
 	service, err := h.FindServiceForDevice(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get cellular service")
@@ -289,16 +290,16 @@ func (h *Helper) InitServiceProperty(ctx context.Context, prop string, value int
 const PropertyCleanupTime = 1 * time.Second
 
 // initProperty sets a property and returns a function to restore the initial value.
-func initProperty(ctx context.Context, properties *shill.PropertyHolder, prop string, value interface{}) (func(ctx context.Context, s *testing.State), error) {
+func initProperty(ctx context.Context, properties *shill.PropertyHolder, prop string, value interface{}) (func(ctx context.Context), error) {
 
 	prevValue, err := properties.GetAndSetProperty(ctx, prop, value)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to read and initialize property")
 	}
 
-	return func(ctx context.Context, s *testing.State) {
+	return func(ctx context.Context) {
 		if err := properties.SetProperty(ctx, prop, prevValue); err != nil {
-			s.Fatalf("Failed to restore %s: %s", prop, err)
+			testing.ContextLogf(ctx, "Failed to restore %s: %s", prop, err)
 		}
 	}, nil
 

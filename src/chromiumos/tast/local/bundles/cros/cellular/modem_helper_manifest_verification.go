@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package cellular
 
 import (
 	"context"
 	"os"
 	"path/filepath"
 
-	"chromiumos/tast/local/bundles/cros/network/cellular"
+	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/testing"
 )
 
@@ -38,12 +38,12 @@ func ModemHelperManifestVerification(ctx context.Context, s *testing.State) {
 		s.Fatal("Cannot find ", cellular.GetModemHelperManifestPath())
 	}
 
-	fwManifest, err := cellular.ParseModemFirmwareManifest(ctx, s)
+	fwManifest, err := cellular.ParseModemFirmwareManifest(ctx)
 	if err != nil {
 		s.Fatal("Failed to parse the firmware manifest: ", err)
 	}
 
-	helperManifest, err := cellular.ParseModemHelperManifest(ctx, s)
+	helperManifest, err := cellular.ParseModemHelperManifest(ctx)
 	if err != nil {
 		s.Fatal("Failed to parse the helper manifest: ", err)
 	}

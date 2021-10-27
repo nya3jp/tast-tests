@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package cellular
 
 import (
 	"context"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
-	"chromiumos/tast/local/bundles/cros/network/cellular"
+	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
