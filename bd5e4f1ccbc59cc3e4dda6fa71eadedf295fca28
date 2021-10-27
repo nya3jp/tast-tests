@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "182fa184_5a6a5e4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-27T09:16:12Z",
+      "side": 1,
+      "message": "This assumes that all docArea has length\u003d4.\n\nIf that\u0027s what you expect, I recommend enfocing it by array types:\n\n type docArea struct {\n   corners [4]docCorner\n }\n\nIf the length may vary, we need to check len(area.corners) \u003d\u003d len(area2.corners) and iterate for variable length.",
+      "range": {
+        "startLine": 56,
+        "startChar": 17,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "bd5e4f1ccbc59cc3e4dda6fa71eadedf295fca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da80ec0d_c48d17f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-27T09:16:12Z",
+      "side": 1,
+      "message": "How do we generate these numbers? It might be helpful to leave a memo how to do it in case someone wants to update this test in the future.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 53
+      },
+      "revId": "bd5e4f1ccbc59cc3e4dda6fa71eadedf295fca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3d138e6_823ce326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-27T09:16:12Z",
+      "side": 1,
+      "message": "Let us call cancel with defer so we never forget to call it.",
+      "revId": "bd5e4f1ccbc59cc3e4dda6fa71eadedf295fca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e9e5d1e_c55cf0f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-27T09:16:12Z",
+      "side": 1,
+      "message": "style: should (lower letter)\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 250,
+        "startChar": 21,
+        "endLine": 250,
+        "endChar": 27
+      },
+      "revId": "bd5e4f1ccbc59cc3e4dda6fa71eadedf295fca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f60a1ca_fbc72a83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-27T09:16:12Z",
+      "side": 1,
+      "message": "I recommend including the compared values (reviewElSize.Width and reviewElSize.Height) in the error message to help debugging.",
+      "range": {
+        "startLine": 250,
+        "startChar": 52,
+        "endLine": 250,
+        "endChar": 67
+      },
+      "revId": "bd5e4f1ccbc59cc3e4dda6fa71eadedf295fca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de7d56d9_a5927760",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-27T09:16:12Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "bd5e4f1ccbc59cc3e4dda6fa71eadedf295fca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21fadb54_02deb262",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-27T09:16:12Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "bd5e4f1ccbc59cc3e4dda6fa71eadedf295fca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "740a9732_c569d768",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-27T09:16:12Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "bd5e4f1ccbc59cc3e4dda6fa71eadedf295fca28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
