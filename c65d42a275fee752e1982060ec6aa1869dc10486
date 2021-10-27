@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfdae836_3183f109",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-10-27T13:56:40Z",
+      "side": 1,
+      "message": "2) Included case\n3) Added check for G3/S5, I don\u0027t think there\u0027s any redundant lid closes in mine\n4) Split into 2 separate test cases",
+      "parentUuid": "dab38468_54061f49",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e469862_5305f4e7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-25T17:47:56Z",
       "side": 1,
       "message": "This is an unnecessary indirection. The code would be much simpler to just call testing.Sleep everywhere you call this. Also you didn\u0027t check for sleep failures.",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 20
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd099443_45da1082",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-10-27T13:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e469862_5305f4e7",
       "range": {
         "startLine": 95,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dec62974_e857e32f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-10-27T13:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04a3b422_be5f7bf1",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 15
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65dec7d1_ec232df6",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-25T17:47:56Z",
       "side": 1,
       "message": "Why does this function exist? Just inline the ms.PowerOff call.",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa880736_17e95c2f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-10-27T13:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65dec7d1_ec232df6",
       "range": {
         "startLine": 134,
         "startChar": 5,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e80cd9f5_16237b7e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-10-27T13:56:40Z",
+      "side": 1,
+      "message": "Updated to start evtest, close then open the lid, then stop evtest and check output",
+      "parentUuid": "705c35f3_3b8e96fd",
+      "range": {
+        "startLine": 197,
+        "startChar": 5,
+        "endLine": 197,
+        "endChar": 19
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49081782_3288521a",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-10-25T17:47:56Z",
       "side": 1,
       "message": "I would get rid of this function, and move the code to the call site.",
+      "range": {
+        "startLine": 245,
+        "startChar": 5,
+        "endLine": 245,
+        "endChar": 30
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0868b270_622251f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-10-27T13:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49081782_3288521a",
       "range": {
         "startLine": 245,
         "startChar": 5,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c27fccec_ed431390",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-10-27T13:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77c5b681_c7361b59",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 2
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8646cef2_94e9105d",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd59bb7_82ed45b4",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-10-27T13:56:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8646cef2_94e9105d",
+      "range": {
+        "startLine": 763,
+        "startChar": 1,
+        "endLine": 776,
+        "endChar": 2
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95676574_7f8ec6d4",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-10-25T17:47:56Z",
       "side": 1,
       "message": "To make this more generic, it should probably take the timeout as a parameter. Also, it doesn\u0027t work for the case above where there are 2 allowed power states.",
+      "range": {
+        "startLine": 810,
+        "startChar": 3,
+        "endLine": 810,
+        "endChar": 66
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9988f617_941ce6f1",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-10-27T13:56:40Z",
+      "side": 1,
+      "message": "Updated to take timeout and interval as parameter, with consts in the file as \"default\" values. Also now accepts arbitrary number of acceptable states.",
+      "parentUuid": "95676574_7f8ec6d4",
       "range": {
         "startLine": 810,
         "startChar": 3,

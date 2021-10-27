@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e00a79_23ae8594",
+        "filename": "src/chromiumos/tast/common/servo/ec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-10-27T13:56:40Z",
+      "side": 1,
+      "message": "\u003e \"Comand\" is a possible misspelling of \"Command\".\n\nPlease fix.",
+      "parentUuid": "dfb10a94_b7e4b95b",
+      "range": {
+        "startLine": 35,
+        "startChar": 17,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "b555eec0952399c15b7b1bef1c4e0f601c05e95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
