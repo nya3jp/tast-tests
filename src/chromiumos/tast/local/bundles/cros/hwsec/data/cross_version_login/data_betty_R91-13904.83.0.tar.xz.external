@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/hwsec/data_betty_R91-13904.83.0.tar.xz",
+  "size": 4440,
+  "sha256sum": "fd1496199d88d69dcdf5e8d8e173faf46981c5449a62d5cbfd0d74338af837c6"
+}
