@@ -103,10 +103,13 @@ func Signout(ctx context.Context, s *testing.State) {
 			s.Fatal("Signout button was not found: ", err)
 		}
 
+		// We click multiple times because device might be in the suspended
+		// state after cpu.WaitUntilIdle call. And some clicks might be ignored
+		// by the button.
 		// We ignore errors here because when we click on "Sign out" button
 		// Chrome shuts down and the connection is closed. So we always get an
 		// error.
-		ui.LeftClick(signOutButton)(ctx)
+		ui.LeftClickUntil(signOutButton, ui.Gone(signOutButton))(ctx)
 	}
 
 	// Wait for Chrome restart
