@@ -106,7 +106,7 @@ func Signout(ctx context.Context, s *testing.State) {
 		// We ignore errors here because when we click on "Sign out" button
 		// Chrome shuts down and the connection is closed. So we always get an
 		// error.
-		ui.LeftClick(signOutButton)(ctx)
+		ui.LeftClickUntil(signOutButton, ui.Gone(signOutButton))(ctx)
 	}
 
 	// Wait for Chrome restart
