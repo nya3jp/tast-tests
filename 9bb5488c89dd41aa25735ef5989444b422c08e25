@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35d2359a_0abc9729",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T06:00:00Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "9acbcacf_bf3be1d4",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce172369_491dd4f3",
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "FYI, There\u0027s a much simpler way to do this in go that completely avoids having to store the logs anywhere:\n\nf \u003d os.Create(outdir/smbd.log)\ndefer f.Close()\ncmd.Stdout \u003d f\ncmd.Stderr \u003d f\n\nThe advantage of this is generally that you can error early - before even starting the goroutine.",
       "parentUuid": "af58ae25_88d6b521",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2a308bf_3fe6ac1f",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T06:00:00Z",
+      "side": 1,
+      "message": "This seems like it will still always dump the log file though right? Am I missing something here?\n\nYou\u0027re redirecting std{out,err} to the file which will flush the log contents there? What happens if we intentionally SIGTERM the process and get an error 137, the logs will still be dumped right?",
+      "parentUuid": "dfbc1854_3285d5aa",
       "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

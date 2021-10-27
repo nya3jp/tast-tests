@@ -16,6 +16,24 @@
       "message": "Probably worth logging here that sigterm didn\u0027t work, so you\u0027re performing sigkill.",
       "revId": "d8e473e6af49a755ade11d179ed0f66e3e13b49a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee47741_05a619d9",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T06:00:00Z",
+      "side": 1,
+      "message": "Good call! Returned an error as it\u0027s not expected",
+      "parentUuid": "0663a51a_437d5d78",
+      "revId": "d8e473e6af49a755ade11d179ed0f66e3e13b49a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
