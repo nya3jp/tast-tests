@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c992859_07555639",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-27T15:51:58Z",
+      "side": 1,
+      "message": "I would probably do h.WaitConnect() here also, just to make sure the DUT is fully booted before moving on to the next test.",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 11
+      },
+      "revId": "6d080482f0adb371f44ef09e1524e70cbc9f6636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39232dab_121d3e7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-27T15:51:58Z",
+      "side": 1,
+      "message": "For all the comments, make them complete sentences. That is the go style guide. I.e.\n\nDelay by `lidDelay` to ensure lid is detected as closed.",
+      "range": {
+        "startLine": 185,
+        "startChar": 5,
+        "endLine": 185,
+        "endChar": 60
+      },
+      "revId": "6d080482f0adb371f44ef09e1524e70cbc9f6636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
