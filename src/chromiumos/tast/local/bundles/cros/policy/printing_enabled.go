@@ -11,8 +11,11 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -23,8 +26,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// testFunc contains the contents of the test itself.
-type testFunc func(ctx context.Context, tconn *chrome.TestConn) (bool, error)
+type testData struct {
+	testFunc    func(ctx context.Context, tconn *chrome.TestConn) (bool, error) // contains the contents of the test itself.
+	browserType browser.Type                                                    // browser type used in the subtest; must match the fixture.
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -41,20 +46,37 @@ func init() {
 			"paper-io_printing",
 			"informational",
 		},
-		Fixture: fixture.ChromePolicyLoggedIn,
 		Params: []testing.Param{
 			{
-				Name: "print_from_chrome_menu",
-				Val:  testPrintingFromThreeDotMenu,
+				Name:    "print_from_chrome_menu",
+				Fixture: fixture.ChromePolicyLoggedIn,
+				Val:     testData{testPrintingFromThreeDotMenu, browser.TypeAsh},
 			}, {
 				Name:      "print_with_hotkey",
-				Val:       testPrintingWithHotkey,
+				Fixture:   fixture.ChromePolicyLoggedIn,
+				Val:       testData{testPrintingWithHotkey, browser.TypeAsh},
 				ExtraAttr: []string{"informational"},
 				Timeout:   3 * time.Minute,
-			},
-			{
-				Name: "print_from_context_menu",
-				Val:  testPrintingFromContextMenu,
+			}, {
+				Name:    "print_from_context_menu",
+				Fixture: fixture.ChromePolicyLoggedIn,
+				Val:     testData{testPrintingFromContextMenu, browser.TypeAsh},
+			}, {
+				Name:      "lacros_print_from_chrome_menu",
+				Fixture:   fixture.LacrosPolicyLoggedIn,
+				Val:       testData{testPrintingFromThreeDotMenu, browser.TypeLacros},
+				ExtraAttr: []string{"informational"},
+			}, {
+				Name:      "lacros_print_with_hotkey",
+				Val:       testData{testPrintingWithHotkey, browser.TypeLacros},
+				Fixture:   fixture.LacrosPolicyLoggedIn,
+				ExtraAttr: []string{"informational"},
+				Timeout:   3 * time.Minute,
+			}, {
+				Name:      "lacros_print_from_context_menu",
+				Fixture:   fixture.LacrosPolicyLoggedIn,
+				Val:       testData{testPrintingFromContextMenu, browser.TypeLacros},
+				ExtraAttr: []string{"informational"},
 			}},
 	})
 }
@@ -63,7 +85,13 @@ func init() {
 func PrintingEnabled(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
-	runTest := s.Param().(func(ctx context.Context, tconn *chrome.TestConn) (bool, error))
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	data := s.Param().(testData)
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -93,7 +121,7 @@ func PrintingEnabled(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
@@ -105,15 +133,22 @@ func PrintingEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			// TODO(crbug.com/1259615): This should be part of the fixture.
+			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), data.browserType)
+			if err != nil {
+				s.Fatal("Failed to setup chrome: ", err)
+			}
+			defer closeBrowser(cleanupCtx)
+
 			// Open an empty page in order to show Chrome UI.
-			conn, err := cr.NewConn(ctx, "")
+			conn, err := br.NewConn(ctx, "")
 			if err != nil {
 				s.Fatal("Failed to create an empty page: ", err)
 			}
 			defer conn.Close()
 
 			// Make a call to the test case body.
-			printingPossible, err := runTest(ctx, tconn)
+			printingPossible, err := data.testFunc(ctx, tconn)
 			if err != nil {
 				s.Fatal("Failed to run test body: ", err)
 			}
