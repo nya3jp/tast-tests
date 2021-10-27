@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "583002b4_914faa45",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_crash_data_survival.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-27T05:46:37Z",
+      "side": 1,
+      "message": "and if it is possible to run test in VM - it may be better to crash VM process - this way it will be possible to model artifacts of file system crash consistency and its impact.",
+      "parentUuid": "c4482077_4f74d9e4",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "69752cfe664c2d52dba213288269cd2e01ff5d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0d07cb8_aa4311ef",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_crash_data_survival.go",
         "patchSetId": 4
