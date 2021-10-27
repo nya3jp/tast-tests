@@ -7,14 +7,14 @@ package cca
 
 import (
 	"context"
-	"fmt"
-	"io/ioutil"
 	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/camera/chart"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
@@ -28,13 +28,6 @@ const (
 	testBridgeSetUpTimeout = 5 * time.Second
 	setUpTimeout           = chrome.LoginTimeout + testBridgeSetUpTimeout
 	tearDownTimeout        = chrome.ResetTimeout
-)
-
-const (
-	qrcodeScene     string = "qrcode_1280x960.y4m"
-	qrcodeTextScene        = "qrcode_text_1280x960.y4m"
-	documentScene          = "document_1280x960.y4m"
-	genPTZScene            = "GENERATED_PTZ_SCENE"
 )
 
 func init() {
@@ -78,50 +71,22 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:            "ccaLaunchedWithQRCodeUrlScene",
-		Desc:            "Launched CCA with QR code URL as camera input",
-		Contacts:        []string{"wtlee@chromium.org"},
-		Data:            []string{"cca_ui.js", qrcodeScene},
-		Impl:            &fixture{fakeCamera: true, fakeCameraFile: qrcodeScene, launchCCA: true},
-		SetUpTimeout:    setUpTimeout,
-		ResetTimeout:    testBridgeSetUpTimeout,
-		PreTestTimeout:  ccaSetUpTimeout,
-		PostTestTimeout: ccaTearDownTimeout,
-		TearDownTimeout: tearDownTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:            "ccaLaunchedWithQRCodeTextScene",
-		Desc:            "Launched CCA with QR code text as camera input",
-		Contacts:        []string{"wtlee@chromium.org"},
-		Data:            []string{"cca_ui.js", qrcodeTextScene},
-		Impl:            &fixture{fakeCamera: true, fakeCameraFile: qrcodeTextScene, launchCCA: true},
-		SetUpTimeout:    setUpTimeout,
-		ResetTimeout:    testBridgeSetUpTimeout,
-		PreTestTimeout:  ccaSetUpTimeout,
-		PostTestTimeout: ccaTearDownTimeout,
-		TearDownTimeout: tearDownTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:            "ccaLaunchedWithPTZScene",
-		Desc:            "Launched CCA with generated scene for PTZ tests as camera input",
-		Contacts:        []string{"wtlee@chromium.org"},
-		Data:            []string{"cca_ui.js"},
-		Impl:            &fixture{fakeCamera: true, fakeCameraFile: genPTZScene, launchCCA: true},
-		SetUpTimeout:    setUpTimeout,
-		ResetTimeout:    testBridgeSetUpTimeout,
-		PreTestTimeout:  ccaSetUpTimeout,
-		PostTestTimeout: ccaTearDownTimeout,
-		TearDownTimeout: tearDownTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
 		Name:            "ccaTestBridgeReady",
 		Desc:            "Set up test bridge for CCA",
 		Contacts:        []string{"wtlee@chromium.org"},
 		Data:            []string{"cca_ui.js"},
 		Impl:            &fixture{},
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		TearDownTimeout: tearDownTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaTestBridgeReadyWithFakeCamera",
+		Desc:            "Set up test bridge for CCA",
+		Contacts:        []string{"wtlee@chromium.org"},
+		Data:            []string{"cca_ui.js", "qrcode_1280x960.y4m"},
+		Impl:            &fixture{fakeCamera: true, fakeScene: true},
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		TearDownTimeout: tearDownTimeout,
@@ -144,17 +109,6 @@ func init() {
 		Contacts:        []string{"wtlee@chromium.org"},
 		Data:            []string{"cca_ui.js"},
 		Impl:            &fixture{arcBooted: true},
-		SetUpTimeout:    setUpTimeout,
-		ResetTimeout:    testBridgeSetUpTimeout,
-		TearDownTimeout: tearDownTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:            "ccaTestBridgeReadyWithDocumentScene",
-		Desc:            "Set up test bridge for CCA with document scene as camera input",
-		Contacts:        []string{"wtlee@chromium.org"},
-		Data:            []string{"cca_ui.js", documentScene},
-		Impl:            &fixture{fakeCamera: true, fakeCameraFile: documentScene},
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		TearDownTimeout: tearDownTimeout,
@@ -192,6 +146,9 @@ type FixtureData struct {
 	StartApp StartAppFunc
 	// StopApp stops CCA which can be used between subtests.
 	StopApp StopAppFunc
+	// SwitchScene switches the camera scene to the given scene. This only works
+	// for fixtures using fake camera stream.
+	SwitchScene func(string) error
 	// RubSubTest runs the given function as a sub test, handling the app
 	// start/stop it.
 	RunSubTest func(context.Context, SubTestFunc, SubTestParams) error
@@ -203,22 +160,22 @@ type FixtureData struct {
 }
 
 type fixture struct {
-	cr     *chrome.Chrome
-	arc    *arc.ARC
-	tb     *testutil.TestBridge
-	app    *App
-	outDir string
-	chart  *chart.Chart
+	cr          *chrome.Chrome
+	arc         *arc.ARC
+	tb          *testutil.TestBridge
+	app         *App
+	outDir      string
+	chart       *chart.Chart
+	cameraScene string
 
 	scriptPaths      []string
 	fakeCamera       bool
-	fakeCameraFile   string
+	fakeScene        bool
 	arcBooted        bool
 	launchCCA        bool
 	bypassPermission bool
 	forceClamshell   bool
 	guestMode        bool
-	genScene         string
 	debugParams      DebugParams
 }
 
@@ -231,23 +188,14 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 			// The default fps of fake device is 20, but CCA requires fps >= 24.
 			// Set the fps to 30 to avoid OverconstrainedError.
 			"--use-fake-device-for-media-stream=fps=30"))
-		if f.fakeCameraFile == genPTZScene {
-			genFile, err := genFileForPTZ()
-			if err != nil {
-				s.Fatal("Failed to get generated file for PTZ tests: ", err)
-			}
-			f.genScene = genFile
-			defer func() {
-				if !success {
-					os.Remove(f.genScene)
-					f.genScene = ""
-				}
-			}()
-			chromeOpts = append(chromeOpts,
-				chrome.ExtraArgs("--use-file-for-fake-video-capture="+f.genScene))
-		} else if f.fakeCameraFile != "" {
-			chromeOpts = append(chromeOpts,
-				chrome.ExtraArgs("--use-file-for-fake-video-capture="+s.DataPath(f.fakeCameraFile)))
+
+		if f.fakeScene {
+			dataDir := filepath.Dir(s.DataPath("cca_ui.js"))
+			f.cameraScene = filepath.Join(dataDir, "camera_scene.y4m")
+			chrome.ExtraArgs(
+				// Set the default camera scene as the input of the fake stream.
+				// The content of the scene can be dynamically changed during tests.
+				"--use-file-for-fake-video-capture=" + f.cameraScene)
 		}
 	}
 	if f.guestMode {
@@ -306,6 +254,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		App:            f.cca,
 		StartApp:       f.startApp,
 		StopApp:        f.stopApp,
+		SwitchScene:    f.switchScene,
 		RunSubTest:     f.runSubTest,
 		PrepareChart:   f.prepareChart,
 		SetDebugParams: f.setDebugParams}
@@ -329,11 +278,11 @@ func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	}
 	f.cr = nil
 
-	if f.genScene != "" {
-		if err := os.Remove(f.genScene); err != nil {
-			s.Error("Failed to remove generated scene: ", err)
+	if f.cameraScene != "" {
+		if err := os.RemoveAll(f.cameraScene); err != nil {
+			s.Error("Failed to remove camera scene: ", err)
 		}
-		f.genScene = ""
+		f.cameraScene = ""
 	}
 }
 
@@ -434,6 +383,18 @@ func (f *fixture) stopAppIfExist(ctx context.Context, hasError bool) error {
 	return nil
 }
 
+// switchScene switches the camera scene of fake camera to the given |scene|.
+func (f *fixture) switchScene(scene string) error {
+	if f.cameraScene == "" {
+		return errors.New("failed to switch scene for non-fake camera stream")
+	}
+
+	if err := fsutil.CopyFile(scene, f.cameraScene); err != nil {
+		return errors.Wrapf(err, "failed to copy from the given scene: %v", scene)
+	}
+	return nil
+}
+
 func (f *fixture) runSubTest(ctx context.Context, subTestFunc SubTestFunc, params SubTestParams) (retErr error) {
 	app, err := f.startApp(ctx)
 	if err != nil {
@@ -488,82 +449,4 @@ func (f *fixture) cca() *App {
 
 func (f *fixture) setDebugParams(params DebugParams) {
 	f.debugParams = params
-}
-
-// genFileForPTZ generates the fake preview y4m file and returns its name.
-func genFileForPTZ() (_ string, retErr error) {
-	y4mWidth := 1280
-	y4mHeight := 720
-	patternWidth := 101
-	patternHeight := 101
-
-	file, err := ioutil.TempFile(os.TempDir(), "*.y4m")
-	if err != nil {
-		return "", err
-	}
-	defer func() {
-		if retErr != nil {
-			os.Remove(file.Name())
-		}
-	}()
-
-	header := fmt.Sprintf("YUVMPEG2 W%d H%d F30:1 Ip A0:0 C420jpeg\nFRAME\n", y4mWidth, y4mHeight)
-	if _, err := file.WriteString(header); err != nil {
-		return "", errors.Wrap(err, "failed to write header of temp y4m")
-	}
-
-	// White background.
-	const (
-		bgY = 255
-		bgU = 128
-		bgV = 128
-	)
-
-	// Y plane.
-	yp := make([][]byte, y4mHeight)
-	for y := range yp {
-		yp[y] = make([]byte, y4mWidth)
-		for x := range yp[y] {
-			yp[y][x] = bgY
-		}
-	}
-
-	// Draws black square pattern at the center.
-	cy := y4mHeight / 2
-	cx := y4mWidth / 2
-	for dy := -patternHeight / 2; dy <= patternHeight/2; dy++ {
-		for dx := -patternWidth / 2; dx <= patternWidth/2; dx++ {
-			yp[cy+dy][cx+dx] = 0
-		}
-	}
-
-	for _, bs := range yp {
-		if _, err := file.Write(bs); err != nil {
-			return "", errors.Wrap(err, "failed to write Y plane of temp y4m")
-		}
-	}
-
-	// U plane.
-	up := make([]byte, y4mWidth*y4mHeight/4)
-	for x := 0; x < len(up); x++ {
-		up[x] = bgU
-	}
-	if _, err := file.Write(up); err != nil {
-		return "", errors.Wrap(err, "failed to write U plane of temp y4m")
-	}
-
-	// V plane.
-	vp := make([]byte, y4mWidth*y4mHeight/4)
-	for x := 0; x < len(vp); x++ {
-		vp[x] = bgV
-	}
-	if _, err := file.Write(vp); err != nil {
-		return "", errors.Wrap(err, "failed to write V plane of temp y4m")
-	}
-
-	if err := os.Chmod(file.Name(), 0644); err != nil {
-		return "", err
-	}
-
-	return file.Name(), nil
 }
