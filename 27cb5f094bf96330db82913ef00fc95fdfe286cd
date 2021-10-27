@@ -146,6 +146,48 @@
       },
       "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36127159_d87d399d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-27T03:17:28Z",
+      "side": 1,
+      "message": "I checked PrepareYUV caller.\nThe perf tests using the function are \nvideo.DecodeEncodeAccelPerf, \nvideo.EncodeAccelPerf, \nvideo.PlatformEncoding,\narc.PowerVideoEncodePerf and \narc.VideoEncodeAccelPerf.\n\ncpu.WaitUntilIdle() is called after PrepareYUV() in most of them.\nvideo.PlatformEncoding and arc.videoEncodeAccelPerf don\u0027t call it.\nSo we should add the call.\n\nWith the function call, this parallel execution doesn\u0027t affect?",
+      "parentUuid": "fdcc34f6_632c957b",
+      "range": {
+        "startLine": 70,
+        "startChar": 84,
+        "endLine": 70,
+        "endChar": 90
+      },
+      "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01946eb8_53bec8d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-27T03:17:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebf228a3_b277a1e7",
+      "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
