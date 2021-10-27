@@ -140,3 +140,20 @@ func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
 	submitButton := nodewith.Name("Submit").Role(role.Button)
 	return ui.WithTimeout(uiTimeout).LeftClick(submitButton)(ctx)
 }
+
+// ClickUserImage clicks the users image to login with Smart Lock.
+func ClickUserImage(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	userImage := nodewith.ClassName("LoginUserImage")
+	return ui.WithTimeout(uiTimeout).LeftClick(userImage)(ctx)
+}
+
+// WaitForSmartUnlockReady waits for UI signal that the chromebook is ready to be unlocked by Smart Lock..
+func WaitForSmartUnlockReady(ctx context.Context, tconn *chrome.TestConn) error {
+	finder := nodewith.Name("Your device can be unlocked with Smart Lock. Press Enter to unlock.").ClassName("ImageButton")
+	ui := uiauto.New(tconn)
+	if err := ui.WaitUntilExists(finder)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for Smart Lock UI to indicate it is ready to unlock")
+	}
+	return nil
+}

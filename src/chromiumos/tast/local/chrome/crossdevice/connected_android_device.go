@@ -90,6 +90,22 @@ func (c *AndroidDevice) Pair(ctx context.Context) error {
 	return nil
 }
 
+// SetPIN sets a screen lock PIN on Android.
+func (c *AndroidDevice) SetPIN(ctx context.Context) error {
+	if err := c.device.SetPIN(ctx); err != nil {
+		return errors.Wrap(err, "failed to set a screen lock PIN on Android")
+	}
+	return nil
+}
+
+// ClearPIN clears a screen lock PIN on Android.
+func (c *AndroidDevice) ClearPIN(ctx context.Context) error {
+	if err := c.device.ClearPIN(ctx); err != nil {
+		return errors.Wrap(err, "failed to clear  a screen lock PIN on Android")
+	}
+	return nil
+}
+
 // ToggleDoNotDisturb toggles the Do Not Disturb setting on the Android device.
 func (c *AndroidDevice) ToggleDoNotDisturb(ctx context.Context, enable bool) error {
 	status := "off"

@@ -503,3 +503,19 @@ func (d *Device) EnableVerboseWifiLogging(ctx context.Context) error {
 	}
 	return d.ShellCommand(ctx, "cmd", "wifi", "set-verbose-logging", "enabled").Run(testexec.DumpLogOnError)
 }
+
+// SetPIN sets a screen lock PIN on the Android device.
+func (d *Device) SetPIN(ctx context.Context) error {
+	if err := d.Root(ctx); err != nil {
+		return err
+	}
+	return d.ShellCommand(ctx, "locksettings", "set-pin", "1234").Run(testexec.DumpLogOnError)
+}
+
+// ClearPIN clears a screen lock PIN on the Android device.
+func (d *Device) ClearPIN(ctx context.Context) error {
+	if err := d.Root(ctx); err != nil {
+		return err
+	}
+	return d.ShellCommand(ctx, "locksettings", "clear", "--old", "1234").Run(testexec.DumpLogOnError)
+}
