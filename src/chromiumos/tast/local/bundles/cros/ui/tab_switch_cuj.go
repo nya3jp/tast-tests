@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
@@ -22,7 +23,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org", "chromeos-wmp@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      22 * time.Minute,
+		Timeout:      29 * time.Minute,
 		Vars:         []string{"mute"},
 		Params: []testing.Param{{
 			ExtraData: []string{tabswitchcuj.WPRArchiveName},
@@ -53,6 +54,11 @@ func TabSwitchCUJ(ctx context.Context, s *testing.State) {
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
+	}
+
+	// Wait for cpu to stabilize before test.
+	if err := cpu.WaitUntilStabilized(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
+		s.Fatal("Failed to wait for CPU to become idle: ", err)
 	}
 
 	tabswitchcuj.Run(ctx, s)

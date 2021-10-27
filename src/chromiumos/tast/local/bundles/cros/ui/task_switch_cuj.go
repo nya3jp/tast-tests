@@ -25,7 +25,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -140,11 +139,6 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		gmailPackageName     = "com.google.android.gm"
 		timeout              = 10 * time.Second
 	)
-
-	// Ensure display on to record ui performance correctly.
-	if err := power.TurnOnDisplay(ctx); err != nil {
-		s.Fatal("Failed to turn on display: ", err)
-	}
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx

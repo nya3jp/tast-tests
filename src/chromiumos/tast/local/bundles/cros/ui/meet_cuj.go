@@ -223,11 +223,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
 
-	// Ensure display on to record ui performance correctly.
-	if err := power.TurnOnDisplay(ctx); err != nil {
-		s.Fatal("Failed to turn on display: ", err)
-	}
-
 	meet := s.Param().(meetTest)
 	if meet.docs && meet.jamboard {
 		s.Fatal("Tried to open both Google Docs and Jamboard at the same time")
