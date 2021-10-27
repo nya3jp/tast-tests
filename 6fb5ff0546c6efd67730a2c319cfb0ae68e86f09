@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a7b78273_cf0b74a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-27T09:11:40Z",
+      "side": 1,
+      "message": "Makes sense. Updated message. Thanks!",
+      "parentUuid": "d3ca6574_c6bed29c",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "6fb5ff0546c6efd67730a2c319cfb0ae68e86f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "356a82ec_80177012",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-27T09:11:40Z",
+      "side": 1,
+      "message": "Temporary. Updated git commit message. Thanks!",
+      "parentUuid": "e0133ffa_2fe2bbdd",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "6fb5ff0546c6efd67730a2c319cfb0ae68e86f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f181300f_4f5e1608",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
