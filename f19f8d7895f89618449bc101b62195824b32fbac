@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18164cce_2c4f8e21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-27T18:46:41Z",
+      "side": 1,
+      "message": "Worked on the comments",
+      "revId": "f19f8d7895f89618449bc101b62195824b32fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9628ea1d_ac831bd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-27T18:46:41Z",
+      "side": 1,
+      "message": "Not sure if it actually works correctly, because of errors in jslog.txt after test.",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "f19f8d7895f89618449bc101b62195824b32fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

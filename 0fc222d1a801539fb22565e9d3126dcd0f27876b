@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54df32d4_5e2154ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-27T18:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a149733a_f2a74d91",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "0fc222d1a801539fb22565e9d3126dcd0f27876b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d10b43c9_a4cd518b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-27T07:35:41Z",
       "side": 1,
       "message": "Could we change to look like this?\t\n\t\n\tcreateUser :\u003d func(creds chrome.Creds, extra_opts ...Option) {\n\t\topts :\u003d append([]chrome.Option{chrome.FakeLogin(creds), extra_opts}\n\t\t\n...\n\n        createUser(chrome.Creds{User: user1, Pass: password})\n\tcreateUser(chrome.Creds{User: user2, Pass: password}, chrome.KeepState())\n\t...\n\nI think it\u0027s more verbose",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "0fc222d1a801539fb22565e9d3126dcd0f27876b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf489ab0_720ca4cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-27T18:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d10b43c9_a4cd518b",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06533fd0_dfc8a4e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-27T18:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c891615_9eaa9007",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 8
+      },
+      "revId": "0fc222d1a801539fb22565e9d3126dcd0f27876b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89b7988b_92609cde",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa9398a1_992e1bf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-27T18:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89b7988b_92609cde",
+      "range": {
+        "startLine": 92,
+        "startChar": 62,
+        "endLine": 92,
+        "endChar": 77
+      },
+      "revId": "0fc222d1a801539fb22565e9d3126dcd0f27876b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae65fe8f_8466dcfe",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-10-27T07:35:41Z",
       "side": 1,
       "message": "that is confusing. You call WaitUntilExists to wait that \"there is no user pod\". Am I missing something?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "0fc222d1a801539fb22565e9d3126dcd0f27876b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d377ae9_3dd8dcb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-27T18:46:41Z",
+      "side": 1,
+      "message": "For some reason if I use methods like ui.IsNodeFound, ui.Exists or ui.Gone from uiauto.automation they return the same err or no err for user3 and user2 after. It is strange, but I couldn\u0027t get the problem. I use ui.LeftClick here, it can destinguish cases when buttons are available or not, e.g. for user2 and user3.\n\nAfter test passes there are few errors like this in jslog, but they are not caught by any err in uiauto.automation or uiauto.nodewith:\n2021-10-27 20:36:41 [eval-error] Uncaught (in promise): \"failed to find node with properties: {name: /^user3@gmail\\\\.com$/, role: button}\"",
+      "parentUuid": "ae65fe8f_8466dcfe",
       "range": {
         "startLine": 147,
         "startChar": 0,

@@ -203,6 +203,30 @@
       },
       "revId": "8b941b7a5026d606ad0ec04acbc3e4d3a54288b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce97623_5f471012",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user_pod.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-27T18:46:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac5411ff_c5393bb7",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "8b941b7a5026d606ad0ec04acbc3e4d3a54288b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
