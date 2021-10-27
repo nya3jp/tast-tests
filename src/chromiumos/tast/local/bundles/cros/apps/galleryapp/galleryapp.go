@@ -34,8 +34,11 @@ func NewContext(cr *chrome.Chrome, tconn *chrome.TestConn) *GalleryContext {
 	}
 }
 
-// RootFinder is the finder of Gallery app root window.
-var RootFinder = nodewith.Name(apps.Gallery.Name).Role(role.RootWebArea)
+// BrowserFinder is the finder of Gallery app browser window.
+var BrowserFinder = nodewith.NameStartingWith(apps.Gallery.Name).ClassName("BrowserFrame")
+
+// RootFinder is the finder of Gallery app root web area.
+var RootFinder = nodewith.Role(role.RootWebArea).Ancestor(BrowserFinder).First()
 
 // DialogFinder is the finder of popup dialog in Gallery app.
 var DialogFinder = nodewith.Role(role.AlertDialog).Ancestor(RootFinder)
