@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "874e5b9c_5404f59f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-27T23:03:20Z",
+      "side": 1,
+      "message": "Thank you! I realize we still need to change the flow to report numbers every time we run. For simplicity in case of failure we should have (0.0, 0) reported.",
+      "revId": "1797cd09db6fbd09e5b8d7e62c748a8f0c45a025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c0b4f88_e430b551",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vulkaninfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-27T23:03:20Z",
+      "side": 1,
+      "message": "We still want to report numbers to crosbolt.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "1797cd09db6fbd09e5b8d7e62c748a8f0c45a025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bc29aff_dc2e1c61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vulkaninfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-27T23:03:20Z",
+      "side": 1,
+      "message": "We still want to report zeros to crosbolt.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "1797cd09db6fbd09e5b8d7e62c748a8f0c45a025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40cb2bf3_8ecd9a44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vulkaninfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-10-27T23:03:20Z",
+      "side": 1,
+      "message": "We still want to report numbers, so this should be after setPerf below.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "1797cd09db6fbd09e5b8d7e62c748a8f0c45a025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
