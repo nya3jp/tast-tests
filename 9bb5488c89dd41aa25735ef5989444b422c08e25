@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6be4891_cc1e5720",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T05:12:19Z",
+      "side": 1,
+      "message": "The context passed here (when NewServer is constructed) will be in the SetUp phase of a fixture, unfortunately the context there is only tied to the lifetime of the SetUp and once finished deadline is reached.\n\nThis has the effect of testexec.CommandContext killing the underlying process and the smbd server not being up for the test.",
+      "parentUuid": "ce66f07d_3a25aa64",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce172369_491dd4f3",
         "filename": "src/chromiumos/tast/local/smb/server.go",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-27T01:00:50Z",
       "side": 1,
       "message": "Go favors explicit over implicit. Unnamed parameters are not explicit. What does \"false\" mean? I had to look at the struct definition.",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a3279f8_0f65dab8",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T05:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce172369_491dd4f3",
       "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af58ae25_88d6b521",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T05:12:19Z",
+      "side": 1,
+      "message": "```\nIn terms of naming, I would generally follow exec.cmd\u0027s lead, and use start to indicate that the function starts a background process, and run to indicate that we only return once the server has returned\n```\nAck. I\u0027ve used Start to indicate this, I\u0027ve omitted usage of a Run command as I\u0027m expecting this process to be a daemon ran throughout the lifetime of this fixture (i.e. if 5 tests are using this fixture and assuming the all pass, the smbd should be running throughout all 5).\n```\nI strongly recommend against requiring the user to create a goroutine, because you cannot get a return value from a goroutine. Look at your child cl - you call go server.Start(), and don\u0027t check the error it returns.\n```\nDuly noted. I\u0027ve updated such that the Start command will now call the goroutine instead (and therefore check the error). A couple of things I\u0027m trying to achieve here that might be relevant:\n* The logs might be quite large so I want to avoid using DumpLog (in testexec.CommandContext) as it dumps to stdout. This way I can dump to the out directory instead.\n* Despite a SIGTERM being recommended by Samba as the \"graceful\" way to shut the server down, it unfortunately exits with a 137 so I can\u0027t use the DumpLogOnError as it would dump it every time, hence the need for CombinedOutput",
+      "parentUuid": "51f3d44c_77985778",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0aab9fd8_fb5c2b71",
         "filename": "src/chromiumos/tast/local/smb/server.go",
         "patchSetId": 4
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c899fa58_8db83b3b",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T05:12:19Z",
+      "side": 1,
+      "message": "I don\u0027t believe I am, I\u0027m using |output| to dump the smbd log files in the case of an error.",
+      "parentUuid": "0aab9fd8_fb5c2b71",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2be32db5_e7862676",
         "filename": "src/chromiumos/tast/local/smb/server.go",
         "patchSetId": 4
@@ -82,6 +154,24 @@
       "writtenOn": "2021-10-27T01:00:50Z",
       "side": 1,
       "message": "I believe you can just do err.Error() to get the string.",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea3f7327_1ee22dac",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T05:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2be32db5_e7862676",
       "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
