@@ -27,7 +27,8 @@ func init() {
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "ondevice_document_scanner", caps.BuiltinOrVividCamera},
-		Fixture:      "ccaTestBridgeReadyWithDocumentScene",
+		Data:         []string{"document_3264x2448.mjpeg"},
+		Fixture:      "ccaTestBridgeReadyWithFakeCamera",
 	})
 }
 
@@ -91,8 +92,12 @@ var (
 // cannot use File VCD to test it. Therefore, we will leave that part to another
 // test which is executed on a CameraBox.
 func CCAUIDocumentScanning(ctx context.Context, s *testing.State) {
-	runSubTest := s.FixtValue().(cca.FixtureData).RunSubTest
+	runTestWithApp := s.FixtValue().(cca.FixtureData).RunTestWithApp
 	s.FixtValue().(cca.FixtureData).SetDebugParams(cca.DebugParams{SaveCameraFolderWhenFail: true})
+
+	if err := s.FixtValue().(cca.FixtureData).SwitchScene(s.DataPath("document_3264x2448.mjpeg")); err != nil {
+		s.Fatal("Failed to prepare document scene: ", err)
+	}
 
 	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
@@ -111,9 +116,9 @@ func CCAUIDocumentScanning(ctx context.Context, s *testing.State) {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		defer cancel()
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
-			if err := runSubTest(ctx, func(ctx context.Context, app *cca.App) error {
+			if err := runTestWithApp(ctx, func(ctx context.Context, app *cca.App) error {
 				return runTakeDocumentPhoto(ctx, app, tst.choices)
-			}, cca.SubTestParams{}); err != nil {
+			}, cca.TestWithAppParams{}); err != nil {
 				s.Errorf("Failed to pass %v subtest: %v", tst.name, err)
 			}
 		})
@@ -122,10 +127,10 @@ func CCAUIDocumentScanning(ctx context.Context, s *testing.State) {
 	defer cancel()
 	s.Run(subTestCtx, "testFixCropArea", func(ctx context.Context, s *testing.State) {
 
-		if err := runSubTest(ctx, func(ctx context.Context, app *cca.App) error {
+		if err := runTestWithApp(ctx, func(ctx context.Context, app *cca.App) error {
 			cr := s.FixtValue().(cca.FixtureData).Chrome
 			return testFixCropArea(ctx, app, cr)
-		}, cca.SubTestParams{}); err != nil {
+		}, cca.TestWithAppParams{}); err != nil {
 			s.Error("Failed to pass testFixCropArea subtest: ", err)
 		}
 	})

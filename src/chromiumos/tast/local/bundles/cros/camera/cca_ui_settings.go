@@ -32,7 +32,7 @@ func init() {
 
 func CCAUISettings(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(cca.FixtureData).Chrome
-	runSubTest := s.FixtValue().(cca.FixtureData).RunSubTest
+	runTestWithApp := s.FixtValue().(cca.FixtureData).RunTestWithApp
 
 	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
@@ -53,7 +53,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 	}} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
-			if err := runSubTest(ctx, func(ctx context.Context, app *cca.App) error {
+			if err := runTestWithApp(ctx, func(ctx context.Context, app *cca.App) error {
 				cleanupCtx := ctx
 				ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 				defer cancel()
@@ -64,7 +64,7 @@ func CCAUISettings(ctx context.Context, s *testing.State) {
 				defer cca.MainMenu.Close(cleanupCtx, app)
 
 				return tst.testFunc(ctx, cr, app)
-			}, cca.SubTestParams{}); err != nil {
+			}, cca.TestWithAppParams{}); err != nil {
 				s.Errorf("Failed to pass %v subtest: %v", tst.name, err)
 			}
 		})
