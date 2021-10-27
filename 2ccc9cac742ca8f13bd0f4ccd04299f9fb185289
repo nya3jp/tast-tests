@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c9c9804_0bc70ac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/exo_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-27T01:22:37Z",
+      "side": 1,
+      "message": "Can you explicitly set Timeout here to avoid unexpected timeout failure?",
+      "revId": "2ccc9cac742ca8f13bd0f4ccd04299f9fb185289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de9d3e38_7c339f23",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/exo_client.go",
         "patchSetId": 1
