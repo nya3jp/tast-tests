@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29bf5e67_f1d75e21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-27T23:36:47Z",
+      "side": 1,
+      "message": "General comment: I\u0027d like to see if we can break up and simplify the test logic by refactoring it from one big monolithic function into a series of simple method invocations.\n\nI\u0027ve tried to make some suggestions, but I would like to encourage you to make an attempt first. It is tricky for me to see all the dependencies in a code review setting, and think its structure/dependencies are already clearer to you.\n\nOne suggestion is to wrap the handling/parsing of each file into a separate function.",
+      "revId": "c3d151b6de1a285e1f8bd4ebd02cf53c2f8bab4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9af46a3c_01ae05e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-27T23:36:47Z",
+      "side": 1,
+      "message": "It seems to me that this test has some hardware dependencies -- in particular:\n- the use of Intel chipset, and\n- the presence of the Chameleon device. \n\nWe also have this variable which is mandatory but (as far as I\u0027m aware) will not be automatically set on mainline test executions.\n\n- Where possible, we should express the hardware dependencies of this test using the HardwareDeps attribute. In particular, I would like to see if you can express the chipset requirement directly or as as board (?) constraint, as this test will currently try to run on all Chrome OS devices. If there is no mechanism, we may need to consult with authors of Tast.\n- I suspect this test is not suitable as a mainline test (enables execution in Google\u0027s low-touch lab) because of the additional hardware requirements, and the fact the variable will not be populated. \n\nDigging around I found this other test which uses a chameleon device:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/ui/extended_display_cuj.go?q\u003dExtendedDisplayCUJ\u0026type\u003dcs\nThis does not place the test in a suite. If this test is intended to be run manually, perhaps this is more suitable? Otherwise, maybe own of the test owners also reviewing this CL can advise what suites would be suitable.",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "c3d151b6de1a285e1f8bd4ebd02cf53c2f8bab4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19f7b7c4_ea52d1c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-27T23:36:47Z",
+      "side": 1,
+      "message": "These three regexes seem related, I think it would be clearer to place them in a seperate group and comment them as a block, i.e.:\n\n// Used for external monitor detection.\n// (Ideally insert some example output from /i915_display_info to help explain.)\nvar (\n   connectorInfoRe \u003d ...\n   connectedStatusRe \u003d ...\n   modesRe \u003d ...\n)\n\nvar (\n   ... other regexps ...\n)",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 70
+      },
+      "revId": "c3d151b6de1a285e1f8bd4ebd02cf53c2f8bab4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "806b07e1_3b7ccc0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-27T23:36:47Z",
+      "side": 1,
+      "message": "nit: please move these vars + constants out of this method. (Except for portID, which should be declared just above where it is needed, around line 65.)",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "c3d151b6de1a285e1f8bd4ebd02cf53c2f8bab4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cbc4a8c_bf1b7420",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-27T23:36:47Z",
+      "side": 1,
+      "message": "use RequiredVar instead, then you can drop the !ok case.",
+      "range": {
+        "startLine": 55,
+        "startChar": 24,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "c3d151b6de1a285e1f8bd4ebd02cf53c2f8bab4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a053aeb0_28144068",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-27T23:36:47Z",
+      "side": 1,
+      "message": "Rather than pass this same set of three regexps each time, just declare displayInfoPatterns in extMonitorDetection().",
+      "range": {
+        "startLine": 95,
+        "startChar": 39,
+        "endLine": 95,
+        "endChar": 58
+      },
+      "revId": "c3d151b6de1a285e1f8bd4ebd02cf53c2f8bab4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5cc2c5b_7f8210ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-27T23:36:47Z",
+      "side": 1,
+      "message": "Prefer to extract into seperate method, e.g.\n\nif err :\u003d assertSLPCounter(ctx, pkgOpSetPre); err !\u003d nil {\n   s.Fatal(\"Asserting SLP Counter: \", err)\n}",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "c3d151b6de1a285e1f8bd4ebd02cf53c2f8bab4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5463f321_c3b1038c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-27T23:36:47Z",
+      "side": 1,
+      "message": "Prefer to extract out into separate method.\n\ne.g. \nif err :\u003d assertPackageCState(ctx); err !\u003d nil {\n  s.Fatal(\"Asserting Package C-State failed: \", err)\n}",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "c3d151b6de1a285e1f8bd4ebd02cf53c2f8bab4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fb16be7_9d67ec70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-27T23:36:47Z",
+      "side": 1,
+      "message": "nit: naming: assertExternalMonitorConnected() ?",
+      "range": {
+        "startLine": 160,
+        "startChar": 5,
+        "endLine": 160,
+        "endChar": 24
+      },
+      "revId": "c3d151b6de1a285e1f8bd4ebd02cf53c2f8bab4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d154dec3_4491f62b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-27T23:36:47Z",
+      "side": 1,
+      "message": "prefer to lift this out of this method",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 126
+      },
+      "revId": "c3d151b6de1a285e1f8bd4ebd02cf53c2f8bab4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21368ade_63fe273e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-27T23:36:47Z",
+      "side": 1,
+      "message": "nit: assertAdapterConnected() ?",
+      "range": {
+        "startLine": 198,
+        "startChar": 5,
+        "endLine": 198,
+        "endChar": 21
+      },
+      "revId": "c3d151b6de1a285e1f8bd4ebd02cf53c2f8bab4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c9814a8_8a6a27aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-27T23:36:47Z",
+      "side": 1,
+      "message": "lift outside method",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 69
+      },
+      "revId": "c3d151b6de1a285e1f8bd4ebd02cf53c2f8bab4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
