@@ -776,6 +776,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d573857_0ef8dc6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/transfer_from_image_bitmap_orientation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1518964
+      },
+      "writtenOn": "2021-10-27T15:45:20Z",
+      "side": 1,
+      "message": "Reverted. This method is deleted and the tconn is closed automatically.",
+      "parentUuid": "2780d2a8_86a7ecdb",
+      "revId": "0b2bb68033653884bf5b4a645fd497e98de40ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43a8bc60_37b49d0b",
