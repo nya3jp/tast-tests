@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a149733a_f2a74d91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-10-27T07:35:41Z",
+      "side": 1,
+      "message": "could we just use LoggedInUsers list instead?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "0fc222d1a801539fb22565e9d3126dcd0f27876b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d10b43c9_a4cd518b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-10-27T07:35:41Z",
+      "side": 1,
+      "message": "Could we change to look like this?\t\n\t\n\tcreateUser :\u003d func(creds chrome.Creds, extra_opts ...Option) {\n\t\topts :\u003d append([]chrome.Option{chrome.FakeLogin(creds), extra_opts}\n\t\t\n...\n\n        createUser(chrome.Creds{User: user1, Pass: password})\n\tcreateUser(chrome.Creds{User: user2, Pass: password}, chrome.KeepState())\n\t...\n\nI think it\u0027s more verbose",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "0fc222d1a801539fb22565e9d3126dcd0f27876b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c891615_9eaa9007",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-10-27T07:35:41Z",
+      "side": 1,
+      "message": "You probably don\u0027t need defer here. Just call cr.Close(ctx) directly.\nI think defer means \"execute it when function returns\"",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 8
+      },
+      "revId": "0fc222d1a801539fb22565e9d3126dcd0f27876b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89b7988b_92609cde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-10-27T07:35:41Z",
+      "side": 1,
+      "message": "make use of user3 constant here and below.",
+      "range": {
+        "startLine": 92,
+        "startChar": 62,
+        "endLine": 92,
+        "endChar": 77
+      },
+      "revId": "0fc222d1a801539fb22565e9d3126dcd0f27876b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae65fe8f_8466dcfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-10-27T07:35:41Z",
+      "side": 1,
+      "message": "that is confusing. You call WaitUntilExists to wait that \"there is no user pod\". Am I missing something?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "0fc222d1a801539fb22565e9d3126dcd0f27876b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
