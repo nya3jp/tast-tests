@@ -25,7 +25,7 @@ func init() {
 }
 
 func CCAUITakePicture(ctx context.Context, s *testing.State) {
-	runSubTest := s.FixtValue().(cca.FixtureData).RunSubTest
+	runTestWithApp := s.FixtValue().(cca.FixtureData).RunTestWithApp
 
 	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
@@ -38,7 +38,7 @@ func CCAUITakePicture(ctx context.Context, s *testing.State) {
 	} {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
-			if err := runSubTest(ctx, tst.testFunc, cca.SubTestParams{}); err != nil {
+			if err := runTestWithApp(ctx, tst.testFunc, cca.TestWithAppParams{}); err != nil {
 				s.Errorf("Failed to pass %v subtest: %v", tst.name, err)
 			}
 		})

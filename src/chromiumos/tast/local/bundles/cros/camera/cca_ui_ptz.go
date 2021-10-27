@@ -6,7 +6,10 @@ package camera
 
 import (
 	"context"
+	"fmt"
 	"image"
+	"io/ioutil"
+	"os"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -21,8 +24,86 @@ func init() {
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome"},
-		Fixture:      "ccaLaunchedWithPTZScene",
+		Fixture:      "ccaTestBridgeReadyWithFakeCamera",
 	})
+}
+
+// genFileForPTZ generates the fake preview y4m file and returns its name.
+func genFileForPTZ() (_ string, retErr error) {
+	y4mWidth := 1280
+	y4mHeight := 720
+	patternWidth := 101
+	patternHeight := 101
+
+	file, err := ioutil.TempFile(os.TempDir(), "*.y4m")
+	if err != nil {
+		return "", err
+	}
+	defer func() {
+		if retErr != nil {
+			os.Remove(file.Name())
+		}
+	}()
+
+	header := fmt.Sprintf("YUVMPEG2 W%d H%d F30:1 Ip A0:0 C420jpeg\nFRAME\n", y4mWidth, y4mHeight)
+	if _, err := file.WriteString(header); err != nil {
+		return "", errors.Wrap(err, "failed to write header of temp y4m")
+	}
+
+	// White background.
+	const (
+		bgY = 255
+		bgU = 128
+		bgV = 128
+	)
+
+	// Y plane.
+	yp := make([][]byte, y4mHeight)
+	for y := range yp {
+		yp[y] = make([]byte, y4mWidth)
+		for x := range yp[y] {
+			yp[y][x] = bgY
+		}
+	}
+
+	// Draws black square pattern at the center.
+	cy := y4mHeight / 2
+	cx := y4mWidth / 2
+	for dy := -patternHeight / 2; dy <= patternHeight/2; dy++ {
+		for dx := -patternWidth / 2; dx <= patternWidth/2; dx++ {
+			yp[cy+dy][cx+dx] = 0
+		}
+	}
+
+	for _, bs := range yp {
+		if _, err := file.Write(bs); err != nil {
+			return "", errors.Wrap(err, "failed to write Y plane of temp y4m")
+		}
+	}
+
+	// U plane.
+	up := make([]byte, y4mWidth*y4mHeight/4)
+	for x := 0; x < len(up); x++ {
+		up[x] = bgU
+	}
+	if _, err := file.Write(up); err != nil {
+		return "", errors.Wrap(err, "failed to write U plane of temp y4m")
+	}
+
+	// V plane.
+	vp := make([]byte, y4mWidth*y4mHeight/4)
+	for x := 0; x < len(vp); x++ {
+		vp[x] = bgV
+	}
+	if _, err := file.Write(vp); err != nil {
+		return "", errors.Wrap(err, "failed to write V plane of temp y4m")
+	}
+
+	if err := os.Chmod(file.Name(), 0644); err != nil {
+		return "", err
+	}
+
+	return file.Name(), nil
 }
 
 // findPattern finds the region where the pattern resides.
@@ -146,9 +227,29 @@ func (ctrl *ptzControl) testToggle(ctx context.Context, app *cca.App) error {
 }
 
 func CCAUIPTZ(ctx context.Context, s *testing.State) {
-	app := s.FixtValue().(cca.FixtureData).App()
+	runTestWithApp := s.FixtValue().(cca.FixtureData).RunTestWithApp
+	switchScene := s.FixtValue().(cca.FixtureData).SwitchScene
+
+	ptzScene, err := genFileForPTZ()
+	if err != nil {
+		s.Fatal("Failed to generate the file for PTZ: ", err)
+	}
+	defer os.Remove(ptzScene)
+
+	if err := switchScene(ptzScene); err != nil {
+		s.Fatal("Failed to switch to PTZ scene: ", err)
+	}
+
+	if err := runTestWithApp(ctx, func(ctx context.Context, app *cca.App) error {
+		return runPTZTest(ctx, app)
+	}, cca.TestWithAppParams{}); err != nil {
+		s.Fatal("Failed to pass PTZ test: ", err)
+	}
+}
+
+func runPTZTest(ctx context.Context, app *cca.App) error {
 	if err := app.Click(ctx, cca.OpenPTZPanelButton); err != nil {
-		s.Fatal("Failed to open ptz panel: ", err)
+		return errors.Wrap(err, "failed to open ptz panel")
 	}
 
 	// Check cannot pan/tilt when zoom at initial level 0.
@@ -161,10 +262,10 @@ func CCAUIPTZ(ctx context.Context, s *testing.State) {
 	} {
 		disabled, err := app.Disabled(ctx, *control.ui)
 		if err != nil {
-			s.Fatalf("Failed to get disabled state of %v: %v", control.ui.Name, err)
+			return errors.Wrapf(err, "failed to get disabled state of %v", control.ui.Name)
 		}
 		if !disabled {
-			s.Fatalf("UI %v is not disabled at initial zoom level", control.ui.Name)
+			return errors.Wrapf(err, "UI %v is not disabled at initial zoom level", control.ui.Name)
 		}
 	}
 
@@ -183,13 +284,13 @@ func CCAUIPTZ(ctx context.Context, s *testing.State) {
 		zoomOut,
 	} {
 		if err := control.testToggle(ctx, app); err != nil {
-			s.Fatal("Failed: ", err)
+			return errors.Wrap(err, "failed to test toggle")
 		}
 	}
 
 	// Check cannot pan/tilt when zoom reset to initial level 0.
 	if err := app.Click(ctx, cca.PTZResetAllButton); err != nil {
-		s.Fatal("Failed to reset ptz: ", err)
+		return errors.Wrap(err, "failed to reset ptz")
 	}
 	for _, control := range []ptzControl{
 		zoomOut,
@@ -199,7 +300,8 @@ func CCAUIPTZ(ctx context.Context, s *testing.State) {
 		tiltDown,
 	} {
 		if err := app.WaitForDisabled(ctx, *control.ui, true); err != nil {
-			s.Fatalf("Failed to wait for ui %v disabled : %v", control.ui.Name, err)
+			return errors.Wrapf(err, "failed to wait for ui %v disabled", control.ui.Name)
 		}
 	}
+	return nil
 }
