@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52381274_5e26fdd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-27T11:25:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "128a4b70_a56a3522",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3a645cc_952aa7d6",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-27T03:24:57Z",
       "side": 1,
       "message": "maybe suffix all with RE, it\u0027s shorter and more consistent",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 20
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb317e5_a1a04ebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-27T11:25:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e3a645cc_952aa7d6",
       "range": {
         "startLine": 41,
         "startChar": 15,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97de2145_08816d59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-27T11:25:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "82a04f3f_f2976fbe",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5359365_d55a39e2",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-10-27T03:24:57Z",
       "side": 1,
       "message": "nit: use a lowercase letter at the beginning, here and in other locations in this file",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b63fc182_c85c7d18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-27T11:25:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f5359365_d55a39e2",
       "range": {
         "startLine": 45,
         "startChar": 2,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dec5564d_23d3d2cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-27T11:25:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2871a6bd_005a7980",
+      "range": {
+        "startLine": 64,
+        "startChar": 12,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0dcb1ff_6ab62769",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-10-27T03:24:57Z",
       "side": 1,
       "message": "is there a reason to use s.Log over testing.ContextLog ?",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 7
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b137b764_ead467ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-27T11:25:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f0dcb1ff_6ab62769",
       "range": {
         "startLine": 78,
         "startChar": 2,
@@ -203,6 +347,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae913fa6_1b0fecca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-27T11:25:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a13bd215_ba56d338",
+      "range": {
+        "startLine": 98,
+        "startChar": 14,
+        "endLine": 98,
+        "endChar": 68
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c221c8ff_013a7871",
@@ -226,6 +394,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "562c8b70_9ab0afb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-27T11:25:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c221c8ff_013a7871",
+      "range": {
+        "startLine": 106,
+        "startChar": 16,
+        "endLine": 106,
+        "endChar": 31
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8ec8c30_07cdd51d",
@@ -239,6 +431,30 @@
       "writtenOn": "2021-10-27T03:24:57Z",
       "side": 1,
       "message": "commented out stuff here",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 80
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14d4bc57_92926fd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-27T11:25:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c8ec8c30_07cdd51d",
       "range": {
         "startLine": 193,
         "startChar": 0,
