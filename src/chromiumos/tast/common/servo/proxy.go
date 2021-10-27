@@ -41,6 +41,19 @@ type Proxy struct {
 	sdc             string         // empty if servod is not running inside a docker container
 }
 
+func createDockerClient() (*client.Client, error) {
+	// Create Docker Client.
+	// If the dockerd socket exists, use the default option.
+	// Otherwise, try to use the tcp connection.
+	if _, err := os.Stat("/var/run/docker.sock"); err == nil {
+		return client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
+	} else if errors.Is(err, os.ErrNotExist) {
+		return client.NewClientWithOpts(client.WithHost("tcp://192.168.231.1:2375"), client.WithAPIVersionNegotiation())
+	} else {
+		return nil, err
+	}
+}
+
 func splitHostPort(servoHostPort string) (string, int, int, error) {
 	host := "localhost"
 	port := 9999
@@ -150,7 +163,7 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (*Prox
 		return nil, err
 	}
 	if strings.Contains(host, "docker_servod") {
-		pxy.dcl, err = client.NewClientWithOpts(client.FromEnv)
+		pxy.dcl, err = createDockerClient()
 		if err != nil {
 			return nil, err
 		}
