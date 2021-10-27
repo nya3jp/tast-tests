@@ -17,24 +17,16 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Drivefs,
-		Desc: "Verifies that drivefs mounts on sign in",
-		Contacts: []string{
-			"dats@chromium.org",
-			"austinct@chromium.org",
-		},
+		Func:     Drivefs,
+		Desc:     "Verifies that drivefs mounts on sign in",
+		Contacts: []string{"chromeos-files-syd@google.com", "austinct@chromium.org"},
 		SoftwareDeps: []string{
 			"chrome",
 			"chrome_internal",
 			"drivefs",
 		},
-		Attr: []string{
-			"group:mainline",
-		},
-		VarDeps: []string{
-			"platform.Drivefs.user",     // GAIA username.
-			"platform.Drivefs.password", // GAIA password.
-		},
+		Attr:    []string{"group:mainline"},
+		VarDeps: []string{"ui.gaiaPoolDefault"},
 		Timeout: chrome.GAIALoginTimeout + time.Minute,
 	})
 }
@@ -47,7 +39,7 @@ func Drivefs(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
 		chrome.ARCDisabled(),
-		chrome.GAIALogin(chrome.Creds{User: user, Pass: password}),
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 	)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
