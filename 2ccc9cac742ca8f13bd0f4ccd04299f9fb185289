@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f7b688b_d01a0a6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-10-27T00:45:29Z",
+      "side": 1,
+      "message": "Wait until https://crrev.com/c/3246458 lands before submitting",
+      "revId": "2ccc9cac742ca8f13bd0f4ccd04299f9fb185289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
