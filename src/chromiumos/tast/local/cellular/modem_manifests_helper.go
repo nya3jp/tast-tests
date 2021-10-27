@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// Package cellular provides functions for testing Cellular connectivity.
 package cellular
 
 import (
@@ -17,19 +18,19 @@ import (
 )
 
 // ParseModemFirmwareManifest Parses the modem firmware manifest and returns the FirmwareManifestV2 proto object.
-func ParseModemFirmwareManifest(ctx context.Context, s *testing.State) (*mfwd.FirmwareManifestV2, error) {
+func ParseModemFirmwareManifest(ctx context.Context) (*mfwd.FirmwareManifestV2, error) {
 	modemFirmwareProtoPath := GetModemFirmwareManifestPath()
 	output, err := testexec.CommandContext(ctx, "cat", modemFirmwareProtoPath).Output()
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to access the firmware manifest: %s", modemFirmwareProtoPath)
 	}
 
-	s.Log("Parsing modem firmware proto")
+	testing.ContextLog(ctx, "Parsing modem firmware proto")
 	manifest := &mfwd.FirmwareManifestV2{}
 	if err := proto.UnmarshalText(string(output), manifest); err != nil {
 		return nil, errors.Wrapf(err, "failed to parse firmware manifest: %s", modemFirmwareProtoPath)
 	}
-	s.Log("Parsed successfully")
+	testing.ContextLog(ctx, "Parsed successfully")
 
 	return manifest, nil
 }
@@ -45,19 +46,19 @@ func GetModemFirmwareManifestPath() string {
 }
 
 // ParseModemHelperManifest Parses the modem helper manifest and returns the HelperManifest proto object.
-func ParseModemHelperManifest(ctx context.Context, s *testing.State) (*mfwd.HelperManifest, error) {
+func ParseModemHelperManifest(ctx context.Context) (*mfwd.HelperManifest, error) {
 	modemHelperProtoPath := GetModemHelperManifestPath()
 	output, err := testexec.CommandContext(ctx, "cat", modemHelperProtoPath).Output()
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to access the helper manifest: %s", modemHelperProtoPath)
 	}
 
-	s.Log("Parsing modem helper proto")
+	testing.ContextLog(ctx, "Parsing modem helper proto")
 	manifest := &mfwd.HelperManifest{}
 	if err := proto.UnmarshalText(string(output), manifest); err != nil {
 		return nil, errors.Wrapf(err, "failed to parse helper manifest: %s", modemHelperProtoPath)
 	}
-	s.Log("Parsed successfully")
+	testing.ContextLog(ctx, "Parsed successfully")
 
 	return manifest, nil
 }

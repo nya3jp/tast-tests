@@ -28,7 +28,7 @@ func init() {
 		PreTestTimeout:  1 * time.Second,
 		PostTestTimeout: 1 * time.Second,
 		TearDownTimeout: 5 * time.Second,
-		Impl:            newCellularFixture(),
+		Impl:            NewCellularFixture(),
 	})
 }
 
@@ -38,7 +38,7 @@ type cellularFixture struct {
 	hermesStopped   bool
 }
 
-func newCellularFixture() testing.FixtureImpl {
+func NewCellularFixture() *cellularFixture {
 	return &cellularFixture{modemfwdStopped: false}
 }
 

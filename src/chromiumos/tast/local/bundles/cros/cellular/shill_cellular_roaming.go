@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package network
+package cellular
 
 import (
 	"context"
@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/network/cellular"
+	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/testing"
 )
@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     ShillCellularRoaming,
 		Desc:     "Verifies that AllowRoaming is respected by Shill",
-		Contacts: []string{"pholla@google.com", "cros-network-health@google.com"},
+		Contacts: []string{"pholla@google.com", "cros-network-health@google.com", "chromeos-cellular-team@google.com"},
 		Attr:     []string{"group:cellular", "cellular_unstable", "cellular_sim_roaming"},
 		Fixture:  "cellular",
 		Timeout:  60 * time.Second,
@@ -46,7 +46,7 @@ func ShillCellularRoaming(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not initialize autoconnect to false: ", err)
 	}
-	defer cleanup(ctxForCleanUp, s)
+	defer cleanup(ctxForCleanUp)
 
 	service, err := helper.FindServiceForDevice(ctx)
 	if err != nil {
@@ -75,14 +75,14 @@ func ShillCellularRoaming(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Could not set PolicyAllowRoaming to true: ", err)
 	}
-	defer cleanup(ctxForCleanUp, s)
+	defer cleanup(ctxForCleanUp)
 
 	s.Log("Set Service.AllowRoaming = true")
 	cleanup, err = helper.InitServiceProperty(ctx, shillconst.ServicePropertyCellularAllowRoaming, true)
 	if err != nil {
 		s.Fatal("Could not set AllowRoaming property to true: ", err)
 	}
-	defer cleanup(ctxForCleanUp, s)
+	defer cleanup(ctxForCleanUp)
 
 	if err := modem.WaitForState(ctx, mmconst.ModemStateRegistered, time.Minute); err != nil {
 		s.Fatal("Modem is not registered")
