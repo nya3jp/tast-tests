@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "fd2ed25ee5f51c45944a3bb3b7f5bf91e9aa35e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af82a2fc_f978f6f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-10-27T10:48:51Z",
+      "side": 1,
+      "message": "All of these tests are stable in Tastboard.",
+      "revId": "fd2ed25ee5f51c45944a3bb3b7f5bf91e9aa35e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
