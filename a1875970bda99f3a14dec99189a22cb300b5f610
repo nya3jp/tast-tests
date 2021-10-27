@@ -150,6 +150,30 @@
       },
       "revId": "a1875970bda99f3a14dec99189a22cb300b5f610",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d48f63d_7c204401",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_unrecoverable_vault.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-10-27T02:59:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "51aeb9fc_c4cf48bb",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 47
+      },
+      "revId": "a1875970bda99f3a14dec99189a22cb300b5f610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
