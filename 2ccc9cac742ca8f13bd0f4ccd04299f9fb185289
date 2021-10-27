@@ -16,6 +16,47 @@
       "message": "Wait until https://crrev.com/c/3246458 lands before submitting",
       "revId": "2ccc9cac742ca8f13bd0f4ccd04299f9fb185289",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a8d4928_612a4801",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-27T01:21:50Z",
+      "side": 1,
+      "message": "You might know it but Cq-Depend\u003dchromium:3246458 is useful for making sure CL lands in order.",
+      "parentUuid": "5f7b688b_d01a0a6e",
+      "revId": "2ccc9cac742ca8f13bd0f4ccd04299f9fb185289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de9d3e38_7c339f23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/exo_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-27T01:21:50Z",
+      "side": 1,
+      "message": "This doesn\u0027t provide much info to stainless. We can omit this.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 4
+      },
+      "revId": "2ccc9cac742ca8f13bd0f4ccd04299f9fb185289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
