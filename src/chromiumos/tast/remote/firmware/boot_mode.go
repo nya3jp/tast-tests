@@ -336,7 +336,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 				return errors.Wrap(err, "waiting for DUT to be unreachable after reboot")
 			}
 			if err := ms.fwScreenToUSBDevMode(ctx); err != nil {
-				return errors.Wrap(err, "moving from firmware screen to dev mode")
+				return errors.Wrap(err, "moving from firmware screen to usb dev mode")
 			}
 		}
 		// Reconnect to the DUT.
@@ -490,6 +490,7 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, hasSerialAP bo
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
 	}
+	testing.ContextLogf(ctx, "Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
 	if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
 		return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
 	}
@@ -505,12 +506,15 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, hasSerialAP bo
 		// 2. Press enter.
 		// 3. Sleep for [KeypressDelay] seconds.
 		// 4. Press enter.
+		testing.ContextLog(ctx, "Pressing ENTER")
 		if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
 			return errors.Wrap(err, "pressing Enter on firmware screen while disabling dev mode")
 		}
+		testing.ContextLogf(ctx, "Sleeping %s (KeypressDelay)", h.Config.KeypressDelay)
 		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
 			return errors.Wrapf(err, "sleeping for %s (KeypressDelay) while disabling dev mode", h.Config.KeypressDelay)
 		}
+		testing.ContextLog(ctx, "Pressing ENTER")
 		if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
 			return errors.Wrap(err, "pressing Enter on confirm screen while disabling dev mode")
 		}
@@ -519,12 +523,15 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, hasSerialAP bo
 		// 2. Press Ctrl+S.
 		// 3. Sleep for [KeypressDelay] seconds.
 		// 4. Press enter.
+		testing.ContextLog(ctx, "Pressing Ctrl-S")
 		if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlS, servo.DurTab); err != nil {
 			return errors.Wrap(err, "pressing Ctrl-S on firmware screen while disabling dev mode")
 		}
+		testing.ContextLogf(ctx, "Sleeping %s (KeypressDelay)", h.Config.KeypressDelay)
 		if err := testing.Sleep(ctx, h.Config.KeypressDelay); err != nil {
 			return errors.Wrapf(err, "sleeping for %s (KeypressDelay) while disabling dev mode", h.Config.KeypressDelay)
 		}
+		testing.ContextLog(ctx, "Pressing ENTER")
 		if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
 			return errors.Wrap(err, "pressing Enter on confirm screen while disabling dev mode")
 		}
@@ -616,14 +623,16 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, hasSerialAP bool)
 		if err := h.Servo.SetDUTPDDataRole(ctx, servo.DFP); err != nil {
 			testing.ContextLogf(ctx, "Failed to set pd data role to DFP: %s", err)
 		}
-		// Keep pressing CTRL-D until connected
+		// Keep pressing CTRL-D until connected, but wait a little longer for the connect each time.
+		connectTimeout := 2 * time.Second
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			testing.ContextLog(ctx, "Pressing CTRL-D")
 			if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlD, servo.DurTab); err != nil {
 				return err
 			}
-			ctx, cancel := context.WithTimeout(ctx, 2*time.Second)
+			ctx, cancel := context.WithTimeout(ctx, connectTimeout)
 			defer cancel()
+			connectTimeout += time.Second
 			return h.DUT.WaitConnect(ctx)
 		}, &testing.PollOptions{Timeout: 1 * time.Minute}); err != nil {
 			return errors.Wrap(err, "failed to reconnect to DUT")
@@ -686,14 +695,16 @@ func (ms *ModeSwitcher) fwScreenToUSBDevMode(ctx context.Context) error {
 		if err := h.Servo.SetDUTPDDataRole(ctx, servo.DFP); err != nil {
 			testing.ContextLogf(ctx, "Failed to set pd data role to DFP: %s", err)
 		}
-		// Keep pressing CTRL-U until connected
+		// Keep pressing CTRL-U until connected, but wait a little longer for the connect each time.
+		connectTimeout := 2 * time.Second
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			testing.ContextLog(ctx, "Pressing CTRL-U")
 			if err := h.Servo.KeypressWithDuration(ctx, servo.CtrlU, servo.DurTab); err != nil {
 				return err
 			}
-			ctx, cancel := context.WithTimeout(ctx, 2*time.Second)
+			ctx, cancel := context.WithTimeout(ctx, connectTimeout)
 			defer cancel()
+			connectTimeout += time.Second
 			return h.DUT.WaitConnect(ctx)
 		}, &testing.PollOptions{Timeout: 1 * time.Minute}); err != nil {
 			return errors.Wrap(err, "failed to reconnect to DUT")
