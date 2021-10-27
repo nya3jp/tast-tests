@@ -69,6 +69,8 @@ type persistentFixture struct {
 	// policies is the list of persistent policies set for FakeDMS.
 	// Keep empty if unused.
 	policies []policy.Policy
+	// persistentPublicAccountPolicies contains persistent public account policies.
+	persistentPublicAccountPolicies map[string][]policy.Policy
 
 	// policyUser is the persistentuser account that used as policyUser in policy blob.
 	// Keep nil if unused.
@@ -94,6 +96,7 @@ func (p *persistentFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 	}
 
 	p.fdms.SetPersistentPolicies(p.policies)
+	p.fdms.SetPersistentPublicAccountPolicy(p.persistentPublicAccountPolicies)
 	p.fdms.SetPersistentPolicyUser(p.policyUser)
 
 	// Write the policy blob with persistent values set as the one set by FakeDMS is the default.
