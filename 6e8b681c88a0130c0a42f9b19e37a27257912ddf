@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c95635cc_38d66c88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1245231
+      },
+      "writtenOn": "2021-10-27T12:00:03Z",
+      "side": 1,
+      "message": "As a suggestion, can we add to an existing test or add a new test to verify that the foreground/topapp",
+      "revId": "6e8b681c88a0130c0a42f9b19e37a27257912ddf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
