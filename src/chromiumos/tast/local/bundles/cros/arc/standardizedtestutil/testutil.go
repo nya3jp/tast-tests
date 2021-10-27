@@ -169,12 +169,7 @@ func RunTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 			if err := act.Start(workCtx, tconn); err != nil {
 				s.Fatal("Failed to start app: ", err)
 			}
-
-			defer func(ctx context.Context) {
-				if err := act.Stop(ctx, tconn); err != nil {
-					s.Fatal("Failed to stop app: ", err)
-				}
-			}(cleanupCtx)
+			defer act.Stop(cleanupCtx, tconn)
 
 			// Take screenshot and dump ui info on failure.
 			defer func(ctx context.Context) {
