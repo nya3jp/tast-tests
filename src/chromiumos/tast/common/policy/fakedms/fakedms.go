@@ -206,19 +206,25 @@ func (fdms *FakeDMS) WritePolicyBlob(pb *PolicyBlob) error {
 		return errors.Wrap(err, "could not convert policies to JSON")
 	}
 
-	if err = fdms.WritePolicyBlobRaw(pJSON); err != nil {
-		return errors.Wrap(err, "failed to write policy blob")
+	if err := ioutil.WriteFile(fdms.policyPath, pJSON, 0644); err != nil {
+		return errors.Wrap(err, "could not write JSON to file")
 	}
 
 	return nil
 }
 
 // WritePolicyBlobRaw writes the given PolicyBlob JSON string to be read by the FakeDMS.
-// TODO(crbug.com/1263455): Remove policy_service.go as a caller and make private for persistent settings to always work.
+// To apply persistent settings, pJSON is unmarshalled and then marshalled as PolicyBlob.
 func (fdms *FakeDMS) WritePolicyBlobRaw(pJSON []byte) error {
-	if err := ioutil.WriteFile(fdms.policyPath, pJSON, 0644); err != nil {
-		return errors.Wrap(err, "could not write JSON to file")
+	var pb PolicyBlob
+	if err := json.Unmarshal(pJSON, &pb); err != nil {
+		return errors.Wrap(err, "failed to parse raw policy blob")
 	}
+
+	if err := fdms.WritePolicyBlob(&pb); err != nil {
+		return err
+	}
+
 	return nil
 }
 
