@@ -121,13 +121,20 @@ func UserAvatarImage(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			// Click on the Cat image, the user image preview should be changed immediately regardless of the policy existence.
+			// Get the list of device account images to select one of them.
+			selectorRadioGroup := nodewith.Role(role.RadioGroup)
+			deviceAccountImages, err := ui.NodesInfo(ctx, nodewith.Ancestor(selectorRadioGroup))
+			if err != nil {
+				s.Fatal("Failed to get deviceAccountImages for selector node: ", err)
+			}
+
+			// Click on a new avatar image, the user image preview should be changed immediately regardless of the policy existence.
 			// If the policy is set, the setting is not applied after exiting the view.
-			if err := uiauto.Combine("Click on Cat avatar image and wait until the image preview is updated",
-				ui.LeftClick(nodewith.Name("Cat").Role(role.RadioButton)),
+			if err := uiauto.Combine("Click on a new avatar image and wait until the image preview is updated",
+				ui.LeftClick(nodewith.Name(deviceAccountImages[len(deviceAccountImages)-1].Name)),
 				ui.WithTimeout(timeout).WaitUntilExists(userImagePreviewNode),
 			)(ctx); err != nil {
-				s.Fatal("Failed to click on Cat avatar image and wait until the image preview is updated: ", err)
+				s.Fatal("Failed to click on a new avatar image and wait until the image preview is updated: ", err)
 			}
 
 			// Determine the bounds of the user image preview.
