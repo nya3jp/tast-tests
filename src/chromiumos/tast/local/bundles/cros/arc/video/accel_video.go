@@ -129,7 +129,7 @@ func runARCVideoEncoderTest(ctx context.Context, s *testing.State, a *arc.ARC,
 	}
 
 	// Push video stream file to ARC container.
-	if err := a.Command(ctx, "mkdir", arcFilePath).Run(testexec.DumpLogOnError); err != nil {
+	if err := a.Command(ctx, "mkdir", "-p", arcFilePath).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed creating test data dir: ", err)
 	}
 	defer a.Command(ctx, "rm", "-rf", arcFilePath).Run()
