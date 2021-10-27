@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a28d46cf_6f6860ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_crash_data_survival.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-27T09:46:51Z",
+      "side": 1,
+      "message": "same error:\n\nThis is not correct to assume that if err !\u003d nil than err is want you expect.\n\nAs mentioned above, err can be \"context deadline exceeded\".\n\nThe right way will be to explicitly compare returned error value with expected error",
+      "range": {
+        "startLine": 116,
+        "startChar": 29,
+        "endLine": 116,
+        "endChar": 39
+      },
+      "revId": "92e12ca83cc98d51074159ea8dbde516dcf20fed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
