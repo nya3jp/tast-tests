@@ -181,6 +181,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a13bd215_ba56d338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-10-27T03:25:53Z",
+      "side": 1,
+      "message": "*amount of",
+      "parentUuid": "58313e0b_54f10e6b",
+      "range": {
+        "startLine": 98,
+        "startChar": 14,
+        "endLine": 98,
+        "endChar": 68
+      },
+      "revId": "2d3bb332c0807bceee323146d2b85c6fc61b920a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c221c8ff_013a7871",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/hdmi_adapter_suspend_resume.go",
         "patchSetId": 2
