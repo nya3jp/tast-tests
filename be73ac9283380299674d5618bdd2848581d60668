@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "013ea731_0ad4b80d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T00:23:00Z",
+      "side": 1,
+      "message": "Ack. \n\nSide note: I thought this prefix was to disambiguate it from the other projects in platform/ not necessarily within tast-tests?",
+      "parentUuid": "bfbd8f4a_184bb1ff",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "be73ac9283380299674d5618bdd2848581d60668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94bd8851_44377563",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-26T10:43:16Z",
       "side": 1,
       "message": "I think if you write chromium instead of CL, it will handle it as a link here in Gerrit, just like in the BUG line.",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 5
+      },
+      "revId": "be73ac9283380299674d5618bdd2848581d60668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1f6bb1a_4c2d3fef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T00:23:00Z",
+      "side": 1,
+      "message": "Turns out chromium doesn\u0027t work as well (maybe points to crbug.com instead?) updated to be explicit crrev.com/c/ link instead.",
+      "parentUuid": "94bd8851_44377563",
       "range": {
         "startLine": 9,
         "startChar": 3,
@@ -93,6 +141,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ec421d1_72ace202",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T00:23:00Z",
+      "side": 1,
+      "message": "Yes it can cause grief. I\u0027ve updated to simply check the s.running variable and bail early if set to true",
+      "parentUuid": "ab7c9840_8eaec0b9",
+      "range": {
+        "startLine": 62,
+        "startChar": 17,
+        "endLine": 62,
+        "endChar": 22
+      },
+      "revId": "be73ac9283380299674d5618bdd2848581d60668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "225588d1_f9abb818",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T00:23:00Z",
+      "side": 1,
+      "message": "Noted. Returned an error at relevant parts throughout.",
+      "parentUuid": "d7d80a3e_799619f9",
+      "range": {
+        "startLine": 62,
+        "startChar": 42,
+        "endLine": 62,
+        "endChar": 45
+      },
+      "revId": "be73ac9283380299674d5618bdd2848581d60668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2a6de69_33e3112b",
@@ -106,6 +202,24 @@
       "writtenOn": "2021-10-26T10:43:16Z",
       "side": 1,
       "message": "What is the reason for this line?",
+      "revId": "be73ac9283380299674d5618bdd2848581d60668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "530daa85_9da8b2e4",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T00:23:00Z",
+      "side": 1,
+      "message": "CombinedOutput is blocking so we kick this Start off in a goroutine then if any subsequent calls to Start / Stop occur we should handle those appropriately based on the value of this variable.",
+      "parentUuid": "a2a6de69_33e3112b",
       "revId": "be73ac9283380299674d5618bdd2848581d60668",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39244134_de6be3c6",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T00:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5d0c0c2_31bb7bfe",
+      "range": {
+        "startLine": 73,
+        "startChar": 30,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "be73ac9283380299674d5618bdd2848581d60668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ece7279_9161bba9",
@@ -146,6 +284,24 @@
       "writtenOn": "2021-10-26T10:43:16Z",
       "side": 1,
       "message": "I the not ok branch expected here?",
+      "revId": "be73ac9283380299674d5618bdd2848581d60668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfc4b64d_f53f5ba5",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-27T00:23:00Z",
+      "side": 1,
+      "message": "Logging this branch out now.",
+      "parentUuid": "8ece7279_9161bba9",
       "revId": "be73ac9283380299674d5618bdd2848581d60668",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
