@@ -34,14 +34,14 @@ func NewContext(cr *chrome.Chrome, tconn *chrome.TestConn) *GalleryContext {
 	}
 }
 
-// RootFinder is the finder of Gallery app root window.
-var RootFinder = nodewith.Name(apps.Gallery.Name).Role(role.RootWebArea)
+// BrowserFinder is the finder of Gallery app browser window.
+var BrowserFinder = nodewith.NameStartingWith(apps.Gallery.Name).HasClass("BrowserFrame")
 
 // DialogFinder is the finder of popup dialog in Gallery app.
-var DialogFinder = nodewith.Role(role.AlertDialog).Ancestor(RootFinder)
+var DialogFinder = nodewith.Role(role.AlertDialog).Ancestor(BrowserFinder)
 
 // openImageButtonFinder is the finder of 'Open image' button on zero state page.
-var openImageButtonFinder = nodewith.Role(role.Button).Name("Open image").Ancestor(RootFinder)
+var openImageButtonFinder = nodewith.Role(role.Button).Name("Open image").Ancestor(BrowserFinder)
 
 // CloseApp returns an action closing Gallery app.
 func (gc *GalleryContext) CloseApp() uiauto.Action {
@@ -53,7 +53,7 @@ func (gc *GalleryContext) CloseApp() uiauto.Action {
 // DeleteAndConfirm returns an action clicking 'Delete' button and then 'Confirm' to remove current opened media file.
 // It assumes a valid media file is opened.
 func (gc *GalleryContext) DeleteAndConfirm() uiauto.Action {
-	deleteButtonFinder := nodewith.Role(role.Button).Name("Delete").Ancestor(RootFinder)
+	deleteButtonFinder := nodewith.Role(role.Button).Name("Delete").Ancestor(BrowserFinder)
 	confirmButtonFinder := nodewith.Role(role.Button).Name("Delete").Ancestor(DialogFinder)
 	return uiauto.Combine("remove current opened media file",
 		gc.ui.WithTimeout(30*time.Second).WithInterval(1*time.Second).LeftClickUntil(
