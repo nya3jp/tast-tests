@@ -30,7 +30,6 @@ func init() {
 			{
 				Val: [][]string{
 					{"platform", "name"},
-					{"eventlog", "list"},
 				},
 				ExtraAttr: []string{"informational"},
 			},
