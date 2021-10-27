@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda96561_33f962a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-27T22:46:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "714c4a7c_632d8216",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "6e07de86b84b3b9216646fc69e088bb125c8ca98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "169f335e_1bcd72cb",

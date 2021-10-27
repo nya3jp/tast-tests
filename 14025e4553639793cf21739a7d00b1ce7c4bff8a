@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b19bf6d_2420fbcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-27T22:46:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91904cbf_6f674e7c",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "14025e4553639793cf21739a7d00b1ce7c4bff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8dd3ea8e_8a9ff6e8",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-27T22:01:01Z",
       "side": 1,
       "message": "Make this one number, say 1.2.\n\nAnd patch a different number.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "14025e4553639793cf21739a7d00b1ce7c4bff8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe4c16d_4aa01686",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vkinfo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-10-27T22:46:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dd3ea8e_8a9ff6e8",
       "range": {
         "startLine": 48,
         "startChar": 0,
