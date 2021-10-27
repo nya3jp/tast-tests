@@ -43,38 +43,6 @@ func init() {
 		PostTestTimeout: 5 * time.Second,
 		Parent:          fixture.Enrolled,
 	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:     fixture.FakeDMSFamilyLink,
-		Desc:     "Fixture for a running FakeDMS of Family Link account",
-		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
-		Vars: []string{
-			"unicorn.childUser",
-		},
-		Impl: &fakeDMSFixture{
-			policyUserVar: "unicorn.childUser",
-		},
-		SetUpTimeout:    15 * time.Second,
-		ResetTimeout:    5 * time.Second,
-		TearDownTimeout: 5 * time.Second,
-		PostTestTimeout: 5 * time.Second,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:     fixture.FakeDMSFamilyLinkArc,
-		Desc:     "Fixture for a running FakeDMS of Family Link account",
-		Contacts: []string{"xiqiruan@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
-		Vars: []string{
-			"arc.childUser",
-		},
-		Impl: &fakeDMSFixture{
-			policyUserVar: "arc.childUser",
-		},
-		SetUpTimeout:    15 * time.Second,
-		ResetTimeout:    5 * time.Second,
-		TearDownTimeout: 5 * time.Second,
-		PostTestTimeout: 5 * time.Second,
-	})
 }
 
 type fakeDMSFixture struct {
@@ -84,15 +52,6 @@ type fakeDMSFixture struct {
 	fdmsDir string
 	// importState is the path to an existing state file for FakeDMS.
 	importState string
-
-	// TODO(crbug.com/1263455): Move policyUser handling to persistent.go.
-	// policyUser is the user account that used as policyUser in policy blob. The value is
-	// fakedms.DefaultPolicyUser if policyUserVar is not set.
-	policyUser string
-	// The policyUserVar is the account variable (i.e. "unicorn.childUser") when using
-	// a different account instead of tast-user@managedchrome.com for policy test.
-	// It is used to set the value of the policyUser variable above.
-	policyUserVar string
 }
 
 func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -125,13 +84,6 @@ func (f *fakeDMSFixture) SetUp(ctx context.Context, s *testing.FixtState) interf
 
 	pb := fakedms.NewPolicyBlob()
 
-	f.policyUser = fakedms.DefaultPolicyUser
-
-	if f.policyUserVar != "" {
-		f.policyUser = s.RequiredVar(f.policyUserVar)
-		pb.PolicyUser = f.policyUser
-	}
-
 	if err := fdms.WritePolicyBlob(pb); err != nil {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
 	}
@@ -156,11 +108,8 @@ func (f *fakeDMSFixture) Reset(ctx context.Context) error {
 		return errors.Wrap(err, "failed to ping FakeDMS")
 	}
 
-	pb := fakedms.NewPolicyBlob()
-	pb.PolicyUser = f.policyUser
-
 	// Write policy blob.
-	if err := f.fakeDMS.WritePolicyBlob(pb); err != nil {
+	if err := f.fakeDMS.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
 		return errors.Wrap(err, "failed to clear policies in FakeDMS")
 	}
 
