@@ -36,6 +36,8 @@ type persistentFixture struct {
 
 	// policies is the list of persistent policies set for FakeDMS.
 	policies []policy.Policy
+	// persistentPublicAccountPolicies contains persistent public account policies.
+	persistentPublicAccountPolicies map[string][]policy.Policy
 }
 
 func (p *persistentFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -47,6 +49,7 @@ func (p *persistentFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 	p.fdms = fdms
 
 	p.fdms.SetPersistentPolicies(p.policies)
+	p.fdms.SetPersistentPublicAccountPolicies(p.persistentPublicAccountPolicies)
 
 	// Write the policy blob with persistent values set as the one set by FakeDMS is the default.
 	if err := p.fdms.WritePolicyBlob(fakedms.NewPolicyBlob()); err != nil {
@@ -60,6 +63,7 @@ func (p *persistentFixture) SetUp(ctx context.Context, s *testing.FixtState) int
 func (p *persistentFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	// Clear all persistent settings.
 	p.fdms.SetPersistentPolicies([]policy.Policy{})
+	p.fdms.SetPersistentPublicAccountPolicies(nil)
 }
 
 func (p *persistentFixture) Reset(ctx context.Context) error {
