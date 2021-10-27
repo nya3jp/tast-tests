@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1ad6d7_be3f94a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-27T23:29:18Z",
+      "side": 1,
+      "message": "you do not need this, just define the nodes and return uiauto.Combine(...) without (ctx)",
+      "range": {
+        "startLine": 381,
+        "startChar": 1,
+        "endLine": 381,
+        "endChar": 40
+      },
+      "revId": "0ab0e9867bbc90e78875a341c222fcd4a14d7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
