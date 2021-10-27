@@ -91,6 +91,52 @@
       },
       "revId": "6d080482f0adb371f44ef09e1524e70cbc9f6636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd01ead_c80928dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-27T17:28:30Z",
+      "side": 1,
+      "message": "Ok, the kblight command in the ec console returns the brightness, but doesn\u0027t return the enabled bit.\n\nOH! The old python test never actually runs this test ever! It checks if ec_capability contains \"kblight\", and there are 0 boards that have that enabled in fw-testing-configs.\n\nI think we need to change the kblight console command to return the enabled bit also, and skip the test if it doesn\u0027t include that bit.\n\nFor models that use CONFIG_PWM_KBLIGHT, you can use `pwmduty`, but you would have to know the channel number and it varies.",
+      "range": {
+        "startLine": 186,
+        "startChar": 35,
+        "endLine": 186,
+        "endChar": 43
+      },
+      "revId": "6d080482f0adb371f44ef09e1524e70cbc9f6636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75eef012_4ad1eb90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-27T17:28:30Z",
+      "side": 1,
+      "message": "Move this to a defer call right after setting to 100% above.",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 0
+      },
+      "revId": "6d080482f0adb371f44ef09e1524e70cbc9f6636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
