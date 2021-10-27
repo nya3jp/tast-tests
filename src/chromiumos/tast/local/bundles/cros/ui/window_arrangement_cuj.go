@@ -25,6 +25,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -39,7 +40,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars:         []string{"record"},
-		Timeout:      10 * time.Minute,
+		Timeout:      17 * time.Minute,
 		Data:         []string{"bear-320x240.vp8.webm", "pip.html"},
 		Params: []testing.Param{
 			{
@@ -85,6 +86,11 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
+	}
+
+	// Wait for cpu to stabilize before test.
+	if err := cpu.WaitUntilStabilized(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
+		s.Fatal("Failed to wait for CPU to become idle: ", err)
 	}
 
 	// Shorten context a bit to allow for cleanup.

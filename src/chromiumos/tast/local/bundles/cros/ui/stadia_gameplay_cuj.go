@@ -24,7 +24,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -56,10 +55,6 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	const (
 		timeout = 30 * time.Second
 	)
-	// Ensure display on to record ui performance correctly.
-	if err := power.TurnOnDisplay(ctx); err != nil {
-		s.Fatal("Failed to turn on display: ", err)
-	}
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx
