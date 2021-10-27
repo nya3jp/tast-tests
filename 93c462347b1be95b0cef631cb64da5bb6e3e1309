@@ -88,6 +88,23 @@
       "parentUuid": "44fbc973_3bb4c27c",
       "revId": "93c462347b1be95b0cef631cb64da5bb6e3e1309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "721c270f_67674598",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-27T16:26:29Z",
+      "side": 1,
+      "message": "so looks the one linked from gabor\u0027s comment is being submitted, this is probably no longer needed, thought the change itself LG.",
+      "revId": "93c462347b1be95b0cef631cb64da5bb6e3e1309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
