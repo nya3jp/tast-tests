@@ -181,6 +181,30 @@
       },
       "revId": "ee2d891d9b53b1dbb5bf44ec5c376ac7b0f398c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d85c50_3042d36b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-27T15:58:32Z",
+      "side": 1,
+      "message": "The \"logs\" in Chrome OS is ... a kind of wild world now.\nAFAIK, there\u0027s no very centerized place to recording the log.\nLogging is time-to-time cleaned up by EngVelocity team, so we may want to talk to them to consider lacros in the future plan, maybe?",
+      "parentUuid": "ef067b63_fee99a90",
+      "range": {
+        "startLine": 137,
+        "startChar": 68,
+        "endLine": 137,
+        "endChar": 78
+      },
+      "revId": "ee2d891d9b53b1dbb5bf44ec5c376ac7b0f398c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
