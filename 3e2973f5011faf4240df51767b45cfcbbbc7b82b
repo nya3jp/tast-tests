@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efe7a44c_0306f112",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-10-28T21:05:04Z",
+      "side": 1,
+      "message": "Understand the concern that waiting for cpu ideal in PreTest might not work for all fixtures setups.\n\nHowever, it should work for CUJs because the only fixture PreTest work is some lightweight logsaver work to capture chrome log and CUJ tests do the preparation work first thing in their test body. I updated comment that if we could not guarantee that we should move the cpu wait to test body.\n\nAnd it is nice to be able to put preparation code together.",
+      "parentUuid": "ca14d601_5dc10a3d",
+      "revId": "3e2973f5011faf4240df51767b45cfcbbbc7b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "877094a1_4398c731",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
         "patchSetId": 2
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "fyi: another api cpu.WaitForStabilization is also available, which includes both WaitForCoolDown and WaitForIdle.",
       "parentUuid": "0bc944ad_658f292f",
+      "revId": "3e2973f5011faf4240df51767b45cfcbbbc7b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ed4ca2_d40e3eec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-10-28T21:05:04Z",
+      "side": 1,
+      "message": "Changed to cpu.WaitUntilStabilized and adjusted timeout. WaitUntilCoolDown does not work well in the past that it often times out. Let\u0027s see how it works now.",
+      "parentUuid": "28060586_f9c3df2a",
       "revId": "3e2973f5011faf4240df51767b45cfcbbbc7b82b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
