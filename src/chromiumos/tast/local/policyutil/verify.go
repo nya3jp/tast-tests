@@ -20,7 +20,8 @@ import (
 // A DUTPolicy represents the information about a single policy as returned by
 // the getAllEnterprisePolicies API.
 // Example JSON: {"scope": "user", "level": "mandatory", "source": "cloud",
-//                "value": false, "error": "This policy has been deprecated."}
+//
+//	"value": false, "error": "This policy has been deprecated."}
 type DUTPolicy struct {
 	Level     string
 	Scope     string
@@ -37,7 +38,9 @@ type DUTPolicy struct {
 type DUTPolicies struct {
 	Chrome      map[string]*DUTPolicy `json:"chromePolicies"`
 	DeviceLocal map[string]*DUTPolicy `json:"deviceLocalAccountPolicies"`
-	Extension   map[string]*DUTPolicy `json:"extensionPolicies"`
+
+	// Each entry for the extension policy is mapped independently.
+	Extension map[string]map[string]*DUTPolicy `json:"extensionPolicies"`
 }
 
 // String turns a DUTPolicy struct into a human readable string.
