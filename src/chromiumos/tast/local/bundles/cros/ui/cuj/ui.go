@@ -173,10 +173,10 @@ func LaunchAppFromHotseat(ctx context.Context, tconn *chrome.TestConn, appName s
 }
 
 // appIconFinder returns the finder of app icon with input app name(s).
-// It will only look for the icon locate on native display.
+// It will only look for the icon locate on built-in display.
 func appIconFinder(appName string, appOtherPossibleNames ...string) *nodewith.Finder {
-	nativeDisplay := nodewith.ClassName("RootWindow-0").Role(role.Window)
-	finder := nodewith.ClassName("ash/ShelfAppButton").Ancestor(nativeDisplay)
+	builtInDisplay := nodewith.ClassName("RootWindow-0").Role(role.Window)
+	finder := nodewith.ClassName("ash/ShelfAppButton").Ancestor(builtInDisplay)
 
 	if len(appOtherPossibleNames) == 0 {
 		return finder.Name(appName)

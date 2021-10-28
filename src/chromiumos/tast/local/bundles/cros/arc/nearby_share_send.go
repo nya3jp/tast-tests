@@ -407,7 +407,7 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start receiving on Android: ", err)
 	}
 
-	nativeui := uiauto.New(tconn)
+	coreui := uiauto.New(tconn)
 	var shareCancelled bool
 	// Defer cancelling receiving if something goes wrong.
 	var shareCompleted bool
@@ -427,8 +427,8 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 				cancel := nodewith.Name("Cancel").Role(role.Button)
 				close := nodewith.Name("Close").Role(role.Button).ClassName("action-button")
 				if err := uiauto.Combine("find and click cancel button",
-					nativeui.IfSuccessThen(nativeui.WithTimeout(5*time.Second).WaitUntilExists(cancel), nativeui.LeftClick(cancel)),
-					nativeui.IfSuccessThen(nativeui.WithTimeout(5*time.Second).WaitUntilExists(close), nativeui.LeftClick(close)),
+					coreui.IfSuccessThen(coreui.WithTimeout(5*time.Second).WaitUntilExists(cancel), coreui.LeftClick(cancel)),
+					coreui.IfSuccessThen(coreui.WithTimeout(5*time.Second).WaitUntilExists(close), coreui.LeftClick(close)),
 				)(ctx); err != nil {
 					s.Error("Failed to click the 'Cancel' button: ", err)
 				}

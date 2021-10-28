@@ -12,7 +12,7 @@
 // src/third_party/autotest/files/tko/perf_upload/perf_dashboard_config.json
 //
 // Chrome Performance Dashboard docs can be found here:
-// https://github.com/catapult-project/catapult/tree/master/dashboard
+// https://github.com/catapult-project/catapult/tree/master/dashboard // nocheck
 //
 // Usage example:
 //
@@ -255,7 +255,7 @@ func (format Format) fileName() (string, error) {
 }
 
 // traceData is a struct corresponding to a trace entry in Chrome Performance Dashboard JSON.
-// See: https://github.com/catapult-project/catapult/blob/master/dashboard/docs/data-format.md
+// See: https://github.com/catapult-project/catapult/blob/master/dashboard/docs/data-format.md // nocheck
 type traceData struct {
 	Units                string `json:"units"`
 	ImprovementDirection string `json:"improvement_direction"`

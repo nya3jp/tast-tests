@@ -55,7 +55,7 @@ type binArgs struct {
 	// testFilter specifies test pattern in googletest style for the unittest to run and will be passed with "--gtest_filter" (see go/gtest-running-subset).
 	// If unspecified, the unittest runs all tests.
 	testFilter string
-	// extraArgs is the additional arguments to pass video_encode_accelerator_unittest, for example, "--native_input".
+	// extraArgs is the additional arguments to pass video_encode_accelerator_unittest
 	extraArgs []string
 	// measureUsage indicates whether to measure CPU usage and power consumption while running binary and save as perf metrics.
 	measureUsage bool

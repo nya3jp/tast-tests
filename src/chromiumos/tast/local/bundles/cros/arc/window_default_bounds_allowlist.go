@@ -65,7 +65,7 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 	}
 	defer ash.SetTabletModeEnabled(cleanupCtx, tconn, tabletModeEnabled)
 
-	// Then we verify the launch logic for whitelisted apps is correct.
+	// Then we verify the launch logic for allow listed apps is correct.
 	apkPath := map[string]string{
 		wm.Pkg24InMaximizedList:  wm.APKNameArcWMTestApp24Maximized,
 		wm.Pkg24InPhoneSizeList:  wm.APKNameArcWMTestApp24PhoneSize,
