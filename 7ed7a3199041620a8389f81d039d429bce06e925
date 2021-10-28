@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d1aece9_8c6959cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-28T07:55:35Z",
+      "side": 1,
+      "message": "This method is moved back here from \"cca/fixture.go\".",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "7ed7a3199041620a8389f81d039d429bce06e925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c1eac63_e9ec59f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-28T07:55:35Z",
+      "side": 1,
+      "message": "Use \"ccaTestBridgeReady*\" rather than \"ccaLaunched*\" fixture since the camera scene needs to be switched before opening camera.\n\nI have tried replacing the scene file during using CCA and it will lead to Chrome crash.",
+      "range": {
+        "startLine": 34,
+        "startChar": 17,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "7ed7a3199041620a8389f81d039d429bce06e925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bd1bf74_3c14a8d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-28T07:55:35Z",
+      "side": 1,
+      "message": "Changes CCAUIQRCode.{url,text} back to subtests of CCAUIQRCode since now they share same fixture.",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "7ed7a3199041620a8389f81d039d429bce06e925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
