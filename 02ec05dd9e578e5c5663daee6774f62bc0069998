@@ -243,6 +243,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97e41f27_c4e45f5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-28T21:40:03Z",
+      "side": 1,
+      "message": "Since we called verifyState many times, it would be easier to debug in the future if we returned and error. it is sort of like using a scoped trace in c++. imagine\n\nverifyState();\nverifyState();\nverifyState();\n\nand it failed inside verifyState it would be hard to know exactly where\n\nas opposed to\n\nif err :\u003d verifyState() {\n  s.Fatalf(\"failed after snapping top because: err);\n}\n\nif err :\u003d verifyState() {\n  s.Fatalf(\"failed after snapping bottom because: err);\n}\n\nwould be a quicker debug. It will make the test longer, but same easiness to read.",
+      "parentUuid": "8ebb5967_9244dbae",
+      "range": {
+        "startLine": 51,
+        "startChar": 39,
+        "endLine": 51,
+        "endChar": 55
+      },
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2c11242_3b1688f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
         "patchSetId": 1
