@@ -16,6 +16,69 @@
       "message": "Thanks for comments!",
       "revId": "d094019c56b8496f23547471e99c7fa926f1dc7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7ca2c0d_3175fe8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-10-28T09:20:18Z",
+      "side": 1,
+      "message": "lgtm but didn\u0027t we want to check LoggedInUsers instead?",
+      "revId": "d094019c56b8496f23547471e99c7fa926f1dc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fab9a7a_8ed773aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-10-28T09:20:18Z",
+      "side": 1,
+      "message": "nit: move this after the next if condition",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 21
+      },
+      "revId": "d094019c56b8496f23547471e99c7fa926f1dc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c5e783c_a5af2f5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-10-28T09:20:18Z",
+      "side": 1,
+      "message": "I\u0027d suggest to check both user1 and user2",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "d094019c56b8496f23547471e99c7fa926f1dc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
