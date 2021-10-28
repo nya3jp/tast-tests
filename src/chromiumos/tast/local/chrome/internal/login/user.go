@@ -45,8 +45,10 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 		}
 	}
 
-	if err = cryptohome.WaitForUserMount(ctx, cfg.NormalizedUser()); err != nil {
-		return err
+	if cfg.CheckUserMount() {
+		if err = cryptohome.WaitForUserMount(ctx, cfg.NormalizedUser()); err != nil {
+			return err
+		}
 	}
 
 	if cfg.SkipOOBEAfterLogin() {
