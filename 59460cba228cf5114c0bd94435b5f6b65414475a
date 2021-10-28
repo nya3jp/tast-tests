@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2802cc44_e12451d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-10-28T11:07:59Z",
+      "side": 1,
+      "message": "wait",
+      "range": {
+        "startLine": 149,
+        "startChar": 21,
+        "endLine": 149,
+        "endChar": 25
+      },
+      "revId": "59460cba228cf5114c0bd94435b5f6b65414475a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
