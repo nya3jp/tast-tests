@@ -59,7 +59,6 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, extArgs, l
 		"--cros-region=" + cfg.Region(),              // Force the region.
 		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
 		"--enable-oobe-test-api",                     // Enable OOBE helper functions for authentication.
-		"--disable-hid-detection-on-oobe",            // Skip OOBE check for keyboard/mouse on chromeboxes/chromebases.
 		"--force-hwid-check-result-for-test=success", // Forcefully ignore incorrect hardware IDs on devices.
 		"--keep-login-events-for-testing",            // Keep LoginEventRecorder data for later retrieval by tests.
 		"--force-color-profile=srgb",                 // Force chrome to treat the display as sRGB. See b/221643955 for details.
@@ -112,11 +111,16 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, extArgs, l
 			args = append(args, "--gaia-url=https://accounts.sandbox.google.com")
 		}
 	}
+
 	if cfg.SkipForceOnlineSignInForTesting() {
 		args = append(args, "--skip-force-online-signin-for-testing")
 	}
 
 	args = append(args, extArgs...)
+
+	if !cfg.EnableHIDScreenOnOOBE() {
+		args = append(args, "--disable-hid-detection-on-oobe")
+	}
 	if cfg.PolicyEnabled() {
 		args = append(args, "--profile-requires-policy=true")
 	} else {
