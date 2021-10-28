@@ -191,6 +191,24 @@
       "message": "Manually took a look, and looks ok.\nBut let\u0027s keep on our eyes after landing this just in case.",
       "revId": "ee4c8473ac4a62ba7f5265c4185d71d97f04c41a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "debd00a1_d4ec3b3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-28T03:19:35Z",
+      "side": 1,
+      "message": "Sure, will do.",
+      "parentUuid": "e995a2d0_fdedb38b",
+      "revId": "ee4c8473ac4a62ba7f5265c4185d71d97f04c41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
