@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca14d601_5dc10a3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-28T15:14:48Z",
+      "side": 1,
+      "message": "Is this a right place to wait for cpu stabilization?\nEach test has its own setup, in addition to what fixture provides.\nAlso, if child fixture has PreTest, then that will run after CPU stabilization.\n\nI\u0027m wondering if you may want to put it just before the \"main part\" of the test for each case, though it may look not elegant. WDYT?",
+      "revId": "3e2973f5011faf4240df51767b45cfcbbbc7b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "877094a1_4398c731",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
         "patchSetId": 2
@@ -66,6 +83,24 @@
       "side": 1,
       "message": "This waits for cpu utilization to drop. Initial target is  \u003c5%, and gradually relax util 20%. Current max wait time is 2 min now.\n\nThere is another call cpu.WaitForCoolDown, which waits for cpu temp to drop below a threshold. It is harder to achieve than cpu idl in labs.\n\nWe see something like the following in log:\n2021-10-27T22:07:46.588071Z [22:07:46.315] Waiting for idle CPU at most 2m0s, threshold will be gradually relaxed (from 5.0% to 20.0%)\n2021-10-27T22:07:46.588219Z [22:07:46.315] Waiting up to 24s for CPU usage to drop below 5.0% (1/5)                                                                                                                                                   \n2021-10-27T22:07:51.991921Z [22:07:51.718] Waiting for idle CPU took 5s (usage: 2.0%, threshold: 5.0%)                     \n2",
       "parentUuid": "877094a1_4398c731",
+      "revId": "3e2973f5011faf4240df51767b45cfcbbbc7b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28060586_f9c3df2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-28T15:14:48Z",
+      "side": 1,
+      "message": "fyi: another api cpu.WaitForStabilization is also available, which includes both WaitForCoolDown and WaitForIdle.",
+      "parentUuid": "0bc944ad_658f292f",
       "revId": "3e2973f5011faf4240df51767b45cfcbbbc7b82b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
