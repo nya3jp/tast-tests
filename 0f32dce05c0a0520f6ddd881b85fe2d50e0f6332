@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "516655e2_8ca9d424",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-28T13:29:33Z",
+      "side": 1,
+      "message": "Regenerate the file without your changes in a separate CL to make the review easier.",
+      "parentUuid": "49a408f6_1c1d040a",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f50c38dd_4ef1d456",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
         "patchSetId": 2

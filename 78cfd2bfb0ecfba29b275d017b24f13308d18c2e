@@ -16,6 +16,23 @@
       "message": "Thanks for the review! Comments addressed, PTAL again.",
       "revId": "78cfd2bfb0ecfba29b275d017b24f13308d18c2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e2af89b_cdd46f88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-28T13:29:33Z",
+      "side": 1,
+      "message": "This function can be moved inline in the s.Run above.",
+      "revId": "78cfd2bfb0ecfba29b275d017b24f13308d18c2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
