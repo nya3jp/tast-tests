@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8f3179e_12c4dba4",
+        "filename": "src/chromiumos/tast/local/smb/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-28T08:44:10Z",
+      "side": 1,
+      "message": "The names of constants should be capitalized.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 39
+      },
+      "revId": "6242257591c9d692e734807c19a9796ef249d4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f765641d_b9ff8061",
+        "filename": "src/chromiumos/tast/local/smb/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-28T08:44:10Z",
+      "side": 1,
+      "message": "This isn\u0027t a very useful comment. It\u0027s basically just restating parts of the FixtureImpl documentation. The comment should say what this specific SetUp implementation does.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "6242257591c9d692e734807c19a9796ef249d4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f4653f_519229aa",
+        "filename": "src/chromiumos/tast/local/smb/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-28T08:44:10Z",
+      "side": 1,
+      "message": "This is unnecessary.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 63
+      },
+      "revId": "6242257591c9d692e734807c19a9796ef249d4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc0b9357_37d76090",
+        "filename": "src/chromiumos/tast/local/smb/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-28T08:44:10Z",
+      "side": 1,
+      "message": "Unnecessary.",
+      "range": {
+        "startLine": 151,
+        "startChar": 9,
+        "endLine": 151,
+        "endChar": 65
+      },
+      "revId": "6242257591c9d692e734807c19a9796ef249d4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c14e40f_248ef990",
+        "filename": "src/chromiumos/tast/local/smb/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-28T08:44:10Z",
+      "side": 1,
+      "message": "Does this actually need to be exported?",
+      "range": {
+        "startLine": 168,
+        "startChar": 5,
+        "endLine": 168,
+        "endChar": 25
+      },
+      "revId": "6242257591c9d692e734807c19a9796ef249d4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
