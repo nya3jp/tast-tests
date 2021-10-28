@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "463c9d28_bab7339a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-28T00:43:42Z",
+      "side": 0,
+      "message": "nit: get... is not idiomatic go, unless the underlying concept relates to GET (e.g. HTTP GET).\ngo/go-style/decisions#getters\n\nOptional as this is a pre-existing issue with the code.",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 19
+      },
+      "revId": "f68398fedd213ae0e447c87553d99995b0d4469b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
