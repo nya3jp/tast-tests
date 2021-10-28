@@ -84,7 +84,7 @@ func (m *mismatch) Error() string {
 func (m *mismatch) Dump() string {
 	r := fmt.Sprintf("%s: %s\n", m.Exp.Name(), m.Err)
 	if m.Act == nil {
-		r += fmt.Sprintf("No matching policy found on DUT")
+		r += fmt.Sprintf("No matching policy found on DUT\n")
 	} else {
 		r += fmt.Sprintf("Policy read from DUT: %s\n", m.Act)
 	}

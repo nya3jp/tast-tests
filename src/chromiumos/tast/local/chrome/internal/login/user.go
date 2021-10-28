@@ -45,7 +45,11 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 		}
 	}
 
-	if err = cryptohome.WaitForUserMount(ctx, cfg.NormalizedUser()); err != nil {
+	mountType := cryptohome.Permanent
+	if cfg.EphemeralUser() {
+		mountType = cryptohome.Ephemeral
+	}
+	if err = cryptohome.WaitForUserMountAndValidateType(ctx, cfg.NormalizedUser(), mountType); err != nil {
 		return err
 	}
 
