@@ -21,21 +21,21 @@ const (
 // A PolicyBlob is a struct that marshals into what is expected by Chrome's
 // policy_testserver.py.
 type PolicyBlob struct {
-	UserPs               *BlobUserPolicies            `json:"google/chromeos/user,omitempty"`
-	DevicePM             BlobPolicyMap                `json:"google/chromeos/device,omitempty"`
-	ExtensionPM          BlobPolicyMap                `json:"google/chromeos/extension,omitempty"`
-	PublicAccountPs      map[string]*BlobUserPolicies `json:"-"` // Public account policies are identical to user policies.
-	PolicyUser           string                       `json:"policy_user"`
-	ManagedUsers         []string                     `json:"managed_users"`
-	CurrentKeyIdx        int                          `json:"current_key_index,omitempty"`
-	RobotAPIAuthCode     string                       `json:"robot_api_auth_code,omitempty"`
-	Licenses             *BlobLicenses                `json:"available_licenses,omitempty"`
-	TokenEnrollment      *BlobTokenEnrollment         `json:"token_enrollment,omitempty"`
-	RequestErrors        map[string]int               `json:"request_errors,omitempty"`
-	AllowDeviceAttrs     bool                         `json:"allow_set_device_attributes,omitempty"`
-	InitialState         map[string]*BlobInitialState `json:"initial_enrollment_state,omitempty"`
-	DeviceAffiliationIds []string                     `json:"device_affiliation_ids,omitempty"`
-	UserAffiliationIds   []string                     `json:"user_affiliation_ids,omitempty"`
+	UserPs               *BlobUserPolicies               `json:"google/chromeos/user,omitempty"`
+	DevicePM             BlobPolicyMap                   `json:"google/chromeos/device,omitempty"`
+	ExtensionPM          map[string]*BlobExtensionPolicy `json:"google/chromeos/extension,omitempty"`
+	PublicAccountPs      map[string]*BlobUserPolicies    `json:"-"` // Public account policies are identical to user policies.
+	PolicyUser           string                          `json:"policy_user"`
+	ManagedUsers         []string                        `json:"managed_users"`
+	CurrentKeyIdx        int                             `json:"current_key_index,omitempty"`
+	RobotAPIAuthCode     string                          `json:"robot_api_auth_code,omitempty"`
+	Licenses             *BlobLicenses                   `json:"available_licenses,omitempty"`
+	TokenEnrollment      *BlobTokenEnrollment            `json:"token_enrollment,omitempty"`
+	RequestErrors        map[string]int                  `json:"request_errors,omitempty"`
+	AllowDeviceAttrs     bool                            `json:"allow_set_device_attributes,omitempty"`
+	InitialState         map[string]*BlobInitialState    `json:"initial_enrollment_state,omitempty"`
+	DeviceAffiliationIds []string                        `json:"device_affiliation_ids,omitempty"`
+	UserAffiliationIds   []string                        `json:"user_affiliation_ids,omitempty"`
 }
 
 // A BlobUserPolicies struct is a sub-struct used in a PolicyBlob.
@@ -65,6 +65,12 @@ type BlobInitialState struct {
 
 // A BlobPolicyMap is a map of policy names to their JSON values.
 type BlobPolicyMap map[string]json.RawMessage
+
+// A BlobExtensionPolicy contains a reference to an extension policy.
+type BlobExtensionPolicy struct {
+	DownloadURL string `json:"download_url"`
+	SecureHash  string `json:"secure_hash"`
+}
 
 // NewPolicyBlob returns a simple *PolicyBlob. Callers are expected to add user
 // and device policies or modify initial setup as desired.
@@ -154,6 +160,20 @@ func (pb *PolicyBlob) AddPublicAccountPolicies(accountID string, policies []poli
 			return errors.Wrapf(err, "could not add policy to the account %s", accountID)
 		}
 	}
+	return nil
+}
+
+// AddExtensionPolicy sets the policies for a specific extension.
+func (pb *PolicyBlob) AddExtensionPolicy(extensionID, url, hash string) error {
+	if pb.ExtensionPM == nil {
+		pb.ExtensionPM = make(map[string]*BlobExtensionPolicy)
+	}
+
+	pb.ExtensionPM[extensionID] = &BlobExtensionPolicy{
+		DownloadURL: url,
+		SecureHash:  hash,
+	}
+
 	return nil
 }
 

@@ -35,9 +35,9 @@ type DUTPolicy struct {
 // not a device policy field name) to a DUTPolicy struct of information on that
 // policy.
 type DUTPolicies struct {
-	Chrome      map[string]*DUTPolicy `json:"chromePolicies"`
-	DeviceLocal map[string]*DUTPolicy `json:"deviceLocalAccountPolicies"`
-	Extension   map[string]*DUTPolicy `json:"extensionPolicies"`
+	Chrome      map[string]*DUTPolicy       `json:"chromePolicies"`
+	DeviceLocal map[string]*DUTPolicy       `json:"deviceLocalAccountPolicies"`
+	Extension   map[string]*json.RawMessage `json:"extensionPolicies"`
 }
 
 // String turns a DUTPolicy struct into a human readable string.
