@@ -51,32 +51,32 @@ func (eck *keyboardKey) Press(ctx context.Context, topRow *input.TopRowLayout, k
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         StandardizedKeyboardKeys,
-		Desc:         "Functional test that installs an app and tests standard keyboard keys like arrows, esc, enter, etc. Test are performed in clamshell and touchview mode. This does not test the virtual, on-screen keyboard",
+		Func:         StandardizedKeyboard,
+		Desc:         "Functional test that installs an app and tests standard keyboard copy/paste functionality. Test are performed in clamshell and touchview mode. This does not test the virtual, on-screen keyboard",
 		Contacts:     []string{"davidwelling@google.com", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardKeysTest),
+			Val:               standardizedtestutil.TestCaseParamVal{DeviceMode: standardizedtestutil.ClamshellDeviceMode},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBootedInClamshellMode",
 			ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 		}, {
 			Name:              "tablet_mode",
-			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardKeysTest),
+			Val:               standardizedtestutil.TestCaseParamVal{DeviceMode: standardizedtestutil.TabletDeviceMode},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBootedInTabletMode",
 			ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
 		}, {
 			Name:              "vm",
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardKeysTest),
+			Val:               standardizedtestutil.TestCaseParamVal{DeviceMode: standardizedtestutil.ClamshellDeviceMode},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBootedInClamshellMode",
 			ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
 		}, {
 			Name:              "vm_tablet_mode",
-			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardKeysTest),
+			Val:               standardizedtestutil.TestCaseParamVal{DeviceMode: standardizedtestutil.TabletDeviceMode},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBootedInTabletMode",
 			ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
@@ -84,16 +84,63 @@ func init() {
 	})
 }
 
-// StandardizedKeyboardKeys runs all the provided test cases.
-func StandardizedKeyboardKeys(ctx context.Context, s *testing.State) {
+// StandardizedKeyboard runs all the provided test cases.
+func StandardizedKeyboard(ctx context.Context, s *testing.State) {
 	const (
-		apkName      = "ArcStandardizedKeyboardTest.apk"
-		appName      = "org.chromium.arc.testapp.arcstandardizedkeyboardtest"
-		activityName = ".KeysTestActivity"
+		apkName                = "ArcStandardizedKeyboardTest.apk"
+		appPkgName             = "org.chromium.arc.testapp.arcstandardizedkeyboardtest"
+		copyPasteActivityName  = ".MainActivity"
+		keysTestActivityName   = ".KeysTestActivity"
+		typingTestActivityName = ".MainActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.TestCase)
-	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
+	testCases := s.Param().(standardizedtestutil.TestCaseParamVal)
+	standardizedtestutil.RunTestCases2(ctx, s, testCases, apkName, appPkgName, copyPasteActivityName, "Keyboard - Copy Paste", runStandardizedKeyboardCopyPasteTest)
+	standardizedtestutil.RunTestCases2(ctx, s, testCases, apkName, appPkgName, keysTestActivityName, "Keyboard - Keys", runStandardizedKeyboardKeysTest)
+	standardizedtestutil.RunTestCases2(ctx, s, testCases, apkName, appPkgName, typingTestActivityName, "Keyboard - Typing", runStandardizedKeyboardTypingTest)
+}
+
+// runStandardizedKeyboardCopyPasteTest verifies an input with pre-established source text
+// exists, runs a Ctrl+a/Ctrl+c to copy the text, pastes it into a destination, and
+// verifies it was properly copied. This does not use the virtual, on screen keyboard.
+func runStandardizedKeyboardCopyPasteTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
+	kbd, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "unable to create virtual keyboard")
+	}
+	defer kbd.Close()
+
+	// Setup the selector ids
+	textSourceID := testParameters.AppPkgName + ":id/textCopySource"
+	textDestinationID := testParameters.AppPkgName + ":id/textCopyDestination"
+	const sourceText = "SOURCE_TEXT_TO_COPY"
+
+	if err := standardizedtestutil.ClickInputAndGuaranteeFocus(ctx, testParameters.Device.Object(ui.ID(textSourceID), ui.Text(sourceText))); err != nil {
+		return errors.Wrap(err, "unable to focus the source input")
+	}
+
+	if err := kbd.Accel(ctx, "Ctrl+a"); err != nil {
+		return errors.Wrap(err, "unable to send ctrl+a to input")
+	}
+
+	if err := kbd.Accel(ctx, "Ctrl+c"); err != nil {
+		return errors.Wrap(err, "unable to send ctrl+c to input")
+	}
+
+	// Verify the destination field exists and paste into it.
+	if err := standardizedtestutil.ClickInputAndGuaranteeFocus(ctx, testParameters.Device.Object(ui.ID(textDestinationID))); err != nil {
+		return errors.Wrap(err, "unable to focus the destination input")
+	}
+
+	if err := kbd.Accel(ctx, "Ctrl+v"); err != nil {
+		return errors.Wrap(err, "unable to send ctrl+v to input")
+	}
+
+	if err := testParameters.Device.Object(ui.ID(textDestinationID), ui.Text(sourceText)).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
+		return errors.Wrapf(err, "unable to confirm: %v was pasted into the destination", sourceText)
+	}
+
+	return nil
 }
 
 // runStandardizedKeyboardKeysTest verifies that all the provided keys are handled by
@@ -154,6 +201,34 @@ func runStandardizedKeyboardKeysTest(ctx context.Context, testParameters standar
 		if err := testParameters.Device.Object(ui.Text(curTestKey.displayName)).WaitUntilGone(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 			return errors.Wrapf(err, "failed to wait for the %v element key to be removed", curTestKey.displayName)
 		}
+	}
+
+	return nil
+}
+
+// runStandardizedKeyboardTypingTest types into the input field, and ensures the text appears.
+// This does not use the virtual, on screen keyboard.
+func runStandardizedKeyboardTypingTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
+	kbd, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "unable to create virtual keyboard")
+	}
+	defer kbd.Close()
+
+	textKeyboardInputID := testParameters.AppPkgName + ":id/textKeyboardInput"
+	textKeyboardSelector := testParameters.Device.Object(ui.ID(textKeyboardInputID))
+	const textForTest = "abcdEFGH0123!@#$"
+
+	if err := standardizedtestutil.ClickInputAndGuaranteeFocus(ctx, textKeyboardSelector); err != nil {
+		return errors.Wrap(err, "unable to focus the input")
+	}
+
+	if err := kbd.Type(ctx, textForTest); err != nil {
+		return errors.Wrapf(err, "unable to type: %v", textForTest)
+	}
+
+	if err := testParameters.Device.Object(ui.ID(textKeyboardInputID), ui.Text(textForTest)).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
+		return errors.Wrapf(err, "unable to confirm %v was typed", textForTest)
 	}
 
 	return nil
