@@ -33,6 +33,24 @@
       "message": "Thanks for the CL.\n\nCan we make use of \"-var\" option in tast run, like tast run -var\u003dcache\u003dtrue?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/dev/remote_desktop.go;l\u003d39;drc\u003d15ea3ce239fe1c39d712a2f4246b8a75523154b1",
       "revId": "f79418839c777d8cda4b30ff0a63edf1246df07e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4432f4_dbc2f506",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-10-28T01:29:42Z",
+      "side": 1,
+      "message": "I had some discussion with Aka about this earlier. The parameters that are supported depend on the test case (e.g. in the ARCVM encode test you can also specify a debug parameter that downloads the encoded video after the test). I wanted to make it easy to find and use those parameters for each test while debugging.\n\nBut maybe a command line variable (and adding documentation about the supported parameters to each test) would be a better solution long term. I won\u0027t have time to work on this anytime soon, and it\u0027s probably best to adapt this for all Chrome/ARCVM tests in one go. I suggest that we check this in for now as it can save developers a lot of time, and then later someone can look into improving the system. WDYT?",
+      "parentUuid": "25853d06_c75db639",
+      "revId": "f79418839c777d8cda4b30ff0a63edf1246df07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
