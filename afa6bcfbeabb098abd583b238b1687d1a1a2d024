@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f5e9e4f_c1db8a70",
+        "filename": "src/chromiumos/tast/common/servo/ec.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-28T15:11:30Z",
+      "side": 1,
+      "message": "This can be lowercase (not exported) since it\u0027s not used outside this file.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 8
+      },
+      "revId": "afa6bcfbeabb098abd583b238b1687d1a1a2d024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2355e7e7_bd7b8fc8",
+        "filename": "src/chromiumos/tast/common/servo/ec.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-28T15:11:30Z",
+      "side": 1,
+      "message": "That is unfortunate. You can have it not timeout by combining the regexes:\n\n`Keyboard backlight: (\\d+)\\%|Command \u0027kblight\u0027 not found or ambiguous.`",
+      "range": {
+        "startLine": 263,
+        "startChar": 4,
+        "endLine": 263,
+        "endChar": 85
+      },
+      "revId": "afa6bcfbeabb098abd583b238b1687d1a1a2d024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
