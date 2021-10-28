@@ -22,6 +22,30 @@
       },
       "revId": "16a2d4ee8138f3db799c5946108dd6ea8759fd7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60aa45f6_11bf0e3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-28T21:42:18Z",
+      "side": 1,
+      "message": "I think that would be ok. According to the screenshot, the system ui error remains on the screen without this defer. So I think it won\u0027t be impacted by line 89.",
+      "parentUuid": "6e321099_00d71a62",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 75
+      },
+      "revId": "16a2d4ee8138f3db799c5946108dd6ea8759fd7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
