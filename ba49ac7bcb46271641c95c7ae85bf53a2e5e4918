@@ -70,6 +70,30 @@
       },
       "revId": "ba49ac7bcb46271641c95c7ae85bf53a2e5e4918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cae9f1c_a106da59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/galleryapp/galleryapp.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1176019
+      },
+      "writtenOn": "2021-10-28T00:24:48Z",
+      "side": 1,
+      "message": "Sorry I somehow managed to upload a new CL (crrev/c/3247394) \u003e_\u003c this `repo` stuff confuses me bahahhaha. I will move you to that CL and revert this one (since I\u0027ve butchered something on my end...)",
+      "parentUuid": "a40805dc_da9eae93",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "ba49ac7bcb46271641c95c7ae85bf53a2e5e4918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
