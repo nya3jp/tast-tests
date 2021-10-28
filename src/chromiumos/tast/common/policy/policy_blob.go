@@ -158,6 +158,17 @@ func (pb *Blob) AddPublicAccountPolicies(accountID string, policies []Policy) er
 	return nil
 }
 
+// AddExtensionPolicy sets the policies for a specific extension.
+func (pb *Blob) AddExtensionPolicy(extensionID string, data json.RawMessage) error {
+	if pb.ExtensionPM == nil {
+		pb.ExtensionPM = make(BlobPolicyMap)
+	}
+
+	pb.ExtensionPM[extensionID] = data
+
+	return nil
+}
+
 // AddLegacyDevicePolicy adds a given one to many legacy device policy to the PolicyBlob.
 func (pb *Blob) AddLegacyDevicePolicy(field string, value interface{}) error {
 	if pb.DevicePM == nil {
