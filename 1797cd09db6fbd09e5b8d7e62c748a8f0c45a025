@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d462049_fbb9e0ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163154
+      },
+      "writtenOn": "2021-10-28T23:28:19Z",
+      "side": 1,
+      "message": "First, let\u0027s all agree that vulkaninfo\u0027s output is a mess and is difficult to work with. Upstream really needs to improve it.\n\nIf you want to report the instance version, this CL looks reasonable.\n\nBut, I don\u0027t see any use in reporting the instance version. Roughly, the instance version is related to the version of libvulkan.so; the VkPhysicalDeviceProperties::apiVersion is related to (driver version + gpu version). The relation between instance and device versions can be \u003d\u003d or \u003c or \u003e. The instance version doesn\u0027t tell us much.\n\nMore importantly, libvulkan.so may report an instance version, even when the DUT does not support Vulkan. It\u0027s logical. Perhaps no Vulkan device drivers are installed. Perhaps some device drivers are installed, but they\u0027re for the wrong gpu (AMD drivers installed on Intel DUT; or correct vendor but wrong gpu generation).\n\nI propose this test do the following:\n\n1. Capture `vulkaninfo \u003e vulkaninfo.log`.\n2. Capture `vulkaninfo --html # vulkaninfo.html`.\n3. Extract the number of gpus from either of the above files.\n4. For each gpu index, capture `vulkaninfo --json\u003d${i} \u003e vulkaninfo.gpu${i}.json`.\n5. Complain loudly that `vulkaninfo --json` does not do what you think it should do.\n\nStrangely, the json files do not report instance-level info, only gpu-level info. It\u0027s a mess. The html file supposedly reports the same info as the text file, but formatted nicely for easy inspection.\n\nIn the tast test, my main goal is to capture those files. I\u0027m not concerned with reporting an api version as a perf metric. But, if you want to report a single number, here\u0027s the heuristic. We only want to report real hw accelerated vVlkan, not any sw emulation such as SwiftShader or LavaPipe. So, ignore each `vulkaninfo.gpu${i}.json` where `VkPhysicalDeviceProperties::deviceType` is `VK_PHYSICAL_DEVICE_TYPE_OTHER(0)` or `VK_PHYSICAL_DEVICE_TYPE_CPU(4)`. In the json files, the entry is an integer value. In the text log, its a string without the enum prefix. After discarding those files, if multiple remaining files exist, fail the test, because someone needs to manually inspect what\u0027s broken in the DUT config. If no remaining files exist, Vulkan is not supported. If exactly one remaining file exists, the Vulkan version is `VkPhysicalDeviceProperties::apiVersion` in that file.\n\n",
+      "revId": "1797cd09db6fbd09e5b8d7e62c748a8f0c45a025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c0b4f88_e430b551",
