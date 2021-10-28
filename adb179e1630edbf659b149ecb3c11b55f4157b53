@@ -16,6 +16,24 @@
       "message": "Please add a comment here linking to the original file in google3, which should be the source of truth.",
       "revId": "adb179e1630edbf659b149ecb3c11b55f4157b53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff5294f2_1d4e728e",
+        "filename": "src/chromiumos/tast/local/uidetection/api/ui_detection.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-28T04:21:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e41a8850_41cfdf27",
+      "revId": "adb179e1630edbf659b149ecb3c11b55f4157b53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
