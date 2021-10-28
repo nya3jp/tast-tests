@@ -246,6 +246,9 @@ func (c *Config) HideCrashRestoreBubble() bool { return c.m.HideCrashRestoreBubb
 // ForceLaunchBrowser returns true if to force FullRestoreService to launch browser for telemetry tests.
 func (c *Config) ForceLaunchBrowser() bool { return c.m.ForceLaunchBrowser }
 
+// CheckUserMount returns whether to check existence of the user mount after login.
+func (c *Config) CheckUserMount() bool { return c.m.CheckUserMount }
+
 // MutableConfig is a mutable version of Config. MutableConfig is wrapped with
 // Config to prevent mutation after it is returned by NewConfig.
 //
@@ -293,6 +296,7 @@ type MutableConfig struct {
 	RemoveNotification              bool       `reuse_match:"true"`
 	HideCrashRestoreBubble          bool       `reuse_match:"true"`
 	ForceLaunchBrowser              bool       `reuse_match:"true"`
+	CheckUserMount                  bool       `reuse_match:"true"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -324,6 +328,7 @@ func NewConfig(opts []Option) (*Config, error) {
 			RemoveNotification:              true,
 			HideCrashRestoreBubble:          false,
 			ForceLaunchBrowser:              false,
+			CheckUserMount:                  true,
 		},
 	}
 	for _, opt := range opts {
