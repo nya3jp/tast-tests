@@ -450,7 +450,7 @@ func RemoveNotification(remove bool) Option {
 }
 
 // HideCrashRestoreBubble returns an Option that can be passed to New to make Chrome to
-// to skip "Chrome did not shut down correctly" bubble
+// skip "Chrome did not shut down correctly" bubble
 func HideCrashRestoreBubble() Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.HideCrashRestoreBubble = true
@@ -473,6 +473,17 @@ func ForceLaunchBrowser() Option {
 func EnableFilesAppSWA() Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.EnableFilesAppSWA = true
+		return nil
+	}
+}
+
+// DontDisableHIDScreenOnOobe returns an Option that the HID Detection screen will
+// not be forcibly skipped.
+// DontDisableHIDScreenOnOobe Option prevents "--disable-hid-detection-on-oobe" from
+// being appended to chrome initialization.
+func DontDisableHIDScreenOnOobe() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.DisableHIDScreenOnOobe = false
 		return nil
 	}
 }

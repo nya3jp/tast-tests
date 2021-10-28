@@ -269,6 +269,9 @@ func (c *Config) EnableFilesAppSWA() bool { return c.m.EnableFilesAppSWA }
 // UseSandboxGaia returns true if the sandbox instance of Gaia should be used.
 func (c *Config) UseSandboxGaia() bool { return c.m.UseSandboxGaia }
 
+// DisableHIDScreenOnOobe returns true if to force skip HID detection screen in OOBE.
+func (c *Config) DisableHIDScreenOnOobe() bool { return c.m.DisableHIDScreenOnOobe }
+
 // MutableConfig is a mutable version of Config. MutableConfig is wrapped with
 // Config to prevent mutation after it is returned by NewConfig.
 //
@@ -322,6 +325,7 @@ type MutableConfig struct {
 	EphemeralUser                   bool       `reuse_match:"true"`
 	EnableFilesAppSWA               bool       `reuse_match:"true"`
 	UseSandboxGaia                  bool       `reuse_match:"true"`
+	DisableHIDScreenOnOobe          bool       `reuse_match:"true"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -357,6 +361,7 @@ func NewConfig(opts []Option) (*Config, error) {
 			EphemeralUser:                   false,
 			EnableFilesAppSWA:               false,
 			UseSandboxGaia:                  false,
+			DisableHIDScreenOnOobe:          true,
 		},
 	}
 	for _, opt := range opts {
