@@ -59,15 +59,16 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		"--cros-region=" + cfg.Region(),              // Force the region.
 		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
 		"--enable-oobe-test-api",                     // Enable OOBE helper functions for authentication.
-		"--disable-hid-detection-on-oobe",            // Skip OOBE check for keyboard/mouse on chromeboxes/chromebases.
 		"--force-hwid-check-result-for-test=success", // Forcefully ignore incorrect hardware IDs on devices.
 		"--keep-login-events-for-testing",            // Keep LoginEventRecorder data for later retrieval by tests.
 		"--force-color-profile=srgb",                 // Force chrome to treat the display as sRGB. See b/221643955 for details.
 		"--force-raster-color-profile=srgb",          // Force rendering to run in the sRGB color space. See b/221643955 for details.
 	}
+
 	if !cfg.EnableRestoreTabs() {
 		args = append(args, "--no-startup-window") // Do not start up chrome://newtab by default to avoid unexpected patterns (doodle etc.)
 	}
+
 	if cfg.HideCrashRestoreBubble() {
 		args = append(args, "--hide-crash-restore-bubble") // Do not show "Chrome did not shut down correctly" bubble
 	}
@@ -110,8 +111,13 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 			args = append(args, "--gaia-url=https://accounts.sandbox.google.com")
 		}
 	}
+
 	if cfg.SkipForceOnlineSignInForTesting() {
 		args = append(args, "--skip-force-online-signin-for-testing")
+	}
+
+	if !cfg.DontDisableHIDScreenOnOobe() {
+		args = append(args, "--disable-hid-detection-on-oobe")
 	}
 
 	args = append(args, exts.ChromeArgs()...)
