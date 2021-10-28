@@ -19,7 +19,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GCAMultiCamera,
 		Desc:         "Tests multi-camera (camera switching) function of GoogleCameraArc (GCA)",
-		Contacts:     []string{"lnishan@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"mojahsu@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{gca.Apk},
