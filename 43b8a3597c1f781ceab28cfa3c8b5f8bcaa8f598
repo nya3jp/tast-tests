@@ -22,6 +22,30 @@
       },
       "revId": "43b8a3597c1f781ceab28cfa3c8b5f8bcaa8f598",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9576ceb_71bc6b88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-10-28T03:06:22Z",
+      "side": 1,
+      "message": "Thank you for your suggestion.\nBut I think there is no problem with retrying.\nui.Exists doesn\u0027t use a timeout, it will return the result immediately.\nI tested it before and the retry was successful.",
+      "parentUuid": "2100ce15_05043954",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 136
+      },
+      "revId": "43b8a3597c1f781ceab28cfa3c8b5f8bcaa8f598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
