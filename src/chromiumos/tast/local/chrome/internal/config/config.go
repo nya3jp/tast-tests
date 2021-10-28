@@ -279,6 +279,10 @@ func (c *Config) UseSandboxGaia() bool { return c.m.UseSandboxGaia }
 // if one was provided.
 func (c *Config) TestExtOAuthClientID() string { return c.m.TestExtOAuthClientID }
 
+// EnableHIDScreenOnOOBE returns true if to keep the default behavior of OOBE and not force skip HID
+// detection screen in OOBE.
+func (c *Config) EnableHIDScreenOnOOBE() bool { return c.m.EnableHIDScreenOnOOBE }
+
 // MutableConfig is a mutable version of Config. MutableConfig is wrapped with
 // Config to prevent mutation after it is returned by NewConfig.
 //
@@ -334,6 +338,7 @@ type MutableConfig struct {
 	EnablePersonalizationHub        bool       `reuse_match:"true"`
 	UseSandboxGaia                  bool       `reuse_match:"true"`
 	TestExtOAuthClientID            string     `reuse_match:"true"`
+	EnableHIDScreenOnOOBE           bool       `reuse_match:"true"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -369,6 +374,7 @@ func NewConfig(opts []Option) (*Config, error) {
 			EphemeralUser:                   false,
 			EnablePersonalizationHub:        true,
 			UseSandboxGaia:                  false,
+			EnableHIDScreenOnOOBE:           false,
 		},
 	}
 	for _, opt := range opts {
