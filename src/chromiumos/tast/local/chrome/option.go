@@ -162,6 +162,15 @@ func KeepEnrollment() Option {
 	}
 }
 
+// SkipUserMountCheck returns an Option that can be passed to New to disable
+// waiting for and validating user mount after login.
+func SkipUserMountCheck() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.CheckUserMount = false
+		return nil
+	}
+}
+
 // DontSkipOOBEAfterLogin returns an Option that can be passed to stay in OOBE after user login.
 func DontSkipOOBEAfterLogin() Option {
 	return func(cfg *config.MutableConfig) error {
