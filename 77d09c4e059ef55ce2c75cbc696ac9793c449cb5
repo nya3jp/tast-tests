@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae7bb54_7acb32b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1448538
+      },
+      "writtenOn": "2021-10-28T20:41:01Z",
+      "side": 1,
+      "message": "Thank you very much Oleh. I addressed all your feedback and left one unresolved for more feedback from you. Please let me know how do you feel about it! \n\nAlso, I\u0027m not sure what cause dry run error `failed to install net-misc/modemmanager-next-1.17.0-r431` in patch1 but that sounds like main branch issue to me, so I just rebased and will wait for dry-run result.",
+      "revId": "77d09c4e059ef55ce2c75cbc696ac9793c449cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
