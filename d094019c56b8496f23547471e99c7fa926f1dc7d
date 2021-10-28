@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98613f87_51725e2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-28T09:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fab9a7a_8ed773aa",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 21
+      },
+      "revId": "d094019c56b8496f23547471e99c7fa926f1dc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c099608d_4ae9ea8a",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-10-28T09:29:52Z",
       "side": 1,
       "message": "logged in users",
+      "range": {
+        "startLine": 112,
+        "startChar": 36,
+        "endLine": 112,
+        "endChar": 48
+      },
+      "revId": "d094019c56b8496f23547471e99c7fa926f1dc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d073e89_325421da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-28T09:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c099608d_4ae9ea8a",
       "range": {
         "startLine": 112,
         "startChar": 36,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "348c9ca6_e65d9d1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-28T09:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8b6ce22_a6852423",
+      "range": {
+        "startLine": 131,
+        "startChar": 36,
+        "endLine": 131,
+        "endChar": 47
+      },
+      "revId": "d094019c56b8496f23547471e99c7fa926f1dc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c5e783c_a5af2f5a",
@@ -134,6 +206,30 @@
       "writtenOn": "2021-10-28T09:20:18Z",
       "side": 1,
       "message": "I\u0027d suggest to check both user1 and user2",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "d094019c56b8496f23547471e99c7fa926f1dc7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfcef144_0c517156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-28T09:40:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c5e783c_a5af2f5a",
       "range": {
         "startLine": 147,
         "startChar": 0,
