@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a92a606_2f31906d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1448538
+      },
+      "writtenOn": "2021-10-28T23:00:06Z",
+      "side": 1,
+      "message": "Hello Sammie,\n\nThank you for helping explaining and getting back to me very quickly. I addressed your comment :D\n\nBest regards,\nCattalyya",
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

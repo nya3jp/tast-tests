@@ -265,6 +265,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4bc3b96_adff2476",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1448538
+      },
+      "writtenOn": "2021-10-28T23:00:06Z",
+      "side": 1,
+      "message": "Thank you very much Sammie for very helpful explanation :D I fixed it accordingly.",
+      "parentUuid": "97e41f27_c4e45f5b",
+      "range": {
+        "startLine": 51,
+        "startChar": 39,
+        "endLine": 51,
+        "endChar": 55
+      },
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2c11242_3b1688f7",
