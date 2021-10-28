@@ -51,6 +51,24 @@
       "parentUuid": "25853d06_c75db639",
       "revId": "f79418839c777d8cda4b30ff0a63edf1246df07e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e68e0a0b_f6077af0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-10-28T08:11:24Z",
+      "side": 1,
+      "message": "I am ok with it. Could you file a bug and leave TODO in the comment?",
+      "parentUuid": "bf4432f4_dbc2f506",
+      "revId": "f79418839c777d8cda4b30ff0a63edf1246df07e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
