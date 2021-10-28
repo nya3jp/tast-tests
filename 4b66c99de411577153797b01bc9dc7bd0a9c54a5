@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f39646e9_57d9e87f",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2021-10-28T03:31:24Z",
+      "side": 0,
+      "message": "As per tast-lint it is not recommended to use testing.State so I modified the return function to wrap the error and return it. @Pavan ... Should I exit over here?",
+      "revId": "4b66c99de411577153797b01bc9dc7bd0a9c54a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b51fc4e6_93e9cdf5",
+        "filename": "src/chromiumos/tast/local/cellular/modem_manifests_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2021-10-28T03:31:24Z",
+      "side": 0,
+      "message": "As per tast-lint it is not recommended to use testing.state, so I changed S.Log to testing.ContextLog(ctx)",
+      "revId": "4b66c99de411577153797b01bc9dc7bd0a9c54a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
