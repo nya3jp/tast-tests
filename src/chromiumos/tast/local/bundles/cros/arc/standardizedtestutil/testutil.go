@@ -68,6 +68,20 @@ type TestCase struct {
 	WindowStateType ash.WindowStateType
 }
 
+// DeviceMode represents the mode the device is testing (i.e. clamshell/tablet).
+type DeviceMode int
+
+// Holds all of the device modes that are tested.
+const (
+	ClamshellDeviceMode DeviceMode = iota
+	TabletDeviceMode
+)
+
+// TestCaseParamVal holds the data that is required to run a standardized test.
+type TestCaseParamVal struct {
+	DeviceMode DeviceMode
+}
+
 // ZoomType represents the zoom type to perform.
 type ZoomType int
 
@@ -220,6 +234,116 @@ func RunTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 				Device:          d,
 				AppPkgName:      appPkgName,
 				AppActivityName: appActivity,
+				Activity:        act,
+			}); err != nil {
+				s.Fatal("Test run failed: ", err)
+			}
+		})
+	}
+}
+
+// RunTestCases2 runs the provided test cases and handles cleanup between tests.
+func RunTestCases2(ctx context.Context, s *testing.State, testCasesParamVal TestCaseParamVal, apkName, appPkgName, activityName, testName string, testFn TestFunc) {
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
+	d := s.FixtValue().(*arc.PreData).UIDevice
+
+	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
+		s.Fatal("Failed to install the APK: ", err)
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Could not open Test API connection: ", err)
+	}
+
+	// Get the test cases to run.
+	deviceModeNoOp := func(ctx context.Context, testParameters TestFuncParams) error {
+		return nil
+	}
+
+	var testCases []TestCase
+	switch testCasesParamVal.DeviceMode {
+	case ClamshellDeviceMode:
+		testCases = GetClamshellTests(deviceModeNoOp)
+	case TabletDeviceMode:
+		testCases = GetTabletTests(deviceModeNoOp)
+	default:
+		s.Fatal("Invalid device mode: got: ", testCasesParamVal.DeviceMode)
+	}
+
+	// Run the test cases.
+	for idx, test := range testCases {
+		testNameToDisplay := fmt.Sprintf("(%s)%s", test.Name, testName)
+		s.Run(ctx, testNameToDisplay, func(cleanupCtx context.Context, s *testing.State) {
+			// Save time for cleanup by working on a shortened context.
+			workCtx, workCtxCancel := ctxutil.Shorten(cleanupCtx, RunTestCasesCleanupTime)
+			defer workCtxCancel()
+
+			// Launch the activity.
+			act, err := arc.NewActivity(a, appPkgName, activityName)
+			if err != nil {
+				s.Fatal("Failed to create new app activity: ", err)
+			}
+
+			defer func(ctx context.Context) {
+				act.Close()
+			}(cleanupCtx)
+
+			if err := act.Start(workCtx, tconn); err != nil {
+				s.Fatal("Failed to start app: ", err)
+			}
+
+			defer func(ctx context.Context) {
+				if err := act.Stop(ctx, tconn); err != nil {
+					s.Fatal("Failed to stop app: ", err)
+				}
+			}(cleanupCtx)
+
+			// Take screenshot and dump ui info on failure.
+			defer func(ctx context.Context) {
+				if s.HasError() {
+					filename := fmt.Sprintf("screenshot-standardized-arcappcompat-failed-test-%d.png", idx)
+					path := filepath.Join(s.OutDir(), filename)
+					if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+						testing.ContextLog(ctx, "Failed to capture screenshot, info: ", err)
+					} else {
+						testing.ContextLogf(ctx, "Saved screenshot to %s", filename)
+					}
+				}
+			}(cleanupCtx)
+
+			// Wait for the activity to be ready.
+			if err := ash.WaitForVisible(workCtx, tconn, act.PackageName()); err != nil {
+				s.Fatal("Failed to wait for the app to be visible: ", err)
+			}
+
+			if err := d.WaitForIdle(workCtx, ShortUITimeout); err != nil {
+				s.Fatal("Failed to wait for the app to be idle: ", err)
+			}
+
+			// All standardized tests have a layout with the same id. Wait for it to exist
+			// to ensure the application is ready to be tested.
+			if err := d.Object(ui.ID(StandardizedTestLayoutID(appPkgName))).WaitForExists(ctx, ShortUITimeout); err != nil {
+				s.Fatal("Failed to wait for the app to render: ", err)
+			}
+
+			// Set the window state. Note that this can hang indefinitely as this is the
+			// non-async version. The context is shortened for this call to make sure it
+			// errors out early and additional tests can run.
+			setWindowStateWorkCtx, setWindowStateCtxCancel := context.WithTimeout(workCtx, ShortUITimeout)
+			defer setWindowStateCtxCancel()
+			if _, err := ash.SetARCAppWindowStateAndWait(setWindowStateWorkCtx, tconn, appPkgName, test.WindowStateType); err != nil {
+				s.Fatal("Failed to set window state: ", err)
+			}
+
+			// Run the test.
+			if err := testFn(workCtx, TestFuncParams{
+				TestConn:        tconn,
+				Arc:             a,
+				Device:          d,
+				AppPkgName:      appPkgName,
+				AppActivityName: activityName,
 				Activity:        act,
 			}); err != nil {
 				s.Fatal("Test run failed: ", err)
