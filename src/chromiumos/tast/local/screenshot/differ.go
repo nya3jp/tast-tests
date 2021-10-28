@@ -259,7 +259,6 @@ func (d *differ) initialize(ctx context.Context) error {
 		}
 		d.goldArgs = append(baseArgs, []string{
 			"--cis", "buildbucket",
-			"--crs", "lookup",
 			"--changelist", "lookup",
 			"--patchset_id", "lookup",
 			"--jobid", builderMatch[1]}...)
@@ -623,10 +622,6 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 }
 
 func (d *differ) authenticateGold(ctx context.Context) error {
-	// If this file exists, then we've already authenticated, so there's no need to do it again.
-	if file, _ := os.Stat(filepath.Join(goldctlWorkDir, "auth_opt.json")); file != nil {
-		return nil
-	}
 	key, ok := d.state.Var(goldServiceAccountKeyVar)
 	if !ok {
 		return errors.New("couldn't get the gold service account key. Please ensure you have access to tast-tests-private")
