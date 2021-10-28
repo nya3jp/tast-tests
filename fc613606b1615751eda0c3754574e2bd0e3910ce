@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfcff385_ca39f9a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/shutdown_mode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-28T15:59:31Z",
+      "side": 1,
+      "message": "The firmware precondition has been deleted. Switch to\n\nFixture: fixture.NormalMode,",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 46,
+        "endChar": 33
+      },
+      "revId": "fc613606b1615751eda0c3754574e2bd0e3910ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
