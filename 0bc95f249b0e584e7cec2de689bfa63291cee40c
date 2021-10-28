@@ -22,6 +22,30 @@
       },
       "revId": "0bc95f249b0e584e7cec2de689bfa63291cee40c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a55f87fc_f410fdf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-28T08:17:56Z",
+      "side": 1,
+      "message": "Fixed, now is changed to start chrome directly with chrome.New().",
+      "parentUuid": "f90fad4c_d8188b45",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "0bc95f249b0e584e7cec2de689bfa63291cee40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
