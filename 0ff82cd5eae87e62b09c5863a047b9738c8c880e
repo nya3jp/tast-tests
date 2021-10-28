@@ -39,6 +39,30 @@
       },
       "revId": "0ff82cd5eae87e62b09c5863a047b9738c8c880e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a234853f_ba28e4ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/googleapps/common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-10-28T03:11:10Z",
+      "side": 1,
+      "message": "Yes, I think I need to use RetrySilently to reduce useless logging.\nThank you for your suggestion.\nI will update this change to this submission.",
+      "parentUuid": "0836fd01_3313e608",
+      "range": {
+        "startLine": 40,
+        "startChar": 46,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "0ff82cd5eae87e62b09c5863a047b9738c8c880e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
