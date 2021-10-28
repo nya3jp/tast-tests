@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bea164e_2006a9ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/search_drive.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-28T09:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24c9efe2_93fa23ca",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "00e26bbfb5434b64dce04f9e6af1393412c70035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "789cd0e7_8eae8986",
@@ -90,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "271eb728_aef25fe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/search_drive.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-28T09:25:38Z",
+      "side": 1,
+      "message": "We added one more verification step, by examining the `Type` appearing on the `filesapp` of the target file.",
+      "parentUuid": "fab6753a_3f4224c4",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 115,
+        "endChar": 27
+      },
+      "revId": "00e26bbfb5434b64dce04f9e6af1393412c70035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b4f90a4_0c5df33b",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
         "patchSetId": 1
@@ -101,6 +149,30 @@
       "writtenOn": "2021-10-25T00:52:29Z",
       "side": 1,
       "message": "f.ui",
+      "range": {
+        "startLine": 311,
+        "startChar": 2,
+        "endLine": 311,
+        "endChar": 21
+      },
+      "revId": "00e26bbfb5434b64dce04f9e6af1393412c70035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6f84827_8dfccf06",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-28T09:25:38Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "9b4f90a4_0c5df33b",
       "range": {
         "startLine": 311,
         "startChar": 2,
@@ -124,6 +196,30 @@
       "writtenOn": "2021-10-25T00:52:29Z",
       "side": 1,
       "message": "Suggest to define this func in automation.go and wrap it here.",
+      "range": {
+        "startLine": 108,
+        "startChar": 19,
+        "endLine": 108,
+        "endChar": 32
+      },
+      "revId": "00e26bbfb5434b64dce04f9e6af1393412c70035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbdf6a80_b9b8a564",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/uiwrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-28T09:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5f9630a_0bdb9768",
       "range": {
         "startLine": 108,
         "startChar": 19,

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb30f4fe_8e474e0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-10-28T09:25:38Z",
+      "side": 1,
+      "message": "Sorry for such a big change.\nMajorly we added four different types of files to do search and verify, including one online document on Google Drive.\nAlso, one more verification step was added, by examining the `Type` appearing on the `filesapp` of the target file.\n",
+      "revId": "a68ba062b09a9f157856aca5abba6d3907608f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
