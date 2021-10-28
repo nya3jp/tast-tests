@@ -188,6 +188,30 @@
       "parentUuid": "ebf228a3_b277a1e7",
       "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1620529_296c8f62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/yuv.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-10-28T01:20:05Z",
+      "side": 1,
+      "message": "I think if those Perf tests are meant to call cpu.WaitUntilIdle()\n(or any other wait-until-machine-cools-down) routine _after_\nthe call to this yuv.go file, then we should be good and this\nCL makes sense.",
+      "parentUuid": "36127159_d87d399d",
+      "range": {
+        "startLine": 70,
+        "startChar": 84,
+        "endLine": 70,
+        "endChar": 90
+      },
+      "revId": "27cb5f094bf96330db82913ef00fc95fdfe286cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
