@@ -2,7 +2,7 @@
  * Copyright (c) 2012 The Chromium OS Authors.
  *
  * Based on:
- * http://bazaar.launchpad.net/~ubuntu-bugcontrol/qa-regression-testing/master/view/head:/scripts/kernel-security/ptrace/sleeper.c
+ * http://bazaar.launchpad.net/~ubuntu-bugcontrol/qa-regression-testing/master/view/head:/scripts/kernel-security/ptrace/sleeper.c // nocheck
  * Copyright 2010 Canonical, Ltd
  * License: GPLv3
  * Author: Kees Cook <kees.cook@canonical.com>
