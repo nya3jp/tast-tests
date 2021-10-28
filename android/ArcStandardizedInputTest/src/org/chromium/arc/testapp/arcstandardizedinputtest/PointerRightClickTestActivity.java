@@ -27,7 +27,7 @@ public class PointerRightClickTestActivity extends Activity {
         // Add the text 'Pointer Right Click' when the right click button is pressed.
         // Always add the click counter so the tast test can make sure a single click
         // doesn't fire two events.
-        // 'OnContextClick' is fired natively when the user right clicks.
+        // 'OnContextClick' is fired when the user right clicks.
         Button btnRightClick = findViewById(R.id.btnRightClick);
         btnRightClick.setOnContextClickListener(
                 (v) -> {

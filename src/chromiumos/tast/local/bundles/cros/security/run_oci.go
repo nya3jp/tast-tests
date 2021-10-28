@@ -211,7 +211,7 @@ func RunOCI(ctx context.Context, s *testing.State) {
 }
 
 // ociConfig describes a JSON config file read by run_oci.
-// See https://github.com/opencontainers/runtime-spec/blob/master/config.md and platform2/run_oci for details.
+// See https://github.com/opencontainers/runtime-spec/blob/master/config.md and platform2/run_oci for details. // nocheck
 // This struct only contains configuration fields that are needed for this test.
 type ociConfig struct {
 	OCIVersion string      `json:"ociVersion"`

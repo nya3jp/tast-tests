@@ -313,7 +313,7 @@ SDPUtils.writeDtlsParameters = function(params, setupType) {
 };
 
 // Parses a=crypto lines into
-//   https://rawgit.com/aboba/edgertc/master/msortc-rs4.html#dictionary-rtcsrtpsdesparameters-members
+//   https://rawgit.com/aboba/edgertc/master/msortc-rs4.html#dictionary-rtcsrtpsdesparameters-members // nocheck
 SDPUtils.parseCryptoLine = function(line) {
   var parts = line.substr(9).split(' ');
   return {
@@ -335,7 +335,7 @@ SDPUtils.writeCryptoLine = function(parameters) {
 };
 
 // Parses the crypto key parameters into
-//   https://rawgit.com/aboba/edgertc/master/msortc-rs4.html#rtcsrtpkeyparam*
+//   https://rawgit.com/aboba/edgertc/master/msortc-rs4.html#rtcsrtpkeyparam* // nocheck
 SDPUtils.parseCryptoKeyParams = function(keyParams) {
   if (keyParams.indexOf('inline:') !== 0) {
     return null;

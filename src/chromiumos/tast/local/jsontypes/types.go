@@ -3,8 +3,8 @@
 // found in the LICENSE file.
 
 // Package jsontypes provides the alias types of int64,uint64,uint32 and the
-// json parsers for these types, because json doesn't support these type
-// natively.
+// json parsers for these types, because json doesn't support these types
+// off the shelf.
 package jsontypes
 
 import (

@@ -68,7 +68,7 @@ type jsonRPCResponse struct {
 }
 
 // DeviceInfo holds information about the device. See:
-// https://github.com/xiaocong/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/DeviceInfo.java
+// https://github.com/xiaocong/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/DeviceInfo.java // nocheck
 type DeviceInfo struct {
 	CurrentPackagename string `json:"currentPackagename"`
 	DisplayWidth       int    `json:"displayWidth"`
@@ -296,7 +296,7 @@ func (d *Device) PressKeyCode(ctx context.Context, keyCode KeyCode, metaState Me
 
 // GetInfo returns the device info.
 // This method corresponds to the com.github.uiautomator.stub.getDeviceInfo().
-// https://github.com/xiaocong/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/DeviceInfo.java
+// https://github.com/xiaocong/android-uiautomator-server/blob/master/app/src/androidTest/java/com/github/uiautomator/stub/DeviceInfo.java // nocheck
 func (d *Device) GetInfo(ctx context.Context) (*DeviceInfo, error) {
 	var info DeviceInfo
 	if err := d.call(ctx, "deviceInfo", &info); err != nil {
