@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff1a8559_0477f86e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-10-28T03:07:41Z",
+      "side": 1,
+      "message": "No need to define the func, just clickJoinButton :\u003d ui.Retry(...)",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 16
+      },
+      "revId": "4a6564532f13881727e017fdf480f6a5808e38cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
