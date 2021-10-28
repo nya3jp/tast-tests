@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c2760b35_e7b0da6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-10-28T01:11:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ceb85df_8ff1dff9",
+      "range": {
+        "startLine": 54,
+        "startChar": 44,
+        "endLine": 54,
+        "endChar": 51
+      },
+      "revId": "edb6d933997467582bb73f96edacb8185e6359e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "aaef24f1_42cf94db",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
         "patchSetId": 3
