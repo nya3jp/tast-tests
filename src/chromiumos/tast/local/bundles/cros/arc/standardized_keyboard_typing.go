@@ -53,9 +53,9 @@ func init() {
 // StandardizedKeyboardTyping runs all the provided test cases.
 func StandardizedKeyboardTyping(ctx context.Context, s *testing.State) {
 	const (
-		apkName      = "ArcStandardizedKeyboardTest.apk"
-		appName      = "org.chromium.arc.testapp.arcstandardizedkeyboardtest"
-		activityName = ".MainActivity"
+		apkName      = "ArcStandardizedInputTest.apk"
+		appName      = "org.chromium.arc.testapp.arcstandardizedinputtest"
+		activityName = ".TypingTestActivity"
 	)
 
 	testCases := s.Param().([]standardizedtestutil.TestCase)
