@@ -3,6 +3,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7c48c0b_7753d213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-28T21:18:04Z",
+      "side": 1,
+      "message": "Please specify the Timeout field with a reasonable value. Don\u0027t rely on the default timeout setting, which may change over time.",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "59460cba228cf5114c0bd94435b5f6b65414475a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef8e2c9a_445c70b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-28T21:18:04Z",
+      "side": 1,
+      "message": "Can we separately define two functions for this testing logic and the following one?",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 7
+      },
+      "revId": "59460cba228cf5114c0bd94435b5f6b65414475a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "886e4af0_acf6f711",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-28T21:18:04Z",
+      "side": 1,
+      "message": "Please create a cleanup context for clean-up tasks (or defer functions that need a context). See https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Log_Error_Fatal-vs_Logf_Errorf_Fatalf\n\nA template could be:\n//begining of the test\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10 * time.Second) \n\n...// use ctx as normal, use cleanupCtx for defer functions.",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "59460cba228cf5114c0bd94435b5f6b65414475a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ed3d12_9094426c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-28T21:18:04Z",
+      "side": 1,
+      "message": "super-nit: wait",
+      "range": {
+        "startLine": 85,
+        "startChar": 22,
+        "endLine": 85,
+        "endChar": 26
+      },
+      "revId": "59460cba228cf5114c0bd94435b5f6b65414475a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3275345b_cba85817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-28T21:18:04Z",
+      "side": 1,
+      "message": "s.Fatal(\"Failed to ...:\", err), see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Log_Error_Fatal-vs_Logf_Errorf_Fatalf\n\nPlease check other `s.Fatal(...)` as well.",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 49
+      },
+      "revId": "59460cba228cf5114c0bd94435b5f6b65414475a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2802cc44_e12451d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
         "patchSetId": 5
