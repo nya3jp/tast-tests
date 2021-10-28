@@ -507,6 +507,17 @@ func TestExtOAuthClientID(clientID string) Option {
 	}
 }
 
+// EnableHIDScreenOnOOBE returns an Option that can be passed to New to keep the HID
+// Detection screen and not forcibly skip it.
+// For testing purposes, by default, we append "--disable-hid-detection-on-oobe" to
+// chrome initialization except when this option is enabled.
+func EnableHIDScreenOnOOBE() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.EnableHIDScreenOnOOBE = true
+		return nil
+	}
+}
+
 // DisablePersonalizationHub returns an Option that disables the Personalization Hub.
 func DisablePersonalizationHub() Option {
 	return func(cfg *config.MutableConfig) error {
