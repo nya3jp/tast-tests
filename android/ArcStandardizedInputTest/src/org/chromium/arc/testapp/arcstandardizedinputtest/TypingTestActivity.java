@@ -4,15 +4,15 @@
  * found in the LICENSE file.
  */
 
-package org.chromium.arc.testapp.arcstandardizedkeyboardtest;
+package org.chromium.arc.testapp.arcstandardizedinputtest;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-public class MainActivity extends Activity {
+public class TypingTestActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_typing_test);
     }
 }
