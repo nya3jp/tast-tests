@@ -255,6 +255,10 @@ func performGAIAEnrollment(ctx context.Context, cfg *config.Config, sess *driver
 		return err
 	}
 
+	if cfg.LoginMode() == config.NoLogin {
+		return nil
+	}
+
 	if err := waitForEnrollmentLoginScreen(ctx, cfg, sess); err != nil {
 		return errors.Wrap(sess.Watcher().ReplaceErr(err), "could not enroll")
 	}
