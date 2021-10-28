@@ -162,6 +162,15 @@ func KeepEnrollment() Option {
 	}
 }
 
+// EphemeralUser returns an Option that can be passed to New to validate user
+// mount as ephemeral, which is expected to be permanent by default.
+func EphemeralUser() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.EphemeralUser = true
+		return nil
+	}
+}
+
 // DontSkipOOBEAfterLogin returns an Option that can be passed to stay in OOBE after user login.
 func DontSkipOOBEAfterLogin() Option {
 	return func(cfg *config.MutableConfig) error {
