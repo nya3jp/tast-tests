@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a68a8556_fe82e4d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-28T02:03:34Z",
+      "side": 1,
+      "message": "How does this test work on Chromeboxes? I\u0027m not familiar with tablet mode, so I don\u0027t know whether or not chromeboxes can be put into that state.\n\nIf chromeboxes can\u0027t be put into tablet mode, then they can be skipped with: \n HardwareDeps: hwdep.D(hwdep.InternalDisplay())\n\nIf chromeboxes can be put into tablet mode, then this test needs to pass on devices without an internal display.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 3
+      },
+      "revId": "ed64ed5115648890f7846c843ef3c12eb49148cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99696f0e_04ad0fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-28T02:03:34Z",
+      "side": 1,
+      "message": "const IterCount",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 5
+      },
+      "revId": "ed64ed5115648890f7846c843ef3c12eb49148cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f143800_11f53ead",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-28T02:03:34Z",
+      "side": 1,
+      "message": "Make this const.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 16
+      },
+      "revId": "ed64ed5115648890f7846c843ef3c12eb49148cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d137cbd_38c3851a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-28T02:03:34Z",
+      "side": 1,
+      "message": "Add a comment that this skips pipe A since that\u0027s the internal display. Although this logic might need to be updated if the test needs to run on chromeboxes, since I think on those devices the external display will show up on pipe A.",
+      "range": {
+        "startLine": 118,
+        "startChar": 38,
+        "endLine": 118,
+        "endChar": 50
+      },
+      "revId": "ed64ed5115648890f7846c843ef3c12eb49148cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c0b077_e4474ade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-10-28T02:03:34Z",
+      "side": 1,
+      "message": "Delete this file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "ed64ed5115648890f7846c843ef3c12eb49148cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
