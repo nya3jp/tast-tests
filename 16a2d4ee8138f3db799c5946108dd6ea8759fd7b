@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e321099_00d71a62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/home_directory_create_file.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2021-10-28T13:55:08Z",
+      "side": 1,
+      "message": "This will run *after* closing the files app on line 89. Is that a problem?\n\n(General proposal: stop closing windows at the end of tests. Resetting chrome at the start of the next test already does this and it means log dumping like this is much easier)",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 75
+      },
+      "revId": "16a2d4ee8138f3db799c5946108dd6ea8759fd7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
