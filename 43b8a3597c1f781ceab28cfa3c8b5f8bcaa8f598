@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2100ce15_05043954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-28T02:12:34Z",
+      "side": 1,
+      "message": "LeftClickUntil clicks the field once and waits for field focused. It would not retry because LeftClickUntil and ui.Exists have the same timeout. It does not cover the situation where field is not ready to receive the click event.\n\nI would suggest ui.LeftClickUntil(emailField,ui.WithTimeout(3*time.Second.Exists(emailField.Focused())))",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 136
+      },
+      "revId": "43b8a3597c1f781ceab28cfa3c8b5f8bcaa8f598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
