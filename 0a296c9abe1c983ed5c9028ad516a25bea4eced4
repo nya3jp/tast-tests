@@ -35,6 +35,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "953a0b4a_cf92f82f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-28T04:37:53Z",
+      "side": 1,
+      "message": "LGTM % nits.",
+      "revId": "0a296c9abe1c983ed5c9028ad516a25bea4eced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d55cf7e4_5ed34205",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-28T04:37:53Z",
+      "side": 1,
+      "message": "nit: Seems to be used a few times, might be worth extracting into a standalone function?",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "0a296c9abe1c983ed5c9028ad516a25bea4eced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9b5c976_03e3051d",
@@ -48,6 +88,29 @@
       "writtenOn": "2021-10-26T16:37:21Z",
       "side": 1,
       "message": "nit: missing a \u0027.\u0027 at the end of the sentence.",
+      "revId": "0a296c9abe1c983ed5c9028ad516a25bea4eced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8141df0a_ef646b73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-28T04:37:53Z",
+      "side": 1,
+      "message": "nit: Just return this to avoid the return nil down the bottom",
+      "range": {
+        "startLine": 270,
+        "startChar": 11,
+        "endLine": 270,
+        "endChar": 23
+      },
       "revId": "0a296c9abe1c983ed5c9028ad516a25bea4eced4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
