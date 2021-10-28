@@ -27,8 +27,16 @@ func init() {
 			"lamzin@google.com",
 			"cros-networking@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"wilco"},
+		Params: []testing.Param{
+			{
+				ExtraAttr: []string{"group:mainline", "informational"},
+			},
+			{
+				Name:      "wilco_dock",
+				ExtraAttr: []string{"group:wilco_bve_dock"},
+			},
+		},
 	})
 }
 

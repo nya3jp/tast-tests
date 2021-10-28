@@ -35,7 +35,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"wilco", "chrome"},
 		Timeout:      25 * time.Minute,
-		Attr:         []string{},
+		Attr:         []string{"group:wilco_bve"},
 		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Vars:         []string{"servo"},
 		Fixture:      fixture.ChromeEnrolledLoggedIn,
