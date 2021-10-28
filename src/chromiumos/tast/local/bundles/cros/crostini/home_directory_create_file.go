@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -77,6 +78,8 @@ func HomeDirectoryCreateFile(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
 	defer cancel()
 	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Open Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)
