@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15085a6e_c0e02010",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-28T00:01:30Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "ccc067b2dea0712c0c916ecfdf4569046551889f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2edb7cf9_85fc777e",
+        "filename": "src/chromiumos/tast/local/uidetection/api/ui_detection.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-28T00:01:30Z",
+      "side": 1,
+      "message": "Normally we have a gen.go file that helps people regenerate the generate proto file if it changes by just runing \"go generate\" in the directory.\n\nThe structure is as follows:\n```\npackage api\n\n//go:generate cproto\n```\n\nWhere \u0027cproto\u0027 is the command to regenerate the proto.",
+      "revId": "ccc067b2dea0712c0c916ecfdf4569046551889f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cba84f7_4e5affd5",
+        "filename": "src/chromiumos/tast/local/uidetection/api/ui_detection.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-28T00:01:30Z",
+      "side": 1,
+      "message": "clar: any reason we are using proto2 rather than proto3? (not wrong)",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "ccc067b2dea0712c0c916ecfdf4569046551889f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14dd5012_bfca5c60",
+        "filename": "src/chromiumos/tast/local/uidetection/api/ui_detection.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-10-28T00:01:30Z",
+      "side": 1,
+      "message": "nit: Do you need a copyright header?",
+      "revId": "ccc067b2dea0712c0c916ecfdf4569046551889f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
