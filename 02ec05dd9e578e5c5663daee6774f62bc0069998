@@ -16,6 +16,338 @@
       "message": "Hello Oleh and Sammie,\n\nWould you mind help review this tast test? I\u0027ll upload the video of test result to the crbug in a bit too!\n\nBest regards,\nCattalyya",
       "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f49e0c_af53ee98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "nit: remove it?",
+      "range": {
+        "startLine": 25,
+        "startChar": 79,
+        "endLine": 25,
+        "endChar": 89
+      },
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28b2cc7c_4828ce97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "nit: put this into multiple lines, e.g.\n\n```\nContacts:     []string{\n  \"cattalyya@chromium.org\",\n  \"chromeos-wmp@google.com\",\n  \"chromeos-sw-engprod@google.com\"\n},\n```",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 112
+      },
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc64b86_42733542",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "nit: please move helper functions below Test function, so when you open the file you will be focused on the test logic at the beginning",
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ffc1833_eb2787f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "We usually use got/want words and next format:\n\n```\nif window.State !\u003d wantState {\n  s.Fatalf(\"Unexpected window(id\u003d%d) state \u003d got %v, want %v\",\n     windowID, window.State, wantState)\n}\n```\n\n\nhttps://source.chromium.org/search?q\u003dtast-tests%20%22%3D%20got%22",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c04313b6_94da65a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "such helper functions should not take testing.State as an argument, but instead return error and caller (WindowSnapAndRotate in your case) should call s.Fatal with more info what currently sit in your comments (e.g. \"Make sure the first window still remains primary snapped\").",
+      "range": {
+        "startLine": 51,
+        "startChar": 39,
+        "endLine": 51,
+        "endChar": 55
+      },
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c11242_3b1688f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "nit: holdDuration?",
+      "range": {
+        "startLine": 52,
+        "startChar": 41,
+        "endLine": 52,
+        "endChar": 49
+      },
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f41f5c2f_9da91be2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "don\u0027t ignore \"err\". Same in other places",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 39
+      },
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52af9ea5_f82fcae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "no need to check that, just always sleep. If holdTime \u003d\u003d 0, you won\u0027t sleep.",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 17
+      },
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2afde923_a1ae914d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "nit: isn\u0027t 1 minutes is too long?",
+      "range": {
+        "startLine": 142,
+        "startChar": 47,
+        "endLine": 142,
+        "endChar": 58
+      },
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a7d5d5_4a006674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "nit: use cleanupCtx",
+      "range": {
+        "startLine": 151,
+        "startChar": 15,
+        "endLine": 151,
+        "endChar": 18
+      },
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba49109_fcbc04a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "nit: move this line after line 103",
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b14dcaa_f00300c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "nit: same",
+      "range": {
+        "startLine": 153,
+        "startChar": 33,
+        "endLine": 153,
+        "endChar": 36
+      },
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea4c41e9_f965d434",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "nit: do you really need this variable? maybe window1.ID is also OK? :)\n\nthis is just 1 symbol shorter",
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08642f0a_911f05b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "Maybe just inline 0 everywhere?",
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9441a5_86f4b445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "nit: maybe move inside \"if\", because it is used only there\n\nsame: maybe just inline since it\u0027s used only once?",
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa98dc4b_264a95ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T10:31:32Z",
+      "side": 1,
+      "message": "Don\u0027t ignore err",
+      "revId": "02ec05dd9e578e5c5663daee6774f62bc0069998",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
