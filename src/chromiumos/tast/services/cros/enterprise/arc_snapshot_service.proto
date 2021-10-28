@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package tast.cros.enterprise;
+
+import "google/protobuf/empty.proto";
+
+import "values.proto";
+
+option go_package = "chromiumos/tast/services/cros/enterprise";
+
+message EnrollRequest {
+  string user = 1;
+  string pass = 2;
+}
+
+message WaitForPackagesInMgsRequest {
+  string name = 1;
+  string user = 2;
+  repeated string packages = 3;
+  bool is_headless = 4;
+}
+
+message WaitForPackagesInMgsResponse {
+  string user = 1;
+  tast.common.perf.perfpb.Values perf = 2;
+}
+
+message WaitForSnapshotRequest {
+  repeated string snapshot_names = 1;
+}
+
+// ArcSnapshotService provides RPC methods to run snapshot-related operations
+service ArcSnapshotService {
+  rpc Enroll(EnrollRequest) returns (google.protobuf.Empty) {}
+  rpc WaitForPackagesInMgs(WaitForPackagesInMgsRequest) returns (WaitForPackagesInMgsResponse) {}
+  rpc WaitForSnapshot(WaitForSnapshotRequest) returns (google.protobuf.Empty) {}
+}
