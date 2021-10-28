@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d9eaa19_5a190a61",
+        "filename": "src/chromiumos/tast/local/uidetection/api/ui_detection.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-28T03:53:40Z",
+      "side": 1,
+      "message": "Marking as resolved",
+      "parentUuid": "81bee4fc_dafac85e",
+      "revId": "ccc067b2dea0712c0c916ecfdf4569046551889f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cba84f7_4e5affd5",
@@ -149,6 +167,30 @@
       "side": 1,
       "message": "Added a header, thanks!",
       "parentUuid": "14dd5012_bfca5c60",
+      "revId": "ccc067b2dea0712c0c916ecfdf4569046551889f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b5dbc26_5098925e",
+        "filename": "src/chromiumos/tast/local/uidetection/api/ui_detection.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-28T03:53:40Z",
+      "side": 1,
+      "message": "Marking as resolved",
+      "parentUuid": "eaf5d442_4998634d",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 18
+      },
       "revId": "ccc067b2dea0712c0c916ecfdf4569046551889f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
