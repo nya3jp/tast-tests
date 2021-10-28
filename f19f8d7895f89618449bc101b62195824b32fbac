@@ -39,6 +39,52 @@
       },
       "revId": "f19f8d7895f89618449bc101b62195824b32fbac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "481ada7b_a4bc4106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-10-28T08:50:00Z",
+      "side": 1,
+      "message": "we should probably close existing cr (or reuse it). See https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3242022/comments/ba6aeaa8_7aeda84d",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 22
+      },
+      "revId": "f19f8d7895f89618449bc101b62195824b32fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "349be224_b5699103",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-10-28T08:50:00Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 51
+      },
+      "revId": "f19f8d7895f89618449bc101b62195824b32fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
