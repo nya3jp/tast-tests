@@ -59,12 +59,13 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		"--cros-region=" + cfg.Region(),              // Force the region.
 		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
 		"--enable-oobe-test-api",                     // Enable OOBE helper functions for authentication.
-		"--disable-hid-detection-on-oobe",            // Skip OOBE check for keyboard/mouse on chromeboxes/chromebases.
 		"--force-hwid-check-result-for-test=success", // Forcefully ignore incorrect hardware IDs on devices.
 	}
+
 	if !cfg.EnableRestoreTabs() {
 		args = append(args, "--no-startup-window") // Do not start up chrome://newtab by default to avoid unexpected patterns (doodle etc.)
 	}
+
 	if cfg.HideCrashRestoreBubble() {
 		args = append(args, "--hide-crash-restore-bubble") // Do not show "Chrome did not shut down correctly" bubble
 	}
@@ -104,8 +105,13 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 	if cfg.LoginMode() == config.GAIALogin {
 		args = append(args, "--vmodule=gaia_auth_fetcher=1")
 	}
+
 	if cfg.SkipForceOnlineSignInForTesting() {
 		args = append(args, "--skip-force-online-signin-for-testing")
+	}
+
+	if !cfg.EnableHIDScreen() {
+		args = append(args, "--disable-hid-detection-on-oobe")
 	}
 
 	args = append(args, exts.ChromeArgs()...)

@@ -459,3 +459,13 @@ func EnableWallpaperSWA(enabled bool) Option {
 		return nil
 	}
 }
+
+// EnableHIDScreen returns an Option that the HID Detection screen will not be forcibly skipped.
+// EnableHIDScreen Option guarantees that "--disable-hid-detection-on-oobe" is not appended
+// to chrome initialization.
+func EnableHIDScreen() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.EnableHIDScreen = true
+		return nil
+	}
+}

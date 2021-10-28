@@ -260,6 +260,9 @@ func (c *Config) EnableFilesAppSWA() bool { return c.m.EnableFilesAppSWA }
 // TODO(b/197963464) Remove this config item once Wallpaper SWA is fully launched.
 func (c *Config) EnableWallpaperSWA() bool { return c.m.EnableWallpaperSWA }
 
+// EnableHIDScreen returns true if to keep HID detection screen enabled in OOBE.
+func (c *Config) EnableHIDScreen() bool { return c.m.EnableHIDScreen }
+
 // MutableConfig is a mutable version of Config. MutableConfig is wrapped with
 // Config to prevent mutation after it is returned by NewConfig.
 //
@@ -311,6 +314,7 @@ type MutableConfig struct {
 	EphemeralUser                   bool       `reuse_match:"true"`
 	EnableFilesAppSWA               bool       `reuse_match:"true"`
 	EnableWallpaperSWA              bool       `reuse_match:"true"`
+	EnableHIDScreen                 bool       `reuse_match:"true"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -346,6 +350,7 @@ func NewConfig(opts []Option) (*Config, error) {
 			EphemeralUser:                   false,
 			EnableFilesAppSWA:               false,
 			EnableWallpaperSWA:              true,
+			EnableHIDScreen:                 false,
 		},
 	}
 	for _, opt := range opts {
