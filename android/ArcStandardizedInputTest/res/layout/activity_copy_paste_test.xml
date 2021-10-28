@@ -10,16 +10,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".CopyPasteTestActivity">
 
-  <!-- Typing test components -->
-  <EditText
-      android:id="@+id/textKeyboardInput"
-      android:layout_width="match_parent"
-      android:layout_height="53dp"
-      android:ems="10"
-      android:inputType="text"
-  />
 
   <!-- Copy/Paste components -->
   <EditText
