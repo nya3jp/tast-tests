@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91e9c3d5_8b7dbd06",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-28T15:10:30Z",
+      "side": 1,
+      "message": "style: could you remove else?\n\nopt :\u003d client.FromEnv\nif _, err :\u003d os.Stat(...); err !\u003d nil {\n  if !errors.Is(err, ...) {\n    return nil, err\n  }\n  opt \u003d client.WithHost(\"...\")\n}\nreturn client.NewClientWithOpts(opt, client.WithAPIVersionNegotiation())",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 8
+      },
+      "revId": "1bae2d67239cb44a3512c6e13af06040d660eef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6804050c_95a771a6",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-28T15:10:30Z",
+      "side": 1,
+      "message": "could you add reference of this IP/port in the comment?",
+      "range": {
+        "startLine": 51,
+        "startChar": 57,
+        "endLine": 51,
+        "endChar": 75
+      },
+      "revId": "1bae2d67239cb44a3512c6e13af06040d660eef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
