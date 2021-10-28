@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78ca038e_0d99909a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-28T09:14:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9628ea1d_ac831bd6",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "f19f8d7895f89618449bc101b62195824b32fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "481ada7b_a4bc4106",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b2d6ac_634e5edb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-28T09:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "481ada7b_a4bc4106",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 22
+      },
+      "revId": "f19f8d7895f89618449bc101b62195824b32fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "349be224_b5699103",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-10-28T08:50:00Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 51
+      },
+      "revId": "f19f8d7895f89618449bc101b62195824b32fbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "382ba88a_7014d055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-10-28T09:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "349be224_b5699103",
       "range": {
         "startLine": 129,
         "startChar": 0,
