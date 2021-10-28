@@ -93,6 +93,13 @@ func init() {
 				chromeArgs:        []string{"--enable-arcvm-rt-vcpu"},
 			},
 		}, {
+			Name:              "unmanaged_dalvik_memory_profile_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: testParam{
+				maxErrorBootCount: 3,
+				chromeArgs:        []string{"--enable-features=ArcUseDalvikMemoryProfile"},
+			},
+		}, {
 			Name:              "unmanaged_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
