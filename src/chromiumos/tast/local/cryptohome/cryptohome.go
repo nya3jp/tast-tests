@@ -224,15 +224,26 @@ func validateGuestPartition(p *disk.PartitionStat) error {
 	return nil
 }
 
-// WaitForUserMount waits for user's encrypted home directory to be mounted.
-func WaitForUserMount(ctx context.Context, user string) error {
+// MountType is a type of the user mount.
+type MountType int
+
+const (
+	// Ephemeral is used to specify that the user type is temporary or ephemeral.
+	Ephemeral MountType = iota
+	// Permanent is used to specify that the user type is permanent.
+	Permanent
+)
+
+// WaitForUserMountAndValidateType waits for user's encrypted home directory to
+// be mounted and validates that it is of correct type (permanent or temporary).
+func WaitForUserMountAndValidateType(ctx context.Context, user string, mountType MountType) error {
 	ctx, st := timing.Start(ctx, "wait_for_user_mount")
 	defer st.End()
 
 	mounter := cryptohomedExe
 	validatePartition := validatePermanentPartition
 
-	if user == GuestUser {
+	if mountType == Ephemeral {
 		mounter = mounterExe
 		validatePartition = validateGuestPartition
 	}
@@ -273,6 +284,16 @@ func WaitForUserMount(ctx context.Context, user string) error {
 		return errors.Wrapf(err, "not mounted for %s", user)
 	}
 	return nil
+}
+
+// WaitForUserMount waits for user's encrypted home directory to be mounted and
+// validates that it is of permanent type for all users except guest.
+func WaitForUserMount(ctx context.Context, user string) error {
+	mountType := Permanent
+	if user == GuestUser {
+		mountType = Ephemeral
+	}
+	return WaitForUserMountAndValidateType(ctx, user, mountType)
 }
 
 // CreateVault creates the vault for the user with given password.
