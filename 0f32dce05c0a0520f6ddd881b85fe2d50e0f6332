@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49a408f6_1c1d040a",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-10-28T13:12:37Z",
+      "side": 1,
+      "message": "Done. The script generated some unrelated change though. Should I just it with this CL anyway?",
+      "parentUuid": "54b09845_86396abc",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f50c38dd_4ef1d456",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-26T07:48:27Z",
       "side": 1,
       "message": "This is not needed",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "010c1838_bcefbe76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-10-28T13:12:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f50c38dd_4ef1d456",
       "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fad1b964_66f8bbf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-10-28T13:12:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cfb6746_3c9c6f55",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68740165_30076392",
@@ -65,6 +119,30 @@
       "writtenOn": "2021-10-26T07:48:27Z",
       "side": 1,
       "message": "Error",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d0c6b5e_32bd89a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-10-28T13:12:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68740165_30076392",
       "range": {
         "startLine": 107,
         "startChar": 4,
@@ -98,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a40bfe_9857ffb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-10-28T13:12:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "885cc8e3_ab276590",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 9
+      },
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "056c4c1e_44a7d80d",
@@ -111,6 +213,24 @@
       "writtenOn": "2021-10-26T07:48:27Z",
       "side": 1,
       "message": "nit: newline before",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9508b50f_1ea543e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-10-28T13:12:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "056c4c1e_44a7d80d",
       "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +252,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2152838_c29e3ecf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-10-28T13:12:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54da4406_3ac7a362",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a64c6796_6f4ee7c4",
@@ -145,6 +283,24 @@
       "writtenOn": "2021-10-27T01:21:54Z",
       "side": 1,
       "message": "Should probably defer the disconnect. there are multiple error states between here and the disconnect.",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e9a895c_58fea70e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-10-28T13:12:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a64c6796_6f4ee7c4",
       "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -166,6 +322,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "032095f6_d2ae92ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-10-28T13:12:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc52aacb_edaa8f32",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16a47d0c_0b5aab0b",
@@ -179,6 +353,24 @@
       "writtenOn": "2021-10-26T07:48:27Z",
       "side": 1,
       "message": "nit: this is not useful",
+      "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0835c32a_04c2b5b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-10-28T13:12:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16a47d0c_0b5aab0b",
       "revId": "0f32dce05c0a0520f6ddd881b85fe2d50e0f6332",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
