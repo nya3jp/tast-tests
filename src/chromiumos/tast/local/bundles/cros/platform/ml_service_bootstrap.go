@@ -16,10 +16,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MLServiceBootstrap,
-		Desc:         "Checks that Chrome can establish a Mojo connection to ML Service",
-		Contacts:     []string{"amoylan@chromium.org"},
-		Attr:         []string{"group:mainline"},
+		Func:     MLServiceBootstrap,
+		Desc:     "Checks that Chrome can establish a Mojo connection to ML Service",
+		Contacts: []string{"amoylan@chromium.org"},
+		// TODO(b/204399416): Re-enable it once the test is fixed.
+		// Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "ml_service"},
 		Pre:          chrome.LoggedIn(),
 	})
