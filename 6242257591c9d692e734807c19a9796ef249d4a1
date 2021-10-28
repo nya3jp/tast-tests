@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a286dd_71c86064",
+        "filename": "src/chromiumos/tast/local/smb/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-28T08:53:54Z",
+      "side": 1,
+      "message": "I don\u0027t want to export these, I\u0027ve inlined all the single use vars and just kept smbdSetupTimeout",
+      "parentUuid": "d8f3179e_12c4dba4",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 39
+      },
+      "revId": "6242257591c9d692e734807c19a9796ef249d4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f765641d_b9ff8061",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-28T08:44:10Z",
       "side": 1,
       "message": "This isn\u0027t a very useful comment. It\u0027s basically just restating parts of the FixtureImpl documentation. The comment should say what this specific SetUp implementation does.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "6242257591c9d692e734807c19a9796ef249d4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e78a01_946b1591",
+        "filename": "src/chromiumos/tast/local/smb/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-28T08:53:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f765641d_b9ff8061",
       "range": {
         "startLine": 55,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfea7e26_91ba3553",
+        "filename": "src/chromiumos/tast/local/smb/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-28T08:53:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52f4653f_519229aa",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 63
+      },
+      "revId": "6242257591c9d692e734807c19a9796ef249d4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc0b9357_37d76090",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b78208b_ed93f58b",
+        "filename": "src/chromiumos/tast/local/smb/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-28T08:53:54Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "fc0b9357_37d76090",
+      "range": {
+        "startLine": 151,
+        "startChar": 9,
+        "endLine": 151,
+        "endChar": 65
+      },
+      "revId": "6242257591c9d692e734807c19a9796ef249d4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c14e40f_248ef990",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-10-28T08:44:10Z",
       "side": 1,
       "message": "Does this actually need to be exported?",
+      "range": {
+        "startLine": 168,
+        "startChar": 5,
+        "endLine": 168,
+        "endChar": 25
+      },
+      "revId": "6242257591c9d692e734807c19a9796ef249d4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aee03a6c_f25191bb",
+        "filename": "src/chromiumos/tast/local/smb/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-28T08:53:54Z",
+      "side": 1,
+      "message": "Nope changed to lowercase.",
+      "parentUuid": "6c14e40f_248ef990",
       "range": {
         "startLine": 168,
         "startChar": 5,
