@@ -63,6 +63,54 @@
       },
       "revId": "0ff82cd5eae87e62b09c5863a047b9738c8c880e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2f370e6_0b123250",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/googleapps/common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-10-28T09:20:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a234853f_ba28e4ab",
+      "range": {
+        "startLine": 40,
+        "startChar": 46,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "0ff82cd5eae87e62b09c5863a047b9738c8c880e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "809429ef_4ef62884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/googleapps/common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2021-10-28T09:20:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a234853f_ba28e4ab",
+      "range": {
+        "startLine": 40,
+        "startChar": 46,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "0ff82cd5eae87e62b09c5863a047b9738c8c880e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
