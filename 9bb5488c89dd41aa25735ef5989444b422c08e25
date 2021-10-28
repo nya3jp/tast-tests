@@ -180,6 +180,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "633abdb9_98fcd47d",
+        "filename": "src/chromiumos/tast/local/smb/server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-10-28T00:39:09Z",
+      "side": 1,
+      "message": "Sorry, should have clarified - they should be equivalent, this should work fine. It was more a useful thing you could do in the future if you wanted.",
+      "parentUuid": "b2a308bf_3fe6ac1f",
+      "revId": "9bb5488c89dd41aa25735ef5989444b422c08e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0aab9fd8_fb5c2b71",
         "filename": "src/chromiumos/tast/local/smb/server.go",
         "patchSetId": 4
