@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35864bb9_68b0ff35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-10-28T10:18:52Z",
+      "side": 1,
+      "message": "Hi,\n\nAdopted the same patch for \"tme\" and removed the mktme part.Please review it.\n\nThanks,\nJilani",
+      "revId": "6ed467b7e06e99d1ff4052fb318e63bfef72464d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
