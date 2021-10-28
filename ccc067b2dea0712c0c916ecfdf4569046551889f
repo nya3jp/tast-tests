@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81bee4fc_dafac85e",
+        "filename": "src/chromiumos/tast/local/uidetection/api/ui_detection.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-28T00:41:10Z",
+      "side": 1,
+      "message": "Thanks Patrick and Matt.\n\nAdded a gen.go file following the go.sh convention.",
+      "parentUuid": "9b12e878_c33197f1",
+      "revId": "ccc067b2dea0712c0c916ecfdf4569046551889f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cba84f7_4e5affd5",
         "filename": "src/chromiumos/tast/local/uidetection/api/ui_detection.proto",
         "patchSetId": 5
@@ -89,6 +107,30 @@
       "writtenOn": "2021-10-28T00:01:30Z",
       "side": 1,
       "message": "nit: Do you need a copyright header?",
+      "revId": "ccc067b2dea0712c0c916ecfdf4569046551889f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaf5d442_4998634d",
+        "filename": "src/chromiumos/tast/local/uidetection/api/ui_detection.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-28T00:41:10Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. It seems that proto3 is recommended for public API see (https://engdoc.corp.google.com/eng/doc/devguide/proto/api.md?cl\u003dhead##22-use-the-right-proto).\n \nRevised to proto3.",
+      "parentUuid": "1cba84f7_4e5affd5",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 18
+      },
       "revId": "ccc067b2dea0712c0c916ecfdf4569046551889f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
