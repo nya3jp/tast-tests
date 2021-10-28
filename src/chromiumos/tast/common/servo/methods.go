@@ -249,6 +249,11 @@ func (s *Servo) PowerNormalPress(ctx context.Context) (bool, error) {
 	return val, err
 }
 
+// PowerShortPress presses DUT power button with 'tab' duration.
+func (s *Servo) PowerShortPress(ctx context.Context) error {
+	return s.KeypressWithDuration(ctx, PowerKey, DurTab)
+}
+
 // SetActChgPort enables a charge port on fluffy.
 func (s *Servo) SetActChgPort(ctx context.Context, port string) error {
 	return s.SetString(ctx, ActiveChgPort, port)
