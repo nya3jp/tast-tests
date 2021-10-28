@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a990c731_d03713bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-28T02:24:58Z",
+      "side": 1,
+      "message": "LGTM with optional comment.",
+      "revId": "0ff82cd5eae87e62b09c5863a047b9738c8c880e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0836fd01_3313e608",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/googleapps/common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-28T02:24:58Z",
+      "side": 1,
+      "message": "I think you are expecting a delay text outcome. Logging of each attempt might is actually not necessary. Using RetrySilently if you want http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go?l\u003d749",
+      "range": {
+        "startLine": 40,
+        "startChar": 46,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "0ff82cd5eae87e62b09c5863a047b9738c8c880e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
