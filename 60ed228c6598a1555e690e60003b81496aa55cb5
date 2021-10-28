@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8890cc9_e5582735",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-28T11:15:22Z",
+      "side": 1,
+      "message": "Hi Jeremy,\n\nI found that it\u0027s very misleading to use ssh port only for command execution. For example, in my test i don\u0027t use command execution, but I still was able to use servo variable with \":ssh:\". But actually \":ssh:\" part was ignored when connecting to servod.\n\nI think we should either keep previous behaviour or change library semantic:\n```\nservoVar :\u003d s.RequiredVar(\"servo\")\nservo.NewProxy(\n  ctx,\n  servo.HostAndServodPort(servoVar),\n  d.KeyFile(),\n  d.KeyDir(),\n  servo.WithSSHPortForCmdExec(servoVar)\n)\n```",
+      "revId": "60ed228c6598a1555e690e60003b81496aa55cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
