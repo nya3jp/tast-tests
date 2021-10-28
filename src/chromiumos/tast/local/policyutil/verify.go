@@ -20,7 +20,8 @@ import (
 // A DUTPolicy represents the information about a single policy as returned by
 // the getAllEnterprisePolicies API.
 // Example JSON: {"scope": "user", "level": "mandatory", "source": "cloud",
-//                "value": false, "error": "This policy has been deprecated."}
+//
+//	"value": false, "error": "This policy has been deprecated."}
 type DUTPolicy struct {
 	Level     string
 	Scope     string
