@@ -87,11 +87,11 @@ func init() {
 // StandardizedKeyboard runs all the provided test cases.
 func StandardizedKeyboard(ctx context.Context, s *testing.State) {
 	const (
-		apkName                = "ArcStandardizedKeyboardTest.apk"
-		appPkgName             = "org.chromium.arc.testapp.arcstandardizedkeyboardtest"
-		copyPasteActivityName  = ".MainActivity"
+		apkName                = "ArcStandardizedInputTest.apk"
+		appPkgName             = "org.chromium.arc.testapp.arcstandardizedinputtest"
+		copyPasteActivityName  = ".CopyPasteTestActivity"
 		keysTestActivityName   = ".KeysTestActivity"
-		typingTestActivityName = ".MainActivity"
+		typingTestActivityName = ".TypingTestActivity"
 	)
 
 	testCases := s.Param().(standardizedtestutil.TestCaseParamVal)
