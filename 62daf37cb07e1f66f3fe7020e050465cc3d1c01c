@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2605fe2_be911c7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2021-10-28T14:30:42Z",
+      "side": 1,
+      "message": "I\u0027ve tried both tests on a chromebook DUT, the HidScreenShown passes, and HidScreenSkipped get skipped.\nI will yet try both on a chromebase DUT to make sure that the opposite happens there.",
+      "revId": "62daf37cb07e1f66f3fe7020e050465cc3d1c01c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
