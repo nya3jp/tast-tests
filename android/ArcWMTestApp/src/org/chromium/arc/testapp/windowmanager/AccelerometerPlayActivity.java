@@ -365,7 +365,7 @@ public class AccelerometerPlayActivity extends Activity {
              * "present" time during rendering. In this application, we need to
              * take into account how the screen is rotated with respect to the
              * sensors (which always return data in a coordinate space aligned
-             * to with the screen in its native orientation).
+             * to with the screen in its natural orientation).
              */
 
             switch (mDisplay.getRotation()) {

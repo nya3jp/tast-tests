@@ -13,7 +13,7 @@ import (
 )
 
 // Report is a parsed gtest output report.
-// See https://github.com/google/googletest/blob/master/googletest/docs/advanced.md#generating-an-xml-report for details.
+// See https://github.com/google/googletest/blob/master/googletest/docs/advanced.md#generating-an-xml-report for details. // nocheck
 // Note: at the moment, only a subset of the report is parsed. More can be
 // added upon requirements.
 // TODO(crbug.com/940320): Consider switching to use JSON, which is supported

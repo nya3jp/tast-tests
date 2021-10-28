@@ -63,7 +63,7 @@ const (
 	chromeCrashFilePatternWithPid = `chrome\.\d{8}\.\d{6}\.\d+\.%d\.`
 
 	// breakpadDmpFileRegexp is the regexp we use to find a BreakpadDmp file.
-	// Unlike normal .meta files, the native breakpad .dmp files do not include
+	// Unlike normal .meta files, the breakpad .dmp files do not include
 	// the PID in the filename.
 	breakpadDmpFileRegexp = `chromium-.*-minidump-.*\.dmp`
 )
