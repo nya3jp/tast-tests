@@ -133,6 +133,24 @@
       },
       "revId": "ccc067b2dea0712c0c916ecfdf4569046551889f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90ecb592_00d3e103",
+        "filename": "src/chromiumos/tast/local/uidetection/api/ui_detection.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-10-28T00:41:41Z",
+      "side": 1,
+      "message": "Added a header, thanks!",
+      "parentUuid": "14dd5012_bfca5c60",
+      "revId": "ccc067b2dea0712c0c916ecfdf4569046551889f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
