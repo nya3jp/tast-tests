@@ -46,6 +46,30 @@
       },
       "revId": "43b8a3597c1f781ceab28cfa3c8b5f8bcaa8f598",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8640e01f_940b243f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-10-28T04:14:18Z",
+      "side": 1,
+      "message": "ok, right. My bad. But still, I normally do click -\u003e polling 2-3s to check focus. Because there is always a delay between click-\u003eactivate. It could cause a double-click. It can make trouble on tablet, where VK is triggered and the second click can work on a VK key accidentally.\n\nThis is just from my personal experience, not a common practice. So up-to-you how to implement it.",
+      "parentUuid": "f9576ceb_71bc6b88",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 136
+      },
+      "revId": "43b8a3597c1f781ceab28cfa3c8b5f8bcaa8f598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
