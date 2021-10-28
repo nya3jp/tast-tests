@@ -20,7 +20,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ArcCameraOrientation,
 		Desc:         "Ensures that camera orientation compatibility solution works as expected",
-		Contacts:     []string{"lnishan@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Pre:          arc.Booted(),

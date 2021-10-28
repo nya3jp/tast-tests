@@ -25,7 +25,6 @@ func init() {
 		Func: Connector,
 		Desc: "Verifies the camera service connector library works",
 		Contacts: []string{
-			"lnishan@chromium.org",
 			"shik@chromium.org",
 			"chromeos-camera-eng@google.com",
 		},
