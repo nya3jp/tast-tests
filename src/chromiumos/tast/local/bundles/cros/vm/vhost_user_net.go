@@ -141,6 +141,15 @@ func getTap(ctx context.Context, pc *patchpanel.Client, cid uint32) (device tapD
 	return
 }
 
+func waitUntilFileAvailable(ctx context.Context, path string) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := os.Stat(path); err != nil {
+			return errors.Wrapf(err, "%s is unavailable", path)
+		}
+		return nil
+	}, nil)
+}
+
 func VhostUserNet(ctx context.Context, s *testing.State) {
 	td, err := ioutil.TempDir("", "tast.vm.VhostUserNet.")
 	if err != nil {
@@ -195,6 +204,14 @@ func VhostUserNet(ctx context.Context, s *testing.State) {
 
 	data := s.PreValue().(vm.PreData)
 	script := s.DataPath(runVhostUserNetTest)
+
+	// Wait until the device starts and sockets are created
+	if err := waitUntilFileAvailable(ctx, serverSock); err != nil {
+		s.Fatalf("%s didn't become available: %v", serverSock, err)
+	}
+	if err := waitUntilFileAvailable(ctx, clientSock); err != nil {
+		s.Fatalf("%s didn't become available: %v", clientSock, err)
+	}
 
 	// Start server VM
 	serverLog := filepath.Join(s.OutDir(), "serial-server.log")
