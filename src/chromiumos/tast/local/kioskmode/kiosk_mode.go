@@ -207,13 +207,16 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*chrome.Ch
 
 	var cr *chrome.Chrome
 	if cfg.m.AutoLaunch {
-		testing.ContextLog(ctx, "kiosk_mode - starting Chrome in Kiosk mode")
-		// Restart Chrome. After that Kiosk auto starts.
-		cr, err = chrome.New(ctx,
+		opts := []chrome.Option{
 			chrome.NoLogin(),
 			chrome.DMSPolicy(fdms.URL),
 			chrome.KeepEnrollment(),
-		)
+		}
+		opts = append(opts, cfg.m.ExtraChromeOptions...)
+
+		testing.ContextLog(ctx, "kiosk_mode - starting Chrome in Kiosk mode")
+		// Restart Chrome. After that Kiosk auto starts.
+		cr, err = chrome.New(ctx, opts...)
 		if err != nil {
 			return nil, errors.Wrap(err, "Chrome restart failed")
 		}
@@ -223,17 +226,16 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*chrome.Ch
 			return nil, errors.Wrap(err, "there was a problem while checking chrome logs for Kiosk related entries")
 		}
 	} else {
-		if cfg.m.SigninExtKey == nil {
-			return nil, errors.Wrap(err, "signin extension key was not provided. Cannot start Chrome")
-		}
-		testing.ContextLog(ctx, "kiosk_mode - starting Chrome on Signin screen with set Kiosk apps")
-		// Restart Chrome. Chrome stays on Sing-in screen
-		cr, err = chrome.New(ctx,
+		opts := []chrome.Option{
 			chrome.DeferLogin(),
-			chrome.LoadSigninProfileExtension(*cfg.m.SigninExtKey),
 			chrome.DMSPolicy(fdms.URL),
 			chrome.KeepEnrollment(),
-		)
+		}
+		opts = append(opts, cfg.m.ExtraChromeOptions...)
+
+		testing.ContextLog(ctx, "kiosk_mode - starting Chrome on Signin screen with set Kiosk apps")
+		// Restart Chrome. Chrome stays on Sing-in screen
+		cr, err = chrome.New(ctx, opts...)
 		if err != nil {
 			return nil, errors.Wrap(err, "Chrome restart failed")
 		}
