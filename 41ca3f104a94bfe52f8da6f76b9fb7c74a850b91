@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a79b560e_f3eb18c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-10-29T13:09:27Z",
+      "side": 1,
+      "message": "Done. I am not use to removing APIs calls when adding new ones 😊",
+      "parentUuid": "470f957c_6821a35b",
+      "revId": "41ca3f104a94bfe52f8da6f76b9fb7c74a850b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec0cc4a7_db440f2d",
@@ -101,6 +119,24 @@
       "writtenOn": "2021-10-29T12:01:19Z",
       "side": 1,
       "message": "if not needed\n\nappend of nil does nothing",
+      "revId": "41ca3f104a94bfe52f8da6f76b9fb7c74a850b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58427d7c_bbcfc52c",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-10-29T13:09:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec0cc4a7_db440f2d",
       "revId": "41ca3f104a94bfe52f8da6f76b9fb7c74a850b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
