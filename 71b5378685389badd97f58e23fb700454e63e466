@@ -16,6 +16,23 @@
       "message": "Eric, adding you as reviewer since working hours have ended for the others.",
       "revId": "71b5378685389badd97f58e23fb700454e63e466",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c611203_9af220bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1471368
+      },
+      "writtenOn": "2021-10-29T17:02:39Z",
+      "side": 1,
+      "message": "Rubber stamping \"Verified\" to get CQ to run.",
+      "revId": "71b5378685389badd97f58e23fb700454e63e466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
