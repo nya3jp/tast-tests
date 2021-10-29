@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d6f4d5e_232b14a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-29T00:17:19Z",
+      "side": 1,
+      "message": "LGTM and +2 due to cross-timezone review. Please resolve open comments before submitting though.",
+      "revId": "59460cba228cf5114c0bd94435b5f6b65414475a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7c48c0b_7753d213",
@@ -26,6 +43,76 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcbf8daf_c2435679",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-29T00:17:19Z",
+      "side": 1,
+      "message": "Is there a new guideline for this? It\u0027s still mentioned as optional in the tast docs:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-registration\n\nI think in general it\u0027s reasonable to stick with the default timeout (2 mins for local tests) unless it\u0027s clear that more time is required. If this test is getting close the default (3 user logins could take some time), then it would probably be a good idea to specify a longer one.",
+      "parentUuid": "d7c48c0b_7753d213",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "59460cba228cf5114c0bd94435b5f6b65414475a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa387764_2484927c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-29T00:17:19Z",
+      "side": 1,
+      "message": "nit: delete extra //",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 7
+      },
+      "revId": "59460cba228cf5114c0bd94435b5f6b65414475a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f46a1504_0ffe0fdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-29T00:17:19Z",
+      "side": 1,
+      "message": "rename to extraOpts\nhttps://golang.org/doc/effective_go#mixed-caps",
+      "range": {
+        "startLine": 51,
+        "startChar": 40,
+        "endLine": 51,
+        "endChar": 50
+      },
+      "revId": "59460cba228cf5114c0bd94435b5f6b65414475a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef8e2c9a_445c70b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
         "patchSetId": 5
@@ -37,6 +124,30 @@
       "writtenOn": "2021-10-28T21:18:04Z",
       "side": 1,
       "message": "Can we separately define two functions for this testing logic and the following one?",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 7
+      },
+      "revId": "59460cba228cf5114c0bd94435b5f6b65414475a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3ef201d_9ca7380d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-29T00:17:19Z",
+      "side": 1,
+      "message": "That\u0027s also a good option, but this pattern is fairly idiomatic as far as I know. From what I\u0027ve seen it\u0027s pretty common to use an anonymous function to control defer timings like is being done here.",
+      "parentUuid": "ef8e2c9a_445c70b3",
       "range": {
         "startLine": 63,
         "startChar": 1,

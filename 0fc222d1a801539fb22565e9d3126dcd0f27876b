@@ -258,6 +258,30 @@
       },
       "revId": "0fc222d1a801539fb22565e9d3126dcd0f27876b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57806572_f31a09b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-29T00:17:19Z",
+      "side": 1,
+      "message": "FYI I think this is working as intended if using a function like ui.WaitUntilGone:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d450\n\nThe JS error indicates that the node can no longer be found, which is what we expect in that case.",
+      "parentUuid": "7e56571d_d13d045b",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "0fc222d1a801539fb22565e9d3126dcd0f27876b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
