@@ -6,6 +6,7 @@
 package faillog
 
 import (
+	"context"
 	"path/filepath"
 
 	"chromiumos/tast/fsutil"
@@ -13,10 +14,10 @@ import (
 )
 
 // Save stores Lacros related log files into outdir.
-func Save(hasError func() bool, l *launcher.LacrosChrome, outdir string) error {
+func Save(ctx context.Context, hasError func() bool, l *launcher.LacrosChrome, outdir string) error {
 	if !hasError() {
 		return nil
 	}
 
-	return fsutil.CopyFile(l.LogFile(), filepath.Join(outdir, "lacros.log"))
+	return fsutil.CopyFile(launcher.LogFile(ctx), filepath.Join(outdir, "lacros.log"))
 }

@@ -207,8 +207,7 @@ func LaunchLacrosChromeWithURL(ctx context.Context, f FixtValue, url string) (*L
 		"--lang=en-US",                               // Language
 		"--breakpad-dump-location=" + f.LacrosPath(), // Specify location for breakpad dump files.
 		"--window-size=800,600",
-		"--log-file=" + logFile(userDataDir),         // Specify log file location for debugging.
-		"--enable-logging",                           // This flag is necessary to ensure the log file is written.
+		"--enable-logging=stderr",                    // This flag is necessary to ensure the log file is written. Also include stderr - this matches the shelf launch case.
 		"--enable-gpu-rasterization",                 // Enable GPU rasterization. This is necessary to enable OOP rasterization.
 		"--enable-oop-rasterization",                 // Enable OOP rasterization.
 		"--enable-webgl-image-chromium",              // Enable WebGL image.
@@ -224,9 +223,7 @@ func LaunchLacrosChromeWithURL(ctx context.Context, f FixtValue, url string) (*L
 		"-s", mojoSocketPath, filepath.Join(f.LacrosPath(), "chrome")}, args...)...)
 	cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
 
-	if out, ok := testing.ContextOutDir(ctx); !ok {
-		testing.ContextLog(ctx, "OutDir not found: ", err)
-	} else if logFile, err := os.Create(filepath.Join(out, "lacros.log")); err != nil {
+	if logFile, err := os.Create(LogFile(ctx)); err != nil {
 		testing.ContextLog(ctx, "Failed to create lacros.log file: ", err)
 	} else {
 		defer logFile.Close()
@@ -265,14 +262,14 @@ func LaunchLacrosChromeWithURL(ctx context.Context, f FixtValue, url string) (*L
 	return l, nil
 }
 
-// logFile returns the path to the log file for Lacros.
-func logFile(userDataDir string) string {
-	return filepath.Join(userDataDir, "logfile")
-}
-
 // LogFile returns a path to a file containing Lacros's log.
-func (l *LacrosChrome) LogFile() string {
-	return logFile(l.userDataDir)
+func LogFile(ctx context.Context) string {
+	out, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		testing.ContextLog(ctx, "OutDir not found")
+		return ""
+	}
+	return filepath.Join(out, "lacros.log")
 }
 
 // WaitForLacrosWindow waits for a Lacrow window with the specified title to be visibe.

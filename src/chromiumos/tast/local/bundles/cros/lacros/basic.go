@@ -72,7 +72,7 @@ func Basic(ctx context.Context, s *testing.State) {
 	}
 	defer func() {
 		l.Close(ctx)
-		if err := faillog.Save(s.HasError, l, s.OutDir()); err != nil {
+		if err := faillog.Save(ctx, s.HasError, l, s.OutDir()); err != nil {
 			s.Log("Failed to save lacros logs: ", err)
 		}
 	}()
