@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/remote/bundles/cros/lacros/version"
 	"chromiumos/tast/services/cros/lacros"
 	lacrosservice "chromiumos/tast/services/cros/lacros"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -106,6 +107,17 @@ func VerifyLacrosUpdate(ctx context.Context, overrideVersion, overrideComponent 
 		return errors.Wrapf(err, "verifyLacrosUpdate: returns test failure status: %v", res.Result)
 	}
 	return nil
+}
+
+// SaveLogsFromDut saves device logs that are useful for troubleshooting test failures.
+func SaveLogsFromDut(ctx context.Context, dut *dut.DUT, logOutDir string) {
+	const logFileName = "lacros.log"
+
+	logPathSrc := filepath.Join(lacroscommon.LacrosUserDataDir, logFileName)
+	logPathDst := filepath.Join(logOutDir, logFileName)
+	if err := linuxssh.GetFile(ctx, dut.Conn(), logPathSrc, logPathDst, linuxssh.PreserveSymlinks); err != nil {
+		testing.ContextLogf(ctx, "Failed to save %s to %s. Error: %s", logPathSrc, logPathDst, err)
+	}
 }
 
 // ClearLacrosUpdate calls a RPC to the test service to remove provisioned Lacros and reset to the previous state.
