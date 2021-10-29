@@ -4,7 +4,10 @@
 
 package kioskmode
 
-import "chromiumos/tast/common/policy"
+import (
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/local/chrome"
+)
 
 // Option is a self-referential function can be used to configure Kiosk mode.
 // See https://commandcenter.blogspot.com.au/2014/01/self-referential-functions-and-design.html
@@ -34,7 +37,11 @@ type MutableConfig struct {
 	AutoLaunchKioskAppID *string
 	// SigninExtKey extension key required to start Chrome with automation
 	// enabled on Signin screen.
+	// Deprecated. Use ExtraChromeOptions instead.
 	SigninExtKey *string
+	// ExtraChromeOptions holds all extra options that will be passed to Chrome
+	// instance that will run in Kiosk mode.
+	ExtraChromeOptions []chrome.Option
 }
 
 // NewConfig creates new configuration.
