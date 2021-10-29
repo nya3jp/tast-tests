@@ -88,6 +88,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57de7f69_d04f42d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-29T01:17:13Z",
+      "side": 1,
+      "message": "sorry landscape not clamshell",
+      "parentUuid": "5b32392e_f89cab9b",
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16c9ec5f_b3b022ea",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
         "patchSetId": 3
