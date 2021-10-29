@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c518947_4e4315fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-10-29T14:37:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44e94c3f_b0d3f52a",
+      "revId": "aa1acdae9137cdc476eda16a50a772248c3d25ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "847c87a5_7d9a41d0",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-29T12:58:05Z",
       "side": 1,
       "message": "Is this needed? Without also calling Refresh it does nothing. The fixture already clears everything at the end of the test.",
+      "revId": "aa1acdae9137cdc476eda16a50a772248c3d25ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd7129c4_619aaae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-10-29T14:37:13Z",
+      "side": 1,
+      "message": "You are correct: we also need to run Refresh to ensure that reverted policies are applied. Using defer for this is complicated because Chrome could be in various states: not started, on the login page, signed in, connection closed etc. Instead, I have added a cleanup statement at the end of the test where we know Chrome\u0027s state. The drawback of this approach is that we may affect other tests if our test fails half-way and cleanup statement is not executed, but I do not expect this to happen frequently.",
+      "parentUuid": "847c87a5_7d9a41d0",
       "revId": "aa1acdae9137cdc476eda16a50a772248c3d25ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac88658e_b4daa29d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-10-29T14:37:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dac0b7e_23926e84",
+      "revId": "aa1acdae9137cdc476eda16a50a772248c3d25ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f226cf22_570d54a2",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-10-29T12:58:05Z",
       "side": 1,
       "message": "nit: newline before",
+      "revId": "aa1acdae9137cdc476eda16a50a772248c3d25ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29e00dd3_81918ee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-10-29T14:37:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f226cf22_570d54a2",
       "revId": "aa1acdae9137cdc476eda16a50a772248c3d25ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
