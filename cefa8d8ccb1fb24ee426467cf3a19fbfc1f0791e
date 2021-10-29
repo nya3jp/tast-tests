@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fb435cf_c37af5f3",
+        "filename": "src/chromiumos/tast/common/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-29T17:54:27Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually seem any more readable than KeypressWithDuration(ctx, PowerKey, DurTab)",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 0
+      },
+      "revId": "cefa8d8ccb1fb24ee426467cf3a19fbfc1f0791e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09f82d88_10e657d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_g3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-29T17:54:27Z",
+      "side": 1,
+      "message": "This should not be necessary, you only need to change the chan when doing direct EC commands, servod will take care of this for normal servo controls.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "cefa8d8ccb1fb24ee426467cf3a19fbfc1f0791e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795de101_3e66b4bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_g3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-29T17:54:27Z",
+      "side": 1,
+      "message": "This is slightly different from what the old test did. It ran `/sbin/shutdown -P now` on the DUT. ms.PowerOff runs `poweroff` and then presses the power button if that doesn\u0027t work.\n\nI think you should probably just run the shutdown command instead, because that is actually what we are testing here, that shutdown works.",
+      "range": {
+        "startLine": 49,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 22
+      },
+      "revId": "cefa8d8ccb1fb24ee426467cf3a19fbfc1f0791e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58f8a98b_b7446f8a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_g3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-29T17:54:27Z",
+      "side": 1,
+      "message": "You want to fail if the WaitConnect times out. Since the fixture will reboot the DUT if it is off, you can just move this to the end of the test, and check the error return instead of using defer.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "cefa8d8ccb1fb24ee426467cf3a19fbfc1f0791e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
