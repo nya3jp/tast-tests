@@ -16,6 +16,166 @@
       "message": "LGTM. Defer +2 to Tast owners",
       "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed47c5d_4f10a3cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T07:31:59Z",
+      "side": 1,
+      "message": "Allocate a cleanup context to make sure this has time to run",
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68dc4d9b_9fceab28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T07:31:59Z",
+      "side": 1,
+      "message": "no need to export these, use name",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efa11d0e_afbac59f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T07:31:59Z",
+      "side": 1,
+      "message": "Names should use snake_case",
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ecdf5b6_f9c0b6e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T07:31:59Z",
+      "side": 1,
+      "message": "minor nit: maybe Waiting for capture result",
+      "range": {
+        "startLine": 158,
+        "startChar": 26,
+        "endLine": 158,
+        "endChar": 34
+      },
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c017bf49_83902ab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T07:31:59Z",
+      "side": 1,
+      "message": "minor nit: this can be moved inline",
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b368667_a12562f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T07:31:59Z",
+      "side": 1,
+      "message": "nit: add a comment on why this is sleeping here\n\nCan you just wait for 1 second to make the test a bit faster?",
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd10fb01_bf0d5be9",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1963,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T07:31:59Z",
+      "side": 1,
+      "message": "nit: Maybe CheckMode, this seems like a more generic check",
+      "range": {
+        "startLine": 1963,
+        "startChar": 3,
+        "endLine": 1963,
+        "endChar": 19
+      },
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3ff2ae6_17b44380",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T07:31:59Z",
+      "side": 1,
+      "message": "Is this relevant?",
+      "range": {
+        "startLine": 269,
+        "startChar": 4,
+        "endLine": 269,
+        "endChar": 75
+      },
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
