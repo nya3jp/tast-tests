@@ -71,6 +71,7 @@ func UpdateRootfsToStateful(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
 	defer cancel()
 	defer func(ctx context.Context) {
+		update.SaveLogsFromDut(ctx, s.DUT(), s.OutDir())
 		if err := update.ClearLacrosUpdate(ctx, utsClient); err != nil {
 			s.Log("Failed to clean up provisioned Lacros: ", err)
 		}

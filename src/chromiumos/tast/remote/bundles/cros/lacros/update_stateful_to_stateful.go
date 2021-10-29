@@ -70,6 +70,7 @@ func UpdateStatefulToStateful(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
 	defer cancel()
 	defer func(ctx context.Context) {
+		update.SaveLogsFromDut(ctx, s.DUT(), s.OutDir())
 		if err := update.ClearLacrosUpdate(ctx, utsClient); err != nil {
 			s.Log("Failed to clean up provisioned Lacros: ", err)
 		}
@@ -93,6 +94,7 @@ func UpdateStatefulToStateful(ctx context.Context, s *testing.State) {
 
 		// Verify that the expected Stateful Lacros version/component is selected.
 		if err := update.VerifyLacrosUpdate(ctx, overrideVersion.GetString(), overrideComponent, utsClient); err != nil {
+			update.SaveLogsFromDut(ctx, s.DUT(), s.OutDir())
 			s.Fatal("Failed to verify provisioned Lacros version: ", err)
 		}
 	}
