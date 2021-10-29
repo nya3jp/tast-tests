@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5425edf_5f2def7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-29T02:12:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "efe7a44c_0306f112",
+      "revId": "3e2973f5011faf4240df51767b45cfcbbbc7b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "877094a1_4398c731",
