@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a469885c_b9b6c6b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-10-29T10:57:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3f434da2_1d464024",
+      "revId": "c9656428a9706efdf4ff50509c67ca5562cc1c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2454e98e_03819f57",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde05bff_7c8a36c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-10-29T10:57:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2454e98e_03819f57",
+      "revId": "c9656428a9706efdf4ff50509c67ca5562cc1c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95279908_7149d6f0",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-10-29T07:23:02Z",
       "side": 1,
       "message": "Are you using this?",
+      "revId": "c9656428a9706efdf4ff50509c67ca5562cc1c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2673a35_437fa49c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-10-29T10:57:34Z",
+      "side": 1,
+      "message": "Not anymore. Removed",
+      "parentUuid": "95279908_7149d6f0",
       "revId": "c9656428a9706efdf4ff50509c67ca5562cc1c42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f2a20a9_b519e1d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-10-29T10:57:34Z",
+      "side": 1,
+      "message": "What advantage does using DeferredLogin give us? Or do you think that it should be possible to somehow have policies applied before login at some point in the future?",
+      "parentUuid": "19e3913b_6d575e89",
+      "revId": "c9656428a9706efdf4ff50509c67ca5562cc1c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "831c790b_3a11065a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
         "patchSetId": 3
@@ -82,6 +154,24 @@
       "writtenOn": "2021-10-29T07:23:02Z",
       "side": 1,
       "message": "nit: no need for this if, just add the expectPermanentMount to the message.",
+      "revId": "c9656428a9706efdf4ff50509c67ca5562cc1c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92cd4e0f_66aead3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-10-29T10:57:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "831c790b_3a11065a",
       "revId": "c9656428a9706efdf4ff50509c67ca5562cc1c42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee332517_611718b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-10-29T10:57:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c718277_d6757cab",
+      "revId": "c9656428a9706efdf4ff50509c67ca5562cc1c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42661031_72ef1f9f",
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc175baf_ee55d4dd",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/user.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-10-29T10:57:34Z",
+      "side": 1,
+      "message": "Thanks. I have refactored my test because changes to the DeviceEphemeralUsersEnabled policy need to be reverted in order not to affect logins in subsequent tests. Now, this check always runs and is used to implicitly check the user mount type while resetting the policy value. If you think it\u0027s useful, I can also add an explicit check in the test by calling the WaitForUserMountAndValidateType method there too.",
+      "parentUuid": "42661031_72ef1f9f",
+      "revId": "c9656428a9706efdf4ff50509c67ca5562cc1c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35e2dbe1_fd64e814",
@@ -133,6 +259,30 @@
       "writtenOn": "2021-10-29T07:23:02Z",
       "side": 1,
       "message": "nit: use an enum here\n\nconst (\n    Ephemeral \u003d iota\n    Persistent\n)",
+      "range": {
+        "startLine": 229,
+        "startChar": 71,
+        "endLine": 229,
+        "endChar": 87
+      },
+      "revId": "c9656428a9706efdf4ff50509c67ca5562cc1c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8950c470_831f2f0d",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-10-29T10:57:34Z",
+      "side": 1,
+      "message": "Done, also added type definition to avoid \"mountType int\" here, which IMHO is more confusing. Unfortunately,this doesn\u0027t actually makes call sites much easier to read and does make them longer due to the need to add logic selecting correct enum value. I would prefer to go back to the bool type if you agree that earlier version was better.",
+      "parentUuid": "35e2dbe1_fd64e814",
       "range": {
         "startLine": 229,
         "startChar": 71,
