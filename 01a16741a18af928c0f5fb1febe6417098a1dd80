@@ -202,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da53ec6d_e972dece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T07:34:33Z",
+      "side": 1,
+      "message": "That error is related to policy, the pwa part should still work.",
+      "parentUuid": "e5337a2c_f9fb2335",
+      "range": {
+        "startLine": 70,
+        "startChar": 54,
+        "endLine": 70,
+        "endChar": 78
+      },
+      "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08e81105_415f9127",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
         "patchSetId": 4
