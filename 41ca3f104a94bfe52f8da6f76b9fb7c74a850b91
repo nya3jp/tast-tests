@@ -33,6 +33,24 @@
       "message": "LGTM % maybe file a cleanup task/bug for removing the deprecated function",
       "revId": "41ca3f104a94bfe52f8da6f76b9fb7c74a850b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8738f722_7edf835a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-10-29T11:04:38Z",
+      "side": 1,
+      "message": "Good point. Will do.",
+      "parentUuid": "37895397_357f5ba6",
+      "revId": "41ca3f104a94bfe52f8da6f76b9fb7c74a850b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
