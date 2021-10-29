@@ -28,7 +28,7 @@ import (
 // NewCrossDeviceOnboarded creates a fixture that logs in to CrOS, pairs it with an Android device,
 // and ensures the features in the "Connected devices" section of OS Settings are ready to use (Smart Lock, Phone Hub, etc.).
 // Note that crossdevice fixtures inherit from crossdeviceAndroidSetup.
-func NewCrossDeviceOnboarded() testing.FixtureImpl {
+func NewCrossDeviceOnboarded(allFeatures bool) testing.FixtureImpl {
 	tags := []string{
 		"*nearby*=3",
 		"*cryptauth*=3",
@@ -43,7 +43,8 @@ func NewCrossDeviceOnboarded() testing.FixtureImpl {
 		chrome.ExtraArgs("--enable-logging", "--vmodule="+strings.Join(tags, ",")),
 	}
 	return &crossdeviceFixture{
-		opts: defaultOpts,
+		opts:        defaultOpts,
+		allFeatures: allFeatures,
 	}
 }
 
@@ -57,17 +58,15 @@ const (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name: "crossdeviceOnboarded",
-		Desc: "User is signed in (with GAIA) to CrOS and paired with an Android phone",
+		Name: "crossdeviceOnboardedAllFeatures",
+		Desc: "User is signed in (with GAIA) to CrOS and paired with an Android phone with all Cross Device features enabled",
 		Contacts: []string{
 			"kyleshima@chromium.org",
 			"chromeos-sw-engprod@google.com",
 		},
-		Parent: "crossdeviceAndroidSetup",
-		Impl:   NewCrossDeviceOnboarded(),
+		Parent: "crossdeviceAndroidSetupPhoneHub",
+		Impl:   NewCrossDeviceOnboarded(true),
 		Vars: []string{
-			defaultCrossDeviceUsername,
-			defaultCrossDevicePassword,
 			customCrOSUsername,
 			customCrOSPassword,
 			KeepStateVar,
@@ -78,6 +77,27 @@ func init() {
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "crossdeviceOnboarded",
+		Desc: "User is signed in (with GAIA) to CrOS and paired with an Android phone with default Cross Device features enabled",
+		Contacts: []string{
+			"kyleshima@chromium.org",
+			"chromeos-sw-engprod@google.com",
+		},
+		Parent: "crossdeviceAndroidSetupSmartLock",
+		Impl:   NewCrossDeviceOnboarded(false),
+		Vars: []string{
+			customCrOSUsername,
+			customCrOSPassword,
+			KeepStateVar,
+		},
+		SetUpTimeout:    3 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
 }
 
 type crossdeviceFixture struct {
@@ -87,6 +107,7 @@ type crossdeviceFixture struct {
 	crosAttributes    *CrosAttributes
 	btsnoopCmd        *testexec.Cmd
 	logMarker         *logsaver.Marker // Marker for per-test log.
+	allFeatures       bool
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -97,13 +118,24 @@ type FixtData struct {
 	// TestConn is a connection to the test extension.
 	TestConn *chrome.TestConn
 
+	// Connection to the lock screen test extension.
+	LoginConn *chrome.TestConn
+
 	// AndroidDevice is an object for interacting with the connected Android device's Multidevice Snippet.
 	AndroidDevice *AndroidDevice
+
+	// The credentials to be used on both chromebook and phone.
+	Username string
+	Password string
 }
 
 func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	// Android device from parent fixture.
 	androidDevice := s.ParentValue().(*FixtData).AndroidDevice
+
+	// Credentials to use (same as Android).
+	crosUsername := s.ParentValue().(*FixtData).Username
+	crosPassword := s.ParentValue().(*FixtData).Password
 
 	// Allocate time for logging and saving a screenshot in case of failure.
 	cleanupCtx := ctx
@@ -116,8 +148,6 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	}
 	defer androidDevice.DumpLogs(cleanupCtx, s.OutDir(), "fixture_setup_logcat.txt")
 
-	crosUsername := s.RequiredVar(defaultCrossDeviceUsername)
-	crosPassword := s.RequiredVar(defaultCrossDevicePassword)
 	customUser, userOk := s.Var(customCrOSUsername)
 	customPass, passOk := s.Var(customCrOSPassword)
 	if userOk && passOk {
@@ -128,7 +158,6 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		s.Log("Logging in with default GAIA credentials")
 	}
 	f.opts = append(f.opts, chrome.GAIALogin(chrome.Creds{User: crosUsername, Pass: crosPassword}))
-
 	if val, ok := s.Var(KeepStateVar); ok {
 		b, err := strconv.ParseBool(val)
 		if err != nil {
@@ -176,18 +205,23 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 			s.Fatal("Failed to connect the Android device to CrOS: ", err)
 		}
 	}
+	if f.allFeatures {
+		// Wait for the "Smart Lock is turned on" notification to appear,
+		// since it will cause Phone Hub to close if it's open before the notification pops up.
+		if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitTitleContains("Smart Lock is turned on")); err != nil {
+			s.Log("Smart Lock notification did not appear after 30 seconds, proceeding anyways")
+		}
 
-	// Wait for the "Smart Lock is turned on" notification to appear,
-	// since it will cause Phone Hub to close if it's open before the notification pops up.
-	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitTitleContains("Smart Lock is turned on")); err != nil {
-		s.Log("Smart Lock notification did not appear after 30 seconds, proceeding anyways")
+		if err := phonehub.Enable(ctx, tconn, cr); err != nil {
+			s.Fatal("Failed to enable Phone Hub: ", err)
+		}
+		if err := phonehub.Hide(ctx, tconn); err != nil {
+			s.Fatal("Failed to hide Phone Hub after enabling it: ", err)
+		}
 	}
 
-	if err := phonehub.Enable(ctx, tconn, cr); err != nil {
-		s.Fatal("Failed to enable Phone Hub: ", err)
-	}
-	if err := phonehub.Hide(ctx, tconn); err != nil {
-		s.Fatal("Failed to hide Phone Hub after enabling it: ", err)
+	if _, err := ash.WaitForNotification(ctx, tconn, 90*time.Second, ash.WaitTitleContains("Connected to")); err != nil {
+		s.Fatal("Did not receive notification that Chromebook and Phone are paired")
 	}
 
 	// Store Android attributes for reporting.
@@ -208,6 +242,7 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		Chrome:        cr,
 		TestConn:      tconn,
 		AndroidDevice: androidDevice,
+		Password:      crosPassword,
 	}
 }
 

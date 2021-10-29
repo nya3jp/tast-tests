@@ -151,6 +151,20 @@ func EnableVerboseLogging(ctx context.Context, d *adb.Device, rooted bool, tags 
 // ConfigureDevice performs basic device preparation. This includes clearing logcat and waking the screen,
 // and if the device is rooted, enabling bluetooth and extending the screen-off timeout.
 func ConfigureDevice(ctx context.Context, d *adb.Device, rooted bool) error {
+	// If the PIN was left on from a previous test we need to remove it. However depending on what state the Phone is in when you remove the PIN, you might still be shown the lock screen PIN UI and the test will be blocked. To guarantee to PIN is removed and reflected in the UI, we need to turn the screen on, disable the PIN, and then turn off the screen so the next time it is turned on it will be disabled.
+	if err := d.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_WAKEUP))); err != nil {
+		return errors.Wrap(err, "failed to wake screen")
+	}
+	// Remove any PIN on the phone that may be left from other tests.
+	if err := d.ClearPIN(ctx); err != nil {
+		return errors.Wrap(err, "failed to clear PIN")
+	}
+	if err := d.WaitForPINDisabled(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for PIN to be cleared")
+	}
+	if err := d.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_POWER))); err != nil {
+		return errors.Wrap(err, "failed to wake screen")
+	}
 	// Clear logcat so that logs start from this point on.
 	if err := d.ClearLogcat(ctx); err != nil {
 		return errors.Wrap(err, "failed to clear previous logcat logs")
