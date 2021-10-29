@@ -159,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b9068fb_d01d1e88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-10-29T12:41:10Z",
+      "side": 1,
+      "message": "As discussed in chat, refactored test once more to make use of sign-in test extension and apply policies before login.",
+      "parentUuid": "e1fa0c75_6c185058",
+      "revId": "c9656428a9706efdf4ff50509c67ca5562cc1c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "831c790b_3a11065a",
