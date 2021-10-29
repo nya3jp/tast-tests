@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f92e29d_692dc4a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-10-29T02:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfdae836_3183f109",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "c65d42a275fee752e1982060ec6aa1869dc10486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e469862_5305f4e7",
