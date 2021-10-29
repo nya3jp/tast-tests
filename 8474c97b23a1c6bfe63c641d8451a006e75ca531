@@ -343,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aeb15abf_634ab512",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-10-29T07:52:39Z",
+      "side": 1,
+      "message": "Hi Patrick,\nCould you help determine if Fixture or other methods are better to include the external files (without exposing the internal implementation?)?\nUUIC, fixture should be implemented with too many functions that are not needed here.\nThanks!",
+      "parentUuid": "ff9c66b6_cbbd6209",
+      "range": {
+        "startLine": 29,
+        "startChar": 57,
+        "endLine": 29,
+        "endChar": 91
+      },
+      "revId": "8474c97b23a1c6bfe63c641d8451a006e75ca531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4473e84c_b57e561b",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_tbm_traced_probes.go",
         "patchSetId": 5
