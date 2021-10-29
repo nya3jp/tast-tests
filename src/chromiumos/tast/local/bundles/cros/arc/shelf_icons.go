@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/colorcmp"
@@ -75,6 +76,21 @@ func ShelfIcons(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	// Make sure we are not in tablet mode:
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	// Be nice and restore tablet mode to its original state on exit.
+	defer ash.SetTabletModeEnabled(ctx, tconn, tabletModeEnabled)
+
+	if tabletModeEnabled {
+		s.Log("Disabling tablet mode")
+		if err := ash.SetTabletModeEnabled(ctx, tconn, false); err != nil {
+			s.Fatal("Failed to set tablet mode enabled to false: ", err)
+		}
 	}
 
 	s.Log("Installing app")
