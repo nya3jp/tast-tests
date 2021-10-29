@@ -49,6 +49,13 @@ func WebAppInstallForceList(ctx context.Context, s *testing.State) {
 				{
 					Url:                    server.URL + "/web_app_install_force_list_index.html",
 					DefaultLaunchContainer: "window",
+					CreateDesktopShortcut:  false,
+					CustomName:             "",
+					FallbackAppName:        "",
+					CustomIcon: &policy.WebAppInstallForceListValueCustomIcon{
+						Hash: "",
+						Url:  "",
+					},
 				},
 			},
 		},
