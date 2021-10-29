@@ -4,9 +4,17 @@
 
 package lacros
 
-// Constants used by Lacros update remote test or test service.
+// Constants used by both local/remote tests/services for Lacros.
+
+// For common directories or paths
 const (
-	LacrosRootComponentPath  = "/home/chronos/cros-components/"
+	// LacrosUserDataDir is the directory that contains the user data of Lacros.
+	LacrosUserDataDir       = "/home/chronos/user/lacros/"
+	LacrosRootComponentPath = "/home/chronos/cros-components/"
+)
+
+// For Lacros update tests and services
+const (
 	CorruptStatefulFilePath  = "/mnt/stateful_partition/.corrupt_stateful"
 	RootfsLacrosImageFileURL = "file:///opt/google/lacros"
 	BogusComponentUpdaterURL = "http://localhost:12345"
