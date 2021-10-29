@@ -16,6 +16,46 @@
       "message": "Sorry all, I realized I forgot to save a file with COIL modifications, and added it into the new patch. I\u0027ll need a new set of +2s.",
       "revId": "102e806b6303100ab83f3aacc7debc32fa698042",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b39d01f6_7642bf54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-29T17:40:43Z",
+      "side": 1,
+      "message": "slgtm",
+      "revId": "102e806b6303100ab83f3aacc7debc32fa698042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8ed6d1f_7f7a37bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-29T17:40:43Z",
+      "side": 1,
+      "message": "nit \"internal\" for consistency.",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 8
+      },
+      "revId": "102e806b6303100ab83f3aacc7debc32fa698042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
