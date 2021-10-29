@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "8b78574a73fe2ffcc898deb366b8229c1e7dec05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4d792b7_c801a431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-29T17:39:20Z",
+      "side": 1,
+      "message": "optional: I think we\u0027d like take the faillog inside LaunchLacrosChrome, too.\n(specifically on failing wait for the window, before terminating the process).\nCan be done separately.",
+      "revId": "8b78574a73fe2ffcc898deb366b8229c1e7dec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bdc43cb_f3073ceb",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/faillog/faillog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-29T17:39:20Z",
+      "side": 1,
+      "message": "to minimize the interface, could you take the lacrosPath directly here, instead?",
+      "range": {
+        "startLine": 34,
+        "startChar": 31,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "8b78574a73fe2ffcc898deb366b8229c1e7dec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
