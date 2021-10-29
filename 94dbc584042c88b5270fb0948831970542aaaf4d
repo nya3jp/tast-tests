@@ -16,6 +16,125 @@
       "message": "Hello Sammie,\n\nThank you for helping explaining and getting back to me very quickly. I addressed your comment :D\n\nBest regards,\nCattalyya",
       "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d5d6561_ddbf5933",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-29T01:16:42Z",
+      "side": 1,
+      "message": "lgtm % tast owners review\n\nnice test!",
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50463874_a520bf50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-29T01:16:42Z",
+      "side": 1,
+      "message": "nit: move closer to usage",
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddbd70f6_7ff9aa08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-29T01:16:42Z",
+      "side": 1,
+      "message": "just incase, can we return the error and print a \"Failed to activate line\"",
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b32392e_f89cab9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-29T01:16:42Z",
+      "side": 1,
+      "message": "optional: I\u0027d put // Snapping in clamshell. here, since `portrait` was so far up, just in case you tweak this later :P",
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16c9ec5f_b3b022ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-29T01:16:42Z",
+      "side": 1,
+      "message": "maybe a question for the tast owner, do we need to defer here like we did earlier in the test",
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60f0f75d_09737b9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-29T01:16:42Z",
+      "side": 1,
+      "message": "document this function",
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77e7fd24_a5f9ddc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-10-29T01:16:42Z",
+      "side": 1,
+      "message": "document this function",
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
