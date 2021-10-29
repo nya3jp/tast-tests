@@ -4,7 +4,7 @@
  * found in the LICENSE file.
  */
 
-package org.chromium.arc.testapp.arcstandardizedtouchscreentest;
+package org.chromium.arc.testapp.arcstandardizedinputtest;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class TapTestActivity extends Activity {
 
     private LinearLayout mLayout;
 
@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_tap_test);
 
         mLayout = findViewById(R.id.layoutStandardizedTest);
 
