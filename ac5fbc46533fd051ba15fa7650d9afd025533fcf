@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "935cb337_3d3656e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-10-29T10:00:04Z",
+      "side": 1,
+      "message": "This is just an example. This CL will be abandoned.\nTest fails for me with the assertion check but Kiosk is turned on and it looks different - the browser window has a top bar.\nAlso, the kioskmode library when using AutoLaunch option it makes sure Kiosk has started - it does that by inspecting logs. And that step has passed.",
+      "revId": "ac5fbc46533fd051ba15fa7650d9afd025533fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
