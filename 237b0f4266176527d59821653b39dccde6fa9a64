@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b38de04d_83028497",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-29T16:59:36Z",
+      "side": 1,
+      "message": "I wish I could get away with that, however the submission still seems to require additional code owner\u0027s +2 too. 😊",
+      "parentUuid": "1b4404ab_f2de0221",
+      "revId": "237b0f4266176527d59821653b39dccde6fa9a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f49c41bc_94515d9f",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-29T05:24:07Z",
       "side": 1,
       "message": "Maybe lacrosPrimaryOnRootfs? I guess we will have lacrosPrimaryOnStateful?",
+      "range": {
+        "startLine": 170,
+        "startChar": 13,
+        "endLine": 170,
+        "endChar": 26
+      },
+      "revId": "237b0f4266176527d59821653b39dccde6fa9a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad04ca4_6ecef60d",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-29T16:59:36Z",
+      "side": 1,
+      "message": "Thanks Judy for the comment. \nThe intention is not to specify the source of lacros in fixture.\n\nAFAICT we\u0027re moving away from specifying rootfs or stateful in fixture and rather hiding it from fixture users as we believe in most cases users don\u0027t really care about the source of lacros unless sourcing itself is a test target.\n\n`lacrosPrimary` here could be removed once lacros primary has rolled out to all users starting M97. and `lacrosRootfs` above could now be deleted as `lacrosUI` does the same since all Tast tests are switched to using rootfs now.\n\nFYI see https://crrev.com/c/3222295. The decision was made to either (1) use rootfs by default (primarily for the OS team) or (2) override with external artifact if the runtime var lacrosDeployedBinary is passed (primarily for the Browser team) or (3) use omaha for stateful, which is rare just for omaha update tests.",
+      "parentUuid": "f49c41bc_94515d9f",
       "range": {
         "startLine": 170,
         "startChar": 13,
