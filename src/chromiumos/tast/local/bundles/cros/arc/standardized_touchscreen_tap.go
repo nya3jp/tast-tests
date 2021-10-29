@@ -52,9 +52,9 @@ func init() {
 // StandardizedTouchscreenTap runs all the provided test cases.
 func StandardizedTouchscreenTap(ctx context.Context, s *testing.State) {
 	const (
-		apkName      = "ArcStandardizedTouchscreenTest.apk"
-		appName      = "org.chromium.arc.testapp.arcstandardizedtouchscreentest"
-		activityName = ".MainActivity"
+		apkName      = "ArcStandardizedInputTest.apk"
+		appName      = "org.chromium.arc.testapp.arcstandardizedinputtest"
+		activityName = ".TapTestActivity"
 	)
 
 	testCases := s.Param().([]standardizedtestutil.TestCase)

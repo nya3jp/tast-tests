@@ -41,8 +41,8 @@ func init() {
 
 func StandardizedMouseHover(ctx context.Context, s *testing.State) {
 	const (
-		apkName      = "ArcStandardizedMouseTest.apk"
-		appName      = "org.chromium.arc.testapp.arcstandardizedmousetest"
+		apkName      = "ArcStandardizedInputTest.apk"
+		appName      = "org.chromium.arc.testapp.arcstandardizedinputtest"
 		activityName = ".HoverTestActivity"
 	)
 
