@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd61ce11_790df01c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2021-10-29T21:34:08Z",
+      "side": 1,
+      "message": "I copied this from another test. You\u0027re probably right. Moved out of Params field.",
+      "parentUuid": "5794a529_1b5e8c72",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 5
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ef23b3d_177d4cbe",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-26T06:53:07Z",
       "side": 1,
       "message": "nit: use HEAD or main",
+      "range": {
+        "startLine": 51,
+        "startChar": 58,
+        "endLine": 51,
+        "endChar": 64
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47f9a570_073cf56e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2021-10-29T21:34:08Z",
+      "side": 1,
+      "message": "There is no HEAD or main branch. I tried inserting them in for master and the url is bad.",
+      "parentUuid": "9ef23b3d_177d4cbe",
       "range": {
         "startLine": 51,
         "startChar": 58,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7d6042b_7cf337d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2021-10-29T21:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e931147b_c4720594",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 19
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "471d50fb_bf1c76a4",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-26T06:53:07Z",
       "side": 1,
       "message": "nit: full stop to end your comments (ditto elsewhere).",
+      "range": {
+        "startLine": 131,
+        "startChar": 80,
+        "endLine": 131,
+        "endChar": 81
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4960afb_b7d9243a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2021-10-29T21:34:08Z",
+      "side": 1,
+      "message": "Not sure what full stop is, but I put a period at the end if that\u0027s what you mean :D",
+      "parentUuid": "471d50fb_bf1c76a4",
       "range": {
         "startLine": 131,
         "startChar": 80,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a018c068_b8c5d9f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2021-10-29T21:34:08Z",
+      "side": 1,
+      "message": "I took the subtest approach. Spinning off a new subtest for each entry of the table.",
+      "parentUuid": "84c6ff48_24a19d8f",
+      "range": {
+        "startLine": 156,
+        "startChar": 3,
+        "endLine": 156,
+        "endChar": 10
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "043b8e6f_96669deb",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e69b6598_0ba43de0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2021-10-29T21:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "043b8e6f_96669deb",
+      "range": {
+        "startLine": 163,
+        "startChar": 31,
+        "endLine": 163,
+        "endChar": 33
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b720c05_78ebc685",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-10-26T06:53:07Z",
       "side": 1,
       "message": "nit: Failed to... consistent error messages",
+      "range": {
+        "startLine": 186,
+        "startChar": 12,
+        "endLine": 186,
+        "endChar": 21
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0955fdd3_212d22a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2021-10-29T21:34:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b720c05_78ebc685",
       "range": {
         "startLine": 186,
         "startChar": 12,
