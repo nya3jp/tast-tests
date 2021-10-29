@@ -259,6 +259,7 @@ func LaunchLacrosChromeWithURL(ctx context.Context, f FixtValue, url string) (*L
 	// Move cmd ownership to l, thus after this line terminating cmd wond't run.
 	l.cmd = cmd
 	cmd = nil
+
 	return l, nil
 }
 

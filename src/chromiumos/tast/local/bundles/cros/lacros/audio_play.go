@@ -43,10 +43,8 @@ func AudioPlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}
 	defer func() {
+		faillog.SaveIf(ctx, s.FixtValue().(launcher.FixtValue), s.HasError)
 		l.Close(ctx)
-		if err := faillog.Save(ctx, s.HasError, l, s.OutDir()); err != nil {
-			s.Log("Failed to save lacros logs: ", err)
-		}
 	}()
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
