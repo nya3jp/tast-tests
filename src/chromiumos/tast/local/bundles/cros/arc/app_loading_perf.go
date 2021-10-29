@@ -45,6 +45,9 @@ var (
 
 	// arcAppLoadingODirectVMBooted enables O_DIRECT for crosvm.
 	arcAppLoadingODirectVMBooted = arc.NewPrecondition("arcapploading_odirect_vmbooted", arcAppLoadingGaia, true /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+
+	// arcAppLoadingDalvikMemoryProfileVMBooted enables ArcUseDalvikMemoryProfile chrome feature.
+	arcAppLoadingDalvikMemoryProfileVMBooted = arc.NewPrecondition("arcapploading_dalvik_memory_profile_vmbooted", arcAppLoadingGaia, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcUseDalvikMemoryProfile")...)
 )
 
 func init() {
@@ -91,6 +94,14 @@ func init() {
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingODirectVMBooted,
+		}, {
+			Name:              "dalvik_memory_profile_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			Val: testParameters{
+				binaryTranslation: false,
+			},
+			Pre: arcAppLoadingDalvikMemoryProfileVMBooted,
 		}, {
 			Name:              "binarytranslation",
 			ExtraSoftwareDeps: []string{"android_p"},
