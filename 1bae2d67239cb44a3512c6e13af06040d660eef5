@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86caa0ba_61be8877",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-10-29T22:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91e9c3d5_8b7dbd06",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 8
+      },
+      "revId": "1bae2d67239cb44a3512c6e13af06040d660eef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6804050c_95a771a6",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-28T15:10:30Z",
       "side": 1,
       "message": "could you add reference of this IP/port in the comment?",
+      "range": {
+        "startLine": 51,
+        "startChar": 57,
+        "endLine": 51,
+        "endChar": 75
+      },
+      "revId": "1bae2d67239cb44a3512c6e13af06040d660eef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee4a80a_3cda9fd5",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-10-29T22:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6804050c_95a771a6",
       "range": {
         "startLine": 51,
         "startChar": 57,
