@@ -25,7 +25,7 @@ func init() {
 		},
 		Attr:         []string{"group:cross-device"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "crossdeviceOnboarded",
+		Fixture:      "crossdeviceOnboardedAllFeatures",
 	})
 }
 

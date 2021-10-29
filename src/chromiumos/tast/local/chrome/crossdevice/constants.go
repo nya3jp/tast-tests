@@ -19,3 +19,17 @@ const AccountUtilApk = "GoogleAccountUtil.apk"
 
 // KeepStateVar is the runtime variable name used to specify the chrome.KeepState parameter to preserve the DUT's user accounts.
 const KeepStateVar = "keepState"
+
+// Feature defines the Cross Device feature we are testing.
+type Feature int
+
+const (
+	// SmartLock defines Smart Lock
+	SmartLock Feature = iota
+	// PhoneHub defines Phone Hub
+	PhoneHub
+	// NearbyShare defines Nearby Share
+	NearbyShare
+	// Exo defines Exo
+	Exo
+)
