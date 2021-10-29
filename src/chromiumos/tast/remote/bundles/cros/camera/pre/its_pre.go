@@ -5,14 +5,11 @@
 package pre
 
 import (
-	"archive/zip"
 	"context"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"os"
 	"path"
-	"path/filepath"
 	"strings"
 	"time"
 
@@ -27,50 +24,54 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// CTSVerifier contains scripts and test scenes for running Android ITS test
-type CTSVerifier struct {
-	abi string
-	// Zip is the name of different ITS zip downloaded from https://source.android.com/compatibility/cts/downloads.
-	Zip string
-	// Py3Patches are patches applied on ITS scripts for python3 migration.
-	Py3Patches []string
-}
-
 // To uprev |ctsVerifierX86Zip| and |ctsVerifierArmZip|, download the new zip
-// from https://source.android.com/compatibility/cts/downloads. Check all py2
-// to py3 patches here can be applied to test scripts in new zip and can pass
-// "camera.ITS.*" tests. In case of patches applied failure, the patches
-// require manually update by fixing all patching errors and python2 runtime
-// error in test result of "camera.ITS.*". The patch update also require
-// reviewed by ITS test owner yinchiayeh@google.com.
+// from https://source.android.com/compatibility/cts/downloads, replace old zip
+// under data folder and check the test can still pass.
 const (
 	ctsVerifierRoot = "android-cts-verifier"
 
-	// ctsVerifierX86Zip is zip name of test running on x86 compatible platform.
-	ctsVerifierX86Zip = "its/x86/android-cts-verifier-9.0_r15-linux_x86-x86.zip"
-	// ITSX86CorePy3Patch is the data path of py2 to py3 patch for shared
-	// scripts between all scenes for x86 platform.
-	ITSX86CorePy3Patch = "its/x86/patch/core.patch"
-	// ITSX86Scene0Py3Patch is the data path of py2 to py3 patch for scene
-	// 0 test scripts on x86 platform.
-	ITSX86Scene0Py3Patch = "its/x86/patch/scene0.patch"
+	// CtsVerifierX86Zip is data path to ITS bundle testing x86 compatible platform.
+	CtsVerifierX86Zip = "its/android-cts-verifier-9.0_r15-linux_x86-x86.zip"
 
-	// ctsVerifierArmZip is zip name of test running on ARM compatible platform.
-	ctsVerifierArmZip = "its/x86/android-cts-verifier-9.0_r15-linux_x86-x86.zip"
+	// CtsVerifierArmZip is data path to ITS bundle testing arm compatible platform.
+	CtsVerifierArmZip = "its/x86/android-cts-verifier-9.0_r15-linux_x86-x86.zip"
+
+	// ITSX86CorePy3Patch is the data path of py2 to py3 patch for scripts
+	// shared between all scenes for x86 platform. Update the script
+	// content with the steps:
+	// $ python3 unpack_bundle.py android-cts-verifier-XXX.zip
+	// $ cd android-cts-verifier/CameraITS
+	// # Do modification to *.py
+	// $ git diff base > <Path to this patch>
+	ITSPy3Patch = "its/its.patch"
+
+	// UnpackITSBundleScript is the data path of script unpacking ITS
+	// bundle and apply python3 patches.
+	UnpackITSBundleScript = "its/unpack_bundle.py"
 )
 
-var (
-	// CTSVerifierX86 is for test running on x86 compatible platform.
-	CTSVerifierX86 = CTSVerifier{"x86", ctsVerifierX86Zip, []string{ITSX86CorePy3Patch, ITSX86Scene0Py3Patch}}
-	// CTSVerifierArm is for test running on ARM compatible platform.
-	CTSVerifierArm = CTSVerifier{"arm", ctsVerifierArmZip, []string{}}
+type bundleAbi string
+
+const (
+	x86 bundleAbi = "x86"
+	arm           = "arm"
 )
+
+func (abi bundleAbi) bundlePath() (string, error) {
+	switch abi {
+	case x86:
+		return CtsVerifierX86Zip, nil
+	case arm:
+		return CtsVerifierArmZip, nil
+	}
+	return "", errors.Errorf("cannot get bundle path unknown abi %v", abi)
+}
 
 // itsPreImpl implements testing.Precondition.
 type itsPreImpl struct {
-	verifier   CTSVerifier
 	cl         *rpc.Client
 	itsCl      pb.ITSServiceClient
+	abi        bundleAbi
 	dir        string
 	oldEnvPath string
 	hostname   string
@@ -84,12 +85,12 @@ type ITSHelper struct {
 }
 
 // ITSX86Pre is the test precondition to run Android x86 ITS test.
-var ITSX86Pre = &itsPreImpl{verifier: CTSVerifierX86}
+var ITSX86Pre = &itsPreImpl{abi: x86}
 
 // ITSArmPre is the test precondition to run Android x86-arm ITS test.
-var ITSArmPre = &itsPreImpl{verifier: CTSVerifierArm}
+var ITSArmPre = &itsPreImpl{abi: arm}
 
-func (p *itsPreImpl) String() string         { return fmt.Sprintf("its_%s_precondition", p.verifier.abi) }
+func (p *itsPreImpl) String() string         { return fmt.Sprintf("its_%s_precondition", p.abi) }
 func (p *itsPreImpl) Timeout() time.Duration { return 5 * time.Minute }
 
 func copyFile(src, dst string, perm os.FileMode) error {
@@ -98,39 +99,6 @@ func copyFile(src, dst string, perm os.FileMode) error {
 		return err
 	}
 	return ioutil.WriteFile(dst, content, perm)
-}
-
-func itsUnzip(ctx context.Context, zipPath, outDir string) error {
-	r, err := zip.OpenReader(zipPath)
-	if err != nil {
-		return errors.Wrap(err, "failed to open ITS zip file")
-	}
-	defer r.Close()
-
-	for _, f := range r.File {
-		if f.FileInfo().IsDir() {
-			continue
-		}
-		src, err := f.Open()
-		if err != nil {
-			return errors.Wrapf(err, "failed to open file %v in ITS zip", f.Name)
-		}
-		defer src.Close()
-		dstPath := path.Join(outDir, f.Name)
-		if err := os.MkdirAll(filepath.Dir(dstPath), 0755); err != nil {
-			return errors.Wrapf(err, "failed to create directory for unzipped ITS file %v", f.Name)
-		}
-		dst, err := os.Create(dstPath)
-		if err != nil {
-			return errors.Wrapf(err, "failed to create file for copying ITS file %v", f.Name)
-		}
-		defer dst.Close()
-
-		if _, err := io.Copy(dst, src); err != nil {
-			return errors.Wrapf(err, "failed to copy ITS file %v", f.Name)
-		}
-	}
-	return nil
 }
 
 func (p *itsPreImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
@@ -182,25 +150,22 @@ func (p *itsPreImpl) Prepare(ctx context.Context, s *testing.PreState) interface
 	}
 	p.adbDevice = adbDevice
 
-	// Unpack CTSVerifier.
-	if err := itsUnzip(ctx, s.DataPath(p.verifier.Zip), p.dir); err != nil {
-		s.Fatal("Failed to unzip: ", err)
+	// Unpack ITS bundle.
+	bundlePath, err := p.abi.bundlePath()
+	if err != nil {
+		s.Fatal("Failed to get bundle path: ", err)
 	}
-	unzipDir := path.Join(p.dir, ctsVerifierRoot)
+	if err := testexec.CommandContext(
+		ctx, "python3", s.DataPath(UnpackITSBundleScript), s.DataPath(bundlePath),
+		"--patch_path", s.DataPath(ITSPy3Patch), "--output", tempDir).Run(); err != nil {
+		s.Fatal("Failed to unpack bundle path: ", err)
+	}
 
 	// Install CTSVerifier apk.
-	verifierAPK := path.Join(unzipDir, "CtsVerifier.apk")
+	ctsVerifierRootPath := path.Join(p.dir, ctsVerifierRoot)
+	verifierAPK := path.Join(ctsVerifierRootPath, "CtsVerifier.apk")
 	if err := p.adbDevice.Command(ctx, "install", "-r", "-g", verifierAPK).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("Failed to install CTSVerifier: ", err)
-	}
-
-	// Apply py2 to py3 patches.
-	for _, patch := range p.verifier.Py3Patches {
-		if err := testexec.CommandContext(
-			ctx, "patch", "-d", unzipDir, "-p1", "-i",
-			s.DataPath(patch)).Run(testexec.DumpLogOnError); err != nil {
-			s.Fatal("Failed to patch test scripts: ", err)
-		}
 	}
 
 	p.prepared = true

@@ -57,7 +57,7 @@ func init() {
 		Desc:         "Verifies camera HAL3 interface function on remote DUT",
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:camerabox"},
-		Data:         []string{"adb"},
+		Data:         []string{"adb", pre.UnpackITSBundleScript, pre.ITSPy3Patch},
 		Vars:         []string{"chart"},
 		SoftwareDeps: []string{"chrome", "android_p", "arc_camera3", caps.BuiltinCamera},
 		ServiceDeps:  []string{"tast.cros.camerabox.ITSService"},
@@ -67,7 +67,7 @@ func init() {
 			{
 				Name:              "scene0_back_x86",
 				ExtraAttr:         []string{"camerabox_facing_back"},
-				ExtraData:         append([]string{pre.CTSVerifierX86.Zip}, pre.CTSVerifierX86.Py3Patches...),
+				ExtraData:         append([]string{pre.CtsVerifierX86Zip}),
 				ExtraHardwareDeps: hwdep.D(hwdep.X86()),
 				Pre:               pre.ITSX86Pre,
 				Val:               itsParam{0, pb.Facing_FACING_BACK, ""},
