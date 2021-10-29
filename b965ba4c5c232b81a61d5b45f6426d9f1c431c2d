@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a6d523_0d653f15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-29T08:12:51Z",
+      "side": 1,
+      "message": "LGTM, sorry for delay on review.\n",
+      "revId": "b965ba4c5c232b81a61d5b45f6426d9f1c431c2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
