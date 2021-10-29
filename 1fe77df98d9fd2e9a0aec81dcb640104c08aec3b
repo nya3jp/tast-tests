@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a038ab92_b8e848b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-29T02:09:59Z",
+      "side": 1,
+      "message": "optional: maybe internal-display?",
+      "range": {
+        "startLine": 176,
+        "startChar": 44,
+        "endLine": 176,
+        "endChar": 52
+      },
+      "revId": "1fe77df98d9fd2e9a0aec81dcb640104c08aec3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

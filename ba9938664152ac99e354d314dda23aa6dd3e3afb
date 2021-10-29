@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb9e83f_3a7522a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-29T02:09:59Z",
+      "side": 0,
+      "message": "optional: can we have another flag as an example?",
+      "revId": "ba9938664152ac99e354d314dda23aa6dd3e3afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
