@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1fa0c75_6c185058",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T12:02:27Z",
+      "side": 1,
+      "message": "You go to the login screen, apply policies and then login. That should make ephemeral login work.\n\nIt\u0027s a performance/flakiness improvement not to need to start Chrome twice.",
+      "parentUuid": "1f2a20a9_b519e1d1",
+      "revId": "c9656428a9706efdf4ff50509c67ca5562cc1c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "831c790b_3a11065a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
         "patchSetId": 3
