@@ -51,6 +51,58 @@
       "parentUuid": "37895397_357f5ba6",
       "revId": "41ca3f104a94bfe52f8da6f76b9fb7c74a850b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a6074c_122b3589",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T12:01:19Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "41ca3f104a94bfe52f8da6f76b9fb7c74a850b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "470f957c_6821a35b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T12:01:19Z",
+      "side": 1,
+      "message": "Why not just remove it in this CL?",
+      "parentUuid": "8738f722_7edf835a",
+      "revId": "41ca3f104a94bfe52f8da6f76b9fb7c74a850b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec0cc4a7_db440f2d",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T12:01:19Z",
+      "side": 1,
+      "message": "if not needed\n\nappend of nil does nothing",
+      "revId": "41ca3f104a94bfe52f8da6f76b9fb7c74a850b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
