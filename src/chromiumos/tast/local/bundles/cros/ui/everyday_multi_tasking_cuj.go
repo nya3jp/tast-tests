@@ -43,8 +43,9 @@ func init() {
 		Data:    []string{"cca_ui.js"},
 		Params: []testing.Param{
 			{
-				Name:    "basic_ytmusic",
-				Timeout: 20 * time.Minute,
+				Name:      "basic_ytmusic",
+				Timeout:   20 * time.Minute,
+				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
 				Val: multiTaskingParam{
 					tier:     cuj.Basic,
 					appName:  et.YoutubeMusicAppName,
@@ -67,8 +68,9 @@ func init() {
 					enableBT: true,
 				},
 			}, {
-				Name:    "plus_ytmusic",
-				Timeout: 30 * time.Minute,
+				Name:      "plus_ytmusic",
+				Timeout:   30 * time.Minute,
+				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
 					appName:  et.YoutubeMusicAppName,
