@@ -13,9 +13,10 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/chromeproc"
+	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/procutil"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 )
@@ -41,7 +42,7 @@ func (p *PowerMenuService) NewChrome(ctx context.Context, req *pb.NewChromeReque
 		return nil, errors.New("Chrome already available")
 	}
 
-	oldpid, err := chromeproc.GetRootPID()
+	oldproc, err := ashproc.Root()
 	if err != nil {
 		return nil, errors.Wrap(err, "error getting Chrome root PID")
 	}
@@ -56,22 +57,14 @@ func (p *PowerMenuService) NewChrome(ctx context.Context, req *pb.NewChromeReque
 		return nil, err
 	}
 
-	// Additional check to ensure that a Chrome session has fully started.
-	comparePIDPollOptions := testing.PollOptions{Timeout: 30 * time.Second, Interval: 1 * time.Second}
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		newpid, err := chromeproc.GetRootPID()
-		if err != nil {
-			return err
-		}
-		if newpid == oldpid {
-			return errors.New("Chrome still did not restart")
-		}
-		return nil
+	// Make sure older chrome is gone.
+	if err := procutil.WaitForTerminated(ctx, oldproc, 30*time.Second); err != nil {
+		return nil, errors.Wrap(err, "chrome is not terminated")
+	}
 
-	}, &comparePIDPollOptions)
-
-	if err != nil {
-		return nil, errors.Wrap(err, "timeout waiting for Chrome to restart")
+	// Then, wait for the new chrome processes.
+	if _, err := ashproc.WaitForRoot(ctx, 30*time.Second); err != nil {
+		return nil, errors.Wrap(err, "chrome is not restarted")
 	}
 
 	return &empty.Empty{}, nil
