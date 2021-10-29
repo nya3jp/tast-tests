@@ -6,19 +6,12 @@ package crash
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
-	"math/rand"
 	"os"
-	"os/exec"
 	"path/filepath"
-	"syscall"
 	"testing"
-	"time"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	tasttesting "chromiumos/tast/testing"
 	"chromiumos/tast/testutil"
 )
 
@@ -91,51 +84,6 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		t.Fatalf("createAll: %v", err)
 	}
 
-	// Start a fake crash_sender process.
-	procName := fmt.Sprintf("test_%d", rand.Int31())
-	scriptPath := filepath.Join(tmpDir, procName)
-	if err := ioutil.WriteFile(scriptPath, []byte("#!/bin/sh -x\nsleep 30\n"), 0777); err != nil {
-		t.Fatalf("WriteFile: %v", err)
-	}
-	cmd := exec.Command(scriptPath)
-	stderrPipe, err := cmd.StderrPipe()
-	if err != nil {
-		t.Fatalf("Failed to get stderr pipe: %v", err)
-	}
-	if err := cmd.Start(); err != nil {
-		t.Fatalf("Failed to start fake crash_sender process: %v", err)
-	}
-
-	// Start a goroutine to reap the subprocess. This must be done concurrently
-	// with pkill because pkill waits for signaled processes to exit.
-	done := make(chan struct{})
-	go func() {
-		defer close(done)
-		// We don't use ioutil.ReadAll because it blocks, causing the
-		// test to *always* take 30s.  This means we won't necessarily
-		// get the full stderr, if anything is logged after the sleep
-		// starts.
-		stderr := make([]byte, 4096)
-		if n, err := stderrPipe.Read(stderr); err != nil {
-			t.Errorf("Failed to get stderr: %v", err)
-		} else {
-			t.Logf("stderr: %s\n", stderr[:n])
-		}
-		err := cmd.Wait()
-		if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
-			t.Errorf("Fake crash_sender process was not killed (ok: %v, signaled: %v, signal: %v): %v", ok, ws.Signaled(), ws.Signal(), err)
-		}
-	}()
-	defer func() { <-done }()
-
-	// Wait for the subprocess to appear.
-	if err := tasttesting.Poll(context.Background(), func(ctx context.Context) error {
-		// Use pgrep, a twin of pkill used in the testee code.
-		return exec.Command("pgrep", "--exact", procName).Run()
-	}, &tasttesting.PollOptions{Timeout: time.Minute, Interval: 5 * time.Millisecond}); err != nil {
-		t.Errorf("Failed to wait for fake crash_sender process: %v", err)
-	}
-
 	sp := setUpParams{
 		inProgDir: runDir,
 		crashDirs: []crashAndStash{
@@ -150,7 +98,7 @@ func TestSetUpAndTearDownCrashTest(t *testing.T) {
 		},
 		rebootPersistDir: sysCrashDir,
 		senderPausePath:  pausePath,
-		senderProcName:   procName,
+		senderProcName:   "crash_sender.fake",
 		mockSendingPath:  mockSendingPath,
 		sendRecordDir:    sendDir,
 		isDevImageTest:   false,
