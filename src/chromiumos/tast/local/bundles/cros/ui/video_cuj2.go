@@ -37,29 +37,33 @@ func init() {
 		},
 		Params: []testing.Param{
 			{
-				Name:    "basic_youtube_web",
-				Timeout: 10 * time.Minute,
+				Name:      "basic_youtube_web",
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
 				Val: videoCUJParam{
 					tier: cuj.Basic,
 					app:  videocuj.YoutubeWeb,
 				},
 			}, {
-				Name:    "plus_youtube_web",
-				Timeout: 10 * time.Minute,
+				Name:      "plus_youtube_web",
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
 				Val: videoCUJParam{
 					tier: cuj.Plus,
 					app:  videocuj.YoutubeWeb,
 				},
 			}, {
-				Name:    "basic_youtube_app",
-				Timeout: 10 * time.Minute,
+				Name:      "basic_youtube_app",
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
 				Val: videoCUJParam{
 					tier: cuj.Basic,
 					app:  videocuj.YoutubeApp,
 				},
 			}, {
-				Name:    "plus_youtube_app",
-				Timeout: 10 * time.Minute,
+				Name:      "plus_youtube_app",
+				Timeout:   10 * time.Minute,
+				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
 				Val: videoCUJParam{
 					tier: cuj.Plus,
 					app:  videocuj.YoutubeApp,
