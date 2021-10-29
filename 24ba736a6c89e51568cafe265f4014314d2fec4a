@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dcb9202_485b1a69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T10:10:12Z",
+      "side": 1,
+      "message": "nit: \n\nfirmware: Add SHANI test",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "24ba736a6c89e51568cafe265f4014314d2fec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e0bcf0_251eabc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/sha_ni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T10:10:12Z",
+      "side": 1,
+      "message": "nit: Looks like name for the test should be SHAHI\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "24ba736a6c89e51568cafe265f4014314d2fec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab2771f7_eaefb987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/sha_ni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T10:10:12Z",
+      "side": 1,
+      "message": "IIUC, with this option, Tast already will dump command logs if it failed, so no need to save them into a file",
+      "range": {
+        "startLine": 34,
+        "startChar": 24,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "24ba736a6c89e51568cafe265f4014314d2fec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bca0265d_6adcbe01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/sha_ni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T10:10:12Z",
+      "side": 1,
+      "message": "this used only once, so just inline it",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "24ba736a6c89e51568cafe265f4014314d2fec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "864ceb66_16ab1d48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/sha_ni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T10:10:12Z",
+      "side": 1,
+      "message": "Handle it separately and always put error into logs\n\ne.g.\n\n```\nif err !\u003d nil {\n   s.Fatal(...)\n}\n\nif strings.Contains(outs, \"FAILED\") {\n   ...\n}\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 52
+      },
+      "revId": "24ba736a6c89e51568cafe265f4014314d2fec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02fafe11_fc1f7eb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/sha_ni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T10:10:12Z",
+      "side": 1,
+      "message": "nit: sha_ni_output.txt?",
+      "range": {
+        "startLine": 37,
+        "startChar": 37,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "24ba736a6c89e51568cafe265f4014314d2fec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2cf8e78_450cfd39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/sha_ni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T10:10:12Z",
+      "side": 1,
+      "message": "No need to put test name in the logs. Tast does that already.",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "24ba736a6c89e51568cafe265f4014314d2fec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
