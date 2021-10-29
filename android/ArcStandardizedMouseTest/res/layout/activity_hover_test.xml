@@ -14,6 +14,12 @@
     tools:context=".HoverTestActivity">
 
   <TextView
+      android:id="@+id/txtStatus"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Status: Not Started"/>
+
+  <TextView
       android:id="@+id/txtHoverEnterState"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
