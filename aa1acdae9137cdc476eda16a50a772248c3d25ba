@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44e94c3f_b0d3f52a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T12:58:05Z",
+      "side": 1,
+      "message": "You can reuse the same policy blob. AddPolicy will replace the old policy value.",
+      "revId": "aa1acdae9137cdc476eda16a50a772248c3d25ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "847c87a5_7d9a41d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T12:58:05Z",
+      "side": 1,
+      "message": "Is this needed? Without also calling Refresh it does nothing. The fixture already clears everything at the end of the test.",
+      "revId": "aa1acdae9137cdc476eda16a50a772248c3d25ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dac0b7e_23926e84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T12:58:05Z",
+      "side": 1,
+      "message": "nit: newline before",
+      "revId": "aa1acdae9137cdc476eda16a50a772248c3d25ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f226cf22_570d54a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_ephemeral_users_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T12:58:05Z",
+      "side": 1,
+      "message": "nit: newline before",
+      "revId": "aa1acdae9137cdc476eda16a50a772248c3d25ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

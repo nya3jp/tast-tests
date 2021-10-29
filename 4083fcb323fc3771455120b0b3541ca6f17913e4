@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "294e834a_26a0994d",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-10-29T12:58:05Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 166,
+        "startChar": 32,
+        "endLine": 166,
+        "endChar": 46
+      },
+      "revId": "4083fcb323fc3771455120b0b3541ca6f17913e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
