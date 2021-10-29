@@ -503,3 +503,50 @@ func (d *Device) EnableVerboseWifiLogging(ctx context.Context) error {
 	}
 	return d.ShellCommand(ctx, "cmd", "wifi", "set-verbose-logging", "enabled").Run(testexec.DumpLogOnError)
 }
+
+// SetPIN sets a screen lock PIN on the Android device.
+func (d *Device) SetPIN(ctx context.Context) error {
+	if err := d.Root(ctx); err != nil {
+		return err
+	}
+	return d.ShellCommand(ctx, "locksettings", "set-pin", "1234").Run(testexec.DumpLogOnError)
+}
+
+// ClearPIN clears a screen lock PIN on the Android device.
+func (d *Device) ClearPIN(ctx context.Context) error {
+	if err := d.Root(ctx); err != nil {
+		return err
+	}
+	return d.ShellCommand(ctx, "locksettings", "clear", "--old", "1234").Run(testexec.DumpLogOnError)
+}
+
+// GetDisabled returns True when the PIN has been disabled.
+func (d *Device) GetDisabled(ctx context.Context) (string, error) {
+	if err := d.Root(ctx); err != nil {
+		return "", err
+	}
+	output, err := d.ShellCommand(ctx, "locksettings", "get-disabled").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", err
+	}
+	return string(output), nil
+}
+
+// WaitForPINDisabled waits for the device to report the PIN is disabled.
+func (d *Device) WaitForPINDisabled(ctx context.Context) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		status, err := d.GetDisabled(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get PIN status"))
+		}
+		matched, err := regexp.MatchString("^true", status)
+		if err != nil {
+			return errors.Wrap(err, "failed to read PIN status")
+
+		}
+		if !matched {
+			return errors.Wrap(err, "PIN status is not disabled yet")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: time.Second, Timeout: 5 * time.Second})
+}
