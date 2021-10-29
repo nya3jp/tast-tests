@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff6a0c81_224388dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-29T01:06:55Z",
+      "side": 1,
+      "message": "Is parenthesis needed?",
+      "range": {
+        "startLine": 55,
+        "startChar": 16,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "15f19ba41b75022f4b1414152a8a0cc4d0c2e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bc523d7_f85dc4e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-29T01:06:55Z",
+      "side": 1,
+      "message": "Why we need to wait for 3 seconds before suspending the DUT?",
+      "revId": "15f19ba41b75022f4b1414152a8a0cc4d0c2e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5be0501_03987e10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-29T01:06:55Z",
+      "side": 1,
+      "message": "DUT.\n\nEnding period is needed.",
+      "range": {
+        "startLine": 60,
+        "startChar": 37,
+        "endLine": 60,
+        "endChar": 40
+      },
+      "revId": "15f19ba41b75022f4b1414152a8a0cc4d0c2e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b773e2c_7476298e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-10-29T01:06:55Z",
+      "side": 1,
+      "message": "What if the DUT failed to wake up? The suspend test are often made as a remote test so that the test can wake up the device via servo in case the DUT fails to resume from suspend.",
+      "revId": "15f19ba41b75022f4b1414152a8a0cc4d0c2e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
