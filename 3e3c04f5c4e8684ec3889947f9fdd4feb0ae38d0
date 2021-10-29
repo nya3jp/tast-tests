@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1fb2c45_8cd80b61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-10-29T08:45:24Z",
+      "side": 1,
+      "message": "Generally +2 but is it fine to merge these tests in terms of CQ promotion? If one test is doing many things it tends to be more flaky and makes it difficult to incrementally promote them to CQ.",
+      "revId": "3e3c04f5c4e8684ec3889947f9fdd4feb0ae38d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
