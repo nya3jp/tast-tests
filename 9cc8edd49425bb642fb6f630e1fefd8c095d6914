@@ -97,6 +97,30 @@
       },
       "revId": "9cc8edd49425bb642fb6f630e1fefd8c095d6914",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f2dc21a_e332e8b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T09:50:52Z",
+      "side": 1,
+      "message": "Maybe you can find node with some other parameters?\n\nIf that won\u0027t work, maybe add focus to the last item? or we can submit as it is and see what will happen",
+      "parentUuid": "96b3148a_91b80536",
+      "range": {
+        "startLine": 134,
+        "startChar": 51,
+        "endLine": 134,
+        "endChar": 77
+      },
+      "revId": "9cc8edd49425bb642fb6f630e1fefd8c095d6914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
