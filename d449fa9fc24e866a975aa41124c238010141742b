@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e25b9d6_a16bf4b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_ptz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-29T03:45:22Z",
+      "side": 1,
+      "message": "Compares to calling startApp()/stopApp() manually, I think using runSubTest() could make the code cleaner. But the function name is not very precise since it is not actually a sub test but a test function with app lifetime handled. I changed the function name to \"runTestWithApp()\" and also the related stuff.",
+      "parentUuid": "2b20bf22_bd682ab2",
+      "revId": "d449fa9fc24e866a975aa41124c238010141742b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4882cf6e_7f9b1c5c",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be2a1960_67cb3a22",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-29T03:45:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4882cf6e_7f9b1c5c",
+      "revId": "d449fa9fc24e866a975aa41124c238010141742b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab6aad67_60d8c349",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-10-28T13:24:00Z",
       "side": 1,
       "message": "Do we still need this?",
+      "range": {
+        "startLine": 88,
+        "startChar": 39,
+        "endLine": 88,
+        "endChar": 62
+      },
+      "revId": "d449fa9fc24e866a975aa41124c238010141742b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "148af9bb_a89a1af0",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-10-29T03:45:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab6aad67_60d8c349",
       "range": {
         "startLine": 88,
         "startChar": 39,
