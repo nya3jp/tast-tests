@@ -50,6 +50,19 @@ func (s *Service) GetDevice(ctx context.Context) (*Device, error) {
 	return device, nil
 }
 
+// GetSignalStrength return the current signal strength
+func (s *Service) GetSignalStrength(ctx context.Context) (uint8, error) {
+	props, err := s.GetProperties(ctx)
+	if err != nil {
+		return 0, errors.Wrap(err, "unable to get properties")
+	}
+	strength, err := props.GetUint8(shillconst.ServicePropertyStrength)
+	if err != nil {
+		return 0, errors.Wrap(err, "unable to get strength from properties")
+	}
+	return strength, nil
+}
+
 // IsConnected returns true if the the service is connected.
 func (s *Service) IsConnected(ctx context.Context) (bool, error) {
 	props, err := s.GetProperties(ctx)
