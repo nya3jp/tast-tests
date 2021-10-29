@@ -107,6 +107,7 @@ const (
 	ServicePropertyMode           = "Mode"
 	ServicePropertyState          = "State"
 	ServicePropertyStaticIPConfig = "StaticIPConfig"
+	ServicePropertyStrength       = "Strength"
 	ServicePropertyVisible        = "Visible"
 	ServicePropertyAutoConnect    = "AutoConnect"
 	ServicePropertyGUID           = "GUID"

@@ -88,6 +88,19 @@ func (p *Properties) GetBool(prop string) (bool, error) {
 	return b, nil
 }
 
+// GetUint8 returns the property value as uint8.
+func (p *Properties) GetUint8(prop string) (uint8, error) {
+	value, err := p.Get(prop)
+	if err != nil {
+		return 0, err
+	}
+	ret, ok := value.(uint8)
+	if !ok {
+		return 0, errors.Errorf("property %s is not an uint8: %q", prop, value)
+	}
+	return ret, nil
+}
+
 // GetUint16 returns the property value as uint16.
 func (p *Properties) GetUint16(prop string) (uint16, error) {
 	value, err := p.Get(prop)
