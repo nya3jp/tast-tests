@@ -39,6 +39,30 @@
       },
       "revId": "7ca357f0dd9e90c66f57e6c2ba34e9b214f178f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30d7f820_77a1b12a",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-10-29T17:33:49Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/crosapi/browser_manager.cc;l\u003d710\n\nshould be compatible with here.",
+      "parentUuid": "a5ae485f_2596d80c",
+      "range": {
+        "startLine": 210,
+        "startChar": 3,
+        "endLine": 210,
+        "endChar": 26
+      },
+      "revId": "7ca357f0dd9e90c66f57e6c2ba34e9b214f178f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
