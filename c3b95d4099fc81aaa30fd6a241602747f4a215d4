@@ -16,6 +16,23 @@
       "message": "Hi Alex, Could you add some WIFI experts in Google who can review this change?. Thanks\n",
       "revId": "c3b95d4099fc81aaa30fd6a241602747f4a215d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "127ab890_d228ea56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-10-29T16:29:59Z",
+      "side": 1,
+      "message": "Isn\u0027t this covered by wifi.SimpleConnect.* already?",
+      "revId": "c3b95d4099fc81aaa30fd6a241602747f4a215d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
