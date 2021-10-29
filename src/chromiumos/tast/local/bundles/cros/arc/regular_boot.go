@@ -35,9 +35,17 @@ func init() {
 		Timeout:      15 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               []string{},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               []string{},
+		}, {
+			Name:              "dalvik_memory_profile_vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: []string{
+				"--enable-features=ArcUseDalvikMemoryProfile",
+			},
 		}},
 		VarDeps: []string{
 			"arc.perfAccountPool",
@@ -55,7 +63,7 @@ func RegularBoot(ctx context.Context, s *testing.State) {
 	const iterationCount = 7
 	perfValues := perf.NewValues()
 	for i := 0; i < iterationCount; i++ {
-		appLaunchDuration, enabledScreenDuration, err := performArcRegularBoot(ctx, s.OutDir(), creds)
+		appLaunchDuration, enabledScreenDuration, err := performArcRegularBoot(ctx, s.OutDir(), creds, s.Param().([]string))
 		if err != nil {
 			s.Fatal("Failed to do regular boot: ", err)
 		}
@@ -124,7 +132,7 @@ func performArcInitialBoot(ctx context.Context, credPool string) (chrome.Creds, 
 // represents here the overhead from tast Chrome login implementation.
 // This also resets system caches before login to simulate scenario when user uses Chromebook after
 // reboot.
-func performArcRegularBoot(ctx context.Context, testDir string, creds chrome.Creds) (time.Duration, time.Duration, error) {
+func performArcRegularBoot(ctx context.Context, testDir string, creds chrome.Creds, chromeArgs []string) (time.Duration, time.Duration, error) {
 	// Use custom cooling config that is bit relaxed from default implementation
 	// in order to reduce failure rate especially on AMD low-end devices.
 	coolDownConfig := cpu.CoolDownConfig{
@@ -149,7 +157,7 @@ func performArcRegularBoot(ctx context.Context, testDir string, creds chrome.Cre
 		chrome.RestrictARCCPU(),
 		chrome.GAIALogin(creds),
 		chrome.KeepState(),
-		chrome.ExtraArgs(arc.DisableSyncFlags()...)}
+		chrome.ExtraArgs(append(arc.DisableSyncFlags(), chromeArgs...)...)}
 
 	testing.ContextLog(ctx, "Create Chrome")
 	cr, err := chrome.New(ctx, opts...)
