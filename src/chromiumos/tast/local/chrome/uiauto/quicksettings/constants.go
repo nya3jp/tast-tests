@@ -27,7 +27,7 @@ var SettingsButton = nodewith.Name("Settings").ClassName("TopShortcutButton")
 var ShutdownButton = nodewith.Name("Shut down").ClassName("TopShortcutButton")
 
 // SignoutButton is the finder for the 'Sign out' Quick Settings button.
-var SignoutButton = nodewith.Role(role.Button).Name("Sign out").ClassName("SignOutButton")
+var SignoutButton = nodewith.Role(role.Button).Name("Sign out").ClassName("PillButton")
 
 // SliderType represents the Quick Settings slider elements.
 type SliderType string
