@@ -6,21 +6,13 @@ package kioskmode
 
 import (
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/local/chrome"
 )
 
 // ExtraPolicies adds extra policies to be applied with Kiosk app.
 func ExtraPolicies(p []policy.Policy) Option {
 	return func(cfg *MutableConfig) error {
 		cfg.ExtraPolicies = p
-		return nil
-	}
-}
-
-// LoadSigninProfileExtension sets the key for loading test extension on Signin
-// screen.
-func LoadSigninProfileExtension(k string) Option {
-	return func(cfg *MutableConfig) error {
-		cfg.SigninExtKey = &k
 		return nil
 	}
 }
@@ -53,6 +45,15 @@ func PublicAccountPolicies(accountID string, policies []policy.Policy) Option {
 			cfg.PublicAccountPolicies = make(map[string][]policy.Policy)
 		}
 		cfg.PublicAccountPolicies[accountID] = append(cfg.PublicAccountPolicies[accountID], policies...)
+		return nil
+	}
+}
+
+// ExtraChromeOptions passes Chrome options that will be applied to the Chrome
+// instance running in Kiosk mode.
+func ExtraChromeOptions(opts ...chrome.Option) Option {
+	return func(cfg *MutableConfig) error {
+		cfg.ExtraChromeOptions = opts
 		return nil
 	}
 }

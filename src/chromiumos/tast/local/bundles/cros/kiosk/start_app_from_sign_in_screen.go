@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -40,7 +41,9 @@ func StartAppFromSignInScreen(ctx context.Context, s *testing.State) {
 		ctx,
 		fdms,
 		kioskmode.DefaultLocalAccounts(),
-		kioskmode.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+		kioskmode.ExtraChromeOptions(
+			chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+		),
 	)
 	if err != nil {
 		s.Error("Failed to start Chrome on Signin screen with set Kiosk apps: ", err)
