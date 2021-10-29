@@ -56,6 +56,30 @@
       },
       "revId": "8b78574a73fe2ffcc898deb366b8229c1e7dec05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e647897_26ddb2e7",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/faillog/faillog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-29T20:05:16Z",
+      "side": 1,
+      "message": "+1 to this idea, which helps Tast test or service that doesn\u0027t use fixture could also use this function for error logging too.",
+      "parentUuid": "0bdc43cb_f3073ceb",
+      "range": {
+        "startLine": 34,
+        "startChar": 31,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "8b78574a73fe2ffcc898deb366b8229c1e7dec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
