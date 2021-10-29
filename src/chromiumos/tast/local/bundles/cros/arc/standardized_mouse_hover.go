@@ -58,25 +58,25 @@ func runStandardizedMouseHoverTest(ctx context.Context, testParameters standardi
 	}
 	defer mouse.Close()
 
-	// Ensure the test is in the initial state.
+	// Setup selectors.
 	btnStartHoverTestSelector := testParameters.Device.Object(ui.ID(testParameters.AppPkgName + ":id/btnStartHoverTest"))
-	if err := btnStartHoverTestSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		return errors.Wrap(err, "failed to find start button")
-	}
-
 	txtHoverEnterID := testParameters.AppPkgName + ":id/txtHoverEnterState"
-	if err := testParameters.Device.Object(ui.ID(txtHoverEnterID), ui.Text("HOVER ENTER: PENDING")).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		return errors.Wrap(err, "failed to find hover enter state")
-	}
-
 	txtHoverExitID := testParameters.AppPkgName + ":id/txtHoverExitState"
-	if err := testParameters.Device.Object(ui.ID(txtHoverExitID), ui.Text("HOVER EXIT: PENDING")).WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
-		return errors.Wrap(err, "failed to find hover exit state")
+	txtStatusSelector := testParameters.Device.Object(ui.ID(testParameters.AppPkgName + ":id/txtStatus"))
+
+	// Ensure the app is in the initial state.
+	if err := txtStatusSelector.WaitForText(ctx, "Status: Not Started", standardizedtestutil.ShortUITimeout); err != nil {
+		return errors.Wrap(err, "failed to ensure test hasn't started")
 	}
 
 	// Click to start the test.
 	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnStartHoverTestSelector, mouse, standardizedtestutil.LeftPointerButton); err != nil {
 		return errors.Wrap(err, "failed to click the button to start the test")
+	}
+
+	// Ensure the test is ready.
+	if err := txtStatusSelector.WaitForText(ctx, "Status: Started", standardizedtestutil.ShortUITimeout); err != nil {
+		return errors.Wrap(err, "failed to ensure test has started")
 	}
 
 	// Move over the hover element.
