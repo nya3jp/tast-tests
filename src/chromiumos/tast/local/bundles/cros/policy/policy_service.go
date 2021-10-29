@@ -130,7 +130,7 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 	}()
 
 	// fakedms.New starts a background process that outlives the current context.
-	fdms, err := fakedms.New(context.Background(), c.fakeDMSDir) // NOLINT
+	fdms, err := fakedms.New(c.s.ServiceContext(), c.fakeDMSDir) // NOLINT
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start FakeDMS")
 	}
