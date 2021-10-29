@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db8d543f_c73e483d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-10-29T06:26:15Z",
+      "side": 1,
+      "message": "Hi Tast Owners,\n\nPTAL",
+      "revId": "ab59a4e722a6d96308f2bc9f18c4ef3a5b8cc432",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
