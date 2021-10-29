@@ -51,6 +51,24 @@
       "parentUuid": "979a01a9_7e7692b1",
       "revId": "a1c6619274741440f19dd073c5f6d9a907efda13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98f0618e_4f623e6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-29T00:18:50Z",
+      "side": 1,
+      "message": "Got it, SGTM. Can you add a comment about the LeftClickUntil usage?",
+      "parentUuid": "0891f673_e6f3ea0c",
+      "revId": "a1c6619274741440f19dd073c5f6d9a907efda13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
