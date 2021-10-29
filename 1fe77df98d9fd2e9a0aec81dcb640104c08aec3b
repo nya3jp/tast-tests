@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43c08902_95d96997",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-10-29T08:05:55Z",
+      "side": 1,
+      "message": "Jesse, thanks for going ahead with this change!",
+      "revId": "1fe77df98d9fd2e9a0aec81dcb640104c08aec3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a038ab92_b8e848b4",
