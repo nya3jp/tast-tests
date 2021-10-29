@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30af4e0_3afb0672",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T09:56:28Z",
+      "side": 1,
+      "message": "LGMT % nits",
+      "revId": "6889f9f86491eabeab97a99dc8a5ca0d7af659a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90073224_f5a823be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/youtube_multi_tab.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T09:56:28Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "6889f9f86491eabeab97a99dc8a5ca0d7af659a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c91e02_132d1a97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/youtube_multi_tab.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T09:56:28Z",
+      "side": 1,
+      "message": "same: Fatal",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 10
+      },
+      "revId": "6889f9f86491eabeab97a99dc8a5ca0d7af659a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27315358_1c695b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/youtube_multi_tab.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T09:56:28Z",
+      "side": 1,
+      "message": "same: Fatal?",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 11
+      },
+      "revId": "6889f9f86491eabeab97a99dc8a5ca0d7af659a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c1a592f_a259941c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/youtube_multi_tab.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T09:56:28Z",
+      "side": 1,
+      "message": "nit: should this be Error or Fatal?",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 10
+      },
+      "revId": "6889f9f86491eabeab97a99dc8a5ca0d7af659a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c70c39f_901dc7b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/youtube_multi_tab.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T09:56:28Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 135,
+        "startChar": 5,
+        "endLine": 135,
+        "endChar": 10
+      },
+      "revId": "6889f9f86491eabeab97a99dc8a5ca0d7af659a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
