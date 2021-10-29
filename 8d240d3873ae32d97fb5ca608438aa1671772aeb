@@ -16,6 +16,46 @@
       "message": "Sorry for the delay here, responded to comments and made a few changes to stabilize the test. Thanks for taking another pass when you get the chance!",
       "revId": "8d240d3873ae32d97fb5ca608438aa1671772aeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcc36b2e_ae567ecf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-29T01:23:17Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "8d240d3873ae32d97fb5ca608438aa1671772aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10626f9c_146df431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/dictation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-29T01:23:17Z",
+      "side": 1,
+      "message": "I think this can be simplified by using a regex\n```\nfinder :\u003d nodewith.Attribute(\"value\", regex.MustCompile(\"(H|h)ello\")).Role(role.TextField).HasClass(\"myTextArea\").Onscreen()\n\nif err :\u003d ui.WaitUntilExists(firstCandidate)(ctx); err !\u003d nil {\n\ts.Fatal(\"Failed to verify text input: \", err)\n}\n```",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "8d240d3873ae32d97fb5ca608438aa1671772aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
