@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cefadd9_eef8c255",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-10-29T10:24:11Z",
+      "side": 1,
+      "message": "Hi all,\n\nThis CL adds a new Tast test for the chrome.loginScreenStorage extension API. It is almost identical to the LaunchManagedGuestSession test, but with a few different API calls.\n\nSince b/204177106 is in progress, I was planning to refactor all the tests after the helper is landed despite the amount of duplicated code. Is this OK?\n\nRegards,\nJit",
+      "revId": "6594710aae59c8f77a667f8b8ef1193dd4e04d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
