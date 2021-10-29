@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "286644a2_7af2dbfb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T10:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0e45a79_17a54654",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "c4ba945d38740e1516556387821c2a8d391ba75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6bd6b6c1_5705ec94",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-28T21:27:06Z",
       "side": 1,
       "message": "you are creating two instance of the test here. is this intended?",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 5
+      },
+      "revId": "c4ba945d38740e1516556387821c2a8d391ba75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "329fd0a4_3f70fb3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/set_usb_ethernet_mac_address_source.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T10:30:52Z",
+      "side": 1,
+      "message": "Yes, this in intended. I added comment in the commit message.\n\nBasically, I need to verify first that a separate setup in the lab is stable enough to remove this test from CQ group.",
+      "parentUuid": "301d2527_de70c707",
       "range": {
         "startLine": 32,
         "startChar": 3,
