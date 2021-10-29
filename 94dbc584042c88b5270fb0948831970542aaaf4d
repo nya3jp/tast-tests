@@ -35,6 +35,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aea16f2f_626d62a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T09:47:44Z",
+      "side": 1,
+      "message": "LGMT % comments",
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d2a424_921a6bf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T09:47:44Z",
+      "side": 1,
+      "message": "I think this comment is a bit misleading. I am not sure whether you mean \"Chrome App\" or \"Chrome OS app\". Files and Help are system web apps.\n\nMaybe just remove this comment and inline appList in the for loop, e.g.:\n\n```\nfor _, app :\u003d range []apps.App{apps.Files, apps.Help}\n```",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 50
+      },
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50463874_a520bf50",
@@ -54,6 +94,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16c30415_b35af3f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T09:47:44Z",
+      "side": 1,
+      "message": "Should we give so many internal details about some C++ code in the Go code comment?",
+      "range": {
+        "startLine": 153,
+        "startChar": 33,
+        "endLine": 153,
+        "endChar": 61
+      },
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddbd70f6_7ff9aa08",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
         "patchSetId": 3
@@ -65,6 +128,24 @@
       "writtenOn": "2021-10-29T01:16:42Z",
       "side": 1,
       "message": "just incase, can we return the error and print a \"Failed to activate line\"",
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8cc4199_9f665b1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T09:47:44Z",
+      "side": 1,
+      "message": "We should never ignore returned error",
+      "parentUuid": "ddbd70f6_7ff9aa08",
       "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +181,23 @@
       "side": 1,
       "message": "sorry landscape not clamshell",
       "parentUuid": "5b32392e_f89cab9b",
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee455f9_b815135b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T09:47:44Z",
+      "side": 1,
+      "message": "same: don\u0027t ignore error",
       "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -151,6 +249,52 @@
       "writtenOn": "2021-10-29T01:16:42Z",
       "side": 1,
       "message": "document this function",
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "272d2a06_5c118a03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T09:47:44Z",
+      "side": 1,
+      "message": "nit: sleep\n\nusually we are waiting for something to happen and periodically poll. Here we just sleeping",
+      "range": {
+        "startLine": 252,
+        "startChar": 37,
+        "endLine": 252,
+        "endChar": 41
+      },
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9050cdc_6336d568",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-10-29T09:47:44Z",
+      "side": 1,
+      "message": "nit: failed to wait for window animation to finish",
+      "range": {
+        "startLine": 262,
+        "startChar": 27,
+        "endLine": 262,
+        "endChar": 62
+      },
       "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
