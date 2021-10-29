@@ -67,12 +67,12 @@ func ensureInScreenCaptureMode(ctx context.Context, tconn *chrome.TestConn) erro
 	ui := uiauto.New(tconn)
 	// To make sure "Screen capture" is launched correctly, verify the existence of these buttons.
 	for _, btn := range []*nodewith.Finder{
-		nodewith.Role(role.ToggleButton).Name("Screenshot"),
-		nodewith.Role(role.ToggleButton).Name("Screen record"),
-		nodewith.Role(role.ToggleButton).Name("Take full screen screenshot"),
-		nodewith.Role(role.ToggleButton).Name("Take partial screenshot"),
-		nodewith.Role(role.ToggleButton).Name("Take window screenshot"),
-		nodewith.Role(role.Button).Name("CaptureModeButton"),
+		nodewith.Name("Screenshot").HasClass("CaptureModeToggleButton").Role(role.ToggleButton),
+		nodewith.Name("Screen record").HasClass("CaptureModeToggleButton").Role(role.ToggleButton),
+		nodewith.Name("Take full screen screenshot").HasClass("CaptureModeToggleButton").Role(role.ToggleButton),
+		nodewith.Name("Take partial screenshot").HasClass("CaptureModeToggleButton").Role(role.ToggleButton),
+		nodewith.Name("Take window screenshot").HasClass("CaptureModeToggleButton").Role(role.ToggleButton),
+		nodewith.Name("Close").HasClass("CaptureModeButton").Role(role.Button),
 	} {
 		if err := ui.WaitUntilExists(btn)(ctx); err != nil {
 			return err
