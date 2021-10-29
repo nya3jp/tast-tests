@@ -73,6 +73,30 @@
       },
       "revId": "9cc8edd49425bb642fb6f630e1fefd8c095d6914",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b3148a_91b80536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-10-29T09:40:36Z",
+      "side": 1,
+      "message": "That\u0027s a good point. On my DUT, it chose the 10-15th avatar. Need to verify this, though.\n\nI try as much as possible not to choose one of the first 3 children because they are: Take photo, Choose file, and account (Google) profile picture.",
+      "parentUuid": "099f09cf_a121b397",
+      "range": {
+        "startLine": 134,
+        "startChar": 51,
+        "endLine": 134,
+        "endChar": 77
+      },
+      "revId": "9cc8edd49425bb642fb6f630e1fefd8c095d6914",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
