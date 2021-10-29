@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f61f070_677e2e3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/youtube_multi_tab.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-29T10:23:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90073224_f5a823be",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 9
+      },
+      "revId": "6889f9f86491eabeab97a99dc8a5ca0d7af659a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10c91e02_132d1a97",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-29T09:56:28Z",
       "side": 1,
       "message": "same: Fatal",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 10
+      },
+      "revId": "6889f9f86491eabeab97a99dc8a5ca0d7af659a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b337026f_ca38b591",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/youtube_multi_tab.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-29T10:23:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10c91e02_132d1a97",
       "range": {
         "startLine": 73,
         "startChar": 4,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34e2e2eb_30afddd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/youtube_multi_tab.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-29T10:23:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27315358_1c695b55",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 11
+      },
+      "revId": "6889f9f86491eabeab97a99dc8a5ca0d7af659a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c1a592f_a259941c",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51228f43_9b1bcc19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/youtube_multi_tab.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-29T10:23:05Z",
+      "side": 1,
+      "message": "Changed to Fatal",
+      "parentUuid": "2c1a592f_a259941c",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 10
+      },
+      "revId": "6889f9f86491eabeab97a99dc8a5ca0d7af659a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c70c39f_901dc7b2",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-10-29T09:56:28Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 135,
+        "startChar": 5,
+        "endLine": 135,
+        "endChar": 10
+      },
+      "revId": "6889f9f86491eabeab97a99dc8a5ca0d7af659a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce2fec2f_bb869f66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/youtube_multi_tab.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-10-29T10:23:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c70c39f_901dc7b2",
       "range": {
         "startLine": 135,
         "startChar": 5,
