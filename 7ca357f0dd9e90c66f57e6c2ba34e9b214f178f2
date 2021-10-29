@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "7ca357f0dd9e90c66f57e6c2ba34e9b214f178f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ae485f_2596d80c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/launcher.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-10-29T17:19:01Z",
+      "side": 1,
+      "message": "Not directly related to this change, but I was wondering if it would make sense that some of these common args are also needed to be imported to many other tests opening Lacros from shelf, not from the python launcher script below. Please feel free to resolve this comment.\nExample: line 163\n\nFYI I\u0027m troubleshooting https://crbug.com/1258664 for some flakes on launching lacros from shelf.",
+      "range": {
+        "startLine": 210,
+        "startChar": 3,
+        "endLine": 210,
+        "endChar": 26
+      },
+      "revId": "7ca357f0dd9e90c66f57e6c2ba34e9b214f178f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
