@@ -28,6 +28,8 @@ public class HoverTestActivity extends Activity {
         btnStartHoverTest.setOnClickListener(
                 v -> {
                     mIsTestStarted = true;
+                    TextView txtStatus = findViewById(R.id.txtStatus);
+                    txtStatus.setText("Status: Started");
                 });
 
         TextView txtToHover = findViewById(R.id.txtToHover);
