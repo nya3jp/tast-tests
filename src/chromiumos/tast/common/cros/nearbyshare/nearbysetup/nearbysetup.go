@@ -102,6 +102,25 @@ func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, d
 
 // AndroidSetup prepares the connected Android device for Nearby Share tests.
 func AndroidSetup(ctx context.Context, testDevice *adb.Device, accountUtilZipPath, username, password string, loggedIn bool, apkZipPath string, rooted bool, screenOff time.Duration, dataUsage nearbysnippet.DataUsage, visibility nearbysnippet.Visibility, name string) (*nearbysnippet.AndroidNearbyDevice, error) {
+	// If the PIN was left on from a previous test we need to remove it.
+	// However depending on what state the Phone is in when you remove the PIN,
+	// you might still be shown the lock screen PIN UI and the test will be blocked.
+	// To guarantee the PIN is removed and reflected in the UI, we need to turn the screen on,
+	// disable the PIN, and then turn off the screen so the next time it is turned on it will be disabled.
+	if err := testDevice.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_WAKEUP))); err != nil {
+		return nil, errors.Wrap(err, "failed to wake screen")
+	}
+	// Remove any PIN on the phone that may be left from other tests.
+	if err := testDevice.ClearPIN(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to clear PIN")
+	}
+	if err := testDevice.WaitForPINDisabled(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for PIN to be cleared")
+	}
+	if err := testDevice.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_POWER))); err != nil {
+		return nil, errors.Wrap(err, "failed to turn off screen")
+	}
+
 	// Clear logcat so that logs start from this point on.
 	if err := testDevice.ClearLogcat(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to clear previous logcat logs")

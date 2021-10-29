@@ -11,12 +11,15 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/adb"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
 
 // NewCrossDeviceAndroid creates a fixture that sets up an Android device for crossdevice feature testing.
-func NewCrossDeviceAndroid() testing.FixtureImpl {
-	return &crossdeviceAndroidFixture{}
+func NewCrossDeviceAndroid(feature Feature) testing.FixtureImpl {
+	return &crossdeviceAndroidFixture{
+		feature: feature,
+	}
 }
 
 // resetTimeout is the timeout duration to trying reset of the current fixture.
@@ -28,6 +31,9 @@ const (
 	defaultCrossDeviceUsername = "crossdevice.username"
 	defaultCrossDevicePassword = "crossdevice.password"
 
+	smartLockUsername = "crossdevice.smartLockUsername"
+	smartLockPassword = "crossdevice.smartLockPassword"
+
 	// Specify -var=skipAndroidLogin=true if the Android device is logged in to a personal account.
 	// Otherwise we will attempt removing all Google accounts and adding a test account to the phone.
 	// Adding/removing accounts requires ADB root access, so this will automatically be set to true if root is not available.
@@ -36,9 +42,9 @@ const (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name: "crossdeviceAndroidSetup",
+		Name: "crossdeviceAndroidSetupPhoneHub",
 		Desc: "Set up Android device for CrOS crossdevice testing",
-		Impl: NewCrossDeviceAndroid(),
+		Impl: NewCrossDeviceAndroid(PhoneHub),
 		Data: []string{AccountUtilZip, MultideviceSnippetZipName},
 		Contacts: []string{
 			"kyleshima@chromium.org",
@@ -55,11 +61,32 @@ func init() {
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "crossdeviceAndroidSetupSmartLock",
+		Desc: "Set up Android device for CrOS crossdevice testing of Smart Lock",
+		Impl: NewCrossDeviceAndroid(SmartLock),
+		Data: []string{AccountUtilZip, MultideviceSnippetZipName},
+		Contacts: []string{
+			"kyleshima@chromium.org",
+			"chromeos-sw-engprod@google.com",
+		},
+		Vars: []string{
+			smartLockUsername,
+			smartLockPassword,
+			skipAndroidLogin,
+		},
+		SetUpTimeout:    3 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
 }
 
 type crossdeviceAndroidFixture struct {
 	adbDevice     *adb.Device
 	androidDevice *AndroidDevice
+	feature       Feature
 }
 
 func (f *crossdeviceAndroidFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -97,8 +124,12 @@ func (f *crossdeviceAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		}
 		loggedIn = b
 	}
-	androidUsername := s.RequiredVar(defaultCrossDeviceUsername)
-	androidPassword := s.RequiredVar(defaultCrossDevicePassword)
+	androidUsername, androidPassword, err := GetLoginCredentials(f.feature)
+	if err != nil {
+		s.Fatal("Failed to get login credentials: ", err)
+	}
+	androidUsername = s.RequiredVar(androidUsername)
+	androidPassword = s.RequiredVar(androidPassword)
 
 	if !loggedIn {
 		if rooted {
@@ -118,6 +149,8 @@ func (f *crossdeviceAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 	f.androidDevice = androidDevice
 	return &FixtData{
 		AndroidDevice: androidDevice,
+		Username:      androidUsername,
+		Password:      androidPassword,
 	}
 }
 func (f *crossdeviceAndroidFixture) TearDown(ctx context.Context, s *testing.FixtState) {
@@ -131,3 +164,20 @@ func (f *crossdeviceAndroidFixture) TearDown(ctx context.Context, s *testing.Fix
 func (f *crossdeviceAndroidFixture) Reset(ctx context.Context) error                        { return nil }
 func (f *crossdeviceAndroidFixture) PreTest(ctx context.Context, s *testing.FixtTestState)  {}
 func (f *crossdeviceAndroidFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+
+// GetLoginCredentials returns the correct credentials to use based on the Cross Device feature being tested.
+func GetLoginCredentials(feature Feature) (string, string, error) {
+	var username, password string
+	switch feature {
+	case SmartLock:
+		username = smartLockUsername
+		password = smartLockPassword
+	case PhoneHub:
+		username = defaultCrossDeviceUsername
+		password = defaultCrossDevicePassword
+	default:
+		return "", "", errors.New("unknown Cross Device feature specified")
+	}
+	return username, password, nil
+
+}
