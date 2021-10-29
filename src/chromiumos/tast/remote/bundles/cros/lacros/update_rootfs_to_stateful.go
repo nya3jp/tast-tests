@@ -83,6 +83,7 @@ func UpdateRootfsToStateful(ctx context.Context, s *testing.State) {
 
 	// Verify that the expected Stateful Lacros version/component is selected.
 	if err := update.VerifyLacrosUpdate(ctx, statefulLacrosVersion.GetString(), overrideComponent, utsClient); err != nil {
+		update.SaveLogsFromDut(ctx, s.DUT(), s.OutDir())
 		s.Fatal("Failed to verify provisioned Lacros version: ", err)
 	}
 }
