@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4691d2df_41e21c00",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-30T00:50:26Z",
+      "side": 1,
+      "message": "Are the logs only useful at this point? Would it make more sense to defer this somewhere earlier (also using cleanupCtx to reserve time in case of timeout)?",
+      "revId": "44d8f93e8693299dfe62fb02bdbead7d89c09a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
