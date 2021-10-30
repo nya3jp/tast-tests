@@ -88,6 +88,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8e488076_11853ba4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-30T22:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f1cd7c3_f58137a9",
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6500b315_e0034abf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
         "patchSetId": 6
@@ -215,6 +233,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa61c05a_75bd3b74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-30T22:03:50Z",
+      "side": 1,
+      "message": "This function does not return an error, rather a boolean signifying that the specified servo has been found. We need to be able to run this test both with and without specifying servo, so we don\u0027t care about the returned boolean.",
+      "parentUuid": "d73c4339_18023e50",
+      "range": {
+        "startLine": 61,
+        "startChar": 12,
+        "endLine": 61,
+        "endChar": 13
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a467f528_2dac638c",
@@ -228,6 +270,30 @@
       "writtenOn": "2021-10-15T01:45:09Z",
       "side": 1,
       "message": "style: \"cleanupCtx\" for consistency with other tests and preferring shorter name.\nOr, can pass ctx to the defer function.\n\ndefer func(ctx context.Context) {\n  ...\n}(ctx)\n\nnote ctx is evaluated here in this code, so it won\u0027t be affected from assignment at L72.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 14
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea96b3e8_b4511d9f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-30T22:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a467f528_2dac638c",
       "range": {
         "startLine": 66,
         "startChar": 1,
@@ -261,6 +327,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71608833_92df7bdf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-30T22:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "078417f5_4916d59a",
+      "range": {
+        "startLine": 86,
+        "startChar": 45,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea3c1387_900b3eb9",
@@ -274,6 +364,54 @@
       "writtenOn": "2021-10-15T01:45:09Z",
       "side": 1,
       "message": "Instead could you check error return from RemoveAll?\n\nhttps://pkg.go.dev/os#IsNotExist\n\ndutfs should be transparent at the error code, IIUC.",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 3
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb056d88_1bbaf899",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-30T22:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea3c1387_900b3eb9",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 3
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3612c855_441a0cbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-30T22:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea3c1387_900b3eb9",
       "range": {
         "startLine": 114,
         "startChar": 2,
@@ -307,6 +445,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b4d8590_5b2cc0ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-30T22:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f891fff5_68b128af",
+      "range": {
+        "startLine": 140,
+        "startChar": 55,
+        "endLine": 140,
+        "endChar": 66
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fe7f3e7_60bba5ba",
@@ -320,6 +482,24 @@
       "writtenOn": "2021-10-15T01:45:09Z",
       "side": 1,
       "message": "errors.New() should be used, instead.",
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5bd7860_709510f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-30T22:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fe7f3e7_60bba5ba",
       "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -370,6 +550,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd58fea_c21730f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-30T22:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "129693fc_fa11b7ca",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 3
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2294b630_8640f9be",
@@ -383,6 +587,30 @@
       "writtenOn": "2021-10-15T01:45:09Z",
       "side": 1,
       "message": "better to split the function responsibility for version check and whether it was executed. Specifically, this is called over ssh, and there\u0027s no handling here in case SSH errors, e.g.",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 47
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4461c897_96b2df93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-10-30T22:03:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2294b630_8640f9be",
       "range": {
         "startLine": 188,
         "startChar": 22,
