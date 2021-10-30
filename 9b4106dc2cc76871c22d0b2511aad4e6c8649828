@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "272e0acd_0d2255cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/unlock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-30T00:44:50Z",
+      "side": 1,
+      "message": "Looks good, dealing with Android is such a pain lol",
+      "parentUuid": "d9a57f7a_ed539915",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 34
+      },
+      "revId": "9b4106dc2cc76871c22d0b2511aad4e6c8649828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f37ded3_dfaac346",

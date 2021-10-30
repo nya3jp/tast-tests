@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44b7685a_aecde52b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-30T00:44:50Z",
+      "side": 1,
+      "message": "lgtm % nits",
+      "revId": "8bcc541c00ef2b436250cf6be6de4804aa946dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bc67df4_883acc53",
+        "filename": "src/chromiumos/tast/common/android/adb/device.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-30T00:44:50Z",
+      "side": 1,
+      "message": "nit: GetPINDisabled or just PINDisabled maybe",
+      "range": {
+        "startLine": 523,
+        "startChar": 3,
+        "endLine": 523,
+        "endChar": 14
+      },
+      "revId": "8bcc541c00ef2b436250cf6be6de4804aa946dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e26fae_16dd539f",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-30T00:44:50Z",
+      "side": 1,
+      "message": "even though there\u0027s no character limit, I think it would be best to split this one into a few lines at least lol",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 407
+      },
+      "revId": "8bcc541c00ef2b436250cf6be6de4804aa946dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "897b4351_1a614784",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-30T00:44:50Z",
+      "side": 1,
+      "message": "failed to turn off the screen",
+      "range": {
+        "startLine": 117,
+        "startChar": 32,
+        "endLine": 117,
+        "endChar": 53
+      },
+      "revId": "8bcc541c00ef2b436250cf6be6de4804aa946dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b17e19b4_081c9ad5",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-30T00:44:50Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "8bcc541c00ef2b436250cf6be6de4804aa946dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02529a96_a067b081",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-30T00:44:50Z",
+      "side": 1,
+      "message": "ditto here",
+      "range": {
+        "startLine": 166,
+        "startChar": 27,
+        "endLine": 166,
+        "endChar": 48
+      },
+      "revId": "8bcc541c00ef2b436250cf6be6de4804aa946dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f345e01d_d78ede90",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-30T00:44:50Z",
+      "side": 1,
+      "message": "how about adding another minute on? since I saw we\u0027re waiting 90 seconds for that notification to pop up",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 34
+      },
+      "revId": "8bcc541c00ef2b436250cf6be6de4804aa946dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f26b77a_925c13eb",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-10-30T00:44:50Z",
+      "side": 1,
+      "message": "is this for the next test (to set up logging in with Smart Lock)? not seeing it used anywhere",
+      "range": {
+        "startLine": 245,
+        "startChar": 2,
+        "endLine": 245,
+        "endChar": 30
+      },
+      "revId": "8bcc541c00ef2b436250cf6be6de4804aa946dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
