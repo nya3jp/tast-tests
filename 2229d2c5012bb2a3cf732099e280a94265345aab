@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "722efbaf_e217a80b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1448538
+      },
+      "writtenOn": "2021-10-30T00:17:27Z",
+      "side": 1,
+      "message": "Thank you very much Sammie and Oleh. I leave some unsolved for Oleh for confirmation and followup. I look forward to your final thoughts :D ",
+      "revId": "2229d2c5012bb2a3cf732099e280a94265345aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
