@@ -16,6 +16,24 @@
       "message": "Will the default timeout be enough for the test now?",
       "revId": "b204dc45e28959018b73806903a33e2c766c55b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b23109c7_11f5433d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-30T08:48:12Z",
+      "side": 0,
+      "message": "Should be. All the setup has been moved to the fixture now (most of this timeout was due to having to setup samba in the crostini container which we no longer do)",
+      "parentUuid": "dc7795e8_547f6f20",
+      "revId": "b204dc45e28959018b73806903a33e2c766c55b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
