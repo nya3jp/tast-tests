@@ -16,6 +16,23 @@
       "message": "Just adding the two missing transforms that should be tested as Lloyd pointed out to me via ping.",
       "revId": "8e4f38b31dda02d65923bf99153a59df06d1fbec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05dc58af_53fea347",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-30T08:22:23Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "8e4f38b31dda02d65923bf99153a59df06d1fbec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

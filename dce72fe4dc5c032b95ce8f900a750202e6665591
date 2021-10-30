@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4deda142_757fb511",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-30T08:22:23Z",
+      "side": 1,
+      "message": "HEAD works for me? Am I missing something?\n\nhttps://cs.android.com/android/platform/superproject/+/HEAD:frameworks/native/libs/nativewindow/include/android/native_window.h;drc\u003d50e37fefe51554d300c28b496c942c0bab299fee",
+      "parentUuid": "47f9a570_073cf56e",
+      "range": {
+        "startLine": 51,
+        "startChar": 58,
+        "endLine": 51,
+        "endChar": 64
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e931147b_c4720594",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
         "patchSetId": 5
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "Not sure what full stop is, but I put a period at the end if that\u0027s what you mean :D",
       "parentUuid": "471d50fb_bf1c76a4",
+      "range": {
+        "startLine": 131,
+        "startChar": 80,
+        "endLine": 131,
+        "endChar": 81
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cb48c4b_f46ccdca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-10-30T08:22:23Z",
+      "side": 1,
+      "message": "Sorry yes you are spot on, period \u003d\u003d full stop.",
+      "parentUuid": "c4960afb_b7d9243a",
       "range": {
         "startLine": 131,
         "startChar": 80,
