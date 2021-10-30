@@ -57,7 +57,6 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		"--redirect-libassistant-logging",      // Redirect libassistant logging to /var/log/chrome/.
 		"--no-first-run",                       // Prevent showing up offer pages, e.g. google.com/chromebooks.
 		"--cros-region=" + cfg.Region(),        // Force the region.
-		"--cros-regions-mode=hide",             // Ignore default values in VPD.
 		"--enable-oobe-test-api",               // Enable OOBE helper functions for authentication.
 		"--disable-hid-detection-on-oobe",      // Skip OOBE check for keyboard/mouse on chromeboxes/chromebases.
 	}
