@@ -163,8 +163,11 @@ func ConfigureDevice(ctx context.Context, d *adb.Device, rooted bool) error {
 	if err := d.ClearPIN(ctx); err != nil {
 		return errors.Wrap(err, "failed to clear PIN")
 	}
-	if err := d.WaitForPINDisabled(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait for PIN to be cleared")
+	if err := d.DisableLockscreen(ctx, true); err != nil {
+		return errors.Wrap(err, "failed to clear PIN")
+	}
+	if err := d.WaitForLockscreenDisabled(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for lockscreen to be cleared")
 	}
 	if err := d.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_POWER))); err != nil {
 		return errors.Wrap(err, "failed to turn off the screen")

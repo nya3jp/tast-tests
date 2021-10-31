@@ -520,8 +520,20 @@ func (d *Device) ClearPIN(ctx context.Context) error {
 	return d.ShellCommand(ctx, "locksettings", "clear", "--old", "1234").Run(testexec.DumpLogOnError)
 }
 
-// PINDisabled returns True when the PIN has been disabled.
-func (d *Device) PINDisabled(ctx context.Context) (string, error) {
+// DisableLockscreen allows toggling of the lock screen on Android.
+func (d *Device) DisableLockscreen(ctx context.Context, disable bool) error {
+	if err := d.Root(ctx); err != nil {
+		return err
+	}
+	status := "false"
+	if disable {
+		status = "true"
+	}
+	return d.ShellCommand(ctx, "locksettings", "set-disabled", status).Run(testexec.DumpLogOnError)
+}
+
+// LockscreenDisabled returns True when the lockscreen has been disabled.
+func (d *Device) LockscreenDisabled(ctx context.Context) (string, error) {
 	if err := d.Root(ctx); err != nil {
 		return "", err
 	}
@@ -532,20 +544,19 @@ func (d *Device) PINDisabled(ctx context.Context) (string, error) {
 	return string(output), nil
 }
 
-// WaitForPINDisabled waits for the device to report the PIN is disabled.
-func (d *Device) WaitForPINDisabled(ctx context.Context) error {
+// WaitForLockscreenDisabled waits for the device to report the PIN is disabled.
+func (d *Device) WaitForLockscreenDisabled(ctx context.Context) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		status, err := d.PINDisabled(ctx)
+		status, err := d.LockscreenDisabled(ctx)
 		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to get PIN status"))
+			return errors.Wrap(err, "failed to get lockscren status")
 		}
 		matched, err := regexp.MatchString("^true", status)
 		if err != nil {
-			return errors.Wrap(err, "failed to read PIN status")
-
+			return errors.Wrap(err, "failed to read lockscreen disabled status")
 		}
 		if !matched {
-			return errors.Wrap(err, "PIN status is not disabled yet")
+			return errors.Wrap(err, "lockscreen is not disabled yet")
 		}
 		return nil
 	}, &testing.PollOptions{Interval: time.Second, Timeout: 5 * time.Second})
