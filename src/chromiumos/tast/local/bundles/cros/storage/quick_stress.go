@@ -111,7 +111,7 @@ func testBlock(ctx context.Context, s *testing.State) {
 		testConfig.
 			WithJob("8k_async_randwrite").
 			WithDuration(4*time.Minute))
-	stress.Suspend(ctx)
+	stress.Suspend(ctx, true)
 	fioStress(ctx, s,
 		testConfig.
 			WithJob("8k_async_randwrite").
