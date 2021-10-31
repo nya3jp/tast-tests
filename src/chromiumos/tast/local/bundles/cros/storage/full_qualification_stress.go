@@ -22,10 +22,11 @@ import (
 
 // qualParam is the configuration of dual-qual functionality.
 type qualParam struct {
-	isSlcEnabled          bool
-	slcDevice             string
-	retentionBlockTimeout time.Duration
-	suspendBlockTimeout   time.Duration
+	isSlcEnabled           bool
+	slcDevice              string
+	retentionBlockTimeout  time.Duration
+	suspendBlockTimeout    time.Duration
+	skipS0iXResidencyCheck bool
 }
 
 // subTestFunc is the code associated with a sub-test.
@@ -51,7 +52,7 @@ func init() {
 		Attr:         []string{"group:storage-qual"},
 		Data:         stress.Configs,
 		SoftwareDeps: []string{"storage_wearout_detect"},
-		Vars:         []string{"tast_disk_size_gb", "tast_storage_slc_qual", "tast_suspend_block_timeout", "tast_skip_setup_check"},
+		Vars:         []string{"tast_disk_size_gb", "tast_storage_slc_qual", "tast_suspend_block_timeout", "tast_skip_setup_check", "tast_skip_s0ix_check"},
 		Params: []testing.Param{{
 			Name:    "setup_benchmarks",
 			Val:     setupBenchmarks,
@@ -221,7 +222,7 @@ func retentionTestBlock(ctx context.Context, s *testing.State, rw *stress.FioRes
 		Interval: 30 * time.Second,
 	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := stress.Suspend(ctx); err != nil {
+		if err := stress.Suspend(ctx, testParam.skipS0iXResidencyCheck); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to suspend DUT"))
 		}
 		return errors.New("retention test is still running normally")
@@ -249,7 +250,7 @@ func runContinuousStorageStress(ctx context.Context, job, jobFile string, rw *st
 
 // runPeriodicPowerSuspend repeatedly suspends the DUT that is running a FIO stress.
 // Exits only when context deadline is exceeded.
-func runPeriodicPowerSuspend(ctx context.Context) {
+func runPeriodicPowerSuspend(ctx context.Context, skipS0iXResidencyCheck bool) {
 	// Indefinite loop of randomized sleeps and power suspends.
 	for {
 		sleepDuration := time.Duration(rand.Intn(30)+30) * time.Second
@@ -257,8 +258,11 @@ func runPeriodicPowerSuspend(ctx context.Context) {
 		if err := testing.Sleep(ctx, sleepDuration); errors.Is(err, context.DeadlineExceeded) {
 			return
 		}
-		if err := stress.Suspend(ctx); err != nil && errors.As(err, &context.DeadlineExceeded) {
-			return
+		if err := stress.Suspend(ctx, skipS0iXResidencyCheck); err != nil {
+			if errors.As(err, &context.DeadlineExceeded) {
+				return
+			}
+			testing.ContextLog(ctx, "Error suspending system: ", err)
 		}
 	}
 }
@@ -275,7 +279,9 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *stress.FioResul
 		func(ctx context.Context) {
 			runContinuousStorageStress(ctx, "write_stress", s.DataPath("write_stress"), rw, stress.BootDeviceFioPath)
 		},
-		runPeriodicPowerSuspend,
+		func(ctx context.Context) {
+			runPeriodicPowerSuspend(ctx, testParam.skipS0iXResidencyCheck)
+		},
 	}
 
 	if testParam.isSlcEnabled {
@@ -568,11 +574,19 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 
 	testParam.retentionBlockTimeout = defaultRetentionBlockTimeout
 	testParam.suspendBlockTimeout = defaultSuspendBlockTimeout
+	testParam.skipS0iXResidencyCheck = false
 
 	if val, ok := s.Var("tast_suspend_block_timeout"); ok {
 		var err error
 		if testParam.suspendBlockTimeout, err = time.ParseDuration(val); err != nil {
 			s.Fatal("Cannot parse argument 'tast_suspend_block_timeout' of type Duration: ", err)
+		}
+	}
+
+	if val, ok := s.Var("tast_skip_s0ix_check"); ok {
+		var err error
+		if testParam.skipS0iXResidencyCheck, err = strconv.ParseBool(val); err != nil {
+			s.Fatal("Cannot parse argument 'tast_skip_s0ix_check' of type bool: ", err)
 		}
 	}
 
