@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7d1850d_50396121",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-10-31T05:03:13Z",
+      "side": 1,
+      "message": "A high level question out of curiosity, is Lacros log interesting in the AU scenarios? I thought the core logic all live in Ash Chrome.",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "44d8f93e8693299dfe62fb02bdbead7d89c09a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4691d2df_41e21c00",
         "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
         "patchSetId": 2
