@@ -114,8 +114,11 @@ func AndroidSetup(ctx context.Context, testDevice *adb.Device, accountUtilZipPat
 	if err := testDevice.ClearPIN(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to clear PIN")
 	}
-	if err := testDevice.WaitForPINDisabled(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for PIN to be cleared")
+	if err := testDevice.DisableLockscreen(ctx, true); err != nil {
+		return nil, errors.Wrap(err, "failed to clear PIN")
+	}
+	if err := testDevice.WaitForLockscreenDisabled(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for lockscreen to be cleared")
 	}
 	if err := testDevice.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_POWER))); err != nil {
 		return nil, errors.Wrap(err, "failed to turn off screen")
