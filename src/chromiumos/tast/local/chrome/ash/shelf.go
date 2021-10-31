@@ -43,6 +43,9 @@ const (
 	ShelfIconClassName = "ash/ShelfAppButton"
 )
 
+// uiPollingInterval is a default interval of time to poll UI events for tests that are not time-sensitive. A higher interval helps avoid flake in polling.
+const uiPollingInterval = 2 * time.Second
+
 // SetShelfBehavior sets the shelf visibility behavior.
 // displayID is the display that contains the shelf.
 func SetShelfBehavior(ctx context.Context, tconn *chrome.TestConn, displayID string, b ShelfBehavior) error {
@@ -401,7 +404,7 @@ func WaitForChromeAppInstalled(ctx context.Context, tconn *chrome.TestConn, appI
 			return errors.New("failed to wait for installed app by id: " + appID)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: timeout})
+	}, &testing.PollOptions{Timeout: timeout, Interval: uiPollingInterval})
 }
 
 // ShelfItems returns the list of apps in the shelf.
@@ -510,26 +513,29 @@ func AppShown(ctx context.Context, tconn *chrome.TestConn, appID string) (bool, 
 
 // WaitForApp waits for the app specified by appID to appear in the shelf.
 func WaitForApp(ctx context.Context, tconn *chrome.TestConn, appID string, timeout time.Duration) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		if visible, err := AppShown(ctx, tconn, appID); err != nil {
-			return testing.PollBreak(err)
-		} else if !visible {
-			return errors.New("app is not shown yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: timeout})
+	return WaitForAppCondition(ctx, tconn, appID, timeout, uiPollingInterval, func() (bool, error) {
+		return AppShown(ctx, tconn, appID)
+	}, "app is not shown yet")
 }
 
 // WaitForAppClosed waits for the app specified by appID to be closed.
 func WaitForAppClosed(ctx context.Context, tconn *chrome.TestConn, appID string) error {
+	return WaitForAppCondition(ctx, tconn, appID, time.Minute, uiPollingInterval, func() (bool, error) {
+		shown, err := AppShown(ctx, tconn, appID)
+		return !shown, err
+	}, "app is not closed yet")
+}
+
+// WaitForAppCondition waits for the app specified by appID to meet the given condition within the given timeout.
+func WaitForAppCondition(ctx context.Context, tconn *chrome.TestConn, appID string, timeout, interval time.Duration, cond func() (bool, error), msg string) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		if visible, err := AppShown(ctx, tconn, appID); err != nil {
+		if ok, err := cond(); err != nil {
 			return testing.PollBreak(err)
-		} else if visible {
-			return errors.New("app is not closed yet")
+		} else if ok {
+			return errors.New(msg)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: time.Minute})
+	}, &testing.PollOptions{Timeout: timeout, Interval: interval})
 }
 
 // AutoHide sets shelf auto hide behavior from the wallpaper context menu.
