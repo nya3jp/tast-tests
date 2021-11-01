@@ -39,7 +39,7 @@ func BluetoothXorWifi(ctx context.Context, s *testing.State) {
 	// Clean up on exit.
 	defer func(ctx context.Context) {
 		d := s.DUT()
-		r, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+		r, err := rpc.Dial(ctx, d, s.RPCHint())
 		if err != nil {
 			s.Fatal("Failed to connect rpc: ", err)
 		}
@@ -86,7 +86,7 @@ func BluetoothXorWifi(ctx context.Context, s *testing.State) {
 
 	// Initialize gRPC connection with DUT.
 	d := s.DUT()
-	r, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	r, err := rpc.Dial(ctx, d, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect rpc: ", err)
 	}

@@ -221,7 +221,7 @@ func (h *Helper) RequireRPCClient(ctx context.Context) error {
 			}
 		}
 		var err error
-		cl, err = rpc.Dial(ctx, h.DUT, h.rpcHint, "cros")
+		cl, err = rpc.Dial(ctx, h.DUT, h.rpcHint)
 		return err
 	}, &testing.PollOptions{Timeout: rpcConnectTimeout}); err != nil {
 		return errors.Wrap(err, "dialing RPC connection")
