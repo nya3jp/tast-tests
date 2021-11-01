@@ -13,6 +13,11 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+var (
+	unstableToolkitPlatforms = []string{"dedede", "drallion360", "kasumi", "kled", "fennel", "kakadu", "garg360", "dumo", "volteer", "zork"}
+	unstableToolkitModels    = []string{"hana64", "nami", "nami-kernelnext", "octopus", "homestar", "ultima"}
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     Toolkit,
@@ -23,6 +28,13 @@ func init() {
 		Fixture:  "ensureToolkit",
 		// Skip "nyan_kitty" due to slow reboot speed.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty")),
+		Params: []testing.Param{{
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(unstableToolkitPlatforms...), hwdep.SkipOnModel(unstableToolkitModels...)),
+		}, {
+			Name:              "informational",
+			ExtraAttr:         []string{"informational"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(unstableToolkitPlatforms...), hwdep.Model(unstableToolkitModels...)),
+		}},
 	})
 }
 

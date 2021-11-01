@@ -22,8 +22,8 @@ const (
 )
 
 var (
-	unstablePlatforms = []string{"atlas", "dedede", "edgar", "grunt", "nami", "nami-kernelnext", "octopus", "octopus-kernelnext", "puff", "ultima", "volteer"}
-	unstableModels    = []string{"santa", "drallion360", "hana", "kled", "fennel", "kakadu", "dumo", "homestar", "volteer2"}
+	unstableKioskPlatforms = []string{"atlas", "dedede", "edgar", "grunt", "nami", "nami-kernelnext", "octopus", "octopus-kernelnext", "puff", "ultima", "volteer"}
+	unstableKioskModels    = []string{"santa", "drallion360", "hana", "kled", "fennel", "kakadu", "dumo", "homestar", "volteer2"}
 )
 
 func init() {
@@ -38,11 +38,11 @@ func init() {
 		// it can not open the Kiosk page and is not manufactured.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty", "nocturne")),
 		Params: []testing.Param{{
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(unstablePlatforms...), hwdep.SkipOnModel(unstableModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(unstableKioskPlatforms...), hwdep.SkipOnModel(unstableKioskModels...)),
 		}, {
 			Name:              "informational",
 			ExtraAttr:         []string{"informational"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform(unstablePlatforms...), hwdep.Model(unstableModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform(unstableKioskPlatforms...), hwdep.Model(unstableKioskModels...)),
 		}},
 	})
 }
