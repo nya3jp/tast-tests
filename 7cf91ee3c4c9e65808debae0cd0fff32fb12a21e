@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fbf42aad_d83b45c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-01T16:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff86592c_ce26ce86",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "7cf91ee3c4c9e65808debae0cd0fff32fb12a21e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7c1b805b_11cfe513",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-29T02:12:30Z",
       "side": 1,
       "message": "maybe \"and set up in each test main function\"",
+      "range": {
+        "startLine": 165,
+        "startChar": 14,
+        "endLine": 165,
+        "endChar": 22
+      },
+      "revId": "7cf91ee3c4c9e65808debae0cd0fff32fb12a21e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9588d685_4f505ce5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-01T16:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "556b65df_38646296",
       "range": {
         "startLine": 165,
         "startChar": 14,

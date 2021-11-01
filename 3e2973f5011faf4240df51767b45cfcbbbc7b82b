@@ -157,6 +157,24 @@
       "parentUuid": "28060586_f9c3df2a",
       "revId": "3e2973f5011faf4240df51767b45cfcbbbc7b82b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0f92d09_5666cd3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-01T16:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0ed4ca2_d40e3eec",
+      "revId": "3e2973f5011faf4240df51767b45cfcbbbc7b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
