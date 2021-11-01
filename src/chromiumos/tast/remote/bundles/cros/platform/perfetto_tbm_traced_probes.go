@@ -7,7 +7,7 @@ package platform
 import (
 	"context"
 
-	"android.googlesource.com/platform/external/perfetto/protos/perfetto/metrics"
+	perfetto_protos "android.googlesource.com/platform/external/perfetto/protos/perfetto/metrics"
 
 	"chromiumos/tast/remote/bundles/cros/platform/perfetto"
 	"chromiumos/tast/rpc"
@@ -86,7 +86,7 @@ func PerfettoTBMTracedProbes(ctx context.Context, s *testing.State) {
 	// Prepare local client.
 	d := s.DUT()
 
-	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, d, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}

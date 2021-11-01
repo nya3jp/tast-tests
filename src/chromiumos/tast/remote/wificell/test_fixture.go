@@ -292,7 +292,7 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	defer cancel()
 
 	var err error
-	tf.rpc, err = rpc.Dial(daemonCtx, tf.dut, rpcHint, "cros")
+	tf.rpc, err = rpc.Dial(daemonCtx, tf.dut, rpcHint)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect rpc")
 	}
@@ -1246,13 +1246,13 @@ func (tf *TestFixture) WaitWifiConnected(ctx context.Context, guid string) error
 
 	req := &wifi.RequestScansRequest{Count: 3}
 	if _, err := tf.WifiClient().RequestScans(ctx, req); err != nil {
-		errors.Wrap(err, "Failed to request scan: ")
+		errors.Wrap(err, "failed to request scan")
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		serInfo, err := tf.WifiClient().QueryService(ctx)
 		if err != nil {
-			return errors.Wrap(err, "Failed to get the WiFi service information from DUT")
+			return errors.Wrap(err, "failed to get the WiFi service information from DUT")
 		}
 
 		if guid == serInfo.Guid && serInfo.IsConnected {
@@ -1281,7 +1281,7 @@ func (tf *TestFixture) WaitWifiConnected(ctx context.Context, guid string) error
 		Timeout:  time.Minute,
 		Interval: time.Second,
 	}); err != nil {
-		return errors.Wrap(err, "No matching GUID service selected")
+		return errors.Wrap(err, "no matching GUID service selected")
 	}
 
 	testing.ContextLog(ctx, "WiFi connected")

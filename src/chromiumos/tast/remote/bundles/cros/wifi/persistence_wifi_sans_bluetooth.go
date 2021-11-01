@@ -43,7 +43,7 @@ func PersistenceWifiSansBluetooth(ctx context.Context, s *testing.State) {
 	credKey := s.RequiredVar("wifi.signinProfileTestExtensionManifestKey")
 	defer func(ctx context.Context) {
 		d := s.DUT()
-		r, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+		r, err := rpc.Dial(ctx, d, s.RPCHint())
 		if err != nil {
 			s.Fatal("Failed to connect rpc: ", err)
 		}
@@ -84,7 +84,7 @@ func PersistenceWifiSansBluetooth(ctx context.Context, s *testing.State) {
 
 		// Initialize gRPC connection with DUT.
 		d := s.DUT()
-		r, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+		r, err := rpc.Dial(ctx, d, s.RPCHint())
 		if err != nil {
 			s.Fatal("Failed to connect rpc: ", err)
 		}
@@ -105,7 +105,7 @@ func PersistenceWifiSansBluetooth(ctx context.Context, s *testing.State) {
 
 	// Reinitialize gRPC connection with DUT after reboot as the current session is now stale.
 	d := s.DUT()
-	r, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	r, err := rpc.Dial(ctx, d, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect rpc: ", err)
 	}
