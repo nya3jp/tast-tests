@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "154b615b_9e72333e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T16:57:24Z",
+      "side": 1,
+      "message": "LGTM with a fix request (to avoid more cross TZ iterations).",
+      "revId": "182dd511f488d9dad21e7b7be0e1715f03ed6d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "359defc6_7e11b5fd",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T16:57:24Z",
+      "side": 1,
+      "message": "style: could you reverse the condition, so that error handling flow can be the common style. (return early on error).",
+      "revId": "182dd511f488d9dad21e7b7be0e1715f03ed6d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
