@@ -10,8 +10,8 @@ import (
 	"image/color"
 	"time"
 
+	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
-	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"

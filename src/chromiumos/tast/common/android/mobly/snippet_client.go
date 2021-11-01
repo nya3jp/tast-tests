@@ -19,10 +19,10 @@ import (
 	"regexp"
 	"strconv"
 
+	"chromiumos/tast/common/android"
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android"
 	"chromiumos/tast/testing"
 )
 

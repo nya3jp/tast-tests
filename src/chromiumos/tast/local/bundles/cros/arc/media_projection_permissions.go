@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
+	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
-	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -97,17 +97,17 @@ func MediaProjectionPermissions(ctx context.Context, s *testing.State) {
 // start its main activity.
 func setupMediaProjection(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, apkPath string) error {
 	if err := a.Install(ctx, apkPath); err != nil {
-		return errors.Wrap(err, "failed to install the app: ")
+		return errors.Wrap(err, "failed to install the app")
 	}
 
 	act, err := arc.NewActivity(a, mediaProjPkg, "."+mediaProjActivity)
 	if err != nil {
-		return errors.Wrap(err, "failed to create the activity: ")
+		return errors.Wrap(err, "failed to create the activity")
 	}
 	defer act.Close()
 
 	if err := act.Start(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to start the activity: ")
+		return errors.Wrap(err, "failed to start the activity")
 	}
 
 	return nil
@@ -120,7 +120,7 @@ func openMediaProjectionDialog(ctx context.Context, tconn *chrome.TestConn, d *a
 	testing.ContextLog(ctx, "Start media projection")
 	startButton := d.Object(androidui.ID(mediaProjPkg + ":id/start_button"))
 	if err := startButton.Click(ctx); err != nil {
-		return errors.Wrap(err, "unable to click start button: ")
+		return errors.Wrap(err, "unable to click start button")
 	}
 
 	testing.ContextLog(ctx, "Open media projection dialog and click "+actionButtonName)
@@ -134,11 +134,11 @@ func openMediaProjectionDialog(ctx context.Context, tconn *chrome.TestConn, d *a
 		ui.LeftClick(button),
 		ui.WaitUntilGone(dialog),
 	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to open media projection dialog: ")
+		return errors.Wrap(err, "failed to open media projection dialog")
 	}
 
 	if err := checkMediaProjectionStatus(ctx, d, expectedStatus); err != nil {
-		return errors.Wrap(err, "failed to check media projection status: ")
+		return errors.Wrap(err, "failed to check media projection status")
 	}
 
 	return nil
@@ -150,7 +150,7 @@ func checkMediaProjectionStatus(ctx context.Context, d *androidui.Device, expect
 	statusText := d.Object(androidui.ID(mediaProjPkg + ":id/status_text"))
 	text, err := statusText.GetText(ctx)
 	if err != nil {
-		return errors.Wrap(err, "unable to get status text: ")
+		return errors.Wrap(err, "unable to get status text")
 	}
 	if text != expectedStatus {
 		return errors.Errorf("Wrong media projection status: got %s; want %s", text, expectedStatus)

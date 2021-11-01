@@ -9,8 +9,8 @@ import (
 	"encoding/json"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/motioninput"
 	"chromiumos/tast/local/chrome"

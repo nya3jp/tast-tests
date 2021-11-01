@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/adb"
-	localadb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
@@ -33,7 +32,7 @@ func init() {
 // SmokeSnippetLibrary tests that we can successfully start and interact with the Nearby Snippet on the Android device.
 func SmokeSnippetLibrary(ctx context.Context, s *testing.State) {
 	// This loads the ARC adb vendor key, which must be pre-loaded on the Android device to allow adb over usb without requiring UI interaction.
-	if err := localadb.LaunchServer(ctx); err != nil {
+	if err := adb.LaunchLocalADBServer(ctx); err != nil {
 		s.Fatal("Failed to launch adb server: ", err)
 	}
 
