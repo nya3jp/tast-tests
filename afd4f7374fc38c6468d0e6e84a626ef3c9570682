@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "586f3436_1beff5b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T17:23:53Z",
+      "side": 1,
+      "message": "# Sorry, I overlooked prev my comments actually... Here\u0027s the update. Sorry for confusion.",
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "083d508b_3d3a0ca5",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-11-01T17:14:15Z",
       "side": 1,
       "message": "could you check error value here?",
+      "range": {
+        "startLine": 64,
+        "startChar": 12,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d4b901e_494635f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T17:23:53Z",
+      "side": 1,
+      "message": "Oops. dupped comment. replied in the old thread.",
+      "parentUuid": "083d508b_3d3a0ca5",
       "range": {
         "startLine": 64,
         "startChar": 12,
@@ -49,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4debbcf8_36f05042",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T17:23:53Z",
+      "side": 1,
+      "message": "# sorry overlooked in the prev cycle...",
+      "parentUuid": "ada877e7_1531bf98",
+      "range": {
+        "startLine": 65,
+        "startChar": 70,
+        "endLine": 65,
+        "endChar": 81
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7d0b0c6_aecff9ff",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
         "patchSetId": 7
@@ -60,6 +125,30 @@
       "writtenOn": "2021-11-01T17:14:15Z",
       "side": 1,
       "message": "style/optional: ctx can be passed as arg so that cleanupCtx won\u0027t be needed/\n\ndefer func(ctx context.Context) {\n  if err :\u003d t.Close(ctx); ... {\n    ...\n}(ctx)",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 4
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af820ac4_70ca4564",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T17:23:53Z",
+      "side": 1,
+      "message": "oops, dupped comment...",
+      "parentUuid": "d7d0b0c6_aecff9ff",
       "range": {
         "startLine": 69,
         "startChar": 1,

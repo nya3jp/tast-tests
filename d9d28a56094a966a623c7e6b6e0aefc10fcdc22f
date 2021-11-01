@@ -259,6 +259,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf28b83c_c57a42cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T17:23:53Z",
+      "side": 1,
+      "message": "1. in-band error is not recommended. Could you take a look at go/gocomments?\n2. There\u0027s no spec of NewFIrmwareTEst when no spec is passed. Ditto for its servo.NewProxy call.\n\nSo, considering both, could you\n- check the second value at least, and do not touch servoSpec if no value is given?\n- if passing \"\" is the ideal behavior, could you document in callees\u0027 comment to make it the contract between callers/callees explicitly?",
+      "parentUuid": "fa61c05a_75bd3b74",
+      "range": {
+        "startLine": 61,
+        "startChar": 12,
+        "endLine": 61,
+        "endChar": 13
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a467f528_2dac638c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
         "patchSetId": 6
