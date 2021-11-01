@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ed120f7_07218f06",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-01T23:15:42Z",
+      "side": 1,
+      "message": "This is a good catch. I missed this in my review.\n\nAs it currently stands, this will check before the test, but not after it. If you want to check after the test too, you\u0027ll need to add this check to the enclosure generated at line 178.\n\nThis will also apply for the remote bundle hook.",
+      "parentUuid": "33aac410_2b627fc0",
+      "revId": "7bcd956bb9d6eae14b8aeb4132ecf2e7610bd73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a068b8c4_125783a9",
         "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
         "patchSetId": 2
