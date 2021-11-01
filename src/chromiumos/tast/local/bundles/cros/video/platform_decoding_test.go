@@ -499,7 +499,7 @@ var vp8Files = map[string][]string{
 		"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1408.ivf",
 		"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1409.ivf",
 		"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1410.ivf",
-		//"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1413.ivf", // TODO(b/195789194)
+		"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1413.ivf",
 		"test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1404.ivf",
 		"test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405.ivf",
 		"test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1406.ivf",
@@ -509,7 +509,7 @@ var vp8Files = map[string][]string{
 	},
 	"inter": {
 		"test_vectors/vp8/inter/vp80-02-inter-1402.ivf",
-		//"test_vectors/vp8/inter/vp80-02-inter-1412.ivf", // TODO(b/195789194)
+		"test_vectors/vp8/inter/vp80-02-inter-1412.ivf",
 		"test_vectors/vp8/inter/vp80-02-inter-1418.ivf",
 		"test_vectors/vp8/inter/vp80-02-inter-1424.ivf",
 		"test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf",
@@ -541,7 +541,7 @@ var vp8Files = map[string][]string{
 	},
 	"intra": {
 		"test_vectors/vp8/intra/vp80-01-intra-1400.ivf",
-		//"test_vectors/vp8/intra/vp80-01-intra-1411.ivf", // TODO(b/195789194)
+		"test_vectors/vp8/intra/vp80-01-intra-1411.ivf",
 		"test_vectors/vp8/intra/vp80-01-intra-1416.ivf",
 		"test_vectors/vp8/intra/vp80-01-intra-1417.ivf",
 		"test_vectors/vp8/intra/vp80-03-segmentation-1401.ivf",
