@@ -8,9 +8,9 @@ import (
 	"context"
 	"path/filepath"
 
+	"chromiumos/tast/common/android"
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
-	"chromiumos/tast/local/android"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"

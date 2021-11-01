@@ -16,9 +16,9 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/adb"
+	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	androidui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cryptohome"
