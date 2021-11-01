@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "208b45a3_a01b644e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-01T18:00:56Z",
+      "side": 1,
+      "message": "David, I\u0027ve addressed all your past comments, resolved the merge conflicts, and adopted the uiauto helpers you created. Please take a look at this iteration when you get a chance.\n\nI\u0027m questioning whether some of the API I created for my tests should be in the uiauto stuff. Seems silly to create a whole new file for two functions just because they don\u0027t technically use uiauto. But if you prefer that, just let me know and I\u0027m happy to do it.",
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
