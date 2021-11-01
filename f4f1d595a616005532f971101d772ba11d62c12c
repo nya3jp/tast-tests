@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c2fd49_97ac94dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mem_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-01T23:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c73dc599_e6d07572",
+      "revId": "f4f1d595a616005532f971101d772ba11d62c12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a74db9bb_0cc7330a",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "991e2a1d_82db3e1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-01T23:43:57Z",
+      "side": 1,
+      "message": "Spotify was missing a version without bluetooth, so I added this so I could test without bluetooth.",
+      "parentUuid": "a74db9bb_0cc7330a",
+      "revId": "f4f1d595a616005532f971101d772ba11d62c12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28274146_5626e13f",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-11-01T20:45:55Z",
       "side": 1,
       "message": "This might be surprising to callers and might worth documenting. Or we should create a new function that explicitly calls it out.",
+      "revId": "f4f1d595a616005532f971101d772ba11d62c12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce32fd1e_566239c8",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-01T23:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28274146_5626e13f",
       "revId": "f4f1d595a616005532f971101d772ba11d62c12c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62e58839_1cbcc098",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-01T23:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3d48436_ef9fe40d",
+      "range": {
+        "startLine": 255,
+        "startChar": 27,
+        "endLine": 255,
+        "endChar": 33
+      },
+      "revId": "f4f1d595a616005532f971101d772ba11d62c12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc81c4f6_955f2aac",
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ea1974c_a327fda8",
+        "filename": "src/chromiumos/tast/local/memory/zram_mm_stat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-01T23:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc81c4f6_955f2aac",
+      "revId": "f4f1d595a616005532f971101d772ba11d62c12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5338ab76_6b7ae0ee",
@@ -105,6 +201,24 @@
       "writtenOn": "2021-11-01T20:45:55Z",
       "side": 1,
       "message": "`Discard` field is `*ZramOpStats`. Would this do a deepcopy of that? Or it does not matter?",
+      "revId": "f4f1d595a616005532f971101d772ba11d62c12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47d50a7d_8194d879",
+        "filename": "src/chromiumos/tast/local/memory/zram_stats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-01T23:43:57Z",
+      "side": 1,
+      "message": "thanks for the catch- I had the same problem in one other struct, fixed that too.",
+      "parentUuid": "5338ab76_6b7ae0ee",
       "revId": "f4f1d595a616005532f971101d772ba11d62c12c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
