@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/crossdevice"
+	"chromiumos/tast/local/chrome/crossdevice/smartlock"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/testing"
@@ -33,6 +34,7 @@ func init() {
 
 // Unlock tests unlocking ChromeOS using Smart Lock feature.
 func Unlock(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(*crossdevice.FixtData).Chrome
 	tconn := s.FixtValue().(*crossdevice.FixtData).TestConn
 	androidDevice := s.FixtValue().(*crossdevice.FixtData).AndroidDevice
 
@@ -42,6 +44,11 @@ func Unlock(ctx context.Context, s *testing.State) {
 	}
 	defer androidDevice.ClearPIN(ctx)
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	s.Log("Ensuring unlock-only is selected in os-settings")
+	if err := smartlock.EnableUnlock(ctx, tconn, cr); err != nil {
+                s.Fatal("Failed to enable unlock only with Smart Lock: ", err)
+        }
 
 	s.Log("Locking the ChromeOS screen")
 	if err := lockscreen.Lock(ctx, tconn); err != nil {

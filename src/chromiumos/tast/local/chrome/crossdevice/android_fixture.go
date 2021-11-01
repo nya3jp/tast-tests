@@ -128,8 +128,10 @@ func (f *crossdeviceAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 	if err != nil {
 		s.Fatal("Failed to get login credentials: ", err)
 	}
-	androidUsername = s.RequiredVar(androidUsername)
-	androidPassword = s.RequiredVar(androidPassword)
+	//androidUsername = s.RequiredVar(androidUsername)
+	//androidPassword = s.RequiredVar(androidPassword)
+	androidUsername = "crossdevicesmartlock1@gmail.com"
+	androidPassword = "R8YU9rk=K*J"
 
 	if !loggedIn {
 		if rooted {

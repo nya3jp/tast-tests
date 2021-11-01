@@ -246,7 +246,7 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	f.crosAttributes = crosAttributes
 
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
-	chrome.Lock()
+	//chrome.Lock()
 
 	return &FixtData{
 		Chrome:        cr,

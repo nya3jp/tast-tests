@@ -268,6 +268,20 @@ func OpenSettingsApp(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
+// SignOut signs out.
+func SignOut(ctx context.Context, tconn *chrome.TestConn) error {
+	cleanup, err := ensureVisible(ctx, tconn)
+	if err != nil {
+		return err
+	}
+	defer cleanup(ctx)
+
+	ui := uiauto.New(tconn)
+	ui.LeftClickUntil(SignoutButton, ui.Gone(SignoutButton))
+	return nil
+}
+
+
 // LockScreen locks the screen.
 func LockScreen(ctx context.Context, tconn *chrome.TestConn) error {
 	cleanup, err := ensureVisible(ctx, tconn)
