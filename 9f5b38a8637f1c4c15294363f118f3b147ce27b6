@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c66d161_501eae41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-11-01T00:03:40Z",
+      "side": 1,
+      "message": "I don\u0027t think it should terminate the test. We need to do the check only for the cases where suspend means \"freeze\" and for the supported architectures. Also, we have a different case for arm (s2idle). Can you add accounting for those? (sorry if I missed it in the initial request). See that original tauto for how it is done there.\n\nhttps://source.corp.google.com/chromeos_public/src/third_party/autotest/files/client/cros/power/power_suspend.py;l\u003d544",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 3
+      },
+      "revId": "9f5b38a8637f1c4c15294363f118f3b147ce27b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c798d54_f54e6ee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-11-01T00:03:40Z",
+      "side": 1,
+      "message": "nit: for consistency with the else case, move this comment after the if",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 33
+      },
+      "revId": "9f5b38a8637f1c4c15294363f118f3b147ce27b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
