@@ -154,7 +154,7 @@ func Run(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, cr, cuj.NewCustomMetricConfigWithTestConn(
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.NewCustomMetricConfigWithTestConn(
 		"MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter,
 		[]int64{800, 1600}, bTconn))
 	if err != nil {

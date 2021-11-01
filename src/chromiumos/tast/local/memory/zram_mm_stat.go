@@ -77,6 +77,13 @@ func ZramMmStatMetrics(ctx context.Context, p *perf.Values, outdir, suffix strin
 	if err != nil {
 		return err
 	}
+	if len(suffix) > 0 {
+		fmt.Sprintf("blah")
+	}
+	if stat != nil {
+		fmt.Sprintf("blah")
+	}
+
 	if len(outdir) > 0 {
 		statJSON, err := json.MarshalIndent(stat, "", "  ")
 		if err != nil {

@@ -90,6 +90,14 @@ func init() {
 					appName:  et.SpotifyAppName,
 					enableBT: true,
 				},
+			}, {
+				Name:    "plus_spotify_quickcheck",
+				Timeout: 15 * time.Minute,
+				Val: multiTaskingParam{
+					tier:     cuj.Plus,
+					appName:  et.SpotifyAppName,
+					enableBT: false,
+				},
 			},
 		},
 	})

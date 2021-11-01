@@ -14,13 +14,45 @@ import (
 	memoryarc "chromiumos/tast/local/memory/arc"
 )
 
-// BaseMemoryStats holds initial metrics, which can be used as a baseline
-// for ever-growing metrics (snapshot early in the test, subtract at the end).
-type BaseMemoryStats struct {
+// MemoryStatsSnapshot has one snapshot of resettable memory stats.
+type MemoryStatsSnapshot struct {
 	memstats *memory.ZramStats
 
 	// psistats will be nil on systems that don't support it.
 	psistats *memory.PSIStats
+}
+
+// BaseMemoryStats holds initial metrics, which can be used as a baseline
+// for ever-growing metrics (snapshot early in the test, subtract at the end).
+type BaseMemoryStats struct {
+	initialstate *MemoryStatsSnapshot
+	// lateststate starts as nil and is refreshed every time we log.
+	// its main purpose is to be a cache to enable fast reset
+	lateststate *MemoryStatsSnapshot
+}
+
+// Clone creates a deep copy of the provided pointer
+func (t *MemoryStatsSnapshot) Clone() *MemoryStatsSnapshot {
+	deepcopy := *t
+	if t.memstats != nil {
+		deepcopy.memstats = t.memstats.Clone()
+	}
+	if t.psistats != nil {
+		deepcopy.psistats = t.psistats.Clone()
+	}
+	return &deepcopy
+}
+
+// Clone creates a deep copy of the provided pointer
+func (base *BaseMemoryStats) Clone() *BaseMemoryStats {
+	deepcopy := *base
+	if base.initialstate != nil {
+		deepcopy.initialstate = base.initialstate.Clone()
+	}
+	if base.lateststate != nil {
+		deepcopy.lateststate = base.lateststate.Clone()
+	}
+	return &deepcopy
 }
 
 // NewBaseMemoryStats gathers data on ever-growing metrics, so that they can
@@ -38,23 +70,50 @@ func NewBaseMemoryStats(ctx context.Context, arc *arc.ARC) (*BaseMemoryStats, er
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get baseline PSI stats")
 	}
-	return &BaseMemoryStats{memstats: basezram, psistats: basepsi}, nil
+	return &BaseMemoryStats{
+		initialstate: &MemoryStatsSnapshot{memstats: basezram, psistats: basepsi},
+		lateststate:  nil,
+	}, nil
 }
 
 // Reset sets the base metrics values to "now", so they can be
 // a new baseline reflecting the time of "now".
-func (base *BaseMemoryStats) Reset(ctx context.Context, arc *arc.ARC) error {
-	basezram, err := memory.NewZramStats()
-	if err != nil {
-		return errors.Wrap(err, "unable to get baseline memory stats for reset")
+func (base *BaseMemoryStats) Reset() error {
+	if base.lateststate == nil {
+		return errors.New("attempt to reset without ever logging")
 	}
-	basepsi, err := memory.NewPSIStats(ctx, arc)
-	if err != nil {
-		return errors.Wrap(err, "unable to get baseline PSI stats")
-	}
-	base.memstats = basezram
-	base.psistats = basepsi // May be nil, that's okay.
+
+	// Throw away the initial state, and replace it with the newest snapshot.
+	base.initialstate = base.lateststate
+	base.lateststate = nil
+
 	return nil
+}
+
+// LogMemoryStatsSlice generates metrics for a time slice covering
+// the difference between the latest snapshots passed in the begin and end
+// memory stat sets.
+// This is useful for dumping metrics covering a rolling time slice,
+// and is only done for the metrics where "delta" makes sense.
+func LogMemoryStatsSlice(begin, end *BaseMemoryStats, p *perf.Values, suffix string) {
+	if begin.lateststate == nil {
+		return
+	}
+	if end.lateststate == nil {
+		return
+	}
+
+	memory.LogZramStatMetricsSlice(
+		begin.lateststate.memstats,
+		end.lateststate.memstats,
+		p,
+		suffix)
+
+	memory.LogPSIMetricsSlice(
+		begin.lateststate.psistats,
+		end.lateststate.psistats,
+		p,
+		suffix)
 }
 
 // LogMemoryStats generates log files detailing the memory from the following:
@@ -73,17 +132,25 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, arc *arc.ARC, p 
 		return errors.Wrap(err, "failed to collect zram mm_stats metrics")
 	}
 
+	var basecopy *MemoryStatsSnapshot
 	var zramprevstats *memory.ZramStats
 	var psiprevstats *memory.PSIStats
 	if base != nil {
-		zramprevstats = base.memstats
-		psiprevstats = base.psistats
+		basecopy = base.initialstate.Clone()
+		zramprevstats = basecopy.memstats
+		psiprevstats = basecopy.psistats
 	}
+
 	if err := memory.ZramStatMetrics(ctx, zramprevstats, p, outdir, suffix); err != nil {
 		return errors.Wrap(err, "failed to collect zram stats metrics")
 	}
+
 	if err := memory.PSIMetrics(ctx, arc, psiprevstats, p, outdir, suffix); err != nil {
 		return errors.Wrap(err, "failed to collect PSI stats metrics")
+	}
+
+	if base != nil {
+		base.lateststate = basecopy
 	}
 
 	// Order is critical here: SmapsMetrics and CrosvmFincoreMetrics do heavy processing,
@@ -91,9 +158,11 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, arc *arc.ARC, p 
 	if err := memory.SmapsMetrics(ctx, p, outdir, suffix); err != nil {
 		return errors.Wrap(err, "failed to collect smaps_rollup metrics")
 	}
+
 	if err := memory.CrosvmFincoreMetrics(ctx, p, outdir, suffix); err != nil {
 		return errors.Wrap(err, "failed to collect crosvm fincore metrics")
 	}
+
 	if err := memory.ChromeOSAvailableMetrics(ctx, p, suffix); err != nil {
 		return errors.Wrap(err, "failed to collect ChromeOS available metrics")
 	}
@@ -103,5 +172,6 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, arc *arc.ARC, p 
 			return errors.Wrap(err, "failed to collect ARC dumpsys meminfo metrics")
 		}
 	}
+
 	return nil
 }

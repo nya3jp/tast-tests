@@ -135,7 +135,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
 		"percent", perf.SmallerIsBetter, []int64{50, 80}, bTconn)}
 
-	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}

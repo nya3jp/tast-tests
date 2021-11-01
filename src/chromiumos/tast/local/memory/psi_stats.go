@@ -46,6 +46,12 @@ type PSIStats struct {
 	Timestamp time.Time
 }
 
+// Clone creates a deep copy of the provided pointer
+func (t *PSIStats) Clone() *PSIStats {
+	deepcopy := *t
+	return &deepcopy
+}
+
 // newPSISystemStats parses PSI text output into a struct for one system.
 func newPSISystemStats(statBlob []byte) (*PSIOneSystemStats, error) {
 	stats := &PSIOneSystemStats{}
@@ -229,8 +235,9 @@ func PSIMetrics(ctx context.Context, a *arc.ARC, base *PSIStats, p *perf.Values,
 			psiDeltaMetrics(base.Host, stat.Host, elapsedMicroseconds, p, "", suffix)
 		}
 		if base.Arc != nil && stat.Arc != nil {
-			psiDeltaMetrics(base.Arc, stat.Arc, elapsedMicroseconds, p, "", suffix)
+			psiDeltaMetrics(base.Arc, stat.Arc, elapsedMicroseconds, p, "arc_", suffix)
 		}
+		*base = *stat
 	}
 
 	if stat.Host != nil {
@@ -243,4 +250,24 @@ func PSIMetrics(ctx context.Context, a *arc.ARC, base *PSIStats, p *perf.Values,
 	}
 
 	return nil
+}
+
+// LogPSIMetricsSlice logs deltra metrics between two existing snapshots
+// (no new snapshots are taken).
+func LogPSIMetricsSlice(begin, end *PSIStats, p *perf.Values, suffix string) {
+	if begin == nil {
+		return
+	}
+	if end == nil {
+		return
+	}
+
+	elapsedMicroseconds := end.Timestamp.Sub(begin.Timestamp).Microseconds()
+
+	if begin.Host != nil && end.Host != nil {
+		psiDeltaMetrics(begin.Host, end.Host, elapsedMicroseconds, p, "", suffix)
+	}
+	if begin.Arc != nil && end.Arc != nil {
+		psiDeltaMetrics(begin.Arc, end.Arc, elapsedMicroseconds, p, "arc_", suffix)
+	}
 }

@@ -39,6 +39,12 @@ type ZramStats struct {
 	Discard                           *ZramOpStats
 }
 
+// Clone creates a deep copy of the provided pointer
+func (t *ZramStats) Clone() *ZramStats {
+	deepcopy := *t
+	return &deepcopy
+}
+
 // NewZramStats parses /sys/block/zram*/stat to create a ZramStats.
 func NewZramStats() (*ZramStats, error) {
 	files, err := filepath.Glob("/sys/block/zram*/stat")
@@ -104,33 +110,7 @@ func subtractBaseStat(stat, base *ZramStats) {
 	}
 }
 
-// ZramStatMetrics writes a JSON file containing statistics from
-// /sys/block/zram*/stat. If outdir is "", then no logs are written.
-func ZramStatMetrics(ctx context.Context, base *ZramStats, p *perf.Values, outdir, suffix string) error {
-	stat, err := NewZramStats()
-	if err != nil {
-		return err
-	}
-	if base != nil {
-		subtractBaseStat(stat, base)
-	}
-
-	if len(outdir) > 0 {
-		statJSON, err := json.MarshalIndent(stat, "", "  ")
-		if err != nil {
-			return errors.Wrap(err, "failed to serialize mm_stat metrics to JSON")
-		}
-		filename := fmt.Sprintf("zram_stat%s.json", suffix)
-		if err := ioutil.WriteFile(path.Join(outdir, filename), statJSON, 0644); err != nil {
-			return errors.Wrapf(err, "failed to write zram stats to %s", filename)
-		}
-	}
-
-	if p == nil {
-		// No perf.Values, so exit without computing the metrics.
-		return nil
-	}
-
+func zramDeltaMetrics(stat *ZramStats, p *perf.Values, suffix string) {
 	// Q: which ones to pick for perf metric?
 	// A: decided set based on suggestion in b/184892486#comment7 .
 	p.Set(
@@ -167,5 +147,53 @@ func ZramStatMetrics(ctx context.Context, base *ZramStats, p *perf.Values, outdi
 		},
 		float64(stat.TimeInQueue),
 	)
+
+}
+
+// ZramStatMetrics writes a JSON file containing statistics from
+// /sys/block/zram*/stat. If outdir is "", then no logs are written.
+func ZramStatMetrics(ctx context.Context, base *ZramStats, p *perf.Values, outdir, suffix string) error {
+	stat, err := NewZramStats()
+	if err != nil {
+		return err
+	}
+
+	if base != nil {
+		newBase := *stat
+		subtractBaseStat(stat, base)
+		*base = newBase
+	}
+
+	if len(outdir) > 0 {
+		statJSON, err := json.MarshalIndent(stat, "", "  ")
+		if err != nil {
+			return errors.Wrap(err, "failed to serialize mm_stat metrics to JSON")
+		}
+		filename := fmt.Sprintf("zram_stat%s.json", suffix)
+		if err := ioutil.WriteFile(path.Join(outdir, filename), statJSON, 0644); err != nil {
+			return errors.Wrapf(err, "failed to write zram stats to %s", filename)
+		}
+	}
+
+	if p == nil {
+		// No perf.Values, so exit without computing the metrics.
+		return nil
+	}
+
+	zramDeltaMetrics(stat, p, suffix)
+
 	return nil
+}
+
+// LogZramStatMetricsSlice logs delta metrics between two previously-extracted snapshots.
+func LogZramStatMetricsSlice(begin, end *ZramStats, p *perf.Values, suffix string) {
+	if begin == nil {
+		return
+	}
+	if end == nil {
+		return
+	}
+	deltaStat := *end
+	subtractBaseStat(&deltaStat, begin)
+	zramDeltaMetrics(&deltaStat, p, suffix)
 }
