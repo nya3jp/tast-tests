@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c73dc599_e6d07572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mem_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-01T20:45:55Z",
+      "side": 1,
+      "message": "nit: nuke the empty line.",
+      "revId": "f4f1d595a616005532f971101d772ba11d62c12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a74db9bb_0cc7330a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-01T20:45:55Z",
+      "side": 1,
+      "message": "I am not owner of this cuj test. But why we add this variation? It seems unrelated to the CL.",
+      "revId": "f4f1d595a616005532f971101d772ba11d62c12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28274146_5626e13f",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-01T20:45:55Z",
+      "side": 1,
+      "message": "This might be surprising to callers and might worth documenting. Or we should create a new function that explicitly calls it out.",
+      "revId": "f4f1d595a616005532f971101d772ba11d62c12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d48436_ef9fe40d",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-01T20:45:55Z",
+      "side": 1,
+      "message": "nit: deltra -\u003e delta ?",
+      "range": {
+        "startLine": 255,
+        "startChar": 27,
+        "endLine": 255,
+        "endChar": 33
+      },
+      "revId": "f4f1d595a616005532f971101d772ba11d62c12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc81c4f6_955f2aac",
+        "filename": "src/chromiumos/tast/local/memory/zram_mm_stat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-01T20:45:55Z",
+      "side": 1,
+      "message": "debugging log ?",
+      "revId": "f4f1d595a616005532f971101d772ba11d62c12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5338ab76_6b7ae0ee",
+        "filename": "src/chromiumos/tast/local/memory/zram_stats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-01T20:45:55Z",
+      "side": 1,
+      "message": "`Discard` field is `*ZramOpStats`. Would this do a deepcopy of that? Or it does not matter?",
+      "revId": "f4f1d595a616005532f971101d772ba11d62c12c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
