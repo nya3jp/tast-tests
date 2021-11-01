@@ -157,3 +157,13 @@ func WaitForSmartUnlockReady(ctx context.Context, tconn *chrome.TestConn) error 
 	}
 	return nil
 }
+
+// WaitForSmartLockPasswordPrompt waits for the login screen indication that the user must login one more time with their password to enable the Smart Lock for login feature.
+func WaitForSmartLockPasswordPrompt(ctx context.Context, tconn *chrome.TestConn) error {
+	finder := nodewith.NameContaining("Enter your password to enable Smart Lock.").Role(role.StaticText)
+	ui := uiauto.New(tconn)
+	if err := ui.WaitUntilExists(finder)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for Smart Lock UI to show password will help you with smart lock")
+	}
+	return nil
+}
