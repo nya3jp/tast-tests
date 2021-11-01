@@ -86,6 +86,14 @@ var pageSet = []page{
 		name: "wikipedia", // Wikipedia. This page is for testing conventional web-pages.
 		url:  "https://en.wikipedia.org/wiki/Cat",
 	},
+	{
+		name: "water", // WebGL water. This page is for testing WebGL only damage.
+		url:  "http://madebyevan.com/webgl-water/",
+	},
+	{
+		name: "clockquads", // Page with ~30 quads 30 fps. This page is for testing delegated compositing.
+		url:  "https://codepen.io/jasonleewilson/pen/gPrxwX",
+	},
 }
 
 // This test deals with both ChromeOS chrome and lacros chrome. In order to reduce confusion,
