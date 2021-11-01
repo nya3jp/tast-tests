@@ -58,6 +58,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7749189_86422ee8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-01T22:06:32Z",
+      "side": 1,
+      "message": "Just a couple questions here, the rest of your comments I\u0027m clear on.",
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b40dc720_7cdd583e",
@@ -180,6 +197,30 @@
       "writtenOn": "2021-11-01T18:48:37Z",
       "side": 1,
       "message": "We should probably either pass in the uiauto instance or make the holding space util stateful and cache an instance",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 25
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c336cfdd_f7c95d09",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-01T22:06:32Z",
+      "side": 1,
+      "message": "Was doing this, but removed it because I was usually passing in `tconn` anyway. Creating a new `uiauto.Context` requires very little, and keeps the function signature from getting bloated.\n\nCould caching an instance cause problems between tests since we\u0027re restarting the chrome session? I suppose I can try and find out.\n\nI don\u0027t feel super strongly about this, though. If you have a preference, I\u0027m happy to do that.",
+      "parentUuid": "a914920d_de4d5a48",
       "range": {
         "startLine": 61,
         "startChar": 0,
@@ -410,6 +451,30 @@
       "writtenOn": "2021-11-01T18:48:37Z",
       "side": 1,
       "message": "Can you clarify what we\u0027re checking for here?",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 49
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d616e80_49995b14",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-01T22:06:32Z",
+      "side": 1,
+      "message": "Do you mean with a comment, or here? If you\u0027re asking about the invisible check, that\u0027s was to address your concern in comment #28. If you tell me to remove it, it\u0027s gone. 😊",
+      "parentUuid": "b9a41921_6526f360",
       "range": {
         "startLine": 181,
         "startChar": 0,
