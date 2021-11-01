@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d446d1e9_5958b409",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-01T23:11:43Z",
+      "side": 1,
+      "message": "I want a clarification of the requirement. Please take a look. Thanks.",
+      "revId": "7bcd956bb9d6eae14b8aeb4132ecf2e7610bd73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a113206_55b892de",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-01T23:11:43Z",
+      "side": 1,
+      "message": "The name dir is too general. I think we should call it telemetryDir.",
+      "revId": "7bcd956bb9d6eae14b8aeb4132ecf2e7610bd73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33aac410_2b627fc0",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-01T23:11:43Z",
+      "side": 1,
+      "message": "Should the check inside the return function? I thought you wanted to check before every test started. If you want to have a check before any tests is run, you should put it in run hook.",
+      "revId": "7bcd956bb9d6eae14b8aeb4132ecf2e7610bd73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a068b8c4_125783a9",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-01T23:11:43Z",
+      "side": 1,
+      "message": "This code will have conflict with https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3253579. Please make sure not to do CQ+2 until that one is landed.",
+      "revId": "7bcd956bb9d6eae14b8aeb4132ecf2e7610bd73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c04cce1_8306a0d2",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-01T23:11:43Z",
+      "side": 1,
+      "message": "I think you want to move this to \"func\" based on the discussion that we have. I thought you mentioned that you wanted to check before each test started. Also, the name dir is too general.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 3
+      },
+      "revId": "7bcd956bb9d6eae14b8aeb4132ecf2e7610bd73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
