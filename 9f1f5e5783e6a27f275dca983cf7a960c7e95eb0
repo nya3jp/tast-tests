@@ -302,6 +302,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0501736d_364f6e81",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-01T23:43:12Z",
+      "side": 1,
+      "message": "Actually, how do you feel about inlining this as well? I mostly created it to avoid repeating myself in creating the junk files that force the holding space to show. If we\u0027re not doing that any more, then this is kind of overkill anyway.",
+      "parentUuid": "83762b70_c768ace5",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 1
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49c42367_776f6908",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
         "patchSetId": 6
