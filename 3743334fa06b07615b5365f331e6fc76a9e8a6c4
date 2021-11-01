@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8691cee7_cedaa2e6",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-01T16:57:01Z",
+      "side": 1,
+      "message": "I\u0027m not sure if there is any heuristic data to find the optimal interval for listening to app events.\nIt\u0027s a guess work but this could be higher to 5 seconds or so as the events like app opening or pinning to shelf would take some time.\nAny suggestions?",
+      "range": {
+        "startLine": 47,
+        "startChar": 26,
+        "endLine": 47,
+        "endChar": 41
+      },
+      "revId": "3743334fa06b07615b5365f331e6fc76a9e8a6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
