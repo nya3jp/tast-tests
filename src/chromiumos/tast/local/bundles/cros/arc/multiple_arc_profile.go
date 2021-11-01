@@ -102,14 +102,23 @@ func MultipleArcProfile(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to Switch Account: ", err)
 	}
 
+	var translateinstalled bool
 	s.Log("Installing an app in new acount")
 	if err := playstore.InstallApp(ctx, a, d, "com.google.android.apps.dynamite", 3); err != nil {
-		s.Fatal("Failed to install app: ", err)
+		s.Log("Failed to install chat app: ", err)
+		if err := playstore.InstallApp(ctx, a, d, "com.google.android.apps.translate", 3); err != nil {
+			s.Fatal("Failed to install translate app: ", err)
+		}
+		translateinstalled = true
 	}
 
 	// Check the newly downloaded app in Launcher.
-	if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Chat)(ctx); err != nil {
-		s.Fatal("Failed to launch: ", err)
+	if translateinstalled {
+		if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Translate)(ctx); err != nil {
+			s.Fatal("Failed to launch Translate app: ", err)
+		}
+	} else if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Chat)(ctx); err != nil {
+		s.Fatal("Failed to launch Chat app: ", err)
 	}
 }
 
