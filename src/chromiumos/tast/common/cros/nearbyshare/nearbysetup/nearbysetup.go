@@ -54,6 +54,10 @@ func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, d
 		return errors.Wrap(err, "failed to import nearby_share_settings.m.js")
 	}
 
+	if err := nearbySettings.Call(ctx, nil, `function() {this.setIsOnboardingComplete(true)}`); err != nil {
+		return errors.Wrap(err, "failed to set onboarding complete Nearby Share from OS settings")
+	}
+
 	if err := nearbySettings.Call(ctx, nil, `function() {this.setEnabled(true)}`); err != nil {
 		return errors.Wrap(err, "failed to enable Nearby Share from OS settings")
 	}
