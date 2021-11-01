@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"time"
 
-	"chromiumos/tast/local/android/ui"
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/input"

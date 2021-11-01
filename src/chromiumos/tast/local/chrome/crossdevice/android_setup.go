@@ -16,9 +16,9 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/adb"
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	localadb "chromiumos/tast/local/android/adb"
-	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
