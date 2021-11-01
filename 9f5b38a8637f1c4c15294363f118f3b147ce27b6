@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "959c1d6b_a8174900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-11-01T22:10:18Z",
+      "side": 1,
+      "message": "also, we need to avoid the check at the end for the residency change if device doesn\u0027t do \"freeze suspend\", without those two, just introducing this CL will break the test for a large portion of devices.",
+      "parentUuid": "cf1cc4bf_14fdb5dd",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 3
+      },
+      "revId": "9f5b38a8637f1c4c15294363f118f3b147ce27b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c798d54_f54e6ee2",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
         "patchSetId": 1
