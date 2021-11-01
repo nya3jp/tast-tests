@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba6e2285_ceb0be3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-11-01T06:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dcb9202_485b1a69",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "24ba736a6c89e51568cafe265f4014314d2fec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70e0bcf0_251eabc9",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-29T10:10:12Z",
       "side": 1,
       "message": "nit: Looks like name for the test should be SHAHI\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "24ba736a6c89e51568cafe265f4014314d2fec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e096530_c4180e92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/sha_ni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-11-01T06:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70e0bcf0_251eabc9",
       "range": {
         "startLine": 31,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e073e329_b7ac6b7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/sha_ni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-11-01T06:01:57Z",
+      "side": 1,
+      "message": "Thanks, simplified test to rely on that.",
+      "parentUuid": "ab2771f7_eaefb987",
+      "range": {
+        "startLine": 34,
+        "startChar": 24,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "24ba736a6c89e51568cafe265f4014314d2fec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bca0265d_6adcbe01",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-29T10:10:12Z",
       "side": 1,
       "message": "this used only once, so just inline it",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "24ba736a6c89e51568cafe265f4014314d2fec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a432510_eb70b380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/sha_ni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-11-01T06:01:57Z",
+      "side": 1,
+      "message": "Now not saving outputs to file.",
+      "parentUuid": "bca0265d_6adcbe01",
       "range": {
         "startLine": 35,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83d743b4_034e20a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/sha_ni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-11-01T06:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "864ceb66_16ab1d48",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 52
+      },
+      "revId": "24ba736a6c89e51568cafe265f4014314d2fec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02fafe11_fc1f7eb0",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "daf3510d_effb1bc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/sha_ni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-11-01T06:01:57Z",
+      "side": 1,
+      "message": "Now not saving outputs to file.",
+      "parentUuid": "02fafe11_fc1f7eb0",
+      "range": {
+        "startLine": 37,
+        "startChar": 37,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "24ba736a6c89e51568cafe265f4014314d2fec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2cf8e78_450cfd39",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-10-29T10:10:12Z",
       "side": 1,
       "message": "No need to put test name in the logs. Tast does that already.",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "24ba736a6c89e51568cafe265f4014314d2fec4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f87ff6e6_3ed6b0f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/sha_ni.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1365538
+      },
+      "writtenOn": "2021-11-01T06:01:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2cf8e78_450cfd39",
       "range": {
         "startLine": 41,
         "startChar": 12,
