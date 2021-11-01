@@ -23,7 +23,7 @@ func init() {
 }
 
 func RemoteFileSystem(ctx context.Context, s *testing.State) {
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to dial to DUT for remote file system: ", err)
 	}

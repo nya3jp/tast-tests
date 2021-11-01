@@ -52,7 +52,7 @@ func ListRemoteUltraDebugTargets(ctx context.Context, dut *dut.DUT) ([]string, e
 // readTimeout should be set to the max expected duration between char outputs.
 //
 // Example:
-//   rpcClient, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+//   rpcClient, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 //   if err != nil {
 //       s.Fatal("rpcDial: ", err)
 //   }
