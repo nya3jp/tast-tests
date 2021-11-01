@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "083d508b_3d3a0ca5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T17:14:15Z",
+      "side": 1,
+      "message": "could you check error value here?",
+      "range": {
+        "startLine": 64,
+        "startChar": 12,
+        "endLine": 64,
+        "endChar": 13
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada877e7_1531bf98",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T17:14:15Z",
+      "side": 1,
+      "message": "could you clarify these in comments, too, as you did below?",
+      "range": {
+        "startLine": 65,
+        "startChar": 70,
+        "endLine": 65,
+        "endChar": 81
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d0b0c6_aecff9ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T17:14:15Z",
+      "side": 1,
+      "message": "style/optional: ctx can be passed as arg so that cleanupCtx won\u0027t be needed/\n\ndefer func(ctx context.Context) {\n  if err :\u003d t.Close(ctx); ... {\n    ...\n}(ctx)",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 4
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afd19a52_fb840bcd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T17:14:15Z",
+      "side": 1,
+      "message": "nit/style/optional: we often use rerr or retErr. Shorter name is preferred for the smaller scoped variables.",
+      "range": {
+        "startLine": 109,
+        "startChar": 134,
+        "endLine": 109,
+        "endChar": 135
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9e83281_27eb963a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T17:14:15Z",
+      "side": 1,
+      "message": "could you pass outdir instead?\ntesting.State is not recommended to pass to the utility functions for better encapsulation.",
+      "range": {
+        "startLine": 109,
+        "startChar": 35,
+        "endLine": 109,
+        "endChar": 51
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2dd3b2_fb6cfe20",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T17:14:15Z",
+      "side": 1,
+      "message": "instead, could yo open the file and pass it to cmd.Stdout, cmd.Stderr to directly redirect them?",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cfdc4d3_3ae07123",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T17:14:15Z",
+      "side": 1,
+      "message": "this is the \"uncommon\" condition, so could you clarify a bit more details why it should fail?",
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eee088e2_be9e9c8c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-01T17:14:15Z",
+      "side": 1,
+      "message": "IIUC, command error is proxied.\nCan testexec.ExitCode be usable to assess exit code?",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 14
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
