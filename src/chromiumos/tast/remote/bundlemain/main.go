@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/dutfs"
 	hwsecremote "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/baserpc"
@@ -108,6 +109,24 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 	if err != nil {
 		s.Log("Failed to get TPM status: ", err)
 		hwsecTpmStatus = nil
+	}
+
+	// Check Telemetry folder status. See b/203609358
+	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	if err != nil {
+		s.Log("Failed to dial to DUT for remote file system: ", err)
+	} else {
+		defer cl.Close(ctx)
+
+		fs := dutfs.NewClient(cl.Conn)
+		dir := "/usr/local/telemetry"
+		_, err := fs.Stat(ctx, dir)
+		if err != nil {
+			s.Logf("Failed to find %s : %v", dir, err)
+		} else {
+			s.Log("Found ", dir)
+		}
+
 	}
 
 	return func(ctx context.Context, s *testing.TestHookState) {
