@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd23f1bd_814f1a57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-01T16:42:34Z",
+      "side": 1,
+      "message": "Yes, the AU test also checks that Lacros is launchable as a test step at the end. The problem is there seems to be a flake in starting Lacros that I would like to look into (https://crbug.com/1258664)",
+      "parentUuid": "c7d1850d_50396121",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "44d8f93e8693299dfe62fb02bdbead7d89c09a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4691d2df_41e21c00",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-10-30T00:50:26Z",
       "side": 1,
       "message": "Are the logs only useful at this point? Would it make more sense to defer this somewhere earlier (also using cleanupCtx to reserve time in case of timeout)?",
+      "revId": "44d8f93e8693299dfe62fb02bdbead7d89c09a4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "553fe964_0af40cde",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-01T16:42:34Z",
+      "side": 1,
+      "message": "Yes, the lacros log would be more useful here for root causing any failure. lacros won\u0027t exist until it reaches to line 85. However, I think that\u0027s a good idea to defer leaving logs whether it\u0027s passed or failed using cleanupCtx. Thanks for the comment,",
+      "parentUuid": "4691d2df_41e21c00",
       "revId": "44d8f93e8693299dfe62fb02bdbead7d89c09a4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
