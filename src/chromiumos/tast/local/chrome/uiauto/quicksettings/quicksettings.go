@@ -143,7 +143,7 @@ func PodIconButton(setting SettingPod) *nodewith.Finder {
 	// The network pod cannot be easily found by its Name attribute in both logged-in and lock screen states.
 	// Instead, find it by its unique ClassName.
 	if setting == SettingPodNetwork {
-		return nodewith.ClassName("NetworkFeaturePodButton")
+		return nodewith.ClassName("NetworkFeaturePodButtonLegacy")
 	}
 
 	// The pod icon names change based on their state, but a substring containing the setting name stays
