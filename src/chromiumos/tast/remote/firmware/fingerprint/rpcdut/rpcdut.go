@@ -50,7 +50,7 @@ func NewRPCDUT(ctx context.Context, d *dut.DUT, h *testing.RPCHint, bundleName s
 // RPCDial dials the rpc connection.
 func (rd *RPCDUT) RPCDial(ctx context.Context) error {
 	testing.ContextLog(ctx, "Dialing RPC connection")
-	cl, err := rpc.Dial(ctx, rd.d, rd.h, rd.bundleName)
+	cl, err := rpc.Dial(ctx, rd.d, rd.h)
 	if err != nil {
 		return err
 	}

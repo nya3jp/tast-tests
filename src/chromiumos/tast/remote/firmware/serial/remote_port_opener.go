@@ -38,7 +38,7 @@ func (c *RemotePortOpener) OpenPort(ctx context.Context) (common.Port, error) {
 // NewRemotePortOpener creates a RemotePortOpener.
 //
 // Example:
-//   rpcClient, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+//   rpcClient, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 //   defer rpcClient.Close(ctx)
 //
 //   if err != nil {

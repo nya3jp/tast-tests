@@ -30,7 +30,7 @@ func init() {
 }
 
 func RemoteSerialPort(ctx context.Context, s *testing.State) {
-	rpcClient, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	rpcClient, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Error dialing rpc: ", err)
 	}

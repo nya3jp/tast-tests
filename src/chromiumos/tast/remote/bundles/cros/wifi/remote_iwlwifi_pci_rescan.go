@@ -29,7 +29,7 @@ func init() {
 }
 
 func RemoteIwlwifiPCIRescan(ctx context.Context, s *testing.State) {
-	r, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	r, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect rpc: ", err)
 	}

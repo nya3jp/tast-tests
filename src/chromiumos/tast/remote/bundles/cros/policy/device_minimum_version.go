@@ -49,7 +49,7 @@ func DeviceMinimumVersion(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}

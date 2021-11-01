@@ -70,7 +70,7 @@ func waitUntilCPUCoolDown(fullCtx context.Context, s *testing.State) {
 	ctx, cancel := context.WithTimeout(fullCtx, 30*time.Second)
 	defer cancel()
 
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
@@ -108,7 +108,7 @@ func bootPerfOnce(fullCtx context.Context, s *testing.State, i, iterations int, 
 		s.Log("Warning: failed in sleep before redialing RPC: ", err)
 	}
 	// Need to reconnect to the gRPC server after rebooting DUT.
-	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, d, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
@@ -206,7 +206,7 @@ func BootPerf(fullCtx context.Context, s *testing.State) {
 
 	func() {
 		// Connect to the gRPC server on the DUT.
-		cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+		cl, err := rpc.Dial(ctx, d, s.RPCHint())
 		if err != nil {
 			s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 		}
@@ -230,7 +230,7 @@ func BootPerf(fullCtx context.Context, s *testing.State) {
 	defer func() {
 		// Restore the side effect made in this test by disabling bootchart for subsequent system boots.
 		s.Log("Disable bootchart")
-		cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+		cl, err := rpc.Dial(ctx, d, s.RPCHint())
 		if err != nil {
 			s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 		}

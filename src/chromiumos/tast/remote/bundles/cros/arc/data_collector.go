@@ -152,7 +152,7 @@ func DataCollector(ctx context.Context, s *testing.State) {
 	d := s.DUT()
 
 	// Connect to the gRPC server on the DUT.
-	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, d, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}

@@ -46,7 +46,7 @@ func EarlyCrash(ctx context.Context, s *testing.State) {
 
 	d := s.DUT()
 
-	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, d, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
@@ -99,7 +99,7 @@ func EarlyCrash(ctx context.Context, s *testing.State) {
 
 	// When we lost the connection, these connections broke.
 	s.Log("Re-dialing")
-	cl, err = rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	cl, err = rpc.Dial(ctx, d, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}

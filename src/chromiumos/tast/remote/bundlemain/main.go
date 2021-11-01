@@ -144,7 +144,7 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 			return
 		}
 
-		cl, err := rpc.Dial(ctx, dut, s.RPCHint(), "cros")
+		cl, err := rpc.Dial(ctx, dut, s.RPCHint())
 		if err != nil {
 			s.Log("Failed to connect to the RPC service on the DUT: ", err)
 			return
