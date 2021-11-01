@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "387135cc_67f68b43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-01T07:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ed47c5d_4f10a3cd",
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68dc4d9b_9fceab28",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-10-29T07:31:59Z",
       "side": 1,
       "message": "no need to export these, use name",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dde6f1c_37663c40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-01T07:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68dc4d9b_9fceab28",
       "range": {
         "startLine": 70,
         "startChar": 2,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f265d84_587b0ba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-01T07:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efa11d0e_afbac59f",
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ecdf5b6_f9c0b6e5",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-10-29T07:31:59Z",
       "side": 1,
       "message": "minor nit: maybe Waiting for capture result",
+      "range": {
+        "startLine": 158,
+        "startChar": 26,
+        "endLine": 158,
+        "endChar": 34
+      },
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "822f4f6c_9d43a309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-01T07:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ecdf5b6_f9c0b6e5",
       "range": {
         "startLine": 158,
         "startChar": 26,
@@ -117,6 +201,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a0727fd_35c05049",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-01T07:13:52Z",
+      "side": 1,
+      "message": "iiuc the \"if retErr !\u003d nil\" part (line 185) need to be done in a separate function, so this can\u0027t be moved inline. Am I missing something?",
+      "parentUuid": "c017bf49_83902ab7",
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b368667_a12562f2",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
         "patchSetId": 3
@@ -128,6 +230,24 @@
       "writtenOn": "2021-10-29T07:31:59Z",
       "side": 1,
       "message": "nit: add a comment on why this is sleeping here\n\nCan you just wait for 1 second to make the test a bit faster?",
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5375035_2ccd287e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-01T07:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b368667_a12562f2",
       "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +275,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd02033_74787d54",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1963,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-01T07:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd10fb01_bf0d5be9",
+      "range": {
+        "startLine": 1963,
+        "startChar": 3,
+        "endLine": 1963,
+        "endChar": 19
+      },
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3ff2ae6_17b44380",
@@ -168,6 +312,30 @@
       "writtenOn": "2021-10-29T07:31:59Z",
       "side": 1,
       "message": "Is this relevant?",
+      "range": {
+        "startLine": 269,
+        "startChar": 4,
+        "endLine": 269,
+        "endChar": 75
+      },
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b149b760_be497aaf",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-01T07:13:52Z",
+      "side": 1,
+      "message": "Removed the extra comment.",
+      "parentUuid": "d3ff2ae6_17b44380",
       "range": {
         "startLine": 269,
         "startChar": 4,
