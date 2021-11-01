@@ -89,7 +89,7 @@ func ZoomConfCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	dut := s.DUT()
-	c, err := rpc.Dial(ctx, dut, s.RPCHint(), "cros")
+	c, err := rpc.Dial(ctx, dut, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to dial to remote dut: ", err)
 	}

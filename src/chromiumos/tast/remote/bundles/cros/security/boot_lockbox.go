@@ -107,7 +107,7 @@ func rebootAndReconnect(ctx context.Context, s *testing.State) (*rpc.Client, err
 	if err := s.DUT().Reboot(ctx); err != nil {
 		return nil, errors.Wrap(err, "unexpected error while rebooting DUT")
 	}
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to RPC service on the DUT")
 	}
@@ -116,7 +116,7 @@ func rebootAndReconnect(ctx context.Context, s *testing.State) (*rpc.Client, err
 
 func BootLockbox(ctx context.Context, s *testing.State) {
 	// Connect to the gRPC server on the DUT.
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}

@@ -68,7 +68,7 @@ func CameraboxAlign(ctx context.Context, s *testing.State) {
 	}
 
 	d := s.DUT()
-	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, d, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to alignment service on the DUT: ", err)
 	}

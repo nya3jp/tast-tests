@@ -26,7 +26,7 @@ func removeRootfsVerification(ctx context.Context, d *dut.DUT) error {
 
 // MakeRootfsWritable makes the rootfs writable.
 func MakeRootfsWritable(ctx context.Context, d *dut.DUT, rpcHint *testing.RPCHint) error {
-	cl, err := rpc.Dial(ctx, d, rpcHint, "cros")
+	cl, err := rpc.Dial(ctx, d, rpcHint)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
@@ -46,7 +46,7 @@ func MakeRootfsWritable(ctx context.Context, d *dut.DUT, rpcHint *testing.RPCHin
 	}
 
 	// TODO(https://crbug.com/1195936): Need to reconnect to RPC service since we rebooted.
-	cl, err = rpc.Dial(ctx, d, rpcHint, "cros")
+	cl, err = rpc.Dial(ctx, d, rpcHint)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}

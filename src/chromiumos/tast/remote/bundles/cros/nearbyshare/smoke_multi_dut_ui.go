@@ -60,7 +60,7 @@ func SmokeMultiDUTUI(ctx context.Context, s *testing.State) {
 
 // openHighVisibilityMode is a helper function to enable high vis mode on each DUT.
 func openHighVisibilityMode(ctx context.Context, s *testing.State, d *dut.DUT, tag string, keepState bool) error {
-	cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, d, s.RPCHint())
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}

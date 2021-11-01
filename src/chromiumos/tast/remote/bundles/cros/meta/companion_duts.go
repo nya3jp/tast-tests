@@ -21,7 +21,7 @@ func init() {
 
 // CompanionDUTs ensures DUT and companion DUTs are accessible in test.
 func CompanionDUTs(ctx context.Context, s *testing.State) {
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
@@ -31,7 +31,7 @@ func CompanionDUTs(ctx context.Context, s *testing.State) {
 	if companionDUT == nil {
 		s.Fatal("Failed to get companion DUT cd1")
 	}
-	companionCl, err := rpc.Dial(ctx, companionDUT, s.RPCHint(), "cros")
+	companionCl, err := rpc.Dial(ctx, companionDUT, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the companion DUT: ", err)
 	}

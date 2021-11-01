@@ -203,7 +203,7 @@ func (f *tastFixtureImpl) dutHealthCheck(ctx context.Context, d *dut.DUT, rpcHin
 
 	// We create a new gRPC session here to exclude broken gRPC case and save reboots when
 	// the DUT is healthy but the gRPC is broken.
-	rpcClient, err := rpc.Dial(ctx, d, rpcHint, "cros")
+	rpcClient, err := rpc.Dial(ctx, d, rpcHint)
 	if err != nil {
 		return errors.Wrap(err, "cannot create gRPC client")
 	}
@@ -241,18 +241,18 @@ func (f *tastFixtureImpl) enrollChrome(ctx context.Context, s *testing.FixtState
 	pc := policy.NewPolicyServiceClient(f.tf.rpc.Conn)
 	pJSON, err := json.Marshal(fakedms.NewPolicyBlob())
 	if err != nil {
-		return errors.Wrap(err, "Failed to serialize policies")
+		return errors.Wrap(err, "failed to serialize policies")
 	}
 
 	if _, err := pc.EnrollUsingChrome(ctx, &policy.EnrollUsingChromeRequest{
 		PolicyJson: pJSON,
 		SkipLogin:  true,
 	}); err != nil {
-		return errors.Wrap(err, "Failed to enroll using Chrome")
+		return errors.Wrap(err, "failed to enroll using Chrome")
 	}
 
 	if _, err = pc.StopChrome(ctx, &empty.Empty{}); err != nil {
-		return errors.Wrap(err, "Failed to close Chrome instance")
+		return errors.Wrap(err, "failed to close Chrome instance")
 	}
 
 	return nil

@@ -70,7 +70,7 @@ func CodelabRPC(ctx context.Context, s *testing.State) {
 	s.Log("EC Board: ", ecBoard)
 
 	// Connect to RPC
-	cl, err := rpc.Dial(ctx, dut, s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, dut, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to RPC service on the DUT: ", err)
 	}
