@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c45ded9f_46904718",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-11-01T21:16:45Z",
+      "side": 1,
+      "message": "This will not terminate the test, but rather print an error message, see src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go, line 265.\n\nLet\u0027s work on s2idle in the next CL, WDYT?",
+      "parentUuid": "5c66d161_501eae41",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 3
+      },
+      "revId": "9f5b38a8637f1c4c15294363f118f3b147ce27b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c798d54_f54e6ee2",
         "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-01T00:03:40Z",
       "side": 1,
       "message": "nit: for consistency with the else case, move this comment after the if",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 33
+      },
+      "revId": "9f5b38a8637f1c4c15294363f118f3b147ce27b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94de23cb_697c179e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-11-01T21:16:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c798d54_f54e6ee2",
       "range": {
         "startLine": 97,
         "startChar": 1,
