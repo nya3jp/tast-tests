@@ -9,6 +9,7 @@ package ossettings
 import (
 	"context"
 	"fmt"
+	"encoding/json"
 	"strings"
 	"time"
 
@@ -159,37 +160,106 @@ func (s *OSSettings) ChromeConn(ctx context.Context, cr *chrome.Chrome) (*chrome
 	return settingsConn, nil
 }
 
+type authenticationToken struct {
+	Token string `json:"token"`
+	LifetimeSeconds int `json:"lifetimeSeconds`
+}
+
+func (s *OSSettings) authToken(ctx context.Context, settingsConn *chrome.Conn, password string) (*authenticationToken, error) {
+                // Wait for chrome.quickUnlockPrivate to be available.
+                if err := settingsConn.WaitForExpr(ctx, `chrome.quickUnlockPrivate !== undefined`); err != nil {
+                        return nil, errors.Wrap(err, "failed waiting for chrome.quickUnlockPrivate to load")
+                }
+                var token authenticationToken
+                if err := settingsConn.Call(ctx, &token,
+                        `password => tast.promisify(chrome.quickUnlockPrivate.getAuthToken)(password)`, password,
+                ); err != nil {
+                        return nil, errors.Wrap(err, "failed to get auth token")
+                }
+	return &token, nil
+}
+
 // EnablePINUnlock returns a function that enables unlocking the device with the specified PIN.
 func (s *OSSettings) EnablePINUnlock(cr *chrome.Chrome, password, PIN string, autosubmit bool) uiauto.Action {
 	return func(ctx context.Context) error {
 		settingsConn, err := s.ChromeConn(ctx, cr)
+                if err != nil {
+                        return errors.Wrap(err, "failed to connect to OS settings target")
+                }
+		token, err := s.authToken(ctx, settingsConn, password)
 		if err != nil {
-			return errors.Wrap(err, "failed to connect to OS settings target")
+			return errors.Wrap(err, "failed to get auth token")
 		}
-		// Wait for chrome.quickUnlockPrivate to be available.
-		if err := settingsConn.WaitForExpr(ctx, `chrome.quickUnlockPrivate !== undefined`); err != nil {
-			return errors.Wrap(err, "failed waiting for chrome.quickUnlockPrivate to load")
-		}
-
-		// An auth token is required to set up the PIN.
-		var token string
-		if err := settingsConn.Call(ctx, &token,
-			`password => tast.promisify(chrome.quickUnlockPrivate.getAuthToken)(password).then(authToken => authToken['token'])`, password,
+		testing.ContextLog(ctx, token)
+		if err := settingsConn.Call(ctx, nil,
+			`(token, PIN) => tast.promisify(chrome.quickUnlockPrivate.setModes)(token, [chrome.quickUnlockPrivate.QuickUnlockMode.PIN], [PIN])`, token.Token, PIN,
 		); err != nil {
 			return errors.Wrap(err, "failed to get auth token")
 		}
 
 		if err := settingsConn.Call(ctx, nil,
-			`(token, PIN) => tast.promisify(chrome.quickUnlockPrivate.setModes)(token, [chrome.quickUnlockPrivate.QuickUnlockMode.PIN], [PIN])`, token, PIN,
+			`tast.promisify(chrome.quickUnlockPrivate.setPinAutosubmitEnabled)`, token.Token, PIN, autosubmit,
 		); err != nil {
 			return errors.Wrap(err, "failed to get auth token")
 		}
+		return nil
+	}
+}
 
-		if err := settingsConn.Call(ctx, nil,
-			`tast.promisify(chrome.quickUnlockPrivate.setPinAutosubmitEnabled)`, token, PIN, autosubmit,
-		); err != nil {
-			return errors.Wrap(err, "failed to get auth token")
+func (s *OSSettings) DisableSmartLockLogin(cr *chrome.Chrome) uiauto.Action {
+        return func(ctx context.Context) error {
+		settingsConn, err := s.ChromeConn(ctx, cr)
+                if err != nil {
+                        return errors.Wrap(err, "failed to connect to OS settings target")
+                }
+		smartLockSubpage := `document.querySelector("os-settings-ui").shadowRoot` +
+                `.querySelector("os-settings-main").shadowRoot` +
+                `.querySelector("os-settings-page").shadowRoot` +
+                `.querySelector("settings-multidevice-page").shadowRoot` +
+                `.querySelector("settings-multidevice-smartlock-subpage")`
+                if err := settingsConn.WaitForExpr(ctx, smartLockSubpage); err != nil {
+                        return errors.Wrap(err, "failed waiting for Smart Lock subpage to load")
+                }
+		if err := settingsConn.Eval(ctx, smartLockSubpage+`.updateSmartLockSignInEnabled_(false)`, nil); err != nil {
+                        return errors.Wrap(err, "failed to toggle smart lock login button")
+                }
+		return nil
+	}
+}
+
+func (s *OSSettings) EnableSmartLockLogin(cr *chrome.Chrome, password string) uiauto.Action {
+        return func(ctx context.Context) error {
+                settingsConn, err := s.ChromeConn(ctx, cr)
+                if err != nil {
+                        return errors.Wrap(err, "failed to connect to OS settings target")
+                }
+                token, err := s.authToken(ctx, settingsConn, password)
+                if err != nil {
+                        return errors.Wrap(err, "failed to get auth token")
+                }
+		data, err := json.Marshal(token)
+		if err != nil {
+			return errors.Wrap(err, "failed to marshall auth token to JSON")
 		}
+		testing.ContextLog(ctx, "Token is: %v", token)
+		testing.ContextLogf(ctx, "data is: %s", data)
+		smartLockSubpage := `document.querySelector("os-settings-ui").shadowRoot` +
+                `.querySelector("os-settings-main").shadowRoot` +
+                `.querySelector("os-settings-page").shadowRoot` +
+                `.querySelector("settings-multidevice-page").shadowRoot` +
+                `.querySelector("settings-multidevice-smartlock-subpage")`
+		if err := settingsConn.WaitForExpr(ctx, smartLockSubpage); err != nil {
+			return errors.Wrap(err, "failed waiting for Smart Lock subpage to load")
+		}
+		expr := fmt.Sprintf(`%s.authToken_ = %s`, smartLockSubpage, data)
+                testing.ContextLogf(ctx, "expression is: %s", expr)
+		if err := settingsConn.Eval(ctx, expr, nil); err != nil {
+                        return errors.Wrap(err, "failed to set authToken_ property")
+                }
+                if err := settingsConn.Eval(ctx, smartLockSubpage+`.onEnableSignInDialogClose_()`, nil); err != nil {
+                        return errors.Wrap(err, "failed to toggle smart lock login button")
+                }
+
 		return nil
 	}
 }

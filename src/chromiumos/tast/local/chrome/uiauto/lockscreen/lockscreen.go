@@ -157,3 +157,13 @@ func WaitForSmartUnlockReady(ctx context.Context, tconn *chrome.TestConn) error 
 	}
 	return nil
 }
+
+// WaitForSmartUnlockReady waits for UI signal that the chromebook is ready to be unlocked by Smart Lock.
+func WaitForSmartUnlockPasswordPrompt(ctx context.Context, tconn *chrome.TestConn) error {
+        finder := nodewith.NameContaining("Enter your password to enable Smart Lock.").Role(role.StaticText)
+        ui := uiauto.New(tconn)
+        if err := ui.WaitUntilExists(finder)(ctx); err != nil {
+                return errors.Wrap(err, "failed to wait for Smart Lock UI to show password will help you with smart lock")
+        }
+        return nil
+}

@@ -31,7 +31,7 @@ import (
 // NewCrossDeviceOnboarded creates a fixture that logs in to CrOS, pairs it with an Android device,
 // and ensures the features in the "Connected devices" section of OS Settings are ready to use (Smart Lock, Phone Hub, etc.).
 // Note that crossdevice fixtures inherit from crossdeviceAndroidSetup.
-func NewCrossDeviceOnboarded(allFeatures bool) testing.FixtureImpl {
+func NewCrossDeviceOnboarded(allFeatures, saveScreenRecording, lockFixture bool) testing.FixtureImpl {
 	tags := []string{
 		"*nearby*=3",
 		"*cryptauth*=3",
@@ -48,6 +48,8 @@ func NewCrossDeviceOnboarded(allFeatures bool) testing.FixtureImpl {
 	return &crossdeviceFixture{
 		opts:        defaultOpts,
 		allFeatures: allFeatures,
+		saveScreenRecording: saveScreenRecording,
+		lockFixture: lockFixture,
 	}
 }
 
@@ -68,7 +70,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "crossdeviceAndroidSetupPhoneHub",
-		Impl:   NewCrossDeviceOnboarded(true),
+		Impl:   NewCrossDeviceOnboarded(true, true, true),
 		Vars: []string{
 			customCrOSUsername,
 			customCrOSPassword,
@@ -88,7 +90,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "crossdeviceAndroidSetupSmartLock",
-		Impl:   NewCrossDeviceOnboarded(false),
+		Impl:   NewCrossDeviceOnboarded(false, true, true),
 		Vars: []string{
 			customCrOSUsername,
 			customCrOSPassword,
@@ -100,6 +102,26 @@ func init() {
 		PreTestTimeout:  resetTimeout,
 		PostTestTimeout: resetTimeout,
 	})
+	testing.AddFixture(&testing.Fixture{
+                Name: "crossdeviceOnboardedNoVideoNoLock",
+                Desc: "User is signed in (with GAIA) to CrOS and paired with an Android phone with default Cross Device features enabled. Doesn't save screen recording or lock the fixture before starting the test.",
+                Contacts: []string{
+                        "kyleshima@chromium.org",
+                        "chromeos-sw-engprod@google.com",
+                },
+                Parent: "crossdeviceAndroidSetupSmartLock",
+                Impl:   NewCrossDeviceOnboarded(false, false, false),
+                Vars: []string{
+                        customCrOSUsername,
+                        customCrOSPassword,
+                        KeepStateVar,
+                },
+                SetUpTimeout:    4 * time.Minute,
+                ResetTimeout:    resetTimeout,
+                TearDownTimeout: resetTimeout,
+                PreTestTimeout:  resetTimeout,
+                PostTestTimeout: resetTimeout,
+        })
 
 }
 
@@ -115,6 +137,8 @@ type crossdeviceFixture struct {
 	logMarker                         *logsaver.Marker // Marker for per-test log.
 	allFeatures                       bool
 	saveAndroidScreenRecordingOnError func(context.Context, func() bool) error
+	saveScreenRecording               bool
+	lockFixture			  bool
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -134,6 +158,9 @@ type FixtData struct {
 	// The credentials to be used on both chromebook and phone.
 	Username string
 	Password string
+
+	// The options used to start Chrome sessions.
+	ChromeOptions []chrome.Option
 }
 
 func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -165,20 +192,20 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	} else {
 		s.Log("Logging in with default GAIA credentials")
 	}
-	f.opts = append(f.opts, chrome.GAIALogin(chrome.Creds{User: crosUsername, Pass: crosPassword}))
+	opts := append(f.opts, chrome.GAIALogin(chrome.Creds{User: crosUsername, Pass: crosPassword}))
 	if val, ok := s.Var(KeepStateVar); ok {
 		b, err := strconv.ParseBool(val)
 		if err != nil {
 			s.Fatalf("Unable to convert %v var to bool: %v", KeepStateVar, err)
 		}
 		if b {
-			f.opts = append(f.opts, chrome.KeepState())
+			opts = append(opts, chrome.KeepState())
 		}
 	}
 
 	cr, err := chrome.New(
 		ctx,
-		f.opts...,
+		opts...,
 	)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -246,20 +273,26 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	f.crosAttributes = crosAttributes
 
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
-	chrome.Lock()
+	if f.lockFixture {
+		chrome.Lock()
+	}
 
 	return &FixtData{
 		Chrome:        cr,
 		TestConn:      tconn,
 		AndroidDevice: androidDevice,
+		Username:      crosUsername,
 		Password:      crosPassword,
+		ChromeOptions:       f.opts,
 	}
 }
 
 func (f *crossdeviceFixture) TearDown(ctx context.Context, s *testing.FixtState) {
-	chrome.Unlock()
-	if err := f.cr.Close(ctx); err != nil {
-		s.Log("Failed to close Chrome connection: ", err)
+	if f.lockFixture {
+		chrome.Unlock()
+		if err := f.cr.Close(ctx); err != nil {
+			s.Log("Failed to close Chrome connection: ", err)
+		}
 	}
 	f.cr = nil
 }
@@ -295,23 +328,25 @@ func (f *crossdeviceFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 		s.Fatal("Failed to clear logcat: ", err)
 	}
 
-	if f.kb == nil {
+	if f.saveScreenRecording {
+		if f.kb == nil {
 		// Use virtual keyboard since uiauto.StartRecordFromKB assumes F5 is the overview key.
-		kb, err := input.VirtualKeyboard(ctx)
-		if err != nil {
-			s.Fatal("Failed to setup keyboard for screen recording: ", err)
+			kb, err := input.VirtualKeyboard(ctx)
+			if err != nil {
+				s.Fatal("Failed to setup keyboard for screen recording: ", err)
+			}
+			f.kb = kb
 		}
-		f.kb = kb
-	}
-	if err := uiauto.StartRecordFromKB(ctx, f.tconn, f.kb); err != nil {
-		s.Fatal("Failed to start screen recording on CrOS: ", err)
-	}
+		if err := uiauto.StartRecordFromKB(ctx, f.tconn, f.kb); err != nil {
+			s.Fatal("Failed to start screen recording on CrOS: ", err)
+		}
 
-	saveScreen, err := f.androidDevice.StartScreenRecording(s.TestContext(), "android-screen", s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start screen recording on Android: ", err)
+		saveScreen, err := f.androidDevice.StartScreenRecording(s.TestContext(), "android-screen", s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to start screen recording on Android: ", err)
+		}
+		f.saveAndroidScreenRecordingOnError = saveScreen
 	}
-	f.saveAndroidScreenRecordingOnError = saveScreen
 }
 
 func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
@@ -332,22 +367,24 @@ func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 		s.Fatal("Failed to save logcat logs: ", err)
 	}
 
-	if err := f.saveAndroidScreenRecordingOnError(ctx, s.HasError); err != nil {
-		s.Fatal("Failed to save Android screen recording: ", err)
-	}
-	f.saveAndroidScreenRecordingOnError = nil
+	if f.saveScreenRecording {
+		if err := f.saveAndroidScreenRecordingOnError(ctx, s.HasError); err != nil {
+			s.Fatal("Failed to save Android screen recording: ", err)
+		}
+		f.saveAndroidScreenRecordingOnError = nil
 
-	ui := uiauto.New(f.tconn)
-	var crosRecordErr error
-	if err := ui.Exists(uiauto.ScreenRecordStopButton); err != nil {
-		// Smart Lock tests automatically stop the screen recording when they lock the screen.
-		// The screen recording should still exist though.
-		crosRecordErr = uiauto.SaveRecordFromKBOnError(ctx, f.tconn, s.HasError, s.OutDir())
-	} else {
-		crosRecordErr = uiauto.StopRecordFromKBAndSaveOnError(ctx, f.tconn, s.HasError, s.OutDir())
-	}
-	if crosRecordErr != nil {
-		s.Fatal("Failed to save CrOS screen recording: ", crosRecordErr)
+		ui := uiauto.New(f.tconn)
+		var crosRecordErr error
+		if err := ui.Exists(uiauto.ScreenRecordStopButton); err != nil {
+			// Smart Lock tests automatically stop the screen recording when they lock the screen.
+			// The screen recording should still exist though.
+			crosRecordErr = uiauto.SaveRecordFromKBOnError(ctx, f.tconn, s.HasError, s.OutDir())
+		} else {
+			crosRecordErr = uiauto.StopRecordFromKBAndSaveOnError(ctx, f.tconn, s.HasError, s.OutDir())
+		}
+		if crosRecordErr != nil {
+			s.Fatal("Failed to save CrOS screen recording: ", crosRecordErr)
+		}
 	}
 }
 
