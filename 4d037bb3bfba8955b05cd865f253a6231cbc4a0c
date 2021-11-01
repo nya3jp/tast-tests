@@ -16,6 +16,109 @@
       "message": "Hi Patrick,\nCould you help review as a tast owner?\nThanks!",
       "revId": "4d037bb3bfba8955b05cd865f253a6231cbc4a0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc17aca7_460d29a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-01T23:46:00Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "4d037bb3bfba8955b05cd865f253a6231cbc4a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6792ccb1_6cbf2a58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/local_perfetto_tbm_traced_probes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-01T23:46:00Z",
+      "side": 1,
+      "message": "nit: insert \" commands.\" ? (or are these files?)",
+      "range": {
+        "startLine": 27,
+        "startChar": 91,
+        "endLine": 27,
+        "endChar": 93
+      },
+      "revId": "4d037bb3bfba8955b05cd865f253a6231cbc4a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f609664_0eaf0375",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/tracing/utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-01T23:46:00Z",
+      "side": 1,
+      "message": "os.Remove() returns an error, which should be logged or handled\nhttps://github.com/golang/go/wiki/CodeReviewComments#handle-errors\ngo/go-style/decisions#handle-errors",
+      "revId": "4d037bb3bfba8955b05cd865f253a6231cbc4a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5885b1c_d028c07e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/tracing/utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-01T23:46:00Z",
+      "side": 1,
+      "message": "nit: Get... is not idiomatic go unless the underlying concept relates to GET (e.g. HTTP GET).\ngo/go-style/decisions#getters",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "4d037bb3bfba8955b05cd865f253a6231cbc4a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "810260d1_7b364297",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/tracing/utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-01T23:46:00Z",
+      "side": 1,
+      "message": "optional: This is a borderline case, but I think this function would be clearer with explicitly specified return values rather than naked returns\nhttps://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters\ngo/go-style/decisions#named-result-parameters",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 7
+      },
+      "revId": "4d037bb3bfba8955b05cd865f253a6231cbc4a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
