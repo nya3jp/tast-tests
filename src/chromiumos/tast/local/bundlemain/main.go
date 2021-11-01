@@ -130,6 +130,15 @@ func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx conte
 		s.Log("Saving log position: ", err)
 	}
 
+	// Check Telemetry folder status. See b/203609358
+	dir := "/usr/local/telemetry"
+	_, err = os.Stat(dir)
+	if err != nil {
+		s.Logf("Failed to find %s : %v", dir, err)
+	} else {
+		s.Log("Found ", dir)
+	}
+
 	// Ensure disk space and record the current free space.
 	checkFreeSpace := false
 	freeSpaceBefore, err := ensureDiskSpace(ctx, s.Purgeable())
