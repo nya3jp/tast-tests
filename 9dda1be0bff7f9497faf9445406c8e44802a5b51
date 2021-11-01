@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaf56f18_fc84c39c",
+        "filename": "src/chromiumos/tast/local/uidetection/api/ui_detection.proto",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-01T23:22:34Z",
+      "side": 1,
+      "message": "nit/optional: Normally for proto messages we have a brief comment describing them.",
+      "revId": "9dda1be0bff7f9497faf9445406c8e44802a5b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
