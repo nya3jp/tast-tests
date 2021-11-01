@@ -159,6 +159,26 @@ func (s *OSSettings) ChromeConn(ctx context.Context, cr *chrome.Chrome) (*chrome
 	return settingsConn, nil
 }
 
+type authenticationToken struct {
+	Token           string `json:"token"`
+	LifetimeSeconds int    `json:"lifetimeSeconds`
+}
+
+// AuthToken retrieves an authentication token to be used to change settings that require a user to enter a password.
+func (s *OSSettings) AuthToken(ctx context.Context, settingsConn *chrome.Conn, password string) (*authenticationToken, error) {
+	// Wait for chrome.quickUnlockPrivate to be available.
+	if err := settingsConn.WaitForExpr(ctx, `chrome.quickUnlockPrivate !== undefined`); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for chrome.quickUnlockPrivate to load")
+	}
+	var token authenticationToken
+	if err := settingsConn.Call(ctx, &token,
+		`password => tast.promisify(chrome.quickUnlockPrivate.getAuthToken)(password)`, password,
+	); err != nil {
+		return nil, errors.Wrap(err, "failed to get auth token")
+	}
+	return &token, nil
+}
+
 // EnablePINUnlock returns a function that enables unlocking the device with the specified PIN.
 func (s *OSSettings) EnablePINUnlock(cr *chrome.Chrome, password, PIN string, autosubmit bool) uiauto.Action {
 	return func(ctx context.Context) error {
@@ -166,27 +186,19 @@ func (s *OSSettings) EnablePINUnlock(cr *chrome.Chrome, password, PIN string, au
 		if err != nil {
 			return errors.Wrap(err, "failed to connect to OS settings target")
 		}
-		// Wait for chrome.quickUnlockPrivate to be available.
-		if err := settingsConn.WaitForExpr(ctx, `chrome.quickUnlockPrivate !== undefined`); err != nil {
-			return errors.Wrap(err, "failed waiting for chrome.quickUnlockPrivate to load")
+		token, err := s.AuthToken(ctx, settingsConn, password)
+		if err != nil {
+			return errors.Wrap(err, "failed to get auth token")
 		}
-
-		// An auth token is required to set up the PIN.
-		var token string
-		if err := settingsConn.Call(ctx, &token,
-			`password => tast.promisify(chrome.quickUnlockPrivate.getAuthToken)(password).then(authToken => authToken['token'])`, password,
+		testing.ContextLog(ctx, token)
+		if err := settingsConn.Call(ctx, nil,
+			`(token, PIN) => tast.promisify(chrome.quickUnlockPrivate.setModes)(token, [chrome.quickUnlockPrivate.QuickUnlockMode.PIN], [PIN])`, token.Token, PIN,
 		); err != nil {
 			return errors.Wrap(err, "failed to get auth token")
 		}
 
 		if err := settingsConn.Call(ctx, nil,
-			`(token, PIN) => tast.promisify(chrome.quickUnlockPrivate.setModes)(token, [chrome.quickUnlockPrivate.QuickUnlockMode.PIN], [PIN])`, token, PIN,
-		); err != nil {
-			return errors.Wrap(err, "failed to get auth token")
-		}
-
-		if err := settingsConn.Call(ctx, nil,
-			`tast.promisify(chrome.quickUnlockPrivate.setPinAutosubmitEnabled)`, token, PIN, autosubmit,
+			`tast.promisify(chrome.quickUnlockPrivate.setPinAutosubmitEnabled)`, token.Token, PIN, autosubmit,
 		); err != nil {
 			return errors.Wrap(err, "failed to get auth token")
 		}
