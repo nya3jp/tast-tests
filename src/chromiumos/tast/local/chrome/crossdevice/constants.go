@@ -21,15 +21,31 @@ const AccountUtilApk = "GoogleAccountUtil.apk"
 const KeepStateVar = "keepState"
 
 // Feature defines the Cross Device feature we are testing.
-type Feature int
+type Feature struct {
+	Name       FeatureName
+	SubFeature SubFeature
+}
+
+// FeatureName is the name of the Cross Device feature to test.
+type FeatureName int
 
 const (
 	// SmartLock defines Smart Lock
-	SmartLock Feature = iota
+	SmartLock FeatureName = iota
 	// PhoneHub defines Phone Hub
 	PhoneHub
 	// NearbyShare defines Nearby Share
 	NearbyShare
 	// Exo defines Exo
 	Exo
+)
+
+// SubFeature is the specific part of a feature we are testing.
+type SubFeature int
+
+const (
+	// SmartLockUnlock defines unlocking with Smart Lock
+	SmartLockUnlock SubFeature = iota
+	// SmartLockLogin defines logging in with Smart Lock
+	SmartLockLogin
 )
