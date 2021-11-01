@@ -117,7 +117,7 @@ func DeviceUSBPowershare(ctx context.Context, s *testing.State) {
 				s.Error("Failed to clear TPM: ", err)
 			}
 
-			cl, err := rpc.Dial(ctx, d, s.RPCHint(), "cros")
+			cl, err := rpc.Dial(ctx, d, s.RPCHint())
 			if err != nil {
 				s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 			}

@@ -94,7 +94,7 @@ func resetTPM(ctx context.Context, dut *dut.DUT) error {
 }
 
 func enroll(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
-	client, err := rpc.Dial(ctx, dut, rpcHint, "cros")
+	client, err := rpc.Dial(ctx, dut, rpcHint)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
@@ -153,7 +153,7 @@ func ensureSensitiveDataIsNotLogged(ctx context.Context, dut *dut.DUT, sensitive
 }
 
 func verifyRollback(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
-	client, err := rpc.Dial(ctx, dut, rpcHint, "cros")
+	client, err := rpc.Dial(ctx, dut, rpcHint)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}

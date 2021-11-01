@@ -67,7 +67,7 @@ func GetTi50TestBoard(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHin
 	if mode == WorkstationMode {
 		board = ti50.NewConnectedAndreiboard(tty, bufLen, spiflash, readTimeout)
 	} else if mode == LabMode {
-		rpcClient, err = rpc.Dial(ctx, dut, rpcHint, "cros")
+		rpcClient, err = rpc.Dial(ctx, dut, rpcHint)
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "dialing rpc")
 		}

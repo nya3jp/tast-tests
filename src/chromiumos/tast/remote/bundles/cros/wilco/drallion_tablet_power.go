@@ -60,7 +60,7 @@ func DrallionTabletPower(ctx context.Context, s *testing.State) {
 	defer pxy.Close(ctx)
 
 	// Connect to the gRPC server on the DUT.
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC: ", err)
 	}
@@ -159,7 +159,7 @@ func DrallionTabletPower(ctx context.Context, s *testing.State) {
 		initID = curID
 
 		// Reconnect to the gRPC server on the DUT for following test cases
-		cl, err = rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+		cl, err = rpc.Dial(ctx, s.DUT(), s.RPCHint())
 		if err != nil {
 			return errors.Wrap(err, "failed to connect to the RPC")
 		}

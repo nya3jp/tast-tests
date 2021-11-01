@@ -53,7 +53,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 	param := s.Param().(conference.TestParameters)
 
 	dut := s.DUT()
-	c, err := rpc.Dial(ctx, dut, s.RPCHint(), "cros")
+	c, err := rpc.Dial(ctx, dut, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to dial to remote dut: ", err)
 	}

@@ -32,7 +32,7 @@ func init() {
 
 func UpdateRootfsToStateful(ctx context.Context, s *testing.State) {
 	// Create a UpdateTestService client.
-	conn, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	conn, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to DUT: ", err)
 	}

@@ -43,7 +43,7 @@ func lsbReleaseEntry(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint
 	defer cancel()
 
 	// Connect to DUT.
-	cl, err := rpc.Dial(ctx, dut, rpcHint, "cros")
+	cl, err := rpc.Dial(ctx, dut, rpcHint)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}

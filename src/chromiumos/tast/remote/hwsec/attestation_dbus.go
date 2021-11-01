@@ -28,7 +28,7 @@ func NewAttestationDBus(d *dut.DUT, r *testing.RPCHint) (*AttestationDBus, error
 
 // GetStatus calls "GetStatus" gRPC D-Bus Interface.
 func (a *AttestationDBus) GetStatus(ctx context.Context, req *apb.GetStatusRequest) (*apb.GetStatusReply, error) {
-	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
@@ -39,7 +39,7 @@ func (a *AttestationDBus) GetStatus(ctx context.Context, req *apb.GetStatusReque
 
 // CreateEnrollRequest calls "CreateEnrollRequest" gRPC D-Bus Interface.
 func (a *AttestationDBus) CreateEnrollRequest(ctx context.Context, req *apb.CreateEnrollRequestRequest) (*apb.CreateEnrollRequestReply, error) {
-	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
@@ -50,7 +50,7 @@ func (a *AttestationDBus) CreateEnrollRequest(ctx context.Context, req *apb.Crea
 
 // FinishEnroll calls "FinishEnroll" gRPC D-Bus Interface.
 func (a *AttestationDBus) FinishEnroll(ctx context.Context, req *apb.FinishEnrollRequest) (*apb.FinishEnrollReply, error) {
-	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
@@ -61,7 +61,7 @@ func (a *AttestationDBus) FinishEnroll(ctx context.Context, req *apb.FinishEnrol
 
 // CreateCertificateRequest calls "CreateCertificateRequest" gRPC D-Bus Interface.
 func (a *AttestationDBus) CreateCertificateRequest(ctx context.Context, req *apb.CreateCertificateRequestRequest) (*apb.CreateCertificateRequestReply, error) {
-	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
@@ -72,7 +72,7 @@ func (a *AttestationDBus) CreateCertificateRequest(ctx context.Context, req *apb
 
 // FinishCertificateRequest calls "FinishCertificateRequest" gRPC D-Bus Interface.
 func (a *AttestationDBus) FinishCertificateRequest(ctx context.Context, req *apb.FinishCertificateRequestRequest) (*apb.FinishCertificateRequestReply, error) {
-	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
@@ -83,7 +83,7 @@ func (a *AttestationDBus) FinishCertificateRequest(ctx context.Context, req *apb
 
 // SignEnterpriseChallenge calls "SignEnterpriseChallenge" gRPC D-Bus Interface.
 func (a *AttestationDBus) SignEnterpriseChallenge(ctx context.Context, req *apb.SignEnterpriseChallengeRequest) (*apb.SignEnterpriseChallengeReply, error) {
-	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
@@ -94,7 +94,7 @@ func (a *AttestationDBus) SignEnterpriseChallenge(ctx context.Context, req *apb.
 
 // SignSimpleChallenge calls "SignSimpleChallenge" gRPC D-Bus Interface.
 func (a *AttestationDBus) SignSimpleChallenge(ctx context.Context, req *apb.SignSimpleChallengeRequest) (*apb.SignSimpleChallengeReply, error) {
-	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
@@ -105,7 +105,7 @@ func (a *AttestationDBus) SignSimpleChallenge(ctx context.Context, req *apb.Sign
 
 // GetKeyInfo calls "GetKeyInfo" gRPC D-Bus Interface.
 func (a *AttestationDBus) GetKeyInfo(ctx context.Context, req *apb.GetKeyInfoRequest) (*apb.GetKeyInfoReply, error) {
-	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
@@ -116,7 +116,7 @@ func (a *AttestationDBus) GetKeyInfo(ctx context.Context, req *apb.GetKeyInfoReq
 
 // GetEnrollmentID calls "GetEnrollmentID" gRPC D-Bus Interface.
 func (a *AttestationDBus) GetEnrollmentID(ctx context.Context, req *apb.GetEnrollmentIdRequest) (*apb.GetEnrollmentIdReply, error) {
-	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
@@ -127,7 +127,7 @@ func (a *AttestationDBus) GetEnrollmentID(ctx context.Context, req *apb.GetEnrol
 
 // SetKeyPayload calls "SetKeyPayload" gRPC D-Bus Interface.
 func (a *AttestationDBus) SetKeyPayload(ctx context.Context, req *apb.SetKeyPayloadRequest) (*apb.SetKeyPayloadReply, error) {
-	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
@@ -138,7 +138,7 @@ func (a *AttestationDBus) SetKeyPayload(ctx context.Context, req *apb.SetKeyPayl
 
 // RegisterKeyWithChapsToken calls "RegisterKeyWithChapsToken" gRPC D-Bus Interface.
 func (a *AttestationDBus) RegisterKeyWithChapsToken(ctx context.Context, req *apb.RegisterKeyWithChapsTokenRequest) (*apb.RegisterKeyWithChapsTokenReply, error) {
-	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
@@ -149,7 +149,7 @@ func (a *AttestationDBus) RegisterKeyWithChapsToken(ctx context.Context, req *ap
 
 // DeleteKeys calls "DeleteKeys" gRPC D-Bus Interface.
 func (a *AttestationDBus) DeleteKeys(ctx context.Context, req *apb.DeleteKeysRequest) (*apb.DeleteKeysReply, error) {
-	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint, "cros")
+	cl, err := rpc.Dial(ctx, a.dut, a.rpcHint)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}

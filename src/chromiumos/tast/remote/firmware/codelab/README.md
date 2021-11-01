@@ -425,7 +425,7 @@ In the test body, initialize an RPC connection:
 func Codelab(ctx context.Context, s *testing.State) {
 	...
 	// Connect to RPC
-	cl, err := rpc.Dial(ctx, dut, s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, dut, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to RPC service on the DUT: ", err)
 	}
@@ -563,7 +563,7 @@ Finally, let's use our `Helper` to initialize the RPC connection and BIOS servic
 	// OLD
 
 	// Connect to RPC
-	cl, err := rpc.Dial(ctx, dut, s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, dut, s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to RPC service on the DUT: ", err)
 	}

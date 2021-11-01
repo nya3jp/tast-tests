@@ -64,7 +64,7 @@ func resetBootlockboxValue(ctx context.Context, s *testing.State, bootLockboxCli
 
 func doAdbSideloadAction(ctx context.Context, s *testing.State, requestAction string) {
 	// Connect to the gRPC server on the DUT.
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
+	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
