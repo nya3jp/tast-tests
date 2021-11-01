@@ -12,10 +12,10 @@ import (
 	"regexp"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"

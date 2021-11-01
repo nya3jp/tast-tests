@@ -17,12 +17,11 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/android"
 	"chromiumos/tast/common/android/adb"
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android"
-	localadb "chromiumos/tast/local/android/adb"
-	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
@@ -280,7 +279,7 @@ func AndroidConfigure(ctx context.Context, androidNearby *nearbysnippet.AndroidN
 // AdbSetup configures adb and connects to the Android device with adb root if available.
 func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
 	// Load the ARC adb vendor key, which must be pre-loaded on the Android device to allow adb over usb without requiring UI interaction.
-	if err := localadb.LaunchServer(ctx); err != nil {
+	if err := adb.LaunchLocalADBServer(ctx); err != nil {
 		return nil, false, errors.Wrap(err, "failed to launch adb server")
 	}
 	// Wait for the first available device, since we are assuming only a single Android device is connected to each CrOS device.
