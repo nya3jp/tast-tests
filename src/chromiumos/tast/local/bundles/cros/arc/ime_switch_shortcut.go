@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/input"

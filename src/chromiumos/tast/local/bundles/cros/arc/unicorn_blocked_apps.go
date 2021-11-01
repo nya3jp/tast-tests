@@ -9,10 +9,10 @@ import (
 	"sort"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"

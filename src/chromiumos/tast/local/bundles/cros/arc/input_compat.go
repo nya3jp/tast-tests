@@ -9,8 +9,8 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
