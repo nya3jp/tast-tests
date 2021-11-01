@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "265d8997_b5a1d18f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-11-01T06:29:57Z",
+      "side": 1,
+      "message": "Hi Judy,\nSince the root cause of an error was found after internal investigation and verification, a few lines of code (64-85 lines) were added. I apologize for the inconvenience caused to you again. Please review, thanks!",
+      "revId": "387d949c366892cc6570031ca3799584fc640179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
