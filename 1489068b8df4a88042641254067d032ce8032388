@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf982a26_bd973fb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-11-01T11:31:35Z",
+      "side": 1,
+      "message": "If this test is failing on particular models, it seems related to this test. Lab issues unrelated to the test itself would be something like network flakiness or lab outages. Can you rewrite this sentence?",
+      "range": {
+        "startLine": 10,
+        "startChar": 35,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "1489068b8df4a88042641254067d032ce8032388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "044bf16b_4c71c518",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-11-01T11:31:35Z",
+      "side": 1,
+      "message": "I don\u0027t understand what this sentence is saying. It says that tests are remaining informational, which seems to contradict what the first sentence says. Is this referring to a different group of tests?",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "1489068b8df4a88042641254067d032ce8032388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cc2ef83_bd4f0b0f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-11-01T11:31:35Z",
+      "side": 1,
+      "message": "Where did these lists come from? Is there a reason why these tests are expected to be flaky on these boards/models but not others? I don\u0027t think not having observed failures on the \u0027stable\u0027 boards is a good enough argument to add them to CQ, given that the there are multiple different boards which are all slightly flaky. It\u0027s entirely possible that the \u0027stable\u0027 boards are also flaky, but we just haven\u0027t seen it. Is there a compelling reason why every board not on this list is expected to always pass?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 106
+      },
+      "revId": "1489068b8df4a88042641254067d032ce8032388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
