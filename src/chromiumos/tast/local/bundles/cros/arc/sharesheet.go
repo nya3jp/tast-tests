@@ -11,10 +11,9 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android/ui"
-	arcui "chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -110,19 +109,19 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 	// The Sharesheet appears to not properly update the accessibility tree with
 	// the coordinates whilst animating. The total time to animate is currently 150ms
 	// so setting to 1s to ensure low-end devices are given enough time.
-	ui := uiauto.New(tconn).WithInterval(time.Second)
+	crosui := uiauto.New(tconn).WithInterval(time.Second)
 	sharesheetTargetButton := nodewith.Role(role.Button).NameContaining(appShareLabel).ClassName("SharesheetTargetButton")
 
 	if err := uiauto.Combine("open Downloads and click sharesheet",
 		files.OpenDownloads(),
 		files.ClickContextMenuItem(expectedFileName, filesapp.Share),
-		ui.LeftClick(sharesheetTargetButton),
+		crosui.LeftClick(sharesheetTargetButton),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open downloads and click share button: ", err)
 	}
 
 	// Wait for the file contents to show in the Android test app.
-	fileContentField := uiAutomator.Object(arcui.ID(fileContentsID), arcui.Text(expectedFileContents))
+	fileContentField := uiAutomator.Object(ui.ID(fileContentsID), ui.Text(expectedFileContents))
 	if err := fileContentField.WaitForExists(ctx, 15*time.Second); err != nil {
 		s.Fatalf("Failed to wait for file contents %q to appear in ARC window: %v", expectedFileContents, err)
 	}

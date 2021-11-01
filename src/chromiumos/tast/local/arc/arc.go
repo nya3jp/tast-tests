@@ -21,7 +21,6 @@ import (
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	localadb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/syslog"
@@ -249,7 +248,7 @@ func NewWithSyslogReader(ctx context.Context, outDir string, reader *syslog.Read
 	testing.ContextLog(ctx, "Setting up ADB connection")
 	ch = make(chan error, 1)
 	go func() {
-		ch <- localadb.LaunchServer(ctx)
+		ch <- adb.LaunchLocalADBServer(ctx)
 	}()
 
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.

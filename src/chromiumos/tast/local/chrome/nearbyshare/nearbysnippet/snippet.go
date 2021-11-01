@@ -11,12 +11,12 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/android"
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/mobly"
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android"
-	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/testing"
 )
 

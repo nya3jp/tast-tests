@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -61,7 +61,7 @@ func NewARCClient(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome
 	// Launching the testing app
 	act, err := arc.NewActivity(a, pkg, cls)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create a new activity: ")
+		return nil, errors.Wrap(err, "failed to create a new activity")
 	}
 	defer func() {
 		if retErr != nil {
@@ -70,7 +70,7 @@ func NewARCClient(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome
 	}()
 
 	if err := act.Start(ctx, tconn); err != nil {
-		return nil, errors.Wrap(err, "failed to start the activity: ")
+		return nil, errors.Wrap(err, "failed to start the activity")
 	}
 	defer func() {
 		if retErr != nil {
@@ -80,7 +80,7 @@ func NewARCClient(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome
 
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to initialize UI Automator: ")
+		return nil, errors.Wrap(err, "failed to initialize UI Automator")
 	}
 
 	return &ARCClient{arc: a, act: act, d: d}, nil
