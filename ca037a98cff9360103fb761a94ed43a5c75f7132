@@ -16,6 +16,46 @@
       "message": "Rebase and also:\n1. Change all .y4m to .mjpeg since it is much smaller\n2. After checking with Inker, add ptz_scene.mjpeg instead of generating ptz scene dynamically for camera.CCAUIPTZ test",
       "revId": "ca037a98cff9360103fb761a94ed43a5c75f7132",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3a94205_a9987dc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-01T21:52:29Z",
+      "side": 1,
+      "message": "super optional, I\u0027d omit the word `test` here as it is clear we are testing.",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "ca037a98cff9360103fb761a94ed43a5c75f7132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bea7ca76_fc770136",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-01T21:52:29Z",
+      "side": 1,
+      "message": "defer cancel()",
+      "revId": "ca037a98cff9360103fb761a94ed43a5c75f7132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
