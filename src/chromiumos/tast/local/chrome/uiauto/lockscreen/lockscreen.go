@@ -87,6 +87,12 @@ func WaitForPasswordField(ctx context.Context, tconn *chrome.TestConn, username 
 	return uiauto.New(tconn).WithTimeout(timeout).WaitUntilExists(finder)(ctx)
 }
 
+// WaitForAuthError waits for the login error bubble that password or pin was not correct.
+func WaitForAuthError(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) error {
+	finder := nodewith.Role(role.AlertDialog).Attribute("name", "Your PIN or password couldn't be verified. Try again. Hit Control-Shift-Space to switch keyboard layout.").Attribute("className", "LoginErrorBubble")
+	return uiauto.New(tconn).WithTimeout(timeout).WaitUntilExists(finder)(ctx)
+}
+
 // EnterPassword enters and submits the given password. Refer to PasswordFieldFinder for username options.
 // It doesn't make any assumptions about the password being correct, so callers should verify the login/lock state afterwards.
 func EnterPassword(ctx context.Context, tconn *chrome.TestConn, username, password string, kb *input.KeyboardEventWriter) error {
