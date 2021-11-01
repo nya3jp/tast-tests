@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26064bc3_8bffc36e",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-01T19:22:19Z",
+      "side": 1,
+      "message": "tiny style nit: I think you can do\n```\nnearbySettings.Call(ctx, nil, `this.setIsOnboardingComplete`, true)\n```",
+      "range": {
+        "startLine": 57,
+        "startChar": 11,
+        "endLine": 57,
+        "endChar": 91
+      },
+      "revId": "946f64ac1d7f37e5113764de0f4b6565cbe61bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
