@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/wifi/intelfwextractor"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/network/iface"
 	"chromiumos/tast/local/shill"
@@ -134,10 +135,8 @@ func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for fw dump to be fully written, err: ", err)
 	}
 
-	// Check that the fw dump is not empty.
-	// TODO(b:169152720): Confirm the expected size of a firmware dump
-	// and replace the 500kB value.
-	if currentFileSize <= 500000 {
-		s.Fatalf("Unexpected fw dump size; got %f kB, want > 500 kB", float64(currentFileSize)/1000)
+	if err := intelfwextractor.ValidateFWDump(ctx, file); err != nil {
+		s.Fatal("Failed to validate the fw dump, err: ", err)
 	}
+
 }
