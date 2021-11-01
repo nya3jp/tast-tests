@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32d8dc88_a2b7d89a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-01T07:33:50Z",
+      "side": 1,
+      "message": "Rebase and also:\n1. Change all .y4m to .mjpeg since it is much smaller\n2. After checking with Inker, add ptz_scene.mjpeg instead of generating ptz scene dynamically for camera.CCAUIPTZ test",
+      "revId": "ca037a98cff9360103fb761a94ed43a5c75f7132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
