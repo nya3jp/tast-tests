@@ -12,9 +12,9 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
@@ -253,7 +253,7 @@ func everBackedUp(ctx context.Context, a *arc.ARC) (int64, error) {
 	}
 	everBackedUp, err := strconv.ParseInt(groups[1], 10, 64)
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to convert ever backed up to int: ")
+		return 0, errors.Wrap(err, "failed to convert ever backed up to int")
 	}
 	return everBackedUp, nil
 }
