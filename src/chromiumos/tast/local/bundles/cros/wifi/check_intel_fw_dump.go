@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/wifi/intelfwextractor"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/network/iface"
 	"chromiumos/tast/local/shill"
@@ -132,6 +133,10 @@ func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 		Interval: 100 * time.Millisecond,
 	}); err != nil {
 		s.Fatal("Failed to wait for fw dump to be fully written, err: ", err)
+	}
+
+	if err := intelfwextractor.ValidateFWDump(ctx, file); err != nil {
+		s.Fatal("Failed to validate the fw dump, err: ", err)
 	}
 
 	// Check that the fw dump is not empty.
