@@ -204,6 +204,12 @@ var Settings = App{
 	Name: "Settings",
 }
 
+// Translate has details about the Translate app.
+var Translate = App{
+	ID:   "pacmnfddiadhhfmngijgjdbnodjkmojl",
+	Name: "Translate",
+}
+
 // TelemetryExtension has details about the TelemetryExtension app.
 var TelemetryExtension = App{
 	ID:   "lhoocnmbcmmbjgdeaallonfplogkcneb",
