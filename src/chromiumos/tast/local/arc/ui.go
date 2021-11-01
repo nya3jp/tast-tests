@@ -9,9 +9,9 @@ import (
 	"os"
 	"path/filepath"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android/ui"
 )
 
 // NewUIDevice creates a Device object by starting and connecting to UI Automator server.

@@ -9,7 +9,7 @@ import (
 	"io/ioutil"
 	"time"
 
-	"chromiumos/tast/local/android/ui"
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"

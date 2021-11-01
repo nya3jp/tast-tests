@@ -11,7 +11,7 @@ import (
 	"net/http/httptest"
 	"time"
 
-	"chromiumos/tast/local/android/ui"
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
