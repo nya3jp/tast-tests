@@ -92,7 +92,7 @@ func Login(ctx context.Context, s *testing.State) {
 	testing.Sleep(ctx, postLoginCoolDownDuration)
 
 	s.Log("Measuring system memory and pressure in idle state")
-	basemem.Reset(ctx, arc)
+	basemem.Reset()
 	// Let the system quiesce for a while and measure its memory consumption.
 	testing.Sleep(ctx, quietDuration)
 	s.Log("Will now collect idle perf values")
