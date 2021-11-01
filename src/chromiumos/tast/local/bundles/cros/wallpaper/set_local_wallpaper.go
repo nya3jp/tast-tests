@@ -86,7 +86,7 @@ func SetLocalWallpaper(ctx context.Context, s *testing.State) {
 	pink := color.RGBA{255, 203, 198, 255}
 	// percentage takes into account the center cropped image is similar to the filled
 	// one.
-	const expectedPercent = 85
+	const expectedPercent = 70
 	if err := wallpaper.ValidateBackground(ctx, cr, pink, expectedPercent); err != nil {
 		s.Error("Failed to validate wallpaper background: ", err)
 	}
