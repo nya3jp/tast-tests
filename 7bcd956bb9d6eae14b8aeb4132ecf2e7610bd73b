@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb96ae3_362dc30f",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-01T23:28:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8ed120f7_07218f06",
+      "revId": "7bcd956bb9d6eae14b8aeb4132ecf2e7610bd73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a068b8c4_125783a9",
@@ -117,6 +135,30 @@
       "writtenOn": "2021-11-01T23:11:43Z",
       "side": 1,
       "message": "I think you want to move this to \"func\" based on the discussion that we have. I thought you mentioned that you wanted to check before each test started. Also, the name dir is too general.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 3
+      },
+      "revId": "7bcd956bb9d6eae14b8aeb4132ecf2e7610bd73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6524001f_bd577c5d",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-01T23:28:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6c04cce1_8306a0d2",
       "range": {
         "startLine": 123,
         "startChar": 0,
