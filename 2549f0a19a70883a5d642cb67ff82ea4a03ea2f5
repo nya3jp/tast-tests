@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d96fdd9_17864b23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-01T07:06:34Z",
+      "side": 1,
+      "message": "LGTM for local/chrome.\n",
+      "revId": "2549f0a19a70883a5d642cb67ff82ea4a03ea2f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
