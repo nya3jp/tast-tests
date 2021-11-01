@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"sort"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -703,6 +704,16 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to obtain the list of the installed apps")
 	}
 
+	// Some apps will disappear after pinned and make the shelf not overflow.
+	// Choose fake apps to prevent the problem.
+	apps := make([]*ChromeApp, 0)
+	for _, app := range installedApps {
+		if strings.HasPrefix(app.Name, "fake app") {
+			apps = append(apps, app)
+		}
+	}
+	installedApps = apps
+
 	displayInfo, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to obtain the display info")
@@ -737,6 +748,7 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 				return testing.PollBreak(errors.Wrapf(err, "failed to pin app %s", app.AppID))
 			}
 		}
+
 		return errors.New("still not overflow")
 	}, nil)
 }
