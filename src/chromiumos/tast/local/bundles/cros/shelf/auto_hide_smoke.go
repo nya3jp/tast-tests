@@ -27,7 +27,7 @@ func init() {
 			"cros-system-ui-eng@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{{
@@ -36,6 +36,7 @@ func init() {
 		}, {
 			Name:              "tablet_mode",
 			Val:               true,
+			ExtraAttr:         []string{"informational"},
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		},
 		},
