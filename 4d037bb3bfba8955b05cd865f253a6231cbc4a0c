@@ -188,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ca5b6e8_5b07f3a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/tracing/utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-11-02T07:01:37Z",
+      "side": 1,
+      "message": "Thanks! |TraceProcessor| it is then.",
+      "parentUuid": "b81821dc_85808598",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "4d037bb3bfba8955b05cd865f253a6231cbc4a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "810260d1_7b364297",
