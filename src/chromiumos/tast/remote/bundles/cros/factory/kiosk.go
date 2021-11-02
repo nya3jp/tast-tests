@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/bundles/cros/factory/fixture"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -34,10 +35,11 @@ func init() {
 		// Removing this test from all runs due to destructive nature. see b/203609358
 		// Attr:     []string{"group:mainline"},
 		Timeout: time.Minute,
-		Fixture: "ensureToolkit",
+		Fixture: fixture.EnsureToolkit,
 		// Skip "nyan_kitty" due to slow reboot speed, skip nocturne as
 		// it can not open the Kiosk page and is not manufactured.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty", "nocturne")),
+		SoftwareDeps: append([]string{"factory_flow"}, fixture.EnsureToolkitSoftwareDeps...),
 		Params: []testing.Param{{
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(unstablePlatforms...), hwdep.SkipOnModel(unstableModels...)),
 		}, {
