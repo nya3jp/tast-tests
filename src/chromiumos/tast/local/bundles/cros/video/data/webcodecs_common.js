@@ -141,12 +141,36 @@ async function CreateEncoder(
   return encoder;
 }
 
+async function createNewFrame(frame) {
+  let buffer = new Uint8Array(frame.allocationSize());
+  let layout = await frame.copyTo(buffer);
+  let bufferInit = {
+    format: frame.format,
+    codedWidth: frame.codedWidth,
+    codedHeight: frame.codedHeight,
+    timestamp: frame.timestamp,
+    duration: frame.duration,
+    layout : layout,
+    visibleRect: frame.visibleRect,
+    displayWidth: frame.displayWidth,
+    displayHeight: frame.displayHeight,
+    colorSpace: frame.colorSpace
+  };
+
+  return new VideoFrame(buffer, bufferInit);
+}
+
 async function decodeVideoInURL(videoURL, numFrames) {
   let demuxer = new MP4Demuxer(videoURL);
   let videoFrames = [];
   let decoder = new VideoDecoder({
     output(frame) {
-      videoFrames.push(frame);
+      createNewFrame(frame).then(newFrame => {
+        // newFrame may not be queued in order of calling output() because of
+        // createNewFrame execution time.
+        videoFrames.push(newFrame);
+        frame.close();
+      });
     },
     error(e){
       TEST.log("decoder error: " + e);
@@ -170,7 +194,15 @@ async function decodeVideoInURL(videoURL, numFrames) {
     (function waitForDecoded(){
       if (videoFrames.length == numFrames) {
         decoder.close();
-        return resolve(videoFrames);
+        // Sort videoFrames in order of timestamps.
+        let sortedVideoFrames = [];
+        videoFrames.sort(function(fa, fb) {
+          return fa.timestamp - fb.timestamp;
+        });
+        for (const vf of videoFrames) {
+          sortedVideoFrames.push(vf);
+        }
+        return resolve(sortedVideoFrames);
       }
       setTimeout(waitForDecoded, 20);
     })();
