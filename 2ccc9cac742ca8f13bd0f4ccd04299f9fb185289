@@ -92,6 +92,30 @@
       },
       "revId": "2ccc9cac742ca8f13bd0f4ccd04299f9fb185289",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f2369ea_38aee27e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/exo_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-11-02T18:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de9d3e38_7c339f23",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 4
+      },
+      "revId": "2ccc9cac742ca8f13bd0f4ccd04299f9fb185289",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
