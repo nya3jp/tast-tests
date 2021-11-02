@@ -73,7 +73,7 @@ func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 	accountUtilZip := s.DataPath(nearbysnippet.AccountUtilZip)
 
 	// Set up adb, connect to the Android phone, and check if ADB root access is available.
-	adbDevice, rooted, err := nearbysetup.AdbSetup(ctx)
+	adbDevice, rooted, err := AdbSetup(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up an adb device: ", err)
 	}
