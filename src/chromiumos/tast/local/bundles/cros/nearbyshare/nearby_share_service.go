@@ -175,7 +175,7 @@ func (n *NearbyService) CrOSSetup(ctx context.Context, req *nearbyservice.CrOSSe
 	n.deviceName = req.DeviceName
 	n.dataUsage = nearbysetup.DataUsage(req.DataUsage)
 	n.visibility = nearbysetup.Visibility(req.Visibility)
-	if err := nearbysetup.CrOSSetup(ctx, n.tconn, n.cr, n.dataUsage, n.visibility, n.deviceName); err != nil {
+	if err := nearbyshare.CrOSSetup(ctx, n.tconn, n.cr, n.dataUsage, n.visibility, n.deviceName); err != nil {
 		return nil, errors.Wrap(err, "failed to perform CrOS setup")
 	}
 	if n.visibility == nearbysetup.VisibilitySelectedContacts && req.SenderUsername != "" {
@@ -340,7 +340,7 @@ func (n *NearbyService) ClearTransferredFiles(ctx context.Context, req *empty.Em
 // CrOSAttributes retrieves useful information about the DUT to aid debugging.
 func (n *NearbyService) CrOSAttributes(ctx context.Context, req *empty.Empty) (*nearbyservice.CrOSAttributesResponse, error) {
 	testing.ContextLog(ctx, "Getting attributes about the device")
-	crosAttributes, err := nearbysetup.GetCrosAttributes(ctx, n.tconn, n.deviceName, n.username, n.dataUsage, n.visibility)
+	crosAttributes, err := nearbyshare.GetCrosAttributes(ctx, n.tconn, n.deviceName, n.username, n.dataUsage, n.visibility)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get CrOS attributes for reporting")
 	}

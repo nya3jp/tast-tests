@@ -61,7 +61,7 @@ func SmokeHighVisibilityUI(ctx context.Context, s *testing.State) {
 	// Set up Nearby Share on the CrOS device.
 	const crosBaseName = "cros_test"
 	crosDisplayName := nearbytestutils.RandomDeviceName(crosBaseName)
-	if err := nearbysetup.CrOSSetup(ctx, tconn, cr, nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, crosDisplayName); err != nil {
+	if err := nearbyshare.CrOSSetup(ctx, tconn, cr, nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, crosDisplayName); err != nil {
 		s.Fatal("Failed to set up Nearby Share: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)

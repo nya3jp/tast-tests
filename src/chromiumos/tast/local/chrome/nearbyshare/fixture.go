@@ -262,7 +262,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	// Set up Nearby Share on the CrOS device.
 	const crosBaseName = "cros_test"
 	crosDisplayName := nearbytestutils.RandomDeviceName(crosBaseName)
-	if err := nearbysetup.CrOSSetup(ctx, tconn, cr, f.crosDataUsage, f.crosVisibility, crosDisplayName); err != nil {
+	if err := CrOSSetup(ctx, tconn, cr, f.crosDataUsage, f.crosVisibility, crosDisplayName); err != nil {
 		s.Fatal("Failed to set up Nearby Share: ", err)
 	}
 
@@ -282,7 +282,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	}
 
 	// Store CrOS test metadata for reporting.
-	crosAttributes, err := nearbysetup.GetCrosAttributes(ctx, tconn, crosDisplayName, crosUsername, f.crosDataUsage, f.crosVisibility)
+	crosAttributes, err := GetCrosAttributes(ctx, tconn, crosDisplayName, crosUsername, f.crosDataUsage, f.crosVisibility)
 	if err != nil {
 		s.Fatal("Failed to get CrOS attributes for reporting: ", err)
 	}
