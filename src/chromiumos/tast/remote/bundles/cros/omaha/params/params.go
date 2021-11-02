@@ -8,12 +8,12 @@ package params
 
 const (
 	// CurrentStableChrome is the current stable milestone.
-	CurrentStableChrome = "92"
+	CurrentStableChrome = "93"
 	// CurrentStableChromeOS is the current stable OS version.
-	CurrentStableChromeOS = "13982"
+	CurrentStableChromeOS = "14092"
 
 	// NextStableChrome is the next stable milestone.
-	NextStableChrome = "93"
+	NextStableChrome = "94"
 	// NextStableChromeOS is the next stable OS version.
-	NextStableChromeOS = "14092"
+	NextStableChromeOS = "14150"
 )
