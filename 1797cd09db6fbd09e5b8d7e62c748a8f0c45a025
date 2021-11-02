@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca811e2_cae05ef8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163154
+      },
+      "writtenOn": "2021-11-02T23:14:19Z",
+      "side": 1,
+      "message": "I missed something obvious. I retract what I said earlier: \"In the tast test, my main goal is to capture those files. I\u0027m not concerned with reporting an api version as a perf metric.\".  I now see the benefit of reporting the Vulkan version to a dashboard; it provides a trivial way for anyone to answer the question \"Does this board support Vulkan? If yes, then roughly how much Vulkan does it support?\".",
+      "parentUuid": "9d462049_fbb9e0ce",
+      "revId": "1797cd09db6fbd09e5b8d7e62c748a8f0c45a025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c0b4f88_e430b551",
