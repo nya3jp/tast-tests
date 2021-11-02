@@ -361,10 +361,23 @@ func (ac *Context) Select(startNodeFinder *nodewith.Finder, startOffset int, end
 	}
 }
 
+func checkFragile(ctx context.Context, finder *nodewith.Finder) error {
+	if !ctx.Value(testing.IsMainline{}).(bool) {
+		return nil
+	}
+	if finder.HasName() {
+		return errors.New("mainline test should not use Name() matcher")
+	}
+	return nil
+}
+
 // Exists returns a function that returns nil if a node exists.
 // If any node in the chain is not found, it will return an error.
 func (ac *Context) Exists(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
+		if err := checkFragile(ctx, finder); err != nil {
+			return err
+		}
 		q, err := finder.GenerateQuery()
 		if err != nil {
 			return err
