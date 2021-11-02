@@ -16,6 +16,213 @@
       "message": "Addressed most of your comments. Waiting to here back on the rest while I make the changes necessary in the chromium repo to allow the drag and drop test to work without creating a junk file.",
       "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c60f498_09b43a22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T17:55:11Z",
+      "side": 1,
+      "message": "This test should unpin via the Files app context menu",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a62097a_a40e955a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T17:55:11Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8253f0f7_8aed096e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T17:55:11Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 37
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a6c49cb_6c9082f8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T17:55:11Z",
+      "side": 1,
+      "message": "Side effects :)",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68248c59_e0b748b2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T17:55:11Z",
+      "side": 1,
+      "message": "Can this not just be something like:\n\n```\nreturn uiauto.Combine(...,\n  RightClick(chip),\n  LeftClick(unpin),\n  WaitUntilGone(chip),\n  EnsureGoneFor(chip, ...)\n)(ctx)\n```",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 1
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e53808_ff839006",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T17:55:11Z",
+      "side": 1,
+      "message": "Side effects :)",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa4915d_5293a437",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T17:55:11Z",
+      "side": 1,
+      "message": "Rather than add a files app dependency to holding space util, it probably make sense to just move this into your test file",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 1
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "addf2ecc_3fe71016",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T17:55:11Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 40
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a433ceac_205ddc3b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T17:55:11Z",
+      "side": 1,
+      "message": "Just return Combine(...)(ctx)?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 11
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

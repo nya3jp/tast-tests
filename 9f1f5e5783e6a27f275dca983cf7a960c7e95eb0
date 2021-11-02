@@ -347,6 +347,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0da83a6e_a1e54060",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T17:55:11Z",
+      "side": 1,
+      "message": "It\u0027d be better to pass in (or at least expose) uiauto so that the caller can specify their own polling intervals and timeouts and we can cache an instance such that there shouldn\u0027t be any issues w/ restarting Chrome :) Take a look at the filesapp implementation as an example",
+      "parentUuid": "c336cfdd_f7c95d09",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 25
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbbec951_66c9d71a",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
         "patchSetId": 6
@@ -709,6 +733,30 @@
       "side": 1,
       "message": "Do you mean with a comment, or here? If you\u0027re asking about the invisible check, that\u0027s was to address your concern in comment #28. If you tell me to remove it, it\u0027s gone. 😊",
       "parentUuid": "b9a41921_6526f360",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 49
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a3fffe_7d4467dd",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T17:55:11Z",
+      "side": 1,
+      "message": "The concern was that we want to make sure it *is* still found even if it is not visible :)",
+      "parentUuid": "9d616e80_49995b14",
       "range": {
         "startLine": 181,
         "startChar": 0,
