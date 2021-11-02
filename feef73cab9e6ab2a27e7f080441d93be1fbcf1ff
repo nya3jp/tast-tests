@@ -16,6 +16,23 @@
       "message": "Hi Alexander, ptal.",
       "revId": "feef73cab9e6ab2a27e7f080441d93be1fbcf1ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7326f3b4_b095ce19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-11-02T17:05:04Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "feef73cab9e6ab2a27e7f080441d93be1fbcf1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
