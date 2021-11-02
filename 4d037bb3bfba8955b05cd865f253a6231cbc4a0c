@@ -166,6 +166,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b81821dc_85808598",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/tracing/utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-02T03:59:30Z",
+      "side": 1,
+      "message": "I would go with \"TraceProcessorForArch\" or just \"TraceProcessor\".\n(in my mind TraceProcessorByArch sounds like the name for a map from arch to traceprocessor).",
+      "parentUuid": "d4e69b14_39c080de",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "4d037bb3bfba8955b05cd865f253a6231cbc4a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "810260d1_7b364297",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/tracing/utils.go",
         "patchSetId": 8
