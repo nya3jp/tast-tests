@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b68e09f_a28bd7dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_processor_benchmark.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-02T10:24:43Z",
+      "side": 1,
+      "message": "huge nit: I slightly prefer to enforce this in the benchmark.go without providing an option to simplify the API a bit, so we can return the result directly without an extra UnmarshalJSONBytes() call. It would also be more consistent with the existing gtest helper, where Run() returns a Report directly.\n\nI am ok to land this with either way, defer this to you and Tast reviewer :)",
+      "revId": "6b730fb2169981889ce9e3c2505c4bf612ef14ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19150734_97354464",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_processor_benchmark.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-02T10:24:43Z",
+      "side": 1,
+      "message": "benchmark",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 50
+      },
+      "revId": "6b730fb2169981889ce9e3c2505c4bf612ef14ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb7a77fa_027a7b4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_processor_benchmark.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-02T10:24:43Z",
+      "side": 1,
+      "message": "nit: strings.TrimPrefix?",
+      "range": {
+        "startLine": 52,
+        "startChar": 24,
+        "endLine": 52,
+        "endChar": 39
+      },
+      "revId": "6b730fb2169981889ce9e3c2505c4bf612ef14ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
