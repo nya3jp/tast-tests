@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "790fef88_c625ee2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175549
+      },
+      "writtenOn": "2021-11-02T06:27:51Z",
+      "side": 1,
+      "message": "just noticed Jorge uses a @google account only, sending!",
+      "revId": "a3bb32fa6c5fc493aa622262a43d7b67325ef5ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
