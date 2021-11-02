@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a690203_c73171d8",
+        "filename": "src/chromiumos/tast/local/memory/metrics/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-02T16:41:21Z",
+      "side": 1,
+      "message": "Do we need to worry that `base.lateststate` is nil? It seems NewBaseMemoryStats and Reset would set `lateststate` to nil.",
+      "range": {
+        "startLine": 52,
+        "startChar": 24,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
