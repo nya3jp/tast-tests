@@ -20,7 +20,6 @@ import (
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/android"
 	localadb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/android/ui"
 	"chromiumos/tast/local/bluetooth"
@@ -274,8 +273,10 @@ func AndroidConfigure(ctx context.Context, androidNearby *nearbysnippet.AndroidN
 	}
 
 	// Force-sync after changing Nearby settings to ensure the phone's certificates are regenerated and uploaded.
-	if err := androidNearby.Sync(ctx); err != nil {
-		return errors.Wrap(err, "failed to sync contacts and certificates")
+	if visibility != nearbysnippet.VisibilityNoOne {
+		if err := androidNearby.Sync(ctx); err != nil {
+			return errors.Wrap(err, "failed to sync contacts and certificates")
+		}
 	}
 
 	return nil
