@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c793802_18421deb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2021-11-02T10:31:16Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "9a0b88f6562b9a7ab87abcf58a8efc5e207e9577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
