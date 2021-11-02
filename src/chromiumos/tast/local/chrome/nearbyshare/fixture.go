@@ -262,7 +262,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	// Set up Nearby Share on the CrOS device.
 	const crosBaseName = "cros_test"
 	crosDisplayName := nearbytestutils.RandomDeviceName(crosBaseName)
-	if err := nearbysetup.CrOSSetup(ctx, tconn, cr, f.crosDataUsage, f.crosVisibility, crosDisplayName); err != nil {
+	if err := CrOSSetup(ctx, tconn, cr, f.crosDataUsage, f.crosVisibility, crosDisplayName); err != nil {
 		s.Fatal("Failed to set up Nearby Share: ", err)
 	}
 
@@ -282,7 +282,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	}
 
 	// Store CrOS test metadata for reporting.
-	crosAttributes, err := nearbysetup.GetCrosAttributes(ctx, tconn, crosDisplayName, crosUsername, f.crosDataUsage, f.crosVisibility)
+	crosAttributes, err := GetCrosAttributes(ctx, tconn, crosDisplayName, crosUsername, f.crosDataUsage, f.crosVisibility)
 	if err != nil {
 		s.Fatal("Failed to get CrOS attributes for reporting: ", err)
 	}
@@ -351,7 +351,7 @@ func (f *nearbyShareFixture) Reset(ctx context.Context) error {
 }
 
 func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
-	chromeReader, err := nearbytestutils.StartLogging(ctx, syslog.ChromeLogFile)
+	chromeReader, err := StartLogging(ctx, syslog.ChromeLogFile)
 	if err != nil {
 		s.Error("Failed to start Chrome logging: ", err)
 	}
@@ -373,7 +373,7 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	if f.ChromeReader == nil {
 		s.Error("ChromeReader not defined")
 	}
-	if err := nearbytestutils.SaveLogs(ctx, f.ChromeReader, filepath.Join(s.OutDir(), nearbycommon.ChromeLog)); err != nil {
+	if err := SaveLogs(ctx, f.ChromeReader, filepath.Join(s.OutDir(), nearbycommon.ChromeLog)); err != nil {
 		s.Error("Failed to save Chrome log: ", err)
 	}
 	if err := f.androidDevice.DumpLogs(ctx, s.OutDir(), "nearby_logcat.txt"); err != nil {
