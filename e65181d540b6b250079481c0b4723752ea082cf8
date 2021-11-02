@@ -16,6 +16,57 @@
       "message": "Please take a look",
       "revId": "e65181d540b6b250079481c0b4723752ea082cf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a040f4d4_37359fbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-02T09:23:51Z",
+      "side": 1,
+      "message": "tconn has full access to autotestPrivate.\n\nIf the data you want is already exposed, the plumbing is already there 😊",
+      "revId": "e65181d540b6b250079481c0b4723752ea082cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8418cf6a_b7908fb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-02T09:23:51Z",
+      "side": 1,
+      "message": "Can you move this to a new service? It\u0027s fine to have a service dedicated to a single test and this function seems very test specific.",
+      "revId": "e65181d540b6b250079481c0b4723752ea082cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3688cfc7_27495a85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-02T09:23:51Z",
+      "side": 1,
+      "message": "Use testing.Poll here.\n\nSleeping is very discouraged.",
+      "revId": "e65181d540b6b250079481c0b4723752ea082cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
