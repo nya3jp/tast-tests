@@ -93,6 +93,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/smartlock"
 	_ "chromiumos/tast/local/bundles/cros/storage"
 	_ "chromiumos/tast/local/bundles/cros/system"
+	_ "chromiumos/tast/local/bundles/cros/taskmanager"
 	_ "chromiumos/tast/local/bundles/cros/telemetryextension"
 	_ "chromiumos/tast/local/bundles/cros/typec"
 	_ "chromiumos/tast/local/bundles/cros/u2fd"
