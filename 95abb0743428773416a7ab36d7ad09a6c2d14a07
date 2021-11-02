@@ -16,6 +16,63 @@
       "message": "We\u0027re still clarifying on the behaviors of key presses under tablet mode. At the moment, for the convenience of testing, I\u0027ve declared a few bool variables for the input devices that can be toggled around, depending on the scenarios we see from different platforms. \n\nFor the Stylus, I\u0027m yet to test the gpio on Boten and Gooey. I\u0027ll include this step as well once I have a better picture.",
       "revId": "95abb0743428773416a7ab36d7ad09a6c2d14a07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "813de0ba_4e20bbd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-02T19:00:07Z",
+      "side": 1,
+      "message": "This looks good so far. Do you want to submit it so we can run it on other models in the lab and see what happens? If so, add a new case that runs on all other models, so we can see what results they give.",
+      "revId": "95abb0743428773416a7ab36d7ad09a6c2d14a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c48a9f53_2d6b30ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/screen_wake_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-02T19:00:07Z",
+      "side": 1,
+      "message": "Might as well change to firmware_unstable right away, the none of duts in experimental are convertible so far as I can tell.",
+      "range": {
+        "startLine": 81,
+        "startChar": 44,
+        "endLine": 81,
+        "endChar": 65
+      },
+      "revId": "95abb0743428773416a7ab36d7ad09a6c2d14a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7c1173a_6c38d6c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/screen_wake_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-02T19:00:07Z",
+      "side": 1,
+      "message": "You also want ExtraHwDeps: hwdep.d(hwdep.Model(\"storo360\")) so this sub-test only runs on this model.",
+      "revId": "95abb0743428773416a7ab36d7ad09a6c2d14a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
