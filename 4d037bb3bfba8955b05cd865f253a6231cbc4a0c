@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b20b56d7_493f0310",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/local_perfetto_tbm_traced_probes.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-11-02T02:44:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6792ccb1_6cbf2a58",
+      "range": {
+        "startLine": 27,
+        "startChar": 91,
+        "endLine": 27,
+        "endChar": 93
+      },
+      "revId": "4d037bb3bfba8955b05cd865f253a6231cbc4a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f609664_0eaf0375",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-11-01T23:46:00Z",
       "side": 1,
       "message": "os.Remove() returns an error, which should be logged or handled\nhttps://github.com/golang/go/wiki/CodeReviewComments#handle-errors\ngo/go-style/decisions#handle-errors",
+      "revId": "4d037bb3bfba8955b05cd865f253a6231cbc4a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "213bcad4_cf21e052",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/tracing/utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-11-02T02:44:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f609664_0eaf0375",
       "revId": "4d037bb3bfba8955b05cd865f253a6231cbc4a0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +142,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4e69b14_39c080de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/tracing/utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-11-02T02:44:21Z",
+      "side": 1,
+      "message": "I see! |TraceProcessorByArch| then?",
+      "parentUuid": "f5885b1c_d028c07e",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "4d037bb3bfba8955b05cd865f253a6231cbc4a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "810260d1_7b364297",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/tracing/utils.go",
         "patchSetId": 8
@@ -111,6 +177,54 @@
       "writtenOn": "2021-11-01T23:46:00Z",
       "side": 1,
       "message": "optional: This is a borderline case, but I think this function would be clearer with explicitly specified return values rather than naked returns\nhttps://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters\ngo/go-style/decisions#named-result-parameters",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 7
+      },
+      "revId": "4d037bb3bfba8955b05cd865f253a6231cbc4a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1f22902_8938e144",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/tracing/utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-11-02T02:44:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "810260d1_7b364297",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 7
+      },
+      "revId": "4d037bb3bfba8955b05cd865f253a6231cbc4a0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba3e81a7_f4978128",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/tracing/utils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-11-02T02:44:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "810260d1_7b364297",
       "range": {
         "startLine": 108,
         "startChar": 1,
