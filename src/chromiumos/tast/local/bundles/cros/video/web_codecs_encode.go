@@ -29,60 +29,60 @@ func init() {
 		Fixture:      "chromeWebCodecs",
 		Params: []testing.Param{{
 			Name:              "h264_sw",
-			Val:               webcodecs.TestArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferSoftware},
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferSoftware},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 		}, {
 			Name:              "h264_hw",
-			Val:               webcodecs.TestArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferHardware},
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferHardware},
 			ExtraSoftwareDeps: []string{"proprietary_codecs", caps.HWEncodeH264},
 		}, {
 			Name:              "h264_sw_l1t2",
-			Val:               webcodecs.TestArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T2"},
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T2"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 		}, {
 			Name:              "h264_hw_l1t2",
-			Val:               webcodecs.TestArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferHardware, ScalabilityMode: "L1T2"},
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferHardware, ScalabilityMode: "L1T2"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs", caps.HWEncodeH264, "vaapi"},
 			// TODO(b/199487660): Run on AMD platforms once their driver supports H.264 temporal layer encoding.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("grunt", "zork")),
 		}, {
 			Name:              "h264_sw_l1t3",
-			Val:               webcodecs.TestArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T3"},
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T3"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 		}, {
 			Name:              "h264_hw_l1t3",
-			Val:               webcodecs.TestArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferHardware, ScalabilityMode: "L1T3"},
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferHardware, ScalabilityMode: "L1T3"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs", caps.HWEncodeH264, "vaapi"},
 			// TODO(b/199487660): Run on AMD platforms once their driver supports H.264 temporal layer encoding.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("grunt", "zork")),
 		}, {
 			Name: "vp8_sw",
-			Val:  webcodecs.TestArgs{Codec: videotype.VP8, Acceleration: webcodecs.PreferSoftware},
+			Val:  webcodecs.TestEncodeArgs{Codec: videotype.VP8, Acceleration: webcodecs.PreferSoftware},
 		}, {
 			Name:              "vp8_hw",
-			Val:               webcodecs.TestArgs{Codec: videotype.VP8, Acceleration: webcodecs.PreferHardware},
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.VP8, Acceleration: webcodecs.PreferHardware},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 		}, {
 			Name: "vp9_sw",
-			Val:  webcodecs.TestArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferSoftware},
+			Val:  webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferSoftware},
 		}, {
 			Name:              "vp9_hw",
-			Val:               webcodecs.TestArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferHardware},
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferHardware},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 		}, {
 			Name: "vp9_sw_l1t2",
-			Val:  webcodecs.TestArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T2"},
+			Val:  webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T2"},
 		}, {
 			Name:              "vp9_hw_l1t2",
-			Val:               webcodecs.TestArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferHardware, ScalabilityMode: "L1T2"},
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferHardware, ScalabilityMode: "L1T2"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 		}, {
 			Name: "vp9_sw_l1t3",
-			Val:  webcodecs.TestArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T3"},
+			Val:  webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T3"},
 		}, {
 			Name:              "vp9_hw_l1t3",
-			Val:               webcodecs.TestArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferHardware, ScalabilityMode: "L1T3"},
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferHardware, ScalabilityMode: "L1T3"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 		}},
@@ -90,7 +90,8 @@ func init() {
 }
 
 func WebCodecsEncode(ctx context.Context, s *testing.State) {
-	args := s.Param().(webcodecs.TestArgs)
+	args := s.Param().(webcodecs.TestEncodeArgs)
+
 	if err := webcodecs.RunEncodeTest(ctx, s.FixtValue().(*chrome.Chrome),
 		s.DataFileSystem(), args, s.DataPath(webcodecs.Crowd720p), s.OutDir()); err != nil {
 		s.Error("Test failed: ", err)
