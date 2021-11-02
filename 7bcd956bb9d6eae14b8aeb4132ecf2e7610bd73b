@@ -176,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de7de09_f490e60e",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2021-11-02T00:12:31Z",
+      "side": 1,
+      "message": "talked to jesse, he will change his CL as its not ready yet",
+      "parentUuid": "c63896c7_c8641dfc",
+      "revId": "7bcd956bb9d6eae14b8aeb4132ecf2e7610bd73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c04cce1_8306a0d2",
