@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f3ced62_043003eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Much smaller CL now, with the removal of most of the api as well as the entire drag and drop test. Let me know if anything else needs cleaning up!",
+      "revId": "9539334fb0bdbe97000cf805a7c3a21fe7d1ee05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

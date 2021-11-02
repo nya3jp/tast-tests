@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d903e846_f8212358",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7322e988_d7dc9300",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95a20c89_c75242ec",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-11-01T18:48:37Z",
       "side": 1,
       "message": "Add more detailed description/summary after the subject line",
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb149d2a_bb8c4769",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95a20c89_c75242ec",
       "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -393,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e88dea0b_b87fbce9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Yup, that last bit sounds the most correct. These APIs have been shrinking over the (far too long) life of this CL, and most of them are only used in one place.\n\nI\u0027m leaving `OpenBubble` because that\u0027s going to be useful in the next test, and likely future ones, but the rest I\u0027m inlining.",
+      "parentUuid": "d115d7df_8cc51975",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 25
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbbec951_66c9d71a",
@@ -581,6 +647,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbae1ea4_223f7dae",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49c42367_776f6908",
+      "range": {
+        "startLine": 111,
+        "startChar": 41,
+        "endLine": 111,
+        "endChar": 56
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5adb3191_700ce4c2",
@@ -594,6 +684,30 @@
       "writtenOn": "2021-11-01T18:48:37Z",
       "side": 1,
       "message": "nit: Redundant, remove",
+      "range": {
+        "startLine": 122,
+        "startChar": 8,
+        "endLine": 122,
+        "endChar": 20
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe9f9abf_5df19a6a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5adb3191_700ce4c2",
       "range": {
         "startLine": 122,
         "startChar": 8,
@@ -650,6 +764,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78973ff3_6bbadbe5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "460e96e1_70aa6986",
+      "range": {
+        "startLine": 157,
+        "startChar": 14,
+        "endLine": 157,
+        "endChar": 26
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f665154_cf8f914b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d049e35_6f4b09d4",
+      "range": {
+        "startLine": 157,
+        "startChar": 30,
+        "endLine": 157,
+        "endChar": 34
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a420d88f_2a0b8934",
@@ -663,6 +825,30 @@
       "writtenOn": "2021-11-01T18:48:37Z",
       "side": 1,
       "message": "Hmmm, this still feels less than ideal. Can you remind me again why we aren\u0027t just exposing and writing to the pref?",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 1
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a9e9a4d_54aa4cbc",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Switching to the pref. Removing that function from this CL, since it\u0027s not used in the context menu pin.",
+      "parentUuid": "a420d88f_2a0b8934",
       "range": {
         "startLine": 152,
         "startChar": 0,
@@ -781,6 +967,30 @@
       "side": 1,
       "message": "The concern was that we want to make sure it *is* still found even if it is not visible :)",
       "parentUuid": "9d616e80_49995b14",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 49
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4cdc1c_1c1df1c1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Ah, I misunderstood.",
+      "parentUuid": "b7a3fffe_7d4467dd",
       "range": {
         "startLine": 181,
         "startChar": 0,

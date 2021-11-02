@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acc2ea49_8d32dba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c60f498_09b43a22",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a62097a_a40e955a",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-02T17:55:11Z",
       "side": 1,
       "message": "Remove?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aff93cbb_b864d2e8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a62097a_a40e955a",
       "range": {
         "startLine": 61,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed36d93c_06ad9fc6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8253f0f7_8aed096e",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 37
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a6c49cb_6c9082f8",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-11-02T17:55:11Z",
       "side": 1,
       "message": "Side effects :)",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 2
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8ae402_440426b6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a6c49cb_6c9082f8",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d167267_a970ad97",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68248c59_e0b748b2",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 1
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21e53808_ff839006",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-11-02T17:55:11Z",
       "side": 1,
       "message": "Side effects :)",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97bc7311_7ab6a62e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21e53808_ff839006",
       "range": {
         "startLine": 95,
         "startChar": 0,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba06590_e4bf31d4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fa4915d_5293a437",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 1
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "addf2ecc_3fe71016",
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6eb6b61_5b058f90",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "addf2ecc_3fe71016",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 40
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a433ceac_205ddc3b",
@@ -215,6 +407,30 @@
       "writtenOn": "2021-11-02T17:55:11Z",
       "side": 1,
       "message": "Just return Combine(...)(ctx)?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 11
+      },
+      "revId": "f18f83a4022fdf53b2049de3ee329a728887a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a343f6bb_330f81a0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T22:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a433ceac_205ddc3b",
       "range": {
         "startLine": 124,
         "startChar": 0,
