@@ -133,18 +133,21 @@ func APSupportedRates(ctx context.Context, s *testing.State) {
 		// Use TA (not SA), because multicast may retransmit our
 		// "Source-Addressed" frames at rates we don't control.
 		pcap.TransmitterAddress(mac),
-		// Some chips use self-addressed (receiver==self) frames to tune channel
-		// performance. They don't carry host-generated traffic, so filter them out.
 		pcap.TypeFilter(
 			layers.LayerTypeDot11,
 			func(layer gopacket.Layer) bool {
 				dot11 := layer.(*layers.Dot11)
 				// Skip receiver == MAC.
+				// Some chips use self-addressed (receiver==self) frames
+				// to tune channel performance. They don't carry
+				// host-generated traffic, so filter them out.
 				if bytes.Equal(dot11.Address1, mac) {
 					return false
 				}
-				// Skip RTS. Also done below, but the gopacket parsing doesn't work
-				// reliably for all LayerTypeDot11CtrlRTS.
+				// Skip RTS.
+				// RTS: all nearby stations need to hear this (not just
+				// those on the current BSS), so a station can't respect only
+				// the current AP's rates.
 				if dot11.Type == layers.Dot11TypeCtrlRTS {
 					return false
 				}
@@ -157,10 +160,6 @@ func APSupportedRates(ctx context.Context, s *testing.State) {
 		// important that they be reliable (e.g., for PS transitions) than fast. See
 		// b/132825853#comment40, for example.
 		//
-		// RTS: all nearby stations need to hear this (not just
-		// those on the current BSS), so a station can't respect only
-		// the current AP's rates.
-		//
 		// Probe request: these frames are not associated with a particular BSS yet.
 		func(p gopacket.Packet) bool {
 			// Skip QoS null data.
@@ -169,14 +168,6 @@ func APSupportedRates(ctx context.Context, s *testing.State) {
 			}
 			// Skip null data.
 			if l := p.Layer(layers.LayerTypeDot11DataNull); l != nil {
-				return false
-			}
-			// Skip RTS.
-			// NB: gopacket doesn't reliably parse RTS frames as LayerTypeDot11CtrlRTS
-			// -- instead, some frames with slightly unexpected format (missing
-			// checksum?) just end up with LayerTypeDot11. So we also rely on the above
-			// LayerTypeDot11 filter.
-			if l := p.Layer(layers.LayerTypeDot11CtrlRTS); l != nil {
 				return false
 			}
 			// Skip probe requests.
