@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/adb"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
+	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
 

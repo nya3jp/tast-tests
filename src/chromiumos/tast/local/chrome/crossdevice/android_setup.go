@@ -17,8 +17,8 @@ import (
 
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
 
