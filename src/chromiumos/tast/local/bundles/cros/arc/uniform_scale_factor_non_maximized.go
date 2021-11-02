@@ -27,7 +27,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:     UniformScaleFactorNonMaximized,
 		Desc:     "Checks that the uniform scale factor is applied to non-maximized Android applications",
-		Contacts: []string{"sarakato@chromium.org", "arc-framework+tast@google.com"},
+		Contacts: []string{"arc-framework+tast@google.com"},
 		// TODO(http://b/172089190): Test is disabled until it can be fixed
 		// Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
