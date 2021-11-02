@@ -45,7 +45,7 @@ func init() {
 				ExtraSoftwareDeps: []string{"mbo"},
 				Val: hostapd.BSSTMReqParams{
 					DisassocImminent: true,
-					DisassocTimer:    5 * time.Second,
+					DisassocTimer:    bssTMRoamTimeout,
 					ReassocDelay:     bssTMReassocDelay,
 				},
 			},
