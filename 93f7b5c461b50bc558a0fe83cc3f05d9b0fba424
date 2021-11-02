@@ -70,6 +70,30 @@
       },
       "revId": "93f7b5c461b50bc558a0fe83cc3f05d9b0fba424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97f6de51_299e5358",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-02T10:06:06Z",
+      "side": 1,
+      "message": "Maybe we should move them somewhere else?\n\nhere is UI package documentation:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/doc.go;l\u003d5\n\n\nor update UI package documentation :)",
+      "parentUuid": "e5ff8c68_a8bf7bf6",
+      "range": {
+        "startLine": 12,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "93f7b5c461b50bc558a0fe83cc3f05d9b0fba424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
