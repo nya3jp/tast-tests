@@ -59,6 +59,11 @@ const (
 	TypeL2TPIPsec = "L2TP/IPsec"
 	TypeOpenVPN   = "OpenVPN"
 	TypeWireGuard = "WireGuard"
+
+	// b/204261554: Temporary VPN types for the two drivers of L2TP/IPsec. Can
+	// be removed after the swanctl migration is done.
+	TypeL2TPIPsecStroke  = "L2TP/IPsec-stroke"
+	TypeL2TPIPsecSwanctl = "L2TP/IPsec-swanctl"
 )
 
 // Authentication types.
@@ -211,7 +216,7 @@ func (c *Connection) prepareCertStore(ctx context.Context) error {
 func (c *Connection) startServer(ctx context.Context) error {
 	var err error
 	switch c.config.Type {
-	case TypeL2TPIPsec:
+	case TypeL2TPIPsec, TypeL2TPIPsecStroke, TypeL2TPIPsecSwanctl:
 		c.Server, err = StartL2TPIPsecServer(ctx, c.config.AuthType, c.config.IPsecUseXauth, c.config.UnderlayIPIsOverlayIP)
 	case TypeOpenVPN:
 		c.Server, err = StartOpenVPNServer(ctx, c.config.OpenVPNUseUserPassword)
@@ -283,7 +288,7 @@ func (c *Connection) generateWireGuardKey(ctx context.Context) (string, error) {
 
 func (c *Connection) createProperties() (map[string]interface{}, error) {
 	switch c.config.Type {
-	case TypeL2TPIPsec:
+	case TypeL2TPIPsec, TypeL2TPIPsecStroke, TypeL2TPIPsecSwanctl:
 		return c.createL2TPIPsecProperties()
 	case TypeOpenVPN:
 		return c.createOpenVPNProperties()
@@ -304,10 +309,20 @@ func (c *Connection) createL2TPIPsecProperties() (map[string]interface{}, error)
 
 	properties := map[string]interface{}{
 		"Provider.Host":      serverAddress,
-		"Provider.Type":      "l2tpipsec",
 		"Type":               "vpn",
 		"L2TPIPsec.User":     chapUser,
 		"L2TPIPsec.Password": chapSecret,
+	}
+
+	switch c.config.Type {
+	case TypeL2TPIPsec:
+		properties["Provider.Type"] = "l2tpipsec"
+	case TypeL2TPIPsecStroke:
+		properties["Provider.Type"] = "l2tpipsec-stroke"
+	case TypeL2TPIPsecSwanctl:
+		properties["Provider.Type"] = "l2tpipsec-swanctl"
+	default:
+		return nil, errors.Errorf("unexpected type: got %s", c.config.Type)
 	}
 
 	if c.config.AuthType == AuthTypePSK {
