@@ -16,6 +16,23 @@
       "message": "Hi Sasha,\n\nPTAL",
       "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fabafbc9_baf17100",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149154
+      },
+      "writtenOn": "2021-11-02T17:40:33Z",
+      "side": 1,
+      "message": "I am not a big expert in Go and Tast tests, but the concept of the test looks good.",
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
