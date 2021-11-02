@@ -33,6 +33,41 @@
       "message": "I am not a big expert in Go and Tast tests, but the concept of the test looks good.",
       "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a17ab9eb_738ef699",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-11-02T17:45:56Z",
+      "side": 1,
+      "message": "Hi Tast Owners,\n\nPTAL.\n\nIt is a smoke test for ARC data snapshot feature, that requires the device to be enrolled with a real GAIA account to obtain a real MGS robot account in order to be able to install ARC apps via Play.\n\nThis is a remote test, since it requires several reboots to generate snapshots and run MGS with those snapshots.\n\nUsually, this test takes \u003c 20mins on the eve board, but since it is a remote test, requiring several reboots I set a timeout to 40mins and 10mins per MGS.\n\nThis test is important to ensure that the feature works on all boards with arc \u0026 tpm2. Currently, works only for amd64 arch, but it will be expanded to arm/arm64 as well soon.",
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d08427_5a75df62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-11-02T17:45:56Z",
+      "side": 1,
+      "message": "Thanks, Sasha",
+      "parentUuid": "fabafbc9_baf17100",
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
