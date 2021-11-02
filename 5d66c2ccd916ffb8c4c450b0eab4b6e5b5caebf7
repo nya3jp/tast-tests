@@ -33,6 +33,23 @@
       "message": "PTAL",
       "revId": "5d66c2ccd916ffb8c4c450b0eab4b6e5b5caebf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c38b849_f6429e04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-02T10:01:02Z",
+      "side": 1,
+      "message": "@Philipp, just FYI. May be useful for automation of the new feature.",
+      "revId": "5d66c2ccd916ffb8c4c450b0eab4b6e5b5caebf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
