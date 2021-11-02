@@ -46,8 +46,7 @@ func init() {
 				},
 			},
 			{
-				Name:      "11ac",
-				ExtraAttr: []string{"wificell_unstable"},
+				Name: "11ac",
 				Val: supportedRatesCase{
 					apOpts: []hostapd.Option{
 						hostapd.Mode(hostapd.Mode80211acMixed), hostapd.Channel(157), hostapd.VHTCenterChannel(155),
