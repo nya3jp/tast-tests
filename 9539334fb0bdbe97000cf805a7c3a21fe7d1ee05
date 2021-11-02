@@ -16,6 +16,86 @@
       "message": "Much smaller CL now, with the removal of most of the api as well as the entire drag and drop test. Let me know if anything else needs cleaning up!",
       "revId": "9539334fb0bdbe97000cf805a7c3a21fe7d1ee05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf1e3b86_1191b509",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T23:29:49Z",
+      "side": 1,
+      "message": "nit: terminate w/ period",
+      "revId": "9539334fb0bdbe97000cf805a7c3a21fe7d1ee05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93aec390_b899e094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T23:29:49Z",
+      "side": 1,
+      "message": "nit: terminate w/ period",
+      "revId": "9539334fb0bdbe97000cf805a7c3a21fe7d1ee05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d0b676b_e57ffcdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T23:29:49Z",
+      "side": 1,
+      "message": "`fsapp.ClickContextMenuItem` returns a `uiauto.Action` so all of this code should be able to be wrapped in a single `Combine` :)",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "9539334fb0bdbe97000cf805a7c3a21fe7d1ee05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ea01ef8_884ab74a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T23:29:49Z",
+      "side": 1,
+      "message": "I\u0027m not sure this method is worth including in the util as really it should be a one-liner and won\u0027t chain as written w/ other uiauto calls :)\n\nThe caller should already know if they have opened the bubble or not, so that can be removed, and the WaitUntilExists after the LeftClick can be removed because the caller is going to do something after the fact that will already wait until the appropriate child view is present and stable :)\n\nPseudo-code example:\n\n```\nCombine(\"Pin and unpin from holding space\",\n  LeftClick(FindTray()),\n  RightClick(FindDownloadChip(...)),\n  LeftClick(FindContextMenuItem(\"Pin\")),\n  RightClick(FindPinnedFileChip(...)),\n  LeftClick(FindContextMenuItem(\"Unpin\")),\n  WaitUntilGone(FindPinnedFileChip(...)),\n  EnsureGoneFor(FindPinnedFileChip(...), time.Second)\n)(ctx)\n```\n\nAll that is needed to open the bubble is `LeftClick(FindTray())` and the subsequent steps will error out if the bubble fails to be opened :)",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
+      "revId": "9539334fb0bdbe97000cf805a7c3a21fe7d1ee05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
