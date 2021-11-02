@@ -311,10 +311,10 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	// Note that specifying the feature LacrosSupport has side-effects, so
 	// we specify it even if the lacros path is being overridden by lacrosDeployedBinary.
 	if f.mode == Rootfs {
-		opts = append(opts, chrome.EnableFeatures("LacrosSupport"),
+		opts = append(opts, chrome.EnableFeatures("LacrosSupport", "ForceProfileMigrationCompletion"),
 			chrome.ExtraArgs("--lacros-selection=rootfs"))
 	} else if f.mode == Omaha {
-		opts = append(opts, chrome.EnableFeatures("LacrosSupport"),
+		opts = append(opts, chrome.EnableFeatures("LacrosSupport", "ForceProfileMigrationCompletion"),
 			chrome.ExtraArgs("--lacros-selection=stateful"))
 	}
 
