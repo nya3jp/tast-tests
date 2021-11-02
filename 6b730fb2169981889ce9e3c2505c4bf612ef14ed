@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "436d083c_56db8f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_processor_benchmark.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2021-11-02T12:32:35Z",
+      "side": 1,
+      "message": "Yeah I thought about this, too. After looking at the code again I agree with you. It\u0027s easier to use if we just set the default stdout to JSON. We can always use the extra OutputFile if we need a different output formatting.",
+      "parentUuid": "8b68e09f_a28bd7dd",
+      "revId": "6b730fb2169981889ce9e3c2505c4bf612ef14ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19150734_97354464",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b500039_8ea394d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_processor_benchmark.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2021-11-02T12:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19150734_97354464",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 50
+      },
+      "revId": "6b730fb2169981889ce9e3c2505c4bf612ef14ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb7a77fa_027a7b4e",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-11-02T10:24:43Z",
       "side": 1,
       "message": "nit: strings.TrimPrefix?",
+      "range": {
+        "startLine": 52,
+        "startChar": 24,
+        "endLine": 52,
+        "endChar": 39
+      },
+      "revId": "6b730fb2169981889ce9e3c2505c4bf612ef14ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "632e9b6d_63ec2da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_processor_benchmark.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2021-11-02T12:32:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb7a77fa_027a7b4e",
       "range": {
         "startLine": 52,
         "startChar": 24,
