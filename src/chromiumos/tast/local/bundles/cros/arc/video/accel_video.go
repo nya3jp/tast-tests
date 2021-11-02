@@ -212,7 +212,7 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 		defer func() {
 			s.Log("Stopping activity")
 			if err := act.Stop(ctx, tconn); err != nil {
-				s.Fatal("Failed to stop activity: ", err)
+				s.Log("Warning: Failed to stop activity: ", err)
 			}
 		}()
 
