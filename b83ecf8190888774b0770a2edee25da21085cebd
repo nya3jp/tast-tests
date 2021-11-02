@@ -137,6 +137,30 @@
       },
       "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80551fb6_72a608e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-11-02T17:33:02Z",
+      "side": 1,
+      "message": "Both have been observed in the wild. The older (validMagic) is one less than the newer (yoyoMagic). From observation, older core drops generate the older validMagic, and have a different structure than the drops that support yoyoMagic.\n\nThe firmware dump script (https://b.corp.google.com/action/issues/169152720/attachments/32466647) checks first for the yoyo magic, and then assumes the previous magic value when parsing:\n\n\n```\nif ($magicD \u003d\u003d YOYO_MAGIC) {\n        yoyo_parse_dump $data, $size;\n        $fh-\u003eclose();\n        exit\n}\n\nmy $magicH \u003d sprintf(\"0x%x\", $magicD);\n\n($magicH eq \"0x14789632\") || die \"Bad magic!\";\n```\n\nIt might be helpful to leave a comment describing expected magic values, at least noting which Core drop versions correspond to which expected magic value (and corresponding dump format).",
+      "parentUuid": "e96c8c56_0ba82ddb",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 42
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
