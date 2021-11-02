@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "675ba1e9_2a42a3f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-02T09:13:33Z",
+      "side": 1,
+      "message": "Can this affect tests that run later?\n\nLog statements are pretty much ignored, ideally you should keep this failure and fix the root cause (maybe just increasing the timeout here is enough).",
+      "revId": "b864cb3218c5ab9d8cdeb3d41988b0dbede258e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
