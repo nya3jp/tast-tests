@@ -10,19 +10,15 @@ import (
 	"io"
 	"math"
 	"net/http"
-	"net/http/httptest"
 	"os"
 	"path/filepath"
-	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/media/devtools"
 	"chromiumos/tast/local/media/encoding"
-	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
 )
@@ -60,8 +56,6 @@ func VideoDataFiles() []string {
 		crowd720pMP4,
 	}
 }
-
-var crowd720pVideoConfig = videoConfig{width: 1280, height: 720, numFrames: 30, framerate: 30}
 
 // computeBitstreamQuality computes SSIM and PSNR of bitstreams comparing with yuvFile.
 // If numTemporalLayers is more than 1, then this computes SSIM and PSNR of bitstreams
@@ -131,34 +125,13 @@ func verifyTLStruct(numTemporalLayers int, temporalLayerIDs []int) error {
 // RunEncodeTest tests encoding in WebCodecs API. It verifies a specified encoder is used and
 // the produced bitstream.
 func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, testArgs TestEncodeArgs, videoFile, outDir string) error {
-	vl, err := logging.NewVideoLogger()
+	var crowd720pVideoConfig = videoConfig{width: 1280, height: 720, numFrames: 30, framerate: 30}
+
+	cleanupCtx, server, conn, observer, deferFunc, err := prepareWebCodecsTest(ctx, cr, fileSystem, encodeHTML)
 	if err != nil {
-		return errors.Wrap(err, "failed to set values for verbose logging")
+		return err
 	}
-	defer vl.Close()
-
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 20*time.Second)
-	defer cancel()
-
-	server := httptest.NewServer(http.FileServer(fileSystem))
-	defer server.Close()
-
-	conn, err := cr.NewConn(ctx, server.URL+"/"+encodeHTML)
-	if err != nil {
-		return errors.Wrap(err, "failed to open webcodecs page")
-	}
-	defer conn.Close()
-	defer conn.CloseTarget(cleanupCtx)
-
-	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
-		return errors.Wrap(err, "timed out waiting for page loading")
-	}
-
-	observer, err := conn.GetMediaPropertiesChangedObserver(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to retrieve a media DevTools observer")
-	}
+	defer deferFunc()
 
 	codec := toMIMECodec(testArgs.Codec)
 	if codec == "" {
