@@ -371,6 +371,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d115d7df_8cc51975",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-02T17:57:10Z",
+      "side": 1,
+      "message": "Given uiauto\u0027s support for combined actions though, I\u0027m inclined to just remove these util APIs completely in favor of using uiauto directly in tests. It\u0027s slightly more verbose for the tester but significantly more readable in terms of what is actually happening to the UI :)",
+      "parentUuid": "0da83a6e_a1e54060",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 25
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbbec951_66c9d71a",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
         "patchSetId": 6
