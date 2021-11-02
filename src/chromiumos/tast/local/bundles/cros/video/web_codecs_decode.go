@@ -29,12 +29,12 @@ func init() {
 			Name:              "h264_sw",
 			Val:               webcodecs.TestDecodeArgs{VideoFile: "bear-320x240.h264.mp4", Acceleration: webcodecs.PreferSoftware},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
-			ExtraData:         []string{"bear-320x240.h264.mp4"},
+			ExtraData:         []string{"bear-320x240.h264.mp4", "bear-320x240.h264.mp4.md5"},
 		}, {
 			Name:              "h264_hw",
 			Val:               webcodecs.TestDecodeArgs{VideoFile: "bear-320x240.h264.mp4", Acceleration: webcodecs.PreferHardware},
 			ExtraSoftwareDeps: []string{"proprietary_codecs", caps.HWDecodeH264},
-			ExtraData:         []string{"bear-320x240.h264.mp4"},
+			ExtraData:         []string{"bear-320x240.h264.mp4", "bear-320x240.h264.mp4.md5"},
 		}},
 	})
 }
@@ -42,7 +42,7 @@ func init() {
 func WebCodecsDecode(ctx context.Context, s *testing.State) {
 	args := s.Param().(webcodecs.TestDecodeArgs)
 	if err := webcodecs.RunDecodeTest(ctx, s.FixtValue().(*chrome.Chrome),
-		s.DataFileSystem(), args, s.OutDir()); err != nil {
+		s.DataFileSystem(), args, s.DataPath(args.VideoFile+".md5"), s.OutDir()); err != nil {
 		s.Error("test failed: ", err)
 	}
 }
