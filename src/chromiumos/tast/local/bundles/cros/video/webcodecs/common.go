@@ -7,8 +7,16 @@ package webcodecs
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
+	"time"
 
+	"github.com/mafredri/cdp/protocol/media"
+
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
 )
@@ -61,4 +69,64 @@ func outputJSLogAndError(ctx context.Context, conn *chrome.Conn, callErr error) 
 	}
 	testing.ContextLog(ctx, "log=", logs)
 	return callErr
+}
+
+func prepareWebCodecsTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, html string) (cleanupCtx context.Context, server *httptest.Server, conn *chrome.Conn, observer media.PlayerPropertiesChangedClient, deferFunc func(), err error) {
+	vl, err := logging.NewVideoLogger()
+	if err != nil {
+		err = errors.Wrap(err, "failed to set values for verbose logging")
+		return
+	}
+	defer func() {
+		if err != nil {
+			vl.Close()
+		}
+	}()
+
+	cleanupCtx = ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 20*time.Second)
+	defer func() {
+		if err != nil {
+			cancel()
+		}
+	}()
+
+	server = httptest.NewServer(http.FileServer(fileSystem))
+	defer func() {
+		if err != nil {
+			server.Close()
+		}
+	}()
+	testing.ContextLogf(ctx, "%s, %s", server.URL, html)
+	conn, err = cr.NewConn(ctx, server.URL+"/"+html)
+	if err != nil {
+		err = errors.Wrap(err, "failed to open webcodecs page")
+		return
+	}
+	defer func() {
+		if err != nil {
+			conn.Close()
+			conn.CloseTarget(cleanupCtx)
+		}
+	}()
+
+	if err = conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		err = errors.Wrap(err, "timed out waiting for page loading")
+		return
+	}
+	observer, err = conn.GetMediaPropertiesChangedObserver(ctx)
+	if err != nil {
+		err = errors.Wrap(err, "failed to retrieve a media DevTools observer")
+		return
+	}
+
+	deferFunc = func() {
+		conn.Close()
+		conn.CloseTarget(cleanupCtx)
+		server.Close()
+		cancel()
+		vl.Close()
+	}
+
+	return
 }
