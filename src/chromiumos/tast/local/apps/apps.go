@@ -234,6 +234,12 @@ var ShimlessRMA = App{
 	Name: "Shimless RMA",
 }
 
+// TaskManager has details about the Task Manager app.
+var TaskManager = App{
+	ID:   "ijaigheoohcacdnplfbdimmcfldnnhdi",
+	Name: "Task Manager",
+}
+
 // Translate has details about the Translate app.
 var Translate = App{
 	ID:   "pacmnfddiadhhfmngijgjdbnodjkmojl",
