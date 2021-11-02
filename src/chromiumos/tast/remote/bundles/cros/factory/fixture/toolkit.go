@@ -16,6 +16,12 @@ import (
 )
 
 const (
+	// EnsureToolkit is the fixture installs factory toolkit at set up with
+	// a reboot, uninstall the toolkit at tear down with a reboot. It is
+	// required to add `SoftwareDeps` from `EnsureToolkitSoftwareDeps` for
+	// tests using this fixture.
+	EnsureToolkit = "ensureToolkit"
+
 	toolkitInstallerName = "install_factory_toolkit.run"
 	// the path should be synced with factory-mini.ebuild
 	toolkitInstallerPath = "/usr/local/factory-toolkit/" + toolkitInstallerName
@@ -29,9 +35,12 @@ const (
 	testListName  = "generic_tast"
 )
 
+// EnsureToolkitSoftwareDeps is the SoftwareDeps required by `EnsureToolkit`
+var EnsureToolkitSoftwareDeps = []string{"reboot", "factory_flow"}
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:            "ensureToolkit",
+		Name:            EnsureToolkit,
 		Desc:            "Fixture for ensuring toolkit is installed before test and uninstalled after test",
 		Contacts:        []string{"lschyi@google.com", "chromeos-factory-eng@google.com"},
 		Impl:            &ensureToolkitFixt{},
