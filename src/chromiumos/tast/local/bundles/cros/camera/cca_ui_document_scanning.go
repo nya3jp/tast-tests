@@ -27,8 +27,40 @@ func init() {
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "ondevice_document_scanner", caps.BuiltinOrVividCamera},
-		Fixture:      "ccaTestBridgeReadyWithDocumentScene",
+		Params: []testing.Param{{
+			Fixture: "ccaTestBridgeReadyWithDocumentScene",
+			Val: []documentScanSubTest{
+				{
+					name: "testPDF",
+					run:  takeDocumentPhotoTest([]reviewChoice{pdf}),
+				}, {
+					name: "testPhoto",
+					run:  takeDocumentPhotoTest([]reviewChoice{photo}),
+				}, {
+					name: "testRetakeThenTakePhoto",
+					run:  takeDocumentPhotoTest([]reviewChoice{retake, photo}),
+				},
+			},
+		}, {
+			Name:    "manual_crop",
+			Fixture: "ccaTestBridgeReadyForDocumentManualCrop",
+			Val: []documentScanSubTest{
+				{
+					name: "testFixCropArea",
+					run: func(ctx context.Context, app *cca.App, data cca.FixtureData) error {
+						return testFixCropArea(ctx, app, data.Chrome)
+					},
+				},
+			},
+		}},
 	})
+}
+
+type documentScanRunSubTest func(ctx context.Context, app *cca.App, data cca.FixtureData) error
+
+type documentScanSubTest struct {
+	name string
+	run  documentScanRunSubTest
 }
 
 type reviewChoice string
@@ -38,6 +70,12 @@ const (
 	photo               = "photo"
 	retake              = "retake"
 )
+
+func takeDocumentPhotoTest(choices []reviewChoice) documentScanRunSubTest {
+	return func(ctx context.Context, app *cca.App, _ cca.FixtureData) error {
+		return runTakeDocumentPhoto(ctx, app, choices)
+	}
+}
 
 type docCorner struct {
 	x, y float64
@@ -95,40 +133,17 @@ func CCAUIDocumentScanning(ctx context.Context, s *testing.State) {
 	s.FixtValue().(cca.FixtureData).SetDebugParams(cca.DebugParams{SaveCameraFolderWhenFail: true})
 
 	subTestTimeout := 30 * time.Second
-	for _, tst := range []struct {
-		name    string
-		choices []reviewChoice
-	}{{
-		"testPDF",
-		[]reviewChoice{pdf},
-	}, {
-		"testPhoto",
-		[]reviewChoice{photo},
-	}, {
-		"testRetakeThenTakePhoto",
-		[]reviewChoice{retake, photo},
-	}} {
+	for _, tst := range s.Param().([]documentScanSubTest) {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		defer cancel()
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
 			if err := runSubTest(ctx, func(ctx context.Context, app *cca.App) error {
-				return runTakeDocumentPhoto(ctx, app, tst.choices)
+				return tst.run(ctx, app, s.FixtValue().(cca.FixtureData))
 			}, cca.SubTestParams{}); err != nil {
 				s.Errorf("Failed to pass %v subtest: %v", tst.name, err)
 			}
 		})
 	}
-	subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
-	defer cancel()
-	s.Run(subTestCtx, "testFixCropArea", func(ctx context.Context, s *testing.State) {
-
-		if err := runSubTest(ctx, func(ctx context.Context, app *cca.App) error {
-			cr := s.FixtValue().(cca.FixtureData).Chrome
-			return testFixCropArea(ctx, app, cr)
-		}, cca.SubTestParams{}); err != nil {
-			s.Error("Failed to pass testFixCropArea subtest: ", err)
-		}
-	})
 }
 
 func enterDocumentMode(ctx context.Context, app *cca.App) error {
