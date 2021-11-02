@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "674556a6_1386a8bd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/screen_wake_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-11-02T11:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a397a339_ef2913af",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "2aef399c31204963b370237a9b831f2d02d74f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ee5a75f_1327dd25",
@@ -72,6 +96,30 @@
       "writtenOn": "2021-10-14T18:55:43Z",
       "side": 1,
       "message": "Fixt().(*fixture.Value) instead.",
+      "range": {
+        "startLine": 73,
+        "startChar": 8,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "2aef399c31204963b370237a9b831f2d02d74f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "229381f5_ab90aa36",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/screen_wake_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-11-02T11:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee5a75f_1327dd25",
       "range": {
         "startLine": 73,
         "startChar": 8,

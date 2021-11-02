@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ce623c_fa75ec7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-11-02T11:03:01Z",
+      "side": 1,
+      "message": "We\u0027re still clarifying on the behaviors of key presses under tablet mode. At the moment, for the convenience of testing, I\u0027ve declared a few bool variables for the input devices that can be toggled around, depending on the scenarios we see from different platforms. \n\nFor the Stylus, I\u0027m yet to test the gpio on Boten and Gooey. I\u0027ll include this step as well once I have a better picture.",
+      "revId": "95abb0743428773416a7ab36d7ad09a6c2d14a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
