@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5f034b_789b6312",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-02T17:55:14Z",
+      "side": 1,
+      "message": "ah disregard I see you moved the setup to local/ in one of the later CLs",
+      "parentUuid": "a81cc0ed_a4a9b734",
+      "revId": "fb0cd34a00ee04959e11165a6e18e8eeed9a9ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b86c543e_f32384aa",
@@ -43,6 +61,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9df3d520_2ce319b4",
+        "filename": "src/chromiumos/tast/common/android/adb/adb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-02T17:55:14Z",
+      "side": 1,
+      "message": "this is not actually a \"local\" server as in deployed from a local test (since it\u0027s used in the remote adb lol https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/android/adb/adb.go;l\u003d26)",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 23
+      },
+      "revId": "fb0cd34a00ee04959e11165a6e18e8eeed9a9ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "520bcef7_03cb4e7e",
         "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go",
         "patchSetId": 4
@@ -54,6 +95,24 @@
       "writtenOn": "2021-11-02T17:21:11Z",
       "side": 1,
       "message": "I was thinking that the right call here was to move most of this file to local/. The only part that makes sense to keep in common/ is the CrOS attributes struct I think.",
+      "revId": "fb0cd34a00ee04959e11165a6e18e8eeed9a9ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f085217_feb80ff6",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-02T17:55:14Z",
+      "side": 1,
+      "message": "disregard I see you move it in a later CL.",
+      "parentUuid": "520bcef7_03cb4e7e",
       "revId": "fb0cd34a00ee04959e11165a6e18e8eeed9a9ce8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +130,30 @@
       "writtenOn": "2021-11-02T17:21:11Z",
       "side": 1,
       "message": "I think these imports from local/ are still problematic. nearbysetup.go is inherently local code due to its use of chrome, so it should probably be moved to local/",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "fb0cd34a00ee04959e11165a6e18e8eeed9a9ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49e21643_f9d8d11a",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-02T17:55:14Z",
+      "side": 1,
+      "message": "disregard this is fixed in a later CL",
+      "parentUuid": "1482faff_e77406d3",
       "range": {
         "startLine": 25,
         "startChar": 1,
