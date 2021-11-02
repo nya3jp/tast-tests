@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2afdff22_576a0c8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-11-02T03:36:49Z",
+      "side": 1,
+      "message": "It looks like a problem with the test setup code. Looking through a few of the tast.DEBUG logs, two lines which stick out are \"Closing DUT SSH connection to ...\" and \"Opened DUT SSH connection to ...\". For the passing cases, the most recent one of those lines is \"Opened DUT SSH connection to ...\", while for the failure cases the most recent one is \"Closing DUT SSH connection ...\". I\u0027m not familiar with that part of the tast infrastructure, but it\u0027s a good place for you to start investigating.",
+      "parentUuid": "b352ae48_3738a64d",
+      "range": {
+        "startLine": 10,
+        "startChar": 35,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "1489068b8df4a88042641254067d032ce8032388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "044bf16b_4c71c518",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "The description could be better improved, as the failure are most connection issues, my guess is that it could happen more often only on some specific model (could be several reasons, including non-software related reason, just the whole combination make them fail more often), so we want to be more conservative and still leave some model informational.",
       "parentUuid": "044bf16b_4c71c518",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "1489068b8df4a88042641254067d032ce8032388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c3b73b4_78dd7333",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-11-02T03:36:49Z",
+      "side": 1,
+      "message": "Please rewrite the commit message so that it doesn\u0027t seem to contradict itself multiple times.",
+      "parentUuid": "8bf11b1a_403b3928",
       "range": {
         "startLine": 10,
         "startChar": 10,
