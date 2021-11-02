@@ -37,6 +37,12 @@ const (
 	genPTZScene            = "GENERATED_PTZ_SCENE"
 )
 
+type feature string
+
+const (
+	manualCrop feature = "CameraAppDocumentManualCrop"
+)
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "ccaLaunched",
@@ -150,11 +156,15 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:            "ccaTestBridgeReadyWithDocumentScene",
-		Desc:            "Set up test bridge for CCA with document scene as camera input",
-		Contacts:        []string{"wtlee@chromium.org"},
-		Data:            []string{"cca_ui.js", documentScene},
-		Impl:            &fixture{fakeCamera: true, fakeCameraFile: documentScene},
+		Name:     "ccaTestBridgeReadyWithDocumentScene",
+		Desc:     "Set up test bridge for CCA with document scene as camera input",
+		Contacts: []string{"wtlee@chromium.org"},
+		Data:     []string{"cca_ui.js", documentScene},
+		Impl: &fixture{
+			fakeCamera:     true,
+			fakeCameraFile: documentScene,
+			features:       []feature{manualCrop},
+		},
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		TearDownTimeout: tearDownTimeout,
@@ -220,12 +230,16 @@ type fixture struct {
 	guestMode        bool
 	genScene         string
 	debugParams      DebugParams
+	features         []feature
 }
 
 func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	success := false
 
 	var chromeOpts []chrome.Option
+	for _, f := range f.features {
+		chromeOpts = append(chromeOpts, chrome.EnableFeatures(string(f)))
+	}
 	if f.fakeCamera {
 		chromeOpts = append(chromeOpts, chrome.ExtraArgs(
 			// The default fps of fake device is 20, but CCA requires fps >= 24.
