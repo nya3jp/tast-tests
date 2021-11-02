@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TextToSpeech,
 		Desc:         "Checks that Android TTS voice is used when chosen",
-		Contacts:     []string{"sarakato@chromium.org", "sahok@chromium.org", "hirokisato@chromium.org", "arc-framework+tast@google.com"},
+		Contacts:     []string{"sahok@chromium.org", "hirokisato@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
