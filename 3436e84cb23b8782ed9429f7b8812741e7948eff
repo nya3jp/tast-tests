@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9ce92e3_a5b8ec97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1274627
+      },
+      "writtenOn": "2021-11-02T04:08:58Z",
+      "side": 1,
+      "message": "ptal\ntests for which arc-framework will be the owner for",
+      "revId": "3436e84cb23b8782ed9429f7b8812741e7948eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
