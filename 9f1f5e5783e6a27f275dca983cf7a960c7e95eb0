@@ -98,6 +98,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1886cfb_797ffd28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/context_menu_pin_and_unpin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T01:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b40dc720_7cdd583e",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3473053_6e6d3a83",
@@ -111,6 +135,30 @@
       "writtenOn": "2021-11-01T18:48:37Z",
       "side": 1,
       "message": "nit: be consistent w/ use of either Fatal of Fatalf",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e015661d_55c8121d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/context_menu_pin_and_unpin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T01:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3473053_6e6d3a83",
       "range": {
         "startLine": 55,
         "startChar": 4,
@@ -138,6 +186,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71882b06_44e2c523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/drag_and_drop_pin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T01:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daa184d1_81174329",
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3216a37a_6b7ac6b4",
@@ -161,6 +227,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b411d3_becc930b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T01:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3216a37a_6b7ac6b4",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 17
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b38868a3_823aaf45",
@@ -174,6 +264,30 @@
       "writtenOn": "2021-11-01T18:48:37Z",
       "side": 1,
       "message": "This method has unadvertised side effects of opening and leaving open holding space UI. It would probably be better if the caller had already opened holding space",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07b18526_091ea922",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T01:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b38868a3_823aaf45",
       "range": {
         "startLine": 56,
         "startChar": 0,
@@ -254,6 +368,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2305bd56_36d82b02",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T01:34:01Z",
+      "side": 1,
+      "message": "This is actually done by the linter, and is a formatting rule: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Formatting",
+      "parentUuid": "cbbec951_66c9d71a",
+      "range": {
+        "startLine": 63,
+        "startChar": 24,
+        "endLine": 63,
+        "endChar": 25
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f805e7f4_00ea196d",
@@ -267,6 +405,30 @@
       "writtenOn": "2021-11-01T18:48:37Z",
       "side": 1,
       "message": "Same as above, unadvertised side effects",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96c0b8d9_4e786af3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T01:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f805e7f4_00ea196d",
       "range": {
         "startLine": 79,
         "startChar": 0,
@@ -314,6 +476,30 @@
       "side": 1,
       "message": "Actually, how do you feel about inlining this as well? I mostly created it to avoid repeating myself in creating the junk files that force the holding space to show. If we\u0027re not doing that any more, then this is kind of overkill anyway.",
       "parentUuid": "83762b70_c768ace5",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 1
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "762b680d_54313879",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T01:34:01Z",
+      "side": 1,
+      "message": "I went ahead and took that approach. If you disagree, feel free to un-resolve this and yell at me. 😊",
+      "parentUuid": "0501736d_364f6e81",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -452,6 +638,30 @@
       "writtenOn": "2021-11-01T18:48:37Z",
       "side": 1,
       "message": "nit: redundant, remove",
+      "range": {
+        "startLine": 173,
+        "startChar": 9,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "9f1f5e5783e6a27f275dca983cf7a960c7e95eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "687614d2_8b95c7c2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-02T01:34:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6cddc84_beed9d7c",
       "range": {
         "startLine": 173,
         "startChar": 9,
