@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b13c0247_49241bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-11-02T21:55:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "959c1d6b_a8174900",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 3
+      },
+      "revId": "9f5b38a8637f1c4c15294363f118f3b147ce27b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c798d54_f54e6ee2",
