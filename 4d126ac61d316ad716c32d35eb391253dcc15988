@@ -34,6 +34,24 @@
       "parentUuid": "ecb89a77_0f0c7402",
       "revId": "4d126ac61d316ad716c32d35eb391253dcc15988",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abf2b944_e2010de4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-02T02:07:45Z",
+      "side": 1,
+      "message": "Or you can enable that flag for ccaTestBridgeReadyWithFakeCamera by default if it won\u0027t affect other tests. So that we won\u0027t need a separate fixture.",
+      "parentUuid": "22f1b34e_f227838f",
+      "revId": "4d126ac61d316ad716c32d35eb391253dcc15988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
