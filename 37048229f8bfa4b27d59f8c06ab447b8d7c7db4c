@@ -33,6 +33,23 @@
       "message": "ptal; nya@ for owners",
       "revId": "37048229f8bfa4b27d59f8c06ab447b8d7c7db4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b58f042_b7f2dd66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-02T00:13:57Z",
+      "side": 1,
+      "message": "Thanks for keeping it updated :)\n",
+      "revId": "37048229f8bfa4b27d59f8c06ab447b8d7c7db4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
