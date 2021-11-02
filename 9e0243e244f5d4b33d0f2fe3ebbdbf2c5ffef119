@@ -16,6 +16,69 @@
       "message": "Thanks for the review!",
       "revId": "9e0243e244f5d4b33d0f2fe3ebbdbf2c5ffef119",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "578f31cb_cd1094c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-02T10:45:05Z",
+      "side": 1,
+      "message": "LGTM % nits,\n\nPlease also get LGTM from someone from your team before submitting this CL.",
+      "revId": "9e0243e244f5d4b33d0f2fe3ebbdbf2c5ffef119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eff4451_1800c766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/sha_ni.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-02T10:45:05Z",
+      "side": 1,
+      "message": "nit: this can be \"const\", e.g.\n\nconst testBin \u003d \"/usr/local/share/vboot/tests/vb2_sha256_x86_tests\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "9e0243e244f5d4b33d0f2fe3ebbdbf2c5ffef119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61efe768_eb628536",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/sha_ni.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-02T10:45:05Z",
+      "side": 1,
+      "message": "nit: Maybe give a bit more details, e.g.\n\ns.Fatal(\"Failed to run vb2_sha256_x86_tests binary: \", err)",
+      "range": {
+        "startLine": 32,
+        "startChar": 11,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "9e0243e244f5d4b33d0f2fe3ebbdbf2c5ffef119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
