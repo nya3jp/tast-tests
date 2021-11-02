@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37eea9e7_fcd3d917",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2021-11-02T13:37:12Z",
+      "side": 1,
+      "message": "Hi,\n\nPlease have a look at this patch.\n\nThanks",
+      "revId": "57ebe201c70f99bef5a3a6956eb6fa36bd66ae60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
