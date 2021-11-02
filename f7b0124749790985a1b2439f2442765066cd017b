@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9028b5ca_9892314e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-02T06:36:36Z",
+      "side": 1,
+      "message": "Defer +2 to Tast owners",
+      "revId": "f7b0124749790985a1b2439f2442765066cd017b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc80ab71_a2e6400f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-02T06:36:36Z",
+      "side": 1,
+      "message": "If we only need Chrome instance, maybe we can only pass it in?",
+      "range": {
+        "startLine": 141,
+        "startChar": 29,
+        "endLine": 141,
+        "endChar": 60
+      },
+      "revId": "f7b0124749790985a1b2439f2442765066cd017b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
