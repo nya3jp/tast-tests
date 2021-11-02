@@ -16,6 +16,24 @@
       "message": "Is defer cancel() expected here in a for loop...?",
       "revId": "6c6a9166e62a11f818ea81cc5da4e404b56a6c56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e0c315e_66b12d56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-02T02:03:39Z",
+      "side": 1,
+      "message": "Ah, forget it is a for loop...\nRevert it back, thanks a lot for catching this!",
+      "parentUuid": "0f648370_e057f7f4",
+      "revId": "6c6a9166e62a11f818ea81cc5da4e404b56a6c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
