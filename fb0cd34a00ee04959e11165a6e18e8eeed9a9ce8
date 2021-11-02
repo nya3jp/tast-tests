@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a81cc0ed_a4a9b734",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-02T17:21:11Z",
+      "side": 1,
+      "message": "I think it\u0027s probably fine to move adb/android code to common, but I don\u0027t think it\u0027s necessarily the way to fix the bug with Nearby common packages importing from local/. I think the right call is to move nearbysetup.go and our other packages out of common/ since most of them are strictly dealing with local code",
+      "revId": "fb0cd34a00ee04959e11165a6e18e8eeed9a9ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86c543e_f32384aa",
+        "filename": "src/chromiumos/tast/common/android/adb/adb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-02T17:21:11Z",
+      "side": 1,
+      "message": "I think this should probably stay in local/, since it\u0027s specific to local bundles. Similarly to how tast/remote/android/adb/ just has the one function for starting the server.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 1
+      },
+      "revId": "fb0cd34a00ee04959e11165a6e18e8eeed9a9ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "520bcef7_03cb4e7e",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-02T17:21:11Z",
+      "side": 1,
+      "message": "I was thinking that the right call here was to move most of this file to local/. The only part that makes sense to keep in common/ is the CrOS attributes struct I think.",
+      "revId": "fb0cd34a00ee04959e11165a6e18e8eeed9a9ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1482faff_e77406d3",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/nearbysetup/nearbysetup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-02T17:21:11Z",
+      "side": 1,
+      "message": "I think these imports from local/ are still problematic. nearbysetup.go is inherently local code due to its use of chrome, so it should probably be moved to local/",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "fb0cd34a00ee04959e11165a6e18e8eeed9a9ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
