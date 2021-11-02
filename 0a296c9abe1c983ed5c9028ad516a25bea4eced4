@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f54f42e_01f9ff4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-11-02T01:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d55cf7e4_5ed34205",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "0a296c9abe1c983ed5c9028ad516a25bea4eced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9b5c976_03e3051d",
@@ -88,6 +112,24 @@
       "writtenOn": "2021-10-26T16:37:21Z",
       "side": 1,
       "message": "nit: missing a \u0027.\u0027 at the end of the sentence.",
+      "revId": "0a296c9abe1c983ed5c9028ad516a25bea4eced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb34ede_cf0640dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-11-02T01:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9b5c976_03e3051d",
       "revId": "0a296c9abe1c983ed5c9028ad516a25bea4eced4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +157,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "391b8aa1_c5d86bbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-11-02T01:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8141df0a_ef646b73",
+      "range": {
+        "startLine": 270,
+        "startChar": 11,
+        "endLine": 270,
+        "endChar": 23
+      },
+      "revId": "0a296c9abe1c983ed5c9028ad516a25bea4eced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0714c094_b3c019fa",
@@ -128,6 +194,24 @@
       "writtenOn": "2021-10-26T16:37:21Z",
       "side": 1,
       "message": "nit: I think these should be: error.Wrap(err, \"\u003cERROR MESSAGE\u003e\") to provide extra context. Same below for ip6tables.",
+      "revId": "0a296c9abe1c983ed5c9028ad516a25bea4eced4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13f5c938_12b45bf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_over_vpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-11-02T01:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0714c094_b3c019fa",
       "revId": "0a296c9abe1c983ed5c9028ad516a25bea4eced4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
