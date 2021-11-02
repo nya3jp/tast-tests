@@ -11,9 +11,9 @@ import (
 
 	"chromiumos/tast/common/android"
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/nearbyshare"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/screenshot"
