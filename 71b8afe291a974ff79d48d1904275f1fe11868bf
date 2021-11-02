@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "410aae9e_4065dbae",
+        "filename": "src/chromiumos/tast/local/uidetection/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-02T23:48:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e60235d_81558f78",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "71b8afe291a974ff79d48d1904275f1fe11868bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e33d4bc_708adf6f",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-02T23:29:25Z",
       "side": 1,
       "message": "Wrap the errors? The same for the following two returns.",
+      "range": {
+        "startLine": 25,
+        "startChar": 14,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "71b8afe291a974ff79d48d1904275f1fe11868bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8137585_3dfc37f9",
+        "filename": "src/chromiumos/tast/local/uidetection/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-02T23:48:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e33d4bc_708adf6f",
       "range": {
         "startLine": 25,
         "startChar": 14,
