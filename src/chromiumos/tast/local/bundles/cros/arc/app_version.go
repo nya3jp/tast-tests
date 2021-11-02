@@ -30,7 +30,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppVersion,
 		Desc:         "Verifies that app version is available from app info page",
-		Contacts:     []string{"vkrishan@google.com", "cros-arc-te@google.com"},
+		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
