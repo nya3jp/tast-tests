@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package webcodecs provides common code for video.WebCodecs* tests
 package webcodecs
 
 import (
@@ -28,19 +27,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// HardwareAcceleration represents the preference of used codecs in WebCodecs API.
-// See https://www.w3.org/TR/webcodecs/#hardware-acceleration.
-type HardwareAcceleration string
-
-const (
-	// PreferHardware means hardware accelerated encoder/decoder is preferred.
-	PreferHardware HardwareAcceleration = "prefer-hardware"
-	// PreferSoftware means software encoder/decoder is preferred.
-	PreferSoftware HardwareAcceleration = "prefer-software"
-)
-
-// TestArgs is the arguments used in RunEncodeTest.
-type TestArgs struct {
+// TestEncodeArgs is the arguments used in RunEncodeTest.
+type TestEncodeArgs struct {
 	// Codec is the codec of a bitstream produced by an encoder.
 	Codec videotype.Codec
 	// ScalabilityMode is a "scalabilityMode" identifier.
@@ -48,14 +36,6 @@ type TestArgs struct {
 	ScalabilityMode string
 	// Acceleration denotes which encoder is used, hardware or software.
 	Acceleration HardwareAcceleration
-}
-
-// MP4DemuxerDataFiles returns the list of JS files for demuxing MP4 container.
-func MP4DemuxerDataFiles() []string {
-	return []string{
-		"third_party/mp4/mp4_demuxer.js",
-		"third_party/mp4/mp4box.all.min.js",
-	}
 }
 
 const encodeHTML = "webcodecs_encode.html"
@@ -81,27 +61,7 @@ func VideoDataFiles() []string {
 	}
 }
 
-type videoConfig struct {
-	width, height, numFrames, framerate int
-}
-
 var crowd720pVideoConfig = videoConfig{width: 1280, height: 720, numFrames: 30, framerate: 30}
-
-// toMIMECodec converts videotype.Codec to codec in MIME type.
-// See https://developer.mozilla.org/en-US/docs/Web/Media/Formats/codecs_parameter for detail.
-func toMIMECodec(codec videotype.Codec) string {
-	switch codec {
-	case videotype.H264:
-		// H.264 Baseline Level 3.1.
-		return "avc1.42001E"
-	case videotype.VP8:
-		return "vp8"
-	case videotype.VP9:
-		// VP9 profile 0 level 1.0 8-bit depth.
-		return "vp09.00.10.08"
-	}
-	return ""
-}
 
 // computeBitstreamQuality computes SSIM and PSNR of bitstreams comparing with yuvFile.
 // If numTemporalLayers is more than 1, then this computes SSIM and PSNR of bitstreams
@@ -145,15 +105,6 @@ func computeBitstreamQuality(ctx context.Context, yuvFile, outDir string, bitstr
 	return psnr, ssim, nil
 }
 
-func outputJSLogAndError(ctx context.Context, conn *chrome.Conn, callErr error) error {
-	var logs string
-	if err := conn.Eval(ctx, "TEST.getLogs()", &logs); err != nil {
-		testing.ContextLog(ctx, "Error getting TEST.logs: ", err)
-	}
-	testing.ContextLog(ctx, "JS log=", logs)
-	return callErr
-}
-
 // verifyTLStruct verifies temporalLayerIDs matches the expected temporal layer structures.
 // See https://www.w3.org/TR/webrtc-svc/#dependencydiagrams* for the expected temporal layer structures.
 func verifyTLStruct(numTemporalLayers int, temporalLayerIDs []int) error {
@@ -179,7 +130,7 @@ func verifyTLStruct(numTemporalLayers int, temporalLayerIDs []int) error {
 
 // RunEncodeTest tests encoding in WebCodecs API. It verifies a specified encoder is used and
 // the produced bitstream.
-func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, testArgs TestArgs, videoFile, outDir string) error {
+func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, testArgs TestEncodeArgs, videoFile, outDir string) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		return errors.Wrap(err, "failed to set values for verbose logging")
