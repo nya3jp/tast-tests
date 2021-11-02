@@ -215,17 +215,27 @@ func AndroidSetup(ctx context.Context, testDevice *adb.Device, accountUtilZipPat
 			return nil, errors.Errorf("failed to remove accounts from the device (%v)", string(out))
 		}
 
-		// TODO(crbug/1185918): Re-adding the account immediately after removing it is flaky.
-		// Waiting a few seconds fixes it, but we should find a deterministic way to tell when we can safely re-add the account.
-		testing.Sleep(ctx, 3*time.Second)
-		testing.ContextLog(ctx, "Adding Nearby GAIA user to the Android device")
+		// TODO(b/187795521): Re-adding the account immediately after removing it is flaky so retry until there is a deterministic indicator.
 		addAccountCmd := testDevice.ShellCommand(ctx, "am", "instrument", "-w",
 			"-e", "account", username, "-e", "password", password, "com.google.android.tradefed.account/.AddAccount",
 		)
-		if out, err := addAccountCmd.Output(); err != nil {
-			return nil, errors.Wrap(err, "failed to add account from the device")
-		} else if !strings.Contains(string(out), "INSTRUMENTATION_RESULT: result=SUCCESS") {
-			return nil, errors.Errorf("failed to add account to the device (%v)", string(out))
+		accountAdded := true
+		for i := 0; i < 3; i++ {
+			testing.Sleep(ctx, 3*time.Second)
+			accountAdded = true
+			if out, err := addAccountCmd.Output(); err != nil {
+				testing.ContextLog(ctx, "Failed to add account from the device")
+				accountAdded = false
+			} else if !strings.Contains(string(out), "INSTRUMENTATION_RESULT: result=SUCCESS") {
+				testing.ContextLogf(ctx, "Failed to add account to the device (%v)", string(out))
+				accountAdded = false
+			}
+			if accountAdded {
+				break
+			}
+		}
+		if !accountAdded {
+			return nil, errors.New("failed to add GAIA acccount to Android after multiple attempts")
 		}
 	}
 
@@ -274,8 +284,10 @@ func AndroidConfigure(ctx context.Context, androidNearby *nearbysnippet.AndroidN
 	}
 
 	// Force-sync after changing Nearby settings to ensure the phone's certificates are regenerated and uploaded.
-	if err := androidNearby.Sync(ctx); err != nil {
-		return errors.Wrap(err, "failed to sync contacts and certificates")
+	if visibility != nearbysnippet.VisibilityNoOne {
+		if err := androidNearby.Sync(ctx); err != nil {
+			return errors.Wrap(err, "failed to sync contacts and certificates")
+		}
 	}
 
 	return nil
