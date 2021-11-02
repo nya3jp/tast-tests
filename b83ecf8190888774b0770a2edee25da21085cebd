@@ -119,6 +119,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80191ff4_c7936fc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-11-02T17:49:39Z",
+      "side": 1,
+      "message": "Same as the previous comment, this is probably not the correct license. This probably just wants to emulate other tests (e.g., https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go#1).",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6ab52d9_c79ff3da",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
         "patchSetId": 6
