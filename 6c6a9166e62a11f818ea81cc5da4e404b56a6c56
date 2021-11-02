@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f648370_e057f7f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_qrcode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-02T02:01:44Z",
+      "side": 1,
+      "message": "Is defer cancel() expected here in a for loop...?",
+      "revId": "6c6a9166e62a11f818ea81cc5da4e404b56a6c56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
