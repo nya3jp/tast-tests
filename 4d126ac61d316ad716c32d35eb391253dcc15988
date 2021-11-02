@@ -52,6 +52,24 @@
       "parentUuid": "22f1b34e_f227838f",
       "revId": "4d126ac61d316ad716c32d35eb391253dcc15988",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43b0b54e_e755ab3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-02T05:04:34Z",
+      "side": 1,
+      "message": "As offline discussion, we had better to move it to new test item for easily mute the test result if the new feature is not allow to fixed in release branch.",
+      "parentUuid": "abf2b944_e2010de4",
+      "revId": "4d126ac61d316ad716c32d35eb391253dcc15988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
