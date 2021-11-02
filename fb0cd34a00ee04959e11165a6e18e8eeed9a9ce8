@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c5db135_94ceffa2",
+        "filename": "src/chromiumos/tast/common/android/adb/adb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-02T19:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b86c543e_f32384aa",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 1
+      },
+      "revId": "fb0cd34a00ee04959e11165a6e18e8eeed9a9ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9df3d520_2ce319b4",
@@ -72,6 +96,30 @@
       "writtenOn": "2021-11-02T17:55:14Z",
       "side": 1,
       "message": "this is not actually a \"local\" server as in deployed from a local test (since it\u0027s used in the remote adb lol https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/android/adb/adb.go;l\u003d26)",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 23
+      },
+      "revId": "fb0cd34a00ee04959e11165a6e18e8eeed9a9ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56c35334_769ce300",
+        "filename": "src/chromiumos/tast/common/android/adb/adb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-02T19:20:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9df3d520_2ce319b4",
       "range": {
         "startLine": 66,
         "startChar": 5,
