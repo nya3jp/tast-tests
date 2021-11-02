@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eeb7799_0667c34f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-02T21:29:05Z",
+      "side": 1,
+      "message": "Thanks! +2 with 1 nit",
+      "revId": "bf09ba8ec1de8e51aa33e4a801e8c8453c7c61f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a31e9842_8c02a320",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ap_supported_rates.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-02T21:29:05Z",
+      "side": 1,
+      "message": "Can you also add to the comment the reason we\u0027re filtering at this level rather than the packet? It\u0027s already in the commit message, but since it was not obvious and took quite a lot of analysis to figure out what the problem is, I think it makes sense to also repeat that in the code.",
+      "range": {
+        "startLine": 148,
+        "startChar": 7,
+        "endLine": 150,
+        "endChar": 30
+      },
+      "revId": "bf09ba8ec1de8e51aa33e4a801e8c8453c7c61f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
