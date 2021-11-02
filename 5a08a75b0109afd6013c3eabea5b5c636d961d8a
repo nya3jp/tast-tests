@@ -16,6 +16,24 @@
       "message": "can it happen that two test will run in parallel and use the same file for screenshots?",
       "revId": "5a08a75b0109afd6013c3eabea5b5c636d961d8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c56b0d45_76ff3fc0",
+        "filename": "src/chromiumos/tast/local/uidetection/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-02T21:41:14Z",
+      "side": 1,
+      "message": "Thanks for pointing it out! Though very less likely, it could be a potential issue.\n\nRevised to use the timestamp to create the filename.",
+      "parentUuid": "25cc5447_0fead985",
+      "revId": "5a08a75b0109afd6013c3eabea5b5c636d961d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
