@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccf07039_c60ebb7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-11-02T21:04:33Z",
+      "side": 1,
+      "message": "https://ci.chromium.org/ui/p/chromeos/builders/vmtest/reven-vmtest-direct-tast-vm/b8831666535079789953/overview is a known failure, chumping.",
+      "revId": "15fcbdc0a5980d744c05d99654ef3aa5545f5ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
