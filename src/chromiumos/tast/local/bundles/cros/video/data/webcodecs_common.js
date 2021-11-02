@@ -160,7 +160,7 @@ async function createNewFrame(frame) {
   return new VideoFrame(buffer, bufferInit);
 }
 
-async function decodeVideoInURL(videoURL, numFrames) {
+async function decodeVideoInURL(videoURL, numFrames, hardwareAcceleration) {
   let demuxer = new MP4Demuxer(videoURL);
   let videoFrames = [];
   let decoder = new VideoDecoder({
@@ -176,7 +176,7 @@ async function decodeVideoInURL(videoURL, numFrames) {
   });
 
   let config = await demuxer.getConfig();
-  config.hardwareAcceleration = "prefer-software";
+  config.hardwareAcceleration = hardwareAcceleration;
   decoder.configure(config);
 
   let numChunks = 0;
