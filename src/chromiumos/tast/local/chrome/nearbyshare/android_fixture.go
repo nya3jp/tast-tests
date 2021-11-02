@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
+	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
 

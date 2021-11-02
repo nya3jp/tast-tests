@@ -18,10 +18,10 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
