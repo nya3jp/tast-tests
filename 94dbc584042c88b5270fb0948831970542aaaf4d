@@ -181,6 +181,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c48bd869_6dcce173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-02T10:54:37Z",
+      "side": 1,
+      "message": "Sorry if was not clear. The whole comment was about some constants from C++ code. Now it SG.",
+      "parentUuid": "10aee19b_e30f417d",
+      "range": {
+        "startLine": 153,
+        "startChar": 33,
+        "endLine": 153,
+        "endChar": 61
+      },
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddbd70f6_7ff9aa08",
@@ -353,6 +377,24 @@
       "side": 1,
       "message": "Good point! I moved out `defer SetDisplayRotationSync(Rotate0)` to make sure we reset the display to ROTATION0 once when WindowSnapAndRotate() returns.",
       "parentUuid": "16c9ec5f_b3b022ea",
+      "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fdf2c0c_4cdf24d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-02T10:54:37Z",
+      "side": 1,
+      "message": "Should we always reset to Rotate0?\n\nI\u0027d also move defer statement from line 83 to line 64, because you perform some rotation in line 79 and it might fail somewhere in the middle.\n\nAlso, maybe increase cleanup time to 10 seconds?",
+      "parentUuid": "864c2b91_b43a9147",
       "revId": "94dbc584042c88b5270fb0948831970542aaaf4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
