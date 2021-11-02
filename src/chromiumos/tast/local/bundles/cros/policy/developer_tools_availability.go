@@ -34,7 +34,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
 		Fixture:      fixture.ChromePolicyLoggedIn,
-		Timeout:      3 * time.Minute,
+		Timeout:      4 * time.Minute,
 	})
 }
 
@@ -113,14 +113,14 @@ func DeveloperToolsAvailability(ctx context.Context, s *testing.State) {
 					// Check that we have access to chrome://user-actions accessability tree.
 					ui := uiauto.New(tconn)
 					userAction := nodewith.Name("User Action").Role(role.ColumnHeader)
-					if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(userAction)(ctx); err != nil {
+					if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(userAction)(ctx); err != nil {
 						s.Fatal("Failed to wait for page nodes: ", err)
 					}
 					// Press keys combination to open DevTools.
 					if err := keyboard.Accel(ctx, keys); err != nil {
 						s.Fatalf("Failed to press %s: %v", keys, err)
 					}
-					timeout := 5 * time.Second
+					timeout := 15 * time.Second
 					elements := nodewith.Name("Elements").Role(role.Tab)
 					if tc.wantAllowed {
 						if err := ui.WithTimeout(timeout).WaitUntilExists(elements)(ctx); err != nil {
