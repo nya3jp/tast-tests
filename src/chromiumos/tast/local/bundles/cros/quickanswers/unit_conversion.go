@@ -24,7 +24,7 @@ func init() {
 			"croissant-eng@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 	})
 }
