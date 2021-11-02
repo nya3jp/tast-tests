@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/remote/bundles/cros/factory/fixture"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -20,9 +21,10 @@ func init() {
 		Contacts: []string{"lschyi@google.com", "chromeos-factory-eng@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Timeout:  time.Minute,
-		Fixture:  "ensureToolkit",
+		Fixture:  fixture.EnsureToolkit,
 		// Skip "nyan_kitty" due to slow reboot speed.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty")),
+		SoftwareDeps: []string{"reboot", "factory_flow"},
 	})
 }
 

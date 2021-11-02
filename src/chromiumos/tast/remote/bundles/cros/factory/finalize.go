@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/bundles/cros/factory/fixture"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -25,7 +26,7 @@ func init() {
 		SoftwareDeps: []string{"reboot", "factory_flow"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      8 * time.Minute,
-		Fixture:      "ensureToolkit",
+		Fixture:      fixture.EnsureToolkit,
 		// Skip "nyan_kitty" due to slow reboot speed.
 		// TODO(b/203313828): Skip on dedede due to CQ failures
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty"), hwdep.SkipOnPlatform("dedede")),
