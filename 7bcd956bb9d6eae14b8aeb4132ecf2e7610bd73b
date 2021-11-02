@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6cb29c1_07f70e6b",
+        "filename": "src/chromiumos/tast/local/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2021-11-02T00:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cfb59d9_83fc5e47",
+      "revId": "7bcd956bb9d6eae14b8aeb4132ecf2e7610bd73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33aac410_2b627fc0",
@@ -136,6 +154,24 @@
       "writtenOn": "2021-11-01T23:11:43Z",
       "side": 1,
       "message": "This code will have conflict with https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3253579. Please make sure not to do CQ+2 until that one is landed.",
+      "revId": "7bcd956bb9d6eae14b8aeb4132ecf2e7610bd73b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c63896c7_c8641dfc",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2021-11-02T00:06:14Z",
+      "side": 1,
+      "message": "willdo",
+      "parentUuid": "a068b8c4_125783a9",
       "revId": "7bcd956bb9d6eae14b8aeb4132ecf2e7610bd73b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
