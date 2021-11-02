@@ -123,13 +123,13 @@ func (n *NearbyService) StartLogging(ctx context.Context, req *empty.Empty) (*em
 	}
 	testing.ContextLog(ctx, "Started BT snoop logging")
 
-	chromeReader, err := nearbytestutils.StartLogging(ctx, syslog.ChromeLogFile)
+	chromeReader, err := nearbyshare.StartLogging(ctx, syslog.ChromeLogFile)
 	if err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed to start Chrome logging")
 	}
 	testing.ContextLog(ctx, "Started logging chrome logs")
 	n.chromeReader = chromeReader
-	messageReader, err := nearbytestutils.StartLogging(ctx, syslog.MessageFile)
+	messageReader, err := nearbyshare.StartLogging(ctx, syslog.MessageFile)
 	if err != nil {
 		return &empty.Empty{}, errors.Wrap(err, "failed to start Message logging")
 	}
@@ -148,12 +148,12 @@ func (n *NearbyService) SaveLogs(ctx context.Context, req *empty.Empty) (*empty.
 		testing.ContextLog(ctx, "Failed to create tmp dir log: ", err)
 	}
 	if n.chromeReader != nil {
-		if err = nearbytestutils.SaveLogs(ctx, n.chromeReader, filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.ChromeLog)); err != nil {
+		if err = nearbyshare.SaveLogs(ctx, n.chromeReader, filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.ChromeLog)); err != nil {
 			testing.ContextLog(ctx, "Failed to save chrome log: ", err)
 		}
 	}
 	if n.messageReader != nil {
-		if err = nearbytestutils.SaveLogs(ctx, n.messageReader, filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.MessageLog)); err != nil {
+		if err = nearbyshare.SaveLogs(ctx, n.messageReader, filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.MessageLog)); err != nil {
 			testing.ContextLog(ctx, "Failed to save message log: ", err)
 		}
 	}
@@ -175,7 +175,7 @@ func (n *NearbyService) CrOSSetup(ctx context.Context, req *nearbyservice.CrOSSe
 	n.deviceName = req.DeviceName
 	n.dataUsage = nearbysetup.DataUsage(req.DataUsage)
 	n.visibility = nearbysetup.Visibility(req.Visibility)
-	if err := nearbysetup.CrOSSetup(ctx, n.tconn, n.cr, n.dataUsage, n.visibility, n.deviceName); err != nil {
+	if err := nearbyshare.CrOSSetup(ctx, n.tconn, n.cr, n.dataUsage, n.visibility, n.deviceName); err != nil {
 		return nil, errors.Wrap(err, "failed to perform CrOS setup")
 	}
 	if n.visibility == nearbysetup.VisibilitySelectedContacts && req.SenderUsername != "" {
@@ -340,7 +340,7 @@ func (n *NearbyService) ClearTransferredFiles(ctx context.Context, req *empty.Em
 // CrOSAttributes retrieves useful information about the DUT to aid debugging.
 func (n *NearbyService) CrOSAttributes(ctx context.Context, req *empty.Empty) (*nearbyservice.CrOSAttributesResponse, error) {
 	testing.ContextLog(ctx, "Getting attributes about the device")
-	crosAttributes, err := nearbysetup.GetCrosAttributes(ctx, n.tconn, n.deviceName, n.username, n.dataUsage, n.visibility)
+	crosAttributes, err := nearbyshare.GetCrosAttributes(ctx, n.tconn, n.deviceName, n.username, n.dataUsage, n.visibility)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get CrOS attributes for reporting")
 	}

@@ -12,7 +12,6 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -21,13 +20,7 @@ import (
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	localadb "chromiumos/tast/local/android/adb"
-	"chromiumos/tast/local/bluetooth"
-	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/systemlogs"
-	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
 
@@ -35,70 +28,6 @@ import (
 // It is a sufficiently large value to guarantee most transfers can complete without the screen turning off,
 // since Nearby Share on Android requires the screen to be on.
 const DefaultScreenTimeout = 10 * time.Minute
-
-// CrOSSetup enables Chrome OS Nearby Share and configures its settings using the nearby_share_settings
-// interface which is available through chrome://nearby. This allows tests to bypass onboarding.
-// If deviceName is empty, the device display name will not be set and the default will be used.
-func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, dataUsage DataUsage, visibility Visibility, deviceName string) error {
-	nearbyConn, err := cr.NewConn(ctx, "chrome://nearby")
-	if err != nil {
-		return errors.Wrap(err, "failed to launch chrome://nearby")
-	}
-	defer nearbyConn.Close()
-	defer nearbyConn.CloseTarget(ctx)
-
-	var nearbySettings chrome.JSObject
-	if err := nearbyConn.Call(ctx, &nearbySettings, `async function() {
-		return await import('./shared/nearby_share_settings.m.js').then(m => m.getNearbyShareSettings());
-	}`); err != nil {
-		return errors.Wrap(err, "failed to import nearby_share_settings.m.js")
-	}
-
-	if err := nearbySettings.Call(ctx, nil, `function() {this.setEnabled(true)}`); err != nil {
-		return errors.Wrap(err, "failed to enable Nearby Share from OS settings")
-	}
-
-	if err := nearbySettings.Call(ctx, nil, `function(dataUsage) {this.setDataUsage(dataUsage)}`, dataUsage); err != nil {
-		return errors.Wrapf(err, "failed to call setDataUsage with value %v", dataUsage)
-	}
-
-	if err := nearbySettings.Call(ctx, nil, `function(visibility) {this.setVisibility(visibility)}`, visibility); err != nil {
-		return errors.Wrapf(err, "failed to call setVisibility with value %v", visibility)
-	}
-
-	if deviceName != "" {
-		var res DeviceNameValidationResult
-		if err := nearbySettings.Call(ctx, &res, `async function(name) {
-			r = await this.setDeviceName(name);
-			return r.result;
-		}`, deviceName); err != nil {
-			return errors.Wrapf(err, "failed to call setDeviceName with name %v", deviceName)
-		}
-		const baseError = "failed to set device name; validation result %v(%v)"
-		switch res {
-		case DeviceNameValidationResultValid:
-		case DeviceNameValidationResultErrorEmpty:
-			return errors.Errorf(baseError, res, "empty")
-		case DeviceNameValidationResultErrorTooLong:
-			return errors.Errorf(baseError, res, "too long")
-		case DeviceNameValidationResultErrorNotValidUtf8:
-			return errors.Errorf(baseError, res, "not valid UTF-8")
-		default:
-			return errors.Errorf(baseError, res, "unexpected value")
-		}
-	}
-
-	// Enable verbose bluetooth logging.
-	levels := bluetooth.LogVerbosity{
-		Bluez:  true,
-		Kernel: true,
-	}
-	if err := bluetooth.SetDebugLogLevels(ctx, levels); err != nil {
-		return errors.Wrap(err, "failed to enable verbose bluetooth logging")
-	}
-
-	return nil
-}
 
 // AndroidSetup prepares the connected Android device for Nearby Share tests.
 func AndroidSetup(ctx context.Context, testDevice *adb.Device, accountUtilZipPath, username, password string, loggedIn bool, apkZipPath string, rooted bool, screenOff time.Duration, dataUsage nearbysnippet.DataUsage, visibility nearbysnippet.Visibility, name string) (*nearbysnippet.AndroidNearbyDevice, error) {
@@ -277,26 +206,6 @@ func AndroidConfigure(ctx context.Context, androidNearby *nearbysnippet.AndroidN
 	return nil
 }
 
-// AdbSetup configures adb and connects to the Android device with adb root if available.
-func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
-	// Load the ARC adb vendor key, which must be pre-loaded on the Android device to allow adb over usb without requiring UI interaction.
-	if err := localadb.LaunchServer(ctx); err != nil {
-		return nil, false, errors.Wrap(err, "failed to launch adb server")
-	}
-	// Wait for the first available device, since we are assuming only a single Android device is connected to each CrOS device.
-	adbDevice, err := adb.WaitForDevice(ctx, func(device *adb.Device) bool { return !strings.HasPrefix(device.Serial, "emulator-") }, 10*time.Second)
-	if err != nil {
-		return nil, false, errors.Wrap(err, "failed to list adb devices")
-	}
-	// Check if adb root is available.
-	rooted := true
-	if err := adbDevice.Root(ctx); err != nil {
-		testing.ContextLog(ctx, "ADB root access not available; operations requiring root access will be skipped")
-		rooted = false
-	}
-	return adbDevice, rooted, nil
-}
-
 // ConfigureNearbyLogging enables verbose logging for Nearby modules, bluetooth, and wifi on Android.
 func ConfigureNearbyLogging(ctx context.Context, d *adb.Device, rooted bool) error {
 	tags := []string{
@@ -339,66 +248,4 @@ type CrosAttributes struct {
 	ChromeOSVersion string
 	Board           string
 	Model           string
-}
-
-// GetCrosAttributes gets the Chrome version and combines it into a CrosAttributes strct with the provided values for easy logging with json.MarshalIndent.
-func GetCrosAttributes(ctx context.Context, tconn *chrome.TestConn, displayName, username string, dataUsage DataUsage, visibility Visibility) (*CrosAttributes, error) {
-	attrs := CrosAttributes{
-		DisplayName: displayName,
-		User:        username,
-	}
-	if val, ok := DataUsageStrings[dataUsage]; ok {
-		attrs.DataUsage = val
-	} else {
-		return nil, errors.Errorf("undefined dataUsage: %v", dataUsage)
-	}
-	if val, ok := VisibilityStrings[visibility]; ok {
-		attrs.Visibility = val
-	} else {
-		return nil, errors.Errorf("undefined visibility: %v", visibility)
-	}
-
-	const expectedKey = "CHROME VERSION"
-	version, err := systemlogs.GetSystemLogs(ctx, tconn, expectedKey)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed getting system logs to check Chrome version")
-	}
-	if version == "" {
-		return nil, errors.Wrap(err, "system logs result empty")
-	}
-	// The output on test images contains 'unknown' for the channel, i.e. '91.0.4435.0 unknown', so just extract the channel version.
-	const versionPattern = `([0-9\.]+) [\w+]`
-	r, err := regexp.Compile(versionPattern)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to compile Chrome version pattern")
-	}
-	versionMatch := r.FindStringSubmatch(version)
-	if len(versionMatch) == 0 {
-		return nil, errors.New("failed to find valid Chrome version")
-	}
-	attrs.ChromeVersion = versionMatch[1]
-
-	lsb, err := lsbrelease.Load()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to read lsb-release")
-	}
-	osVersion, ok := lsb[lsbrelease.Version]
-	if !ok {
-		return nil, errors.Wrap(err, "failed to read ChromeOS version from lsb-release")
-	}
-	attrs.ChromeOSVersion = osVersion
-
-	board, ok := lsb[lsbrelease.Board]
-	if !ok {
-		return nil, errors.Wrap(err, "failed to read board from lsb-release")
-	}
-	attrs.Board = board
-
-	model, err := testexec.CommandContext(ctx, "cros_config", "/", "name").Output()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to read model from cros_config")
-	}
-	attrs.Model = string(model)
-
-	return &attrs, nil
 }
