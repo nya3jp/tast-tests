@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c667189_08048561",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-11-02T04:41:41Z",
+      "side": 1,
+      "message": "Moved back to ui/ folder.",
+      "parentUuid": "777f7946_6aceb7a9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 2
+      },
+      "revId": "f3d66daf749ebb919b0a5f05475351395f91d043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "597412c7_6392b830",
