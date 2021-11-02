@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b26fc3_c7ad9375",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-02T04:46:13Z",
+      "side": 1,
+      "message": "It\u0027s not necessarily very useful to mention that script since it\u0027s not easily available and reviewers/readers of the patch will have no idea what it\u0027s about.",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe988b1_1f4da43a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-02T04:46:13Z",
+      "side": 1,
+      "message": "That\u0027s the part of the commit message that\u0027s relevant to the CL, so you can potentially only mention that this CL verifies that the firmware dumps are valid by checking the size and the magic values in the header.",
+      "range": {
+        "startLine": 10,
+        "startChar": 63,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dba3a456_a2d2f555",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-02T04:46:13Z",
+      "side": 1,
+      "message": "Agreed, we don\u0027t need to process the payload for example. Still, besides the size and the magic numbers, are there other simple smoke tests that could be useful? Like, maybe the fw dump has some sections? In that case it could be good to verify that all the expected sections are present.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c92db032_27999c39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-02T04:46:13Z",
+      "side": 1,
+      "message": "That\u0027s probably the wrong license, this CL wasn\u0027t written by Intel",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ab52d9_c79ff3da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-02T04:46:13Z",
+      "side": 1,
+      "message": "Would it be possible to use the gzip Go package instead?",
+      "range": {
+        "startLine": 73,
+        "startChar": 41,
+        "endLine": 73,
+        "endChar": 45
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e96c8c56_0ba82ddb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-02T04:46:13Z",
+      "side": 1,
+      "message": "Do we know when the header is |yoyoMagic| and when the header is |validMagic|? Have you seen both?",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 42
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
