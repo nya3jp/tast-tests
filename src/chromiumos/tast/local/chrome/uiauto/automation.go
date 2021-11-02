@@ -361,10 +361,34 @@ func (ac *Context) Select(startNodeFinder *nodewith.Finder, startOffset int, end
 	}
 }
 
+func checkFragile(ctx context.Context, finder *nodewith.Finder) error {
+	restriction, ok := testing.RestrictionFromContext(ctx)
+	if !ok {
+		panic("context has no Restriction information")
+	}
+	if restriction.IsTestRunning {
+		if !restriction.IsMainline {
+			return nil
+		}
+		if finder.HasName() {
+			return errors.New("mainline test should not use Name() matcher")
+		}
+	} else {
+		// Test not yet running. e.g. called from Fixture Setup().
+		if finder.HasName() {
+			restriction.NameUsed = true
+		}
+	}
+	return nil
+}
+
 // Exists returns a function that returns nil if a node exists.
 // If any node in the chain is not found, it will return an error.
 func (ac *Context) Exists(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
+		if err := checkFragile(ctx, finder); err != nil {
+			return err
+		}
 		q, err := finder.GenerateQuery()
 		if err != nil {
 			return err
