@@ -37,6 +37,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08d22601_0af8a976",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-03T22:36:46Z",
+      "side": 1,
+      "message": "I wonder if this is better expressed as a HardwareDeps ? I couldn\u0027t find an existing one but might be better to future proof in the case new models are added that you might want to test.",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "522d8f28_ec93da29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-03T22:36:46Z",
+      "side": 1,
+      "message": "I believe this should be group:wilco_bve_dock seems all the builders are complaining due to it. Same for below",
+      "range": {
+        "startLine": 59,
+        "startChar": 33,
+        "endLine": 59,
+        "endChar": 47
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c9fb6f_a0103b49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-03T22:36:46Z",
+      "side": 1,
+      "message": "nit: All these log messages and Error/Fatals should be capitalised with the Error\u0027s beginning with lowercase. So line 96, line 126\n\nhttp://go/tast-writing#formatting",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 9
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee8197a5_bef75c84",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
         "patchSetId": 3
@@ -72,6 +141,30 @@
       "side": 1,
       "message": "IIRC, we don\u0027t need dots at the end of inline comments, but cannot find some guide about it.",
       "parentUuid": "ee8197a5_bef75c84",
+      "range": {
+        "startLine": 103,
+        "startChar": 45,
+        "endLine": 105,
+        "endChar": 67
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c50740f3_7306e0a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-03T22:36:46Z",
+      "side": 1,
+      "message": "For posterity, sentence fragments such as these inline comments do not require punctuation\n\n\"Comments that are sentence fragments have no such requirements for punctuation or capitalization.\"\n\nhttp://go/go-style/decisions#comment-sentences",
+      "parentUuid": "d8ddeda0_a6596590",
       "range": {
         "startLine": 103,
         "startChar": 45,
@@ -124,6 +217,52 @@
         "startChar": 0,
         "endLine": 151,
         "endChar": 5
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9efc6c38_138049b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-03T22:36:46Z",
+      "side": 1,
+      "message": "nit: adapter?",
+      "range": {
+        "startLine": 244,
+        "startChar": 48,
+        "endLine": 244,
+        "endChar": 56
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd3b4ec8_3d8664de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-03T22:36:46Z",
+      "side": 1,
+      "message": "nit: nil",
+      "range": {
+        "startLine": 252,
+        "startChar": 50,
+        "endLine": 252,
+        "endChar": 54
       },
       "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
