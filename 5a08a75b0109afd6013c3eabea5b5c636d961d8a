@@ -34,6 +34,24 @@
       "parentUuid": "25cc5447_0fead985",
       "revId": "5a08a75b0109afd6013c3eabea5b5c636d961d8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2382059c_cd70d285",
+        "filename": "src/chromiumos/tast/local/uidetection/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-03T12:29:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c56b0d45_76ff3fc0",
+      "revId": "5a08a75b0109afd6013c3eabea5b5c636d961d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
