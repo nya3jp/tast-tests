@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e8195b_b3caaac8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-03T09:53:09Z",
+      "side": 1,
+      "message": "flattened into the assistantOptions struct.",
+      "parentUuid": "f16172fd_9c1247f0",
+      "revId": "eda9f3a7e86d132fbcee6f6540474aa612ae6964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d854b76_2621278a",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-02T00:25:31Z",
       "side": 1,
       "message": "Do we have any test for the \"facing\" part of GA query? For example, take a selfie should open the front camera.\n\n(I am ok to have a TODO here and add it later with another CL)",
+      "revId": "eda9f3a7e86d132fbcee6f6540474aa612ae6964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d783edfb_2f5ad131",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-03T09:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d854b76_2621278a",
       "revId": "eda9f3a7e86d132fbcee6f6540474aa612ae6964",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e8c8d8_00975fdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-03T09:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "daf626af_fe96fca5",
+      "revId": "eda9f3a7e86d132fbcee6f6540474aa612ae6964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de890a9f_1e69a543",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "314305b1_b774081b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-03T09:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de890a9f_1e69a543",
+      "revId": "eda9f3a7e86d132fbcee6f6540474aa612ae6964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4198182_e86e3021",
@@ -82,6 +154,30 @@
       "writtenOn": "2021-11-02T09:18:36Z",
       "side": 1,
       "message": ".",
+      "range": {
+        "startLine": 268,
+        "startChar": 72,
+        "endLine": 268,
+        "endChar": 73
+      },
+      "revId": "eda9f3a7e86d132fbcee6f6540474aa612ae6964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcef28b9_3488fb47",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-03T09:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4198182_e86e3021",
       "range": {
         "startLine": 268,
         "startChar": 72,

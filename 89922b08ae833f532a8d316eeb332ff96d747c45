@@ -235,6 +235,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8845bad_211d53be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-03T09:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecd53c97_e0c8d975",
+      "revId": "89922b08ae833f532a8d316eeb332ff96d747c45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b368667_a12562f2",
