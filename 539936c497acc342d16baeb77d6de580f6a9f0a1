@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c055071_d992d566",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-11-03T10:51:46Z",
+      "side": 1,
+      "message": "I have added a case to run on all convertibles. However, I think some convertibles do not present themselves as one when checked by the hardware dependency. For example, my Storo360 is seen as a Clamshell, rather than a convertible.\n\nBy default, this test will run, assuming that keyboard is active under tablet mode. I\u0027m using this setting because that seems to be the most prevalent with devices that I\u0027ve tested here. If it turns out that the keyboard is disabled, we\u0027d be expecting the following message \"During the evtest for keyboard: did not detect evtest event for keyboard within expected time\". \n\nI\u0027d be interested in seeing the results from running in the lab. One more thing that I\u0027ll need to do is to document some additional messages for the services, which I uploaded to a different CL.",
+      "revId": "539936c497acc342d16baeb77d6de580f6a9f0a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

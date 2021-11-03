@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfc1e1ae_b23e0641",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/screen_wake_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-11-03T10:51:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c48a9f53_2d6b30ce",
+      "range": {
+        "startLine": 81,
+        "startChar": 44,
+        "endLine": 81,
+        "endChar": 65
+      },
+      "revId": "95abb0743428773416a7ab36d7ad09a6c2d14a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7c1173a_6c38d6c4",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-11-02T19:00:07Z",
       "side": 1,
       "message": "You also want ExtraHwDeps: hwdep.d(hwdep.Model(\"storo360\")) so this sub-test only runs on this model.",
+      "revId": "95abb0743428773416a7ab36d7ad09a6c2d14a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca198a15_68cdb48b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/screen_wake_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-11-03T10:51:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7c1173a_6c38d6c4",
       "revId": "95abb0743428773416a7ab36d7ad09a6c2d14a07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
