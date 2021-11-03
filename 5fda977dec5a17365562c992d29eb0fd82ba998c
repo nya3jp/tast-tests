@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf3a6367_769982c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T11:45:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3f6152a1_d623780f",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f8aa7da_51e8da57",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c217a0_0cae8d5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/brightness/brightness.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T11:45:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0f8aa7da_51e8da57",
+      "range": {
+        "startLine": 22,
+        "startChar": 42,
+        "endLine": 22,
+        "endChar": 84
+      },
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "148c1dea_f5c8e515",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-15T14:46:34Z",
       "side": 1,
       "message": "you are assuming that the device has brightness at 100%.\nPerhaps the defaults change in the future.\nBetter to read the current brightness, and the defer function should restore the original brightness value.",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e86a7aa3_6c430e19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T11:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "148c1dea_f5c8e515",
       "range": {
         "startLine": 34,
         "startChar": 23,
@@ -105,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39697b38_0a3b3702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T11:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4eff3da8_55fdf816",
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cc2fd0a_e79f46ff",
@@ -122,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfc716f5_42131bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T11:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cc2fd0a_e79f46ff",
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e03e5206_644f3fe9",
@@ -135,6 +243,30 @@
       "writtenOn": "2021-10-15T14:46:34Z",
       "side": 1,
       "message": "nit: add docstring for all non trivial functions.\n\nAlso, the name of the function is a bit confusing... Initially I thought that the function was waiting for a certain value. But, IIUC, it just wait until there is a change the brightness value, and returns that.\n\nSo perhaps a name like \"waitForChangeInBrightness\" or something like that might be better (?)",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 26
+      },
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2b9d926_a6b9e609",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T11:45:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e03e5206_644f3fe9",
       "range": {
         "startLine": 90,
         "startChar": 5,
@@ -168,6 +300,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac0f86bd_42dd0c00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T11:45:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "72634551_5428a687",
+      "range": {
+        "startLine": 96,
+        "startChar": 50,
+        "endLine": 96,
+        "endChar": 58
+      },
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bbe2a6e_54fd9897",
@@ -181,6 +337,30 @@
       "writtenOn": "2021-10-15T14:46:34Z",
       "side": 1,
       "message": "not clear why this extra \"GetSystemBrightness\" is needed. Can\u0027t you just use the last value from the Poll",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 58
+      },
+      "revId": "5fda977dec5a17365562c992d29eb0fd82ba998c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43d5f096_a5f01845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T11:45:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6bbe2a6e_54fd9897",
       "range": {
         "startLine": 110,
         "startChar": 0,
