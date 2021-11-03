@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d0bd42_d636692f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-03T04:45:42Z",
+      "side": 1,
+      "message": "Not sure if the way to pass the |notMarvell| parameter is The Right Way, I\u0027ll defer to the Tast reviewers on that :-)",
+      "revId": "3f4a93df1ab1e125b63375f2f1a3167ee5b04c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f156219_207c7b7f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_mbo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-03T04:45:42Z",
+      "side": 1,
+      "message": "Can you add a comment explaining why we skip Marvell? It\u0027s already in the commit message (thanks!) but it will be more discoverable in the future if it\u0027s in the code",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 14
+      },
+      "revId": "3f4a93df1ab1e125b63375f2f1a3167ee5b04c8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
