@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"path/filepath"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -17,6 +18,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/googleapps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -57,6 +59,36 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 	defer kb.Close()
 	ui := uiauto.New(tconn)
 	var presentApplication action.Action
+	switchToTab := func(tabName string) action.Action {
+		act := uiHandler.SwitchToChromeTabByName(tabName)
+		if extendedDisplay {
+			act = uiHandler.SwitchToAppWindowByName("Chrome", tabName)
+		}
+		return uiauto.NamedAction("switch tab to "+tabName, act)
+	}
+	switchTabIfNeeded := func(ctx context.Context) error {
+		// Some DUTs will switch to application tab when sharing screen.
+		// If there is no auto-switch, switch the tab to the application page.
+		appName := string(application)
+		appWebArea := nodewith.NameContaining(appName).Role(role.RootWebArea)
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(appWebArea)(ctx); err == nil {
+			testing.ContextLogf(ctx, "Already on the %s app page", application)
+		}
+		// Check whether current window is expected or not.
+		// If it stays on the expected window, there is no need to switch tab.
+		w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+			return w.IsActive && w.IsFrameVisible
+		})
+		if err != nil {
+			return errors.Wrap(err, "failed to get current active window")
+		}
+		if strings.Contains(w.Title, appName) {
+			testing.ContextLogf(ctx, "Current chrome window is %s, no need to switch tab", w.Title)
+			return nil
+		}
+
+		return switchToTab(appName)(ctx)
+	}
 	switch application {
 	case googleSlides:
 		presentApplication = uiauto.Combine("present slide",
@@ -65,13 +97,6 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 		)
 	case googleDocs:
 		presentApplication = googleapps.EditDoc(tconn, kb, docParagraph)
-	}
-	switchToTab := func(tabName string) action.Action {
-		act := uiHandler.SwitchToChromeTabByName(tabName)
-		if extendedDisplay {
-			act = uiHandler.SwitchToAppWindowByName("Chrome", tabName)
-		}
-		return uiauto.NamedAction("switch tab to "+tabName, act)
 	}
 
 	var renameSlideErr error
@@ -88,13 +113,7 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 	// docCleanup switches to the document page and deletes it.
 	docCleanup := func(ctx context.Context) error {
 		return uiauto.Combine("switch to the document page and delete it",
-			ui.IfSuccessThen(func(ctx context.Context) error {
-				docWebArea := nodewith.NameContaining("Google Docs").Role(role.RootWebArea)
-				if ui.Exists(docWebArea)(ctx) == nil {
-					return errors.New("already on the Google Docs page")
-				}
-				return renameDocErr
-			}, switchToTab(string(googleDocs))),
+			ui.IfSuccessThen(func(ctx context.Context) error { return renameDocErr }, switchToTab(string(googleDocs))),
 			googleapps.DeleteDoc(tconn),
 		)(ctx)
 	}
@@ -154,6 +173,7 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 	testing.ContextLog(ctx, "Share screen and present ", application)
 	if err := uiauto.Combine("share screen and present "+string(application),
 		shareScreen,
+		switchTabIfNeeded,
 		presentApplication,
 		stopPresenting,
 	)(ctx); err != nil {
