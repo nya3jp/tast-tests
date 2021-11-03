@@ -154,7 +154,14 @@ func perfETMSystemWide(ctx context.Context, s *testing.State) {
 	perfData := filepath.Join(s.OutDir(), "system-wide-perf.data")
 
 	// Test ETM profile collection.
-	cmd := testexec.CommandContext(ctx, "perf", "record", "-e", "cs_etm/@tmc_etr0/uk", "-m", ",1M", "-N", "-o", perfData, "-a", tracedCommand)
+	// /proc/kcore was enabled on Trogdor which in turn enabled kernel trace
+	// decoding, b/204223452.
+	// Until the fix for /proc/kcore (https://lkml.org/lkml/2021/10/21/384)
+	// is merged on the perf side, kernel decoding may potentially break
+	// branch sample synthesis. See b/204822960.
+	// Temporary disable kernel tracing.
+	// TODO(b/169808085): Enable kernel tracing when the perf patch is merged.
+	cmd := testexec.CommandContext(ctx, "perf", "record", "-e", "cs_etm/@tmc_etr0/u", "-m", ",1M", "-N", "-o", perfData, "-a", tracedCommand)
 	err := cmd.Run(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatalf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
