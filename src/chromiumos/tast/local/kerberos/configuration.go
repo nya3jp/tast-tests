@@ -16,14 +16,16 @@ const (
 // ConstructConfig prepares all necessary constants that are used by tests.
 func ConstructConfig(kerberosDomain, username string) *Configuration {
 
+	fullDomain := subdomain + "." + kerberosDomain
 	return &Configuration{
 		KerberosDomain:      kerberosDomain,
 		ServerAllowlist:     "*" + kerberosDomain,
-		WebsiteAddress:      protocol + "://" + subdomain + "." + kerberosDomain,
+		WebsiteAddress:      protocol + "://" + fullDomain,
 		KerberosAccount:     username + "@" + kerberosDomain,
 		Folder:              folder,
-		RemoteFileSystemURI: "\\\\" + subdomain + "." + kerberosDomain + "\\" + folder,
+		RemoteFileSystemURI: "\\\\" + fullDomain + "\\" + folder,
 		File:                file,
+		RealmsConfig:	     "\n[realms]\n  KER.CAPSE-ISS-AD.COM = {\n    kdc = " + fullDomain + "\n    master_kdc =  " + fullDomain + "\n  }", // NOLINT
 	}
 }
 
@@ -45,4 +47,6 @@ type Configuration struct {
 	RemoteFileSystemURI string
 	// File is the name of the file that is expected on samba mount.
 	File string
+	// RealmsConfig is an advanced configuration that helps finding the kdc on the KerberosDomain.
+	RealmsConfig string
 }
