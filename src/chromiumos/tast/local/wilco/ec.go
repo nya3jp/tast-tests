@@ -23,7 +23,7 @@ const (
 // TriggerECEvent writes data to the EC event trigger path and triggers a fake
 // EC event.
 func TriggerECEvent() error {
-	if err := ioutil.WriteFile(eventTriggerPath, []byte{0}, 0644); err != nil {
+	if err := ioutil.WriteFile(eventTriggerPath, []byte("0"), 0644); err != nil {
 		return errors.Wrapf(err, "failed to write to %v", eventTriggerPath)
 	}
 	return nil
