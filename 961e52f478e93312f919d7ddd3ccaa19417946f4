@@ -41,6 +41,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd01e09_10b8256e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2021-11-03T23:16:37Z",
+      "side": 1,
+      "message": "LGTM % nit/question",
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9df9e768_3a1b2ee0",
@@ -83,6 +100,29 @@
         "startChar": 2,
         "endLine": 66,
         "endChar": 59
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "688a5030_19015ed9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2021-11-03T23:16:37Z",
+      "side": 1,
+      "message": "nit/question: Why is this done here as opposed to in the body of the test?",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 287,
+        "endChar": 30
       },
       "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
