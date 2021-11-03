@@ -7,6 +7,7 @@ package video
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -1230,6 +1231,19 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 // v4l2DecodeArgs provides the arguments to use with the stateful decoding binary exe for v4l2.
 func v4l2DecodeArgs(ctx context.Context, filename string) (command []string) {
 	command = append(command, "--file="+filename, "--md5", "--log_level=1")
+
+	// Query the driver info. If we are on a MediaTek platform, add --mmap to the
+	// command line.
+	v4l2CtlCmd := testexec.CommandContext(ctx, "v4l2-ctl", "--device",
+		"/dev/video-dec0", "-D")
+	v4l2Out, err := v4l2CtlCmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return
+	}
+	mtkDetect := regexp.MustCompile(`mtk-vcodec-dec`)
+	if mtkDetect.MatchString(string(v4l2Out)) {
+		command = append(command, "--mmap")
+	}
 	return
 }
 
