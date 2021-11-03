@@ -5,6 +5,10 @@
 package holdingspace
 
 import (
+	"context"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
 
@@ -52,4 +56,21 @@ func FindScreenCaptureView() *nodewith.Finder {
 // FindTray returns a finder which locates the holding space tray node.
 func FindTray() *nodewith.Finder {
 	return nodewith.ClassName(holdingSpaceTrayClassName)
+}
+
+// ResetHoldingSpaceOptions is defined in autotest_private.idl.
+type ResetHoldingSpaceOptions struct {
+	MarkTimeOfFirstAdd bool `json:"markTimeOfFirstAdd"`
+}
+
+// ResetHoldingSpace calls autotestPrivate to remove all items in the holding space model,
+// as well as resetting all prefs. Also takes `ResetHoldingSpaceParam` to enable
+// additional behavior detailed in autotest_private.idl.
+func ResetHoldingSpace(ctx context.Context, tconn *chrome.TestConn,
+	params ResetHoldingSpaceOptions) error {
+	if err := tconn.Call(ctx, nil,
+		"tast.promisify(chrome.autotestPrivate.resetHoldingSpace)", params); err != nil {
+		return errors.Wrap(err, "failed to reset holding space")
+	}
+	return nil
 }
