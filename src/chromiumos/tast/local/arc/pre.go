@@ -163,27 +163,26 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			password := s.RequiredVar(p.gaia.PassVar)
 			p.cr, err = chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ARCSupported(), chrome.ExtraArgs(extraArgs...))
 		} else {
-			p.cr, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(extraArgs...))
+			// To login into the device, using arcappcompat test account pool.
+			p.cr, err = chrome.New(ctx, chrome.GAIALoginPool(s.RequiredVar("arcappcompat.gaiaPoolDefault")), chrome.ARCSupported(), chrome.ExtraArgs(extraArgs...))
 		}
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
 	}()
 
-	// Opt-in if performing a GAIA login.
-	if p.gaia != nil {
-		func() {
-			ctx, cancel := context.WithTimeout(ctx, optin.OptinTimeout)
-			defer cancel()
-			tconn, err := p.cr.TestAPIConn(ctx)
-			if err != nil {
-				s.Fatal("Failed to create test API connection: ", err)
-			}
-			if err := optin.PerformAndClose(ctx, p.cr, tconn); err != nil {
-				s.Fatal("Failed to optin to Play Store and Close: ", err)
-			}
-		}()
-	}
+	// Opt-in to playstore using GAIA login and GAIA login pool.
+	func() {
+		ctx, cancel := context.WithTimeout(ctx, optin.OptinTimeout)
+		defer cancel()
+		tconn, err := p.cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to create test API connection: ", err)
+		}
+		if err := optin.PerformAndClose(ctx, p.cr, tconn); err != nil {
+			s.Fatal("Failed to optin to Play Store and Close: ", err)
+		}
+	}()
 
 	func() {
 		ctx, cancel := context.WithTimeout(ctx, BootTimeout)
