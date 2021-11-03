@@ -374,7 +374,7 @@ func videoDuration(ctx context.Context, path string) (time.Duration, error) {
 		if !ok {
 			return 0, errors.New("got invalid mvhd box")
 		}
-		duration = float64(mvhd.DurationV0) / float64(mvhd.TimescaleV0)
+		duration = float64(mvhd.DurationV0) / float64(mvhd.Timescale)
 		// TODO(crbug.com/1140852): Remove the logging once we fully migrated to regular mp4.
 		testing.ContextLogf(ctx, "Found a regular mp4 with duration %.2fs", duration)
 	} else {
