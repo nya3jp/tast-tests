@@ -7,6 +7,7 @@ package adb
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -560,4 +561,32 @@ func (d *Device) WaitForLockscreenDisabled(ctx context.Context) error {
 		}
 		return nil
 	}, &testing.PollOptions{Interval: time.Second, Timeout: 5 * time.Second})
+}
+
+// StartScreenRecording starts recording the screen. Returns a cleanup function that should be deferred, that does the following:
+// 1. Stops screen recording.
+// 2. Pulls the screen recording from the device to outDir.
+// 3. Cleans up the screen recording on the device.
+func (d *Device) StartScreenRecording(ctx context.Context, filename, outDir string) (func(context.Context) error, error) {
+	recordingName := filename + ".mp4"
+	path := filepath.Join("/sdcard", "DCIM", recordingName)
+	cmd := d.ShellCommand(ctx, "screenrecord", path)
+	if err := cmd.Start(); err != nil {
+		return nil, errors.Wrap(err, "failed to start screen recording")
+	}
+	return func(ctx context.Context) error {
+		if err := cmd.Kill(); err != nil {
+			return errors.Wrap(err, "failed to stop screen recording")
+		}
+		cmd.Wait()
+		// It takes a moment for the file to save properly.
+		testing.Sleep(ctx, time.Second)
+		if err := d.PullFile(ctx, path, filepath.Join(outDir, recordingName)); err != nil {
+			return errors.Wrap(err, "failed to pull screen recording from the device")
+		}
+		if err := d.RemoveAll(ctx, path); err != nil {
+			return errors.Wrap(err, "failed to delete screen recording from the device")
+		}
+		return nil
+	}, nil
 }
