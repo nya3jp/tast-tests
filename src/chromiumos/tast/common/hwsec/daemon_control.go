@@ -189,6 +189,13 @@ var UIDaemon = &DaemonInfo{
 	HasDBus:    false,
 }
 
+// TPM2SimulatorDaemon represents the DaemonsInfo for tpm2 simulator.
+var TPM2SimulatorDaemon = &DaemonInfo{
+	Name:       "tpm2-simulator",
+	DaemonName: "tpm2-simulator",
+	HasDBus:    false,
+}
+
 // LowLevelTPMDaemons represents the low level TPM daemons.
 var LowLevelTPMDaemons = []*DaemonInfo{
 	TcsdDaemon,
@@ -272,7 +279,7 @@ func (dc *DaemonController) Status(ctx context.Context, info *DaemonInfo) (goal 
 			// Don't return error if this is an optional daemon.
 			return unknownGoal, waitingState, -1, nil
 		}
-		return unknownGoal, waitingState, -1, errors.Wrapf(err, "failed to execute status command")
+		return unknownGoal, waitingState, -1, errors.Wrap(err, "failed to execute status command")
 	}
 	return parseStatus(info.DaemonName, string(out))
 }
