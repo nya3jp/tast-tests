@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a25ccd2_98ba2b98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-03T19:06:43Z",
+      "side": 1,
+      "message": "You might need caps.BuiltinOrVividCamera here too.",
+      "revId": "aea7f1190a60eb867afaf0d8d69355a81236ec45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8a9fe88_9a7fd458",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
         "patchSetId": 7
@@ -65,6 +82,29 @@
       "writtenOn": "2021-11-03T13:12:10Z",
       "side": 1,
       "message": "You can move creating the context inside s.Run and then use the more common\n\nctx, cancel :\u003d context.WithTimeout(ctx, subTestTimeout)\ndefer cancel()",
+      "revId": "aea7f1190a60eb867afaf0d8d69355a81236ec45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd25d73d_cc9a4498",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1986,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-03T19:06:43Z",
+      "side": 1,
+      "message": "nit: RunThroughCameras will really switch to each camera, which is an overkill and quite slow. Could we have a more lightweight solution with enumerateDevices() in cca_ui.js?\n\nI am ok with a TODO here since cca_ui_multi_camera.go already used a similar approach before.",
+      "range": {
+        "startLine": 1986,
+        "startChar": 10,
+        "endLine": 1986,
+        "endChar": 27
+      },
       "revId": "aea7f1190a60eb867afaf0d8d69355a81236ec45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
