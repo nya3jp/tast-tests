@@ -10,18 +10,18 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/kerberos"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -37,17 +37,35 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"kerberos.username", "kerberos.password", "kerberos.domain"},
-		Fixture:      "chromePolicyLoggedIn",
+		Fixture:      fixture.FakeDMS,
 	})
 }
 
 func ManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
-	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+	fdms := s.FixtValue().(*fakedms.FakeDMS)
 	username := s.RequiredVar("kerberos.username")
 	password := s.RequiredVar("kerberos.password")
 	domain := s.RequiredVar("kerberos.domain")
 	config := kerberos.ConstructConfig(domain, username)
+
+	// Start a Chrome instance that will fetch policies from the FakeDMS.
+	cr, err := chrome.New(ctx,
+		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
+		chrome.DMSPolicy(fdms.URL),
+		chrome.KeepEnrollment())
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+
+	defer func(ctx context.Context) {
+		// Use cr as a reference to close the last started Chrome instance.
+		if err := cr.Close(ctx); err != nil {
+			s.Error("Failed to close Chrome connection: ", err)
+		}
+	}(ctx)
+
+	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
+	defer cancel()
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -56,11 +74,6 @@ func ManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 	}
 
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_manual_ticket")
-
-	// Perform cleanup.
-	if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
-		s.Fatal("Failed to clean up: ", err)
-	}
 
 	// Set Kerberos configuration.
 	if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{
@@ -104,54 +117,21 @@ func ManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 	defer keyboard.Close()
 
 	ui := uiauto.New(tconn)
-	_, err = apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/kerberos")
-	if err != nil {
-		s.Fatal("Could not open kerberos section in OS settings: ", err)
-	}
 
 	// Add a Kerberos ticket.
-	if err := uiauto.Combine("add Kerberos ticket",
-		ui.LeftClick(nodewith.Name("Kerberos tickets").Role(role.Link)),
-		ui.LeftClick(nodewith.Name("Add a ticket").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("Kerberos username").Role(role.TextField)),
-		keyboard.TypeAction(config.KerberosAccount),
-		ui.LeftClick(nodewith.Name("Password").Role(role.TextField)),
-		keyboard.TypeAction(password),
-		ui.LeftClick(nodewith.Name("Add").HasClass("action-button")),
-	)(ctx); err != nil {
-		s.Fatal("Failed to add Kerberos ticket: ", err)
-	}
-
-	// Wait for ticket to appear.
-	s.Log(ctx, "Waiting for Kerberos ticket to appear")
-	if err := ui.WaitUntilExists(nodewith.Name(config.KerberosAccount).Role(role.StaticText))(ctx); err != nil {
-		s.Fatal("Failed to see added Kerberos: ", err)
-	}
-
-	// TODO: chromium/1249773 change to get "Active" state once the bug is
-	// resolved. UI tree is not refreshed for 1 minute.
-	// Check that ticket is not expired.
-	if err := ui.Exists(nodewith.Name("Expired").Role(role.StaticText))(ctx); err == nil {
-		s.Fatal("Kerberos ticket is expired")
-	}
-
-	apps.Close(ctx, tconn, apps.Settings.ID)
-
-	// Wait for OS Setting to close otherwise page does not reload.
-	if err := ui.WaitUntilGone(nodewith.Name("Settings - Kerberos tickets").Role(role.Window))(ctx); err != nil {
-		s.Fatal("Failed to see added Kerberos: ", err)
-	}
-
-	if err := conn.Navigate(ctx, config.WebsiteAddress); err != nil {
-		s.Fatalf("Failed to navigate to the server URL %q: %v", config.WebsiteAddress, err)
-	}
+	kerberos.AddTicket(ctx, cr, tconn, ui, keyboard, config, password)
 
 	s.Log("Wait for website to have non-empty title")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+
+		if err := conn.Navigate(ctx, config.WebsiteAddress); err != nil {
+			s.Fatalf("Failed to navigate to the server URL %q: %v", config.WebsiteAddress, err)
+		}
+
 		if err := conn.Eval(ctx, "document.title", &websiteTitle); err != nil {
 			return errors.Wrap(err, "failed to get the website title")
 		}
-		if websiteTitle == "" {
+		if websiteTitle == "" || strings.Contains(websiteTitle, "401") {
 			return errors.New("website title is still empty")
 		}
 		return nil
