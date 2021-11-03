@@ -42,7 +42,33 @@ func RejectLowSignal() Filter {
 	return TypeFilter(layers.LayerTypeRadioTap,
 		func(layer gopacket.Layer) bool {
 			radioTap := layer.(*layers.RadioTap)
+			if !radioTap.Present.DBMAntennaSignal() {
+				// Flags fields may not present in RadioTap layer.
+				// Let packets be accepted by this filter. And
+				// continue the rest of filtering
+				return true
+			}
 			return radioTap.DBMAntennaSignal > -85
+		})
+}
+
+// RadioTapFCSValid returns a Filter which ensures the frame check sequence of
+// the encapsulated 802.11 frams is valid. Some devices may strip out of FCS in
+// packet due to fragmentation during NIC/Wireless feeding to userspace. In which
+// case gopacket is expected to re-calcuated FCS of assembled packet. Radiotap
+// flags should be used before Dot11FCSValid()
+// TODO(b/185378075): Discuss the option to insert this check into Dot11FCSValid()
+func RadioTapFCSValid() Filter {
+	return TypeFilter(layers.LayerTypeRadioTap,
+		func(layer gopacket.Layer) bool {
+			radioTap := layer.(*layers.RadioTap)
+			if !radioTap.Present.Flags() {
+				// Flags fields may not present in RadioTap layer.
+				// Let packets be accepted by this filter. And
+				// continue the rest of filtering
+				return true
+			}
+			return !radioTap.Flags.BadFCS()
 		})
 }
 

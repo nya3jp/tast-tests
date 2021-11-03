@@ -217,6 +217,7 @@ func OverlappingBSSScan(ctx context.Context, s *testing.State) {
 
 	// Filtering coexistence management frame.
 	filters := []pcap.Filter{
+		pcap.RadioTapFCSValid(),
 		pcap.Dot11FCSValid(),
 		pcap.TransmitterAddress(mac),
 		pcap.TypeFilter(layers.LayerTypeDot11MgmtAction,

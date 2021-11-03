@@ -34,6 +34,7 @@ func TestReadPackets(t *testing.T) {
 			name: "probe_req",
 			filters: []Filter{
 				RejectLowSignal(),
+				RadioTapFCSValid(),
 				Dot11FCSValid(),
 				TypeFilter(layers.LayerTypeDot11MgmtProbeReq, nil),
 			},
