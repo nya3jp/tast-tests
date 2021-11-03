@@ -708,7 +708,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 					param.Timeout = extension
 				}
 
-				hardwareDeps := []string{"hwdep.Platform(\"trogdor\")"}
+				hardwareDeps := []string{"hwdep.SupportsV4L2StatefulVideoDecoding()"}
 
 				switch levelGroup {
 				case "level5_0":
@@ -731,7 +731,7 @@ func TestPlatformDecodingParams(t *testing.T) {
 		files := vp8Files[testGroup]
 
 		// TODO(nhebert) Use a to-be-created hardware dependency for V4L2 stateful decode
-		hardwareDeps := []string{"hwdep.Platform(\"trogdor\")"}
+		hardwareDeps := []string{"hwdep.SupportsV4L2StatefulVideoDecoding()"}
 		params = append(params, paramData{
 			Name:         fmt.Sprintf("v4l2_vp8_%s", testGroup),
 			Decoder:      "v4l2_stateful_decoder",
