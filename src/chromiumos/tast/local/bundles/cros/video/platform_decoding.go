@@ -581,6 +581,90 @@ func init() {
 				ExtraAttr:         []string{"graphics_video_av1"},
 			},
 			{
+				Name: "vaapi_vp8_inter",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/inter/vp80-02-inter-1402.ivf", "test_vectors/vp8/inter/vp80-02-inter-1418.ivf", "test_vectors/vp8/inter/vp80-02-inter-1424.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1428.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1429.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1430.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1431.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1433.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1434.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1438.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1439.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1440.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1443.ivf"},
+					decoder:        "/usr/local/libexec/chrome-binary-tests/decode_test",
+					commandBuilder: vp8decodeVAAPIargs,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/inter/vp80-02-inter-1402.ivf", "test_vectors/vp8/inter/vp80-02-inter-1402.ivf.json", "test_vectors/vp8/inter/vp80-02-inter-1418.ivf", "test_vectors/vp8/inter/vp80-02-inter-1418.ivf.json", "test_vectors/vp8/inter/vp80-02-inter-1424.ivf", "test_vectors/vp8/inter/vp80-02-inter-1424.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf.json", "test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1428.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1428.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1429.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1429.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1430.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1430.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1431.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1431.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1433.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1433.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1434.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1434.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1438.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1438.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1439.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1439.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1440.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1440.ivf.json", "test_vectors/vp8/inter/vp80-05-sharpness-1443.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1443.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "vaapi_vp8_inter_multi_coeff",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1408.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1409.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1410.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1404.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1406.ivf"},
+					decoder:        "/usr/local/libexec/chrome-binary-tests/decode_test",
+					commandBuilder: vp8decodeVAAPIargs,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1408.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1408.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1409.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1409.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1410.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1410.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1404.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1404.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405.ivf.json", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1406.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1406.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "vaapi_vp8_inter_segment",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/inter_segment/vp80-03-segmentation-1407.ivf"},
+					decoder:        "/usr/local/libexec/chrome-binary-tests/decode_test",
+					commandBuilder: vp8decodeVAAPIargs,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/inter_segment/vp80-03-segmentation-1407.ivf", "test_vectors/vp8/inter_segment/vp80-03-segmentation-1407.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "vaapi_vp8_intra",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/intra/vp80-01-intra-1400.ivf", "test_vectors/vp8/intra/vp80-01-intra-1416.ivf", "test_vectors/vp8/intra/vp80-01-intra-1417.ivf", "test_vectors/vp8/intra/vp80-03-segmentation-1401.ivf"},
+					decoder:        "/usr/local/libexec/chrome-binary-tests/decode_test",
+					commandBuilder: vp8decodeVAAPIargs,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/intra/vp80-01-intra-1400.ivf", "test_vectors/vp8/intra/vp80-01-intra-1400.ivf.json", "test_vectors/vp8/intra/vp80-01-intra-1416.ivf", "test_vectors/vp8/intra/vp80-01-intra-1416.ivf.json", "test_vectors/vp8/intra/vp80-01-intra-1417.ivf", "test_vectors/vp8/intra/vp80-01-intra-1417.ivf.json", "test_vectors/vp8/intra/vp80-03-segmentation-1401.ivf", "test_vectors/vp8/intra/vp80-03-segmentation-1401.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "vaapi_vp8_intra_multi_coeff",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/intra_multi_coeff/vp80-03-segmentation-1414.ivf"},
+					decoder:        "/usr/local/libexec/chrome-binary-tests/decode_test",
+					commandBuilder: vp8decodeVAAPIargs,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/intra_multi_coeff/vp80-03-segmentation-1414.ivf", "test_vectors/vp8/intra_multi_coeff/vp80-03-segmentation-1414.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "vaapi_vp8_intra_segment",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/intra_segment/vp80-03-segmentation-1415.ivf"},
+					decoder:        "/usr/local/libexec/chrome-binary-tests/decode_test",
+					commandBuilder: vp8decodeVAAPIargs,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/intra_segment/vp80-03-segmentation-1415.ivf", "test_vectors/vp8/intra_segment/vp80-03-segmentation-1415.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
+				Name: "vaapi_vp8_comprehensive",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp8/vp80-00-comprehensive-001.ivf", "test_vectors/vp8/vp80-00-comprehensive-002.ivf", "test_vectors/vp8/vp80-00-comprehensive-003.ivf", "test_vectors/vp8/vp80-00-comprehensive-004.ivf", "test_vectors/vp8/vp80-00-comprehensive-005.ivf", "test_vectors/vp8/vp80-00-comprehensive-007.ivf", "test_vectors/vp8/vp80-00-comprehensive-008.ivf", "test_vectors/vp8/vp80-00-comprehensive-009.ivf", "test_vectors/vp8/vp80-00-comprehensive-010.ivf", "test_vectors/vp8/vp80-00-comprehensive-011.ivf", "test_vectors/vp8/vp80-00-comprehensive-012.ivf", "test_vectors/vp8/vp80-00-comprehensive-013.ivf", "test_vectors/vp8/vp80-00-comprehensive-015.ivf", "test_vectors/vp8/vp80-00-comprehensive-016.ivf", "test_vectors/vp8/vp80-00-comprehensive-017.ivf", "test_vectors/vp8/vp80-00-comprehensive-018.ivf"},
+					decoder:        "/usr/local/libexec/chrome-binary-tests/decode_test",
+					commandBuilder: vp8decodeVAAPIargs,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraSoftwareDeps: []string{"vaapi", "autotest-capability:hw_dec_vp8_1080_30"},
+				ExtraData:         []string{"test_vectors/vp8/vp80-00-comprehensive-001.ivf", "test_vectors/vp8/vp80-00-comprehensive-001.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-002.ivf", "test_vectors/vp8/vp80-00-comprehensive-002.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-003.ivf", "test_vectors/vp8/vp80-00-comprehensive-003.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-004.ivf", "test_vectors/vp8/vp80-00-comprehensive-004.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-005.ivf", "test_vectors/vp8/vp80-00-comprehensive-005.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-007.ivf", "test_vectors/vp8/vp80-00-comprehensive-007.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-008.ivf", "test_vectors/vp8/vp80-00-comprehensive-008.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-009.ivf", "test_vectors/vp8/vp80-00-comprehensive-009.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-010.ivf", "test_vectors/vp8/vp80-00-comprehensive-010.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-011.ivf", "test_vectors/vp8/vp80-00-comprehensive-011.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-012.ivf", "test_vectors/vp8/vp80-00-comprehensive-012.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-013.ivf", "test_vectors/vp8/vp80-00-comprehensive-013.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-015.ivf", "test_vectors/vp8/vp80-00-comprehensive-015.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-016.ivf", "test_vectors/vp8/vp80-00-comprehensive-016.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-017.ivf", "test_vectors/vp8/vp80-00-comprehensive-017.ivf.json", "test_vectors/vp8/vp80-00-comprehensive-018.ivf", "test_vectors/vp8/vp80-00-comprehensive-018.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp8"},
+			},
+			{
 				Name: "v4l2_vp9_0_group1_buf",
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf"},
@@ -1245,6 +1329,17 @@ func av1decodeVAAPIargs(filename string) []string {
 
 // vp9decodeVAAPIargs provides the arguments to use with the VP9 decoding binary exe for vaapi.
 func vp9decodeVAAPIargs(filename string) []string {
+	return []string{
+		"--video=" + filename,
+		"--md5",
+		// vpxdec is used to compute reference hashes, and outputs only those for
+		// visible frames
+		"--visible",
+	}
+}
+
+// vp8decodeVAAPIargs provides the arguments to use with the VP8 decoding binary exe for vaapi.
+func vp8decodeVAAPIargs(filename string) []string {
 	return []string{
 		"--video=" + filename,
 		"--md5",
