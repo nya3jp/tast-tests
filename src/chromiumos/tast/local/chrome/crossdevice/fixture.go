@@ -103,6 +103,7 @@ func init() {
 type crossdeviceFixture struct {
 	opts              []chrome.Option
 	cr                *chrome.Chrome
+	androidDevice     *AndroidDevice
 	androidAttributes *AndroidAttributes
 	crosAttributes    *CrosAttributes
 	btsnoopCmd        *testexec.Cmd
@@ -132,6 +133,7 @@ type FixtData struct {
 func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	// Android device from parent fixture.
 	androidDevice := s.ParentValue().(*FixtData).AndroidDevice
+	f.androidDevice = androidDevice
 
 	// Credentials to use (same as Android).
 	crosUsername := s.ParentValue().(*FixtData).Username
@@ -280,6 +282,10 @@ func (f *crossdeviceFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 	} else {
 		s.Log("Failed to start the log saver: ", err)
 	}
+
+	if err := f.androidDevice.ClearLogcat(ctx); err != nil {
+		s.Fatal("Failed to clear logcat: ", err)
+	}
 }
 
 func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
@@ -294,6 +300,10 @@ func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 			s.Log("Failed to store per-test log data: ", err)
 		}
 		f.logMarker = nil
+	}
+
+	if err := f.androidDevice.DumpLogs(ctx, s.OutDir(), "crossdevice-logcat.txt"); err != nil {
+		s.Fatal("Failed to save logcat logs: ", err)
 	}
 }
 
