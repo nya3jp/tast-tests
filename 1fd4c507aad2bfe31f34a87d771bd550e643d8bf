@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c98d19f_f4a2cd5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-03T03:04:06Z",
+      "side": 1,
+      "message": "+2 for Tast Review. Although the error is \"Android failed to boot\", it is not a fixture issue (this test has no fixture) and other tests ARC tests are passing. Therefore I think this will mitigate the issue in CQ.",
+      "revId": "1fd4c507aad2bfe31f34a87d771bd550e643d8bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
