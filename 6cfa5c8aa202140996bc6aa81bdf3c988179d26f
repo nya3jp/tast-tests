@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8ddeda0_a6596590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-03T13:42:01Z",
+      "side": 1,
+      "message": "IIRC, we don\u0027t need dots at the end of inline comments, but cannot find some guide about it.",
+      "parentUuid": "ee8197a5_bef75c84",
+      "range": {
+        "startLine": 103,
+        "startChar": 45,
+        "endLine": 105,
+        "endChar": 67
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7cbcdc2f_0e99bfde",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
         "patchSetId": 3
@@ -71,6 +95,30 @@
       "writtenOn": "2021-11-03T13:33:45Z",
       "side": 1,
       "message": "why not start with policy.StatusUnset? \nOr you want to have the Unset as the last test case?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 5
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c46ae49a_71fbdde9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-03T13:42:01Z",
+      "side": 1,
+      "message": "Because MAC address won\u0027t change if \"unset\" test case will be first, so we won\u0027t be able to verify that \"unset\" actually does something.",
+      "parentUuid": "7cbcdc2f_0e99bfde",
       "range": {
         "startLine": 145,
         "startChar": 0,
