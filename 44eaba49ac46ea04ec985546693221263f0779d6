@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec6032d5_e2cd1622",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-03T15:04:49Z",
+      "side": 1,
+      "message": "slgtm",
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a690203_c73171d8",
@@ -55,6 +72,30 @@
       "side": 1,
       "message": "we don\u0027t need to worry that it is nil, because it is okay to pass nil values as the \"receiver\" (equivalent of \"this\") to methods.  That\u0027s the reason why I moved the check for now to be the very first thing in every version of Clone(), including the one in MemoryStatsSnapshot, which is the type of base.lateststate.",
       "parentUuid": "0a690203_c73171d8",
+      "range": {
+        "startLine": 52,
+        "startChar": 24,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a03083f_f8e2bc0f",
+        "filename": "src/chromiumos/tast/local/memory/metrics/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-03T15:04:49Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "025955c5_d4c39460",
       "range": {
         "startLine": 52,
         "startChar": 24,
