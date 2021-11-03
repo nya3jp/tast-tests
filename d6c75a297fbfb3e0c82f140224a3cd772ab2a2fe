@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28411a5a_422de09d",
+        "filename": "src/chromiumos/tast/local/benchmark/benchmark.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-03T13:47:18Z",
+      "side": 1,
+      "message": "looks like some lines go over 80 characters. Please wrap them.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 109
+      },
+      "revId": "d6c75a297fbfb3e0c82f140224a3cd772ab2a2fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce958148_f7f280fc",
+        "filename": "src/chromiumos/tast/local/benchmark/benchmark.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-03T13:47:18Z",
+      "side": 1,
+      "message": "This and ExtraArgs options are not used in the implemented test. Are there more tests coming that will use those options?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "d6c75a297fbfb3e0c82f140224a3cd772ab2a2fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0be33d76_a66dd38a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_processor_benchmark.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-03T13:47:18Z",
+      "side": 1,
+      "message": "is that binary available on every image?\nShouldn\u0027t that be a software dependency?",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 42
+      },
+      "revId": "d6c75a297fbfb3e0c82f140224a3cd772ab2a2fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd4dbb30_4b362bb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_processor_benchmark.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-03T13:47:18Z",
+      "side": 1,
+      "message": "will there be more tests using that parsing logic?\n\nIt does not fit the level of abstraction in the test body. \nThere is nice beginning with \"benchmark.New()\" and then parsing values with code exposed here. Maybe at least it could be moved to the function so the test reads:\n1. run benchmark\n2. parse results\n3. save perf values\n\nWDYT?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "d6c75a297fbfb3e0c82f140224a3cd772ab2a2fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
