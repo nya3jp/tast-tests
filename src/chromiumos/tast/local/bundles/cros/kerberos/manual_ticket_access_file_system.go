@@ -7,9 +7,9 @@ package kerberos
 import (
 	"context"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -34,7 +34,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"kerberos.username", "kerberos.password", "kerberos.domain"},
-		Fixture:      "fakeDMS",
+		Fixture:      fixture.FakeDMS,
 	})
 }
 
@@ -79,39 +79,10 @@ func ManualTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	_, err = apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/kerberos")
-	if err != nil {
-		s.Fatal("Could not open kerberos section in OS settings: ", err)
-	}
-
 	ui := uiauto.New(tconn)
+
 	// Add a Kerberos ticket.
-	if err := uiauto.Combine("add Kerberos ticket",
-		ui.LeftClick(nodewith.Name("Kerberos tickets").Role(role.Link)),
-		ui.LeftClick(nodewith.Name("Add a ticket").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("Kerberos username").Role(role.TextField)),
-		keyboard.TypeAction(config.KerberosAccount),
-		ui.LeftClick(nodewith.Name("Password").Role(role.TextField)),
-		keyboard.TypeAction(password),
-		ui.LeftClick(nodewith.Name("Add").HasClass("action-button")),
-	)(ctx); err != nil {
-		s.Fatal("Failed to add Kerberos ticket: ", err)
-	}
-
-	// Wait for ticket to appear.
-	s.Log(ctx, "Waiting for Kerberos ticket to appear")
-	if err := ui.WaitUntilExists(nodewith.Name(config.KerberosAccount).Role(role.StaticText))(ctx); err != nil {
-		s.Fatal("Failed to find Kerberos ticket: ", err)
-	}
-
-	// TODO: chromium/1249773 change to get "Active" state once the bug is
-	// resolved. UI tree is not refreshed for 1 minute.
-	// Check that ticket is not expired.
-	if err := ui.Exists(nodewith.Name("Expired").Role(role.StaticText))(ctx); err == nil {
-		s.Fatal("Kerberos ticket is expired")
-	}
-
-	apps.Close(ctx, tconn, apps.Settings.ID)
+	kerberos.AddTicket(ctx, cr, tconn, ui, keyboard, config, password)
 
 	// Open the Files App.
 	files, err := filesapp.Launch(ctx, tconn)
