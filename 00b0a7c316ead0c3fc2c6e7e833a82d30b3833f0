@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc3d41f_73409faa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-03T16:41:35Z",
+      "side": 1,
+      "message": "Thanks! Still lgtm, pending Tast owners",
+      "revId": "00b0a7c316ead0c3fc2c6e7e833a82d30b3833f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
