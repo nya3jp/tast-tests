@@ -139,12 +139,17 @@ func bootTimeCalibration(ctx context.Context, soundCardID string) error {
 	if err != nil {
 		return errors.Wrap(err, "cros_config /audio/main sound-card-init-conf failed")
 	}
+	amp, err := crosconfig.Get(ctx, "/audio/main", "speaker-amp")
+	if err != nil {
+		return errors.Wrap(err, "cros_config /audio/main speaker-amp failed")
+	}
 
 	if err := testexec.CommandContext(
 		runCtx,
 		"/usr/bin/sound_card_init",
 		"--id="+soundCardID,
 		"--conf="+config,
+		"--amp="+amp,
 		"--bypass_temperature_check",
 	).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to run sound_card_init")
