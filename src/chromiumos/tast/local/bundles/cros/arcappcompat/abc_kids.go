@@ -13,6 +13,8 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
+
+	//"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -45,7 +47,7 @@ func init() {
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
-			Pre:               pre.AppCompatBooted,
+			Pre:               pre.AppCompatBootedUsingTestAccountPool,
 		}, {
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
@@ -56,7 +58,7 @@ func init() {
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletMode,
+			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}, {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
@@ -67,7 +69,7 @@ func init() {
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
-			Pre:               pre.AppCompatBooted,
+			Pre:               pre.AppCompatBootedUsingTestAccountPool,
 		}, {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
@@ -78,10 +80,10 @@ func init() {
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletMode,
+			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}},
 		Timeout: 10 * time.Minute,
-		VarDeps: []string{"arcappcompat.username", "arcappcompat.password"},
+		VarDeps: []string{"arcappcompat.gaiaPoolDefault"},
 	})
 }
 

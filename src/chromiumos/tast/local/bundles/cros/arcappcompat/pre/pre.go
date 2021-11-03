@@ -99,3 +99,11 @@ var AppCompatBootedForCrossDJ = arc.NewPrecondition("arcappcompat_bootedForCross
 // AppCompatBootedInTabletModeForCrossDJ returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
 // that Chrome is launched in tablet mode in this precondition.
 var AppCompatBootedInTabletModeForCrossDJ = arc.NewPrecondition("arcappcompat_booted_in_tablet_modeForCrossDJ", appcompatCrossDJ, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--force-tablet-mode=touch_view", "--enable-virtual-keyboard")...)
+
+// AppCompatBootedUsingTestAccountPool is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
+// that it will GAIA login with the app compat credentials, and opt-in to the Play Store.
+var AppCompatBootedUsingTestAccountPool = arc.NewPrecondition("arcappcompat_booted_testpool", nil, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+
+// AppCompatBootedInTabletModeUsingTestAccountPool returns a precondition similar to BootedAppCompat(). The only difference from BootedAppCompat() is
+// that Chrome is launched in tablet mode in this precondition.
+var AppCompatBootedInTabletModeUsingTestAccountPool = arc.NewPrecondition("arcappcompat_booted_in_tablet_mode_testpool", nil, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--force-tablet-mode=touch_view", "--enable-virtual-keyboard")...)
