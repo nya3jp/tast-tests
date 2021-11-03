@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c4ced3a_2c85e062",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-11-03T10:59:48Z",
+      "side": 1,
+      "message": "These implementations would work at the moment in ScreenWakeTabletMode(). But, I do plan on documenting more messages for them in my next upcoming patch set.",
+      "revId": "97f10d855761d1b37e60cd2aeb0dbaff6129ea55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
