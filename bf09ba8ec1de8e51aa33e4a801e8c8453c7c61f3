@@ -39,6 +39,30 @@
       },
       "revId": "bf09ba8ec1de8e51aa33e4a801e8c8453c7c61f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65a013d6_95b784b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ap_supported_rates.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-11-03T01:49:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a31e9842_8c02a320",
+      "range": {
+        "startLine": 148,
+        "startChar": 7,
+        "endLine": 150,
+        "endChar": 30
+      },
+      "revId": "bf09ba8ec1de8e51aa33e4a801e8c8453c7c61f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
