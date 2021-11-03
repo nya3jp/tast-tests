@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e14f3a16_a9173d40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-03T00:58:09Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "7fda32c7dba48a60215bccdbcf172befe7c9d149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "888944e8_d81c1a92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-03T00:58:09Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "7fda32c7dba48a60215bccdbcf172befe7c9d149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f30e50a6_837cb877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-03T00:58:09Z",
+      "side": 1,
+      "message": "nit: Files app",
+      "range": {
+        "startLine": 70,
+        "startChar": 51,
+        "endLine": 70,
+        "endChar": 56
+      },
+      "revId": "7fda32c7dba48a60215bccdbcf172befe7c9d149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01dd32e8_0cb70166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-03T00:58:09Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 73,
+        "startChar": 6,
+        "endLine": 73,
+        "endChar": 32
+      },
+      "revId": "7fda32c7dba48a60215bccdbcf172befe7c9d149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
