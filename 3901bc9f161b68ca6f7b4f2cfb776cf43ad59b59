@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f9d84b_5bc8dede",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-11-03T01:45:37Z",
+      "side": 1,
+      "message": "nit: would it be a bit better if combined with the above? e.g\nif (! skip) {\n  final, ere \u003d query\n  if err {}\n  if final \u003d\u003d init {}\n}",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 82
+      },
+      "revId": "3901bc9f161b68ca6f7b4f2cfb776cf43ad59b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
