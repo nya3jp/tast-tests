@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "64001dbb_89ed92a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-03T20:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f495259_c6b3b22f",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "010a45802917863483b094b13d7bca620f3c0033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "63649979_5ccf4982",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90b2c220_fe1461fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/drag_and_drop_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-03T20:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fe6514b_ed36b5df",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "010a45802917863483b094b13d7bca620f3c0033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5550b77_0ca5f537",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-11-03T19:42:00Z",
       "side": 1,
       "message": "nit: from the Files app.",
+      "range": {
+        "startLine": 38,
+        "startChar": 24,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "010a45802917863483b094b13d7bca620f3c0033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e1f907e_492bab6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/drag_and_drop_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-03T20:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5550b77_0ca5f537",
       "range": {
         "startLine": 38,
         "startChar": 24,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e218728_5dc6dd2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/drag_and_drop_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-03T20:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53c7e834_63823d88",
+      "range": {
+        "startLine": 60,
+        "startChar": 41,
+        "endLine": 60,
+        "endChar": 71
+      },
+      "revId": "010a45802917863483b094b13d7bca620f3c0033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "991f4f73_5c3ecc5f",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-11-03T19:42:00Z",
       "side": 1,
       "message": "What\u0027s the difference between %s and %S?",
+      "range": {
+        "startLine": 63,
+        "startChar": 47,
+        "endLine": 63,
+        "endChar": 49
+      },
+      "revId": "010a45802917863483b094b13d7bca620f3c0033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c69ec59e_2320a383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/drag_and_drop_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-03T20:29:04Z",
+      "side": 1,
+      "message": "How long I hold down shift.",
+      "parentUuid": "991f4f73_5c3ecc5f",
       "range": {
         "startLine": 63,
         "startChar": 47,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "556b6731_b01f47cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/drag_and_drop_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-03T20:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8d38c85_8bcc9875",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "010a45802917863483b094b13d7bca620f3c0033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aac7ce55_4f3fd13f",
@@ -169,6 +313,30 @@
       "writtenOn": "2021-11-03T19:42:00Z",
       "side": 1,
       "message": "nit: remove, \"holdingSpace\" is redundant in holding space code",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 13
+      },
+      "revId": "010a45802917863483b094b13d7bca620f3c0033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf6798b_2e4f27ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/drag_and_drop_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-03T20:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aac7ce55_4f3fd13f",
       "range": {
         "startLine": 82,
         "startChar": 1,
