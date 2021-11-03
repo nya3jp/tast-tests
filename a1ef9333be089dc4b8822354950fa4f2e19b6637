@@ -16,6 +16,24 @@
       "message": "Only whitespace change.",
       "revId": "a1ef9333be089dc4b8822354950fa4f2e19b6637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c3201d_7571b981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/managed_bookmarks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-03T13:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b94d35c_bbe2eb9b",
+      "revId": "a1ef9333be089dc4b8822354950fa4f2e19b6637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
