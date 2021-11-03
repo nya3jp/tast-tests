@@ -84,6 +84,18 @@ func SmartSelectionChrome(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("Show context menu",
 		ui.RightClick(address),
 		ui.WaitUntilExists(mapOption))(ctx); err != nil {
-		s.Fatal("Failed to show map option: ", err)
+		s.Log("Failed to show map option: ", err)
+		// After timeout, dump all the menuItems if possible, this should provide a clear
+		// idea whether items are missing in the menu or the menu not being there at all.
+		menu := nodewith.ClassName("MenuItemView")
+		menuItems, err := ui.NodesInfo(ctx, menu)
+		if err != nil {
+			s.Fatal("Could not find context menu items: ", err)
+		}
+		itemLog := "/ "
+		for _, item := range menuItems {
+			itemLog += item.Name + " / "
+		}
+		s.Fatalf("Found %d menu items, including %s", len(menuItems), itemLog)
 	}
 }
