@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -31,6 +32,17 @@ func init() {
 		ServiceDeps:  []string{wificell.TFServiceName},
 		Fixture:      "wificellFixtRouterAsPcap",
 		SoftwareDeps: []string{"mbo", "rrm_support"},
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: hwdep.D(hwdep.WifiNotMarvell()),
+				Val:               true,
+			},
+			{
+				Name:              "marvell",
+				ExtraHardwareDeps: hwdep.D(hwdep.WifiMarvell()),
+				Val:               false,
+			},
+		},
 	})
 }
 
@@ -164,10 +176,13 @@ func ConnectMBO(ctx context.Context, s *testing.State) {
 			s.Fatal("Probe request IEs missing: ", err)
 		}
 	}
-	s.Log("Checking assoc request packets")
-	for _, p := range assocPackets {
-		if err := checkIEs(p, false); err != nil {
-			s.Fatal("Assoc request IEs missing: ", err)
+	notMarvell := s.Param().(bool)
+	if notMarvell {
+		s.Log("Checking assoc request packets")
+		for _, p := range assocPackets {
+			if err := checkIEs(p, false); err != nil {
+				s.Fatal("Assoc request IEs missing: ", err)
+			}
 		}
 	}
 }
