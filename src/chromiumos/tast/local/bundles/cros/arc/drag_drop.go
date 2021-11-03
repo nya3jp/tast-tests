@@ -51,6 +51,7 @@ func init() {
 			},
 		}, {
 			Name:              "chrome_to_android_vm",
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: &dragDropTestArgs{
 				extensionPrefix: "drag_source_",
