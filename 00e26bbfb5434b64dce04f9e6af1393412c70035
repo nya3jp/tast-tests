@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d079665d_92b5fef0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/search_drive.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-03T05:12:42Z",
+      "side": 1,
+      "message": "I\u0027m not very sure that we could skip verifing the icon. \nBTW, search in drive has two bugs at present:\n1. crbug/1240030: [Search] Partial search does not work in Gdrive\n2. crbug/1148139: Search query on Gdrive  is returning unexpected results.\n\nI\u0027d suggest we hold this cl for a while.",
+      "parentUuid": "271eb728_aef25fe7",
+      "range": {
+        "startLine": 115,
+        "startChar": 15,
+        "endLine": 115,
+        "endChar": 27
+      },
+      "revId": "00e26bbfb5434b64dce04f9e6af1393412c70035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b4f90a4_0c5df33b",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go",
         "patchSetId": 1
