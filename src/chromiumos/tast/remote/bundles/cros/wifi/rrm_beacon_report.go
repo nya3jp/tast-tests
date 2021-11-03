@@ -271,6 +271,7 @@ func RRMBeaconReport(ctx context.Context, s *testing.State) {
 		}
 
 		filters := []pcap.Filter{
+			pcap.RadioTapFCSValid(),
 			pcap.Dot11FCSValid(),
 			pcap.TransmitterAddress(clientMACBytes),
 			pcap.TypeFilter(layers.LayerTypeDot11MgmtAction, nil),

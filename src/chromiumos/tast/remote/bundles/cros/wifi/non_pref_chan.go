@@ -200,6 +200,7 @@ func NonPrefChan(ctx context.Context, s *testing.State) {
 
 	s.Log("Start analyzing assoc requests")
 	filters := []pcap.Filter{
+		pcap.RadioTapFCSValid(),
 		pcap.Dot11FCSValid(),
 		pcap.TransmitterAddress(mac),
 	}
