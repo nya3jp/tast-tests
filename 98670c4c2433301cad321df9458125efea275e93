@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "943eaaa9_6e7e177c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-03T21:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8150a4d2_719dd5e3",
+      "revId": "98670c4c2433301cad321df9458125efea275e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "869f53c9_a1644d0c",
@@ -100,6 +118,24 @@
       "writtenOn": "2021-11-03T20:38:37Z",
       "side": 1,
       "message": "ditto",
+      "revId": "98670c4c2433301cad321df9458125efea275e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3631d5e1_5787c1f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-03T21:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "869f53c9_a1644d0c",
       "revId": "98670c4c2433301cad321df9458125efea275e93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "beb41fca_96eddb3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-03T21:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0047b1a_8e5777cb",
+      "revId": "98670c4c2433301cad321df9458125efea275e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c38f8694_7c24d437",
@@ -138,6 +192,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33228d47_64f693e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-03T21:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c38f8694_7c24d437",
+      "revId": "98670c4c2433301cad321df9458125efea275e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14ed36a6_f826e016",
@@ -151,6 +223,30 @@
       "writtenOn": "2021-11-03T20:38:37Z",
       "side": 1,
       "message": "It seems like this is an assumption, e.g. if we fail or Chrome crashes in the middle of this sequence, we may have leftover pins and this test will fail on WaitUntilGone even though nothing was actually incorrect given the state of the machine.\n\nIf we want to test this as well, I would advise making sure there are no pins at the start of the test.",
+      "range": {
+        "startLine": 68,
+        "startChar": 68,
+        "endLine": 69,
+        "endChar": 74
+      },
+      "revId": "98670c4c2433301cad321df9458125efea275e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88356602_7a7aced1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-03T21:08:22Z",
+      "side": 1,
+      "message": "We ran into this already, in fact. That\u0027s why we\u0027re not using `Pre: chrome.LoggedIn()` for this test, to make sure state is fresh and user data is cleared. Otherwise, holding space could be in a few different states, even if nothing is pinned.\n\nFor example, if a previous test that crashed involved a download, and that download was never removed, holding space will show when we don\u0027t expect it to, and we can\u0027t properly test its behavior. So clearing user data before this test (and some other holding space tests) is necessary.\n\nSo if holding space doesn\u0027t disappear here when we unpin here, it\u0027s a bug and should throw an error. Is there a way that some sort of state could still leak into this test?",
+      "parentUuid": "14ed36a6_f826e016",
       "range": {
         "startLine": 68,
         "startChar": 68,
