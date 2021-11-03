@@ -1,0 +1,25 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.policy;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/policy";
+
+// Provides functions to perform reporting.
+service ReportingService {
+  rpc GAIAEnrollUsingChromeAndCollectReporting(GAIAEnrollUsingChromeAndCollectReportingRequest) returns (google.protobuf.Empty) {}
+}
+
+message GAIAEnrollUsingChromeAndCollectReportingRequest {
+  string username = 1;
+  string password = 2;
+  string dmserverURL = 3;
+  string reportingserverURL = 4;
+  string obfuscatedCustomerID = 5;
+  string debugServiceAPIKey = 6;
+}
