@@ -61,3 +61,36 @@ func CreateCrossVersionLoginData(ctx context.Context, daemonController *hwsec.Da
 
 	return nil
 }
+
+// LoadCrossVersionLoginData will load the data that is used in cross-version login test.
+func LoadCrossVersionLoginData(ctx context.Context, daemonController *hwsec.DaemonController, filePath string) error {
+	if err := daemonController.TryStopDaemons(ctx, hwsec.HighLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to try to stop high-level TPM daemons")
+	}
+	if err := daemonController.TryStopDaemons(ctx, hwsec.LowLevelTPMDaemons); err != nil {
+		return errors.Wrap(err, "failed to try to stop low-level TPM daemons")
+	}
+	if err := daemonController.TryStop(ctx, hwsec.TPM2SimulatorDaemon); err != nil {
+		return errors.Wrap(err, "failed to try to stop low-level TPM daemons")
+	}
+	defer func() {
+		if err := daemonController.Ensure(ctx, hwsec.TPM2SimulatorDaemon); err != nil {
+			testing.ContextLog(ctx, "Failed to ensure tpm-simulator: ", err)
+		}
+		if err := daemonController.EnsureDaemons(ctx, hwsec.LowLevelTPMDaemons); err != nil {
+			testing.ContextLog(ctx, "Failed to ensure low-level TPM daemons: ", err)
+		}
+		if err := daemonController.EnsureDaemons(ctx, hwsec.HighLevelTPMDaemons); err != nil {
+			testing.ContextLog(ctx, "Failed to ensure high-level TPM daemons: ", err)
+		}
+	}()
+
+	// Remove the `/home/.shadow` first to prevent any unexpected file remaining.
+	if err := testexec.CommandContext(ctx, "rm", "-rf", "/home/.shadow").Run(); err != nil {
+		return errors.Wrap(err, "failed to remove old data")
+	}
+	if err := testexec.CommandContext(ctx, "tar", "Jxvf", filePath, "-C", "/").Run(); err != nil {
+		return errors.Wrap(err, "failed to decompress the cryptohome data")
+	}
+	return nil
+}
