@@ -9,6 +9,8 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
 
 // CreateNewDesk requests Ash to create a new Virtual Desk which would fail if
@@ -66,4 +68,18 @@ func ActivateAdjacentDesksToTargetIndex(ctx context.Context, tconn *chrome.TestC
 		return errors.Errorf("failed to activate desk at index %v", index)
 	}
 	return nil
+}
+
+// FindDeskMiniViews returns a list of DeskMiniView nodes and verifies the number of nodes.
+// TODO(crbug/1251558): use autotest api to get the number of desks instead.
+func FindDeskMiniViews(ctx context.Context, ac *uiauto.Context, count int) ([]uiauto.NodeInfo, error) {
+	deskMiniViews := nodewith.ClassName("DeskMiniView")
+	deskMiniViewsInfo, err := ac.NodesInfo(ctx, deskMiniViews)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find all desk mini views")
+	}
+	if len(deskMiniViewsInfo) != count {
+		return nil, errors.Errorf("expected %v desks, but got %v instead", count, len(deskMiniViewsInfo))
+	}
+	return deskMiniViewsInfo, nil
 }
