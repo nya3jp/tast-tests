@@ -53,6 +53,7 @@ type TestCase struct {
 
 // TestParams represents the collection of tests to run in tablet mode or clamshell mode.
 type TestParams struct {
+	TabletMode       bool
 	LaunchTests      []TestCase
 	CommonTests      []TestCase
 	AppSpecificTests []TestCase
