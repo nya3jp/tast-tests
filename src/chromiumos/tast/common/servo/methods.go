@@ -593,6 +593,7 @@ func (s *Servo) GetFloat(ctx context.Context, control FloatControl) (float64, er
 }
 
 // SetStringAndCheck sets a control to a specified value, and then verifies that it was set correctly.
+// Unless you have a good reason to check, just use SetString.
 func (s *Servo) SetStringAndCheck(ctx context.Context, control StringControl, value string) error {
 	if err := s.SetString(ctx, control, value); err != nil {
 		return err
@@ -665,10 +666,7 @@ func (s *Servo) SetPowerState(ctx context.Context, value PowerStateValue) error 
 // Because this is particularly disruptive, it is always logged.
 func (s *Servo) SetFWWPState(ctx context.Context, value FWWPStateValue) error {
 	testing.ContextLogf(ctx, "Setting %q to %q", FWWPState, value)
-	// Don't use SetStringAndCheck because the state can be "on" after we set "force_on".
-	shortCtx, cancel := context.WithTimeout(ctx, 3*time.Second)
-	defer cancel()
-	return s.SetString(shortCtx, FWWPState, string(value))
+	return s.SetString(ctx, FWWPState, string(value))
 }
 
 // GetPDRole returns the servo's current PDRole (SNK or SRC), or PDRoleNA if Servo is not V4.
