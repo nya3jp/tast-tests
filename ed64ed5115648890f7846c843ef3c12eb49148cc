@@ -210,6 +210,30 @@
       },
       "revId": "ed64ed5115648890f7846c843ef3c12eb49148cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9956705_af4a5a63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_detection_tabletmode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T09:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12c0b077_e4474ade",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "ed64ed5115648890f7846c843ef3c12eb49148cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
