@@ -50,7 +50,9 @@ func init() {
 				androidTarget:   true,
 			},
 		}, {
-			Name:              "chrome_to_android_vm",
+			Name: "chrome_to_android_vm",
+			// Disabled from critical until stability can be improved.
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: &dragDropTestArgs{
 				extensionPrefix: "drag_source_",
