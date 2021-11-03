@@ -93,6 +93,7 @@ func MBOAssocDisallow(ctx context.Context, s *testing.State) {
 
 	s.Log("Start analyzing pcap")
 	filters := []pcap.Filter{
+		pcap.RadioTapFCSValid(),
 		pcap.Dot11FCSValid(),
 		pcap.TransmitterAddress(mac),
 		pcap.TypeFilter(layers.LayerTypeDot11MgmtAssociationReq, nil),

@@ -105,6 +105,7 @@ func RandomMACAddress(ctx context.Context, s *testing.State) {
 		s.Log("Start analyzing pcap")
 		filters := []pcap.Filter{
 			pcap.RejectLowSignal(),
+			pcap.RadioTapFCSValid(),
 			pcap.Dot11FCSValid(),
 			pcap.TypeFilter(
 				layers.LayerTypeDot11MgmtProbeReq,
