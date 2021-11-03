@@ -157,6 +157,9 @@ func (c *Chrome) Chrome() *Chrome { return c }
 // Creds returns credentials used to log into a session.
 func (c *Chrome) Creds() Creds { return c.cfg.Creds() }
 
+// VKEnabled returns whether virtual keyboard is enabled.
+func (c *Chrome) VKEnabled() bool { return c.cfg.VKEnabled() }
+
 // User returns the username that was used to log in to Chrome. Note that in almost all cases you actually want NormalizedUser below.
 func (c *Chrome) User() string { return c.cfg.Creds().User }
 
