@@ -16,6 +16,23 @@
       "message": "Adding tast-owners for OWNERS review, context is that the proto uprev in https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/3221333 adds mutexs to the generated code, so now passing messages by value now causes \"copylock\" go vet errors.\n\nAlso adding nya@, who has reviewed related CLs.",
       "revId": "9712c8c62fad8a3d3409634cd96268c08c998b0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9136a169_22f23f09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1325055
+      },
+      "writtenOn": "2021-11-03T15:42:54Z",
+      "side": 1,
+      "message": "Removing nya@ for now to let gwsq select another OWNER (hopefully timezone-aware).",
+      "revId": "9712c8c62fad8a3d3409634cd96268c08c998b0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
