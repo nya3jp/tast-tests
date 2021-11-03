@@ -7,6 +7,7 @@ package kerberos
 import (
 	"context"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/apps"
@@ -34,7 +35,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"kerberos.username", "kerberos.password", "kerberos.domain"},
-		Fixture:      "fakeDMS",
+		Fixture:      fixture.FakeDMS,
 	})
 }
 
