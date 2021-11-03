@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4bc447e_30d3f63f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-03T16:12:47Z",
+      "side": 1,
+      "message": "CQ failures don\u0027t seem to be related to this change but DUTs not available in the lab for days. Submitting bypassing those checks..",
+      "revId": "7686a593b3ce4c914456c45eb259d87e562a9d62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
