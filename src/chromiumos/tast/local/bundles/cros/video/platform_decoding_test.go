@@ -687,6 +687,24 @@ func TestPlatformDecodingParams(t *testing.T) {
 		}
 	}
 
+	// Generate VAAPI VP8 tests.
+	for _, testGroup := range []string{"inter", "inter_multi_coeff", "inter_segment", "intra", "intra_multi_coeff", "intra_segment", "comprehensive"} {
+		files := vp8Files[testGroup]
+
+		var hardwareDeps []string
+		params = append(params, paramData{
+			Name:         fmt.Sprintf("vaapi_vp8_%s", testGroup),
+			Decoder:      filepath.Join(chrome.BinTestDir, "decode_test"),
+			CmdBuilder:   "vp8decodeVAAPIargs",
+			Files:        files,
+			Timeout:      defaultTimeout,
+			HardwareDeps: strings.Join(hardwareDeps, ", "),
+			SoftwareDeps: []string{"vaapi", caps.HWDecodeVP8},
+			Metadata:     genExtraData(files),
+			Attr:         []string{"graphics_video_vp8"},
+		})
+	}
+
 	// Generates V4L2 VP9 tests.
 	for i, profile := range []string{"profile_0"} {
 		for _, levelGroup := range []string{"group1", "group2", "group3", "group4", "level5_0", "level5_1"} {
