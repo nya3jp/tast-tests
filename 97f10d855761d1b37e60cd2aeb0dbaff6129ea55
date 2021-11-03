@@ -16,6 +16,29 @@
       "message": "These implementations would work at the moment in ScreenWakeTabletMode(). But, I do plan on documenting more messages for them in my next upcoming patch set.",
       "revId": "97f10d855761d1b37e60cd2aeb0dbaff6129ea55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94c6fc19_939af88c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_screen_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-03T16:42:11Z",
+      "side": 1,
+      "message": "Since this is \"Reuse\", why not just return success here?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "97f10d855761d1b37e60cd2aeb0dbaff6129ea55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
