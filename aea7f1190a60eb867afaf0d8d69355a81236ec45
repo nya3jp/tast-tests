@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4319584c_d8bdd1db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-03T13:12:10Z",
+      "side": 1,
+      "message": "LGTM % nits\n\nWaiting to the other reviewers to chime in 😊",
+      "revId": "aea7f1190a60eb867afaf0d8d69355a81236ec45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a9fe88_9a7fd458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-03T13:12:10Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "revId": "aea7f1190a60eb867afaf0d8d69355a81236ec45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef685b0_4ccf161f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-03T13:12:10Z",
+      "side": 1,
+      "message": "very minor nit: move inline, I don\u0027t think having a constant that far away is more readable.",
+      "revId": "aea7f1190a60eb867afaf0d8d69355a81236ec45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada82451_54b93734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-03T13:12:10Z",
+      "side": 1,
+      "message": "You can move creating the context inside s.Run and then use the more common\n\nctx, cancel :\u003d context.WithTimeout(ctx, subTestTimeout)\ndefer cancel()",
+      "revId": "aea7f1190a60eb867afaf0d8d69355a81236ec45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
