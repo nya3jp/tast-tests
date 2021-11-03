@@ -50,6 +50,42 @@
       "message": "If you use the --follow flag here (and it works for this command), you can skip the polling and waiting before checking the content of the log.",
       "revId": "37e8bcf685dc5eb1baf1138f48b03c45b628c361",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28018443_e75872e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_target_version_selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-03T09:48:19Z",
+      "side": 1,
+      "message": "The second poll waits for stuff to show up in the log.",
+      "parentUuid": "affd3fdb_24f4a5bf",
+      "revId": "37e8bcf685dc5eb1baf1138f48b03c45b628c361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57fa1854_19822e8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_target_version_selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-03T09:48:19Z",
+      "side": 1,
+      "message": "--follow will never complete on test images (there is no working update server).\n\nThe first poll is needed because it errors out for ~1 second after update-engine starts. DBUS is not yet ready.",
+      "parentUuid": "219e2da6_ebd75451",
+      "revId": "37e8bcf685dc5eb1baf1138f48b03c45b628c361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
