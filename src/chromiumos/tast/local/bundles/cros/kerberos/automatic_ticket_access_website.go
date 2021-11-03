@@ -10,8 +10,10 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -21,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/kerberos"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -36,17 +39,35 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"kerberos.username", "kerberos.password", "kerberos.domain"},
-		Fixture:      "chromePolicyLoggedIn",
+		Fixture:      fixture.FakeDMS,
 	})
 }
 
 func AutomaticTicketAccessWebsite(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
-	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+	fdms := s.FixtValue().(*fakedms.FakeDMS)
 	username := s.RequiredVar("kerberos.username")
 	password := s.RequiredVar("kerberos.password")
 	domain := s.RequiredVar("kerberos.domain")
 	config := kerberos.ConstructConfig(domain, username)
+
+	// Start a Chrome instance that will fetch policies from the FakeDMS.
+	cr, err := chrome.New(ctx,
+		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
+		chrome.DMSPolicy(fdms.URL),
+		chrome.KeepEnrollment())
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+
+	defer func(ctx context.Context) {
+		// Use cr as a reference to close the last started Chrome instance.
+		if err := cr.Close(ctx); err != nil {
+			s.Error("Failed to close Chrome connection: ", err)
+		}
+	}(ctx)
+
+	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
+	defer cancel()
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -55,11 +76,6 @@ func AutomaticTicketAccessWebsite(ctx context.Context, s *testing.State) {
 	}
 
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_automatic_ticket")
-
-	// Perform cleanup.
-	if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
-		s.Fatal("Failed to clean up: ", err)
-	}
 
 	kerberosAcc := policy.KerberosAccountsValueOmitKrb5conf{
 		Principal: config.KerberosAccount,
