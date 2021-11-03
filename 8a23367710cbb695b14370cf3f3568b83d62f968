@@ -68,6 +68,195 @@
       "parentUuid": "fabafbc9_baf17100",
       "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "726c22b5_b49eb4e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-03T18:01:41Z",
+      "side": 1,
+      "message": "Looks like this is not being used anywhere. If so, please delete it.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e9fb0b2_e4ad3e60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-03T18:01:41Z",
+      "side": 1,
+      "message": "note that user is modified here. To be clearer for future reader, how about \n\nprimaryUser, err :\u003d getPrimaryUser(ctx)\nif err !\u003d nil {...}\nuser \u003d primaryUser",
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ac58cbe_633ddbe6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-03T18:01:41Z",
+      "side": 1,
+      "message": "Can you add to the function comment chrome will be disconnected?\n\nBTW, from arc_snapshot.go, you called Enroll only once in the beginning of the test to initialize chrome and called WaitForPackagesInMgs multiple times. Is it expected to have service.cr \u003d\u003d nil?",
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "357921c4_e1ba34fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-03T18:01:41Z",
+      "side": 1,
+      "message": "Giving this is a lengthy test, you might want to have a dedicate suite or control file to avoid hitting global timeout. It helps other tests in the same fleet to run.\n\nFYI, informational-chrome timeout is set to 4hr.\n/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.informational-chrome",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6374bd6c_27a2a2bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-03T18:01:41Z",
+      "side": 1,
+      "message": "Use defer in line 68 to avoid perfValues.Save multiple times.",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 3
+      },
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c44de7_909f0aeb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-03T18:01:41Z",
+      "side": 1,
+      "message": "Can you move this a little up to line 94 so it is clearer re-connect is with rebooting?",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e3021d0_6c476d4d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-03T18:01:41Z",
+      "side": 1,
+      "message": "We should avoid copy-pasting and using loop to do what you want.\n\nuser :\u003d \"\"\nperfValues :\u003d perf.NewValues()\ndefer func(ctx context.Context) {\n    // perfValue.Save\n} (ctx)\n\nfor i :\u003d 0; i \u003c 3; i++ {\n    // Running MGS with ith Snapshot \n    // perf.Merge\n    // Reboot\n    // Reconnect\n    // Waiting ith Snapshot\n    // perf.Merge\n}",
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2226bf59_42e9e6e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-03T18:01:41Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 21
+      },
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47de8877_c7b1f1e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-03T18:01:41Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 205,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 21
+      },
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
