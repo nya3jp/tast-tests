@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware/fixture"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -108,22 +109,12 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 	// This function will try to reconnect to the DUT and check the system power state to assure DUT has booted.
 	confirmBoot := func(ctx context.Context) error {
 		// Wait for a connection to the DUT.
-		s.Log("Wait for DUT to reconnect to servo")
+		s.Log("Wait for SSH to DUT")
 		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
 		defer cancelWaitConnect()
 
 		if err := h.WaitConnect(waitConnectCtx); err != nil {
 			return errors.Wrap(err, "failed to reconnect to DUT")
-		}
-
-		// Verify the DUT booted.
-		s.Log("Checking power state")
-		state, err := h.Servo.GetECSystemPowerState(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get power state")
-		}
-		if state != "S0" {
-			return errors.New("DUT is not in state = S0")
 		}
 		return nil
 	}
@@ -136,7 +127,7 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 
 	// Enable software write protect.
 	s.Log("Enabling software write protect")
-	if err := s.DUT().Conn().CommandContext(ctx, "ectool", "flashprotect", "enable").Run(); err != nil {
+	if err := s.DUT().Conn().CommandContext(ctx, "ectool", "flashprotect", "enable").Run(ssh.DumpLogOnError); err != nil {
 		s.Fatal("Failed to enable software write protect: ", err)
 	}
 
