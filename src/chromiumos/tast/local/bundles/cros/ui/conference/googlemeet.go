@@ -522,8 +522,6 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 			}
 			testing.ContextLog(ctx, "Move conference tab to extended display")
 			return uiauto.Combine("move conference to extended display",
-				kb.AccelAction("Alt+Tab"),
-				ui.Sleep(400*time.Millisecond),
 				kb.AccelAction("Search+Alt+M"),
 				ui.Sleep(400*time.Millisecond),
 			)(ctx)
@@ -532,13 +530,13 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 		testing.ContextLog(ctx, "Share screen")
 		return ui.Retry(3, uiauto.Combine("share screen",
 			switchToTab("Meet"),
+			moveConferenceTab,
 			checkPresentNowButton,
 			cuj.ExpandMenu(conf.tconn, presentNowButton, menu, 172),
 			ui.LeftClick(presentMode),
 			ui.LeftClick(presentTab),
 			ui.LeftClickUntil(shareButton, ui.Gone(shareButton)),
 			ui.WithTimeout(time.Minute).WaitUntilExists(stopSharing),
-			moveConferenceTab,
 		))(ctx)
 	}
 	stopPresenting := func(ctx context.Context) error {
