@@ -20,7 +20,7 @@ import (
 )
 
 // commandBuilderFn is the function type to generate the command line with arguments.
-type commandBuilderDecodeFn func(filename string) (command []string)
+type commandBuilderDecodeFn func(ctx context.Context, filename string) (command []string)
 
 type platformDecodingParams struct {
 	filenames      []string
@@ -1205,7 +1205,7 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 
 	for _, filename := range testOpt.filenames {
 		testing.ContextLogf(ctx, "Running %s on %s", exec, filename)
-		args := testOpt.commandBuilder(s.DataPath(filename))
+		args := testOpt.commandBuilder(ctx, s.DataPath(filename))
 		stdout, stderr, err := testexec.CommandContext(
 			ctx,
 			validatePath,
@@ -1228,12 +1228,13 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 }
 
 // v4l2DecodeArgs provides the arguments to use with the stateful decoding binary exe for v4l2.
-func v4l2DecodeArgs(filename string) []string {
-	return []string{"--file=" + filename, "--md5", "--log_level=1"}
+func v4l2DecodeArgs(ctx context.Context, filename string) (command []string) {
+	command = append(command, "--file="+filename, "--md5", "--log_level=1")
+	return
 }
 
 // av1decodeVAAPIargs provides the arguments to use with the AV1 decoding binary exe for vaapi.
-func av1decodeVAAPIargs(filename string) []string {
+func av1decodeVAAPIargs(ctx context.Context, filename string) []string {
 	return []string{
 		"--video=" + filename,
 		"--md5",
@@ -1244,7 +1245,7 @@ func av1decodeVAAPIargs(filename string) []string {
 }
 
 // vp9decodeVAAPIargs provides the arguments to use with the VP9 decoding binary exe for vaapi.
-func vp9decodeVAAPIargs(filename string) []string {
+func vp9decodeVAAPIargs(ctx context.Context, filename string) []string {
 	return []string{
 		"--video=" + filename,
 		"--md5",
