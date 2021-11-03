@@ -16,6 +16,40 @@
       "message": "PTAL",
       "revId": "37e8bcf685dc5eb1baf1138f48b03c45b628c361",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "affd3fdb_24f4a5bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_target_version_selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-03T09:29:02Z",
+      "side": 1,
+      "message": "Would it make sense to poll with a different command, and separate the check if update_engine is ready, and triggering the update check?\nAt first I thought you only wanted to ensure that the update_engine is ready.",
+      "revId": "37e8bcf685dc5eb1baf1138f48b03c45b628c361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219e2da6_ebd75451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_target_version_selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-03T09:29:02Z",
+      "side": 1,
+      "message": "If you use the --follow flag here (and it works for this command), you can skip the polling and waiting before checking the content of the log.",
+      "revId": "37e8bcf685dc5eb1baf1138f48b03c45b628c361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
