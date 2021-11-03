@@ -1,0 +1,13 @@
+{
+  "AuthConfigList": [
+    {
+      "AuthType": 0,
+      "Username": "testuser@gmail.com",
+      "Password": "testpass",
+      "KeyDelegateName": "",
+      "KeyDelegatePath": "",
+      "ChallengeSPKI": null,
+      "ChallengeAlg": 0
+    }
+  ]
+}

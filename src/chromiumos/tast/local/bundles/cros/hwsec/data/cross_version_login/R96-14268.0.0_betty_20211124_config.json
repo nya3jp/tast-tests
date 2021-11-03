@@ -1,0 +1,22 @@
+{
+  "AuthConfigList": [
+    {
+      "AuthType": 0,
+      "Username": "testuser@gmail.com",
+      "Password": "testpass",
+      "KeyDelegateName": "",
+      "KeyDelegatePath": "",
+      "ChallengeSPKI": null,
+      "ChallengeAlg": 0
+    },
+    {
+      "AuthType": 1,
+      "Username": "testuser",
+      "Password": "",
+      "KeyDelegateName": "org.chromium.TestingCryptohomeKeyDelegate",
+      "KeyDelegatePath": "/org/chromium/CryptohomeKeyDelegate",
+      "ChallengeSPKI": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6zYtGpppA/EPoo2KxS8/iVnAa3lQrBoGzKzu+tGkAusPEkldr565eVHmBBBPPoAGTSg2quR6bZ3P1N0lF2zAuQa09xPehyeRimSbq+WMiMscZF0obd7kH1MQltRvNMqS7paitS6qngR4BqpZTm4oxnDBHuUeBaHhvhTccfJVO44qazwPqOxF1sbyg69MgCAmkmQAkl5ApZGLaNqExDEjwh69mp0zCO3ekZUH8/FnGoWipfv1jD/5RiZUuSCpklUvtcbyR8HjYgIDhGYU2CzRWT2YNQB2rDNC4y8oabPyjnarxGtu4Ue70lJjHNtITUNlx4UzLSKfTI4V4gq9BjZdOQIDAQAB",
+      "ChallengeAlg": 1
+    }
+  ]
+}
