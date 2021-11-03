@@ -6,11 +6,13 @@ package inputs
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/data"
+	"chromiumos/tast/local/bundles/cros/inputs/inputactions"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
@@ -19,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/imesettings"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -156,14 +159,35 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 		)
 	}
 
-	util.RunSubTest(ctx, s, cr, "default", validateGlideTyping(testserver.TextAreaInputField, true))
-	util.RunSubTest(ctx, s, cr, "not_applicable", validateGlideTyping(testserver.PasswordInputField, false))
-	util.RunSubTest(ctx, s, cr, "disable", uiauto.Combine("disable glide typing and verify",
+	uc, err := inputactions.NewInputsUserContext(ctx, s, cr, tconn, nil)
+	if err != nil {
+		s.Fatal("Failed to create user context: ", err)
+	}
+	uc.AddTags([]string{inputactions.ActionTagVKGlideTyping})
+
+	uc.SetAttribute(useractions.AttributeFloatVK, strconv.FormatBool(shouldFloatLayout))
+
+	uc.RunActionAsSubTest(ctx, s, "glide typing - enabled by default", validateGlideTyping(testserver.TextAreaInputField, true), &useractions.UserActionCfg{
+		ActionAttributes: map[string]string{useractions.AttributeInputField: string(testserver.TextAreaInputField)},
+	}, false)
+
+	uc.RunActionAsSubTest(ctx, s, "glide typing - should not work on non_applicable field", validateGlideTyping(testserver.PasswordInputField, false), &useractions.UserActionCfg{
+		ActionAttributes: map[string]string{useractions.AttributeInputField: string(testserver.PasswordInputField)},
+	}, false)
+
+	uc.RunActionAsSubTest(ctx, s, "glide typing - disable function in settings", uiauto.Combine("disable glide typing and verify",
 		setGlideTyping(false),
 		validateGlideTyping(testserver.TextAreaInputField, false),
-	))
-	util.RunSubTest(ctx, s, cr, "re-enable", uiauto.Combine("re-enable glide typing and verify",
+	), &useractions.UserActionCfg{
+		ActionAttributes: map[string]string{useractions.AttributeInputField: string(testserver.TextAreaInputField)},
+		ActionTags:       []string{inputactions.ActionTagIMESettings},
+	}, false)
+
+	uc.RunActionAsSubTest(ctx, s, "glide typing - re-enable function in settings", uiauto.Combine("disable glide typing and verify",
 		setGlideTyping(true),
 		validateGlideTyping(testserver.TextAreaInputField, true),
-	))
+	), &useractions.UserActionCfg{
+		ActionAttributes: map[string]string{useractions.AttributeInputField: string(testserver.TextAreaInputField)},
+		ActionTags:       []string{inputactions.ActionTagIMESettings},
+	}, false)
 }

@@ -6,18 +6,16 @@ package inputs
 
 import (
 	"context"
-	"path/filepath"
 	"strings"
 	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/data"
+	"chromiumos/tast/local/bundles/cros/inputs/inputactions"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -60,31 +58,33 @@ func VirtualKeyboardTypingUserMode(ctx context.Context, s *testing.State) {
 	}
 	defer its.Close()
 
-	inputField := testserver.TextAreaInputField
-	vkbCtx := vkb.NewContext(cr, tconn)
+	uc, err := inputactions.NewInputsUserContext(ctx, s, cr, tconn, nil)
+	if err != nil {
+		s.Fatal("Failed to create user context: ", err)
+	}
+	uc.AddTags([]string{inputactions.ActionTagVKTyping})
 
-	subtest := func(testName string, inputData data.InputData) func(ctx context.Context, s *testing.State) {
-		return func(ctx context.Context, s *testing.State) {
-			cleanupCtx := ctx
-			// Use a shortened context for test operations to reserve time for cleanup.
-			ctx, shortCancel := ctxutil.Shorten(ctx, 10*time.Second)
-			defer shortCancel()
-
-			defer func(ctx context.Context) {
-				outDir := filepath.Join(s.OutDir(), testName)
-				faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, s.HasError, cr, "ui_tree_"+testName)
-
-				if err := vkbCtx.HideVirtualKeyboard()(ctx); err != nil {
-					s.Log("Failed to hide virtual keyboard: ", err)
-				}
-			}(cleanupCtx)
-
-			if err := its.ValidateInputFieldForMode(inputField, util.InputWithVK, inputData, s.DataPath)(ctx); err != nil {
-				s.Fatal("Failed to validate virtual keyboard input: ", err)
-			}
-		}
+	uc.SetAttribute(useractions.AttributeUserMode, useractions.UserModeGuest)
+	if strings.HasSuffix(s.TestName(), "incognito") {
+		uc.SetAttribute(useractions.AttributeUserMode, useractions.UserModeIncognito)
 	}
 
-	// Run defined subtest per input method and message combination.
-	util.RunSubtestsPerInputMethodAndMessage(ctx, tconn, s, typingModeTestIMEs, typingModeTestMessages, subtest)
+	inputField := testserver.TextAreaInputField
+
+	for _, im := range typingModeTestIMEs {
+		if err := im.InstallAndActivate(tconn)(ctx); err != nil {
+			s.Fatalf("Failed to install and activate input method %q: %v", im, err)
+		}
+		uc.SetAttribute(useractions.AttributeInputMethod, im.Name)
+
+		inputData, ok := data.TypingMessageHello.GetInputData(im)
+		if !ok {
+			s.Fatal("Failed to get input data: ", err)
+		}
+
+		validationAction := its.ValidateInputFieldForMode(inputField, util.InputWithVK, inputData, nil)
+		uc.RunActionAsSubTest(ctx, s, "VK typing in different user mode", validationAction, &useractions.UserActionCfg{
+			ActionAttributes: map[string]string{useractions.AttributeInputField: string(testserver.TextAreaInputField)},
+		}, false)
+	}
 }
