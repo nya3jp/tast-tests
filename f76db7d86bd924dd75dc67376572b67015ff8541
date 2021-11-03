@@ -16,6 +16,109 @@
       "message": "This is a request for a preliminary review, to ensure that this is an acceptable means of testing the mic mute key.\n\nStill to do:\n\n(1) Add the new MICMUTE key (and the new KBL toggle key, while I\u0027m at it) mapping to \n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/input/key_mappings.go\n\n(2) Add the same test but with the actual MICMUTE key in addition to the debug accelerator",
       "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc98943_b865a21d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-03T20:27:45Z",
+      "side": 1,
+      "message": "Looks good, added a few small comments while I\u0027m here. It might be a good idea to have someone from the audio team take a look as well, adding johnylin@ who wrote a similar test (audio.UIInput)",
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b93d5101_384d637a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-03T20:27:45Z",
+      "side": 1,
+      "message": "You\u0027ll want to add the microphone HW dep here since you\u0027re relying on the presence of the internal mic:\n```\nHardwareDeps: hwdep.D(hwdep.Microphone())\n```",
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f874f727_3c1bbc5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-03T20:27:45Z",
+      "side": 1,
+      "message": "style: change to outMuted\nhttps://golang.org/doc/effective_go#mixed-caps",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "354e192c_3c65b185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-03T20:27:45Z",
+      "side": 1,
+      "message": "here and below too",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 14
+      },
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd48b1bf_428be094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-03T20:27:45Z",
+      "side": 1,
+      "message": "another small style thing is to just indent the error flow:\nhttps://gist.github.com/adamveld12/c0d9f0d5f0e1fba1e551#indent-error-flow\n```\nif !matchedMuted {\n    s.Fatal(\"Failed to mute microphone\")\n}\ns.Log(\"Mic successfully muted\")\n```",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
