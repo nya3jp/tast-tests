@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a8c5a18_cf1588de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-11-03T07:42:40Z",
+      "side": 1,
+      "message": "is it possible to let fixture has its owner software deps configuration. I feel \"reboot\" is one of dependency using inside fixture implementation.",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "293971e860e0c334b4abc64b46dab7788c61d780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
