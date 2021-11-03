@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a32a8ba_1ee74a1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T10:22:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "67ef27ac_40326de5",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78d8475b_099bd475",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-27T10:24:43Z",
       "side": 1,
       "message": "Use logging only when something might take a while to execute or the message is crucial for debugging.",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f968b2cc_2e0c4335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T10:22:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "78d8475b_099bd475",
       "range": {
         "startLine": 78,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc7f436_c7a5d636",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T10:22:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c82e40e_39a68edb",
+      "range": {
+        "startLine": 112,
+        "startChar": 13,
+        "endLine": 112,
+        "endChar": 19
+      },
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e0ec08c_29a7a82f",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-10-27T10:24:43Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 122,
+        "startChar": 12,
+        "endLine": 122,
+        "endChar": 18
+      },
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7312be1d_64530bb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T10:22:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0e0ec08c_29a7a82f",
       "range": {
         "startLine": 122,
         "startChar": 12,
@@ -127,6 +223,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c7383c5_350c1571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T10:22:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bd800e7c_a8c3f0b0",
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "508af964_e0d354f9",
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d84eacef_6a1dcbb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T10:22:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "508af964_e0d354f9",
+      "range": {
+        "startLine": 134,
+        "startChar": 12,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fd2312e_015d07d8",
@@ -163,6 +301,30 @@
       "writtenOn": "2021-10-27T10:24:43Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 137,
+        "startChar": 11,
+        "endLine": 137,
+        "endChar": 17
+      },
+      "revId": "5129cc248294d5ce4d578902430b95c24c9d9631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d5f0be6_8f9c544d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/dp_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-03T10:22:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2fd2312e_015d07d8",
       "range": {
         "startLine": 137,
         "startChar": 11,
