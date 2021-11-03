@@ -16,6 +16,69 @@
       "message": "Hi there,\n\nFriendly ping :)",
       "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e971fa7_6e8f8da0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-03T13:33:45Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee8197a5_bef75c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-03T13:33:45Z",
+      "side": 1,
+      "message": "nit: place dots at the end of the comments.",
+      "range": {
+        "startLine": 103,
+        "startChar": 45,
+        "endLine": 105,
+        "endChar": 67
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cbcdc2f_0e99bfde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-03T13:33:45Z",
+      "side": 1,
+      "message": "why not start with policy.StatusUnset? \nOr you want to have the Unset as the last test case?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 5
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
