@@ -98,7 +98,7 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a new desk: ", err)
 	}
 	// Verifies that there are 2 desks.
-	deskMiniViewsInfo, err := findDeskMiniViews(ctx, ac, 2)
+	deskMiniViewsInfo, err := ash.FindDeskMiniViews(ctx, ac, 2)
 	if err != nil {
 		s.Fatal("Failed to find desks: ", err)
 	}
@@ -157,18 +157,4 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	if windowCount != 2 {
 		s.Fatalf("Expected 2 visible windows, got %v instead", windowCount)
 	}
-}
-
-// findDeskMiniViews returns a list of DeskMiniView nodes and verifies the number of nodes.
-// TODO(crbug/1251558): use autotest api to get the number of desks instead.
-func findDeskMiniViews(ctx context.Context, ac *uiauto.Context, count int) ([]uiauto.NodeInfo, error) {
-	deskMiniViews := nodewith.ClassName("DeskMiniView")
-	deskMiniViewsInfo, err := ac.NodesInfo(ctx, deskMiniViews)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find all desk mini views")
-	}
-	if len(deskMiniViewsInfo) != count {
-		return nil, errors.Errorf("expected %v desks, but got %v instead", count, len(deskMiniViewsInfo))
-	}
-	return deskMiniViewsInfo, nil
 }
