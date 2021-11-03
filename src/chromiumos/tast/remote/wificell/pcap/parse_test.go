@@ -31,6 +31,16 @@ func TestReadPackets(t *testing.T) {
 		resIndices []int
 	}{
 		{
+			name: "radiotap_fcs",
+			// 3 broken packets are appended to testFile on purpose,
+			// Using negated filter is appropriate in this case,
+			// because otherwise the resIndices list would be too long.
+			filters: []Filter{
+				NegateFilter(RadioTapFCSValid()),
+			},
+			resIndices: []int{326, 327, 328},
+		},
+		{
 			name: "probe_req",
 			filters: []Filter{
 				RejectLowSignal(),
