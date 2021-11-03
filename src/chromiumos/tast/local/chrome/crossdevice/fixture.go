@@ -101,14 +101,15 @@ func init() {
 }
 
 type crossdeviceFixture struct {
-	opts              []chrome.Option
-	cr                *chrome.Chrome
-	androidDevice     *AndroidDevice
-	androidAttributes *AndroidAttributes
-	crosAttributes    *CrosAttributes
-	btsnoopCmd        *testexec.Cmd
-	logMarker         *logsaver.Marker // Marker for per-test log.
-	allFeatures       bool
+	opts                              []chrome.Option
+	cr                                *chrome.Chrome
+	androidDevice                     *AndroidDevice
+	androidAttributes                 *AndroidAttributes
+	crosAttributes                    *CrosAttributes
+	btsnoopCmd                        *testexec.Cmd
+	logMarker                         *logsaver.Marker // Marker for per-test log.
+	allFeatures                       bool
+	saveAndroidScreenRecordingOnError func(context.Context, func() bool) error
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -287,6 +288,12 @@ func (f *crossdeviceFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 	if err := f.androidDevice.ClearLogcat(ctx); err != nil {
 		s.Fatal("Failed to clear logcat: ", err)
 	}
+
+	saveScreen, err := f.androidDevice.StartScreenRecording(s.TestContext(), "android-screen", s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start screen recording on Android: ", err)
+	}
+	f.saveAndroidScreenRecordingOnError = saveScreen
 }
 
 func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
@@ -306,6 +313,11 @@ func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	if err := f.androidDevice.DumpLogs(ctx, s.OutDir(), "crossdevice-logcat.txt"); err != nil {
 		s.Fatal("Failed to save logcat logs: ", err)
 	}
+
+	if err := f.saveAndroidScreenRecordingOnError(ctx, s.HasError); err != nil {
+		s.Fatal("Failed to save Android screen recording: ", err)
+	}
+	f.saveAndroidScreenRecordingOnError = nil
 }
 
 // saveDeviceAttributes saves the CrOS and Android device attributes as a formatted JSON at the specified filepath.

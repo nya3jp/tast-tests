@@ -65,6 +65,12 @@ func (c *AndroidDevice) ClearLogcat(ctx context.Context) error {
 	return nil
 }
 
+// StartScreenRecording starts screen recording on the Android device.
+// Defer the returned function to save the recording and clean up on the Android side.
+func (c *AndroidDevice) StartScreenRecording(ctx context.Context, filename, outDir string) (func(context.Context, func() bool) error, error) {
+	return c.device.StartScreenRecording(ctx, filename, outDir)
+}
+
 // Pair pairs the Android device to nearby Chromebooks signed in with the same GAIA account.
 // This will cause the phone to be listed under the "Connected devices" section of OS settings,
 // allowing use of Cross Device features (Smart Lock, Phone Hub, etc.) on the Chromebook.
