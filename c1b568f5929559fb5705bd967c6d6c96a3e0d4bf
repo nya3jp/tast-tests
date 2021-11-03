@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5ad85ec_7a64c505",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-03T05:15:05Z",
+      "side": 1,
+      "message": "end with .",
+      "range": {
+        "startLine": 28,
+        "startChar": 74,
+        "endLine": 28,
+        "endChar": 81
+      },
+      "revId": "c1b568f5929559fb5705bd967c6d6c96a3e0d4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b778a20_c5bc590b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-03T05:15:05Z",
+      "side": 1,
+      "message": "why returnning error here?",
+      "range": {
+        "startLine": 380,
+        "startChar": 2,
+        "endLine": 380,
+        "endChar": 86
+      },
+      "revId": "c1b568f5929559fb5705bd967c6d6c96a3e0d4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
