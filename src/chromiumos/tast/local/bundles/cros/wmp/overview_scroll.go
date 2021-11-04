@@ -6,6 +6,8 @@ package wmp
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -30,6 +32,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
+		Data:         []string{"heavy_resize.html"},
 		Params: []testing.Param{{
 			Name: "portrait",
 			Val:  true,
@@ -93,6 +96,11 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	// Run an http server to serve the test contents for accessing from the chrome browsers.
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+	url := server.URL + "/heavy_resize.html"
+
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
 	if err != nil {
 		s.Fatal("Failed to ensure in tablet mode: ", err)
@@ -129,6 +137,10 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 		if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
 			s.Fatalf("%s did not appear in shelf after launch: %s", app.Name, err)
 		}
+	}
+
+	if err := ash.CreateWindows(ctx, tconn, cr, url, 1); err != nil {
+		s.Fatal("Failed to open windows: ", err)
 	}
 
 	// TODO(sammiequon): Add support for ARC apps.
