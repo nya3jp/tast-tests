@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88985ba8_9e0c0c8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-04T08:58:52Z",
+      "side": 1,
+      "message": "gwsq is having some issues (b/205050529). Retrying...",
+      "revId": "75572de215f2a2098eb46e74ee212139ea5c07e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
