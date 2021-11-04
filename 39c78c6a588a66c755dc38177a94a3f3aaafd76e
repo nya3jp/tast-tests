@@ -3,6 +3,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6d9a79f_6a3e1dd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-04T21:40:24Z",
+      "side": 1,
+      "message": "is",
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c432bb49_7883e2fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-04T21:40:24Z",
+      "side": 1,
+      "message": "depending",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7b8e581_e7f599ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-04T21:40:24Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ded02b41_93883f38",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -38,6 +101,30 @@
       "side": 1,
       "message": "Not really. I ran a doze of ProbeReqFormat test before this CL, none of them is failing, which means it takes longer time to find a verifiable case. I instead used a trick to test the CL: flip the return value in RadioTapFCSValid() by `return radioTap.Flags.BadFCS()\u0027, so that none of well-formed packet can pass the filter thus the test fails because of no packet.\n\nAfter second consideration, a better solution is to write a dedicated mocking test, which is expected to fail, for 9 impacted tests (using Dot11FCSValid), by feeding a pcap full of malformed-packets into all tests.",
       "parentUuid": "ded02b41_93883f38",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb587f37_d530ad90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-04T21:40:24Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand - your commit message makes it sound like the result of this is deterministic, i.e. all packets should have a correct FCS because it is always stripped during pcap, and gopacket always injects a good one. Can you clarify where the flake is in your commit message?",
+      "parentUuid": "b737e045_387bcf0d",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -114,6 +201,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dea6406b_b02de5b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/probe_req_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-04T21:40:24Z",
+      "side": 1,
+      "message": "does this still do anything meaningful?",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66386df0_2f9fbafc",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-04T21:40:24Z",
+      "side": 1,
+      "message": "nit: spelling",
+      "range": {
+        "startLine": 52,
+        "startChar": 52,
+        "endLine": 52,
+        "endChar": 62
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d095a3a2_0de63957",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
         "patchSetId": 2
@@ -149,6 +282,30 @@
       "side": 1,
       "message": "I will change it to TODO(b/185378075) in next patch.\nI was thinking about the tradeoff between changing the behavior of basic function vs. tests using this function.\nThe nature of PCAP functionality required checking RadioTap flags before checking Dot11 layer. For anywhere calling Dot11FCSValid(), RadioTapFCSValid must be called before it. So combining these two together into one filter seems reasonable to me.\nHowever adding one more filter in to existing tests is a better practice to me, for now. Adding one line to code can be served as a notice to test owners. It also avoids hidden behavior changes in basic functions.",
       "parentUuid": "d095a3a2_0de63957",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 77
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448bef35_e9696235",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-04T21:40:24Z",
+      "side": 1,
+      "message": "I think keeping them separate is best since they\u0027re checking fundamentally different things. That being said is there still a reason to keep the Dot11 one around?",
+      "parentUuid": "4c466156_a09708d2",
       "range": {
         "startLine": 54,
         "startChar": 0,
