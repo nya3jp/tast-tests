@@ -22,6 +22,30 @@
       },
       "revId": "f13d6776d4e8474740aa89f5141e9ca36ee8e1b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "feefc090_f2991eba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-04T20:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81cbbf3a_806ab426",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "f13d6776d4e8474740aa89f5141e9ca36ee8e1b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22bf04f4_87da167f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-04T20:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a3bb2c2_a24b07c9",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbe988b1_1f4da43a",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-11-02T04:46:13Z",
       "side": 1,
       "message": "That\u0027s the part of the commit message that\u0027s relevant to the CL, so you can potentially only mention that this CL verifies that the firmware dumps are valid by checking the size and the magic values in the header.",
+      "range": {
+        "startLine": 10,
+        "startChar": 63,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ef64858_5c1408ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-04T20:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbe988b1_1f4da43a",
       "range": {
         "startLine": 10,
         "startChar": 63,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db4aa9e_b227f9f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-04T20:20:48Z",
+      "side": 1,
+      "message": "The fw extractor splity paths after checking types the signature type:\n1- YOYO_MAGIC:\nThe extractor starts parsing TLVs which are two types:\na) info\nb) mem  \n\n2- non YOYO_MAGIC:\nThe extractor goes through the whole data and checks the memory API by parsing the TLVs of type \"9\" and checking for memory type.\n\nAfter that, it would go through the data again and parse the TLVs which have many types ~17 types.\n\nI am not sure if adding something such as checkMemAPI is useful here.",
+      "parentUuid": "dba3a456_a2d2f555",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c92db032_27999c39",
@@ -107,6 +179,30 @@
       "writtenOn": "2021-11-02T04:46:13Z",
       "side": 1,
       "message": "That\u0027s probably the wrong license, this CL wasn\u0027t written by Intel",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "319cd74e_eb5ed323",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-04T20:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c92db032_27999c39",
       "range": {
         "startLine": 5,
         "startChar": 0,
@@ -140,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fc2aaf8_d2cb680b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-04T20:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80191ff4_c7936fc2",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6ab52d9_c79ff3da",
@@ -153,6 +273,30 @@
       "writtenOn": "2021-11-02T04:46:13Z",
       "side": 1,
       "message": "Would it be possible to use the gzip Go package instead?",
+      "range": {
+        "startLine": 73,
+        "startChar": 41,
+        "endLine": 73,
+        "endChar": 45
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b659bcf2_273ef901",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-04T20:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6ab52d9_c79ff3da",
       "range": {
         "startLine": 73,
         "startChar": 41,
@@ -200,6 +344,30 @@
       "side": 1,
       "message": "Both have been observed in the wild. The older (validMagic) is one less than the newer (yoyoMagic). From observation, older core drops generate the older validMagic, and have a different structure than the drops that support yoyoMagic.\n\nThe firmware dump script (https://b.corp.google.com/action/issues/169152720/attachments/32466647) checks first for the yoyo magic, and then assumes the previous magic value when parsing:\n\n\n```\nif ($magicD \u003d\u003d YOYO_MAGIC) {\n        yoyo_parse_dump $data, $size;\n        $fh-\u003eclose();\n        exit\n}\n\nmy $magicH \u003d sprintf(\"0x%x\", $magicD);\n\n($magicH eq \"0x14789632\") || die \"Bad magic!\";\n```\n\nIt might be helpful to leave a comment describing expected magic values, at least noting which Core drop versions correspond to which expected magic value (and corresponding dump format).",
       "parentUuid": "e96c8c56_0ba82ddb",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 42
+      },
+      "revId": "b83ecf8190888774b0770a2edee25da21085cebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cde1d6b5_57f687a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-04T20:20:48Z",
+      "side": 1,
+      "message": "I added a comment showing each WiFi chips and their corresponding signature type.",
+      "parentUuid": "80551fb6_72a608e1",
       "range": {
         "startLine": 105,
         "startChar": 1,
