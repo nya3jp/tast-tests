@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "98be3ced_6099c51e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-04T17:07:45Z",
+      "side": 1,
+      "message": "nit: wrap lines that go over 72 chars.",
+      "revId": "cafe55eef3a7bdc10a68b7051e88572e9039c405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c4e5306e_df5abd9e",
@@ -14,6 +31,23 @@
       "writtenOn": "2021-11-04T15:51:50Z",
       "side": 1,
       "message": "PTAL",
+      "revId": "cafe55eef3a7bdc10a68b7051e88572e9039c405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dddcdf2_be28034c",
+        "filename": "src/chromiumos/tast/local/kerberos/ticket.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-04T17:07:45Z",
+      "side": 1,
+      "message": "I can\u0027t see where is that used?\n\nAlso, it could be a part of the configuration which is constructed in tests with\nkerberos.ConstructConfig(domain, username) and later retrieved by config.RealsConfig WDYT?",
       "revId": "cafe55eef3a7bdc10a68b7051e88572e9039c405",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
