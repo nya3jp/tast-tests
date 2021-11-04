@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9819490d_11ac43ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-04T06:00:45Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm modulo unresolved comments from other reviewers",
+      "revId": "e17e0edefbe0a53064004ae110af42f6e944d82a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
