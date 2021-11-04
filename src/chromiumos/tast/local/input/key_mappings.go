@@ -163,6 +163,7 @@ var namedKeyCodes = map[string]EventCode{
 	"mute":           KEY_MUTE,
 	"volumedown":     KEY_VOLUMEDOWN,
 	"volumeup":       KEY_VOLUMEUP,
+	"microphonemute": KEY_MICMUTE,
 }
 
 // parseAccel parses a string in the format accepted by the Accel function.

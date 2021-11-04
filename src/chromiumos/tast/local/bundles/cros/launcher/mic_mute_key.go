@@ -59,7 +59,8 @@ func MicMuteKey(ctx context.Context, s *testing.State) {
 
 	// Test mute via the debug accelerator.
 	s.Log("Muting the microphone via debug accelerator")
-	if err := kb.Accel(ctx, "Shift+Ctrl+Alt+M"); err != nil {
+	//if err := kb.Accel(ctx, "Shift+Ctrl+Alt+M"); err != nil {
+	if err := kb.Accel(ctx, "MicrophoneMute"); err != nil {
 		s.Fatal("Failed to mute the microphone: ", err)
 	}
 
