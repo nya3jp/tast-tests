@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b737e045_387bcf0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-04T18:00:22Z",
+      "side": 1,
+      "message": "Not really. I ran a doze of ProbeReqFormat test before this CL, none of them is failing, which means it takes longer time to find a verifiable case. I instead used a trick to test the CL: flip the return value in RadioTapFCSValid() by `return radioTap.Flags.BadFCS()\u0027, so that none of well-formed packet can pass the filter thus the test fails because of no packet.\n\nAfter second consideration, a better solution is to write a dedicated mocking test, which is expected to fail, for 9 impacted tests (using Dot11FCSValid), by feeding a pcap full of malformed-packets into all tests.",
+      "parentUuid": "ded02b41_93883f38",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c9879f60_065d20ca",
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea4ea7fe_dc02ea3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/probe_req_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-04T18:00:22Z",
+      "side": 1,
+      "message": "I will make changes to other tests.\nThere are 9 tast-tests in total need to add RadioTapFCSValid Filter in order to reliably parse PCAP.",
+      "parentUuid": "0473b2b7_67f91320",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 26
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d095a3a2_0de63957",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
         "patchSetId": 2
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c466156_a09708d2",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-04T18:00:22Z",
+      "side": 1,
+      "message": "I will change it to TODO(b/185378075) in next patch.\nI was thinking about the tradeoff between changing the behavior of basic function vs. tests using this function.\nThe nature of PCAP functionality required checking RadioTap flags before checking Dot11 layer. For anywhere calling Dot11FCSValid(), RadioTapFCSValid must be called before it. So combining these two together into one filter seems reasonable to me.\nHowever adding one more filter in to existing tests is a better practice to me, for now. Adding one line to code can be served as a notice to test owners. It also avoids hidden behavior changes in basic functions.",
+      "parentUuid": "d095a3a2_0de63957",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 77
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d80430be_04a7eecf",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
         "patchSetId": 2
@@ -100,6 +172,24 @@
       "writtenOn": "2021-11-04T02:26:58Z",
       "side": 1,
       "message": "Flags might not be present. Return true by default.\n\nRef: check it_present in https://www.radiotap.org/\nAlso, http://shortn/_MkOI9jvEoL",
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48841054_a1cfa85c",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-04T18:00:22Z",
+      "side": 1,
+      "message": "Thank you!\nChecking present in next patch.",
+      "parentUuid": "d80430be_04a7eecf",
       "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
