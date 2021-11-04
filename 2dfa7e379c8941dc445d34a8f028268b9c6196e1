@@ -34,6 +34,24 @@
       "parentUuid": "1ee629fc_ececaf6f",
       "revId": "2dfa7e379c8941dc445d34a8f028268b9c6196e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9613424_64a542e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-11-04T21:41:50Z",
+      "side": 1,
+      "message": "Refer https://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/vars/ui.yaml",
+      "parentUuid": "bb23bb22_48726f36",
+      "revId": "2dfa7e379c8941dc445d34a8f028268b9c6196e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
