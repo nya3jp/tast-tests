@@ -16,6 +16,29 @@
       "message": "ptal; test still flaky but this CL hopefully will help point problems moving forward.",
       "revId": "c8f0bdc9e4e8ae5539e39aa651410010f32d8db9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dee4dcf_2052b630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/smart_selection_chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-04T02:34:56Z",
+      "side": 1,
+      "message": "nit\u0026optional: You may want to use strings.Join:\nhttps://pkg.go.dev/strings#Join",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "c8f0bdc9e4e8ae5539e39aa651410010f32d8db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
