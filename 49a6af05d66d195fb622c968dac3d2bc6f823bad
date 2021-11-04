@@ -39,6 +39,30 @@
       },
       "revId": "49a6af05d66d195fb622c968dac3d2bc6f823bad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180e49f8_2009dbc4",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-04T23:51:07Z",
+      "side": 1,
+      "message": "We have fatal for all the other logs, so I thought might as well have it for screenrecording too lol",
+      "parentUuid": "1976fd2e_19bc33ac",
+      "range": {
+        "startLine": 333,
+        "startChar": 1,
+        "endLine": 340,
+        "endChar": 2
+      },
+      "revId": "49a6af05d66d195fb622c968dac3d2bc6f823bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
