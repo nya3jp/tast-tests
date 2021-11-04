@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75c85080_f21625c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-04T10:55:53Z",
+      "side": 1,
+      "message": "Thanks Ben!",
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08d22601_0af8a976",
@@ -48,6 +65,30 @@
       "writtenOn": "2021-11-03T22:36:46Z",
       "side": 1,
       "message": "I wonder if this is better expressed as a HardwareDeps ? I couldn\u0027t find an existing one but might be better to future proof in the case new models are added that you might want to test.",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f77c40d9_a6f753b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-04T10:55:53Z",
+      "side": 1,
+      "message": "There is no such hardware dependency at the moment, that\u0027s why we have such workaruond.",
+      "parentUuid": "08d22601_0af8a976",
       "range": {
         "startLine": 29,
         "startChar": 3,
@@ -81,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d09bc82_e9bc9904",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-04T10:55:53Z",
+      "side": 1,
+      "message": "Thanks! Good catch!",
+      "parentUuid": "522d8f28_ec93da29",
+      "range": {
+        "startLine": 59,
+        "startChar": 33,
+        "endLine": 59,
+        "endChar": 47
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17c9fb6f_a0103b49",
@@ -94,6 +159,30 @@
       "writtenOn": "2021-11-03T22:36:46Z",
       "side": 1,
       "message": "nit: All these log messages and Error/Fatals should be capitalised with the Error\u0027s beginning with lowercase. So line 96, line 126\n\nhttp://go/tast-writing#formatting",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 9
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c7fab7a_5b404430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-04T10:55:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17c9fb6f_a0103b49",
       "range": {
         "startLine": 90,
         "startChar": 8,
@@ -245,6 +334,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15e7fd97_77861a97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-04T10:55:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9efc6c38_138049b0",
+      "range": {
+        "startLine": 244,
+        "startChar": 48,
+        "endLine": 244,
+        "endChar": 56
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd3b4ec8_3d8664de",
@@ -258,6 +371,30 @@
       "writtenOn": "2021-11-03T22:36:46Z",
       "side": 1,
       "message": "nit: nil",
+      "range": {
+        "startLine": 252,
+        "startChar": 50,
+        "endLine": 252,
+        "endChar": 54
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b77def8_0809a86a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-04T10:55:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd3b4ec8_3d8664de",
       "range": {
         "startLine": 252,
         "startChar": 50,
