@@ -16,6 +16,40 @@
       "message": "So it turns out the virtio balloon size is already exposed in /proc/vmstat, so it\u0027s really simple to make a metric.",
       "revId": "d3c4a09a54d9d0e84b5894a05130287f7b123bcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4e09e92_8909c5bf",
+        "filename": "src/chromiumos/tast/local/memory/arc/vmstat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-04T06:47:39Z",
+      "side": 1,
+      "message": "Generally it\u0027s preferred to avoid shelling out if possible. Can you do this using existing functions without shelling out? e.g. ioutil.ReadFile",
+      "revId": "d3c4a09a54d9d0e84b5894a05130287f7b123bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5392012_07240559",
+        "filename": "src/chromiumos/tast/local/memory/arc/vmstat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-04T06:47:39Z",
+      "side": 1,
+      "message": "might be good to include the direction field",
+      "revId": "d3c4a09a54d9d0e84b5894a05130287f7b123bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
