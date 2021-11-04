@@ -1,6 +1,7 @@
 // Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
+
 package ui
 
 import (
@@ -31,8 +32,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "loggedInAndKeepState",
 		Vars: []string{
-			"ui.cuj_mode",  // Optional. Expecting "tablet" or "clamshell".
-			"cuj_password", // Required to unlock screen.
+			"ui.cuj_mode", // Optional. Expecting "tablet" or "clamshell".
 			"ui.QuickCheckCUJ2_wifissid",
 			"ui.QuickCheckCUJ2_wifipassword",
 		},

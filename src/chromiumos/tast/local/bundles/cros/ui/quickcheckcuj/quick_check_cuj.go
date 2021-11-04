@@ -56,7 +56,7 @@ const retryTimes = 3
 // the DUT. The lockInRecorder flag indicates if the lock function should be executed
 // inside metrics recorder.
 func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode PauseMode, tabletMode bool) *perf.Values {
-	password := s.RequiredVar("cuj_password")
+	password := cr.Creds().Pass // Required to unlock screen.
 
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {

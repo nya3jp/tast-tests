@@ -40,8 +40,7 @@ func init() {
 			// mode is optional. Expecting "tablet" or "clamshell".
 			"ui.cuj_mode",
 			// CrOS login credentials.
-			"cuj_username",
-			"cuj_password",
+			"ui.cujAccountPool",
 			// Credentials used to join Google Meet. It might be different with CrOS login credentials.
 			"ui.meet_account",
 			"ui.meet_password",
@@ -88,25 +87,19 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 	if !ok {
 		return nil, errors.New("failed to get outdir from context")
 	}
-	account, ok := s.s.Var("cuj_username")
-	if !ok {
-		return nil, errors.New("failed to get variable cuj_username")
-	}
-	// Convert to lower case because user account is case-insensitive and shown as lower case in CrOS.
-	account = strings.ToLower(account)
-	password, ok := s.s.Var("cuj_password")
-	if !ok {
-		return nil, errors.New("failed to get variable cuj_password")
-	}
 
 	run := func(ctx context.Context, roomURL string) error {
+		accountPool, ok := s.s.Var("ui.cujAccountPool")
+		if !ok {
+			return errors.New("failed to get variable ui.cujAccountPool")
+		}
 		cr, err := chrome.New(ctx,
 			// Make sure we are running new chrome UI when tablet mode is enabled by CUJ test.
 			// Remove this when new UI becomes default.
 			chrome.EnableFeatures("WebUITabStrip"),
 			chrome.KeepState(),
 			chrome.ARCSupported(),
-			chrome.GAIALogin(chrome.Creds{User: account, Pass: password}))
+			chrome.GAIALoginPool(accountPool))
 		if err != nil {
 			return errors.Wrap(err, "failed to restart Chrome")
 		}
@@ -298,15 +291,9 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	if !ok {
 		return nil, errors.New("failed to get outdir from context")
 	}
-	account, ok := s.s.Var("cuj_username")
+	accountPool, ok := s.s.Var("ui.cujAccountPool")
 	if !ok {
-		return nil, errors.New("failed to get variable cuj_username")
-	}
-	// user account is case-insensitive and shown as lower case in CrOS.
-	account = strings.ToLower(account)
-	password, ok := s.s.Var("cuj_password")
-	if !ok {
-		return nil, errors.New("failed to get variable cuj_password")
+		return nil, errors.New("failed to get variable ui.cujAccountPool")
 	}
 	host, ok := s.s.Var("ui.zoom_bot_server")
 	if !ok {
@@ -325,10 +312,11 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 		chrome.EnableFeatures("WebUITabStrip"),
 		chrome.KeepState(),
 		chrome.ARCSupported(),
-		chrome.GAIALogin(chrome.Creds{User: account, Pass: password}))
+		chrome.GAIALoginPool(accountPool))
 	if err != nil {
-		return nil, err
+		return nil, errors.Wrap(err, "failed to restart Chrome")
 	}
+	account := cr.Creds().User
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
