@@ -514,17 +514,11 @@ func (d *Device) SetPIN(ctx context.Context) error {
 
 // ClearPIN clears a screen lock PIN on the Android device.
 func (d *Device) ClearPIN(ctx context.Context) error {
-	if err := d.Root(ctx); err != nil {
-		return err
-	}
 	return d.ShellCommand(ctx, "locksettings", "clear", "--old", "1234").Run(testexec.DumpLogOnError)
 }
 
 // DisableLockscreen allows toggling of the lock screen on Android.
 func (d *Device) DisableLockscreen(ctx context.Context, disable bool) error {
-	if err := d.Root(ctx); err != nil {
-		return err
-	}
 	status := "false"
 	if disable {
 		status = "true"
@@ -534,9 +528,6 @@ func (d *Device) DisableLockscreen(ctx context.Context, disable bool) error {
 
 // LockscreenDisabled returns True when the lockscreen has been disabled.
 func (d *Device) LockscreenDisabled(ctx context.Context) (string, error) {
-	if err := d.Root(ctx); err != nil {
-		return "", err
-	}
 	output, err := d.ShellCommand(ctx, "locksettings", "get-disabled").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", err
