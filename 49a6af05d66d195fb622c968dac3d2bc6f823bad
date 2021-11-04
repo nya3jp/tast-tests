@@ -16,6 +16,29 @@
       "message": "actually doesn\u0027t work with smartlock, need to change a few things",
       "revId": "49a6af05d66d195fb622c968dac3d2bc6f823bad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1976fd2e_19bc33ac",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-04T00:42:12Z",
+      "side": 1,
+      "message": "Having fatal for screenrecording not working seems excessive?",
+      "range": {
+        "startLine": 333,
+        "startChar": 1,
+        "endLine": 340,
+        "endChar": 2
+      },
+      "revId": "49a6af05d66d195fb622c968dac3d2bc6f823bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
