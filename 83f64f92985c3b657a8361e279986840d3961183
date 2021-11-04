@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed5d90ec_e613fda2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-11-04T15:49:59Z",
+      "side": 1,
+      "message": "Were you able to verify that this CL produces thermal data for one of the boards where it\u0027s missing?",
+      "revId": "83f64f92985c3b657a8361e279986840d3961183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7aedb316_4bbcf624",
