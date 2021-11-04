@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "742a8538_b3d8cb4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-04T04:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a25ccd2_98ba2b98",
+      "revId": "aea7f1190a60eb867afaf0d8d69355a81236ec45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8a9fe88_9a7fd458",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-11-03T13:12:10Z",
       "side": 1,
       "message": "nit: end with .",
+      "revId": "aea7f1190a60eb867afaf0d8d69355a81236ec45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae5346e9_f2b1ca0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-04T04:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8a9fe88_9a7fd458",
       "revId": "aea7f1190a60eb867afaf0d8d69355a81236ec45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a356137_1e635740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-04T04:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cef685b0_4ccf161f",
+      "revId": "aea7f1190a60eb867afaf0d8d69355a81236ec45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ada82451_54b93734",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8bc585_49fe167b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_assistant.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-04T04:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ada82451_54b93734",
+      "revId": "aea7f1190a60eb867afaf0d8d69355a81236ec45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd25d73d_cc9a4498",
@@ -99,6 +171,30 @@
       "writtenOn": "2021-11-03T19:06:43Z",
       "side": 1,
       "message": "nit: RunThroughCameras will really switch to each camera, which is an overkill and quite slow. Could we have a more lightweight solution with enumerateDevices() in cca_ui.js?\n\nI am ok with a TODO here since cca_ui_multi_camera.go already used a similar approach before.",
+      "range": {
+        "startLine": 1986,
+        "startChar": 10,
+        "endLine": 1986,
+        "endChar": 27
+      },
+      "revId": "aea7f1190a60eb867afaf0d8d69355a81236ec45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5260ae13_a96575bd",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1986,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2021-11-04T04:46:43Z",
+      "side": 1,
+      "message": "TODO added.",
+      "parentUuid": "fd25d73d_cc9a4498",
       "range": {
         "startLine": 1986,
         "startChar": 10,
