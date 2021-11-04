@@ -52,6 +52,24 @@
       "parentUuid": "bb23bb22_48726f36",
       "revId": "2dfa7e379c8941dc445d34a8f028268b9c6196e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ddf7563_622e0305",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-11-04T22:18:49Z",
+      "side": 1,
+      "message": "Sorry, I totally forgot to add arcappcompat.yaml file. I couldn\u0027t access https://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/vars/ui.yaml. But I got it from your screenshot (https://screenshot.googleplex.com/3aMKe5ugNSX7zBJ) that was shared over chat. Uploaded an internal CL, crrev.com/i/4234621 for the pool addition.",
+      "parentUuid": "d9613424_64a542e3",
+      "revId": "2dfa7e379c8941dc445d34a8f028268b9c6196e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
