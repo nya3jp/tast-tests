@@ -20,6 +20,12 @@ service UtilsService {
 
   // FindPhysicalKeyboard finds /dev/input/event* file for physical a keyboard.
   rpc FindPhysicalKeyboard (google.protobuf.Empty) returns (FindPhysicalKeyboardResponse) {}
+
+  // NewChrome creates a new instance of Chrome
+  rpc NewChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  
+  // CloseChrome closes an existing instance of Chrome
+  rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 // ReadServoKeyboardRequest listens the servo's keyboard emulator for a specified duration in seconds.
