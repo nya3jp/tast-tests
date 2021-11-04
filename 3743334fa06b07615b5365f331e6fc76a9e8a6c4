@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccd39cd8_2052f4c3",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-04T17:31:48Z",
+      "side": 1,
+      "message": "300ms like uiauto default",
+      "parentUuid": "8691cee7_cedaa2e6",
+      "range": {
+        "startLine": 47,
+        "startChar": 26,
+        "endLine": 47,
+        "endChar": 41
+      },
+      "revId": "3743334fa06b07615b5365f331e6fc76a9e8a6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93872d4b_52e62840",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-04T16:30:59Z",
       "side": 1,
       "message": "This function is very widely used, so I feel a little hesitant about increasing its polling interval when it\u0027s unclear if it is the cause of flakiness (especially since this could negatively impact the time needed by other tests by several seconds). I would suggest limiting the scope to the lacros tests if possible, or consider a smaller interval (maybe 300ms like the uiauto default if your concern is UI-related).",
+      "range": {
+        "startLine": 515,
+        "startChar": 5,
+        "endLine": 515,
+        "endChar": 15
+      },
+      "revId": "3743334fa06b07615b5365f331e6fc76a9e8a6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed94e7a_a5b4cc09",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-04T17:31:48Z",
+      "side": 1,
+      "message": "Right, it is not yet clear whether tests flake in polling 100ms, but generally speaking waiting for app to open/close might not be very time-sensitive event in hundreds of milliseconds unless it\u0027s perf test.\nWhat about splitting it into two to address your point?\n1. Get this CL in with 300ms interval like uiauto default.\n2. (In a follow-up) Let Lacros tests use the new function added here for specifying the interval to limit the scope to itself.",
+      "parentUuid": "93872d4b_52e62840",
       "range": {
         "startLine": 515,
         "startChar": 5,
