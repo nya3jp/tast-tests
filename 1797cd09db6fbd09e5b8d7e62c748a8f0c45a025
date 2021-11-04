@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cacbd247_bc2f4e2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-11-04T05:30:12Z",
+      "side": 1,
+      "message": "Correct, that was the idea.",
+      "parentUuid": "8ca811e2_cae05ef8",
+      "revId": "1797cd09db6fbd09e5b8d7e62c748a8f0c45a025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c0b4f88_e430b551",
