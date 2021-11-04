@@ -27,40 +27,43 @@ const (
 
 // CaptureScreenshot launches "Screen capture" from Quick Settings.
 // And capture screenshot according to the argument passed in, fullscreen, partial or window.
-func CaptureScreenshot(ctx context.Context, tconn *chrome.TestConn, sst screenshotType) error {
-	if err := quicksettings.Show(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to open Quick Settings")
-	}
-	defer func(ctx context.Context, tconn *chrome.TestConn) {
-		if err := quicksettings.Hide(ctx, tconn); err != nil {
-			testing.ContextLog(ctx, "Failed to hide Quick Settings")
+func CaptureScreenshot(tconn *chrome.TestConn, sst screenshotType) action.Action {
+	return func(ctx context.Context) error {
+		if err := quicksettings.Show(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to open Quick Settings")
 		}
-	}(ctx, tconn)
 
-	ui := uiauto.New(tconn)
+		defer func(ctx context.Context, tconn *chrome.TestConn) {
+			if err := quicksettings.Hide(ctx, tconn); err != nil {
+				testing.ContextLog(ctx, "Failed to hide Quick Settings")
+			}
+		}(ctx, tconn)
 
-	if err := ui.LeftClick(quicksettings.PodIconButton(quicksettings.SettingPodScreenCapture))(ctx); err != nil {
-		return errors.Wrap(err, "failed to launch 'Screen capture'")
-	}
+		ui := uiauto.New(tconn)
 
-	if err := ensureInScreenCaptureMode(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to verify the ui of toolbar")
-	}
-
-	switch sst {
-	case FullScreen:
-		if err := takeFullScreenshot(tconn)(ctx); err != nil {
-			return err
+		if err := ui.LeftClick(quicksettings.PodIconButton(quicksettings.SettingPodScreenCapture))(ctx); err != nil {
+			return errors.Wrap(err, "failed to launch 'Screen capture'")
 		}
-	default:
-		return errors.New("unknown screenshot type")
-	}
 
-	if err := screenshotTaken(tconn)(ctx); err != nil {
-		return errors.Wrap(err, "failed to check the screenshot taken")
-	}
+		if err := ensureInScreenCaptureMode(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to verify the ui of toolbar")
+		}
 
-	return nil
+		switch sst {
+		case FullScreen:
+			if err := takeFullScreenshot(tconn)(ctx); err != nil {
+				return err
+			}
+		default:
+			return errors.New("unknown screenshot type")
+		}
+
+		if err := screenshotTaken(tconn)(ctx); err != nil {
+			return errors.Wrap(err, "failed to check the screenshot taken")
+		}
+
+		return nil
+	}
 }
 
 func ensureInScreenCaptureMode(ctx context.Context, tconn *chrome.TestConn) error {
@@ -72,7 +75,8 @@ func ensureInScreenCaptureMode(ctx context.Context, tconn *chrome.TestConn) erro
 		nodewith.Role(role.ToggleButton).Name("Take full screen screenshot"),
 		nodewith.Role(role.ToggleButton).Name("Take partial screenshot"),
 		nodewith.Role(role.ToggleButton).Name("Take window screenshot"),
-		nodewith.Role(role.Button).Name("CaptureModeButton"),
+		nodewith.Role(role.ToggleButton).Name("Settings"),
+		nodewith.Role(role.Button).Name("Close"),
 	} {
 		if err := ui.WaitUntilExists(btn)(ctx); err != nil {
 			return err
