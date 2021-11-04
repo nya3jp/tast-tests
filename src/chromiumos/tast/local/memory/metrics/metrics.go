@@ -121,7 +121,7 @@ func LogMemoryStatsSlice(begin, end *BaseMemoryStats, p *perf.Values, suffix str
 // If p != nil, summaries are added as perf.Values.
 // Parameter base is optional - when specified, metrics are computed
 // as a delta from the base snapshot til "now" (where possible).
-func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, arc *arc.ARC, p *perf.Values, outdir, suffix string) error {
+func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, a *arc.ARC, p *perf.Values, outdir, suffix string) error {
 
 	// These metrics are relatively cheap to get.
 	if err := memory.ZramMmStatMetrics(ctx, p, outdir, suffix); err != nil {
@@ -141,8 +141,20 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, arc *arc.ARC, p 
 		return errors.Wrap(err, "failed to collect zram stats metrics")
 	}
 
-	if err := memory.PSIMetrics(ctx, arc, psiprevstats, p, outdir, suffix); err != nil {
+	if err := memory.PSIMetrics(ctx, a, psiprevstats, p, outdir, suffix); err != nil {
 		return errors.Wrap(err, "failed to collect PSI stats metrics")
+	}
+	vmEnabled, err := arc.VMEnabled()
+	if err != nil {
+		return err
+	}
+	if a != nil && vmEnabled {
+		if err := memoryarc.VMStatMetrics(ctx, a, p, outdir, suffix); err != nil {
+			return errors.Wrap(err, "failed to collect ARC vmstat metrics")
+		}
+	}
+	if err := memory.ChromeOSAvailableMetrics(ctx, p, suffix); err != nil {
+		return errors.Wrap(err, "failed to collect ChromeOS available metrics")
 	}
 
 	if base != nil {
@@ -159,15 +171,11 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, arc *arc.ARC, p 
 		return errors.Wrap(err, "failed to collect crosvm fincore metrics")
 	}
 
-	if err := memory.ChromeOSAvailableMetrics(ctx, p, suffix); err != nil {
-		return errors.Wrap(err, "failed to collect ChromeOS available metrics")
-	}
-
-	if arc != nil {
+	if a != nil {
 		const dumpsysRetries = 3
 		dumpsysSucceeded := false
 		for i := 0; i < dumpsysRetries; i++ {
-			if err := memoryarc.DumpsysMeminfoMetrics(ctx, arc, p, outdir, suffix); err != nil {
+			if err := memoryarc.DumpsysMeminfoMetrics(ctx, a, p, outdir, suffix); err != nil {
 				testing.ContextLog(ctx, "Failed to collect ARC dumpsys meminfo metrics: ", err)
 				if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 					return errors.Wrap(err, "failed to sleep between dumpsys meminfo retries")
