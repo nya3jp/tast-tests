@@ -60,7 +60,7 @@ func FullScreenshot(ctx context.Context, s *testing.State) {
 	}
 
 	testing.ContextLog(ctx, "Launch 'Screen capture' and capture screenshot")
-	if err := wmp.CaptureScreenshot(ctx, tconn, wmp.FullScreen); err != nil {
+	if err := wmp.CaptureScreenshot(tconn, wmp.FullScreen)(ctx); err != nil {
 		s.Fatal("Failed to capture screenshot: ", err)
 	}
 	defer func(ctx context.Context) {
