@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f387488c_9d3a0bea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-11-04T17:47:30Z",
+      "side": 1,
+      "message": "Yes, thermal data is collected on banon in WindowArrangementCUJ as expected that there is a B0DB sensor[1]\nI haven\u0027t looked into other boards thermal sensor but as Opal suggested we should add these two patterns first.\n\n[1]https://paste.googleplex.com/5272191982632960#",
+      "parentUuid": "ed5d90ec_e613fda2",
+      "revId": "83f64f92985c3b657a8361e279986840d3961183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7aedb316_4bbcf624",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -48,6 +66,30 @@
       "writtenOn": "2021-11-04T15:49:11Z",
       "side": 1,
       "message": "ARM, and let\u0027s also update the comment before this line.",
+      "range": {
+        "startLine": 55,
+        "startChar": 50,
+        "endLine": 55,
+        "endChar": 53
+      },
+      "revId": "83f64f92985c3b657a8361e279986840d3961183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0694f004_1634a9b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/thermal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-11-04T17:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c421462_22d34d00",
       "range": {
         "startLine": 55,
         "startChar": 50,
