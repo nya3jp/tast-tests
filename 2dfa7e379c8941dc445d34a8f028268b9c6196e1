@@ -16,6 +16,24 @@
       "message": "Is there an internal CL for this pool addition I mean arcappcompat.gaiaPoolDefault\n?",
       "revId": "2dfa7e379c8941dc445d34a8f028268b9c6196e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb23bb22_48726f36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-11-04T21:38:04Z",
+      "side": 1,
+      "message": "There is no internal CL for this pool addition. arcappcompat.gaiaPoolDefault. arcappcompat.gaiaPoolDefault is added with this CL and it is available in the following file paths, src/chromiumos/tast/local/bundles/cros/arcappcompat/pre/pre.go and src/chromiumos/tast/local/arc/pre.go",
+      "parentUuid": "1ee629fc_ececaf6f",
+      "revId": "2dfa7e379c8941dc445d34a8f028268b9c6196e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
