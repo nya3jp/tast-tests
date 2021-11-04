@@ -16,6 +16,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/firmware"
 	"chromiumos/tast/local/input"
 	fwpb "chromiumos/tast/services/cros/firmware"
@@ -32,7 +33,8 @@ func init() {
 
 // UtilsService implements tast.cros.firmware.UtilsService.
 type UtilsService struct {
-	s *testing.ServiceState
+	s  *testing.ServiceState
+	cr *chrome.Chrome
 }
 
 // BlockingSync syncs the root device and internal device.
@@ -151,4 +153,26 @@ func (us *UtilsService) FindPhysicalKeyboard(ctx context.Context, req *empty.Emp
 	} else {
 		return &fwpb.FindPhysicalKeyboardResponse{Path: path}, nil
 	}
+}
+
+func (us *UtilsService) NewChrome(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if us.cr != nil {
+		return nil, errors.New("Chrome already available")
+	}
+
+	cr, err := chrome.New(ctx)
+	if err != nil {
+		return nil, err
+	}
+	us.cr = cr
+	return &empty.Empty{}, nil
+}
+
+func (us *UtilsService) CloseChrome(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if us.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+	err := us.cr.Close(ctx)
+	us.cr = nil
+	return &empty.Empty{}, err
 }
