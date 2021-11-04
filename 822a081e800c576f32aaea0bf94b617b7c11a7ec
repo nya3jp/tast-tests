@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ed00ef_eb3a2185",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-04T20:18:34Z",
+      "side": 1,
+      "message": "Alex, can you take a look at this CL written by Cienet in your area ",
+      "revId": "822a081e800c576f32aaea0bf94b617b7c11a7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
