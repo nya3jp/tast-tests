@@ -33,7 +33,7 @@ func init() {
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBootedWithVideoLogging",
-		Timeout:      4 * time.Minute,
+		Timeout:      12 * time.Minute,
 		Params: []testing.Param{{
 			Name: "h264_192p_i420",
 			Val: video.EncodeTestOptions{
