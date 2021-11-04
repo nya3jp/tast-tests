@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "166df75e_b9702d37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-11-04T08:47:54Z",
+      "side": 1,
+      "message": "Hi Tast owner,\n\nIn https://crrev.com/c/3244366 CL stack, I tried my best to probe CPU model name so I\u0027d like to check this in tast test.\n\nFortunately, this CL pass all CQ. However, this tast test is critical, I\u0027m worried about the CQ coverage. I guess it\u0027s still possible that builder got failure because of this tast test? (For example, there might be some weird platforms that we can\u0027t fetch the CPU model name.)",
+      "revId": "2132288d041d73a61d31ccc0ed94c17604308bd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
