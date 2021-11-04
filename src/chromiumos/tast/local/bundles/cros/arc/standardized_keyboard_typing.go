@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,25 +28,25 @@ func init() {
 			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardTypingTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBootedInClamshellMode",
-			ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
+			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "tablet_mode",
 			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardTypingTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBootedInTabletMode",
-			ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
+			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}, {
 			Name:              "vm",
 			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardTypingTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBootedInClamshellMode",
-			ExtraHardwareDeps: standardizedtestutil.GetClamshellHardwareDeps(),
+			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "vm_tablet_mode",
 			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardTypingTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBootedInTabletMode",
-			ExtraHardwareDeps: standardizedtestutil.GetTabletHardwareDeps(),
+			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}},
 	})
 }
