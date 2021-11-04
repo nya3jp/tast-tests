@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d7711aa_f8735af6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-04T20:17:43Z",
+      "side": 1,
+      "message": "KyleH, this is one of the manual tests that I mentioned that Cienet would be writing for settings. PTAL",
+      "revId": "60395934ed264a75731083ba24376271611f8dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
