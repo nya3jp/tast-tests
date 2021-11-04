@@ -279,6 +279,30 @@
       },
       "revId": "98670c4c2433301cad321df9458125efea275e93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f80b766b_466dc0f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-04T21:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1336fead_b1ca1f5e",
+      "range": {
+        "startLine": 68,
+        "startChar": 68,
+        "endLine": 69,
+        "endChar": 74
+      },
+      "revId": "98670c4c2433301cad321df9458125efea275e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
