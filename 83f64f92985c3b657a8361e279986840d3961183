@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aedb316_4bbcf624",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-11-04T15:49:11Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "83f64f92985c3b657a8361e279986840d3961183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c421462_22d34d00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/thermal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-11-04T15:49:11Z",
+      "side": 1,
+      "message": "ARM, and let\u0027s also update the comment before this line.",
+      "range": {
+        "startLine": 55,
+        "startChar": 50,
+        "endLine": 55,
+        "endChar": 53
+      },
+      "revId": "83f64f92985c3b657a8361e279986840d3961183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
