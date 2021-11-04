@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43ea063f_704efa73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-04T17:43:52Z",
+      "side": 1,
+      "message": "Hi Sammie, could you please help review before I sending the cl to tast-owners@? Thanks",
+      "revId": "fb7a318f76e921f953fc16f1d3f76b6ab6f64d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
