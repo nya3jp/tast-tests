@@ -16,4 +16,9 @@ const (
 	NextStableChrome = "94"
 	// NextStableChromeOS is the next stable OS version.
 	NextStableChromeOS = "14150"
+
+	// CurrentChromeOSLTS is the current Chrome OS LTS version.
+	CurrentChromeOSLTS = "13816"
+	// CurrentChromeOSLTSMinor is the first LTS only minor version.
+	CurrentChromeOSLTSMinor = 91
 )
