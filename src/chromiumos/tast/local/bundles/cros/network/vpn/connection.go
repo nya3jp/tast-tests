@@ -10,7 +10,11 @@ import (
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
+	"io/ioutil"
+	"os"
+	"strconv"
 	"strings"
+	"syscall"
 	"time"
 
 	"chromiumos/tast/common/crypto/certificate"
@@ -158,6 +162,28 @@ func (c *Connection) Start(ctx context.Context) (bool, error) {
 	return connected, nil
 }
 
+// checkPidExists returns if the process with the pid stored in |pidFile| is
+// still running. Returns false if |pidFile| does not exist.
+func checkPidExists(pidFile string) (bool, error) {
+	pidStr, err := ioutil.ReadFile(pidFile)
+	if err != nil && errors.Is(err, os.ErrNotExist) {
+		return false, nil
+	}
+	if err != nil {
+		return false, err
+	}
+	pid, err := strconv.Atoi(strings.TrimRight(string(pidStr), "\n"))
+	if err != nil {
+		return false, err
+	}
+	process, err := os.FindProcess(int(pid))
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to find process: %d", pid)
+	}
+	err = process.Signal(syscall.Signal(0))
+	return err == nil, nil
+}
+
 // Cleanup removes the service from shill, and releases other resources used for
 // the connection.
 func (c *Connection) Cleanup(ctx context.Context) error {
@@ -168,6 +194,26 @@ func (c *Connection) Cleanup(ctx context.Context) error {
 		if err := c.service.Remove(ctx); err != nil {
 			testing.ContextLog(ctx, "Failed to remove service from profile: ", err)
 			lastErr = err
+		}
+	}
+
+	// For an L2TP/IPsec connection, waits until the charon process stopped.
+	// Otherwise the next run of the test may fail if the charon is still
+	// running at that time.
+	switch c.config.Type {
+	case TypeL2TPIPsec, TypeL2TPIPsecStroke, TypeL2TPIPsecSwanctl:
+		testing.ContextLog(ctx, "Waiting for charon exiting")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			isRunning, err := checkPidExists("/run/ipsec/charon.pid")
+			if err != nil {
+				return errors.Wrap(err, "failed to check process by pid file")
+			}
+			if !isRunning {
+				return nil
+			}
+			return errors.New("charon is still running")
+		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+			lastErr = errors.Wrap(err, "failed to wait for charon stopped")
 		}
 	}
 
