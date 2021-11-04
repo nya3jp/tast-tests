@@ -116,10 +116,8 @@ func GetClamshellTests(fn TestFunc) []TestCase {
 	}
 }
 
-// GetClamshellHardwareDeps returns the hardware dependencies all clamshell tests share.
-func GetClamshellHardwareDeps() hwdep.Deps {
-	return hwdep.D(hwdep.SkipOnModel(TabletOnlyModels...))
-}
+// ClamshellHardwareDep returns the hardware dependencies all clamshell tests share.
+var ClamshellHardwareDep = hwdep.SkipOnModel(TabletOnlyModels...)
 
 // GetTabletTests returns the test cases required for tablet devices.
 func GetTabletTests(fn TestFunc) []TestCase {
@@ -129,10 +127,8 @@ func GetTabletTests(fn TestFunc) []TestCase {
 	}
 }
 
-// GetTabletHardwareDeps returns the hardware dependencies all tablet tests share.
-func GetTabletHardwareDeps() hwdep.Deps {
-	return hwdep.D(hwdep.SkipOnModel(ClamshellOnlyModels...))
-}
+// TabletHardwareDep returns the hardware dependencies all tablet tests share.
+var TabletHardwareDep = hwdep.SkipOnModel(TabletOnlyModels...)
 
 // RunTestCases runs the provided test cases and handles cleanup between tests.
 func RunTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, testCases []TestCase) {
