@@ -255,6 +255,30 @@
       },
       "revId": "98670c4c2433301cad321df9458125efea275e93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1336fead_b1ca1f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-11-04T20:37:52Z",
+      "side": 1,
+      "message": "Ah, if not being logged in covers this, then that should be fine.",
+      "parentUuid": "88356602_7a7aced1",
+      "range": {
+        "startLine": 68,
+        "startChar": 68,
+        "endLine": 69,
+        "endChar": 74
+      },
+      "revId": "98670c4c2433301cad321df9458125efea275e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
