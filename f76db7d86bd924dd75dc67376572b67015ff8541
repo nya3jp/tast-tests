@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d77555f2_e1d9f3ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-11-04T21:01:32Z",
+      "side": 1,
+      "message": "lgtm % test teams input. ",
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b93d5101_384d637a",
