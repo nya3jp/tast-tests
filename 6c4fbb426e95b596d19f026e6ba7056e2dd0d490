@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8cb7fe7_94f5f9f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-04T23:48:21Z",
+      "side": 1,
+      "message": "About 1MB for a 10 second video. I\u0027ve changed it to only save on error.",
+      "parentUuid": "685b865a_5a908883",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 71
+      },
+      "revId": "6c4fbb426e95b596d19f026e6ba7056e2dd0d490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bf42715_23e25af0",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4985669_3db799cf",
+        "filename": "src/chromiumos/tast/common/android/adb/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-04T23:48:21Z",
+      "side": 1,
+      "message": "No good signal for Android, and not quite sure what the right filesystem check would be to see that it\u0027s finished writing. I\u0027ve ran it a bunch and it seems OK though.",
+      "parentUuid": "6bf42715_23e25af0",
+      "range": {
+        "startLine": 583,
+        "startChar": 2,
+        "endLine": 583,
+        "endChar": 33
+      },
+      "revId": "6c4fbb426e95b596d19f026e6ba7056e2dd0d490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0366d89d_a92d5a15",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-04T00:46:33Z",
       "side": 1,
       "message": "saveAndroidScreenRecording ?",
+      "range": {
+        "startLine": 295,
+        "startChar": 3,
+        "endLine": 295,
+        "endChar": 22
+      },
+      "revId": "6c4fbb426e95b596d19f026e6ba7056e2dd0d490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f1c34cd_edf9b5b0",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-04T23:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0366d89d_a92d5a15",
       "range": {
         "startLine": 295,
         "startChar": 3,
