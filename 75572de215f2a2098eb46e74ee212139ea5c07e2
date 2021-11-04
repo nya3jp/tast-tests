@@ -16,6 +16,23 @@
       "message": "gwsq is having some issues (b/205050529). Retrying...",
       "revId": "75572de215f2a2098eb46e74ee212139ea5c07e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b3e1eb4_ee8cdf4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-04T09:15:34Z",
+      "side": 1,
+      "message": "gwsq not working, let me workaround by manual randomization (random.choice(...) in Python).\n",
+      "revId": "75572de215f2a2098eb46e74ee212139ea5c07e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
