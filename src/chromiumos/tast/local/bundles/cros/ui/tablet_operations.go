@@ -224,7 +224,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		}
 		ui := uiauto.New(tconn)
 		// Tap the chrome icon in the app-list to re-activate the browser window.
-		button := nodewith.ClassName("AppListItemView").NameRegex(regexp.MustCompile("(Chrome|Chromium)"))
+		button := nodewith.ClassName("AppListItemView").NameRegex(regexp.MustCompile("^(Chrome|Chromium)$"))
 		if err := ui.WaitUntilExists(button)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find the Chrome icon")
 		}
