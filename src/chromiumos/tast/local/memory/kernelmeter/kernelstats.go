@@ -86,14 +86,10 @@ func ZramStats(ctx context.Context) (*ZramStatsData, error) {
 	}, nil
 }
 
-// VMStats returns /proc/vmstat values in a map. /proc/vmstat numbers are in unsigned long long.
-func VMStats() (map[string]uint64, error) {
+// ParseVMStats converts the contents of a /proc/vmstat file to a map.
+func ParseVMStats(vmstat string) (map[string]uint64, error) {
 	result := make(map[string]uint64)
-	b, err := ioutil.ReadFile("/proc/vmstat")
-	if err != nil {
-		return nil, errors.Wrap(err, "cannot read /proc/vmstat")
-	}
-	for _, line := range strings.Split(strings.TrimSuffix(string(b), "\n"), "\n") {
+	for _, line := range strings.Split(strings.TrimSuffix(vmstat, "\n"), "\n") {
 		nameValue := strings.Split(line, " ")
 		if len(nameValue) != 2 {
 			return nil, errors.Errorf("unexpected vmstat line %q", line)
@@ -107,4 +103,13 @@ func VMStats() (map[string]uint64, error) {
 		result[name] = count
 	}
 	return result, nil
+}
+
+// VMStats returns /proc/vmstat values in a map. /proc/vmstat numbers are in unsigned long long.
+func VMStats() (map[string]uint64, error) {
+	b, err := ioutil.ReadFile("/proc/vmstat")
+	if err != nil {
+		return nil, errors.Wrap(err, "cannot read /proc/vmstat")
+	}
+	return ParseVMStats(string(b))
 }

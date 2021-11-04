@@ -144,6 +144,14 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, arc *arc.ARC, p 
 	if err := memory.PSIMetrics(ctx, arc, psiprevstats, p, outdir, suffix); err != nil {
 		return errors.Wrap(err, "failed to collect PSI stats metrics")
 	}
+	if arc != nil {
+		if err := memoryarc.VMStatMetrics(ctx, arc, p, outdir, suffix); err != nil {
+			return errors.Wrap(err, "failed to collect ARC vmstat metrics")
+		}
+	}
+	if err := memory.ChromeOSAvailableMetrics(ctx, p, suffix); err != nil {
+		return errors.Wrap(err, "failed to collect ChromeOS available metrics")
+	}
 
 	if base != nil {
 		base.lateststate = basecopy
@@ -157,10 +165,6 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, arc *arc.ARC, p 
 
 	if err := memory.CrosvmFincoreMetrics(ctx, p, outdir, suffix); err != nil {
 		return errors.Wrap(err, "failed to collect crosvm fincore metrics")
-	}
-
-	if err := memory.ChromeOSAvailableMetrics(ctx, p, suffix); err != nil {
-		return errors.Wrap(err, "failed to collect ChromeOS available metrics")
 	}
 
 	if arc != nil {
