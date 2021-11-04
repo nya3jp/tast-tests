@@ -16,6 +16,29 @@
       "message": "Alex, can you take a look at this CL written by Cienet in your area ",
       "revId": "822a081e800c576f32aaea0bf94b617b7c11a7ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a523c5e_8186557e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/basic_layout.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1189880
+      },
+      "writtenOn": "2021-11-04T21:04:13Z",
+      "side": 1,
+      "message": "here and other Contacts for status area / quick settings. Please add \"cros-status-area-eng@google.com\"",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "822a081e800c576f32aaea0bf94b617b7c11a7ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
