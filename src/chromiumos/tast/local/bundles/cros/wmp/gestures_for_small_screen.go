@@ -94,7 +94,7 @@ func GesturesForSmallScreen(ctx context.Context, s *testing.State) {
 
 	hotseat := nodewith.ClassName("HotseatWidget")
 	appList := nodewith.ClassName("AppList")
-	overviewModeLabel := nodewith.ClassName("OverviewModeLabel")
+	dropTargetView := nodewith.ClassName("DropTargetView")
 
 	// Swipe up from shelf to open overview.
 	if err := uiauto.Combine(
@@ -104,15 +104,21 @@ func GesturesForSmallScreen(ctx context.Context, s *testing.State) {
 			tc.SwipeTo(shelfCenterPt.Sub(bigSwipeOffset),
 				time.Second),
 			tc.Hold(time.Second)),
-		ac.WithTimeout(uiTimeout).WaitUntilExists(overviewModeLabel),
+		ac.WithTimeout(uiTimeout).WaitUntilExists(dropTargetView),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open overview: ", err)
+	}
+
+	// Wait for the window to finish animating before activating.
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, ws[0].ID); err != nil {
+		s.Fatal("Failed to wait for the window animation: ", err)
 	}
 
 	// Activate chrome window and exit from overview.
 	if err := ws[0].ActivateWindow(ctx, tconn); err != nil {
 		s.Fatal("Failed to activate chrome window: ", err)
 	}
+
 	// Swipe up from shelf to open hotseat and home screen.
 	if err := uiauto.Combine(
 		"open hotseat and home screen",
@@ -134,10 +140,17 @@ func GesturesForSmallScreen(ctx context.Context, s *testing.State) {
 
 	leftCenterPt := info.WorkArea.LeftCenter().Add(coords.NewPoint(1, 0))
 	rightSwipeOffset := coords.NewPoint(width/4, 0)
+
+	// Wait for the window to finish animating before activating.
+	if err := ash.WaitWindowFinishAnimating(ctx, tconn, ws[0].ID); err != nil {
+		s.Fatal("Failed to wait for the window animation: ", err)
+	}
+
 	// Activate chrome window.
 	if err := ws[0].ActivateWindow(ctx, tconn); err != nil {
 		s.Fatal("Failed to activate chrome window: ", err)
 	}
+
 	// Swipe from left edge to the right, to trigger the back gesture.
 	if err := uiauto.Combine(
 		"go back to the home screen",
