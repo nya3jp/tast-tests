@@ -20,7 +20,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/crossdevice/phonehub"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/testing"
 )
@@ -103,6 +105,8 @@ func init() {
 type crossdeviceFixture struct {
 	opts                              []chrome.Option
 	cr                                *chrome.Chrome
+	tconn                             *chrome.TestConn
+	kb                                *input.KeyboardEventWriter
 	androidDevice                     *AndroidDevice
 	androidAttributes                 *AndroidAttributes
 	crosAttributes                    *CrosAttributes
@@ -185,6 +189,7 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
+	f.tconn = tconn
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "fixture")
 
 	// Capture btsnoop logs during fixture setup to have adequate logging during the onboarding phase.
@@ -289,6 +294,18 @@ func (f *crossdeviceFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 		s.Fatal("Failed to clear logcat: ", err)
 	}
 
+	if f.kb == nil {
+		// Use virtual keyboard since uiauto.StartRecordFromKB assumes F5 is the overview key.
+		kb, err := input.VirtualKeyboard(ctx)
+		if err != nil {
+			s.Fatal("Failed to setup keyboard for screen recording: ", err)
+		}
+		f.kb = kb
+	}
+	if err := uiauto.StartRecordFromKB(ctx, f.tconn, f.kb); err != nil {
+		s.Fatal("Failed to start screen recording on CrOS: ", err)
+	}
+
 	saveScreen, err := f.androidDevice.StartScreenRecording(s.TestContext(), "android-screen", s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start screen recording on Android: ", err)
@@ -318,6 +335,19 @@ func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 		s.Fatal("Failed to save Android screen recording: ", err)
 	}
 	f.saveAndroidScreenRecordingOnError = nil
+
+	ui := uiauto.New(f.tconn)
+	var crosRecordErr error
+	if err := ui.Exists(uiauto.ScreenRecordStopButton); err != nil {
+		// Smart Lock tests automatically stop the screen recording when they lock the screen.
+		// The screen recording should still exist though.
+		crosRecordErr = uiauto.SaveRecordFromKBOnError(ctx, f.tconn, s.HasError, s.OutDir())
+	} else {
+		crosRecordErr = uiauto.StopRecordFromKBAndSaveOnError(ctx, f.tconn, s.HasError, s.OutDir())
+	}
+	if crosRecordErr != nil {
+		s.Fatal("Failed to save CrOS screen recording: ", crosRecordErr)
+	}
 }
 
 // saveDeviceAttributes saves the CrOS and Android device attributes as a formatted JSON at the specified filepath.
