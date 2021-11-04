@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de60939f_e1a829f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2021-11-04T17:32:08Z",
+      "side": 1,
+      "message": "Modified so the flags are only enabled for background scanning tests",
+      "parentUuid": "3ae67632_2bbb8046",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efa79663_993df907",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-11-03T23:16:37Z",
       "side": 1,
       "message": "LGTM % nit/question",
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30f2dfba_9dee18ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2021-11-04T17:32:08Z",
+      "side": 1,
+      "message": "Excluded unsupported boards manually. Will try to think of a better way to do this.",
+      "parentUuid": "efa79663_993df907",
       "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -95,6 +137,30 @@
       "side": 1,
       "message": "Since background scanning changes the notifications, can we verify that this doesn\u0027t break the existing tests too",
       "parentUuid": "9df9e768_3a1b2ee0",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 59
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01fd32d4_f9703954",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2021-11-04T17:32:08Z",
+      "side": 1,
+      "message": "Added guards to only enable for the background scanning test.",
+      "parentUuid": "3315d023_c833fea5",
       "range": {
         "startLine": 65,
         "startChar": 2,
@@ -151,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32c56974_a910398f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2021-11-04T17:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f871462d_b44bb8b5",
+      "range": {
+        "startLine": 335,
+        "startChar": 87,
+        "endLine": 335,
+        "endChar": 119
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97122bea_f9d0082a",
@@ -164,6 +254,30 @@
       "writtenOn": "2021-10-08T21:18:44Z",
       "side": 1,
       "message": "nit: surround with quotes",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95cf7a7b_5228dd5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_background_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2021-11-04T17:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97122bea_f9d0082a",
       "range": {
         "startLine": 27,
         "startChar": 21,
@@ -191,6 +305,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a33b576_9fe11389",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_background_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2021-11-04T17:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd9cfdbb_f2484ff9",
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa2f5898_be73f986",
@@ -208,6 +340,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "469bae85_c8cacb78",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2021-11-04T17:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa2f5898_be73f986",
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0736499_17ae133b",
@@ -221,6 +371,30 @@
       "writtenOn": "2021-10-08T21:18:44Z",
       "side": 1,
       "message": "you can delete this comment too",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 159
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81eee4d0_6dbaa960",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2021-11-04T17:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0736499_17ae133b",
       "range": {
         "startLine": 81,
         "startChar": 1,
@@ -254,6 +428,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe9230b3_ef6c4b19",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/login_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2021-11-04T17:32:08Z",
+      "side": 1,
+      "message": "Changed to only enable for background scanning test.",
+      "parentUuid": "92877343_41627033",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f7fdc5e_150c8f3a",
@@ -277,6 +475,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d52cdc43_1f78a2a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_to_cros_background_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2021-11-04T17:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f7fdc5e_150c8f3a",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "411954d7_40bd0670",
@@ -290,6 +512,24 @@
       "writtenOn": "2021-10-08T21:18:44Z",
       "side": 1,
       "message": "Add a comment describing what this one does",
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48df8286_1830fd3e",
+        "filename": "src/chromiumos/tast/services/cros/nearbyservice/nearby_share_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2021-11-04T17:32:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "411954d7_40bd0670",
       "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
