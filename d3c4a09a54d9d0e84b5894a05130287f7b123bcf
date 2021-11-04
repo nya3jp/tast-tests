@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99d8c2ed_b6a29fde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-11-04T06:39:25Z",
+      "side": 1,
+      "message": "So it turns out the virtio balloon size is already exposed in /proc/vmstat, so it\u0027s really simple to make a metric.",
+      "revId": "d3c4a09a54d9d0e84b5894a05130287f7b123bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
