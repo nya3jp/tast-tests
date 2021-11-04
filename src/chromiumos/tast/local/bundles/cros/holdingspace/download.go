@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/holdingspace"
 	"chromiumos/tast/testing"
@@ -79,6 +80,9 @@ func Download(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.SaveScreenshotOnError(ctx, cr, s.OutDir(), s.HasError)
+
 	// Ensure the tray does not exist prior adding anything to holding space.
 	ui := uiauto.New(tconn)
 	err = ui.EnsureGoneFor(holdingspace.FindTray(), 5*time.Second)(ctx)
@@ -121,7 +125,7 @@ func Download(ctx context.Context, s *testing.State) {
 
 	// Ensure all holding space chips associated with the underlying download are
 	// removed when the backing file is removed.
-	if err := ui.WaitUntilGone(holdingspace.FindChip(filename))(ctx); err != nil {
+	if err := ui.WaitUntilGone(holdingspace.FindChip().Name(filename))(ctx); err != nil {
 		s.Error("Chip exists: ", err)
 	}
 }
@@ -129,18 +133,18 @@ func Download(ctx context.Context, s *testing.State) {
 // testCancel performs testing of cancelling a download.
 func testCancel(
 	ctx context.Context, s *testing.State, ui *uiauto.Context, filename string) {
-	if err := uiauto.Combine("Test cancel",
+	if err := uiauto.Combine("test cancel",
 		// Right click the download chip to show the context menu. Note that the
 		// download chip is currently bound to an in-progress download.
-		ui.RightClick(holdingspace.FindDownloadChip("Downloading "+filename)),
+		ui.RightClick(holdingspace.FindDownloadChip().Name("Downloading "+filename)),
 
 		// Left click the "Cancel" context menu item. Note that this will result in
 		// the underlying download being cancelled and the context menu being
 		// closed.
-		ui.LeftClick(holdingspace.FindContextMenuItem("Cancel")),
+		ui.LeftClick(holdingspace.FindContextMenuItem().Name("Cancel")),
 
 		// Ensure the download chip is removed with its backing file.
-		ui.WaitUntilGone(holdingspace.FindDownloadChip(filename)))(ctx); err != nil {
+		ui.WaitUntilGone(holdingspace.FindDownloadChip().Name(filename)))(ctx); err != nil {
 		s.Error("Failed to test cancel: ", err)
 	}
 }
@@ -148,25 +152,25 @@ func testCancel(
 // testPauseAndResume performs testing of pausing and resuming a download.
 func testPauseAndResume(
 	ctx context.Context, s *testing.State, ui *uiauto.Context, filename string) {
-	if err := uiauto.Combine("Test pause and resume",
+	if err := uiauto.Combine("test pause and resume",
 		// Right click the download chip to show the context menu. Note that the
 		// download chip is currently bound to an in-progress download.
-		ui.RightClick(holdingspace.FindDownloadChip("Downloading "+filename)),
+		ui.RightClick(holdingspace.FindDownloadChip().Name("Downloading "+filename)),
 
 		// Left click the "Pause" context menu item. Note that this will result in
 		// the underlying download being paused and the context menu being closed.
-		ui.LeftClick(holdingspace.FindContextMenuItem("Pause")),
+		ui.LeftClick(holdingspace.FindContextMenuItem().Name("Pause")),
 
 		// Right click the download chip to show the context menu. Note that the
 		// download chip is currently bound to a paused download.
-		ui.RightClick(holdingspace.FindDownloadChip("Download paused "+filename)),
+		ui.RightClick(holdingspace.FindDownloadChip().Name("Download paused "+filename)),
 
 		// Left click the "Resume" context menu item. Note that this will result in
 		// the underlying download being resumed and the context menu being closed.
-		ui.LeftClick(holdingspace.FindContextMenuItem("Resume")),
+		ui.LeftClick(holdingspace.FindContextMenuItem().Name("Resume")),
 
 		// Wait for the download to complete.
-		ui.WaitUntilExists(holdingspace.FindDownloadChip(filename)))(ctx); err != nil {
+		ui.WaitUntilExists(holdingspace.FindDownloadChip().Name(filename)))(ctx); err != nil {
 		s.Error("Failed to test pause and resume: ", err)
 	}
 }
@@ -174,18 +178,18 @@ func testPauseAndResume(
 // testPin performs testing of pinning a download.
 func testPin(
 	ctx context.Context, s *testing.State, ui *uiauto.Context, filename string) {
-	if err := uiauto.Combine("Testing pin",
+	if err := uiauto.Combine("test pin",
 		// Right click the download chip to show the context menu. Note that this
 		// will wait until the underlying download has completed.
-		ui.RightClick(holdingspace.FindDownloadChip(filename)),
+		ui.RightClick(holdingspace.FindDownloadChip().Name(filename)),
 
 		// Left click the "Pin" context menu item. Note that this will result in
 		// a pinned holding space item being created for the underlying download and
 		// the context menu being closed.
-		ui.LeftClick(holdingspace.FindContextMenuItem("Pin")),
+		ui.LeftClick(holdingspace.FindContextMenuItem().Name("Pin")),
 
 		// Ensure the pinned file chip is created.
-		ui.WaitUntilExists(holdingspace.FindPinnedFileChip(filename)))(ctx); err != nil {
+		ui.WaitUntilExists(holdingspace.FindPinnedFileChip().Name(filename)))(ctx); err != nil {
 		s.Error("Failed to test pin: ", err)
 	}
 }

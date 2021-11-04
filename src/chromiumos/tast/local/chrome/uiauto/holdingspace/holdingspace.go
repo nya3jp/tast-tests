@@ -8,35 +8,48 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
 
-// FindChip returns a finder which locates a holding space chip node with the
-// specified name.
-func FindChip(name string) *nodewith.Finder {
-	return nodewith.ClassName("HoldingSpaceItemChipView").Name(name)
+// Class names.
+const downloadsSectionClassName = "DownloadsSection"
+const holdingSpaceItemChipViewClassName = "HoldingSpaceItemChipView"
+const holdingSpaceItemScreenCaptureViewClassName = "HoldingSpaceItemScreenCaptureView"
+const holdingSpaceTrayClassName = "HoldingSpaceTray"
+const menuItemViewClassName = "MenuItemView"
+const pinnedFilesSectionClassName = "PinnedFilesSection"
+const screenCapturesSectionClassName = "ScreenCapturesSection"
+
+// FindChip returns a finder which locates a holding space chip node.
+func FindChip() *nodewith.Finder {
+	return nodewith.ClassName(holdingSpaceItemChipViewClassName)
 }
 
 // FindContextMenuItem returns a finder which locates a holding space context
-// menu item node with the specified name.
-func FindContextMenuItem(name string) *nodewith.Finder {
-	return nodewith.ClassName("MenuItemView").Name(name)
+// menu item node.
+func FindContextMenuItem() *nodewith.Finder {
+	return nodewith.ClassName(menuItemViewClassName)
 }
 
 // FindDownloadChip returns a finder which locates a holding space download chip
-// node with the specified name.
-func FindDownloadChip(name string) *nodewith.Finder {
-	return nodewith.Ancestor(nodewith.ClassName("DownloadsSection")).
-		ClassName("HoldingSpaceItemChipView").
-		Name(name)
+// node.
+func FindDownloadChip() *nodewith.Finder {
+	return nodewith.Ancestor(nodewith.ClassName(downloadsSectionClassName)).
+		ClassName(holdingSpaceItemChipViewClassName)
 }
 
 // FindPinnedFileChip returns a finder which locates a holding space pinned file
-// chip node with the specified name.
-func FindPinnedFileChip(name string) *nodewith.Finder {
-	return nodewith.Ancestor(nodewith.ClassName("PinnedFilesSection")).
-		ClassName("HoldingSpaceItemChipView").
-		Name(name)
+// chip node.
+func FindPinnedFileChip() *nodewith.Finder {
+	return nodewith.Ancestor(nodewith.ClassName(pinnedFilesSectionClassName)).
+		ClassName(holdingSpaceItemChipViewClassName)
+}
+
+// FindScreenCaptureView returns a finder which locates a holding space screen
+// capture view node.
+func FindScreenCaptureView() *nodewith.Finder {
+	return nodewith.Ancestor(nodewith.ClassName(screenCapturesSectionClassName)).
+		ClassName(holdingSpaceItemScreenCaptureViewClassName)
 }
 
 // FindTray returns a finder which locates the holding space tray node.
 func FindTray() *nodewith.Finder {
-	return nodewith.ClassName("HoldingSpaceTray")
+	return nodewith.ClassName(holdingSpaceTrayClassName)
 }
