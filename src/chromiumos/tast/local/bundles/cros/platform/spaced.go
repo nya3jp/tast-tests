@@ -29,7 +29,7 @@ func init() {
 }
 
 // sysfsRootDeviceSize fetches the root device size from /sys/block/<dev>/size.
-func sysfsRootDeviceSize(ctx context.Context) (uint64, error) {
+func sysfsRootDeviceSize(ctx context.Context) (int64, error) {
 	// Check actual root device size.
 	rootdev, err := firmware.RootDevice(ctx)
 	if err != nil {
@@ -41,9 +41,9 @@ func sysfsRootDeviceSize(ctx context.Context) (uint64, error) {
 	if err != nil {
 		return 0, errors.Wrapf(err, "reading filepath %s", fp)
 	}
-	size, err := strconv.ParseUint(strings.TrimSpace(string(content)), 10, 64)
+	size, err := strconv.ParseInt(strings.TrimSpace(string(content)), 10, 64)
 	if err != nil {
-		return 0, errors.Wrap(err, "failed to parse root device size as uint64")
+		return 0, errors.Wrap(err, "failed to parse root device size as int64")
 	}
 
 	// Size is in sectors; return in bytes.
@@ -51,23 +51,23 @@ func sysfsRootDeviceSize(ctx context.Context) (uint64, error) {
 }
 
 // statFreeDiskSpace gets the free space on the filesystem using statfs().
-func statFreeDiskSpace(ctx context.Context, path string) (uint64, error) {
+func statFreeDiskSpace(ctx context.Context, path string) (int64, error) {
 	var stat syscall.Statfs_t
 	if err := syscall.Statfs(path, &stat); err != nil {
 		return 0, errors.Wrapf(err, "failed to get disk stats for %s", path)
 	}
 
-	return stat.Bavail * uint64(stat.Bsize), nil
+	return int64(stat.Bavail) * stat.Bsize, nil
 }
 
 // statTotalDiskSpace gets the total space on the filesystem using statfs().
-func statTotalDiskSpace(ctx context.Context, path string) (uint64, error) {
+func statTotalDiskSpace(ctx context.Context, path string) (int64, error) {
 	var stat syscall.Statfs_t
 	if err := syscall.Statfs(path, &stat); err != nil {
 		return 0, errors.Wrapf(err, "failed to get disk stats for %s", path)
 	}
 
-	return stat.Blocks * uint64(stat.Bsize), nil
+	return int64(stat.Blocks) * stat.Bsize, nil
 }
 
 func Spaced(ctx context.Context, s *testing.State) {
