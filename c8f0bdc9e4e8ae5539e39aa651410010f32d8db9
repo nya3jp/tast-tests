@@ -39,6 +39,30 @@
       },
       "revId": "c8f0bdc9e4e8ae5539e39aa651410010f32d8db9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "419d3d6f_98f178c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/smart_selection_chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1175549
+      },
+      "writtenOn": "2021-11-04T05:17:11Z",
+      "side": 1,
+      "message": "I\u0027d like to fix this, but I\u0027m still learning the very basics of go, wdyt of the new version?",
+      "parentUuid": "4dee4dcf_2052b630",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "c8f0bdc9e4e8ae5539e39aa651410010f32d8db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
