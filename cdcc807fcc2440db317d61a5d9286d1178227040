@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5229c3d_7bcb0d05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-04T05:19:42Z",
+      "side": 1,
+      "message": "Any concerns regarding the promotion of this test to critical? It\u0027s the most stable one and I\u0027d like to be make sure I understand the process/get it running so I can make adjustments to the others before promoting them.",
+      "revId": "cdcc807fcc2440db317d61a5d9286d1178227040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
