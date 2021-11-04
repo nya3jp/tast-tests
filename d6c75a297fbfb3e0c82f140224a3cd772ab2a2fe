@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cb69f9d_d9644e1d",
+        "filename": "src/chromiumos/tast/local/benchmark/benchmark.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-04T10:26:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5bcd254c_aad05750",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "d6c75a297fbfb3e0c82f140224a3cd772ab2a2fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0be33d76_a66dd38a",
@@ -144,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d5d1c2a_b6e78e6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_processor_benchmark.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-04T10:26:43Z",
+      "side": 1,
+      "message": "Thanks. I saw the build update too.\n\nThen, to close that let\u0027s add it as a software dependency.",
+      "parentUuid": "af3d7a4a_8810e3bb",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 42
+      },
+      "revId": "d6c75a297fbfb3e0c82f140224a3cd772ab2a2fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd4dbb30_4b362bb8",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_processor_benchmark.go",
         "patchSetId": 5
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "The names can be different in different benchmark implementations. The format of the name is like: BM_\u003cbenchmark_function_name\u003e/\u003cbenchmark_arg1\u003e/\u003cbenchmark_arg2\u003e/.../. In our case here the args happens to correspond to the buffer size, so we can format it as \u003cwidth\u003ex\u003cheight\u003e. Other benchmarks may have different args and they\u0027d want to format the metrics names differently.\n\nAlso in this benchmark we\u0027re interested in the CpuTime and RealTime only. Other benchmark can have other output that they want to write into the perf values.",
       "parentUuid": "bd4dbb30_4b362bb8",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "d6c75a297fbfb3e0c82f140224a3cd772ab2a2fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53aa94e4_78d6218d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_processor_benchmark.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-04T10:26:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6bed3338_5c7e3102",
       "range": {
         "startLine": 46,
         "startChar": 0,
