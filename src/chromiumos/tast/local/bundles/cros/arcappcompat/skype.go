@@ -107,7 +107,7 @@ func init() {
 func Skype(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.skype.raider"
-		appActivity = "com.skype4life.MainActivity"
+		appActivity = ".Main"
 	)
 	testSet := s.Param().(testutil.TestParams)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
@@ -141,9 +141,9 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	}
 
 	// Click on sign in button.
-	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(signInOrCreateDes))
+	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+signInText))
 	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("signInButton doesn't exists: ", err)
+		s.Fatal("signInButton doesn't exists: ", err)
 	}
 
 	// Press KEYCODE_TAB until login button is focused.
