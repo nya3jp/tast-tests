@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "203488de_e495d264",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-04T09:18:01Z",
+      "side": 1,
+      "message": "gwsq is having troubles (b/205050529), let me reassign with manual randomization (random.choice(...) in Python).\n",
+      "revId": "f860a1cbad446ae1cebbb6ccd2ac8458a2b9c380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
