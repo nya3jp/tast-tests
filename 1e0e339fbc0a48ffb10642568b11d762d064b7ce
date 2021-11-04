@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edcd6166_1182b1f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-11-04T17:23:25Z",
+      "side": 1,
+      "message": "Chumping the CL, most are passed. The failed ones are because of no available DUT.",
+      "revId": "1e0e339fbc0a48ffb10642568b11d762d064b7ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
