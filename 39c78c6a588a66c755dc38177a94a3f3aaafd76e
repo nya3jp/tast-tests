@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9879f60_065d20ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-04T01:07:21Z",
+      "side": 1,
+      "message": "This CL is solely to fix an old issue in tast.ProbeReqFormat.\nDot11FCS is always correct due to gopacket and Gale\u0027s expected behaviors. I am not sure if this behavior still the same after we moved to new testing setup.\nAnd future work of adding RadioTap layer check into Dot11FCSValid() may have impacts on current test suites. Open discussions are welcomed.",
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
