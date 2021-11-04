@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5b88dd2_32e4d140",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/zero_state_desks_bar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-04T22:26:56Z",
+      "side": 1,
+      "message": "oops, thanks.",
+      "parentUuid": "9e3029ad_0d01eb04",
+      "range": {
+        "startLine": 40,
+        "startChar": 37,
+        "endLine": 40,
+        "endChar": 39
+      },
+      "revId": "b5c5cc2a6a3526c0b7bc2b1f44e27b5c7de24c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e32223b9_341eba36",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-04T21:21:22Z",
       "side": 1,
       "message": "huge nit: expanded -\u003e expand\n\nor \"to switch to expanded\"",
+      "range": {
+        "startLine": 76,
+        "startChar": 36,
+        "endLine": 76,
+        "endChar": 44
+      },
+      "revId": "b5c5cc2a6a3526c0b7bc2b1f44e27b5c7de24c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf77f35_74db61bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/zero_state_desks_bar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-04T22:26:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e32223b9_341eba36",
       "range": {
         "startLine": 76,
         "startChar": 36,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72978760_28a9aea5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/zero_state_desks_bar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-04T22:26:56Z",
+      "side": 1,
+      "message": "It works, thanks for the info.",
+      "parentUuid": "5d34219e_d9691f05",
+      "revId": "b5c5cc2a6a3526c0b7bc2b1f44e27b5c7de24c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff7428f8_f58bc9f9",
@@ -98,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b953979_f7354974",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/zero_state_desks_bar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-04T22:26:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff7428f8_f58bc9f9",
+      "revId": "b5c5cc2a6a3526c0b7bc2b1f44e27b5c7de24c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2f1085e_c968dd7e",
@@ -111,6 +195,24 @@
       "writtenOn": "2021-11-04T21:21:22Z",
       "side": 1,
       "message": "is this needed?",
+      "revId": "b5c5cc2a6a3526c0b7bc2b1f44e27b5c7de24c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28bbea5d_02fd856e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/zero_state_desks_bar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-04T22:26:56Z",
+      "side": 1,
+      "message": "Actually not. Removed.",
+      "parentUuid": "d2f1085e_c968dd7e",
       "revId": "b5c5cc2a6a3526c0b7bc2b1f44e27b5c7de24c55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
