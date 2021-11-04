@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/testing"
@@ -37,7 +38,12 @@ const (
 func DocsCUJ(ctx context.Context, s *testing.State) {
 	f := s.FixtValue().(launcher.FixtValue)
 
-	cleanup, err := lacros.SetupPerfTest(ctx, f.TestAPIConn(), "lacros.DocsCUJ")
+	tconn, err := f.Chrome().TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	cleanup, err := lacros.SetupPerfTest(ctx, tconn, "lacros.DocsCUJ")
 	if err != nil {
 		s.Fatal("Failed to set up lacros perf test: ", err)
 	}
@@ -46,7 +52,7 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 	pv := perf.NewValues()
 
 	// Run against ash-chrome.
-	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
+	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, tconn, docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
 		return lacros.SetupCrosTestWithPage(ctx, f, url)
 	}); err != nil {
 		s.Error("Failed to run ash-chrome benchmark: ", err)
@@ -65,7 +71,7 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Run against lacros-chrome.
-	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
+	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, tconn, docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
 		conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, url)
 		return conn, cleanup, err
 	}); err != nil {
@@ -95,6 +101,7 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 // loading large pages.
 func runDocsPageLoad(
 	ctx context.Context,
+	tconn *chrome.TestConn,
 	url string,
 	setup func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error)) (time.Duration, time.Duration, error) {
 	conn, cleanup, err := setup(ctx, chrome.BlankURL)
@@ -103,16 +110,14 @@ func runDocsPageLoad(
 	}
 	defer cleanup(ctx)
 
-	// TODO(https://crbug.com/1263337): atm ash-chrome is opening maximized but lacros
-	// isn't. It's rather important to get this bug fixed to get consistent tests.
-	// w, err := lacros.FindFirstNonBlankWindow(ctx, f.TestAPIConn())
-	// if err != nil {
-	// 	return 0.0, 0.0, err
-	// }
-	//
-	// if err := ash.SetWindowStateAndWait(ctx, f.TestAPIConn(), w.ID, ash.WindowStateMaximized); err != nil {
-	// 	return 0.0, errors.Wrap(err, "Failed to maximize window")
-	// }
+	w, err := lacros.FindFirstBlankWindow(ctx, tconn)
+	if err != nil {
+		return 0.0, 0.0, err
+	}
+
+	if err := ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized); err != nil {
+		return 0.0, 0.0, errors.Wrap(err, "failed to maximize window")
+	}
 
 	start := time.Now()
 
