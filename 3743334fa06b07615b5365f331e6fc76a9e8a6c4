@@ -22,6 +22,29 @@
       },
       "revId": "3743334fa06b07615b5365f331e6fc76a9e8a6c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93872d4b_52e62840",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-04T16:30:59Z",
+      "side": 1,
+      "message": "This function is very widely used, so I feel a little hesitant about increasing its polling interval when it\u0027s unclear if it is the cause of flakiness (especially since this could negatively impact the time needed by other tests by several seconds). I would suggest limiting the scope to the lacros tests if possible, or consider a smaller interval (maybe 300ms like the uiauto default if your concern is UI-related).",
+      "range": {
+        "startLine": 515,
+        "startChar": 5,
+        "endLine": 515,
+        "endChar": 15
+      },
+      "revId": "3743334fa06b07615b5365f331e6fc76a9e8a6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
