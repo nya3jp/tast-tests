@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e040a3c9_83468b2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-04T16:08:46Z",
+      "side": 1,
+      "message": "Friendly ping for Tast owner approval :-)",
+      "revId": "6b0fec74c3df171249ec1ce8c3929cd123ade13c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
