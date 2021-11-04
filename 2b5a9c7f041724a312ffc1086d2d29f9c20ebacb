@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8435fa30_d0561b56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-11-04T18:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdf758bd_9cf2c1f4",
+      "revId": "2b5a9c7f041724a312ffc1086d2d29f9c20ebacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e23052ac_8bbe211f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "627630f4_e8e4f3c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/reporting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-11-04T18:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9df0c621_d755899d",
+      "revId": "2b5a9c7f041724a312ffc1086d2d29f9c20ebacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dbe49b8_ed0c275c",
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de600269_f7f335f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/reporting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-11-04T18:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dbe49b8_ed0c275c",
+      "revId": "2b5a9c7f041724a312ffc1086d2d29f9c20ebacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9a74cc3_db2a27e3",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-11-04T08:32:05Z",
       "side": 1,
       "message": "Remove",
+      "revId": "2b5a9c7f041724a312ffc1086d2d29f9c20ebacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb8d5e5_dedcda7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/reporting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-11-04T18:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9a74cc3_db2a27e3",
       "revId": "2b5a9c7f041724a312ffc1086d2d29f9c20ebacb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +181,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c996fddf_e9351d5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/reporting_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-11-04T18:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e01a0daf_b5a6a8ba",
+      "range": {
+        "startLine": 182,
+        "startChar": 11,
+        "endLine": 182,
+        "endChar": 13
+      },
+      "revId": "2b5a9c7f041724a312ffc1086d2d29f9c20ebacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b37784b9_4c4af35d",
@@ -126,6 +222,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "472e16e2_a8eba147",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_reporting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-11-04T18:17:49Z",
+      "side": 1,
+      "message": "Yes, cros-reporting-team@, added.",
+      "parentUuid": "b37784b9_4c4af35d",
+      "revId": "2b5a9c7f041724a312ffc1086d2d29f9c20ebacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8145a9fd_0b4f76f5",
@@ -139,6 +253,24 @@
       "writtenOn": "2021-11-04T08:32:05Z",
       "side": 1,
       "message": "Are more testcases planned?",
+      "revId": "2b5a9c7f041724a312ffc1086d2d29f9c20ebacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cb0c0e3_fc94d77d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_reporting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-11-04T18:17:49Z",
+      "side": 1,
+      "message": "At this point I\u0027m not sure. They definitely wanted one test to make sure the end2end flow works. There might be a couple more but for the majority of tests they want to implement some integration tests, not e2e.",
+      "parentUuid": "8145a9fd_0b4f76f5",
       "revId": "2b5a9c7f041724a312ffc1086d2d29f9c20ebacb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -179,6 +311,54 @@
       "writtenOn": "2021-11-04T08:32:05Z",
       "side": 1,
       "message": "Error",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 9
+      },
+      "revId": "2b5a9c7f041724a312ffc1086d2d29f9c20ebacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab7a34d_6ddb49a7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_reporting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-11-04T18:17:49Z",
+      "side": 1,
+      "message": "That\u0027s being done in GAIAEnrollUsingChromeAndCollectReporting, in validateEventReception.",
+      "parentUuid": "8809d088_c9a748f7",
+      "range": {
+        "startLine": 99,
+        "startChar": 21,
+        "endLine": 99,
+        "endChar": 40
+      },
+      "revId": "2b5a9c7f041724a312ffc1086d2d29f9c20ebacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4ca584d_d0e7799f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_reporting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-11-04T18:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26607ac2_6fab791a",
       "range": {
         "startLine": 99,
         "startChar": 4,
