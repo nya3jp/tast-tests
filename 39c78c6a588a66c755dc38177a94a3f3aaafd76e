@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded02b41_93883f38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-04T15:02:56Z",
+      "side": 1,
+      "message": "IIRC the test was flaky, not always failing. Did you test address that?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c9879f60_065d20ca",
@@ -14,6 +37,52 @@
       "writtenOn": "2021-11-04T01:07:21Z",
       "side": 1,
       "message": "This CL is solely to fix an old issue in tast.ProbeReqFormat.\nDot11FCS is always correct due to gopacket and Gale\u0027s expected behaviors. I am not sure if this behavior still the same after we moved to new testing setup.\nAnd future work of adding RadioTap layer check into Dot11FCSValid() may have impacts on current test suites. Open discussions are welcomed.",
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0473b2b7_67f91320",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/probe_req_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-04T15:02:56Z",
+      "side": 1,
+      "message": "Any reason you\u0027re not using this filter for other tests that also rely on parsing the pcap?",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 26
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d095a3a2_0de63957",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-04T15:02:56Z",
+      "side": 1,
+      "message": "That TODO is not necessarily very actionable, see recommendations at go/tott/486\n\nCan you discuss this now? The discussion can happen in the linked bug, and the comment here would summarize the outcome of the discussion",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 77
+      },
       "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
