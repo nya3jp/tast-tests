@@ -41,8 +41,8 @@ func (c *Client) call(ctx context.Context, method string, args ...interface{}) *
 }
 
 // FreeDiskSpace fetches the free space available for a given path.
-func (c *Client) FreeDiskSpace(ctx context.Context, path string) (uint64, error) {
-	var result uint64
+func (c *Client) FreeDiskSpace(ctx context.Context, path string) (int64, error) {
+	var result int64
 	if err := c.call(ctx, "GetFreeDiskSpace", path).Store(&result); err != nil {
 		return 0, errors.Wrap(err, "failed to call method GetFreeDiskSpace")
 	}
@@ -50,8 +50,8 @@ func (c *Client) FreeDiskSpace(ctx context.Context, path string) (uint64, error)
 }
 
 // TotalDiskSpace fetches the total disk space for a given path.
-func (c *Client) TotalDiskSpace(ctx context.Context, path string) (uint64, error) {
-	var result uint64
+func (c *Client) TotalDiskSpace(ctx context.Context, path string) (int64, error) {
+	var result int64
 	if err := c.call(ctx, "GetTotalDiskSpace", path).Store(&result); err != nil {
 		return 0, errors.Wrap(err, "failed to call method GetTotalDiskSpace")
 	}
@@ -59,8 +59,8 @@ func (c *Client) TotalDiskSpace(ctx context.Context, path string) (uint64, error
 }
 
 // RootDeviceSize fetches the root storage device size for the device.
-func (c *Client) RootDeviceSize(ctx context.Context) (uint64, error) {
-	var result uint64
+func (c *Client) RootDeviceSize(ctx context.Context) (int64, error) {
+	var result int64
 	if err := c.call(ctx, "GetRootDeviceSize").Store(&result); err != nil {
 		return 0, errors.Wrap(err, "failed to call method GetRootDeviceSize")
 	}
