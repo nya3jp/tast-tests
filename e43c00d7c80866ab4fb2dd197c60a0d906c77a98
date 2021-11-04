@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac3e5c30_76035bf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-11-04T17:09:08Z",
+      "side": 1,
+      "message": "Functionality-wise this looks reasonable.",
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f80fb19_b8061c99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2021-11-04T17:09:08Z",
+      "side": 1,
+      "message": "Nittiest nit: D-Bus",
+      "range": {
+        "startLine": 56,
+        "startChar": 17,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
