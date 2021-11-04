@@ -99,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36ffcb36_78824edd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-04T22:11:35Z",
+      "side": 1,
+      "message": "Ack. Sorry should have been more explicit, might be good to raise a bug to kickstart this with the lab folks and have a TODO here. Total nit/optional so feel free to ignore!",
+      "parentUuid": "f77c40d9_a6f753b2",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "522d8f28_ec93da29",
