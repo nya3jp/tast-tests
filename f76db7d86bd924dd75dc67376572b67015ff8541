@@ -88,6 +88,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b19e8ad7_c1176ee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002374
+      },
+      "writtenOn": "2021-11-04T21:34:22Z",
+      "side": 1,
+      "message": "Should additional dependency narrow the tested devices only to ones with MicMute key?",
+      "parentUuid": "b93d5101_384d637a",
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f874f727_3c1bbc5e",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
         "patchSetId": 1
