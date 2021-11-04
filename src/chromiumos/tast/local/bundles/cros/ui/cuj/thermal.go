@@ -49,8 +49,10 @@ func (ds *thermalDataSource) Setup(ctx context.Context, prefix string) error {
 	}{
 		{"CPU", regexp.MustCompile("x86_pkg_temp")}, // Intel devices
 		{"CPU", regexp.MustCompile("B0D4")},         // Intel devices
+		{"CPU", regexp.MustCompile("B0DB")},         // Intel devices
 		{"CPU", regexp.MustCompile("acpitz")},       // AMD devices
-		{"CPU", regexp.MustCompile("[cC][pP][uU]")}, // several arm devices, typically named cpu_thermal
+		{"CPU", regexp.MustCompile("[cC][pP][uU]")}, // several ARM devices, typically named cpu_thermal
+		{"CPU", regexp.MustCompile("soc-thermal")},  // ARM devices
 	}
 
 	ds.metrics = map[string]*thermalMetric{}
