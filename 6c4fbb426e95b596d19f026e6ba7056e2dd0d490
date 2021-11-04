@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "685b865a_5a908883",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-04T00:46:33Z",
+      "side": 1,
+      "message": "How big are these vids?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 71
+      },
+      "revId": "6c4fbb426e95b596d19f026e6ba7056e2dd0d490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bf42715_23e25af0",
+        "filename": "src/chromiumos/tast/common/android/adb/device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-04T00:46:33Z",
+      "side": 1,
+      "message": "will this be flaky? Is there anything to check for ?",
+      "range": {
+        "startLine": 583,
+        "startChar": 2,
+        "endLine": 583,
+        "endChar": 33
+      },
+      "revId": "6c4fbb426e95b596d19f026e6ba7056e2dd0d490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0366d89d_a92d5a15",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-04T00:46:33Z",
+      "side": 1,
+      "message": "saveAndroidScreenRecording ?",
+      "range": {
+        "startLine": 295,
+        "startChar": 3,
+        "endLine": 295,
+        "endChar": 22
+      },
+      "revId": "6c4fbb426e95b596d19f026e6ba7056e2dd0d490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
