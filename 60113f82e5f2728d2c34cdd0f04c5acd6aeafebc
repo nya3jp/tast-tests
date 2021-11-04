@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bb1ac6e_21a543bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 1132643
+      },
+      "writtenOn": "2021-11-04T22:45:50Z",
+      "side": 1,
+      "message": "Nit: if it fits on one line,\n if mtkDetect :\u003d regexp.MustCompile(`mtk-vcodec-dec`); mtkDetect.MatchString(string(v4l2Out)) {\n  ...\n }",
+      "revId": "60113f82e5f2728d2c34cdd0f04c5acd6aeafebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
