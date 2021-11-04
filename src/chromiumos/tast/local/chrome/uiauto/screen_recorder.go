@@ -310,16 +310,24 @@ func StartRecordFromKB(ctx context.Context, tconn *chrome.TestConn, kb *input.Ke
 // If there is error, it copies the record file to the target dir .
 // It also removes the record file from Downloads for cleanup.
 func StopRecordFromKBAndSaveOnError(ctx context.Context, tconn *chrome.TestConn, hasError func() bool, dir string) error {
-	stopBtn := nodewith.Name("Stop screen recording").Role(role.Button)
 	recordResult := nodewith.Name("Screen recording completed").Role(role.Alert)
 	ui := New(tconn)
 	if err := Combine("stop record",
-		ui.LeftClick(stopBtn),
+		ui.LeftClick(ScreenRecordStopButton),
 		ui.WaitUntilExists(recordResult))(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to stop recording: ", err)
 		return err
 	}
 
+	return SaveRecordFromKBOnError(ctx, tconn, hasError, dir)
+}
+
+// ScreenRecordStopButton is the button to stop recording the screen.
+var ScreenRecordStopButton = nodewith.Name("Stop screen recording").Role(role.Button)
+
+// SaveRecordFromKBOnError saves the recording from StartRecordFromKB.
+// This can be used without StopRecordFromKBAndSaveOnError if the screen recording was stopped automatically (i.e. if the screen was locked).
+func SaveRecordFromKBOnError(ctx context.Context, tconn *chrome.TestConn, hasError func() bool, dir string) error {
 	const downloads = "/home/chronos/user/Downloads/"
 	files, err := ioutil.ReadDir(downloads)
 	if err != nil {
