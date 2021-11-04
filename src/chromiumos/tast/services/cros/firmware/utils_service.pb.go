@@ -190,7 +190,7 @@ var file_utils_service_proto_rawDesc = []byte{
 	0x32, 0x0a, 0x1c, 0x46, 0x69, 0x6e, 0x64, 0x50, 0x68, 0x79, 0x73, 0x69, 0x63, 0x61, 0x6c, 0x4b,
 	0x65, 0x79, 0x62, 0x6f, 0x61, 0x72, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
 	0x12, 0x0a, 0x04, 0x70, 0x61, 0x74, 0x68, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70,
-	0x61, 0x74, 0x68, 0x32, 0xa8, 0x02, 0x0a, 0x0c, 0x55, 0x74, 0x69, 0x6c, 0x73, 0x53, 0x65, 0x72,
+	0x61, 0x74, 0x68, 0x32, 0xa8, 0x03, 0x0a, 0x0c, 0x55, 0x74, 0x69, 0x6c, 0x73, 0x53, 0x65, 0x72,
 	0x76, 0x69, 0x63, 0x65, 0x12, 0x40, 0x0a, 0x0c, 0x42, 0x6c, 0x6f, 0x63, 0x6b, 0x69, 0x6e, 0x67,
 	0x53, 0x79, 0x6e, 0x63, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x16, 0x2e, 0x67,
@@ -208,7 +208,15 @@ var file_utils_service_proto_rawDesc = []byte{
 	0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x30, 0x2e, 0x74, 0x61, 0x73,
 	0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x66, 0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x2e,
 	0x46, 0x69, 0x6e, 0x64, 0x50, 0x68, 0x79, 0x73, 0x69, 0x63, 0x61, 0x6c, 0x4b, 0x65, 0x79, 0x62,
-	0x6f, 0x61, 0x72, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x28,
+	0x6f, 0x61, 0x72, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x3d,
+	0x0a, 0x09, 0x4e, 0x65, 0x77, 0x43, 0x68, 0x72, 0x6f, 0x6d, 0x65, 0x12, 0x16, 0x2e, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d,
+	0x70, 0x74, 0x79, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x12, 0x3f, 0x0a,
+	0x0b, 0x43, 0x6c, 0x6f, 0x73, 0x65, 0x43, 0x68, 0x72, 0x6f, 0x6d, 0x65, 0x12, 0x16, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45,
+	0x6d, 0x70, 0x74, 0x79, 0x1a, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x00, 0x42, 0x28,
 	0x5a, 0x26, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x74, 0x61, 0x73,
 	0x74, 0x2f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x73, 0x2f, 0x63, 0x72, 0x6f, 0x73, 0x2f,
 	0x66, 0x69, 0x72, 0x6d, 0x77, 0x61, 0x72, 0x65, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
@@ -237,11 +245,15 @@ var file_utils_service_proto_depIdxs = []int32{
 	3, // 0: tast.cros.firmware.UtilsService.BlockingSync:input_type -> google.protobuf.Empty
 	0, // 1: tast.cros.firmware.UtilsService.ReadServoKeyboard:input_type -> tast.cros.firmware.ReadServoKeyboardRequest
 	3, // 2: tast.cros.firmware.UtilsService.FindPhysicalKeyboard:input_type -> google.protobuf.Empty
-	3, // 3: tast.cros.firmware.UtilsService.BlockingSync:output_type -> google.protobuf.Empty
-	1, // 4: tast.cros.firmware.UtilsService.ReadServoKeyboard:output_type -> tast.cros.firmware.ReadServoKeyboardResponse
-	2, // 5: tast.cros.firmware.UtilsService.FindPhysicalKeyboard:output_type -> tast.cros.firmware.FindPhysicalKeyboardResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	3, // 3: tast.cros.firmware.UtilsService.NewChrome:input_type -> google.protobuf.Empty
+	3, // 4: tast.cros.firmware.UtilsService.CloseChrome:input_type -> google.protobuf.Empty
+	3, // 5: tast.cros.firmware.UtilsService.BlockingSync:output_type -> google.protobuf.Empty
+	1, // 6: tast.cros.firmware.UtilsService.ReadServoKeyboard:output_type -> tast.cros.firmware.ReadServoKeyboardResponse
+	2, // 7: tast.cros.firmware.UtilsService.FindPhysicalKeyboard:output_type -> tast.cros.firmware.FindPhysicalKeyboardResponse
+	3, // 8: tast.cros.firmware.UtilsService.NewChrome:output_type -> google.protobuf.Empty
+	3, // 9: tast.cros.firmware.UtilsService.CloseChrome:output_type -> google.protobuf.Empty
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -328,6 +340,10 @@ type UtilsServiceClient interface {
 	ReadServoKeyboard(ctx context.Context, in *ReadServoKeyboardRequest, opts ...grpc.CallOption) (*ReadServoKeyboardResponse, error)
 	// FindPhysicalKeyboard finds /dev/input/event* file for physical a keyboard.
 	FindPhysicalKeyboard(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*FindPhysicalKeyboardResponse, error)
+	// NewChrome creates a new instance of Chrome
+	NewChrome(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
+	// CloseChrome closes an existing instance of Chrome
+	CloseChrome(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
 type utilsServiceClient struct {
@@ -365,6 +381,24 @@ func (c *utilsServiceClient) FindPhysicalKeyboard(ctx context.Context, in *empty
 	return out, nil
 }
 
+func (c *utilsServiceClient) NewChrome(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.firmware.UtilsService/NewChrome", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *utilsServiceClient) CloseChrome(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.firmware.UtilsService/CloseChrome", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UtilsServiceServer is the server API for UtilsService service.
 type UtilsServiceServer interface {
 	// BlockingSync syncs the root device and internal device.
@@ -373,6 +407,10 @@ type UtilsServiceServer interface {
 	ReadServoKeyboard(context.Context, *ReadServoKeyboardRequest) (*ReadServoKeyboardResponse, error)
 	// FindPhysicalKeyboard finds /dev/input/event* file for physical a keyboard.
 	FindPhysicalKeyboard(context.Context, *empty.Empty) (*FindPhysicalKeyboardResponse, error)
+	// NewChrome creates a new instance of Chrome
+	NewChrome(context.Context, *empty.Empty) (*empty.Empty, error)
+	// CloseChrome closes an existing instance of Chrome
+	CloseChrome(context.Context, *empty.Empty) (*empty.Empty, error)
 }
 
 // UnimplementedUtilsServiceServer can be embedded to have forward compatible implementations.
@@ -387,6 +425,12 @@ func (*UnimplementedUtilsServiceServer) ReadServoKeyboard(context.Context, *Read
 }
 func (*UnimplementedUtilsServiceServer) FindPhysicalKeyboard(context.Context, *empty.Empty) (*FindPhysicalKeyboardResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindPhysicalKeyboard not implemented")
+}
+func (*UnimplementedUtilsServiceServer) NewChrome(context.Context, *empty.Empty) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NewChrome not implemented")
+}
+func (*UnimplementedUtilsServiceServer) CloseChrome(context.Context, *empty.Empty) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CloseChrome not implemented")
 }
 
 func RegisterUtilsServiceServer(s *grpc.Server, srv UtilsServiceServer) {
@@ -447,6 +491,42 @@ func _UtilsService_FindPhysicalKeyboard_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UtilsService_NewChrome_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UtilsServiceServer).NewChrome(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.firmware.UtilsService/NewChrome",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UtilsServiceServer).NewChrome(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UtilsService_CloseChrome_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UtilsServiceServer).CloseChrome(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.firmware.UtilsService/CloseChrome",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UtilsServiceServer).CloseChrome(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _UtilsService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.firmware.UtilsService",
 	HandlerType: (*UtilsServiceServer)(nil),
@@ -462,6 +542,14 @@ var _UtilsService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "FindPhysicalKeyboard",
 			Handler:    _UtilsService_FindPhysicalKeyboard_Handler,
+		},
+		{
+			MethodName: "NewChrome",
+			Handler:    _UtilsService_NewChrome_Handler,
+		},
+		{
+			MethodName: "CloseChrome",
+			Handler:    _UtilsService_CloseChrome_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
