@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3923890_ecfb2b8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-04T00:40:58Z",
+      "side": 1,
+      "message": "actually doesn\u0027t work with smartlock, need to change a few things",
+      "revId": "49a6af05d66d195fb622c968dac3d2bc6f823bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
