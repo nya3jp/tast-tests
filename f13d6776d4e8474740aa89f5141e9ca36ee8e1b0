@@ -46,6 +46,30 @@
       },
       "revId": "f13d6776d4e8474740aa89f5141e9ca36ee8e1b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3093df_b2ddf761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-11-04T20:27:03Z",
+      "side": 1,
+      "message": "Doh, my suggested comment inverted the mapping. I should have written:\n\n```\nconst (\n\tyoyoMagic  \u003d 0x14789633 // StP2\n\tvalidMagic \u003d 0x14789632 // HrP2, CcP2, JfP2, ThP2\n)\n```\n\nSorry about that :(",
+      "parentUuid": "feefc090_f2991eba",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "f13d6776d4e8474740aa89f5141e9ca36ee8e1b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
