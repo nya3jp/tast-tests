@@ -16,6 +16,23 @@
       "message": "yichenz: Could you help review? I ran it 100 times locally and it didn\u0027t fail. Thanks!",
       "revId": "3ea57531fab78b824976ce2a99e3d7459f1c1be2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c172cf45_a550b15d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-11-05T03:37:14Z",
+      "side": 1,
+      "message": "LGTM, thanks!",
+      "revId": "3ea57531fab78b824976ce2a99e3d7459f1c1be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
