@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cpu"
@@ -32,6 +33,11 @@ func init() {
 		Timeout:      4 * time.Minute,
 	})
 }
+
+const (
+	libsPath   = "/opt/google/chrome/camera/g3_libs.squash"
+	mlLibsPath = "/run/ml_libs"
+)
 
 // CCADocumentPerf runs the perf test which exercises document scanner library
 // directly and send the performance metrics to CrosBolt.
@@ -54,6 +60,12 @@ func CCADocumentPerf(ctx context.Context, s *testing.State) {
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
+
+	// Mount ML libraries.
+	if err := testexec.CommandContext(ctx, "mount", "-o", "ro", libsPath, mlLibsPath).Run(); err != nil {
+		s.Fatal("Failed to mount ML libraries")
+	}
+	defer testexec.CommandContext(cleanupCtx, "umount", mlLibsPath).Run()
 
 	s.Log("Measuring document scanner performance")
 	const exec = "document_scanner_perf_test"
