@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package request
+package params
 
 import (
 	"context"
@@ -15,16 +15,19 @@ import (
 	"chromiumos/tast/lsbrelease"
 )
 
-// DeviceParams contains the device specific parameters used by update_engine.
-type DeviceParams struct {
+// Device contains the device specific parameters used by update_engine.
+type Device struct {
 	Board       string
 	ProductID   string
 	MachineType string
 	HardwareID  string
 }
 
+// DefaultAppID is used if no device specific app id is found.
+const DefaultAppID = "{87efface-864d-49a5-9bb3-4b050a7c227a}"
+
 // DumpToFile writes the device parameters to a file.
-func (d *DeviceParams) DumpToFile(path string) error {
+func (d *Device) DumpToFile(path string) error {
 	file, err := json.MarshalIndent(d, "", "  ")
 	if err != nil {
 		return errors.Wrap(err, "failed to marshal device params")
@@ -33,8 +36,8 @@ func (d *DeviceParams) DumpToFile(path string) error {
 	return ioutil.WriteFile(path, file, 0644)
 }
 
-// LoadParamsFromDUT reads the Omaha configuration for the device from the DUT.
-func LoadParamsFromDUT(ctx context.Context, d *dut.DUT) (*DeviceParams, error) {
+// loadParamsFromDUT reads the Omaha configuration for the device from the DUT.
+func loadParamsFromDUT(ctx context.Context, d *dut.DUT) (*Device, error) {
 	lsbContents, err := d.Conn().CommandContext(ctx, "cat", "/etc/lsb-release").Output()
 	if err != nil {
 		return nil, errors.Wrap(err, "loading lsbrelease contents")
@@ -74,7 +77,7 @@ func LoadParamsFromDUT(ctx context.Context, d *dut.DUT) (*DeviceParams, error) {
 
 	hardwareID := strings.TrimSpace(string(hardwareIDRaw))
 
-	return &DeviceParams{
+	return &Device{
 		Board:       board,
 		ProductID:   productID,
 		MachineType: machineType,
