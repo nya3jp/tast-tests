@@ -66,6 +66,14 @@ func init() {
 				},
 			},
 			{
+				Name: "tablet_mode_validation",
+				Val: windowarrangementcuj.TestParam{
+					ChromeType: lacros.ChromeTypeChromeOS,
+					Tablet:     true,
+					Validation: true,
+				},
+			},
+			{
 				Name: "lacros",
 				Val: windowarrangementcuj.TestParam{
 					ChromeType: lacros.ChromeTypeLacros,
@@ -245,6 +253,18 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		f = func(ctx context.Context) error {
 			return windowarrangementcuj.RunTablet(ctx, tconn, ui, pc)
 		}
+	}
+
+	if testParam.Validation {
+		validationHelper := cuj.NewTPSValidationHelper(closeCtx)
+		if err := validationHelper.Stress(); err != nil {
+			s.Fatal("Failed to stress: ", err)
+		}
+		defer func() {
+			if err := validationHelper.Release(); err != nil {
+				s.Fatal("Failed to release validationHelper: ", err)
+			}
+		}()
 	}
 
 	// Run the recorder.

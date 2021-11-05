@@ -22,6 +22,7 @@ type TestParam struct {
 	ChromeType lacros.ChromeType
 	Tablet     bool
 	Tracing    bool
+	Validation bool
 }
 
 // ChromeCleanUpFunc defines the clean up function of chrome browser.
