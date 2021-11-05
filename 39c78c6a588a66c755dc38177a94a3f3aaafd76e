@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecdc57b8_975dc871",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-05T19:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6d9a79f_6a3e1dd9",
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c432bb49_7883e2fb",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd9839b_46279694",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-05T19:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c432bb49_7883e2fb",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7b8e581_e7f599ca",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-11-04T21:40:24Z",
       "side": 1,
       "message": ",",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01acf3c9_16257cca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-05T19:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7b8e581_e7f599ca",
       "range": {
         "startLine": 11,
         "startChar": 16,
@@ -135,6 +201,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "368f1550_5523878d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-05T19:01:30Z",
+      "side": 1,
+      "message": "Added description of the flakiness in our results.\nI modified the TESTs, the new function RadioTapFCSValid() will be tested in unit test parse_test.go.\nTODO: adding broken radiotap.fcs packets into testdata/random_mac_addr.pcap, need more time.",
+      "parentUuid": "fb587f37_d530ad90",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c9879f60_065d20ca",
@@ -199,6 +289,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "065664dc_73ae83c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/probe_req_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-05T19:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea4ea7fe_dc02ea3c",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 26
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dea6406b_b02de5b5",
@@ -222,6 +336,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91b6634a_82be8895",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/probe_req_format.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-05T19:01:30Z",
+      "side": 1,
+      "message": "See comment below.",
+      "parentUuid": "dea6406b_b02de5b5",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66386df0_2f9fbafc",
@@ -235,6 +373,30 @@
       "writtenOn": "2021-11-04T21:40:24Z",
       "side": 1,
       "message": "nit: spelling",
+      "range": {
+        "startLine": 52,
+        "startChar": 52,
+        "endLine": 52,
+        "endChar": 62
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f96aa03e_3aa5d97c",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-05T19:01:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66386df0_2f9fbafc",
       "range": {
         "startLine": 52,
         "startChar": 52,
@@ -318,6 +480,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd56ba4c_4d2b4090",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-05T19:01:30Z",
+      "side": 1,
+      "message": "There are cases I can imagine that Dot11FCS is still useful:\n1. RadioTap Flags field isn\u0027t present, and the frame does have FCS at the end.\n2. RadioTap FCS checking is malfunctioning in FW/HW.\nI couldn\u0027t find any live examples for now, my Macbook\u0027s pcap does have FCS at the end and radiotap.FCS flags. But I can\u0027t guarantee they won\u0027t happen any more after switching to new testbeds.",
+      "parentUuid": "448bef35_e9696235",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 77
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d80430be_04a7eecf",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
         "patchSetId": 2
@@ -347,6 +533,24 @@
       "side": 1,
       "message": "Thank you!\nChecking present in next patch.",
       "parentUuid": "d80430be_04a7eecf",
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e775c956_1c174db2",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-05T19:01:30Z",
+      "side": 1,
+      "message": "Done.\nAlso added checking Present flag in RejectLowSignal().",
+      "parentUuid": "48841054_a1cfa85c",
       "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
