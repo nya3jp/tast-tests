@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62242733_b8a9fe58",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T15:19:25Z",
+      "side": 0,
+      "message": "For me it would be a little more natural if the package is named as device, and this structure as Params.",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 21
+      },
+      "revId": "62fb4a1b794be5e7c382832c912dadec3e5a624b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a251956_8066afb0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/stable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T15:19:25Z",
+      "side": 0,
+      "message": "Can you move this comment to the new place where you set this value?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 39
+      },
+      "revId": "62fb4a1b794be5e7c382832c912dadec3e5a624b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
