@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3567a3ab_5cf89024",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T04:21:14Z",
+      "side": 1,
+      "message": "You do want coords.Rect here. These two forms are equivelant (in fact, the coords.Rect has a .TopLeft() and a .BottomRight() method, and you can create a method to construct a rect from two points if you want).\n\nAs mentioned in my other comment, regarding aligning with ACUITI, I don\u0027t think that\u0027s a concern. You should be trying to make the API as familiar to users as possible, and that means converting from any external types into familiar ones where possible.",
+      "parentUuid": "40eac381_c2e3f4ce",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "960f6720_5ee7d6ff",
         "filename": "src/chromiumos/tast/local/uidetection/selector.go",
         "patchSetId": 1
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "I am keen to use Selector instead of Finder: to distinguish from UI tree based finder, and to align with ACUITI. WDYT?",
       "parentUuid": "960f6720_5ee7d6ff",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "def7856f_8e943f2f",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T04:21:14Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to distinguish too much. When creating one, the methods to create them are very different, so that shouldn\u0027t be an issue there. When actually using one, the APIs are very similar, so I think similarity would help.\n\nRegarding aligning with ACUITI, I don\u0027t think that\u0027s a concern. You should be trying to make the API as familiar to users as possible, and that means converting from any external types into familiar ones where possible.",
+      "parentUuid": "3c215b04_6d81fcb9",
       "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
