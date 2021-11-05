@@ -10,7 +10,8 @@ import (
 )
 
 // DetectShareTargetTimeout is the timeout for a sender to detect an available receiver or vice versa.
-const DetectShareTargetTimeout = time.Minute
+// TODO(b:192296468) Decrease this back to a minute after investigation is over.
+const DetectShareTargetTimeout = 3 * time.Minute
 
 // SmallFileTransferTimeout is the test timeout for small file (~10kb) transfer tests.
 const SmallFileTransferTimeout = 30 * time.Second
