@@ -13,8 +13,8 @@ import (
 
 // Configuration contains the expected state of Omaha.
 type Configuration struct {
-	// OldVersion is a version older that the current stable that should update
-	// to the latest stable without any stepping stone.
+	// OldVersion is a version older that then any available stable and should
+	// update to the latest stable without any stepping stone.
 	OldVersion string
 
 	// ChromeOSVersionFromMilestone maps Chrome milestones to Chrome OS version prefixes.
