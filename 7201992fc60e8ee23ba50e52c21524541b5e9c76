@@ -50,6 +50,23 @@
       "message": "thanks!",
       "revId": "7201992fc60e8ee23ba50e52c21524541b5e9c76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc03553_e53b2198",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-11-05T17:38:33Z",
+      "side": 1,
+      "message": "CQ fails due to b/205182945. It should be fixed by now.",
+      "revId": "7201992fc60e8ee23ba50e52c21524541b5e9c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
