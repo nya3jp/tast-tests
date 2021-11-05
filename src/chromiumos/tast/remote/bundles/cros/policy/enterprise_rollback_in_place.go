@@ -37,6 +37,8 @@ func init() {
 	})
 }
 
+var logsAndCrashes = []string{"/var/log", "/var/spool/crash", "/home/chronos/crash", "/mnt/stateful_partition/unencrypted/preserve/crash", "/run/crash_reporter/crash"}
+
 func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
@@ -58,24 +60,37 @@ func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 
 	if err := resetTPM(ctx, s.DUT()); err != nil {
-		s.Fatal("Failed to reset TPM: ", err)
+		s.Fatal("Failed to reset TPM before test: ", err)
 	}
 	if err := enroll(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to enroll before rollback: ", err)
 	}
-	if err := fakeRollback(ctx, s.DUT()); err != nil {
-		s.Fatal("Failed to fake rollback: ", err)
+	if err := saveRollbackData(ctx, s.DUT()); err != nil {
+		s.Fatal("Failed to save rollback data: ", err)
 	}
+
+	sensitive, err := sensitiveDataForPstore(ctx, s.DUT())
+	if err != nil {
+		s.Fatal("Failed to read sensitive data for pstore: ", err)
+	}
+
+	// Ineffective reset is ok here as the device steps through oobe automatically
+	// which initiates retaking of TPM ownership.
+	if err := resetTPM(ctx, s.DUT()); err != nil && !errors.Is(err, hwsec.ErrIneffectiveReset) {
+		s.Fatal("Failed to reset TPM to fake an enterprise rollback: ", err)
+	}
+
+	if err := ensureSensitiveDataIsNotLogged(ctx, s.DUT(), sensitive); err != nil {
+		s.Fatal("Failed while checking that sensitive data is not logged: ", err)
+	}
+
 	if err := verifyRollback(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to verify rollback: ", err)
 	}
 }
 
 func resetTPM(ctx context.Context, dut *dut.DUT) error {
-	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, dut); err != nil {
-		return errors.Wrap(err, "failed to reset TPM")
-	}
-	return nil
+	return policyutil.EnsureTPMAndSystemStateAreReset(ctx, dut)
 }
 
 func enroll(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
@@ -101,13 +116,13 @@ func enroll(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
 	return nil
 }
 
-func fakeRollback(ctx context.Context, dut *dut.DUT) error {
+func saveRollbackData(ctx context.Context, dut *dut.DUT) error {
 	if err := dut.Conn().CommandContext(ctx, "touch", "/mnt/stateful_partition/.save_rollback_data").Run(); err != nil {
 		return errors.Wrap(err, "failed to write rollback data save file")
 	}
 
 	if err := dut.Conn().CommandContext(ctx, "start", "oobe_config_save").Run(); err != nil {
-		return errors.Wrap(err, "failed to initiate saving of rollback data")
+		return errors.Wrap(err, "failed to run oobe_config_save")
 	}
 
 	// This would be done by clobber_state during powerwash but the test does not
@@ -116,10 +131,23 @@ func fakeRollback(ctx context.Context, dut *dut.DUT) error {
 		return errors.Wrap(err, "failed to read rollback key")
 	}
 
-	// Ineffective reset is ok here as the device steps through oobe automatically
-	// which initiates retaking of TPM ownership.
-	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, dut); err != nil && !errors.Is(err, hwsec.ErrIneffectiveReset) {
-		return errors.Wrap(err, "failed to reset TPM to fake an enterprise rollback")
+	return nil
+}
+
+func sensitiveDataForPstore(ctx context.Context, dut *dut.DUT) (string, error) {
+	sensitive, err := dut.Conn().CommandContext(ctx, "cat", "/var/lib/oobe_config_save/data_for_pstore").Output()
+	if err != nil {
+		return "", errors.Wrap(err, "failed to read data_for_pstore")
+	}
+	return string(sensitive), nil
+}
+
+func ensureSensitiveDataIsNotLogged(ctx context.Context, dut *dut.DUT, sensitive string) error {
+	for _, folder := range logsAndCrashes {
+		err := dut.Conn().CommandContext(ctx, "grep", "-rq", sensitive, folder).Run()
+		if err == nil {
+			return errors.Errorf("sensitive data found by grep in folder %q", folder)
+		}
 	}
 	return nil
 }
@@ -134,7 +162,7 @@ func verifyRollback(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint)
 	rollbackService := ps.NewRollbackServiceClient(client.Conn)
 	response, err := rollbackService.VerifyRollback(ctx, &empty.Empty{})
 	if err != nil {
-		return errors.Wrap(err, "failed to verify rollback")
+		return errors.Wrap(err, "failed to verify rollback on client")
 	}
 	if !response.Successful {
 		return errors.Wrap(err, "rollback was not successful")
