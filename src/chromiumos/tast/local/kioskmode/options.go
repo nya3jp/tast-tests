@@ -34,6 +34,16 @@ func DefaultLocalAccounts() Option {
 	}
 }
 
+// CustomLocalAccounts sets custom local accounts on DUT. Use when the default
+// configuration provided by DefaultLocalAccounts() option is not enough.
+// E.g. when test has to use a specific website or a specific Chrome App.
+func CustomLocalAccounts(accounts *policy.DeviceLocalAccounts) Option {
+	return func(cfg *MutableConfig) error {
+		cfg.DeviceLocalAccounts = accounts
+		return nil
+	}
+}
+
 // AutoLaunch sets Kiosk app ID to be started after Chrome restart. When used
 // then defer cleaning and refreshing policies policyutil.ServeAndRefresh(ctx,
 // fdms, cr, []policy.Policy{}). Otherwise with next Chrome restart Kiosk will
