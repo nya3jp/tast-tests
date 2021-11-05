@@ -11,9 +11,8 @@ const (
 	InstallSourceOnDemand  = "ondemandupdate"
 	InstallSourceScheduler = "scheduler"
 
-	OSVersion    = "Indy"
-	OSPlatform   = "Chrome OS"
-	DefaultAppID = "{87efface-864d-49a5-9bb3-4b050a7c227a}"
+	OSVersion  = "Indy"
+	OSPlatform = "Chrome OS"
 
 	OmahaRequestURL = "https://tools.google.com/service/update2"
 
