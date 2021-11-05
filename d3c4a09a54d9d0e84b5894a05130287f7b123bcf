@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de7acaaa_666a51ac",
+        "filename": "src/chromiumos/tast/local/memory/arc/vmstat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-11-05T02:29:38Z",
+      "side": 1,
+      "message": "There is a n ARC.ReadFile method, which internally calls `adb pull`, but it gets permission errors for some reason:\n```\n2021-11-05T02:20:03.467631Z [02:20:03.817] Command: adb -s emulator-5554 pull /proc/vmstat /usr/local/tmp/tast/run_tmp/adb077819589\n2021-11-05T02:20:03.467748Z [02:20:03.817] Uncaptured output:\nadb: error: failed to stat remote object \u0027/proc/vmstat\u0027: Permission denied\n\n2021-11-05T02:20:03.467807Z [02:20:03.818] Error at login.go:87: Failed to collect memory metrics: failed to collect ARC vmstat metrics: failed to read ARCMV\u0027s /proc/vmstat: exit status 1\n```\n\nSo I don\u0027t think there\u0027s another way to get a proc file from within ARCVM.",
+      "parentUuid": "d4e09e92_8909c5bf",
+      "revId": "d3c4a09a54d9d0e84b5894a05130287f7b123bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5392012_07240559",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-11-04T06:47:39Z",
       "side": 1,
       "message": "might be good to include the direction field",
+      "revId": "d3c4a09a54d9d0e84b5894a05130287f7b123bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c181ad_4d8d5cd8",
+        "filename": "src/chromiumos/tast/local/memory/arc/vmstat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-11-05T02:29:38Z",
+      "side": 1,
+      "message": "Whether higher is better or lower is better depends on the situation and workload, so there\u0027s no correct direction we can pick here.",
+      "parentUuid": "a5392012_07240559",
       "revId": "d3c4a09a54d9d0e84b5894a05130287f7b123bcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
