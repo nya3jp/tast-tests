@@ -22,6 +22,30 @@
       },
       "revId": "a8db82429ed61fc29c86045dd26d1f918f4b7685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57121bf1_12a461c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/data/configuration.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-05T15:29:40Z",
+      "side": 1,
+      "message": "Done, thanks for the better name.",
+      "parentUuid": "5e1512a0_6aaa4ac3",
+      "range": {
+        "startLine": 3,
+        "startChar": 2,
+        "endLine": 3,
+        "endChar": 28
+      },
+      "revId": "a8db82429ed61fc29c86045dd26d1f918f4b7685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
