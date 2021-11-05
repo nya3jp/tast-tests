@@ -190,6 +190,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6198664_653f812d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1483722
+      },
+      "writtenOn": "2021-11-05T21:42:23Z",
+      "side": 1,
+      "message": "@Kyle done.\n\n@Kalin not for now, I don\u0027t think, since at present the test uses the debug shortcut (which exists on all devices).  Once I get it working on a device with a mic mute key (which just arrived at my house 20 minutes ago) I\u0027ll add support for said key to this test.\n\nIs it possible to narrow the test down to devices that have a microphone?",
+      "parentUuid": "b19e8ad7_c1176ee6",
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c354be56_7c6642fd",
@@ -207,6 +225,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "651a7ab0_e74cd03a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1483722
+      },
+      "writtenOn": "2021-11-05T21:42:23Z",
+      "side": 1,
+      "message": "It\u0027s gone.",
+      "parentUuid": "c354be56_7c6642fd",
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f874f727_3c1bbc5e",
@@ -220,6 +256,30 @@
       "writtenOn": "2021-11-03T20:27:45Z",
       "side": 1,
       "message": "style: change to outMuted\nhttps://golang.org/doc/effective_go#mixed-caps",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6a87b1_32949a45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1483722
+      },
+      "writtenOn": "2021-11-05T21:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f874f727_3c1bbc5e",
       "range": {
         "startLine": 74,
         "startChar": 1,
@@ -253,6 +313,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a46fe6_7e6e8efa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1483722
+      },
+      "writtenOn": "2021-11-05T21:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "354e192c_3c65b185",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 14
+      },
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd48b1bf_428be094",
@@ -266,6 +350,30 @@
       "writtenOn": "2021-11-03T20:27:45Z",
       "side": 1,
       "message": "another small style thing is to just indent the error flow:\nhttps://gist.github.com/adamveld12/c0d9f0d5f0e1fba1e551#indent-error-flow\n```\nif !matchedMuted {\n    s.Fatal(\"Failed to mute microphone\")\n}\ns.Log(\"Mic successfully muted\")\n```",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddda8d6f_fbdc96d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1483722
+      },
+      "writtenOn": "2021-11-05T21:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd48b1bf_428be094",
       "range": {
         "startLine": 77,
         "startChar": 1,
