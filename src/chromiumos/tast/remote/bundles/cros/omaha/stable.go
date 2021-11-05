@@ -6,9 +6,9 @@ package omaha
 
 import (
 	"context"
-	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/remote/bundles/cros/omaha/params"
 	"chromiumos/tast/remote/bundles/cros/omaha/request"
 	"chromiumos/tast/testing"
@@ -22,28 +22,17 @@ func init() {
 			"vsavu@chromium.org", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
-		Attr:         []string{"group:omaha"},
-		SoftwareDeps: []string{},
+		Attr:    []string{"group:omaha"},
+		Fixture: fixture.Omaha,
 	})
 }
 
 func Stable(ctx context.Context, s *testing.State) {
-	// This is an old version. No need to update it unless a new stepping stone is introduced.
-	// This is the latest M86 stable push.
-	const prevVersion = "13421.102.0"
+	state := s.FixtValue().(*params.FixtData)
 
 	req := request.New()
-
-	dutParams, err := request.LoadParamsFromDUT(ctx, s.DUT())
-	if err != nil {
-		s.Fatal("Failed to load device parameters: ", err)
-	}
-	if err := dutParams.DumpToFile(filepath.Join(s.OutDir(), "device-param.json")); err != nil {
-		s.Log("Failed to dump 'device-param.json': ", err)
-	}
-
-	req.GenSP(dutParams, prevVersion)
-	req.Apps = append(req.Apps, request.GenerateRequestApp(dutParams, prevVersion, request.Stable))
+	req.GenSP(state.Device, state.Config.OldVersion)
+	req.Apps = append(req.Apps, request.GenerateRequestApp(state.Device, state.Config.OldVersion, request.Stable))
 
 	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
@@ -61,13 +50,15 @@ func Stable(ctx context.Context, s *testing.State) {
 	// here to not break during the transition from Mxx to Mxx+1.
 	if chromeVersion, err := res.ChromeVersion(); err != nil {
 		s.Error("Failed to get Chrome version: ", err)
-	} else if !request.MatchOneOfVersions(chromeVersion, params.CurrentStableChrome, params.NextStableChrome) {
-		s.Errorf("Chrome Version %q does not match the current %q or next %q milestone", chromeVersion, params.CurrentStableChrome, params.NextStableChrome)
+	} else if !request.MatchOneOfVersions(chromeVersion, state.Config.CurrentStableChrome, state.Config.NextStableChrome) {
+		s.Errorf("Chrome Version %q does not match the current %d or next %d milestone", chromeVersion, state.Config.CurrentStableChrome, state.Config.NextStableChrome)
 	}
 
+	currentStableChromeOS := state.Config.ChromeOSVersionFromMilestone[state.Config.CurrentStableChrome]
+	nextStableChromeOS := state.Config.ChromeOSVersionFromMilestone[state.Config.NextStableChrome]
 	if chromeOSVersion, err := res.ChromeOSVersion(); err != nil {
 		s.Error("Failed to get ChromeOS version: ", err)
-	} else if !request.MatchOneOfVersions(chromeOSVersion, params.CurrentStableChromeOS, params.NextStableChromeOS) {
-		s.Errorf("ChromeOS Version %q does not match the current %q or next %q milestone", chromeOSVersion, params.CurrentStableChromeOS, params.NextStableChromeOS)
+	} else if !request.MatchOneOfVersions(chromeOSVersion, currentStableChromeOS, nextStableChromeOS) {
+		s.Errorf("ChromeOS Version %q does not match the current %d or next %d version", chromeOSVersion, currentStableChromeOS, nextStableChromeOS)
 	}
 }
