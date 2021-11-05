@@ -54,6 +54,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44d63ca5_74a1b571",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-05T22:26:08Z",
+      "side": 1,
+      "message": "I don\u0027t think we need the Android part in this test. \n\nWe already have launcher.SearchAndroidApps\nIt seems like the only new part that you are adding is installing Android apps. \n\nInstalling apps should already be covered by the ARC++ team (e.g tests that start with arc.*). I don\u0027t think we need to add that complexity to tests for launcher. \n\nYou can remove that part of the test",
+      "range": {
+        "startLine": 63,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 59
+      },
+      "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd28d36d_f1bb761b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-05T22:26:08Z",
+      "side": 1,
+      "message": "What about uninstalling at the end of the test?",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "289da2d3_665974e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
         "patchSetId": 6
@@ -70,6 +116,75 @@
         "startChar": 21,
         "endLine": 103,
         "endChar": 25
+      },
+      "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "048f0ede_fa610937",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-05T22:26:08Z",
+      "side": 1,
+      "message": "comment",
+      "range": {
+        "startLine": 161,
+        "startChar": 5,
+        "endLine": 161,
+        "endChar": 18
+      },
+      "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1267c33d_9bfd35dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-05T22:26:08Z",
+      "side": 1,
+      "message": "comment",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 18
+      },
+      "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5a3ac4a_32745257",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-05T22:26:08Z",
+      "side": 1,
+      "message": "Are these used to click buttons to confirm install? If yes, these should be part of the CWS library code",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 26
       },
       "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
