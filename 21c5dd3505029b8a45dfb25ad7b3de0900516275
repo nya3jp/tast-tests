@@ -16,6 +16,40 @@
       "message": "Does Go have concept of a destructor? Can we call this from the dtor?",
       "revId": "21c5dd3505029b8a45dfb25ad7b3de0900516275",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ca3a663_708c985d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tps_validation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-05T19:50:18Z",
+      "side": 1,
+      "message": "Kill just send SIGKILL. We need to vh.cmd.Wait() after kill to make sure it goes away and associated resources are released.\n\nSee https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/testexec/testexec.go;l\u003d350",
+      "revId": "21c5dd3505029b8a45dfb25ad7b3de0900516275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46045ee9_5d9af5d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-05T19:50:18Z",
+      "side": 1,
+      "message": "Check returned error and report ?",
+      "revId": "21c5dd3505029b8a45dfb25ad7b3de0900516275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
