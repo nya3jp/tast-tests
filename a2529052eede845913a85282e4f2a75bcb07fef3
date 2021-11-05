@@ -16,6 +16,23 @@
       "message": "+tast-owners for approval. Thanks!",
       "revId": "a2529052eede845913a85282e4f2a75bcb07fef3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a82fa3_531299f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-11-05T09:23:54Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "a2529052eede845913a85282e4f2a75bcb07fef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
