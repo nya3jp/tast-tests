@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5197847_54ac9aeb",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T02:04:34Z",
+      "side": 1,
+      "message": "coords.Rect is what you want here",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "960f6720_5ee7d6ff",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T02:04:34Z",
+      "side": 1,
+      "message": "s/Selector/Finder/g to keep in line with nodewith?",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07b6f816_2e4b6ab4",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T02:04:34Z",
+      "side": 1,
+      "message": "Your state space is a little redundant (admittedly it\u0027s the same as nodewith, but that doesn\u0027t mean it\u0027s good).\n\nI suggest newSelector returns nth: -1, and First() just sets nth\u003d0, Nth(n) sets nth\u003dn.",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41e2d3c2_ae17afff",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T02:04:34Z",
+      "side": 1,
+      "message": "Default behaviour should not be to get the first. Depending on which method you use to actually do the find, default should be to either return all matches, or throw an error if there were multiple matches. Getting the first should be something you need to explicitly say.",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
