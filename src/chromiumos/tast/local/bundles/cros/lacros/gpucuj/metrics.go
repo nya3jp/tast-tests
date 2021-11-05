@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 	"sort"
 
-	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -458,7 +458,7 @@ func (m *metricsRecorder) computeStatistics(ctx context.Context, pv *perf.Values
 
 type traceable interface {
 	StartTracing(ctx context.Context, categories []string, opts ...cdputil.TraceOption) error
-	StopTracing(ctx context.Context) (*trace.Trace, error)
+	StopTracing(ctx context.Context) (*perfetto_proto.Trace, error)
 }
 
 func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,

@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 	"github.com/golang/protobuf/proto"
 	"github.com/mafredri/cdp"
 	"github.com/mafredri/cdp/devtool"
@@ -326,7 +326,7 @@ func (s *Session) StartSystemTracing(ctx context.Context, perfettoConfig []byte)
 }
 
 // StopTracing stops trace collection and returns the collected trace events.
-func (s *Session) StopTracing(ctx context.Context) (*trace.Trace, error) {
+func (s *Session) StopTracing(ctx context.Context) (*perfetto_proto.Trace, error) {
 	dc := tracing.NewClient(s.wsConn)
 	testing.ContextLog(ctx, "Ending tracing")
 
@@ -364,7 +364,7 @@ func (s *Session) StopTracing(ctx context.Context) (*trace.Trace, error) {
 		return nil, errors.Wrap(err, "unable to read tracing data stream")
 	}
 
-	tr := &trace.Trace{}
+	tr := &perfetto_proto.Trace{}
 	if err := proto.Unmarshal(buf, tr); err != nil {
 		return nil, errors.Wrap(err, "unable to unmarshal tracing data")
 	}
