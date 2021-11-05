@@ -98,9 +98,9 @@ func New() *Request {
 	}
 }
 
-// AddRequestApp adds a new RequestApp based on DeviceParams.
-func (r *Request) AddRequestApp(deviceParams *DeviceParams, version, track string) {
-	app := RequestApp{
+// GenerateRequestApp creates a new RequestApp based on DeviceParams.
+func GenerateRequestApp(deviceParams *DeviceParams, version, track string) RequestApp {
+	return RequestApp{
 		AppID:         deviceParams.ProductID,
 		Board:         deviceParams.Board,
 		HardwareClass: deviceParams.HardwareID,
@@ -110,8 +110,6 @@ func (r *Request) AddRequestApp(deviceParams *DeviceParams, version, track strin
 		Track:   track,
 		Version: version,
 	}
-
-	r.Apps = append(r.Apps, app)
 }
 
 // GenSP generates a string to be used in the SP (service pack) field of OS.

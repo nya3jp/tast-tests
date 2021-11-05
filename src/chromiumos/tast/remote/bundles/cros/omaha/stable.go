@@ -43,7 +43,7 @@ func Stable(ctx context.Context, s *testing.State) {
 	}
 
 	req.GenSP(dutParams, prevVersion)
-	req.AddRequestApp(dutParams, prevVersion, request.Stable)
+	req.Apps = append(req.Apps, request.GenerateRequestApp(dutParams, prevVersion, request.Stable))
 
 	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()

@@ -44,9 +44,10 @@ func LTS(ctx context.Context, s *testing.State) {
 
 	req := request.New()
 	req.GenSP(dutParams, prevVersion)
-	req.AddRequestApp(dutParams, prevVersion, request.Stable)
-	req.Apps[0].UpdateCheck.LTSTag = "lts"
-	req.Apps[0].UpdateCheck.TargetVersionPrefix = params.CurrentChromeOSLTS
+	requestApp := request.GenerateRequestApp(dutParams, prevVersion, request.Stable)
+	requestApp.UpdateCheck.LTSTag = "lts"
+	requestApp.UpdateCheck.TargetVersionPrefix = params.CurrentChromeOSLTS
+	req.Apps = append(req.Apps, requestApp)
 
 	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
