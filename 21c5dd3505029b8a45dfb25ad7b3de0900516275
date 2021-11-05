@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92149254_f18ebc0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tps_validation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-05T20:48:44Z",
+      "side": 1,
+      "message": "Not a Go expert but it seems to me that Go does not have a formal destructor support. Saw https://github.com/golang/go/issues/38057 and not get picked up.\n\nAnd in tast code, it seems we use \"defer\" on caller side to do the clean up.",
+      "parentUuid": "39a576a9_2bedece9",
+      "revId": "21c5dd3505029b8a45dfb25ad7b3de0900516275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ca3a663_708c985d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tps_validation.go",
         "patchSetId": 4
