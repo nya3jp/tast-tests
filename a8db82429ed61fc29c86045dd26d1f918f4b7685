@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a0601a3_69c0a0de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/lts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T16:48:34Z",
+      "side": 1,
+      "message": "I don\u0027t have any other idea.",
+      "parentUuid": "a317c7ca_86a7b228",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "a8db82429ed61fc29c86045dd26d1f918f4b7685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e1512a0_6aaa4ac3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/data/configuration.json",
         "patchSetId": 2
