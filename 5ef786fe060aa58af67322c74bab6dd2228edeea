@@ -16,6 +16,23 @@
       "message": "Defer to hidehiko as the tast expert. +luken for FYI",
       "revId": "5ef786fe060aa58af67322c74bab6dd2228edeea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a12e4c5f_c83f717d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-05T13:54:35Z",
+      "side": 1,
+      "message": "LGTM. Thank you for making the change.",
+      "revId": "5ef786fe060aa58af67322c74bab6dd2228edeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
