@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba10e48d_2dd1c073",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T04:25:22Z",
+      "side": 1,
+      "message": "Since this is, as you say, based on confidence, I suggest adding a Confidence level selector. This would better support your use case of erroring if there is more than one match. This way, it would do something like \"error if there\u0027s more than one match with at least 75% confidence\".",
+      "revId": "875a9f25d253ab3fbbc86e76887449ff5c4b73b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
