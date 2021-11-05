@@ -68,6 +68,23 @@
       "message": "Thanks yichenz!\n\ntast-owners: Could you help reviews? Thanks!",
       "revId": "3ea57531fab78b824976ce2a99e3d7459f1c1be2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "276817b0_15ef7855",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-05T16:30:05Z",
+      "side": 1,
+      "message": "LGTM - I\u0027ve been going through a similar issue with ARC++ (changing the window state, and then things not always being available) and wrote up a quick doc with some analysis here: https://docs.google.com/document/d/1zAfFrFOkk3ko6N6p5ZQE99r-dftn7hhQNR-UhIIbS7A/edit?resourcekey\u003d0-DmxVROfPTeGxn3f4g7WwNg#. It seems the WM calls can return before the View has refreshed in certain cases. If you continue to run into issues, adding a .WaitForExists(\u003cELEMENT YOU CARE ABOUT\u003e) after WM Animation wait may help reduce flakiness. Not sure if that\u0027s relevant here but figured I\u0027d mention it.",
+      "revId": "3ea57531fab78b824976ce2a99e3d7459f1c1be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
