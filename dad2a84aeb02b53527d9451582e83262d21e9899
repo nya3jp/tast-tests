@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7563d3b0_424e13cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-11-05T22:16:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c87d8308_33415c48",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "dad2a84aeb02b53527d9451582e83262d21e9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c8f21c2_dbd6e85d",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-11-05T06:55:05Z",
       "side": 1,
       "message": "Since this function can be called twice, second call will overwrite the files from the first call. You might want to pass a copy location to the function so that we don\u0027t overwrite them, e.g.\n\n checkForPstoreConsoleRamoops :\u003d func(ctx context.Context, destName string) bool {\n   destDir :\u003d filepath.Join(s.OutDir(), destName)\n   // copy files to destDir...\n }\n\n checkForPstoreConsoleRamoops(ctx, \"before-reboot\")\n\n checkForPstoreConsoleRamoops(ctx, \"after-reboot\")",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "dad2a84aeb02b53527d9451582e83262d21e9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d21c6e49_e0fd4f60",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-11-05T22:16:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c8f21c2_dbd6e85d",
       "range": {
         "startLine": 34,
         "startChar": 2,
