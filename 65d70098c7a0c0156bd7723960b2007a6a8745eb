@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30500c26_ceb55998",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T10:22:27Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "65d70098c7a0c0156bd7723960b2007a6a8745eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "912bd822_5bf70b68",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/lts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T10:22:27Z",
+      "side": 1,
+      "message": "nit: can you move it to the line before req.GenSP()?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 21
+      },
+      "revId": "65d70098c7a0c0156bd7723960b2007a6a8745eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "069390fe_e8bc2f52",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/lts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T10:22:27Z",
+      "side": 1,
+      "message": "Is it not an LTS minor version, or just not he correct one?",
+      "range": {
+        "startLine": 85,
+        "startChar": 12,
+        "endLine": 85,
+        "endChar": 60
+      },
+      "revId": "65d70098c7a0c0156bd7723960b2007a6a8745eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cfa0f62_3603a341",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/params.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T10:22:27Z",
+      "side": 1,
+      "message": "Although I see this int is beneficial for the usage, but it breaks the pattern in this file, which can lead to problems in the future.\nYou should either add it in a comment that it should be an int, or use string here, and cast it in the test.",
+      "range": {
+        "startLine": 23,
+        "startChar": 27,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "65d70098c7a0c0156bd7723960b2007a6a8745eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
