@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b92264a8_e096b3ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T15:03:57Z",
+      "side": 1,
+      "message": "Do you have use cases where you need to add multiple apps? Because with only 1 app, it doesn\u0027t really simplify things.",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "62fb4a1b794be5e7c382832c912dadec3e5a624b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48781c80_f2b1594b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T15:03:57Z",
+      "side": 1,
+      "message": "LGTM % questions",
+      "revId": "62fb4a1b794be5e7c382832c912dadec3e5a624b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32652747_45ed4eb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/lts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T15:03:57Z",
+      "side": 1,
+      "message": "Do you have a fixed set of possible tags?\nIf so, does it makes sense to make a constant from the names?",
+      "range": {
+        "startLine": 48,
+        "startChar": 33,
+        "endLine": 48,
+        "endChar": 38
+      },
+      "revId": "62fb4a1b794be5e7c382832c912dadec3e5a624b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
