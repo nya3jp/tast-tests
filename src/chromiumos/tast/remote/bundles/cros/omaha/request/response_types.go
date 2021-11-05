@@ -104,3 +104,24 @@ func (r *Response) ChromeOSVersion() (string, error) {
 
 	return action.ChromeOSVersion, nil
 }
+
+// ValidateUpdateResponse checks that the response contains an update payload.
+func (r *Response) ValidateUpdateResponse() error {
+	if r.Server != "prod" {
+		return errors.Errorf("reached wrong server: got %q; want %q", r.Server, "prod")
+	}
+
+	if r.App.Status != "ok" {
+		return errors.Errorf("unexpected App status: got %q; want %q", r.App.Status, "ok")
+	}
+
+	if r.App.UpdateCheck.Status != "ok" {
+		return errors.Errorf("unexpected UpdateCheck status: got %q; want %q", r.App.UpdateCheck.Status, "ok")
+	}
+
+	if _, err := r.postInstallEvent(); err != nil {
+		return err
+	}
+
+	return nil
+}

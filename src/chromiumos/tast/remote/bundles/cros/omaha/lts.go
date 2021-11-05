@@ -56,16 +56,8 @@ func LTS(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to send request: ", err)
 	}
 
-	if res.Server != "prod" {
-		s.Errorf("Reached wrong server: got %q; want %q", res.Server, "prod")
-	}
-
-	if res.App.Status != "ok" {
-		s.Errorf("Unexpected App status: got %q; want %q", res.App.Status, "ok")
-	}
-
-	if res.App.UpdateCheck.Status != "ok" {
-		s.Errorf("Unexpected UpdateCheck status: got %q; want %q", res.App.UpdateCheck.Status, "ok")
+	if err := res.ValidateUpdateResponse(); err != nil {
+		s.Fatal("Response is not an update: ", err)
 	}
 
 	chromeOSVersion, err := res.ChromeOSVersion()
