@@ -33,6 +33,24 @@
       "message": "LGTM, thanks!",
       "revId": "3ea57531fab78b824976ce2a99e3d7459f1c1be2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0b581d4_5125d90d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-11-05T05:09:29Z",
+      "side": 1,
+      "message": "I think the failures are not caused by the test itself. Let\u0027s wait for it gets fixed in CQ.",
+      "parentUuid": "cc00e5a5_ddfdc38b",
+      "revId": "3ea57531fab78b824976ce2a99e3d7459f1c1be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
