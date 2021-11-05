@@ -67,6 +67,57 @@
       "message": "Default behaviour should not be to get the first. Depending on which method you use to actually do the find, default should be to either return all matches, or throw an error if there were multiple matches. Getting the first should be something you need to explicitly say.",
       "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fee40c0_31ebbaf5",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T02:12:10Z",
+      "side": 1,
+      "message": "this appears to be an unexported method, yet is never called within the module?",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7292a98_6a964ad0",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T02:12:10Z",
+      "side": 1,
+      "message": "Suggest splitting into Location and Locations or similar. The first would fail if you returned multiple results, the second would return all the results?",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e98b9d_5e03e3e7",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T02:12:10Z",
+      "side": 1,
+      "message": "Feature suggestion: selector.Within(nodewith.Finder)\n\neg. selector.Text(\"save\").Within(nodewith.Name(\"vscode\").Type(window))\nIt would perform the selector for vscode window, take a screenshot, crop it to the vscode window, and then send it off.\n\nI did a similar thing for screen diffing:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/screenshot/differ.go;l\u003d566?q\u003ddiffer.go",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
