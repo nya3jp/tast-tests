@@ -409,6 +409,30 @@
       },
       "revId": "2b5a9c7f041724a312ffc1086d2d29f9c20ebacb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dfc6e9d_9331bdc0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_reporting.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-11-05T16:30:47Z",
+      "side": 1,
+      "message": "Updated the message to indicate that it can fail due to enrollment or reporting.",
+      "parentUuid": "1927fa69_7b54b396",
+      "range": {
+        "startLine": 99,
+        "startChar": 21,
+        "endLine": 99,
+        "endChar": 40
+      },
+      "revId": "2b5a9c7f041724a312ffc1086d2d29f9c20ebacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

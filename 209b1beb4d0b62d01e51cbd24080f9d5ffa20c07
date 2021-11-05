@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "872d76fd_3ec2b7a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-11-05T16:30:47Z",
+      "side": 1,
+      "message": "Thank you.\nTested: https://paste.googleplex.com/5147562668457984",
+      "revId": "209b1beb4d0b62d01e51cbd24080f9d5ffa20c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4debc056_0246e040",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-11-05T07:52:26Z",
       "side": 1,
       "message": "Missing cr.Close(), add it as a defer",
+      "range": {
+        "startLine": 141,
+        "startChar": 12,
+        "endLine": 141,
+        "endChar": 22
+      },
+      "revId": "209b1beb4d0b62d01e51cbd24080f9d5ffa20c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c68ec493_048d59bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/reporting_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2021-11-05T16:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4debc056_0246e040",
       "range": {
         "startLine": 141,
         "startChar": 12,
