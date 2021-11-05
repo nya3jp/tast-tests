@@ -88,6 +88,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8d83948_992f018f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-05T21:16:54Z",
+      "side": 1,
+      "message": "Why is this test in the launcher package? I don\u0027t think it has anything to do with the launcher",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 16
+      },
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82467e52_fb4559c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-05T21:16:54Z",
+      "side": 1,
+      "message": "The informational label implies that it will be removed once stable. No need for a TODO imo",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 73
+      },
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b93d5101_384d637a",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
         "patchSetId": 1
