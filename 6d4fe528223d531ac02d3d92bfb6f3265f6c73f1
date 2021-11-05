@@ -16,6 +16,24 @@
       "message": "I\u0027ve written screenshot stability which waits for the screen to be stable. You may find it handy https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/screenshot/differ.go;l\u003d600?q\u003ddiffer.go",
       "revId": "6d4fe528223d531ac02d3d92bfb6f3265f6c73f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f37721_94da7860",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-05T07:13:50Z",
+      "side": 1,
+      "message": "Cool, thanks, will do the stabilization in a seperate CL.",
+      "parentUuid": "fd18fdff_a0b20027",
+      "revId": "6d4fe528223d531ac02d3d92bfb6f3265f6c73f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
