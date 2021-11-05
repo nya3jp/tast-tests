@@ -140,6 +140,30 @@
       },
       "revId": "eeef561739114bcaac4a28581e31492d77685322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c4e1710_5ce553cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T10:38:11Z",
+      "side": 1,
+      "message": "Do you plan to do it in this CL, or it will be a followup CL?",
+      "parentUuid": "5fae956a_f9b4576a",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "eeef561739114bcaac4a28581e31492d77685322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

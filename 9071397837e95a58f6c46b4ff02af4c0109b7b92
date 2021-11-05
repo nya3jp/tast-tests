@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd6970c_a5853214",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T10:38:11Z",
+      "side": 1,
+      "message": "minor nit: no need for a dot at the end of the subject line.",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "9071397837e95a58f6c46b4ff02af4c0109b7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2d6beb0_2bbf23cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T10:38:11Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "9071397837e95a58f6c46b4ff02af4c0109b7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45a4633c_86806d54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T10:38:11Z",
+      "side": 1,
+      "message": "nit\n\u003e  \"Failed to validate the fw dump: \"\nis enough.",
+      "range": {
+        "startLine": 139,
+        "startChar": 11,
+        "endLine": 139,
+        "endChar": 48
+      },
+      "revId": "9071397837e95a58f6c46b4ff02af4c0109b7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55755431_1ae49bff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T10:38:11Z",
+      "side": 1,
+      "message": "nit: no need for \": \"",
+      "range": {
+        "startLine": 35,
+        "startChar": 54,
+        "endLine": 35,
+        "endChar": 56
+      },
+      "revId": "9071397837e95a58f6c46b4ff02af4c0109b7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "333c0b54_318392d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T10:38:11Z",
+      "side": 1,
+      "message": "header.",
+      "range": {
+        "startLine": 53,
+        "startChar": 17,
+        "endLine": 53,
+        "endChar": 23
+      },
+      "revId": "9071397837e95a58f6c46b4ff02af4c0109b7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
