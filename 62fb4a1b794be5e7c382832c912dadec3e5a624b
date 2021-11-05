@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e23a4390_9e6e7db3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/params/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-05T16:23:42Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "d885fd66_7e9dc819",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 21
+      },
+      "revId": "62fb4a1b794be5e7c382832c912dadec3e5a624b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a251956_8066afb0",
