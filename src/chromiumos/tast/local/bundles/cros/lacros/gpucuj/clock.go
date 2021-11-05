@@ -6,7 +6,7 @@
 package gpucuj
 
 import (
-	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 
 	"chromiumos/tast/errors"
 )
@@ -23,7 +23,7 @@ type clock struct {
 	curNS       uint64 // The current time for this clock.
 }
 
-func newClockFromSnapshot(dc *trace.ClockSnapshot_Clock) *clock {
+func newClockFromSnapshot(dc *perfetto_proto.ClockSnapshot_Clock) *clock {
 	multiplier := uint64(1)
 	if dc.GetUnitMultiplierNs() > 1 {
 		multiplier = dc.GetUnitMultiplierNs()
@@ -61,7 +61,7 @@ type clockSet struct {
 
 func newClockSet() *clockSet {
 	return &clockSet{
-		defClk:      clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+		defClk:      clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 		clocks:      make(map[clockID]*clock),
 		offsetGraph: make(map[clockPair]int64),
 	}

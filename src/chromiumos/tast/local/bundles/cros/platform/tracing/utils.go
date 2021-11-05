@@ -13,7 +13,7 @@ import (
 	"strings"
 	"syscall"
 
-	"android.googlesource.com/platform/external/perfetto/protos/perfetto/metrics"
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/metrics/github.com/google/perfetto/perfetto_proto"
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/common/testexec"
@@ -49,7 +49,7 @@ func (sess *Session) Wait() error {
 }
 
 // RunMetrics collects the result with trace_processor_shell.
-func (sess *Session) RunMetrics(ctx context.Context, traceProcessorPath string, metrics []string) (*perfetto_protos.TraceMetrics, error) {
+func (sess *Session) RunMetrics(ctx context.Context, traceProcessorPath string, metrics []string) (*perfetto_proto.TraceMetrics, error) {
 	metric := strings.Join(metrics, ",")
 	cmd := testexec.CommandContext(ctx, traceProcessorPath, sess.TraceResultFile.Name(), "--run-metrics", metric)
 	out, err := cmd.Output(testexec.DumpLogOnError)
@@ -57,7 +57,7 @@ func (sess *Session) RunMetrics(ctx context.Context, traceProcessorPath string, 
 		return nil, errors.Wrap(err, "failed to run metrics with trace_processor_shell")
 	}
 
-	tbm := &perfetto_protos.TraceMetrics{}
+	tbm := &perfetto_proto.TraceMetrics{}
 	if err := proto.UnmarshalText(string(out), tbm); err != nil {
 		return nil, errors.Wrap(err, "failed to unmarshal metrics result")
 	}

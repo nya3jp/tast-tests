@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"testing"
 
-	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 )
 
 func TestMergeClockSet(t *testing.T) {
@@ -26,7 +26,7 @@ func TestMergeClockSet(t *testing.T) {
 		// Only one thing in cs1's clock map.
 		{
 			cs1: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk: 1,
@@ -36,7 +36,7 @@ func TestMergeClockSet(t *testing.T) {
 			},
 			cs2: newClockSet(),
 			res: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk: 1,
@@ -49,7 +49,7 @@ func TestMergeClockSet(t *testing.T) {
 		{
 			cs1: newClockSet(),
 			cs2: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk: 1,
@@ -58,7 +58,7 @@ func TestMergeClockSet(t *testing.T) {
 				offsetGraph: map[clockPair]int64{},
 			},
 			res: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk: 1,
@@ -70,7 +70,7 @@ func TestMergeClockSet(t *testing.T) {
 		// One thing in each clock map, non-conflicting.
 		{
 			cs1: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk: 1,
@@ -79,7 +79,7 @@ func TestMergeClockSet(t *testing.T) {
 				offsetGraph: map[clockPair]int64{},
 			},
 			cs2: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					2: {
 						clk: 2,
@@ -88,7 +88,7 @@ func TestMergeClockSet(t *testing.T) {
 				offsetGraph: map[clockPair]int64{},
 			},
 			res: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk: 1,
@@ -103,7 +103,7 @@ func TestMergeClockSet(t *testing.T) {
 		// One thing in each clock map, but conflicting.
 		{
 			cs1: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk: 1,
@@ -112,7 +112,7 @@ func TestMergeClockSet(t *testing.T) {
 				offsetGraph: map[clockPair]int64{},
 			},
 			cs2: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk: 1,
@@ -125,7 +125,7 @@ func TestMergeClockSet(t *testing.T) {
 		// Only one thing in cs1's offset graph.
 		{
 			cs1: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{},
 				offsetGraph: map[clockPair]int64{
 					{1, 2}: 1,
@@ -133,7 +133,7 @@ func TestMergeClockSet(t *testing.T) {
 			},
 			cs2: newClockSet(),
 			res: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{},
 				offsetGraph: map[clockPair]int64{
 					{1, 2}: 1,
@@ -144,14 +144,14 @@ func TestMergeClockSet(t *testing.T) {
 		{
 			cs1: newClockSet(),
 			cs2: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{},
 				offsetGraph: map[clockPair]int64{
 					{1, 2}: 1,
 				},
 			},
 			res: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{},
 				offsetGraph: map[clockPair]int64{
 					{1, 2}: 1,
@@ -161,21 +161,21 @@ func TestMergeClockSet(t *testing.T) {
 		// One thing in each offset graph, non-conflicting.
 		{
 			cs1: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{},
 				offsetGraph: map[clockPair]int64{
 					{1, 2}: 1,
 				},
 			},
 			cs2: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{},
 				offsetGraph: map[clockPair]int64{
 					{2, 3}: 1,
 				},
 			},
 			res: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{},
 				offsetGraph: map[clockPair]int64{
 					{1, 2}: 1,
@@ -186,14 +186,14 @@ func TestMergeClockSet(t *testing.T) {
 		// One thing in each offset graph, but conflicting.
 		{
 			cs1: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{},
 				offsetGraph: map[clockPair]int64{
 					{1, 2}: 1,
 				},
 			},
 			cs2: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{},
 				offsetGraph: map[clockPair]int64{
 					{1, 2}: 1,
@@ -229,7 +229,7 @@ func TestClockSetDomainConversion(t *testing.T) {
 		// Test identity.
 		{
 			cs: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk:   1,
@@ -245,7 +245,7 @@ func TestClockSetDomainConversion(t *testing.T) {
 		},
 		{
 			cs: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk:   1,
@@ -262,7 +262,7 @@ func TestClockSetDomainConversion(t *testing.T) {
 		// Test path of length 1.
 		{
 			cs: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk:   1,
@@ -285,7 +285,7 @@ func TestClockSetDomainConversion(t *testing.T) {
 		// Test missing stID
 		{
 			cs: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk:   1,
@@ -308,7 +308,7 @@ func TestClockSetDomainConversion(t *testing.T) {
 		// Test missing enID
 		{
 			cs: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk:   1,
@@ -331,7 +331,7 @@ func TestClockSetDomainConversion(t *testing.T) {
 		// Test path of length 2
 		{
 			cs: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk:   1,
@@ -359,7 +359,7 @@ func TestClockSetDomainConversion(t *testing.T) {
 		// Test path in more complicated graph
 		{
 			cs: &clockSet{
-				defClk: clockID(trace.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
+				defClk: clockID(perfetto_proto.BuiltinClock_BUILTIN_CLOCK_BOOTTIME),
 				clocks: map[clockID]*clock{
 					1: {
 						clk:   1,

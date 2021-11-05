@@ -14,7 +14,7 @@ import (
 	"syscall"
 	"time"
 
-	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 	"github.com/mafredri/cdp/protocol/target"
 	"github.com/shirou/gopsutil/process"
 	"golang.org/x/sys/unix"
@@ -87,7 +87,7 @@ func (l *LacrosChrome) StartSystemTracing(ctx context.Context, perfettoConfig []
 
 // StopTracing stops trace collection and returns the collected trace events.
 // This must not be called after Close().
-func (l *LacrosChrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
+func (l *LacrosChrome) StopTracing(ctx context.Context) (*perfetto_proto.Trace, error) {
 	return l.sess.StopTracing(ctx)
 }
 

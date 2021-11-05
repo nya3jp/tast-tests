@@ -10,7 +10,7 @@ import (
 	"os"
 	"strings"
 
-	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
@@ -270,7 +270,7 @@ func (s *Session) StartSystemTracing(ctx context.Context, perfettoConfig []byte)
 }
 
 // StopTracing stops trace collection and returns the collected trace events.
-func (s *Session) StopTracing(ctx context.Context) (*trace.Trace, error) {
+func (s *Session) StopTracing(ctx context.Context) (*perfetto_proto.Trace, error) {
 	traces, err := s.devsess.StopTracing(ctx)
 	if err != nil {
 		return nil, err
