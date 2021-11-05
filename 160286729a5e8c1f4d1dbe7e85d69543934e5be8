@@ -87,6 +87,30 @@
       },
       "revId": "160286729a5e8c1f4d1dbe7e85d69543934e5be8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03e65af0_f23b86f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-11-05T22:37:36Z",
+      "side": 1,
+      "message": "Oh sorry I saw it wrong 😅 yeah we can remove TPS.DisplaySmoothness cause it is basically equals to FramesProduced/FramesExpected and the pipeline uses FramesProduced\u0026FramesExpected directly.",
+      "parentUuid": "24705074_3750131c",
+      "range": {
+        "startLine": 183,
+        "startChar": 29,
+        "endLine": 183,
+        "endChar": 47
+      },
+      "revId": "160286729a5e8c1f4d1dbe7e85d69543934e5be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
