@@ -69,6 +69,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a1e768_b05f7ea8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-11-05T17:54:57Z",
+      "side": 1,
+      "message": "seems reasonable to me, but I\u0027ll defer to others on the review list",
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b93d5101_384d637a",
@@ -100,6 +117,23 @@
       "side": 1,
       "message": "Should additional dependency narrow the tested devices only to ones with MicMute key?",
       "parentUuid": "b93d5101_384d637a",
+      "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c354be56_7c6642fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/mic_mute_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-11-05T17:54:57Z",
+      "side": 1,
+      "message": "you should not need ProductivityLauncher feature?",
       "revId": "f76db7d86bd924dd75dc67376572b67015ff8541",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
