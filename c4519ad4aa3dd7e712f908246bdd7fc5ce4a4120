@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40eac381_c2e3f4ce",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-05T03:49:58Z",
+      "side": 1,
+      "message": "not exactly. Rect is represented by the top-left cornor point, together with the width and height. What we want here is two points (to align with the ACUITI response).",
+      "parentUuid": "c5197847_54ac9aeb",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "960f6720_5ee7d6ff",
         "filename": "src/chromiumos/tast/local/uidetection/selector.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-05T02:04:34Z",
       "side": 1,
       "message": "s/Selector/Finder/g to keep in line with nodewith?",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c215b04_6d81fcb9",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-05T03:49:58Z",
+      "side": 1,
+      "message": "I am keen to use Selector instead of Finder: to distinguish from UI tree based finder, and to align with ACUITI. WDYT?",
+      "parentUuid": "960f6720_5ee7d6ff",
       "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02dcac4a_876113a9",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-05T03:49:58Z",
+      "side": 1,
+      "message": "Done, thanks for the suggestion.",
+      "parentUuid": "07b6f816_2e4b6ab4",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41e2d3c2_ae17afff",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-11-05T02:04:34Z",
       "side": 1,
       "message": "Default behaviour should not be to get the first. Depending on which method you use to actually do the find, default should be to either return all matches, or throw an error if there were multiple matches. Getting the first should be something you need to explicitly say.",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecad6305_0ace9a8a",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-05T03:49:58Z",
+      "side": 1,
+      "message": "That was the original design for this. Revised to this (throw an error if there were multiple matches) for now to align with the behavior with nodewith. \n\nWill revisit this and discuss more later. Since for ML models (ACUITI in this case), it is not uncommon that multiple results are being retured (e.g. in the order of possibility/confidence). We may end up that First() will be called explicitly every time and become the default behaviour.",
+      "parentUuid": "41e2d3c2_ae17afff",
       "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -116,6 +188,60 @@
       "writtenOn": "2021-11-05T02:12:10Z",
       "side": 1,
       "message": "Feature suggestion: selector.Within(nodewith.Finder)\n\neg. selector.Text(\"save\").Within(nodewith.Name(\"vscode\").Type(window))\nIt would perform the selector for vscode window, take a screenshot, crop it to the vscode window, and then send it off.\n\nI did a similar thing for screen diffing:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/screenshot/differ.go;l\u003d566?q\u003ddiffer.go",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "600190f3_83655ece",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-05T03:49:58Z",
+      "side": 1,
+      "message": "It will be used in the following CL, I split them.",
+      "parentUuid": "4fee40c0_31ebbaf5",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56b8027a_dd1b4774",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-05T03:49:58Z",
+      "side": 1,
+      "message": "Good point. This kind of feature will be added in later versions. Not just within, The space filters will also support Above, Below, Left, Right, Outside, etc.",
+      "parentUuid": "b0e98b9d_5e03e3e7",
+      "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6896abba_dd21cca9",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-05T03:49:58Z",
+      "side": 1,
+      "message": "Revised to throw an error if there were multiple match, unless Nth or First is set.\n\nLocations will be added in the future when it it needed.",
+      "parentUuid": "c7292a98_6a964ad0",
       "revId": "c4519ad4aa3dd7e712f908246bdd7fc5ce4a4120",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
