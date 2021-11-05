@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd0eca4_e62ae9d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-05T06:23:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bf1c9a8_d0f13c11",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "eeef561739114bcaac4a28581e31492d77685322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30d57263_acd152a7",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28804e7a_a3af63c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-05T06:23:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30d57263_acd152a7",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 25
+      },
+      "revId": "eeef561739114bcaac4a28581e31492d77685322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34116971_82d64257",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-04T22:38:49Z",
       "side": 1,
       "message": "Are those 2 checks enough to detect the case we had where \"empty\" firmware dumps were generated?\n\nDid you check your parser against \"empty\" files? For example http://issuetracker.google.com/161742513#comment43 , http://issuetracker.google.com/169152720#comment41 , http://issuetracker.google.com/169152720#comment21\n\nWould the test fail against those firmware dumps?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "eeef561739114bcaac4a28581e31492d77685322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fae956a_f9b4576a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-05T06:23:47Z",
+      "side": 1,
+      "message": "I just checked these fw dumps and the parser is passing. I think the parser should be expanded at least to make sure there are valid data in the mandatory files:\n\ncsr.lst (mandatory)\ndccm_lmac.lst (mandatory)\ndump_details.lst\nfh_regs.lst\nmonitor.lst (mandatory)\nprph.lst\nradio_reg.lst\nrxf0.lst\nsmem_cfg.lst\ntx_cmd.lst\n\nhttps://b.corp.google.com/issues/169152720#comment28",
+      "parentUuid": "34116971_82d64257",
       "range": {
         "startLine": 60,
         "startChar": 0,
