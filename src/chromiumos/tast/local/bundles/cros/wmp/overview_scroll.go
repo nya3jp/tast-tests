@@ -11,6 +11,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -28,8 +30,7 @@ func init() {
 		Desc:         "Checks that scrolling in tablet mode overview works properly",
 		Contacts:     []string{"sammiequon@chromium.org", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		SoftwareDeps: []string{"chrome", "android_vm"},
 		Params: []testing.Param{{
 			Name: "portrait",
 			Val:  true,
@@ -37,47 +38,9 @@ func init() {
 			Name: "landscape",
 			Val:  false,
 		}},
+		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
+		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
-}
-
-// verifyOverviewItemsInfo checks various expected behaviors involving overview items while scrolling. expectedItems is
-// the amount of items expected; it should match the amount of app windows created. maxNumOnscreen is the max number
-// of windows that are visible to the user. It should be six usually, though depending on the scroll phase, it can be
-// up to eight. We also do a check on the offscreen value of the first two windows; they should match
-// expectedFirstTwoItemsOffscreen.
-func verifyOverviewItemsInfo(ctx context.Context, ac *uiauto.Context, expectedItems, maxNumOnscreen int, expectedFirstTwoItemsOffscreen bool) error {
-	overviewItems := nodewith.HasClass("OverviewItemView")
-	overviewItemsInfo, err := ac.NodesInfo(ctx, overviewItems)
-	if err != nil {
-		return errors.Wrap(err, "could not retrieve overview items")
-	}
-
-	if len(overviewItemsInfo) != expectedItems {
-		return errors.Errorf("unexpected number of overview items found; wanted %v, got %v", expectedItems, len(overviewItemsInfo))
-	}
-
-	// Count the number of onscreen windows.
-	numWindowsOnscreen := 0
-	for _, overviewItem := range overviewItemsInfo {
-		if !overviewItem.State["offscreen"] {
-			numWindowsOnscreen++
-		}
-	}
-
-	if numWindowsOnscreen > maxNumOnscreen {
-		return errors.Errorf("unexpected number of overview items onscreen; wanted at most %v, got %v", maxNumOnscreen, numWindowsOnscreen)
-	}
-
-	// Verify whether the first two windows, which are the LRU windows matches the expected offscreen value.
-	if overviewItemsInfo[0].State["offscreen"] != expectedFirstTwoItemsOffscreen {
-		return errors.Errorf("window 1 does not match the expected offscreen value, which is %v", expectedFirstTwoItemsOffscreen)
-	}
-
-	if overviewItemsInfo[1].State["offscreen"] != expectedFirstTwoItemsOffscreen {
-		return errors.Errorf("window 2 does not match the expected offscreen value, which is %v", expectedFirstTwoItemsOffscreen)
-	}
-
-	return nil
 }
 
 func OverviewScroll(ctx context.Context, s *testing.State) {
@@ -86,7 +49,14 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr, err := chrome.New(ctx,
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+		chrome.ARCSupported(),
+		chrome.ExtraArgs(arc.DisableSyncFlags()...))
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -119,8 +89,24 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 	// Use a total of 16 windows for this test, so that scrolling can happen.
 	const numWindows = 16
 
+	// Setup for launching ARC apps.
+	if err := optin.PerformAndClose(ctx, cr, tconn); err != nil {
+		s.Fatal("Failed to optin to Play Store and Close: ", err)
+	}
+
+	// Setup ARC.
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close(cleanupCtx)
+
+	if err := a.WaitIntentHelper(ctx); err != nil {
+		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
+	}
+
 	// Create some chrome apps that are already installed.
-	appsList := []apps.App{apps.Camera, apps.Files, apps.Help}
+	appsList := []apps.App{apps.Camera, apps.Files, apps.Help, apps.PlayStore}
 
 	for _, app := range appsList {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
@@ -130,8 +116,6 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 			s.Fatalf("%s did not appear in shelf after launch: %s", app.Name, err)
 		}
 	}
-
-	// TODO(sammiequon): Add support for ARC apps.
 
 	// Create enough chrome windows so that we have 16 total windows.
 	numChromeWindows := numWindows - len(appsList)
@@ -191,4 +175,44 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 	if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
 		s.Fatal("It does not appear to be in the overview mode: ", err)
 	}
+}
+
+// verifyOverviewItemsInfo checks various expected behaviors involving overview items while scrolling. expectedItems is
+// the amount of items expected; it should match the amount of app windows created. maxNumOnscreen is the max number
+// of windows that are visible to the user. It should be six usually, though depending on the scroll phase, it can be
+// up to eight. We also do a check on the offscreen value of the first two windows; they should match
+// expectedFirstTwoItemsOffscreen.
+func verifyOverviewItemsInfo(ctx context.Context, ac *uiauto.Context, expectedItems, maxNumOnscreen int, expectedFirstTwoItemsOffscreen bool) error {
+	overviewItems := nodewith.HasClass("OverviewItemView")
+	overviewItemsInfo, err := ac.NodesInfo(ctx, overviewItems)
+	if err != nil {
+		return errors.Wrap(err, "could not retrieve overview items")
+	}
+
+	if len(overviewItemsInfo) != expectedItems {
+		return errors.Errorf("unexpected number of overview items found; wanted %v, got %v", expectedItems, len(overviewItemsInfo))
+	}
+
+	// Count the number of onscreen windows.
+	numWindowsOnscreen := 0
+	for _, overviewItem := range overviewItemsInfo {
+		if !overviewItem.State["offscreen"] {
+			numWindowsOnscreen++
+		}
+	}
+
+	if numWindowsOnscreen > maxNumOnscreen {
+		return errors.Errorf("unexpected number of overview items onscreen; wanted at most %v, got %v", maxNumOnscreen, numWindowsOnscreen)
+	}
+
+	// Verify whether the first two windows, which are the LRU windows matches the expected offscreen value.
+	if overviewItemsInfo[0].State["offscreen"] != expectedFirstTwoItemsOffscreen {
+		return errors.Errorf("window 1 does not match the expected offscreen value, which is %v", expectedFirstTwoItemsOffscreen)
+	}
+
+	if overviewItemsInfo[1].State["offscreen"] != expectedFirstTwoItemsOffscreen {
+		return errors.Errorf("window 2 does not match the expected offscreen value, which is %v", expectedFirstTwoItemsOffscreen)
+	}
+
+	return nil
 }
