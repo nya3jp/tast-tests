@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f984599c_72be1493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-11-05T17:45:00Z",
+      "side": 1,
+      "message": "verify that download chip doesn\u0027t get removed after unipinning",
+      "revId": "ea6edd052d3331a3c256480e7119938ae20a3092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
