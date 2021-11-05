@@ -105,7 +105,7 @@ func init() {
 func IHeartRadio(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.clearchannel.iheartradio.controller"
-		appActivity = ".activities.NavDrawerActivity"
+		appActivity = "com.iheart.activities.NavDrawerActivity"
 	)
 	testSet := s.Param().(testutil.TestParams)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
@@ -161,6 +161,14 @@ func launchAppForIHeartRadio(ctx context.Context, s *testing.State, tconn *chrom
 		s.Fatal("Failed to click on login  button: ", err)
 	}
 
+	// Click on skip button.
+	skipButton := d.Object(ui.Text(skipText))
+	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("skip button doesn't exist: ", err)
+	} else if err := skipButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on skip button: ", err)
+	}
+
 	// Click on not now button.
 	notNowButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(notNowText))
 	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
@@ -186,7 +194,7 @@ func launchAppForIHeartRadio(ctx context.Context, s *testing.State, tconn *chrom
 	}
 
 	// Click on skip button.
-	skipButton := d.Object(ui.Text(skipText))
+	skipButton = d.Object(ui.Text(skipText))
 	if err := skipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("skip button doesn't exist: ", err)
 	} else if err := skipButton.Click(ctx); err != nil {
