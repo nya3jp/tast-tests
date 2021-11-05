@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ff4f946_ec23f52f",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T06:19:46Z",
+      "side": 1,
+      "message": "This seems like we may end up rewriting most of the uiauto library in the end. There seems like several points of commonality, could we refactor some of that library into common functions?",
+      "revId": "93e4ab67b5ff19f8bf92f85a7113a7a7d25eb37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
