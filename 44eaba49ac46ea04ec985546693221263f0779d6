@@ -69,6 +69,184 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67ae7b7c_c9acd0ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-05T00:57:20Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ffbfe66_b5fef05f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mem_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-05T00:57:20Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 49
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "942f4007_72e1230b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mem_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-05T00:57:20Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 51
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40ce8f53_de8c2e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mem_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-05T00:57:20Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 49
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4ae034c_119a1aa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mem_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-05T00:57:20Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 62
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d239ad_4f3c4932",
+        "filename": "src/chromiumos/tast/local/memory/metrics/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-05T00:57:20Z",
+      "side": 1,
+      "message": "nit: Its main purpose is to be a cache to enable fast reset.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 58
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d20ca75_8d602680",
+        "filename": "src/chromiumos/tast/local/memory/metrics/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-05T00:57:20Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 52
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d19dc27_ac8f6d5c",
+        "filename": "src/chromiumos/tast/local/memory/metrics/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-05T00:57:20Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 52
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a690203_c73171d8",
@@ -135,6 +313,121 @@
         "startChar": 24,
         "endLine": 52,
         "endChar": 40
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f85e159b_3ebdcb0e",
+        "filename": "src/chromiumos/tast/local/memory/metrics/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-05T00:57:20Z",
+      "side": 1,
+      "message": "nit: \n\nif begin.lateststate \u003d\u003d nil || end.lateststate \u003d\u003d nil {\n    return\n}",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c61cb54_9d01feaa",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-05T00:57:20Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 52
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86b40d9f_ef70eb84",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-05T00:57:20Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 52
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a075e5ac_0aa474ab",
+        "filename": "src/chromiumos/tast/local/memory/zram_stats.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-05T00:57:20Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 52
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd439427_168bad51",
+        "filename": "src/chromiumos/tast/local/memory/zram_stats.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-05T00:57:20Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 52
       },
       "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
