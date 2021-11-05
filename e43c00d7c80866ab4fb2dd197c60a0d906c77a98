@@ -211,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afc13915_f9ed7a6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T22:48:37Z",
+      "side": 1,
+      "message": "I just went ahead and implemented this (https://crrev.com/c/3266064)",
+      "parentUuid": "6069de8d_13bcba52",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0b06278_bb6e05b1",
@@ -413,6 +437,30 @@
       "side": 1,
       "message": "I think I need the type, since the D-Bus library will need to know which type to send this as. I\u0027ll give it a try though and follow up here.",
       "parentUuid": "5f6ec6bc_145e5778",
+      "range": {
+        "startLine": 82,
+        "startChar": 32,
+        "endLine": 82,
+        "endChar": 38
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c97dbd_0f43ac9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T22:48:37Z",
+      "side": 1,
+      "message": "It seems like it\u0027s not necessary, so I removed it. Also changed to a const so it\u0027s clearer what the value means.",
+      "parentUuid": "7a67f234_2d1b94f6",
       "range": {
         "startLine": 82,
         "startChar": 32,
