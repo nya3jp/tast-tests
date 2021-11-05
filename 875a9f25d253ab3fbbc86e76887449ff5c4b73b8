@@ -16,6 +16,24 @@
       "message": "Since this is, as you say, based on confidence, I suggest adding a Confidence level selector. This would better support your use case of erroring if there is more than one match. This way, it would do something like \"error if there\u0027s more than one match with at least 75% confidence\".",
       "revId": "875a9f25d253ab3fbbc86e76887449ff5c4b73b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4defb206_c1785414",
+        "filename": "src/chromiumos/tast/local/uidetection/selector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-05T05:13:50Z",
+      "side": 1,
+      "message": "I would not to do so unless really necessary. I don\u0027t think it is a good idea to let the users tune such parameters. I intend to do this fine tuning in the backend and hide it from the users. \n\nAnyway, we don\u0027t need to worry about this for the prototype. Will have more idea on this after see how it goes.",
+      "parentUuid": "ba10e48d_2dd1c073",
+      "revId": "875a9f25d253ab3fbbc86e76887449ff5c4b73b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
