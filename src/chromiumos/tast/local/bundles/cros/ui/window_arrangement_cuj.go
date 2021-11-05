@@ -66,6 +66,14 @@ func init() {
 				},
 			},
 			{
+				Name: "tablet_mode_validation",
+				Val: windowarrangementcuj.TestParam{
+					ChromeType: lacros.ChromeTypeChromeOS,
+					Tablet:     true,
+					Validation: true,
+				},
+			},
+			{
 				Name: "lacros",
 				Val: windowarrangementcuj.TestParam{
 					ChromeType: lacros.ChromeTypeLacros,
@@ -247,9 +255,20 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	validation := testParam.Validation
+	var validationHelper *cuj.TPSValidationHelper
+	if validation {
+		validationHelper = cuj.NewTPSValidationHelper(ctx)
+		validationHelper.Stress()
+	}
+
 	// Run the recorder.
 	if err := recorder.Run(ctx, f); err != nil {
 		s.Fatal("Failed to conduct the recorder task: ", err)
+	}
+
+	if validation {
+		validationHelper.Release()
 	}
 
 	// Check if there is any tab crashed.
