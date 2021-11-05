@@ -7,7 +7,7 @@ package platform
 import (
 	"context"
 
-	"android.googlesource.com/platform/external/perfetto/protos/perfetto/metrics"
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/metrics/github.com/google/perfetto/perfetto_proto"
 
 	"chromiumos/tast/remote/bundles/cros/platform/perfetto"
 	"chromiumos/tast/rpc"
@@ -36,7 +36,7 @@ func init() {
 
 // processCPUMetric extracts information of the target process in the
 // cpu metric.
-func processCPUMetric(cpuMetric *perfetto_protos.AndroidCpuMetric, s *testing.State) {
+func processCPUMetric(cpuMetric *perfetto_proto.AndroidCpuMetric, s *testing.State) {
 	foundTarget := false
 	for _, processInfo := range cpuMetric.GetProcessInfo() {
 		if processInfo.GetName() == targetProcessName {
@@ -60,7 +60,7 @@ func processCPUMetric(cpuMetric *perfetto_protos.AndroidCpuMetric, s *testing.St
 
 // processMemMetric extracts information of the target process in the
 // mem metric.
-func processMemMetric(memMetric *perfetto_protos.AndroidMemoryMetric, s *testing.State) {
+func processMemMetric(memMetric *perfetto_proto.AndroidMemoryMetric, s *testing.State) {
 	foundTarget := false
 	for _, processMetric := range memMetric.GetProcessMetrics() {
 		if processMetric.GetProcessName() == targetProcessName {

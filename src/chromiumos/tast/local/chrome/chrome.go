@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/caller"
@@ -679,13 +679,13 @@ func (c *Chrome) StartSystemTracing(ctx context.Context, perfettoConfig []byte) 
 }
 
 // StopTracing stops trace collection and returns the collected trace events.
-func (c *Chrome) StopTracing(ctx context.Context) (*trace.Trace, error) {
+func (c *Chrome) StopTracing(ctx context.Context) (*perfetto_proto.Trace, error) {
 	return c.sess.StopTracing(ctx)
 }
 
 // SaveTraceToFile marshals the given trace into a binary protobuf and saves it
 // to a gzip archive at the specified path.
-func SaveTraceToFile(ctx context.Context, trace *trace.Trace, path string) error {
+func SaveTraceToFile(ctx context.Context, trace *perfetto_proto.Trace, path string) error {
 	data, err := proto.Marshal(trace)
 	if err != nil {
 		return errors.Wrap(err, "could not marshal trace to binary")

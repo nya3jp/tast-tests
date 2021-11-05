@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace"
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/ctxutil"
@@ -43,7 +43,7 @@ func init() {
 // systemTracer defines functions for collecting a system trace.
 type systemTracer interface {
 	StartSystemTracing(ctx context.Context, perfettoConfig []byte) error
-	StopTracing(ctx context.Context) (*trace.Trace, error)
+	StopTracing(ctx context.Context) (*perfetto_proto.Trace, error)
 }
 
 // PerfettoChromeConsumer tests Chrome as a perfetto trace consumer.
@@ -88,7 +88,7 @@ func PerfettoChromeConsumer(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read the trace config: ", err)
 	}
 	// Unmarshall the pbtxt and then marshall to binary protobuf.
-	config := &trace.TraceConfig{}
+	config := &perfetto_proto.TraceConfig{}
 	if err := proto.UnmarshalText(string(configTxt), config); err != nil {
 		s.Fatal("Failed to unmarshal perfetto config: ", err)
 	}
