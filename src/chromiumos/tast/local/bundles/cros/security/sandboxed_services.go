@@ -78,6 +78,8 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"update_engine", "root", "root", 0},
 		{"update_engine_client", "root", "root", 0},
 		{"bluetoothd", "bluetooth", "bluetooth", restrictCaps | noNewPrivs},
+		{"btadapterd", "bluetooth", "bluetooth", restrictCaps | noNewPrivs},
+		{"btmanagerd", "bluetooth", "bluetooth", restrictCaps | noNewPrivs},
 		{"debugd", "root", "root", mntNS},
 		{"cras", "cras", "cras", mntNS | restrictCaps | noNewPrivs},
 		{"tcsd", "tss", "tss", restrictCaps},

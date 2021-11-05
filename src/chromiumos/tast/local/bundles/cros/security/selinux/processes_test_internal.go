@@ -117,6 +117,8 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/bin/arc-obb-mounter", matchRegexp, "cros_arc_obb_mounter", zeroProcs, ""},
 				{exe, "/usr/bin/arc_camera_service", matchRegexp, "cros_arc_camera_service", zeroProcs, ""},
 				{exe, "/usr/bin/biod", matchRegexp, "cros_biod", zeroProcs, ""},
+				{exe, "/usr/bin/btadapterd", matchRegexp, "cros_btadapterd", zeroProcs, ""},
+				{exe, "/usr/bin/btmanagerd", matchRegexp, "cros_btmanagerd", zeroProcs, ""},
 				{exe, "/usr/bin/btdispatch", matchRegexp, "cros_btdispatch", zeroProcs, ""},
 				{exe, "/usr/bin/chunneld", matchRegexp, "cros_chunneld", zeroProcs, ""},
 				{exe, "/usr/bin/cras", matchRegexp, "cros_cras", zeroProcs, ""},
