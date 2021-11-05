@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c18f124d_f27b225f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2021-11-05T22:49:05Z",
+      "side": 1,
+      "message": "Oh. Not sure why that didn\u0027t work for me earlier. I\u0027ll go with that. Thanks!",
+      "parentUuid": "4deda142_757fb511",
+      "range": {
+        "startLine": 51,
+        "startChar": 58,
+        "endLine": 51,
+        "endChar": 64
+      },
+      "revId": "dce72fe4dc5c032b95ce8f900a750202e6665591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e931147b_c4720594",
