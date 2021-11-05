@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "506fcfb6_7d92a115",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-05T13:55:27Z",
+      "side": 1,
+      "message": "LGTM with comment.",
+      "revId": "2e5bc35d8a8d173b217915fa3b6f5ea86c117713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea8c274a_19cef919",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-11-04T22:51:05Z",
       "side": 1,
       "message": "nit: you can remove this line.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "2e5bc35d8a8d173b217915fa3b6f5ea86c117713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f977242_058c0086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/select_to_speak.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-05T13:55:27Z",
+      "side": 1,
+      "message": "If this is temporary disabling, could you file a bug to re-enable and add TODO comment linking to the bug here?",
+      "parentUuid": "ea8c274a_19cef919",
       "range": {
         "startLine": 28,
         "startChar": 2,
