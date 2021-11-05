@@ -225,6 +225,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4914419f_75741d00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-05T20:46:20Z",
+      "side": 1,
+      "message": "Sorry, where\u0027s the description of the flakiness? I read your updated commit message and it still doesn\u0027t explain why packets don\u0027t always have a correct FCS. From reading your description my understanding is that Dot11FCSValid will always be true because the pcap will always strip the FCS and gopacket will always inject a good one. Can you explain where I\u0027m making an incorrect assumption here?",
+      "parentUuid": "368f1550_5523878d",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c9879f60_065d20ca",
