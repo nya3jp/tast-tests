@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "18c03439_94bad9e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-11-05T10:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98be3ced_6099c51e",
+      "revId": "cafe55eef3a7bdc10a68b7051e88572e9039c405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c4e5306e_df5abd9e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -31,6 +49,23 @@
       "writtenOn": "2021-11-04T15:51:50Z",
       "side": 1,
       "message": "PTAL",
+      "revId": "cafe55eef3a7bdc10a68b7051e88572e9039c405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f47411_eb862f28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-11-05T10:13:54Z",
+      "side": 1,
+      "message": "Thanks for the review.",
       "revId": "cafe55eef3a7bdc10a68b7051e88572e9039c405",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +83,24 @@
       "writtenOn": "2021-11-04T17:07:45Z",
       "side": 1,
       "message": "I can\u0027t see where is that used?\n\nAlso, it could be a part of the configuration which is constructed in tests with\nkerberos.ConstructConfig(domain, username) and later retrieved by config.RealsConfig WDYT?",
+      "revId": "cafe55eef3a7bdc10a68b7051e88572e9039c405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8c61175_fed0ee9a",
+        "filename": "src/chromiumos/tast/local/kerberos/ticket.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-11-05T10:13:54Z",
+      "side": 1,
+      "message": "Yes that makes sense, moved it to configuration.",
+      "parentUuid": "5dddcdf2_be28034c",
       "revId": "cafe55eef3a7bdc10a68b7051e88572e9039c405",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
