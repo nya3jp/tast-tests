@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c093ab7c_8bd076b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T14:59:50Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "6d0c31899bc22847756eacc0aa26b3cd308ec3c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d47bbb5_ed2a9d7e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/request/response_types.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T14:59:50Z",
+      "side": 1,
+      "message": "This one is checked in the ChromeOSVersion() call as well, and these 2 functions are at moment there in both tests, so it seems a little redundant.\nBut as it doesn\u0027t seem to expensive, it doesn\u0027t really bother me much.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "6d0c31899bc22847756eacc0aa26b3cd308ec3c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
