@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d542c315_d56382b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-05T20:33:24Z",
+      "side": 1,
+      "message": "I wonder whether we could use defer for this.\ne.g.\n  \n  if validation {\n    validationHelper \u003d cuj.NewTPSValidationHelper(ctx)\n    validationHelper.Stress()\n    defer func(ctx context.Context) {\n      if err:\u003d validationHelper.Release(); err !\u003d nil {\n        s.Fatal(\"Failed to release validationHelper, err\u003d\", err)\n      }\n    }(closeCtx)\n  }",
+      "revId": "21c5dd3505029b8a45dfb25ad7b3de0900516275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46045ee9_5d9af5d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 4
