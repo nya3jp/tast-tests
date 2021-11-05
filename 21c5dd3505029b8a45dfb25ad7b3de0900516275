@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a576a9_2bedece9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tps_validation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-11-05T19:44:41Z",
+      "side": 1,
+      "message": "Does Go have concept of a destructor? Can we call this from the dtor?",
+      "revId": "21c5dd3505029b8a45dfb25ad7b3de0900516275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
