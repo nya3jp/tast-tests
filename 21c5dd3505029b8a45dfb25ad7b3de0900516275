@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a369e322_08be9b11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-11-05T21:38:10Z",
+      "side": 1,
+      "message": "I feel like validationHelper.Release() is still using the initial ctx (cmd.Wait() using cmd.ctx https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/testexec/testexec.go;l\u003d266?q\u003dCommandContext%20run\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2F), should we create NewTPSValidationHelper with closeCtx instead?",
+      "parentUuid": "d542c315_d56382b7",
+      "revId": "21c5dd3505029b8a45dfb25ad7b3de0900516275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46045ee9_5d9af5d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 4
