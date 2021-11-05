@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2038f062_add279ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-05T10:28:10Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "274aa9bf84f80c62bb6704fb939d7c43bed13617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db9d1eb8_2675421e",
+        "filename": "src/chromiumos/tast/local/kerberos/ticket.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-05T10:28:10Z",
+      "side": 1,
+      "message": "nit: please adjust the error message. Seems it was not correct from the start.",
+      "range": {
+        "startLine": 65,
+        "startChar": 27,
+        "endLine": 65,
+        "endChar": 56
+      },
+      "revId": "274aa9bf84f80c62bb6704fb939d7c43bed13617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
