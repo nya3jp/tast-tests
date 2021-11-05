@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e20bca_22ecbe19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-11-05T16:33:43Z",
+      "side": 1,
+      "message": "Thanks, Miriam!",
+      "revId": "5303c5de0149c116bf5fd2e4090190536709a5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2486209e_d77c8526",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-11-05T16:33:43Z",
+      "side": 1,
+      "message": "If there are any users logged in, you likely also want to check /home/chronos/u-*/crash and /run/daemon-store/crash/*/",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 167
+      },
+      "revId": "5303c5de0149c116bf5fd2e4090190536709a5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
