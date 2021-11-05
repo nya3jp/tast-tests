@@ -105,6 +105,8 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/sys/kernel/debug/sync/info", Context: "debugfs_sync", IgnoreErrors: true},
 		{Path: "/usr/bin", Context: "cros_coreutils_exec", Recursive: true, Filter: selinux.InvertFilterSkipFile(selinux.SkipCoreutilsFile)},
 		{Path: "/usr/bin/anomaly_detector", Context: "cros_anomaly_detector_exec"},
+		{Path: "/usr/bin/btadapterd", Context: "cros_btadapterd_exec"},
+		{Path: "/usr/bin/btmanagerd", Context: "cros_btmanagerd_exec"},
 		{Path: "/usr/bin/chunneld", Context: "cros_chunneld_exec", IgnoreErrors: true},
 		{Path: "/usr/bin/chrt", Context: "cros_chrt_exec"},
 		{Path: "/usr/bin/cras", Context: "cros_cras_exec"},
