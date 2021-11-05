@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "016430e4_f8b6d6e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T16:53:58Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "5303c5de0149c116bf5fd2e4090190536709a5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2486209e_d77c8526",
@@ -36,6 +53,29 @@
         "startChar": 0,
         "endLine": 40,
         "endChar": 167
+      },
+      "revId": "5303c5de0149c116bf5fd2e4090190536709a5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9631af0_ed3b1326",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-05T16:53:58Z",
+      "side": 1,
+      "message": "nit: sensitiveDataForPstore is enough, in Go you should avoid get and set in function names in general when possible.",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 30
       },
       "revId": "5303c5de0149c116bf5fd2e4090190536709a5c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
