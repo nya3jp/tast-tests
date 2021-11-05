@@ -117,12 +117,15 @@ func Disney(ctx context.Context, s *testing.State) {
 // verify Disney reached main activity page of the app.
 func launchAppForDisney(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		loginID     = "com.disney.disneyplus:id/welcomeButtonLogIn"
-		editFieldID = "com.disney.disneyplus:id/editFieldEditText"
-		continueID  = "com.disney.disneyplus:id/continueLoadingButton"
-		signInID    = "com.disney.disneyplus:id/standardButtonBackground"
-		notNowID    = "android:id/autofill_save_no"
+		loginID              = "com.disney.disneyplus:id/welcomeButtonLogIn"
+		editFieldID          = "com.disney.disneyplus:id/editFieldEditText"
+		continueID           = "com.disney.disneyplus:id/continueLoadingButton"
+		signInID             = "com.disney.disneyplus:id/standardButtonBackground"
+		notNowID             = "android:id/autofill_save_no"
+		neverButtonText      = "Never"
+		profileIconClassName = "android.view.ViewGroup"
 	)
+	var profileIconIndex = 3
 
 	// Click on login button.
 	loginButton := d.Object(ui.ID(loginID))
@@ -206,6 +209,21 @@ func launchAppForDisney(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	} else if err := notNowButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on notNowButton: ", err)
 	}
+	// Click on never button.
+	neverButton := d.Object(ui.TextMatches("(?i)" + neverButtonText))
+	if err := neverButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Never Button doesn't exist: ", err)
+	} else if err := neverButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on neverButton: ", err)
+	}
+
+	// Click on profile icon
+	profileIcon := d.Object(ui.ClassName(profileIconClassName), ui.Index(profileIconIndex))
+	if err := profileIcon.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Error("profileIcon doesn't exists: ", err)
+	} else if err := profileIcon.Click(ctx); err != nil {
+		s.Fatal("Failed to click on profileIcon: ", err)
+	}
 
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for launch verifier.
@@ -225,7 +243,7 @@ func signOutOfDisney(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 	)
 
 	// Click on my stuff icon.
-	myStuffIcon := d.Object(ui.Description(myStuffDes))
+	myStuffIcon := d.Object(ui.DescriptionMatches("(?i)" + myStuffDes))
 	if err := myStuffIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Log("MyStuffIcon doesn't exist and skipped login: ", err)
 		return
@@ -234,7 +252,7 @@ func signOutOfDisney(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 	}
 
 	// Click on sign out button.
-	signOutButton := d.Object(ui.ID(signOutID), ui.Text(signOutText))
+	signOutButton := d.Object(ui.ID(signOutID), ui.TextMatches("(?i)"+signOutText))
 	if err := signOutButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Error("SignOutButton doesn't exist: ", err)
 	} else if err := signOutButton.Click(ctx); err != nil {
