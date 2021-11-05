@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc480fc0_3406c73a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-11-05T15:57:43Z",
+      "side": 1,
+      "message": "Gabor as tast reviewer.\nMiriam, can you check that I didn\u0027t miss any folder used by crash reporter? There are no users on the device after rollback, so I didn\u0027t add those.",
+      "revId": "0b870e284e0b045b7a7d6311569c442cfb079277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
