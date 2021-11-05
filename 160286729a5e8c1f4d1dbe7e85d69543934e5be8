@@ -39,6 +39,30 @@
       },
       "revId": "160286729a5e8c1f4d1dbe7e85d69543934e5be8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b61399af_097360f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-11-05T22:11:58Z",
+      "side": 1,
+      "message": "I think we can keep TPS.Display.FramesExpected/FramesProduced for now to compare between old and new fps subscore just for reference.\n\nI can\u0027t come up with a better name either...TPS.Display.Smoothess is fine to me though...",
+      "parentUuid": "1acc2c9a_0a3bb231",
+      "range": {
+        "startLine": 183,
+        "startChar": 29,
+        "endLine": 183,
+        "endChar": 47
+      },
+      "revId": "160286729a5e8c1f4d1dbe7e85d69543934e5be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
