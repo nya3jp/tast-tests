@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f52374c_1441111e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T00:15:01Z",
+      "side": 1,
+      "message": "LGTM % ricardo\u0027s comments",
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb079a5b_397e1bb2",
@@ -37,6 +54,23 @@
         "endLine": 27,
         "endChar": 70
       },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a30870_81918a5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T00:15:01Z",
+      "side": 1,
+      "message": "Nit: I think according to go style this should be drmTraceSizeDefault. Similar below.",
       "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -123,6 +157,30 @@
       "writtenOn": "2021-11-04T19:03:24Z",
       "side": 1,
       "message": "nit: const ?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 26
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc1d6b0_3afec482",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T00:15:01Z",
+      "side": 1,
+      "message": "or just :\u003d - same below",
+      "parentUuid": "3f42256b_26f0949b",
       "range": {
         "startLine": 78,
         "startChar": 0,
