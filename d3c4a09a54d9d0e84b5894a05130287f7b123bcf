@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8278a981_2f667e5f",
+        "filename": "src/chromiumos/tast/local/memory/arc/vmstat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-05T02:35:28Z",
+      "side": 1,
+      "message": "Does this need to be exported? Seems only use case is in this file.",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "d3c4a09a54d9d0e84b5894a05130287f7b123bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e4b5c8_46fd64af",
+        "filename": "src/chromiumos/tast/local/memory/arc/vmstat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-05T02:35:28Z",
+      "side": 1,
+      "message": "nit: should this be / ?",
+      "range": {
+        "startLine": 40,
+        "startChar": 46,
+        "endLine": 40,
+        "endChar": 47
+      },
+      "revId": "d3c4a09a54d9d0e84b5894a05130287f7b123bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4e09e92_8909c5bf",
         "filename": "src/chromiumos/tast/local/memory/arc/vmstat.go",
         "patchSetId": 1
