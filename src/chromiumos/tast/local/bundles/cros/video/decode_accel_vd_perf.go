@@ -125,7 +125,7 @@ func init() {
 }
 
 func DecodeAccelVDPerf(ctx context.Context, s *testing.State) {
-	if err := decoding.RunAccelVideoPerfTest(ctx, s.OutDir(), s.DataPath(s.Param().(string)), decoding.VD); err != nil {
+	if err := decoding.RunAccelVideoPerfTest(ctx, s.OutDir(), s.DataPath(s.Param().(string)), decoding.TestParams{DecoderType: decoding.VD}); err != nil {
 		s.Fatal("test failed: ", err)
 	}
 }
