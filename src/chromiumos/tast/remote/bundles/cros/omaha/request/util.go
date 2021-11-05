@@ -4,12 +4,16 @@
 
 package request
 
-import "strings"
+import (
+	"strconv"
+	"strings"
+)
 
 // MatchOneOfVersions checks if a given version matches any of the provided major versions.
-func MatchOneOfVersions(version string, majors ...string) bool {
+func MatchOneOfVersions(version string, majors ...int) bool {
 	for _, major := range majors {
-		if strings.HasPrefix(version, major+".") {
+		majorStr := strconv.FormatInt(int64(major), 10)
+		if strings.HasPrefix(version, majorStr+".") {
 			return true
 		}
 	}

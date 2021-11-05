@@ -6,6 +6,8 @@ package request
 
 import (
 	"github.com/google/uuid"
+
+	"chromiumos/tast/remote/bundles/cros/omaha/params"
 )
 
 // OS is part of an Omaha Request.
@@ -98,8 +100,8 @@ func New() *Request {
 	}
 }
 
-// GenerateRequestApp creates a new RequestApp based on DeviceParams.
-func GenerateRequestApp(deviceParams *DeviceParams, version, track string) RequestApp {
+// GenerateRequestApp creates a new RequestApp based on params.Device.
+func GenerateRequestApp(deviceParams *params.Device, version, track string) RequestApp {
 	return RequestApp{
 		AppID:         deviceParams.ProductID,
 		Board:         deviceParams.Board,
@@ -113,6 +115,6 @@ func GenerateRequestApp(deviceParams *DeviceParams, version, track string) Reque
 }
 
 // GenSP generates a string to be used in the SP (service pack) field of OS.
-func (r *Request) GenSP(deviceParams *DeviceParams, version string) {
+func (r *Request) GenSP(deviceParams *params.Device, version string) {
 	r.OS.SP = version + "_" + deviceParams.MachineType
 }

@@ -6,11 +6,11 @@ package omaha
 
 import (
 	"context"
-	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/remote/bundles/cros/omaha/params"
 	"chromiumos/tast/remote/bundles/cros/omaha/request"
 	"chromiumos/tast/testing"
@@ -24,29 +24,22 @@ func init() {
 			"vsavu@chromium.org", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
-		Attr:         []string{"group:omaha"},
-		SoftwareDeps: []string{},
+		Attr:    []string{"group:omaha"},
+		Fixture: fixture.Omaha,
 	})
 }
 
 func LTS(ctx context.Context, s *testing.State) {
-	// This is an old version. No need to update it unless a new stepping stone is introduced.
-	// This is the latest M86 stable push.
-	const prevVersion = "13421.102.0"
+	params := s.FixtValue().(*params.FixtData)
 
-	dutParams, err := request.LoadParamsFromDUT(ctx, s.DUT())
-	if err != nil {
-		s.Fatal("Failed to load device parameters: ", err)
-	}
-	if err := dutParams.DumpToFile(filepath.Join(s.OutDir(), "device-param.json")); err != nil {
-		s.Log("Failed to dump 'device-param.json': ", err)
-	}
+	ltsChromeOsVersion := params.Config.ChromeOSVersionFromMilestone[params.Config.CurrentChromeOSLTS]
+	ltsPrefix := strconv.FormatInt(int64(ltsChromeOsVersion), 10)
 
 	req := request.New()
-	req.GenSP(dutParams, prevVersion)
-	requestApp := request.GenerateRequestApp(dutParams, prevVersion, request.Stable)
+	req.GenSP(params.Device, params.Config.OldVersion)
+	requestApp := request.GenerateRequestApp(params.Device, params.Config.OldVersion, request.Stable)
 	requestApp.UpdateCheck.LTSTag = "lts"
-	requestApp.UpdateCheck.TargetVersionPrefix = params.CurrentChromeOSLTS
+	requestApp.UpdateCheck.TargetVersionPrefix = ltsPrefix
 	req.Apps = append(req.Apps, requestApp)
 
 	ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
@@ -65,13 +58,8 @@ func LTS(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Error("Failed to get ChromeOS version: ", err)
 	}
-	if !request.MatchOneOfVersions(chromeOSVersion, params.CurrentChromeOSLTS) {
-		s.Errorf("ChromeOS Version %q does not match the requested prefix %q", chromeOSVersion, params.CurrentChromeOSLTS)
-	}
-
-	currentChromeOSLTSMinor, err := strconv.Atoi(params.CurrentChromeOSLTSMinor)
-	if err != nil {
-		s.Fatalf("Could not parse LTS minor version %q to int: %v", params.CurrentChromeOSLTSMinor, err)
+	if !request.MatchOneOfVersions(chromeOSVersion, ltsChromeOsVersion) {
+		s.Errorf("ChromeOS Version %q does not match the requested prefix %q", chromeOSVersion, ltsPrefix)
 	}
 
 	minorVersion, err := strconv.Atoi(strings.Split(chromeOSVersion, ".")[1])
@@ -79,7 +67,7 @@ func LTS(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to read the minor version from %q: %v", chromeOSVersion, err)
 	}
 
-	if minorVersion < currentChromeOSLTSMinor {
-		s.Errorf("Minor version %d not an LTS minor version (>=%s)", minorVersion, params.CurrentChromeOSLTSMinor)
+	if minorVersion < params.Config.CurrentChromeOSLTSMinor {
+		s.Errorf("Minor version %d not an LTS minor version (>=%d)", minorVersion, params.Config.CurrentChromeOSLTSMinor)
 	}
 }
