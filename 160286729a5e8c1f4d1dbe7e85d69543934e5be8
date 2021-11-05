@@ -63,6 +63,30 @@
       },
       "revId": "160286729a5e8c1f4d1dbe7e85d69543934e5be8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24705074_3750131c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-05T22:33:16Z",
+      "side": 1,
+      "message": "Cool. Thanks for the input. I want to make sure you guys are okay since you guys are the consumer of the data.\n\nAnd to clarify a bit on my previous comment, I meant only to remove \"TPS.DisplaySmoothness\" since it is derived from FramesProduced/FramesExpected and kind of redundant. It is added first before the frame count. And I dare not to remove it because I don\u0027t know whether the data pipeline uses it. But since we have full control, we should know better.",
+      "parentUuid": "b61399af_097360f3",
+      "range": {
+        "startLine": 183,
+        "startChar": 29,
+        "endLine": 183,
+        "endChar": 47
+      },
+      "revId": "160286729a5e8c1f4d1dbe7e85d69543934e5be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
