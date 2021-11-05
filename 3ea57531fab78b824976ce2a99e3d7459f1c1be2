@@ -85,6 +85,41 @@
       "message": "LGTM - I\u0027ve been going through a similar issue with ARC++ (changing the window state, and then things not always being available) and wrote up a quick doc with some analysis here: https://docs.google.com/document/d/1zAfFrFOkk3ko6N6p5ZQE99r-dftn7hhQNR-UhIIbS7A/edit?resourcekey\u003d0-DmxVROfPTeGxn3f4g7WwNg#. It seems the WM calls can return before the View has refreshed in certain cases. If you continue to run into issues, adding a .WaitForExists(\u003cELEMENT YOU CARE ABOUT\u003e) after WM Animation wait may help reduce flakiness. Not sure if that\u0027s relevant here but figured I\u0027d mention it.",
       "revId": "3ea57531fab78b824976ce2a99e3d7459f1c1be2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60c516d7_602e8686",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-11-05T21:14:25Z",
+      "side": 1,
+      "message": "Thanks for the details! This worked for me locally so ill give it a shot, otherwise will look at your doc!",
+      "parentUuid": "276817b0_15ef7855",
+      "revId": "3ea57531fab78b824976ce2a99e3d7459f1c1be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9c04c17_9f75f257",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-11-05T21:14:25Z",
+      "side": 1,
+      "message": "Thanks all for the reviews!",
+      "revId": "3ea57531fab78b824976ce2a99e3d7459f1c1be2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
