@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc23146c_348370ee",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-05T06:21:01Z",
+      "side": 1,
+      "message": "Would suggest writing a function coords.NewRectFromPoints to do this, seems pretty common.",
+      "revId": "56cc82c570d3f7a7a6c2ef0fcee8f106d8425e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
