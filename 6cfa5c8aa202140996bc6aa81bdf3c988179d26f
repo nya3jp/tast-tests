@@ -123,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "321aaa2b_5d066d48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_dock_mac_address_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-05T10:26:05Z",
+      "side": 1,
+      "message": "Ah, got it.\n\nThere was a bug long time ago: b/172208984. Will ask framework people if they will be able to work on it.",
+      "parentUuid": "36ffcb36_78824edd",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "6cfa5c8aa202140996bc6aa81bdf3c988179d26f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "522d8f28_ec93da29",
