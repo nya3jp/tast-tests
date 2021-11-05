@@ -63,6 +63,30 @@
       },
       "revId": "97f10d855761d1b37e60cd2aeb0dbaff6129ea55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3fe5d3b_42fafcbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_screen_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-11-05T08:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e27ca852_04acd032",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "97f10d855761d1b37e60cd2aeb0dbaff6129ea55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
