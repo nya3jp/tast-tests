@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b6d53bce_c2cdeb34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-05T06:55:05Z",
+      "side": 1,
+      "message": "Sounds nice!",
+      "revId": "dad2a84aeb02b53527d9451582e83262d21e9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2493c525_5495877d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -14,6 +31,92 @@
       "writtenOn": "2021-11-05T02:08:22Z",
       "side": 1,
       "message": "There was a gwsq outage b/205050529, manually assigning to myself.\n",
+      "revId": "dad2a84aeb02b53527d9451582e83262d21e9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60f6351b_261a8066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-05T06:55:05Z",
+      "side": 1,
+      "message": "LGTM with nits.\n",
+      "revId": "dad2a84aeb02b53527d9451582e83262d21e9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c87d8308_33415c48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-05T06:55:05Z",
+      "side": 1,
+      "message": "style: Local variable names start with lower letters, i.e. checkForPstoreConsoleRamoops.\n\noptional: since local functions can refer to variables defined in outer scopes, you can avoid passing dut.DUT and testing.State as arguments. You can also avoid passing context.Context as well, but we might still want to pass it for the standard convention around context.Context.\n\n d :\u003d s.DUT()\n\n checkForPstoreConsoleRamoops :\u003d func(ctx context.Context) bool {\n   // can refer d and s here\n }",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "dad2a84aeb02b53527d9451582e83262d21e9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c8f21c2_dbd6e85d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-05T06:55:05Z",
+      "side": 1,
+      "message": "Since this function can be called twice, second call will overwrite the files from the first call. You might want to pass a copy location to the function so that we don\u0027t overwrite them, e.g.\n\n checkForPstoreConsoleRamoops :\u003d func(ctx context.Context, destName string) bool {\n   destDir :\u003d filepath.Join(s.OutDir(), destName)\n   // copy files to destDir...\n }\n\n checkForPstoreConsoleRamoops(ctx, \"before-reboot\")\n\n checkForPstoreConsoleRamoops(ctx, \"after-reboot\")",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 12
+      },
+      "revId": "dad2a84aeb02b53527d9451582e83262d21e9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e80611f_c73cb62b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-05T06:55:05Z",
+      "side": 1,
+      "message": "Could you add a brief comment describing why we can declare success without rebooting the DUT? Your CL description is excellent, so you just need to copy some of them here for easier future reference :)",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 8
+      },
       "revId": "dad2a84aeb02b53527d9451582e83262d21e9899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
