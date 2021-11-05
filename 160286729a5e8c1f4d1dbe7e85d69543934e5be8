@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06812622_79076a87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-05T21:59:44Z",
+      "side": 1,
+      "message": "This CL depends on chrome autotest api CL:3264079. It would get the average smoothness every 5s under \"TPS.Display.Smoothness\" in results json file.",
+      "revId": "160286729a5e8c1f4d1dbe7e85d69543934e5be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1acc2c9a_0a3bb231",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-05T21:59:44Z",
+      "side": 1,
+      "message": "This name is a bit awkward. It would be under \"TPS.Display.Smoothess\" in results.json and we also have a \"TPS.DisplaySmoothness\" (no \".\" between Display and Smoothness) from FrameDataTracker.\n\nThe FrameDataTracker one is probably out of date that we output the raw frame counts (\"TPS.Display.FramesExpected/FramesProduced\"). Maybe we could get rid of it now?\n\nOtherwise, do you guys have suggestions of the name?",
+      "range": {
+        "startLine": 183,
+        "startChar": 29,
+        "endLine": 183,
+        "endChar": 47
+      },
+      "revId": "160286729a5e8c1f4d1dbe7e85d69543934e5be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
