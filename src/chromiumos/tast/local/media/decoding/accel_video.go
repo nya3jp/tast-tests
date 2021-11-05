@@ -52,16 +52,25 @@ const (
 	SSIM
 )
 
-func generateCmdArgs(outDir, filename string, decoderType DecoderType) []string {
+// TestParams allows adjusting some of the test arguments passed in.
+type TestParams struct {
+	DecoderType  DecoderType
+	LinearOutput bool
+}
+
+func generateCmdArgs(outDir, filename string, parameters TestParams) []string {
 	args := []string{
 		filename,
 		filename + ".json",
 		"--output_folder=" + outDir,
 	}
-	if decoderType == VDVDA {
+	if parameters.DecoderType == VDVDA {
 		args = append(args, "--use_vd_vda")
-	} else if decoderType == VDA {
+	} else if parameters.DecoderType == VDA {
 		args = append(args, "--use-legacy")
+	}
+	if parameters.LinearOutput {
+		args = append(args, "--linear_output")
 	}
 	return args
 }
@@ -82,9 +91,12 @@ func runAccelVideoTestCmd(ctx context.Context, execCmd, filter, logfilepath stri
 }
 
 // RunAccelVideoTest runs video_decode_accelerator_tests with the specified
-// video file. decoderType specifies whether to run the tests against the VDA
-// or VD based video decoder implementations.
-func RunAccelVideoTest(ctx context.Context, outDir, filename string, decoderType DecoderType) error {
+// video file. TestParams specifies:
+// 1. Whether to run the tests against the VDA or VD based video decoder
+//    implementations.
+// 2. If the output of the decoder is a linear buffer (this is false by
+//    default).
+func RunAccelVideoTest(ctx context.Context, outDir, filename string, parameters TestParams) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		return errors.Wrap(err, "failed to set values for verbose logging")
@@ -100,7 +112,7 @@ func RunAccelVideoTest(ctx context.Context, outDir, filename string, decoderType
 	upstart.StopJob(shortCtx, "ui")
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
-	args := generateCmdArgs(outDir, filename, decoderType)
+	args := generateCmdArgs(outDir, filename, parameters)
 
 	const exec = "video_decode_accelerator_tests"
 	if report, err := runAccelVideoTestCmd(shortCtx,
@@ -136,7 +148,7 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 	const exec = "video_decode_accelerator_tests"
 	var failedFilenames []string
 	for _, file := range testVectors {
-		args := generateCmdArgs(outDir, file, VD)
+		args := generateCmdArgs(outDir, file, TestParams{DecoderType: VD, LinearOutput: false})
 		if validatorType == SSIM {
 			args = append(args, "--validator_type=ssim")
 		} else if validatorType == MD5 {
@@ -159,9 +171,12 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 }
 
 // RunAccelVideoPerfTest runs video_decode_accelerator_perf_tests with the
-// specified video file. decoderType specifies whether to run the tests against
-// the VDA or VD based video decoder implementations. Both capped and uncapped
-// performance is measured.
+// specified video file. TestParams specifies:
+// 1. Whether to run the tests against the VDA or VD based video decoder
+//    implementations.
+// 2. If the output of the decoder is a linear buffer (this is false by
+//    default).
+// Both capped and uncapped performance is measured.
 // - Uncapped performance: the specified test video is decoded from start to
 // finish as fast as possible. This provides an estimate of the decoder's max
 // performance (e.g. the maximum FPS).
@@ -171,7 +186,7 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 // The test binary is run twice. Once to measure both capped and uncapped
 // performance, once to measure CPU usage and power consumption while running
 // the capped performance test.
-func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, decoderType DecoderType) error {
+func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, parameters TestParams) error {
 	const (
 		// Name of the capped performance test.
 		cappedTestname = "MeasureCappedPerformance"
@@ -207,7 +222,7 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, decoder
 	}
 
 	// Test 1: Measure capped and uncapped performance.
-	args := generateCmdArgs(outDir, filename, decoderType)
+	args := generateCmdArgs(outDir, filename, parameters)
 
 	const exec = "video_decode_accelerator_perf_tests"
 	if report, err := runAccelVideoTestCmd(ctx, exec,
