@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a97aef24_ba4fd27d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-05T21:49:04Z",
+      "side": 1,
+      "message": "Oh, I neglected \"validationHelper.Release()\" does not need a Context. And you are right that we would be using `ctx` and pass `closeCtx` here is not necessary.\n\nLet\u0027s use `closeCtx` with NewTPSValidationHelper so that we could use that extra 2s for the wait.",
+      "parentUuid": "a369e322_08be9b11",
+      "revId": "21c5dd3505029b8a45dfb25ad7b3de0900516275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46045ee9_5d9af5d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
         "patchSetId": 4
