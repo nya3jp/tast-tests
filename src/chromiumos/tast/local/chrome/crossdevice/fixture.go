@@ -179,8 +179,6 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	}
 
 	f.cr = cr
-	// Lock chrome after all Setup is complete so we don't block other fixtures.
-	chrome.Lock()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -239,6 +237,9 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		s.Fatal("Failed to get CrOS attributes for reporting: ", err)
 	}
 	f.crosAttributes = crosAttributes
+
+	// Lock chrome after all Setup is complete so we don't block other fixtures.
+	chrome.Lock()
 
 	return &FixtData{
 		Chrome:        cr,
