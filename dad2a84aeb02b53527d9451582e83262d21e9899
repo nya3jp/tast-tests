@@ -167,6 +167,30 @@
       },
       "revId": "dad2a84aeb02b53527d9451582e83262d21e9899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ff9c584_05c17257",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-11-05T22:16:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e80611f_c73cb62b",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 8
+      },
+      "revId": "dad2a84aeb02b53527d9451582e83262d21e9899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
