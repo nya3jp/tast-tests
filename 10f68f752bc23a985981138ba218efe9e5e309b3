@@ -16,6 +16,46 @@
       "message": "Yulun, can you take a look at this?",
       "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b134c90b_aa5ca055",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-11-05T20:03:02Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "289da2d3_665974e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2021-11-05T20:03:02Z",
+      "side": 1,
+      "message": "get",
+      "range": {
+        "startLine": 103,
+        "startChar": 21,
+        "endLine": 103,
+        "endChar": 25
+      },
+      "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
