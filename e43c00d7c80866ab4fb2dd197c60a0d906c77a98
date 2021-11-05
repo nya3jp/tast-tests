@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e88979a0_9318d409",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T18:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb079a5b_397e1bb2",
+      "range": {
+        "startLine": 27,
+        "startChar": 69,
+        "endLine": 27,
+        "endChar": 70
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33a30870_81918a5d",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e99878_c386aec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T18:51:40Z",
+      "side": 1,
+      "message": "Happy to make this change. Note that these were intended to mirror the D-Bus names, which have different naming conventions.. but that\u0027s probably a lost cause, esp. since things leading capitalization are not simply stylistic choices in go.",
+      "parentUuid": "33a30870_81918a5d",
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f80fb19_b8061c99",
@@ -88,6 +130,30 @@
       "writtenOn": "2021-11-04T17:09:08Z",
       "side": 1,
       "message": "Nittiest nit: D-Bus",
+      "range": {
+        "startLine": 56,
+        "startChar": 17,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d2f9d68_61cd04cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T18:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f80fb19_b8061c99",
       "range": {
         "startLine": 56,
         "startChar": 17,
@@ -121,6 +187,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6069de8d_13bcba52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T18:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4687dd1_1acf3aa5",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0b06278_bb6e05b1",
@@ -134,6 +224,30 @@
       "writtenOn": "2021-11-04T19:03:24Z",
       "side": 1,
       "message": "huge nit: Drm -\u003e DRM\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 8
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5debd39c_5ef5826b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T18:51:40Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I\u0027ll go address this on the related debugd CL as well (Google C++ style also prefers the same).",
+      "parentUuid": "d0b06278_bb6e05b1",
       "range": {
         "startLine": 66,
         "startChar": 5,
@@ -191,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd5e3e60_3faa3409",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T18:51:40Z",
+      "side": 1,
+      "message": "I went with const here and below.",
+      "parentUuid": "3f42256b_26f0949b",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 26
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecbb695d_065919fd",
@@ -204,6 +342,30 @@
       "writtenOn": "2021-11-04T19:03:24Z",
       "side": 1,
       "message": "ditto: could it be a const?",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 30
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a16148f_fafff55f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T18:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecbb695d_065919fd",
       "range": {
         "startLine": 81,
         "startChar": 1,
@@ -239,6 +401,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a67f234_2d1b94f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T18:51:40Z",
+      "side": 1,
+      "message": "I think I need the type, since the D-Bus library will need to know which type to send this as. I\u0027ll give it a try though and follow up here.",
+      "parentUuid": "5f6ec6bc_145e5778",
+      "range": {
+        "startLine": 82,
+        "startChar": 32,
+        "endLine": 82,
+        "endChar": 38
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "166ee407_f3e3aa72",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
         "patchSetId": 2
@@ -250,6 +436,30 @@
       "writtenOn": "2021-11-04T19:03:24Z",
       "side": 1,
       "message": "nit (here and below): add docstring for all non-trivial funcs",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 4
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3acdbc13_d69e6b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T18:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "166ee407_f3e3aa72",
       "range": {
         "startLine": 88,
         "startChar": 0,
@@ -283,6 +493,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2b7b98f_7a39f310",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T18:51:40Z",
+      "side": 1,
+      "message": "Thanks for the tip. Fixed this flow here and below. Much cleaner, and I can avoid passing testing.State as function parameter.",
+      "parentUuid": "bbaad281_4b4426ee",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6619e4bf_2a6bdef5",
@@ -296,6 +530,24 @@
       "writtenOn": "2021-11-04T19:03:24Z",
       "side": 1,
       "message": "nit: expected",
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adf7bb0d_b08ac3d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T18:51:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6619e4bf_2a6bdef5",
       "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -323,6 +575,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cbae3a4_3858ba8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T18:51:40Z",
+      "side": 1,
+      "message": "Thanks, I missed cleaning this up after moving code around.",
+      "parentUuid": "dcc6645a_570f31e5",
+      "range": {
+        "startLine": 158,
+        "startChar": 21,
+        "endLine": 158,
+        "endChar": 66
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e67a7fb_f04523a9",
@@ -336,6 +612,30 @@
       "writtenOn": "2021-11-04T19:03:24Z",
       "side": 1,
       "message": "nit: remove \"get\" prefix from getters\n\nhttps://golang.org/doc/effective_go#Getters",
+      "range": {
+        "startLine": 169,
+        "startChar": 5,
+        "endLine": 169,
+        "endChar": 23
+      },
+      "revId": "e43c00d7c80866ab4fb2dd197c60a0d906c77a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab54597_cfd7f521",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-05T18:51:40Z",
+      "side": 1,
+      "message": "Thanks. I ended up renaming this function so I could use it more generically.",
+      "parentUuid": "1e67a7fb_f04523a9",
       "range": {
         "startLine": 169,
         "startChar": 5,
