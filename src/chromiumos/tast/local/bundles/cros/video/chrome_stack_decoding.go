@@ -71,6 +71,82 @@ var h264FilesFromBugs = []string{
 	"test_vectors/h264/b_174733646_video_with_out_of_order_frames_mtk_8173.h264",
 }
 
+var vp8ComprehensiveFiles = []string{
+	"test_vectors/vp8/vp80-00-comprehensive-001.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-002.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-003.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-004.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-005.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-007.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-008.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-009.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-010.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-011.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-012.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-013.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-015.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-016.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-017.ivf",
+	"test_vectors/vp8/vp80-00-comprehensive-018.ivf",
+}
+
+var vp8InterFiles = []string{
+	"test_vectors/vp8/inter/vp80-02-inter-1402.ivf",
+	"test_vectors/vp8/inter/vp80-02-inter-1424.ivf",
+	"test_vectors/vp8/inter/vp80-02-inter-1418.ivf",
+	"test_vectors/vp8/inter/vp80-02-inter-1412.ivf",
+	"test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf",
+	"test_vectors/vp8/inter/vp80-03-segmentation-1436.ivf",
+	"test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf",
+	"test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf",
+	"test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf",
+	"test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf",
+	"test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf",
+	"test_vectors/vp8/inter/vp80-03-segmentation-1425.ivf",
+	"test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf",
+	"test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf",
+	"test_vectors/vp8/inter/vp80-05-sharpness-1434.ivf",
+	"test_vectors/vp8/inter/vp80-05-sharpness-1430.ivf",
+	"test_vectors/vp8/inter/vp80-05-sharpness-1443.ivf",
+	"test_vectors/vp8/inter/vp80-05-sharpness-1439.ivf",
+	"test_vectors/vp8/inter/vp80-05-sharpness-1428.ivf",
+	"test_vectors/vp8/inter/vp80-05-sharpness-1438.ivf",
+	"test_vectors/vp8/inter/vp80-05-sharpness-1431.ivf",
+	"test_vectors/vp8/inter/vp80-05-sharpness-1440.ivf",
+	"test_vectors/vp8/inter/vp80-05-sharpness-1433.ivf",
+	"test_vectors/vp8/inter/vp80-05-sharpness-1429.ivf",
+}
+
+var vp8InterMultiCoeffFiles = []string{
+	"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1409.ivf",
+	"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1408.ivf",
+	"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1410.ivf",
+	"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1413.ivf",
+	"test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405.ivf",
+	"test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1406.ivf",
+	"test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1404.ivf",
+}
+
+var vp8InterSegmentFiles = []string{
+	"test_vectors/vp8/inter_segment/vp80-03-segmentation-1407.ivf",
+}
+
+var vp8IntraFiles = []string{
+	"test_vectors/vp8/intra/vp80-01-intra-1416.ivf",
+	"test_vectors/vp8/intra/vp80-01-intra-1417.ivf",
+	"test_vectors/vp8/intra/vp80-01-intra-1411.ivf",
+	"test_vectors/vp8/intra/vp80-01-intra-1400.ivf",
+	"test_vectors/vp8/intra/vp80-03-segmentation-1401.ivf",
+}
+
+var vp8IntraMultiCoeffSegmentFiles = []string{
+	"test_vectors/vp8/intra_multi_coeff/vp80-03-segmentation-1414.ivf",
+}
+
+var vp8IntraSegmentFiles = []string{
+	"test_vectors/vp8/intra_segment/vp80-03-segmentation-1415.ivf",
+}
+
 func appendJSONFiles(videoFiles []string) []string {
 	var tf []string
 	for _, file := range videoFiles {
@@ -157,6 +233,62 @@ func init() {
 			ExtraData:         appendJSONFiles(h264FilesFromBugs),
 			Val: chromeStackDecodingTestParam{
 				videoFiles:    h264FilesFromBugs,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp8_comprehensive",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraData:         appendJSONFiles(vp8ComprehensiveFiles),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp8ComprehensiveFiles,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp8_inter",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraData:         appendJSONFiles(vp8InterFiles),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp8InterFiles,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp8_inter_multi_coeff",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraData:         appendJSONFiles(vp8InterMultiCoeffFiles),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp8InterMultiCoeffFiles,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp8_inter_segment",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraData:         appendJSONFiles(vp8InterSegmentFiles),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp8InterSegmentFiles,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp8_intra",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraData:         appendJSONFiles(vp8IntraFiles),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp8IntraFiles,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp8_intra_multi_coeff",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraData:         appendJSONFiles(vp8IntraMultiCoeffSegmentFiles),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp8IntraMultiCoeffSegmentFiles,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp8_intra_segment",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			ExtraData:         appendJSONFiles(vp8IntraSegmentFiles),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp8IntraSegmentFiles,
 				validatorType: decoding.MD5,
 			},
 		}},
