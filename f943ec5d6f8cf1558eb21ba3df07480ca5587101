@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d088b0a9_05398582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-06T01:50:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7d531d1_f7e66f38",
+      "range": {
+        "startLine": 82,
+        "startChar": 22,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "f943ec5d6f8cf1558eb21ba3df07480ca5587101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a7ee37d_a8ca0189",
@@ -129,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50c086f7_e54d60d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-06T01:50:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfbbc0f6_04347e6e",
+      "range": {
+        "startLine": 89,
+        "startChar": 7,
+        "endLine": 89,
+        "endChar": 32
+      },
+      "revId": "f943ec5d6f8cf1558eb21ba3df07480ca5587101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c74aa2f1_ae56df44",
@@ -166,6 +214,30 @@
       "side": 1,
       "message": "Sure, I\u0027ll do the same in readFileToString as well.",
       "parentUuid": "c74aa2f1_ae56df44",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 17
+      },
+      "revId": "f943ec5d6f8cf1558eb21ba3df07480ca5587101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c30dfab_c02a9f9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-06T01:50:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1f41a4f_7767a2c0",
       "range": {
         "startLine": 180,
         "startChar": 1,
