@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3333fc9_acd5a4f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-06T02:15:05Z",
+      "side": 1,
+      "message": "No, the local hook already downloads the messages. This bug was for tracking it in remote tests.",
+      "parentUuid": "71ac3325_280bd1e2",
+      "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4917be39_88089285",
