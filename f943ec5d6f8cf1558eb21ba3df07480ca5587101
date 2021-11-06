@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d36f9542_2759d1ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-06T01:14:33Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "f943ec5d6f8cf1558eb21ba3df07480ca5587101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1291bd8a_e63f99c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-06T01:14:33Z",
+      "side": 1,
+      "message": "huge nit (here and below): I think it is safe to remove \"unit32\" from the const.",
+      "range": {
+        "startLine": 82,
+        "startChar": 22,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "f943ec5d6f8cf1558eb21ba3df07480ca5587101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a7ee37d_a8ca0189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-06T01:14:33Z",
+      "side": 1,
+      "message": "optional, huge nit:\n\n(sorry, missed it from prev review).\nIn this case, I think you can just inline the \"expectedDefaultCategories\". e.g:\n\n  err :\u003d testSetCategories(ctx, obj, defaultCategories, drmTraceCat... | drmTraceCat... | ...)\n  \nIf you  prefer to use the const, then group it with the prev one. e.g:\n\n  const (\n    defaultCat..  \u003d 0\n    expectedDefault ... \u003d ...\n  )",
+      "range": {
+        "startLine": 89,
+        "startChar": 7,
+        "endLine": 89,
+        "endChar": 32
+      },
+      "revId": "f943ec5d6f8cf1558eb21ba3df07480ca5587101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c74aa2f1_ae56df44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-06T01:14:33Z",
+      "side": 1,
+      "message": "nit: might be a tiny bit easier to read checking for error, instead of checking for non error. e.g:\n\n  sizeStr, err :\u003d readFileToString(path)\n  if err !\u003d nil {\n    return \"\", err\n  }\n  return strconv.Atoi(sizeStr)",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 17
+      },
+      "revId": "f943ec5d6f8cf1558eb21ba3df07480ca5587101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
