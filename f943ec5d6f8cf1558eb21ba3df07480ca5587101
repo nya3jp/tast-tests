@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef37e3d_05afc3ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-06T01:44:39Z",
+      "side": 1,
+      "message": "Thanks for the reviews.",
+      "revId": "f943ec5d6f8cf1558eb21ba3df07480ca5587101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1291bd8a_e63f99c6",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-11-06T01:14:33Z",
       "side": 1,
       "message": "huge nit (here and below): I think it is safe to remove \"unit32\" from the const.",
+      "range": {
+        "startLine": 82,
+        "startChar": 22,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "f943ec5d6f8cf1558eb21ba3df07480ca5587101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d531d1_f7e66f38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-06T01:44:39Z",
+      "side": 1,
+      "message": "Yes it is (I guess go can infer the type since drmTraceCategory...  are already uint32).",
+      "parentUuid": "1291bd8a_e63f99c6",
       "range": {
         "startLine": 82,
         "startChar": 22,
@@ -66,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfbbc0f6_04347e6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-06T01:44:39Z",
+      "side": 1,
+      "message": "I think it\u0027s easier to understand what\u0027s going on as named consts, so I\u0027ll group them together.",
+      "parentUuid": "2a7ee37d_a8ca0189",
+      "range": {
+        "startLine": 89,
+        "startChar": 7,
+        "endLine": 89,
+        "endChar": 32
+      },
+      "revId": "f943ec5d6f8cf1558eb21ba3df07480ca5587101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c74aa2f1_ae56df44",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
         "patchSetId": 5
@@ -77,6 +142,30 @@
       "writtenOn": "2021-11-06T01:14:33Z",
       "side": 1,
       "message": "nit: might be a tiny bit easier to read checking for error, instead of checking for non error. e.g:\n\n  sizeStr, err :\u003d readFileToString(path)\n  if err !\u003d nil {\n    return \"\", err\n  }\n  return strconv.Atoi(sizeStr)",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 17
+      },
+      "revId": "f943ec5d6f8cf1558eb21ba3df07480ca5587101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1f41a4f_7767a2c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-11-06T01:44:39Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll do the same in readFileToString as well.",
+      "parentUuid": "c74aa2f1_ae56df44",
       "range": {
         "startLine": 180,
         "startChar": 1,
