@@ -132,12 +132,8 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 			return
 		}
 
-		// Get /var/log/messages file
-		dst := filepath.Join(dir, "messages")
-		//Transfer messages file from DUT to host machine
-		if err := linuxssh.GetFile(ctx, dut.Conn(), "/var/log/messages", dst, linuxssh.PreserveSymlinks); err != nil {
-			s.Logf("Failed to download /var/log/messages from DUT to %v at local host: %v", dst, err)
-		}
+		// Get /var/log/messages from all DUTs
+		downloadVarMsgLogs(ctx, dir, dut, s.CompanionDUTs())
 
 		// Only save faillog when there is an error.
 		if !s.HasError() {
@@ -174,11 +170,49 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 		}
 
 		// Get name of target
-		dst = filepath.Join(dir, "faillog")
+		dst := filepath.Join(dir, "faillog")
+
 		// Transfer the file from DUT to host machine.
 		if err := linuxssh.GetFile(ctx, dut.Conn(), res.Path, dst, linuxssh.PreserveSymlinks); err != nil {
 			s.Logf("Failed to download %v from DUT to %v at local host: %v", res.Path, dst, err)
 			return
+		}
+	}
+}
+
+// downloadVarMsgLogs downloads /var/log/messages from each DUT (primary and companions) to specified output directory
+func downloadVarMsgLogs(ctx context.Context, outputDir string, primaryDut *dut.DUT, companionDuts map[string]*dut.DUT) {
+
+	dst := filepath.Join(outputDir, "messages")
+	//Transfer messages file from DUT to host machine
+	if err := linuxssh.GetFile(ctx, primaryDut.Conn(), "/var/log/messages", dst, linuxssh.PreserveSymlinks); err != nil {
+		testing.ContextLogf(ctx, "Failed to download /var/log/messages from DUT to %v at local host: %v", dst, err)
+	}
+
+	// Get /var/log/messages for each companion DUT
+	for role, cdut := range companionDuts {
+		// Make sure DUT is available to get logs, skip if it isn't
+		if !cdut.Connected(ctx) {
+			if err := cdut.WaitConnect(ctx); err != nil {
+				testing.ContextLogf(ctx, "Failed to connect to the companion DUT (%v): %v", role, err)
+				continue
+			}
+		}
+
+		// For companion DUTS, create a directory for each DUT to copy logs. The choice of the
+		// DUT hostname is arbitrary as it felt most unique to use for dir name.
+		// The messages file will be at '<OutDir>/<TestName>/<Companion Dut Hostname>/messages
+		dstDir := filepath.Join(outputDir, cdut.HostName())
+		if err := os.MkdirAll(dstDir, 0755); err != nil {
+			testing.ContextLogf(ctx, "Failed to create directory %q to store /var/log/messages for companion DUT (%v)", dstDir, role)
+			continue
+		}
+
+		cmpMessagePath := filepath.Join(dstDir, "messages")
+
+		//Transfer messages file from DUT to host machine
+		if err := linuxssh.GetFile(ctx, cdut.Conn(), "/var/log/messages", cmpMessagePath, linuxssh.PreserveSymlinks); err != nil {
+			testing.ContextLogf(ctx, "Failed to download /var/log/messages from companion DUT (%v) to %v at local host: %v", role, cmpMessagePath, err)
 		}
 	}
 }
