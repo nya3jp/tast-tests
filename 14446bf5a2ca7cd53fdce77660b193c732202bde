@@ -16,6 +16,91 @@
       "message": "Do you need to do it in the local hook, too?",
       "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08b716c0_60ac412f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-06T01:12:10Z",
+      "side": 1,
+      "message": "I have a few comments. Please take a look. Thanks.",
+      "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4917be39_88089285",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-06T01:12:10Z",
+      "side": 1,
+      "message": "Why do you need to this check? GetFile will return an error it it does not.",
+      "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e724c272_8f4d33be",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-06T01:12:10Z",
+      "side": 1,
+      "message": "Please one more line of comment in the code to give an example of the path looks like. thanks.",
+      "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3330371_f420b491",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-06T01:12:10Z",
+      "side": 1,
+      "message": "Just continue if you get an error. Don\u0027t need the else keyword.",
+      "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed574b08_e125eb7e",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-06T01:12:10Z",
+      "side": 1,
+      "message": "I think this function is getting too big. I think we have a function called downloadMsgLogs to download messages log for all DUTs including the primary DUT one.",
+      "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
