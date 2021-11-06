@@ -156,11 +156,17 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 			return
 		}
 
-		// Get /var/log/messages file
-		dst := filepath.Join(dir, "messages")
-		//Transfer messages file from DUT to host machine
-		if err := linuxssh.GetFile(ctx, dut.Conn(), "/var/log/messages", dst, linuxssh.PreserveSymlinks); err != nil {
-			s.Logf("Failed to download /var/log/messages from DUT to %v at local host: %v", dst, err)
+		// Get /var/log/messages from all DUTs
+		if err := downloadVarLogMessages(ctx, dir, dut); err != nil {
+			s.Log("Download /var/log/messages failed from DUT (primary): ", err)
+		}
+
+		for _, role := range s.CompanionDUTRoles() {
+			cdut := s.CompanionDUT(role)
+			outputDir := filepath.Join(dir, cdut.HostName())
+			if err := downloadVarLogMessages(ctx, outputDir, cdut); err != nil {
+				s.Logf("Download /var/log/messages failed failed from DUT (%v): %v", role, err)
+			}
 		}
 
 		// Only save faillog when there is an error.
@@ -198,13 +204,37 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 		}
 
 		// Get name of target
-		dst = filepath.Join(dir, "faillog")
+		dst := filepath.Join(dir, "faillog")
+
 		// Transfer the file from DUT to host machine.
 		if err := linuxssh.GetFile(ctx, dut.Conn(), res.Path, dst, linuxssh.PreserveSymlinks); err != nil {
 			s.Logf("Failed to download %v from DUT to %v at local host: %v", res.Path, dst, err)
 			return
 		}
 	}
+}
+
+// downloadVarLogMessages downloads /var/log/messages from each DUT (primary and companions) to
+// specified output directory.
+func downloadVarLogMessages(ctx context.Context, outputDir string, dut *dut.DUT) error {
+	if !dut.Connected(ctx) {
+		if err := dut.WaitConnect(ctx); err != nil {
+			return errors.Wrapf(err, "failed to connect to the DUT (%v)", dut.HostName())
+		}
+	}
+
+	dst := filepath.Join(outputDir, "messages")
+
+	if err := os.MkdirAll(outputDir, 0755); err != nil {
+		return errors.Errorf("failed to create directory %q to store /var/log/messages for DUT (%v)", outputDir, dut.HostName())
+	}
+
+	// Transfer messages file from DUT to host machine.
+	if err := linuxssh.GetFile(ctx, dut.Conn(), "/var/log/messages", dst, linuxssh.PreserveSymlinks); err != nil {
+		return errors.Wrapf(err, "failed to download /var/log/messages from DUT (%v) to %v at local host", dut.HostName(), dst)
+	}
+
+	return nil
 }
 
 func beforeReboot(ctx context.Context, d *dut.DUT) error {
