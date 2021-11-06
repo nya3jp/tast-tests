@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b784a1a_ab4d0b02",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-06T02:31:34Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to return a bool here. You already log all the warning message.",
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b71d2a7_27d8f9eb",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-06T02:31:34Z",
+      "side": 1,
+      "message": "I meant\n```\n\t\tif err :\u003d os.MkdirAll(dstDir, 0755); err !\u003d nil {\n\t\t\ts.Logf(\"Failed to create directory %q to store /var/log/messages for companion DUT (%v)\", dstDir, role)\n\t\t\tcontinue\n\t\t}\n\t\tcmpMessagePath :\u003d filepath.Join(dstDir, \"messages\")\n\n\t\t//Transfer messages file from DUT to host machine\n\t\tif err :\u003d linuxssh.GetFile(ctx, cdut.Conn(), \"/var/log/messages\", cmpMessagePath, linuxssh.PreserveSymlinks); err !\u003d nil {\n\t\t\ts.Logf(\"Failed to download /var/log/messages from companion DUT (%v) to %v at local host: %v\", role, cmpMessagePath, err)\n\t\t}\n```",
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0be2bcab_b226897f",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-06T02:31:34Z",
+      "side": 1,
+      "message": "See comment above.",
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a8d7f35_6d3ca7c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-06T02:31:34Z",
+      "side": 1,
+      "message": "No, I don\u0027t think local hook download the messages for companion DUTs. I htink that there is no hook for companion DUTs.",
+      "parentUuid": "d3333fc9_acd5a4f9",
+      "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4917be39_88089285",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "If the DUT isn\u0027t connected, there is no point in trying to get the logs later. This is following the pre-existing paradigm used to copy logs in the test hook from the primary DUT.",
       "parentUuid": "4917be39_88089285",
+      "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "769e6907_2c3eb4a3",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-06T02:31:34Z",
+      "side": 1,
+      "message": "If the check for whether is DUT is connected important, you should do it for the primary DUT, too. It is not consistant now. Personally, I don\u0027t think you need. However, I am ok if you do check, but you have to consistant to do it for primary and companion DUTs.",
+      "parentUuid": "75686864_85b88459",
       "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +190,24 @@
       "side": 1,
       "message": "Continuing if the destination directory can\u0027t be created seems like a waste of valuable time. What benefit is there to try and download files to a non-existent directory?",
       "parentUuid": "a3330371_f420b491",
+      "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd778ec9_9ad15eb4",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-06T02:31:34Z",
+      "side": 1,
+      "message": "I really meant do a \"continue\" here. See comment below.",
+      "parentUuid": "53c1d6d8_64fe2649",
       "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
