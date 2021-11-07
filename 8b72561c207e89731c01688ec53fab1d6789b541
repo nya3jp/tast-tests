@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "489316ea_ecfb5a9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-07T23:27:01Z",
+      "side": 1,
+      "message": "There is real code already, what about adding an example?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8da84db_145bfabf",
+        "filename": "src/chromiumos/tast/local/uidetection/custom_icon_finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-07T23:27:01Z",
+      "side": 1,
+      "message": "The name of this func does not tell what it actually does. Maybe GetFinderFromIcon?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e69d4b0d_3ff9d97b",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-07T23:27:01Z",
+      "side": 1,
+      "message": "represents the location of?",
+      "range": {
+        "startLine": 15,
+        "startChar": 12,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "330071b5_f53c78fb",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-07T23:27:01Z",
+      "side": 1,
+      "message": "boundingBoxes stores the locations of the responses from the request?",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ffa8f81_e5cf6f4d",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-07T23:27:01Z",
+      "side": 1,
+      "message": "With this, the nth is 0, is that ok?",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a3a458e_130d1c3e",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-07T23:27:01Z",
+      "side": 1,
+      "message": "Who are the users to use this func as it is a private func?",
+      "range": {
+        "startLine": 77,
+        "startChar": 32,
+        "endLine": 77,
+        "endChar": 37
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "616856b4_7504eddb",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-07T23:27:01Z",
+      "side": 1,
+      "message": "Should this be a public func?",
+      "range": {
+        "startLine": 101,
+        "startChar": 17,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83028822_b726ee2f",
+        "filename": "src/chromiumos/tast/local/uidetection/textblock_finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-07T23:27:01Z",
+      "side": 1,
+      "message": "GetFinderForTextBlock?",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2fb9d73_e7f980fc",
+        "filename": "src/chromiumos/tast/local/uidetection/word_finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-07T23:27:01Z",
+      "side": 1,
+      "message": "There are three types of finders, is it possible to create a unified func like GenerateFinder which takes all types of inputs?",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
