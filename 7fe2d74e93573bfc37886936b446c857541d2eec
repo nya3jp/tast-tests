@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7008f99_d75f7c3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-07T23:08:02Z",
+      "side": 1,
+      "message": "Please document when and how this func should be used.",
+      "range": {
+        "startLine": 296,
+        "startChar": 3,
+        "endLine": 296,
+        "endChar": 6
+      },
+      "revId": "7fe2d74e93573bfc37886936b446c857541d2eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f422c407_172d8aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-07T23:08:02Z",
+      "side": 1,
+      "message": "Suggest to rename it to Cleanup",
+      "range": {
+        "startLine": 297,
+        "startChar": 31,
+        "endLine": 297,
+        "endChar": 34
+      },
+      "revId": "7fe2d74e93573bfc37886936b446c857541d2eec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
