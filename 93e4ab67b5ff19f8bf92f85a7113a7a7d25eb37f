@@ -34,6 +34,24 @@
       "parentUuid": "4ff4f946_ec23f52f",
       "revId": "93e4ab67b5ff19f8bf92f85a7113a7a7d25eb37f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be23bfbd_9937072d",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-07T23:35:53Z",
+      "side": 1,
+      "message": "In that case, please add a TODO to the code.",
+      "parentUuid": "a1d93bad_89c274a9",
+      "revId": "93e4ab67b5ff19f8bf92f85a7113a7a7d25eb37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
