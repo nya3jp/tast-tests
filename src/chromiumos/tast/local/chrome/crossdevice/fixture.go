@@ -13,6 +13,7 @@ import (
 	"strings"
 	"time"
 
+	crossdevicecommon "chromiumos/tast/common/cros/crossdevice"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -109,7 +110,7 @@ type crossdeviceFixture struct {
 	kb                                *input.KeyboardEventWriter
 	androidDevice                     *AndroidDevice
 	androidAttributes                 *AndroidAttributes
-	crosAttributes                    *CrosAttributes
+	crosAttributes                    *crossdevicecommon.CrosAttributes
 	btsnoopCmd                        *testexec.Cmd
 	logMarker                         *logsaver.Marker // Marker for per-test log.
 	allFeatures                       bool
@@ -351,9 +352,9 @@ func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 }
 
 // saveDeviceAttributes saves the CrOS and Android device attributes as a formatted JSON at the specified filepath.
-func saveDeviceAttributes(crosAttrs *CrosAttributes, androidAttrs *AndroidAttributes, filepath string) error {
+func saveDeviceAttributes(crosAttrs *crossdevicecommon.CrosAttributes, androidAttrs *AndroidAttributes, filepath string) error {
 	attributes := struct {
-		CrOS    *CrosAttributes
+		CrOS    *crossdevicecommon.CrosAttributes
 		Android *AndroidAttributes
 	}{CrOS: crosAttrs, Android: androidAttrs}
 	crosLog, err := json.MarshalIndent(attributes, "", "\t")

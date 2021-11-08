@@ -8,17 +8,15 @@ import (
 	"context"
 	"io"
 	"os"
-	"regexp"
 	"time"
 
+	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/systemlogs"
+	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/local/syslog"
-	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
 
@@ -91,65 +89,31 @@ func CrOSSetup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, d
 }
 
 // GetCrosAttributes gets the Chrome version and combines it into a CrosAttributes strct with the provided values for easy logging with json.MarshalIndent.
-func GetCrosAttributes(ctx context.Context, tconn *chrome.TestConn, displayName, username string, dataUsage nearbysetup.DataUsage, visibility nearbysetup.Visibility) (*nearbysetup.CrosAttributes, error) {
-	attrs := nearbysetup.CrosAttributes{
-		DisplayName: displayName,
-		User:        username,
+func GetCrosAttributes(ctx context.Context, tconn *chrome.TestConn, displayName, username string, dataUsage nearbysetup.DataUsage, visibility nearbysetup.Visibility) (*nearbycommon.CrosAttributes, error) {
+	// Get the base set of CrOS attributes used in all crossdevice tests.
+	basicAttributes, err := crossdevice.GetCrosAttributes(ctx, tconn, username)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get base set of crossdevice CrOS attributes for reporting")
 	}
+
+	// Add nearby specific attributes.
+	nearbyAttrs := nearbycommon.CrosAttributes{
+		BasicAttributes: basicAttributes,
+		DisplayName:     displayName,
+	}
+
 	if val, ok := nearbysetup.DataUsageStrings[dataUsage]; ok {
-		attrs.DataUsage = val
+		nearbyAttrs.DataUsage = val
 	} else {
 		return nil, errors.Errorf("undefined dataUsage: %v", dataUsage)
 	}
 	if val, ok := nearbysetup.VisibilityStrings[visibility]; ok {
-		attrs.Visibility = val
+		nearbyAttrs.Visibility = val
 	} else {
 		return nil, errors.Errorf("undefined visibility: %v", visibility)
 	}
 
-	const expectedKey = "CHROME VERSION"
-	version, err := systemlogs.GetSystemLogs(ctx, tconn, expectedKey)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed getting system logs to check Chrome version")
-	}
-	if version == "" {
-		return nil, errors.Wrap(err, "system logs result empty")
-	}
-	// The output on test images contains 'unknown' for the channel, i.e. '91.0.4435.0 unknown', so just extract the channel version.
-	const versionPattern = `([0-9\.]+) [\w+]`
-	r, err := regexp.Compile(versionPattern)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to compile Chrome version pattern")
-	}
-	versionMatch := r.FindStringSubmatch(version)
-	if len(versionMatch) == 0 {
-		return nil, errors.New("failed to find valid Chrome version")
-	}
-	attrs.ChromeVersion = versionMatch[1]
-
-	lsb, err := lsbrelease.Load()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to read lsb-release")
-	}
-	osVersion, ok := lsb[lsbrelease.Version]
-	if !ok {
-		return nil, errors.Wrap(err, "failed to read ChromeOS version from lsb-release")
-	}
-	attrs.ChromeOSVersion = osVersion
-
-	board, ok := lsb[lsbrelease.Board]
-	if !ok {
-		return nil, errors.Wrap(err, "failed to read board from lsb-release")
-	}
-	attrs.Board = board
-
-	model, err := testexec.CommandContext(ctx, "cros_config", "/", "name").Output()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to read model from cros_config")
-	}
-	attrs.Model = string(model)
-
-	return &attrs, nil
+	return &nearbyAttrs, nil
 }
 
 // StartLogging starts collecting logs from the specified log file, such as /var/log/chrome/chrome or /var/log/messages.

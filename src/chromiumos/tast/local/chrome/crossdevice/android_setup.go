@@ -17,7 +17,6 @@ import (
 
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/ui"
-	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
 	"chromiumos/tast/errors"
 	localadb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/testing"
@@ -61,7 +60,7 @@ func GAIALogin(ctx context.Context, d *adb.Device, accountUtilZipPath, username,
 
 	var apkExists bool
 	for _, f := range r.File {
-		if f.Name == nearbysnippet.AccountUtilApk {
+		if f.Name == AccountUtilApk {
 			src, err := f.Open()
 			if err != nil {
 				return errors.Wrap(err, "failed to open zip contents")
@@ -81,11 +80,11 @@ func GAIALogin(ctx context.Context, d *adb.Device, accountUtilZipPath, username,
 		}
 	}
 	if !apkExists {
-		return errors.Errorf("failed to find %v in %v", nearbysnippet.AccountUtilApk, accountUtilZipPath)
+		return errors.Errorf("failed to find %v in %v", AccountUtilApk, accountUtilZipPath)
 	}
 
 	// Install the GoogleAccountUtil APK.
-	if err := d.Install(ctx, filepath.Join(tempDir, nearbysnippet.AccountUtilApk), adb.InstallOptionGrantPermissions); err != nil {
+	if err := d.Install(ctx, filepath.Join(tempDir, AccountUtilApk), adb.InstallOptionGrantPermissions); err != nil {
 		return errors.Wrap(err, "failed to install GoogleAccountUtil APK on the device")
 	}
 
@@ -164,7 +163,7 @@ func ConfigureDevice(ctx context.Context, d *adb.Device, rooted bool) error {
 		return errors.Wrap(err, "failed to clear PIN")
 	}
 	if err := d.DisableLockscreen(ctx, true); err != nil {
-		return errors.Wrap(err, "failed to clear PIN")
+		return errors.Wrap(err, "failed to disable lockscreen")
 	}
 	if err := d.WaitForLockscreenDisabled(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for lockscreen to be cleared")

@@ -11,36 +11,15 @@ import (
 	"encoding/hex"
 	"io"
 	"io/ioutil"
-	"math"
-	"math/rand"
 	"os"
 	"path/filepath"
-	"strconv"
-	"time"
 
-	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
+	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 )
-
-// TestData contains the values for parameterized tests, such as:
-// - File name of the archive containing files to be shared
-// - File transfer timeout (varies depending on file size)
-// - Total test timeout (transfer timeout + time required for sender and receiver to detect each other)
-// - MIME type of shared files (only required when sending from Android)
-type TestData struct {
-	Filename        string
-	TransferTimeout time.Duration
-	TestTimeout     time.Duration
-	MimeType        nearbysnippet.MimeType
-}
-
-// DownloadPath is the downloads directory on CrOS.
-const DownloadPath = "/home/chronos/user/Downloads/"
-
-// SendDir is the staging directory for test files when sending from CrOS.
-const SendDir = DownloadPath + "nearby_test_files"
 
 // UnzipTestFiles extracts test data files to a temporary directory. Returns an array of base filenames and the name of the temporary dir.
 // The extracted files can then be pushed to the Android device or copied to a user-accessible directory on CrOS, depending on which device is the sender.
@@ -73,7 +52,7 @@ func ExtractCrosTestFiles(ctx context.Context, zipPath string) ([]string, error)
 	}
 	defer os.RemoveAll(tempDir)
 
-	targetPath := SendDir
+	targetPath := nearbycommon.SendDir
 
 	// Delete and remake the target directory to ensure there are no existing files.
 	if err := os.RemoveAll(targetPath); err != nil {
@@ -114,15 +93,6 @@ func ExtractAndroidTestFile(ctx context.Context, zipPath string, a *nearbysnippe
 		return "", err
 	}
 	return filenames[0], nil
-}
-
-// RandomDeviceName appends a randomly generated integer (up to 6 digits) to the base device name to avoid conflicts
-// when nearby devices in the lab may be running the same test at the same time.
-func RandomDeviceName(basename string) string {
-	const maxDigits = 6
-	rand.Seed(time.Now().UnixNano())
-	num := rand.Intn(int(math.Pow10(maxDigits) - 1))
-	return basename + strconv.Itoa(num)
 }
 
 // FileHashComparison compares file hashes on CrOS and Android after a share has been completed.
@@ -182,13 +152,13 @@ func HashFiles(ctx context.Context, filenames []string, fileDir string) ([]strin
 
 // ClearCrOSDownloads clears the Downloads folder (where incoming shares are received).
 func ClearCrOSDownloads(ctx context.Context) error {
-	files, err := ioutil.ReadDir(DownloadPath)
+	files, err := ioutil.ReadDir(nearbycommon.DownloadPath)
 	if err != nil {
 		return errors.Wrap(err, "failed to retrieve Downloads folder contents")
 	}
 
 	for _, f := range files {
-		if err := os.RemoveAll(filepath.Join(DownloadPath, f.Name())); err != nil {
+		if err := os.RemoveAll(filepath.Join(nearbycommon.DownloadPath, f.Name())); err != nil {
 			return errors.Wrapf(err, "failed to remove %v from Downloads", f.Name())
 		}
 	}

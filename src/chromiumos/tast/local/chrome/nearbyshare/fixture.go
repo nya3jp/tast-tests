@@ -13,13 +13,13 @@ import (
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
-	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
-	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
@@ -201,7 +201,7 @@ type nearbyShareFixture struct {
 	androidDataUsage           nearbysnippet.DataUsage
 	androidVisibility          nearbysnippet.Visibility
 	androidDevice              *nearbysnippet.AndroidNearbyDevice
-	crosAttributes             *nearbysetup.CrosAttributes
+	crosAttributes             *nearbycommon.CrosAttributes
 	androidAttributes          *nearbysnippet.AndroidAttributes
 	// ChromeReader is the line reader for collecting Chrome logs.
 	ChromeReader *syslog.LineReader
@@ -261,7 +261,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 
 	// Set up Nearby Share on the CrOS device.
 	const crosBaseName = "cros_test"
-	crosDisplayName := nearbytestutils.RandomDeviceName(crosBaseName)
+	crosDisplayName := nearbycommon.RandomDeviceName(crosBaseName)
 	if err := CrOSSetup(ctx, tconn, cr, f.crosDataUsage, f.crosVisibility, crosDisplayName); err != nil {
 		s.Fatal("Failed to set up Nearby Share: ", err)
 	}
@@ -276,7 +276,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		s.Fatal("Failed to read Android Data Usage setting: ", err)
 	}
 	if f.androidDataUsage != d || f.androidVisibility != v {
-		if err := nearbysetup.AndroidConfigure(ctx, androidDevice, f.androidDataUsage, f.androidVisibility, androidDeviceName); err != nil {
+		if err := AndroidConfigure(ctx, androidDevice, f.androidDataUsage, f.androidVisibility, androidDeviceName); err != nil {
 			s.Fatal("Failed to configure Android Nearby Share settings: ", err)
 		}
 	}
@@ -394,9 +394,9 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 }
 
 // saveDeviceAttributes saves the CrOS and Android device attributes as a formatted JSON at the specified filepath.
-func saveDeviceAttributes(crosAttrs *nearbysetup.CrosAttributes, androidAttrs *nearbysnippet.AndroidAttributes, filepath string) error {
+func saveDeviceAttributes(crosAttrs *nearbycommon.CrosAttributes, androidAttrs *nearbysnippet.AndroidAttributes, filepath string) error {
 	attributes := struct {
-		CrOS    *nearbysetup.CrosAttributes
+		CrOS    *nearbycommon.CrosAttributes
 		Android *nearbysnippet.AndroidAttributes
 	}{CrOS: crosAttrs, Android: androidAttrs}
 	crosLog, err := json.MarshalIndent(attributes, "", "\t")

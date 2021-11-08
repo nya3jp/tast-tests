@@ -7,6 +7,8 @@ package nearbyshare
 
 import (
 	"time"
+
+	"chromiumos/tast/common/cros/crossdevice"
 )
 
 // DetectShareTargetTimeout is the timeout for a sender to detect an available receiver or vice versa.
@@ -50,3 +52,42 @@ const NearbyLogDir = "/tmp/nearbyshare/"
 
 // KeepStateVar is the runtime variable name used to specify the chrome.KeepState parameter to preserve the DUT's user accounts.
 const KeepStateVar = "keepState"
+
+// MimeType are the mime type values that are accepted by the snippet's sendFile method.
+type MimeType string
+
+// MimeTypes supported by the snippet library.
+const (
+	MimeTypeTextVCard MimeType = "text/x-vcard"
+	MimeTypePDF       MimeType = "application/pdf"
+	MimeTypeJpeg      MimeType = "image/jpeg"
+	MimeTypeMP4       MimeType = "video/mp4"
+	MimeTypeTextPlain MimeType = "text/plain"
+	MimeTypePng       MimeType = "image/png"
+)
+
+// TestData contains the values for parameterized tests, such as:
+// - File name of the archive containing files to be shared
+// - File transfer timeout (varies depending on file size)
+// - Total test timeout (transfer timeout + time required for sender and receiver to detect each other)
+// - MIME type of shared files (only required when sending from Android)
+type TestData struct {
+	Filename        string
+	TransferTimeout time.Duration
+	TestTimeout     time.Duration
+	MimeType        MimeType
+}
+
+// DownloadPath is the downloads directory on CrOS.
+const DownloadPath = "/home/chronos/user/Downloads/"
+
+// SendDir is the staging directory for test files when sending from CrOS.
+const SendDir = DownloadPath + "nearby_test_files"
+
+// CrosAttributes contains information about the CrOS device that are relevant to Nearby Share.
+type CrosAttributes struct {
+	BasicAttributes *crossdevice.CrosAttributes
+	DisplayName     string
+	DataUsage       string
+	Visibility      string
+}

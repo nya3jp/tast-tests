@@ -20,7 +20,6 @@ import (
 	"chromiumos/tast/common/cros/nearbyshare"
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
-	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/nearbyservice"
@@ -241,7 +240,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 	const crosBaseName = "cros_test"
-	senderDisplayName := nearbytestutils.RandomDeviceName(crosBaseName)
+	senderDisplayName := nearbycommon.RandomDeviceName(crosBaseName)
 	s.Log("Enabling Nearby Share on DUT1 (Sender). Name: ", senderDisplayName)
 	senderUsername := s.RequiredVar("nearbyshare.cros_username")
 	senderPassword := s.RequiredVar("nearbyshare.cros_password")
@@ -256,7 +255,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	if err != nil {
 		s.Fatal("Failed to dial rpc service on DUT2: ", err)
 	}
-	receiverDisplayName := nearbytestutils.RandomDeviceName(crosBaseName)
+	receiverDisplayName := nearbycommon.RandomDeviceName(crosBaseName)
 	s.Log("Enabling Nearby Share on DUT2 (Receiver). Name: ", receiverDisplayName)
 	receiverUsername := s.RequiredVar("nearbyshare.cros2_username")
 	receiverPassword := s.RequiredVar("nearbyshare.cros2_password")
@@ -275,8 +274,8 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	if err != nil {
 		s.Error("Failed to save device attributes about the receiver: ", err)
 	}
-	var senderAttributes *nearbysetup.CrosAttributes
-	var receiverAttributes *nearbysetup.CrosAttributes
+	var senderAttributes *nearbycommon.CrosAttributes
+	var receiverAttributes *nearbycommon.CrosAttributes
 	if err := json.Unmarshal([]byte(senderAttrsRes.Attributes), &senderAttributes); err != nil {
 		s.Error("Failed to unmarshal sender's attributes: ", err)
 	}
@@ -284,8 +283,8 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		s.Error("Failed to unmarshal receiver's: ", err)
 	}
 	attributes := struct {
-		Sender   *nearbysetup.CrosAttributes
-		Receiver *nearbysetup.CrosAttributes
+		Sender   *nearbycommon.CrosAttributes
+		Receiver *nearbycommon.CrosAttributes
 	}{Sender: senderAttributes, Receiver: receiverAttributes}
 	crosLog, err := json.MarshalIndent(attributes, "", "\t")
 	if err != nil {

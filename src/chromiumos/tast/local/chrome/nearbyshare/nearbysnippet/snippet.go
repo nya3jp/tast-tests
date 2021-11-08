@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/mobly"
 	"chromiumos/tast/common/android/ui"
+	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
@@ -287,7 +288,7 @@ func (a *AndroidNearbyDevice) CancelReceivingFile(ctx context.Context) error {
 
 // SendFile starts sending with a timeout.
 // Sets the AndroidNearbyDevice's transferCallback, which is needed when awaiting follow-up SnippetEvents when calling eventWaitAndGet.
-func (a *AndroidNearbyDevice) SendFile(ctx context.Context, senderName, receiverName, shareFileName string, mimetype MimeType, turnaroundTime time.Duration) error {
+func (a *AndroidNearbyDevice) SendFile(ctx context.Context, senderName, receiverName, shareFileName string, mimetype nearbycommon.MimeType, turnaroundTime time.Duration) error {
 	// Reset the transferCallback between shares.
 	a.transferCallback = ""
 	res, err := a.snippetClient.RPC(ctx, mobly.DefaultRPCResponseTimeout, "sendFile", senderName, receiverName, shareFileName, mimetype, int(turnaroundTime.Seconds()))
