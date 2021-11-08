@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "646bd9b9_25af2506",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-11-08T07:44:51Z",
+      "side": 1,
+      "message": "Thanks! No user logged in when we check.",
+      "parentUuid": "2486209e_d77c8526",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 167
+      },
+      "revId": "5303c5de0149c116bf5fd2e4090190536709a5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9631af0_ed3b1326",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-11-05T16:53:58Z",
       "side": 1,
       "message": "nit: sensitiveDataForPstore is enough, in Go you should avoid get and set in function names in general when possible.",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 30
+      },
+      "revId": "5303c5de0149c116bf5fd2e4090190536709a5c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88ad0fc6_b7ee5777",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2021-11-08T07:44:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9631af0_ed3b1326",
       "range": {
         "startLine": 137,
         "startChar": 5,
