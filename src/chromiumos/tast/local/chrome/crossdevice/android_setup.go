@@ -164,7 +164,7 @@ func ConfigureDevice(ctx context.Context, d *adb.Device, rooted bool) error {
 		return errors.Wrap(err, "failed to clear PIN")
 	}
 	if err := d.DisableLockscreen(ctx, true); err != nil {
-		return errors.Wrap(err, "failed to clear PIN")
+		return errors.Wrap(err, "failed to disable lockscreen")
 	}
 	if err := d.WaitForLockscreenDisabled(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for lockscreen to be cleared")
