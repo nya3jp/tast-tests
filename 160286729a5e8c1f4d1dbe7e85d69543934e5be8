@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e88537cc_f42acef7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-08T21:34:42Z",
+      "side": 1,
+      "message": "Brain-dead copy-paste. Makes sense. Changed `values` to `_` as well.",
+      "parentUuid": "594e6cf1_d61a05d2",
+      "range": {
+        "startLine": 58,
+        "startChar": 50,
+        "endLine": 58,
+        "endChar": 56
+      },
+      "revId": "160286729a5e8c1f4d1dbe7e85d69543934e5be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1acc2c9a_0a3bb231",
