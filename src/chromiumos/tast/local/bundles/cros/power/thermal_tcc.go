@@ -25,7 +25,7 @@ func init() {
 		},
 		Attr: []string{"group:mainline", "informational"},
 		// Only applied to newer Intel boards
-		HardwareDeps: hwdep.D(hwdep.Platform("poppy", "nami", "hatch", "volteer", "brya", "octopus", "dedede")),
+		HardwareDeps: hwdep.D(hwdep.Platform("poppy", "nami", "hatch", "volteer", "brya", "dedede")),
 	})
 }
 
