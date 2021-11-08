@@ -64,6 +64,27 @@ func CpufreqConf(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
+	testEPP := func(expectedEPP string) error {
+		paths, err := filepath.Glob("/sys/devices/system/cpu/cpu[0-9]*/cpufreq/energy_performance_preference")
+		if err != nil {
+			return errors.Wrap(err, "failed to glob for EPP settings")
+		}
+
+		for _, path := range paths {
+			out, err := ioutil.ReadFile(path)
+			if err != nil {
+				return errors.Wrap(err, "failed to read energy performance preference")
+			}
+
+			epp := strings.TrimSpace(string(out))
+			if epp != expectedEPP {
+				return errors.Errorf("unexpected EPP: got %q, want %q", epp, expectedEPP)
+			}
+		}
+
+		return nil
+	}
+
 	testChargeGovernor := func(charging bool, expectedGovernor string) error {
 		batteryPath, err := localpower.SysfsBatteryPath(ctx)
 		if err != nil {
@@ -103,6 +124,7 @@ func CpufreqConf(ctx context.Context, s *testing.State) {
 		"CPUFREQ_GOVERNOR_BATTERY_DISCHARGE": func(expectedGovernor string) error {
 			return testChargeGovernor(false /* charging */, expectedGovernor)
 		},
+		"CPUFREQ_ENERGY_PERFORMANCE_PREFERENCE": testEPP,
 	}
 
 	// Construct test map for governor-specific settings.
