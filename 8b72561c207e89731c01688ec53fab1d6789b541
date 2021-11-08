@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ddcb978_dc694708",
+        "filename": "src/chromiumos/tast/local/uidetection/custom_icon_finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-08T00:24:59Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "acf66cfa_3c5eba4a",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e69d4b0d_3ff9d97b",
@@ -320,6 +344,30 @@
       "side": 1,
       "message": "this is intended to be private and hidden from external use. The public API for Location is at https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3260683/8#:~:text\u003dfunc%20(uda%20*Context)-,Location,-(ctx%20context.Context",
       "parentUuid": "616856b4_7504eddb",
+      "range": {
+        "startLine": 101,
+        "startChar": 17,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d360c390_d35439a2",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-08T00:24:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9deb44a1_f11059d6",
       "range": {
         "startLine": 101,
         "startChar": 17,
