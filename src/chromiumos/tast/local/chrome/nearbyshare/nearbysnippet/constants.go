@@ -11,12 +11,6 @@ const (
 	moblyPackage = "com.google.android.gmscore.integ.modules.nearby.mobly.snippets"
 )
 
-// AccountUtilZip is the filename for the .zip containing the GoogleAccountUtil APK.
-const AccountUtilZip = "google_account_util.zip"
-
-// AccountUtilApk is the filename for the GoogleAccountUtil APK.
-const AccountUtilApk = "GoogleAccountUtil.apk"
-
 // SendDir is the subdirectory of the Android downloads directory where we will stage files for sending.
 const SendDir = "test_files"
 

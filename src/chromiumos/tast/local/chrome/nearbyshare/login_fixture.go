@@ -145,8 +145,6 @@ func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtStat
 	}
 
 	f.cr = cr
-	// Lock chrome after all Setup is complete so we don't block other fixtures.
-	chrome.Lock()
 
 	// Starting ARC restarts ADB, which kills the connection to the snippet.
 	// Starting it here (before we check the connection and attempt a reconnect) will ensure the snippet connection is up.
@@ -166,6 +164,9 @@ func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtStat
 			s.Fatal("Failed to reconnect to the snippet server: ", err)
 		}
 	}
+
+	// Lock chrome after all Setup is complete so we don't block other fixtures.
+	chrome.Lock()
 
 	return &FixtData{
 		Chrome:            cr,

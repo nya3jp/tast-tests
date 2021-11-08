@@ -12,7 +12,6 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
-	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/errors"
 	remotenearby "chromiumos/tast/remote/cros/nearbyshare"
 	"chromiumos/tast/services/cros/nearbyservice"
@@ -32,21 +31,21 @@ func init() {
 			{
 				Name:      "dataoffline_allcontacts_png5kb",
 				Fixture:   "nearbyShareRemoteDataUsageOfflineNoOne",
-				Val:       nearbytestutils.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
+				Val:       nearbycommon.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_png.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:      "dataoffline_allcontacts_jpg11kb",
 				Fixture:   "nearbyShareRemoteDataUsageOfflineNoOne",
-				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
+				Val:       nearbycommon.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:    "dataonline_noone_txt30mb",
 				Fixture: "nearbyShareRemoteDataUsageOnlineNoOne",
-				Val: nearbytestutils.TestData{
+				Val: nearbycommon.TestData{
 					Filename: "big_txt.zip", TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout},
 				ExtraData: []string{"big_txt.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
@@ -69,7 +68,7 @@ func CrosToCrosHighVis(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Starting sending on DUT1 (Sender)")
-	testData := s.Param().(nearbytestutils.TestData)
+	testData := s.Param().(nearbycommon.TestData)
 	remoteFile := filepath.Join(remoteFilePath, testData.Filename)
 	fileReq := &nearbyservice.CrOSPrepareFileRequest{FileName: remoteFile}
 	fileNames, err := sender.PrepareFiles(ctx, fileReq)
@@ -103,12 +102,12 @@ func CrosToCrosHighVis(ctx context.Context, s *testing.State) {
 	// TODO(crbug/1173190): Remove polling when we can confirm the transfer status with public test functions.
 	s.Log("Comparing file hashes for all transferred files on both DUTs")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		senderFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbytestutils.SendDir}
+		senderFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbycommon.SendDir}
 		senderFileRes, err := sender.FilesHashes(ctx, senderFileReq)
 		if err != nil {
 			return errors.Wrap(err, "failed to get file hashes on DUT1 (Sender)")
 		}
-		receiverFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbytestutils.DownloadPath}
+		receiverFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbycommon.DownloadPath}
 		receiverFileRes, err := receiver.FilesHashes(ctx, receiverFileReq)
 		if err != nil {
 			return errors.Wrap(err, "failed to get file hashes on DUT2 (Receiver)")
