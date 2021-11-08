@@ -321,6 +321,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5948d71d_a708f6d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-08T19:03:55Z",
+      "side": 1,
+      "message": "Okay, so my question is surrounding this: \n\n\u003e due to sniffer reception error, it will capture corrupted packets thus the pcap would have bad FCS.\n\nSo sometimes it\u0027s still possible to have a bad Dot11 FCS because the pcap doesn\u0027t always process it properly (i.e. strip out the FCS)?",
+      "parentUuid": "f1103f72_6e776f46",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c9879f60_065d20ca",
