@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
 	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
 	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
+	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/testing"
 )
 
@@ -42,7 +43,7 @@ func init() {
 		Name: "nearbyShareAndroidSetup",
 		Desc: "Set up Android device for Nearby Share with default settings (Data usage offline, All Contacts)",
 		Impl: NewNearbyShareAndroid(nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts),
-		Data: []string{nearbysnippet.ZipName, nearbysnippet.AccountUtilZip},
+		Data: []string{nearbysnippet.ZipName, crossdevice.AccountUtilZip},
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
@@ -70,10 +71,10 @@ func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 	const androidBaseName = "android_test"
 	androidDisplayName := nearbytestutils.RandomDeviceName(androidBaseName)
 	snippetZip := s.DataPath(nearbysnippet.ZipName)
-	accountUtilZip := s.DataPath(nearbysnippet.AccountUtilZip)
+	accountUtilZip := s.DataPath(crossdevice.AccountUtilZip)
 
 	// Set up adb, connect to the Android phone, and check if ADB root access is available.
-	adbDevice, rooted, err := AdbSetup(ctx)
+	adbDevice, rooted, err := crossdevice.AdbSetup(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up an adb device: ", err)
 	}
@@ -100,7 +101,34 @@ func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		androidUsername = s.RequiredVar("nearbyshare.unrooted_android_username")
 	}
 
-	// Configure the Android phone and set up the Snippet library.
+	// Remove and re-add the specified account. A GAIA login is required to configure Nearby Share on the Android device.
+	// Root access is required for adding and removing accounts.
+	if !loggedIn && rooted {
+		if err := crossdevice.GAIALogin(ctx, adbDevice, accountUtilZip, androidUsername, androidPassword); err != nil {
+			s.Fatal("Failed to log in on the Android device: ", err)
+		}
+	}
+
+	if err := crossdevice.ConfigureDevice(ctx, adbDevice, rooted); err != nil {
+		s.Fatal("Failed to do basic Android device preparation: ", err)
+	}
+	tags := []string{
+		"Nearby",
+		"NearbyMessages",
+		"NearbyDiscovery",
+		"NearbyConnections",
+		"NearbyMediums",
+		"NearbySetup",
+		"NearbySharing",
+		"NearbyDirect",
+		"Backup",
+		"SmartDevice",
+		"audioModem",
+	}
+	if err := crossdevice.EnableVerboseLogging(ctx, adbDevice, rooted, tags...); err != nil {
+		s.Fatal("Failed to enable verbose logging on Android: ", err)
+	}
+
 	androidDevice, err := nearbysetup.AndroidSetup(
 		ctx, adbDevice, accountUtilZip, androidUsername, androidPassword, loggedIn, snippetZip, rooted,
 		nearbysetup.DefaultScreenTimeout,
