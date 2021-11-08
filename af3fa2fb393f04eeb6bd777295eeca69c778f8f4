@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b3ee3ac_8c6351d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2021-11-08T20:10:42Z",
+      "side": 1,
+      "message": "Nit: remove if unused (if we need HardwareDeps later we should add them later). You can just omit the \"HardwareDeps\" field in params.",
+      "revId": "af3fa2fb393f04eeb6bd777295eeca69c778f8f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
