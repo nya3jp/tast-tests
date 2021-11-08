@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c09d2d2_0a3631f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-11-08T19:37:33Z",
+      "side": 1,
+      "message": "is it constant across variation? If so, could we use it this way inline and extract it here when/if needed only?\nsimilar to \nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go;l\u003d110",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "46c1885b20a9fff40d455212944544eb437ace58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b275ce_bb579b54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-11-08T19:37:33Z",
+      "side": 1,
+      "message": "nit:\nmanaged_username to highlight the usage?",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "46c1885b20a9fff40d455212944544eb437ace58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
