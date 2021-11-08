@@ -161,7 +161,9 @@ func (f *fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 // TODO(crbug.com/1156844): Make this into a fluent API to enable additional
 // shares and testing of other Samba configuration.
 func createGuestSambaConf(ctx context.Context, sharePath, confLocation string) (string, error) {
-	sambaConf := `[guestshare]
+	sambaConf := `private dir = ` + confLocation + `
+
+[guestshare]
 	path = ` + sharePath + `
 	guest ok = yes
 	browseable = yes
