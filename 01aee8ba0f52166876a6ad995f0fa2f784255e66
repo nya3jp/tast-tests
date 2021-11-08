@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "674e6e19_cee5f377",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/do_not_disturb_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2021-11-08T16:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b00a5b70_3013586e",
+      "revId": "01aee8ba0f52166876a6ad995f0fa2f784255e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cb78c6b_d74e5255",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-05T19:29:33Z",
       "side": 1,
       "message": "why is this fixture needed over just chromeLoggedIn?",
+      "range": {
+        "startLine": 31,
+        "startChar": 17,
+        "endLine": 31,
+        "endChar": 36
+      },
+      "revId": "01aee8ba0f52166876a6ad995f0fa2f784255e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e74144_2b247435",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/do_not_disturb_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2021-11-08T16:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cb78c6b_d74e5255",
       "range": {
         "startLine": 31,
         "startChar": 17,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97b6eeee_a2fa5bd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/do_not_disturb_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2021-11-08T16:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2d4e85a_fdd09e70",
+      "revId": "01aee8ba0f52166876a6ad995f0fa2f784255e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "514c843b_030ced87",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-11-05T19:29:33Z",
       "side": 1,
       "message": "ui.EnsureGoneFor would be more appropriate here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d406",
+      "range": {
+        "startLine": 76,
+        "startChar": 14,
+        "endLine": 76,
+        "endChar": 29
+      },
+      "revId": "01aee8ba0f52166876a6ad995f0fa2f784255e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df72b1b9_1f8121db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/do_not_disturb_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2021-11-08T16:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "514c843b_030ced87",
       "range": {
         "startLine": 76,
         "startChar": 14,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd5d6be_82673adb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/do_not_disturb_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2021-11-08T16:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3ada866_bd57ad62",
+      "range": {
+        "startLine": 98,
+        "startChar": 49,
+        "endLine": 98,
+        "endChar": 55
+      },
+      "revId": "01aee8ba0f52166876a6ad995f0fa2f784255e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca5afe36_551bce9f",
@@ -117,6 +225,30 @@
       "writtenOn": "2021-11-05T19:29:33Z",
       "side": 1,
       "message": "same for this error msg",
+      "range": {
+        "startLine": 100,
+        "startChar": 11,
+        "endLine": 100,
+        "endChar": 40
+      },
+      "revId": "01aee8ba0f52166876a6ad995f0fa2f784255e66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5efdece_c03ea9da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/do_not_disturb_os_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2021-11-08T16:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca5afe36_551bce9f",
       "range": {
         "startLine": 100,
         "startChar": 11,
