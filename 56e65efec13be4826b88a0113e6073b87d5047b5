@@ -51,6 +51,24 @@
       "message": "Sorry, I just relea",
       "revId": "56e65efec13be4826b88a0113e6073b87d5047b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c250d7bf_e1f4363f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2021-11-08T21:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de8175a4_3f6c2690",
+      "revId": "56e65efec13be4826b88a0113e6073b87d5047b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
