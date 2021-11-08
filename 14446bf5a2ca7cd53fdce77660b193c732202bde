@@ -142,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0913098_f22b96d4",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-08T21:12:34Z",
+      "side": 1,
+      "message": "Line 139.",
+      "parentUuid": "e614c144_0ebb1547",
+      "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e724c272_8f4d33be",
