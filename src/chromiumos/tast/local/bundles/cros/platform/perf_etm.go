@@ -30,7 +30,7 @@ func init() {
 		SoftwareDeps: []string{"arm"},
 		// ETM is the optional HW implemented only on Qualcomm SoCs
 		HardwareDeps: hwdep.D(hwdep.Platform("trogdor", "herobrine")),
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 	})
 }
 
