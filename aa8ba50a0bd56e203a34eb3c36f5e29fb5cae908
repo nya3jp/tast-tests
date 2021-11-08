@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5228d558_cf3db0f0",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-08T21:18:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3346b736_d235f7f2",
+      "revId": "aa8ba50a0bd56e203a34eb3c36f5e29fb5cae908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fad48048_de13ac81",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-11-08T14:30:24Z",
       "side": 1,
       "message": "nit: Here is a TextBlock and there is a Word in the next file. It is obvious for us what is the difference but maybe providing an example of text block and mentioning that \"if you want to find a single word use Word\" finder would make it easier for others to spot at a glance which one matches their use case better.\n\nWDYT?",
+      "revId": "aa8ba50a0bd56e203a34eb3c36f5e29fb5cae908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9a8f590_70f5d874",
+        "filename": "src/chromiumos/tast/local/uidetection/textblock_finder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-08T21:18:32Z",
+      "side": 1,
+      "message": "SG, added a comment to this, thanks!",
+      "parentUuid": "fad48048_de13ac81",
       "revId": "aa8ba50a0bd56e203a34eb3c36f5e29fb5cae908",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
