@@ -16,6 +16,41 @@
       "message": "How about \nsrc/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/factory/toolkit.go\nand \nsrc/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/factory/kiosk.go\n\nThey are all using the same fixture. Also,  we should add the fixture owner to the CC List.",
       "revId": "56e65efec13be4826b88a0113e6073b87d5047b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de8175a4_3f6c2690",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-08T19:18:57Z",
+      "side": 1,
+      "message": "I only meant\n\nsrc/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/factory/finalize.go\n\nSorry for the confusion.",
+      "parentUuid": "9d5aef44_045c81c5",
+      "revId": "56e65efec13be4826b88a0113e6073b87d5047b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "221ab595_14ddaebe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-08T19:18:57Z",
+      "side": 1,
+      "message": "Sorry, I just relea",
+      "revId": "56e65efec13be4826b88a0113e6073b87d5047b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
