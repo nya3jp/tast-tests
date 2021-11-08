@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51c500bc_2de1877c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-11-08T19:47:39Z",
+      "side": 1,
+      "message": "It is indeed constant as of now. My thought of making it a parameter is that if a test is flaky, it would be much easier to just change the value for a given variant very quickly (without introducing bugs). Otherwise, if we rely on developers extracting it here when needed, they might take the easier route of updating the constant and applying the retries to all variants. \n\nI\u0027m expecting the managed optin test to be flaky.",
+      "parentUuid": "3c09d2d2_0a3631f6",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "46c1885b20a9fff40d455212944544eb437ace58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51b275ce_bb579b54",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-08T19:37:33Z",
       "side": 1,
       "message": "nit:\nmanaged_username to highlight the usage?",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "46c1885b20a9fff40d455212944544eb437ace58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "294f9ac2_b5716693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-11-08T19:47:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51b275ce_bb579b54",
       "range": {
         "startLine": 34,
         "startChar": 14,
