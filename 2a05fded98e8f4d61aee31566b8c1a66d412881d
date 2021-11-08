@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "300817dd_46d2bb60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-08T23:56:53Z",
+      "side": 1,
+      "message": "This test verifies initial holding space feature state which requires a fresh Chrome instance. Previous test success/failure will otherwise result in this test flaking as the holding space feature is closely tied to file system state :)",
+      "parentUuid": "45b26b48_a6a29fb9",
+      "range": {
+        "startLine": 42,
+        "startChar": 19,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac0bbeaa_09fbf002",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-08T23:34:16Z",
       "side": 1,
       "message": "This might be flaky as removing files might fail in this or other test. Maybe recording the origial screenshots and then check that there is a new screenshot taken.",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b7c4d7_39282283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-08T23:56:53Z",
+      "side": 1,
+      "message": "Should be okay since we use a new Chrome instance?",
+      "parentUuid": "ac0bbeaa_09fbf002",
       "range": {
         "startLine": 59,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92fcbedc_97553a1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-08T23:56:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4be11da_347bcd1f",
+      "range": {
+        "startLine": 64,
+        "startChar": 27,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67d42a80_3373ac84",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-11-08T23:34:16Z",
       "side": 1,
       "message": "capture screenshot:\n\nbecause uiauto.Combine will return a msg with the description.",
+      "range": {
+        "startLine": 74,
+        "startChar": 21,
+        "endLine": 74,
+        "endChar": 65
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed3f48d4_b8c67ea9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-08T23:56:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67d42a80_3373ac84",
       "range": {
         "startLine": 74,
         "startChar": 21,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f2a17d_601a419d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-08T23:56:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2207b06_ebc03aff",
+      "range": {
+        "startLine": 79,
+        "startChar": 28,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b53f31e_fa820d3a",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-11-08T23:34:16Z",
       "side": 1,
       "message": "How many screenshots should be captured?",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 29
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22c01162_07895afa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-08T23:56:53Z",
+      "side": 1,
+      "message": "Just one, updated the len check above",
+      "parentUuid": "0b53f31e_fa820d3a",
       "range": {
         "startLine": 84,
         "startChar": 15,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0fe725a_956226ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-08T23:56:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "480be304_ff2bee4e",
+      "range": {
+        "startLine": 90,
+        "startChar": 27,
+        "endLine": 90,
+        "endChar": 30
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b4839a4_35f34684",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b1eca9_0a1b2894",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-08T23:56:53Z",
+      "side": 1,
+      "message": "No particular reason, updated",
+      "parentUuid": "9b4839a4_35f34684",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 9
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2048d9fe_9276510f",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-11-08T23:34:16Z",
       "side": 1,
       "message": "This string is used multiple times, define a const?\n\nI\u0027d suggest to define all the strings here as const on the top of the file.",
+      "range": {
+        "startLine": 13,
+        "startChar": 28,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "180b121e_1eab704a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-08T23:56:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2048d9fe_9276510f",
       "range": {
         "startLine": 13,
         "startChar": 28,
