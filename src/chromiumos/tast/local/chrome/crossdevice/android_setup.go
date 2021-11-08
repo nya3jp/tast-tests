@@ -17,7 +17,6 @@ import (
 
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/ui"
-	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
 	"chromiumos/tast/errors"
 	localadb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/testing"
@@ -61,7 +60,7 @@ func GAIALogin(ctx context.Context, d *adb.Device, accountUtilZipPath, username,
 
 	var apkExists bool
 	for _, f := range r.File {
-		if f.Name == nearbysnippet.AccountUtilApk {
+		if f.Name == AccountUtilApk {
 			src, err := f.Open()
 			if err != nil {
 				return errors.Wrap(err, "failed to open zip contents")
@@ -81,11 +80,11 @@ func GAIALogin(ctx context.Context, d *adb.Device, accountUtilZipPath, username,
 		}
 	}
 	if !apkExists {
-		return errors.Errorf("failed to find %v in %v", nearbysnippet.AccountUtilApk, accountUtilZipPath)
+		return errors.Errorf("failed to find %v in %v", AccountUtilApk, accountUtilZipPath)
 	}
 
 	// Install the GoogleAccountUtil APK.
-	if err := d.Install(ctx, filepath.Join(tempDir, nearbysnippet.AccountUtilApk), adb.InstallOptionGrantPermissions); err != nil {
+	if err := d.Install(ctx, filepath.Join(tempDir, AccountUtilApk), adb.InstallOptionGrantPermissions); err != nil {
 		return errors.Wrap(err, "failed to install GoogleAccountUtil APK on the device")
 	}
 
@@ -164,7 +163,7 @@ func ConfigureDevice(ctx context.Context, d *adb.Device, rooted bool) error {
 		return errors.Wrap(err, "failed to clear PIN")
 	}
 	if err := d.DisableLockscreen(ctx, true); err != nil {
-		return errors.Wrap(err, "failed to clear PIN")
+		return errors.Wrap(err, "failed to disable lockscreen")
 	}
 	if err := d.WaitForLockscreenDisabled(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for lockscreen to be cleared")
@@ -195,4 +194,57 @@ func ConfigureDevice(ctx context.Context, d *adb.Device, rooted bool) error {
 	}
 
 	return nil
+}
+
+// AndroidAttributes contains information about the Android device and its settings that are relevant to Cross Device features.
+type AndroidAttributes struct {
+	User                string
+	GMSCoreVersion      int
+	AndroidVersion      int
+	SDKVersion          int
+	ProductName         string
+	ModelName           string
+	DeviceName          string
+	BluetoothMACAddress string
+}
+
+// GetAndroidAttributes returns the AndroidAttributes for the device.
+func GetAndroidAttributes(ctx context.Context, adbDevice *adb.Device) (*AndroidAttributes, error) {
+	var metadata AndroidAttributes
+
+	user, err := adbDevice.GoogleAccount(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Android device user account")
+	}
+	metadata.User = user
+
+	gmsVersion, err := adbDevice.GMSCoreVersion(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get GMS Core version")
+	}
+	metadata.GMSCoreVersion = gmsVersion
+
+	androidVersion, err := adbDevice.AndroidVersion(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Android version")
+	}
+	metadata.AndroidVersion = androidVersion
+
+	sdkVersion, err := adbDevice.SDKVersion(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Android SDK version")
+	}
+	metadata.SDKVersion = sdkVersion
+
+	metadata.ProductName = adbDevice.Product
+	metadata.ModelName = adbDevice.Model
+	metadata.DeviceName = adbDevice.Device
+
+	mac, err := adbDevice.BluetoothMACAddress(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the Bluetooth MAC address")
+	}
+	metadata.BluetoothMACAddress = mac
+
+	return &metadata, nil
 }
