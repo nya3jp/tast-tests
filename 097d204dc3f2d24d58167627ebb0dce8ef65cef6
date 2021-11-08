@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb44587_209bfc4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483722
+      },
+      "writtenOn": "2021-11-08T19:41:16Z",
+      "side": 1,
+      "message": "This is the final version of an earlier CL, all feedback on which has been addressed.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3259582\n",
+      "revId": "097d204dc3f2d24d58167627ebb0dce8ef65cef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
