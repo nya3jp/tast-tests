@@ -33,6 +33,23 @@
       "message": "Kamil, could you give me +2 as a tast owner?",
       "revId": "ec29d4a8df7ce6b81198f3e2048c273020a9bc77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a8da3a_624a39d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2021-11-08T10:17:45Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "ec29d4a8df7ce6b81198f3e2048c273020a9bc77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
