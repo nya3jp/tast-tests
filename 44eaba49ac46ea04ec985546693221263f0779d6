@@ -109,6 +109,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8948a697_673d9ae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mem_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-08T07:24:49Z",
+      "side": 1,
+      "message": "this one is continued on the line below, which has a period.",
+      "parentUuid": "9ffbfe66_b5fef05f",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 49
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "942f4007_72e1230b",
@@ -122,6 +146,30 @@
       "writtenOn": "2021-11-05T00:57:20Z",
       "side": 1,
       "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 51
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48659649_252abf0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mem_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-08T07:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "942f4007_72e1230b",
       "range": {
         "startLine": 51,
         "startChar": 0,
@@ -155,6 +203,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdbd02b5_529b73f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mem_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-08T07:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40ce8f53_de8c2e2a",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 49
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4ae034c_119a1aa3",
@@ -168,6 +240,30 @@
       "writtenOn": "2021-11-05T00:57:20Z",
       "side": 1,
       "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 62
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3327b3df_1778553d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mem_tracker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-08T07:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4ae034c_119a1aa3",
       "range": {
         "startLine": 151,
         "startChar": 2,
@@ -201,6 +297,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c07e5e1_5dfea833",
+        "filename": "src/chromiumos/tast/local/memory/metrics/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-08T07:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9d239ad_4f3c4932",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 58
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d20ca75_8d602680",
@@ -224,6 +344,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ae4ca7_98cd669d",
+        "filename": "src/chromiumos/tast/local/memory/metrics/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-08T07:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d20ca75_8d602680",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 52
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d19dc27_ac8f6d5c",
@@ -237,6 +381,30 @@
       "writtenOn": "2021-11-05T00:57:20Z",
       "side": 1,
       "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 52
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e32253c_45f6c846",
+        "filename": "src/chromiumos/tast/local/memory/metrics/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-08T07:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d19dc27_ac8f6d5c",
       "range": {
         "startLine": 45,
         "startChar": 0,
@@ -341,6 +509,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c653c8_18dcaef2",
+        "filename": "src/chromiumos/tast/local/memory/metrics/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-08T07:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f85e159b_3ebdcb0e",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c61cb54_9d01feaa",
@@ -354,6 +546,30 @@
       "writtenOn": "2021-11-05T00:57:20Z",
       "side": 1,
       "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 52
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d3d4a1_e1ebbf26",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-08T07:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c61cb54_9d01feaa",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -387,6 +603,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e23da4d2_39262f9f",
+        "filename": "src/chromiumos/tast/local/memory/psi_stats.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-08T07:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86b40d9f_ef70eb84",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 52
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a075e5ac_0aa474ab",
@@ -410,6 +650,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27985bee_4fd3a10a",
+        "filename": "src/chromiumos/tast/local/memory/zram_stats.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-08T07:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a075e5ac_0aa474ab",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 52
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd439427_168bad51",
@@ -423,6 +687,30 @@
       "writtenOn": "2021-11-05T00:57:20Z",
       "side": 1,
       "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "44eaba49ac46ea04ec985546693221263f0779d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf47c03f_9fdafa48",
+        "filename": "src/chromiumos/tast/local/memory/zram_stats.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2021-11-08T07:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd439427_168bad51",
       "range": {
         "startLine": 51,
         "startChar": 0,
