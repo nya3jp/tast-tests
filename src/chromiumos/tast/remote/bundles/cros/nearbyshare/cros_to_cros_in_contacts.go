@@ -9,7 +9,6 @@ import (
 	"path/filepath"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
-	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	remotenearby "chromiumos/tast/remote/cros/nearbyshare"
 	"chromiumos/tast/services/cros/nearbyservice"
 	"chromiumos/tast/testing"
@@ -27,35 +26,35 @@ func init() {
 			{
 				Name:      "dataoffline_allcontacts_png5kb",
 				Fixture:   "nearbyShareRemoteDataUsageOfflineAllContacts",
-				Val:       nearbytestutils.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
+				Val:       nearbycommon.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_png.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:      "dataoffline_allcontacts_jpg11kb",
 				Fixture:   "nearbyShareRemoteDataUsageOfflineAllContacts",
-				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
+				Val:       nearbycommon.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:      "dataoffline_somecontacts_png5kb",
 				Fixture:   "nearbyShareRemoteDataUsageOfflineSomeContacts",
-				Val:       nearbytestutils.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
+				Val:       nearbycommon.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_png.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:      "dataoffline_somecontacts_jpg11kb",
 				Fixture:   "nearbyShareRemoteDataUsageOfflineSomeContacts",
-				Val:       nearbytestutils.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
+				Val:       nearbycommon.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:    "dataonline_allcontacts_txt30mb",
 				Fixture: "nearbyShareRemoteDataUsageOnlineAllContacts",
-				Val: nearbytestutils.TestData{
+				Val: nearbycommon.TestData{
 					Filename: "big_txt.zip", TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout},
 				ExtraData: []string{"big_txt.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
@@ -63,7 +62,7 @@ func init() {
 			{
 				Name:    "dataonline_somecontacts_txt30mb",
 				Fixture: "nearbyShareRemoteDataUsageOnlineSomeContacts",
-				Val: nearbytestutils.TestData{
+				Val: nearbycommon.TestData{
 					Filename: "big_txt.zip", TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout},
 				ExtraData: []string{"big_txt.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
@@ -81,7 +80,7 @@ func CrosToCrosInContacts(ctx context.Context, s *testing.State) {
 	receiverDisplayName := s.FixtValue().(*remotenearby.FixtData).ReceiverDisplayName
 
 	s.Log("Starting sending on DUT1 (Sender)")
-	testData := s.Param().(nearbytestutils.TestData)
+	testData := s.Param().(nearbycommon.TestData)
 	remoteFile := filepath.Join(remoteFilePath, testData.Filename)
 	fileReq := &nearbyservice.CrOSPrepareFileRequest{FileName: remoteFile}
 	fileNames, err := sender.PrepareFiles(ctx, fileReq)
@@ -110,12 +109,12 @@ func CrosToCrosInContacts(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Comparing file hashes for all transferred files on both DUTs")
-	senderFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbytestutils.SendDir}
+	senderFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbycommon.SendDir}
 	senderFileRes, err := sender.FilesHashes(ctx, senderFileReq)
 	if err != nil {
 		s.Fatal("Failed to get file hashes on DUT1 (Sender): ", err)
 	}
-	receiverFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbytestutils.DownloadPath}
+	receiverFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbycommon.DownloadPath}
 	receiverFileRes, err := receiver.FilesHashes(ctx, receiverFileReq)
 	if err != nil {
 		s.Fatal("Failed to get file hashes on DUT2 (Receiver): ", err)
