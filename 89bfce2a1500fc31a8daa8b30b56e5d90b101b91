@@ -190,6 +190,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49826a37_6d659061",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-08T21:33:18Z",
+      "side": 1,
+      "message": "Thanks Gabor and Seewai. I understand now why returning error (if we return anything) would be the proper path forward.",
+      "parentUuid": "976295e3_6c87924d",
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35f95da2_0ac14de2",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-08T21:33:18Z",
+      "side": 1,
+      "message": "Uploaded new diff using testing.ContextLog.\n\nGabor (or Seewai), for my own education, could you ping me outside this review and explain why using testing.ContextLog here is a better solution?",
+      "parentUuid": "5f421c86_9ecd8191",
+      "range": {
+        "startLine": 185,
+        "startChar": 45,
+        "endLine": 185,
+        "endChar": 69
+      },
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b71d2a7_27d8f9eb",
