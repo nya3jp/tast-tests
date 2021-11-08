@@ -46,55 +46,35 @@ type TestOptions struct {
 	// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes* about temporal layers.
 	temporalLayers int
 
-	// NV12 test cases runs (e.g. FlushAtEndOfStream_NV12DmabufScaling) if and only if this is true.
-	// TODO(hiroh): Remove this and run both I420 and NV12 test cases in the regular video.EncodeAccel tests
-	// once the dashboard is green.
-	verifyNV12Input bool
-
 	// Encode bitrate.
 	bitrate int
 }
 
 // MakeTestOptions creates TestOptions from webMName and profile.
-// spatialLayers and temporalLayers are set to 1 and verifyNV12Input is set to false.
+// spatialLayers and temporalLayers are set to 1.
 func MakeTestOptions(webMName string, profile videotype.CodecProfile) TestOptions {
 	return TestOptions{
-		webMName:        webMName,
-		profile:         profile,
-		spatialLayers:   1,
-		temporalLayers:  1,
-		verifyNV12Input: false,
+		webMName:       webMName,
+		profile:        profile,
+		spatialLayers:  1,
+		temporalLayers: 1,
 	}
 }
 
 // MakeBitrateTestOptions creates TestOptions from webMName and codec.
-// spatialLayers and temporalLayers are set to 1 and verifyNV12Input is set to false.
+// spatialLayers and temporalLayers are set to 1.
 // Sets bitrate for testing quality changes.
 func MakeBitrateTestOptions(webMName string, profile videotype.CodecProfile, bitrate int) TestOptions {
 	return TestOptions{
-		webMName:        webMName,
-		profile:         profile,
-		spatialLayers:   1,
-		temporalLayers:  1,
-		verifyNV12Input: false,
-		bitrate:         bitrate,
-	}
-}
-
-// MakeNV12TestOptions creates TestOptions from webMName and profile.
-// spatialLayers and temporalLayers are set to 1 and verifyNV12Input is set to true.
-func MakeNV12TestOptions(webMName string, profile videotype.CodecProfile) TestOptions {
-	return TestOptions{
-		webMName:        webMName,
-		profile:         profile,
-		spatialLayers:   1,
-		temporalLayers:  1,
-		verifyNV12Input: true,
+		webMName:       webMName,
+		profile:        profile,
+		spatialLayers:  1,
+		temporalLayers: 1,
+		bitrate:        bitrate,
 	}
 }
 
 // MakeTestOptionsWithSVCLayers creates TestOptions from webMName, profile, svc.
-// verifyNV12Input is set to true.
 // svc is the string defined in https://w3c.github.io/webrtc-svc/#scalabilitymodes.
 func MakeTestOptionsWithSVCLayers(webMName string, profile videotype.CodecProfile, svc string) TestOptions {
 	spatialLayers := 1
@@ -103,11 +83,10 @@ func MakeTestOptionsWithSVCLayers(webMName string, profile videotype.CodecProfil
 		panic(fmt.Sprintf("Unknown svc format : %v", err))
 	}
 	return TestOptions{
-		webMName:        webMName,
-		profile:         profile,
-		spatialLayers:   spatialLayers,
-		temporalLayers:  temporalLayers,
-		verifyNV12Input: true,
+		webMName:       webMName,
+		profile:        profile,
+		spatialLayers:  spatialLayers,
+		temporalLayers: temporalLayers,
 	}
 }
 
@@ -195,15 +174,9 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 		testArgs = append(testArgs, fmt.Sprintf("--num_temporal_layers=%d", opts.temporalLayers))
 	}
 
-	gtestFilter := gtest.Filter("-*NV12Dmabuf*")
-	if opts.verifyNV12Input {
-		gtestFilter = gtest.Filter("*NV12Dmabuf*")
-	}
-
 	exec := filepath.Join(chrome.BinTestDir, "video_encode_accelerator_tests")
 	logfile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%d.txt", filepath.Base(exec), time.Now().Unix()))
 	t := gtest.New(exec, gtest.Logfile(logfile),
-		gtestFilter,
 		gtest.ExtraArgs(testArgs...),
 		gtest.UID(int(sysutil.ChronosUID)))
 
