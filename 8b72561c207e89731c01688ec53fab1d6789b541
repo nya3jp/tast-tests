@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad34ab5_254d1e69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-08T00:09:51Z",
+      "side": 1,
+      "message": "Sure, an example will be added in a separate CL.",
+      "parentUuid": "489316ea_ecfb5a9d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8da84db_145bfabf",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-07T23:27:01Z",
       "side": 1,
       "message": "The name of this func does not tell what it actually does. Maybe GetFinderFromIcon?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acf66cfa_3c5eba4a",
+        "filename": "src/chromiumos/tast/local/uidetection/custom_icon_finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-08T00:09:51Z",
+      "side": 1,
+      "message": "FinderFromIcon may be redundant. use with package name uidetection.Word() should be sufficient. Similarly, for UI tree based ones: nodewith.Name(...), nodewith.ClassName(...) are used instead of nodewith.NodeFromName(...), nodewith.NodeFromClassName(...). WDYT?",
+      "parentUuid": "c8da84db_145bfabf",
       "range": {
         "startLine": 14,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c6a02e0_aa8dd32c",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-08T00:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e69d4b0d_3ff9d97b",
+      "range": {
+        "startLine": 15,
+        "startChar": 12,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "330071b5_f53c78fb",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-11-07T23:27:01Z",
       "side": 1,
       "message": "boundingBoxes stores the locations of the responses from the request?",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "022f1d84_a78731bf",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-08T00:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "330071b5_f53c78fb",
       "range": {
         "startLine": 28,
         "startChar": 8,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1809da2_931857e9",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-08T00:09:51Z",
+      "side": 1,
+      "message": "Thanks for pointing this out! Changed to set nth\u003d-1 for the default constructor.",
+      "parentUuid": "3ffa8f81_e5cf6f4d",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a3a458e_130d1c3e",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-11-07T23:27:01Z",
       "side": 1,
       "message": "Who are the users to use this func as it is a private func?",
+      "range": {
+        "startLine": 77,
+        "startChar": 32,
+        "endLine": 77,
+        "endChar": 37
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "581a0223_a65001ff",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-08T00:09:51Z",
+      "side": 1,
+      "message": "Removed this to avoid the ambiguity.",
+      "parentUuid": "3a3a458e_130d1c3e",
       "range": {
         "startLine": 77,
         "startChar": 32,
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9deb44a1_f11059d6",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-08T00:09:51Z",
+      "side": 1,
+      "message": "this is intended to be private and hidden from external use. The public API for Location is at https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3260683/8#:~:text\u003dfunc%20(uda%20*Context)-,Location,-(ctx%20context.Context",
+      "parentUuid": "616856b4_7504eddb",
+      "range": {
+        "startLine": 101,
+        "startChar": 17,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83028822_b726ee2f",
         "filename": "src/chromiumos/tast/local/uidetection/textblock_finder.go",
         "patchSetId": 8
@@ -175,6 +343,30 @@
       "writtenOn": "2021-11-07T23:27:01Z",
       "side": 1,
       "message": "GetFinderForTextBlock?",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f10cae2a_09be4fc3",
+        "filename": "src/chromiumos/tast/local/uidetection/textblock_finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-08T00:09:51Z",
+      "side": 1,
+      "message": "same the other comment.",
+      "parentUuid": "83028822_b726ee2f",
       "range": {
         "startLine": 13,
         "startChar": 3,
@@ -198,6 +390,30 @@
       "writtenOn": "2021-11-07T23:27:01Z",
       "side": 1,
       "message": "There are three types of finders, is it possible to create a unified func like GenerateFinder which takes all types of inputs?",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "8b72561c207e89731c01688ec53fab1d6789b541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed158cf_1bfa63ba",
+        "filename": "src/chromiumos/tast/local/uidetection/word_finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-08T00:09:51Z",
+      "side": 1,
+      "message": "Different types have different requests. A unified creator may introduce additional params and add complexity to it. E.g. GenerateFinder(Type, Params...), and for Params it needs different structures as well. \n\nInstead, using separate creators Word, Icon are straitforward to use. 1, it provide similar use with nodewith.Name or nodewith.HasClass..., 2, it follows the convention how ACUITI is interated in other test frameworks (e.g. Mobly) in google3.",
+      "parentUuid": "a2fb9d73_e7f980fc",
       "range": {
         "startLine": 11,
         "startChar": 3,
