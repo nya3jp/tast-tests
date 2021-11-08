@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f97de81d_27cf3a6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-08T06:06:40Z",
+      "side": 1,
+      "message": "Note that since M97 is already branched and CQ is unhappy for a few days, we will need to cherry-pick this test back to M97. ",
+      "revId": "78ae86af9ac07a0667294009a7a520d899e1fce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
