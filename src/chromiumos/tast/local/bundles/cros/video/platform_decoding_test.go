@@ -20,6 +20,126 @@ import (
 // regenerate the test parameters by running the following in a chroot:
 // TAST_GENERATE_UPDATE=1 ~/trunk/src/platform/tast/tools/go.sh test -count=1 chromiumos/tast/local/bundles/cros/video
 
+var vaapiH264Files = map[string]map[string][]string{
+	"baseline": {
+		"always_passes": {
+			"test_vectors/h264/baseline/AUD_MW_E.h264",
+			"test_vectors/h264/baseline/BA1_FT_C.h264",
+			"test_vectors/h264/baseline/BA1_Sony_D.h264",
+			"test_vectors/h264/baseline/BA2_Sony_F.h264",
+			"test_vectors/h264/baseline/BAMQ1_JVC_C.h264",
+			"test_vectors/h264/baseline/BAMQ2_JVC_C.h264",
+			"test_vectors/h264/baseline/BANM_MW_D.h264",
+			"test_vectors/h264/baseline/BASQP1_Sony_C.h264",
+			"test_vectors/h264/baseline/BA_MW_D.h264",
+			"test_vectors/h264/baseline/CI1_FT_B.h264",
+			"test_vectors/h264/baseline/CI_MW_D.h264",
+			"test_vectors/h264/baseline/CVSE2_Sony_B.h264",
+			"test_vectors/h264/baseline/HCBP1_HHI_A.h264",
+			"test_vectors/h264/baseline/HCBP2_HHI_A.h264",
+			"test_vectors/h264/baseline/LS_SVA_D.h264",
+			"test_vectors/h264/baseline/MIDR_MW_D.h264",
+			"test_vectors/h264/baseline/MPS_MW_A.h264",
+			"test_vectors/h264/baseline/MR1_MW_A.h264",
+			"test_vectors/h264/baseline/MR2_MW_A.h264",
+			"test_vectors/h264/baseline/NL1_Sony_D.h264",
+			"test_vectors/h264/baseline/NL2_Sony_H.h264",
+			"test_vectors/h264/baseline/NLMQ1_JVC_C.h264",
+			"test_vectors/h264/baseline/NLMQ2_JVC_C.h264",
+			"test_vectors/h264/baseline/NRF_MW_E.h264",
+			"test_vectors/h264/baseline/SVA_BA1_B.h264",
+			"test_vectors/h264/baseline/SVA_BA2_D.h264",
+			"test_vectors/h264/baseline/SVA_Base_B.h264",
+			"test_vectors/h264/baseline/SVA_CL1_E.h264",
+			"test_vectors/h264/baseline/SVA_FM1_E.h264",
+			"test_vectors/h264/baseline/SVA_NL1_B.h264",
+			"test_vectors/h264/baseline/SVA_NL2_E.h264",
+		},
+		"intel_fail": {
+			"test_vectors/h264/baseline/MR1_BT_A.h264",
+			"test_vectors/h264/baseline/MR2_TANDBERG_E.h264",
+			"test_vectors/h264/baseline/MR3_TANDBERG_B.h264",
+			"test_vectors/h264/baseline/MR4_TANDBERG_C.h264",
+			"test_vectors/h264/baseline/MR5_TANDBERG_C.h264",
+		},
+	},
+	"main": {
+		"always_passes": {
+			"test_vectors/h264/main/CABA1_SVA_B.h264",
+			"test_vectors/h264/main/CABA1_Sony_D.h264",
+			"test_vectors/h264/main/CABA2_SVA_B.h264",
+			"test_vectors/h264/main/CABA2_Sony_E.h264",
+			"test_vectors/h264/main/CABA3_SVA_B.h264",
+			"test_vectors/h264/main/CABA3_Sony_C.h264",
+			"test_vectors/h264/main/CABA3_TOSHIBA_E.h264",
+			"test_vectors/h264/main/CABACI3_Sony_B.h264",
+			"test_vectors/h264/main/CABAST3_Sony_E.h264",
+			"test_vectors/h264/main/CABASTBR3_Sony_B.h264",
+			"test_vectors/h264/main/CACQP3_Sony_D.h264",
+			"test_vectors/h264/main/CANL1_SVA_B.h264",
+			"test_vectors/h264/main/CANL1_Sony_E.h264",
+			"test_vectors/h264/main/CANL1_TOSHIBA_G.h264",
+			"test_vectors/h264/main/CANL2_SVA_B.h264",
+			"test_vectors/h264/main/CANL2_Sony_E.h264",
+			"test_vectors/h264/main/CANL3_SVA_B.h264",
+			"test_vectors/h264/main/CANL3_Sony_C.h264",
+			"test_vectors/h264/main/CANL4_SVA_B.h264",
+			"test_vectors/h264/main/CAPCM1_Sand_E.h264",
+			"test_vectors/h264/main/CAPCMNL1_Sand_E.h264",
+			"test_vectors/h264/main/CAPM3_Sony_D.h264",
+			"test_vectors/h264/main/CAQP1_Sony_B.h264",
+			"test_vectors/h264/main/CAWP1_TOSHIBA_E.h264",
+			"test_vectors/h264/main/CAWP5_TOSHIBA_E.h264",
+			"test_vectors/h264/main/CVBS3_Sony_C.h264",
+			"test_vectors/h264/main/CVPCMNL1_SVA_C.h264",
+			"test_vectors/h264/main/CVPCMNL2_SVA_C.h264",
+			"test_vectors/h264/main/CVSE3_Sony_H.h264",
+			"test_vectors/h264/main/CVSEFDFT3_Sony_E.h264",
+			"test_vectors/h264/main/CVWP1_TOSHIBA_E.h264",
+			"test_vectors/h264/main/CVWP2_TOSHIBA_E.h264",
+			"test_vectors/h264/main/CVWP3_TOSHIBA_E.h264",
+			"test_vectors/h264/main/CVWP5_TOSHIBA_E.h264",
+			"test_vectors/h264/main/NL3_SVA_E.h264",
+			"test_vectors/h264/main/SL1_SVA_B.h264",
+			"test_vectors/h264/main/camp_mot_frm0_full.h264",
+			"test_vectors/h264/main/cvmp_mot_frm0_full_B.h264",
+			"test_vectors/h264/main/src19td.IBP.h264",
+		},
+		"intel_fail": {
+			"test_vectors/h264/main/CAMA1_Sony_C.h264",
+			"test_vectors/h264/main/CAMA1_TOSHIBA_B.h264",
+			"test_vectors/h264/main/CAMA3_Sand_E.h264",
+			"test_vectors/h264/main/CAMACI3_Sony_C.h264",
+			"test_vectors/h264/main/CAMANL1_TOSHIBA_B.h264",
+			"test_vectors/h264/main/CAMANL2_TOSHIBA_B.h264",
+			"test_vectors/h264/main/CAMANL3_Sand_E.h264",
+			"test_vectors/h264/main/CAMASL3_Sony_B.h264",
+			"test_vectors/h264/main/CAMP_MOT_MBAFF_L30.h264",
+			"test_vectors/h264/main/CAMP_MOT_MBAFF_L31.h264",
+			"test_vectors/h264/main/CANLMA2_Sony_C.h264",
+			"test_vectors/h264/main/CANLMA3_Sony_C.h264",
+			"test_vectors/h264/main/CVCANLMA2_Sony_C.h264",
+			"test_vectors/h264/main/CVMA1_Sony_D.h264",
+			"test_vectors/h264/main/CVMA1_TOSHIBA_B.h264",
+			"test_vectors/h264/main/CVMANL1_TOSHIBA_B.h264",
+			"test_vectors/h264/main/CVMANL2_TOSHIBA_B.h264",
+			"test_vectors/h264/main/CVMAQP2_Sony_G.h264",
+			"test_vectors/h264/main/CVMAQP3_Sony_D.h264",
+			"test_vectors/h264/main/HCMP1_HHI_A.h264",
+			"test_vectors/h264/main/camp_mot_mbaff0_full.h264",
+			"test_vectors/h264/main/cvmp_mot_mbaff0_full_B.h264",
+		},
+	},
+	"misc": {
+		"always_passes": {
+			"test_vectors/h264/b_149068426_invalid_video_layout_mtk_8183_with_direct_videodecoder.h264",
+			"test_vectors/h264/b_172838252_pixelated_video_on_rk3399.h264",
+			"test_vectors/h264/b_174733646_video_with_out_of_order_frames_mtk_8173.h264",
+		},
+		"intel_fail": {},
+	},
+}
+
 var vaapiAv1Files = []string{
 	"test_vectors/av1/8-bit/00000527.ivf",
 	"test_vectors/av1/8-bit/00000535.ivf",
@@ -499,7 +619,7 @@ var vp8Files = map[string][]string{
 		"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1408.ivf",
 		"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1409.ivf",
 		"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1410.ivf",
-		"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1413.ivf",
+		//"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1413.ivf", // TODO(b/195789194)
 		"test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1404.ivf",
 		"test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405.ivf",
 		"test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1406.ivf",
@@ -509,7 +629,7 @@ var vp8Files = map[string][]string{
 	},
 	"inter": {
 		"test_vectors/vp8/inter/vp80-02-inter-1402.ivf",
-		"test_vectors/vp8/inter/vp80-02-inter-1412.ivf",
+		//"test_vectors/vp8/inter/vp80-02-inter-1412.ivf", // TODO(b/195789194)
 		"test_vectors/vp8/inter/vp80-02-inter-1418.ivf",
 		"test_vectors/vp8/inter/vp80-02-inter-1424.ivf",
 		"test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf",
@@ -541,7 +661,7 @@ var vp8Files = map[string][]string{
 	},
 	"intra": {
 		"test_vectors/vp8/intra/vp80-01-intra-1400.ivf",
-		"test_vectors/vp8/intra/vp80-01-intra-1411.ivf",
+		//"test_vectors/vp8/intra/vp80-01-intra-1411.ivf", // TODO(b/195789194)
 		"test_vectors/vp8/intra/vp80-01-intra-1416.ivf",
 		"test_vectors/vp8/intra/vp80-01-intra-1417.ivf",
 		"test_vectors/vp8/intra/vp80-03-segmentation-1401.ivf",
@@ -683,6 +803,24 @@ func TestPlatformDecodingParams(t *testing.T) {
 				Attr:         []string{"graphics_video_av1"},
 			}
 
+			params = append(params, param)
+		}
+	}
+
+	// Generates VAAPI H264 tests.
+	for _, group := range []string{"baseline", "main", "misc"} {
+		for _, subgroup := range []string{"always_passes", "intel_fail"} {
+			files := vaapiH264Files[group][subgroup]
+			param := paramData{
+				Name:         fmt.Sprintf("vaapi_h264_%s_%s", group, subgroup),
+				Decoder:      filepath.Join(chrome.BinTestDir, "decode_test"),
+				CmdBuilder:   "h264decodeVAAPIargs",
+				Files:        files,
+				Timeout:      2 * defaultTimeout,
+				SoftwareDeps: []string{"vaapi", caps.HWDecodeH264},
+				Metadata:     genExtraData(files),
+				Attr:         []string{"graphics_video_h264"},
+			}
 			params = append(params, param)
 		}
 	}
