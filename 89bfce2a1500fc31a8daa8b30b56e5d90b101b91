@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abe2301b_d497a2b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-08T20:11:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37e6390a_56a9c288",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b784a1a_ab4d0b02",
@@ -84,6 +108,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7ce2385_04a4891e",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-08T20:11:04Z",
+      "side": 1,
+      "message": "I am passing in TestHookState as this is code that should only ever run as part of the after test hook. It should run as if it were inline code in the Test Hook, where it would use the TestHookState to log.\n\nI don\u0027t understand the benefit of using a separate logging mechanism here. Can you clarify your ask?",
+      "parentUuid": "d41978d8_18fb1c7f",
+      "range": {
+        "startLine": 185,
+        "startChar": 45,
+        "endLine": 185,
+        "endChar": 69
+      },
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a81c742c_e48e66ea",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-08T20:11:04Z",
+      "side": 1,
+      "message": "Removed the return. Not sure why this is important though. The function now has no return and will just log errors that occur.",
+      "parentUuid": "36583fdf_6c0db5da",
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b71d2a7_27d8f9eb",
         "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
         "patchSetId": 2
@@ -95,6 +161,24 @@
       "writtenOn": "2021-11-06T02:31:34Z",
       "side": 1,
       "message": "I meant\n```\n\t\tif err :\u003d os.MkdirAll(dstDir, 0755); err !\u003d nil {\n\t\t\ts.Logf(\"Failed to create directory %q to store /var/log/messages for companion DUT (%v)\", dstDir, role)\n\t\t\tcontinue\n\t\t}\n\t\tcmpMessagePath :\u003d filepath.Join(dstDir, \"messages\")\n\n\t\t//Transfer messages file from DUT to host machine\n\t\tif err :\u003d linuxssh.GetFile(ctx, cdut.Conn(), \"/var/log/messages\", cmpMessagePath, linuxssh.PreserveSymlinks); err !\u003d nil {\n\t\t\ts.Logf(\"Failed to download /var/log/messages from companion DUT (%v) to %v at local host: %v\", role, cmpMessagePath, err)\n\t\t}\n```",
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd177971_01b8db69",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-08T20:11:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b71d2a7_27d8f9eb",
       "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -112,6 +196,24 @@
       "writtenOn": "2021-11-06T02:31:34Z",
       "side": 1,
       "message": "See comment above.",
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bef5c078_3a5d6ca7",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-08T20:11:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0be2bcab_b226897f",
       "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
