@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55a6c6e2_3c835141",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2021-11-08T20:42:04Z",
+      "side": 1,
+      "message": "I am a bit confused about this comment in the reference to the lines below.\n\n`\t// Get /var/log/messages file`\n\nIsn\u0027t dst the destination? as we hardcode var/log/messages in L189?\n\nI think this comment is really for L187--\u003e190, but due to the spacing it reads just for 187",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 30
+      },
+      "revId": "71d6eea7a0e93454e84096f29b5d107e931f392b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
