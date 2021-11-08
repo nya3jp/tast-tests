@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "499f3fae_bb43a001",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-08T19:59:19Z",
+      "side": 1,
+      "message": "I think we can change the comment to\n// Remove Attr from all runs due to destructive nature. see b/203609358\n\t\t\nThen simply remove The Attr line.\n",
+      "revId": "04ffb1551dbb12353b196619e166e88e0ab14be4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2262cc27_ba7adda9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/finalize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-08T19:59:19Z",
+      "side": 1,
+      "message": "I think you can just remove this line.",
+      "revId": "04ffb1551dbb12353b196619e166e88e0ab14be4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb84c72d_f89ed661",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/kiosk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-08T19:59:19Z",
+      "side": 1,
+      "message": "I think you can just remove this line.",
+      "revId": "04ffb1551dbb12353b196619e166e88e0ab14be4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c20c95_3f4c34c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/toolkit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-08T19:59:19Z",
+      "side": 1,
+      "message": "I think you can just remove this line.",
+      "revId": "04ffb1551dbb12353b196619e166e88e0ab14be4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
