@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8f7c80_e58cc091",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/lts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-08T08:12:14Z",
+      "side": 1,
+      "message": "Moved to using state as the variable in tests.",
+      "parentUuid": "1a0601a3_69c0a0de",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "a8db82429ed61fc29c86045dd26d1f918f4b7685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e1512a0_6aaa4ac3",
