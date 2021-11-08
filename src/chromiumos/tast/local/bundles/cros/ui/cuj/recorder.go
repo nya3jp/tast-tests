@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
@@ -140,6 +141,7 @@ type Recorder struct {
 	frameDataTracker   *FrameDataTracker
 	zramInfoTracker    *ZramInfoTracker
 	batteryInfoTracker *BatteryInfoTracker
+	memInfoTracker     *MemoryInfoTracker
 }
 
 func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria int64) float64 {
@@ -168,7 +170,7 @@ func getJankCounts(hist *metrics.Histogram, direction perf.Direction, criteria i
 // NewRecorder creates a Recorder based on the configs. It also aggregates the
 // metrics of each category (animation smoothness and input latency) and creates
 // the aggregated reports.
-func NewRecorder(ctx context.Context, cr *chrome.Chrome, configs ...MetricConfig) (*Recorder, error) {
+func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...MetricConfig) (*Recorder, error) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to test API")
@@ -204,6 +206,8 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, configs ...MetricConfig
 		return nil, errors.Wrap(err, "failed to create BatteryInfoTracker")
 	}
 
+	memInfoTracker := NewMemoryTracker(a)
+
 	r := &Recorder{
 		cr:                 cr,
 		tconn:              tconn,
@@ -214,6 +218,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, configs ...MetricConfig
 		frameDataTracker:   frameDataTracker,
 		zramInfoTracker:    zramInfoTracker,
 		batteryInfoTracker: batteryInfoTracker,
+		memInfoTracker:     memInfoTracker,
 	}
 	for _, config := range configs {
 		if config.histogramName == string(groupLatency) || config.histogramName == string(groupSmoothness) {
@@ -264,6 +269,11 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, configs ...MetricConfig
 	if err := r.timeline.StartRecording(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start recording timeline data")
 	}
+
+	if err := r.memInfoTracker.Start(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to start recording memory data")
+	}
+
 	success = true
 
 	return r, nil
@@ -409,6 +419,14 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 			stopErr = errors.Wrap(err, "failed to stop timeline")
 		}
 	}
+
+	if err := r.memInfoTracker.Stop(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to stop MemInfoTracker: ", err)
+		if stopErr == nil {
+			stopErr = errors.Wrap(err, "failed to stop MemInfoTracker")
+		}
+	}
+
 	if stopErr != nil {
 		return stopErr
 	}
@@ -462,6 +480,7 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 	r.frameDataTracker.Record(pv)
 	r.zramInfoTracker.Record(pv)
 	r.batteryInfoTracker.Record(pv)
+	r.memInfoTracker.Record(pv)
 
 	return nil
 }
