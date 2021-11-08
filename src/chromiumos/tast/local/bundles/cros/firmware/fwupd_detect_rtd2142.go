@@ -60,7 +60,11 @@ func verifyRTD2142Detected(ctx context.Context, output []byte) error {
 			output, 0644); err != nil {
 			testing.ContextLogf(ctx, "Failed to write fwupd output to file: %s", err)
 		}
-		return errors.New("get-devices output didn't match expected format")
+		return errors.New("get-devices output didn't match expected format." +
+			" For pre-MP devices this may be because the MST firmware is too old" +
+			" (not a bug in fwupd or this test): see" +
+			" https://issuetracker.google.com/issues/173742142#comment30" +
+			" for more information.")
 	}
 	return nil
 }
