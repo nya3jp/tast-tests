@@ -27,13 +27,14 @@ func init() {
 			"pathan.jilani@intel.com",
 			"intel-chrome-system-automation-team@intel.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
 		Params: []testing.Param{{
 			Val: false,
 		}, {
 			Name:              "thunderbolt",
+			ExtraAttr:         []string{"informational"},
 			Val:               true,
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya")),
 		}},
