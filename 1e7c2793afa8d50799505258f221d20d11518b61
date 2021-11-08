@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ee39ee2_dd84dea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/do_not_disturb_os_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-08T17:14:28Z",
+      "side": 1,
+      "message": "OS (capitalized):\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 37,
+        "startChar": 17,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "1e7c2793afa8d50799505258f221d20d11518b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc566a2_d007b6d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/do_not_disturb_os_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-08T17:14:28Z",
+      "side": 1,
+      "message": "30 seconds might be excessive here (this function will wait for the entirety of this duration, checking each interval that `notification` is not present). up to you though, I\u0027m not sure what the most appropriate duration would be",
+      "range": {
+        "startLine": 78,
+        "startChar": 42,
+        "endLine": 78,
+        "endChar": 51
+      },
+      "revId": "1e7c2793afa8d50799505258f221d20d11518b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
