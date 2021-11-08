@@ -50,6 +50,23 @@
       "message": "Trying this again with my @google.com email set as preferred.",
       "revId": "e17e0edefbe0a53064004ae110af42f6e944d82a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87f81e7_109b3b9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-08T17:21:04Z",
+      "side": 1,
+      "message": "Failed due to an unrelated broken test, which is now fixed, resubmitting.",
+      "revId": "e17e0edefbe0a53064004ae110af42f6e944d82a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
