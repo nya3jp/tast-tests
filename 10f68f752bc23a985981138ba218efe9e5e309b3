@@ -122,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb3cf257_4942167b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-08T10:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd28d36d_f1bb761b",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "289da2d3_665974e7",
@@ -135,6 +159,30 @@
       "writtenOn": "2021-11-05T20:03:02Z",
       "side": 1,
       "message": "get",
+      "range": {
+        "startLine": 103,
+        "startChar": 21,
+        "endLine": 103,
+        "endChar": 25
+      },
+      "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6835faf5_11659915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-08T10:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "289da2d3_665974e7",
       "range": {
         "startLine": 103,
         "startChar": 21,
@@ -168,6 +216,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a277da0_33e3bb49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-08T10:13:51Z",
+      "side": 1,
+      "message": "The function has been removed",
+      "parentUuid": "048f0ede_fa610937",
+      "range": {
+        "startLine": 161,
+        "startChar": 5,
+        "endLine": 161,
+        "endChar": 18
+      },
+      "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1267c33d_9bfd35dd",
@@ -191,6 +263,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01dbc259_90aac9cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-08T10:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1267c33d_9bfd35dd",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 18
+      },
+      "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5a3ac4a_32745257",
@@ -204,6 +300,30 @@
       "writtenOn": "2021-11-05T22:26:08Z",
       "side": 1,
       "message": "Are these used to click buttons to confirm install? If yes, these should be part of the CWS library code",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 26
+      },
+      "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb62c17e_23946f32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-08T10:13:51Z",
+      "side": 1,
+      "message": "Yes it is, \nbut an app on cws might have at least two different forms, extension and app.\nThe `ConfirmTxt` of an extension is different from an app. (we also notice that the `InstalledTxt` was not unique previously)\nWe guess that\u0027s why the CWS was designed in this way.\n\nShould we still make changes?",
+      "parentUuid": "b5a3ac4a_32745257",
       "range": {
         "startLine": 187,
         "startChar": 2,
