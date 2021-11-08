@@ -110,6 +110,30 @@
       },
       "revId": "e2f999bc321671dbbd59401cbb8d0a2c94150bbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "289200df_96adde49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-11-08T22:04:29Z",
+      "side": 1,
+      "message": "yeah i moved it because i saw on another review, it shoudl go below\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3248218/1..9/src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go#b40",
+      "parentUuid": "c0a68d58_a8c5f5e5",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 1
+      },
+      "revId": "e2f999bc321671dbbd59401cbb8d0a2c94150bbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
