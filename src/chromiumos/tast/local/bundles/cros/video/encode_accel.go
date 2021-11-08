@@ -175,51 +175,6 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
 			ExtraData:         encode.TestData(tulip720P),
-		}, {
-			Name:              "h264_180p_nv12",
-			Val:               encode.MakeNV12TestOptions(tulip180P, videotype.H264BaselineProf),
-			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
-			ExtraData:         encode.TestData(tulip180P),
-		}, {
-			Name:              "vp8_180p_nv12",
-			Val:               encode.MakeNV12TestOptions(tulip180P, videotype.VP8Prof),
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			ExtraData:         encode.TestData(tulip180P),
-		}, {
-			Name:              "vp9_180p_nv12",
-			Val:               encode.MakeNV12TestOptions(tulip180P, videotype.VP9Prof),
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			ExtraData:         encode.TestData(tulip180P),
-		}, {
-			Name:              "h264_360p_nv12",
-			Val:               encode.MakeNV12TestOptions(tulip360P, videotype.H264BaselineProf),
-			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
-			ExtraData:         encode.TestData(tulip360P),
-		}, {
-			Name:              "vp8_360p_nv12",
-			Val:               encode.MakeNV12TestOptions(tulip360P, videotype.VP8Prof),
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			ExtraData:         encode.TestData(tulip360P),
-		}, {
-			Name:              "vp9_360p_nv12",
-			Val:               encode.MakeNV12TestOptions(tulip360P, videotype.VP9Prof),
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			ExtraData:         encode.TestData(tulip360P),
-		}, {
-			Name:              "h264_720p_nv12",
-			Val:               encode.MakeNV12TestOptions(tulip720P, videotype.H264BaselineProf),
-			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
-			ExtraData:         encode.TestData(tulip720P),
-		}, {
-			Name:              "vp8_720p_nv12",
-			Val:               encode.MakeNV12TestOptions(tulip720P, videotype.VP8Prof),
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			ExtraData:         encode.TestData(tulip720P),
-		}, {
-			Name:              "vp9_720p_nv12",
-			Val:               encode.MakeNV12TestOptions(tulip720P, videotype.VP9Prof),
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			ExtraData:         encode.TestData(tulip720P),
 		}},
 	})
 }
