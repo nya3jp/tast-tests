@@ -16,6 +16,24 @@
       "message": "Hope it is tested with the new pool",
       "revId": "9e854c7b53d82b2abfc11575b3ef8714d22bdf9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "475c1718_87b418a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-11-08T18:29:00Z",
+      "side": 1,
+      "message": "yes,it was tested with the new pool. It is working fine.",
+      "parentUuid": "a3a01580_f01fbe99",
+      "revId": "9e854c7b53d82b2abfc11575b3ef8714d22bdf9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
