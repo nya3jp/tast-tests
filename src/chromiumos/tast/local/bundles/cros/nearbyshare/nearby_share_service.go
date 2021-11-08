@@ -15,14 +15,13 @@ import (
 	"google.golang.org/grpc"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
-	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
-	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/services/cros/nearbyservice"
@@ -50,8 +49,8 @@ type NearbyService struct {
 	messageReader   *syslog.LineReader
 	fileNames       []string
 	username        string
-	dataUsage       nearbysetup.DataUsage
-	visibility      nearbysetup.Visibility
+	dataUsage       nearbycommon.DataUsage
+	visibility      nearbycommon.Visibility
 	btsnoopCmd      *testexec.Cmd
 }
 
@@ -94,7 +93,7 @@ func (n *NearbyService) CloseChrome(ctx context.Context, req *empty.Empty) (*emp
 		testing.ContextLog(ctx, "Chrome not available")
 		return nil, errors.New("Chrome not available")
 	}
-	os.RemoveAll(nearbytestutils.SendDir)
+	os.RemoveAll(nearbycommon.SendDir)
 	if n.senderSurface != nil {
 		if err := n.senderSurface.Close(ctx); err != nil {
 			testing.ContextLog(ctx, "Closing SendSurface failed: ", err)
@@ -173,12 +172,12 @@ func (n *NearbyService) CrOSSetup(ctx context.Context, req *nearbyservice.CrOSSe
 		return nil, errors.New("Chrome not available")
 	}
 	n.deviceName = req.DeviceName
-	n.dataUsage = nearbysetup.DataUsage(req.DataUsage)
-	n.visibility = nearbysetup.Visibility(req.Visibility)
+	n.dataUsage = nearbycommon.DataUsage(req.DataUsage)
+	n.visibility = nearbycommon.Visibility(req.Visibility)
 	if err := nearbyshare.CrOSSetup(ctx, n.tconn, n.cr, n.dataUsage, n.visibility, n.deviceName); err != nil {
 		return nil, errors.Wrap(err, "failed to perform CrOS setup")
 	}
-	if n.visibility == nearbysetup.VisibilitySelectedContacts && req.SenderUsername != "" {
+	if n.visibility == nearbycommon.VisibilitySelectedContacts && req.SenderUsername != "" {
 		nearbySettings, err := nearbyshare.LaunchNearbySettings(ctx, n.tconn, n.cr)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to launch OS settings")
@@ -226,7 +225,7 @@ func (n *NearbyService) StartSend(ctx context.Context, req *nearbyservice.CrOSSe
 	// Get the full paths of the test files to pass to chrome://nearby.
 	var testFiles []string
 	for _, f := range req.FileNames {
-		testFiles = append(testFiles, filepath.Join(nearbytestutils.SendDir, f))
+		testFiles = append(testFiles, filepath.Join(nearbycommon.SendDir, f))
 	}
 	sender, err := nearbyshare.StartSendFiles(ctx, n.cr, testFiles)
 	if err != nil {

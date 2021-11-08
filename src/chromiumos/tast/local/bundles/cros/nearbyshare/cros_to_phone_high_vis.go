@@ -10,8 +10,8 @@ import (
 
 	"chromiumos/tast/common/android"
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
-	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -30,7 +30,7 @@ func init() {
 			{
 				Name:    "dataoffline_allcontacts_png5kb",
 				Fixture: "nearbyShareDataUsageOfflineNoOne",
-				Val: nearbytestutils.TestData{
+				Val: nearbycommon.TestData{
 					Filename:        "small_png.zip",
 					TransferTimeout: nearbycommon.SmallFileTransferTimeout,
 					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
@@ -41,7 +41,7 @@ func init() {
 			{
 				Name:    "dataoffline_allcontacts_jpg11kb",
 				Fixture: "nearbyShareDataUsageOfflineNoOne",
-				Val: nearbytestutils.TestData{
+				Val: nearbycommon.TestData{
 					Filename:        "small_jpg.zip",
 					TransferTimeout: nearbycommon.SmallFileTransferTimeout,
 					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
@@ -52,7 +52,7 @@ func init() {
 			{
 				Name:    "dataonline_noone_txt30mb",
 				Fixture: "nearbyShareDataUsageOnlineNoOne",
-				Val: nearbytestutils.TestData{
+				Val: nearbycommon.TestData{
 					Filename:        "big_txt.zip",
 					TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
 					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
@@ -73,7 +73,7 @@ func CrosToPhoneHighVis(ctx context.Context, s *testing.State) {
 	androidDisplayName := s.FixtValue().(*nearbyshare.FixtData).AndroidDeviceName
 
 	// Extract the test file(s) to nearbyshare.SendDir.
-	testData := s.Param().(nearbytestutils.TestData)
+	testData := s.Param().(nearbycommon.TestData)
 	testDataZip := s.DataPath(testData.Filename)
 	filenames, err := nearbytestutils.ExtractCrosTestFiles(ctx, testDataZip)
 	if err != nil {
@@ -83,7 +83,7 @@ func CrosToPhoneHighVis(ctx context.Context, s *testing.State) {
 	// Get the full paths of the test files to pass to chrome://nearby.
 	var testFiles []string
 	for _, f := range filenames {
-		testFiles = append(testFiles, filepath.Join(nearbytestutils.SendDir, f))
+		testFiles = append(testFiles, filepath.Join(nearbycommon.SendDir, f))
 	}
 
 	s.Log("Starting sending on the CrOS device")
@@ -144,7 +144,7 @@ func CrosToPhoneHighVis(ctx context.Context, s *testing.State) {
 	shareCompleted = true
 
 	// Hash the file on both sides and confirm they match. Android receives shares in its default downloads directory.
-	if err := nearbytestutils.FileHashComparison(ctx, filenames, nearbytestutils.SendDir, android.DownloadDir, androidDevice); err != nil {
+	if err := nearbytestutils.FileHashComparison(ctx, filenames, nearbycommon.SendDir, android.DownloadDir, androidDevice); err != nil {
 		s.Fatal("Failed file hash comparison: ", err)
 	}
 	s.Log("Share completed and file hashes match on both sides")

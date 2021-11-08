@@ -15,8 +15,10 @@ import (
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/mobly"
 	"chromiumos/tast/common/android/ui"
+	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/testing"
 )
 
@@ -287,7 +289,7 @@ func (a *AndroidNearbyDevice) CancelReceivingFile(ctx context.Context) error {
 
 // SendFile starts sending with a timeout.
 // Sets the AndroidNearbyDevice's transferCallback, which is needed when awaiting follow-up SnippetEvents when calling eventWaitAndGet.
-func (a *AndroidNearbyDevice) SendFile(ctx context.Context, senderName, receiverName, shareFileName string, mimetype MimeType, turnaroundTime time.Duration) error {
+func (a *AndroidNearbyDevice) SendFile(ctx context.Context, senderName, receiverName, shareFileName string, mimetype nearbycommon.MimeType, turnaroundTime time.Duration) error {
 	// Reset the transferCallback between shares.
 	a.transferCallback = ""
 	res, err := a.snippetClient.RPC(ctx, mobly.DefaultRPCResponseTimeout, "sendFile", senderName, receiverName, shareFileName, mimetype, int(turnaroundTime.Seconds()))
@@ -350,34 +352,31 @@ func (a *AndroidNearbyDevice) AcceptUI(ctx context.Context, timeout time.Duratio
 // AndroidAttributes contains information about the Android device and its settings that are relevant to Nearby Share.
 // "Android" is redundantly prepended to the field names to make them easy to distinguish from CrOS attributes in test logs.
 type AndroidAttributes struct {
-	DisplayName         string
-	User                string
-	DataUsage           string
-	Visibility          string
-	NearbyShareVersion  string
-	GMSCoreVersion      int
-	AndroidVersion      int
-	SDKVersion          int
-	ProductName         string
-	ModelName           string
-	DeviceName          string
-	BluetoothMACAddress string
+	BasicAttributes    *crossdevice.AndroidAttributes
+	DisplayName        string
+	DataUsage          string
+	Visibility         string
+	NearbyShareVersion string
 }
 
 // GetAndroidAttributes returns the AndroidAttributes for the device.
 func (a *AndroidNearbyDevice) GetAndroidAttributes(ctx context.Context) (*AndroidAttributes, error) {
-	var metadata AndroidAttributes
+	// Get the base set of Android attributes used in all crossdevice tests.
+	basicAttributes, err := crossdevice.GetAndroidAttributes(ctx, a.device)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get base set of crossdevice Android attributes for reporting")
+	}
+
+	// Add nearby specific attributes.
+	metadata := AndroidAttributes{
+		BasicAttributes: basicAttributes,
+	}
+
 	displayName, err := a.GetDeviceName(ctx)
 	if err != nil {
 		return nil, err
 	}
 	metadata.DisplayName = displayName
-
-	user, err := a.device.GoogleAccount(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get device user account")
-	}
-	metadata.User = user
 
 	dataUsage, err := a.GetDataUsage(ctx)
 	if err != nil {
@@ -404,34 +403,6 @@ func (a *AndroidNearbyDevice) GetAndroidAttributes(ctx context.Context) (*Androi
 		return nil, err
 	}
 	metadata.NearbyShareVersion = nearbyVersion
-
-	gmsVersion, err := a.device.GMSCoreVersion(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get GMS Core version")
-	}
-	metadata.GMSCoreVersion = gmsVersion
-
-	androidVersion, err := a.device.AndroidVersion(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get Android version")
-	}
-	metadata.AndroidVersion = androidVersion
-
-	sdkVersion, err := a.device.SDKVersion(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get Android SDK version")
-	}
-	metadata.SDKVersion = sdkVersion
-
-	metadata.ProductName = a.device.Product
-	metadata.ModelName = a.device.Model
-	metadata.DeviceName = a.device.Device
-
-	mac, err := a.device.BluetoothMACAddress(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get the Bluetooth MAC address")
-	}
-	metadata.BluetoothMACAddress = mac
 
 	return &metadata, nil
 }

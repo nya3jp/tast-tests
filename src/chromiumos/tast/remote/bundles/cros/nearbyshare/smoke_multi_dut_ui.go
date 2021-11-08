@@ -11,7 +11,6 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
-	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/rpc"
@@ -76,7 +75,7 @@ func openHighVisibilityMode(ctx context.Context, s *testing.State, d *dut.DUT, t
 
 	// Setup Nearby Share on the DUT.
 	const deviceName = "MultiDut_HighVisibilityUISmoke"
-	req := &nearbyservice.CrOSSetupRequest{DataUsage: int32(nearbysetup.DataUsageOnline), Visibility: int32(nearbysetup.VisibilityAllContacts), DeviceName: deviceName}
+	req := &nearbyservice.CrOSSetupRequest{DataUsage: int32(nearbycommon.DataUsageOnline), Visibility: int32(nearbycommon.VisibilityAllContacts), DeviceName: deviceName}
 	if _, err := ns.CrOSSetup(ctx, req); err != nil {
 		s.Fatal("Failed to setup Nearby Share: ", err)
 	}
