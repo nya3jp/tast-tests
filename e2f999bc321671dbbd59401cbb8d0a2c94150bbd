@@ -52,6 +52,46 @@
       "parentUuid": "4c3f51a3_913273ac",
       "revId": "e2f999bc321671dbbd59401cbb8d0a2c94150bbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "838a062b_5330b91d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-11-08T21:52:16Z",
+      "side": 1,
+      "message": "p",
+      "revId": "e2f999bc321671dbbd59401cbb8d0a2c94150bbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0a68d58_a8c5f5e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-11-08T21:52:16Z",
+      "side": 1,
+      "message": "Is this block identical to the removed block above?",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 1
+      },
+      "revId": "e2f999bc321671dbbd59401cbb8d0a2c94150bbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
