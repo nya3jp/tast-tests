@@ -18,9 +18,10 @@ func init() {
 		Func:     Toolkit,
 		Desc:     "Test if toolkit is running",
 		Contacts: []string{"lschyi@google.com", "chromeos-factory-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		Timeout:  time.Minute,
-		Fixture:  "ensureToolkit",
+		// Removing this test from all runs due to destructive nature. see b/203609358
+		// Attr:     []string{}, // "group:mainline", "informational"
+		Timeout: time.Minute,
+		Fixture: "ensureToolkit",
 		// Skip "nyan_kitty" due to slow reboot speed.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty")),
 	})

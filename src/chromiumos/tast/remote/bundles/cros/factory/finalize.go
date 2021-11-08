@@ -23,9 +23,10 @@ func init() {
 		Desc:         "Test finalize process in factory toolkit",
 		Contacts:     []string{"menghuan@chromium.org", "chromeos-factory-eng@google.com"},
 		SoftwareDeps: []string{"reboot", "factory_flow"},
-		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      8 * time.Minute,
-		Fixture:      "ensureToolkit",
+		// Removing this test from all runs due to destructive nature. see b/203609358
+		// Attr:         []string{"group:mainline", "informational"},
+		Timeout: 8 * time.Minute,
+		Fixture: "ensureToolkit",
 		// Skip "nyan_kitty" due to slow reboot speed.
 		// TODO(b/203313828): Skip on dedede due to CQ failures
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty"), hwdep.SkipOnPlatform("dedede")),
