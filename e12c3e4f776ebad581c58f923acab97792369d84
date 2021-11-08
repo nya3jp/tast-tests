@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "814ef8d4_dfb515a1",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-08T16:39:32Z",
+      "side": 1,
+      "message": "Perhaps this comment should say something about the supported fixtures and the relationship between fixture value and browser type?",
+      "range": {
+        "startLine": 18,
+        "startChar": 42,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "e12c3e4f776ebad581c58f923acab97792369d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
