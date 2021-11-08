@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "812b5fe7_faf662d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-08T23:53:01Z",
+      "side": 1,
+      "message": "No need to include me on this review (as the former infra triage) -- this CL will go through CQ, so feel free to go through normal code review process for this change.",
+      "revId": "da8221751b6d65a2c14bcb1dbb061b4e87c17dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
