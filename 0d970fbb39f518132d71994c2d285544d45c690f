@@ -46,6 +46,30 @@
       },
       "revId": "0d970fbb39f518132d71994c2d285544d45c690f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "801ea6f0_d5f0e9ab",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-08T18:47:51Z",
+      "side": 1,
+      "message": "Thanks for catching a critical typo!",
+      "parentUuid": "dd8b9617_5ce135f1",
+      "range": {
+        "startLine": 534,
+        "startChar": 2,
+        "endLine": 536,
+        "endChar": 3
+      },
+      "revId": "0d970fbb39f518132d71994c2d285544d45c690f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
