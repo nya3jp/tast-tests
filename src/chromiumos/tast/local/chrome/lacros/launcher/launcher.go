@@ -248,14 +248,18 @@ func LaunchLacrosChromeWithURL(ctx context.Context, f FixtValue, url string) (*L
 	}()
 
 	// Wait for a window that matches what a lacros window looks like.
-	if err := WaitForLacrosWindow(ctx, f.TestAPIConn(), "about:blank"); err != nil {
+	if err := WaitForLacrosWindow(ctx, f.TestAPIConn(), ""); err != nil {
 		return nil, err
 	}
-
 	l, err := ConnectToLacrosChrome(ctx, f.LacrosPath(), userDataDir)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
 	}
+	// Check if the URL passed in is open on the Lacros browser.
+	if _, err := l.FindTargets(ctx, chrome.MatchTargetURLPrefix(url)); err != nil {
+		return nil, err
+	}
+
 	// Move cmd ownership to l, thus after this line terminating cmd wond't run.
 	l.cmd = cmd
 	cmd = nil
@@ -272,10 +276,17 @@ func LogFile(ctx context.Context) string {
 	return filepath.Join(out, "lacros.log")
 }
 
-// WaitForLacrosWindow waits for a Lacrow window with the specified title to be visibe.
+// WaitForLacrosWindow waits for a Lacrow window to be open and have the title to be visible if it is specified as a param.
 func WaitForLacrosWindow(ctx context.Context, tconn *chrome.TestConn, title string) error {
 	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-		return w.IsVisible && strings.HasPrefix(w.Title, title) && strings.HasPrefix(w.Name, "ExoShellSurface")
+		if !w.IsVisible {
+			return false
+		} else if !strings.HasPrefix(w.Name, "ExoShellSurface") {
+			return false
+		} else if len(title) > 0 {
+			return strings.HasPrefix(w.Title, title)
+		}
+		return true
 	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
 		return errors.Wrap(err, "failed to wait for lacros-chrome window to be visible")
 	}
