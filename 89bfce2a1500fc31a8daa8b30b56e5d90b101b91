@@ -150,6 +150,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f421c86_9ecd8191",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-08T21:26:23Z",
+      "side": 1,
+      "message": "I think Gabor meant something like this:\n\n```\ntesting.ContextLogf(ctx, \"Failed to download /var/log/messages from DUT to %v at local host: %v\", dst, err)\n```\n\nThen, you don\u0027t need to passing in testing state as argument.",
+      "parentUuid": "c7ce2385_04a4891e",
+      "range": {
+        "startLine": 185,
+        "startChar": 45,
+        "endLine": 185,
+        "endChar": 69
+      },
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "976295e3_6c87924d",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-08T21:26:23Z",
+      "side": 1,
+      "message": "If we want to do something with the return value, I agree with Gabor that we should return error to be consistant with other functions.",
+      "parentUuid": "a81c742c_e48e66ea",
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b71d2a7_27d8f9eb",
         "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
         "patchSetId": 2

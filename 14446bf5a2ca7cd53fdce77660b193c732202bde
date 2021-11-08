@@ -160,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2c0447f_92c85e00",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-08T21:26:23Z",
+      "side": 1,
+      "message": "Thanks for pointing it out.",
+      "parentUuid": "e0913098_f22b96d4",
+      "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e724c272_8f4d33be",
@@ -262,6 +280,24 @@
       "side": 1,
       "message": "I\u0027ll make the change, but I would like to know why this is beneficial as opposed to the way it is implemented rather than just a personal preference.",
       "parentUuid": "cd778ec9_9ad15eb4",
+      "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe914ffc_8c539ff8",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-08T21:26:23Z",
+      "side": 1,
+      "message": "Just want to following the recommended style here.\n\ngo/go-style/decisions#indent-error-flow",
+      "parentUuid": "b70433d8_8ce4fae8",
       "revId": "14446bf5a2ca7cd53fdce77660b193c732202bde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
