@@ -46,6 +46,26 @@ type PSIStats struct {
 	Timestamp time.Time
 }
 
+// Clone creates a deep copy of the provided pointer.
+func (t *PSIOneSystemStats) Clone() *PSIOneSystemStats {
+	if t == nil {
+		return nil
+	}
+	deepcopy := *t
+	return &deepcopy
+}
+
+// Clone creates a deep copy of the provided pointer.
+func (t *PSIStats) Clone() *PSIStats {
+	if t == nil {
+		return nil
+	}
+	deepcopy := *t
+	deepcopy.Host = t.Host.Clone()
+	deepcopy.Arc = t.Arc.Clone()
+	return &deepcopy
+}
+
 // newPSISystemStats parses PSI text output into a struct for one system.
 func newPSISystemStats(statBlob []byte) (*PSIOneSystemStats, error) {
 	stats := &PSIOneSystemStats{}
@@ -190,7 +210,8 @@ func psiDeltaMetrics(base, stat *PSIOneSystemStats, elapsedMicroseconds int64, p
 
 // PSIMetrics writes a JSON file containing statistics from PSI metrics.
 // Parameter base is optional:
-// * if base is set, it defines the starting point for metrics;
+// * if base is set, it defines the starting point for metrics, and its contents
+//   are overwritten with the latest snapshot of PSI metrics.
 // * if base is nil, metrics are averaged since boot.
 // If outdir is "", then no logs are written.
 func PSIMetrics(ctx context.Context, a *arc.ARC, base *PSIStats, p *perf.Values, outdir, suffix string) error {
@@ -229,8 +250,9 @@ func PSIMetrics(ctx context.Context, a *arc.ARC, base *PSIStats, p *perf.Values,
 			psiDeltaMetrics(base.Host, stat.Host, elapsedMicroseconds, p, "", suffix)
 		}
 		if base.Arc != nil && stat.Arc != nil {
-			psiDeltaMetrics(base.Arc, stat.Arc, elapsedMicroseconds, p, "", suffix)
+			psiDeltaMetrics(base.Arc, stat.Arc, elapsedMicroseconds, p, "arc_", suffix)
 		}
+		*base = *stat
 	}
 
 	if stat.Host != nil {
@@ -243,4 +265,24 @@ func PSIMetrics(ctx context.Context, a *arc.ARC, base *PSIStats, p *perf.Values,
 	}
 
 	return nil
+}
+
+// LogPSIMetricsSlice logs delta metrics between two existing snapshots
+// (no new snapshots are taken).
+func LogPSIMetricsSlice(begin, end *PSIStats, p *perf.Values, suffix string) {
+	if begin == nil {
+		return
+	}
+	if end == nil {
+		return
+	}
+
+	elapsedMicroseconds := end.Timestamp.Sub(begin.Timestamp).Microseconds()
+
+	if begin.Host != nil && end.Host != nil {
+		psiDeltaMetrics(begin.Host, end.Host, elapsedMicroseconds, p, "", suffix)
+	}
+	if begin.Arc != nil && end.Arc != nil {
+		psiDeltaMetrics(begin.Arc, end.Arc, elapsedMicroseconds, p, "arc_", suffix)
+	}
 }
