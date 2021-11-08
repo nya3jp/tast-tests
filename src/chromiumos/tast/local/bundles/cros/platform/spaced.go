@@ -24,7 +24,7 @@ func init() {
 		Func:     Spaced,
 		Desc:     "Checks that spaced queries work",
 		Contacts: []string{"sarthakkukreti@chromium.org", "chromeos-storage@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 
