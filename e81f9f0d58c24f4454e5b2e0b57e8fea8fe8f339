@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6712e77c_a4e8da08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-11-08T20:15:14Z",
+      "side": 1,
+      "message": "briannorris@ If this is causing CQ rejections, consider chumping this and landing a broken_before.",
+      "revId": "e81f9f0d58c24f4454e5b2e0b57e8fea8fe8f339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
