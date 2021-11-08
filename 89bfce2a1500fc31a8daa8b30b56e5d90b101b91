@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37e6390a_56a9c288",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-08T14:57:16Z",
+      "side": 1,
+      "message": "nit: usually the prefix is either the repo name tast-tests, or the package name, bundlemain in this case.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b784a1a_ab4d0b02",
         "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
         "patchSetId": 2
@@ -14,6 +37,47 @@
       "writtenOn": "2021-11-06T02:31:34Z",
       "side": 1,
       "message": "I don\u0027t think you need to return a bool here. You already log all the warning message.",
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36583fdf_6c0db5da",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-08T14:57:16Z",
+      "side": 1,
+      "message": "If you want to return with something, can be an error instead?",
+      "parentUuid": "7b784a1a_ab4d0b02",
+      "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d41978d8_18fb1c7f",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-08T14:57:16Z",
+      "side": 1,
+      "message": "You are only passing the testing state to create logs. Can you try if testing.ContextLog() works in this level as well? (It works in tests.)\nThis way you can have 1 less inputs for the function.",
+      "range": {
+        "startLine": 185,
+        "startChar": 45,
+        "endLine": 185,
+        "endChar": 69
+      },
       "revId": "89bfce2a1500fc31a8daa8b30b56e5d90b101b91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
