@@ -33,6 +33,24 @@
       "message": "Are there certain boards or conditions that drove this?",
       "revId": "4b71e34175e6234315f3477c43f0152120dd5a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96298ccb_11a188da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-11-08T23:19:00Z",
+      "side": 1,
+      "message": "Yes, for instance it\u0027s prone on happening for jacuzzi but not for atlas (the board I\u0027m using to test).",
+      "parentUuid": "439c245d_cc2aa92e",
+      "revId": "4b71e34175e6234315f3477c43f0152120dd5a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
