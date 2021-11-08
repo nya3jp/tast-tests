@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfd89b78_dca827c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-11-08T14:29:21Z",
+      "side": 1,
+      "message": "It would be helpful to have a comment saying what group needs what access here.",
+      "range": {
+        "startLine": 74,
+        "startChar": 95,
+        "endLine": 74,
+        "endChar": 96
+      },
+      "revId": "6fc504906adcc37986b7ba95a807971d3c4bc398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
