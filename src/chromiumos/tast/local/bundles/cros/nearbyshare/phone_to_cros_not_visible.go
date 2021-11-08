@@ -10,10 +10,9 @@ import (
 	"time"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
-	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
-	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
@@ -32,10 +31,10 @@ func init() {
 			{
 				Name:    "somecontacts",
 				Fixture: "nearbyShareDataUsageOfflineSomeContactsAndroidNotSelectedContact",
-				Val: nearbytestutils.TestData{
+				Val: nearbycommon.TestData{
 					Filename:    "small_jpg.zip",
 					TestTimeout: nearbycommon.DetectionTimeout,
-					MimeType:    nearbysnippet.MimeTypeJpeg,
+					MimeType:    nearbycommon.MimeTypeJpeg,
 				},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbycommon.DetectionTimeout,
@@ -43,10 +42,10 @@ func init() {
 			{
 				Name:    "noone",
 				Fixture: "nearbyShareDataUsageOnlineNoOne",
-				Val: nearbytestutils.TestData{
+				Val: nearbycommon.TestData{
 					Filename:    "small_jpg.zip",
 					TestTimeout: nearbycommon.DetectionTimeout,
-					MimeType:    nearbysnippet.MimeTypeJpeg,
+					MimeType:    nearbycommon.MimeTypeJpeg,
 				},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbycommon.DetectionTimeout,
@@ -63,7 +62,7 @@ func PhoneToCrosNotVisible(ctx context.Context, s *testing.State) {
 	androidDisplayName := s.FixtValue().(*nearbyshare.FixtData).AndroidDeviceName
 
 	// Extract the test file to the staging directory on the Android device.
-	testData := s.Param().(nearbytestutils.TestData)
+	testData := s.Param().(nearbycommon.TestData)
 	testDataZip := s.DataPath(testData.Filename)
 	testFile, err := nearbytestutils.ExtractAndroidTestFile(ctx, testDataZip, androidDevice)
 	if err != nil {
