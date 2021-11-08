@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06f6d950_15cae39f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2021-11-08T22:53:35Z",
+      "side": 1,
+      "message": "Sorry didn\u0027t see yich@\u0027s comment. LGTM functionally, I\u0027ll wait for that change before +2",
+      "revId": "f0734f36fdcaa3945dcb99f047cfbe6b6337e931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66b753b2_6dd0305e",
