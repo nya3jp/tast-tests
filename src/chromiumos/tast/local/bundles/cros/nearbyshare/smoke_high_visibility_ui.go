@@ -9,8 +9,6 @@ import (
 	"strconv"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
-	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
-	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -60,8 +58,8 @@ func SmokeHighVisibilityUI(ctx context.Context, s *testing.State) {
 
 	// Set up Nearby Share on the CrOS device.
 	const crosBaseName = "cros_test"
-	crosDisplayName := nearbytestutils.RandomDeviceName(crosBaseName)
-	if err := nearbyshare.CrOSSetup(ctx, tconn, cr, nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, crosDisplayName); err != nil {
+	crosDisplayName := nearbycommon.RandomDeviceName(crosBaseName)
+	if err := nearbyshare.CrOSSetup(ctx, tconn, cr, nearbycommon.DataUsageOffline, nearbycommon.VisibilityAllContacts, crosDisplayName); err != nil {
 		s.Fatal("Failed to set up Nearby Share: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)

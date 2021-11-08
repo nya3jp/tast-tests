@@ -8,6 +8,7 @@ import (
 	"context"
 	"regexp"
 
+	crossdevicecommon "chromiumos/tast/common/cros/crossdevice"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -15,18 +16,9 @@ import (
 	"chromiumos/tast/lsbrelease"
 )
 
-// CrosAttributes contains information about the CrOS device that are relevant to Nearby Share.
-type CrosAttributes struct {
-	User            string
-	ChromeVersion   string
-	ChromeOSVersion string
-	Board           string
-	Model           string
-}
-
 // GetCrosAttributes gets the Chrome version and combines it into a CrosAttributes strct with the provided values for easy logging with json.MarshalIndent.
-func GetCrosAttributes(ctx context.Context, tconn *chrome.TestConn, username string) (*CrosAttributes, error) {
-	attrs := CrosAttributes{
+func GetCrosAttributes(ctx context.Context, tconn *chrome.TestConn, username string) (*crossdevicecommon.CrosAttributes, error) {
+	attrs := crossdevicecommon.CrosAttributes{
 		User: username,
 	}
 	const expectedKey = "CHROME VERSION"
