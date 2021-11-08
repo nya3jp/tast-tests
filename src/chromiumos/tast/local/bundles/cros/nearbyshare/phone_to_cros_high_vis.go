@@ -11,10 +11,9 @@ import (
 
 	"chromiumos/tast/common/android"
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
-	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
-	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/screenshot"
@@ -34,11 +33,11 @@ func init() {
 			{
 				Name:    "dataoffline_allcontacts_jpg11kb",
 				Fixture: "nearbyShareDataUsageOfflineNoOne",
-				Val: nearbytestutils.TestData{
+				Val: nearbycommon.TestData{
 					Filename:        "small_jpg.zip",
 					TransferTimeout: nearbycommon.SmallFileTransferTimeout,
 					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
-					MimeType:        nearbysnippet.MimeTypeJpeg,
+					MimeType:        nearbycommon.MimeTypeJpeg,
 				},
 				ExtraData: []string{"small_jpg.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
@@ -46,11 +45,11 @@ func init() {
 			{
 				Name:    "dataoffline_allcontacts_png5kb",
 				Fixture: "nearbyShareDataUsageOfflineNoOne",
-				Val: nearbytestutils.TestData{
+				Val: nearbycommon.TestData{
 					Filename:        "small_png.zip",
 					TransferTimeout: nearbycommon.SmallFileTransferTimeout,
 					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
-					MimeType:        nearbysnippet.MimeTypePng,
+					MimeType:        nearbycommon.MimeTypePng,
 				},
 				ExtraData: []string{"small_png.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
@@ -58,11 +57,11 @@ func init() {
 			{
 				Name:    "dataonline_noone_txt30mb",
 				Fixture: "nearbyShareDataUsageOnlineNoOne",
-				Val: nearbytestutils.TestData{
+				Val: nearbycommon.TestData{
 					Filename:        "big_txt.zip",
 					TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout,
 					TestTimeout:     nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
-					MimeType:        nearbysnippet.MimeTypeTextPlain,
+					MimeType:        nearbycommon.MimeTypeTextPlain,
 				},
 				ExtraData: []string{"big_txt.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
@@ -80,7 +79,7 @@ func PhoneToCrosHighVis(ctx context.Context, s *testing.State) {
 	androidDisplayName := s.FixtValue().(*nearbyshare.FixtData).AndroidDeviceName
 
 	// Extract the test file to the staging directory on the Android device.
-	testData := s.Param().(nearbytestutils.TestData)
+	testData := s.Param().(nearbycommon.TestData)
 	testDataZip := s.DataPath(testData.Filename)
 	testFile, err := nearbytestutils.ExtractAndroidTestFile(ctx, testDataZip, androidDevice)
 	if err != nil {
@@ -146,7 +145,7 @@ func PhoneToCrosHighVis(ctx context.Context, s *testing.State) {
 	// TODO(crbug/1173190): Remove polling when we can confirm the transfer status with public test functions.
 	s.Log("Comparing Android and CrOS file hashes")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := nearbytestutils.FileHashComparison(ctx, []string{testFile}, filesapp.DownloadPath, filepath.Join(android.DownloadDir, nearbysnippet.SendDir), androidDevice); err != nil {
+		if err := nearbytestutils.FileHashComparison(ctx, []string{testFile}, filesapp.DownloadPath, filepath.Join(android.DownloadDir, nearbycommon.SendDir), androidDevice); err != nil {
 			return errors.Wrap(err, "file hashes don't match yet")
 		}
 		return nil

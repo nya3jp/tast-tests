@@ -16,13 +16,13 @@ import (
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
-	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/services/cros/nearbyservice"
@@ -94,7 +94,7 @@ func (n *NearbyService) CloseChrome(ctx context.Context, req *empty.Empty) (*emp
 		testing.ContextLog(ctx, "Chrome not available")
 		return nil, errors.New("Chrome not available")
 	}
-	os.RemoveAll(nearbytestutils.SendDir)
+	os.RemoveAll(nearbycommon.SendDir)
 	if n.senderSurface != nil {
 		if err := n.senderSurface.Close(ctx); err != nil {
 			testing.ContextLog(ctx, "Closing SendSurface failed: ", err)
@@ -226,7 +226,7 @@ func (n *NearbyService) StartSend(ctx context.Context, req *nearbyservice.CrOSSe
 	// Get the full paths of the test files to pass to chrome://nearby.
 	var testFiles []string
 	for _, f := range req.FileNames {
-		testFiles = append(testFiles, filepath.Join(nearbytestutils.SendDir, f))
+		testFiles = append(testFiles, filepath.Join(nearbycommon.SendDir, f))
 	}
 	sender, err := nearbyshare.StartSendFiles(ctx, n.cr, testFiles)
 	if err != nil {
