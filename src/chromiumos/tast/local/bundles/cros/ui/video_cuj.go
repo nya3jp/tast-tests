@@ -105,6 +105,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	testParam := s.Param().(videoCUJTestParam)
+	a := s.FixtValue().(cuj.FixtureData).ARC
 
 	var cr *chrome.Chrome
 	var cs ash.ConnSource
@@ -191,7 +192,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 			cuj.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
 		)
 	}
-	recorder, err := cuj.NewRecorder(ctx, cr, configs...)
+	recorder, err := cuj.NewRecorder(ctx, cr, a, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
