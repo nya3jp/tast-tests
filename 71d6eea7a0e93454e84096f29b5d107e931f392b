@@ -22,6 +22,30 @@
       },
       "revId": "71d6eea7a0e93454e84096f29b5d107e931f392b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f02b3b0_f0980dcb",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-08T21:24:31Z",
+      "side": 1,
+      "message": "I\u0027ll just remove the comment as I don\u0027t think it adds anything.",
+      "parentUuid": "55a6c6e2_3c835141",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 30
+      },
+      "revId": "71d6eea7a0e93454e84096f29b5d107e931f392b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
