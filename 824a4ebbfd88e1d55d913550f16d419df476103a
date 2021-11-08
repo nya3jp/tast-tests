@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbdcd12d_37b8c263",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/zero_state_desks_bar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-08T18:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64589c82_88781e03",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 108
+      },
+      "revId": "824a4ebbfd88e1d55d913550f16d419df476103a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdc5f807_04662879",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-07T22:54:22Z",
       "side": 1,
       "message": "nit: Prefer to put got before want:\ngo/go-style/decisions#got-before-want",
+      "range": {
+        "startLine": 116,
+        "startChar": 11,
+        "endLine": 116,
+        "endChar": 80
+      },
+      "revId": "824a4ebbfd88e1d55d913550f16d419df476103a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd06a071_f5e51b16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/zero_state_desks_bar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-08T18:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdc5f807_04662879",
       "range": {
         "startLine": 116,
         "startChar": 11,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de63db75_dbffb975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/zero_state_desks_bar.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-08T18:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abb19cea_edb894b3",
+      "range": {
+        "startLine": 119,
+        "startChar": 11,
+        "endLine": 119,
+        "endChar": 81
+      },
+      "revId": "824a4ebbfd88e1d55d913550f16d419df476103a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d97a6dbb_da68bc8b",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad3bbceb_b6399c19",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-08T18:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d97a6dbb_da68bc8b",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 74
+      },
+      "revId": "824a4ebbfd88e1d55d913550f16d419df476103a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23d71807_a9c6d79f",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-11-07T22:54:22Z",
       "side": 1,
       "message": "nit: prefer got before want:\ngo/go-style/decisions#got-before-want",
+      "range": {
+        "startLine": 82,
+        "startChar": 28,
+        "endLine": 82,
+        "endChar": 68
+      },
+      "revId": "824a4ebbfd88e1d55d913550f16d419df476103a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eda6fe8_4a975686",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-08T18:02:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23d71807_a9c6d79f",
       "range": {
         "startLine": 82,
         "startChar": 28,
