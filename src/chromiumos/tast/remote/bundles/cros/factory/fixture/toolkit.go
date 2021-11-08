@@ -56,6 +56,10 @@ func (*ensureToolkitFixt) PreTest(ctx context.Context, s *testing.FixtTestState)
 func (*ensureToolkitFixt) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 
 func (e *ensureToolkitFixt) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	// FIXME workaround for b/204845193 as fixture do not recover connection
+	// if failed from previous test
+	s.DUT().Connect(ctx)
+
 	ver, err := installFactoryToolKit(ctx, s.DUT().Conn())
 	if err != nil {
 		s.Fatal("Install fail: ", err)
