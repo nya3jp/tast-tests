@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df04dce_f2003547",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-08T14:30:24Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "aa8ba50a0bd56e203a34eb3c36f5e29fb5cae908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3346b736_d235f7f2",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-08T14:30:24Z",
+      "side": 1,
+      "message": "nit: add numMatches in the error message too as below.",
+      "revId": "aa8ba50a0bd56e203a34eb3c36f5e29fb5cae908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fad48048_de13ac81",
+        "filename": "src/chromiumos/tast/local/uidetection/textblock_finder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-08T14:30:24Z",
+      "side": 1,
+      "message": "nit: Here is a TextBlock and there is a Word in the next file. It is obvious for us what is the difference but maybe providing an example of text block and mentioning that \"if you want to find a single word use Word\" finder would make it easier for others to spot at a glance which one matches their use case better.\n\nWDYT?",
+      "revId": "aa8ba50a0bd56e203a34eb3c36f5e29fb5cae908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
