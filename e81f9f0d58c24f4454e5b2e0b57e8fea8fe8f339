@@ -34,6 +34,24 @@
       "parentUuid": "6712e77c_a4e8da08",
       "revId": "e81f9f0d58c24f4454e5b2e0b57e8fea8fe8f339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f45f77b_c37f71c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-11-08T21:25:03Z",
+      "side": 1,
+      "message": "trogdor did get re-enabled for CQ recently, so I\u0027m going to assume this could cause problems. Chumping.",
+      "parentUuid": "6b7103f5_72d5fdf9",
+      "revId": "e81f9f0d58c24f4454e5b2e0b57e8fea8fe8f339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
