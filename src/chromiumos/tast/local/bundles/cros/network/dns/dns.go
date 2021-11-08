@@ -91,6 +91,7 @@ func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 	ac := uiauto.New(tconn)
 
 	// Toggle secure DNS, the UI might lag, keep trying until secure DNS is toggled to the expected state.
+	leftClickAc := ac.WithInterval(2 * time.Second)
 	var toggleSecureDNS = func(ctx context.Context, check checked.Checked) error {
 		tb := nodewith.Role(role.ToggleButton).Name("Use secure DNS")
 		var secureDNSChecked = func(ctx context.Context) error {
@@ -103,7 +104,7 @@ func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 			}
 			return nil
 		}
-		if err := ac.LeftClickUntil(tb, secureDNSChecked)(ctx); err != nil {
+		if err := leftClickAc.LeftClickUntil(tb, secureDNSChecked)(ctx); err != nil {
 			return errors.Wrap(err, "failed to toggle secure DNS button")
 		}
 		return nil
@@ -175,7 +176,7 @@ func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 			return errors.New("failed to get the correct DoH mode")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 1 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 3 * time.Second}); err != nil {
 		return err
 	}
 	return nil

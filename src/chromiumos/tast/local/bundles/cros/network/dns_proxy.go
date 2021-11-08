@@ -82,7 +82,7 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 	// Ensure connectivity is available.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return testexec.CommandContext(ctx, "/bin/ping", "-c1", "-w1", "8.8.8.8").Run()
-	}, &testing.PollOptions{Timeout: 1 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		s.Fatal("Failed to ping 8.8.8.8: ", err)
 	}
 

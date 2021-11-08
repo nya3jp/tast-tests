@@ -89,7 +89,7 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 	// Ensure connectivity is available.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return testexec.CommandContext(ctx, "/bin/ping", "-c1", "-w1", "8.8.8.8").Run()
-	}, &testing.PollOptions{Timeout: 1 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 		s.Fatal("Failed to ping 8.8.8.8: ", err)
 	}
 
@@ -268,11 +268,11 @@ func modifyDoHOverVPNBlockRule(ctx context.Context, op, ns string) []error {
 func waitUntilNATIptablesConfigured(ctx context.Context) error {
 	var lastRules, lastRules6 []byte
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		rules, err := testexec.CommandContext(ctx, "iptables", "-t", "nat", "-S").Output(testexec.DumpLogOnError)
+		rules, err := testexec.CommandContext(ctx, "iptables", "-t", "nat", "-S", "-w").Output(testexec.DumpLogOnError)
 		if err != nil {
 			return errors.Wrap(err, "failed to execute iptables")
 		}
-		rules6, err := testexec.CommandContext(ctx, "ip6tables", "-t", "nat", "-S").Output(testexec.DumpLogOnError)
+		rules6, err := testexec.CommandContext(ctx, "ip6tables", "-t", "nat", "-S", "-w").Output(testexec.DumpLogOnError)
 		if err != nil {
 			return errors.Wrap(err, "failed to execute ip6tables")
 		}
@@ -282,5 +282,5 @@ func waitUntilNATIptablesConfigured(ctx context.Context) error {
 			return errors.New("iptables NAT rules are still being configured")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 1 * time.Second})
+	}, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 15 * time.Second})
 }
