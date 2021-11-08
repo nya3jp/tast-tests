@@ -203,13 +203,38 @@ func ExpectedDevices(ctx context.Context) ([]Device, error) {
 	return res, nil
 }
 
-// key returns the key to sort a device.
+// key returns the key to sort a device. It is fields join by '$'.
 func (d *Device) key() string {
-	return d.VendorID + d.ProdID + d.Class + d.SubClass + d.Protocol
+	const splitter = "$"
+	fields := []string{
+		d.VendorID,
+		d.ProdID,
+		d.VendorName,
+		d.ProductName,
+		d.Class,
+		d.SubClass,
+		d.Protocol,
+	}
+	s := strings.Join(fields, splitter)
+	for _, ifc := range d.Interfaces {
+		dr := "(none)"
+		if ifc.Driver != nil {
+			dr = *ifc.Driver
+		}
+		fields = []string{
+			s,
+			string(ifc.InterfaceNumber),
+			ifc.Class,
+			ifc.SubClass,
+			ifc.Protocol,
+			dr,
+		}
+		s = strings.Join(fields, splitter)
+	}
+	return s
 }
 
-// Sort sorts a slice of Devices. It is sorted by
-// VendorID + ProdID + Class + SubClass + Protocol.
+// Sort sorts a slice of Devices.
 func Sort(d []Device) {
 	sort.Slice(d, func(i, j int) bool {
 		x := d[i]
