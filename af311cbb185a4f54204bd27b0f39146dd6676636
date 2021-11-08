@@ -45,6 +45,23 @@
       },
       "revId": "af311cbb185a4f54204bd27b0f39146dd6676636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4d3a4fb_e5981e38",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-11-08T01:58:01Z",
+      "side": 1,
+      "message": "Here is my two cents. I would recommend to combine RadioTapFCSValid and Dot11FCSValid as either one check fails should lead to FCS check fail and the FCS is doc11 FCS. So the function name Dot11FCSValid already indicates the 802.11 FCS is valid no matter it is indicated in radiotap or calculated in FCS.\n\nThere are some sniffer which does not validate FCS in promiscuous mode, for example this capture (https://wiki.wireshark.org/SampleCaptures?action\u003dAttachFile\u0026do\u003dget\u0026target\u003dwpa-Induction.pcap). If you filter out \"wlan.fcs.status \u003d\u003d bad\", you will see packet with FCS valid in radiotap flag but indeed has wrong FCS.",
+      "revId": "af311cbb185a4f54204bd27b0f39146dd6676636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

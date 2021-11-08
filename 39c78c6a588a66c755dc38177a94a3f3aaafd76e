@@ -297,6 +297,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1103f72_6e776f46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-11-08T01:58:01Z",
+      "side": 1,
+      "message": "I think this line explain the flakiness: \"In flaky ProbeReqFormat tests, we found some packets encapsulating broken IEs still had valid Dot11 FCS. ... Previously we considered this packet good. But the fact that RadioTap.Flags.BadFCS is true indicated this packet was broken.\"\n\nI think it might be more easier for reviewers to understand if we add something like: \"Occasionally, due to sniffer reception error, it will capture corrupted packets thus the pcap would have bad FCS.\"",
+      "parentUuid": "3cd196e8_cc45a7a5",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c9879f60_065d20ca",
