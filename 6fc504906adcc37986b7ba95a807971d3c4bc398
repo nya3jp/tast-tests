@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "173e5561_26485b52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2021-11-08T18:30:27Z",
+      "side": 1,
+      "message": "It does pass -- it didn\u0027t originally pass because \"Floss\" isn\u0027t enabled on all boards yet (why SELinuxFilesSystem wasn\u0027t passing).\n\nI\u0027ll cq-depend it anyway since it\u0027ll simplify things for landing the change.",
+      "parentUuid": "67c68467_5ca0d8b8",
+      "revId": "6fc504906adcc37986b7ba95a807971d3c4bc398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfd89b78_dca827c0",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-08T14:29:21Z",
       "side": 1,
       "message": "It would be helpful to have a comment saying what group needs what access here.",
+      "range": {
+        "startLine": 74,
+        "startChar": 95,
+        "endLine": 74,
+        "endChar": 96
+      },
+      "revId": "6fc504906adcc37986b7ba95a807971d3c4bc398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7217673b_7a1b425a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1365249
+      },
+      "writtenOn": "2021-11-08T18:30:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfd89b78_dca827c0",
       "range": {
         "startLine": 74,
         "startChar": 95,
