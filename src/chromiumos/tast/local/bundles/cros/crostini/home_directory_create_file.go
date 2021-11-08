@@ -6,6 +6,7 @@ package crostini
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -80,6 +81,17 @@ func HomeDirectoryCreateFile(ctx context.Context, s *testing.State) {
 	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "homeDirectoryCreateFile.webm"))
+
+	if screenRecorder != nil {
+		screenRecorder.Start(ctx, tconn)
+	}
 
 	// Open Files app.
 	filesApp, err := filesapp.Launch(ctx, tconn)
