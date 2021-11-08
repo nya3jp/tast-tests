@@ -12,14 +12,13 @@ import (
 	"time"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
-	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
-	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
-	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
@@ -28,7 +27,7 @@ import (
 const resetTimeout = 30 * time.Second
 
 // NewNearbyShareFixture creates a new implementation of the Nearby Share fixture.
-func NewNearbyShareFixture(crosDataUsage nearbysetup.DataUsage, crosVisibility nearbysetup.Visibility, androidDataUsage nearbysnippet.DataUsage, androidVisibility nearbysnippet.Visibility, crosSelectAndroidAsContact bool) testing.FixtureImpl {
+func NewNearbyShareFixture(crosDataUsage nearbycommon.DataUsage, crosVisibility nearbycommon.Visibility, androidDataUsage nearbysnippet.DataUsage, androidVisibility nearbysnippet.Visibility, crosSelectAndroidAsContact bool) testing.FixtureImpl {
 	return &nearbyShareFixture{
 		crosDataUsage:              crosDataUsage,
 		crosVisibility:             crosVisibility,
@@ -47,7 +46,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareDataUsageOfflineAllContacts",
 		Desc: "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Offline',  'Visibility' set to 'All Contacts'",
-		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityAllContacts, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, false),
+		Impl: NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilityAllContacts, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, false),
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
@@ -63,7 +62,7 @@ func init() {
 		Name:   "nearbyShareDataUsageOnlineAllContacts",
 		Desc:   "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Online',  'Visibility' set to 'All Contacts'",
 		Parent: "nearbyShareGAIALogin",
-		Impl:   NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilityAllContacts, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityAllContacts, false),
+		Impl:   NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilityAllContacts, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityAllContacts, false),
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
@@ -78,7 +77,7 @@ func init() {
 		Name:   "nearbyShareDataUsageOnlineNoOne",
 		Desc:   "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'No One'",
 		Parent: "nearbyShareGAIALogin",
-		Impl:   NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilityNoOne, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityNoOne, false),
+		Impl:   NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilityNoOne, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityNoOne, false),
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
@@ -92,7 +91,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareDataUsageOfflineNoOne",
 		Desc: "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'No One'",
-		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityNoOne, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityNoOne, false),
+		Impl: NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilityNoOne, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityNoOne, false),
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
@@ -107,7 +106,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareDataUsageOfflineSomeContactsAndroidSelectedContact",
 		Desc: "Nearby Share enabled on CrOS and Android with 'Data Usage' set to 'Offline' on both. The Android device 'Visibility' is 'All Contacts'. The CrOS device 'Visibility' is 'Some contacts' with the Android user set as an allowed contact so it will be visible to the Android device. The CrOS device is logged in with a GAIA account which is mutual contacts with the Android GAIA account",
-		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilitySelectedContacts, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, true),
+		Impl: NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilitySelectedContacts, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, true),
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
@@ -126,7 +125,7 @@ func init() {
 		Name:   "nearbyShareDataUsageOnlineSomeContactsAndroidSelectedContact",
 		Desc:   "Nearby Share enabled on CrOS and Android with 'Data Usage' set to 'Online' on both. The Android device 'Visibility' is 'All Contacts'. The CrOS device 'Visibility' is 'Some contacts' with the Android user set as an allowed contact so it will be visible to the Android device. The CrOS device is logged in with a GAIA account which is mutual contacts with the Android GAIA account",
 		Parent: "nearbyShareGAIALogin",
-		Impl:   NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilitySelectedContacts, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityAllContacts, true),
+		Impl:   NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilitySelectedContacts, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityAllContacts, true),
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
@@ -144,7 +143,7 @@ func init() {
 		Name:   "nearbyShareDataUsageOfflineSomeContactsAndroidNotSelectedContact",
 		Desc:   "Nearby Share enabled on CrOS and Android with 'Data Usage' set to 'Offline' on both. The Android device 'Visibility' is 'All Contacts'. The CrOS device 'Visibility' is 'Some contacts' with no contacts selected, so it will not be visible to the Android device. The CrOS device is logged in with a GAIA account which is mutual contacts with the Android GAIA account",
 		Parent: "nearbyShareGAIALogin",
-		Impl:   NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilitySelectedContacts, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, false),
+		Impl:   NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilitySelectedContacts, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts, false),
 		Vars: []string{
 			customAndroidUsername,
 		},
@@ -163,7 +162,7 @@ func init() {
 		Name:   "nearbyShareDataUsageOnlineNoOneARCEnabled",
 		Desc:   "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Online', 'Visibility' set to 'No One', and ARC enabled",
 		Parent: "nearbyShareGAIALoginARCEnabled",
-		Impl:   NewNearbyShareFixture(nearbysetup.DataUsageOnline, nearbysetup.VisibilityNoOne, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityNoOne, false),
+		Impl:   NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilityNoOne, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityNoOne, false),
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 			"arc-app-dev@google.com",
@@ -178,7 +177,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "nearbyShareDataUsageOfflineNoOneARCEnabled",
 		Desc: "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Offline', 'Visibility' set to 'No One', and ARC enabled",
-		Impl: NewNearbyShareFixture(nearbysetup.DataUsageOffline, nearbysetup.VisibilityNoOne, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityNoOne, false),
+		Impl: NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilityNoOne, nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityNoOne, false),
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 			"arc-app-dev@google.com",
@@ -194,14 +193,14 @@ func init() {
 
 type nearbyShareFixture struct {
 	cr             *chrome.Chrome
-	crosDataUsage  nearbysetup.DataUsage
-	crosVisibility nearbysetup.Visibility
-	// crosSelectAndroidAsContact is only used when crosVisibility == nearbysetup.VisibilitySelectedContacts. If true, the connected Android device will be selected as an allowed contact. Otherwise no contacts will be selected.
+	crosDataUsage  nearbycommon.DataUsage
+	crosVisibility nearbycommon.Visibility
+	// crosSelectAndroidAsContact is only used when crosVisibility == nearbycommon.VisibilitySelectedContacts. If true, the connected Android device will be selected as an allowed contact. Otherwise no contacts will be selected.
 	crosSelectAndroidAsContact bool
 	androidDataUsage           nearbysnippet.DataUsage
 	androidVisibility          nearbysnippet.Visibility
 	androidDevice              *nearbysnippet.AndroidNearbyDevice
-	crosAttributes             *nearbysetup.CrosAttributes
+	crosAttributes             *nearbycommon.CrosAttributes
 	androidAttributes          *nearbysnippet.AndroidAttributes
 	// ChromeReader is the line reader for collecting Chrome logs.
 	ChromeReader *syslog.LineReader
@@ -261,7 +260,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 
 	// Set up Nearby Share on the CrOS device.
 	const crosBaseName = "cros_test"
-	crosDisplayName := nearbytestutils.RandomDeviceName(crosBaseName)
+	crosDisplayName := nearbycommon.RandomDeviceName(crosBaseName)
 	if err := CrOSSetup(ctx, tconn, cr, f.crosDataUsage, f.crosVisibility, crosDisplayName); err != nil {
 		s.Fatal("Failed to set up Nearby Share: ", err)
 	}
@@ -276,7 +275,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		s.Fatal("Failed to read Android Data Usage setting: ", err)
 	}
 	if f.androidDataUsage != d || f.androidVisibility != v {
-		if err := nearbysetup.AndroidConfigure(ctx, androidDevice, f.androidDataUsage, f.androidVisibility, androidDeviceName); err != nil {
+		if err := AndroidConfigure(ctx, androidDevice, f.androidDataUsage, f.androidVisibility, androidDeviceName); err != nil {
 			s.Fatal("Failed to configure Android Nearby Share settings: ", err)
 		}
 	}
@@ -307,7 +306,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	f.androidAttributes = androidAttributes
 
 	// Set the Android device as an allowed contact if the CrOS visibility setting is 'Some contacts'.
-	if f.crosVisibility == nearbysetup.VisibilitySelectedContacts && f.crosSelectAndroidAsContact {
+	if f.crosVisibility == nearbycommon.VisibilitySelectedContacts && f.crosSelectAndroidAsContact {
 		nearbySettings, err := LaunchNearbySettings(ctx, tconn, cr)
 		if err != nil {
 			s.Fatal("Failed to launch OS settings: ", err)
@@ -394,9 +393,9 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 }
 
 // saveDeviceAttributes saves the CrOS and Android device attributes as a formatted JSON at the specified filepath.
-func saveDeviceAttributes(crosAttrs *nearbysetup.CrosAttributes, androidAttrs *nearbysnippet.AndroidAttributes, filepath string) error {
+func saveDeviceAttributes(crosAttrs *nearbycommon.CrosAttributes, androidAttrs *nearbysnippet.AndroidAttributes, filepath string) error {
 	attributes := struct {
-		CrOS    *nearbysetup.CrosAttributes
+		CrOS    *nearbycommon.CrosAttributes
 		Android *nearbysnippet.AndroidAttributes
 	}{CrOS: crosAttrs, Android: androidAttrs}
 	crosLog, err := json.MarshalIndent(attributes, "", "\t")

@@ -112,6 +112,11 @@ func (c *AndroidDevice) ClearPIN(ctx context.Context) error {
 	return nil
 }
 
+// GetAndroidAttributes returns the AndroidAttributes for the device.
+func (c *AndroidDevice) GetAndroidAttributes(ctx context.Context) (*AndroidAttributes, error) {
+	return GetAndroidAttributes(ctx, c.device)
+}
+
 // ToggleDoNotDisturb toggles the Do Not Disturb setting on the Android device.
 func (c *AndroidDevice) ToggleDoNotDisturb(ctx context.Context, enable bool) error {
 	status := "off"
@@ -150,57 +155,4 @@ func (c *AndroidDevice) WaitForDoNotDisturb(ctx context.Context, enabled bool, t
 		return errors.Wrap(err, "failed waiting for desired Do Not Disturb status")
 	}
 	return nil
-}
-
-// AndroidAttributes contains information about the Android device and its settings that are relevant to Cross Device features.
-type AndroidAttributes struct {
-	User                string
-	GMSCoreVersion      int
-	AndroidVersion      int
-	SDKVersion          int
-	ProductName         string
-	ModelName           string
-	DeviceName          string
-	BluetoothMACAddress string
-}
-
-// GetAndroidAttributes returns the AndroidAttributes for the device.
-func (c *AndroidDevice) GetAndroidAttributes(ctx context.Context) (*AndroidAttributes, error) {
-	var metadata AndroidAttributes
-
-	user, err := c.device.GoogleAccount(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get Android device user account")
-	}
-	metadata.User = user
-
-	gmsVersion, err := c.device.GMSCoreVersion(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get GMS Core version")
-	}
-	metadata.GMSCoreVersion = gmsVersion
-
-	androidVersion, err := c.device.AndroidVersion(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get Android version")
-	}
-	metadata.AndroidVersion = androidVersion
-
-	sdkVersion, err := c.device.SDKVersion(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get Android SDK version")
-	}
-	metadata.SDKVersion = sdkVersion
-
-	metadata.ProductName = c.device.Product
-	metadata.ModelName = c.device.Model
-	metadata.DeviceName = c.device.Device
-
-	mac, err := c.device.BluetoothMACAddress(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get the Bluetooth MAC address")
-	}
-	metadata.BluetoothMACAddress = mac
-
-	return &metadata, nil
 }

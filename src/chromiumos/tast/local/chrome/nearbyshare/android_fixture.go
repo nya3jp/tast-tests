@@ -10,9 +10,11 @@ import (
 	"strconv"
 	"time"
 
-	"chromiumos/tast/common/cros/nearbyshare/nearbysetup"
-	"chromiumos/tast/common/cros/nearbyshare/nearbysnippet"
-	"chromiumos/tast/common/cros/nearbyshare/nearbytestutils"
+	"chromiumos/tast/common/android"
+	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/crossdevice"
+	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
 
@@ -42,7 +44,7 @@ func init() {
 		Name: "nearbyShareAndroidSetup",
 		Desc: "Set up Android device for Nearby Share with default settings (Data usage offline, All Contacts)",
 		Impl: NewNearbyShareAndroid(nearbysnippet.DataUsageOffline, nearbysnippet.VisibilityAllContacts),
-		Data: []string{nearbysnippet.ZipName, nearbysnippet.AccountUtilZip},
+		Data: []string{nearbysnippet.ZipName, crossdevice.AccountUtilZip},
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
@@ -68,12 +70,12 @@ type nearbyShareAndroidFixture struct {
 
 func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	const androidBaseName = "android_test"
-	androidDisplayName := nearbytestutils.RandomDeviceName(androidBaseName)
+	androidDisplayName := nearbycommon.RandomDeviceName(androidBaseName)
 	snippetZip := s.DataPath(nearbysnippet.ZipName)
-	accountUtilZip := s.DataPath(nearbysnippet.AccountUtilZip)
+	accountUtilZip := s.DataPath(crossdevice.AccountUtilZip)
 
 	// Set up adb, connect to the Android phone, and check if ADB root access is available.
-	adbDevice, rooted, err := AdbSetup(ctx)
+	adbDevice, rooted, err := crossdevice.AdbSetup(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up an adb device: ", err)
 	}
@@ -100,14 +102,49 @@ func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		androidUsername = s.RequiredVar("nearbyshare.unrooted_android_username")
 	}
 
-	// Configure the Android phone and set up the Snippet library.
-	androidDevice, err := nearbysetup.AndroidSetup(
-		ctx, adbDevice, accountUtilZip, androidUsername, androidPassword, loggedIn, snippetZip, rooted,
-		nearbysetup.DefaultScreenTimeout,
-		f.androidDataUsage,
-		f.androidVisibility,
-		androidDisplayName,
-	)
+	// Remove and re-add the specified account. A GAIA login is required to configure Nearby Share on the Android device.
+	// Root access is required for adding and removing accounts.
+	if !loggedIn && rooted {
+		if err := crossdevice.GAIALogin(ctx, adbDevice, accountUtilZip, androidUsername, androidPassword); err != nil {
+			s.Fatal("Failed to log in on the Android device: ", err)
+		}
+	}
+
+	if err := crossdevice.ConfigureDevice(ctx, adbDevice, rooted); err != nil {
+		s.Fatal("Failed to do basic Android device preparation: ", err)
+	}
+	tags := []string{
+		"Nearby",
+		"NearbyMessages",
+		"NearbyDiscovery",
+		"NearbyConnections",
+		"NearbyMediums",
+		"NearbySetup",
+		"NearbySharing",
+		"NearbyDirect",
+		"Backup",
+		"SmartDevice",
+		"audioModem",
+	}
+	if err := crossdevice.EnableVerboseLogging(ctx, adbDevice, rooted, tags...); err != nil {
+		s.Fatal("Failed to enable verbose logging on Android: ", err)
+	}
+
+	// Clear the Android's default directory for receiving shares.
+	if err := adbDevice.RemoveContents(ctx, android.DownloadDir); err != nil {
+		s.Fatal("Failed to clear Android downloads directory: ", err)
+	}
+
+	// Launch and start the snippet server. Don't override GMS Core flags if specified in the runtime vars.
+	androidDevice, err := nearbysnippet.New(ctx, adbDevice, snippetZip, rooted)
+	if err != nil {
+		s.Fatal("Failed to set up the Nearby snippet server: ", err)
+	}
+
+	if err := AndroidConfigure(ctx, androidDevice, f.androidDataUsage, f.androidVisibility, androidDisplayName); err != nil {
+		s.Fatal("Failed to configure Android Nearby Share settings: ", err)
+	}
+
 	if err != nil {
 		s.Fatal("Failed to prepare connected Android device for Nearby Share testing: ", err)
 	}
@@ -128,3 +165,42 @@ func (f *nearbyShareAndroidFixture) TearDown(ctx context.Context, s *testing.Fix
 func (f *nearbyShareAndroidFixture) Reset(ctx context.Context) error                        { return nil }
 func (f *nearbyShareAndroidFixture) PreTest(ctx context.Context, s *testing.FixtTestState)  {}
 func (f *nearbyShareAndroidFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+
+// AndroidConfigure configures Nearby Share settings on an Android device.
+func AndroidConfigure(ctx context.Context, androidNearby *nearbysnippet.AndroidNearbyDevice, dataUsage nearbysnippet.DataUsage, visibility nearbysnippet.Visibility, name string) error {
+	if err := androidNearby.SetupDevice(ctx, dataUsage, visibility, name); err != nil {
+		return errors.Wrap(err, "failed to configure Android Nearby Share settings")
+	}
+
+	// androidNearby.SetupDevice is asynchronous, so we need to poll until the settings changes have taken effect.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if n, err := androidNearby.GetDeviceName(ctx); err != nil {
+			return testing.PollBreak(err)
+		} else if n != name {
+			return errors.Errorf("current device name (%v) not yet updated to %v", n, name)
+		}
+
+		if v, err := androidNearby.GetVisibility(ctx); err != nil {
+			return testing.PollBreak(err)
+		} else if v != visibility {
+			return errors.Errorf("current visibility (%v) not yet updated to %v", v, visibility)
+		}
+
+		if d, err := androidNearby.GetDataUsage(ctx); err != nil {
+			return testing.PollBreak(err)
+		} else if d != dataUsage {
+			return errors.Errorf("current data usage (%v) not yet updated to %v", d, dataUsage)
+		}
+
+		return nil
+	}, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "timed out waiting for Nearby Share settings to update")
+	}
+
+	// Force-sync after changing Nearby settings to ensure the phone's certificates are regenerated and uploaded.
+	if err := androidNearby.Sync(ctx); err != nil {
+		return errors.Wrap(err, "failed to sync contacts and certificates")
+	}
+
+	return nil
+}
