@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b26b48_a6a29fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-08T23:34:16Z",
+      "side": 1,
+      "message": "It seems that you do not need any special parameters to log in to chrome, then it is recommended to use pre: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go;l\u003d34",
+      "range": {
+        "startLine": 42,
+        "startChar": 19,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac0bbeaa_09fbf002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-08T23:34:16Z",
+      "side": 1,
+      "message": "This might be flaky as removing files might fail in this or other test. Maybe recording the origial screenshots and then check that there is a new screenshot taken.",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4be11da_347bcd1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-08T23:34:16Z",
+      "side": 1,
+      "message": "ensure",
+      "range": {
+        "startLine": 64,
+        "startChar": 27,
+        "endLine": 64,
+        "endChar": 33
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67d42a80_3373ac84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-08T23:34:16Z",
+      "side": 1,
+      "message": "capture screenshot:\n\nbecause uiauto.Combine will return a msg with the description.",
+      "range": {
+        "startLine": 74,
+        "startChar": 21,
+        "endLine": 74,
+        "endChar": 65
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2207b06_ebc03aff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-08T23:34:16Z",
+      "side": 1,
+      "message": "Please check err !\u003d nil first.",
+      "range": {
+        "startLine": 79,
+        "startChar": 28,
+        "endLine": 79,
+        "endChar": 39
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b53f31e_fa820d3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-08T23:34:16Z",
+      "side": 1,
+      "message": "How many screenshots should be captured?",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 29
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "480be304_ff2bee4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-08T23:34:16Z",
+      "side": 1,
+      "message": "pin",
+      "range": {
+        "startLine": 90,
+        "startChar": 27,
+        "endLine": 90,
+        "endChar": 30
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4839a4_35f34684",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-08T23:34:16Z",
+      "side": 1,
+      "message": "Why not Fatal?",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 9
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2048d9fe_9276510f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-08T23:34:16Z",
+      "side": 1,
+      "message": "This string is used multiple times, define a const?\n\nI\u0027d suggest to define all the strings here as const on the top of the file.",
+      "range": {
+        "startLine": 13,
+        "startChar": 28,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
