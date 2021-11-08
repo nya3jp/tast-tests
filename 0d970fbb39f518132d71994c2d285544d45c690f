@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9e307b_c2fc27c5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-08T17:21:40Z",
+      "side": 1,
+      "message": "This seems backwards to me. I think it makes more sense to return an error if the condition is *not* satisified (!ok).",
+      "range": {
+        "startLine": 534,
+        "startChar": 2,
+        "endLine": 536,
+        "endChar": 3
+      },
+      "revId": "0d970fbb39f518132d71994c2d285544d45c690f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

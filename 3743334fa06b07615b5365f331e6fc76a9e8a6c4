@@ -93,6 +93,30 @@
       },
       "revId": "3743334fa06b07615b5365f331e6fc76a9e8a6c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d15a6122_d769f491",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-08T17:21:40Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "6ed94e7a_a5b4cc09",
+      "range": {
+        "startLine": 515,
+        "startChar": 5,
+        "endLine": 515,
+        "endChar": 15
+      },
+      "revId": "3743334fa06b07615b5365f331e6fc76a9e8a6c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
