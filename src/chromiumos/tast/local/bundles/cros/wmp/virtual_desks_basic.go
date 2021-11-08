@@ -147,7 +147,7 @@ func VirtualDesksBasic(ctx context.Context, s *testing.State) {
 	}
 
 	// Delete the new desk.
-	closeDeskButton := nodewith.ClassName("CloseDeskButton")
+	closeDeskButton := nodewith.ClassName("CloseButton")
 	if err := ac.LeftClick(closeDeskButton)(ctx); err != nil {
 		s.Fatal("Failed to delete the new desk: ", err)
 	}
