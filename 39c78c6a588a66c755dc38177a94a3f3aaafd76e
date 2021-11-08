@@ -369,6 +369,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ab1a6bb_ae0a6faf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-08T23:28:28Z",
+      "side": 1,
+      "message": "This is my current understanding, please correct me if I\u0027m wrong:\n\n1. These tests filter bad packets by checking the Dot11 FCS.\n2. That check is essentially a no-op because gopacket automatically injects a good Dot11 FCS.\n3. When there\u0027s a bad packet (this happens every so often), we don\u0027t filter it out because of 2, and bad packets throw errors when we try to parse them. This is the source of the flake.\n\nDoes this sound right?",
+      "parentUuid": "1fd58397_fc877e46",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c9879f60_065d20ca",
