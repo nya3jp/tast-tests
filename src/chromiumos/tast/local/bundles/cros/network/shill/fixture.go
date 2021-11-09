@@ -116,6 +116,13 @@ func (f *shillFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 }
 
 func (f *shillFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	// Restart ui so that cryptohome unmounts all user mounts before shill is
+	// restarted so that shill does not keep the mounts open perpetually.
+	// TODO(sarthakkukreti@): Remove once the mount propagation for shill is fixed.
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		s.Error("Failed to restart ui: ", err)
+	}
+
 	if errs := resetShill(ctx); len(errs) != 0 {
 		for _, err := range errs {
 			s.Error("resetShill error: ", err)
