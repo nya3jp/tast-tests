@@ -197,9 +197,11 @@ func configureAndroidNearbySettings(ctx context.Context, androidNearby *nearbysn
 		return errors.Wrap(err, "timed out waiting for Nearby Share settings to update")
 	}
 
-	// Force-sync after changing Nearby settings to ensure the phone's certificates are regenerated and uploaded.
-	if err := androidNearby.Sync(ctx); err != nil {
-		return errors.Wrap(err, "failed to sync contacts and certificates")
+	if visibility != nearbysnippet.VisibilityNoOne {
+		// Force-sync after changing Nearby settings to ensure the phone's certificates are regenerated and uploaded.
+		if err := androidNearby.Sync(ctx); err != nil {
+			return errors.Wrap(err, "failed to sync contacts and certificates")
+		}
 	}
 
 	return nil
