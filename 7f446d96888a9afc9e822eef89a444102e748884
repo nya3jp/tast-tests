@@ -39,6 +39,30 @@
       },
       "revId": "7f446d96888a9afc9e822eef89a444102e748884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0525052f_7a65ec94",
+        "filename": "src/chromiumos/tast/local/uidetection/option.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-09T22:01:30Z",
+      "side": 1,
+      "message": "Thanks for pointing it out! Revised the comments.",
+      "parentUuid": "750c8369_83687d69",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 54
+      },
+      "revId": "7f446d96888a9afc9e822eef89a444102e748884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
