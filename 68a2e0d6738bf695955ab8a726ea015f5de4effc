@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b1cb4e4_78651241",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-11-09T10:44:14Z",
+      "side": 1,
+      "message": "we should\u0027ve promoted it to critical long time ago :)",
+      "range": {
+        "startLine": 28,
+        "startChar": 36,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "68a2e0d6738bf695955ab8a726ea015f5de4effc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
