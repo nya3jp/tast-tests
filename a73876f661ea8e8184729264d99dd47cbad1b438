@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dc4e047_ff15760f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-11-09T09:17:47Z",
+      "side": 1,
+      "message": "We usually use \"FIXME(b/\u003cbugid\u003e)\", not sure if we usually use the same syntax in golang.",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "a73876f661ea8e8184729264d99dd47cbad1b438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
