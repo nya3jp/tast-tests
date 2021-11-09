@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "536dabab_51a39cee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-09T01:01:24Z",
+      "side": 1,
+      "message": "chrome.New() does not wipe the disk. We\u0027ve had tests fail with left over files.",
+      "parentUuid": "6b0c6f72_5994c30a",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4be11da_347bcd1f",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
         "patchSetId": 4
