@@ -28,15 +28,16 @@ import (
 
 // GoogleMeetConference implements the Conference interface.
 type GoogleMeetConference struct {
-	cr         *chrome.Chrome
-	tconn      *chrome.TestConn
-	uiHandler  cuj.UIActionHandler
-	tabletMode bool
-	roomSize   int
-	account    string
-	password   string
-	outDir     string
-	room       string
+	cr              *chrome.Chrome
+	tconn           *chrome.TestConn
+	uiHandler       cuj.UIActionHandler
+	tabletMode      bool
+	extendedDisplay bool
+	roomSize        int
+	account         string
+	password        string
+	outDir          string
+	room            string
 }
 
 // Join joins a new conference room.
@@ -46,6 +47,11 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	ui := uiauto.New(tconn)
 	meetAccount := conf.account
 	conf.room = room
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to initialize keyboard input")
+	}
+	defer kb.Close()
 	openConference := func(ctx context.Context) error {
 		conn, err := conf.cr.NewConn(ctx, room)
 		if err != nil {
@@ -55,6 +61,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		if err := webutil.WaitForQuiescence(ctx, conn, 45*time.Second); err != nil {
 			return CheckSignedOutError(ctx, tconn, errors.Wrapf(err, "failed to wait for %q to be loaded and achieve quiescence", room))
 		}
+
 		return nil
 	}
 
@@ -86,6 +93,14 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		return nil
 	}
 
+	switchWindow := func(ctx context.Context) error {
+		// Default expected display is main display.
+		if err := cuj.SwitchWindowToDisplay(ctx, tconn, kb, conf.extendedDisplay)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to switch conference window to the %s", conf.extendedDisplay)
+		}
+		return nil
+	}
+
 	joinConf := func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Join Conference")
 		joinNowButton := nodewith.Name("Join now").Role(role.Button)
@@ -98,12 +113,6 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 
 	// enterAccount enter account email and password.
 	enterAccount := func(ctx context.Context) error {
-		kb, err := input.Keyboard(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to initialize keyboard input")
-		}
-		defer kb.Close()
-
 		emailContent := nodewith.NameContaining(meetAccount).Role(role.InlineTextBox).Editable()
 		emailField := nodewith.Name("Email or phone").Role(role.TextField)
 		nextButton := nodewith.Name("Next").Role(role.Button)
@@ -282,6 +291,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 	return uiauto.Combine("join conference",
 		openConference,
 		allowPerm,
+		switchWindow,
 		// Check if the login account is the one for google meet. If not, switch to google meet account.
 		ui.IfSuccessThen(ui.Gone(targetMeetAccount), switchUser),
 		joinConf,
@@ -458,7 +468,7 @@ func (conf *GoogleMeetConference) BackgroundChange(ctx context.Context) error {
 
 // Presenting creates Google Slides and Google Docs, shares screen and presents
 // the specified application to the conference.
-func (conf *GoogleMeetConference) Presenting(ctx context.Context, application googleApplication, extendedDisplay bool) (err error) {
+func (conf *GoogleMeetConference) Presenting(ctx context.Context, application googleApplication) (err error) {
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
 	kb, err := input.Keyboard(ctx)
@@ -475,7 +485,7 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 		appTabName = docTabName
 	}
 	switchToTab := func(tabName string) action.Action {
-		if extendedDisplay {
+		if conf.extendedDisplay {
 			return uiauto.NamedAction("switch window to "+tabName, conf.uiHandler.SwitchToAppWindowByName("Chrome", tabName))
 		}
 		return uiauto.NamedAction("switch tab to "+tabName, conf.uiHandler.SwitchToChromeTabByName(tabName))
@@ -516,21 +526,10 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 				return errors.New("Another participant is presenting now")
 			}, &testing.PollOptions{Timeout: time.Minute})
 		}
-		moveConferenceTab := func(ctx context.Context) error {
-			if !extendedDisplay {
-				return nil
-			}
-			testing.ContextLog(ctx, "Move conference tab to extended display")
-			return uiauto.Combine("move conference to extended display",
-				kb.AccelAction("Search+Alt+M"),
-				ui.Sleep(400*time.Millisecond),
-			)(ctx)
-		}
 
 		testing.ContextLog(ctx, "Share screen")
 		return ui.Retry(3, uiauto.Combine("share screen",
 			switchToTab("Meet"),
-			moveConferenceTab,
 			checkPresentNowButton,
 			cuj.ExpandMenu(conf.tconn, presentNowButton, menu, 172),
 			ui.LeftClick(presentMode),
@@ -553,7 +552,7 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 	}
 
 	if err := presentApps(ctx, tconn, conf.uiHandler, conf.cr, shareScreen, stopPresenting,
-		application, conf.outDir, extendedDisplay); err != nil {
+		application, conf.outDir, conf.extendedDisplay); err != nil {
 		return errors.Wrapf(err, "failed to present %s", string(application))
 	}
 	return nil
@@ -567,16 +566,17 @@ func (conf *GoogleMeetConference) End(ctx context.Context) error {
 var _ Conference = (*GoogleMeetConference)(nil)
 
 // NewGoogleMeetConference creates Google Meet conference room instance which implements Conference interface.
-func NewGoogleMeetConference(cr *chrome.Chrome, tconn *chrome.TestConn, uiHandler cuj.UIActionHandler, tabletMode bool,
-	roomSize int, account, password, outDir string) *GoogleMeetConference {
+func NewGoogleMeetConference(cr *chrome.Chrome, tconn *chrome.TestConn, uiHandler cuj.UIActionHandler,
+	tabletMode, extendedDisplay bool, roomSize int, account, password, outDir string) *GoogleMeetConference {
 	return &GoogleMeetConference{
-		cr:         cr,
-		tconn:      tconn,
-		uiHandler:  uiHandler,
-		tabletMode: tabletMode,
-		roomSize:   roomSize,
-		account:    account,
-		password:   password,
-		outDir:     outDir,
+		cr:              cr,
+		tconn:           tconn,
+		uiHandler:       uiHandler,
+		tabletMode:      tabletMode,
+		extendedDisplay: extendedDisplay,
+		roomSize:        roomSize,
+		account:         account,
+		password:        password,
+		outDir:          outDir,
 	}
 }
