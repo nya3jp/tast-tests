@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d2f5309_a39b0e17",
+        "filename": "src/chromiumos/tast/local/memory/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-11-09T05:04:26Z",
+      "side": 1,
+      "message": "I will remove the continue, I think it\u0027s more clear with an else clause.",
+      "revId": "52c43822e23e409271c5c1795cf7069768a8e416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
