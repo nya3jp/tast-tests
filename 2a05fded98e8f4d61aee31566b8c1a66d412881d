@@ -193,6 +193,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17790c96_838ecc0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-09T01:35:53Z",
+      "side": 1,
+      "message": "kyleshima@ has told us previously that Chrome.New will reset to first-use state and that seems to jive w/ our anecdotal experience. If that is not accurate, there are other potential flake points in this test that need addressing. If Chrome.New does not in fact result in first-use state, then what is the proper way of ensuring first-use state?",
+      "parentUuid": "536dabab_51a39cee",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4be11da_347bcd1f",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
         "patchSetId": 4
