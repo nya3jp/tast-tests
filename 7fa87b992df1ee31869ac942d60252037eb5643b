@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8528c6fd_1eda8ebd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-11-09T16:05:33Z",
+      "side": 1,
+      "message": "Hi Kamil,\n\nThis CL is similar to crrev.com/c/3244287, and adds another Tast test for the chrome.login API. This also has the same caveat that it shares a lot of code with launch_managed_guest_session.go, and will be refactored after b/204177106 has finished.\n\nThanks,\nJit",
+      "revId": "7fa87b992df1ee31869ac942d60252037eb5643b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
