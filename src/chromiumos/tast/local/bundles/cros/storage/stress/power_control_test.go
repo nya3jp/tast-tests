@@ -23,7 +23,7 @@ func TestParseInvalidFileList(t *testing.T) {
 	}
 }
 
-func TestParseAmdS0ixRedidencyFile(t *testing.T) {
+func TestParseAmdS0ixResidencyFile(t *testing.T) {
 	fileName := writeResidencyFile(t, TestAmdS0ixFileContent)
 	defer os.Remove(fileName)
 
@@ -33,11 +33,11 @@ func TestParseAmdS0ixRedidencyFile(t *testing.T) {
 	}
 
 	if duration != 4296355 {
-		t.Fatalf("Expected duration %d, actual: %d", 4296355, duration)
+		t.Fatalf("Actual duration %d, expected: %d", duration, 4296355)
 	}
 }
 
-func TestParseIntelS0ixRedidencyFile(t *testing.T) {
+func TestParseIntelS0ixResidencyFile(t *testing.T) {
 	fileName := writeResidencyFile(t, "321654987")
 	defer os.Remove(fileName)
 
@@ -47,12 +47,36 @@ func TestParseIntelS0ixRedidencyFile(t *testing.T) {
 	}
 
 	if duration != 321654987 {
-		t.Fatalf("Expected duration %d, actual: %d", 321654987, duration)
+		t.Fatalf("Actual duration %d, expected: %d", duration, 321654987)
+	}
+}
+
+func TestParseS2IdleResidencyFile(t *testing.T) {
+	fileName1 := writeResidencyFile(t, "123")
+	defer os.Remove(fileName1)
+	fileName2 := writeResidencyFile(t, "456")
+	defer os.Remove(fileName2)
+
+	duration, err := getS2IdleResidencyStats(os.TempDir() + "/ResidencyFile-*")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// duration is expected as 123 + 456 = 579.
+	if duration != 579 {
+		t.Fatalf("Actual duration %d, expected: %d", duration, 579)
+	}
+}
+
+func TestParseS2IdleResidencyInvalidFile(t *testing.T) {
+	_, err := getS2IdleResidencyStats(os.TempDir() + "/ResidencyFile-*")
+	if err == nil {
+		t.Fatal("Test didn't report error.")
 	}
 }
 
 func writeResidencyFile(t *testing.T, content string) string {
-	file, err := ioutil.TempFile(os.TempDir(), "RedidencyFile-")
+	file, err := ioutil.TempFile(os.TempDir(), "ResidencyFile-")
 	if err != nil {
 		t.Fatal(err)
 	}
