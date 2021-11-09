@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "109d3ef0_82fe361a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002374
+      },
+      "writtenOn": "2021-11-09T23:19:49Z",
+      "side": 1,
+      "message": "With the current HW dependency hwdep.Microphone() you cover about 95% of models in the lab.This will create some overhead utilization making chromeos infra inefficient.\nThe actual coverage needs to be on probably about 1% of the models at this time.\nAdditional HW dependency like hwdep.MicMuteKey() should be created.\n\nI think @xixuan can help in creating such HW/device dependency dimension, that you can apply to the test afterwards.",
+      "parentUuid": "5dec86e3_65bc538f",
+      "range": {
+        "startLine": 16,
+        "startChar": 14,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "d4c263da96e32a770f51f4a702c64c652b662934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b8608580_4b82e081",
@@ -102,6 +126,23 @@
       "writtenOn": "2021-11-09T22:09:16Z",
       "side": 1,
       "message": "!!",
+      "revId": "d4c263da96e32a770f51f4a702c64c652b662934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4be4423b_b09bfad5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002374
+      },
+      "writtenOn": "2021-11-09T23:19:49Z",
+      "side": 1,
+      "message": "Hi Xixuan, can you suggest How can HW lab device dimension can be created for specific models?",
       "revId": "d4c263da96e32a770f51f4a702c64c652b662934",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
