@@ -102,20 +102,21 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, arc *arc.ARC, p 
 
 	if arc != nil {
 		const dumpsysRetries = 3
-		for i := 0; ; i++ {
-			// TODO(b:191802472): Make DumpsysMeminfoMetrics silently fail if
-			// retries are not enough.
+		dumpsysSucceeded := false
+		for i := 0; i < dumpsysRetries; i++ {
 			if err := memoryarc.DumpsysMeminfoMetrics(ctx, arc, p, outdir, suffix); err != nil {
-				if i < dumpsysRetries {
-					testing.ContextLog(ctx, "Failed to collect ARC dumpsys meminfo metrics: ", err)
-					if err := testing.Sleep(ctx, 5*time.Second); err != nil {
-						return errors.Wrap(err, "failed to sleep between dumpsys meminfo retries")
-					}
-					continue
+				testing.ContextLog(ctx, "Failed to collect ARC dumpsys meminfo metrics: ", err)
+				if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+					return errors.Wrap(err, "failed to sleep between dumpsys meminfo retries")
 				}
-				return errors.Wrapf(err, "failed to collect ARC dumpsys meminfo metrics %d times", i)
+				continue
+			} else {
+				dumpsysSucceeded = true
+				break
 			}
-			break
+		}
+		if !dumpsysSucceeded {
+			testing.ContextLogf(ctx, "Failed to collect ARC dumpsys meminfo metrics after %d tries", dumpsysRetries)
 		}
 	}
 	return nil
