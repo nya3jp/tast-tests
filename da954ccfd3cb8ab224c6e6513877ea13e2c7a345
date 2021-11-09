@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e1c179_df0ac413",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-09T13:38:59Z",
+      "side": 1,
+      "message": "PTAL!\nGabor: AllowDeletingBrowserHistory and DefaultNotificationsSetting\nAlex: VirtualKeyboard",
+      "revId": "da954ccfd3cb8ab224c6e6513877ea13e2c7a345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
