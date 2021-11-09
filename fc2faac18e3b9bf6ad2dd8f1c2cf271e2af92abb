@@ -16,6 +16,74 @@
       "message": "tast-owners, please take a look.\n\nThere\u0027s no dry run in PS2 because the CL that adds the close animation got reverted on the chromium side. The reland CL is ready and awaiting owners approval for metrics. https://chromium-review.googlesource.com/c/chromium/src/+/3270691 - I\u0027ll wait to land this one until the chrome side CL lands.\n\nPS1 has a green dry run and the diff between PS1 and PS2 is trivial.\n",
       "revId": "fc2faac18e3b9bf6ad2dd8f1c2cf271e2af92abb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca666b62_a495109e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-09T22:43:38Z",
+      "side": 1,
+      "message": "I have a few comments. Please take a look. Thanks.",
+      "revId": "fc2faac18e3b9bf6ad2dd8f1c2cf271e2af92abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62132359_780c3296",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-09T22:43:38Z",
+      "side": 1,
+      "message": "It is a new test. Should it be informational first? I am not familiar with the crosbolt_perbuild so I don\u0027t know if the process of adding new tests is the same. Please let me know. Thanks.",
+      "revId": "fc2faac18e3b9bf6ad2dd8f1c2cf271e2af92abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30b9cd7d_3c8d7dfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-09T22:43:38Z",
+      "side": 1,
+      "message": "What if the previous test in the suite leave the launcher open? Will this fail? \n\nAlso, will ash.TriggerLauncherStateChange(ctx, tconn, ash.AccelSearch) work in this case?  If so, you don\u0027t need kb at all.",
+      "revId": "fc2faac18e3b9bf6ad2dd8f1c2cf271e2af92abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaa3a9c6_4522f0a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-09T22:43:38Z",
+      "side": 1,
+      "message": "Will ash.TriggerLauncherStateChange(ctx, tconn, ash.AccelSearch) work in this case?",
+      "revId": "fc2faac18e3b9bf6ad2dd8f1c2cf271e2af92abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
