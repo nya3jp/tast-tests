@@ -33,6 +33,24 @@
       "message": "The use of cleanupCtx in this change probably doesn\u0027t make sense. Note that cleanupCtx is created outside of the closure passed to s.Run. Moreover, there is actually a nested call to s.Run inside that closure.\n\nShould I create the cleanupCtx inside the innermost closure?",
       "revId": "abfd7c1f4e1929de626477645e85d8f8dac42d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "259b2874_7a918683",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-09T14:32:55Z",
+      "side": 1,
+      "message": "Does this nesting of s.Run even make sense?",
+      "parentUuid": "54bb14d8_3b07ec97",
+      "revId": "abfd7c1f4e1929de626477645e85d8f8dac42d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
