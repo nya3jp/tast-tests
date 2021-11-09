@@ -68,7 +68,7 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 	}
 	// Set Chrome window's state to maximaized and Files window's state to normal.
 	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-		if strings.Contains(w.Title, "Chrome") {
+		if isChromeWindow(w) {
 			return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized)
 		}
 		if strings.Contains(w.Title, "Files") {
@@ -91,7 +91,7 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 				return testing.PollBreak(animationError)
 			}
 			for _, window := range ws {
-				if strings.Contains(window.Title, "Chrome") && !window.IsAnimating {
+				if isChromeWindow(window) && !window.IsAnimating {
 					animationError = errors.New("chrome window is not animating")
 					return animationError
 				}
@@ -112,7 +112,7 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 	}
 
 	// Clicking the close button in overview should close the window.
-	chromeOverviewItemView := nodewith.NameRegex(regexp.MustCompile("Chrome(.*?)")).ClassName("OverviewItemView")
+	chromeOverviewItemView := nodewith.NameRegex(regexp.MustCompile("New Tab(.*?)")).ClassName("OverviewItemView")
 	closeChromeButton := nodewith.ClassName("OverviewCloseButton").Ancestor(chromeOverviewItemView)
 	if err := ac.LeftClick(closeChromeButton)(ctx); err != nil {
 		s.Fatal("Failed to close chrome window: ", err)
@@ -127,7 +127,11 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 	if len(ws) != 1 {
 		s.Fatalf("Expected 1 window, got %v window(s)", len(ws))
 	}
-	if strings.Contains(ws[0].Title, "Chrome") {
+	if isChromeWindow(ws[0]) {
 		s.Fatal("Chrome window still exists after closing it in overview")
 	}
+}
+
+func isChromeWindow(w *ash.Window) bool {
+	return strings.Contains(w.Title, "Chrome") || strings.Contains(w.Title, "Chromium")
 }
