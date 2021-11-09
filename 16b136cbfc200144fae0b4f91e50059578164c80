@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc57c12_2f5b0137",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-09T21:50:23Z",
+      "side": 1,
+      "message": "I think I would switch this to a single var containing an enum or string, and switch on that in the test to decide which scenario to run, since you never actually enable more than one.\n\nAlso I would name them on what you are testing, not on the feature. I.e. instead of hasInternalDisplay use suspendWithPowerKey",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "16b136cbfc200144fae0b4f91e50059578164c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50db33d8_a5fb524c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-09T21:50:23Z",
+      "side": 1,
+      "message": "I don\u0027t like this. It does faithfully reproduce the old test, but we can do better.\n\nInstead let\u0027s do this:\n\n1) Check for the ec command tabletmode, if it exists, run tabletmode off\n2) suspend \u0026 wake with an EC emulated keypress ENTER\n3) If we have tabletmode, run tabletmode on\n3.1) suspend and verify that enter does not wake.\n3.2) Wake some other way\n4) Check boot id.\n\nTreat USB keybaord as another case separate from this one, so you can exclude it on \"gru\" if necessary. gru is the only board that has usb_hid_wake_enabled \u003d\u003d false in fw-testing-configs.",
+      "range": {
+        "startLine": 143,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 3
+      },
+      "revId": "16b136cbfc200144fae0b4f91e50059578164c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "683e2709_caa9108c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-09T21:50:23Z",
+      "side": 1,
+      "message": "There is an overlap here with ec_lid_switch.go. Maybe this works better there? I\u0027m not really sure, and I could go either way.",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "16b136cbfc200144fae0b4f91e50059578164c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e56c25_42051c2a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-09T21:50:23Z",
+      "side": 1,
+      "message": "As we discussed, remove this test case.",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "16b136cbfc200144fae0b4f91e50059578164c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdc01d36_9ab2c076",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-09T21:50:23Z",
+      "side": 1,
+      "message": "I would move this to the end and check for errors, or put it in suspendAndWakeWithKey instead.",
+      "range": {
+        "startLine": 379,
+        "startChar": 1,
+        "endLine": 379,
+        "endChar": 35
+      },
+      "revId": "16b136cbfc200144fae0b4f91e50059578164c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e0e2a8b_16b4212e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-09T21:50:23Z",
+      "side": 1,
+      "message": "durations print fine, just use\n\ntesting.ContextLogf(args.ctx, \"Sleeping for %s\", ecSuspendDelay)",
+      "range": {
+        "startLine": 407,
+        "startChar": 58,
+        "endLine": 407,
+        "endChar": 89
+      },
+      "revId": "16b136cbfc200144fae0b4f91e50059578164c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
