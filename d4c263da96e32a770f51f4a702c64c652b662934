@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdf9108b_841b58e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-09T23:23:25Z",
+      "side": 1,
+      "message": "Just chiming in with an easy way I know of: if the model list is small you could use the Model hardware dependency:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/testing/hwdep/hwdep.go;l\u003d109\n\nSee https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md for more info.\n\nA new hardware dependency for the key is definitely the correct option though.",
+      "parentUuid": "109d3ef0_82fe361a",
+      "range": {
+        "startLine": 16,
+        "startChar": 14,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "d4c263da96e32a770f51f4a702c64c652b662934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b8608580_4b82e081",
