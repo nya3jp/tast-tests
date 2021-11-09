@@ -22,8 +22,8 @@ func init() {
 		Func: KerberosDaemon,
 		Desc: "Verifies that the Kerberos system dameon works as expected",
 		Contacts: []string{
-			"ljusten@chromium.org",
-			"rsorokin@chromium.org",
+			"fsandrade@chromium.org",
+			"chromeos-commercial-identity@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
 	})
