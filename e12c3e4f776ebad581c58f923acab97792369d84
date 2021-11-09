@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d03fc5b2_7152797c",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-09T15:07:05Z",
+      "side": 1,
+      "message": "could you avoid exposing Session?\nI think you can just directly use driver.Session.\nAll its constructor calls are in chrome package.",
+      "revId": "e12c3e4f776ebad581c58f923acab97792369d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "814ef8d4_dfb515a1",
         "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
         "patchSetId": 4
@@ -19,6 +36,52 @@
         "startChar": 42,
         "endLine": 18,
         "endChar": 60
+      },
+      "revId": "e12c3e4f776ebad581c58f923acab97792369d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb4a9972_01feb6f9",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-09T15:07:05Z",
+      "side": 1,
+      "message": "optional: Could you rename this to SetUp? I know it existing one, so marked as optional.\n(Setup: noun, SetUp: verb phrase, according to English native speaker I heard, and verb is preferred in this context).",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 10
+      },
+      "revId": "e12c3e4f776ebad581c58f923acab97792369d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2968d70d_95920763",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-09T15:07:05Z",
+      "side": 1,
+      "message": "huge nit: maybe \"Browser\" is better.",
+      "range": {
+        "startLine": 37,
+        "startChar": 47,
+        "endLine": 37,
+        "endChar": 53
       },
       "revId": "e12c3e4f776ebad581c58f923acab97792369d84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
