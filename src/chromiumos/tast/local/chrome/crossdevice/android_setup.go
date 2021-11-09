@@ -95,9 +95,6 @@ func GAIALogin(ctx context.Context, d *adb.Device, accountUtilZipPath, username,
 		return err
 	}
 
-	// TODO(b/187795521): Re-adding the account immediately after removing it is flaky.
-	// Waiting a few seconds fixes it, but we should find a deterministic way to tell when we can safely re-add the account.
-	testing.Sleep(ctx, 3*time.Second)
 	testing.ContextLog(ctx, "Adding Nearby GAIA user to the Android device")
 	if err := AddAccount(ctx, d, username, password); err != nil {
 		return err
@@ -111,12 +108,23 @@ func AddAccount(ctx context.Context, d *adb.Device, username, password string) e
 	addAccountCmd := d.ShellCommand(ctx, "am", "instrument", "-w",
 		"-e", "account", username, "-e", "password", password, "com.google.android.tradefed.account/.AddAccount",
 	)
-	if out, err := addAccountCmd.Output(); err != nil {
-		return errors.Wrap(err, "failed to add account from the device")
-	} else if !strings.Contains(string(out), "INSTRUMENTATION_RESULT: result=SUCCESS") {
-		return errors.Errorf("failed to add account to the device (%v)", string(out))
+	// TODO(b/187795521): Re-adding the account immediately after removing it is flaky so retry until there is a deterministic indicator.
+	retries := 3
+	for i := 0; i < retries; i++ {
+		testing.Sleep(ctx, 3*time.Second)
+		accountAdded := true
+		if out, err := addAccountCmd.Output(); err != nil {
+			testing.ContextLog(ctx, "Failed to add account from the device")
+			accountAdded = false
+		} else if !strings.Contains(string(out), "INSTRUMENTATION_RESULT: result=SUCCESS") {
+			testing.ContextLogf(ctx, "Failed to add account to the device (%v)", string(out))
+			accountAdded = false
+		}
+		if accountAdded {
+			return nil
+		}
 	}
-	return nil
+	return errors.New("failed to add GAIA acccount to Android after multiple attempts")
 }
 
 // RemoveAccounts removes accounts from the Android device. Assumes the GoogleAccountUtil APK has already been installed.
