@@ -21,11 +21,13 @@ import (
 
 type searchSettingsTestCase struct {
 	searchTerm        string // searchTerm is the text that is entered in the Launcher.
+	searchResult      string // searchTerm is the text that should be selected in the Launcher.
 	wantValue         string // wantValue is the expected string that should be present on the opened OS Settings section (e.g. a page title).
 	passwordProtected bool   // whether the settings page is password protected.
 }
 
 const deviceUserPassword = "testpass"
+const settingsWindowTitle = "Settings"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -43,37 +45,44 @@ func init() {
 			Val: []searchSettingsTestCase{
 				{
 					searchTerm:        "Guest browsing",
+					searchResult:      "Guest browsing, Manage other people",
 					wantValue:         "Manage other people",
 					passwordProtected: false,
 				},
 				{
 					searchTerm:        "Show usernames and photos on the sign-in screen",
+					searchResult:      "Show usernames and photos on the sign-in screen, Manage other people",
 					wantValue:         "Manage other people",
 					passwordProtected: false,
 				},
 				{
 					searchTerm:        "Restrict sign-in",
+					searchResult:      "Restrict sign-in, Manage other people",
 					wantValue:         "Manage other people",
 					passwordProtected: false,
 				},
 				{
 					searchTerm:        "Add restricted user",
+					searchResult:      "Add restricted user, Manage other people",
 					wantValue:         "Manage other people",
 					passwordProtected: false,
 				},
 				{
 					searchTerm:        "Screen lock PIN",
+					searchResult:      "Screen lock PIN, Lock screen and sign-in",
 					wantValue:         "Lock screen and sign-in",
 					passwordProtected: true,
 				},
 				{
 					searchTerm:        "Lock screen",
+					searchResult:      "Lock screen and sign-in, Security and Privacy",
 					wantValue:         "Lock screen and sign-in",
 					passwordProtected: true,
 				},
 				{
 					searchTerm:        "Add Google account",
-					wantValue:         "Add Google account",
+					searchResult:      "Add Google Account, My accounts",
+					wantValue:         "Add Google Account",
 					passwordProtected: false,
 				},
 			},
@@ -83,11 +92,13 @@ func init() {
 			Val: []searchSettingsTestCase{
 				{
 					searchTerm:        "Fingerprint settings",
+					searchResult:      "Fingerprint settings, Lock screen and sign-in",
 					wantValue:         "Fingerprint",
 					passwordProtected: true,
 				},
 				{
 					searchTerm:        "Add fingerprint",
+					searchResult:      "Add fingerprint, Fingerprint",
 					wantValue:         "Fingerprint",
 					passwordProtected: true,
 				},
@@ -126,7 +137,7 @@ func SearchSettingsSections(ctx context.Context, s *testing.State) {
 
 			ui := uiauto.New(tconn)
 			searchResultView := nodewith.ClassName("SearchResultPageView")
-			result := nodewith.NameStartingWith(tc.searchTerm).Ancestor(searchResultView).First()
+			result := nodewith.NameStartingWith(tc.searchResult).Ancestor(searchResultView).First()
 			if err := uiauto.Combine("search for result in launcher",
 				launcher.Open(tconn),
 				launcher.Search(tconn, kb, tc.searchTerm),
@@ -134,6 +145,14 @@ func SearchSettingsSections(ctx context.Context, s *testing.State) {
 				ui.LeftClick(result),
 			)(ctx); err != nil {
 				s.Fatalf("Failed to search for result %q in launcher: %v", tc.searchTerm, err)
+			}
+
+			activeWindow, err := ash.GetActiveWindow(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to get the active window: ", err)
+			}
+			if activeWindow.Title != settingsWindowTitle {
+				s.Fatalf("Active window is %q, expected %q", activeWindow.Title, settingsWindowTitle)
 			}
 
 			if tc.passwordProtected {
