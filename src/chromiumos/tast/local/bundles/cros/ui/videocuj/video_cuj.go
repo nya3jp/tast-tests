@@ -278,7 +278,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 			}
 
 			if extendedDisplay {
-				if err := moveGmailWindow(ctx, gConn, tconn, ui, resources); err != nil {
+				if err := moveGmailWindow(ctx, tconn, resources); err != nil {
 					return errors.Wrap(err, "failed to move Gmail window between main display and extended display")
 				}
 			}
@@ -347,22 +347,11 @@ func getWindowID(ctx context.Context, tconn *chrome.TestConn) (int, error) {
 }
 
 // moveGmailWindow switches Gmail to the extended display and switches back to internal display.
-func moveGmailWindow(ctx context.Context, gConn *chrome.Conn, tconn *chrome.TestConn, ui *uiauto.Context, testRes TestResources) error {
-	extendedWinClassName, err := cuj.ExtendedDisplayWindowClassName(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to find root window on extended display")
-	}
-
-	internalDisplay := nodewith.ClassName("RootWindow-0").Role(role.Window)
-	externalDisplay := nodewith.ClassName(extendedWinClassName).Role(role.Window)
-	gmailWeb := nodewith.Name("Compose an email").Role(role.Button)
-
-	return uiauto.Combine("focus gmail and move it between two displays",
+func moveGmailWindow(ctx context.Context, tconn *chrome.TestConn, testRes TestResources) error {
+	return uiauto.Combine("switch to gmail and move it between two displays",
 		testRes.UIHandler.SwitchWindow(),
-		testRes.Kb.AccelAction("Search+Alt+M"),
-		ui.WithTimeout(3*time.Second).WaitUntilExists(gmailWeb.Ancestor(externalDisplay)),
-		testRes.Kb.AccelAction("Search+Alt+M"),
-		ui.WithTimeout(3*time.Second).WaitUntilExists(gmailWeb.Ancestor(internalDisplay)),
+		cuj.SwitchWindowToDisplay(ctx, tconn, testRes.Kb, true),  // To external display.
+		cuj.SwitchWindowToDisplay(ctx, tconn, testRes.Kb, false), // To internal display.
 	)(ctx)
 }
 
