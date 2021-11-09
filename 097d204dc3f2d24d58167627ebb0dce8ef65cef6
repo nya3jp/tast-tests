@@ -16,6 +16,23 @@
       "message": "This is the final version of an earlier CL, all feedback on which has been addressed.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3259582\n",
       "revId": "097d204dc3f2d24d58167627ebb0dce8ef65cef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750289cb_92c2734c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-09T00:51:36Z",
+      "side": 1,
+      "message": "It looks like the 2 tests are pretty much identical except for the key(s) used. I think this would be well-suited to a parameterized test:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests\n\nThis way you can share the test code and just make the small tweak to the key presses needed.",
+      "revId": "097d204dc3f2d24d58167627ebb0dce8ef65cef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
