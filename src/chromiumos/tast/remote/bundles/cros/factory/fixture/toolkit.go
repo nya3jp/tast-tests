@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
@@ -25,10 +26,13 @@ const (
 	toolkitInstallerName = "install_factory_toolkit.run"
 	// the path should be synced with factory-mini.ebuild
 	toolkitInstallerPath = "/usr/local/factory-toolkit/" + toolkitInstallerName
+	factoryRootPath      = "/usr/local/factory"
 	// Get the factory toolkit version.
-	toolkitVersionPath = "/usr/local/factory/TOOLKIT_VERSION"
+	toolkitVersionPath = factoryRootPath + "/TOOLKIT_VERSION"
 	// the existence of enabled file determines whether DUT booted with running the toolkit
-	toolkitEnabledPath = "/usr/local/factory/enabled"
+	toolkitEnabledPath = factoryRootPath + "/enabled"
+	// TODO(b/205779346): disk_space_hacks.sh removes data still need in lab test.
+	diskSpaceHackScriptPath = factoryRootPath + "/init/init.d/disk_space_hacks.sh"
 	// reboot takes 30 seconds to pass the boot option selection in developer
 	// mode, plus enough time as buffer to wait for the system and networking to be ready
 	rebootTimeout = 3 * time.Minute
@@ -88,30 +92,37 @@ func (e *ensureToolkitFixt) TearDown(ctx context.Context, s *testing.FixtState) 
 	s.Log("Toolkit uninstalled successfully")
 }
 
+// installFactoryToolKit installs factory toolkit and sets it up with the
+// configuration that is compatible with tast. Current implementation only
+// supports installing toolkit from the installer, which is shipped with the
+// test image.
 func installFactoryToolKit(ctx context.Context, conn *ssh.Conn) (version string, err error) {
-	checkInstallerExistenceCmd := conn.CommandContext(ctx, "ls", toolkitInstallerPath)
-	if err := checkInstallerExistenceCmd.Run(ssh.DumpLogOnError); err != nil {
-		return "", errors.Wrapf(err, "failed to find factory toolkit installer: %s", toolkitInstallerPath)
-	}
+	ctxForConfigure := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 20*time.Second)
+	defer cancel()
 
 	// TODO(b/150189948): Support installing toolkit from artifacts
 	// factory_image.zip
 	if version, err = installFactoryToolKitFromToolkitInstaller(ctx, toolkitInstallerPath, conn); err != nil {
-		return "", errors.Wrapf(err, "can not install toolkit: %s", toolkitInstallerPath)
+		return "", errors.Wrapf(err, "cannot install toolkit: %s", toolkitInstallerPath)
 	}
+	defer func(ctx context.Context) {
+		err = configureToolkitWithLabEnvironment(ctx, conn)
+	}(ctxForConfigure)
 
-	// set tast specific test list to prevent from unexpected behavior, such
-	// as cr50 update and reboot, etc.
-	setTestListCmd := conn.CommandContext(ctx, "factory", "test-list", testListName)
-	if err := setTestListCmd.Run(ssh.DumpLogOnError); err != nil {
-		return "", errors.Wrapf(err, "can not set test list to %s: %s", testListName, toolkitInstallerPath)
-	}
-
-	return version, nil
-
+	return version, err
 }
 
+// installFactoryToolKitFromToolkitInstaller installs factory toolkit with the
+// installer and returns the version of the installed toolkit. The existence of
+// the installer is first checked, installed, then probe the version file as
+// the return value.
 func installFactoryToolKitFromToolkitInstaller(ctx context.Context, installerPath string, conn *ssh.Conn) (version string, err error) {
+	checkInstallerExistenceCmd := conn.CommandContext(ctx, "ls", installerPath)
+	if err := checkInstallerExistenceCmd.Run(ssh.DumpLogOnError); err != nil {
+		return "", errors.Wrapf(err, "failed to find factory toolkit installer: %s", installerPath)
+	}
+
 	installCmd := conn.CommandContext(ctx, installerPath, "--", "--yes")
 	if err := installCmd.Run(ssh.DumpLogOnError); err != nil {
 		return "", errors.Wrap(err, "failed to install factory toolkit")
@@ -123,4 +134,24 @@ func installFactoryToolKitFromToolkitInstaller(ctx context.Context, installerPat
 	}
 	version = strings.TrimSpace(string(versionByte))
 	return version, nil
+}
+
+// configureToolkitWithLabEnvironment sets up configurations for factory toolkit
+// so that it can run with tast and does not break other tests due to side
+// effects of the toolkit itself.
+func configureToolkitWithLabEnvironment(ctx context.Context, conn *ssh.Conn) error {
+	// set tast specific test list to prevent from unexpected behavior, such
+	// as cr50 update and reboot, etc.
+	setTestListCmd := conn.CommandContext(ctx, "factory", "test-list", testListName)
+	if err := setTestListCmd.Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "cannot set test list to %s: %s", testListName, toolkitInstallerPath)
+	}
+
+	// TODO(b/205779346): workaround to prevent disk_space_hacks.sh from
+	// deleting directories needed by other test.
+	removeDiskSpaceHackCmd := conn.CommandContext(ctx, "rm", "-f", diskSpaceHackScriptPath)
+	if err := removeDiskSpaceHackCmd.Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "cannot remove %s", diskSpaceHackScriptPath)
+	}
+	return nil
 }
