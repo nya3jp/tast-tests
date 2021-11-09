@@ -24,7 +24,7 @@ type Cleanup func(context.Context) error
 type Prepare func(context.Context) (string, Cleanup, error)
 
 // Run runs the specified user scenario in conference room with different CUJ tiers.
-func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir string, tabletMode, extendedDisplay bool, roomSize int) error {
+func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir string, tabletMode bool, roomSize int) error {
 	// Shorten context a bit to allow for cleanup.
 	cleanUpCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -121,7 +121,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 			if tier == "premium" {
 				application = googleDocs
 			}
-			if err := conf.Presenting(ctx, application, extendedDisplay); err != nil {
+			if err := conf.Presenting(ctx, application); err != nil {
 				return err
 			}
 		}
