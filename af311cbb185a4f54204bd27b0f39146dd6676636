@@ -97,6 +97,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d63e8c94_da4580f9",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-09T01:24:24Z",
+      "side": 1,
+      "message": "Interesting change :-)\nBut maybe it would be better in a follow-up CL? It\u0027s not mentioned in the commit message and is a bit different from the FCS issues I think?",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 4
+      },
+      "revId": "af311cbb185a4f54204bd27b0f39146dd6676636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4d3a4fb_e5981e38",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
         "patchSetId": 5
@@ -126,6 +149,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "c4d3a4fb_e5981e38",
+      "revId": "af311cbb185a4f54204bd27b0f39146dd6676636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b095c0ef_45ee30fa",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-11-09T01:24:24Z",
+      "side": 1,
+      "message": "Agreed with Jintao, since there is an order (RadioTapFCSValid() must be run before Dot11FCSValid()) it is likely that callers won\u0027t realize that. Making the API as simple as possible with only one high-level \"has the packet been corrupted or not?\" filter that uses several internal checks internally sgtm",
+      "parentUuid": "580d3712_f0206226",
       "revId": "af311cbb185a4f54204bd27b0f39146dd6676636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
