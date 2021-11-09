@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "826985f0_21d03145",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-11-09T09:24:09Z",
+      "side": 1,
+      "message": "Are we use this syntax for referring a bug?",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "f1a6b8d96d21f8ad1066bf895fe3166b6d3a2db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90a32c41_c7a3a07e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
         "patchSetId": 1
