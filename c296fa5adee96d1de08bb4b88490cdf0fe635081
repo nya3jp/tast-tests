@@ -16,6 +16,24 @@
       "message": "Looks like we need to wait for a few more test runs before we promote this one.",
       "revId": "c296fa5adee96d1de08bb4b88490cdf0fe635081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5cb4810_c68ed385",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-09T21:55:56Z",
+      "side": 1,
+      "message": "Agree, 20 consecutive passes are required to promote a test (https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md).\n\nRight now, there are about 11 passes: https://tastboard.corp.google.com/test/platform.LocalPerfettoTBMTracedProbes",
+      "parentUuid": "f59b01e2_6436a5b2",
+      "revId": "c296fa5adee96d1de08bb4b88490cdf0fe635081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
