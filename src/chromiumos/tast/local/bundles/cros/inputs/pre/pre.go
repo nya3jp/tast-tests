@@ -21,22 +21,23 @@ import (
 
 // StableModels is a list of boards that stable enough and aim to run inputs tests in CQ.
 var StableModels = []string{
-	// Top VK usage board in 2020 -- convertible, ARM.
-	"hana",
-	// Another top board -- convertible, x64.
-	"snappy",
-	// Kukui family, not much usage, but very small tablet.
-	"kukui",
-	"kodama",
-	"krane",
+	"betty",
+	// Random boards on the top boards for VK list.
+	"bobba",
+	"bobba360",
+	"casta",
+	"coral",
+	"kefka",
 	// Convertible chromebook, top usage in 2018 and 2019.
 	"cyan",
-	// Random boards on the top boards for VK list.
-	"bobba360",
-	"bobba",
-	"kefka",
-	"coral",
-	"betty",
+	// Top VK usage board in 2020 -- convertible, ARM.
+	"hana",
+	// Kukui family, not much usage, but very small tablet.
+	"kodama",
+	"krane",
+	"kukui",
+	// Another top board -- convertible, x64.
+	"snappy",
 }
 
 // GrammarEnabledModels is a list boards where Grammar Check is enabled.
