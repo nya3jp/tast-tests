@@ -9,6 +9,8 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -27,26 +29,28 @@ const (
 	intelS0ixResidencyFile2 = "/sys/kernel/debug/telemetry/s0ix_residency_usec"
 
 	amdS0ixResidencyFilePattern = "Residency Time: "
+
+	s2IdleResidencyFilePathPattern = "/sys/devices/system/cpu/cpu[0-9]/cpuidle/state*/s2idle/time"
 )
 
 // Suspend suspends the device for a pre-defined time and then resumes it.
-func Suspend(ctx context.Context, skipS0iXResidencyCheck bool) error {
-	return suspend(ctx, defaultSuspendTimeout, defaultSuspendWakeupTime, skipS0iXResidencyCheck)
+func Suspend(ctx context.Context, skipResidencyCheck bool) error {
+	return suspend(ctx, defaultSuspendTimeout, defaultSuspendWakeupTime, skipResidencyCheck)
 }
 
-func suspend(ctx context.Context, timeout, wakeup time.Duration, skipS0iXResidencyCheck bool) error {
+func suspend(ctx context.Context, timeout, wakeup time.Duration, skipResidencyCheck bool) error {
 	inSec := func(dur time.Duration) string {
 		return strconv.Itoa(int(dur / time.Second))
 	}
 
 	var s0ixDuration, s0ixDurationFinal time.Duration
 	var err error
-	if skipS0iXResidencyCheck {
-		testing.ContextLog(ctx, "Skipping s0ix residency check")
+	if skipResidencyCheck {
+		testing.ContextLog(ctx, "Skipping sleep residency check")
 	} else {
-		if s0ixDuration, err = getS0ixResidencyStats(); err != nil {
+		if s0ixDuration, err = getResidencyStats(); err != nil {
 			testing.ContextLog(ctx, "Failed to aquire s0ix residency time: ", err)
-			skipS0iXResidencyCheck = true
+			skipResidencyCheck = true
 		}
 	}
 
@@ -66,8 +70,8 @@ func suspend(ctx context.Context, timeout, wakeup time.Duration, skipS0iXResiden
 		return errors.Wrap(err, "failed to suspend device")
 	}
 
-	if !skipS0iXResidencyCheck {
-		s0ixDurationFinal, err = getS0ixResidencyStats()
+	if !skipResidencyCheck {
+		s0ixDurationFinal, err = getResidencyStats()
 		if err != nil {
 			return errors.Wrap(err, "failed to aquire s0ix residency time")
 		}
@@ -87,9 +91,42 @@ func restartPowerd(ctx context.Context) {
 	}
 }
 
-func getS0ixResidencyStats() (time.Duration, error) {
-	return getS0ixResidencyStatsFromFiles(amdS0ixResidencyFilePattern,
-		[]string{intelS0ixResidencyFile1, intelS0ixResidencyFile2})
+func getResidencyStats() (time.Duration, error) {
+	if runtime.GOARCH == "amd64" {
+		return getS0ixResidencyStatsFromFiles(amdS0ixResidencyFilePattern,
+			[]string{intelS0ixResidencyFile1, intelS0ixResidencyFile2})
+	} else if runtime.GOARCH == "arm64" {
+		return getS2IdleResidencyStats(s2IdleResidencyFilePathPattern)
+	} else {
+		return 0, errors.Errorf("unsupported architecture for residency stats: %s", runtime.GOARCH)
+	}
+}
+
+func getS2IdleResidencyStats(filePattern string) (time.Duration, error) {
+	var totalDuration time.Duration
+
+	files, err := filepath.Glob(filePattern)
+	if err != nil {
+		return 0, errors.Wrap(err, "error reading s2 idle files")
+	}
+
+	if len(files) == 0 {
+		return 0, errors.Errorf("no s2idle residency files found for path: %s", filePattern)
+	}
+
+	for _, file := range files {
+		if data, err := ioutil.ReadFile(file); err == nil {
+			if duration, err := parseDuration(string(data)); err == nil {
+				totalDuration += duration
+			} else {
+				return 0, errors.Wrapf(err, "error parsing value from: %s", file)
+			}
+		} else {
+			return 0, errors.Wrapf(err, "error reading s2idle file: %s", file)
+		}
+	}
+
+	return totalDuration, nil
 }
 
 func getS0ixResidencyStatsFromFiles(amdResidencyFile string,
