@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a595cb5_985c9f7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-09T07:57:31Z",
+      "side": 1,
+      "message": "LGTM. Thank you for working on the fix.",
+      "revId": "c398eb49014fc29dc689efc7132079b6ae8cfa86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43e8bbfb_7b4da6c3",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-09T07:57:31Z",
+      "side": 1,
+      "message": "nit/style: could you remove \"else\" as you return from if just above? Ditto for below.",
+      "range": {
+        "startLine": 286,
+        "startChar": 4,
+        "endLine": 286,
+        "endChar": 8
+      },
+      "revId": "c398eb49014fc29dc689efc7132079b6ae8cfa86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
