@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1831e61_2f6967d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-09T08:08:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8de92b97_4f8e85c1",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "225942008db40b0245c2f802b61100233b7f7184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "853578bb_92038ce9",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-04T19:13:44Z",
       "side": 1,
       "message": "the original comment mentioned to do something like this:\n\n  // Do this\n  if (dec \u003e pre)\n  \n  // Instead of this\n  if ! (pre \u003e dec)",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 38
+      },
+      "revId": "225942008db40b0245c2f802b61100233b7f7184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0cd06a1_06c0473e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/inputbrightness_keyboard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-09T08:08:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "853578bb_92038ce9",
       "range": {
         "startLine": 69,
         "startChar": 5,
