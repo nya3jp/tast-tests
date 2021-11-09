@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3f2697a_098cdf89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-11-09T17:43:36Z",
+      "side": 1,
+      "message": "drive-by sheriff: you\u0027re failing legitimately:\n\ntast-remote-tests-cros-0.0.2-r8321: 23:02:52 \u003e\u003e\u003e Compiling source in /var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r8321/work/tast-remote-tests-cros-0.0.2 ...\ntast-remote-tests-cros-0.0.2-r8321:  * Building \"chromiumos/tast/remote/bundles/cros:/usr/libexec/tast/bundles/remote/cros\"\ntast-remote-tests-cros-0.0.2-r8321: src/chromiumos/tast/remote/bundles/cros/firmware/screen_wake_tablet_mode.go:21:2: cannot find package \"chromiumos/tast/services/cros/inputs\" in any of:\ntast-remote-tests-cros-0.0.2-r8321: \t/usr/lib/go/src/chromiumos/tast/services/cros/inputs (from $GOROOT)\ntast-remote-tests-cros-0.0.2-r8321: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r8321/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/services/cros/inputs (from $GOPATH)\ntast-remote-tests-cros-0.0.2-r8321: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r8321/work/tast-remote-tests-cros-0.0.2/tast-base/src/chromiumos/tast/services/cros/inputs\ntast-remote-tests-cros-0.0.2-r8321: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r8321/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/firmware/data/fw-testing-configs/src/chromiumos/tast/services/cros/inputs\ntast-remote-tests-cros-0.0.2-r8321: \t/usr/lib/gopath/src/chromiumos/tast/services/cros/inputs",
+      "revId": "2c5223ed202af76763bbe5d63254e65b0cb2aee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
