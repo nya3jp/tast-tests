@@ -136,6 +136,13 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 			testing.ContextLog(ctx, "Failed to clean up the slide: ", err)
 		}
 	}()
+	// Make sure that the Google Slides window is on the internal display.
+	if extendedDisplay {
+		// Switch window to internal display.
+		if err := cuj.SwitchWindowToDisplay(ctx, tconn, kb, false)(ctx); err != nil {
+			return errors.Wrap(err, "failed to switch Google Slides to the internal display")
+		}
+	}
 	renameSlideErr = googleapps.RenameSlide(tconn, kb, testTitle)(ctx)
 	if renameSlideErr != nil {
 		return CheckSignedOutError(ctx, tconn, renameSlideErr)
@@ -166,6 +173,14 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 			testing.ContextLog(ctx, "Failed to clean up the document: ", err)
 		}
 	}()
+	// Make sure that the Google Docs window is on the internal display.
+	if extendedDisplay {
+		// Switch window to internal display.
+		if err := cuj.SwitchWindowToDisplay(ctx, tconn, kb, false)(ctx); err != nil {
+			return errors.Wrap(err, "failed to switch Google Docs to the internal display")
+		}
+	}
+
 	renameDocErr = googleapps.RenameDoc(tconn, kb, testTitle)(ctx)
 	if renameDocErr != nil {
 		return CheckSignedOutError(ctx, tconn, renameDocErr)
