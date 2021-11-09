@@ -93,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "645e9602_678bd39c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-11-09T15:26:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "726c22b5_b49eb4e1",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e9fb0b2_e4ad3e60",
@@ -106,6 +130,24 @@
       "writtenOn": "2021-11-03T18:01:41Z",
       "side": 1,
       "message": "note that user is modified here. To be clearer for future reader, how about \n\nprimaryUser, err :\u003d getPrimaryUser(ctx)\nif err !\u003d nil {...}\nuser \u003d primaryUser",
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7498eba0_7d4bcd4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-11-09T15:26:06Z",
+      "side": 1,
+      "message": "Good idea, done",
+      "parentUuid": "8e9fb0b2_e4ad3e60",
       "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -127,6 +169,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4e6baa_5e4f6c45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterprise/arc_snapshot_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-11-09T15:26:06Z",
+      "side": 1,
+      "message": "Added comment.\n\nYes, it will be null for all following MGSs.\n\nIf it was possible to connect to the existing chrome session without changing the flow of the session, it would be great. But I failed to find a way. Do you know if it\u0027s possible?\n\nI can skip the whole \"if cr !\u003d nil\" block, but it checks the chrome\u0027s MGS policy. I\u0027d like to do it at least once per test to ensure that the user policy is set correct.",
+      "parentUuid": "6ac58cbe_633ddbe6",
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "357921c4_e1ba34fe",
@@ -140,6 +200,30 @@
       "writtenOn": "2021-11-03T18:01:41Z",
       "side": 1,
       "message": "Giving this is a lengthy test, you might want to have a dedicate suite or control file to avoid hitting global timeout. It helps other tests in the same fleet to run.\n\nFYI, informational-chrome timeout is set to 4hr.\n/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.informational-chrome",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de783da6_6a065fd3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-11-09T15:26:06Z",
+      "side": 1,
+      "message": "It\u0027s a good point. Added special group:arc-data-snapshot that runs this test per each build.",
+      "parentUuid": "357921c4_e1ba34fe",
       "range": {
         "startLine": 27,
         "startChar": 25,
@@ -173,6 +257,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13d79779_65bdc7be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-11-09T15:26:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6374bd6c_27a2a2bb",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 3
+      },
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2c44de7_909f0aeb",
@@ -186,6 +294,30 @@
       "writtenOn": "2021-11-03T18:01:41Z",
       "side": 1,
       "message": "Can you move this a little up to line 94 so it is clearer re-connect is with rebooting?",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19664c3c_dcaf79db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-11-09T15:26:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c44de7_909f0aeb",
       "range": {
         "startLine": 97,
         "startChar": 2,
@@ -213,6 +345,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcf92df7_2a6f7dbc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-11-09T15:26:06Z",
+      "side": 1,
+      "message": "Fixed to follow this idea:\nfor i :\u003d 0; i \u003c 6; i++ {\n  // Running MGS with Request\n  // Waiting for Snapshot dir if needed\n  // perf.Merge\n  // Waiting for Reboot \u0026 Reconnect if needed\n}",
+      "parentUuid": "1e3021d0_6c476d4d",
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2226bf59_42e9e6e4",
@@ -236,6 +386,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "632545c4_54174819",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-11-09T15:26:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2226bf59_42e9e6e4",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 21
+      },
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47de8877_c7b1f1e7",
@@ -249,6 +423,30 @@
       "writtenOn": "2021-11-03T18:01:41Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 205,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 21
+      },
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d19f1a9_184ecf4f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-11-09T15:26:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47de8877_c7b1f1e7",
       "range": {
         "startLine": 205,
         "startChar": 2,
