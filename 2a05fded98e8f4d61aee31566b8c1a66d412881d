@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01675c51_a279ff19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-09T00:32:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "300817dd_46d2bb60",
+      "range": {
+        "startLine": 42,
+        "startChar": 19,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac0bbeaa_09fbf002",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Should be okay since we use a new Chrome instance?",
       "parentUuid": "ac0bbeaa_09fbf002",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67496ae3_dd84a8ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-09T00:32:02Z",
+      "side": 1,
+      "message": "I do not think so.",
+      "parentUuid": "f3b7c4d7_39282283",
       "range": {
         "startLine": 59,
         "startChar": 4,
