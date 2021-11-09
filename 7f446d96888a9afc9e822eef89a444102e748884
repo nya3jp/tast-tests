@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00cdb560_4a1ee087",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-09T13:58:10Z",
+      "side": 1,
+      "message": "Can\u0027t wait to see that in the repo :D 👍\n\nLGST % nit",
+      "revId": "7f446d96888a9afc9e822eef89a444102e748884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750c8369_83687d69",
+        "filename": "src/chromiumos/tast/local/uidetection/option.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-09T13:58:10Z",
+      "side": 1,
+      "message": "nit: I am not sure what does that comment mean.",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 54
+      },
+      "revId": "7f446d96888a9afc9e822eef89a444102e748884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
