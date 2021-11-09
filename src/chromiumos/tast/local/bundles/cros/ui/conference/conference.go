@@ -35,7 +35,7 @@ type Conference interface {
 	SwitchTabs(ctx context.Context) error
 	ChangeLayout(ctx context.Context) error
 	BackgroundChange(ctx context.Context) error
-	Presenting(ctx context.Context, application googleApplication, extendedDisplay bool) error
+	Presenting(ctx context.Context, application googleApplication) error
 	End(ctx context.Context) error
 }
 
