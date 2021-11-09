@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b0c6f72_5994c30a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-09T00:45:36Z",
+      "side": 1,
+      "message": "Can you clarify why you don\u0027t think so? Anecdotally the cryptohome seems to be wiped between test runs when using chrome.New as is done in this CL?",
+      "parentUuid": "67496ae3_dd84a8ba",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4be11da_347bcd1f",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
         "patchSetId": 4
