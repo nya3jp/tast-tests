@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "296b7140_d54cb643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/notification_expand_collapse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-11-09T04:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dba325ea_b7e22fe4",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "abb91e086a26bea94e409e6034253b9caaba34ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a235983_009d68f1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-06T01:30:55Z",
       "side": 1,
       "message": "It is a good practice to reserve time for cleanup tasts (e.g. deferred functions). This may not be executed if ctx reaches the timeout. (see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task)\n\nA template you can do:\n// At the begining of a test.\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, TIME_RESERVED_FOR_CLEAN_UP)\ndefer cancel()\n\n// Use ctx for normal operations, and use cleanupCtx for cleanup tasts.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "abb91e086a26bea94e409e6034253b9caaba34ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f95a7de_1e72717d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/notification_expand_collapse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-11-09T04:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a235983_009d68f1",
       "range": {
         "startLine": 38,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acfdf648_1159e3af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/notification_expand_collapse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-11-09T04:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1d6a6d2_b4a983b9",
+      "range": {
+        "startLine": 55,
+        "startChar": 37,
+        "endLine": 55,
+        "endChar": 46
+      },
+      "revId": "abb91e086a26bea94e409e6034253b9caaba34ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84e1564f_c1949bd3",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-11-06T01:30:55Z",
       "side": 1,
       "message": "Consider using uiauto.Combine(...):\nif err :\u003d uiauto.Combine(\"do some bigger action\",\n  action1,\n  action2,\n  acuton3,\n)(ctx); err !\u003d nil {\n  s.Fatal(\"Failed to do some bigger action: \", err)\n}\n(https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_3.md)\nEach action is a: func(ctx context.Context) error\n\nAs such, you don\u0027t need to define clickExpandButton(), as ui.LeftClick(expandButton) is itself an action. Same to clickStatusArea.\n\nfor clickNotificationAndVerify, you can define it as an action with the signature func(ctx context.Context) error",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 29
+      },
+      "revId": "abb91e086a26bea94e409e6034253b9caaba34ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe89d5fc_7b731703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/notification_expand_collapse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-11-09T04:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84e1564f_c1949bd3",
       "range": {
         "startLine": 107,
         "startChar": 1,
@@ -107,6 +203,30 @@
       "side": 1,
       "message": "\u003e \"Notificaton\" is a possible misspelling of \"Notification\".\n\nPlease fix.",
       "parentUuid": "8ebaf820_e5f0e4e3",
+      "range": {
+        "startLine": 137,
+        "startChar": 56,
+        "endLine": 137,
+        "endChar": 67
+      },
+      "revId": "abb91e086a26bea94e409e6034253b9caaba34ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88e2bb37_6390214d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/notification_expand_collapse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1359584
+      },
+      "writtenOn": "2021-11-09T04:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee038c07_00f88101",
       "range": {
         "startLine": 137,
         "startChar": 56,
