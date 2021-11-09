@@ -27,7 +27,7 @@ func init() {
 		Desc:     "Verifies functions of Perfetto traced, traced_probes and trace_processor_shell commands",
 		Contacts: []string{"chenghaoyang@chromium.org", "chinglinyu@chromium.org"},
 		Data:     []string{tracing.TBMTracedProbesConfigFile, tracing.TraceProcessor()},
-		Attr:     []string{"group:mainline", "informational"},
+		Attr:     []string{"group:mainline"},
 	})
 }
 
