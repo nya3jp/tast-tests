@@ -34,6 +34,12 @@ const (
 	// recent indicates the "Recent" item label in the navigation bar.
 	recent = "Recent"
 
+	// oneDriveTab indicates the suffix of the tab name.
+	oneDriveTab = "OneDrive"
+	// myFiles indicates the tab name of the "My files - OneDrive".
+	myFilesTab = "My files - OneDrive"
+	// recentTab indicates the tab name of the "Recent - OneDrive".
+	recentTab = "Recent - OneDrive"
 	// wordTab indicates the tab name of the "Microsoft Word".
 	wordTab = "Microsoft Word Online"
 	// powerpointTab indicates the tab name of the "Microsoft PowerPoint".
@@ -80,6 +86,7 @@ func (app *MicrosoftWebOffice) CreateDocument(ctx context.Context) error {
 		// Make sure paragraph exists before typing. This is especially necessary on low-end DUTs.
 		app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(paragraph),
 		app.kb.TypeAction(docText),
+		app.maybeCloseOneDriveTab(myFilesTab),
 	)(ctx); err != nil {
 		return err
 	}
@@ -108,6 +115,7 @@ func (app *MicrosoftWebOffice) CreateSlides(ctx context.Context) error {
 		app.uiHdl.Click(subtitle),
 		app.kb.TypeAction(subtitleText),
 		app.kb.AccelAction("Enter"),
+		app.maybeCloseOneDriveTab(myFilesTab),
 	)(ctx); err != nil {
 		return err
 	}
@@ -158,7 +166,9 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context) (string, e
 	if err := app.searchSampleSheet(ctx); err != nil {
 		if err := uiauto.Combine("create a new spreadsheet",
 			app.createSampleSheet,
-			app.closeTab(excelTab))(ctx); err != nil {
+			app.closeTab(excelTab),
+			app.maybeCloseOneDriveTab(myFilesTab),
+		)(ctx); err != nil {
 			return "", err
 		}
 		return sheetName, nil
@@ -170,6 +180,7 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context) (string, e
 		app.reload(canvas, app.searchSampleSheet),
 		uiauto.NamedAction("check the contents of the spreadsheet", checkSheet),
 		app.closeTab(excelTab),
+		app.maybeCloseOneDriveTab(myFilesTab),
 	)(ctx); err != nil {
 		return "", err
 	}
@@ -177,31 +188,32 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context) (string, e
 }
 
 // OpenSpreadsheet opens an existing spreadsheet from microsoft web app.
-func (app *MicrosoftWebOffice) OpenSpreadsheet(ctx context.Context, fileName string) error {
+func (app *MicrosoftWebOffice) OpenSpreadsheet(ctx context.Context, fileName string) (err error) {
 	testing.ContextLog(ctx, "Opening an existing spreadsheet: ", fileName)
 
 	// checkNumberOfTabs checks if the number of tabs meets our expectations.
 	// Two tabs will be created in function "OpenSpreadsheet".
 	// The first is "My files - OneDrive", and the second is "sample.xlsx - Microsoft Excel Online" created by clicking the search result or clicking the file in "Recent".
 	checkNumberOfTabs := func(ctx context.Context) error {
-		testing.ContextLog(ctx, "Checking the number of the tabs")
-		tablist := nodewith.Role(role.TabList).ClassName("TabStripRegionView")
-		tabs := nodewith.Role(role.Tab).ClassName("Tab").Ancestor(tablist)
 		return testing.Poll(ctx, func(ctx context.Context) error {
-			nodes, err := app.ui.NodesInfo(ctx, tabs)
+			tabs, err := cuj.GetBrowserTabs(ctx, app.tconn)
 			if err != nil {
 				return err
 			}
-			if len(nodes) > 3 {
-				return errors.New("the number of tabs is incorrect")
+			numberOfTabs := len(tabs)
+			if numberOfTabs > 3 {
+				return errors.Errorf("the number of tabs is incorrect: got: %d; want: %d", numberOfTabs, 3)
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: 500 * time.Millisecond})
 	}
 
-	// For the first tab created in function "OpenSpreadsheet", it will automatically close when leaving the function, but sometimes it will not be completely closed soon.
-	// Wait for it to finish shutting down and continue testing. Otherwise, the number of tabs will be incorrect.
-	defer checkNumberOfTabs(ctx)
+	defer func() {
+		// For the first tab created in function "OpenSpreadsheet", it will automatically close when leaving the function, but sometimes it will not be completely closed soon.
+		// Wait for it to finish shutting down and continue testing. Otherwise, the number of tabs will be incorrect.
+		err = uiauto.NamedAction("check if it has been cleaned up properly", checkNumberOfTabs)(ctx)
+		testing.ContextLog(ctx, "Expecting the correct number of tabs: ", err)
+	}()
 
 	conn, err := app.openOneDrive(ctx)
 	if err != nil {
@@ -210,7 +222,7 @@ func (app *MicrosoftWebOffice) OpenSpreadsheet(ctx context.Context, fileName str
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	return app.searchSampleSheet(ctx)
+	return uiauto.NamedAction("search the sample spreadsheet", app.searchSampleSheet)(ctx)
 }
 
 // MoveDataFromDocToSheet moves data from document to spreadsheet.
@@ -399,6 +411,31 @@ func (app *MicrosoftWebOffice) Cleanup(ctx context.Context) error {
 	}
 
 	return nil
+}
+
+// maybeCloseOneDriveTab closes the specified tab if it exists.
+// Sometimes the tab name is just "OneDrive". Therefore, if the specified tab cannot be found, try to search for it.
+func (app *MicrosoftWebOffice) maybeCloseOneDriveTab(tabName string) action.Action {
+	return func(ctx context.Context) error {
+		tabs, err := cuj.GetBrowserTabs(ctx, app.tconn)
+		if err != nil {
+			return err
+		}
+		tabID := 0
+		found := false
+		for _, tab := range tabs {
+			if tab.Title == tabName || tab.Title == oneDriveTab {
+				tabID = tab.ID
+				found = true
+				break
+			}
+		}
+		if !found {
+			testing.ContextLogf(ctx, "Cannot find the tab name containing %q or %q", tabName, oneDriveTab)
+			return nil
+		}
+		return cuj.CloseBrowserTabsByID(ctx, app.tconn, []int{tabID})
+	}
 }
 
 // checkSignIn checks if it is logged in, if not, try to log in.
@@ -756,6 +793,7 @@ func (app *MicrosoftWebOffice) searchSampleSheet(ctx context.Context) error {
 			app.clickNavigationItem(recent),
 			app.switchToListView,
 			app.uiHdl.ClickUntil(link, app.ui.Gone(link)),
+			app.maybeCloseOneDriveTab(recentTab),
 		)(ctx)
 	}
 
@@ -764,7 +802,7 @@ func (app *MicrosoftWebOffice) searchSampleSheet(ctx context.Context) error {
 		return searchFromRecent(ctx)
 	}
 
-	return nil
+	return app.maybeCloseOneDriveTab(myFilesTab)(ctx)
 }
 
 // openFindAndSelect opens "Find & Select".
