@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86dfd0cb_24b8d76b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-09T06:31:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d4d792b7_c801a431",
+      "revId": "8b78574a73fe2ffcc898deb366b8229c1e7dec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bdc43cb_f3073ceb",
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "+1 to this idea, which helps Tast test or service that doesn\u0027t use fixture could also use this function for error logging too.",
       "parentUuid": "0bdc43cb_f3073ceb",
+      "range": {
+        "startLine": 34,
+        "startChar": 31,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "8b78574a73fe2ffcc898deb366b8229c1e7dec05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea764e46_55471529",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/faillog/faillog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-09T06:31:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e647897_26ddb2e7",
       "range": {
         "startLine": 34,
         "startChar": 31,
