@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba5dff14_6e31b566",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-11-09T01:29:05Z",
+      "side": 1,
+      "message": "also, use tast-owners@ for selecting OWNERS, and only after getting \"domain\" review (e.g., me or Puthikorn):\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md",
+      "revId": "d3f63d24d2f305213d052f47314d339f0f4c9db6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58e40f57_b832dc0a",
