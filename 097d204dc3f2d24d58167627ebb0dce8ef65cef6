@@ -33,6 +33,24 @@
       "message": "It looks like the 2 tests are pretty much identical except for the key(s) used. I think this would be well-suited to a parameterized test:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests\n\nThis way you can share the test code and just make the small tweak to the key presses needed.",
       "revId": "097d204dc3f2d24d58167627ebb0dce8ef65cef6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adfd45b3_41b10504",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483722
+      },
+      "writtenOn": "2021-11-09T17:50:54Z",
+      "side": 1,
+      "message": "Thinking about this some more, we really don\u0027t need a separate test for the debug shortcut and I\u0027ve removed it.  The one for the MICMUTE key is the one we care about.",
+      "parentUuid": "750289cb_92c2734c",
+      "revId": "097d204dc3f2d24d58167627ebb0dce8ef65cef6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
