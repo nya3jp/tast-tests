@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fbb8722_ec71f119",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-09T00:36:56Z",
+      "side": 1,
+      "message": "LGTM, just one suggestion for enabling the Chrome features in the remote test in a slightly different way.",
+      "revId": "a5dfd31b7f03c8d018fb58b61842adb8c561929b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12ab22e_37a87cf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-09T00:36:56Z",
+      "side": 1,
+      "message": "I was thinking we could pass in the actual feature names (\"BluetoothAdvertisementMonitoring\" etc.) through the request",
+      "range": {
+        "startLine": 76,
+        "startChar": 26,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "a5dfd31b7f03c8d018fb58b61842adb8c561929b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e24d323_177e479d",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-09T00:36:56Z",
+      "side": 1,
+      "message": "are these strings likely to change? just wondering how this will hold up over time",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 96
+      },
+      "revId": "a5dfd31b7f03c8d018fb58b61842adb8c561929b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e960c11_f09c7d40",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-09T00:36:56Z",
+      "side": 1,
+      "message": "How about having this arg be variadic `enabledFeatures ...string` so you can pass in as many features as you want? Would be more general and help to expose the flag names at a higher level (in the fixture), where you\u0027d be more likely to look first before digging into the service.\n```\nreceiver, err :\u003d f.enableNearbyShare(ctx, \u003cother args\u003e, \"BluetoothAdvertisementMonitoring\", \"NearbySharingBackgroundScanning\")\n```",
+      "range": {
+        "startLine": 330,
+        "startChar": 172,
+        "endLine": 330,
+        "endChar": 204
+      },
+      "revId": "a5dfd31b7f03c8d018fb58b61842adb8c561929b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20285b37_81c45e51",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-09T00:36:56Z",
+      "side": 1,
+      "message": "then we can just pass all of the features directly in the request here",
+      "range": {
+        "startLine": 338,
+        "startChar": 121,
+        "endLine": 338,
+        "endChar": 133
+      },
+      "revId": "a5dfd31b7f03c8d018fb58b61842adb8c561929b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
