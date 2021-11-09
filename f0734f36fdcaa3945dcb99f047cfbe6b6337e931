@@ -39,6 +39,30 @@
       },
       "revId": "f0734f36fdcaa3945dcb99f047cfbe6b6337e931",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "795a0798_dda7ac03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cryptohome_data_leak.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-11-09T04:29:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66b753b2_6dd0305e",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "f0734f36fdcaa3945dcb99f047cfbe6b6337e931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
