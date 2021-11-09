@@ -208,6 +208,12 @@ func RunTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 				s.Fatal("Failed to set window state: ", err)
 			}
 
+			// The view may still be updating after the window operation returns so
+			// poll on it one last time to make sure the app is in a steady state.
+			if err := d.Object(ui.ID(StandardizedTestLayoutID(appPkgName))).WaitForExists(ctx, ShortUITimeout); err != nil {
+				s.Fatal("Failed to wait for the app to render: ", err)
+			}
+
 			// Run the test.
 			if err := test.Fn(workCtx, TestFuncParams{
 				TestConn:        tconn,
