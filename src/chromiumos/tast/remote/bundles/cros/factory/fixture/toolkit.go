@@ -25,10 +25,13 @@ const (
 	toolkitInstallerName = "install_factory_toolkit.run"
 	// the path should be synced with factory-mini.ebuild
 	toolkitInstallerPath = "/usr/local/factory-toolkit/" + toolkitInstallerName
+	factoryRootPath      = "/usr/local/factory"
 	// Get the factory toolkit version.
-	toolkitVersionPath = "/usr/local/factory/TOOLKIT_VERSION"
+	toolkitVersionPath = factoryRootPath + "/TOOLKIT_VERSION"
 	// the existence of enabled file determines whether DUT booted with running the toolkit
-	toolkitEnabledPath = "/usr/local/factory/enabled"
+	toolkitEnabledPath = factoryRootPath + "/enabled"
+	// TODO(b/205779346): disk_space_hacks.sh removes data still need in lab test.
+	diskSpaceHackScriptPath = factoryRootPath + "/init/init.d/disk_space_hacks.sh"
 	// reboot takes 30 seconds to pass the boot option selection in developer
 	// mode, plus enough time as buffer to wait for the system and networking to be ready
 	rebootTimeout = 3 * time.Minute
@@ -107,8 +110,14 @@ func installFactoryToolKit(ctx context.Context, conn *ssh.Conn) (version string,
 		return "", errors.Wrapf(err, "can not set test list to %s: %s", testListName, toolkitInstallerPath)
 	}
 
-	return version, nil
+	// TODO(b/205779346): workaround to prevent disk_space_hacks.sh from
+	// deleting directories needed by other test.
+	removeDiskSpaceHackCmd := conn.CommandContext(ctx, "rm", "-f", diskSpaceHackScriptPath)
+	if err := removeDiskSpaceHackCmd.Run(ssh.DumpLogOnError); err != nil {
+		return "", errors.Wrapf(err, "can not remove %s", diskSpaceHackScriptPath)
+	}
 
+	return version, nil
 }
 
 func installFactoryToolKitFromToolkitInstaller(ctx context.Context, installerPath string, conn *ssh.Conn) (version string, err error) {
