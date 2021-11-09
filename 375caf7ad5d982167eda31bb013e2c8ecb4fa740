@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ade1e78_a0fa288e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-11-09T14:53:41Z",
+      "side": 1,
+      "message": "LGTM % nits\nPlease wait for the other reviews before submitting.",
+      "revId": "375caf7ad5d982167eda31bb013e2c8ecb4fa740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e3236a_e1b68aa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-11-09T14:53:41Z",
+      "side": 1,
+      "message": "nit: add the error at the end of the message.",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 54
+      },
+      "revId": "375caf7ad5d982167eda31bb013e2c8ecb4fa740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "706dd27c_c013a0bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-11-09T14:53:41Z",
+      "side": 1,
+      "message": "nit: the test should also fail when the clean up returns an error, so we will know something does not work as expected.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "375caf7ad5d982167eda31bb013e2c8ecb4fa740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
