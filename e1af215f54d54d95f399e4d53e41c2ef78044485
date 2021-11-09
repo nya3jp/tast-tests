@@ -16,6 +16,40 @@
       "message": "PTAL",
       "revId": "e1af215f54d54d95f399e4d53e41c2ef78044485",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a2a8b54_0f74c06b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-09T15:18:15Z",
+      "side": 1,
+      "message": "LGTM with note.",
+      "revId": "e1af215f54d54d95f399e4d53e41c2ef78044485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67cf2274_ca299fbb",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/faillog/faillog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-09T15:18:15Z",
+      "side": 1,
+      "message": "note: in precise, I think this function is outside of \"faillog\" conceptually,\nas the log file is expected to be created always.\nIn the near future, we should find somewhere better place.",
+      "revId": "e1af215f54d54d95f399e4d53e41c2ef78044485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
