@@ -414,7 +414,7 @@ func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 
 // Presenting creates Google Slides and Google Docs, shares screen and presents
 // the specified application to the conference.
-func (conf *ZoomConference) Presenting(ctx context.Context, application googleApplication, extendedDisplay bool) (err error) {
+func (conf *ZoomConference) Presenting(ctx context.Context, application googleApplication) (err error) {
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
 
@@ -454,8 +454,10 @@ func (conf *ZoomConference) Presenting(ctx context.Context, application googleAp
 		stopSharing := nodewith.Name("Stop sharing").Role(role.Button).First()
 		return ui.LeftClickUntil(stopSharing, ui.WithTimeout(3*time.Second).WaitUntilGone(stopSharing))(ctx)
 	}
+	// Present on internal display by default.
+	presentOnExtendedDisplay := false
 	if err := presentApps(ctx, tconn, conf.uiHandler, conf.cr, shareScreen, stopPresenting,
-		application, conf.outDir, extendedDisplay); err != nil {
+		application, conf.outDir, presentOnExtendedDisplay); err != nil {
 		return errors.Wrapf(err, "failed to present %s", string(application))
 	}
 	return nil
