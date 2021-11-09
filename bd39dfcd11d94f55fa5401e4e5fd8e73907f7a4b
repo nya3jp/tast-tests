@@ -16,6 +16,24 @@
       "message": "nit: Comment on why this is needed.",
       "revId": "bd39dfcd11d94f55fa5401e4e5fd8e73907f7a4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5d1f200_200d4045",
+        "filename": "src/chromiumos/tast/local/kioskmode/options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-09T13:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1838528b_9f7f5772",
+      "revId": "bd39dfcd11d94f55fa5401e4e5fd8e73907f7a4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
