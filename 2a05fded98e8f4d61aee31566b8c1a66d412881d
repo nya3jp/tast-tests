@@ -217,6 +217,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c8f94f3_4acf8f96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-09T01:38:35Z",
+      "side": 1,
+      "message": "Maybe a relevant code pointer:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d285-286",
+      "parentUuid": "17790c96_838ecc0c",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4be11da_347bcd1f",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
         "patchSetId": 4
