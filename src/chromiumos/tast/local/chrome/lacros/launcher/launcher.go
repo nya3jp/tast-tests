@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/jslog"
+	"chromiumos/tast/local/chrome/lacros/faillog"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
@@ -177,6 +178,9 @@ func LaunchLacrosChrome(ctx context.Context, f FixtValue) (*LacrosChrome, error)
 
 // LaunchLacrosChromeWithURL launches a fresh instance of lacros-chrome having the given url.
 func LaunchLacrosChromeWithURL(ctx context.Context, f FixtValue, url string) (*LacrosChrome, error) {
+	succeeded := false
+	defer faillog.SaveIf(ctx, f.LacrosPath(), func() bool { return !succeeded })
+
 	if err := killLacrosChrome(ctx, f.LacrosPath()); err != nil {
 		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}
@@ -223,7 +227,7 @@ func LaunchLacrosChromeWithURL(ctx context.Context, f FixtValue, url string) (*L
 		"-s", mojoSocketPath, filepath.Join(f.LacrosPath(), "chrome")}, args...)...)
 	cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
 
-	if logFile, err := os.Create(LogFile(ctx)); err != nil {
+	if logFile, err := os.Create(faillog.LogFile(ctx)); err != nil {
 		testing.ContextLog(ctx, "Failed to create lacros.log file: ", err)
 	} else {
 		defer logFile.Close()
@@ -259,17 +263,9 @@ func LaunchLacrosChromeWithURL(ctx context.Context, f FixtValue, url string) (*L
 	// Move cmd ownership to l, thus after this line terminating cmd wond't run.
 	l.cmd = cmd
 	cmd = nil
-	return l, nil
-}
 
-// LogFile returns a path to a file containing Lacros's log.
-func LogFile(ctx context.Context) string {
-	out, ok := testing.ContextOutDir(ctx)
-	if !ok {
-		testing.ContextLog(ctx, "OutDir not found")
-		return ""
-	}
-	return filepath.Join(out, "lacros.log")
+	succeeded = true
+	return l, nil
 }
 
 // WaitForLacrosWindow waits for a Lacrow window with the specified title to be visibe.
