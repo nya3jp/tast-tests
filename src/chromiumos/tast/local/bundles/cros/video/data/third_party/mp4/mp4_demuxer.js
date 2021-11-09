@@ -64,6 +64,10 @@ class MP4Source {
     return this.file.moov.traks[0].mdia.minf.stbl.stsd.entries[0].vpcC;
   }
 
+  getAv1cBox() {
+    return this.file.moov.traks[0].mdia.minf.stbl.stsd.entries[0].av1C;
+  }
+
   start(track, onChunk) {
     this._onChunk = onChunk;
     this.file.setExtractionOptions(track.id);
@@ -144,6 +148,34 @@ class MP4Demuxer {
     return writer.getData();
   }
 
+  getAV1ExtraData(av1cBox) {
+    let size = 4 + av1cBox.configOBUs.length;
+    var writer = new Writer(size);
+
+    const markerAndVersion = (0x1 << 7) | 0x1;
+    writer.writeUint8(markerAndVersion);
+    writer.writeUint8((av1cBox.seq_profile << 5) | (av1cBox.seq_level_idx_0));
+    let value = av1cBox.high_bitdepth;
+    value = (value << 1) + av1cBox.twelve_bit;
+    value = (value << 1) + av1cBox.monochrome;
+    value = (value << 1) + av1cBox.chroma_sabsampling_x;
+    value = (value << 1) + av1cBox.chroma_sabsampling_y;
+    value = (value << 1) + av1cBox.chroma_sample_position;
+    writer.writeUint8(value);
+
+    if (av1cBox.initial_presentation_delay_present) {
+      writer.writeUint8(av1cBox.initial_presentation_delay_minus_one);
+    } else {
+      writer.writeUint8(0);
+    }
+
+    for (let i = 0; i < av1cBox.configOBUs.length; i++) {
+      writer.writeUint8(av1cBox.configOBUs[i]);
+    }
+
+    return writer.getData();
+  }
+
   getH264ExtraData(avccBox) {
     var i;
     var size = 7;
@@ -194,6 +226,8 @@ class MP4Demuxer {
       extradata = this.getVPxExtraData(this.source.getVpccBox());
     } else if (this.track.codec.startsWith("vp09")) {
       extradata = this.getVPxExtraData(this.source.getVpccBox());
+    } else if (this.track.codec.startsWith("av01")) {
+      extradata = this.getAV1ExtraData(this.source.getAv1cBox());
     }
 
     let config = {

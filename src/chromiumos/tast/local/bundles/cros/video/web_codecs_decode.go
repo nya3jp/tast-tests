@@ -26,6 +26,15 @@ func init() {
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		Fixture:      "chromeWebCodecs",
 		Params: []testing.Param{{
+			Name:      "av1_sw",
+			Val:       webcodecs.TestDecodeArgs{VideoFile: "bear-320x240.av1.mp4", Acceleration: webcodecs.PreferSoftware},
+			ExtraData: []string{"bear-320x240.av1.mp4", "bear-320x240.av1.mp4.md5"},
+		}, {
+			Name:              "av1_hw",
+			Val:               webcodecs.TestDecodeArgs{VideoFile: "bear-320x240.av1.mp4", Acceleration: webcodecs.PreferHardware},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+			ExtraData:         []string{"bear-320x240.av1.mp4", "bear-320x240.av1.mp4.md5"},
+		}, {
 			Name:              "h264_sw",
 			Val:               webcodecs.TestDecodeArgs{VideoFile: "bear-320x240.h264.mp4", Acceleration: webcodecs.PreferSoftware},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
