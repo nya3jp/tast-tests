@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b83b0d9_10ff8efa",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-09T17:51:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d03fc5b2_7152797c",
+      "revId": "e12c3e4f776ebad581c58f923acab97792369d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "814ef8d4_dfb515a1",
@@ -64,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49b1fbf0_3baaad95",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-09T17:51:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb4a9972_01feb6f9",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 10
+      },
+      "revId": "e12c3e4f776ebad581c58f923acab97792369d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2968d70d_95920763",
@@ -77,6 +119,30 @@
       "writtenOn": "2021-11-09T15:07:05Z",
       "side": 1,
       "message": "huge nit: maybe \"Browser\" is better.",
+      "range": {
+        "startLine": 37,
+        "startChar": 47,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "e12c3e4f776ebad581c58f923acab97792369d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26af6320_9f9bdc32",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-09T17:51:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2968d70d_95920763",
       "range": {
         "startLine": 37,
         "startChar": 47,
