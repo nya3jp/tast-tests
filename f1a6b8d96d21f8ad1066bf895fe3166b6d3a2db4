@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90a32c41_c7a3a07e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-11-09T09:23:18Z",
+      "side": 1,
+      "message": "Maybe we can have an allow-list in factory toolkit to control which script could be run in factory mode and Tast, instead of hardcoding this in Tast logic. In future, we want to prevent someone add a side-effect script without notice.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "f1a6b8d96d21f8ad1066bf895fe3166b6d3a2db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
