@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3a4c136_d6e455c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-11-09T11:30:33Z",
+      "side": 1,
+      "message": "lol!",
+      "parentUuid": "8cffa0ed_cf434a3d",
+      "revId": "68a2e0d6738bf695955ab8a726ea015f5de4effc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50b9a4ae_30246c89",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-09T10:59:52Z",
       "side": 1,
       "message": "Is it common to put a group here?",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 43
+      },
+      "revId": "68a2e0d6738bf695955ab8a726ea015f5de4effc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f471c108_0682d567",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-11-09T11:30:33Z",
+      "side": 1,
+      "message": "I think so, yes.",
+      "parentUuid": "50b9a4ae_30246c89",
       "range": {
         "startLine": 26,
         "startChar": 4,
