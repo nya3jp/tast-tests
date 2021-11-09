@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d5f5f22_7bb4a465",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2021-11-09T04:25:18Z",
+      "side": 1,
+      "message": "More context that I forgot to add in the CL: I\u0027ve been seeing hatch-lvm-stateful fail postsubmit tests since Friday (https://ci.chromium.org/ui/p/chromeos/builders/test_runner/test_runner/b8831102905726600209/overview) where one of the network tests resets shill at the end of the test and following tests are able to unwedge from the state the cryptohome is left in. This is mostly a stopgap to fix the tests (and to \u0027reset state\u0027), we\u0027re separately fixing the underlying problem by making cryptohome unmounts more robust.",
+      "revId": "954a8dbf7cae258b199858c3b9bb470ed1ee4d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
