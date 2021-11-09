@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d9c198_76d7fc86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2021-11-09T21:54:20Z",
+      "side": 1,
+      "message": "tast-owners, please take a look.\n\nThere\u0027s no dry run in PS2 because the CL that adds the close animation got reverted on the chromium side. The reland CL is ready and awaiting owners approval for metrics. https://chromium-review.googlesource.com/c/chromium/src/+/3270691 - I\u0027ll wait to land this one until the chrome side CL lands.\n\nPS1 has a green dry run and the diff between PS1 and PS2 is trivial.\n",
+      "revId": "fc2faac18e3b9bf6ad2dd8f1c2cf271e2af92abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
