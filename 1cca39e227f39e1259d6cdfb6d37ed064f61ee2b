@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f88f5938_577e3410",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-09T19:09:10Z",
+      "side": 1,
+      "message": "Please don\u0027t make me split it into smaller CLs",
+      "revId": "1cca39e227f39e1259d6cdfb6d37ed064f61ee2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
