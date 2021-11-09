@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecc5fab5_1e3a82a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1483722
+      },
+      "writtenOn": "2021-11-09T18:13:55Z",
+      "side": 1,
+      "message": "It doesn\u0027t pass on a device without a MICMUTE key, so it should be restricted.  What\u0027s the procedure/pattern for enforcing that?",
+      "parentUuid": "2c8d2ceb_799d7216",
+      "range": {
+        "startLine": 16,
+        "startChar": 14,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "d4c263da96e32a770f51f4a702c64c652b662934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b8608580_4b82e081",
