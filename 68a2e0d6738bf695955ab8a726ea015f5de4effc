@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd3f7e7_8c457cf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-11-09T12:44:26Z",
+      "side": 1,
+      "message": "In my standpoint, you folks have too many labels!",
+      "parentUuid": "b3a4c136_d6e455c5",
+      "revId": "68a2e0d6738bf695955ab8a726ea015f5de4effc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50b9a4ae_30246c89",
@@ -83,6 +101,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd34780_81c5b79a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-11-09T12:44:26Z",
+      "side": 1,
+      "message": "I also think so. Plus, this code search confirms it:\nhttps://source.corp.google.com/search?q\u003df:src%2Fchromiumos%2Ftast%20%22Contacts:%22%20%22@google.com%22\u0026sq\u003dpackage:chromeos_public",
+      "parentUuid": "f471c108_0682d567",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 43
+      },
+      "revId": "68a2e0d6738bf695955ab8a726ea015f5de4effc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b1cb4e4_78651241",
@@ -96,6 +138,30 @@
       "writtenOn": "2021-11-09T10:44:14Z",
       "side": 1,
       "message": "we should\u0027ve promoted it to critical long time ago :)",
+      "range": {
+        "startLine": 28,
+        "startChar": 36,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "68a2e0d6738bf695955ab8a726ea015f5de4effc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95b4ac66_ce215206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-11-09T12:44:26Z",
+      "side": 1,
+      "message": "I agree! These tasts have been stable for a long time.\n\nWe only had a couple of deterministic failures, mainly related to missing seccomp filters. Promoting these tests to CQ would help prevent the failures from happening in the first place.\n\nFiled crbug/1268384 to track this change. It\u0027s currently blocked by crbug/1268381, though.",
+      "parentUuid": "8b1cb4e4_78651241",
       "range": {
         "startLine": 28,
         "startChar": 36,
