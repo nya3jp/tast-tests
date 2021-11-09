@@ -239,6 +239,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f982da8d_f051e3a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-09T02:00:16Z",
+      "side": 1,
+      "message": "You are right. Sorry, I got it incorrect.",
+      "parentUuid": "8c8f94f3_4acf8f96",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "2a05fded98e8f4d61aee31566b8c1a66d412881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4be11da_347bcd1f",
