@@ -83,23 +83,9 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		return errors.Wrap(err, "failed to instruct device to stay on YouTube web")
 	}
 
-	// Root window on built-in display.
-	targetWin := nodewith.ClassName("RootWindow-0").Role(role.Window)
-	if y.extendedDisplay {
-		className, err := cuj.ExtendedDisplayWindowClassName(ctx, y.tconn)
-		if err != nil {
-			return errors.Wrap(err, "failed to find root window on extended display")
-		}
-		// Root window on extended display.
-		targetWin = nodewith.ClassName(className).Role(role.Window)
-		ytPlayerView := nodewith.Name("YouTube Video Player").Ancestor(targetWin)
-		if err := y.ui.Exists(ytPlayerView)(ctx); err != nil {
-			// Chrome is not on extended display.
-			testing.ContextLog(ctx, "Switch Youtube to extended display")
-			if err := y.kb.Accel(ctx, "Search+Alt+M"); err != nil {
-				return errors.Wrap(err, "failed to switch Youtube to the extended display")
-			}
-		}
+	// Default expected display is main display.
+	if err := cuj.SwitchWindowToDisplay(ctx, y.tconn, y.kb, y.extendedDisplay)(ctx); err != nil {
+		return errors.Wrapf(err, "failed to switch Youtube to the %s", y.extendedDisplay)
 	}
 
 	skipAdButton := nodewith.NameStartingWith("Skip Ad").Role(role.Button)
@@ -108,7 +94,7 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	}
 
 	switchQuality := func(resolution string) error {
-		videoPlayer := nodewith.Name("YouTube Video Player").Ancestor(targetWin)
+		videoPlayer := nodewith.Name("YouTube Video Player").Role(role.GenericContainer)
 		playButton := nodewith.Name("Play (k)").Role(role.Button).Ancestor(videoPlayer)
 		settings := nodewith.Name("Settings").Role(role.PopUpButton).Ancestor(videoPlayer)
 		quality := nodewith.NameStartingWith("Quality").Role(role.MenuItem).Ancestor(videoPlayer)

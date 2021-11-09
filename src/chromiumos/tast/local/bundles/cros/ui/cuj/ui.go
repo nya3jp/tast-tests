@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/touch"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -223,9 +224,9 @@ func UnsetMirrorDisplay(ctx context.Context, tconn *chrome.TestConn) error {
 	return settings.Close(ctx)
 }
 
-// ExtendedDisplayWindowClassName obtains the class name of the root window on the extended display.
+// extendedDisplayWindowClassName obtains the class name of the root window on the extended display.
 // If multiple display windows are present, the first one will be returned.
-func ExtendedDisplayWindowClassName(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+func extendedDisplayWindowClassName(ctx context.Context, tconn *chrome.TestConn) (string, error) {
 	ui := uiauto.New(tconn)
 
 	// Root window on extended display has the class name in RootWindow-<id> format.
@@ -239,6 +240,44 @@ func ExtendedDisplayWindowClassName(ctx context.Context, tconn *chrome.TestConn)
 		}
 	}
 	return "", errors.New("failed to find any window with class name RootWindow-1 to RootWindow-10")
+}
+
+// SwitchWindowToDisplay switches current window to expected display.
+func SwitchWindowToDisplay(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, externalDisplay bool) action.Action {
+	return func(ctx context.Context) error {
+		var expectedRootWindow *nodewith.Finder
+		var display string
+		ui := uiauto.New(tconn)
+		w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+			return w.IsActive && w.IsFrameVisible
+		})
+		if err != nil {
+			return errors.Wrap(err, "failed to get current active window")
+		}
+		if externalDisplay {
+			display = "external display"
+			extendedWinClassName, err := extendedDisplayWindowClassName(ctx, tconn)
+			if err != nil {
+				return errors.Wrap(err, "failed to find root window on external display")
+			}
+			expectedRootWindow = nodewith.ClassName(extendedWinClassName).Role(role.Window)
+		} else {
+			display = "internal display"
+			// Root window on built-in display.
+			expectedRootWindow = nodewith.ClassName("RootWindow-0").Role(role.Window)
+		}
+		currentWindow := nodewith.Name(w.Title).Role(role.Window)
+		expectedWindow := currentWindow.Ancestor(expectedRootWindow).First()
+		if err := ui.Exists(expectedWindow)(ctx); err != nil {
+			testing.ContextLog(ctx, "Expected window not found: ", err)
+			testing.ContextLogf(ctx, "Switch window %q to %s", w.Title, display)
+			return uiauto.Combine("switch window to "+display,
+				kb.AccelAction("Search+Alt+M"),
+				ui.WithTimeout(3*time.Second).WaitUntilExists(expectedWindow),
+			)(ctx)
+		}
+		return nil
+	}
 }
 
 // DismissMobilePrompt dismisses the prompt of "This app is designed for mobile".
