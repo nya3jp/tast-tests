@@ -52,10 +52,10 @@ func init() {
 				testfunc: testPauseAndResume,
 			},
 		}, {
-			Name: "pin",
+			Name: "pin_and_unpin",
 			Val: params{
 				filesize: 1, // 1 B.
-				testfunc: testPin,
+				testfunc: testPinAndUnpin,
 			},
 		}},
 	})
@@ -175,10 +175,10 @@ func testPauseAndResume(
 	}
 }
 
-// testPin performs testing of pinning a download.
-func testPin(
+// testPinAndUnpin performs testing of pinning and unpinning a download.
+func testPinAndUnpin(
 	ctx context.Context, s *testing.State, ui *uiauto.Context, filename string) {
-	if err := uiauto.Combine("test pin",
+	if err := uiauto.Combine("test pin and unpin",
 		// Right click the download chip to show the context menu. Note that this
 		// will wait until the underlying download has completed.
 		ui.RightClick(holdingspace.FindDownloadChip().Name(filename)),
@@ -189,7 +189,22 @@ func testPin(
 		ui.LeftClick(holdingspace.FindContextMenuItem().Name("Pin")),
 
 		// Ensure the pinned file chip is created.
-		ui.WaitUntilExists(holdingspace.FindPinnedFileChip().Name(filename)))(ctx); err != nil {
-		s.Error("Failed to test pin: ", err)
+		ui.WaitUntilExists(holdingspace.FindPinnedFileChip().Name(filename)),
+
+		// Right click the download chip to show the context menu.
+		ui.RightClick(holdingspace.FindDownloadChip().Name(filename)),
+
+		// Left click the "Unpin" context menu item. Note that this will result in
+		// the pinned file chip being removed and the context menu being closed.
+		ui.LeftClick(holdingspace.FindContextMenuItem().Name("Unpin")),
+
+		// Ensure that the pinned file chips is removed.
+		ui.WaitUntilGone(holdingspace.FindPinnedFileChip().Name(filename)),
+		ui.EnsureGoneFor(holdingspace.FindPinnedFileChip().Name(filename), 5*time.Second),
+
+		// Ensure that the download chip continues to exist despite the pinned
+		// holding space item associated with the same download being destroyed.
+		ui.Exists(holdingspace.FindDownloadChip().Name(filename)))(ctx); err != nil {
+		s.Error("Failed to test pin and unpin: ", err)
 	}
 }
