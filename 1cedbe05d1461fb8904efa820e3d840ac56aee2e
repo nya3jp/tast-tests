@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfd83f38_85224a84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-09T21:10:40Z",
+      "side": 1,
+      "message": "Hidehiko, I think this change doesn\u0027t necessarily need to be blocked on https://crbug.com/1268252 (--no-startup-window or something similar if lacros is primary) as there are extra setup steps to ensure that there is no top level window before each test starts. The workaround could be removed once the blocker is resolved. Can you PTAL?",
+      "revId": "1cedbe05d1461fb8904efa820e3d840ac56aee2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
