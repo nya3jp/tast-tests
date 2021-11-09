@@ -16,6 +16,29 @@
       "message": "More context that I forgot to add in the CL: I\u0027ve been seeing hatch-lvm-stateful fail postsubmit tests since Friday (https://ci.chromium.org/ui/p/chromeos/builders/test_runner/test_runner/b8831102905726600209/overview) where one of the network tests resets shill at the end of the test and following tests are able to unwedge from the state the cryptohome is left in. This is mostly a stopgap to fix the tests (and to \u0027reset state\u0027), we\u0027re separately fixing the underlying problem by making cryptohome unmounts more robust.",
       "revId": "954a8dbf7cae258b199858c3b9bb470ed1ee4d3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "644efbed_52495d6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-11-09T13:37:56Z",
+      "side": 1,
+      "message": "File a bug for this and put it here so this doesn\u0027t get lost.",
+      "range": {
+        "startLine": 121,
+        "startChar": 9,
+        "endLine": 121,
+        "endChar": 24
+      },
+      "revId": "954a8dbf7cae258b199858c3b9bb470ed1ee4d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
