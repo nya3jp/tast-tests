@@ -39,6 +39,30 @@
       },
       "revId": "954a8dbf7cae258b199858c3b9bb470ed1ee4d3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "500b1ec4_3f2a3307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2021-11-09T18:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "644efbed_52495d6d",
+      "range": {
+        "startLine": 121,
+        "startChar": 9,
+        "endLine": 121,
+        "endChar": 24
+      },
+      "revId": "954a8dbf7cae258b199858c3b9bb470ed1ee4d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
