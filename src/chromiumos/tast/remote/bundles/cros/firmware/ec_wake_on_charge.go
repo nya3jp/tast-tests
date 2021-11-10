@@ -30,7 +30,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 
 	// g3PollOptions sets the time to wait for DUT's power state to reach G3.
 	g3PollOptions := testing.PollOptions{
-		Timeout:  15 * time.Second,
+		Timeout:  30 * time.Second,
 		Interval: 1 * time.Second,
 	}
 
@@ -151,7 +151,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to stop power supply: ", err)
 		}
 
-		if tc.lidOpen == "yes" || hasMicroOrC2D2 {
+		if (tc.lidOpen == "yes" || hasMicroOrC2D2) && h.Config.Hibernate {
 			// Hibernate DUT
 			s.Log("Put DUT in hibernation")
 			if err = h.Servo.ECHibernate(ctx); err != nil {

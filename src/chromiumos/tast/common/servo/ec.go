@@ -156,27 +156,27 @@ func (s *Servo) GetECSystemPowerState(ctx context.Context) (string, error) {
 
 // ECHibernate puts the EC into hibernation mode, after removing the servo watchdog for CCD if necessary.
 func (s *Servo) ECHibernate(ctx context.Context) error {
-	// hibernateDelay is the time after the EC hibernate command where it still writes output
-	const hibernateDelay = 1 * time.Second
-
 	if err := s.WatchdogRemove(ctx, WatchdogCCD); err != nil {
 		return errors.Wrap(err, "failed to remove watchdog for ccd")
 	}
 	if err := s.RunECCommand(ctx, "hibernate"); err != nil {
 		return errors.Wrap(err, "failed to run EC command: hibernate")
 	}
-	testing.Sleep(ctx, hibernateDelay)
 
 	// Verify the EC console is unresponsive, ignore null chars, sometimes the servo returns null when the EC is off.
-	out, err := s.RunECCommandGetOutput(ctx, "version", []string{`[^\x00]+`})
-	if err == nil {
-		testing.ContextLogf(ctx, "Got %v expected error", out)
-		return errors.New("EC is still active after hibernate")
-	}
-	if !strings.Contains(err.Error(), "No data was sent from the pty") &&
-		!strings.Contains(err.Error(), "EC: Timeout waiting for response.") &&
-		!strings.Contains(err.Error(), "Timed out waiting for interfaces to become available") {
-		return errors.Wrap(err, "unexpected EC error")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := s.RunECCommandGetOutput(ctx, "version", []string{`[^\x00]+`})
+		if err == nil {
+			return errors.Errorf("EC is still active after hibernating DUT: got %v; expected error", out)
+		}
+		if !strings.Contains(err.Error(), "No data was sent from the pty") &&
+			!strings.Contains(err.Error(), "EC: Timeout waiting for response.") &&
+			!strings.Contains(err.Error(), "Timed out waiting for interfaces to become available") {
+			return errors.Wrap(err, "unexpected EC error")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 20 * time.Second}); err != nil {
+		return errors.Wrap(err, "while verifying EC unresponsive")
 	}
 	return nil
 }

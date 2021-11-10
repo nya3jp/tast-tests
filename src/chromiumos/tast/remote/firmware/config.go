@@ -71,6 +71,7 @@ type Config struct {
 	ModeSwitcherType     ModeSwitcherType `json:"mode_switcher_type"`
 	PowerButtonDevSwitch bool             `json:"power_button_dev_switch"`
 	RecButtonDevSwitch   bool             `json:"rec_button_dev_switch"`
+	Hibernate            bool             `json:"hibernate"`
 
 	// Raw duration fields represent a quantity of seconds.
 	// They are used during NewConfig to populate actual duration fields, which are defined below.
