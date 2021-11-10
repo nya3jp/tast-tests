@@ -16,6 +16,41 @@
       "message": "This bug is closed, can another one be linked?",
       "revId": "658e1080bc8b4509b80fc6f79e5f786f8c035f1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75056b81_4cfd16db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-10T17:01:58Z",
+      "side": 1,
+      "message": "Re-opened the bug :)",
+      "parentUuid": "4851fbd1_06f3a4c2",
+      "revId": "658e1080bc8b4509b80fc6f79e5f786f8c035f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c4deab_67ce0f2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-10T17:01:58Z",
+      "side": 1,
+      "message": "Thanks for reviewing! :)",
+      "revId": "658e1080bc8b4509b80fc6f79e5f786f8c035f1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
