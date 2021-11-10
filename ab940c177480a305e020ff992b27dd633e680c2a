@@ -172,6 +172,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d71bf17_4e7e1d44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2021-11-10T05:22:38Z",
+      "side": 1,
+      "message": "I see. Makes sense!",
+      "parentUuid": "2b6d143c_1c5435a0",
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83c6527a_0b7eb205",
@@ -280,6 +298,30 @@
       "side": 1,
       "message": "But when we call histogramTests.record() on Line 242, it will trigger ClearHistogramTransferFile(). Isn\u0027t it enough for truncating the previous histograms?",
       "parentUuid": "054e1644_ce1a21f8",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 2
+      },
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a153d7_e18b8719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2021-11-10T05:22:38Z",
+      "side": 1,
+      "message": "IIUC it works like this:\n\n1. cros-camera writes the histograms to histogramTransferFile\n2. Chrome picks up the histograms from histogramTransferFile periodically\n\nIf we don\u0027t wait for the old histograms to appear here and start the recorder right after we switch mode, it seems to me that there can be a potential race if 2) happens right after 1) and we will still pick up the histograms from Photo mode. Although the chance may be small, so the wait here is mainly to avoid test flakes.",
+      "parentUuid": "f3ad70ce_ec347c0f",
       "range": {
         "startLine": 229,
         "startChar": 1,
