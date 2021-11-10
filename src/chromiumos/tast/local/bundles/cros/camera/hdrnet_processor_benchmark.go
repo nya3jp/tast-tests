@@ -17,7 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         HdrnetProcessorBenchmark,
+		Func:         HDRnetProcessorBenchmark,
 		Desc:         "Runs the HDRnet processor benchmark and reports the measurements",
 		Contacts:     []string{"jcliang@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
@@ -26,8 +26,8 @@ func init() {
 	})
 }
 
-// HdrnetProcessorBenchmark runs the HDRnet processor benchmark.
-func HdrnetProcessorBenchmark(ctx context.Context, s *testing.State) {
+// HDRnetProcessorBenchmark runs the HDRnet processor benchmark.
+func HDRnetProcessorBenchmark(ctx context.Context, s *testing.State) {
 	const exec = "hdrnet_processor_benchmark"
 	const consoleOutput = "console_output.txt"
 	result, err := benchmark.New(
