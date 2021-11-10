@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b223b17_92b901e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-11-10T05:35:56Z",
+      "side": 1,
+      "message": "Thanks for the review! Separated the \"-w\" in a separate patch.",
+      "revId": "1961f9aba3079d2d52bb589bea0aaca44b3eda6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
