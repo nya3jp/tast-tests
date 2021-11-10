@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "523f68ee_bb25ba70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2021-11-10T03:06:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "826985f0_21d03145",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 18
+      },
+      "revId": "f1a6b8d96d21f8ad1066bf895fe3166b6d3a2db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90a32c41_c7a3a07e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-09T09:23:18Z",
       "side": 1,
       "message": "Maybe we can have an allow-list in factory toolkit to control which script could be run in factory mode and Tast, instead of hardcoding this in Tast logic. In future, we want to prevent someone add a side-effect script without notice.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "f1a6b8d96d21f8ad1066bf895fe3166b6d3a2db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e57a381d_77f175b5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2021-11-10T03:06:32Z",
+      "side": 1,
+      "message": "As discussed, we create an issue in factory: b/205779346 to make factory toolkit have a different flow for lab testing, and mark as FIXME with this workaround for now.",
+      "parentUuid": "90a32c41_c7a3a07e",
       "range": {
         "startLine": 113,
         "startChar": 0,
