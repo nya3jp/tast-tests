@@ -111,12 +111,17 @@ func VerifyLacrosUpdate(ctx context.Context, overrideVersion, overrideComponent 
 
 // SaveLogsFromDut saves device logs that are useful for troubleshooting test failures.
 func SaveLogsFromDut(ctx context.Context, dut *dut.DUT, logOutDir string) {
+	// Save lacros log.
 	const logFileName = "lacros.log"
-
 	logPathSrc := filepath.Join(lacroscommon.LacrosUserDataDir, logFileName)
 	logPathDst := filepath.Join(logOutDir, logFileName)
 	if err := linuxssh.GetFile(ctx, dut.Conn(), logPathSrc, logPathDst, linuxssh.PreserveSymlinks); err != nil {
 		testing.ContextLogf(ctx, "Failed to save %s to %s. Error: %s", logPathSrc, logPathDst, err)
+	}
+
+	// Delete the existing faillogs from DUT so that we can pull out clean logs for each test run.
+	if err := dut.Conn().CommandContext(ctx, "rm", "-rf", lacroscommon.LacrosFailLogDir).Run(); err != nil {
+		testing.ContextLog(ctx, "Failed to remove the lacros faillogs on DUT at end of test: ", err)
 	}
 }
 
