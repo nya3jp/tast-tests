@@ -29,7 +29,7 @@ func init() {
 			"rzakarian@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
-		Attr:         []string{"group:enrollment"},
+		Attr:         []string{"group:dpanel-end2end"},
 		SoftwareDeps: []string{"reboot", "chrome"},
 		ServiceDeps:  []string{"tast.cros.policy.PolicyService"},
 		Timeout:      7 * time.Minute,
