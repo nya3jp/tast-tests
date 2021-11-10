@@ -16,6 +16,46 @@
       "message": "Hi Kamil,\n\nThis CL is similar to crrev.com/c/3244287, and adds another Tast test for the chrome.login API. This also has the same caveat that it shares a lot of code with launch_managed_guest_session.go, and will be refactored after b/204177106 has finished.\n\nThanks,\nJit",
       "revId": "7fa87b992df1ee31869ac942d60252037eb5643b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1949e16f_9cb3af38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-10T17:31:34Z",
+      "side": 1,
+      "message": "Thanks for the test Jit 👍 I left one comment. \n\nJust FYI - you won\u0027t be able to verify this as the fake enrollment has to be fixed in Tast.",
+      "revId": "7fa87b992df1ee31869ac942d60252037eb5643b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e34bd10e_0ac165f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_shared_managed_guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-10T17:31:34Z",
+      "side": 1,
+      "message": "If I see it right this test checks if the DeviceRestrictedManagedGuestSessionEnabled policy enables the shared session, is that right?\n\nI am thinking whether we should have a Tast test that checks that if the policy is unset or set to false the shared session is not allowed. WDYT?",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 72
+      },
+      "revId": "7fa87b992df1ee31869ac942d60252037eb5643b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
