@@ -12,7 +12,9 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
+	hwsecremote "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/security"
 	"chromiumos/tast/testing"
@@ -27,7 +29,7 @@ func init() {
 		Desc:         "Boot lockbox read/store test",
 		Contacts:     []string{"xzhou@chromium.org", "victorhsieh@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"tpm2", "reboot", "chrome"},
+		SoftwareDeps: []string{"tpm", "reboot", "chrome"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
 	})
 }
@@ -115,6 +117,17 @@ func rebootAndReconnect(ctx context.Context, s *testing.State) (*rpc.Client, err
 }
 
 func BootLockbox(ctx context.Context, s *testing.State) {
+	r := hwsecremote.NewCmdRunner(s.DUT())
+	helper, err := hwsecremote.NewHelper(r, s.DUT())
+	if err != nil {
+		s.Fatal("Helper creation error: ", err)
+	}
+
+	// BootLockbox would only available when the TPM is ready.
+	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
+		s.Fatal("Failed to wait for TPM to be owned: ", err)
+	}
+
 	// Connect to the gRPC server on the DUT.
 	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint(), "cros")
 	if err != nil {
