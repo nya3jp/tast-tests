@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54161f0e_7242d0aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-10T16:33:57Z",
+      "side": 1,
+      "message": "Generally looks great! I\u0027d like to move some of this to tast/local/syslog, but otherwise mostly nits.\n",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19b6e95c_53f6bafb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-10T16:33:57Z",
+      "side": 1,
+      "message": "I didn\u0027t realize we already had this, nice job finding it!",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3615588f_33a64d4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-10T16:33:57Z",
+      "side": 1,
+      "message": "Lets add this to syslog/well_known_logs.go",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a183e31c_1ff09996",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-10T16:33:57Z",
+      "side": 1,
+      "message": "Lets put these in a separate file. See shillconst/const.go for an example (but the const file can be local to this directory).\n\nEventually we will want to document each of these with a tracking bug.",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e39b312_2464d659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-10T16:33:57Z",
+      "side": 1,
+      "message": "This could be a helper added to syslog, e.g.\n\nstartTime, endTime :\u003d doActions(ctx, s)\nseverities :\u003d []string{\"ERR\"}\nentries, err :\u003d syslog.GetEntriesBySeverity(severities, startTime, endTime)",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acbb071b_cc990a96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-10T16:33:57Z",
+      "side": 1,
+      "message": "This also seems like it would be reasonable to add to syslog. We can either automatically identify the filename when there is a match, or make the format an optional parameter to syslog.NewReader.",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4feba883_db0a744b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-10T16:33:57Z",
+      "side": 1,
+      "message": "nit: s/The number/Number/\nAlso, let\u0027s put a header here, e.g. \"Allowed errors:\"",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "193fdd80_2a0e6815",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-10T16:33:57Z",
+      "side": 1,
+      "message": "Maybe skip the log if r.Counter is 0? Also maybe use \u0027:\u0027 as a separator instead of \u0027,\u0027. I\u0027d also remove the \u0027(\u0027 and \u0027)\u0027.",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26a11c59_1c85de1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-10T16:33:57Z",
+      "side": 1,
+      "message": "Let\u0027s also put a header here, e.g. \"Unexpected errors:\"",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
