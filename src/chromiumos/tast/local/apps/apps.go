@@ -276,6 +276,12 @@ var Youtube = App{
 	Name: "Youtube",
 }
 
+// YouTubeCWS has details about the YouTube app from Chrome Web Store.
+var YouTubeCWS = App{
+	ID:   "blpcfgokakmgnkcojhhkbfbldkacnbeo",
+	Name: "YouTube",
+}
+
 // Parallels has details about the Parallels app.
 var Parallels = App{
 	ID:   "lgjpclljbbmphhnalkeplcmnjpfmmaek",

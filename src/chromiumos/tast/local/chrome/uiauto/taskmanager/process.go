@@ -10,7 +10,9 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/input"
 )
 
 // ProcessStatus defines the status of the process.
@@ -28,7 +30,7 @@ const (
 // Process defines the interface for the process.
 type Process interface {
 	// Open opens the process.
-	Open(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) error
+	Open(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEventWriter) error
 	// Close closes the process.
 	Close(ctx context.Context) error
 	// Status returns the status of the process, e.g., alive, dead, and etc.
@@ -49,6 +51,10 @@ type ChromeTab struct {
 	// LoadingStatus is the loading status of the tab.
 	LoadingStatus TabStatus `json:"status"`
 
+	// openInNewWindow indicates if the tab will be opened in a new window.
+	// This field needs to be set before opening the tab to open the tab in a new window.
+	openInNewWindow bool
+
 	// conn is the connection to the chrome tab.
 	conn *chrome.Conn
 }
@@ -60,12 +66,36 @@ func NewChromeTabProcess(url string) *ChromeTab {
 	}
 }
 
-// Open opens a new chrome tab.
-func (tab *ChromeTab) Open(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) (retErr error) {
-	var err error
-	if tab.conn, err = cr.NewConn(ctx, tab.URL); err != nil {
-		return errors.Wrapf(err, "failed to open %s", tab.URL)
+// SetOpenInNewWindow sets openInNewWindow to be true.
+func (tab *ChromeTab) SetOpenInNewWindow() {
+	tab.openInNewWindow = true
+}
+
+// Open opens a new chrome tab in a single browser window.
+func (tab *ChromeTab) Open(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEventWriter) (retErr error) {
+	if tab.conn != nil {
+		return errors.New("the tab is already opened")
 	}
+
+	var err error
+	if tab.openInNewWindow {
+		if tab.conn, err = cr.NewConn(ctx, tab.URL, browser.WithNewWindow()); err != nil {
+			return errors.Wrapf(err, "failed to open %s", tab.URL)
+		}
+	} else {
+		if err = kb.Accel(ctx, "Ctrl+T"); err != nil {
+			return errors.Wrap(err, "failed to use Ctrl+T to open a new tab")
+		}
+
+		if tab.conn, err = cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/")); err != nil {
+			return errors.Wrap(err, "failed to find the target")
+		}
+
+		if err := tab.conn.Navigate(ctx, tab.URL); err != nil {
+			return errors.Wrapf(err, "failed to navigate to %s", tab.URL)
+		}
+	}
+
 	defer func() {
 		if retErr != nil {
 			tab.Close(ctx)
