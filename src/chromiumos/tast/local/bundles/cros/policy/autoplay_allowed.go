@@ -13,8 +13,11 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -32,8 +35,17 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
-		Data:         []string{"autoplay_allowed.html", "audio.mp3"},
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"informational"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               browser.TypeLacros,
+		}},
+		Data: []string{"autoplay_allowed.html", "audio.mp3"},
 	})
 }
 
@@ -41,6 +53,11 @@ func init() {
 func AutoplayAllowed(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
@@ -79,8 +96,15 @@ func AutoplayAllowed(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			// Setup browser based on the chrome type.
+			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+			if err != nil {
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer closeBrowser(cleanupCtx)
+
 			// Open the website with the media.
-			conn, err := cr.NewConn(ctx, server.URL+"/autoplay_allowed.html")
+			conn, err := br.NewConn(ctx, server.URL+"/autoplay_allowed.html")
 			if err != nil {
 				s.Fatal("Failed to open website: ", err)
 			}
