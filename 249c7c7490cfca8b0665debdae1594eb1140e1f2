@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b890d48e_872a9067",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2021-11-10T20:57:15Z",
+      "side": 1,
+      "message": "do you know whether we have this installed on chromium OS (if not this may fail when running on *generic boards)",
+      "range": {
+        "startLine": 139,
+        "startChar": 16,
+        "endLine": 139,
+        "endChar": 23
+      },
+      "revId": "249c7c7490cfca8b0665debdae1594eb1140e1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
