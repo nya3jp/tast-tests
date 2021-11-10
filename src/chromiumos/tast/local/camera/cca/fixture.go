@@ -395,6 +395,7 @@ func (f *fixture) stopApp(ctx context.Context, hasError bool) (retErr error) {
 		f.app = nil
 	}(ctx)
 
+	testing.ContextLog(ctx, "[TESTTEST] stopApp. hasError? ", hasError, ". SaveScreenshotWhenFail? ", f.debugParams.SaveScreenshotWhenFail)
 	if hasError && f.debugParams.SaveScreenshotWhenFail {
 		if err := f.app.SaveScreenshot(ctx); err != nil {
 			return errors.Wrap(err, "failed to save a screenshot")

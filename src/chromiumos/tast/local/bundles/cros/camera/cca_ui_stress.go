@@ -39,7 +39,7 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.BuiltinCamera},
 			ExtraAttr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 			Fixture:           "ccaLaunched",
-			Timeout:           5 * time.Minute,
+			Timeout:           50 * time.Second,
 			Val:               testutil.UseRealCamera,
 		}, {
 			Name:              "vivid",
@@ -140,6 +140,7 @@ func CCAUIStress(ctx context.Context, s *testing.State) {
 				if err := app.SwitchMode(ctx, cca.Video); err != nil {
 					return err
 				}
+				testing.Sleep(ctx, 50*time.Second)
 				_, err := app.RecordVideo(ctx, cca.TimerOff, 3*time.Second)
 				return err
 			},
