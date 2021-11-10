@@ -16,6 +16,98 @@
       "message": "Hi reviewers,\n\nThanks for reviewing the proposal go/tast-user-context-action. I will try to land the implementation if you do not have any further questions.",
       "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "519baa6c_2baf8775",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-10T22:30:12Z",
+      "side": 1,
+      "message": "I am confused that UserContext, UserAction, UserActionCfg all have attributes and tags. Looks like you will merge them eventually, why not just store them in one place?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1f041d8_eef17d2e",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-10T22:30:12Z",
+      "side": 1,
+      "message": "Since passing testing.State is discouraged, is there a way to avoid this? e.g. this can be a function to create the subtest, and let the test ifself run it instead.",
+      "range": {
+        "startLine": 158,
+        "startChar": 79,
+        "endLine": 158,
+        "endChar": 88
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4dddf6b_4a47fddc",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-10T22:30:12Z",
+      "side": 1,
+      "message": "ctx is not used in this func.",
+      "range": {
+        "startLine": 250,
+        "startChar": 36,
+        "endLine": 250,
+        "endChar": 39
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60e00c81_15774c60",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-10T22:30:12Z",
+      "side": 1,
+      "message": "You may want a function: func (ar *actionResult) String() string{} \nThis then becomes return w.Write(ar)",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 23
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
