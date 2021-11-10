@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6304bfa5_a86b4fe8",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-10T00:39:35Z",
+      "side": 1,
+      "message": "how about just doing it in a for loop instead of polling? polling like this could get messy since the command can take a while to run sometimes (maybe longer than the interval)",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 79
+      },
+      "revId": "a9b0fa8eaad53e466a73b678fc1fd42ba03cb16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
