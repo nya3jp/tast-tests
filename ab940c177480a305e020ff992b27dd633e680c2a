@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc3f32a8_5d3dc1be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2021-11-10T04:19:19Z",
+      "side": 1,
+      "message": "CCA is more like a test vehicle in this test. Naming it with CCAUI... sounds like this test is a CCA UI test and is a bit confusing imho, since this test is actually an end-to-end test for the platform HDRnet pipeline.\n\nWe may want to add other test cases in the future, like using simple getUserMedia pages, so I\u0027m leaning towards keeping the current name. Wdyt?",
+      "parentUuid": "edd347a7_7666dcd5",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea3d02d8_5933c5ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-10T03:16:33Z",
       "side": 1,
       "message": "\"defer\" will be triggered when leaving the function. I think what we want is to call cancel() after s.Run().",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c187725_a803b7fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2021-11-10T04:19:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea3d02d8_5933c5ba",
       "range": {
         "startLine": 68,
         "startChar": 2,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d80bcdd0_9d7a5d21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2021-11-10T04:19:19Z",
+      "side": 1,
+      "message": "This does not work for me since I need to close the app before inside the test function to upload the histograms, but StopAppOnlyIfExist defers the close.",
+      "parentUuid": "b52ee929_a91c613a",
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83c6527a_0b7eb205",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
         "patchSetId": 2
@@ -77,6 +143,30 @@
       "writtenOn": "2021-11-10T03:16:33Z",
       "side": 1,
       "message": "We should also check its error.",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 31
+      },
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e75860ef_7a64905c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2021-11-10T04:19:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83c6527a_0b7eb205",
       "range": {
         "startLine": 193,
         "startChar": 1,
@@ -100,6 +190,30 @@
       "writtenOn": "2021-11-10T03:16:33Z",
       "side": 1,
       "message": "Hmm, I don\u0027t quite understand why do we need to have a recorder before switching mode and waits for it after switching. What will happen if we only start the recorder after switching mode? I thought we will call ClearHistogramTransferFile() when starting the recorder. Could you elaborate more?",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 2
+      },
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "054e1644_ce1a21f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2021-11-10T04:19:19Z",
+      "side": 1,
+      "message": "There will be histograms recorded for the Photo mode when we first launch CCA. This is to make sure we start recording after we get the histograms of the Photo mode, so that the diff recorded below is only from the test operations under Video mode.",
+      "parentUuid": "090092a6_641b483a",
       "range": {
         "startLine": 229,
         "startChar": 1,
