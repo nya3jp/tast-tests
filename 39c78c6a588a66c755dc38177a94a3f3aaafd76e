@@ -393,6 +393,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e89d626_c98ce475",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-10T01:46:03Z",
+      "side": 1,
+      "message": "\u003e 1. These tests filter bad packets by checking the Dot11 FCS.\nYes. The existing tests rely on checking unchanged Dot11FCSValid(). Then it turns out Dot11FCSValid() isn\u0027t reliable.\n\n\u003e 2. That check is essentially a no-op because gopacket automatically injects a good Dot11 FCS.\nRight, in case of current Gale. But the PCAP coming from future testbed, like OpenWRT, may or may not have real Dot11 FCS (not injected by gopacket).\n\n\u003e 3. When there\u0027s a bad packet (this happens every so often), we don\u0027t filter it out because of 2, and bad packets throw errors when we try to parse them. This is the source of the flake.\nExactly. I updated the commit message to address this.",
+      "parentUuid": "3ab1a6bb_ae0a6faf",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "39c78c6a588a66c755dc38177a94a3f3aaafd76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c9879f60_065d20ca",
