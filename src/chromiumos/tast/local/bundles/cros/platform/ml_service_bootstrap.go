@@ -19,8 +19,8 @@ func init() {
 		Func:     MLServiceBootstrap,
 		Desc:     "Checks that Chrome can establish a Mojo connection to ML Service",
 		Contacts: []string{"amoylan@chromium.org"},
-		// TODO(b/204399416): Re-enable it once the test is fixed.
-		// Attr:         []string{"group:mainline"},
+		// TODO(b/204399416): It works again inexplicably, mark it informational.
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "ml_service"},
 		Pre:          chrome.LoggedIn(),
 	})
