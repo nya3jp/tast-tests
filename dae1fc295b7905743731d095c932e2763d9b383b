@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3774d06f_7e677edf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-10T21:33:57Z",
+      "side": 1,
+      "message": "LGTM, just want to make sure device_attributes.json still looks good after the change to nest the crossdevice basic attributes struct into the Nearby one",
+      "revId": "dae1fc295b7905743731d095c932e2763d9b383b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c4efe6a_8ad56e45",
+        "filename": "src/chromiumos/tast/common/cros/crossdevice/constants.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-10T21:33:57Z",
+      "side": 1,
+      "message": "tiny nit: there aren\u0027t really any constants defined in this file, maybe rename to something else",
+      "revId": "dae1fc295b7905743731d095c932e2763d9b383b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2ddefcd_3c44c9fe",
+        "filename": "src/chromiumos/tast/common/cros/nearbyshare/constants.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-10T21:33:57Z",
+      "side": 1,
+      "message": "can you double-check what the device_attributes.json looks like with this change? I\u0027m not sure if it will unmarshal nicely with a nested struct like this.",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 44
+      },
+      "revId": "dae1fc295b7905743731d095c932e2763d9b383b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0875a8a0_9bb2fcd9",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-10T21:33:57Z",
+      "side": 1,
+      "message": "I guess we don\u0027t need to export this since it\u0027s only used in this package now. Might be nice to throw \"settings\" in the name somewhere too while we\u0027re here",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 21
+      },
+      "revId": "dae1fc295b7905743731d095c932e2763d9b383b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
