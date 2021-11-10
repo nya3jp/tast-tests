@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edc3c304_3aa95193",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-11-10T16:02:39Z",
+      "side": 1,
+      "message": "Thanks for reviewing!",
+      "revId": "83b113b0dbfce4c61e810d0ad2745e70d4ab6b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf9749d2_99468113",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-11-10T15:07:31Z",
       "side": 1,
       "message": "nit: I don\u0027t know how diff will present the differences. Please ignore this if the value of diff handles that already - maybe having expected and actual responses in error message would be still beneficial.",
+      "range": {
+        "startLine": 99,
+        "startChar": 68,
+        "endLine": 99,
+        "endChar": 72
+      },
+      "revId": "83b113b0dbfce4c61e810d0ad2745e70d4ab6b5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa6963c9_73284b8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ad/kerberos_daemon.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2021-11-10T16:02:39Z",
+      "side": 1,
+      "message": "I agree that printing the expected and actual responses is a good idea, and today I learned that diff does exactly that, but in a more human-readable way. Example:\n\n2021-11-10T13:48:59.265510Z ad.KerberosDaemon [ FAIL ] ValidateConfigResponse message mismatch (-got +want):\n(*kerberos_proto.ValidateConfigResponse)(Inverse(protocmp.Transform, protocmp.Message{\n\t\"@type\": s\"kerberos.ValidateConfigResponse\",\n\t\"error\": s\"ERROR_BAD_CONFIG\",\n\t\"error_info\": protocmp.Message{\n\t\t\"@type\":      s\"kerberos.ConfigErrorInfo\",\n\t\t\"code\":       s\"CONFIG_ERROR_KEY_NOT_SUPPORTED\",\n-\t\t\"line_index\": int32(1),\n+\t\t\"line_index\": int32(2),\n\t},\n}))",
+      "parentUuid": "bf9749d2_99468113",
       "range": {
         "startLine": 99,
         "startChar": 68,
