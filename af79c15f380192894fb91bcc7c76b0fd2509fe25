@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8aae3f5_a2caf2b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stork_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-10T03:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f1ee78e_c60ac7db",
+      "range": {
+        "startLine": 25,
+        "startChar": 57,
+        "endLine": 25,
+        "endChar": 58
+      },
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "831e7887_ecc3c2a1",
@@ -119,6 +143,30 @@
       "writtenOn": "2021-09-30T02:42:28Z",
       "side": 1,
       "message": "the cancel function shall be called when exiting the function.\n\nctx, cancel :\u003d ctxutil.Shorten(...)\ndefer cancel()\n\nRefer to: https://pkg.go.dev/context\nhttps://www.sohamkamani.com/golang/context-cancellation-and-values/",
+      "range": {
+        "startLine": 33,
+        "startChar": 6,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3a694d5_8344c4fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stork_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-10T03:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "831e7887_ecc3c2a1",
       "range": {
         "startLine": 33,
         "startChar": 6,
@@ -152,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ab5240_c759fa46",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-10T03:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "310ab4fc_eed45b93",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 4
+      },
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26ad66da_8d87fd13",
@@ -169,6 +241,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5facaf22_fa4264c2",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-10T03:48:35Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. Yes, this does hit the service and it is necessary to do so. The Stork API provides us a way to install test eSIM profiles which are discarded at the end of the test. Our team will monitor test results and will ensure that we look at test failures to determine if the Stork API is down.",
+      "parentUuid": "26ad66da_8d87fd13",
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3aca88cd_4da64d6e",
@@ -182,6 +272,24 @@
       "writtenOn": "2021-09-30T02:42:28Z",
       "side": 1,
       "message": "For marshaling JSON data, you may refer this:\nhttps://www.sohamkamani.com/golang/json/#marshaling-json-data\n\nIf you can use struct to represent your JSON data, use it.\n\nAlso, if you use struct to represent requestData and profileListData, you may omit the definition of keys and default values.",
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d6ccf8a_f70378a3",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-10T03:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca88cd_4da64d6e",
       "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -209,6 +317,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9595a94_b30c2067",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-10T03:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6987c41_d7ede061",
+      "range": {
+        "startLine": 112,
+        "startChar": 80,
+        "endLine": 112,
+        "endChar": 94
+      },
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23027869_e996aaf6",
@@ -226,6 +358,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e450e53_607ab2dc",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-10T03:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23027869_e996aaf6",
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "202d8f44_7f7163f0",
@@ -239,6 +389,30 @@
       "writtenOn": "2021-09-30T02:42:28Z",
       "side": 1,
       "message": "\"invalid\" or \"not a JSON object\"",
+      "range": {
+        "startLine": 164,
+        "startChar": 70,
+        "endLine": 164,
+        "endChar": 84
+      },
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c21db92_b7469e4d",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-10T03:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "202d8f44_7f7163f0",
       "range": {
         "startLine": 164,
         "startChar": 70,
@@ -272,6 +446,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0115d6ef_3f27f86b",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-10T03:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b448eb1b_a1edce28",
+      "range": {
+        "startLine": 169,
+        "startChar": 66,
+        "endLine": 169,
+        "endChar": 67
+      },
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be4e22c2_4a24035d",
@@ -285,6 +483,24 @@
       "writtenOn": "2021-09-30T02:42:28Z",
       "side": 1,
       "message": "We shall move out the sessionIDKey extraction logic and the createEndSessionFunc can be inlined as:\n\ncleanupProfile :\u003d func(ctx context.Context) error {\n  ...\n}",
+      "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f8e96aa_8b1f9652",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-10T03:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be4e22c2_4a24035d",
       "revId": "af79c15f380192894fb91bcc7c76b0fd2509fe25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
