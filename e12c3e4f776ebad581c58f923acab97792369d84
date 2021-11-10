@@ -107,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46d1d2e0_ec399112",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-10T10:13:58Z",
+      "side": 1,
+      "message": "Actually made the change here now since CQ is failing anyways...",
+      "parentUuid": "c195dd55_b6dc0919",
+      "range": {
+        "startLine": 18,
+        "startChar": 42,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "e12c3e4f776ebad581c58f923acab97792369d84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb4a9972_01feb6f9",
