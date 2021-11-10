@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a79ad9bf_80356cb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-11-10T20:25:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "15631695_03b6edce",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "46c1885b20a9fff40d455212944544eb437ace58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51b275ce_bb579b54",
