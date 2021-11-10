@@ -22,7 +22,11 @@ import (
 
 // tlwAddress is used to connect to the Test Lab Wiring,
 // which is used for the communication with the image caching service.
-var tlwAddress = testing.RegisterVarString("autoupdate.tlwAddress", "", "ip:port address if the TLW service")
+var tlwAddress = testing.RegisterVarString(
+	"autoupdate.tlwAddress",
+	"10.254.254.254:7151",
+	"The address {host:port} of the TLW service",
+)
 
 func init() {
 	testing.AddTest(&testing.Test{
