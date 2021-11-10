@@ -16,6 +16,23 @@
       "message": "Thanks for the review! Separated the \"-w\" in a separate patch.",
       "revId": "1961f9aba3079d2d52bb589bea0aaca44b3eda6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a777ef34_f746ee0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-10T05:38:55Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm",
+      "revId": "1961f9aba3079d2d52bb589bea0aaca44b3eda6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
