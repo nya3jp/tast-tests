@@ -35,7 +35,8 @@ func init() {
 				return nil, errors.New("parent is not a FakeDMS fixture")
 			}
 			opts := []chrome.Option{chrome.DMSPolicy(fdms.URL),
-				chrome.FakeLogin(chrome.Creds{User: "tast-user@managedchrome.com", Pass: "test0000"})}
+				chrome.FakeLogin(chrome.Creds{User: "tast-user@managedchrome.com", Pass: "test0000"}),
+				chrome.ExtraArgs("--disable_lacros_keep_alive")}
 			return opts, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,

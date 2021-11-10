@@ -81,6 +81,7 @@ func init() {
 				loginOption(s),
 				chrome.ARCSupported(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
+				chrome.ExtraArgs("--disable_lacros_keep_alive"),
 			}, nil
 		}),
 		Parent:          "prepareForCUJ",
