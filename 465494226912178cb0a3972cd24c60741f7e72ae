@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6986872f_ea11aea2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-11-10T18:48:35Z",
+      "side": 1,
+      "message": "Yeah, that was my plan anyway. The commit bot complains when it sees a chromium dependency, but I don\u0027t think it fail the presubmit at least.",
+      "parentUuid": "130ceaa9_0165be0a",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "465494226912178cb0a3972cd24c60741f7e72ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8a38b8cf_17b138ee",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-10T04:50:38Z",
       "side": 1,
       "message": "I would also include _linear_output variants of vp9_2, h264_resolution_switch, vp9_show_existing_frame, h264_profile_change, and vp9_keyframe_spatial_layers because all these are important edge cases that may be influenced by the ImageProcessor path.",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 5
+      },
+      "revId": "465494226912178cb0a3972cd24c60741f7e72ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51fa196a_c6f6248d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel_vd_vda.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-11-10T18:48:35Z",
+      "side": 1,
+      "message": "Done.\n\nIt also seems like vp9_2 is currently inactive and it fails on clean runs for me. Should I just add it but leave it disabled?",
+      "parentUuid": "e7b9fa3e_d4ab160f",
       "range": {
         "startLine": 112,
         "startChar": 2,
