@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "130ceaa9_0165be0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-11-10T04:50:38Z",
+      "side": 1,
+      "message": "This will probably give you a presubmit error -- Chrome OS CLs can\u0027t be declared to depend on Chromium CLs unfortunately. Instead, we have to manually wait until Chrome is upreved on Chrome OS to include CL:3256071 and then we can merge.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "465494226912178cb0a3972cd24c60741f7e72ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a38b8cf_17b138ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-11-10T04:50:38Z",
+      "side": 1,
+      "message": "akahuang@ Before I do a more detailed review, are you okay with us including these tests under tast.arc.*?  The reason we did this is because we only expect this path to be used by Android.",
+      "revId": "465494226912178cb0a3972cd24c60741f7e72ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7b9fa3e_d4ab160f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel_vd_vda.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-11-10T04:50:38Z",
+      "side": 1,
+      "message": "I would also include _linear_output variants of vp9_2, h264_resolution_switch, vp9_show_existing_frame, h264_profile_change, and vp9_keyframe_spatial_layers because all these are important edge cases that may be influenced by the ImageProcessor path.",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 5
+      },
+      "revId": "465494226912178cb0a3972cd24c60741f7e72ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
