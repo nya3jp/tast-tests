@@ -33,6 +33,24 @@
       "message": "Before submitting this it is probably worth filing a new bug against the factory toolkit itself rather than the test, and including that bug on this CL.",
       "revId": "cc358726bf31dcb77e5ded3c487009359d5fddc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc985c62_d2490083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2021-11-10T02:53:47Z",
+      "side": 1,
+      "message": "Hi Matthew, we have a workaround for this: crrev/c/3267810, and we are discussing an approach for the toolkit: b/205779346. I think it is ok to leave it as is now, thank you.",
+      "parentUuid": "2e1be685_904e19c4",
+      "revId": "cc358726bf31dcb77e5ded3c487009359d5fddc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
