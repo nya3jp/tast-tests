@@ -16,6 +16,23 @@
       "message": "Thanks for the reviews.\n\nNow, just need to wait for cc team to stamp on the chrome CL and an uprev...",
       "revId": "be8c1900517b31af5b3006af1e4d8b7781287073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a89e3f4b_0bc0e969",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-10T17:15:54Z",
+      "side": 1,
+      "message": "Owners, please approve.",
+      "revId": "be8c1900517b31af5b3006af1e4d8b7781287073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
