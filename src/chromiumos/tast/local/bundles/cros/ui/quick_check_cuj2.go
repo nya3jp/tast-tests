@@ -38,9 +38,8 @@ func init() {
 		},
 		Params: []testing.Param{
 			{
-				Name:      "basic_unlock",
-				Timeout:   5 * time.Minute,
-				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
+				Name:    "basic_unlock",
+				Timeout: 5 * time.Minute,
 				Val: quickCheckParam{
 					tier:     cuj.Basic,
 					scenario: quickcheckcuj.Lock,
