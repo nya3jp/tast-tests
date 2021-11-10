@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feca4c12_b21be1e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-10T08:33:13Z",
+      "side": 1,
+      "message": "Those cases are great Anastasiia 👍\nWould it be possible to have some browser tests for those cases? It would be beneficial in a way that the feedback about possible regression could come earlier.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "f48492daa2f42e54ee17fcc37a2fefe94bb3e7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eb93eb7_98d62c24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_settings_sections.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-10T08:33:13Z",
+      "side": 1,
+      "message": "if you want that cleanup to happen always you could enclose it in anonymous function and use defer for it. That way with the end of the block cleanup will be executed.\n\ndefer func(ctx context.Context) {\n    // cleanup\n}(ctx)",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 148,
+        "endChar": 4
+      },
+      "revId": "f48492daa2f42e54ee17fcc37a2fefe94bb3e7a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
