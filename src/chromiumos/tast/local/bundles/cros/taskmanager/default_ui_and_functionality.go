@@ -81,7 +81,7 @@ func DefaultUIAndFunctionality(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	for _, process := range resources.processes {
-		if err := process.Open(ctx, cr, tconn); err != nil {
+		if err := process.Open(ctx, cr, tconn, kb); err != nil {
 			s.Fatal("Failed to open process: ", err)
 		}
 		defer process.Close(cleanupCtx)
