@@ -330,6 +330,30 @@
       },
       "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15cfea6c_635ed423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-10T05:37:41Z",
+      "side": 1,
+      "message": "My understanding is that since we clear |histogramTransferFile| while we are already at video mode, the histograms from photo mode should be either in |histogramTransferFile|, which should be cleared by ClearHistogramTransferFile(), or be picked up by Chrome, which will be considered as \"before\" in metrics diff.\n\nNot meant to block this CL. I am also okay to land it as is with some comments mentioning the hypothesis of that race.",
+      "parentUuid": "54a153d7_e18b8719",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 2
+      },
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
