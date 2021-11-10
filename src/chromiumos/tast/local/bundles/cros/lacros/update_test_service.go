@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/faillog"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	lacrosservice "chromiumos/tast/services/cros/lacros"
 	"chromiumos/tast/testing"
@@ -66,6 +67,16 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 	// Open Lacros.
 	expectedVersionedLacrosDir := filepath.Join("/run/imageloader", req.ExpectedComponent, req.ExpectedVersion)
 	expectedVersionedLacrosPath := filepath.Join(expectedVersionedLacrosDir, "chrome")
+
+	// Start a screen recording for troubleshooting a failure in launching Lacros.
+	hasRecord := faillog.StartRecord(ctx, tconn)
+	hasError := true
+	defer func() {
+		// Save faillogs and screen record only when it fails or returns with an error.
+		faillog.SaveIf(ctx, expectedVersionedLacrosDir, func() bool { return hasError })
+		faillog.SaveRecordIf(ctx, tconn, hasRecord, func() bool { return hasError })
+	}()
+
 	l, err := lacros.LaunchFromShelf(ctx, tconn, expectedVersionedLacrosDir)
 	if err != nil {
 		// TODO(crbug.com/1258664): Log shelf items in case the Lacros app is neither launched nor shown.
@@ -113,6 +124,9 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 		}
 		status = lacrosservice.TestResult_PASSED
 	}
+
+	// Don't save faillogs and a screen record if the test is passed.
+	hasError = (status != lacrosservice.TestResult_PASSED)
 
 	return &lacrosservice.VerifyUpdateResponse{
 		Result: &lacrosservice.TestResult{Status: status, StatusDetails: statusDetails},
