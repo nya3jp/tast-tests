@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edd347a7_7666dcd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-10T03:16:33Z",
+      "side": 1,
+      "message": "For tests that will exercise the CCA UI, usually we name it CCAUI* so that we can test it by running \"tast run [DUT] camera.CCAUI*\".\n\nHow about we rename it to cca_ui_hdrnet_e2e.go and CCAUIHDRNetE2E?\n(Btw, IIRC in Go we prefer using upper case for abbreviation. e.g. QRCode, URL)",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea3d02d8_5933c5ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-10T03:16:33Z",
+      "side": 1,
+      "message": "\"defer\" will be triggered when leaving the function. I think what we want is to call cancel() after s.Run().",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b52ee929_a91c613a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-10T03:16:33Z",
+      "side": 1,
+      "message": "It seems that you will proactively close the app as part of the test flow. Then we can change to:\n```\ncca.SubTestParams{StopAppOnlyIfExist: true}\n```",
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c6527a_0b7eb205",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-10T03:16:33Z",
+      "side": 1,
+      "message": "We should also check its error.",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 31
+      },
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "090092a6_641b483a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-10T03:16:33Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t quite understand why do we need to have a recorder before switching mode and waits for it after switching. What will happen if we only start the recorder after switching mode? I thought we will call ClearHistogramTransferFile() when starting the recorder. Could you elaborate more?",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 2
+      },
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
