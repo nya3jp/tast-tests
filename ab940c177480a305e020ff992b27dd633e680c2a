@@ -354,6 +354,30 @@
       },
       "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "335618f9_b1050ac6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2021-11-10T06:12:14Z",
+      "side": 1,
+      "message": "Good point. I think you\u0027re right. We don\u0027t need the recorder before Video mode.",
+      "parentUuid": "15cfea6c_635ed423",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 2
+      },
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
