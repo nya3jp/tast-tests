@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83d73a39_7bf74a2d",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-10T22:48:17Z",
+      "side": 1,
+      "message": "UserContext will maintain the attributes and tags across the whole session as long as the UserContext is continuely used.\n\nUserAction attributes and tags are only used inside the specific action. It will not appear in the next action.\n\nUserActionCfg is a structure similar to testing.PollOptions. It just makes UserAction construction more convenient with optional parameters.",
+      "parentUuid": "519baa6c_2baf8775",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1f041d8_eef17d2e",
         "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-10T22:30:12Z",
       "side": 1,
       "message": "Since passing testing.State is discouraged, is there a way to avoid this? e.g. this can be a function to create the subtest, and let the test ifself run it instead.",
+      "range": {
+        "startLine": 158,
+        "startChar": 79,
+        "endLine": 158,
+        "endChar": 88
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee39ed39_9d3746a0",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-10T22:48:17Z",
+      "side": 1,
+      "message": "I could not find a better solution. \n\nAccording to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages, \"If a subpackage actually contains the test implementation (typically because it‘s shared across several tests), it’s okay to pass testing.State to it so it can report test errors itself.\" \n\nThis function aims to run UserAction independently as subtest and reports its own result.",
+      "parentUuid": "c1f041d8_eef17d2e",
       "range": {
         "startLine": 158,
         "startChar": 79,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37bd9d56_6026d6b2",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-10T22:48:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4dddf6b_4a47fddc",
+      "range": {
+        "startLine": 250,
+        "startChar": 36,
+        "endLine": 250,
+        "endChar": 39
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60e00c81_15774c60",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-11-10T22:30:12Z",
       "side": 1,
       "message": "You may want a function: func (ar *actionResult) String() string{} \nThis then becomes return w.Write(ar)",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 23
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a46ff1_93f5f99e",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-10T22:48:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60e00c81_15774c60",
       "range": {
         "startLine": 262,
         "startChar": 1,
