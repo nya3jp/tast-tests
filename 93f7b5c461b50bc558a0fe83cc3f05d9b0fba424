@@ -94,6 +94,30 @@
       },
       "revId": "93f7b5c461b50bc558a0fe83cc3f05d9b0fba424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a78ee6_03dae5c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-11-10T07:26:56Z",
+      "side": 1,
+      "message": "Moved the test back to ui/, updated the bug id and removed the test from CQ, so that Intel and other partners can specifically execute this test on higher end devices.",
+      "parentUuid": "97f6de51_299e5358",
+      "range": {
+        "startLine": 12,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "93f7b5c461b50bc558a0fe83cc3f05d9b0fba424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
