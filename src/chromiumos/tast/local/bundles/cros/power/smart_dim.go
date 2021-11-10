@@ -21,8 +21,8 @@ func init() {
 		Func:     SmartDim,
 		Desc:     "Check the SmartDim can make decision with ML Service",
 		Contacts: []string{"alanlxl@chromium.org"},
-		// TODO(b/204399416): Re-enable it once the test is fixed.
-		// Attr:         []string{"group:mainline"},
+		// TODO(b/204399416): It works again inexplicably, mark it informational.
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "ml_service", "smartdim"},
 		Params: []testing.Param{{
 			Val:     lacros.ChromeTypeChromeOS,
