@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15631695_03b6edce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-11-10T19:16:29Z",
+      "side": 1,
+      "message": "In the past, when we added retries, we only added them by splitting the test into Unstable/Stable version i.e. the unstable version would be without retries and would be informational that way it wouldn\u0027t block the CQ but it would still give us visibility into the unstability of the optin. The stable version would have retries and it would help distinguish between optin completely being broken and being unstable. Since our most recent guideline is to immediately remove the failing test from CQ to unblock other devs, this split-retry is a compromise that helps catch further optin breakages during the stability effort. Example: https://crrev.com/c/2979454\n\nMaking the retries constant to facilitate local testing.",
+      "parentUuid": "23237c19_91d05de8",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "46c1885b20a9fff40d455212944544eb437ace58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51b275ce_bb579b54",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
         "patchSetId": 1
