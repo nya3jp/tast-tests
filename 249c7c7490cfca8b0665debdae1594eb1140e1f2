@@ -22,6 +22,30 @@
       },
       "revId": "249c7c7490cfca8b0665debdae1594eb1140e1f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71db410f_877377b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-10T21:33:56Z",
+      "side": 1,
+      "message": "Good question! The below test looks green w/o any additional software/hardware dependencies explicitly specified. Since this test suite is still informational, it should be an easy fix if we see failures on some boards :)\n\nTest:\nhttps://tastboard.corp.google.com/test/notifications.ScreenCaptureNotification\n\nCode:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/notifications/screen_capture_notification.go",
+      "parentUuid": "b890d48e_872a9067",
+      "range": {
+        "startLine": 139,
+        "startChar": 16,
+        "endLine": 139,
+        "endChar": 23
+      },
+      "revId": "249c7c7490cfca8b0665debdae1594eb1140e1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
