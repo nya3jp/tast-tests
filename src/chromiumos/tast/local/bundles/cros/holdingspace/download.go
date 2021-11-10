@@ -21,7 +21,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type params struct {
+type downloadParams struct {
 	filesize int
 	testfunc func(context.Context, *testing.State, *uiauto.Context, string)
 }
@@ -41,21 +41,21 @@ func init() {
 		Data:         []string{"download.html"},
 		Params: []testing.Param{{
 			Name: "cancel",
-			Val: params{
+			Val: downloadParams{
 				filesize: 500 * 1024 * 1024, // 500 MB to give time to cancel.
-				testfunc: testCancel,
+				testfunc: testDownloadCancel,
 			},
 		}, {
 			Name: "pause_and_resume",
-			Val: params{
+			Val: downloadParams{
 				filesize: 500 * 1024 * 1024, // 500 MB to give time to pause/resume.
-				testfunc: testPauseAndResume,
+				testfunc: testDownloadPauseAndResume,
 			},
 		}, {
 			Name: "pin_and_unpin",
-			Val: params{
+			Val: downloadParams{
 				filesize: 1, // 1 B.
-				testfunc: testPinAndUnpin,
+				testfunc: testDownloadPinAndUnpin,
 			},
 		}},
 	})
@@ -66,7 +66,7 @@ func init() {
 // from which the user can cancel/pause/resume the download. Upon download
 // completion, the user should be able to pin the download.
 func Download(ctx context.Context, s *testing.State) {
-	params := s.Param().(params)
+	params := s.Param().(downloadParams)
 
 	// Connect to a fresh Chrome instance to ensure holding space first-run state.
 	cr, err := chrome.New(ctx)
@@ -130,8 +130,8 @@ func Download(ctx context.Context, s *testing.State) {
 	}
 }
 
-// testCancel performs testing of cancelling a download.
-func testCancel(
+// testDownloadCancel performs testing of cancelling a download.
+func testDownloadCancel(
 	ctx context.Context, s *testing.State, ui *uiauto.Context, filename string) {
 	if err := uiauto.Combine("test cancel",
 		// Right click the download chip to show the context menu. Note that the
@@ -149,8 +149,8 @@ func testCancel(
 	}
 }
 
-// testPauseAndResume performs testing of pausing and resuming a download.
-func testPauseAndResume(
+// testDownloadPauseAndResume performs testing of pausing and resuming a download.
+func testDownloadPauseAndResume(
 	ctx context.Context, s *testing.State, ui *uiauto.Context, filename string) {
 	if err := uiauto.Combine("test pause and resume",
 		// Right click the download chip to show the context menu. Note that the
@@ -175,8 +175,8 @@ func testPauseAndResume(
 	}
 }
 
-// testPinAndUnpin performs testing of pinning and unpinning a download.
-func testPinAndUnpin(
+// testDownloadPinAndUnpin performs testing of pinning and unpinning a download.
+func testDownloadPinAndUnpin(
 	ctx context.Context, s *testing.State, ui *uiauto.Context, filename string) {
 	if err := uiauto.Combine("test pin and unpin",
 		// Right click the download chip to show the context menu. Note that this
