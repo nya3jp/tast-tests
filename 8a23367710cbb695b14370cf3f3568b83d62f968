@@ -236,6 +236,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbb168e6_4485a4b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-10T22:56:49Z",
+      "side": 1,
+      "message": "Nice. Just note to add the respective control file in autotest otherwise it won\u0027t be scheduled. \nYou can find respective CLs to create new control files in the autotest/files/server/site_tests/tast/control.* \n\nBTW, I can\u0027t find group:arc-data-snapshot in the source code. Am I missing something?",
+      "parentUuid": "de783da6_6a065fd3",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6374bd6c_27a2a2bb",
         "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
         "patchSetId": 2
