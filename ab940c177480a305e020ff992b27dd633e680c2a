@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0591cc1_27f9e891",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-10T04:55:52Z",
+      "side": 1,
+      "message": "I see. Let\u0027s use the name it is.",
+      "parentUuid": "dc3f32a8_5d3dc1be",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea3d02d8_5933c5ba",
@@ -126,6 +150,24 @@
       "side": 1,
       "message": "This does not work for me since I need to close the app before inside the test function to upload the histograms, but StopAppOnlyIfExist defers the close.",
       "parentUuid": "b52ee929_a91c613a",
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b6d143c_1c5435a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-10T04:55:52Z",
+      "side": 1,
+      "message": "Ah, I mean, without the parameter, when the runSubTest() finishes, it will still try to stop app [1] even if you have stopped the app proactively in your test codes, which might cause issue. My suggestion is adding \"StopAppOnlyIfExist: true\" and keeping the app.Close() in the test codes so that when it tries to close the app in defer function, since the app has already been closed, it is acceptable and no error will be thrown.\n\n[1]: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/camera/cca/fixture.go;rcl\u003d15013ab9845b2853d5cb6c7454799eacf0fbb200;l\u003d446",
+      "parentUuid": "d80bcdd0_9d7a5d21",
       "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -214,6 +256,30 @@
       "side": 1,
       "message": "There will be histograms recorded for the Photo mode when we first launch CCA. This is to make sure we start recording after we get the histograms of the Photo mode, so that the diff recorded below is only from the test operations under Video mode.",
       "parentUuid": "090092a6_641b483a",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 2
+      },
+      "revId": "ab940c177480a305e020ff992b27dd633e680c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3ad70ce_ec347c0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hdrnet_e2e.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-10T04:55:52Z",
+      "side": 1,
+      "message": "But when we call histogramTests.record() on Line 242, it will trigger ClearHistogramTransferFile(). Isn\u0027t it enough for truncating the previous histograms?",
+      "parentUuid": "054e1644_ce1a21f8",
       "range": {
         "startLine": 229,
         "startChar": 1,
