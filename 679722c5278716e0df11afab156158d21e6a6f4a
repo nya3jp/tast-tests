@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67c87e22_435b8edd",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-10T23:23:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "83d73a39_7bf74a2d",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1f041d8_eef17d2e",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I could not find a better solution. \n\nAccording to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages, \"If a subpackage actually contains the test implementation (typically because it‘s shared across several tests), it’s okay to pass testing.State to it so it can report test errors itself.\" \n\nThis function aims to run UserAction independently as subtest and reports its own result.",
       "parentUuid": "c1f041d8_eef17d2e",
+      "range": {
+        "startLine": 158,
+        "startChar": 79,
+        "endLine": 158,
+        "endChar": 88
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed58dece_dc1c7bcc",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-10T23:23:33Z",
+      "side": 1,
+      "message": "But this is not a subpackage (\"subdirectories below test files\"). As mentioned, this could be a function that creates the subtest instead of running it. \n\n@nya may have a better idea on this.",
+      "parentUuid": "ee39ed39_9d3746a0",
       "range": {
         "startLine": 158,
         "startChar": 79,
