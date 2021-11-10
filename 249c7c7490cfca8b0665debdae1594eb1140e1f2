@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b400bad2_ea1f946b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-10T22:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9215cb4d_f8c7a774",
+      "range": {
+        "startLine": 112,
+        "startChar": 66,
+        "endLine": 112,
+        "endChar": 76
+      },
+      "revId": "249c7c7490cfca8b0665debdae1594eb1140e1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "759691bd_094e8f20",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-10T21:56:25Z",
       "side": 1,
       "message": "why to remove this file twice (another one in line 104)?",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 48
+      },
+      "revId": "249c7c7490cfca8b0665debdae1594eb1140e1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be78040_1e2fff04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-10T22:07:22Z",
+      "side": 1,
+      "message": "The L104 remove is deferred clean up in the event that the removal at L114 isn\u0027t reached due to early failure. The removal at L114 is not deferred so we can immediately verify UI state in response to the file being removed :)",
+      "parentUuid": "759691bd_094e8f20",
       "range": {
         "startLine": 114,
         "startChar": 1,
