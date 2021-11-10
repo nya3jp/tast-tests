@@ -33,6 +33,23 @@
       "message": "gwsq not working, let me workaround by manual randomization (random.choice(...) in Python).\n",
       "revId": "75572de215f2a2098eb46e74ee212139ea5c07e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db04390_62f800f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-11-10T00:56:33Z",
+      "side": 1,
+      "message": "Thanks for reviewing! And fixing gwsq!",
+      "revId": "75572de215f2a2098eb46e74ee212139ea5c07e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
