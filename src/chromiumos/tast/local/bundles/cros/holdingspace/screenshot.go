@@ -10,14 +10,22 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/holdingspace"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/wmp"
 	"chromiumos/tast/testing"
 )
+
+type screenshotParams struct {
+	testfunc func(*chrome.TestConn, *uiauto.Context, string) uiauto.Action
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -31,12 +39,23 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Name: "launch",
+			Val: screenshotParams{
+				testfunc: testScreenshotLaunch,
+			},
+		}, {
+			Name: "pin_and_unpin",
+			Val: screenshotParams{
+				testfunc: testScreenshotPinAndUnpin,
+			},
+		}},
 	})
 }
 
 // Screenshot verifies screenshot behavior in holding space. It is expected that
 // capturing a screenshot will result in an item being added to holding space
-// from which the user can pin/unpin the screenshot.
+// from which the user can launch/pin/unpin the screenshot.
 func Screenshot(ctx context.Context, s *testing.State) {
 	// Connect to a fresh Chrome instance to ensure holding space first-run state.
 	cr, err := chrome.New(ctx)
@@ -81,44 +100,88 @@ func Screenshot(ctx context.Context, s *testing.State) {
 	}
 
 	// Defer clean up of the screenshot file.
-	screenshot := screenshots[0]
-	defer os.Remove(screenshot)
+	screenshotLocation := screenshots[0]
+	defer os.Remove(screenshotLocation)
 
 	// Trim screenshot filename.
-	screenshot = filepath.Base(screenshot)
+	screenshotName := filepath.Base(screenshotLocation)
 
-	if err := uiauto.Combine("pin and unpin screenshot",
+	// Perform additional parameterized testing.
+	if err := s.Param().(screenshotParams).testfunc(tconn, ui, screenshotName)(ctx); err != nil {
+		s.Fatal("Failed to perform parameterized testing: ", err)
+	}
+
+	// Remove the screenshot file. Note that this will result in any associated
+	// associated holding space items being removed.
+	if err := os.Remove(screenshotLocation); err != nil {
+		s.Fatal("Failed to remove screenshot: ", err)
+	}
+
+	// Ensure all holding space chips and views associated with the underlying
+	// screenshot are removed when the backing file is removed.
+	if err := uiauto.Combine("remove associated chips and views",
+		ui.WaitUntilGone(holdingspace.FindChip().Name(screenshotName)),
+		ui.WaitUntilGone(holdingspace.FindScreenCaptureView().Name(screenshotName)))(ctx); err != nil {
+		s.Fatal("Failed to remove associated chips and views: ", err)
+	}
+}
+
+// testScreenshotLaunch performs testing of launching a screenshot.
+func testScreenshotLaunch(
+	tconn *chrome.TestConn, ui *uiauto.Context, screenshotName string) uiauto.Action {
+	return uiauto.Combine("launch screenshot",
+		// Left click the tray to open the bubble.
+		ui.LeftClick(holdingspace.FindTray()),
+
+		// Double click the screenshot view. This will wait until the screenshot
+		// view exists and stabilizes before performing the double click.
+		ui.DoubleClick(holdingspace.FindScreenCaptureView().Name(screenshotName)),
+
+		// Ensure the Gallery app is launched.
+		func(ctx context.Context) error {
+			return ash.WaitForApp(ctx, tconn, apps.Gallery.ID, 5*time.Second)
+		},
+
+		// Ensure that the screenshot file is opened in the Gallery app.
+		ui.WaitUntilExists(nodewith.
+			Ancestor(nodewith.NameStartingWith(apps.Gallery.Name).HasClass("BrowserFrame")).
+			Role(role.Image).Name(screenshotName)),
+	)
+}
+
+// testScreenshotPinAndUnpin performs testing of pinning and unpinning a screenshot.
+func testScreenshotPinAndUnpin(
+	tconn *chrome.TestConn, ui *uiauto.Context, screenshotName string) uiauto.Action {
+	return uiauto.Combine("pin and unpin screenshot",
 		// Left click the tray to open the bubble.
 		ui.LeftClick(holdingspace.FindTray()),
 
 		// Right click the screenshot view. This will wait until the screenshot view
 		// exists and stabilizes before showing the context menu.
-		ui.RightClick(holdingspace.FindScreenCaptureView().Name(screenshot)),
+		ui.RightClick(holdingspace.FindScreenCaptureView().Name(screenshotName)),
 
 		// Left click the "Pin" context menu item. This will result in the creation
 		// of a pinned holding space item backed by the same screenshot.
 		ui.LeftClick(holdingspace.FindContextMenuItem().Name("Pin")),
 
 		// Ensure that a chip is added to holding space for the pinned item.
-		ui.WaitUntilExists(holdingspace.FindPinnedFileChip().Name(screenshot)),
+		ui.WaitUntilExists(holdingspace.FindPinnedFileChip().Name(screenshotName)),
 
 		// Right click the screenshot view to show the context menu.
-		ui.RightClick(holdingspace.FindScreenCaptureView().Name(screenshot)),
+		ui.RightClick(holdingspace.FindScreenCaptureView().Name(screenshotName)),
 
 		// Left click the "Unpin" context menu item. This will result in the pinned
 		// holding space item backed by the same screenshot being destroyed.
 		ui.LeftClick(holdingspace.FindContextMenuItem().Name("Unpin")),
 
 		// Ensure that the pinned file chip is removed from holding space.
-		ui.WaitUntilGone(holdingspace.FindPinnedFileChip().Name(screenshot)),
-		ui.EnsureGoneFor(holdingspace.FindPinnedFileChip().Name(screenshot), 5*time.Second),
+		ui.WaitUntilGone(holdingspace.FindPinnedFileChip().Name(screenshotName)),
+		ui.EnsureGoneFor(holdingspace.FindPinnedFileChip().Name(screenshotName), 5*time.Second),
 
 		// Ensure that the screenshot view continues to exist despite the pinned
 		// holding space item associated with the same screenshot file being destroyed.
-		ui.Exists(holdingspace.FindScreenCaptureView().Name(screenshot)),
-	)(ctx); err != nil {
-		s.Fatal("Failed to pin and unpin screenshot: ", err)
-	}
+		ui.Exists(holdingspace.FindScreenCaptureView().Name(screenshotName)),
+	)
 }
 
 // getScreenshots returns the names of screenshot files present in the users
