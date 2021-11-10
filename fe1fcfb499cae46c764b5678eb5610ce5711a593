@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c759131_d9c74c52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-10T23:05:28Z",
+      "side": 1,
+      "message": "I think this CL is too big. Is possible to split it to a chain of CLs? Something like, one CL for new user_action library and then one CL for each test. Also, I cannot find any unit test for the new user_action. Is it possible to add a few unit tests? Thanks.",
+      "revId": "fe1fcfb499cae46c764b5678eb5610ce5711a593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73501a46_8566ff41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/inputactions/user_actions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-10T23:05:28Z",
+      "side": 1,
+      "message": "nit: there is a lot of idents in here which make it hard to read. Is it possible to assign one or two of this function to variables to reduce the number of scopes here.",
+      "revId": "fe1fcfb499cae46c764b5678eb5610ce5711a593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
