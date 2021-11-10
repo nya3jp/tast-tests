@@ -24,6 +24,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/input"
 	lacrosservice "chromiumos/tast/services/cros/lacros"
 	"chromiumos/tast/testing"
 )
@@ -66,6 +68,25 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 	// Open Lacros.
 	expectedVersionedLacrosDir := filepath.Join("/run/imageloader", req.ExpectedComponent, req.ExpectedVersion)
 	expectedVersionedLacrosPath := filepath.Join(expectedVersionedLacrosDir, "chrome")
+
+	// Start a screen recording for troubleshooting a failure in launching Lacros.
+	kb, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to setup keyboard for screen recording: ", err)
+	}
+	saveRecordLog := true
+	if err := uiauto.StartRecordFromKB(ctx, tconn, kb); err != nil {
+		testing.ContextLog(ctx, "Failed to start screen recording on DUT: ", err)
+		saveRecordLog = false
+	}
+	// Save the screen record log only when it fails or returns with an error.
+	defer func() {
+		if err := os.MkdirAll(lacroscommon.LacrosFailLogDir, 0755); err != nil {
+			testing.ContextLogf(ctx, "Fail to create a lacros faillog directory on DUT: %v, %v", lacroscommon.LacrosFailLogDir, err)
+		}
+		uiauto.StopRecordFromKBAndSaveOnError(ctx, tconn, func() bool { return saveRecordLog }, lacroscommon.LacrosFailLogDir)
+	}()
+
 	l, err := lacros.LaunchFromShelf(ctx, tconn, expectedVersionedLacrosDir)
 	if err != nil {
 		// TODO(crbug.com/1258664): Log shelf items in case the Lacros app is neither launched nor shown.
@@ -113,6 +134,9 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 		}
 		status = lacrosservice.TestResult_PASSED
 	}
+
+	// Don't save a screen record log if the test is passed.
+	saveRecordLog = (status != lacrosservice.TestResult_PASSED)
 
 	return &lacrosservice.VerifyUpdateResponse{
 		Result: &lacrosservice.TestResult{Status: status, StatusDetails: statusDetails},

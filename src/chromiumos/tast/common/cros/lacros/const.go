@@ -11,6 +11,7 @@ const (
 	// LacrosUserDataDir is the directory that contains the user data of Lacros.
 	LacrosUserDataDir       = "/home/chronos/user/lacros/"
 	LacrosRootComponentPath = "/home/chronos/cros-components/"
+	LacrosFailLogDir        = "/tmp/lacros_faillog/"
 )
 
 // For Lacros update tests and services
