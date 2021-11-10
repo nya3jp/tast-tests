@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5d52c33_a0fd3817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-11-10T10:53:05Z",
+      "side": 1,
+      "message": "Hello Jeremy,\n\nBased on the results from Stainless, this test failed to run on a few platforms due to the \"Failed to hibernate\" error. I\u0027ve modified ECHibernate to use a testing.Poll function instead of hibernate delay, and added fw-testing-config to read whether EC hibernate is supported. I\u0027ve tested this new patch on the following boards: volteer, dedede, zork, kukui, and octopus, on which hibernation turned out to be consistently successful. I\u0027m hoping that this would improve the status in the lab as well. ",
+      "revId": "fdccc24fac7ef9d0c269731290a68ca7e2c38361",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
