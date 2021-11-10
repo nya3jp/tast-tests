@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bbe05de_49a98504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-10T22:30:44Z",
+      "side": 1,
+      "message": "Sure thing! Done :)",
+      "parentUuid": "3f2519b2_2fdc189b",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 48
+      },
+      "revId": "249c7c7490cfca8b0665debdae1594eb1140e1f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b890d48e_872a9067",
