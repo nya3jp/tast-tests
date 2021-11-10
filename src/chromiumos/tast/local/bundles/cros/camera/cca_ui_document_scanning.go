@@ -135,7 +135,6 @@ func CCAUIDocumentScanning(ctx context.Context, s *testing.State) {
 	subTestTimeout := 30 * time.Second
 	for _, tst := range s.Param().([]documentScanSubTest) {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
-		defer cancel()
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
 			if err := runSubTest(ctx, func(ctx context.Context, app *cca.App) error {
 				return tst.run(ctx, app, s.FixtValue().(cca.FixtureData).Chrome)
@@ -143,6 +142,7 @@ func CCAUIDocumentScanning(ctx context.Context, s *testing.State) {
 				s.Errorf("Failed to pass %v subtest: %v", tst.name, err)
 			}
 		})
+		cancel()
 	}
 }
 
