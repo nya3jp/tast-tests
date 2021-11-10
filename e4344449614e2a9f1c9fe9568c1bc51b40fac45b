@@ -1,0 +1,160 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f9062f_2b0f4d1d",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-10T20:49:34Z",
+      "side": 1,
+      "message": "you don\u0027t need to export this or the RadioTapFCSValid() filter",
+      "revId": "e4344449614e2a9f1c9fe9568c1bc51b40fac45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74bc882f_2a7da7f3",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-10T20:49:34Z",
+      "side": 1,
+      "message": "sp",
+      "range": {
+        "startLine": 58,
+        "startChar": 27,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "e4344449614e2a9f1c9fe9568c1bc51b40fac45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c83660_89e35fe6",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-10T20:49:34Z",
+      "side": 1,
+      "message": "calculate",
+      "range": {
+        "startLine": 60,
+        "startChar": 35,
+        "endLine": 60,
+        "endChar": 44
+      },
+      "revId": "e4344449614e2a9f1c9fe9568c1bc51b40fac45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85e98887_110b140c",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-10T20:49:34Z",
+      "side": 1,
+      "message": "\u003e \"funcion\" is a possible misspelling of \"function\".\n\nPlease fix.",
+      "parentUuid": "de65ca36_ea3dacba",
+      "range": {
+        "startLine": 62,
+        "startChar": 65,
+        "endLine": 62,
+        "endChar": 72
+      },
+      "revId": "e4344449614e2a9f1c9fe9568c1bc51b40fac45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1796f75_4c1824de",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-10T20:49:34Z",
+      "side": 1,
+      "message": "rm and don\u0027t export",
+      "range": {
+        "startLine": 61,
+        "startChar": 64,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "e4344449614e2a9f1c9fe9568c1bc51b40fac45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd4af52f_b050a389",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-10T20:49:34Z",
+      "side": 1,
+      "message": "why not just inline this?",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 16
+      },
+      "revId": "e4344449614e2a9f1c9fe9568c1bc51b40fac45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1de336e0_08d34c1b",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-10T20:49:34Z",
+      "side": 1,
+      "message": "sp",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 15
+      },
+      "revId": "e4344449614e2a9f1c9fe9568c1bc51b40fac45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
