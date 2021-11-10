@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23237c19_91d05de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-11-10T17:17:41Z",
+      "side": 1,
+      "message": "\u003e\u003e would be much easier to just change the value for a given variant very quickly\nper my exp: for local testing it is easier to change one occurrence rather then scroll and see what is for what.\nfor production we submit code only when it is actually needed. For your situation it is NOP. In this case I would just discard it and add when we actually need this.\nOther concerns:\nDo we really want retry here? Is it suppose to be promoted to CQ? I would recommend to leave it as is. If managed provisioning is unhealthy this is good indication that something wrong. If it healthy, what is the purpose of retry?\nThis is key ARC functionality, hiding the flakiness of provisioning behind the retry is not good option.",
+      "parentUuid": "51c500bc_2de1877c",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "46c1885b20a9fff40d455212944544eb437ace58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51b275ce_bb579b54",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
         "patchSetId": 1
