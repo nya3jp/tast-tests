@@ -16,6 +16,23 @@
       "message": "Hidehiko, I think this change doesn\u0027t necessarily need to be blocked on https://crbug.com/1268252 (--no-startup-window or something similar if lacros is primary) as there are extra setup steps to ensure that there is no top level window before each test starts. The workaround could be removed once the blocker is resolved. Can you PTAL?",
       "revId": "1cedbe05d1461fb8904efa820e3d840ac56aee2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eff53ad6_8b7b20b3",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-10T14:04:44Z",
+      "side": 1,
+      "message": "instead, could you close all windows, if that\u0027s an intention?\nIIUC, it is not the intention to forcibly terminate the lacros-chrome if exists here, right?\n\nNote that there\u0027s on-going effort to support \"keep-alive\", which is to run lacros without window in background if some OS feature needs it.\nThis will conflict with the feature.",
+      "revId": "1cedbe05d1461fb8904efa820e3d840ac56aee2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
