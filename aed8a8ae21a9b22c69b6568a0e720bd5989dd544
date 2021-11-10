@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62e41297_d7632982",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-11-10T23:41:50Z",
+      "side": 1,
+      "message": "Looks good, do you plan to also add a check to see if the device is supposed to go into those states (by checking the suspend mode is \"freeze\" as autotest does) in the following CL?",
+      "revId": "aed8a8ae21a9b22c69b6568a0e720bd5989dd544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
