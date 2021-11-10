@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d5a3a11_69de4ee9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-10T18:09:54Z",
+      "side": 1,
+      "message": "nit: missing `.` at end of sentence",
+      "revId": "437e46dee7d5d96fe4c1e12a1fe1a0fb20f172ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
