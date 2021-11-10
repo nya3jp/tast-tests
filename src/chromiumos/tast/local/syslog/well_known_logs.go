@@ -10,4 +10,7 @@ const (
 
 	// ChromeLogFile is a symlink to the current Chrome log.
 	ChromeLogFile = "/var/log/chrome/chrome"
+
+	// NetLogFile is the name of network log.
+	NetLogFile = "/var/log/net.log"
 )
