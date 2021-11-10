@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d9bf4b2_6d788f42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_document_scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-10T06:37:22Z",
+      "side": 0,
+      "message": "how about putting these two lines inside of the subtest function?\ns.Run(ctx, tst.name, func(ctx context.Context, s *testing.State) {\n    subTestCtx, cancel :\u003d context.WithTimeout(ctx, subTestTimeout)\n    defer cancel()\n    ...\n})",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 16
+      },
+      "revId": "0e02e60ee5a49f27c74d0d7c2905c8e06229273e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
