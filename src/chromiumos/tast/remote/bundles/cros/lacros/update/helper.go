@@ -7,7 +7,10 @@ package update
 
 import (
 	"context"
+	"fmt"
+	"os"
 	"path/filepath"
+	"strings"
 
 	lacroscommon "chromiumos/tast/common/cros/lacros"
 	"chromiumos/tast/dut"
@@ -111,12 +114,41 @@ func VerifyLacrosUpdate(ctx context.Context, overrideVersion, overrideComponent 
 
 // SaveLogsFromDut saves device logs that are useful for troubleshooting test failures.
 func SaveLogsFromDut(ctx context.Context, dut *dut.DUT, logOutDir string) {
+	// Save lacros log.
 	const logFileName = "lacros.log"
-
 	logPathSrc := filepath.Join(lacroscommon.LacrosUserDataDir, logFileName)
 	logPathDst := filepath.Join(logOutDir, logFileName)
 	if err := linuxssh.GetFile(ctx, dut.Conn(), logPathSrc, logPathDst, linuxssh.PreserveSymlinks); err != nil {
 		testing.ContextLogf(ctx, "Failed to save %s to %s. Error: %s", logPathSrc, logPathDst, err)
+	}
+
+	// Save allowed faillogs.
+	failLogOutDir := filepath.Join(logOutDir, "lacros_faillog")
+	const allowedFailLogFileExt = "webm"
+	out, err := dut.Conn().CommandContext(ctx, "ls", lacroscommon.LacrosFailLogDir).Output()
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get list of faillogs on DUT: ", err)
+	}
+	for i, failLogFile := range strings.Split(string(out), "\n") {
+		failLogFile = strings.TrimSpace(failLogFile)
+		if len(failLogFile) == 0 {
+			continue
+		}
+		if _, err := os.Stat(failLogOutDir); os.IsNotExist(err) {
+			os.MkdirAll(failLogOutDir, 0755)
+		}
+		if strings.HasSuffix(failLogFile, allowedFailLogFileExt) {
+			logPathSrc := filepath.Join(lacroscommon.LacrosFailLogDir, failLogFile)
+			logPathDst := filepath.Join(failLogOutDir, fmt.Sprintf("screenrecord_lacros.%d.%s", i, allowedFailLogFileExt))
+			if err := linuxssh.GetFile(ctx, dut.Conn(), logPathSrc, logPathDst, linuxssh.PreserveSymlinks); err != nil {
+				testing.ContextLogf(ctx, "Failed to save %s to %s. Error: %s", logPathSrc, logPathDst, err)
+			}
+		}
+	}
+
+	// Delete the existing faillogs from DUT so that we can pull out clean logs for each test run.
+	if err := dut.Conn().CommandContext(ctx, "rm", "-rf", lacroscommon.LacrosFailLogDir).Run(); err != nil {
+		testing.ContextLog(ctx, "Failed to remove the lacros faillogs on DUT at end of test: ", err)
 	}
 }
 
