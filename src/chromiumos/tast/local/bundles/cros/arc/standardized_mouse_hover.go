@@ -52,6 +52,8 @@ func StandardizedMouseHover(ctx context.Context, s *testing.State) {
 }
 
 func runStandardizedMouseHoverTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
+	const intentStartHoverTest = "org.chromium.arc.testapp.arcstandardizedinputtest.ACTION_START_HOVER_TEST"
+
 	// Setup the mouse.
 	mouse, err := input.Mouse(ctx)
 	if err != nil {
@@ -60,19 +62,24 @@ func runStandardizedMouseHoverTest(ctx context.Context, testParameters standardi
 	defer mouse.Close()
 
 	// Setup selectors.
-	btnStartHoverTestSelector := testParameters.Device.Object(ui.ID(testParameters.AppPkgName + ":id/btnStartHoverTest"))
 	txtHoverEnterID := testParameters.AppPkgName + ":id/txtHoverEnterState"
 	txtHoverExitID := testParameters.AppPkgName + ":id/txtHoverExitState"
 	txtStatusSelector := testParameters.Device.Object(ui.ID(testParameters.AppPkgName + ":id/txtStatus"))
+	txtToHoverSelector := testParameters.Device.Object(ui.ID(testParameters.AppPkgName + ":id/txtToHover"))
+
+	// Move over the status element so that starting the test doesn't immediately trigger a hover event.
+	if err := standardizedtestutil.MouseMoveOntoObject(ctx, testParameters, txtStatusSelector, mouse); err != nil {
+		return errors.Wrap(err, "failed to move the mouse onto the status element")
+	}
 
 	// Ensure the app is in the initial state.
 	if err := txtStatusSelector.WaitForText(ctx, "Status: Not Started", standardizedtestutil.ShortUITimeout); err != nil {
 		return errors.Wrap(err, "failed to ensure test hasn't started")
 	}
 
-	// Click to start the test.
-	if err := standardizedtestutil.MouseClickObject(ctx, testParameters, btnStartHoverTestSelector, mouse, standardizedtestutil.LeftPointerButton); err != nil {
-		return errors.Wrap(err, "failed to click the button to start the test")
+	// Start the test.
+	if _, err := testParameters.Arc.BroadcastIntent(ctx, intentStartHoverTest); err != nil {
+		return errors.Wrap(err, "failed to start the test")
 	}
 
 	// Ensure the test is ready.
@@ -81,7 +88,6 @@ func runStandardizedMouseHoverTest(ctx context.Context, testParameters standardi
 	}
 
 	// Move over the hover element.
-	txtToHoverSelector := testParameters.Device.Object(ui.ID(testParameters.AppPkgName + ":id/txtToHover"))
 	if err := standardizedtestutil.MouseMoveOntoObject(ctx, testParameters, txtToHoverSelector, mouse); err != nil {
 		return errors.Wrap(err, "failed to move the mouse onto the hover element")
 	}

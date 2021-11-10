@@ -7,30 +7,50 @@
 package org.chromium.arc.testapp.arcstandardizedinputtest;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class HoverTestActivity extends Activity {
+    // Intent which starts the hover test.
+    private static final String ACTION_START_HOVER_TEST =
+            "org.chromium.arc.testapp.arcstandardizedinputtest.ACTION_START_HOVER_TEST";
+
     private boolean mIsTestStarted = false;
+
+    // Watches for broadcasted intents to respond to.
+    BroadcastReceiver mReceiver =
+            new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    switch (intent.getAction()) {
+                        case ACTION_START_HOVER_TEST:
+                            mIsTestStarted = true;
+                            TextView txtStatus = findViewById(R.id.txtStatus);
+                            txtStatus.setText("Status: Started");
+                            break;
+                        default:
+                            // Do nothing
+                            break;
+                    }
+
+                    setResultCode(Activity.RESULT_OK);
+                }
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hover_test);
 
-        // Don't start the test until the button is clicked. This helps to ensure that the mouse
-        // isn't in a random location at the start of the test, which could cause the events to
-        // trigger
-        // before the test was ready.
-        Button btnStartHoverTest = findViewById(R.id.btnStartHoverTest);
-        btnStartHoverTest.setOnClickListener(
-                v -> {
-                    mIsTestStarted = true;
-                    TextView txtStatus = findViewById(R.id.txtStatus);
-                    txtStatus.setText("Status: Started");
-                });
+        // Setup a broadcast receiver to allow the test state to be managed externally.
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ACTION_START_HOVER_TEST);
+        registerReceiver(mReceiver, intentFilter);
 
         TextView txtToHover = findViewById(R.id.txtToHover);
         txtToHover.setOnHoverListener(

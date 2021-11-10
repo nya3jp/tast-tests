@@ -31,12 +31,6 @@
       android:layout_height="wrap_content"
       android:text="HOVER EXIT: PENDING"/>
 
-  <Button
-      android:id="@+id/btnStartHoverTest"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="Start Hover Test" />
-
   <TextView
       android:id="@+id/txtToHover"
       android:layout_width="match_parent"
