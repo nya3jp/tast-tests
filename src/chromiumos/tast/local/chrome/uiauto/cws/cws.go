@@ -77,3 +77,19 @@ func InstallApp(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 	}
 	return nil
 }
+
+// UninstallApp uninstalls the specified Chrome app from the Chrome Web Store.
+func UninstallApp(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, app App) error {
+	cws, err := cr.NewConn(ctx, app.URL)
+	if err != nil {
+		return err
+	}
+	defer cws.Close()
+	defer cws.CloseTarget(ctx)
+
+	ui := uiauto.New(tconn)
+	return uiauto.Combine("uninstall the extension from CWS",
+		ui.LeftClick(nodewith.Role(role.Button).Name("Remove from Chrome").First()),
+		ui.LeftClick(nodewith.Role(role.Button).Name("Remove")),
+	)(ctx)
+}
