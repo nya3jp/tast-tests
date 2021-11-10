@@ -8,9 +8,10 @@ package ad
 
 import (
 	"context"
-	"reflect"
 
 	"github.com/golang/protobuf/proto"
+	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 
 	kp "chromiumos/system_api/kerberos_proto"
 	"chromiumos/tast/local/bundles/cros/ad/kerberos"
@@ -86,15 +87,16 @@ func KerberosDaemon(ctx context.Context, s *testing.State) {
 	}
 	badConfigError := kp.ErrorType_ERROR_BAD_CONFIG
 	badConfigErrorCode := kp.ConfigErrorCode_CONFIG_ERROR_KEY_NOT_SUPPORTED
-	expectedResp := kp.ValidateConfigResponse{
+	expectedResp := &kp.ValidateConfigResponse{
 		Error: &badConfigError,
 		ErrorInfo: &kp.ConfigErrorInfo{
 			Code:      &badConfigErrorCode,
 			LineIndex: proto.Int32(1),
 		},
 	}
-	if !reflect.DeepEqual(validateResp, &expectedResp) {
-		s.Fatalf("ValidateConfig returned unexpected response: got %q; want %q", validateResp.String(), expectedResp.String())
+
+	if diff := cmp.Diff(validateResp, expectedResp, protocmp.Transform()); diff != "" {
+		s.Fatal("ValidateConfigResponse message mismatch (-got +want): ", diff)
 	}
 
 	// Acquire a Kerberos ticket.
@@ -119,7 +121,7 @@ func KerberosDaemon(ctx context.Context, s *testing.State) {
 	}
 
 	acc := listResp.Accounts[0]
-	expectedAcc := kp.Account{
+	expectedAcc := &kp.Account{
 		PrincipalName:         proto.String(user),
 		Krb5Conf:              []byte(validConfig),
 		TgtValiditySeconds:    nil,
@@ -128,8 +130,9 @@ func KerberosDaemon(ctx context.Context, s *testing.State) {
 		PasswordWasRemembered: proto.Bool(true),
 		UseLoginPassword:      proto.Bool(false),
 	}
-	if !reflect.DeepEqual(acc, &expectedAcc) {
-		s.Fatalf("Unexpected account: got %q; want %q", acc.String(), expectedAcc.String())
+
+	if diff := cmp.Diff(acc, expectedAcc, protocmp.Transform()); diff != "" {
+		s.Fatal("Account message mismatch (-got +want): ", diff)
 	}
 
 	// Get files.
