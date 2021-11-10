@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "cc358726bf31dcb77e5ded3c487009359d5fddc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1be685_904e19c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-11-10T00:36:57Z",
+      "side": 1,
+      "message": "Before submitting this it is probably worth filing a new bug against the factory toolkit itself rather than the test, and including that bug on this CL.",
+      "revId": "cc358726bf31dcb77e5ded3c487009359d5fddc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
