@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33b33d34_4776de63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/exo_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-11-11T19:02:02Z",
+      "side": 1,
+      "message": "Graphics tests which are testing Chrome should not be in mainline. Please move this to \"group:graphics\", \"graphics_nightly\"},",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "cd88bba4dd652ed79b0cb996a8053e59683bba7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
