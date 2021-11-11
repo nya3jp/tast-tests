@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5bf4dc7_f39fae84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313381
+      },
+      "writtenOn": "2021-11-11T17:07:34Z",
+      "side": 1,
+      "message": "Hi Victor, could you please review this change as the owner of the */policy/download_restrictions.go? :)",
+      "revId": "9e4dcbd9dacd62e797a97c419e6972ed3ad46aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
