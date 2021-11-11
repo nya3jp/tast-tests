@@ -33,6 +33,24 @@
       "message": "crrev.com/c/3274741 can help you, I think.",
       "revId": "b02e07caf15ec6eabaa42e542e7cfe32a01cb5df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec75771_b0ee1012",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-11T09:26:14Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll abandon this CL then. Thanks!",
+      "parentUuid": "e5ca056f_20730387",
+      "revId": "b02e07caf15ec6eabaa42e542e7cfe32a01cb5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
