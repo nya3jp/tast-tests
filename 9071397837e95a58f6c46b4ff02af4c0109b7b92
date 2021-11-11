@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "79e3186b_e383cdd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-11T03:37:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffd6970c_a5853214",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "9071397837e95a58f6c46b4ff02af4c0109b7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b2d6beb0_2bbf23cd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 11
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa768f47_8dab1f3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-11T03:37:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45a4633c_86806d54",
+      "range": {
+        "startLine": 139,
+        "startChar": 11,
+        "endLine": 139,
+        "endChar": 48
+      },
+      "revId": "9071397837e95a58f6c46b4ff02af4c0109b7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55755431_1ae49bff",
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09503d54_f82ab69b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-11T03:37:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55755431_1ae49bff",
+      "range": {
+        "startLine": 35,
+        "startChar": 54,
+        "endLine": 35,
+        "endChar": 56
+      },
+      "revId": "9071397837e95a58f6c46b4ff02af4c0109b7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "333c0b54_318392d8",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-11-05T10:38:11Z",
       "side": 1,
       "message": "header.",
+      "range": {
+        "startLine": 53,
+        "startChar": 17,
+        "endLine": 53,
+        "endChar": 23
+      },
+      "revId": "9071397837e95a58f6c46b4ff02af4c0109b7b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a23327f_b4fbca47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-11T03:37:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "333c0b54_318392d8",
       "range": {
         "startLine": 53,
         "startChar": 17,

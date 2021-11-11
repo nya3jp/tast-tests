@@ -188,6 +188,30 @@
       },
       "revId": "eeef561739114bcaac4a28581e31492d77685322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca4ee83_ac86f60f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-11T03:37:45Z",
+      "side": 1,
+      "message": "I updated the script to check for the mandatory files in the fw dump and I tested the script with two valid {YOYO_MAGIC, non_YOYO_MAGIC} and the non valid fw dumps above:\n\n1- All none valid fw dump have falied as expected.\n\n2- Valid non YOYO_MAGIC has passed as expected.\n\nHowever,\n3- valid YOYO_MAGIC has falied but the perl script falied as well, so there could be either an issue with the YOYO_MAGIC fw dumps or the expected required files are different.",
+      "parentUuid": "99951f49_57811140",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "eeef561739114bcaac4a28581e31492d77685322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

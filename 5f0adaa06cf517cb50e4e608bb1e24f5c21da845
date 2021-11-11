@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f17795_ccde2626",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-11T03:37:45Z",
+      "side": 1,
+      "message": "\u003e \"orignal\" is a possible misspelling of \"original\".\n\nPlease fix.",
+      "parentUuid": "00c3e25a_8eed185c",
+      "range": {
+        "startLine": 21,
+        "startChar": 21,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "5f0adaa06cf517cb50e4e608bb1e24f5c21da845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
