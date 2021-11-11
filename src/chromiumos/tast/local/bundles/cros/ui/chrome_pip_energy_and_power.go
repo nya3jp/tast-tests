@@ -186,25 +186,8 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 
 	if params.bigPIP {
-		switch params.chromeType {
-		case lacros.ChromeTypeChromeOS:
-			maxWidth := info.WorkArea.Width / 2
-			maxHeight := info.WorkArea.Height / 2
-			// Expect the PIP window to have either the maximum width or the maximum
-			// height, depending on how their ratio compares with 4x3.
-			if maxWidth*3 <= maxHeight*4 {
-				if pipWindowBounds.Width != maxWidth {
-					s.Fatalf("PIP window is %v (after resize attempt). It should have width %d", pipWindowBounds.Size(), maxWidth)
-				}
-			} else {
-				if pipWindowBounds.Height != maxHeight {
-					s.Fatalf("PIP window is %v (after resize attempt). It should have height %d", pipWindowBounds.Size(), maxHeight)
-				}
-			}
-		case lacros.ChromeTypeLacros:
-			if pipWindowBounds.Width != 400 || pipWindowBounds.Height != 300 {
-				s.Fatalf("PIP window is %v (after resize attempt). It should be (400 x 300)", pipWindowBounds.Size())
-			}
+		if 5*pipWindowBounds.Width <= 2*info.WorkArea.Width && 5*pipWindowBounds.Height <= 2*info.WorkArea.Height {
+			s.Fatalf("Expected big PIP window. Got a %v PIP window in a %v work area", pipWindowBounds.Size(), info.WorkArea.Size())
 		}
 	} else {
 		// The minimum size of a Chrome PIP window is 260x146. The aspect ratio of the
