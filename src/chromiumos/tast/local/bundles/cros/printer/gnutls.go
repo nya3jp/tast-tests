@@ -32,7 +32,6 @@ func init() {
 			"group:mainline",
 			"group:paper-io",
 			"paper-io_printing",
-			"informational",
 		},
 	})
 }
