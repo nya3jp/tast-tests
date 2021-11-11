@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb5e3886_012ef2e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-11T06:45:21Z",
+      "side": 1,
+      "message": "newly",
+      "range": {
+        "startLine": 11,
+        "startChar": 52,
+        "endLine": 11,
+        "endChar": 55
+      },
+      "revId": "8bf08c44ad8f140eb24731b21a15e0718797caaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f17f0354_ce94e29a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_fw_dump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-11T06:45:21Z",
+      "side": 1,
+      "message": "Can you add something to track the progress of rolling out new scripts?\nTODO(b/201671511): some TODOs.",
+      "range": {
+        "startLine": 32,
+        "startChar": 36,
+        "endLine": 32,
+        "endChar": 49
+      },
+      "revId": "8bf08c44ad8f140eb24731b21a15e0718797caaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
