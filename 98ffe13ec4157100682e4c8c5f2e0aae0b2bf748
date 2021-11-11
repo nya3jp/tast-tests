@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0514d7ea_16f1bb9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-11T22:40:06Z",
+      "side": 1,
+      "message": "Good catch. Fixed.",
+      "parentUuid": "8feeffed_50306eb7",
+      "revId": "98ffe13ec4157100682e4c8c5f2e0aae0b2bf748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31e45549_58bce405",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48663095_53df6e18",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-11T22:40:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31e45549_58bce405",
+      "revId": "98ffe13ec4157100682e4c8c5f2e0aae0b2bf748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c47e808a_aa74abd4",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-11-11T22:35:24Z",
       "side": 1,
       "message": "Got before want:\ngo/go-style/decisions#got-before-want",
+      "revId": "98ffe13ec4157100682e4c8c5f2e0aae0b2bf748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "010db405_01bee18e",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-11T22:40:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c47e808a_aa74abd4",
       "revId": "98ffe13ec4157100682e4c8c5f2e0aae0b2bf748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
