@@ -51,6 +51,24 @@
       "parentUuid": "eff53ad6_8b7b20b3",
       "revId": "1cedbe05d1461fb8904efa820e3d840ac56aee2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47627ad1_64fe4dc3",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-11T09:19:02Z",
+      "side": 1,
+      "message": "\u003e The intention is the latter to forcibly kill it if it\u0027s running.\n\u003e This is added to be on a par with how LaunchLacrosChromeWithURL handles a running process before launching:\n\u003e https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/chrome/lacros/launcher/launcher.go;l\u003d180;drc\u003d0ef0bf265fe3f8e0223d23cdcb876323e4507699\n\u003e \n\u003e It is not to close all windows which I believe should be controlled outside of this function for different test scenarios.\n\u003e \n\u003e Btw, I didn\u0027t know much about \"keep-alive\". Can you point me a tracker if exists so that I could leave a TODO here and also LaunchLacrosChromeWithURL.\n\u003e Does it make sense to you?\n\nUnfortunately, the CLs are being made and some are in CQ.\nI do not think it\u0027s a good idea to add new blockers now.\n\nIMO, the proper fix would be to make sure no windows are there in each callers. WDYT?",
+      "parentUuid": "98547187_90253ae2",
+      "revId": "1cedbe05d1461fb8904efa820e3d840ac56aee2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
