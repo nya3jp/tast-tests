@@ -6,7 +6,6 @@ package lacros
 
 import (
 	"context"
-	"os"
 	"path/filepath"
 
 	"chromiumos/tast/fsutil"
@@ -124,8 +123,6 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Clean up user data dir to ensure a clean start.
-	os.RemoveAll(launcher.LacrosUserDataDir)
 	if err = ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
 		s.Fatal("Failed to launch Lacros: ", err)
 	}
