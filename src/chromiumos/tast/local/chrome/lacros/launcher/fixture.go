@@ -6,6 +6,7 @@ package launcher
 
 import (
 	"context"
+	"os"
 	"path/filepath"
 	"strings"
 	"time"
@@ -328,6 +329,9 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	if extraOpts, ok := s.ParentValue().([]chrome.Option); ok {
 		opts = append(opts, extraOpts...)
 	}
+
+	// Clean up user data dir to ensure a clean start.
+	os.RemoveAll(LacrosUserDataDir)
 
 	if f.cr, err = chrome.New(ctx, opts...); err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
