@@ -7,13 +7,11 @@ package a11y
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -66,10 +64,6 @@ func init() {
 func Smoke(ctx context.Context, s *testing.State) {
 	bt := s.Param().(browser.Type)
 	s.Log("Initializing ash-chrome and/or lacros-chrome based on the target browser: ", bt)
-	if bt == browser.TypeLacros {
-		// Clean up user data dir to ensure a clean start.
-		os.RemoveAll(launcher.LacrosUserDataDir)
-	}
 	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), bt)
 	if err != nil {
 		s.Fatal("Failed to initialize setup: ", err)
