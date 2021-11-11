@@ -69,6 +69,24 @@
       "parentUuid": "98547187_90253ae2",
       "revId": "1cedbe05d1461fb8904efa820e3d840ac56aee2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c203480_dc8f77da",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-11T19:30:26Z",
+      "side": 1,
+      "message": "Done removing the code for force killing the running process before launching lacros from shelf. (let a caller ensure there is no window if necessary)",
+      "parentUuid": "47627ad1_64fe4dc3",
+      "revId": "1cedbe05d1461fb8904efa820e3d840ac56aee2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
