@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f89c2614_116b247b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-11T06:53:56Z",
+      "side": 1,
+      "message": "Ran over a dozen of times on a leased volteer seeing all passing. I\u0027m about to run on many boards for certain times. Can trydot automatically do that?",
+      "parentUuid": "347c42fb_cc50973a",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "fe0ddf46382df89f8804da67f5d84c458ad94a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd8c96be_9e19c8ff",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-11T01:30:12Z",
       "side": 1,
       "message": "actually, can\u0027t you just inline both of these?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 4
+      },
+      "revId": "fe0ddf46382df89f8804da67f5d84c458ad94a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc2efeee_2af60e6e",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-11T06:53:56Z",
+      "side": 1,
+      "message": "Sure, they can both be inlined.",
+      "parentUuid": "fd8c96be_9e19c8ff",
       "range": {
         "startLine": 86,
         "startChar": 0,
