@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddaa5f73_d0c73754",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-11T03:31:39Z",
+      "side": 1,
+      "message": "\u003e \"Chaning\" is a possible misspelling of \"Chaining\" or \"Changing\".\n\nPlease fix.",
+      "parentUuid": "475ab65f_64f86895",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "5d7b95ed9c60b6c2510bd7fb48d6894083a6b7aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
