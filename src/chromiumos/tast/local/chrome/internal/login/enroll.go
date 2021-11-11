@@ -128,11 +128,9 @@ func matchTargetDomains(ctx context.Context, sess *driver.Session, fullDomain, u
 
 		q := u.Query()
 		clientID := q.Get("client_id")
-		managedDomain := q.Get("manageddomain")
 		flowName := q.Get("flowName")
 
 		if !strings.Contains(clientID, "apps.googleusercontent.com") ||
-			!strings.Contains(managedDomain, userDomain) ||
 			!strings.Contains(flowName, "SetupChromeOs") {
 			return false
 		}
