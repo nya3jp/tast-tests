@@ -16,6 +16,23 @@
       "message": "Hey Hidehiko, can you please take a look of this CL? Thanks.",
       "revId": "8cbdd904e5290ee595eb1e80b3af25e1581f6684",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b176611_55e88855",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314247
+      },
+      "writtenOn": "2021-11-11T09:00:27Z",
+      "side": 1,
+      "message": "Hey Hidehiko, I have a question about the CL landing order, should I:\n1. Land CL to disable keep alive for all lacros tast tests including launching from UI\n2. Land the keep lacros alive CL in chromium\n3. Fix the launch from UI tast tests to have keep alive enable and move the user directory clean up\n\nOR\n\n1. Land CL to disable keep alive only for launch lacros from command line tests\n2. Land CL to move the user directory clean up for lanch lacros from shelf tests\n3. Land the keep alive CL in chromium?",
+      "revId": "8cbdd904e5290ee595eb1e80b3af25e1581f6684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
