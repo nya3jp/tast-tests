@@ -146,7 +146,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	}
 	downloadsFolder := filepath.Join(userPath, "MyFiles", "Downloads")
 
-	subTestTimeout := 20 * time.Second
+	subTestTimeout := 40 * time.Second
 	for _, tc := range []struct {
 		Name          string
 		IntentOptions intentOptions
