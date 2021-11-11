@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0d7ae400_4e397b18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_captive_portal.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-11-11T11:56:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e531f0e_d89493e2",
+      "range": {
+        "startLine": 57,
+        "startChar": 36,
+        "endLine": 57,
+        "endChar": 39
+      },
+      "revId": "fd8fc4ea9c3f3e74c1bd51ee5fcee9368ecadcdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bd91b117_7b388612",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_captive_portal.go",
         "patchSetId": 3
@@ -77,6 +101,30 @@
       "writtenOn": "2021-11-11T06:32:08Z",
       "side": 1,
       "message": "This should definitely work for purpose of this test, but this is slightly different from the typical captive portal response.\n\nUsually the traffic is not dropped but:\n  - the http probe gets a 302\n  - the https probe gets a SSL level error.\nBut note that there are other types of responses that can be observed.  \n  \nThe reason why it is safe to just block the traffic is because shill will consider the case where DNS or HTTP(S) probes are failing as a \"no connectivity\" scenarios. This should move the Service connection state to kStateNoConnectivity.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 53
+      },
+      "revId": "fd8fc4ea9c3f3e74c1bd51ee5fcee9368ecadcdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "610c32e9_9c1497cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_captive_portal.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-11-11T11:56:38Z",
+      "side": 1,
+      "message": "Yes it was written specifically for shill",
+      "parentUuid": "298d057c_e62b43cb",
       "range": {
         "startLine": 109,
         "startChar": 0,
