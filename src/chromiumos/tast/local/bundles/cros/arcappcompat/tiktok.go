@@ -168,7 +168,7 @@ func launchAppForTiktok(ctx context.Context, s *testing.State, tconn *chrome.Tes
 		s.Fatal("Failed to click on startWatchingButton: ", err)
 	}
 
-	if currentAppPkg, err := testutil.CurrentAppPackage(ctx, d); err != nil {
+	if currentAppPkg, err := testutil.CurrentAppPackage(ctx, d, s); err != nil {
 		s.Fatal("Failed to get current app package: ", err)
 	} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" && currentAppPkg != "com.google.android.permissioncontroller" {
 		s.Fatalf("Failed to launch after login: incorrect package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
