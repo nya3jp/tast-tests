@@ -56,6 +56,30 @@
       },
       "revId": "7fa87b992df1ee31869ac942d60252037eb5643b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f77009d9_7d738c1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_shared_managed_guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-11-11T15:52:17Z",
+      "side": 1,
+      "message": "Thanks for the review! Yep, the DeviceRestrictedManagedGuestSessionEnabled is being tested here, but the focus of the test is on the API calls and session flow (launch, lock, unlock).\n\nI\u0027m currently working on a CL which tests that ending the session is done correctly. Will add the non-happy path tests after that CL.",
+      "parentUuid": "e34bd10e_0ac165f4",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 72
+      },
+      "revId": "7fa87b992df1ee31869ac942d60252037eb5643b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
