@@ -110,6 +110,30 @@
       },
       "revId": "c37b5a257c04ba5585f64f9c4707cff7290edb0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de23189c_8803ca4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_settings_sections.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-11T11:08:45Z",
+      "side": 1,
+      "message": "Sounds good. If you want and will have time and interest we could do a specification based test design approach -\u003e e.g. using decision table testing to come up with an optimal number of test cases.",
+      "parentUuid": "2e2c7292_92bc4ab3",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 6
+      },
+      "revId": "c37b5a257c04ba5585f64f9c4707cff7290edb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
