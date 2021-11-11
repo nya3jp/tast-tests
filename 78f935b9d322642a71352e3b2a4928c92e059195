@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb75be9_c330d08f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-11-11T20:24:53Z",
+      "side": 1,
+      "message": "It looks like your approval was automatically discarded when I uploaded the new patchset.",
+      "revId": "78f935b9d322642a71352e3b2a4928c92e059195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
