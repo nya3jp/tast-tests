@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c7d9a52_8de233be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_settings_sections.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-11T11:00:03Z",
+      "side": 1,
+      "message": "You are right, I updated the description.",
+      "parentUuid": "f2759bbb_4920d675",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 59
+      },
+      "revId": "c37b5a257c04ba5585f64f9c4707cff7290edb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef018cc6_268a311c",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-11T10:25:07Z",
       "side": 1,
       "message": "Out of curiosity and to make sure we don\u0027t to under as well as over testing. What were the criteria for selecting those cases?",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 6
+      },
+      "revId": "c37b5a257c04ba5585f64f9c4707cff7290edb0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2c7292_92bc4ab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_settings_sections.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-11T11:00:03Z",
+      "side": 1,
+      "message": "Those are the cases for pages I was changing in OS Settings recently and which had bugs related to search because of that. I still need to do some cleanup work and I want to make sure I don\u0027t break them again :)\n\nI\u0027m planning to add more cases for other settings pages to this test later, but I wanted firstly to merge it and see if the test is stable enough.",
+      "parentUuid": "ef018cc6_268a311c",
       "range": {
         "startLine": 44,
         "startChar": 4,
