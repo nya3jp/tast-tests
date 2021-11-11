@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3189081_3ddc3daa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-11T09:03:51Z",
+      "side": 1,
+      "message": "move yuhsuan@ to R, too. PTAL.",
+      "revId": "735eea39c41d0e68dbe56e04d2d177fb70c52980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e125b73a_03dc1d2c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-11T09:03:51Z",
+      "side": 1,
+      "message": "do you need this in ash-chrome?\nif so, could you comment in the commit message the reason?",
+      "revId": "735eea39c41d0e68dbe56e04d2d177fb70c52980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
