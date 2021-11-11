@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/coords"
 	pb "chromiumos/tast/local/uidetection/api"
+	"chromiumos/tast/testing"
 )
 
 // Location represents the location of a matching UI element.
@@ -76,8 +77,14 @@ func (s *Finder) Nth(nth int) *Finder {
 
 // resolve resolves the UI detection request and stores the bounding boxes
 // of the matching elements.
-func (s *Finder) resolve(ctx context.Context, d *uiDetector) error {
-	response, err := d.sendDetectionRequest(ctx, s.request)
+func (s *Finder) resolve(ctx context.Context, d *uiDetector, pollOpts testing.PollOptions) error {
+	// Take the screenshot.
+	imagePng, err := TakeStableScreenshot(ctx, pollOpts)
+	if err != nil {
+		return errors.Wrap(err, "failed to take screenshot")
+	}
+
+	response, err := d.sendDetectionRequest(ctx, imagePng, s.request)
 	if err != nil {
 		return errors.Wrap(err, "failed to resolve the UI detection request")
 	}
