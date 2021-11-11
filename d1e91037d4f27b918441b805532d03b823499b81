@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16f5d1f0_ee5cb7a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-11T06:53:30Z",
+      "side": 1,
+      "message": "Just added the similar fix in cca_ui_intent.go too. PTAL, thanks!",
+      "revId": "d1e91037d4f27b918441b805532d03b823499b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
