@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e9a057a_2e99b96b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2021-11-11T18:42:04Z",
+      "side": 1,
+      "message": "PTAL.\n\nDo you think we should add some ARC++ folks in the OWNERS file in \"tast/local/arc\" folder?",
+      "revId": "0e59fad64cf4a01c2fa17333c326929d0193f9d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
