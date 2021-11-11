@@ -24,7 +24,7 @@ func init() {
 			"jshargo@chromium.org",
 			"chromeos-gfx-compositor@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:graphics", "graphics_perbuild"},
 		Fixture:      "chromeGraphics",
 		SoftwareDeps: []string{"chrome", "no_qemu"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
