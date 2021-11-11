@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/vp9/files_from_bugs/b_177839888__rk3399_vp9_artifacts_with_video_decoder_japanews24_20211111.ivf",
+  "sha256sum": "c0a1539ad321f476c88eae494d5bb7763ae70c21e8ae411b2362e0bdbfc8d84a",
+  "size": 254280
+}
