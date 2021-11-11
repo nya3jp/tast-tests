@@ -11,7 +11,6 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"os"
-	"strings"
 
 	"github.com/mafredri/cdp/protocol/target"
 
@@ -97,37 +96,8 @@ func NewTestBridgeWithoutTestConfig(ctx context.Context, cr *chrome.Chrome, came
 	return &TestBridge{cr, pageConn, bridge, cameraType}, nil
 }
 
-func getPageConn(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, error) {
-	conn, err := cr.NewConn(ctx, "chrome://camera-app/test/test.html")
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to build connection")
-	}
-
-	shouldCloseConn := true
-	defer func() {
-		if shouldCloseConn {
-			if err := conn.Close(); err != nil {
-				testing.ContextLog(ctx, "Failed to close connection: ", conn)
-			}
-		}
-	}()
-
-	// TODO(b/173092399): Remove the fallback for legacy path when Chrome is uprev.
-	if pageContent, err := conn.PageContent(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to get page content")
-	} else if strings.Contains(pageContent, "This site can’t be reached") {
-		// Fallback to use legacy path for test page.
-		if err := conn.Navigate(ctx, "chrome://camera-app/views/test.html"); err != nil {
-			return nil, errors.Wrap(err, "failed to navigate to legacy test page")
-		}
-	}
-
-	shouldCloseConn = false
-	return conn, nil
-}
-
 func setUpTestBridge(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, *chrome.JSObject, error) {
-	pageConn, err := getPageConn(ctx, cr)
+	pageConn, err := cr.NewConn(ctx, "chrome://camera-app/test/test.html")
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to construct bridge page connection")
 	}
@@ -158,8 +128,7 @@ func setUpTestBridge(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, *chr
 
 func tearDownBridgePageConnection(ctx context.Context, cr *chrome.Chrome, conn *chrome.Conn) error {
 	checkTestPage := func(t *target.Info) bool {
-		// TODO(b/173092399): Remove the legacy path when Chrome is uprev.
-		return t.URL == "chrome://camera-app/test/test.html" || t.URL == "chrome://camera-app/views/test.html"
+		return t.URL == "chrome://camera-app/test/test.html"
 	}
 	if testPageAlive, err := cr.IsTargetAvailable(ctx, checkTestPage); err == nil {
 		if testPageAlive {
