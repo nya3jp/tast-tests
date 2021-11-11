@@ -22,6 +22,30 @@
       },
       "revId": "dddaf100e21084166ae84e42ed7fdc2ef6ef9445",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0fe6c4f_70081874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-11T08:13:16Z",
+      "side": 1,
+      "message": "Ideally, each subtest should take about 10-15 second to finish. Lengthening the timeout for subtest is to make sure the possibility to reach the timeout on a low-end device is low enough. Ideally, it is unexpected to consume more than 4 minutes to finish the whole test.\n\nHowever, to avoid chance failing innocent subtest due to the overall timeout, I think it would be better to lengthen the overall timeout as well.\n\nThanks for reminding. Making it to 7 minutes since the setup takes time too.",
+      "parentUuid": "df234393_333d423e",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 32
+      },
+      "revId": "dddaf100e21084166ae84e42ed7fdc2ef6ef9445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
