@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68d5999e_e6cfd053",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-11T22:07:41Z",
+      "side": 1,
+      "message": "Will address the vulkaninfo.gpu${i} in next CL.",
+      "parentUuid": "cacbd247_bc2f4e2f",
+      "revId": "1797cd09db6fbd09e5b8d7e62c748a8f0c45a025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c0b4f88_e430b551",
@@ -84,6 +102,30 @@
       "writtenOn": "2021-10-27T23:03:20Z",
       "side": 1,
       "message": "We still want to report numbers to crosbolt.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "1797cd09db6fbd09e5b8d7e62c748a8f0c45a025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "297dcd7d_88a66b42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vulkaninfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-11T22:07:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0c0b4f88_e430b551",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -117,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c81c56a2_b50c249a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vulkaninfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-11T22:07:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5bc29aff_dc2e1c61",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "1797cd09db6fbd09e5b8d7e62c748a8f0c45a025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40cb2bf3_8ecd9a44",
@@ -130,6 +196,30 @@
       "writtenOn": "2021-10-27T23:03:20Z",
       "side": 1,
       "message": "We still want to report numbers, so this should be after setPerf below.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "1797cd09db6fbd09e5b8d7e62c748a8f0c45a025",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5422f07c_1bff3c28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vulkaninfo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-11T22:07:41Z",
+      "side": 1,
+      "message": "I set v to {0,0,0} and use s.Error to let code flow going.",
+      "parentUuid": "40cb2bf3_8ecd9a44",
       "range": {
         "startLine": 138,
         "startChar": 0,
