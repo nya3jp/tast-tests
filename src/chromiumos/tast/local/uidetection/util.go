@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/screenshot"
+	"chromiumos/tast/testing"
 )
 
 // ReadImage reads a PNG image and returns it in []byte.
@@ -48,4 +49,27 @@ func TakeScreenshot(ctx context.Context) ([]byte, error) {
 	defer os.Remove(tmpFile)
 
 	return ReadImage(tmpFile)
+}
+
+// TakeStableScreenshot takes a stable screenshot that doesn't changed between two pollings.
+func TakeStableScreenshot(ctx context.Context, pollOpts testing.PollOptions) ([]byte, error) {
+	var lastScreen []byte
+	var currentScreen []byte
+	start := time.Now()
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		currentScreen, err = TakeScreenshot(ctx)
+		if err != nil {
+			return err
+		}
+		if bytes.Compare(currentScreen, lastScreen) != 0 {
+			lastScreen = currentScreen
+			elapsed := time.Since(start)
+			return errors.Errorf("screen has not stopped changing after %s, perhaps increase timeout or use TakeScreenshot", elapsed)
+		}
+		return nil
+	}, &pollOpts); err != nil {
+		return nil, err
+	}
+	return currentScreen, nil
 }

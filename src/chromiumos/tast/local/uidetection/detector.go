@@ -22,13 +22,7 @@ type uiDetector struct {
 	server  string
 }
 
-func (d *uiDetector) sendDetectionRequest(ctx context.Context, request *pb.DetectionRequest) (*pb.UiDetectionResponse, error) {
-	// Take the screenshot.
-	imagePng, err := TakeScreenshot(ctx)
-	if err != nil {
-		return nil, err
-	}
-
+func (d *uiDetector) sendDetectionRequest(ctx context.Context, imagePng []byte, request *pb.DetectionRequest) (*pb.UiDetectionResponse, error) {
 	// Create the UI detection request.
 	uiDetectionRequest := &pb.UiDetectionRequest{
 		ImagePng: imagePng,
