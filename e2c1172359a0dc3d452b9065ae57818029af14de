@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e84ce15f_2a8cf9b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-11T10:49:48Z",
+      "side": 1,
+      "message": "Sorry for the delay.\nWe now removed all touch controls in this CL.\nAlso, one other major change is to add a few steps to verify the drag-drop event.",
+      "revId": "e2c1172359a0dc3d452b9065ae57818029af14de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

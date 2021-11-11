@@ -51,6 +51,24 @@
       "parentUuid": "b1bb9dfe_85b59c79",
       "revId": "046bd37266740d637c043fe5276b6e5b808e49fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "328a80a7_10bdc040",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-11T10:49:48Z",
+      "side": 1,
+      "message": "Sorry for the delay, we now removed all touch controls in this CL.",
+      "parentUuid": "1fd55b0e_75df59aa",
+      "revId": "046bd37266740d637c043fe5276b6e5b808e49fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
