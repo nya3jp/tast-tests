@@ -50,6 +50,24 @@
       "message": "LGTM.\n\nFYI: edcourtney@.",
       "revId": "8cbdd904e5290ee595eb1e80b3af25e1581f6684",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad7df0f4_bb329e95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-11T09:08:38Z",
+      "side": 1,
+      "message": "I think former is easier.",
+      "parentUuid": "4b176611_55e88855",
+      "revId": "8cbdd904e5290ee595eb1e80b3af25e1581f6684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
