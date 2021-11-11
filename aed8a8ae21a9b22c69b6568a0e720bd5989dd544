@@ -34,6 +34,69 @@
       "parentUuid": "62e41297_d7632982",
       "revId": "aed8a8ae21a9b22c69b6568a0e720bd5989dd544",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "385379c7_6164f7e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-11T23:25:13Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "aed8a8ae21a9b22c69b6568a0e720bd5989dd544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64c3564_d2f89bd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-11T23:25:13Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 43
+      },
+      "revId": "aed8a8ae21a9b22c69b6568a0e720bd5989dd544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3e285a2_36c3f6bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/stress/power_control_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-11T23:25:13Z",
+      "side": 1,
+      "message": "nit: got before want.\n\ngo/go-style/decisions#got-before-want",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 67
+      },
+      "revId": "aed8a8ae21a9b22c69b6568a0e720bd5989dd544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
