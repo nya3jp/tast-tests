@@ -22,6 +22,30 @@
       },
       "revId": "b7b8acfe1ef6db18d34a12f0031bbbb739644282",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b960bc87_1a05326e",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-11T10:37:05Z",
+      "side": 1,
+      "message": "here is an example of a test run for both Lacros and Chrome:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg_ash_lacros.go\n\nWe introduced fixtures as parameters for running existing tests in Lacros flavor.\n\nI keep reviewing.",
+      "parentUuid": "fa51d79d_331afca6",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "b7b8acfe1ef6db18d34a12f0031bbbb739644282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
