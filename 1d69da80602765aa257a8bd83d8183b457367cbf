@@ -16,6 +16,46 @@
       "message": "PTAL Hidehiko.",
       "revId": "1d69da80602765aa257a8bd83d8183b457367cbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a1eb4f_d291b6be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-11T09:14:38Z",
+      "side": 1,
+      "message": "For better encapsulation, could you take TestConn instead of FixtValue?\nCould you mention where the TestConn should be connected too?",
+      "revId": "1d69da80602765aa257a8bd83d8183b457367cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f5e8ee8_8142e11d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-11T09:14:38Z",
+      "side": 1,
+      "message": "It\u0027s strongly encouraged not to use Sleep in test, because it is the source of flakiness.\nIs \"SetWindowStateAndWait\" not enough in this case?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 34
+      },
+      "revId": "1d69da80602765aa257a8bd83d8183b457367cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
