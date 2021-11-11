@@ -16,6 +16,24 @@
       "message": "nit: missing `.` at end of sentence",
       "revId": "437e46dee7d5d96fe4c1e12a1fe1a0fb20f172ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77046a50_b1bc1321",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2021-11-11T01:18:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d5a3a11_69de4ee9",
+      "revId": "437e46dee7d5d96fe4c1e12a1fe1a0fb20f172ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
