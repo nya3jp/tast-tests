@@ -147,6 +147,10 @@ var vp8IntraSegmentFiles = []string{
 	"test_vectors/vp8/intra_segment/vp80-03-segmentation-1415.ivf",
 }
 
+var vp9FilesFromBugs = []string{
+	"test_vectors/vp9/b_177839888__rk3399_vp9_artifacts_with_video_decoder_japanews24.ivf",
+}
+
 func appendJSONFiles(videoFiles []string) []string {
 	var tf []string
 	for _, file := range videoFiles {
@@ -289,6 +293,14 @@ func init() {
 			ExtraData:         appendJSONFiles(vp8IntraSegmentFiles),
 			Val: chromeStackDecodingTestParam{
 				videoFiles:    vp8IntraSegmentFiles,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp9_doghouse",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraData:         appendJSONFiles(vp9FilesFromBugs),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp9FilesFromBugs,
 				validatorType: decoding.MD5,
 			},
 		}},
