@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df234393_333d423e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-11T08:03:28Z",
+      "side": 1,
+      "message": "The overall timeout is still 4 Mins, while the worst case time to pass all subtest 40sec(per subtest) x 9 (number of subtests) \u003d 360 sec \u003d 6 mins.\nAre we consider the lengthen the overall number?\nOr there\u0027s actually only few subtest will hit 40 sec upper limit?",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 32
+      },
+      "revId": "dddaf100e21084166ae84e42ed7fdc2ef6ef9445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
