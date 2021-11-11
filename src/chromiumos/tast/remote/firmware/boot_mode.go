@@ -9,7 +9,6 @@ This file implements functions to check or switch the DUT's boot mode.
 */
 
 import (
-	"bytes"
 	"context"
 	"strings"
 	"time"
@@ -800,24 +799,6 @@ func (ms *ModeSwitcher) waitUnreachable(ctx context.Context) error {
 }
 
 func (ms *ModeSwitcher) hasSerialAPFirmware(ctx context.Context) bool {
-	out, err := ms.Helper.DUT.Conn().CommandContext(ctx, "bash", "-c", "tempdir=$(mktemp -d -p /var/tmp) ; "+
-		"trap \"rm -rf $tempdir\" EXIT ; cd $tempdir && "+
-		"flashrom -p host -r -i COREBOOT:coreboot.bin && "+
-		"cbfstool coreboot.bin extract -r COREBOOT -n config -f coreboot.config && "+
-		"cat coreboot.config").Output()
-	if err != nil {
-		testing.ContextLogf(ctx, "Failed to determine if CONFIG_CONSOLE_SERIAL is enabled: %s", err)
-		return false
-	}
-	if bytes.Contains(out, []byte("CONFIG_CONSOLE_SERIAL is not set")) {
-		return false
-	}
-	if bytes.Contains(out, []byte("CONFIG_CONSOLE_SERIAL=n")) {
-		return false
-	}
-	if bytes.Contains(out, []byte("CONFIG_CONSOLE_SERIAL=y")) {
-		return true
-	}
-	// The default is enabled.
-	return true
+	// TODO(b/206004543): Get this working. Reading CONFIG_CONSOLE_SERIAL doesn't work.
+	return false
 }
