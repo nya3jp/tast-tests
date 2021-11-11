@@ -218,10 +218,16 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 			s.Fatal("PIP window gone after resize: ", err)
 		}
 
+		// For code maintainability, just check a relatively permissive expectation for the
+		// maximum size of the PIP window: it should be either strictly wider than 2/5 of
+		// the work area width, or strictly taller than 2/5 of the work area height.
 		if 5*pipWindow.TargetBounds.Width <= 2*info.WorkArea.Width && 5*pipWindow.TargetBounds.Height <= 2*info.WorkArea.Height {
 			s.Fatalf("Expected big PIP window. Got a %v PIP window in a %v work area", pipWindow.TargetBounds.Size(), info.WorkArea.Size())
 		}
 	} else {
+		// For code maintainability, just check a relatively permissive expectation for the
+		// minimum size of the PIP window: it should be either strictly narrower than 3/10
+		// of the work area width, or strictly shorter than 3/10 of the work area height.
 		if 10*pipWindow.TargetBounds.Width >= 3*info.WorkArea.Width && 10*pipWindow.TargetBounds.Height >= 3*info.WorkArea.Height {
 			s.Fatalf("Expected small PIP window. Got a %v PIP window in a %v work area", pipWindow.TargetBounds.Size(), info.WorkArea.Size())
 		}
