@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e8737f8_56dfb4e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-11T22:47:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "19b6e95c_53f6bafb",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3615588f_33a64d4c",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe0dc4d1_a4251fed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-11T22:47:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3615588f_33a64d4c",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a183e31c_1ff09996",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-11-10T16:33:57Z",
       "side": 1,
       "message": "Lets put these in a separate file. See shillconst/const.go for an example (but the const file can be local to this directory).\n\nEventually we will want to document each of these with a tracking bug.",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f386bf6_d50e0bc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-11T22:47:48Z",
+      "side": 1,
+      "message": "Done. I cannot put the file in the same directory. I put the file under shillconst/.\n\nError message when I upload the change:\nFollowing errors should be modified by yourself:\n        src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go:137:20: Tast forbids inter-file references in entry files; move func InitializeAllowedEntries in shill_no_error_log_allowed.go to a shared package\n        src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log_allowed.go:7:6: Tast requires exactly one symbol (test function or service type) to be exported in an entry file; unexport type AllowedEntry if it is not one\n        src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log_allowed.go:14:6: Tast requires exactly one symbol (test function or service type) to be exported in an entry file; unexport func InitializeAllowedEntries if it is not one",
+      "parentUuid": "a183e31c_1ff09996",
       "revId": "c47b892adedc55cf11f07397150456f2966162d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bafa41d8_02e34540",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-11T22:47:48Z",
+      "side": 1,
+      "message": "Good idea. As it involves the syslog library change, I want to do it in a separate CL. What do you think?",
+      "parentUuid": "7e39b312_2464d659",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "acbb071b_cc990a96",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
         "patchSetId": 2
@@ -99,6 +171,24 @@
       "writtenOn": "2021-11-10T16:33:57Z",
       "side": 1,
       "message": "This also seems like it would be reasonable to add to syslog. We can either automatically identify the filename when there is a match, or make the format an optional parameter to syslog.NewReader.",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f02aac75_d49198de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-11T22:47:48Z",
+      "side": 1,
+      "message": "Answered above.",
+      "parentUuid": "acbb071b_cc990a96",
       "revId": "c47b892adedc55cf11f07397150456f2966162d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +210,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6833decf_8229094a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-11T22:47:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4feba883_db0a744b",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "193fdd80_2a0e6815",
@@ -137,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9976cd06_cb34c4ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-11T22:47:48Z",
+      "side": 1,
+      "message": "Partially done. I think it is informational to print the case of r.Counter \u003d\u003d 0 because it signals that the allowed list may need to be updated (even though the result of a single run does not say much about whether the corresponding entry has to be removed or not).",
+      "parentUuid": "193fdd80_2a0e6815",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26a11c59_1c85de1a",
@@ -150,6 +276,24 @@
       "writtenOn": "2021-11-10T16:33:57Z",
       "side": 1,
       "message": "Let\u0027s also put a header here, e.g. \"Unexpected errors:\"",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66821dfe_c8d48c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-11T22:47:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26a11c59_1c85de1a",
       "revId": "c47b892adedc55cf11f07397150456f2966162d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
