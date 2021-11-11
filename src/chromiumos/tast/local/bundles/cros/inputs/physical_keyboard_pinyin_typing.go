@@ -134,6 +134,16 @@ func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 				}),
 			),
 		},
+		{
+			// Press shift to switch to Raw input mode.
+			Name: "ShiftTogglesLanguageMode",
+			Action: uiauto.Combine("bring up candidates and select with number key",
+				its.ClearThenClickFieldAndWaitForActive(inputField),
+				kb.AccelAction("Shift"),
+				kb.TypeAction("nihao "),
+				util.WaitForFieldTextToBe(tconn, inputField.Finder(), "nihao "),
+			),
+		},
 	}
 
 	for _, subtest := range subtests {
