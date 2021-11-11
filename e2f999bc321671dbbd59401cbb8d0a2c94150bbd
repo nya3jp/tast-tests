@@ -108,6 +108,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5c99490_8705b8d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-11T03:58:28Z",
+      "side": 1,
+      "message": "nit: could you break the comments to fit in 80 column?\nWhen possible, aim for comments that will read well on an 80-column wide terminal\n\nhttp://go/go-style/decisions#comment-line-length",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 119
+      },
+      "revId": "e2f999bc321671dbbd59401cbb8d0a2c94150bbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0a68d58_a8c5f5e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go",
         "patchSetId": 1
