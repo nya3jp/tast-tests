@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73546383_55f82619",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-11T17:52:54Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s necessary to do it for several boards (Billy does have a script that\u0027ll automate that if you\u0027re interested: https://chromium-review.googlesource.com/c/chromiumos/platform/dev-util/+/2605330). I just want to know that you\u0027ve manually made sure that the flake doesn\u0027t happen anymore. Please include that in the TEST\u003d message.",
+      "parentUuid": "f89c2614_116b247b",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "fe0ddf46382df89f8804da67f5d84c458ad94a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd8c96be_9e19c8ff",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
         "patchSetId": 7
