@@ -16,6 +16,24 @@
       "message": "Looks good, do you plan to also add a check to see if the device is supposed to go into those states (by checking the suspend mode is \"freeze\" as autotest does) in the following CL?",
       "revId": "aed8a8ae21a9b22c69b6568a0e720bd5989dd544",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d406198c_b253ebee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2021-11-11T23:14:20Z",
+      "side": 1,
+      "message": "Let\u0027s submit this CL, I\u0027ll add a check in the next CL.",
+      "parentUuid": "62e41297_d7632982",
+      "revId": "aed8a8ae21a9b22c69b6568a0e720bd5989dd544",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
