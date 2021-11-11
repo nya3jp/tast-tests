@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/firmware"
 	"chromiumos/tast/local/spaced"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -77,6 +78,11 @@ func Spaced(ctx context.Context, s *testing.State) {
 		// Disk space margin to consider when comparing against expected values.
 		spaceMarginBytes = 100 * 1024 * 1024
 	)
+
+	// Restart spaced.
+	if err := upstart.RestartJob(ctx, "spaced"); err != nil {
+		s.Error("Failed to restart spaced: ", err)
+	}
 
 	spaced, err := spaced.NewClient(ctx)
 	if err != nil {
