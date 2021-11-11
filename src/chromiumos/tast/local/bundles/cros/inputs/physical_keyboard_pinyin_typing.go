@@ -27,7 +27,7 @@ func init() {
 		Func:         PhysicalKeyboardPinyinTyping,
 		Desc:         "Checks that Pinyin physical keyboard works",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.NonVKClamshell,
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
@@ -130,6 +130,24 @@ func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 							// TODO(b/190248867): Check the suffix as well.
 							return strings.HasPrefix(text, prefix)
 						}),
+					)
+				}),
+			),
+		},
+		{
+			// Press shift to switch to Raw input mode.
+			Name: "ShiftTogglesLanguageMode",
+			Action: uiauto.Combine("bring up candidates and select with number key",
+				its.ClearThenClickFieldAndWaitForActive(inputField),
+				kb.AccelAction("Shift"),
+				kb.TypeAction("ni "),
+				kb.AccelAction("Shift"),
+				kb.TypeAction("hao"),
+				util.GetNthCandidateTextAndThen(tconn, 0, func(text string) uiauto.Action {
+					return uiauto.Combine("press space and verify text",
+						kb.AccelAction("Space"),
+						ui.WaitUntilGone(util.PKCandidatesFinder),
+						util.WaitForFieldTextToBe(tconn, inputField.Finder(), "ni "+text),
 					)
 				}),
 			),
