@@ -69,6 +69,24 @@
       "parentUuid": "68c2b100_d8a9c122",
       "revId": "735eea39c41d0e68dbe56e04d2d177fb70c52980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce8a52a_2d933f06",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-11T09:43:11Z",
+      "side": 1,
+      "message": "Do I understand it correctly that if it is an ExtraArg flag, it will be there even if you open Lacros from the UI, and if it is a LacrosExtraArg flag, it is only there if you start Lacros with lacros.Setup()?",
+      "parentUuid": "f13c438f_60dfece1",
+      "revId": "735eea39c41d0e68dbe56e04d2d177fb70c52980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
