@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2244fb3e_5b51a3c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-11T10:08:09Z",
+      "side": 1,
+      "message": "You are using this only in the validateNonYoYoMagicFWDump() funciton, please declare it there.",
+      "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbca4a1e_f30bc823",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-11T10:08:09Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5e824c9_000a7281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-11T10:08:09Z",
+      "side": 1,
+      "message": "Instead of making these variables global, please put them into a structure, and add the structure as a return value for the validateYoYoMagicFWDump() and validateNonYoYoMagicFWDump() functions.",
+      "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
