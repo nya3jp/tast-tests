@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9109e3e0_7fb891f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-11T22:16:33Z",
+      "side": 1,
+      "message": "I have a few comments. Please take a look. Thanks.",
+      "revId": "9986313b6bda9d55236435d08ac67cbeff1d6244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e262f7e_c80a2dec",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-11T22:16:33Z",
+      "side": 1,
+      "message": "Is there a scenario that contextTags[tag] be false? I cannot find a case that it is false in this code. If there is no chance that it is false, it will be better to make it map[string]struct{}.",
+      "revId": "9986313b6bda9d55236435d08ac67cbeff1d6244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34e8d26d_3c41434f",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-11T22:16:33Z",
+      "side": 1,
+      "message": "This call will modify the content of uc. I think it is a little confusing to return UserContext here which make it feel like that a new context is returned and the original one unchange. I think it will be better to return nothing in this case to avoid confusion. Same comment apply to SetAttribute, RemoveAttribute, RemoveTags ...",
+      "revId": "9986313b6bda9d55236435d08ac67cbeff1d6244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84f67939_ace3de27",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-11T22:16:33Z",
+      "side": 1,
+      "message": "I think line is to long here. Please break this to multiple lines.",
+      "revId": "9986313b6bda9d55236435d08ac67cbeff1d6244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57654a04_a3d99db2",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-11T22:16:33Z",
+      "side": 1,
+      "message": "Please use cmp instead: go/go-style/decisions#types-of-equality",
+      "revId": "9986313b6bda9d55236435d08ac67cbeff1d6244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1276ffa6_778905dc",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-11T22:16:33Z",
+      "side": 1,
+      "message": "Please use cmp instead: go/go-style/decisions#types-of-equality",
+      "revId": "9986313b6bda9d55236435d08ac67cbeff1d6244",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
