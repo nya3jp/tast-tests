@@ -258,6 +258,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d8f7421_c5474b7e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2021-11-11T10:24:55Z",
+      "side": 1,
+      "message": "Correct, I\u0027ve added the control file here: https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/3269842\nAnd group here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3269889",
+      "parentUuid": "cbb168e6_4485a4b1",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "8a23367710cbb695b14370cf3f3568b83d62f968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6374bd6c_27a2a2bb",
