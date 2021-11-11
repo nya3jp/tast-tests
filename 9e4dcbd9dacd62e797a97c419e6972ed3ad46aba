@@ -16,6 +16,69 @@
       "message": "Hi Victor, could you please review this change as the owner of the */policy/download_restrictions.go? :)",
       "revId": "9e4dcbd9dacd62e797a97c419e6972ed3ad46aba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa8842cb_db949c1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-11T17:36:39Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "9e4dcbd9dacd62e797a97c419e6972ed3ad46aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e81bfd0_e223926c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-11T17:36:39Z",
+      "side": 1,
+      "message": "nit: Check",
+      "range": {
+        "startLine": 159,
+        "startChar": 6,
+        "endLine": 159,
+        "endChar": 12
+      },
+      "revId": "9e4dcbd9dacd62e797a97c419e6972ed3ad46aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef71a3c3_7415cc1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-11T17:36:39Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 174,
+        "startChar": 6,
+        "endLine": 174,
+        "endChar": 11
+      },
+      "revId": "9e4dcbd9dacd62e797a97c419e6972ed3ad46aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
