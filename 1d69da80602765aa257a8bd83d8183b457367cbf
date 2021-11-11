@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6562bcb_87b04b16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2021-11-11T18:51:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6a1eb4f_d291b6be",
+      "revId": "1d69da80602765aa257a8bd83d8183b457367cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f5e8ee8_8142e11d",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-11-11T09:14:38Z",
       "side": 1,
       "message": "It\u0027s strongly encouraged not to use Sleep in test, because it is the source of flakiness.\nIs \"SetWindowStateAndWait\" not enough in this case?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 34
+      },
+      "revId": "1d69da80602765aa257a8bd83d8183b457367cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce9f9ef_3e460e28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2021-11-11T18:51:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f5e8ee8_8142e11d",
       "range": {
         "startLine": 117,
         "startChar": 0,
