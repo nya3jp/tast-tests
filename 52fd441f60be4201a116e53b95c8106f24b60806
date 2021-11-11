@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "516baf2a_bfb43ad1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-11T03:13:19Z",
+      "side": 1,
+      "message": "Q: I don\u0027t think it\u0027s necessary to record in VM tests. Is there anyway to check if it runs on VM or HW?",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 35
+      },
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
