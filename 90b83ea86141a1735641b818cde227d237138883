@@ -16,6 +16,24 @@
       "message": "nit: is it possible to comment this or make the error message a little more detailed? It\u0027s not clear what the 2, and 5 are for and what would need to be done if the error occurs. Following the \"; got: %v want: %v\" pattern of logging errors may help guide the message content.",
       "revId": "90b83ea86141a1735641b818cde227d237138883",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cf81576_4a986d53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_energy_and_power.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-11-11T20:17:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88e225c8_6978577e",
+      "revId": "90b83ea86141a1735641b818cde227d237138883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
