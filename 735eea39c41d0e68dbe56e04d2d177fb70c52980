@@ -33,6 +33,24 @@
       "message": "do you need this in ash-chrome?\nif so, could you comment in the commit message the reason?",
       "revId": "735eea39c41d0e68dbe56e04d2d177fb70c52980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c2b100_d8a9c122",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-11T09:08:40Z",
+      "side": 1,
+      "message": "I guess it\u0027s unnecessary for the current set of tests, same for --use-fake-ui-for-media-stream.\n\nHowever, imo it\u0027s confusing if they are different, since we try to make ash chrome and lacros chrome as similar as possible w.r.t. command line flags.\n\nIn the future, someone may expect these to be the same, which I think is more reasonable than expecting them to be different.",
+      "parentUuid": "e125b73a_03dc1d2c",
+      "revId": "735eea39c41d0e68dbe56e04d2d177fb70c52980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
