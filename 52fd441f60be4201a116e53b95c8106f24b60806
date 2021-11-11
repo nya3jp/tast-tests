@@ -69,6 +69,30 @@
       },
       "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d78768a4_d1b6bd73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-11T20:54:16Z",
+      "side": 1,
+      "message": "IMO this part could be further refactored once your https://crrev.com/c/3251207 gets in. eg, moving screen recording logic to the common helper. Btw, for now I would like to get this in for quick investigation on the flakes to see why lacros doesn\u0027t consistently open from time to time. Any thoughts for flakes are welcome.",
+      "parentUuid": "3ca9139d_d3709f9d",
+      "range": {
+        "startLine": 84,
+        "startChar": 24,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
