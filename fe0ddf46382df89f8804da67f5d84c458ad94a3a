@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "347c42fb_cc50973a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-11T01:30:12Z",
+      "side": 1,
+      "message": "since this test is flaky, this would give me higher confidence if you ran it many times.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "fe0ddf46382df89f8804da67f5d84c458ad94a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd8c96be_9e19c8ff",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-11-11T01:30:12Z",
+      "side": 1,
+      "message": "actually, can\u0027t you just inline both of these?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 4
+      },
+      "revId": "fe0ddf46382df89f8804da67f5d84c458ad94a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
