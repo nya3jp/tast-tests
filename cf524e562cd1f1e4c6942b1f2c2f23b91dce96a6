@@ -50,6 +50,57 @@
       "message": "Instead of making these variables global, please put them into a structure, and add the structure as a return value for the validateYoYoMagicFWDump() and validateNonYoYoMagicFWDump() functions.",
       "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed899a3_be4f8455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-11T10:26:51Z",
+      "side": 1,
+      "message": "Check the \u003d\u003d 0 case, and you can use continue, saving an indentation level for the code below.",
+      "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a518a31c_f85dcf01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-11T10:26:51Z",
+      "side": 1,
+      "message": "Please put the tlHeader.Type value check into a switch.",
+      "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c3a02f_d4c92b33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-11T10:26:51Z",
+      "side": 1,
+      "message": "You can use\n\u003e  if tlHeader.Type \u003d\u003d 0 {\n\u003e  \tcheckMemAPIData.Next(4)\n\u003e  \tcontinue\n\u003e  }\nhere as well, and you can save an indentation level for the rest of the code.",
+      "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
