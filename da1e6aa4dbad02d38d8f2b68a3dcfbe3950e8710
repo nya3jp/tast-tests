@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "607fde1b_b62ffe96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/exo_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-11T22:10:30Z",
+      "side": 1,
+      "message": "Personally, I\u0027d put perbuild instead of nightly to match the frequency of tast informational. Up to you to decide.",
+      "range": {
+        "startLine": 27,
+        "startChar": 53,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "da1e6aa4dbad02d38d8f2b68a3dcfbe3950e8710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f65f8a3_2fc2b891",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/exo_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-11-11T22:10:30Z",
+      "side": 1,
+      "message": "drop informational",
+      "range": {
+        "startLine": 27,
+        "startChar": 64,
+        "endLine": 27,
+        "endChar": 77
+      },
+      "revId": "da1e6aa4dbad02d38d8f2b68a3dcfbe3950e8710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
