@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a7a7529_357cdb37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-11T03:45:03Z",
+      "side": 1,
+      "message": "Thanks for writing automation test.",
+      "revId": "b7859bea3de16713f50074c7d67bb374ff10449c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c191658_25b7aac6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-11T03:45:03Z",
+      "side": 1,
+      "message": "just of out curious: Any special reason to use a NoCorrectionInputField on this test?",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 56
+      },
+      "revId": "b7859bea3de16713f50074c7d67bb374ff10449c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
