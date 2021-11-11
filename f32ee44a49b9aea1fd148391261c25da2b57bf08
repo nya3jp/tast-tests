@@ -33,6 +33,24 @@
       "message": "tast-remote-tests-cros-0.0.2-r8352: src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go:101:73: cannot use cuj.NewSmoothnessMetricConfig(\"Ash.WindowCycleView.AnimationSmoothness.Container\") (type cuj.MetricConfig) as type *arc.ARC in argument to cuj.NewRecorder\ntast-remote-tests-cros-0.0.2-r8352: src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go:151:37: cras.SelectedOutputDevice undefined (type *audio.Cras has no field or method SelectedOutputDevice)",
       "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "319db50f_83e5c010",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-11-11T05:00:44Z",
+      "side": 1,
+      "message": "we had a dependency patch which got merged some time back only.",
+      "parentUuid": "2a62a1ea_4865abb4",
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
