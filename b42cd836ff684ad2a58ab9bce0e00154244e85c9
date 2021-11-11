@@ -16,6 +16,46 @@
       "message": "Hello Kamil. Could you please help to review this CL at your convenience. Many thanks!",
       "revId": "b42cd836ff684ad2a58ab9bce0e00154244e85c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73000db2_bad85049",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-11T20:06:38Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "b42cd836ff684ad2a58ab9bce0e00154244e85c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed138265_a2be12c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/floating_accessibility_menu_enabled_lacros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-11T20:06:38Z",
+      "side": 1,
+      "message": "nit: add TODO to merge that into existing test.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 137
+      },
+      "revId": "b42cd836ff684ad2a58ab9bce0e00154244e85c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
