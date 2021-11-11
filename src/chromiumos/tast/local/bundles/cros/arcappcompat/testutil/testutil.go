@@ -116,7 +116,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	defer act.Close()
 	// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
 	if err := power.TurnOnDisplay(ctx); err != nil {
-		s.Log("Failed to ensure the display is on: ", err)
+		s.Fatal("Failed to ensure the display is on: ", err)
 	}
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start app before test cases: ", err)
@@ -159,7 +159,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			defer cancel()
 			// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
 			if err := power.TurnOnDisplay(ctx); err != nil {
-				s.Log("Failed to ensure the display is on: ", err)
+				s.Fatal("Failed to ensure the display is on: ", err)
 			}
 			// Launch the app.
 			if err := act.Start(ctx, tconn); err != nil {
@@ -226,7 +226,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			// It is also ok if the package is currently equal the settings package.
 			// This happens when you need to accept permissions.
 			var allowedAppPackage bool
-			currentAppPkg, err := CurrentAppPackage(ctx, d)
+			currentAppPkg, err := CurrentAppPackage(ctx, d, s)
 			if err != nil {
 				s.Fatal("Failed to get current app package: ", err)
 			}
@@ -281,7 +281,7 @@ func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	s.Log("Installing app")
 	// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
 	if err := power.TurnOnDisplay(ctx); err != nil {
-		s.Log("Failed to ensure the display is on: ", err)
+		s.Fatal("Failed to ensure the display is on: ", err)
 	}
 	if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
 		s.Fatal("Failed to launch Play Store: ", err)
@@ -412,7 +412,7 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	s.Log("Minimizing the window")
 	defaultState, err := ash.GetARCAppWindowState(ctx, tconn, appPkgName)
 	if err != nil {
-		s.Error("Failed to get the default window state: ", err)
+		s.Fatal("Failed to get the default window state: ", err)
 	}
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMinimize); err != nil {
 		s.Error("Failed to minimize the window: ", err)
@@ -445,7 +445,7 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 	if err != nil {
-		s.Error("Failed to get window info: ", err)
+		s.Fatal("Failed to get window info: ", err)
 	}
 	goalState := ash.WindowStateMaximized
 	if info.State == ash.WindowStateFullscreen {
@@ -467,7 +467,7 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 	if t == arc.Container {
 		info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 		if err != nil {
-			s.Error("Failed to get window info: ", err)
+			s.Fatal("Failed to get window info: ", err)
 		}
 		s.Logf("App Resize info, info.CanResize %+v", info.CanResize)
 		if !info.CanResize {
@@ -639,7 +639,7 @@ func ResizeLock(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a
 func checkCompatModeButton(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) error {
 	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 	if err != nil {
-		s.Error("Failed to get window info: ", err)
+		s.Fatal("Failed to get window info: ", err)
 	}
 	// Check if app is launched in maximized or in fullscreen state.
 	if info.State == ash.WindowStateMaximized || info.State == ash.WindowStateFullscreen {
@@ -1102,7 +1102,7 @@ func EscKey(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *ar
 		s.Fatal("Failed to press KEYCODE_ESCAPE: ", err)
 	}
 
-	if currentAppPkg, err := CurrentAppPackage(ctx, d); err != nil {
+	if currentAppPkg, err := CurrentAppPackage(ctx, d, s); err != nil {
 		s.Fatal("Failed to get current app package: ", err)
 	} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" && currentAppPkg != "com.google.android.permissioncontroller" {
 		s.Fatalf("App quits on pressing esc key: package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
@@ -1123,7 +1123,7 @@ func SplitScreen(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 
 	windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 	if err != nil {
-		s.Error("Failed to get window info: ", err)
+		s.Fatal("Failed to get window info: ", err)
 	}
 	s.Logf("App Resize info, info.CanResize %+v", windowInfo.CanResize)
 	if !windowInfo.CanResize {
@@ -1315,9 +1315,14 @@ func isNApp(ctx context.Context, d *ui.Device) bool {
 }
 
 // CurrentAppPackage func to get info on current package name.
-func CurrentAppPackage(ctx context.Context, d *ui.Device) (string, error) {
+func CurrentAppPackage(ctx context.Context, d *ui.Device, s *testing.State) (string, error) {
 	// Wait for app to launch.
 	d.WaitForIdle(ctx, ShortUITimeout)
+	// Check if UiAutomator server is up.
+	isALive := d.Alive(ctx)
+	if !isALive {
+		s.Fatal("UiAutomator server isn't responding: ", isALive)
+	}
 	info, err := d.GetInfo(ctx)
 	if err != nil {
 		return "", err
