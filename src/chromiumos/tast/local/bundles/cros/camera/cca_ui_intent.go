@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/camera/cca"
@@ -307,19 +308,23 @@ func closeCCAAndTestApp(ctx context.Context, a *arc.ARC, app *cca.App, outDir st
 
 // checkIntentBehavior checks basic control flow for handling intent with different options.
 func checkIntentBehavior(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, uiDevice *ui.Device, options intentOptions, scripts []string, outDir string, tb *testutil.TestBridge) (retErr error) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
 	app, err := launchIntent(ctx, cr, a, options, scripts, outDir, tb, uiDevice)
 	if err != nil {
 		return err
 	}
-	defer func(ctx context.Context) {
-		if err := closeCCAAndTestApp(ctx, a, app, outDir); err != nil {
+	defer func(cleanupCtx context.Context) {
+		if err := closeCCAAndTestApp(cleanupCtx, a, app, outDir); err != nil {
 			if retErr != nil {
-				testing.ContextLog(ctx, "Failed to close CCA and test app: ", err)
+				testing.ContextLog(cleanupCtx, "Failed to close CCA and test app: ", err)
 			} else {
 				retErr = err
 			}
 		}
-	}(ctx)
+	}(cleanupCtx)
 
 	if err := checkUI(ctx, app, options); err != nil {
 		return err
@@ -483,20 +488,24 @@ func checkAutoCloseBehavior(ctx context.Context, cr *chrome.Chrome, app *cca.App
 
 // checkInstancesCoexistence checks number of CCA windows showing in multiple launch request scenario.
 func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, scripts []string, outDir string, tb *testutil.TestBridge, uiDevice *ui.Device) (retErr error) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+	defer cancel()
+
 	// Launch regular CCA.
 	regularApp, err := cca.New(ctx, cr, scripts, outDir, tb)
 	if err != nil {
 		return errors.Wrap(err, "failed to launch CCA")
 	}
-	defer func(ctx context.Context) {
-		if err := closeCCAAndTestApp(ctx, a, regularApp, outDir); err != nil {
+	defer func(cleanupCtx context.Context) {
+		if err := closeCCAAndTestApp(cleanupCtx, a, regularApp, outDir); err != nil {
 			if retErr != nil {
-				testing.ContextLog(ctx, "Failed to close CCA and test app: ", err)
+				testing.ContextLog(cleanupCtx, "Failed to close CCA and test app: ", err)
 			} else {
 				retErr = err
 			}
 		}
-	}(ctx)
+	}(cleanupCtx)
 
 	// Switch to video mode to check if the mode remains the same after resuming.
 	if err := regularApp.SwitchMode(ctx, cca.Video); err != nil {

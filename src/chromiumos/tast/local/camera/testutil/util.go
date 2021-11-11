@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -42,6 +43,10 @@ func LaunchApp(ctx context.Context, cr *chrome.Chrome, tb *TestBridge, appLaunch
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to register app window")
 	}
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	defer cancel()
 
 	conn, err := func() (*chrome.Conn, error) {
 		tconn, err := cr.TestAPIConn(ctx)
@@ -74,8 +79,8 @@ func LaunchApp(ctx context.Context, cr *chrome.Chrome, tb *TestBridge, appLaunch
 		return conn, nil
 	}()
 	if err != nil {
-		if releaseErr := appWindow.Release(ctx); releaseErr != nil {
-			testing.ContextLog(ctx, "Failed to release app window: ", releaseErr)
+		if releaseErr := appWindow.Release(cleanupCtx); releaseErr != nil {
+			testing.ContextLog(cleanupCtx, "Failed to release app window: ", releaseErr)
 		}
 		return nil, nil, err
 	}
@@ -89,6 +94,9 @@ func RefreshApp(ctx context.Context, conn *chrome.Conn, tb *TestBridge) (*AppWin
 		return nil, errors.Wrap(err, "failed to register app window")
 	}
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
+	defer cancel()
 	err = func() error {
 		// Triggers refresh.
 		if err := conn.Eval(ctx, "location.reload()", nil); err != nil {
@@ -106,8 +114,8 @@ func RefreshApp(ctx context.Context, conn *chrome.Conn, tb *TestBridge) (*AppWin
 		return nil
 	}()
 	if err != nil {
-		if releaseErr := appWindow.Release(ctx); releaseErr != nil {
-			testing.ContextLog(ctx, "Failed to release app window: ", releaseErr)
+		if releaseErr := appWindow.Release(cleanupCtx); releaseErr != nil {
+			testing.ContextLog(cleanupCtx, "Failed to release app window: ", releaseErr)
 		}
 		return nil, err
 	}
