@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbd3c73c_84885711",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-11T01:20:37Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "7c759131_d9c74c52",
+      "revId": "fe1fcfb499cae46c764b5678eb5610ce5711a593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73501a46_8566ff41",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-10T23:05:28Z",
       "side": 1,
       "message": "nit: there is a lot of idents in here which make it hard to read. Is it possible to assign one or two of this function to variables to reduce the number of scopes here.",
+      "revId": "fe1fcfb499cae46c764b5678eb5610ce5711a593",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a72d703_3769e3c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/inputactions/user_actions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-11T01:20:37Z",
+      "side": 1,
+      "message": "I will solve this in the split cl. Thanks for the comment.",
+      "parentUuid": "73501a46_8566ff41",
       "revId": "fe1fcfb499cae46c764b5678eb5610ce5711a593",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
