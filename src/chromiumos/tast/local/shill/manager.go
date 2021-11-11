@@ -430,3 +430,8 @@ func (m *Manager) GetDebugLevel(ctx context.Context) (int, error) {
 	}
 	return level, nil
 }
+
+// RecheckPortal requests shill to rerun its captive portal detector.
+func (m *Manager) RecheckPortal(ctx context.Context) error {
+	return m.Call(ctx, "RecheckPortal").Err
+}
