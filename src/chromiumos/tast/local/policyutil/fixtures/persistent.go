@@ -20,7 +20,7 @@ func init() {
 		Desc:     "Fixture setting persistent policies needed for Lacros",
 		Contacts: []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl: &persistentFixture{
-			policies: []policy.Policy{&policy.LacrosAvailability{Val: "side_by_side"}},
+			policies: []policy.Policy{&policy.LacrosAvailability{Val: "lacros_primary"}},
 		},
 		SetUpTimeout:    5 * time.Second,
 		ResetTimeout:    5 * time.Second,
