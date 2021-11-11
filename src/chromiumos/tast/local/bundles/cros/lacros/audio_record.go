@@ -23,7 +23,7 @@ func init() {
 		Contacts:     []string{"yuhsuan@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Fixture:      "lacrosBypassPermissions",
+		Fixture:      "lacrosAudio",
 		Timeout:      7 * time.Minute, // A lenient limit for launching Lacros Chrome.
 	})
 }
