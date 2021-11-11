@@ -114,15 +114,18 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	defer act.Close()
 	// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
 	if err := power.TurnOnDisplay(ctx); err != nil {
-		s.Log("Failed to ensure the display is on: ", err)
+		s.Log("Failed to ensure the display is on and skipping the test: ", err)
+		return
 	}
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start app before test cases: ", err)
 	}
 	if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
-		s.Fatal("Failed to get window info: ", err)
+		s.Log("Failed to get window info and skipping the test: ", err)
+		return
 	} else if err := window.CloseWindow(ctx, tconn); err != nil {
-		s.Fatal("Failed to close app window before test cases: ", err)
+		s.Log("Failed to close app window before test cases and skipping the test: ", err)
+		return
 	}
 	if err := act.Stop(ctx, tconn); err != nil {
 		s.Fatal("Failed to stop app before test cases: ", err)
@@ -157,23 +160,28 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			defer cancel()
 			// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
 			if err := power.TurnOnDisplay(ctx); err != nil {
-				s.Log("Failed to ensure the display is on: ", err)
+				s.Log("Failed to ensure the display is on and skipping the test: ", err)
+				return
 			}
 			// Launch the app.
 			if err := act.Start(ctx, tconn); err != nil {
-				s.Fatal("Failed to start app: ", err)
+				s.Log("Failed to start app and skipping the test: ", err)
+				return
 			}
 			s.Log("App launched successfully")
 
 			// Close the app between iterations.
 			defer func(ctx context.Context) {
 				if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
-					s.Fatal("Failed to get window info: ", err)
+					s.Log("Failed to get window info and skipping the test: ", err)
+					return
 				} else if err := window.CloseWindow(ctx, tconn); err != nil {
-					s.Fatal("Failed to close app window: ", err)
+					s.Log("Failed to close app window and skipping the test: ", err)
+					return
 				}
 				if err := act.Stop(ctx, tconn); err != nil {
-					s.Fatal("Failed to stop app: ", err)
+					s.Log("Failed to stop app and skipping the test: ", err)
+					return
 				}
 			}(cleanupCtx)
 
@@ -204,7 +212,8 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 
 			d, err := a.NewUIDevice(ctx)
 			if err != nil {
-				s.Fatal("Failed initializing UI Automator: ", err)
+				s.Log("Failed initializing UI Automator and skipping the test: ", err)
+				return
 			}
 			defer d.Close(ctx)
 
@@ -226,7 +235,8 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			var allowedAppPackage bool
 			currentAppPkg, err := CurrentAppPackage(ctx, d)
 			if err != nil {
-				s.Fatal("Failed to get current app package: ", err)
+				s.Log("Failed to get current app package and skipping the test: ", err)
+				return
 			}
 			if currentAppPkg == appPkgName {
 				allowedAppPackage = true
@@ -313,11 +323,13 @@ func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 func ClamshellFullscreenApp(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 	if err != nil {
-		s.Error("Failed to get window info: ", err)
+		s.Log("Failed to get window info and skipping test: ", err)
+		return
 	}
 	t, ok := arc.Type()
 	if !ok {
-		s.Fatal("Unable to determine arc type")
+		s.Log("Unable to determine arc type and skipping test")
+		return
 	}
 	// If ARC-P.
 	if t == arc.Container {
@@ -410,7 +422,8 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 	s.Log("Minimizing the window")
 	defaultState, err := ash.GetARCAppWindowState(ctx, tconn, appPkgName)
 	if err != nil {
-		s.Error("Failed to get the default window state: ", err)
+		s.Log("Failed to get the default window state and skipping the test: ", err)
+		return
 	}
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, appPkgName, ash.WMEventMinimize); err != nil {
 		s.Error("Failed to minimize the window: ", err)
@@ -443,7 +456,8 @@ func MinimizeRestoreApp(ctx context.Context, s *testing.State, tconn *chrome.Tes
 func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 	if err != nil {
-		s.Error("Failed to get window info: ", err)
+		s.Log("Failed to get window info and skipping the test: ", err)
+		return
 	}
 	goalState := ash.WindowStateMaximized
 	if info.State == ash.WindowStateFullscreen {
@@ -451,7 +465,8 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 	}
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get tablet mode: ", err)
+		s.Log("Failed to get tablet mode and skipping the test: ", err)
+		return
 	}
 	if tabletModeEnabled {
 		s.Log("Device is in tablet mode. Skipping test")
@@ -459,13 +474,15 @@ func ClamshellResizeWindow(ctx context.Context, s *testing.State, tconn *chrome.
 	}
 	t, ok := arc.Type()
 	if !ok {
-		s.Fatal("Unable to determine arc type")
+		s.Log("Unable to determine arc type and skipping the test")
+		return
 	}
 	// If ARC-P.
 	if t == arc.Container {
 		info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 		if err != nil {
-			s.Error("Failed to get window info: ", err)
+			s.Log("Failed to get window info and skipping the test: ", err)
+			return
 		}
 		s.Logf("App Resize info, info.CanResize %+v", info.CanResize)
 		if !info.CanResize {
@@ -622,7 +639,8 @@ const (
 func ResizeLock(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	t, ok := arc.Type()
 	if !ok {
-		s.Fatal("Unable to determine arc type")
+		s.Log("Unable to determine arc type and skipping the test")
+		return
 	}
 	// If ARC-VM.
 	if t == arc.VM {
@@ -637,7 +655,8 @@ func ResizeLock(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a
 func checkCompatModeButton(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) error {
 	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 	if err != nil {
-		s.Error("Failed to get window info: ", err)
+		s.Log("Failed to get window info and skipping the test: ", err)
+		return nil
 	}
 	// Check if app is launched in maximized or in fullscreen state.
 	if info.State == ash.WindowStateMaximized || info.State == ash.WindowStateFullscreen {
@@ -805,7 +824,8 @@ func TouchAndTextInputs(ctx context.Context, s *testing.State, tconn *chrome.Tes
 func KeyboardNavigations(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get tablet mode: ", err)
+		s.Log("Failed to get tablet mode and skipping the test: ", err)
+		return
 	}
 	if tabletModeEnabled {
 		s.Log("Device is in tablet mode. Skipping test")
@@ -854,7 +874,8 @@ func TouchviewRotate(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 
 	info, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 	if err != nil {
-		s.Fatal("Failed to get window info: ", err)
+		s.Log("Failed to get window info and skipping the test: ", err)
+		return
 	}
 	s.Logf("App Display ID, info.DisplayID %+v", info.DisplayID)
 
@@ -935,7 +956,8 @@ func MouseClick(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a
 	)
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get tablet mode: ", err)
+		s.Log("Failed to get tablet mode and skipping the test: ", err)
+		return
 	}
 	if tabletModeEnabled {
 		s.Log("Device is in tablet mode. Skipping test")
@@ -977,14 +999,16 @@ func OrientationSize(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 	)
 	t, ok := arc.Type()
 	if !ok {
-		s.Fatal("Unable to determine arc type")
+		s.Log("Unable to determine arc type and skipping the test")
+		return
 	}
 	// If ARC-VM.
 	if t == arc.VM {
 		// TODO(b/188816051): Remove ash.TabletModeEnabled(ctx, tconn) if a solution is found for identifying the device in clamshell/ laptop mode using hardware/software dependency.
 		tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 		if err != nil {
-			s.Fatal("Failed to get tablet mode: ", err)
+			s.Log("Failed to get tablet mode and skipping the test: ", err)
+			return
 		}
 		if tabletModeEnabled {
 			s.Log("Device is in tablet mode. Skipping test")
@@ -998,7 +1022,7 @@ func OrientationSize(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 
 		info, err := d.GetInfo(ctx)
 		if err != nil {
-			s.Fatal("Failed to get device display: ", err)
+			s.Log("Failed to get device display and skipping the test: ", err)
 		}
 		deviceDisplayWidth := info.DisplayWidth
 		deviceDisplayHeight := info.DisplayHeight
@@ -1032,7 +1056,7 @@ func OrientationSize(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 func Largescreenlayout(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get tablet mode: ", err)
+		s.Log("Failed to get tablet mode and skipping the test: ", err)
 	}
 	if !tabletModeEnabled {
 		s.Log("Setting the window to fullscreen")
@@ -1051,11 +1075,11 @@ func Largescreenlayout(ctx context.Context, s *testing.State, tconn *chrome.Test
 
 	info, err := d.GetInfo(ctx)
 	if err != nil {
-		s.Fatal("Failed to get device display: ", err)
+		s.Log("Failed to get device display and skipping the test: ", err)
+		return
 	}
 	deviceDisplayWidth := info.DisplayWidth
 	deviceDisplayHeight := info.DisplayHeight
-
 	if appWidth >= deviceDisplayWidth {
 		testing.ContextLogf(ctx, "App utilizes the device display screen and its appWidth %+v appHeight %+v  deviceDisplayWidth %+v deviceDisplayHeight %+v", appWidth, appHeight, deviceDisplayWidth, deviceDisplayHeight)
 	} else {
@@ -1070,14 +1094,16 @@ func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 	// Create an activity handle.
 	act, err := arc.NewActivity(a, appPkgName, appActivity)
 	if err != nil {
-		s.Fatal("Failed to create new app activity: ", err)
+		s.Log("Failed to create new app activity and skipping the test: ", err)
+		return
 	}
 	defer act.Close()
 
 	// Close the app.
 	s.Log("Closing the app")
 	if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
-		s.Fatal("Failed to get window info: ", err)
+		s.Log("Failed to get window info: ", err)
+		return
 	} else if err := window.CloseWindow(ctx, tconn); err != nil {
 		s.Fatal("Failed to close app window: ", err)
 	}
@@ -1101,7 +1127,8 @@ func EscKey(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *ar
 	}
 
 	if currentAppPkg, err := CurrentAppPackage(ctx, d); err != nil {
-		s.Fatal("Failed to get current app package: ", err)
+		s.Log("Failed to get current app package and skipping the test: ", err)
+		return
 	} else if currentAppPkg != appPkgName && currentAppPkg != "com.google.android.packageinstaller" && currentAppPkg != "com.google.android.gms" && currentAppPkg != "com.google.android.permissioncontroller" {
 		s.Fatalf("App quits on pressing esc key: package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
 	}
@@ -1111,7 +1138,8 @@ func EscKey(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *ar
 func SplitScreen(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	displayInfo, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get the internal display info: ", err)
+		s.Log("Failed to get the internal display info and skipping the test: ", err)
+		return
 	}
 	s.Logf("displayInfo:%+v", displayInfo.HasTouchSupport)
 	if !displayInfo.HasTouchSupport {
@@ -1121,7 +1149,8 @@ func SplitScreen(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 
 	windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName)
 	if err != nil {
-		s.Error("Failed to get window info: ", err)
+		s.Log("Failed to get window info and skipping the test: ", err)
+		return
 	}
 	s.Logf("App Resize info, info.CanResize %+v", windowInfo.CanResize)
 	if !windowInfo.CanResize {
@@ -1131,7 +1160,8 @@ func SplitScreen(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 
 	orientation, err := display.GetOrientation(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to obtain the orientation info: ", err)
+		s.Log("Failed to obtain the orientation info and skipping the test: ", err)
+		return
 	}
 	s.Logf("Orientation of primary window, orientation.Type %+v", orientation.Type)
 	//TODO(b/178401320): Remove this if a proper solution is found to perform split screen on portrait oriented apps.
@@ -1142,12 +1172,14 @@ func SplitScreen(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 
 	tew, err := input.Touchscreen(ctx)
 	if err != nil {
-		s.Fatal("Failed to access to the touch screen: ", err)
+		s.Log("Failed to access to the touch screen: ", err)
+		return
 	}
 	defer tew.Close()
 	stw, err := tew.NewSingleTouchWriter()
 	if err != nil {
-		s.Fatal("Failed to create a single touch writer: ", err)
+		s.Log("Failed to create a single touch writer: ", err)
+		return
 	}
 	defer stw.Close()
 
@@ -1172,7 +1204,8 @@ func StylusClick(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 	)
 	info, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to get the internal display info: ", err)
+		s.Log("Failed to get the internal display info and skipping the test: ", err)
+		return
 	}
 	if !info.HasTouchSupport {
 		s.Log("Device does not have touch support. Skipping the test")
