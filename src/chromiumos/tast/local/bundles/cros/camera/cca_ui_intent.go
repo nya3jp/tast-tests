@@ -93,7 +93,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "proprietary_codecs", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Timeout:      4 * time.Minute,
+		Timeout:      7 * time.Minute,
 		Fixture:      "ccaTestBridgeReadyWithArc",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -146,7 +146,7 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	}
 	downloadsFolder := filepath.Join(userPath, "MyFiles", "Downloads")
 
-	subTestTimeout := 20 * time.Second
+	subTestTimeout := 40 * time.Second
 	for _, tc := range []struct {
 		Name          string
 		IntentOptions intentOptions
