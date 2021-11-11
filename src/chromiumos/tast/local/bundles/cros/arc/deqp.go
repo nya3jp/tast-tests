@@ -32,7 +32,6 @@ const (
 // deqpTests contain the filenames of the tests cases we want to run the
 // dEQP on. These caselist files have been obtained by the official Android
 // CTS suites: https://source.android.com/compatibility/cts/downloads.html
-// TODO(morg): Set up a DEQP "full" test suite for nightly builds.
 var deqpTests = []string{
 	filepath.Join(testCaseDataDir, "gles3-multisample.txt"),
 	filepath.Join(testCaseDataDir, "gles31-multisample.txt"),
@@ -95,7 +94,6 @@ func pushCaseListFilesToAndroid(ctx context.Context, s *testing.State, a *arc.AR
 }
 
 // DEQP is the main tast test entry point.
-// TODO(morg): Add support for different DEQP suite versions as a parameterized test flag (9.0r9, 9.0r10, etc).
 func DEQP(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
