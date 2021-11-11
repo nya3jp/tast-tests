@@ -160,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71d333ea_ec3191be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-11T23:15:29Z",
+      "side": 1,
+      "message": "syslog already has this functionality. I missed that. I am working on updating my CL to use the functionality.",
+      "parentUuid": "bafa41d8_02e34540",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "acbb071b_cc990a96",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
         "patchSetId": 2
@@ -189,6 +207,24 @@
       "side": 1,
       "message": "Answered above.",
       "parentUuid": "acbb071b_cc990a96",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e2c56d_1e7d6274",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-11T23:15:29Z",
+      "side": 1,
+      "message": "I will think about it again.",
+      "parentUuid": "f02aac75_d49198de",
       "revId": "c47b892adedc55cf11f07397150456f2966162d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
