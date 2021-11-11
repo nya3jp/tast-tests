@@ -207,13 +207,12 @@ func LaunchLacrosChromeWithURL(ctx context.Context, f FixtValue, url string) (*L
 		"--lang=en-US",                               // Language
 		"--breakpad-dump-location=" + f.LacrosPath(), // Specify location for breakpad dump files.
 		"--window-size=800,600",
-		"--enable-logging=stderr",                    // This flag is necessary to ensure the log file is written. Also include stderr - this matches the shelf launch case.
-		"--enable-gpu-rasterization",                 // Enable GPU rasterization. This is necessary to enable OOP rasterization.
-		"--enable-oop-rasterization",                 // Enable OOP rasterization.
-		"--enable-webgl-image-chromium",              // Enable WebGL image.
-		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
-		"--use-cras",                                 // Use CrAS.
-		url,                                          // Specify first tab to load.
+		"--enable-logging=stderr",       // This flag is necessary to ensure the log file is written. Also include stderr - this matches the shelf launch case.
+		"--enable-gpu-rasterization",    // Enable GPU rasterization. This is necessary to enable OOP rasterization.
+		"--enable-oop-rasterization",    // Enable OOP rasterization.
+		"--enable-webgl-image-chromium", // Enable WebGL image.
+		"--use-cras",                    // Use CrAS.
+		url,                             // Specify first tab to load.
 	}
 	args = append(args, ExtensionArgs(chrome.TestExtensionID, extList)...)
 	args = append(args, f.Chrome().LacrosExtraArgs()...)

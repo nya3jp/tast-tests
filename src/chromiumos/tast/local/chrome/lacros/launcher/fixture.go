@@ -56,15 +56,17 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
-	// lacrosBypassPermissions is the same as lacros but
-	// camera/microphone permissions are enabled by default.
+	// lacrosAudio is the same as lacros but has some special flags for audio
+	// tests.
 	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosBypassPermissions",
+		Name:     "lacrosAudio",
 		Desc:     "Lacros Chrome from a pre-built image with camera/microphone permissions",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.ExtraArgs("--use-fake-ui-for-media-stream"),
-				chrome.LacrosExtraArgs("--use-fake-ui-for-media-stream")}, nil
+				chrome.ExtraArgs("--autoplay-policy=no-user-gesture-required"), // Allow media autoplay.
+				chrome.LacrosExtraArgs("--use-fake-ui-for-media-stream"),
+				chrome.LacrosExtraArgs("--autoplay-policy=no-user-gesture-required")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
