@@ -16,6 +16,24 @@
       "message": "It looks like your approval was automatically discarded when I uploaded the new patchset.",
       "revId": "78f935b9d322642a71352e3b2a4928c92e059195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f36707fc_52adfa8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-11T20:28:02Z",
+      "side": 1,
+      "message": "I\u0027m a shadow reviewer so vsavu@ will need to approve to get the owner requirement.",
+      "parentUuid": "4bb75be9_c330d08f",
+      "revId": "78f935b9d322642a71352e3b2a4928c92e059195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
