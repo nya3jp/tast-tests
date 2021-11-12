@@ -39,7 +39,7 @@ var typingTestIMEs = []ime.InputMethod{
 	ime.Arabic,
 }
 
-var typingTestIMEsNewData = []ime.InputMethod{
+var typingTestIMEsUpstream = []ime.InputMethod{
 	ime.EnglishSouthAfrica,
 }
 
@@ -50,26 +50,27 @@ func init() {
 		Func:         VirtualKeyboardTypingIME,
 		Desc:         "Checks that virtual keyboard works in different input methods",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:input-tools-upstream", "group:input-tools"},
+		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Pre:          pre.VKEnabledTabletReset,
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
-		Timeout:      time.Duration(len(typingTestIMEs)+len(typingTestIMEsNewData)) * time.Duration(len(typingTestMessages)) * time.Minute,
+		Timeout:      time.Duration(len(typingTestIMEs)+len(typingTestIMEsUpstream)) * time.Duration(len(typingTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				Val:               typingTestIMEs,
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 			{
-				Name:              "newdata", // This test will be merged into CQ once it is proved to be stable.
+				Name:              "upstream",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				Val:               typingTestIMEsNewData,
-				ExtraAttr:         []string{"informational"},
+				Val:               typingTestIMEsUpstream,
+				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 			},
 			{
 				Name:              "informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
-				Val:               append(typingTestIMEs, typingTestIMEsNewData...),
+				Val:               append(typingTestIMEs, typingTestIMEsUpstream...),
 				ExtraAttr:         []string{"informational"},
 			},
 		},
