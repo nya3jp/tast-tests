@@ -274,14 +274,15 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeVideoWithFakeWebcamAndSWDecoding",
-		Desc:     "Similar to chromeVideoWithFakeWebcam fixture but hardware decoding disabled",
+		Name:     "chromeVideoWithFakeWebcamAndNoHwAcceleration",
+		Desc:     "Similar to chromeVideoWithFakeWebcam fixture but with both hardware decoding and encoding disabled",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.ExtraArgs(chromeFakeWebcamArgs...),
 				chrome.ExtraArgs("--disable-accelerated-video-decode"),
+				chrome.ExtraArgs("--disable-accelerated-video-encode"),
 			}, nil
 		}),
 		Parent:          "gpuWatchDog",
