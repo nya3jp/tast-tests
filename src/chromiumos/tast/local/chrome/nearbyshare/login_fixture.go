@@ -20,6 +20,7 @@ import (
 // Note that nearbyShareGAIALogin inherits from nearbyShareAndroidSetup.
 func NewNearbyShareLogin(arcEnabled bool) testing.FixtureImpl {
 	defaultNearbyOpts := []chrome.Option{
+		chrome.EnableFeatures("GwpAsanMalloc", "GwpAsanPartitionAlloc"),
 		chrome.DisableFeatures("SplitSettingsSync"),
 		chrome.ExtraArgs("--nearby-share-verbose-logging", "--enable-logging", "--vmodule=*blue*=1", "--vmodule=*nearby*=1"),
 	}
