@@ -21,11 +21,11 @@ import (
 
 const (
 	fakeLine1 = "2019-12-10T11:17:28.123456Z INFO foo[1234]: hello\n"
-	fakeLine2 = "2019-12-10T11:17:29.123456Z WARN bar[2345]: crashy\n"
+	fakeLine2 = "2019-12-10T11:17:29.123456Z WARNING bar[2345]: crashy\n"
 	// TODO(crbug.com/1144594): Remove backward compatibility once enough time
 	// has passed after switching to UTC timestamp.
 	// Log with local timestamp for backward compatibility.
-	fakeLine3             = "2019-12-10T11:17:30.123456+09:00 INFO foo[1234]: world\n"
+	fakeLine3             = "2019-12-10T11:17:30.123456+09:00 ERR foo[1234]: world\n"
 	chromeFakeLine1       = "[9346:9346:1212/160319.316821:VERBOSE1:tablet_mode_controller.cc(536)] lid\n"
 	chromeFakeLine2       = "[9419:1:1212/160319.355476:VERBOSE1:breakpad_linux.cc(2079)] enabled\n"
 	chromeFakeLine3       = "[24195:24208:1213/162938.602368:ERROR:drm_gpu_display_manager.cc(211)] ID 21692109949126656\n"
@@ -48,7 +48,7 @@ var (
 	}
 	fakeEntry2 = &Entry{
 		Timestamp: time.Date(2019, 12, 10, 11, 17, 29, 123456000, time.UTC),
-		Severity:  "WARN",
+		Severity:  "WARNING",
 		Tag:       "bar[2345]",
 		Program:   "bar",
 		PID:       2345,
@@ -57,7 +57,7 @@ var (
 	}
 	fakeEntry3 = &Entry{
 		Timestamp: time.Date(2019, 12, 10, 11, 17, 30, 123456000, jst),
-		Severity:  "INFO",
+		Severity:  "ERR",
 		Tag:       "foo[1234]",
 		Program:   "foo",
 		PID:       1234,
@@ -167,6 +167,18 @@ func TestReaderRead(t *testing.T) {
 		{
 			name:   "OptionProgram",
 			opts:   []Option{Program("foo")},
+			writes: []string{fakeLine1 + fakeLine2 + fakeLine3},
+			want:   []*Entry{fakeEntry1, fakeEntry3},
+		},
+		{
+			name:   "OptionSeveritiesOne",
+			opts:   []Option{Severities(Err)},
+			writes: []string{fakeLine1 + fakeLine2 + fakeLine3},
+			want:   []*Entry{fakeEntry3},
+		},
+		{
+			name:   "OptionSeveritiesTwo",
+			opts:   []Option{Severities(Info, Err)},
 			writes: []string{fakeLine1 + fakeLine2 + fakeLine3},
 			want:   []*Entry{fakeEntry1, fakeEntry3},
 		},
