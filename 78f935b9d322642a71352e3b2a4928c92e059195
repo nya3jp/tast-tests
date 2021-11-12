@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ed7b007_89462a5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-12T07:55:14Z",
+      "side": 1,
+      "message": "This bug is already fixed",
+      "revId": "78f935b9d322642a71352e3b2a4928c92e059195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bb75be9_c330d08f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -50,6 +67,46 @@
       "side": 1,
       "message": "Oh, sorry!",
       "parentUuid": "f36707fc_52adfa8b",
+      "revId": "78f935b9d322642a71352e3b2a4928c92e059195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "914affb0_71457188",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-12T07:55:14Z",
+      "side": 1,
+      "message": "Can someone from your team also be added as a reviewer?",
+      "revId": "78f935b9d322642a71352e3b2a4928c92e059195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ebc422_10b6dbdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-12T07:55:14Z",
+      "side": 1,
+      "message": "nit: maybe \"a bigger\" here?",
+      "range": {
+        "startLine": 193,
+        "startChar": 22,
+        "endLine": 193,
+        "endChar": 25
+      },
       "revId": "78f935b9d322642a71352e3b2a4928c92e059195",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
