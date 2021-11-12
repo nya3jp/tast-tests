@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b25d34_62ebf7b0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-12T00:07:24Z",
+      "side": 1,
+      "message": "huge nit (here and below): append period (.) to sentence.\n\nhttps://golang.org/doc/effective_go#commentary",
+      "range": {
+        "startLine": 33,
+        "startChar": 77,
+        "endLine": 33,
+        "endChar": 78
+      },
+      "revId": "6984e7a5c7afc5a9d47b866b5355810c3121293e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44ee9f80_c4a4d117",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-12T00:07:24Z",
+      "side": 1,
+      "message": "probably this should be added as a \"defer\", right after installFactoryToolkit gets called.\n\nalso consider reserving time for the cleanup:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "6984e7a5c7afc5a9d47b866b5355810c3121293e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
