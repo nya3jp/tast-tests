@@ -28,7 +28,7 @@ func init() {
 		Func:         PhysicalKeyboardAutocorrect,
 		Desc:         "Checks that physical keyboard can perform typing with autocorrects",
 		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		Pre:          pre.NonVKClamshellReset,
