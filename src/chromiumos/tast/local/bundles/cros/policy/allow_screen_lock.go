@@ -116,8 +116,8 @@ func AllowScreenLock(ctx context.Context, s *testing.State) {
 			}
 
 			if err := uiauto.Combine("Check lock screen from system tray",
-				ui.WaitUntilExists(nodewith.Name("Shut down").ClassName("TopShortcutButton")),
-				ui.WaitUntilGone(nodewith.Name("Lock").ClassName("TopShortcutButton")),
+				ui.WaitUntilExists(nodewith.Name("Shut down").ClassName("IconButton")),
+				ui.WaitUntilGone(nodewith.Name("Lock").ClassName("IconButton")),
 			)(ctx); err != nil {
 				s.Error("Failed to check the lock screen button: ", err)
 			}
