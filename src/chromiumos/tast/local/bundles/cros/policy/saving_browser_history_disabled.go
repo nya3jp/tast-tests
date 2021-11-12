@@ -17,7 +17,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -38,12 +39,12 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			Fixture: fixture.ChromePolicyLoggedIn,
-			Val:     lacros.ChromeTypeChromeOS,
+			Val:     browser.TypeAsh,
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 		}},
 	})
 }
@@ -111,11 +112,11 @@ func SavingBrowserHistoryDisabled(ctx context.Context, s *testing.State) {
 
 			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
 			// Setup browser based on the chrome type.
-			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
 			if err != nil {
 				s.Fatal("Failed to open the browser: ", err)
 			}
-			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+			defer closeBrowser(cleanupCtx)
 
 			// Open a website to create a browsing history entry.
 			conn, err := br.NewConn(ctx, server.URL)
