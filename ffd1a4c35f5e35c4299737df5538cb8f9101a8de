@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59874445_62eefd7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-12T04:28:26Z",
+      "side": 1,
+      "message": "I intended to promote this test to CQ because it is pretty stable (https://crrev.com/c/3275863). Since more scenarios are coming, I will hold it for now.\n\nCan you please add one more attr \"group:input-tools-upstream\", so it can at least to run in uprev cls.",
+      "range": {
+        "startLine": 30,
+        "startChar": 65,
+        "endLine": 30,
+        "endChar": 78
+      },
+      "revId": "ffd1a4c35f5e35c4299737df5538cb8f9101a8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a8bbae6_5225ee3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-12T04:28:26Z",
+      "side": 1,
+      "message": "This sub test does not cleanup the change. It is nice to have a defer function to check input mode and switch back if required. I can refactor this test once https://crrev.com/c/3259367 lands.",
+      "range": {
+        "startLine": 139,
+        "startChar": 10,
+        "endLine": 139,
+        "endChar": 34
+      },
+      "revId": "ffd1a4c35f5e35c4299737df5538cb8f9101a8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "340d7563_e8d78fb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-12T04:28:26Z",
+      "side": 1,
+      "message": "eh.. I just learned this raw mode in Pinyin.. I used to use it on other OS but normally there is a IME tray reflection. On ChromeOS there is nowhere I can see it is Pinyin Mode or raw mode.",
+      "range": {
+        "startLine": 142,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 28
+      },
+      "revId": "ffd1a4c35f5e35c4299737df5538cb8f9101a8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91ad7e60_d576d25b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_pinyin_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-12T04:28:26Z",
+      "side": 1,
+      "message": "How about adding another shift to switch back and validate Pinyin input?",
+      "range": {
+        "startLine": 145,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 5
+      },
+      "revId": "ffd1a4c35f5e35c4299737df5538cb8f9101a8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
