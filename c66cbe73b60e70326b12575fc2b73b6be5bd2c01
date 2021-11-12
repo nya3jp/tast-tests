@@ -16,6 +16,29 @@
       "message": "LGTM. No futher comment from me. Thanks.",
       "revId": "c66cbe73b60e70326b12575fc2b73b6be5bd2c01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f85438bf_9d90c8be",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-12T04:47:11Z",
+      "side": 1,
+      "message": "Hi reviewers, from patchset 5 -\u003e 7, I removed terminateOnError input from RunActionAsSubTest. It think it is nice to just return the subtest result and up to the outer function to decide terminate of not.",
+      "range": {
+        "startLine": 147,
+        "startChar": 136,
+        "endLine": 147,
+        "endChar": 152
+      },
+      "revId": "c66cbe73b60e70326b12575fc2b73b6be5bd2c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
