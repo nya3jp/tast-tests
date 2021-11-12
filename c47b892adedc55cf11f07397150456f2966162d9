@@ -123,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "959f77d6_c1cf988c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-12T18:00:13Z",
+      "side": 1,
+      "message": "I\u0027m not sure what those errors mean, did you put them in the \u0027network\u0027 namespace?\n\nThat said, I actually like having them in the shillconst package, so that LGTM.\n\nOne suggestion/nit: I think the filename is a bit confusing. I would suggest naming the file something like netlog_known_errors.",
+      "parentUuid": "4f386bf6_d50e0bc2",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e39b312_2464d659",
@@ -190,6 +208,24 @@
       "side": 1,
       "message": "I will update syslog to handle severity like they already have one for program [1] in a separate CL.\n\nI cannot add startTime and endTime without changing the syslog library significantly because by default it processes the log lines after the reader object is created [2]. So I will keep it as a post-processing as it is now.\n\nWhat do you think?\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/syslog/reader.go?l\u003d218\u0026rcl\u003d72c3511c046216f0d32a3c7cb1e7df7d30a74704\n\n[2] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/syslog/reader.go?l\u003d254\u0026rcl\u003d72c3511c046216f0d32a3c7cb1e7df7d30a74704",
       "parentUuid": "71d333ea_ec3191be",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c27dffb_af3e37d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-12T18:00:13Z",
+      "side": 1,
+      "message": "That seems reasonable, I\u0027ll take a look at the new changes when I have a chance.",
+      "parentUuid": "5e0f2041_aa2da0f2",
       "revId": "c47b892adedc55cf11f07397150456f2966162d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -267,6 +303,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7453655_da27e0b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-12T18:00:13Z",
+      "side": 1,
+      "message": "If the source file isn\u0027t available it can just be empty, I think that is reasonable. That said, post processing seems OK also.",
+      "parentUuid": "2555664b_f1e5ed1b",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4feba883_db0a744b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
         "patchSetId": 2
@@ -331,6 +385,24 @@
       "side": 1,
       "message": "Partially done. I think it is informational to print the case of r.Counter \u003d\u003d 0 because it signals that the allowed list may need to be updated (even though the result of a single run does not say much about whether the corresponding entry has to be removed or not).",
       "parentUuid": "193fdd80_2a0e6815",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f50f81d_ffc7e0ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-12T18:00:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9976cd06_cb34c4ce",
       "revId": "c47b892adedc55cf11f07397150456f2966162d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
