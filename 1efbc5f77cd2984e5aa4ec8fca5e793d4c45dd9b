@@ -16,6 +16,24 @@
       "message": "could you move this to fixture.go, so that both lacros launched from shelf and this command line behaves in a same way?",
       "revId": "1efbc5f77cd2984e5aa4ec8fca5e793d4c45dd9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc00119d_f96aa223",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2021-11-12T17:44:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e17f3e82_9f5310bb",
+      "revId": "1efbc5f77cd2984e5aa4ec8fca5e793d4c45dd9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
