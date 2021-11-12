@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2fe6e5e4_fa3d9a4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-12T05:16:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55280c2e_db4432ab",
+      "revId": "50b6229dd001afc789b5db9c81211b7d44aa58f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b4ddadbf_a02dc2d1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 8
@@ -48,6 +66,24 @@
       "writtenOn": "2021-11-12T01:32:40Z",
       "side": 1,
       "message": "Not necessarily due to fragmentation. I would suggest just simply put \"Some NIC may strip out of the FCS field in the packets before feeding them to the userspace\"",
+      "revId": "50b6229dd001afc789b5db9c81211b7d44aa58f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54b100c6_33ea47e3",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-12T05:16:51Z",
+      "side": 1,
+      "message": "Done\nAgree. Fragmentation is one of various reasons to strip out FCS.",
+      "parentUuid": "0f447451_7b1071a6",
       "revId": "50b6229dd001afc789b5db9c81211b7d44aa58f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
