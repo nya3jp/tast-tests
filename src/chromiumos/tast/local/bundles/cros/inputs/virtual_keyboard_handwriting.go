@@ -35,7 +35,7 @@ var hwTestIMEs = []ime.InputMethod{
 	ime.Korean,
 }
 
-var hwTestIMEsNewData = []ime.InputMethod{
+var hwTestIMEsUpstream = []ime.InputMethod{
 	ime.EnglishSouthAfrica,
 }
 
@@ -45,10 +45,10 @@ func init() {
 		Desc:         "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
-		Data:         data.ExtractExternalFiles(hwTestMessages, append(hwTestIMEs, hwTestIMEsNewData...)),
+		Attr:         []string{"group:mainline", "group:input-tools"},
+		Data:         data.ExtractExternalFiles(hwTestMessages, append(hwTestIMEs, hwTestIMEsUpstream...)),
 		Pre:          pre.VKEnabledReset,
-		Timeout:      2 * time.Duration(len(hwTestIMEs)+len(hwTestIMEsNewData)) * time.Duration(len(hwTestMessages)) * time.Minute,
+		Timeout:      2 * time.Duration(len(hwTestIMEs)+len(hwTestIMEsUpstream)) * time.Duration(len(hwTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
 				Name:              "docked",
@@ -57,16 +57,16 @@ func init() {
 				Val:               hwTestIMEs,
 			},
 			{
-				Name:              "docked_newdata", // This test will be merged into CQ once it is proved to be stable.
+				Name:              "docked_upstream",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream", "informational"},
-				Val:               hwTestIMEsNewData,
+				Val:               hwTestIMEsUpstream,
 			},
 			{
 				Name:              "docked_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
-				Val:               append(hwTestIMEs, hwTestIMEsNewData...),
+				Val:               append(hwTestIMEs, hwTestIMEsUpstream...),
 			},
 			{
 				Name:              "floating",
@@ -75,16 +75,16 @@ func init() {
 				Val:               hwTestIMEs,
 			},
 			{
-				Name:              "floating_newdata",
+				Name:              "floating_upstream",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
-				Val:               hwTestIMEsNewData,
+				Val:               hwTestIMEsUpstream,
 			},
 			{
 				Name:              "floating_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
-				Val:               append(hwTestIMEs, hwTestIMEsNewData...),
+				Val:               append(hwTestIMEs, hwTestIMEsUpstream...),
 			},
 		},
 	})
