@@ -404,7 +404,9 @@ func GetWaitStatus(err error) (status syscall.WaitStatus, ok bool) {
 }
 
 // ExitCode extracts exit code from error returned by exec.Command.Run().
-// Returns exit code and true when success. (0, false) otherwise.
+// Returns exit code and true if exit code is extracted. (0, false) otherwise.
+// Note that "true" does not mean that the process itself exited correctly, only
+// that the exit code was extracted successfully.
 func ExitCode(cmdErr error) (int, bool) {
 	s, ok := GetWaitStatus(cmdErr)
 	if !ok {
