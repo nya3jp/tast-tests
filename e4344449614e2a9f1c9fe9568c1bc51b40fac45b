@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02df2a96_6691a4ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-12T18:58:31Z",
+      "side": 1,
+      "message": "Done. Waiting to the fix and resubmit a CQ Dry Run. Thanks for the advice.",
+      "parentUuid": "034a8bce_6f9df4d4",
+      "revId": "e4344449614e2a9f1c9fe9568c1bc51b40fac45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56f9062f_2b0f4d1d",
