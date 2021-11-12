@@ -75,6 +75,24 @@ var ResetSettings = nodewith.Name("Reset settings").Role(role.Link).HasClass("it
 var AboutChromeOS = nodewith.MultilingualName("About Chrome OS", map[string]string{"de": "Über Chrome OS"}).
 	Role(role.Link)
 
+// Elements in "AboutChromeOS"
+var (
+	VersionInfo       = nodewith.NameStartingWith("Version ").Role(role.StaticText)
+	CheckUpdateBtn    = nodewith.Name("Check for updates").Role(role.Button)
+	ReportIssue       = nodewith.Name("Report an issue").Role(role.Link)
+	AdditionalDetails = nodewith.Name("Additional details").Role(role.Link)
+	TermsOfService    = nodewith.Name("Terms of Service").Role(role.Link)
+
+	// OpenSourceSoftwares matches two links, needs specify when using.
+	OpenSourceSoftwares = nodewith.Name("open source software").Role(role.Link)
+
+	ChangeChannelBtn = nodewith.Name("Change channel").Role(role.Button)
+	BuildDetailsBtn  = nodewith.Name("Build details").Role(role.Button)
+)
+
+// BackArrowBtn is the button to return to last page.
+var BackArrowBtn = nodewith.HasClass("icon-arrow-back").Role(role.Button)
+
 // searchMismatched is the pattern shown in search results
 // when the input keyword in `SearchBox` is mismatched with any existing option.
 var searchMismatched = `No search results found`
