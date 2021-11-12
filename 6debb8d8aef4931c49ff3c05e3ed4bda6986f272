@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5695ac41_f6583438",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-12T00:49:54Z",
+      "side": 1,
+      "message": "Hi, Judy and Daisy! Could you help me review this CL? Thanks!",
+      "revId": "6debb8d8aef4931c49ff3c05e3ed4bda6986f272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
