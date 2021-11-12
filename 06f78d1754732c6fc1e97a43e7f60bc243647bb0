@@ -46,6 +46,30 @@
       },
       "revId": "06f78d1754732c6fc1e97a43e7f60bc243647bb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e04b92d_297dbd1f",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T11:58:46Z",
+      "side": 1,
+      "message": "Done. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3275922",
+      "parentUuid": "733e4905_b37c52c8",
+      "range": {
+        "startLine": 135,
+        "startChar": 28,
+        "endLine": 136,
+        "endChar": 18
+      },
+      "revId": "06f78d1754732c6fc1e97a43e7f60bc243647bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
