@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d31f2028_65be9b8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-11-12T02:04:03Z",
+      "side": 1,
+      "message": "Two nits.",
+      "revId": "69deea9b0f880b540fdf99120b8c33fc2d272aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71369bd6_8a824557",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-11-12T02:04:03Z",
+      "side": 1,
+      "message": "invalid Stork",
+      "range": {
+        "startLine": 124,
+        "startChar": 47,
+        "endLine": 124,
+        "endChar": 77
+      },
+      "revId": "69deea9b0f880b540fdf99120b8c33fc2d272aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c9ff1a_b892296a",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-11-12T02:04:03Z",
+      "side": 1,
+      "message": "invalid sessionID",
+      "range": {
+        "startLine": 148,
+        "startChar": 31,
+        "endLine": 148,
+        "endChar": 61
+      },
+      "revId": "69deea9b0f880b540fdf99120b8c33fc2d272aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
