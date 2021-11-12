@@ -22,6 +22,30 @@
       },
       "revId": "06f78d1754732c6fc1e97a43e7f60bc243647bb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "733e4905_b37c52c8",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T11:30:47Z",
+      "side": 1,
+      "message": "Good catch! Will fix it to keep it up to date.",
+      "parentUuid": "bce41ae7_22b0919d",
+      "range": {
+        "startLine": 135,
+        "startChar": 28,
+        "endLine": 136,
+        "endChar": 18
+      },
+      "revId": "06f78d1754732c6fc1e97a43e7f60bc243647bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
