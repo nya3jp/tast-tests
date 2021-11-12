@@ -48,7 +48,8 @@ func init() {
 		Desc:     "Lacros Chrome from a pre-built image",
 		Contacts: []string{"hyungtaekim@chromium.org", "lacros-team@google.com"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return nil, nil
+			// Suppress experimental Lacros infobar and possible others as well.
+			return []chrome.Option{chrome.LacrosExtraArgs("--test-type")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -126,7 +127,8 @@ func init() {
 		Desc:     "Lacros Chrome from a pre-built image using the UI",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return nil, nil
+			// Suppress experimental Lacros infobar and possible others as well.
+			return []chrome.Option{chrome.LacrosExtraArgs("--test-type")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
