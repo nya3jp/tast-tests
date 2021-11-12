@@ -258,6 +258,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ab54eeb_762bd3ea",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-12T08:10:09Z",
+      "side": 1,
+      "message": "The given example is in a subpackage (which you referred in the first reply), but the usage here is not in a subpackage. I don\u0027t think it is good practice to skip the lint check that has a good justification.\n\nBTW, do you really need RunAsSubTest and RunActionAsSubTest in the support package that is for general-purpose use? e.g. a userAction may not need faillog.DumpUITreeWithScreenshotOnError or may need additional clean-ups.  \n\nIf you are defining them for inputs testing, you can moving them to the subpackage: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+      "parentUuid": "d1eb1026_8f00c801",
+      "range": {
+        "startLine": 158,
+        "startChar": 79,
+        "endLine": 158,
+        "endChar": 88
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4dddf6b_4a47fddc",
         "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
         "patchSetId": 1
