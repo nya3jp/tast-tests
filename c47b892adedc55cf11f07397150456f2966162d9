@@ -141,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f0a457_43f48bf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-12T18:49:01Z",
+      "side": 1,
+      "message": "Done (the file name has been changed). Yes, the problem was that I put it in the network namespace.",
+      "parentUuid": "959f77d6_c1cf988c",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e39b312_2464d659",
