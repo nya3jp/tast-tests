@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c07e13e_59003c4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1313381
+      },
+      "writtenOn": "2021-11-12T10:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e81bfd0_e223926c",
+      "range": {
+        "startLine": 159,
+        "startChar": 6,
+        "endLine": 159,
+        "endChar": 12
+      },
+      "revId": "9e4dcbd9dacd62e797a97c419e6972ed3ad46aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef71a3c3_7415cc1a",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-11-11T17:36:39Z",
       "side": 1,
       "message": "Error",
+      "range": {
+        "startLine": 174,
+        "startChar": 6,
+        "endLine": 174,
+        "endChar": 11
+      },
+      "revId": "9e4dcbd9dacd62e797a97c419e6972ed3ad46aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f0abb8b_1e28bb7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1313381
+      },
+      "writtenOn": "2021-11-12T10:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef71a3c3_7415cc1a",
       "range": {
         "startLine": 174,
         "startChar": 6,
