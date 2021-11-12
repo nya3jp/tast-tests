@@ -234,6 +234,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1eb1026_8f00c801",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-12T06:42:25Z",
+      "side": 1,
+      "message": "Ye, in that case I have to something like below. testing.State is still used internally. \n\ntype testingState interface {\n\tOutDir() string\n\tHasError() bool\n\tRun(context.Context, string, func(ctx context.Context, s *testing.State)) bool\n}\n\nfunc (ua *UserAction) RunAsSubTest(ctx context.Context, s testingState) bool {\n\treturn s.Run(ctx, ua.name, func(ctx context.Context, s *testing.State) {\n\t\n\t\nPersonally I still prefer just to pass through *testing.State like below:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/util/util.go?l\u003d201",
+      "parentUuid": "59f7b8ce_31d33b97",
+      "range": {
+        "startLine": 158,
+        "startChar": 79,
+        "endLine": 158,
+        "endChar": 88
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4dddf6b_4a47fddc",
         "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
         "patchSetId": 1
