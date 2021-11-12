@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ed2e96c_df20c8ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-12T21:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0594724f_ac918615",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "9a2490468066c1bb2040dcc9a8665468b980878c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62df99c9_bc5b2971",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-12T21:38:19Z",
       "side": 1,
       "message": "\"for verifying Rootfs Lacros\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 76,
+        "endLine": 73,
+        "endChar": 93
+      },
+      "revId": "9a2490468066c1bb2040dcc9a8665468b980878c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "329403ff_99c2d42b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-12T21:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62df99c9_bc5b2971",
       "range": {
         "startLine": 73,
         "startChar": 76,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e125ba00_996dcf21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-12T21:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "364b183a_eef80d9e",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "9a2490468066c1bb2040dcc9a8665468b980878c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3806540b_7c2d27dd",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-11-12T21:38:19Z",
       "side": 1,
       "message": "Shouldn\u0027t non major version skew down from rootfs lacros be always valid?\n\nSo maybe you don\u0027t need to read the ash version at all?",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "9a2490468066c1bb2040dcc9a8665468b980878c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "609d1fad_fc5525e8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_rootfs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-12T21:58:44Z",
+      "side": 1,
+      "message": "Right. Non major version skew from lacros be always valid/compatible with ash if this assumption is true:\nrootfs lacros and ash builds are cut for the same milestone\n\nThis is true in most cases, but sometimes it isn\u0027t around the time of branch cut since rootfs lacros is currently uprevved manually, which is happening right now on M98.\nThis check will be also useful to detect this milestone gap between Ash and Rootfs. Does it make sense?",
+      "parentUuid": "3806540b_7c2d27dd",
       "range": {
         "startLine": 51,
         "startChar": 1,
