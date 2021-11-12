@@ -64,7 +64,7 @@ func readPidFromFile(f *os.File) (int, error) {
 
 // Seccomp verifies that a crash report caused by a seccomp violation will contain the policy path.
 func Seccomp(ctx context.Context, s *testing.State) {
-	const executable = "/usr/libexec/tast/helpers/local/cros/crash.Seccomp.brk"
+	const executable = "/usr/local/libexec/tast/helpers/local/cros/crash.Seccomp.brk"
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("Failed to set up crash test: ", err)
 	}
