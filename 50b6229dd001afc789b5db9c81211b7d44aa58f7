@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55280c2e_db4432ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-11-12T01:32:40Z",
+      "side": 1,
+      "message": "RadioTapFCSValid --\u003e radioTapFCSValid",
+      "revId": "50b6229dd001afc789b5db9c81211b7d44aa58f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4ddadbf_a02dc2d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-11-12T01:32:40Z",
+      "side": 1,
+      "message": "Thanks for the fix. LGTM with nits.",
+      "revId": "50b6229dd001afc789b5db9c81211b7d44aa58f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f447451_7b1071a6",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-11-12T01:32:40Z",
+      "side": 1,
+      "message": "Not necessarily due to fragmentation. I would suggest just simply put \"Some NIC may strip out of the FCS field in the packets before feeding them to the userspace\"",
+      "revId": "50b6229dd001afc789b5db9c81211b7d44aa58f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
