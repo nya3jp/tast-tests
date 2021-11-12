@@ -18,13 +18,13 @@ var quickSettingsFinder = nodewith.ClassName("UnifiedSystemTrayView")
 var CollapseButton = nodewith.Role(role.Button).ClassName("CollapseButton")
 
 // LockButton is the finder for Quick Settings' lock button.
-var LockButton = nodewith.Name("Lock").ClassName("TopShortcutButton")
+var LockButton = nodewith.Name("Lock").ClassName("IconButton")
 
 // SettingsButton is the finder for the Quick Settings' setting button.
-var SettingsButton = nodewith.Name("Settings").ClassName("TopShortcutButton")
+var SettingsButton = nodewith.Name("Settings").ClassName("IconButton")
 
 // ShutdownButton is the finder for the shutdown button in Quick Settings.
-var ShutdownButton = nodewith.Name("Shut down").ClassName("TopShortcutButton")
+var ShutdownButton = nodewith.Name("Shut down").ClassName("IconButton")
 
 // SignoutButton is the finder for the 'Sign out' Quick Settings button.
 var SignoutButton = nodewith.Role(role.Button).Name("Sign out").ClassName("PillButton")
