@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1dad5a_0765268f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2021-11-12T03:36:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1b25d34_62ebf7b0",
+      "range": {
+        "startLine": 33,
+        "startChar": 77,
+        "endLine": 33,
+        "endChar": 78
+      },
+      "revId": "6984e7a5c7afc5a9d47b866b5355810c3121293e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44ee9f80_c4a4d117",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-12T00:07:24Z",
       "side": 1,
       "message": "probably this should be added as a \"defer\", right after installFactoryToolkit gets called.\n\nalso consider reserving time for the cleanup:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "6984e7a5c7afc5a9d47b866b5355810c3121293e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41c93ddf_210c0af5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2021-11-12T03:36:43Z",
+      "side": 1,
+      "message": "From my understanding, the idea is this defer is after the `installFactoryToolkit` in the `Setup` call. If we add the defer in `Setup`, this configuration takes place after the device reboot. However, it should perform before reboot, otherwise the `disk_space_hacks.sh` is not disabled and executed during boot.\n\nAs we have a return statement at the end of the `installFactoryToolkit` function, I feel it is more clear and logically correct to have the defer in the `installFactoryToolkit` function.",
+      "parentUuid": "44ee9f80_c4a4d117",
       "range": {
         "startLine": 113,
         "startChar": 1,
