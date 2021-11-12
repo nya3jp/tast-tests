@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c7b4c6_dcb3048a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tps_validation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-11-12T01:27:12Z",
+      "side": 1,
+      "message": "This can add 20%+ cpu usage while running fibonacci calculation can only add 10%+. Also if we pipe it like `sha1sum /dev/zero | sha1sum /dev/zero | sha1sum /dev/zero` or even more it will add 30%+ and more.",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 50
+      },
+      "revId": "9d6214943238b1775409788329ca6f2edab60135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
