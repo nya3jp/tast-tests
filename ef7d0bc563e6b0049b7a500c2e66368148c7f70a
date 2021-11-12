@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f667b97d_84804faa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-11-12T21:44:45Z",
+      "side": 1,
+      "message": "PTAL -- just to align with the previous CL naming.",
+      "revId": "ef7d0bc563e6b0049b7a500c2e66368148c7f70a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
