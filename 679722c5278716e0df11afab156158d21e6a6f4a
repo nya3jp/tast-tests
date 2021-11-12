@@ -282,6 +282,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfa13bd0_3bd49cd9",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-12T09:53:15Z",
+      "side": 1,
+      "message": "It is okay not running UserAction as subtest. However, in some cases such as https://crrev.com/c/3276613, we might want them to be reported as subtest in the test result.\n\nI still reckon it is nice to have if we do not want to repeat below code snippet everywhere. Overall I think it is the only reason why I want to keep this function.\n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\ndefer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, filepath.Join(s.OutDir(), ua.name), s.HasError, ua.userContext.cr, \"ui_tree_\"+ua.name)\n\nbtw, I have discussed offline this with @nya and he agrees to keep current approach with some comments.",
+      "parentUuid": "9ab54eeb_762bd3ea",
+      "range": {
+        "startLine": 158,
+        "startChar": 79,
+        "endLine": 158,
+        "endChar": 88
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4dddf6b_4a47fddc",
         "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
         "patchSetId": 1
