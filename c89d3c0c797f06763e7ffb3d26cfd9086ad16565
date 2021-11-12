@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4f21e1a_1112af8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tps_validation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-11-12T01:17:55Z",
+      "side": 1,
+      "message": "err from Wait() should be signal:killed and we can\u0027t just simply return it, we should check the wait status instead.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 42
+      },
+      "revId": "c89d3c0c797f06763e7ffb3d26cfd9086ad16565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
