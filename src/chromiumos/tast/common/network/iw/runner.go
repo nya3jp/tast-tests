@@ -95,13 +95,17 @@ type Phy struct {
 	Modes, Commands, Features []string
 	RxAntenna, TxAntenna      int
 	MaxScanSSIDs              int
-	SupportHE                 bool
-	SupportHE40HE80           bool
-	SupportHE160              bool
-	SupportVHT                bool
+	MaxSTAs                   int
+	SupportHESTA              bool
+	SupportHE40HE80STA        bool
+	SupportHE160STA           bool
+	SupportHEAP               bool
+	SupportHE40HE80AP         bool
+	SupportHE160AP            bool
 	SupportHT2040             bool
 	SupportHT20SGI            bool
 	SupportHT40SGI            bool
+	SupportVHT                bool
 	SupportVHT80SGI           bool
 	SupportMUMIMO             bool
 }
@@ -131,15 +135,18 @@ type sectionAttributes struct {
 	bands                 []Band
 	phyModes, phyCommands []string
 
-	supportHE       bool
-	supportHE40HE80 bool
-	supportHE160    bool
-	supportVHT      bool
-	supportHT2040   bool
-	supportHT20SGI  bool
-	supportHT40SGI  bool
-	supportVHT80SGI bool
-	supportMUMIMO   bool
+	supportHESTA       bool
+	supportHE40HE80STA bool
+	supportHE160STA    bool
+	supportHEAP        bool
+	supportHE40HE80AP  bool
+	supportHE160AP     bool
+	supportVHT         bool
+	supportHT2040      bool
+	supportHT20SGI     bool
+	supportHT40SGI     bool
+	supportVHT80SGI    bool
+	supportMUMIMO      bool
 }
 
 // TimedScanData contains the BSS responses from an `iw scan` and its execution time.
@@ -875,6 +882,19 @@ func parseMaxScanSSIDs(contents string) (int, error) {
 	return maxScanSSIDs, nil
 }
 
+func parseMaxSTAs(content string) (int, error) {
+	m, err := extractMatch(`\s*Maximum associated stations in AP mode: (\d+)`, content)
+	if err != nil {
+		// DUT without SoftAP capability does not have this info, should not be treated as an error
+		return 0, nil
+	}
+	maxSTAs, err := strconv.Atoi(m[0])
+	if err != nil {
+		return 0, errors.Wrapf(err, "unable to convert value of \"Maximum associated stations in AP mode\" to int: %s", m[0])
+	}
+	return maxSTAs, nil
+}
+
 // newPhy constructs a Phy object from "iw list" output.
 func newPhy(phyMatch, dataMatch string) (*Phy, error) {
 	// Phy name handling.
@@ -902,6 +922,12 @@ func newPhy(phyMatch, dataMatch string) (*Phy, error) {
 		return nil, err
 	}
 
+	// Max associated stations in AP mode.
+	maxSTAs, err := parseMaxSTAs(dataMatch)
+	if err != nil {
+		return nil, err
+	}
+
 	// Handle parsing attributes that need to be handled on a section by section level.
 	// Sections are defined as blocks of text that are delimited by level 1 indent lines.
 	attrs, err := parseSectionSpecificAttributes(dataMatch)
@@ -910,23 +936,27 @@ func newPhy(phyMatch, dataMatch string) (*Phy, error) {
 	}
 
 	return &Phy{
-		Name:            name,
-		Bands:           attrs.bands,
-		Modes:           attrs.phyModes,
-		Commands:        attrs.phyCommands,
-		Features:        phyFeatures,
-		RxAntenna:       rxAntenna,
-		TxAntenna:       txAntenna,
-		MaxScanSSIDs:    maxScanSSIDs,
-		SupportHE:       attrs.supportHE,
-		SupportHE40HE80: attrs.supportHE40HE80,
-		SupportHE160:    attrs.supportHE160,
-		SupportVHT:      attrs.supportVHT,
-		SupportHT2040:   attrs.supportHT2040,
-		SupportHT20SGI:  attrs.supportHT20SGI,
-		SupportHT40SGI:  attrs.supportHT40SGI,
-		SupportVHT80SGI: attrs.supportVHT80SGI,
-		SupportMUMIMO:   attrs.supportMUMIMO,
+		Name:               name,
+		Bands:              attrs.bands,
+		Modes:              attrs.phyModes,
+		Commands:           attrs.phyCommands,
+		Features:           phyFeatures,
+		RxAntenna:          rxAntenna,
+		TxAntenna:          txAntenna,
+		MaxScanSSIDs:       maxScanSSIDs,
+		MaxSTAs:            maxSTAs,
+		SupportHESTA:       attrs.supportHESTA,
+		SupportHE40HE80STA: attrs.supportHE40HE80STA,
+		SupportHE160STA:    attrs.supportHE160STA,
+		SupportHEAP:        attrs.supportHEAP,
+		SupportHE40HE80AP:  attrs.supportHE40HE80AP,
+		SupportHE160AP:     attrs.supportHE160AP,
+		SupportHT2040:      attrs.supportHT2040,
+		SupportHT20SGI:     attrs.supportHT20SGI,
+		SupportHT40SGI:     attrs.supportHT40SGI,
+		SupportVHT:         attrs.supportVHT,
+		SupportVHT80SGI:    attrs.supportVHT80SGI,
+		SupportMUMIMO:      attrs.supportMUMIMO,
 	}, nil
 }
 
@@ -1059,38 +1089,92 @@ func parseBand(attrs *sectionAttributes, sectionName, contents string) error {
 	return nil
 }
 
-func parseThroughput(attrs *sectionAttributes, sectionName, contents string) error {
-	// This parser evaluates the throughput capabilities of the phy.
-	// HE-MAC related.
-	if strings.Contains(contents, "HE MAC Capabilities") {
-		attrs.supportHE = true
-	}
-	if strings.Contains(contents, "HE40/HE80/5GHz") {
-		attrs.supportHE40HE80 = true
-	}
-	if strings.Contains(contents, "HE160/5GHz") {
-		attrs.supportHE160 = true
-	}
-	// HT related.
-	if strings.Contains(contents, "HT20/HT40") {
+func parseHT(attrs *sectionAttributes, sectionName, content string) {
+	if strings.Contains(content, "HT20/HT40") {
 		attrs.supportHT2040 = true
 	}
-	if strings.Contains(contents, "RX HT20 SGI") {
+	if strings.Contains(content, "RX HT20 SGI") {
 		attrs.supportHT20SGI = true
 	}
-	if strings.Contains(contents, "RX HT40 SGI") {
+	if strings.Contains(content, "RX HT40 SGI") {
 		attrs.supportHT40SGI = true
 	}
-	// VHT related.
-	if strings.Contains(contents, "VHT Capabilities") {
-		attrs.supportVHT = true
-	}
-	if strings.Contains(contents, "short GI (80 MHz)") {
+}
+
+func parseVHT(attrs *sectionAttributes, sectionName, content string) {
+	attrs.supportVHT = true
+	if strings.Contains(content, "short GI (80 MHz)") {
 		attrs.supportVHT80SGI = true
 	}
-	if strings.Contains(contents, "MU Beamformee") {
+	if strings.Contains(content, "MU Beamformee") {
 		attrs.supportMUMIMO = true
 	}
+}
+
+func parseHE(attrs *sectionAttributes, sectionName, content string) {
+	if strings.Contains(sectionName, "Station") {
+		// Station HE capability.
+		if strings.Contains(content, "HE MAC Capabilities") {
+			attrs.supportHESTA = true
+		}
+		if strings.Contains(content, "HE40/HE80/5GHz") {
+			attrs.supportHE40HE80STA = true
+		}
+		if strings.Contains(content, "HE160/5GHz") {
+			attrs.supportHE160STA = true
+		}
+	}
+	if strings.Contains(sectionName, "AP") {
+		// SoftAP HE capability.
+		if strings.Contains(content, "HE MAC Capabilities") {
+			attrs.supportHEAP = true
+		}
+		if strings.Contains(content, "HE40/HE80/5GHz") {
+			attrs.supportHE40HE80AP = true
+		}
+		if strings.Contains(content, "HE160/5GHz") {
+			attrs.supportHE160AP = true
+		}
+	}
+}
+
+func parseThroughput(attrs *sectionAttributes, sectionName, content string) error {
+	// This parser evaluates the throughput capabilities of the phy.
+	sections, err := parseSection(`(?m)^\t\t(\w.*):.*$`, content)
+	if err != nil {
+		return errors.Wrap(err, "could not parse sections")
+	}
+
+	var throughputParsers = []struct {
+		prefix string
+		parse  func(attrs *sectionAttributes, sectionName, content string)
+	}{
+		{
+			prefix: "Capabilities",
+			parse:  parseHT,
+		},
+		{
+			prefix: "VHT Capabilities",
+			parse:  parseVHT,
+		},
+		{
+			prefix: "HE Iftypes",
+			parse:  parseHE,
+		},
+	}
+
+	// For each section, try to parse it with available parsers and stores
+	// the parsed result to sectionAttributes.
+	for _, sec := range sections {
+		m := strings.TrimSpace(sec.header)
+		for _, parser := range throughputParsers {
+			if !strings.HasPrefix(m, parser.prefix) {
+				continue
+			}
+			parser.parse(attrs, m, sec.body)
+		}
+	}
+
 	return nil
 }
 
