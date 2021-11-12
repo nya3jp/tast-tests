@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "238e9a64_e1e11473",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-12T01:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0b32693_8d4613fd",
+      "revId": "e0ddd5eae5c73da5b7e828b9e753371d5d8d6e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02f65954_d20f6a25",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e7b0212_e87fa87b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-12T01:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02f65954_d20f6a25",
+      "revId": "e0ddd5eae5c73da5b7e828b9e753371d5d8d6e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8155264f_c559d049",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-11-12T01:34:37Z",
       "side": 1,
       "message": "to",
+      "range": {
+        "startLine": 12,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "e0ddd5eae5c73da5b7e828b9e753371d5d8d6e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47f82b3f_3c5ee22f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-12T01:51:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8155264f_c559d049",
       "range": {
         "startLine": 12,
         "startChar": 26,
@@ -92,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc04f620_259a1fd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/stork_profile.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-12T01:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97e24ebe_9ce1adc3",
+      "revId": "e0ddd5eae5c73da5b7e828b9e753371d5d8d6e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1f8534a_12ffdf58",
@@ -105,6 +183,24 @@
       "writtenOn": "2021-11-12T01:34:37Z",
       "side": 1,
       "message": "We shall check the existence of gtsTestProfileListKey first so that the semantics of the error is correct. Please fix the rest of the usage.\n\ngtsTestProfileListValue, ok :\u003d storkResponse[gtsTestProfileListKey]\nif !ok {\n  return ActivationCode(\"\"), errors.Errorf(\"Stork response does not contain %v\", gtsTestProfileListKey)\n}\nif err :\u003d json.Unmarshal(gtsTestProfileListValue, \u0026gtsTestProfileList); err !\u003d nil {\n  return ActivationCode(\"\"), errors.Wrap(err, \"invalid Stork gtsTestProfileList\")\n}",
+      "revId": "e0ddd5eae5c73da5b7e828b9e753371d5d8d6e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "810b1cf5_f58264f5",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-12T01:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1f8534a_12ffdf58",
       "revId": "e0ddd5eae5c73da5b7e828b9e753371d5d8d6e1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +222,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efe797ff_579946f9",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-12T01:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "294b0442_cc5ae43f",
+      "revId": "e0ddd5eae5c73da5b7e828b9e753371d5d8d6e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58ec12af_0b00df58",
@@ -139,6 +253,30 @@
       "writtenOn": "2021-11-12T01:34:37Z",
       "side": 1,
       "message": "Who is the caller?",
+      "range": {
+        "startLine": 143,
+        "startChar": 5,
+        "endLine": 143,
+        "endChar": 25
+      },
+      "revId": "e0ddd5eae5c73da5b7e828b9e753371d5d8d6e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2d6e57_432ea658",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-12T01:51:48Z",
+      "side": 1,
+      "message": "Sorry about that! Removed that function now that it no longer has a caller.",
+      "parentUuid": "58ec12af_0b00df58",
       "range": {
         "startLine": 143,
         "startChar": 5,
@@ -172,6 +310,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e09331_5c3fcbbe",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-12T01:51:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ee799fb4_60a4a32d",
+      "range": {
+        "startLine": 156,
+        "startChar": 28,
+        "endLine": 156,
+        "endChar": 34
+      },
+      "revId": "e0ddd5eae5c73da5b7e828b9e753371d5d8d6e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b00d7b05_3c596d50",
@@ -195,6 +357,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8facd3c6_aa695e90",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-12T01:51:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b00d7b05_3c596d50",
+      "range": {
+        "startLine": 179,
+        "startChar": 52,
+        "endLine": 179,
+        "endChar": 58
+      },
+      "revId": "e0ddd5eae5c73da5b7e828b9e753371d5d8d6e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff3bbbdf_50c41583",
@@ -208,6 +394,24 @@
       "writtenOn": "2021-11-12T01:34:37Z",
       "side": 1,
       "message": "Is the cleanup function the same (except sessionID) as the one in createEndSessionFunc()? If so, we may deduplicate them.",
+      "revId": "e0ddd5eae5c73da5b7e828b9e753371d5d8d6e1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5495127f_ffefd185",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-12T01:51:48Z",
+      "side": 1,
+      "message": "Yep, correct. I\u0027ve removed the earlier function.",
+      "parentUuid": "ff3bbbdf_50c41583",
       "revId": "e0ddd5eae5c73da5b7e828b9e753371d5d8d6e1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
