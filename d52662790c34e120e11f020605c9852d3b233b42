@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e336e250_947c0203",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin_enrollment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-11-12T10:13:26Z",
+      "side": 1,
+      "message": "Yeah, I think flag should enforce it.",
+      "parentUuid": "58d98169_a08d7825",
+      "revId": "d52662790c34e120e11f020605c9852d3b233b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45c5fbb4_800aea82",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c7b0f85_a6bd12b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin_enrollment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-11-12T10:13:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45c5fbb4_800aea82",
+      "revId": "d52662790c34e120e11f020605c9852d3b233b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba6aeaa8_7aeda84d",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-10-27T23:55:10Z",
       "side": 1,
       "message": "how come the existing chrome can\u0027t be used for the login part of the test?\n\nalso seems weird to re-assign cr like this without closing it first, I think you can restructure this like:\n```\n// anonymous func to control the defer timing\nfunc () {\n  cr, err :\u003d chrome.New(...)\n  defer cr.Close(ctx)\n  // PIN enrollment...\n}()\ncr, err \u003d chrome.New(...)\ndefer cr.Close(ctx)\n// PIN login...\n```\nchrome.Close doesn\u0027t restart Chrome, so I think it should be the same.",
+      "revId": "d52662790c34e120e11f020605c9852d3b233b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8c0bba5_9ebf5d03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin_enrollment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-11-12T10:13:26Z",
+      "side": 1,
+      "message": "Is it better now?",
+      "parentUuid": "ba6aeaa8_7aeda84d",
       "revId": "d52662790c34e120e11f020605c9852d3b233b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
