@@ -132,9 +132,9 @@ func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
 
 // New starts Chrome, sets passed Kiosk related options to policies and
 // restarts Chrome. When kioskmode.AutoLaunch() is used, then it auto starts
-// given Kiosk application. Alternatively kioskMode.LoadSigninProfileExtension()
-// should be used. In that case Chrome is started on Signin screen with Kiosk
-// accounts loaded.
+// given Kiosk application. Alternatively use kioskmode.ExtraChromeOptions()
+// passing chrome.LoadSigninProfileExtension(). In that case Chrome is started
+// and stays on Signin screen with Kiosk accounts loaded.
 // If kioskmode.AutoLaunch() option is used you should defer cleaning and
 // refreshing policies policyutil.ServeAndRefresh(ctx, fdms, cr,
 // []policy.Policy{}).
