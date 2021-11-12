@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
@@ -59,6 +60,11 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 	}
 
 	cr := s.PreValue().(arc.PreData).Chrome
+
+	// Wait for cpu to stabilize before test.
+	if err := cpu.WaitUntilStabilized(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
+		s.Fatal("Failed to wait for CPU to become idle: ", err)
+	}
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx
