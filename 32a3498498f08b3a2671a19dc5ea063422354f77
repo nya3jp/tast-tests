@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca57ede_5609116e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-12T12:37:40Z",
+      "side": 1,
+      "message": "Hmm the failure I\u0027m getting already happens without my CL, perhaps I need to rebuild packages. Setting this CL as ready for review again.",
+      "parentUuid": "8f2db1c8_7e00537d",
+      "revId": "32a3498498f08b3a2671a19dc5ea063422354f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "183b43db_5aa55cfa",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-11-12T10:58:05Z",
       "side": 1,
       "message": "nit: remove this comment",
+      "range": {
+        "startLine": 406,
+        "startChar": 4,
+        "endLine": 406,
+        "endChar": 91
+      },
+      "revId": "32a3498498f08b3a2671a19dc5ea063422354f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4649e37f_e2be40f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/url_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-12T12:37:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "183b43db_5aa55cfa",
       "range": {
         "startLine": 406,
         "startChar": 4,
