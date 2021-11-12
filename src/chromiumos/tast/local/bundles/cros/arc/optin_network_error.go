@@ -24,7 +24,7 @@ func init() {
 			"arc-core@google.com",
 			"mhasank@chromium.org", // author.
 		},
-		Attr:    []string{"group:mainline", "informational", "group:arc-functional"},
+		Attr:    []string{"group:mainline", "group:arc-functional"},
 		VarDeps: []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{
 			"chrome",
@@ -35,6 +35,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: 6 * time.Minute,
