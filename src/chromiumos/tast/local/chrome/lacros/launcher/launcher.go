@@ -212,6 +212,7 @@ func LaunchLacrosChromeWithURL(ctx context.Context, f FixtValue, url string) (*L
 		"--enable-oop-rasterization",                 // Enable OOP rasterization.
 		"--enable-webgl-image-chromium",              // Enable WebGL image.
 		"--autoplay-policy=no-user-gesture-required", // Allow media autoplay.
+		"--test-type",                                // Suppress experimental Lacros infobar and possible others as well.
 		"--use-cras",                                 // Use CrAS.
 		url,                                          // Specify first tab to load.
 	}
