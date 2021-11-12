@@ -22,6 +22,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type testParam struct {
+	withShortcut bool
+	checkCrashes bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Signout,
@@ -31,16 +36,21 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		Params: []testing.Param{{
-			Val: false,
+			Val: testParam{false, false},
 		}, {
 			Name: "shortcut",
-			Val:  true,
+			Val:  testParam{true, false},
+		}, {
+			Name: "check_crashes",
+			Val:  testParam{false, true},
 		}},
 	})
 }
 
 func Signout(ctx context.Context, s *testing.State) {
-	signoutWithKeyboardShortcut := s.Param().(bool)
+	signoutWithKeyboardShortcut := s.Param().(testParam).withShortcut
+	checkCrashes := s.Param().(testParam).checkCrashes
+
 	cr, err := chrome.New(ctx, chrome.ExtraArgs("--force-tablet-mode=clamshell", "--disable-virtual-keyboard"))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
@@ -125,8 +135,8 @@ func Signout(ctx context.Context, s *testing.State) {
 		s.Fatal("GetCrashes failed: ", err)
 	}
 
-	if len(oldCrashes) != len(newCrashes) {
-		s.Fatal("Chrome crashed during the test")
+	if checkCrashes && len(oldCrashes) != len(newCrashes) {
+		s.Fatal("Something crashed during the test")
 	}
 
 	// Restart chrome for testing
