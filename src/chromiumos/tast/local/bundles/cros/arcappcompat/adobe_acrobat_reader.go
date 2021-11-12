@@ -105,6 +105,7 @@ func launchAppForAdobeAcrobatReader(ctx context.Context, s *testing.State, tconn
 		continueButtonID    = "com.adobe.reader:id/continue_button"
 		closeClassName      = "android.widget.ImageButton"
 		closeDes            = "Close tour"
+		gmailAccountPageID  = "com.google.android.gms:id/account_picker_container"
 		signInButtonText    = "Sign in with Google"
 		userButtonClassName = "android.widget.TextView"
 	)
@@ -115,6 +116,12 @@ func launchAppForAdobeAcrobatReader(ctx context.Context, s *testing.State, tconn
 		s.Error("signInButton doesn't exists: ", err)
 	} else if err := signInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on signInButton: ", err)
+	}
+
+	// Wait for Gmail account page.
+	gmailAccountPage := d.Object(ui.ID(gmailAccountPageID))
+	if err := gmailAccountPage.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		s.Log("gmailAccountPage doesn't exists: ", err)
 	}
 
 	// For selecting Gmail account
