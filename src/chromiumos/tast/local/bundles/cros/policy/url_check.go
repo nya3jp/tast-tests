@@ -14,17 +14,18 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
 type blocklistTestTable struct {
-	name        string            // name is the subtest name.
-	browserType lacros.ChromeType // browser type used in the subtest.
-	blockedURLs []string          // blockedURLs is a list of urls expected to be blocked.
-	allowedURLs []string          // allowedURLs is a list of urls expected to be accessible.
-	policies    []policy.Policy   // policies is a list of URLBlocklist, URLAllowlist, URLBlacklist and URLWhitelist policies to update before checking urls.
+	name        string          // name is the subtest name.
+	browserType browser.Type    // browser type used in the subtest.
+	blockedURLs []string        // blockedURLs is a list of urls expected to be blocked.
+	allowedURLs []string        // allowedURLs is a list of urls expected to be accessible.
+	policies    []policy.Policy // policies is a list of URLBlocklist, URLAllowlist, URLBlacklist and URLWhitelist policies to update before checking urls.
 }
 
 func init() {
@@ -47,28 +48,28 @@ func init() {
 				Val: []blocklistTestTable{
 					{
 						name:        "single",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{"http://example.org/blocked.html"},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"http://example.org/blocked.html"}}},
 					},
 					{
 						name:        "multi",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"}}},
 					},
 					{
 						name:        "wildcard",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{"http://example.com/blocked1.html", "http://example.com/blocked2.html"},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"example.com"}}},
 					},
 					{
 						name:        "unset",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlacklist{Stat: policy.StatusUnset}},
@@ -81,28 +82,28 @@ func init() {
 				Val: []blocklistTestTable{
 					{
 						name:        "single",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{"http://example.org/blocked.html"},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlocklist{Val: []string{"http://example.org/blocked.html"}}},
 					},
 					{
 						name:        "multi",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlocklist{Val: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"}}},
 					},
 					{
 						name:        "wildcard",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{"http://example.com/blocked1.html", "http://example.com/blocked2.html"},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlocklist{Val: []string{"example.com"}}},
 					},
 					{
 						name:        "unset",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlocklist{Stat: policy.StatusUnset}},
@@ -116,7 +117,7 @@ func init() {
 				Val: []blocklistTestTable{
 					{
 						name:        "single",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{"http://example.org"},
 						allowedURLs: []string{"http://chromium.org"},
 						policies: []policy.Policy{
@@ -126,7 +127,7 @@ func init() {
 					},
 					{
 						name:        "identical",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{"http://example.org"},
 						allowedURLs: []string{"http://chromium.org"},
 						policies: []policy.Policy{
@@ -136,7 +137,7 @@ func init() {
 					},
 					{
 						name:        "https",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{"http://chromium.org"},
 						allowedURLs: []string{"https://chromium.org"},
 						policies: []policy.Policy{
@@ -146,7 +147,7 @@ func init() {
 					},
 					{
 						name:        "unset",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{},
 						allowedURLs: []string{"http://chromium.org"},
 						policies: []policy.Policy{
@@ -162,7 +163,7 @@ func init() {
 				Val: []blocklistTestTable{
 					{
 						name:        "single",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{"http://example.org"},
 						allowedURLs: []string{"http://chromium.org"},
 						policies: []policy.Policy{
@@ -172,7 +173,7 @@ func init() {
 					},
 					{
 						name:        "identical",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{"http://example.org"},
 						allowedURLs: []string{"http://chromium.org"},
 						policies: []policy.Policy{
@@ -182,7 +183,7 @@ func init() {
 					},
 					{
 						name:        "https",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{"http://chromium.org"},
 						allowedURLs: []string{"https://chromium.org"},
 						policies: []policy.Policy{
@@ -192,7 +193,7 @@ func init() {
 					},
 					{
 						name:        "unset",
-						browserType: lacros.ChromeTypeChromeOS,
+						browserType: browser.TypeAsh,
 						blockedURLs: []string{},
 						allowedURLs: []string{"http://chromium.org"},
 						policies: []policy.Policy{
@@ -211,28 +212,28 @@ func init() {
 				Val: []blocklistTestTable{
 					{
 						name:        "single",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{"http://example.org/blocked.html"},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"http://example.org/blocked.html"}}},
 					},
 					{
 						name:        "multi",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"}}},
 					},
 					{
 						name:        "wildcard",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{"http://example.com/blocked1.html", "http://example.com/blocked2.html"},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlacklist{Val: []string{"example.com"}}},
 					},
 					{
 						name:        "unset",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlacklist{Stat: policy.StatusUnset}},
@@ -247,28 +248,28 @@ func init() {
 				Val: []blocklistTestTable{
 					{
 						name:        "single",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{"http://example.org/blocked.html"},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlocklist{Val: []string{"http://example.org/blocked.html"}}},
 					},
 					{
 						name:        "multi",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlocklist{Val: []string{"http://example.org/blocked1.html", "http://example.org/blocked2.html"}}},
 					},
 					{
 						name:        "wildcard",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{"http://example.com/blocked1.html", "http://example.com/blocked2.html"},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlocklist{Val: []string{"example.com"}}},
 					},
 					{
 						name:        "unset",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{},
 						allowedURLs: []string{"http://google.com", "http://chromium.org"},
 						policies:    []policy.Policy{&policy.URLBlocklist{Stat: policy.StatusUnset}},
@@ -284,7 +285,7 @@ func init() {
 				Val: []blocklistTestTable{
 					{
 						name:        "single",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{"http://example.org"},
 						allowedURLs: []string{"http://chromium.org"},
 						policies: []policy.Policy{
@@ -294,7 +295,7 @@ func init() {
 					},
 					{
 						name:        "identical",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{"http://example.org"},
 						allowedURLs: []string{"http://chromium.org"},
 						policies: []policy.Policy{
@@ -304,7 +305,7 @@ func init() {
 					},
 					{
 						name:        "https",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{"http://chromium.org"},
 						allowedURLs: []string{"https://chromium.org"},
 						policies: []policy.Policy{
@@ -314,7 +315,7 @@ func init() {
 					},
 					{
 						name:        "unset",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{},
 						allowedURLs: []string{"http://chromium.org"},
 						policies: []policy.Policy{
@@ -332,7 +333,7 @@ func init() {
 				Val: []blocklistTestTable{
 					{
 						name:        "single",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{"http://example.org"},
 						allowedURLs: []string{"http://chromium.org"},
 						policies: []policy.Policy{
@@ -342,7 +343,7 @@ func init() {
 					},
 					{
 						name:        "identical",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{"http://example.org"},
 						allowedURLs: []string{"http://chromium.org"},
 						policies: []policy.Policy{
@@ -352,7 +353,7 @@ func init() {
 					},
 					{
 						name:        "https",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{"http://chromium.org"},
 						allowedURLs: []string{"https://chromium.org"},
 						policies: []policy.Policy{
@@ -362,7 +363,7 @@ func init() {
 					},
 					{
 						name:        "unset",
-						browserType: lacros.ChromeTypeLacros,
+						browserType: browser.TypeLacros,
 						blockedURLs: []string{},
 						allowedURLs: []string{"http://chromium.org"},
 						policies: []policy.Policy{
@@ -404,11 +405,11 @@ func URLCheck(ctx context.Context, s *testing.State) {
 
 			// TODO(crbug.com/1254152): Modify browser setup after creating the new browser package.
 			// Setup browser based on the chrome type.
-			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), tc.browserType)
+			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), tc.browserType)
 			if err != nil {
 				s.Fatal("Failed to open the browser: ", err)
 			}
-			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+			defer closeBrowser(cleanupCtx)
 
 			// Run actual test.
 			urlBlocked := func(url string) bool {
