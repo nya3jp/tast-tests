@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98fae6e5_a31e4959",
+        "filename": "helpers/local/arc.Suspend.readclocks.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-11-12T03:54:45Z",
+      "side": 1,
+      "message": "There are no good CLI commands to read them in machine readable format... and, to make it clear that we are checking those clocks, I think keep using this way is a good idea.",
+      "parentUuid": "e0a106e8_c131fc32",
+      "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29b6abcd_ca99ef47",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-18T05:34:39Z",
       "side": 1,
       "message": "You can use constants from time: https://cs.opensource.google/go/go/+/refs/tags/go1.17.2:src/time/time.go;l\u003d608",
+      "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ee3392_43f14d6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/suspend_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-11-12T03:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29b6abcd_ca99ef47",
       "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b94841f_7a74e34b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/suspend_service.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-11-12T03:54:45Z",
+      "side": 1,
+      "message": "No, it does not survive the suspend. More precisely, although we can save the ARC connection into the service state (like `src/chromiumos/tast/local/bundles/cros/camera/its_service.go` does), the service state will be lost when the RPC connection is renewed, and RPC reconnection is needed since it may timeout after a long suspend. Added a comment that explains it.",
+      "parentUuid": "37cbbb17_a1d2d8cd",
+      "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fdff10a_4192e03b",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-10-18T05:34:39Z",
       "side": 1,
       "message": "nit: grammar, \"Longer than watchdog timeouts\", or \"Long enough to trigger watchdog timeouts\"",
+      "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f031c0_22ebcf0f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/suspend.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-11-12T03:54:45Z",
+      "side": 1,
+      "message": "Latter one is perfect (not only in the grammar but in the number of characters). Thanks!",
+      "parentUuid": "8fdff10a_4192e03b",
       "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06cefd5e_243c20d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/arc/suspend.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-11-12T03:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23be0683_35f9b3e9",
+      "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78687f6f_53b95fec",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-10-18T05:34:39Z",
       "side": 1,
       "message": "I think we can use https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration\n\nWhich will probably make a lot of the time conversion code much simpler.",
+      "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97be2d4c_9d172e8a",
+        "filename": "src/chromiumos/tast/services/cros/arc/suspend_service.proto",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2021-11-12T03:54:45Z",
+      "side": 1,
+      "message": "Done. Thanks for the advice!",
+      "parentUuid": "78687f6f_53b95fec",
       "revId": "33880cf3ba7d7dd7406a44010684b43b8e625619",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
