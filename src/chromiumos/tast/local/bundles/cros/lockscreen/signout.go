@@ -6,8 +6,10 @@ package lockscreen
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -22,6 +24,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type testParam struct {
+	withShortcut bool
+	checkCrashes bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Signout,
@@ -31,16 +38,21 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		Params: []testing.Param{{
-			Val: false,
+			Val: testParam{false, false},
 		}, {
 			Name: "shortcut",
-			Val:  true,
+			Val:  testParam{true, false},
+		}, {
+			Name: "check_crashes",
+			Val:  testParam{false, true},
 		}},
 	})
 }
 
 func Signout(ctx context.Context, s *testing.State) {
-	signoutWithKeyboardShortcut := s.Param().(bool)
+	signoutWithKeyboardShortcut := s.Param().(testParam).withShortcut
+	checkCrashes := s.Param().(testParam).checkCrashes
+
 	cr, err := chrome.New(ctx, chrome.ExtraArgs("--force-tablet-mode=clamshell", "--disable-virtual-keyboard"))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
@@ -65,9 +77,12 @@ func Signout(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to lock the screen: ", err)
 	}
 
-	oldCrashes, err := crash.GetCrashes(crash.DefaultDirs()...)
-	if err != nil {
-		s.Fatal("GetCrashes failed: ", err)
+	var oldCrashes []string
+	if checkCrashes {
+		oldCrashes, err = crash.GetCrashes(crash.DefaultDirs()...)
+		if err != nil {
+			s.Fatal("GetCrashes failed: ", err)
+		}
 	}
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
@@ -120,13 +135,29 @@ func Signout(ctx context.Context, s *testing.State) {
 		s.Fatal("Timeout waiting for Chrome to start: ", err)
 	}
 
-	newCrashes, err := crash.GetCrashes(crash.DefaultDirs()...)
-	if err != nil {
-		s.Fatal("GetCrashes failed: ", err)
-	}
+	if checkCrashes {
+		newCrashes, err := crash.GetCrashes(crash.DefaultDirs()...)
+		if err != nil {
+			s.Fatal("GetCrashes failed: ", err)
+		}
+		if len(oldCrashes) != len(newCrashes) {
+			oldCrashesMap := make(map[string]bool)
+			for _, oldCrash := range oldCrashes {
+				oldCrashesMap[oldCrash] = true
+			}
 
-	if len(oldCrashes) != len(newCrashes) {
-		s.Fatal("Chrome crashed during the test")
+			for _, crash := range newCrashes {
+				// Save only new crashes
+				if oldCrashesMap[crash] {
+					continue
+				}
+				out := filepath.Join(s.OutDir(), filepath.Base(crash))
+				if err := fsutil.CopyFile(crash, out); err != nil {
+					s.Logf("Failed to save %v: %v", crash, err)
+				}
+			}
+			s.Fatal("Something crashed during the test")
+		}
 	}
 
 	// Restart chrome for testing
