@@ -51,6 +51,24 @@
       "parentUuid": "d1763d08_bc669b43",
       "revId": "d3b450e3efe0febf06033b956aa75b793ce47d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dec19fe_2e131efb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-12T01:30:25Z",
+      "side": 1,
+      "message": "Thanks for the comment. The only concern is the global timeout. Since CQ global timeout has been extended to 2 hours. It should be fine. Otherwise each test is independent and stable. So we might have noises after test promotion, but not related to the amount of tests we promote.",
+      "parentUuid": "d1763d08_bc669b43",
+      "revId": "d3b450e3efe0febf06033b956aa75b793ce47d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
