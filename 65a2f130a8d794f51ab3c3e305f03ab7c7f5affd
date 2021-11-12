@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d19020_86e039e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_captive_portal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-11-12T06:45:18Z",
+      "side": 1,
+      "message": "OK. Just guessing at the time though. Seems like it might be helpful to have packages like chrome provide a hint",
+      "parentUuid": "a26825fc_f3f23074",
+      "range": {
+        "startLine": 42,
+        "startChar": 16,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "65a2f130a8d794f51ab3c3e305f03ab7c7f5affd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef091053_e104b20a",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-11-12T02:41:30Z",
       "side": 1,
       "message": "Can this be done in a deferred cleanup function? If it\u0027s not safe to call multiple times, then you can do something like:\n\n needsUnblock :\u003d true\n defer func() {\n   if !needsUnblock {\n     return\n   }\n   unblockPortalDetector(cleanupCtx)\n }()\n ...\n needsUnblock \u003d false\n if err :\u003d unblockPortalDetector(...) { ... }",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "65a2f130a8d794f51ab3c3e305f03ab7c7f5affd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12cb045f_f05cf62d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_captive_portal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2021-11-12T06:45:18Z",
+      "side": 1,
+      "message": "sure",
+      "parentUuid": "ef091053_e104b20a",
       "range": {
         "startLine": 65,
         "startChar": 2,
