@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "487ed903_f8f9de07",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-12T04:55:14Z",
+      "side": 1,
+      "message": "Overall I feel it\u0027s nice if we could have more doccomments in the components this package provides.",
+      "revId": "c66cbe73b60e70326b12575fc2b73b6be5bd2c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f85438bf_9d90c8be",
