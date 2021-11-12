@@ -6,6 +6,7 @@ package lockscreen
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/local/chrome"
@@ -19,8 +20,22 @@ import (
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/procutil"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
+
+func chromeKilledBecauseOfTimeout(r *syslog.Reader) bool {
+	for {
+		entry, err := r.Read()
+		if err != nil {
+			// Likely end of the log
+			return false
+		}
+		if strings.Contains(entry.Content, "Browser process did not exit 3 seconds after SIGTERM") {
+			return true
+		}
+	}
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -83,6 +98,11 @@ func Signout(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for CPU to become idle: ", err)
 	}
 
+	reader, err := syslog.NewReader(ctx)
+	if err != nil {
+		s.Fatal("Failed to create log reader: ", err)
+	}
+
 	if signoutWithKeyboardShortcut {
 		kb, err := input.Keyboard(ctx)
 		if err != nil {
@@ -125,8 +145,8 @@ func Signout(ctx context.Context, s *testing.State) {
 		s.Fatal("GetCrashes failed: ", err)
 	}
 
-	if len(oldCrashes) != len(newCrashes) {
-		s.Fatal("Chrome crashed during the test")
+	if len(oldCrashes) != len(newCrashes) && !chromeKilledBecauseOfTimeout(reader) {
+		s.Fatal("Something crashed during the test")
 	}
 
 	// Restart chrome for testing
