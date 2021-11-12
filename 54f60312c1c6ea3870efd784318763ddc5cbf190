@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e143e1_66632b59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-11-12T09:54:25Z",
+      "side": 1,
+      "message": "The original test includes a few extra steps if the DUT has the chromeEC which I mostly included (except the blocking sync step, using the Utils Service blocking sync was causing nil pointer errors), but it doesn\u0027t seem like those steps really do anything necessary. It might make sense to just remove that part and simplify it I think, but I\u0027m not sure. ",
+      "revId": "54f60312c1c6ea3870efd784318763ddc5cbf190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
