@@ -212,6 +212,30 @@
       },
       "revId": "eeef561739114bcaac4a28581e31492d77685322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea26a43d_0aa45127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-12T05:51:51Z",
+      "side": 1,
+      "message": "I am thinking of moving the test to informational until the script is stable. WDYT?",
+      "parentUuid": "aca4ee83_ac86f60f",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "eeef561739114bcaac4a28581e31492d77685322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

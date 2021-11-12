@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f62f2d1_a362c49d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-12T05:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2244fb3e_5b51a3c8",
+      "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbca4a1e_f30bc823",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-11T10:08:09Z",
       "side": 1,
       "message": "Same here.",
+      "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "780763c5_8f322509",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-12T05:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbca4a1e_f30bc823",
       "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf72aef_a5d59790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-12T05:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5e824c9_000a7281",
+      "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ed899a3_be4f8455",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-11-11T10:26:51Z",
       "side": 1,
       "message": "Check the \u003d\u003d 0 case, and you can use continue, saving an indentation level for the code below.",
+      "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86ef9296_23da384a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-12T05:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ed899a3_be4f8455",
       "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1258ed9_c609c42a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-12T05:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a518a31c_f85dcf01",
+      "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0c3a02f_d4c92b33",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-11-11T10:26:51Z",
       "side": 1,
       "message": "You can use\n\u003e  if tlHeader.Type \u003d\u003d 0 {\n\u003e  \tcheckMemAPIData.Next(4)\n\u003e  \tcontinue\n\u003e  }\nhere as well, and you can save an indentation level for the rest of the code.",
+      "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6e130af_a142681d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-12T05:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0c3a02f_d4c92b33",
       "revId": "cf524e562cd1f1e4c6942b1f2c2f23b91dce96a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
