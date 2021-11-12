@@ -170,6 +170,12 @@ func TestReaderRead(t *testing.T) {
 			writes: []string{fakeLine1 + fakeLine2 + fakeLine3},
 			want:   []*Entry{fakeEntry1, fakeEntry3},
 		},
+		{
+			name:   "OptionSeverities",
+			opts:   []Option{Severities([]SeverityName{Info})},
+			writes: []string{fakeLine1 + fakeLine2 + fakeLine3},
+			want:   []*Entry{fakeEntry1, fakeEntry3},
+		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			tf, err := ioutil.TempFile("", "")

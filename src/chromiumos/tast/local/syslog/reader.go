@@ -223,6 +223,43 @@ func Program(name ProgramName) Option {
 	}
 }
 
+// SeverityName encloses names of the severity in custom type.
+type SeverityName string
+
+const (
+	// Verbose1 filter.
+	Verbose1 SeverityName = "VERBOSE1"
+
+	// Info filter.
+	Info SeverityName = "INFO"
+
+	// Debug filter.
+	Debug SeverityName = "DEBUG"
+
+	// Notice filter.
+	Notice SeverityName = "NOTICE"
+
+	// Warning filter.
+	Warning SeverityName = "WARNING"
+
+	// Err filter.
+	Err SeverityName = "ERR"
+)
+
+// Severities instruct Reader to report messages from certain severities only.
+func Severities(names []SeverityName) Option {
+	return func(o *options) {
+		o.filters = append(o.filters, func(e *Entry) bool {
+			for _, name := range names {
+				if e.Severity == string(name) {
+					return true
+				}
+			}
+			return false
+		})
+	}
+}
+
 // Entry represents a log message entry of syslog.
 type Entry struct {
 	// Timestamp is the time when the log message was emitted.
