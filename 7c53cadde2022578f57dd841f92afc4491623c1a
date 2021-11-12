@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c5ee875_7f784f62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_rootfs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-12T23:43:19Z",
+      "side": 1,
+      "message": "will remove the parameterized test for \"skew_1major\" now and leave a TODO for the future update when necessary.",
+      "parentUuid": "f36b8875_a3b01388",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "7c53cadde2022578f57dd841f92afc4491623c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71f1c26a_2c337038",
