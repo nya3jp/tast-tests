@@ -16,6 +16,46 @@
       "message": "Thank you for the comments @hidehiko. PTAL.",
       "revId": "c0f8f064898676c83f68ff240e180233ed94c948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06157d4_4f585956",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-12T15:37:33Z",
+      "side": 1,
+      "message": "LGTM. Thanks!",
+      "revId": "c0f8f064898676c83f68ff240e180233ed94c948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d45b738_b2cafee1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-12T15:37:33Z",
+      "side": 1,
+      "message": "s/the lacros fixture\u0027s i.e.//\n\nbecause as long as it is ash-chrome\u0027s TestConn, that should work (even if it does not come from lacros fixture).",
+      "range": {
+        "startLine": 97,
+        "startChar": 33,
+        "endLine": 97,
+        "endChar": 59
+      },
+      "revId": "c0f8f064898676c83f68ff240e180233ed94c948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
