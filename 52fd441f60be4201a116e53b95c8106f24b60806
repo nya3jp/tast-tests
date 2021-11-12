@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95dcb0ea_6e2bb32d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-12T17:27:37Z",
+      "side": 1,
+      "message": "Thanks for the pointer! Sounds like we won\u0027t get the record files until it\u0027s allowed from that list. Btw, would that be a blocker to check in this change? or can we go in parallel?",
+      "parentUuid": "31fd7434_2865af37",
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "516baf2a_bfb43ad1",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
         "patchSetId": 2
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "why exclude VMs?",
       "parentUuid": "516baf2a_bfb43ad1",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 35
+      },
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0276c074_0db8a3e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-12T17:27:37Z",
+      "side": 1,
+      "message": "Haven\u0027t looked into why, but I have seen screen record failed in VM (amd64-generic) when tested locally.\nIs there any way to filter out VMs in test runtime? or should I set the software deps `lacros_stable` to exclude tast_vm?",
+      "parentUuid": "37657f68_fdbe97fa",
       "range": {
         "startLine": 78,
         "startChar": 18,
