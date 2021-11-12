@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f2db1c8_7e00537d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-12T11:07:51Z",
+      "side": 1,
+      "message": "In local testing something seems to be wrong with this CL. Let me set it to WIP and double-check after lunch.",
+      "revId": "32a3498498f08b3a2671a19dc5ea063422354f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "183b43db_5aa55cfa",
