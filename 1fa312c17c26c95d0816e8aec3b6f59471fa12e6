@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a585bdc_ae49e595",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-12T20:50:37Z",
+      "side": 1,
+      "message": "A couple more comments. I will wait for the re-factor for my final review.",
+      "revId": "1fa312c17c26c95d0816e8aec3b6f59471fa12e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f252df_04182c4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-12T20:50:37Z",
+      "side": 1,
+      "message": "Sorry for the delayed suggestion here, but I realized that this can be read as \"shill error log does not exist\". We should name this ShillNoErrorsInLog (and rename the file as well).",
+      "revId": "1fa312c17c26c95d0816e8aec3b6f59471fa12e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cf2c89c_b28adc5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-12T20:50:37Z",
+      "side": 1,
+      "message": "We should actually do the restart as a deferred task in the test itself, to ensure that shill is restarted if there is a fatal error. We should have other similar examples. The deferred task need not (and should not) fatal if it fails.\n\nIt might make sense to do the initial stop in the test also for symmetry. i.e. this function could expect shill to be stopped and end with it stopped.",
+      "revId": "1fa312c17c26c95d0816e8aec3b6f59471fa12e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
