@@ -16,6 +16,23 @@
       "message": "PTAL.\n\nDo you think we should add some ARC++ folks in the OWNERS file in \"tast/local/arc\" folder?",
       "revId": "0e59fad64cf4a01c2fa17333c326929d0193f9d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e8a1b4_4424b3ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165709
+      },
+      "writtenOn": "2021-11-12T17:23:47Z",
+      "side": 1,
+      "message": "Thanks.",
+      "revId": "0e59fad64cf4a01c2fa17333c326929d0193f9d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
