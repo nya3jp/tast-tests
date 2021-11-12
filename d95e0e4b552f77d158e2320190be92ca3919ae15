@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74fe84b9_5853609e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-12T02:47:03Z",
+      "side": 1,
+      "message": "I think you need IsNodeFound here.",
+      "range": {
+        "startLine": 311,
+        "startChar": 50,
+        "endLine": 311,
+        "endChar": 65
+      },
+      "revId": "d95e0e4b552f77d158e2320190be92ca3919ae15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9d431e_2a2c0335",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-12T02:47:03Z",
+      "side": 1,
+      "message": "just dictate :\u003d uiauto.Combine(...)",
+      "range": {
+        "startLine": 349,
+        "startChar": 1,
+        "endLine": 349,
+        "endChar": 8
+      },
+      "revId": "d95e0e4b552f77d158e2320190be92ca3919ae15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0438f62e_4f9862b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-12T02:47:03Z",
+      "side": 1,
+      "message": "do not need this?",
+      "range": {
+        "startLine": 1016,
+        "startChar": 45,
+        "endLine": 1016,
+        "endChar": 78
+      },
+      "revId": "d95e0e4b552f77d158e2320190be92ca3919ae15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31214218_099cc05b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-12T02:47:03Z",
+      "side": 1,
+      "message": "need IsNodeFound too?",
+      "range": {
+        "startLine": 1067,
+        "startChar": 19,
+        "endLine": 1067,
+        "endChar": 34
+      },
+      "revId": "d95e0e4b552f77d158e2320190be92ca3919ae15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b69d2d0_0e00a2dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-12T02:47:03Z",
+      "side": 1,
+      "message": "Not sure whether needs IsNodeFound too as there is not comment. Please check. \n\nIf not, please handle the error.",
+      "range": {
+        "startLine": 1077,
+        "startChar": 49,
+        "endLine": 1077,
+        "endChar": 64
+      },
+      "revId": "d95e0e4b552f77d158e2320190be92ca3919ae15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
