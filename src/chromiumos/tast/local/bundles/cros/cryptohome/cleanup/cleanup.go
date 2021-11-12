@@ -54,6 +54,15 @@ func RunAutomaticCleanup(ctx context.Context, cleanupThreshold, aggressiveCleanu
 	if _, err := reader.Wait(ctx, 60*time.Second, func(e *syslog.Entry) bool {
 		return strings.Contains(e.Content, "Disk cleanup complete.")
 	}); err != nil {
+		freeSpace, spaceErr := disk.FreeSpace(UserHome)
+		if spaceErr != nil {
+			return errors.Wrap(err, "failed to get the amount of free space")
+		}
+
+		if freeSpace >= cleanupThreshold {
+			return errors.Wrap(err, "space cleared up by other cleanup")
+		}
+
 		return errors.Wrap(err, "cleanup not complete")
 	}
 
