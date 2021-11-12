@@ -22,6 +22,30 @@
       },
       "revId": "9d6214943238b1775409788329ca6f2edab60135",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "057690ea_253ed227",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tps_validation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-11-12T16:38:25Z",
+      "side": 1,
+      "message": "let\u0027s add this note to the comments.\n\nThe actual load probably depends on the cpu arch and number of cores, right? it\u0027s fine to land this and we can see what the effect is on various devices.\n\nI wonder if it\u0027s possible to find out how much cpu is being consumed by this script and print that to a log somewhere?",
+      "parentUuid": "30c7b4c6_dcb3048a",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 50
+      },
+      "revId": "9d6214943238b1775409788329ca6f2edab60135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

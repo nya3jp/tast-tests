@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bceb4d4c_8d192d59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tps_validation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-11-12T16:38:25Z",
+      "side": 1,
+      "message": "Ack. I just want to make sure we\u0027re definitely shutting down this process. If it doesn\u0027t get killed, we\u0027ll affect other tests.",
+      "parentUuid": "447312cb_2374b72e",
+      "revId": "21c5dd3505029b8a45dfb25ad7b3de0900516275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ca3a663_708c985d",
