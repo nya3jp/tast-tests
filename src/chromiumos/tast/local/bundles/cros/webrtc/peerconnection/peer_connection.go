@@ -28,6 +28,10 @@ const (
 	VerifyHWEncoderUsed VerifyHWAcceleratorMode = iota
 	// VerifyHWDecoderUsed refers to WebRTC hardware accelerated video decoding.
 	VerifyHWDecoderUsed
+	// VerifySWEncoderUsed refers to WebRTC software video encoding.
+	VerifySWEncoderUsed
+	// VerifySWDecoderUsed refers to WebRTC software video decoding.
+	VerifySWDecoderUsed
 	// NoVerifyHWAcceleratorUsed means it doesn't matter if WebRTC uses any accelerated video.
 	NoVerifyHWAcceleratorUsed
 )
