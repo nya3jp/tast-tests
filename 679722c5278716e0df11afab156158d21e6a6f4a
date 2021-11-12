@@ -186,6 +186,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ac78d09_ec92d3c1",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-12T05:50:58Z",
+      "side": 1,
+      "message": "Any code example I can refer to?",
+      "parentUuid": "eef0f433_231bb47f",
+      "range": {
+        "startLine": 158,
+        "startChar": 79,
+        "endLine": 158,
+        "endChar": 88
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4dddf6b_4a47fddc",
         "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
         "patchSetId": 1
