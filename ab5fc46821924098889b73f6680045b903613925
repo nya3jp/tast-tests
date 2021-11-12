@@ -1,0 +1,527 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "518c8bda_127eeda4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "Thanks for the implementation. Here are some comments.",
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97308365_ea5b20fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "it should be something like:\n\nmgs, cr, err :\u003d mgs.New(\n        ctx,\n        fdms,\n        mgs.Accounts(accountID),\n        mgs.PublicAccountPolicies(accountID, []policy.Policy{\n                \u0026policy.ExtensionInstallForcelist{Val},\n            }),\n        mgs.ExtraPolicies([]policy.Policy{\n                \u0026policy.DeviceLoginScreenExtensions{Val},\n            }),\n        mgs.ExtraChromeOptions(\n                chrome.ExtraArgs(\"--force-devtools-available\")\n            ),\n        )",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51c54b10_c2f0482d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "account that should be passed here is : accountID :\u003d \"foo@bar.com\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 6,
+        "endLine": 47,
+        "endChar": 14
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c75fe13_20a71da0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "this is the value of public account policy ExtensionInstallForcelist assign to the account identified by \"foo@bar.com\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 39,
+        "endLine": 47,
+        "endChar": 59
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb4b6b3_2a1e230a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "this is the value of the DeviceLoginScreenExtensions policy not account id.",
+      "range": {
+        "startLine": 47,
+        "startChar": 15,
+        "endLine": 47,
+        "endChar": 37
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b457f22_28836807",
+        "filename": "src/chromiumos/tast/local/mgs/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "you don\u0027t have to have two separate *policy.DeviceLocalAccounts configurations. One will suffice.\ntest should either use default account or custom accounts - could be indicated by the comment. If both are used then one will override the other.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "390efa7b_13b39ec1",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "let\u0027s make it something that meaningful - e.g. defaultMgsSetByTast",
+      "range": {
+        "startLine": 25,
+        "startChar": 17,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "255baedb_2f6b1d90",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "not needed. Please remove.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 58
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "623d6f04_02a09e92",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "Emptying policies has to be still added here.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc2edd2f_dc70148a",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "I haven\u0027t actually checked logs if there is any indicator about starting MGS. If there is none we can safely remove that.\nSuch approach was created for Kiosk and it works there.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 1
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844d28f2_8fe8510a",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "starts MGS for given account ID.",
+      "range": {
+        "startLine": 98,
+        "startChar": 64,
+        "endLine": 99,
+        "endChar": 24
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a537a5_77cc8d3b",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "That is not needed as we return mgs to do that. Instead please use write something like:\nUse defer mgs.Close() to perform clean up including closing Chrome instance.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 22
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ec1bc8b_590af473",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "do we need to keep state or just keep enrollment will be enough?",
+      "range": {
+        "startLine": 121,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 22
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21666ad6_0d71e78d",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "do we need that?",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 50
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c5750d9_9c18a8c7",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "please remove.",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 37
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd296383_61a29a7a",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "iterate over cfg.m.PublicAccountPolicies and apply to blob.",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 4
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "708ea6cb_016a8fbe",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "as mentioned before - if logs indicate MGS launch progress we need to adjust messages to check in logs. Otherwise please remove.",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 21
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "303156be_a6e7c13c",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "I don\u0027t think we need that.",
+      "range": {
+        "startLine": 179,
+        "startChar": 22,
+        "endLine": 180,
+        "endChar": 50
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a22db7_2f92dc21",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "same as above concerning logger.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 3
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86fef285_8a75c898",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "I think this is not needed.",
+      "range": {
+        "startLine": 200,
+        "startChar": 3,
+        "endLine": 200,
+        "endChar": 50
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d70fda69_f1576a08",
+        "filename": "src/chromiumos/tast/local/mgs/options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "you can just use MGSAccounts",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f07cadc_26b641fb",
+        "filename": "src/chromiumos/tast/local/mgs/options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "why not to refer directly do policy.AccountTypePublicSession ?",
+      "range": {
+        "startLine": 30,
+        "startChar": 18,
+        "endLine": 30,
+        "endChar": 29
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b2a8abe_e15c06f1",
+        "filename": "src/chromiumos/tast/local/mgs/options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-12T19:50:56Z",
+      "side": 1,
+      "message": "that is not needed as mgs.Close() will handle that.",
+      "range": {
+        "startLine": 61,
+        "startChar": 66,
+        "endLine": 64,
+        "endChar": 14
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
