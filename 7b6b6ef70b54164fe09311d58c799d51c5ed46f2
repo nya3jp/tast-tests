@@ -22,6 +22,30 @@
       },
       "revId": "7b6b6ef70b54164fe09311d58c799d51c5ed46f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0772b201_5df228a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-12T01:09:12Z",
+      "side": 1,
+      "message": "Good catch. Thanks.",
+      "parentUuid": "37db0fc7_018e3938",
+      "range": {
+        "startLine": 53,
+        "startChar": 44,
+        "endLine": 53,
+        "endChar": 57
+      },
+      "revId": "7b6b6ef70b54164fe09311d58c799d51c5ed46f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
