@@ -46,11 +46,11 @@ const (
 
 // RTCTestOptions is used to describe the config used to run RTCPeerConnectionPerf.
 type RTCTestOptions struct {
-	verifyHWDecoding   bool   // Whether to verify or not that hardware decoding is used.
-	verifyHWEncoding   bool   // Whether to verify or not that hardware encoding is used.
-	profile            string // Codec to try, e.g. VP8, VP9.
-	videoGridDimension int    // Dimension of the grid in which to embed the RTCPeerConnection <video>.
-	videoGridFile      string // Name of the video file to fill up the grid with, if needed.
+	verifyHWDecoding   VerifyHWAcceleratorMode // Whether to verify or not that hardware decoding is used.
+	verifyHWEncoding   VerifyHWAcceleratorMode // Whether to verify or not that hardware encoding is used.
+	profile            string                  // Codec to try, e.g. VP8, VP9.
+	videoGridDimension int                     // Dimension of the grid in which to embed the RTCPeerConnection <video>.
+	videoGridFile      string                  // Name of the video file to fill up the grid with, if needed.
 	// ScalableVideoCodec "scalabilityMode" identifier.
 	// https://www.w3.org/TR/webrtc-svc/#scalabilitymodes
 	svc string
@@ -60,8 +60,8 @@ type RTCTestOptions struct {
 // Encoding/Decoding enabled.
 func MakeTestOptions(profile string) RTCTestOptions {
 	return RTCTestOptions{
-		verifyHWDecoding:   true,
-		verifyHWEncoding:   true,
+		verifyHWDecoding:   VerifyHWDecoderUsed,
+		verifyHWEncoding:   VerifyHWEncoderUsed,
 		profile:            profile,
 		videoGridDimension: 1,
 		videoGridFile:      "",
@@ -73,8 +73,8 @@ func MakeTestOptions(profile string) RTCTestOptions {
 // Encoding/Decoding disabled.
 func MakeSWTestOptions(profile string) RTCTestOptions {
 	return RTCTestOptions{
-		verifyHWDecoding:   false,
-		verifyHWEncoding:   false,
+		verifyHWDecoding:   VerifySWDecoderUsed,
+		verifyHWEncoding:   VerifySWEncoderUsed,
 		profile:            profile,
 		videoGridDimension: 1,
 		videoGridFile:      "",
@@ -86,8 +86,8 @@ func MakeSWTestOptions(profile string) RTCTestOptions {
 // Encoding/Decoding enabled and with a layer structure as per svc definition.
 func MakeTestOptionsWithSVC(profile, svc string) RTCTestOptions {
 	return RTCTestOptions{
-		verifyHWDecoding:   true,
-		verifyHWEncoding:   true,
+		verifyHWDecoding:   VerifyHWDecoderUsed,
+		verifyHWEncoding:   VerifyHWEncoderUsed,
 		profile:            profile,
 		videoGridDimension: 1,
 		videoGridFile:      "",
@@ -100,8 +100,8 @@ func MakeTestOptionsWithSVC(profile, svc string) RTCTestOptions {
 // videoGridDimension x videoGridDimension videoGridFiles.
 func MakeTestOptionsWithVideoGrid(profile string, videoGridDimension int, videoGridFile string) RTCTestOptions {
 	return RTCTestOptions{
-		verifyHWDecoding:   true,
-		verifyHWEncoding:   true,
+		verifyHWDecoding:   VerifyHWDecoderUsed,
+		verifyHWEncoding:   VerifyHWEncoderUsed,
 		profile:            profile,
 		videoGridDimension: videoGridDimension,
 		videoGridFile:      videoGridFile,
@@ -259,7 +259,7 @@ func measureRTCStats(ctx context.Context, conn *chrome.Conn, p *perf.Values) err
 // statistics. If videoGridDimension is larger than 1, then the real time <video>
 // is plugged into a videoGridDimension x videoGridDimension grid with copies
 // of videoURL being played, similar to a mosaic video call.
-func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL string, verifyHWDecoding, verifyHWEncoding bool, videoGridDimension int, videoURL, svc, outDir string, p *perf.Values) error {
+func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL string, verifyHWDecoding, verifyHWEncoding VerifyHWAcceleratorMode, videoGridDimension int, videoURL, svc, outDir string, p *perf.Values) error {
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
@@ -292,24 +292,19 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 	}
 
 	hwDecoderUsed := checkForCodecImplementation(ctx, conn, VerifyHWDecoderUsed, false /*isSimulcast*/) == nil
-	if verifyHWDecoding {
-		if !hwDecoderUsed {
-			return errors.New("hardware decode accelerator wasn't used")
-		}
-	} else {
-		if hwDecoderUsed {
-			return errors.New("software decode wasn't used")
-		}
+	if verifyHWDecoding == VerifyHWDecoderUsed && !hwDecoderUsed {
+		return errors.New("hardware decode accelerator wasn't used")
 	}
+	if verifyHWDecoding == VerifySWDecoderUsed && hwDecoderUsed {
+		return errors.New("software decode wasn't used")
+	}
+
 	hwEncoderUsed := checkForCodecImplementation(ctx, conn, VerifyHWEncoderUsed, false /*isSimulcast*/) == nil
-	if verifyHWEncoding {
-		if !hwEncoderUsed {
-			return errors.New("hardware encode accelerator wasn't used")
-		}
-	} else {
-		if hwEncoderUsed {
-			return errors.New("software encode wasn't used")
-		}
+	if verifyHWEncoding == VerifyHWEncoderUsed && !hwEncoderUsed {
+		return errors.New("hardware encode accelerator wasn't used")
+	}
+	if verifyHWEncoding == VerifySWEncoderUsed && hwEncoderUsed {
+		return errors.New("software encode wasn't used")
 	}
 	if err := measureRTCStats(shortCtx, conn, p); err != nil {
 		return errors.Wrap(err, "failed to measure")
