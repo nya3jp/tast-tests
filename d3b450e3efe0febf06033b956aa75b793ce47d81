@@ -16,6 +16,23 @@
       "message": "Thanks for writing stable test @shend.",
       "revId": "d3b450e3efe0febf06033b956aa75b793ce47d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1763d08_bc669b43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-12T01:24:17Z",
+      "side": 1,
+      "message": "I am a liitle concerned about the potential issues that may raise when promoting this many number of tests to CQ. Would it be better that we do this gradually?",
+      "revId": "d3b450e3efe0febf06033b956aa75b793ce47d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
