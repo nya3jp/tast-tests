@@ -50,6 +50,52 @@
       "message": "+other OWNERS in the same or nearby timezone... thank you",
       "revId": "65a2f130a8d794f51ab3c3e305f03ab7c7f5affd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a26825fc_f3f23074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_captive_portal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-11-12T02:41:30Z",
+      "side": 1,
+      "message": "Time should be reserve time for cleanup [1]. Generally, that will look something like:\n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, TIME_RESERVED_FOR_CLEAN_UP)\ndefer cancel()\n// Use ctx for normal operations, and use cleanupCtx for cleanup tasts.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 42,
+        "startChar": 16,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "65a2f130a8d794f51ab3c3e305f03ab7c7f5affd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef091053_e104b20a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_captive_portal.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-11-12T02:41:30Z",
+      "side": 1,
+      "message": "Can this be done in a deferred cleanup function? If it\u0027s not safe to call multiple times, then you can do something like:\n\n needsUnblock :\u003d true\n defer func() {\n   if !needsUnblock {\n     return\n   }\n   unblockPortalDetector(cleanupCtx)\n }()\n ...\n needsUnblock \u003d false\n if err :\u003d unblockPortalDetector(...) { ... }",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "65a2f130a8d794f51ab3c3e305f03ab7c7f5affd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
