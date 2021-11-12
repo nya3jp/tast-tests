@@ -46,6 +46,30 @@
       },
       "revId": "9d6214943238b1775409788329ca6f2edab60135",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef926947_3465ebcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/tps_validation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2021-11-12T22:32:29Z",
+      "side": 1,
+      "message": "It might be possible. For now we can compare the overall cpu (TPS.CPU) between WindowArrangementCUJ.tablet_mode_validation and WindowArrangementCUJ.tablet_mode and have an idea of how much cpu consumed by the stress script.",
+      "parentUuid": "057690ea_253ed227",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 50
+      },
+      "revId": "9d6214943238b1775409788329ca6f2edab60135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
