@@ -105,6 +105,24 @@
       "parentUuid": "bce8a52a_2d933f06",
       "revId": "735eea39c41d0e68dbe56e04d2d177fb70c52980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d50fd20_a11b8e40",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-11-12T10:54:59Z",
+      "side": 1,
+      "message": "This flag is for testing only. It can make audio play automatically without  approval from users. It\u0027s unnecessary in ash-chrome.",
+      "parentUuid": "222ac87b_1d0718b4",
+      "revId": "735eea39c41d0e68dbe56e04d2d177fb70c52980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
