@@ -22,6 +22,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type testVariant int
+
+const (
+	withButton testVariant = iota
+	withShortcut
+	checkCrashes
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Signout,
@@ -31,16 +39,21 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		Params: []testing.Param{{
-			Val: false,
+			Val: withButton,
 		}, {
 			Name: "shortcut",
-			Val:  true,
+			Val:  withShortcut,
+		}, {
+			Name: "check_crashes",
+			Val:  checkCrashes,
 		}},
 	})
 }
 
 func Signout(ctx context.Context, s *testing.State) {
-	signoutWithKeyboardShortcut := s.Param().(bool)
+	signoutWithKeyboardShortcut := s.Param().(testVariant) == withShortcut
+	checkCrashes := s.Param().(testVariant) == checkCrashes
+
 	cr, err := chrome.New(ctx, chrome.ExtraArgs("--force-tablet-mode=clamshell", "--disable-virtual-keyboard"))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
@@ -81,6 +94,10 @@ func Signout(ctx context.Context, s *testing.State) {
 	// won't get killed by the session manager.
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		s.Fatal("Failed to wait for CPU to become idle: ", err)
+	}
+
+	if err != nil {
+		s.Fatal("Failed to create log reader: ", err)
 	}
 
 	if signoutWithKeyboardShortcut {
@@ -125,8 +142,8 @@ func Signout(ctx context.Context, s *testing.State) {
 		s.Fatal("GetCrashes failed: ", err)
 	}
 
-	if len(oldCrashes) != len(newCrashes) {
-		s.Fatal("Chrome crashed during the test")
+	if checkCrashes && len(oldCrashes) != len(newCrashes) {
+		s.Fatal("Something crashed during the test")
 	}
 
 	// Restart chrome for testing
