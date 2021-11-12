@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f18f1d1_c564b4b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-12T06:00:47Z",
+      "side": 1,
+      "message": "Unfortunately there is a bug (or work-as-intented mechanism) always makes merging pcap change fail, because pcap isn\u0027t in the allowlist.\n\nTODO(b/198542075): cq-orchestrator incorrectly reported merge conflicts on CL with binary file changes only\n\nI will delete the old file and check in a new file called something-v2.pcap, with code changes.",
+      "parentUuid": "66757aa5_73f4e5cf",
+      "revId": "e4344449614e2a9f1c9fe9568c1bc51b40fac45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56f9062f_2b0f4d1d",
         "filename": "src/chromiumos/tast/remote/wificell/pcap/parse.go",
         "patchSetId": 6
