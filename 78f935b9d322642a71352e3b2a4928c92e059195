@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be0623f_0440c92f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-11-12T17:17:21Z",
+      "side": 1,
+      "message": "Now I have filed a new bug and linked to it here and in\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3276428",
+      "parentUuid": "7ed7b007_89462a5c",
+      "revId": "78f935b9d322642a71352e3b2a4928c92e059195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bb75be9_c330d08f",
@@ -88,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a33a20a1_c5282dce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-11-12T17:17:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "914affb0_71457188",
+      "revId": "78f935b9d322642a71352e3b2a4928c92e059195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0ebc422_10b6dbdc",
@@ -101,6 +137,30 @@
       "writtenOn": "2021-11-12T07:55:14Z",
       "side": 1,
       "message": "nit: maybe \"a bigger\" here?",
+      "range": {
+        "startLine": 193,
+        "startChar": 22,
+        "endLine": 193,
+        "endChar": 25
+      },
+      "revId": "78f935b9d322642a71352e3b2a4928c92e059195",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e893f5d_00da8fd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_energy_and_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-11-12T17:17:21Z",
+      "side": 1,
+      "message": "Now I have done that here and in\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3276428",
+      "parentUuid": "f0ebc422_10b6dbdc",
       "range": {
         "startLine": 193,
         "startChar": 22,
