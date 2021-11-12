@@ -164,7 +164,7 @@ func checkUser(ctx context.Context, res *basicLayoutTestResources) error {
 		res.ui.WaitUntilExists(nodewith.Role(role.StaticText).Name(userName)),
 		res.ui.WaitUntilExists(nodewith.Role(role.StaticText).Name(userEmail)),
 		res.ui.WaitUntilExists(nodewith.HasClass("RoundedImageView").First()),
-		res.pc.Click(res.btn.Name("Close").HasClass("TopShortcutButton")),
+		res.pc.Click(res.btn.Name("Close").HasClass("IconButton")),
 	)(ctx)
 }
 
