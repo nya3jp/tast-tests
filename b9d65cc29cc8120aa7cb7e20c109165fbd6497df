@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52d32930_11c56e99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314247
+      },
+      "writtenOn": "2021-11-12T03:17:47Z",
+      "side": 1,
+      "message": "Hey Hidehiko, thanks for the suggestion, I have update the CL accordingly (also disable keep alive for the launch lacros from UI tests, and will enable them after\nthe keep alive CL in chromium landed). Can you please take another look to ensure you are still happy with this CL? Thanks.",
+      "revId": "b9d65cc29cc8120aa7cb7e20c109165fbd6497df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
