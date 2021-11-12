@@ -332,6 +332,30 @@
       },
       "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf6c7bbe_792bb76c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-12T03:17:29Z",
+      "side": 1,
+      "message": "You could change it to app check for both types of string\n\nYou could also check for a partial string match. Everybody passing in \"confirm text\" is very strange to me",
+      "parentUuid": "cb62c17e_23946f32",
+      "range": {
+        "startLine": 187,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 26
+      },
+      "revId": "10f68f752bc23a985981138ba218efe9e5e309b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
