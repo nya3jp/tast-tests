@@ -13,17 +13,18 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
 type homepageSettingTestTable struct {
-	name         string            // name is the subtest name.
-	browserType  lacros.ChromeType // browser type used in the subtest; must match the fixture.
-	wantHomepage bool              // wantHomepage is whether the homepage is expected to be the one set in the HomepageLocation policy.
-	policies     []policy.Policy   // policies is a list of HomepageLocation and HomepageIsNewTabPage policies to update before checking the homepage.
+	name         string          // name is the subtest name.
+	browserType  browser.Type    // browser type used in the subtest; must match the fixture.
+	wantHomepage bool            // wantHomepage is whether the homepage is expected to be the one set in the HomepageLocation policy.
+	policies     []policy.Policy // policies is a list of HomepageLocation and HomepageIsNewTabPage policies to update before checking the homepage.
 }
 
 const chromePoliciesURL = "chrome://policy/"
@@ -45,7 +46,7 @@ func init() {
 				Val: []homepageSettingTestTable{
 					{
 						name:         "set",
-						browserType:  lacros.ChromeTypeChromeOS,
+						browserType:  browser.TypeAsh,
 						wantHomepage: true,
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Val: chromePoliciesURL},
@@ -54,7 +55,7 @@ func init() {
 					},
 					{
 						name:         "unset",
-						browserType:  lacros.ChromeTypeChromeOS,
+						browserType:  browser.TypeAsh,
 						wantHomepage: false,
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Stat: policy.StatusUnset},
@@ -70,7 +71,7 @@ func init() {
 				Val: []homepageSettingTestTable{
 					{
 						name:         "set",
-						browserType:  lacros.ChromeTypeLacros,
+						browserType:  browser.TypeLacros,
 						wantHomepage: true,
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Val: chromePoliciesURL},
@@ -79,7 +80,7 @@ func init() {
 					},
 					{
 						name:         "unset",
-						browserType:  lacros.ChromeTypeLacros,
+						browserType:  browser.TypeLacros,
 						wantHomepage: false,
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Stat: policy.StatusUnset},
@@ -95,7 +96,7 @@ func init() {
 					// The test case for HomepageIsNewTabPage{Val: false} is not present here as it is already included in the above group.
 					{
 						name:         "set_true",
-						browserType:  lacros.ChromeTypeChromeOS,
+						browserType:  browser.TypeAsh,
 						wantHomepage: false,
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Val: chromePoliciesURL},
@@ -104,7 +105,7 @@ func init() {
 					},
 					{
 						name:         "unset",
-						browserType:  lacros.ChromeTypeChromeOS,
+						browserType:  browser.TypeAsh,
 						wantHomepage: false,
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Val: chromePoliciesURL},
@@ -121,7 +122,7 @@ func init() {
 					// The test case for HomepageIsNewTabPage{Val: false} is not present here as it is already included in the above group.
 					{
 						name:         "set_true",
-						browserType:  lacros.ChromeTypeLacros,
+						browserType:  browser.TypeLacros,
 						wantHomepage: false,
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Val: chromePoliciesURL},
@@ -130,7 +131,7 @@ func init() {
 					},
 					{
 						name:         "unset",
-						browserType:  lacros.ChromeTypeLacros,
+						browserType:  browser.TypeLacros,
 						wantHomepage: false,
 						policies: []policy.Policy{
 							&policy.HomepageLocation{Val: chromePoliciesURL},
@@ -180,11 +181,11 @@ func Homepage(ctx context.Context, s *testing.State) {
 			}
 
 			// TODO(crbug.com/1259615): This should be part of the fixture.
-			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), tc.browserType)
+			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), tc.browserType)
 			if err != nil {
 				s.Fatal("Failed to setup chrome: ", err)
 			}
-			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+			defer closeBrowser(cleanupCtx)
 
 			conn, err := br.NewConn(ctx, "chrome://version/")
 			if err != nil {

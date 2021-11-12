@@ -15,7 +15,8 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -32,13 +33,13 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Fixture: fixture.ChromePolicyLoggedIn,
-			Val:     lacros.ChromeTypeChromeOS,
+			Val:     browser.TypeAsh,
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 			ExtraAttr:         []string{"informational"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 		}},
 		Data: []string{"js_test.html"},
 	})
@@ -95,11 +96,11 @@ func JavaScriptBlockedForUrls(ctx context.Context, s *testing.State) {
 			}
 
 			// TODO(crbug.com/1259615): This should be part of the fixture.
-			_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
 			if err != nil {
 				s.Fatal("Failed to setup chrome: ", err)
 			}
-			defer lacros.CloseLacrosChrome(cleanupCtx, l)
+			defer closeBrowser(cleanupCtx)
 
 			conn, err := br.NewConn(ctx, url+"/js_test.html")
 			if err != nil {
