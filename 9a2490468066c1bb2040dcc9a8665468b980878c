@@ -187,6 +187,30 @@
       },
       "revId": "9a2490468066c1bb2040dcc9a8665468b980878c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36973363_87cc0e67",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_rootfs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-12T22:06:48Z",
+      "side": 1,
+      "message": "I would probably have missed your point that ash version doesn\u0027t need to set the stateful lacros version. Right, rootfs lacros version should be used instead.\nBy the way, for the reasons I said above, it would be also good to double check the version skew with ash version as additional safety check. will be submitting another patch for the former. Thanks for the catch!",
+      "parentUuid": "609d1fad_fc5525e8",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "9a2490468066c1bb2040dcc9a8665468b980878c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
