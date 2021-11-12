@@ -33,7 +33,7 @@ func init() {
 			Name:              "h264_sw",
 			Val:               peerconnection.MakeSWTestOptions("H264"),
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
-			Fixture:           "chromeVideoWithFakeWebcamAndSWDecoding",
+			Fixture:           "chromeVideoWithFakeWebcamAndNoHwAcceleration",
 		}, {
 			Name:              "vp8_hw",
 			Val:               peerconnection.MakeTestOptions("VP8"),
@@ -42,7 +42,7 @@ func init() {
 		}, {
 			Name:    "vp8_sw",
 			Val:     peerconnection.MakeSWTestOptions("VP8"),
-			Fixture: "chromeVideoWithFakeWebcamAndSWDecoding",
+			Fixture: "chromeVideoWithFakeWebcamAndNoHwAcceleration",
 		}, {
 			Name:              "vp9_hw",
 			Val:               peerconnection.MakeTestOptions("VP9"),
@@ -51,7 +51,7 @@ func init() {
 		}, {
 			Name:    "vp9_sw",
 			Val:     peerconnection.MakeSWTestOptions("VP9"),
-			Fixture: "chromeVideoWithFakeWebcamAndSWDecoding",
+			Fixture: "chromeVideoWithFakeWebcamAndNoHwAcceleration",
 		}, {
 			// This is a 3 temporal layers test.
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
