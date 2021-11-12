@@ -304,6 +304,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1586d1d_e6d19919",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-12T10:12:09Z",
+      "side": 1,
+      "message": "After all, I pulled out these 2 functions from the cl. I think E14s will be the first client of this approach. We can probably use util.RunSubTest at the moment. We can always add these functions back it is required in future.",
+      "parentUuid": "dfa13bd0_3bd49cd9",
+      "range": {
+        "startLine": 158,
+        "startChar": 79,
+        "endLine": 158,
+        "endChar": 88
+      },
+      "revId": "679722c5278716e0df11afab156158d21e6a6f4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4dddf6b_4a47fddc",
