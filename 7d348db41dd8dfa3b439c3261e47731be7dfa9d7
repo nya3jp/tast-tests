@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0b50291_b6a94cb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-11-12T17:25:32Z",
+      "side": 1,
+      "message": "Based on https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/helpers/local/README.md your change is correct.",
+      "revId": "7d348db41dd8dfa3b439c3261e47731be7dfa9d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67bbccec_c02f79dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-11-12T17:25:32Z",
+      "side": 1,
+      "message": "I looked for a runtime function to get the parent path and didn\u0027t find any. I suspect when the test was being written cros deploy was used which might have installed to /usr instead of /usr/local. Otherwise, it wouldn\u0027t have worked during local testing.\n\nIt might be worth filling a bug for the tast owners to look at replacing the /usr/local/libexec/tast/helpers prefix with a runtime function that provides the correct path based on where tast is installed (/usr vs /usr/local).",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "7d348db41dd8dfa3b439c3261e47731be7dfa9d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
