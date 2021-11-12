@@ -36,11 +36,10 @@ func HeCaps(ctx context.Context, s *testing.State) {
 	if len(res) == 0 {
 		s.Fatal("Expect at least one wireless phy; found nothing")
 	}
-	if !res[0].SupportHE {
+	if !res[0].SupportHESTA {
 		s.Error("Device doesn't support HE-MAC capabilities")
 	}
-	if !res[0].SupportHE40HE80 {
+	if !res[0].SupportHE40HE80STA {
 		s.Error("Device doesn't support 5ghz HE-MAC capabilities")
 	}
-
 }
