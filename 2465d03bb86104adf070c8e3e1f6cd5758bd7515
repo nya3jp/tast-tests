@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cec1857_4163427f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-11-12T16:40:48Z",
+      "side": 1,
+      "message": "Replace with yichenz and xiyuan?",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 71
+      },
+      "revId": "2465d03bb86104adf070c8e3e1f6cd5758bd7515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
