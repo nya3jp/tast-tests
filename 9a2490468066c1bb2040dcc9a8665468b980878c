@@ -211,6 +211,30 @@
       },
       "revId": "9a2490468066c1bb2040dcc9a8665468b980878c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e8c72d5_0269aba0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_rootfs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-11-12T23:20:33Z",
+      "side": 1,
+      "message": "SGTM! (Sorry if I wasn\u0027t clear)\n\nMy simple thought was:\nrootfs version is always within skew (well should be ;) ), so rootfs version - some skew (even major technically) should be always \u003c rootfs AND valid skew.\nBut, ash version - skew isn\u0027t always \u003c rootfs lacros version.",
+      "parentUuid": "609d1fad_fc5525e8",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "9a2490468066c1bb2040dcc9a8665468b980878c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

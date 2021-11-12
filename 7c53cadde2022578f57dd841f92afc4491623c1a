@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ed25e13_f3f98bdd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_rootfs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-11-12T23:20:33Z",
+      "side": 1,
+      "message": "Is it necessary to test this param (For major skew?)\nMight cause flakes during situations of slow uprev.",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "7c53cadde2022578f57dd841f92afc4491623c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71f1c26a_2c337038",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_rootfs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-11-12T23:20:33Z",
+      "side": 1,
+      "message": "nit: Join as one?\n```\ns.Log(\"Versions: ash\u003d%s rootfs-lacros\u003d%s stateful-lacros\u003d%s\",\n      ash.GetString(), rootfs.GetString(), stateful.GetString())\n```",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 68
+      },
+      "revId": "7c53cadde2022578f57dd841f92afc4491623c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
