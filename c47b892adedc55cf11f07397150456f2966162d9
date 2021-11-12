@@ -178,6 +178,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e0f2041_aa2da0f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-12T00:04:15Z",
+      "side": 1,
+      "message": "I will update syslog to handle severity like they already have one for program [1] in a separate CL.\n\nI cannot add startTime and endTime without changing the syslog library significantly because by default it processes the log lines after the reader object is created [2]. So I will keep it as a post-processing as it is now.\n\nWhat do you think?\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/syslog/reader.go?l\u003d218\u0026rcl\u003d72c3511c046216f0d32a3c7cb1e7df7d30a74704\n\n[2] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/syslog/reader.go?l\u003d254\u0026rcl\u003d72c3511c046216f0d32a3c7cb1e7df7d30a74704",
+      "parentUuid": "71d333ea_ec3191be",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "acbb071b_cc990a96",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
         "patchSetId": 2
@@ -225,6 +243,24 @@
       "side": 1,
       "message": "I will think about it again.",
       "parentUuid": "f02aac75_d49198de",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2555664b_f1e5ed1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-12T00:04:15Z",
+      "side": 1,
+      "message": "Not all log lines have a source file name. So I am not sure whether the syslog owners agree on adding SourceFileName to syslog.Entry. But I will add a ExtractSourceFileName function in syslog/util.go in a separate CL. With that, we can avoid duplicate code in the future at least. If many tests start to use the utility function, then we can consider adding SourceFileName to syslog.Entry.\n\nWhat do you think?",
+      "parentUuid": "73e2c56d_1e7d6274",
       "revId": "c47b892adedc55cf11f07397150456f2966162d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
