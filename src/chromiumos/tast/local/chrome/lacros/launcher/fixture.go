@@ -108,7 +108,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "lacrosForceDelegated",
 		Desc:     "Lacros Chrome from a pre-built image with delegated compositing forced on",
-		Contacts: []string{"petermcneeley@chromium.org", "edcourtney@chromium.org"},
+		Contacts: []string{"petermcneeley@chromium.org", "hidehiko@chromium.org"},
 		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{chrome.LacrosExtraArgs("--tint-composited-content"),
 				chrome.LacrosExtraArgs("--enable-gpu-memory-buffer-compositor-resources"),
