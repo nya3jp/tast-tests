@@ -22,6 +22,30 @@
       },
       "revId": "59624ecc8330232e96c1f367eda2add11ea2a9c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95af30d0_12eb8f03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-11-13T04:33:44Z",
+      "side": 1,
+      "message": "It would be more appropriate to make changes in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3250070.",
+      "parentUuid": "fcd57238_ecd21531",
+      "range": {
+        "startLine": 172,
+        "startChar": 23,
+        "endLine": 172,
+        "endChar": 30
+      },
+      "revId": "59624ecc8330232e96c1f367eda2add11ea2a9c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
