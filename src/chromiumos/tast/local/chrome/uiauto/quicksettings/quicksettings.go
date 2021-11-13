@@ -37,6 +37,38 @@ func findStatusArea(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Find
 	return statusArea, ui.WithTimeout(uiTimeout).WaitUntilExists(statusArea)(ctx)
 }
 
+// clickAndWaitForAnimation clicks the node found with the provided finder and
+// waits until the Quick Settings is no longer animating. The node provided is
+// expected to be, but not enforced to be, either the expand or collapse
+// button.
+func clickAndWaitForAnimation(ctx context.Context, tconn *chrome.TestConn, node *nodewith.Finder) error {
+	initialBounds, err := Rect(ctx, tconn)
+
+	if err != nil {
+		return err
+	}
+
+	previousBounds := initialBounds
+	checkIfAnimating := func(ctx context.Context) error {
+		if currentBounds, err := Rect(ctx, tconn); err != nil {
+			return testing.PollBreak(err)
+		} else if currentBounds != previousBounds {
+			previousBounds = currentBounds
+			return errors.New("the Quick Settings is still animating")
+		}
+		return nil
+	}
+
+	if err := uiauto.New(tconn).LeftClick(node)(ctx); err != nil {
+		errors.Wrap(err, "failed to click the node")
+	}
+
+	if err := testing.Poll(ctx, checkIfAnimating, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: uiTimeout}); err != nil {
+		return errors.Wrap(err, "the Quick Settings did not stop animating")
+	}
+	return nil
+}
+
 // Rect returns a coords.Rect struct for the Quick Settings area, which contains
 // coordinate information about the rectangular region it occupies on the screen.
 // As clients of this function generally expect the bounds of the window, not the
@@ -119,6 +151,56 @@ func Hide(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
+// Collapse will result in the Quick Settings being opened and in a collapsed
+// state. This is safe to call even when Quick Settings is already open.
+func Collapse(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := Hide(ctx, tconn); err != nil {
+		return err
+	}
+
+	if err := ShowWithRetry(ctx, tconn, 5*time.Second); err != nil {
+		return err
+	}
+
+	exist, err := uiauto.New(tconn).IsNodeFound(ctx, ExpandButton)
+	if err != nil {
+		return errors.Wrap(err, "failed to check if the expand button already exists")
+	}
+	if exist {
+		return nil
+	}
+
+	if err := clickAndWaitForAnimation(ctx, tconn, CollapseButton); err != nil {
+		return errors.Wrap(err, "the Quick Settings did not collapse")
+	}
+	return nil
+}
+
+// Expand will result in the Quick Settings being opened and in an expanded
+// state. This is safe to call even when Quick Settings is already open.
+func Expand(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := Hide(ctx, tconn); err != nil {
+		return err
+	}
+
+	if err := ShowWithRetry(ctx, tconn, 5*time.Second); err != nil {
+		return err
+	}
+
+	exist, err := uiauto.New(tconn).IsNodeFound(ctx, CollapseButton)
+	if err != nil {
+		return errors.Wrap(err, "failed to check if the collapse button already exists")
+	}
+	if exist {
+		return nil
+	}
+
+	if err := clickAndWaitForAnimation(ctx, tconn, ExpandButton); err != nil {
+		return errors.Wrap(err, "the Quick Settings did not expand")
+	}
+	return nil
+}
+
 // ShowWithRetry will continuously click the status area until Quick Settings is shown,
 // for the duration specified by timeout. Quick Settings sometimes does not open if the status area
 // is clicked very early in the test, so this function can be used to ensure it will be opened.
@@ -138,7 +220,7 @@ func ShowWithRetry(ctx context.Context, tconn *chrome.TestConn, timeout time.Dur
 	return nil
 }
 
-// PodIconButton generates nodewith.Finder for the specified quick setting pod.
+// PodIconButton generates nodewith.Finder for the specified quick setting feature pod icon button.
 func PodIconButton(setting SettingPod) *nodewith.Finder {
 	// The network pod cannot be easily found by its Name attribute in both logged-in and lock screen states.
 	// Instead, find it by its unique ClassName.
@@ -335,7 +417,6 @@ func OpenAudioSettings(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	defer cleanup(ctx)
 
-	expandMenuBtn := nodewith.Role(role.Button).Name("Expand menu")
 	audioSettingsBtn := nodewith.Role(role.Button).Name("Audio settings")
 	audioDetailedView := nodewith.ClassName("AudioDetailedView")
 
@@ -349,19 +430,9 @@ func OpenAudioSettings(ctx context.Context, tconn *chrome.TestConn) error {
 		return nil
 	}
 
-	// If quick settings menu is collapsed, expand it.
-	exist, err = ui.IsNodeFound(ctx, expandMenuBtn)
-	if err != nil {
-		return errors.Wrap(err, "failed to check expand menu button")
-	}
-	if exist {
-		if err := ui.WithTimeout(uiTimeout).WaitUntilExists(expandMenuBtn)(ctx); err != nil {
-			return err
-		}
-
-		if err := ui.WithTimeout(uiTimeout).LeftClickUntil(expandMenuBtn, ui.WithTimeout(1*time.Second).WaitUntilExists(audioSettingsBtn))(ctx); err != nil {
-			return errors.Wrap(err, "failed to click expand menu button and wait for audio settings button")
-		}
+	// Expand the Quick Settings if it is collapsed.
+	if err := Expand(ctx, tconn); err != nil {
+		return err
 	}
 
 	// It worth noting that LeftClickUntil will check the condition before doing the first
