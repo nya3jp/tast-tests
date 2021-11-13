@@ -14,8 +14,11 @@ import (
 // quickSettingsFinder is the finder to find the Quick Settings area in the UI.
 var quickSettingsFinder = nodewith.ClassName("UnifiedSystemTrayView")
 
-// CollapseButton is the finder for the collapse button, which collapses and expands Quick Settings.
-var CollapseButton = nodewith.Role(role.Button).ClassName("CollapseButton")
+// CollapseButton is the finder for the collapse button, which collapses Quick Settings.
+var CollapseButton = nodewith.Role(role.Button).ClassName("CollapseButton").Name("Collapse menu")
+
+// ExpandButton is the finder for the expand button, which expands Quick Settings.
+var ExpandButton = nodewith.Role(role.Button).ClassName("CollapseButton").Name("Expand menu")
 
 // LockButton is the finder for Quick Settings' lock button.
 var LockButton = nodewith.Name("Lock").ClassName("TopShortcutButton")
