@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c70f9122_187765fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-11-13T08:30:03Z",
+      "side": 1,
+      "message": "platform.CrosID: test that crosid runs on all unibuild systems",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "6dcf9fed70b8c76ad0fe4951a3b0f8c2a6d18ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9cfddff_061a9b48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-11-13T08:30:03Z",
+      "side": 1,
+      "message": "Tast",
+      "revId": "6dcf9fed70b8c76ad0fe4951a3b0f8c2a6d18ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f32c9396_cd6aa49b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-11-13T08:30:03Z",
+      "side": 1,
+      "message": "expects that",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "6dcf9fed70b8c76ad0fe4951a3b0f8c2a6d18ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f7a194_2490873e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-11-13T08:30:03Z",
+      "side": 1,
+      "message": "Some nits.",
+      "revId": "6dcf9fed70b8c76ad0fe4951a3b0f8c2a6d18ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a31662_9bbcf690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-11-13T08:30:03Z",
+      "side": 1,
+      "message": "Suggest adding a group email as well.",
+      "revId": "6dcf9fed70b8c76ad0fe4951a3b0f8c2a6d18ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
