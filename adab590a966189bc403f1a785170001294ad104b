@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f17328f8_0ba676b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-11-13T04:43:25Z",
+      "side": 1,
+      "message": "Since the interface has changed, another productivity case (GDcos) should also be changed in the function name.",
+      "revId": "adab590a966189bc403f1a785170001294ad104b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
