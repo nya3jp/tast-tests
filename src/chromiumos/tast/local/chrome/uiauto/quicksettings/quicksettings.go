@@ -119,6 +119,44 @@ func Hide(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
+// Collapse will result in the Quick Settings being opened and in a collapsed
+// state. This is safe to call even when Quick Settings is already open.
+func Collapse(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := Hide(ctx, tconn); err != nil {
+		return err
+	}
+
+	if err := ShowWithRetry(ctx, tconn, 5*time.Second); err != nil {
+		return err
+	}
+
+	initialBounds, err := Rect(ctx, tconn)
+
+	if err != nil {
+		return err
+	}
+
+	previousBounds := initialBounds
+	checkIfCollapsed := func(ctx context.Context) error {
+		if currentBounds, err := Rect(ctx, tconn); err != nil {
+			return testing.PollBreak(err)
+		} else if currentBounds != previousBounds {
+			previousBounds = currentBounds
+			return errors.New("the Quick Settings is still collapsing")
+		}
+		return nil
+	}
+
+	if err := uiauto.New(tconn).LeftClick(CollapseButton)(ctx); err != nil {
+		errors.Wrap(err, "failed to click the collapse button")
+	}
+
+	if err := testing.Poll(ctx, checkIfCollapsed, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: uiTimeout}); err != nil {
+		return errors.Wrap(err, "the Quick Settings did not collapse")
+	}
+	return nil
+}
+
 // ShowWithRetry will continuously click the status area until Quick Settings is shown,
 // for the duration specified by timeout. Quick Settings sometimes does not open if the status area
 // is clicked very early in the test, so this function can be used to ensure it will be opened.
@@ -138,7 +176,7 @@ func ShowWithRetry(ctx context.Context, tconn *chrome.TestConn, timeout time.Dur
 	return nil
 }
 
-// PodIconButton generates nodewith.Finder for the specified quick setting pod.
+// PodIconButton generates nodewith.Finder for the specified quick setting feature pod icon button.
 func PodIconButton(setting SettingPod) *nodewith.Finder {
 	// The network pod cannot be easily found by its Name attribute in both logged-in and lock screen states.
 	// Instead, find it by its unique ClassName.
@@ -149,6 +187,15 @@ func PodIconButton(setting SettingPod) *nodewith.Finder {
 	// The pod icon names change based on their state, but a substring containing the setting name stays
 	// the same regardless of state, so we can match that in the name attribute.
 	return nodewith.ClassName("FeaturePodIconButton").NameContaining(string(setting))
+}
+
+// PodLabelButton generates nodewith.Finder for the specified quick setting
+// feature pod label button.
+func PodLabelButton(setting SettingPod) *nodewith.Finder {
+	// The pod icon names change based on their state, but a substring
+	// containing the setting name stays the same regardless of state, so
+	// we can match that in the name attribute.
+	return nodewith.ClassName("FeaturePodLabelButton").NameContaining(string(setting))
 }
 
 // ensureVisible ensures that Quick Settings is shown. If it's not visible, this function will
