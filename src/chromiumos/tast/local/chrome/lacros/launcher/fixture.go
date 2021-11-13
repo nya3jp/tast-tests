@@ -103,6 +103,22 @@ func init() {
 		Vars:            []string{LacrosDeployedBinary},
 	})
 
+	// lacrosForceDelegation is the same as lacros but
+	// forces delegated composition for ash-chrome.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosForceDelegated",
+		Desc:     "Lacros Chrome from a pre-built image with delegated compositing forced on",
+		Contacts: []string{"petermcneeley@chromium.org", "edcourtney@chromium.org"},
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.LacrosExtraArgs("--enable-gpu-memory-buffer-compositor-resources"),
+				chrome.LacrosExtraArgs("--enable-features=DelegatedCompositing")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{LacrosDeployedBinary},
+	})
+
 	// lacrosWithArcEnabled is the same as lacros but with ARC enabled.
 	// See also lacrosWithArcBooted in src/chromiumos/tast/local/arc/fixture.go.
 	testing.AddFixture(&testing.Fixture{

@@ -47,6 +47,13 @@ func init() {
 			},
 			Fixture: "lacrosForceComposition",
 		}, {
+			Name: "maximized_delegated",
+			Val: gpucuj.TestParams{
+				TestType: gpucuj.TestTypeMaximized,
+				Rot90:    false,
+			},
+			Fixture: "lacrosForceDelegated",
+		}, {
 			Name: "threedot",
 			Val: gpucuj.TestParams{
 				TestType: gpucuj.TestTypeThreeDot,
