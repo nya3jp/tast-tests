@@ -63,6 +63,30 @@
       },
       "revId": "7d348db41dd8dfa3b439c3261e47731be7dfa9d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b538dcda_0a362915",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-13T00:17:25Z",
+      "side": 1,
+      "message": "+1 to Allen\u0027s suggestion. Unfortunately I do not have any knowledge of Tast runtime functions. Assign this cl to nya who is in the Tast core team.",
+      "parentUuid": "f3ee23c1_799ced48",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "7d348db41dd8dfa3b439c3261e47731be7dfa9d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
