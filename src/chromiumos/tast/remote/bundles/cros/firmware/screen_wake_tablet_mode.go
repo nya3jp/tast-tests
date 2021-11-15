@@ -93,19 +93,10 @@ func init() {
 				detectTouchscreen: true,
 			},
 		}, {
-			Name:              "sparky360",
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("sparky360")),
-			Val: &evtestTabletModeExpects{
-				detectStylus:      false,
-				detectKeyboard:    false,
-				detectTouchpad:    false,
-				detectTouchscreen: true,
-			},
-		}, {
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Convertible)),
 			Val: &evtestTabletModeExpects{
 				detectStylus:      false,
-				detectKeyboard:    true,
+				detectKeyboard:    false,
 				detectTouchpad:    false,
 				detectTouchscreen: true,
 			},
@@ -214,7 +205,11 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 				s.Logf("%s was disabled", evEvent)
 				return nil
 			case out := <-text:
-				if match := expMatch.FindStringSubmatch(out); match != nil {
+				match := expMatch.FindStringSubmatch(out)
+				if !shouldRespond && match != nil {
+					return errors.Errorf("%s was unexpectedly active in tablet mode", evEvent)
+				}
+				if match != nil {
 					s.Logf("Detected %s: %s", evEvent, match)
 					return nil
 				}
@@ -253,6 +248,11 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
+	powerBtnPollOptions := testing.PollOptions{
+		Timeout:  30 * time.Second,
+		Interval: 1 * time.Second,
+	}
+
 	// The screenWake function attempts one of the screenWakeTrigger options to wake the screen.
 	screenWake := func(ctx context.Context, option screenWakeTrigger) error {
 		// Ensure that DUT's screen is off before sending a trigger to wake the screen.
@@ -269,16 +269,28 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 					return errors.Wrapf(err, "error in verifying DUT's screen state: %q", expectOff)
 				}
 				return nil
-			}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 15 * time.Second}); err != nil {
-				return errors.Wrapf(err, "before screenWakeTrigger: %q", option)
+			}, &powerBtnPollOptions); err != nil {
+				return errors.Wrapf(err, "while attempting to turn off the screen before screenWakeTrigger: %q", option)
 			}
 		}
 		switch option {
 		case screenWakeByPowerButton:
 			s.Log("Press power button to wake DUT's screen")
-			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
-				return errors.Wrap(err, "error in pressing power button")
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+					return errors.Wrap(err, "error in pressing power button")
+				}
+				if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+					return errors.Wrap(err, "error in sleeping for 1 second")
+				}
+				if err := verifyScreenState(ctx, expectOn); err != nil {
+					return errors.Wrapf(err, "error in verifying DUT's screen state: %q", expectOn)
+				}
+				return nil
+			}, &powerBtnPollOptions); err != nil {
+				return errors.Wrap(err, "tapping on power button did not turn the screen on")
 			}
+			return nil
 		case screenWakeByEjectingStylus:
 			if testArgs.detectStylus {
 				s.Log("To-do: implement a trigger to eject Stylus")
@@ -293,7 +305,7 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "error in performing a tap on the touch screen")
 			}
 			if err := evtestMonitor(ctx, evTouchscreen, scannTouchscreen, testArgs.detectTouchscreen); err != nil {
-				return errors.Wrap(err, "during the evtest for touchpad")
+				return errors.Wrap(err, "during the evtest for touchscreen")
 			}
 		case screenWakeByMovingLid:
 			// Emulate the action of moving lid by running `tabletmode reset` through EC.
@@ -387,7 +399,7 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			return errors.Wrapf(err, "error in verifying DUT's screen state: %q", expectOff)
 		}
 		return nil
-	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 15 * time.Second}); err != nil {
+	}, &powerBtnPollOptions); err != nil {
 		s.Fatal("During setting tabletmode on and a tab on power button: ", err)
 	}
 
