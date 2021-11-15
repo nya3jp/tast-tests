@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -260,7 +259,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	// that and data points from systrace isn't actually helpful to most of
 	// UI tests, disable systraces for the time being.
 	// TODO(https://crbug.com/1162385, b/177636800): enable it.
-	if err := cr.StartTracing(ctx, []string{"disabled-by-default-viz.triangles"}, cdputil.DisableSystrace()); err != nil {
+	if err := cr.StartTracing(ctx, []string{"disabled-by-default-viz.triangles"}, chrome.DisableSystrace()); err != nil {
 		s.Fatal("Failed to start tracing viz.triangles: ", err)
 	}
 

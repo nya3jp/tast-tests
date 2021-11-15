@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/coords"
 )
 
@@ -88,8 +87,8 @@ func CaptureChromeImage(ctx context.Context, cr *chrome.Chrome) (image.Image, er
 // CaptureChrome.
 // The diff from CaptureChrome is that this function takes *cdputil.Conn, which
 // is used by chrome.Conn. Thus, CaptureChrome records logs in case of error,
-// while this does not.
-func CaptureCDP(ctx context.Context, conn *cdputil.Conn, path string) error {
+// while this does not. XXX
+func CaptureCDP(ctx context.Context, conn *chrome.DevtoolsConn, path string) error {
 	return captureInternal(ctx, path, func(code string, out interface{}) error {
 		_, err := conn.Eval(ctx, code, true /* awaitPromise */, out)
 		return err
