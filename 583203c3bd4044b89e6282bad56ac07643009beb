@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a6e131_80594541",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-15T18:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a65d2f57_50ba0a21",
+      "revId": "583203c3bd4044b89e6282bad56ac07643009beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b4b431c_31511e47",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-13T08:24:36Z",
       "side": 1,
       "message": "Refer to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nAs the testing.State is called when the test fails, we may return an Error object instead of passing the testing.State:\n\nfunc testScreenshotLaunch(...) error {\n  err :\u003d ...\n  if err !\u003d nil {\n    errors.Wrap(err, \"failed to launch screenshot\"\n  }\n  return err\n}",
+      "range": {
+        "startLine": 130,
+        "startChar": 22,
+        "endLine": 130,
+        "endChar": 38
+      },
+      "revId": "583203c3bd4044b89e6282bad56ac07643009beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90748a64_7837efab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/screenshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-15T18:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b4b431c_31511e47",
       "range": {
         "startLine": 130,
         "startChar": 22,
