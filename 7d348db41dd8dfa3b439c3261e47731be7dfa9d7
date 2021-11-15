@@ -87,6 +87,30 @@
       },
       "revId": "7d348db41dd8dfa3b439c3261e47731be7dfa9d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "503ec490_64c72e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-15T01:38:18Z",
+      "side": 1,
+      "message": "This file should be always installed to /usr/local since it\u0027s used only in tests. So it sounds not right to replace them with function calls.\n\nI\u0027d rather make it an error to deploy tast-local-helpers-cros to /usr, though I\u0027m not sure if it\u0027s easy.",
+      "parentUuid": "b538dcda_0a362915",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "7d348db41dd8dfa3b439c3261e47731be7dfa9d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
