@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf762a82_34b18b79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-15T21:59:00Z",
+      "side": 1,
+      "message": "Hi Judy and Mohamed, add you two directly for this cl as this work will be reverted at crrev.com/c/3278613. Is this the thing I can do to make the crrev.com/c/3274136 can be merged first? Thanks",
+      "revId": "204c5b2f2d0f501c146416f32cb542c26b1c6079",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
