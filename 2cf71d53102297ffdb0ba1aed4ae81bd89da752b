@@ -16,6 +16,24 @@
       "message": "How will the result be when it is skipped. Stainless will show it as Green?.",
       "revId": "2cf71d53102297ffdb0ba1aed4ae81bd89da752b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a8e6027_a3f5e694",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-11-15T22:37:56Z",
+      "side": 1,
+      "message": "Yes, Stainless will show it as green.",
+      "parentUuid": "59fdf4cd_92a4fd15",
+      "revId": "2cf71d53102297ffdb0ba1aed4ae81bd89da752b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
