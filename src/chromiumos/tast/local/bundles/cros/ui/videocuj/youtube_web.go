@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -54,7 +53,7 @@ func NewYtWeb(cr *chrome.Chrome, tconn *chrome.TestConn, kb *input.KeyboardEvent
 func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	testing.ContextLog(ctx, "Open Youtube web")
 
-	y.ytConn, err = y.cr.NewConn(ctx, y.video.url, cdputil.WithNewWindow())
+	y.ytConn, err = y.cr.NewConn(ctx, y.video.url, chrome.WithNewWindow())
 	if err != nil {
 		return errors.Wrap(err, "failed to open youtube")
 	}

@@ -12,7 +12,7 @@ import (
 
 	"github.com/mafredri/cdp/protocol/target"
 
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/internal/extension"

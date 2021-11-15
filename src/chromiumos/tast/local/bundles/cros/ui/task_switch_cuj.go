@@ -16,8 +16,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -542,7 +542,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		"https://bugs.chromium.org/p/chromium/issues/list",
 		"https://youtube.com/",
 	} {
-		conn, err := cs.NewConn(ctx, url, cdputil.WithNewWindow())
+		conn, err := cs.NewConn(ctx, url, chrome.WithNewWindow())
 		if err != nil {
 			s.Fatalf("Failed to open %s: %v", url, err)
 		}

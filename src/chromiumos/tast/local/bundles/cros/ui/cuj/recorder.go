@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/testing"
 )
@@ -301,7 +300,7 @@ func (r *Recorder) Run(ctx context.Context, f func(ctx context.Context) error) (
 	if r.traceDir != "" {
 		if err := r.cr.StartTracing(ctx,
 			[]string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz", "memory-infra"},
-			cdputil.DisableSystrace()); err != nil {
+			chrome.DisableSystrace()); err != nil {
 			testing.ContextLog(ctx, "Failed to start tracing: ", err)
 			return errors.Wrap(err, "failed to start tracing")
 		}

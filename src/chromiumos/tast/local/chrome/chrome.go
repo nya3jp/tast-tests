@@ -21,7 +21,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/internal/extension"
@@ -516,11 +516,14 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 // PrepareForRestart in advance so that Reconnect doesn't attempt to connect to
 // an old port.
 func (c *Chrome) Reconnect(ctx context.Context) error {
+	return Reconnect(ctx, cdputil.WaitPort)
+}
+func (c *Chrome) Reconnect(ctx context.Context, portWait PortWaitOption) error {
 	ctx, cancel := context.WithTimeout(ctx, 20*time.Second)
 	defer cancel()
 
 	// Create a new session.
-	newSess, err := driver.NewSession(ctx, ashproc.ExecPath, cdputil.DebuggingPortPath, cdputil.WaitPort, c.agg)
+	newSess, err := driver.NewSession(ctx, ashproc.ExecPath, cdputil.DebuggingPortPath, portWait, c.agg)
 	if err != nil {
 		return err
 	}
@@ -753,3 +756,40 @@ func saveMinidumpsWithoutCrash(ctx context.Context) error {
 	minidump.SaveWithoutCrash(ctx, dir, matchers...)
 	return nil
 }
+
+// Export cdputil stuff needed by other packages:
+
+type PortWaitOption = cdputil.PortWaitOption
+
+const (
+	NoWaitPort = cdputil.NoWaitPort
+	WaitPort   = cdputil.WaitPort
+)
+
+type CreateTargetOption = cdputil.CreateTargetOption
+
+func WithNewWindow() CreateTargetOption {
+	return cdputil.WithNewWindow()
+}
+
+// The other one, WithBackground, is unused. Can we get rid of the whole thing?
+
+type TraceOption = cdputil.TraceOption
+
+func DisableSystrace() TraceOption {
+	return cdputil.DisableSystrace()
+}
+
+//////
+// Only for faillog.go: (How can it call methods on returned internal type?)
+const DebuggingPortPath = cdputil.DebuggingPortPath
+
+type Session = cdputil.Session
+
+// Avoid NewSession name confusion.
+func NewDevtoolsSession(ctx context.Context, debuggingPortPath string, portWait PortWaitOption) (sess *Session, retErr error) {
+	return cdputil.NewSession(ctx, debuggingPortPath, portWait)
+}
+
+type DevtoolsConn = cdputil.Conn // screentshot CaptureCDP
+//////
