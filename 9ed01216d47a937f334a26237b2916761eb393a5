@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "9ed01216d47a937f334a26237b2916761eb393a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad417f9_be1e84e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-11-15T19:52:05Z",
+      "side": 1,
+      "message": "Dependency chromium:3203690 was landed in Chrome release 98.0.4697.0.\n\nAccording to go/goldeneye, the latest Live release was on 98.0.4699.0, so this CL should now be safe to submit.",
+      "revId": "9ed01216d47a937f334a26237b2916761eb393a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
