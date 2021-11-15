@@ -16,6 +16,29 @@
       "message": "PTAL\nTY",
       "revId": "11151d05f2aa580cb84b30bdcccb966b56dedbc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f74710b9_7c57233f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-11-15T19:40:25Z",
+      "side": 1,
+      "message": "nit: what does this mean? typo?",
+      "range": {
+        "startLine": 128,
+        "startChar": 77,
+        "endLine": 128,
+        "endChar": 79
+      },
+      "revId": "11151d05f2aa580cb84b30bdcccb966b56dedbc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
