@@ -396,6 +396,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe95fe9f_7341c46d",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-15T09:53:03Z",
+      "side": 1,
+      "message": "we can have a reference to it in mgs structure and then use that. WDYT?",
+      "parentUuid": "f38d46d2_af1421ee",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc2edd2f_dc70148a",
         "filename": "src/chromiumos/tast/local/mgs/mgs.go",
         "patchSetId": 1
@@ -995,6 +1019,30 @@
       "side": 1,
       "message": "it was already used before in mgs.go similar to accountID.\nWDYT?",
       "parentUuid": "8f07cadc_26b641fb",
+      "range": {
+        "startLine": 30,
+        "startChar": 18,
+        "endLine": 30,
+        "endChar": 29
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "076c7e52_b26b98aa",
+        "filename": "src/chromiumos/tast/local/mgs/options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-15T09:53:03Z",
+      "side": 1,
+      "message": "I saw it there too. Just thinking what would be better - refer directly the policy internal type or have it assigned.\n\nIf the policy struct change either way it will get reflected in the library.\nI was thinking more about being explicit in the setup. Somehow I am leaning towards having a direct reference here to be verbose about the account type that MGS uses.",
+      "parentUuid": "50ebc8da_d3d7ebfb",
       "range": {
         "startLine": 30,
         "startChar": 18,
