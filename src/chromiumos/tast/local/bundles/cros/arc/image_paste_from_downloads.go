@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ImagePasteFromDownloads,
 		Desc:         "Checks image copy paste app compat from Files App",
-		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
+		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline", "informational"},
