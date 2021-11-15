@@ -18,6 +18,7 @@ const downloadsSectionClassName = "DownloadsSection"
 const holdingSpaceItemChipViewClassName = "HoldingSpaceItemChipView"
 const holdingSpaceItemScreenCaptureViewClassName = "HoldingSpaceItemScreenCaptureView"
 const holdingSpaceTrayClassName = "HoldingSpaceTray"
+const subMenuClassName = "SubmenuView"
 const menuItemViewClassName = "MenuItemView"
 const pinnedFilesSectionClassName = "PinnedFilesSection"
 const screenCapturesSectionClassName = "ScreenCapturesSection"
@@ -25,6 +26,11 @@ const screenCapturesSectionClassName = "ScreenCapturesSection"
 // FindChip returns a finder which locates a holding space chip node.
 func FindChip() *nodewith.Finder {
 	return nodewith.ClassName(holdingSpaceItemChipViewClassName)
+}
+
+// FindContextMenu returns a finder which locates a holding space context menu node.
+func FindContextMenu() *nodewith.Finder {
+	return nodewith.ClassName(subMenuClassName)
 }
 
 // FindContextMenuItem returns a finder which locates a holding space context
