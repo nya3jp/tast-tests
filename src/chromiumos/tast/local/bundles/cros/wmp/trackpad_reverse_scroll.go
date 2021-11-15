@@ -83,6 +83,20 @@ func swipeToExitOverview(ctx context.Context, tconn *chrome.TestConn, tpw *input
 	return nil
 }
 
+// swipeToDesk performs swiping on given direction with 4 fingers to switch to the target desk with the given container name.
+func swipeToDesk(ctx context.Context, tconn *chrome.TestConn, tpw *input.TrackpadEventWriter, swipeDirection trackpad.SwipeDirection, deskContainerName string) error {
+	ac := uiauto.New(tconn)
+	if err := trackpad.Swipe(ctx, tconn, tpw, swipeDirection, 4); err != nil {
+		return errors.Wrap(err, "failed to swipe right with 4 fingers")
+	}
+
+	if err := ac.WaitUntilExists(nodewith.ClassName(deskContainerName).State("invisible", false))(ctx); err != nil {
+		return errors.Wrapf(err, "failed to show desk %s", deskContainerName)
+	}
+
+	return nil
+}
+
 // waitForSystemToast waits for the system toast showing up.
 func waitForSystemToast(ctx context.Context, tconn *chrome.TestConn) error {
 	ac := uiauto.New(tconn)
@@ -183,4 +197,69 @@ func TrackpadReverseScroll(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to swipe down to exit Overview: ", err)
 	}
 	// ---------------------------------------------------------
+
+	// Create a new desk.
+	if err := ash.CreateNewDesk(ctx, tconn); err != nil {
+		s.Fatal("Failed to create a new desk: ", err)
+	}
+
+	// ------------ On The Leftmost Desk ----------------------
+	// 1. If reverse scroll is off, consecutively swiping left twice with 4
+	//    fingers will trigger a system toast (only for non reverse scrolling).
+	// 2. If reverse scroll if off, Swiping right with 4 fingers will switch to
+	//    the right desk. Otherwise, swiping left with 4 fingers will switch to
+	//    the right desk.
+
+	// If reverse scroll is off, swiping left twice with 4 fingers will trigger a system toast.
+	var swipeDirection trackpad.SwipeDirection
+	if !reverseOn {
+		if err := swipeTwice(ctx, tconn, tpw, trackpad.LeftSwipe, 4); err != nil {
+			s.Fatal("Failed to swipe left twice with 4 fingers: ", err)
+		}
+
+		if err := waitForSystemToast(ctx, tconn); err != nil {
+			s.Fatal("Failed to show wrong switching desk gesture toast: ", err)
+		}
+	}
+
+	// If reverse scroll is off (on), swiping right (left) with 4 fingers will switch to the right desk.
+	if reverseOn {
+		swipeDirection = trackpad.LeftSwipe
+	} else {
+		swipeDirection = trackpad.RightSwipe
+	}
+
+	if err := swipeToDesk(ctx, tconn, tpw, swipeDirection, "Desk_Container_B"); err != nil {
+		s.Fatal("Failed to switch to the right desk: ", err)
+	}
+	//-------------------------------------------------------
+
+	// ------------ On The Rightmost Desk ---------------------
+	// 1. If reverse scroll is off, consecutively swiping right twice with 4
+	//    fingers will trigger a system toast (only for non reverse scrolling).
+	// 2. If reverse scroll if off, Swiping left with 4 fingers will switch to
+	//    the left desk. Otherwise, swiping right with 4 fingers will switch to
+	//    the left desk.
+
+	// If reverse scroll is off, swiping right twice with 4 fingers will trigger a system toast.
+	if !reverseOn {
+		if err := swipeTwice(ctx, tconn, tpw, trackpad.RightSwipe, 4); err != nil {
+			s.Fatal("Failed to swipe right twice with 4 fingers: ", err)
+		}
+
+		if err := waitForSystemToast(ctx, tconn); err != nil {
+			s.Fatal("Failed to show wrong switching desk gesture toast: ", err)
+		}
+	}
+
+	// If reverse scroll is off (on), swiping left (right) with 4 fingers will switch to the left desk.
+	if reverseOn {
+		swipeDirection = trackpad.RightSwipe
+	} else {
+		swipeDirection = trackpad.LeftSwipe
+	}
+
+	if err := swipeToDesk(ctx, tconn, tpw, swipeDirection, "Desk_Container_A"); err != nil {
+		s.Fatal("Failed to switch to the right desk: ", err)
+	}
 }
