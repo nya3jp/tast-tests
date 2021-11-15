@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35ac6bed_2cf2d20f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-15T16:46:21Z",
+      "side": 1,
+      "message": "Looks good :D 👍 Thanks for the implementation Mohamed!",
+      "revId": "9da8c3864cb91e64dda52982c1522b54b2985aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0738dd26_d93e302e",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-15T16:46:21Z",
+      "side": 1,
+      "message": "nit: isn\u0027t this line a bit too longs?",
+      "revId": "9da8c3864cb91e64dda52982c1522b54b2985aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f253b6c6_64686014",
+        "filename": "src/chromiumos/tast/local/mgs/options.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-15T16:46:21Z",
+      "side": 1,
+      "message": "nit: not needed.",
+      "range": {
+        "startLine": 42,
+        "startChar": 59,
+        "endLine": 42,
+        "endChar": 63
+      },
+      "revId": "9da8c3864cb91e64dda52982c1522b54b2985aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada41e1c_0ebbb52b",
+        "filename": "src/chromiumos/tast/local/mgs/options.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-15T16:46:21Z",
+      "side": 1,
+      "message": "nit: not needed.",
+      "range": {
+        "startLine": 61,
+        "startChar": 23,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "9da8c3864cb91e64dda52982c1522b54b2985aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
