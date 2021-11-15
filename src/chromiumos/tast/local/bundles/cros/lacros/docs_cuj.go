@@ -48,7 +48,7 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 
 	// Run against ash-chrome.
 	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, f.TestAPIConn(), docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
-		return lacros.SetupCrosTestWithPage(ctx, f, url)
+		return lacros.SetupCrosTestWithPage(ctx, f, url, lacros.StabilizeBeforeOpeningURL)
 	}); err != nil {
 		s.Error("Failed to run ash-chrome benchmark: ", err)
 	} else {
@@ -67,7 +67,7 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 
 	// Run against lacros-chrome.
 	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, f.TestAPIConn(), docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
-		conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, url)
+		conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, url, lacros.StabilizeBeforeOpeningURL)
 		return conn, cleanup, err
 	}); err != nil {
 		s.Error("Failed to run lacros-chrome benchmark: ", err)

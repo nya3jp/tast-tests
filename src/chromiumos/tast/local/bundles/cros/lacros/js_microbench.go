@@ -82,7 +82,7 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 
 	// Run JS benchmark against ash-chrome.
 	if elapsed, err := runJSMicrobench(ctx, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
-		return lacros.SetupCrosTestWithPage(ctx, f, url)
+		return lacros.SetupCrosTestWithPage(ctx, f, url, lacros.StabilizeAfterOpeningURL)
 	}); err != nil {
 		s.Error("Failed to run ash-chrome benchmark: ", err)
 	} else {
@@ -95,7 +95,7 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 
 	// Run JS benchmark against lacros-chrome.
 	if elapsed, err := runJSMicrobench(ctx, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
-		conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, url)
+		conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, url, lacros.StabilizeAfterOpeningURL)
 		return conn, cleanup, err
 	}); err != nil {
 		s.Error("Failed to run lacros-chrome benchrmark: ", err)
@@ -109,7 +109,7 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 
 	// Run JS benchmark against ash-chrome.
 	if elapsed, err := runJSMicrobenchFromHTML(ctx, htmlPath, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
-		return lacros.SetupCrosTestWithPage(ctx, f, url)
+		return lacros.SetupCrosTestWithPage(ctx, f, url, lacros.StabilizeAfterOpeningURL)
 	}); err != nil {
 		s.Error("Failed to run ash-chrome benchmark: ", err)
 	} else {
@@ -122,7 +122,7 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 
 	// Run JS benchmark against lacros-chrome.
 	if elapsed, err := runJSMicrobenchFromHTML(ctx, htmlPath, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
-		conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, url)
+		conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, url, lacros.StabilizeAfterOpeningURL)
 		return conn, cleanup, err
 	}); err != nil {
 		s.Error("Failed to run lacros-chrome benchrmark: ", err)
