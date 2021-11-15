@@ -33,6 +33,24 @@
       "message": "sorry for poor recommendation in the last iteration.\nCould you move the flag to here, so that it will be unconditionally applied to all lacros fixtured tests?",
       "revId": "db05aac889e4348321d2a861f6dc1fa87f66220a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9049f66_2dcd053b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2021-11-15T14:56:53Z",
+      "side": 1,
+      "message": "no worries, it\u0027s done now. Thanks for reviewing, Hidehiko. PTAL.",
+      "parentUuid": "081d06e1_d1ef0929",
+      "revId": "db05aac889e4348321d2a861f6dc1fa87f66220a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
