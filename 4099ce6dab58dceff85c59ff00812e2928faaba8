@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ac7c776_bb2d6c1e",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-15T15:34:00Z",
+      "side": 1,
+      "message": "Maybe add custom logic to correctly split the versions here.\n\n+ add method to regenerate the string if needed.",
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "523d2662_7cf812a2",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-15T15:34:00Z",
+      "side": 1,
+      "message": "returns it?",
+      "range": {
+        "startLine": 61,
+        "startChar": 67,
+        "endLine": 61,
+        "endChar": 95
+      },
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f483a9_a5e65631",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-15T15:34:00Z",
+      "side": 1,
+      "message": "Add a shorter timeout here (maybe 30 seconds)",
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f17997_38149560",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-15T15:34:00Z",
+      "side": 1,
+      "message": "the deltas?\n\nSame below",
+      "range": {
+        "startLine": 92,
+        "startChar": 39,
+        "endLine": 92,
+        "endChar": 56
+      },
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0fa1324_079744a1",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-15T15:34:00Z",
+      "side": 1,
+      "message": "Make this a method as well.",
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b7a24a3_3f42960c",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-15T15:34:00Z",
+      "side": 1,
+      "message": "Print the correct slice. Same below.\n\nMaybe also print the entire string as well?",
+      "range": {
+        "startLine": 168,
+        "startChar": 70,
+        "endLine": 168,
+        "endChar": 85
+      },
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f5ff2c_95e3062b",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-15T15:34:00Z",
+      "side": 1,
+      "message": "This can be tested in TestFilter as well",
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
