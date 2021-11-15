@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abcd8bb6_cfe1c895",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-15T19:07:40Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "ea897af668aecb4625fa3c7dde674978548abb07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91fce627_e1e7a96f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-15T19:07:40Z",
+      "side": 1,
+      "message": "nit: all non-trivial functions should have docstring\n\nwhile you are here, could you also add docstring to \"installFactoryToolkitFromToolkitInstaller\" and to \"installFactoryToolKit\" ?",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 39
+      },
+      "revId": "ea897af668aecb4625fa3c7dde674978548abb07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7128f7f1_31224532",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-15T19:07:40Z",
+      "side": 1,
+      "message": "huge nit: cannot",
+      "range": {
+        "startLine": 136,
+        "startChar": 28,
+        "endLine": 136,
+        "endChar": 35
+      },
+      "revId": "ea897af668aecb4625fa3c7dde674978548abb07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "570e7aa1_2f3d3bc7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/fixture/toolkit.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-15T19:07:40Z",
+      "side": 1,
+      "message": "nit: cannot",
+      "range": {
+        "startLine": 143,
+        "startChar": 28,
+        "endLine": 143,
+        "endChar": 35
+      },
+      "revId": "ea897af668aecb4625fa3c7dde674978548abb07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
