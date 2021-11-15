@@ -44,8 +44,7 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// TODO(tetsui): Remove the flag once it's enabled by default.
-	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir), chrome.ARCEnabled(), chrome.EnableFeatures("ArcImageCopyPasteCompat"), chrome.ExtraArgs("--force-tablet-mode=clamshell"))
+	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir), chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell"))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
