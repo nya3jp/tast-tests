@@ -9,11 +9,13 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
@@ -42,7 +44,6 @@ type FixtureData struct {
 
 type fixture struct {
 	cr       *chrome.Chrome
-	bconn    *chrome.Conn
 	server   *Server
 	guestDir string
 	tempDir  string
@@ -56,24 +57,6 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	defer func() {
 		if !success {
 			f.cr = nil
-		}
-	}()
-
-	// Connect to Files app background page.
-	backgroundMatcher := func(t *chrome.Target) bool {
-		return t.URL == "chrome-extension://"+apps.Files.ID+"/background.html"
-	}
-	bconn, err := f.cr.NewConnForTarget(ctx, backgroundMatcher)
-	if err != nil {
-		s.Fatal("Failed to get connection to Files app background page: ", err)
-	}
-	f.bconn = bconn
-	defer func() {
-		if !success {
-			if err := f.bconn.Close(); err != nil {
-				testing.ContextLog(ctx, "Failed to close background page connection: ", err)
-			}
-			f.bconn = nil
 		}
 	}()
 
@@ -125,14 +108,10 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 // TearDown ensures the smb daemon is shutdown gracefully and all the temporary
 // directories and files are cleaned up.
 func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
-	f.cr = nil
-	if err := unmountAllSmbMounts(ctx, f.bconn); err != nil {
+	if err := unmountAllSmbMounts(ctx, f.cr); err != nil {
 		s.Error("Failed to unmount all SMB mounts: ", err)
 	}
-	if err := f.bconn.Close(); err != nil {
-		s.Error("Failed to close background page connection: ", err)
-	}
-	f.bconn = nil
+	f.cr = nil
 	if err := f.server.Stop(ctx); err != nil {
 		s.Error("Failed to stop smbd: ", err)
 	}
@@ -146,7 +125,7 @@ func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
 // Reset unmounts any mounted SMB shares and removes all the contents of the
 // guest share in between tests.
 func (f *fixture) Reset(ctx context.Context) error {
-	if err := unmountAllSmbMounts(ctx, f.bconn); err != nil {
+	if err := unmountAllSmbMounts(ctx, f.cr); err != nil {
 		return err
 	}
 	return removeAllContents(ctx, f.guestDir)
@@ -179,7 +158,28 @@ func createGuestSambaConf(ctx context.Context, sharePath, confLocation string) (
 // unmount all the identified SMB FUSE filesystems. Chrome maintains a mapping
 // of SMB shares so if we unmount via cros-disks it still thinks the volume is
 // mounted with chained tests all failing after the first.
-func unmountAllSmbMounts(ctx context.Context, bconn *chrome.Conn) error {
+func unmountAllSmbMounts(ctx context.Context, cr *chrome.Chrome) error {
+	// Open the test API.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create the test API conn")
+	}
+	// Open the Files App.
+	if _, err := filesapp.Launch(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to launch Files app")
+	}
+	// Get connection to foreground Files app to verify changes.
+	filesChromeApp := "chrome-extension://" + apps.Files.ID + "/main.html"
+	filesSWA := "chrome://file-manager/"
+	matchFilesApp := func(t *chrome.Target) bool {
+		return t.URL == filesChromeApp || strings.HasPrefix(t.URL, filesSWA)
+	}
+	conn, err := cr.NewConnForTarget(ctx, matchFilesApp)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to Files app foreground window")
+	}
+	defer conn.Close()
+
 	info, err := sysutil.MountInfoForPID(sysutil.SelfPID)
 	if err != nil {
 		return errors.Wrap(err, "failed to mount info")
@@ -187,7 +187,7 @@ func unmountAllSmbMounts(ctx context.Context, bconn *chrome.Conn) error {
 	for i := range info {
 		if info[i].Fstype == "fuse.smbfs" {
 			smbfsUniqueID := filepath.Base(info[i].MountPath)
-			if err := bconn.Call(ctx, nil, "chrome.fileManagerPrivate.removeMount", "smb:"+smbfsUniqueID); err != nil {
+			if err := conn.Call(ctx, nil, "chrome.fileManagerPrivate.removeMount", "smb:"+smbfsUniqueID); err != nil {
 				testing.ContextLogf(ctx, "Failed to unmount smb mountpoint %q: %v", smbfsUniqueID, err)
 				continue
 			}
