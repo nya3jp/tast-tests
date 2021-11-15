@@ -14,7 +14,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -83,7 +82,7 @@ func saveScreenshotBuiltIn(ctx context.Context, dir string) error {
 
 // saveScreenshotCDP saves a screenshot by using Chrome API.
 func saveScreenshotCDP(ctx context.Context, dir string) error {
-	sm, err := cdputil.NewSession(ctx, cdputil.DebuggingPortPath, cdputil.NoWaitPort)
+	sm, err := chrome.NewDevtoolsSession(ctx, chrome.DebuggingPortPath, chrome.NoWaitPort)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a new Chrome Devtools Protocol session")
 	}

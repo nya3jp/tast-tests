@@ -21,7 +21,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/internal/extension"
@@ -753,3 +753,40 @@ func saveMinidumpsWithoutCrash(ctx context.Context) error {
 	minidump.SaveWithoutCrash(ctx, dir, matchers...)
 	return nil
 }
+
+// Export cdputil stuff needed by other packages:
+
+type PortWaitOption = cdputil.PortWaitOption
+
+const (
+	NoWaitPort = cdputil.NoWaitPort
+	WaitPort   = cdputil.WaitPort
+)
+
+type CreateTargetOption = cdputil.CreateTargetOption
+
+func WithNewWindow() CreateTargetOption {
+	return cdputil.WithNewWindow()
+}
+
+// The other one, WithBackground, is unused. Can we get rid of the whole thing?
+
+type TraceOption = cdputil.TraceOption
+
+func DisableSystrace() TraceOption {
+	return cdputil.DisableSystrace()
+}
+
+//////
+// Only for faillog.go: (How can it call methods on returned internal type?)
+const DebuggingPortPath = cdputil.DebuggingPortPath
+
+type Session = cdputil.Session
+
+// Avoid NewSession name confusion.
+func NewDevtoolsSession(ctx context.Context, debuggingPortPath string, portWait PortWaitOption) (sess *Session, retErr error) {
+	return cdputil.NewSession(ctx, debuggingPortPath, portWait)
+}
+
+type DevtoolsConn = cdputil.Conn // screentshot CaptureCDP
+//////

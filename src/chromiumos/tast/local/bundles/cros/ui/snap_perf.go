@@ -10,7 +10,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -42,7 +41,7 @@ func SnapPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	conn, err := cr.NewConn(ctx, ui.PerftestURL, cdputil.WithNewWindow())
+	conn, err := cr.NewConn(ctx, ui.PerftestURL, chrome.WithNewWindow())
 	if err != nil {
 		s.Fatal("Failed to open a new connection: ", err)
 	}
