@@ -1,0 +1,78 @@
+{
+    "delta": [
+        {
+            "board": {
+              "public_codename": "not_sarien"
+            },
+            "delta_type": "OMAHA",
+            "channel": "canary",
+            "generate_delta": true,
+            "delta_payload_tests": false,
+            "full_payload_tests": false
+        },
+        {
+            "board": {
+              "public_codename": "sarien"
+            },
+            "delta_type": "OMAHA",
+            "channel": "stable",
+            "generate_delta": true,
+            "delta_payload_tests": false,
+            "full_payload_tests": false
+        },
+        {
+            "board": {
+              "public_codename": "sarien",
+              "is_active": true,
+              "builder_name": "sarien"
+            },
+            "delta_type": "OMAHA",
+            "channel": "canary",
+            "generate_delta": true,
+            "delta_payload_tests": false,
+            "full_payload_tests": false,
+            "applicable_models": [
+              "arcada",
+              "sarien"
+            ]
+        },
+        {
+            "board": {
+              "public_codename": "sarien",
+              "is_active": true,
+              "builder_name": "sarien"
+            },
+            "delta_type": "OMAHA",
+            "channel": "canary",
+            "chrome_os_version": "1.2.3",
+            "chrome_version": "97.0.1.0",
+            "milestone": 97,
+            "generate_delta": true,
+            "delta_payload_tests": false,
+            "full_payload_tests": false,
+            "applicable_models": [
+              "arcada",
+              "sarien"
+            ]
+        },
+        {
+            "board": {
+              "public_codename": "sarien",
+              "is_active": true,
+              "builder_name": "sarien"
+            },
+            "delta_type": "OMAHA",
+            "channel": "canary",
+            "chrome_os_version": "1.2.4",
+            "chrome_version": "98.0.1.0",
+            "milestone": 98,
+            "generate_delta": true,
+            "delta_payload_tests": false,
+            "full_payload_tests": false,
+            "applicable_models": [
+              "arcada",
+              "sarien"
+            ]
+        }
+    ]
+}
