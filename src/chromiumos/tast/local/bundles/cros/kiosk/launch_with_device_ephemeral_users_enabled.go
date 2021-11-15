@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/kioskmode"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -25,11 +26,22 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "fakeDMSEnrolled",
+		Params: []testing.Param{
+			{
+				Name: "ash",
+				Val:  chrome.ExtraArgs(""),
+			},
+			{
+				Name: "lacros",
+				Val:  chrome.ExtraArgs("--enable-features=LacrosSupport,WebKioskEnableLacros", "--lacros-availability-ignore"),
+			},
+		},
 	})
 }
 
 func LaunchWithDeviceEphemeralUsersEnabled(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
+	chromeOptions := s.Param().(chrome.Option)
 	cr, err := kioskmode.New(
 		ctx,
 		fdms,
@@ -37,6 +49,7 @@ func LaunchWithDeviceEphemeralUsersEnabled(ctx context.Context, s *testing.State
 		// https://crbug.com/1202902 combining DeviceEphemeralUsersEnabled
 		// with Kiosk autolaunch caused Kiosk not starting successfully.
 		kioskmode.ExtraPolicies([]policy.Policy{&policy.DeviceEphemeralUsersEnabled{Val: true}}),
+		kioskmode.ExtraChromeOptions(chromeOptions),
 		kioskmode.AutoLaunch(kioskmode.KioskAppAccountID),
 	)
 	if err != nil {
