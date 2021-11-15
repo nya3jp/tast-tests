@@ -125,6 +125,32 @@ type measuredValues struct {
 	energyUsage        *power.RAPLValues
 }
 
+// createChrome creates Chrome session used to perform ARC opt-ins. Normally in is created only
+// once per test run. However, if error is found, Chrome session is recreated.
+func createChrome(ctx context.Context, gaia chrome.Option, param testParam) (*chrome.Chrome, *chrome.TestConn, error) {
+	args := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
+	if param.chromeArgs != nil {
+		args = append(args, param.chromeArgs...)
+	}
+
+	cr, err := chrome.New(ctx,
+		chrome.ARCSupported(),
+		chrome.RestrictARCCPU(),
+		gaia,
+		chrome.ExtraArgs(args...))
+	if err != nil {
+		return nil, nil, err
+	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		cr.Close(ctx)
+		return nil, nil, err
+	}
+
+	return cr, tconn, nil
+}
+
 // AuthPerf steps through multiple opt-ins and collects checkin time, network wait time,
 // sign-in time and Play Store shown time.
 // It also reports average, min and max results.
@@ -137,11 +163,6 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 	param := s.Param().(testParam)
 	maxErrorBootCount := param.maxErrorBootCount
 
-	args := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
-	if param.chromeArgs != nil {
-		args = append(args, param.chromeArgs...)
-	}
-
 	var gaia chrome.Option
 	if param.username != "" {
 		gaia = chrome.GAIALogin(chrome.Creds{User: s.RequiredVar(param.username), Pass: s.RequiredVar(param.password)})
@@ -149,21 +170,11 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 		gaia = chrome.GAIALoginPool(s.RequiredVar("arc.perfAccountPool"))
 	}
 
-	// TODO(crbug.com/995869): Remove set of flags to disable app sync, PAI, locale sync, Play Store auto-update.
-	cr, err := chrome.New(ctx,
-		chrome.ARCSupported(),
-		chrome.RestrictARCCPU(),
-		gaia,
-		chrome.ExtraArgs(args...))
+	cr, tconn, err := createChrome(ctx, gaia, param)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	defer cr.Close(ctx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Creating test API connection failed: ", err)
-	}
 
 	errorCount := 0
 	var playStoreShownTimes []float64
@@ -198,6 +209,14 @@ func AuthPerf(ctx context.Context, s *testing.State) {
 			if errorCount > maxErrorBootCount {
 				s.Fatalf("Too many ARC boot errors (%d time(s)), last error: %q", errorCount, err)
 			}
+
+			cr.Close(ctx)
+			cr, tconn, err = createChrome(ctx, gaia, param)
+			if err != nil {
+				s.Fatal("Failed to re-connect to Chrome: ", err)
+			}
+			defer cr.Close(ctx)
+
 			continue
 		}
 
