@@ -16,6 +16,46 @@
       "message": "Hi Judy, this CL changes the application interface (changed End to Cleanup) so it impact the productivity - DGocs test. We need to submit the changes together so we can pass the build. Could you approve it again? ",
       "revId": "4864815c4ebc3302ec88dcf77c70f65c70a90d33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0b65060_458d3354",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-15T04:20:33Z",
+      "side": 1,
+      "message": "lgtm with one nit comment.",
+      "revId": "4864815c4ebc3302ec88dcf77c70f65c70a90d33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3666631a_786edb44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/google_web.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-15T04:20:33Z",
+      "side": 1,
+      "message": "nit: It removes",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 10
+      },
+      "revId": "4864815c4ebc3302ec88dcf77c70f65c70a90d33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
