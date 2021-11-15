@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
@@ -287,7 +287,7 @@ func runLacrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocat
 
 	// Setup extra window for multi-window tests.
 	if invoc.scenario == TestTypeMoveOcclusion {
-		connBlank, err := l.NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
+		connBlank, err := l.NewConn(ctx, chrome.BlankURL, browser.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open new tab")
 		}
@@ -295,7 +295,7 @@ func runLacrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocat
 		defer connBlank.CloseTarget(ctx)
 
 	} else if invoc.scenario == TestTypeMoveOcclusionWithCrosWindow {
-		connBlank, err := f.Chrome().NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
+		connBlank, err := f.Chrome().NewConn(ctx, chrome.BlankURL, browser.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open new tab")
 		}
@@ -315,7 +315,7 @@ func runCrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocatio
 
 	// Setup extra window for multi-window tests.
 	if invoc.scenario == TestTypeMoveOcclusion || invoc.scenario == TestTypeMoveOcclusionWithCrosWindow {
-		connBlank, err := f.Chrome().NewConn(ctx, chrome.BlankURL, cdputil.WithNewWindow())
+		connBlank, err := f.Chrome().NewConn(ctx, chrome.BlankURL, browser.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open new tab")
 		}

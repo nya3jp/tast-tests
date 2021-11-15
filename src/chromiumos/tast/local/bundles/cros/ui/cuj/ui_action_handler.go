@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -258,7 +258,7 @@ func (t *TabletActionHandler) NewChromeTab(ctx context.Context, cr *chrome.Chrom
 	defer cancel()
 
 	if newWindow {
-		return cr.NewConn(ctx, url, cdputil.WithNewWindow())
+		return cr.NewConn(ctx, url, browser.WithNewWindow())
 	}
 
 	// There may be multiple browser windows under tablet mode, with one active and others invisible.
@@ -733,7 +733,7 @@ func (cl *ClamshellActionHandler) clickOpenedAppOnShelf(ctx context.Context, app
 // newWindow decide this new tab should open in current Chrome window or open in new Chrome window.
 func (cl *ClamshellActionHandler) NewChromeTab(ctx context.Context, cr *chrome.Chrome, url string, newWindow bool) (*chrome.Conn, error) {
 	if newWindow {
-		return cr.NewConn(ctx, url, cdputil.WithNewWindow())
+		return cr.NewConn(ctx, url, browser.WithNewWindow())
 	}
 
 	if err := cl.kb.Accel(ctx, "Ctrl+T"); err != nil {

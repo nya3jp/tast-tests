@@ -14,7 +14,7 @@ import (
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/jslog"
 	"chromiumos/tast/testing"
 )

@@ -18,6 +18,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/extension"
 )
 
@@ -193,4 +194,33 @@ func PrepareFakeApps(baseDir string, num int, iconData []byte) ([]string, error)
 		extDirs = append(extDirs, extDir)
 	}
 	return extDirs, nil
+}
+
+// The remaining definitions are needed only for faillog & CaptureCDP.
+// TODO(crbug.com/1271473): Get rid of them.
+// They expose cdputil types and values. See the cdputil package for details.
+
+// DebuggingPortPath is a file where Chrome writes debugging port.
+const DebuggingPortPath = cdputil.DebuggingPortPath
+
+// DevtoolsConn is the connection to a web content view, e.g. a tab.
+type DevtoolsConn = cdputil.Conn
+
+// Session maintains the connection to talk to the browser in Chrome DevTools Protocol
+// over WebSocket.
+type Session = cdputil.Session
+
+// PortWaitOption controls whether the NewSession should wait for the port file
+// to be created.
+type PortWaitOption = cdputil.PortWaitOption
+
+// PortWaitOption values.
+const (
+	NoWaitPort PortWaitOption = cdputil.NoWaitPort
+	WaitPort   PortWaitOption = cdputil.WaitPort
+)
+
+// NewDevtoolsSession establishes a Chrome DevTools Protocol WebSocket connection to the browser.
+func NewDevtoolsSession(ctx context.Context, debuggingPortPath string, portWait PortWaitOption) (sess *Session, retErr error) {
+	return cdputil.NewSession(ctx, debuggingPortPath, portWait)
 }
