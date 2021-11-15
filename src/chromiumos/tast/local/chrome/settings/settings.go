@@ -49,7 +49,7 @@ const (
 	NightLightScheduleCustom NightLightScheduleValue = 2
 )
 
-const schedulePref = "ash.night_light.schedule_type"
+const nightLightSchedulePref = "ash.night_light.schedule_type"
 
 // NightLightSchedule gets the current Night Light schedule. See the above
 // constants for possible values.
@@ -57,7 +57,7 @@ func NightLightSchedule(ctx context.Context, c *chrome.TestConn) (NightLightSche
 	var schedule struct {
 		Value uint `json:"value"`
 	}
-	if err := c.Call(ctx, &schedule, "tast.promisify(chrome.settingsPrivate.getPref)", schedulePref); err != nil {
+	if err := c.Call(ctx, &schedule, "tast.promisify(chrome.settingsPrivate.getPref)", nightLightSchedulePref); err != nil {
 		return 0, err
 	}
 	switch schedule.Value {
@@ -74,20 +74,20 @@ func NightLightSchedule(ctx context.Context, c *chrome.TestConn) (NightLightSche
 
 // SetNightLightSchedule sets the current Night Light schedule.
 func SetNightLightSchedule(ctx context.Context, c *chrome.TestConn, schedule NightLightScheduleValue) error {
-	if err := c.Call(ctx, nil, "tast.promisify(chrome.settingsPrivate.setPref)", schedulePref, schedule); err != nil {
+	if err := c.Call(ctx, nil, "tast.promisify(chrome.settingsPrivate.setPref)", nightLightSchedulePref, schedule); err != nil {
 		return err
 	}
 	return nil
 }
 
-const enabledPref = "ash.night_light.enabled"
+const nightLightEnabledPref = "ash.night_light.enabled"
 
 // NightLightEnabled returns true if Night Light is currently enabled.
 func NightLightEnabled(ctx context.Context, c *chrome.TestConn) (bool, error) {
 	var enabled struct {
 		Value bool `json:"value"`
 	}
-	if err := c.Call(ctx, &enabled, "tast.promisify(chrome.settingsPrivate.getPref)", enabledPref); err != nil {
+	if err := c.Call(ctx, &enabled, "tast.promisify(chrome.settingsPrivate.getPref)", nightLightEnabledPref); err != nil {
 		return false, err
 	}
 	return enabled.Value, nil
@@ -95,7 +95,28 @@ func NightLightEnabled(ctx context.Context, c *chrome.TestConn) (bool, error) {
 
 // SetNightLightEnabled enables or disables Night Light.
 func SetNightLightEnabled(ctx context.Context, c *chrome.TestConn, enabled bool) error {
-	if err := c.Call(ctx, nil, "tast.promisify(chrome.settingsPrivate.setPref)", enabledPref, enabled); err != nil {
+	if err := c.Call(ctx, nil, "tast.promisify(chrome.settingsPrivate.setPref)", nightLightEnabledPref, enabled); err != nil {
+		return err
+	}
+	return nil
+}
+
+const trackpadReverseScrollEnabledPref = "settings.touchpad.natural_scroll"
+
+// TrackpadReverseScrollEnabled gets current enabled state of trackpad reverse scrolling.
+func TrackpadReverseScrollEnabled(ctx context.Context, c *chrome.TestConn) (bool, error) {
+	var enabled struct {
+		Value bool `json:"value"`
+	}
+	if err := c.Call(ctx, &enabled, "tast.promisify(chrome.settingsPrivate.getPref)", trackpadReverseScrollEnabledPref); err != nil {
+		return false, err
+	}
+	return enabled.Value, nil
+}
+
+// SetTrackpadReverseScrollEnabled enables/disables trackpad reverse scrolling..
+func SetTrackpadReverseScrollEnabled(ctx context.Context, c *chrome.TestConn, enabled bool) error {
+	if err := c.Call(ctx, nil, "tast.promisify(chrome.settingsPrivate.setPref)", trackpadReverseScrollEnabledPref, enabled); err != nil {
 		return err
 	}
 	return nil
