@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0bbf7e3_48d5eff5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-15T05:06:08Z",
+      "side": 1,
+      "message": "looks fine but check my comment before submitting pls",
+      "revId": "722d80c6e85db4c1461215bf64afefed55ab6c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af2dc241_f8734773",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-15T05:06:08Z",
+      "side": 1,
+      "message": "up to you but maybe we don\u0027t want to tint composited content; it changes it compared to the other tests. This may be useful for debugging locally, but the test is meant to run as a perf test and you can add the flag in your local checkout if you need it to debug.",
+      "range": {
+        "startLine": 113,
+        "startChar": 26,
+        "endLine": 113,
+        "endChar": 77
+      },
+      "revId": "722d80c6e85db4c1461215bf64afefed55ab6c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
