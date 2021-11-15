@@ -61,7 +61,7 @@ func runOctaneTest(ctx context.Context, f launcher.FixtValue, conn *chrome.Conn)
 }
 
 func runLacrosOctaneTest(ctx context.Context, f launcher.FixtValue) (float64, error) {
-	conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, octaneURL)
+	conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, octaneURL, lacros.StabilizeAfterOpeningURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup lacros-chrome test page")
 	}
@@ -71,7 +71,7 @@ func runLacrosOctaneTest(ctx context.Context, f launcher.FixtValue) (float64, er
 }
 
 func runCrosOctaneTest(ctx context.Context, f launcher.FixtValue) (float64, error) {
-	conn, cleanup, err := lacros.SetupCrosTestWithPage(ctx, f, octaneURL)
+	conn, cleanup, err := lacros.SetupCrosTestWithPage(ctx, f, octaneURL, lacros.StabilizeAfterOpeningURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup cros-chrome test page")
 	}
