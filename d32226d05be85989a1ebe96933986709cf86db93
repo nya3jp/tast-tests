@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "355b4274_3fbe7ad4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-15T12:32:37Z",
+      "side": 1,
+      "message": "Please take a first look at this draft CL.",
+      "revId": "d32226d05be85989a1ebe96933986709cf86db93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f38d0972_2a0a94a4",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-15T12:32:37Z",
+      "side": 1,
+      "message": "It would be be nice to get rid of the remaining stuff here. That would require changing faillog and CaptureCDP somehow. Let\u0027s discuss!",
+      "revId": "d32226d05be85989a1ebe96933986709cf86db93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
