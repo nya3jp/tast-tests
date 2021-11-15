@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba2415f4_fadb4554",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/allow_wake_locks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-15T08:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fc7646b_14e5d097",
+      "revId": "32a3498498f08b3a2671a19dc5ea063422354f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90da38d5_a827c43a",
@@ -100,6 +118,24 @@
       "writtenOn": "2021-11-12T14:27:06Z",
       "side": 1,
       "message": "nit: remove",
+      "revId": "32a3498498f08b3a2671a19dc5ea063422354f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00825509_23ad07c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_notifications_setting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-15T08:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90da38d5_a827c43a",
       "revId": "32a3498498f08b3a2671a19dc5ea063422354f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bfc6b9f_68b317e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-15T08:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a401c9fa_3abbd8cd",
+      "revId": "32a3498498f08b3a2671a19dc5ea063422354f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b7f0604_28bee543",
@@ -134,6 +188,24 @@
       "writtenOn": "2021-11-12T14:27:06Z",
       "side": 1,
       "message": "nit: remove",
+      "revId": "32a3498498f08b3a2671a19dc5ea063422354f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82fa4f30_37ded9f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/password_manager_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-15T08:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b7f0604_28bee543",
       "revId": "32a3498498f08b3a2671a19dc5ea063422354f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +227,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3739b65f_5c89afde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/popups_for_url_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-15T08:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "319a28bd_14f3e84c",
+      "revId": "32a3498498f08b3a2671a19dc5ea063422354f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "992efce6_8328b4b8",
@@ -168,6 +258,24 @@
       "writtenOn": "2021-11-12T14:27:06Z",
       "side": 1,
       "message": "nit: remove",
+      "revId": "32a3498498f08b3a2671a19dc5ea063422354f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e73c2844_ee25804c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_protection_level.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-15T08:34:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "992efce6_8328b4b8",
       "revId": "32a3498498f08b3a2671a19dc5ea063422354f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
