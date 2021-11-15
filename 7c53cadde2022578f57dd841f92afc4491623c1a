@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b748d19b_14ae9975",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_rootfs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-11-15T22:04:37Z",
+      "side": 1,
+      "message": "\u003eBy the slow uprev did you mean that Lacros and OS/Ash may not be compatible sometimes (mostly when a new branch is cut). Ideally that should not be happening once lacros uprev is automated. There is an ongoing effort to make this happen in Q4. In this context, Ash/Lacros milestone gap would be considered a bug not a flake.\n\nIIUC, the \"auto\" uprev flow still requires a manual qual, IIUC.\nIt\u0027s that the uprev process is automated, but version selection still requires hand holding(?)\n\nEither way, the major skew testing might be something you need to maintain as a side effect of all this if it\u0027s decided to be ran + there is a major version difference between rootfs + ash.",
+      "parentUuid": "6c5ee875_7f784f62",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "7c53cadde2022578f57dd841f92afc4491623c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71f1c26a_2c337038",
