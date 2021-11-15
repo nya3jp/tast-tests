@@ -17,6 +17,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/appsplatform"
 	_ "chromiumos/tast/local/bundles/cros/arc"
 	_ "chromiumos/tast/local/bundles/cros/arcappcompat"
+	_ "chromiumos/tast/local/bundles/cros/arcappgameperf"
 	_ "chromiumos/tast/local/bundles/cros/assistant"
 	_ "chromiumos/tast/local/bundles/cros/audio"
 	_ "chromiumos/tast/local/bundles/cros/autoupdate"
