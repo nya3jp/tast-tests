@@ -16,6 +16,23 @@
       "message": "ptal",
       "revId": "4fbf4d1addb7bd417a550867e1d913235e239d42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9688887_5bd69614",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-11-15T19:28:33Z",
+      "side": 1,
+      "message": "This is causing CQ failures, so as sheriff I\u0027m going to approve it and owners override it.",
+      "revId": "4fbf4d1addb7bd417a550867e1d913235e239d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
