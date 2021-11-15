@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
@@ -73,7 +73,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 
 	runner := perfutil.NewRunner(cr)
 	for _, numWindows := range []int{1, 2} {
-		conn, err := cr.NewConn(ctx, ui.PerftestURL, cdputil.WithNewWindow())
+		conn, err := cr.NewConn(ctx, ui.PerftestURL, browser.WithNewWindow())
 		if err != nil {
 			s.Fatal("Failed to open a new connection: ", err)
 		}

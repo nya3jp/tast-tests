@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
@@ -249,12 +249,12 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to send Tab: ", err)
 	}
 
-	browser, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.WindowType == browserWindowType })
+	br, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.WindowType == browserWindowType })
 	if err != nil {
 		s.Fatal("Failed to get browser window: ", err)
 	}
 
-	if err := ash.SetWindowStateAndWait(ctx, tconn, browser.ID, ash.WindowStateMaximized); err != nil {
+	if err := ash.SetWindowStateAndWait(ctx, tconn, br.ID, ash.WindowStateMaximized); err != nil {
 		s.Fatal("Failed to maximize browser window: ", err)
 	}
 
@@ -274,7 +274,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	// that and data points from systrace isn't actually helpful to most of
 	// UI tests, disable systraces for the time being.
 	// TODO(https://crbug.com/1162385, b/177636800): enable it.
-	if err := cr.StartTracing(ctx, []string{"disabled-by-default-viz.triangles"}, cdputil.DisableSystrace()); err != nil {
+	if err := cr.StartTracing(ctx, []string{"disabled-by-default-viz.triangles"}, browser.DisableSystrace()); err != nil {
 		s.Fatal("Failed to start tracing viz.triangles: ", err)
 	}
 

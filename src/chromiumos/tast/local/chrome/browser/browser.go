@@ -11,7 +11,7 @@ import (
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
 )
 
@@ -35,6 +35,15 @@ func New(sess *driver.Session) *Browser {
 	return &Browser{sess}
 }
 
+// CreateTargetOption is cpdutil.CreateTargetOption.
+type CreateTargetOption = cdputil.CreateTargetOption
+
+// WithNewWindow behaves like cpdutil.WithNewWindow.
+// TODO(neis): The other one, WithBackground, is unused. Can we get rid of the whole thing?
+func WithNewWindow() CreateTargetOption {
+	return cdputil.WithNewWindow()
+}
+
 // Conn is chrome.Conn
 type Conn = driver.Conn
 
@@ -42,7 +51,7 @@ type Conn = driver.Conn
 // If url is empty, an empty page (about:blank) is opened. Otherwise, the page
 // from the specified URL is opened. You can assume that the page loading has
 // been finished when this function returns.
-func (b *Browser) NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*Conn, error) {
+func (b *Browser) NewConn(ctx context.Context, url string, opts ...CreateTargetOption) (*Conn, error) {
 	return b.sess.NewConn(ctx, url, opts...)
 }
 
@@ -63,10 +72,18 @@ func (b *Browser) TestAPIConn(ctx context.Context) (*TestConn, error) {
 	return b.sess.TestAPIConn(ctx)
 }
 
+// TraceOption is cpdutil.TraceOption.
+type TraceOption = cdputil.TraceOption
+
+// DisableSystrace behaves like cpdutil.DisableSystrace.
+func DisableSystrace() TraceOption {
+	return cdputil.DisableSystrace()
+}
+
 // StartTracing starts trace events collection for the selected categories. Android
 // categories must be prefixed with "disabled-by-default-android ", e.g. for the
 // gfx category, use "disabled-by-default-android gfx", including the space.
-func (b *Browser) StartTracing(ctx context.Context, categories []string, opts ...cdputil.TraceOption) error {
+func (b *Browser) StartTracing(ctx context.Context, categories []string, opts ...TraceOption) error {
 	return b.sess.StartTracing(ctx, categories, opts...)
 }
 
