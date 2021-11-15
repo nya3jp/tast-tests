@@ -20,7 +20,7 @@ func init() {
 		Desc:         "Verifies that CCA can scan document on preview via CameraBox",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:camerabox"},
-		SoftwareDeps: []string{"camera_app", "chrome", "ondevice_document_scanner", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"testing_rsa", "document_scene.jpg"},
 		Vars:         []string{"chart"},
 		Fixture:      "ccaLaunched",
