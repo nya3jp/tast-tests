@@ -22,6 +22,30 @@
       },
       "revId": "cd88bba4dd652ed79b0cb996a8053e59683bba7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "687e7cd8_d68628a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/exo_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-11-15T06:13:53Z",
+      "side": 1,
+      "message": "Done. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3276430",
+      "parentUuid": "33b33d34_4776de63",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "cd88bba4dd652ed79b0cb996a8053e59683bba7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
