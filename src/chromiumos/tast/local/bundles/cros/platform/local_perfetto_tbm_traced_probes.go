@@ -10,7 +10,7 @@ import (
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/metrics"
 
-	"chromiumos/tast/local/bundles/cros/platform/tracing"
+	"chromiumos/tast/local/tracing"
 	"chromiumos/tast/testing"
 )
 

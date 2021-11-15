@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/platform/tracing"
+	"chromiumos/tast/local/tracing"
 	"chromiumos/tast/testing"
 )
 
