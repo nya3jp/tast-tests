@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66aa9d5d_d6f071c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-11-15T03:34:58Z",
+      "side": 1,
+      "message": "The original problem went away, but there is a new problem with launching rootfs lacros, and this test is flaky, so I\u0027m reverting it.",
+      "revId": "8638d6b464134a3e875dc3d3605d2b74c4a53e62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
