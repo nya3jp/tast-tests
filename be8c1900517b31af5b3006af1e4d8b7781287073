@@ -50,6 +50,23 @@
       "message": "tast-wise: +2",
       "revId": "be8c1900517b31af5b3006af1e4d8b7781287073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "793c71eb_0fae3b12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-15T16:43:13Z",
+      "side": 1,
+      "message": "Thanks for the reviews.\n\nChrome is upreved to 4699 and we are good to land this CL.",
+      "revId": "be8c1900517b31af5b3006af1e4d8b7781287073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
