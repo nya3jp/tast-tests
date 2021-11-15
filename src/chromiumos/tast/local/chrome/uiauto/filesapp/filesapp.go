@@ -402,6 +402,16 @@ func (f *FilesApp) DragAndDropFile(fileName string, dropPoint coords.Point, kb *
 	}
 }
 
+// PinToShelf pins specified file to tote.
+func (f *FilesApp) PinToShelf(fileName string) uiauto.Action {
+	pinToShelfOptionNode := nodewith.Name("Pin to shelf").HasClass("custom-appearance").Role(role.MenuItem).Ancestor(WindowFinder(f.appID))
+	return uiauto.Combine(fmt.Sprintf("pin file %q to Tote", fileName),
+		f.EnsureFocused(nodewith.Role(role.ListBox)),
+		f.ui.RightClickUntil(file(fileName), f.ui.Exists(pinToShelfOptionNode)),
+		f.ui.LeftClickUntil(pinToShelfOptionNode, f.ui.Gone(pinToShelfOptionNode)),
+	)
+}
+
 // PerformActionAndRetryMaximizedOnFail attempts an action and if it fails, maximizes the Files app and tries again.
 // TODO(crbug/1189914): Remove once the underlying race condition causing the listbox to not populate is fixed.
 func (f *FilesApp) PerformActionAndRetryMaximizedOnFail(action uiauto.Action) uiauto.Action {
