@@ -13,6 +13,26 @@ import (
 	"chromiumos/tast/local/chrome"
 )
 
+// NightLightScheduleValue provides available values for the Night Light
+// schedule.
+type NightLightScheduleValue uint
+
+// The following constants are from NightLightController::ScheduleType in
+// chromium/src/ash/public/cpp/night_light_controller.h.
+const (
+	// NightLightScheduleNever means Night Light is never enabled.
+	NightLightScheduleNever NightLightScheduleValue = 0
+	// NightLightScheduleSunsetToSunrise means Night Light is enabled at night.
+	NightLightScheduleSunsetToSunrise NightLightScheduleValue = 1
+	// NightLightScheduleCustom means Night Light has a custom schedule.
+	NightLightScheduleCustom NightLightScheduleValue = 2
+)
+
+const nightLightSchedulePref = "ash.night_light.schedule_type"
+const nightLightEnabledPref = "ash.night_light.enabled"
+
+const trackpadReverseScrollEnabledPref = "settings.touchpad.natural_scroll"
+
 // DefaultZoom returns the default page zoom factor. Possible values are currently between
 // 0.25 and 5. For a full list, see zoom::kPresetZoomFactors in:
 // https://cs.chromium.org/chromium/src/components/zoom/page_zoom_constants.cc
@@ -34,30 +54,13 @@ func SetDefaultZoom(ctx context.Context, tconn *chrome.TestConn, zoom float64) e
 	}`, zoom)
 }
 
-// NightLightScheduleValue provides available values for the Night Light
-// schedule.
-type NightLightScheduleValue uint
-
-// The following constants are from NightLightController::ScheduleType in
-// chromium/src/ash/public/cpp/night_light_controller.h.
-const (
-	// NightLightScheduleNever means Night Light is never enabled.
-	NightLightScheduleNever NightLightScheduleValue = 0
-	// NightLightScheduleSunsetToSunrise means Night Light is enabled at night.
-	NightLightScheduleSunsetToSunrise NightLightScheduleValue = 1
-	// NightLightScheduleCustom means Night Light has a custom schedule.
-	NightLightScheduleCustom NightLightScheduleValue = 2
-)
-
-const schedulePref = "ash.night_light.schedule_type"
-
 // NightLightSchedule gets the current Night Light schedule. See the above
 // constants for possible values.
 func NightLightSchedule(ctx context.Context, c *chrome.TestConn) (NightLightScheduleValue, error) {
 	var schedule struct {
 		Value uint `json:"value"`
 	}
-	if err := c.Call(ctx, &schedule, "tast.promisify(chrome.settingsPrivate.getPref)", schedulePref); err != nil {
+	if err := c.Call(ctx, &schedule, "tast.promisify(chrome.settingsPrivate.getPref)", nightLightSchedulePref); err != nil {
 		return 0, err
 	}
 	switch schedule.Value {
@@ -74,20 +77,15 @@ func NightLightSchedule(ctx context.Context, c *chrome.TestConn) (NightLightSche
 
 // SetNightLightSchedule sets the current Night Light schedule.
 func SetNightLightSchedule(ctx context.Context, c *chrome.TestConn, schedule NightLightScheduleValue) error {
-	if err := c.Call(ctx, nil, "tast.promisify(chrome.settingsPrivate.setPref)", schedulePref, schedule); err != nil {
-		return err
-	}
-	return nil
+	return c.Call(ctx, nil, "tast.promisify(chrome.settingsPrivate.setPref)", nightLightSchedulePref, schedule)
 }
-
-const enabledPref = "ash.night_light.enabled"
 
 // NightLightEnabled returns true if Night Light is currently enabled.
 func NightLightEnabled(ctx context.Context, c *chrome.TestConn) (bool, error) {
 	var enabled struct {
 		Value bool `json:"value"`
 	}
-	if err := c.Call(ctx, &enabled, "tast.promisify(chrome.settingsPrivate.getPref)", enabledPref); err != nil {
+	if err := c.Call(ctx, &enabled, "tast.promisify(chrome.settingsPrivate.getPref)", nightLightEnabledPref); err != nil {
 		return false, err
 	}
 	return enabled.Value, nil
@@ -95,8 +93,21 @@ func NightLightEnabled(ctx context.Context, c *chrome.TestConn) (bool, error) {
 
 // SetNightLightEnabled enables or disables Night Light.
 func SetNightLightEnabled(ctx context.Context, c *chrome.TestConn, enabled bool) error {
-	if err := c.Call(ctx, nil, "tast.promisify(chrome.settingsPrivate.setPref)", enabledPref, enabled); err != nil {
-		return err
+	return c.Call(ctx, nil, "tast.promisify(chrome.settingsPrivate.setPref)", nightLightEnabledPref, enabled)
+}
+
+// TrackpadReverseScrollEnabled gets current enabled state of trackpad reverse scrolling.
+func TrackpadReverseScrollEnabled(ctx context.Context, c *chrome.TestConn) (bool, error) {
+	var enabled struct {
+		Value bool `json:"value"`
 	}
-	return nil
+	if err := c.Call(ctx, &enabled, "tast.promisify(chrome.settingsPrivate.getPref)", trackpadReverseScrollEnabledPref); err != nil {
+		return false, err
+	}
+	return enabled.Value, nil
+}
+
+// SetTrackpadReverseScrollEnabled enables/disables trackpad reverse scrolling..
+func SetTrackpadReverseScrollEnabled(ctx context.Context, c *chrome.TestConn, enabled bool) error {
+	return c.Call(ctx, nil, "tast.promisify(chrome.settingsPrivate.setPref)", trackpadReverseScrollEnabledPref, enabled)
 }
