@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -27,9 +26,9 @@ const docsName = "Google Docs"
 // NewGoogleDocs returns an action to create a new google document.
 func NewGoogleDocs(cr *chrome.Chrome, tconn *chrome.TestConn, newWindow bool) action.Action {
 	const newDocsURL = "https://docs.new"
-	var opts []cdputil.CreateTargetOption
+	var opts []chrome.CreateTargetOption
 	if newWindow {
-		opts = append(opts, cdputil.WithNewWindow())
+		opts = append(opts, chrome.WithNewWindow())
 	}
 	return func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Start to create google document")

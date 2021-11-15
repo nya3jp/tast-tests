@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/memory/kernelmeter"
@@ -35,7 +34,7 @@ type ChromeCommon interface {
 	// first one that is matched by tm.
 	NewConnForTarget(ctx context.Context, tm chrome.TargetMatcher) (*chrome.Conn, error)
 	// NewConn creates a new Chrome renderer and returns a connection to it.
-	NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*chrome.Conn, error)
+	NewConn(ctx context.Context, url string, opts ...chrome.CreateTargetOption) (*chrome.Conn, error)
 	// FindTargets returns the info about Targets, which satisfies the given cond condition.
 	FindTargets(ctx context.Context, tm chrome.TargetMatcher) ([]*chrome.Target, error)
 }

@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/power"
@@ -457,7 +456,7 @@ func (m *metricsRecorder) computeStatistics(ctx context.Context, pv *perf.Values
 }
 
 type traceable interface {
-	StartTracing(ctx context.Context, categories []string, opts ...cdputil.TraceOption) error
+	StartTracing(ctx context.Context, categories []string, opts ...chrome.TraceOption) error
 	StopTracing(ctx context.Context) (*perfetto_proto.Trace, error)
 }
 
@@ -484,7 +483,7 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 	}
 
 	// TODO(https://crbug.com/1162385, b/177636800): Enable systrace again
-	if err := tracer.StartTracing(ctx, tracingCategories, cdputil.DisableSystrace()); err != nil {
+	if err := tracer.StartTracing(ctx, tracingCategories, chrome.DisableSystrace()); err != nil {
 		return err
 	}
 

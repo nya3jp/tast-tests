@@ -21,7 +21,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/internal/extension"
@@ -752,4 +752,23 @@ func saveMinidumpsWithoutCrash(ctx context.Context) error {
 
 	minidump.SaveWithoutCrash(ctx, dir, matchers...)
 	return nil
+}
+
+// Export cdputil stuff needed by other packages:
+
+// CreateTargetOption is cpdutil.CreateTargetOption.
+type CreateTargetOption = cdputil.CreateTargetOption
+
+// WithNewWindow behaves like cpdutil.WithNewWindow.
+// TODO(neis): The other one, WithBackground, is unused. Can we get rid of the whole thing?
+func WithNewWindow() CreateTargetOption {
+	return cdputil.WithNewWindow()
+}
+
+// TraceOption is cpdutil.TraceOption.
+type TraceOption = cdputil.TraceOption
+
+// DisableSystrace behaves like cpdutil.DisableSystrace.
+func DisableSystrace() TraceOption {
+	return cdputil.DisableSystrace()
 }

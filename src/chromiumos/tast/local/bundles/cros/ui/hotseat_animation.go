@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/coords"
@@ -186,7 +185,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		sctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancel()
 
-		conn, err := cr.NewConn(sctx, "", cdputil.WithNewWindow())
+		conn, err := cr.NewConn(sctx, "", chrome.WithNewWindow())
 		if err != nil {
 			return errors.Wrap(err, "failed to open browser window")
 		}

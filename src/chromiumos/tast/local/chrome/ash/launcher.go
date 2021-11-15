@@ -18,6 +18,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/extension"
 )
 
@@ -193,4 +194,30 @@ func PrepareFakeApps(baseDir string, num int, iconData []byte) ([]string, error)
 		extDirs = append(extDirs, extDir)
 	}
 	return extDirs, nil
+}
+
+// The remaining definitions are needed only for faillog & CaptureCDP.
+// TODO(crbug.com/1271473): Get rid of them.
+
+// DebuggingPortPath is cdputil.DebuggingPortPath.
+const DebuggingPortPath = cdputil.DebuggingPortPath
+
+// DevtoolsConn is cdputil.Conn.
+type DevtoolsConn = cdputil.Conn
+
+// Session is cdputil.Session.
+type Session = cdputil.Session
+
+// PortWaitOption is cdputil.PortWaitOption.
+type PortWaitOption = cdputil.PortWaitOption
+
+// PortWaitOption values.
+const (
+	NoWaitPort PortWaitOption = cdputil.NoWaitPort
+	WaitPort   PortWaitOption = cdputil.WaitPort
+)
+
+// NewDevtoolsSession behaves like cpdutil.NewSession.
+func NewDevtoolsSession(ctx context.Context, debuggingPortPath string, portWait PortWaitOption) (sess *Session, retErr error) {
+	return cdputil.NewSession(ctx, debuggingPortPath, portWait)
 }

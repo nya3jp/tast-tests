@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
@@ -421,7 +420,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/"+meetingCode, cdputil.WithNewWindow())
+	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/"+meetingCode, chrome.WithNewWindow())
 	if err != nil {
 		s.Fatal("Failed to open the hangout meet website: ", err)
 	}
@@ -525,7 +524,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		// Create another browser window and open a Google Docs file.
-		docsConn, err := cs.NewConn(ctx, docsURL, cdputil.WithNewWindow())
+		docsConn, err := cs.NewConn(ctx, docsURL, chrome.WithNewWindow())
 		if err != nil {
 			s.Fatal("Failed to open the google docs website: ", err)
 		}
@@ -533,7 +532,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Log("Creating a Google Docs window")
 	} else if meet.jamboard {
 		// Create another browser window and open a new Jamboard file.
-		jamboardConn, err := cs.NewConn(ctx, jamboardURL, cdputil.WithNewWindow())
+		jamboardConn, err := cs.NewConn(ctx, jamboardURL, chrome.WithNewWindow())
 		if err != nil {
 			s.Fatal("Failed to open the jamboard website: ", err)
 		}
