@@ -16,6 +16,40 @@
       "message": "Judy, I split the CL into 3 parts. This is the first one which only includes the newly added helper functions. Thanks!",
       "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d78ce9d_484560e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2021-11-15T21:59:24Z",
+      "side": 1,
+      "message": "lgtm from my side with one question below",
+      "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e0d50b7_879637b9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/trackpad/trackpad.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2021-11-15T21:59:24Z",
+      "side": 1,
+      "message": "is this a reliable way to get the trackpad usability by checking tablet mode?",
+      "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
