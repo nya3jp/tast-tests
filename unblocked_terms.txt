@@ -74,7 +74,7 @@ black.?list
 
 # \bmitm(\b|\d)         - clean
 
-\bnative
+# \bnative              - clean
 #    - see crbug/1135046
 
 # \bred.?line           - clean
