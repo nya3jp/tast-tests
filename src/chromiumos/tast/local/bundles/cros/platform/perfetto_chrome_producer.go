@@ -11,7 +11,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/platform/tracing"
+	"chromiumos/tast/local/tracing"
 	"chromiumos/tast/testing"
 )
 

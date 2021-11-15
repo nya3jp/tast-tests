@@ -14,9 +14,9 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/platform/tracing"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/tracing"
 	"chromiumos/tast/testing"
 )
 
