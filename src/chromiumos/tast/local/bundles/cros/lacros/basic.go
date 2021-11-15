@@ -23,6 +23,13 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacros",
 		Timeout:      7 * time.Minute,
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"lacros_stable"},
+		}, {
+			Name:              "unstable",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros_unstable"},
+		}},
 	})
 }
 
