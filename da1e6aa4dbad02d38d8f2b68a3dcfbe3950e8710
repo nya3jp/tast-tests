@@ -45,6 +45,54 @@
       },
       "revId": "da1e6aa4dbad02d38d8f2b68a3dcfbe3950e8710",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3ae2210_cc473882",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/exo_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-11-15T03:27:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f65f8a3_2fc2b891",
+      "range": {
+        "startLine": 27,
+        "startChar": 64,
+        "endLine": 27,
+        "endChar": 77
+      },
+      "revId": "da1e6aa4dbad02d38d8f2b68a3dcfbe3950e8710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e28a2fb6_2f71bb92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/exo_client.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1457792
+      },
+      "writtenOn": "2021-11-15T03:27:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "607fde1b_b62ffe96",
+      "range": {
+        "startLine": 27,
+        "startChar": 53,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "da1e6aa4dbad02d38d8f2b68a3dcfbe3950e8710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
