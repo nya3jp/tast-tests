@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -22,22 +23,35 @@ func init() {
 		Func: FloatingAccessibilityMenuEnabled,
 		Desc: "Start Kiosk application with FloatingAccessibilityMenuEnabled applied to the account",
 		Contacts: []string{
-			"kamilszarek@google.com", // Test author
+			"kamilszarek@google.com", // Test author - Ash.
+			"anqing@google.com",      // Test author - Lacros.
 			"alt-modalities-stability@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "fakeDMSEnrolled",
+		Params: []testing.Param{
+			{
+				Name: "ash",
+				Val:  chrome.ExtraArgs(""),
+			},
+			{
+				Name: "lacros",
+				Val:  chrome.ExtraArgs("--enable-features=LacrosSupport,WebKioskEnableLacros", "--lacros-availability-ignore"),
+			},
+		},
 	})
 }
 
 func FloatingAccessibilityMenuEnabled(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
+	chromeOptions := s.Param().(chrome.Option)
 	cr, err := kioskmode.New(
 		ctx,
 		fdms,
 		kioskmode.DefaultLocalAccounts(),
 		kioskmode.PublicAccountPolicies(kioskmode.WebKioskAccountID, []policy.Policy{&policy.FloatingAccessibilityMenuEnabled{Val: true}}),
+		kioskmode.ExtraChromeOptions(chromeOptions),
 		kioskmode.AutoLaunch(kioskmode.WebKioskAccountID),
 	)
 	if err != nil {
