@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2adaa98b_03f8761a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2021-11-15T03:54:40Z",
+      "side": 1,
+      "message": "Hi Judy, this CL changes the application interface (changed End to Cleanup) so it impact the productivity - DGocs test. We need to submit the changes together so we can pass the build. Could you approve it again? ",
+      "revId": "4864815c4ebc3302ec88dcf77c70f65c70a90d33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
