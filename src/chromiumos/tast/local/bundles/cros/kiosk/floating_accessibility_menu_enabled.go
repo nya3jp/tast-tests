@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -28,6 +29,16 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "fakeDMSEnrolled",
+		Params: []testing.Param{
+			{
+				Name: "ash",
+				Val:  chrome.ExtraArgs(""),
+			},
+			{
+				Name: "lacros",
+				Val:  chrome.ExtraArgs("--enable-features=LacrosSupport,WebKioskEnableLacros", "--lacros-availability-ignore"),
+			},
+		},
 	})
 }
 
@@ -38,6 +49,7 @@ func FloatingAccessibilityMenuEnabled(ctx context.Context, s *testing.State) {
 		fdms,
 		kioskmode.DefaultLocalAccounts(),
 		kioskmode.PublicAccountPolicies(kioskmode.WebKioskAccountID, []policy.Policy{&policy.FloatingAccessibilityMenuEnabled{Val: true}}),
+		kioskmode.ExtraChromeOptions(s.Param().(chrome.Option)),
 		kioskmode.AutoLaunch(kioskmode.WebKioskAccountID),
 	)
 	if err != nil {
