@@ -123,6 +123,24 @@
       "parentUuid": "222ac87b_1d0718b4",
       "revId": "735eea39c41d0e68dbe56e04d2d177fb70c52980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a91e68_55e3d73f",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-15T03:00:28Z",
+      "side": 1,
+      "message": "Yeah, can we put it in anyway?\n\n\u003eHowever, imo it\u0027s confusing if they are different, since we try to make ash chrome \u003eand lacros chrome as similar as possible w.r.t. command line flags.\n\n\u003eIn the future, someone may expect these to be the same, which I think is more \u003ereasonable than expecting them to be different.\n\nIMO the policy should be keep them the same unless there is a reason not to, not keep them different unless there is a reason to keep them the same.",
+      "parentUuid": "3d50fd20_a11b8e40",
+      "revId": "735eea39c41d0e68dbe56e04d2d177fb70c52980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
