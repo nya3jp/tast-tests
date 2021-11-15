@@ -84,6 +84,10 @@ func verifyPhysicalCPU(physicalCPU physicalCPUInfo) error {
 		}
 	}
 
+	if *physicalCPU.ModelName == "" {
+		return errors.New("empty CPU model name")
+	}
+
 	return nil
 }
 
