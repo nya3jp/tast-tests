@@ -230,21 +230,33 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 
 func (y *YtApp) waitForLoadingComplete(ctx context.Context) error {
 	const (
-		titleID        = youtubePkg + ":id/title"
-		shareBtnText   = "Share"
-		shareBtnTextID = youtubePkg + ":id/button_text"
-		sidebarID      = youtubePkg + ":id/video_metadata_layout"
+		titleID               = youtubePkg + ":id/title"
+		shareBtnText          = "Share"
+		shareBtnTextID        = youtubePkg + ":id/button_text"
+		sidebarID             = youtubePkg + ":id/video_metadata_layout"
+		alternateElementClass = "android.view.ViewGroup"
+		alternateTitleDesc    = "Expand description"
 	)
 	videoTitle := y.d.Object(androidui.ID(titleID))
 	shareBtn := y.d.Object(androidui.Text(shareBtnText), androidui.ID(shareBtnTextID))
 	sidebar := y.d.Object(androidui.ID(sidebarID))
+	// An alternate video title and share button are added here to support the two versions of UI trees observed across DUTs.
+	// For details, please refer to b/206011393.
+	alternateVideoTitle := y.d.Object(androidui.ClassName(alternateElementClass), androidui.Description(alternateTitleDesc))
+	alternateShareBtn := y.d.Object(androidui.ClassName(alternateElementClass), androidui.Description(shareBtnText))
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if err := videoTitle.Exists(ctx); err != nil {
-			return errors.Wrap(err, "still loading... video title not rendered")
+			testing.ContextLog(ctx, "Unable to find video title with expected UI tree: ", err)
+			if err2 := alternateVideoTitle.Exists(ctx); err2 != nil {
+				return errors.New("still loading... video title not rendered")
+			}
 		}
 		if err := shareBtn.Exists(ctx); err != nil {
-			return errors.Wrap(err, "still loading... share button not rendered")
+			testing.ContextLog(ctx, "Unable to find share button with expected UI tree: ", err)
+			if err2 := alternateShareBtn.Exists(ctx); err2 != nil {
+				return errors.New("still loading... share button not rendered")
+			}
 		}
 		if err := sidebar.Exists(ctx); err != nil {
 			return errors.Wrap(err, "still loading... sidebar not rendered")
