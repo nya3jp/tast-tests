@@ -16,6 +16,24 @@
       "message": "Looks like the DUT is functional now so I would prefer to see one more run on fennel that passes before letting this in. That should be enough given how reliably it was passing before that.",
       "revId": "d7e1dbb4244d11ab849f5117de2ad23a69e4310d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f26622c_41c46eba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-11-15T19:18:08Z",
+      "side": 1,
+      "message": "We have another green run so we should be good to go now. Can you please check?",
+      "parentUuid": "ef2d640b_946e9fbe",
+      "revId": "d7e1dbb4244d11ab849f5117de2ad23a69e4310d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
