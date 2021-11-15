@@ -111,6 +111,30 @@
       },
       "revId": "7d348db41dd8dfa3b439c3261e47731be7dfa9d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e62a2d98_2b887761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2021-11-15T02:07:07Z",
+      "side": 1,
+      "message": "That could probably be done in one/all of the tast ebuilds in pkg_pre_install.",
+      "parentUuid": "503ec490_64c72e2a",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "7d348db41dd8dfa3b439c3261e47731be7dfa9d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
