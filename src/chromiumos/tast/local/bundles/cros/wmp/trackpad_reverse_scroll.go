@@ -1,0 +1,191 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package wmp
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/trackpad"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         TrackpadReverseScroll,
+		Desc:         "Checks that track pad reverse scrolling works properly",
+		Contacts:     []string{"zxdan@chromium.org", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
+		Fixture:      "chromeLoggedIn",
+	})
+}
+
+const swipeInterval = time.Second
+
+// swipeTwice performs trackpad swipe twice in the given direction with indicated number of touches.
+func swipeTwice(ctx context.Context, tconn *chrome.TestConn, tpw *input.TrackpadEventWriter, swipeDirection trackpad.SwipeDirection, touches int) error {
+	if err := trackpad.Swipe(ctx, tconn, tpw, swipeDirection, touches); err != nil {
+		return errors.Wrapf(err, "failed to swipe twice with %d fingers", touches)
+	}
+
+	if err := testing.Sleep(ctx, swipeInterval); err != nil {
+		return errors.Wrap(err, "failed to wait for the swipe interval")
+	}
+
+	if err := trackpad.Swipe(ctx, tconn, tpw, swipeDirection, touches); err != nil {
+		return errors.Wrapf(err, "failed to swipe twice with %d fingers", touches)
+	}
+
+	return nil
+}
+
+// swipeToEnterOverview performs the swiping up with 3 fingers to enter Overview and validates that Overview is entered.
+func swipeToEnterOverview(ctx context.Context, tconn *chrome.TestConn, tpw *input.TrackpadEventWriter) error {
+	if err := trackpad.Swipe(ctx, tconn, tpw, trackpad.UpSwipe, 3); err != nil {
+		return errors.Wrap(err, "failed to swipe up with 3 fingers")
+	}
+
+	if err := ash.WaitForOverviewState(ctx, tconn, ash.Shown, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to enter overview mode")
+	}
+
+	return nil
+}
+
+// swipeToExitOverview performs the swiping down with 3 fingers to exit Overview and validates that Overview is exited.
+func swipeToExitOverview(ctx context.Context, tconn *chrome.TestConn, tpw *input.TrackpadEventWriter) error {
+	if err := trackpad.Swipe(ctx, tconn, tpw, trackpad.DownSwipe, 3); err != nil {
+		return errors.Wrap(err, "failed to swipe down with 3 fingers")
+	}
+
+	if err := ash.WaitForOverviewState(ctx, tconn, ash.Hidden, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to exit overview mode")
+	}
+
+	return nil
+}
+
+// waitForSystemToast waits for the system toast showing up.
+func waitForSystemToast(ctx context.Context, tconn *chrome.TestConn) error {
+	ac := uiauto.New(tconn)
+	// The system toast for trackpad gesture will show up for a while and then disappear.
+	if err := uiauto.Combine(
+		"wait for system toast",
+		ac.WaitUntilExists(nodewith.ClassName("ToastOverlay")),
+		ac.WaitUntilGone(nodewith.ClassName("ToastOverlay")),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to show the trackpad gesture toast")
+	}
+
+	return nil
+}
+
+// TrackpadReverseScroll tests the trackpad reverse scrolling.
+func TrackpadReverseScroll(ctx context.Context, s *testing.State) {
+	// Reserve five seconds for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	cr := s.FixtValue().(*chrome.Chrome)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
+	tpw, err := input.Trackpad(ctx)
+	if err != nil {
+		s.Fatal("Failed to initialize the trackpad: ", err)
+	}
+	defer tpw.Close()
+
+	// ---------------------- Reverse scrolling Off ------------------------
+	if err := trackpad.TurnOffReverseScroll(ctx, tconn); err != nil {
+		s.Fatal("Failed to turn off trackpad reverse scroll")
+	}
+	// -------------- Outside Overview Mode ---------------------
+	// 1. Swiping down with 3 fingers won't enter overview.
+	// 2. Consecutively swiping down twice with 3 fingers will trigger a system
+	//    toast (only for non reverse scrolling).
+	// 3. Swiping up with 3 fingers will enter overview.
+
+	// Swiping down twice with 3 fingers will trigger a system toast.
+	if err := swipeTwice(ctx, tconn, tpw, trackpad.DownSwipe, 3); err != nil {
+		s.Fatal("Failed to swipe down twice with 3 fingers: ", err)
+	}
+
+	if err := waitForSystemToast(ctx, tconn); err != nil {
+		s.Fatal("Failed to show wrong overview gesture toast: ", err)
+	}
+
+	// Swiping up with 3 fingers will enter Overview.
+	if err := swipeToEnterOverview(ctx, tconn, tpw); err != nil {
+		s.Fatal("Failed to swipe up to enter Overview: ", err)
+	}
+	// ---------------------------------------------------------
+	// Wait for an interval for the next swipe gesture.
+	if err := testing.Sleep(ctx, swipeInterval); err != nil {
+		s.Fatal("Failed to wait for the swipe interval: ", err)
+	}
+
+	// -------------- Inside Overview Mode ---------------------
+	// 1. Swiping up with 3 fingers won't exit overview.
+	// 2. Consecutively swiping up twice with 3 fingers will trigger a system
+	//    toast (only for non reverse scrolling).
+	// 3. Swiping down with 3 fingers will exit overview.
+
+	// Swiping up twice with 3 fingers will trigger a system toast.
+	if err := swipeTwice(ctx, tconn, tpw, trackpad.UpSwipe, 3); err != nil {
+		s.Fatal("Failed to swipe down twice with 3 fingers: ", err)
+	}
+
+	if err := waitForSystemToast(ctx, tconn); err != nil {
+		s.Fatal("Failed to show wrong overview gesture toast: ", err)
+	}
+
+	// Swiping down with 3 fingers will exit Overview.
+	if err := swipeToExitOverview(ctx, tconn, tpw); err != nil {
+		s.Fatal("Failed to swipe down to exit Overview: ", err)
+	}
+	// ---------------------------------------------------------
+
+	// Wait for an interval for the next swipe gesture.
+	if err := testing.Sleep(ctx, swipeInterval); err != nil {
+		s.Fatal("Failed to wait for the swipe interval: ", err)
+	}
+
+	// ---------------------- Reverse scrolling On ------------------------
+	if err := trackpad.TurnOnReverseScroll(ctx, tconn); err != nil {
+		s.Fatal("Failed to turn on trackpad reverse scroll: ", err)
+	}
+	// -------------- Outside Overview Mode ---------------------
+	// Swiping up with 3 fingers will enter Overview.
+	if err := swipeToEnterOverview(ctx, tconn, tpw); err != nil {
+		s.Fatal("Failed to swipe up to enter Overview: ", err)
+	}
+
+	// Wait for an interval for the next swipe gesture.
+	if err := testing.Sleep(ctx, swipeInterval); err != nil {
+		s.Fatal("Failed to wait for the swipe interval: ", err)
+	}
+
+	// -------------- Inside Overview Mode ---------------------
+	// Swiping down with 3 fingers will exit Overview.
+	if err := swipeToExitOverview(ctx, tconn, tpw); err != nil {
+		s.Fatal("Failed to swipe down to exit Overview: ", err)
+	}
+}
