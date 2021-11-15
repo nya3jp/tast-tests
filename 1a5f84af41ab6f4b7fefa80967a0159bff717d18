@@ -33,6 +33,24 @@
       "message": "LGTM\n\nBTW, did this completely resolve issues you were hitting in \nhttps://b.corp.google.com/issues/173164490?",
       "revId": "1a5f84af41ab6f4b7fefa80967a0159bff717d18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f8e2c6_845b4524",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-11-15T19:55:11Z",
+      "side": 1,
+      "message": "No, unless a decoder returns a valid colorSpace, this hangs in new VideoFrame().\nI would expect vp9 software decoder is fixed to fill it correctly.",
+      "parentUuid": "5a20c310_c251b619",
+      "revId": "1a5f84af41ab6f4b7fefa80967a0159bff717d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
