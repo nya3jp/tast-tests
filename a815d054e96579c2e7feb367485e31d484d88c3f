@@ -56,6 +56,30 @@
       },
       "revId": "a815d054e96579c2e7feb367485e31d484d88c3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef50879f_2d15f386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-11-15T18:47:47Z",
+      "side": 1,
+      "message": "You\u0027re right, I need to add two new entries to VerifyHWAcceleratorMode,\nnamely VerifySW(Deco|Enco)derUsed, and use them here. Thanks for\npointing that out!",
+      "parentUuid": "7a90d71a_4ec70c05",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 3
+      },
+      "revId": "a815d054e96579c2e7feb367485e31d484d88c3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
