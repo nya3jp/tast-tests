@@ -830,3 +830,8 @@ func Visited() *Finder {
 func (f *Finder) Visited() *Finder {
 	return f.State(state.Visited, true)
 }
+
+// HasName returns whether the finder has filter with name
+func (f *Finder) HasName() bool {
+	return len(f.name) > 0
+}

@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/restrictions"
 	"chromiumos/tast/testing"
 )
 
@@ -155,7 +156,7 @@ type NodeInfo struct {
 
 // Info returns the information for the node found by the input finder.
 func (ac *Context) Info(ctx context.Context, finder *nodewith.Finder) (*NodeInfo, error) {
-	q, err := finder.GenerateQuery()
+	q, err := checkAndGenerateQuery(ctx, finder)
 	if err != nil {
 		return nil, err
 	}
@@ -211,7 +212,7 @@ func (ac *Context) Matches(ctx context.Context, finder *nodewith.Finder, actual 
 // Location returns the location of the node found by the input finder.
 // It will wait until the location is the same for a two iterations of polling.
 func (ac *Context) Location(ctx context.Context, finder *nodewith.Finder) (*coords.Rect, error) {
-	q, err := finder.GenerateQuery()
+	q, err := checkAndGenerateQuery(ctx, finder)
 	if err != nil {
 		return nil, err
 	}
@@ -245,7 +246,7 @@ func (ac *Context) Location(ctx context.Context, finder *nodewith.Finder) (*coor
 // ImmediateLocation returns the location of the node found by the input finder.
 // It will not wait for the location to be stable.
 func (ac *Context) ImmediateLocation(ctx context.Context, finder *nodewith.Finder) (*coords.Rect, error) {
-	q, err := finder.GenerateQuery()
+	q, err := checkAndGenerateQuery(ctx, finder)
 	if err != nil {
 		return nil, err
 	}
@@ -279,7 +280,7 @@ func (ac *Context) WaitForLocation(finder *nodewith.Finder) Action {
 // it needs to clean up the allocated resources for the watcher afterwards.
 func (ac *Context) WaitForEvent(finder *nodewith.Finder, ev event.Event, act Action) Action {
 	return func(ctx context.Context) error {
-		q, err := finder.GenerateQuery()
+		q, err := checkAndGenerateQuery(ctx, finder)
 		if err != nil {
 			return err
 		}
@@ -361,11 +362,31 @@ func (ac *Context) Select(startNodeFinder *nodewith.Finder, startOffset int, end
 	}
 }
 
+func checkAndGenerateQuery(ctx context.Context, finder *nodewith.Finder) (string, error) {
+	if err := checkFragile(ctx, finder); err != nil {
+		return "", err
+	}
+	return finder.GenerateQuery()
+}
+
+func checkFragile(ctx context.Context, finder *nodewith.Finder) (err error) {
+	if finder.HasName() {
+		defer func() {
+			if p := recover(); p != nil {
+				err = errors.Errorf("Name() matcher has been used; add %s to Labels of the test or fixture if it is intended",
+					restrictions.FragileUIMatcherLabel)
+			}
+		}()
+		testing.ContextEnsureLabel(ctx, restrictions.FragileUIMatcherLabel)
+	}
+	return
+}
+
 // Exists returns a function that returns nil if a node exists.
 // If any node in the chain is not found, it will return an error.
 func (ac *Context) Exists(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
-		q, err := finder.GenerateQuery()
+		q, err := checkAndGenerateQuery(ctx, finder)
 		if err != nil {
 			return err
 		}
@@ -433,7 +454,7 @@ func (ac *Context) EnsureGoneFor(finder *nodewith.Finder, duration time.Duration
 // If any node in the chain is not found, it will return nil.
 func (ac *Context) Gone(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
-		q, err := finder.GenerateQuery()
+		q, err := checkAndGenerateQuery(ctx, finder)
 		if err != nil {
 			return err
 		}
@@ -654,7 +675,7 @@ func (ac *Context) RetryUntil(action, condition Action) Action {
 // The EventWatcher waits the duration of timeout for the event to occur.
 func (ac *Context) FocusAndWait(finder *nodewith.Finder) Action {
 	return ac.WaitForEvent(nodewith.Root(), event.Focus, func(ctx context.Context) error {
-		q, err := finder.GenerateQuery()
+		q, err := checkAndGenerateQuery(ctx, finder)
 		if err != nil {
 			return err
 		}
@@ -698,7 +719,7 @@ func (ac *Context) Sleep(d time.Duration) Action {
 // MakeVisible returns a function that calls makeVisible() JS method to make found node visible.
 func (ac *Context) MakeVisible(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
-		q, err := finder.GenerateQuery()
+		q, err := checkAndGenerateQuery(ctx, finder)
 		if err != nil {
 			return err
 		}
@@ -769,7 +790,7 @@ func (ac *Context) CheckRestriction(finder *nodewith.Finder, restriction restric
 // of a node thus mouse.LeftClick() fails consequently.
 func (ac *Context) DoDefault(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
-		q, err := finder.GenerateQuery()
+		q, err := checkAndGenerateQuery(ctx, finder)
 		if err != nil {
 			return err
 		}
