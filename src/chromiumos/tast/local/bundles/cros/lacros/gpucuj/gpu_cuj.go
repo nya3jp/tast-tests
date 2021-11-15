@@ -279,7 +279,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtValue, 
 }
 
 func runLacrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocation) error {
-	_, ltconn, l, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, invoc.page.url)
+	_, ltconn, l, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, invoc.page.url, lacros.StabilizeBeforeOpeningURL)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup cros-chrome test page")
 	}
@@ -307,7 +307,7 @@ func runLacrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocat
 }
 
 func runCrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocation) error {
-	_, cleanup, err := lacros.SetupCrosTestWithPage(ctx, f, invoc.page.url)
+	_, cleanup, err := lacros.SetupCrosTestWithPage(ctx, f, invoc.page.url, lacros.StabilizeBeforeOpeningURL)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup cros-chrome test page")
 	}
