@@ -7,16 +7,23 @@ package hardware
 import (
 	"context"
 	"fmt"
+	"strconv"
 	"strings"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/hardware/iio"
+	"chromiumos/tast/local/bundles/cros/hardware/util"
+	"chromiumos/tast/local/tracing"
 	"chromiumos/tast/testing"
 )
 
 const onErrorOccurred = "OnErrorOccurred:"
 const latencyExceedsTolerance = "Max latency exceeds latency tolerance."
 const succeedReadingSamples = "Number of success reads"
+
+var latencies = []string{"Max latency  ", "Min latency  ", "Median latency  ", "Mean latency  "}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -27,9 +34,39 @@ func init() {
 			"chenghaoyang@chromium.org", // Test author
 			"chromeos-sensors@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Data:         []string{tracing.TBMTracedProbesConfigFile, tracing.TraceProcessor()},
+		Attr:         []string{"group:mainline", "informational", "group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"iioservice"},
 	})
+}
+
+func processLatency(latency, strOut string, sensor *iio.Sensor, pv *perf.Values, s *testing.State) error {
+	index := strings.Index(strOut, latency)
+	if index == -1 {
+		return errors.New("Failed to find latency: " + latency)
+	}
+
+	substr := strOut[index+19 : index+27]
+
+	index = strings.Index(substr, " ")
+	if index != -1 {
+		substr = substr[0:index]
+	}
+
+	value, err := strconv.ParseFloat(substr, 64)
+	if err != nil {
+		return errors.Wrap(err, "failed to parse latency to float")
+	}
+
+	// Remove |latency|'s trailing spaces.
+	metricName := "SensorIioservice." + string(sensor.Name) + "." + string(sensor.Location) + "." + strings.Replace(latency[0:len(latency)-2], " l", "L", 1)
+	pv.Set(perf.Metric{
+		Name:      metricName,
+		Unit:      "second",
+		Direction: perf.SmallerIsBetter,
+	}, value)
+
+	return nil
 }
 
 // SensorIioservice reads all devices' samples from daemon iioservice.
@@ -44,6 +81,12 @@ func SensorIioservice(ctx context.Context, s *testing.State) {
 	}
 
 	for _, sn := range sensors {
+		// Start a trace session using the perfetto command line tool.
+		traceConfigPath := s.DataPath(tracing.TBMTracedProbesConfigFile)
+		sess, err := tracing.StartSession(ctx, traceConfigPath)
+		// The temporary file of trace data is no longer needed when returned.
+		defer sess.RemoveTraceResultFile()
+
 		maxFreq = sn.MaxFrequency
 
 		if sn.Name == iio.Ring {
@@ -73,6 +116,31 @@ func SensorIioservice(ctx context.Context, s *testing.State) {
 			s.Error("Not enough successful readsamples on sensor: ", sn.Name)
 		} else {
 			s.Logf("Test passed on device name: %v, id: %v", sn.Name, sn.IioID)
+		}
+
+		if err := sess.Stop(); err != nil {
+			s.Fatal("Failed to stop the tracing session: ", err)
+		}
+
+		metrics, err := sess.RunMetrics(ctx, s.DataPath(tracing.TraceProcessor()), []string{util.TraceMetricCPU, util.TraceMetricMEM})
+		if err != nil {
+			s.Fatal("Failed to RunMetrics: ", err)
+		}
+
+		pv := perf.NewValues()
+
+		for _, latency := range latencies {
+			err := processLatency(latency, strOut, sn, pv, s)
+			if err != nil {
+				s.Error("Failed to process latency: ", err)
+			}
+		}
+
+		util.ProcessCPUMetric(metrics.GetAndroidCpu(), "SensorIioservice", util.IioserviceProcessName, pv, s)
+		util.ProcessMemMetric(metrics.GetAndroidMem(), "SensorIioservice", util.IioserviceProcessName, pv, s)
+
+		if err := pv.Save(s.OutDir()); err != nil {
+			s.Error("Failed to save perf data: ", err)
 		}
 	}
 }
