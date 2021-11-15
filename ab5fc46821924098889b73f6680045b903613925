@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cfedb4c_e6784e76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97308365_ea5b20fc",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51c54b10_c2f0482d",
@@ -110,6 +134,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d281a4b6_8f18d91f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c75fe13_20a71da0",
+      "range": {
+        "startLine": 47,
+        "startChar": 39,
+        "endLine": 47,
+        "endChar": 59
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c645f17_73f7ae69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eb4b6b3_2a1e230a",
+      "range": {
+        "startLine": 47,
+        "startChar": 15,
+        "endLine": 47,
+        "endChar": 37
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4657f7d7_d09c1774",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51c54b10_c2f0482d",
+      "range": {
+        "startLine": 47,
+        "startChar": 6,
+        "endLine": 47,
+        "endChar": 14
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b457f22_28836807",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-11-12T19:50:56Z",
       "side": 1,
       "message": "you don\u0027t have to have two separate *policy.DeviceLocalAccounts configurations. One will suffice.\ntest should either use default account or custom accounts - could be indicated by the comment. If both are used then one will override the other.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "710c45b9_e4a8c05a",
+        "filename": "src/chromiumos/tast/local/mgs/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b457f22_28836807",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b18ba11b_0020b73a",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "390efa7b_13b39ec1",
+      "range": {
+        "startLine": 25,
+        "startChar": 17,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "255baedb_2f6b1d90",
@@ -169,6 +313,30 @@
       "writtenOn": "2021-11-12T19:50:56Z",
       "side": 1,
       "message": "not needed. Please remove.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 58
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e9a9c0_ea9857c5",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "255baedb_2f6b1d90",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -204,6 +372,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f38d46d2_af1421ee",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Now we have to add extra parameter for fdms, to be able to apply the empty policies.",
+      "parentUuid": "623d6f04_02a09e92",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 24
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc2edd2f_dc70148a",
         "filename": "src/chromiumos/tast/local/mgs/mgs.go",
         "patchSetId": 1
@@ -215,6 +407,30 @@
       "writtenOn": "2021-11-12T19:50:56Z",
       "side": 1,
       "message": "I haven\u0027t actually checked logs if there is any indicator about starting MGS. If there is none we can safely remove that.\nSuch approach was created for Kiosk and it works there.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 1
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d578acbd_d820ecbc",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc2edd2f_dc70148a",
       "range": {
         "startLine": 60,
         "startChar": 0,
@@ -248,6 +464,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41dfb490_0361de27",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "844d28f2_8fe8510a",
+      "range": {
+        "startLine": 98,
+        "startChar": 64,
+        "endLine": 99,
+        "endChar": 24
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34a537a5_77cc8d3b",
@@ -261,6 +501,30 @@
       "writtenOn": "2021-11-12T19:50:56Z",
       "side": 1,
       "message": "That is not needed as we return mgs to do that. Instead please use write something like:\nUse defer mgs.Close() to perform clean up including closing Chrome instance.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 22
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27ccf30c_74826068",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34a537a5_77cc8d3b",
       "range": {
         "startLine": 102,
         "startChar": 0,
@@ -294,6 +558,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3886ab82_04532b57",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7ec1bc8b_590af473",
+      "range": {
+        "startLine": 121,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 22
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21666ad6_0d71e78d",
@@ -307,6 +595,30 @@
       "writtenOn": "2021-11-12T19:50:56Z",
       "side": 1,
       "message": "do we need that?",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 50
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "869c8feb_bb04807e",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "21666ad6_0d71e78d",
       "range": {
         "startLine": 122,
         "startChar": 0,
@@ -340,6 +652,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7105488e_e53a3520",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c5750d9_9c18a8c7",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 37
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd296383_61a29a7a",
@@ -353,6 +689,30 @@
       "writtenOn": "2021-11-12T19:50:56Z",
       "side": 1,
       "message": "iterate over cfg.m.PublicAccountPolicies and apply to blob.",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 4
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a3ddccf_68dbb4dd",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd296383_61a29a7a",
       "range": {
         "startLine": 151,
         "startChar": 2,
@@ -386,6 +746,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a4dce09_3ee73f90",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "708ea6cb_016a8fbe",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 21
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "303156be_a6e7c13c",
@@ -399,6 +783,30 @@
       "writtenOn": "2021-11-12T19:50:56Z",
       "side": 1,
       "message": "I don\u0027t think we need that.",
+      "range": {
+        "startLine": 179,
+        "startChar": 22,
+        "endLine": 180,
+        "endChar": 50
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a401e0_6d38c8cf",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "303156be_a6e7c13c",
       "range": {
         "startLine": 179,
         "startChar": 22,
@@ -432,6 +840,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b75ddd72_a1bd94ec",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6a22db7_2f92dc21",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 3
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86fef285_8a75c898",
@@ -455,6 +887,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d99d4c8c_06ff887f",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86fef285_8a75c898",
+      "range": {
+        "startLine": 200,
+        "startChar": 3,
+        "endLine": 200,
+        "endChar": 50
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d70fda69_f1576a08",
@@ -468,6 +924,30 @@
       "writtenOn": "2021-11-12T19:50:56Z",
       "side": 1,
       "message": "you can just use MGSAccounts",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e57e77e4_33949705",
+        "filename": "src/chromiumos/tast/local/mgs/options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d70fda69_f1576a08",
       "range": {
         "startLine": 17,
         "startChar": 6,
@@ -503,6 +983,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50ebc8da_d3d7ebfb",
+        "filename": "src/chromiumos/tast/local/mgs/options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "it was already used before in mgs.go similar to accountID.\nWDYT?",
+      "parentUuid": "8f07cadc_26b641fb",
+      "range": {
+        "startLine": 30,
+        "startChar": 18,
+        "endLine": 30,
+        "endChar": 29
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b2a8abe_e15c06f1",
         "filename": "src/chromiumos/tast/local/mgs/options.go",
         "patchSetId": 1
@@ -514,6 +1018,30 @@
       "writtenOn": "2021-11-12T19:50:56Z",
       "side": 1,
       "message": "that is not needed as mgs.Close() will handle that.",
+      "range": {
+        "startLine": 61,
+        "startChar": 66,
+        "endLine": 64,
+        "endChar": 14
+      },
+      "revId": "ab5fc46821924098889b73f6680045b903613925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01d152f9_0dd4f412",
+        "filename": "src/chromiumos/tast/local/mgs/options.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-11-15T07:53:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b2a8abe_e15c06f1",
       "range": {
         "startLine": 61,
         "startChar": 66,
