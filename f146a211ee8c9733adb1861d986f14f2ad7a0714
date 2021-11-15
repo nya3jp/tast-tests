@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa3b4a1_c704fcf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-11-15T06:14:59Z",
+      "side": 1,
+      "message": "yhanada@: Please take a look. Thank you.\ntoshikikikuchi@: Please take a look (split_view.go). Thank you.",
+      "revId": "f146a211ee8c9733adb1861d986f14f2ad7a0714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
