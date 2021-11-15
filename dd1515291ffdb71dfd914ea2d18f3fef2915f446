@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea2ba53e_24e5fbc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-15T21:12:04Z",
+      "side": 1,
+      "message": "Judy, I split the CL into 3 parts. This is the first one which only includes the newly added helper functions. Thanks!",
+      "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
