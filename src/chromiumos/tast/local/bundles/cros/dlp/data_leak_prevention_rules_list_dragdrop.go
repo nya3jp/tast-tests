@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
 	"chromiumos/tast/local/bundles/cros/dlp/policy"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -96,7 +96,7 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 				s.Error("Failed to open page: ", err)
 			}
 
-			if _, err = cr.NewConn(ctx, "https://"+param.url, cdputil.WithNewWindow()); err != nil {
+			if _, err = cr.NewConn(ctx, "https://"+param.url, browser.WithNewWindow()); err != nil {
 				s.Error("Failed to open page: ", err)
 			}
 

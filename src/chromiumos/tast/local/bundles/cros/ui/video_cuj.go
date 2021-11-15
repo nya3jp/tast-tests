@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -214,7 +214,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	ytConn, err := cs.NewConn(ctx,
 		"https://www.youtube.com/watch?v=by_xCK2Jo5c&absolute_experiments="+
 			s.RequiredVar("ui.VideoCUJ.ytExperiments"),
-		cdputil.WithNewWindow())
+		browser.WithNewWindow())
 	if err != nil {
 		s.Fatal("Failed to open youtube: ", err)
 	}

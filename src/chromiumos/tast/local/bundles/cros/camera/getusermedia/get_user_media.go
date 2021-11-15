@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/vm"
@@ -158,7 +158,7 @@ const (
 // ChromeInterface defines interface which includes methods which should be
 // implemented by all Chrome instances. (e.g. Lacros)
 type ChromeInterface interface {
-	NewConn(context.Context, string, ...cdputil.CreateTargetOption) (*chrome.Conn, error)
+	NewConn(context.Context, string, ...browser.CreateTargetOption) (*chrome.Conn, error)
 	Close(ctx context.Context) error
 }
 

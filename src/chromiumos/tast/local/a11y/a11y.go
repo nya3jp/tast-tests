@@ -15,7 +15,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/cdputil"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
@@ -548,7 +548,7 @@ func startAccumulatingUtterances(ctx context.Context, conn *chrome.Conn, engineD
 // load, and returns a connection to the page.
 func NewTabWithHTML(ctx context.Context, cr *chrome.Chrome, html string) (*chrome.Conn, error) {
 	url := fmt.Sprintf("data:text/html, %s", html)
-	c, err := cr.NewConn(ctx, url, cdputil.WithNewWindow())
+	c, err := cr.NewConn(ctx, url, browser.WithNewWindow())
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to open new tab with url: %s", url)
 	}
