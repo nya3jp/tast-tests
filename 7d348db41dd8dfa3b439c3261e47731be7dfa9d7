@@ -207,6 +207,30 @@
       },
       "revId": "7d348db41dd8dfa3b439c3261e47731be7dfa9d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7dbf61c_7085944f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-11-15T23:59:45Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "4e3fc0cb_5d893036",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "7d348db41dd8dfa3b439c3261e47731be7dfa9d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
