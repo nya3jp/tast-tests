@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/testing"
 )
 
 // SetUp returns a Browser instance for a given fixture value and browser type.
@@ -37,5 +38,46 @@ func SetUp(ctx context.Context, f interface{}, typ browser.Type) (*browser.Brows
 		return l.Browser(), closeLacros, nil
 	default:
 		return nil, nil, errors.Errorf("unrecognized browser type %s", string(typ))
+	}
+}
+
+// SetUpWithURL is a combination of SetUp and NewConn that avoids an extra blank tab in the case of Lacros.
+func SetUpWithURL(ctx context.Context, f interface{}, typ browser.Type, url string) (*chrome.Conn, *browser.Browser, func(ctx context.Context), error) {
+	switch typ {
+	case browser.TypeAsh:
+		cr := f.(chrome.HasChrome).Chrome()
+		conn, err := cr.NewConn(ctx, url)
+		if err != nil {
+			return nil, nil, nil, errors.Wrap(err, "failed to connect to ash-chrome")
+		}
+		closeAsh := func(context.Context) {
+			conn.Close()
+		}
+		return conn, cr.Browser(), closeAsh, nil
+
+	case browser.TypeLacros:
+		f := f.(launcher.FixtValue)
+		l, err := launcher.LaunchLacrosChromeWithURL(ctx, f, url)
+		if err != nil {
+			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
+		}
+		// XXX Should we do WaitForLacrosWindow here before NewConnForTarget?
+		conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetURL(url))
+		if err != nil {
+			if err := l.Close(ctx); err != nil {
+				testing.ContextLog(ctx, "Failed to close lacros-chrome: ", err)
+			}
+			return nil, nil, nil, errors.Wrap(err, "failed to connect to lacros-chrome")
+		}
+		closeLacros := func(ctx context.Context) {
+			conn.Close()
+			if err := l.Close(ctx); err != nil {
+				testing.ContextLog(ctx, "Failed to close lacros-chrome: ", err)
+			}
+		}
+		return conn, l.Browser(), closeLacros, nil
+
+	default:
+		return nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(typ))
 	}
 }
