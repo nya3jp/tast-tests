@@ -74,8 +74,31 @@ func SetupPerfTest(ctx context.Context, tconn *chrome.TestConn, name string) (re
 // shared between ash-chrome test setup and lacros-chrome test setup.
 var cooldownConfig = cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
 
+// StabilizeCondition describes what condition to use in lacros perftests to
+// stabilize the environment.
+type StabilizeCondition int
+
+const (
+	// StabilizeBeforeOpeningURL indicates that we should wait for e.g. CPU stability
+	// before opening the URL. Use this if your page actively uses resources, i.e. the CPU
+	// could not reach stability while your page is open.
+	StabilizeBeforeOpeningURL = iota
+	// StabilizeAfterOpeningURL indicates that we should wait for e.g. CPU stability
+	// after opening the URL. Use this if your page is relatively static and CPU stability
+	// can be reached. This option is preferable, if possible.
+	StabilizeAfterOpeningURL
+)
+
 // SetupCrosTestWithPage opens a cros-chrome page after waiting for a stable environment (CPU temperature, etc).
-func SetupCrosTestWithPage(ctx context.Context, f launcher.FixtValue, url string) (*chrome.Conn, CleanupCallback, error) {
+func SetupCrosTestWithPage(ctx context.Context, f launcher.FixtValue, url string, stabilize StabilizeCondition) (*chrome.Conn, CleanupCallback, error) {
+	// Depending on the page, opening it may cause continuous CPU usage (e.g. WebGL aquarium),
+	// so wait until stabilized before opening the tab if we are instructed to do so.
+	if stabilize == StabilizeBeforeOpeningURL {
+		if err := cpu.WaitUntilStabilized(ctx, cooldownConfig); err != nil {
+			return nil, nil, err
+		}
+	}
+
 	conn, err := f.Chrome().NewConn(ctx, url)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to open new tab")
@@ -87,21 +110,26 @@ func SetupCrosTestWithPage(ctx context.Context, f launcher.FixtValue, url string
 		return nil
 	}
 
-	if err := cpu.WaitUntilStabilized(ctx, cooldownConfig); err != nil {
-		if cerr := cleanup(ctx); cerr != nil {
-			testing.ContextLog(ctx, "Failed to clean up: ", cerr)
+	// For some tests, it is safe to wait for stabilization after opening the tab.
+	if stabilize == StabilizeAfterOpeningURL {
+		if err := cpu.WaitUntilStabilized(ctx, cooldownConfig); err != nil {
+			if cerr := cleanup(ctx); cerr != nil {
+				testing.ContextLog(ctx, "Failed to clean up: ", cerr)
+			}
+			return nil, nil, err
 		}
-		return nil, nil, err
 	}
 
 	return conn, cleanup, nil
 }
 
 // SetupLacrosTestWithPage opens a lacros-chrome page after waiting for a stable environment (CPU temperature, etc).
-func SetupLacrosTestWithPage(ctx context.Context, f launcher.FixtValue, url string) (
+func SetupLacrosTestWithPage(ctx context.Context, f launcher.FixtValue, url string, stabilize StabilizeCondition) (
 	retConn *chrome.Conn, retTConn *chrome.TestConn, retL *launcher.LacrosChrome, retCleanup CleanupCallback, retErr error) {
-	// Launch lacros-chrome with given url.
-	l, err := launcher.LaunchLacrosChromeWithURL(ctx, f, url)
+	// Launch lacros-chrome with about:blank loaded first - we don't want to include startup cost.
+	// Since we also want to wait until the CPU is stabilized as much as possible,
+	// we first open with about:blank to remove startup cost as a variable as much as possible.
+	l, err := launcher.LaunchLacrosChromeWithURL(ctx, f, chrome.BlankURL)
 	if err != nil {
 		return nil, nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 	}
@@ -120,7 +148,22 @@ func SetupLacrosTestWithPage(ctx context.Context, f launcher.FixtValue, url stri
 		return nil, nil, nil, nil, errors.Wrap(err, "failed to connect to test API")
 	}
 
-	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetURL(url))
+	// Depending on the page, opening it may cause continuous CPU usage (e.g. WebGL aquarium),
+	// so wait until stabilized before opening the tab if we are instructed to do so.
+	if stabilize == StabilizeBeforeOpeningURL {
+		if err := cpu.WaitUntilStabilized(ctx, cooldownConfig); err != nil {
+			return nil, nil, nil, nil, err
+		}
+	}
+
+	var conn *chrome.Conn
+	// If we are opening about:blank, then we re-use the existing page that opened when we launched lacros.
+	// If not, we create a new page and later get rid of the existing about:blank page.
+	if url == chrome.BlankURL {
+		conn, err = l.NewConnForTarget(ctx, chrome.MatchTargetURL(url))
+	} else {
+		conn, err = l.NewConn(ctx, url)
+	}
 	if err != nil {
 		return nil, nil, nil, nil, errors.Wrap(err, "failed to open new tab")
 	}
@@ -130,8 +173,19 @@ func SetupLacrosTestWithPage(ctx context.Context, f launcher.FixtValue, url stri
 		return nil
 	}, "")
 
-	if err := cpu.WaitUntilStabilized(ctx, cooldownConfig); err != nil {
-		return nil, nil, nil, nil, err
+	// If we want about:blank, don't close the initial about:blank we opened.
+	// Otherwise, close the initial "about:blank" tab present at startup.
+	if url != chrome.BlankURL {
+		if err := l.CloseAboutBlank(ctx, f.TestAPIConn(), 0); err != nil {
+			return nil, nil, nil, nil, errors.Wrap(err, "failed to close about:blank tab")
+		}
+	}
+
+	// For some specific tests, it is safe to wait for stabilization after opening the tab.
+	if stabilize == StabilizeAfterOpeningURL {
+		if err := cpu.WaitUntilStabilized(ctx, cooldownConfig); err != nil {
+			return nil, nil, nil, nil, err
+		}
 	}
 
 	return conn, ltconn, l, cleanup, nil

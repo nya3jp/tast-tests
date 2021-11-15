@@ -79,7 +79,7 @@ func runSpeedometerTest(ctx context.Context, f launcher.FixtValue, conn *chrome.
 }
 
 func runLacrosSpeedometerTest(ctx context.Context, f launcher.FixtValue) (float64, error) {
-	conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, speedometerURL)
+	conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, speedometerURL, lacros.StabilizeAfterOpeningURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup lacros-chrome test page")
 	}
@@ -89,7 +89,7 @@ func runLacrosSpeedometerTest(ctx context.Context, f launcher.FixtValue) (float6
 }
 
 func runCrosSpeedometerTest(ctx context.Context, f launcher.FixtValue) (float64, error) {
-	conn, cleanup, err := lacros.SetupCrosTestWithPage(ctx, f, speedometerURL)
+	conn, cleanup, err := lacros.SetupCrosTestWithPage(ctx, f, speedometerURL, lacros.StabilizeAfterOpeningURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup cros-chrome test page")
 	}
