@@ -16,6 +16,23 @@
       "message": "hiroh@, tast-owners@ PTAL\n\nOthers FYI",
       "revId": "efd18ecf5b9328218d0537196044d2af48f8d6a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1529d90_100704f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1253028
+      },
+      "writtenOn": "2021-11-15T15:31:17Z",
+      "side": 1,
+      "message": "Thanks, Miguel for the fix.",
+      "revId": "efd18ecf5b9328218d0537196044d2af48f8d6a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
