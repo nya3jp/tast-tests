@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dab012b_e4b0cae9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_rootfs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-15T22:35:20Z",
+      "side": 1,
+      "message": "\"auto\" uprev flow requires a manual qual on *branches*, but doesn\u0027t on *ToT* (instead it\u0027d be a daily auto push). IIUC there shouldn\u0027t be a major version skew between rootfs + ash/os. Tracker: b/204351853\n\nYou\u0027re right. Any major version difference needs be maintained to get this test passed until the uprev is automated.",
+      "parentUuid": "b748d19b_14ae9975",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "7c53cadde2022578f57dd841f92afc4491623c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71f1c26a_2c337038",
