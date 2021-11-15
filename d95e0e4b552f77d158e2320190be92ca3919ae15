@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f70c45f_903b52b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-11-15T04:02:04Z",
+      "side": 1,
+      "message": "Add a comment to explain why the error is not returned.",
+      "parentUuid": "fd3ccbd6_1122c946",
+      "range": {
+        "startLine": 311,
+        "startChar": 50,
+        "endLine": 311,
+        "endChar": 65
+      },
+      "revId": "d95e0e4b552f77d158e2320190be92ca3919ae15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa9d431e_2a2c0335",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
         "patchSetId": 8
@@ -239,6 +263,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "584f3c21_1740b9c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-11-15T04:02:04Z",
+      "side": 1,
+      "message": "Add a comment to explain why the error is not returned.",
+      "parentUuid": "d0416092_c58b5c06",
+      "range": {
+        "startLine": 1067,
+        "startChar": 19,
+        "endLine": 1067,
+        "endChar": 34
+      },
+      "revId": "d95e0e4b552f77d158e2320190be92ca3919ae15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b69d2d0_0e00a2dd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
         "patchSetId": 8
@@ -298,6 +346,30 @@
       "side": 1,
       "message": "Same as above, you need to check the error to see whether it is not found.",
       "parentUuid": "6fb2e623_7c709083",
+      "range": {
+        "startLine": 1077,
+        "startChar": 49,
+        "endLine": 1077,
+        "endChar": 64
+      },
+      "revId": "d95e0e4b552f77d158e2320190be92ca3919ae15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36f49f7d_3312f987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-11-15T04:02:04Z",
+      "side": 1,
+      "message": "The `WaitUntilExists` usage is the same as `IsNodeFound`. Therefore, I think we don\u0027t need to check the error. Only determine which action should we do based on the result of `WaitUntilExists`.",
+      "parentUuid": "0991b89b_584401a2",
       "range": {
         "startLine": 1077,
         "startChar": 49,
