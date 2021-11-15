@@ -176,6 +176,30 @@
       },
       "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f440436b_bff1c824",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-15T06:14:13Z",
+      "side": 1,
+      "message": "sgtm, jfyi https://crrev.com/c/3251207 is in if that changes anything",
+      "parentUuid": "d78768a4_d1b6bd73",
+      "range": {
+        "startLine": 84,
+        "startChar": 24,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
