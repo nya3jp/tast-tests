@@ -50,6 +50,23 @@
       "message": "yichenz: Thanks for the review!\ntast-owners: COuld you help review? THanks!",
       "revId": "c02d4df8c47960ed5434ef37181f6e4f352a7d23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "831e87d6_659fbc27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-15T00:58:12Z",
+      "side": 1,
+      "message": "Chrom looks like a typo without explanation. How about defining a function like the following and use it on finding chrome window?\n\nisChromeWindow :\u003d func(w *ash.Window) bool {\n  return strings.Contains(w.Title, \"Chrome\") || strings.Contains(w.Title, \"Chromium\")\n}",
+      "revId": "c02d4df8c47960ed5434ef37181f6e4f352a7d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
