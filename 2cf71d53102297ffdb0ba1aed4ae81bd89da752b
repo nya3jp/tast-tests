@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59fdf4cd_92a4fd15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-11-15T22:28:06Z",
+      "side": 1,
+      "message": "How will the result be when it is skipped. Stainless will show it as Green?.",
+      "revId": "2cf71d53102297ffdb0ba1aed4ae81bd89da752b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
