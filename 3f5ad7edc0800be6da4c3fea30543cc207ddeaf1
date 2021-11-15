@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de100c22_011b93d3",
+        "filename": "src/chromiumos/tast/common/testexec/testexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-15T00:48:14Z",
+      "side": 1,
+      "message": "if exit code is extracted.\nHow about updating this, and remove the next sentence?",
+      "range": {
+        "startLine": 407,
+        "startChar": 30,
+        "endLine": 407,
+        "endChar": 40
+      },
+      "revId": "3f5ad7edc0800be6da4c3fea30543cc207ddeaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
