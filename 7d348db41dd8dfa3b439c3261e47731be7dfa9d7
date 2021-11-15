@@ -135,6 +135,30 @@
       },
       "revId": "7d348db41dd8dfa3b439c3261e47731be7dfa9d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1b47fe6_497fb579",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/seccomp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-15T02:54:32Z",
+      "side": 1,
+      "message": "Thanks for the info!\n\nThere are several packages that are supposed to be installed to /usr/local, not necessarily Tast specific, e.g. x11-apps/igt-gpu-tools:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/graphics/igt.go;l\u003d521?q\u003dpackage:chromeos%20file:%2Ftast-tests%2F%20%22%2Fusr%2Flocal%22\u0026start\u003d21\n\nSo it\u0027s nice if we could have a generic solution to those packages.",
+      "parentUuid": "e62a2d98_2b887761",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "7d348db41dd8dfa3b439c3261e47731be7dfa9d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
