@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6cf7b0b1_6a65e854",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-15T15:52:40Z",
+      "side": 1,
+      "message": "Usually this conversion is needed in a small subset of deltas.\nDo you have any links that described how can I add custom logic to JSON unmarshal?",
+      "parentUuid": "4ac7c776_bb2d6c1e",
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "523d2662_7cf812a2",
         "filename": "src/chromiumos/tast/remote/updateutil/paygen.go",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-15T15:34:00Z",
       "side": 1,
       "message": "returns it?",
+      "range": {
+        "startLine": 61,
+        "startChar": 67,
+        "endLine": 61,
+        "endChar": 95
+      },
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2661219_fb084895",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-15T15:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "523d2662_7cf812a2",
       "range": {
         "startLine": 61,
         "startChar": 67,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb596c02_c9b3c458",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-15T15:52:40Z",
+      "side": 1,
+      "message": "Done. Thanks, I like this idea.",
+      "parentUuid": "23f483a9_a5e65631",
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54f17997_38149560",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-11-15T15:34:00Z",
       "side": 1,
       "message": "the deltas?\n\nSame below",
+      "range": {
+        "startLine": 92,
+        "startChar": 39,
+        "endLine": 92,
+        "endChar": 56
+      },
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f68c47e8_eaf5f83e",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-15T15:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54f17997_38149560",
       "range": {
         "startLine": 92,
         "startChar": 39,
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "651c7214_80e4626c",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-15T15:52:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0fa1324_079744a1",
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b7a24a3_3f42960c",
@@ -121,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1692d0bd_585fef90",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-15T15:52:40Z",
+      "side": 1,
+      "message": "Done. I don\u0027t think this error could occur much, I would assume the paygen.json file is well tested.",
+      "parentUuid": "0b7a24a3_3f42960c",
+      "range": {
+        "startLine": 168,
+        "startChar": 70,
+        "endLine": 168,
+        "endChar": 85
+      },
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83f5ff2c_95e3062b",
@@ -134,6 +260,24 @@
       "writtenOn": "2021-11-15T15:34:00Z",
       "side": 1,
       "message": "This can be tested in TestFilter as well",
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52640a13_51338afe",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-15T15:52:40Z",
+      "side": 1,
+      "message": "You mean I should move this testing there, or duplicate it?",
+      "parentUuid": "83f5ff2c_95e3062b",
       "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
