@@ -16,6 +16,46 @@
       "message": "hiroh@ PTAL again, thanks!",
       "revId": "0f719493a46476eed4aece212bbbf29006f4e4ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15edb213_6df319a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-11-15T19:01:57Z",
+      "side": 1,
+      "message": "LGTM. Thanks!",
+      "revId": "0f719493a46476eed4aece212bbbf29006f4e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40bf0478_66cb3265",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-11-15T19:01:57Z",
+      "side": 1,
+      "message": "Well, it is now it becomes more like verifyDecoding VerifyCodecsImplementationMode.\nBut they should be fixed later, not in this CL.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "0f719493a46476eed4aece212bbbf29006f4e4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
