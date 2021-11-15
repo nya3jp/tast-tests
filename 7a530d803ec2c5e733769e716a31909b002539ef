@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcbf4f0a_15274fa9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-15T02:11:56Z",
+      "side": 1,
+      "message": "\u003e \"intented\" is a possible misspelling of \"intended\" or \"indented\".\n\nPlease fix.",
+      "parentUuid": "d1ed2179_24ec9025",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "7a530d803ec2c5e733769e716a31909b002539ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10bb3af2_919d2b6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-15T02:11:56Z",
+      "side": 1,
+      "message": "slgtm",
+      "revId": "7a530d803ec2c5e733769e716a31909b002539ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
