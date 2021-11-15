@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50d29b40_f0dbb0be",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-15T09:57:12Z",
+      "side": 1,
+      "message": "Add log entry about MGS staring in auto launch mode.",
+      "revId": "a583a086a312dad233586a9280ce20bce3bc2912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84a0e7b_75e5ecd6",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-15T09:57:12Z",
+      "side": 1,
+      "message": "Add log entry about Chrome starting with MGS accounts loaded.",
+      "revId": "a583a086a312dad233586a9280ce20bce3bc2912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
