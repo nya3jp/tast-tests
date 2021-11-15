@@ -51,6 +51,23 @@
       "parentUuid": "2a62a1ea_4865abb4",
       "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2777ca10_bfafff04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-11-15T14:32:23Z",
+      "side": 1,
+      "message": "Hi @Oleh/Andres, I\u0027ve resolved the merge conflicts, can you please review this CL again?",
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
