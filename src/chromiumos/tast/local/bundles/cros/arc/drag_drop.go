@@ -34,7 +34,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DragDrop,
 		Desc:         "Checks drag and drop support from Chrome to ARC",
-		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com", "cros-arc-te@google.com"},
+		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
 		Data: []string{

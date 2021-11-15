@@ -47,7 +47,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeVirtualKeyboard,
 		Desc:         "Checks Chrome virtual keyboard working on Android apps",
-		Contacts:     []string{"tetsui@chromium.org", "arc-framework+tast@google.com"},
+		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBootedInTabletMode",
