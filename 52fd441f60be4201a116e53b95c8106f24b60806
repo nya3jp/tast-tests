@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "146856c7_3a35dadf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-15T23:33:46Z",
+      "side": 1,
+      "message": "Generally looks good, but my preference would be to use testing.ContextOutDir in the service so you don\u0027t have to worry about file management and cleanup as much. You could always add an intermediate step in the service to save the recording to a temp dir and rename the file before moving to testing.ContextOutDir.\n\nIf you don\u0027t feel like doing this now, I\u0027d suggest doing it in a follow up at least",
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "516baf2a_bfb43ad1",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
         "patchSetId": 2
@@ -97,6 +114,30 @@
       "side": 1,
       "message": "Haven\u0027t looked into why, but I have seen screen record failed in VM (amd64-generic) when tested locally.\nIs there any way to filter out VMs in test runtime? or should I set the software deps `lacros_stable` to exclude tast_vm?",
       "parentUuid": "37657f68_fdbe97fa",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 35
+      },
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e74349c3_bdf4e79c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-15T23:33:46Z",
+      "side": 1,
+      "message": "I\u0027m not aware of any other options to distinguish between VM/non-VM, using tast_vm might be your best bet, but probably would be best not to exclude VMs if possible",
+      "parentUuid": "0276c074_0db8a3e3",
       "range": {
         "startLine": 78,
         "startChar": 18,
@@ -197,6 +238,46 @@
         "startChar": 24,
         "endLine": 84,
         "endChar": 53
+      },
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1585ffc0_0c3177c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-15T23:33:46Z",
+      "side": 1,
+      "message": "you could probably skip this whole part using testing.ContextOutDir in the service:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/docs/writing_tests.md;l\u003d1562",
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71f36b43_e0b79e09",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-15T23:33:46Z",
+      "side": 1,
+      "message": "this indexing seems a little weird, I guess the default output order from ls will line up correctly with the test steps? I feel like explicitly labeling them to line up with the test steps would be better in the long run.",
+      "range": {
+        "startLine": 142,
+        "startChar": 87,
+        "endLine": 142,
+        "endChar": 88
       },
       "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
