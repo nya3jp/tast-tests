@@ -63,7 +63,7 @@ func NewSession(ctx context.Context, execPath, debuggingPortPath string, portWai
 
 	devsess, err := cdputil.NewSession(ctx, debuggingPortPath, portWait)
 	if err != nil {
-		return nil, errors.Wrapf(watcher.ReplaceErr(err), "failed to establish connection to Chrome Debugging Protocol with debugging port path=%q", cdputil.DebuggingPortPath)
+		return nil, errors.Wrapf(watcher.ReplaceErr(err), "failed to establish connection to Chrome Debugging Protocol with debugging port path=%q", debuggingPortPath)
 	}
 	defer func() {
 		if retErr != nil {
