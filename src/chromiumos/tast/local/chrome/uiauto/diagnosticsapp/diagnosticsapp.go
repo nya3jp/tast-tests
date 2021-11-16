@@ -53,6 +53,12 @@ var DxConnectivity = nodewith.Name("Connectivity").Role(role.GenericContainer)
 // DxNetworkList export is used to find the network list.
 var DxNetworkList = nodewith.ClassName("diagnostics-network-list-container").Role(role.GenericContainer)
 
+// DxInput export is used to find the Input navigation item.
+var DxInput = nodewith.Name("Input").Role(role.GenericContainer)
+
+// DxKeyboardHeading export is used to find the keyboard heading on the input page.
+var DxKeyboardHeading = nodewith.Name("Keyboard").Role(role.StaticText)
+
 // DiagnosticsRootNode returns the root ui node of Diagnotsics app.
 func DiagnosticsRootNode(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Finder, error) {
 	ui := uiauto.New(tconn)
