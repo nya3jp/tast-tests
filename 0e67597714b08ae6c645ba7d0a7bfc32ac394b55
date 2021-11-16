@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f2337df_eb8c4c74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/inputactions/user_actions.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-16T09:07:32Z",
+      "side": 1,
+      "message": "You can just pass testName, outDir string",
+      "range": {
+        "startLine": 23,
+        "startChar": 47,
+        "endLine": 23,
+        "endChar": 61
+      },
+      "revId": "0e67597714b08ae6c645ba7d0a7bfc32ac394b55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "079a1d49_71919e7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/util/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-16T09:07:32Z",
+      "side": 1,
+      "message": "You can reconstruct RunSubTest as:\nfunc RunSubTest(...) bool {return s.Run...}\n\nThen RunUserActionAsSubTest simply calls RunSubTest(ctx, s, ua...Chrome(). ua.Name(), ua.Run), which reduces the duplicated code.",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 28
+      },
+      "revId": "0e67597714b08ae6c645ba7d0a7bfc32ac394b55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a0ae901_4dba964b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-16T09:07:32Z",
+      "side": 1,
+      "message": "There are too many levels of indents, which makes it difficult to read.\n\nSuggestion: leave the setGlideTypng as it is, and create a new useraction wrapping it. The last part then becomes:\n\nreturn useractions.NewUserAction(\n    userActionName,\n    setGlideTyping(isEnabled),\n    ....\n)",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 65
+      },
+      "revId": "0e67597714b08ae6c645ba7d0a7bfc32ac394b55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a3e023_549022b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-16T09:07:32Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 141
+      },
+      "revId": "0e67597714b08ae6c645ba7d0a7bfc32ac394b55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f59a2521_35ce61c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_user_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-16T09:07:32Z",
+      "side": 1,
+      "message": "why add and then remove the same tag? did you mean defer remove?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 56
+      },
+      "revId": "0e67597714b08ae6c645ba7d0a7bfc32ac394b55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a04141b0_5fe7b1fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_user_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-16T09:07:32Z",
+      "side": 1,
+      "message": "why the attribute needs to be removed?\n\nThis usage is quite confusing. i.e. which attributes need removal? Is there a guideline for this?",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 51
+      },
+      "revId": "0e67597714b08ae6c645ba7d0a7bfc32ac394b55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
