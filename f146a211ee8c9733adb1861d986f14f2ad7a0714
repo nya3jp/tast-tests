@@ -50,6 +50,23 @@
       "message": "tast-owners@: PTAL for OWNERS. Thank you.",
       "revId": "f146a211ee8c9733adb1861d986f14f2ad7a0714",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f6d170_fdb4b062",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-16T00:46:54Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "f146a211ee8c9733adb1861d986f14f2ad7a0714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
