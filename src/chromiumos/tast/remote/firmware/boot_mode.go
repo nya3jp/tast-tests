@@ -10,6 +10,8 @@ This file implements functions to check or switch the DUT's boot mode.
 
 import (
 	"context"
+	"regexp"
+	"strings"
 	"time"
 
 	fwCommon "chromiumos/tast/common/firmware"
@@ -38,6 +40,11 @@ const (
 
 	// usbVisibleTime is the time to wait after making the USB stick visible to DUT
 	usbVisibleTime = 5 * time.Second
+)
+
+// Regexes for firmware screens
+var (
+	vbScreenDeveloperWarning = regexp.MustCompile(`screen=0x(101)\b`)
 )
 
 // ModeSwitcher enables booting the DUT into different firmware boot modes (normal, dev, rec).
@@ -153,20 +160,30 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		}
 	}
 
+	testing.ContextLogf(ctx, "Capturing AP log")
+	if err := h.Servo.SetOnOff(ctx, servo.APUARTCapture, servo.On); err != nil {
+		return errors.Wrap(err, "failed to capture AP UART")
+	}
+	defer func() {
+		if err := h.Servo.SetOnOff(ctx, servo.APUARTCapture, servo.Off); err != nil {
+			testing.ContextLogf(ctx, "Failed to disable capture AP UART: %s", err)
+		}
+	}()
+	// Read the uart stream just to make sure there isn't buffered data.
+	if _, err := h.Servo.GetQuotedString(ctx, servo.APUARTStream); err != nil {
+		return errors.Wrap(err, "failed to read UART")
+	}
+
 	switch toMode {
 	case fwCommon.BootModeNormal:
-		hasSerialAP := false
-		if fromMode != fwCommon.BootModeNormal {
-			hasSerialAP = ms.hasSerialAPFirmware(ctx)
-		}
-		if err := ms.PowerOff(ctx); err != nil {
+		if err := ms.powerOff(ctx); err != nil {
 			return errors.Wrap(err, "powering off DUT")
 		}
 		if err := h.Servo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
 			return err
 		}
 		if fromMode != fwCommon.BootModeNormal {
-			if err := ms.fwScreenToNormalMode(ctx, hasSerialAP); err != nil {
+			if err := ms.fwScreenToNormalMode(ctx); err != nil {
 				return errors.Wrap(err, "moving from firmware screen to normal mode")
 			}
 		}
@@ -476,20 +493,14 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 // fwScreenToNormalMode moves the DUT from the firmware bootup screen to Normal mode.
 // This should be called immediately after powering on.
 // The actual behavior depends on the ModeSwitcherType.
-func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, hasSerialAP bool) error {
+func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
 	}
-	testing.ContextLogf(ctx, "Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
-	if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
-		return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
-	}
-	if hasSerialAP {
-		testing.ContextLogf(ctx, "Sleeping %s (SerialFirmwareBootDelay)", h.Config.SerialFirmwareBootDelay)
-		if err := testing.Sleep(ctx, h.Config.SerialFirmwareBootDelay); err != nil {
-			return errors.Wrapf(err, "sleeping for %s (SerialFirmwareBootDelay) while enabling dev mode", h.Config.SerialFirmwareBootDelay)
-		}
+	testing.ContextLogf(ctx, "Waiting for dev warning screen or %s (FirmwareScreen)", h.Config.FirmwareScreen)
+	if _, err := ms.waitBootState(ctx, vbScreenDeveloperWarning, h.Config.FirmwareScreen); err != nil {
+		return errors.Wrap(err, "wait for developer warning screen")
 	}
 	switch h.Config.ModeSwitcherType {
 	case KeyboardDevSwitcher:
@@ -772,4 +783,38 @@ func (ms *ModeSwitcher) waitUnreachable(ctx context.Context) error {
 func (ms *ModeSwitcher) hasSerialAPFirmware(ctx context.Context) bool {
 	// TODO(b/206004543): Get this working. Reading CONFIG_CONSOLE_SERIAL doesn't work.
 	return false
+}
+
+// waitBootState waits until the apLogPattern appears in the AP UART log, or nothing is logged for noLogTime.
+func (ms *ModeSwitcher) waitBootState(ctx context.Context, apLogPattern *regexp.Regexp, noLogTime time.Duration) ([]string, error) {
+	leftoverLines := ""
+	timeOfLastOutput := time.Now()
+	for timeOfLastOutput.Add(noLogTime).After(time.Now()) {
+		if lines, err := ms.Helper.Servo.GetQuotedString(ctx, servo.APUARTStream); err != nil {
+			return nil, errors.Wrap(err, "failed to read UART")
+		} else if lines != "" {
+			// It is possible to read partial lines, so save the part after newline for later
+			lines = leftoverLines + lines
+			if crlfIdx := strings.LastIndex(lines, "\r"); crlfIdx < 0 {
+				leftoverLines = lines
+				lines = ""
+			} else {
+				leftoverLines = lines[crlfIdx+1:]
+				lines = lines[:crlfIdx+1]
+			}
+			if lines != "" {
+				timeOfLastOutput = time.Now()
+				for _, l := range strings.Split(lines, "\r") {
+					l = strings.TrimPrefix(l, "\n")
+					l = strings.TrimSuffix(l, "\n")
+					if matches := apLogPattern.FindStringSubmatch(l); matches != nil {
+						testing.ContextLogf(ctx, "FOUND! %s", l)
+						return matches, nil
+					}
+					testing.ContextLogf(ctx, "AP: %s", l)
+				}
+			}
+		}
+	}
+	return nil, nil
 }
