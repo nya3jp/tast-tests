@@ -9,6 +9,7 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"runtime"
 	"strconv"
@@ -45,12 +46,19 @@ func suspend(ctx context.Context, timeout, wakeup time.Duration, skipResidencyCh
 
 	var s0ixDuration, s0ixDurationFinal time.Duration
 	var err error
+	var isFreeze bool
 	if skipResidencyCheck {
 		testing.ContextLog(ctx, "Skipping residency check")
 	} else {
-		if s0ixDuration, err = getResidencyStats(); err != nil {
-			testing.ContextLog(ctx, "Failed to aquire s0ix residency time: ", err)
-			skipResidencyCheck = true
+		if isFreeze, err = isSleepStateFreeze(); err != nil {
+			testing.ContextLog(ctx, "Failed to aquire sleep state config: ", err)
+		} else {
+			if isFreeze {
+				if s0ixDuration, err = getResidencyStats(); err != nil {
+					testing.ContextLog(ctx, "Failed to aquire s0ix residency time: ", err)
+					skipResidencyCheck = true
+				}
+			}
 		}
 	}
 
@@ -70,7 +78,7 @@ func suspend(ctx context.Context, timeout, wakeup time.Duration, skipResidencyCh
 		return errors.Wrap(err, "failed to suspend device")
 	}
 
-	if !skipResidencyCheck {
+	if !skipResidencyCheck && isFreeze {
 		s0ixDurationFinal, err = getResidencyStats()
 		if err != nil {
 			return errors.Wrap(err, "failed to aquire s0ix residency time")
@@ -165,4 +173,16 @@ func parseDuration(line string) (time.Duration, error) {
 	}
 
 	return time.Duration(duration) * time.Nanosecond, nil
+}
+
+func isSleepStateFreeze() (bool, error) {
+	cmd := exec.Command("check_powerd_config", "--suspend_to_idle")
+	if err := cmd.Run(); err != nil {
+		if exitError, ok := err.(*exec.ExitError); ok {
+			return exitError.ExitCode() == 0, nil
+		}
+		return false, errors.Wrap(err, "failed acquiring sleep state")
+	}
+	// If command runs without error, exit status must be zero.
+	return true, nil
 }
