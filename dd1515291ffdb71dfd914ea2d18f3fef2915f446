@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ec7f097_553af19f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-16T18:19:31Z",
+      "side": 1,
+      "message": "Yes, it is. Thanks!",
+      "parentUuid": "20d9ff8e_c5588242",
+      "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e0d50b7_879637b9",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "oh I see. But still it doesn\u0027t seem to be very reliable way to check if touchpad is usable based on the device\u0027s UI state. So suppose the scenario: a tablet device, attached with a external mouse, in this case the device will be in clamshell mode, but there is no touchpad so touchpad should not be usable. But this function will return true. It\u0027s probably fine for tests, as in normal cases this should be correct. Not sure if Judy knows better ways/apis to check the trackpad\u0027s usability.\n\nEither way, I\u0027m ok with this in tests.",
       "parentUuid": "0723acc3_b35f5f61",
+      "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3557e7d7_914c8659",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/trackpad/trackpad.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-16T18:19:31Z",
+      "side": 1,
+      "message": "I see. I will check if there is a way to detect if a mouse device or a virtual mouse deivce is being used. \n\njinrongwu@, please let me know if you have any suggestions.",
+      "parentUuid": "677ed411_b66ae13d",
       "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
