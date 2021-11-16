@@ -26,8 +26,9 @@ const (
 	ActiveDUTController   StringControl = "active_dut_controller"
 	ArbKey                StringControl = "arb_key"
 	ArbKeyConfig          StringControl = "arb_key_config"
-	DUTVoltageMV          StringControl = "dut_voltage_mv"
+	APUARTStream          StringControl = "cpu_uart_stream"
 	DownloadImageToUSBDev StringControl = "download_image_to_usb_dev"
+	DUTVoltageMV          StringControl = "dut_voltage_mv"
 	ECActiveCopy          StringControl = "ec_active_copy"
 	FWWPState             StringControl = "fw_wp_state"
 	ImageUSBKeyDev        StringControl = "image_usbkey_dev"
@@ -86,6 +87,7 @@ type OnOffControl string
 
 // These controls accept only "on" and "off" as values.
 const (
+	APUARTCapture  OnOffControl = "cpu_uart_capture"
 	CCDKeepaliveEn OnOffControl = "ccd_keepalive_en"
 	CCDState       OnOffControl = "ccd_state"
 	DTSMode        OnOffControl = "servo_dts_mode"
