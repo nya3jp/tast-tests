@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2accc369_89ac1d5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-11-16T18:35:31Z",
+      "side": 1,
+      "message": "Hi David,                                                                                             \n        When I did CQ+2, CQ was failing due to \"[Precondition failure] Panic: Variable \"arcappcompat.gaiaPoolDefault\" was not registered in testing.Test.Vars. Try adding the line \u0027Vars: []string{\"arcappcompat.gaiaPoolDefault\"},\u0027 to your testing.Test{}\". So tried using \"Vars:\" instead of \"VarDeps\" for gaiaPoolDefault variables in app tests under arcappcompat suite. Tested the changes by running the all 100 app tests under arcappcompat suite. Looks like CQ is still failing due to \"[Precondition failure] Panic: Variable \"arcappcompat.gaiaPoolDefault\" was not registered in testing.Test.Vars. Try adding the line \u0027Vars: []string{\"arcappcompat.gaiaPoolDefault\"},\u0027 to your testing.Test{}\". Please let me know if I am missing any. Thanks.",
+      "revId": "20e3cd8078e4bed2b9ada1a29b91c93a27cbf327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
