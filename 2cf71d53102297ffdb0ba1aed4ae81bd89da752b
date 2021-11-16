@@ -34,6 +34,24 @@
       "parentUuid": "59fdf4cd_92a4fd15",
       "revId": "2cf71d53102297ffdb0ba1aed4ae81bd89da752b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5440f70b_db33a26b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-11-16T23:52:13Z",
+      "side": 1,
+      "message": "Say in case the test has been skipped on all devices, our manual QA team might assume it as passed which is a problem. How do we solve the same.",
+      "parentUuid": "9a8e6027_a3f5e694",
+      "revId": "2cf71d53102297ffdb0ba1aed4ae81bd89da752b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
