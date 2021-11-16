@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1018fd29_5022aa36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-16T02:44:47Z",
+      "side": 1,
+      "message": "\u003e \"Ser\" is a possible misspelling of \"Set\".\n\nPlease fix.",
+      "parentUuid": "241e054b_1550080b",
+      "range": {
+        "startLine": 11,
+        "startChar": 53,
+        "endLine": 11,
+        "endChar": 56
+      },
+      "revId": "02eac2f6a62a0220a799ea3d862a20218dc38df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
