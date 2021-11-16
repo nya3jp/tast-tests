@@ -56,6 +56,30 @@
       },
       "revId": "6cb43e3b8a32c8e9abe3e0cb0fea3893c7e2876d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fcb4f34_a3be552b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-16T19:21:47Z",
+      "side": 1,
+      "message": "Yes. Sorry for the carelessness.",
+      "parentUuid": "eab354d3_089659da",
+      "range": {
+        "startLine": 263,
+        "startChar": 35,
+        "endLine": 263,
+        "endChar": 40
+      },
+      "revId": "6cb43e3b8a32c8e9abe3e0cb0fea3893c7e2876d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
