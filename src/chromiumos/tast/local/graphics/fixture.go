@@ -30,8 +30,8 @@ func init() {
 		Desc:            "Check if there any gpu related hangs during a test",
 		Contacts:        []string{"ddmail@google.com", "chromeos-gfx@google.com"},
 		Impl:            &gpuWatchHangsFixture{},
-		PreTestTimeout:  60 * time.Second,
-		PostTestTimeout: 60 * time.Second,
+		PreTestTimeout:  2 * time.Minute,
+		PostTestTimeout: 2 * time.Minute,
 	})
 
 	testing.AddFixture(&testing.Fixture{
