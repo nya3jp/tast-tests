@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74a50301_0de4f1e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-16T22:31:39Z",
+      "side": 1,
+      "message": "I think it looks fine with me. I do have a few nit comments. Please take a look. thanks.",
+      "revId": "8060f321a8e0a22464d8412eccf8d84870d15434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce6cff43_0ad203d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-16T22:31:39Z",
+      "side": 1,
+      "message": "nit:\n\nFor the ui related, will it be simpler to do something like this\n\n```\nconst timeout \u003d 20 * time.Second\ninputTab :\u003d diagnosticsapp.DxInput.Ancestor(dxRootnode)\npollOpts :\u003d testing.PollOptions{Interval: time.Second, Timeout: timeout}\nif err :\u003d uiauto.Combine(\"find the keyboard list heading\",\n\t\tui.WithTimeout(timeout).WaitUntilExists(inputTab),\n\t\tui.WithPollOpts(pollOpts).LeftClick(inputTab)(ctx)\n\t\tui.WithTimeout(timeout).WaitUntilExists(keyboardListHeading),\n\t)(ctx); err !\u003d nil {\n\t\ts.Fatal(\"Failed to find the keyboard list heading: \", err)\n\t}\n```",
+      "revId": "8060f321a8e0a22464d8412eccf8d84870d15434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35236c0e_b829a2fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-16T22:31:39Z",
+      "side": 1,
+      "message": "Suggestion: Use const or var instead of \"using 20 * time.Second\". \n\nQuestion: Is a 20-second timeout a bit long? How long is the operation expected? If it is not too long. I suggest to shorten it.",
+      "revId": "8060f321a8e0a22464d8412eccf8d84870d15434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
