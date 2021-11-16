@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d568ce9_4f166fa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2021-11-16T02:04:37Z",
+      "side": 1,
+      "message": "Thanks for updating the apk!",
+      "revId": "825485c57d6e54c94be21708a7c0f4148afd3915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
