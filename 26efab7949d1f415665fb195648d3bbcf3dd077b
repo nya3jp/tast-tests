@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91037592_c3d10643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-16T23:44:21Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 209,
+        "startChar": 25,
+        "endLine": 209,
+        "endChar": 31
+      },
+      "revId": "26efab7949d1f415665fb195648d3bbcf3dd077b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a9aaca6_47137fc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-16T23:44:21Z",
+      "side": 1,
+      "message": "It could be:\nswipeDirection :\u003d trackpad.LeftSwipe\nif !reverseOn {\n    swipeDirection \u003d trackpad.RightSwipe\n}",
+      "range": {
+        "startLine": 225,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "26efab7949d1f415665fb195648d3bbcf3dd077b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1084030_2c3f99ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-16T23:44:21Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 240,
+        "startChar": 25,
+        "endLine": 240,
+        "endChar": 31
+      },
+      "revId": "26efab7949d1f415665fb195648d3bbcf3dd077b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
