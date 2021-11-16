@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fb16f33_4802f87d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/auth_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-11-16T19:56:52Z",
+      "side": 0,
+      "message": "is this bug still relevant?",
+      "revId": "e45af1092238e9e0a0e46cd847ae40b12daf1a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
