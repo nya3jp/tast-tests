@@ -53,6 +53,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9959858e_20dd1d46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-16T06:43:44Z",
+      "side": 1,
+      "message": "Kyle, mind following up on the bug to add screen record to the allowlist for reporting?",
+      "parentUuid": "95dcb0ea_6e2bb32d",
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08fe8af1_0bc46dfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-16T06:43:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "146856c7_3a35dadf",
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "516baf2a_bfb43ad1",
@@ -138,6 +174,30 @@
       "side": 1,
       "message": "I\u0027m not aware of any other options to distinguish between VM/non-VM, using tast_vm might be your best bet, but probably would be best not to exclude VMs if possible",
       "parentUuid": "0276c074_0db8a3e3",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 35
+      },
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15dd28c8_62e0a724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-16T06:43:44Z",
+      "side": 1,
+      "message": "Let\u0027s give it a go to see what happens on VMs. If it failed to record, I\u0027ll be able to file a bug for that. Marking this as resolved.",
+      "parentUuid": "e74349c3_bdf4e79c",
       "range": {
         "startLine": 78,
         "startChar": 18,
@@ -243,6 +303,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b92143_ffe3c4b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-16T06:43:44Z",
+      "side": 1,
+      "message": "Thanks for checking that in. I moved the code for starting/stopping record to the faillog helper using the same faillog dir. PTAL",
+      "parentUuid": "f440436b_bff1c824",
+      "range": {
+        "startLine": 84,
+        "startChar": 24,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1585ffc0_0c3177c9",
@@ -260,6 +344,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "381412ad_79cd1be2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-16T06:43:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1585ffc0_0c3177c9",
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71f36b43_e0b79e09",
@@ -273,6 +375,30 @@
       "writtenOn": "2021-11-15T23:33:46Z",
       "side": 1,
       "message": "this indexing seems a little weird, I guess the default output order from ls will line up correctly with the test steps? I feel like explicitly labeling them to line up with the test steps would be better in the long run.",
+      "range": {
+        "startLine": 142,
+        "startChar": 87,
+        "endLine": 142,
+        "endChar": 88
+      },
+      "revId": "52fd441f60be4201a116e53b95c8106f24b60806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dbf4006_a90419af",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-16T06:43:44Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "71f36b43_e0b79e09",
       "range": {
         "startLine": 142,
         "startChar": 87,
