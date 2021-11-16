@@ -119,7 +119,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			addArgs:   []interface{}{uint16(accessPort), "", dbus.UnixFD(tcpAccessR.Fd())},
 			delMethod: "ReleaseTcpPort",
 			delArgs:   []interface{}{uint16(accessPort), ""},
-			rule:      []string{"INPUT", "-p", "tcp", "-m", "tcp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
+			rule:      []string{"ingress_port_firewall", "-p", "tcp", "-m", "tcp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd, ip6tablesCmd},
 		},
 		{
@@ -127,7 +127,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			addArgs:   []interface{}{uint16(accessPort), iface, dbus.UnixFD(tcpIfaceAccessR.Fd())},
 			delMethod: "ReleaseTcpPort",
 			delArgs:   []interface{}{uint16(accessPort), iface},
-			rule:      []string{"INPUT", "-i", iface, "-p", "tcp", "-m", "tcp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
+			rule:      []string{"ingress_port_firewall", "-i", iface, "-p", "tcp", "-m", "tcp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd, ip6tablesCmd},
 		},
 		{
@@ -143,7 +143,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			addArgs:   []interface{}{uint16(accessPort), "", dbus.UnixFD(udpAccessR.Fd())},
 			delMethod: "ReleaseUdpPort",
 			delArgs:   []interface{}{uint16(accessPort), ""},
-			rule:      []string{"INPUT", "-p", "udp", "-m", "udp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
+			rule:      []string{"ingress_port_firewall", "-p", "udp", "-m", "udp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd, ip6tablesCmd},
 		},
 		{
@@ -151,7 +151,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 			addArgs:   []interface{}{uint16(accessPort), iface, dbus.UnixFD(udpIfaceAccessR.Fd())},
 			delMethod: "ReleaseUdpPort",
 			delArgs:   []interface{}{uint16(accessPort), iface},
-			rule:      []string{"INPUT", "-i", iface, "-p", "udp", "-m", "udp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
+			rule:      []string{"ingress_port_firewall", "-i", iface, "-p", "udp", "-m", "udp", "--dport", strconv.Itoa(accessPort), "-j", "ACCEPT", "-w"},
 			cmds:      []string{iptablesCmd, ip6tablesCmd},
 		},
 		{
@@ -207,7 +207,7 @@ func Firewall(ctx context.Context, s *testing.State) {
 		addArgs:   []interface{}{uint16(lifelinePort), "", dbus.UnixFD(tcpLifelineTestR.Fd())},
 		delMethod: "ReleaseTcpPort",
 		delArgs:   []interface{}{uint16(lifelinePort), ""},
-		rule:      []string{"INPUT", "-p", "tcp", "-m", "tcp", "--dport", strconv.Itoa(lifelinePort), "-j", "ACCEPT", "-w"},
+		rule:      []string{"ingress_port_firewall", "-p", "tcp", "-m", "tcp", "--dport", strconv.Itoa(lifelinePort), "-j", "ACCEPT", "-w"},
 		cmds:      []string{iptablesCmd, ip6tablesCmd},
 	}
 	checkCall(lifelineTc.addMethod, lifelineTc.addArgs...)
