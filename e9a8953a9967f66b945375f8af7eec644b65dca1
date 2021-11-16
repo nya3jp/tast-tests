@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55ccf423_25c083a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-11-16T01:18:35Z",
+      "side": 1,
+      "message": "I am considering this change for making a new test that tests test data across local and remote tests in the bundle, but having problem with the lint, as commented in the localtests.go in this change.\nShould it be added as an excaption in the linter?",
+      "revId": "e9a8953a9967f66b945375f8af7eec644b65dca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48d39c7a_17b59abd",
