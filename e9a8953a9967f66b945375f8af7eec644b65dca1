@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d39c7a_17b59abd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/localtests/localtests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-11-16T01:12:35Z",
+      "side": 1,
+      "message": "lint error: Tast requires exactly one symbol (test function or service type) to be exported in an entry file",
+      "revId": "e9a8953a9967f66b945375f8af7eec644b65dca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3b3d303_5d6eab42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/localtests/localtests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-11-16T01:12:35Z",
+      "side": 1,
+      "message": "lint error: import of chromiumos/tast/local/bundles/cros/a11y is only allowed from chromiumos/tast/local/bundles/*/a11y or its descendant",
+      "revId": "e9a8953a9967f66b945375f8af7eec644b65dca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
