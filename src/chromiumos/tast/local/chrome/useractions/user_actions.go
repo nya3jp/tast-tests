@@ -67,6 +67,11 @@ func NewUserAction(name string, action action.Action, uc *UserContext, uac *User
 	return fromAction(name, action, uc, uac)
 }
 
+// SetOutputDir set the output directory of the user context.
+func (uc *UserContext) SetOutputDir(outputDir string) {
+	uc.outputDir = outputDir
+}
+
 // SetAttribute set the value of an attribute of the user context.
 func (uc *UserContext) SetAttribute(name, value string) {
 	uc.contextAttributes[name] = value
@@ -203,6 +208,16 @@ func (ua *UserAction) Run(ctx context.Context) (err error) {
 		}
 	}
 	return err
+}
+
+// Name returns the name of the user action.
+func (ua *UserAction) Name() string {
+	return ua.name
+}
+
+// UserContext returns the user context instance of the user action.
+func (ua *UserAction) UserContext() *UserContext {
+	return ua.userContext
 }
 
 type actionResult struct {
