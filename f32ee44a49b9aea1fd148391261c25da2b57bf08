@@ -68,6 +68,224 @@
       "message": "Hi @Oleh/Andres, I\u0027ve resolved the merge conflicts, can you please review this CL again?",
       "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f583483e_ce0d038f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-16T11:53:02Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f74f9d_f699dbfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-16T11:53:02Z",
+      "side": 1,
+      "message": "nit: s.Fatal",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 9
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5ca52af_2aa85bf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-16T11:53:02Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 9
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b211d4_952e361c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-16T11:53:02Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 149,
+        "startChar": 43,
+        "endLine": 149,
+        "endChar": 45
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdf986bf_a44cb2b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-16T11:53:02Z",
+      "side": 1,
+      "message": "same about logging: do you really need it here?\n\nsame in other places",
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baeabcdb_3cab415c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-16T11:53:02Z",
+      "side": 1,
+      "message": "We probably will see a lot of errors like that when network in the lab won\u0027t be stable or YouTube will have some problems. Can we identify what is the root cause of frame drops?",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 116
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c262f909_7b1f7725",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-16T11:53:02Z",
+      "side": 1,
+      "message": "nit: make is const",
+      "range": {
+        "startLine": 358,
+        "startChar": 1,
+        "endLine": 358,
+        "endChar": 19
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7bb757b_e1f7dc70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-16T11:53:02Z",
+      "side": 1,
+      "message": "nit: do we really need these logs?\n\nPTAL on guidance about logging in Tast:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c549cc_42c9836c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-16T11:53:02Z",
+      "side": 1,
+      "message": "In you enter this branch, you will return error in line 378 which will contain the same info, so there is no need to log this message",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 139
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77bcefa9_87cf8d6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-16T11:53:02Z",
+      "side": 1,
+      "message": "nit: what about rephrasing:\n\n\"frame drops rate %.2f (dropped %d, decoded %d) higher that allowed threshold %.2f\"",
+      "range": {
+        "startLine": 378,
+        "startChar": 24,
+        "endLine": 378,
+        "endChar": 128
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
