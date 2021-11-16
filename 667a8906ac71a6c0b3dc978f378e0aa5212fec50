@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "693a67ea_eb48d3d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-16T00:35:06Z",
+      "side": 1,
+      "message": "Maybe just return turnOnAction(ctx)?",
+      "range": {
+        "startLine": 1068,
+        "startChar": 4,
+        "endLine": 1071,
+        "endChar": 14
+      },
+      "revId": "667a8906ac71a6c0b3dc978f378e0aa5212fec50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

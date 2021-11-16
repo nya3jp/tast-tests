@@ -192,6 +192,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ef32961_b778fee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-16T00:35:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "206d173a_6c7bb509",
+      "range": {
+        "startLine": 311,
+        "startChar": 50,
+        "endLine": 311,
+        "endChar": 65
+      },
+      "revId": "d95e0e4b552f77d158e2320190be92ca3919ae15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa9d431e_2a2c0335",
@@ -477,6 +501,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "771cdfef_c29a4c14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-16T00:35:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1e149b92_bdcbefe8",
+      "range": {
+        "startLine": 1067,
+        "startChar": 19,
+        "endLine": 1067,
+        "endChar": 34
+      },
+      "revId": "d95e0e4b552f77d158e2320190be92ca3919ae15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b69d2d0_0e00a2dd",
@@ -658,6 +706,30 @@
       "side": 1,
       "message": "Sorry for the mistake. Please check the latest patch set 14.",
       "parentUuid": "32a8ffed_054d7471",
+      "range": {
+        "startLine": 1077,
+        "startChar": 49,
+        "endLine": 1077,
+        "endChar": 64
+      },
+      "revId": "d95e0e4b552f77d158e2320190be92ca3919ae15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b11eb933_5ac3588b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-16T00:35:06Z",
+      "side": 1,
+      "message": "Here the error is still not checked.",
+      "parentUuid": "98dee0ae_296c79e5",
       "range": {
         "startLine": 1077,
         "startChar": 49,
