@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "accd3b24_eba02169",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/search_sections.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-16T18:47:26Z",
+      "side": 1,
+      "message": "I believe a slice is a reference type, so this is kind of redundant. Cleaner to just return the slice directly.",
+      "range": {
+        "startLine": 93,
+        "startChar": 41,
+        "endLine": 93,
+        "endChar": 44
+      },
+      "revId": "52d9da652583fcd59faa249a70d0ec31f73abb7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49dd2db3_5f3406db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/search_sections.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-16T18:47:26Z",
+      "side": 1,
+      "message": "no need for this parameter, you can access the outer scope from within a closure, so you could just use cleanupCtx directly.",
+      "range": {
+        "startLine": 222,
+        "startChar": 12,
+        "endLine": 222,
+        "endChar": 31
+      },
+      "revId": "52d9da652583fcd59faa249a70d0ec31f73abb7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d17e4d7_47ea7da7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/search_sections.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-16T18:47:26Z",
+      "side": 1,
+      "message": "why is the long timeout needed here and below?",
+      "range": {
+        "startLine": 242,
+        "startChar": 28,
+        "endLine": 242,
+        "endChar": 39
+      },
+      "revId": "52d9da652583fcd59faa249a70d0ec31f73abb7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc4a508f_b955d8ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/search_sections.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-16T18:47:26Z",
+      "side": 1,
+      "message": "return nil instead of this",
+      "range": {
+        "startLine": 271,
+        "startChar": 9,
+        "endLine": 271,
+        "endChar": 27
+      },
+      "revId": "52d9da652583fcd59faa249a70d0ec31f73abb7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7048c6ae_d855f54b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-16T18:47:26Z",
+      "side": 1,
+      "message": "I don\u0027t quite remember, but I think this shows up in the logs right? If so, you can remove the context log above",
+      "range": {
+        "startLine": 280,
+        "startChar": 26,
+        "endLine": 280,
+        "endChar": 72
+      },
+      "revId": "52d9da652583fcd59faa249a70d0ec31f73abb7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b788f7_e5fa1f1b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-16T18:47:26Z",
+      "side": 1,
+      "message": "forget if it\u0027s possible or not, but can you just return nil here?",
+      "range": {
+        "startLine": 285,
+        "startChar": 9,
+        "endLine": 285,
+        "endChar": 28
+      },
+      "revId": "52d9da652583fcd59faa249a70d0ec31f73abb7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
