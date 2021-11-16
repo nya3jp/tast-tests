@@ -16,6 +16,46 @@
       "message": "Hi, Judy and Daisy! This is the third CL of the trackpad reverse scrolling related tast test. Thanks for helping me review it.",
       "revId": "6cb43e3b8a32c8e9abe3e0cb0fea3893c7e2876d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f11c4cc9_44d7e4cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2021-11-16T01:49:46Z",
+      "side": 1,
+      "message": "lgtm on my side",
+      "revId": "6cb43e3b8a32c8e9abe3e0cb0fea3893c7e2876d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab354d3_089659da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2021-11-16T01:49:46Z",
+      "side": 1,
+      "message": "nit: left?",
+      "range": {
+        "startLine": 263,
+        "startChar": 35,
+        "endLine": 263,
+        "endChar": 40
+      },
+      "revId": "6cb43e3b8a32c8e9abe3e0cb0fea3893c7e2876d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
