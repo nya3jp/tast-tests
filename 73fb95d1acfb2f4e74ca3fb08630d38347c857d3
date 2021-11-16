@@ -16,6 +16,23 @@
       "message": "lgtm altho a tast-owner still has to review this",
       "revId": "73fb95d1acfb2f4e74ca3fb08630d38347c857d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02aee401_2dc9ed8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-16T07:47:59Z",
+      "side": 1,
+      "message": "Ah, my bad. Setting Gabor as reviewer since Hidehiko is still ooo and I already swamped him with other CLs.",
+      "revId": "73fb95d1acfb2f4e74ca3fb08630d38347c857d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
