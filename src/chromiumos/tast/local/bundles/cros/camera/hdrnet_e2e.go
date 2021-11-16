@@ -9,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/chrome"
@@ -22,7 +23,7 @@ func init() {
 		Desc:         "Runs the HDRnet end-to-end integration test",
 		Contacts:     []string{"jcliang@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"camera_app", "camera_feature_hdrnet", "chrome"},
+		SoftwareDeps: []string{"camera_app", "camera_feature_hdrnet", "chrome", caps.BuiltinMIPICamera},
 		Fixture:      "ccaTestBridgeReady",
 		Timeout:      6 * time.Minute,
 	})
