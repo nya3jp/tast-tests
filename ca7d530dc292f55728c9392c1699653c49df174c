@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d1eb8fc_9fcdbb60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2021-11-16T00:36:17Z",
+      "side": 1,
+      "message": "Hi Jun, I uploaded a wrong patch by mistake, but I have corrected it now. Can you approve it again? Thanks!",
+      "revId": "ca7d530dc292f55728c9392c1699653c49df174c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
