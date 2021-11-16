@@ -16,6 +16,40 @@
       "message": "Hi David,                                                                                             \n        When I did CQ+2, CQ was failing due to \"[Precondition failure] Panic: Variable \"arcappcompat.gaiaPoolDefault\" was not registered in testing.Test.Vars. Try adding the line \u0027Vars: []string{\"arcappcompat.gaiaPoolDefault\"},\u0027 to your testing.Test{}\". So tried using \"Vars:\" instead of \"VarDeps\" for gaiaPoolDefault variables in app tests under arcappcompat suite. Tested the changes by running the all 100 app tests under arcappcompat suite. Looks like CQ is still failing due to \"[Precondition failure] Panic: Variable \"arcappcompat.gaiaPoolDefault\" was not registered in testing.Test.Vars. Try adding the line \u0027Vars: []string{\"arcappcompat.gaiaPoolDefault\"},\u0027 to your testing.Test{}\". Please let me know if I am missing any. Thanks.",
       "revId": "20e3cd8078e4bed2b9ada1a29b91c93a27cbf327",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d667c8b_08e66aab",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-16T19:10:13Z",
+      "side": 1,
+      "message": "Other files (the failed tests) require this \u0027else\u0027 to not require GAIA related variables. By adjusting this else to require variables related to the arcappcompat tests, any test that uses this precondition, and doesn\u0027t want to pass GAIA variables, will fail. I\u0027m not super familiar with VARS so there may be a better way, however, you need a way to distinguish three cases: (1) GAIA variables provided, (2) No GAIA variables provided (3) GAIA pool provided and adjust the if/else blocks accordingly. It seems the precondition can have EXTRAARGS passed to it so one way to achieve this may be to pass a \"USEGAIAPOOL\" var and have that as a checked.",
+      "revId": "20e3cd8078e4bed2b9ada1a29b91c93a27cbf327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad43e904_0bffd23d",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-16T19:10:13Z",
+      "side": 1,
+      "message": "Same as above, this call can\u0027t be made directly and should only be called when GAIA variables are passed, or the GAIA pool is supposed to be used.",
+      "revId": "20e3cd8078e4bed2b9ada1a29b91c93a27cbf327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
