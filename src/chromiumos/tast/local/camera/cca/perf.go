@@ -13,10 +13,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/testutil"
-	"chromiumos/tast/local/cpu"
 	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
 )
@@ -32,85 +30,6 @@ const (
 	measureDuration = 20 * time.Second
 )
 
-// MeasurementOptions contains the information for performance measurement.
-type MeasurementOptions struct {
-	PerfValues               *perf.Values
-	ShouldMeasureUIBehaviors bool
-	OutputDir                string
-}
-
-// MeasurePerformance measures performance for CCA.
-func MeasurePerformance(ctx context.Context, startApp StartAppFunc, stopApp StopAppFunc, options MeasurementOptions) (retErr error) {
-	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to set up benchmark")
-	}
-	defer cleanUpBenchmark(ctx)
-
-	// Reserve time for cleanup at the end of the test.
-	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
-
-	// Prevents the CPU usage measurements from being affected by any previous tests.
-	if err := cpu.WaitUntilIdle(ctx); err != nil {
-		return errors.Wrap(err, "failed to idle")
-	}
-
-	app, err := startApp(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to open CCA")
-	}
-	defer func(ctx context.Context) {
-		if err := stopApp(ctx, retErr != nil); err != nil {
-			retErr = errors.Wrap(retErr, err.Error())
-		}
-	}(ctx)
-
-	if options.ShouldMeasureUIBehaviors {
-		if err := measureUIBehaviors(ctx, app, options.PerfValues); err != nil {
-			return errors.Wrap(err, "failed to measure UI behaviors")
-		}
-	}
-
-	if err := app.CollectPerfEvents(ctx, options.PerfValues); err != nil {
-		return errors.Wrap(err, "failed to collect perf events")
-	}
-
-	return nil
-}
-
-// measureUIBehaviors measures the performance of UI behaviors such as taking picture, recording
-// video, etc.
-func measureUIBehaviors(ctx context.Context, app *App, perfValues *perf.Values) error {
-	testing.ContextLog(ctx, "Fullscreening window")
-	if err := app.FullscreenWindow(ctx); err != nil {
-		return errors.Wrap(err, "failed to fullscreen window")
-	}
-	if err := app.WaitForVideoActive(ctx); err != nil {
-		return errors.Wrap(err, "preview is inactive after fullscreening window")
-	}
-
-	return app.RunThroughCameras(ctx, func(facing Facing) error {
-		if err := measurePreviewPerformance(ctx, app, perfValues, facing); err != nil {
-			return errors.Wrap(err, "failed to measure preview performance")
-		}
-
-		if err := measureRecordingPerformance(ctx, app, perfValues, facing); err != nil {
-			return errors.Wrap(err, "failed to measure video recording performance")
-		}
-
-		if err := measureTakingPicturePerformance(ctx, app); err != nil {
-			return errors.Wrap(err, "failed to measure performance for taking picture")
-		}
-
-		if err := measureGifRecordingPerformance(ctx, app); err != nil {
-			return errors.Wrap(err, "failed to measure performance for gif recording")
-		}
-
-		return nil
-	})
-}
-
 // measureStablizedUsage measures the CPU and power usage after it's cooled down for stabilizationDuration.
 func measureStablizedUsage(ctx context.Context) (map[string]float64, error) {
 	testing.ContextLog(ctx, "Sleeping to wait for CPU usage to stabilize for ", stabilizationDuration)
@@ -122,8 +41,8 @@ func measureStablizedUsage(ctx context.Context) (map[string]float64, error) {
 	return mediacpu.MeasureUsage(ctx, measureDuration)
 }
 
-// measurePreviewPerformance measures the performance of preview with QR code detection on and off.
-func measurePreviewPerformance(ctx context.Context, app *App, perfValues *perf.Values, facing Facing) error {
+// MeasurePreviewPerformance measures the performance of preview with QR code detection on and off.
+func MeasurePreviewPerformance(ctx context.Context, app *App, perfValues *perf.Values, facing Facing) error {
 	testing.ContextLog(ctx, "Switching to photo mode")
 	if err := app.SwitchMode(ctx, Photo); err != nil {
 		return errors.Wrap(err, "failed to switch to photo mode")
@@ -226,8 +145,8 @@ func measurePreviewPerformance(ctx context.Context, app *App, perfValues *perf.V
 	return nil
 }
 
-// measureRecordingPerformance measures the performance of video recording.
-func measureRecordingPerformance(ctx context.Context, app *App, perfValues *perf.Values, facing Facing) error {
+// MeasureRecordingPerformance measures the performance of video recording.
+func MeasureRecordingPerformance(ctx context.Context, app *App, perfValues *perf.Values, facing Facing) error {
 	testing.ContextLog(ctx, "Switching to video mode")
 	if err := app.SwitchMode(ctx, Video); err != nil {
 		return errors.Wrap(err, "failed to switch to video mode")
@@ -273,8 +192,8 @@ func measureRecordingPerformance(ctx context.Context, app *App, perfValues *perf
 	return nil
 }
 
-// measureTakingPicturePerformance takes a picture and measure the performance of UI operations.
-func measureTakingPicturePerformance(ctx context.Context, app *App) error {
+// MeasureTakingPicturePerformance takes a picture and measure the performance of UI operations.
+func MeasureTakingPicturePerformance(ctx context.Context, app *App) error {
 	if err := app.WaitForVideoActive(ctx); err != nil {
 		return err
 	}
@@ -291,8 +210,8 @@ func measureTakingPicturePerformance(ctx context.Context, app *App) error {
 	return nil
 }
 
-// measureGifRecordingPerformance records a gif and measure the performance of UI operations.
-func measureGifRecordingPerformance(ctx context.Context, app *App) error {
+// MeasureGifRecordingPerformance records a gif and measure the performance of UI operations.
+func MeasureGifRecordingPerformance(ctx context.Context, app *App) error {
 	if err := app.WaitForVideoActive(ctx); err != nil {
 		return err
 	}
@@ -307,9 +226,9 @@ func measureGifRecordingPerformance(ctx context.Context, app *App) error {
 	return nil
 }
 
-// CollectPerfEvents collects all perf events from launch until now and saves them into given place.
-func (a *App) CollectPerfEvents(ctx context.Context, perfValues *perf.Values) error {
-	entries, err := a.appWindow.Perfs(ctx)
+// CollectPerfEvents collects perf events matching |perfEntryPattern| from launch until now and saves them into given place.
+func (a *App) CollectPerfEvents(ctx context.Context, perfValues *perf.Values, perfEntryPattern *regexp.Regexp) error {
+	allEntries, err := a.appWindow.Perfs(ctx)
 	if err != nil {
 		return err
 	}
@@ -324,6 +243,14 @@ func (a *App) CollectPerfEvents(ctx context.Context, perfValues *perf.Values) er
 			return fmt.Sprintf(`%s-facing-%s`, entry.Event, validFacingString)
 		}
 		return entry.Event
+	}
+
+	var entries []testutil.PerfEntry
+	for _, entry := range allEntries {
+		name := informativeEventName(entry)
+		if perfEntryPattern.MatchString(name) {
+			entries = append(entries, entry)
+		}
 	}
 
 	countMap := make(map[string]int)
