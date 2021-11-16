@@ -193,6 +193,9 @@ type SubTestParams struct {
 	StopAppOnlyIfExist bool
 }
 
+// ResetChromeFunc reset chrome used in this fixture.
+type ResetChromeFunc func(context.Context) error
+
 // StartAppFunc starts CCA.
 type StartAppFunc func(context.Context) (*App, error)
 
@@ -209,6 +212,8 @@ type FixtureData struct {
 	TestBridge func() *testutil.TestBridge
 	// App returns the CCA instance which lives through the test.
 	App func() *App
+	// ResetChrome resets chrome used by this fixture.
+	ResetChrome ResetChromeFunc
 	// StartApp starts CCA which can be used between subtests.
 	StartApp StartAppFunc
 	// StopApp stops CCA which can be used between subtests.
@@ -242,6 +247,13 @@ type fixture struct {
 	genScene         string
 	debugParams      DebugParams
 	features         []feature
+}
+
+func (f *fixture) cameraType() testutil.UseCameraType {
+	if f.fakeCamera {
+		return testutil.UseFakeCamera
+	}
+	return testutil.UseRealCamera
 }
 
 func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -314,11 +326,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		}()
 	}
 
-	cameraType := testutil.UseRealCamera
-	if f.fakeCamera {
-		cameraType = testutil.UseFakeCamera
-	}
-	tb, err := testutil.NewTestBridge(ctx, cr, cameraType)
+	tb, err := testutil.NewTestBridge(ctx, cr, f.cameraType())
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
 	}
@@ -331,6 +339,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		App:            f.cca,
 		StartApp:       f.startApp,
 		StopApp:        f.stopApp,
+		ResetChrome:    f.resetChrome,
 		RunSubTest:     f.runSubTest,
 		PrepareChart:   f.prepareChart,
 		SetDebugParams: f.setDebugParams}
@@ -409,6 +418,18 @@ func (f *fixture) resetTestBridge(ctx context.Context) error {
 	tb, err := testutil.NewTestBridge(ctx, f.cr, cameraType)
 	if err != nil {
 		return errors.Wrap(err, "failed to construct test bridge")
+	}
+	f.tb = tb
+	return nil
+}
+
+func (f *fixture) resetChrome(ctx context.Context) error {
+	if err := f.cr.ResetState(ctx); err != nil {
+		return errors.Wrap(err, "failed to reset chrome in fixture")
+	}
+	tb, err := testutil.NewTestBridge(ctx, f.cr, f.cameraType())
+	if err != nil {
+		return errors.Wrap(err, "failed to construct test bridge after reset chrome state")
 	}
 	f.tb = tb
 	return nil
