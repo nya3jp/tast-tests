@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0036652f_745c1c43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-11-16T01:13:38Z",
+      "side": 1,
+      "message": "Observed that CQ is failing due to \"[Precondition failure] Panic: Variable \"arcappcompat.gaiaPoolDefault\" was not registered in testing.Test.Vars. Try adding the line \u0027Vars: []string{\"arcappcompat.gaiaPoolDefault\"},\u0027 to your testing.Test{}\". So tried using \"Vars:\" instead of \"VarDeps\" for gaiaPoolDefault variables.",
+      "revId": "d481a2e04c579ea36b9509833ce35bc93bafef33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
