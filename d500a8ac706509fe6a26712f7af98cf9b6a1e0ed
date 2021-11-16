@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a856b8b7_4f93c300",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1150472
+      },
+      "writtenOn": "2021-11-16T19:23:34Z",
+      "side": 1,
+      "message": "NIT: Remove duplicate line.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 28
+      },
+      "revId": "d500a8ac706509fe6a26712f7af98cf9b6a1e0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4368674f_b2e1c236",
@@ -14,6 +37,46 @@
       "writtenOn": "2021-11-16T05:16:56Z",
       "side": 1,
       "message": "Thomas, may I ask you to review this? Thanks in advance.",
+      "revId": "d500a8ac706509fe6a26712f7af98cf9b6a1e0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f136fae4_41aaaa89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150472
+      },
+      "writtenOn": "2021-11-16T19:23:34Z",
+      "side": 1,
+      "message": "LGTM. The parsing of actual headers is something that is out of my depth. I\u0027m adding sandersd@ that might know more, or might just be curious about the changes.\n\nAlso, thank you for contributing back to MP4Box! I might update the Webcodecs samples to use your code and support VPx, if that\u0027s ok with you.",
+      "revId": "d500a8ac706509fe6a26712f7af98cf9b6a1e0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18019234_5bcd4bb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1150472
+      },
+      "writtenOn": "2021-11-16T19:23:34Z",
+      "side": 1,
+      "message": "Considering this is a generic Demuxer, this should be renamed eventually.",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 17
+      },
       "revId": "d500a8ac706509fe6a26712f7af98cf9b6a1e0ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
