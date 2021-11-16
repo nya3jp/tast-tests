@@ -489,16 +489,23 @@ func findCoreDumps(dirs []string) (paths []string, size int64) {
 
 // processRunning checks if a process named procName is running.
 func processRunning(procName string) (bool, error) {
+	const zombieStatus = "Z"
+
 	ps, err := process.Processes()
 	if err != nil {
 		return false, err
 	}
 	for _, p := range ps {
+		status, err := p.Status()
+		if err != nil {
+			continue
+		}
+
 		n, err := p.Name()
 		if err != nil {
 			continue
 		}
-		if n == procName {
+		if n == procName && status != zombieStatus {
 			return true, nil
 		}
 	}
