@@ -33,6 +33,23 @@
       "message": "Ah, my bad. Setting Gabor as reviewer since Hidehiko is still ooo and I already swamped him with other CLs.",
       "revId": "73fb95d1acfb2f4e74ca3fb08630d38347c857d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf30abcb_95898635",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-16T09:03:09Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "73fb95d1acfb2f4e74ca3fb08630d38347c857d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
