@@ -6,6 +6,7 @@ package firmware
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	fwCommon "chromiumos/tast/common/firmware"
@@ -34,6 +35,7 @@ func init() {
 		Attr:         []string{"group:firmware"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+		Vars:         []string{"firmware.skipFlashUSB"},
 		Params: []testing.Param{{
 			Name:    "normal_warm",
 			Fixture: fixture.NormalMode,
@@ -153,7 +155,18 @@ func BootMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Error opening servo: ", err)
 	}
 	if tc.bootToMode == fwCommon.BootModeRecovery {
-		if err := h.SetupUSBKey(ctx, s.CloudStorage()); err != nil {
+		skipFlashUSB := false
+		if skipFlashUSBStr, ok := s.Var("firmware.skipFlashUSB"); ok {
+			skipFlashUSB, err = strconv.ParseBool(skipFlashUSBStr)
+			if err != nil {
+				s.Fatalf("Invalid value for var firmware.skipFlashUSB: got %q, want true/false", skipFlashUSBStr)
+			}
+		}
+		cs := s.CloudStorage()
+		if skipFlashUSB {
+			cs = nil
+		}
+		if err := h.SetupUSBKey(ctx, cs); err != nil {
 			s.Fatal("USBKey not working: ", err)
 		}
 	}
@@ -196,7 +209,7 @@ func BootMode(ctx context.Context, s *testing.State) {
 		}
 		s.Logf("Transitioning to %s mode with options %+v", tc.bootToMode, opts)
 		if err = ms.RebootToMode(ctx, tc.bootToMode, opts...); err != nil {
-			s.Fatalf("Error during transition from %s to %s: %+v", fwCommon.BootModeNormal, tc.bootToMode, err)
+			s.Fatalf("Error during transition from %s to %s: %+v", pv.BootMode, tc.bootToMode, err)
 		}
 		s.Log("Transition completed successfully")
 
