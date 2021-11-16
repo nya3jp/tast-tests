@@ -20,8 +20,9 @@ import (
 type tracingMode bool
 
 const (
-	tracingOn  tracingMode = true
-	tracingOff tracingMode = false
+	tracingOn    tracingMode = true
+	tracingOff   tracingMode = false
+	idleDuration             = 30 * time.Second
 )
 
 func init() {
@@ -31,6 +32,7 @@ func init() {
 		Contacts:     []string{"xiyuan@chromium.org", "yichenz@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      cuj.CPUStablizationTimeout + idleDuration,
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -63,7 +65,7 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
 
 	// Wait for cpu to stabilize before test.
-	if err := cpu.WaitUntilStabilized(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
+	if err := cpu.WaitUntilStabilized(ctx, cuj.CPUCoolDownConfig()); err != nil {
 		s.Fatal("Failed to wait for CPU to become idle: ", err)
 	}
 
@@ -88,8 +90,8 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 	}
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
-		s.Log("Just wait for 30 seconds to check the load of idle status")
-		return testing.Sleep(ctx, 30*time.Second)
+		s.Log("Just wait for ", idleDuration, " to check the load of idle status")
+		return testing.Sleep(ctx, idleDuration)
 	}); err != nil {
 		s.Fatal("Failed to run the test scenario: ", err)
 	}
