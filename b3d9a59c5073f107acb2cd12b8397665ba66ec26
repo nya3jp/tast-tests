@@ -94,6 +94,30 @@
       },
       "revId": "b3d9a59c5073f107acb2cd12b8397665ba66ec26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f842ec2_5b329e6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/basic_layout.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-16T18:52:09Z",
+      "side": 1,
+      "message": "Fine to leave it, since everyone has already +1\u0027d this :) in the future, explicit touch control not necessary in general, unless testing specific gesture-related functionality",
+      "parentUuid": "0baefb70_48d1db80",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "b3d9a59c5073f107acb2cd12b8397665ba66ec26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
