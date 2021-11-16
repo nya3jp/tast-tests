@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c327024b_8d00ff6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-16T00:40:22Z",
+      "side": 1,
+      "message": "I\u0027m happy to review this one. I\u0027m still a shadow reviewer for tast, but this is less about tast and more JS anyway, and I can still +2.",
+      "parentUuid": "8622f736_6b2255b7",
+      "revId": "1a5f84af41ab6f4b7fefa80967a0159bff717d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "918b1a94_9ced9c96",
