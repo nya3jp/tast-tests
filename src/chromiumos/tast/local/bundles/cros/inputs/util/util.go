@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 )
 
@@ -207,6 +208,22 @@ func RunSubTest(ctx context.Context, s *testing.State, cr *chrome.Chrome, testNa
 
 		if err := action(ctx); err != nil {
 			s.Fatalf("Subtest %q failed: %v", testName, err)
+		}
+	})
+}
+
+// RunUserActionAsSubTest is designed to run an user action as a subtest.
+// It reserves 5s for general cleanup, dumping ui tree and screenshot on error.
+// The sub test result is returned.
+func RunUserActionAsSubTest(ctx context.Context, s *testing.State, ua *useractions.UserAction) bool {
+	return s.Run(ctx, ua.Name(), func(ctx context.Context, s *testing.State) {
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+		defer cancel()
+		defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, filepath.Join(s.OutDir(), ua.Name()), s.HasError, ua.UserContext().Chrome(), "ui_tree_")
+
+		if err := ua.Run(ctx); err != nil {
+			s.Fatalf("Subtest %q failed: %v", ua.Name(), err)
 		}
 	})
 }
