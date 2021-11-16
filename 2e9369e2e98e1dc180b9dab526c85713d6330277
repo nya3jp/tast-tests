@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2714f5d_7ea92d94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-16T13:32:32Z",
+      "side": 1,
+      "message": "also here, maybe we could use b/204177106",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "2e9369e2e98e1dc180b9dab526c85713d6330277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
