@@ -7,8 +7,6 @@ package policy
 import (
 	"context"
 
-	"github.com/kylelemons/godebug/pretty"
-
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
@@ -16,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/strcmp"
 	"chromiumos/tast/testing"
 )
 
@@ -31,23 +30,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      fixture.ChromePolicyLoggedIn,
 	})
-}
-
-// sameIDs compares expected and actual IDs as sets, that is, checks if they contain the same
-// values ignoring the order. It returns a human readable diff between the values, which is an empty
-// string if the values are the same.
-func sameIDs(want, got []string) string {
-	gotMap := make(map[string]bool)
-	for _, g := range got {
-		gotMap[g] = true
-	}
-
-	wantMap := make(map[string]bool)
-	for _, w := range want {
-		wantMap[w] = true
-	}
-
-	return pretty.Compare(wantMap, gotMap)
 }
 
 func PrintersBulkAccessMode(ctx context.Context, s *testing.State) {
@@ -142,7 +124,7 @@ func PrintersBulkAccessMode(ctx context.Context, s *testing.State) {
 				s.Fatal("Received response contains duplicates")
 			}
 
-			if diff := sameIDs(param.expectedIDs, ids); diff != "" {
+			if diff := strcmp.SameList(param.expectedIDs, ids); diff != "" {
 				s.Error(errors.Errorf("unexpected IDs (-want +got): %v", diff))
 			}
 		})
