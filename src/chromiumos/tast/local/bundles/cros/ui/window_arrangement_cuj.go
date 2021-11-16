@@ -40,7 +40,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars:         []string{"record"},
-		Timeout:      17 * time.Minute,
+		Timeout:      22 * time.Minute,
 		Data:         []string{"bear-320x240.vp8.webm", "pip.html"},
 		Params: []testing.Param{
 			{
@@ -97,7 +97,9 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for cpu to stabilize before test.
-	if err := cpu.WaitUntilStabilized(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
+	cdConfig := cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
+	cdConfig.PollTimeout = 10 * time.Minute
+	if err := cpu.WaitUntilStabilized(ctx, cdConfig); err != nil {
 		s.Fatal("Failed to wait for CPU to become idle: ", err)
 	}
 

@@ -35,7 +35,7 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl:           &prepareCUJFixture{},
-		PreTestTimeout: 7 * time.Minute, // 5 min cpu cooldown + 2 min cpu idle
+		PreTestTimeout: 12 * time.Minute, // 10 min cpu cooldown + 2 min cpu idle
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInToCUJUser",
@@ -149,7 +149,9 @@ func (f *prepareCUJFixture) PreTest(ctx context.Context, s *testing.FixtTestStat
 	// all child fixtures's PreTest and the setup in each test main function do
 	// not do cpu intensive works. Otherwise, this needs to moved into body of
 	// tests.
-	if err := cpu.WaitUntilStabilized(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
+	cdConfig := cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
+	cdConfig.PollTimeout = 10 * time.Minute
+	if err := cpu.WaitUntilStabilized(ctx, cdConfig); err != nil {
 		s.Fatal("Failed to wait for CPU to become idle: ", err)
 	}
 }

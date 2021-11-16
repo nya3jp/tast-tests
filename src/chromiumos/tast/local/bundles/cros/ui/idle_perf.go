@@ -31,6 +31,7 @@ func init() {
 		Contacts:     []string{"xiyuan@chromium.org", "yichenz@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      13 * time.Minute, // 10 + 2 cpu wait, 30s idle
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -63,7 +64,9 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 	a := s.PreValue().(arc.PreData).ARC
 
 	// Wait for cpu to stabilize before test.
-	if err := cpu.WaitUntilStabilized(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
+	cdConfig := cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
+	cdConfig.PollTimeout = 10 * time.Minute
+	if err := cpu.WaitUntilStabilized(ctx, cdConfig); err != nil {
 		s.Fatal("Failed to wait for CPU to become idle: ", err)
 	}
 
