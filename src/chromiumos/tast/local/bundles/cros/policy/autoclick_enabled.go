@@ -98,16 +98,16 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 			}
 
 			// Check if a click occurred by checking whether the Sign out button is visible or not.
-			if err := ui.WithTimeout(time.Second * 10).WaitUntilExists(nodewith.Name("Sign out").ClassName("SignOutButton"))(ctx); err != nil {
+			if err := ui.WithTimeout(time.Second * 10).WaitUntilExists(nodewith.Role(role.Window).ClassName("TrayBubbleView"))(ctx); err != nil {
 				if !strings.Contains(err.Error(), nodewith.ErrNotFound) {
-					s.Fatal("Failed to wait for 'Sign out' button: ", err)
+					s.Fatal("Failed to wait for 'TrayBubbleView' window: ", err)
 				}
 				if param.wantButton {
-					s.Error("Could not find 'Sign out' button")
+					s.Error("Could not find 'TrayBubbleView' window")
 				}
 			} else {
 				if !param.wantButton {
-					s.Error("Unexpected 'Sign out' button found")
+					s.Error("Unexpected 'TrayBubbleView' window found")
 				}
 			}
 
