@@ -23,6 +23,7 @@ type StringControl string
 const (
 	ActiveChgPort         StringControl = "active_chg_port"
 	ActiveDUTController   StringControl = "active_dut_controller"
+	APUARTStream          StringControl = "cpu_uart_stream"
 	DownloadImageToUSBDev StringControl = "download_image_to_usb_dev"
 	DUTVoltageMV          StringControl = "dut_voltage_mv"
 	FWWPState             StringControl = "fw_wp_state"
@@ -81,6 +82,7 @@ type OnOffControl string
 
 // These controls accept only "on" and "off" as values.
 const (
+	APUARTCapture  OnOffControl = "cpu_uart_capture"
 	CCDKeepaliveEn OnOffControl = "ccd_keepalive_en"
 	CCDState       OnOffControl = "ccd_state"
 	DTSMode        OnOffControl = "servo_dts_mode"
