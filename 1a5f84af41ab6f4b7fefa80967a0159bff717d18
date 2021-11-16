@@ -139,6 +139,24 @@
       "parentUuid": "918b1a94_9ced9c96",
       "revId": "1a5f84af41ab6f4b7fefa80967a0159bff717d18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "216ad4c1_ff945948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_common.js",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-16T04:03:33Z",
+      "side": 1,
+      "message": "\u003e \u003e * Is push atomic? Do you need to lock the buffer?\n\u003e \n\u003e I think it is not necessary as Javascript is a single thread environment.\nAh, wasn\u0027t familiar with JS\u0027s concurrency model. Read some articles, appears you\u0027re right.\n\n \n\u003e \u003e * If decoding a frame takes longer than it takes for frames to arrive, what happens? Generally, you\u0027d want dropped frames, but this appears to just slow down even more as the queue gets longer and longer and it\u0027s trying to do more in parallel.\n\u003e \n\u003e I am not sure if I get this. \n\u003e This decodeVideoInURL() function is synchronous API that decodes all the frames in URL and returns them.\n\u003e It will never return until all the frames are obtained.\n\u003e So if decoding takes longer time and thus this function is not returned in the test limitation time, tast test aborts this function and fails as context deadline exceeded.\nMy bad, I misunderstood the context in which this operated.\n\u003e \n\u003e \u003e * What does it mean to \u0027close\u0027 a frame? I\u0027m not familiar with what the meaning of it here is, but generally closing something means you can\u0027t use it elsewhere anymore, and presumably the decoder needs to use the frame?\n\u003e \n\u003e close() means the video frame resource is no longer used in JS side. The resource can still be used in underlying WebCodecs VideoDecoder implementation. In other words, until close() is called, the underlying WebCodecs VideoDecoder implementation must not overwrite it. Therefore, close() needs to be called (or VideoFrame is destructed in JS garbage collection).\nMakes sense, thanks for the clorification",
+      "parentUuid": "89f35232_526e34b0",
+      "revId": "1a5f84af41ab6f4b7fefa80967a0159bff717d18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
