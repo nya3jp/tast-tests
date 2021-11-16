@@ -31,6 +31,7 @@ func init() {
 		Attr:        []string{"group:wificell", "wificell_func"},
 		ServiceDeps: []string{wificell.TFServiceName},
 		Fixture:     "wificellFixtWithCapture",
+		Timeout:     8 * time.Minute,
 	})
 }
 
@@ -97,7 +98,7 @@ func PTK(ctx context.Context, s *testing.State) {
 		}
 	}
 	monitorProps := []string{shillconst.ServicePropertyIsConnected}
-	pingBuffer := 5 * time.Second
+	pingBuffer := 20 * time.Second
 	waitBuffer := 5 * time.Second
 	waitCtx, cancel := context.WithTimeout(ctx, time.Duration(float64(pingCount)*pingInterval)*time.Second+pingBuffer+waitBuffer)
 	defer cancel()
