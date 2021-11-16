@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"regexp"
+	"strconv"
 	"time"
 
 	gossh "golang.org/x/crypto/ssh"
@@ -58,6 +59,7 @@ func init() {
 		),
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
+		Vars:         []string{"firmware.skipFlashUSB"},
 		Params: []testing.Param{
 			// Test eventlog upon normal->normal reboot.
 			{
@@ -67,7 +69,7 @@ func init() {
 				Fixture:           fixture.NormalMode,
 				Val: eventLogParams{
 					resetType:         firmware.WarmReset,
-					requiredEventSets: [][]string{[]string{`System boot`}},
+					requiredEventSets: [][]string{{`System boot`}},
 					prohibitedEvents:  `Developer Mode|Recovery Mode|Sleep| Wake`,
 				},
 			},
@@ -79,7 +81,7 @@ func init() {
 				Fixture:           fixture.NormalMode,
 				Val: eventLogParams{
 					resetType:         firmware.WarmReset,
-					requiredEventSets: [][]string{[]string{`System boot`}},
+					requiredEventSets: [][]string{{`System boot`}},
 					prohibitedEvents:  `Developer Mode|Recovery Mode|Sleep| Wake`,
 					allowedEvents:     `^ACPI Wake \| Deep S5$`,
 				},
@@ -92,7 +94,7 @@ func init() {
 				Fixture:           fixture.DevModeGBB,
 				Val: eventLogParams{
 					resetType:         firmware.WarmReset,
-					requiredEventSets: [][]string{[]string{`System boot`, `Chrome OS Developer Mode`}},
+					requiredEventSets: [][]string{{`System boot`, `Chrome OS Developer Mode`}},
 					prohibitedEvents:  `Recovery Mode|Sleep| Wake`,
 				},
 			},
@@ -104,7 +106,7 @@ func init() {
 				Fixture:           fixture.DevModeGBB,
 				Val: eventLogParams{
 					resetType:         firmware.WarmReset,
-					requiredEventSets: [][]string{[]string{`System boot`, `Chrome OS Developer Mode`}},
+					requiredEventSets: [][]string{{`System boot`, `Chrome OS Developer Mode`}},
 					prohibitedEvents:  `Recovery Mode|Sleep| Wake`,
 					allowedEvents:     `^ACPI Wake \| Deep S5$`,
 				},
@@ -116,7 +118,7 @@ func init() {
 				Fixture:   fixture.NormalMode,
 				Val: eventLogParams{
 					bootToMode:        fwCommon.BootModeRecovery,
-					requiredEventSets: [][]string{[]string{`System boot`, `Chrome OS Recovery Mode \| Recovery Button`}},
+					requiredEventSets: [][]string{{`System boot`, `Chrome OS Recovery Mode \| Recovery Button`}},
 					prohibitedEvents:  `Developer Mode|Sleep|FW Wake|ACPI Wake \| S3`,
 				},
 				Timeout: 60 * time.Minute,
@@ -128,7 +130,7 @@ func init() {
 				Fixture:   fixture.RecMode,
 				Val: eventLogParams{
 					bootToMode:        fwCommon.BootModeNormal,
-					requiredEventSets: [][]string{[]string{`System boot`}},
+					requiredEventSets: [][]string{{`System boot`}},
 					prohibitedEvents:  `Developer Mode|Recovery Mode|Sleep`,
 				},
 				Timeout: 6 * time.Minute,
@@ -146,9 +148,9 @@ func init() {
 				Val: eventLogParams{
 					suspendResume: true,
 					requiredEventSets: [][]string{
-						[]string{`Sleep`, `^Wake`},
-						[]string{`ACPI Enter \| S3`, `ACPI Wake \| S3`},
-						[]string{`S0ix Enter`, `S0ix Exit`},
+						{`Sleep`, `^Wake`},
+						{`ACPI Enter \| S3`, `ACPI Wake \| S3`},
+						{`S0ix Enter`, `S0ix Exit`},
 					},
 					prohibitedEvents: `System |Developer Mode|Recovery Mode`,
 				},
@@ -166,8 +168,8 @@ func init() {
 					suspendResume: true,
 					suspendToIdle: "1",
 					requiredEventSets: [][]string{
-						[]string{`Sleep`, `^Wake`},
-						[]string{`S0ix Enter`, `S0ix Exit`},
+						{`Sleep`, `^Wake`},
+						{`S0ix Enter`, `S0ix Exit`},
 					},
 					prohibitedEvents: `System |Developer Mode|Recovery Mode`,
 				},
@@ -185,8 +187,8 @@ func init() {
 					suspendResume: true,
 					suspendToIdle: "0",
 					requiredEventSets: [][]string{
-						[]string{`Sleep`, `^Wake`},
-						[]string{`ACPI Enter \| S3`, `ACPI Wake \| S3`},
+						{`Sleep`, `^Wake`},
+						{`ACPI Enter \| S3`, `ACPI Wake \| S3`},
 					},
 					prohibitedEvents: `System |Developer Mode|Recovery Mode`,
 				},
@@ -200,7 +202,7 @@ func init() {
 				Val: eventLogParams{
 					hardwareWatchdog: true,
 					requiredEventSets: [][]string{
-						[]string{`System boot|Hardware watchdog reset`},
+						{`System boot|Hardware watchdog reset`},
 					},
 				},
 			},
@@ -245,7 +247,18 @@ func Eventlog(ctx context.Context, s *testing.State) {
 	} else if param.bootToMode != "" {
 		// If booting into recovery, check the USB Key.
 		if param.bootToMode == fwCommon.BootModeRecovery {
-			if err := h.SetupUSBKey(ctx, s.CloudStorage()); err != nil {
+			skipFlashUSB := false
+			if skipFlashUSBStr, ok := s.Var("firmware.skipFlashUSB"); ok {
+				skipFlashUSB, err = strconv.ParseBool(skipFlashUSBStr)
+				if err != nil {
+					s.Fatalf("Invalid value for var firmware.skipFlashUSB: got %q, want true/false", skipFlashUSBStr)
+				}
+			}
+			cs := s.CloudStorage()
+			if skipFlashUSB {
+				cs = nil
+			}
+			if err := h.SetupUSBKey(ctx, cs); err != nil {
 				s.Fatal("USBKey not working: ", err)
 			}
 		}

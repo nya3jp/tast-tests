@@ -508,6 +508,10 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 		return nil
 	}
 
+	if cloudStorage == nil {
+		testing.ContextLogf(ctx, "User requested no USB image download, using %s even though it differs from DUT %s", releaseBuilderPath, dutBuilderPath)
+		return nil
+	}
 	testing.ContextLogf(ctx, "Current build on USB (%s) differs from DUT (%s), proceed with download", releaseBuilderPath, dutBuilderPath)
 
 	// Copying the behavior from src/third_party/hdctools/servo/drv/usb_downloader.py.
