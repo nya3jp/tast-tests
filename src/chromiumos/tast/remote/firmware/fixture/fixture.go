@@ -37,7 +37,7 @@ func init() {
 		Desc:            "Reboot into normal mode before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeNormal, false),
-		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -50,7 +50,7 @@ func init() {
 		Desc:            "Reboot into dev mode before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeDev, false),
-		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -63,7 +63,7 @@ func init() {
 		Desc:            "Reboot into dev mode using GBB flags before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeDev, true),
-		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -76,7 +76,7 @@ func init() {
 		Desc:            "Reboot into usb-dev mode before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeUSBDev, false),
-		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -89,7 +89,7 @@ func init() {
 		Desc:            "Reboot into usb-dev mode using GBB flags before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeUSBDev, true),
-		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -102,7 +102,7 @@ func init() {
 		Desc:            "Reboot into recovery mode before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeRecovery, false),
-		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -179,7 +179,15 @@ func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		if err := i.value.Helper.RequireServo(ctx); err != nil {
 			s.Fatal("Failed to connect to servod: ", err)
 		}
-		if err := i.value.Helper.SetupUSBKey(ctx, s.CloudStorage()); err != nil {
+		allowFlashUSB := true
+		if skipFlashUSBStr, ok := s.Var("firmware.skipFlashUSB"); ok {
+			skipFlashUSB, err := strconv.ParseBool(skipFlashUSBStr)
+			if err != nil {
+				s.Fatalf("Invalid value for var firmware.skipFlashUSB: got %q, want true/false", skipFlashUSBStr)
+			}
+			allowFlashUSB = !skipFlashUSB
+		}
+		if err := i.value.Helper.SetupUSBKey(ctx, s.CloudStorage(), allowFlashUSB); err != nil {
 			s.Fatal("Failed to setup USB key: ", err)
 		}
 	}
