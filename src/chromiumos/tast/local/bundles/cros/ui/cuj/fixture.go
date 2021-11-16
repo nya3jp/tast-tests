@@ -24,7 +24,18 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const resetTimeout = 30 * time.Second
+const (
+	// CPUCoolDownTimeout is the time to wait for cpu cool down.
+	CPUCoolDownTimeout = 10 * time.Minute
+	// CPUIdleTimeout is the time to wait for cpu utilization to go down.
+	// This value should match waitIdleCPUTimeout in cpu/idle.go.
+	CPUIdleTimeout = 2 * time.Minute
+	// CPUStablizationTimeout is the time to wait for cpu stablization, which
+	// is the sum of cpu cool down time and cpu idle time.
+	CPUStablizationTimeout = CPUCoolDownTimeout + CPUIdleTimeout
+
+	resetTimeout = 30 * time.Second
+)
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
@@ -35,7 +46,7 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl:           &prepareCUJFixture{},
-		PreTestTimeout: 7 * time.Minute, // 5 min cpu cooldown + 2 min cpu idle
+		PreTestTimeout: CPUStablizationTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInToCUJUser",
@@ -126,6 +137,13 @@ func runningPackages(ctx context.Context, a *arc.ARC) (map[string]struct{}, erro
 	return acts, nil
 }
 
+// CPUCoolDownConfig returns a cpu.CoolDownConfig to be used for CUJ tests.
+func CPUCoolDownConfig() cpu.CoolDownConfig {
+	cdConfig := cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
+	cdConfig.PollTimeout = CPUCoolDownTimeout
+	return cdConfig
+}
+
 type prepareCUJFixture struct{}
 
 func (f *prepareCUJFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -149,7 +167,7 @@ func (f *prepareCUJFixture) PreTest(ctx context.Context, s *testing.FixtTestStat
 	// all child fixtures's PreTest and the setup in each test main function do
 	// not do cpu intensive works. Otherwise, this needs to moved into body of
 	// tests.
-	if err := cpu.WaitUntilStabilized(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
+	if err := cpu.WaitUntilStabilized(ctx, CPUCoolDownConfig()); err != nil {
 		s.Fatal("Failed to wait for CPU to become idle: ", err)
 	}
 }
