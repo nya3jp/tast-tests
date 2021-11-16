@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e6fd54_8da78f96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2021-11-16T20:16:39Z",
+      "side": 1,
+      "message": "I think you just needed to have self-voted Verified+1 like this.",
+      "revId": "7e20e962d85f9bdcb62bd6db348ca1c78412263a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
