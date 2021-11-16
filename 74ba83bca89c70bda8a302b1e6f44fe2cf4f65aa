@@ -50,6 +50,42 @@
       "message": "nit: missing comment",
       "revId": "74ba83bca89c70bda8a302b1e6f44fe2cf4f65aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c78918ec_96c77089",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/common.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-11-16T03:34:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "741828ef_4449bb4a",
+      "revId": "74ba83bca89c70bda8a302b1e6f44fe2cf4f65aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1b6a37b_8259cd7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/common.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-11-16T03:34:12Z",
+      "side": 1,
+      "message": "This is useful function to output JS logs and returns callErr.\nThe format is common pre-preocess before returning an error.\n\nThis function is used in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3257398/3/src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go#171 and so on.",
+      "parentUuid": "6861c311_ff87dac7",
+      "revId": "74ba83bca89c70bda8a302b1e6f44fe2cf4f65aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
