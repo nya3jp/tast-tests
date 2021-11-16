@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eef1598_57ad4f3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-16T19:49:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be3b740e_d671bacf",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 10
+      },
+      "revId": "1e12e12aa130bd1b18895e2ff9ef82aefa3b0cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ced8b3f1_b9140e1c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-16T19:29:16Z",
       "side": 1,
       "message": "It would be more idiomatic and clearer (IMO) to return an error here, and have the caller set the bool based on the error state.",
+      "range": {
+        "startLine": 120,
+        "startChar": 62,
+        "endLine": 120,
+        "endChar": 66
+      },
+      "revId": "1e12e12aa130bd1b18895e2ff9ef82aefa3b0cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1380e1f3_2f6ddd82",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/faillog/faillog.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-16T19:49:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ced8b3f1_b9140e1c",
       "range": {
         "startLine": 120,
         "startChar": 62,
