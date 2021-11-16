@@ -69,6 +69,24 @@
       "message": "Looks like we had a recent failure on sentry. Any idea what happened there?",
       "revId": "c296fa5adee96d1de08bb4b88490cdf0fe635081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e4bbb5_f744c0fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-16T23:51:03Z",
+      "side": 1,
+      "message": "It looks like an infra issue to me. If it is not caused by the test itself, we can ignore that failure regarding promoting the test to CQ.",
+      "parentUuid": "5f61a374_a356d21f",
+      "revId": "c296fa5adee96d1de08bb4b88490cdf0fe635081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
