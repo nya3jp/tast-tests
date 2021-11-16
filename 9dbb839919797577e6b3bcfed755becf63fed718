@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdea3f82_56210213",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-16T00:13:43Z",
+      "side": 1,
+      "message": "do you want a check_crashes variant for both scenarios? if so, the usual pattern is to create a struct to hold the combination of parameters like\n```\ntype testParams struct {\n    checkCrashes bool\n    withShortcut bool //or however you want to distinguish button/shortcut\n}\n```\nthen use that struct as the Val in the parameterized tests",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 6
+      },
+      "revId": "9dbb839919797577e6b3bcfed755becf63fed718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47268d46_2caf1242",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-16T00:13:43Z",
+      "side": 1,
+      "message": "is it worth saving any of the files from newCrashes with the test results for debugging?",
+      "revId": "9dbb839919797577e6b3bcfed755becf63fed718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
