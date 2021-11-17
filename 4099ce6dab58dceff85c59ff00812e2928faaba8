@@ -370,6 +370,24 @@
       "parentUuid": "32a7528c_8cf39443",
       "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53724004_94ac23fc",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-17T13:28:19Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "5a399050_18986f0a",
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
