@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec5d10b9_73ebbc0e",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-17T17:45:04Z",
+      "side": 1,
+      "message": "Generally we shouldn\u0027t have VERBOSE logs in feedback reports, but sometimes developers enable them \"briefly\" to debug something (but too often never turn them off). When they are included, we are interested in them, but I would limit it to VERBOSE1 and VERBOSE2 with a comment indicating that we should never be enabling VERBOSE3+ in system logs.",
+      "parentUuid": "41fe6c0b_d88820e1",
+      "revId": "8a0d0d37d3089cca1ae1a63279d946c93b471856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1dde9bc_7173bdb9",
