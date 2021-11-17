@@ -29,7 +29,7 @@ func init() {
 		// TODO(https://crbug.com/1266507): Remove "informational" once stable.
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.Microphone()),
+		HardwareDeps: hwdep.D(hwdep.Model("mrbland", "homestar")),
 	})
 }
 
