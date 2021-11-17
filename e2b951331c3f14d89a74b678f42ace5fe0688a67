@@ -22,6 +22,29 @@
       },
       "revId": "e2b951331c3f14d89a74b678f42ace5fe0688a67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80c1628f_e46dd333",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers_bulk_access_mode_managed_guest_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-17T13:43:28Z",
+      "side": 1,
+      "message": "remove enter",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 3
+      },
+      "revId": "e2b951331c3f14d89a74b678f42ace5fe0688a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
