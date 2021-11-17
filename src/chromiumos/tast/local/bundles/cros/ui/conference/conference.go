@@ -30,7 +30,7 @@ const (
 
 // Conference contains user's operation when enter a confernece room.
 type Conference interface {
-	Join(ctx context.Context, room string) error
+	Join(ctx context.Context, room string, toBlur bool) error
 	VideoAudioControl(ctx context.Context) error
 	SwitchTabs(ctx context.Context) error
 	ChangeLayout(ctx context.Context) error

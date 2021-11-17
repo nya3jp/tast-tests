@@ -97,7 +97,9 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		}()
 
 		if roomSize != NoRoom {
-			if err := conf.Join(ctx, inviteLink); err != nil {
+			// Only premium tier need to change background to blur at the beginning.
+			toBlur := tier == "premium"
+			if err := conf.Join(ctx, inviteLink, toBlur); err != nil {
 				return err
 			}
 

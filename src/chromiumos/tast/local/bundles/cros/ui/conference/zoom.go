@@ -37,7 +37,7 @@ type ZoomConference struct {
 }
 
 // Join joins a new conference room.
-func (conf *ZoomConference) Join(ctx context.Context, room string) error {
+func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) error {
 	ui := uiauto.New(conf.tconn)
 	openZoomAndSignIn := func(ctx context.Context) error {
 		const zoomURL = "https://zoom.us/"
