@@ -243,8 +243,8 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 		s.Log("GBBFlags are already proper")
 	} else {
 		s.Log("Setting GBB flags to ", i.value.GBBFlags.Set)
-		if err := common.ClearAndSetGBBFlags(ctx, i.value.Helper.DUT, i.value.GBBFlags); err != nil {
-			s.Fatal("ClearAndSetGBBFlags failed: ", err)
+		if err := common.SetGBBFlags(ctx, i.value.Helper.DUT, i.value.GBBFlags.Set); err != nil {
+			s.Fatal("SetGBBFlags failed: ", err)
 		}
 		if common.GBBFlagsChanged(*curr, i.value.GBBFlags, common.RebootRequiredGBBFlags()) {
 			s.Log("Resetting DUT due to GBB flag change")
