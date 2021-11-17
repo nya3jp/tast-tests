@@ -602,6 +602,18 @@ func MountWithAuthSession(ctx context.Context, authSessionID string, publicMount
 	return nil
 }
 
+// InvalidateAuthSession invalidates a user with AuthSessionID.
+func InvalidateAuthSession(ctx context.Context, authSessionID string) error {
+	testing.ContextLogf(ctx, "Trying to invalidate AuthSession with id: %q", authSessionID)
+	cmd := testexec.CommandContext(
+		ctx, "cryptohome", "--action=invalidate_auth_session",
+		"--auth_session_id="+authSessionID)
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to mount vault")
+	}
+	return nil
+}
+
 // AuthSessionMountFlow mounts a user with AuthSession.
 func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, password string, createUser bool) error {
 	// Start an Auth session and get an authSessionID.
@@ -643,6 +655,12 @@ func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, passw
 		return errors.Wrap(err, "failed to mount user -")
 	}
 	testing.ContextLog(ctx, "User mounted successfully")
+
+	//Invalidate AuthSession after use.
+	if err := InvalidateAuthSession(ctx, authSessionID); err != nil {
+		return errors.Wrap(err, "failed to invalidate AuthSession")
+	}
+	testing.ContextLog(ctx, "AuthSession invalidated successfully")
 
 	// Unmounting user vault.
 	if err := UnmountVault(ctx, username); err != nil {
