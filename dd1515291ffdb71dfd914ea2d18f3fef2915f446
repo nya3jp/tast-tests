@@ -96,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f16476ab_7cefbca4",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-17T00:20:22Z",
+      "side": 1,
+      "message": "Judy, do you mean that I should move all the declaration of const variables together? For example, at the begining before the definition of the functions?",
+      "parentUuid": "59ccd1d1_970a49e3",
+      "range": {
+        "startLine": 52,
+        "startChar": 6,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6d20ea6_fb07865f",
         "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
         "patchSetId": 3
