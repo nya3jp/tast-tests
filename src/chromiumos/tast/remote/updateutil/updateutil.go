@@ -8,6 +8,7 @@ import (
 	"context"
 	"encoding/json"
 	"math/rand"
+	"net"
 	"time"
 
 	"github.com/golang/protobuf/ptypes"
@@ -81,9 +82,14 @@ func CacheForDUT(ctx context.Context, dut *dut.DUT, TLWAddress, gsPathPrefix str
 
 	client := tls.NewWiringClient(conn)
 
+	host, _, err := net.SplitHostPort(dut.HostName())
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to extract DUT hostname from %q", dut.HostName())
+	}
+
 	operation, err := client.CacheForDut(ctx, &tls.CacheForDutRequest{
 		Url:     gsPathPrefix,
-		DutName: dut.HostName(),
+		DutName: host,
 	})
 	if err != nil {
 		return "", errors.Wrap(err, "failed to start CacheForDut request")
