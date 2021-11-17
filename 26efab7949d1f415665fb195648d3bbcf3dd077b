@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90c8552c_e9a47161",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-17T00:07:40Z",
+      "side": 1,
+      "message": "Yes, sorry for the carelessness.",
+      "parentUuid": "91037592_c3d10643",
+      "range": {
+        "startLine": 209,
+        "startChar": 25,
+        "endLine": 209,
+        "endChar": 31
+      },
+      "revId": "26efab7949d1f415665fb195648d3bbcf3dd077b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a9aaca6_47137fc0",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35a9ba7a_eee6cead",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-17T00:07:40Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "9a9aaca6_47137fc0",
+      "range": {
+        "startLine": 225,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "26efab7949d1f415665fb195648d3bbcf3dd077b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1084030_2c3f99ac",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-16T23:44:21Z",
       "side": 1,
       "message": "typo?",
+      "range": {
+        "startLine": 240,
+        "startChar": 25,
+        "endLine": 240,
+        "endChar": 31
+      },
+      "revId": "26efab7949d1f415665fb195648d3bbcf3dd077b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de3b70d_3c46bb07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-17T00:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1084030_2c3f99ac",
       "range": {
         "startLine": 240,
         "startChar": 25,
