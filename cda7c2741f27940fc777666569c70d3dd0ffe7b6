@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39a7f486_a53afdd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-17T18:41:31Z",
+      "side": 1,
+      "message": "One comment - note that this CL is becoming very large and has logic that impacts other tests. Is it possible to break it out into two CLs: one that changes the shared code, and another that updates the appcompat tests to use the shared logic? The shared logic should be reviewed by tast-owners@ before being submitted.",
+      "revId": "cda7c2741f27940fc777666569c70d3dd0ffe7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb4edfd4_883c68c1",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-17T18:41:31Z",
+      "side": 1,
+      "message": "Hardcoding arcappcompat variables in the generic arc precondition makes it so that any caller would be forced to use the arcappcompat credentials. A GaiaLoginPoolVars struct and variable, similar to how it\u0027s done for GaiaVars, will allow other callers to use it with their own credentials.",
+      "revId": "cda7c2741f27940fc777666569c70d3dd0ffe7b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
