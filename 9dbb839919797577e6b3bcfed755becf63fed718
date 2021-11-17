@@ -81,6 +81,24 @@
       "parentUuid": "47268d46_2caf1242",
       "revId": "9dbb839919797577e6b3bcfed755becf63fed718",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f2887ff_c1acd5d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-17T19:35:12Z",
+      "side": 1,
+      "message": "Not automatically to the test results directory, you\u0027d have to dig a bit to find them I think. This should work:\n```\nfor _, crash :\u003d range newCrashes {\n    out :\u003d filepath.Join(s.outDir(), filepath.Base(crash))\n    if err :\u003d fsutil.CopyFile(crash, out); err !\u003d nil {\n        s.Logf(\"Failed to save %v: %v\", crash, err)\n    }\n}\n```\nThen all of the relevant crashes will be saved right next to the other test artifacts",
+      "parentUuid": "1fee6669_29893b3e",
+      "revId": "9dbb839919797577e6b3bcfed755becf63fed718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
