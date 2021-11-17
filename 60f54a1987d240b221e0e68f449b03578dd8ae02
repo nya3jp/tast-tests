@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb34a02_c474a42e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T09:03:46Z",
+      "side": 1,
+      "message": "minor nit: Add",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "60f54a1987d240b221e0e68f449b03578dd8ae02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a812b6f5_a4fa8c6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T09:03:46Z",
+      "side": 1,
+      "message": "This line is too long.\nOne solution is to use \"Adding\" instead of \"This change adds\". Same with \"Checking\".",
+      "revId": "60f54a1987d240b221e0e68f449b03578dd8ae02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d92f127_21236f6a",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T09:03:46Z",
+      "side": 1,
+      "message": "nit: content\nSame for the other occurrences.",
+      "range": {
+        "startLine": 885,
+        "startChar": 18,
+        "endLine": 885,
+        "endChar": 26
+      },
+      "revId": "60f54a1987d240b221e0e68f449b03578dd8ae02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9842fcf3_1af45809",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T09:03:46Z",
+      "side": 1,
+      "message": "Please add a comment if it is expected for this line not to be in the input, and 0 is a valid output in that case.",
+      "revId": "60f54a1987d240b221e0e68f449b03578dd8ae02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bef8868f_e5de91c6",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T09:03:46Z",
+      "side": 1,
+      "message": "nit: capability.",
+      "range": {
+        "startLine": 1115,
+        "startChar": 16,
+        "endLine": 1115,
+        "endChar": 26
+      },
+      "revId": "60f54a1987d240b221e0e68f449b03578dd8ae02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5fe4a1a_848c0327",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T09:03:46Z",
+      "side": 1,
+      "message": "Would it be valid to use\n\u003e  attrs.supportHESTA \u003d strings.Contains(contents, \"HE MAC Capabilities\")\nhere?\nThis would also mean it can overwrite it to false, and I don\u0027t know whether it can cause side effects here.",
+      "range": {
+        "startLine": 1116,
+        "startChar": 2,
+        "endLine": 1118,
+        "endChar": 3
+      },
+      "revId": "60f54a1987d240b221e0e68f449b03578dd8ae02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc20fe3_626f2ea3",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T09:03:46Z",
+      "side": 1,
+      "message": "nit: capability.",
+      "range": {
+        "startLine": 1127,
+        "startChar": 15,
+        "endLine": 1127,
+        "endChar": 25
+      },
+      "revId": "60f54a1987d240b221e0e68f449b03578dd8ae02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53656145_3fa61719",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T09:03:46Z",
+      "side": 1,
+      "message": "Please move this inside the parseThroughput() function.",
+      "range": {
+        "startLine": 1140,
+        "startChar": 0,
+        "endLine": 1156,
+        "endChar": 1
+      },
+      "revId": "60f54a1987d240b221e0e68f449b03578dd8ae02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
