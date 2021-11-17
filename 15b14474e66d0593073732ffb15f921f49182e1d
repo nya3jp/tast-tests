@@ -16,6 +16,24 @@
       "message": "nit, there\u0027s another 5s sleep on line 298, consider refactoring this duration into a const and use it for both places.",
       "revId": "15b14474e66d0593073732ffb15f921f49182e1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0cf8d7_597683e5",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-17T23:39:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abb9936d_a9f1ae8e",
+      "revId": "15b14474e66d0593073732ffb15f921f49182e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
