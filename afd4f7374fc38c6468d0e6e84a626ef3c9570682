@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c62286f_d9d03177",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-11-17T18:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4debbcf8_36f05042",
+      "range": {
+        "startLine": 65,
+        "startChar": 70,
+        "endLine": 65,
+        "endChar": 81
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7d0b0c6_aecff9ff",
@@ -205,6 +229,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee2770c_2864b0d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-11-17T18:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9e83281_27eb963a",
+      "range": {
+        "startLine": 109,
+        "startChar": 35,
+        "endLine": 109,
+        "endChar": 51
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1ad3bae_33d096bc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-11-17T18:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afd19a52_fb840bcd",
+      "range": {
+        "startLine": 109,
+        "startChar": 134,
+        "endLine": 109,
+        "endChar": 135
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc2dd3b2_fb6cfe20",
@@ -218,6 +290,30 @@
       "writtenOn": "2021-11-01T17:14:15Z",
       "side": 1,
       "message": "instead, could yo open the file and pass it to cmd.Stdout, cmd.Stderr to directly redirect them?",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 2
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d1280b0_ca6e8392",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-11-17T18:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc2dd3b2_fb6cfe20",
       "range": {
         "startLine": 132,
         "startChar": 1,
@@ -245,6 +341,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ce603b9_45d540ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-11-17T18:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cfdc4d3_3ae07123",
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eee088e2_be9e9c8c",
@@ -258,6 +372,30 @@
       "writtenOn": "2021-11-01T17:14:15Z",
       "side": 1,
       "message": "IIUC, command error is proxied.\nCan testexec.ExitCode be usable to assess exit code?",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 14
+      },
+      "revId": "afd4f7374fc38c6468d0e6e84a626ef3c9570682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac1cbfc8_e26213ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-11-17T18:07:56Z",
+      "side": 1,
+      "message": "no, testexec.ExitCode cannot be used to assess exit code because it tries to cast the error as exec.ExitError when the type is actually ssh.ExitError\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/testexec/testexec.go?l\u003d398\u0026rcl\u003d747019aa6fd119bca4d956562aee33d409a06d79",
+      "parentUuid": "eee088e2_be9e9c8c",
       "range": {
         "startLine": 188,
         "startChar": 5,

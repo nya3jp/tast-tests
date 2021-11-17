@@ -281,6 +281,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba1536d1_b74e7f7c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-11-17T18:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf28b83c_c57a42cb",
+      "range": {
+        "startLine": 61,
+        "startChar": 12,
+        "endLine": 61,
+        "endChar": 13
+      },
+      "revId": "d9d28a56094a966a623c7e6b6e0aefc10fcdc22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a467f528_2dac638c",
