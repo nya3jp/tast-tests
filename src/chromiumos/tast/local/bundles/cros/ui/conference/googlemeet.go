@@ -40,9 +40,16 @@ type GoogleMeetConference struct {
 	room            string
 }
 
+const (
+	turnOffBackground = "Turn off visual effects"
+	blurBackground    = "Blur your background"
+	staticBackground  = "Blurry sky with purple horizon"
+	dynamicBackground = "Spaceship"
+	longUITimeout     = time.Minute // Used for situations where UI response are slower.
+)
+
 // Join joins a new conference room.
-func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
-	const showJoinNowTimeout = time.Minute
+func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur bool) error {
 	tconn := conf.tconn
 	ui := uiauto.New(tconn)
 	meetAccount := conf.account
@@ -58,7 +65,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 			return CheckSignedOutError(ctx, tconn, errors.Wrap(err, "failed to create chrome connection to join the conference"))
 		}
 
-		if err := webutil.WaitForQuiescence(ctx, conn, 45*time.Second); err != nil {
+		if err := webutil.WaitForQuiescence(ctx, conn, longUITimeout); err != nil {
 			return CheckSignedOutError(ctx, tconn, errors.Wrapf(err, "failed to wait for %q to be loaded and achieve quiescence", room))
 		}
 
@@ -101,12 +108,41 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		return nil
 	}
 
+	changeBackgroundToBlur := func(ctx context.Context) error {
+		if !toBlur {
+			return nil
+		}
+		changeBackgroundButton := nodewith.Name("Apply visual effects").Role(role.Button)
+		noEffectAndBlurRegion := nodewith.NameContaining("No effect & blur").Role(role.Region)
+		noEffectAndBlurHeading := nodewith.NameContaining("No effect & blur").Role(role.Heading)
+		turnOffButton := nodewith.NameContaining(turnOffBackground).Role(role.ToggleButton)
+		backgroundButton := nodewith.Name(blurBackground).Role(role.ToggleButton)
+		webArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
+		selectAFileDialog := nodewith.Name("Select a file to open").ClassName("ExtensionViewViews")
+		closeDialog := nodewith.Name("Close").Role(role.Button).Ancestor(selectAFileDialog)
+		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(webArea)
+		return uiauto.NamedAction("change background to blur",
+			uiauto.Combine("change background to blur",
+				ui.LeftClick(changeBackgroundButton), // Open "Background" panel.
+				ui.WithTimeout(longUITimeout).WaitUntilExists(noEffectAndBlurRegion),
+				ui.LeftClick(noEffectAndBlurHeading),
+				// Turn off effect to avoid clicking the blur button to turn off the effect.
+				cuj.ExpandMenu(conf.tconn, turnOffButton, noEffectAndBlurRegion, 100),
+				ui.LeftClick(backgroundButton),
+				ui.WaitUntilExists(backgroundButton.Focused()),
+				ui.LeftClick(closeButton), // Close "Background" panel.
+				// Some DUT performance is too poor, clicking the turn off button will trigger "Upload a background image".
+				// If the dialog "select a file to open" is opened, close it.
+				ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(selectAFileDialog), ui.LeftClick(closeDialog)),
+			))(ctx)
+	}
+
 	joinConf := func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Join Conference")
 		joinNowButton := nodewith.Name("Join now").Role(role.Button)
 		homeScreenLink := nodewith.Name("Return to home screen").Role(role.Link)
-		if err := ui.WithTimeout(showJoinNowTimeout).LeftClickUntil(joinNowButton, ui.WaitUntilGone(homeScreenLink))(ctx); err != nil {
-			return errors.Wrapf(err, "failed to click button to join conference within %v", showJoinNowTimeout)
+		if err := ui.WithTimeout(longUITimeout).LeftClickUntil(joinNowButton, ui.WaitUntilGone(homeScreenLink))(ctx); err != nil {
+			return errors.Wrapf(err, "failed to click button to join conference within %v", longUITimeout)
 		}
 		return nil
 	}
@@ -218,7 +254,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		nextUI := nodewith.NameRegex(regexp.MustCompile("(Join now|Email or phone)")).First()
 		if err := uiauto.Combine("select account",
 			ui.WaitUntilExists(meetAccountText),
-			ui.WithTimeout(showJoinNowTimeout).LeftClickUntil(meetAccountText, ui.WaitUntilExists(nextUI)),
+			ui.WithTimeout(longUITimeout).LeftClickUntil(meetAccountText, ui.WaitUntilExists(nextUI)),
 		)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to switch account to %s", meetAccount)
 		}
@@ -234,7 +270,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 
 		// Wait for the "Join now" button.
 		joinNowButton := nodewith.Name("Join now").Role(role.Button)
-		if err := ui.WithTimeout(showJoinNowTimeout).WaitUntilExists(joinNowButton)(ctx); err != nil {
+		if err := ui.WithTimeout(longUITimeout).WaitUntilExists(joinNowButton)(ctx); err != nil {
 			return errors.Wrapf(err, "Join now button didn't show for account %s", meetAccount)
 		}
 		return nil
@@ -294,6 +330,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string) error {
 		switchWindow,
 		// Check if the login account is the one for google meet. If not, switch to google meet account.
 		ui.IfSuccessThen(ui.Gone(targetMeetAccount), switchUser),
+		changeBackgroundToBlur,
 		joinConf,
 		// Sometimes participants number caught at the beginning is wrong, it will be correct after a while.
 		// Add retry to get the correct participants number.
@@ -417,11 +454,6 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 
 // BackgroundChange will sequentially change the background to blur, sky picture and turn off background effects.
 func (conf *GoogleMeetConference) BackgroundChange(ctx context.Context) error {
-	const (
-		blurBackground    = "Blur your background"
-		skyBackground     = "Blurry sky with purple horizon"
-		turnOffBackground = "Turn off"
-	)
 	ui := uiauto.New(conf.tconn)
 	pinToMainScreen := func(ctx context.Context) error {
 		pinBtn := nodewith.Name("Pin yourself to your main screen.")
@@ -457,9 +489,9 @@ func (conf *GoogleMeetConference) BackgroundChange(ctx context.Context) error {
 	if err := uiauto.Combine("pin to main screen and change background",
 		conf.uiHandler.SwitchToChromeTabByName("Meet"),
 		pinToMainScreen,
+		changeBackground(staticBackground),
+		changeBackground(dynamicBackground),
 		changeBackground(blurBackground),
-		changeBackground(skyBackground),
-		changeBackground(turnOffBackground),
 	)(ctx); err != nil {
 		return CheckSignedOutError(ctx, conf.tconn, err)
 	}
@@ -524,7 +556,7 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 				}
 				testing.ContextLog(ctx, "Another participant is presenting now, wait for the presentation to stop")
 				return errors.New("Another participant is presenting now")
-			}, &testing.PollOptions{Timeout: time.Minute})
+			}, &testing.PollOptions{Timeout: longUITimeout})
 		}
 
 		testing.ContextLog(ctx, "Share screen")
@@ -535,7 +567,7 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 			ui.LeftClick(presentMode),
 			ui.LeftClick(presentTab),
 			ui.LeftClickUntil(shareButton, ui.Gone(shareButton)),
-			ui.WithTimeout(time.Minute).WaitUntilExists(stopSharing),
+			ui.WithTimeout(longUITimeout).WaitUntilExists(stopSharing),
 		))(ctx)
 	}
 	stopPresenting := func(ctx context.Context) error {
