@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe2d2aa9_52760fa5",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T09:12:34Z",
+      "side": 1,
+      "message": "I just learned that HostName() can return with an ip:port format. I don\u0027t know if you want the port number in the filename as well.",
+      "range": {
+        "startLine": 166,
+        "startChar": 40,
+        "endLine": 166,
+        "endChar": 50
+      },
+      "revId": "ae1661912905154da7fa2dbe97f07951a3eb262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b782b54c_a4b42dbf",
         "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
         "patchSetId": 8
