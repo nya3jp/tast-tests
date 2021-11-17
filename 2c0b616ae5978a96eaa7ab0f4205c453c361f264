@@ -33,6 +33,23 @@
       "message": "As this is quite a big change, I will need more time than usual to review it.",
       "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f17ca460_5e2676fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T15:17:16Z",
+      "side": 1,
+      "message": "This CL should be split into 3 parts. The fixture, and the 2 tests.\nThey can be added in a relation chain (just pushing them from the same local branch).",
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
