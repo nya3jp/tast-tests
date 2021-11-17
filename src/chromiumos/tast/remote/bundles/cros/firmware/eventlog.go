@@ -126,7 +126,7 @@ func init() {
 			{
 				Name:      "rec_normal",
 				ExtraAttr: []string{"firmware_unstable", "firmware_usb"},
-				Fixture:   fixture.RecMode,
+				Fixture:   fixture.RecModeNoServices,
 				Val: eventLogParams{
 					bootToMode:        fwCommon.BootModeNormal,
 					requiredEventSets: [][]string{{`System boot`}},
