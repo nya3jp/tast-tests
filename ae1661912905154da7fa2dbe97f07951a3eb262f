@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e52e49a_908a0301",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-17T22:59:33Z",
+      "side": 1,
+      "message": "There are comments all over Tast missing periods, including in this same function from additional code that isn\u0027t part of my change. \n\nShould tast-lint handle this?\n\nI\u0027ll write a bug for it. I fixed this instance.",
+      "parentUuid": "c5859aa1_38300fbd",
+      "revId": "ae1661912905154da7fa2dbe97f07951a3eb262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3128d6a_f4c81ab0",
@@ -64,6 +82,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41fe3f0a_c2ba13af",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-17T22:59:33Z",
+      "side": 1,
+      "message": "This is by design as the hostname with port is unique, but hostname may not be (for instance, if DUTS are VMs on the same system where hostname is \u0027localhost\u0027 but the port differs).",
+      "parentUuid": "fe2d2aa9_52760fa5",
+      "range": {
+        "startLine": 166,
+        "startChar": 40,
+        "endLine": 166,
+        "endChar": 50
+      },
+      "revId": "ae1661912905154da7fa2dbe97f07951a3eb262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b386b5_a334e9e6",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-17T22:59:33Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "e3128d6a_f4c81ab0",
+      "range": {
+        "startLine": 166,
+        "startChar": 40,
+        "endLine": 166,
+        "endChar": 48
+      },
+      "revId": "ae1661912905154da7fa2dbe97f07951a3eb262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b782b54c_a4b42dbf",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f135e380_32960aac",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-17T22:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b782b54c_a4b42dbf",
+      "range": {
+        "startLine": 168,
+        "startChar": 39,
+        "endLine": 168,
+        "endChar": 52
+      },
+      "revId": "ae1661912905154da7fa2dbe97f07951a3eb262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7aabd716_f71f471a",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-11-17T02:33:03Z",
       "side": 1,
       "message": "nit: dut\nThis function doesn\u0027t have to aware of the difference between companion and primary.",
+      "range": {
+        "startLine": 217,
+        "startChar": 59,
+        "endLine": 217,
+        "endChar": 92
+      },
+      "revId": "ae1661912905154da7fa2dbe97f07951a3eb262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ccf4b5_5e4cf312",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-17T22:59:33Z",
+      "side": 1,
+      "message": "Good catch, forgot to update the comment when I refactored the function based on your other feedback.",
+      "parentUuid": "7aabd716_f71f471a",
       "range": {
         "startLine": 217,
         "startChar": 59,
