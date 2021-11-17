@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aea35d82_55bd2685",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-17T07:26:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f9116969_da37e34b",
+      "revId": "0be98ef26dc95ecb46ed9189d33fea7f272f93ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf697ace_7e61746b",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-17T01:01:26Z",
       "side": 1,
       "message": "can we log via testing.ContextLogf(...) for this error?",
+      "range": {
+        "startLine": 70,
+        "startChar": 16,
+        "endLine": 70,
+        "endChar": 32
+      },
+      "revId": "0be98ef26dc95ecb46ed9189d33fea7f272f93ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a270471b_48f43065",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-17T07:26:41Z",
+      "side": 1,
+      "message": "Fine with me.\n\nNote that CloseLacrosChrome doesn\u0027t do it:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/lacros.go;l\u003d60;drc\u003dd120f113a0b0af95f35c37df7f1e0edfca3979ac",
+      "parentUuid": "cf697ace_7e61746b",
       "range": {
         "startLine": 70,
         "startChar": 16,
