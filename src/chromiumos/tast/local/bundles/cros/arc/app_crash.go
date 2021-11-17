@@ -43,8 +43,18 @@ func init() {
 }
 
 func AppCrash(ctx context.Context, s *testing.State) {
+	const (
+		exampleApp               = "com.android.settings"
+		arcCrashCollectorService = "org.chromium.arc.crash_collector/.ArcCrashCollector"
+	)
+
 	a := s.FixtValue().(*arc.PreData).ARC
 	cr := s.FixtValue().(*arc.PreData).Chrome
+
+	isVMEnabled, err := arc.VMEnabled()
+	if err != nil {
+		s.Fatal("Failed to verify VM status: ", err)
+	}
 
 	opt := crash.WithMockConsent()
 	useConsent := s.Param().(crash.ConsentType)
@@ -58,7 +68,6 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	defer crash.TearDownCrashTest(ctx)
 
 	s.Log("Starting app")
-	const exampleApp = "com.android.settings"
 	if err := a.Command(ctx, "am", "start", "-W", exampleApp).Run(); err != nil {
 		s.Fatal("Failed to run an app to be crashed: ", err)
 	}
@@ -66,6 +75,15 @@ func AppCrash(ctx context.Context, s *testing.State) {
 	s.Log("Making crash")
 	if err := a.Command(ctx, "am", "crash", exampleApp).Run(); err != nil {
 		s.Fatal("Failed to crash: ", err)
+	}
+
+	if isVMEnabled {
+		// On ARC-R or above, ArcCrashCollector doesn't automatically run immediately after the
+		// crash. (b/203156632)
+		s.Log("Starting ArcCrashCollector")
+		if err := a.Command(ctx, "am", "startservice", arcCrashCollectorService).Run(); err != nil {
+			s.Fatal("Failed to start ArcCrashCollector: ", err)
+		}
 	}
 
 	s.Log("Waiting for crash files to become present")
