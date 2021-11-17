@@ -112,6 +112,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e9b322e_6aca7ba7",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-17T01:06:32Z",
+      "side": 1,
+      "message": "s/s.Error/s.Logf/\nSorry I missed existing code use logs.",
+      "parentUuid": "cd0455f6_7cc5249c",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 84
+      },
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "800c4c81_a0bc5562",
         "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
         "patchSetId": 7
