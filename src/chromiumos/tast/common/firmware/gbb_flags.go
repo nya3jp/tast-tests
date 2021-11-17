@@ -5,10 +5,18 @@
 package firmware
 
 import (
+	"context"
+	"fmt"
 	"reflect"
+	"regexp"
 	"sort"
+	"strconv"
 
+	"chromiumos/tast/dut"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/exec"
 	pb "chromiumos/tast/services/cros/firmware"
+	"chromiumos/tast/testing"
 )
 
 // allGBBFlags has all the GBB Flags in sorted order.
@@ -64,6 +72,82 @@ func GBBFlagsChanged(a, b pb.GBBFlagsState, flags []pb.GBBFlag) bool {
 		}
 	}
 	return false
+}
+
+// getGBBFlagsInt gets the flags that are set as an integer.
+func getGBBFlagsInt(ctx context.Context, dut *dut.DUT) (uint32, error) {
+	out, err := dut.Conn().CommandContext(ctx, "/usr/share/vboot/bin/get_gbb_flags.sh").Output(exec.DumpLogOnError)
+	if err != nil {
+		return 0, errors.Wrap(err, "get_gbb_flags.sh")
+	}
+	re, err := regexp.Compile(`Chrome OS GBB set flags: (0x[0-9a-fA-F]+)`)
+	if err != nil {
+		return 0, errors.Wrap(err, "parse gbb regex")
+	}
+	matches := re.FindSubmatch(out)
+	if matches == nil {
+		return 0, errors.Errorf("failed to find gbb flags in %s", string(out))
+	}
+	currentGBB64, err := strconv.ParseUint(string(matches[1]), 0, 32)
+	if err != nil {
+		return 0, errors.Wrapf(err, "parse gbb %q", string(matches[1]))
+	}
+	return uint32(currentGBB64), nil
+}
+
+// GetGBBFlags gets the flags that are cleared and set.
+func GetGBBFlags(ctx context.Context, dut *dut.DUT) (*pb.GBBFlagsState, error) {
+	currentGBB, err := getGBBFlagsInt(ctx, dut)
+	if err != nil {
+		return nil, err
+	}
+	testing.ContextLogf(ctx, "Current GBB flags = %#x", currentGBB)
+	return &pb.GBBFlagsState{
+		Clear: calcGBBFlags(^currentGBB),
+		Set:   calcGBBFlags(currentGBB),
+	}, nil
+}
+
+// ClearAndSetGBBFlags clears and sets specified GBB flags, leaving the rest unchanged.
+func ClearAndSetGBBFlags(ctx context.Context, dut *dut.DUT, state pb.GBBFlagsState) error {
+	state = canonicalGBBFlagsState(state)
+	currentGBB, err := getGBBFlagsInt(ctx, dut)
+	if err != nil {
+		return err
+	}
+	clearMask := calcGBBMask(state.Clear)
+	setMask := calcGBBMask(state.Set)
+	testing.ContextLogf(ctx, "Current GBB flags = %#x, want clear %#x, set %#x", currentGBB, clearMask, setMask)
+	newGBB := (currentGBB & ^clearMask) | setMask
+	if newGBB != currentGBB {
+		testing.ContextLogf(ctx, "Setting GBB flags = %#x", newGBB)
+		if err := dut.Conn().CommandContext(ctx, "/usr/share/vboot/bin/set_gbb_flags.sh", fmt.Sprintf("%#x", newGBB)).Run(exec.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "set_gbb_flags.sh")
+		}
+	} else {
+		testing.ContextLog(ctx, "No GBB change required")
+	}
+	return nil
+}
+
+// calcGBBFlags interprets mask as a GBBFlag bit mask and returns the set flags.
+func calcGBBFlags(mask uint32) []pb.GBBFlag {
+	var res []pb.GBBFlag
+	for _, pos := range AllGBBFlags() {
+		if mask&(0x0001<<pos) != 0 {
+			res = append(res, pb.GBBFlag(pos))
+		}
+	}
+	return res
+}
+
+// calcGBBMask returns the bit mask corresponding to the list of GBBFlags.
+func calcGBBMask(flags []pb.GBBFlag) uint32 {
+	var mask uint32
+	for _, f := range flags {
+		mask |= 0x0001 << f
+	}
+	return mask
 }
 
 // makeFlagsMap converts a slice of GBBFlags into a map for easy lookup.
