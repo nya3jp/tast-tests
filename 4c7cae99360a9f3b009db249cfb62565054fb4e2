@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4127d57f_73206b10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-11-17T01:03:01Z",
+      "side": 1,
+      "message": "LGTM. minor nits.\n\nThanks for checking that the original wifi Caps/HeCaps test still work!",
+      "revId": "4c7cae99360a9f3b009db249cfb62565054fb4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23acf1b2_f10bb3af",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-11-17T01:03:01Z",
+      "side": 1,
+      "message": "nit: we might as well get rid of the return values in the parse sections if we aren\u0027t doing error handling.\n\nsame goes for parsevht, parsehe.",
+      "range": {
+        "startLine": 1091,
+        "startChar": 69,
+        "endLine": 1091,
+        "endChar": 74
+      },
+      "revId": "4c7cae99360a9f3b009db249cfb62565054fb4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd4d737_9ae4f897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2021-11-17T01:03:01Z",
+      "side": 1,
+      "message": "Should we make this more specific and expect exactly 1 wireless phy? The test only uses the first one anyways.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "4c7cae99360a9f3b009db249cfb62565054fb4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
