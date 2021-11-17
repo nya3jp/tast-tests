@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec8e3bb6_6bec7021",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-17T14:50:08Z",
+      "side": 1,
+      "message": "could you add bug and test sections? (I think presubmit check warns them...?)",
+      "revId": "f0c7bef785328fb8ae64a959ec6feed477d97c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c72a364f_43d706cc",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-17T14:50:08Z",
+      "side": 1,
+      "message": "Can we move them to ash or browser package?",
+      "revId": "f0c7bef785328fb8ae64a959ec6feed477d97c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "717fed6f_eae4327e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-17T14:50:08Z",
+      "side": 1,
+      "message": "could you move this under ash, as this is only for ash.",
+      "revId": "f0c7bef785328fb8ae64a959ec6feed477d97c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -33,6 +33,24 @@
       "message": "It would be be nice to get rid of the remaining stuff here. That would require changing faillog and CaptureCDP somehow. Let\u0027s discuss!",
       "revId": "d32226d05be85989a1ebe96933986709cf86db93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c0da5c_e3b85c7d",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-17T14:50:08Z",
+      "side": 1,
+      "message": "Sure. Let\u0027s discuss details in 1:1 tomorrow.",
+      "parentUuid": "f38d0972_2a0a94a4",
+      "revId": "d32226d05be85989a1ebe96933986709cf86db93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
