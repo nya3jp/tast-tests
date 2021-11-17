@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "284c38e3_8a1bf4a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-17T02:23:58Z",
+      "side": 1,
+      "message": "I think we should have a design review or a spec first. I can really visualize how it work at this moment. Thanks.",
+      "revId": "05bbca1261138ba171e43375484a75c0b95e5d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1fbf6b2_5b4f14f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/test_libs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-17T02:23:58Z",
+      "side": 1,
+      "message": "What if the user want to interact with a server written in python?",
+      "revId": "05bbca1261138ba171e43375484a75c0b95e5d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f98a6b5_2b7bafc1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/example/test_libs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-17T02:23:58Z",
+      "side": 1,
+      "message": "Not sure if I understand how it works. Should the server provide GRPC service instead of command line service?",
+      "revId": "05bbca1261138ba171e43375484a75c0b95e5d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
