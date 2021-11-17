@@ -1244,12 +1244,12 @@ func newRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtyp
 func (tf *TestFixture) WaitWifiConnected(ctx context.Context, guid string) error {
 	testing.ContextLog(ctx, "Waiting for WiFi to be connected to profile with GUID: "+guid)
 
-	req := &wifi.RequestScansRequest{Count: 3}
-	if _, err := tf.WifiClient().RequestScans(ctx, req); err != nil {
-		errors.Wrap(err, "failed to request scan")
-	}
-
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		req := &wifi.RequestScansRequest{Count: 1}
+		if _, err := tf.WifiClient().RequestScans(ctx, req); err != nil {
+			errors.Wrap(err, "failed to request scan")
+		}
+
 		serInfo, err := tf.WifiClient().QueryService(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get the WiFi service information from DUT")
