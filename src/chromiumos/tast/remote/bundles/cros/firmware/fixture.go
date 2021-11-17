@@ -8,7 +8,6 @@ import (
 	"context"
 
 	common "chromiumos/tast/common/firmware"
-	"chromiumos/tast/remote/firmware/checkers"
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 )
@@ -19,7 +18,6 @@ func init() {
 		Desc:         "Verifies firmware fixtures",
 		Contacts:     []string{"cros-fw-engprod@google.com", "jbettis@google.com"},
 		Attr:         []string{"group:firmware", "firmware_smoke"},
-		ServiceDeps:  []string{"tast.cros.firmware.BiosService"},
 		SoftwareDeps: []string{"crossystem"},
 		Params: []testing.Param{{
 			Name:    "normal",
@@ -36,17 +34,17 @@ func init() {
 		}, {
 			Name:      "dev_usb",
 			Val:       common.BootModeUSBDev,
-			Fixture:   fixture.USBDevMode,
+			Fixture:   fixture.USBDevModeNoServices,
 			ExtraAttr: []string{"firmware_usb"},
 		}, {
 			Name:      "dev_usb_gbb",
 			Val:       common.BootModeUSBDev,
-			Fixture:   fixture.USBDevModeGBB,
+			Fixture:   fixture.USBDevModeGBBNoServices,
 			ExtraAttr: []string{"firmware_usb"},
 		}, {
 			Name:      "rec",
 			Val:       common.BootModeRecovery,
-			Fixture:   fixture.RecMode,
+			Fixture:   fixture.RecModeNoServices,
 			ExtraAttr: []string{"firmware_usb"},
 		}},
 	})
@@ -69,9 +67,9 @@ func Fixture(ctx context.Context, s *testing.State) {
 		s.Errorf("Unexpected DUT boot mode: got %q, want %q", curr, v.BootMode)
 	}
 
-	checker := checkers.New(h)
-
-	if err := checker.GBBFlags(ctx, v.GBBFlags); err != nil {
-		s.Error("Checker: ", err)
+	if res, err := common.GetGBBFlags(ctx, h.DUT); err != nil {
+		s.Error("Failed to get GBB flags: ", err)
+	} else if !common.GBBFlagsStatesEqual(v.GBBFlags, *res) {
+		s.Errorf("GBB flags: got %v, want %v", res.Set, v.GBBFlags)
 	}
 }

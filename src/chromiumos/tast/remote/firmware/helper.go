@@ -89,6 +89,9 @@ type Helper struct {
 	// RPCClient is a direct client connection to the Tast gRPC server hosted on the DUT.
 	RPCClient *rpc.Client
 
+	// DisallowServices prevents RequireRPCClient from working if set.
+	DisallowServices bool
+
 	// rpcHint is needed in order to create an RPC client connection.
 	rpcHint *testing.RPCHint
 
@@ -204,6 +207,9 @@ func (h *Helper) EnsureDUTBooted(ctx context.Context) error {
 
 // RequireRPCClient creates a client connection to the DUT's gRPC server, unless a connection already exists.
 func (h *Helper) RequireRPCClient(ctx context.Context) error {
+	if h.DisallowServices {
+		return errors.New("RPC services disabled by fixture")
+	}
 	if h.RPCClient != nil {
 		return nil
 	}
@@ -405,7 +411,7 @@ func (h *Helper) CopyTastFilesFromDUT(ctx context.Context) error {
 	return nil
 }
 
-// SyncTastFilesToDUT copies the test server's copy of Tast host files back onto the DUT via rsync.
+// SyncTastFilesToDUT copies the test server's copy of Tast host files back onto the DUT. This is only necessary if you want to use gRPC services.
 // TODO(gredelston): When Autotest SSP tarballs contain local Tast test bundles, refactor this code
 // so that it pushes Tast files to the DUT via the same means as the upstream Tast framework.
 // As of the time of this writing, that is not possible; see http://g/tast-owners/sBhC1w-ET8g.
