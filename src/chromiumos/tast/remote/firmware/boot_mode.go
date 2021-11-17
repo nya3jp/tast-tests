@@ -13,8 +13,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
@@ -80,7 +78,7 @@ func msOptsContain(opts []ModeSwitchOption, want ModeSwitchOption) bool {
 
 // RebootToMode reboots the DUT into the specified boot mode.
 // This has the side-effect of disconnecting the RPC client.
-// Requires `SoftwareDeps: []string{"crossystem", "flashrom"},` and `ServiceDeps: []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"}`.
+// Requires `SoftwareDeps: []string{"crossystem", "flashrom"},`.
 func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMode, opts ...ModeSwitchOption) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
@@ -94,10 +92,6 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 
 	// Unless AssumeGBBFlagsCorrect is passed, fix the GBB flags for the desired boot mode.
 	if !msOptsContain(opts, AssumeGBBFlagsCorrect) {
-		if err := h.RequireBiosServiceClient(ctx); err != nil {
-			return errors.Wrap(err, "requiring BIOS service client")
-		}
-
 		flags := fwpb.GBBFlagsState{}
 		if msOptsContain(opts, AllowGBBForce) {
 			switch toMode {
@@ -112,7 +106,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		} else {
 			flags.Clear = append(flags.Clear, fwpb.GBBFlag_FORCE_DEV_SWITCH_ON, fwpb.GBBFlag_DEV_SCREEN_SHORT_DELAY, fwpb.GBBFlag_FORCE_DEV_BOOT_USB)
 		}
-		if _, err := h.BiosServiceClient.ClearAndSetGBBFlags(ctx, &flags); err != nil {
+		if err := fwCommon.ClearAndSetGBBFlags(ctx, h.DUT, flags); err != nil {
 			return errors.Wrap(err, "setting GBB flags")
 		}
 	}
@@ -140,11 +134,8 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		}
 	}
 
-	// Perform blocking sync prior to reboot, then close the RPC connection.
-	if err := h.RequireRPCUtils(ctx); err != nil {
-		return errors.Wrap(err, "requiring RPC utils")
-	}
-	if _, err := h.RPCUtils.BlockingSync(ctx, &empty.Empty{}); err != nil {
+	// Perform sync prior to reboot, then close the RPC connection.
+	if err := h.DUT.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
 		testing.ContextLogf(ctx, "Failed to sync DUT: %s", err)
 	}
 	h.CloseRPCConnection(ctx)
@@ -407,12 +398,9 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 	if fromMode == fwCommon.BootModeDev {
 		hasSerialAP = ms.hasSerialAPFirmware(ctx)
 	}
-	// Perform blocking sync prior to reboot, then close the RPC connection.
-	if err := h.RequireRPCUtils(ctx); err != nil {
-		return errors.Wrap(err, "requiring RPC utils")
-	}
-	if _, err := h.RPCUtils.BlockingSync(ctx, &empty.Empty{}); err != nil {
-		return errors.Wrap(err, "syncing DUT before reboot")
+	// Perform sync prior to reboot, then close the RPC connection.
+	if err := h.DUT.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
+		testing.ContextLogf(ctx, "Failed to sync DUT: %s", err)
 	}
 	h.CloseRPCConnection(ctx)
 
