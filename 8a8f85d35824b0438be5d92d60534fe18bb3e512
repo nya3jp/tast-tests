@@ -16,6 +16,57 @@
       "message": "PTAL",
       "revId": "8a8f85d35824b0438be5d92d60534fe18bb3e512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea0e7877_fa7755a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-17T15:18:38Z",
+      "side": 1,
+      "message": "may main point is docs_cuj. Comment at perftest.go is optional.",
+      "revId": "8a8f85d35824b0438be5d92d60534fe18bb3e512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3793137_5801e560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-17T15:18:38Z",
+      "side": 1,
+      "message": "I think we\u0027d like to stabilize this after opening URL.",
+      "revId": "8a8f85d35824b0438be5d92d60534fe18bb3e512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98183690_6a22388b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/perftest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-17T15:18:38Z",
+      "side": 1,
+      "message": "optional:\nInstead, we may want to use NewConnForTaget(..., MatchTargetURL(about:blank))\nalways at L162, and call conn.Navigate() here.\n\nWDYT?",
+      "revId": "8a8f85d35824b0438be5d92d60534fe18bb3e512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
