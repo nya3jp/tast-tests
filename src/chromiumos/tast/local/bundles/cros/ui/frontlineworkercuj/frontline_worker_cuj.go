@@ -57,7 +57,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, workload Work
 
 	var browserStartTime, appStartTime time.Duration
 	testing.ContextLog(ctx, "Start to get browser start time")
-	browserStartTime, err = cuj.GetBrowserStartTime(ctx, cr, tconn, isTablet)
+	browserStartTime, err = cuj.GetBrowserStartTime(ctx, cr, tconn, false, isTablet)
 	if err != nil {
 		return errors.Wrap(err, "failed to get browser start time")
 	}
