@@ -171,6 +171,27 @@ func init() {
 		SetUpTimeout:    BootTimeout + ui.StartTimeout,
 		PostTestTimeout: postTestTimeout,
 	})
+
+	// arcBootedInClamshellMode is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched in clamshell mode with Touch Mode Mouse compat features enabled in this fixture.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedWithTouchModeMouse",
+		Desc: "ARC is booted in clamshell mode with Touch Mode Mouse compat features enabled",
+		Contacts: []string{
+			"niwa@chromium.org",
+			"arcvm-eng-team@google.com",
+		},
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ARCEnabled(),
+				chrome.EnableFeatures("ArcRightClickLongPress", "ArcMouseWheelSmoothScroll"),
+				chrome.ExtraArgs("--force-tablet-mode=clamshell"),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: resetTimeout,
+		TearDownTimeout: resetTimeout,
+	})
 }
 
 type bootedFixture struct {
