@@ -16,6 +16,24 @@
       "message": "Blocked by TODO(b/198542075): cq-orchestrator incorrectly reported merge conflicts on CL with binary file changes only",
       "revId": "13d00f155b11cd9cdda10dbe3b74683262d67fd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0700ef0f_55134b22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-17T17:54:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5068d611_d982df87",
+      "revId": "13d00f155b11cd9cdda10dbe3b74683262d67fd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
