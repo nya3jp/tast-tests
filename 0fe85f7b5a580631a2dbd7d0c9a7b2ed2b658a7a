@@ -16,6 +16,24 @@
       "message": "Please add here that the close function closes both the connection and the browser.\nI think it is important enough to be mentioned here.",
       "revId": "0fe85f7b5a580631a2dbd7d0c9a7b2ed2b658a7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7aef719_bd4eafdc",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-17T10:35:42Z",
+      "side": 1,
+      "message": "Agreed, done.",
+      "parentUuid": "6e18ebd7_c3689003",
+      "revId": "0fe85f7b5a580631a2dbd7d0c9a7b2ed2b658a7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

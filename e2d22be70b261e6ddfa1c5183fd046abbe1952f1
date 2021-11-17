@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "918d2a5b_ab4351f5",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-17T10:35:42Z",
+      "side": 1,
+      "message": "Oh you\u0027re right, thanks!",
+      "parentUuid": "cad6af38_29bf2b7f",
+      "revId": "e2d22be70b261e6ddfa1c5183fd046abbe1952f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9954bce_6b3439bc",
@@ -70,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b91968ac_db0d1de4",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-17T10:35:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9954bce_6b3439bc",
+      "revId": "e2d22be70b261e6ddfa1c5183fd046abbe1952f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71a18f12_430396e4",
@@ -83,6 +119,24 @@
       "writtenOn": "2021-11-17T08:11:58Z",
       "side": 1,
       "message": "Added logging here.",
+      "revId": "e2d22be70b261e6ddfa1c5183fd046abbe1952f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "734eb375_39f2eced",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-17T10:35:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71a18f12_430396e4",
       "revId": "e2d22be70b261e6ddfa1c5183fd046abbe1952f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
