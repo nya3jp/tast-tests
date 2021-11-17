@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16cb9a57_6df33d10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-11-17T13:53:18Z",
+      "side": 1,
+      "message": "\u003e In this case, should we confirm somehow that PIN login is not available? Maybe a UI check to confirm that the PIN pad is not present?\nYes, modified the WaitForPasswordField so it fails in case pin is available.\n\u003e \n\u003e Also wondering if there is a SW or HW dependency (go/tast-deps) that we can use to identify this case to better identify when we are testing PIN sign-in\nDid not find that.",
+      "parentUuid": "d561c7ba_1a344a61",
+      "range": {
+        "startLine": 196,
+        "startChar": 4,
+        "endLine": 196,
+        "endChar": 15
+      },
+      "revId": "37faa2e699be30b6bcc268585335f4a692bf26e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ec7537e_47dd5fad",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8235b0bf_50120630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-11-17T13:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ec7537e_47dd5fad",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 17
+      },
+      "revId": "37faa2e699be30b6bcc268585335f4a692bf26e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5f5c5e9_31a7fabf",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-11-16T00:41:45Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 206,
+        "startChar": 3,
+        "endLine": 207,
+        "endChar": 17
+      },
+      "revId": "37faa2e699be30b6bcc268585335f4a692bf26e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eb3a087_b921eba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-11-17T13:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5f5c5e9_31a7fabf",
       "range": {
         "startLine": 206,
         "startChar": 3,
