@@ -89,45 +89,28 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		return errors.Wrap(err, "determining boot mode at the start of RebootToMode")
 	}
 
-	// If booting to anything but dev mode, ensure that we're not forcing dev mode.
+	// Unless AssumeGBBFlagsCorrect is passed, fix the GBB flags for the desired boot mode.
 	if !msOptsContain(opts, AssumeGBBFlagsCorrect) {
 		if err := h.RequireBiosServiceClient(ctx); err != nil {
 			return errors.Wrap(err, "requiring BIOS service client")
 		}
 
-		if toMode != fwCommon.BootModeDev {
-			flags := fwpb.GBBFlagsState{
-				Clear: []fwpb.GBBFlag{fwpb.GBBFlag_FORCE_DEV_SWITCH_ON},
+		flags := fwpb.GBBFlagsState{}
+		if msOptsContain(opts, AllowGBBForce) {
+			switch toMode {
+			case fwCommon.BootModeDev:
+				flags.Clear = append(flags.Clear, fwpb.GBBFlag_FORCE_DEV_BOOT_USB)
+				flags.Set = append(flags.Set, fwpb.GBBFlag_FORCE_DEV_SWITCH_ON, fwpb.GBBFlag_DEV_SCREEN_SHORT_DELAY)
+			case fwCommon.BootModeUSBDev:
+				flags.Set = append(flags.Set, fwpb.GBBFlag_FORCE_DEV_BOOT_USB, fwpb.GBBFlag_FORCE_DEV_SWITCH_ON, fwpb.GBBFlag_DEV_SCREEN_SHORT_DELAY)
+			default:
+				flags.Clear = append(flags.Clear, fwpb.GBBFlag_FORCE_DEV_SWITCH_ON, fwpb.GBBFlag_DEV_SCREEN_SHORT_DELAY, fwpb.GBBFlag_FORCE_DEV_BOOT_USB)
 			}
-			if _, err := h.BiosServiceClient.ClearAndSetGBBFlags(ctx, &flags); err != nil {
-				return errors.Wrap(err, "clearing GBB flag to stop forcing dev-mode")
-			}
-		} else if toMode == fwCommon.BootModeDev && msOptsContain(opts, AllowGBBForce) {
-			// Set the dev-force GBB flag prior to closing the RPC server
-			flags := fwpb.GBBFlagsState{
-				Set: []fwpb.GBBFlag{fwpb.GBBFlag_FORCE_DEV_SWITCH_ON},
-			}
-			if _, err := h.BiosServiceClient.ClearAndSetGBBFlags(ctx, &flags); err != nil {
-				return errors.Wrap(err, "setting GBB flag to forcing dev-mode")
-			}
+		} else {
+			flags.Clear = append(flags.Clear, fwpb.GBBFlag_FORCE_DEV_SWITCH_ON, fwpb.GBBFlag_DEV_SCREEN_SHORT_DELAY, fwpb.GBBFlag_FORCE_DEV_BOOT_USB)
 		}
-
-		// If booting into anything into dev-usb mode, ensure that we're not forcing dev-usb mode.
-		if toMode != fwCommon.BootModeUSBDev {
-			flags := fwpb.GBBFlagsState{
-				Clear: []fwpb.GBBFlag{fwpb.GBBFlag_FORCE_DEV_BOOT_USB},
-			}
-			if _, err := h.BiosServiceClient.ClearAndSetGBBFlags(ctx, &flags); err != nil {
-				return errors.Wrap(err, "clearing GBB flag to stop forcing usb-dev-mode")
-			}
-		} else if toMode == fwCommon.BootModeUSBDev && msOptsContain(opts, AllowGBBForce) {
-			// Set the usb_dev-force GBB flag prior to closing the RPC server
-			flags := fwpb.GBBFlagsState{
-				Set: []fwpb.GBBFlag{fwpb.GBBFlag_FORCE_DEV_BOOT_USB},
-			}
-			if _, err := h.BiosServiceClient.ClearAndSetGBBFlags(ctx, &flags); err != nil {
-				return errors.Wrap(err, "setting GBB flag to forcing usb-dev-mode")
-			}
+		if _, err := h.BiosServiceClient.ClearAndSetGBBFlags(ctx, &flags); err != nil {
+			return errors.Wrap(err, "setting GBB flags")
 		}
 	}
 
