@@ -8,6 +8,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"time"
 
 	dlctest "chromiumos/tast/local/bundles/cros/platform/dlc"
 	"chromiumos/tast/local/bundles/cros/platform/nebraska"
@@ -23,6 +24,7 @@ func init() {
 		Contacts:     []string{"kimjae@chromium.org", "ahassani@chromium.org", "chromeos-core-services@google.com"},
 		SoftwareDeps: []string{"dlc"},
 		Attr:         []string{"group:mainline"},
+		Timeout:      5 * time.Minute,
 	})
 }
 
