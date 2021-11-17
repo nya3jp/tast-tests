@@ -52,7 +52,7 @@ func CloseAllWindows(ctx context.Context, tconn *chrome.TestConn) error {
 }
 
 // GetBrowserStartTime opens chrome browser and returns the browser start time.
-func GetBrowserStartTime(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, tabletMode bool) (time.Duration, error) {
+func GetBrowserStartTime(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, closeBrowser, tabletMode bool) (time.Duration, error) {
 	// Get the expected browser.
 	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
 	if err != nil {
@@ -88,8 +88,10 @@ func GetBrowserStartTime(ctx context.Context, cr *chrome.Chrome, tconn *chrome.T
 
 	// Depending on the settings, Chrome might open all left-off pages automatically from last session.
 	// Close all existing tabs and test can open new pages in the browser.
-	if err := CloseBrowserTabs(ctx, tconn); err != nil {
-		return -1, errors.Wrap(err, "failed to close all Chrome tabs")
+	if closeBrowser {
+		if err := CloseBrowserTabs(ctx, tconn); err != nil {
+			return -1, errors.Wrap(err, "failed to close all Chrome tabs")
+		}
 	}
 
 	return browserStartTime, nil

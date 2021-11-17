@@ -123,7 +123,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 	defer uiHandler.Close()
 
 	testing.ContextLog(ctx, "Start to get browser start time")
-	browserStartTime, err := cuj.GetBrowserStartTime(ctx, cr, tconn, params.tabletMode)
+	browserStartTime, err := cuj.GetBrowserStartTime(ctx, cr, tconn, true, params.tabletMode)
 	if err != nil {
 		return errors.Wrap(err, "failed to get browser start time")
 	}
