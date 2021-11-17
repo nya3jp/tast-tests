@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -46,8 +45,6 @@ func init() {
 			Name:              "h264_hw_l1t2",
 			Val:               webcodecs.TestEncodeArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferHardware, ScalabilityMode: "L1T2"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs", caps.HWEncodeH264, "vaapi"},
-			// TODO(b/199487660): Run on AMD platforms once their driver supports H.264 temporal layer encoding.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("grunt", "zork")),
 			Fixture:           "chromeWebCodecs",
 		}, {
 			Name:              "h264_sw_l1t3",
@@ -58,8 +55,6 @@ func init() {
 			Name:              "h264_hw_l1t3",
 			Val:               webcodecs.TestEncodeArgs{Codec: videotype.H264, Acceleration: webcodecs.PreferHardware, ScalabilityMode: "L1T3"},
 			ExtraSoftwareDeps: []string{"proprietary_codecs", caps.HWEncodeH264, "vaapi"},
-			// TODO(b/199487660): Run on AMD platforms once their driver supports H.264 temporal layer encoding.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("grunt", "zork")),
 			Fixture:           "chromeWebCodecs",
 		}, {
 			Name:    "vp8_sw",
