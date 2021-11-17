@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5859aa1_38300fbd",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-17T02:33:03Z",
+      "side": 1,
+      "message": "nit: add a period",
+      "revId": "ae1661912905154da7fa2dbe97f07951a3eb262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3128d6a_f4c81ab0",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-17T02:33:03Z",
+      "side": 1,
+      "message": "Sorry I missed it on earlier review, but how about adding role to the file path too?\nFor example, does it make sense to use \u003crole\u003e_\u003chostname\u003e here?",
+      "range": {
+        "startLine": 166,
+        "startChar": 40,
+        "endLine": 166,
+        "endChar": 48
+      },
+      "revId": "ae1661912905154da7fa2dbe97f07951a3eb262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b782b54c_a4b42dbf",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-17T02:33:03Z",
+      "side": 1,
+      "message": "failed",
+      "range": {
+        "startLine": 168,
+        "startChar": 39,
+        "endLine": 168,
+        "endChar": 52
+      },
+      "revId": "ae1661912905154da7fa2dbe97f07951a3eb262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aabd716_f71f471a",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-17T02:33:03Z",
+      "side": 1,
+      "message": "nit: dut\nThis function doesn\u0027t have to aware of the difference between companion and primary.",
+      "range": {
+        "startLine": 217,
+        "startChar": 59,
+        "endLine": 217,
+        "endChar": 92
+      },
+      "revId": "ae1661912905154da7fa2dbe97f07951a3eb262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
