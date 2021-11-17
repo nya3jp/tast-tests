@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b595e455_cf2d4759",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2021-11-17T00:09:44Z",
+      "side": 1,
+      "message": "Oh, that\u0027s much nicer! Done.",
+      "parentUuid": "ce6cff43_0ad203d9",
+      "revId": "8060f321a8e0a22464d8412eccf8d84870d15434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35236c0e_b829a2fb",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-11-16T22:31:39Z",
       "side": 1,
       "message": "Suggestion: Use const or var instead of \"using 20 * time.Second\". \n\nQuestion: Is a 20-second timeout a bit long? How long is the operation expected? If it is not too long. I suggest to shorten it.",
+      "revId": "8060f321a8e0a22464d8412eccf8d84870d15434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34210f40_7251a066",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2021-11-17T00:09:44Z",
+      "side": 1,
+      "message": "Done. I\u0027d copied the timeout from the similar test for the connectivity UI, so I\u0027m not sure what the initial reasoning was there, but it seems to be reliable at 10 seconds instead, so I\u0027ve reduced it to that.",
+      "parentUuid": "35236c0e_b829a2fb",
       "revId": "8060f321a8e0a22464d8412eccf8d84870d15434",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
