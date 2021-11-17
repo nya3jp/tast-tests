@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa37bec0_9dada072",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-17T00:58:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce495688_0785381b",
+      "range": {
+        "startLine": 52,
+        "startChar": 6,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6d20ea6_fb07865f",
@@ -155,6 +179,30 @@
       "writtenOn": "2021-11-17T00:01:03Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 83,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 27
+      },
+      "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b3b13e3_f3e666a1",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-17T00:58:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6d20ea6_fb07865f",
       "range": {
         "startLine": 83,
         "startChar": 6,
@@ -188,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3d8692a_4cc8f91a",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-17T00:58:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4129a293_8d46921f",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 11
+      },
+      "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f70b0ef_69b057d1",
@@ -211,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4107b09_21555f6e",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-17T00:58:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f70b0ef_69b057d1",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 38
+      },
+      "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d9a9fed_26414bc2",
@@ -224,6 +320,30 @@
       "writtenOn": "2021-11-17T00:01:03Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 11
+      },
+      "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffbe7ce7_4cf4fb1d",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-17T00:58:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d9a9fed_26414bc2",
       "range": {
         "startLine": 119,
         "startChar": 1,
