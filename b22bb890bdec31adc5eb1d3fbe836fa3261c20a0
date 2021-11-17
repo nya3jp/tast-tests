@@ -50,6 +50,23 @@
       "message": "LGTM - I defer to the tast owners for final approval.",
       "revId": "b22bb890bdec31adc5eb1d3fbe836fa3261c20a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36b3115d_8dcbc5ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2021-11-17T01:30:00Z",
+      "side": 1,
+      "message": "Thanks for the reviews!",
+      "revId": "b22bb890bdec31adc5eb1d3fbe836fa3261c20a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
