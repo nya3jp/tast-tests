@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "805a78f9_b8d154db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-17T23:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c70f9122_187765fa",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "6dcf9fed70b8c76ad0fe4951a3b0f8c2a6d18ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9cfddff_061a9b48",
@@ -66,6 +90,48 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b5df06d1_5f97817c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-17T23:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f32c9396_cd6aa49b",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "6dcf9fed70b8c76ad0fe4951a3b0f8c2a6d18ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ad742ad_a3dcb530",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-17T23:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9cfddff_061a9b48",
+      "revId": "6dcf9fed70b8c76ad0fe4951a3b0f8c2a6d18ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d9f7a194_2490873e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -94,6 +160,24 @@
       "writtenOn": "2021-11-13T08:30:03Z",
       "side": 1,
       "message": "Suggest adding a group email as well.",
+      "revId": "6dcf9fed70b8c76ad0fe4951a3b0f8c2a6d18ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "915bb12e_6f1270b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosid.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-11-17T23:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31a31662_9bbcf690",
       "revId": "6dcf9fed70b8c76ad0fe4951a3b0f8c2a6d18ebc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
