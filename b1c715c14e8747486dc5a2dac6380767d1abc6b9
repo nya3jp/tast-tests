@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "b1c715c14e8747486dc5a2dac6380767d1abc6b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db6f9b31_64b9e84b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/cookies_allowed_for_urls.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T15:13:42Z",
+      "side": 1,
+      "message": "This is probably not needed anymore.",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 66
+      },
+      "revId": "b1c715c14e8747486dc5a2dac6380767d1abc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
