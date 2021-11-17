@@ -20,12 +20,12 @@ import (
 
 // Fixture names for the tests to use.
 const (
-	NormalMode    = "bootModeNormal"
-	DevMode       = "bootModeDev"
-	DevModeGBB    = "bootModeDevGBB"
-	USBDevMode    = "bootModeUSBDev"
-	USBDevModeGBB = "bootModeUSBDevGBB"
-	RecMode       = "bootModeRec"
+	NormalMode              = "bootModeNormal"
+	DevMode                 = "bootModeDev"
+	DevModeGBB              = "bootModeDevGBB"
+	USBDevModeNoServices    = "bootModeUSBDevNoServices"
+	USBDevModeGBBNoServices = "bootModeUSBDevGBBNoServices"
+	RecModeNoServices       = "bootModeRecNoServices"
 )
 
 func init() {
@@ -33,7 +33,7 @@ func init() {
 		Name:            NormalMode,
 		Desc:            "Reboot into normal mode before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
-		Impl:            newFixture(common.BootModeNormal, false),
+		Impl:            newFixture(common.BootModeNormal, false, true),
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
@@ -45,7 +45,7 @@ func init() {
 		Name:            DevMode,
 		Desc:            "Reboot into dev mode before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
-		Impl:            newFixture(common.BootModeDev, false),
+		Impl:            newFixture(common.BootModeDev, false, true),
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
@@ -57,7 +57,7 @@ func init() {
 		Name:            DevModeGBB,
 		Desc:            "Reboot into dev mode using GBB flags before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
-		Impl:            newFixture(common.BootModeDev, true),
+		Impl:            newFixture(common.BootModeDev, true, true),
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
@@ -66,10 +66,10 @@ func init() {
 		Data:            []string{firmware.ConfigFile},
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name:            USBDevMode,
-		Desc:            "Reboot into usb-dev mode before test",
+		Name:            USBDevModeNoServices,
+		Desc:            "Reboot into usb-dev mode before test, ServiceDeps are not supported",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
-		Impl:            newFixture(common.BootModeUSBDev, false),
+		Impl:            newFixture(common.BootModeUSBDev, false, false),
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
@@ -78,10 +78,10 @@ func init() {
 		Data:            []string{firmware.ConfigFile},
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name:            USBDevModeGBB,
-		Desc:            "Reboot into usb-dev mode using GBB flags before test",
+		Name:            USBDevModeGBBNoServices,
+		Desc:            "Reboot into usb-dev mode using GBB flags before test, ServiceDeps are not supported",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
-		Impl:            newFixture(common.BootModeUSBDev, true),
+		Impl:            newFixture(common.BootModeUSBDev, true, false),
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
@@ -90,10 +90,10 @@ func init() {
 		Data:            []string{firmware.ConfigFile},
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name:            RecMode,
-		Desc:            "Reboot into recovery mode before test",
+		Name:            RecModeNoServices,
+		Desc:            "Reboot into recovery mode before test, ServiceDeps are not supported",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
-		Impl:            newFixture(common.BootModeRecovery, false),
+		Impl:            newFixture(common.BootModeRecovery, false, false),
 		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
@@ -109,6 +109,7 @@ type Value struct {
 	GBBFlags      pb.GBBFlagsState
 	Helper        *firmware.Helper
 	ForcesDevMode bool
+	CopyTastFiles bool
 }
 
 // impl contains fields that are useful for Fixture methods.
@@ -119,11 +120,12 @@ type impl struct {
 }
 
 // newFixture creates an instance of firmware Fixture.
-func newFixture(mode common.BootMode, forceDev bool) testing.FixtureImpl {
+func newFixture(mode common.BootMode, forceDev, copyTastFiles bool) testing.FixtureImpl {
 	return &impl{
 		value: &Value{
 			BootMode:      mode,
 			ForcesDevMode: forceDev,
+			CopyTastFiles: copyTastFiles,
 		},
 	}
 }
@@ -263,6 +265,10 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 		if i.value.ForcesDevMode {
 			opts = append(opts, firmware.AllowGBBForce)
 		}
+		// Only copy the tast files if it is allowed, and also if we are in the boot mode we started in.
+		if i.value.CopyTastFiles && mode == *i.origBootMode {
+			opts = append(opts, firmware.CopyTastFiles)
+		}
 		if err := i.rebootToMode(ctx, i.value.BootMode, opts...); err != nil {
 			s.Fatalf("Failed to reboot to mode %q: %s", i.value.BootMode, err)
 		}
@@ -379,6 +385,9 @@ func (i *impl) initHelper(ctx context.Context, s *testing.FixtState) {
 		powerunitOutlet, _ := s.Var("powerunitOutlet")
 		hydraHostname, _ := s.Var("hydraHostname")
 		i.value.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec, dutHostname, powerunitHostname, powerunitOutlet, hydraHostname)
+		if !i.value.CopyTastFiles {
+			i.value.Helper.DisallowServices = true
+		}
 	}
 }
 
