@@ -352,6 +352,24 @@
       "parentUuid": "970af121_2f90353e",
       "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a399050_18986f0a",
+        "filename": "src/chromiumos/tast/remote/updateutil/paygen_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-17T13:22:00Z",
+      "side": 1,
+      "message": "If I am reading it right - combining them will result in TestFilterAndLoad test.\nIMHO, having them separate will make identifying problems easier in the future.",
+      "parentUuid": "32a7528c_8cf39443",
+      "revId": "4099ce6dab58dceff85c59ff00812e2928faaba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
