@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b178be61_5cb659fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-11-17T07:31:20Z",
+      "side": 1,
+      "message": "Thanks Miguel for reviewing. By factoring out the common part, the code is changed enough. could you review again?\nIn parallel, asking tast-owner review.",
+      "revId": "0b21be042cf210e4dc0e08e3bf1ea608561d1ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
