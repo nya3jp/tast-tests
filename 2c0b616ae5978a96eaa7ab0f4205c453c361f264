@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faf16538_1d16fecc",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-17T21:40:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fa2fcb8_18657fb9",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 4
+      },
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c0e56a2_f2347551",
@@ -92,6 +116,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ec825e1_9b046843",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-17T21:40:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c0e56a2_f2347551",
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d84b2a5b_1d07f6df",
@@ -105,6 +147,24 @@
       "writtenOn": "2021-11-17T15:33:59Z",
       "side": 1,
       "message": "Most probably you don\u0027t need this function here either.",
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5e1c815_6e5c24f4",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-17T21:40:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d84b2a5b_1d07f6df",
       "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -128,6 +188,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef2a444d_83749e06",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-17T21:40:29Z",
+      "side": 1,
+      "message": "TBH I don\u0027t know when/why context.WithTimeout is used. I\u0027ve also noticed that a lot of tests don\u0027t shorten it when doing the same things as in this fixture. What is the reason to use it? (Removing context.WithTimeout in both cases for ARC for now)",
+      "parentUuid": "cf3a8fa5_4f1aeb88",
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8e94399_4ab5d3b8",
         "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
         "patchSetId": 6
@@ -139,6 +217,24 @@
       "writtenOn": "2021-11-17T15:33:59Z",
       "side": 1,
       "message": "It is useful to lock the chrome instance in the fixture:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/arc/fixture.go?q\u003dchrome.Lock()",
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a59fae09_68b5f532",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-17T21:40:29Z",
+      "side": 1,
+      "message": "I\u0027m getting this error if I call chrome.Lock() here:\n\nPanic: chromiumos/tast/local/accountmanager.(*accountManagerTestFixture).SetUp is not allowed to call chrome.Lock; check the list in chrome.Lock\n        at chromiumos/tast/internal/usercode.ErrorOnPanic.func1 (usercode.go:28)\n        at chromiumos/tast/internal/usercode.SafeCall.func2.1.1 (usercode.go:101)\n        at chromiumos/tast/internal/usercode.SafeCall.func2.1 (usercode.go:107)\n        at runtime.gopanic (panic.go:969)\n        at chromiumos/tast/internal/caller.Check (caller.go:71)\n        at chromiumos/tast/caller.Check (caller.go:26)\n        at chromiumos/tast/local/chrome.Lock (chrome.go:118)\n        at chromiumos/tast/local/accountmanager.(*accountManagerTestFixture).SetUp (fixture.go:131)\n        ...\n        \nIt looks like I should add my fixture to [1]? Why is the list required?\nThey also say \"It can only be called by preconditions\". Is SetUp a precondition?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d92;drc\u003db7a71a6dc4848b8a1c182422b7e071bab02009eb",
+      "parentUuid": "b8e94399_4ab5d3b8",
       "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
