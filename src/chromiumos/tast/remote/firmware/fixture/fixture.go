@@ -11,12 +11,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	common "chromiumos/tast/common/firmware"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
-	"chromiumos/tast/remote/firmware/checkers"
 	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/testing"
 )
@@ -42,7 +39,6 @@ func init() {
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
-		ServiceDeps:     []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		Data:            []string{firmware.ConfigFile},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -55,7 +51,6 @@ func init() {
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
-		ServiceDeps:     []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		Data:            []string{firmware.ConfigFile},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -68,7 +63,6 @@ func init() {
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
-		ServiceDeps:     []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		Data:            []string{firmware.ConfigFile},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -81,7 +75,6 @@ func init() {
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
-		ServiceDeps:     []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		Data:            []string{firmware.ConfigFile},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -94,7 +87,6 @@ func init() {
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
-		ServiceDeps:     []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		Data:            []string{firmware.ConfigFile},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -107,7 +99,6 @@ func init() {
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
-		ServiceDeps:     []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		Data:            []string{firmware.ConfigFile},
 	})
 }
@@ -227,12 +218,8 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 		i.origBootMode = &mode
 	}
 
-	if err := i.value.Helper.RequireBiosServiceClient(ctx); err != nil {
-		s.Fatal("Failed to require BiosServiceClient: ", err)
-	}
-
 	s.Log("Get current GBB flags")
-	curr, err := i.value.Helper.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{})
+	curr, err := common.GetGBBFlags(ctx, i.value.Helper.DUT)
 	if err != nil {
 		s.Fatal("Failed to read GBB flags: ", err)
 	}
@@ -254,8 +241,8 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 		s.Log("GBBFlags are already proper")
 	} else {
 		s.Log("Setting GBB flags to ", i.value.GBBFlags.Set)
-		if err := i.setAndCheckGBBFlags(ctx, i.value.GBBFlags); err != nil {
-			s.Fatal("SetAndCheckGBBFlags failed: ", err)
+		if err := common.ClearAndSetGBBFlags(ctx, i.value.Helper.DUT, i.value.GBBFlags); err != nil {
+			s.Fatal("ClearAndSetGBBFlags failed: ", err)
 		}
 		if common.GBBFlagsChanged(*curr, i.value.GBBFlags, common.RebootRequiredGBBFlags()) {
 			s.Log("Resetting DUT due to GBB flag change")
@@ -315,12 +302,8 @@ func (i *impl) TearDown(ctx context.Context, s *testing.FixtState) {
 	}
 
 	if i.origGBBFlags != nil {
-		if err := i.value.Helper.RequireBiosServiceClient(ctx); err != nil {
-			s.Fatal("Failed to require BiosServiceClient: ", err)
-		}
-
 		testing.ContextLog(ctx, "Get current GBB flags")
-		curr, err := i.value.Helper.BiosServiceClient.GetGBBFlags(ctx, &empty.Empty{})
+		curr, err := common.GetGBBFlags(ctx, i.value.Helper.DUT)
 		if err != nil {
 			s.Fatal("Getting current GBB Flags failed: ", err)
 		}
@@ -335,7 +318,7 @@ func (i *impl) TearDown(ctx context.Context, s *testing.FixtState) {
 			}
 
 			s.Log("Setting GBB flags to ", tempGBBFlags.Set)
-			if err := i.setAndCheckGBBFlags(ctx, *tempGBBFlags); err != nil {
+			if err := common.ClearAndSetGBBFlags(ctx, i.value.Helper.DUT, *tempGBBFlags); err != nil {
 				s.Fatal("Restore GBB flags failed: ", err)
 			}
 			if common.GBBFlagsChanged(*curr, *tempGBBFlags, common.RebootRequiredGBBFlags()) {
@@ -361,7 +344,7 @@ func (i *impl) TearDown(ctx context.Context, s *testing.FixtState) {
 		}
 		if setGBBFlagsAfterReboot {
 			s.Log("Setting GBB flags to ", i.origGBBFlags.Set)
-			if err := i.setAndCheckGBBFlags(ctx, *i.origGBBFlags); err != nil {
+			if err := common.ClearAndSetGBBFlags(ctx, i.value.Helper.DUT, *i.origGBBFlags); err != nil {
 				s.Fatal("Restore GBB flags failed: ", err)
 			}
 		}
@@ -393,6 +376,9 @@ func (i *impl) initHelper(ctx context.Context, s *testing.FixtState) {
 		powerunitOutlet, _ := s.Var("powerunitOutlet")
 		hydraHostname, _ := s.Var("hydraHostname")
 		i.value.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec, dutHostname, powerunitHostname, powerunitOutlet, hydraHostname)
+		if !i.value.CopyTastFiles {
+			i.value.Helper.DisallowServices = true
+		}
 	}
 }
 
@@ -422,23 +408,5 @@ func (i *impl) rebootToMode(ctx context.Context, mode common.BootMode, opts ...f
 	if err := ms.RebootToMode(ctx, mode, opts...); err != nil {
 		return errors.Wrapf(err, "failed to reboot to mode %q", mode)
 	}
-	return nil
-}
-
-// setAndCheckGBBFlags sets and reads back the GBBFlags to ensure correctness.
-func (i *impl) setAndCheckGBBFlags(ctx context.Context, req pb.GBBFlagsState) error {
-	if err := i.value.Helper.RequireBiosServiceClient(ctx); err != nil {
-		return errors.Wrap(err, "failed to require bios service client")
-	}
-
-	if _, err := i.value.Helper.BiosServiceClient.ClearAndSetGBBFlags(ctx, &req); err != nil {
-		return errors.Wrap(err, "failed to update GBB flags")
-	}
-
-	checker := checkers.New(i.value.Helper)
-	if err := checker.GBBFlags(ctx, req); err != nil {
-		return errors.Wrap(err, "gbb checker")
-	}
-
 	return nil
 }

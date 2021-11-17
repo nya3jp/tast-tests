@@ -58,7 +58,6 @@ func init() {
 			hwdep.SkipOnPlatform("veyron_tiger"),
 		),
 		SoftwareDeps: []string{"crossystem", "flashrom"},
-		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		Vars:         []string{"firmware.skipFlashUSB"},
 		Params: []testing.Param{
 			// Test eventlog upon normal->normal reboot.

@@ -89,6 +89,9 @@ type Helper struct {
 	// RPCClient is a direct client connection to the Tast gRPC server hosted on the DUT.
 	RPCClient *rpc.Client
 
+	// DisallowServices prevents RequireRPCClient from working if set.
+	DisallowServices bool
+
 	// rpcHint is needed in order to create an RPC client connection.
 	rpcHint *testing.RPCHint
 
@@ -204,6 +207,9 @@ func (h *Helper) EnsureDUTBooted(ctx context.Context) error {
 
 // RequireRPCClient creates a client connection to the DUT's gRPC server, unless a connection already exists.
 func (h *Helper) RequireRPCClient(ctx context.Context) error {
+	if h.DisallowServices {
+		return errors.New("RPC services disabled by fixture")
+	}
 	if h.RPCClient != nil {
 		return nil
 	}
