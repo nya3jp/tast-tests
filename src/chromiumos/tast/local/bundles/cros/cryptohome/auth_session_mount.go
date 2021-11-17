@@ -61,7 +61,8 @@ func init() {
 // 2. Use that authSessionID to create a new user
 // 3. Authenticate the newly created user
 // 4. Perform mount using AuthSession
-// 5. Unmount and remove the user
+// 5. Invalidate the AuthSession in memory
+// 6. Unmount and remove the user
 func AuthSessionMount(ctx context.Context, s *testing.State) {
 	userParam := s.Param().(authSessionMountParam)
 
