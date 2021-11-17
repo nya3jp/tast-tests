@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c3aa60_7bfd1efe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-11-17T23:46:16Z",
+      "side": 1,
+      "message": "could the Helper also be modified to have a noService bool field so that the require service methods will fail with appropriate error if they are called?",
+      "revId": "f0c77c758774cc866308fdc10bdab41ce349f3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
