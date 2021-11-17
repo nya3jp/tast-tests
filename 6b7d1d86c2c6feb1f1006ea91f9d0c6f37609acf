@@ -16,6 +16,24 @@
       "message": "If the goal is to support some specific use cases, WDYT to passing a flag to control cpu.WaitUntilStabilized(), e.g.\n\nSetUpCrosTestWithPage(ctx, f, url, SkipCpuStabilization)\n\nfor such tests? In general, what we want to measure is outside of lacros-launch cost as well as window opening/tab-loading cost, right?",
       "revId": "6b7d1d86c2c6feb1f1006ea91f9d0c6f37609acf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df100e7b_829f8d90",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/perftest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-17T01:08:35Z",
+      "side": 1,
+      "message": "Why would we want to skip cpu stabilisation in perf tests?\n\nIt\u0027s unfortunate that we can\u0027t stabilise for some tabs, in that case we can at least remove effects from previous state (e.g. temperature) which is what this code does.",
+      "parentUuid": "26ea1319_dff71a21",
+      "revId": "6b7d1d86c2c6feb1f1006ea91f9d0c6f37609acf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
