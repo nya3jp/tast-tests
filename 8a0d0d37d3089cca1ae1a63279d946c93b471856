@@ -16,6 +16,103 @@
       "message": "Nice. LGTM.\n+tast-owners@google.com",
       "revId": "8a0d0d37d3089cca1ae1a63279d946c93b471856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "012508be_b0dd5138",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-17T15:25:32Z",
+      "side": 1,
+      "message": "the overall direction LG. Some detailed design questions I have, though.",
+      "revId": "8a0d0d37d3089cca1ae1a63279d946c93b471856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7916a92b_93f1eaf0",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-17T15:25:32Z",
+      "side": 1,
+      "message": "how should we handle VERBOSE2 or below in this form?",
+      "revId": "8a0d0d37d3089cca1ae1a63279d946c93b471856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1dde9bc_7173bdb9",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-17T15:25:32Z",
+      "side": 1,
+      "message": "instructs (as Serverities is the one instance).",
+      "range": {
+        "startLine": 249,
+        "startChar": 14,
+        "endLine": 249,
+        "endChar": 22
+      },
+      "revId": "8a0d0d37d3089cca1ae1a63279d946c93b471856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff42feee_7086b8d4",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-17T15:25:32Z",
+      "side": 1,
+      "message": "instead, we may want to names ...SeverityName? WDYT?",
+      "range": {
+        "startLine": 250,
+        "startChar": 16,
+        "endLine": 250,
+        "endChar": 36
+      },
+      "revId": "8a0d0d37d3089cca1ae1a63279d946c93b471856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d62008de_f30bcb30",
+        "filename": "src/chromiumos/tast/local/syslog/reader_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-17T15:25:32Z",
+      "side": 1,
+      "message": "could you add another test case that multiple severities will be handled properly?",
+      "revId": "8a0d0d37d3089cca1ae1a63279d946c93b471856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
