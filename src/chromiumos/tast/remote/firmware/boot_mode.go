@@ -33,6 +33,9 @@ const (
 
 	// reconnectTimeout is the timeout to wait to reconnect to the DUT after rebooting.
 	reconnectTimeout = 3 * time.Minute
+
+	// usbVisibleTime is the time to wait after making the USB stick visible to DUT
+	usbVisibleTime = 5 * time.Second
 )
 
 // ModeSwitcher enables booting the DUT into different firmware boot modes (normal, dev, rec).
@@ -295,8 +298,8 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxDUT); err != nil {
 				return err
 			}
-			testing.ContextLog(ctx, "Sleeping 5s to let USB become visible to DUT")
-			if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			testing.ContextLogf(ctx, "Sleeping %s to let USB become visible to DUT", usbVisibleTime)
+			if err := testing.Sleep(ctx, usbVisibleTime); err != nil {
 				return err
 			}
 			testing.ContextLog(ctx, "Rebooting")
@@ -405,6 +408,18 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 	}
 	h.CloseRPCConnection(ctx)
 
+	if fromMode == fwCommon.BootModeUSBDev {
+		// The USB stick should already be visible, but set the direction just to be sure.
+		testing.ContextLog(ctx, "Enabling USB")
+		if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxDUT); err != nil {
+			return err
+		}
+		testing.ContextLogf(ctx, "Sleeping %s to let USB become visible to DUT", usbVisibleTime)
+		if err := testing.Sleep(ctx, usbVisibleTime); err != nil {
+			return err
+		}
+	}
+
 	// Reset DUT, and wait for it to be unreachable.
 	powerState, ok := resetTypePowerState[resetType]
 	if !ok {
@@ -414,30 +429,27 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 		return err
 	}
 
-	ctx, cancel := context.WithTimeout(ctx, offTimeout)
-	defer cancel()
-	if err := h.WaitConnect(ctx); err != nil {
-		return errors.Wrap(err, "failed to connect to DUT")
-	}
-	if bootID, err := h.Reporter.BootID(ctx); err != nil {
-		return errors.Wrap(err, "reporting boot ID")
-	} else if bootID == origBootID {
-		return errors.Errorf("new boot ID == old boot ID: %s", bootID)
-	}
-
 	// If in dev mode, bypass the TO_DEV screen.
 	if fromMode == fwCommon.BootModeDev {
 		if err := ms.fwScreenToDevMode(ctx, hasSerialAP); err != nil {
 			return errors.Wrap(err, "bypassing fw screen")
 		}
+	} else if fromMode == fwCommon.BootModeUSBDev {
+		if err := ms.fwScreenToUSBDevMode(ctx); err != nil {
+			return errors.Wrap(err, "bypassing fw screen")
+		}
 	} else {
-		// Reconnect to the DUT.
 		testing.ContextLog(ctx, "Reestablishing connection to DUT")
 		connectCtx, cancel := context.WithTimeout(ctx, reconnectTimeout)
 		defer cancel()
 		if err := h.WaitConnect(connectCtx); err != nil {
-			return errors.Wrapf(err, "failed to reconnect to DUT after resetting from %s", fromMode)
+			return errors.Wrap(err, "failed to connect to DUT")
 		}
+	}
+	if bootID, err := h.Reporter.BootID(ctx); err != nil {
+		return errors.Wrap(err, "reporting boot ID")
+	} else if bootID == origBootID {
+		return errors.Errorf("new boot ID == old boot ID: %s", bootID)
 	}
 
 	// Verify successful reboot.
