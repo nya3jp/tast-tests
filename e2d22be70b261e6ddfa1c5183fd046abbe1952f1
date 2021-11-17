@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaec3a63_50cee800",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-17T07:59:56Z",
+      "side": 1,
+      "message": "I\u0027m sorry: I wasn\u0027t able to upload my changes to the existing CL after the dependency CL had been merged, so I had to create a new one :( I will abandon the older one.",
+      "revId": "e2d22be70b261e6ddfa1c5183fd046abbe1952f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
