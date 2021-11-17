@@ -441,6 +441,24 @@
       "parentUuid": "3557e7d7_914c8659",
       "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b9b6e5a_83e9fc3a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/trackpad/trackpad.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-17T01:00:21Z",
+      "side": 1,
+      "message": "Judy, thansk for your feedback. Daisy, could we just keep it this way, tho?",
+      "parentUuid": "3ca01230_855004be",
+      "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
