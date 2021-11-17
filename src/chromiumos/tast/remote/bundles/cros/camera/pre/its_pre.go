@@ -203,7 +203,7 @@ func (h *ITSHelper) TestCmd(ctx context.Context, scene, camera int) *testexec.Cm
 	scriptPath := path.Join("tools", "run_all_tests.py")
 	cmdStr := fmt.Sprintf(`cd %s
 	source %s
-	python %s device=%s scenes=%d camera=%d skip_scene_validation`,
+	python3 %s device=%s scenes=%d camera=%d skip_scene_validation`,
 		h.p.itsRoot(), setupPath, scriptPath, h.p.hostname, scene, camera)
 	cmd := testexec.CommandContext(ctx, "bash", "-c", cmdStr)
 	cmd.Env = append(os.Environ(), "PYTHONUNBUFFERED=y")
