@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ac5f56d_45ee0675",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-11-17T21:22:35Z",
+      "side": 1,
+      "message": "Uploaded a separate CL, crrev.com/c/3290118 ",
+      "revId": "5d6221770c3e29447fff0f259e661094a7d88379",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
