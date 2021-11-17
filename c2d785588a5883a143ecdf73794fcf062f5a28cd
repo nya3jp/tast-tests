@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f133fd5_86bf80db",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-17T01:42:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adf61ab8_4e8f2dca",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 20
+      },
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ecbb1cd_0ff79236",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f7cd25a_0b98b913",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-17T01:42:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ecbb1cd_0ff79236",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 65
+      },
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "524b9094_a3c88f18",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-11-17T00:56:15Z",
       "side": 1,
       "message": "nit: Could you add line break to fit comment in 80 column?\n\"When possible, aim for comments that will read well on an 80-column wide terminal,\"\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#comment-line-length",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 118
+      },
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda050f3_2a37766d",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-17T01:42:19Z",
+      "side": 1,
+      "message": "I updated the comment, but comments and lines of code beyond 80 chars is proliferated around the Tast codebase.",
+      "parentUuid": "524b9094_a3c88f18",
       "range": {
         "startLine": 214,
         "startChar": 0,
@@ -134,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e6b336f_0b39eaae",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-17T01:42:19Z",
+      "side": 1,
+      "message": "Done, returns an error that is then logged by the caller.",
+      "parentUuid": "4e9b322e_6aca7ba7",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 84
+      },
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "800c4c81_a0bc5562",
@@ -147,6 +243,24 @@
       "writtenOn": "2021-11-17T00:56:15Z",
       "side": 1,
       "message": "nit: remove empty line for consistency",
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9f35e45_1b3af98f",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-17T01:42:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "800c4c81_a0bc5562",
       "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -192,6 +306,54 @@
         "startChar": 3,
         "endLine": 231,
         "endChar": 11
+      },
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "437f04b1_1a2b58bb",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-17T01:42:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f161a31a_48ad5932",
+      "range": {
+        "startLine": 231,
+        "startChar": 3,
+        "endLine": 231,
+        "endChar": 11
+      },
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b511e805_22faec26",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1518298
+      },
+      "writtenOn": "2021-11-17T01:42:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eda5b4f5_6fc63e0b",
+      "range": {
+        "startLine": 231,
+        "startChar": 43,
+        "endLine": 231,
+        "endChar": 50
       },
       "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
