@@ -16,6 +16,29 @@
       "message": "Miguel, could you review this CL? Thanks!",
       "revId": "d2c5ede7896d22ae40749789e51c18430e93f975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398b43df_03aa5c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-11-17T17:22:00Z",
+      "side": 1,
+      "message": "Instead of reading the MD5 golden values and comparing them\nhere by hand we could use /usr/local/graphics/validate [1,2]\n(like, e.g. PlatformDecoding) to compare the produced MD5 \nvalues (this file will have to write them to disk) with the\ngolden reference ones (generated using your tool at \ndata/tools/generate_json_for_decodertest.go). WDYT?\n \n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go;l\u003d1212-1215\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/graphics/src/platform_decoding/cmd/validate/README.md",
+      "range": {
+        "startLine": 162,
+        "startChar": 5,
+        "endLine": 162,
+        "endChar": 12
+      },
+      "revId": "d2c5ede7896d22ae40749789e51c18430e93f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
