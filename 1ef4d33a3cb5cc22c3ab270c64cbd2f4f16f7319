@@ -16,6 +16,52 @@
       "message": "Miguel, could you review this CL? Thanks!",
       "revId": "1ef4d33a3cb5cc22c3ab270c64cbd2f4f16f7319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5af83d0a_9ad3da97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_decode.js",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-11-17T01:53:10Z",
+      "side": 1,
+      "message": "nit: s/The number/Number/",
+      "range": {
+        "startLine": 12,
+        "startChar": 15,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "1ef4d33a3cb5cc22c3ab270c64cbd2f4f16f7319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb68890b_b3c91d08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-11-17T01:53:10Z",
+      "side": 1,
+      "message": "This part is very similar to RunEncodeTest() [1], can they\nbe factored out? \n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/webcodecs/encode.go;l\u003d183-210",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "1ef4d33a3cb5cc22c3ab270c64cbd2f4f16f7319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
