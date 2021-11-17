@@ -56,6 +56,15 @@ var DateAndTime = nodewith.Name("Date and time").Role(role.Link).HasClass("item"
 // LanguagesAndInputs is a subpage link.
 var LanguagesAndInputs = nodewith.Name("Languages and inputs").Role(role.Link).HasClass("item").Focusable()
 
+// Elements in "Languages page"
+var (
+	// AddLanguagesButton is the finder for the add language button UI in the languages page.
+	AddLanguagesButton = nodewith.Name("Add languages").Role(role.Button)
+
+	// SearchLanguages is the finder for the search language searchbox UI in the languages page.
+	SearchLanguages = nodewith.Name("Search languages").Role(role.SearchBox)
+)
+
 // Files is a subpage link.
 var Files = nodewith.Name("Files").Role(role.Link).HasClass("item").Focusable()
 
