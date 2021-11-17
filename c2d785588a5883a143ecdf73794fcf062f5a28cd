@@ -16,6 +16,161 @@
       "message": "LGTM",
       "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf61ab8_4e8f2dca",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-17T00:56:15Z",
+      "side": 1,
+      "message": "nit: downloadVarLogMessages ?",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 20
+      },
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ecbb1cd_0ff79236",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-17T00:56:15Z",
+      "side": 1,
+      "message": "You don\u0027t have to nil check, as nil is a valid slice value.\n\nfor _, role :\u003d range s.CompanionDUTRoles() { \n  ...\n}",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 65
+      },
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "524b9094_a3c88f18",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-17T00:56:15Z",
+      "side": 1,
+      "message": "nit: Could you add line break to fit comment in 80 column?\n\"When possible, aim for comments that will read well on an 80-column wide terminal,\"\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#comment-line-length",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 118
+      },
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd0455f6_7cc5249c",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-17T00:56:15Z",
+      "side": 1,
+      "message": "How about returning an error from this function, instead of ignoring errors with logging? Caller can use s.Error() to report error.\nIn this function, role is passed just for logging. If you return an error from it and construct error message on caller, role parameter can be omitted.",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 84
+      },
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "800c4c81_a0bc5562",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-17T00:56:15Z",
+      "side": 1,
+      "message": "nit: remove empty line for consistency",
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda5b4f5_6fc63e0b",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-17T00:56:15Z",
+      "side": 1,
+      "message": "nit: Add a period to make the comment a complete English sentence.\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#comment-sentences",
+      "range": {
+        "startLine": 231,
+        "startChar": 43,
+        "endLine": 231,
+        "endChar": 50
+      },
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f161a31a_48ad5932",
+        "filename": "src/chromiumos/tast/remote/bundlemain/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-11-17T00:56:15Z",
+      "side": 1,
+      "message": "nit: add a space after // .",
+      "range": {
+        "startLine": 231,
+        "startChar": 3,
+        "endLine": 231,
+        "endChar": 11
+      },
+      "revId": "c2d785588a5883a143ecdf73794fcf062f5a28cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
