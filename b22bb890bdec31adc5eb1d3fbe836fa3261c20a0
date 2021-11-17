@@ -16,6 +16,23 @@
       "message": "LGTM. Please ask one of your team members or feature experts to review. Thanks.",
       "revId": "b22bb890bdec31adc5eb1d3fbe836fa3261c20a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a4884f8_9602be46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-17T01:10:19Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm",
+      "revId": "b22bb890bdec31adc5eb1d3fbe836fa3261c20a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
