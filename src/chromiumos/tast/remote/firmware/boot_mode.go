@@ -64,6 +64,10 @@ const (
 	// AssumeGBBFlagsCorrect skips setting the GBB flags when switching modes.
 	// This can save some time if the GBB flags are known to be in the desired state.
 	AssumeGBBFlagsCorrect ModeSwitchOption = iota
+
+	// CopyTastFiles copies the Tast files from the DUT before rebooting, and writes them back to the DUT afterwards.
+	// This is necessary if you want to use any gRPC services.
+	CopyTastFiles ModeSwitchOption = iota
 )
 
 // msOptsContain determines whether a slice of ModeSwitchOptions contains a specific Option.
@@ -122,7 +126,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		toModeUsb = true
 	}
 
-	if fromModeUsb != toModeUsb && !h.DoesServerHaveTastHostFiles() {
+	if fromModeUsb != toModeUsb && !h.DoesServerHaveTastHostFiles() && msOptsContain(opts, CopyTastFiles) {
 		if err := h.CopyTastFilesFromDUT(ctx); err != nil {
 			return errors.Wrap(err, "copying Tast files from DUT to test server")
 		}
@@ -327,7 +331,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 	}
 
 	// Send Tast files back to DUT.
-	needSync := toModeUsb != fromModeUsb
+	needSync := (toModeUsb != fromModeUsb) && msOptsContain(opts, CopyTastFiles)
 	if toModeUsb {
 		needSync = needSync && !h.dutUsbHasTastFiles
 	} else {
