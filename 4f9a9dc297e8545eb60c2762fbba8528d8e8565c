@@ -16,6 +16,29 @@
       "message": "Thanks Roger!",
       "revId": "4f9a9dc297e8545eb60c2762fbba8528d8e8565c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9240df6_38811a47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/microphone_mute_keyboard_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-17T17:18:20Z",
+      "side": 1,
+      "message": "do we expect more devices to have this key in the future? if so, could you file a bug and add a to-do here for creating a new hwdep for the presence of the key?",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 58
+      },
+      "revId": "4f9a9dc297e8545eb60c2762fbba8528d8e8565c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
