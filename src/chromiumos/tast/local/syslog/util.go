@@ -9,6 +9,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"regexp"
 
 	"chromiumos/tast/errors"
 )
@@ -85,4 +86,15 @@ func CollectSyslog() (func(context.Context, string) error, error) {
 
 		return nil
 	}, nil
+}
+
+// ExtractFileName extracts source file name from Entry.
+// If there are multiple file names, it extracts the last one.
+func ExtractFileName(entry Entry) string {
+	r := regexp.MustCompile(`^.*!?\[(?P<filename>\S+)\([-]?\d+\)\].*$`)
+	m := r.FindStringSubmatch(entry.Content)
+	if len(m) < 2 {
+		return ""
+	}
+	return m[1]
 }
