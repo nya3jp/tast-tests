@@ -33,6 +33,121 @@
       "message": "Took me a bit to wrap my head around the map of maps 😊. LGTM!",
       "revId": "fc1f904d4ee4f7da8d70f3c221351a3a4e8e43b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12ff324c_506b283e",
+        "filename": "src/chromiumos/tast/common/servers/servers_for_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-17T07:55:19Z",
+      "side": 1,
+      "message": "Servo ServerType \u003d iota",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "fc1f904d4ee4f7da8d70f3c221351a3a4e8e43b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece6b848_8d75fb36",
+        "filename": "src/chromiumos/tast/common/servers/servers_for_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-17T07:55:19Z",
+      "side": 1,
+      "message": "What do you think of using an empty string (\"\") to specify the primary DUT instead of arbitrary \"primary\" string?",
+      "range": {
+        "startLine": 30,
+        "startChar": 29,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "fc1f904d4ee4f7da8d70f3c221351a3a4e8e43b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ebd4db_72175aa9",
+        "filename": "src/chromiumos/tast/common/servers/servers_for_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-17T07:55:19Z",
+      "side": 1,
+      "message": "I\u0027m very hesitant to provide these \"default\" values because I believe different kind of tests should define their own roles to use, e.g. Google Meet tests may want to use \"host\" and \"participant\" roles while bluetooth tests may want to use \"server\" and \"client\" roles. Particularly some tests like bluetooth tests may want to use different devices for companion DUTs (e.g. using eve for the server and kevin for the client), then it\u0027s important to be able to distinguish companion DUTs clearly.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "fc1f904d4ee4f7da8d70f3c221351a3a4e8e43b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f18a19f_3a76cf4e",
+        "filename": "src/chromiumos/tast/common/servers/servers_for_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-17T07:55:19Z",
+      "side": 1,
+      "message": "For this kind of \"initialize once\" things, I recommend using sync.Once.\nhttps://pkg.go.dev/sync#Once",
+      "range": {
+        "startLine": 99,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 18
+      },
+      "revId": "fc1f904d4ee4f7da8d70f3c221351a3a4e8e43b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb8314d6_13c8916c",
+        "filename": "src/chromiumos/tast/common/servers/servers_for_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-17T07:55:19Z",
+      "side": 1,
+      "message": "nit\u0026optional: I generally recommend initializing an immutable variable only once for readability, i.e.\n\n return map[ServerType]map[string]string{\n   Servo: servoHosts,\n   Provision: provisionHosts,\n   ...\n }, nil",
+      "range": {
+        "startLine": 131,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 18
+      },
+      "revId": "fc1f904d4ee4f7da8d70f3c221351a3a4e8e43b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
