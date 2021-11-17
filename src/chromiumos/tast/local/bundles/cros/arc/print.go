@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -127,6 +128,7 @@ func Print(ctx context.Context, s *testing.State) {
 		activityName = "MainActivity"
 		descriptors  = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
 		attributes   = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
+		printerName  = "DavieV Virtual USB Printer (USB)"
 	)
 
 	cr := s.FixtValue().(*arc.PreData).Chrome
@@ -167,6 +169,9 @@ func Print(ctx context.Context, s *testing.State) {
 			s.Error("Failed to remove file: ", err)
 		}
 	}()
+	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(printerName)); err != nil {
+		s.Fatal("Failed to wait for printer notification: ", err)
+	}
 
 	// Install ArcPrintTest app.
 	s.Log("Installing ArcPrintTest app")
@@ -202,8 +207,8 @@ func Print(ctx context.Context, s *testing.State) {
 
 	// Select printer.
 	s.Log("Selecting printer")
-	const printerName = "DavieV Virtual USB Printer (USB) DavieV Virtual USB Printer (USB)"
-	if err := printpreview.SelectPrinter(ctx, tconn, printerName); err != nil {
+	listEntry := fmt.Sprintf("%s %s", printerName, printerName)
+	if err := printpreview.SelectPrinter(ctx, tconn, listEntry); err != nil {
 		s.Fatal("Failed to select printer: ", err)
 	}
 
