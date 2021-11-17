@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "784e063d_ed9a95bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/search_sections.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-17T06:57:47Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "accd3b24_eba02169",
+      "range": {
+        "startLine": 93,
+        "startChar": 41,
+        "endLine": 93,
+        "endChar": 44
+      },
+      "revId": "52d9da652583fcd59faa249a70d0ec31f73abb7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49dd2db3_5f3406db",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-16T18:47:26Z",
       "side": 1,
       "message": "no need for this parameter, you can access the outer scope from within a closure, so you could just use cleanupCtx directly.",
+      "range": {
+        "startLine": 222,
+        "startChar": 12,
+        "endLine": 222,
+        "endChar": 31
+      },
+      "revId": "52d9da652583fcd59faa249a70d0ec31f73abb7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a75c8f94_76a5999e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/search_sections.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-17T06:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49dd2db3_5f3406db",
       "range": {
         "startLine": 222,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ddca1ae_55ecec81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/search_sections.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-17T06:57:47Z",
+      "side": 1,
+      "message": "Fixed, reduce to 30 seconds.",
+      "parentUuid": "0d17e4d7_47ea7da7",
+      "range": {
+        "startLine": 242,
+        "startChar": 28,
+        "endLine": 242,
+        "endChar": 39
+      },
+      "revId": "52d9da652583fcd59faa249a70d0ec31f73abb7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc4a508f_b955d8ff",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-11-16T18:47:26Z",
       "side": 1,
       "message": "return nil instead of this",
+      "range": {
+        "startLine": 271,
+        "startChar": 9,
+        "endLine": 271,
+        "endChar": 27
+      },
+      "revId": "52d9da652583fcd59faa249a70d0ec31f73abb7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5268a982_46c1e632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/search_sections.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-17T06:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc4a508f_b955d8ff",
       "range": {
         "startLine": 271,
         "startChar": 9,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f55b198_640a8925",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-17T06:57:47Z",
+      "side": 1,
+      "message": "Error message: \"failed to [name of combined action] on step ...\" will show, if the action failed.\nWe moved the context log out of this function to make it less confusing.",
+      "parentUuid": "7048c6ae_d855f54b",
+      "range": {
+        "startLine": 280,
+        "startChar": 26,
+        "endLine": 280,
+        "endChar": 72
+      },
+      "revId": "52d9da652583fcd59faa249a70d0ec31f73abb7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4b788f7_e5fa1f1b",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-11-16T18:47:26Z",
       "side": 1,
       "message": "forget if it\u0027s possible or not, but can you just return nil here?",
+      "range": {
+        "startLine": 285,
+        "startChar": 9,
+        "endLine": 285,
+        "endChar": 28
+      },
+      "revId": "52d9da652583fcd59faa249a70d0ec31f73abb7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0336175b_2e11b33e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-17T06:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4b788f7_e5fa1f1b",
       "range": {
         "startLine": 285,
         "startChar": 9,
