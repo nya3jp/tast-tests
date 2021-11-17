@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9532f46_15927a0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-17T22:06:07Z",
+      "side": 1,
+      "message": "lgtm with nits % tast review",
+      "revId": "fe8945a092006cf8c32022f275d2ccd632db3d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0975c336_a7ec82a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-17T22:06:07Z",
+      "side": 1,
+      "message": "why are you naming it tryCloseXXX instead of CloseXXX? From the content of this function, it may be better named CloseXXX.",
+      "range": {
+        "startLine": 300,
+        "startChar": 5,
+        "endLine": 300,
+        "endChar": 16
+      },
+      "revId": "fe8945a092006cf8c32022f275d2ccd632db3d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91b07d3f_f6f7f8fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_intent.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-17T22:06:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 308,
+        "startChar": 5,
+        "endLine": 308,
+        "endChar": 20
+      },
+      "revId": "fe8945a092006cf8c32022f275d2ccd632db3d11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
