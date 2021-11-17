@@ -130,6 +130,16 @@ func ClearAndSetGBBFlags(ctx context.Context, dut *dut.DUT, state pb.GBBFlagsSta
 	return nil
 }
 
+// SetGBBFlags ignores the previous GBB flags and sets them to the specified flags.
+func SetGBBFlags(ctx context.Context, dut *dut.DUT, flags []pb.GBBFlag) error {
+	setMask := calcGBBMask(flags)
+	testing.ContextLogf(ctx, "Setting GBB flags = %#x", setMask)
+	if err := dut.Conn().CommandContext(ctx, "/usr/share/vboot/bin/set_gbb_flags.sh", fmt.Sprintf("%#x", setMask)).Run(exec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "set_gbb_flags.sh")
+	}
+	return nil
+}
+
 // calcGBBFlags interprets mask as a GBBFlag bit mask and returns the set flags.
 func calcGBBFlags(mask uint32) []pb.GBBFlag {
 	var res []pb.GBBFlag
