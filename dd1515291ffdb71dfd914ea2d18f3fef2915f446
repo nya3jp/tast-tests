@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce495688_0785381b",
+        "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-17T00:27:30Z",
+      "side": 1,
+      "message": "Yes, please.",
+      "parentUuid": "f16476ab_7cefbca4",
+      "range": {
+        "startLine": 52,
+        "startChar": 6,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "dd1515291ffdb71dfd914ea2d18f3fef2915f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6d20ea6_fb07865f",
         "filename": "src/chromiumos/tast/local/chrome/settings/settings.go",
         "patchSetId": 3
