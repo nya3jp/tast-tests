@@ -16,6 +16,57 @@
       "message": "I\u0027m sorry: I wasn\u0027t able to upload my changes to the existing CL after the dependency CL had been merged, so I had to create a new one :( I will abandon the older one.",
       "revId": "e2d22be70b261e6ddfa1c5183fd046abbe1952f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3b0ba35_98cc0791",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-17T08:11:58Z",
+      "side": 1,
+      "message": "Any thoughts on this?",
+      "revId": "e2d22be70b261e6ddfa1c5183fd046abbe1952f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9954bce_6b3439bc",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-17T08:11:58Z",
+      "side": 1,
+      "message": "Added l.Close + logging here.",
+      "revId": "e2d22be70b261e6ddfa1c5183fd046abbe1952f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71a18f12_430396e4",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-17T08:11:58Z",
+      "side": 1,
+      "message": "Added logging here.",
+      "revId": "e2d22be70b261e6ddfa1c5183fd046abbe1952f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
