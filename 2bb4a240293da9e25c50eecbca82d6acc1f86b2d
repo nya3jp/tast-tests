@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb7a850_fc171ff5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-17T23:03:37Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "2bb4a240293da9e25c50eecbca82d6acc1f86b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "303f9a1f_c9ff4083",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-17T23:03:37Z",
+      "side": 1,
+      "message": "nit: gaiaPool fits the naming conventions a bit better.",
+      "revId": "2bb4a240293da9e25c50eecbca82d6acc1f86b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce38b6f_db55f624",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-17T23:03:37Z",
+      "side": 1,
+      "message": "nit: `login pool` caps aren\u0027t needed",
+      "revId": "2bb4a240293da9e25c50eecbca82d6acc1f86b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28c40aae_40b8624a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-17T23:03:37Z",
+      "side": 1,
+      "message": "nit: Here and below gaia was misspelled (as gia)",
+      "revId": "2bb4a240293da9e25c50eecbca82d6acc1f86b2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
