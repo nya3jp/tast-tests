@@ -790,6 +790,11 @@ func (s *Servo) WatchdogRemove(ctx context.Context, val WatchdogValue) error {
 	if err := s.SetString(ctx, WatchdogRemove, string(val)); err != nil {
 		return err
 	}
+	for _, wd := range s.removedWatchdogs {
+		if wd == val {
+			return nil
+		}
+	}
 	s.removedWatchdogs = append(s.removedWatchdogs, val)
 	return nil
 }
