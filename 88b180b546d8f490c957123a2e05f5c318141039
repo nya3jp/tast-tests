@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ac5063_161475a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-17T01:08:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60fbeb45_ff37f362",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 3
+      },
+      "revId": "88b180b546d8f490c957123a2e05f5c318141039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8c515a8_f4dbf1ca",
@@ -108,6 +132,30 @@
       "writtenOn": "2021-11-17T00:16:06Z",
       "side": 1,
       "message": "Suggest to make this the first func in this doc.",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "88b180b546d8f490c957123a2e05f5c318141039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b556e575_b960c2c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/trackpad_reverse_scroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-11-17T01:08:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8c515a8_f4dbf1ca",
       "range": {
         "startLine": 102,
         "startChar": 5,
