@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3a4d7f_ca6c28ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-17T18:14:29Z",
+      "side": 1,
+      "message": "nit: scan request",
+      "range": {
+        "startLine": 10,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "4cd74f1f439f9851f555f0da8dff3c595deb9183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e637ad_519270c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-17T18:14:29Z",
+      "side": 1,
+      "message": "fixed",
+      "range": {
+        "startLine": 11,
+        "startChar": 13,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "4cd74f1f439f9851f555f0da8dff3c595deb9183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a345665a_4883d260",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-17T18:14:29Z",
+      "side": 1,
+      "message": "timeouts",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "4cd74f1f439f9851f555f0da8dff3c595deb9183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "80d51fe5_003fa0a4",
@@ -14,6 +83,29 @@
       "writtenOn": "2021-11-17T08:07:11Z",
       "side": 1,
       "message": "LGTM.",
+      "revId": "4cd74f1f439f9851f555f0da8dff3c595deb9183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eed86f87_5d3d0d52",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2021-11-17T18:14:29Z",
+      "side": 1,
+      "message": "Should we cancel ongoing scan request from last iteration before starting a new scan request? If I recall correctly, shill doesn\u0027t track scan status reliably.",
+      "range": {
+        "startLine": 1248,
+        "startChar": 15,
+        "endLine": 1248,
+        "endChar": 34
+      },
       "revId": "4cd74f1f439f9851f555f0da8dff3c595deb9183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
