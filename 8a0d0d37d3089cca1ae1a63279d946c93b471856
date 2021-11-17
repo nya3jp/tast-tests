@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a5ca1c3_9034a3e2",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-17T17:55:35Z",
+      "side": 1,
+      "message": "Done. Thank you.",
+      "parentUuid": "ec5d10b9_73ebbc0e",
+      "revId": "8a0d0d37d3089cca1ae1a63279d946c93b471856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1dde9bc_7173bdb9",
