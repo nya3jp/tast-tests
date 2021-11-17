@@ -22,14 +22,14 @@ func init() {
 			Fixture: fixture.NormalMode,
 		}, {
 			Name:      "rec",
-			Fixture:   fixture.RecMode,
+			Fixture:   fixture.RecModeNoServices,
 			ExtraAttr: []string{"firmware_usb"},
 		}, {
 			Name:    "dev",
 			Fixture: fixture.DevModeGBB,
 		}, {
 			Name:      "usbdev",
-			Fixture:   fixture.USBDevModeGBB,
+			Fixture:   fixture.USBDevModeGBBNoServices,
 			ExtraAttr: []string{"firmware_usb"},
 		}},
 	})

@@ -55,7 +55,7 @@ func init() {
 			Timeout:   15 * time.Minute,
 		}, {
 			Name:    "rec_warm",
-			Fixture: fixture.RecMode,
+			Fixture: fixture.RecModeNoServices,
 			Val: bootModeTestParams{
 				resetAfterBoot: true,
 				resetType:      firmware.WarmReset,
@@ -64,7 +64,7 @@ func init() {
 			Timeout:   60 * time.Minute,
 		}, {
 			Name:    "rec_cold",
-			Fixture: fixture.RecMode,
+			Fixture: fixture.RecModeNoServices,
 			Val: bootModeTestParams{
 				resetAfterBoot: true,
 				resetType:      firmware.ColdReset,
@@ -73,7 +73,7 @@ func init() {
 			Timeout:   60 * time.Minute,
 		}, {
 			Name:    "dev_usb_cold",
-			Fixture: fixture.USBDevMode,
+			Fixture: fixture.USBDevModeNoServices,
 			Val: bootModeTestParams{
 				resetAfterBoot: true,
 				resetType:      firmware.ColdReset,
@@ -108,7 +108,7 @@ func init() {
 			Timeout:   60 * time.Minute,
 		}, {
 			Name:    "rec_to_dev",
-			Fixture: fixture.RecMode,
+			Fixture: fixture.RecModeNoServices,
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeDev,
 			},
@@ -124,7 +124,7 @@ func init() {
 			Timeout:   60 * time.Minute,
 		}, {
 			Name:    "rec_to_dev_gbb",
-			Fixture: fixture.RecMode,
+			Fixture: fixture.RecModeNoServices,
 			Val: bootModeTestParams{
 				bootToMode:    fwCommon.BootModeDev,
 				allowGBBForce: true,
