@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e7dfed9_7581cf04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T13:03:06Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "df44a1ce0a88944e21e7d0f86441a270ab85a891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ee158af_1b123549",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T13:03:06Z",
+      "side": 1,
+      "message": "nit: error.",
+      "range": {
+        "startLine": 888,
+        "startChar": 88,
+        "endLine": 888,
+        "endChar": 93
+      },
+      "revId": "df44a1ce0a88944e21e7d0f86441a270ab85a891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
