@@ -87,6 +87,24 @@
       "parentUuid": "5f61a374_a356d21f",
       "revId": "c296fa5adee96d1de08bb4b88490cdf0fe635081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e35a8e4_6ae6a884",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-11-17T14:18:42Z",
+      "side": 1,
+      "message": "Ah, yeah. Looks like the test failed before it even started.\n\nOK, this should be ready to go then.",
+      "parentUuid": "65e4bbb5_f744c0fb",
+      "revId": "c296fa5adee96d1de08bb4b88490cdf0fe635081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
