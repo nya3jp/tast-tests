@@ -292,18 +292,21 @@ func launchIntent(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options in
 	}, tb)
 }
 
-func closeCCAAndTestApp(ctx context.Context, a *arc.ARC, app *cca.App, outDir string) error {
-	err := app.Close(ctx)
-	// TODO(crbug.com/980846): For intents, since it will close itself once the
-	// intent is handled, it is very likely that app cannot be closed properly
-	// on Tast side due to the connection is closing. As a result, only log the
-	// error as a temporary workaround.
-	if err != nil {
+// tryCloseCCA tries to close CCA if it hasn't been closed yet. Generally, this
+// is used as a defer function only to guarantee the app is properly closed
+// between sub tests. The closing of the app should be included as a part of the
+// test flow so that JS error could be successfully reported even if the test
+// passes.
+func tryCloseCCA(ctx context.Context, app *cca.App) {
+	if err := app.Close(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to close CCA: ", err)
-		err = nil
 	}
+}
+
+// tryCloseTestApp tries to close test app if it is running, which is often used
+// as a defer function mainly to avoid affecting other sub tests.
+func tryCloseTestApp(ctx context.Context, a *arc.ARC) {
 	a.Command(ctx, "am", "force-stop", testAppPkg).Run(testexec.DumpLogOnError)
-	return err
 }
 
 // checkIntentBehavior checks basic control flow for handling intent with different options.
@@ -313,18 +316,11 @@ func checkIntentBehavior(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, uiD
 	defer cancel()
 
 	app, err := launchIntent(ctx, cr, a, options, scripts, outDir, tb, uiDevice)
+	defer tryCloseTestApp(cleanupCtx, a)
 	if err != nil {
 		return err
 	}
-	defer func(cleanupCtx context.Context) {
-		if err := closeCCAAndTestApp(cleanupCtx, a, app, outDir); err != nil {
-			if retErr != nil {
-				testing.ContextLog(cleanupCtx, "Failed to close CCA and test app: ", err)
-			} else {
-				retErr = err
-			}
-		}
-	}(cleanupCtx)
+	defer tryCloseCCA(cleanupCtx, app)
 
 	if err := checkUI(ctx, app, options); err != nil {
 		return err
@@ -452,38 +448,34 @@ func checkAutoCloseBehavior(ctx context.Context, cr *chrome.Chrome, app *cca.App
 	// Sleeps for a while after capturing and then ensure CCA instance is
 	// automatically closed or not.
 	testing.ContextLog(ctx, "Checking auto close behavior")
-	result := (func() error {
-		if shouldClose {
-			const timeout = 3 * time.Second
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				if isClosing, err := app.ClosingItself(ctx); err != nil {
-					return testing.PollBreak(err)
-				} else if isClosing {
-					return nil
-				}
-				return errors.New("CCA instance is not automatically closed after capturing")
-			}, &testing.PollOptions{Timeout: timeout}); err != nil {
-				return err
-			}
-		} else {
-			if err := testing.Sleep(ctx, 3*time.Second); err != nil {
-				return err
-			}
+	if shouldClose {
+		const timeout = 3 * time.Second
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			if isClosing, err := app.ClosingItself(ctx); err != nil {
-				return err
+				return testing.PollBreak(err)
 			} else if isClosing {
-				return errors.New("CCA instance is automatically closed after capturing")
+				return nil
 			}
-		}
-		return nil
-	})()
-
-	if err := app.Close(ctx); err != nil {
-		if result == nil {
+			return errors.New("CCA instance is not automatically closed after capturing")
+		}, &testing.PollOptions{Timeout: timeout}); err != nil {
 			return err
 		}
+	} else {
+		if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+			return err
+		}
+		if isClosing, err := app.ClosingItself(ctx); err != nil {
+			return err
+		} else if isClosing {
+			return errors.New("CCA instance is automatically closed after capturing")
+		}
 	}
-	return result
+	// Proactively close the app so that the error happens during closing can
+	// be reported.
+	if err := app.Close(ctx); err != nil {
+		return err
+	}
+	return nil
 }
 
 // checkInstancesCoexistence checks number of CCA windows showing in multiple launch request scenario.
@@ -497,15 +489,7 @@ func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.AR
 	if err != nil {
 		return errors.Wrap(err, "failed to launch CCA")
 	}
-	defer func(cleanupCtx context.Context) {
-		if err := closeCCAAndTestApp(cleanupCtx, a, regularApp, outDir); err != nil {
-			if retErr != nil {
-				testing.ContextLog(cleanupCtx, "Failed to close CCA and test app: ", err)
-			} else {
-				retErr = err
-			}
-		}
-	}(cleanupCtx)
+	defer tryCloseCCA(cleanupCtx, regularApp)
 
 	// Switch to video mode to check if the mode remains the same after resuming.
 	if err := regularApp.SwitchMode(ctx, cca.Video); err != nil {
@@ -519,9 +503,11 @@ func checkInstancesCoexistence(ctx context.Context, cr *chrome.Chrome, a *arc.AR
 		Mode:         cca.Photo,
 		TestBehavior: captureConfirmAndDone,
 	}, scripts, outDir, tb, uiDevice)
+	defer tryCloseTestApp(cleanupCtx, a)
 	if err != nil {
 		return errors.Wrap(err, "failed to launch CCA by intent")
 	}
+	defer tryCloseCCA(cleanupCtx, intentApp)
 
 	// Check if the regular CCA is suspeneded.
 	if err := regularApp.WaitForState(ctx, "suspend", true); err != nil {
