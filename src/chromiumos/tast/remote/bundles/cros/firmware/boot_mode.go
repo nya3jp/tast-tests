@@ -34,7 +34,6 @@ func init() {
 		Contacts:     []string{"cros-fw-engprod@google.com"},
 		Attr:         []string{"group:firmware"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
-		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		Vars:         []string{"firmware.skipFlashUSB"},
 		Params: []testing.Param{{
 			Name:    "normal_warm",
