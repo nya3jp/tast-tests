@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e67d4a1_37a2f517",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-11-17T18:16:24Z",
+      "side": 1,
+      "message": "Made changes in the code as per the comments.",
+      "parentUuid": "2accc369_89ac1d5f",
+      "revId": "20e3cd8078e4bed2b9ada1a29b91c93a27cbf327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d667c8b_08e66aab",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5acc5b5a_9a1a9e46",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-11-17T18:16:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5d667c8b_08e66aab",
+      "revId": "20e3cd8078e4bed2b9ada1a29b91c93a27cbf327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad43e904_0bffd23d",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-11-16T19:10:13Z",
       "side": 1,
       "message": "Same as above, this call can\u0027t be made directly and should only be called when GAIA variables are passed, or the GAIA pool is supposed to be used.",
+      "revId": "20e3cd8078e4bed2b9ada1a29b91c93a27cbf327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c34d6951_2db6212b",
+        "filename": "src/chromiumos/tast/local/arc/pre.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-11-17T18:16:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ad43e904_0bffd23d",
       "revId": "20e3cd8078e4bed2b9ada1a29b91c93a27cbf327",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
