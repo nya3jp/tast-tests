@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "578f5694_2f064e55",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-17T10:17:02Z",
+      "side": 1,
+      "message": "Use VarDeps for required variables.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "513c95c193eede847460537f17d0a359aed867a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b85d03c_a296c845",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-17T10:17:02Z",
+      "side": 1,
+      "message": "Use RequiredVar instead of ignoring the error.",
+      "range": {
+        "startLine": 41,
+        "startChar": 19,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "513c95c193eede847460537f17d0a359aed867a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b78e7ff0_4e6c2eec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-17T10:17:02Z",
+      "side": 1,
+      "message": "nit: be consistent with how you define regex variables.",
+      "revId": "513c95c193eede847460537f17d0a359aed867a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b877b382_8af01833",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-17T10:17:02Z",
+      "side": 1,
+      "message": "nit: use a more descriptive name",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 8
+      },
+      "revId": "513c95c193eede847460537f17d0a359aed867a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2ffc175_2862c77e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-17T10:17:02Z",
+      "side": 1,
+      "message": "nit: suspendCtx?",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 12
+      },
+      "revId": "513c95c193eede847460537f17d0a359aed867a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f425a0dc_e68817d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-17T10:17:02Z",
+      "side": 1,
+      "message": "A helper already exists:\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/ssh/linuxssh/fileutil.go;l\u003d52",
+      "revId": "513c95c193eede847460537f17d0a359aed867a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
