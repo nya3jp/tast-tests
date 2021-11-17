@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb35ccfe_7b3b1e54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-17T17:28:25Z",
+      "side": 1,
+      "message": "Hidehiko, thank you. PTAL.",
+      "revId": "b4ae9ce5c5ba70be61936e306318ad17baabf899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

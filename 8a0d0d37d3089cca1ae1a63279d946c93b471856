@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41fe6c0b_d88820e1",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-17T17:28:25Z",
+      "side": 1,
+      "message": "TL;DR: We need to add VERBOSE2 if it is needed.\n\nWith this enum-like approach, we have to add another constant for any other log type that we need to filter. But I prefer this over using a simple string as an argument as 1) we already have ProgramName (so be consistent) 2) it reduce human errors. I can use a prefix to be more flexible, but I think it will cause unnecessary code complexity (or comment complexity). So I think we need to add VERBOSE2 if needed.\n\nNow, for VERBOSE2 specific, I do not see that in system_logs.zip in a feedback report. \n\nIn addition to that it is very unlikely to filter in VERBOSE2. They are likely not to have this filter at all if they are interested in VERBOSE2. I think VERBOSE1 is already overkill, but I added it to be exhaustive as much as possible mostly for documentation purpose.",
+      "parentUuid": "7916a92b_93f1eaf0",
+      "revId": "8a0d0d37d3089cca1ae1a63279d946c93b471856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1dde9bc_7173bdb9",
@@ -65,6 +83,30 @@
       "writtenOn": "2021-11-17T15:25:32Z",
       "side": 1,
       "message": "instructs (as Serverities is the one instance).",
+      "range": {
+        "startLine": 249,
+        "startChar": 14,
+        "endLine": 249,
+        "endChar": 22
+      },
+      "revId": "8a0d0d37d3089cca1ae1a63279d946c93b471856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ebf231_617305a5",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-17T17:28:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1dde9bc_7173bdb9",
       "range": {
         "startLine": 249,
         "startChar": 14,
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82f0275c_8d21734b",
+        "filename": "src/chromiumos/tast/local/syslog/reader.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-17T17:28:25Z",
+      "side": 1,
+      "message": "Done. That makes sense.",
+      "parentUuid": "ff42feee_7086b8d4",
+      "range": {
+        "startLine": 250,
+        "startChar": 16,
+        "endLine": 250,
+        "endChar": 36
+      },
+      "revId": "8a0d0d37d3089cca1ae1a63279d946c93b471856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d62008de_f30bcb30",
@@ -111,6 +177,24 @@
       "writtenOn": "2021-11-17T15:25:32Z",
       "side": 1,
       "message": "could you add another test case that multiple severities will be handled properly?",
+      "revId": "8a0d0d37d3089cca1ae1a63279d946c93b471856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a3255e_0d279235",
+        "filename": "src/chromiumos/tast/local/syslog/reader_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-17T17:28:25Z",
+      "side": 1,
+      "message": "Done. I changed WARN to WARNING in the existing unit test code because as far as I know we have WARNING in the system log, but not WARN.",
+      "parentUuid": "d62008de_f30bcb30",
       "revId": "8a0d0d37d3089cca1ae1a63279d946c93b471856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
