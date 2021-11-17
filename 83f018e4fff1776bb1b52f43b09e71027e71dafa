@@ -33,6 +33,40 @@
       "message": "+2 for Tast Review",
       "revId": "83f018e4fff1776bb1b52f43b09e71027e71dafa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aceceb71_1a2aa8ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-11-17T04:18:04Z",
+      "side": 1,
+      "message": "Looks good.",
+      "revId": "83f018e4fff1776bb1b52f43b09e71027e71dafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74505b82_c5d7152f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/local_perfetto_tbm_traced_probes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-11-17T04:18:04Z",
+      "side": 1,
+      "message": "nit: is this import necessary to be this long 😊?",
+      "revId": "83f018e4fff1776bb1b52f43b09e71027e71dafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
