@@ -50,6 +50,97 @@
       "message": "This CL should be split into 3 parts. The fixture, and the 2 tests.\nThey can be added in a relation chain (just pushing them from the same local branch).",
       "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fa2fcb8_18657fb9",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T15:33:59Z",
+      "side": 1,
+      "message": "Instead of putting this into t func to limit the scope, you can use\n\u003e  chromeLoginCtx, cancel :\u003d context.WithTimeout(ctx, chrome.LoginTimeout)\ninstead.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 4
+      },
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c0e56a2_f2347551",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T15:33:59Z",
+      "side": 1,
+      "message": "If I understand it correctly, if cr !\u003d nil we cannot reach this point, so there is no need for this defered function.",
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d84b2a5b_1d07f6df",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T15:33:59Z",
+      "side": 1,
+      "message": "Most probably you don\u0027t need this function here either.",
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3a8fa5_4f1aeb88",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T15:33:59Z",
+      "side": 1,
+      "message": "This ctx was already shortened to optin.OptinTimeout+time.Minute.\nIf you want to shorten the original timeout here, at the optin part use\n\u003e  optinCtx, cancel :\u003d context.WithTimeout(ctx, optin.OptinTimeout+time.Minute)",
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8e94399_4ab5d3b8",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-17T15:33:59Z",
+      "side": 1,
+      "message": "It is useful to lock the chrome instance in the fixture:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/arc/fixture.go?q\u003dchrome.Lock()",
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
