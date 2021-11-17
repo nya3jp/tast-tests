@@ -405,7 +405,7 @@ func (h *Helper) CopyTastFilesFromDUT(ctx context.Context) error {
 	return nil
 }
 
-// SyncTastFilesToDUT copies the test server's copy of Tast host files back onto the DUT via rsync.
+// SyncTastFilesToDUT copies the test server's copy of Tast host files back onto the DUT. This is only necessary if you want to use gRPC services.
 // TODO(gredelston): When Autotest SSP tarballs contain local Tast test bundles, refactor this code
 // so that it pushes Tast files to the DUT via the same means as the upstream Tast framework.
 // As of the time of this writing, that is not possible; see http://g/tast-owners/sBhC1w-ET8g.
