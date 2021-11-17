@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdc724ee_936f07df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-11-17T16:25:18Z",
+      "side": 1,
+      "message": "Seems mostly fine to me. Should someone from the power team also take a look at this?",
+      "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "febc5357_34b7c515",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-11-17T16:25:18Z",
+      "side": 1,
+      "message": "nit: maybe add a blank line before this one",
+      "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83114eb2_a0b56c63",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-11-17T16:25:18Z",
+      "side": 1,
+      "message": "nit: maybe add a blank line before this one",
+      "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d32f575e_f878b66e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-11-17T16:25:18Z",
+      "side": 1,
+      "message": "nit: maybe add a blank line before this one",
+      "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39212e8b_eb7c28e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-11-17T16:25:18Z",
+      "side": 1,
+      "message": "nit: delete blank line",
+      "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d0766c5_51411f77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-11-17T16:25:18Z",
+      "side": 1,
+      "message": "nit: maybe add a blank line before this one",
+      "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2987453e_1c9dbf01",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-11-17T16:25:18Z",
+      "side": 1,
+      "message": "nit: maybe add a blank line before this one",
+      "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
