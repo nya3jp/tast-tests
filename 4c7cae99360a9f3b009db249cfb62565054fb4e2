@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91b84ec1_13afef12",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-11-17T01:41:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23acf1b2_f10bb3af",
+      "range": {
+        "startLine": 1091,
+        "startChar": 69,
+        "endLine": 1091,
+        "endChar": 74
+      },
+      "revId": "4c7cae99360a9f3b009db249cfb62565054fb4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bd4d737_9ae4f897",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-17T01:03:01Z",
       "side": 1,
       "message": "Should we make this more specific and expect exactly 1 wireless phy? The test only uses the first one anyways.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "4c7cae99360a9f3b009db249cfb62565054fb4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "938c2cbf_515dc7be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-11-17T01:41:55Z",
+      "side": 1,
+      "message": "I would like to keep this less strict as there might be WiFi dongle connected to DUT then there will be more than 1 wireless phy. This is also inline with wifi.Caps, wifi.HeCaps and wifi.Caps80211ac.",
+      "parentUuid": "0bd4d737_9ae4f897",
       "range": {
         "startLine": 35,
         "startChar": 1,
