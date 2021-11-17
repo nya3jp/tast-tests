@@ -58,6 +58,16 @@ func init() {
 			ExtraData:         encode.TestData(crowd720p),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 		}, {
+			Name:              "h264_720p_l1t2",
+			Val:               encode.MakeTestOptionsWithSVCLayers(crowd720p, videotype.H264BaselineProf, "L1T2"),
+			ExtraData:         encode.TestData(crowd720p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "vaapi"},
+		}, {
+			Name:              "h264_720p_l1t3",
+			Val:               encode.MakeTestOptionsWithSVCLayers(crowd720p, videotype.H264BaselineProf, "L1T3"),
+			ExtraData:         encode.TestData(crowd720p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "vaapi"},
+		}, {
 			Name:              "h264_1080p",
 			Val:               encode.MakeTestOptions(crowd1080p, videotype.H264BaselineProf),
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
