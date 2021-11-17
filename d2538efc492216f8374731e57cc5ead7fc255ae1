@@ -16,6 +16,24 @@
       "message": "Did you work out why this started failing? If so, could you put an explanation into the commit message and bug?\n\nIf not, IMO we shouldn\u0027t just change the test so it passes without an investigation of what changed to make it start failing.",
       "revId": "d2538efc492216f8374731e57cc5ead7fc255ae1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9179830c_21926cec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2021-11-17T17:14:04Z",
+      "side": 1,
+      "message": "Done, and I put more detail in the bug than in the commit message.",
+      "parentUuid": "67baceed_c47eb85a",
+      "revId": "d2538efc492216f8374731e57cc5ead7fc255ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
