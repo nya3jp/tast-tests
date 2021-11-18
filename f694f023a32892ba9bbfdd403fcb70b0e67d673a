@@ -50,6 +50,24 @@
       "message": "nit: better to close Browser after conn\u0027s close. As defer is a stack, could you swap the line with just above?",
       "revId": "f694f023a32892ba9bbfdd403fcb70b0e67d673a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa1202a_9a1f7f00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/cookies_allowed_for_urls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-18T16:36:18Z",
+      "side": 1,
+      "message": "Oops, you\u0027re right.",
+      "parentUuid": "be59095c_8afac469",
+      "revId": "f694f023a32892ba9bbfdd403fcb70b0e67d673a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
