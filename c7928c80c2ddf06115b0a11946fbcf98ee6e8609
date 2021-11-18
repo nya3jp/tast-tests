@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed06550d_a179dc84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-11-18T20:45:45Z",
+      "side": 1,
+      "message": "LGTM with nits.",
+      "revId": "c7928c80c2ddf06115b0a11946fbcf98ee6e8609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99a2b0b5_32230111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/web_codecs_decode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-11-18T20:45:45Z",
+      "side": 1,
+      "message": "nit: Should be capitalized.",
+      "range": {
+        "startLine": 46,
+        "startChar": 11,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "c7928c80c2ddf06115b0a11946fbcf98ee6e8609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88e8e02b_1c24e059",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-11-18T20:45:45Z",
+      "side": 1,
+      "message": "nit: Should this be decoding here and the following line as well?.",
+      "range": {
+        "startLine": 35,
+        "startChar": 23,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "c7928c80c2ddf06115b0a11946fbcf98ee6e8609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
