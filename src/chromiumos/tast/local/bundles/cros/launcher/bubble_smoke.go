@@ -55,6 +55,12 @@ func BubbleSmoke(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 	bubble := nodewith.ClassName(ash.AppListBubbleClassName)
 
+	// When a DUT switches from tablet mode to clamshell mode, sometimes it
+	// takes a while to settle down. Wait for the transition to finish.
+	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+		s.Fatal("Failed to wait for location changes: ", err)
+	}
+
 	if err := uiauto.Combine("open bubble by clicking home button",
 		ui.LeftClick(nodewith.ClassName("ash/HomeButton")),
 		ui.WaitUntilExists(bubble),
@@ -88,7 +94,7 @@ func BubbleSmoke(ctx context.Context, s *testing.State) {
 			nodewith.Role(role.Button).Name(apps.Settings.Name).Ancestor(bubble)),
 		ui.WaitUntilGone(bubble),
 	)(ctx); err != nil {
-		s.Fatal("Could not close bubble by clicking in screen corner: ", err)
+		s.Fatal("Could not close bubble by launching Settings app: ", err)
 	}
 
 	s.Log("Waiting for Settings app to launch")
