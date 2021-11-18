@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbae14a5_22d5916a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-18T22:43:51Z",
+      "side": 1,
+      "message": "Hi Alvin, as discussed, I will only refactor glide typing to minimize the scope.",
+      "revId": "52491aaa34d7f718b36e6bfc48ebb6cea0fbf62a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
