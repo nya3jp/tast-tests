@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fc87273_da7b53d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-18T23:15:13Z",
+      "side": 1,
+      "message": "Done, and will update other tests to do the same in another CL soon.",
+      "parentUuid": "cb9c9118_310eb82c",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "30291d391001d115b6f6846b52db18143214ed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb3659dc_419b10e0",
@@ -87,6 +111,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87bc10b8_70cccf86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-18T23:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb3659dc_419b10e0",
+      "range": {
+        "startLine": 61,
+        "startChar": 12,
+        "endLine": 61,
+        "endChar": 45
+      },
+      "revId": "30291d391001d115b6f6846b52db18143214ed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b684c8_7c78e287",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-18T23:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1dd7e83_c7eb3648",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "30291d391001d115b6f6846b52db18143214ed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e6b4b3d_b047a76e",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-11-18T18:29:47Z",
       "side": 1,
       "message": "%q?",
+      "range": {
+        "startLine": 69,
+        "startChar": 26,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "30291d391001d115b6f6846b52db18143214ed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5332248c_399bd69c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-18T23:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e6b4b3d_b047a76e",
       "range": {
         "startLine": 69,
         "startChar": 26,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cadc9dd_7858e9bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-18T23:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a86ba4a9_2d66d5df",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "30291d391001d115b6f6846b52db18143214ed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2245a36f_b04f8f93",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d0b34aa_7191f20b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-18T23:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2245a36f_b04f8f93",
+      "range": {
+        "startLine": 84,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 10
+      },
+      "revId": "30291d391001d115b6f6846b52db18143214ed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e58853e_d8bb6287",
@@ -169,6 +313,30 @@
       "writtenOn": "2021-11-18T18:29:47Z",
       "side": 1,
       "message": "nit: same line?",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 3
+      },
+      "revId": "30291d391001d115b6f6846b52db18143214ed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a1f62a3_99a8bb85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-18T23:15:13Z",
+      "side": 1,
+      "message": "gofmt might\u0027ve done this... because I don\u0027t think I did. But I\u0027ll try and fight with it. 😄",
+      "parentUuid": "2e58853e_d8bb6287",
       "range": {
         "startLine": 89,
         "startChar": 2,
@@ -234,6 +402,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a681984_cfd28132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-18T23:15:13Z",
+      "side": 1,
+      "message": "Just confirmed this is happening in the emulator as well. This may actually be a significant bug. Will try to get other people to replicate and might start bisecting. For now this CL can wait for that to be fixed, since it will break this test.",
+      "parentUuid": "ba4ce72b_d77789d3",
+      "revId": "30291d391001d115b6f6846b52db18143214ed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4ab532b_420d9e3a",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
         "patchSetId": 6
@@ -245,6 +431,30 @@
       "writtenOn": "2021-11-18T18:29:47Z",
       "side": 1,
       "message": "This is called ResetHoldingSpaceOptions there, let\u0027s be consistent :)",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "30291d391001d115b6f6846b52db18143214ed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80dc7e76_ccc5361a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-18T23:15:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4ab532b_420d9e3a",
       "range": {
         "startLine": 48,
         "startChar": 3,
