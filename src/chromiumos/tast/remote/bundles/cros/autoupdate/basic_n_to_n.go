@@ -13,6 +13,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/remote/updateutil"
 	"chromiumos/tast/rpc"
 	aupb "chromiumos/tast/services/cros/autoupdate"
@@ -46,17 +47,20 @@ func init() {
 }
 
 func BasicNToN(ctx context.Context, s *testing.State) {
-	// Get original image version to compare it with the vesrion after the update.
-	originalVersion, err := updateutil.ImageVersion(ctx, s.DUT(), s.RPCHint())
-	if err != nil {
-		s.Fatal("Failed to read DUT image version before the update: ", err)
+	lsbContent := map[string]string{
+		lsbrelease.Version:     "",
+		lsbrelease.BuilderPath: "",
 	}
 
-	// Builder path is used in selecting the update image.
-	builderPath, err := updateutil.ImageBuilderPath(ctx, s.DUT(), s.RPCHint())
+	err := updateutil.FillFromLSBRelease(ctx, s.DUT(), s.RPCHint(), lsbContent)
 	if err != nil {
-		s.Fatal("Failed to read DUT image builder path before the update: ", err)
+		s.Fatal("Failed to get all the required information from lsb-release: ", err)
 	}
+
+	// Original image version to compare it with the vesrion after the update.
+	originalVersion := lsbContent[lsbrelease.Version]
+	// Builder path is used in selecting the update image.
+	builderPath := lsbContent[lsbrelease.BuilderPath]
 
 	// Leave 2 minutes for restart after the update.
 	updateCtx, cancel := ctxutil.Shorten(ctx, 2*time.Minute)
