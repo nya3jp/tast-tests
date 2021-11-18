@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f99ee59_77756e0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-11-18T02:24:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f3a4d7f_ca6c28ae",
+      "range": {
+        "startLine": 10,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "4cd74f1f439f9851f555f0da8dff3c595deb9183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09e637ad_519270c2",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f56d59ba_f9b5ba67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-11-18T02:24:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e637ad_519270c2",
+      "range": {
+        "startLine": 11,
+        "startChar": 13,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "4cd74f1f439f9851f555f0da8dff3c595deb9183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a345665a_4883d260",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-17T18:14:29Z",
       "side": 1,
       "message": "timeouts",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "4cd74f1f439f9851f555f0da8dff3c595deb9183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32c9d88a_8fb6f751",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-11-18T02:24:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a345665a_4883d260",
       "range": {
         "startLine": 12,
         "startChar": 36,
@@ -100,6 +172,30 @@
       "writtenOn": "2021-11-17T18:14:29Z",
       "side": 1,
       "message": "Should we cancel ongoing scan request from last iteration before starting a new scan request? If I recall correctly, shill doesn\u0027t track scan status reliably.",
+      "range": {
+        "startLine": 1248,
+        "startChar": 15,
+        "endLine": 1248,
+        "endChar": 34
+      },
+      "revId": "4cd74f1f439f9851f555f0da8dff3c595deb9183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4cf7d8e_5edb0086",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-11-18T02:24:37Z",
+      "side": 1,
+      "message": "In RequestScans, it will trigger scan every 200ms until the required number of scan done evens are received. As cited in the comment, Shill will take care of the requests. So caller does not need to take care of canceling ongoing scan request.\n\nRef: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go;l\u003d930?q\u003dshill_service.go\u0026ss\u003dchromiumos",
+      "parentUuid": "eed86f87_5d3d0d52",
       "range": {
         "startLine": 1248,
         "startChar": 15,
