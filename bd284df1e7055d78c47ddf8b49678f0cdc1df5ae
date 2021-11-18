@@ -16,6 +16,166 @@
       "message": "Sorry for the confusion here, just realized the package name for one file within bluetoothutil was not updated!",
       "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a3b141_6b34da3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-18T00:28:39Z",
+      "side": 1,
+      "message": "Looks good overall! Just a few minor suggestions, and perhaps consider moving some of the Quick Settings control to the quicksettings pacakage (you could add a bluetooth.go file in there to cover the bluetooth-specific buttons/subpages)",
+      "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d6bd93_5b5ff894",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bluetoothutil/bluetoothutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-18T00:28:39Z",
+      "side": 1,
+      "message": "I think you could consider adding some of these to quicksettings.go (or a separate file within quicksettings/ for specific bluetooth control), kinda makes sense to go there and there\u0027s some utilities for interacting with setting pods in there already",
+      "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a81a6e2_8b6dbe67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bluetoothutil/bluetoothutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-18T00:28:39Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s any rule about it, but it\u0027s pretty common for fixtures to separately live in a fixture.go file",
+      "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02900f29_959eee11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bluetoothutil/bluetoothutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-18T00:28:39Z",
+      "side": 1,
+      "message": "this is redundant, as ui.LeftClick by default will wait for the node to exist before clicking it",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1de209e3_eb6d9de2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/open_bluetooth_settings_from_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-18T00:28:39Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23811c14_931d5044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_bluetooth_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-18T00:28:39Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87d588a9_e4cf7a61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_from_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-18T00:28:39Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 20
+      },
+      "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a01ef252_80a2f3de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_from_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-18T00:28:39Z",
+      "side": 1,
+      "message": "I\u0027d suggest adding a check to wait for quicksettings to finish collapsing, since there\u0027s a brief animation there. quicksettings.Rect returns a coords.Rect which encodes the size, you could poll for that to be stable before proceeding",
+      "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
