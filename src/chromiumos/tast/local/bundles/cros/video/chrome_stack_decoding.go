@@ -151,6 +151,60 @@ var vp9FilesFromBugs = []string{
 	"test_vectors/vp9/files_from_bugs/b_177839888__rk3399_vp9_artifacts_with_video_decoder_japanews24.ivf",
 }
 
+var vp90Group1Buf = []string{
+	"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf",
+	"test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf",
+	"test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf",
+}
+
+var vp90Group1FrmResize = []string{
+	"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_256X144_fr15_bd8_frm_resize_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_256X144_fr15_bd8_frm_resize_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_384X192_fr30_bd8_frm_resize_l11.ivf",
+	"test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_384X192_fr30_bd8_frm_resize_l11.ivf",
+	"test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_384X192_fr30_bd8_frm_resize_l11.ivf",
+}
+
+var vp90Group1GfDist = []string{
+	"test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_256X144_fr15_bd8_gf_dist_4_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_256X144_fr15_bd8_gf_dist_4_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_256X144_fr15_bd8_gf_dist_4_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_384X192_fr30_bd8_gf_dist_4_l11.ivf",
+	"test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_384X192_fr30_bd8_gf_dist_4_l11.ivf",
+	"test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_384X192_fr30_bd8_gf_dist_4_l11.ivf",
+}
+
+var vp90Group1OddSize = []string{
+	"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_248X144_fr15_bd8_odd_size_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_248X144_fr15_bd8_odd_size_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_248X144_fr15_bd8_odd_size_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_376X184_fr30_bd8_odd_size_l11.ivf",
+	"test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_376X184_fr30_bd8_odd_size_l11.ivf",
+	"test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_376X184_fr30_bd8_odd_size_l11.ivf",
+}
+
+var vp90Group1Sub8x8 = []string{
+	"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_256X144_fr15_bd8_sub8X8_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_256X144_fr15_bd8_sub8X8_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_256X144_fr15_bd8_sub8X8_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_384X192_fr30_bd8_sub8X8_l11.ivf",
+	"test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_384X192_fr30_bd8_sub8X8_l11.ivf",
+	"test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_384X192_fr30_bd8_sub8X8_l11.ivf",
+}
+
+var vp90Group1Sub8x8Sf = []string{
+	"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_256X144_fr15_bd8_sub8x8_sf_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf",
+	"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_384X192_fr30_bd8_sub8x8_sf_l11.ivf",
+	"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf",
+	"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf",
+}
+
 func appendJSONFiles(videoFiles []string) []string {
 	var tf []string
 	for _, file := range videoFiles {
@@ -301,6 +355,54 @@ func init() {
 			ExtraData:         appendJSONFiles(vp9FilesFromBugs),
 			Val: chromeStackDecodingTestParam{
 				videoFiles:    vp9FilesFromBugs,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp9_0_group1_buf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraData:         appendJSONFiles(vp90Group1Buf),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp90Group1Buf,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp9_0_group1_frm_resize",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraData:         appendJSONFiles(vp90Group1FrmResize),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp90Group1FrmResize,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp9_0_group1_gf_dist",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraData:         appendJSONFiles(vp90Group1GfDist),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp90Group1GfDist,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp9_0_group1_odd_size",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraData:         appendJSONFiles(vp90Group1OddSize),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp90Group1OddSize,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp9_0_group1_sub8x8",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraData:         appendJSONFiles(vp90Group1Sub8x8),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp90Group1Sub8x8,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp9_0_group1_sub8x8_sf",
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraData:         appendJSONFiles(vp90Group1Sub8x8Sf),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp90Group1Sub8x8Sf,
 				validatorType: decoding.MD5,
 			},
 		}},
