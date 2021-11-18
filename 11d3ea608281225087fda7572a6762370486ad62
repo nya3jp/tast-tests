@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19f542ae_64527e80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-18T01:45:29Z",
+      "side": 1,
+      "message": "I need to do the login/logout with password cycle multiple times after enabling smart lock login from os-settings. If i only do it once, I still see the notification on the lock screen that says \"Enter your password to enable Smart Lock\"\n\nIf I only do one sign in with password and then log out it never works. Even if wait 30 seconds after the sign in before signing out.\n\nI need to do it at least twice",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a1ea45b_2da928a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-18T01:45:29Z",
+      "side": 1,
+      "message": "AND I need to do have a 10 second wait each time. Just doing two quick sign in and sign out doesn\u0027t work.\n\nSo seems like there is something that is not syncing fast enough.\n\n\nAny ideas?",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
