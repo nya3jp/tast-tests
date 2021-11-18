@@ -104,3 +104,19 @@ func (uda *Context) Location(ctx context.Context, s *Finder) (*Location, error) 
 	}
 	return s.location()
 }
+
+// WaitUntilExists keeps polling for a specified element to show up.
+func (uda *Context) WaitUntilExists(s *Finder) uiauto.Action {
+	options := DefaultOptions()
+	options.Retries = 15
+	options.RetryInterval = 1 * time.Second
+
+	return action.Retry(options.Retries, func(ctx context.Context) error {
+		_, err := uda.Location(ctx, s)
+		if err != nil {
+			return errors.Wrapf(err, "failed to find the location of %q", s.desc)
+		}
+
+		return nil
+	}, options.RetryInterval)
+}
