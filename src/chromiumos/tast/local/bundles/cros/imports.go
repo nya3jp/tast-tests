@@ -94,6 +94,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/u2fd"
 	_ "chromiumos/tast/local/bundles/cros/ui"
 	_ "chromiumos/tast/local/bundles/cros/uidetection"
+	_ "chromiumos/tast/local/bundles/cros/vdi"
 	_ "chromiumos/tast/local/bundles/cros/video"
 	_ "chromiumos/tast/local/bundles/cros/vm"
 	_ "chromiumos/tast/local/bundles/cros/wallpaper"
