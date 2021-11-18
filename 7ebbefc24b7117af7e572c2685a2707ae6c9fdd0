@@ -34,6 +34,24 @@
       "parentUuid": "d5764ca9_d7ec26e4",
       "revId": "7ebbefc24b7117af7e572c2685a2707ae6c9fdd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a6797ef_c056a713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2021-11-18T22:52:08Z",
+      "side": 1,
+      "message": "Ah, this is super helpful! Didn\u0027t realize I could have a single testing.AddTest with parameters to split into separate tests. I\u0027ve modified the other test to include both the enabled and disabled case, as it is cleaner. Thanks!",
+      "parentUuid": "d5764ca9_d7ec26e4",
+      "revId": "7ebbefc24b7117af7e572c2685a2707ae6c9fdd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
