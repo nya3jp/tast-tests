@@ -66,6 +66,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04291d23_06e6f147",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-18T12:33:36Z",
+      "side": 1,
+      "message": "nit: new line",
+      "range": {
+        "startLine": 49,
+        "startChar": 21,
+        "endLine": 49,
+        "endChar": 22
+      },
+      "revId": "98a0d583d34214b52ef2bdb392cfb16a46dd1075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f6255da_3c741f56",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-18T12:33:36Z",
+      "side": 1,
+      "message": "nit: VDIConnector\nSame for the whole file. Use either \"vdi\" or \"VDI\".",
+      "range": {
+        "startLine": 123,
+        "startChar": 23,
+        "endLine": 123,
+        "endChar": 35
+      },
+      "revId": "98a0d583d34214b52ef2bdb392cfb16a46dd1075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2881a10f_0066ecda",
         "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
         "patchSetId": 1
@@ -94,6 +140,29 @@
       "writtenOn": "2021-11-18T11:36:17Z",
       "side": 1,
       "message": "Don;t forget to close Chrome if something goes wrong.",
+      "revId": "98a0d583d34214b52ef2bdb392cfb16a46dd1075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef06a3f_9d3ce8ec",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-18T12:33:36Z",
+      "side": 1,
+      "message": "minor nit: kb",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 2
+      },
       "revId": "98a0d583d34214b52ef2bdb392cfb16a46dd1075",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
