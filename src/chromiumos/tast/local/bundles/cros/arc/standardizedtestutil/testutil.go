@@ -13,10 +13,12 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -132,12 +134,27 @@ var TabletHardwareDep = hwdep.SkipOnModel(TabletOnlyModels...)
 
 // RunTestCases runs the provided test cases and handles cleanup between tests.
 func RunTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, testCases []TestCase) {
+	runTestCases(ctx, s, apkName, appPkgName, appActivity, false /* fromPlayStore */, testCases)
+}
+
+// RunTestCasesWithResizeLock runs the provided test cases with ResizeLock enabled, and handles cleanup between tests.
+func RunTestCasesWithResizeLock(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, testCases []TestCase) {
+	runTestCases(ctx, s, apkName, appPkgName, appActivity, true /* fromPlayStore */, testCases)
+}
+
+func runTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, fromPlayStore bool, testCases []TestCase) {
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	a := s.FixtValue().(*arc.PreData).ARC
 	d := s.FixtValue().(*arc.PreData).UIDevice
 
-	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
-		s.Fatal("Failed to install the APK: ", err)
+	if fromPlayStore {
+		if err := a.Install(ctx, arc.APKPath(apkName), adb.InstallOptionFromPlayStore); err != nil {
+			s.Fatal("Failed to install the APK: ", err)
+		}
+	} else {
+		if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
+			s.Fatal("Failed to install the APK: ", err)
+		}
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -166,6 +183,16 @@ func RunTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 				s.Fatal("Failed to start app: ", err)
 			}
 			defer act.Stop(cleanupCtx, tconn)
+
+			if fromPlayStore {
+				if err := wm.CheckVisibility(ctx, tconn, wm.BubbleDialogClassName, true); err != nil {
+					s.Fatal("Failed to wait for splash: ", err)
+				}
+
+				if err := wm.CloseSplash(ctx, tconn, wm.InputMethodClick, nil); err != nil {
+					s.Fatal("Failed to close splash: ", err)
+				}
+			}
 
 			// Take screenshot and dump ui info on failure.
 			defer func(ctx context.Context) {
