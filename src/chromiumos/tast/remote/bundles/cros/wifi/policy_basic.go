@@ -9,6 +9,8 @@ import (
 	"encoding/json"
 	"time"
 
+	"github.com/golang/protobuf/ptypes/empty"
+
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/wifi/security"
@@ -20,8 +22,6 @@ import (
 	ps "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
-
-	"github.com/golang/protobuf/ptypes/empty"
 )
 
 func init() {
