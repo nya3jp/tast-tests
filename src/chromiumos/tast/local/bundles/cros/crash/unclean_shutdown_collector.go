@@ -139,7 +139,7 @@ func UncleanShutdownCollector(ctx context.Context, s *testing.State) {
 
 		newDailyCycle, err := getPersistentInteger(ctx, dailyCycleFile)
 		if err != nil {
-			return errors.Wrap(err, "could not get daily cycle count: ")
+			return errors.Wrap(err, "could not get daily cycle count")
 		}
 
 		// The count should either increment, or we should move to the next day and set the count to 1.

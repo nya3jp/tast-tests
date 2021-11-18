@@ -210,7 +210,7 @@ func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName str
 	}
 
 	if err := confirmPixelCountInScreenshot(ctx, cr, a, int(expectedInitialPixelCount), screenshot.GrabScreenshot, color.Black); err != nil {
-		return errors.Wrap(err, "failed to check initial state: ")
+		return errors.Wrap(err, "failed to check initial state")
 	}
 
 	// Ensure that density is restored to initial state.

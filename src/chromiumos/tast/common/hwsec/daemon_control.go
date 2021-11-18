@@ -272,7 +272,7 @@ func (dc *DaemonController) Status(ctx context.Context, info *DaemonInfo) (goal 
 			// Don't return error if this is an optional daemon.
 			return unknownGoal, waitingState, -1, nil
 		}
-		return unknownGoal, waitingState, -1, errors.Wrapf(err, "failed to execute status command")
+		return unknownGoal, waitingState, -1, errors.Wrap(err, "failed to execute status command")
 	}
 	return parseStatus(info.DaemonName, string(out))
 }

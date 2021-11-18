@@ -288,7 +288,7 @@ func (at *AttestationTest) SignEnterpriseChallenge(ctx context.Context, username
 	}
 	b64SignedChallenge := base64.StdEncoding.EncodeToString([]byte(signedChallenge))
 	if err := at.va.VerifyEncodedVAChallenge(ctx, b64SignedChallenge); err != nil {
-		return errors.Wrap(err, "failed to verify VA challenge.")
+		return errors.Wrap(err, "failed to verify VA challenge")
 	}
 	return nil
 }

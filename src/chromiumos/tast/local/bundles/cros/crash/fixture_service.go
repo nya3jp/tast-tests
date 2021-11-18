@@ -134,7 +134,7 @@ func (c *FixtureService) TearDown(ctx context.Context, req *empty.Empty) (*empty
 	var firstErr error
 	if err := crash.TearDownCrashTest(ctx); err != nil {
 		testing.ContextLog(ctx, "Error tearing down: ", err)
-		firstErr = errors.Wrap(err, "error tearing down fixture: ")
+		firstErr = errors.Wrap(err, "error tearing down fixture")
 	}
 	if c.cr != nil {
 		// c.cr could be nil if the machine rebooted in the middle,
@@ -142,7 +142,7 @@ func (c *FixtureService) TearDown(ctx context.Context, req *empty.Empty) (*empty
 		if err := c.cr.Close(ctx); err != nil {
 			testing.ContextLog(ctx, "Error closing Chrome: ", err)
 			if firstErr == nil {
-				firstErr = errors.Wrap(err, "error closing Chrome:")
+				firstErr = errors.Wrap(err, "error closing Chrome")
 			}
 		}
 		c.cr = nil

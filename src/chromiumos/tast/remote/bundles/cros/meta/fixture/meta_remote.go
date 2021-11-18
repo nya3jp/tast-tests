@@ -14,7 +14,7 @@ import (
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "metaRemote",
-		Desc:     "Fixture for testing Tast's remote fixture support.",
+		Desc:     "Fixture for testing Tast's remote fixture support",
 		Contacts: []string{"oka@chromium.org", "tast-owners@google.com"},
 		Impl:     &metaRemoteFixt{},
 		Vars:     []string{"meta.metaRemote.SetUpError", "meta.metaRemote.TearDownError"},

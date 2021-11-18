@@ -83,17 +83,17 @@ func UIToggleFromWIFISettings(ctx context.Context, s *testing.State) {
 	}
 
 	defer func(ctx context.Context) {
-		s.Log("Cleanup..")
+		s.Log("Cleanup")
 		wiFiCurState, err := manager.IsEnabled(ctx, shill.TechnologyWifi)
 		if err != nil {
-			s.Fatal("Failed to get WiFi state", err)
+			s.Fatal("Failed to get WiFi state: ", err)
 		}
 		if wiFiPrevState != wiFiCurState {
 			if err := ui.LeftClick(toggleWiFi)(ctx); err != nil {
 				s.Fatal("Failed to left click toggleWiFi: ", err)
 			}
 			if err := checkWiFiEnabled(ctx, wiFiPrevState); err != nil {
-				s.Fatal("Failed to check WiFi previous state:", err)
+				s.Fatal("Failed to check WiFi previous state: ", err)
 			}
 		}
 	}(cleanupCtx)
