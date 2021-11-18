@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b7fbfa_7a077762",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-18T11:27:00Z",
+      "side": 1,
+      "message": "please take a look. ",
+      "revId": "5ee6b5f67ece5aec5f2868f46a83dcba814fc3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ddf82d6_7af3fdfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-18T11:27:00Z",
+      "side": 1,
+      "message": "Now, when I look at it in the review. I am thinking about putting this into fixtures themselves.\n\nThat parameter is bound to kiosk fixture. So, having fixture returning to the test may be a better solution. Like: e.g.\n\n[1] kioskmode :\u003d s.FixtValue().(fixtures.IsInKioskMode).InKioskMode()\n\nor even \n\n[2] mode :\u003d s.FixtValue().(fixtures.UserMode).Mode()\n...\nif mode \u003d\u003d fixtures.kioskmode{\n\n}\n\nWDYT?",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "5ee6b5f67ece5aec5f2868f46a83dcba814fc3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
