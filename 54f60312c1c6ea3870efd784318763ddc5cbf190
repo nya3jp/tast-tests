@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14e6b62c_82760859",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-11-18T11:04:29Z",
+      "side": 1,
+      "message": "made 2 tests with different fixtures.",
+      "parentUuid": "a1d356a0_43bc01e6",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "54f60312c1c6ea3870efd784318763ddc5cbf190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78ee3536_68032f4e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-12T16:39:09Z",
       "side": 1,
       "message": "I think the old test wanted to reboot always, but didn\u0027t know how if there wasn\u0027t a chromeos ec. (b/174604060)  Replacing this with ms.ModeAwareReboot() would work better, and be much simpler, and you wouldn\u0027t need the ec/no-ec cases.",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "54f60312c1c6ea3870efd784318763ddc5cbf190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a32c65d1_09855bfd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-11-18T11:04:29Z",
+      "side": 1,
+      "message": "replaced section with mc.ModeAwareReboot",
+      "parentUuid": "78ee3536_68032f4e",
       "range": {
         "startLine": 120,
         "startChar": 1,
