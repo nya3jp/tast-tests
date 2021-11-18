@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae80f52_e42a37fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-18T11:24:57Z",
+      "side": 1,
+      "message": "In offline discussion Hidehiko requested that I move closing-the-connection out of the closing-the-browser closure. Latest patchset does this.",
+      "revId": "f694f023a32892ba9bbfdd403fcb70b0e67d673a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
