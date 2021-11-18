@@ -248,6 +248,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a0a91b_292cb7b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-18T21:15:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c27dffb_af3e37d2",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acbb071b_cc990a96",
@@ -333,6 +351,24 @@
       "side": 1,
       "message": "If the source file isn\u0027t available it can just be empty, I think that is reasonable. That said, post processing seems OK also.",
       "parentUuid": "2555664b_f1e5ed1b",
+      "revId": "c47b892adedc55cf11f07397150456f2966162d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b26f6aba_cc236db4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_error_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-18T21:15:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7453655_da27e0b8",
       "revId": "c47b892adedc55cf11f07397150456f2966162d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
