@@ -16,7 +16,6 @@ import (
 
 	lpb "chromiumos/system_api/lorgnette_proto"
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/scanner/lorgnette"
 	"chromiumos/tast/local/printing/cups"
@@ -40,7 +39,7 @@ func init() {
 			"paper-io_scanning",
 		},
 		SoftwareDeps: []string{"virtual_usb_printer", "cups", "chrome"},
-		Fixture:      "chromeLoggedIn",
+		Fixture:      "virtualUsbPrinterModulesLoadedWithChromeLoggedIn",
 		Data:         []string{sourceImage, goldenImage},
 		Params: []testing.Param{{
 			Name: "usb",
@@ -92,21 +91,6 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 
 	testOpt := s.Param().(*params)
 
-	// Use cleanupCtx for any deferred cleanups in case of timeouts or
-	// cancellations on the shortened context.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	if err := usbprinter.InstallModules(ctx); err != nil {
-		s.Fatal("Failed to install kernel modules: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := usbprinter.RemoveModules(ctx); err != nil {
-			s.Error("Failed to remove kernel modules: ", err)
-		}
-	}(cleanupCtx)
-
 	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
 	if err != nil {
 		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
@@ -122,7 +106,7 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 	}
 	defer func() {
 		if printer != nil {
-			usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
+			usbprinter.StopPrinter(ctx, printer, devInfo)
 		}
 	}()
 	if err := cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
@@ -151,7 +135,7 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		if err := ippusbBridge.Start(); err != nil {
 			s.Fatal("Failed to connect to printer with ippusb_bridge: ", err)
 		}
-		defer ippusbbridge.Kill(cleanupCtx, devInfo)
+		defer ippusbbridge.Kill(ctx, devInfo)
 
 		// Defined in src/platform2/ippusb_bridge/src/main.rs
 		const port = 60000
@@ -187,7 +171,7 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 
 		// In the USB case, ippusb_bridge is started indirectly by lorgnette, so we don't
 		// have a process to kill directly.  Instead, search the process tree.
-		defer ippusbbridge.Kill(cleanupCtx, devInfo)
+		defer ippusbbridge.Kill(ctx, devInfo)
 	}
 
 	tmpDir, err := ioutil.TempDir("", "tast.scanner.ScanEsclIPP.")
@@ -221,6 +205,6 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 	// Intentionally stop the printer early to trigger shutdown in ippusb_bridge.
 	// Without this, cleanup may have to wait for other processes to finish using
 	// the printer (e.g. CUPS background probing).
-	usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
+	usbprinter.StopPrinter(ctx, printer, devInfo)
 	printer = nil
 }
