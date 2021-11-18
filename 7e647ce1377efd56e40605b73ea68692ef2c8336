@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75e12a7c_7037b4e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-11-18T14:03:45Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "7e647ce1377efd56e40605b73ea68692ef2c8336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f90c69f3_3ab9a18c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_n.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-11-18T14:03:45Z",
+      "side": 1,
+      "message": "nit: version",
+      "range": {
+        "startLine": 60,
+        "startChar": 50,
+        "endLine": 60,
+        "endChar": 57
+      },
+      "revId": "7e647ce1377efd56e40605b73ea68692ef2c8336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
