@@ -12,9 +12,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/lp"
@@ -45,21 +43,6 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 	if err != nil {
 		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
 	}
-
-	// Use oldContext for any deferred cleanups in case of timeouts or
-	// cancellations on the shortened context.
-	oldContext := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	if err := usbprinter.InstallModules(ctx); err != nil {
-		s.Fatal("Failed to install kernel modules: ", err)
-	}
-	defer func() {
-		if err := usbprinter.RemoveModules(oldContext); err != nil {
-			s.Error("Failed to remove kernel modules: ", err)
-		}
-	}()
 
 	printer, err := usbprinter.Start(ctx, devInfo, descriptors, attributes, record)
 	if err != nil {

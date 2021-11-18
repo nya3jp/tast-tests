@@ -38,6 +38,7 @@ func init() {
 		},
 		Timeout:      2 * time.Minute,
 		SoftwareDeps: []string{"chrome", "cros_internal", "cups", "virtual_usb_printer"},
+		Fixture:      "virtualUsbPrinterModulesLoaded",
 	})
 }
 
@@ -74,17 +75,6 @@ func Print(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
 	}
-
-	if err := usbprinter.InstallModules(ctx); err != nil {
-		s.Fatal("Failed to install kernel modules: ", err)
-	}
-	// Use cleanupCtx for any deferred cleanups in case of timeouts or
-	// cancellations on the shortened context.
-	defer func() {
-		if err := usbprinter.RemoveModules(cleanupCtx); err != nil {
-			s.Error("Failed to remove kernel modules: ", err)
-		}
-	}()
 
 	printer, _, err := usbprinter.StartIPPUSB(ctx, devInfo, descriptors, attributes, "" /*record*/)
 	if err != nil {
