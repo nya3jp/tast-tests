@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2439d0b_516b214b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/extended_display_hdmi_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-18T05:56:37Z",
+      "side": 1,
+      "message": "return is missing here.",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "8b3d26f1b02438a0921589c5061c028a83b1ccc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74bea87d_086e5810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/extended_display_hdmi_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-18T05:56:37Z",
+      "side": 1,
+      "message": "style: displayInfoFile (since it\u0027s a local variable)",
+      "range": {
+        "startLine": 180,
+        "startChar": 7,
+        "endLine": 180,
+        "endChar": 22
+      },
+      "revId": "8b3d26f1b02438a0921589c5061c028a83b1ccc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c334fa7_46842798",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/extended_display_hdmi_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-18T05:56:37Z",
+      "side": 1,
+      "message": "Can we use ioutil.ReadFile instead of spawning an external subprocess?",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 3
+      },
+      "revId": "8b3d26f1b02438a0921589c5061c028a83b1ccc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ebce8f_9f630647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/extended_display_hdmi_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-18T05:56:37Z",
+      "side": 1,
+      "message": "I recommend including len(matchedString) and numberOfDisplay in the error message so that we can tell those numbers from test failure messages.\n\n return errors.Errorf(\"unexpected number of external display info: got %d, want %d\", len(matchedString), numberOfDisplays)",
+      "range": {
+        "startLine": 192,
+        "startChar": 10,
+        "endLine": 192,
+        "endChar": 65
+      },
+      "revId": "8b3d26f1b02438a0921589c5061c028a83b1ccc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae889334_f60fc95f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/extended_display_hdmi_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-18T05:56:37Z",
+      "side": 1,
+      "message": "Does this test require external displays? Then it\u0027s not suitable for group:mainline since we run mainline tests with DUTs lacking any peripherals.\n\nCould you discuss in your team or Google counterparts about the execution plan of this test?",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 72
+      },
+      "revId": "8b3d26f1b02438a0921589c5061c028a83b1ccc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
