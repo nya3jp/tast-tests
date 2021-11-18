@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94274ba3_a10f735e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-18T05:28:15Z",
+      "side": 1,
+      "message": "yeah you\u0027re right, should have read the whole test",
+      "parentUuid": "b3793137_5801e560",
+      "revId": "8a8f85d35824b0438be5d92d60534fe18bb3e512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98183690_6a22388b",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-11-17T15:18:38Z",
       "side": 1,
       "message": "optional:\nInstead, we may want to use NewConnForTaget(..., MatchTargetURL(about:blank))\nalways at L162, and call conn.Navigate() here.\n\nWDYT?",
+      "revId": "8a8f85d35824b0438be5d92d60534fe18bb3e512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aa78f71_46166493",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/perftest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-18T05:28:15Z",
+      "side": 1,
+      "message": "yerp seems marginally better",
+      "parentUuid": "98183690_6a22388b",
       "revId": "8a8f85d35824b0438be5d92d60534fe18bb3e512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
