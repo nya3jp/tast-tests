@@ -22,6 +22,30 @@
       },
       "revId": "4be0a25b38c9f4fa00a0c159e389b27be1089902",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93478035_24103ec6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1392253
+      },
+      "writtenOn": "2021-11-18T06:21:06Z",
+      "side": 1,
+      "message": "I set the \"Cq-Depend\" in the CL description, so I think both CL will be included in the same CQ check.",
+      "parentUuid": "86827dd8_adec8317",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "4be0a25b38c9f4fa00a0c159e389b27be1089902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
