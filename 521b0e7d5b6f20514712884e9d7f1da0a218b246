@@ -16,6 +16,23 @@
       "message": "Removed tast-lint incorrect removal of argument unpacks",
       "revId": "521b0e7d5b6f20514712884e9d7f1da0a218b246",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b668bb3_9486beed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-18T06:40:26Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "521b0e7d5b6f20514712884e9d7f1da0a218b246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
