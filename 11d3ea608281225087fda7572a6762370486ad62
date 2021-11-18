@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "546661f2_474949a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2021-11-18T21:18:47Z",
+      "side": 1,
+      "message": "why disable screen recordings?",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aac49cf_d96f8796",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2021-11-18T21:18:47Z",
+      "side": 1,
+      "message": "throughout",
+      "range": {
+        "startLine": 64,
+        "startChar": 63,
+        "endLine": 64,
+        "endChar": 74
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19f542ae_64527e80",
         "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
         "patchSetId": 6
@@ -14,6 +60,30 @@
       "writtenOn": "2021-11-18T01:45:29Z",
       "side": 1,
       "message": "I need to do the login/logout with password cycle multiple times after enabling smart lock login from os-settings. If i only do it once, I still see the notification on the lock screen that says \"Enter your password to enable Smart Lock\"\n\nIf I only do one sign in with password and then log out it never works. Even if wait 30 seconds after the sign in before signing out.\n\nI need to do it at least twice",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4560dbb0_59fa2554",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2021-11-18T21:18:47Z",
+      "side": 1,
+      "message": "Odd. Is the text shown on the login screen the *exact* same \"Enter your password to enable Smart Lock\" both times? If not, please list the 2 different texts shown.",
+      "parentUuid": "19f542ae_64527e80",
       "range": {
         "startLine": 77,
         "startChar": 0,
@@ -42,6 +112,76 @@
         "startChar": 12,
         "endLine": 94,
         "endChar": 46
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79fdbd4e_e6aeb6a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2021-11-18T21:18:47Z",
+      "side": 1,
+      "message": "There is some work required after enabling Signin with Smart Lock to persist information to local state prefs, but I am very surprised to hear you need a 10 second wait.\n\nBut it looks like the necessary 10 second wait required here is after opening the SL Settings page and before attempting a signout? Does that mean you\u0027re observing it take up to 10 seconds for the SmartLock page to open?",
+      "parentUuid": "9a1ea45b_2da928a6",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58606c3a_86fba246",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2021-11-18T21:18:47Z",
+      "side": 1,
+      "message": "I\u0027m a go n00b: you don\u0027t need to declare types for each of these args?",
+      "range": {
+        "startLine": 34,
+        "startChar": 29,
+        "endLine": 34,
+        "endChar": 61
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ba7732d_49ad0d1a",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2021-11-18T21:18:47Z",
+      "side": 1,
+      "message": "controlling",
+      "range": {
+        "startLine": 5,
+        "startChar": 28,
+        "endLine": 5,
+        "endChar": 38
       },
       "revId": "11d3ea608281225087fda7572a6762370486ad62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
