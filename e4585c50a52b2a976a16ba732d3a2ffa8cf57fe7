@@ -16,6 +16,29 @@
       "message": "yhanada@: Please take a look. Thank you.",
       "revId": "e4585c50a52b2a976a16ba732d3a2ffa8cf57fe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "289bd93f_10fdc7c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/right_click_long_press.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-11-18T02:04:10Z",
+      "side": 1,
+      "message": "nit: IIRC you can directly get the bounds in DP with GetARCAppWindowInfo() or something.",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 76
+      },
+      "revId": "e4585c50a52b2a976a16ba732d3a2ffa8cf57fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
