@@ -32,8 +32,7 @@ func init() {
 	// $ tast run -var=user=<username> -var=pass=<password> <dut ip> dev.RemoteDesktop
 	// <username> and <password> are the credentials of the test GAIA account.
 	testing.AddTest(&testing.Test{
-		Func:         RemoteDesktop,
-		Desc:         "Connect to Chrome Remote Desktop for working remotely",
+		Func: RemoteDesktop, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Connect to Chrome Remote Desktop for working remotely",
 		Contacts:     []string{"shik@chromium.org", "tast-users@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
 		Vars: []string{

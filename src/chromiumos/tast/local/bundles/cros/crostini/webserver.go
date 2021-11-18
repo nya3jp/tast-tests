@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Webserver,
-		Desc:         "Runs a webserver in the container, and confirms that the host can connect to it",
+		Func: Webserver, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Runs a webserver in the container, and confirms that the host can connect to it",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

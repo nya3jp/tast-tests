@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         StandardizedTouchscreenThreeFingerSwipe,
-		Desc:         "Functional test that installs an app and tests that a standard touchscreen three finger swipe works",
+		Func: StandardizedTouchscreenThreeFingerSwipe, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Functional test that installs an app and tests that a standard touchscreen three finger swipe works",
 		Contacts:     []string{"davidwelling@google.com", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

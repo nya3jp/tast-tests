@@ -24,8 +24,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardTypingApps,
-		Desc:         "Checks that the virtual keyboard works in apps",
+		Func: VirtualKeyboardTypingApps, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that the virtual keyboard works in apps",
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},

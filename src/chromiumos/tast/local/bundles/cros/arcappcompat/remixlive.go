@@ -30,8 +30,7 @@ var touchviewLaunchForRemixlive = []testutil.TestCase{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Remixlive,
-		Desc:         "Functional test for Remixlive that installs the app also verifies it is logged in and that the main page is open, checks Remixlive correctly changes the window state in both clamshell and touchview mode",
+		Func: Remixlive, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Functional test for Remixlive that installs the app also verifies it is logged in and that the main page is open, checks Remixlive correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},

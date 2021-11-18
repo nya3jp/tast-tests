@@ -46,8 +46,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         FullQualificationStress,
-		Desc:         "Performs a full version of storage qualification test",
+		Func: FullQualificationStress, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Performs a full version of storage qualification test",
 		Contacts:     []string{"chromeos-engprod-platform-syd@google.com"},
 		Attr:         []string{"group:storage-qual"},
 		Data:         stress.Configs,

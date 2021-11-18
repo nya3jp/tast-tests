@@ -57,8 +57,7 @@ var (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CheckUsers,
-		Desc:         "Test the installation could not proceed with invalid user",
+		Func: CheckUsers, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test the installation could not proceed with invalid user",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},

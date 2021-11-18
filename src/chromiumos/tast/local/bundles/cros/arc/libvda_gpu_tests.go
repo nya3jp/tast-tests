@@ -14,8 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     LibvdaGpuTests,
-		Desc:     "Runs the non-decoding tests targetting libvda's GPU implementation",
+		Func: LibvdaGpuTests, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Runs the non-decoding tests targetting libvda's GPU implementation",
 		Contacts: []string{"alexlau@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		// "no_qemu" disables the test on betty. b/168566159#comment3

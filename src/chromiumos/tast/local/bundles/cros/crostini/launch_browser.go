@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         LaunchBrowser,
-		Desc:         "Opens a browser window on the host from the container, using several common approaches (/etc/alternatives, $BROWSER, and xdg-open)",
+		Func: LaunchBrowser, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Opens a browser window on the host from the container, using several common approaches (/etc/alternatives, $BROWSER, and xdg-open)",
 		Contacts:     []string{"davidmunro@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

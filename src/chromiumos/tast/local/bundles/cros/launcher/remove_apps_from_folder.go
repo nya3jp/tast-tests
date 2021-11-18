@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RemoveAppsFromFolder,
-		Desc: "Test removing items from a folder in the launcher",
+		Func: RemoveAppsFromFolder, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test removing items from a folder in the launcher",
 		Contacts: []string{
 			"cros-system-ui-eng@google.com",
 			"chromeos-sw-engprod@google.com",

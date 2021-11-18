@@ -31,8 +31,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MediaProjectionPermissions,
-		Desc:         "Checks that Chrome permissions dialog is used when using the MediaProjection API",
+		Func: MediaProjectionPermissions, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that Chrome permissions dialog is used when using the MediaProjection API",
 		Contacts:     []string{"cherieccy@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),

@@ -23,8 +23,7 @@ type playStoreTestParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     PlayStore,
-		Desc:     "A functional test of the Play Store that installs Google Calendar",
+		Func: PlayStore, LacrosStatus: testing.LacrosVariantUnknown, Desc: "A functional test of the Play Store that installs Google Calendar",
 		Contacts: []string{"arc-core@google.com", "cros-arc-te@google.com"},
 		Attr:     []string{"group:mainline", "informational", "group:arc-functional"},
 		Params: []testing.Param{{

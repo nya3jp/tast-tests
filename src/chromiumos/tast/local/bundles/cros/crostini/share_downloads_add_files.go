@@ -25,8 +25,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ShareDownloadsAddFiles,
-		Desc:         "Test sharing Downloads with Crostini",
+		Func: ShareDownloadsAddFiles, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test sharing Downloads with Crostini",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

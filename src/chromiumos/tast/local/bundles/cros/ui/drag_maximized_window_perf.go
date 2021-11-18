@@ -23,8 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DragMaximizedWindowPerf,
-		Desc:         "Measures the animation smoothness of dragging a maximized window in clamshell mode",
+		Func: DragMaximizedWindowPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the animation smoothness of dragging a maximized window in clamshell mode",
 		Contacts:     []string{"sammiequon@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

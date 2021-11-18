@@ -25,8 +25,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CardElementAnimationPerf,
-		Desc:         "Measures animation smoothness of card elements and transition from peeking to half height",
+		Func: CardElementAnimationPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures animation smoothness of card elements and transition from peeking to half height",
 		Contacts:     []string{"cowmoo@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},

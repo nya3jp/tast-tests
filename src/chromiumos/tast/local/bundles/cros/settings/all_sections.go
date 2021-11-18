@@ -24,8 +24,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AllSections,
-		Desc:         "Open OS Settings and check main sections are displayed properly",
+		Func: AllSections, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Open OS Settings and check main sections are displayed properly",
 		Contacts:     []string{"tim.chang@cienet.com", "cienet-development@googlegroups.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

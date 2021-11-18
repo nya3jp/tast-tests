@@ -19,8 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Keyboard,
-		Desc:         "Demonstrates injecting keyboard events",
+		Func: Keyboard, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Demonstrates injecting keyboard events",
 		Contacts:     []string{"ricardoq@chromium.org", "tast-owners@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

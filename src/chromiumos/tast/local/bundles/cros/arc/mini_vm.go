@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MiniVM,
-		Desc: "Ensures mini-ARCVM is functional and can be upgraded successfully",
+		Func: MiniVM, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Ensures mini-ARCVM is functional and can be upgraded successfully",
 		Contacts: []string{
 			"wvk@chromium.org",
 		},

@@ -37,8 +37,7 @@ type taskSWitchCUJTestParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         TaskSwitchCUJ,
-		Desc:         "Measures the performance of tab-switching CUJ",
+		Func: TaskSwitchCUJ, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the performance of tab-switching CUJ",
 		Contacts:     []string{"mukai@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

@@ -37,8 +37,7 @@ type secureCopyPasteConfig struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SecureCopyPaste,
-		Desc:         "Verifies that background crostini apps can not access the clipboard",
+		Func: SecureCopyPaste, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that background crostini apps can not access the clipboard",
 		Contacts:     []string{"hollingum@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

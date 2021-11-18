@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CCAUIGalleryButton,
-		Desc:         "Verifies that gallery button related logic works expectedly in CCA",
+		Func: CCAUIGalleryButton, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that gallery button related logic works expectedly in CCA",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},

@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Usb4HotplugUnplug,
-		Desc:         "USB4 device enumeration check after hot plug-unplug",
+		Func: Usb4HotplugUnplug, LacrosStatus: testing.LacrosVariantUnknown, Desc: "USB4 device enumeration check after hot plug-unplug",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		Attr:         []string{"group:typec"},
 		SoftwareDeps: []string{"chrome"},

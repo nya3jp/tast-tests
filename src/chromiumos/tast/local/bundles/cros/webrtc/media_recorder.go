@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MediaRecorder,
-		Desc: "Verifies that MediaRecorder uses video encode acceleration",
+		Func: MediaRecorder, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that MediaRecorder uses video encode acceleration",
 		Contacts: []string{
 			"mcasas@chromium.org",
 			"chromeos-gfx-video@google.com",

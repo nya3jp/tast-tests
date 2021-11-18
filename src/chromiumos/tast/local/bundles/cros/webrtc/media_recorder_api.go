@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MediaRecorderAPI,
-		Desc: "Verifies the MediaRecorder API",
+		Func: MediaRecorderAPI, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies the MediaRecorder API",
 		Contacts: []string{
 			"mcasas@chromium.org",
 			"chromeos-gfx-video@google.com",

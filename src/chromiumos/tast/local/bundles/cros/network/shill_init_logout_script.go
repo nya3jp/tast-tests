@@ -16,8 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ShillInitLogoutScript,
-		Desc:         "Test that shill init logout script perform as expected",
+		Func: ShillInitLogoutScript, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test that shill init logout script perform as expected",
 		Contacts:     []string{"hugobenichi@google.com", "cros-networking@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

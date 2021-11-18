@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardAccessibility,
-		Desc:         "Checks that the accessibility keyboard displays correctly",
+		Func: VirtualKeyboardAccessibility, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that the accessibility keyboard displays correctly",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},

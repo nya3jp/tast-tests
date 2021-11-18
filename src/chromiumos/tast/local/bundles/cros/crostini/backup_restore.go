@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         BackupRestore,
-		Desc:         "Checks crostini backup and restore",
+		Func: BackupRestore, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks crostini backup and restore",
 		Contacts:     []string{"joelhockey@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

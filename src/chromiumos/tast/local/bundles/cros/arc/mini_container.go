@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MiniContainer,
-		Desc: "Ensures Android mini container is upgraded after login",
+		Func: MiniContainer, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Ensures Android mini container is upgraded after login",
 		Contacts: []string{
 			"arc-core@google.com",
 			"nya@chromium.org", // Tast port author.

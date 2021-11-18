@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Gralloc,
-		Desc:         "Test ARC++ gralloc implementation",
+		Func: Gralloc, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test ARC++ gralloc implementation",
 		Contacts:     []string{"stevensd@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

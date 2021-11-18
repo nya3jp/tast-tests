@@ -14,8 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CCAAPI,
-		Desc:         "Verifies that the private JavaScript APIs CCA relies on work as expected",
+		Func: CCAAPI, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that the private JavaScript APIs CCA relies on work as expected",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},

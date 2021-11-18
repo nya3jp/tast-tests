@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ArcCameraOrientation,
-		Desc:         "Ensures that camera orientation compatibility solution works as expected",
+		Func: ArcCameraOrientation, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Ensures that camera orientation compatibility solution works as expected",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},

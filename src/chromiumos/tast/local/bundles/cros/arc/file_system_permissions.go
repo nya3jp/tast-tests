@@ -16,8 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FileSystemPermissions,
-		Desc: "Verifies filesystem permissions for ARC container",
+		Func: FileSystemPermissions, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies filesystem permissions for ARC container",
 		Contacts: []string{
 			"yusukes@chromium.org",
 			"arc-storage@google.com",

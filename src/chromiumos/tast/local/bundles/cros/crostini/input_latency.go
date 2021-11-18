@@ -32,8 +32,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         InputLatency,
-		Desc:         "Tests Crostini input latency",
+		Func: InputLatency, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests Crostini input latency",
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

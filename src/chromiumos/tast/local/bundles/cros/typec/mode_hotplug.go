@@ -19,8 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ModeHotplug,
-		Desc:         "Checks USB Type C mode switch behaviour when a Thunderbolt dock is unplugged/replugged",
+		Func: ModeHotplug, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks USB Type C mode switch behaviour when a Thunderbolt dock is unplugged/replugged",
 		Contacts:     []string{"pmalani@chromium.org", "chromeos-power@google.com"},
 		Attr:         []string{"group:typec"},
 		SoftwareDeps: []string{"chrome"},

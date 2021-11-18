@@ -29,8 +29,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PhysicalKeyboardKoreanTyping,
-		Desc:         "Checks that physical keyboard can perform basic typing in korean",
+		Func: PhysicalKeyboardKoreanTyping, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that physical keyboard can perform basic typing in korean",
 		Contacts:     []string{"jopalmer@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream", "informational"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},

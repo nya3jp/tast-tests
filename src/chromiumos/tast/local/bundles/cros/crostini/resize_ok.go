@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ResizeOk,
-		Desc:         "Test resizing disk of Crostini from the Settings app",
+		Func: ResizeOk, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test resizing disk of Crostini from the Settings app",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},

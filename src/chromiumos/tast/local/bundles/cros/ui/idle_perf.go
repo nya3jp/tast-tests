@@ -26,8 +26,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         IdlePerf,
-		Desc:         "Measures the CPU usage while the desktop is idle",
+		Func: IdlePerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the CPU usage while the desktop is idle",
 		Contacts:     []string{"xiyuan@chromium.org", "yichenz@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

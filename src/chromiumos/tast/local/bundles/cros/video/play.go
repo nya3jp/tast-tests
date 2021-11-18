@@ -24,8 +24,7 @@ type playParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Play,
-		Desc: "Checks simple video playback in Chrome is working",
+		Func: Play, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks simple video playback in Chrome is working",
 		Contacts: []string{
 			"mcasas@chromium.org",
 			"chromeos-gfx-video@google.com",

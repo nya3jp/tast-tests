@@ -19,8 +19,7 @@ type memoryPressureParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     MemoryPressure,
-		Desc:     "Create memory pressure and collect various measurements from Chrome and from the kernel",
+		Func: MemoryPressure, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Create memory pressure and collect various measurements from Chrome and from the kernel",
 		Contacts: []string{"semenzato@chromium.org", "sonnyrao@chromium.org", "chromeos-memory@google.com"},
 		Attr:     []string{"group:crosbolt", "crosbolt_memory_nightly"},
 		Timeout:  180 * time.Minute,

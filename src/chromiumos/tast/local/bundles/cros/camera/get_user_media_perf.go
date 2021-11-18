@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         GetUserMediaPerf,
-		Desc:         "Captures performance data about getUserMedia video capture",
+		Func: GetUserMediaPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Captures performance data about getUserMedia video capture",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{caps.BuiltinOrVividCamera, "chrome"},

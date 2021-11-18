@@ -22,8 +22,7 @@ const veapCacheExtractedVideo = false
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VideoEncodeAccelPerf,
-		Desc:         "Measures ARC++ and ARCVM hardware video encode performance by running the arcvideoencoder_test binary",
+		Func: VideoEncodeAccelPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures ARC++ and ARCVM hardware video encode performance by running the arcvideoencoder_test binary",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},

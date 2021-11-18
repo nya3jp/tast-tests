@@ -26,8 +26,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         HomeDirectoryCreateFile,
-		Desc:         "Test creating a file/folder in Linux files and container using a pre-built crostini image",
+		Func: HomeDirectoryCreateFile, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test creating a file/folder in Linux files and container using a pre-built crostini image",
 		Contacts:     []string{"jinrongwu@chromium.org"},
 		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

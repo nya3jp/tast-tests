@@ -26,8 +26,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VideoEncodeAccel,
-		Desc:         "Verifies ARC++ and ARCVM hardware encode acceleration by running the arcvideoencoder_test binary",
+		Func: VideoEncodeAccel, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies ARC++ and ARCVM hardware encode acceleration by running the arcvideoencoder_test binary",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},

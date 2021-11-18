@@ -42,8 +42,7 @@ type vectors struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ACVP,
-		Contacts: []string{
+		Func: ACVP, LacrosStatus: testing.LacrosVariantUnknown, Contacts: []string{
 			"gurleengrewal@chromium.org", // Test author
 			"sukhomlinov@chromium.org",   // CR50 certification lead
 		},

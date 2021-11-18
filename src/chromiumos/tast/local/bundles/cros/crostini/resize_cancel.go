@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ResizeCancel,
-		Desc:         "Test cancelling resizing of Crostini from the Settings app",
+		Func: ResizeCancel, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test cancelling resizing of Crostini from the Settings app",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},

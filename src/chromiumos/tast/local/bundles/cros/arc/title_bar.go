@@ -22,8 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         TitleBar,
-		Desc:         "Test the Title Bar of the ARC App and Its buttons",
+		Func: TitleBar, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test the Title Bar of the ARC App and Its buttons",
 		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},

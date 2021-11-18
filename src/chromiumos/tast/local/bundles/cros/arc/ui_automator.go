@@ -15,8 +15,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UIAutomator,
-		Desc:         "Sample test to manipulate an app with UI automator",
+		Func: UIAutomator, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Sample test to manipulate an app with UI automator",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",

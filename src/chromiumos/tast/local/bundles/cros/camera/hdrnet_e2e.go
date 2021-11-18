@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         HDRnetE2E,
-		Desc:         "Runs the HDRnet end-to-end integration test",
+		Func: HDRnetE2E, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Runs the HDRnet end-to-end integration test",
 		Contacts:     []string{"jcliang@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"camera_app", "camera_feature_hdrnet", "chrome"},

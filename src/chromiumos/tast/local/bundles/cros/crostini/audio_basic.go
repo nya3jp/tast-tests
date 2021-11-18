@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AudioBasic,
-		Desc:         "Runs a basic test on the container's audio (through alsa) using a pre-built crostini image",
+		Func: AudioBasic, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Runs a basic test on the container's audio (through alsa) using a pre-built crostini image",
 		Contacts:     []string{"paulhsia@chromium.org", "cros-containers-dev@google.com", "chromeos-audio-bugs@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

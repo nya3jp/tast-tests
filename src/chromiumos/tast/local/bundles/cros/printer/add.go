@@ -13,8 +13,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Add,
-		Desc: "Verifies the lp command enqueues print jobs",
+		Func: Add, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies the lp command enqueues print jobs",
 		Contacts: []string{
 			"batrapranav@chromium.org",
 			"cros-printing-dev@chromium.org",

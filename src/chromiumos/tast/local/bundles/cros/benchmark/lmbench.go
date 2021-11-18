@@ -45,8 +45,7 @@ type runInfo struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         LMbench,
-		Desc:         "Execute LMBench to do benchmark testing and retrieve the results",
+		Func: LMbench, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Execute LMBench to do benchmark testing and retrieve the results",
 		Contacts:     []string{"phuang@cienet.com", "xliu@cienet.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},

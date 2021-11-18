@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VerifyDefaultApps,
-		Desc:         "Verifies Default arc apps are installed",
+		Func: VerifyDefaultApps, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies Default arc apps are installed",
 		Contacts:     []string{"rnanjappan@chromium.org", "arc-eng@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		Timeout:      5 * time.Minute,

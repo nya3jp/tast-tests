@@ -36,8 +36,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     PCMarkWorkAndroidApp,
-		Desc:     "Execute PCMark Android App to do benchmark for PCMark Work and acquire test score",
+		Func: PCMarkWorkAndroidApp, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Execute PCMark Android App to do benchmark for PCMark Work and acquire test score",
 		Contacts: []string{"alfredyu@cienet.com", "xliu@cienet.com"},
 		// Purposely leave the empty Attr here. Public benchmark tests are not included in crosbolt group for now.
 		Attr:         []string{},

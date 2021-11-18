@@ -14,8 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     HeavyMemoryUser,
-		Desc:     "Tests heavy memory use with Chrome, ARC and VMs running",
+		Func: HeavyMemoryUser, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests heavy memory use with Chrome, ARC and VMs running",
 		Contacts: []string{"asavery@chromium.org", "chromeos-storage@google.com"},
 		// TODO(http://b/172075721): Test is disabled until it can be fixed
 		// Attr:         []string{"group:crosbolt", "crosbolt_memory_nightly"},

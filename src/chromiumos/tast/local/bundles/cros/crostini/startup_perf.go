@@ -16,8 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         StartupPerf,
-		Desc:         "Performance tests of Termina VM startup and container startup",
+		Func: StartupPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Performance tests of Termina VM startup and container startup",
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Timeout:      10 * time.Minute,

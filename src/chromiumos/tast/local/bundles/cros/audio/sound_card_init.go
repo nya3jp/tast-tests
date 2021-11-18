@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SoundCardInit,
-		Desc:         "Verfies sound_card_init boot time calibration logic",
+		Func: SoundCardInit, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verfies sound_card_init boot time calibration logic",
 		HardwareDeps: hwdep.D(hwdep.SmartAmp(), hwdep.SkipOnModel("atlas", "nocturne")),
 		Contacts:     []string{"judyhsiao@chromium.org", "cychiang@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},

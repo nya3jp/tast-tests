@@ -23,8 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     SplitView,
-		Desc:     "Tests split view works properly with ARC apps",
+		Func: SplitView, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests split view works properly with ARC apps",
 		Contacts: []string{"toshikikikuchi@chromium.org", "amusbach@chromium.org", "arc-framework+tast@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		// TODO(b/188754062): Add support for mouse input and remove the internal display deps

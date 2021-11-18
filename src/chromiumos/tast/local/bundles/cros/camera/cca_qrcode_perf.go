@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CCAQRCodePerf,
-		Desc:         "Verifies the BarcodeDetector API used in CCA",
+		Func: CCAQRCodePerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies the BarcodeDetector API used in CCA",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},

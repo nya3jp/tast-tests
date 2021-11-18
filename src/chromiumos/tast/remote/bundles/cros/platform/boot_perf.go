@@ -37,8 +37,7 @@ var (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         BootPerf,
-		Desc:         "Boot performance test",
+		Func: BootPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Boot performance test",
 		Contacts:     []string{"chinglinyu@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		ServiceDeps:  []string{"tast.cros.arc.PerfBootService", "tast.cros.platform.BootPerfService", "tast.cros.security.BootLockboxService"},

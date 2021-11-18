@@ -26,8 +26,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DragTabInClamshellPerf,
-		Desc:         "Measures the presentation time of dragging a tab in clamshell mode",
+		Func: DragTabInClamshellPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the presentation time of dragging a tab in clamshell mode",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

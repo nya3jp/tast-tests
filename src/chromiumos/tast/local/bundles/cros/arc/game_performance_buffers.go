@@ -14,8 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     GamePerformanceBuffers,
-		Desc:     "Captures set of performance metrics for buffers and upload it to the server",
+		Func: GamePerformanceBuffers, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Captures set of performance metrics for buffers and upload it to the server",
 		Contacts: []string{"khmel@chromium.org", "skuhne@chromium.org", "arc-performance@google.com"},
 		// TODO(http://b/140444033): Test is disabled until it can be fixed
 		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

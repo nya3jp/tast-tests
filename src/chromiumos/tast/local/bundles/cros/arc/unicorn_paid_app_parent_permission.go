@@ -22,8 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UnicornPaidAppParentPermission,
-		Desc:         "Checks if paid app installation triggers Parent Permission For Unicorn Account",
+		Func: UnicornPaidAppParentPermission, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks if paid app installation triggers Parent Permission For Unicorn Account",
 		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},

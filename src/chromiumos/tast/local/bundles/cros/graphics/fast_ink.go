@@ -34,8 +34,7 @@ type fastInkTestParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         FastInk,
-		Desc:         "Verifies that fast ink is working as evidenced by a hardware overlay",
+		Func: FastInk, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that fast ink is working as evidenced by a hardware overlay",
 		Contacts:     []string{"amusbach@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

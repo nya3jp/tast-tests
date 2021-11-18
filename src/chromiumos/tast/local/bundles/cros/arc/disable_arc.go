@@ -24,8 +24,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DisableArc,
-		Desc:         "Verify PlayStore can be turned off in Settings ",
+		Func: DisableArc, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verify PlayStore can be turned off in Settings ",
 		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},

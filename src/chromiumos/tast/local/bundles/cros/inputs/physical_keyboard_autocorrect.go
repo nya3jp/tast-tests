@@ -25,8 +25,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PhysicalKeyboardAutocorrect,
-		Desc:         "Checks that physical keyboard can perform typing with autocorrects",
+		Func: PhysicalKeyboardAutocorrect, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that physical keyboard can perform typing with autocorrects",
 		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome"},

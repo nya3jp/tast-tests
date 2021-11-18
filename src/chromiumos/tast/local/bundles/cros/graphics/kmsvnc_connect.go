@@ -19,8 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         KmsvncConnect,
-		Desc:         "Connects to kmsvnc server and verifies server parameters",
+		Func: KmsvncConnect, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Connects to kmsvnc server and verifies server parameters",
 		Contacts:     []string{"shaochuan@chromium.org", "uekawa@chromium.org"},
 		Attr:         []string{"group:mainline"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),

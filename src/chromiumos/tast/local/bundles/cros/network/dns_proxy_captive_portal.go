@@ -19,8 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DNSProxyCaptivePortal,
-		Desc:         "Verify dns-proxy behaves correctly when shill detects a captive portal",
+		Func: DNSProxyCaptivePortal, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verify dns-proxy behaves correctly when shill detects a captive portal",
 		Contacts:     []string{"jasongustaman@google.com", "garrick@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

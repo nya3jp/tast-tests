@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: OpenSettings,
-		Desc: "Checks that settings can be opened from Quick Settings",
+		Func: OpenSettings, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that settings can be opened from Quick Settings",
 		Contacts: []string{
 			"cros-system-ui-eng@google.com",
 			"chromeos-sw-engprod@google.com",

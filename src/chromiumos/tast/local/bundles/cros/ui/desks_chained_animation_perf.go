@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DesksChainedAnimationPerf,
-		Desc:         "Measures the smoothness of a chained desk activation animation",
+		Func: DesksChainedAnimationPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the smoothness of a chained desk activation animation",
 		Contacts:     []string{"afakhry@chromium.org", "sammiequon@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

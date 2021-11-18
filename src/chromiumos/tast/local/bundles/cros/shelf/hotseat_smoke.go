@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: HotseatSmoke,
-		Desc: "Tests the basic features of hotseat",
+		Func: HotseatSmoke, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests the basic features of hotseat",
 		Contacts: []string{
 			"andrewxu@chromium.org",
 			"newcomer@chromium.org",

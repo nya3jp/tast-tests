@@ -22,8 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PerfettoChromeConsumer,
-		Desc:         "Tests Chrome DevTools protocol for collecting a system-wide trace via the system tracing service",
+		Func: PerfettoChromeConsumer, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests Chrome DevTools protocol for collecting a system-wide trace via the system tracing service",
 		Contacts:     []string{"chinglinyu@chromium.org", "chenghaoyang@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{tracing.TraceConfigFile},

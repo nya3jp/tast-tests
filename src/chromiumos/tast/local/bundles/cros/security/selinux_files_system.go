@@ -14,8 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SELinuxFilesSystem,
-		Desc:         "Checks that SELinux file labels are set correctly for system files",
+		Func: SELinuxFilesSystem, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that SELinux file labels are set correctly for system files",
 		Contacts:     []string{"fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
 		SoftwareDeps: []string{"chrome", "selinux"},
 		Attr:         []string{"group:mainline"},

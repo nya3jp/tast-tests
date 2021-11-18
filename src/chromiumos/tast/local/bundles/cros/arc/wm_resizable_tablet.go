@@ -22,8 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WMResizableTablet,
-		Desc:         "Verifies that Window Manager resizable tablet use-cases behave as described in go/arc-wm-r",
+		Func: WMResizableTablet, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that Window Manager resizable tablet use-cases behave as described in go/arc-wm-r",
 		Contacts:     []string{"armenk@google.com", "takise@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},

@@ -20,8 +20,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Xattrs,
-		Desc:         "Test that the container image has extended attributes set",
+		Func: Xattrs, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test that the container image has extended attributes set",
 		Contacts:     []string{"sidereal@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChapsRSAPSS,
-		Desc: "Verifies RSA PSS works with RSA keys (sign, verify, encrypt, decrypt) in chaps",
+		Func: ChapsRSAPSS, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies RSA PSS works with RSA keys (sign, verify, encrypt, decrypt) in chaps",
 		Attr: []string{"group:mainline"},
 		Contacts: []string{
 			"zuan@chromium.org",

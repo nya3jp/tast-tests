@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ExoClient,
-		Desc: "Attaches a client to exo and exercises the wayland APIs",
+		Func: ExoClient, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Attaches a client to exo and exercises the wayland APIs",
 		Contacts: []string{
 			"jshargo@chromium.org",
 			"chromeos-gfx-compositor@google.com",

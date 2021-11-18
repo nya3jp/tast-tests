@@ -15,8 +15,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ScreenshotChrome,
-		Desc:         "Takes a screenshot using Chrome",
+		Func: ScreenshotChrome, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Takes a screenshot using Chrome",
 		Contacts:     []string{"jkardatzke@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

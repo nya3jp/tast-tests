@@ -16,8 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         HAL3Device,
-		Desc:         "Verifies camera device function with HAL3 interface",
+		Func: HAL3Device, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies camera device function with HAL3 interface",
 		Contacts:     []string{"hywu@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera", "group:camera-postsubmit"},
 		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.BuiltinCamera},

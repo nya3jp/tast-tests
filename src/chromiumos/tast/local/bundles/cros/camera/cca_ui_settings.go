@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CCAUISettings,
-		Desc:         "Opens CCA and verifies the settings menu behavior",
+		Func: CCAUISettings, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Opens CCA and verifies the settings menu behavior",
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},

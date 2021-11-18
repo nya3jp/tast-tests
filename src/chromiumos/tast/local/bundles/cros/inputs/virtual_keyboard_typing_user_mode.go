@@ -30,8 +30,7 @@ var typingModeTestMessages = []data.Message{data.TypingMessageHello}
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardTypingUserMode,
-		Desc:         "Checks that virtual keyboard works in different user modes",
+		Func: VirtualKeyboardTypingUserMode, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that virtual keyboard works in different user modes",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:input-tools-upstream", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
