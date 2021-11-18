@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee99cc8f_e3009185",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-18T18:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3e645af_cd6c9017",
+      "revId": "31c0ddc5ecef4c2b0185fd1f0c5edb47c2d25f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c7ca170_2a3aa27c",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-18T01:30:31Z",
       "side": 1,
       "message": "nit, alternatively, can use cloudStorage \u003d\u003d nil to signal that download is not wanted/not possible, because either of those implies no flash.",
+      "revId": "31c0ddc5ecef4c2b0185fd1f0c5edb47c2d25f8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42998f23_973b93e6",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-18T18:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c7ca170_2a3aa27c",
       "revId": "31c0ddc5ecef4c2b0185fd1f0c5edb47c2d25f8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
