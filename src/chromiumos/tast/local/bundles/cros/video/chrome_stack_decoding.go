@@ -10,7 +10,6 @@ import (
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/media/decoding"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 var av1CommonFiles = []string{
@@ -188,18 +187,9 @@ func init() {
 			// producing a visually correct output (AV1 spec 7.2). Thus, for volteer,
 			// don't validate the decoding of film-grain streams using MD5. Instead,
 			// validate them using SSIM (see the av1_ssim test).
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("volteer")),
-			ExtraData:         appendJSONFiles(av1FilmGrainFiles),
+			ExtraData: appendJSONFiles(av1FilmGrainFiles),
 			Val: chromeStackDecodingTestParam{
 				videoFiles:    av1FilmGrainFiles,
-				validatorType: decoding.MD5,
-			},
-		}, {
-			Name:              "av1_ssim",
-			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
-			ExtraData:         appendJSONFiles(av1Files),
-			Val: chromeStackDecodingTestParam{
-				videoFiles:    av1Files,
 				validatorType: decoding.SSIM,
 			},
 		}, {
@@ -217,18 +207,9 @@ func init() {
 			// producing a visually correct output (AV1 spec 7.2). Thus, for volteer,
 			// don't validate the decoding of film-grain streams using MD5. Instead,
 			// validate them using SSIM (see the av1_10bit_ssim test).
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("volteer")),
-			ExtraData:         appendJSONFiles(av110BitFilmGrainFiles),
+			ExtraData: appendJSONFiles(av110BitFilmGrainFiles),
 			Val: chromeStackDecodingTestParam{
 				videoFiles:    av110BitFilmGrainFiles,
-				validatorType: decoding.MD5,
-			},
-		}, {
-			Name:              "av1_10bit_ssim",
-			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_10BPP},
-			ExtraData:         appendJSONFiles(av110BitFiles),
-			Val: chromeStackDecodingTestParam{
-				videoFiles:    av110BitFiles,
 				validatorType: decoding.SSIM,
 			},
 		}, {
