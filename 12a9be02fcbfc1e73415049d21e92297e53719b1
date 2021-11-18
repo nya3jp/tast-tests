@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4951c368_9a5e925a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-18T22:19:10Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "12a9be02fcbfc1e73415049d21e92297e53719b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa3bde51_eba64ef2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/right_click_long_press.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-18T22:19:10Z",
+      "side": 1,
+      "message": "nit: Probably good for debugging to also include the error here, e.g.\n```\ns.Fatalf(\"Failed to create a new activity %q: %v\", activityName, err)\n```",
+      "range": {
+        "startLine": 54,
+        "startChar": 44,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "12a9be02fcbfc1e73415049d21e92297e53719b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

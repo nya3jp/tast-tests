@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf53bc27_d43c0e35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/right_click_long_press.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-18T22:19:10Z",
+      "side": 1,
+      "message": "SGTM 👍",
+      "parentUuid": "fa7cf8b2_5aa7c7d8",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "885aa48981ef2d39952c09e0d3f625efc55a3dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f7fb42e_77485a98",
