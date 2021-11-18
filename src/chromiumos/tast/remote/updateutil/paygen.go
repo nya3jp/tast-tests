@@ -56,7 +56,7 @@ func FindLatestStable(ctx context.Context, board string) (*Delta, error) {
 
 	filtered := paygen.FilterBoardChannelDeltaType(board, channel, deltaType)
 
-	return filtered.findLatest()
+	return filtered.FindLatest()
 }
 
 // LoadPaygenFromGS downloads the paygen.json file, parses it, and returns it in a Paygen object.
@@ -118,7 +118,8 @@ func (p Paygen) FilterMilestone(milestone int) *Paygen {
 	return &filtered
 }
 
-func (p *Paygen) findLatest() (*Delta, error) {
+// FindLatest returns the Delta with the highest Chrome OS Version value.
+func (p *Paygen) FindLatest() (*Delta, error) {
 	if len(p.Deltas) == 0 {
 		return nil, errors.New("emtpy input")
 	}

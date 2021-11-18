@@ -59,7 +59,7 @@ func TestLatest(t *testing.T) {
 	}
 
 	filtered := paygen.FilterBoardChannelDeltaType("sarien", "canary", "OMAHA")
-	if latest, err := filtered.findLatest(); err != nil {
+	if latest, err := filtered.FindLatest(); err != nil {
 		t.Fatal("Unexpected error in finding the latest release: ", err)
 	} else if latest.ChromeOSVersion != wantVersion {
 		t.Errorf("Unexpected version for the latest release; got %s, want %s", latest.ChromeOSVersion, wantVersion)
