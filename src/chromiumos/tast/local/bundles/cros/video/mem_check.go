@@ -24,8 +24,9 @@ type memCheckParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MemCheck,
-		Desc: "Checks video playback in Chrome has no leaks",
+		Func:         MemCheck,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks video playback in Chrome has no leaks",
 		Contacts: []string{
 			"mcasas@chromium.org",
 			"chromeos-gfx-video@google.com",

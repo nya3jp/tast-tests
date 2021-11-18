@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LaunchHelpAppOnManagedDevice,
-		Desc: "Launch Help App on a managed device",
+		Func:         LaunchHelpAppOnManagedDevice,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Launch Help App on a managed device",
 		Contacts: []string{
 			"showoff-eng@google.com",
 			"shengjun@chromium.org",

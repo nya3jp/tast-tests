@@ -28,6 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ResizeInstallation,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Test resizing during installation",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

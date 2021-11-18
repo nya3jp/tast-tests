@@ -25,8 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AutoclickEnabled,
-		Desc: "Behavior of AutoclickEnabled policy: checking if autoclick is enabled or not",
+		Func:         AutoclickEnabled,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of AutoclickEnabled policy: checking if autoclick is enabled or not",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

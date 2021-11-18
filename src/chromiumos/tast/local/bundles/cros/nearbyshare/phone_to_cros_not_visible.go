@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PhoneToCrosNotVisible,
-		Desc: "Checks that CrOS device won't be found based on its visibility setting",
+		Func:         PhoneToCrosNotVisible,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that CrOS device won't be found based on its visibility setting",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 			"kyleshima@chromium.org",

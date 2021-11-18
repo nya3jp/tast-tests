@@ -29,8 +29,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DefaultGeolocationSetting,
-		Desc: "Behavior of DefaultGeolocationSetting policy, checking the location site settings after setting the policy",
+		Func:         DefaultGeolocationSetting,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of DefaultGeolocationSetting policy, checking the location site settings after setting the policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

@@ -28,8 +28,9 @@ const filename = "set_local_wallpaper_light_pink_20210929.jpg"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SetLocalWallpaper,
-		Desc: "Test setting local wallpapers in the new wallpaper app",
+		Func:         SetLocalWallpaper,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test setting local wallpapers in the new wallpaper app",
 		Contacts: []string{
 			"jasontt@google.com",
 			"chromeos-sw-engprod@google.com",

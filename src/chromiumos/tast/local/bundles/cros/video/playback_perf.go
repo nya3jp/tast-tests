@@ -25,6 +25,7 @@ type playbackPerfParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlaybackPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures video playback performance in Chrome browser with/without HW acceleration",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},

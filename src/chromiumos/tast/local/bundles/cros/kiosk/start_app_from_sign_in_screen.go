@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: StartAppFromSignInScreen,
-		Desc: "Adds 2 Kiosk accounts, checks if both are available then starts one of them",
+		Func:         StartAppFromSignInScreen,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Adds 2 Kiosk accounts, checks if both are available then starts one of them",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author
 			"alt-modalities-stability@google.com",

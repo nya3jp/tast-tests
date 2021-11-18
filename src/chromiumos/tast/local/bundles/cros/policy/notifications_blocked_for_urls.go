@@ -24,8 +24,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: NotificationsBlockedForUrls,
-		Desc: "Behavior of NotificationsBlockedForUrls policy: checking if notifications are blocked for a specified url",
+		Func:         NotificationsBlockedForUrls,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of NotificationsBlockedForUrls policy: checking if notifications are blocked for a specified url",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

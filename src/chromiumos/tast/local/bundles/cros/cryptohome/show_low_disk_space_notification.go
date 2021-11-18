@@ -18,8 +18,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ShowLowDiskSpaceNotification,
-		Desc: "Test showing the low disk space notification",
+		Func:         ShowLowDiskSpaceNotification,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test showing the low disk space notification",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

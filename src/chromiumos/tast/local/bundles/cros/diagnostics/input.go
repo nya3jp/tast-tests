@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Input,
-		Desc: "Can successfully navigate to the Input page",
+		Func:         Input,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Can successfully navigate to the Input page",
 		Contacts: []string{
 			"hcutts@google.com",
 			"cros-peripherals@google.com",

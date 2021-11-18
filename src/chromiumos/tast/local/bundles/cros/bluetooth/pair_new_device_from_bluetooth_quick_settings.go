@@ -19,8 +19,9 @@ const bluetoothPairingDialogURL = "chrome://bluetooth-pairing/"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PairNewDeviceFromBluetoothQuickSettings,
-		Desc: "Checks that the pairing dialog can be opened from within the Bluetooth Quick Settings",
+		Func:         PairNewDeviceFromBluetoothQuickSettings,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that the pairing dialog can be opened from within the Bluetooth Quick Settings",
 		Contacts: []string{
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",

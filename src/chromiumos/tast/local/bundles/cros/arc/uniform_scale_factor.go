@@ -23,6 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UniformScaleFactor,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that the uniform scale factor is applied to Android applications",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

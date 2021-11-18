@@ -39,8 +39,9 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PowerVideoDecodePerf,
-		Desc: "Measures the battery drain during hardware accelerated video playback",
+		Func:         PowerVideoDecodePerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Measures the battery drain during hardware accelerated video playback",
 		Contacts: []string{
 			"stevensd@chromium.org",
 			"arcvm-eng@google.com",
