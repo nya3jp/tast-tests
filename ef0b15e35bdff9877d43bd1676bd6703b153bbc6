@@ -3,6 +3,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00fbb3e6_9bf1604b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-11-18T03:40:21Z",
+      "side": 1,
+      "message": "This is only used once, for shutdown. Either inline it or rename it to shutdownCmdTimeout.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30737fa7_50899006",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-11-18T03:40:21Z",
+      "side": 1,
+      "message": "ctxForCleanUp",
+      "range": {
+        "startLine": 84,
+        "startChar": 16,
+        "endLine": 84,
+        "endChar": 19
+      },
+      "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3001f7da_4698419b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-11-18T03:40:21Z",
+      "side": 1,
+      "message": "Can you make this a separate function, instead of a closure?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 21
+      },
+      "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e8b99c5_867b9501",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-11-18T03:40:21Z",
+      "side": 1,
+      "message": "If the first WaitConnect failed due to a timeout (i.e. the context expired), then this one will immediately timeout as well.",
+      "range": {
+        "startLine": 99,
+        "startChar": 13,
+        "endLine": 99,
+        "endChar": 38
+      },
+      "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f5021e_ebbba5d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-11-18T03:40:21Z",
+      "side": 1,
+      "message": "If we\u0027re here, then waitCtx has already expired.",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 11
+      },
+      "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ec6400a_dd1aaa61",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
         "patchSetId": 2
