@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5764ca9_d7ec26e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_disabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-18T19:59:20Z",
+      "side": 1,
+      "message": "This is very similar to ShillCellularSuspendResumeEnabled (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3291420/)\n\nI think this might be better have a single test and use parameters for enabled and disabled, e.g. see src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go. That way if we run into any flakiness we can fix it for both cases.",
+      "revId": "7ebbefc24b7117af7e572c2685a2707ae6c9fdd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
