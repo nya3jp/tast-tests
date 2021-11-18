@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6566cbc9_280aefd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-18T02:33:44Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nit",
+      "revId": "b1676b7259d7440cfe6ee158653d1df0532761f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "940ba531_3cda999c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/lock_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-18T02:33:44Z",
+      "side": 1,
+      "message": "nit: typo: informational ?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_attributes.md",
+      "range": {
+        "startLine": 32,
+        "startChar": 44,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "b1676b7259d7440cfe6ee158653d1df0532761f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
