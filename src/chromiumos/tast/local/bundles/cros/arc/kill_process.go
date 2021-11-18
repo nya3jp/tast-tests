@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         KillProcess,
-		Desc:         "Verifies that the kernel process is gone after killing an activity",
+		Func: KillProcess, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that the kernel process is gone after killing an activity",
 		Contacts:     []string{"ricardoq@chromium.org", "arc-gaming+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"}, // b:199838881
 		SoftwareDeps: []string{"chrome"},

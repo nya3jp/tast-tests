@@ -29,8 +29,7 @@ type pkDeadKeysTestCase struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PhysicalKeyboardDeadKeys,
-		Desc:         "Checks that dead keys on the physical keyboard work",
+		Func: PhysicalKeyboardDeadKeys, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that dead keys on the physical keyboard work",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome"},

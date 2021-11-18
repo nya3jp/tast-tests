@@ -14,8 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DecodeAccelPerf,
-		Desc:         "Measures hardware video decode performance by running the video_decode_accelerator_perf_tests binary",
+		Func: DecodeAccelPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures hardware video decode performance by running the video_decode_accelerator_perf_tests binary",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "video_decoder_legacy_supported"},

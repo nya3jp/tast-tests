@@ -14,8 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Smoke,
-		Desc: "Tests that writing system logs succeeds",
+		Func: Smoke, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests that writing system logs succeeds",
 		Contacts: []string{
 			"cros-networking@chromium.org", // Team alias
 			"stevenjb@chromium.org",        // Test author

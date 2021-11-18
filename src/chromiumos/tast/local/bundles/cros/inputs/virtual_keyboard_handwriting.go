@@ -41,8 +41,7 @@ var hwTestIMEsUpstream = []ime.InputMethod{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardHandwriting,
-		Desc:         "Test handwriting input functionality on virtual keyboard",
+		Func: VirtualKeyboardHandwriting, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test handwriting input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools"},

@@ -15,8 +15,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Exceptions,
-		Desc:         "Checks that JavaScript exceptions are reported correctly",
+		Func: Exceptions, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that JavaScript exceptions are reported correctly",
 		Contacts:     []string{"chromeos-ui@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),

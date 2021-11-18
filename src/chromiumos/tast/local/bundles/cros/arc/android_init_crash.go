@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AndroidInitCrash,
-		Desc:         "Test Android init crash handling",
+		Func: AndroidInitCrash, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test Android init crash handling",
 		Contacts:     []string{"hashimoto@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

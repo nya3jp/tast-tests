@@ -23,8 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         EmbeddedUIOpenAndCloseAnimationPerf,
-		Desc:         "Measures the smoothness of the embedded UI open and close animation",
+		Func: EmbeddedUIOpenAndCloseAnimationPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the smoothness of the embedded UI open and close animation",
 		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},

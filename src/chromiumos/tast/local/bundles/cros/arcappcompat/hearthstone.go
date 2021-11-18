@@ -29,8 +29,7 @@ var touchviewLaunchForHearthstone = []testutil.TestCase{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Hearthstone,
-		Desc:         "A functional test of the Play Store that installs Google Calendar",
+		Func: Hearthstone, LacrosStatus: testing.LacrosVariantUnknown, Desc: "A functional test of the Play Store that installs Google Calendar",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},

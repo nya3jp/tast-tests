@@ -28,8 +28,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         QuickCheckCUJ,
-		Desc:         "Measures the smoothess of screen unlock and open an gmail thread",
+		Func: QuickCheckCUJ, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the smoothess of screen unlock and open an gmail thread",
 		Contacts:     []string{"xiyuan@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},

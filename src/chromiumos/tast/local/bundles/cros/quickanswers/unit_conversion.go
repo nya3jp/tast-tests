@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: UnitConversion,
-		Desc: "Test Quick Answers unit conversion feature",
+		Func: UnitConversion, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test Quick Answers unit conversion feature",
 		Contacts: []string{
 			"updowndota@google.com",
 			"croissant-eng@google.com",

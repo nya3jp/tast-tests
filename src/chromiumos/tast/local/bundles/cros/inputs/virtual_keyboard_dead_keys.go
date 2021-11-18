@@ -35,8 +35,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardDeadKeys,
-		Desc:         "Checks that dead keys on the virtual keyboard work",
+		Func: VirtualKeyboardDeadKeys, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that dead keys on the virtual keyboard work",
 		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},

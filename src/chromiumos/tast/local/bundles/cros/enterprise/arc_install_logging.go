@@ -29,8 +29,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ARCInstallLogging,
-		Desc:         "Checks that log is uploaded after forced app installation in ARC",
+		Func: ARCInstallLogging, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that log is uploaded after forced app installation in ARC",
 		Contacts:     []string{"yixie@chromium.org", "arc-eng-muc@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

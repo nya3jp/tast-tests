@@ -16,8 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CCAUICameraBoxDocumentScanning,
-		Desc:         "Verifies that CCA can scan document on preview via CameraBox",
+		Func: CCAUICameraBoxDocumentScanning, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that CCA can scan document on preview via CameraBox",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:camerabox"},
 		SoftwareDeps: []string{"camera_app", "chrome", "ondevice_document_scanner", caps.BuiltinOrVividCamera},

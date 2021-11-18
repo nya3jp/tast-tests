@@ -42,8 +42,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     DataMigration,
-		Desc:     "Boots ARC with /data created on the previous version of ARC and verifies Play Store can install an app",
+		Func: DataMigration, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Boots ARC with /data created on the previous version of ARC and verifies Play Store can install an app",
 		Contacts: []string{"niwa@google.com", "arc-storage@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		// "no_qemu" is added for excluding betty from the target board list.

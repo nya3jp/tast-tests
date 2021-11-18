@@ -22,8 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SelinuxViolation,
-		Desc:         "Verify selinux violations are logged as expected",
+		Func: SelinuxViolation, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verify selinux violations are logged as expected",
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"selinux"},

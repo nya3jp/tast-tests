@@ -24,8 +24,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Signout,
-		Desc:         "Test signout from the lock screen",
+		Func: Signout, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test signout from the lock screen",
 		Contacts:     []string{"rsorokin@google.com", "chromeos-sw-engprod@google.com", "cros-oac@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

@@ -22,8 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         InputCompat,
-		Desc:         "Checks input compatibility for M and games working",
+		Func: InputCompat, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks input compatibility for M and games working",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"informational", "group:mainline"},
 		SoftwareDeps: []string{"chrome"},

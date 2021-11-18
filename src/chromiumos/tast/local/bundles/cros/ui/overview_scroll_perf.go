@@ -22,8 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         OverviewScrollPerf,
-		Desc:         "Measures the presentation time of scrolling the overview grid in tablet mode",
+		Func: OverviewScrollPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the presentation time of scrolling the overview grid in tablet mode",
 		Contacts:     []string{"sammiequon@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

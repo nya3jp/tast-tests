@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         OpenWithTerminal,
-		Desc:         "Open directory in FilesApp with terminal",
+		Func: OpenWithTerminal, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Open directory in FilesApp with terminal",
 		Contacts:     []string{"joelhockey@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

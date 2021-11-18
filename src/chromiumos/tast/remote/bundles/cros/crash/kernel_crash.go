@@ -23,8 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         KernelCrash,
-		Desc:         "Verify artificial kernel crash creates crash files",
+		Func: KernelCrash, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verify artificial kernel crash creates crash files",
 		Contacts:     []string{"mutexlox@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"device_crash", "pstore", "reboot"},

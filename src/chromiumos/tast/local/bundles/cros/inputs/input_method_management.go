@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         InputMethodManagement,
-		Desc:         "Verifies that user can manage input methods in OS settings",
+		Func: InputMethodManagement, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that user can manage input methods in OS settings",
 		Contacts:     []string{"shengjun@chromium.org", "myy@google.com", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},

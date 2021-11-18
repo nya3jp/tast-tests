@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         IntentForward,
-		Desc:         "Checks Android intents are forwarded to Chrome",
+		Func: IntentForward, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks Android intents are forwarded to Chrome",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",

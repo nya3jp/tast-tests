@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: OwnershipTaken,
-		Desc: "Sign in and ensure that ownership of the device is taken",
+		Func: OwnershipTaken, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Sign in and ensure that ownership of the device is taken",
 		Contacts: []string{
 			"mnissler@chromium.org", // session_manager owner
 			"hidehiko@chromium.org", // Tast port author

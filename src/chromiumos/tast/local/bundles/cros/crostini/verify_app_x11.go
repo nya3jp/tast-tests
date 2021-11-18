@@ -16,8 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VerifyAppX11,
-		Desc:         "Runs an X11 crostini application from the terminal and verifies that it renders",
+		Func: VerifyAppX11, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Runs an X11 crostini application from the terminal and verifies that it renders",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

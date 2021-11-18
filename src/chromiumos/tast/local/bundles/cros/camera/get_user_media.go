@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         GetUserMedia,
-		Desc:         "Verifies that getUserMedia captures video",
+		Func: GetUserMedia, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that getUserMedia captures video",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome"},

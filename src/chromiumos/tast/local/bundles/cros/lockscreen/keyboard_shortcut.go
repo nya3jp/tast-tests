@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         KeyboardShortcut,
-		Desc:         "Checks that screen-locking works by keyboard shortcut",
+		Func: KeyboardShortcut, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that screen-locking works by keyboard shortcut",
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-oac@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,

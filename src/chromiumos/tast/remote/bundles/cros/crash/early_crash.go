@@ -22,8 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         EarlyCrash,
-		Desc:         "Verify artificial early crash creates crash files",
+		Func: EarlyCrash, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verify artificial early crash creates crash files",
 		Contacts:     []string{"mutexlox@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"reboot"},

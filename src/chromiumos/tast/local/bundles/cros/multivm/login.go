@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Login,
-		Desc:         "Tests Chrome Login with different VMs running",
+		Func: Login, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests Chrome Login with different VMs running",
 		Contacts:     []string{"cwd@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Timeout:      10 * time.Minute,

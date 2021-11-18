@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PackageInfo,
-		Desc:         "Queries the information for a Debian package that we have copied into the container",
+		Func: PackageInfo, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Queries the information for a Debian package that we have copied into the container",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

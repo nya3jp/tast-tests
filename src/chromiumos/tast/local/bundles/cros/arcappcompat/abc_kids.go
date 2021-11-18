@@ -30,8 +30,7 @@ var touchviewLaunchForABCKids = []testutil.TestCase{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ABCKids,
-		Desc:         "Functional test for ABCKids that installs the app also verifies that the main page is open, checks ABCKids correctly changes the window state in both clamshell and touchview mode",
+		Func: ABCKids, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Functional test for ABCKids that installs the app also verifies that the main page is open, checks ABCKids correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},

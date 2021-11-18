@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Clipboard,
-		Desc:         "Tests copying and pasting from Chrome to Android and vice versa",
+		Func: Clipboard, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests copying and pasting from Chrome to Android and vice versa",
 		Contacts:     []string{"ruanc@chromium.org", "yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",

@@ -25,8 +25,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PinUnlockMaximumLength,
-		Desc: "Verify the maximum length of the unlock PIN",
+		Func: PinUnlockMaximumLength, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verify the maximum length of the unlock PIN",
 		Contacts: []string{
 			"janagrill@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

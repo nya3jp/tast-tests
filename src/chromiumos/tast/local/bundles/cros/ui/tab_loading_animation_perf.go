@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         TabLoadingAnimationPerf,
-		Desc:         "Measures the animation smoothness of tab loading animation",
+		Func: TabLoadingAnimationPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the animation smoothness of tab loading animation",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

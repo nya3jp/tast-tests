@@ -26,8 +26,7 @@ type dnsProxyOverVPNTestParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DNSProxyOverVPN,
-		Desc:         "Ensure that DNS proxies are working correctly over VPN",
+		Func: DNSProxyOverVPN, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Ensure that DNS proxies are working correctly over VPN",
 		Contacts:     []string{"jasongustaman@google.com", "garrick@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host", "arc", "dlc"},

@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Notify,
-		Desc:         "Tests crostini notification integration",
+		Func: Notify, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests crostini notification integration",
 		Contacts:     []string{"sidereal@google.com", "cros-containers-dev@google.com"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Attr:         []string{"group:mainline"},

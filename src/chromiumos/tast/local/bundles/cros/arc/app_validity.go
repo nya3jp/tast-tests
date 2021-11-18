@@ -15,8 +15,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AppValidity,
-		Desc:         "Validity check of starting a simple app",
+		Func: AppValidity, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Validity check of starting a simple app",
 		Contacts:     []string{"oka@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},

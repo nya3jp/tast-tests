@@ -16,8 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ModeSuspend,
-		Desc:         "Checks USB Type C mode switch behaviour with a Thunderbolt dock during suspend/resume",
+		Func: ModeSuspend, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks USB Type C mode switch behaviour with a Thunderbolt dock during suspend/resume",
 		Contacts:     []string{"pmalani@chromium.org", "chromeos-power@google.com"},
 		Attr:         []string{"group:typec"},
 		SoftwareDeps: []string{"chrome"},

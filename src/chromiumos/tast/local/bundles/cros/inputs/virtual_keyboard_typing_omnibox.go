@@ -24,8 +24,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardTypingOmnibox,
-		Desc:         "Checks that the virtual keyboard works in Chrome browser omnibox",
+		Func: VirtualKeyboardTypingOmnibox, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that the virtual keyboard works in Chrome browser omnibox",
 		Contacts:     []string{"essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},

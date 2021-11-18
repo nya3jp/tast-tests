@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         BlockOutboundNetwork,
-		Desc:         "Test the network blockage functionality of ARC++",
+		Func: BlockOutboundNetwork, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test the network blockage functionality of ARC++",
 		Contacts:     []string{"arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",

@@ -16,8 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CCAUIPTZ,
-		Desc:         "Opens CCA and verifies the PTZ functionality",
+		Func: CCAUIPTZ, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Opens CCA and verifies the PTZ functionality",
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome"},

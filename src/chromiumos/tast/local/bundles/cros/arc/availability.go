@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Availability,
-		Desc:         "Verifies that ARC is available in different scenarios",
+		Func: Availability, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that ARC is available in different scenarios",
 		Contacts:     []string{"timkovich@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		// TODO(http://b/172011479): Test is disabled until it can be fixed

@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ModeCrash,
-		Desc:         "Checks USB Type C mode switch behaviour when typecd crashes",
+		Func: ModeCrash, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks USB Type C mode switch behaviour when typecd crashes",
 		Contacts:     []string{"pmalani@chromium.org", "chromeos-power@google.com"},
 		Attr:         []string{"group:typec"},
 		SoftwareDeps: []string{"chrome"},

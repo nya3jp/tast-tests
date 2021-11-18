@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         BetterOnboardingAnimationPerf,
-		Desc:         "Measures animation smoothness of opening assistant with Better Onboarding enabled",
+		Func: BetterOnboardingAnimationPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures animation smoothness of opening assistant with Better Onboarding enabled",
 		Contacts:     []string{"cowmoo@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},

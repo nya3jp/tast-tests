@@ -24,8 +24,7 @@ type dnsProxyTestParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DNSProxy,
-		Desc:         "Ensure that DNS proxies are working correctly",
+		Func: DNSProxy, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Ensure that DNS proxies are working correctly",
 		Contacts:     []string{"jasongustaman@google.com", "garrick@google.com", "cros-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host", "arc", "dlc"},

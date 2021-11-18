@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SurfaceInsets,
-		Desc:         "Test to handle SurfaceInsets not to exceed android window frame",
+		Func: SurfaceInsets, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test to handle SurfaceInsets not to exceed android window frame",
 		Contacts:     []string{"hirokisato@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

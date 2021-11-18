@@ -19,8 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SnapPerf,
-		Desc:         "Measures the animation smoothess of snapping windows in clamshell mode",
+		Func: SnapPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the animation smoothess of snapping windows in clamshell mode",
 		Contacts:     []string{"sammiequon@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

@@ -24,8 +24,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DataLeakPreventionRulesListPrivacyScreen,
-		Desc: "Test behavior of DataLeakPreventionRulesList policy with privacy screen blocked restriction",
+		Func: DataLeakPreventionRulesListPrivacyScreen, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test behavior of DataLeakPreventionRulesList policy with privacy screen blocked restriction",
 		Contacts: []string{
 			"vishal38785@gmail.com", // Test author
 			"chromeos-dlp@google.com",

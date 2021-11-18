@@ -23,8 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         NotificationExpandCollapse,
-		Desc:         "Test the expand and collapse behavior of a notification",
+		Func: NotificationExpandCollapse, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test the expand and collapse behavior of a notification",
 		Contacts:     []string{"leandre@chromium.org", "cros-status-area-eng@google.com", "chromeos-sw-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},

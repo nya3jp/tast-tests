@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         GoogleMeetCUJ,
-		Desc:         "Host a Google Meet video conference and do presentation to participants",
+		Func: GoogleMeetCUJ, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Host a Google Meet video conference and do presentation to participants",
 		Contacts:     []string{"jane.yang@cienet.com", "xliu@cienet.com"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		ServiceDeps: []string{

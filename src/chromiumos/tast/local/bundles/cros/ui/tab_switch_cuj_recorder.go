@@ -16,8 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         TabSwitchCUJRecorder,
-		Desc:         "Run tab-switching CUJ test in chromewpr recording mode",
+		Func: TabSwitchCUJRecorder, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Run tab-switching CUJ test in chromewpr recording mode",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org", "chromeos-wmp@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,

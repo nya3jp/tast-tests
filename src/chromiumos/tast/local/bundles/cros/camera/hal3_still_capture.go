@@ -16,8 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         HAL3StillCapture,
-		Desc:         "Verifies camera still capture function with HAL3 interface",
+		Func: HAL3StillCapture, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies camera still capture function with HAL3 interface",
 		Contacts:     []string{"hywu@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.BuiltinCamera},

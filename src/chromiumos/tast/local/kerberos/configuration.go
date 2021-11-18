@@ -25,7 +25,7 @@ func ConstructConfig(kerberosDomain, username string) *Configuration {
 		Folder:              folder,
 		RemoteFileSystemURI: "\\\\" + fullDomain + "\\" + folder,
 		File:                file,
-		RealmsConfig:	     "\n[realms]\n  KER.CAPSE-ISS-AD.COM = {\n    kdc = " + fullDomain + "\n    master_kdc =  " + fullDomain + "\n  }", // NOLINT
+		RealmsConfig:        "\n[realms]\n  KER.CAPSE-ISS-AD.COM = {\n    kdc = " + fullDomain + "\n    master_kdc =  " + fullDomain + "\n  }", // NOLINT
 	}
 }
 

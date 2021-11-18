@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WebRTCVideoPlaybackDelay,
-		Desc:         "Runs a webrtc playback-only connection to get performance numbers",
+		Func: WebRTCVideoPlaybackDelay, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Runs a webrtc playback-only connection to get performance numbers",
 		Contacts:     []string{"mcasas@chromium.org", "chromeos-gfx@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome", "no_qemu"},

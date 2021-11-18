@@ -26,8 +26,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         BlackFlash,
-		Desc:         "Checks that Black flashes don't appear when ARC applications change window states",
+		Func: BlackFlash, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that Black flashes don't appear when ARC applications change window states",
 		Contacts:     []string{"takise@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),

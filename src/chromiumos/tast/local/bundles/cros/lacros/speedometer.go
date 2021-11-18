@@ -24,8 +24,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Speedometer,
-		Desc:         "Lacros Speedometer test",
+		Func: Speedometer, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Lacros Speedometer test",
 		Contacts:     []string{"edcourtney@chromium.org", "erikchen@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},

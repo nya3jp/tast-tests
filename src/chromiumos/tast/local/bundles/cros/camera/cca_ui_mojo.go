@@ -14,8 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CCAUIMojo,
-		Desc:         "Verifies that the private Mojo APIs CCA relies on work as expected",
+		Func: CCAUIMojo, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that the private Mojo APIs CCA relies on work as expected",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},

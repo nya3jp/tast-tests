@@ -25,8 +25,7 @@ type expectedSpeechLog struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AccessibilitySpeech,
-		Desc:         "Checks ChromeVox reads Android elements as expected",
+		Func: AccessibilitySpeech, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks ChromeVox reads Android elements as expected",
 		Contacts:     []string{"dtseng@chromium.org", "hirokisato@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

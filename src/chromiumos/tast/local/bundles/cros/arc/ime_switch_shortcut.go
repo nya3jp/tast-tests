@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         IMESwitchShortcut,
-		Desc:         "Chrome's IME switch shortcut can work on an Android app",
+		Func: IMESwitchShortcut, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Chrome's IME switch shortcut can work on an Android app",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},

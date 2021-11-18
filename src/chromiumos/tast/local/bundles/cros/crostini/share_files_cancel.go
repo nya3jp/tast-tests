@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ShareFilesCancel,
-		Desc:         "Test clicking Cancel on share confirm dialog",
+		Func: ShareFilesCancel, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test clicking Cancel on share confirm dialog",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

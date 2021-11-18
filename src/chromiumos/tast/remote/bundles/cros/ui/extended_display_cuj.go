@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ExtendedDisplayCUJ,
-		Desc:         "Test video entertainment with extended display",
+		Func: ExtendedDisplayCUJ, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test video entertainment with extended display",
 		Contacts:     []string{"vlin@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		ServiceDeps: []string{

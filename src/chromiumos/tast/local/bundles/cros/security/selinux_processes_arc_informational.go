@@ -14,8 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SELinuxProcessesARCInformational,
-		Desc:         "Checks that processes are running in correct SELinux domain (new and flaky tests) after ARC boots",
+		Func: SELinuxProcessesARCInformational, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that processes are running in correct SELinux domain (new and flaky tests) after ARC boots",
 		Contacts:     []string{"niwa@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"selinux", "chrome"},

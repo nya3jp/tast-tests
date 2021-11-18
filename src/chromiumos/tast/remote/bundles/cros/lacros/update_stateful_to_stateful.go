@@ -19,8 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UpdateStatefulToStateful,
-		Desc:         "Tests that the newest Stateful Lacros is selected when there are more than one Stateful Lacros installed. This can also test version skew policy in Ash by provisioning any major version skews",
+		Func: UpdateStatefulToStateful, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests that the newest Stateful Lacros is selected when there are more than one Stateful Lacros installed. This can also test version skew policy in Ash by provisioning any major version skews",
 		Contacts:     []string{"hyungtaekim@chromium.org", "lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},

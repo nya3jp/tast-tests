@@ -29,8 +29,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MultipleArcProfile,
-		Desc:         "Verify that Second Account can be added from ARC Settings ",
+		Func: MultipleArcProfile, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verify that Second Account can be added from ARC Settings ",
 		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},
