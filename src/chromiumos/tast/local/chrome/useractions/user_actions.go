@@ -30,24 +30,25 @@ type UserContext struct {
 	tconn             *chrome.TestConn
 	outputDir         string
 	contextAttributes map[string]string
-	contextTags       map[string]struct{}
+	contextTags       map[ActionTag]struct{}
 }
 
 // UserAction represents the user action.
 type UserAction struct {
-	name             string
-	action           action.Action
-	userContext      *UserContext
-	actionAttributes map[string]string
-	actionTags       map[string]struct{}
-	ifSuccessFunc    func(ctx context.Context) error
-	ifFailFunc       func(ctx context.Context) error
-	finalFunc        func(ctx context.Context) error
+	name               string
+	action             action.Action
+	userContext        *UserContext
+	actionAttributes   map[string]string
+	actionTags         map[ActionTag]struct{}
+	validateResultFunc action.Action
+	ifSuccessFunc      action.Action
+	ifFailFunc         action.Action
+	finalFunc          action.Action
 }
 
 // NewUserContext returns a new user context.
-func NewUserContext(testName string, cr *chrome.Chrome, tconn *chrome.TestConn, outputDir string, contextAttributes map[string]string, contextTags []string) *UserContext {
-	contextTagsMap := make(map[string]struct{})
+func NewUserContext(testName string, cr *chrome.Chrome, tconn *chrome.TestConn, outputDir string, contextAttributes map[string]string, contextTags []ActionTag) *UserContext {
+	contextTagsMap := make(map[ActionTag]struct{})
 	for _, tag := range contextTags {
 		contextTagsMap[tag] = struct{}{}
 	}
@@ -67,6 +68,25 @@ func NewUserAction(name string, action action.Action, uc *UserContext, uac *User
 	return fromAction(name, action, uc, uac)
 }
 
+// NewUserAction returns a new user action.
+func (uc *UserContext) NewUserAction(name string, action action.Action, uac *UserActionCfg) *UserAction {
+	return fromAction(name, action, uc, uac)
+}
+
+// InvalidUserAction creates an user action to return error directly.
+func (uc *UserContext) InvalidUserAction(err error) *UserAction {
+	return fromAction("Invalid action", func(ctx context.Context) error {
+		return err
+	}, uc, nil)
+}
+
+// Refresh refreshes test name and output dir when sharing user context across tests.
+// e.g. once UserContext is defined in precondition and fixture, the UserContext persistes across tests.
+func (uc *UserContext) Refresh(testName, outputDir string) {
+	uc.testName = testName
+	uc.outputDir = outputDir
+}
+
 // SetAttribute set the value of an attribute of the user context.
 func (uc *UserContext) SetAttribute(name, value string) {
 	uc.contextAttributes[name] = value
@@ -83,14 +103,14 @@ func (uc *UserContext) Attributes() map[string]string {
 }
 
 // AddTags adds tags to the user context.
-func (uc *UserContext) AddTags(actionTags []string) {
+func (uc *UserContext) AddTags(actionTags []ActionTag) {
 	for _, newTag := range actionTags {
 		uc.contextTags[newTag] = struct{}{}
 	}
 }
 
 // RemoveTags removes tags from the user context.
-func (uc *UserContext) RemoveTags(actionTags []string) {
+func (uc *UserContext) RemoveTags(actionTags []ActionTag) {
 	for _, tag := range actionTags {
 		delete(uc.contextTags, tag)
 	}
@@ -108,11 +128,12 @@ func (uc *UserContext) TestAPIConn() *chrome.TestConn {
 
 // UserActionCfg represents optional configurations of an user action.
 type UserActionCfg struct {
-	ActionAttributes map[string]string
-	ActionTags       []string
-	IfSuccessFunc    func(ctx context.Context) error
-	IfFailFunc       func(ctx context.Context) error
-	FinalFunc        func(ctx context.Context) error
+	ActionAttributes   map[string]string
+	ActionTags         []ActionTag
+	IfSuccessFunc      action.Action
+	IfFailFunc         action.Action
+	FinalFunc          action.Action
+	ValidateResultFunc action.Action
 }
 
 func fromAction(name string, action action.Action, uc *UserContext, uac *UserActionCfg) *UserAction {
@@ -120,20 +141,21 @@ func fromAction(name string, action action.Action, uc *UserContext, uac *UserAct
 		uac = &UserActionCfg{}
 	}
 
-	actionTagsMap := make(map[string]struct{})
+	actionTagsMap := make(map[ActionTag]struct{})
 	for _, tag := range uac.ActionTags {
 		actionTagsMap[tag] = struct{}{}
 	}
 
 	return &UserAction{
-		name:             name,
-		action:           action,
-		userContext:      uc,
-		actionAttributes: uac.ActionAttributes,
-		actionTags:       actionTagsMap,
-		ifSuccessFunc:    uac.IfSuccessFunc,
-		ifFailFunc:       uac.IfFailFunc,
-		finalFunc:        uac.FinalFunc,
+		name:               name,
+		action:             action,
+		userContext:        uc,
+		actionAttributes:   uac.ActionAttributes,
+		actionTags:         actionTagsMap,
+		validateResultFunc: uac.ValidateResultFunc,
+		ifSuccessFunc:      uac.IfSuccessFunc,
+		ifFailFunc:         uac.IfFailFunc,
+		finalFunc:          uac.FinalFunc,
 	}
 }
 
@@ -157,7 +179,7 @@ func (ua *UserAction) Run(ctx context.Context) (err error) {
 
 	// Combine context tags and action tags.
 	// It should be tagged if either one equals True.
-	combinedTagsMap := make(map[string]struct{})
+	combinedTagsMap := make(map[ActionTag]struct{})
 	for k := range ua.userContext.contextTags {
 		combinedTagsMap[k] = struct{}{}
 	}
@@ -165,7 +187,7 @@ func (ua *UserAction) Run(ctx context.Context) (err error) {
 		combinedTagsMap[k] = struct{}{}
 	}
 
-	combinedTags := make([]string, 0, len(combinedTagsMap))
+	combinedTags := make([]ActionTag, 0, len(combinedTagsMap))
 	for k := range combinedTagsMap {
 		combinedTags = append(combinedTags, k)
 	}
@@ -187,6 +209,11 @@ func (ua *UserAction) Run(ctx context.Context) (err error) {
 		}
 	}(ctx)
 	err = ua.action(ctx)
+	// Only validate action result if the action finished without error.
+	if err == nil {
+		err = ua.validateResultFunc(ctx)
+	}
+
 	if err == nil && ua.ifSuccessFunc != nil {
 		if successFuncError := ua.ifSuccessFunc(ctx); successFuncError != nil {
 			testing.ContextLogf(ctx, "IfSuccessFunc failed in action %q: %v", ua.name, successFuncError)
@@ -205,11 +232,33 @@ func (ua *UserAction) Run(ctx context.Context) (err error) {
 	return err
 }
 
+// Name returns the name of the user action.
+func (ua *UserAction) Name() string {
+	return ua.name
+}
+
+// UserContext returns the user context instance of the user action.
+func (ua *UserAction) UserContext() *UserContext {
+	return ua.userContext
+}
+
+// SetAttribute set the value of an attribute of the user action.
+func (ua *UserAction) SetAttribute(key, value string) {
+	ua.actionAttributes[key] = value
+}
+
+// AddTags adds tags to the user action.
+func (ua *UserAction) AddTags(actionTags []ActionTag) {
+	for _, newTag := range actionTags {
+		ua.actionTags[newTag] = struct{}{}
+	}
+}
+
 type actionResult struct {
 	actionName string
 	testName   string
 	attributes map[string]string
-	tags       []string
+	tags       []ActionTag
 	duration   time.Duration
 	pass       bool
 	err        error
@@ -225,11 +274,17 @@ func (ar *actionResult) stringArray() ([]string, error) {
 	if ar.err != nil {
 		errMessage = fmt.Sprintf("%v", ar.err)
 	}
+
+	var tags []string
+	for _, tag := range ar.tags {
+		tags = append(tags, string(tag))
+	}
+
 	return []string{
 		ar.actionName,
 		ar.testName,
 		fmt.Sprintf("%s", attrStr),
-		fmt.Sprintf("%s", strings.Join(ar.tags, ", ")),
+		fmt.Sprintf("%s", strings.Join(tags, ", ")),
 		fmt.Sprintf("%d", int64(ar.duration/time.Millisecond)),
 		fmt.Sprintf("%s", strconv.FormatBool(ar.pass)),
 		fmt.Sprintf("%s", errMessage),
