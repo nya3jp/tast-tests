@@ -83,6 +83,10 @@ func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 	fixtureLogcatPath := filepath.Join(s.OutDir(), "fixture_setup_logcat.txt")
 	defer adbDevice.DumpLogcat(ctx, fixtureLogcatPath)
 
+	if err := crossdevice.ConfigureDevice(ctx, adbDevice, rooted); err != nil {
+		s.Fatal("Failed to do basic Android device preparation: ", err)
+	}
+
 	// Skip logging in to the test account on the Android device if specified in the runtime vars.
 	// This lets you run the tests on a phone that's already signed in with your own account.
 	loggedIn := false
@@ -110,9 +114,6 @@ func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		}
 	}
 
-	if err := crossdevice.ConfigureDevice(ctx, adbDevice, rooted); err != nil {
-		s.Fatal("Failed to do basic Android device preparation: ", err)
-	}
 	tags := []string{
 		"Nearby",
 		"NearbyMessages",
