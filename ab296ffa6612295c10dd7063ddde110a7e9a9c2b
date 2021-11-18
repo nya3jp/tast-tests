@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4122a9f_cb33541b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-18T11:16:17Z",
+      "side": 1,
+      "message": "Please have another look. I actually moved most things to ash now, hope that makes sense to you.",
+      "revId": "ab296ffa6612295c10dd7063ddde110a7e9a9c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60e653d1_6a28643c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-18T11:16:17Z",
+      "side": 1,
+      "message": "I\u0027m forced to add comments here but they are not very useful (also in chrome.go). Should I instead copy the comments from the original definitions?",
+      "revId": "ab296ffa6612295c10dd7063ddde110a7e9a9c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

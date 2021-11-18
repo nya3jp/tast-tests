@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4926040_591fd03a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-18T11:16:17Z",
+      "side": 1,
+      "message": "Sure. Previously I was interested in some general feedback hence I called this a draft CL and didn\u0027t do all the formalities.\n\nI have now referenced the brower package issue. Or do you want me to create a more specific one just for this CL?",
+      "parentUuid": "ec8e3bb6_6bec7021",
+      "revId": "f0c7bef785328fb8ae64a959ec6feed477d97c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c72a364f_43d706cc",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-17T14:50:08Z",
       "side": 1,
       "message": "Can we move them to ash or browser package?",
+      "revId": "f0c7bef785328fb8ae64a959ec6feed477d97c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e0329c_ba5036f3",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-18T11:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c72a364f_43d706cc",
       "revId": "f0c7bef785328fb8ae64a959ec6feed477d97c4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2021-11-17T14:50:08Z",
       "side": 1,
       "message": "could you move this under ash, as this is only for ash.",
+      "revId": "f0c7bef785328fb8ae64a959ec6feed477d97c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ab67d8d_f90964b7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-18T11:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "717fed6f_eae4327e",
       "revId": "f0c7bef785328fb8ae64a959ec6feed477d97c4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
