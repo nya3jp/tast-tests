@@ -39,6 +39,30 @@
       },
       "revId": "b1676b7259d7440cfe6ee158653d1df0532761f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2845fa6_9efb4ef8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/lock_screen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-18T06:42:23Z",
+      "side": 1,
+      "message": "oops, thanks for catching this.",
+      "parentUuid": "940ba531_3cda999c",
+      "range": {
+        "startLine": 32,
+        "startChar": 44,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "b1676b7259d7440cfe6ee158653d1df0532761f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
