@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae90b02_75b2f2cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-18T01:50:23Z",
+      "side": 1,
+      "message": "nit: here and below, explain from where these const is coming from.\n\none possible way is to declare a const with a good name. e.g:\n\n  const somethingUseful \u003d 8;\n  let size \u003d somethingUseful + ...",
+      "range": {
+        "startLine": 131,
+        "startChar": 15,
+        "endLine": 131,
+        "endChar": 17
+      },
+      "revId": "5fb5f5d413f361b0135cbf793480d318e420b90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16efd654_32ed5810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-18T01:50:23Z",
+      "side": 1,
+      "message": "ditto: perhaps add a link to documentation that explains these bits",
+      "range": {
+        "startLine": 136,
+        "startChar": 43,
+        "endLine": 136,
+        "endChar": 45
+      },
+      "revId": "5fb5f5d413f361b0135cbf793480d318e420b90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63cb4e32_6b74060c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-18T01:50:23Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 152,
+        "startChar": 15,
+        "endLine": 152,
+        "endChar": 17
+      },
+      "revId": "5fb5f5d413f361b0135cbf793480d318e420b90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c76e4e3_2122cf23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4_demuxer.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-18T01:50:23Z",
+      "side": 1,
+      "message": "ditto: add link to documentation... something that explains from where you got these consts",
+      "range": {
+        "startLine": 155,
+        "startChar": 29,
+        "endLine": 155,
+        "endChar": 46
+      },
+      "revId": "5fb5f5d413f361b0135cbf793480d318e420b90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965335ee_407acc3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/third_party/mp4/mp4box.all.min.js",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-11-18T01:50:23Z",
+      "side": 1,
+      "message": "the copyright/license was removed in this CL. Is this expected?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 24
+      },
+      "revId": "5fb5f5d413f361b0135cbf793480d318e420b90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
