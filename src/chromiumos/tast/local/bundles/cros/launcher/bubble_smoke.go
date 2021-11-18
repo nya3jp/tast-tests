@@ -33,16 +33,12 @@ func init() {
 		// TODO(https://crbug.com/1255265): Remove "informational" once stable.
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "chromeLoggedInWith100FakeAppsProductivityLauncher",
 	})
 }
 
 func BubbleSmoke(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("ProductivityLauncher"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
