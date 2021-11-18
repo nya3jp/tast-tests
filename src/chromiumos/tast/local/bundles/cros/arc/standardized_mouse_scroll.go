@@ -11,10 +11,16 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
+
+type standardizedMouseScrollArgs struct {
+	testCases         []standardizedtestutil.TestCase
+	resizeLockEnabled bool
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -26,16 +32,32 @@ func init() {
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{
 			{
-				Val:               standardizedtestutil.GetClamshellTests(runStandardizedMouseScrollTest),
+				Val: &standardizedMouseScrollArgs{
+					testCases:         standardizedtestutil.GetClamshellTests(runStandardizedMouseScrollTest),
+					resizeLockEnabled: false,
+				},
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "arcBootedInClamshellMode",
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			},
 			{
-				Name:              "vm",
-				Val:               standardizedtestutil.GetClamshellTests(runStandardizedMouseScrollTest),
+				Name: "vm",
+				Val: &standardizedMouseScrollArgs{
+					testCases:         standardizedtestutil.GetClamshellTests(runStandardizedMouseScrollTest),
+					resizeLockEnabled: false,
+				},
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "arcBootedInClamshellMode",
+				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
+			},
+			{
+				Name: "resize_lock_smooth_scroll_vm",
+				Val: &standardizedMouseScrollArgs{
+					testCases:         []standardizedtestutil.TestCase{{Name: "Normal", Fn: runStandardizedMouseScrollTest, WindowStateType: ash.WindowStateNormal}},
+					resizeLockEnabled: true,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Fixture:           "arcBootedWithTouchModeMouse",
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			},
 		},
@@ -49,8 +71,13 @@ func StandardizedMouseScroll(ctx context.Context, s *testing.State) {
 		activityName = ".ScrollTestActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.TestCase)
-	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
+	testCases := s.Param().(*standardizedMouseScrollArgs).testCases
+	resizeLockEnabled := s.Param().(*standardizedMouseScrollArgs).resizeLockEnabled
+	if resizeLockEnabled {
+		standardizedtestutil.RunTestCasesWithResizeLock(ctx, s, apkName, appName, activityName, testCases)
+	} else {
+		standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
+	}
 }
 
 func runStandardizedMouseScrollTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
