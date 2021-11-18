@@ -16,6 +16,46 @@
       "message": "AuthSession LGTM. Adding tast owners",
       "revId": "158a1592a2077a61886b8f92c536ea21e9c0e1b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c94b229a_2d4aab5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-18T02:32:21Z",
+      "side": 1,
+      "message": "+2 for Tast Review % comment",
+      "revId": "158a1592a2077a61886b8f92c536ea21e9c0e1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d32a1b90_d3ae7085",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-18T02:32:21Z",
+      "side": 1,
+      "message": "copy paste error?",
+      "range": {
+        "startLine": 612,
+        "startChar": 37,
+        "endLine": 612,
+        "endChar": 48
+      },
+      "revId": "158a1592a2077a61886b8f92c536ea21e9c0e1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
