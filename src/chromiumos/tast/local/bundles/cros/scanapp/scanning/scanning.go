@@ -110,16 +110,6 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	// Set up the virtual USB printer.
-	if err := usbprinter.InstallModules(ctx); err != nil {
-		s.Fatal("Failed to install kernel modules: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := usbprinter.RemoveModules(ctx); err != nil {
-			s.Error("Failed to remove kernel modules: ", err)
-		}
-	}(cleanupCtx)
-
 	devInfo, err := usbprinter.LoadPrinterIDs(scannerParams.Descriptors)
 	if err != nil {
 		s.Fatalf("Failed to load printer IDs from %v: %v", scannerParams.Descriptors, err)

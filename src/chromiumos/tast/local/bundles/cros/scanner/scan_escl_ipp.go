@@ -40,7 +40,7 @@ func init() {
 			"paper-io_scanning",
 		},
 		SoftwareDeps: []string{"virtual_usb_printer", "cups", "chrome"},
-		Fixture:      "chromeLoggedIn",
+		Fixture:      "virtualUsbPrinterModulesLoadedWithChromeLoggedIn",
 		Data:         []string{sourceImage, goldenImage},
 		Params: []testing.Param{{
 			Name: "usb",
@@ -97,15 +97,6 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-
-	if err := usbprinter.InstallModules(ctx); err != nil {
-		s.Fatal("Failed to install kernel modules: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := usbprinter.RemoveModules(ctx); err != nil {
-			s.Error("Failed to remove kernel modules: ", err)
-		}
-	}(cleanupCtx)
 
 	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
 	if err != nil {

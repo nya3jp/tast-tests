@@ -28,7 +28,7 @@ func init() {
 			"paper-io_scanning",
 		},
 		SoftwareDeps: []string{"chrome", "virtual_usb_printer"},
-		Fixture:      "chromeLoggedIn",
+		Fixture:      "virtualUsbPrinterModulesLoadedWithChromeLoggedIn",
 		Data: []string{
 			scanning.SourceImage,
 			pngGoldenFile,
