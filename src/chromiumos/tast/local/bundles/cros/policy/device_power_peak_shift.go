@@ -26,8 +26,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DevicePowerPeakShift,
-		Desc: "Tests for DevicePowerPeakShift policies that minimize alternating current (AC) usage during peak hours",
+		Func:         DevicePowerPeakShift,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests for DevicePowerPeakShift policies that minimize alternating current (AC) usage during peak hours",
 		Contacts: []string{
 			"lamzin@google.com", // policy author
 			"chromeos-wilco@google.com",

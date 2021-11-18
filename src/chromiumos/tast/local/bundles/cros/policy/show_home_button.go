@@ -26,8 +26,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ShowHomeButton,
-		Desc: "Test the behavior of ShowHomeButton policy: check if a home button is shown based on the value of the policy",
+		Func:         ShowHomeButton,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test the behavior of ShowHomeButton policy: check if a home button is shown based on the value of the policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

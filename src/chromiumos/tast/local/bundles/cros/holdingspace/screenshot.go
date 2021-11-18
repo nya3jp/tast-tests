@@ -31,8 +31,9 @@ type screenshotParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Screenshot,
-		Desc: "Verifies screenshot behavior in holding space",
+		Func:         Screenshot,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies screenshot behavior in holding space",
 		Contacts: []string{
 			"dmblack@google.com",
 			"tote-eng@google.com",

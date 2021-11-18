@@ -25,8 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ImmersiveMode,
-		Desc: "Checks that immersive mode works correctly",
+		Func:         ImmersiveMode,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that immersive mode works correctly",
 		Contacts: []string{
 			"yichenz@chromium.org",
 			"chromeos-wmp@google.com",

@@ -28,10 +28,11 @@ var glesVersionRegex = regexp.MustCompile(`OpenGL ES\s+(\d+).(\d+)`)
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     GLESMinRequirements,
-		Desc:     "Checks whether the OpenGL ES minimun requirements are satisfied",
-		Contacts: []string{"ricardo@chromium.org", "arc-gaming+tast@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         GLESMinRequirements,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks whether the OpenGL ES minimun requirements are satisfied",
+		Contacts:     []string{"ricardo@chromium.org", "arc-gaming+tast@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
 		// "no_qemu" disables the test on betty. b/168566159#comment3
 		SoftwareDeps: []string{"chrome", "no_qemu"},
 		Fixture:      "arcBooted",

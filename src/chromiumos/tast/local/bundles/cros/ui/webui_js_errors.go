@@ -23,6 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebUIJSErrors,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that Chrome's WebUI JavaScript Error Reporting works on Chrome OS",
 		Contacts:     []string{"iby@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline"},

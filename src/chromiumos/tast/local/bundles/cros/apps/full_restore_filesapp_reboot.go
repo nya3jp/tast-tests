@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FullRestoreFilesappReboot,
-		Desc: "Test full restore files app",
+		Func:         FullRestoreFilesappReboot,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test full restore files app",
 		Contacts: []string{
 			"jinrongwu@google.com",
 			"chromeos-apps-foundation-team@google.com",

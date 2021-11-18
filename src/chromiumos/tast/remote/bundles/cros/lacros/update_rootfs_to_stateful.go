@@ -19,6 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UpdateRootfsToStateful,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests that Stateful Lacros is selected when it is newer than Rootfs Lacros",
 		Contacts:     []string{"hyungtaekim@chromium.org", "lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

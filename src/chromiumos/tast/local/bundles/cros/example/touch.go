@@ -19,6 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Touch,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Demonstrates injecting touch events",
 		Contacts:     []string{"ricardoq@chromium.org", "tast-owners@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},

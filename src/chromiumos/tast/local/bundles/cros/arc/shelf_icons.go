@@ -25,6 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ShelfIcons,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests that ARC++ windows are represented in the shelf correctly, including grouping of windows and custom icons",
 		Contacts:     []string{"phweiss@chromium.org", "giovax@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},

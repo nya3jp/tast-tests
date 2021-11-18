@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: OpenCloseSwitchApps,
-		Desc: "Checks interacting with apps in the shelf",
+		Func:         OpenCloseSwitchApps,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks interacting with apps in the shelf",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 			"tbarzic@chromium.org",

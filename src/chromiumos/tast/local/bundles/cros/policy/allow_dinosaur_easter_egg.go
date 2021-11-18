@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AllowDinosaurEasterEgg,
-		Desc: "Behavior of AllowDinosaurEasterEgg policy",
+		Func:         AllowDinosaurEasterEgg,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of AllowDinosaurEasterEgg policy",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

@@ -43,6 +43,7 @@ var touchviewAppSpecificTestsForYoutube = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Youtube,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Functional test for Youtube that installs the app also verifies it is logged in and that the main page is open, checks Gmail correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat", "appcompat_release"},

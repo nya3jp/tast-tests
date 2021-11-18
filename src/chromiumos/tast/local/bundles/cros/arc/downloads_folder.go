@@ -20,8 +20,9 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DownloadsFolder,
-		Desc: "Android app can read files on Downloads folder via FilesApp",
+		Func:         DownloadsFolder,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Android app can read files on Downloads folder via FilesApp",
 		Contacts: []string{
 			"cherieccy@google.com",
 			"arc-storage@google.com",

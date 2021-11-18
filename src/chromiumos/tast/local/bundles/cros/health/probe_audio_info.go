@@ -25,8 +25,9 @@ type audioInfo struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProbeAudioInfo,
-		Desc: "Check that we can probe cros_healthd for audio info",
+		Func:         ProbeAudioInfo,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check that we can probe cros_healthd for audio info",
 		Contacts: []string{
 			"kerker@google.com",
 			"cros-tdm@google.com",

@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ExistingUser,
-		Desc: "Checks that an existing device user can login from the login screen",
+		Func:         ExistingUser,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that an existing device user can login from the login screen",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 			"cros-oac@google.com",

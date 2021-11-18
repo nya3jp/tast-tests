@@ -22,6 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardGrammarCheck,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks on device grammar check with physical keyboard typing",
 		Contacts:     []string{"jiwan@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},

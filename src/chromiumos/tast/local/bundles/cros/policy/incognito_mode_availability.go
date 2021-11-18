@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: IncognitoModeAvailability,
-		Desc: "Behavior of IncognitoModeAvailability policy",
+		Func:         IncognitoModeAvailability,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of IncognitoModeAvailability policy",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
 			"kathrelkeld@chromium.org",

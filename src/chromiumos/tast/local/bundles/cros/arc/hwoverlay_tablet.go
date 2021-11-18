@@ -22,9 +22,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     HWOverlayTablet,
-		Desc:     "Checks that hardware overlay works with ARC applications in tablet mode",
-		Contacts: []string{"takise@chromium.org", "arc-framework+tast@google.com"},
+		Func:         HWOverlayTablet,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that hardware overlay works with ARC applications in tablet mode",
+		Contacts:     []string{"takise@chromium.org", "arc-framework+tast@google.com"},
 		// TODO(ricardoq): enable test once the bug that fixes hardware overlay gets fixed. See: http://b/120557146
 		SoftwareDeps: []string{"drm_atomic", "chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),

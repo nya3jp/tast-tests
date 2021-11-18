@@ -25,6 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowDefaultBounds,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Test default window size behavior",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

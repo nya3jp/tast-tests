@@ -32,6 +32,7 @@ var touchviewLaunchForMicrosoftWord = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MicrosoftWord,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Functional test for MicrosoftWord that installs the app also verifies it is logged in and that the main page is open, checks MicrosoftWord correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat", "appcompat_release"},

@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RenderApp,
-		Desc: "Diagnostics app launches and renders components",
+		Func:         RenderApp,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Diagnostics app launches and renders components",
 		Contacts: []string{
 			"joonbug@chromium.org",
 			"cros-peripherals@google.com",

@@ -33,8 +33,9 @@ type dnsResolverPresentParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DiagFailDNSResolverPresent,
-		Desc: "Tests that the DNS resolver present network diagnostic test fails as expected with malformed DNS names",
+		Func:         DiagFailDNSResolverPresent,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests that the DNS resolver present network diagnostic test fails as expected with malformed DNS names",
 		Contacts: []string{
 			"khegde@chromium.org",            // test maintainer
 			"khegde@chromium.org",            // network diagnostics author

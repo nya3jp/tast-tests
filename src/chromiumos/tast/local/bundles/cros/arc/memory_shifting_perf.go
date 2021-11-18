@@ -18,8 +18,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MemoryShiftingPerf,
-		Desc: "Alternate applying memory pressure to ChromeOS and Android",
+		Func:         MemoryShiftingPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Alternate applying memory pressure to ChromeOS and Android",
 		Contacts: []string{
 			"cwd@chromium.org",
 			"arcvm-eng@google.com",

@@ -23,6 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TrackpadReverseScroll,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that track pad reverse scrolling works properly",
 		Contacts:     []string{"zxdan@chromium.org", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

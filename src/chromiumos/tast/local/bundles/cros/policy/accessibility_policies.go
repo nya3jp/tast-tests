@@ -26,8 +26,9 @@ type accessibilityTestCase struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AccessibilityPolicies,
-		Desc: "Checks set values for the Accessability polices in the chrome.accessibilityFeatures map",
+		Func:         AccessibilityPolicies,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks set values for the Accessability polices in the chrome.accessibilityFeatures map",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author.
 			"chromeos-commercial-remote-management@google.com",

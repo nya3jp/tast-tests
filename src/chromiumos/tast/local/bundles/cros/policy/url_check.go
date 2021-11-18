@@ -30,8 +30,9 @@ type blocklistTestTable struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: URLCheck,
-		Desc: "Checks the behavior of URL allow/deny-listing policies",
+		Func:         URLCheck,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks the behavior of URL allow/deny-listing policies",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
 			"kathrelkeld@chromium.org",

@@ -27,8 +27,9 @@ var errNotPlaying = errors.New("media is not playing")
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AutoplayAllowed,
-		Desc: "Checking if autoplay is allowed on websites or nor, depending on the value of the policy",
+		Func:         AutoplayAllowed,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checking if autoplay is allowed on websites or nor, depending on the value of the policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

@@ -21,6 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Cgroups,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that foreground/background status of ARC applications reflects properly in cgroup limits",
 		Contacts:     []string{"sonnyrao@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

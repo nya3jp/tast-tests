@@ -28,9 +28,10 @@ var ippUsbFormat = regexp.MustCompile("^ippusb:escl:.*:(....)_(....)/.*")
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     EnumerateIPPUSB,
-		Desc:     "Tests that IPP-USB devices are correctly found",
-		Contacts: []string{"bmgordon@chromium.org", "project-bolton@google.com"},
+		Func:         EnumerateIPPUSB,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests that IPP-USB devices are correctly found",
+		Contacts:     []string{"bmgordon@chromium.org", "project-bolton@google.com"},
 		Attr: []string{
 			"group:mainline",
 			"group:paper-io",

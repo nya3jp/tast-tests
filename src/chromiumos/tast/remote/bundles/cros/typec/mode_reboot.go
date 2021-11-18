@@ -31,6 +31,7 @@ var builtInTBTDevices = []string{"domain0", "domain1", "0-0", "1-0"}
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ModeReboot,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Demonstrates USB Type C mode selection after reboot",
 		Contacts:     []string{"pmalani@chromium.org", "chromeos-power@google.com"},
 		Attr:         []string{"group:typec"},

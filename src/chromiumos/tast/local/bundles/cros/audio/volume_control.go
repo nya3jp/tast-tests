@@ -39,6 +39,7 @@ type volumeControlParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VolumeControl,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Change the volume using keyboard keys",
 		Contacts:     []string{"ambalavanan.m.m@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		SoftwareDeps: []string{"chrome"},

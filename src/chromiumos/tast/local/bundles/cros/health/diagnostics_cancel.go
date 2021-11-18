@@ -24,8 +24,9 @@ func newCancelRoutineParams(routine string) croshealthd.RoutineParams {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DiagnosticsCancel,
-		Desc: "Tests that the supported cros_healthd diagnostic routines can be canceled",
+		Func:         DiagnosticsCancel,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests that the supported cros_healthd diagnostic routines can be canceled",
 		Contacts: []string{
 			"pmoy@chromium.org",           // cros_healthd tool author
 			"kerker@google.com",           // test maintainer

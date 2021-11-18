@@ -15,8 +15,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Scan,
-		Desc: "Tests that the Scan app can be used to perform scans",
+		Func:         Scan,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests that the Scan app can be used to perform scans",
 		Contacts: []string{
 			"cros-peripherals@google.com",
 			"project-bolton@google.com",

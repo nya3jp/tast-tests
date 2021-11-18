@@ -25,8 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DesktopControl,
-		Desc: "Check if the performance around desktop UI components is good enough; see also go/cros-ui-perftests-cq#heading=h.fwfk0yg3teo1",
+		Func:         DesktopControl,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check if the performance around desktop UI components is good enough; see also go/cros-ui-perftests-cq#heading=h.fwfk0yg3teo1",
 		Contacts: []string{
 			"newcomer@chromium.org",
 			"tbarzic@chromium.org",

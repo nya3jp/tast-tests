@@ -15,8 +15,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DiagnosticsList,
-		Desc: "Tests getting supported dignostic routines from cros_healthd",
+		Func:         DiagnosticsList,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests getting supported dignostic routines from cros_healthd",
 		Contacts: []string{
 			"pmoy@chromium.org",           // cros_healthd tool author
 			"kerker@google.com",           // test maintainer

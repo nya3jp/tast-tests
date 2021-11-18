@@ -36,8 +36,9 @@ const filterPopupsURL = "http://*/popups_for_url_check_index.html"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PopupsForURLCheck,
-		Desc: "Checks the behavior of popups on URL allow/deny-listing user policies",
+		Func:         PopupsForURLCheck,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks the behavior of popups on URL allow/deny-listing user policies",
 		Contacts: []string{
 			"snijhara@google.com", // Test author
 			"gabormagda@google.com",

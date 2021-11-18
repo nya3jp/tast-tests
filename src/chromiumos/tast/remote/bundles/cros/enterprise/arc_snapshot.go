@@ -18,8 +18,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ArcSnapshot,
-		Desc: "Test taking ARC data/ snapshot",
+		Func:         ArcSnapshot,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test taking ARC data/ snapshot",
 		Contacts: []string{
 			"pbond@chromium.org", // Test author
 			"arc-commercial@google.com",

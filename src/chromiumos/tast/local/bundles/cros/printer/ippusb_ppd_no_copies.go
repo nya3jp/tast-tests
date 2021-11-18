@@ -13,9 +13,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     IPPUSBPPDNoCopies,
-		Desc:     "Verifies that the 'copies-supported' attribute of the printer is used to populate the cupsManualCopies and cupsMaxCopies values in the corresponding generated PPD",
-		Contacts: []string{"skau@chromium.org", "project-bolton@google.com"},
+		Func:         IPPUSBPPDNoCopies,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that the 'copies-supported' attribute of the printer is used to populate the cupsManualCopies and cupsMaxCopies values in the corresponding generated PPD",
+		Contacts:     []string{"skau@chromium.org", "project-bolton@google.com"},
 		Attr: []string{
 			"group:mainline",
 			"group:paper-io",

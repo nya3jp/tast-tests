@@ -27,8 +27,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DefaultSearchProviderSearchURL,
-		Desc: "Behavior of DefaultSearchProviderSearchURL policy: check if provided search provider is being used",
+		Func:         DefaultSearchProviderSearchURL,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of DefaultSearchProviderSearchURL policy: check if provided search provider is being used",
 		Contacts: []string{
 			"anastasiian@chromium.org", // Test author
 			"chromeos-commercial-remote-management@google.com",

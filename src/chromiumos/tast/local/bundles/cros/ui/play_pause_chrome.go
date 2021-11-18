@@ -18,6 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlayPauseChrome,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks the play/pause accelerator will play/pause Chrome",
 		Contacts:     []string{"beccahughes@chromium.org", "media-dev@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},

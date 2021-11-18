@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LaunchManagedGuestSessionWithPassword,
-		Desc: "Test chrome.login.launchManagedGuestSession Extension API",
+		Func:         LaunchManagedGuestSessionWithPassword,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test chrome.login.launchManagedGuestSession Extension API",
 		Contacts: []string{
 			"jityao@google.com", // Test author
 			"chromeos-commercial-identity@google.com",

@@ -22,6 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChargingThroughUSB4,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checking device charging status after USB4 hot plug-unplug",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		Attr:         []string{"group:typec"},

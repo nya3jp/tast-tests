@@ -29,8 +29,9 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RecordPartialScreen,
-		Desc: "Checks that partial screen video record works correctly",
+		Func:         RecordPartialScreen,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that partial screen video record works correctly",
 		Contacts: []string{
 			"yichenz@chromium.org",
 			"chromeos-wmp@google.com",

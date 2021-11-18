@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DefaultJavaScriptSetting,
-		Desc: "Check that the DefaultJavaScript policy blocks or allows JavaScript",
+		Func:         DefaultJavaScriptSetting,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check that the DefaultJavaScript policy blocks or allows JavaScript",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

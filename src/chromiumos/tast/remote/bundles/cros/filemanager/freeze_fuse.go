@@ -19,8 +19,9 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		// TODO(b/177494589): Add additional test cases for different FUSE instances.
-		Func: FreezeFUSE,
-		Desc: "Verify that freeze on suspend works with FUSE",
+		Func:         FreezeFUSE,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify that freeze on suspend works with FUSE",
 		Contacts: []string{
 			"dbasehore@google.com",
 			"cros-telemetry@google.com",

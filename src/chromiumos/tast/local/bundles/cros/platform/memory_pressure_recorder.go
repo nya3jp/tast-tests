@@ -17,6 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MemoryPressureRecorder,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Record a WPR archive for platform.MemoryPressure",
 		Contacts:     []string{"semenzato@chromium.org", "sonnyrao@chromium.org", "chromeos-memory@google.com"},
 		Timeout:      60 * time.Minute,

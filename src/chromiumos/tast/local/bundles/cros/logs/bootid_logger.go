@@ -17,6 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BootidLogger,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests related to bootid-logger",
 		Contacts:     []string{"yoshiki@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
