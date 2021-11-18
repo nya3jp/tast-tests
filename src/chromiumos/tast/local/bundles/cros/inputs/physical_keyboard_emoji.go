@@ -38,10 +38,7 @@ func init() {
 }
 
 func PhysicalKeyboardEmoji(ctx context.Context, s *testing.State) {
-	stopRecording, err := uiauto.RecordVNCVideo(ctx, s)
-	if err != nil {
-		s.Fatal("Failed to start screen recording: ", err)
-	}
+	stopRecording := uiauto.RecordVNCVideo(ctx, s)
 	defer stopRecording()
 
 	cr := s.PreValue().(pre.PreData).Chrome
