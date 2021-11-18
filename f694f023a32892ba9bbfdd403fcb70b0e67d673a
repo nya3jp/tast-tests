@@ -16,6 +16,40 @@
       "message": "In offline discussion Hidehiko requested that I move closing-the-connection out of the closing-the-browser closure. Latest patchset does this.",
       "revId": "f694f023a32892ba9bbfdd403fcb70b0e67d673a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c614f7_46aef5e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-18T15:14:00Z",
+      "side": 1,
+      "message": "LGTM with comment. Thank you for offline chat.",
+      "revId": "f694f023a32892ba9bbfdd403fcb70b0e67d673a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be59095c_8afac469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/cookies_allowed_for_urls.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-18T15:14:00Z",
+      "side": 1,
+      "message": "nit: better to close Browser after conn\u0027s close. As defer is a stack, could you swap the line with just above?",
+      "revId": "f694f023a32892ba9bbfdd403fcb70b0e67d673a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
