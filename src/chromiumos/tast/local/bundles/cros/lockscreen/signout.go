@@ -32,6 +32,7 @@ type testParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Signout,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Test signout from the lock screen",
 		Contacts:     []string{"rsorokin@google.com", "chromeos-sw-engprod@google.com", "cros-oac@google.com"},
 		SoftwareDeps: []string{"chrome"},

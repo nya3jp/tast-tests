@@ -30,8 +30,9 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Smoke,
-		Desc: "Quick smoke check for GL/GLES2",
+		Func:         Smoke,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Quick smoke check for GL/GLES2",
 		Contacts: []string{
 			"vsuley@chromium.org",
 			"hidehiko@chromium.org", // Tast port author

@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DataLeakPreventionRulesListClipboardShelf,
-		Desc: "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction in the shelf textfield",
+		Func:         DataLeakPreventionRulesListClipboardShelf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction in the shelf textfield",
 		Contacts: []string{
 			"vishal38785@gmail.com", // Test author
 			"chromeos-dlp@google.com",

@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CreateAndFillFolder,
-		Desc: "Test adding items to a folder in the launcher",
+		Func:         CreateAndFillFolder,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test adding items to a folder in the launcher",
 		Contacts: []string{
 			"cros-system-ui-eng@google.com",
 			"chromeos-sw-engprod@google.com",

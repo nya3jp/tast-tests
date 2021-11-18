@@ -15,8 +15,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AudioValidity,
-		Desc: "Audio validity test for arc",
+		Func:         AudioValidity,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Audio validity test for arc",
 		Contacts: []string{
 			"chromeos-audio-bugs@google.com", // Media team
 			"cychiang@chromium.org",          // Media team

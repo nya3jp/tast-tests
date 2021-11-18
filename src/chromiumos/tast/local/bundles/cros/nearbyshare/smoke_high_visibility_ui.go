@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SmokeHighVisibilityUI,
-		Desc: "Checks that Nearby Share high-visibility receiving can be initiated from Quick Settings",
+		Func:         SmokeHighVisibilityUI,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that Nearby Share high-visibility receiving can be initiated from Quick Settings",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},

@@ -19,6 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         RobloxLaunch,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Captures launch metrics for Roblox",
 		Contacts:     []string{"davidwelling@google.com", "arc-engprod@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

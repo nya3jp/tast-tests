@@ -27,8 +27,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DrivefsDssOffline,
-		Desc: "Verify that making a Docs/Sheets/Slides file available offline through Files App works",
+		Func:         DrivefsDssOffline,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify that making a Docs/Sheets/Slides file available offline through Files App works",
 		Contacts: []string{
 			"austinct@chromium.org",
 			"benreich@chromium.org",

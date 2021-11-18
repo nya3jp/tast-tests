@@ -31,8 +31,9 @@ const chromePoliciesURL = "chrome://policy/"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Homepage,
-		Desc: "Behavior of the HomepageLocation and HomepageIsNewTabPage policies",
+		Func:         Homepage,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of the HomepageLocation and HomepageIsNewTabPage policies",
 		Contacts: []string{
 			"snijhara@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

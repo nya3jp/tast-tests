@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ToggleAdvanced,
-		Desc: "Checks that the Advanced section of Settings can be expanded and collapsed",
+		Func:         ToggleAdvanced,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that the Advanced section of Settings can be expanded and collapsed",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},

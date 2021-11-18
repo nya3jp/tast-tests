@@ -18,6 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GCARecording,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests video recording with GoogleCameraArc (GCA)",
 		Contacts:     []string{"mojahsu@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},

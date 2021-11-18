@@ -20,6 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TextToSpeech,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that Android TTS voice is used when chosen",
 		Contacts:     []string{"sahok@chromium.org", "hirokisato@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline"},

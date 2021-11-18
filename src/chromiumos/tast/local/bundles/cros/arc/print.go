@@ -26,8 +26,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Print,
-		Desc: "Check that ARC++ printing is working properly",
+		Func:         Print,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check that ARC++ printing is working properly",
 		Contacts: []string{
 			"bmgordon@google.com",
 			"project-bolton@google.com",

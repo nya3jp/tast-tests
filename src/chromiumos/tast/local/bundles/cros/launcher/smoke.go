@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Smoke,
-		Desc: "Opens launcher either using launcher button, or a keyboard shortcut",
+		Func:         Smoke,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Opens launcher either using launcher button, or a keyboard shortcut",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 			"tbarzic@chromium.org",

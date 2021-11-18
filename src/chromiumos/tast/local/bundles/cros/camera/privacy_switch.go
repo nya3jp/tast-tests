@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PrivacySwitch,
-		Desc: "Verifies the privacy switch",
+		Func:         PrivacySwitch,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies the privacy switch",
 		Contacts: []string{
 			"ribalda@chromium.org",
 			"chromeos-camera-eng@google.com",

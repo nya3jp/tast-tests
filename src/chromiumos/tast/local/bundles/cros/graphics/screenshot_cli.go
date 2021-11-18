@@ -17,6 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ScreenshotCLI,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Takes a screenshot using the CLI",
 		Contacts:     []string{"nya@chromium.org"},
 		Attr:         []string{"group:mainline"},

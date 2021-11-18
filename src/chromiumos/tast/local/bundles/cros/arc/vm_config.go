@@ -17,6 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VMConfig,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Test that VM is configured correctly",
 		Contacts:     []string{"hashimoto@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

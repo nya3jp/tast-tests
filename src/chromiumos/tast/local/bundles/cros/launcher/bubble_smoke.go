@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: BubbleSmoke,
-		Desc: "Basic smoke tests for the bubble launcher",
+		Func:         BubbleSmoke,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Basic smoke tests for the bubble launcher",
 		Contacts: []string{
 			"cros-system-ui-eng@google.com",
 			"chromeos-sw-engprod@google.com",

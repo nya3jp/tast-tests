@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MonitorThunderboltEvent,
-		Desc: "Monitors the Thunderbolt event detected proper or not after plug/unplug Thunderbolt devices",
+		Func:         MonitorThunderboltEvent,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Monitors the Thunderbolt event detected proper or not after plug/unplug Thunderbolt devices",
 		Contacts: []string{"pathan.jilani@intel.com",
 			"cros-tdm-tpe-eng@google.com",
 			"intel-chrome-system-automation-team@intel.com"},

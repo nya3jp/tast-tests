@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CookiesBlockedForUrls,
-		Desc: "Check that the CookiesBlockedForUrls policy blocks setting cookies on the given sites",
+		Func:         CookiesBlockedForUrls,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check that the CookiesBlockedForUrls policy blocks setting cookies on the given sites",
 		Contacts: []string{
 			"nikitapodguzov@chromium.org", // Test author
 			"chromeos-commercial-remote-management@google.com",

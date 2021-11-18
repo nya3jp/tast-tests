@@ -15,8 +15,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromeSandboxed,
-		Desc: "Verify Chrome's sandbox status",
+		Func:         ChromeSandboxed,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify Chrome's sandbox status",
 		Contacts: []string{
 			"jorgelo@chromium.org",  // Security team
 			"hidehiko@chromium.org", // Tast port author

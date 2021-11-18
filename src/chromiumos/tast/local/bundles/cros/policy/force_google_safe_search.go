@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ForceGoogleSafeSearch,
-		Desc: "Test the behavior of ForceGoogleSafeSearch policy: check if Google safe search is enabled based on the value of the policy",
+		Func:         ForceGoogleSafeSearch,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test the behavior of ForceGoogleSafeSearch policy: check if Google safe search is enabled based on the value of the policy",
 		Contacts: []string{
 			"snijhara@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

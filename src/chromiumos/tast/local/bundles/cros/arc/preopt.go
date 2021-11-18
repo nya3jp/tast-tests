@@ -26,8 +26,9 @@ type preoptTestParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Preopt,
-		Desc: "Verifies that ARC++ is fully pre-optimized and there is no pre-opt happening during the boot",
+		Func:         Preopt,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that ARC++ is fully pre-optimized and there is no pre-opt happening during the boot",
 		Contacts: []string{
 			"khmel@chromium.org", // author.
 			"arc-performance@google.com",

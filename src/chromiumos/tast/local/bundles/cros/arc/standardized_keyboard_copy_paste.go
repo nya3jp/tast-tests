@@ -19,6 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StandardizedKeyboardCopyPaste,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Functional test that installs an app and tests standard keyboard copy/paste functionality. Test are performed in clamshell and touchview mode. This does not test the virtual, on-screen keyboard",
 		Contacts:     []string{"davidwelling@google.com", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

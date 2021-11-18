@@ -61,6 +61,7 @@ var cujTestsP = []wmCUJTestParams{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowManagerCUJ,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies that Window Manager Critical User Journey behaves as described in go/arc-wm-p",
 		Contacts:     []string{"takise@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

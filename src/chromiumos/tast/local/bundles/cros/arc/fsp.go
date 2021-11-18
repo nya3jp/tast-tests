@@ -39,8 +39,9 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Fsp,
-		Desc: "Android app can read files on pseudo file systems using File System Provider (FSP) via FilesApp",
+		Func:         Fsp,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Android app can read files on pseudo file systems using File System Provider (FSP) via FilesApp",
 		Contacts: []string{
 			"cherieccy@google.com",
 			"arc-storage@google.com",

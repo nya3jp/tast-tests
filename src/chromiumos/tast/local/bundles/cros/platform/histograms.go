@@ -18,6 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Histograms,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that libmetrics reports histograms to Chrome",
 		Contacts:     []string{"chromeos-systems@google.com"},
 		SoftwareDeps: []string{"chrome"},

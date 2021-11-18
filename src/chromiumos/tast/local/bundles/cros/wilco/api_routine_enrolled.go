@@ -18,8 +18,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: APIRoutineEnrolled,
-		Desc: "Test sending RunRoutineRequest and GetRoutineUpdate gRPC requests from Wilco DTC VM to the Wilco DTC Support Daemon",
+		Func:         APIRoutineEnrolled,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test sending RunRoutineRequest and GetRoutineUpdate gRPC requests from Wilco DTC VM to the Wilco DTC Support Daemon",
 		Contacts: []string{
 			"vsavu@google.com",  // Test author
 			"lamzin@google.com", // wilco_dtc_supportd maintainer
