@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c11b382a_0eb8d6f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-18T11:16:35Z",
+      "side": 1,
+      "message": "PTAL. I added that as it is needed for VDI tests.",
+      "revId": "1032f0dc99f9cba540a1d0b959a1fb95227ecfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
