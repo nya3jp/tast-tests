@@ -39,6 +39,40 @@
       "message": "PTAL. Thanks for feedback in advance.",
       "revId": "159de906a7fd6e19b3d3766202d5193aa10c1170",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c70aca2_220971ae",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:38:38Z",
+      "side": 1,
+      "message": "Not sure we are a good contact for this.",
+      "revId": "159de906a7fd6e19b3d3766202d5193aa10c1170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd0953c7_e5680d33",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:38:38Z",
+      "side": 1,
+      "message": "Use the tast logging standard.\n\ntopics should look like \"mgs: \"\nAlways start errors with a capital.",
+      "revId": "159de906a7fd6e19b3d3766202d5193aa10c1170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
