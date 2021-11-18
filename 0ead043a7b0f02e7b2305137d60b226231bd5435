@@ -16,6 +16,246 @@
       "message": "I am thinking about splitting this into 2 separate reviews. WDYT?",
       "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "542ed639_0b947701",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:31:55Z",
+      "side": 1,
+      "message": "Same as below, WaitForMainScreenVisible",
+      "range": {
+        "startLine": 66,
+        "startChar": 20,
+        "endLine": 66,
+        "endChar": 43
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81298d97_5d3109b8",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:31:55Z",
+      "side": 1,
+      "message": "Should this be commited?",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df549370_ac6ba375",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:31:55Z",
+      "side": 1,
+      "message": "Same as below, is this needed?",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e301268_dc7868bb",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:31:55Z",
+      "side": 1,
+      "message": "nit: Document what this will can used for, not how it is implemented.\n\n+ note the interface implemented here.",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c34567_1818457f",
+        "filename": "src/chromiumos/tast/local/vdi/apps/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:31:55Z",
+      "side": 1,
+      "message": "swap words",
+      "range": {
+        "startLine": 5,
+        "startChar": 44,
+        "endLine": 5,
+        "endChar": 56
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c5eca30_8a878c7e",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vdiconnector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:31:55Z",
+      "side": 1,
+      "message": "connect",
+      "range": {
+        "startLine": 23,
+        "startChar": 70,
+        "endLine": 23,
+        "endChar": 76
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3711e78_dd35f7e2",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:31:55Z",
+      "side": 1,
+      "message": "nit: use a singe line.",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "552f20b8_88fb057f",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:31:55Z",
+      "side": 1,
+      "message": "nit: reflow line.",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3adcad5_b54b16c9",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:31:55Z",
+      "side": 1,
+      "message": "WaitForMainScreenVisible?\n\nYou are not actually ensuring it\u0027s there.",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 43
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f532df7f_7337fe33",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:31:55Z",
+      "side": 1,
+      "message": "Maybe: Use this as a data dependency when connecting to VMware?",
+      "range": {
+        "startLine": 7,
+        "startChar": 72,
+        "endLine": 8,
+        "endChar": 78
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec1fe83_6a2ad198",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:31:55Z",
+      "side": 1,
+      "message": "Since this mapping already exists, is there any benefit to making it an actual map?",
+      "range": {
+        "startLine": 24,
+        "startChar": 21,
+        "endLine": 24,
+        "endChar": 51
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "328bee29_d10f5071",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:31:55Z",
+      "side": 1,
+      "message": "nit: Document what this will can used for, not how it is implemented.",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
