@@ -10,7 +10,6 @@ import (
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/media/decoding"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 var av1CommonFiles = []string{
@@ -31,8 +30,6 @@ var av1FilmGrainFiles = []string{
 	"test_vectors/av1/8-bit/av1-1-b8-23-film_grain-50.ivf",
 	"test_vectors/av1/8-bit/ccvb_film_grain.ivf",
 }
-
-var av1Files = append(av1CommonFiles, av1FilmGrainFiles...)
 
 var av110BitCommonFiles = []string{
 	"test_vectors/av1/10-bit/00000671.ivf",
@@ -62,8 +59,6 @@ var av110BitCommonFiles = []string{
 var av110BitFilmGrainFiles = []string{
 	"test_vectors/av1/10-bit/av1-1-b10-23-film_grain-50.ivf",
 }
-
-var av110BitFiles = append(av110BitCommonFiles, av110BitFilmGrainFiles...)
 
 var h264FilesFromBugs = []string{
 	"test_vectors/h264/files_from_bugs/b_149068426_invalid_video_layout_mtk_8183_with_direct_videodecoder.h264",
@@ -239,21 +234,11 @@ func init() {
 			Name:              "av1_film_grain",
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
 			// Different decoders may use different film grain synthesis methods while
-			// producing a visually correct output (AV1 spec 7.2). Thus, for volteer,
-			// don't validate the decoding of film-grain streams using MD5. Instead,
-			// validate them using SSIM (see the av1_ssim test).
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("volteer")),
-			ExtraData:         appendJSONFiles(av1FilmGrainFiles),
+			// producing a visually correct output (AV1 spec 7.2). Thus we validate
+			// the decoding of film-grain streams using SSIM.
+			ExtraData: appendJSONFiles(av1FilmGrainFiles),
 			Val: chromeStackDecodingTestParam{
 				videoFiles:    av1FilmGrainFiles,
-				validatorType: decoding.MD5,
-			},
-		}, {
-			Name:              "av1_ssim",
-			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
-			ExtraData:         appendJSONFiles(av1Files),
-			Val: chromeStackDecodingTestParam{
-				videoFiles:    av1Files,
 				validatorType: decoding.SSIM,
 			},
 		}, {
@@ -271,18 +256,9 @@ func init() {
 			// producing a visually correct output (AV1 spec 7.2). Thus, for volteer,
 			// don't validate the decoding of film-grain streams using MD5. Instead,
 			// validate them using SSIM (see the av1_10bit_ssim test).
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("volteer")),
-			ExtraData:         appendJSONFiles(av110BitFilmGrainFiles),
+			ExtraData: appendJSONFiles(av110BitFilmGrainFiles),
 			Val: chromeStackDecodingTestParam{
 				videoFiles:    av110BitFilmGrainFiles,
-				validatorType: decoding.MD5,
-			},
-		}, {
-			Name:              "av1_10bit_ssim",
-			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_10BPP},
-			ExtraData:         appendJSONFiles(av110BitFiles),
-			Val: chromeStackDecodingTestParam{
-				videoFiles:    av110BitFiles,
 				validatorType: decoding.SSIM,
 			},
 		}, {
