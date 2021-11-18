@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: BluetoothXorWifi,
-		Desc: "Verifies that Bluetooth and Wifi can function when the other phy is disabled",
+		Func:         BluetoothXorWifi,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that Bluetooth and Wifi can function when the other phy is disabled",
 		Contacts: []string{
 			"billyzhao@google.com",            // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827

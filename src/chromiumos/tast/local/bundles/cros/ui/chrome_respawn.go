@@ -16,8 +16,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromeRespawn,
-		Desc: "Checks that Chrome respawns after exit",
+		Func:         ChromeRespawn,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that Chrome respawns after exit",
 		Contacts: []string{
 			"mnissler@chromium.org", // session_manager owner
 			"chromeos-ui@google.com",

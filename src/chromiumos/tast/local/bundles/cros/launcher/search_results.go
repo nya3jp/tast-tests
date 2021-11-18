@@ -29,8 +29,9 @@ var stableModels = []string{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SearchResults,
-		Desc: "Launcher search contains Help content and omnibox result",
+		Func:         SearchResults,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Launcher search contains Help content and omnibox result",
 		Contacts: []string{
 			"shengjun@google.com",
 			"chromeos-sw-engprod@google.com",

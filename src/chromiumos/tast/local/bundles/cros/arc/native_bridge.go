@@ -45,6 +45,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NativeBridge,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks whether native bridge is properly set up for ARCVM",
 		Contacts:     []string{"youkichihosoi@chromium.org", "arcvm-eng@google.com"},
 		SoftwareDeps: []string{"android_vm", "chrome"},

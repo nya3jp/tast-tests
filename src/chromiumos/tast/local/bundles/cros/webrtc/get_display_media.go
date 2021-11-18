@@ -15,8 +15,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: GetDisplayMedia,
-		Desc: "Verifies that WebRTC getDisplayMedia() (screen, window, tab capture) works",
+		Func:         GetDisplayMedia,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that WebRTC getDisplayMedia() (screen, window, tab capture) works",
 		Contacts: []string{
 			"mcasas@chromium.org", // Test author.
 			"chromeos-gfx-video@google.com",

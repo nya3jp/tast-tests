@@ -26,8 +26,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PolicyBasic,
-		Desc: "Verifies that DUT can connect to the APs with device policy and per-user policy",
+		Func:         PolicyBasic,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that DUT can connect to the APs with device policy and per-user policy",
 		Contacts: []string{
 			"jintaolin@chromium.org",          // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827

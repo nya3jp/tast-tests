@@ -20,8 +20,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ManagedDeviceInfo,
-		Desc: "Checks that the Quick Settings managed device info is displayed correctly",
+		Func:         ManagedDeviceInfo,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that the Quick Settings managed device info is displayed correctly",
 		Contacts: []string{
 			"leandre@chromium.org",
 			"amehfooz@chromium.org",

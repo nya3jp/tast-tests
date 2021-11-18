@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Login,
-		Desc: "Tests ability to sign-in with Smart lock",
+		Func:         Login,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests ability to sign-in with Smart lock",
 		Contacts: []string{
 			"dhaddock@chromium.org",
 			"chromeos-sw-engprod@google.com",

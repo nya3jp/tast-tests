@@ -17,6 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TraceReplayExtended,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Repeatedly replay a 3D graphics trace file in Crostini VM for a fixed duration",
 		Contacts:     []string{"chromeos-gfx@google.com", "ryanneph@google.com", "ddmail@google.com", "tutankhamen@google.com", "ihf@google.com"},
 		SoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},

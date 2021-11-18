@@ -32,6 +32,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SurfaceOrientation,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Test the various orientations of an ARC activity window surface",
 		Contacts:     []string{"srok@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

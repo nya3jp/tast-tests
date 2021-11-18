@@ -20,8 +20,9 @@ import (
 func init() {
 	// TODO(acostinas, b/191845062) Re-enable the test when OTA credentials are available in tast tests.
 	testing.AddTest(&testing.Test{
-		Func: SystemServicesConnectivity,
-		Desc: "Test that system services work behind a firewall configured according to our support page",
+		Func:         SystemServicesConnectivity,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test that system services work behind a firewall configured according to our support page",
 		Contacts: []string{
 			"acostinas@google.com", // Test author
 			"chromeos-commercial-networking@google.com",

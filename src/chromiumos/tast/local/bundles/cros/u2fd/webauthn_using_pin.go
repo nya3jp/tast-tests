@@ -30,8 +30,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WebauthnUsingPIN,
-		Desc: "Checks that WebAuthn using PIN succeeds",
+		Func:         WebauthnUsingPIN,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that WebAuthn using PIN succeeds",
 		Contacts: []string{
 			"yichengli@chromium.org", // Test author
 			"martinkr@chromium.org",

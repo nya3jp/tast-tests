@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LaunchFromShelfContextMenu,
-		Desc: "Verify Files app opens a single window using New Window from Shelf",
+		Func:         LaunchFromShelfContextMenu,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify Files app opens a single window using New Window from Shelf",
 		Contacts: []string{
 			"benreich@chromium.org",
 			"chromeos-files-syd@google.com",

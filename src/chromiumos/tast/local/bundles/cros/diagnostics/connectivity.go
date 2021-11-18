@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Connectivity,
-		Desc: "Can successfully navigate to the Connectivity page",
+		Func:         Connectivity,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Can successfully navigate to the Connectivity page",
 		Contacts: []string{
 			"michaelcheco@google.com",
 			"cros-peripherals@google.com",

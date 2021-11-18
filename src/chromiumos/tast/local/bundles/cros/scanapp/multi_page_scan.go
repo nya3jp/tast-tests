@@ -25,8 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MultiPageScan,
-		Desc: "Tests that the Scan app can be used to perform multi-page flatbed PDF scans",
+		Func:         MultiPageScan,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests that the Scan app can be used to perform multi-page flatbed PDF scans",
 		Contacts: []string{
 			"cros-peripherals@google.com",
 			"project-bolton@google.com",

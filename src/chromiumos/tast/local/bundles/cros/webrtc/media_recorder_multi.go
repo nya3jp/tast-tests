@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MediaRecorderMulti,
-		Desc: "Verifies that MediaRecorder can use multiple encoders in parallel",
+		Func:         MediaRecorderMulti,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that MediaRecorder can use multiple encoders in parallel",
 		Contacts: []string{
 			"mcasas@chromium.org",
 			"chromeos-gfx-video@google.com",

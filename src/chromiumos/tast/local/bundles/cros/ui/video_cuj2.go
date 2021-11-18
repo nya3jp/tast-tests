@@ -27,6 +27,7 @@ type videoCUJParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VideoCUJ2,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures the smoothess of switch between full screen YouTube video and another browser window",
 		Contacts:     []string{"tim.chang@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome", "arc"},

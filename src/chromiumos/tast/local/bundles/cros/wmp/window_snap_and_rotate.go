@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: WindowSnapAndRotate,
-		Desc: "In clamshell mode, checks that snap in landscape and portrait works properly",
+		Func:         WindowSnapAndRotate,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "In clamshell mode, checks that snap in landscape and portrait works properly",
 		Contacts: []string{
 			"cattalyya@chromium.org",
 			"chromeos-wmp@google.com",

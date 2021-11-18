@@ -27,8 +27,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Sharesheet,
-		Desc: "Verify sharing a file to PWA works",
+		Func:         Sharesheet,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify sharing a file to PWA works",
 		Contacts: []string{
 			"benreich@chromium.org",
 			"chromeos-apps-foundation-team@google.com",

@@ -18,8 +18,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PerfBoot,
-		Desc: "Signs in to DUT and measures Android boot performance metrics",
+		Func:         PerfBoot,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Signs in to DUT and measures Android boot performance metrics",
 		Contacts: []string{
 			"cywang@chromium.org", // Original author.
 			"niwa@chromium.org",   // Tast port author.

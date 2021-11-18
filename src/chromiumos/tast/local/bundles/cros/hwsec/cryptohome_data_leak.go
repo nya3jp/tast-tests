@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CryptohomeDataLeak,
-		Desc: "Verify decrypted user data is cleared after end of session",
+		Func:         CryptohomeDataLeak,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify decrypted user data is cleared after end of session",
 		Contacts: []string{
 			"sarthakkukreti@chromium.org", // Original autotest author
 			"chingkang@google.com",        // Tast port author

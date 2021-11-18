@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FilesAppContextMenuPinAndUnpin,
-		Desc: "Checks that pinning to Holding Space from the Files app works",
+		Func:         FilesAppContextMenuPinAndUnpin,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that pinning to Holding Space from the Files app works",
 		Contacts: []string{
 			"angusmclean@chromium.org",
 			"dmblack@chromium.org",

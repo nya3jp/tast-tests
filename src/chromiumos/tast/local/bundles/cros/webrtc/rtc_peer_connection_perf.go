@@ -18,6 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         RTCPeerConnectionPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures WebRTC decode performance in terms of CPU usage and decode time with and without hardware acceleration",
 		Contacts:     []string{"mcasas@chromium.org", "chromeos-gfx-video@google.com"},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},

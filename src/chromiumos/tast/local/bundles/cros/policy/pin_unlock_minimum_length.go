@@ -25,8 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PinUnlockMinimumLength,
-		Desc: "Follows the user flow to set unlock pin",
+		Func:         PinUnlockMinimumLength,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Follows the user flow to set unlock pin",
 		Contacts: []string{
 			"mohamedaomar@google.com", // Test author
 			"gabormagda@google.com",

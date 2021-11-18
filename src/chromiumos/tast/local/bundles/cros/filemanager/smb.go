@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SMB,
-		Desc: "Verify Files app can mount an SMB share and verify the contents",
+		Func:         SMB,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify Files app can mount an SMB share and verify the contents",
 		Contacts: []string{
 			"benreich@chromium.org",
 			"chromeos-files-syd@google.com",
