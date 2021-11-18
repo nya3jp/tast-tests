@@ -90,7 +90,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
 				maxErrorBootCount: 3,
-				chromeArgs:        []string{"--enable-arcvm-rt-vcpu"},
+				chromeArgs:        []string{"--enable-features=ArcRtVcpuDualCore,ArcRtVcpuQuadCore"},
 			},
 		}, {
 			Name:              "unmanaged_vm",
