@@ -27,6 +27,7 @@ type testParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Pin,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Test pin enrollment, pin unlock and pin login",
 		Contacts:     []string{"rsorokin@google.com", "chromeos-sw-engprod@google.com", "cros-oac@google.com"},
 		SoftwareDeps: []string{"chrome"},

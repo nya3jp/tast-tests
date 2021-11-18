@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProbeSystemInfo,
-		Desc: "Check that we can probe cros_healthd for system info",
+		Func:         ProbeSystemInfo,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check that we can probe cros_healthd for system info",
 		Contacts: []string{
 			"cros-tdm@google.com",
 			"khegde@google.com",

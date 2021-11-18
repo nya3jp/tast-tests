@@ -22,6 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DisplayDensity,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Runs a crostini application from the terminal in high/low DPI modes and compares sizes",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

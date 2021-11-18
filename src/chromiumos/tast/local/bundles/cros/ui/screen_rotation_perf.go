@@ -25,6 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ScreenRotationPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures animation smoothness of screen rotation in tablet mode",
 		Contacts:     []string{"chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

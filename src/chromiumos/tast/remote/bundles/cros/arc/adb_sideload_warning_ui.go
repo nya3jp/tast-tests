@@ -20,8 +20,9 @@ const adbSideloadingBootLockboxKey = "arc_sideloading_allowed"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AdbSideloadWarningUI,
-		Desc: "Enables the Adb Sideloading flag and further checks that a warning UI is displayed at login screen",
+		Func:         AdbSideloadWarningUI,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Enables the Adb Sideloading flag and further checks that a warning UI is displayed at login screen",
 		Contacts: []string{
 			"vraheja@chromium.org",
 			"victorhsieh@chromium.org",

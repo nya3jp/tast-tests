@@ -19,6 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeMlocked,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that at least part of Chrome is mlocked",
 		Contacts:     []string{"gbiv@chromium.org"},
 		SoftwareDeps: []string{"chrome", "transparent_hugepage"},

@@ -14,8 +14,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProxyAdd,
-		Desc: "Verifies the lp command enqueues print jobs",
+		Func:         ProxyAdd,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies the lp command enqueues print jobs",
 		Contacts: []string{
 			"batrapranav@chromium.org",
 			"cros-printing-dev@chromium.org",

@@ -53,6 +53,7 @@ func (eck *keyboardKey) Press(ctx context.Context, topRow *input.TopRowLayout, k
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StandardizedKeyboardKeys,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Functional test that installs an app and tests standard keyboard keys like arrows, esc, enter, etc. Test are performed in clamshell and touchview mode. This does not test the virtual, on-screen keyboard",
 		Contacts:     []string{"davidwelling@google.com", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

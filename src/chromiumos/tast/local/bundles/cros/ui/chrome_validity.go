@@ -20,8 +20,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromeValidity,
-		Desc: "Validity tests for the chrome support library",
+		Func:         ChromeValidity,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Validity tests for the chrome support library",
 		Contacts: []string{
 			"nya@chromium.org",
 			"tast-owners@google.com",

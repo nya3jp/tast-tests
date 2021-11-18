@@ -32,8 +32,9 @@ type networkResult struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProbeNetworkInfo,
-		Desc: "Check that we can probe cros_healthd for network info",
+		Func:         ProbeNetworkInfo,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check that we can probe cros_healthd for network info",
 		Contacts: []string{
 			"kerker@google.com",
 			"pmoy@google.com",

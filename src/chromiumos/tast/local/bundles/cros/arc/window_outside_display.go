@@ -20,6 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowOutsideDisplay,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Ensures an ARC window can move outside the display",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},

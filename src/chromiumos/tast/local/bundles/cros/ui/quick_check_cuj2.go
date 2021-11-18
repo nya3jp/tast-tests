@@ -26,6 +26,7 @@ type quickCheckParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         QuickCheckCUJ2,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures the system performance after login or wakeup by checking common apps",
 		Contacts:     []string{"xliu@cienet.com", "hc.tsai@cienet.com", "alfredyu@cienet.com"},
 		SoftwareDeps: []string{"chrome", "arc", "wifi"},
@@ -45,8 +46,8 @@ func init() {
 					scenario: quickcheckcuj.Lock,
 				},
 			}, {
-				Name:      "basic_wakeup",
-				Timeout:   5 * time.Minute,
+				Name:    "basic_wakeup",
+				Timeout: 5 * time.Minute,
 				Val: quickCheckParam{
 					tier:     cuj.Basic,
 					scenario: quickcheckcuj.Suspend,

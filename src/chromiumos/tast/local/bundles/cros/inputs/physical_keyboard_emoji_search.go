@@ -20,6 +20,7 @@ func init() {
 
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardEmojiSearch,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Check that emoji search works well",
 		Contacts:     []string{"jopalmer@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:input-tools", "group:input-tools-upstream", "group:mainline", "informational"},

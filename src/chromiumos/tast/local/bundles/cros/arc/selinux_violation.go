@@ -23,6 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SELinuxViolation,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Test handling of an ARC++ SELinux violation",
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

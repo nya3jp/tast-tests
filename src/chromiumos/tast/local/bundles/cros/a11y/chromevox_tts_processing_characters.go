@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromevoxTTSProcessingCharacters,
-		Desc: "A test that verifies the way ChromeVox processes some characters for speech",
+		Func:         ChromevoxTTSProcessingCharacters,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "A test that verifies the way ChromeVox processes some characters for speech",
 		Contacts: []string{
 			"katie@chromium.org",           // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list

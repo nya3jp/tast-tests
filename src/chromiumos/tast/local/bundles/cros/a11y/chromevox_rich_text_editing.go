@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromevoxRichTextEditing,
-		Desc: "A test that verifies the way ChromeVox can be used to edit text in a contenteditable",
+		Func:         ChromevoxRichTextEditing,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "A test that verifies the way ChromeVox can be used to edit text in a contenteditable",
 		Contacts: []string{
 			"katie@chromium.org",           // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list

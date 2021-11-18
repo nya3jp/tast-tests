@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DeviceUSBPowershare,
-		Desc: "Tests the DeviceUsbPowerShareEnabled policy that shares power through USB when the device is off",
+		Func:         DeviceUSBPowershare,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests the DeviceUsbPowerShareEnabled policy that shares power through USB when the device is off",
 		Contacts: []string{
 			"lamzin@google.com", // policy author
 			"chromeos-wilco@google.com",

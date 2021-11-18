@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FullscreenAllowed,
-		Desc: "Behavior of FullscreenAllowed policy: checking if fullscreen is allowed or not",
+		Func:         FullscreenAllowed,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of FullscreenAllowed policy: checking if fullscreen is allowed or not",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

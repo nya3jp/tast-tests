@@ -27,8 +27,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SystemTimezone,
-		Desc: "Behavior of SystemTimezone policy",
+		Func:         SystemTimezone,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of SystemTimezone policy",
 		Contacts: []string{
 			"vsavu@google.com",          // Test author
 			"alexanderhartl@google.com", // Original author of the remote test.

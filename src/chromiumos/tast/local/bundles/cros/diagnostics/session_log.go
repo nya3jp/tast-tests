@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SessionLog,
-		Desc: "Diagnostics app session log saves to files successfully",
+		Func:         SessionLog,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Diagnostics app session log saves to files successfully",
 		Contacts: []string{
 			"michaelcheco@google.com",
 			"cros-peripherals@google.com",

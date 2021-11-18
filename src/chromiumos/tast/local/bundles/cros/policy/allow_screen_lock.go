@@ -25,8 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AllowScreenLock,
-		Desc: "Behavior of AllowScreenLock policy, checking whether the screen can be locked after setting the policy",
+		Func:         AllowScreenLock,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of AllowScreenLock policy, checking whether the screen can be locked after setting the policy",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

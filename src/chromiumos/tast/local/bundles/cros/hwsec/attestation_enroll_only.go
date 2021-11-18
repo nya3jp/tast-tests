@@ -14,10 +14,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     AttestationEnrollOnly,
-		Desc:     "Verifies attestation-related functionality",
-		Attr:     []string{"group:mainline"},
-		Contacts: []string{"cylai@chromium.org", "cros-hwsec@google.com"},
+		Func:         AttestationEnrollOnly,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies attestation-related functionality",
+		Attr:         []string{"group:mainline"},
+		Contacts:     []string{"cylai@chromium.org", "cros-hwsec@google.com"},
 		// Intentionally dependent on "chrome" so we can verify if the test is working in informational-chrome suite.
 		SoftwareDeps: []string{"chrome", "tpm", "endorsement"},
 	})

@@ -24,8 +24,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DataLeakPreventionRulesListPrinting,
-		Desc: "Test behavior of DataLeakPreventionRulesList policy with printing blocked restriction",
+		Func:         DataLeakPreventionRulesListPrinting,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test behavior of DataLeakPreventionRulesList policy with printing blocked restriction",
 		Contacts: []string{
 			"vishal38785@gmail.com", // Test author
 			"chromeos-dlp@google.com",

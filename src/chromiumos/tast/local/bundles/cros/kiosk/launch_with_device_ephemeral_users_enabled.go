@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LaunchWithDeviceEphemeralUsersEnabled,
-		Desc: "Checks that Kiosk configuration starts correctly with DeviceEphemeralUsersEnabled policy set to true",
+		Func:         LaunchWithDeviceEphemeralUsersEnabled,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that Kiosk configuration starts correctly with DeviceEphemeralUsersEnabled policy set to true",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author
 			"alt-modalities-stability@google.com",

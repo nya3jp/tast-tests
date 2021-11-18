@@ -28,9 +28,10 @@ type testParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     MemoryStressBasic,
-		Desc:     "Create heavy memory pressure and check if oom-killer is invoked",
-		Contacts: []string{"vovoy@chromium.org", "chromeos-memory@google.com"},
+		Func:         MemoryStressBasic,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Create heavy memory pressure and check if oom-killer is invoked",
+		Contacts:     []string{"vovoy@chromium.org", "chromeos-memory@google.com"},
 		// This test takes 15-30 minutes to run.
 		Timeout: 45 * time.Minute,
 		Data: []string{

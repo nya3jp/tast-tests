@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromevoxPlainTextEditing,
-		Desc: "A test that verifies the way ChromeVox can be used to edit text in plain text fields",
+		Func:         ChromevoxPlainTextEditing,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "A test that verifies the way ChromeVox can be used to edit text in plain text fields",
 		Contacts: []string{
 			"katie@chromium.org",           // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list

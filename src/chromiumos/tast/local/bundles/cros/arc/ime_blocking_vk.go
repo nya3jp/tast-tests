@@ -22,6 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         IMEBlockingVK,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks if IME is properly hidden by an ARC dialog in tablet mode",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline"},
