@@ -216,6 +216,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba4ce72b_d77789d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-18T19:23:51Z",
+      "side": 1,
+      "message": "I was using WaitUntilExists. After adding some log statements and playing manually, I\u0027ve discovered that it seems the first click after a drag and drop does not register, even if the drag and drop was unsuccessful. This is any drag and drop, not just to holding space. From the files app to holding space, from the chrome browser to the files app. The first click after that action takes me back to the app that I was dragging from, and does nothing else, no matter where I click or what other inputs I\u0027ve given, as far as I\u0027ve tried. The same interaction does not happen with touch screen drag and drop. This is clearly not holding space related, but could also interfere with this test (and a whole lot else) if it exists anywhere other than my DUT, which I assume it does at least somewhere.\n\nNothing about my DUT has changed besides staying at top of tree, and this has been happening for at least a week. I\u0027m pretty sure before that it worked fine, but not 100% sure. Doing a few searches to see if anything changed in that realm recently, and found some changes, but nothing that seems it could cause this, that I can tell immediately.\n\nIf you have any ideas about what could be happening here, let me know. Otherwise I\u0027m going to fix this CL to the way it should look, and try to track down what\u0027s happening to that mouse event, and why it seems to be passed to the drag and drop source no matter what. If your DUT is anywhere near top of tree, and you could try this out, I\u0027d appreciate it.",
+      "parentUuid": "365a63a5_cb12c91d",
+      "revId": "30291d391001d115b6f6846b52db18143214ed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4ab532b_420d9e3a",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
         "patchSetId": 6
