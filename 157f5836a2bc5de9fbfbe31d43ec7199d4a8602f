@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15ac1914_e6d2946a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-18T10:13:52Z",
+      "side": 1,
+      "message": "I plan to review this change when we are done with the previous one, if you don\u0027t mind.",
+      "revId": "157f5836a2bc5de9fbfbe31d43ec7199d4a8602f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
