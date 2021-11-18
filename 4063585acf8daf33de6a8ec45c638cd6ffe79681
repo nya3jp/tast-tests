@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3119df3_422e4344",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/its/its.patch",
+        "patchSetId": 2
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-18T08:58:29Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 1408,
+        "startChar": 7,
+        "endLine": 1408,
+        "endChar": 13
+      },
+      "revId": "4063585acf8daf33de6a8ec45c638cd6ffe79681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ac07797_26485221",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/its/unpack_bundle.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-18T08:58:29Z",
+      "side": 1,
+      "message": "This file sounds like do more things than just unpack_bundle.\nAccording to the description: \"Script for setup ITS repo with python3 patch.\", maybe \"setup_repo_with_patch.py\" or something similar?",
+      "revId": "4063585acf8daf33de6a8ec45c638cd6ffe79681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "092ca930_2b6950c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-18T08:58:29Z",
+      "side": 1,
+      "message": "Should it be \"its/android-cts-verifier-9.0_r15-linux_x86-arm.zip\"?",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 76
+      },
+      "revId": "4063585acf8daf33de6a8ec45c638cd6ffe79681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d05fd2_75c3758d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-18T08:58:29Z",
+      "side": 1,
+      "message": "nit: maybe |p.dir|, so it is more consistent to line 164.",
+      "range": {
+        "startLine": 159,
+        "startChar": 55,
+        "endLine": 159,
+        "endChar": 62
+      },
+      "revId": "4063585acf8daf33de6a8ec45c638cd6ffe79681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01da0d52_ffc241ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-18T08:58:29Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 160,
+        "startChar": 21,
+        "endLine": 160,
+        "endChar": 39
+      },
+      "revId": "4063585acf8daf33de6a8ec45c638cd6ffe79681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
