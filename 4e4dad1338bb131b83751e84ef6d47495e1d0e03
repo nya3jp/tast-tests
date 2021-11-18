@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a90e14d_79b5b599",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-18T20:02:26Z",
+      "side": 1,
+      "message": "I would add the \"command not found\" string to the reTabletMode also, and check for that in the output. There are other ways for the command to fail, and we want to fail on real failures.\n\nUnless of course this section gets removed because kbpress in tabletmode is not really testing anything.",
+      "range": {
+        "startLine": 123,
+        "startChar": 78,
+        "endLine": 123,
+        "endChar": 90
+      },
+      "revId": "4e4dad1338bb131b83751e84ef6d47495e1d0e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be245d05_8d296904",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-18T20:02:26Z",
+      "side": 1,
+      "message": "This function is called suspendAndWakeWithLid, but it doesn\u0027t explicitly suspend.\n\nAll of these helper functions are confusing.\n\nHow about naming the top level ones something like \"testWakeByPowerBtn\" or \"testCloseAndOpenLid\", and the helper functions that are not a full test can be named as they are.",
+      "range": {
+        "startLine": 180,
+        "startChar": 5,
+        "endLine": 180,
+        "endChar": 26
+      },
+      "revId": "4e4dad1338bb131b83751e84ef6d47495e1d0e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "201d11f9_cee9318a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-18T20:02:26Z",
+      "side": 1,
+      "message": "This one does explicitly suspend, but the name sounds like it only wakes.",
+      "range": {
+        "startLine": 201,
+        "startChar": 5,
+        "endLine": 201,
+        "endChar": 16
+      },
+      "revId": "4e4dad1338bb131b83751e84ef6d47495e1d0e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bd7fed8_627cbf3e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-18T20:02:26Z",
+      "side": 1,
+      "message": "This defer is ignoring the error from WaitConnect. Either use a named return and set the return if this fails, or just move it to the bottom of this function. It\u0027s not that important to wait for connect if the test is failing.",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 35
+      },
+      "revId": "4e4dad1338bb131b83751e84ef6d47495e1d0e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f60405d_d13c13d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-18T20:02:26Z",
+      "side": 1,
+      "message": "Maybe the other cases should explicitly turn the usb keyboard off, just in case some other test left it on.",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 2
+      },
+      "revId": "4e4dad1338bb131b83751e84ef6d47495e1d0e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91555575_35c00057",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-18T20:02:26Z",
+      "side": 1,
+      "message": "This doesn\u0027t tell you it stayed suspended, just that there was some error. You should probably pass the `shouldWake` param into suspendAndWakeWithKey so that it will check explicitly for S0 or S3 as needed.",
+      "range": {
+        "startLine": 307,
+        "startChar": 11,
+        "endLine": 307,
+        "endChar": 21
+      },
+      "revId": "4e4dad1338bb131b83751e84ef6d47495e1d0e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b26b013b_2b5a3e87",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-18T20:02:26Z",
+      "side": 1,
+      "message": "This defer is ignoring the error from WaitConnect. Either use a named return and set the return if this fails, or just move it to the bottom of this function. It\u0027s not that important to wait for connect if the test is failing.",
+      "range": {
+        "startLine": 345,
+        "startChar": 1,
+        "endLine": 345,
+        "endChar": 6
+      },
+      "revId": "4e4dad1338bb131b83751e84ef6d47495e1d0e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
