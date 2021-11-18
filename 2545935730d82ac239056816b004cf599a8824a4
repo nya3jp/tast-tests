@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "321d6546_3ef3e3df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-18T19:56:37Z",
+      "side": 1,
+      "message": "ui.VideoCUJ is testing youtube web so ARC is not really used. Alternative, I could also enable ARC for the lacros variation. But that does not feel useful since ARC is not really used. Let me know.",
+      "revId": "2545935730d82ac239056816b004cf599a8824a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
