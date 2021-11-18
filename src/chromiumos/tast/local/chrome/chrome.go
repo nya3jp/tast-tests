@@ -653,6 +653,12 @@ func (c *Chrome) WaitForOOBEConnection(ctx context.Context) (*Conn, error) {
 	return login.WaitForOOBEConnection(ctx, c.sess)
 }
 
+// WaitForRMAConnection waits for the RMA dialog to be shown, then returns
+// a connection to the page. The caller must close the returned connection.
+func (c *Chrome) WaitForRMAConnection(ctx context.Context) (*Conn, error) {
+	return login.WaitForRMAConnection(ctx, c.sess)
+}
+
 // WaitForOOBEConnectionToBeDismissed waits for that the OOBE page to be
 // dismissed.
 func (c *Chrome) WaitForOOBEConnectionToBeDismissed(ctx context.Context) error {

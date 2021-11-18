@@ -18,6 +18,7 @@ import (
 )
 
 const oobePrefix = "chrome://oobe"
+const rmaPrefix = "chrome://shimless-rma"
 
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
 var pollOpts = &testing.PollOptions{Interval: 10 * time.Millisecond}
@@ -94,17 +95,46 @@ func WaitForOOBEConnectionWithPrefix(ctx context.Context, sess *driver.Session, 
 	ctx, st := timing.Start(ctx, "wait_for_oobe")
 	defer st.End()
 
+	conn, err := waitForConnectionWithPrefix(ctx, sess, prefix)
+	if err != nil {
+		return nil, err
+	}
+
+	// Cribbed from telemetry/internal/backends/chrome/cros_browser_backend.py in Catapult.
+	testing.ContextLog(ctx, "Waiting for OOBE")
+	if err = conn.WaitForExpr(ctx, "typeof Oobe == 'function' && Oobe.readyForTesting"); err != nil {
+		return nil, errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE didn't show up (Oobe.readyForTesting not found)")
+	}
+	if err = conn.WaitForExpr(ctx, "typeof OobeAPI == 'object'"); err != nil {
+		return nil, errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE didn't show up (OobeAPI not found)")
+	}
+
+	connToRet := conn
+	conn = nil
+	return connToRet, nil
+}
+
+// WaitForRMAConnection establishes a connection to the RMA dialog.
+func WaitForRMAConnection(ctx context.Context, sess *driver.Session) (*driver.Conn, error) {
+	testing.ContextLog(ctx, "Finding RMA DevTools target")
+	ctx, st := timing.Start(ctx, "wait_for_rma")
+	defer st.End()
+
+	return waitForConnectionWithPrefix(ctx, sess, rmaPrefix)
+}
+
+func waitForConnectionWithPrefix(ctx context.Context, sess *driver.Session, prefix string) (*driver.Conn, error) {
 	var target *driver.Target
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
 		if target, err = getFirstTargetWithPrefix(ctx, sess, prefix); err != nil {
 			return err
 		} else if target == nil {
-			return errors.Errorf("no %s target", oobePrefix)
+			return errors.Errorf("no %s target", prefix)
 		}
 		return nil
 	}, pollOpts); err != nil {
-		return nil, errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE target not found")
+		return nil, errors.Wrap(sess.Watcher().ReplaceErr(err), "RMA target not found")
 	}
 
 	conn, err := sess.NewConnForTarget(ctx, driver.MatchTargetID(target.TargetID))
@@ -116,15 +146,6 @@ func WaitForOOBEConnectionWithPrefix(ctx context.Context, sess *driver.Session, 
 			conn.Close()
 		}
 	}()
-
-	// Cribbed from telemetry/internal/backends/chrome/cros_browser_backend.py in Catapult.
-	testing.ContextLog(ctx, "Waiting for OOBE")
-	if err = conn.WaitForExpr(ctx, "typeof Oobe == 'function' && Oobe.readyForTesting"); err != nil {
-		return nil, errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE didn't show up (Oobe.readyForTesting not found)")
-	}
-	if err = conn.WaitForExpr(ctx, "typeof OobeAPI == 'object'"); err != nil {
-		return nil, errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE didn't show up (OobeAPI not found)")
-	}
 
 	connToRet := conn
 	conn = nil
