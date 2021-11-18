@@ -7,8 +7,10 @@ package updateutil
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"math/rand"
 	"net"
+	"path/filepath"
 	"time"
 
 	"github.com/golang/protobuf/ptypes"
@@ -25,7 +27,16 @@ import (
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/rpc"
 	aupb "chromiumos/tast/services/cros/autoupdate"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
+)
+
+// tlwAddress is used to connect to the Test Lab Wiring,
+// which is used for the communication with the image caching service.
+var tlwAddress = testing.RegisterVarString(
+	"updateutil.tlwAddress",
+	"10.254.254.254:7151",
+	"The address {host:port} of the TLW service",
 )
 
 // ImageVersion gets the DUT image version from the parsed /etc/lsb-realse file.
@@ -99,9 +110,103 @@ func FillFromLSBRelease(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCH
 	return nil
 }
 
-// CacheForDUT caches the required update files in a caching server which is available from the DUT.
+// UpdateFromGS updates the DUT to an image found in the Google Storage under the builder path folder.
+// It saves the logs (udpdate engine logs and Nebraska logs) to the given outdir.
+func UpdateFromGS(ctx context.Context, dut *dut.DUT, outdir string, rpcHint *testing.RPCHint, builderPath string) (retErr error) {
+	// Reserve cleanup time for copying the logs from the DUT.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
+	defer cancel()
+
+	gsPathPrefix := fmt.Sprintf("gs://chromeos-image-archive/%s", builderPath)
+
+	// Cache the selected update image in a server accessible by the DUT.
+	// The update images are stored in a GS bucket which requires corp access.
+	url, err := cacheForDUT(ctx, dut, tlwAddress.Value(), gsPathPrefix)
+	if err != nil {
+		return errors.Wrap(err, "unexpected error when caching file")
+	}
+
+	// Connect to DUT.
+	cl, err := rpc.Dial(ctx, dut, rpcHint)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+	}
+	defer cl.Close(cleanupCtx)
+
+	// Create a temp dir to store the Nebraska logs and the update payload metadata.
+	nebraskaClient := aupb.NewNebraskaServiceClient(cl.Conn)
+	tempDir, err := nebraskaClient.CreateTempDir(ctx, &empty.Empty{})
+	if err != nil {
+		return errors.Wrap(err, "failed to create temporary directory for Nebraska")
+	}
+	defer func(ctx context.Context) {
+		if _, err := nebraskaClient.RemoveTempDir(ctx, &empty.Empty{}); err != nil {
+			if retErr == nil {
+				retErr = errors.Wrap(err, "failed to remove the temporary directory")
+			} else {
+				testing.ContextLog(ctx, "Failed to remove the temporary directory: ", err)
+			}
+		}
+	}(cleanupCtx)
+
+	// There is a * in the url, but it is not a wildcard for wget.
+	// The * is understood by the server, and it will serve a file to download with that name.
+	args := []string{
+		"-P", tempDir.Path, // download folder
+		url + "/chromeos_*_full_dev*bin.json", // payload metadata address
+	}
+
+	// Download the payload metadata from the caching server.
+	if err := dut.Conn().CommandContext(ctx, "wget", args...).Run(); err != nil {
+		return errors.Wrap(err, "failed to download payload metadata")
+	}
+
+	nebraska, err := nebraskaClient.Start(ctx, &aupb.StartRequest{
+		Update: &aupb.Payload{
+			Address:        url,
+			MetadataFolder: tempDir.Path,
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "failed to start Nebraska")
+	}
+	defer func(ctx context.Context) {
+		if err := linuxssh.GetFile(ctx, dut.Conn(), nebraska.LogPath, filepath.Join(outdir, "nebraska.log"), linuxssh.DereferenceSymlinks); err != nil {
+			testing.ContextLog(ctx, "Failed to save Nebraska log: ", err)
+		}
+	}(cleanupCtx)
+	defer func(ctx context.Context) {
+		if _, err := nebraskaClient.Stop(ctx, &empty.Empty{}); err != nil {
+			if retErr == nil {
+				retErr = errors.Wrap(err, "failed to stop Nebraska")
+			} else {
+				testing.ContextLog(ctx, "Failed to stop Nebraska: ", err)
+			}
+		}
+	}(cleanupCtx)
+
+	// Get the update log files even if the update fails.
+	defer func(ctx context.Context) {
+		if err := linuxssh.GetFile(ctx, dut.Conn(), "/var/log/update_engine.log", filepath.Join(outdir, "update_engine.log"), linuxssh.DereferenceSymlinks); err != nil {
+			testing.ContextLog(ctx, "Failed to save update engine log: ", err)
+		}
+	}(cleanupCtx)
+
+	// Trigger the update and wait for the results.
+	updateClient := aupb.NewUpdateServiceClient(cl.Conn)
+	if _, err := updateClient.CheckForUpdate(ctx, &aupb.UpdateRequest{
+		OmahaUrl: fmt.Sprintf("http://127.0.0.1:%s/update?critical_update=True", nebraska.Port),
+	}); err != nil {
+		return errors.Wrap(err, "failed to check for updates")
+	}
+
+	return nil
+}
+
+// cacheForDUT caches the required update files in a caching server which is available from the DUT.
 // The required files include the update payload and the payload metadata.
-func CacheForDUT(ctx context.Context, dut *dut.DUT, TLWAddress, gsPathPrefix string) (string, error) {
+func cacheForDUT(ctx context.Context, dut *dut.DUT, TLWAddress, gsPathPrefix string) (string, error) {
 	conn, err := grpc.Dial(TLWAddress, grpc.WithInsecure())
 	if err != nil {
 		return "", err
