@@ -129,7 +129,8 @@ var expectedWLANDriver = map[string]map[string]string{
 		"5.10": "wireless/realtek/rtw89/rtw89_pci.ko",
 	},
 	wlan.MediaTekMT7921PCIE: {
-		"5.4": "wireless/mediatek/mt76/mt7921/mt7921e.ko",
+		"5.4":  "wireless/mediatek/mt76/mt7921/mt7921e.ko",
+		"5.10": "wireless/mediatek/mt76/mt7921/mt7921e.ko",
 	},
 }
 
