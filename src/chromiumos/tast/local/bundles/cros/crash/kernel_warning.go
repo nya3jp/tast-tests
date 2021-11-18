@@ -18,10 +18,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     KernelWarning,
-		Desc:     "Verify kernel warnings are logged as expected",
-		Contacts: []string{"mutexlox@google.com", "cros-telemetry@google.com"},
-		Attr:     []string{"group:mainline"},
+		Func:         KernelWarning,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify kernel warnings are logged as expected",
+		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
+		Attr:         []string{"group:mainline"},
 		// TODO(b/201790026): The lkdtm resides on the debugfs,
 		// which is not accessible when integrity mode is
 		// enabled.

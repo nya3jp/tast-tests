@@ -38,6 +38,7 @@ type arcPIPEnergyAndPowerTestParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PIPEnergyAndPower,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures energy and power usage of ARC++ PIP",
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-perf@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},

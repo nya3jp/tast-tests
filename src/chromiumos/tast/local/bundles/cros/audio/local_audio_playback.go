@@ -24,6 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LocalAudioPlayback,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Play local audio file through default app and check if the audio is routing through expected device",
 		Contacts:     []string{"ambalavanan.m.m@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		SoftwareDeps: []string{"chrome"},

@@ -33,8 +33,9 @@ var noEthernetModels = []string{"arcada", "drallion", "drallion360"}
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DeviceDockMacAddressSource,
-		Desc: "Test setting the DeviceDockMacAddressSource policy by checking if the DUT changing MAC address",
+		Func:         DeviceDockMacAddressSource,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test setting the DeviceDockMacAddressSource policy by checking if the DUT changing MAC address",
 		Contacts: []string{
 			"lamzin@google.com", // Test author
 			"chromeos-wilco@google.com",

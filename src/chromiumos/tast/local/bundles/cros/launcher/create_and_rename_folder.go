@@ -20,8 +20,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CreateAndRenameFolder,
-		Desc: "Renaming Folder In Launcher",
+		Func:         CreateAndRenameFolder,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Renaming Folder In Launcher",
 		Contacts: []string{
 			"seewaifu@chromium.org",
 			"chromeos-sw-engprod@google.com",

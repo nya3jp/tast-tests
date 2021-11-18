@@ -25,8 +25,9 @@ type seekTest struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Seek,
-		Desc: "Verifies that seeking works in Chrome, either with or without resolution changes",
+		Func:         Seek,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that seeking works in Chrome, either with or without resolution changes",
 		Contacts: []string{
 			"mcasas@chromium.org",
 			"chromeos-gfx-video@google.com",

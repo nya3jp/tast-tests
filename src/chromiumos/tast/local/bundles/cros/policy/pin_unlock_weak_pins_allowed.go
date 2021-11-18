@@ -25,8 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PinUnlockWeakPinsAllowed,
-		Desc: "Verify the user cannot set a weak PIN if disallowed by policy",
+		Func:         PinUnlockWeakPinsAllowed,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify the user cannot set a weak PIN if disallowed by policy",
 		Contacts: []string{
 			"janagrill@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

@@ -40,8 +40,9 @@ var dataFiles = []string{manifestJSON, optionsHTML, swJS}
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: TelemetryExtension,
-		Desc: "Tests TelemetryExtension core functionalities such as APIs, permissions, communication with PWA",
+		Func:         TelemetryExtension,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests TelemetryExtension core functionalities such as APIs, permissions, communication with PWA",
 		Contacts: []string{
 			"lamzin@google.com", // Test and Telemetry Extension author
 			"mgawad@google.com", // Telemetry Extension author

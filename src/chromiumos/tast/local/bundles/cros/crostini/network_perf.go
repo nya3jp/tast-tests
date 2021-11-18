@@ -28,6 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NetworkPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests Crostini network performance",
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

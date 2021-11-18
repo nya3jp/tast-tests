@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DesksTemplatesBasic,
-		Desc: "Checks desks can be saved as a desk template",
+		Func:         DesksTemplatesBasic,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks desks can be saved as a desk template",
 		Contacts: []string{
 			"yzd@chromium.org",
 			"chromeos-wmp@google.com",

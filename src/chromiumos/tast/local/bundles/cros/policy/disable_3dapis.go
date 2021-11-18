@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Disable3DAPIs,
-		Desc: "Behavior of the Disable3DAPIs policy",
+		Func:         Disable3DAPIs,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of the Disable3DAPIs policy",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
 			"kathrelkeld@chromium.org",

@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LaunchHelpLanguage,
-		Desc: "Launch Help APP in different system languages",
+		Func:         LaunchHelpLanguage,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Launch Help APP in different system languages",
 		Contacts: []string{
 			"showoff-eng@google.com",
 			"shengjun@chromium.org",

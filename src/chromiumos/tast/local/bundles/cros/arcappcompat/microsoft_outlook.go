@@ -34,9 +34,10 @@ var touchviewLaunchForMicrosoftOutlook = []testutil.TestCase{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     MicrosoftOutlook,
-		Desc:     "Functional test for MicrosoftOutlook that installs the app also verifies it is logged in and that the main page is open, checks MicrosoftOutlook correctly changes the window state in both clamshell and touchview mode",
-		Contacts: []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
+		Func:         MicrosoftOutlook,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Functional test for MicrosoftOutlook that installs the app also verifies it is logged in and that the main page is open, checks MicrosoftOutlook correctly changes the window state in both clamshell and touchview mode",
+		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		// Disabled the test as Microsoft is ending it's support for android version of Microsoft outlook.
 		//Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},

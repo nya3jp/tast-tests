@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FullRestoreOpenSettings,
-		Desc: "Test full restore notification and browser",
+		Func:         FullRestoreOpenSettings,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test full restore notification and browser",
 		Contacts: []string{
 			"nancylingwang@google.com",
 			"chromeos-apps-foundation-team@google.com",

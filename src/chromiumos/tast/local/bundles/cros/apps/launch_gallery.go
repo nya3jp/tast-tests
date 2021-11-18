@@ -29,8 +29,9 @@ const testFile = "gear_wheels_4000x3000_20200624.jpg"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LaunchGallery,
-		Desc: "Launch Gallery APP on opening supported files",
+		Func:         LaunchGallery,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Launch Gallery APP on opening supported files",
 		Contacts: []string{
 			"backlight-swe@google.com",
 			"shengjun@chromium.org",

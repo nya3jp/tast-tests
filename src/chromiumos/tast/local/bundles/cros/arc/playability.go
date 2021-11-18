@@ -18,6 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Playability,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks basic playability like opening an app, installing apks, and changing window state",
 		Contacts:     []string{"richardfung@google.com", "arc-next@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

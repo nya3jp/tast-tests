@@ -31,6 +31,7 @@ var touchviewLaunchForAdobeIllustratorDraw = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AdobeIllustratorDraw,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Functional test for AdobeIllustratorDraw that installs the app also verifies it is logged in and that the main page is open, checks AdobeIllustratorDraw correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},

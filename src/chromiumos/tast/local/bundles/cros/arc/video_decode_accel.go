@@ -16,8 +16,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: VideoDecodeAccel,
-		Desc: "Verifies ARC++ hardware decode acceleration by running the c2_e2e_test APK",
+		Func:         VideoDecodeAccel,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies ARC++ hardware decode acceleration by running the c2_e2e_test APK",
 		Contacts: []string{
 			"akahuang@chromium.org",
 			"andrescj@chromium.org", // For the 'oopvd' variants.

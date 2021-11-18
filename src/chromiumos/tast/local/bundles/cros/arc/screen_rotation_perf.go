@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ScreenRotationPerf,
-		Desc: "Test ARC rotation performance",
+		Func:         ScreenRotationPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test ARC rotation performance",
 		Contacts: []string{
 			"khmel@chromium.org", // Maintainer.
 			"arc-framework+tast@google.com",
