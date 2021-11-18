@@ -27,6 +27,7 @@ func init() {
 		SoftwareDeps: []string{"cros_internal", "cups", "virtual_usb_printer"},
 		Data: []string{"print_usb_ps.ppd.gz", "print_usb_to_print.pdf",
 			"print_usb_golden.ps"},
+		Fixture: "virtualUsbPrinterModulesLoaded",
 	})
 }
 

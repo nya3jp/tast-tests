@@ -12,7 +12,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
@@ -39,7 +38,7 @@ func init() {
 			"paper-io_printing",
 		},
 		SoftwareDeps: []string{"chrome", "cups", "virtual_usb_printer"},
-		Fixture:      "arcBooted",
+		Fixture:      "virtualUsbPrinterModulesLoadedWithArcBooted",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Val:               "arc_print_ippusb_golden.pdf",
@@ -156,20 +155,6 @@ func Print(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
 	}
-
-	// Use oldContext for any deferred cleanups in case of timeouts or
-	// cancellations on the shortened context.
-	oldContext := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-	if err := usbprinter.InstallModules(ctx); err != nil {
-		s.Fatal("Failed to install kernel modules: ", err)
-	}
-	defer func() {
-		if err := usbprinter.RemoveModules(oldContext); err != nil {
-			s.Error("Failed to remove kernel modules: ", err)
-		}
-	}()
 
 	printer, _, err := usbprinter.StartIPPUSB(ctx, devInfo, descriptors, attributes, recordPath)
 	if err != nil {

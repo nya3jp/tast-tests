@@ -10,9 +10,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
-	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
@@ -63,21 +61,6 @@ func RunIPPUSBPPDTest(ctx context.Context, s *testing.State, descriptors, attrib
 	if err != nil {
 		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
 	}
-
-	// Use oldContext for any deferred cleanups in case of timeouts or
-	// cancellations on the shortened context.
-	oldContext := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	if err := usbprinter.InstallModules(ctx); err != nil {
-		s.Fatal("Failed to install kernel modules: ", err)
-	}
-	defer func() {
-		if err := usbprinter.RemoveModules(oldContext); err != nil {
-			s.Error("Failed to remove kernel modules: ", err)
-		}
-	}()
 
 	_, name, err := usbprinter.StartIPPUSB(ctx, devInfo, descriptors, attributes, "" /*record*/)
 	if err != nil {
