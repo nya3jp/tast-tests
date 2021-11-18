@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f87dec20_ccd831a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-18T15:51:16Z",
+      "side": 1,
+      "message": "LGTM to avoid cross TZ iteration, with another request.",
+      "revId": "ab296ffa6612295c10dd7063ddde110a7e9a9c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60e653d1_6a28643c",
@@ -31,6 +48,23 @@
       "writtenOn": "2021-11-18T11:16:17Z",
       "side": 1,
       "message": "I\u0027m forced to add comments here but they are not very useful (also in chrome.go). Should I instead copy the comments from the original definitions?",
+      "revId": "ab296ffa6612295c10dd7063ddde110a7e9a9c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95ba7f98_3469c6f7",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-18T15:51:16Z",
+      "side": 1,
+      "message": "If these are shared between ash/lacros, can these be moved to browser?",
       "revId": "ab296ffa6612295c10dd7063ddde110a7e9a9c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
