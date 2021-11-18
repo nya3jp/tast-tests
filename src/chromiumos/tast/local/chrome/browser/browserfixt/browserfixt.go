@@ -10,7 +10,9 @@ import (
 	"context"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
@@ -32,6 +34,39 @@ func SetUp(ctx context.Context, f interface{}, bt browser.Type) (*browser.Browse
 		l, err := lacros.Launch(ctx, f)
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
+		}
+		closeLacros := func(ctx context.Context) {
+			l.Close(ctx) // Ignore error.
+		}
+		return l.Browser(), closeLacros, nil
+	default:
+		return nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
+	}
+}
+
+// SetUpPersistent is similar to SetUp but in the case of Lacros it launches
+// Lacros from shelf, thus using the default user data dir instead of a fresh
+// temporary one.
+// If /etc/chrome_dev.conf specifies a custom Lacros path, the shelf launch
+// will respect that. We assume that in that case the same path is given to Tast
+// via the LacrosDeployedBinary variable.
+func SetUpPersistent(ctx context.Context, f interface{}, bt browser.Type) (*browser.Browser, func(ctx context.Context), error) {
+	cr := f.(chrome.HasChrome).Chrome()
+	switch bt {
+	case browser.TypeAsh:
+		return cr.Browser(), func(context.Context) {}, nil
+	case browser.TypeLacros:
+		f := f.(lacrosfixt.FixtValue)
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			return nil, nil, errors.Wrap(err, "failed to create Test API connection")
+		}
+		if err := ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
+			return nil, nil, errors.Wrap(err, "failed to launch lacros-chrome from shelf")
+		}
+		l, err := lacros.Connect(ctx, f.LacrosPath(), lacros.UserDataDir)
+		if err != nil {
+			return nil, nil, errors.Wrap(err, "failed to connect to lacros-chrome")
 		}
 		closeLacros := func(ctx context.Context) {
 			l.Close(ctx) // Ignore error.
