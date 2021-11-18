@@ -210,6 +210,12 @@ var Settings = App{
 	Name: "Settings",
 }
 
+// ShimlessRMA has details about the Shimless RMA app.
+var ShimlessRMA = App{
+	ID:   "ijolhdommgkkhpenofmpkkhlepahelcm",
+	Name: "Shimless RMA",
+}
+
 // Translate has details about the Translate app.
 var Translate = App{
 	ID:   "pacmnfddiadhhfmngijgjdbnodjkmojl",
