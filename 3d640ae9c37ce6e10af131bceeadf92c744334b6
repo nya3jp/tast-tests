@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2829757a_4a0ba75d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-18T22:36:24Z",
+      "side": 1,
+      "message": "You have built the CLs as dependencies so the the ones below it in the chain need to be CQ+2\u0027d at the same time ",
+      "revId": "3d640ae9c37ce6e10af131bceeadf92c744334b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
