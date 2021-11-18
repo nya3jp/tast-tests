@@ -18,6 +18,7 @@ import (
 )
 
 const oobePrefix = "chrome://oobe"
+const rmaPrefix = "chrome://shimless-rma"
 
 // Use a low polling interval while waiting for conditions during login, as this code is shared by many tests.
 var pollOpts = &testing.PollOptions{Interval: 10 * time.Millisecond}
@@ -83,6 +84,11 @@ func WaitForOOBEConnection(ctx context.Context, sess *driver.Session) (*driver.C
 	return WaitForOOBEConnectionWithPrefix(ctx, sess, oobePrefix)
 }
 
+// WaitForRMAConnection establishes a connection to the RMA dialog.
+func WaitForRMAConnection(ctx context.Context, sess *driver.Session) (*driver.Conn, error) {
+	return WaitForRMAConnectionWithPrefix(ctx, sess, rmaPrefix)
+}
+
 // WaitForOOBEConnectionToBeDismissed waits for the OOBE page to be dismissed.
 func WaitForOOBEConnectionToBeDismissed(ctx context.Context, sess *driver.Session) error {
 	return waitForPageWithPrefixToBeDismissed(ctx, sess, oobePrefix)
@@ -125,6 +131,40 @@ func WaitForOOBEConnectionWithPrefix(ctx context.Context, sess *driver.Session, 
 	if err = conn.WaitForExpr(ctx, "typeof OobeAPI == 'object'"); err != nil {
 		return nil, errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE didn't show up (OobeAPI not found)")
 	}
+
+	connToRet := conn
+	conn = nil
+	return connToRet, nil
+}
+
+// WaitForRMAConnectionWithPrefix establishes a connection to the RMA dialog matching the specified prefix.
+func WaitForRMAConnectionWithPrefix(ctx context.Context, sess *driver.Session, prefix string) (*driver.Conn, error) {
+	testing.ContextLog(ctx, "Finding RMA DevTools target")
+	ctx, st := timing.Start(ctx, "wait_for_rma")
+	defer st.End()
+
+	var target *driver.Target
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		if target, err = getFirstTargetWithPrefix(ctx, sess, prefix); err != nil {
+			return err
+		} else if target == nil {
+			return errors.Errorf("no %s target", oobePrefix)
+		}
+		return nil
+	}, pollOpts); err != nil {
+		return nil, errors.Wrap(sess.Watcher().ReplaceErr(err), "OOBE target not found")
+	}
+
+	conn, err := sess.NewConnForTarget(ctx, driver.MatchTargetID(target.TargetID))
+	if err != nil {
+		return nil, err
+	}
+	defer func() {
+		if conn != nil {
+			conn.Close()
+		}
+	}()
 
 	connToRet := conn
 	conn = nil
