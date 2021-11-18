@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "024c1b54_37af4578",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-11-18T07:12:41Z",
+      "side": 1,
+      "message": "MD5Sum criteria\n\nas of before this CL.",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "70598d802ce4d848aa4371bedb222ea8a5ea86b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc35ed8_18a4fc2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-11-18T07:12:41Z",
+      "side": 1,
+      "message": "If I understand correctly, av1_ssim is mostly for verifying film grain files using SSIM, so we remove av1_ssim and change the verification method of av1_film_grain to SSIM.\n\nThis sentence doesn\u0027t mention about the verification method change.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "70598d802ce4d848aa4371bedb222ea8a5ea86b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6901f88a_11a11189",
@@ -14,6 +60,92 @@
       "writtenOn": "2021-11-18T01:56:18Z",
       "side": 1,
       "message": "hiroh@ WDYT?\n\nOthers FYI",
+      "revId": "70598d802ce4d848aa4371bedb222ea8a5ea86b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a2ab66_9fd7b76b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-11-18T07:12:41Z",
+      "side": 1,
+      "message": "I am fine with this change.\n\n+andrescj@ as he suggested this test case structure.\n\n",
+      "revId": "70598d802ce4d848aa4371bedb222ea8a5ea86b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ed82f6d_717d90a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-11-18T07:12:41Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 59
+      },
+      "revId": "70598d802ce4d848aa4371bedb222ea8a5ea86b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb82d555_1b3978ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-11-18T07:12:41Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 74
+      },
+      "revId": "70598d802ce4d848aa4371bedb222ea8a5ea86b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6ee56de_3852dc73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-11-18T07:12:41Z",
+      "side": 1,
+      "message": "Update the comment.\nThus we validate the decoding of film-grain streams using SSIM.",
+      "range": {
+        "startLine": 187,
+        "startChar": 58,
+        "endLine": 189,
+        "endChar": 55
+      },
       "revId": "70598d802ce4d848aa4371bedb222ea8a5ea86b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
