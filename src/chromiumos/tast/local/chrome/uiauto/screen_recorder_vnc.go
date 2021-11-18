@@ -51,17 +51,32 @@ func RecordOnSuccess() func(*videoConfig) {
 }
 
 // RecordVNCVideo starts recording video from a VNC stream.
+// It returns a function that will stop recording the video.
+// Example usage:
+// stopRecording := RecordVNCVideo(ctx, s, RecordingFramerate(5))
+// defer stopRecording()
+func RecordVNCVideo(ctx context.Context, s testingState, mods ...func(*videoConfig)) (stopRecording func()) {
+	stopRecording, err := RecordVNCVideoCritical(ctx, s, mods...)
+	if err != nil {
+		testing.ContextLog(ctx, "Error while starting screen recording: ", err)
+		return func() {}
+	}
+	return stopRecording
+}
+
+// RecordVNCVideoCritical starts recording video from a VNC stream.
 // If the recording was unable to start, an error will be returned.
 // Otherwise, a function to stop and save the recording will be returned.
 // If the stop recording function fails, it will be logged, but as it is
 // non-critical to the test itself, the test will still pass.
 // Example usage:
-// stopRecording, err := RecordVNCVideo(ctx, s, RecordingFramerate(5))
+// stopRecording, err := RecordVNCVideoCritical(ctx, s, RecordingFramerate(5))
 // if err != nil {
 // 	handle err
 // }
 // defer stopRecording()
-func RecordVNCVideo(ctx context.Context, s testingState, mods ...func(*videoConfig)) (stopRecording func(), err error) {
+func RecordVNCVideoCritical(ctx context.Context, s testingState, mods ...func(*videoConfig)) (stopRecording func(), err error) {
+
 	cfg := defaultConfig
 	for _, mod := range mods {
 		mod(&cfg)
