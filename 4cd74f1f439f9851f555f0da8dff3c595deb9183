@@ -204,6 +204,30 @@
       },
       "revId": "4cd74f1f439f9851f555f0da8dff3c595deb9183",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6166eb71_f101fc37",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2021-11-18T02:30:12Z",
+      "side": 1,
+      "message": "BTW, Shill will drop any scan request if scan state is not idle.\n\nRef: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/shill/wifi/wifi.cc;l\u003d308?q\u003dwifi.cc\u0026ss\u003dchromiumos",
+      "parentUuid": "b4cf7d8e_5edb0086",
+      "range": {
+        "startLine": 1248,
+        "startChar": 15,
+        "endLine": 1248,
+        "endChar": 34
+      },
+      "revId": "4cd74f1f439f9851f555f0da8dff3c595deb9183",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
