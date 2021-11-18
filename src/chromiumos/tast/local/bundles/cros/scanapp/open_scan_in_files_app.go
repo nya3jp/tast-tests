@@ -38,6 +38,7 @@ func init() {
 			"paper-io_scanning",
 		},
 		SoftwareDeps: []string{"chrome", "virtual_usb_printer"},
+		Fixture:      "virtualUsbPrinterModulesLoaded",
 		Data:         []string{scanning.SourceImage},
 	})
 }
@@ -69,16 +70,6 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
-	// Set up the virtual USB printer.
-	if err := usbprinter.InstallModules(ctx); err != nil {
-		s.Fatal("Failed to install kernel modules: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := usbprinter.RemoveModules(ctx); err != nil {
-			s.Error("Failed to remove kernel modules: ", err)
-		}
-	}(cleanupCtx)
 
 	devInfo, err := usbprinter.LoadPrinterIDs(scanning.Descriptors)
 	if err != nil {

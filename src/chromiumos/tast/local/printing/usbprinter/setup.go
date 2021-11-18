@@ -56,28 +56,6 @@ func LoadPrinterIDs(path string) (devInfo DevInfo, err error) {
 	return DevInfo{fmt.Sprintf("%04x", cfg.DevDesc.Vendor), fmt.Sprintf("%04x", cfg.DevDesc.Product)}, nil
 }
 
-// InstallModules installs the "usbip_core" and "vhci-hcd" kernel modules which
-// are required by usbip in order to bind the virtual printer to the system.
-func InstallModules(ctx context.Context) error {
-	cmd := testexec.CommandContext(ctx, "modprobe", "-a", "usbip_core",
-		"vhci-hcd")
-	if err := cmd.Run(); err != nil {
-		return errors.Wrap(err, "failed to install usbip kernel modules")
-	}
-	return nil
-}
-
-// RemoveModules removes the "usbip_core" and "vhci-hcd" kernel modules that
-// were installed during the test run.
-func RemoveModules(ctx context.Context) error {
-	cmd := testexec.CommandContext(ctx, "modprobe", "-r", "-a", "vhci-hcd",
-		"usbip_core")
-	if err := cmd.Run(); err != nil {
-		return errors.Wrap(err, "failed to remove usbip kernel modules")
-	}
-	return nil
-}
-
 // runVirtualUsbPrinter starts an instance of virtual-usb-printer with the
 // given arguments.  Waits until the printer has been launched successfully,
 // and then returns the command.

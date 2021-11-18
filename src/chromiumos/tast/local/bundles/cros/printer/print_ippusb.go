@@ -11,7 +11,6 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/local/bundles/cros/printer/usbprintertests"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -27,7 +26,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome", "cros_internal", "cups", "virtual_usb_printer"},
 		Data:         []string{"print_ippusb_to_print.pdf", "print_ippusb_golden.pdf"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "virtualUsbPrinterModulesLoadedWithChromeLoggedIn",
 	})
 }
 

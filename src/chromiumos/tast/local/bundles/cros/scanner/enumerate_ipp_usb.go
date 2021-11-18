@@ -7,10 +7,8 @@ package scanner
 import (
 	"context"
 	"regexp"
-	"time"
 
 	lpb "chromiumos/system_api/lorgnette_proto"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/scanner/lorgnette"
 	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/usbprinter"
@@ -39,7 +37,7 @@ func init() {
 			"paper-io_scanning",
 		},
 		SoftwareDeps: []string{"virtual_usb_printer", "cups", "chrome"},
-		Fixture:      "chromeLoggedIn",
+		Fixture:      "virtualUsbPrinterModulesLoadedWithChromeLoggedIn",
 	})
 }
 
@@ -109,21 +107,6 @@ func runEnumerationTest(ctx context.Context, s *testing.State, info scannerInfo)
 }
 
 func EnumerateIPPUSB(ctx context.Context, s *testing.State) {
-	// Use cleanupCtx for any deferred cleanups in case of timeouts or
-	// cancellations on the shortened context.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
-	if err := usbprinter.InstallModules(ctx); err != nil {
-		s.Fatal("Failed to install kernel modules: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := usbprinter.RemoveModules(ctx); err != nil {
-			s.Error("Failed to remove kernel modules: ", err)
-		}
-	}(cleanupCtx)
-
 	for _, info := range []scannerInfo{{
 		name:             "Non-IPP USB printer",
 		descriptors:      "/usr/local/etc/virtual-usb-printer/usb_printer.json",
