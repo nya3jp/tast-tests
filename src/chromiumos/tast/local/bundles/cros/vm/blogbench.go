@@ -108,7 +108,8 @@ func Blogbench(ctx context.Context, s *testing.State) {
 	} else if kind == "fs" || kind == "fs_dax" {
 		tag = "shared"
 		args = append(args, "--shared-dir",
-			fmt.Sprintf("%s:%s:type=fs:cache=always:timeout=3600:writeback=true", shared, tag))
+			fmt.Sprintf("%s:%s:type=fs:cache=always:timeout=3600:writeback=true:dax=%t",
+				shared, tag, kind == "fs_dax"))
 	} else if kind == "p9" {
 		tag = "shared"
 		args = append(args, "--shared-dir", fmt.Sprintf("%s:%s", shared, tag))
