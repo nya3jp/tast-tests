@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18c8dfa1_74f1efdb",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-11-18T13:06:54Z",
+      "side": 1,
+      "message": "I wonder if EnsureMainScreenVisible should be called before the ui interactions here.\nOtherwise maybe add it to the description that it should be called before this function.\n\nSame goes for the corresponding VMWare connector function.",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81298d97_5d3109b8",
         "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
         "patchSetId": 1
@@ -54,6 +71,29 @@
       "writtenOn": "2021-11-18T11:31:55Z",
       "side": 1,
       "message": "Should this be commited?",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0ea3310_0e8a7223",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-11-18T13:06:54Z",
+      "side": 1,
+      "message": "This looks like it only works when the search results are in focus. Is there any way we can ensure this. Otherwise it might make sense to add it to the function description that it needs to be called when the search results are in focus.\nUnless the existence of the search results forces the focus in which case this should be fine.\n\nSame goes for the corresponding VMWare connector function.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 2
+      },
       "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
