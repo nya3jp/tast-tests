@@ -30,15 +30,35 @@ import (
 
 // ImageVersion gets the DUT image version from the parsed /etc/lsb-realse file.
 func ImageVersion(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) (string, error) {
-	return lsbReleaseEntry(ctx, dut, rpcHint, lsbrelease.Version)
+	return EntryFromLSBRelease(ctx, dut, rpcHint, lsbrelease.Version)
 }
 
 // ImageBuilderPath gets the DUT image builder path from the parsed /etc/lsb-realse file.
 func ImageBuilderPath(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) (string, error) {
-	return lsbReleaseEntry(ctx, dut, rpcHint, lsbrelease.BuilderPath)
+	return EntryFromLSBRelease(ctx, dut, rpcHint, lsbrelease.BuilderPath)
 }
 
-func lsbReleaseEntry(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, key string) (string, error) {
+// EntryFromLSBRelease is a wrapper for FillFromLSBRelease to get a single entry
+// from the /etc/lsb-realse file with a simpler call.
+func EntryFromLSBRelease(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, key string) (string, error) {
+	lsbContent := map[string]string{
+		key: "",
+	}
+	err := FillFromLSBRelease(ctx, dut, rpcHint, lsbContent)
+	if err != nil {
+		return "", err
+	}
+
+	return lsbContent[key], nil
+}
+
+// FillFromLSBRelease fills map[string]string it gets as input with values
+// form the /etc/lsb-realse file based on matching keys.
+func FillFromLSBRelease(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint, req map[string]string) error {
+	if req == nil || len(req) == 0 {
+		return errors.New("request map should contain at least one key")
+	}
+
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 20*time.Second)
 	defer cancel()
@@ -46,29 +66,37 @@ func lsbReleaseEntry(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint
 	// Connect to DUT.
 	cl, err := rpc.Dial(ctx, dut, rpcHint)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
 	defer cl.Close(cleanupCtx)
 
-	// Check the new image version.
 	updateClient := aupb.NewUpdateServiceClient(cl.Conn)
 
 	response, err := updateClient.LSBReleaseContent(ctx, &empty.Empty{})
 	if err != nil {
-		return "", errors.Wrap(err, "failed to read lsb-release")
+		return errors.Wrap(err, "failed to read lsb-release")
 	}
 
 	var lsb map[string]string
 	if err := json.Unmarshal(response.ContentJson, &lsb); err != nil {
-		return "", errors.Wrap(err, "failed to unmarshal lsb-relese content")
+		return errors.Wrap(err, "failed to unmarshal lsb-relese content")
 	}
 
-	entry, ok := lsb[key]
-	if !ok {
-		return "", errors.Wrapf(err, "failed to get entry value for key %q from lsb-release content", key)
+	missingKeys := make([]string, 0, len(req))
+	for key := range req {
+		value, ok := lsb[key]
+		if !ok {
+			missingKeys = append(missingKeys, key)
+			continue
+		}
+		req[key] = value
 	}
 
-	return entry, nil
+	if len(missingKeys) > 0 {
+		return errors.Errorf("the following keys were not found in lsb-release %#v", missingKeys)
+	}
+
+	return nil
 }
 
 // CacheForDUT caches the required update files in a caching server which is available from the DUT.
