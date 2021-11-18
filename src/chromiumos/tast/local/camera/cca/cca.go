@@ -1993,6 +1993,10 @@ func (a *App) Refresh(ctx context.Context, tb *testutil.TestBridge) error {
 func (a *App) SaveScreenshot(ctx context.Context) error {
 	filename := fmt.Sprintf("screenshot_%d.png", time.Now().UnixNano())
 	path := filepath.Join(a.outDir, filename)
+
+	// TODO(b/204527195): Remove this once we have more information why
+	// sometimes there is no screenshot saved when test fails.
+	testing.ContextLog(ctx, "[DEBUG] SaveScreenshot to path: ", path)
 	return screenshot.CaptureChrome(ctx, a.cr, path)
 }
 
