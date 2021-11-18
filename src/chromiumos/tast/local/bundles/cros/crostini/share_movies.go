@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ShareMovies,
-		Desc:         "Test sharing Play files > Movies with Crostini",
+		Func: ShareMovies, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test sharing Play files > Movies with Crostini",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},

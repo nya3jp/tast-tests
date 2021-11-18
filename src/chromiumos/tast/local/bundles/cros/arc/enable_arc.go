@@ -22,8 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         EnableArc,
-		Desc:         "Verify PlayStore can be turned On from Settings ",
+		Func: EnableArc, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verify PlayStore can be turned On from Settings ",
 		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},

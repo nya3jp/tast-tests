@@ -24,8 +24,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         TabHoverCardAnimationPerf,
-		Desc:         "Measures the animation smoothness of tab hover card animation",
+		Func: TabHoverCardAnimationPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the animation smoothness of tab hover card animation",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

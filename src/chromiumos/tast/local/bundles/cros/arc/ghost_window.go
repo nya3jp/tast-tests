@@ -29,8 +29,7 @@ const ghostWindowARCSettingsPkgName = "com.android.settings"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         GhostWindow,
-		Desc:         "Test ghost window for ARC Apps",
+		Func: GhostWindow, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test ghost window for ARC Apps",
 		Contacts:     []string{"sstan@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},

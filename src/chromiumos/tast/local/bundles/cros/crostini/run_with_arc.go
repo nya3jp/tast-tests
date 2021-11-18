@@ -16,8 +16,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         RunWithARC,
-		Desc:         "Checks that ARC(VM) runs in parallel with Crostini",
+		Func: RunWithARC, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that ARC(VM) runs in parallel with Crostini",
 		Contacts:     []string{"niwa@chromium.org", "arcvm-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

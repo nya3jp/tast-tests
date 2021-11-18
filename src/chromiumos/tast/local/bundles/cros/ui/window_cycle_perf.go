@@ -25,8 +25,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WindowCyclePerf,
-		Desc:         "Measures the animation smoothness of window cycle animations when alt + tabbing",
+		Func: WindowCyclePerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the animation smoothness of window cycle animations when alt + tabbing",
 		Contacts:     []string{"yjliu@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

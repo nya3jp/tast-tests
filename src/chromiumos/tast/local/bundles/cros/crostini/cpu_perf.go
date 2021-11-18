@@ -27,8 +27,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CPUPerf,
-		Desc:         "Tests Crostini CPU performance",
+		Func: CPUPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests Crostini CPU performance",
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

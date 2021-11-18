@@ -23,8 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UnlockPerf,
-		Desc:         "Measures animation smoothness of screen unlock",
+		Func: UnlockPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures animation smoothness of screen unlock",
 		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

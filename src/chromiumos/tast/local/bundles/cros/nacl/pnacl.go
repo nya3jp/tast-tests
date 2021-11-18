@@ -24,8 +24,7 @@ var extensionFiles = []string{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Pnacl,
-		Desc:         "Tests running a PNaCl module",
+		Func: Pnacl, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests running a PNaCl module",
 		Contacts:     []string{"emaxx@chromium.org", "nacl-eng@google.com"},
 		Data:         extensionFiles,
 		SoftwareDeps: []string{"chrome", "nacl"},

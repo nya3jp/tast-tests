@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ConciergeCrash,
-		Desc:         "Test concierge crash handling",
+		Func: ConciergeCrash, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test concierge crash handling",
 		Contacts:     []string{"hashimoto@chromium.org", "arcvm-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"}, // b/203428993
 		SoftwareDeps: []string{"chrome", "android_vm"},

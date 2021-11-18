@@ -17,8 +17,7 @@ type animal struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     Param,
-		Desc:     "Parameterized test example",
+		Func: Param, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Parameterized test example",
 		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
 		Attr:     []string{"group:mainline"},
 		Params: []testing.Param{{

@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         NotificationPopupPerf,
-		Desc:         "Measures animation smoothness of notification popup animations",
+		Func: NotificationPopupPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures animation smoothness of notification popup animations",
 		Contacts:     []string{"leandre@chromium.org", "amehfooz@chromium.org", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

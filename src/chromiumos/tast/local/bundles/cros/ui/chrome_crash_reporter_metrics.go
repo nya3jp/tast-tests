@@ -55,8 +55,7 @@ type chromeCrashReporterMetricsParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ChromeCrashReporterMetrics,
-		Desc:         "Checks that anomaly detector reports whether crash_reporter was invoked",
+		Func: ChromeCrashReporterMetrics, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that anomaly detector reports whether crash_reporter was invoked",
 		Contacts:     []string{"iby@chromium.org", "cros-telemetry@google.com"},
 		SoftwareDeps: []string{"chrome", "metrics_consent"},
 		Attr:         []string{"group:mainline"},

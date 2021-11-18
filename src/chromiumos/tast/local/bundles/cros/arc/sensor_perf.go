@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SensorPerf,
-		Desc:         "Test ARC sensor system performance",
+		Func: SensorPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test ARC sensor system performance",
 		Contacts:     []string{"arc-performance@google.com", "wvk@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

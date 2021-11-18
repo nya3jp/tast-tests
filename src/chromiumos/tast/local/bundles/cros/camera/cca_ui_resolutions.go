@@ -23,8 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CCAUIResolutions,
-		Desc:         "Opens CCA and verifies video recording related use cases",
+		Func: CCAUIResolutions, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Opens CCA and verifies video recording related use cases",
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "arc_camera3", caps.BuiltinOrVividCamera},

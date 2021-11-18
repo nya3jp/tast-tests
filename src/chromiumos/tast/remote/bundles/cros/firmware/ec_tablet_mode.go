@@ -29,8 +29,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ECTabletMode,
-		Desc:         "Checks that power button actions behave as expected in tablet mode, replacing case 1.4.9",
+		Func: ECTabletMode, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that power button actions behave as expected in tablet mode, replacing case 1.4.9",
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"chrome"},

@@ -30,8 +30,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PerformantSplitViewPerf,
-		Desc:         "Measures smoothness of resizing split view windows with and without performant split view enabled",
+		Func: PerformantSplitViewPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures smoothness of resizing split view windows with and without performant split view enabled",
 		Contacts:     []string{"dandersson@chromium.org", "sammiequon@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

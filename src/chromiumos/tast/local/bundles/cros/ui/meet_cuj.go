@@ -70,8 +70,7 @@ const defaultTestTimeout = 7 * time.Minute
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MeetCUJ,
-		Desc:         "Measures the performance of critical user journey for Google Meet",
+		Func: MeetCUJ, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the performance of critical user journey for Google Meet",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc", caps.BuiltinOrVividCamera},

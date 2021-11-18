@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MousePerf,
-		Desc:         "Test ARC mouse system performance",
+		Func: MousePerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test ARC mouse system performance",
 		Contacts:     []string{"arc-performance@google.com", "wvk@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

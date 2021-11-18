@@ -23,8 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WMNonresizableClamshell,
-		Desc:         "Verifies that Window Manager non-resizable clamshell use-cases behave as described in go/arc-wm-r",
+		Func: WMNonresizableClamshell, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that Window Manager non-resizable clamshell use-cases behave as described in go/arc-wm-r",
 		Contacts:     []string{"armenk@google.com", "takise@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},

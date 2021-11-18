@@ -168,8 +168,7 @@ type chromeStackDecodingTestParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ChromeStackDecoding,
-		Desc:         "Verifies video decoding using Chrome's stack (via the video_decode_accelerator_tests binary) and either MD5 or SSIM criteria",
+		Func: ChromeStackDecoding, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies video decoding using Chrome's stack (via the video_decode_accelerator_tests binary) and either MD5 or SSIM criteria",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-gfx-video@google.com"},
 		SoftwareDeps: []string{"chrome", "video_decoder_direct"},
 		Attr:         []string{"group:mainline", "informational"},

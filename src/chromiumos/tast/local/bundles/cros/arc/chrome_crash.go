@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ChromeCrash,
-		Desc:         "Test chrome crash handling on login screen",
+		Func: ChromeCrash, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test chrome crash handling on login screen",
 		Contacts:     []string{"hashimoto@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{

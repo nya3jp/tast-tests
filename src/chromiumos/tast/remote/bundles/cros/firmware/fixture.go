@@ -15,8 +15,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Fixture,
-		Desc:         "Verifies firmware fixtures",
+		Func: Fixture, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies firmware fixtures",
 		Contacts:     []string{"cros-fw-engprod@google.com", "jbettis@google.com"},
 		Attr:         []string{"group:firmware", "firmware_smoke"},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService"},

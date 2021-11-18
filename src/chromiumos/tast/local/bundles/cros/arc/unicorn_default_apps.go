@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UnicornDefaultApps,
-		Desc:         "Verifies the Default arc apps for Unicorn Account",
+		Func: UnicornDefaultApps, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies the Default arc apps for Unicorn Account",
 		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		Timeout:      6 * time.Minute,

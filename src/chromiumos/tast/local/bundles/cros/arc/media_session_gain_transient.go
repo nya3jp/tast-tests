@@ -19,8 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MediaSessionGainTransient,
-		Desc:         "Checks Android transient audio focus requests are forwarded to Chrome",
+		Func: MediaSessionGainTransient, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks Android transient audio focus requests are forwarded to Chrome",
 		Contacts:     []string{"beccahughes@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         RemoveCancel,
-		Desc:         "Test cancelling removal of Crostini from the Settings app",
+		Func: RemoveCancel, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test cancelling removal of Crostini from the Settings app",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},

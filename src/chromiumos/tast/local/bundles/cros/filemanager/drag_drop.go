@@ -23,8 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DragDrop,
-		Desc: "Verify drag drop from files app works",
+		Func: DragDrop, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verify drag drop from files app works",
 		Contacts: []string{
 			"benreich@chromium.org",
 			"chromeos-files-syd@google.com",

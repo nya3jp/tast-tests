@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Vulkaninfo,
-		Desc: "This Vulkaninfo test records the state of Vulkan in logs and reports to crosbolt",
+		Func: Vulkaninfo, LacrosStatus: testing.LacrosVariantUnknown, Desc: "This Vulkaninfo test records the state of Vulkan in logs and reports to crosbolt",
 		Contacts: []string{
 			"pwang@chromium.org",
 			"chromeos-gfx@chromium.org",

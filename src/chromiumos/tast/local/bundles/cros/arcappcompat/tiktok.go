@@ -30,8 +30,7 @@ var touchviewLaunchForTiktok = []testutil.TestCase{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Tiktok,
-		Desc:         "Functional test for Tiktok that installs the app also verifies it is logged in and that the main page is open, checks Tiktok correctly changes the window state in both clamshell and touchview mode",
+		Func: Tiktok, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Functional test for Tiktok that installs the app also verifies it is logged in and that the main page is open, checks Tiktok correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},

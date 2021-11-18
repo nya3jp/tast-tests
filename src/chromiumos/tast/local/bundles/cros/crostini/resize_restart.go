@@ -19,8 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ResizeRestart,
-		Desc:         "Test resizing disk of Crostini from the Settings app while Crostini is shutdown",
+		Func: ResizeRestart, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test resizing disk of Crostini from the Settings app while Crostini is shutdown",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},

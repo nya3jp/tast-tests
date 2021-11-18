@@ -23,8 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: GesturesForSmallScreen,
-		Desc: "Checks that gestures for hotseat, home, back and overview works correctly",
+		Func: GesturesForSmallScreen, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that gestures for hotseat, home, back and overview works correctly",
 		Contacts: []string{
 			"yichenz@chromium.org",
 			"chromeos-wmp@google.com",

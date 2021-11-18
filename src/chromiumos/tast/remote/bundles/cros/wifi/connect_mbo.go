@@ -23,8 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ConnectMBO,
-		Desc: "Verifies that the MBO IE and other MBO-related capability bits are set",
+		Func: ConnectMBO, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that the MBO IE and other MBO-related capability bits are set",
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},

@@ -15,8 +15,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Mosys,
-		Desc:         "Checks the mosys command's functionality",
+		Func: Mosys, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks the mosys command's functionality",
 		SoftwareDeps: []string{"mosys"},
 		Contacts: []string{
 			"mka@chromium.org",

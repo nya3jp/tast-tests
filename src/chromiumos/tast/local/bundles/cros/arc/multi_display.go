@@ -89,8 +89,7 @@ var unstableTestSet = []testEntry{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     MultiDisplay,
-		Desc:     "Mutli-display ARC window management tests",
+		Func: MultiDisplay, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Mutli-display ARC window management tests",
 		Contacts: []string{"ruanc@chromium.org", "niwa@chromium.org", "arc-framework+tast@google.com"},
 		// TODO(ruanc): There is no hardware dependency for multi-display. Move back to the mainline group once it is supported.
 		SoftwareDeps: []string{"arc", "chrome"},

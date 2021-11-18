@@ -15,8 +15,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         FWTries,
-		Desc:         "Verify that the DUT can be specified to boot from A or B",
+		Func: FWTries, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verify that the DUT can be specified to boot from A or B",
 		Contacts:     []string{"cros-fw-engprod@google.com"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},

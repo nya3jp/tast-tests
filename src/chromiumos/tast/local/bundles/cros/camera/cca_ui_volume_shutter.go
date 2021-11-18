@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CCAUIVolumeShutter,
-		Desc:         "Verify CCA volume button shutter related use cases",
+		Func: CCAUIVolumeShutter, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verify CCA volume button shutter related use cases",
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", "proprietary_codecs", caps.BuiltinOrVividCamera},

@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AudioRecord,
-		Desc:         "Tests basic audio recording on lacros",
+		Func: AudioRecord, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests basic audio recording on lacros",
 		Contacts:     []string{"yuhsuan@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},

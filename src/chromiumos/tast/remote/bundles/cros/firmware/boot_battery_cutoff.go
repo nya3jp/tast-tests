@@ -28,8 +28,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         BootBatteryCutoff,
-		Desc:         "Verify if system can boot after battery cutoff",
+		Func: BootBatteryCutoff, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verify if system can boot after battery cutoff",
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		Fixture:      fixture.NormalMode,

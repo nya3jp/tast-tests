@@ -13,8 +13,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ARCFixture,
-		Desc:         "Demonstrates ARC fixture",
+		Func: ARCFixture, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Demonstrates ARC fixture",
 		Contacts:     []string{"nya@chromium.org", "tast-owners@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

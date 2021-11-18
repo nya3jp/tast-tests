@@ -23,8 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ShareFilesToast,
-		Desc:         "Test sharing My files with Crostini and clicking Manage on toast nofication",
+		Func: ShareFilesToast, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test sharing My files with Crostini and clicking Manage on toast nofication",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

@@ -88,8 +88,7 @@ var pipTests = []pipTestParams{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PIP,
-		Desc:         "Checks that ARC++ Picture-in-Picture works as expected",
+		Func: PIP, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that ARC++ Picture-in-Picture works as expected",
 		Contacts:     []string{"takise@chromium.org", "arc-framework+tast@google.com", "cros-arc-te@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:arc-functional"},

@@ -38,8 +38,7 @@ type hotseatTestVal struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         HotseatAnimation,
-		Desc:         "Measures the framerate of the hotseat animation in tablet mode",
+		Func: HotseatAnimation, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the framerate of the hotseat animation in tablet mode",
 		Contacts:     []string{"newcomer@chromium.org", "manucornet@chromium.org", "andrewxu@chromium.org", "cros-shelf-prod-notifications@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

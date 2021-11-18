@@ -43,8 +43,7 @@ type arcMediaScanPerfParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MediaScanPerf,
-		Desc:         "Checks elapsed time during a full-volume media scan",
+		Func: MediaScanPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks elapsed time during a full-volume media scan",
 		Contacts:     []string{"risan@chromium.org", "youkichihosoi@chromium.org", "arc-storage@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_weekly"},
 		SoftwareDeps: []string{"chrome"},

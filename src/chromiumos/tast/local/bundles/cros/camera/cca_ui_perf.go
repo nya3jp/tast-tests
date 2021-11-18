@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CCAUIPerf,
-		Desc:         "Opens CCA and measures the UI performance including CPU and power usage",
+		Func: CCAUIPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Opens CCA and measures the UI performance including CPU and power usage",
 		Contacts:     []string{"wtlee@chromium.org", "inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},

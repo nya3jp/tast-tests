@@ -23,8 +23,7 @@ type vpnTestParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     VPNConnect,
-		Desc:     "Ensure that we can connect to a VPN",
+		Func: VPNConnect, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Ensure that we can connect to a VPN",
 		Contacts: []string{"jiejiang@google.com", "cros-networking@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Fixture:  "shillReset",

@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ImagePaste,
-		Desc:         "Checks image copy paste app compat CUJ",
+		Func: ImagePaste, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks image copy paste app compat CUJ",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Attr:         []string{"group:mainline", "informational"},

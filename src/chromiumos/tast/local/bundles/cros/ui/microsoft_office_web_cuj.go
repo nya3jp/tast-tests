@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         MicrosoftOfficeWebCUJ,
-		Desc:         "Measures the performance of Microsoft Office web version CUJ",
+		Func: MicrosoftOfficeWebCUJ, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the performance of Microsoft Office web version CUJ",
 		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com", "jane.yang@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),

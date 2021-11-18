@@ -30,8 +30,7 @@ var touchviewLaunchForArtflow = []testutil.TestCase{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Artflow,
-		Desc:         "Functional test for Artflow that install, launch the app and check that the main page is open, also checks Artflow correctly changes the window state in both clamshell and touchview mode",
+		Func: Artflow, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Functional test for Artflow that install, launch the app and check that the main page is open, also checks Artflow correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},

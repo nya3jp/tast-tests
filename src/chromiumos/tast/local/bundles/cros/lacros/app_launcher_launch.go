@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AppLauncherLaunch,
-		Desc:         "Tests launching lacros from the App Launcher",
+		Func: AppLauncherLaunch, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests launching lacros from the App Launcher",
 		Contacts:     []string{"liaoyuke@chromium.org", "lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},

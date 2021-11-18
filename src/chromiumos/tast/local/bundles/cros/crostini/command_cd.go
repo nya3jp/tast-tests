@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CommandCd,
-		Desc:         "Test command cd in Terminal window",
+		Func: CommandCd, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test command cd in Terminal window",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

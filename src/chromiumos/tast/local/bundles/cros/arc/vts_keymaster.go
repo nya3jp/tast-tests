@@ -21,8 +21,7 @@ import (
 func init() {
 	// TODO(edmanp): crbug/1126302. Replace master by principal.
 	testing.AddTest(&testing.Test{
-		Func:         VTSKeymaster,
-		Desc:         "Runs the Android VTS module VtsHalKeymasterV3_0Target",
+		Func: VTSKeymaster, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Runs the Android VTS module VtsHalKeymasterV3_0Target",
 		Contacts:     []string{"edman@chromium.org", "arc-eng-muc@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

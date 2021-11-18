@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardMultipasteSuggestion,
-		Desc:         "Test multipaste suggestion functionality",
+		Func: VirtualKeyboardMultipasteSuggestion, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test multipaste suggestion functionality",
 		Contacts:     []string{"jiwan@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools"},

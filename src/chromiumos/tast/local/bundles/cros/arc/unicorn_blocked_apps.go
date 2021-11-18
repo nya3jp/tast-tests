@@ -25,8 +25,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         UnicornBlockedApps,
-		Desc:         "Checks if blocked apps cannot be installed from Child Account",
+		Func: UnicornBlockedApps, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks if blocked apps cannot be installed from Child Account",
 		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		SoftwareDeps: []string{"chrome"},

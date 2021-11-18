@@ -20,8 +20,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CrosToCrosHighVis,
-		Desc:         "Checks we can successfully send files from one Cros device to another",
+		Func: CrosToCrosHighVis, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks we can successfully send files from one Cros device to another",
 		Contacts:     []string{"chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:nearby-share-remote"},
 		SoftwareDeps: []string{"chrome"},

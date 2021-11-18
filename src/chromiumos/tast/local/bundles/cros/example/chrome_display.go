@@ -14,8 +14,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ChromeDisplay,
-		Desc:         "Demonstrates how to use the chrome.display API",
+		Func: ChromeDisplay, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Demonstrates how to use the chrome.display API",
 		Contacts:     []string{"ricardoq@chromium.org", "tast-owners@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

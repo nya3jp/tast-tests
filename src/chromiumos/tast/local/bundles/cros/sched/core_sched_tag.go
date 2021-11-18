@@ -27,8 +27,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CoreSchedTag,
-		Desc:         "Ensures renderers scheduling cookies are assigned correctly",
+		Func: CoreSchedTag, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Ensures renderers scheduling cookies are assigned correctly",
 		Contacts:     []string{"joelaf@google.com", "briannorris@chromium.org"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "arc", "coresched"},

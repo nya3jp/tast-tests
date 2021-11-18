@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SetUSBEthernetMACAddressSource,
-		Desc: "Test that USB Ethernet adapter changes its MAC address",
+		Func: SetUSBEthernetMACAddressSource, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test that USB Ethernet adapter changes its MAC address",
 		Contacts: []string{
 			"lamzin@google.com",
 			"cros-networking@google.com",

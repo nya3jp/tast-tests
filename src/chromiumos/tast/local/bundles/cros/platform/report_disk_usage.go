@@ -26,8 +26,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ReportDiskUsage,
-		Desc:     "Reports available disk space in the root filesystem",
+		Func: ReportDiskUsage, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Reports available disk space in the root filesystem",
 		Contacts: []string{"cros-telemetry@google.com"}, // or http://b/new?component=885467
 		// chromeos-assets is not available on devices without Chrome, require chrome
 		SoftwareDeps: []string{"chrome"},

@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SELinuxFilesARC,
-		Desc:         "Checks SELinux labels on ARC-specific files on devices that support ARC",
+		Func: SELinuxFilesARC, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks SELinux labels on ARC-specific files on devices that support ARC",
 		Contacts:     []string{"niwa@chromium.org", "fqj@chromium.org", "jorgelo@chromium.org", "chromeos-security@google.com"},
 		SoftwareDeps: []string{"selinux", "chrome"},
 		Attr:         []string{"group:mainline"},

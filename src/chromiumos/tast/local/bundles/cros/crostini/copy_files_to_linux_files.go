@@ -27,8 +27,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CopyFilesToLinuxFiles,
-		Desc:         "Tests copying files to Linux files using a pre-built crostini image",
+		Func: CopyFilesToLinuxFiles, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests copying files to Linux files using a pre-built crostini image",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

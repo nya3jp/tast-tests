@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     PrintIPPUSB,
-		Desc:     "Tests ipp-over-usb printing",
+		Func: PrintIPPUSB, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests ipp-over-usb printing",
 		Contacts: []string{"bmgordon@chromium.org", "project-bolton@google.com"},
 		Attr: []string{
 			"group:mainline",

@@ -33,8 +33,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         WindowArrangementCUJ,
-		Desc:         "Measures the performance of critical user journey for window arrangements",
+		Func: WindowArrangementCUJ, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures the performance of critical user journey for window arrangements",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc", "chrome_internal"},

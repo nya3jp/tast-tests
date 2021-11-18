@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         HAL3Remote,
-		Desc:         "Verifies camera HAL3 interface function on remote DUT",
+		Func: HAL3Remote, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies camera HAL3 interface function on remote DUT",
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:camerabox"},
 		SoftwareDeps: []string{"arc", "arc_camera3", caps.BuiltinCamera},

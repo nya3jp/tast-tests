@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SoundCardInit,
-		Desc:         "Verfies sound_card_init boot time calibration logic",
+		Func: SoundCardInit, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verfies sound_card_init boot time calibration logic",
 		HardwareDeps: hwdep.D(hwdep.SmartAmp(), hwdep.SkipOnModel("atlas", "nocturne")),
 		Contacts:     []string{"judyhsiao@chromium.org", "cychiang@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -31,21 +30,21 @@ func init() {
 			{
 				Name: "exit_success",
 				Val: soundcardinit.TestParameters{
-					Func: exitSuccess,
+					Func: exitSuccess, LacrosStatus: testing.LacrosVariantUnknown,
 				},
 			},
 			{
 				Name:              "boot_time_calibration",
 				ExtraHardwareDeps: hwdep.D(hwdep.SmartAmpBootTimeCalibration()),
 				Val: soundcardinit.TestParameters{
-					Func: bootTimeCalibration,
+					Func: bootTimeCalibration, LacrosStatus: testing.LacrosVariantUnknown,
 				},
 			},
 			{
 				Name:              "recent_reboot",
 				ExtraHardwareDeps: hwdep.D(hwdep.SmartAmpBootTimeCalibration()),
 				Val: soundcardinit.TestParameters{
-					Func: recentReboot,
+					Func: recentReboot, LacrosStatus: testing.LacrosVariantUnknown,
 				},
 			},
 		},

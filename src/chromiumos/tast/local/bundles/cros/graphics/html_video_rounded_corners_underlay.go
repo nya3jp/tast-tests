@@ -22,8 +22,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         HTMLVideoRoundedCornersUnderlay,
-		Desc:         "Verifies that HTML <video> rounded corners are implemented with a hardware underlay",
+		Func: HTMLVideoRoundedCornersUnderlay, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that HTML <video> rounded corners are implemented with a hardware underlay",
 		Contacts:     []string{"amusbach@chromium.org", "oshima@chromium.org", "chromeos-perf@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "proprietary_codecs"},

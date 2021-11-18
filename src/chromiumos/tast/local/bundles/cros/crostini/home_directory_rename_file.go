@@ -23,8 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         HomeDirectoryRenameFile,
-		Desc:         "Test renaming a file in Linux files and container using a pre-built crostini image",
+		Func: HomeDirectoryRenameFile, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test renaming a file in Linux files and container using a pre-built crostini image",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

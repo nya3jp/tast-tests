@@ -19,8 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VimCompile,
-		Desc:         "Crostini performance test which compiles vim",
+		Func: VimCompile, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Crostini performance test which compiles vim",
 		Contacts:     []string{"sushma.venkatesh.reddy@intel.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},

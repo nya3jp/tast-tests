@@ -25,8 +25,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SELinuxFilesDataDir,
-		Desc:         "Checks SELinux labels specifically for the data dir in android-data",
+		Func: SELinuxFilesDataDir, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks SELinux labels specifically for the data dir in android-data",
 		Contacts:     []string{"vraheja@chromium.org", "chromeos-security@google.com"},
 		SoftwareDeps: []string{"selinux", "chrome"},
 		Pre:          arc.Booted(),

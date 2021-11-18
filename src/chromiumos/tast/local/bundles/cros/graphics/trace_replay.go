@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         TraceReplay,
-		Desc:         "Replay glxgears trace file in Crostini VM",
+		Func: TraceReplay, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Replay glxgears trace file in Crostini VM",
 		Contacts:     []string{"chromeos-gfx@google.com", "tutankhamen@google.com", "ddmail@google.com", "ihf@google.com"},
 		SoftwareDeps: []string{"chrome", "crosvm_gpu", "no_borealis_host", "vm_host", "no_qemu"},
 		// We assign it to two different group in order to run it against pool:suite and pool:cros_av_analysis.

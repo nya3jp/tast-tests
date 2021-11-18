@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         KeyCharacterMap,
-		Desc:         "Checks KeyCharacterMap working in non-US layouts",
+		Func: KeyCharacterMap, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks KeyCharacterMap working in non-US layouts",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},

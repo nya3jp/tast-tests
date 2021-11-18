@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ADBValidity,
-		Desc:         "Verifies adb communication works as intended",
+		Func: ADBValidity, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies adb communication works as intended",
 		Contacts:     []string{"hidehiko@chromium.org", "tast-owners@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",

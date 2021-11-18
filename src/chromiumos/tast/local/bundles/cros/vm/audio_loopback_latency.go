@@ -35,8 +35,7 @@ type loopbackLatencyConfig struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         AudioLoopbackLatency,
-		Desc:         "Measures loopback latency of different audio devices in crosvm",
+		Func: AudioLoopbackLatency, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures loopback latency of different audio devices in crosvm",
 		Contacts:     []string{"woodychow@google.com", "paulhsia@google.com", "chromeos-audio-bugs@google.com", "crosvm-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{runLoopbackLatency},

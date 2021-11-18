@@ -18,8 +18,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Reboot,
-		Desc:         "Checks whether Android can be successfully rebooted",
+		Func: Reboot, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks whether Android can be successfully rebooted",
 		Contacts:     []string{"youkichihosoi@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

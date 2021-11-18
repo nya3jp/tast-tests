@@ -23,8 +23,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         OverviewPerf,
-		Desc:         "Measures animation smoothness of entering/exiting the overview mode",
+		Func: OverviewPerf, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Measures animation smoothness of entering/exiting the overview mode",
 		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-perf@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},

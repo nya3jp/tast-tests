@@ -34,8 +34,7 @@ type credentialKeys struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ARCProvisioning,
-		Desc:         "Checks that ARC is launched when policy is set",
+		Func: ARCProvisioning, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Checks that ARC is launched when policy is set",
 		Contacts:     []string{"pbond@chromium.org", "arc-eng-muc@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

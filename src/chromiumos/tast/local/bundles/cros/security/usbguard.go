@@ -24,8 +24,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         USBGuard,
-		Desc:         "Check that USBGuard-related feature flags work as intended",
+		Func: USBGuard, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Check that USBGuard-related feature flags work as intended",
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "usbguard"},
 		Contacts: []string{

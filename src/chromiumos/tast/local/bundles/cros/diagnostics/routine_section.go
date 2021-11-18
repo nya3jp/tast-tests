@@ -17,8 +17,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RoutineSection,
-		Desc: "Diagnostics app routines run successfully",
+		Func: RoutineSection, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Diagnostics app routines run successfully",
 		Contacts: []string{
 			"joonbug@chromium.org",
 			"cros-peripherals@google.com",

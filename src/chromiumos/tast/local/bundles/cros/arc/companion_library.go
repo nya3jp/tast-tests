@@ -98,8 +98,7 @@ var arcPOnlyTests = []companionLibTestEntry{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CompanionLibrary,
-		Desc:         "Test all ARC++ companion library",
+		Func: CompanionLibrary, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test all ARC++ companion library",
 		Contacts:     []string{"sstan@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
