@@ -47,7 +47,7 @@ func init() {
 		}, {
 			Name:              "memory_encryption",
 			Val:               true,
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix")),
 			ExtraAttr:         []string{"informational"},
 		}},
 	})
