@@ -97,7 +97,7 @@ func init() {
 
 func rnDebug(s *testing.State, args ...interface{}) {
 	if rnDebugEnabled {
-		s.Log(args...)
+		s.Log(args)
 	}
 }
 

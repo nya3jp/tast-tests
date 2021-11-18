@@ -283,7 +283,7 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 	// in core_pattern, etc.
 	if out, err := testexec.CommandContext(ctx, "/sbin/crash_reporter", "--init").CombinedOutput(); err != nil {
 		testing.ContextLog(ctx, "Couldn't initialize crash reporter: ", string(out))
-		return errors.Wrap(err, "initializing crash reporter: ")
+		return errors.Wrap(err, "initializing crash reporter")
 	}
 
 	return setUpCrashTest(ctx, &p)
@@ -351,11 +351,11 @@ func setUpCrashTest(ctx context.Context, p *setUpParams) (retErr error) {
 
 	if p.filterIn == "" {
 		if err := disableCrashFiltering(p.filterInPath); err != nil {
-			return errors.Wrap(err, "couldn't disable crash filtering: ")
+			return errors.Wrap(err, "couldn't disable crash filtering")
 		}
 	} else {
 		if err := enableCrashFiltering(ctx, p.filterInPath, p.filterIn); err != nil {
-			return errors.Wrap(err, "couldn't enable crash filtering: ")
+			return errors.Wrap(err, "couldn't enable crash filtering")
 		}
 	}
 
@@ -568,7 +568,7 @@ func tearDownCrashTest(ctx context.Context, p *tearDownParams) error {
 	if err := disableCrashFiltering(p.filterInPath); err != nil {
 		testing.ContextLog(ctx, "Couldn't disable crash filtering: ", err)
 		if firstErr == nil {
-			firstErr = errors.Wrap(err, "couldn't disable crash filtering: ")
+			firstErr = errors.Wrap(err, "couldn't disable crash filtering")
 		}
 	}
 

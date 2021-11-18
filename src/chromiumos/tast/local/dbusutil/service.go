@@ -16,6 +16,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/timing"
 )
 
@@ -108,7 +109,7 @@ func SystemBus() (conn *dbus.Conn, err error) {
 func SystemBusPrivate(opts ...dbus.ConnOption) (*dbus.Conn, error) {
 	// Append user-passed options after our default options, so that
 	// they can override our defaults.
-	return dbus.SystemBusPrivate(append(busOptions(), opts...)...)
+	return dbusutil.SystemBusPrivate(append(busOptions(), opts...)...)
 }
 
 // Connect sets up the D-Bus connection to the service specified by name, path by using SystemBus.
@@ -146,7 +147,7 @@ func SystemBusPrivateWithAuth(ctx context.Context, uid uint32) (*dbus.Conn, erro
 	}
 	defer syscall.Setreuid(-1, origEUID)
 
-	conn, err := dbus.SystemBusPrivate(busOptions()...)
+	conn, err := dbusutil.SystemBusPrivate(busOptions()...)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to system bus")
 	}

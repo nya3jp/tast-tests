@@ -206,7 +206,7 @@ func validateRequestedFilePath(filePath string) bool {
 
 // log logs the information to tast log.
 func (s *fileServer) log(ctx context.Context, format string, args ...interface{}) {
-	testing.ContextLogf(ctx, "[Proxy Server] "+format, args...)
+	testing.ContextLogf(ctx, "[Proxy Server] "+format, args)
 }
 
 type passThruReader struct {
