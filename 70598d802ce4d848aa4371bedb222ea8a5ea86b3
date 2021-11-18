@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ae4229_7612d99a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-11-18T22:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "024c1b54_37af4578",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "70598d802ce4d848aa4371bedb222ea8a5ea86b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbc35ed8_18a4fc2a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-18T07:12:41Z",
       "side": 1,
       "message": "If I understand correctly, av1_ssim is mostly for verifying film grain files using SSIM, so we remove av1_ssim and change the verification method of av1_film_grain to SSIM.\n\nThis sentence doesn\u0027t mention about the verification method change.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "70598d802ce4d848aa4371bedb222ea8a5ea86b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb6c29e4_c141b89c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-11-18T22:12:40Z",
+      "side": 1,
+      "message": "Oh you\u0027re right, this sentence is entirely misleading. Let\nme rewrite it, apologies for that.",
+      "parentUuid": "fbc35ed8_18a4fc2a",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -121,6 +169,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ad9b313_b2a18710",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-11-18T22:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ed82f6d_717d90a5",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 59
+      },
+      "revId": "70598d802ce4d848aa4371bedb222ea8a5ea86b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb82d555_1b3978ab",
@@ -144,6 +216,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06de9563_467179b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-11-18T22:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb82d555_1b3978ab",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 74
+      },
+      "revId": "70598d802ce4d848aa4371bedb222ea8a5ea86b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6ee56de_3852dc73",
@@ -157,6 +253,30 @@
       "writtenOn": "2021-11-18T07:12:41Z",
       "side": 1,
       "message": "Update the comment.\nThus we validate the decoding of film-grain streams using SSIM.",
+      "range": {
+        "startLine": 187,
+        "startChar": 58,
+        "endLine": 189,
+        "endChar": 55
+      },
+      "revId": "70598d802ce4d848aa4371bedb222ea8a5ea86b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05d3737a_3b0c9bcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-11-18T22:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6ee56de_3852dc73",
       "range": {
         "startLine": 187,
         "startChar": 58,
