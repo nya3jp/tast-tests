@@ -128,7 +128,15 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 	// Enable software write protect.
 	s.Log("Enabling software write protect")
 	if err := s.DUT().Conn().CommandContext(ctx, "ectool", "flashprotect", "enable").Run(ssh.DumpLogOnError); err != nil {
-		s.Fatal("Failed to enable software write protect: ", err)
+		// We are temporarily logging this error.
+		s.Log("Failed to enable software write protect: ", err)
+
+		// Get extra information from the DUT state.
+		out, err := s.DUT().Conn().CommandContext(ctx, "flashrom", "-p", "ec", "--wp-status").Output(ssh.DumpLogOnError)
+		if err != nil {
+			s.Fatal("Failed to run command flashrom to collect the write protection status: ", err)
+		}
+		s.Log("Flashrom Output: ", string(out))
 	}
 
 	// Send battery cutoff and check EC is unresponsive.
