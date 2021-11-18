@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "270ab853_24a67a5f",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-18T17:12:33Z",
+      "side": 1,
+      "message": "Any thoughts on this?",
+      "revId": "a2ab3a130bd0d8dc68c9fd80f8dc69ffcee88730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

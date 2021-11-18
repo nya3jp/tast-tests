@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "faeb5989_0076402f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-18T17:12:33Z",
+      "side": 1,
+      "message": "Any thoughts on this?",
+      "parentUuid": "60e653d1_6a28643c",
+      "revId": "ab296ffa6612295c10dd7063ddde110a7e9a9c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95ba7f98_3469c6f7",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 4
@@ -65,6 +83,24 @@
       "writtenOn": "2021-11-18T15:51:16Z",
       "side": 1,
       "message": "If these are shared between ash/lacros, can these be moved to browser?",
+      "revId": "ab296ffa6612295c10dd7063ddde110a7e9a9c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9574f7e0_1b3c3f33",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-18T17:12:33Z",
+      "side": 1,
+      "message": "browser makes a lot of sense since they are used in browser methods. Done.",
+      "parentUuid": "95ba7f98_3469c6f7",
       "revId": "ab296ffa6612295c10dd7063ddde110a7e9a9c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
